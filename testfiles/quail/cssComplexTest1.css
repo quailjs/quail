@@ -1,0 +1,13 @@
+div {
+	background-color: red;
+}
+
+.testdiv {
+	color: yellow;
+	background-color: blue;
+}
+
+body {
+	color: black;
+	background-color: green;
+}

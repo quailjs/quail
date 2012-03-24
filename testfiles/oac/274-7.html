@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+<title>Testfile - Check #274.7 - Negative</title>
+
+<script type="text/JavaScript"> 
+  function goToMirror(theInput) {
+   var mirrorSite = "http://download." + theInput.value + "/"; 
+   window.open(mirrorSite); 
+  }
+</script>
+
+</head>
+<body>
+
+<p>Please select a mirror download site.<br/>Selecting a radio button will cause a new window to open.</p> 
+
+<form name="mirror_form" id="mirror_form" action="" method="get">
+<p> 
+<input type="radio" onclick="goToMirror(this);" name="mirror" 
+id="mirror_belnet" value="belnet.be" /> 
+<label for="mirror_belnet">belnet (<abbr>BE</abbr>)</label><br /> 
+<input type="radio" onclick="goToMirror(this);" name="mirror" 
+id="mirror_surfnet" value="surfnet.nl" /> 
+<label for="mirror_surfnet">surfnet (<abbr>NL</abbr>)</label><br /> 
+<input type="radio" onclick="goToMirror(this);" name="mirror" 
+id="mirror_puzzle" value="puzzle.ch" /> 
+<label for="mirror_puzzle">puzzle (<abbr>CH</abbr>)</label><br /> 
+<input type="radio" onclick="goToMirror(this);" name="mirror" 
+id="mirror_voxel" value="voxel.com" /> 
+<label for="mirror_voxel">voxel (<abbr>US</abbr>)</label><br /> 
+</p> 
+</form>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+<title>ATRC Testfile - Check #269.2 - Negative</title>
+</head>
+<body>
+
+<p>Shown below are the steps required to purchase a concert ticket.</p>
+
+<ol>
+<li>User fills out the form and selects the "submit" button.</li>
+<li>Data is presented to user with the option to correct data or submit it.</li>
+<li>If user submits form then credit card is charged for the tickets and tickets are mailed to user.</li>
+</ol>
+
+<h1>Step 1 - fill out form</h1>
+
+<form action="http://www.test.com">
+
+<p>
+<label for="concert">concert</label>
+<select name="concert" id="concert">
+<option label="Beethoven" value="c1">
+Beethoven
+</option>
+<option label="Mozart" value="c2">
+Mozart
+</option>
+<option label="Mamaday" value="c3">
+Mamaday
+</option>
+<option label="U2" value="c4">
+U2
+</option>
+</select>
+
+<br/><label for="card">credit card:</label>
+<input type="text" size="30" id="card" name="card"/>
+
+<br/>
+<input type="submit" value="submit"/>
+</p>
+
+</form>
+
+<h1>Step 2 - data is presented to user</h1>
+
+<p>Please review the data below. If the data is correct select the "Purchase Ticket" button. If data is not correct then select this link to <a href="http://www.test.com/fix">modify the data</a>.</p>
+
+<form action="http://www.test.com">
+
+<p>
+<label for="concert">concert</label>
+<select name="concert" id="concert">
+<option label="Beethoven" value="c1">
+Beethoven
+</option>
+<option label="Mozart" value="c2" selected="selected">
+Mozart
+</option>
+<option label="Mamaday" value="c3">
+Mamaday
+</option>
+<option label="U2" value="c4">
+U2
+</option>
+</select>
+
+<br/><label for="card">credit card:</label>
+<input type="text" size="30" id="card" name="card" value="1234xxxxxxx567"/>
+
+<br/>
+<input type="submit" value="Purchase Ticket"/>
+</p>
+
+</form>
+
+</body>
+</html>
