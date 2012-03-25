@@ -1,2 +1,3 @@
 php/tests/simpletest
 jquery/tests/jquery-qunit
+.htaccess

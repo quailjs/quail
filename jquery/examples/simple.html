@@ -1,0 +1,20 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+	</head>
+	<body>
+	<div id="test">
+	 <p>This is an image of my cat:</p>
+	 <img src="rex.jpg">
+	</div>
+	
+	<script src="../jquery-1.7.2.js"></script>
+	<script src="../quail.js"></script>
+	<script>
+	 $('#test').quail({ tests : [ 'imgAttributeAltExists' ],
+	                    jsonPath : '../../resources/tests.json' });
+	</script>
+	</body>
+</html>
