@@ -130,24 +130,28 @@
   "callback" : "blockquoteUseForQuotations"
   },
 "bodyActiveLinkColorContrast" : { 
-  "type" : "custom",
-  "callback" : "bodyActiveLinkColorContrast"
+  "type" : "color",
+  "algorithim" : "wcag",
+  "selector" : "a:active"
   },
 "bodyColorContrast" : {
-  "type" : "custom",
-  "callback" : "bodyColorContrast"
+  "type" : "color",
+  "algorithim" : "wcag",
+  "selector" : "*"
   },
 "bodyLinkColorContrast" : { 
-  "type" : "custom",
-  "callback" : "bodyLinkColorContrast"
+  "type" : "color",
+  "algorithim" : "wcag",
+  "selector" : "a"
   },
 "bodyMustNotHaveBackground" : { 
   "type" : "selector",
   "selector" : "body[background]"
   },
 "bodyVisitedLinkColorContrast" : { 
-  "type" : "custom",
-  "callback" : "bodyVisitedLinkColorContrast"
+  "type" : "color",
+  "algorithim" : "wcag",
+  "selector" : "a:visited"
   },
 "boldIsNotUsed" : { 
   "type" : "selector",
@@ -183,7 +187,7 @@
   },
 "documentAllColorsAreSet" : { 
   "type" : "selector",
-  "selector" : "body:not(body[text][bgcolor][link][alink][vlink])"
+  "selector" : "body:not(body[text][bgcolor][link][alink][vlink], body:not(body[text], body[bgcolor], body[link], body[alink], body[vlink]))"
   },
 "documentAutoRedirectNotUsed" : { 
   "type" : "selector",
@@ -270,16 +274,16 @@
   "selector" : "body"
   },
 "embedHasAssociatedNoEmbed" : { 
-  "type" : "custom",
-  "callback" : "embedHasAssociatedNoEmbed"
+  "type" : "selector",
+  "selector" : "embed:not(embed:has(noembed))"
   },
 "embedMustHaveAltAttribute" : { 
   "type" : "selector",
   "selector" : "embed:not(embed[alt])"
   },
 "embedMustNotHaveEmptyAlt" : { 
-  "type" : "custom",
-  "callback" : "embedMustNotHaveEmptyAlt"
+  "type" : "selector",
+  "selector" : "embed:not(embed[alt=])"
   },
 "embedProvidesMechanismToReturnToParent" : { 
   "type" : "selector",
@@ -342,12 +346,13 @@
   "selector" : "frame[title]"
   },
 "frameTitlesNotEmpty" : { 
-  "type" : "custom",
-  "callback" : "frameTitlesNotEmpty"
+  "type" : "selector",
+  "selector" : "frame:not(frame[title]), frame[title=]"
   },
 "frameTitlesNotPlaceholder" : { 
-  "type" : "custom",
-  "callback" : "frameTitlesNotPlaceholder"
+  "type" : "placeholder",
+  "callback" : "frameTitlesNotPlaceholder",
+  "attribute" : "title"
   },
 "framesHaveATitle" : { 
   "type" : "selector",
@@ -548,8 +553,8 @@
   "selector" : "input[type=image]:not(input[type=image][alt])"
   },
 "inputImageNotDecorative" : { 
-  "type" : "custom",
-  "callback" : "inputImageNotDecorative"
+  "type" : "selector",
+  "selector" : "input[type=image]"
   },
 "inputPasswordHasTabIndex" : { 
   "type" : "selector",
@@ -561,7 +566,7 @@
   },
 "inputSubmitHasTabIndex" : { 
   "type" : "selector",
-  "selector" : "input[type=submit]:not(input[type=submit][tabindex])"
+  "selector" : "input[type=submit]:not(input[type=submit][tabindex]), input[type=submit][tabindex=]"
   },
 "inputTextHasLabel" : { 
   "type" : "label",
@@ -769,12 +774,12 @@
   "type" : "label","selector" : "select"
   },
 "selectWithOptionsHasOptgroup" : { 
-  "type" : "custom",
-  "callback" : "selectWithOptionsHasOptgroup"
+  "type" : "selector",
+  "selector" : "select option:nth-child(5):parent(select)"
   },
 "siteMap" : { 
-  "type" : "custom",
-  "callback" : "siteMap"
+  "type" : "selector",
+  "selector" : "a:content('site map')"
   },
 "skipToContentLinkProvided" : { 
   "type" : "selector",
@@ -849,8 +854,8 @@
   "selector" : "table > caption"
   },
 "tableWithBothHeadersUseScope" : { 
-  "type" : "custom",
-  "callback" : "tableWithBothHeadersUseScope"
+  "type" : "selector",
+  "selector" : "table:has(tbody th:not(th[scope]))"
   },
 "tableWithMoreHeadersUseID" : { 
   "type" : "custom",

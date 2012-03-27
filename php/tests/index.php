@@ -1,5 +1,5 @@
 <?php
-//error_reporting(E_WARNING);
+error_reporting(E_WARNING);
 if(!file_exists('simpletest/unit_tester.php')) {
 	die('You must install simpletest [http://www.simpletest.org/] in the directory "tests".');
 }

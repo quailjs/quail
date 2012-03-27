@@ -12,10 +12,59 @@ class QuailSelectorTest extends QuailTest {
   }
 }
 
+class aAdjacentWithSameResourceShouldBeCombined extends QuailCustomTest {
+  function run() {
+    foreach(pq('a') as $el) {
+      if(pq($el)->next('a')->attr('href') == pq($el)->attr('href')) {
+        $this->objects[] = pq($el);
+      }
+    }
+  }
+}
+
+class aImgAltNotRepetative extends QuailCustomTest {
+  function run() {
+    foreach(pq('a img[alt]') as $el) {
+      if(trim(pq($el)->attr('alt')) == trim(pq($el)->parent('a')->text())) {
+        $this->objects[] = pq($el)->parent('a');
+      }
+    }
+  }
+}
+
+class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
+  
+  protected $redundant;
+  
+  function run() {
+    foreach(pq('a') as $el) {
+      $text = '';
+      if(pq($el)->find('img:first')->length) {
+        $text = pq($el)->find('img:first')->text();
+      }
+      $text .= pq($el)->text();
+      foreach($this->redundant as $phrase) {
+        if(strpos($text, $phrase) !== FALSE) {
+          $this->objects[] = pq($el);
+        }
+      }
+    }
+  }
+  
+  protected function getRedundantString() {
+    global $quail_redundant_text;
+    if(!$quail_redundant_text) {
+      $quail_redundant_text = json_decode(file_get_contents('../../resources/strings/redundant.json'));
+    }
+    
+    $this->redundant = (array)$quail_redundant_text['inputImage'];
+  }
+}
+
 class aLinksAreSeperatedByPrintableCharacters extends QuailCustomTest {
   function run() {
-    foreach(pq('a') as $a) {
-		  $this->objects[] = pq($a);
+    foreach(pq('a') as $el) {
+		  $this->objects[] = pq($el);
 	  }
   }
 }
@@ -122,6 +171,22 @@ class doctypeProvided extends QuailCustomTest {
   }
 }
 
+class documentStrictDocType extends QuailCustomTest {
+  function run() {
+    if(strpos(strtolower($this->document->doctype->publicId), 'strict') === FALSE) {
+			$this->objects[] = pq('html');
+		}
+  }
+}
+
+class documentValidatesToDocType extends QuailCustomTest {
+  function run() {
+    if(!@$this->document->validate()) {
+			$this->objects[] = pq('html');
+    }
+  }
+}
+
 class documentTitleIsShort extends QuailCustomTest {
   
   function run() {
@@ -193,6 +258,29 @@ class emoticonsMissingAbbr extends emoticonsExcessiveUse {
 				}
 			}
 		}
+  }
+}
+
+class inputImageAltNotRedundant extends QuailCustomTest {
+  
+  protected $redundant;
+  
+  function run() {
+    $this->getRedundantString();
+    foreach(pq('input[type=image][alt]') as $el) {
+      if(in_array(strtolower(trim(pq($el)->attr('alt'))), $this->redundant_strings)) {
+        $this->objects[] = pq($el);
+      }
+    }
+  }
+  
+  protected function getRedundantString() {
+    global $quail_redundant_text;
+    if(!$quail_redundant_text) {
+      $quail_redundant_text = json_decode(file_get_contents('../../resources/strings/redundant.json'));
+    }
+    
+    $this->redundant = (array)$quail_redundant_text['inputImage'];
   }
 }
 
@@ -291,6 +379,18 @@ class imgAltNotEmptyInAnchor extends QuailCustomTest {
   }
 }
 
+class labelMustBeUnique extends QuailCustomTest {
+  function run() {
+    $labels = array();
+    foreach(pq('label[for]') as $el) {
+      if(isset($labels[pq($el)->attr('for')])) {
+        $this->objects[] = pq($el);
+      }
+      $labels[pq($el)->attr('for')] = pq($el)->attr('for');
+    }
+  }
+}
+
 class listNotUsedForFormatting extends QuailCustomTest {
   function run() {
     foreach(pq('ol, li') as $el) {
@@ -306,7 +406,7 @@ class preShouldNotBeUsedForTabularLayout extends QuailCustomTest {
     foreach(pq('pre') as $el) {
       $rows = preg_split('/[\n\r]+/', pq($el)->text);
 			if(count($rows) > 1 && strpos(pq($el)->text(), array('  ', "\t"))) {
-				$this->objects[] = $el;
+				$this->objects[] = pq($el);
 		  }
     }
   }
@@ -373,7 +473,7 @@ class tableUsesAbbreviationForHeader extends QuailCustomTest {
   function run() {
     foreach(pq('th, table tr:first td') as $el) {
       if(!pq($el)->find('abbr, acronym')->length && strlen(trim(pq($el)->text())) > 20) {
-        $this->objects[] = $el;
+        $this->objects[] = pq($el);
       }
     }
   }
@@ -383,8 +483,48 @@ class tableHeaderLabelMustBeTerse extends QuailCustomTest {
   function run() {
     foreach(pq('th, table tr:first td') as $el) {
       if(strlen(trim(pq($el)->text())) > 20) {
-        $this->objects[] = $el;
+        $this->objects[] = pq($el);
       }
+    }
+  }
+}
+
+class tableSummaryDoesNotDuplicateCaption extends QuailCustomTest {
+  
+  function run() {
+    foreach(pq('table[summary]:has(caption)') as $el) {
+      if(strtolower(trim(pq($el)->attr('summary'))) == strtolower(trim(pq($el)->find('caption:first')->text()))) {
+        $this->objects[] = pq($el);
+      }
+    }
+  }
+}
+
+class tableWithMoreHeadersUseID extends QuailCustomTest {
+  function run() {
+    foreach(pq('table:has(th)') as $el) {
+      $rows = 0;
+      foreach(pq($el)->find('tr') as $tr) {
+        if(pq($tr)->find('th')) {
+          $rows++;
+        }
+        if($rows > 1 && !pq($tr)->find('th[id]')->length) {
+          $this->objects[] = pq($el);
+        }
+      }
+    }
+  }
+}
+
+class tabularDataIsInTable extends QuailCustomTest {
+  function run() {
+    foreach(pq('div, p') as $el) {
+      if(strpos(pq($el)->text(), "\t") !== FALSE) {
+        $this->objects[] = pq($el);
+      }
+    }
+    foreach(pq('pre') as $el) {
+      $this->objects[] = pq($el);
     }
   }
 }
@@ -394,8 +534,8 @@ class formWithRequiredLabel extends QuailCustomTest {
   function run() {
     foreach(pq('label') as $el) {
       if(strpos(pq($el)->text(), '*') !== false) {
-        if(pq('#'. pq($el)->attr('for'))->attr('aria-required')) {
-          $this->objects[] = $el;
+        if(!pq('#'. pq($el)->attr('for'))->length || !pq('#'. pq($el)->attr('for'))->attr('aria-required')) {
+          $this->objects[] = pq($el);
         }
       }
     }
@@ -420,6 +560,16 @@ class imgMapAreasHaveDuplicateLink extends QuailCustomTest {
             $this->objects[] = pq($el);
           }
         }
+      }
+    }
+  }
+}
+
+class tableUseColGroup extends QuailCustomTest {
+  function run() {
+    foreach(pq('table') as $el) {
+      if($this->isDataTable(pq($el)) && !pq($el)->find('colgroup')) {
+        $this->objects[] = pq($el);
       }
     }
   }

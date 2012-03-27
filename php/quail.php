@@ -71,9 +71,7 @@ class Quail {
       $test_description = (array)$this->quail_tests[$test_name];
       $test = false;
       if($test_description['type'] == 'custom') {
-        //if(class_exists($test_description['callback'])) {
           $test = new $test_description['callback']($test_description, $this->document, $this->path);
-        //}
       }
       elseif($test_description['type'] == 'selector') {
         $test = new QuailSelectorTest($test_description['selector'], $this->document, $this->path);
@@ -270,6 +268,7 @@ class QuailCustomTest extends QuailTest{
     $this->options = $options;
     $this->document = $document;
     $this->path = $path;
+    $this->run();
   }
 }
 
