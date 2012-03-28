@@ -1,886 +1,916 @@
 {
-"aAdjacentWithSameResourceShouldBeCombined" : { 
-  "type" : "custom",
-  "callback" : "aAdjacentWithSameResourceShouldBeCombined"
-  },
-"aImgAltNotRepetative" : { 
-  "type" : "custom",
-  "callback" : "aImgAltNotRepetative"
-  },
-"aLinkTextDoesNotBeginWithRedundantWord" : { 
-  "type" : "custom",
-  "callback" : "aLinkTextDoesNotBeginWithRedundantWord"
-  },
-"aLinksAreSeperatedByPrintableCharacters" : { 
-  "type" : "custom",
-  "callback" : "aLinksAreSeperatedByPrintableCharacters"
-  },
-"aLinksDontOpenNewWindow" : { 
-  "type" : "selector",
-  "selector" : "a[target=_new], a[target=_blank], a[target=_blank]"
-  },
-"aLinksMakeSenseOutOfContext" : { 
-  "type" : "selector",
-  "selector" : "a"
-  },
-"aLinksToMultiMediaRequireTranscript" : { 
-  "type" : "selector",
-  "selector" : "a[href$=.wmv], a[href$=.mpg], a[href$=.mov], a[href$=.ram], a[href$=.aif]"
-  },
-"aLinksToSoundFilesNeedTranscripts" : { 
-  "type" : "selector",
-  "selector" : "a[href$=wav], a[href$=snd], a[href$=mp3], a[href$=iff], a[href$=svx], a[href$=sam], a[href$=smp], a[href$=vce], a[href$=vox], a[href$=pcm], a[href$=aif]"
-  },
-"aMultimediaTextAlternative" : { 
-  "type" : "selector",
-  "selector" : "a[href$=wmv], a[href$=wav], a[href$= mpg], a[href$=mov], a[href$=ram], a[href$=aif]"
-  },
-"aMustContainText" : { 
-  "type" : "custom",
-  "callback" : "aMustContainText"
-  },
-"aMustHaveTitle" : { 
-  "type" : "selector",
-  "selector" : "a:not(a[title])"
-  },
-"aMustNotHaveJavascriptHref" : { 
-  "type" : "selector",
-  "selector" : "a[attribute^=javascript:]"
-  },
-"aSuspiciousLinkText" : { 
-  "type" : "custom",
-  "callback" : "aSuspiciousLinkText"
-  },
-"aTitleDescribesDestination" : { 
-  "type" : "selector",
-  "selector" : "a[title]"
-  },
-"addressForAuthor" : { 
-  "type" : "selector",
-  "selector" : "html:not(html:find(address a))"
-  },
-"addressForAuthorMustBeValid" : { 
-  "type" : "selector",
-  "selector" : "address"
-  },
-"appletContainsTextEquivalent" : { 
-  "type" : "selector",
-  "selector" : "applet:empty"
-  },
-"appletContainsTextEquivalentInAlt" : { 
-  "type" : "placeholder",
-  "selector" : "applet[alt]",
-  "attribute" : "alt",
-  "empty":true
-  },
-"appletProvidesMechanismToReturnToParent" : { 
-  "type" : "selector",
-  "selector" : "applet"
-  },
-"appletTextEquivalentsGetUpdated" : { 
-  "type" : "selector",
-  "selector" : "applet"
-  },
-"appletUIMustBeAccessible" : { 
-  "type" : "selector",
-  "selector" : "applet"
-  },
-"appletsDoNotFlicker" : { 
-  "type" : "selector",
-  "selector" : "applet"
-  },
-"appletsDoneUseColorAlone" : { 
-  "type" : "selector",
-  "selector" : "applet"
-  },
-"areaAltIdentifiesDestination" : { 
-  "type" : "selector",
-  "selector" : "area[alt]"
-  },
-"areaAltRefersToText" : { 
-  "type" : "selector",
-  "selector" : "area"
-  },
-"areaDontOpenNewWindow" : { 
-  "type" : "selector",
-  "selector" : "area[target=new window], area[target=_blank]"
-  },
-"areaHasAltValue" : { 
-  "type" : "selector",
-  "selector" : "area:not(area[alt])"
-  },
-"areaLinksToSoundFile" : { 
-  "type" : "selector",
-  "selector" : "area[href$=wav], area[href$=snd], area[href$=mp3], area[href$=iff], area[href$=svx], area[href$=sam], area[href$=smp], area[href$=vce], area[href$=vox], area[href$=pcm], area[href$=aif]"
-  },
-"basefontIsNotUsed" : { 
-  "type" : "selector",
-  "selector" : "basefont"
-  },
-"blinkIsNotUsed" : { 
-  "type" : "selector",
-  "selector" : "blink"
-  },
-"blockquoteNotUsedForIndentation" : { 
-  "type" : "selector",
-  "selector" : "blockquote:not(blockquote[cite])"
-  },
-"blockquoteUseForQuotations" : { 
-  "type" : "custom",
-  "callback" : "blockquoteUseForQuotations"
-  },
-"bodyActiveLinkColorContrast" : { 
-  "type" : "color",
-  "algorithim" : "wcag",
-  "selector" : "a:active"
-  },
-"bodyColorContrast" : {
-  "type" : "color",
-  "algorithim" : "wcag",
-  "selector" : "*"
-  },
-"bodyLinkColorContrast" : { 
-  "type" : "color",
-  "algorithim" : "wcag",
-  "selector" : "a"
-  },
-"bodyMustNotHaveBackground" : { 
-  "type" : "selector",
-  "selector" : "body[background]"
-  },
-"bodyVisitedLinkColorContrast" : { 
-  "type" : "color",
-  "algorithim" : "wcag",
-  "selector" : "a:visited"
-  },
-"boldIsNotUsed" : { 
-  "type" : "selector",
-  "selector" : "bold"
-  },
-"checkboxHasLabel" : { 
-  "type" : "label",
-  "selector" : "input[type=checkbox]"
-  },
-"checkboxLabelIsNearby" : { 
-  "type" : "labelProximity",
-  "selector" : "input[type=checkbox]"
-  },
-"cssDocumentMakesSenseStyleTurnedOff" : { 
-  "type" : "selector",
-  "selector" : "link[rel=stylesheet], stylesheet, *[style]"
-  },
-"cssTextHasContrast" : { 
-  "type" : "custom",
-  "callback" : "cssTextHasContrast"
-  },
-"doctypeProvided" : { 
-  "type" : "custom",
-  "callback" : "doctypeProvided"
-  },
-"documentAbbrIsUsed" : { 
-  "type" : "custom",
-  "callback" : "documentAbbrIsUsed"
-  },
-"documentAcronymsHaveElement" : { 
-  "type" : "custom",
-  "callback" : "documentAcronymsHaveElement"
-  },
-"documentAllColorsAreSet" : { 
-  "type" : "selector",
-  "selector" : "body:not(body[text][bgcolor][link][alink][vlink], body:not(body[text], body[bgcolor], body[link], body[alink], body[vlink]))"
-  },
-"documentAutoRedirectNotUsed" : { 
-  "type" : "selector",
-  "selector" : "meta[http-equiv=refresh]"
-  },
-"documentColorWaiActiveLinkAlgorithim" : { 
-  "type" : "color",
-  "algorithim" : "wai",
-  "selector" : "a:active"
-  },
-"documentColorWaiAlgorithim" : { 
-  "type" : "color",
-  "algorithim" : "wai",
-  "selector" : "body"
-  },
-"documentColorWaiLinkAlgorithim" : { 
-  "type" : "color",
-  "algorithim" : "wai",
-  "selector" : "a"
-  },
-"documentColorWaiVisitedLinkAlgorithim" : { 
-  "type" : "color",
-  "algorithim" : "wai",
-  "selector" : "a:visited"
-  },
-"documentContentReadableWithoutStylesheets" : {
-  "type" : "selector",
-  "selector" : "link[rel=stylesheet]"
-  },
-"documentHasTitleElement" : { 
-  "type" : "selector",
-  "selector" : "html:not(html:has(title))"
-  },
-"documentIDsMustBeUnique" : { 
-  "type" : "custom",
-  "callback" : "documentIDsMustBeUnique"
-  },
-"documentLangIsISO639Standard" : { 
-  "type" : "custom",
-  "callback" : "documentLangIsISO639Standard"
-  },
-"documentLangNotIdentified" : { 
-  "type" : "selector",
-  "selector" : "html:not(html[lang])"
-  },
-"documentMetaNotUsedWithTimeout" : { 
-  "type" : "selector",
-  "selector" : "meta[http-equiv=refresh]"
-  },
-"documentReadingDirection" : { 
-  "type" : "selector",
-  "selector" : "*[lang=he]:not(*[lang=he][dir=rtl]), *[lang=ar]:not(*[lang=ar][dir=rtl])"
-  },
-"documentStrictDocType" : { 
-  "type" : "custom",
-  "callback" : "documentStrictDocType"
-  },
-"documentTitleDescribesDocument" : { 
-  "type" : "selector",
-  "selector" : "head title:first"
-  },
-"documentTitleIsNotPlaceholder" : { 
-  "type" : "placeholder",
-  "selector" : "head title:first"
-  },
-"documentTitleIsShort" : { 
-  "type" : "custom",
-  "callback" : "documentTitleIsShort"
-  },
-"documentTitleNotEmpty" : { 
-  "type" : "selector",
-  "selector" : "head title:first:empty"
-  },
-"documentValidatesToDocType" : { 
-  "type" : "custom",
-  "callback" : "documentValidatesToDocType"
-  },
-"documentVisualListsAreMarkedUp" : { 
-  "type" : "custom",
-  "callback" : "documentVisualListsAreMarkedUp"
-  },
-"documentWordsNotInLanguageAreMarked" : { 
-  "type" : "selector",
-  "selector" : "body"
-  },
-"embedHasAssociatedNoEmbed" : { 
-  "type" : "selector",
-  "selector" : "embed:not(embed:has(noembed))"
-  },
-"embedMustHaveAltAttribute" : { 
-  "type" : "selector",
-  "selector" : "embed:not(embed[alt])"
-  },
-"embedMustNotHaveEmptyAlt" : { 
-  "type" : "selector",
-  "selector" : "embed:not(embed[alt=])"
-  },
-"embedProvidesMechanismToReturnToParent" : { 
-  "type" : "selector",
-  "selector" : "embed"
-  },
-"emoticonsExcessiveUse" : { 
-  "type" : "custom",
-  "callback" : "emoticonsExcessiveUse"
-  },
-"emoticonsMissingAbbr" : { 
-  "type" : "custom",
-  "callback" : "emoticonsMissingAbbr"
-  },
-"fileHasLabel" : { 
-  "type" : "label",
-  "selector" : "input[type=file]"
-  },
-"fileLabelIsNearby" : { 
-  "type" : "labelProximity",
-  "selector" : "input[type=file]"
-  },
-"fontIsNotUsed" : { 
-  "type" : "selector",
-  "selector" : "font"
-  },
-"formDeleteIsReversable" : { 
-  "type" : "selector",
-  "selector" : "form"
-  },
-"formAllowsCheckIfIrreversable" : { 
-  "type" : "selector",
-  "selector" : "form"
-  },
-"formErrorMessageHelpsUser" : { 
-  "type" : "selector",
-  "selector" : "form"
-  },
-"formHasGoodErrorMessage" : { 
-  "type" : "selector",
-  "selector" : "form"
-  },
-"formWithRequiredLabel" : { 
-  "type" : "custom",
-  "callback" : "formWithRequiredLabel"
-  },
-"frameIsNotUsed" : { 
-  "type" : "selector",
-  "selector" : "frame"
-  },
-"frameRelationshipsMustBeDescribed" : {
-  "type" : "selector",
-  "selector" : "frameset:not(frameset[longdesc])"
-  },
-"frameSrcIsAccessible" : { 
-  "type" : "selector",
-  "selector" : "frame"
-  },
-"frameTitlesDescribeFunction" : { 
-  "type" : "selector",
-  "selector" : "frame[title]"
-  },
-"frameTitlesNotEmpty" : { 
-  "type" : "selector",
-  "selector" : "frame:not(frame[title]), frame[title=]"
-  },
-"frameTitlesNotPlaceholder" : { 
-  "type" : "placeholder",
-  "callback" : "frameTitlesNotPlaceholder",
-  "attribute" : "title"
-  },
-"framesHaveATitle" : { 
-  "type" : "selector",
-  "selector" : "frame:not(frame[title])"
-  },
-"framesetMustHaveNoFramesSection" : { 
-  "type" : "selector",
-  "selector" : "frameset:not(frameset:has(noframes))"
-  },
-"headerH1" : { 
-  "type" : "header",
-  "selector" : "h1"
-  },
-"headerH2" : { 
-  "type" : "header",
-  "selector" : "h2"
-  },
-"headerH3" : { 
-  "type" : "header",
-  "selector" : "h3"
-  },
-"headerH4" : { 
-  "type" : "header",
-  "selector" : "h4"
-  },
-"headerH5" : { 
-  "type" : "header",
-  "selector" : "h5"
-  },
-"headerH1Format" : { 
-  "type" : "selector",
-  "selector" : "h1"
-  },
-"headerH2Format" : { 
-  "type" : "selector",
-  "selector" : "h2"
-  },
-"headerH3Format" : { 
-  "type" : "selector",
-  "selector" : "h3"
-  },
-"headerH4Format" : { 
-  "type" : "selector",
-  "selector" : "h4"
-  },
-"headerH5Format" : { 
-  "type" : "selector",
-  "selector" : "h5"
-  },
-"headerH6Format" : { 
-  "type" : "selector",
-  "selector" : "h6"
-  },
-"headersHaveText" : { 
-  "type" : "selector",
-  "selector" : "h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty"
-  },
-"headersUseToMarkSections" : { 
-  "type" : "custom",
-  "callback" : "headersUseToMarkSections"
-  },
-"iIsNotUsed" : { 
-  "type" : "selector",
-  "selector" : "i"
-  },
-"iframeMustNotHaveLongdesc" : { 
-  "type" : "selector",
-  "selector" : "iframe[longdesc]"
-  },
-"imageMapServerSide" : { 
-  "type" : "selector",
-  "selector" : "img[ismap]"
-  },
-"imgAltEmptyForDecorativeImages" : { 
-  "type" : "selector",
-  "selector" : "img[alt]"
-  },
-"imgAltIdentifiesLinkDestination" : { 
-  "type" : "selector",
-  "selector" : "a img[alt]:first"
-  },
-"imgAltIsDifferent" : { 
-  "type" : "custom",
-  "callback" : "imgAltIsDifferent"
-  },
-"imgAltIsSameInText" : { 
-  "type" : "selector",
-  "selector" : "img"
-  },
-"imgAltIsTooLong" : { 
-  "type" : "custom",
-  "callback" : "imgAltIsTooLong"
-  },
-"imgAltNotEmptyInAnchor" : { 
-  "type" : "custom",
-  "callback" : "imgAltNotEmptyInAnchor"
-  },
-"imgAltNotPlaceHolder" : { 
-  "type" : "placeholder",
-  "selector" : "img",
-  "attribute" : "alt"
-  },
-"imgAltTextNotRedundant" : { 
-  "type" : "custom",
-  "callback" : "imgAltTextNotRedundant"
-  },
-"imgGifNoFlicker" : { 
-  "type" : "custom",
-  "callback" : "imgGifNoFlicker"
-  },
-"imgHasAlt" : { 
-  "type" : "selector",
-  "selector" : "img:not(img[alt])"
-  },
-"imgHasLongDesc" : { 
-  "type" : "custom",
-  "callback" : "imgHasLongDesc"
-  },
-"imgImportantNoSpacerAlt" : { 
-  "type" : "custom",
-  "callback" : "imgImportantNoSpacerAlt"
-  },
-"imgMapAreasHaveDuplicateLink" : { 
-  "type" : "custom",
-  "callback" : "imgMapAreasHaveDuplicateLink"
-  },
-"imgNeedsLongDescWithDlink" : { 
-  "type" : "selector",
-  "selector" : "img[longdesc]:parent() a:not(a:contains(d)), img[longdesc]:not(img[longdesc]:parent() a:contains(d))"
-  },
-"imgNonDecorativeHasAlt" : { 
-  "type" : "selector",
-  "selector" : "img:not(img[alt])"
-  },
-"imgNotReferredToByColorAlone" : { 
-  "type" : "selector",
-  "selector" : "img"
-  },
-"imgServerSideMapNotUsed" : { 
-  "type" : "selector",
-  "selector" : "img[ismap]"
-  },
-"imgShouldNotHaveTitle" : { 
-  "type" : "selector",
-  "selector" : "img[title]"
-  },
-"imgWithMapHasUseMap" : { 
-  "type" : "selector",
-  "selector" : "img[ismap]:not(img[usemap])"
-  },
-"imgWithMathShouldHaveMathEquivalent" : { 
-  "type" : "selector",
-  "selector" : "img:not(img > tagName, img > math)"
-  },
-"inputCheckboxHasTabIndex" : { 
-  "type" : "selector",
-  "selector" : "input[type=checkbox]:not(input[tabindex])"
-  },
-"inputCheckboxRequiresFieldset" : { 
-  "type" : "selector",
-  "selector" : "input[type=checkbox]:not(input[type=checkbox]:parent(fieldset))"
-  },
-"inputDoesNotUseColorAlone" : { 
-  "type" : "custom",
-  "callback" : "inputDoesNotUseColorAlone"
-  },
-"inputElementsDontHaveAlt" : { 
-  "type" : "selector",
-  "selector" : "input[type!=image][alt]"
-  },
-"inputFileHasTabIndex" : { 
-  "type" : "selector",
-  "selector" : "input[type=file]:not(input[type=file][tabindex])"
-  },
-"inputImageAltIdentifiesPurpose" : { 
-  "type" : "selector",
-  "selector" : "input[type=image][alt]"
-  },
-"inputImageAltIsNotFileName" : { 
-  "type" : "custom",
-  "callback" : "inputImageAltIsNotFileName"
-  },
-"inputImageAltIsNotPlaceholder" : { 
-  "type" : "placeholder",
-  "selector" : "img",
-  "attribute" : "alt"
-  },
-"inputImageAltIsShort" : { 
-  "type" : "custom",
-  "callback" : "inputImageAltIsShort"
-  },
-"inputImageAltNotRedundant" : { 
-  "type" : "custom",
-  "callback" : "inputImageAltNotRedundant"
-  },
-"inputImageHasAlt" : { 
-  "type" : "selector",
-  "selector" : "input[type=image]:not(input[type=image][alt])"
-  },
-"inputImageNotDecorative" : { 
-  "type" : "selector",
-  "selector" : "input[type=image]"
-  },
-"inputPasswordHasTabIndex" : { 
-  "type" : "selector",
-  "selector" : "input[type=password]:not(input[type=password][tabindex])"
-  },
-"inputRadioHasTabIndex" : { 
-  "type" : "selector",
-  "selector" : "input[type=radio]:not(input[type=radio][tabindex])"
-  },
-"inputSubmitHasTabIndex" : { 
-  "type" : "selector",
-  "selector" : "input[type=submit]:not(input[type=submit][tabindex]), input[type=submit][tabindex=]"
-  },
-"inputTextHasLabel" : { 
-  "type" : "label",
-  "selector" : "input[type=text]"
-  },
-"inputTextHasTabIndex" : { 
-  "type" : "selector",
-  "selector" : "input[type=text]:not(input[type=text][tabindex])"
-  },
-"inputTextHasValue" : { 
-  "type" : "selector",
-  "selector" : "input[type=text]:not(input[type=text][value])"
-  },
-"inputTextValueNotEmpty" : { 
-  "type" : "selector",
-  "selector" : "input[type=text][value=]"
-  },
-"labelDoesNotContainInput" : { 
-  "type" : "selector",
-  "selector" : "label input:parent(label)"
-  },
-"labelMustBeUnique" : { 
-  "type" : "custom",
-  "callback" : "labelMustBeUnique"
-  },
-"labelMustNotBeEmpty" : { 
-  "type" : "selector",
-  "selector" : "label:empty"
-  },
-"labelsAreAssignedToAnInput" : { 
-  "type" : "custom",
-  "callback" : "labelsAreAssignedToAnInput"
-  },
-"legendDescribesListOfChoices" : { 
-  "type" : "selector",
-  "selector" : "legend"
-  },
-"legendTextNotEmpty" : { 
-  "type" : "selector",
-  "selector" : "legend:empty"
-  },
-"legendTextNotPlaceholder" : { 
-  "type" : "placeholder",
-  "selector" : "legend",
-  "content":true
-  },
-"liDontUseImageForBullet" : { 
-  "type" : "custom",
-  "callback" : "liDontUseImageForBullet"
-  },
-"linkUsedForAlternateContent" : { 
-  "type" : "selector",
-  "selector" : "html:not(html head link[rel=alternate]:parent(html))"
-  },
-"linkUsedToDescribeNavigation" : { 
-  "type" : "selector",
-  "selector" : "html:not(html head link[rel=alternate]:parent(html))"
-  },
-"listNotUsedForFormatting" : { 
-  "type" : "custom",
-  "callback" : "listNotUsedForFormatting"
-  },
-"marqueeIsNotUsed" : { 
-  "type" : "selector",
-  "selector" : "marquee"
-  },
-"menuNotUsedToFormatText" : { 
-  "type" : "selector",
-  "selector" : "menu:not(menu li:parent(menu))"
-  },
-"noembedHasEquivalentContent" : { 
-  "type" : "selector",
-  "selector" : "noembed"
-  },
-"noframesSectionMustHaveTextEquivalent" : { 
-  "type" : "selector",
-  "selector" : "frameset:not(frameset noframes:parent(frameset))"
-  },
-"objectContentUsableWhenDisabled" : { 
-  "type" : "selector",
-  "selector" : "object"
-  },
-"objectDoesNotFlicker" : { 
-  "type" : "selector",
-  "selector" : "object"
-  },
-"objectDoesNotUseColorAlone" : { 
-  "type" : "selector",
-  "selector" : "object"
-  },
-"objectInterfaceIsAccessible" : { 
-  "type" : "selector",
-  "selector" : "object"
-  },
-"objectLinkToMultimediaHasTextTranscript" : {
-  "type" : "selector",
-  "selector" : "object"
-  },
-"objectMustContainText" : {
-  "type" : "selector",
-  "selector" : "object:empty"
-  },
-"objectMustHaveEmbed" : { 
-  "type" : "selector",
-  "selector" : "object:not(object embed:parent(object))"
-  },
-"objectMustHaveTitle" : { 
-  "type" : "selector",
-  "selector" : "object:not(object[title])"
-  },
-"objectMustHaveValidTitle" : { 
-  "type" : "placeholder",
-  "selector" : "object",
-  "attribute" : "title"
-  },
-"objectProvidesMechanismToReturnToParent" : { 
-  "type" : "selector",
-  "selector" : "object"
-  },
-"objectShouldHaveLongDescription" : { 
-  "type" : "selector",
-  "selector" : "object"
-  },
-"objectTextUpdatesWhenObjectChanges" : { 
-  "type" : "selector",
-  "selector" : "object"
-  },
-"objectUIMustBeAccessible" : { 
-  "type" : "selector",
-  "selector" : "object"
-  },
-"objectWithClassIDHasNoText" : { 
-  "type" : "selector",
-  "selector" : "object[classid]"
-  },
-"pNotUsedAsHeader" : { 
-  "type" : "custom",
-  "callback" : "pNotUsedAsHeader"
-  },
-"passwordHasLabel" : { 
-  "type" : "label","selector" : "input[type=password]"
-  },
-"passwordLabelIsNearby" : { 
-  "type" : "labelProximity","selector" : "input[type=password]"
-  },
-"preShouldNotBeUsedForTabularLayout" : { 
-  "type" : "custom",
-  "callback" : "preShouldNotBeUsedForTabularLayout"
-  },
-"radioHasLabel" : { 
-  "type" : "label","selector" : "input[type=radio]"
-  },
-"radioLabelIsNearby" : { 
-  "type" : "labelProximity","selector" : "input[type=radio]"
-  },
-"radioMarkedWithFieldgroupAndLegend" : { 
-  "type" : "selector",
-  "selector" : "input[type=radio]:not(fieldset input[type=radio])"
-  },
-"scriptContentAccessibleWithScriptsTurnedOff" : { 
-  "type" : "selector",
-  "selector" : "script"
-  },
-"scriptInBodyMustHaveNoscript" : { 
-  "type" : "selector",
-  "selector" : "body script:not(body script noscript:parent(script))"
-  },
-"scriptOnclickRequiresOnKeypress" : { 
-  "type" : "event","selector" : "*","searchEvent" : "onclick","correspondingEvent" : "onkeyup"
-  },
-"scriptOndblclickRequiresOnKeypress" : { 
-  "type" : "event","selector" : "*","searchEvent" : "ondblclick","correspondingEvent" : "onkeypress"
-  },
-"scriptOnmousedownRequiresOnKeypress" : { 
-  "type" : "event","selector" : "*","searchEvent" : "onmousedown","correspondingEvent" : "onkeydown"
-  },
-"scriptOnmousemove" : { 
-  "type" : "event","selector" : "*","searchEvent" : "onmousemove","correspondingEvent" : "onkeypress"
-  },
-"scriptOnmouseoutHasOnmouseblur" : { 
-  "type" : "event","selector" : "*","searchEvent" : "onmouseout","correspondingEvent" : "onblur"
-  },
-"scriptOnmouseoverHasOnfocus" : { 
-  "type" : "event","selector" : "*","searchEvent" : "onmouseover","correspondingEvent" : "onfocus"
-  },
-"scriptOnmouseupHasOnkeyup" : { 
-  "type" : "event","selector" : "*","searchEvent" : "onmouseup","correspondingEvent" : "onkeyup"
-  },
-"scriptUIMustBeAccessible" : { 
-  "type" : "selector",
-  "selector" : "script"
-  },
-"scriptsDoNotFlicker" : { 
-  "type" : "selector",
-  "selector" : "script"
-  },
-"scriptsDoNotUseColorAlone" : { 
-  "type" : "selector",
-  "selector" : "script"
-  },
-"selectDoesNotChangeContext" : { 
-  "type" : "event","selector" : "select","searchEvent" : "onchange"
-  },
-"selectHasAssociatedLabel" : { 
-  "type" : "label","selector" : "select"
-  },
-"selectWithOptionsHasOptgroup" : { 
-  "type" : "selector",
-  "selector" : "select option:nth-child(5):parent(select)"
-  },
-"siteMap" : { 
-  "type" : "selector",
-  "selector" : "a:content('site map')"
-  },
-"skipToContentLinkProvided" : { 
-  "type" : "selector",
-  "selector" : "html:not(html a:first[href^=#])"
-  },
-"tabIndexFollowsLogicalOrder" : { 
-  "type" : "custom",
-  "callback" : "tabIndexFollowsLogicalOrder"
-  },
-"tableCaptionIdentifiesTable" : { 
-  "type" : "selector",
-  "selector" : "caption"
-  },
-"tableComplexHasSummary" : { 
-  "type" : "selector",
-  "selector" : "table:not(table[summary], caption:parent(table))"
-  },
-"tableDataShouldHaveTh" : { 
-  "type" : "selector",
-  "selector" : "table:not(table th:parent(table))"
-  },
-"tableHeaderLabelMustBeTerse" : { 
-  "type" : "custom",
-  "callback" : "tableHeaderLabelMustBeTerse"
-  },
-"tableIsGrouped" : { 
-  "type" : "selector",
-  "selector" : "table:not(table thead, table tbody, table tfoot)"
-  },
-"tableLayoutDataShouldNotHaveTh" : { 
-  "type" : "custom",
-  "callback" : "tableLayoutDataShouldNotHaveTh"
-  },
-"tableLayoutHasNoCaption" : { 
-  "type" : "custom",
-  "callback" : "tableLayoutHasNoCaption"
-  },
-"tableLayoutHasNoSummary" : {
-  "type" : "custom",
-  "callback" : "tableLayoutHasNoSummary"
-  },
-"tableLayoutMakesSenseLinearized" : { 
-  "type" : "custom",
-  "callback" : "tableLayoutMakesSenseLinearized"
-  },
-"tableSummaryDescribesTable" : { 
-  "type" : "selector",
-  "selector" : "table[summary]"
-  },
-"tableSummaryDoesNotDuplicateCaption" : { 
-  "type" : "custom",
-  "callback" : "tableSummaryDoesNotDuplicateCaption"
-  },
-"tableSummaryIsEmpty" : { 
-  "type" : "selector",
-  "selector" : "table[summary='']"
-  },
-"tableSummaryIsSufficient" : { 
-  "type" : "selector",
-  "selector" : "table[summary]"
-  },
-"tableUseColGroup" : { 
-  "type" : "custom",
-  "callback" : "tableUseColGroup"
-  },
-"tableUsesAbbreviationForHeader" : { 
-  "type" : "custom",
-  "callback" : "tableUsesAbbreviationForHeader"
-  },
-"tableUsesCaption" : { 
-  "type" : "selector",
-  "selector" : "table > caption"
-  },
-"tableWithBothHeadersUseScope" : { 
-  "type" : "selector",
-  "selector" : "table:has(tbody th:not(th[scope]))"
-  },
-"tableWithMoreHeadersUseID" : { 
-  "type" : "custom",
-  "callback" : "tableWithMoreHeadersUseID"
-  },
-"tabularDataIsInTable" : { 
-  "type" : "custom",
-  "callback" : "tabularDataIsInTable"
-  },
-"textareaHasAssociatedLabel" : { 
-  "type" : "label","selector" : "textarea"
-  },
-"textareaLabelPositionedClose" : { 
-  "type" : "labelProximity","selector" : "textarea"
-  },
-"svgContainsTitle" : { 
-  "type" : "selector",
-  "selector" : "svg:not(svg title:parent(svg))"
-  },
-"videoProvidesCaptions" : { 
-  "type" : "selector",
-  "selector" : "video"
-  },
-"videosEmbeddedOrLinkedNeedCaptions" : { 
-  "type" : "custom",
-  "callback" : "videosEmbeddedOrLinkedNeedCaptions"
+  "aAdjacentWithSameResourceShouldBeCombined":{
+    "type":"custom",
+    "callback":"aAdjacentWithSameResourceShouldBeCombined"
+  },
+  "aImgAltNotRepetative":{
+    "type":"custom",
+    "callback":"aImgAltNotRepetative"
+  },
+  "aLinkTextDoesNotBeginWithRedundantWord":{
+    "type":"custom",
+    "callback":"aLinkTextDoesNotBeginWithRedundantWord"
+  },
+  "aLinksAreSeperatedByPrintableCharacters":{
+    "type":"custom",
+    "callback":"aLinksAreSeperatedByPrintableCharacters"
+  },
+  "aLinksDontOpenNewWindow":{
+    "type":"selector",
+    "selector":"a[target=_new], a[target=_blank], a[target=_blank]"
+  },
+  "aLinksMakeSenseOutOfContext":{
+    "type":"selector",
+    "selector":"a"
+  },
+  "aLinksToMultiMediaRequireTranscript":{
+    "type":"selector",
+    "selector":"a[href$=.wmv], a[href$=.mpg], a[href$=.mov], a[href$=.ram], a[href$=.aif]"
+  },
+  "aLinksToSoundFilesNeedTranscripts":{
+    "type":"selector",
+    "selector":"a[href$=wav], a[href$=snd], a[href$=mp3], a[href$=iff], a[href$=svx], a[href$=sam], a[href$=smp], a[href$=vce], a[href$=vox], a[href$=pcm], a[href$=aif]"
+  },
+  "aMultimediaTextAlternative":{
+    "type":"selector",
+    "selector":"a[href$=wmv], a[href$=wav], a[href$= mpg], a[href$=mov], a[href$=ram], a[href$=aif]"
+  },
+  "aMustContainText":{
+    "type":"custom",
+    "callback":"aMustContainText"
+  },
+  "aMustHaveTitle":{
+    "type":"selector",
+    "selector":"a:not(a[title])"
+  },
+  "aMustNotHaveJavascriptHref":{
+    "type":"selector",
+    "selector":"a[attribute^=javascript:]"
+  },
+  "aSuspiciousLinkText":{
+    "type":"custom",
+    "callback":"aSuspiciousLinkText"
+  },
+  "aTitleDescribesDestination":{
+    "type":"selector",
+    "selector":"a[title]"
+  },
+  "addressForAuthor":{
+    "type":"selector",
+    "selector":"html:not(html:find(address a))"
+  },
+  "addressForAuthorMustBeValid":{
+    "type":"selector",
+    "selector":"address"
+  },
+  "appletContainsTextEquivalent":{
+    "type":"selector",
+    "selector":"applet:empty, applet[alt=]"
+  },
+  "appletContainsTextEquivalentInAlt":{
+    "type":"placeholder",
+    "selector":"applet[alt]",
+    "attribute":"alt",
+    "empty":true
+  },
+  "appletProvidesMechanismToReturnToParent":{
+    "type":"selector",
+    "selector":"applet"
+  },
+  "appletTextEquivalentsGetUpdated":{
+    "type":"selector",
+    "selector":"applet"
+  },
+  "appletUIMustBeAccessible":{
+    "type":"selector",
+    "selector":"applet"
+  },
+  "appletsDoNotFlicker":{
+    "type":"selector",
+    "selector":"applet"
+  },
+  "appletsDoneUseColorAlone":{
+    "type":"selector",
+    "selector":"applet"
+  },
+  "areaAltIdentifiesDestination":{
+    "type":"selector",
+    "selector":"area[alt]"
+  },
+  "areaAltRefersToText":{
+    "type":"selector",
+    "selector":"area"
+  },
+  "areaDontOpenNewWindow":{
+    "type":"selector",
+    "selector":"area[target=new window], area[target=_blank]"
+  },
+  "areaHasAltValue":{
+    "type":"selector",
+    "selector":"area:not(area[alt])"
+  },
+  "areaLinksToSoundFile":{
+    "type":"selector",
+    "selector":"area[href$=wav], area[href$=snd], area[href$=mp3], area[href$=iff], area[href$=svx], area[href$=sam], area[href$=smp], area[href$=vce], area[href$=vox], area[href$=pcm], area[href$=aif]"
+  },
+  "basefontIsNotUsed":{
+    "type":"selector",
+    "selector":"basefont"
+  },
+  "blinkIsNotUsed":{
+    "type":"selector",
+    "selector":"blink"
+  },
+  "blockquoteNotUsedForIndentation":{
+    "type":"selector",
+    "selector":"blockquote:not(blockquote[cite])"
+  },
+  "blockquoteUseForQuotations":{
+    "type":"custom",
+    "callback":"blockquoteUseForQuotations"
+  },
+  "bodyActiveLinkColorContrast":{
+    "type":"color",
+    "algorithim":"wcag",
+    "selector":"a:active"
+  },
+  "bodyColorContrast":{
+    "type":"color",
+    "algorithim":"wcag",
+    "selector":"*"
+  },
+  "bodyLinkColorContrast":{
+    "type":"color",
+    "algorithim":"wcag",
+    "selector":"a"
+  },
+  "bodyMustNotHaveBackground":{
+    "type":"selector",
+    "selector":"body[background]"
+  },
+  "bodyVisitedLinkColorContrast":{
+    "type":"color",
+    "algorithim":"wcag",
+    "selector":"a:visited"
+  },
+  "boldIsNotUsed":{
+    "type":"selector",
+    "selector":"bold"
+  },
+  "checkboxHasLabel":{
+    "type":"label",
+    "selector":"input[type=checkbox]"
+  },
+  "checkboxLabelIsNearby":{
+    "type":"labelProximity",
+    "selector":"input[type=checkbox]"
+  },
+  "cssDocumentMakesSenseStyleTurnedOff":{
+    "type":"selector",
+    "selector":"link[rel=stylesheet], stylesheet, *[style]"
+  },
+  "cssTextHasContrast":{
+    "type":"custom",
+    "callback":"cssTextHasContrast"
+  },
+  "doctypeProvided":{
+    "type":"custom",
+    "callback":"doctypeProvided"
+  },
+  "documentAbbrIsUsed":{
+    "type":"custom",
+    "callback":"documentAbbrIsUsed"
+  },
+  "documentAcronymsHaveElement":{
+    "type":"custom",
+    "callback":"documentAcronymsHaveElement"
+  },
+  "documentAllColorsAreSet":{
+    "type":"selector",
+    "selector":"body:not(body[text][bgcolor][link][alink][vlink], body:not(body[text], body[bgcolor], body[link], body[alink], body[vlink]))"
+  },
+  "documentAutoRedirectNotUsed":{
+    "type":"selector",
+    "selector":"meta[http-equiv=refresh]"
+  },
+  "documentColorWaiActiveLinkAlgorithim":{
+    "type":"color",
+    "algorithim":"wai",
+    "selector":"a:active"
+  },
+  "documentColorWaiAlgorithim":{
+    "type":"color",
+    "algorithim":"wai",
+    "selector":"body"
+  },
+  "documentColorWaiLinkAlgorithim":{
+    "type":"color",
+    "algorithim":"wai",
+    "selector":"a"
+  },
+  "documentColorWaiVisitedLinkAlgorithim":{
+    "type":"color",
+    "algorithim":"wai",
+    "selector":"a:visited"
+  },
+  "documentContentReadableWithoutStylesheets":{
+    "type":"selector",
+    "selector":"link[rel=stylesheet]"
+  },
+  "documentHasTitleElement":{
+    "type":"selector",
+    "selector":"html:not(html:has(title))"
+  },
+  "documentIDsMustBeUnique":{
+    "type":"custom",
+    "callback":"documentIDsMustBeUnique"
+  },
+  "documentLangIsISO639Standard":{
+    "type":"custom",
+    "callback":"documentLangIsISO639Standard"
+  },
+  "documentLangNotIdentified":{
+    "type":"selector",
+    "selector":"html:not(html[lang])"
+  },
+  "documentMetaNotUsedWithTimeout":{
+    "type":"selector",
+    "selector":"meta[http-equiv=refresh]"
+  },
+  "documentReadingDirection":{
+    "type":"selector",
+    "selector":"*[lang=he]:not(*[lang=he][dir=rtl]), *[lang=ar]:not(*[lang=ar][dir=rtl])"
+  },
+  "documentStrictDocType":{
+    "type":"custom",
+    "callback":"documentStrictDocType"
+  },
+  "documentTitleDescribesDocument":{
+    "type":"selector",
+    "selector":"head title:first"
+  },
+  "documentTitleIsNotPlaceholder":{
+    "type":"placeholder",
+    "selector":"head title:first"
+  },
+  "documentTitleIsShort":{
+    "type":"custom",
+    "callback":"documentTitleIsShort"
+  },
+  "documentTitleNotEmpty":{
+    "type":"selector",
+    "selector":"head title:first:empty"
+  },
+  "documentValidatesToDocType":{
+    "type":"custom",
+    "callback":"documentValidatesToDocType"
+  },
+  "documentVisualListsAreMarkedUp":{
+    "type":"custom",
+    "callback":"documentVisualListsAreMarkedUp"
+  },
+  "documentWordsNotInLanguageAreMarked":{
+    "type":"selector",
+    "selector":"body"
+  },
+  "embedHasAssociatedNoEmbed":{
+    "type":"selector",
+    "selector":"embed:not(embed:has(noembed))"
+  },
+  "embedMustHaveAltAttribute":{
+    "type":"selector",
+    "selector":"embed:not(embed[alt])"
+  },
+  "embedMustNotHaveEmptyAlt":{
+    "type":"selector",
+    "selector":"embed:not(embed[alt=])"
+  },
+  "embedProvidesMechanismToReturnToParent":{
+    "type":"selector",
+    "selector":"embed"
+  },
+  "emoticonsExcessiveUse":{
+    "type":"custom",
+    "callback":"emoticonsExcessiveUse"
+  },
+  "emoticonsMissingAbbr":{
+    "type":"custom",
+    "callback":"emoticonsMissingAbbr"
+  },
+  "fileHasLabel":{
+    "type":"label",
+    "selector":"input[type=file]"
+  },
+  "fileLabelIsNearby":{
+    "type":"labelProximity",
+    "selector":"input[type=file]"
+  },
+  "fontIsNotUsed":{
+    "type":"selector",
+    "selector":"font"
+  },
+  "formDeleteIsReversable":{
+    "type":"selector",
+    "selector":"form"
+  },
+  "formAllowsCheckIfIrreversable":{
+    "type":"selector",
+    "selector":"form"
+  },
+  "formErrorMessageHelpsUser":{
+    "type":"selector",
+    "selector":"form"
+  },
+  "formHasGoodErrorMessage":{
+    "type":"selector",
+    "selector":"form"
+  },
+  "formWithRequiredLabel":{
+    "type":"custom",
+    "callback":"formWithRequiredLabel"
+  },
+  "frameIsNotUsed":{
+    "type":"selector",
+    "selector":"frame"
+  },
+  "frameRelationshipsMustBeDescribed":{
+    "type":"selector",
+    "selector":"frameset:not(frameset[longdesc])"
+  },
+  "frameSrcIsAccessible":{
+    "type":"selector",
+    "selector":"frame"
+  },
+  "frameTitlesDescribeFunction":{
+    "type":"selector",
+    "selector":"frame[title]"
+  },
+  "frameTitlesNotEmpty":{
+    "type":"selector",
+    "selector":"frame:not(frame[title]), frame[title=]"
+  },
+  "frameTitlesNotPlaceholder":{
+    "type":"placeholder",
+    "callback":"frameTitlesNotPlaceholder",
+    "attribute":"title"
+  },
+  "framesHaveATitle":{
+    "type":"selector",
+    "selector":"frame:not(frame[title])"
+  },
+  "framesetMustHaveNoFramesSection":{
+    "type":"selector",
+    "selector":"frameset:not(frameset:has(noframes))"
+  },
+  "headerH1":{
+    "type":"header",
+    "selector":"h1"
+  },
+  "headerH2":{
+    "type":"header",
+    "selector":"h2"
+  },
+  "headerH3":{
+    "type":"header",
+    "selector":"h3"
+  },
+  "headerH4":{
+    "type":"header",
+    "selector":"h4"
+  },
+  "headerH5":{
+    "type":"header",
+    "selector":"h5"
+  },
+  "headerH1Format":{
+    "type":"selector",
+    "selector":"h1"
+  },
+  "headerH2Format":{
+    "type":"selector",
+    "selector":"h2"
+  },
+  "headerH3Format":{
+    "type":"selector",
+    "selector":"h3"
+  },
+  "headerH4Format":{
+    "type":"selector",
+    "selector":"h4"
+  },
+  "headerH5Format":{
+    "type":"selector",
+    "selector":"h5"
+  },
+  "headerH6Format":{
+    "type":"selector",
+    "selector":"h6"
+  },
+  "headersHaveText":{
+    "type":"selector",
+    "selector":"h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty"
+  },
+  "headersUseToMarkSections":{
+    "type":"custom",
+    "callback":"headersUseToMarkSections"
+  },
+  "iIsNotUsed":{
+    "type":"selector",
+    "selector":"i"
+  },
+  "iframeMustNotHaveLongdesc":{
+    "type":"selector",
+    "selector":"iframe[longdesc]"
+  },
+  "imageMapServerSide":{
+    "type":"selector",
+    "selector":"img[ismap]"
+  },
+  "imgAltEmptyForDecorativeImages":{
+    "type":"selector",
+    "selector":"img[alt]"
+  },
+  "imgAltIdentifiesLinkDestination":{
+    "type":"selector",
+    "selector":"a img[alt]:first"
+  },
+  "imgAltIsDifferent":{
+    "type":"custom",
+    "callback":"imgAltIsDifferent"
+  },
+  "imgAltIsSameInText":{
+    "type":"selector",
+    "selector":"img"
+  },
+  "imgAltIsTooLong":{
+    "type":"custom",
+    "callback":"imgAltIsTooLong"
+  },
+  "imgAltNotEmptyInAnchor":{
+    "type":"custom",
+    "callback":"imgAltNotEmptyInAnchor"
+  },
+  "imgAltNotPlaceHolder":{
+    "type":"placeholder",
+    "selector":"img",
+    "attribute":"alt"
+  },
+  "imgAltTextNotRedundant":{
+    "type":"custom",
+    "callback":"imgAltTextNotRedundant"
+  },
+  "imgGifNoFlicker":{
+    "type":"custom",
+    "callback":"imgGifNoFlicker"
+  },
+  "imgHasAlt":{
+    "type":"selector",
+    "selector":"img:not(img[alt])"
+  },
+  "imgHasLongDesc":{
+    "type":"custom",
+    "callback":"imgHasLongDesc"
+  },
+  "imgImportantNoSpacerAlt":{
+    "type":"custom",
+    "callback":"imgImportantNoSpacerAlt"
+  },
+  "imgMapAreasHaveDuplicateLink":{
+    "type":"custom",
+    "callback":"imgMapAreasHaveDuplicateLink"
+  },
+  "imgNeedsLongDescWithDlink":{
+    "type":"selector",
+    "selector":"img[longdesc]"
+  },
+  "imgNonDecorativeHasAlt":{
+    "type":"selector",
+    "selector":"img:not(img[alt])"
+  },
+  "imgNotReferredToByColorAlone":{
+    "type":"selector",
+    "selector":"img"
+  },
+  "imgServerSideMapNotUsed":{
+    "type":"selector",
+    "selector":"img[ismap]"
+  },
+  "imgShouldNotHaveTitle":{
+    "type":"selector",
+    "selector":"img[title]"
+  },
+  "imgWithMapHasUseMap":{
+    "type":"selector",
+    "selector":"img[ismap]:not(img[usemap])"
+  },
+  "imgWithMathShouldHaveMathEquivalent":{
+    "type":"selector",
+    "selector":"img:not(img > tagName, img > math)"
+  },
+  "inputCheckboxHasTabIndex":{
+    "type":"selector",
+    "selector":"input[type=checkbox]:not(input[tabindex])"
+  },
+  "inputCheckboxRequiresFieldset":{
+    "type":"selector",
+    "selector":"input[type=checkbox]:not(input[type=checkbox]:parent(fieldset))"
+  },
+  "inputDoesNotUseColorAlone":{
+    "type":"custom",
+    "callback":"inputDoesNotUseColorAlone"
+  },
+  "inputElementsDontHaveAlt":{
+    "type":"selector",
+    "selector":"input[type!=image][alt]"
+  },
+  "inputFileHasTabIndex":{
+    "type":"selector",
+    "selector":"input[type=file]:not(input[type=file][tabindex])"
+  },
+  "inputImageAltIdentifiesPurpose":{
+    "type":"selector",
+    "selector":"input[type=image][alt]"
+  },
+  "inputImageAltIsNotFileName":{
+    "type":"custom",
+    "callback":"inputImageAltIsNotFileName"
+  },
+  "inputImageAltIsNotPlaceholder":{
+    "type":"placeholder",
+    "selector":"img",
+    "attribute":"alt"
+  },
+  "inputImageAltIsShort":{
+    "type":"custom",
+    "callback":"inputImageAltIsShort"
+  },
+  "inputImageAltNotRedundant":{
+    "type":"custom",
+    "callback":"inputImageAltNotRedundant"
+  },
+  "inputImageHasAlt":{
+    "type":"selector",
+    "selector":"input[type=image]:not(input[type=image][alt])"
+  },
+  "inputImageNotDecorative":{
+    "type":"selector",
+    "selector":"input[type=image]"
+  },
+  "inputPasswordHasTabIndex":{
+    "type":"selector",
+    "selector":"input[type=password]:not(input[type=password][tabindex])"
+  },
+  "inputRadioHasTabIndex":{
+    "type":"selector",
+    "selector":"input[type=radio]:not(input[type=radio][tabindex])"
+  },
+  "inputSubmitHasTabIndex":{
+    "type":"selector",
+    "selector":"input[type=submit]:not(input[type=submit][tabindex]), input[type=submit][tabindex=]"
+  },
+  "inputTextHasLabel":{
+    "type":"label",
+    "selector":"input[type=text]"
+  },
+  "inputTextHasTabIndex":{
+    "type":"selector",
+    "selector":"input[type=text]:not(input[type=text][tabindex])"
+  },
+  "inputTextHasValue":{
+    "type":"selector",
+    "selector":"input[type=text]:not(input[type=text][value])"
+  },
+  "inputTextValueNotEmpty":{
+    "type":"selector",
+    "selector":"input[type=text][value=]"
+  },
+  "labelDoesNotContainInput":{
+    "type":"selector",
+    "selector":"label input:parent(label)"
+  },
+  "labelMustBeUnique":{
+    "type":"custom",
+    "callback":"labelMustBeUnique"
+  },
+  "labelMustNotBeEmpty":{
+    "type":"selector",
+    "selector":"label:empty"
+  },
+  "labelsAreAssignedToAnInput":{
+    "type":"custom",
+    "callback":"labelsAreAssignedToAnInput"
+  },
+  "legendDescribesListOfChoices":{
+    "type":"selector",
+    "selector":"legend"
+  },
+  "legendTextNotEmpty":{
+    "type":"selector",
+    "selector":"legend:empty"
+  },
+  "legendTextNotPlaceholder":{
+    "type":"placeholder",
+    "selector":"legend",
+    "content":true
+  },
+  "liDontUseImageForBullet":{
+    "type":"custom",
+    "callback":"liDontUseImageForBullet"
+  },
+  "linkUsedForAlternateContent":{
+    "type":"selector",
+    "selector":"html:not(html head link[rel=alternate]:parent(html))"
+  },
+  "linkUsedToDescribeNavigation":{
+    "type":"selector",
+    "selector":"html:not(html head link[rel=alternate]:parent(html))"
+  },
+  "listNotUsedForFormatting":{
+    "type":"custom",
+    "callback":"listNotUsedForFormatting"
+  },
+  "marqueeIsNotUsed":{
+    "type":"selector",
+    "selector":"marquee"
+  },
+  "menuNotUsedToFormatText":{
+    "type":"selector",
+    "selector":"menu:not(menu li:parent(menu))"
+  },
+  "noembedHasEquivalentContent":{
+    "type":"selector",
+    "selector":"noembed"
+  },
+  "noframesSectionMustHaveTextEquivalent":{
+    "type":"selector",
+    "selector":"frameset:not(frameset noframes:parent(frameset))"
+  },
+  "objectContentUsableWhenDisabled":{
+    "type":"selector",
+    "selector":"object"
+  },
+  "objectDoesNotFlicker":{
+    "type":"selector",
+    "selector":"object"
+  },
+  "objectDoesNotUseColorAlone":{
+    "type":"selector",
+    "selector":"object"
+  },
+  "objectInterfaceIsAccessible":{
+    "type":"selector",
+    "selector":"object"
+  },
+  "objectLinkToMultimediaHasTextTranscript":{
+    "type":"selector",
+    "selector":"object"
+  },
+  "objectMustContainText":{
+    "type":"selector",
+    "selector":"object:empty"
+  },
+  "objectMustHaveEmbed":{
+    "type":"selector",
+    "selector":"object:not(object embed:parent(object))"
+  },
+  "objectMustHaveTitle":{
+    "type":"selector",
+    "selector":"object:not(object[title])"
+  },
+  "objectMustHaveValidTitle":{
+    "type":"placeholder",
+    "selector":"object",
+    "attribute":"title"
+  },
+  "objectProvidesMechanismToReturnToParent":{
+    "type":"selector",
+    "selector":"object"
+  },
+  "objectShouldHaveLongDescription":{
+    "type":"selector",
+    "selector":"object"
+  },
+  "objectTextUpdatesWhenObjectChanges":{
+    "type":"selector",
+    "selector":"object"
+  },
+  "objectUIMustBeAccessible":{
+    "type":"selector",
+    "selector":"object"
+  },
+  "objectWithClassIDHasNoText":{
+    "type":"selector",
+    "selector":"object[classid]"
+  },
+  "pNotUsedAsHeader":{
+    "type":"custom",
+    "callback":"pNotUsedAsHeader"
+  },
+  "passwordHasLabel":{
+    "type":"label",
+    "selector":"input[type=password]"
+  },
+  "passwordLabelIsNearby":{
+    "type":"labelProximity",
+    "selector":"input[type=password]"
+  },
+  "preShouldNotBeUsedForTabularLayout":{
+    "type":"custom",
+    "callback":"preShouldNotBeUsedForTabularLayout"
+  },
+  "radioHasLabel":{
+    "type":"label",
+    "selector":"input[type=radio]"
+  },
+  "radioLabelIsNearby":{
+    "type":"labelProximity",
+    "selector":"input[type=radio]"
+  },
+  "radioMarkedWithFieldgroupAndLegend":{
+    "type":"selector",
+    "selector":"input[type=radio]:not(fieldset input[type=radio])"
+  },
+  "scriptContentAccessibleWithScriptsTurnedOff":{
+    "type":"selector",
+    "selector":"script"
+  },
+  "scriptInBodyMustHaveNoscript":{
+    "type":"selector",
+    "selector":"body script:not(body script noscript:parent(script))"
+  },
+  "scriptOnclickRequiresOnKeypress":{
+    "type":"event",
+    "selector":"*",
+    "searchEvent":"onclick",
+    "correspondingEvent":"onkeyup"
+  },
+  "scriptOndblclickRequiresOnKeypress":{
+    "type":"event",
+    "selector":"*",
+    "searchEvent":"ondblclick",
+    "correspondingEvent":"onkeypress"
+  },
+  "scriptOnmousedownRequiresOnKeypress":{
+    "type":"event",
+    "selector":"*",
+    "searchEvent":"onmousedown",
+    "correspondingEvent":"onkeydown"
+  },
+  "scriptOnmousemove":{
+    "type":"event",
+    "selector":"*",
+    "searchEvent":"onmousemove",
+    "correspondingEvent":"onkeypress"
+  },
+  "scriptOnmouseoutHasOnmouseblur":{
+    "type":"event",
+    "selector":"*",
+    "searchEvent":"onmouseout",
+    "correspondingEvent":"onblur"
+  },
+  "scriptOnmouseoverHasOnfocus":{
+    "type":"event",
+    "selector":"*",
+    "searchEvent":"onmouseover",
+    "correspondingEvent":"onfocus"
+  },
+  "scriptOnmouseupHasOnkeyup":{
+    "type":"event",
+    "selector":"*",
+    "searchEvent":"onmouseup",
+    "correspondingEvent":"onkeyup"
+  },
+  "scriptUIMustBeAccessible":{
+    "type":"selector",
+    "selector":"script"
+  },
+  "scriptsDoNotFlicker":{
+    "type":"selector",
+    "selector":"script"
+  },
+  "scriptsDoNotUseColorAlone":{
+    "type":"selector",
+    "selector":"script"
+  },
+  "selectDoesNotChangeContext":{
+    "type":"event",
+    "selector":"select",
+    "searchEvent":"onchange"
+  },
+  "selectHasAssociatedLabel":{
+    "type":"label",
+    "selector":"select"
+  },
+  "selectWithOptionsHasOptgroup":{
+    "type":"selector",
+    "selector":"select option:nth-child(5):parent(select)"
+  },
+  "siteMap":{
+    "type":"selector",
+    "selector":"a:content('site map')"
+  },
+  "skipToContentLinkProvided":{
+    "type":"selector",
+    "selector":"body:not(body:has(a:first[href^=#]))"
+  },
+  "tabIndexFollowsLogicalOrder":{
+    "type":"custom",
+    "callback":"tabIndexFollowsLogicalOrder"
+  },
+  "tableCaptionIdentifiesTable":{
+    "type":"selector",
+    "selector":"caption"
+  },
+  "tableComplexHasSummary":{
+    "type":"selector",
+    "selector":"table:not(table[summary], caption:parent(table))"
+  },
+  "tableDataShouldHaveTh":{
+    "type":"selector",
+    "selector":"table:not(table th:parent(table))"
+  },
+  "tableHeaderLabelMustBeTerse":{
+    "type":"custom",
+    "callback":"tableHeaderLabelMustBeTerse"
+  },
+  "tableIsGrouped":{
+    "type":"selector",
+    "selector":"table:not(table thead, table tbody, table tfoot)"
+  },
+  "tableLayoutDataShouldNotHaveTh":{
+    "type":"custom",
+    "callback":"tableLayoutDataShouldNotHaveTh"
+  },
+  "tableLayoutHasNoCaption":{
+    "type":"custom",
+    "callback":"tableLayoutHasNoCaption"
+  },
+  "tableLayoutHasNoSummary":{
+    "type":"custom",
+    "callback":"tableLayoutHasNoSummary"
+  },
+  "tableLayoutMakesSenseLinearized":{
+    "type":"custom",
+    "callback":"tableLayoutMakesSenseLinearized"
+  },
+  "tableSummaryDescribesTable":{
+    "type":"selector",
+    "selector":"table[summary]"
+  },
+  "tableSummaryDoesNotDuplicateCaption":{
+    "type":"custom",
+    "callback":"tableSummaryDoesNotDuplicateCaption"
+  },
+  "tableSummaryIsEmpty":{
+    "type":"selector",
+    "selector":"table[summary='']"
+  },
+  "tableSummaryIsSufficient":{
+    "type":"selector",
+    "selector":"table[summary]"
+  },
+  "tableUseColGroup":{
+    "type":"custom",
+    "callback":"tableUseColGroup"
+  },
+  "tableUsesAbbreviationForHeader":{
+    "type":"custom",
+    "callback":"tableUsesAbbreviationForHeader"
+  },
+  "tableUsesCaption":{
+    "type":"selector",
+    "selector":"table > caption"
+  },
+  "tableWithBothHeadersUseScope":{
+    "type":"selector",
+    "selector":"table:has(tbody th:not(th[scope]))"
+  },
+  "tableWithMoreHeadersUseID":{
+    "type":"custom",
+    "callback":"tableWithMoreHeadersUseID"
+  },
+  "tabularDataIsInTable":{
+    "type":"custom",
+    "callback":"tabularDataIsInTable"
+  },
+  "textareaHasAssociatedLabel":{
+    "type":"label",
+    "selector":"textarea"
+  },
+  "textareaLabelPositionedClose":{
+    "type":"labelProximity",
+    "selector":"textarea"
+  },
+  "svgContainsTitle":{
+    "type":"selector",
+    "selector":"svg:not(svg title:parent(svg))"
+  },
+  "videoProvidesCaptions":{
+    "type":"selector",
+    "selector":"video"
+  },
+  "videosEmbeddedOrLinkedNeedCaptions":{
+    "type":"custom",
+    "callback":"videosEmbeddedOrLinkedNeedCaptions"
   }
 }
