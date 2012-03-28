@@ -479,10 +479,6 @@
     "type":"custom",
     "callback":"imgMapAreasHaveDuplicateLink"
   },
-  "imgNeedsLongDescWithDlink":{
-    "type":"selector",
-    "selector":"img[longdesc]"
-  },
   "imgNonDecorativeHasAlt":{
     "type":"selector",
     "selector":"img:not(img[alt])"

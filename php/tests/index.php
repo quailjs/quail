@@ -159,17 +159,6 @@ class QuailOACTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
  }
 
- //9
- function test9_imgNeedsLongDescWithDlink() {
-		$results = $this->getTest('9-1.html', 'imgNeedsLongDescWithDlink');
-		$this->assertTrue(is_object($results[0]));
-		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->attr('src') == 'rex.jpg');
-		}
-		$results = $this->getTest('9-2.html', 'imgNeedsLongDescWithDlink');
-		$this->assertTrue(count($results) == 0);
- }
-
  //10
  function test10_imgGifNoFlicker() {
 		$results = $this->getTest('10-1.html', 'imgGifNoFlicker');
