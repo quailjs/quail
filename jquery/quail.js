@@ -31,7 +31,7 @@
         quail.accessibilityResults = { };
       }
       if(!quail.accessibilityTests.length) {
-        $.ajax({ url : quail.options.jsonPath,
+        $.ajax({ url : quail.options.jsonPath + '/tests.json',
                  async : false,
                  dataType : 'json',
                  success : function(data) {
@@ -49,9 +49,17 @@
           quail.accessibilityResults[testName] = [ ];
         }
         if(quail.accessibilityTests[testName].type == 'selector') {
-          quail.html.find(quail.accessibilityTests[testName].selector).each(function() {
+          $(quail.html).find(quail.accessibilityTests[testName].selector).each(function() {
             quail.accessibilityResults[testName].push($(this));
           });
+        }
+        if(quail.accessibilityTests[testName].type == 'custom') {
+          if(typeof quail[quail.accessibilityTests[testName].callback] !== 'undefined') {
+            quail[quail.accessibilityTests[testName].callback]();
+          }
+        }
+        if(quail.accessibilityTests[testName].type == 'placeholder') {
+          quail.placeholderTest(testName, quail.accessibilityTests[testName]);
         }
       });
     },
@@ -65,6 +73,8 @@
     
     html : '',
     
+    strings : { },
+    
     accessibilityResults : { },
     
     accessibilityTests : { },
@@ -73,7 +83,50 @@
     
     },
     
+    loadString : function(stringFile) {
+      if(typeof quail.strings[stringFile] !== 'undefined') {
+        return;
+      }
+      $.ajax({ url : quail.options.jsonPath + '/strings/' + stringFile + '.json',
+               async: false,
+               dataType : 'json',
+               success : function(data) {
+                quail.strings[stringFile] = data;
+               }});
+    },
+    
     options : { },
+    
+    imgAltIsDifferent : function() {
+      $(quail.html).find('img').each(function() {
+        if($(this).attr('src') == $(this).attr('alt')) {
+          quail.accessibilityResults.imgAltIsDifferent.push($(this));
+        }
+      });
+    },
+    
+    imgAltIsTooLong : function() {
+      $(quail.html).find('img[alt]').each(function() {
+        if($(this).attr('alt').length > 100) {
+          quail.accessibilityResults.imgAltIsTooLong.push($(this));
+        }
+      });
+    },
+    
+    placeholderTest : function(testName, options) {
+      quail.loadString('placeholders');
+      $(quail.html).find(options.selector).each(function() {
+        if(typeof options.attribute !== 'undefined') {
+          var text = $(this).attr(options.attribute);
+        }
+        else {
+          var text = $(this).text();
+        }
+        if(quail.strings.placeholders.search(text)) {
+          quail.accessibilityResults.imgAltNotPlaceHolder.push($(this));
+        }
+      });
+    }
   };
   
 })(jQuery);

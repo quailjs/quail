@@ -16,11 +16,12 @@
                  async : false,
                  success : function(data) {
                  
-          quailTest.results = $(data).quail({ jsonPath : '../../resources/tests.json', 
+          quailTest.results = $(data).quail({ jsonPath : '../../resources', 
                           guideline : [ testName ],
                           reset : true,
                           getRawResults : true});
         }});
+        console.log(quailTest.results);
       },
       
       confirmIsEmpty : function() {
@@ -409,8 +410,7 @@
    test('frameSrcIsAccessible', function() {
   
   		quailTest.runTest( 'frameSrcIsAccessible', '33-1.html');
-  		
-    		equal(true, quailTest.confirmIsTag('frame'), 'First item tag test');
+  		equal(true, quailTest.confirmIsTag('frame'), 'First item tag test');
   		quailTest.runTest( 'frameSrcIsAccessible', '32-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
   
@@ -1818,8 +1818,7 @@
     //183
     test('objectMustHaveEmbed', function() {
   		quailTest.runTest( 'objectMustHaveEmbed', '183-1.html');
-  		
-    		equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
+  		equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
   		quailTest.runTest( 'objectMustHaveEmbed', '183-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
      });

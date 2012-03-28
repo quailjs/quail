@@ -58,7 +58,7 @@ class Quail {
         throw new QuailConfigurationException('Guideline JSON file does not exist or is invalid.');
       }
     }
-    $this->path = $path;
+    $this->path = parse_url($path);
     $this->html = $contents;
     $this->guideline = $guideline;
     $this->charset = $charset;
@@ -150,7 +150,7 @@ class QuailTest {
   
   function __construct($document, $path) {
     $this->document = $document;
-    $this->path = explode('/', $path);
+    $this->path = $path;
     if(!method_exists($this, 'run') && $this->selector) {
       $this->reportSingleSelector($this->selector);
       return;
@@ -210,46 +210,32 @@ class QuailTest {
 		}
 		return FALSE;
 	}
-  
-  /**
-	*	Retrieves the content of an image
-	*	@param string $image The URL to an image
-	*/
-	function getImageContent($image) {
-		if(strpos($image, '://') == false) {
-			return @file_get_contents($image);
-		}
-		if(function_exists('curl')) {
-			$curl = new curl_init($image);
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-			$result = curl_exec($curl);
-			return $result;
-		}
-		return false;
-	}
-  
+    
   /**
 	*	Retrieves the full path for a file.
 	*	@param string $file The path to a file
 	*	@return string The absolute path to the file.
 	*/	
 	function getPath($file) {
-		if(substr($file, 0, 7) == 'http://' || substr($file, 0, 8) == 'https://')
+	  $url = parse_url($file);
+		if(isset($url['scheme'])) {
 			return $file;
-		$file = explode('/', $file);
-		if(count($file) == 1)
-			return implode('/', $this->path) .'/'. $file[0];
-		
-		$path = $this->path;
-		foreach($file as $directory) {
-			if($directory == '..') 
-				array_pop($path);
-			else
-				$file_path[] = $directory;
 		}
-
-			return implode('/', $path) .'/'. implode('/', $file_path);
-
+		$path = $this->path;
+    if(substr($file, 0, 1) == '/') {
+      $path['path'] = $file;
+    }
+    elseif(substr($path['path'], -1, 1) == '/') {
+      $path['path'] .= $file;
+    }
+    else {
+      $path['path'] = explode('/', $path['path']);
+      array_pop($path['path']);
+      $path['path'] = implode('/', $path['path']);
+      $path['path'] .= '/'. $file;
+    }
+    $port = ($path['port']) ? ':'. $path['port'] : '';
+    return $path['scheme'] . '://'. $path['host'] . $port . $path['path'];
 	}
 	
 	/**

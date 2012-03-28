@@ -22,6 +22,16 @@ class aAdjacentWithSameResourceShouldBeCombined extends QuailCustomTest {
   }
 }
 
+class appletContainsTextEquivalent extends QuailCustomTest {
+  function run() {
+    foreach(pq('applet[alt=], applet:not(applet[alt])') as $el) {
+      if(!strlen(trim(pq($el)->text()))) {
+        $this->objects[] = pq($el);
+      }
+    }
+  }
+}
+
 class aImgAltNotRepetative extends QuailCustomTest {
   function run() {
     foreach(pq('a img[alt]') as $el) {
@@ -165,7 +175,7 @@ class documentLangIsISO639Standard extends QuailCustomTest {
 class doctypeProvided extends QuailCustomTest {
   
   function run() {
-    if(!$this->document->doctype->publicId) {
+    if(!$this->document->document->doctype->publicId) {
 			$this->objects[] = pq('html');
 		}
   }
@@ -173,7 +183,7 @@ class doctypeProvided extends QuailCustomTest {
 
 class documentStrictDocType extends QuailCustomTest {
   function run() {
-    if(strpos(strtolower($this->document->doctype->publicId), 'strict') === FALSE) {
+    if(strpos(strtolower($this->document->document->doctype->publicId), 'strict') === FALSE) {
 			$this->objects[] = pq('html');
 		}
   }
@@ -235,7 +245,7 @@ class emoticonsExcessiveUse extends QuailCustomTest {
   function getEmoticons() {
     global $quail_emoticons;
     if(!$quail_emoticons) {
-      $quail_emoticons = json_decode(file_get_contents('../../resources/strings/emoticons.json'));
+      $quail_emoticons = (array)json_decode(file_get_contents('../../resources/strings/emoticons.json'));
     }
     $this->emoticons = $quail_emoticons;
   }
@@ -329,7 +339,7 @@ class imgGifNoFlicker extends QuailCustomTest {
   
   function run() {
     foreach(pq('img[src$=.gif]') as $el) {
-      $file = $this->getImageContent($this->getPath(pq($el)->attr('src')));
+      $file = file_get_contents($this->getPath(pq($el)->attr('src')));
 			if($file) {
 				  $file = bin2hex($file);
 				

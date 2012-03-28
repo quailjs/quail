@@ -10,13 +10,16 @@ require_once 'simpletest/reporter.php';
 class QuailOACTests extends UnitTestCase {
 
  function getTest($file, $test) {
+ 		$protocol = ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1')
+ 		            ? 'http'
+ 		            : 'https';
  		$contents = file_get_contents('../../testfiles/oac/'. $file);
-    $quail = new Quail($contents, '/quail/php/testfiles/', array($test));
+    $quail = new Quail($contents, $protocol .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '../../testfiles/oac/' . $file, array($test));
 		$quail->runTests();
 
 		return $quail->getRawResults($test);
  }
-
+  
  // Test the HTML alter reporter
  function test_reporterHTMLReporter() {
 		$contents = file_get_contents('../../testfiles/oac/1-1.html');
@@ -422,7 +425,6 @@ class QuailOACTests extends UnitTestCase {
   	}
 		$results = $this->getTest('25-2.html', 'appletContainsTextEquivalent');
 		$this->assertTrue(count($results) == 0);
-
  }
 
   //26
@@ -455,7 +457,7 @@ class QuailOACTests extends UnitTestCase {
  function test28_skipToContentLinkProvided() {
 
 		$results = $this->getTest('28-1.html', 'skipToContentLinkProvided');
-		$this->assertTrue(count($results));
+		$this->assertTrue($results[0]->elements[0]->tagName == 'body');
 
 		$results = $this->getTest('28-2.html', 'skipToContentLinkProvided');
 		$this->assertTrue(count($results) == 0);
@@ -536,8 +538,10 @@ class QuailOACTests extends UnitTestCase {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'frame');
     }
 		$results = $this->getTest('32-2.html', 'frameSrcIsAccessible');
-		$this->assertTrue(count($results) == 0);
-
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'frame');
+    }
 		$results = $this->getTest('32-3.html', 'frameSrcIsAccessible');
 		$this->assertTrue(count($results) == 0);
 
@@ -591,10 +595,7 @@ class QuailOACTests extends UnitTestCase {
  function test36_noframesSectionMustHaveTextEquivalent() {
 
 		$results = $this->getTest('36-1.html', 'noframesSectionMustHaveTextEquivalent');
-		$this->assertTrue(is_object($results[0]));
-		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'noframes');
-    }
+		$this->assertTrue(count($results) == 0);
 		$results = $this->getTest('36-2.html', 'noframesSectionMustHaveTextEquivalent');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
