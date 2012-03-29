@@ -215,7 +215,7 @@
   },
   "documentContentReadableWithoutStylesheets":{
     "type":"selector",
-    "selector":"link[rel=stylesheet]"
+    "selector":"html:has(link[rel=stylesheet]) body, body:has(*[style])"
   },
   "documentHasTitleElement":{
     "type":"selector",
