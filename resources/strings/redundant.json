@@ -1,12 +1,12 @@
 {
-  "inputImage" : {
+  "inputImage":[
     "submit",
-    "button",
-  },
-  "link" : {
+    "button"
+  ],
+  "link":[
     "link to",
     "go to",
     "click here",
     "link"
-  }
+  ]
 }

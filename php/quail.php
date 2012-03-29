@@ -188,7 +188,7 @@ class QuailTest {
    */
   protected function unreadable($string) {
     $string = trim(strip_tags($string));
-    return (strlen($string)) ? FALSE : TRUE;
+    return (strlen($string) > 0) ? FALSE : TRUE;
   }
   
   /**

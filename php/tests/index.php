@@ -1069,10 +1069,8 @@ class QuailOACTests extends UnitTestCase {
     }
 
 		$results = $this->getTest('79-2.html', 'objectMustHaveValidTitle');
-		$this->assertTrue(is_object($results[0]));
-		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'object');
-    }
+		$this->assertTrue(count($results) == 0);
+
 		$results = $this->getTest('79-3.html', 'objectMustHaveValidTitle');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
@@ -1224,7 +1222,10 @@ class QuailOACTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 
 		$results = $this->getTest('91-3.html', 'selectHasAssociatedLabel');
-		$this->assertTrue(count($results) == 0);
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'select');
+    }
 
 		$results = $this->getTest('91-4.html', 'selectHasAssociatedLabel');
 		$this->assertTrue(count($results) == 0);
@@ -1475,9 +1476,11 @@ class QuailOACTests extends UnitTestCase {
 		if(is_object($results[0])) {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'table');
     }
-
-		$results = $this->getTest('113-2.html', 'tableSummaryIsSufficient');
-		$this->assertTrue(count($results) == 0);
+    
+    $results = $this->getTest('113-2.html', 'tableSummaryIsSufficient');
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName != 'table');
+    }
 
   }
 
@@ -1551,7 +1554,10 @@ class QuailOACTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 
 		$results = $this->getTest('118-3.html', 'passwordHasLabel');
-		$this->assertTrue(count($results) == 0);
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'input');
+    }
 
 		$results = $this->getTest('118-4.html', 'passwordHasLabel');
 		$this->assertTrue(count($results) == 0);
@@ -1570,7 +1576,10 @@ class QuailOACTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 
 		$results = $this->getTest('119-3.html', 'checkboxHasLabel');
-		$this->assertTrue(count($results) == 0);
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'input');
+    }
 
 		$results = $this->getTest('119-4.html', 'checkboxHasLabel');
 		$this->assertTrue(count($results) == 0);
@@ -1590,7 +1599,10 @@ class QuailOACTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 
 		$results = $this->getTest('120-3.html', 'fileHasLabel');
-		$this->assertTrue(count($results) == 0);
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'input');
+    }
 
 		$results = $this->getTest('120-4.html', 'fileHasLabel');
 		$this->assertTrue(count($results) == 0);
@@ -1609,7 +1621,10 @@ class QuailOACTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 
 		$results = $this->getTest('121-3.html', 'radioHasLabel');
-		$this->assertTrue(count($results) == 0);
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'input');
+    }
 
 		$results = $this->getTest('121-4.html', 'radioHasLabel');
 		$this->assertTrue(count($results) == 0);

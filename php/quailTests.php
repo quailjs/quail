@@ -84,7 +84,7 @@ class aMustContainText extends QuailCustomTest {
   
   function run() {
     foreach(pq('a') as $el) {
-      if(!$this->containsReadableText(pq($el))) {
+      if(!$this->containsReadableText(pq($el)) && !(pq($el)->attr('name') && !pq($el)->attr('href'))) {
         $this->objects[] = pq($el);
       }
     }
@@ -280,7 +280,7 @@ class inputImageAltNotRedundant extends QuailCustomTest {
   function run() {
     $this->getRedundantString();
     foreach(pq('input[type=image][alt]') as $el) {
-      if(in_array(strtolower(trim(pq($el)->attr('alt'))), $this->redundant_strings)) {
+      if(in_array(strtolower(trim(pq($el)->attr('alt'))), $this->redundant)) {
         $this->objects[] = pq($el);
       }
     }
@@ -289,9 +289,8 @@ class inputImageAltNotRedundant extends QuailCustomTest {
   protected function getRedundantString() {
     global $quail_redundant_text;
     if(!$quail_redundant_text) {
-      $quail_redundant_text = json_decode(file_get_contents('../../resources/strings/redundant.json'));
+      $quail_redundant_text = (array)json_decode(file_get_contents('../../resources/strings/redundant.json'));
     }
-    
     $this->redundant = (array)$quail_redundant_text['inputImage'];
   }
 }
@@ -405,8 +404,8 @@ class labelMustBeUnique extends QuailCustomTest {
 
 class listNotUsedForFormatting extends QuailCustomTest {
   function run() {
-    foreach(pq('ol, li') as $el) {
-      if(pq($el)->children()->length < 2) {
+    foreach(pq('ol, ul') as $el) {
+      if(pq($el)->find('li')->length < 2) {
         $this->objects[] = pq($el);
       }
     }
@@ -597,22 +596,12 @@ class pNotUsedAsHeader extends QuailCustomTest {
   }
 }
 
-class QuailBaseTest extends QuailTest {
-  
-  protected $options;
-  
-  function __construct($options, $document, $path) {
-    $this->options = $options;
-    parent::__construct($document, $path);
-  }
-}
-
-class QuailLabelTest extends QuailBaseTest {
+class QuailLabelTest extends QuailCustomTest {
   
   function run() {
     foreach(pq($this->options['selector']) as $el) {
       if(!pq($el)->parent('label')->length) {
-        if(!$el->hasAttribute('id') || pq('label[for='. str_replace('#', '', pq($el)->attr('id')) .']')->length == 0) {
+        if(!pq($el)->attr('id') || pq('label[for='. str_replace('#', '', pq($el)->attr('id')) .']')->length == 0) {
           $this->objects[] = pq($el);
         }
       }
@@ -620,7 +609,7 @@ class QuailLabelTest extends QuailBaseTest {
   }
 }
 
-class QuailLabelProximityTest extends QuailBaseTest {
+class QuailLabelProximityTest extends QuailCustomTest {
   
   function run() {
     foreach(pq($this->options['selector']) as $el) {
@@ -632,18 +621,18 @@ class QuailLabelProximityTest extends QuailBaseTest {
   }
 }
 
-class QuailHeaderTest extends QuailBaseTest {
+class QuailHeaderTest extends QuailCustomTest {
   
   function run() {
     $current = intval(substr($this->options['selector'], -1, 1));
     foreach(pq('h1, h2, h3, h4, h5, h6') as $el) {
-      $number = intval(substr($el->tagName, -1, 1));
       
-      if($next_heading && ($number - 2 > $current || number + 2 < $current)) {
+      $number = intval(substr($el->tagName, -1, 1));
+      if($next_heading && ($number - 1 > $current || $number + 1 < $current)) {
         $this->objects[] = pq($el);
       }
       if($number == $current) {
-        $next_heading = true;
+        $next_heading = $el;
       }
       if($next_heading && $number != $current) {
         $next_heading = false;
@@ -652,10 +641,16 @@ class QuailHeaderTest extends QuailBaseTest {
   }
 }
 
-class QuailEventTest extends QuailTest {
+class QuailEventTest extends QuailCustomTest {
   
   function run() {
-    
+    foreach(pq($this->options['selector']) as $el) {
+      if(pq($el)->attr($this->options['searchEvent'])) {
+        if(!isset($this->options['correspondingEvent']) || !pq($el)->attr($this->options['correspondingEvent'])) {
+          $this->objects[] = pq($el);
+        }
+      }
+    }
   }
   
 }
@@ -668,18 +663,16 @@ class QuailColorTest extends QuailTest {
   
 }
 
-class QuailPlaceholderTest extends QuailBaseTest {
+class QuailPlaceholderTest extends QuailCustomTest {
   
   protected $placeholders;
   
   function run() {
     $this->getPlaceholders();
     foreach(pq($this->options['selector']) as $el) {
-      if(isset($this->options['attribute'])) {
+      if($this->options['attribute']) {
         $attr = $this->options['attribute'];
-        if(isset($this->options['empty']) && 
-          ($this->unreadable(pq($el)->attr($attr)) ||
-            !$el->hasAttribute($attr))) {
+        if($this->options['empty'] && $this->unreadable(pq($el)->attr($attr))) {
           $this->objects[] = pq($el);
         }
         if (strlen(pq($el)->attr($attr)) && (
@@ -687,12 +680,9 @@ class QuailPlaceholderTest extends QuailBaseTest {
           preg_match("/^([0-9]*)(k|kb|mb|k bytes|k byte)?$/", strtolower(pq($el)->attr($attr))))) {
             $this->objects[] = pq($el);
         }
-        if(isset($this->options['empty']) && $this->options['empty'] && $this->unreadable(pq($el)->attr($attr))) {
-          $this->objects[] = pq($el);
-        }
         
       }
-      elseif(isset($this->options['content']) && $this->options['content']) {
+      elseif($this->options['content']) {
         if(isset($this->options['empty']) && $this->options['empty'] && $this->unreadable(pq($el)->text())) {
           $this->objects[] = pq($el);
         }
