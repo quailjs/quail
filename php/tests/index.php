@@ -506,10 +506,7 @@ class QuailOACTests extends UnitTestCase {
     }
 
 		$results = $this->getTest('32-2.html', 'frameTitlesDescribeFunction');
-		$this->assertTrue(is_object($results[0]));
-		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'frame');
-    }
+		$this->assertTrue(count($results) == 0);
 
 		$results = $this->getTest('32-3.html', 'frameTitlesDescribeFunction');
 		$this->assertTrue(is_object($results[0]));
@@ -702,7 +699,9 @@ class QuailOACTests extends UnitTestCase {
   //51
   function test51_documentTitleNotEmpty() {
 		$results = $this->getTest('51-1.html', 'documentTitleNotEmpty');
-		$this->assertTrue(count($results));
+		if(isset($reuslts[0])) {
+			$this->assertTrue($results[0]->elements[0]->tagName == 'title');
+		}
 
 		$results = $this->getTest('51-2.html', 'documentTitleNotEmpty');
 		$this->assertTrue(count($results) == 0);
@@ -767,7 +766,10 @@ class QuailOACTests extends UnitTestCase {
     }
 
 		$results = $this->getTest('55-2.html', 'inputDoesNotUseColorAlone');
-		$this->assertTrue(count($results) == 0);
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'input');
+    }
   }
 
   //57

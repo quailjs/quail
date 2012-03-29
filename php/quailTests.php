@@ -68,6 +68,7 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
     }
     
     $this->redundant = (array)$quail_redundant_text['inputImage'];
+    $this->redundant = (array)$this->redundant['link'];
   }
 }
 
@@ -158,6 +159,7 @@ class documentLangIsISO639Standard extends QuailCustomTest {
   protected $langauges;
   
   function run() {
+    $this->getLanguages();
     if(!in_array(strtolower(pq('html:first')->attr('lang')), $this->langauges)) {
       $this->objects[] = pq('html:first');
     }
@@ -166,7 +168,7 @@ class documentLangIsISO639Standard extends QuailCustomTest {
   protected function getLanguages() {
     global $quail_languages;
     if(!$quail_languages) {
-      $quail_languages = json_decode(file_get_contents('../../resources/strings/language_codes.json'));
+      $quail_languages = (array)json_decode(file_get_contents('../../resources/strings/language_codes.json'));
     }
     $this->langauges = $quail_languages;
   } 
@@ -183,7 +185,7 @@ class doctypeProvided extends QuailCustomTest {
 
 class documentStrictDocType extends QuailCustomTest {
   function run() {
-    if(strpos(strtolower($this->document->document->doctype->publicId), 'strict') === FALSE) {
+    if(strpos(strtolower($this->document->document->doctype->publicId), 'strict') === FALSE && strpos(strtolower($this->document->document->doctype->systemId), 'strict') === FALSE) {
 			$this->objects[] = pq('html');
 		}
   }
@@ -528,13 +530,10 @@ class tableWithMoreHeadersUseID extends QuailCustomTest {
 
 class tabularDataIsInTable extends QuailCustomTest {
   function run() {
-    foreach(pq('div, p') as $el) {
+    foreach(pq('pre') as $el) {
       if(strpos(pq($el)->text(), "\t") !== FALSE) {
         $this->objects[] = pq($el);
       }
-    }
-    foreach(pq('pre') as $el) {
-      $this->objects[] = pq($el);
     }
   }
 }
@@ -636,15 +635,18 @@ class QuailLabelProximityTest extends QuailBaseTest {
 class QuailHeaderTest extends QuailBaseTest {
   
   function run() {
-    $current = intval(str_replace('h', '', $this->options['selector']));
-    foreach(pq($this->options['selector']) as $el) {
-      if(pq($el)->next('h1, h2, h3, h4, h5, h6')->length) {
-        $next = intval(str_replace('h', '', pq($el)->next('h1, h2, h3, h4, h5, h6')->tagName));
-        if($next != $current) {
-          if($next > $current + 1 || $next < $current - 1) {
-            $this->objects[] = pq($el);
-          }
-        }
+    $current = intval(substr($this->options['selector'], -1, 1));
+    foreach(pq('h1, h2, h3, h4, h5, h6') as $el) {
+      $number = intval(substr($el->tagName, -1, 1));
+      
+      if($next_heading && ($number - 2 > $current || number + 2 < $current)) {
+        $this->objects[] = pq($el);
+      }
+      if($number == $current) {
+        $next_heading = true;
+      }
+      if($next_heading && $number != $current) {
+        $next_heading = false;
       }
     }
   }
@@ -680,15 +682,23 @@ class QuailPlaceholderTest extends QuailBaseTest {
             !$el->hasAttribute($attr))) {
           $this->objects[] = pq($el);
         }
-        elseif (strlen(pq($el)->attr($attr)) && (
+        if (strlen(pq($el)->attr($attr)) && (
           in_array(pq($el)->attr($attr), $this->placeholders) ||
           preg_match("/^([0-9]*)(k|kb|mb|k bytes|k byte)?$/", strtolower(pq($el)->attr($attr))))) {
             $this->objects[] = pq($el);
         }
+        if(isset($this->options['empty']) && $this->options['empty'] && $this->unreadable(pq($el)->attr($attr))) {
+          $this->objects[] = pq($el);
+        }
         
       }
-      elseif(isset($this->options['content']) && $this->options['content'] && in_array(pq($el)->html(), $this->placeholders)) {
-        $this->objects[] = pq($el);
+      elseif(isset($this->options['content']) && $this->options['content']) {
+        if(isset($this->options['empty']) && $this->options['empty'] && $this->unreadable(pq($el)->text())) {
+          $this->objects[] = pq($el);
+        }
+        if(in_array(trim(pq($el)->text()), $this->placeholders)) {
+          $this->objects[] = pq($el);
+        }
       }
     }
   }

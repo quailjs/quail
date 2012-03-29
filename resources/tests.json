@@ -235,7 +235,7 @@
   },
   "documentMetaNotUsedWithTimeout":{
     "type":"selector",
-    "selector":"meta[http-equiv=refresh]"
+    "selector":"meta[http-equiv=refresh]:not(meta[http-equiv=refresh][content^=0;]"
   },
   "documentReadingDirection":{
     "type":"selector",
@@ -251,15 +251,18 @@
   },
   "documentTitleIsNotPlaceholder":{
     "type":"placeholder",
-    "selector":"head title:first"
+    "selector":"head title:first",
+    "content":true
   },
   "documentTitleIsShort":{
     "type":"custom",
     "callback":"documentTitleIsShort"
   },
   "documentTitleNotEmpty":{
-    "type":"selector",
-    "selector":"head title:first:empty"
+    "type":"placeholder",
+    "callback":"head title",
+    "empty":true,
+    "content":true
   },
   "documentValidatesToDocType":{
     "type":"custom",
@@ -342,8 +345,10 @@
     "selector":"frame"
   },
   "frameTitlesDescribeFunction":{
-    "type":"selector",
-    "selector":"frame[title]"
+    "type":"placeholder",
+    "selector":"frame[title]",
+    "attribute":"title",
+    "empty":true
   },
   "frameTitlesNotEmpty":{
     "type":"selector",
@@ -512,8 +517,8 @@
     "selector":"input[type=checkbox]:not(input[type=checkbox]:parent(fieldset))"
   },
   "inputDoesNotUseColorAlone":{
-    "type":"custom",
-    "callback":"inputDoesNotUseColorAlone"
+    "type":"selector",
+    "callback":"input:not(input[type=hidden])"
   },
   "inputElementsDontHaveAlt":{
     "type":"selector",
@@ -607,7 +612,8 @@
   "legendTextNotPlaceholder":{
     "type":"placeholder",
     "selector":"legend",
-    "content":true
+    "content":true,
+    "emtpy":true
   },
   "liDontUseImageForBullet":{
     "type":"custom",
@@ -662,8 +668,10 @@
     "selector":"object"
   },
   "objectMustContainText":{
-    "type":"selector",
-    "selector":"object:empty"
+    "type":"placeholder",
+    "selector":"object",
+    "empty":true,
+    "content":true
   },
   "objectMustHaveEmbed":{
     "type":"selector",
@@ -676,7 +684,8 @@
   "objectMustHaveValidTitle":{
     "type":"placeholder",
     "selector":"object",
-    "attribute":"title"
+    "attribute":"title",
+    "empty":true
   },
   "objectProvidesMechanismToReturnToParent":{
     "type":"selector",
@@ -732,7 +741,7 @@
   },
   "scriptInBodyMustHaveNoscript":{
     "type":"selector",
-    "selector":"body script:not(body script noscript:parent(script))"
+    "selector":"body:not(body:has(noscript)) script"
   },
   "scriptOnclickRequiresOnKeypress":{
     "type":"event",
