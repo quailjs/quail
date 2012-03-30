@@ -243,7 +243,7 @@ class QuailTest {
 	 * is used for data or layout
 	 */
 	 function isDataTable($table) {
-	   return ($table->find('th')->length) ? TRUE : FALSE;
+	   return ($table->find('th')->length && $table->find('tr')->length > 2) ? TRUE : FALSE;
 	 }
 }
 

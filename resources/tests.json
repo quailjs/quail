@@ -890,7 +890,7 @@
   },
   "tableWithBothHeadersUseScope":{
     "type":"selector",
-    "selector":"table:has(tbody th:not(th[scope]))"
+    "selector":"table:has(tr:nth-child(2) th:not(th[scope]))"
   },
   "tableWithMoreHeadersUseID":{
     "type":"custom",

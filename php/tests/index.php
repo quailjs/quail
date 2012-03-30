@@ -2178,7 +2178,7 @@ class QuailOACTests extends UnitTestCase {
 		$results = $this->getTest('175-1.html', 'aImgAltNotRepetative');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'img');
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'a');
     }
 		$results = $this->getTest('175-2.html', 'aImgAltNotRepetative');
 		$this->assertTrue(count($results) == 0);

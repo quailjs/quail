@@ -67,8 +67,7 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
       $quail_redundant_text = json_decode(file_get_contents('../../resources/strings/redundant.json'));
     }
     
-    $this->redundant = (array)$quail_redundant_text['inputImage'];
-    $this->redundant = (array)$this->redundant['link'];
+    $this->redundant = (array)$quail_redundant_text['link'];
   }
 }
 
@@ -482,8 +481,8 @@ class tableLayoutDataShouldNotHaveTh extends QuailCustomTest {
 
 class tableUsesAbbreviationForHeader extends QuailCustomTest {
   function run() {
-    foreach(pq('th, table tr:first td') as $el) {
-      if(!pq($el)->find('abbr, acronym')->length && strlen(trim(pq($el)->text())) > 20) {
+    foreach(pq('th') as $el) {
+      if(!pq($el)->find('abbr, acronym')->length && strlen(trim(pq($el)->html())) > 20) {
         $this->objects[] = pq($el);
       }
     }
@@ -625,6 +624,7 @@ class QuailHeaderTest extends QuailCustomTest {
   
   function run() {
     $current = intval(substr($this->options['selector'], -1, 1));
+    $next_heading = false;
     foreach(pq('h1, h2, h3, h4, h5, h6') as $el) {
       
       $number = intval(substr($el->tagName, -1, 1));
