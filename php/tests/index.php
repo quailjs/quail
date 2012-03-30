@@ -1,11 +1,46 @@
 <?php
-error_reporting(E_WARNING);
+//error_reporting(E_WARNING);
 if(!file_exists('simpletest/unit_tester.php')) {
 	die('You must install simpletest [http://www.simpletest.org/] in the directory "tests".');
 }
 require_once '../quail.php';
 require_once 'simpletest/unit_tester.php';
 require_once 'simpletest/reporter.php';
+
+class QuailTests extends UnitTestCase {
+
+ function getTest($file, $test) {
+ 		$protocol = ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1')
+ 		            ? 'http'
+ 		            : 'https';
+ 		$contents = file_get_contents('../../testfiles/quail/'. $file);
+    $quail = new Quail($contents, $protocol .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '../../testfiles/oac/' . $file, array($test));
+		$quail->runTests();
+
+		return $quail->getRawResults($test);
+ }
+ 
+ function test_textIsNotSmall() {
+		$results = $this->getTest('textIsNotSmall-fail.html', 'textIsNotSmall');
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'p');
+    }
+
+		$results = $this->getTest('textIsNotSmall-pass.html', 'textIsNotSmall');
+		$this->assertTrue(count($results) == 0);
+
+		$results = $this->getTest('textIsNotSmall-fail2.html', 'textIsNotSmall');
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'p');
+    }	
+	}
+	
+}
+
+$quail_tests = new QuailTests();
+$quail_tests->run(new HtmlReporter());
 
 class QuailOACTests extends UnitTestCase {
 

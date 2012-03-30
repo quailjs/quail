@@ -245,6 +245,15 @@ class QuailTest {
 	 function isDataTable($table) {
 	   return ($table->find('th')->length && $table->find('tr')->length > 2) ? TRUE : FALSE;
 	 }
+	 
+	 function convertFontSize($size) {
+	   if(strpos($size, 'px') !== false) {
+	     return floatval(str_replace('px', '', $size));
+	   }
+	   if(strpos($size, 'em') !== false) {
+	     return floatval(str_replace('em', '', $size)) * 16;
+	   }
+	 }
 }
 
 

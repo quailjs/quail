@@ -595,6 +595,17 @@ class pNotUsedAsHeader extends QuailCustomTest {
   }
 }
 
+class textIsNotSmall extends QuailCustomTest {
+  function run() {
+    foreach(pq('body *') as $el) {
+      $size = pq($el)->css('font-size');
+      if($size = $this->convertFontSize($size) && $size < 11) {
+        $this->objects[] = pq($el);
+      }
+    }
+  }
+}
+
 class QuailLabelTest extends QuailCustomTest {
   
   function run() {

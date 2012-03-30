@@ -908,6 +908,10 @@
     "type":"labelProximity",
     "selector":"textarea"
   },
+  "textIsNotSmall":{
+    "type":"custom",
+    "callback":"textIsNotSmall"
+  },
   "svgContainsTitle":{
     "type":"selector",
     "selector":"svg:not(svg title:parent(svg))"
