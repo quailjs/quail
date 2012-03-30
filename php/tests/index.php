@@ -1468,22 +1468,7 @@ class QuailOACTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 
   }
-
-  //113
-    function test113_tableSummaryIsEmpty() {
-		$results = $this->getTest('113-1.html', 'tableSummaryIsSufficient');
-		$this->assertTrue(is_object($results[0]));
-		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'table');
-    }
-    
-    $results = $this->getTest('113-2.html', 'tableSummaryIsSufficient');
-		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName != 'table');
-    }
-
-  }
-
+  
   //114
     function test114_tableLayoutHasNoSummary() {
 		$results = $this->getTest('114-1.html', 'tableLayoutHasNoSummary');
@@ -2789,7 +2774,7 @@ class QuailOACTests extends UnitTestCase {
 		$results = $this->getTest('246-4.html', 'formWithRequiredLabel');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'form');
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'label');
     }
 		$results = $this->getTest('246-5.html', 'formWithRequiredLabel');
 		$this->assertTrue(is_object($results[0]));

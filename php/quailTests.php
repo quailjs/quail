@@ -540,7 +540,7 @@ class formWithRequiredLabel extends QuailCustomTest {
   
   function run() {
     foreach(pq('label') as $el) {
-      if(strpos(pq($el)->text(), '*') !== false) {
+      if(strpos(pq($el)->text(), '*') !== false || pq($el)->hasClass('required')) {
         if(!pq('#'. pq($el)->attr('for'))->length || !pq('#'. pq($el)->attr('for'))->attr('aria-required')) {
           $this->objects[] = pq($el);
         }
@@ -575,7 +575,7 @@ class imgMapAreasHaveDuplicateLink extends QuailCustomTest {
 class tableUseColGroup extends QuailCustomTest {
   function run() {
     foreach(pq('table') as $el) {
-      if($this->isDataTable(pq($el)) && !pq($el)->find('colgroup')) {
+      if($this->isDataTable(pq($el)) && !pq($el)->find('colgroup')->length) {
         $this->objects[] = pq($el);
       }
     }
