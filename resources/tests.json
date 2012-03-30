@@ -818,6 +818,10 @@
     "type":"selector",
     "selector":"body:not(body:has(a:first[href^=#]))"
   },
+  "svgContainsTitle":{
+    "type":"selector",
+    "selector":"svg:not(svg:has(title))"
+  }
   "tabIndexFollowsLogicalOrder":{
     "type":"custom",
     "callback":"tabIndexFollowsLogicalOrder"

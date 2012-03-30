@@ -14,7 +14,7 @@ class QuailTests extends UnitTestCase {
  		            ? 'http'
  		            : 'https';
  		$contents = file_get_contents('../../testfiles/quail/'. $file);
-    $quail = new Quail($contents, $protocol .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '../../testfiles/oac/' . $file, array($test));
+    $quail = new Quail($contents, $protocol .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '../../testfiles/quail/' . $file, array($test));
 		$quail->runTests();
 
 		return $quail->getRawResults($test);
@@ -35,6 +35,16 @@ class QuailTests extends UnitTestCase {
 		if(is_object($results[0])) {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'p');
     }	
+	}
+	
+	function test_svgContainsTitle() {
+		$results = $this->getTest('svgContainsTitle-fail.html', 'svgContainsTitle');
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'svg');
+    }
+		$results = $this->getTest('svgContainsTitle-pass.html', 'svgContainsTitle');
+		$this->assertTrue(count($results) == 0);
 	}
 	
 }

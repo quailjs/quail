@@ -668,10 +668,18 @@ class QuailEventTest extends QuailCustomTest {
 
 class QuailColorTest extends QuailTest {
   
+  protected $color_names;
+  
   function run() {
     
   }
-  
+  protected function getColorName() {
+    global $quail_color_text;
+    if(!$quail_color_text) {
+      $quail_color_text = json_decode(file_get_contents('../../resources/strings/colors.json'));
+    }
+    $this->color_names = $quail_color_text;
+  }
 }
 
 class QuailPlaceholderTest extends QuailCustomTest {
