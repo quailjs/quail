@@ -163,7 +163,7 @@ class QuailTest {
   }
   
   function reportSingleSelector($selector) {
-    foreach(pq($selector) as $object) {
+    foreach($this->q($selector) as $object) {
       $this->objects[] = pq($object);
     }
   }
