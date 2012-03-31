@@ -14,7 +14,7 @@ class QuailSelectorTest extends QuailTest {
 
 class aAdjacentWithSameResourceShouldBeCombined extends QuailCustomTest {
   function run() {
-    foreach(pq('a') as $el) {
+    foreach($this->q('a') as $el) {
       if(pq($el)->next('a')->attr('href') == pq($el)->attr('href')) {
         $this->objects[] = pq($el);
       }
@@ -24,7 +24,7 @@ class aAdjacentWithSameResourceShouldBeCombined extends QuailCustomTest {
 
 class appletContainsTextEquivalent extends QuailCustomTest {
   function run() {
-    foreach(pq('applet[alt=], applet:not(applet[alt])') as $el) {
+    foreach($this->q('applet[alt=], applet:not(applet[alt])') as $el) {
       if(!strlen(trim(pq($el)->text()))) {
         $this->objects[] = pq($el);
       }
@@ -34,7 +34,7 @@ class appletContainsTextEquivalent extends QuailCustomTest {
 
 class aImgAltNotRepetative extends QuailCustomTest {
   function run() {
-    foreach(pq('a img[alt]') as $el) {
+    foreach($this->q('a img[alt]') as $el) {
       if(trim(pq($el)->attr('alt')) == trim(pq($el)->parent('a')->text())) {
         $this->objects[] = pq($el)->parent('a');
       }
@@ -47,7 +47,7 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
   protected $redundant;
   
   function run() {
-    foreach(pq('a') as $el) {
+    foreach($this->q('a') as $el) {
       $text = '';
       if(pq($el)->find('img:first')->length) {
         $text = pq($el)->find('img:first')->text();
@@ -73,7 +73,7 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
 
 class aLinksAreSeperatedByPrintableCharacters extends QuailCustomTest {
   function run() {
-    foreach(pq('a') as $el) {
+    foreach($this->q('a') as $el) {
 		  $this->objects[] = pq($el);
 	  }
   }
@@ -82,7 +82,7 @@ class aLinksAreSeperatedByPrintableCharacters extends QuailCustomTest {
 class aMustContainText extends QuailCustomTest {
   
   function run() {
-    foreach(pq('a') as $el) {
+    foreach($this->q('a') as $el) {
       if(!$this->containsReadableText(pq($el)) && !(pq($el)->attr('name') && !pq($el)->attr('href'))) {
         $this->objects[] = pq($el);
       }
@@ -96,7 +96,7 @@ class aSuspiciousLinkText extends QuailCustomTest {
   
   function run() {
     $this->getStrings();
-    foreach(pq('a') as $el) {
+    foreach($this->q('a') as $el) {
       if(in_array(trim(strip_tags(pq($el)->html())), $this->suspicious)) {
         $this->objects[] = pq($el);
       }
@@ -112,7 +112,7 @@ class aSuspiciousLinkText extends QuailCustomTest {
 class blockquoteUseForQuotations extends QuailCustomTest {
 
 	function run() {
-		foreach(pq('p') as $el) {
+		foreach($this->q('p') as $el) {
 			if(in_array(substr(trim(pq($el)->text()), 0, 1), array('"', "'")) &&
 			   in_array(substr(trim(pq($el)->text()), -1, 1), array('"', "'"))) {
 				$this->objects[] = pq($el);
@@ -127,11 +127,11 @@ class documentAbbrIsUsed extends QuailCustomTest {
   protected $acronym_tag = 'abbr';
   
   function run() {
-    foreach(pq($this->acronym_tag .'[title]') as $el) {
+    foreach($this->q($this->acronym_tag .'[title]') as $el) {
 			$predefined[strtoupper(trim(pq($el)->text()))] = pq($el)->attr('title');
 		}
 		$already_reported = array();
-		foreach(pq('p, div, h1, h2, h3, h4, h5') as $el) {
+		foreach($this->q('p, div, h1, h2, h3, h4, h5') as $el) {
 			$words = explode(' ', pq($el)->text());
 			if(count($words) > 1 && strtoupper(pq($el)->text()) != pq($el)->text()) {
 				foreach($words as $word) {
@@ -212,7 +212,7 @@ class documentVisualListsAreMarkedUp extends QuailCustomTest {
   protected $list_cues = array('*', '<br>*', '¥', '&#8226');
   
   function run() {
-    foreach(pq('p, div, h1, h2, h3, h4, h5, h6') as $el) {
+    foreach($this->q('p, div, h1, h2, h3, h4, h5, h6') as $el) {
       foreach($this->list_cues as $cue) {
 				$first = stripos(pq($el)->text(), $cue);
 				$second = strripos(pq($el)->text(), $cue);
@@ -230,7 +230,7 @@ class emoticonsExcessiveUse extends QuailCustomTest {
   
   function run() {
     $this->getEmoticons();
-    foreach(pq('p, div, h1, h2, h3, h4, h5,h6') as $el) {
+    foreach($this->q('p, div, h1, h2, h3, h4, h5,h6') as $el) {
 			$words = explode(' ', pq($el)->text());
 			foreach($words as $word) {
 				if(in_array($word, $this->emoticons)) {
@@ -256,7 +256,7 @@ class emoticonsMissingAbbr extends emoticonsExcessiveUse {
   
   function run() {
     $this->getEmoticons();
-    foreach(pq('p, div, h1, h2, h3, h4, h5,h6') as $el) {
+    foreach($this->q('p, div, h1, h2, h3, h4, h5,h6') as $el) {
 			$clone = pq($el)->clone();
 			$clone->remove('abbr, acronym');
 			$words = explode(' ', $clone->text());
@@ -278,7 +278,7 @@ class inputImageAltNotRedundant extends QuailCustomTest {
   
   function run() {
     $this->getRedundantString();
-    foreach(pq('input[type=image][alt]') as $el) {
+    foreach($this->q('input[type=image][alt]') as $el) {
       if(in_array(strtolower(trim(pq($el)->attr('alt'))), $this->redundant)) {
         $this->objects[] = pq($el);
       }
@@ -297,7 +297,7 @@ class inputImageAltNotRedundant extends QuailCustomTest {
 class imgAltIsDifferent extends QuailCustomTest {
   
   function run() {
-    foreach(pq('img') as $el) {
+    foreach($this->q('img') as $el) {
       if(pq($el)->attr('src') == pq($el)->attr('alt')) {
         $this->objects[] = pq($el);
       }
@@ -308,7 +308,7 @@ class imgAltIsDifferent extends QuailCustomTest {
 class imgAltIsTooLong extends QuailCustomTest {
   
   function run() {
-    foreach(pq('img[alt]') as $el) {
+    foreach($this->q('img[alt]') as $el) {
       if(strlen(pq($el)->attr('alt')) > 100) {
         $this->objects[] = pq($el);
       }
@@ -320,7 +320,7 @@ class imgAltIsTooLong extends QuailCustomTest {
 class imgImportantNoSpacerAlt extends QuailCustomTest {
   
   function run() {
-    foreach(pq('img[alt]') as $el) {
+    foreach($this->q('img[alt]') as $el) {
       if($this->unreadable(pq($el)->attr('alt')) && 
          $el->hasAttribute('width') &&
          $el->hasAttribute('height') &&
@@ -338,7 +338,7 @@ class imgGifNoFlicker extends QuailCustomTest {
   var $gif_control_extension = "/21f904[0-9a-f]{2}([0-9a-f]{4})[0-9a-f]{2}00/";
   
   function run() {
-    foreach(pq('img[src$=.gif]') as $el) {
+    foreach($this->q('img[src$=.gif]') as $el) {
       $file = file_get_contents($this->getPath(pq($el)->attr('src')));
 			if($file) {
 				  $file = bin2hex($file);
@@ -367,7 +367,7 @@ class imgGifNoFlicker extends QuailCustomTest {
 class imgHasLongDesc extends QuailCustomTest {
   
   function run() {
-    foreach(pq('img[longdesc]') as $el) {
+    foreach($this->q('img[longdesc]') as $el) {
       if(pq($el)->attr('longdesc') == pq($el)->attr('alt') ||
         !$this->validURL(pq($el)->attr('longdesc'))) {
         $this->objects[] = pq($el);
@@ -379,7 +379,7 @@ class imgHasLongDesc extends QuailCustomTest {
 class imgAltNotEmptyInAnchor extends QuailCustomTest {
   
   function run() {
-    foreach(pq('a img') as $el) {
+    foreach($this->q('a img') as $el) {
       if(!$el->hasAttribute('alt') || $this->unreadable(pq($el)->attr('alt'))) {
         if($this->unreadable(pq($el)->parent('a:first')->html())) {
           $this->objects[] = pq($el);
@@ -392,7 +392,7 @@ class imgAltNotEmptyInAnchor extends QuailCustomTest {
 class labelMustBeUnique extends QuailCustomTest {
   function run() {
     $labels = array();
-    foreach(pq('label[for]') as $el) {
+    foreach($this->q('label[for]') as $el) {
       if(isset($labels[pq($el)->attr('for')])) {
         $this->objects[] = pq($el);
       }
@@ -403,7 +403,7 @@ class labelMustBeUnique extends QuailCustomTest {
 
 class listNotUsedForFormatting extends QuailCustomTest {
   function run() {
-    foreach(pq('ol, ul') as $el) {
+    foreach($this->q('ol, ul') as $el) {
       if(pq($el)->find('li')->length < 2) {
         $this->objects[] = pq($el);
       }
@@ -413,7 +413,7 @@ class listNotUsedForFormatting extends QuailCustomTest {
 
 class preShouldNotBeUsedForTabularLayout extends QuailCustomTest {
   function run() {
-    foreach(pq('pre') as $el) {
+    foreach($this->q('pre') as $el) {
       $rows = preg_split('/[\n\r]+/', pq($el)->text);
 			if(count($rows) > 1 && strpos(pq($el)->text(), array('  ', "\t"))) {
 				$this->objects[] = pq($el);
@@ -426,7 +426,7 @@ class tabIndexFollowsLogicalOrder extends QuailCustomTest {
   
   function run() {
     $index = 0;
-		foreach(pq('input, textarea, select') as $el) {
+		foreach($this->q('input, textarea, select') as $el) {
 			if(is_numeric(pq($el)->attr('tabindex'))
 				&& intval(pq($el)->attr('tabindex')) != $index + 1) {
 					$this->objects[] = pq($el);
@@ -439,7 +439,7 @@ class tabIndexFollowsLogicalOrder extends QuailCustomTest {
 class tableLayoutHasNoSummary extends QuailCustomTest {
   
   function run() {
-    foreach(pq('table[summary]') as $el) {
+    foreach($this->q('table[summary]') as $el) {
       if(!$this->isDataTable(pq($el))) {
         $this->objects[] = pq($el);
       }
@@ -450,7 +450,7 @@ class tableLayoutHasNoSummary extends QuailCustomTest {
 class tableLayoutHasNoCaption extends QuailCustomTest {
   
   function run() {
-    foreach(pq('table') as $el) {
+    foreach($this->q('table') as $el) {
       if(!$this->isDataTable(pq($el)) && pq($el)->find('caption')->length) {
         $this->objects[] = pq($el);
       }
@@ -461,7 +461,7 @@ class tableLayoutHasNoCaption extends QuailCustomTest {
 class tableLayoutMakesSenseLinearized extends QuailCustomTest {
   
   function run() {
-    foreach(pq('table') as $el) {
+    foreach($this->q('table') as $el) {
       if(!$this->isDataTable(pq($el))) {
         $this->objects[] = pq($el);
       }
@@ -471,7 +471,7 @@ class tableLayoutMakesSenseLinearized extends QuailCustomTest {
 
 class tableLayoutDataShouldNotHaveTh extends QuailCustomTest {
   function run() {
-    foreach(pq('table') as $el) {
+    foreach($this->q('table') as $el) {
       if(!$this->isDataTable(pq($el)) && pq($el)->find('th')->length) {
         $this->objects[] = pq($el);
       }
@@ -481,7 +481,7 @@ class tableLayoutDataShouldNotHaveTh extends QuailCustomTest {
 
 class tableUsesAbbreviationForHeader extends QuailCustomTest {
   function run() {
-    foreach(pq('th') as $el) {
+    foreach($this->q('th') as $el) {
       if(!pq($el)->find('abbr, acronym')->length && strlen(trim(pq($el)->html())) > 20) {
         $this->objects[] = pq($el);
       }
@@ -491,8 +491,8 @@ class tableUsesAbbreviationForHeader extends QuailCustomTest {
 
 class tableHeaderLabelMustBeTerse extends QuailCustomTest {
   function run() {
-    foreach(pq('th, table tr:first td') as $el) {
-      if(strlen(trim(pq($el)->text())) > 20) {
+    foreach($this->q('th, table tr:first td') as $el) {
+      if(strlen(trim(pq($el)->text())) > 20 && (!$el->hasAttribute('abbr') || strlen(trim(pq($el)->attr('abbr'))) > 20)) {
         $this->objects[] = pq($el);
       }
     }
@@ -502,7 +502,7 @@ class tableHeaderLabelMustBeTerse extends QuailCustomTest {
 class tableSummaryDoesNotDuplicateCaption extends QuailCustomTest {
   
   function run() {
-    foreach(pq('table[summary]:has(caption)') as $el) {
+    foreach($this->q('table[summary]:has(caption)') as $el) {
       if(strtolower(trim(pq($el)->attr('summary'))) == strtolower(trim(pq($el)->find('caption:first')->text()))) {
         $this->objects[] = pq($el);
       }
@@ -512,9 +512,9 @@ class tableSummaryDoesNotDuplicateCaption extends QuailCustomTest {
 
 class tableWithMoreHeadersUseID extends QuailCustomTest {
   function run() {
-    foreach(pq('table:has(th)') as $el) {
+    foreach($this->q('table:has(th)') as $el) {
       $rows = 0;
-      foreach(pq($el)->find('tr') as $tr) {
+      foreach($this->q($el)->find('tr') as $tr) {
         if(pq($tr)->find('th')) {
           $rows++;
         }
@@ -528,7 +528,7 @@ class tableWithMoreHeadersUseID extends QuailCustomTest {
 
 class tabularDataIsInTable extends QuailCustomTest {
   function run() {
-    foreach(pq('pre') as $el) {
+    foreach($this->q('pre') as $el) {
       if(strpos(pq($el)->text(), "\t") !== FALSE) {
         $this->objects[] = pq($el);
       }
@@ -539,7 +539,7 @@ class tabularDataIsInTable extends QuailCustomTest {
 class formWithRequiredLabel extends QuailCustomTest {
   
   function run() {
-    foreach(pq('label') as $el) {
+    foreach($this->q('label') as $el) {
       if(strpos(pq($el)->text(), '*') !== false || pq($el)->hasClass('required')) {
         if(!pq('#'. pq($el)->attr('for'))->length || !pq('#'. pq($el)->attr('for'))->attr('aria-required')) {
           $this->objects[] = pq($el);
@@ -553,10 +553,10 @@ class imgMapAreasHaveDuplicateLink extends QuailCustomTest {
   
   function run() {
     $links = array();
-    foreach(pq('a') as $el) {
+    foreach($this->q('a') as $el) {
       $links[pq($el)->attr('href')] = pq($el)->attr('href');
     }
-    foreach(pq('img[usemap]') as $el) {
+    foreach($this->q('img[usemap]') as $el) {
       $map = (pq(pq($el)->attr('usemap'))->length)
              ? pq(pq($el)->attr('usemap'))
              : pq('map[name='. str_replace('#', '', pq($el)->attr('usemap')) .']');
@@ -574,7 +574,7 @@ class imgMapAreasHaveDuplicateLink extends QuailCustomTest {
 
 class tableUseColGroup extends QuailCustomTest {
   function run() {
-    foreach(pq('table') as $el) {
+    foreach($this->q('table') as $el) {
       if($this->isDataTable(pq($el)) && !pq($el)->find('colgroup')->length) {
         $this->objects[] = pq($el);
       }
@@ -586,7 +586,7 @@ class tableUseColGroup extends QuailCustomTest {
 class pNotUsedAsHeader extends QuailCustomTest {
   
   function run() {
-    foreach(pq('p') as $el) {
+    foreach($this->q('p') as $el) {
       if(in_array(pq($el)->firstChild()->tagName, array('strong', 'b', 'en', 'i'))
          && pq($el)->firstChild()->text() == pq($el)->text()) {
           $this->objects[] = pq($el);
@@ -597,7 +597,7 @@ class pNotUsedAsHeader extends QuailCustomTest {
 
 class textIsNotSmall extends QuailCustomTest {
   function run() {
-    foreach(pq('body *') as $el) {
+    foreach($this->q('body *') as $el) {
       $size = pq($el)->css('font-size');
       if($size = $this->convertFontSize($size) && $size < 11) {
         $this->objects[] = pq($el);
@@ -609,7 +609,7 @@ class textIsNotSmall extends QuailCustomTest {
 class QuailLabelTest extends QuailCustomTest {
   
   function run() {
-    foreach(pq($this->options['selector']) as $el) {
+    foreach($this->q($this->options['selector']) as $el) {
       if(!pq($el)->parent('label')->length) {
         if(!pq($el)->attr('id') || pq('label[for='. str_replace('#', '', pq($el)->attr('id')) .']')->length == 0) {
           $this->objects[] = pq($el);
@@ -622,7 +622,7 @@ class QuailLabelTest extends QuailCustomTest {
 class QuailLabelProximityTest extends QuailCustomTest {
   
   function run() {
-    foreach(pq($this->options['selector']) as $el) {
+    foreach($this->q($this->options['selector']) as $el) {
       $label = pq('label[for='. str_replace('#', '', pq($el)->attr('id')) .']');
       if($label->length) {
         $this->objects[] = pq($el);
@@ -636,7 +636,7 @@ class QuailHeaderTest extends QuailCustomTest {
   function run() {
     $current = intval(substr($this->options['selector'], -1, 1));
     $next_heading = false;
-    foreach(pq('h1, h2, h3, h4, h5, h6') as $el) {
+    foreach($this->q('h1, h2, h3, h4, h5, h6') as $el) {
       
       $number = intval(substr($el->tagName, -1, 1));
       if($next_heading && ($number - 1 > $current || $number + 1 < $current)) {
@@ -655,7 +655,7 @@ class QuailHeaderTest extends QuailCustomTest {
 class QuailEventTest extends QuailCustomTest {
   
   function run() {
-    foreach(pq($this->options['selector']) as $el) {
+    foreach($this->q($this->options['selector']) as $el) {
       if(pq($el)->attr($this->options['searchEvent'])) {
         if(!isset($this->options['correspondingEvent']) || !pq($el)->attr($this->options['correspondingEvent'])) {
           $this->objects[] = pq($el);
@@ -666,20 +666,199 @@ class QuailEventTest extends QuailCustomTest {
   
 }
 
-class QuailColorTest extends QuailTest {
+class QuailColorTest extends QuailCustomTest {
   
   protected $color_names;
   
   function run() {
-    
+    $this->getColorNames();
+    foreach($this->q($this->options['selector']) as $el) {
+      if($this->options['algorithim'] == 'wai') {
+        if( $this->getWaiErtContrast(pq($el)->css('color'), pq($el)->css('background-color')) < 500) {
+				  $this->objects[] = pq($el);
+			  }
+			  elseif($this->getWaiErtBrightness(pq($el)->css('color'), pq($el)->css('background-color')) < 125) {
+				  $this->objects[] = pq($el);
+  		  }
+      }
+    }
+    if(isset($this->options['bodyForegroundAttribute']) && isset($this->options['bodyBackgroundAttribute'])) {
+      if($this->options['algorithim'] == 'wai') {
+        $foreground = pq('body:first')->attr($this->options['bodyForegroundAttribute']);
+        $background = pq('body:first')->attr($this->options['bodyBackgroundAttribute']);
+        if( $this->getWaiErtContrast($foreground, $background) < 500) {
+				  $this->objects[] = pq($el);
+			  }
+			  elseif($this->getWaiErtBrightness($foreground, $background) < 125) {
+				  $this->objects[] = pq($el);
+  		  }
+      }
+    }
   }
-  protected function getColorName() {
+  protected function getColorNames() {
     global $quail_color_text;
     if(!$quail_color_text) {
       $quail_color_text = json_decode(file_get_contents('../../resources/strings/colors.json'));
     }
     $this->color_names = $quail_color_text;
   }
+  
+  /**
+	*	Helper method that finds the luminosity between the provided
+	*	foreground and background parameters.
+	*	@param string $foreground The HEX value of the foreground color
+	*	@param string $background The HEX value of the background color
+	*	@return float The luminosity contrast ratio between the colors
+	*/
+	function getLuminosity($foreground, $background) {
+		if($foreground == $background) return 0;
+		$fore_rgb = $this->getRGB($foreground);
+		$back_rgb = $this->getRGB($background);
+		return $this->luminosity($fore_rgb['r'], $back_rgb['r'],
+							    $fore_rgb['g'], $back_rgb['g'],
+							    $fore_rgb['b'], $back_rgb['b']);
+	}
+	
+	/**
+	*	Returns the luminosity between two colors
+	*	@param string $r The first Red value
+	*	@param string $r2 The second Red value
+	*	@param string $g The first Green value
+	*	@param string $g2 The second Green value
+	*	@param string $b The first Blue value
+	*	@param string $b2 The second Blue value
+	*	@return float The luminosity contrast ratio between the colors
+	*/
+	function luminosity($r,$r2,$g,$g2,$b,$b2) {
+		$RsRGB = $r/255;
+		$GsRGB = $g/255;
+		$BsRGB = $b/255;
+		$R = ($RsRGB <= 0.03928) ? $RsRGB/12.92 : pow(($RsRGB+0.055)/1.055, 2.4);
+		$G = ($GsRGB <= 0.03928) ? $GsRGB/12.92 : pow(($GsRGB+0.055)/1.055, 2.4);
+		$B = ($BsRGB <= 0.03928) ? $BsRGB/12.92 : pow(($BsRGB+0.055)/1.055, 2.4);
+	
+		$RsRGB2 = $r2/255;
+		$GsRGB2 = $g2/255;
+		$BsRGB2 = $b2/255;
+		$R2 = ($RsRGB2 <= 0.03928) ? $RsRGB2/12.92 : pow(($RsRGB2+0.055)/1.055, 2.4);
+		$G2 = ($GsRGB2 <= 0.03928) ? $GsRGB2/12.92 : pow(($GsRGB2+0.055)/1.055, 2.4);
+		$B2 = ($BsRGB2 <= 0.03928) ? $BsRGB2/12.92 : pow(($BsRGB2+0.055)/1.055, 2.4);
+	
+		if ($r+$g+$b <= $r2+$g2+$b2) {
+		$l2 = (.2126 * $R + 0.7152 * $G + 0.0722 * $B);
+		$l1 = (.2126 * $R2 + 0.7152 * $G2 + 0.0722 * $B2);
+		} else {
+		$l1 = (.2126 * $R + 0.7152 * $G + 0.0722 * $B);
+		$l2 = (.2126 * $R2 + 0.7152 * $G2 + 0.0722 * $B2);
+		}
+		
+		$luminosity = round(($l1 + 0.05)/($l2 + 0.05),2);
+		return $luminosity;
+	}
+
+
+	/**
+	*	Returns the decimal equivalents for a HEX color
+	*	@param string $color The hex color value
+	*	@return array An array where 'r' is the Red value, 'g' is Green, and 'b' is Blue
+	*/
+	function getRGB($color) {
+		$color =  $this->convertColor($color);
+		$c = str_split($color, 2);
+		if(count($c) != 3) {
+			return false;
+		}
+		$results = array('r' => hexdec($c[0]), 'g' => hexdec($c[1]), 'b' => hexdec($c[2]));
+		return $results;
+	}
+	
+	/**
+	*	Converts multiple color or backround styles into a simple hex string
+	*	@param string $color The color attribute to convert (this can also be a multi-value css background value)
+	*	@return string A standard CSS hex value for the color
+	*/
+	function convertColor($color) {
+		$color = trim($color);
+		if(strpos($color, ' ') !== false) {
+			$colors = explode(' ', $color);
+			foreach($colors as $background_part) {
+				if(substr(trim($background_part), 0, 1) == '#' ||
+					in_array(trim($background_part), array_keys($this->color_names)) ||
+					strtolower(substr(trim($background_part), 0, 3)) == 'rgb') {
+						$color = $background_part;
+					}
+			}
+		}
+		//Normal hex color
+		if(substr($color, 0, 1) == '#') {
+			if(strlen($color) == 7) {
+				return str_replace('#', '', $color);
+			}
+			elseif (strlen($color == 4)) {
+				return substr($color, 1, 1).substr($color, 1, 1).
+					   substr($color, 2, 1).substr($color, 2, 1).
+					   substr($color, 3, 1).substr($color, 3, 1);
+			}
+		}
+		//Named Color
+		if(in_array($color, array_keys($this->color_names))) {
+			return $this->color_names[$color];
+		}
+		//rgb values
+		if(strtolower(substr($color, 0, 3)) == 'rgb') {
+			$colors = explode(',', trim(str_replace('rgb(', '', $color), '()'));
+			
+			$r = intval($colors[0]); 
+			$g = intval($colors[1]);
+		    $b = intval($colors[2]);
+		
+		    $r = dechex($r<0?0:($r>255?255:$r));
+		    $g = dechex($g<0?0:($g>255?255:$g));
+		    $b = dechex($b<0?0:($b>255?255:$b));
+		
+		    $color = (strlen($r) < 2?'0':'').$r;
+		    $color .= (strlen($g) < 2?'0':'').$g;
+		    $color .= (strlen($b) < 2?'0':'').$b; 
+		    return $color;
+		}
+	}
+	
+	/**
+	*	Returns the WAIERT contrast between two colors
+	*	@see GetLuminosity	
+	*/
+	function getWaiErtContrast($foreground, $background) {
+		$fore_rgb = $this->getRGB($foreground);
+		$back_rgb = $this->getRGB($background);
+		$diffs = $this->getWaiDiffs($fore_rgb, $back_rgb);
+		
+		return $diffs['red'] + $diffs['green'] + $diffs['blue'];
+	}
+	
+	/**
+	*	Returns the WAI ERT Brightness between two colors
+	*	
+	*/
+	function getWaiErtBrightness($foreground, $background) {
+		$fore_rgb = $this->getRGB($foreground);
+		$back_rgb = $this->getRGB($background);
+		$color = $this->getWaiDiffs($fore_rgb, $back_rgb);
+		return (($color['red'] * 299) + ($color['green'] * 587) + ($color['blue'] * 114)) / 1000;
+	}
+	
+	function getWaiDiffs($fore_rgb, $back_rgb) {
+		$red_diff = ($fore_rgb['r'] > $back_rgb['r']) 
+						? $fore_rgb['r'] - $back_rgb['r'] 
+						: $back_rgb['r'] - $fore_rgb['r'];
+		$green_diff = ($fore_rgb['g'] > $back_rgb['g']) 
+						? $fore_rgb['g'] - $back_rgb['g'] 
+						: $back_rgb['g'] - $fore_rgb['g'];		
+
+		$blue_diff = ($fore_rgb['b'] > $back_rgb['b']) 
+						? $fore_rgb['b'] - $back_rgb['b'] 
+						: $back_rgb['b'] - $fore_rgb['b'];
+		return array('red' => $red_diff, 'green' => $green_diff, 'blue' => $blue_diff);
+	}
 }
 
 class QuailPlaceholderTest extends QuailCustomTest {
@@ -688,7 +867,7 @@ class QuailPlaceholderTest extends QuailCustomTest {
   
   function run() {
     $this->getPlaceholders();
-    foreach(pq($this->options['selector']) as $el) {
+    foreach($this->q($this->options['selector']) as $el) {
       if($this->options['attribute']) {
         $attr = $this->options['attribute'];
         if($this->options['empty'] && $this->unreadable(pq($el)->attr($attr))) {

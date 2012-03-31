@@ -45,7 +45,7 @@
   },
   "aMustNotHaveJavascriptHref":{
     "type":"selector",
-    "selector":"a[attribute^=javascript:]"
+    "selector":"a[href^='javascript:']"
   },
   "aSuspiciousLinkText":{
     "type":"custom",
@@ -196,7 +196,9 @@
   "documentColorWaiActiveLinkAlgorithim":{
     "type":"color",
     "algorithim":"wai",
-    "selector":"a:active"
+    "selector":"a:active",
+    "bodyForegroundAttribute": "alink",
+    "bodyBackgroundAttribute": "bgcolor"
   },
   "documentColorWaiAlgorithim":{
     "type":"color",
@@ -206,7 +208,9 @@
   "documentColorWaiLinkAlgorithim":{
     "type":"color",
     "algorithim":"wai",
-    "selector":"a"
+    "selector":"a",
+    "bodyForegroundAttribute": "link",
+    "bodyBackgroundAttribute": "bgcolor"
   },
   "documentColorWaiVisitedLinkAlgorithim":{
     "type":"color",
@@ -594,8 +598,10 @@
     "callback":"labelMustBeUnique"
   },
   "labelMustNotBeEmpty":{
-    "type":"selector",
-    "selector":"label:empty"
+    "type":"placeholder",
+    "selector":"label",
+    "content":true,
+    "empty":true
   },
   "labelsAreAssignedToAnInput":{
     "type":"custom",
@@ -808,7 +814,7 @@
   },
   "selectWithOptionsHasOptgroup":{
     "type":"selector",
-    "selector":"select option:nth-child(5):parent(select)"
+    "selector":"select option:nth-child(5):parent(select):not(select:has(optgroup))"
   },
   "siteMap":{
     "type":"selector",
@@ -821,7 +827,7 @@
   "svgContainsTitle":{
     "type":"selector",
     "selector":"svg:not(svg:has(title))"
-  }
+  },
   "tabIndexFollowsLogicalOrder":{
     "type":"custom",
     "callback":"tabIndexFollowsLogicalOrder"

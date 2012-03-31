@@ -158,6 +158,10 @@ class QuailTest {
     $this->run();
   }
   
+  function q($selector) {
+    return pq($selector .','. strtoupper($selector));
+  }
+  
   function reportSingleSelector($selector) {
     foreach(pq($selector) as $object) {
       $this->objects[] = pq($object);

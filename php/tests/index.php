@@ -1,5 +1,5 @@
 <?php
-//error_reporting(E_WARNING);
+error_reporting(E_WARNING);
 if(!file_exists('simpletest/unit_tester.php')) {
 	die('You must install simpletest [http://www.simpletest.org/] in the directory "tests".');
 }
@@ -2015,7 +2015,7 @@ class QuailOACTests extends UnitTestCase {
 		$results = $this->getTest('153-1.html', 'tableHeaderLabelMustBeTerse');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'th');
+  		$this->assertTrue(strtolower($results[0]->elements[0]->tagName) == 'th');
     }
 		$results = $this->getTest('153-2.html', 'tableHeaderLabelMustBeTerse');
 		$this->assertTrue(count($results) == 0);
@@ -2156,7 +2156,7 @@ class QuailOACTests extends UnitTestCase {
 		$results = $this->getTest('169-1.html', 'selectWithOptionsHasOptgroup');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'select');
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'option');
     }
 		$results = $this->getTest('169-2.html', 'selectWithOptionsHasOptgroup');
 		$this->assertTrue(count($results) == 0);
@@ -2606,6 +2606,9 @@ class QuailOACTests extends UnitTestCase {
 
 		$results = $this->getTest('227-3.html', 'documentColorWaiLinkAlgorithim');
 		$this->assertTrue(count($results) == 0);
+		
+		$results = $this->getTest('227-3.html', 'documentColorWaiLinkAlgorithim');
+		$this->assertTrue(count($results));
 	}
 
    //228
