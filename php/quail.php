@@ -72,7 +72,10 @@ class Quail {
   }
   
   public function lowercaseTags($text) {
-    return strtolower($text[0]);
+    if(strpos($text[0], '!') === FALSE && strpos($text[0], '?') === FALSE) {
+      return strtolower($text[0]);
+    }
+    return $text[0];
   }
   
   public function runTests() {
