@@ -66,9 +66,8 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
   protected function getRedundantString() {
     global $quail_redundant_text;
     if(!$quail_redundant_text) {
-      $quail_redundant_text = json_decode(file_get_contents('../../resources/strings/redundant.json'));
+      $quail_redundant_text = (array)json_decode(file_get_contents('../../resources/strings/redundant.json'));
     }
-    
     $this->redundant = (array)$quail_redundant_text['link'];
   }
 }
@@ -101,14 +100,18 @@ class aSuspiciousLinkText extends QuailCustomTest {
   function run() {
     $this->getStrings();
     foreach($this->q('a') as $el) {
-      if(in_array(trim(strip_tags(pq($el)->html())), $this->suspicious)) {
+      if(in_array(trim(pq($el)->text()), $this->suspicious)) {
         $this->objects[] = pq($el);
       }
     }
   }
   
   protected function getStrings() {
-    $this->suspicious = json_decode(file_get_contents('../../resources/strings/suspicious_links.json'));
+    global $quail_supicious_text;
+    if(!$quail_supicious_text) {
+      $quail_supicious_text = (array)json_decode(file_get_contents('../../resources/strings/suspicious_links.json'));
+    }
+    $this->suspicious = $quail_supicious_text;
   }
 
 }
@@ -497,8 +500,8 @@ class tableLayoutDataShouldNotHaveTh extends QuailCustomTest {
 
 class tableUsesAbbreviationForHeader extends QuailCustomTest {
   function run() {
-    foreach($this->q('th') as $el) {
-      if(!pq($el)->find('abbr, acronym')->length && strlen(trim(pq($el)->html())) > 20) {
+    foreach($this->q('th:not(th[abbr])') as $el) {
+      if(strlen(trim(pq($el)->text())) > 20) {
         $this->objects[] = pq($el);
       }
     }
@@ -583,7 +586,7 @@ class formWithRequiredLabel extends QuailCustomTest {
   protected function loadString() {
     global $quail_redundant_text;
     if(!$quail_redundant_text) {
-      $quail_redundant_text = json_decode(file_get_contents('../../resources/strings/redundant.json'));
+      $quail_redundant_text = (array)json_decode(file_get_contents('../../resources/strings/redundant.json'));
     }
     
     $this->redundant = (array)$quail_redundant_text['required'];

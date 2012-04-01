@@ -3,6 +3,7 @@
 //namespace Quail;
 
 require_once __DIR__ . '/phpquery/phpQuery/phpQuery.php';
+require_once __DIR__ . '/htmLawed/htmLawed.php';
 require_once 'quailTests.php';
 
 class Quail {
@@ -12,6 +13,11 @@ class Quail {
    */
   protected $guideline = array();
   
+  /**
+   *
+   */
+  protected $html_config = array('valid_xhtml' => 1, 
+                                 'schemes' => '*:*' );
   
   /**
    * An array of quail tests, usually loaded fromt he test.json file.
@@ -62,7 +68,12 @@ class Quail {
     $this->html = $contents;
     $this->guideline = $guideline;
     $this->charset = $charset;
+    $contents = preg_replace_callback('/<([^ >]*)/', 'quail::lowercaseTags', $contents);
     $this->document = phpQuery::newDocumentXHTML($contents, $charset);
+  }
+  
+  public function lowercaseTags($text) {
+    return strtolower($text[0]);
   }
   
   public function runTests() {
@@ -159,7 +170,7 @@ class QuailTest {
   }
   
   function q($selector) {
-    return pq($selector .','. strtoupper($selector));
+    return pq($selector);
   }
   
   function reportSingleSelector($selector) {
