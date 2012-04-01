@@ -3,7 +3,6 @@
 //namespace Quail;
 
 require_once __DIR__ . '/phpquery/phpQuery/phpQuery.php';
-require_once __DIR__ . '/htmLawed/htmLawed.php';
 require_once 'quailTests.php';
 
 class Quail {
