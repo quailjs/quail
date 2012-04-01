@@ -57,7 +57,7 @@
   },
   "addressForAuthor":{
     "type":"selector",
-    "selector":"html:not(html:find(address a))"
+    "selector":"html:not(html:has(address))"
   },
   "addressForAuthorMustBeValid":{
     "type":"selector",
@@ -215,7 +215,9 @@
   "documentColorWaiVisitedLinkAlgorithim":{
     "type":"color",
     "algorithim":"wai",
-    "selector":"a:visited"
+    "selector":"a:visited",
+    "bodyForegroundAttribute": "vlink",
+    "bodyBackgroundAttribute": "bgcolor"
   },
   "documentContentReadableWithoutStylesheets":{
     "type":"selector",
@@ -281,8 +283,8 @@
     "selector":"body"
   },
   "embedHasAssociatedNoEmbed":{
-    "type":"selector",
-    "selector":"embed:not(embed:has(noembed), embed:not(body:has(noembed) embed)"
+    "type":"custom",
+    "callback":"embedHasAssociatedNoEmbed"
   },
   "embedMustHaveAltAttribute":{
     "type":"selector",
@@ -627,11 +629,11 @@
   },
   "linkUsedForAlternateContent":{
     "type":"selector",
-    "selector":"html:not(html head link[rel=alternate]:parent(html))"
+    "selector":"html:not(html:has(link[rel=alternate]))"
   },
   "linkUsedToDescribeNavigation":{
     "type":"selector",
-    "selector":"html:not(html head link[rel=alternate]:parent(html))"
+    "selector":"html:not(html:has(link[rel=index]))"
   },
   "listNotUsedForFormatting":{
     "type":"custom",
@@ -681,7 +683,7 @@
   },
   "objectMustHaveEmbed":{
     "type":"selector",
-    "selector":"object:not(object embed:parent(object))"
+    "selector":"object:not(object:has(embed)"
   },
   "objectMustHaveTitle":{
     "type":"selector",
@@ -711,7 +713,7 @@
   },
   "objectWithClassIDHasNoText":{
     "type":"selector",
-    "selector":"object[classid]"
+    "selector":"object[classid]:not(object[classid]:empty)"
   },
   "pNotUsedAsHeader":{
     "type":"custom",
@@ -842,7 +844,7 @@
   },
   "tableDataShouldHaveTh":{
     "type":"selector",
-    "selector":"table:not(table th:parent(table))"
+    "selector":"table:not(table:has(th))"
   },
   "tableHeaderLabelMustBeTerse":{
     "type":"custom",
@@ -850,7 +852,7 @@
   },
   "tableIsGrouped":{
     "type":"selector",
-    "selector":"table:not(table thead, table tbody, table tfoot)"
+    "selector":"table:not(table:has(thead), table:has(tbody), table:has(tfoot))"
   },
   "tableLayoutDataShouldNotHaveTh":{
     "type":"custom",
@@ -924,7 +926,7 @@
   },
   "svgContainsTitle":{
     "type":"selector",
-    "selector":"svg:not(svg title:parent(svg))"
+    "selector":"svg:not(svg:has(title))"
   },
   "videoProvidesCaptions":{
     "type":"selector",

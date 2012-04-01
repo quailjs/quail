@@ -47,12 +47,14 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
   protected $redundant;
   
   function run() {
+    $this->getRedundantString();
     foreach($this->q('a') as $el) {
       $text = '';
       if(pq($el)->find('img:first')->length) {
         $text = pq($el)->find('img:first')->text();
       }
       $text .= pq($el)->text();
+      $text = strtolower($text);
       foreach($this->redundant as $phrase) {
         if(strpos($text, $phrase) !== FALSE) {
           $this->objects[] = pq($el);
@@ -74,7 +76,9 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
 class aLinksAreSeperatedByPrintableCharacters extends QuailCustomTest {
   function run() {
     foreach($this->q('a') as $el) {
-		  $this->objects[] = pq($el);
+		  if(pq($el)->next('a')->length && $this->unreadable($el->nextSibling->wholeText)) {
+  		  $this->objects[] = pq($el);
+  		}
 	  }
   }
 }
@@ -224,16 +228,28 @@ class documentVisualListsAreMarkedUp extends QuailCustomTest {
   }
 }
 
+class embedHasAssociatedNoEmbed extends QuailCustomTest {
+  function run() {
+    if($this->q('noembed')->length) {
+      return null;
+    }
+    foreach($this->q('embed') as $el) {
+      $this->objects[] = pq($el);
+    }
+  }
+}
+
 class emoticonsExcessiveUse extends QuailCustomTest {
 
   protected $emoticons;
   
   function run() {
     $this->getEmoticons();
-    foreach($this->q('p, div, h1, h2, h3, h4, h5,h6') as $el) {
+    foreach($this->q('p, div, h1, h2, h3, h4, h5, h6') as $el) {
+			$count = 0;
 			$words = explode(' ', pq($el)->text());
 			foreach($words as $word) {
-				if(in_array($word, $this->emoticons)) {
+				if(in_array(trim($word), $this->emoticons)) {
 					$count++;
 					if($count > 4) { 
 						$this->objects[] = pq($el);	
@@ -414,8 +430,8 @@ class listNotUsedForFormatting extends QuailCustomTest {
 class preShouldNotBeUsedForTabularLayout extends QuailCustomTest {
   function run() {
     foreach($this->q('pre') as $el) {
-      $rows = preg_split('/[\n\r]+/', pq($el)->text);
-			if(count($rows) > 1 && strpos(pq($el)->text(), array('  ', "\t"))) {
+      $rows = preg_split('/[\n\r]+/', pq($el)->text());
+			if(count($rows) > 1 && (strpos(pq($el)->text(), "\t") !== FALSE || strpos(pq($el)->text(), '  ') !== FALSE)) {
 				$this->objects[] = pq($el);
 		  }
     }
@@ -440,7 +456,7 @@ class tableLayoutHasNoSummary extends QuailCustomTest {
   
   function run() {
     foreach($this->q('table[summary]') as $el) {
-      if(!$this->isDataTable(pq($el))) {
+      if(!$this->isDataTable(pq($el)) && !$this->unreadable(pq($el)->attr('summary'))) {
         $this->objects[] = pq($el);
       }
     }
@@ -538,14 +554,39 @@ class tabularDataIsInTable extends QuailCustomTest {
 
 class formWithRequiredLabel extends QuailCustomTest {
   
+  protected $redundant;
+  
   function run() {
+    $this->loadString();
+    $labels = array();
+    
     foreach($this->q('label') as $el) {
-      if(strpos(pq($el)->text(), '*') !== false || pq($el)->hasClass('required')) {
-        if(!pq('#'. pq($el)->attr('for'))->length || !pq('#'. pq($el)->attr('for'))->attr('aria-required')) {
-          $this->objects[] = pq($el);
+      $text = strtolower(pq($el)->text());
+      foreach($this->redundant as $required_text) {
+        if(strpos($text, $required_text) !== false || pq($el)->hasClass('required')) {
+          if(!pq('#'. pq($el)->attr('for'))->length || !pq('#'. pq($el)->attr('for'))->attr('aria-required')) {
+            $this->objects[] = pq($el);
+          }
         }
       }
+      if($current_style = $this->getStyleHash(pq($el)) != $last_style) {
+        $this->objects[] = pq($el);
+      }
+      $last_style = $current_style;
     }
+  }
+  
+  function getStyleHash($el) {
+    return md5($el->css('color') . $el->css('font-weight'));
+  }
+  
+  protected function loadString() {
+    global $quail_redundant_text;
+    if(!$quail_redundant_text) {
+      $quail_redundant_text = json_decode(file_get_contents('../../resources/strings/redundant.json'));
+    }
+    
+    $this->redundant = (array)$quail_redundant_text['required'];
   }
 }
 
@@ -624,7 +665,10 @@ class QuailLabelProximityTest extends QuailCustomTest {
   function run() {
     foreach($this->q($this->options['selector']) as $el) {
       $label = pq('label[for='. str_replace('#', '', pq($el)->attr('id')) .']');
-      if($label->length) {
+      if(!$label) {
+        return;
+      }
+      if(pq($el)->parent(':first') != pq($label)->parent(':first')) {
         $this->objects[] = pq($el);
       }
     }
@@ -686,11 +730,17 @@ class QuailColorTest extends QuailCustomTest {
       if($this->options['algorithim'] == 'wai') {
         $foreground = pq('body:first')->attr($this->options['bodyForegroundAttribute']);
         $background = pq('body:first')->attr($this->options['bodyBackgroundAttribute']);
+        if(!$foreground) {
+          $foreground = '#000000';
+        }
+        if(!$background) {
+          $background = '#ffffff';
+        }
         if( $this->getWaiErtContrast($foreground, $background) < 500) {
-				  $this->objects[] = pq($el);
+				  $this->objects[] = pq($this->options['selector'] .':first')->get(0);
 			  }
 			  elseif($this->getWaiErtBrightness($foreground, $background) < 125) {
-				  $this->objects[] = pq($el);
+				  $this->objects[] = q($this->options['selector'] .':first')->get(0);
   		  }
       }
     }
@@ -698,7 +748,7 @@ class QuailColorTest extends QuailCustomTest {
   protected function getColorNames() {
     global $quail_color_text;
     if(!$quail_color_text) {
-      $quail_color_text = json_decode(file_get_contents('../../resources/strings/colors.json'));
+      $quail_color_text = (array)json_decode(file_get_contents('../../resources/strings/colors.json'));
     }
     $this->color_names = $quail_color_text;
   }

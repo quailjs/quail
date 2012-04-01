@@ -5,8 +5,13 @@
   ],
   "link":[
     "link to",
+    "link",
     "go to",
     "click here",
-    "link"
+    "link",
+    "click"
+  ],
+  "required":[
+    "*",
   ]
 }

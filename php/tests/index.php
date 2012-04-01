@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_WARNING);
+ini_set('max_execution_time', 200);
 if(!file_exists('simpletest/unit_tester.php')) {
 	die('You must install simpletest [http://www.simpletest.org/] in the directory "tests".');
 }
@@ -26,7 +27,7 @@ class QuailTests extends UnitTestCase {
 		if(is_object($results[0])) {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'p');
     }
-
+    
 		$results = $this->getTest('textIsNotSmall-pass.html', 'textIsNotSmall');
 		$this->assertTrue(count($results) == 0);
 
@@ -1944,7 +1945,7 @@ class QuailOACTests extends UnitTestCase {
 		$this->assertTrue(count($results));
 
 		$results = $this->getTest('144-2.html', 'addressForAuthorMustBeValid');
-		$this->assertTrue(count($results) == 0);
+		$this->assertTrue(count($results));
   }
 
   //skipped 145-146 - redundant
@@ -1952,7 +1953,7 @@ class QuailOACTests extends UnitTestCase {
   //147
   function test147_linkUsedToDescribeNavigation() {
 		$results = $this->getTest('147-1.html', 'linkUsedToDescribeNavigation');
-		//$this->assertTrue(count($results));
+		$this->assertTrue(count($results));
 		$results = $this->getTest('147-2.html', 'linkUsedToDescribeNavigation');
 		$this->assertTrue(count($results) == 0);
   }
@@ -2001,7 +2002,7 @@ class QuailOACTests extends UnitTestCase {
 		$results = $this->getTest('152-1.html', 'tableUsesAbbreviationForHeader');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'table');
+  		$this->assertTrue(strtolower($results[0]->elements[0]->tagName) == 'th');
     }
 		$results = $this->getTest('152-2.html', 'tableUsesAbbreviationForHeader');
 		$this->assertTrue(count($results) == 0);
@@ -2607,7 +2608,7 @@ class QuailOACTests extends UnitTestCase {
 		$results = $this->getTest('227-3.html', 'documentColorWaiLinkAlgorithim');
 		$this->assertTrue(count($results) == 0);
 		
-		$results = $this->getTest('227-3.html', 'documentColorWaiLinkAlgorithim');
+		$results = $this->getTest('227-4.html', 'documentColorWaiLinkAlgorithim');
 		$this->assertTrue(count($results));
 	}
 
