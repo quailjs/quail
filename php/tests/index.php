@@ -569,31 +569,16 @@ class QuailOACTests extends UnitTestCase {
 		if(is_object($results[0])) {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'frame');
     }
-		$results = $this->getTest('32-2.html', 'frameSrcIsAccessible');
+		$results = $this->getTest('33-2.html', 'frameSrcIsAccessible');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'frame');
     }
-		$results = $this->getTest('32-3.html', 'frameSrcIsAccessible');
-		$this->assertTrue(count($results) == 0);
-
-		$results = $this->getTest('32-4.html', 'frameSrcIsAccessible');
-		$this->assertTrue(count($results) == 0);
-
-		$results = $this->getTest('32-5.html', 'frameSrcIsAccessible');
-		$this->assertTrue(count($results) == 0);
-
-		$results = $this->getTest('32-6.html', 'frameSrcIsAccessible');
-		$this->assertTrue(count($results) == 0);
-
-		$results = $this->getTest('32-7.html', 'frameSrcIsAccessible');
-		$this->assertTrue(count($results) == 0);
-
-		$results = $this->getTest('32-8.html', 'frameSrcIsAccessible');
-		$this->assertTrue(count($results) == 0);
-
-		$results = $this->getTest('32-9.html', 'frameSrcIsAccessible');
-		$this->assertTrue(count($results) == 0);
+		$results = $this->getTest('33-3.html', 'frameSrcIsAccessible');
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'frame');
+    }
 
  }
 
@@ -1307,7 +1292,10 @@ class QuailOACTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 
 		$results = $this->getTest('95-3.html', 'textareaHasAssociatedLabel');
-		$this->assertTrue(count($results) == 0);
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'textarea');
+    }
 
 		$results = $this->getTest('95-4.html', 'textareaHasAssociatedLabel');
 		$this->assertTrue(count($results) == 0);
@@ -2143,7 +2131,10 @@ class QuailOACTests extends UnitTestCase {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'input');
     }
 		$results = $this->getTest('168-2.html', 'radioMarkedWithFieldgroupAndLegend');
-		$this->assertTrue(count($results) == 0);
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'input');
+    }
 
 		$results = $this->getTest('168-3.html', 'radioMarkedWithFieldgroupAndLegend');
 		$this->assertTrue(count($results) == 0);

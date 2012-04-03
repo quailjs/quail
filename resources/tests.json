@@ -132,17 +132,23 @@
   "bodyActiveLinkColorContrast":{
     "type":"color",
     "algorithim":"wcag",
-    "selector":"a:active"
+    "selector":"a:active",
+    "bodyForegroundAttribute": "alink",
+    "bodyBackgroundAttribute": "bgcolor"
   },
   "bodyColorContrast":{
     "type":"color",
     "algorithim":"wcag",
-    "selector":"*"
+    "selector":"*",
+    "bodyForegroundAttribute": "text",
+    "bodyBackgroundAttribute": "bgcolor"
   },
   "bodyLinkColorContrast":{
     "type":"color",
     "algorithim":"wcag",
-    "selector":"a"
+    "selector":"a",
+    "bodyForegroundAttribute": "link",
+    "bodyBackgroundAttribute": "bgcolor"
   },
   "bodyMustNotHaveBackground":{
     "type":"selector",
@@ -151,7 +157,9 @@
   "bodyVisitedLinkColorContrast":{
     "type":"color",
     "algorithim":"wcag",
-    "selector":"a:visited"
+    "selector":"a:visited",
+    "bodyForegroundAttribute": "vlink",
+    "bodyBackgroundAttribute": "bgcolor"
   },
   "boldIsNotUsed":{
     "type":"selector",
@@ -350,6 +358,10 @@
     "type":"selector",
     "selector":"frame"
   },
+  "framesetIsNotUsed":{
+    "type":"selector",
+    "selector":"frameset"
+  },
   "frameTitlesDescribeFunction":{
     "type":"placeholder",
     "selector":"frame[title]",
@@ -512,7 +524,7 @@
   },
   "imgWithMathShouldHaveMathEquivalent":{
     "type":"selector",
-    "selector":"img:not(img > tagName, img > math)"
+    "selector":"img:not(img:has(tagName), img:has(math), math ~ img)"
   },
   "inputCheckboxHasTabIndex":{
     "type":"selector",
@@ -520,11 +532,11 @@
   },
   "inputCheckboxRequiresFieldset":{
     "type":"selector",
-    "selector":"input[type=checkbox]:not(input[type=checkbox]:parent(fieldset))"
+    "selector":"input[type=checkbox]:not(fieldset input)"
   },
   "inputDoesNotUseColorAlone":{
     "type":"selector",
-    "callback":"input:not(input[type=hidden])"
+    "selector":"input:not(input[type=hidden])"
   },
   "inputElementsDontHaveAlt":{
     "type":"selector",
@@ -544,7 +556,7 @@
   },
   "inputImageAltIsNotPlaceholder":{
     "type":"placeholder",
-    "selector":"img",
+    "selector":"input[type=image]",
     "attribute":"alt"
   },
   "inputImageAltIsShort":{
@@ -588,8 +600,10 @@
     "selector":"input[type=text]:not(input[type=text][value])"
   },
   "inputTextValueNotEmpty":{
-    "type":"selector",
-    "selector":"input[type=text][value=]"
+    "type":"placeholder",
+    "selector":"input[type=text]",
+    "attribute":"value",
+    "empty":true
   },
   "labelDoesNotContainInput":{
     "type":"selector",
@@ -624,8 +638,8 @@
     "emtpy":true
   },
   "liDontUseImageForBullet":{
-    "type":"custom",
-    "callback":"liDontUseImageForBullet"
+    "type":"selector",
+    "selector":"li:has(img)"
   },
   "linkUsedForAlternateContent":{
     "type":"selector",
@@ -683,7 +697,7 @@
   },
   "objectMustHaveEmbed":{
     "type":"selector",
-    "selector":"object:not(object:has(embed)"
+    "selector":"object:not(object:has(embed))"
   },
   "objectMustHaveTitle":{
     "type":"selector",
@@ -820,7 +834,7 @@
   },
   "siteMap":{
     "type":"selector",
-    "selector":"a:content('site map')"
+    "selector":"a:content(map)"
   },
   "skipToContentLinkProvided":{
     "type":"selector",
@@ -840,7 +854,7 @@
   },
   "tableComplexHasSummary":{
     "type":"selector",
-    "selector":"table:not(table[summary], caption:parent(table))"
+    "selector":"table:not(table[summary], table:has(caption))"
   },
   "tableDataShouldHaveTh":{
     "type":"selector",

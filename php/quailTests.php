@@ -51,7 +51,7 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
     foreach($this->q('a') as $el) {
       $text = '';
       if(pq($el)->find('img:first')->length) {
-        $text = pq($el)->find('img:first')->text();
+        $text = pq($el)->find('img:first')->attr('alt');
       }
       $text .= pq($el)->text();
       $text = strtolower($text);
@@ -158,6 +158,18 @@ class documentAbbrIsUsed extends QuailCustomTest {
 class documentAcronymsHaveElement extends documentAbbrIsUsed {
   
   protected $acronym_tag = 'acronym';
+}
+
+class documentIDsMustBeUnique extends QuailCustomTest {
+  function run() {
+    $ids = array();
+    foreach ($this->q('*[id]') as $el) {
+      if(isset($ids[pq($el)->attr('id')])) {
+        $this->objects[] = pq($el);
+      }
+      $ids[pq($el)->attr('id')] = pq($el)->attr('id');
+    }
+  }
 }
 
 class documentLangIsISO639Standard extends QuailCustomTest {
@@ -288,6 +300,45 @@ class emoticonsMissingAbbr extends emoticonsExcessiveUse {
 				}
 			}
 		}
+  }
+}
+
+class headersUseToMarkSections extends QuailCustomTest {
+  function run() {
+    foreach($this->q('p') as $el) {
+      $set = false;
+      foreach(pq($el)->find('strong:first, em:first, i:first, b:first') as $indicator) {
+        if(trim(pq($el)->text()) == trim(pq($indicator)->text())) {
+          $this->objects[] = pq($el);
+          $set = true;
+        }
+      }
+      if(!$set) {
+        if(pq($el)->css('font-weight') == 'bold') {
+          $this->objects[] = pq($el);
+        } 
+      }
+    }
+  }
+}
+
+class inputImageAltIsShort extends QuailCustomTest {
+  function run() {
+    foreach($this->q('input[type=image][alt]') as $el) {
+      if(strlen(trim(pq($el)->attr('alt'))) > 150) {
+        $this->objects[] = pq($el);
+      }
+    }
+  }
+}
+
+class inputImageAltIsNotFileName extends QuailCustomTest {
+  function run() {
+    foreach($this->q('input[type=image][alt]') as $el) {
+      if(pq($el)->attr('alt') == pq($el)->attr('src')) {
+        $this->objects[] = pq($el);
+      }
+    }
   }
 }
 
@@ -445,7 +496,7 @@ class tabIndexFollowsLogicalOrder extends QuailCustomTest {
   
   function run() {
     $index = 0;
-		foreach($this->q('input, textarea, select') as $el) {
+		foreach($this->q('*[tabindex]') as $el) {
 			if(is_numeric(pq($el)->attr('tabindex'))
 				&& intval(pq($el)->attr('tabindex')) != $index + 1) {
 					$this->objects[] = pq($el);
@@ -566,8 +617,8 @@ class formWithRequiredLabel extends QuailCustomTest {
     foreach($this->q('label') as $el) {
       $text = strtolower(pq($el)->text());
       foreach($this->redundant as $required_text) {
-        if(strpos($text, $required_text) !== false || pq($el)->hasClass('required')) {
-          if(!pq('#'. pq($el)->attr('for'))->length || !pq('#'. pq($el)->attr('for'))->attr('aria-required')) {
+        if(strpos($text, $required_text) !== false) {
+          if(!pq('#'. pq($el)->attr('for'))->attr('aria-required')) {
             $this->objects[] = pq($el);
           }
         }
@@ -629,12 +680,31 @@ class tableUseColGroup extends QuailCustomTest {
 
 class pNotUsedAsHeader extends QuailCustomTest {
   
+  protected $suspectTags = array('strong', 'b', 'em', 'i', 'u', 'font');
+  
+  protected $suspectCSS = array('color', 'font-weight', 'font-size', 'font-family');
+  
+  protected $requiresTextAnalysis = true;
+  
   function run() {
+    $priorCSS = array();
+    $textAnalysis = new TextStatistics();
     foreach($this->q('p') as $el) {
-      if(in_array(pq($el)->firstChild()->tagName, array('strong', 'b', 'en', 'i'))
-         && pq($el)->firstChild()->text() == pq($el)->text()) {
+      if($textAnalysis->sentence_count(pq($el)->text()) < 3) {
+        if(in_array(strtolower(pq($el)->find('*:first-child')->get(0)->tagName), $this->suspectTags)
+           && pq($el)->find('*:first-child')->text() == pq($el)->text()) {
+            $this->objects[] = pq($el);
+        }
+        foreach($this->suspectCSS as $css) {
+          if(array_key_exists($css, $priorCSS) && pq($el)->css($css) != $priorCSS[$css]) {
+            $this->objects[] = pq($el);
+          }
+          $priorCSS[$css] = pq($el)->css($css);
+        }
+        if(pq($el)->css('font-weight') == 'bold') {
           $this->objects[] = pq($el);
-      }
+        }
+      }      
     }
   }
 }
@@ -721,33 +791,53 @@ class QuailColorTest extends QuailCustomTest {
     $this->getColorNames();
     foreach($this->q($this->options['selector']) as $el) {
       if($this->options['algorithim'] == 'wai') {
-        if( $this->getWaiErtContrast(pq($el)->css('color'), pq($el)->css('background-color')) < 500) {
-				  $this->objects[] = pq($el);
-			  }
-			  elseif($this->getWaiErtBrightness(pq($el)->css('color'), pq($el)->css('background-color')) < 125) {
-				  $this->objects[] = pq($el);
-  		  }
+        if(!$this->compareWAIColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
+          $this->objects[] = pq($el);
+        }
+      }
+      if($this->options['algorithim'] == 'wcag') {
+        if(!$this->compareWCAGColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
+          $this->objects[] = pq($el);
+        }
       }
     }
     if(isset($this->options['bodyForegroundAttribute']) && isset($this->options['bodyBackgroundAttribute'])) {
+      $foreground = pq('body:first')->attr($this->options['bodyForegroundAttribute']);
+      $background = pq('body:first')->attr($this->options['bodyBackgroundAttribute']);
+      if(!$foreground) {
+        $foreground = '#000000';
+      }
+      if(!$background) {
+        $background = '#ffffff';
+      }
       if($this->options['algorithim'] == 'wai') {
-        $foreground = pq('body:first')->attr($this->options['bodyForegroundAttribute']);
-        $background = pq('body:first')->attr($this->options['bodyBackgroundAttribute']);
-        if(!$foreground) {
-          $foreground = '#000000';
+        if(!$this->compareWAIColors($foreground, $background)) {
+          $this->objects[] = pq($el);
         }
-        if(!$background) {
-          $background = '#ffffff';
+      }
+      if($this->options['algorithim'] == 'wcag') {
+        if(!$this->compareWCAGColors($foreground, $background)) {
+          $this->objects[] = pq($el);
         }
-        if( $this->getWaiErtContrast($foreground, $background) < 500) {
-				  $this->objects[] = pq($this->options['selector'] .':first')->get(0);
-			  }
-			  elseif($this->getWaiErtBrightness($foreground, $background) < 125) {
-				  $this->objects[] = q($this->options['selector'] .':first')->get(0);
-  		  }
       }
     }
   }
+  
+  protected function compareWAIColors($foreground, $background) {
+    if( $this->getWaiErtContrast($foreground, $background) < 500 || 
+        $this->getWaiErtBrightness($foreground, $background) < 125 ) {
+			return false;
+	  }
+	  return true;
+  }
+  
+  protected function compareWCAGColors($foreground, $background) {
+    if($this->getLuminosity($foreground, $background) < 5) {
+    	return false;
+	  }
+	  return true;
+  }
+  
   protected function getColorNames() {
     global $quail_color_text;
     if(!$quail_color_text) {

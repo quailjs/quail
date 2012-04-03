@@ -68,8 +68,20 @@ class Quail {
     $this->guideline = $guideline;
     $this->charset = $charset;
     $contents = preg_replace_callback('/<([^ >]*)/', 'quail::lowercaseTags', $contents);
-    $this->document = phpQuery::newDocumentXHTML($contents, $charset);
+    try {
+      $this->document = phpQuery::newDocumentXHTML($contents, $charset);
+    }
+    catch (Exception $e) {
+      $this->document = phpQuery::newDocumentHTML($contents, $charset);
+    }
   }
+  
+  protected function cleanupHTML($html) {
+    $dom_document = new DOMDocument();
+    @$dom_document->loadHTML($html);
+    return preg_replace('|<([^> ]*)/>|i', '<$1 />', $dom_document->saveXML());
+  }
+  
   
   public function lowercaseTags($text) {
     if(strpos($text[0], '!') === FALSE && strpos($text[0], '?') === FALSE) {
@@ -168,11 +180,14 @@ class QuailTest {
       $this->reportSingleSelector($this->selector);
       return;
     }
+    if($this->requiresTextAnalysis) {
+      require_once __DIR__ .'/php-text-statistics/TextStatistics.php';
+    }
     $this->run();
   }
   
   function q($selector) {
-    return pq($selector);
+    return pq($selector, $this->document->documentID);
   }
   
   function reportSingleSelector($selector) {
@@ -280,6 +295,9 @@ class QuailCustomTest extends QuailTest{
     $this->options = $options;
     $this->document = $document;
     $this->path = $path;
+    if($this->requiresTextAnalysis) {
+      require_once __DIR__ .'/php-text-statistics/TextStatistics.php';
+    }
     $this->run();
   }
 }
