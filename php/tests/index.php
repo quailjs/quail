@@ -8,6 +8,26 @@ require_once '../quail.php';
 require_once 'simpletest/unit_tester.php';
 require_once 'simpletest/reporter.php';
 
+class FirstTests extends UnitTestCase {
+
+
+ function getTest($file, $test) {
+ 		$protocol = ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1')
+ 		            ? 'http'
+ 		            : 'https';
+ 		$contents = file_get_contents('../../testfiles/oac/'. $file);
+    $quail = new Quail($contents, $protocol .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '../../testfiles/oac/' . $file, array($test));
+		$quail->runTests();
+
+		return $quail->getRawResults($test);
+ }
+ 
+  
+}
+
+$quail_tests = new FirstTests();
+$quail_tests->run(new HtmlReporter());
+
 class QuailTests extends UnitTestCase {
 
  function getTest($file, $test) {
@@ -37,6 +57,26 @@ class QuailTests extends UnitTestCase {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'p');
     }	
 	}
+	
+	function test_documentIsReadable() {
+    
+		$results = $this->getTest('documentIsReadable-pass.html', 'documentIsReadable');
+		$this->assertTrue(count($results) == 0);
+		
+		$results = $this->getTest('documentIsReadable-fail.html', 'documentIsReadable');
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'body');
+    }
+
+
+		$results = $this->getTest('documentIsReadable-fail2.html', 'documentIsReadable');
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'body');
+    }	
+	}
+	
 	
 	function test_svgContainsTitle() {
 		$results = $this->getTest('svgContainsTitle-fail.html', 'svgContainsTitle');

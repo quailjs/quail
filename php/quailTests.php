@@ -172,6 +172,18 @@ class documentIDsMustBeUnique extends QuailCustomTest {
   }
 }
 
+class documentIsReadable extends QuailCustomTest {
+  function run() {
+    foreach($this->q('body *') as $el) {
+      if(strlen(trim(strip_tags(pq($el)->text()))) || 
+         strlen(trim(strip_tags(pq($el)->attr('alt'))))) {
+        return;
+      }
+    }
+    $this->objects[] = $this->q('body:first');
+  }
+}
+
 class documentLangIsISO639Standard extends QuailCustomTest {
   
   protected $langauges;
@@ -613,7 +625,7 @@ class formWithRequiredLabel extends QuailCustomTest {
   function run() {
     $this->loadString();
     $labels = array();
-    
+    $last_style = false;
     foreach($this->q('label') as $el) {
       $text = strtolower(pq($el)->text());
       foreach($this->redundant as $required_text) {
@@ -623,7 +635,8 @@ class formWithRequiredLabel extends QuailCustomTest {
           }
         }
       }
-      if($current_style = $this->getStyleHash(pq($el)) != $last_style) {
+      $current_style = $this->getStyleHash(pq($el));
+      if($last_style && ($current_style != $last_style)) {
         $this->objects[] = pq($el);
       }
       $last_style = $current_style;

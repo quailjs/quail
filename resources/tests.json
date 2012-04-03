@@ -239,6 +239,10 @@
     "type":"custom",
     "callback":"documentIDsMustBeUnique"
   },
+  "documentIsReadable":{
+    "type":"custom",
+    "callback":"documentIsReadable"
+  },
   "documentLangIsISO639Standard":{
     "type":"custom",
     "callback":"documentLangIsISO639Standard"
