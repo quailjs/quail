@@ -223,7 +223,7 @@ class documentStrictDocType extends QuailCustomTest {
 
 class documentValidatesToDocType extends QuailCustomTest {
   function run() {
-    if(!@$this->document->validate()) {
+    if(!@$this->document->document->validate()) {
 			$this->objects[] = pq('html');
     }
   }

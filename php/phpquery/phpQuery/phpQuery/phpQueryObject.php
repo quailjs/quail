@@ -1453,7 +1453,7 @@ class phpQueryObject
 		  $style = strlen($style) ? explode(';', $style) : array();
 		  foreach($this->attribute_css_mapping as $map => $css_equivalent) {
 		    if($el->hasAttribute($map)) {
-		      $style[] = $css_equivalent .':'. pq($el)->attr($map) .';';
+		      $style[] = $css_equivalent .':'. pq($el)->attr($map);
 		    }
 		  }
 		  if(count($style)) {
