@@ -837,10 +837,7 @@ class QuailOACTests extends UnitTestCase {
     }
 
 		$results = $this->getTest('55-2.html', 'inputDoesNotUseColorAlone');
-		$this->assertTrue(is_object($results[0]));
-		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'input');
-    }
+		$this->assertTrue(count($results[0]) == 0);
   }
 
   //57
