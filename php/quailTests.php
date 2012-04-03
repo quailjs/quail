@@ -471,6 +471,16 @@ class imgAltNotEmptyInAnchor extends QuailCustomTest {
   }
 }
 
+class imgWithMathShouldHaveMathEquivalent extends QuailCustomTest {
+  function run() {
+    foreach($this->q('img:not(img:has(math), img:has(tagName))') as $el) {
+      if(!pq($el)->parent()->find('math')->length) {
+        $this->objects[] = pq($el);
+      }
+    }
+  }
+}
+
 class labelMustBeUnique extends QuailCustomTest {
   function run() {
     $labels = array();
@@ -657,6 +667,16 @@ class formWithRequiredLabel extends QuailCustomTest {
   }
 }
 
+class inputCheckboxRequiresFieldset extends QuailCustomTest {
+  function run() {
+    foreach($this->q('input[type=checkbox]') as $el) {
+      if(!pq($el)->parents('fieldset')->length) {
+        $this->objects[] = pq($el);
+      }
+    }
+  }
+}
+
 class imgMapAreasHaveDuplicateLink extends QuailCustomTest {
   
   function run() {
@@ -677,6 +697,30 @@ class imgMapAreasHaveDuplicateLink extends QuailCustomTest {
         }
       }
     }
+  }
+}
+
+class siteMap extends QuailCustomTest {
+  function run() {
+    $this->loadString();
+    foreach($this->q('a') as $el) {
+      $text = trim(strtolower(pq($el)->text()));
+      foreach($this->strings as $string) {
+        if(strpos($text, $string) !== FALSE) {
+          return;
+        }
+      }
+    }
+    $this->objects[] = pq($el);
+  }
+  
+  protected function loadString() {
+    global $quail_map_text;
+    if(!$quail_map_text) {
+      $quail_map_text = (array)json_decode(file_get_contents('../../resources/strings/site_map.json'));
+    }
+    
+    $this->strings = $quail_map_text;
   }
 }
 

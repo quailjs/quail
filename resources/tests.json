@@ -527,16 +527,16 @@
     "selector":"img[ismap]:not(img[usemap])"
   },
   "imgWithMathShouldHaveMathEquivalent":{
-    "type":"selector",
-    "selector":"img:not(img:has(tagName), img:has(math), math ~ img)"
+    "type":"custom",
+    "callback":"imgWithMathShouldHaveMathEquivalent"
   },
   "inputCheckboxHasTabIndex":{
     "type":"selector",
     "selector":"input[type=checkbox]:not(input[tabindex]), input[type=checkbox][tabindex=]"
   },
   "inputCheckboxRequiresFieldset":{
-    "type":"selector",
-    "selector":"input[type=checkbox]:not(fieldset input)"
+    "type":"custom",
+    "callback":"inputCheckboxRequiresFieldset"
   },
   "inputDoesNotUseColorAlone":{
     "type":"selector",
@@ -837,8 +837,8 @@
     "selector":"select option:nth-child(5):parent(select):not(select:has(optgroup))"
   },
   "siteMap":{
-    "type":"selector",
-    "selector":"a:content(map)"
+    "type":"custom",
+    "callback":"siteMap"
   },
   "skipToContentLinkProvided":{
     "type":"selector",

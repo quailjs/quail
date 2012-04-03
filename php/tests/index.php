@@ -1849,7 +1849,7 @@ class QuailOACTests extends UnitTestCase {
 		$results = $this->getTest('135-2.html', 'imgWithMathShouldHaveMathEquivalent');
 		$this->assertTrue(count($results) == 0);
 
-		$results = $this->getTest('135-2.xhtml', 'imgWithMathShouldHaveMathEquivalent');
+		$results = $this->getTest('135-3.html', 'imgWithMathShouldHaveMathEquivalent');
 		$this->assertTrue(count($results) == 0);
   }
 
@@ -2856,7 +2856,7 @@ class QuailOACTests extends UnitTestCase {
 		$results = $this->getTest('246-5.html', 'formWithRequiredLabel');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'form');
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'label');
     }
   }
 
