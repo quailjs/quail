@@ -847,14 +847,16 @@ class QuailColorTest extends QuailCustomTest {
   function run() {
     $this->getColorNames();
     foreach($this->q($this->options['selector']) as $el) {
-      if($this->options['algorithim'] == 'wai') {
-        if(!$this->compareWAIColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
-          $this->objects[] = pq($el);
+      if(pq($el)->css('color') && pq($el)->css('background-color')) {   
+        if($this->options['algorithim'] == 'wai') {
+          if(!$this->compareWAIColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
+            $this->objects[] = pq($el);
+          }
         }
-      }
-      if($this->options['algorithim'] == 'wcag') {
-        if(!$this->compareWCAGColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
-          $this->objects[] = pq($el);
+        if($this->options['algorithim'] == 'wcag') {
+          if(!$this->compareWCAGColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
+            $this->objects[] = pq($el);
+          }
         }
       }
     }
