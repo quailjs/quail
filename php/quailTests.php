@@ -75,7 +75,7 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
 class aLinksAreSeperatedByPrintableCharacters extends QuailCustomTest {
   function run() {
     foreach($this->q('a') as $el) {
-		  if(pq($el)->next('a')->length && $this->unreadable($el->nextSibling->wholeText)) {
+		  if(pq($el)->next('a')->length && $this->isUnreadable($el->nextSibling->wholeText)) {
   		  $this->objects[] = pq($el);
   		}
 	  }
@@ -403,11 +403,9 @@ class imgImportantNoSpacerAlt extends QuailCustomTest {
   
   function run() {
     foreach($this->q('img[alt]') as $el) {
-      if($this->unreadable(pq($el)->attr('alt')) && 
-         $el->hasAttribute('width') &&
-         $el->hasAttribute('height') &&
-         intval(pq($el)->attr('width')) > 50 &&
-         intval(pq($el)->attr('height')) > 50
+      if($this->isUnreadable(pq($el)->attr('alt')) && 
+         intval(pq($el)->css('width')) > 50 &&
+         intval(pq($el)->css('height')) > 50
          ) {
         $this->objects[] = pq($el);
       }
@@ -462,8 +460,8 @@ class imgAltNotEmptyInAnchor extends QuailCustomTest {
   
   function run() {
     foreach($this->q('a img') as $el) {
-      if(!$el->hasAttribute('alt') || $this->unreadable(pq($el)->attr('alt'))) {
-        if($this->unreadable(pq($el)->parent('a:first')->html())) {
+      if(!$el->hasAttribute('alt') || $this->isUnreadable(pq($el)->attr('alt'))) {
+        if($this->isUnreadable(pq($el)->parent('a:first')->html())) {
           $this->objects[] = pq($el);
         }
       }
@@ -532,7 +530,7 @@ class tableLayoutHasNoSummary extends QuailCustomTest {
   
   function run() {
     foreach($this->q('table[summary]') as $el) {
-      if(!$this->isDataTable(pq($el)) && !$this->unreadable(pq($el)->attr('summary'))) {
+      if(!$this->isDataTable(pq($el)) && !$this->isUnreadable(pq($el)->attr('summary'))) {
         $this->objects[] = pq($el);
       }
     }
@@ -1072,7 +1070,7 @@ class QuailPlaceholderTest extends QuailCustomTest {
     foreach($this->q($this->options['selector']) as $el) {
       if($this->options['attribute']) {
         $attr = $this->options['attribute'];
-        if($this->options['empty'] && $this->unreadable(pq($el)->attr($attr))) {
+        if($this->options['empty'] && $this->isUnreadable(pq($el)->attr($attr))) {
           $this->objects[] = pq($el);
         }
         if (strlen(pq($el)->attr($attr)) && (
@@ -1083,7 +1081,7 @@ class QuailPlaceholderTest extends QuailCustomTest {
         
       }
       elseif($this->options['content']) {
-        if(isset($this->options['empty']) && $this->options['empty'] && $this->unreadable(pq($el)->text())) {
+        if(isset($this->options['empty']) && $this->options['empty'] && $this->isUnreadable(pq($el)->text())) {
           $this->objects[] = pq($el);
         }
         if(in_array(trim(pq($el)->text()), $this->placeholders)) {

@@ -218,7 +218,7 @@ class QuailTest {
    * Utility function to remove non-readable elemnts from a string
    * indicating that for practical purposes it's empty.
    */
-  protected function unreadable($string) {
+  protected function isUnreadable($string) {
     $string = trim(strip_tags($string));
     return (strlen($string) > 0) ? FALSE : TRUE;
   }
@@ -227,10 +227,10 @@ class QuailTest {
    * Returns if the element or any children are readable
    */
   function containsReadableText($element, $children = TRUE) {
-		if(!$this->unreadable($element->text())) {
+		if(!$this->isUnreadable($element->text())) {
 		  return TRUE;
 		}
-		if(!$this->unreadable($element->attr('alt'))) {
+		if(!$this->isUnreadable($element->attr('alt'))) {
 		  return TRUE;
 		}
 		if($children) {
