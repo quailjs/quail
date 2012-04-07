@@ -508,7 +508,7 @@
   },
   "imgNonDecorativeHasAlt":{
     "type":"selector",
-    "selector":"img:not(img[alt])"
+    "selector":"img[alt=]"
   },
   "imgNotReferredToByColorAlone":{
     "type":"selector",

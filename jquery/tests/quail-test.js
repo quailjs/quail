@@ -1,9 +1,17 @@
 ;(function($) {
 
   $(document).ready(function() {
-    
+    var accessibilityTests = { };
     module("QUAIL OAC Tests");
-    
+    $.ajax({ url : '../../resources/tests.json',
+     async : false,
+     dataType : 'json',
+     cache : false,
+     success : function(data) {
+        if(typeof data == 'object') {
+          accessibilityTests = data;
+        }
+    }});
     var quailTest = {
       
       results : { },
@@ -14,14 +22,15 @@
         quailTest.testName = testName;
         $.ajax({ url : '../../testfiles/oac/' + file,
                  async : false,
+                 cache : false,
                  success : function(data) {
                  
-          quailTest.results = $(data).quail({ jsonPath : '../../resources', 
+          quailTest.results = $('<html />').html(data).quail({ jsonPath : '../../resources', 
                           guideline : [ testName ],
                           reset : true,
+                          accessibilityTests : accessibilityTests,
                           getRawResults : true});
         }});
-        console.log(quailTest.results);
       },
       
       confirmIsEmpty : function() {
@@ -50,14 +59,13 @@
   		equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
    });
   
-  
    test('imgAltIsTooLong', function() {
   		quailTest.runTest( 'imgAltIsTooLong', '3-1.html');
       equal(true, quailTest.confirmIsTag('img'), 'First item is an image');
   		quailTest.runTest( 'imgAltIsTooLong', '3-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
    });
-  
+
    //4
    test('imgNonDecorativeHasAlt', function() {
   		quailTest.runTest( 'imgNonDecorativeHasAlt', '4-1.html');
@@ -96,7 +104,7 @@
   		quailTest.runTest( 'imgAltNotPlaceHolder', '6-7.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
    });
-  
+  /*
    //7
    test('imgAltNotEmptyInAnchor', function() {
   		quailTest.runTest( 'imgAltNotEmptyInAnchor', '7-1.html');
@@ -2444,7 +2452,8 @@
   		quailTest.runTest( 'formDeleteIsReversable', '272-2.html');
   		
     		equal(true, quailTest.confirmIsTag('form'), 'First item tag test');
-    });
+    });*/
+   
   });
   
 })(jQuery);
