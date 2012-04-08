@@ -169,7 +169,7 @@ class QuailOACTests extends UnitTestCase {
 		$results = $this->getTest('5-1.html', 'imgImportantNoSpacerAlt');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->attr('src') == 'rex.jpg');
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'img');
 		}
 		$results = $this->getTest('5-2.html', 'imgImportantNoSpacerAlt');
 		$this->assertTrue(count($results) == 0);
