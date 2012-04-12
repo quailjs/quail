@@ -211,8 +211,8 @@ class QuailTest {
    * Utility function to sanity-check URLs
    */
   protected function validURL($url) {
-    $url = parse_url($url);
-    if($url['scheme'] && !$url['host']) {
+    $parsed = parse_url($url);
+    if($parsed['scheme'] && !$parsed['host']) {
       return FALSE;
     }
     return (strpos($url, ' ') === FALSE);
