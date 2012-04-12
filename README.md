@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/kevee/quail.png?branch=master)](http://travis-ci.org/kevee/quail)
+
 QUAIL: Accessibility Information Library
 ========================================
 
