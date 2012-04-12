@@ -2,7 +2,7 @@
 Content should be readable without style sheets
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: documentContentReadableWithoutStylesheets
 

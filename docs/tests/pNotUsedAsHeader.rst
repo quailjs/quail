@@ -2,7 +2,7 @@
 Paragraphs must not be used for headers
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: pNotUsedAsHeader
 

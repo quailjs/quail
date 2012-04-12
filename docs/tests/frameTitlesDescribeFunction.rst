@@ -2,7 +2,7 @@
 All "frame" elemetns should have a "title" attribute that describes the purpose of the frame
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: frameTitlesDescribeFunction
 

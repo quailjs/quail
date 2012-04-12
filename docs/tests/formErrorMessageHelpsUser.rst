@@ -2,7 +2,7 @@
 Forms offer the user a way to check the results of their form before performing an irrevokable action
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: formErrorMessageHelpsUser
 

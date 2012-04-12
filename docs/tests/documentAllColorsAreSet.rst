@@ -2,7 +2,7 @@
 All the document colors must be set
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: documentAllColorsAreSet
 

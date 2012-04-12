@@ -2,7 +2,7 @@
 An object might require a long description
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: objectShouldHaveLongDescription
 

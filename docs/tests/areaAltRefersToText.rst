@@ -2,7 +2,7 @@
 Alt text for "area" elements should replicate the text found in the image
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: areaAltRefersToText
 

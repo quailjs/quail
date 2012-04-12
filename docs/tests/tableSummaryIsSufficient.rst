@@ -2,7 +2,7 @@
 All data tables should have an adequate summary
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: tableSummaryIsSufficient
 

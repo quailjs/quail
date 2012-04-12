@@ -2,7 +2,7 @@
 Reading direction of text is correctly marked
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: documentReadingDirection
 

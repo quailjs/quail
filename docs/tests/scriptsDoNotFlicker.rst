@@ -2,7 +2,7 @@
 Scripts should not cause the screen to flicker
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: scriptsDoNotFlicker
 

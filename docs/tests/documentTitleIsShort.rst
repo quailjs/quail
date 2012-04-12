@@ -2,7 +2,7 @@
 The document title should be short
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: documentTitleIsShort
 

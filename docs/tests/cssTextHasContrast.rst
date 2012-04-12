@@ -2,7 +2,7 @@
 All elements should have appropriate color contrast
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: cssTextHasContrast
 

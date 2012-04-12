@@ -2,7 +2,7 @@
 All linked or embedded videos need captions
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: videosEmbeddedOrLinkedNeedCaptions
 

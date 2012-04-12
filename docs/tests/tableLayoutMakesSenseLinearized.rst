@@ -2,7 +2,7 @@
 All tables used for layout should make sense when removed
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: tableLayoutMakesSenseLinearized
 

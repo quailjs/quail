@@ -2,7 +2,7 @@
 The document should be written to the target audience and read clearly
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: documentIsWrittenClearly
 

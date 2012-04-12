@@ -2,7 +2,7 @@
 The document should not have an empty title
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: documentTitleNotEmpty
 

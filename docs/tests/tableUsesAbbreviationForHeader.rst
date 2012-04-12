@@ -2,7 +2,7 @@
 Table headers over 20 characters should provide an "abbr" attribute
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: tableUsesAbbreviationForHeader
 

@@ -2,7 +2,7 @@
 Data tables with multiple headers should use the "scope" attribute
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: tableWithBothHeadersUseScope
 

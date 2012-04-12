@@ -2,7 +2,7 @@
 The "frameset" element should not be used
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: framesetIsNotUsed
 

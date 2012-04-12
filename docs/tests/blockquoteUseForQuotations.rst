@@ -2,7 +2,7 @@
 If long quotes are in the document, use the "blockquote" element to mark them
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: blockquoteUseForQuotations
 

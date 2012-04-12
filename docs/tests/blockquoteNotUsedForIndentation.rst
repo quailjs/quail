@@ -2,7 +2,7 @@
 The "blockquote" tag should not be used just for indentation
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: blockquoteNotUsedForIndentation
 

@@ -2,7 +2,7 @@
 All "input" elements of type "text" must have a default text
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: inputTextHasValue
 

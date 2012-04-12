@@ -2,7 +2,7 @@
 Interfaces within objects must be accessible
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: objectInterfaceIsAccessible
 

@@ -2,7 +2,7 @@
 Images should not have a "title" attribute
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: imgShouldNotHaveTitle
 

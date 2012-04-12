@@ -2,7 +2,7 @@
 Objects with "classid" attributes should change their text if the content of the object changes
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: objectWithClassIDHasNoText
 

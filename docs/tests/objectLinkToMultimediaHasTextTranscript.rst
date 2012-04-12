@@ -2,7 +2,7 @@
 Objects which reference multimedia files should also provide a link to a transcript
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: objectLinkToMultimediaHasTextTranscript
 

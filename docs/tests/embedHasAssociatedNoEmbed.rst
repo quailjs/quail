@@ -2,7 +2,7 @@
 All "embed" elements have an associated "noembed" element
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: embedHasAssociatedNoEmbed
 

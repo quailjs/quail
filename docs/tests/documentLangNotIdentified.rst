@@ -2,7 +2,7 @@
 The document must have a "lang" attribute
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: documentLangNotIdentified
 

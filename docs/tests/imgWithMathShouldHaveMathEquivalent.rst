@@ -2,7 +2,7 @@
 Images which contain math equations should provide equivalent MathML
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: imgWithMathShouldHaveMathEquivalent
 

@@ -2,7 +2,7 @@
 When an image is in a link, its "alt" attribute should not repeat other text in the link
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: aImgAltNotRepetative
 

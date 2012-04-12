@@ -2,7 +2,7 @@
 Every form input must have only one label
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: labelMustBeUnique
 

@@ -2,7 +2,7 @@
 The document should contain an address for the author
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: addressForAuthor
 

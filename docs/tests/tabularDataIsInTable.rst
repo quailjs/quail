@@ -2,7 +2,7 @@
 All tabular information should use a table
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: tabularDataIsInTable
 

@@ -2,7 +2,7 @@
 All "noframes" elements should contain the text content from all frames
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: noframesSectionMustHaveTextEquivalent
 

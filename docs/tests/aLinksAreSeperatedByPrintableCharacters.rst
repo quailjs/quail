@@ -2,7 +2,7 @@
 Lists of links should be seperated by printable characters
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: aLinksAreSeperatedByPrintableCharacters
 

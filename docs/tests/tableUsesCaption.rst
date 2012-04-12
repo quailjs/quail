@@ -2,7 +2,7 @@
 Data tables should contain a "caption" element if not described elsewhere
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: tableUsesCaption
 

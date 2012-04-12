@@ -2,7 +2,7 @@
 Visual lists of items are marked using ordered or unordered lists
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: documentVisualListsAreMarkedUp
 

@@ -2,7 +2,7 @@
 All tables used for layout have no "caption" element
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: tableLayoutHasNoCaption
 

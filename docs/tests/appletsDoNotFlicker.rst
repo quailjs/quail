@@ -2,7 +2,7 @@
 All applets do not flicker
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: appletsDoNotFlicker
 

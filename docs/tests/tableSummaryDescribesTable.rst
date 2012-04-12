@@ -2,7 +2,7 @@
 Table summaries should describe the navigation and structure of the table
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: tableSummaryDescribesTable
 

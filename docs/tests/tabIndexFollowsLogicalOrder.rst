@@ -2,7 +2,7 @@
 The tab order of a document is logical
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: tabIndexFollowsLogicalOrder
 

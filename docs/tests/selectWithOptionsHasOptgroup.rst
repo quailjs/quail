@@ -2,7 +2,7 @@
 Form select elements should use optgroups for long selections
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: selectWithOptionsHasOptgroup
 

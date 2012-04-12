@@ -2,7 +2,7 @@
 Objects should have a title attribute
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: objectMustHaveTitle
 

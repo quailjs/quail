@@ -2,7 +2,7 @@
 The title attribute of all source a (anchor) elements describes the link destination.
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: aTitleDescribesDestination
 

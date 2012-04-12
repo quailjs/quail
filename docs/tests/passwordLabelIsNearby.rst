@@ -2,7 +2,7 @@
 All "password" input elements have a label that is close
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: passwordLabelIsNearby
 

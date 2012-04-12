@@ -2,7 +2,7 @@
 Captions should identify their table
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: tableCaptionIdentifiesTable
 

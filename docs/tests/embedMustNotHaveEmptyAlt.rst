@@ -2,7 +2,7 @@
 Embed" elements cannot have an empty "alt" attribute
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: embedMustNotHaveEmptyAlt
 

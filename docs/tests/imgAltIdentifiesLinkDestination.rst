@@ -2,7 +2,7 @@
 Any image within a link must have "alt" text the describes the link destination
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: imgAltIdentifiesLinkDestination
 

@@ -2,7 +2,7 @@
 Unless the image files are the same, no image should contain redundant alt text
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: imgAltTextNotRedundant
 

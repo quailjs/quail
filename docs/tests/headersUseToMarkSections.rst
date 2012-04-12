@@ -2,7 +2,7 @@
 Use headers to mark the beginning of each section
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: headersUseToMarkSections
 

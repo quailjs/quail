@@ -2,7 +2,7 @@
 Content on the page should still be available if scripts are disabled
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: scriptContentAccessibleWithScriptsTurnedOff
 

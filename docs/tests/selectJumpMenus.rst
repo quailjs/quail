@@ -2,7 +2,7 @@
 Select jump menus should jump on button press, not on state change
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: selectJumpMenus
 

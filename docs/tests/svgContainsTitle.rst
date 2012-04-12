@@ -2,7 +2,7 @@
 Inline SVG should use Title elements
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: svgContainsTitle
 

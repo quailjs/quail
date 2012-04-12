@@ -2,7 +2,7 @@
 All labels should be associated with an input
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: labelsAreAssignedToAnInput
 

@@ -2,7 +2,7 @@
 A "longdesc" attribute is required for any image where additional information not in the "alt" attribute is required
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: imgHasLongDesc
 

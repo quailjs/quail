@@ -2,7 +2,7 @@
 Group columns using "colgroup" or "col" elements
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: tableUseColGroup
 

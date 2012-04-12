@@ -2,7 +2,7 @@
 An image within a link cannot have an empty "alt" attribute if there is no other text within the link
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: imgAltNotEmptyInAnchor
 

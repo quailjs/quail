@@ -2,7 +2,7 @@
 The title describes the document
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: documentTitleDescribesDocument
 

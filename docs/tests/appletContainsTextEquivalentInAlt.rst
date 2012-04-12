@@ -2,7 +2,7 @@
 All applets should contain a text equivalent in the "alt" attribute
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: appletContainsTextEquivalentInAlt
 

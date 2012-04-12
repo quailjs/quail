@@ -2,7 +2,7 @@
 Legend" text must not contain placeholder text like "form" or "field
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: legendTextNotPlaceholder
 

@@ -2,7 +2,7 @@
 The document's language attribute should be a standard code
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: documentLangIsISO639Standard
 

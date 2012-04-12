@@ -2,7 +2,7 @@
 Data tables should contain "th" elements
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: tableDataShouldHaveTh
 

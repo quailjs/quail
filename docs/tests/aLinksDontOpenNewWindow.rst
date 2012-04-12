@@ -2,7 +2,7 @@
 Links should not open a new window without warning
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: aLinksDontOpenNewWindow
 

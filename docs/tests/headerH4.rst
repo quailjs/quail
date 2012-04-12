@@ -2,7 +2,7 @@
 The header following an h4 is h1, h2, h3, h4 or h5
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: headerH4
 

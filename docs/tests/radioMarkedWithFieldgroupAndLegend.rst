@@ -2,7 +2,7 @@
 All radio button groups are marked using fieldset and legend elements.
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: radioMarkedWithFieldgroupAndLegend
 

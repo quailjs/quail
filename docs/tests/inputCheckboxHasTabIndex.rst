@@ -2,7 +2,7 @@
 All "checkbox" input elements require a valid "tabindex" attribute
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: inputCheckboxHasTabIndex
 

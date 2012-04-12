@@ -2,7 +2,7 @@
 The "alt" text for input "image" submit buttons must not be filler text
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: inputImageAltNotRedundant
 

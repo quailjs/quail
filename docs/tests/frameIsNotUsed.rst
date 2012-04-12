@@ -2,7 +2,7 @@
 Frames are not used
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: frameIsNotUsed
 

@@ -2,7 +2,7 @@
 The page uses a strict doctype
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: documentStrictDocType
 

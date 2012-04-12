@@ -2,7 +2,7 @@
 Noembed" elements must be the same content as their "embed" element
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: noembedHasEquivalentContent
 

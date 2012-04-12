@@ -2,7 +2,7 @@
 When objects are disabled, content should still be available
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: objectContentUsableWhenDisabled
 

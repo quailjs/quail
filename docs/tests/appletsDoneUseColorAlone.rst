@@ -2,7 +2,7 @@
 Applets should not use color alone to communicate content
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: appletsDoneUseColorAlone
 

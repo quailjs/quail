@@ -2,7 +2,7 @@
 Table "summary" elements should not duplicate the "caption" element
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: tableSummaryDoesNotDuplicateCaption
 

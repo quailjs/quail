@@ -2,7 +2,7 @@
 The document must be readable with styles turned off
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: cssDocumentMakesSenseStyleTurnedOff
 

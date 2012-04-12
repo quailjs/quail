@@ -2,7 +2,7 @@
 The text size is not less than 9 pixels high
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: textIsNotSmall
 

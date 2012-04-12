@@ -2,7 +2,7 @@
 The header following an h1 is h1 or h2
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: headerH1
 

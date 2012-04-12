@@ -2,7 +2,7 @@
 Any links to a multimedia file should also include a link to a transcript
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: aLinksToMultiMediaRequireTranscript
 

@@ -2,7 +2,7 @@
 All applets should provide a way for keyboard users to escape
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: appletProvidesMechanismToReturnToParent
 

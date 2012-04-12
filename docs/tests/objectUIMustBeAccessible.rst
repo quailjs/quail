@@ -2,7 +2,7 @@
 Content within an "object" element should be usable with objects disabled
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: objectUIMustBeAccessible
 

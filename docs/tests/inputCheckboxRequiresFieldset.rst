@@ -2,7 +2,7 @@
 Logical groups of check boxes should be grouped with a "fieldset
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: inputCheckboxRequiresFieldset
 

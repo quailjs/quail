@@ -2,7 +2,7 @@
 All data tables should have a summary
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: tableSummaryIsEmpty
 

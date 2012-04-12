@@ -2,7 +2,7 @@
 Any words or phrases which are not the document's primary language should be marked
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: documentWordsNotInLanguageAreMarked
 

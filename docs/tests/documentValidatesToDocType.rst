@@ -2,7 +2,7 @@
 Document must validate to the doctype
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: documentValidatesToDocType
 

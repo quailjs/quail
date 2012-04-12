@@ -2,7 +2,7 @@
 All "legend" elements must describe the group of choices
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: legendDescribesListOfChoices
 

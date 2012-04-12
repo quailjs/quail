@@ -2,7 +2,7 @@
 Frames cannot have empty "title" attributes
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: frameTitlesNotEmpty
 

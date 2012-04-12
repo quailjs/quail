@@ -2,7 +2,7 @@
 Table header lables must be terse
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: tableHeaderLabelMustBeTerse
 

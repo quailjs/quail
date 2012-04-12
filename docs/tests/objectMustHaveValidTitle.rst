@@ -2,7 +2,7 @@
 Objects must not have an empty title attribute
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: objectMustHaveValidTitle
 

@@ -2,7 +2,7 @@
 Meta" elements must not be used to refresh the content of a page
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: documentMetaNotUsedWithTimeout
 

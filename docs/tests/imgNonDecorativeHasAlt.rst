@@ -2,7 +2,7 @@
 Any non-decorative images should have a non-empty "alt" attribute
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: imgNonDecorativeHasAlt
 

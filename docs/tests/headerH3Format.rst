@@ -2,7 +2,7 @@
 All h3 elements are not used for formatting
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: headerH3Format
 

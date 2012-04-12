@@ -2,7 +2,7 @@
 The source for each frame is accessible content.
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: frameSrcIsAccessible
 

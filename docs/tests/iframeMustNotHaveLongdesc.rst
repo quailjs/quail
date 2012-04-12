@@ -2,7 +2,7 @@
 Inline frames ("iframes") should not have a "longdesc" attribute
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: iframeMustNotHaveLongdesc
 

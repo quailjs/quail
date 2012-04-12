@@ -2,7 +2,7 @@
 The document should have a title element
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: documentHasTitleElement
 

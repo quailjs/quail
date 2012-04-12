@@ -2,7 +2,7 @@
 Abbreviations must be marked with an "abbr" element
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: documentAbbrIsUsed
 

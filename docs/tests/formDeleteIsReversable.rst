@@ -2,7 +2,7 @@
 Deleting items using a form should be reversable
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: formDeleteIsReversable
 

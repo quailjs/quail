@@ -2,7 +2,7 @@
 Lists should not be used for formatting
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: listNotUsedForFormatting
 

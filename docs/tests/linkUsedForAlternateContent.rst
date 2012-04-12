@@ -2,7 +2,7 @@
 Use a "link" element for alternate content
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: linkUsedForAlternateContent
 

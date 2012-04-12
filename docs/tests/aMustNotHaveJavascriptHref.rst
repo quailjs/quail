@@ -2,7 +2,7 @@
 Links should not use "javascript" in their location
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: aMustNotHaveJavascriptHref
 

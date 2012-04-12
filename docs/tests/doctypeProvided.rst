@@ -2,7 +2,7 @@
 The document should contain a valid "doctype" declaration
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: doctypeProvided
 

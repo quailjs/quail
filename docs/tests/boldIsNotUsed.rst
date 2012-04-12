@@ -2,7 +2,7 @@
 The "b" (bold) element is not used
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: boldIsNotUsed
 

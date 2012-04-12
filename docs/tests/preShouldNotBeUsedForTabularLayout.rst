@@ -2,7 +2,7 @@
 Pre" elements should not be used for tabular data
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: preShouldNotBeUsedForTabularLayout
 

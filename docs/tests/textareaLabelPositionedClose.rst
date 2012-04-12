@@ -2,7 +2,7 @@
 All textareas should have a label that is close to it
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: textareaLabelPositionedClose
 

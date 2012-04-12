@@ -2,7 +2,7 @@
 Input items which are required are marked as so in the label element
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: formWithRequiredLabel
 

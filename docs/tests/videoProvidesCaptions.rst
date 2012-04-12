@@ -2,7 +2,7 @@
 All video tags must provide captions
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: videoProvidesCaptions
 

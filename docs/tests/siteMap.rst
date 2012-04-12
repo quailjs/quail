@@ -2,7 +2,7 @@
 Websites must have a site map
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: siteMap
 

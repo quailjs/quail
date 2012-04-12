@@ -2,7 +2,7 @@
 The header following an h5 is h6 or any header less than h6
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: headerH5
 

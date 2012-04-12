@@ -2,7 +2,7 @@
 Acronyms must be marked with an "acronym" element
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: documentAcronymsHaveElement
 

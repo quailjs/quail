@@ -2,7 +2,7 @@
 Links should contain text
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: aMustContainText
 

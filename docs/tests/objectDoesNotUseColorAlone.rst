@@ -2,7 +2,7 @@
 Objects must not use color to communicate alone
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: objectDoesNotUseColorAlone
 

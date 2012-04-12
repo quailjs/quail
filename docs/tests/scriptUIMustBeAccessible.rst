@@ -2,7 +2,7 @@
 The user interface for scripts should be accessible
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: scriptUIMustBeAccessible
 

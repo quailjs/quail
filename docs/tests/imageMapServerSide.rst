@@ -2,7 +2,7 @@
 All links in a server-side map should have duplicate links available in the document
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: imageMapServerSide
 

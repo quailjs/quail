@@ -2,7 +2,7 @@
 Any links to a sound file should also include a link to a transcript
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: aLinksToSoundFilesNeedTranscripts
 

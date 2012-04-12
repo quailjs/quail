@@ -2,7 +2,7 @@
 Emoticons should not be used excessively
 ===============================
 
-Severity code: 2
+*Severity code:* Possible error
 
 .. php:class:: emoticonsExcessiveUse
 

@@ -2,7 +2,7 @@
 Document uses link element to describe navigation if it is within a collection.
 ===============================
 
-Severity code: 1
+*Severity code:* Severe error
 
 .. php:class:: linkUsedToDescribeNavigation
 

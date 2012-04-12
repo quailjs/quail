@@ -2,7 +2,7 @@
 The text equivalents of an object should update if the object changes
 ===============================
 
-Severity code: 3
+*Severity code:* Information only
 
 .. php:class:: objectTextUpdatesWhenObjectChanges
 
