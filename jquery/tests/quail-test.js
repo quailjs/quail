@@ -104,7 +104,7 @@
   		quailTest.runTest( 'imgAltNotPlaceHolder', '6-7.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
    });
-  /*
+  
    //7
    test('imgAltNotEmptyInAnchor', function() {
   		quailTest.runTest( 'imgAltNotEmptyInAnchor', '7-1.html');
@@ -128,15 +128,7 @@
   		quailTest.runTest( 'imgHasLongDesc', '8-5.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
    });
-  
-   //9
-   test('imgNeedsLongDescWithDlink', function() {
-  		quailTest.runTest( 'imgNeedsLongDescWithDlink', '9-1.html');
-      equal(true, quailTest.confirmIsTag('img'), 'First item is an image');
-  		quailTest.runTest( 'imgNeedsLongDescWithDlink', '9-2.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
-   });
-   
+      
    //10
    test('imgGifNoFlicker', function() {
   		quailTest.runTest( 'imgGifNoFlicker', '10-1.html');
@@ -249,7 +241,7 @@
   		
     		equal(quailTest.results[quailTest.testName][0].attr('href'), 'dogs.html', 'Item attribute check');
    });
-  
+   
     //20
    test('aLinksToMultiMediaRequireTranscript', function() {
   		quailTest.runTest( 'aLinksToMultiMediaRequireTranscript', '20-1.html');
@@ -357,7 +349,7 @@
    test('skipToContentLinkProvided', function() {
   
   		quailTest.runTest( 'skipToContentLinkProvided', '28-1.html');
-      equal(true, quailTest.confirmIsTag('html'), 'First item tag test');
+      equal(true, quailTest.confirmIsTag('body'), 'First item tag test');
   		quailTest.runTest( 'skipToContentLinkProvided', '28-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
   
@@ -424,25 +416,7 @@
   
   		quailTest.runTest( 'frameSrcIsAccessible', '32-3.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
-  
-  		quailTest.runTest( 'frameSrcIsAccessible', '32-4.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
-  
-  		quailTest.runTest( 'frameSrcIsAccessible', '32-5.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
-  
-  		quailTest.runTest( 'frameSrcIsAccessible', '32-6.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
-  
-  		quailTest.runTest( 'frameSrcIsAccessible', '32-7.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
-  
-  		quailTest.runTest( 'frameSrcIsAccessible', '32-8.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
-  
-  		quailTest.runTest( 'frameSrcIsAccessible', '32-9.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
-  
+    
    });
   
     //34
@@ -472,7 +446,7 @@
   
   		quailTest.runTest( 'noframesSectionMustHaveTextEquivalent', '36-1.html');
   		
-    		equal(true, quailTest.confirmIsTag('noframes'), 'First item tag test');
+    		equal(true, quailTest.confirmIsTag('frameset'), 'First item tag test');
   		quailTest.runTest( 'noframesSectionMustHaveTextEquivalent', '36-2.html');
   		
     		equal(true, quailTest.confirmIsTag('frameset'), 'First item tag test');
@@ -558,7 +532,7 @@
       quailTest.runTest( 'documentLangIsISO639Standard', '49-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-  
+
     //50
     test('documentHasTitleElement', function() {
   		quailTest.runTest( 'documentHasTitleElement', '50-1.html');
@@ -802,7 +776,7 @@
   		quailTest.runTest( 'documentMetaNotUsedWithTimeout', '72-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-  
+  /*
     //73
     test('objectDoesNotUseColorAlone', function() {
   		quailTest.runTest( 'objectDoesNotUseColorAlone', '73-1.html');

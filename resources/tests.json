@@ -25,15 +25,15 @@
   },
   "aLinksToMultiMediaRequireTranscript":{
     "type":"selector",
-    "selector":"a[href$=.wmv], a[href$=.mpg], a[href$=.mov], a[href$=.ram], a[href$=.aif]"
+    "selector":"a[href$='.wmv'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']"
   },
   "aLinksToSoundFilesNeedTranscripts":{
     "type":"selector",
-    "selector":"a[href$=wav], a[href$=snd], a[href$=mp3], a[href$=iff], a[href$=svx], a[href$=sam], a[href$=smp], a[href$=vce], a[href$=vox], a[href$=pcm], a[href$=aif]"
+    "selector":"a[href$='.wav'], a[href$='.snd'], a[href$='.mp3'], a[href$='.iff'], a[href$='.svx'], a[href$='.sam'], a[href$='.smp'], a[href$='.vce'], a[href$='.vox'], a[href$='.pcm'], a[href$='.aif']"
   },
   "aMultimediaTextAlternative":{
     "type":"selector",
-    "selector":"a[href$=wmv], a[href$=wav], a[href$= mpg], a[href$=mov], a[href$=ram], a[href$=aif]"
+    "selector":"a[href$='.wmv'], a[href$='.wav'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']"
   },
   "aMustContainText":{
     "type":"custom",
@@ -69,7 +69,7 @@
   },
   "appletContainsTextEquivalentInAlt":{
     "type":"placeholder",
-    "selector":"applet[alt=], applet:not(applet[alt])",
+    "selector":"applet",
     "attribute":"alt",
     "empty":true
   },

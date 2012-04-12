@@ -69,7 +69,10 @@
     },
     
     isUnreadable : function(text) {
-      return (text.trim().length) ? true : false;
+      if(typeof text != 'string') {
+        return true;
+      }
+      return (text.trim().length) ? false : true;
     },
     
     getRawResults : function(testName) {
@@ -91,6 +94,10 @@
     
     },
     
+    validURL : function(url) {
+      return (url.search(' ') == -1) ? true : false;
+    },
+    
     loadString : function(stringFile) {
       if(typeof quail.strings[stringFile] !== 'undefined') {
         return;
@@ -110,27 +117,46 @@
       quail.loadString('placeholders');
       quail.html.find(options.selector).each(function() {
         if(typeof options.attribute !== 'undefined') {
-          var text = $(this).attr(options.attribute);
+          var text = $(this).attr(options.attribute);        
         }
         else {
           var text = $(this).text();
         }
-        var regex = /^([0-9]*)(k|kb|mb|k bytes|k byte)?$/g;
-        var regexResults = regex.exec(text.toLowerCase());
-        if(regexResults && regexResults[0].length) {
-          quail.accessibilityResults[testName].push($(this));
-        }
-        else {
-          if(options.empty && quail.isUnreadable(text)) {
+        if(typeof text == 'string') {
+          var regex = /^([0-9]*)(k|kb|mb|k bytes|k byte)?$/g;
+          var regexResults = regex.exec(text.toLowerCase());
+          if(regexResults && regexResults[0].length) {
             quail.accessibilityResults[testName].push($(this));
           }
           else {
-            for(i in quail.strings.placeholders) {
-              if(quail.strings.placeholders[i] == text) {
-                quail.accessibilityResults[testName].push($(this));
+            if(options.empty && quail.isUnreadable(text)) {
+              quail.accessibilityResults[testName].push($(this));
+            }
+            else {
+              for(i in quail.strings.placeholders) {
+                if(quail.strings.placeholders[i] == text) {
+                  quail.accessibilityResults[testName].push($(this));
+                }
               }
             }
           }
+        }
+        else {
+          if(options.empty) {
+            quail.accessibilityResults[testName].push($(this));
+          }
+        }
+      });
+    },
+    
+    doctypeProvided : function() {
+      console.log(document.doctype);
+    },
+    
+    appletContainsTextEquivalent : function() {
+      quail.html.find('applet[alt=], applet:not(applet[alt])').each(function() {
+        if(quail.isUnreadable($(this).text())) {
+          quail.accessibilityResults.appletContainsTextEquivalent.push($(this));
         }
       });
     },
@@ -153,10 +179,51 @@
     
     imgImportantNoSpacerAlt : function() {
       quail.html.find('img[alt]').each(function() {
-        if(quail.isUnreadable($(this).attr('alt')) &&
-           $(this).width() > 50 && 
-           $(this).height() > 50) {
+        var width = ($(this).width()) ? $(this).width() : parseInt($(this).attr('width'));
+        var height = ($(this).height()) ? $(this).height() : parseInt($(this).attr('height'));
+        if(quail.isUnreadable($(this).attr('alt').trim()) &&
+           width > 50 && 
+           height > 50) {
             quail.accessibilityResults.imgImportantNoSpacerAlt.push($(this));
+        }
+      });
+    },
+    
+    imgAltNotEmptyInAnchor : function() {
+      quail.html.find('a img').each(function() {
+        if(quail.isUnreadable($(this).attr('alt')) && 
+           quail.isUnreadable($(this).parent('a:first').text())) {
+              quail.accessibilityResults.imgAltNotEmptyInAnchor.push($(this));
+        }
+      });
+    },
+    
+    imgHasLongDesc : function() {
+      quail.html.find('img[longdesc]').each(function() {
+        if($(this).attr('longdesc') == $(this).attr('alt') ||
+           !quail.validURL($(this).attr('longdesc'))) {
+            quail.accessibilityResults.imgHasLongDesc.push($(this));
+        }
+      });
+    },
+    
+    imgMapAreasHaveDuplicateLink : function() {
+      var links = { };
+      quail.html.find('a').each(function() {
+        links[$(this).attr('href')] = $(this).attr('href');
+      });
+      quail.html.find('img[usemap]').each(function() {
+        var $image = $(this);
+        var $map = quail.html.find($image.attr('usemap'));
+        if(!$map.length) {
+          $map = quail.html.find('map[name="' + $image.attr('usemap').replace('#', '') + '"]');
+        }
+        if($map.length) {
+          $map.find('area').each(function() {
+            if(typeof links[$(this).attr('href')] == 'undefined') {
+              quail.accessibilityResults.imgMapAreasHaveDuplicateLink.push($image);
+            }
+          });
         }
       });
     }
