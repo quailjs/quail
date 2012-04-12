@@ -1,0 +1,9 @@
+===============================
+Unless the image files are the same, no image should contain redundant alt text
+===============================
+
+Severity code: 1
+
+.. php:class:: imgAltTextNotRedundant
+
+<p>Every distinct image on a page should have it's own <em>alt</em> text which is different than all the others on the page to avoid redundancy and confusion.</p><h4>Example</h4><h5>Wrong</h5><p><code>&lt;img src=&quot;rex.jpg&quot; alt=&quot;this is an image of rex&quot;&gt;&lt;img src=&quot;me.jpg&quot; alt=&quot;this is an image of rex&quot;&gt;</code></p><h5>Right</h5><p><code>&lt;img src=&quot;rex.jpg&quot; alt=&quot;this is an image of rex&quot;&gt;&lt;img src=&quot;me.jpg&quot; alt=&quot;a photo of myself&quot;&gt;</code></p>

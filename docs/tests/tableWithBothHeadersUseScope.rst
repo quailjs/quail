@@ -1,0 +1,9 @@
+===============================
+Data tables with multiple headers should use the "scope" attribute
+===============================
+
+Severity code: 2
+
+.. php:class:: tableWithBothHeadersUseScope
+
+<p>Where there are table headers for both rows and columns, use the "scope" attribute to help relate those headers with their appropriate cells.</p>

@@ -30,10 +30,13 @@ Quickstart in jQuery
                           guideline : 'wcag2a'
                     });
 
-Contents:
+Available tests
+===============
 
 .. toctree::
    :maxdepth: 2
+   
+   tests/*
 
 
 
