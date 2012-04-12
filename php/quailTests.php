@@ -419,27 +419,30 @@ class imgGifNoFlicker extends QuailCustomTest {
   
   function run() {
     foreach($this->q('img[src$=.gif]') as $el) {
-      $file = file_get_contents($this->getPath(pq($el)->attr('src')));
-			if($file) {
-				  $file = bin2hex($file);
-				
-				  // sum all frame delays
-				  $total_delay = 0;
-				  preg_match_all($this->gif_control_extension, $file, $matches);
-				  foreach ($matches[1] as $match) {
-				    // convert little-endian hex unsigned ints to decimals
-				    $delay = hexdec(substr($match,-2) . substr($match, 0, 2));
-				    if ($delay == 0) $delay = 1;
-				    $total_delay += $delay;
-				  }
-				
-				  // delays are stored as hundredths of a second, lets convert to seconds
-				  
-				 
-			  if($total_delay > 0) {
-          $this->objects[] = pq($el);
-        }
-			}
+      $path = $this->getPath(pq($el)->attr('src'));
+      if($this->validURL($path)) {
+        $file = file_get_contents($path);
+  			if($file) {
+  				  $file = bin2hex($file);
+  				
+  				  // sum all frame delays
+  				  $total_delay = 0;
+  				  preg_match_all($this->gif_control_extension, $file, $matches);
+  				  foreach ($matches[1] as $match) {
+  				    // convert little-endian hex unsigned ints to decimals
+  				    $delay = hexdec(substr($match,-2) . substr($match, 0, 2));
+  				    if ($delay == 0) $delay = 1;
+  				    $total_delay += $delay;
+  				  }
+  				
+  				  // delays are stored as hundredths of a second, lets convert to seconds
+  				  
+  				 
+  			  if($total_delay > 0) {
+            $this->objects[] = pq($el);
+          }
+  			}
+  		}
     }
   }
 }
