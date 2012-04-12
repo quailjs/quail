@@ -8,6 +8,11 @@ require_once '../quail.php';
 require_once 'simpletest/unit_tester.php';
 require_once 'simpletest/reporter.php';
 
+
+$reporterClass = (php_sapi_name() == 'cli' && empty($_SERVER['REMOTE_ADDR']))
+            ? 'TextReporter'
+            : 'HtmlReporter';
+
 class FirstTests extends UnitTestCase {
 
 
@@ -26,7 +31,7 @@ class FirstTests extends UnitTestCase {
 }
 
 $quail_tests = new FirstTests();
-$quail_tests->run(new HtmlReporter());
+$quail_tests->run(new $reporterClass());
 
 class QuailTests extends UnitTestCase {
 
@@ -91,7 +96,7 @@ class QuailTests extends UnitTestCase {
 }
 
 $quail_tests = new QuailTests();
-$quail_tests->run(new HtmlReporter());
+$quail_tests->run(new $reporterClass());
 
 class QuailOACTests extends UnitTestCase {
 
@@ -3070,6 +3075,6 @@ class QuailOACTests extends UnitTestCase {
 }
 
 $tests = new QuailOACTests();
-$tests->run(new HtmlReporter());
+$tests->run(new $reporterClass());
 
 
