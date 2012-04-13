@@ -109,6 +109,18 @@ class QuailTests extends UnitTestCase {
 	
 	} 
 	
+	function test_imgAltTextNotRedundant() {
+		$results = $this->getTest('imgAltTextNotRedundant-fail.html', 'imgAltTextNotRedundant');
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'img');
+    }
+    
+		$results = $this->getTest('imgAltTextNotRedundant-pass.html', 'imgAltTextNotRedundant');
+		$this->assertTrue(count($results) == 0);
+	
+	} 
+	
 }
 
 $quail_tests = new QuailTests();

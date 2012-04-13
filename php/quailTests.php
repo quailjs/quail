@@ -459,6 +459,19 @@ class imgHasLongDesc extends QuailCustomTest {
   }
 }
 
+class imgAltTextNotRedundant extends QuailCustomTest {
+  function run() {
+    $alts = array();
+    foreach($this->q('img[alt]') as $el) {
+      $alt = md5(strtolower(trim(pq($el)->attr('alt'))));
+      if(isset($alts[$alt]) && pq($el)->attr('src') != $alts[$alt]) {
+        $this->objects[] = pq($el);
+      }
+      $alts[$alt] = pq($el)->attr('src');
+    }
+  }
+}
+
 class imgAltNotEmptyInAnchor extends QuailCustomTest {
   
   function run() {
