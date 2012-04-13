@@ -434,8 +434,10 @@
     "selector":"h6"
   },
   "headersHaveText":{
-    "type":"selector",
-    "selector":"h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty"
+    "type":"placeholder",
+    "selector":"h1, h2, h3, h4, h5, h6",
+    "content":true,
+    "empty":true
   },
   "headersUseToMarkSections":{
     "type":"custom",

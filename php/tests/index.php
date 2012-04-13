@@ -93,6 +93,22 @@ class QuailTests extends UnitTestCase {
 		$this->assertTrue(count($results) == 0);
 	}
 	
+	function test_headersHaveText() {
+		$results = $this->getTest('headersHaveText-fail.html', 'headersHaveText');
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'h2');
+    }
+		$results = $this->getTest('headersHaveText-fail2.html', 'headersHaveText');
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'h2');
+    }
+		$results = $this->getTest('headersHaveText-pass.html', 'headersHaveText');
+		$this->assertTrue(count($results) == 0);
+	
+	} 
+	
 }
 
 $quail_tests = new QuailTests();
