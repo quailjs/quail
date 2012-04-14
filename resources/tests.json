@@ -278,7 +278,7 @@
   },
   "documentTitleNotEmpty":{
     "type":"placeholder",
-    "callback":"head title",
+    "selector":"head title",
     "empty":true,
     "content":true
   },

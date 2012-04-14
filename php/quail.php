@@ -173,6 +173,8 @@ class QuailTest {
   
   protected $path;
   
+  protected $requiresTextAnalysis = false;
+  
   function __construct($document, $path) {
     $this->document = $document;
     $this->path = $path;
@@ -212,7 +214,7 @@ class QuailTest {
    */
   protected function validURL($url) {
     $parsed = parse_url($url);
-    if($parsed['scheme'] && !$parsed['host']) {
+    if(isset($parsed['scheme']) && !$parsed['host']) {
       return FALSE;
     }
     return (strpos($url, ' ') === FALSE);
@@ -295,8 +297,10 @@ class QuailTest {
 
 class QuailCustomTest extends QuailTest{
   
+  protected $default_options = array();
+  
   function __construct($options, $document, $path) {
-    $this->options = $options;
+    $this->options = $options + $this->default_options;
     $this->document = $document;
     $this->path = $path;
     if($this->requiresTextAnalysis) {

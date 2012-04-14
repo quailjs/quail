@@ -762,8 +762,9 @@ class pNotUsedAsHeader extends QuailCustomTest {
     $textAnalysis = new TextStatistics();
     foreach($this->q('p') as $el) {
       if($textAnalysis->sentence_count(pq($el)->text()) < 3) {
-        if(in_array(strtolower(pq($el)->find('*:first-child')->get(0)->tagName), $this->suspectTags)
-           && pq($el)->find('*:first-child')->text() == pq($el)->text()) {
+        if(pq($el)->find('*:first-child')->get(0) && 
+           in_array(strtolower(pq($el)->find('*:first-child')->get(0)->tagName), $this->suspectTags) &&
+           pq($el)->find('*:first-child')->text() == pq($el)->text()) {
             $this->objects[] = pq($el);
         }
         foreach($this->suspectCSS as $css) {
@@ -897,12 +898,12 @@ class QuailColorTest extends QuailCustomTest {
       }
       if($this->options['algorithim'] == 'wai') {
         if(!$this->compareWAIColors($foreground, $background)) {
-          $this->objects[] = pq($el);
+          $this->objects[] = pq('body:first');
         }
       }
       if($this->options['algorithim'] == 'wcag') {
         if(!$this->compareWCAGColors($foreground, $background)) {
-          $this->objects[] = pq($el);
+          $this->objects[] = pq('body:first');
         }
       }
     }
@@ -1092,6 +1093,12 @@ class QuailColorTest extends QuailCustomTest {
 class QuailPlaceholderTest extends QuailCustomTest {
   
   protected $placeholders;
+  
+  protected $default_options = array('attribute' => false,
+                                'content' => false,
+                                'empty' => false,
+                                'selector' => '',
+                                );
   
   function run() {
     $this->getPlaceholders();
