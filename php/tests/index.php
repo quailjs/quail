@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_WARNING);
+//error_reporting(E_WARNING);
 ini_set('max_execution_time', 200);
 if(!file_exists('simpletest/unit_tester.php')) {
 	die('You must install simpletest [http://www.simpletest.org/] in the directory "tests".');
@@ -13,38 +13,25 @@ $reporterClass = (php_sapi_name() == 'cli' && empty($_SERVER['REMOTE_ADDR']))
             ? 'TextReporter'
             : 'HtmlReporter';
 
-class FirstTests extends UnitTestCase {
-
-
- function getTest($file, $test) {
- 		$protocol = ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1')
- 		            ? 'http'
- 		            : 'https';
- 		$contents = file_get_contents('../../testfiles/oac/'. $file);
-    $quail = new Quail($contents, $protocol .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '../../testfiles/oac/' . $file, array($test));
-		$quail->runTests();
-
-		return $quail->getRawResults($test);
- }
- 
+class QuailBaseTest extends UnitTestCase {
   
+  protected $test_directory;
+  
+  function getTest($file, $test) {
+   		$protocol = ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1')
+   		            ? 'http'
+   		            : 'https';
+   		$contents = file_get_contents($this->test_directory . $file);
+      $quail = new Quail($contents, $protocol .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . $this->test_directory . $file, array($test));
+  		$quail->runTests();
+  
+  		return $quail->getRawResults($test);
+   }
 }
 
-$quail_tests = new FirstTests();
-$quail_tests->run(new $reporterClass());
+class QuailTests extends QuailBaseTest {
 
-class QuailTests extends UnitTestCase {
-
- function getTest($file, $test) {
- 		$protocol = ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1')
- 		            ? 'http'
- 		            : 'https';
- 		$contents = file_get_contents('../../testfiles/quail/'. $file);
-    $quail = new Quail($contents, $protocol .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '../../testfiles/quail/' . $file, array($test));
-		$quail->runTests();
-
-		return $quail->getRawResults($test);
- }
+ protected $test_directory = '../../testfiles/quail/';
  
  function test_textIsNotSmall() {
 		$results = $this->getTest('textIsNotSmall-fail.html', 'textIsNotSmall');
@@ -137,18 +124,9 @@ class QuailTests extends UnitTestCase {
 $quail_tests = new QuailTests();
 $quail_tests->run(new $reporterClass());
 
-class QuailOACTests extends UnitTestCase {
+class QuailOACTests extends QuailBaseTest {
 
- function getTest($file, $test) {
- 		$protocol = ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1')
- 		            ? 'http'
- 		            : 'https';
- 		$contents = file_get_contents('../../testfiles/oac/'. $file);
-    $quail = new Quail($contents, $protocol .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '../../testfiles/oac/' . $file, array($test));
-		$quail->runTests();
-
-		return $quail->getRawResults($test);
- }
+ protected $test_directory = '../../testfiles/oac/';
   
  // Test the HTML alter reporter
  function test_reporterHTMLReporter() {
