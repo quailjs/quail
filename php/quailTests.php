@@ -791,6 +791,18 @@ class textIsNotSmall extends QuailCustomTest {
   }
 }
 
+class selectJumpMenus extends QuailCustomTest {
+
+  function run() {
+    foreach($this->q('select') as $el) {
+      if(pq($el)->parents('form')->length == 0 ||
+         pq($el)->parents('form')->find('input[type=submit]')->length == 0) {
+        $this->objects[] = pq($el);
+      }
+    }
+  }
+}
+
 class QuailLabelTest extends QuailCustomTest {
   
   function run() {

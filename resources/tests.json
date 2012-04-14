@@ -838,6 +838,10 @@
     "type":"selector",
     "selector":"select option:nth-child(5):parent(select):not(select:has(optgroup))"
   },
+  "selectJumpMenus":{
+    "type":"custom",
+    "callback":"selectJumpMenus"
+  },
   "siteMap":{
     "type":"custom",
     "callback":"siteMap"

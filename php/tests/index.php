@@ -107,7 +107,7 @@ class QuailTests extends UnitTestCase {
 		$results = $this->getTest('headersHaveText-pass.html', 'headersHaveText');
 		$this->assertTrue(count($results) == 0);
 	
-	} 
+	}
 	
 	function test_imgAltTextNotRedundant() {
 		$results = $this->getTest('imgAltTextNotRedundant-fail.html', 'imgAltTextNotRedundant');
@@ -119,7 +119,18 @@ class QuailTests extends UnitTestCase {
 		$results = $this->getTest('imgAltTextNotRedundant-pass.html', 'imgAltTextNotRedundant');
 		$this->assertTrue(count($results) == 0);
 	
-	} 
+	}
+	
+	function test_selectJumpMenus() {
+		$results = $this->getTest('selectJumpMenus-fail.html', 'selectJumpMenus');
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'select');
+    }
+		$results = $this->getTest('selectJumpMenus-pass.html', 'selectJumpMenus');
+		$this->assertTrue(count($results) == 0);
+
+	}
 	
 }
 
