@@ -859,7 +859,7 @@ class QuailOACTests extends QuailBaseTest {
     }
 
 		$results = $this->getTest('55-2.html', 'inputDoesNotUseColorAlone');
-		$this->assertTrue(count($results[0]) == 0);
+		$this->assertTrue(count($results) == 0);
   }
 
   //57

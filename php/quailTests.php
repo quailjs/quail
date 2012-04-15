@@ -207,15 +207,19 @@ class documentLangIsISO639Standard extends QuailCustomTest {
 class doctypeProvided extends QuailCustomTest {
   
   function run() {
-    if(!$this->document->document->doctype->publicId) {
-			$this->objects[] = pq('html');
+    if(!property_exists($this->document->document, 'doctype') ||
+       !property_exists($this->document->document->doctype, 'publicId') ||
+       !$this->document->document->doctype->publicId) {
+			   $this->objects[] = pq('html');
 		}
   }
 }
 
 class documentStrictDocType extends QuailCustomTest {
   function run() {
-    if(strpos(strtolower($this->document->document->doctype->publicId), 'strict') === FALSE && strpos(strtolower($this->document->document->doctype->systemId), 'strict') === FALSE) {
+    if(!property_exists($this->document->document, 'doctype') || 
+       !property_exists($this->document->document->doctype, 'publicId') || 
+       strpos(strtolower($this->document->document->doctype->publicId), 'strict') === FALSE) {
 			$this->objects[] = pq('html');
 		}
   }
@@ -299,6 +303,7 @@ class emoticonsMissingAbbr extends emoticonsExcessiveUse {
   
   function run() {
     $this->getEmoticons();
+    $count = 0;
     foreach($this->q('p, div, h1, h2, h3, h4, h5,h6') as $el) {
 			$clone = pq($el)->clone();
 			$clone->remove('abbr, acronym');
@@ -725,7 +730,7 @@ class siteMap extends QuailCustomTest {
         }
       }
     }
-    $this->objects[] = pq($el);
+    $this->objects[] = $this->q('body');
   }
   
   protected function loadString() {
