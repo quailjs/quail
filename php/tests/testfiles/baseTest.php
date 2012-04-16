@@ -1,6 +1,6 @@
 <?php
 
-class QuailBaseTest extends PHPUnit_Framework_TestCase {
+class QuailBaseTest extends PHPUnit_TestCase {
   
   protected $test_directory;
   
