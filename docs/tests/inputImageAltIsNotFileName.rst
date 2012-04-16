@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: inputImageAltIsNotFileName
 
-<p>All <code>input</code> elements with a type of "image" should have an "alt" attribute
+
+All <code>input elements with a type of "image" should have an "alt" attribute

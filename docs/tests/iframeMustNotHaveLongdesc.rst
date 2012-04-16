@@ -6,4 +6,11 @@ Inline frames ("iframes") should not have a "longdesc" attribute
 
 .. php:class:: iframeMustNotHaveLongdesc
 
-<p><code>Iframe</code> elements should not have a "longdesc" attribute.</p>
+
+.. code-block:: html
+
+    Iframe elements should not have a "longdesc" attribute.
+
+
+
+

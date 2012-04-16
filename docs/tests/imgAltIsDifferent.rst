@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: imgAltIsDifferent
 
-<p>All <code>img</code> elements should have an "alt" attribute that is not just the name of the file
+
+All <code>img elements should have an "alt" attribute that is not just the name of the file

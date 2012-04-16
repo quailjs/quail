@@ -6,4 +6,9 @@ Objects do not flicker
 
 .. php:class:: objectDoesNotFlicker
 
-<p>The content within an <code>object</code> tag must not flicker.</p>
+
+The content within an <code>object tag must not flicker.
+
+
+
+

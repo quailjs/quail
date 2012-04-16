@@ -6,5 +6,10 @@ Websites must have a site map
 
 .. php:class:: siteMap
 
-<p>Every web site should have a page which provides a site map or another method to navigate most of the site from a single page to save time for users of assistive devices.</p>
+
+Every web site should have a page which provides a site map or another method to navigate most of the site from a single page to save time for users of assistive devices.
+
+
+
+
 

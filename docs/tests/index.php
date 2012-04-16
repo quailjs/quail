@@ -2,7 +2,7 @@
 
 mysql_connect('localhost', 'scratch', 'scratch');
 mysql_select_db('scratch');
-$q = mysql_query('SELECT * FROM tests');
+$q = mysql_query('SELECTFROM tests');
 $done= array();
 while($query = mysql_fetch_assoc($q)) {
   if(!$done[$query['name']]) {

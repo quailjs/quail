@@ -6,4 +6,29 @@ The "blink" tag should not be used
 
 .. php:class:: blinkIsNotUsed
 
-<p>The <code>blink</code> tag should not be used. Ever.</p><h4>Example</h4><h5>Wrong</h5><p><code>&lt;blink&gt;Please read me!&lt;/blink&gt;</code></p><h5>Right</h5><p><code>&lt;strong&gt;Please read me!&lt;/strong&gt;</code></p>
+
+The <code>blink tag should not be used. Ever.
+
+
+
+Example
+-------
+Wrong
+-----
+
+.. code-block:: html
+
+    &lt;blink&gt;Please read me!&lt;/blink&gt;
+
+
+
+Right
+-----
+
+.. code-block:: html
+
+    &lt;strong&gt;Please read me!&lt;/strong&gt;
+
+
+
+

@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: tableLayoutHasNoSummary
 
-<p>If a table contains no data, and is used simply for layout, then it should not have a "summary" attribute
+
+If a table contains no data, and is used simply for layout, then it should not have a "summary" attribute

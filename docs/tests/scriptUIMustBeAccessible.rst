@@ -6,4 +6,9 @@ The user interface for scripts should be accessible
 
 .. php:class:: scriptUIMustBeAccessible
 
-<p>All scripts should be assessed to see if their interface is accessible.</p>
+
+All scripts should be assessed to see if their interface is accessible.
+
+
+
+

@@ -6,4 +6,9 @@ The tab order of a document is logical
 
 .. php:class:: tabIndexFollowsLogicalOrder
 
-<p>Check that the tab-order of a page is logical.</p>
+
+Check that the tab-order of a page is logical.
+
+
+
+

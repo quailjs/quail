@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: frameTitlesNotPlaceholder
 
-<p>Frame "title" attributes should not be simple placeholder text like "frame
+
+Frame "title" attributes should not be simple placeholder text like "frame

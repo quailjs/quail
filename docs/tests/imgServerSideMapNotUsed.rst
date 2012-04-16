@@ -6,4 +6,9 @@ Server-side image maps should not be used
 
 .. php:class:: imgServerSideMapNotUsed
 
-<p>Server-side image maps should not be used.</p>
+
+Server-side image maps should not be used.
+
+
+
+

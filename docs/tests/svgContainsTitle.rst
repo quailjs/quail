@@ -6,4 +6,5 @@ Inline SVG should use Title elements
 
 .. php:class:: svgContainsTitle
 
-<p>Any inline SVG image should have an embedded <code>title</code> element
+
+Any inline SVG image should have an embedded <code>title element

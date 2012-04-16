@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: scriptOnmousemove
 
-<p>If an element has an "onmousemove" attribute
+
+If an element has an "onmousemove" attribute

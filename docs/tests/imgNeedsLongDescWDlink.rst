@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: imgNeedsLongDescWDlink
 
-<p>Any image that has a "longdesc" attribute must also have a corresponding "d-link
+
+Any image that has a "longdesc" attribute must also have a corresponding "d-link

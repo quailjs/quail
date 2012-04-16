@@ -6,4 +6,9 @@ An "input" element should not use color alone
 
 .. php:class:: inputDoesNotUseColorAlone
 
-<p>All input elements should not refer to content by color alone.</p>
+
+All input elements should not refer to content by color alone.
+
+
+
+

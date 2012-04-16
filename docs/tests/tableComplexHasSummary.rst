@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: tableComplexHasSummary
 
-<p>If a table is complex (for example, has some cells with "colspan" attributes
+
+If a table is complex (for example, has some cells with "colspan" attributes

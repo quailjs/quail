@@ -6,4 +6,9 @@ Body elements do not use a background image
 
 .. php:class:: bodyMustNotHaveBackground
 
-<p>The <code>body</code> element for the page may not have a "background" attribute.</p>
+
+The <code>body element for the page may not have a "background" attribute.
+
+
+
+

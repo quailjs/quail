@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: imgAltIsSameInText
 
-<p>If an image has text within it, that text should be repeated in the "alt" attribute
+
+If an image has text within it, that text should be repeated in the "alt" attribute

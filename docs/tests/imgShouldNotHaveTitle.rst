@@ -6,4 +6,29 @@ Images should not have a "title" attribute
 
 .. php:class:: imgShouldNotHaveTitle
 
-<p>Images should not contain a "title" attribute.</p><h4>Example</h4><h5>Wrong</h5><p><code>&lt;img src="dog.png" alt="My brown dog" title="A dog"/&gt;</code></p><h5>Right</h5><p><code>&lt;img src="dog.png" alt="My brown dog"/&gt;</code></p>
+
+Images should not contain a "title" attribute.
+
+
+
+Example
+-------
+Wrong
+-----
+
+.. code-block:: html
+
+    &lt;img src="dog.png" alt="My brown dog" title="A dog"/&gt;
+
+
+
+Right
+-----
+
+.. code-block:: html
+
+    &lt;img src="dog.png" alt="My brown dog"/&gt;
+
+
+
+

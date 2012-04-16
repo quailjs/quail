@@ -6,4 +6,9 @@ Document must validate to the doctype
 
 .. php:class:: documentValidatesToDocType
 
-<p>The document must validate to the declared doctype.</p>
+
+The document must validate to the declared doctype.
+
+
+
+

@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: imgNotReferredToByColorAlone
 
-<p>The "alt" text or content text for any image should not refer to the image by color alone. This is often fixed by changing the "alt" text to the meaning of the image
+
+The "alt" text or content text for any image should not refer to the image by color alone. This is often fixed by changing the "alt" text to the meaning of the image

@@ -6,4 +6,9 @@ Table header lables must be terse
 
 .. php:class:: tableHeaderLabelMustBeTerse
 
-<p>The "abbr" attribute for table headers must be terse (less than 20 characters long).</p>
+
+The "abbr" attribute for table headers must be terse (less than 20 characters long).
+
+
+
+

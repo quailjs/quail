@@ -6,4 +6,9 @@ Group columns using "colgroup" or "col" elements
 
 .. php:class:: tableUseColGroup
 
-<p>To help complex table headers make sense, use <code>colgroup</code> or <code>col</code> to group them together.</p>
+
+To help complex table headers make sense, use <code>colgroup or <code>col to group them together.
+
+
+
+

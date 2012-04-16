@@ -6,4 +6,9 @@ Data tables with multiple headers should use the "scope" attribute
 
 .. php:class:: tableWithBothHeadersUseScope
 
-<p>Where there are table headers for both rows and columns, use the "scope" attribute to help relate those headers with their appropriate cells.</p>
+
+Where there are table headers for both rows and columns, use the "scope" attribute to help relate those headers with their appropriate cells.
+
+
+
+

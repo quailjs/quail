@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: skipToContentLinkProvided
 
-<p>A link reading "skip to content
+
+A link reading "skip to content

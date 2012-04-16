@@ -6,4 +6,11 @@ The "frameset" element should not be used
 
 .. php:class:: framesetIsNotUsed
 
-<p><code>Frameset</code> elements should not be used.</p>
+
+.. code-block:: html
+
+    Frameset elements should not be used.
+
+
+
+

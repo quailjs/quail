@@ -6,4 +6,9 @@ All tabular information should use a table
 
 .. php:class:: tabularDataIsInTable
 
-<p>Tables should be used when displaying tabular information.</p>
+
+Tables should be used when displaying tabular information.
+
+
+
+

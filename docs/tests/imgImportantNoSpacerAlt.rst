@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: imgImportantNoSpacerAlt
 
-<p>Any image that is not used decorativey or which is purely for layout purposes cannot have an "alt" attribute that consists solely of white space (i.e. a space
+
+Any image that is not used decorativey or which is purely for layout purposes cannot have an "alt" attribute that consists solely of white space (i.e. a space

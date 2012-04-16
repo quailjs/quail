@@ -6,4 +6,29 @@ Objects must not have an empty title attribute
 
 .. php:class:: objectMustHaveValidTitle
 
-<p>All <code>object</code> elements should have a "title" attribute which is not empty.</p><h4>Example</h4><h5>Wrong</h5><p><code>&lt;object src="widget.html" title=""&gt;&lt;/object&gt;</code></p><h5>Right</h5><p><code>&lt;object src="widget.html" title="A small web widget"&gt;&lt;/object&gt;</code></p>
+
+All <code>object elements should have a "title" attribute which is not empty.
+
+
+
+Example
+-------
+Wrong
+-----
+
+.. code-block:: html
+
+    &lt;object src="widget.html" title=""&gt;&lt;/object&gt;
+
+
+
+Right
+-----
+
+.. code-block:: html
+
+    &lt;object src="widget.html" title="A small web widget"&gt;&lt;/object&gt;
+
+
+
+

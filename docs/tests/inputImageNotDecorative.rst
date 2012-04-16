@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: inputImageNotDecorative
 
-<p>Every form image button which has text within the image (say, a picture of the word "Search" in a special font)
+
+Every form image button which has text within the image (say, a picture of the word "Search" in a special font)

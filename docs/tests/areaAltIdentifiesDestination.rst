@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: areaAltIdentifiesDestination
 
-<p>All <code>area</code> elements within a <code>map</code> must have an "alt" attribute
+
+All <code>area elements within a <code>map must have an "alt" attribute

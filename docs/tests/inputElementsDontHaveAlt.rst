@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: inputElementsDontHaveAlt
 
-<p>Because of inconsistencies in how user agents use the "alt" attribute
+
+Because of inconsistencies in how user agents use the "alt" attribute

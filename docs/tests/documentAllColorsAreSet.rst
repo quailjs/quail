@@ -6,4 +6,9 @@ All the document colors must be set
 
 .. php:class:: documentAllColorsAreSet
 
-<p>If any colors for text or the background are set in the <code>body</code> element, then all colors must be set.</p>
+
+If any colors for text or the background are set in the <code>body element, then all colors must be set.
+
+
+
+

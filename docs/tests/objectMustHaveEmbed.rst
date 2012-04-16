@@ -6,4 +6,29 @@ Every object should contain an "embed" element
 
 .. php:class:: objectMustHaveEmbed
 
-<p>Every <code>object</code> element must also contain an <code>embed</code> element.</p><h4>Example</h4><h5>Wrong</h5><p><code>&lt;object data="movie.mov"&gt;&lt;/object&gt;</code></p><h5>Right</h5><p><code>&lt;object data="movie.mov"&gt;&lt;embed src="movie.mov"&gt;&lt;/embed&gt;&lt;/object&gt;</code></p>
+
+Every <code>object element must also contain an <code>embed element.
+
+
+
+Example
+-------
+Wrong
+-----
+
+.. code-block:: html
+
+    &lt;object data="movie.mov"&gt;&lt;/object&gt;
+
+
+
+Right
+-----
+
+.. code-block:: html
+
+    &lt;object data="movie.mov"&gt;&lt;embed src="movie.mov"&gt;&lt;/embed&gt;&lt;/object&gt;
+
+
+
+

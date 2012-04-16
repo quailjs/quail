@@ -6,4 +6,5 @@ Severity code: 0
 
 .. php:class:: scriptOndblclickRequiresOnKeypress
 
-<p>If an element has an "ondblclick" attribute
+
+If an element has an "ondblclick" attribute

@@ -6,4 +6,9 @@ Font" elements should not be used
 
 .. php:class:: fontIsNotUsed
 
-<p>The <code>basefont</code> tag is deprecated and should not be used. Investigate using stylesheets instead.</p>
+
+The <code>basefont tag is deprecated and should not be used. Investigate using stylesheets instead.
+
+
+
+

@@ -6,4 +6,9 @@ All video tags must provide captions
 
 .. php:class:: videoProvidesCaptions
 
-<p>All HTML5 video tags must provide captions.</p>
+
+All HTML5 video tags must provide captions.
+
+
+
+

@@ -6,4 +6,9 @@ All "radio" input elements require a valid "tabindex" attribute
 
 .. php:class:: inputRadioHasTabIndex
 
-<p>All <code>input</code> elements of type "radio" should have a "tabindex" attribute to help navigate the form with a keyboard alone.</p>
+
+All <code>input elements of type "radio" should have a "tabindex" attribute to help navigate the form with a keyboard alone.
+
+
+
+

@@ -6,4 +6,11 @@ Frames are not used
 
 .. php:class:: frameIsNotUsed
 
-<p><code>Frame</code> elements should not be used.</p>
+
+.. code-block:: html
+
+    Frame elements should not be used.
+
+
+
+
