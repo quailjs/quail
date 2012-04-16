@@ -2,8 +2,8 @@
   <testsuites>
     <testsuite name="QUAIL Tests">
       <directory>testfiles/*Tests.php files</directory>
-      <file>php/tests/testfiles/oacTests.php</file>
-      <file>php/tests/testfiles/quailTests.php</file>
+      <file>testfiles/oacTests.php</file>
+      <file>testfiles/quailTests.php</file>
     </testsuite>
   </testsuites>
 </phpunit>
