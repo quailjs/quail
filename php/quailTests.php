@@ -1286,6 +1286,10 @@ class selectJumpMenus extends QuailCustomTest {
   }
 }
 
+/**
+ * Test to see that any element with a given selector
+ * also has a label.
+ */
 class QuailLabelTest extends QuailCustomTest {
   
   
@@ -1303,6 +1307,9 @@ class QuailLabelTest extends QuailCustomTest {
   }
 }
 
+/**
+ * Tests to make sure labels are next to their target element.
+ */
 class QuailLabelProximityTest extends QuailCustomTest {
   
   
@@ -1322,6 +1329,9 @@ class QuailLabelProximityTest extends QuailCustomTest {
   }
 }
 
+/**
+ * 
+ */
 class QuailHeaderTest extends QuailCustomTest {
   
   
@@ -1347,6 +1357,10 @@ class QuailHeaderTest extends QuailCustomTest {
   }
 }
 
+/**
+ * Checks that values with a JavaScript event have another
+ * corresponding event (like click also covers keyUp).
+ */
 class QuailEventTest extends QuailCustomTest {
   
   
@@ -1365,10 +1379,15 @@ class QuailEventTest extends QuailCustomTest {
   
 }
 
+/**
+ * Helper class for comparing color values of any item in the DOM.
+ */
 class QuailColorTest extends QuailCustomTest {
   
+  /**
+   * @var An array of named color values (like 'blue' => '0000ff')
+   */
   protected $color_names;
-  
   
   /**
    * See QuailTest::run()
@@ -1411,21 +1430,28 @@ class QuailColorTest extends QuailCustomTest {
     }
   }
   
+  /**
+   * Compares two colors using WAI algorithims.
+   * @return bool TRUE for the values pass, FALSe if they do not pass
+   */  
   protected function compareWAIColors($foreground, $background) {
-    if( $this->getWaiErtContrast($foreground, $background) < 500 || 
-        $this->getWaiErtBrightness($foreground, $background) < 125 ) {
-			return false;
-	  }
-	  return true;
+    return ( $this->getWaiErtContrast($foreground, $background) > 500 && 
+             $this->getWaiErtBrightness($foreground, $background) > 125 );
   }
   
+  /**
+   * Compares two colors using WCAG algorithims.
+   * @return bool TRUE for the values pass, FALSe if they do not pass
+   */
   protected function compareWCAGColors($foreground, $background) {
-    if($this->getLuminosity($foreground, $background) < 5) {
-    	return false;
-	  }
-	  return true;
+    return ($this->getLuminosity($foreground, $background) > 5);
   }
   
+  /**
+   * Retrieves and sets color_names so that named color values
+   * can be converted to their hex value.
+   * @link http://www.w3.org/TR/css3-color/#html4
+   */
   protected function getColorNames() {
     global $quail_color_text;
     if(!$quail_color_text) {
@@ -1577,6 +1603,12 @@ class QuailColorTest extends QuailCustomTest {
 		return (($color['red'] * 299) + ($color['green'] * 587) + ($color['blue'] * 114)) / 1000;
 	}
 	
+	/**
+	* Retrieves the difference between two colors using the WAI algorithm.
+	* @param $fore_rgb array An array of RGB values for foreground values
+	* @param $back_rgb array An array of RGB values for background values
+	* @return array An array of differences keyed 'red', 'green', and 'blue'
+	*/
 	function getWaiDiffs($fore_rgb, $back_rgb) {
 		$red_diff = ($fore_rgb['r'] > $back_rgb['r']) 
 						? $fore_rgb['r'] - $back_rgb['r'] 
@@ -1592,10 +1624,22 @@ class QuailColorTest extends QuailCustomTest {
 	}
 }
 
+/**
+ * A test class to compare the values of an element to 
+ * either placeholder text or empty values. The value
+ * can either be an attribute on elements selected, or
+ * the content.
+ */
 class QuailPlaceholderTest extends QuailCustomTest {
   
+  /**
+   * @var An array of placeholder strings
+   */
   protected $placeholders;
   
+  /**
+   * @var Defalut options
+   */
   protected $default_options = array('attribute' => false,
                                 'content' => false,
                                 'empty' => false,
@@ -1632,6 +1676,9 @@ class QuailPlaceholderTest extends QuailCustomTest {
     }
   }
   
+  /**
+   * Retrieves and sets the placeholder values from the placeholders.json file.
+   */
   protected function getPlaceholders() {
     global $quail_placeholder_text;
     if(!$quail_placeholder_text) {
