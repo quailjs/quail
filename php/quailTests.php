@@ -217,6 +217,7 @@ class doctypeProvided extends QuailCustomTest {
 
 class documentStrictDocType extends QuailCustomTest {
   function run() {
+    var_dump($this->document->document->doctype->publicId);
     if(!property_exists($this->document->document, 'doctype') || 
        !property_exists($this->document->document->doctype, 'publicId') || 
        strpos(strtolower($this->document->document->doctype->publicId), 'strict') === FALSE) {

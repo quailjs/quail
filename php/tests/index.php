@@ -9,7 +9,7 @@ require_once 'simpletest/unit_tester.php';
 require_once 'simpletest/reporter.php';
 
 
-$reporterClass = (php_sapi_name() == 'cli' && empty($_SERVER['REMOTE_ADDR']))
+$reporterClass = (php_sapi_name() == 'cli' && !isset($_SERVER['REMOTE_ADDR']))
             ? 'TextReporter'
             : 'HtmlReporter';
 
@@ -18,11 +18,13 @@ class QuailBaseTest extends UnitTestCase {
   protected $test_directory;
   
   function getTest($file, $test) {
-   		$protocol = ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1')
+   		$protocol = (isset($_SERVER['SERVER_PROTOCOL']) && $_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1')
    		            ? 'http'
    		            : 'https';
    		$contents = file_get_contents($this->test_directory . $file);
-      $quail = new Quail($contents, $protocol .'://'. $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . $this->test_directory . $file, array($test));
+   		$host = (isset($_SERVER['HTTP_HOST'])) ? $_SERVER['HTTP_HOST'] : '';
+   		$uri = (isset($_SERVER['REQUEST_URI'])) ? $_SERVER['REQUEST_URI'] : '';
+      $quail = new Quail($contents, $protocol .'://'. $host . $uri . $this->test_directory . $file, array($test));
   		$quail->runTests();
   
   		return $quail->getRawResults($test);
