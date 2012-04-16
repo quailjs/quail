@@ -218,6 +218,7 @@ class doctypeProvided extends QuailCustomTest {
 class documentStrictDocType extends QuailCustomTest {
   function run() {
     if(!property_exists($this->document->document, 'doctype') || 
+       !property_exists($this->document->document->doctype, 'publicId') || 
        strpos(strtolower($this->document->document->doctype->publicId), 'strict') === FALSE) {
 			$this->objects[] = pq('html');
 		}
@@ -878,14 +879,14 @@ class QuailColorTest extends QuailCustomTest {
   function run() {
     $this->getColorNames();
     foreach($this->q($this->options['selector']) as $el) {
-      if(pq($el)->css('color') && pq($el)->css('background-color') && $this->containsReadableText(pq($el))) {   
-        if($this->options['algorithm'] == 'wai') {
+      if(pq($el)->css('color') && pq($el)->css('background-color')) {   
+        if($this->options['algorithim'] == 'wai') {
           if(!$this->compareWAIColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
             $this->objects[] = pq($el);
           }
         }
-        if($this->options['algorithm'] == 'wcag') {
-          if($this->compareWCAGColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
+        if($this->options['algorithim'] == 'wcag') {
+          if(!$this->compareWCAGColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
             $this->objects[] = pq($el);
           }
         }
@@ -900,13 +901,13 @@ class QuailColorTest extends QuailCustomTest {
       if(!$background) {
         $background = '#ffffff';
       }
-      if($this->options['algorithm'] == 'wai') {
+      if($this->options['algorithim'] == 'wai') {
         if(!$this->compareWAIColors($foreground, $background)) {
           $this->objects[] = pq('body:first');
         }
       }
-      if($this->options['algorithm'] == 'wcag') {
-        if($this->compareWCAGColors($foreground, $background)) {
+      if($this->options['algorithim'] == 'wcag') {
+        if(!$this->compareWCAGColors($foreground, $background)) {
           $this->objects[] = pq('body:first');
         }
       }
@@ -922,7 +923,10 @@ class QuailColorTest extends QuailCustomTest {
   }
   
   protected function compareWCAGColors($foreground, $background) {
-    return ($this->getLuminosity($foreground, $background) < 5);
+    if($this->getLuminosity($foreground, $background) < 5) {
+    	return false;
+	  }
+	  return true;
   }
   
   protected function getColorNames() {
@@ -945,8 +949,8 @@ class QuailColorTest extends QuailCustomTest {
 		$fore_rgb = $this->getRGB($foreground);
 		$back_rgb = $this->getRGB($background);
 		return $this->luminosity($fore_rgb['r'], $back_rgb['r'],
-							               $fore_rgb['g'], $back_rgb['g'],
-							               $fore_rgb['b'], $back_rgb['b']);
+							    $fore_rgb['g'], $back_rgb['g'],
+							    $fore_rgb['b'], $back_rgb['b']);
 	}
 	
 	/**

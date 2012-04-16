@@ -94,10 +94,6 @@ class Quail {
     $this->getQuailTests();
     foreach($this->guideline as $test_name) {
       $test_description = (array)$this->quail_tests[$test_name];
-      if(!$test_description) {
-        $this->results[$test_name] = array();
-        continue;
-      }
       $test = false;
       if($test_description['type'] == 'custom') {
           $test = new $test_description['callback']($test_description, $this->document, $this->path);
