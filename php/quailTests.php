@@ -880,12 +880,12 @@ class QuailColorTest extends QuailCustomTest {
     $this->getColorNames();
     foreach($this->q($this->options['selector']) as $el) {
       if(pq($el)->css('color') && pq($el)->css('background-color')) {   
-        if($this->options['algorithim'] == 'wai') {
+        if($this->options['algorithm'] == 'wai') {
           if(!$this->compareWAIColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
             $this->objects[] = pq($el);
           }
         }
-        if($this->options['algorithim'] == 'wcag') {
+        if($this->options['algorithm'] == 'wcag') {
           if(!$this->compareWCAGColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
             $this->objects[] = pq($el);
           }
@@ -901,12 +901,12 @@ class QuailColorTest extends QuailCustomTest {
       if(!$background) {
         $background = '#ffffff';
       }
-      if($this->options['algorithim'] == 'wai') {
+      if($this->options['algorithm'] == 'wai') {
         if(!$this->compareWAIColors($foreground, $background)) {
           $this->objects[] = pq('body:first');
         }
       }
-      if($this->options['algorithim'] == 'wcag') {
+      if($this->options['algorithm'] == 'wcag') {
         if(!$this->compareWCAGColors($foreground, $background)) {
           $this->objects[] = pq('body:first');
         }

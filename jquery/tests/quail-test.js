@@ -2056,54 +2056,54 @@
      });
   
      //226
-    test('documentColorWaiAlgorithim', function() {
+    test('documentColorWaiAlgorithm', function() {
   
-  		quailTest.runTest( 'documentColorWaiAlgorithim', '226-1.html');
+  		quailTest.runTest( 'documentColorWaiAlgorithm', '226-1.html');
   		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
   
-  		quailTest.runTest( 'documentColorWaiAlgorithim', '226-2.html');
+  		quailTest.runTest( 'documentColorWaiAlgorithm', '226-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
   
-  		quailTest.runTest( 'documentColorWaiAlgorithim', '226-3.html');
+  		quailTest.runTest( 'documentColorWaiAlgorithm', '226-3.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
   	});
   
      //227
-    test('documentColorWaiLinkAlgorithim', function() {
+    test('documentColorWaiLinkAlgorithm', function() {
   
-  		quailTest.runTest( 'documentColorWaiLinkAlgorithim', '227-1.html');
+  		quailTest.runTest( 'documentColorWaiLinkAlgorithm', '227-1.html');
   		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
   
-  		quailTest.runTest( 'documentColorWaiLinkAlgorithim', '227-2.html');
+  		quailTest.runTest( 'documentColorWaiLinkAlgorithm', '227-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
   
-  		quailTest.runTest( 'documentColorWaiLinkAlgorithim', '227-3.html');
+  		quailTest.runTest( 'documentColorWaiLinkAlgorithm', '227-3.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
   	});
   
      //228
-    test('documentColorWaiActiveLinkAlgorithim', function() {
+    test('documentColorWaiActiveLinkAlgorithm', function() {
   
-  		quailTest.runTest( 'documentColorWaiActiveLinkAlgorithim', '228-1.html');
+  		quailTest.runTest( 'documentColorWaiActiveLinkAlgorithm', '228-1.html');
   		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
   
-  		quailTest.runTest( 'documentColorWaiActiveLinkAlgorithim', '228-2.html');
+  		quailTest.runTest( 'documentColorWaiActiveLinkAlgorithm', '228-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
   
-  		quailTest.runTest( 'documentColorWaiActiveLinkAlgorithim', '228-3.html');
+  		quailTest.runTest( 'documentColorWaiActiveLinkAlgorithm', '228-3.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
   	});
   
      //229
-    test('documentColorWaiVisitedLinkAlgorithim', function() {
+    test('documentColorWaiVisitedLinkAlgorithm', function() {
   
-  		quailTest.runTest( 'documentColorWaiVisitedLinkAlgorithim', '229-1.html');
+  		quailTest.runTest( 'documentColorWaiVisitedLinkAlgorithm', '229-1.html');
   		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
   
-  		quailTest.runTest( 'documentColorWaiVisitedLinkAlgorithim', '229-2.html');
+  		quailTest.runTest( 'documentColorWaiVisitedLinkAlgorithm', '229-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
   
-  		quailTest.runTest( 'documentColorWaiVisitedLinkAlgorithim', '229-3.html');
+  		quailTest.runTest( 'documentColorWaiVisitedLinkAlgorithm', '229-3.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
   	});
   

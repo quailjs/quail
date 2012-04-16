@@ -2634,57 +2634,57 @@ class QuailOACTests extends QuailBaseTest {
    }
 
    //226
-  function test226_documentColorWaiAlgorithim() {
+  function test226_documentColorWaiAlgorithm() {
 
-		$results = $this->getTest('226-1.html', 'documentColorWaiAlgorithim');
+		$results = $this->getTest('226-1.html', 'documentColorWaiAlgorithm');
 		$this->assertTrue(count($results));
 
-		$results = $this->getTest('226-2.html', 'documentColorWaiAlgorithim');
+		$results = $this->getTest('226-2.html', 'documentColorWaiAlgorithm');
 		$this->assertTrue(count($results) == 0);
 
-		$results = $this->getTest('226-3.html', 'documentColorWaiAlgorithim');
+		$results = $this->getTest('226-3.html', 'documentColorWaiAlgorithm');
 		$this->assertTrue(count($results) == 0);
 	}
 
    //227
-  function test227_documentColorWaiLinkAlgorithim() {
+  function test227_documentColorWaiLinkAlgorithm() {
 
-		$results = $this->getTest('227-1.html', 'documentColorWaiLinkAlgorithim');
+		$results = $this->getTest('227-1.html', 'documentColorWaiLinkAlgorithm');
 		$this->assertTrue(count($results));
 
-		$results = $this->getTest('227-2.html', 'documentColorWaiLinkAlgorithim');
+		$results = $this->getTest('227-2.html', 'documentColorWaiLinkAlgorithm');
 		$this->assertTrue(count($results) == 0);
 
-		$results = $this->getTest('227-3.html', 'documentColorWaiLinkAlgorithim');
+		$results = $this->getTest('227-3.html', 'documentColorWaiLinkAlgorithm');
 		$this->assertTrue(count($results) == 0);
 		
-		$results = $this->getTest('227-4.html', 'documentColorWaiLinkAlgorithim');
+		$results = $this->getTest('227-4.html', 'documentColorWaiLinkAlgorithm');
 		$this->assertTrue(count($results));
 	}
 
    //228
-  function test228_documentColorWaiActiveLinkAlgorithim() {
+  function test228_documentColorWaiActiveLinkAlgorithm() {
 
-		$results = $this->getTest('228-1.html', 'documentColorWaiActiveLinkAlgorithim');
+		$results = $this->getTest('228-1.html', 'documentColorWaiActiveLinkAlgorithm');
 		$this->assertTrue(count($results));
 
-		$results = $this->getTest('228-2.html', 'documentColorWaiActiveLinkAlgorithim');
+		$results = $this->getTest('228-2.html', 'documentColorWaiActiveLinkAlgorithm');
 		$this->assertTrue(count($results) == 0);
 
-		$results = $this->getTest('228-3.html', 'documentColorWaiActiveLinkAlgorithim');
+		$results = $this->getTest('228-3.html', 'documentColorWaiActiveLinkAlgorithm');
 		$this->assertTrue(count($results) == 0);
 	}
 
    //229
-  function test229_documentColorWaiVisitedLinkAlgorithim() {
+  function test229_documentColorWaiVisitedLinkAlgorithm() {
 
-		$results = $this->getTest('229-1.html', 'documentColorWaiVisitedLinkAlgorithim');
+		$results = $this->getTest('229-1.html', 'documentColorWaiVisitedLinkAlgorithm');
 		$this->assertTrue(count($results));
 
-		$results = $this->getTest('229-2.html', 'documentColorWaiVisitedLinkAlgorithim');
+		$results = $this->getTest('229-2.html', 'documentColorWaiVisitedLinkAlgorithm');
 		$this->assertTrue(count($results) == 0);
 
-		$results = $this->getTest('229-3.html', 'documentColorWaiVisitedLinkAlgorithim');
+		$results = $this->getTest('229-3.html', 'documentColorWaiVisitedLinkAlgorithm');
 		$this->assertTrue(count($results) == 0);
 	}
 
