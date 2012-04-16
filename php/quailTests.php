@@ -12,7 +12,16 @@ class QuailSelectorTest extends QuailTest {
   }
 }
 
+/**
+ * There are no adjacent text and image links having the same destination.
+ * This objective of this technique is to avoid unnecessary duplication that occurs when adjacent text and iconic versions of a link are contained in a document.
+*	@link http://quail-lib.org/test-info/aAdjacentWithSameResourceShouldBeCombined
+*/
 class aAdjacentWithSameResourceShouldBeCombined extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('a') as $el) {
       if(pq($el)->next('a')->attr('href') == pq($el)->attr('href')) {
@@ -22,7 +31,16 @@ class aAdjacentWithSameResourceShouldBeCombined extends QuailCustomTest {
   }
 }
 
+/**
+ * applet contains a text equivalent in the body of the applet.
+ * This error is generated for all applet elements.
+*	@link http://quail-lib.org/test-info/appletContainsTextEquivalent
+*/
 class appletContainsTextEquivalent extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('applet[alt=], applet:not(applet[alt])') as $el) {
       if(!strlen(trim(pq($el)->text()))) {
@@ -32,7 +50,16 @@ class appletContainsTextEquivalent extends QuailCustomTest {
   }
 }
 
+/**
+ * Alt text for all img elements used as source anchors is different from the link text.
+ * If an image occurs within a link, the Alt text should be different from the link text.
+*	@link http://quail-lib.org/test-info/aImgAltNotRepetative
+*/
 class aImgAltNotRepetative extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('a img[alt]') as $el) {
       if(trim(pq($el)->attr('alt')) == trim(pq($el)->parent('a')->text())) {
@@ -42,10 +69,19 @@ class aImgAltNotRepetative extends QuailCustomTest {
   }
 }
 
+/**
+ * Link text does not begin with \"link to\"" or \""go to\"" (English)."
+ * Alt text for images used as links should not begin with \"link to\"" or \""go to\""."
+*	@link http://quail-lib.org/test-info/aLinkTextDoesNotBeginWithRedundantWord
+*/
 class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
   
   protected $redundant;
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $this->getRedundantString();
     foreach($this->q('a') as $el) {
@@ -72,7 +108,16 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
   }
 }
 
+/**
+ * Include non-link, printable characters (surrounded by spaces) between adjacent links.
+ * Adjacent links must be separated by printable characters. [Editor's Note - Define adjacent link? Printable characters always?]
+*	@link http://quail-lib.org/test-info/aLinksAreSeperatedByPrintableCharacters
+*/
 class aLinksAreSeperatedByPrintableCharacters extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('a') as $el) {
 		  if(pq($el)->next('a')->length && $this->isUnreadable($el->nextSibling->wholeText)) {
@@ -82,8 +127,17 @@ class aLinksAreSeperatedByPrintableCharacters extends QuailCustomTest {
   }
 }
 
+/**
+ * Each source anchor contains text.
+ * a (anchor) element must contain text. The text may occur in the anchor text or in the title attribute of the anchor or in the Alt text of an image used within the anchor.
+*	@link http://quail-lib.org/test-info/aMustContainText
+*/
 class aMustContainText extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('a') as $el) {
       if(!$this->containsReadableText(pq($el)) && !(pq($el)->attr('name') && !pq($el)->attr('href'))) {
@@ -93,10 +147,19 @@ class aMustContainText extends QuailCustomTest {
   }
 }
 
+/**
+ * Suspicious link text.
+ * a (anchor) element cannot contain any of the following text (English): \"click here\""
+*	@link http://quail-lib.org/test-info/aSuspiciousLinkText
+*/
 class aSuspiciousLinkText extends QuailCustomTest {
   
   private $suspicious;
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $this->getStrings();
     foreach($this->q('a') as $el) {
@@ -116,9 +179,18 @@ class aSuspiciousLinkText extends QuailCustomTest {
 
 }
 
+/**
+ * Use the blockquote element to mark up block quotations.
+ * If body element content is greater than 10 characters (English) then this error will be generated.
+*	@link http://quail-lib.org/test-info/blockquoteUseForQuotations
+*/
 class blockquoteUseForQuotations extends QuailCustomTest {
 
-	function run() {
+	
+  /**
+   * See QuailTest::run()
+   */
+  function run() {
 		foreach($this->q('p') as $el) {
 			if(in_array(substr(trim(pq($el)->text()), 0, 1), array('"', "'")) &&
 			   in_array(substr(trim(pq($el)->text()), -1, 1), array('"', "'"))) {
@@ -129,10 +201,19 @@ class blockquoteUseForQuotations extends QuailCustomTest {
 
 }
 
+/**
+ * Abbreviations must be marked with abbr element.
+ * If body element content is greater than 10 characters (English) this error will be generated.
+*	@link http://quail-lib.org/test-info/documentAbbrIsUsed
+*/
 class documentAbbrIsUsed extends QuailCustomTest {
   
   protected $acronym_tag = 'abbr';
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q($this->acronym_tag .'[title]') as $el) {
 			$predefined[strtoupper(trim(pq($el)->text()))] = pq($el)->attr('title');
@@ -155,12 +236,27 @@ class documentAbbrIsUsed extends QuailCustomTest {
   }
 }
 
+/**
+ * Acronyms must be marked with acronym element. This is the same as the 'abbr' test, but
+*	looks for ACRONYM elements
+ * If body element content is greater than 10 characters (English) then this error will be generated.
+*	@link http://quail-lib.org/test-info/documentAcronymsHaveElement
+*/
 class documentAcronymsHaveElement extends documentAbbrIsUsed {
   
   protected $acronym_tag = 'acronym';
 }
 
+/**
+ * id attributes must be unique.
+ * Each id attribute value must be unique.
+*	@link http://quail-lib.org/test-info/documentIDsMustBeUnique
+*/
 class documentIDsMustBeUnique extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $ids = array();
     foreach ($this->q('*[id]') as $el) {
@@ -173,6 +269,10 @@ class documentIDsMustBeUnique extends QuailCustomTest {
 }
 
 class documentIsReadable extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('body *') as $el) {
       if(strlen(trim(strip_tags(pq($el)->text()))) || 
@@ -184,10 +284,19 @@ class documentIsReadable extends QuailCustomTest {
   }
 }
 
+/**
+ * Document has valid language code.
+ * html element must have a lang attribute value of valid 2 or 3 letter language code according to ISO specification 639.
+*	@link http://quail-lib.org/test-info/documentLangIsISO639Standard
+*/
 class documentLangIsISO639Standard extends QuailCustomTest {
   
   protected $langauges;
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $this->getLanguages();
     if(!in_array(strtolower(pq('html:first')->attr('lang')), $this->langauges)) {
@@ -204,8 +313,17 @@ class documentLangIsISO639Standard extends QuailCustomTest {
   } 
 }
 
+/**
+ * HTML content has a valid doctype declaration.
+ * Each document must contain a valid doctype declaration.
+*	@link http://quail-lib.org/test-info/doctypeProvided
+*/
 class doctypeProvided extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     if(!property_exists($this->document->document, 'doctype') ||
        !property_exists($this->document->document->doctype, 'publicId') ||
@@ -215,18 +333,44 @@ class doctypeProvided extends QuailCustomTest {
   }
 }
 
+/**
+ * Strict doctype is declared.
+ * A 'strict' doctype must be declared in the document. This can either be the HTML4.01 or XHTML 1.0 strict doctype.
+*	@link http://quail-lib.org/test-info/documentStrictDocType
+*/
 class documentStrictDocType extends QuailCustomTest {
+  
+  private $parameters = array('publicId', 'systemId');
+  
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
-    var_dump($this->document->document->doctype->publicId);
-    if(!property_exists($this->document->document, 'doctype') || 
-       !property_exists($this->document->document->doctype, 'publicId') || 
-       strpos(strtolower($this->document->document->doctype->publicId), 'strict') === FALSE) {
-			$this->objects[] = pq('html');
+    if(!property_exists($this->document->document, 'doctype')) {
+      $this->objects[] = pq('html');
+      return;
+    }
+		foreach($this->parameters as $parameter) {
+		  if(property_exists($this->document->document->doctype, $parameter)
+		     && strpos(strtolower($this->document->document->doctype->{$parameter}), 'strict') !== FALSE) {
+		      return; 
+	     }
 		}
+		$this->objects[] = pq('html');
   }
 }
 
+/**
+ * Document validates to specification.
+ * Document must validate to declared doctype.
+*	@link http://quail-lib.org/test-info/documentValidatesToDocType
+*/
 class documentValidatesToDocType extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     if(!@$this->document->document->validate()) {
 			$this->objects[] = pq('html');
@@ -234,8 +378,17 @@ class documentValidatesToDocType extends QuailCustomTest {
   }
 }
 
+/**
+ * title is short.
+ * title element content must be less than 150 characters (English).
+*	@link http://quail-lib.org/test-info/documentTitleIsShort
+*/
 class documentTitleIsShort extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     if(strlen(trim(pq('head title:first')->text())) > 150) {
       $this->objects[] = pq('head title:first');
@@ -243,10 +396,19 @@ class documentTitleIsShort extends QuailCustomTest {
   }
 }
 
+/**
+ * All visual lists are marked.
+ * Create lists of related items using list elements appropriate for their purposes.
+*	@link http://quail-lib.org/test-info/documentVisualListsAreMarkedUp
+*/
 class documentVisualListsAreMarkedUp extends QuailCustomTest {
   
   protected $list_cues = array('*', '<br>*', '¥', '&#8226');
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('p, div, h1, h2, h3, h4, h5, h6') as $el) {
       foreach($this->list_cues as $cue) {
@@ -260,7 +422,16 @@ class documentVisualListsAreMarkedUp extends QuailCustomTest {
   }
 }
 
+/**
+ * All embed elements have an associated noembed element that contains a text equivalent to the embed element.
+ * Provide a text equivalent for the embed element.
+*	@link http://quail-lib.org/test-info/embedHasAssociatedNoEmbed
+*/
 class embedHasAssociatedNoEmbed extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     if($this->q('noembed')->length) {
       return null;
@@ -271,10 +442,19 @@ class embedHasAssociatedNoEmbed extends QuailCustomTest {
   }
 }
 
+/**
+ * Excessive use of emoticons.
+ * This error is generated if 4 or more emoticons are detected. [Editor's Note - how are emoticons detected?]
+*	@link http://quail-lib.org/test-info/emoticonsExcessiveUse
+*/
 class emoticonsExcessiveUse extends QuailCustomTest {
 
   protected $emoticons;
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $this->getEmoticons();
     foreach($this->q('p, div, h1, h2, h3, h4, h5, h6') as $el) {
@@ -302,6 +482,10 @@ class emoticonsExcessiveUse extends QuailCustomTest {
 
 class emoticonsMissingAbbr extends emoticonsExcessiveUse {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $this->getEmoticons();
     $count = 0;
@@ -321,7 +505,16 @@ class emoticonsMissingAbbr extends emoticonsExcessiveUse {
   }
 }
 
+/**
+ * Each section of content is marked with a header element.
+ * Using the heading elements, h and h1 - h6, to markup the beginning of each section in the content can assist in navigation.
+*	@link http://quail-lib.org/test-info/headersUseToMarkSections
+*/
 class headersUseToMarkSections extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('p') as $el) {
       $set = false;
@@ -340,7 +533,16 @@ class headersUseToMarkSections extends QuailCustomTest {
   }
 }
 
+/**
+ * Alt text for all input elements with a type attribute value of "image" is less than 100 characters (English) or the user has confirmed that the Alt text is as short as possible.
+ * input elements must have alt attribute value of less than 100 characters (English).
+*	@link http://quail-lib.org/test-info/inputImageAltIsShort
+*/
 class inputImageAltIsShort extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('input[type=image][alt]') as $el) {
       if(strlen(trim(pq($el)->attr('alt'))) > 150) {
@@ -350,7 +552,16 @@ class inputImageAltIsShort extends QuailCustomTest {
   }
 }
 
+/**
+ * Image used in input element - Alt text should not be the same as the filename.
+ * input elements cannot have alt attribute values that are the same as their src attribute values.
+*	@link http://quail-lib.org/test-info/inputImageAltIsNotFileName
+*/
 class inputImageAltIsNotFileName extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('input[type=image][alt]') as $el) {
       if(pq($el)->attr('alt') == pq($el)->attr('src')) {
@@ -360,10 +571,19 @@ class inputImageAltIsNotFileName extends QuailCustomTest {
   }
 }
 
+/**
+ * Alt text for all input elements with a type attribute value of "image" does not use the words "submit" or "button" (English).
+ * Alt text for form submit buttons must not use the words "submit" or "button".
+*	@link http://quail-lib.org/test-info/inputImageAltNotRedundant
+*/
 class inputImageAltNotRedundant extends QuailCustomTest {
   
   protected $redundant;
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $this->getRedundantString();
     foreach($this->q('input[type=image][alt]') as $el) {
@@ -382,8 +602,17 @@ class inputImageAltNotRedundant extends QuailCustomTest {
   }
 }
 
+/**
+ * Alt text is not the same as the filename unless author has confirmed it is correct.
+ * img element cannot have alt attribute value that is the same as its src attribute.
+ *	@link http://quail-lib.org/test-info/imgAltIsDifferent
+ */
 class imgAltIsDifferent extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('img') as $el) {
       if(pq($el)->attr('src') == pq($el)->attr('alt')) {
@@ -393,8 +622,17 @@ class imgAltIsDifferent extends QuailCustomTest {
   }
 }
 
+/**
+ * Image Alt text is long.
+ * Image Alt text is long or user must confirm that Alt text is as short as possible.
+ * @link http://quail-lib.org/test-info/imgAltIsTooLong
+ */
 class imgAltIsTooLong extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('img[alt]') as $el) {
       if(strlen(pq($el)->attr('alt')) > 100) {
@@ -405,8 +643,17 @@ class imgAltIsTooLong extends QuailCustomTest {
   
 }
 
+/**
+ * Important images should not have spacer Alt text.
+ * img element cannot have alt attribute value of whitespace if WIDTH and HEIGHT attribute values are both greater than 25.
+ * @link http://quail-lib.org/test-info/imgImportantNoSpacerAlt
+ */
 class imgImportantNoSpacerAlt extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('img[alt]') as $el) {
       if($this->isUnreadable(pq($el)->attr('alt')) && 
@@ -419,10 +666,19 @@ class imgImportantNoSpacerAlt extends QuailCustomTest {
   }
 }
 
+/**
+ * All img elements have associated images that do not flicker.
+ * This error is generated for all img elements that contain a src attribute value that ends with ".gif" (case insensitive). and have a width and height larger than 25.
+ * @link http://quail-lib.org/test-info/imgGifNoFlicker
+ */
 class imgGifNoFlicker extends QuailCustomTest {
   
   var $gif_control_extension = "/21f904[0-9a-f]{2}([0-9a-f]{4})[0-9a-f]{2}00/";
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('img[src$=.gif]') as $el) {
       $path = $this->getPath(pq($el)->attr('src'));
@@ -453,8 +709,16 @@ class imgGifNoFlicker extends QuailCustomTest {
   }
 }
 
+/**
+ * A long description is used for each img element that does not have Alt text conveying the same information as the image.
+ * img element must contain a longdesc attribute.
+ *	@link http://quail-lib.org/test-info/imgHasLongDesc
+ */
 class imgHasLongDesc extends QuailCustomTest {
   
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('img[longdesc]') as $el) {
       if(pq($el)->attr('longdesc') == pq($el)->attr('alt') ||
@@ -465,7 +729,16 @@ class imgHasLongDesc extends QuailCustomTest {
   }
 }
 
+/**
+*	ALT text on images should not be redundant across the page. Please check that all
+*	images have alt text which is unique to the image.
+*	@link http://quail-lib.org/test-info/imgAltTextNotRedundant
+*/
 class imgAltTextNotRedundant extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $alts = array();
     foreach($this->q('img[alt]') as $el) {
@@ -478,8 +751,17 @@ class imgAltTextNotRedundant extends QuailCustomTest {
   }
 }
 
+/**
+*  Alt text for all img elements used as source anchors is not empty when there is no other text in the anchor.
+*  img element cannot have alt attribute value of null or whitespace if the img element is contained by an A element and there is no other link text.
+*	@link http://quail-lib.org/test-info/imgAltNotEmptyInAnchor
+*/
 class imgAltNotEmptyInAnchor extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('a img') as $el) {
       if(!$el->hasAttribute('alt') || $this->isUnreadable(pq($el)->attr('alt'))) {
@@ -491,7 +773,16 @@ class imgAltNotEmptyInAnchor extends QuailCustomTest {
   }
 }
 
+/**
+*  All img elements with images containing math expressions have equivalent MathML markup.
+*  This error is generated for all img elements that have a width and height greater than 100.
+*	@link http://quail-lib.org/test-info/imgWithMathShouldHaveMathEquivalent
+*/
 class imgWithMathShouldHaveMathEquivalent extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('img:not(img:has(math), img:has(tagName))') as $el) {
       if(!pq($el)->parent()->find('math')->length) {
@@ -501,7 +792,16 @@ class imgWithMathShouldHaveMathEquivalent extends QuailCustomTest {
   }
 }
 
+/**
+*  Each input element has only one associated label.
+*  input element must have only one associated label element.
+*	@link http://quail-lib.org/test-info/labelMustBeUnique
+*/
 class labelMustBeUnique extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $labels = array();
     foreach($this->q('label[for]') as $el) {
@@ -513,7 +813,16 @@ class labelMustBeUnique extends QuailCustomTest {
   }
 }
 
+/**
+*  List items must not be used to format text.
+*  OL element should not contain only one LI element.
+*	@link http://quail-lib.org/test-info/listNotUsedForFormatting
+*/
 class listNotUsedForFormatting extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('ol, ul') as $el) {
       if(pq($el)->find('li')->length < 2) {
@@ -523,7 +832,16 @@ class listNotUsedForFormatting extends QuailCustomTest {
   }
 }
 
+/**
+*  pre element should not be used to create tabular layout.
+*  This error is generated for each pre element.
+*	@link http://quail-lib.org/test-info/preShouldNotBeUsedForTabularLayout
+*/
 class preShouldNotBeUsedForTabularLayout extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('pre') as $el) {
       $rows = preg_split('/[\n\r]+/', pq($el)->text());
@@ -534,8 +852,17 @@ class preShouldNotBeUsedForTabularLayout extends QuailCustomTest {
   }
 }
 
+/**
+*  The tab order specified by tabindex attributes follows a logical order.
+*  Provide a logical tab order when the default tab order does not suffice.
+*	@link http://quail-lib.org/test-info/tabIndexFollowsLogicalOrder
+*/
 class tabIndexFollowsLogicalOrder extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $index = 0;
 		foreach($this->q('*[tabindex]') as $el) {
@@ -548,8 +875,17 @@ class tabIndexFollowsLogicalOrder extends QuailCustomTest {
   }
 }
 
+/**
+*  All layout tables have an empty summary attribute or no summary attribute.
+*  The table element, summary attribute for all layout tables contains no printable characters or is absent.
+*	@link http://quail-lib.org/test-info/tableLayoutHasNoSummary
+*/
 class tableLayoutHasNoSummary extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('table[summary]') as $el) {
       if(!$this->isDataTable(pq($el)) && !$this->isUnreadable(pq($el)->attr('summary'))) {
@@ -559,8 +895,17 @@ class tableLayoutHasNoSummary extends QuailCustomTest {
   }
 }
 
+/**
+*  All layout tables do not contain caption elements.
+*  table element content cannot contain a caption element if it's a layout table.
+*	@link http://quail-lib.org/test-info/tableLayoutHasNoCaption
+*/
 class tableLayoutHasNoCaption extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('table') as $el) {
       if(!$this->isDataTable(pq($el)) && pq($el)->find('caption')->length) {
@@ -570,8 +915,17 @@ class tableLayoutHasNoCaption extends QuailCustomTest {
   }
 }
 
+/**
+*  All layout tables make sense when linearized.
+*  This error is generated for all layout tables.  If the table contains th elements then it is a data table. If the table does not contain th elements then it is a layout table.
+*	@link http://quail-lib.org/test-info/tableLayoutMakesSenseLinearized
+*/
 class tableLayoutMakesSenseLinearized extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('table') as $el) {
       if(!$this->isDataTable(pq($el))) {
@@ -581,7 +935,16 @@ class tableLayoutMakesSenseLinearized extends QuailCustomTest {
   }
 }
 
+/**
+*  All layout tables do not contain th elements.
+*  Data tables must have th elements while layout tables can not have th elements.
+*	@link http://quail-lib.org/test-info/tableLayoutDataShouldNotHaveTh
+*/
 class tableLayoutDataShouldNotHaveTh extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('table') as $el) {
       if(!$this->isDataTable(pq($el)) && pq($el)->find('th')->length) {
@@ -591,7 +954,16 @@ class tableLayoutDataShouldNotHaveTh extends QuailCustomTest {
   }
 }
 
+/**
+*  Long table header labels require terse substitutes.
+*  th element content must be less than 20 characters (English) if th element does not contain abbr attribute.
+*	@link http://quail-lib.org/test-info/tableUsesAbbreviationForHeader
+*/
 class tableUsesAbbreviationForHeader extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('th:not(th[abbr])') as $el) {
       if(strlen(trim(pq($el)->text())) > 20) {
@@ -601,7 +973,16 @@ class tableUsesAbbreviationForHeader extends QuailCustomTest {
   }
 }
 
+/**
+*  Substitutes for table header labels must be terse.
+*  abbr attribute value on th element must be less than 20 characters (English).
+*	@link http://quail-lib.org/test-info/tableHeaderLabelMustBeTerse
+*/
 class tableHeaderLabelMustBeTerse extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('th, table tr:first td') as $el) {
       if(strlen(trim(pq($el)->text())) > 20 && (!$el->hasAttribute('abbr') || strlen(trim(pq($el)->attr('abbr'))) > 20)) {
@@ -611,8 +992,17 @@ class tableHeaderLabelMustBeTerse extends QuailCustomTest {
   }
 }
 
+/**
+*  Table summaries do not duplicate the table captions.
+*  The summary and the caption must be different. Caption identifies the table. Summary describes the table contents.
+*	@link http://quail-lib.org/test-info/tableSummaryDoesNotDuplicateCaption
+*/
 class tableSummaryDoesNotDuplicateCaption extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('table[summary]:has(caption)') as $el) {
       if(strtolower(trim(pq($el)->attr('summary'))) == strtolower(trim(pq($el)->find('caption:first')->text()))) {
@@ -622,7 +1012,16 @@ class tableSummaryDoesNotDuplicateCaption extends QuailCustomTest {
   }
 }
 
+/**
+*  Data tables that contain more than one row/column of headers use the id and headers attributes to identify cells.
+*  id and headers attributes allow screen readers to speak the headers associated with each data cell when the relationships are too complex to be identified using the th element alone or the th element with the scope attribute.
+*	@link http://quail-lib.org/test-info/tableWithMoreHeadersUseID
+*/
 class tableWithMoreHeadersUseID extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('table:has(th)') as $el) {
       $rows = 0;
@@ -638,7 +1037,16 @@ class tableWithMoreHeadersUseID extends QuailCustomTest {
   }
 }
 
+/**
+*  Table markup is used for all tabular information.
+*  The objective of this technique is to present tabular information in a way that preserves relationships within the information even when users cannot see the table or the presentation format is changed.
+*	@link http://quail-lib.org/test-info/tabularDataIsInTable
+*/
 class tabularDataIsInTable extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('pre') as $el) {
       if(strpos(pq($el)->text(), "\t") !== FALSE) {
@@ -648,10 +1056,19 @@ class tabularDataIsInTable extends QuailCustomTest {
   }
 }
 
+/**
+*  All form fields that are required are indicated to the user as required.
+*  Ensure that the label for any interactive component within Web content makes the component's purpose clear.
+*	@link http://quail-lib.org/test-info/formWithRequiredLabel
+*/
 class formWithRequiredLabel extends QuailCustomTest {
   
   protected $redundant;
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $this->loadString();
     $labels = array();
@@ -687,7 +1104,16 @@ class formWithRequiredLabel extends QuailCustomTest {
   }
 }
 
+/**
+*  All checkbox groups are marked using fieldset and legend elements.
+*  form element content must contain both fieldset and legend elements if there are related checkbox buttons.
+*	@link http://quail-lib.org/test-info/inputCheckboxRequiresFieldset
+*/
 class inputCheckboxRequiresFieldset extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('input[type=checkbox]') as $el) {
       if(!pq($el)->parents('fieldset')->length) {
@@ -697,8 +1123,17 @@ class inputCheckboxRequiresFieldset extends QuailCustomTest {
   }
 }
 
+/**
+*  All links in all client side image-maps are duplicated within the document.
+*  img element must not contain a usemap attribute unless all links in the MAP are duplicated within the document. The MAP element is referred by the USEMAP element's usemap attribute. Links within MAP are referred by area elements href attribute contained by MAP element. [Editor's Note - can duplicate links appear anywhere within content or must they be part of a link group?]
+*	@link http://quail-lib.org/test-info/imgMapAreasHaveDuplicateLink
+*/
 class imgMapAreasHaveDuplicateLink extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $links = array();
     foreach($this->q('a') as $el) {
@@ -720,7 +1155,16 @@ class imgMapAreasHaveDuplicateLink extends QuailCustomTest {
   }
 }
 
+/**
+*  Sites must have a site map.
+*  Each site must have a site map.
+*	@link http://quail-lib.org/test-info/siteMap
+*/
 class siteMap extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $this->loadString();
     foreach($this->q('a') as $el) {
@@ -744,7 +1188,15 @@ class siteMap extends QuailCustomTest {
   }
 }
 
+/**
+*  Use colgroup and col elements to group columns.
+*	@link http://quail-lib.org/test-info/tableUseColGroup
+*/
 class tableUseColGroup extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('table') as $el) {
       if($this->isDataTable(pq($el)) && !pq($el)->find('colgroup')->length) {
@@ -754,7 +1206,11 @@ class tableUseColGroup extends QuailCustomTest {
   }
 }
 
-
+/**
+*  All p elements are not used as headers.
+*  All p element content must not be marked with either b, i, u, strong, font, em.
+*	@link http://quail-lib.org/test-info/pNotUsedAsHeader
+*/
 class pNotUsedAsHeader extends QuailCustomTest {
   
   protected $suspectTags = array('strong', 'b', 'em', 'i', 'u', 'font');
@@ -763,6 +1219,10 @@ class pNotUsedAsHeader extends QuailCustomTest {
   
   protected $requiresTextAnalysis = true;
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $priorCSS = array();
     $textAnalysis = new TextStatistics();
@@ -787,7 +1247,15 @@ class pNotUsedAsHeader extends QuailCustomTest {
   }
 }
 
+/**
+*	Text size is not less than 10px small
+*	@link http://quail-lib.org/test-info/textIsNotSmall
+*/
 class textIsNotSmall extends QuailCustomTest {
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('body *') as $el) {
       $size = pq($el)->css('font-size');
@@ -798,8 +1266,16 @@ class textIsNotSmall extends QuailCustomTest {
   }
 }
 
+/**
+*	Jump menus that consist of a single form element should not be used
+*	@link http://quail-lib.org/test-info/selectJumpMenus
+*/
 class selectJumpMenus extends QuailCustomTest {
 
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q('select') as $el) {
       if(pq($el)->parents('form')->length == 0 ||
@@ -812,6 +1288,10 @@ class selectJumpMenus extends QuailCustomTest {
 
 class QuailLabelTest extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q($this->options['selector']) as $el) {
       if(!pq($el)->parent('label')->length) {
@@ -825,6 +1305,10 @@ class QuailLabelTest extends QuailCustomTest {
 
 class QuailLabelProximityTest extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q($this->options['selector']) as $el) {
       $label = pq('label[for='. str_replace('#', '', pq($el)->attr('id')) .']');
@@ -840,6 +1324,10 @@ class QuailLabelProximityTest extends QuailCustomTest {
 
 class QuailHeaderTest extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $current = intval(substr($this->options['selector'], -1, 1));
     $next_heading = false;
@@ -861,6 +1349,10 @@ class QuailHeaderTest extends QuailCustomTest {
 
 class QuailEventTest extends QuailCustomTest {
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     foreach($this->q($this->options['selector']) as $el) {
       if(pq($el)->attr($this->options['searchEvent'])) {
@@ -877,6 +1369,10 @@ class QuailColorTest extends QuailCustomTest {
   
   protected $color_names;
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $this->getColorNames();
     foreach($this->q($this->options['selector']) as $el) {
@@ -1106,6 +1602,10 @@ class QuailPlaceholderTest extends QuailCustomTest {
                                 'selector' => '',
                                 );
   
+  
+  /**
+   * See QuailTest::run()
+   */
   function run() {
     $this->getPlaceholders();
     foreach($this->q($this->options['selector']) as $el) {

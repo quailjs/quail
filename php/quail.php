@@ -292,6 +292,7 @@ class QuailTest {
 	     return floatval(str_replace('em', '', $size)) * 16;
 	   }
 	 }
+	 
 }
 
 
