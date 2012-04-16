@@ -131,21 +131,21 @@
   },
   "bodyActiveLinkColorContrast":{
     "type":"color",
-    "algorithim":"wcag",
+    "algorithm":"wcag",
     "selector":"a:active",
     "bodyForegroundAttribute": "alink",
     "bodyBackgroundAttribute": "bgcolor"
   },
   "bodyColorContrast":{
     "type":"color",
-    "algorithim":"wcag",
+    "algorithm":"wcag",
     "selector":"*",
     "bodyForegroundAttribute": "text",
     "bodyBackgroundAttribute": "bgcolor"
   },
   "bodyLinkColorContrast":{
     "type":"color",
-    "algorithim":"wcag",
+    "algorithm":"wcag",
     "selector":"a",
     "bodyForegroundAttribute": "link",
     "bodyBackgroundAttribute": "bgcolor"
@@ -156,7 +156,7 @@
   },
   "bodyVisitedLinkColorContrast":{
     "type":"color",
-    "algorithim":"wcag",
+    "algorithm":"wcag",
     "selector":"a:visited",
     "bodyForegroundAttribute": "vlink",
     "bodyBackgroundAttribute": "bgcolor"
@@ -178,8 +178,9 @@
     "selector":"link[rel=stylesheet], stylesheet, *[style]"
   },
   "cssTextHasContrast":{
-    "type":"custom",
-    "callback":"cssTextHasContrast"
+    "type":"color",
+    "algorithm":"wcag",
+    "selector":"body *"
   },
   "doctypeProvided":{
     "type":"custom",
@@ -201,28 +202,28 @@
     "type":"selector",
     "selector":"meta[http-equiv=refresh]"
   },
-  "documentColorWaiActiveLinkAlgorithim":{
+  "documentColorWaiActiveLinkAlgorithm":{
     "type":"color",
-    "algorithim":"wai",
+    "algorithm":"wai",
     "selector":"a:active",
     "bodyForegroundAttribute": "alink",
     "bodyBackgroundAttribute": "bgcolor"
   },
-  "documentColorWaiAlgorithim":{
+  "documentColorWaiAlgorithm":{
     "type":"color",
-    "algorithim":"wai",
+    "algorithm":"wai",
     "selector":"body"
   },
-  "documentColorWaiLinkAlgorithim":{
+  "documentColorWaiLinkAlgorithm":{
     "type":"color",
-    "algorithim":"wai",
+    "algorithm":"wai",
     "selector":"a",
     "bodyForegroundAttribute": "link",
     "bodyBackgroundAttribute": "bgcolor"
   },
-  "documentColorWaiVisitedLinkAlgorithim":{
+  "documentColorWaiVisitedLinkAlgorithm":{
     "type":"color",
-    "algorithim":"wai",
+    "algorithm":"wai",
     "selector":"a:visited",
     "bodyForegroundAttribute": "vlink",
     "bodyBackgroundAttribute": "bgcolor"

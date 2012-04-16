@@ -1,0 +1,9 @@
+<phpunit>
+  <testsuites>
+    <testsuite name="QUAIL Tests">
+      <directory>testfiles/*Tests.php files</directory>
+      <file>testfiles/oacTests.php</file>
+      <file>testfiles/quailTests.php</file>
+    </testsuite>
+  </testsuites>
+</phpunit>
