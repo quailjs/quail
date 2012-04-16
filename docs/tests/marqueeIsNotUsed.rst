@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;marquee&gt;This is really hard to read&lt;/marquee&gt;
+    <marquee>This is really hard to read</marquee>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;strong&gt;This is much easier to read&lt;/strong&gt;
+    <strong>This is much easier to read</strong>
 
 
 

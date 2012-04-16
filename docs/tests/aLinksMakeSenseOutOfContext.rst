@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    To know more about me, visit my &lt;a href="page.html"&gt;page&lt;/a&gt;.
+    To know more about me, visit my <a href="page.html">page</a>.
 
 
 

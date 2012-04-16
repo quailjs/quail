@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;table summary="A table of stuff"&gt;
+    <table summary="A table of stuff">
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;table summary="A comparison of population rates amongst North American cities."&gt;
+    <table summary="A comparison of population rates amongst North American cities.">
 
 
 

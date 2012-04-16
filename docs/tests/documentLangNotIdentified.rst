@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;html&gt;
+    <html>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;html lang="en"&gt;
+    <html lang="en">
 
 
 

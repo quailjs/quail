@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;object data="map_of_the_world.mov"&gt;&lt;/object&gt;
+    <object data="map_of_the_world.mov"></object>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;object data="map_of_the_world.mov" longdesc="description.html"&gt;&lt;/object&gt;
+    <object data="map_of_the_world.mov" longdesc="description.html"></object>
 
 
 

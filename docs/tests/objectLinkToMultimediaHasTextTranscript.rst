@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;object src="video.mov"&gt;&lt;/object&gt;
+    <object src="video.mov"></object>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;object src="video.mov"&gt;&lt;/object&gt;&lt;a href="transcript.html"&gt;Read Transcript of the video&lt;/a&gt;
+    <object src="video.mov"></object><a href="transcript.html">Read Transcript of the video</a>
 
 
 

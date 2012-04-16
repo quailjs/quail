@@ -18,4 +18,4 @@ Wrong
 
 .. code-block:: html
 
-    &lt;p&gt;&lt;map name="imagemap" id="map1"&gt;&lt;area shape="poly" coords="185
+    <p><map name="imagemap" id="map1"><area shape="poly" coords="185

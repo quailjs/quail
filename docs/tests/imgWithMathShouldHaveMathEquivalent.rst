@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;img src="equation.png" alt="An equation which describes the average wind velocity of an unlaiden swallow. "&gt;
+    <img src="equation.png" alt="An equation which describes the average wind velocity of an unlaiden swallow. ">
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;img src="equation.png" alt="An equation which describes the average wind velocity of an unlaiden swallow. The equation is available after this image."&gt;&lt;mrow&gt;&lt;apply&gt; &lt;eq/&gt; &lt;apply&gt; &lt;plus/&gt; &lt;apply&gt;  &lt;power/&gt;  &lt;ci&gt;x&lt;/ci&gt;  &lt;cn&gt;2&lt;/cn&gt; &lt;/apply&gt; &lt;apply&gt;  &lt;times/&gt;  &lt;cn&gt;4&lt;/cn&gt;  &lt;ci&gt;x&lt;/ci&gt; &lt;/apply&gt; &lt;cn&gt;4&lt;/cn&gt; &lt;/apply&gt; &lt;cn&gt;0&lt;/cn&gt;&lt;/apply&gt;&lt;/mrow&gt;
+    <img src="equation.png" alt="An equation which describes the average wind velocity of an unlaiden swallow. The equation is available after this image."><mrow><apply> <eq/> <apply> <plus/> <apply>  <power/>  <ci>x</ci>  <cn>2</cn> </apply> <apply>  <times/>  <cn>4</cn>  <ci>x</ci> </apply> <cn>4</cn> </apply> <cn>0</cn></apply></mrow>
 
 
 

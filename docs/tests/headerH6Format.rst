@@ -23,7 +23,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;h6&gt;I wanted a line to be bold and large but this is just a regular paragraph.&lt;/h6&gt;
+    <h6>I wanted a line to be bold and large but this is just a regular paragraph.</h6>
 
 
 
@@ -32,7 +32,7 @@ Right
 
 .. code-block:: html
 
-    &lt;p class="large-item"&gt;&lt;strong&gt;I wanted a line to be bold and large but this is just a regular paragraph.&lt;/strong&gt;&lt;/p&gt;
+    <p class="large-item"><strong>I wanted a line to be bold and large but this is just a regular paragraph.</strong></p>
 
 
 

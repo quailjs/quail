@@ -18,14 +18,14 @@ Example
 
 .. code-block:: html
 
-    &lt;a href="home.png"&gt;&lt;/a&gt;
+    <a href="home.png"></a>
 
 
 
  
 .. code-block:: html
 
-    &lt;a href="home.png"&gt;&lt;img src="home.png" alt=""&gt;/&lt;/a&gt;
+    <a href="home.png"><img src="home.png" alt="">/</a>
 
 
 
@@ -34,11 +34,11 @@ Example
  
 .. code-block:: html
 
-    &lt;a href="home.png"&gt;Return Home&lt;/a&gt;
+    <a href="home.png">Return Home</a>
 
 
 
  
 .. code-block:: html
 
-    &lt;a href="home.png"&gt;&lt;img src="home.png" alt="Return Home"&gt;/&lt;/a&gt;
+    <a href="home.png"><img src="home.png" alt="Return Home">/</a>

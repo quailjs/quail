@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;head&gt;&lt;meta http-equiv="refresh" content="60"&gt;&lt;/head&gt;
+    <head><meta http-equiv="refresh" content="60"></head>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;a href="here.html"&gt;Refresh&lt;/a&gt;&lt;/body&gt;
+    <head></head><body><a href="here.html">Refresh</a></body>
 
 
 

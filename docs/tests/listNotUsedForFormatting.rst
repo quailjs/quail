@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;ul&gt;&lt;li&gt;Something I just wanted indented&lt;/li&gt;&lt;/ul&gt;
+    <ul><li>Something I just wanted indented</li></ul>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;p style="margin-left: 10px;"&gt;Something I just wanted indented&lt;/p&gt;
+    <p style="margin-left: 10px;">Something I just wanted indented</p>
 
 
 

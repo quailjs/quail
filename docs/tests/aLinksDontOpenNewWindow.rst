@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;a href="page.html"&gt;View my page&lt;/a&gt;
+    <a href="page.html">View my page</a>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;a href="page.html"&gt;View my page (opens new window)&lt;/a&gt;
+    <a href="page.html">View my page (opens new window)</a>
 
 
 

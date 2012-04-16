@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;applet archive="whyareyouusingapplet.jar"&gt;&lt;/applet&gt;
+    <applet archive="whyareyouusingapplet.jar"></applet>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;applet archive="whyareyouusingapplet.jar"&gt;Why are you still using applets?&lt;/applet&gt;
+    <applet archive="whyareyouusingapplet.jar">Why are you still using applets?</applet>
 
 
 

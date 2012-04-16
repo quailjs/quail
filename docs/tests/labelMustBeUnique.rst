@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;label for="first_name"&gt; First name:&lt;/label&gt; &lt;label for="first_name"&gt;(Required)&lt;/label&gt; &lt;input type="text" id="first_name" name="first_name"/&gt;
+    <label for="first_name"> First name:</label> <label for="first_name">(Required)</label> <input type="text" id="first_name" name="first_name"/>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;label for="first_name"&gt; First name: (Required)&lt;/label&gt; &lt;input type="text" id="first_name" name="first_name"/&gt;
+    <label for="first_name"> First name: (Required)</label> <input type="text" id="first_name" name="first_name"/>
 
 
 

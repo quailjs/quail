@@ -23,7 +23,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;Some page about something&lt;/title&gt;&lt;/head&gt;&lt;body&gt;....
+    <html lang="en"><head><title>Some page about something</title></head><body>....
 
 
 
@@ -32,7 +32,7 @@ Right
 
 .. code-block:: html
 
-    &lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;All about salamanders&lt;/title&gt;&lt;/head&gt;&lt;body&gt;....
+    <html lang="en"><head><title>All about salamanders</title></head><body>....
 
 
 

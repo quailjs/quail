@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;script type="text/javascript"&gt;document.write("Hello World!")&lt;/script&gt;
+    <script type="text/javascript">document.write("Hello World!")</script>
 
 
 
@@ -27,4 +27,4 @@ Right
 
 .. code-block:: html
 
-    &lt;script type="text/javascript"&gt;document.write("Hello World!")&lt;/script&gt;&lt;noscript&gt;Hello
+    <script type="text/javascript">document.write("Hello World!")</script><noscript>Hello

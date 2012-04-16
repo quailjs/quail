@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;a href="a.html"&gt;Page A&lt;/a&gt; &lt;a href="b.html"&gt;Page B&lt;/a&gt; &lt;a href="c.html"&gt;Page C&lt;/a&gt;
+    <a href="a.html">Page A</a> <a href="b.html">Page B</a> <a href="c.html">Page C</a>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;a href="a.html"&gt;Page A&lt;/a&gt; | &lt;a href="b.html"&gt;Page B&lt;/a&gt; | &lt;a href="c.html"&gt;Page C&lt;/a&gt;
+    <a href="a.html">Page A</a> | <a href="b.html">Page B</a> | <a href="c.html">Page C</a>
 
 
 

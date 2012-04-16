@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;html lang="en"&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;....
+    <html lang="en"><head></head><body>....
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;My Great Web page&lt;/title&gt;&lt;/head&gt;&lt;body&gt;....
+    <html lang="en"><head><title>My Great Web page</title></head><body>....
 
 
 

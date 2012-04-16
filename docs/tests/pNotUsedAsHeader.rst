@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;p&gt;&lt;strong&gt;Something that really should be a header&lt;/strong&gt;&lt;/p&gt;
+    <p><strong>Something that really should be a header</strong></p>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;h3&gt;Something that really should be a header&lt;/h3&gt;
+    <h3>Something that really should be a header</h3>
 
 
 

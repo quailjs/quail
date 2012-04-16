@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;img src="complexImage.png" alt="A complex image that cannot be described succinctly."&gt;
+    <img src="complexImage.png" alt="A complex image that cannot be described succinctly.">
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;img src="complexImage.png" alt="A complex image that cannot be described succinctly." longdesc="longer_description.html"&gt;
+    <img src="complexImage.png" alt="A complex image that cannot be described succinctly." longdesc="longer_description.html">
 
 
 

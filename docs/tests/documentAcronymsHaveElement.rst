@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;p&gt;I work for the CIA.&lt;/p&gt;
+    <p>I work for the CIA.</p>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;p&gt;I work for the &lt;acronym title="Central Intelligence Agency"&gt;CIA&lt;/acronym&gt;.&lt;/p&gt;
+    <p>I work for the <acronym title="Central Intelligence Agency">CIA</acronym>.</p>
 
 
 

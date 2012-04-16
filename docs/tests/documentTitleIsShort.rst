@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;A really long title about a page about salamanders that take a long time to read which offers little to the user and is a waste of time.&lt;/title&gt;&lt;/head&gt;&lt;body&gt;....
+    <html lang="en"><head><title>A really long title about a page about salamanders that take a long time to read which offers little to the user and is a waste of time.</title></head><body>....
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;html lang="en"&gt;&lt;head&gt;&lt;title&gt;All about salamanders&lt;/title&gt;&lt;/head&gt;&lt;body&gt;....
+    <html lang="en"><head><title>All about salamanders</title></head><body>....
 
 
 

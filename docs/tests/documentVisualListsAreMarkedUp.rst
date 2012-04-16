@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    1. Item One&lt;br/&gt;2. Item Two&lt;br/&gt;3.Item Three
+    1. Item One<br/>2. Item Two<br/>3.Item Three
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;ol&gt;&lt;li&gt;Item One&lt;/li&gt;&lt;li&gt;2. Item Two&lt;/li&gt;&lt;li&gt;3.Item Three&lt;/ol&gt;
+    <ol><li>Item One</li><li>2. Item Two</li><li>3.Item Three</ol>
 
 
 

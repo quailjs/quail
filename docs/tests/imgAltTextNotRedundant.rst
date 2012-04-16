@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;img src=&quot;rex.jpg&quot; alt=&quot;this is an image of rex&quot;&gt;&lt;img src=&quot;me.jpg&quot; alt=&quot;this is an image of rex&quot;&gt;
+    <img src=&quot;rex.jpg&quot; alt=&quot;this is an image of rex&quot;><img src=&quot;me.jpg&quot; alt=&quot;this is an image of rex&quot;>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;img src=&quot;rex.jpg&quot; alt=&quot;this is an image of rex&quot;&gt;&lt;img src=&quot;me.jpg&quot; alt=&quot;a photo of myself&quot;&gt;
+    <img src=&quot;rex.jpg&quot; alt=&quot;this is an image of rex&quot;><img src=&quot;me.jpg&quot; alt=&quot;a photo of myself&quot;>
 
 
 

@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;frame src="navigation.html"&gt;&lt;/frame&gt;
+    <frame src="navigation.html"></frame>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;frame src="navigation.html" title="The site navigation"&gt;&lt;/frame&gt;
+    <frame src="navigation.html" title="The site navigation"></frame>
 
 
 

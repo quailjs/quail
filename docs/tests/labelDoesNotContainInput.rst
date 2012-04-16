@@ -20,7 +20,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;label for="first_name"&gt;First name: &lt;input type="text" id="first_name" name="first_name"/&gt;&lt;/label&gt;
+    <label for="first_name">First name: <input type="text" id="first_name" name="first_name"/></label>
 
 
 
@@ -29,7 +29,7 @@ Right
 
 .. code-block:: html
 
-    &lt;label for="first_name"&gt;First name: &lt;/label&gt;&lt;input type="text" id="first_name" name="first_name"/&gt;
+    <label for="first_name">First name: </label><input type="text" id="first_name" name="first_name"/>
 
 
 

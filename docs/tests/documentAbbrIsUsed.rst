@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;p&gt;I work for the CIA.&lt;/p&gt;
+    <p>I work for the CIA.</p>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;p&gt;I work for the &lt;abbr title="Central Intelligence Agency"&gt;CIA&lt;/abbr&gt;.&lt;/p&gt;
+    <p>I work for the <abbr title="Central Intelligence Agency">CIA</abbr>.</p>
 
 
 

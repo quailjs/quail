@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;a href="home.html"&gt;Home&lt;/a&gt;
+    <a href="home.html">Home</a>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;a href="home.html" title="Return to home"&gt;Home&lt;/a&gt;
+    <a href="home.html" title="Return to home">Home</a>
 
 
 

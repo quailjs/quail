@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;a href="interview.mp3"&gt;Listen to the interview&lt;/a&gt;
+    <a href="interview.mp3">Listen to the interview</a>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;a href="interview.mp3"&gt;Listen to the interview&lt;/a&gt; &lt;a href="transcript.html"&gt;(transcript)&lt;/a&gt;
+    <a href="interview.mp3">Listen to the interview</a> <a href="transcript.html">(transcript)</a>
 
 
 

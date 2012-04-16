@@ -16,14 +16,14 @@ If a form element is required, it should marked as so. This should not be a mere
 
 .. code-block:: html
 
-    &lt;label for="first_name"&gt;First Name&lt;/label&gt;*&lt;input type="text" id="first_name" name="first_name"/&gt;
+    <label for="first_name">First Name</label>*<input type="text" id="first_name" name="first_name"/>
 
 
 
 
 .. code-block:: html
 
-    &lt;label for="first_name"&gt;First Name (required)&lt;/label&gt; &lt;input type="text" id="first_name" name="first_name"/&gt;
+    <label for="first_name">First Name (required)</label> <input type="text" id="first_name" name="first_name"/>
 
 
 

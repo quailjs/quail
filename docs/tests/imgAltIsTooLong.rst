@@ -18,4 +18,4 @@ Wrong
 
 .. code-block:: html
 
-    &lt;img src="dog.jpg" alt="A photograph of my very
+    <img src="dog.jpg" alt="A photograph of my very

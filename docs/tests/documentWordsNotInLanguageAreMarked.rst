@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;p&gt;This is a paragraph in english.&lt;/p&gt;&lt;p&gt;Esta frase es en espa&amp;ntilde;ol.&lt;/p&gt; (Spanish)&lt;/p&gt;
+    <p>This is a paragraph in english.</p><p>Esta frase es en espa&amp;ntilde;ol.</p> (Spanish)</p>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;p&gt;This is a paragraph in english.&lt;/p&gt;&lt;p lang="es"&gt;Esta frase es en espa&amp;ntilde;ol.&lt;/p&gt;
+    <p>This is a paragraph in english.</p><p lang="es">Esta frase es en espa&amp;ntilde;ol.</p>
 
 
 

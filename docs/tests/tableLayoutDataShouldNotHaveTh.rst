@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;table&gt;&lt;tr&gt;&lt;th&gt;Sidebar&lt;/th&gt;&lt;th&gt;Content&lt;/th&gt;&lt;tr&gt;&lt;td&gt;Navigation&lt;/td&gt;&lt;td&gt;Stuff&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+    <table><tr><th>Sidebar</th><th>Content</th><tr><td>Navigation</td><td>Stuff</td></tr></table>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;table&gt;&lt;tr&gt;&lt;td&gt;Sidebar&lt;/td&gt;&lt;td&gt;Content&lt;/td&gt;&lt;tr&gt;&lt;td&gt;Navigation&lt;/td&gt;&lt;td&gt;Stuff&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+    <table><tr><td>Sidebar</td><td>Content</td><tr><td>Navigation</td><td>Stuff</td></tr></table>
 
 
 

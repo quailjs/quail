@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    Of course, I'll get on it right away &lt;abbr title="wink"&gt;;)&lt;/abbr&gt;
+    Of course, I'll get on it right away <abbr title="wink">;)</abbr>
 
 
 

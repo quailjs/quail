@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;input type="image" src="mangifier.png" alt="submit"/&gt;
+    <input type="image" src="mangifier.png" alt="submit"/>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;input type="image" src="mangifier.png" alt="Search this site"/&gt;
+    <input type="image" src="mangifier.png" alt="Search this site"/>
 
 
 

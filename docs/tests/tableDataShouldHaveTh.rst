@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;table&gt;&lt;tr&gt;&lt;td&gt;Header One&lt;/td&gt;&lt;td&gt;Header Two&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1.30&lt;/td&gt;&lt;td&gt;4.50&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+    <table><tr><td>Header One</td><td>Header Two</td></tr><tr><td>1.30</td><td>4.50</td></tr></table>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;table&gt;&lt;tr&gt;&lt;th&gt;Header One&lt;/th&gt;&lt;th&gt;Header Two&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;1.30&lt;/td&gt;&lt;td&gt;4.50&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+    <table><tr><th>Header One</th><th>Header Two</th></tr><tr><td>1.30</td><td>4.50</td></tr></table>
 
 
 

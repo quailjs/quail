@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;menu&gt;Something I wanted Indented&lt;/menu&gt;
+    <menu>Something I wanted Indented</menu>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;p style="margin-left: 20px;"&gt;Something I wanted indented.&lt;/p&gt;
+    <p style="margin-left: 20px;">Something I wanted indented.</p>
 
 
 

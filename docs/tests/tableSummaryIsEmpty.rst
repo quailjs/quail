@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;table&gt;
+    <table>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;table summary="A table of data"&gt;
+    <table summary="A table of data">
 
 
 

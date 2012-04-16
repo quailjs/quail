@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;object data="movie.mov"&gt;&lt;/object&gt;
+    <object data="movie.mov"></object>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;object data="movie.mov"&gt;&lt;embed src="movie.mov"&gt;&lt;/embed&gt;&lt;/object&gt;
+    <object data="movie.mov"><embed src="movie.mov"></embed></object>
 
 
 

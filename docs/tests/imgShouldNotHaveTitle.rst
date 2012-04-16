@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;img src="dog.png" alt="My brown dog" title="A dog"/&gt;
+    <img src="dog.png" alt="My brown dog" title="A dog"/>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;img src="dog.png" alt="My brown dog"/&gt;
+    <img src="dog.png" alt="My brown dog"/>
 
 
 

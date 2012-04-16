@@ -25,7 +25,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;p&gt;A long quote of several sentences. This should probably be placed in a blockquote, as it is too long to read in a single sentence, and the presence of a blockquote tag would help indicate it is actually an excerpt from somewhere else.&lt;/p&gt;
+    <p>A long quote of several sentences. This should probably be placed in a blockquote, as it is too long to read in a single sentence, and the presence of a blockquote tag would help indicate it is actually an excerpt from somewhere else.</p>
 
 
 
@@ -34,7 +34,7 @@ Right
 
 .. code-block:: html
 
-    &lt;p&gt;&lt;blockquote&gt;A long quote of several sentences. This should probably be placed in a blockquote, as it is too long to read in a single sentence, and the presence of a blockquote tag would help indicate it is actually an excerpt from somewhere else.&lt;/blockquote&gt;
+    <p><blockquote>A long quote of several sentences. This should probably be placed in a blockquote, as it is too long to read in a single sentence, and the presence of a blockquote tag would help indicate it is actually an excerpt from somewhere else.</blockquote>
 
 
 

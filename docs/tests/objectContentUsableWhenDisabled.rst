@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;object src="something.html"&gt;&lt;/object&gt;
+    <object src="something.html"></object>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;object src="something.html"&gt;&lt;a href="something.html"&gt;Read something&lt;/a&gt;&lt;/object&gt;
+    <object src="something.html"><a href="something.html">Read something</a></object>
 
 
 

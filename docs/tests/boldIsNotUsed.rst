@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;p&gt;I think that you &lt;b&gt;should really read this&lt;/b&gt;.&lt;/p&gt;
+    <p>I think that you <b>should really read this</b>.</p>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;p&gt;I think that you &lt;strong&gt;should really read this&lt;/strong&gt;.&lt;/p&gt;
+    <p>I think that you <strong>should really read this</strong>.</p>
 
 
 

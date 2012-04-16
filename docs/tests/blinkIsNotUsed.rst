@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;blink&gt;Please read me!&lt;/blink&gt;
+    <blink>Please read me!</blink>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;strong&gt;Please read me!&lt;/strong&gt;
+    <strong>Please read me!</strong>
 
 
 

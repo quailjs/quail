@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;p id="paragraph"&gt;First Paragraph&lt;/p&gt;&lt;p id="paragraph"&gt;Second Paragraph&lt;/p&gt;
+    <p id="paragraph">First Paragraph</p><p id="paragraph">Second Paragraph</p>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;p id="paragraph-1"&gt;First Paragraph&lt;/p&gt;&lt;p id="paragraph-2"&gt;Second Paragraph&lt;/p&gt;
+    <p id="paragraph-1">First Paragraph</p><p id="paragraph-2">Second Paragraph</p>
 
 
 

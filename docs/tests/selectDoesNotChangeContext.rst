@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;form&gt;&lt;select onchange="location = this.options[this.selectedIndex].value;"&gt;&lt;option value="home.html"&gt;Home Page&lt;/option&gt;&lt;option value="dog.html"&gt;My Dog&lt;/option&gt;&lt;/select&gt;&lt;/form&gt;
+    <form><select onchange="location = this.options[this.selectedIndex].value;"><option value="home.html">Home Page</option><option value="dog.html">My Dog</option></select></form>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;form action="go.html"&gt;&lt;select&gt;&lt;option value="home.html"&gt;Home Page&lt;/option&gt;&lt;option value="dog.html"&gt;My Dog&lt;/option&gt;&lt;/select&gt;&lt;input type="submit" value="Go"/&gt;&lt;/form&gt;
+    <form action="go.html"><select><option value="home.html">Home Page</option><option value="dog.html">My Dog</option></select><input type="submit" value="Go"/></form>
 
 
 

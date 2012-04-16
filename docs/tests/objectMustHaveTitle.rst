@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;object src="widget.html"&gt;&lt;/object&gt;
+    <object src="widget.html"></object>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;object src="widget.html" title="A small web widget"&gt;&lt;/object&gt;
+    <object src="widget.html" title="A small web widget"></object>
 
 
 

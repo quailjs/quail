@@ -25,7 +25,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;blockquote&gt;Something I just wanted indented.&lt;/blockquote&gt;
+    <blockquote>Something I just wanted indented.</blockquote>
 
 
 
@@ -34,7 +34,7 @@ Right
 
 .. code-block:: html
 
-    &lt;p style="margin-left: 20px;"&gt;Something I just wanted indented.&lt;/p&gt;
+    <p style="margin-left: 20px;">Something I just wanted indented.</p>
 
 
 

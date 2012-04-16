@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;embed src="dog.mov"/&gt;
+    <embed src="dog.mov"/>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;embed src="dog.mov" alt="A movie featuring a dog dancing a ballet."/&gt;
+    <embed src="dog.mov" alt="A movie featuring a dog dancing a ballet."/>
 
 
 

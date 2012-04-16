@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;table&gt;&lt;caption&gt;The layout of this page, broken into two areas.&lt;/caption&gt;...
+    <table><caption>The layout of this page, broken into two areas.</caption>...
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;table&gt;...
+    <table>...
 
 
 

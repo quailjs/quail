@@ -18,4 +18,4 @@ Wrong
 
 .. code-block:: html
 
-    &lt;map name="people"&gt;  &lt;area shape="rect" coords="0
+    <map name="people">  <area shape="rect" coords="0

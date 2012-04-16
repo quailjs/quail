@@ -18,7 +18,7 @@ Example
 
 .. code-block:: html
 
-    &lt;a href="home.html"&gt;&lt;img src="home.png" alt="Return home"&gt;Return home&lt;/a&gt;
+    <a href="home.html"><img src="home.png" alt="Return home">Return home</a>
 
 
 
@@ -27,7 +27,7 @@ Example
  
 .. code-block:: html
 
-    &lt;a href="home.html"&gt;&lt;img src="home.png" alt=""&gt;Return home&lt;/a&gt;
+    <a href="home.html"><img src="home.png" alt="">Return home</a>
 
 
 

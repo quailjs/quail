@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;input type="image" name="search" src="search.png"/&gt;
+    <input type="image" name="search" src="search.png"/>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;input type="image" name="search" src="search.png" alt="Search"/&gt;
+    <input type="image" name="search" src="search.png" alt="Search"/>
 
 
 

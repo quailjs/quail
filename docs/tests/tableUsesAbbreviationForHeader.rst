@@ -16,7 +16,7 @@ For long table headers, use an "abbr" attribute that is less than short (less th
 
 .. code-block:: html
 
-    &lt;th&gt;The total number of people who liked chocolate&lt;/th&gt;
+    <th>The total number of people who liked chocolate</th>
 
 
 
@@ -25,7 +25,7 @@ Right
 
 .. code-block:: html
 
-    &lt;th abbr="Like Chocolate"&gt;The total number of people who liked chocolate&lt;/th&gt;
+    <th abbr="Like Chocolate">The total number of people who liked chocolate</th>
 
 
 

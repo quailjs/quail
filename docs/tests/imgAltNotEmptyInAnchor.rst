@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;a href="index.html"&gt;&lt;img src="home.png" alt=""&gt;</a>
+    <a href="index.html"><img src="home.png" alt=""></a>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;a href="index.html"&gt;&lt;img src="home.png" alt="Return Home"&gt;&lt;/a&gt;
+    <a href="index.html"><img src="home.png" alt="Return Home"></a>
 
 
 

@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;input type="checkbox" name="option-a" id="a"/&gt;&lt;label for="a"&gt;Option A&lt;/label&gt;&lt;br/&gt;&lt;input type="checkbox" name="option-b" id="b"/&gt;&lt;label for="b"&gt;Option B&lt;/label&gt;
+    <input type="checkbox" name="option-a" id="a"/><label for="a">Option A</label><br/><input type="checkbox" name="option-b" id="b"/><label for="b">Option B</label>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;fieldset&gt;&lt;legend&gt;Several options&lt;/legend&gt;&lt;input type="checkbox" name="option-a" id="a"/&gt;&lt;label for="a"&gt;Option A&lt;/label&gt;&lt;br/&gt;&lt;input type="checkbox" name="option-b" id="b"/&gt;&lt;label for="b"&gt;Option B&lt;/label&gt;&lt;/fieldset&gt;
+    <fieldset><legend>Several options</legend><input type="checkbox" name="option-a" id="a"/><label for="a">Option A</label><br/><input type="checkbox" name="option-b" id="b"/><label for="b">Option B</label></fieldset>
 
 
 

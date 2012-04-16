@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;embed src="podcast.mp3"/&gt;&lt;noembed&gt;Some podcast&lt;/noembed&gt;
+    <embed src="podcast.mp3"/><noembed>Some podcast</noembed>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;embed src="podcast.mp3"/&gt;&lt;noembed&gt;A podcast about dogs. &lt;a href="transcript.html"&gt;Read the full transcript&lt;/a&gt;.&lt;/noembed&gt;
+    <embed src="podcast.mp3"/><noembed>A podcast about dogs. <a href="transcript.html">Read the full transcript</a>.</noembed>
 
 
 

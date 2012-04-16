@@ -18,4 +18,4 @@ Wrong
 
 .. code-block:: html
 
-    &lt;frameset cols="25%
+    <frameset cols="25%

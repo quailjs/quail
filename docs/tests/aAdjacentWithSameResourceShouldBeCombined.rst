@@ -15,14 +15,14 @@ Example
 
 .. code-block:: html
 
-    You can also &lt;a href="article.html"&gt;read more of&lt;/a&gt; &lt;a href="article.html"&gt;my great article&lt;/a&gt;.
+    You can also <a href="article.html">read more of</a> <a href="article.html">my great article</a>.
 
  Right
 -----
  
 .. code-block:: html
 
-    You can also &lt;a href="article.html"&gt;read more of my great article&lt;/a&gt;.
+    You can also <a href="article.html">read more of my great article</a>.
 
  
 Example

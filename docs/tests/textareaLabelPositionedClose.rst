@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;label for="essay"&gt;Enter your essay:&lt;/label&gt; [... lots of stuff ...] &lt;textarea id="essay" name="essay"&gt;&lt;/textarea&gt;
+    <label for="essay">Enter your essay:</label> [... lots of stuff ...] <textarea id="essay" name="essay"></textarea>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;label for="essay"&gt;Enter your essay:&lt;/label&gt; &lt;textarea id="essay" name="essay"&gt;&lt;/textarea&gt;
+    <label for="essay">Enter your essay:</label> <textarea id="essay" name="essay"></textarea>
 
 
 

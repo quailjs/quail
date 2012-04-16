@@ -16,7 +16,7 @@ Example
 
 .. code-block:: html
 
-    &lt;head&gt;&lt;link rel="alternate" href="transcription.html"/&gt;&lt;/head&gt;
+    <head><link rel="alternate" href="transcription.html"/></head>
 
 
 

@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;embed src="html.mov"/&gt;
+    <embed src="html.mov"/>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;embed src="html.mov"/&gt;&lt;noembed&gt;A move with &lt;a href="transcript.html"&gt;an available transcript&lt;/a&gt;.&lt;/embed&gt;
+    <embed src="html.mov"/><noembed>A move with <a href="transcript.html">an available transcript</a>.</embed>
 
 
 

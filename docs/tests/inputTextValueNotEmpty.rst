@@ -18,7 +18,7 @@ Wrong
 
 .. code-block:: html
 
-    &lt;label for="search"&gt;Search: &lt;/label&gt;&lt;input type="text" name="search" id="search" value=""/&gt;
+    <label for="search">Search: </label><input type="text" name="search" id="search" value=""/>
 
 
 
@@ -27,7 +27,7 @@ Right
 
 .. code-block:: html
 
-    &lt;label for="search"&gt;Search: &lt;/label&gt;&lt;input type="text" name="search" id="search" value="Search"/&gt;
+    <label for="search">Search: </label><input type="text" name="search" id="search" value="Search"/>
 
 
 
