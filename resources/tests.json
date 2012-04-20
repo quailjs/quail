@@ -294,6 +294,10 @@
     "type":"selector",
     "selector":"body"
   },
+  "documentIsWrittenClearly":{
+    "type":"custom",
+    "callback":"documentIsWrittenClearly"
+  },
   "embedHasAssociatedNoEmbed":{
     "type":"custom",
     "callback":"embedHasAssociatedNoEmbed"

@@ -334,6 +334,32 @@ class doctypeProvided extends QuailCustomTest {
 }
 
 /**
+* Checks that a document is written clearly to a minimum of a 60 on the
+* Flesch Reading Ease score (9.9 max grade level).
+* @link http://quail-lib.org/test-info/documentIsWrittenClearly
+*/
+class documentIsWrittenClearly extends quailTest {
+
+  protected $requiresTextAnalysis = true;
+
+  /**
+   * See QuailTest::run()
+   */
+  function run() {
+    $textAnalysis = new TextStatistics();
+    foreach($this->q('p, div, li, h1, h2, h3, h4, h5') as $el) {
+      $text = strip_tags(trim(pq($el)->text()));
+      if(str_word_count($text) > 25) {
+        if($textAnalysis->flesch_kincaid_reading_ease($text) < 60) {
+          $this->objects[] = pq($el);
+        }
+      }
+    }
+  }
+
+}
+
+/**
  * Strict doctype is declared.
  * A 'strict' doctype must be declared in the document. This can either be the HTML4.01 or XHTML 1.0 strict doctype.
 *	@link http://quail-lib.org/test-info/documentStrictDocType

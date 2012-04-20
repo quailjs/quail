@@ -189,7 +189,10 @@ class QuailTest {
   }
   
   function q($selector) {
-    return pq($selector, $this->document->documentID);
+    if(is_object($this->document)) {
+      return pq($selector, $this->document->documentID);
+    }
+    return pq($selector);
   }
   
   function reportSingleSelector($selector) {

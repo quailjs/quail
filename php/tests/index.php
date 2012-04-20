@@ -14,9 +14,9 @@ $reporterClass = (php_sapi_name() == 'cli' && !isset($_SERVER['REMOTE_ADDR']))
             : 'HtmlReporter';
 
 class QuailBaseTest extends UnitTestCase {
-  
+
   protected $test_directory;
-  
+
   function getTest($file, $test) {
    		$protocol = (isset($_SERVER['SERVER_PROTOCOL']) && $_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1')
    		            ? 'http'
@@ -26,7 +26,7 @@ class QuailBaseTest extends UnitTestCase {
    		$uri = (isset($_SERVER['REQUEST_URI'])) ? $_SERVER['REQUEST_URI'] : '';
       $quail = new Quail($contents, $protocol .'://'. $host . $uri . $this->test_directory . $file, array($test));
   		$quail->runTests();
-  
+
   		return $quail->getRawResults($test);
    }
 }
@@ -34,29 +34,29 @@ class QuailBaseTest extends UnitTestCase {
 class QuailTests extends QuailBaseTest {
 
  protected $test_directory = '../../testfiles/quail/';
- 
+
  function test_textIsNotSmall() {
 		$results = $this->getTest('textIsNotSmall-fail.html', 'textIsNotSmall');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'p');
     }
-    
+
 		$results = $this->getTest('textIsNotSmall-pass.html', 'textIsNotSmall');
 		$this->assertTrue(count($results) == 0);
 
 		$results = $this->getTest('textIsNotSmall-fail2.html', 'textIsNotSmall');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'p');
-    }	
+	  		$this->assertTrue($results[0]->elements[0]->tagName == 'p');
+	    }
 	}
-	
+
 	function test_documentIsReadable() {
-    
+
 		$results = $this->getTest('documentIsReadable-pass.html', 'documentIsReadable');
 		$this->assertTrue(count($results) == 0);
-		
+
 		$results = $this->getTest('documentIsReadable-fail.html', 'documentIsReadable');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
@@ -68,10 +68,10 @@ class QuailTests extends QuailBaseTest {
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'body');
-    }	
+    }
 	}
-	
-	
+
+
 	function test_svgContainsTitle() {
 		$results = $this->getTest('svgContainsTitle-fail.html', 'svgContainsTitle');
 		$this->assertTrue(is_object($results[0]));
@@ -81,7 +81,7 @@ class QuailTests extends QuailBaseTest {
 		$results = $this->getTest('svgContainsTitle-pass.html', 'svgContainsTitle');
 		$this->assertTrue(count($results) == 0);
 	}
-	
+
 	function test_headersHaveText() {
 		$results = $this->getTest('headersHaveText-fail.html', 'headersHaveText');
 		$this->assertTrue(is_object($results[0]));
@@ -95,21 +95,21 @@ class QuailTests extends QuailBaseTest {
     }
 		$results = $this->getTest('headersHaveText-pass.html', 'headersHaveText');
 		$this->assertTrue(count($results) == 0);
-	
+
 	}
-	
+
 	function test_imgAltTextNotRedundant() {
 		$results = $this->getTest('imgAltTextNotRedundant-fail.html', 'imgAltTextNotRedundant');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'img');
     }
-    
+
 		$results = $this->getTest('imgAltTextNotRedundant-pass.html', 'imgAltTextNotRedundant');
 		$this->assertTrue(count($results) == 0);
-	
+
 	}
-	
+
 	function test_selectJumpMenus() {
 		$results = $this->getTest('selectJumpMenus-fail.html', 'selectJumpMenus');
 		$this->assertTrue(is_object($results[0]));
@@ -120,7 +120,22 @@ class QuailTests extends QuailBaseTest {
 		$this->assertTrue(count($results) == 0);
 
 	}
+
+	function test_documentIsWrittenClearly() {
+		$results = $this->getTest('documentIsWrittenClearly-fail.html', 'documentIsWrittenClearly');
+		$this->assertTrue(is_object($results[0]));
+		if(is_object($results[0])) {
+  		$this->assertTrue($results[0]->elements[0]->tagName == 'p');
+    }
 	
+		$results = $this->getTest('documentIsWrittenClearly-pass.html', 'documentIsWrittenClearly');
+		$this->assertTrue(count($results) == 0);
+
+		$results = $this->getTest('documentIsWrittenClearly-pass-2.html', 'documentIsWrittenClearly');
+		$this->assertTrue(count($results) == 0);
+	
+	}
+
 }
 
 $quail_tests = new QuailTests();
@@ -129,7 +144,7 @@ $quail_tests->run(new $reporterClass());
 class QuailOACTests extends QuailBaseTest {
 
  protected $test_directory = '../../testfiles/oac/';
-  
+
  // Test the HTML alter reporter
  function test_reporterHTMLReporter() {
 		$contents = file_get_contents('../../testfiles/oac/1-1.html');
@@ -152,7 +167,7 @@ class QuailOACTests extends QuailBaseTest {
 		$results = $this->getTest('1-2.html', 'imgHasAlt');
 		$this->assertTrue(count($results) == 0);
  }
- 
+
  //2
  function test2_imgAltIsDifferent() {
 		$results = $this->getTest('2-1.html', 'imgAltIsDifferent');
@@ -343,7 +358,7 @@ class QuailOACTests extends QuailBaseTest {
   		$this->assertTrue($results[0]->attr('src') == 'kids.jpg');
     }
  }
- 
+
   //15
  function test15_imgAltIdentifiesLinkDestination() {
 		$results = $this->getTest('15-1.html', 'imgAltIdentifiesLinkDestination');
@@ -551,7 +566,7 @@ class QuailOACTests extends QuailBaseTest {
 		$this->assertTrue(count($results) == 0);
 
  }
- 
+
   //28
  function test28_skipToContentLinkProvided() {
 
@@ -804,7 +819,7 @@ class QuailOACTests extends QuailBaseTest {
 		$results = $this->getTest('51-3.html', 'documentTitleNotEmpty');
 		$this->assertTrue(count($results));
   }
-  
+
   //52
   function test52_documentTitleIsShort() {
 		$results = $this->getTest('52-1.html', 'documentTitleIsShort');
@@ -1563,7 +1578,7 @@ class QuailOACTests extends QuailBaseTest {
 		$this->assertTrue(count($results) == 0);
 
   }
-  
+
   //114
     function test114_tableLayoutHasNoSummary() {
 		$results = $this->getTest('114-1.html', 'tableLayoutHasNoSummary');
@@ -2045,7 +2060,7 @@ class QuailOACTests extends QuailBaseTest {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'table');
     }
   }
-  
+
   //152
   function test152_tableUsesAbbreviationForHeader() {
 		$results = $this->getTest('152-1.html', 'tableUsesAbbreviationForHeader');
@@ -2659,7 +2674,7 @@ class QuailOACTests extends QuailBaseTest {
 
 		$results = $this->getTest('227-3.html', 'documentColorWaiLinkAlgorithm');
 		$this->assertTrue(count($results) == 0);
-		
+
 		$results = $this->getTest('227-4.html', 'documentColorWaiLinkAlgorithm');
 		$this->assertTrue(count($results));
 	}
