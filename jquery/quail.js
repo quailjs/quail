@@ -65,6 +65,9 @@
         if(quail.accessibilityTests[testName].type == 'placeholder') {
           quail.placeholderTest(testName, quail.accessibilityTests[testName]);
         }
+        if(quail.accessibilityTests[testName].type == 'label') {
+          quail.labelTest(testName, quail.accessibilityTests[testName]);
+        }
       });
     },
 
@@ -149,6 +152,15 @@
       });
     },
 
+    labelTest : function(testName, options) {
+      quail.html.find(options.selector).each(function() {
+        if(!$(this).parent('label').length && 
+          !quail.html.find('label[for=' + $(this).attr('id') + ']').length) {
+            quail.accessibilityResults[testName].push($(this));
+        }
+      });
+    },
+
     doctypeProvided : function() {
       console.log(document.doctype);
     },
@@ -225,6 +237,12 @@
             }
           });
         }
+      });
+    },
+
+    imgGifNoFlicker : function() {
+      quail.html.find('img[src$=".gif"]').each(function() {
+        quail.accessibilityResults.imgGifNoFlicker.push($(this));
       });
     }
   };
