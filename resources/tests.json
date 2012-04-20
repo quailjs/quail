@@ -103,7 +103,7 @@
   },
   "areaDontOpenNewWindow":{
     "type":"selector",
-    "selector":"area[target=new window], area[target=_blank]"
+    "selector":"area[target='new window'], area[target=_new], area[target=_blank], area[target=_blank]"
   },
   "areaHasAltValue":{
     "type":"selector",

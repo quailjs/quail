@@ -619,7 +619,7 @@
   		quailTest.runTest( 'inputTextHasLabel', '57-4.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-  /*
+  
     //58
     test('inputImageHasAlt', function() {
   		quailTest.runTest( 'inputImageHasAlt', '58-1.html');
@@ -735,7 +735,7 @@
   		quailTest.runTest( 'areaDontOpenNewWindow', '68-4.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-
+/*
     //69
     test('marqueeIsNotUsed', function() {
   		quailTest.runTest( 'marqueeIsNotUsed', '69-1.html');
