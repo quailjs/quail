@@ -16,7 +16,7 @@
 			return this;
 		}
 		quail.options = options;
-		
+
 		quail.html = this;
 		quail.run();
 		if(quail.options.getRawResults) {
@@ -24,9 +24,9 @@
 		}
 		return this;
   };
-  
+
   var quail = {
-    
+
     run : function() {
       if(quail.options.reset) {
         quail.accessibilityResults = { };
@@ -46,7 +46,7 @@
       }
       quail.runTests();
     },
-    
+
     runTests : function() {
       $.each(quail.options.guideline, function(index, testName) {
         if(typeof quail.accessibilityResults[testName] == 'undefined') {
@@ -67,37 +67,37 @@
         }
       });
     },
-    
+
     isUnreadable : function(text) {
       if(typeof text != 'string') {
         return true;
       }
       return (text.trim().length) ? false : true;
     },
-    
+
     getRawResults : function(testName) {
       if(testName) {
         return quail.accessibilityResults[testName];
       }
-      return quail.accessibilityResults; 
+      return quail.accessibilityResults;
     },
-    
+
     html : { },
-    
+
     strings : { },
-    
+
     accessibilityResults : { },
-    
+
     accessibilityTests : { },
-    
+
     loadTests : function() {
-    
+
     },
-    
+
     validURL : function(url) {
       return (url.search(' ') == -1) ? true : false;
     },
-    
+
     loadString : function(stringFile) {
       if(typeof quail.strings[stringFile] !== 'undefined') {
         return;
@@ -109,15 +109,15 @@
                 quail.strings[stringFile] = data;
                }});
     },
-    
+
     options : { },
-    
-    
+
+
     placeholderTest : function(testName, options) {
       quail.loadString('placeholders');
       quail.html.find(options.selector).each(function() {
         if(typeof options.attribute !== 'undefined') {
-          var text = $(this).attr(options.attribute);        
+          var text = $(this).attr(options.attribute);
         }
         else {
           var text = $(this).text();
@@ -148,11 +148,11 @@
         }
       });
     },
-    
+
     doctypeProvided : function() {
       console.log(document.doctype);
     },
-    
+
     appletContainsTextEquivalent : function() {
       quail.html.find('applet[alt=], applet:not(applet[alt])').each(function() {
         if(quail.isUnreadable($(this).text())) {
@@ -160,7 +160,7 @@
         }
       });
     },
-    
+
     imgAltIsDifferent : function() {
       quail.html.find('img[alt][src]').each(function() {
         if($(this).attr('src') == $(this).attr('alt')) {
@@ -168,7 +168,7 @@
         }
       });
     },
-    
+
     imgAltIsTooLong : function() {
       quail.html.find('img[alt]').each(function() {
         if($(this).attr('alt').length > 100) {
@@ -176,28 +176,28 @@
         }
       });
     },
-    
+
     imgImportantNoSpacerAlt : function() {
       quail.html.find('img[alt]').each(function() {
         var width = ($(this).width()) ? $(this).width() : parseInt($(this).attr('width'));
         var height = ($(this).height()) ? $(this).height() : parseInt($(this).attr('height'));
         if(quail.isUnreadable($(this).attr('alt').trim()) &&
-           width > 50 && 
+           width > 50 &&
            height > 50) {
             quail.accessibilityResults.imgImportantNoSpacerAlt.push($(this));
         }
       });
     },
-    
+
     imgAltNotEmptyInAnchor : function() {
       quail.html.find('a img').each(function() {
-        if(quail.isUnreadable($(this).attr('alt')) && 
+        if(quail.isUnreadable($(this).attr('alt')) &&
            quail.isUnreadable($(this).parent('a:first').text())) {
               quail.accessibilityResults.imgAltNotEmptyInAnchor.push($(this));
         }
       });
     },
-    
+
     imgHasLongDesc : function() {
       quail.html.find('img[longdesc]').each(function() {
         if($(this).attr('longdesc') == $(this).attr('alt') ||
@@ -206,7 +206,7 @@
         }
       });
     },
-    
+
     imgMapAreasHaveDuplicateLink : function() {
       var links = { };
       quail.html.find('a').each(function() {
@@ -228,5 +228,5 @@
       });
     }
   };
-  
+
 })(jQuery);

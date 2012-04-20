@@ -3,9 +3,9 @@
 //namespace Quail\Tests;
 
 class QuailSelectorTest extends QuailTest {
-  
+
   protected $selector;
-  
+
   function __construct($selector, $document, $path) {
     $this->selector = $selector;
     parent::__construct($document, $path);
@@ -18,7 +18,7 @@ class QuailSelectorTest extends QuailTest {
 *	@link http://quail-lib.org/test-info/aAdjacentWithSameResourceShouldBeCombined
 */
 class aAdjacentWithSameResourceShouldBeCombined extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -37,7 +37,7 @@ class aAdjacentWithSameResourceShouldBeCombined extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/appletContainsTextEquivalent
 */
 class appletContainsTextEquivalent extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -56,7 +56,7 @@ class appletContainsTextEquivalent extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/aImgAltNotRepetative
 */
 class aImgAltNotRepetative extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -75,10 +75,10 @@ class aImgAltNotRepetative extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/aLinkTextDoesNotBeginWithRedundantWord
 */
 class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
-  
+
   protected $redundant;
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -98,7 +98,7 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
       }
     }
   }
-  
+
   protected function getRedundantString() {
     global $quail_redundant_text;
     if(!$quail_redundant_text) {
@@ -114,7 +114,7 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/aLinksAreSeperatedByPrintableCharacters
 */
 class aLinksAreSeperatedByPrintableCharacters extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -133,8 +133,8 @@ class aLinksAreSeperatedByPrintableCharacters extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/aMustContainText
 */
 class aMustContainText extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -153,10 +153,10 @@ class aMustContainText extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/aSuspiciousLinkText
 */
 class aSuspiciousLinkText extends QuailCustomTest {
-  
+
   private $suspicious;
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -168,7 +168,7 @@ class aSuspiciousLinkText extends QuailCustomTest {
       }
     }
   }
-  
+
   protected function getStrings() {
     global $quail_supicious_text;
     if(!$quail_supicious_text) {
@@ -186,7 +186,7 @@ class aSuspiciousLinkText extends QuailCustomTest {
 */
 class blockquoteUseForQuotations extends QuailCustomTest {
 
-	
+
   /**
    * See QuailTest::run()
    */
@@ -207,10 +207,10 @@ class blockquoteUseForQuotations extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/documentAbbrIsUsed
 */
 class documentAbbrIsUsed extends QuailCustomTest {
-  
+
   protected $acronym_tag = 'abbr';
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -243,7 +243,7 @@ class documentAbbrIsUsed extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/documentAcronymsHaveElement
 */
 class documentAcronymsHaveElement extends documentAbbrIsUsed {
-  
+
   protected $acronym_tag = 'acronym';
 }
 
@@ -253,7 +253,7 @@ class documentAcronymsHaveElement extends documentAbbrIsUsed {
 *	@link http://quail-lib.org/test-info/documentIDsMustBeUnique
 */
 class documentIDsMustBeUnique extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -269,13 +269,13 @@ class documentIDsMustBeUnique extends QuailCustomTest {
 }
 
 class documentIsReadable extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
   function run() {
     foreach($this->q('body *') as $el) {
-      if(strlen(trim(strip_tags(pq($el)->text()))) || 
+      if(strlen(trim(strip_tags(pq($el)->text()))) ||
          strlen(trim(strip_tags(pq($el)->attr('alt'))))) {
         return;
       }
@@ -290,10 +290,10 @@ class documentIsReadable extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/documentLangIsISO639Standard
 */
 class documentLangIsISO639Standard extends QuailCustomTest {
-  
+
   protected $langauges;
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -303,14 +303,14 @@ class documentLangIsISO639Standard extends QuailCustomTest {
       $this->objects[] = pq('html:first');
     }
   }
-  
+
   protected function getLanguages() {
     global $quail_languages;
     if(!$quail_languages) {
       $quail_languages = (array)json_decode(file_get_contents('../../resources/strings/language_codes.json'));
     }
     $this->langauges = $quail_languages;
-  } 
+  }
 }
 
 /**
@@ -319,8 +319,8 @@ class documentLangIsISO639Standard extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/doctypeProvided
 */
 class doctypeProvided extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -339,10 +339,10 @@ class doctypeProvided extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/documentStrictDocType
 */
 class documentStrictDocType extends QuailCustomTest {
-  
+
   private $parameters = array('publicId', 'systemId');
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -354,7 +354,7 @@ class documentStrictDocType extends QuailCustomTest {
 		foreach($this->parameters as $parameter) {
 		  if(property_exists($this->document->document->doctype, $parameter)
 		     && strpos(strtolower($this->document->document->doctype->{$parameter}), 'strict') !== FALSE) {
-		      return; 
+		      return;
 	     }
 		}
 		$this->objects[] = pq('html');
@@ -367,7 +367,7 @@ class documentStrictDocType extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/documentValidatesToDocType
 */
 class documentValidatesToDocType extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -384,8 +384,8 @@ class documentValidatesToDocType extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/documentTitleIsShort
 */
 class documentTitleIsShort extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -402,10 +402,10 @@ class documentTitleIsShort extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/documentVisualListsAreMarkedUp
 */
 class documentVisualListsAreMarkedUp extends QuailCustomTest {
-  
+
   protected $list_cues = array('*', '<br>*', '¥', '&#8226');
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -428,7 +428,7 @@ class documentVisualListsAreMarkedUp extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/embedHasAssociatedNoEmbed
 */
 class embedHasAssociatedNoEmbed extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -450,8 +450,8 @@ class embedHasAssociatedNoEmbed extends QuailCustomTest {
 class emoticonsExcessiveUse extends QuailCustomTest {
 
   protected $emoticons;
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -463,14 +463,14 @@ class emoticonsExcessiveUse extends QuailCustomTest {
 			foreach($words as $word) {
 				if(in_array(trim($word), $this->emoticons)) {
 					$count++;
-					if($count > 4) { 
-						$this->objects[] = pq($el);	
+					if($count > 4) {
+						$this->objects[] = pq($el);
 					}
 				}
 			}
 		}
   }
-  
+
   function getEmoticons() {
     global $quail_emoticons;
     if(!$quail_emoticons) {
@@ -481,8 +481,8 @@ class emoticonsExcessiveUse extends QuailCustomTest {
 }
 
 class emoticonsMissingAbbr extends emoticonsExcessiveUse {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -497,7 +497,7 @@ class emoticonsMissingAbbr extends emoticonsExcessiveUse {
 				if(in_array($word, $this->emoticons)) {
 					$count++;
 					if($count > 4) {
-						$this->objects[] = pq($el);	
+						$this->objects[] = pq($el);
 					}
 				}
 			}
@@ -511,7 +511,7 @@ class emoticonsMissingAbbr extends emoticonsExcessiveUse {
 *	@link http://quail-lib.org/test-info/headersUseToMarkSections
 */
 class headersUseToMarkSections extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -527,7 +527,7 @@ class headersUseToMarkSections extends QuailCustomTest {
       if(!$set) {
         if(pq($el)->css('font-weight') == 'bold') {
           $this->objects[] = pq($el);
-        } 
+        }
       }
     }
   }
@@ -539,7 +539,7 @@ class headersUseToMarkSections extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/inputImageAltIsShort
 */
 class inputImageAltIsShort extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -558,7 +558,7 @@ class inputImageAltIsShort extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/inputImageAltIsNotFileName
 */
 class inputImageAltIsNotFileName extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -577,10 +577,10 @@ class inputImageAltIsNotFileName extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/inputImageAltNotRedundant
 */
 class inputImageAltNotRedundant extends QuailCustomTest {
-  
+
   protected $redundant;
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -592,7 +592,7 @@ class inputImageAltNotRedundant extends QuailCustomTest {
       }
     }
   }
-  
+
   protected function getRedundantString() {
     global $quail_redundant_text;
     if(!$quail_redundant_text) {
@@ -608,8 +608,8 @@ class inputImageAltNotRedundant extends QuailCustomTest {
  *	@link http://quail-lib.org/test-info/imgAltIsDifferent
  */
 class imgAltIsDifferent extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -628,8 +628,8 @@ class imgAltIsDifferent extends QuailCustomTest {
  * @link http://quail-lib.org/test-info/imgAltIsTooLong
  */
 class imgAltIsTooLong extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -640,7 +640,7 @@ class imgAltIsTooLong extends QuailCustomTest {
       }
     }
   }
-  
+
 }
 
 /**
@@ -649,14 +649,14 @@ class imgAltIsTooLong extends QuailCustomTest {
  * @link http://quail-lib.org/test-info/imgImportantNoSpacerAlt
  */
 class imgImportantNoSpacerAlt extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
   function run() {
     foreach($this->q('img[alt]') as $el) {
-      if($this->isUnreadable(pq($el)->attr('alt')) && 
+      if($this->isUnreadable(pq($el)->attr('alt')) &&
          intval(pq($el)->css('width')) > 50 &&
          intval(pq($el)->css('height')) > 50
          ) {
@@ -672,10 +672,10 @@ class imgImportantNoSpacerAlt extends QuailCustomTest {
  * @link http://quail-lib.org/test-info/imgGifNoFlicker
  */
 class imgGifNoFlicker extends QuailCustomTest {
-  
+
   var $gif_control_extension = "/21f904[0-9a-f]{2}([0-9a-f]{4})[0-9a-f]{2}00/";
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -686,7 +686,7 @@ class imgGifNoFlicker extends QuailCustomTest {
         $file = file_get_contents($path);
   			if($file) {
   				  $file = bin2hex($file);
-  				
+
   				  // sum all frame delays
   				  $total_delay = 0;
   				  preg_match_all($this->gif_control_extension, $file, $matches);
@@ -696,10 +696,10 @@ class imgGifNoFlicker extends QuailCustomTest {
   				    if ($delay == 0) $delay = 1;
   				    $total_delay += $delay;
   				  }
-  				
+
   				  // delays are stored as hundredths of a second, lets convert to seconds
-  				  
-  				 
+
+
   			  if($total_delay > 0) {
             $this->objects[] = pq($el);
           }
@@ -715,7 +715,7 @@ class imgGifNoFlicker extends QuailCustomTest {
  *	@link http://quail-lib.org/test-info/imgHasLongDesc
  */
 class imgHasLongDesc extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -735,7 +735,7 @@ class imgHasLongDesc extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/imgAltTextNotRedundant
 */
 class imgAltTextNotRedundant extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -757,8 +757,8 @@ class imgAltTextNotRedundant extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/imgAltNotEmptyInAnchor
 */
 class imgAltNotEmptyInAnchor extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -779,7 +779,7 @@ class imgAltNotEmptyInAnchor extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/imgWithMathShouldHaveMathEquivalent
 */
 class imgWithMathShouldHaveMathEquivalent extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -798,7 +798,7 @@ class imgWithMathShouldHaveMathEquivalent extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/labelMustBeUnique
 */
 class labelMustBeUnique extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -819,7 +819,7 @@ class labelMustBeUnique extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/listNotUsedForFormatting
 */
 class listNotUsedForFormatting extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -838,7 +838,7 @@ class listNotUsedForFormatting extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/preShouldNotBeUsedForTabularLayout
 */
 class preShouldNotBeUsedForTabularLayout extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -858,8 +858,8 @@ class preShouldNotBeUsedForTabularLayout extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/tabIndexFollowsLogicalOrder
 */
 class tabIndexFollowsLogicalOrder extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -881,8 +881,8 @@ class tabIndexFollowsLogicalOrder extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/tableLayoutHasNoSummary
 */
 class tableLayoutHasNoSummary extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -901,8 +901,8 @@ class tableLayoutHasNoSummary extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/tableLayoutHasNoCaption
 */
 class tableLayoutHasNoCaption extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -921,8 +921,8 @@ class tableLayoutHasNoCaption extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/tableLayoutMakesSenseLinearized
 */
 class tableLayoutMakesSenseLinearized extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -941,7 +941,7 @@ class tableLayoutMakesSenseLinearized extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/tableLayoutDataShouldNotHaveTh
 */
 class tableLayoutDataShouldNotHaveTh extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -960,7 +960,7 @@ class tableLayoutDataShouldNotHaveTh extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/tableUsesAbbreviationForHeader
 */
 class tableUsesAbbreviationForHeader extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -979,7 +979,7 @@ class tableUsesAbbreviationForHeader extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/tableHeaderLabelMustBeTerse
 */
 class tableHeaderLabelMustBeTerse extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -998,8 +998,8 @@ class tableHeaderLabelMustBeTerse extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/tableSummaryDoesNotDuplicateCaption
 */
 class tableSummaryDoesNotDuplicateCaption extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -1018,7 +1018,7 @@ class tableSummaryDoesNotDuplicateCaption extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/tableWithMoreHeadersUseID
 */
 class tableWithMoreHeadersUseID extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -1043,7 +1043,7 @@ class tableWithMoreHeadersUseID extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/tabularDataIsInTable
 */
 class tabularDataIsInTable extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -1062,10 +1062,10 @@ class tabularDataIsInTable extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/formWithRequiredLabel
 */
 class formWithRequiredLabel extends QuailCustomTest {
-  
+
   protected $redundant;
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -1089,17 +1089,17 @@ class formWithRequiredLabel extends QuailCustomTest {
       $last_style = $current_style;
     }
   }
-  
+
   function getStyleHash($el) {
     return md5($el->css('color') . $el->css('font-weight'));
   }
-  
+
   protected function loadString() {
     global $quail_redundant_text;
     if(!$quail_redundant_text) {
       $quail_redundant_text = (array)json_decode(file_get_contents('../../resources/strings/redundant.json'));
     }
-    
+
     $this->redundant = (array)$quail_redundant_text['required'];
   }
 }
@@ -1110,7 +1110,7 @@ class formWithRequiredLabel extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/inputCheckboxRequiresFieldset
 */
 class inputCheckboxRequiresFieldset extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -1129,8 +1129,8 @@ class inputCheckboxRequiresFieldset extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/imgMapAreasHaveDuplicateLink
 */
 class imgMapAreasHaveDuplicateLink extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -1143,7 +1143,7 @@ class imgMapAreasHaveDuplicateLink extends QuailCustomTest {
       $map = (pq(pq($el)->attr('usemap'))->length)
              ? pq(pq($el)->attr('usemap'))
              : pq('map[name='. str_replace('#', '', pq($el)->attr('usemap')) .']');
-      
+
       if($map) {
         foreach($map->find('area') as $area) {
           if(!in_array(pq($area)->attr('href'), $links)) {
@@ -1161,7 +1161,7 @@ class imgMapAreasHaveDuplicateLink extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/siteMap
 */
 class siteMap extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -1177,13 +1177,13 @@ class siteMap extends QuailCustomTest {
     }
     $this->objects[] = $this->q('body');
   }
-  
+
   protected function loadString() {
     global $quail_map_text;
     if(!$quail_map_text) {
       $quail_map_text = (array)json_decode(file_get_contents('../../resources/strings/site_map.json'));
     }
-    
+
     $this->strings = $quail_map_text;
   }
 }
@@ -1193,7 +1193,7 @@ class siteMap extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/tableUseColGroup
 */
 class tableUseColGroup extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -1212,14 +1212,14 @@ class tableUseColGroup extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/pNotUsedAsHeader
 */
 class pNotUsedAsHeader extends QuailCustomTest {
-  
+
   protected $suspectTags = array('strong', 'b', 'em', 'i', 'u', 'font');
-  
+
   protected $suspectCSS = array('color', 'font-weight', 'font-size', 'font-family');
-  
+
   protected $requiresTextAnalysis = true;
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -1228,7 +1228,7 @@ class pNotUsedAsHeader extends QuailCustomTest {
     $textAnalysis = new TextStatistics();
     foreach($this->q('p') as $el) {
       if($textAnalysis->sentence_count(pq($el)->text()) < 3) {
-        if(pq($el)->find('*:first-child')->get(0) && 
+        if(pq($el)->find('*:first-child')->get(0) &&
            in_array(strtolower(pq($el)->find('*:first-child')->get(0)->tagName), $this->suspectTags) &&
            pq($el)->find('*:first-child')->text() == pq($el)->text()) {
             $this->objects[] = pq($el);
@@ -1242,7 +1242,7 @@ class pNotUsedAsHeader extends QuailCustomTest {
         if(pq($el)->css('font-weight') == 'bold') {
           $this->objects[] = pq($el);
         }
-      }      
+      }
     }
   }
 }
@@ -1252,7 +1252,7 @@ class pNotUsedAsHeader extends QuailCustomTest {
 *	@link http://quail-lib.org/test-info/textIsNotSmall
 */
 class textIsNotSmall extends QuailCustomTest {
-  
+
   /**
    * See QuailTest::run()
    */
@@ -1272,7 +1272,7 @@ class textIsNotSmall extends QuailCustomTest {
 */
 class selectJumpMenus extends QuailCustomTest {
 
-  
+
   /**
    * See QuailTest::run()
    */
@@ -1291,8 +1291,8 @@ class selectJumpMenus extends QuailCustomTest {
  * also has a label.
  */
 class QuailLabelTest extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -1311,8 +1311,8 @@ class QuailLabelTest extends QuailCustomTest {
  * Tests to make sure labels are next to their target element.
  */
 class QuailLabelProximityTest extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -1330,11 +1330,11 @@ class QuailLabelProximityTest extends QuailCustomTest {
 }
 
 /**
- * 
+ *
  */
 class QuailHeaderTest extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -1342,7 +1342,7 @@ class QuailHeaderTest extends QuailCustomTest {
     $current = intval(substr($this->options['selector'], -1, 1));
     $next_heading = false;
     foreach($this->q('h1, h2, h3, h4, h5, h6') as $el) {
-      
+
       $number = intval(substr($el->tagName, -1, 1));
       if($next_heading && ($number - 1 > $current || $number + 1 < $current)) {
         $this->objects[] = pq($el);
@@ -1362,8 +1362,8 @@ class QuailHeaderTest extends QuailCustomTest {
  * corresponding event (like click also covers keyUp).
  */
 class QuailEventTest extends QuailCustomTest {
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -1376,26 +1376,26 @@ class QuailEventTest extends QuailCustomTest {
       }
     }
   }
-  
+
 }
 
 /**
  * Helper class for comparing color values of any item in the DOM.
  */
 class QuailColorTest extends QuailCustomTest {
-  
+
   /**
    * @var An array of named color values (like 'blue' => '0000ff')
    */
   protected $color_names;
-  
+
   /**
    * See QuailTest::run()
    */
   function run() {
     $this->getColorNames();
     foreach($this->q($this->options['selector']) as $el) {
-      if(pq($el)->css('color') && pq($el)->css('background-color')) {   
+      if(pq($el)->css('color') && pq($el)->css('background-color')) {
         if($this->options['algorithm'] == 'wai') {
           if(!$this->compareWAIColors(pq($el)->css('color'), pq($el)->css('background-color'))) {
             $this->objects[] = pq($el);
@@ -1429,16 +1429,16 @@ class QuailColorTest extends QuailCustomTest {
       }
     }
   }
-  
+
   /**
    * Compares two colors using WAI algorithims.
    * @return bool TRUE for the values pass, FALSe if they do not pass
-   */  
+   */
   protected function compareWAIColors($foreground, $background) {
-    return ( $this->getWaiErtContrast($foreground, $background) > 500 && 
+    return ( $this->getWaiErtContrast($foreground, $background) > 500 &&
              $this->getWaiErtBrightness($foreground, $background) > 125 );
   }
-  
+
   /**
    * Compares two colors using WCAG algorithims.
    * @return bool TRUE for the values pass, FALSe if they do not pass
@@ -1446,7 +1446,7 @@ class QuailColorTest extends QuailCustomTest {
   protected function compareWCAGColors($foreground, $background) {
     return ($this->getLuminosity($foreground, $background) > 5);
   }
-  
+
   /**
    * Retrieves and sets color_names so that named color values
    * can be converted to their hex value.
@@ -1459,7 +1459,7 @@ class QuailColorTest extends QuailCustomTest {
     }
     $this->color_names = $quail_color_text;
   }
-  
+
   /**
 	*	Helper method that finds the luminosity between the provided
 	*	foreground and background parameters.
@@ -1475,7 +1475,7 @@ class QuailColorTest extends QuailCustomTest {
 							    $fore_rgb['g'], $back_rgb['g'],
 							    $fore_rgb['b'], $back_rgb['b']);
 	}
-	
+
 	/**
 	*	Returns the luminosity between two colors
 	*	@param string $r The first Red value
@@ -1493,14 +1493,14 @@ class QuailColorTest extends QuailCustomTest {
 		$R = ($RsRGB <= 0.03928) ? $RsRGB/12.92 : pow(($RsRGB+0.055)/1.055, 2.4);
 		$G = ($GsRGB <= 0.03928) ? $GsRGB/12.92 : pow(($GsRGB+0.055)/1.055, 2.4);
 		$B = ($BsRGB <= 0.03928) ? $BsRGB/12.92 : pow(($BsRGB+0.055)/1.055, 2.4);
-	
+
 		$RsRGB2 = $r2/255;
 		$GsRGB2 = $g2/255;
 		$BsRGB2 = $b2/255;
 		$R2 = ($RsRGB2 <= 0.03928) ? $RsRGB2/12.92 : pow(($RsRGB2+0.055)/1.055, 2.4);
 		$G2 = ($GsRGB2 <= 0.03928) ? $GsRGB2/12.92 : pow(($GsRGB2+0.055)/1.055, 2.4);
 		$B2 = ($BsRGB2 <= 0.03928) ? $BsRGB2/12.92 : pow(($BsRGB2+0.055)/1.055, 2.4);
-	
+
 		if ($r+$g+$b <= $r2+$g2+$b2) {
 		$l2 = (.2126 * $R + 0.7152 * $G + 0.0722 * $B);
 		$l1 = (.2126 * $R2 + 0.7152 * $G2 + 0.0722 * $B2);
@@ -1508,7 +1508,7 @@ class QuailColorTest extends QuailCustomTest {
 		$l1 = (.2126 * $R + 0.7152 * $G + 0.0722 * $B);
 		$l2 = (.2126 * $R2 + 0.7152 * $G2 + 0.0722 * $B2);
 		}
-		
+
 		$luminosity = round(($l1 + 0.05)/($l2 + 0.05),2);
 		return $luminosity;
 	}
@@ -1528,7 +1528,7 @@ class QuailColorTest extends QuailCustomTest {
 		$results = array('r' => hexdec($c[0]), 'g' => hexdec($c[1]), 'b' => hexdec($c[2]));
 		return $results;
 	}
-	
+
 	/**
 	*	Converts multiple color or backround styles into a simple hex string
 	*	@param string $color The color attribute to convert (this can also be a multi-value css background value)
@@ -1564,37 +1564,37 @@ class QuailColorTest extends QuailCustomTest {
 		//rgb values
 		if(strtolower(substr($color, 0, 3)) == 'rgb') {
 			$colors = explode(',', trim(str_replace('rgb(', '', $color), '()'));
-			
-			$r = intval($colors[0]); 
+
+			$r = intval($colors[0]);
 			$g = intval($colors[1]);
 		    $b = intval($colors[2]);
-		
+
 		    $r = dechex($r<0?0:($r>255?255:$r));
 		    $g = dechex($g<0?0:($g>255?255:$g));
 		    $b = dechex($b<0?0:($b>255?255:$b));
-		
+
 		    $color = (strlen($r) < 2?'0':'').$r;
 		    $color .= (strlen($g) < 2?'0':'').$g;
-		    $color .= (strlen($b) < 2?'0':'').$b; 
+		    $color .= (strlen($b) < 2?'0':'').$b;
 		    return $color;
 		}
 	}
-	
+
 	/**
 	*	Returns the WAIERT contrast between two colors
-	*	@see GetLuminosity	
+	*	@see GetLuminosity
 	*/
 	function getWaiErtContrast($foreground, $background) {
 		$fore_rgb = $this->getRGB($foreground);
 		$back_rgb = $this->getRGB($background);
 		$diffs = $this->getWaiDiffs($fore_rgb, $back_rgb);
-		
+
 		return $diffs['red'] + $diffs['green'] + $diffs['blue'];
 	}
-	
+
 	/**
 	*	Returns the WAI ERT Brightness between two colors
-	*	
+	*
 	*/
 	function getWaiErtBrightness($foreground, $background) {
 		$fore_rgb = $this->getRGB($foreground);
@@ -1602,7 +1602,7 @@ class QuailColorTest extends QuailCustomTest {
 		$color = $this->getWaiDiffs($fore_rgb, $back_rgb);
 		return (($color['red'] * 299) + ($color['green'] * 587) + ($color['blue'] * 114)) / 1000;
 	}
-	
+
 	/**
 	* Retrieves the difference between two colors using the WAI algorithm.
 	* @param $fore_rgb array An array of RGB values for foreground values
@@ -1610,33 +1610,33 @@ class QuailColorTest extends QuailCustomTest {
 	* @return array An array of differences keyed 'red', 'green', and 'blue'
 	*/
 	function getWaiDiffs($fore_rgb, $back_rgb) {
-		$red_diff = ($fore_rgb['r'] > $back_rgb['r']) 
-						? $fore_rgb['r'] - $back_rgb['r'] 
+		$red_diff = ($fore_rgb['r'] > $back_rgb['r'])
+						? $fore_rgb['r'] - $back_rgb['r']
 						: $back_rgb['r'] - $fore_rgb['r'];
-		$green_diff = ($fore_rgb['g'] > $back_rgb['g']) 
-						? $fore_rgb['g'] - $back_rgb['g'] 
-						: $back_rgb['g'] - $fore_rgb['g'];		
+		$green_diff = ($fore_rgb['g'] > $back_rgb['g'])
+						? $fore_rgb['g'] - $back_rgb['g']
+						: $back_rgb['g'] - $fore_rgb['g'];
 
-		$blue_diff = ($fore_rgb['b'] > $back_rgb['b']) 
-						? $fore_rgb['b'] - $back_rgb['b'] 
+		$blue_diff = ($fore_rgb['b'] > $back_rgb['b'])
+						? $fore_rgb['b'] - $back_rgb['b']
 						: $back_rgb['b'] - $fore_rgb['b'];
 		return array('red' => $red_diff, 'green' => $green_diff, 'blue' => $blue_diff);
 	}
 }
 
 /**
- * A test class to compare the values of an element to 
+ * A test class to compare the values of an element to
  * either placeholder text or empty values. The value
  * can either be an attribute on elements selected, or
  * the content.
  */
 class QuailPlaceholderTest extends QuailCustomTest {
-  
+
   /**
    * @var An array of placeholder strings
    */
   protected $placeholders;
-  
+
   /**
    * @var Defalut options
    */
@@ -1645,8 +1645,8 @@ class QuailPlaceholderTest extends QuailCustomTest {
                                 'empty' => false,
                                 'selector' => '',
                                 );
-  
-  
+
+
   /**
    * See QuailTest::run()
    */
@@ -1663,7 +1663,7 @@ class QuailPlaceholderTest extends QuailCustomTest {
           preg_match("/^([0-9]*)(k|kb|mb|k bytes|k byte)?$/", strtolower(pq($el)->attr($attr))))) {
             $this->objects[] = pq($el);
         }
-        
+
       }
       elseif($this->options['content']) {
         if(isset($this->options['empty']) && $this->options['empty'] && $this->isUnreadable(pq($el)->text())) {
@@ -1675,7 +1675,7 @@ class QuailPlaceholderTest extends QuailCustomTest {
       }
     }
   }
-  
+
   /**
    * Retrieves and sets the placeholder values from the placeholders.json file.
    */
