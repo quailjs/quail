@@ -545,19 +545,19 @@
     //51
     test('documentTitleNotEmpty', function() {
   		quailTest.runTest( 'documentTitleNotEmpty', '51-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('title'), 'Document is set');
 
   		quailTest.runTest( 'documentTitleNotEmpty', '51-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 
   		quailTest.runTest( 'documentTitleNotEmpty', '51-3.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('title'), 'Document is set');
     });
 
     //52
     test('documentTitleIsShort', function() {
   		quailTest.runTest( 'documentTitleIsShort', '52-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('title'), 'Document is set');
 
 
   		quailTest.runTest( 'documentTitleIsShort', '52-2.html');
@@ -568,18 +568,18 @@
     test('documentTitleIsNotPlaceholder', function() {
   		quailTest.runTest( 'documentTitleIsNotPlaceholder', '53-1.html');
 
-  			equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  			equal(true, quailTest.confirmIsTag('title'), 'Document is set');
   		quailTest.runTest( 'documentTitleIsNotPlaceholder', '53-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 
   		quailTest.runTest( 'documentTitleIsNotPlaceholder', '53-3.html');
 
-  			equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  			equal(true, quailTest.confirmIsTag('title'), 'Document is set');
   		quailTest.runTest( 'documentTitleIsNotPlaceholder', '53-4.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('title'), 'Document is set');
 
   		quailTest.runTest( 'documentTitleIsNotPlaceholder', '53-5.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('title'), 'Document is set');
     });
 
     //54
