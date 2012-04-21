@@ -98,7 +98,6 @@ class QuailTests extends QuailBaseTest {
 	}
 
 	function test_cssTextContrastWithComplexBackground() {
-		print 'TEST';
 		$results = $this->getTest('cssContrast4.html', 'cssTextHasContrast');
 		$this->assertTrue($results[1]->elements[0]->tagName == 'div');
 
