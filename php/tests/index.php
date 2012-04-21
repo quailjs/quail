@@ -90,18 +90,18 @@ class QuailTests extends QuailBaseTest {
 		$results = $this->getTest('cssContrast2.html', 'cssTextHasContrast');
 		$this->assertTrue($results[0]->elements[0]->tagName == 'div');
 	}
-	
+
 	function test_cssTextContrastWithColorConversion() {
 		$results = $this->getTest('cssContrast3.html', 'cssTextHasContrast');
 		$this->assertTrue($results[0]->elements[0]->tagName == 'div');
-		
+
 	}
-	
+
 	function test_cssTextContrastWithComplexBackground() {
 		print 'TEST';
 		$results = $this->getTest('cssContrast4.html', 'cssTextHasContrast');
-		$this->assertTrue($results[1]->elements[0]->tagName == 'pre');
-		
+		$this->assertTrue($results[1]->elements[0]->tagName == 'div');
+
 	}
 
 	function test_headersHaveText() {
@@ -149,13 +149,13 @@ class QuailTests extends QuailBaseTest {
 		if(is_object($results[0])) {
   		$this->assertTrue($results[0]->elements[0]->tagName == 'p');
     }
-	
+
 		$results = $this->getTest('documentIsWrittenClearly-pass.html', 'documentIsWrittenClearly');
 		$this->assertTrue(count($results) == 0);
 
 		$results = $this->getTest('documentIsWrittenClearly-pass-2.html', 'documentIsWrittenClearly');
 		$this->assertTrue(count($results) == 0);
-	
+
 	}
 
 }
