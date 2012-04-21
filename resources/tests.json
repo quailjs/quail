@@ -178,8 +178,11 @@
     "selector":"link[rel=stylesheet], stylesheet, *[style]"
   },
   "cssTextHasContrast":{
-    "type":"custom",
-    "callback":"cssTextHasContrast"
+    "type":"color",
+    "algorithm":"wcag",
+    "selector":"*",
+    "bodyForegroundAttribute": "background",
+    "bodyBackgroundAttribute": "color"
   },
   "doctypeProvided":{
     "type":"custom",

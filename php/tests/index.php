@@ -82,6 +82,11 @@ class QuailTests extends QuailBaseTest {
 		$this->assertTrue(count($results) == 0);
 	}
 
+	function test_cssTextHasContrast() {
+		$results = $this->getTest('cssContrast.html', 'cssTextHasContrast');
+		$this->assertTrue($results[0]->elements[0]->tagName == 'body');
+	}
+
 	function test_headersHaveText() {
 		$results = $this->getTest('headersHaveText-fail.html', 'headersHaveText');
 		$this->assertTrue(is_object($results[0]));

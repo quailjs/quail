@@ -509,7 +509,7 @@
     //42 - 47
     test('47_headerFormatting', function() {
     	for(var i = 1; i < 7; $i++) {
-    	   var testName = 'headerH' + $i + 'Format';
+    	   var testName = 'headerH' + i + 'Format';
     	   var fileName = (i + 41) + '-1.html';
     	   quailTest.runTest( testName, fileName);
     	   equal(true, quailTest.confirmIsTag('h' + i), 'Header test H' + i);
@@ -644,8 +644,7 @@
     //60
     test('inputImageAltIsShort', function() {
   		quailTest.runTest( 'inputImageAltIsShort', '60-1.html');
-
-    		equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
+      equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
 
   		quailTest.runTest( 'inputImageAltIsShort', '60-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -682,8 +681,7 @@
     //63
     test('inputTextHasValue', function() {
   		quailTest.runTest( 'inputTextHasValue', '63-1.html');
-
-    		equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
+      equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
 
   		quailTest.runTest( 'inputTextHasValue', '63-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -735,7 +733,7 @@
   		quailTest.runTest( 'areaDontOpenNewWindow', '68-4.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-/*
+
     //69
     test('marqueeIsNotUsed', function() {
   		quailTest.runTest( 'marqueeIsNotUsed', '69-1.html');
@@ -759,12 +757,12 @@
     //71
     test('documentAutoRedirectNotUsed', function() {
   		quailTest.runTest( 'documentAutoRedirectNotUsed', '71-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('meta'), 'Document is set');
 
   		quailTest.runTest( 'documentAutoRedirectNotUsed', '71-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-
+/*
     //72
     test('documentMetaNotUsedWithTimeout', function() {
   		quailTest.runTest( 'documentMetaNotUsedWithTimeout', '72-1.html');
@@ -776,7 +774,7 @@
   		quailTest.runTest( 'documentMetaNotUsedWithTimeout', '72-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-
+*/
     //73
     test('objectDoesNotUseColorAlone', function() {
   		quailTest.runTest( 'objectDoesNotUseColorAlone', '73-1.html');
@@ -874,7 +872,7 @@
   		quailTest.runTest( 'listNotUsedForFormatting', '81-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-
+/*
    //82
     test('pNotUsedAsHeader', function() {
   		quailTest.runTest( 'pNotUsedAsHeader', '82-1.html');

@@ -209,6 +209,22 @@
       });
     },
 
+    inputImageAltIsNotFileName : function() {
+      quail.html.find('input[type=image][alt]').each(function() {
+        if($(this).attr('src') == $(this).attr('alt')) {
+          quail.accessibilityResults.inputImageAltIsNotFileName.push($(this));
+        }
+      });
+    },
+
+    inputImageAltIsShort : function() {
+      quail.html.find('input[type=image]').each(function() {
+        if($(this).attr('alt').length > 100) {
+          quail.accessibilityResults.inputImageAltIsShort.push($(this));
+        }
+      });
+    },
+
     imgImportantNoSpacerAlt : function() {
       quail.html.find('img[alt]').each(function() {
         var width = ($(this).width()) ? $(this).width() : parseInt($(this).attr('width'));
