@@ -2,13 +2,29 @@
 <html lang="en">
 <head>
 <title>CSS Complex Background</title>
-<link rel="StyleSheet" type="text/css" href="cssContrast4.css"/>
+<style>
+body {
+	background: #ff0b00;
+}
+
+div#test {
+	background: top left no-repeat url(nothing.png) #212121;
+}
+
+div#test .low {
+	color: rgb(14, 14, 14);
+}
+
+.highcontrast {
+	color: white;
+}
+</style>
 
 </head>
 <body>
 <div id="test">
 	<div class="high">This is pretty contrasty enough.</div>
-	<pre class="low">This aint so contrasty.</p>
+	<pre class="low">This aint so contrasty.</pre>
 </div>
 
 </body>

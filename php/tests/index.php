@@ -86,6 +86,23 @@ class QuailTests extends QuailBaseTest {
 		$results = $this->getTest('cssContrast.html', 'cssTextHasContrast');
 		$this->assertTrue($results[0]->elements[0]->tagName == 'body');
 	}
+	function test_complexCssTextHasContrast() {
+		$results = $this->getTest('cssContrast2.html', 'cssTextHasContrast');
+		$this->assertTrue($results[0]->elements[0]->tagName == 'div');
+	}
+	
+	function test_cssTextContrastWithColorConversion() {
+		$results = $this->getTest('cssContrast3.html', 'cssTextHasContrast');
+		$this->assertTrue($results[0]->elements[0]->tagName == 'div');
+		
+	}
+	
+	function test_cssTextContrastWithComplexBackground() {
+		print 'TEST';
+		$results = $this->getTest('cssContrast4.html', 'cssTextHasContrast');
+		$this->assertTrue($results[1]->elements[0]->tagName == 'pre');
+		
+	}
 
 	function test_headersHaveText() {
 		$results = $this->getTest('headersHaveText-fail.html', 'headersHaveText');
