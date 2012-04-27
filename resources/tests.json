@@ -12,7 +12,7 @@
     "aLinkTextDoesNotBeginWithRedundantWord": {
         "type": "custom",
         "callback": "aLinkTextDoesNotBeginWithRedundantWord",
-        "severity": "0"
+        "severity": "suggestion"
     },
     "aLinksAreSeperatedByPrintableCharacters": {
         "type": "custom",
@@ -27,7 +27,7 @@
     "aLinksMakeSenseOutOfContext": {
         "type": "selector",
         "selector": "a",
-        "severity": "0"
+        "severity": "suggestion"
     },
     "aLinksToMultiMediaRequireTranscript": {
         "type": "selector",
@@ -62,7 +62,7 @@
     "aSuspiciousLinkText": {
         "type": "custom",
         "callback": "aSuspiciousLinkText",
-        "severity": "0"
+        "severity": "severe"
     },
     "aTitleDescribesDestination": {
         "type": "selector",
@@ -119,7 +119,7 @@
     "areaAltIdentifiesDestination": {
         "type": "selector",
         "selector": "area[alt]",
-        "severity": "0"
+        "severity": "suggestion"
     },
     "areaAltRefersToText": {
         "type": "selector",
@@ -129,12 +129,12 @@
     "areaDontOpenNewWindow": {
         "type": "selector",
         "selector": "area[target='new window'], area[target=_new], area[target=_blank], area[target=_blank]",
-        "severity": "0"
+        "severity": "severe"
     },
     "areaHasAltValue": {
         "type": "selector",
         "selector": "area:not(area[alt])",
-        "severity": "0"
+        "severity": "severe"
     },
     "areaLinksToSoundFile": {
         "type": "selector",
@@ -752,8 +752,10 @@
         "severity": "severe"
     },
     "inputTextHasValue": {
-        "type": "selector",
-        "selector": "input[type=text]:not(input[type=text][value])",
+        "type": "placeholder",
+        "selector": "input[type=text]",
+        "empty": true,
+        "attribute": "value",
         "severity": "severe"
     },
     "inputTextValueNotEmpty": {

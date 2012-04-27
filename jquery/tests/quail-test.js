@@ -838,15 +838,13 @@
    //79
     test('objectMustHaveValidTitle', function() {
   		quailTest.runTest( 'objectMustHaveValidTitle', '79-1.html');
-
-    		equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
+      equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
 
   		quailTest.runTest( 'objectMustHaveValidTitle', '79-2.html');
-
-    		equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
-  		quailTest.runTest( 'objectMustHaveValidTitle', '79-3.html');
-
-    		equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
+      equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+  		
+      quailTest.runTest( 'objectMustHaveValidTitle', '79-3.html');
+   		equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
     });
 
    //80
@@ -872,7 +870,7 @@
   		quailTest.runTest( 'listNotUsedForFormatting', '81-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-/*
+
    //82
     test('pNotUsedAsHeader', function() {
   		quailTest.runTest( 'pNotUsedAsHeader', '82-1.html');
@@ -914,7 +912,7 @@
   		quailTest.runTest( 'scriptsDoNotUseColorAlone', '86-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-
+/*
     //87
     test('scriptsDoNotFlicker', function() {
   		quailTest.runTest( 'scriptsDoNotFlicker', '87-1.html');

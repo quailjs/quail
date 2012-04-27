@@ -282,6 +282,33 @@
       });
     },
 
+    listNotUsedForFormatting : function() {
+      quail.html.find('ol, ul').each(function() {
+        if($(this).find('li').length < 2) {
+          quail.accessibilityResults.listNotUsedForFormatting.push($(this));
+        }
+      });
+    },
+
+    suspectPHeaderTags : ['strong', 'b', 'em', 'i', 'u', 'font'],
+
+    suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
+
+    pNotUsedAsHeader : function() {
+      quail.html.find('p').each(function() {
+        if(!$(this).text().search('.')) {
+          if(typeof $(this).find(':first-child').get(0) != 'undefined'
+            && typeof quail.suspectPHeaderTags.indexOf($(this).find(':first-child').get(0).tagName) != 'undefined'
+            && $(this).text() == $(this).find(':first-child').text()) {
+              quail.accessibilityResults.pNotUsedAsHeader.push($(this));
+          }
+        }
+        $.each(quail.suspectPCSSStyles, function(index, style) {
+          
+        });
+      });
+    },
+
     documentTitleIsShort : function() {
       if(quail.html.find('head title:first').text().length > 150) {
         quail.accessibilityResults.documentTitleIsShort.push(quail.html.find('head title:first'));
