@@ -283,7 +283,7 @@
     },
     "documentContentReadableWithoutStylesheets": {
         "type": "selector",
-        "selector": "html:has(link[rel=stylesheet]) body, body:has(*[style])",
+        "selector": "html:has(link[rel=stylesheet], style) body, body:has(*[style])",
         "severity": "suggestion"
     },
     "documentHasTitleElement": {

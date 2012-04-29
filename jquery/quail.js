@@ -87,6 +87,10 @@
       return (text.trim().length) ? false : true;
     },
 
+    isDataTable : function(table) {
+      return (table.find('th').length && table.find('tr').length > 2) ? true : false;
+    },
+
     getRawResults : function(testName) {
       if(testName) {
         return quail.accessibilityResults[testName];
@@ -170,11 +174,11 @@
     labelProximityTest : function(testName, options) {
         quail.html.find(options.selector).each(function() {
           var $label = quail.html.find('label[for=' + $(this).attr('id') + ']').first();
-          console.log($label);
           if(!$label.length) {
-            return;
+            quail.accessibilityResults[testName].push($(this));
           }
-          if($(this).parent() != $label.parent()) {
+          console.log($label.parent());
+          if(!$(this).parent().is($label.parent())) {
             quail.accessibilityResults[testName].push($(this));
           }
         });
@@ -203,7 +207,7 @@
 
     labelTest : function(testName, options) {
       quail.html.find(options.selector).each(function() {
-        if(!$(this).parent('label').length && 
+        if(!$(this).parent('label').length &&
           !quail.html.find('label[for=' + $(this).attr('id') + ']').length) {
             quail.accessibilityResults[testName].push($(this));
         }
@@ -365,6 +369,22 @@
       quail.html.find('ol, ul').each(function() {
         if($(this).find('li').length < 2) {
           quail.accessibilityResults.listNotUsedForFormatting.push($(this));
+        }
+      });
+    },
+
+    tableLayoutHasNoSummary : function() {
+      quail.html.find('table[summary]').each(function() {
+        if(!quail.isDataTable($(this)) && !quail.isUnreadable($(this).attr('summary'))) {
+          quail.accessibilityResults.tableLayoutHasNoSummary.push($(this));
+        }
+      })
+    },
+
+    tableLayoutHasNoCaption : function() {
+      quail.html.find('table:has(caption)').each(function() {
+        if(!quail.isDataTable($(this))) {
+          quail.accessibilityResults.tableLayoutHasNoCaption.push($(this));
         }
       });
     },

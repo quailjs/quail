@@ -1125,7 +1125,7 @@
     //109
       test('documentContentReadableWithoutStylesheets', function() {
   		quailTest.runTest( 'documentContentReadableWithoutStylesheets', '109-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'documentContentReadableWithoutStylesheets', '109-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -1134,10 +1134,10 @@
     //110
       test('documentWordsNotInLanguageAreMarked', function() {
   		quailTest.runTest( 'documentWordsNotInLanguageAreMarked', '110-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'documentWordsNotInLanguageAreMarked', '110-2.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
     });
 
     //111
@@ -1164,7 +1164,7 @@
 
     });
 
-/*
+
     //114
       test('tableLayoutHasNoSummary', function() {
   		quailTest.runTest( 'tableLayoutHasNoSummary', '114-1.html');
@@ -1225,7 +1225,7 @@
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 
   		quailTest.runTest( 'passwordHasLabel', '118-3.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+  		equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
 
   		quailTest.runTest( 'passwordHasLabel', '118-4.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -1242,7 +1242,7 @@
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 
   		quailTest.runTest( 'checkboxHasLabel', '119-3.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+  		equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
 
   		quailTest.runTest( 'checkboxHasLabel', '119-4.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -1260,7 +1260,7 @@
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 
   		quailTest.runTest( 'fileHasLabel', '120-3.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+  		equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
 
   		quailTest.runTest( 'fileHasLabel', '120-4.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -1277,7 +1277,7 @@
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 
   		quailTest.runTest( 'radioHasLabel', '121-3.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+  		equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
 
   		quailTest.runTest( 'radioHasLabel', '121-4.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -1327,7 +1327,7 @@
 
     		equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
     });
-
+/*
     //126
       test('inputTextValueNotEmpty', function() {
   		quailTest.runTest( 'inputTextValueNotEmpty', '126-1.html');
