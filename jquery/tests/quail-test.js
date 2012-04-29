@@ -1327,7 +1327,7 @@
 
     		equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
     });
-/*
+
     //126
       test('inputTextValueNotEmpty', function() {
   		quailTest.runTest( 'inputTextValueNotEmpty', '126-1.html');
@@ -1394,8 +1394,7 @@
     //134
     test('aLinksAreSeperatedByPrintableCharacters', function() {
   		quailTest.runTest( 'aLinksAreSeperatedByPrintableCharacters', '134-1.html');
-
-    		equal(true, quailTest.confirmIsTag('a'), 'First item tag test');
+      equal(true, quailTest.confirmIsTag('a'), 'First item tag test');
   		quailTest.runTest( 'aLinksAreSeperatedByPrintableCharacters', '134-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
@@ -1555,7 +1554,7 @@
     test('tableUsesAbbreviationForHeader', function() {
   		quailTest.runTest( 'tableUsesAbbreviationForHeader', '152-1.html');
 
-    		equal(true, quailTest.confirmIsTag('table'), 'First item tag test');
+    		equal(true, quailTest.confirmIsTag('th'), 'First item tag test');
   		quailTest.runTest( 'tableUsesAbbreviationForHeader', '152-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 
@@ -1666,7 +1665,7 @@
   		quailTest.runTest( 'iframeMustNotHaveLongdesc', '167-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-
+/*
     //168
     test('radioMarkedWithFieldgroupAndLegend', function() {
   		quailTest.runTest( 'radioMarkedWithFieldgroupAndLegend', '168-1.html');

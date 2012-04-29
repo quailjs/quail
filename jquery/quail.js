@@ -256,6 +256,23 @@
       });
     },
 
+    aLinksAreSeperatedByPrintableCharacters : function() {
+      quail.html.find('a').each(function() {
+        if($(this).next('a').length && quail.isUnreadable($(this).get(0).nextSibling.wholeText)) {
+          quail.accessibilityResults.aLinksAreSeperatedByPrintableCharacters.push($(this));
+        }
+      });
+    },
+
+    blockquoteUseForQuotations : function() {
+      quail.html.find('p').each(function() {
+        if($(this).text().substr(0, 1).search(/[\'\"]/) > -1 &&
+           $(this).text().substr(-1, 1).search(/[\'\"]/) > -1) {
+          quail.accessibilityResults.blockquoteUseForQuotations.push($(this));
+        }
+      });
+    },
+
     documentAcronymsHaveElement : function() {
       quail.acronymTest('documentAcronymsHaveElement', 'acronym');
     },
@@ -273,6 +290,15 @@
         if(quail.isUnreadable($(this).text())) {
           quail.accessibilityResults.appletContainsTextEquivalent.push($(this));
         }
+      });
+    },
+
+    embedHasAssociatedNoEmbed : function() {
+      if(quail.html.find('noembed').length) {
+        return;
+      }
+      quail.html.find('embed').each(function() {
+        quail.accessibilityResults.embedHasAssociatedNoEmbed.push($(this));
       });
     },
 
@@ -385,6 +411,40 @@
       quail.html.find('table:has(caption)').each(function() {
         if(!quail.isDataTable($(this))) {
           quail.accessibilityResults.tableLayoutHasNoCaption.push($(this));
+        }
+      });
+    },
+
+    tableHeaderLabelMustBeTerse : function() {
+      quail.html.find('th, table tr:first td').each(function() {
+        if($(this).text().length > 20 &&
+           (!$(this).attr('abbr') || $(this).attr('abbr').length > 20)) {
+          quail.accessibilityResults.tableHeaderLabelMustBeTerse.push($(this));
+        }
+      });
+    },
+
+    tableLayoutMakesSenseLinearized : function() {
+      quail.html.find('table').each(function() {
+        if(!quail.isDataTable($(this))) {
+          quail.accessibilityResults.tableLayoutMakesSenseLinearized.push($(this));
+        }
+      });
+    },
+
+    tableUsesAbbreviationForHeader : function() {
+      quail.html.find('th:not(th[abbr])').each(function() {
+        if($(this).text().length > 20) {
+          quail.accessibilityResults.tableUsesAbbreviationForHeader.push($(this));
+        }
+      });
+    },
+
+    preShouldNotBeUsedForTabularLayout : function() {
+      quail.html.find('pre').each(function() {
+        var rows = $(this).text().split(/[\n\r]+/);
+        if(rows.length > 1 && $(this).text().search(/\t/) > -1) {
+          quail.accessibilityResults.preShouldNotBeUsedForTabularLayout.push($(this));
         }
       });
     },
