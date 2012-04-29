@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>jQuery hasEventListener plugin homemade tests</title>
+		<style>
+			ul {
+				/*float: left;*/
+				list-style: none;
+				padding: 0 1.5em 0 0
+			}
+			hr {
+				border: 0;
+				border-bottom: .1em dashed #999
+			}
+			#test {
+				background: #ddd;
+				border: .1em solid #333;
+				display: inline-block;
+				padding: .5em
+			}
+			#test:hover {
+				background: #eee;
+				cursor: pointer
+			}
+			.green { color: #090 }
+			.red { color: #900 }
+		</style>
+	</head>
+	<body>
+		<form>
+			<label for="jQuery_version">Pick a jQuery version</label>
+			<select id="jQuery_version" name="jQuery" tabIndex="1">
+				<option selected>1.6.2</option>
+				<option>1.6.1</option>
+				<option>1.6.0</option>
+				<option>1.5.2</option>
+				<option>1.5.1</option>
+				<option>1.5.0</option><!-- 1.5.0 has a local AJAX bug -->
+				<option>1.4.4</option>
+				<option>1.4.3</option>
+				<option>1.4.2</option>
+				<option>1.4.1</option>
+				<option>1.4.0</option>
+				<option>1.3.2</option>
+				<option>1.3.1</option>
+				<option>1.3.0</option>
+				<option>1.2.6</option>
+				<option>1.2.3</option>
+			</select>
+			<input id="submit_button" type="submit" value="OK" tabIndex="2" disabled/>
+		</form>
+		<hr/>
+		<p><span id="test">Element</span> &lt;== Open a JavaScript console and click it !</p>
+		<script id="jQuery" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script>
+            (function (WINDOW, LOCATION, SELECTED, DISABLED) {
+
+                "use strict";
+
+                $(function () {
+
+                    var ajax_defaults = {
+                            cache: true,
+                            dataType: "script",
+                            error: function () {
+
+                                if (WINDOW.confirm("AJAX request failed, do you want to reload the page ?")) {
+
+                                    LOCATION.reload();
+
+                                }
+
+                            }
+                        },
+                        jQuery = $("#jQuery"),
+                        jQuery_source = jQuery.attr("src"),
+                        submit_button = $("#submit_button"),
+                        jQuery_version = $("#jQuery_version").bind("change.sebastienp", function () {
+
+                            submit_button.is(":" + DISABLED) && submit_button.removeAttr(DISABLED);
+
+                        }),
+                        query_string = LOCATION.search,
+                        regexp = /(\d+\.?)+/,
+                        version;
+
+                    function load_plugin_and_log() {
+
+                        $.ajax($.extend(ajax_defaults, {
+                            url:"https://github.com/sebastien-p/jquery.hasEventListener/raw/master/jquery.hasEventListener-2.0.3.min.js",
+                            //url: "../jquery.hasEventListener-2.0.3.js",
+                            //url: "../jquery.hasEventListener-2.0.3.min.js",
+                            //url: "../work%20in%20progress/jquery.hasEventListener-2.1.0.js",
+                            success: function () {
+
+                                var body = $("body"),
+                                    delegate = "delegate",
+                                    handler = function (e) {
+
+                                        var namespace = e.handleObj;
+
+                                        WINDOW.console.log(+new WINDOW.Date() + " : " + e.type + (((namespace = (namespace && namespace.namespace) || e.handler.type)) ? "." + namespace : ""));
+
+                                    },
+                                    live = "live",
+                                    namespace = "_namespace",
+                                    object = $({}),
+                                    span = $("#test"),
+                                    types = ["click", "mouseenter", "custom"];
+
+                                function tests(elements) {
+
+                                    var list = "";
+
+                                    function test(element, description, handler) {
+
+                                        var argument,
+                                            iterator = -1,
+                                            length = arguments.length - 1,
+                                            list_item = '<li class="' + (($.hasEventListener(element, description, handler)) ? "green" : "red") + '">' + element;
+
+                                        while ((iterator += 1) < length) {
+
+                                            list_item += (", " + ((typeof (argument = arguments[iterator + 1]) === "function") ? "handler" : argument));
+
+                                        }
+
+                                        return (list_item + "</li>");
+
+                                    }
+
+                                    $.each(elements, function (i, element) {
+
+                                        $.each(types, function (i, type) {
+
+                                            list += "<hr/><h2>" + element + " " + type.toUpperCase() + "</h2><ul>" +
+
+                                                test(element) +
+                                                test(element, handler) +
+                                                test(element, type) +
+                                                test(element, "." + type + namespace) +
+                                                test(element, type + "." + type + namespace) +
+                                                test(element, type, handler) +
+                                                test(element, "." + type + namespace, handler) +
+                                                test(element, type + "." + type + namespace, handler) +
+
+                                                "</ul><ul>" +
+
+                                                test(element, live + "!") +
+                                                test(element, live + "!", handler) +
+                                                test(element, live + "!" + type) +
+                                                test(element, live + "!." + live + "_" + type + namespace) +
+                                                test(element, live + "!" + type + "." + live + "_" + type + namespace) +
+                                                test(element, live + "!" + type, handler) +
+                                                test(element, live + "!." + live + "_" + type + namespace, handler) +
+                                                test(element, live + "!" + type + "." + live + "_" + type + namespace, handler) +
+
+                                                "</ul><ul>" +
+
+                                                test(element, delegate + "!") +
+                                                test(element, delegate + "!", handler) +
+                                                test(element, delegate + "!" + type) +
+                                                test(element, delegate + "!." + delegate + "_" + type + namespace) +
+                                                test(element, delegate + "!" + type + "." + delegate + "_" + type + namespace) +
+                                                test(element, delegate + "!" + type, handler) +
+                                                test(element, delegate + "!." + delegate + "_" + type + namespace, handler) +
+                                                test(element, delegate + "!" + type + "." + delegate + "_" + type + namespace, handler) +
+
+                                                "</ul><ul>" +
+
+                                                test(element, "hover!") +
+                                                test(element, "hover!", handler) +
+
+                                                "</ul><ul>" +
+
+                                                test(element, "toggle!") +
+                                                test(element, "toggle!", handler) +
+
+                                                "</ul>";
+
+                                        });
+
+                                    });
+
+                                    return list;
+
+                                }
+
+                                $.each(types, function (i, type) {
+
+                                    span.bind(type + "." + type + namespace, handler);
+                                    $.fn[live] && span[live](type + "." + live + "_" + type + namespace, handler);
+                                    $.fn[delegate] && body[delegate](span.selector, type + "." + delegate + "_" + type + namespace, handler);
+                                    object.bind(type + "." + type + namespace, handler);
+
+                                });
+
+                                span.hover(handler, handler).toggle(handler, handler, handler);
+                                jQuery.before(tests([(span = span[0]), (object = object[0]), WINDOW, WINDOW.document]));
+
+                                WINDOW.sebastienp = {
+                                    body: body[0],
+                                    handler: handler,
+                                    object: object,
+                                    span: span
+                                };
+
+                            }
+
+                        }));
+
+                    }
+
+                    if (query_string && (version = /jQuery=([\d.]+)/.exec(query_string)) && ((version = version[1]) !== regexp.exec(jQuery_source)[0])) {
+
+                        $.ajax($.extend(ajax_defaults, {
+                            url: jQuery_source.replace(regexp, version),
+                            success: function () {
+
+                                jQuery_version.find(":" + SELECTED).removeAttr(SELECTED).siblings(":contains(" + version + ")").attr(SELECTED, SELECTED);
+                                load_plugin_and_log();
+
+                            }
+                        }));
+
+                    } else {
+
+                        load_plugin_and_log();
+
+                    }
+
+                });
+
+            }(this, location, "selected", "disabled"));
+		</script>
+	</body>
+</html>
