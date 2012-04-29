@@ -122,6 +122,12 @@
                }});
     },
 
+    loadHasEventListener : function() {
+      $.ajax({url : quail.options.jsonPath + '/../jquery/jquery.hasEventListener/jQuery.hasEventListener-2.0.3.min.js',
+              async : false,
+              dataType : 'script'
+            });
+    },
     options : { },
 
 
@@ -175,10 +181,20 @@
     },
 
     scriptEventTest : function(testName, options) {
+      if(typeof jQuery.hasEventListener == 'undefined') {
+        quail.loadHasEventListener();
+      }
       quail.html.find(options.selector).each(function() {
         if($(this).attr(options.searchEvent)) {
           if(typeof options.correspondingEvent == 'undefined' ||
-             $(this).attr(options.correspondingEvent)) {
+             !$(this).attr(options.correspondingEvent)) {
+            quail.accessibilityResults[testName].push($(this));
+          }
+        }
+        else {
+          if($.hasEventListener($(this), options.searchEvent) && 
+             (typeof options.correspondingEvent == 'undefined' ||
+             !$.hasEventListener($(this), options.correspondingEvent))) {
             quail.accessibilityResults[testName].push($(this));
           }
         }
@@ -209,6 +225,39 @@
           nextHeading = false;
         }
       });
+    },
+
+    acronymTest : function(testName, acronymTag) {
+      var predefined = { };
+      var alreadyReported = { };
+      quail.html.find(acronymTag + '[title]').each(function() {
+        predefined[$(this).text().toUpperCase()] = $(this).attr('title');
+      });
+      quail.html.find('p, div, h1, h2, h3, h4, h5').each(function(){
+        var $el = $(this);
+        var words = $(this).text().split(' ');
+        if(words.length > 1 && $(this).text().toUpperCase() != $(this).text()) {
+          $.each(words, function(index, word) {
+            word = word.replace(/[^a-zA-Zs]/, '');
+            if(word.toUpperCase() == word &&
+               word.length > 1 &&
+               typeof predefined[word.toUpperCase()] == 'undefined') {
+              if(typeof alreadyReported[word.toUpperCase()] == 'undefined') {
+                quail.accessibilityResults[testName].push($el);
+              }
+              alreadyReported[word.toUpperCase()] = word;
+            }
+          });
+        }
+      });
+    },
+
+    documentAcronymsHaveElement : function() {
+      quail.acronymTest('documentAcronymsHaveElement', 'acronym');
+    },
+
+    documentAbbrIsUsed : function() {
+      quail.acronymTest('documentAbbrIsUsed', 'abbr');
     },
 
     doctypeProvided : function() {
