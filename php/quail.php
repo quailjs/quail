@@ -6,52 +6,52 @@ require_once __DIR__ . '/phpquery/phpQuery/phpQuery.php';
 require_once 'quailTests.php';
 
 class Quail {
-  
+
   /**
    * An array of test object names that should be run against this content.
    */
   protected $guideline = array();
-  
+
   /**
    *
    */
-  protected $html_config = array('valid_xhtml' => 1, 
+  protected $html_config = array('valid_xhtml' => 1,
                                  'schemes' => '*:*' );
-  
+
   /**
    * An array of quail tests, usually loaded fromt he test.json file.
    */
   public $quail_tests;
-  
+
   /**
    * The charset to use for the current document.
    */
   public $charset = 'utf-8';
-  
+
   /**
    * The actual HTML document to check
    */
   protected $html;
-  
+
   /**
    * An array of test objects
    */
   protected $tests;
-  
+
   /**
    * An array of result objects
    */
   protected $results;
-  
+
   /**
    * The current PHPQuery document object
    */
   protected $document;
-  
+
   protected $path;
-  
+
   /**
-   * Class constructor. 
+   * Class constructor.
    * @param string $contents The HTML contents to check for accessibility
    * @param mixed $guideline Either an array of test names, or a string indicating a guideline file
    *   should be loaded dynamically.
@@ -75,21 +75,21 @@ class Quail {
       $this->document = phpQuery::newDocumentHTML($contents, $charset);
     }
   }
-  
+
   protected function cleanupHTML($html) {
     $dom_document = new DOMDocument();
     @$dom_document->loadHTML($html);
     return preg_replace('|<([^> ]*)/>|i', '<$1 />', $dom_document->saveXML());
   }
-  
-  
+
+
   public function lowercaseTags($text) {
     if(strpos($text[0], '!') === FALSE && strpos($text[0], '?') === FALSE) {
       return strtolower($text[0]);
     }
     return $text[0];
   }
-  
+
   public function runTests() {
     $this->getQuailTests();
     foreach($this->guideline as $test_name) {
@@ -110,44 +110,44 @@ class Quail {
       }
     }
   }
-  
+
   protected function getQuailTests() {
     if(!$this->quail_tests) {
       $this->quail_tests = (array)json_decode(file_get_contents('../../resources/tests.json'));
     }
   }
-  
+
   public function getRawResults($testname = false) {
     if($testname) {
       return $this->results[$testname];
     }
     return $this->results;
   }
-  
+
   public function getReport($reporter) {
     $reporter->html = $this->html;
     $reporter->results = $this->results;
     $reporter->document = $this->document;
     return $reporter->getReport();
   }
-  
+
 }
 
 class QuailReport {
-  
+
   public $results;
-  
+
   public $html;
-  
+
   public $document;
-  
+
   public function getReport() {
-  
+
   }
 }
 
 class QuailHTMLReporter extends QuailReport {
-  
+
   public function getReport() {
     if(!is_array($this->results)) {
       return $this->document->htmlOuter();
@@ -160,21 +160,21 @@ class QuailHTMLReporter extends QuailReport {
     }
     return $this->document->htmlOuter();
   }
-  
+
 }
 
 class QuailTest {
-  
+
   protected $objects = array();
-  
+
   protected $status = TRUE;
-  
+
   protected $document;
-  
+
   protected $path;
-  
+
   protected $requiresTextAnalysis = false;
-  
+
   function __construct($document, $path) {
     $this->document = $document;
     $this->path = $path;
@@ -187,31 +187,31 @@ class QuailTest {
     }
     $this->run();
   }
-  
+
   function q($selector) {
     if(is_object($this->document)) {
       return pq($selector, $this->document->documentID);
     }
     return pq($selector);
   }
-  
+
   function reportSingleSelector($selector) {
     foreach($this->q($selector) as $object) {
       $this->objects[] = pq($object);
     }
   }
-  
+
   function getResults() {
     return $this->objects;
   }
-  
+
   /**
    * Helper function that returns the last filename of a path.
    */
   protected function getFilename($path) {
     return array_pop(explode('/', $path));
   }
-  
+
   /**
    * Utility function to sanity-check URLs
    */
@@ -222,7 +222,7 @@ class QuailTest {
     }
     return (strpos($url, ' ') === FALSE);
   }
-  
+
   /**
    * Utility function to remove non-readable elemnts from a string
    * indicating that for practical purposes it's empty.
@@ -231,7 +231,7 @@ class QuailTest {
     $string = trim(strip_tags($string));
     return (strlen($string) > 0) ? FALSE : TRUE;
   }
-  
+
   /**
    * Returns if the element or any children are readable
    */
@@ -251,12 +251,12 @@ class QuailTest {
 		}
 		return FALSE;
 	}
-    
+
   /**
 	*	Retrieves the full path for a file.
 	*	@param string $file The path to a file
 	*	@return string The absolute path to the file.
-	*/	
+	*/
 	function getPath($file) {
 	  $url = parse_url($file);
 		if(isset($url['scheme'])) {
@@ -278,7 +278,7 @@ class QuailTest {
     $port = ($path['port']) ? ':'. $path['port'] : '';
     return $path['scheme'] . '://'. $path['host'] . $port . $path['path'];
 	}
-	
+
 	/**
 	 * Helper function where we guess if a provided table
 	 * is used for data or layout
@@ -286,7 +286,7 @@ class QuailTest {
 	 function isDataTable($table) {
 	   return ($table->find('th')->length && $table->find('tr')->length > 2) ? TRUE : FALSE;
 	 }
-	 
+
 	 function convertFontSize($size) {
 	   if(strpos($size, 'px') !== false) {
 	     return floatval(str_replace('px', '', $size));
@@ -295,14 +295,14 @@ class QuailTest {
 	     return floatval(str_replace('em', '', $size)) * 16;
 	   }
 	 }
-	 
+
 }
 
 
 class QuailCustomTest extends QuailTest{
-  
+
   protected $default_options = array();
-  
+
   function __construct($options, $document, $path) {
     $this->options = $options + $this->default_options;
     $this->document = $document;

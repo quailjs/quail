@@ -1403,14 +1403,14 @@ class QuailOACTests extends QuailBaseTest {
 		$results = $this->getTest('96-1.html', 'textareaLabelPositionedClose');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'textarea');
-    }
+	  		$this->assertTrue($results[0]->elements[0]->tagName == 'textarea');
+	    }
 
 		$results = $this->getTest('96-2.html', 'textareaLabelPositionedClose');
 		$this->assertTrue(is_object($results[0]));
 		if(is_object($results[0])) {
-  		$this->assertTrue($results[0]->elements[0]->tagName == 'textarea');
-    }
+	  		$this->assertTrue($results[0]->elements[0]->tagName == 'textarea');
+	    }
   }
 
 

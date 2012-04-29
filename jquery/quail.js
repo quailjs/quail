@@ -71,6 +71,12 @@
         if(quail.accessibilityTests[testName].type == 'header') {
           quail.headerOrderTest(testName, quail.accessibilityTests[testName]);
         }
+        if(quail.accessibilityTests[testName].type == 'event') {
+          quail.scriptEventTest(testName, quail.accessibilityTests[testName]);
+        }
+        if(quail.accessibilityTests[testName].type == 'labelProximity') {
+          quail.labelProximityTest(testName, quail.accessibilityTests[testName]);
+        }
       });
     },
 
@@ -149,6 +155,30 @@
         }
         else {
           if(options.empty) {
+            quail.accessibilityResults[testName].push($(this));
+          }
+        }
+      });
+    },
+
+    labelProximityTest : function(testName, options) {
+        quail.html.find(options.selector).each(function() {
+          var $label = quail.html.find('label[for=' + $(this).attr('id') + ']').first();
+          console.log($label);
+          if(!$label.length) {
+            return;
+          }
+          if($(this).parent() != $label.parent()) {
+            quail.accessibilityResults[testName].push($(this));
+          }
+        });
+    },
+
+    scriptEventTest : function(testName, options) {
+      quail.html.find(options.selector).each(function() {
+        if($(this).attr(options.searchEvent)) {
+          if(typeof options.correspondingEvent == 'undefined' ||
+             $(this).attr(options.correspondingEvent)) {
             quail.accessibilityResults[testName].push($(this));
           }
         }
@@ -295,17 +325,27 @@
     suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
 
     pNotUsedAsHeader : function() {
+      var priorStyle = { };
+
       quail.html.find('p').each(function() {
         if(!$(this).text().search('.')) {
+          var $paragraph = $(this);
           if(typeof $(this).find(':first-child').get(0) != 'undefined'
             && typeof quail.suspectPHeaderTags.indexOf($(this).find(':first-child').get(0).tagName) != 'undefined'
             && $(this).text() == $(this).find(':first-child').text()) {
               quail.accessibilityResults.pNotUsedAsHeader.push($(this));
           }
+          $.each(quail.suspectPCSSStyles, function(index, style) {
+            if(typeof priorStyle[style] != 'undefined' &&
+               priorStyle[style] != $paragraph.css(style)) {
+              quail.accessibilityResults.pNotUsedAsHeader.push($paragraph);
+            }
+            priorStyle[style] = $paragraph.css(style);
+          });
+          if($paragraph.css('font-weight') == 'bold') {
+            quail.accessibilityResults.pNotUsedAsHeader.push($paragraph);
+          }
         }
-        $.each(quail.suspectPCSSStyles, function(index, style) {
-          
-        });
       });
     },
 

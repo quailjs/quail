@@ -907,12 +907,11 @@
     //86
     test('scriptsDoNotUseColorAlone', function() {
   		quailTest.runTest( 'scriptsDoNotUseColorAlone', '86-1.html');
-
-    		equal(true, quailTest.confirmIsTag('script'), 'First item tag test');
+      equal(true, quailTest.confirmIsTag('script'), 'First item tag test');
   		quailTest.runTest( 'scriptsDoNotUseColorAlone', '86-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-/*
+
     //87
     test('scriptsDoNotFlicker', function() {
   		quailTest.runTest( 'scriptsDoNotFlicker', '87-1.html');
@@ -959,7 +958,7 @@
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 
   		quailTest.runTest( 'selectHasAssociatedLabel', '91-3.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+  		equal(true, quailTest.confirmIsTag('select'), 'First item tag test');
 
   		quailTest.runTest( 'selectHasAssociatedLabel', '91-4.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -989,7 +988,7 @@
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 
   		quailTest.runTest( 'textareaHasAssociatedLabel', '95-3.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+      equal(true, quailTest.confirmIsTag('textarea'), 'First item tag test');
 
   		quailTest.runTest( 'textareaHasAssociatedLabel', '95-4.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -998,12 +997,10 @@
     //96
      test('textareaLabelPositionedClose', function() {
   		quailTest.runTest( 'textareaLabelPositionedClose', '96-1.html');
-
-    		equal(true, quailTest.confirmIsTag('textarea'), 'First item tag test');
+      equal(true, quailTest.confirmIsTag('textarea'), 'First item tag test');
 
   		quailTest.runTest( 'textareaLabelPositionedClose', '96-2.html');
-
-    		equal(true, quailTest.confirmIsTag('textarea'), 'First item tag test');
+      equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
 
 
@@ -1167,17 +1164,7 @@
 
     });
 
-    //113
-      test('tableSummaryIsEmpty', function() {
-  		quailTest.runTest( 'tableSummaryIsSufficient', '113-1.html');
-
-    		equal(true, quailTest.confirmIsTag('table'), 'First item tag test');
-
-  		quailTest.runTest( 'tableSummaryIsSufficient', '113-2.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
-
-    });
-
+/*
     //114
       test('tableLayoutHasNoSummary', function() {
   		quailTest.runTest( 'tableLayoutHasNoSummary', '114-1.html');
