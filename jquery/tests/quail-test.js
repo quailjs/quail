@@ -1492,7 +1492,7 @@
   //143
     test('addressForAuthor', function() {
   		quailTest.runTest( 'addressForAuthor', '143-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'addressForAuthor', '143-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -1501,10 +1501,11 @@
   //144
     test('addressForAuthorMustBeValid', function() {
   		quailTest.runTest( 'addressForAuthorMustBeValid', '144-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('address'), 'Document is set');
 
   		quailTest.runTest( 'addressForAuthorMustBeValid', '144-2.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+  		equal(true, quailTest.confirmIsTag('address'), 'Document is set');
+
     });
 
     //skipped 145-146 - redundant

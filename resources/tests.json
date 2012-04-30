@@ -71,7 +71,7 @@
     },
     "addressForAuthor": {
         "type": "selector",
-        "selector": "html:not(html:has(address))",
+        "selector": "body:not(body:has(address))",
         "severity": "severe"
     },
     "addressForAuthorMustBeValid": {
