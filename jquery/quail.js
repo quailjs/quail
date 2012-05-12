@@ -318,6 +318,14 @@
       });
     },
 
+    imgWithMathShouldHaveMathEquivalent : function() {
+      quail.html.find('img:not(img:has(math), img:has(tagName))').each(function() {
+        if(!$(this).parent.find('math').length) {
+          quail.accessibilityResults.imgWithMathShouldHaveMathEquivalent.push($(this));
+        }
+      });
+    },
+
     inputImageAltIsNotFileName : function() {
       quail.html.find('input[type=image][alt]').each(function() {
         if($(this).attr('src') == $(this).attr('alt')) {
