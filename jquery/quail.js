@@ -164,7 +164,7 @@
           }
         }
         else {
-          if(options.empty) {
+          if(options.empty && typeof text != 'number') {
             quail.accessibilityResults[testName].push($(this));
           }
         }

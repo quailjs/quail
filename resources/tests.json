@@ -666,8 +666,10 @@
         "severity": "suggestion"
     },
     "inputCheckboxHasTabIndex": {
-        "type": "selector",
-        "selector": "input[type=checkbox]:not(input[tabindex]), input[type=checkbox][tabindex=]",
+        "type": "placeholder",
+        "selector": "input[type=checkbox]",
+        "attribute": "tabindex",
+        "empty": true,
         "severity": "severe"
     },
     "inputCheckboxRequiresFieldset": {

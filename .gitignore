@@ -3,4 +3,5 @@ jquery/tests/jquery-qunit
 .htaccess
 node/*
 php/tests/selector.php
-php/jparser
+php/jparser*
+*.DS_Store
