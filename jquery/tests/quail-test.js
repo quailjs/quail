@@ -1603,7 +1603,7 @@
     //161
     test('emoticonsExcessiveUse', function() {
   		quailTest.runTest( 'emoticonsExcessiveUse', '161-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('p'), 'Document is set');
 
   		quailTest.runTest( 'emoticonsExcessiveUse', '161-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
