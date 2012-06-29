@@ -1773,7 +1773,7 @@
     //182
     test('bodyMustNotHaveBackground', function() {
   		quailTest.runTest( 'bodyMustNotHaveBackground', '182-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'bodyMustNotHaveBackground', '182-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');

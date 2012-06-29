@@ -143,8 +143,6 @@
       quail.loadString('placeholders');
       quail.html.find(options.selector).each(function() {
         if(typeof options.attribute !== 'undefined') {
-          console.log(typeof $(this).attr(options.attribute));
-          console.log( $(this).attr(options.attribute));
           if(typeof $(this).attr(options.attribute) === 'undefined'
              || (options.attribute == 'tabindex' 
                   && !$(this).attr(options.attribute)
@@ -191,7 +189,6 @@
           if(!$label.length) {
             quail.accessibilityResults[testName].push($(this));
           }
-          console.log($label.parent());
           if(!$(this).parent().is($label.parent())) {
             quail.accessibilityResults[testName].push($(this));
           }
@@ -255,7 +252,28 @@
         }
       });
     },
-
+    
+    containsReadableText : function(element, children) {
+      if(!quail.isUnreadable(element.text())) {
+        return true;
+      }
+      if(!quail.isUnreadable(element.attr('alt'))) {
+        return true;
+      }
+      if(children) {
+        var readable = false;
+        element.find('*').each(function() {
+          if(quail.containsReadableText($(this), true)) {
+            readable = true;
+          }
+        });
+        if(readable) {
+          return true;
+        }
+      }
+      return false;
+    },
+    
     headerOrderTest : function(testName, options) {
       var current = parseInt(options.selector.substr(-1, 1));
       var nextHeading = false;
@@ -324,7 +342,6 @@
         }
         text = text + $(this).text();
         text = text.toLowerCase();
-        console.log(text);
         $.each(redundant.link, function(index, phrase) {
           if(text.search(phrase) > -1) {
             quail.accessibilityResults.aLinkTextDoesNotBeginWithRedundantWord.push($link);
@@ -332,7 +349,15 @@
         });
       });
     },
-
+    
+    aMustContainText : function() {
+      quail.html.find('a').each(function() {
+        if(!quail.containsReadableText($(this), true) && !($(this).attr('name') && !$(this).attr('href'))) {
+          quail.accessibilityResults.aMustContainText.push($(this));
+        }
+      }); 
+    },
+    
     blockquoteUseForQuotations : function() {
       quail.html.find('p').each(function() {
         if($(this).text().substr(0, 1).search(/[\'\"]/) > -1 &&
@@ -408,7 +433,6 @@
             return;
           }
         });
-        console.log(count);
         if(count > 4) {
           quail.accessibilityResults.emoticonsExcessiveUse.push($element);
         }
