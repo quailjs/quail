@@ -2143,7 +2143,7 @@
     test('documentReadingDirection', function() {
 
   		quailTest.runTest( 'documentReadingDirection', '235-1.html');
-
+  		
     		equal(true, quailTest.confirmIsTag('blockquote'), 'First item tag test');
   		quailTest.runTest( 'documentReadingDirection', '235-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');

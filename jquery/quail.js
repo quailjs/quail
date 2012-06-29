@@ -445,6 +445,17 @@
       });
     },
 
+    tabIndexFollowsLogicalOrder : function() {
+      var index = 0;
+      quail.html.find('[tabindex]').each(function() {
+        if(parseInt($(this).attr('tabindex')) >= 0
+           && parseInt($(this).attr('tabindex')) != index + 1) {
+             quail.accessibilityResults.tabIndexFollowsLogicalOrder.push($(this));
+           }
+        index++;
+      });
+    },
+    
     tableLayoutHasNoSummary : function() {
       quail.html.find('table[summary]').each(function() {
         if(!quail.isDataTable($(this)) && !quail.isUnreadable($(this).attr('summary'))) {
