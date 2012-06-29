@@ -297,6 +297,14 @@
         }
       });
     },
+    
+    aImgAltNotRepetative : function() {
+      quail.html.find('a img[alt]').each(function() {
+        if($(this).attr('alt').replace(/^\s\s*/, '') == $(this).parent('a').text().replace(/^\s\s*/, '')) {
+          quail.accessibilityResults.aImgAltNotRepetative.push($(this).parent('a'));
+        }
+      });
+    },
 
     aLinksAreSeperatedByPrintableCharacters : function() {
       quail.html.find('a').each(function() {

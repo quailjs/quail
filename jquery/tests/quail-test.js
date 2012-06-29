@@ -1727,7 +1727,7 @@
     test('aImgAltNotRepetative', function() {
   		quailTest.runTest( 'aImgAltNotRepetative', '175-1.html');
 
-    		equal(true, quailTest.confirmIsTag('img'), 'First item tag test');
+    		equal(true, quailTest.confirmIsTag('a'), 'First item tag test');
   		quailTest.runTest( 'aImgAltNotRepetative', '175-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
      });
