@@ -640,7 +640,27 @@
         }
       });
     },
-
+    
+    siteMap : function() {
+      var mapString = quail.loadString('site_map');
+      var set = true;
+      quail.html.find('a').each(function() {
+        var text = $(this).text().toLowerCase();
+        $.each(mapString, function(index, string) {
+          if(text.search(string) > -1) {
+            set = false;
+            return;
+          }
+        });
+        if(set === false) {
+          return;
+        }
+      });
+      if(set) {
+        quail.accessibilityResults.siteMap.push(quail.html.find('body'));
+      }
+    },
+    
     suspectPHeaderTags : ['strong', 'b', 'em', 'i', 'u', 'font'],
 
     suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],

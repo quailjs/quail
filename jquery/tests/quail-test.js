@@ -1790,7 +1790,7 @@
     //184
     test('siteMap', function() {
   		quailTest.runTest( 'siteMap', '184-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'siteMap', '184-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
