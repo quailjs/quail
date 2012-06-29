@@ -139,10 +139,11 @@
       quail.loadString('placeholders');
       quail.html.find(options.selector).each(function() {
         if(typeof options.attribute !== 'undefined') {
+          console.log(typeof $(this).attr(options.attribute));
+          console.log( $(this).attr(options.attribute));
           if(typeof $(this).attr(options.attribute) === 'undefined'
              || (options.attribute == 'tabindex' 
-                  && (typeof $(this).attr(options.attribute) === 'NaN'
-                      || $(this).attr(options.attribute) < 1)
+                  && !$(this).attr(options.attribute)
                 )
              ) {
             quail.accessibilityResults[testName].push($(this));
