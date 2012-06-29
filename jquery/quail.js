@@ -398,7 +398,15 @@
         quail.accessibilityResults.imgGifNoFlicker.push($(this));
       });
     },
-
+    
+    imgWithMathShouldHaveMathEquivalent : function() {
+      quail.html.find('img:not(img:has(math), img:has(tagName))').each(function() {
+        if(!$(this).parent().find('math').length) {
+          quail.accessibilityResults.imgWithMathShouldHaveMathEquivalent.push($(this));
+        }
+      });
+    },
+    
     listNotUsedForFormatting : function() {
       quail.html.find('ol, ul').each(function() {
         if($(this).find('li').length < 2) {
