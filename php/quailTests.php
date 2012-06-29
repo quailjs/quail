@@ -508,7 +508,6 @@ class emoticonsExcessiveUse extends QuailCustomTest {
 
 class emoticonsMissingAbbr extends emoticonsExcessiveUse {
 
-
   /**
    * See QuailTest::run()
    */

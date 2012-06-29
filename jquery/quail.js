@@ -116,7 +116,7 @@
 
     loadString : function(stringFile) {
       if(typeof quail.strings[stringFile] !== 'undefined') {
-        return;
+        return quail.strings[stringFile];
       }
       $.ajax({ url : quail.options.jsonPath + '/strings/' + stringFile + '.json',
                async: false,
@@ -124,6 +124,7 @@
                success : function(data) {
                 quail.strings[stringFile] = data;
                }});
+      return quail.strings[stringFile];
     },
 
     loadHasEventListener : function() {
@@ -292,7 +293,9 @@
     },
 
     doctypeProvided : function() {
-      console.log(document.doctype);
+      if(!document.doctype) {
+        quail.accessibilityResults.doctypeProvided.push(quail.html.find('html'));
+      }
     },
 
     appletContainsTextEquivalent : function() {
@@ -309,6 +312,23 @@
       }
       quail.html.find('embed').each(function() {
         quail.accessibilityResults.embedHasAssociatedNoEmbed.push($(this));
+      });
+    },
+    
+    emoticonsMissingAbbr : function() {
+      var emoticons = quail.loadString('emoticons');
+      console.log(emoticons);
+      quail.html.find('p, div, h1, h2, h3, h4, h5, h6').each(function() {
+        var $element = $(this);
+        var $clone = $element.clone();
+        $clone.find('abbr, acronym').each(function() {
+          $(this).remove();
+        });
+        $.each($clone.text().split(' '), function(index, word) {
+          if(emoticons.indexOf(word) > -1) {
+            quail.accessibilityResults.emoticonsMissingAbbr.push($element);
+          }
+        });
       });
     },
 
@@ -486,7 +506,15 @@
     suspectPHeaderTags : ['strong', 'b', 'em', 'i', 'u', 'font'],
 
     suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
-
+    
+    tabularDataIsInTable : function() {
+      quail.html.find('pre').each(function() {
+        if($(this).html().search('\t') >= 0) {
+          quail.accessibilityResults.tabularDataIsInTable.push($(this));
+        }
+      });
+    },
+    
     pNotUsedAsHeader : function() {
       var priorStyle = { };
 

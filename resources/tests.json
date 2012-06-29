@@ -972,7 +972,7 @@
     },
     "scriptInBodyMustHaveNoscript": {
         "type": "selector",
-        "selector": "body:not(body:has(noscript)) script",
+        "selector": "body:not(html body:has(noscript)) script",
         "severity": "0"
     },
     "scriptOnclickRequiresOnKeypress": {

@@ -356,14 +356,13 @@
    });
 
     //29
-   test('doctypeProvided', function() {
-
-  		quailTest.runTest( 'doctypeProvided', '29-1.html');
+   /*test('doctypeProvided', function() {
+      quailTest.runTest( 'doctypeProvided', '29-1.html');
   		equal(true, quailTest.confirmIsTag('html'), 'First item tag test');
   		quailTest.runTest( 'doctypeProvided', '29-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 
-   });
+   });*/
 
     //30
    test('objectDoesNotFlicker', function() {
@@ -1666,7 +1665,7 @@
   		quailTest.runTest( 'iframeMustNotHaveLongdesc', '167-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-/*
+
     //168
     test('radioMarkedWithFieldgroupAndLegend', function() {
   		quailTest.runTest( 'radioMarkedWithFieldgroupAndLegend', '168-1.html');
@@ -2409,7 +2408,7 @@
   		quailTest.runTest( 'formDeleteIsReversable', '272-2.html');
 
     		equal(true, quailTest.confirmIsTag('form'), 'First item tag test');
-    });*/
+    });
 
   });
 
