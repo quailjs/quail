@@ -342,6 +342,18 @@
       quail.acronymTest('documentAbbrIsUsed', 'abbr');
     },
     
+    documentVisualListsAreMarkedUp : function() {
+      var listQueues = [/\*/g, '<br>\*', '´', '&#8226'];
+      quail.html.find('p, div, h1, h2, h3, h4, h5, h6').each(function() {
+        var $element = $(this);
+        $.each(listQueues, function(index, item) {
+          if($element.text().split(item).length > 2) {
+            quail.accessibilityResults.documentVisualListsAreMarkedUp.push($element);
+          }
+        });
+      });
+    },
+    
     documentIDsMustBeUnique : function() {
       var ids = [];
       quail.html.find('*[id]').each(function() {

@@ -439,7 +439,7 @@ class documentVisualListsAreMarkedUp extends QuailCustomTest {
     foreach($this->q('p, div, h1, h2, h3, h4, h5, h6') as $el) {
       foreach($this->list_cues as $cue) {
 				$first = stripos(pq($el)->text(), $cue);
-				$second = strripos(pq($el)->text(), $cue);
+				$second = strripos(pq($el)->text(), $cue, $first + 1);
 				if($first && $second && $first != $second) {
 					$this->objects[] = pq($el);
 				}
