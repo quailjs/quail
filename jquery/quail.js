@@ -331,6 +331,18 @@
         });
       });
     },
+    
+    headersUseToMarkSections : function() {
+      quail.html.find('p').each(function() {
+        var set = false;
+        var $paragraph = $(this);
+        $paragraph.find('strong:first, em:first, i:first, b:first').each(function() {
+          if($paragraph.text() == $(this).text()) {
+            quail.accessibilityResults.headersUseToMarkSections.push($paragraph);
+          }
+        });
+      });
+    },
 
     imgAltIsDifferent : function() {
       quail.html.find('img[alt][src]').each(function() {
