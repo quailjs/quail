@@ -507,8 +507,8 @@
    });
 
     //42 - 47
-    test('47_headerFormatting', function() {
-    	for(var i = 1; i < 7; $i++) {
+    test('headerFormatting', function() {
+    	for(var i = 1; i < 7; i++) {
     	   var testName = 'headerH' + i + 'Format';
     	   var fileName = (i + 41) + '-1.html';
     	   quailTest.runTest( testName, fileName);
