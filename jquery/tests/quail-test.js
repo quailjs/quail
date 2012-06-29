@@ -1973,7 +1973,7 @@
      //221
     test('bodyColorContrast', function() {
   		quailTest.runTest( 'bodyColorContrast', '221-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'bodyColorContrast', '221-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -2147,20 +2147,6 @@
     		equal(true, quailTest.confirmIsTag('blockquote'), 'First item tag test');
   		quailTest.runTest( 'documentReadingDirection', '235-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
-    });
-
-     //236
-    test('aAdjacentDontPointToSameResource', function() {
-
-  		quailTest.runTest( 'aAdjacentWithSameResourceShouldBeCombined', '236-1.html');
-
-    		equal(true, quailTest.confirmIsTag('a'), 'First item tag test');
-  		quailTest.runTest( 'aAdjacentWithSameResourceShouldBeCombined', '236-2.html');
-  		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
-
-  		quailTest.runTest( 'aAdjacentWithSameResourceShouldBeCombined', '236-1.html');
-
-    		equal(true, quailTest.confirmIsTag('a'), 'First item tag test');
     });
 
     //skipped 237
