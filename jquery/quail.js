@@ -139,13 +139,22 @@
       quail.loadString('placeholders');
       quail.html.find(options.selector).each(function() {
         if(typeof options.attribute !== 'undefined') {
+          if(typeof $(this).attr(options.attribute) === 'undefined'
+             || (options.attribute == 'tabindex' 
+                  && (typeof $(this).attr(options.attribute) === 'NaN'
+                      || $(this).attr(options.attribute) < 1)
+                )
+             ) {
+            quail.accessibilityResults[testName].push($(this));
+            return;
+          }
           var text = $(this).attr(options.attribute);
         }
         else {
           var text = $(this).text();
         }
         if(typeof text == 'string') {
-          var regex = /^([0-9]*)(k|kb|mb|k bytes|k byte)?$/g;
+          var regex = /^([0-9]*)(k|kb|mb|k bytes|k byte)$/g;
           var regexResults = regex.exec(text.toLowerCase());
           if(regexResults && regexResults[0].length) {
             quail.accessibilityResults[testName].push($(this));

@@ -1680,16 +1680,15 @@ class QuailPlaceholderTest extends QuailCustomTest {
     $this->getPlaceholders();
     foreach($this->q($this->options['selector']) as $el) {
       if($this->options['attribute']) {
-        $attr = $this->options['attribute'];
-        if($this->options['empty'] && $this->isUnreadable(pq($el)->attr($attr))) {
+        $attr = pq($el)->attr($this->options['attribute']);
+        if($this->options['empty'] && $this->isUnreadable($attr)) {
           $this->objects[] = pq($el);
         }
-        if (strlen(pq($el)->attr($attr)) && (
-          in_array(pq($el)->attr($attr), $this->placeholders) ||
-          preg_match("/^([0-9]*)(k|kb|mb|k bytes|k byte)?$/", strtolower(pq($el)->attr($attr))))) {
+        if (strlen($attr) && (
+          in_array($attr, $this->placeholders) ||
+          preg_match("/^([0-9]*)(k|kb|mb|k bytes|k byte)$/", strtolower($attr)))) {
             $this->objects[] = pq($el);
         }
-
       }
       elseif($this->options['content']) {
         if(isset($this->options['empty']) && $this->options['empty'] && $this->isUnreadable(pq($el)->text())) {

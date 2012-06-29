@@ -688,8 +688,10 @@
         "severity": "0"
     },
     "inputFileHasTabIndex": {
-        "type": "selector",
-        "selector": "input[type=file]:not(input[type=file][tabindex]), input[type=file][tabindex=]",
+        "type": "placeholder",
+        "selector": "input[type=file]",
+        "attribute": "tabindex",
+        "empty": true,
         "severity": "severe"
     },
     "inputImageAltIdentifiesPurpose": {
@@ -729,19 +731,25 @@
         "severity": "0"
     },
     "inputPasswordHasTabIndex": {
-        "type": "selector",
-        "selector": "input[type=password]:not(input[type=password][tabindex]), input[type=password][tabindex=]",
+        "type": "placeholder",
+        "selector": "input[type=password]",
+        "attribute": "tabindex",
+        "empty": true,
         "severity": "severe"
     },
     "inputRadioHasTabIndex": {
-        "type": "selector",
-        "selector": "input[type=radio]:not(input[type=radio][tabindex]), input[type=radio][tabindex=]",
+        "type": "placeholder",
+        "selector": "input[type=radio]",
+        "attribute": "tabindex",
+        "empty": true,
         "severity": "severe"
     },
     "inputSubmitHasTabIndex": {
-        "type": "selector",
-        "selector": "input[type=submit]:not(input[type=submit][tabindex]), input[type=submit][tabindex=]",
-        "severity": "0"
+        "type": "placeholder",
+        "selector": "input[type=submit]",
+        "attribute": "tabindex",
+        "empty": true,
+        "severity": "severe"
     },
     "inputTextHasLabel": {
         "type": "label",
@@ -749,8 +757,10 @@
         "severity": "0"
     },
     "inputTextHasTabIndex": {
-        "type": "selector",
-        "selector": "input[type=text]:not(input[type=text][tabindex]), input[type=text][tabindex=]",
+        "type": "placeholder",
+        "selector": "input[type=text]",
+        "attribute": "tabindex",
+        "empty": true,
         "severity": "severe"
     },
     "inputTextHasValue": {
