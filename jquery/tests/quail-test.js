@@ -1513,7 +1513,7 @@
     //147
     test('linkUsedToDescribeNavigation', function() {
   		quailTest.runTest( 'linkUsedToDescribeNavigation', '147-1.html');
-  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
   		quailTest.runTest( 'linkUsedToDescribeNavigation', '147-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });

@@ -439,6 +439,14 @@
         }
       });
     },
+    
+    tableLayoutDataShouldNotHaveTh : function() {
+      quail.html.find('table:has(th)').each(function() {
+        if(!quail.isDataTable($(this))) {
+          quail.accessibilityResults.tableLayoutDataShouldNotHaveTh.push($(this));
+        }
+      });
+    },
 
     tableUsesAbbreviationForHeader : function() {
       quail.html.find('th:not(th[abbr])').each(function() {
