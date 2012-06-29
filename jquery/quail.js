@@ -524,7 +524,22 @@
         }
       });
     },
-
+    
+    tableWithMoreHeadersUseID : function() {
+      quail.html.find('table:has(th)').each(function() {
+        var $table = $(this);
+        var rows = 0;
+        $table.find('tr').each(function() {
+          if($(this).find('th').length) {
+            rows++;
+          }
+          if(rows > 1 && !$(this).find('th[id]').length) {
+            quail.accessibilityResults.tableWithMoreHeadersUseID.push($table);
+          }
+        });
+      });
+    },
+    
     preShouldNotBeUsedForTabularLayout : function() {
       quail.html.find('pre').each(function() {
         var rows = $(this).text().split(/[\n\r]+/);
