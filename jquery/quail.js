@@ -305,6 +305,25 @@
         }
       });
     },
+    
+    aLinkTextDoesNotBeginWithRedundantWord : function() {
+      var redundant = quail.loadString('redundant');
+      quail.html.find('a').each(function() {
+        var $link = $(this);
+        var text = '';
+        if($(this).find('img[alt]').length) {
+          text = text + $(this).find('img[alt]:first').attr('alt');
+        }
+        text = text + $(this).text();
+        text = text.toLowerCase();
+        console.log(text);
+        $.each(redundant.link, function(index, phrase) {
+          if(text.search(phrase) > -1) {
+            quail.accessibilityResults.aLinkTextDoesNotBeginWithRedundantWord.push($link);
+          }
+        });
+      });
+    },
 
     blockquoteUseForQuotations : function() {
       quail.html.find('p').each(function() {
@@ -380,7 +399,7 @@
        quail.html.find('label').each(function() {
          var text = $(this).text().toLowerCase();
          var $label = $(this);
-         $.each(redundant, function(index, word) {
+         $.each(redundant.required, function(index, word) {
            if(text.search(word) >= 0 && !quail.html.find('#' + $(this).attr('for')).attr('aria-required')) {
              quail.accessibilityResults.formWithRequiredLabel.push($label);
            }

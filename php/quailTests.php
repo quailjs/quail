@@ -86,8 +86,8 @@ class aLinkTextDoesNotBeginWithRedundantWord extends QuailCustomTest {
     $this->getRedundantString();
     foreach($this->q('a') as $el) {
       $text = '';
-      if(pq($el)->find('img:first')->length) {
-        $text = pq($el)->find('img:first')->attr('alt');
+      if(pq($el)->find('img[alt]:first')->length) {
+        $text = pq($el)->find('img[alt]:first')->attr('alt');
       }
       $text .= pq($el)->text();
       $text = strtolower($text);
