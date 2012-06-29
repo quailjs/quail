@@ -322,7 +322,17 @@
     documentAbbrIsUsed : function() {
       quail.acronymTest('documentAbbrIsUsed', 'abbr');
     },
-
+    
+    documentIDsMustBeUnique : function() {
+      var ids = [];
+      quail.html.find('*[id]').each(function() {
+        if(ids.indexOf($(this).attr('id')) >= 0) {
+          quail.accessibilityResults.documentIDsMustBeUnique.push($(this));
+        }
+        ids.push($(this).attr('id'));
+      });
+    },
+    
     doctypeProvided : function() {
       if(!document.doctype) {
         quail.accessibilityResults.doctypeProvided.push(quail.html.find('html'));
