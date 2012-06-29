@@ -367,6 +367,14 @@
         }
       });
     },
+    
+    inputCheckboxRequiresFieldset : function() {
+      quail.html.find(':checkbox').each(function() {
+        if(!$(this).parents('fieldset').length) {
+          quail.accessibilityResults.inputCheckboxRequiresFieldset.push($(this));
+        }
+      });
+    },
 
     inputImageAltIsNotFileName : function() {
       quail.html.find('input[type=image][alt]').each(function() {
