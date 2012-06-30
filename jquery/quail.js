@@ -700,6 +700,14 @@
         }
       });
     },
+    
+    tableSummaryDoesNotDuplicateCaption : function() {
+      quail.html.find('table[summary]:has(caption)').each(function() {
+        if(quail.cleanString($(this).attr('summary')) == quail.cleanString($(this).find('caption:first').text())) {
+          quail.accessibilityResults.tableSummaryDoesNotDuplicateCaption.push($(this));
+        }
+      });
+    },
 
     tableUsesAbbreviationForHeader : function() {
       quail.html.find('th:not(th[abbr])').each(function() {
