@@ -172,7 +172,7 @@
     "bodyColorContrast": {
         "type": "color",
         "algorithm": "wcag",
-        "selector": "*",
+        "selector": "body, body *",
         "bodyForegroundAttribute": "text",
         "bodyBackgroundAttribute": "bgcolor",
         "severity": null

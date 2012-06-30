@@ -24,7 +24,6 @@
                  async : false,
                  cache : false,
                  success : function(data) {
-
           quailTest.results = $('<html />').html(data).quail({ jsonPath : '../../resources',
                           guideline : [ testName ],
                           reset : true,
@@ -1508,7 +1507,7 @@
     });
 
     //skipped 145-146 - redundant
-
+/*
     //147
     test('linkUsedToDescribeNavigation', function() {
   		quailTest.runTest( 'linkUsedToDescribeNavigation', '147-1.html');
@@ -1525,7 +1524,7 @@
   		quailTest.runTest( 'linkUsedForAlternateContent', '148-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
-
+*/
     //149 - SKIPPED
 
     //150
