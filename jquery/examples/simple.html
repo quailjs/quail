@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="results.css"/>
 		<title></title>
 	</head>
 	<body>
@@ -13,8 +14,8 @@
 	<script src="../jquery-1.7.2.js"></script>
 	<script src="../quail.js"></script>
 	<script>
-	 $('#test').quail({ tests : [ 'imgAttributeAltExists' ],
-	                    jsonPath : '../../resources/tests.json' });
+	 $('#test').quail({ guideline : [ 'imgHasAlt' ],
+	                    jsonPath : '../../resources' });
 	</script>
 	</body>
 </html>

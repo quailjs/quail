@@ -22,6 +22,13 @@
 		if(quail.options.getRawResults) {
 		  return quail.getRawResults();
 		}
+		$.each(quail.accessibilityResults, function(testName, results) {
+		  var className = 'quail-result-' + quail.accessibilityTests[testName].severity;
+		  $.each(results, function(index, element) {
+  		  $(this).addClass('quail-result')
+  		         .addClass(className);
+		  });
+		});
 		return this;
   };
 
