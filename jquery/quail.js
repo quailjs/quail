@@ -295,7 +295,7 @@
         }
       });
     },
-
+    
     acronymTest : function(testName, acronymTag) {
       var predefined = { };
       var alreadyReported = { };
@@ -317,6 +317,14 @@
               alreadyReported[word.toUpperCase()] = word;
             }
           });
+        }
+      });
+    },
+    
+    aAdjacentWithSameResourceShouldBeCombined : function() {
+      quail.html.find('a').each(function() {
+        if($(this).next('a').attr('href') == $(this).attr('href')) {
+          quail.accessibilityResults.aAdjacentWithSameResourceShouldBeCombined.push($(this));
         }
       });
     },
