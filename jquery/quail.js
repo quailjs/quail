@@ -216,12 +216,14 @@
         if(!$body.css('background-color')) {
           $body.css('background-color', background);
         }
+        if((options.algorithm == 'wcag' && !quail.colors.passesWCAG($body))
+           || (options.algorithm == 'wai' && !quail.colors.passesWAI($body))) {
+           quail.accessibilityResults[testName].push($body);
+        }
       }
       quail.html.find(options.selector).each(function() {
-        if(options.algorithm == 'wai') {
-        
-        }
-        if(options.algorithm == 'wcag' && !quail.colors.passesWCAG($(this))) {
+        if((options.algorithm == 'wcag' && !quail.colors.passesWCAG($(this)))
+           || (options.algorithm == 'wai' && !quail.colors.passesWAI($(this)))) {
            quail.accessibilityResults[testName].push($(this));
         }
       });
@@ -801,6 +803,32 @@ quail.colors = {
   
   passesWCAG : function(element) {
     return (quail.colors.getLuminosity(quail.colors.getColor(element, 'foreground'), quail.colors.getColor(element, 'background')) > 5);
+  },
+  
+  passesWAI : function(element) {
+    var foreground = quail.colors.cleanup(quail.colors.getColor(element, 'foreground'));
+    var background = quail.colors.cleanup(quail.colors.getColor(element, 'background'));
+    return (quail.colors.getWAIErtContrast(foreground, background) > 500 &&
+            quail.colors.getWAIErtBrightness(foreground, background) > 125);
+  },
+  
+  getWAIErtContrast : function(foreground, background) {
+    var diffs = quail.colors.getWAIDiffs(foreground, background);
+    return diffs.red + diffs.green + diffs.blue;
+  },
+
+  getWAIErtBrightness : function(foreground, background) {
+    var diffs = quail.colors.getWAIDiffs(foreground, background);
+    return ((diffs.red * 299) + (diffs.green * 587) + (diffs.blue * 114)) / 1000;
+
+  },
+  
+  getWAIDiffs : function(foreground, background) {
+     var diff = { };
+     diff.red = Math.abs(foreground.r - background.r); 
+     diff.green = Math.abs(foreground.g - background.g);
+     diff.blue = Math.abs(foreground.b - background.b);
+     return diff;
   },
   
   getColor : function(element, type) {

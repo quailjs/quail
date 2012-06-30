@@ -1984,7 +1984,7 @@
      //222
     test('bodyLinkColorContrast', function() {
   		quailTest.runTest( 'bodyLinkColorContrast', '222-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'bodyLinkColorContrast', '222-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -1996,7 +1996,7 @@
      //223
     test('bodyActiveLinkColorContrast', function() {
   		quailTest.runTest( 'bodyActiveLinkColorContrast', '223-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'bodyActiveLinkColorContrast', '223-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -2008,7 +2008,7 @@
      //224
     test('bodyVisitedLinkColorContrast', function() {
   		quailTest.runTest( 'bodyVisitedLinkColorContrast', '224-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'bodyVisitedLinkColorContrast', '224-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -2040,7 +2040,7 @@
     test('documentColorWaiAlgorithm', function() {
 
   		quailTest.runTest( 'documentColorWaiAlgorithm', '226-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'documentColorWaiAlgorithm', '226-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -2053,7 +2053,7 @@
     test('documentColorWaiLinkAlgorithm', function() {
 
   		quailTest.runTest( 'documentColorWaiLinkAlgorithm', '227-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'documentColorWaiLinkAlgorithm', '227-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -2066,7 +2066,7 @@
     test('documentColorWaiActiveLinkAlgorithm', function() {
 
   		quailTest.runTest( 'documentColorWaiActiveLinkAlgorithm', '228-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'documentColorWaiActiveLinkAlgorithm', '228-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
@@ -2079,7 +2079,7 @@
     test('documentColorWaiVisitedLinkAlgorithm', function() {
 
   		quailTest.runTest( 'documentColorWaiVisitedLinkAlgorithm', '229-1.html');
-  		equal(true, quailTest.confirmIsTag('html'), 'Document is set');
+  		equal(true, quailTest.confirmIsTag('body'), 'Document is set');
 
   		quailTest.runTest( 'documentColorWaiVisitedLinkAlgorithm', '229-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
