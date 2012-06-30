@@ -161,20 +161,20 @@
           var text = $(this).text();
         }
         if(typeof text == 'string') {
+          text = quail.cleanString(text);
           var regex = /^([0-9]*)(k|kb|mb|k bytes|k byte)$/g;
           var regexResults = regex.exec(text.toLowerCase());
           if(regexResults && regexResults[0].length) {
             quail.accessibilityResults[testName].push($(this));
           }
           else {
+            console.log(text);
             if(options.empty && quail.isUnreadable(text)) {
               quail.accessibilityResults[testName].push($(this));
             }
             else {
-              for(i in quail.strings.placeholders) {
-                if(quail.strings.placeholders[i] == text) {
-                  quail.accessibilityResults[testName].push($(this));
-                }
+              if(quail.strings.placeholders.indexOf(text) > -1 ) {
+                quail.accessibilityResults[testName].push($(this));
               }
             }
           }

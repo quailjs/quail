@@ -401,7 +401,7 @@
 
   		quailTest.runTest( 'frameTitlesDescribeFunction', '32-3.html');
 
-    		equal(true, quailTest.confirmIsTag('frame'), 'First item tag test');
+    		equal(true, quailTest.confirmIsEmpty(), 'First item tag test');
    });
 
     //33
