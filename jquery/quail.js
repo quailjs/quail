@@ -129,7 +129,11 @@
                }});
       return quail.strings[stringFile];
     },
-
+    
+    cleanString : function(string) {
+      return string.toLowerCase().replace(/^\s\s*/, '');
+    },
+    
     loadHasEventListener : function() {
       $.ajax({url : quail.options.jsonPath + '/../jquery/jquery.hasEventListener/jQuery.hasEventListener-2.0.3.min.js',
               async : false,
@@ -318,7 +322,7 @@
     
     aImgAltNotRepetative : function() {
       quail.html.find('a img[alt]').each(function() {
-        if($(this).attr('alt').replace(/^\s\s*/, '') == $(this).parent('a').text().replace(/^\s\s*/, '')) {
+        if(quail.cleanString($(this).attr('alt')) == quail.cleanString($(this).parent('a').text())) {
           quail.accessibilityResults.aImgAltNotRepetative.push($(this).parent('a'));
         }
       });
@@ -356,6 +360,15 @@
           quail.accessibilityResults.aMustContainText.push($(this));
         }
       }); 
+    },
+    
+    aSuspiciousLinkText : function() {
+      var suspiciousText = quail.loadString('suspicious_links');
+      quail.html.find('a').each(function() {
+        if(suspiciousText.indexOf(quail.cleanString($(this).text())) > -1) {
+          quail.accessibilityResults.aSuspiciousLinkText.push($(this));
+        }
+      });
     },
     
     blockquoteUseForQuotations : function() {

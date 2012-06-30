@@ -163,7 +163,7 @@ class aSuspiciousLinkText extends QuailCustomTest {
   function run() {
     $this->getStrings();
     foreach($this->q('a') as $el) {
-      if(in_array(trim(pq($el)->text()), $this->suspicious)) {
+      if(in_array(trim(strtolower(pq($el)->text())), $this->suspicious)) {
         $this->objects[] = pq($el);
       }
     }
