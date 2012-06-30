@@ -1635,16 +1635,9 @@ class QuailColorTest extends QuailCustomTest {
 	* @return array An array of differences keyed 'red', 'green', and 'blue'
 	*/
 	function getWaiDiffs($fore_rgb, $back_rgb) {
-		$red_diff = ($fore_rgb['r'] > $back_rgb['r'])
-						? $fore_rgb['r'] - $back_rgb['r']
-						: $back_rgb['r'] - $fore_rgb['r'];
-		$green_diff = ($fore_rgb['g'] > $back_rgb['g'])
-						? $fore_rgb['g'] - $back_rgb['g']
-						: $back_rgb['g'] - $fore_rgb['g'];
-
-		$blue_diff = ($fore_rgb['b'] > $back_rgb['b'])
-						? $fore_rgb['b'] - $back_rgb['b']
-						: $back_rgb['b'] - $fore_rgb['b'];
+		$red_diff = abs($fore_rgb['r'] - $back_rgb['r']);
+		$green_diff = abs($fore_rgb['g'] - $back_rgb['g']);
+		$blue_diff = abs($fore_rgb['b'] - $back_rgb['b']);
 		return array('red' => $red_diff, 'green' => $green_diff, 'blue' => $blue_diff);
 	}
 }
