@@ -168,7 +168,6 @@
             quail.accessibilityResults[testName].push($(this));
           }
           else {
-            console.log(text);
             if(options.empty && quail.isUnreadable(text)) {
               quail.accessibilityResults[testName].push($(this));
             }
@@ -612,6 +611,16 @@
         if(!$(this).parent().find('math').length) {
           quail.accessibilityResults.imgWithMathShouldHaveMathEquivalent.push($(this));
         }
+      });
+    },
+    
+    labelMustBeUnique : function() {
+      var labels = { };
+      quail.html.find('label[for]').each(function() {
+        if(typeof labels[$(this).attr('for')] != 'undefined') {
+          quail.accessibilityResults.labelMustBeUnique.push($(this));
+        }
+        labels[$(this).attr('for')] = $(this).attr('for');
       });
     },
     
