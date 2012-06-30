@@ -709,6 +709,14 @@
       });
     },
     
+    tableUseColGroup : function() {
+      quail.html.find('table').each(function() {
+        if(quail.isDataTable($(this)) && !$(this).find('colgroup').length) {
+          quail.accessibilityResults.tableUseColGroup.push($(this));
+        }
+      });
+    },
+    
     tableWithMoreHeadersUseID : function() {
       quail.html.find('table:has(th)').each(function() {
         var $table = $(this);
