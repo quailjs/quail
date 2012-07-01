@@ -318,7 +318,7 @@
     },
     "documentReadingDirection": {
         "type": "selector",
-        "selector": "*[lang=he]:not(*[lang=he][dir=rtl]), *[lang=ar]:not(*[lang=ar][dir=rtl])",
+        "selector": "*[lang=he]:not(*[dir=rtl]), *[lang=ar]:not(*[dir=rtl])",
         "severity": "moderate"
     },
     "documentStrictDocType": {
