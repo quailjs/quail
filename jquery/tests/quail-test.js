@@ -2228,10 +2228,10 @@
 
   		quailTest.runTest( 'formWithRequiredLabel', '246-4.html');
 
-    		equal(true, quailTest.confirmIsTag('form'), 'First item tag test');
+    		equal(true, quailTest.confirmIsTag('label'), 'First item tag test');
   		quailTest.runTest( 'formWithRequiredLabel', '246-5.html');
 
-    		equal(true, quailTest.confirmIsTag('form'), 'First item tag test');
+    		equal(true, quailTest.confirmIsTag('label'), 'First item tag test');
     });
 
     //247

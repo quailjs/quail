@@ -488,11 +488,12 @@
        var redundant = quail.loadString('redundant');
        var labels = [];
        var lastStyle = currentStyle = false;
+       redundant.required[redundant.required.indexOf('*')] = /\*/g;
        quail.html.find('label').each(function() {
          var text = $(this).text().toLowerCase();
          var $label = $(this);
          $.each(redundant.required, function(index, word) {
-           if(text.search(word) >= 0 && !quail.html.find('#' + $(this).attr('for')).attr('aria-required')) {
+           if(text.search(word) >= 0 && !quail.html.find('#' + $label.attr('for')).attr('aria-required')) {
              quail.accessibilityResults.formWithRequiredLabel.push($label);
            }
          });
