@@ -1,6 +1,6 @@
-{
+[
   "imgAttributeAltExists",
   "imgAttributeAltNotFilename",
   "imgAttributeAltTooLong",
-  "imgNonDecorativeHasAlt",
-}
+  "imgNonDecorativeHasAlt"
+]
