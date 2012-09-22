@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+<title  xmlns="http://www.w3.org/1999/xhtml" >Check #49 - Positive</title>
+    <link rel="stylesheet" href="../jquery-qunit/qunit/qunit.css"/>
+</head>
+<body>
+
+<h1 id="qunit-header">QUAIL jQuery example</h1>
+     <h2 id="qunit-banner"></h2>
+     <div id="qunit-testrunner-toolbar"></div>
+     <h2 id="qunit-userAgent"></h2>
+     <ol id="qunit-tests"></ol>
+     <div id="qunit-fixture">test markup, will be hidden</div>
+<script src="../../jquery-1.7.2.js"></script>
+<script src="../../quail.js"></script>
+<script src="../jquery-qunit/qunit/qunit.js"></script>
+ 
+<script>
+;(function($) {
+
+  $(document).ready(function() {
+    $.ajax({ url : '../../../resources/tests.json',
+     async : false,
+     dataType : 'json',
+     cache : false,
+     success : function(data) {
+        if(typeof data == 'object') {
+          var results = $(document).quail({ jsonPath : '../../resources',
+                          guideline : [ 'documentLangNotIdentified' ],
+                          reset : true,
+                          accessibilityTests : data,
+                          getRawResults : true});
+          console.log(results);
+          test('documentLangNotIdentified', function() {
+          		equal(results.documentLangNotIdentified.length, 1);
+           });
+        }
+    }});
+  });
+})(jQuery);
+</script>
+</body>
+</html>
