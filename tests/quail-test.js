@@ -2189,8 +2189,7 @@
     test('tableWithBothHeadersUseScope', function() {
 
   		quailTest.runTest( 'tableWithBothHeadersUseScope', '244-1.html');
-
-    		equal(true, quailTest.confirmIsTag('table'), 'First item tag test');
+  		equal(true, quailTest.confirmIsTag('table'), 'First item tag test');
   		quailTest.runTest( 'tableWithBothHeadersUseScope', '244-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
