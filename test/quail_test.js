@@ -3,7 +3,7 @@
   $(document).ready(function() {
     var accessibilityTests = { };
     module("QUAIL OAC Tests");
-    $.ajax({ url : '../resources/tests.json',
+    $.ajax({ url : '../src/resources/tests.json',
      async : false,
      dataType : 'json',
      cache : false,
@@ -24,7 +24,7 @@
                  async : false,
                  cache : false,
                  success : function(data) {
-          quailTest.results = $('<html />').html(data).quail({ jsonPath : '../resources',
+          quailTest.results = $('<html />').html(data).quail({ jsonPath : '../src/resources',
                           guideline : [ testName ],
                           reset : true,
                           accessibilityTests : accessibilityTests,
