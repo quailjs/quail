@@ -1675,7 +1675,7 @@
     test('selectWithOptionsHasOptgroup', function() {
   		quailTest.runTest( 'selectWithOptionsHasOptgroup', '169-1.html');
 
-    		equal(true, quailTest.confirmIsTag('select'), 'First item tag test');
+    		equal(true, quailTest.confirmIsTag('option'), 'First item tag test');
   		quailTest.runTest( 'selectWithOptionsHasOptgroup', '169-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });

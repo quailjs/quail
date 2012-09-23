@@ -1052,7 +1052,7 @@
     },
     "selectWithOptionsHasOptgroup": {
         "type": "selector",
-        "selector": "select option:nth-child(5):parent(select):not(select:has(optgroup))",
+        "selector": "select:not(select:has(optgroup)) option:nth-child(5)",
         "severity": "moderate"
     },
     "selectJumpMenus": {
