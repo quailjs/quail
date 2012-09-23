@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       files: ['test/**/*.html']
     },
     lint: {
-      files: ['grunt.js', 'src/**/*.js', 'test/**/*.js']
+      files: ['grunt.js', 'src/**/*.js']
     },
     watch: {
       files: '<config:lint.files>',
@@ -56,5 +56,7 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', 'lint qunit concat min');
-
+  
+  // Travis task.
+  grunt.registerTask('travis', 'lint qunit');
 };

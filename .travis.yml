@@ -1,10 +1,5 @@
-before_script:
-  - sudo apt-get install ruby-rack
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3 # give xvfb some time to start
-  - rackup  # start a Web server
-  - sleep 3 # give Web server some time to bind to sockets, etc
-
-script: 
-  - phantomjs tests
+language: node_js
+node_js:
+  - 0.6
+  - 0.8
+  - 0.9
