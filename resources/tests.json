@@ -972,8 +972,8 @@
     },
     "scriptInBodyMustHaveNoscript": {
         "type": "selector",
-        "selector": "html:not(html:has(noscript)) script",
-        "severity": "0"
+        "selector": "html:not(html:has(noscript)):has(script) body",
+        "severity": "moderate"
     },
     "scriptOnclickRequiresOnKeypress": {
         "type": "event",

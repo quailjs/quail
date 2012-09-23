@@ -932,7 +932,7 @@
     test('scriptInBodyMustHaveNoscript', function() {
   		quailTest.runTest( 'scriptInBodyMustHaveNoscript', '90-1.html');
 
-    		equal(true, quailTest.confirmIsTag('script'), 'First item tag test');
+    		equal(true, quailTest.confirmIsTag('body'), 'First item tag test');
   		quailTest.runTest( 'scriptInBodyMustHaveNoscript', '90-2.html');
   		equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
     });
