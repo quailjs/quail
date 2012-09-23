@@ -1102,8 +1102,8 @@
     },
     "tableIsGrouped": {
         "type": "selector",
-        "selector": "table:not(table:has(thead), table:has(tbody), table:has(tfoot))",
-        "severity": "0"
+        "selector": "table:not(table:has(thead), table:has(tfoot))",
+        "severity": "moderate"
     },
     "tableLayoutDataShouldNotHaveTh": {
         "type": "custom",
