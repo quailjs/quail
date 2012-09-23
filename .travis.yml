@@ -1,6 +1,9 @@
-language: php
-php:
-  - 5.3
-  - 5.4
-before_script: cd php/tests && wget http://downloads.sourceforge.net/project/simpletest/simpletest/simpletest_1.1/simpletest_1.1.0.tar.gz && tar xvf simpletest_1.1.0.tar.gz
-script: php index.php
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+  - rackup  # start a Web server
+  - sleep 3 # give Web server some time to bind to sockets, etc
+
+script: 
+  - phantomjs tests
