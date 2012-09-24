@@ -25,6 +25,12 @@ var quailTest = {
   },
 
   confirmIsEmpty : function() {
+    $.each(quailTest.results[quailTest.testName], function(index, item) {
+      if($(item).attr('id').indexOf('qunit-') != -1) {
+        quailTest.results[quailTest.testName].splice(index, 1);
+      }
+    });
+    
     return quailTest.results[quailTest.testName].length == 0;
   },
 
