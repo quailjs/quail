@@ -4,8 +4,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 <title>Check #272.2 - Negative</title>
-</head>
-<body>
+<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen"></head>
+<body><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div>
 
 <p>Use the form below to remove your report from the repository.<br/>
 Select the following link if you would like to <a href="http://www.example.com">recover a report</a> that has been previously deleted.</p>
@@ -19,5 +19,16 @@ Select the following link if you would like to <a href="http://www.example.com">
 
 <p></p>
 
+<script src="../../../libs/jquery/jquery.js"></script>
+<script src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+<script src="../../../src/quail.js"></script>
+<script src="../../composite.js"></script>
+<script src="../../../libs/qunit/qunit.js"></script>
+<script>
+test('formDeleteIsReversable', function() {
+	  quailTest.runTest( 'formDeleteIsReversable', '272-2.html');
+	  equal(true, quailTest.confirmIsTag('form'), 'First item tag test');
+});
+</script>
 </body>
 </html>

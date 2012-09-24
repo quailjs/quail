@@ -2,10 +2,21 @@
 <html lang="en">
 	<head>
 		<title>Testfile - Check #135 - Positive</title>
-	</head>
-	<body>
+	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen"></head>
+	<body><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div>
 		<p>The following image shows the solution to the quadratic equation: begin fraction minus b plus or minus begin square root of b squared minus four a c end square root over 2 a end fraction</p>
 
 		<img src="quadeqn.png" alt="solution to the quadratic equation" width="179" height="63"/>
-	</body>
+	<script src="../../../libs/jquery/jquery.js"></script>
+<script src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+<script src="../../../src/quail.js"></script>
+<script src="../../composite.js"></script>
+<script src="../../../libs/qunit/qunit.js"></script>
+<script>
+test('imgWithMathShouldHaveMathEquivalent', function() {
+	  quailTest.runTest( 'imgWithMathShouldHaveMathEquivalent', '135-1.html');
+	  equal(true, quailTest.confirmIsTag('img'), 'First item tag test');
+});
+</script>
+</body>
 </html>

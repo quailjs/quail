@@ -4,8 +4,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 <title>Check #28.2 - Negative</title>
+<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
 </head>
 <body>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup, will be hidden</div>
 
 <p><a href="#content"><img src="spacer.gif" width="0" height="0" border="0" alt="skip to content" /></a></p>
 
@@ -22,5 +28,16 @@
 <a name="content"></a>
 <p >The main content of the document goes here. This is some example text.</p>
 
+<script src="../../../libs/jquery/jquery.js"></script>
+<script src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+<script src="../../../src/quail.js"></script>
+<script src="../../composite.js"></script>
+<script src="../../../libs/qunit/qunit.js"></script>
+<script>
+test('skipToContentLinkProvided', function() {
+  quailTest.runTest( 'skipToContentLinkProvided', '28-2.html');
+  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+});
+</script>
 </body>
 </html>

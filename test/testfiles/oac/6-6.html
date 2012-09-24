@@ -4,8 +4,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 <title>Check #6 - Positive</title>
-</head>
-<body>
+<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen"></head>
+<body><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div>
 <p><img src="rex.jpg" alt="nbsp" width="150" height="105"/></p>
+<script src="../../../libs/jquery/jquery.js"></script>
+<script src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+<script src="../../../src/quail.js"></script>
+<script src="../../composite.js"></script>
+<script src="../../../libs/qunit/qunit.js"></script>
+<script>
+test('imgAltNotPlaceHolder', function() {
+  quailTest.runTest( 'imgAltNotPlaceHolder', '6-6.html');
+  equal(true, quailTest.confirmIsTag('img'), 'First item is an image');
+});
+</script>
 </body>
 </html>

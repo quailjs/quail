@@ -1,1 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd"><html lang="en"><head><title>Check #260.2 - Positive</title></head><body><p>The following embed is not working. This is just an example.</p><embed alt="demo movie" src="demo.mov"/></body></html>
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd"><html lang="en"><head><title>Check #260.2 - Positive</title><link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen"></head><body><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div><p>The following embed is not working. This is just an example.</p><embed alt="demo movie" src="demo.mov"/><script src="../../../libs/jquery/jquery.js"></script>
+<script src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+<script src="../../../src/quail.js"></script>
+<script src="../../composite.js"></script>
+<script src="../../../libs/qunit/qunit.js"></script>
+<script>
+test('embedProvidesMechanismToReturnToParent', function() {
+	  quailTest.runTest( 'embedProvidesMechanismToReturnToParent', '260-2.html');
+	  equal(true, quailTest.confirmIsTag('embed'), 'First item tag test');
+});
+</script>
+</body></html>

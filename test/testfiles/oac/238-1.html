@@ -4,12 +4,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
 <title>Check #238.1 - Positive</title>
-</head>
-<body>
+<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen"></head>
+<body><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div>
 
 <form action="http://mysite.com">
 <p><input type="submit" value="submit" alt="submit the form"/></p>
 </form>
 
+<script src="../../../libs/jquery/jquery.js"></script>
+<script src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+<script src="../../../src/quail.js"></script>
+<script src="../../composite.js"></script>
+<script src="../../../libs/qunit/qunit.js"></script>
+<script>
+test('inputElementsDontHaveAlt', function() {
+	  quailTest.runTest( 'inputElementsDontHaveAlt', '238-1.html');
+	  equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
+});
+</script>
 </body>
 </html>
