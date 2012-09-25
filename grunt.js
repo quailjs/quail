@@ -24,10 +24,10 @@ module.exports = function(grunt) {
       }
     },
     qunit: {
-      files: ['test/**/*.html']
+      files: ['test/quail.html']
     },
     lint: {
-      files: ['grunt.js', 'src/**/*.js']
+      files: ['grunt.js', 'src/**/*.js', 'test/*.js']
     },
     watch: {
       files: '<config:lint.files>',
