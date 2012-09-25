@@ -5,7 +5,7 @@ $.ajax({ url : '../../../src/resources/tests.json',
  dataType : 'json',
  cache : false,
  success : function(data) {
-    if(typeof data == 'object') {
+    if(typeof data === 'object') {
       accessibilityTests = data;
     }
 }});
@@ -17,7 +17,7 @@ var quailTest = {
 
   runTest : function(testName) {
     quailTest.testName = testName;
-    quailTest.results = $('html').quail({ jsonPath : '../../../src/resources',
+    quailTest.results = $(document).quail({ jsonPath : '../../../src/resources',
                       guideline : [ testName ],
                       reset : true,
                       accessibilityTests : accessibilityTests,
@@ -26,16 +26,15 @@ var quailTest = {
 
   confirmIsEmpty : function() {
     $.each(quailTest.results[quailTest.testName], function(index, item) {
-      if($(item).attr('id').indexOf('qunit-') != -1) {
+      if(item && $(item).attr('id') && $(item).attr('id').indexOf('qunit-') !== -1) {
         quailTest.results[quailTest.testName].splice(index, 1);
       }
     });
-    
-    return quailTest.results[quailTest.testName].length == 0;
+    return quailTest.results[quailTest.testName].length === 0;
   },
 
   confirmIsTag : function(tag) {
-    if(typeof quailTest.results[quailTest.testName][0] == 'undefined') {
+    if(typeof quailTest.results[quailTest.testName][0] === 'undefined') {
       return false;
     }
     return quailTest.results[quailTest.testName][0].is(tag);
