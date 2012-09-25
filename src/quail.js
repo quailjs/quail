@@ -417,6 +417,12 @@
       });
     },
     
+    documentValidatesToDocType : function() {
+      if(typeof document.doctype === 'undefined') {
+        return;
+      }
+    },
+    
     documentIDsMustBeUnique : function() {
       var ids = [];
       quail.html.find('*[id]').each(function() {
@@ -450,6 +456,14 @@
           quail.accessibilityResults.appletContainsTextEquivalent.push($(this));
         }
       });
+    },
+    
+    documentStrictDocType : function() {
+      if(typeof document.doctype === 'undefined' || 
+         !document.doctype ||
+         document.doctype.systemId.indexOf('strict') === -1) {
+        quail.accessibilityResults.documentStrictDocType.push(quail.html.find('html'));
+      }
     },
 
     embedHasAssociatedNoEmbed : function() {
