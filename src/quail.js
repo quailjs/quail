@@ -240,9 +240,9 @@
       if(typeof jQuery.hasEventListener === 'undefined') {
         quail.loadHasEventListener();
       }
-      var $items = (typeof options.selector === 'undefined')
-                   ? quail.html.find('body').find('*')
-                   : quail.html.find(options.selector);
+      var $items = (typeof options.selector === 'undefined') ?
+                    quail.html.find('body').find('*') :
+                    quail.html.find(options.selector);
       $items.each(function() {
         if($(this).attr(options.searchEvent)) {
           if(typeof options.correspondingEvent === 'undefined' ||
@@ -251,7 +251,6 @@
           }
         }
         else {
-          console.log($.hasEventListener($(this), options.searchEvent));
           if($.hasEventListener($(this), options.searchEvent) && 
              (typeof options.correspondingEvent === 'undefined' ||
              !$.hasEventListener($(this), options.correspondingEvent))) {

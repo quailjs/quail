@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       files: ['test/quail.html']
     },
     lint: {
-      files: ['grunt.js', 'src/**/*.js', 'test/*.js']
+      files: ['grunt.js', 'src/**/*.js']
     },
     watch: {
       files: '<config:lint.files>',
