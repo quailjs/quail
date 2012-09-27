@@ -228,7 +228,7 @@
            quail.accessibilityResults[testName].push($body);
         }
       }
-      quail.html.find(options.selector).each(function() {
+      quail.html.find(options.selector).find('*').each(function() {
         if((options.algorithm === 'wcag' && !quail.colors.passesWCAG($(this))) ||
            (options.algorithm === 'wai' && !quail.colors.passesWAI($(this)))) {
            quail.accessibilityResults[testName].push($(this));
@@ -240,7 +240,10 @@
       if(typeof jQuery.hasEventListener === 'undefined') {
         quail.loadHasEventListener();
       }
-      quail.html.find(options.selector).each(function() {
+      var $items = (typeof options.selector === 'undefined')
+                   ? quail.html.find('body').find('*')
+                   : quail.html.find(options.selector);
+      $items.each(function() {
         if($(this).attr(options.searchEvent)) {
           if(typeof options.correspondingEvent === 'undefined' ||
              !$(this).attr(options.correspondingEvent)) {
@@ -248,6 +251,7 @@
           }
         }
         else {
+          console.log($.hasEventListener($(this), options.searchEvent));
           if($.hasEventListener($(this), options.searchEvent) && 
              (typeof options.correspondingEvent === 'undefined' ||
              !$.hasEventListener($(this), options.correspondingEvent))) {
@@ -646,6 +650,19 @@
 
     imgGifNoFlicker : function() {
       quail.html.find('img[src$=".gif"]').each(function() {
+          var canvas = document.createElement('canvas');
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(this, 100, 100);
+        $.ajax({url : $(this).attr('src'), dataType : 'text', success : function(data) {
+/*          var stream = new animatedGif.Stream(data);
+          var handler = {
+            hdr: function(a) {
+              
+            }
+            };
+          animatedGif.parseGIF(stream, handler);
+          console.log(animatedGif.img);*/
+        }});
         quail.accessibilityResults.imgGifNoFlicker.push($(this));
       });
     },

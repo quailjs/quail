@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en"><head><title>Check #166 - Negative</title><link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen"></head><body><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div><embed alt="description of the embed" src="demo.mov"><noembed>Alternate content for the embed</noembed></embed><script src="../../../libs/jquery/jquery.js"></script>
-<script src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
-<script src="../../../src/quail.js"></script>
-<script src="../../composite.js"></script>
-<script src="../../../libs/qunit/qunit.js"></script>
+<html lang="en"><head><title>Check #166 - Negative</title><link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen"></head><body><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div><embed alt="description of the embed" src="demo.mov"><noembed>Alternate content for the embed</noembed></embed><script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+<script id="qunit-quail" src="../../../src/quail.js"></script>
+<script id="qunit-composite" src="../../composite.js"></script>
+<script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
 <script>
 test('embedMustNotHaveEmptyAlt', function() {
 	  quailTest.runTest( 'embedMustNotHaveEmptyAlt', '166-2.html');

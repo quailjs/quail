@@ -172,7 +172,7 @@
     "bodyColorContrast": {
         "type": "color",
         "algorithm": "wcag",
-        "selector": "body, body *",
+        "selector": "body",
         "bodyForegroundAttribute": "text",
         "bodyBackgroundAttribute": "bgcolor",
         "severity": null
@@ -823,7 +823,7 @@
     },
     "linkUsedForAlternateContent": {
         "type": "selector",
-        "selector": "html:not(html:has(link[rel=alternate]))",
+        "selector": "html:not(html:has(link[rel=alternate])) body",
         "severity": "suggestion"
     },
     "linkUsedToDescribeNavigation": {
@@ -977,49 +977,42 @@
     },
     "scriptOnclickRequiresOnKeypress": {
         "type": "event",
-        "selector": "*",
         "searchEvent": "onclick",
         "correspondingEvent": "onkeypress",
         "severity": "0"
     },
     "scriptOndblclickRequiresOnKeypress": {
         "type": "event",
-        "selector": "*",
         "searchEvent": "ondblclick",
         "correspondingEvent": "onkeypress",
         "severity": "0"
     },
     "scriptOnmousedownRequiresOnKeypress": {
         "type": "event",
-        "selector": "*",
         "searchEvent": "onmousedown",
         "correspondingEvent": "onkeydown",
         "severity": "0"
     },
     "scriptOnmousemove": {
         "type": "event",
-        "selector": "*",
         "searchEvent": "onmousemove",
         "correspondingEvent": "onkeypress",
         "severity": "0"
     },
     "scriptOnmouseoutHasOnmouseblur": {
         "type": "event",
-        "selector": "*",
         "searchEvent": "onmouseout",
         "correspondingEvent": "onblur",
         "severity": "0"
     },
     "scriptOnmouseoverHasOnfocus": {
         "type": "event",
-        "selector": "*",
         "searchEvent": "onmouseover",
         "correspondingEvent": "onfocus",
         "severity": "0"
     },
     "scriptOnmouseupHasOnkeyup": {
         "type": "event",
-        "selector": "*",
         "searchEvent": "onmouseup",
         "correspondingEvent": "onkeyup",
         "severity": "0"

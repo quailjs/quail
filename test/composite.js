@@ -26,11 +26,16 @@ var quailTest = {
 
   confirmIsEmpty : function() {
     $.each(quailTest.results[quailTest.testName], function(index, item) {
-      if(item && $(item).attr('id') && $(item).attr('id').indexOf('qunit-') !== -1) {
+      if(typeof item === 'undefined' ||
+         (item && $(item).attr('id') && $(item).attr('id').indexOf('qunit-') !== -1) ||
+         $(item).parents('#qunit-wrapper').length) {
         quailTest.results[quailTest.testName].splice(index, 1);
       }
+      else {
+        return false;
+      }
     });
-    return quailTest.results[quailTest.testName].length === 0;
+    return true;
   },
 
   confirmIsTag : function(tag) {
