@@ -33,7 +33,18 @@
   };
 
   var quail = {
-
+    
+    options : { },
+    
+    testCallbacks : { 
+      'placeholder'    : 'placeholderTest',
+      'label'          : 'labelTest',
+      'header'         : 'headerOrderTest',
+      'event'          : 'scriptEventTest',
+      'labelProximity' : 'labelProximityTest',
+      'color'          : 'colorTest'
+    },
+    
     run : function() {
       if(quail.options.reset) {
         quail.accessibilityResults = { };
@@ -56,36 +67,22 @@
 
     runTests : function() {
       $.each(quail.options.guideline, function(index, testName) {
+        var testType = quail.accessibilityTests[testName].type;
         if(typeof quail.accessibilityResults[testName] === 'undefined') {
           quail.accessibilityResults[testName] = [ ];
         }
-        if(quail.accessibilityTests[testName].type === 'selector') {
+        if(testType === 'selector') {
           quail.html.find(quail.accessibilityTests[testName].selector).each(function() {
             quail.accessibilityResults[testName].push($(this));
           });
         }
-        if(quail.accessibilityTests[testName].type === 'custom') {
+        if(testType === 'custom') {
           if(typeof quail[quail.accessibilityTests[testName].callback] !== 'undefined') {
             quail[quail.accessibilityTests[testName].callback]();
           }
         }
-        if(quail.accessibilityTests[testName].type === 'placeholder') {
-          quail.placeholderTest(testName, quail.accessibilityTests[testName]);
-        }
-        if(quail.accessibilityTests[testName].type === 'label') {
-          quail.labelTest(testName, quail.accessibilityTests[testName]);
-        }
-        if(quail.accessibilityTests[testName].type === 'header') {
-          quail.headerOrderTest(testName, quail.accessibilityTests[testName]);
-        }
-        if(quail.accessibilityTests[testName].type === 'event') {
-          quail.scriptEventTest(testName, quail.accessibilityTests[testName]);
-        }
-        if(quail.accessibilityTests[testName].type === 'labelProximity') {
-          quail.labelProximityTest(testName, quail.accessibilityTests[testName]);
-        }
-        if(quail.accessibilityTests[testName].type === 'color') {
-          quail.colorTest(testName, quail.accessibilityTests[testName]);
+        if(typeof quail[quail.testCallbacks[testType]] !== 'undefined') {
+          quail[quail.testCallbacks[testType]](testName, quail.accessibilityTests[testName]);
         }
       });
     },
@@ -147,8 +144,6 @@
               dataType : 'script'
             });
     },
-    options : { },
-
 
     placeholderTest : function(testName, options) {
       quail.loadString('placeholders');
@@ -649,21 +644,16 @@
 
     imgGifNoFlicker : function() {
       quail.html.find('img[src$=".gif"]').each(function() {
-          var canvas = document.createElement('canvas');
-          var ctx = canvas.getContext('2d');
-          ctx.drawImage(this, 100, 100);
-        $.ajax({url : $(this).attr('src'), dataType : 'text', success : function(data) {
-/*          var stream = new animatedGif.Stream(data);
-          var handler = {
-            hdr: function(a) {
-              
-            }
-            };
-          animatedGif.parseGIF(stream, handler);
-          console.log(animatedGif.img);*/
-        }});
-        quail.accessibilityResults.imgGifNoFlicker.push($(this));
+        var canvas = document.createElement('canvas');
+        $(canvas).css('width', $(this).width() + 'px')
+                 .css('height', $(this).height() + 'px');
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(this, 0, 0);
+        $('body').append(canvas);
+        var check = ctx.getImageData($(this).width() + 1, $(this).height() + 1, 1, 1);
+        console.log(check);
       });
+        //quail.accessibilityResults.imgGifNoFlicker.push($(this));
     },
     
     imgWithMathShouldHaveMathEquivalent : function() {
