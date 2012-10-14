@@ -239,6 +239,7 @@
                     quail.html.find('body').find('*') :
                     quail.html.find(options.selector);
       $items.each(function() {
+        $element = $(this).get(0);
         if($(this).attr(options.searchEvent)) {
           if(typeof options.correspondingEvent === 'undefined' ||
              !$(this).attr(options.correspondingEvent)) {
@@ -246,9 +247,9 @@
           }
         }
         else {
-          if($.hasEventListener($(this), options.searchEvent) && 
+          if($.hasEventListener($element, options.searchEvent.replace('on', '')) && 
              (typeof options.correspondingEvent === 'undefined' ||
-             !$.hasEventListener($(this), options.correspondingEvent))) {
+             !$.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
             quail.accessibilityResults[testName].push($(this));
           }
         }
