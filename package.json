@@ -1,5 +1,5 @@
 {
-  "name": "jquery-plugin",
+  "name": "quail",
   "version": "0.0.0-ignored",
   "engines": {
     "node": ">= 0.6.0"

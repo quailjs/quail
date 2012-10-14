@@ -1,9 +1,9 @@
 {
   "name": "quail",
   "title": "Quail",
-  "description": "The best jQuery plugin ever.",
-  "version": "0.1.0",
-  "homepage": "https://github.com/mill5935/quail",
+  "description": "QUAIL Accessibility Information Library.",
+  "version": "2.0",
+  "homepage": "https://github.com/kevee/quail",
   "author": {
     "name": "Kevin Miller",
     "email": "kemiller@csumb.edu"
