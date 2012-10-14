@@ -203,7 +203,7 @@
     
     colorTest : function(testName, options) {
       if(options.bodyForegroundAttribute && options.bodyBackgroundAttribute) {
-        var $body = quail.html.find('body');
+        var $body = quail.html.find('body').clone(false, false);
         var foreground = $body.attr(options.bodyForegroundAttribute);
         var background = $body.attr(options.bodyBackgroundAttribute);
         if(typeof foreground === 'undefined') {
@@ -212,12 +212,8 @@
         if(typeof background === 'undefined') {
           foreground =  'rgb(255,255,255)';
         }
-        if(!$body.css('color')) {
-          $body.css('color', foreground);
-        }
-        if(!$body.css('background-color')) {
-          $body.css('background-color', background);
-        }
+        $body.css('color', foreground);
+        $body.css('background-color', background);
         if((options.algorithm === 'wcag' && !quail.colors.passesWCAG($body)) ||
            (options.algorithm === 'wai' && !quail.colors.passesWAI($body))) {
            quail.accessibilityResults[testName].push($body);
