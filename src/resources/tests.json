@@ -262,6 +262,8 @@
     "documentColorWaiAlgorithm": {
         "type": "color",
         "algorithm": "wai",
+        "bodyForegroundAttribute": "text",
+        "bodyBackgroundAttribute": "bgcolor",
         "selector": "body",
         "severity": null
     },

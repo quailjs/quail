@@ -25,6 +25,7 @@ var quailTest = {
   },
 
   confirmIsEmpty : function() {
+    console.log(quailTest.results);
     $.each(quailTest.results[quailTest.testName], function(index, item) {
       if(typeof item === 'undefined' ||
          (item && $(item).attr('id') && $(item).attr('id').indexOf('qunit-') !== -1) ||
