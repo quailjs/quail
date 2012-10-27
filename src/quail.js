@@ -22,13 +22,7 @@
     if(quail.options.getRawResults) {
       return quail.getRawResults();
     }
-    $.each(quail.accessibilityResults, function(testName, results) {
-      var className = 'quail-result-' + quail.accessibilityTests[testName].severity;
-      $.each(results, function(index, element) {
-        $(this).addClass('quail-result')
-               .addClass(className);
-      });
-    });
+    
     return this;
   };
 
@@ -690,6 +684,7 @@
 
     imgGifNoFlicker : function() {
       quail.html.find('img[src$=".gif"]').each(function() {
+        var $image = $(this);
         $.ajax({url      : $image.attr('src'),
                 async    : false,
                 dataType : 'text',
