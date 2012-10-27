@@ -204,7 +204,7 @@
     textStatistics : {
       
       cleanText : function(text) {
-        return text.replace(/[,:;()-]/, ' ')
+        return text.replace(/[,:;()\-]/, ' ')
                    .replace(/[\.!?]/, '.')
                    .replace(/[ ]*(\n|\r\n|\r)[ ]*/, ' ')
                    .replace(/([\.])[\. ]+/, '$1')
@@ -234,19 +234,16 @@
         if(!wordCount) {
           return 0;
         }
-        var words = text.split(' ');
-        var totalWords = 0;
-        for(i in words) {
-          count += quail.textStatistics.syllableCount(words[i]);
-          totalWords++;
-        }
+        $.each(text.split(' '), function(index, word) {
+          count += quail.textStatistics.syllableCount(word);
+        });
         return count / wordCount;
       },
       
       syllableCount : function(word) {
         var matchedWord = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
                               .match(/[aeiouy]{1,2}/g);
-        if(!matchedWord || matchedWord.length == 0) {
+        if(!matchedWord || matchedWord.length === 0) {
           return 1;
         }
         return matchedWord.length;
@@ -287,7 +284,7 @@
                     quail.html.find('body').find('*') :
                     quail.html.find(options.selector);
       $items.each(function() {
-        $element = $(this).get(0);
+        var $element = $(this).get(0);
         if($(this).attr(options.searchEvent)) {
           if(typeof options.correspondingEvent === 'undefined' ||
              !$(this).attr(options.correspondingEvent)) {
@@ -693,10 +690,16 @@
 
     imgGifNoFlicker : function() {
       quail.html.find('img[src$=".gif"]').each(function() {
-        var loader = new quailGifParser({ img : $(this)});
-        loader.loadImage();
+        var $image = $(this);
+        $.ajax({url      : $image.attr('src'),
+                dataType : 'text',
+                mimeType : 'application/octet-stream',
+                success  : function(data) {
+                  if(data.search('NETSCAPE2.0') !== -1) {
+                    quail.accessibilityResults.imgGifNoFlicker.push($image);
+                  }
+        }});
       });
-        //quail.accessibilityResults.imgGifNoFlicker.push($(this));
     },
     
     imgWithMathShouldHaveMathEquivalent : function() {

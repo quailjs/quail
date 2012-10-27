@@ -3,7 +3,7 @@ node_js:
   - 0.9
 
 before_script:
-  - npm install -g grunt
+  - npm install grunt -g
 
 script:
   - grunt travis
