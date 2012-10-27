@@ -937,6 +937,11 @@
         "callback": "pNotUsedAsHeader",
         "severity": "severe"
     },
+    "paragarphIsWrittenClearly": {
+        "type": "custom",
+        "callback": "paragarphIsWrittenClearly",
+        "severity": "moderate"
+    },
     "passwordHasLabel": {
         "type": "label",
         "selector": "input[type=password]",

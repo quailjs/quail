@@ -201,6 +201,58 @@
         });
     },
     
+    textStatistics : {
+      
+      cleanText : function(text) {
+        return text.replace(/[,:;()-]/, ' ')
+                   .replace(/[\.!?]/, '.')
+                   .replace(/[ ]*(\n|\r\n|\r)[ ]*/, ' ')
+                   .replace(/([\.])[\. ]+/, '$1')
+                   .replace(/[ ]*([\.])/, '$1')
+                   .replace(/[ ]+/, ' ')
+                   .toLowerCase();
+                   
+      },
+      
+      sentenceCount : function(text) {
+        var copy = text;
+        return copy.split('.').length + 1;
+      },
+      
+      wordCount : function(text) {
+        var copy = text;
+        return copy.split(' ').length + 1;
+      },
+      
+      averageWordsPerSentence : function(text) {
+        return quail.textStatistics.wordCount(text) / quail.textStatistics.sentenceCount(text);
+      },
+      
+      averageSyllablesPerWord : function(text) {
+        var count = 0;
+        var wordCount = quail.textStatistics.wordCount(text);
+        if(!wordCount) {
+          return 0;
+        }
+        var words = text.split(' ');
+        var totalWords = 0;
+        for(i in words) {
+          count += quail.textStatistics.syllableCount(words[i]);
+          totalWords++;
+        }
+        return count / wordCount;
+      },
+      
+      syllableCount : function(word) {
+        var matchedWord = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
+                              .match(/[aeiouy]{1,2}/g);
+        if(!matchedWord || matchedWord.length == 0) {
+          return 1;
+        }
+        return matchedWord.length;
+      }
+    },
+    
     colorTest : function(testName, options) {
       if(options.bodyForegroundAttribute && options.bodyBackgroundAttribute) {
         var $body = quail.html.find('body').clone(false, false);
@@ -641,14 +693,8 @@
 
     imgGifNoFlicker : function() {
       quail.html.find('img[src$=".gif"]').each(function() {
-        var canvas = document.createElement('canvas');
-        $(canvas).css('width', $(this).width() + 'px')
-                 .css('height', $(this).height() + 'px');
-        var ctx = canvas.getContext('2d');
-        ctx.drawImage(this, 0, 0);
-        $('body').append(canvas);
-        var check = ctx.getImageData($(this).width() + 1, $(this).height() + 1, 1, 1);
-        console.log(check);
+        var loader = new quailGifParser({ img : $(this)});
+        loader.loadImage();
       });
         //quail.accessibilityResults.imgGifNoFlicker.push($(this));
     },
@@ -675,6 +721,15 @@
       quail.html.find('ol, ul').each(function() {
         if($(this).find('li').length < 2) {
           quail.accessibilityResults.listNotUsedForFormatting.push($(this));
+        }
+      });
+    },
+    
+    paragarphIsWrittenClearly : function() {
+      quail.html.find('p').each(function() {
+        var text = quail.textStatistics.cleanText($(this).text());
+        if(Math.round((206.835 - (1.015 * quail.textStatistics.averageWordsPerSentence(text)) - (84.6 * quail.textStatistics.averageSyllablesPerWord(text)))) < 60) {
+          quail.accessibilityResults.paragarphIsWrittenClearly.push($(this));
         }
       });
     },
