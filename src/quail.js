@@ -62,9 +62,9 @@
     testFails : function(testName, $element) {
       quail.accessibilityResults[testName].push($element);
       if(typeof quail.options.callback !== 'undefined') {
-        var severity = (typeof quail.accessibilityTests[testName].severity !== 'undefined')
-                       ? quail.accessibilityTests[testName].severity
-                       : 'unknown';
+        var severity = (typeof quail.accessibilityTests[testName].severity !== 'undefined') ?
+                       quail.accessibilityTests[testName].severity :
+                       'unknown';
         quail.options.callback($element, testName, severity);
       }
     },
@@ -159,7 +159,7 @@
                   !$(this).attr(options.attribute)
                 )
              ) {
-            quail.testFails(testName, $(this))
+            quail.testFails(testName, $(this));
             return;
           }
           text = $(this).attr(options.attribute);
@@ -172,22 +172,22 @@
           var regex = /^([0-9]*)(k|kb|mb|k bytes|k byte)$/g;
           var regexResults = regex.exec(text.toLowerCase());
           if(regexResults && regexResults[0].length) {
-            quail.testFails(testName, $(this))
+            quail.testFails(testName, $(this));
           }
           else {
             if(options.empty && quail.isUnreadable(text)) {
-              quail.testFails(testName, $(this))
+              quail.testFails(testName, $(this));
             }
             else {
               if(quail.strings.placeholders.indexOf(text) > -1 ) {
-                quail.testFails(testName, $(this))
+                quail.testFails(testName, $(this));
               }
             }
           }
         }
         else {
           if(options.empty && typeof text !== 'number') {
-            quail.testFails(testName, $(this))
+            quail.testFails(testName, $(this));
           }
         }
       });
@@ -197,10 +197,10 @@
         quail.html.find(options.selector).each(function() {
           var $label = quail.html.find('label[for=' + $(this).attr('id') + ']').first();
           if(!$label.length) {
-            quail.testFails(testName, $(this))
+            quail.testFails(testName, $(this));
           }
           if(!$(this).parent().is($label.parent())) {
-            quail.testFails(testName, $(this))
+            quail.testFails(testName, $(this));
           }
         });
     },
@@ -269,13 +269,13 @@
         $body.css('background-color', background);
         if((options.algorithm === 'wcag' && !quail.colors.passesWCAG($body)) ||
            (options.algorithm === 'wai' && !quail.colors.passesWAI($body))) {
-           quail.testFails(testName, $body)
+           quail.testFails(testName, $body);  
         }
       }
       quail.html.find(options.selector).find('*').each(function() {
         if((options.algorithm === 'wcag' && !quail.colors.passesWCAG($(this))) ||
            (options.algorithm === 'wai' && !quail.colors.passesWAI($(this)))) {
-           quail.testFails(testName, $(this))
+           quail.testFails(testName, $(this));
         }
       });
     },
@@ -292,14 +292,14 @@
         if($(this).attr(options.searchEvent)) {
           if(typeof options.correspondingEvent === 'undefined' ||
              !$(this).attr(options.correspondingEvent)) {
-            quail.testFails(testName, $(this))
+            quail.testFails(testName, $(this));
           }
         }
         else {
           if($.hasEventListener($element, options.searchEvent.replace('on', '')) && 
              (typeof options.correspondingEvent === 'undefined' ||
              !$.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
-            quail.testFails(testName, $(this))
+            quail.testFails(testName, $(this));
           }
         }
       });
@@ -309,7 +309,7 @@
       quail.html.find(options.selector).each(function() {
         if(!$(this).parent('label').length &&
           !quail.html.find('label[for=' + $(this).attr('id') + ']').length) {
-            quail.testFails(testName, $(this))
+            quail.testFails(testName, $(this));
         }
       });
     },
@@ -341,7 +341,7 @@
       quail.html.find('h1, h2, h3, h4, h5, h6').each(function() {
         var number = parseInt($(this).get(0).tagName.substr(-1, 1), 10);
         if(nextHeading && (number - 1 > current || number + 1 < current)) {
-          quail.testFails(testName, $(this))
+          quail.testFails(testName, $(this));
         }
         if(number === current) {
           nextHeading = $(this);
@@ -368,7 +368,7 @@
                word.length > 1 &&
                typeof predefined[word.toUpperCase()] === 'undefined') {
               if(typeof alreadyReported[word.toUpperCase()] === 'undefined') {
-                quail.testFails(testName, $el)
+                quail.testFails(testName, $el);
               }
               alreadyReported[word.toUpperCase()] = word;
             }
