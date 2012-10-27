@@ -692,6 +692,7 @@
       quail.html.find('img[src$=".gif"]').each(function() {
         var $image = $(this);
         $.ajax({url      : $image.attr('src'),
+                async    : false,
                 dataType : 'text',
                 mimeType : 'application/octet-stream',
                 success  : function(data) {
