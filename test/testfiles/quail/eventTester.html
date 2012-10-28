@@ -31,9 +31,8 @@
                       guideline : [ 'imgHasAlt' ],
                       reset : true,
                       accessibilityTests : data,
-                      callback : function(element, test, severity) {
-                        console.log(severity);
-                        if(severity == 'severe' && test == 'imgHasAlt') {
+                      callback : function(event) {
+                        if(event.severity == 'severe' && event.testName == 'imgHasAlt') {
                           testPasses = true;
                         }
                       }});

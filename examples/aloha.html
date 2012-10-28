@@ -43,10 +43,15 @@
   		$('.aloha-editable-active').quail({ guideline : [ 'imgHasAlt', 'documentAbbrIsUsed' ],
 	                    jsonPath : '../src/resources',
 	                    accessibilityTests : accessibilityTests,
-	                    callback : function(element, testName, severity) {
-  	                    element.addClass('quail-result')
-  	                           .addClass(severity);
+	                    callback : function(event) {
   	                    
+  	                    if(event.testName == 'documentAbbrIsUsed') {
+    	                    event.element.html(event.element.html().replace(event.options.acronym, '<span class="quail-result moderate">' + event.options.acronym + '</span>'));
+  	                    }
+  	                    else {
+    	                    event.element.addClass('quail-result')
+  	                           .addClass(event.severity);
+  	                    }
 	                    }});
 		};
 		

@@ -59,13 +59,19 @@
       quail.runTests();
     },
     
-    testFails : function(testName, $element) {
+    testFails : function(testName, $element, options) {
+      options = options || {};
+      
       quail.accessibilityResults[testName].push($element);
       if(typeof quail.options.callback !== 'undefined') {
         var severity = (typeof quail.accessibilityTests[testName].severity !== 'undefined') ?
                        quail.accessibilityTests[testName].severity :
                        'unknown';
-        quail.options.callback($element, testName, severity);
+        quail.options.callback({element : $element,
+                               testName : testName,
+                               severity : severity,
+                               options  : options
+                               });
       }
     },
 
@@ -368,7 +374,7 @@
                word.length > 1 &&
                typeof predefined[word.toUpperCase()] === 'undefined') {
               if(typeof alreadyReported[word.toUpperCase()] === 'undefined') {
-                quail.testFails(testName, $el);
+                quail.testFails(testName, $el, {acronym : word.toUpperCase()});
               }
               alreadyReported[word.toUpperCase()] = word;
             }
