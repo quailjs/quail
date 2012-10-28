@@ -17,11 +17,13 @@ var quailTest = {
 
   runTest : function(testName) {
     quailTest.testName = testName;
-    quailTest.results = $(document).quail({ jsonPath : '../../../src/resources',
+    $(document).quail({ jsonPath : '../../../src/resources',
                       guideline : [ testName ],
                       reset : true,
                       accessibilityTests : accessibilityTests,
-                      getRawResults : true});
+                      completeCallback : function(results) {
+                        quailTest.results = results.results;
+                      }});
   },
 
   confirmIsEmpty : function() {

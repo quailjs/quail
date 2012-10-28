@@ -19,9 +19,6 @@
 
     quail.html = this;
     quail.run();
-    if(quail.options.getRawResults) {
-      return quail.getRawResults();
-    }
     
     return this;
   };
@@ -57,6 +54,14 @@
                 }});
       }
       quail.runTests();
+      if(typeof quail.options.completeCallback !== 'undefined') {
+        var results = {totals : {severe : 0, moderate : 0, suggestion : 0 },
+                      results : quail.accessibilityResults };
+        $.each(results.results, function(testName, result) {
+          results.totals[quail.accessibilityTests[testName].severity] += result.length;
+        });
+        quail.options.completeCallback(results);
+      }
     },
     
     testFails : function(testName, $element, options) {
@@ -106,13 +111,6 @@
 
     isDataTable : function(table) {
       return (table.find('th').length && table.find('tr').length > 2) ? true : false;
-    },
-
-    getRawResults : function(testName) {
-      if(testName) {
-        return quail.accessibilityResults[testName];
-      }
-      return quail.accessibilityResults;
     },
 
     html : { },
@@ -888,12 +886,12 @@
           $.each(quail.suspectPHeaderTags, function(index, tag) {
             if($paragraph.find(tag).length) {
               $paragraph.find(tag).each(function() {
-                if($(this).text().trim() == $paragraph.text().trim()) {
+                if($(this).text().trim() === $paragraph.text().trim()) {
                   quail.testFails('pNotUsedAsHeader', $paragraph);
                 }
               });
             }
-          })
+          });
           $.each(quail.suspectPCSSStyles, function(index, style) {
             if(typeof priorStyle[style] !== 'undefined' &&
                priorStyle[style] !== $paragraph.css(style)) {
