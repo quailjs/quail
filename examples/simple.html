@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel="stylesheet" href="results.css"/>
 		<title></title>
+		<link rel="stylesheet" href="style.css"/>
 	</head>
 	<body>
 	<div id="test">
@@ -30,7 +30,7 @@
 	                    callback : function(element, testName, severity) {
   	                    element.addClass('quail-result')
   	                           .addClass(severity)
-  	                           .before('<span class="message">This is bad</span>');
+  	                           .before('<span class="message">This is a message about why you should add alt text.</span>');
   	                    
 	                    }});
 	 })

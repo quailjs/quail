@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Aloha Editor</title>
+  <meta name="description" content="The world's most advanced browser HTML5 based WYSIWYG editor lets you experience a whole new way of editing." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/api.css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script src="js/jquery-bbq.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/lib/modernizr-1.7.min.js"></script>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+  <body id="docs">
+<!-- ============================== header ================================= -->
+    <!-- begin static/header.html -->
+      <header role="banner">
+    <div class="container">
+      <h1 id="logo">
+        <a href="http://aloha-editor.org"><img src="img/logo.png" alt="Aloha Editor" /></a>
+        </h1>
+
+      <nav role="navigation">
+        <ul>
+          <li><a href="http://aloha-editor.org/about.php">About</a></li>
+          <li><a href="#">Guides</a></li>
+          <li class="active"><a href="http://aloha-editor.org/api" >API Docs</a></li>
+          <li><a href="http://getsatisfaction.com/aloha_editor">Forum</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+
+
+    <!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+
+    <section id="list">
+      <header>
+        <form action="#" role="search">
+          <input type="text" />
+          <a href="#" class="search-reset"></a>
+        </form>
+      </header>
+      <div>
+        <span class="odd active"><a href="/">API Documentation Index</a></span>
+	
+	<span class='even' global><a href="../symbols/_global_.html">_global_</a></span>
+	
+	<span class='odd'><a href="../symbols/Aloha.Editable.html">Aloha.Editable</a></span>
+	
+	<span class='even'><a href="../symbols/Aloha.RepositoryDocument.html">Aloha.RepositoryDocument</a></span>
+	
+	<span class='odd'><a href="../symbols/Aloha.RepositoryFolder.html">Aloha.RepositoryFolder</a></span>
+	
+	<span class='even'><a href="../symbols/Aloha.RepositoryManager.html">Aloha.RepositoryManager</a></span>
+	
+
+      </div>
+    </section>
+    <footer>
+      <a href="https://github.com/alohaeditor/Aloha-Editor/issues" class="button secondary">REPORT AN ISSUE</a>
+    </footer>
+
+    <div role="main">
+      <section id="documentation">
+<!-- ============================== class title ============================ -->
+        <h1 class="classTitle">
+          
+          Namespace: Aloha.Editable
+        </h1>
+
+<!-- ============================== class summary ========================== -->
+        <p class="description">
+          <span class="extends">
+          
+          </span>
+
+          Aloha
+
+          
+            <span class="definedin">Defined in: <a href="../symbols/src/_home_release_prepare_alohaeditor-upstream_target_checkout_src_lib_aloha_editable.js.html">editable.js</a>.</span>
+          
+        </p>
+
+
+<!-- ============================== properties summary ===================== -->
+      
+      
+
+
+
+
+<!-- ============================== methods summary ======================== -->
+      
+      
+        
+        
+          <h2>Class Methods</h2>
+          <ul class="methods">
+          
+            <li class="fixedFont"><a href="../symbols/Aloha.Editable.html#.getContentSerializer">getContentSerializer</a></li>
+          
+            <li class="fixedFont"><a href="../symbols/Aloha.Editable.html#.setContentSerializer">setContentSerializer</a></li>
+          
+          </ul>
+        
+      
+        
+        
+      
+<!-- ============================== events summary ======================== -->
+      
+
+
+
+<!-- ============================== field details ========================== -->
+      
+
+
+<!-- ============================== method details ========================= -->
+      
+        
+        
+          <h2>Class Method Detail</h2>
+          
+            <a name=".getContentSerializer"> </a>
+            <div class="fixedFont">
+              <span class="methodname">getContentSerializer</span>
+            </div>
+            <div class="description">
+              Gets the content serializer function.
+              
+              
+            </div>
+
+            
+
+              
+              
+              
+              
+              
+                <dl class="returns">
+                <dt class="heading">Returns:</dt>
+                
+                  <dd><span class="light fixedFont">!Function</span> The serializer function.</dd>
+                
+                </dl>
+              
+              
+              
+                <dl class="detailList">
+                <dt class="heading">See:</dt>
+                
+                  <dd><a href="../symbols/Aloha.Editable.html#.setContentSerializer">Aloha.Editable.setContentSerializer</a>()</dd>
+                
+                </dl>
+              
+
+          
+            <a name=".setContentSerializer"> </a>
+            <div class="fixedFont">
+              <span class="methodname">setContentSerializer</span>
+            </div>
+            <div class="description">
+              <p>Sets the content serializer function.</p>
+
+<p>The default content serializer will just call the <code class='syntax js'><span class="variable">jQuery</span></code>.html()
+function on the editable element (which gets the <code class='syntax js'><span class="variable">innerHTML</span></code> property).</p>
+
+<p>This method is a static class method and will affect the result
+of editable.getContents() for all editables that have been or
+will be constructed.</p>
+              
+              
+            </div>
+
+            
+
+              
+                <dl class="parameters">
+                <dt class="heading">Parameters:</dt>
+                
+                  <dt>
+                    <span class="light fixedFont">!Function</span> <b>serializerFunction</b>
+                    
+                  </dt>
+                  <dd>A function that accepts a DOM element and returns the serialized
+       XHTML of the element contents (excluding the start and end tag of
+       the passed element).</dd>
+                
+                </dl>
+              
+              
+              
+              
+              
+              
+              
+
+          
+        
+      
+        
+        
+      
+
+<!-- ============================== event details ========================= -->
+      
+
+
+
+<!-- ============================== footer ================================= -->
+        <div class="fineprint" style="clear:both">
+          
+          Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Oct 08 2012 16:25:10 GMT+0200 (CEST)
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

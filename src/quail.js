@@ -879,11 +879,17 @@
       quail.html.find('p').each(function() {
         if(!$(this).text().search('.')) {
           var $paragraph = $(this);
-          if(typeof $(this).find(':first-child').get(0) !== 'undefined' &&
-            typeof quail.suspectPHeaderTags.indexOf($(this).find(':first-child').get(0).tagName) !== 'undefined' &&
-            $(this).text() === $(this).find(':first-child').text()) {
-              quail.testFails('pNotUsedAsHeader', $(this));
-          }
+          console.log($paragraph.html());
+          $.each(quail.suspectPHeaderTags, function(index, tag) {
+            if($paragraph.find(tag).length) {
+              $paragraph.find(tag).each(function() {
+                console.log($(this).text());
+                if($(this).text().trim() == $paragraph.text().trim()) {
+                  quail.testFails('pNotUsedAsHeader', $(this));
+                }
+              });
+            }
+          })
           $.each(quail.suspectPCSSStyles, function(index, style) {
             if(typeof priorStyle[style] !== 'undefined' &&
                priorStyle[style] !== $paragraph.css(style)) {
