@@ -29,12 +29,14 @@
       "imgHasAlt": {
           "type": "selector",
           "selector": "img:not(img[alt])",
-          "severity": "severe"
+          "severity": "severe",
+          "title" : "This image is missing an alt text."
       },      
       "documentAbbrIsUsed": {
           "type": "custom",
           "callback": "documentAbbrIsUsed",
-          "severity": "moderate"
+          "severity": "moderate",
+          "title" : "You need to add an abbreviation tag here."
       },
     };
 		Aloha.jQuery('#content').aloha();
@@ -46,11 +48,12 @@
 	                    callback : function(event) {
   	                    
   	                    if(event.testName == 'documentAbbrIsUsed') {
-    	                    event.element.html(event.element.html().replace(event.options.acronym, '<span class="quail-result moderate">' + event.options.acronym + '</span>'));
+    	                    event.element.html(event.element.html().replace(event.options.acronym, '<span class="quail-result moderate" title="' + accessibilityTests.documentAbbrIsUsed.title +'">' + event.options.acronym + '</span>'));
   	                    }
   	                    else {
     	                    event.element.addClass('quail-result')
-  	                           .addClass(event.severity);
+  	                           .addClass(event.severity)
+  	                           .attr('title', accessibilityTests[event.testName].title);
   	                    }
 	                    }});
 		};
