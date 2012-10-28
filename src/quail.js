@@ -883,15 +883,13 @@
       var priorStyle = { };
 
       quail.html.find('p').each(function() {
-        if(!$(this).text().search('.')) {
+        if($(this).text().search('.') < 1) {
           var $paragraph = $(this);
-          console.log($paragraph.html());
           $.each(quail.suspectPHeaderTags, function(index, tag) {
             if($paragraph.find(tag).length) {
               $paragraph.find(tag).each(function() {
-                console.log($(this).text());
                 if($(this).text().trim() == $paragraph.text().trim()) {
-                  quail.testFails('pNotUsedAsHeader', $(this));
+                  quail.testFails('pNotUsedAsHeader', $paragraph);
                 }
               });
             }
