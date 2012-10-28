@@ -6,22 +6,7 @@
 QUAIL: Accessibility Information Library
 ========================================
 
-Quickstart in PHP
->>>>>>>>>>>>>>>>>
-
-.. code-block:: php
-
-    //Take some HTML input and re-render it by styling errors with the HTML reporter
-    require("quail/php/quail.php");
-    
-    $html = '<html><head><title>OMG No alt attribute!</title></head>';
-    $html .= '<body><img src="rex.jpg"/></body></html>';
-    
-    $quail = new Quail($html, 'http://mywebsite.com/testpage, 'wcag2a');
-		$quail->runTests();
-    $report = $quail->getReport(new QuailHTMLReporter());
-
-Quickstart in jQuery
+Quickstart
 >>>>>>>>>>>>>>>>>
 
 .. code-block:: js

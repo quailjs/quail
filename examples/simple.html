@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="results.css"/>
+		<title></title>
+	</head>
+	<body>
+	<div id="test">
+	 <p>This is an image of my cat:</p>
+	 <img src="rex.jpg">
+	</div>
+	
+	<script src="../libs/jquery.js"></script>
+	<script src="../quail.js"></script>
+	<script>
+	 $('#test').quail({ guideline : [ 'imgHasAlt' ],
+	                    jsonPath : '../../src/resources' });
+	</script>
+	</body>
+</html>
