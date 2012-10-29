@@ -821,7 +821,7 @@
     "liDontUseImageForBullet": {
         "type": "selector",
         "selector": "li:has(img)",
-        "severity": null
+        "severity": "moderate"
     },
     "linkUsedForAlternateContent": {
         "type": "selector",
