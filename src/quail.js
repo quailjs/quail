@@ -987,8 +987,8 @@
                b : color[2],
                a : ((typeof color[3] === 'undefined') ? false : color[3])
              };
-  };
+    }
   
-};
+  };
 
 }(jQuery));
