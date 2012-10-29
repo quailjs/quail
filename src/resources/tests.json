@@ -139,7 +139,7 @@
     "areaLinksToSoundFile": {
         "type": "selector",
         "selector": "area[href$=wav], area[href$=snd], area[href$=mp3], area[href$=iff], area[href$=svx], area[href$=sam], area[href$=smp], area[href$=vce], area[href$=vox], area[href$=pcm], area[href$=aif]",
-        "severity": "0"
+        "severity": "severe"
     },
     "basefontIsNotUsed": {
         "type": "selector",
@@ -206,7 +206,7 @@
     "checkboxHasLabel": {
         "type": "label",
         "selector": "input[type=checkbox]",
-        "severity": "0"
+        "severity": "severe"
     },
     "checkboxLabelIsNearby": {
         "type": "labelProximity",
@@ -249,7 +249,7 @@
     "documentAutoRedirectNotUsed": {
         "type": "selector",
         "selector": "meta[http-equiv=refresh]",
-        "severity": "0"
+        "severity": "severe"
     },
     "documentColorWaiActiveLinkAlgorithm": {
         "type": "color",
@@ -404,7 +404,7 @@
     "fileHasLabel": {
         "type": "label",
         "selector": "input[type=file]",
-        "severity": "0"
+        "severity": "severe"
     },
     "fileLabelIsNearby": {
         "type": "labelProximity",
@@ -434,7 +434,7 @@
     "formHasGoodErrorMessage": {
         "type": "selector",
         "selector": "form",
-        "severity": "0"
+        "severity": "suggestion"
     },
     "formWithRequiredLabel": {
         "type": "custom",
@@ -477,7 +477,7 @@
         "type": "placeholder",
         "selector": "frame",
         "attribute": "title",
-        "severity": "0"
+        "severity": "severe"
     },
     "framesHaveATitle": {
         "type": "selector",
@@ -574,7 +574,7 @@
     "imgAltEmptyForDecorativeImages": {
         "type": "selector",
         "selector": "img[alt]",
-        "severity": "0"
+        "severity": "suggestion"
     },
     "imgAltIdentifiesLinkDestination": {
         "type": "selector",
@@ -584,17 +584,17 @@
     "imgAltIsDifferent": {
         "type": "custom",
         "callback": "imgAltIsDifferent",
-        "severity": "0"
+        "severity": "moderate"
     },
     "imgAltIsSameInText": {
         "type": "selector",
         "selector": "img",
-        "severity": "0"
+        "severity": "suggestion"
     },
     "imgAltIsTooLong": {
         "type": "custom",
         "callback": "imgAltIsTooLong",
-        "severity": "0"
+        "severity": "severe"
     },
     "imgAltNotEmptyInAnchor": {
         "type": "custom",
@@ -630,12 +630,12 @@
     "imgImportantNoSpacerAlt": {
         "type": "custom",
         "callback": "imgImportantNoSpacerAlt",
-        "severity": "0"
+        "severity": "moderate"
     },
     "imgMapAreasHaveDuplicateLink": {
         "type": "custom",
         "callback": "imgMapAreasHaveDuplicateLink",
-        "severity": "0"
+        "severity": "severe"
     },
     "imgNonDecorativeHasAlt": {
         "type": "selector",
@@ -645,7 +645,7 @@
     "imgNotReferredToByColorAlone": {
         "type": "selector",
         "selector": "img",
-        "severity": "0"
+        "severity": "suggestion"
     },
     "imgServerSideMapNotUsed": {
         "type": "selector",
@@ -660,7 +660,7 @@
     "imgWithMapHasUseMap": {
         "type": "selector",
         "selector": "img[ismap]:not(img[usemap])",
-        "severity": "0"
+        "severity": "severe"
     },
     "imgWithMathShouldHaveMathEquivalent": {
         "type": "custom",
@@ -687,7 +687,7 @@
     "inputElementsDontHaveAlt": {
         "type": "selector",
         "selector": "input[type!=image][alt]",
-        "severity": "0"
+        "severity": "severe"
     },
     "inputFileHasTabIndex": {
         "type": "placeholder",
@@ -699,23 +699,23 @@
     "inputImageAltIdentifiesPurpose": {
         "type": "selector",
         "selector": "input[type=image][alt]",
-        "severity": "0"
+        "severity": "suggestion"
     },
     "inputImageAltIsNotFileName": {
         "type": "custom",
         "callback": "inputImageAltIsNotFileName",
-        "severity": "0"
+        "severity": "severe"
     },
     "inputImageAltIsNotPlaceholder": {
         "type": "placeholder",
         "selector": "input[type=image]",
         "attribute": "alt",
-        "severity": "0"
+        "severity": "severe"
     },
     "inputImageAltIsShort": {
         "type": "custom",
         "callback": "inputImageAltIsShort",
-        "severity": "0"
+        "severity": "severe"
     },
     "inputImageAltNotRedundant": {
         "type": "custom",
@@ -730,7 +730,7 @@
     "inputImageNotDecorative": {
         "type": "selector",
         "selector": "input[type=image]",
-        "severity": "0"
+        "severity": "suggestion"
     },
     "inputPasswordHasTabIndex": {
         "type": "placeholder",
@@ -756,7 +756,7 @@
     "inputTextHasLabel": {
         "type": "label",
         "selector": "input[type=text]",
-        "severity": "0"
+        "severity": "severe"
     },
     "inputTextHasTabIndex": {
         "type": "placeholder",
@@ -945,7 +945,7 @@
     "passwordHasLabel": {
         "type": "label",
         "selector": "input[type=password]",
-        "severity": "0"
+        "severity": "severe"
     },
     "passwordLabelIsNearby": {
         "type": "labelProximity",
@@ -960,7 +960,7 @@
     "radioHasLabel": {
         "type": "label",
         "selector": "input[type=radio]",
-        "severity": "0"
+        "severity": "severe"
     },
     "radioLabelIsNearby": {
         "type": "labelProximity",
@@ -986,43 +986,43 @@
         "type": "event",
         "searchEvent": "onclick",
         "correspondingEvent": "onkeypress",
-        "severity": "0"
+        "severity": "severe"
     },
     "scriptOndblclickRequiresOnKeypress": {
         "type": "event",
         "searchEvent": "ondblclick",
         "correspondingEvent": "onkeypress",
-        "severity": "0"
+        "severity": "severe"
     },
     "scriptOnmousedownRequiresOnKeypress": {
         "type": "event",
         "searchEvent": "onmousedown",
         "correspondingEvent": "onkeydown",
-        "severity": "0"
+        "severity": "severe"
     },
     "scriptOnmousemove": {
         "type": "event",
         "searchEvent": "onmousemove",
         "correspondingEvent": "onkeypress",
-        "severity": "0"
+        "severity": "severe"
     },
     "scriptOnmouseoutHasOnmouseblur": {
         "type": "event",
         "searchEvent": "onmouseout",
         "correspondingEvent": "onblur",
-        "severity": "0"
+        "severity": "severe"
     },
     "scriptOnmouseoverHasOnfocus": {
         "type": "event",
         "searchEvent": "onmouseover",
         "correspondingEvent": "onfocus",
-        "severity": "0"
+        "severity": "severe"
     },
     "scriptOnmouseupHasOnkeyup": {
         "type": "event",
         "searchEvent": "onmouseup",
         "correspondingEvent": "onkeyup",
-        "severity": "0"
+        "severity": "severe"
     },
     "scriptUIMustBeAccessible": {
         "type": "selector",
@@ -1048,7 +1048,7 @@
     "selectHasAssociatedLabel": {
         "type": "label",
         "selector": "select",
-        "severity": "0"
+        "severity": "severe"
     },
     "selectWithOptionsHasOptgroup": {
         "type": "selector",
@@ -1068,7 +1068,7 @@
     "skipToContentLinkProvided": {
         "type": "selector",
         "selector": "body:not(body:has(a:first[href^=#]))",
-        "severity": "0"
+        "severity": "moderate"
     },
     "svgContainsTitle": {
         "type": "selector",
@@ -1088,7 +1088,7 @@
     "tableComplexHasSummary": {
         "type": "selector",
         "selector": "table:not(table[summary], table:has(caption))",
-        "severity": "0"
+        "severity": "moderate"
     },
     "tableDataShouldHaveTh": {
         "type": "selector",
@@ -1118,7 +1118,7 @@
     "tableLayoutHasNoSummary": {
         "type": "custom",
         "callback": "tableLayoutHasNoSummary",
-        "severity": "0"
+        "severity": "moderate"
     },
     "tableLayoutMakesSenseLinearized": {
         "type": "custom",
@@ -1170,7 +1170,7 @@
     "tableWithMoreHeadersUseID": {
         "type": "custom",
         "callback": "tableWithMoreHeadersUseID",
-        "severity": "0"
+        "severity": "moderate"
     },
     "tabularDataIsInTable": {
         "type": "custom",
@@ -1180,7 +1180,7 @@
     "textareaHasAssociatedLabel": {
         "type": "label",
         "selector": "textarea",
-        "severity": "0"
+        "severity": "severe"
     },
     "textareaLabelPositionedClose": {
         "type": "labelProximity",
