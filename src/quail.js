@@ -728,6 +728,21 @@
       });
     },
     
+    labelsAreAssignedToAnInput : function() {
+      var existing = [];
+      quail.html.find('label').each(function() {
+        if(!$(this).attr('for')) {
+          quail.testFails('labelsAreAssignedToAnInput', $(this));
+        }
+        else {
+          if(!quail.html.find('#' + $(this).attr('for')).length ||
+             !quail.html.find('#' + $(this).attr('for')).is('input, select, textarea')) {
+            quail.testFails('labelsAreAssignedToAnInput', $(this));
+          }
+        }
+      });
+    },
+    
     listNotUsedForFormatting : function() {
       quail.html.find('ol, ul').each(function() {
         if($(this).find('li').length < 2) {
