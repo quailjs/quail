@@ -27,10 +27,10 @@
   	 $('#test').quail({ guideline : [ 'imgHasAlt' ],
 	                    jsonPath : '../src/resources',
 	                    accessibilityTests : accessibilityTests,
-	                    callback : function(element, testName, severity) {
-  	                    element.addClass('quail-result')
-  	                           .addClass(severity)
-  	                           .before('<span class="message">This is a message about why you should add alt text.</span>');
+	                    callback : function(event) {
+  	                    event.element.addClass('quail-result')
+  	                         .addClass(event.severity)
+  	                         .before('<span class="message">This is a message about why you should add alt text.</span>');
   	                    
 	                    }});
 	 })
