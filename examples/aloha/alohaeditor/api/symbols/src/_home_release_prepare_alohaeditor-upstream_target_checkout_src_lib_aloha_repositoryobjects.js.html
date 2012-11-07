@@ -1,0 +1,175 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/* repositoryobjects.js is part of Aloha Editor project http://aloha-editor.org
+<span class='line'>  2</span>  *
+<span class='line'>  3</span>  * Aloha Editor is a WYSIWYG HTML5 inline editing library and editor. 
+<span class='line'>  4</span>  * Copyright (c) 2010-2012 Gentics Software GmbH, Vienna, Austria.
+<span class='line'>  5</span>  * Contributors http://aloha-editor.org/contribution.php 
+<span class='line'>  6</span>  * 
+<span class='line'>  7</span>  * Aloha Editor is free software; you can redistribute it and/or
+<span class='line'>  8</span>  * modify it under the terms of the GNU General Public License
+<span class='line'>  9</span>  * as published by the Free Software Foundation; either version 2
+<span class='line'> 10</span>  * of the License, or any later version.
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * Aloha Editor is distributed in the hope that it will be useful,
+<span class='line'> 13</span>  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+<span class='line'> 14</span>  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+<span class='line'> 15</span>  * GNU General Public License for more details.
+<span class='line'> 16</span>  *
+<span class='line'> 17</span>  * You should have received a copy of the GNU General Public License
+<span class='line'> 18</span>  * along with this program; if not, write to the Free Software
+<span class='line'> 19</span>  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+<span class='line'> 20</span>  * 
+<span class='line'> 21</span>  * As an additional permission to the GNU GPL version 2, you may distribute
+<span class='line'> 22</span>  * non-source (e.g., minimized or compacted) forms of the Aloha-Editor
+<span class='line'> 23</span>  * source code without the copy of the GNU GPL normally required,
+<span class='line'> 24</span>  * provided you include this license notice and a URL through which
+<span class='line'> 25</span>  * recipients can access the Corresponding Source.
+<span class='line'> 26</span>  */</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="NAME">define</span><span class="PUNC">(</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="PUNC">[</span><span class="WHIT"> </span><span class="STRN">'aloha/core'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">'util/class'</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">Aloha</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">Class</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">	</span><span class="STRN">"use strict"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">	
+<span class='line'> 32</span> 	</span><span class="KEYW">var</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="COMM">//		Aloha = window.Aloha,</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="COMM">//		Class = window.Class,</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">	</span><span class="NAME">GENTICS</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">window.GENTICS</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 36</span> 
+<span class='line'> 37</span> </span><span class="WHIT">	</span><span class="NAME">Aloha.RepositoryObject</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">	
+<span class='line'> 39</span> 	</span><span class="COMM">/**
+<span class='line'> 40</span> 	 * @namespace Aloha.Repository
+<span class='line'> 41</span> 	 * @class Document
+<span class='line'> 42</span> 	 * @constructor
+<span class='line'> 43</span> 	 *
+<span class='line'> 44</span> 	 * Abstract Document suitable for most Objects.&lt;br />&lt;br />
+<span class='line'> 45</span> 	 *
+<span class='line'> 46</span> 	 * Example:
+<span class='line'> 47</span> 	 *
+<span class='line'> 48</span> 	&lt;pre>&lt;code>
+<span class='line'> 49</span> 	 var item = new Aloha.Repository.Document({
+<span class='line'> 50</span> 		id: 1,
+<span class='line'> 51</span> 		repositoryId: 'myrepository',
+<span class='line'> 52</span> 		name: 'Aloha Editor - The HTML5 Editor',
+<span class='line'> 53</span> 		type: 'website',
+<span class='line'> 54</span> 		url:'http://aloha-editor.com',
+<span class='line'> 55</span> 	 });
+<span class='line'> 56</span> 	&lt;/code>&lt;/pre>
+<span class='line'> 57</span> 	 *
+<span class='line'> 58</span> 	 * @param {Object} properties An object with the data.
+<span class='line'> 59</span> 	 * &lt;div class="mdetail-params">&lt;ul>
+<span class='line'> 60</span> <span class='line'> 61</span> 	 * &lt;li>&lt;code>id&lt;/code> : String &lt;div class="sub-desc">Unique identifier&lt;/div>&lt;/li>
+<span class='line'> 62</span> 	 * &lt;li>&lt;code>repositoryId&lt;/code> : String &lt;div class="sub-desc">Unique repository identifier&lt;/div>&lt;/li>
+<span class='line'> 63</span> 	 * &lt;li>&lt;code>name&lt;/code> : String &lt;div class="sub-desc">Name of the object. This name is used to display&lt;/div>&lt;/li>
+<span class='line'> 64</span> 	 * &lt;li>&lt;code>type&lt;/code> : String &lt;div class="sub-desc">The specific object type&lt;/div>&lt;/li>
+<span class='line'> 65</span> 	 * &lt;li>&lt;code>partentId&lt;/code> : String (optional) &lt;div class="sub-desc">&lt;/div>&lt;/li>
+<span class='line'> 66</span> 	 * &lt;li>&lt;code>mimetype&lt;/code> : String (optional) &lt;div class="sub-desc">MIME type of the Content Stream&lt;/div>&lt;/li>
+<span class='line'> 67</span> 	 * &lt;li>&lt;code>filename&lt;/code> : String (optional) &lt;div class="sub-desc">File name of the Content Stream&lt;/div>&lt;/li>
+<span class='line'> 68</span> 	 * &lt;li>&lt;code>length&lt;/code> : String (optional) &lt;div class="sub-desc">Length of the content stream (in bytes)&lt;/div>&lt;/li>
+<span class='line'> 69</span> 	 * &lt;li>&lt;code>url&lt;/code> : String (optional) &lt;div class="sub-desc">URL of the content stream&lt;/div>&lt;/li>
+<span class='line'> 70</span> 	 * &lt;li>&lt;code>renditions&lt;/code> : Array (optional) &lt;div class="sub-desc">Array of different renditions of this object&lt;/div>&lt;/li>
+<span class='line'> 71</span> 	 * &lt;li>&lt;code>localName&lt;/code> : String (optional) &lt;div class="sub-desc">Name of the object. This name is used internally&lt;/div>&lt;/li>
+<span class='line'> 72</span> 	 * &lt;li>&lt;code>createdBy&lt;/code> : String (optional) &lt;div class="sub-desc">User who created the object&lt;/div>&lt;/li>
+<span class='line'> 73</span> 	 * &lt;li>&lt;code>creationDate&lt;/code> : Date (optional) &lt;div class="sub-desc">DateTime when the object was created&lt;/div>&lt;/li>
+<span class='line'> 74</span> 	 * &lt;li>&lt;code>lastModifiedBy&lt;/code> : String (optional) &lt;div class="sub-desc">User who last modified the object&lt;/div>&lt;/li>
+<span class='line'> 75</span> 	 * &lt;li>&lt;code>lastModificationDate&lt;/code> : Date (optional) &lt;div class="sub-desc">DateTime when the object was last modified&lt;/div>&lt;/li>
+<span class='line'> 76</span> 	 * &lt;/ul>&lt;/div>
+<span class='line'> 77</span> 	 *
+<span class='line'> 78</span> 	 */</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">	</span><span class="NAME">Aloha.RepositoryDocument</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Class.extend</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">			</span><span class="NAME">_constructor</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">properties</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">	
+<span class='line'> 82</span> 				</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">p</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">	
+<span class='line'> 84</span> 				</span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'document'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="WHIT">	
+<span class='line'> 86</span> 				</span><span class="COMM">// Basic error checking for MUST attributes</span><span class="WHIT">
+<span class='line'> 87</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">p.id</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">					</span><span class="PUNC">!</span><span class="NAME">p.name</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">					</span><span class="PUNC">!</span><span class="NAME">p.repositoryId</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">				</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="WHIT">	</span><span class="COMM">//				Aloha.Log.error(this, "No valid Aloha Object. Missing MUST property");</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="WHIT">					</span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 94</span> </span><span class="WHIT">	
+<span class='line'> 95</span> 				</span><span class="NAME">GENTICS.Utils.applyProperties</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">	
+<span class='line'> 97</span> 				</span><span class="NAME">this.baseType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'document'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="WHIT">	</span><span class="COMM">//		/**</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">	</span><span class="COMM">//		 * Not implemented method to generate this JS API doc correctly.</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="WHIT">	</span><span class="COMM">//		 */</span><span class="WHIT">
+<span class='line'>102</span> </span><span class="WHIT">	</span><span class="COMM">//		,empty = function() }</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">	
+<span class='line'>104</span> 		</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">	
+<span class='line'>106</span> 	
+<span class='line'>107</span> 	
+<span class='line'>108</span> 	</span><span class="COMM">/**
+<span class='line'>109</span> 	 * @namespace Aloha.Repository
+<span class='line'>110</span> 	 * @class Folder
+<span class='line'>111</span> 	 * @constructor
+<span class='line'>112</span> 	 * Abstract Folder suitable for most strucural Objects.&lt;br />&lt;br />
+<span class='line'>113</span> 	 *
+<span class='line'>114</span> 	 * Example:
+<span class='line'>115</span> 	 *
+<span class='line'>116</span> 	&lt;pre>&lt;code>
+<span class='line'>117</span> 	 var item = new Aloha.Repository.Folder({
+<span class='line'>118</span> 		id: 2,
+<span class='line'>119</span> 		repositoryId: 'myrepository',
+<span class='line'>120</span> 		name: 'images',
+<span class='line'>121</span> 		type: 'directory',
+<span class='line'>122</span> 		parentId:'/www'
+<span class='line'>123</span> 	 });
+<span class='line'>124</span> 	&lt;/code>&lt;/pre>
+<span class='line'>125</span> 	 * @param {Object} properties An object with the data.
+<span class='line'>126</span> 	 * &lt;div class="mdetail-params">&lt;ul>
+<span class='line'>127</span> 	 * &lt;li>&lt;code>id&lt;/code> : String &lt;div class="sub-desc">Unique identifier&lt;/div>&lt;/li>
+<span class='line'>128</span> 	 * &lt;li>&lt;code>repositoryId&lt;/code> : String &lt;div class="sub-desc">Unique repository identifier&lt;/div>&lt;/li>
+<span class='line'>129</span> 	 * &lt;li>&lt;code>name&lt;/code> : String &lt;div class="sub-desc">Name of the object. This name is used to display&lt;/div>&lt;/li>
+<span class='line'>130</span> 	 * &lt;li>&lt;code>type&lt;/code> : String &lt;div class="sub-desc">The specific object type&lt;/div>&lt;/li>
+<span class='line'>131</span> 	 * &lt;li>&lt;code>partentId&lt;/code> : String (optional) &lt;div class="sub-desc">&lt;/div>&lt;/li>
+<span class='line'>132</span> 	 * &lt;li>&lt;code>localName&lt;/code> : String (optional) &lt;div class="sub-desc">Name of the object. This name is used internally&lt;/div>&lt;/li>
+<span class='line'>133</span> 	 * &lt;li>&lt;code>createdBy&lt;/code> : String (optional) &lt;div class="sub-desc">User who created the object&lt;/div>&lt;/li>
+<span class='line'>134</span> 	 * &lt;li>&lt;code>creationDate&lt;/code> : Date (optional) &lt;div class="sub-desc">DateTime when the object was created&lt;/div>&lt;/li>
+<span class='line'>135</span> 	 * &lt;li>&lt;code>lastModifiedBy&lt;/code> : String (optional) &lt;div class="sub-desc">User who last modified the object&lt;/div>&lt;/li>
+<span class='line'>136</span> 	 * &lt;li>&lt;code>lastModificationDate&lt;/code> : Date (optional) &lt;div class="sub-desc">DateTime when the object was last modified&lt;/div>&lt;/li>
+<span class='line'>137</span> 	 * &lt;/ul>&lt;/div>
+<span class='line'>138</span> 	 *
+<span class='line'>139</span> 	 */</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">	</span><span class="NAME">Aloha.RepositoryFolder</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Class.extend</span><span class="PUNC">(</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">		
+<span class='line'>142</span> 		</span><span class="NAME">_constructor</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">properties</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">	
+<span class='line'>144</span> 			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">p</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">		
+<span class='line'>146</span> 			</span><span class="NAME">this.type</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'folder'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>147</span> </span><span class="WHIT">		
+<span class='line'>148</span> 			</span><span class="COMM">// Basic error checking for MUST attributes</span><span class="WHIT">
+<span class='line'>149</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">p.id</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>150</span> </span><span class="WHIT">				</span><span class="PUNC">!</span><span class="NAME">p.name</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT">
+<span class='line'>151</span> </span><span class="WHIT">				</span><span class="PUNC">!</span><span class="NAME">p.repositoryId</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">			</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">		</span><span class="COMM">//		Aloha.Log.error(this, "No valid Aloha Object. Missing MUST property");</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">				</span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">		
+<span class='line'>157</span> 			</span><span class="NAME">GENTICS.Utils.applyProperties</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">properties</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">		
+<span class='line'>159</span> 			</span><span class="NAME">this.baseType</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'folder'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">			
+<span class='line'>161</span> 		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">	</span><span class="COMM">//	/**</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">	</span><span class="COMM">//	* Not implemented method to generate this JS API doc correctly.</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">	</span><span class="COMM">//	*/</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">	</span><span class="COMM">//	,empty = function() {};</span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">	
+<span class='line'>167</span> 	</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>169</span> </span></pre></body></html>
