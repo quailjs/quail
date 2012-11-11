@@ -53,6 +53,14 @@
                     }
                 }});
       }
+      if(typeof quail.options.guideline === 'string') {
+        $.ajax({ url : quail.options.jsonPath + '/guidelines/' + quail.options.guideline +'.json',
+                 async : false,
+                 dataType : 'json',
+                 success : function(data) {
+                    quail.options.guideline = data;
+                }});
+      }
       quail.runTests();
       if(typeof quail.options.completeCallback !== 'undefined') {
         var results = {totals : {severe : 0, moderate : 0, suggestion : 0 },
