@@ -315,7 +315,7 @@
     },
     "documentMetaNotUsedWithTimeout": {
         "type": "selector",
-        "selector": "meta[http-equiv=refresh]:not(meta[http-equiv=refresh][content^=0;]",
+        "selector": "meta[http-equiv=refresh]:not(meta[content^=0]",
         "severity": "severe"
     },
     "documentReadingDirection": {
