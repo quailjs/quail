@@ -50,7 +50,7 @@ To use QUAIL, you will need to make a simple jQuery/Sizzle object (in this examp
 
 The `quail` function accepts a single object with the following items:
   
-  - **jsonPath* - *Required* - The path to the `resources` folder where QUAIL is located. Certain tests load additional strings like emoticons or filler words from JSON files to save space. If a test ends up needing to load additional resources, this will be required.
+  - **jsonPath** - *Required* - The path to the `resources` folder where QUAIL is located. Certain tests load additional strings like emoticons or filler words from JSON files to save space. If a test ends up needing to load additional resources, this will be required.
   - **guideline** - *Required* - Either the name of a guideline file that can be found in the *jsonPath* directive, or an array of test names.
   - **accessibilityTests** - *Optional* - If you wish to load your own custom test definitions, this will prevent QUAIL from using it's own `tests.json` file to load the tests. This is also useful if you are loading `tests.json` through your own method and don't want QUAIL to do it for you.
   - **callback** - *Optional* - A callback that will be called everytime an item fails a test. This callback recieves an object with the following items:
