@@ -54,11 +54,14 @@ The `quail` function accepts a single object with the following items:
   - **guideline** - *Required* - Either the name of a guideline file that can be found in the *jsonPath* directive, or an array of test names.
   - **accessibilityTests** - *Optional* - If you wish to load your own custom test definitions, this will prevent QUAIL from using it's own `tests.json` file to load the tests. This is also useful if you are loading `tests.json` through your own method and don't want QUAIL to do it for you.
   - **testFailed** - *Optional* - A callback that will be called everytime an item fails a test. This callback recieves an object with the following items:
+  
     - **element** - The native jQuery/Sizzle object that represents the DOM element.
     - **testName** - The name of the test that failed
     - **severity** - The severity of the test.
     - **options** - Additional options as passed by the test definition.
+    
   - **complete** - *Optional* - Called when all the tests are completed. This is useful for reporting, as it gets a summary of all resutls. This callback gets a single object with the following items:
+  
     - **totals** - An object with the total number of severe, moderate, and suggestion tests which failed.
     - **results** - An object with all the elements and tests that failed.
   
