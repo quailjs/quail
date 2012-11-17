@@ -27,7 +27,7 @@
     
     options : { },
     
-    testCallbacks : { 
+    testCallbacks : {
       'placeholder'    : 'placeholderTest',
       'label'          : 'labelTest',
       'header'         : 'headerOrderTest',
@@ -166,7 +166,7 @@
       quail.html.find(options.selector).each(function() {
         var text;
         if(typeof options.attribute !== 'undefined') {
-          if(typeof $(this).attr(options.attribute) === 'undefined' || 
+          if(typeof $(this).attr(options.attribute) === 'undefined' ||
                 (options.attribute === 'tabindex' &&
                   !$(this).attr(options.attribute)
                 )
@@ -281,7 +281,7 @@
         $body.css('background-color', background);
         if((options.algorithm === 'wcag' && !quail.colors.passesWCAG($body)) ||
            (options.algorithm === 'wai' && !quail.colors.passesWAI($body))) {
-           quail.testFails(testName, $body);  
+           quail.testFails(testName, $body);
         }
       }
       quail.html.find(options.selector).find('*').each(function() {
@@ -308,7 +308,7 @@
           }
         }
         else {
-          if($.hasEventListener($element, options.searchEvent.replace('on', '')) && 
+          if($.hasEventListener($element, options.searchEvent.replace('on', '')) &&
              (typeof options.correspondingEvent === 'undefined' ||
              !$.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
             quail.testFails(testName, $(this));
@@ -436,7 +436,7 @@
         if(!quail.containsReadableText($(this), true) && !($(this).attr('name') && !$(this).attr('href'))) {
           quail.testFails('aMustContainText', $(this));
         }
-      }); 
+      });
     },
     
     aSuspiciousLinkText : function() {
@@ -519,7 +519,7 @@
     },
     
     documentStrictDocType : function() {
-      if(typeof document.doctype === 'undefined' || 
+      if(typeof document.doctype === 'undefined' ||
          !document.doctype ||
          document.doctype.systemId.indexOf('strict') === -1) {
         quail.testFails('documentStrictDocType', quail.html.find('html'));
@@ -572,7 +572,6 @@
     
     formWithRequiredLabel : function() {
        var redundant = quail.loadString('redundant');
-       var labels = [];
        var lastStyle, currentStyle = false;
        redundant.required[redundant.required.indexOf('*')] = /\*/g;
        quail.html.find('label').each(function() {
@@ -593,7 +592,6 @@
     
     headersUseToMarkSections : function() {
       quail.html.find('p').each(function() {
-        var set = false;
         var $paragraph = $(this);
         $paragraph.find('strong:first, em:first, i:first, b:first').each(function() {
           if($paragraph.text() === $(this).text()) {
@@ -657,7 +655,7 @@
         var width = ($(this).width()) ? $(this).width() : parseInt($(this).attr('width'), 10);
         var height = ($(this).height()) ? $(this).height() : parseInt($(this).attr('height'), 10);
         if(quail.isUnreadable($(this).attr('alt').trim()) &&
-           $(this).attr('alt').length > 0 && 
+           $(this).attr('alt').length > 0 &&
            width > 50 &&
            height > 50) {
             quail.testFails('imgImportantNoSpacerAlt', $(this));
@@ -737,7 +735,6 @@
     },
     
     labelsAreAssignedToAnInput : function() {
-      var existing = [];
       quail.html.find('label').each(function() {
         if(!$(this).attr('for')) {
           quail.testFails('labelsAreAssignedToAnInput', $(this));
@@ -990,7 +987,7 @@
     
     getWAIDiffs : function(foreground, background) {
        var diff = { };
-       diff.red = Math.abs(foreground.r - background.r); 
+       diff.red = Math.abs(foreground.r - background.r);
        diff.green = Math.abs(foreground.g - background.g);
        diff.blue = Math.abs(foreground.b - background.b);
        return diff;
