@@ -21,7 +21,7 @@ var quailTest = {
                       guideline : [ testName ],
                       reset : true,
                       accessibilityTests : accessibilityTests,
-                      completeCallback : function(results) {
+                      complete : function(results) {
                         quailTest.results = results.results;
                       }});
   },

@@ -31,7 +31,7 @@
                       guideline : '508',
                       reset : true,
                       accessibilityTests : data,
-                      callback : function(event) {
+                      testFailed : function(event) {
                         if(event.severity == 'severe' && event.testName == 'imgHasAlt') {
                           testPasses = true;
                         }

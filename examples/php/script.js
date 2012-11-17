@@ -10,11 +10,11 @@ $(document).ready(function() {
      var $link = $(this);
      $('#content').quail({ guideline : guideline,
       jsonPath : '../../src/resources',
-      callback : function(event) {
+      testFailed : function(event) {
         event.element.addClass('quail-result')
                      .addClass(event.severity);            
       },
-      completeCallback : function(results) {
+      complete : function(results) {
         $.post('stats.php', results.totals);
         $link.html('Done checking. Severe errors: <strong>' +
                    results.totals.severe +

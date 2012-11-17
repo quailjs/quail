@@ -31,7 +31,7 @@
   	 $('#test').quail({ guideline : [ 'imgHasAlt' ],
 	                    jsonPath : '../../src/resources',
 	                    accessibilityTests : accessibilityTests,
-	                    callback : function(event) {
+	                    testFailed : function(event) {
   	                    event.element.addClass('quail-result')
   	                         .addClass(event.severity)
   	                         .before('<span class="quail-message">This is a message about why you should add alt text.</span>');

@@ -31,7 +31,7 @@
                       guideline : [ 'imgHasAlt' ],
                       reset : true,
                       accessibilityTests : data,
-                      completeCallback : function(results) {
+                      complete : function(results) {
                         console.log(results);
                         if(results.totals.severe == 1) {
                           testPasses = true;

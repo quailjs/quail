@@ -45,7 +45,7 @@
   		$('.aloha-editable-active').quail({ guideline : [ 'imgHasAlt', 'documentAbbrIsUsed' ],
 	                    jsonPath : '../../src/resources',
 	                    accessibilityTests : accessibilityTests,
-	                    callback : function(event) {
+	                    testFailed : function(event) {
   	                    
   	                    if(event.testName == 'documentAbbrIsUsed') {
     	                    event.element.html(event.element.html().replace(event.options.acronym, '<span class="quail-result moderate" title="' + accessibilityTests.documentAbbrIsUsed.title +'">' + event.options.acronym + '</span>'));

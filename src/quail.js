@@ -62,13 +62,13 @@
                 }});
       }
       quail.runTests();
-      if(typeof quail.options.completeCallback !== 'undefined') {
+      if(typeof quail.options.complete !== 'undefined') {
         var results = {totals : {severe : 0, moderate : 0, suggestion : 0 },
                       results : quail.accessibilityResults };
         $.each(results.results, function(testName, result) {
           results.totals[quail.accessibilityTests[testName].severity] += result.length;
         });
-        quail.options.completeCallback(results);
+        quail.options.complete(results);
       }
     },
     
@@ -76,11 +76,11 @@
       options = options || {};
       
       quail.accessibilityResults[testName].push($element);
-      if(typeof quail.options.callback !== 'undefined') {
+      if(typeof quail.options.testFailed !== 'undefined') {
         var severity = (typeof quail.accessibilityTests[testName].severity !== 'undefined') ?
                        quail.accessibilityTests[testName].severity :
                        'unknown';
-        quail.options.callback({element : $element,
+        quail.options.testFailed({element : $element,
                                testName : testName,
                                severity : severity,
                                options  : options
