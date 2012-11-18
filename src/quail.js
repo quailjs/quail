@@ -1,13 +1,4 @@
-/*
- * QUAIL Accessibility Information Library - jQuery Plugin
- * Powerful accessibility checking with jQuery
- *
- * Requires: jQuery v1.3+
- *
- * Dual licensed under the MIT and GPL licenses:
- *   http://www.opensource.org/licenses/mit-license.php
- *   http://www.gnu.org/licenses/gpl.html
- */
+/*! QUAIL quail-lib.org | quail-lib.org/license */
 
 ;(function($) {
 
