@@ -1,7 +1,3 @@
-php/tests/simpletest
-jquery/tests/jquery-qunit
 .htaccess
-node/*
-php/tests/selector.php
-php/jparser*
 *.DS_Store
+examples/wysiwyg/editors/*
