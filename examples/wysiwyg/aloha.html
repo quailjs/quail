@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>TinyMCE Example</title>
+	<link rel="stylesheet" href="editors/aloha/aloha/css/aloha.css" type="text/css">
+		<link rel="stylesheet" href="../common/style.css"/>
+	</head>
+	<body>
+	<div id="test">
+	 <div id="content"><p>Here is a picture of my dog, Kogepan:</p>
+		<p>
+		  <img src="../common/kogepan.png">
+		</p>
+		<p>
+		  I should really use an ABBR tag in this paragraph because QUAIL is an acronym.
+		</p>
+		</div>
+	</div>
+	
+	<script src="../../libs/jquery/jquery.js"></script>
+	<script src="editors/aloha/aloha/lib/require.js"></script>
+	<script src="editors/aloha/aloha/lib/vendor/jquery-1.7.2.js"></script>
+	<script src="editors/aloha/aloha/lib/aloha.js" data-aloha-plugins="common/ui,common/format,common/highlighteditables,common/link"></script>
+	<script src="../../src/quail.js"></script>
+	<script type="text/javascript" >
+	 Aloha.ready( function() { 
+		Aloha.jQuery('#content').aloha();
+		
+	});
+
+  </script >
+	</body>
+</html>

@@ -1,3 +1,6 @@
 .htaccess
 *.DS_Store
-examples/wysiwyg/editors/*
+examples/wysiwyg/editors/aloha/*
+examples/wysiwyg/editors/tinymce/*
+examples/wysiwyg/editors/ckeditor/*
+

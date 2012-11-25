@@ -19,3 +19,13 @@
   color: #fff;
   text-decoration: none;
 }
+
+body {
+  padding: 40px;
+}
+
+textarea {
+  width: 600px;
+  height: 400px;
+  margin: 40px auto;
+}
