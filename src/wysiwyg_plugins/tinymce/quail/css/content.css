@@ -3,4 +3,4 @@
   .quail-result.moderate { border: 3px dashed orange; }
   .quail-result.reccomendation { border: 3px solid green; }
 
-.quail-message { padding: 4px; border-radius: 2px; background: #d8b3b3; }
+.quail-message { position: fixed; background: #fff; color: #000; border: 1px solid black; padding: 10px;}

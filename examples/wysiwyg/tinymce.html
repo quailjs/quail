@@ -30,7 +30,10 @@
           }
        },
        guideline : [ 'imgAltNotEmptyInAnchor' ],
-	     jsonPath  : '../../src/resources'
+	     jsonPath  : '../../src/resources',
+	     tinyMCEMessage : function(event) {
+  	     return 'Event fired ' + event.testName;
+	     }
 	    };
   	  tinyMCE.init({
         // General options
