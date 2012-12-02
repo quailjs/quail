@@ -20,16 +20,31 @@
 	<script src="../../libs/jquery/jquery.js"></script>
 	<script src="editors/ckeditor/ckeditor.js"></script>
 	<script src="../../src/quail.js"></script>
-
+	<script src="../../src/wysiwyg_plugins/ckeditor/quail/plugin.js"></script>
 
 	<script type="text/javascript" >
 	(function($) {
 	  $(document).ready(function() {
+  	  var options = {
+  	    accessibilityTests : {   
+          "imgAltNotEmptyInAnchor": {
+              "type": "custom",
+              "callback": "imgAltNotEmptyInAnchor",
+              "severity": "severe"
+          }
+       },
+       guideline : [ 'imgAltNotEmptyInAnchor' ],
+	     jsonPath  : '../../src/resources',
+	     ckEditorMessage : function(event) {
+  	     return 'Event fired ' + event.testName;
+	     }
+	    };
   	  CKEDITOR.replace($('.ckeditor').get(0), {
     	  toolbar: [ 
     	    [ 'Quail' ]
 				],
-    	  plugins : 'quail',
+    	  extraPlugins : 'quail',
+    	  quailOptions : options
   	  });
 	  });
 	})(jQuery);
