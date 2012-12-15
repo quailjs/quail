@@ -1,0 +1,15 @@
+body {
+	background: #ff0b00;
+}
+
+div#test {
+	background: top left no-repeat url(nothing.png) #212121;
+}
+
+div#test .low {
+	color: rgb(14, 14, 14);
+}
+
+.highcontrast {
+	color: white;
+}

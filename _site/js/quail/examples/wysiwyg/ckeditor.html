@@ -1,0 +1,53 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>CKEditor Example</title>
+		<link rel="stylesheet" href="../common/style.css"/>
+	</head>
+	<body>
+	<div id="test">
+	 <form>
+	 <textarea class="ckeditor">
+	 &lt;p&gt;This is an image of my dog, Kogepan:&lt;/p&gt;
+	 &lt;a href="link.test"&gt;
+	 &lt;img src=&quot;../common/kogepan.png&quot;&gt;
+	 &lt;/a&gt;
+	 </textarea>
+	 </form>
+	</div>
+	
+	<script src="../../libs/jquery/jquery.js"></script>
+	<script src="editors/ckeditor/ckeditor.js"></script>
+	<script src="../../src/quail.js"></script>
+	<script src="../../src/wysiwyg_plugins/ckeditor/quail/plugin.js"></script>
+
+	<script type="text/javascript" >
+	(function($) {
+	  $(document).ready(function() {
+  	  var options = {
+  	    accessibilityTests : {   
+          "imgAltNotEmptyInAnchor": {
+              "type": "custom",
+              "callback": "imgAltNotEmptyInAnchor",
+              "severity": "severe"
+          }
+       },
+       guideline : [ 'imgAltNotEmptyInAnchor' ],
+	     jsonPath  : '../../src/resources',
+	     ckEditorMessage : function(event) {
+  	     return 'Event fired ' + event.testName;
+	     }
+	    };
+  	  CKEDITOR.replace($('.ckeditor').get(0), {
+    	  toolbar: [ 
+    	    [ 'Quail' ]
+				],
+    	  extraPlugins : 'quail',
+    	  quailOptions : options
+  	  });
+	  });
+	})(jQuery);
+	   </script >
+	</body>
+</html>

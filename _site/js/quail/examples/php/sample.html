@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Sample page | My CMS</title>
+		<link rel="stylesheet" href="../common/style.css"/>
+		<link rel="stylesheet" href="../common/bootstrap.css"/>
+	</head>
+	<body>
+	<div class="container">
+	<div class="navbar navbar-fixed">
+    <div class="navbar-inner">
+      <a class="brand" href="#">My CMS</a>
+      <ul class="nav">
+        <li><a href="index.php">Settings</a></li>
+        <li class="active"><a href="sample.html">Sample page</a></li>
+      </ul>
+    </div>
+  </div>
+	<h1 class="title">Page one</h1>
+	<div class="row">
+  	<div class="span9">
+    	
+  	  <div id="content">
+  	    <p><b>This is a sample page with a ton of issues. First, this should be a header</b></p>
+  	    <p>There's also some un-marked abbreviations that QUAIL can look out for. Oops, missed another one.</p>
+  	    <p>In a classic example, here's an image. With no alt text: <img src="../common/kogepan.png" style="display: block;"></p>
+  	    <p>Ouch, that hurt. Here's one where the alt text is the same as the file name: <img src="../common/kogepan.png" style="display: block;" alt="kogepan.png">
+  	    </p>
+  	    
+  	  </div>
+  	</div>
+  	<aside class="span3">
+  	  <h2>Note</h2>
+  	  <p>
+  	    When you click the "Enable accessibility tests" button, it will only check the content area on the left. We are only running quail with the command <code>$('#content').quail(...)</code> to ensure we aren't checking any template areas of the page. This is great to only show content editors problems with a section (or sections) of a page without pointing out errors they have no control over.
+  	  </p>
+  	</aside>
+	</div>
+	</div>
+	<script src="../../libs/jquery/jquery.js"></script>
+	<script src="../../src/quail.js"></script>
+	<script src="script.js"></script>
+	</body>
+</html>
+	

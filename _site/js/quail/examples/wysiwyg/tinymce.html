@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>TinyMCE Example</title>
+		<link rel="stylesheet" href="../common/style.css"/>
+	</head>
+	<body>
+	<div id="test">
+	 <textarea>
+	 &lt;p&gt;This is an image of my dog, Kogepan:&lt;/p&gt;
+	 &lt;a href="link.test"&gt;
+	 &lt;img src=&quot;../common/kogepan.png&quot;&gt;
+	 &lt;/a&gt;
+	 </textarea>
+	</div>
+	
+	<script src="../../libs/jquery/jquery.js"></script>
+	<script src="editors/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+	<script src="../../src/quail.js"></script>
+	<script src="../../src/wysiwyg_plugins/tinymce/quail/editor_plugin.js"></script>
+	<script type="text/javascript">
+	  (function($) {
+	    var options = {
+  	    accessibilityTests : {   
+          "imgAltNotEmptyInAnchor": {
+              "type": "custom",
+              "callback": "imgAltNotEmptyInAnchor",
+              "severity": "severe"
+          }
+       },
+       guideline : [ 'imgAltNotEmptyInAnchor' ],
+	     jsonPath  : '../../src/resources',
+	     tinyMCEMessage : function(event) {
+  	     return 'Event fired ' + event.testName;
+	     }
+	    };
+  	  tinyMCE.init({
+        // General options
+        mode : "textareas",
+        theme : "advanced",
+        plugins : "quail",
+        quailOptions: options,
+        theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,quail"
+      });
+	  })(jQuery);
+	</script>
+	</body>
+</html>

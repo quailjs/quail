@@ -1,0 +1,44 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../common/style.css"/>
+	</head>
+	<body>
+	<div id="test">
+	 <p>This is an image of my dog, Kogepan:</p>
+	 <img src="../common/kogepan.png">
+	</div>
+	
+	<script src="../../libs/jquery/jquery.js"></script>
+	<script src="../../src/quail.js"></script>
+	<script>
+	 $(document).ready(function() {
+  	 
+  	 /** Just to make this sample work without a server,
+  	     we are hard-coding the list of tests instead of
+  	     loading it using JSONP.
+  	 **/
+  	 var accessibilityTests = {
+            "imgHasAlt": {
+                "type": "selector",
+                "selector": "img:not(img[alt])",
+                "severity": "severe"
+            }
+          };
+  	 
+  	 $('#test').quail({ guideline : [ 'imgHasAlt' ],
+	                    jsonPath : '../../src/resources',
+	                    accessibilityTests : accessibilityTests,
+	                    testFailed : function(event) {
+  	                    event.element.addClass('quail-result')
+  	                         .addClass(event.severity)
+  	                         .before('<span class="quail-message">This is a message about why you should add alt text.</span>');
+  	                    
+	                    }});
+	 })
+	 
+	</script>
+	</body>
+</html>

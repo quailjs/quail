@@ -1,3 +1,4 @@
+_site/*
 .htaccess
 *.DS_Store
 examples/wysiwyg/editors/aloha/*

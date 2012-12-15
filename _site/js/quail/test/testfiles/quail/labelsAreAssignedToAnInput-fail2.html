@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>All labels have an input item - pass</title>
+	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+	</head>
+	<body>
+		<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup, will be hidden</div>
+
+	<form>
+		<label for="name">Your Name</label>
+		<input type="text" name="name" id="name">
+		<label for="something">Orphaned Label</label>
+	</form>
+	<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+	<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+  <script id="qunit-quail" src="../../../src/quail.js"></script>
+  <script id="qunit-composite" src="../../composite.js"></script>
+  <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
+  <script id="qunit-script">
+  test('labelsAreAssignedToAnInput', function() {
+    quailTest.runTest( 'labelsAreAssignedToAnInput', 'labelsAreAssignedToAnInput-fail2.html');
+    equal(true, quailTest.confirmIsTag('label'), 'Label is orphaned');
+  });
+  </script>
+
+	</body>
+</html>
