@@ -638,8 +638,8 @@
         "severity": "severe"
     },
     "imgNonDecorativeHasAlt": {
-        "type": "selector",
-        "selector": "img[alt=]",
+        "type": "custom",
+        "callback": "imgNonDecorativeHasAlt",
         "severity": "moderate"
     },
     "imgNotReferredToByColorAlone": {

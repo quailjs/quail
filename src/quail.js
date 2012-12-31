@@ -732,6 +732,15 @@
         }
       });
     },
+    
+    imgNonDecorativeHasAlt : function() {
+      quail.html.find('img[alt]').each(function() {
+        if(quail.isUnreadable($(this).attr('alt')) &&
+           ($(this).width() > 100 || $(this).height() > 100)) {
+             quail.testFails('imgNonDecorativeHasAlt', $(this));
+           }
+      });
+    },
 
     imgAltNotEmptyInAnchor : function() {
       quail.html.find('a img').each(function() {
