@@ -1031,7 +1031,7 @@
         
         videoID : '',
         
-        apiUrl : '//gdata.youtube.com/feeds/api/videos/?q=%video&caption&v=2&alt=json',
+        apiUrl : 'http://gdata.youtube.com/feeds/api/videos/?q=%video&caption&v=2&alt=json',
         
         isVideo : function(url) {
           var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
