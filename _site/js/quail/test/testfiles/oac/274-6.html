@@ -1,44 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
-<title>Testfile - Check #274.6 - Positive</title>
-
-<script type="text/JavaScript"> 
-  function goToMirror(theInput) {
-   var mirrorSite = "http://download." + theInput.value + "/"; 
-   window.open(mirrorSite); 
-  }
-</script>
-
-<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen"></head>
-<body><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div>
-
-<p>Please select a mirror download site:</p> 
-
-<form name="mirror_form" id="mirror_form" action="" method="get">
-<p> 
-<input type="radio" onclick="goToMirror(this);" name="mirror" 
-id="mirror_belnet" value="belnet.be" /> 
-<label for="mirror_belnet">belnet (<abbr>BE</abbr>)</label><br /> 
-<input type="radio" onclick="goToMirror(this);" name="mirror" 
-id="mirror_surfnet" value="surfnet.nl" /> 
-<label for="mirror_surfnet">surfnet (<abbr>NL</abbr>)</label><br /> 
-<input type="radio" onclick="goToMirror(this);" name="mirror" 
-id="mirror_puzzle" value="puzzle.ch" /> 
-<label for="mirror_puzzle">puzzle (<abbr>CH</abbr>)</label><br /> 
-<input type="radio" onclick="goToMirror(this);" name="mirror" 
-id="mirror_voxel" value="voxel.com" /> 
-<label for="mirror_voxel">voxel (<abbr>US</abbr>)</label><br /> 
-</p> 
-</form>
-
-<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
-<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
-<script id="qunit-quail" src="../../../src/quail.js"></script>
-<script id="qunit-composite" src="../../composite.js"></script>
-<script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
-</body>
-</html>

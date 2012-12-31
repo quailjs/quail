@@ -4,4 +4,4 @@ _site/*
 examples/wysiwyg/editors/aloha/*
 examples/wysiwyg/editors/tinymce/*
 examples/wysiwyg/editors/ckeditor/*
-
+_site
