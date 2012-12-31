@@ -5,16 +5,31 @@
 		<title>Text size is not too small - fail</title>
 	<style type="text/css">
 
-	p {
-		font-size: .4em;
+	#testp {
+		font-size: .06em;
 	}
 
 	</style>
 		</style>
+	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
 	</head>
 	<body>
-	<p>
+		<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup, will be hidden</div>
+	<p id="testp">
 		This text is too small.
 	</p>
-	</body>
+	<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+	<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+  <script id="qunit-quail" src="../../../src/quail.js"></script>
+  <script id="qunit-composite" src="../../composite.js"></script>
+  <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
+  <script id="qunit-script">
+  test('textIsNotSmall', function() {
+    quailTest.runTest( 'textIsNotSmall', 'textIsNotSmall-fail.html');
+    equal(true, quailTest.confirmIsTag('p'), 'Paragraph is too small');    
+  });
+  </script>	</body>
 </html>

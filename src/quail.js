@@ -165,6 +165,8 @@
     accessibilityResults : { },
 
     accessibilityTests : { },
+    
+    textSelector : 'p, h1, h2, h3, h4, h5, h6, div, pre, blockquote, aside, article, details, summary, figcaption, footer, header, hgroup, nav, section',
 
     loadTests : function() {
 
@@ -192,7 +194,14 @@
     },
     
     loadHasEventListener : function() {
-      $.ajax({url : quail.options.jsonPath + '/../jquery/jquery.hasEventListener/jQuery.hasEventListener-2.0.3.min.js',
+      $.ajax({url : quail.options.jsonPath + '/../../libs/jquery.hasEventListener/jQuery.hasEventListener-2.0.3.min.js',
+              async : false,
+              dataType : 'script'
+            });
+    },
+    
+    loadPixelToEm : function() {
+      $.ajax({url : quail.options.jsonPath + '/../../libs/jquery.pxToEm/pxem.jQuery.js',
               async : false,
               dataType : 'script'
             });
@@ -982,6 +991,22 @@
             quail.testFails('tableWithMoreHeadersUseID', $table);
           }
         });
+      });
+    },
+    
+    textIsNotSmall : function() {
+      if(typeof jQuery.toPx === 'undefined') {
+        quail.loadPixelToEm();
+      }
+      quail.html.find(quail.textSelector).each(function() {
+        var fontSize = $(this).css('font-size');
+        if(fontSize.search('em') > 0) {
+          fontSize = $(this).toPx({scope : quail.html});
+        }
+        fontSize = parseInt(fontSize.replace('px', ''), 10);
+        if(fontSize < 10) {
+          quail.testFails('textIsNotSmall', $(this));
+        }
       });
     },
     

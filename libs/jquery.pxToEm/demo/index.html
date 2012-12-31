@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery-Pixel-Em-Converter</title>
+	<link rel="shortcut icon" href="/images/favicon2.ico" type="image/x-icon" />
+	<link href="/style/demoPages" media="screen" rel="Stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script src="../pxem.jQuery.js" type="text/javascript"></script>	
+	<style type="text/css">
+		.A,.B,.C,.D { margin: 5px 5px 5px 0; padding: 5px 5px 5px 0; border: 1px solid #333; border-left: 0;  position: relative;  }
+		.A { font-size: 2em; width: 90%; }
+		.B { font-size: 2em; }
+		.C { font-size: .5em; }
+		.D { font-size: 5.5em; }
+		.test { background: #eee; margin: 0; border: 1px dotted #666; padding: 0; line-height: 1em; }
+		.labeltext { font-size: 12px; white-space: nowrap; position: absolute; top: 10px; right: 10px; line-height: 1 !important; background: url(arrow.gif) 0 50% no-repeat; padding: 0 0 0 15px;}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$('div:not(#demoHeader)').each(function(){
+				var emval = $(200).toEm({scope: $(this)});
+				$('<span class="labeltext"><strong>width:</strong> '+ emval +'</span>')	
+			    	.prependTo(this);
+			    $('<div class="test"/>')
+			    	.width( emval )
+			    	.text('Abc')
+			    	.prependTo(this);
+			    
+			    
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<div class="A">
+		<div class="B">
+			<div class="C">
+				<div class="D">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
