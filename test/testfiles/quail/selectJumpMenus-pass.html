@@ -2,8 +2,14 @@
 <html>
 	<head>
 		<title>no select jump menus - pass</title>
+	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
 	</head>
 	<body>
+	<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup, will be hidden</div>
+
 	<form>
 		<select id="jumpie" name="jumpie">
 			<option value="home.html">Home</option>
@@ -11,5 +17,16 @@
 		</select>
 		<input type="submit" value="go!">
 	</form>
+	<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+	<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+  <script id="qunit-quail" src="../../../src/quail.js"></script>
+  <script id="qunit-composite" src="../../composite.js"></script>
+  <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
+  <script id="qunit-script">
+  test('selectJumpMenu', function() {
+    quailTest.runTest( 'selectJumpMenu', 'selectJumpMenu-pass.html');
+    equal(true, quailTest.confirmIsEmpty(), 'Item is empty');    
+  });
+  </script>
 	</body>
 </html>

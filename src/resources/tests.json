@@ -1055,9 +1055,9 @@
         "selector": "select:not(select:has(optgroup)) option:nth-child(5)",
         "severity": "moderate"
     },
-    "selectJumpMenus": {
+    "selectJumpMenu": {
         "type": "custom",
-        "callback": "selectJumpMenus",
+        "callback": "selectJumpMenu",
         "severity": "moderate"
     },
     "siteMap": {
