@@ -108,8 +108,54 @@
       return (text.trim().length) ? false : true;
     },
 
+    /**
+     * Read more about this function here: https://github.com/kevee/quail/wiki/Layout-versus-data-tables
+     */
     isDataTable : function(table) {
-      return (table.find('th').length && table.find('tr').length > 2) ? true : false;
+      //If there are less than three rows, why do a table?
+      if(table.find('tr').length < 3) {
+        return false;
+      }
+      //If you are scoping a table, it's probably not being used for layout
+      if(table.find('th[scope]').length) {
+        return true;
+      }
+      var numberRows = table.find('tr:has(td)').length;
+      //Check for odd cell spanning
+      var spanCells = table.find('td[rowspan], td[colspan]');
+      var isDataTable = true;
+      if(spanCells.length) {
+        var spanIndex = {};
+        spanCells.each(function() {
+          if(typeof spanIndex[$(this).index()] === 'undefined') {
+            spanIndex[$(this).index()] = 0;
+          }
+          spanIndex[$(this).index()]++;
+        });
+        $.each(spanIndex, function(index, count) {
+          if(count < numberRows) {
+            isDataTable = false;
+          }
+        });
+      }
+      //If there are sub tables, but not in the same column row after row, this is a layout table
+      var subTables = table.find('table');
+      if(subTables.length) {
+        var subTablesIndexes = {};
+        subTables.each(function() {
+          var parentIndex = $(this).parent('td').index();
+          if(parentIndex !== false && typeof subTablesIndexes[parentIndex] === 'undefined') {
+            subTablesIndexes[parentIndex] = 0;
+          }
+          subTablesIndexes[parentIndex]++;
+        });
+        $.each(subTablesIndexes, function(index, count) {
+          if(count < numberRows) {
+            isDataTable = false;
+          }
+        });
+      }
+      return isDataTable;
     },
 
     html : { },
@@ -254,6 +300,40 @@
           return 1;
         }
         return matchedWord.length;
+      }
+    },
+    
+    statistics : {
+    
+      setDecimal : function( num, numOfDec ){
+        var pow10s = Math.pow( 10, numOfDec || 0 );
+        return ( numOfDec ) ? Math.round( pow10s * num ) / pow10s : num;
+      },
+      
+      average : function( numArr, numOfDec ){
+        var i = numArr.length,
+          sum = 0;
+        while( i-- ){
+          sum += numArr[ i ];
+        }
+        return quail.statistics.setDecimal( (sum / numArr.length ), numOfDec );
+      },
+      
+      variance : function( numArr, numOfDec ){
+        var avg = quail.statistics.average( numArr, numOfDec ),
+          i = numArr.length,
+          v = 0;
+       
+        while( i-- ){
+          v += Math.pow( (numArr[ i ] - avg), 2 );
+        }
+        v /= numArr.length;
+        return quail.statistics.setDecimal( v, numOfDec );
+      },
+      
+      standardDeviation : function( numArr, numOfDec ){
+        var stdDev = Math.sqrt( quail.statistics.variance( numArr, numOfDec ) );
+        return quail.statistics.setDecimal( stdDev, numOfDec );
       }
     },
     
