@@ -137,5 +137,6 @@
   "svgContainsTitle",
   "documentIsWrittenClearly",
   "cssTextHasContrast",
-  "headersHaveText"
+  "headersHaveText",
+  "tableUsesScopeForRow"
 ]

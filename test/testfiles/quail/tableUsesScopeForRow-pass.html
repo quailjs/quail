@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Table uses scope for row headers - Fail</title>
+	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+	</head>
+	<body>
+	<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup, will be hidden</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Should be scoped</th>
+        <th>Item two</th>
+        <th>Item three</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"><strong>Row one</strong></th>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th scope="row">Row two</th>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+    </tbody>
+  </table>
+
+	<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+	<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+<script id="qunit-quail" src="../../../src/quail.js"></script>
+<script id="qunit-composite" src="../../composite.js"></script>
+<script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
+<script id="qunit-script">
+test('tableUsesScopeForRow', function() {
+  quailTest.runTest( 'tableUsesScopeForRow', 'tableUsesScopeForRow-pass.html');
+  equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
+});
+</script>
+	</body>
+</html>

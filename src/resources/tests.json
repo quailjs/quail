@@ -1152,6 +1152,11 @@
         "callback": "tableUseColGroup",
         "severity": "suggestion"
     },
+    "tableUsesScopeForRow": {
+        "type": "custom",
+        "callback": "tableUsesScopeForRow",
+        "severity": "moderate"
+    },
     "tableUsesAbbreviationForHeader": {
         "type": "custom",
         "callback": "tableUsesAbbreviationForHeader",

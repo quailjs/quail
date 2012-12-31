@@ -116,5 +116,6 @@
   "skipToContentLinkProvided",
   "svgContainsTitle",
   "cssTextHasContrast",
-  "headersHaveText"
+  "headersHaveText",
+  "tableUsesScopeForRow"
 ]

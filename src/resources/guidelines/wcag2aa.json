@@ -134,5 +134,6 @@
   "formDeleteIsReversable",
   "svgContainsTitle",
   "cssTextHasContrast",
-  "headersHaveText"
+  "headersHaveText",
+  "tableUsesScopeForRow"
 ]

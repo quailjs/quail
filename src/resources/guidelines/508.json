@@ -47,5 +47,6 @@
   "radioHasLabel",
   "skipToContentLinkProvided",
   "documentAutoRedirectNotUsed",
-  "headersHaveText"
+  "headersHaveText",
+  "tableUsesScopeForRow"
 ]
