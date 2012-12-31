@@ -1010,6 +1010,51 @@
       });
     },
     
+    videosEmbeddedOrLinkedNeedCaptions : function() {
+      quail.html.find('a').each(function() {
+        var $link = $(this);
+        $.each(quail.videoServices, function(type, callback) {
+          if(callback.isVideo($link.attr('href'))) {
+            callback.hasCaptions(function(hasCaptions) {
+              if(!hasCaptions) {
+                quail.testFails('videosEmbeddedOrLinkedNeedCaptions', $link);
+              }
+            });
+          }
+        });
+      });
+    },
+    
+    videoServices : {
+      
+      youTube : {
+        
+        videoID : '',
+        
+        apiUrl : '//gdata.youtube.com/feeds/api/videos/?q=%video&caption&v=2&alt=json',
+        
+        isVideo : function(url) {
+          var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+          var match = url.match(regExp);
+          if (match && match[7].length === 11) {
+            quail.videoServices.youTube.videoID = match[7];
+            return true;
+          }
+          return false;
+        },
+        
+        hasCaptions : function(callback) {
+          $.ajax({url : this.apiUrl.replace('%video', this.videoID),
+                  async : false,
+                  dataType : 'json',
+                  success : function(data) {
+                    callback((data.feed.openSearch$totalResults.$t > 0) ? true : false);
+                  }
+          });
+        }
+      }
+    },
+    
     preShouldNotBeUsedForTabularLayout : function() {
       quail.html.find('pre').each(function() {
         var rows = $(this).text().split(/[\n\r]+/);

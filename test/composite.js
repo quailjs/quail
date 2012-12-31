@@ -15,7 +15,7 @@ var quailTest = {
 
   testName : '',
 
-  runTest : function(testName) {
+  runTest : function(testName, callback) {
     quailTest.testName = testName;
     $(document).quail({ jsonPath : '../../../src/resources',
                       guideline : [ testName ],
