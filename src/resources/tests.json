@@ -298,11 +298,6 @@
         "callback": "documentIDsMustBeUnique",
         "severity": "severe"
     },
-    "documentIsReadable": {
-        "type": "custom",
-        "callback": "documentIsReadable",
-        "severity": null
-    },
     "documentLangIsISO639Standard": {
         "type": "custom",
         "callback": "documentLangIsISO639Standard",

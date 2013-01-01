@@ -15,7 +15,7 @@ var quailTest = {
 
   testName : '',
 
-  runTest : function(testName, callback) {
+  runTest : function(testName) {
     quailTest.testName = testName;
     $(document).quail({ jsonPath : '../../../src/resources',
                       guideline : [ testName ],
@@ -41,6 +41,13 @@ var quailTest = {
   },
 
   confirmIsTag : function(tag) {
+    $.each(quailTest.results[quailTest.testName], function(index, item) {
+      if(typeof item === 'undefined' ||
+         (item && $(item).attr('id') && $(item).attr('id').indexOf('qunit-') !== -1) ||
+         $(item).parents('#qunit-wrapper').length) {
+        quailTest.results[quailTest.testName].splice(index, 1);
+      }
+    });
     if(typeof quailTest.results[quailTest.testName][0] === 'undefined') {
       return false;
     }
