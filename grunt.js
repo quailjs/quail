@@ -1,3 +1,4 @@
+/*! QUAIL quail-lib.org | quail-lib.org/license */
 /*global module:false*/
 module.exports = function(grunt) {
 

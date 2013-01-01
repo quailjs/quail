@@ -1,5 +1,5 @@
 <?php
-
+/*! QUAIL quail-lib.org | quail-lib.org/license */
 /**
  * Processes all the OAC tests as well as the related QUAIL test name
  * and creates a markdown table for posterity. Only works on Mac/Linux.

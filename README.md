@@ -18,3 +18,8 @@ Credits
 - QUAIL is maintained by [Kevin Miller](http://twitter.com/kevinmiyar)
 - Part of QUAIL development is supported by [Cal State Monterey Bay](http://csumb.edu)
 - Thanks to the hosts of [Chez JJ](http://chezjj.com/), who housed Kevin for a week while he worked on QUAIL 2.
+
+Legal
+-----
+
+QUAIL is covered under the GPL Version 2, and is copyright (c) 2012 by Kevin Miller. Current license is at http://quail-lib.org/license.

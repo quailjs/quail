@@ -1,3 +1,5 @@
+/*! QUAIL quail-lib.org | quail-lib.org/license */
+
 var accessibilityTests = { };
 
 $.ajax({ url : '../../../src/resources/tests.json',
