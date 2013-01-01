@@ -91,8 +91,14 @@
           });
         }
         if(testType === 'custom') {
-          if(typeof quail[quail.accessibilityTests[testName].callback] !== 'undefined') {
-            quail[quail.accessibilityTests[testName].callback]();
+          if(typeof quail.accessibilityTests[testName].callback === 'object' ||
+             typeof quail.accessibilityTests[testName].callback === 'function') {
+            quail.accessibilityTests[testName].callback();
+          }
+          else {
+            if(typeof quail[quail.accessibilityTests[testName].callback] !== 'undefined') {
+              quail[quail.accessibilityTests[testName].callback]();
+            }
           }
         }
         if(typeof quail[quail.testCallbacks[testType]] !== 'undefined') {
