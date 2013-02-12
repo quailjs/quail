@@ -3,7 +3,7 @@
 
 <html lang="en">
 <head>
-<title>Check #129 - Positive</title>
+<title>Check #129 - Negative</title>
 <link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
 </head>
 <body>
@@ -18,7 +18,12 @@
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
+<script id="qunit-script">
+test('objectMustContainText', function() {
+	  quailTest.runTest( 'objectMustContainText', '128-1.html');
+	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+});
+</script>
 </body>
 </html>
 

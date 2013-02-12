@@ -18,7 +18,13 @@
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
+<script id="qunit-script">
+test('objectMustContainText', function() {
+	  quailTest.runTest( 'objectMustContainText', '128-1.html');
+	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+	  equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
+});
+</script>
 </body>
 </html>
 
