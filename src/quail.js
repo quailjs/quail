@@ -951,6 +951,14 @@
       });
     },
     
+    tableNotUsedForLayout : function() {
+      quail.html.find('table').each(function() {
+        if(!quail.isDataTable($(this))) {
+          quail.testFails('tableNotUsedForLayout', $(this));
+        }
+      });
+    },
+    
     tableSummaryDoesNotDuplicateCaption : function() {
       quail.html.find('table[summary]:has(caption)').each(function() {
         if(quail.cleanString($(this).attr('summary')) === quail.cleanString($(this).find('caption:first').text())) {

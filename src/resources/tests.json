@@ -1142,6 +1142,11 @@
         "selector": "table[summary]",
         "severity": "suggestion"
     },
+    "tableNotUsedForLayout": {
+        "type": "custom",
+        "callback": "tableNotUsedForLayout",
+        "severity": "moderate"
+    },
     "tableUseColGroup": {
         "type": "custom",
         "callback": "tableUseColGroup",

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>SVG Contains Title - Pass</title>
+	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+	</head>
+	<body>
+	<div id="qunit-testrunner-toolbar"></div>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+  <div id="qunit-fixture">test markup, will be hidden</div>
+  
+	<table>
+  	<thead>
+    <tr>
+      <td>Head one</td>
+      <td>Head two</td>
+    </tr>
+  	</thead>
+  <tbody>
+    <tr>
+      <td>Item One</td>
+      <td>Item two</td>
+    </tr>
+    <tr>
+      <td>Item One</td>
+      <td>Item two</td>
+    </tr>
+  </tbody>
+  </table>
+
+	<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+	<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+  <script id="qunit-quail" src="../../../src/quail.js"></script>
+  <script id="qunit-composite" src="../../composite.js"></script>
+  <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
+  <script id="qunit-script">
+  test('tableNotUsedForLayout', function() {
+    quailTest.runTest( 'tableNotUsedForLayout', 'tableNotUsedForLayout-pass.html');
+    equal(true, quailTest.confirmIsEmpty(), 'Item is empty');    
+  });
+  </script>
+
+	</body>
+</html>
