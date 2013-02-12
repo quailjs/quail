@@ -1137,6 +1137,11 @@
         "selector": "table[summary]",
         "severity": "suggestion"
     },
+    "tableSummaryIsNotTooLong": {
+        "type": "custom",
+        "callback": "tableSummaryIsNotTooLong",
+        "severity": "suggestion"
+    },
     "tableNotUsedForLayout": {
         "type": "custom",
         "callback": "tableNotUsedForLayout",
