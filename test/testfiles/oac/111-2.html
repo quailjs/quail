@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" /><title>Check #111-2 - Negative</title><link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen"></head><body><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div><table border="1" summary="Schedule for Route 7 going downtown. Service begins at 4:00 AM and ends at midnight. Intersections are listed in the top row. Find the intersection closest to your starting point or destination, then read down that column to find out what time the bus leaves that intersection."><tr><th scope="col">State & First</th><th scope="col">State & Sixth</th><th scope="col">State & Fifteenth</th><th scope="col">Fifteenth & Morrison</th></tr><td>4:00</td><td>4:05</td><td>4:11</td><td>4:19</td></tr></tr><td>5:00</td><td>5:05</td><td>5:11</td><td>5:19</td></tr></tr><td>6:00</td><td>6:05</td><td>6:11</td><td>6:19</td></tr></table><script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+<title>Check #111-2 - Negative</title>
+<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+</head>
+<body>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup, will be hidden</div>
+
+<table border="1" summary="Schedule for Route 7 going downtown. Service begins 
+at 4:00 AM and ends at midnight. Intersections are listed in the top row. 
+Find the intersection closest to your starting point or destination, then read 
+down that column to find out what time the bus leaves that intersection.">
+<tr>
+<th scope="col">State & First</th>
+<th scope="col">State & Sixth</th>
+<th scope="col">State & Fifteenth</th>
+<th scope="col">Fifteenth & Morrison</th>
+</tr>
+<td>4:00</td>
+<td>4:05</td>
+<td>4:11</td>
+<td>4:19</td>
+</tr>
+</tr>
+<td>5:00</td>
+<td>5:05</td>
+<td>5:11</td>
+<td>5:19</td>
+</tr>
+</tr>
+<td>6:00</td>
+<td>6:05</td>
+<td>6:11</td>
+<td>6:19</td>
+</tr>
+</table>
+
+<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
 <script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
@@ -9,4 +53,6 @@ test('tableComplexHasSummary', function() {
 	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 });
 </script>
-</body></html>
+</body>
+</html>
+

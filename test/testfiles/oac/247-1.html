@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" /><title>Check #247.1 - Positive</title><link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen"></head><body><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div><form action="http://example.com/donut" method="post"><p><input type="checkbox" name="flavour" id="choc" value="chocolate" /><label for="choc">Chocolate</label><br/><input type="checkbox" name="flavour" id="cream" value="cream"/><label for="cream">Cream Filled</label><br/><input type="checkbox" name="flavour" id="honey" value="honey"/><label for="honey">Honey Glazed</label><br/><input type="submit" value="Purchase Donuts"/></p></form><script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+<title>Check #247.1 - Positive</title>
+<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+</head>
+<body>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup, will be hidden</div>
+
+<form action="http://example.com/donut" method="post">
+<p>
+<input type="checkbox" name="flavour" id="choc" value="chocolate" />
+<label for="choc">Chocolate</label><br/>
+<input type="checkbox" name="flavour" id="cream" value="cream"/>
+<label for="cream">Cream Filled</label><br/>
+<input type="checkbox" name="flavour" id="honey" value="honey"/>
+<label for="honey">Honey Glazed</label>
+<br/><input type="submit" value="Purchase Donuts"/>
+</p>
+</form>
+
+<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
 <script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
@@ -9,4 +36,6 @@ test('inputCheckboxRequiresFieldset', function() {
 	  equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
 });
 </script>
-</body></html>
+</body>
+</html>
+

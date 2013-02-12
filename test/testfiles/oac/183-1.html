@@ -1,4 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html xml:lang="en-US" lang="en"><head><title>Check #183 - Positive</title><link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen"></head><body><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div><object classid="clsid:A12BCD3F-GH4I-56JK-xyz"    codebase="http://example.com/content.cab"     width="100" height="80">  <param name="Movie" value="moviename.swf" /></object><script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html xml:lang="en-US" lang="en">
+<head>
+<title>Check #183 - Positive</title>
+<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+</head>
+<body>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests"></ol>
+<div id="qunit-fixture">test markup, will be hidden</div>
+
+<object classid="clsid:A12BCD3F-GH4I-56JK-xyz"
+    codebase="http://example.com/content.cab" 
+    width="100" height="80">
+  <param name="Movie" value="moviename.swf" />
+</object>
+
+<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
 <script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
@@ -9,4 +28,6 @@ test('objectMustHaveEmbed', function() {
 	  equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
 });
 </script>
-</body></html>
+</body>
+</html>
+
