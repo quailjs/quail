@@ -19,9 +19,11 @@
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script>
-
-
+<script id="qunit-script">
+test('areaLinksToSoundFile', function() {
+  quailTest.runTest( 'areaLinksToSoundFile', '66-2.html');
+  equal(true, quailTest.confirmIsTag('area'), 'First item tag test');
+});
 </script>
 </body>
 </html>
