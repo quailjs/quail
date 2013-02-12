@@ -24,11 +24,6 @@
         "selector": "a[target=_new], a[target=_blank], a[target=_blank]",
         "severity": "severe"
     },
-    "aLinksMakeSenseOutOfContext": {
-        "type": "selector",
-        "selector": "a",
-        "severity": "suggestion"
-    },
     "aLinksToMultiMediaRequireTranscript": {
         "type": "selector",
         "selector": "a[href$='.wmv'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']",
