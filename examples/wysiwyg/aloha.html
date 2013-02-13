@@ -44,7 +44,12 @@
      path : '../../src/resources',
      baseUrl : '../../src/wysiwyg_plugins/',
      title : function(event) {
-       return event.testName;
+       if(event.testName == 'documentAbbrIsUsed') {
+         return 'The acronym ' + event.options.acronym + ' needs to be within an acronym tag.';
+       }
+       if(event.testName == 'imgHasAlt') {
+         return 'This image is missing a description. To add a description, select the image and click the image button.';
+       }
      }
 	 }
 	 
