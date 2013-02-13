@@ -10,7 +10,7 @@ Developers can build their own guidelines, or easily build a custom guideline th
 Documentation
 -------------
 
-[Full documentation is available via readthedocs.org](https://quail-accessibility-information-library.readthedocs.org/en/latest/).
+[Full documentation is available via readthedocs.org](https://quail.readthedocs.org/en/latest/).
 
 Credits
 -------
