@@ -25,7 +25,12 @@
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
+<script>
+test('labelMustNotBeEmpty', function() {
+	  quailTest.runTest( 'labelMustNotBeEmpty', '188-3.html');
+	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+});
+</script>
 </body>
 </html>
 
