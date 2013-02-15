@@ -18,6 +18,11 @@
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
+<script>
+test('aSuspiciousLinkText', function() {
+	  quailTest.runTest( 'aSuspiciousLinkText', '191-1.html');
+	  equal(true, quailTest.confirmIsTag('a'), 'First item tag test');
+});
+</script>
 </body>
 </html>
