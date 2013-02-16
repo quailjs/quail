@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
-<title>Testfile 205.1 - Positive</title>
+<title>Testfile 205.1 - Negative</title>
 <link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
 </head>
 <body>
@@ -23,7 +23,12 @@
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
+<script>
+test('fileHasLabel', function() {
+	  quailTest.runTest( 'fileHasLabel', '204-1.html');
+	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+});
+</script>
 </body>
 </html>
 

@@ -21,6 +21,11 @@
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
+<script id="qunit-script">
+test('aAdjacentWithSameResourceShouldBeCombined', function() {
+	  quailTest.runTest( 'aAdjacentWithSameResourceShouldBeCombined', '232-1.html');
+	  equal(true, quailTest.confirmIsTag('a'), 'Link opens new window');
+});
+</script>
 </body>
 </html>

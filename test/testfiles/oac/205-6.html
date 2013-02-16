@@ -22,7 +22,12 @@
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
+<script>
+test('fileHasLabel', function() {
+	  quailTest.runTest( 'fileHasLabel', '204-1.html');
+	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+});
+</script>
 </body>
 </html>
 

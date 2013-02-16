@@ -26,7 +26,12 @@
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
+<script>
+test('selectHasAssociatedLabel', function() {
+	  quailTest.runTest( 'selectHasAssociatedLabel', '204-1.html');
+	  equal(true, quailTest.confirmIsTag('select'), 'First item tag test');
+});
+</script>
 </body>
 </html>
 

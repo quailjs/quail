@@ -20,6 +20,11 @@
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
+<script id="qunit-script">
+test('aAdjacentWithSameResourceShouldBeCombined', function() {
+	  quailTest.runTest( 'aAdjacentWithSameResourceShouldBeCombined', '232-1.html');
+	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+});
+</script>
 </body>
 </html>
