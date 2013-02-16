@@ -11,6 +11,8 @@ $.ajax({ url : '../../../src/resources/tests.json',
       accessibilityTests = data;
     }
 }});
+
+
 var quailTest = {
 
   results : { },
@@ -19,7 +21,7 @@ var quailTest = {
 
   runTest : function(testName) {
     quailTest.testName = testName;
-    $(document).quail({ jsonPath : '../../../src/resources',
+      $(document).quail({ jsonPath : '../../../src/resources',
                       guideline : [ testName ],
                       reset : true,
                       accessibilityTests : accessibilityTests,
@@ -54,5 +56,14 @@ var quailTest = {
       return false;
     }
     return quailTest.results[quailTest.testName][0].is(tag);
+  },
+  
+  insertElements : function(callback) {
+    
+      $('body').prepend('<h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div>');
+   
   }
 };
+
+
+quailTest.insertElements();
