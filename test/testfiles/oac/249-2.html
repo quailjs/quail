@@ -32,6 +32,11 @@ we can never do anything good in the world.</q></p>
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
+<script>
+test('blockquoteUseForQuotations', function() {
+	  quailTest.runTest( 'blockquoteUseForQuotations', '248-2.html');
+	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+});
+</script>
 </body>
 </html>

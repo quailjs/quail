@@ -15,10 +15,10 @@
 
 <p>The following is an excerpt from the The Story of my Life by Helen Keller</p>
 
- <p>Even in the days before my teacher came, I used to feel along the square stiff boxwood
+ <p>"Even in the days before my teacher came, I used to feel along the square stiff boxwood
  hedges, and, guided by the sense of smell, would find the first violets and lilies.  
  There, too, after a fit of temper, I went to find comfort and to hide my hot face 
- in the cool leaves and grass.</p>
+ in the cool leaves and grass."</p>
 
 
 <p>Helen Keller said, Self-pity is our worst enemy and if we yield to it, 
@@ -32,6 +32,11 @@ we can never do anything good in the world.</p>
 <script id="qunit-quail" src="../../../src/quail.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
 <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-<script></script>
+<script>
+test('blockquoteUseForQuotations', function() {
+	  quailTest.runTest( 'blockquoteUseForQuotations', '248-2.html');
+	  equal(true, quailTest.confirmIsTag('p'), 'First item tag test');
+});
+</script>
 </body>
 </html>
