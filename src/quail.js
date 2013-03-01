@@ -27,6 +27,10 @@
       'color'          : 'colorTest'
     },
     
+    /**
+     * Main run function for quail. It bundles up some accessibility tests,
+     * and if tests are not passed, it instead fetches them using getJSON.
+     */
     run : function() {
       if(quail.options.reset) {
         quail.accessibilityResults = { };
@@ -63,6 +67,11 @@
       }
     },
     
+    /**
+     * Utility function called whenever a test fails.
+     * If there is a callback for testFailed, then it
+     * packages the object and calls it.
+     */
     testFails : function(testName, $element, options) {
       options = options || {};
       
@@ -79,6 +88,12 @@
       }
     },
 
+    /**
+    * Iterates over all the tests in the provided guideline and
+    * figures out which function or object will handle it.
+    * Custom callbacks are included directly, others might be part of a category
+    * of tests.
+    */
     runTests : function() {
       $.each(quail.options.guideline, function(index, testName) {
         var testType = quail.accessibilityTests[testName].type;
@@ -106,7 +121,12 @@
         }
       });
     },
-
+    
+    /**
+     * Helper function to determine if a string of text is even readable.
+     * @todo - This will be added to in the future... we should also include
+     * phonetic tests.
+     */
     isUnreadable : function(text) {
       if(typeof text !== 'string') {
         return true;
@@ -172,16 +192,32 @@
 
     accessibilityTests : { },
     
+    /**
+     * A list of HTML elements that can contain actual text.
+     */
     textSelector : 'p, h1, h2, h3, h4, h5, h6, div, pre, blockquote, aside, article, details, summary, figcaption, footer, header, hgroup, nav, section',
+    
+    /**
+     * Suspect tags that would indicate a paragraph is being used as a header.
+     * I know, font tag, I know. Don't get me started.
+     */
+    suspectPHeaderTags : ['strong', 'b', 'em', 'i', 'u', 'font'],
 
-    loadTests : function() {
-
-    },
-
+    /**
+     * Suspect CSS styles that might indicate a paragarph tag is being used as a header.
+     */
+    suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
+    
+    /**
+     * Helper function to determine if a given URL is even valid.
+     */
     validURL : function(url) {
       return (url.search(' ') === -1) ? true : false;
     },
 
+    /**
+     * Helper function to load a string from the jsonPath directory.
+     */
     loadString : function(stringFile) {
       if(typeof quail.strings[stringFile] !== 'undefined') {
         return quail.strings[stringFile];
@@ -199,20 +235,39 @@
       return string.toLowerCase().replace(/^\s\s*/, '');
     },
     
+    /**
+     * If a test uses the hasEventListener plugin, load it.
+     * @todo - Allow this to be configured, although since we can
+     * just check if it's there and if so, not load it, people could just
+     * include the script.
+     */
     loadHasEventListener : function() {
+      if(typeof jQuery.hasEventListener !== 'undefined') {
+        return;
+      }
       $.ajax({url : quail.options.jsonPath + '/../../libs/jquery.hasEventListener/jQuery.hasEventListener-2.0.3.min.js',
               async : false,
               dataType : 'script'
             });
     },
-    
+
+    /**
+     * Loads the pixToEm jQuery plugin.
+     */
     loadPixelToEm : function() {
+      if(typeof jQuery.toPx !== 'undefined') {
+        return;
+      }
       $.ajax({url : quail.options.jsonPath + '/../../libs/jquery.pxToEm/pxem.jQuery.js',
               async : false,
               dataType : 'script'
             });
     },
 
+    /**
+     * Placeholder test - checks that an attribute or the content of an
+     * element itself is not a placeholder (i.e. "click here" for links).
+     */
     placeholderTest : function(testName, options) {
       quail.loadString('placeholders');
       quail.html.find(options.selector).each(function() {
@@ -257,6 +312,9 @@
       });
     },
 
+    /**
+     * Tests that a label element is close (DOM-wise) to it's target form element.
+     */
     labelProximityTest : function(testName, options) {
         quail.html.find(options.selector).each(function() {
           var $label = quail.html.find('label[for=' + $(this).attr('id') + ']').first();
@@ -269,89 +327,10 @@
         });
     },
     
-    textStatistics : {
-      
-      cleanText : function(text) {
-        return text.replace(/[,:;()\-]/, ' ')
-                   .replace(/[\.!?]/, '.')
-                   .replace(/[ ]*(\n|\r\n|\r)[ ]*/, ' ')
-                   .replace(/([\.])[\. ]+/, '$1')
-                   .replace(/[ ]*([\.])/, '$1')
-                   .replace(/[ ]+/, ' ')
-                   .toLowerCase();
-                   
-      },
-      
-      sentenceCount : function(text) {
-        var copy = text;
-        return copy.split('.').length + 1;
-      },
-      
-      wordCount : function(text) {
-        var copy = text;
-        return copy.split(' ').length + 1;
-      },
-      
-      averageWordsPerSentence : function(text) {
-        return quail.textStatistics.wordCount(text) / quail.textStatistics.sentenceCount(text);
-      },
-      
-      averageSyllablesPerWord : function(text) {
-        var count = 0;
-        var wordCount = quail.textStatistics.wordCount(text);
-        if(!wordCount) {
-          return 0;
-        }
-        $.each(text.split(' '), function(index, word) {
-          count += quail.textStatistics.syllableCount(word);
-        });
-        return count / wordCount;
-      },
-      
-      syllableCount : function(word) {
-        var matchedWord = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
-                              .match(/[aeiouy]{1,2}/g);
-        if(!matchedWord || matchedWord.length === 0) {
-          return 1;
-        }
-        return matchedWord.length;
-      }
-    },
-    
-    statistics : {
-    
-      setDecimal : function( num, numOfDec ){
-        var pow10s = Math.pow( 10, numOfDec || 0 );
-        return ( numOfDec ) ? Math.round( pow10s * num ) / pow10s : num;
-      },
-      
-      average : function( numArr, numOfDec ){
-        var i = numArr.length,
-          sum = 0;
-        while( i-- ){
-          sum += numArr[ i ];
-        }
-        return quail.statistics.setDecimal( (sum / numArr.length ), numOfDec );
-      },
-      
-      variance : function( numArr, numOfDec ){
-        var avg = quail.statistics.average( numArr, numOfDec ),
-          i = numArr.length,
-          v = 0;
-       
-        while( i-- ){
-          v += Math.pow( (numArr[ i ] - avg), 2 );
-        }
-        v /= numArr.length;
-        return quail.statistics.setDecimal( v, numOfDec );
-      },
-      
-      standardDeviation : function( numArr, numOfDec ){
-        var stdDev = Math.sqrt( quail.statistics.variance( numArr, numOfDec ) );
-        return quail.statistics.setDecimal( stdDev, numOfDec );
-      }
-    },
-    
+    /**
+     * Test callback for color tests. This handles both WAI and WCAG
+     * color contrast/luminosity.
+     */
     colorTest : function(testName, options) {
       if(options.bodyForegroundAttribute && options.bodyBackgroundAttribute) {
         var $body = quail.html.find('body').clone(false, false);
@@ -378,10 +357,12 @@
       });
     },
 
+    /**
+     * Test callback for tests that look for script events
+     *  (like a mouse event has a keyboard event as well).
+     */
     scriptEventTest : function(testName, options) {
-      if(typeof jQuery.hasEventListener === 'undefined') {
-        quail.loadHasEventListener();
-      }
+      quail.loadHasEventListener();
       var $items = (typeof options.selector === 'undefined') ?
                     quail.html.find('body').find('*') :
                     quail.html.find(options.selector);
@@ -557,6 +538,12 @@
 
     documentAbbrIsUsed : function() {
       quail.acronymTest('documentAbbrIsUsed', 'abbr');
+    },
+
+    documentTitleIsShort : function() {
+      if(quail.html.find('head title:first').text().length > 150) {
+        quail.testFails('documentTitleIsShort', quail.html.find('head title:first'));
+      }
     },
     
     documentVisualListsAreMarkedUp : function() {
@@ -890,19 +877,84 @@
       });
     },
     
+    siteMap : function() {
+      var mapString = quail.loadString('site_map');
+      var set = true;
+      quail.html.find('a').each(function() {
+        var text = $(this).text().toLowerCase();
+        $.each(mapString, function(index, string) {
+          if(text.search(string) > -1) {
+            set = false;
+            return;
+          }
+        });
+        if(set === false) {
+          return;
+        }
+      });
+      if(set) {
+        quail.testFails('siteMap', quail.html.find('body'));
+      }
+    },
+
+    pNotUsedAsHeader : function() {
+      var priorStyle = { };
+
+      quail.html.find('p').each(function() {
+        if($(this).text().search('.') < 1) {
+          var $paragraph = $(this);
+          $.each(quail.suspectPHeaderTags, function(index, tag) {
+            if($paragraph.find(tag).length) {
+              $paragraph.find(tag).each(function() {
+                if($(this).text().trim() === $paragraph.text().trim()) {
+                  quail.testFails('pNotUsedAsHeader', $paragraph);
+                }
+              });
+            }
+          });
+          $.each(quail.suspectPCSSStyles, function(index, style) {
+            if(typeof priorStyle[style] !== 'undefined' &&
+               priorStyle[style] !== $paragraph.css(style)) {
+              quail.testFails('pNotUsedAsHeader', $paragraph);
+            }
+            priorStyle[style] = $paragraph.css(style);
+          });
+          if($paragraph.css('font-weight') === 'bold') {
+            quail.testFails('pNotUsedAsHeader', $paragraph);
+          }
+        }
+      });
+    },
+    
+    preShouldNotBeUsedForTabularLayout : function() {
+      quail.html.find('pre').each(function() {
+        var rows = $(this).text().split(/[\n\r]+/);
+        if(rows.length > 1 && $(this).text().search(/\t/) > -1) {
+          quail.testFails('preShouldNotBeUsedForTabularLayout', $(this));
+        }
+      });
+    },
+    
     selectJumpMenu : function() {
       if(quail.html.find('select').length === 0) {
         return;
       }
-      if(typeof jQuery.hasEventListener === 'undefined') {
-        quail.loadHasEventListener();
-      }
+      quail.loadHasEventListener();
       
       quail.html.find('select').each(function() {
         if(($(this).parent('form').find(':submit').length === 0 ) &&
            ($.hasEventListener($(this), 'change') ||
            $(this).attr('onchange'))) {
              quail.testFails('selectJumpMenu', $(this));
+        }
+      });
+    },
+
+    tableHeaderLabelMustBeTerse : function() {
+      quail.html.find('th, table tr:first td').each(function() {
+        if($(this).text().length > 20 &&
+           (!$(this).attr('abbr') || $(this).attr('abbr').length > 20)) {
+          quail.testFails('tableHeaderLabelMustBeTerse', $(this));
         }
       });
     },
@@ -915,6 +967,14 @@
              quail.testFails('tabIndexFollowsLogicalOrder', $(this));
            }
         index++;
+      });
+    },
+    
+    tableLayoutDataShouldNotHaveTh : function() {
+      quail.html.find('table:has(th)').each(function() {
+        if(!quail.isDataTable($(this))) {
+          quail.testFails('tableLayoutDataShouldNotHaveTh', $(this));
+        }
       });
     },
     
@@ -934,27 +994,10 @@
       });
     },
 
-    tableHeaderLabelMustBeTerse : function() {
-      quail.html.find('th, table tr:first td').each(function() {
-        if($(this).text().length > 20 &&
-           (!$(this).attr('abbr') || $(this).attr('abbr').length > 20)) {
-          quail.testFails('tableHeaderLabelMustBeTerse', $(this));
-        }
-      });
-    },
-
     tableLayoutMakesSenseLinearized : function() {
       quail.html.find('table').each(function() {
         if(!quail.isDataTable($(this))) {
           quail.testFails('tableLayoutMakesSenseLinearized', $(this));
-        }
-      });
-    },
-    
-    tableLayoutDataShouldNotHaveTh : function() {
-      quail.html.find('table:has(th)').each(function() {
-        if(!quail.isDataTable($(this))) {
-          quail.testFails('tableLayoutDataShouldNotHaveTh', $(this));
         }
       });
     },
@@ -1034,9 +1077,7 @@
     },
     
     textIsNotSmall : function() {
-      if(typeof jQuery.toPx === 'undefined') {
-        quail.loadPixelToEm();
-      }
+      quail.loadPixelToEm();
       quail.html.find(quail.textSelector).each(function() {
         var fontSize = $(this).css('font-size');
         if(fontSize.search('em') > 0) {
@@ -1064,113 +1105,55 @@
       });
     },
     
-    videoServices : {
-      
-      youTube : {
-        
-        videoID : '',
-        
-        apiUrl : 'http://gdata.youtube.com/feeds/api/videos/?q=%video&caption&v=2&alt=json',
-        
-        isVideo : function(url) {
-          var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-          var match = url.match(regExp);
-          if (match && match[7].length === 11) {
-            quail.videoServices.youTube.videoID = match[7];
-            return true;
-          }
-          return false;
-        },
-        
-        hasCaptions : function(callback) {
-          $.ajax({url : this.apiUrl.replace('%video', this.videoID),
-                  async : false,
-                  dataType : 'json',
-                  success : function(data) {
-                    callback((data.feed.openSearch$totalResults.$t > 0) ? true : false);
-                  }
-          });
-        }
-      }
-    },
-    
-    preShouldNotBeUsedForTabularLayout : function() {
-      quail.html.find('pre').each(function() {
-        var rows = $(this).text().split(/[\n\r]+/);
-        if(rows.length > 1 && $(this).text().search(/\t/) > -1) {
-          quail.testFails('preShouldNotBeUsedForTabularLayout', $(this));
-        }
-      });
-    },
-    
-    siteMap : function() {
-      var mapString = quail.loadString('site_map');
-      var set = true;
-      quail.html.find('a').each(function() {
-        var text = $(this).text().toLowerCase();
-        $.each(mapString, function(index, string) {
-          if(text.search(string) > -1) {
-            set = false;
-            return;
-          }
-        });
-        if(set === false) {
-          return;
-        }
-      });
-      if(set) {
-        quail.testFails('siteMap', quail.html.find('body'));
-      }
-    },
-    
-    suspectPHeaderTags : ['strong', 'b', 'em', 'i', 'u', 'font'],
-
-    suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
-    
     tabularDataIsInTable : function() {
       quail.html.find('pre').each(function() {
         if($(this).html().search('\t') >= 0) {
           quail.testFails('tabularDataIsInTable', $(this));
         }
       });
-    },
-    
-    pNotUsedAsHeader : function() {
-      var priorStyle = { };
-
-      quail.html.find('p').each(function() {
-        if($(this).text().search('.') < 1) {
-          var $paragraph = $(this);
-          $.each(quail.suspectPHeaderTags, function(index, tag) {
-            if($paragraph.find(tag).length) {
-              $paragraph.find(tag).each(function() {
-                if($(this).text().trim() === $paragraph.text().trim()) {
-                  quail.testFails('pNotUsedAsHeader', $paragraph);
-                }
-              });
-            }
-          });
-          $.each(quail.suspectPCSSStyles, function(index, style) {
-            if(typeof priorStyle[style] !== 'undefined' &&
-               priorStyle[style] !== $paragraph.css(style)) {
-              quail.testFails('pNotUsedAsHeader', $paragraph);
-            }
-            priorStyle[style] = $paragraph.css(style);
-          });
-          if($paragraph.css('font-weight') === 'bold') {
-            quail.testFails('pNotUsedAsHeader', $paragraph);
-          }
-        }
-      });
-    },
-
-    documentTitleIsShort : function() {
-      if(quail.html.find('head title:first').text().length > 150) {
-        quail.testFails('documentTitleIsShort', quail.html.find('head title:first'));
-      }
     }
   };
 
+  /**
+   * Utility object for statistics, like average, variance, etc.
+   */
+  quail.statistics = {
+  
+    setDecimal : function( num, numOfDec ){
+      var pow10s = Math.pow( 10, numOfDec || 0 );
+      return ( numOfDec ) ? Math.round( pow10s * num ) / pow10s : num;
+    },
+    
+    average : function( numArr, numOfDec ){
+      var i = numArr.length,
+        sum = 0;
+      while( i-- ){
+        sum += numArr[ i ];
+      }
+      return quail.statistics.setDecimal( (sum / numArr.length ), numOfDec );
+    },
+    
+    variance : function( numArr, numOfDec ){
+      var avg = quail.statistics.average( numArr, numOfDec ),
+        i = numArr.length,
+        v = 0;
+     
+      while( i-- ){
+        v += Math.pow( (numArr[ i ] - avg), 2 );
+      }
+      v /= numArr.length;
+      return quail.statistics.setDecimal( v, numOfDec );
+    },
+    
+    standardDeviation : function( numArr, numOfDec ){
+      var stdDev = Math.sqrt( quail.statistics.variance( numArr, numOfDec ) );
+      return quail.statistics.setDecimal( stdDev, numOfDec );
+    }
+  };
+    
+  /**
+   * Utility object to test for color contrast.
+   */
   quail.colors = {
   
     getLuminosity : function(foreground, background) {
@@ -1247,6 +1230,93 @@
              };
     }
   
+  };
+  
+  /**
+   * Utility object that runs text statistics, like sentence count,
+   * reading level, etc.
+   */
+  quail.textStatistics = {
+  
+    cleanText : function(text) {
+      return text.replace(/[,:;()\-]/, ' ')
+                 .replace(/[\.!?]/, '.')
+                 .replace(/[ ]*(\n|\r\n|\r)[ ]*/, ' ')
+                 .replace(/([\.])[\. ]+/, '$1')
+                 .replace(/[ ]*([\.])/, '$1')
+                 .replace(/[ ]+/, ' ')
+                 .toLowerCase();
+                 
+    },
+    
+    sentenceCount : function(text) {
+      var copy = text;
+      return copy.split('.').length + 1;
+    },
+    
+    wordCount : function(text) {
+      var copy = text;
+      return copy.split(' ').length + 1;
+    },
+    
+    averageWordsPerSentence : function(text) {
+      return quail.textStatistics.wordCount(text) / quail.textStatistics.sentenceCount(text);
+    },
+    
+    averageSyllablesPerWord : function(text) {
+      var count = 0;
+      var wordCount = quail.textStatistics.wordCount(text);
+      if(!wordCount) {
+        return 0;
+      }
+      $.each(text.split(' '), function(index, word) {
+        count += quail.textStatistics.syllableCount(word);
+      });
+      return count / wordCount;
+    },
+    
+    syllableCount : function(word) {
+      var matchedWord = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
+                            .match(/[aeiouy]{1,2}/g);
+      if(!matchedWord || matchedWord.length === 0) {
+        return 1;
+      }
+      return matchedWord.length;
+    }
+  };
+  
+  /**
+   * Helper object that tests videos.
+   * @todo - allow this to be exteded more easily.
+   */
+  quail.videoServices = {
+      
+    youTube : {
+      
+      videoID : '',
+      
+      apiUrl : 'http://gdata.youtube.com/feeds/api/videos/?q=%video&caption&v=2&alt=json',
+      
+      isVideo : function(url) {
+        var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+        var match = url.match(regExp);
+        if (match && match[7].length === 11) {
+          quail.videoServices.youTube.videoID = match[7];
+          return true;
+        }
+        return false;
+      },
+      
+      hasCaptions : function(callback) {
+        $.ajax({url : this.apiUrl.replace('%video', this.videoID),
+                async : false,
+                dataType : 'json',
+                success : function(data) {
+                  callback((data.feed.openSearch$totalResults.$t > 0) ? true : false);
+                }
+        });
+      }
+    }
   };
 
 }(jQuery));
