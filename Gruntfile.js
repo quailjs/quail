@@ -4,34 +4,38 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    pkg: '<json:quail.json>',
-    meta: {
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
-    },
+    pkg: grunt.file.readJSON('quail.json'),
     concat: {
+      options: {
+        banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+            '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+            '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
+            '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
+            ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */',
+        stripBanners: true
+      },
       dist: {
-        src: ['<banner:meta.banner>', '<file_strip_banner:src/<%= pkg.name %>.js>'],
+        src: ['src/<%= pkg.name %>.js'],
         dest: 'dist/<%= pkg.name %>.js'
       }
     },
-    min: {
+    uglify: {
+      options: {
+        banner: '<%= concat.options.banner %>'
+      },
       dist: {
-        src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
+        src: ['<%= concat.dist.dest %>'],
         dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
     qunit: {
       files: ['test/quail.html']
     },
-    lint: {
-      files: ['grunt.js', 'src/quail.js', 'src/resources/**/*.json']
+    jlint: {
+      
     },
     watch: {
-      files: '<config:lint.files>',
+      files: '<%= lint.files %>',
       tasks: 'lint qunit'
     },
     jshint: {
@@ -46,18 +50,26 @@ module.exports = function(grunt) {
         undef: true,
         boss: true,
         eqnull: true,
-        browser: true
+        browser: true,
+        globals: {
+            jQuery: true
+        }
       },
-      globals: {
-        jQuery: true
-      }
-    },
-    uglify: {}
+      files: ['Gruntfile.js', 'src/quail.js', 'src/resources/**/*.json']
+    }
   });
-
+  
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   // Default task.
-  grunt.registerTask('default', 'lint qunit concat min');
+  grunt.registerTask('default', ['jshint', 'qunit']);
+  
+  // Release task.
+  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
   
   // Travis task.
-  grunt.registerTask('travis', 'lint qunit');
+  grunt.registerTask('travis', ['jshint', 'qunit']);
 };
