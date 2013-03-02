@@ -1,9 +1,7 @@
 language: node_js
 node_js:
-  - 0.9
+  - 0.8
 
-before_script:
-  - npm install grunt -g
-
-script:
-  - grunt travis
+install:
+  - npm install grunt-cli -g
+  - npm install
