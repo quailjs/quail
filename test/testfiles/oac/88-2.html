@@ -16,7 +16,7 @@
 <script id="qunit-script">
 test('scriptContentAccessibleWithScriptsTurnedOff', function() {
   quailTest.runTest( 'scriptContentAccessibleWithScriptsTurnedOff', '88-2.html');
-  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+  equal(true, quailTest.confirmIsTag('script'), 'First item tag test');
 });
 </script>
 </body>

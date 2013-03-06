@@ -131,6 +131,11 @@
         "selector": "area:not(area[alt])",
         "severity": "severe"
     },
+    "ariaOrphanedContent": {
+        "type": "selector",
+        "selector" : "body *:not(*[role] *, *[role], script, meta, link)",
+        "severity": "severe"
+    },
     "areaLinksToSoundFile": {
         "type": "selector",
         "selector": "area[href$=wav], area[href$=snd], area[href$=mp3], area[href$=iff], area[href$=svx], area[href$=sam], area[href$=smp], area[href$=vce], area[href$=vox], area[href$=pcm], area[href$=aif]",

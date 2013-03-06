@@ -16,7 +16,7 @@
 <script id="qunit-script" >
 test('scriptUIMustBeAccessible', function() {
   quailTest.runTest( 'scriptUIMustBeAccessible', '89-2.html');
-  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+  equal(true, quailTest.confirmIsTag('script'), 'First item tag test');
 });
 </script>
 </body>

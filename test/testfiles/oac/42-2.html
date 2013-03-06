@@ -7,12 +7,11 @@
 <link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
 </head>
 <body>
-
-
+<div id="quail-scope">
 <h1>The First Heading</h1>
 
 <p>This is <strong>very important</strong> and you should read it.</p>
-
+</div>
 <script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
 <script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
 <script id="qunit-quail" src="../../../src/quail.js"></script>
@@ -21,7 +20,7 @@
 <script id="qunit-script">
 test('headerFormatting', function() {
   quailTest.runTest('headerH1Format');
-  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+  equal(true, quailTest.confirmIsTag('h1'), 'Header test H1');
 });
 </script>
 </body>

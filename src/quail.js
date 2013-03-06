@@ -285,6 +285,9 @@
         }
         else {
           text = $(this).text();
+          $(this).find('img[alt]').each(function() {
+            text += $(this).attr('alt');
+          });
         }
         if(typeof text === 'string') {
           text = quail.cleanString(text);

@@ -21,7 +21,8 @@ var quailTest = {
 
   runTest : function(testName) {
     quailTest.testName = testName;
-      $(document).quail({ jsonPath : '../../../src/resources',
+      var $target = ($('#quail-scope').length) ? $('#quail-scope') : $(document);
+      $target.quail({ jsonPath : '../../../src/resources',
                       guideline : [ testName ],
                       reset : true,
                       accessibilityTests : accessibilityTests,
@@ -41,6 +42,9 @@ var quailTest = {
         return false;
       }
     });
+    if(quailTest.results[quailTest.testName].length) {
+      return false;
+    }
     return true;
   },
 
@@ -60,7 +64,7 @@ var quailTest = {
   
   insertElements : function(callback) {
     
-      $('body').prepend('<h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div>');
+      $('body').prepend('<div role="header" id="qunit-wrapper"><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div></div>');
    
   }
 };
