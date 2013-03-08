@@ -37,7 +37,7 @@
     "aMultimediaTextAlternative": {
         "type": "selector",
         "selector": "a[href$='.wmv'], a[href$='.wav'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']",
-        "severity": null
+        "severity": "suggestion"
     },
     "aMustContainText": {
         "type": "custom",
@@ -94,7 +94,7 @@
     "appletTextEquivalentsGetUpdated": {
         "type": "selector",
         "selector": "applet",
-        "severity": null
+        "severity": "suggestion"
     },
     "appletUIMustBeAccessible": {
         "type": "selector",
@@ -167,7 +167,7 @@
         "selector": "a:active",
         "bodyForegroundAttribute": "alink",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": null
+        "severity": "severe"
     },
     "bodyColorContrast": {
         "type": "color",
@@ -175,7 +175,7 @@
         "selector": "body",
         "bodyForegroundAttribute": "text",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": null
+        "severity": "severe"
     },
     "bodyLinkColorContrast": {
         "type": "color",
@@ -183,7 +183,7 @@
         "selector": "a",
         "bodyForegroundAttribute": "link",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": null
+        "severity": "severe"
     },
     "bodyMustNotHaveBackground": {
         "type": "selector",
@@ -196,7 +196,7 @@
         "selector": "a:visited",
         "bodyForegroundAttribute": "vlink",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": null
+        "severity": "severe"
     },
     "boldIsNotUsed": {
         "type": "selector",
@@ -257,7 +257,7 @@
         "selector": "a:active",
         "bodyForegroundAttribute": "alink",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": null
+        "severity": "severe"
     },
     "documentColorWaiAlgorithm": {
         "type": "color",
@@ -265,7 +265,7 @@
         "bodyForegroundAttribute": "text",
         "bodyBackgroundAttribute": "bgcolor",
         "selector": "body",
-        "severity": null
+        "severity": "severe"
     },
     "documentColorWaiLinkAlgorithm": {
         "type": "color",
@@ -273,7 +273,7 @@
         "selector": "a",
         "bodyForegroundAttribute": "link",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": null
+        "severity": "severe"
     },
     "documentColorWaiVisitedLinkAlgorithm": {
         "type": "color",
@@ -281,7 +281,7 @@
         "selector": "a:visited",
         "bodyForegroundAttribute": "vlink",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": null
+        "severity": "severe"
     },
     "documentContentReadableWithoutStylesheets": {
         "type": "selector",
@@ -394,7 +394,7 @@
     "emoticonsMissingAbbr": {
         "type": "custom",
         "callback": "emoticonsMissingAbbr",
-        "severity": null
+        "severity": "severe"
     },
     "fileHasLabel": {
         "type": "label",
@@ -419,7 +419,7 @@
     "formAllowsCheckIfIrreversable": {
         "type": "selector",
         "selector": "form",
-        "severity": null
+        "severity": "suggestion"
     },
     "formErrorMessageHelpsUser": {
         "type": "selector",
