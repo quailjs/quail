@@ -27,6 +27,30 @@
       'color'          : 'colorTest'
     },
     
+    html : { },
+
+    strings : { },
+
+    accessibilityResults : { },
+
+    accessibilityTests : { },
+    
+    /**
+     * A list of HTML elements that can contain actual text.
+     */
+    textSelector : 'p, h1, h2, h3, h4, h5, h6, div, pre, blockquote, aside, article, details, summary, figcaption, footer, header, hgroup, nav, section',
+    
+    /**
+     * Suspect tags that would indicate a paragraph is being used as a header.
+     * I know, font tag, I know. Don't get me started.
+     */
+    suspectPHeaderTags : ['strong', 'b', 'em', 'i', 'u', 'font'],
+
+    /**
+     * Suspect CSS styles that might indicate a paragarph tag is being used as a header.
+     */
+    suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
+        
     /**
      * Main run function for quail. It bundles up some accessibility tests,
      * and if tests are not passed, it instead fetches them using getJSON.
@@ -184,30 +208,6 @@
       return isDataTable;
     },
 
-    html : { },
-
-    strings : { },
-
-    accessibilityResults : { },
-
-    accessibilityTests : { },
-    
-    /**
-     * A list of HTML elements that can contain actual text.
-     */
-    textSelector : 'p, h1, h2, h3, h4, h5, h6, div, pre, blockquote, aside, article, details, summary, figcaption, footer, header, hgroup, nav, section',
-    
-    /**
-     * Suspect tags that would indicate a paragraph is being used as a header.
-     * I know, font tag, I know. Don't get me started.
-     */
-    suspectPHeaderTags : ['strong', 'b', 'em', 'i', 'u', 'font'],
-
-    /**
-     * Suspect CSS styles that might indicate a paragarph tag is being used as a header.
-     */
-    suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
-    
     /**
      * Helper function to determine if a given URL is even valid.
      */
