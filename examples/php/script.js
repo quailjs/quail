@@ -1,5 +1,5 @@
-$(document).ready(function() { 
-  	 
+$(document).ready(function() {
+
  /**
   * We are loading the stored guideline.json file, which
   * is a list of test names.
@@ -12,7 +12,7 @@ $(document).ready(function() {
       jsonPath : '../../src/resources',
       testFailed : function(event) {
         event.element.addClass('quail-result')
-                     .addClass(event.severity);            
+                     .addClass(event.severity);
       },
       complete : function(results) {
         $.post('stats.php', results.totals);
@@ -26,6 +26,25 @@ $(document).ready(function() {
       }
       });
    });
-	 
+   $('#edit').keyup(function() {
+       var $text = $('<div>' + $(this).val() + '</div>');
+       $text.quail({ guideline : guideline,
+        jsonPath : '../../src/resources',
+        reset : true,
+        testFailed : function(event) {
+          if(event.severity == 'severe') {
+            $(':submit').addClass('disabled')
+                        .attr('disabled', 'disabled');
+          }
+        },
+        complete : function(results) {
+          console.log(results);
+          if(results.totals.severe == 0) {
+            $(':submit').removeClass('disabled')
+                        .removeAttr('disabled');            
+          }
+        }
+        });
+     });
  });
 });

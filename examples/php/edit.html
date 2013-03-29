@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Sample page | My CMS</title>
+		<link rel="stylesheet" href="../common/style.css"/>
+		<link rel="stylesheet" href="../common/bootstrap.css"/>
+    <style>
+      #edit {
+        width: 100%;
+        height: 350px;
+      }
+    </style>
+	</head>
+	<body>
+	<div class="container">
+	<div class="navbar navbar-fixed">
+    <div class="navbar-inner">
+      <a class="brand" href="#">My CMS</a>
+      <ul class="nav">
+        <li><a href="index.php">Settings</a></li>
+        <li class="active"><a href="sample.html">Sample page</a></li>
+      </ul>
+    </div>
+  </div>
+	<h1 class="title">Page one</h1>
+	<div class="row">
+  	<div class="span9">
+    	<ul class="nav nav-tabs">
+        <li><a href="sample.html">View</a></li>
+        <li class="active"><a href="edit.html">Edit</a></li>
+      </ul>
+  	  <div id="content">
+        <form>
+          <label for="edit">Edit this page:</label>
+          <textarea id="edit"></textarea>
+          <div>
+            <input type="submit" value="Save" class="btn btn-primary"/>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+    <aside class="span3">
+      <h2>Note</h2>
+      <p>
+        When you click the "Save" button we check the content of the text area and prevent you from submitting something if there's a big problem.
+      </p>
+    </aside>
+	</div>
+	</div>
+	<script src="../../libs/jquery/jquery.js"></script>
+	<script src="../../src/quail.js"></script>
+	<script src="script.js"></script>
+	</body>
+</html>
+	
