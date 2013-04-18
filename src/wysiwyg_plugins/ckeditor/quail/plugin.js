@@ -8,7 +8,7 @@
     {
       var that = this;
       
-      editor.addCss('.quail-result { padding: 3px; border-radius: 3px;}' +
+      CKEDITOR.addCss('.quail-result { padding: 3px; border-radius: 3px;}' +
   '.quail-result.severe { border: 3px dashed red; }' +
   '.quail-result.moderate { border: 3px dashed orange; }' +
   '.quail-result.reccomendation { border: 3px solid green; }' +

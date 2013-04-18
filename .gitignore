@@ -5,4 +5,4 @@ examples/wysiwyg/editors/aloha/*
 examples/wysiwyg/editors/tinymce/*
 examples/wysiwyg/editors/ckeditor/*
 _site
-node_modules/
+node_modules/*
