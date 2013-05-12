@@ -28,9 +28,9 @@
     },
     
     testabilityTranslation : {
-    	0  : 'suggestion',
-    	.5 : 'moderate',
-    	1  : 'severe'
+			0			: 'suggestion',
+			0.5		: 'moderate',
+			1			: 'severe'
     },
     
     html : { },
