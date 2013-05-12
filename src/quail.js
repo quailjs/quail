@@ -27,6 +27,12 @@
       'color'          : 'colorTest'
     },
     
+    testabilityTranslation : {
+    	0  : 'suggestion',
+    	.5 : 'moderate',
+    	1  : 'severe'
+    },
+    
     html : { },
 
     strings : { },
@@ -85,7 +91,7 @@
         var results = {totals : {severe : 0, moderate : 0, suggestion : 0 },
                       results : quail.accessibilityResults };
         $.each(results.results, function(testName, result) {
-          results.totals[quail.accessibilityTests[testName].severity] += result.length;
+          results.totals[quail.testabilityTranslation[quail.accessibilityTests[testName].testability]] += result.length;
         });
         quail.options.complete(results);
       }
@@ -101,13 +107,15 @@
       
       quail.accessibilityResults[testName].push($element);
       if(typeof quail.options.testFailed !== 'undefined') {
-        var severity = (typeof quail.accessibilityTests[testName].severity !== 'undefined') ?
-                       quail.accessibilityTests[testName].severity :
+        var testability = (typeof quail.accessibilityTests[testName].testability !== 'undefined') ?
+                       quail.accessibilityTests[testName].testability :
                        'unknown';
-        quail.options.testFailed({element : $element,
-                               testName : testName,
-                               severity : severity,
-                               options  : options
+        var severity = 
+        quail.options.testFailed({element  : $element,
+                               testName    : testName,
+                               testability : testability,
+                               severity    : quail.testabilityTranslation[testability],
+                               options     : options
                                });
       }
     },
