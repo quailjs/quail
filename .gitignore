@@ -6,3 +6,8 @@ examples/wysiwyg/editors/tinymce/*
 examples/wysiwyg/editors/ckeditor/*
 _site
 node_modules/*
+utilities/printTable.php
+
+utilities/guidelineFinder.php
+
+utilities/tests.json
