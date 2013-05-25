@@ -129,7 +129,7 @@
     runTests : function() {
       $.each(quail.options.guideline, function(index, testName) {
         if(typeof quail.accessibilityTests[testName] === 'undefined') {
-        	return;
+          return;
         }
         var testType = quail.accessibilityTests[testName].type;
         if(typeof quail.accessibilityResults[testName] === 'undefined') {
