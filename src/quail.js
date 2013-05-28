@@ -256,7 +256,7 @@
       if(typeof jQuery.hasEventListener !== 'undefined') {
         return;
       }
-      $.ajax({url : quail.options.jsonPath + '/../../libs/jquery.hasEventListener/jQuery.hasEventListener-2.0.3.min.js',
+      $.ajax({url : quail.options.jsonPath + '/../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.min.js',
               async : false,
               dataType : 'script'
             });
