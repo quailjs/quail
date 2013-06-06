@@ -363,8 +363,9 @@
            quail.testFails(testName, $body);
         }
       }
-      quail.html.find(options.selector).find('*').each(function() {
-        if((options.algorithm === 'wcag' && !quail.colors.passesWCAG($(this))) ||
+      quail.html.find(options.selector).find(quail.textSelector).each(function() {
+        if(!quail.isUnreadable($(this).text()) &&
+           (options.algorithm === 'wcag' && !quail.colors.passesWCAG($(this))) ||
            (options.algorithm === 'wai' && !quail.colors.passesWAI($(this)))) {
            quail.testFails(testName, $(this));
         }
