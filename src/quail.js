@@ -363,7 +363,7 @@
            quail.testFails(testName, $body);
         }
       }
-      quail.html.find(options.selector).find(quail.textSelector).each(function() {
+      quail.html.find(options.selector).filter(quail.textSelector).each(function() {
         if(!quail.isUnreadable($(this).text()) &&
            (options.algorithm === 'wcag' && !quail.colors.passesWCAG($(this))) ||
            (options.algorithm === 'wai' && !quail.colors.passesWAI($(this)))) {
