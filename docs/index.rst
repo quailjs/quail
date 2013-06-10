@@ -45,6 +45,16 @@ To use QUAIL, you will need to make a simple jQuery/Sizzle object (in this examp
                       guideline : 'wcag2a',
                       accessibilityTests : accessibilityTests,
                       testFailed : function(event) { ... },
+                      customTests : {
+                        myCustomTest : {
+                          type : 'custom',
+                          callback : function(quail) {
+                            quail.html.find('.error').each(function() {
+                              quail.testFails('myCustomTest', $(this));
+                            })
+                          }
+                        }
+                      },
                       complete : function(event) { ... },
                     });
 
@@ -60,6 +70,7 @@ The `quail` function accepts a single object with the following items:
     - **severity** - The severity of the test.
     - **options** - Additional options as passed by the test definition.
     
+  - **customTests** - *Optional* - An object of tests that can be added to QUAIL on the fly. Tests should have a name, and either use some of the pre-defined callbacks in QUAIL (like "selector"), or a "custom" type, where you define a callback that accepts a QUAIL object.
   - **complete** - *Optional* - Called when all the tests are completed. This is useful for reporting, as it gets a summary of all resutls. This callback gets a single object with the following items:
   
     - **totals** - An object with the total number of severe, moderate, and suggestion tests which failed.

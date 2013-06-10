@@ -78,6 +78,11 @@
                     }
                 }});
       }
+      if(typeof quail.options.customTests !== 'undefined') {
+        for (var testName in quail.options.customTests) {
+          quail.accessibilityTests[testName] = quail.options.customTests[testName];
+        }
+      }
       if(typeof quail.options.guideline === 'string') {
         $.ajax({ url : quail.options.jsonPath + '/guidelines/' + quail.options.guideline +'.json',
                  async : false,
@@ -143,7 +148,7 @@
         if(testType === 'custom') {
           if(typeof quail.accessibilityTests[testName].callback === 'object' ||
              typeof quail.accessibilityTests[testName].callback === 'function') {
-            quail.accessibilityTests[testName].callback();
+            quail.accessibilityTests[testName].callback(quail);
           }
           else {
             if(typeof quail[quail.accessibilityTests[testName].callback] !== 'undefined') {
