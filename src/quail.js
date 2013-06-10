@@ -110,6 +110,12 @@
     testFails : function(testName, $element, options) {
       options = options || {};
       
+      if(typeof quail.options.preFilter !== 'undefined') {
+        if(quail.options.preFilter(testName, $element, options) === false) {
+          return;
+        }
+      }
+
       quail.accessibilityResults[testName].push($element);
       if(typeof quail.options.testFailed !== 'undefined') {
         var testability = (typeof quail.accessibilityTests[testName].testability !== 'undefined') ?
