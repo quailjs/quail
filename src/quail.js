@@ -91,6 +91,13 @@
                     quail.options.guideline = data;
                 }});
       }
+      if(typeof quail.options.guideline === 'undefined') {
+        quail.options.guideline = [ ];
+        for (var testName in quail.accessibilityTests) {
+          quail.options.guideline.push(testName);
+        }
+      }
+
       quail.runTests();
       if(typeof quail.options.complete !== 'undefined') {
         var results = {totals : {severe : 0, moderate : 0, suggestion : 0 },

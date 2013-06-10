@@ -41,7 +41,6 @@ test('customTest', function() {
   $('.test-area').quail({ jsonPath : '../../../src/resources',
                       guideline : [ 'customTestSelector', 'customTestCallback' ],
                       reset : true,
-                      accessibilityTests : accessibilityTests,
                       customTests : custom,
                       complete : function(results) {
                         testResults = results.results;
