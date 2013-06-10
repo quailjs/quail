@@ -93,8 +93,8 @@
       }
       if(typeof quail.options.guideline === 'undefined') {
         quail.options.guideline = [ ];
-        for (var testName in quail.accessibilityTests) {
-          quail.options.guideline.push(testName);
+        for (var guidelineTestName in quail.accessibilityTests) {
+          quail.options.guideline.push(guidelineTestName);
         }
       }
 
