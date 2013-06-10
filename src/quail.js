@@ -1,4 +1,4 @@
-/*! QUAIL quail-lib.org | quailjs.org/license */
+/*! QUAIL quailjs.org | quailjs.org/license */
 
 ;(function($) {
 
