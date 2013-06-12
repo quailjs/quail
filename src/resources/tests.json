@@ -2,164 +2,165 @@
     "aAdjacentWithSameResourceShouldBeCombined": {
         "type": "custom",
         "callback": "aAdjacentWithSameResourceShouldBeCombined",
-        "severity": "severe"
+        "testability": 1,
+				"oac" : 180
     },
     "aImgAltNotRepetative": {
         "type": "custom",
         "callback": "aImgAltNotRepetative",
-        "severity": "severe"
+        "testability": 1
     },
     "aLinkTextDoesNotBeginWithRedundantWord": {
         "type": "custom",
         "callback": "aLinkTextDoesNotBeginWithRedundantWord",
-        "severity": "suggestion"
+        "testability": 0
     },
     "aLinksAreSeperatedByPrintableCharacters": {
         "type": "custom",
         "callback": "aLinksAreSeperatedByPrintableCharacters",
-        "severity": "severe"
+        "testability": 1
     },
     "aLinksDontOpenNewWindow": {
         "type": "selector",
         "selector": "a[target=_new], a[target=_blank], a[target=_blank]",
-        "severity": "severe"
+        "testability": 1
     },
     "aLinksToMultiMediaRequireTranscript": {
         "type": "selector",
         "selector": "a[href$='.wmv'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']",
-        "severity": "suggestion"
+        "testability": 0
     },
     "aLinksToSoundFilesNeedTranscripts": {
         "type": "selector",
         "selector": "a[href$='.wav'], a[href$='.snd'], a[href$='.mp3'], a[href$='.iff'], a[href$='.svx'], a[href$='.sam'], a[href$='.smp'], a[href$='.vce'], a[href$='.vox'], a[href$='.pcm'], a[href$='.aif']",
-        "severity": "suggestion"
+        "testability": 0
     },
     "aMultimediaTextAlternative": {
         "type": "selector",
         "selector": "a[href$='.wmv'], a[href$='.wav'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']",
-        "severity": "suggestion"
+        "testability": 0
     },
     "aMustContainText": {
         "type": "custom",
         "callback": "aMustContainText",
-        "severity": "severe"
+        "testability": 1
     },
     "aMustHaveTitle": {
         "type": "selector",
         "selector": "a:not(a[title])",
-        "severity": "severe"
+        "testability": 1
     },
     "aMustNotHaveJavascriptHref": {
         "type": "selector",
         "selector": "a[href^='javascript:']",
-        "severity": "severe"
+        "testability": 1
     },
     "aSuspiciousLinkText": {
         "type": "custom",
         "callback": "aSuspiciousLinkText",
-        "severity": "severe"
+        "testability": 1
     },
     "aTitleDescribesDestination": {
         "type": "selector",
         "selector": "a[title]",
-        "severity": "suggestion"
+        "testability": 0
     },
     "addressForAuthor": {
         "type": "selector",
         "selector": "body:not(body:has(address))",
-        "severity": "severe"
+        "testability": 1
     },
     "addressForAuthorMustBeValid": {
         "type": "selector",
         "selector": "address",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "appletContainsTextEquivalent": {
         "type": "custom",
         "callback": "appletContainsTextEquivalent",
-        "severity": "severe"
+        "testability": 1
     },
     "appletContainsTextEquivalentInAlt": {
         "type": "placeholder",
         "selector": "applet",
         "attribute": "alt",
         "empty": true,
-        "severity": "moderate"
+        "testability": 0.5
     },
     "appletProvidesMechanismToReturnToParent": {
         "type": "selector",
         "selector": "applet",
-        "severity": "suggestion"
+        "testability": 0
     },
     "appletTextEquivalentsGetUpdated": {
         "type": "selector",
         "selector": "applet",
-        "severity": "suggestion"
+        "testability": 0
     },
     "appletUIMustBeAccessible": {
         "type": "selector",
         "selector": "applet",
-        "severity": "suggestion"
+        "testability": 0
     },
     "appletsDoNotFlicker": {
         "type": "selector",
         "selector": "applet",
-        "severity": "suggestion"
+        "testability": 0
     },
     "appletsDoneUseColorAlone": {
         "type": "selector",
         "selector": "applet",
-        "severity": "suggestion"
+        "testability": 0
     },
     "areaAltIdentifiesDestination": {
         "type": "selector",
         "selector": "area[alt]",
-        "severity": "suggestion"
+        "testability": 0
     },
     "areaAltRefersToText": {
         "type": "selector",
         "selector": "area",
-        "severity": "suggestion"
+        "testability": 0
     },
     "areaDontOpenNewWindow": {
         "type": "selector",
         "selector": "area[target='new window'], area[target=_new], area[target=_blank], area[target=_blank]",
-        "severity": "severe"
+        "testability": 1
     },
     "areaHasAltValue": {
         "type": "selector",
         "selector": "area:not(area[alt])",
-        "severity": "severe"
+        "testability": 1
     },
     "ariaOrphanedContent": {
         "type": "selector",
         "selector" : "body *:not(*[role] *, *[role], script, meta, link)",
-        "severity": "severe"
+        "testability": 1
     },
     "areaLinksToSoundFile": {
         "type": "selector",
         "selector": "area[href$=wav], area[href$=snd], area[href$=mp3], area[href$=iff], area[href$=svx], area[href$=sam], area[href$=smp], area[href$=vce], area[href$=vox], area[href$=pcm], area[href$=aif]",
-        "severity": "severe"
+        "testability": 1
     },
     "basefontIsNotUsed": {
         "type": "selector",
         "selector": "basefont",
-        "severity": "severe"
+        "testability": 1
     },
     "blinkIsNotUsed": {
         "type": "selector",
         "selector": "blink",
-        "severity": "severe"
+        "testability": 1
     },
     "blockquoteNotUsedForIndentation": {
         "type": "selector",
         "selector": "blockquote:not(blockquote[cite])",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "blockquoteUseForQuotations": {
         "type": "custom",
         "callback": "blockquoteUseForQuotations",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "bodyActiveLinkColorContrast": {
         "type": "color",
@@ -167,7 +168,7 @@
         "selector": "a:active",
         "bodyForegroundAttribute": "alink",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": "severe"
+        "testability": 1
     },
     "bodyColorContrast": {
         "type": "color",
@@ -175,7 +176,7 @@
         "selector": "body",
         "bodyForegroundAttribute": "text",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": "severe"
+        "testability": 1
     },
     "bodyLinkColorContrast": {
         "type": "color",
@@ -183,12 +184,12 @@
         "selector": "a",
         "bodyForegroundAttribute": "link",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": "severe"
+        "testability": 1
     },
     "bodyMustNotHaveBackground": {
         "type": "selector",
         "selector": "body[background]",
-        "severity": "severe"
+        "testability": 1
     },
     "bodyVisitedLinkColorContrast": {
         "type": "color",
@@ -196,27 +197,27 @@
         "selector": "a:visited",
         "bodyForegroundAttribute": "vlink",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": "severe"
+        "testability": 1
     },
     "boldIsNotUsed": {
         "type": "selector",
         "selector": "bold",
-        "severity": "severe"
+        "testability": 1
     },
     "checkboxHasLabel": {
         "type": "label",
         "selector": "input[type=checkbox]",
-        "severity": "severe"
+        "testability": 1
     },
     "checkboxLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=checkbox]",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "cssDocumentMakesSenseStyleTurnedOff": {
         "type": "selector",
         "selector": "link[rel=stylesheet], stylesheet, *[style]",
-        "severity": "suggestion"
+        "testability": 0
     },
     "cssTextHasContrast": {
         "type": "color",
@@ -224,32 +225,32 @@
         "selector": "*",
         "bodyForegroundAttribute": "background",
         "bodyBackgroundAttribute": "color",
-        "severity": "severe"
+        "testability": 1
     },
     "doctypeProvided": {
         "type": "custom",
         "callback": "doctypeProvided",
-        "severity": "severe"
+        "testability": 1
     },
     "documentAbbrIsUsed": {
         "type": "custom",
         "callback": "documentAbbrIsUsed",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "documentAcronymsHaveElement": {
         "type": "custom",
         "callback": "documentAcronymsHaveElement",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "documentAllColorsAreSet": {
         "type": "selector",
         "selector": "body:not(body[text][bgcolor][link][alink][vlink], body:not(body[text], body[bgcolor], body[link], body[alink], body[vlink]))",
-        "severity": "severe"
+        "testability": 1
     },
     "documentAutoRedirectNotUsed": {
         "type": "selector",
         "selector": "meta[http-equiv=refresh]",
-        "severity": "severe"
+        "testability": 1
     },
     "documentColorWaiActiveLinkAlgorithm": {
         "type": "color",
@@ -257,7 +258,7 @@
         "selector": "a:active",
         "bodyForegroundAttribute": "alink",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": "severe"
+        "testability": 1
     },
     "documentColorWaiAlgorithm": {
         "type": "color",
@@ -265,7 +266,7 @@
         "bodyForegroundAttribute": "text",
         "bodyBackgroundAttribute": "bgcolor",
         "selector": "body",
-        "severity": "severe"
+        "testability": 1
     },
     "documentColorWaiLinkAlgorithm": {
         "type": "color",
@@ -273,7 +274,7 @@
         "selector": "a",
         "bodyForegroundAttribute": "link",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": "severe"
+        "testability": 1
     },
     "documentColorWaiVisitedLinkAlgorithm": {
         "type": "color",
@@ -281,935 +282,935 @@
         "selector": "a:visited",
         "bodyForegroundAttribute": "vlink",
         "bodyBackgroundAttribute": "bgcolor",
-        "severity": "severe"
+        "testability": 1
     },
     "documentContentReadableWithoutStylesheets": {
         "type": "selector",
         "selector": "html:has(link[rel=stylesheet], style) body, body:has(*[style])",
-        "severity": "suggestion"
+        "testability": 0
     },
     "documentHasTitleElement": {
         "type": "selector",
         "selector": "html:not(html:has(title))",
-        "severity": "severe"
+        "testability": 1
     },
     "documentIDsMustBeUnique": {
         "type": "custom",
         "callback": "documentIDsMustBeUnique",
-        "severity": "severe"
+        "testability": 1
     },
     "documentLangIsISO639Standard": {
         "type": "custom",
         "callback": "documentLangIsISO639Standard",
-        "severity": "severe"
+        "testability": 1
     },
     "documentLangNotIdentified": {
         "type": "selector",
         "selector": "html:not(html[lang])",
-        "severity": "severe"
+        "testability": 1
     },
     "documentMetaNotUsedWithTimeout": {
         "type": "selector",
         "selector": "meta[http-equiv=refresh]",
-        "severity": "severe"
+        "testability": 1
     },
     "documentReadingDirection": {
         "type": "selector",
         "selector": "*[lang=he]:not(*[dir=rtl]), *[lang=ar]:not(*[dir=rtl])",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "documentStrictDocType": {
         "type": "custom",
         "callback": "documentStrictDocType",
-        "severity": "severe"
+        "testability": 1
     },
     "documentTitleDescribesDocument": {
         "type": "selector",
         "selector": "head title:first",
-        "severity": "suggestion"
+        "testability": 0
     },
     "documentTitleIsNotPlaceholder": {
         "type": "placeholder",
         "selector": "head title:first",
         "content": true,
-        "severity": "severe"
+        "testability": 1
     },
     "documentTitleIsShort": {
         "type": "custom",
         "callback": "documentTitleIsShort",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "documentTitleNotEmpty": {
         "type": "placeholder",
         "selector": "head title",
         "empty": true,
         "content": true,
-        "severity": "severe"
+        "testability": 1
     },
     "documentValidatesToDocType": {
         "type": "custom",
         "callback": "documentValidatesToDocType",
-        "severity": "severe"
+        "testability": 1
     },
     "documentVisualListsAreMarkedUp": {
         "type": "custom",
         "callback": "documentVisualListsAreMarkedUp",
-        "severity": "severe"
+        "testability": 1
     },
     "documentWordsNotInLanguageAreMarked": {
         "type": "selector",
         "selector": "body",
-        "severity": "suggestion"
+        "testability": 0
     },
     "documentIsWrittenClearly": {
         "type": "custom",
         "callback": "documentIsWrittenClearly",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "embedHasAssociatedNoEmbed": {
         "type": "custom",
         "callback": "embedHasAssociatedNoEmbed",
-        "severity": "severe"
+        "testability": 1
     },
     "embedMustHaveAltAttribute": {
         "type": "selector",
         "selector": "embed:not(embed[alt])",
-        "severity": "severe"
+        "testability": 1
     },
     "embedMustNotHaveEmptyAlt": {
         "type": "selector",
         "selector": "embed[alt=]",
-        "severity": "severe"
+        "testability": 1
     },
     "embedProvidesMechanismToReturnToParent": {
         "type": "selector",
         "selector": "embed",
-        "severity": "suggestion"
+        "testability": 0
     },
     "emoticonsExcessiveUse": {
         "type": "custom",
         "callback": "emoticonsExcessiveUse",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "emoticonsMissingAbbr": {
         "type": "custom",
         "callback": "emoticonsMissingAbbr",
-        "severity": "severe"
+        "testability": 1
     },
     "fileHasLabel": {
         "type": "label",
         "selector": "input[type=file]",
-        "severity": "severe"
+        "testability": 1
     },
     "fileLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=file]",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "fontIsNotUsed": {
         "type": "selector",
         "selector": "font",
-        "severity": "severe"
+        "testability": 1
     },
     "formDeleteIsReversable": {
         "type": "selector",
         "selector": "form",
-        "severity": "suggestion"
+        "testability": 0
     },
     "formAllowsCheckIfIrreversable": {
         "type": "selector",
         "selector": "form",
-        "severity": "suggestion"
+        "testability": 0
     },
     "formErrorMessageHelpsUser": {
         "type": "selector",
         "selector": "form",
-        "severity": "suggestion"
+        "testability": 0
     },
     "formHasGoodErrorMessage": {
         "type": "selector",
         "selector": "form",
-        "severity": "suggestion"
+        "testability": 0
     },
     "formWithRequiredLabel": {
         "type": "custom",
         "callback": "formWithRequiredLabel",
-        "severity": "suggestion"
+        "testability": 0
     },
     "frameIsNotUsed": {
         "type": "selector",
         "selector": "frame",
-        "severity": "severe"
+        "testability": 1
     },
     "frameRelationshipsMustBeDescribed": {
         "type": "selector",
         "selector": "frameset:not(frameset[longdesc])",
-        "severity": "50"
+        "testability": "50"
     },
     "frameSrcIsAccessible": {
         "type": "selector",
         "selector": "frame",
-        "severity": "suggestion"
+        "testability": 0
     },
     "framesetIsNotUsed": {
         "type": "selector",
         "selector": "frameset",
-        "severity": "severe"
+        "testability": 1
     },
     "frameTitlesDescribeFunction": {
         "type": "placeholder",
         "selector": "frame[title]",
         "attribute": "title",
         "empty": true,
-        "severity": "suggestion"
+        "testability": 0
     },
     "frameTitlesNotEmpty": {
         "type": "selector",
         "selector": "frame:not(frame[title]), frame[title=]",
-        "severity": "severe"
+        "testability": 1
     },
     "frameTitlesNotPlaceholder": {
         "type": "placeholder",
         "selector": "frame",
         "attribute": "title",
-        "severity": "severe"
+        "testability": 1
     },
     "framesHaveATitle": {
         "type": "selector",
         "selector": "frame:not(frame[title])",
-        "severity": "severe"
+        "testability": 1
     },
     "framesetMustHaveNoFramesSection": {
         "type": "selector",
         "selector": "frameset:not(frameset:has(noframes))",
-        "severity": "50"
+        "testability": "50"
     },
     "headerH1": {
         "type": "header",
         "selector": "h1",
-        "severity": "suggestion"
+        "testability": 0
     },
     "headerH2": {
         "type": "header",
         "selector": "h2",
-        "severity": "suggestion"
+        "testability": 0
     },
     "headerH3": {
         "type": "header",
         "selector": "h3",
-        "severity": "suggestion"
+        "testability": 0
     },
     "headerH4": {
         "type": "header",
         "selector": "h4",
-        "severity": "suggestion"
+        "testability": 0
     },
     "headerH5": {
         "type": "header",
         "selector": "h5",
-        "severity": "suggestion"
+        "testability": 0
     },
     "headerH1Format": {
         "type": "selector",
         "selector": "h1",
-        "severity": "suggestion"
+        "testability": 0
     },
     "headerH2Format": {
         "type": "selector",
         "selector": "h2",
-        "severity": "suggestion"
+        "testability": 0
     },
     "headerH3Format": {
         "type": "selector",
         "selector": "h3",
-        "severity": "suggestion"
+        "testability": 0
     },
     "headerH4Format": {
         "type": "selector",
         "selector": "h4",
-        "severity": "suggestion"
+        "testability": 0
     },
     "headerH5Format": {
         "type": "selector",
         "selector": "h5",
-        "severity": "suggestion"
+        "testability": 0
     },
     "headerH6Format": {
         "type": "selector",
         "selector": "h6",
-        "severity": "suggestion"
+        "testability": 0
     },
     "headersHaveText": {
         "type": "placeholder",
         "selector": "h1, h2, h3, h4, h5, h6",
         "content": true,
         "empty": true,
-        "severity": "severe"
+        "testability": 1
     },
     "headersUseToMarkSections": {
         "type": "custom",
         "callback": "headersUseToMarkSections",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "iIsNotUsed": {
         "type": "selector",
         "selector": "i",
-        "severity": "severe"
+        "testability": 1
     },
     "iframeMustNotHaveLongdesc": {
         "type": "selector",
         "selector": "iframe[longdesc]",
-        "severity": "severe"
+        "testability": 1
     },
     "imageMapServerSide": {
         "type": "selector",
         "selector": "img[ismap]",
-        "severity": "severe"
+        "testability": 1
     },
     "imgAltEmptyForDecorativeImages": {
         "type": "selector",
         "selector": "img[alt]",
-        "severity": "suggestion"
+        "testability": 0
     },
     "imgAltIdentifiesLinkDestination": {
         "type": "selector",
         "selector": "a img[alt]:first",
-        "severity": "suggestion"
+        "testability": 0
     },
     "imgAltIsDifferent": {
         "type": "custom",
         "callback": "imgAltIsDifferent",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "imgAltIsSameInText": {
         "type": "selector",
         "selector": "img",
-        "severity": "suggestion"
+        "testability": 0
     },
     "imgAltIsTooLong": {
         "type": "custom",
         "callback": "imgAltIsTooLong",
-        "severity": "severe"
+        "testability": 1
     },
     "imgAltNotEmptyInAnchor": {
         "type": "custom",
         "callback": "imgAltNotEmptyInAnchor",
-        "severity": "severe"
+        "testability": 1
     },
     "imgAltNotPlaceHolder": {
         "type": "placeholder",
         "selector": "img",
         "attribute": "alt",
-        "severity": "severe"
+        "testability": 1
     },
     "imgAltTextNotRedundant": {
         "type": "custom",
         "callback": "imgAltTextNotRedundant",
-        "severity": "severe"
+        "testability": 1
     },
     "imgGifNoFlicker": {
         "type": "custom",
         "callback": "imgGifNoFlicker",
-        "severity": "severe"
+        "testability": 1
     },
     "imgHasAlt": {
         "type": "selector",
         "selector": "img:not(img[alt])",
-        "severity": "severe"
+        "testability": 1
     },
     "imgHasLongDesc": {
         "type": "custom",
         "callback": "imgHasLongDesc",
-        "severity": "severe"
+        "testability": 1
     },
     "imgImportantNoSpacerAlt": {
         "type": "custom",
         "callback": "imgImportantNoSpacerAlt",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "imgMapAreasHaveDuplicateLink": {
         "type": "custom",
         "callback": "imgMapAreasHaveDuplicateLink",
-        "severity": "severe"
+        "testability": 1
     },
     "imgNonDecorativeHasAlt": {
         "type": "custom",
         "callback": "imgNonDecorativeHasAlt",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "imgNotReferredToByColorAlone": {
         "type": "selector",
         "selector": "img",
-        "severity": "suggestion"
+        "testability": 0
     },
     "imgServerSideMapNotUsed": {
         "type": "selector",
         "selector": "img[ismap]",
-        "severity": "severe"
+        "testability": 1
     },
     "imgShouldNotHaveTitle": {
         "type": "selector",
         "selector": "img[title]",
-        "severity": "severe"
+        "testability": 1
     },
     "imgWithMapHasUseMap": {
         "type": "selector",
         "selector": "img[ismap]:not(img[usemap])",
-        "severity": "severe"
+        "testability": 1
     },
     "imgWithMathShouldHaveMathEquivalent": {
         "type": "custom",
         "callback": "imgWithMathShouldHaveMathEquivalent",
-        "severity": "suggestion"
+        "testability": 0
     },
     "inputCheckboxHasTabIndex": {
         "type": "placeholder",
         "selector": "input[type=checkbox]",
         "attribute": "tabindex",
         "empty": true,
-        "severity": "severe"
+        "testability": 1
     },
     "inputCheckboxRequiresFieldset": {
         "type": "custom",
         "callback": "inputCheckboxRequiresFieldset",
-        "severity": "severe"
+        "testability": 1
     },
     "inputDoesNotUseColorAlone": {
         "type": "selector",
         "selector": "input:not(input[type=hidden])",
-        "severity": "suggestion"
+        "testability": 0
     },
     "inputElementsDontHaveAlt": {
         "type": "selector",
         "selector": "input[type!=image][alt]",
-        "severity": "severe"
+        "testability": 1
     },
     "inputFileHasTabIndex": {
         "type": "placeholder",
         "selector": "input[type=file]",
         "attribute": "tabindex",
         "empty": true,
-        "severity": "severe"
+        "testability": 1
     },
     "inputImageAltIdentifiesPurpose": {
         "type": "selector",
         "selector": "input[type=image][alt]",
-        "severity": "suggestion"
+        "testability": 0
     },
     "inputImageAltIsNotFileName": {
         "type": "custom",
         "callback": "inputImageAltIsNotFileName",
-        "severity": "severe"
+        "testability": 1
     },
     "inputImageAltIsNotPlaceholder": {
         "type": "placeholder",
         "selector": "input[type=image]",
         "attribute": "alt",
-        "severity": "severe"
+        "testability": 1
     },
     "inputImageAltIsShort": {
         "type": "custom",
         "callback": "inputImageAltIsShort",
-        "severity": "severe"
+        "testability": 1
     },
     "inputImageAltNotRedundant": {
         "type": "custom",
         "callback": "inputImageAltNotRedundant",
-        "severity": "severe"
+        "testability": 1
     },
     "inputImageHasAlt": {
         "type": "selector",
         "selector": "input[type=image]:not(input[type=image][alt])",
-        "severity": "severe"
+        "testability": 1
     },
     "inputImageNotDecorative": {
         "type": "selector",
         "selector": "input[type=image]",
-        "severity": "suggestion"
+        "testability": 0
     },
     "inputPasswordHasTabIndex": {
         "type": "placeholder",
         "selector": "input[type=password]",
         "attribute": "tabindex",
         "empty": true,
-        "severity": "severe"
+        "testability": 1
     },
     "inputRadioHasTabIndex": {
         "type": "placeholder",
         "selector": "input[type=radio]",
         "attribute": "tabindex",
         "empty": true,
-        "severity": "severe"
+        "testability": 1
     },
     "inputSubmitHasTabIndex": {
         "type": "placeholder",
         "selector": "input[type=submit]",
         "attribute": "tabindex",
         "empty": true,
-        "severity": "severe"
+        "testability": 1
     },
     "inputTextHasLabel": {
         "type": "label",
         "selector": "input[type=text]",
-        "severity": "severe"
+        "testability": 1
     },
     "inputTextHasTabIndex": {
         "type": "placeholder",
         "selector": "input[type=text]",
         "attribute": "tabindex",
         "empty": true,
-        "severity": "severe"
+        "testability": 1
     },
     "inputTextHasValue": {
         "type": "placeholder",
         "selector": "input[type=text]",
         "empty": true,
         "attribute": "value",
-        "severity": "severe"
+        "testability": 1
     },
     "inputTextValueNotEmpty": {
         "type": "placeholder",
         "selector": "input[type=text]",
         "attribute": "value",
         "empty": true,
-        "severity": "severe"
+        "testability": 1
     },
     "labelDoesNotContainInput": {
         "type": "selector",
         "selector": "label:has(input)",
-        "severity": "severe"
+        "testability": 1
     },
     "labelMustBeUnique": {
         "type": "custom",
         "callback": "labelMustBeUnique",
-        "severity": "severe"
+        "testability": 1
     },
     "labelMustNotBeEmpty": {
         "type": "placeholder",
         "selector": "label",
         "content": true,
         "empty": true,
-        "severity": "severe"
+        "testability": 1
     },
     "labelsAreAssignedToAnInput": {
         "type": "custom",
         "callback": "labelsAreAssignedToAnInput",
-        "severity": "severe"
+        "testability": 1
     },
     "legendDescribesListOfChoices": {
         "type": "selector",
         "selector": "legend",
-        "severity": "suggestion"
+        "testability": 0
     },
     "legendTextNotEmpty": {
         "type": "selector",
         "selector": "legend:empty",
-        "severity": "severe"
+        "testability": 1
     },
     "legendTextNotPlaceholder": {
         "type": "placeholder",
         "selector": "legend",
         "content": true,
         "emtpy": true,
-        "severity": "severe"
+        "testability": 1
     },
     "liDontUseImageForBullet": {
         "type": "selector",
         "selector": "li:has(img)",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "linkUsedForAlternateContent": {
         "type": "selector",
         "selector": "html:not(html:has(link[rel=alternate])) body",
-        "severity": "suggestion"
+        "testability": 0
     },
     "linkUsedToDescribeNavigation": {
         "type": "selector",
         "selector": "html:not(html:has(link[rel=index]))",
-        "severity": "severe"
+        "testability": 1
     },
     "listNotUsedForFormatting": {
         "type": "custom",
         "callback": "listNotUsedForFormatting",
-        "severity": "suggestion"
+        "testability": 0
     },
     "marqueeIsNotUsed": {
         "type": "selector",
         "selector": "marquee",
-        "severity": "severe"
+        "testability": 1
     },
     "menuNotUsedToFormatText": {
         "type": "selector",
         "selector": "menu:not(menu li:parent(menu))",
-        "severity": "suggestion"
+        "testability": 0
     },
     "noembedHasEquivalentContent": {
         "type": "selector",
         "selector": "noembed",
-        "severity": "suggestion"
+        "testability": 0
     },
     "noframesSectionMustHaveTextEquivalent": {
         "type": "selector",
         "selector": "frameset:not(frameset:has(noframes))",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "objectContentUsableWhenDisabled": {
         "type": "selector",
         "selector": "object",
-        "severity": "suggestion"
+        "testability": 0
     },
     "objectDoesNotFlicker": {
         "type": "selector",
         "selector": "object",
-        "severity": "suggestion"
+        "testability": 0
     },
     "objectDoesNotUseColorAlone": {
         "type": "selector",
         "selector": "object",
-        "severity": "suggestion"
+        "testability": 0
     },
     "objectInterfaceIsAccessible": {
         "type": "selector",
         "selector": "object",
-        "severity": "suggestion"
+        "testability": 0
     },
     "objectLinkToMultimediaHasTextTranscript": {
         "type": "selector",
         "selector": "object",
-        "severity": "suggestion"
+        "testability": 0
     },
     "objectMustContainText": {
         "type": "placeholder",
         "selector": "object",
         "empty": true,
         "content": true,
-        "severity": "severe"
+        "testability": 1
     },
     "objectMustHaveEmbed": {
         "type": "selector",
         "selector": "object:not(object:has(embed))",
-        "severity": "severe"
+        "testability": 1
     },
     "objectMustHaveTitle": {
         "type": "selector",
         "selector": "object:not(object[title])",
-        "severity": "severe"
+        "testability": 1
     },
     "objectMustHaveValidTitle": {
         "type": "placeholder",
         "selector": "object",
         "attribute": "title",
         "empty": true,
-        "severity": "severe"
+        "testability": 1
     },
     "objectProvidesMechanismToReturnToParent": {
         "type": "selector",
         "selector": "object",
-        "severity": "suggestion"
+        "testability": 0
     },
     "objectShouldHaveLongDescription": {
         "type": "selector",
         "selector": "object",
-        "severity": "suggestion"
+        "testability": 0
     },
     "objectTextUpdatesWhenObjectChanges": {
         "type": "selector",
         "selector": "object",
-        "severity": "suggestion"
+        "testability": 0
     },
     "objectUIMustBeAccessible": {
         "type": "selector",
         "selector": "object",
-        "severity": "suggestion"
+        "testability": 0
     },
     "objectWithClassIDHasNoText": {
         "type": "selector",
         "selector": "object[classid]:not(object[classid]:empty)",
-        "severity": "severe"
+        "testability": 1
     },
     "pNotUsedAsHeader": {
         "type": "custom",
         "callback": "pNotUsedAsHeader",
-        "severity": "severe"
+        "testability": 1
     },
     "paragarphIsWrittenClearly": {
         "type": "custom",
         "callback": "paragarphIsWrittenClearly",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "passwordHasLabel": {
         "type": "label",
         "selector": "input[type=password]",
-        "severity": "severe"
+        "testability": 1
     },
     "passwordLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=password]",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "preShouldNotBeUsedForTabularLayout": {
         "type": "custom",
         "callback": "preShouldNotBeUsedForTabularLayout",
-        "severity": "suggestion"
+        "testability": 0
     },
     "radioHasLabel": {
         "type": "label",
         "selector": "input[type=radio]",
-        "severity": "severe"
+        "testability": 1
     },
     "radioLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=radio]",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "radioMarkedWithFieldgroupAndLegend": {
         "type": "selector",
         "selector": "input[type=radio]:not(fieldset input[type=radio])",
-        "severity": "severe"
+        "testability": 1
     },
     "scriptContentAccessibleWithScriptsTurnedOff": {
         "type": "selector",
         "selector": "script",
-        "severity": "suggestion"
+        "testability": 0
     },
     "scriptInBodyMustHaveNoscript": {
         "type": "selector",
         "selector": "html:not(html:has(noscript)):has(script) body",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "scriptOnclickRequiresOnKeypress": {
         "type": "event",
         "searchEvent": "onclick",
         "correspondingEvent": "onkeypress",
-        "severity": "severe"
+        "testability": 1
     },
     "scriptOndblclickRequiresOnKeypress": {
         "type": "event",
         "searchEvent": "ondblclick",
         "correspondingEvent": "onkeypress",
-        "severity": "severe"
+        "testability": 1
     },
     "scriptOnmousedownRequiresOnKeypress": {
         "type": "event",
         "searchEvent": "onmousedown",
         "correspondingEvent": "onkeydown",
-        "severity": "severe"
+        "testability": 1
     },
     "scriptOnmousemove": {
         "type": "event",
         "searchEvent": "onmousemove",
         "correspondingEvent": "onkeypress",
-        "severity": "severe"
+        "testability": 1
     },
     "scriptOnmouseoutHasOnmouseblur": {
         "type": "event",
         "searchEvent": "onmouseout",
         "correspondingEvent": "onblur",
-        "severity": "severe"
+        "testability": 1
     },
     "scriptOnmouseoverHasOnfocus": {
         "type": "event",
         "searchEvent": "onmouseover",
         "correspondingEvent": "onfocus",
-        "severity": "severe"
+        "testability": 1
     },
     "scriptOnmouseupHasOnkeyup": {
         "type": "event",
         "searchEvent": "onmouseup",
         "correspondingEvent": "onkeyup",
-        "severity": "severe"
+        "testability": 1
     },
     "scriptUIMustBeAccessible": {
         "type": "selector",
         "selector": "script",
-        "severity": "suggestion"
+        "testability": 0
     },
     "scriptsDoNotFlicker": {
         "type": "selector",
         "selector": "script",
-        "severity": "suggestion"
+        "testability": 0
     },
     "scriptsDoNotUseColorAlone": {
         "type": "selector",
         "selector": "script",
-        "severity": "suggestion"
+        "testability": 0
     },
     "selectDoesNotChangeContext": {
         "type": "event",
         "selector": "select",
         "searchEvent": "onchange",
-        "severity": "severe"
+        "testability": 1
     },
     "selectHasAssociatedLabel": {
         "type": "label",
         "selector": "select",
-        "severity": "severe"
+        "testability": 1
     },
     "selectWithOptionsHasOptgroup": {
         "type": "selector",
         "selector": "select:not(select:has(optgroup)) option:nth-child(5)",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "selectJumpMenu": {
         "type": "custom",
         "callback": "selectJumpMenu",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "siteMap": {
         "type": "custom",
         "callback": "siteMap",
-        "severity": "suggestion"
+        "testability": 0
     },
     "skipToContentLinkProvided": {
         "type": "selector",
         "selector": "body:not(body:has(a:first[href^=#]))",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "svgContainsTitle": {
         "type": "selector",
         "selector": "svg:not(svg:has(title))",
-        "severity": "severe"
+        "testability": 1
     },
     "tabIndexFollowsLogicalOrder": {
         "type": "custom",
         "callback": "tabIndexFollowsLogicalOrder",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "tableCaptionIdentifiesTable": {
         "type": "selector",
         "selector": "caption",
-        "severity": "suggestion"
+        "testability": 0
     },
     "tableComplexHasSummary": {
         "type": "selector",
         "selector": "table:not(table[summary], table:has(caption))",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "tableDataShouldHaveTh": {
         "type": "selector",
         "selector": "table:not(table:has(th))",
-        "severity": "severe"
+        "testability": 1
     },
     "tableHeaderLabelMustBeTerse": {
         "type": "custom",
         "callback": "tableHeaderLabelMustBeTerse",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "tableIsGrouped": {
         "type": "selector",
         "selector": "table:not(table:has(thead), table:has(tfoot))",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "tableLayoutDataShouldNotHaveTh": {
         "type": "custom",
         "callback": "tableLayoutDataShouldNotHaveTh",
-        "severity": "suggestion"
+        "testability": 0
     },
     "tableLayoutHasNoCaption": {
         "type": "custom",
         "callback": "tableLayoutHasNoCaption",
-        "severity": "severe"
+        "testability": 1
     },
     "tableLayoutHasNoSummary": {
         "type": "custom",
         "callback": "tableLayoutHasNoSummary",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "tableLayoutMakesSenseLinearized": {
         "type": "custom",
         "callback": "tableLayoutMakesSenseLinearized",
-        "severity": "suggestion"
+        "testability": 0
     },
     "tableSummaryDescribesTable": {
         "type": "selector",
         "selector": "table[summary]",
-        "severity": "suggestion"
+        "testability": 0
     },
     "tableSummaryDoesNotDuplicateCaption": {
         "type": "custom",
         "callback": "tableSummaryDoesNotDuplicateCaption",
-        "severity": "severe"
+        "testability": 1
     },
     "tableSummaryIsEmpty": {
         "type": "placeholder",
         "selector": "table[summary]",
         "attribute": "summary",
         "empty": true,
-        "severity": "moderate"
+        "testability": 0.5
     },
     "tableSummaryIsSufficient": {
         "type": "selector",
         "selector": "table[summary]",
-        "severity": "suggestion"
+        "testability": 0
     },
     "tableSummaryIsNotTooLong": {
         "type": "custom",
         "callback": "tableSummaryIsNotTooLong",
-        "severity": "suggestion"
+        "testability": 0
     },
     "tableNotUsedForLayout": {
         "type": "custom",
         "callback": "tableNotUsedForLayout",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "tableUseColGroup": {
         "type": "custom",
         "callback": "tableUseColGroup",
-        "severity": "suggestion"
+        "testability": 0
     },
     "tableUsesScopeForRow": {
         "type": "custom",
         "callback": "tableUsesScopeForRow",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "tableUsesAbbreviationForHeader": {
         "type": "custom",
         "callback": "tableUsesAbbreviationForHeader",
-        "severity": "suggestion"
+        "testability": 0
     },
     "tableUsesCaption": {
         "type": "selector",
         "selector": "table:not(table:has(caption))",
-        "severity": "severe"
+        "testability": 1
     },
     "tableWithBothHeadersUseScope": {
         "type": "selector",
         "selector": "table:has(tr:not(table tr:first) th:not(th[scope]))",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "tableWithMoreHeadersUseID": {
         "type": "custom",
         "callback": "tableWithMoreHeadersUseID",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "tabularDataIsInTable": {
         "type": "custom",
         "callback": "tabularDataIsInTable",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "textareaHasAssociatedLabel": {
         "type": "label",
         "selector": "textarea",
-        "severity": "severe"
+        "testability": 1
     },
     "textareaLabelPositionedClose": {
         "type": "labelProximity",
         "selector": "textarea",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "textIsNotSmall": {
         "type": "custom",
         "callback": "textIsNotSmall",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "videoProvidesCaptions": {
         "type": "selector",
         "selector": "video",
-        "severity": "moderate"
+        "testability": 0.5
     },
     "videosEmbeddedOrLinkedNeedCaptions": {
         "type": "custom",
         "callback": "videosEmbeddedOrLinkedNeedCaptions",
-        "severity": "severe"
+        "testability": 1
     }
 }

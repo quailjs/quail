@@ -28,7 +28,7 @@
                       reset : true,
                       accessibilityTests : data,
                       testFailed : function(event) {
-                        if(event.severity == 'severe' && event.testName == 'imgHasAlt') {
+                        if(event.testability == 1 && event.testName == 'imgHasAlt') {
                           testPasses = true;
                         }
                       }});

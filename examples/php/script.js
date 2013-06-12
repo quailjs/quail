@@ -34,7 +34,9 @@ $(document).ready(function() {
         testFailed : function(event) {
           if(event.severity == 'severe') {
             $(':submit').addClass('disabled')
-                        .attr('disabled', 'disabled');
+                        .attr('disabled', 'disabled')
+                        .css('background', 'red');
+            $('#edit').after('Hey, you have a problem!');
           }
         },
         complete : function(results) {

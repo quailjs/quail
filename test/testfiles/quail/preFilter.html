@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+		<title>Adding custom tests to QUAIL</title>
+	</head>
+	<body>
+    <div class="test-area">
+    	<p>This is an image <img src="../oac/rex.jpg">.</p>
+    </div>
+<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+	<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+<script id="qunit-quail" src="../../../src/quail.js"></script>
+<script id="qunit-composite" src="../../composite.js"></script>
+<script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
+<script id="qunit-script">
+test('customTest', function() {
+  var testResults = [];
+  $('.test-area').quail({ jsonPath : '../../../src/resources',
+                      guideline : [ 'imgHasAlt' ],
+                      reset : true,
+                      preFilter : function(testName, element) {
+
+                      },
+                      complete : function(results) {
+                        testResults = results.results;
+                      }});
+  equal(1, testResults.imgHasAlt.length, 'Image was found.');
+
+  $('.test-area').quail({ jsonPath : '../../../src/resources',
+                      guideline : [ 'imgHasAlt' ],
+                      reset : true,
+                      preFilter : function(testName, element) {
+                        if(element.get(0).tagName == 'IMG') {
+                          return false;
+                        }
+                      },
+                      complete : function(results) {
+                        testResults = results.results;
+                      }});
+  equal(0, testResults.imgHasAlt.length, 'Image was filtered out.');
+});
+</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+		<title>Adding custom tests to QUAIL</title>
+	</head>
+	<body>
+    <div class="test-area">
+    	<p>
+    		This is a paragraph.
+    	</p>
+    	<p class="error">
+    		This is a paragraph we are testing for.
+    	</p>
+    	<h2 class="callback-error">Heading!</h2>
+    </div>
+<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+	<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+<script id="qunit-quail" src="../../../src/quail.js"></script>
+<script id="qunit-composite" src="../../composite.js"></script>
+<script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
+<script id="qunit-script">
+test('customTest', function() {
+  var testResults = [];
+  var custom = {
+  	customTestSelector : {
+  		type : 'selector',
+  		selector : '.error'
+  	},
+  	customTestCallback : {
+  		type : 'custom',
+  		callback : function(quail) {
+  			quail.html.find('p, h2').each(function() {
+  				if($(this).hasClass('callback-error')) {
+  					quail.testFails('customTestCallback', $(this));
+  				}
+  			});
+  		}
+  	}
+  };
+  $('.test-area').quail({ jsonPath : '../../../src/resources',
+                      guideline : [ 'customTestSelector', 'customTestCallback' ],
+                      reset : true,
+                      customTests : custom,
+                      complete : function(results) {
+                        testResults = results.results;
+                      }});
+  equal('P', testResults.customTestSelector[0].get(0).tagName, 'Found paragraph with selector');
+  equal('H2', testResults.customTestCallback[0].get(0).tagName, 'Found header with custom callback');
+});
+</script>
+	</body>
+</html>
