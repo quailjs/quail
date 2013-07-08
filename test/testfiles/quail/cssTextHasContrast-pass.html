@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>Text has appropriate contrast - pass</title>
+	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+	<style>
+		p {
+			background: #E9E9E9;
+			color: #0500FF;
+		}
+
+		p strong {
+			color: #000;
+		}
+	</style>
+	</head>
+	<body>
+	<div id="quail-scope">
+		<p class="one">
+			This is some text that <strong> I have put into this paragraph</strong>.
+		</p>
+
+		<p class="two">
+			This text contrast is OK
+		</p>
+	</div>
+
+	<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+	<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+<script id="qunit-quail" src="../../../src/quail.js"></script>
+<script id="qunit-composite" src="../../composite.js"></script>
+<script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
+<script id="qunit-script">
+test('cssTextHasContrast', function() {
+  quailTest.runTest( 'cssTextHasContrast', 'cssTextHasContrast-fail.html');
+  equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
+});
+</script>
+	</body>
+</html>
