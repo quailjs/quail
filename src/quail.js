@@ -1221,7 +1221,7 @@
       var can = document.createElement('canvas'); 
       var context = can.getContext('2d');
       context.drawImage(img, 0, 0);
-      data = context.getImageData(0, 0, 1, 1).data;
+      var data = context.getImageData(0, 0, 1, 1).data;
       return 'rgb(' + data[0] + ',' + data[1] + ',' + data[2] + ')';
     },
 
@@ -1260,15 +1260,15 @@
         return (element.css('color')) ? element.css('color') : 'rgb(255,255,255)';
       }
       //return (element.css('background-color')) ? element.css('background-color') : 'rgb(0,0,0)';
-      if((element.css('background-color') != 'rgba(0, 0, 0, 0)' &&
-          element.css('background-color') != 'transparent') ||
-         element.get(0).tagName == 'body') {
+      if((element.css('background-color') !== 'rgba(0, 0, 0, 0)' &&
+          element.css('background-color') !== 'transparent') ||
+         element.get(0).tagName === 'body') {
         return (element.css('background-color')) ? element.css('background-color') : 'rgb(0,0,0)';
       }
       var color = 'rgb(0,0,0)';
       element.parents().each(function(){
-        if ($(this).css('background-color') != 'rgba(0, 0, 0, 0)' &&
-            $(this).css('background-color') != 'transparent') {
+        if ($(this).css('background-color') !== 'rgba(0, 0, 0, 0)' &&
+            $(this).css('background-color') !== 'transparent') {
             color = $(this).css('background-color');
             return false;
         }
