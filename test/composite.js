@@ -46,7 +46,6 @@ var quailTest = {
   },
 
   confirmIsTag : function(tag) {
-    console.log(quailTest.results);
     if(typeof quailTest.results[quailTest.testName][0] === 'undefined') {
       return false;
     }
