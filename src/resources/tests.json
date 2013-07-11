@@ -2,8 +2,7 @@
     "aAdjacentWithSameResourceShouldBeCombined": {
         "type": "custom",
         "callback": "aAdjacentWithSameResourceShouldBeCombined",
-        "testability": 1,
-				"oac" : 180
+        "testability": 1
     },
     "aImgAltNotRepetative": {
         "type": "custom",
