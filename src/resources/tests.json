@@ -444,7 +444,7 @@
     "frameRelationshipsMustBeDescribed": {
         "type": "selector",
         "selector": "frameset:not(frameset[longdesc])",
-        "testability": "50"
+        "testability": 0.5
     },
     "frameSrcIsAccessible": {
         "type": "selector",
@@ -482,7 +482,7 @@
     "framesetMustHaveNoFramesSection": {
         "type": "selector",
         "selector": "frameset:not(frameset:has(noframes))",
-        "testability": "50"
+        "testability": 0.5
     },
     "headerH1": {
         "type": "header",
