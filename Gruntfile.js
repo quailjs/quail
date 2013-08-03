@@ -19,8 +19,9 @@ module.exports = function(grunt) {
         banner: '<%= concat.options.banner %>'
       },
       dist: {
-        src: ['src/quail.js'],
-        dest: 'src/quail.min.js'
+        files : {
+          'src/quail.min.js' : 'src/quail.js'
+        }
       }
     },
     qunit: {
