@@ -26,12 +26,9 @@ module.exports = function(grunt) {
     qunit: {
       files: ['test/quail.html']
     },
-    jlint: {
-      
-    },
     watch: {
-      files: '<%= lint.files %>',
-      tasks: 'lint qunit'
+      files: '<%= jshint.files %>',
+      tasks: 'test'
     },
     jshint: {
       options: {
@@ -58,12 +55,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit']);
   
   // Release task.
+  grunt.registerTask('default', ['test']);
+
   grunt.registerTask('release', ['jshint', 'qunit', 'uglify']);
   
-  // Travis task.
-  grunt.registerTask('travis', ['jshint', 'qunit']);
+  // Test task.
+  grunt.registerTask('test', ['jshint', 'qunit']);
 };

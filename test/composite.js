@@ -27,21 +27,18 @@ var quailTest = {
                       reset : true,
                       accessibilityTests : accessibilityTests,
                       complete : function(results) {
+                        $.each(results.results[testName], function(index, item) {
+                          if(typeof item === 'undefined' ||
+                             (item && item.attr('id') && item.attr('id').indexOf('qunit-') !== -1) ||
+                             item.parents('#qunit-wrapper').length) {
+                            results.results[testName].splice(index, 1);
+                          }
+                        });
                         quailTest.results = results.results;
                       }});
   },
 
   confirmIsEmpty : function() {
-    $.each(quailTest.results[quailTest.testName], function(index, item) {
-      if(typeof item === 'undefined' ||
-         (item && $(item).attr('id') && $(item).attr('id').indexOf('qunit-') !== -1) ||
-         $(item).parents('#qunit-wrapper').length) {
-        quailTest.results[quailTest.testName].splice(index, 1);
-      }
-      else {
-        return false;
-      }
-    });
     if(quailTest.results[quailTest.testName].length) {
       return false;
     }
@@ -49,13 +46,6 @@ var quailTest = {
   },
 
   confirmIsTag : function(tag) {
-    $.each(quailTest.results[quailTest.testName], function(index, item) {
-      if(typeof item === 'undefined' ||
-         (item && $(item).attr('id') && $(item).attr('id').indexOf('qunit-') !== -1) ||
-         $(item).parents('#qunit-wrapper').length) {
-        quailTest.results[quailTest.testName].splice(index, 1);
-      }
-    });
     if(typeof quailTest.results[quailTest.testName][0] === 'undefined') {
       return false;
     }

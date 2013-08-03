@@ -44,7 +44,7 @@
     /**
      * A list of HTML elements that can contain actual text.
      */
-    textSelector : 'p, h1, h2, h3, h4, h5, h6, div, pre, blockquote, aside, article, details, summary, figcaption, footer, header, hgroup, nav, section',
+    textSelector : 'p, h1, h2, h3, h4, h5, h6, div, pre, blockquote, aside, article, details, summary, figcaption, footer, header, hgroup, nav, section, strong, em, del, i, b',
     
     /**
      * Suspect tags that would indicate a paragraph is being used as a header.
@@ -1191,8 +1191,9 @@
   quail.colors = {
   
     getLuminosity : function(foreground, background) {
-      foreground = quail.colors.cleanup(foreground);
-      background = quail.colors.cleanup(background);
+      foreground = this.cleanup(foreground);
+      background = this.cleanup(background);
+      
       var RsRGB = foreground.r/255;
       var GsRGB = foreground.g/255;
       var BsRGB = foreground.b/255;
@@ -1207,17 +1208,23 @@
       var G2 = (GsRGB2 <= 0.03928) ? GsRGB2/12.92 : Math.pow((GsRGB2+0.055)/1.055, 2.4);
       var B2 = (BsRGB2 <= 0.03928) ? BsRGB2/12.92 : Math.pow((BsRGB2+0.055)/1.055, 2.4);
       var l1, l2;
-      if (foreground.r + foreground.g + foreground.b <= background.r + background.g + background.b) {
-        l2 = (0.2126 * R + 0.7152 * G + 0.0722 * B);
-        l1 = (0.2126 * R2 + 0.7152 * G2 + 0.0722 * B2);
-      } else {
-        l1 = (0.2126 * R + 0.7152 * G + 0.0722 * B);
-        l2 = (0.2126 * R2 + 0.7152 * G2 + 0.0722 * B2);
-      }
+      l1 = (0.2126 * R + 0.7152 * G + 0.0722 * B);
+      l2 = (0.2126 * R2 + 0.7152 * G2 + 0.0722 * B2);
   
-      return Math.round((l1 + 0.05)/(l2 + 0.05),2);
+      return Math.round((Math.max(l1, l2) + 0.05)/(Math.min(l1, l2) + 0.05)*10)/10;
     },
-    
+
+    fetchImageColor : function(){
+      var img = new Image();
+      var src = $(this).css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
+      img.src = src;
+      var can = document.createElement('canvas'); 
+      var context = can.getContext('2d');
+      context.drawImage(img, 0, 0);
+      var data = context.getImageData(0, 0, 1, 1).data;
+      return 'rgb(' + data[0] + ',' + data[1] + ',' + data[2] + ')';
+    },
+
     passesWCAG : function(element) {
       return (quail.colors.getLuminosity(quail.colors.getColor(element, 'foreground'), quail.colors.getColor(element, 'background')) > 5);
     },
@@ -1252,7 +1259,21 @@
       if(type === 'foreground') {
         return (element.css('color')) ? element.css('color') : 'rgb(255,255,255)';
       }
-      return (element.css('background-color')) ? element.css('background-color') : 'rgb(0,0,0)';
+      //return (element.css('background-color')) ? element.css('background-color') : 'rgb(0,0,0)';
+      if((element.css('background-color') !== 'rgba(0, 0, 0, 0)' &&
+          element.css('background-color') !== 'transparent') ||
+         element.get(0).tagName === 'body') {
+        return (element.css('background-color')) ? element.css('background-color') : 'rgb(0,0,0)';
+      }
+      var color = 'rgb(0,0,0)';
+      element.parents().each(function(){
+        if ($(this).css('background-color') !== 'rgba(0, 0, 0, 0)' &&
+            $(this).css('background-color') !== 'transparent') {
+            color = $(this).css('background-color');
+            return false;
+        }
+      });
+      return color;
     },
     
     cleanup : function(color) {
