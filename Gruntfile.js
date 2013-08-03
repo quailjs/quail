@@ -55,12 +55,16 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  
-  // Release task.
+
+  // Linting, mostly to test JSON.
+  grunt.registerTask('lint', ['jshint']);
+
+  // By default, just run tests
   grunt.registerTask('default', ['test']);
 
+  // Release task.
   grunt.registerTask('release', ['jshint', 'qunit', 'uglify']);
-  
+
   // Test task.
   grunt.registerTask('test', ['jshint', 'qunit']);
 };
