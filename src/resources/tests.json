@@ -3,79 +3,79 @@
         "type": "custom",
         "callback": "aAdjacentWithSameResourceShouldBeCombined",
         "testability": 1,
-        "tags" : [ "link" ]
+        "tags" : [ "link", "content" ]
     },
     "aImgAltNotRepetative": {
         "type": "custom",
         "callback": "aImgAltNotRepetative",
         "testability": 1,
-        "tags" : [ "link" ]
+        "tags" : [ "link", "content" ]
     },
     "aLinkTextDoesNotBeginWithRedundantWord": {
         "type": "custom",
         "callback": "aLinkTextDoesNotBeginWithRedundantWord",
         "testability": 0,
-        "tags" : [ "link" ]
+        "tags" : [ "link", "content" ]
     },
     "aLinksAreSeperatedByPrintableCharacters": {
         "type": "custom",
         "callback": "aLinksAreSeperatedByPrintableCharacters",
         "testability": 1,
-        "tags" : [ "link" ]
+        "tags" : [ "link", "content" ]
     },
     "aLinksDontOpenNewWindow": {
         "type": "selector",
         "selector": "a[target=_new], a[target=_blank], a[target=_blank]",
         "testability": 1,
-        "tags" : [ "link" ]
+        "tags" : [ "link", "content" ]
     },
     "aLinksToMultiMediaRequireTranscript": {
         "type": "selector",
         "selector": "a[href$='.wmv'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']",
         "testability": 0,
-        "tags" : [ "link", "media" ]
+        "tags" : [ "link", "media", "content" ]
     },
     "aLinksToSoundFilesNeedTranscripts": {
         "type": "selector",
         "selector": "a[href$='.wav'], a[href$='.snd'], a[href$='.mp3'], a[href$='.iff'], a[href$='.svx'], a[href$='.sam'], a[href$='.smp'], a[href$='.vce'], a[href$='.vox'], a[href$='.pcm'], a[href$='.aif']",
         "testability": 0,
-        "tags" : [ "link", "media"]
+        "tags" : [ "link", "media", "content" ]
     },
     "aMultimediaTextAlternative": {
         "type": "selector",
         "selector": "a[href$='.wmv'], a[href$='.wav'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']",
         "testability": 0,
-        "tags" : [ "link", "media"]
+        "tags" : [ "link", "media", "content" ]
     },
     "aMustContainText": {
         "type": "custom",
         "callback": "aMustContainText",
         "testability": 1,
-        "tags" : [ "link" ]
+        "tags" : [ "link", "content" ]
     },
     "aMustHaveTitle": {
         "type": "selector",
         "selector": "a:not(a[title])",
         "testability": 1,
-        "tags" : [ "linK" ]
+        "tags" : [ "linK", "content" ]
     },
     "aMustNotHaveJavascriptHref": {
         "type": "selector",
         "selector": "a[href^='javascript:']",
         "testability": 1,
-        "tags" : [ "link" ]
+        "tags" : [ "link", "content" ]
     },
     "aSuspiciousLinkText": {
         "type": "custom",
         "callback": "aSuspiciousLinkText",
         "testability": 1,
-        "tags" : [ "link" ]
+        "tags" : [ "link", "content" ]
     },
     "aTitleDescribesDestination": {
         "type": "selector",
         "selector": "a[title]",
         "testability": 0,
-        "tags" : [ "link" ]
+        "tags" : [ "link", "content" ]
     },
     "addressForAuthor": {
         "type": "selector",
@@ -93,7 +93,7 @@
         "type": "custom",
         "callback": "appletContainsTextEquivalent",
         "testability": 1,
-        "tags" : [ "objects", "applet" ]
+        "tags" : [ "objects", "applet", "content" ]
     },
     "appletContainsTextEquivalentInAlt": {
         "type": "placeholder",
@@ -101,73 +101,73 @@
         "attribute": "alt",
         "empty": true,
         "testability": 0.5,
-        "tags" : [ "objects", "applet" ]
+        "tags" : [ "objects", "applet", "content" ]
     },
     "appletProvidesMechanismToReturnToParent": {
         "type": "selector",
         "selector": "applet",
         "testability": 0,
-        "tags" : [ "objects", "applet" ]
+        "tags" : [ "objects", "applet", "content" ]
     },
     "appletTextEquivalentsGetUpdated": {
         "type": "selector",
         "selector": "applet",
         "testability": 0,
-        "tags" : [ "objects", "applet" ]
+        "tags" : [ "objects", "applet", "content" ]
     },
     "appletUIMustBeAccessible": {
         "type": "selector",
         "selector": "applet",
         "testability": 0,
-        "tags" : [ "objects", "applet" ]
+        "tags" : [ "objects", "applet", "content" ]
     },
     "appletsDoNotFlicker": {
         "type": "selector",
         "selector": "applet",
         "testability": 0,
-        "tags" : [ "objects", "applet" ]
+        "tags" : [ "objects", "applet", "content" ]
     },
     "appletsDoneUseColorAlone": {
         "type": "selector",
         "selector": "applet",
         "testability": 0,
-        "tags" : [ "objects", "applet" ]
+        "tags" : [ "objects", "applet", "content" ]
     },
     "areaAltIdentifiesDestination": {
         "type": "selector",
         "selector": "area[alt]",
         "testability": 0,
-        "tags" : [ "objects", "applet" ]
+        "tags" : [ "objects", "applet", "content" ]
     },
     "areaAltRefersToText": {
         "type": "selector",
         "selector": "area",
         "testability": 0,
-        "tags" : [ "imagemap" ]
+        "tags" : [ "imagemap", "content" ]
     },
     "areaDontOpenNewWindow": {
         "type": "selector",
         "selector": "area[target='new window'], area[target=_new], area[target=_blank], area[target=_blank]",
         "testability": 1,
-        "tags" : [ "imagemap" ]
+        "tags" : [ "imagemap", "content" ]
     },
     "areaHasAltValue": {
         "type": "selector",
         "selector": "area:not(area[alt])",
         "testability": 1,
-        "tags" : [ "imagemap" ]
+        "tags" : [ "imagemap", "content" ]
     },
     "ariaOrphanedContent": {
         "type": "selector",
         "selector" : "body *:not(*[role] *, *[role], script, meta, link)",
         "testability": 1,
-        "tags" : [ "aria" ]
+        "tags" : [ "aria", "content" ]
     },
     "areaLinksToSoundFile": {
         "type": "selector",
         "selector": "area[href$=wav], area[href$=snd], area[href$=mp3], area[href$=iff], area[href$=svx], area[href$=sam], area[href$=smp], area[href$=vce], area[href$=vox], area[href$=pcm], area[href$=aif]",
         "testability": 1,
-        "tags" : [ "imagemap", "media" ]
+        "tags" : [ "imagemap", "media", "content" ]
     },
     "basefontIsNotUsed": {
         "type": "selector",
@@ -179,19 +179,19 @@
         "type": "selector",
         "selector": "blink",
         "testability": 1,
-        "tags" : [ "deprecated" ]
+        "tags" : [ "deprecated", "content" ]
     },
     "blockquoteNotUsedForIndentation": {
         "type": "selector",
         "selector": "blockquote:not(blockquote[cite])",
         "testability": 0.5,
-        "tags" : [ "blockquote" ]
+        "tags" : [ "blockquote", "content" ]
     },
     "blockquoteUseForQuotations": {
         "type": "custom",
         "callback": "blockquoteUseForQuotations",
         "testability": 0.5,
-        "tags" : [ "blockquote" ]
+        "tags" : [ "blockquote", "content" ]
     },
     "bodyActiveLinkColorContrast": {
         "type": "color",
@@ -239,19 +239,19 @@
         "type": "selector",
         "selector": "bold",
         "testability": 1,
-        "tags" : [ "semantics" ]
+        "tags" : [ "semantics", "content" ]
     },
     "checkboxHasLabel": {
         "type": "label",
         "selector": "input[type=checkbox]",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "checkboxLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=checkbox]",
         "testability": 0.5,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "cssDocumentMakesSenseStyleTurnedOff": {
         "type": "selector",
@@ -278,13 +278,13 @@
         "type": "custom",
         "callback": "documentAbbrIsUsed",
         "testability": 0.5,
-        "tags" : [ "acronym" ]
+        "tags" : [ "acronym", "content" ]
     },
     "documentAcronymsHaveElement": {
         "type": "custom",
         "callback": "documentAcronymsHaveElement",
         "testability": 0.5,
-        "tags" : [ "acronym" ]
+        "tags" : [ "acronym", "content" ]
     },
     "documentAllColorsAreSet": {
         "type": "selector",
@@ -419,7 +419,7 @@
         "type": "custom",
         "callback": "documentVisualListsAreMarkedUp",
         "testability": 1,
-        "tags" : [ "list", "semantics" ]
+        "tags" : [ "list", "semantics", "content" ]
     },
     "documentWordsNotInLanguageAreMarked": {
         "type": "selector",
@@ -431,91 +431,91 @@
         "type": "custom",
         "callback": "documentIsWrittenClearly",
         "testability": 0.5,
-        "tags" : [ "language" ]
+        "tags" : [ "language", "content" ]
     },
     "embedHasAssociatedNoEmbed": {
         "type": "custom",
         "callback": "embedHasAssociatedNoEmbed",
         "testability": 1,
-        "tags" : [ "object", "embed" ]
+        "tags" : [ "object", "embed", "content" ]
     },
     "embedMustHaveAltAttribute": {
         "type": "selector",
         "selector": "embed:not(embed[alt])",
         "testability": 1,
-        "tags" : [ "object", "embed" ]
+        "tags" : [ "object", "embed", "content" ]
     },
     "embedMustNotHaveEmptyAlt": {
         "type": "selector",
         "selector": "embed[alt=]",
         "testability": 1,
-        "tags" : [ "object", "embed" ]
+        "tags" : [ "object", "embed", "content" ]
     },
     "embedProvidesMechanismToReturnToParent": {
         "type": "selector",
         "selector": "embed",
         "testability": 0,
-        "tags" : [ "object", "embed" ]
+        "tags" : [ "object", "embed", "content" ]
     },
     "emoticonsExcessiveUse": {
         "type": "custom",
         "callback": "emoticonsExcessiveUse",
         "testability": 0.5,
-        "tags" : [ "language", "emoticons" ]
+        "tags" : [ "language", "emoticons", "content" ]
     },
     "emoticonsMissingAbbr": {
         "type": "custom",
         "callback": "emoticonsMissingAbbr",
         "testability": 1,
-        "tags" : [ "language", "emoticons" ]
+        "tags" : [ "language", "emoticons", "content" ]
     },
     "fileHasLabel": {
         "type": "label",
         "selector": "input[type=file]",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "fileLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=file]",
         "testability": 0.5,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "fontIsNotUsed": {
         "type": "selector",
         "selector": "font",
         "testability": 1,
-        "tags" : [ "deprecated" ]
+        "tags" : [ "deprecated", "content" ]
     },
     "formDeleteIsReversable": {
         "type": "selector",
         "selector": "form",
         "testability": 0,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "formAllowsCheckIfIrreversable": {
         "type": "selector",
         "selector": "form",
         "testability": 0,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "formErrorMessageHelpsUser": {
         "type": "selector",
         "selector": "form",
         "testability": 0,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "formHasGoodErrorMessage": {
         "type": "selector",
         "selector": "form",
         "testability": 0,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "formWithRequiredLabel": {
         "type": "custom",
         "callback": "formWithRequiredLabel",
         "testability": 0,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "frameIsNotUsed": {
         "type": "selector",
@@ -578,67 +578,67 @@
         "type": "header",
         "selector": "h1",
         "testability": 0,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headerH2": {
         "type": "header",
         "selector": "h2",
         "testability": 0,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headerH3": {
         "type": "header",
         "selector": "h3",
         "testability": 0,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headerH4": {
         "type": "header",
         "selector": "h4",
         "testability": 0,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headerH5": {
         "type": "header",
         "selector": "h5",
         "testability": 0,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headerH1Format": {
         "type": "selector",
         "selector": "h1",
         "testability": 0,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headerH2Format": {
         "type": "selector",
         "selector": "h2",
         "testability": 0,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headerH3Format": {
         "type": "selector",
         "selector": "h3",
         "testability": 0,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headerH4Format": {
         "type": "selector",
         "selector": "h4",
         "testability": 0,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headerH5Format": {
         "type": "selector",
         "selector": "h5",
         "testability": 0,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headerH6Format": {
         "type": "selector",
         "selector": "h6",
         "testability": 0,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headersHaveText": {
         "type": "placeholder",
@@ -646,104 +646,104 @@
         "content": true,
         "empty": true,
         "testability": 1,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "headersUseToMarkSections": {
         "type": "custom",
         "callback": "headersUseToMarkSections",
         "testability": 0.5,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "iIsNotUsed": {
         "type": "selector",
         "selector": "i",
         "testability": 1,
-        "tags" : [ "deprecated" ]
+        "tags" : [ "deprecated", "content" ]
     },
     "iframeMustNotHaveLongdesc": {
         "type": "selector",
         "selector": "iframe[longdesc]",
         "testability": 1,
-        "tags" : [ "objects", "iframe" ]
+        "tags" : [ "objects", "iframe", "content" ]
     },
     "imageMapServerSide": {
         "type": "selector",
         "selector": "img[ismap]",
         "testability": 1,
-        "tags" : [ "objects", "iframe" ]
+        "tags" : [ "objects", "iframe", "content" ]
     },
     "imgAltEmptyForDecorativeImages": {
         "type": "selector",
         "selector": "img[alt]",
         "testability": 0,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgAltIdentifiesLinkDestination": {
         "type": "selector",
         "selector": "a img[alt]:first",
         "testability": 0,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgAltIsDifferent": {
         "type": "custom",
         "callback": "imgAltIsDifferent",
         "testability": 0.5,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgAltIsSameInText": {
         "type": "selector",
         "selector": "img",
         "testability": 0,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgAltIsTooLong": {
         "type": "custom",
         "callback": "imgAltIsTooLong",
         "testability": 1,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgAltNotEmptyInAnchor": {
         "type": "custom",
         "callback": "imgAltNotEmptyInAnchor",
         "testability": 1,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgAltNotPlaceHolder": {
         "type": "placeholder",
         "selector": "img",
         "attribute": "alt",
         "testability": 1,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgAltTextNotRedundant": {
         "type": "custom",
         "callback": "imgAltTextNotRedundant",
         "testability": 1,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgGifNoFlicker": {
         "type": "custom",
         "callback": "imgGifNoFlicker",
         "testability": 1,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgHasAlt": {
         "type": "selector",
         "selector": "img:not(img[alt])",
         "testability": 1,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgHasLongDesc": {
         "type": "custom",
         "callback": "imgHasLongDesc",
         "testability": 1,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgImportantNoSpacerAlt": {
         "type": "custom",
         "callback": "imgImportantNoSpacerAlt",
         "testability": 0.5,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgMapAreasHaveDuplicateLink": {
         "type": "custom",
@@ -755,37 +755,37 @@
         "type": "custom",
         "callback": "imgNonDecorativeHasAlt",
         "testability": 0.5,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgNotReferredToByColorAlone": {
         "type": "selector",
         "selector": "img",
         "testability": 0,
-        "tags" : [ "image", "color" ]
+        "tags" : [ "image", "color", "content" ]
     },
     "imgServerSideMapNotUsed": {
         "type": "selector",
         "selector": "img[ismap]",
         "testability": 1,
-        "tags" : [ "image", "imagemap" ]
+        "tags" : [ "image", "imagemap", "content" ]
     },
     "imgShouldNotHaveTitle": {
         "type": "selector",
         "selector": "img[title]",
         "testability": 1,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "imgWithMapHasUseMap": {
         "type": "selector",
         "selector": "img[ismap]:not(img[usemap])",
         "testability": 1,
-        "tags" : [ "image", "imagemap" ]
+        "tags" : [ "image", "imagemap", "content" ]
     },
     "imgWithMathShouldHaveMathEquivalent": {
         "type": "custom",
         "callback": "imgWithMathShouldHaveMathEquivalent",
         "testability": 0,
-        "tags" : [ "image" ]
+        "tags" : [ "image", "content" ]
     },
     "inputCheckboxHasTabIndex": {
         "type": "placeholder",
@@ -793,25 +793,25 @@
         "attribute": "tabindex",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "inputCheckboxRequiresFieldset": {
         "type": "custom",
         "callback": "inputCheckboxRequiresFieldset",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "inputDoesNotUseColorAlone": {
         "type": "selector",
         "selector": "input:not(input[type=hidden])",
         "testability": 0,
-        "tags" : [ "form", "color" ]
+        "tags" : [ "form", "color", "content" ]
     },
     "inputElementsDontHaveAlt": {
         "type": "selector",
         "selector": "input[type!=image][alt]",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "inputFileHasTabIndex": {
         "type": "placeholder",
@@ -825,44 +825,44 @@
         "type": "selector",
         "selector": "input[type=image][alt]",
         "testability": 0,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "inputImageAltIsNotFileName": {
         "type": "custom",
         "callback": "inputImageAltIsNotFileName",
         "testability": 1,
-        "tags" : [ "form", "image" ]
+        "tags" : [ "form", "image", "content" ]
     },
     "inputImageAltIsNotPlaceholder": {
         "type": "placeholder",
         "selector": "input[type=image]",
         "attribute": "alt",
         "testability": 1,
-        "tags" : [ "form", "image" ]
+        "tags" : [ "form", "image", "content" ]
     },
     "inputImageAltIsShort": {
         "type": "custom",
         "callback": "inputImageAltIsShort",
         "testability": 1,
-        "tags" : [ "form", "image" ]
+        "tags" : [ "form", "image", "content" ]
     },
     "inputImageAltNotRedundant": {
         "type": "custom",
         "callback": "inputImageAltNotRedundant",
         "testability": 1,
-        "tags" : [ "form", "image" ]
+        "tags" : [ "form", "image", "content" ]
     },
     "inputImageHasAlt": {
         "type": "selector",
         "selector": "input[type=image]:not(input[type=image][alt])",
         "testability": 1,
-        "tags" : [ "form", "image" ]
+        "tags" : [ "form", "image", "content" ]
     },
     "inputImageNotDecorative": {
         "type": "selector",
         "selector": "input[type=image]",
         "testability": 0,
-        "tags" : [ "form", "image" ]
+        "tags" : [ "form", "image", "content" ]
     },
     "inputPasswordHasTabIndex": {
         "type": "placeholder",
@@ -870,7 +870,7 @@
         "attribute": "tabindex",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "inputRadioHasTabIndex": {
         "type": "placeholder",
@@ -878,7 +878,7 @@
         "attribute": "tabindex",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "inputSubmitHasTabIndex": {
         "type": "placeholder",
@@ -886,13 +886,13 @@
         "attribute": "tabindex",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "inputTextHasLabel": {
         "type": "label",
         "selector": "input[type=text]",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "inputTextHasTabIndex": {
         "type": "placeholder",
@@ -900,7 +900,7 @@
         "attribute": "tabindex",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "inputTextHasValue": {
         "type": "placeholder",
@@ -908,7 +908,7 @@
         "empty": true,
         "attribute": "value",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "inputTextValueNotEmpty": {
         "type": "placeholder",
@@ -916,19 +916,19 @@
         "attribute": "value",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "labelDoesNotContainInput": {
         "type": "selector",
         "selector": "label:has(input)",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "labelMustBeUnique": {
         "type": "custom",
         "callback": "labelMustBeUnique",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "labelMustNotBeEmpty": {
         "type": "placeholder",
@@ -936,25 +936,25 @@
         "content": true,
         "empty": true,
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "labelsAreAssignedToAnInput": {
         "type": "custom",
         "callback": "labelsAreAssignedToAnInput",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "legendDescribesListOfChoices": {
         "type": "selector",
         "selector": "legend",
         "testability": 0,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "legendTextNotEmpty": {
         "type": "selector",
         "selector": "legend:empty",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "legendTextNotPlaceholder": {
         "type": "placeholder",
@@ -962,13 +962,13 @@
         "content": true,
         "emtpy": true,
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "liDontUseImageForBullet": {
         "type": "selector",
         "selector": "li:has(img)",
         "testability": 0.5,
-        "tags" : [ "list" ]
+        "tags" : [ "list", "content" ]
     },
     "linkUsedForAlternateContent": {
         "type": "selector",
@@ -986,25 +986,25 @@
         "type": "custom",
         "callback": "listNotUsedForFormatting",
         "testability": 0,
-        "tags" : [ "list" ]
+        "tags" : [ "list", "content" ]
     },
     "marqueeIsNotUsed": {
         "type": "selector",
         "selector": "marquee",
         "testability": 1,
-        "tags" : [ "deprecated" ]
+        "tags" : [ "deprecated", "content" ]
     },
     "menuNotUsedToFormatText": {
         "type": "selector",
         "selector": "menu:not(menu li:parent(menu))",
         "testability": 0,
-        "tags" : [ "list" ]
+        "tags" : [ "list", "content" ]
     },
     "noembedHasEquivalentContent": {
         "type": "selector",
         "selector": "noembed",
         "testability": 0,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "noframesSectionMustHaveTextEquivalent": {
         "type": "selector",
@@ -1016,31 +1016,31 @@
         "type": "selector",
         "selector": "object",
         "testability": 0,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectDoesNotFlicker": {
         "type": "selector",
         "selector": "object",
         "testability": 0,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectDoesNotUseColorAlone": {
         "type": "selector",
         "selector": "object",
         "testability": 0,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectInterfaceIsAccessible": {
         "type": "selector",
         "selector": "object",
         "testability": 0,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectLinkToMultimediaHasTextTranscript": {
         "type": "selector",
         "selector": "object",
         "testability": 0,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectMustContainText": {
         "type": "placeholder",
@@ -1048,19 +1048,19 @@
         "empty": true,
         "content": true,
         "testability": 1,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectMustHaveEmbed": {
         "type": "selector",
         "selector": "object:not(object:has(embed))",
         "testability": 1,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectMustHaveTitle": {
         "type": "selector",
         "selector": "object:not(object[title])",
         "testability": 1,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectMustHaveValidTitle": {
         "type": "placeholder",
@@ -1068,85 +1068,85 @@
         "attribute": "title",
         "empty": true,
         "testability": 1,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectProvidesMechanismToReturnToParent": {
         "type": "selector",
         "selector": "object",
         "testability": 0,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectShouldHaveLongDescription": {
         "type": "selector",
         "selector": "object",
         "testability": 0,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectTextUpdatesWhenObjectChanges": {
         "type": "selector",
         "selector": "object",
         "testability": 0,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectUIMustBeAccessible": {
         "type": "selector",
         "selector": "object",
         "testability": 0,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "objectWithClassIDHasNoText": {
         "type": "selector",
         "selector": "object[classid]:not(object[classid]:empty)",
         "testability": 1,
-        "tags" : [ "objects" ]
+        "tags" : [ "objects", "content" ]
     },
     "pNotUsedAsHeader": {
         "type": "custom",
         "callback": "pNotUsedAsHeader",
         "testability": 1,
-        "tags" : [ "header" ]
+        "tags" : [ "header", "content" ]
     },
     "paragarphIsWrittenClearly": {
         "type": "custom",
         "callback": "paragarphIsWrittenClearly",
         "testability": 0.5,
-        "tags" : [ "language" ]
+        "tags" : [ "language", "content" ]
     },
     "passwordHasLabel": {
         "type": "label",
         "selector": "input[type=password]",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "passwordLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=password]",
         "testability": 0.5,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "preShouldNotBeUsedForTabularLayout": {
         "type": "custom",
         "callback": "preShouldNotBeUsedForTabularLayout",
         "testability": 0,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "radioHasLabel": {
         "type": "label",
         "selector": "input[type=radio]",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "radioLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=radio]",
         "testability": 0.5,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "radioMarkedWithFieldgroupAndLegend": {
         "type": "selector",
         "selector": "input[type=radio]:not(fieldset input[type=radio])",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "scriptContentAccessibleWithScriptsTurnedOff": {
         "type": "selector",
@@ -1232,25 +1232,25 @@
         "selector": "select",
         "searchEvent": "onchange",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "selectHasAssociatedLabel": {
         "type": "label",
         "selector": "select",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "selectWithOptionsHasOptgroup": {
         "type": "selector",
         "selector": "select:not(select:has(optgroup)) option:nth-child(5)",
         "testability": 0.5,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "selectJumpMenu": {
         "type": "custom",
         "callback": "selectJumpMenu",
         "testability": 0.5,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "siteMap": {
         "type": "custom",
@@ -1268,7 +1268,7 @@
         "type": "selector",
         "selector": "svg:not(svg:has(title))",
         "testability": 1,
-        "tags" : [ "image", "svg" ]
+        "tags" : [ "image", "svg", "content" ]
     },
     "tabIndexFollowsLogicalOrder": {
         "type": "custom",
@@ -1280,67 +1280,67 @@
         "type": "selector",
         "selector": "caption",
         "testability": 0,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableComplexHasSummary": {
         "type": "selector",
         "selector": "table:not(table[summary], table:has(caption))",
         "testability": 0.5,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableDataShouldHaveTh": {
         "type": "selector",
         "selector": "table:not(table:has(th))",
         "testability": 1,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableHeaderLabelMustBeTerse": {
         "type": "custom",
         "callback": "tableHeaderLabelMustBeTerse",
         "testability": 0.5,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableIsGrouped": {
         "type": "selector",
         "selector": "table:not(table:has(thead), table:has(tfoot))",
         "testability": 0.5,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableLayoutDataShouldNotHaveTh": {
         "type": "custom",
         "callback": "tableLayoutDataShouldNotHaveTh",
         "testability": 0,
-        "tags" : [ "table", "layout" ]
+        "tags" : [ "table", "layout", "content" ]
     },
     "tableLayoutHasNoCaption": {
         "type": "custom",
         "callback": "tableLayoutHasNoCaption",
         "testability": 1,
-        "tags" : [ "table", "layout" ]
+        "tags" : [ "table", "layout", "content" ]
     },
     "tableLayoutHasNoSummary": {
         "type": "custom",
         "callback": "tableLayoutHasNoSummary",
         "testability": 0.5,
-        "tags" : [ "table", "layout" ]
+        "tags" : [ "table", "layout", "content" ]
     },
     "tableLayoutMakesSenseLinearized": {
         "type": "custom",
         "callback": "tableLayoutMakesSenseLinearized",
         "testability": 0,
-        "tags" : [ "table", "layout" ]
+        "tags" : [ "table", "layout", "content" ]
     },
     "tableSummaryDescribesTable": {
         "type": "selector",
         "selector": "table[summary]",
         "testability": 0,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableSummaryDoesNotDuplicateCaption": {
         "type": "custom",
         "callback": "tableSummaryDoesNotDuplicateCaption",
         "testability": 1,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableSummaryIsEmpty": {
         "type": "placeholder",
@@ -1348,19 +1348,19 @@
         "attribute": "summary",
         "empty": true,
         "testability": 0.5,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableSummaryIsSufficient": {
         "type": "selector",
         "selector": "table[summary]",
         "testability": 0,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableSummaryIsNotTooLong": {
         "type": "custom",
         "callback": "tableSummaryIsNotTooLong",
         "testability": 0,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableNotUsedForLayout": {
         "type": "custom",
@@ -1372,72 +1372,72 @@
         "type": "custom",
         "callback": "tableUseColGroup",
         "testability": 0,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableUsesScopeForRow": {
         "type": "custom",
         "callback": "tableUsesScopeForRow",
         "testability": 0.5,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableUsesAbbreviationForHeader": {
         "type": "custom",
         "callback": "tableUsesAbbreviationForHeader",
         "testability": 0,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableUsesCaption": {
         "type": "selector",
         "selector": "table:not(table:has(caption))",
         "testability": 1,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableWithBothHeadersUseScope": {
         "type": "selector",
         "selector": "table:has(tr:not(table tr:first) th:not(th[scope]))",
         "testability": 0.5,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tableWithMoreHeadersUseID": {
         "type": "custom",
         "callback": "tableWithMoreHeadersUseID",
         "testability": 0.5,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "tabularDataIsInTable": {
         "type": "custom",
         "callback": "tabularDataIsInTable",
         "testability": 0.5,
-        "tags" : [ "table" ]
+        "tags" : [ "table", "content" ]
     },
     "textareaHasAssociatedLabel": {
         "type": "label",
         "selector": "textarea",
         "testability": 1,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "textareaLabelPositionedClose": {
         "type": "labelProximity",
         "selector": "textarea",
         "testability": 0.5,
-        "tags" : [ "form" ]
+        "tags" : [ "form", "content" ]
     },
     "textIsNotSmall": {
         "type": "custom",
         "callback": "textIsNotSmall",
         "testability": 0.5,
-        "tags" : [ "textsize" ]
+        "tags" : [ "textsize", "content" ]
     },
     "videoProvidesCaptions": {
         "type": "selector",
         "selector": "video",
         "testability": 0.5,
-        "tags" : [ "media" ]
+        "tags" : [ "media", "content" ]
     },
     "videosEmbeddedOrLinkedNeedCaptions": {
         "type": "custom",
         "callback": "videosEmbeddedOrLinkedNeedCaptions",
         "testability": 1,
-        "tags" : [ "media" ]
+        "tags" : [ "media", "content" ]
     }
 }
