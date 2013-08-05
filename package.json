@@ -2,7 +2,7 @@
   "name": "quail",
   "description": "A javascript content accessibility checker.",
   "homepage": "http://quailjs.org",
-  "version": "0.0.0-ignored",
+  "version": "2.0.3",
   "engines": {
     "node": ">= 0.6.0"
   },
