@@ -14,6 +14,10 @@ Documentation
 
 [Full documentation is available via readthedocs.org](https://quail.readthedocs.org/en/latest/).
 
+Contributing
+------------
+Pull requests should be made against the **dev** branch, as master is only for tracking releases.
+
 Credits
 -------
 
