@@ -57,7 +57,7 @@
         "type": "selector",
         "selector": "a:not(a[title])",
         "testability": 1,
-        "tags" : [ "linK", "content" ]
+        "tags" : [ "link", "content" ]
     },
     "aMustNotHaveJavascriptHref": {
         "type": "selector",
