@@ -9,10 +9,13 @@ Images should not have a simple placeholder text as an "alt" attribute
 
 Any image that is not used decorativey or which is purely for layout purposes cannot have an "alt" attribute that consists solely of placeholders. Placeholders include:
 
+* nbsp
+* &nbsp;
+* spacer
+* image
+* img
+* photo
 
-
-<ul><li>nbsp</li><li>&amp;nbsp;</li><li>spacer</li><li>image</li><li>img</li><li>photo</li></ul>Example
--------
 Wrong
 -----
 
