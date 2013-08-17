@@ -350,7 +350,7 @@
         "type": "custom",
         "callback": "documentIDsMustBeUnique",
         "testability": 1,
-        "tags" : [ "document", "sematnics" ]
+        "tags" : [ "document", "semantics" ]
     },
     "documentLangIsISO639Standard": {
         "type": "custom",
