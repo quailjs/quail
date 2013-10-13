@@ -15,7 +15,7 @@ quail.scriptEventTest = function(testName, options) {
       }
     }
     else {
-      if($.hasEventListener($element, options.searchEvent.replace('on', '')) &&
+      if(quail.hasEventListener($element, options.searchEvent.replace('on', '')) &&
          (typeof options.correspondingEvent === 'undefined' ||
          !quail.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
         quail.testFails(testName, $(this));
