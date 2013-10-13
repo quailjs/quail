@@ -259,22 +259,6 @@ var quail = {
   cleanString : function(string) {
     return string.toLowerCase().replace(/^\s\s*/, '');
   },
-  
-  /**
-   * If a test uses the hasEventListener plugin, load it.
-   * @todo - Allow this to be configured, although since we can
-   * just check if it's there and if so, not load it, people could just
-   * include the script.
-   */
-  loadHasEventListener : function() {
-    if(typeof jQuery.hasEventListener !== 'undefined') {
-      return;
-    }
-    $.ajax({url : quail.options.jsonPath + '/../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.min.js',
-            async : false,
-            dataType : 'script'
-          });
-  },
 
   containsReadableText : function(element, children) {
     element = element.clone();

@@ -261,22 +261,6 @@ var quail = {
   cleanString : function(string) {
     return string.toLowerCase().replace(/^\s\s*/, '');
   },
-  
-  /**
-   * If a test uses the hasEventListener plugin, load it.
-   * @todo - Allow this to be configured, although since we can
-   * just check if it's there and if so, not load it, people could just
-   * include the script.
-   */
-  loadHasEventListener : function() {
-    if(typeof jQuery.hasEventListener !== 'undefined') {
-      return;
-    }
-    $.ajax({url : quail.options.jsonPath + '/../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.min.js',
-            async : false,
-            dataType : 'script'
-          });
-  },
 
   containsReadableText : function(element, children) {
     element = element.clone();
@@ -459,6 +443,12 @@ quail.convertToPx = function(unit) {
 	$test.remove();
 	return height;
 }
+quail.hasEventListener = function(element, event) {
+ 	if(typeof $(element).attr('on' + event) !== 'undefined') {
+ 		return true;
+ 	}
+ 	return typeof $(element).get(0)[event] !== 'undefined';
+ };
 quail.headerOrderTest = function(testName, options) {
   var current = parseInt(options.selector.substr(-1, 1), 10);
   var nextHeading = false;
@@ -543,7 +533,6 @@ quail.placeholderTest = function(testName, options) {
   });
 };
 quail.scriptEventTest = function(testName, options) {
-  quail.loadHasEventListener();
   var $items = (typeof options.selector === 'undefined') ?
                 quail.html.find('body').find('*') :
                 quail.html.find(options.selector);
@@ -558,7 +547,7 @@ quail.scriptEventTest = function(testName, options) {
     else {
       if($.hasEventListener($element, options.searchEvent.replace('on', '')) &&
          (typeof options.correspondingEvent === 'undefined' ||
-         !$.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
+         !quail.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
         quail.testFails(testName, $(this));
       }
     }
@@ -1134,12 +1123,10 @@ quail.selectJumpMenu = function() {
   if(quail.html.find('select').length === 0) {
     return;
   }
-  quail.loadHasEventListener();
   
   quail.html.find('select').each(function() {
-    if(($(this).parent('form').find(':submit').length === 0 ) &&
-       ($.hasEventListener($(this), 'change') ||
-       $(this).attr('onchange'))) {
+    if($(this).parent('form').find(':submit').length === 0 &&
+       quail.hasEventListener($(this), 'change')) {
          quail.testFails('selectJumpMenu', $(this));
     }
   });

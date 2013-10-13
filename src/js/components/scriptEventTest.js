@@ -3,7 +3,6 @@
  *  (like a mouse event has a keyboard event as well).
  */
 quail.scriptEventTest = function(testName, options) {
-  quail.loadHasEventListener();
   var $items = (typeof options.selector === 'undefined') ?
                 quail.html.find('body').find('*') :
                 quail.html.find(options.selector);
@@ -18,7 +17,7 @@ quail.scriptEventTest = function(testName, options) {
     else {
       if($.hasEventListener($element, options.searchEvent.replace('on', '')) &&
          (typeof options.correspondingEvent === 'undefined' ||
-         !$.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
+         !quail.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
         quail.testFails(testName, $(this));
       }
     }
