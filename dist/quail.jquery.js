@@ -278,19 +278,6 @@ var quail = {
           });
   },
 
-  /**
-   * Loads the pixToEm jQuery plugin.
-   */
-  loadPixelToEm : function() {
-    if(typeof jQuery.toPx !== 'undefined') {
-      return;
-    }
-    $.ajax({url : quail.options.jsonPath + '/../../libs/jquery.pxToEm/pxem.jQuery.js',
-            async : false,
-            dataType : 'script'
-          });
-  },
-
   containsReadableText : function(element, children) {
     element = element.clone();
     element.find('option').remove();
@@ -466,6 +453,12 @@ quail.colors = {
   }
 
 };
+quail.convertToPx = function(unit) {
+	var $test = $('<div style="display: none; font-size: 1em; margin: 0; padding:0; height: ' + unit + '; line-height: 1; border:0;">&nbsp;</div>').appendTo(quail.html);
+	var height = $test.height();
+	$test.remove();
+	return height;
+}
 quail.headerOrderTest = function(testName, options) {
   var current = parseInt(options.selector.substr(-1, 1), 10);
   var nextHeading = false;
@@ -1306,11 +1299,10 @@ quail.tabularDataIsInTable = function() {
 };
 
 quail.textIsNotSmall = function() {
-  quail.loadPixelToEm();
   quail.html.find(quail.textSelector).each(function() {
     var fontSize = $(this).css('font-size');
     if(fontSize.search('em') > 0) {
-      fontSize = $(this).toPx({scope : quail.html});
+      fontSize = quail.convertToPx(fontSize);
     }
     fontSize = parseInt(fontSize.replace('px', ''), 10);
     if(fontSize < 10) {

@@ -276,19 +276,6 @@ var quail = {
           });
   },
 
-  /**
-   * Loads the pixToEm jQuery plugin.
-   */
-  loadPixelToEm : function() {
-    if(typeof jQuery.toPx !== 'undefined') {
-      return;
-    }
-    $.ajax({url : quail.options.jsonPath + '/../../libs/jquery.pxToEm/pxem.jQuery.js',
-            async : false,
-            dataType : 'script'
-          });
-  },
-
   containsReadableText : function(element, children) {
     element = element.clone();
     element.find('option').remove();
