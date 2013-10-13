@@ -24,5 +24,8 @@
   "dependencies": {
     "jquery": ">= 1.7"
   },
-  "keywords": []
+  "keywords": [],
+  "options" : {
+    "banner" : "/*! QUAIL quailjs.org | quailjs.org/license */"
+  }
 }

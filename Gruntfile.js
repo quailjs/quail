@@ -5,23 +5,33 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('quail.json'),
+    clean: {
+      hooks: ['.git/hooks/pre-commit']
+    },
+    shell: {
+      hooks: {
+        command: 'cp git-hooks/pre-commit .git/hooks/'
+      }
+    },
     concat: {
       options: {
-        banner: '/*! QUAIL quailjs.org | quailjs.org/license */',
+        banner: '<%= pkg.options.banner %>' + "\n" + ';(function($) {' + "\n",
+        footer: "\n" + '})(jQuery)',
         stripBanners: true
-      },
+      },  
       dist: {
-        src: ['src/<%= pkg.name %>.js']
+        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/custom/*.js'],
+        dest: 'dist/quail.jquery.js'
       }
     },
     uglify: {
-      options: {
-        banner: '<%= concat.options.banner %>'
-      },
       dist: {
         files : {
-          'src/quail.min.js' : 'src/quail.js'
+          'dist/quail.jquery.min.js' : 'dist/quail.jquery.js'
         }
+      },
+      options : {
+        banner: '<%= pkg.options.banner %>'
       }
     },
     qunit: {
@@ -56,16 +66,22 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Linting, mostly to test JSON.
   grunt.registerTask('lint', ['jshint']);
 
   // By default, just run tests
-  grunt.registerTask('default', ['test']);
+  grunt.registerTask('default', ['concat', 'qunit']);
 
   // Release task.
-  grunt.registerTask('release', ['jshint', 'qunit', 'uglify']);
+  grunt.registerTask('build', ['jshint', 'concat', 'uglify']);
+
+  // Release task.
+  grunt.registerTask('release', ['jshint', 'concat', 'qunit', 'uglify']);
 
   // Test task.
-  grunt.registerTask('test', ['jshint', 'qunit']);
+  grunt.registerTask('test', ['concat', 'jshint', 'qunit']);
 };
