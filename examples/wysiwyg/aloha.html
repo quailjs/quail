@@ -23,7 +23,7 @@
 	<script src="editors/aloha/aloha/lib/require.js"></script>
 	<script src="editors/aloha/aloha/lib/vendor/jquery-1.7.2.js"></script>
 	<script src="editors/aloha/aloha/lib/aloha.js" data-aloha-plugins="common/ui,common/format,common/highlighteditables,common/link,extra/quail"></script>
-	<script src="../../src/quail.js"></script>
+	<script src="../../dist/quail.jsquery.js"></script>
 	<script type="text/javascript">
 	 Aloha.settings.quail = {
   	 tests : {
@@ -42,7 +42,7 @@
      },
      guideline : [ 'imgHasAlt', 'documentAbbrIsUsed' ],
      path : '../../src/resources',
-     baseUrl : '../../src/wysiwyg_plugins/',
+     baseUrl : '../../dist/wysiwyg_plugins/',
      title : function(event) {
        if(event.testName == 'documentAbbrIsUsed') {
          return 'The acronym ' + event.options.acronym + ' needs to be within an acronym tag.';
