@@ -1,4 +1,4 @@
-{
+quail.strings.redundant = {
   "inputImage":[
     "submit",
     "button"
@@ -14,4 +14,4 @@
   "required":[
     "*"
   ]
-}
+};

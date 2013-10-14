@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         stripBanners: true
       },  
       dist: {
-        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/custom/*.js'],
+        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js'],
         dest: 'dist/quail.jquery.js'
       }
     },

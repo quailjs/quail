@@ -239,22 +239,6 @@ var quail = {
   validURL : function(url) {
     return (url.search(' ') === -1) ? true : false;
   },
-
-  /**
-   * Helper function to load a string from the jsonPath directory.
-   */
-  loadString : function(stringFile) {
-    if(typeof quail.strings[stringFile] !== 'undefined') {
-      return quail.strings[stringFile];
-    }
-    $.ajax({ url : quail.options.jsonPath + '/strings/' + stringFile + '.json',
-             async: false,
-             dataType : 'json',
-             success : function(data) {
-              quail.strings[stringFile] = data;
-             }});
-    return quail.strings[stringFile];
-  },
   
   cleanString : function(string) {
     return string.toLowerCase().replace(/^\s\s*/, '');

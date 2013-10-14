@@ -1,5 +1,4 @@
 quail.aLinkTextDoesNotBeginWithRedundantWord = function() {
-  var redundant = quail.loadString('redundant');
   quail.html.find('a').each(function() {
     var $link = $(this);
     var text = '';
@@ -8,7 +7,7 @@ quail.aLinkTextDoesNotBeginWithRedundantWord = function() {
     }
     text = text + $(this).text();
     text = text.toLowerCase();
-    $.each(redundant.link, function(index, phrase) {
+    $.each(quail.strings.redundant.link, function(index, phrase) {
       if(text.search(phrase) > -1) {
         quail.testFails('aLinkTextDoesNotBeginWithRedundantWord', $link);
       }

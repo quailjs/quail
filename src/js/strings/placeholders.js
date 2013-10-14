@@ -1,4 +1,4 @@
-[
+quail.strings.placeholders = [
 "title",
 "untitled",
 "untitled document",
@@ -17,4 +17,4 @@
 "frame",
 "frame title",
 "legend"
-]
+];

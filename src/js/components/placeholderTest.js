@@ -3,7 +3,6 @@
  * element itself is not a placeholder (i.e. "click here" for links).
  */
 quail.placeholderTest = function(testName, options) {
-  quail.loadString('placeholders');
   quail.html.find(options.selector).each(function() {
     var text;
     if(typeof options.attribute !== 'undefined') {

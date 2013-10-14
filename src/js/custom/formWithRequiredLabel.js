@@ -1,5 +1,5 @@
 quail.formWithRequiredLabel = function() {
-   var redundant = quail.loadString('redundant');
+   var redundant = quail.strings.redundant;
    var lastStyle, currentStyle = false;
    redundant.required[redundant.required.indexOf('*')] = /\*/g;
    quail.html.find('label').each(function() {

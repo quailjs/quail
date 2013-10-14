@@ -1,4 +1,4 @@
-[
+quail.strings.language_codes = [
   "bh",
   "bi",
   "nb",
@@ -199,4 +199,4 @@
   "yo",
   "za",
   "zu"
-]
+];
