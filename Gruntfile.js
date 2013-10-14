@@ -37,10 +37,6 @@ module.exports = function(grunt) {
     qunit: {
       files: ['test/quail.html']
     },
-    watch: {
-      files: '<%= jshint.files %>',
-      tasks: 'test'
-    },
     jshint: {
       options: {
         curly: true,
@@ -59,6 +55,15 @@ module.exports = function(grunt) {
         }
       },
       files: ['Gruntfile.js', 'src/quail.js', 'src/resources/**/*.json']
+    },
+    watch: {
+      scripts: {
+        files: ['src/js/*.js', 'src/js/components/*', 'src/js/custom/*', 'src/js/strings/*'],
+        tasks: ['jshint', 'concat', 'uglify'],
+        options: {
+          spawn: false
+        }
+      }
     }
   });
   
