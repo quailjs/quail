@@ -15,7 +15,8 @@
         "type": "custom",
         "callback": "aLinkTextDoesNotBeginWithRedundantWord",
         "testability": 0,
-        "tags" : [ "link", "content" ]
+        "tags" : [ "link", "content" ],
+        "strings" : "redundant.link"
     },
     "aLinksAreSeperatedByPrintableCharacters": {
         "type": "custom",
@@ -69,7 +70,8 @@
         "type": "custom",
         "callback": "aSuspiciousLinkText",
         "testability": 1,
-        "tags" : [ "link", "content" ]
+        "tags" : [ "link", "content" ],
+        "strings" : "suspicious_links"
     },
     "aTitleDescribesDestination": {
         "type": "selector",
@@ -356,7 +358,8 @@
         "type": "custom",
         "callback": "documentLangIsISO639Standard",
         "testability": 1,
-        "tags" : [ "document", "language" ]
+        "tags" : [ "document", "language" ],
+        "strings" : "language_codes"
     },
     "documentLangNotIdentified": {
         "type": "selector",
@@ -461,13 +464,15 @@
         "type": "custom",
         "callback": "emoticonsExcessiveUse",
         "testability": 0.5,
-        "tags" : [ "language", "emoticons", "content" ]
+        "tags" : [ "language", "emoticons", "content" ],
+        "strings" : "emoticons"
     },
     "emoticonsMissingAbbr": {
         "type": "custom",
         "callback": "emoticonsMissingAbbr",
         "testability": 1,
-        "tags" : [ "language", "emoticons", "content" ]
+        "tags" : [ "language", "emoticons", "content" ],
+        "strings" : "emoticons"
     },
     "fileHasLabel": {
         "type": "label",
@@ -850,7 +855,8 @@
         "type": "custom",
         "callback": "inputImageAltNotRedundant",
         "testability": 1,
-        "tags" : [ "form", "image", "content" ]
+        "tags" : [ "form", "image", "content" ],
+        "strings" : "redundant.inputImage"
     },
     "inputImageHasAlt": {
         "type": "selector",
@@ -1256,7 +1262,8 @@
         "type": "custom",
         "callback": "siteMap",
         "testability": 0,
-        "tags" : [ "document" ]
+        "tags" : [ "document" ],
+        "strings" : "site_map"
     },
     "skipToContentLinkProvided": {
         "type": "selector",
