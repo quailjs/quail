@@ -2,7 +2,7 @@
  * Helper object that tests videos.
  * @todo - allow this to be exteded more easily.
  */
-quail.videoServices = {
+quail.components.video = {
     
   youTube : {
     
@@ -14,7 +14,7 @@ quail.videoServices = {
       var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
       var match = url.match(regExp);
       if (match && match[7].length === 11) {
-        quail.videoServices.youTube.videoID = match[7];
+        this.videoID = match[7];
         return true;
       }
       return false;

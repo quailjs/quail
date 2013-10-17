@@ -13,15 +13,8 @@ $.fn.quail = function(options) {
 var quail = {
   
   options : { },
-  
-  testCallbacks : {
-    'placeholder'    : 'placeholderTest',
-    'label'          : 'labelTest',
-    'header'         : 'headerOrderTest',
-    'event'          : 'scriptEventTest',
-    'labelProximity' : 'labelProximityTest',
-    'color'          : 'colorTest'
-  },
+
+  components : { },
   
   testabilityTranslation : {
 		0			: 'suggestion',
@@ -165,8 +158,8 @@ var quail = {
           }
         }
       }
-      if(typeof quail[quail.testCallbacks[testType]] !== 'undefined') {
-        quail[quail.testCallbacks[testType]](testName, quail.accessibilityTests[testName]);
+      if(typeof quail.components[testType] !== 'undefined') {
+        quail.components[testType](testName, quail.accessibilityTests[testName]);
       }
     });
   },

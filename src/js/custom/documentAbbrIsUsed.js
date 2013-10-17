@@ -1,3 +1,3 @@
 quail.documentAbbrIsUsed = function() {
-  quail.acronymTest('documentAbbrIsUsed', 'abbr');
+  quail.components.acronym('documentAbbrIsUsed', 'abbr');
 };

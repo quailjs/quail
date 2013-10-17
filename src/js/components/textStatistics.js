@@ -2,7 +2,7 @@
  * Utility object that runs text statistics, like sentence count,
  * reading level, etc.
  */
-quail.textStatistics = {
+quail.components.textStatistics = {
 
   cleanText : function(text) {
     return text.replace(/[,:;()\-]/, ' ')
@@ -26,17 +26,18 @@ quail.textStatistics = {
   },
   
   averageWordsPerSentence : function(text) {
-    return quail.textStatistics.wordCount(text) / quail.textStatistics.sentenceCount(text);
+    return this.wordCount(text) / this.sentenceCount(text);
   },
   
   averageSyllablesPerWord : function(text) {
+    var that = this;
     var count = 0;
-    var wordCount = quail.textStatistics.wordCount(text);
+    var wordCount = that.wordCount(text);
     if(!wordCount) {
       return 0;
     }
     $.each(text.split(' '), function(index, word) {
-      count += quail.textStatistics.syllableCount(word);
+      count += that.syllableCount(word);
     });
     return count / wordCount;
   },

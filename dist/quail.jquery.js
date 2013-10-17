@@ -15,15 +15,8 @@ $.fn.quail = function(options) {
 var quail = {
   
   options : { },
-  
-  testCallbacks : {
-    'placeholder'    : 'placeholderTest',
-    'label'          : 'labelTest',
-    'header'         : 'headerOrderTest',
-    'event'          : 'scriptEventTest',
-    'labelProximity' : 'labelProximityTest',
-    'color'          : 'colorTest'
-  },
+
+  components : { },
   
   testabilityTranslation : {
 		0			: 'suggestion',
@@ -167,8 +160,8 @@ var quail = {
           }
         }
       }
-      if(typeof quail[quail.testCallbacks[testType]] !== 'undefined') {
-        quail[quail.testCallbacks[testType]](testName, quail.accessibilityTests[testName]);
+      if(typeof quail.components[testType] !== 'undefined') {
+        quail.components[testType](testName, quail.accessibilityTests[testName]);
       }
     });
   },
@@ -269,7 +262,7 @@ var quail = {
     return false;
   }
 };
-quail.acronymTest = function(testName, acronymTag) {
+quail.components.acronym = function(testName, acronymTag) {
   var predefined = { };
   var alreadyReported = { };
   quail.html.find(acronymTag + '[title]').each(function() {
@@ -293,7 +286,7 @@ quail.acronymTest = function(testName, acronymTag) {
     }
   });
 };
-quail.colorTest = function(testName, options) {
+quail.components.color = function(testName, options) {
   if(options.bodyForegroundAttribute && options.bodyBackgroundAttribute) {
     var $body = quail.html.find('body').clone(false, false);
     var foreground = $body.attr(options.bodyForegroundAttribute);
@@ -421,19 +414,40 @@ quail.colors = {
   }
 
 };
-quail.convertToPx = function(unit) {
+quail.components.convertToPx = function(unit) {
 	var $test = $('<div style="display: none; font-size: 1em; margin: 0; padding:0; height: ' + unit + '; line-height: 1; border:0;">&nbsp;</div>').appendTo(quail.html);
 	var height = $test.height();
 	$test.remove();
 	return height;
 }
-quail.hasEventListener = function(element, event) {
+quail.components.event = function(testName, options) {
+  var $items = (typeof options.selector === 'undefined') ?
+                quail.html.find('body').find('*') :
+                quail.html.find(options.selector);
+  $items.each(function() {
+    var $element = $(this).get(0);
+    if($(this).attr(options.searchEvent)) {
+      if(typeof options.correspondingEvent === 'undefined' ||
+         !$(this).attr(options.correspondingEvent)) {
+        quail.testFails(testName, $(this));
+      }
+    }
+    else {
+      if(quail.components.hasEventListener($element, options.searchEvent.replace('on', '')) &&
+         (typeof options.correspondingEvent === 'undefined' ||
+         !quail.components.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
+        quail.testFails(testName, $(this));
+      }
+    }
+  });
+};
+quail.components.hasEventListener = function(element, event) {
  	if(typeof $(element).attr('on' + event) !== 'undefined') {
  		return true;
  	}
  	return typeof $(element).get(0)[event] !== 'undefined';
  };
-quail.headerOrderTest = function(testName, options) {
+quail.components.header = function(testName, options) {
   var current = parseInt(options.selector.substr(-1, 1), 10);
   var nextHeading = false;
   quail.html.find('h1, h2, h3, h4, h5, h6').each(function() {
@@ -449,7 +463,17 @@ quail.headerOrderTest = function(testName, options) {
     }
   });
 };
-quail.labelProximityTest = function(testName, options) {
+quail.components.label = function(testName, options) {
+  quail.html.find(options.selector).each(function() {
+    if((!$(this).parent('label').length ||
+        !quail.containsReadableText($(this).parent('label'))) &&
+      (!quail.html.find('label[for=' + $(this).attr('id') + ']').length ||
+       !quail.containsReadableText(quail.html.find('label[for=' + $(this).attr('id') + ']')))) {
+        quail.testFails(testName, $(this));
+    }
+  });
+};
+quail.components.labelProximity = function(testName, options) {
   quail.html.find(options.selector).each(function() {
     var $label = quail.html.find('label[for=' + $(this).attr('id') + ']').first();
     if(!$label.length) {
@@ -460,17 +484,7 @@ quail.labelProximityTest = function(testName, options) {
     }
   });
 };
-quail.labelTest = function(testName, options) {
-  quail.html.find(options.selector).each(function() {
-    if((!$(this).parent('label').length ||
-        !quail.containsReadableText($(this).parent('label'))) &&
-      (!quail.html.find('label[for=' + $(this).attr('id') + ']').length ||
-       !quail.containsReadableText(quail.html.find('label[for=' + $(this).attr('id') + ']')))) {
-        quail.testFails(testName, $(this));
-    }
-  });
-};
-quail.placeholderTest = function(testName, options) {
+quail.components.placeholder = function(testName, options) {
   quail.html.find(options.selector).each(function() {
     var text;
     if(typeof options.attribute !== 'undefined') {
@@ -515,27 +529,6 @@ quail.placeholderTest = function(testName, options) {
     }
   });
 };
-quail.scriptEventTest = function(testName, options) {
-  var $items = (typeof options.selector === 'undefined') ?
-                quail.html.find('body').find('*') :
-                quail.html.find(options.selector);
-  $items.each(function() {
-    var $element = $(this).get(0);
-    if($(this).attr(options.searchEvent)) {
-      if(typeof options.correspondingEvent === 'undefined' ||
-         !$(this).attr(options.correspondingEvent)) {
-        quail.testFails(testName, $(this));
-      }
-    }
-    else {
-      if(quail.hasEventListener($element, options.searchEvent.replace('on', '')) &&
-         (typeof options.correspondingEvent === 'undefined' ||
-         !quail.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
-        quail.testFails(testName, $(this));
-      }
-    }
-  });
-};
 quail.statistics = {
 
   setDecimal : function( num, numOfDec ){
@@ -570,7 +563,7 @@ quail.statistics = {
   }
 };
 
-quail.textStatistics = {
+quail.components.textStatistics = {
 
   cleanText : function(text) {
     return text.replace(/[,:;()\-]/, ' ')
@@ -594,17 +587,18 @@ quail.textStatistics = {
   },
   
   averageWordsPerSentence : function(text) {
-    return quail.textStatistics.wordCount(text) / quail.textStatistics.sentenceCount(text);
+    return this.wordCount(text) / this.sentenceCount(text);
   },
   
   averageSyllablesPerWord : function(text) {
+    var that = this;
     var count = 0;
-    var wordCount = quail.textStatistics.wordCount(text);
+    var wordCount = that.wordCount(text);
     if(!wordCount) {
       return 0;
     }
     $.each(text.split(' '), function(index, word) {
-      count += quail.textStatistics.syllableCount(word);
+      count += that.syllableCount(word);
     });
     return count / wordCount;
   },
@@ -618,7 +612,7 @@ quail.textStatistics = {
     return matchedWord.length;
   }
 };
-quail.videoServices = {
+quail.components.video = {
     
   youTube : {
     
@@ -630,7 +624,7 @@ quail.videoServices = {
       var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
       var match = url.match(regExp);
       if (match && match[7].length === 11) {
-        quail.videoServices.youTube.videoID = match[7];
+        this.videoID = match[7];
         return true;
       }
       return false;
@@ -1160,11 +1154,11 @@ quail.doctypeProvided = function() {
 };
 
 quail.documentAbbrIsUsed = function() {
-  quail.acronymTest('documentAbbrIsUsed', 'abbr');
+  quail.components.acronym('documentAbbrIsUsed', 'abbr');
 };
 
 quail.documentAcronymsHaveElement = function() {
-  quail.acronymTest('documentAcronymsHaveElement', 'acronym');
+  quail.components.acronym('documentAcronymsHaveElement', 'acronym');
 };
 
 quail.documentIDsMustBeUnique = function() {
@@ -1179,8 +1173,8 @@ quail.documentIDsMustBeUnique = function() {
 
 quail.documentIsWrittenClearly = function() {
   quail.html.find(quail.textSelector).each(function() {
-    var text = quail.textStatistics.cleanText($(this).text());
-    if(Math.round((206.835 - (1.015 * quail.textStatistics.averageWordsPerSentence(text)) - (84.6 * quail.textStatistics.averageSyllablesPerWord(text)))) < 60) {
+    var text = quail.components.textStatistics.cleanText($(this).text());
+    if(Math.round((206.835 - (1.015 * quail.components.textStatistics.averageWordsPerSentence(text)) - (84.6 * quail.components.textStatistics.averageSyllablesPerWord(text)))) < 60) {
       quail.testFails('documentIsWrittenClearly', $(this));
     }
   });
@@ -1507,8 +1501,8 @@ quail.pNotUsedAsHeader = function() {
 
 quail.paragarphIsWrittenClearly = function() {
   quail.html.find('p').each(function() {
-    var text = quail.textStatistics.cleanText($(this).text());
-    if(Math.round((206.835 - (1.015 * quail.textStatistics.averageWordsPerSentence(text)) - (84.6 * quail.textStatistics.averageSyllablesPerWord(text)))) < 60) {
+    var text = quail.components.textStatistics.cleanText($(this).text());
+    if(Math.round((206.835 - (1.015 * quail.components.textStatistics.averageWordsPerSentence(text)) - (84.6 * quail.components.textStatistics.averageSyllablesPerWord(text)))) < 60) {
       quail.testFails('paragarphIsWrittenClearly', $(this));
     }
   });
@@ -1530,7 +1524,7 @@ quail.selectJumpMenu = function() {
   
   quail.html.find('select').each(function() {
     if($(this).parent('form').find(':submit').length === 0 &&
-       quail.hasEventListener($(this), 'change')) {
+       quail.components.hasEventListener($(this), 'change')) {
          quail.testFails('selectJumpMenu', $(this));
     }
   });
@@ -1692,7 +1686,7 @@ quail.textIsNotSmall = function() {
   quail.html.find(quail.textSelector).each(function() {
     var fontSize = $(this).css('font-size');
     if(fontSize.search('em') > 0) {
-      fontSize = quail.convertToPx(fontSize);
+      fontSize = quail.components.convertToPx(fontSize);
     }
     fontSize = parseInt(fontSize.replace('px', ''), 10);
     if(fontSize < 10) {
@@ -1704,7 +1698,7 @@ quail.textIsNotSmall = function() {
 quail.videosEmbeddedOrLinkedNeedCaptions = function() {
   quail.html.find('a').each(function() {
     var $link = $(this);
-    $.each(quail.videoServices, function(type, callback) {
+    $.each(quail.components.video, function(type, callback) {
       if(callback.isVideo($link.attr('href'))) {
         callback.hasCaptions(function(hasCaptions) {
           if(!hasCaptions) {

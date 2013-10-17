@@ -2,7 +2,7 @@
  * Test callback for tests that look for script events
  *  (like a mouse event has a keyboard event as well).
  */
-quail.scriptEventTest = function(testName, options) {
+quail.components.event = function(testName, options) {
   var $items = (typeof options.selector === 'undefined') ?
                 quail.html.find('body').find('*') :
                 quail.html.find(options.selector);
@@ -15,9 +15,9 @@ quail.scriptEventTest = function(testName, options) {
       }
     }
     else {
-      if(quail.hasEventListener($element, options.searchEvent.replace('on', '')) &&
+      if(quail.components.hasEventListener($element, options.searchEvent.replace('on', '')) &&
          (typeof options.correspondingEvent === 'undefined' ||
-         !quail.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
+         !quail.components.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
         quail.testFails(testName, $(this));
       }
     }

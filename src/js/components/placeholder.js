@@ -2,7 +2,7 @@
  * Placeholder test - checks that an attribute or the content of an
  * element itself is not a placeholder (i.e. "click here" for links).
  */
-quail.placeholderTest = function(testName, options) {
+quail.components.placeholder = function(testName, options) {
   quail.html.find(options.selector).each(function() {
     var text;
     if(typeof options.attribute !== 'undefined') {

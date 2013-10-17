@@ -103,7 +103,8 @@
         "attribute": "alt",
         "empty": true,
         "testability": 0.5,
-        "tags" : [ "objects", "applet", "content" ]
+        "tags" : [ "objects", "applet", "content" ],
+        "components" : [ "placeholder" ]
     },
     "appletProvidesMechanismToReturnToParent": {
         "type": "selector",
@@ -202,7 +203,8 @@
         "bodyForegroundAttribute": "alink",
         "bodyBackgroundAttribute": "bgcolor",
         "testability": 1,
-        "tags" : [ "document", "color" ]
+        "tags" : [ "document", "color" ],
+        "components" : [ "color" ]
     },
     "bodyColorContrast": {
         "type": "color",
@@ -211,7 +213,8 @@
         "bodyForegroundAttribute": "text",
         "bodyBackgroundAttribute": "bgcolor",
         "testability": 1,
-        "tags" : [ "document", "color" ]
+        "tags" : [ "document", "color" ],
+        "components" : [ "color" ]
     },
     "bodyLinkColorContrast": {
         "type": "color",
@@ -220,7 +223,8 @@
         "bodyForegroundAttribute": "link",
         "bodyBackgroundAttribute": "bgcolor",
         "testability": 1,
-        "tags" : [ "document", "color" ]
+        "tags" : [ "document", "color" ],
+        "components" : [ "color" ]
     },
     "bodyMustNotHaveBackground": {
         "type": "selector",
@@ -235,7 +239,8 @@
         "bodyForegroundAttribute": "vlink",
         "bodyBackgroundAttribute": "bgcolor",
         "testability": 1,
-        "tags" : [ "link", "color" ]
+        "tags" : [ "link", "color" ],
+        "components" : [ "color" ]
     },
     "boldIsNotUsed": {
         "type": "selector",
@@ -247,13 +252,15 @@
         "type": "label",
         "selector": "input[type=checkbox]",
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "label" ]
     },
     "checkboxLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=checkbox]",
         "testability": 0.5,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "labelProximity" ]
     },
     "cssDocumentMakesSenseStyleTurnedOff": {
         "type": "selector",
@@ -268,7 +275,8 @@
         "bodyForegroundAttribute": "background",
         "bodyBackgroundAttribute": "color",
         "testability": 1,
-        "tags" : [ "color" ]
+        "tags" : [ "color" ],
+        "components" : [ "color" ]
     },
     "doctypeProvided": {
         "type": "custom",
@@ -280,13 +288,15 @@
         "type": "custom",
         "callback": "documentAbbrIsUsed",
         "testability": 0.5,
-        "tags" : [ "acronym", "content" ]
+        "tags" : [ "acronym", "content" ],
+        "components" : [ "acronym" ]
     },
     "documentAcronymsHaveElement": {
         "type": "custom",
         "callback": "documentAcronymsHaveElement",
         "testability": 0.5,
-        "tags" : [ "acronym", "content" ]
+        "tags" : [ "acronym", "content" ],
+        "components" : [ "acronym" ]
     },
     "documentAllColorsAreSet": {
         "type": "selector",
@@ -307,7 +317,8 @@
         "bodyForegroundAttribute": "alink",
         "bodyBackgroundAttribute": "bgcolor",
         "testability": 1,
-        "tags" : [ "document", "color" ]
+        "tags" : [ "document", "color" ],
+        "components" : [ "color" ]
     },
     "documentColorWaiAlgorithm": {
         "type": "color",
@@ -316,7 +327,8 @@
         "bodyBackgroundAttribute": "bgcolor",
         "selector": "body",
         "testability": 1,
-        "tags" : [ "document", "color" ]
+        "tags" : [ "document", "color" ],
+        "components" : [ "color" ]
     },
     "documentColorWaiLinkAlgorithm": {
         "type": "color",
@@ -325,7 +337,8 @@
         "bodyForegroundAttribute": "link",
         "bodyBackgroundAttribute": "bgcolor",
         "testability": 1,
-        "tags" : [ "document", "color" ]
+        "tags" : [ "document", "color" ],
+        "components" : [ "color" ]
     },
     "documentColorWaiVisitedLinkAlgorithm": {
         "type": "color",
@@ -334,7 +347,8 @@
         "bodyForegroundAttribute": "vlink",
         "bodyBackgroundAttribute": "bgcolor",
         "testability": 1,
-        "tags" : [ "document", "color" ]
+        "tags" : [ "document", "color" ],
+        "components" : [ "color" ]
     },
     "documentContentReadableWithoutStylesheets": {
         "type": "selector",
@@ -396,7 +410,8 @@
         "selector": "head title:first",
         "content": true,
         "testability": 1,
-        "tags" : [ "document", "head" ]
+        "tags" : [ "document", "head" ],
+        "components" : [ "placeholder" ]
     },
     "documentTitleIsShort": {
         "type": "custom",
@@ -410,7 +425,8 @@
         "empty": true,
         "content": true,
         "testability": 1,
-        "tags" : [ "document", "head"]
+        "tags" : [ "document", "head"],
+        "components" : [ "placeholder" ]
     },
     "documentValidatesToDocType": {
         "type": "custom",
@@ -434,7 +450,8 @@
         "type": "custom",
         "callback": "documentIsWrittenClearly",
         "testability": 0.5,
-        "tags" : [ "language", "content" ]
+        "tags" : [ "language", "content" ],
+        "components" : [ "textStatistics" ]
     },
     "embedHasAssociatedNoEmbed": {
         "type": "custom",
@@ -478,13 +495,15 @@
         "type": "label",
         "selector": "input[type=file]",
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "label" ]
     },
     "fileLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=file]",
         "testability": 0.5,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "labelProximity" ]
     },
     "fontIsNotUsed": {
         "type": "selector",
@@ -552,7 +571,8 @@
         "attribute": "title",
         "empty": true,
         "testability": 0,
-        "tags" : [ "deprecated", "frame" ]
+        "tags" : [ "deprecated", "frame" ],
+        "components" : [ "placeholder" ]
     },
     "frameTitlesNotEmpty": {
         "type": "selector",
@@ -565,7 +585,8 @@
         "selector": "frame",
         "attribute": "title",
         "testability": 1,
-        "tags" : [ "deprecated", "frame"]
+        "tags" : [ "deprecated", "frame"],
+        "components" : [ "placeholder" ]
     },
     "framesHaveATitle": {
         "type": "selector",
@@ -583,55 +604,64 @@
         "type": "header",
         "selector": "h1",
         "testability": 0,
-        "tags" : [ "header", "content" ]
+        "tags" : [ "header", "content" ],
+        "components" : [ "header" ]
     },
     "headerH2": {
         "type": "header",
         "selector": "h2",
         "testability": 0,
-        "tags" : [ "header", "content" ]
+        "tags" : [ "header", "content" ],
+        "components" : [ "header" ]
     },
     "headerH3": {
         "type": "header",
         "selector": "h3",
         "testability": 0,
-        "tags" : [ "header", "content" ]
+        "tags" : [ "header", "content" ],
+        "components" : [ "header" ]
     },
     "headerH4": {
         "type": "header",
         "selector": "h4",
         "testability": 0,
-        "tags" : [ "header", "content" ]
+        "tags" : [ "header", "content" ],
+        "components" : [ "header" ]
     },
     "headerH5": {
         "type": "header",
         "selector": "h5",
         "testability": 0,
-        "tags" : [ "header", "content" ]
+        "tags" : [ "header", "content" ],
+        "components" : [ "header" ]
     },
     "headerH1Format": {
         "type": "selector",
         "selector": "h1",
         "testability": 0,
-        "tags" : [ "header", "content" ]
+        "tags" : [ "header", "content" ],
+        "components" : [ "header" ]
     },
     "headerH2Format": {
         "type": "selector",
         "selector": "h2",
         "testability": 0,
-        "tags" : [ "header", "content" ]
+        "tags" : [ "header", "content" ],
+        "components" : [ "header" ]
     },
     "headerH3Format": {
         "type": "selector",
         "selector": "h3",
         "testability": 0,
-        "tags" : [ "header", "content" ]
+        "tags" : [ "header", "content" ],
+        "components" : [ "header" ]
     },
     "headerH4Format": {
         "type": "selector",
         "selector": "h4",
         "testability": 0,
-        "tags" : [ "header", "content" ]
+        "tags" : [ "header", "content" ],
+        "components" : [ "header" ]
     },
     "headerH5Format": {
         "type": "selector",
@@ -651,7 +681,8 @@
         "content": true,
         "empty": true,
         "testability": 1,
-        "tags" : [ "header", "content" ]
+        "tags" : [ "header", "content" ],
+        "components" : [ "placeholder" ]
     },
     "headersUseToMarkSections": {
         "type": "custom",
@@ -718,7 +749,8 @@
         "selector": "img",
         "attribute": "alt",
         "testability": 1,
-        "tags" : [ "image", "content" ]
+        "tags" : [ "image", "content" ],
+        "components" : [ "placeholder" ]
     },
     "imgAltTextNotRedundant": {
         "type": "custom",
@@ -798,7 +830,8 @@
         "attribute": "tabindex",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "placeholder" ]
     },
     "inputCheckboxRequiresFieldset": {
         "type": "custom",
@@ -824,7 +857,8 @@
         "attribute": "tabindex",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form", "tabindex" ]
+        "tags" : [ "form", "tabindex" ],
+        "components" : [ "placeholder" ]
     },
     "inputImageAltIdentifiesPurpose": {
         "type": "selector",
@@ -843,7 +877,8 @@
         "selector": "input[type=image]",
         "attribute": "alt",
         "testability": 1,
-        "tags" : [ "form", "image", "content" ]
+        "tags" : [ "form", "image", "content" ],
+        "components" : [ "placeholder" ]
     },
     "inputImageAltIsShort": {
         "type": "custom",
@@ -876,7 +911,8 @@
         "attribute": "tabindex",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "placeholder" ]
     },
     "inputRadioHasTabIndex": {
         "type": "placeholder",
@@ -884,7 +920,8 @@
         "attribute": "tabindex",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "placeholder" ]
     },
     "inputSubmitHasTabIndex": {
         "type": "placeholder",
@@ -892,7 +929,8 @@
         "attribute": "tabindex",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "placeholder" ]
     },
     "inputTextHasLabel": {
         "type": "label",
@@ -906,7 +944,8 @@
         "attribute": "tabindex",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "placeholder" ]
     },
     "inputTextHasValue": {
         "type": "placeholder",
@@ -914,7 +953,8 @@
         "empty": true,
         "attribute": "value",
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "placeholder" ]
     },
     "inputTextValueNotEmpty": {
         "type": "placeholder",
@@ -922,7 +962,8 @@
         "attribute": "value",
         "empty": true,
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "placeholder" ]
     },
     "labelDoesNotContainInput": {
         "type": "selector",
@@ -942,7 +983,8 @@
         "content": true,
         "empty": true,
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "placeholder" ]
     },
     "labelsAreAssignedToAnInput": {
         "type": "custom",
@@ -968,7 +1010,8 @@
         "content": true,
         "emtpy": true,
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "placeholder" ]
     },
     "liDontUseImageForBullet": {
         "type": "selector",
@@ -1054,7 +1097,8 @@
         "empty": true,
         "content": true,
         "testability": 1,
-        "tags" : [ "objects", "content" ]
+        "tags" : [ "objects", "content" ],
+        "components" : [ "placeholder" ]
     },
     "objectMustHaveEmbed": {
         "type": "selector",
@@ -1074,7 +1118,8 @@
         "attribute": "title",
         "empty": true,
         "testability": 1,
-        "tags" : [ "objects", "content" ]
+        "tags" : [ "objects", "content" ],
+        "components" : [ "placeholder" ]
     },
     "objectProvidesMechanismToReturnToParent": {
         "type": "selector",
@@ -1116,19 +1161,22 @@
         "type": "custom",
         "callback": "paragarphIsWrittenClearly",
         "testability": 0.5,
-        "tags" : [ "language", "content" ]
+        "tags" : [ "language", "content" ],
+        "components" : [ "textStatistics" ]
     },
     "passwordHasLabel": {
         "type": "label",
         "selector": "input[type=password]",
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "label" ]
     },
     "passwordLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=password]",
         "testability": 0.5,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "labelProximity" ]
     },
     "preShouldNotBeUsedForTabularLayout": {
         "type": "custom",
@@ -1140,13 +1188,15 @@
         "type": "label",
         "selector": "input[type=radio]",
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "label" ]
     },
     "radioLabelIsNearby": {
         "type": "labelProximity",
         "selector": "input[type=radio]",
         "testability": 0.5,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "labelProximity" ]
     },
     "radioMarkedWithFieldgroupAndLegend": {
         "type": "selector",
@@ -1171,49 +1221,56 @@
         "searchEvent": "onclick",
         "correspondingEvent": "onkeypress",
         "testability": 1,
-        "tags" : [ "javascript" ]
+        "tags" : [ "javascript" ],
+        "components" : [ "event", "hasEventListener" ]
     },
     "scriptOndblclickRequiresOnKeypress": {
         "type": "event",
         "searchEvent": "ondblclick",
         "correspondingEvent": "onkeypress",
         "testability": 1,
-        "tags" : [ "javascript" ]
+        "tags" : [ "javascript" ],
+        "components" : [ "event", "hasEventListener" ]
     },
     "scriptOnmousedownRequiresOnKeypress": {
         "type": "event",
         "searchEvent": "onmousedown",
         "correspondingEvent": "onkeydown",
         "testability": 1,
-        "tags" : [ "javascript" ]
+        "tags" : [ "javascript" ],
+        "components" : [ "event", "hasEventListener" ]
     },
     "scriptOnmousemove": {
         "type": "event",
         "searchEvent": "onmousemove",
         "correspondingEvent": "onkeypress",
         "testability": 1,
-        "tags" : [ "javascript" ]
+        "tags" : [ "javascript" ],
+        "components" : [ "event", "hasEventListener" ]
     },
     "scriptOnmouseoutHasOnmouseblur": {
         "type": "event",
         "searchEvent": "onmouseout",
         "correspondingEvent": "onblur",
         "testability": 1,
-        "tags" : [ "javascript" ]
+        "tags" : [ "javascript" ],
+        "components" : [ "event", "hasEventListener" ]
     },
     "scriptOnmouseoverHasOnfocus": {
         "type": "event",
         "searchEvent": "onmouseover",
         "correspondingEvent": "onfocus",
         "testability": 1,
-        "tags" : [ "javascript" ]
+        "tags" : [ "javascript" ],
+        "components" : [ "event", "hasEventListener" ]
     },
     "scriptOnmouseupHasOnkeyup": {
         "type": "event",
         "searchEvent": "onmouseup",
         "correspondingEvent": "onkeyup",
         "testability": 1,
-        "tags" : [ "javascript" ]
+        "tags" : [ "javascript" ],
+        "components" : [ "event", "hasEventListener" ]
     },
     "scriptUIMustBeAccessible": {
         "type": "selector",
@@ -1238,13 +1295,15 @@
         "selector": "select",
         "searchEvent": "onchange",
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "event", "hasEventListener" ]
     },
     "selectHasAssociatedLabel": {
         "type": "label",
         "selector": "select",
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "label" ]
     },
     "selectWithOptionsHasOptgroup": {
         "type": "selector",
@@ -1256,7 +1315,8 @@
         "type": "custom",
         "callback": "selectJumpMenu",
         "testability": 0.5,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "hasEventListener" ]
     },
     "siteMap": {
         "type": "custom",
@@ -1355,7 +1415,8 @@
         "attribute": "summary",
         "empty": true,
         "testability": 0.5,
-        "tags" : [ "table", "content" ]
+        "tags" : [ "table", "content" ],
+        "components" : [ "placeholder" ]
     },
     "tableSummaryIsSufficient": {
         "type": "selector",
@@ -1421,19 +1482,22 @@
         "type": "label",
         "selector": "textarea",
         "testability": 1,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "label" ]
     },
     "textareaLabelPositionedClose": {
         "type": "labelProximity",
         "selector": "textarea",
         "testability": 0.5,
-        "tags" : [ "form", "content" ]
+        "tags" : [ "form", "content" ],
+        "components" : [ "labelProximity" ]
     },
     "textIsNotSmall": {
         "type": "custom",
         "callback": "textIsNotSmall",
         "testability": 0.5,
-        "tags" : [ "textsize", "content" ]
+        "tags" : [ "textsize", "content" ],
+        "components" : [ "convertToPx" ]
     },
     "videoProvidesCaptions": {
         "type": "selector",
@@ -1445,6 +1509,7 @@
         "type": "custom",
         "callback": "videosEmbeddedOrLinkedNeedCaptions",
         "testability": 1,
-        "tags" : [ "media", "content" ]
+        "tags" : [ "media", "content" ],
+        "components" : [ "video" ]
     }
 }

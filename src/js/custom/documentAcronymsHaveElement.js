@@ -1,3 +1,3 @@
 quail.documentAcronymsHaveElement = function() {
-  quail.acronymTest('documentAcronymsHaveElement', 'acronym');
+  quail.components.acronym('documentAcronymsHaveElement', 'acronym');
 };

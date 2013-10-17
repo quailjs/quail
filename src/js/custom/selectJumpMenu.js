@@ -5,7 +5,7 @@ quail.selectJumpMenu = function() {
   
   quail.html.find('select').each(function() {
     if($(this).parent('form').find(':submit').length === 0 &&
-       quail.hasEventListener($(this), 'change')) {
+       quail.components.hasEventListener($(this), 'change')) {
          quail.testFails('selectJumpMenu', $(this));
     }
   });

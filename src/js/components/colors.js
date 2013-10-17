@@ -2,7 +2,7 @@
  * Test callback for color tests. This handles both WAI and WCAG
  * color contrast/luminosity.
  */
-quail.colorTest = function(testName, options) {
+quail.components.color = function(testName, options) {
   if(options.bodyForegroundAttribute && options.bodyBackgroundAttribute) {
     var $body = quail.html.find('body').clone(false, false);
     var foreground = $body.attr(options.bodyForegroundAttribute);
