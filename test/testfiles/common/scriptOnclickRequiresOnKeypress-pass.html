@@ -7,9 +7,9 @@
 </head>
 <body>
 
-
+<div id="quail-scope">
 <input name="num" onclick="foo" onkeypress="bar" value="0">
-
+</div>
 <script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
 <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
@@ -17,6 +17,7 @@
 <script id="qunit-script">
 test('scriptOnclickRequiresOnKeypress', function() {
   quailTest.runTest( 'scriptOnclickRequiresOnKeypress', '102-2.html');
+  console.log(quailTest.results);
   equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 });
 </script>

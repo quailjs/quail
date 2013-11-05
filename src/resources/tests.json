@@ -24,6 +24,12 @@
         "testability": 1,
         "tags" : [ "link", "content" ]
     },
+    "aLinksNotSeparatedBySymbols": {
+        "type": "custom",
+        "callback": "aLinksNotSeparatedBySymbols",
+        "testability": 1,
+        "tags" : [ "link", "content" ]
+    },
     "aLinksDontOpenNewWindow": {
         "type": "selector",
         "selector": "a[target=_new], a[target=_blank], a[target=_blank]",

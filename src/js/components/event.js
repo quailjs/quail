@@ -4,22 +4,13 @@
  */
 quail.components.event = function(testName, options) {
   var $items = (typeof options.selector === 'undefined') ?
-                quail.html.find('body').find('*') :
+                quail.html.find('*') :
                 quail.html.find(options.selector);
   $items.each(function() {
-    var $element = $(this).get(0);
-    if($(this).attr(options.searchEvent)) {
-      if(typeof options.correspondingEvent === 'undefined' ||
-         !$(this).attr(options.correspondingEvent)) {
-        quail.testFails(testName, $(this));
-      }
-    }
-    else {
-      if(quail.components.hasEventListener($element, options.searchEvent.replace('on', '')) &&
+    if(quail.components.hasEventListener($(this), options.searchEvent.replace('on', '')) &&
          (typeof options.correspondingEvent === 'undefined' ||
-         !quail.components.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
-        quail.testFails(testName, $(this));
-      }
+         !quail.components.hasEventListener($(this), options.correspondingEvent.replace('on', '')))) {
+      quail.testFails(testName, $(this));
     }
   });
 };
