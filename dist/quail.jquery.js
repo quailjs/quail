@@ -422,22 +422,13 @@ quail.components.convertToPx = function(unit) {
 }
 quail.components.event = function(testName, options) {
   var $items = (typeof options.selector === 'undefined') ?
-                quail.html.find('body').find('*') :
+                quail.html.find('*') :
                 quail.html.find(options.selector);
   $items.each(function() {
-    var $element = $(this).get(0);
-    if($(this).attr(options.searchEvent)) {
-      if(typeof options.correspondingEvent === 'undefined' ||
-         !$(this).attr(options.correspondingEvent)) {
-        quail.testFails(testName, $(this));
-      }
-    }
-    else {
-      if(quail.components.hasEventListener($element, options.searchEvent.replace('on', '')) &&
+    if(quail.components.hasEventListener($(this), options.searchEvent.replace('on', '')) &&
          (typeof options.correspondingEvent === 'undefined' ||
-         !quail.components.hasEventListener($element, options.correspondingEvent.replace('on', '')))) {
-        quail.testFails(testName, $(this));
-      }
+         !quail.components.hasEventListener($(this), options.correspondingEvent.replace('on', '')))) {
+      quail.testFails(testName, $(this));
     }
   });
 };
@@ -1068,6 +1059,15 @@ quail.strings.suspicious_links = [
 "aqu&iacute;",
 "image"
 ];
+quail.strings.symbols = [
+  "|",
+  "*",
+  /\*/g,
+  "<br>*",
+  '&bull;',
+  '&#8226'
+];
+
 quail.aAdjacentWithSameResourceShouldBeCombined = function() {
   quail.html.find('a').each(function() {
     if($(this).next('a').attr('href') === $(this).attr('href')) {
@@ -1105,6 +1105,15 @@ quail.aLinksAreSeperatedByPrintableCharacters = function() {
   quail.html.find('a').each(function() {
     if($(this).next('a').length && quail.isUnreadable($(this).get(0).nextSibling.wholeText)) {
       quail.testFails('aLinksAreSeperatedByPrintableCharacters', $(this));
+    }
+  });
+};
+
+quail.aLinksNotSeparatedBySymbols = function() {
+  quail.html.find('a').each(function() {
+    if($(this).next('a').length &&
+    	quail.strings.symbols.indexOf($(this).get(0).nextSibling.wholeText.toLowerCase().trim()) !== -1 ) {
+      quail.testFails('aLinksNotSeparatedBySymbols', $(this));
     }
   });
 };
@@ -1210,10 +1219,9 @@ quail.documentValidatesToDocType = function() {
 };
 
 quail.documentVisualListsAreMarkedUp = function() {
-  var listQueues = [/\*/g, '<br>*', '&bull;', '&#8226'];
   quail.html.find('p, div, h1, h2, h3, h4, h5, h6').each(function() {
     var $element = $(this);
-    $.each(listQueues, function(index, item) {
+    $.each(quail.strings.symbols, function(index, item) {
       if($element.text().split(item).length > 2) {
         quail.testFails('documentVisualListsAreMarkedUp', $element);
       }
