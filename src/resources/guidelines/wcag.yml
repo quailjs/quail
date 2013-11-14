@@ -1,0 +1,397 @@
+1.1.1:
+    id: text-equiv-all
+    title: 'Non-text Content'
+    description: 'All non-text content that is presented to the user has a text alternative that serves the equivalent purpose, except for the situations listed below.'
+    uri: 'http://www.w3.org/TR/WCAG20/#text-equiv-all'
+    items: 
+        1:
+            title: 'Controls, Input'
+            description: 'If non-text content is a control or accepts user input, then it has a name that describes its purpose.'
+        2:
+            title: 'Time-Based Media'
+            description: 'If non-text content is time-based media, then text alternatives at least provide descriptive identification of the non-text content. (Refer to  for additional requirements for media.)'
+        3:
+            title: Test
+            description: 'If non-text content is a test or exercise that would be invalid if presented in text, then text alternatives at least provide descriptive identification of the non-text content.'
+        4:
+            title: Sensory
+            description: 'If non-text content is primarily intended to create a specific sensory experience, then text alternatives at least provide descriptive identification of the non-text content.'
+        5:
+            title: CAPTCHA
+            description: "If the purpose of non-text content is to confirm that content is being accessed by a person rather than a computer, then text alternatives that identify and describe the purpose of the non-text content are provided, and alternative forms of CAPTCHA using output modes for different types of sensory perception are provided to accommodate different disabilities."
+        6:
+            title: 'Decoration, Formatting, Invisible'
+            description: 'If non-text content is pure decoration, is used only for visual formatting, or is not presented to users, then it is implemented in a way that it can be ignored by assistive technology.'
+1.2.1:
+    id: media-equiv-av-only-alt
+    title: 'Audio-only and Video-only (Prerecorded)'
+    description: 'For prerecorded audio-only and prerecorded video-only media, the following are true, except when the audio or video is a media alternative for text and is clearly labeled as such:'
+    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-av-only-alt'
+    items:
+        1:
+            title: 'Prerecorded Audio-only'
+            description: 'An alternative for time-based media is provided that presents equivalent information for prerecorded audio-only content.'
+        2:
+            title: 'Prerecorded Video-only'
+            description: 'Either an alternative for time-based media or an audio track is provided that presents equivalent information for prerecorded video-only content.'
+1.2.2:
+    id: media-equiv-captions
+    title: 'Captions (Prerecorded)'
+    description: 'Captions are provided for all prerecorded audio content in synchronized media, except when the media is a media alternative for text and is clearly labeled as such.'
+    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-captions'
+1.2.3:
+    id: media-equiv-audio-desc
+    title: 'Audio Description or Media Alternative (Prerecorded)'
+    description: 'An alternative for time-based media or audio description of the prerecorded video content is provided for synchronized media, except when the media is a media alternative for text and is clearly labeled as such.'
+    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-audio-desc'
+1.2.4:
+    id: media-equiv-real-time-captions
+    title: 'Captions (Live)'
+    description: 'Captions are provided for all live audio content in synchronized media.'
+    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-real-time-captions'
+1.2.5:
+    id: media-equiv-audio-desc-only
+    title: 'Audio Description (Prerecorded)'
+    description: 'Audio description is provided for all prerecorded video content in synchronized media.'
+    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-audio-desc-only'
+1.2.6:
+    id: media-equiv-sign
+    title: 'Sign Language (Prerecorded)'
+    description: 'Sign language interpretation is provided for all prerecorded audio content in synchronized media.'
+    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-sign'
+1.2.7:
+    id: media-equiv-extended-ad
+    title: 'Extended Audio Description (Prerecorded)'
+    description: 'Where pauses in foreground audio are insufficient to allow audio descriptions to convey the sense of the video, extended audio description is provided for all prerecorded video content in synchronized media.'
+    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-extended-ad'
+1.2.8:
+    id: media-equiv-text-doc
+    title: 'Media Alternative (Prerecorded)'
+    description: 'An alternative for time-based media is provided for all prerecorded synchronized media and for all prerecorded video-only media.'
+    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-text-doc'
+1.2.9:
+    id: media-equiv-live-audio-only
+    title: 'Audio-only (Live)'
+    description: 'An alternative for time-based media that presents equivalent information for live audio-only content is provided.'
+    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-live-audio-only'
+1.3.1:
+    id: content-structure-separation-programmatic
+    title: 'Info and Relationships'
+    description: 'Information, structure,  and relationships conveyed through presentation can be programmatically determined or are available in text.'
+    uri: 'http://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic'
+1.3.2:
+    id: content-structure-separation-sequence
+    title: 'Meaningful Sequence'
+    description: 'When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined.'
+    uri: 'http://www.w3.org/TR/WCAG20/#content-structure-separation-sequence'
+1.3.3:
+    id: content-structure-separation-understanding
+    title: 'Sensory Characteristics'
+    description: "Instructions provided for understanding and operating content do not rely solely on sensory characteristics of components such as shape, size, visual location, orientation, or sound."
+    uri: 'http://www.w3.org/TR/WCAG20/#content-structure-separation-understanding'
+1.4.1:
+    id: visual-audio-contrast-without-color
+    title: 'Use of Color'
+    description: 'Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.'
+    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-without-color'
+1.4.2:
+    id: visual-audio-contrast-dis-audio
+    title: 'Audio Control'
+    description: 'If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.'
+    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-dis-audio'
+1.4.3:
+    id: visual-audio-contrast-contrast
+    title: 'Contrast (Minimum)'
+    description: 'The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following:'
+    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast'
+    items:
+        1:
+            title: 'Large Text'
+            description: 'Large-scale text and images of large-scale text have a contrast ratio of at least 3:1;'
+        2:
+            title: Incidental
+            description: 'Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.'
+        3:
+            title: Logotypes
+            description: 'Text that is part of a logo or brand name has no minimum contrast requirement.'
+1.4.4:
+    id: visual-audio-contrast-scale
+    title: 'Resize text'
+    description: 'Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.'
+    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale'
+1.4.5:
+    id: visual-audio-contrast-text-presentation
+    title: 'Images of Text'
+    description: 'If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text except for the following:'
+    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-presentation'
+    items:
+        1:
+            title: 'Customizable'
+            description: 'The image of text can be visually customized to the user''s requirements;'
+        2:
+            title: 'Essential'
+            description: 'A particular presentation of text is essential to the information being conveyed.'
+1.4.6:
+    id: visual-audio-contrast7
+    title: 'Contrast (Enhanced)'
+    description: 'The visual presentation of text and images of text has a contrast ratio of at least 7:1, except for the following:'
+    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast7'
+    items:
+        1:
+            title: 'Large Text'
+            description: 'Large-scale text and images of large-scale text have a contrast ratio of at least 4.5:1;'
+        2:
+            title: Incidental
+            description: 'Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.'
+        3:
+            title: Logotypes
+            description: 'Text that is part of a logo or brand name has no minimum contrast requirement.'
+1.4.7:
+    id: visual-audio-contrast-noaudio
+    title: 'Low or No Background Audio'
+    description: 'For prerecorded audio-only content that (1) contains primarily speech in the foreground, (2) is not an audio CAPTCHA or audio logo, and (3) is not vocalization intended to be primarily musical expression such as singing or rapping, at least one of the following is true:'
+    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-noaudio'
+    items:
+        1:
+            title: 'No Background'
+            description: 'The audio does not contain background sounds.'
+        2:
+            title: 'Turn Off'
+            description: 'The background sounds can be turned off.'
+        3:
+            title: '20 dB'
+            description: "The background sounds are at least 20 decibels lower than the foreground speech content, with the exception of occasional sounds that last for only one or two seconds."
+        4:
+            title: ''
+            description: 'Per the definition of "decibel," background sound that meets this requirement will be approximately four times quieter than the foreground speech content.'
+1.4.8:
+    id: visual-audio-contrast-visual-presentation
+    title: 'Visual Presentation'
+    description: 'For the visual presentation of blocks of text, a mechanism is available to achieve the following:'
+    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-visual-presentation'
+1.4.9:
+    id: visual-audio-contrast-text-images
+    title: 'Images of Text (No Exception)'
+    description: 'Images of text are only used for pure decoration or where a particular presentation of text is essential to the information being conveyed.'
+    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-images'
+2.1.1:
+    id: keyboard-operation-keyboard-operable
+    title: Keyboard
+    description: 'All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes, except where the underlying function requires input that depends on the path of the user''s movement and not just the endpoints.'
+    uri: 'http://www.w3.org/TR/WCAG20/#keyboard-operation-keyboard-operable'
+2.1.2:
+    id: keyboard-operation-trapping
+    title: 'No Keyboard Trap'
+    description: 'If keyboard focus can be moved to a component of the page using a keyboard interface, then focus can be moved away from that component using only a keyboard interface, and, if it requires more than unmodified arrow or tab keys or other standard exit methods, the user is advised of the method for moving focus away.'
+    uri: 'http://www.w3.org/TR/WCAG20/#keyboard-operation-trapping'
+2.1.3:
+    id: keyboard-operation-all-funcs
+    title: 'Keyboard (No Exception)'
+    description: 'All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes.'
+    uri: 'http://www.w3.org/TR/WCAG20/#keyboard-operation-all-funcs'
+2.2.1:
+    id: time-limits-required-behaviors
+    title: 'Timing Adjustable'
+    description: 'For each time limit that is  set by the content, at least one of the following is true:'
+    uri: 'http://www.w3.org/TR/WCAG20/#time-limits-required-behaviors'
+    items:
+        1:
+            title: 'Turn off'
+            description: "The user is allowed to turn off the time limit before encountering it;"
+        2:
+            title: Adjust
+            description: 'The user is allowed to adjust the time limit before encountering it over a wide range that is at least ten times the length of the default setting; or'
+        3:
+            title: Extend
+            description: 'The user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action (for example, "press the space bar"), and the user is allowed to extend the time limit at least ten times; or'
+        4:
+            title: 'Real-time Exception'
+            description: 'The time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible; or'
+        5:
+            title: 'Essential Exception'
+            description: 'The time limit is essential and extending it would invalidate the activity; or'
+        6:
+            title: '20 Hour Exception'
+            description: 'The time limit is longer than 20 hours.'
+2.2.2:
+    id: time-limits-pause
+    title: 'Pause, Stop, Hide'
+    description: 'For moving, blinking, scrolling, or auto-updating information, all of the following are true:'
+    uri: 'http://www.w3.org/TR/WCAG20/#time-limits-pause'
+    items:
+        1:
+            title: 'Moving, blinking, scrolling'
+            description: 'For any moving, blinking or scrolling information that (1) starts automatically, (2) lasts more than five seconds, and (3) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it unless the movement, blinking, or scrolling is part of an activity where it is essential; and'
+        2:
+            title: Auto-updating
+            description: 'For any auto-updating information that (1) starts automatically and (2) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it or to control the frequency of the update unless the auto-updating is part of an activity where it is essential.'
+2.2.3:
+    id: time-limits-no-exceptions
+    title: 'No Timing'
+    description: 'Timing is not an essential part of the event or activity presented by the content, except for non-interactive synchronized media and real-time events.'
+    uri: 'http://www.w3.org/TR/WCAG20/#time-limits-no-exceptions'
+2.2.4:
+    id: time-limits-postponed
+    title: Interruptions
+    description: 'Interruptions can be postponed or suppressed by the user, except interruptions involving an emergency.'
+    uri: 'http://www.w3.org/TR/WCAG20/#time-limits-postponed'
+2.2.5:
+    id: time-limits-server-timeout
+    title: Re-authenticating
+    description: 'When an authenticated session expires, the user can continue the activity without loss of data after re-authenticating.'
+    uri: 'http://www.w3.org/TR/WCAG20/#time-limits-server-timeout'
+2.3.1:
+    id: seizure-does-not-violate
+    title: 'Three Flashes or Below Threshold'
+    description: 'Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.'
+    uri: 'http://www.w3.org/TR/WCAG20/#seizure-does-not-violate'
+2.3.2:
+    id: seizure-three-times
+    title: 'Three Flashes'
+    description: 'Web pages do not contain anything that flashes more than three times in any one second period.'
+    uri: 'http://www.w3.org/TR/WCAG20/#seizure-three-times'
+2.4.1:
+    id: navigation-mechanisms-skip
+    title: 'Bypass Blocks'
+    description: 'A mechanism is available to bypass blocks of content that are repeated on multiple Web pages.'
+    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-skip'
+2.4.2:
+    id: navigation-mechanisms-title
+    title: 'Page Titled'
+    description: 'Web pages have titles that describe topic or purpose.'
+    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-title'
+2.4.3:
+    id: navigation-mechanisms-focus-order
+    title: 'Focus Order'
+    description: 'If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability.'
+    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-order'
+2.4.4:
+    id: navigation-mechanisms-refs
+    title: 'Link Purpose (In Context)'
+    description: 'The purpose of each link can be determined from the link text alone or from the link text together with its programmatically determined link context, except where the purpose of the link would be ambiguous to users in general.'
+    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-refs'
+2.4.5:
+    id: navigation-mechanisms-mult-loc
+    title: 'Multiple Ways'
+    description: 'More than one way is available to locate a Web page within a set of Web pages except where the Web Page is the result of, or a step in, a process.'
+    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-mult-loc'
+2.4.6:
+    id: navigation-mechanisms-descriptive
+    title: 'Headings and Labels'
+    description: 'Headings and labels describe topic or purpose.'
+    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-descriptive'
+2.4.7:
+    id: navigation-mechanisms-focus-visible
+    title: 'Focus Visible'
+    description: 'Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.'
+    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-visible'
+2.4.8:
+    id: navigation-mechanisms-location
+    title: Location
+    description: 'Information about the user''s location within a set of Web pages is available.'
+    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-location'
+2.4.9:
+    id: navigation-mechanisms-link
+    title: 'Link Purpose (Link Only)'
+    description: 'A mechanism is available to allow the purpose of each link to be identified from link text alone, except where the purpose of the link would be ambiguous to users in general.'
+    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-link'
+2.4.10:
+    id: navigation-mechanisms-headings
+    title: 'Section Headings'
+    description: 'Section headings are used to organize the content.'
+    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-headings'
+3.1.1:
+    id: meaning-doc-lang-id
+    title: 'Language of Page'
+    description: 'The default human language of each Web page can be programmatically determined.'
+    uri: 'http://www.w3.org/TR/WCAG20/#meaning-doc-lang-id'
+3.1.2:
+    id: meaning-other-lang-id
+    title: 'Language of Parts'
+    description: 'The human language of each passage or phrase in the  content can be programmatically determined except for proper names, technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediately surrounding text.'
+    uri: 'http://www.w3.org/TR/WCAG20/#meaning-other-lang-id'
+3.1.3:
+    id: meaning-idioms
+    title: 'Unusual Words'
+    description: 'A mechanism is available for identifying specific definitions of words or phrases used in an unusual or restricted way, including idioms and jargon.'
+    uri: 'http://www.w3.org/TR/WCAG20/#meaning-idioms'
+3.1.4:
+    id: meaning-located
+    title: Abbreviations
+    description: 'A mechanism for identifying the expanded form or meaning of abbreviations is available.'
+    uri: 'http://www.w3.org/TR/WCAG20/#meaning-located'
+3.1.5:
+    id: meaning-supplements
+    title: 'Reading Level'
+    description: 'When text requires reading ability more advanced than the lower secondary education level after removal of proper names and titles,  supplemental content, or a version that does not require reading ability more advanced than the lower secondary education level, is available.'
+    uri: 'http://www.w3.org/TR/WCAG20/#meaning-supplements'
+3.1.6:
+    id: meaning-pronunciation
+    title: Pronunciation
+    description: 'A mechanism is available for identifying specific pronunciation of words where meaning of the words, in context, is ambiguous without knowing the pronunciation.'
+    uri: 'http://www.w3.org/TR/WCAG20/#meaning-pronunciation'
+3.2.1:
+    id: consistent-behavior-receive-focus
+    title: 'On Focus'
+    description: 'When any user interface component receives focus, it does not  initiate a change of context.'
+    uri: 'http://www.w3.org/TR/WCAG20/#consistent-behavior-receive-focus'
+3.2.2:
+    id: consistent-behavior-unpredictable-change
+    title: 'On Input'
+    description: 'Changing the setting of any  user interface component does not automatically cause a change of context unless the user has been advised of the behavior before using the component.'
+    uri: 'http://www.w3.org/TR/WCAG20/#consistent-behavior-unpredictable-change'
+3.2.3:
+    id: consistent-behavior-consistent-locations
+    title: 'Consistent Navigation'
+    description: 'Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same relative order each time they are repeated, unless a change is initiated by the user.'
+    uri: 'http://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-locations'
+3.2.4:
+    id: consistent-behavior-consistent-functionality
+    title: 'Consistent Identification'
+    description: 'Components that have the same functionality within a set of Web pages are identified consistently.'
+    uri: 'http://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-functionality'
+3.2.5:
+    id: consistent-behavior-no-extreme-changes-context
+    title: 'Change on Request'
+    description: 'Changes of context are initiated only by user request or a mechanism is available to turn off such changes.'
+    uri: 'http://www.w3.org/TR/WCAG20/#consistent-behavior-no-extreme-changes-context'
+3.3.1:
+    id: minimize-error-identified
+    title: 'Error Identification'
+    description: 'If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.'
+    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-identified'
+3.3.2:
+    id: minimize-error-cues
+    title: 'Labels or Instructions'
+    description: 'Labels or instructions are provided when content requires user input.'
+    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-cues'
+3.3.3:
+    id: minimize-error-suggestions
+    title: 'Error Suggestion'
+    description: 'If an input error is automatically detected and suggestions for correction are known, then the suggestions are provided to the user, unless it would jeopardize the security or purpose of the content.'
+    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-suggestions'
+3.3.4:
+    id: minimize-error-reversible
+    title: 'Error Prevention (Legal, Financial, Data)'
+    description: 'For Web pages that cause legal commitments or financial transactions for the user to occur, that modify or delete user-controllable data in data storage systems, or that submit user test responses, at least one of the following is true:'
+    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-reversible'
+3.3.5:
+    id: minimize-error-context-help
+    title: Help
+    description: 'Context-sensitive help is available.'
+    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-context-help'
+3.3.6:
+    id: minimize-error-reversible-all
+    title: 'Error Prevention (All)'
+    description: 'For Web pages that require the user to submit information, at least one of the following is true:'
+    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-reversible-all'
+4.1.1:
+    id: ensure-compat-parses
+    title: Parsing
+    description: 'In content implemented using markup languages, elements have complete start and end tags, elements are nested according to their specifications, elements do not contain duplicate attributes, and any IDs are unique, except where the specifications allow these features.'
+    uri: 'http://www.w3.org/TR/WCAG20/#ensure-compat-parses'
+4.1.2:
+    id: ensure-compat-rsv
+    title: 'Name, Role, Value'
+    description: 'For all user interface components (including but not limited to: form elements, links and components generated by scripts), the name and role can be programmatically determined; states, properties, and values that can be set by the user can be programmatically set; and notification of changes to these items is available to user agents, including assistive technologies.'
+    uri: 'http://www.w3.org/TR/WCAG20/#ensure-compat-rsv'
