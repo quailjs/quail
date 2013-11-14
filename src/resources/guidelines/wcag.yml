@@ -1,397 +1,969 @@
-1.1.1:
-    id: text-equiv-all
-    title: 'Non-text Content'
-    description: 'All non-text content that is presented to the user has a text alternative that serves the equivalent purpose, except for the situations listed below.'
-    uri: 'http://www.w3.org/TR/WCAG20/#text-equiv-all'
-    items: 
-        1:
-            title: 'Controls, Input'
-            description: 'If non-text content is a control or accepts user input, then it has a name that describes its purpose.'
-        2:
-            title: 'Time-Based Media'
-            description: 'If non-text content is time-based media, then text alternatives at least provide descriptive identification of the non-text content. (Refer to  for additional requirements for media.)'
-        3:
-            title: Test
-            description: 'If non-text content is a test or exercise that would be invalid if presented in text, then text alternatives at least provide descriptive identification of the non-text content.'
-        4:
-            title: Sensory
-            description: 'If non-text content is primarily intended to create a specific sensory experience, then text alternatives at least provide descriptive identification of the non-text content.'
-        5:
-            title: CAPTCHA
-            description: "If the purpose of non-text content is to confirm that content is being accessed by a person rather than a computer, then text alternatives that identify and describe the purpose of the non-text content are provided, and alternative forms of CAPTCHA using output modes for different types of sensory perception are provided to accommodate different disabilities."
-        6:
-            title: 'Decoration, Formatting, Invisible'
-            description: 'If non-text content is pure decoration, is used only for visual formatting, or is not presented to users, then it is implemented in a way that it can be ignored by assistive technology.'
-1.2.1:
-    id: media-equiv-av-only-alt
-    title: 'Audio-only and Video-only (Prerecorded)'
-    description: 'For prerecorded audio-only and prerecorded video-only media, the following are true, except when the audio or video is a media alternative for text and is clearly labeled as such:'
-    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-av-only-alt'
-    items:
-        1:
-            title: 'Prerecorded Audio-only'
-            description: 'An alternative for time-based media is provided that presents equivalent information for prerecorded audio-only content.'
-        2:
-            title: 'Prerecorded Video-only'
-            description: 'Either an alternative for time-based media or an audio track is provided that presents equivalent information for prerecorded video-only content.'
-1.2.2:
-    id: media-equiv-captions
-    title: 'Captions (Prerecorded)'
-    description: 'Captions are provided for all prerecorded audio content in synchronized media, except when the media is a media alternative for text and is clearly labeled as such.'
-    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-captions'
-1.2.3:
-    id: media-equiv-audio-desc
-    title: 'Audio Description or Media Alternative (Prerecorded)'
-    description: 'An alternative for time-based media or audio description of the prerecorded video content is provided for synchronized media, except when the media is a media alternative for text and is clearly labeled as such.'
-    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-audio-desc'
-1.2.4:
-    id: media-equiv-real-time-captions
-    title: 'Captions (Live)'
-    description: 'Captions are provided for all live audio content in synchronized media.'
-    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-real-time-captions'
-1.2.5:
-    id: media-equiv-audio-desc-only
-    title: 'Audio Description (Prerecorded)'
-    description: 'Audio description is provided for all prerecorded video content in synchronized media.'
-    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-audio-desc-only'
-1.2.6:
-    id: media-equiv-sign
-    title: 'Sign Language (Prerecorded)'
-    description: 'Sign language interpretation is provided for all prerecorded audio content in synchronized media.'
-    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-sign'
-1.2.7:
-    id: media-equiv-extended-ad
-    title: 'Extended Audio Description (Prerecorded)'
-    description: 'Where pauses in foreground audio are insufficient to allow audio descriptions to convey the sense of the video, extended audio description is provided for all prerecorded video content in synchronized media.'
-    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-extended-ad'
-1.2.8:
-    id: media-equiv-text-doc
-    title: 'Media Alternative (Prerecorded)'
-    description: 'An alternative for time-based media is provided for all prerecorded synchronized media and for all prerecorded video-only media.'
-    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-text-doc'
-1.2.9:
-    id: media-equiv-live-audio-only
-    title: 'Audio-only (Live)'
-    description: 'An alternative for time-based media that presents equivalent information for live audio-only content is provided.'
-    uri: 'http://www.w3.org/TR/WCAG20/#media-equiv-live-audio-only'
-1.3.1:
-    id: content-structure-separation-programmatic
-    title: 'Info and Relationships'
-    description: 'Information, structure,  and relationships conveyed through presentation can be programmatically determined or are available in text.'
-    uri: 'http://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic'
-1.3.2:
-    id: content-structure-separation-sequence
-    title: 'Meaningful Sequence'
-    description: 'When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined.'
-    uri: 'http://www.w3.org/TR/WCAG20/#content-structure-separation-sequence'
-1.3.3:
-    id: content-structure-separation-understanding
-    title: 'Sensory Characteristics'
-    description: "Instructions provided for understanding and operating content do not rely solely on sensory characteristics of components such as shape, size, visual location, orientation, or sound."
-    uri: 'http://www.w3.org/TR/WCAG20/#content-structure-separation-understanding'
-1.4.1:
-    id: visual-audio-contrast-without-color
-    title: 'Use of Color'
-    description: 'Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.'
-    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-without-color'
-1.4.2:
-    id: visual-audio-contrast-dis-audio
-    title: 'Audio Control'
-    description: 'If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.'
-    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-dis-audio'
-1.4.3:
-    id: visual-audio-contrast-contrast
-    title: 'Contrast (Minimum)'
-    description: 'The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following:'
-    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast'
-    items:
-        1:
-            title: 'Large Text'
-            description: 'Large-scale text and images of large-scale text have a contrast ratio of at least 3:1;'
-        2:
-            title: Incidental
-            description: 'Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.'
-        3:
-            title: Logotypes
-            description: 'Text that is part of a logo or brand name has no minimum contrast requirement.'
-1.4.4:
-    id: visual-audio-contrast-scale
-    title: 'Resize text'
-    description: 'Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.'
-    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale'
-1.4.5:
-    id: visual-audio-contrast-text-presentation
-    title: 'Images of Text'
-    description: 'If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text except for the following:'
-    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-presentation'
-    items:
-        1:
-            title: 'Customizable'
-            description: 'The image of text can be visually customized to the user''s requirements;'
-        2:
-            title: 'Essential'
-            description: 'A particular presentation of text is essential to the information being conveyed.'
-1.4.6:
-    id: visual-audio-contrast7
-    title: 'Contrast (Enhanced)'
-    description: 'The visual presentation of text and images of text has a contrast ratio of at least 7:1, except for the following:'
-    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast7'
-    items:
-        1:
-            title: 'Large Text'
-            description: 'Large-scale text and images of large-scale text have a contrast ratio of at least 4.5:1;'
-        2:
-            title: Incidental
-            description: 'Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.'
-        3:
-            title: Logotypes
-            description: 'Text that is part of a logo or brand name has no minimum contrast requirement.'
-1.4.7:
-    id: visual-audio-contrast-noaudio
-    title: 'Low or No Background Audio'
-    description: 'For prerecorded audio-only content that (1) contains primarily speech in the foreground, (2) is not an audio CAPTCHA or audio logo, and (3) is not vocalization intended to be primarily musical expression such as singing or rapping, at least one of the following is true:'
-    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-noaudio'
-    items:
-        1:
-            title: 'No Background'
-            description: 'The audio does not contain background sounds.'
-        2:
-            title: 'Turn Off'
-            description: 'The background sounds can be turned off.'
-        3:
-            title: '20 dB'
-            description: "The background sounds are at least 20 decibels lower than the foreground speech content, with the exception of occasional sounds that last for only one or two seconds."
-        4:
-            title: ''
-            description: 'Per the definition of "decibel," background sound that meets this requirement will be approximately four times quieter than the foreground speech content.'
-1.4.8:
-    id: visual-audio-contrast-visual-presentation
-    title: 'Visual Presentation'
-    description: 'For the visual presentation of blocks of text, a mechanism is available to achieve the following:'
-    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-visual-presentation'
-1.4.9:
-    id: visual-audio-contrast-text-images
-    title: 'Images of Text (No Exception)'
-    description: 'Images of text are only used for pure decoration or where a particular presentation of text is essential to the information being conveyed.'
-    uri: 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-images'
-2.1.1:
-    id: keyboard-operation-keyboard-operable
-    title: Keyboard
-    description: 'All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes, except where the underlying function requires input that depends on the path of the user''s movement and not just the endpoints.'
-    uri: 'http://www.w3.org/TR/WCAG20/#keyboard-operation-keyboard-operable'
-2.1.2:
-    id: keyboard-operation-trapping
-    title: 'No Keyboard Trap'
-    description: 'If keyboard focus can be moved to a component of the page using a keyboard interface, then focus can be moved away from that component using only a keyboard interface, and, if it requires more than unmodified arrow or tab keys or other standard exit methods, the user is advised of the method for moving focus away.'
-    uri: 'http://www.w3.org/TR/WCAG20/#keyboard-operation-trapping'
-2.1.3:
-    id: keyboard-operation-all-funcs
-    title: 'Keyboard (No Exception)'
-    description: 'All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes.'
-    uri: 'http://www.w3.org/TR/WCAG20/#keyboard-operation-all-funcs'
-2.2.1:
-    id: time-limits-required-behaviors
-    title: 'Timing Adjustable'
-    description: 'For each time limit that is  set by the content, at least one of the following is true:'
-    uri: 'http://www.w3.org/TR/WCAG20/#time-limits-required-behaviors'
-    items:
-        1:
-            title: 'Turn off'
-            description: "The user is allowed to turn off the time limit before encountering it;"
-        2:
-            title: Adjust
-            description: 'The user is allowed to adjust the time limit before encountering it over a wide range that is at least ten times the length of the default setting; or'
-        3:
-            title: Extend
-            description: 'The user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action (for example, "press the space bar"), and the user is allowed to extend the time limit at least ten times; or'
-        4:
-            title: 'Real-time Exception'
-            description: 'The time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible; or'
-        5:
-            title: 'Essential Exception'
-            description: 'The time limit is essential and extending it would invalidate the activity; or'
-        6:
-            title: '20 Hour Exception'
-            description: 'The time limit is longer than 20 hours.'
-2.2.2:
-    id: time-limits-pause
-    title: 'Pause, Stop, Hide'
-    description: 'For moving, blinking, scrolling, or auto-updating information, all of the following are true:'
-    uri: 'http://www.w3.org/TR/WCAG20/#time-limits-pause'
-    items:
-        1:
-            title: 'Moving, blinking, scrolling'
-            description: 'For any moving, blinking or scrolling information that (1) starts automatically, (2) lasts more than five seconds, and (3) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it unless the movement, blinking, or scrolling is part of an activity where it is essential; and'
-        2:
-            title: Auto-updating
-            description: 'For any auto-updating information that (1) starts automatically and (2) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it or to control the frequency of the update unless the auto-updating is part of an activity where it is essential.'
-2.2.3:
-    id: time-limits-no-exceptions
-    title: 'No Timing'
-    description: 'Timing is not an essential part of the event or activity presented by the content, except for non-interactive synchronized media and real-time events.'
-    uri: 'http://www.w3.org/TR/WCAG20/#time-limits-no-exceptions'
-2.2.4:
-    id: time-limits-postponed
-    title: Interruptions
-    description: 'Interruptions can be postponed or suppressed by the user, except interruptions involving an emergency.'
-    uri: 'http://www.w3.org/TR/WCAG20/#time-limits-postponed'
-2.2.5:
-    id: time-limits-server-timeout
-    title: Re-authenticating
-    description: 'When an authenticated session expires, the user can continue the activity without loss of data after re-authenticating.'
-    uri: 'http://www.w3.org/TR/WCAG20/#time-limits-server-timeout'
-2.3.1:
-    id: seizure-does-not-violate
-    title: 'Three Flashes or Below Threshold'
-    description: 'Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.'
-    uri: 'http://www.w3.org/TR/WCAG20/#seizure-does-not-violate'
-2.3.2:
-    id: seizure-three-times
-    title: 'Three Flashes'
-    description: 'Web pages do not contain anything that flashes more than three times in any one second period.'
-    uri: 'http://www.w3.org/TR/WCAG20/#seizure-three-times'
-2.4.1:
-    id: navigation-mechanisms-skip
-    title: 'Bypass Blocks'
-    description: 'A mechanism is available to bypass blocks of content that are repeated on multiple Web pages.'
-    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-skip'
-2.4.2:
-    id: navigation-mechanisms-title
-    title: 'Page Titled'
-    description: 'Web pages have titles that describe topic or purpose.'
-    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-title'
-2.4.3:
-    id: navigation-mechanisms-focus-order
-    title: 'Focus Order'
-    description: 'If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability.'
-    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-order'
-2.4.4:
-    id: navigation-mechanisms-refs
-    title: 'Link Purpose (In Context)'
-    description: 'The purpose of each link can be determined from the link text alone or from the link text together with its programmatically determined link context, except where the purpose of the link would be ambiguous to users in general.'
-    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-refs'
-2.4.5:
-    id: navigation-mechanisms-mult-loc
-    title: 'Multiple Ways'
-    description: 'More than one way is available to locate a Web page within a set of Web pages except where the Web Page is the result of, or a step in, a process.'
-    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-mult-loc'
-2.4.6:
-    id: navigation-mechanisms-descriptive
-    title: 'Headings and Labels'
-    description: 'Headings and labels describe topic or purpose.'
-    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-descriptive'
-2.4.7:
-    id: navigation-mechanisms-focus-visible
-    title: 'Focus Visible'
-    description: 'Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.'
-    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-visible'
-2.4.8:
-    id: navigation-mechanisms-location
-    title: Location
-    description: 'Information about the user''s location within a set of Web pages is available.'
-    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-location'
-2.4.9:
-    id: navigation-mechanisms-link
-    title: 'Link Purpose (Link Only)'
-    description: 'A mechanism is available to allow the purpose of each link to be identified from link text alone, except where the purpose of the link would be ambiguous to users in general.'
-    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-link'
-2.4.10:
-    id: navigation-mechanisms-headings
-    title: 'Section Headings'
-    description: 'Section headings are used to organize the content.'
-    uri: 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-headings'
-3.1.1:
-    id: meaning-doc-lang-id
-    title: 'Language of Page'
-    description: 'The default human language of each Web page can be programmatically determined.'
-    uri: 'http://www.w3.org/TR/WCAG20/#meaning-doc-lang-id'
-3.1.2:
-    id: meaning-other-lang-id
-    title: 'Language of Parts'
-    description: 'The human language of each passage or phrase in the  content can be programmatically determined except for proper names, technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediately surrounding text.'
-    uri: 'http://www.w3.org/TR/WCAG20/#meaning-other-lang-id'
-3.1.3:
-    id: meaning-idioms
-    title: 'Unusual Words'
-    description: 'A mechanism is available for identifying specific definitions of words or phrases used in an unusual or restricted way, including idioms and jargon.'
-    uri: 'http://www.w3.org/TR/WCAG20/#meaning-idioms'
-3.1.4:
-    id: meaning-located
-    title: Abbreviations
-    description: 'A mechanism for identifying the expanded form or meaning of abbreviations is available.'
-    uri: 'http://www.w3.org/TR/WCAG20/#meaning-located'
-3.1.5:
-    id: meaning-supplements
-    title: 'Reading Level'
-    description: 'When text requires reading ability more advanced than the lower secondary education level after removal of proper names and titles,  supplemental content, or a version that does not require reading ability more advanced than the lower secondary education level, is available.'
-    uri: 'http://www.w3.org/TR/WCAG20/#meaning-supplements'
-3.1.6:
-    id: meaning-pronunciation
-    title: Pronunciation
-    description: 'A mechanism is available for identifying specific pronunciation of words where meaning of the words, in context, is ambiguous without knowing the pronunciation.'
-    uri: 'http://www.w3.org/TR/WCAG20/#meaning-pronunciation'
-3.2.1:
-    id: consistent-behavior-receive-focus
-    title: 'On Focus'
-    description: 'When any user interface component receives focus, it does not  initiate a change of context.'
-    uri: 'http://www.w3.org/TR/WCAG20/#consistent-behavior-receive-focus'
-3.2.2:
-    id: consistent-behavior-unpredictable-change
-    title: 'On Input'
-    description: 'Changing the setting of any  user interface component does not automatically cause a change of context unless the user has been advised of the behavior before using the component.'
-    uri: 'http://www.w3.org/TR/WCAG20/#consistent-behavior-unpredictable-change'
-3.2.3:
-    id: consistent-behavior-consistent-locations
-    title: 'Consistent Navigation'
-    description: 'Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same relative order each time they are repeated, unless a change is initiated by the user.'
-    uri: 'http://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-locations'
-3.2.4:
-    id: consistent-behavior-consistent-functionality
-    title: 'Consistent Identification'
-    description: 'Components that have the same functionality within a set of Web pages are identified consistently.'
-    uri: 'http://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-functionality'
-3.2.5:
-    id: consistent-behavior-no-extreme-changes-context
-    title: 'Change on Request'
-    description: 'Changes of context are initiated only by user request or a mechanism is available to turn off such changes.'
-    uri: 'http://www.w3.org/TR/WCAG20/#consistent-behavior-no-extreme-changes-context'
-3.3.1:
-    id: minimize-error-identified
-    title: 'Error Identification'
-    description: 'If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.'
-    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-identified'
-3.3.2:
-    id: minimize-error-cues
-    title: 'Labels or Instructions'
-    description: 'Labels or instructions are provided when content requires user input.'
-    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-cues'
-3.3.3:
-    id: minimize-error-suggestions
-    title: 'Error Suggestion'
-    description: 'If an input error is automatically detected and suggestions for correction are known, then the suggestions are provided to the user, unless it would jeopardize the security or purpose of the content.'
-    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-suggestions'
-3.3.4:
-    id: minimize-error-reversible
-    title: 'Error Prevention (Legal, Financial, Data)'
-    description: 'For Web pages that cause legal commitments or financial transactions for the user to occur, that modify or delete user-controllable data in data storage systems, or that submit user test responses, at least one of the following is true:'
-    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-reversible'
-3.3.5:
-    id: minimize-error-context-help
-    title: Help
-    description: 'Context-sensitive help is available.'
-    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-context-help'
-3.3.6:
-    id: minimize-error-reversible-all
-    title: 'Error Prevention (All)'
-    description: 'For Web pages that require the user to submit information, at least one of the following is true:'
-    uri: 'http://www.w3.org/TR/WCAG20/#minimize-error-reversible-all'
-4.1.1:
-    id: ensure-compat-parses
-    title: Parsing
-    description: 'In content implemented using markup languages, elements have complete start and end tags, elements are nested according to their specifications, elements do not contain duplicate attributes, and any IDs are unique, except where the specifications allow these features.'
-    uri: 'http://www.w3.org/TR/WCAG20/#ensure-compat-parses'
-4.1.2:
-    id: ensure-compat-rsv
-    title: 'Name, Role, Value'
-    description: 'For all user interface components (including but not limited to: form elements, links and components generated by scripts), the name and role can be programmatically determined; states, properties, and values that can be set by the user can be programmatically set; and notification of changes to these items is available to user agents, including assistive technologies.'
-    uri: 'http://www.w3.org/TR/WCAG20/#ensure-compat-rsv'
+---
+  1.1.1: 
+    id: "text-equiv-all"
+    title: "Non-text Content"
+    description: "All non-text content that is presented to the user has a text alternative that serves the equivalent purpose, except for the situations listed below."
+    uri: "http://www.w3.org/TR/WCAG20/#text-equiv-all"
+    techniques: 
+      C9: "Using CSS to include decorative images"
+      C18: "Using CSS margin and padding rules instead of spacer images for layout design"
+      F3: "Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information"
+      F13: "Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not include information that is conveyed by color differences in the image"
+      F20: "Failure of Success Criterion 1.1.1 and 4.1.2 due to not updating text alternatives when changes to non-text content occur"
+      F30: "Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)"
+      F38: "Failure of Success Criterion 1.1.1 due to omitting the alt-attribute for non-text content used for decorative purposes only in HTML"
+      F39: "Failure of Success Criterion 1.1.1 due to providing a text alternative that is not null (e.g., alt='spacer' or alt='image') for images that should be ignored by assistive technology"
+      F65: "Failure of Success Criterion 1.1.1 due to omitting the alt attribute on img elements, area elements, and input elements of type 'image'"
+      F67: "Failure of Success Criterion 1.1.1 and 1.2.1 due to providing long descriptions for non-text content that does not serve the same purpose or does not present the same information"
+      F71: "Failure of Success Criterion 1.1.1 due to using text look-alikes to represent text without providing a text alternative"
+      F72: "Failure of Success Criterion 1.1.1 due to using ASCII art without providing a text alternative"
+      FLASH1: "Setting the name property for a non-text object"
+      FLASH2: "Setting the description property for a non-text object in Flash"
+      FLASH3: "Marking objects in Flash so that they can be ignored by AT"
+      FLASH5: "Combining adjacent image and text buttons for the same resource"
+      FLASH6: "Creating accessible hotspots using invisible buttons"
+      FLASH11: "Providing a longer text description of an object"
+      FLASH25: "Labeling a form control by setting its accessible name"
+      FLASH27: "Providing button labels that describe the purpose of a button"
+      FLASH28: "Providing text alternatives for ASCII art, emoticons, and leetspeak in Flash"
+      FLASH29: "Setting the label property for form components"
+      FLASH30: "Specifying accessible names for image buttons"
+      FLASH32: "Using auto labeling to associate text labels with form controls"
+      G68: "Providing a short text alternative that describes the purpose of live audio-only and live video-only content"
+      G73: "Providing a long description in another location with a link to it that is immediately adjacent to the non-text content"
+      G74: "Providing a long description in text near the non-text content, with a reference to the location of the long description in the short description"
+      G82: "Providing a text alternative that identifies the purpose of the non-text content"
+      G92: "Providing long description for non-text content that serves the same purpose and presents the same information"
+      G94: "Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content"
+      G95: "Providing short text alternatives that provide a brief description of the non-text content"
+      G100: "Providing a short text alternative which is the accepted name or a descriptive name of the non-text content"
+      G143: "Providing a text alternative that describes the purpose of the CAPTCHA"
+      G144: "Ensuring that the Web Page contains another CAPTCHA serving the same purpose using a different modality"
+      G196: "Using a text alternative on one item within a group of images that describes all items in the group"
+      H2: "Combining adjacent image and text links for the same resource"
+      H24: " Providing text alternatives for the area elements of image maps "
+      H27: "Providing text and non-text alternatives for object"
+      H30: "Providing link text that describes the purpose of a link for anchor elements"
+      H35: " Providing text alternatives on applet elements "
+      H36: "Using alt attributes on images used as submit buttons"
+      H37: "Using alt attributes on img elements"
+      H44: "Using label elements to associate text labels with form controls"
+      H45: "Using longdesc"
+      H46: "Using noembed with embed"
+      H53: "Using the body of the object element"
+      H65: "Using the title attribute to identify form controls when the label element cannot be used"
+      H67: "Using null alt text and no title attribute on img elements for images that AT should ignore"
+      H86: "Providing text alternatives for ASCII art, emoticons, and leetspeak"
+      SL5: "Defining a Focusable Image Class for Silverlight"
+      SL8: "Displaying HelpText in Silverlight User Interfaces"
+      SL18: "Providing Text Equivalent for Nontext Silverlight Controls With AutomationProperties.Name"
+      SL19: "Providing User Instructions With AutomationProperties.HelpText in Silverlight"
+      SL26: "Using LabeledBy to Associate Labels and Targets in Silverlight"
+      SL30: "Using Silverlight Control Compositing and AutomationProperties.Name"
+  1.2.1: 
+    id: "media-equiv-av-only-alt"
+    title: "Audio-only and Video-only (Prerecorded)"
+    description: "For prerecorded audio-only and prerecorded video-only media, the following are true, except when the audio or video is a media alternative for text and is clearly labeled as such:"
+    uri: "http://www.w3.org/TR/WCAG20/#media-equiv-av-only-alt"
+    techniques: 
+      F30: "Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)"
+      F67: "Failure of Success Criterion 1.1.1 and 1.2.1 due to providing long descriptions for non-text content that does not serve the same purpose or does not present the same information"
+      G158: "Providing an alternative for time-based media for audio-only content"
+      G159: "Providing an alternative for time-based media for video-only content"
+      G166: "Providing audio that describes the important video content and describing it as such"
+      SL17: "Providing Static Alternative Content for Silverlight Media Playing in a MediaElement"
+  1.2.2: 
+    id: "media-equiv-captions"
+    title: "Captions (Prerecorded)"
+    description: "Captions are provided for all prerecorded audio content in synchronized media, except when the media is a media alternative for text and is clearly labeled as such."
+    uri: "http://www.w3.org/TR/WCAG20/#media-equiv-captions"
+    techniques: 
+      F8: "Failure of Success Criterion 1.2.2 due to captions omitting some dialogue or important sound effects"
+      F74: "Failure of  Success Criterion 1.2.2 and 1.2.8 due to not labeling a synchronized media alternative to text as an alternative"
+      F75: "Failure of Success Criterion 1.2.2 by providing synchronized media without captions when the synchronized media presents more information than is presented on the page"
+      FLASH9: "Applying captions to prerecorded synchronized media"
+      G87: "Providing closed captions"
+      G93: "Providing open (always visible) captions"
+      SL16: "Providing Script-Embedded Text Captions for MediaElement Content"
+      SL28: "Using Separate Text-Format Text Captions for MediaElement Content"
+      SM11: "Providing captions through synchronized text streams in SMIL 1.0"
+      SM12: "Providing captions through synchronized text streams in SMIL 2.0"
+  1.2.3: 
+    id: "media-equiv-audio-desc"
+    title: "Audio Description or Media Alternative (Prerecorded)"
+    description: "An alternative for time-based media or audio description of the prerecorded video content is provided for synchronized media, except when the media is a media alternative for text and is clearly labeled as such."
+    uri: "http://www.w3.org/TR/WCAG20/#media-equiv-audio-desc"
+    techniques: 
+      FLASH26: "Applying audio descriptions to Flash video"
+      G8: "Providing a movie with extended audio descriptions"
+      G58: "Placing a link to the alternative for time-based media immediately next to the non-text content"
+      G69: "Providing an alternative for time based media"
+      G78: "Providing a second, user-selectable, audio track that includes audio descriptions"
+      G173: "Providing a version of a movie with audio descriptions"
+      G203: "Using a static text alternative to describe a talking head video"
+      H53: "Using the body of the object element"
+      SL1: "Accessing Alternate Audio Tracks in Silverlight Media"
+      SL17: "Providing Static Alternative Content for Silverlight Media Playing in a MediaElement"
+      SM1: "Adding extended audio description in SMIL 1.0"
+      SM2: "Adding extended audio description in SMIL 2.0"
+      SM6: "Providing audio description in SMIL 1.0"
+      SM7: "Providing audio description in SMIL 2.0"
+  1.2.4: 
+    id: "media-equiv-real-time-captions"
+    title: "Captions (Live)"
+    description: "Captions are provided for all live audio content in synchronized media."
+    uri: "http://www.w3.org/TR/WCAG20/#media-equiv-real-time-captions"
+    techniques: 
+      G9: "Creating captions for live synchronized media"
+      G87: "Providing closed captions"
+      G93: "Providing open (always visible) captions"
+      SM11: "Providing captions through synchronized text streams in SMIL 1.0"
+      SM12: "Providing captions through synchronized text streams in SMIL 2.0"
+  1.2.5: 
+    id: "media-equiv-audio-desc-only"
+    title: "Audio Description (Prerecorded)"
+    description: "Audio description is provided for all prerecorded video content in synchronized media."
+    uri: "http://www.w3.org/TR/WCAG20/#media-equiv-audio-desc-only"
+    techniques: 
+      FLASH26: "Applying audio descriptions to Flash video"
+      G8: "Providing a movie with extended audio descriptions"
+      G78: "Providing a second, user-selectable, audio track that includes audio descriptions"
+      G173: "Providing a version of a movie with audio descriptions"
+      G203: "Using a static text alternative to describe a talking head video"
+      SL1: "Accessing Alternate Audio Tracks in Silverlight Media"
+      SM1: "Adding extended audio description in SMIL 1.0"
+      SM2: "Adding extended audio description in SMIL 2.0"
+      SM6: "Providing audio description in SMIL 1.0"
+      SM7: "Providing audio description in SMIL 2.0"
+  1.2.6: 
+    id: "media-equiv-sign"
+    title: "Sign Language (Prerecorded)"
+    description: "Sign language interpretation is provided for all prerecorded audio content in synchronized media."
+    uri: "http://www.w3.org/TR/WCAG20/#media-equiv-sign"
+    techniques: 
+      G54: "Including a sign language interpreter in the video stream"
+      G81: "Providing a synchronized video of the sign language interpreter that can be displayed in a different viewport or overlaid on the image by the player"
+      SM13: "Providing sign language interpretation through synchronized video streams in SMIL 1.0"
+      SM14: "Providing sign language interpretation through synchronized video streams in SMIL 2.0"
+  1.2.7: 
+    id: "media-equiv-extended-ad"
+    title: "Extended Audio Description (Prerecorded)"
+    description: "Where pauses in foreground audio are insufficient to allow audio descriptions to convey the sense of the video, extended audio description is provided for all prerecorded video content in synchronized media."
+    uri: "http://www.w3.org/TR/WCAG20/#media-equiv-extended-ad"
+    techniques: 
+      G8: "Providing a movie with extended audio descriptions"
+      SM1: "Adding extended audio description in SMIL 1.0"
+      SM2: "Adding extended audio description in SMIL 2.0"
+  1.2.8: 
+    id: "media-equiv-text-doc"
+    title: "Media Alternative (Prerecorded)"
+    description: "An alternative for time-based media is provided for all prerecorded synchronized media and for all prerecorded video-only media."
+    uri: "http://www.w3.org/TR/WCAG20/#media-equiv-text-doc"
+    techniques: 
+      F74: "Failure of  Success Criterion 1.2.2 and 1.2.8 due to not labeling a synchronized media alternative to text as an alternative"
+      G58: "Placing a link to the alternative for time-based media immediately next to the non-text content"
+      G69: "Providing an alternative for time based media"
+      G159: "Providing an alternative for time-based media for video-only content"
+      H46: "Using noembed with embed"
+      H53: "Using the body of the object element"
+      SL17: "Providing Static Alternative Content for Silverlight Media Playing in a MediaElement"
+  1.2.9: 
+    id: "media-equiv-live-audio-only"
+    title: "Audio-only (Live)"
+    description: "An alternative for time-based media that presents equivalent information for live audio-only content is provided."
+    uri: "http://www.w3.org/TR/WCAG20/#media-equiv-live-audio-only"
+    techniques: 
+      G150: "Providing text based alternatives for live audio-only content"
+      G151: "Providing a link to a text transcript of a prepared statement or script if the script is followed"
+      G157: "Incorporating a live audio captioning service into a Web page"
+  1.3.1: 
+    id: "content-structure-separation-programmatic"
+    title: "Info and Relationships"
+    description: "Information, structure,  and relationships conveyed through presentation can be programmatically determined or are available in text."
+    uri: "http://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic"
+    techniques: 
+      ARIA1: "Using the aria-describedby property to provide a descriptive label for input controls"
+      ARIA2: "Identifying required fields with the   aria-required property"
+      C22: "Using CSS to control visual presentation of text"
+      F2: "Failure of Success Criterion 1.3.1 due to using changes in text presentation to convey information without using the appropriate markup or text"
+      F17: "Failure of Success Criterion 1.3.1 and 4.1.1 due to insufficient information in DOM to determine one-to-one relationships (e.g., between labels with same id) in HTML"
+      F33: "Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to create multiple columns in plain text content"
+      F34: "Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to format tables in plain text content"
+      F42: "Failure of Success Criterion 1.3.1 and 2.1.1 due to using scripting events to emulate links in a way that is not programmatically determinable"
+      F43: "Failure of Success Criterion 1.3.1 due to using structural markup in a way that does not represent relationships in the content"
+      F46: "Failure of Success Criterion 1.3.1 due to using th elements, caption elements, or non-empty summary attributes in layout tables"
+      F48: "Failure of Success Criterion 1.3.1 due to using the pre element to markup tabular information"
+      F62: "Failure of Success Criterion 1.3.1 and 4.1.1 due to insufficient information in DOM to determine specific relationships in XML"
+      F68: "Failure of Success Criterion 1.3.1 and 4.1.2 due to the association of label and user interface controls not being programmatically determinable"
+      F87: "Failure of Success Criterion 1.3.1 due to inserting non-decorative content by using :before and :after pseudo-elements and the 'content' property in CSS"
+      F90: "Failure of Success Criterion 1.3.1 for incorrectly associating table headers and content via the headers and id attributes"
+      F91: "Failure of Success Criterion 1.3.1 for not correctly marking up table headers"
+      FLASH8: "Adding a group name to the accessible name of a form control"
+      FLASH21: "Using the DataGrid component to associate column headers with cells"
+      FLASH23: "Adding summary information to a DataGrid"
+      FLASH25: "Labeling a form control by setting its accessible name"
+      FLASH29: "Setting the label property for form components"
+      FLASH31: "Specifying caption text for a DataGrid"
+      FLASH32: "Using auto labeling to associate text labels with form controls"
+      G115: "Using semantic elements to mark up structure"
+      G117: "Using text to convey information that is conveyed by variations in presentation of text"
+      G138: "Using semantic markup whenever color cues are used"
+      G140: "Separating information and structure from presentation to enable different presentations"
+      G141: "Organizing a page using headings"
+      G162: "Positioning labels to maximize predictability of relationships"
+      H39: "Using caption elements to associate data table captions with data tables"
+      H42: "Using h1-h6 to identify headings"
+      H43: "Using id and headers attributes to associate data cells with header cells in data tables"
+      H44: "Using label elements to associate text labels with form controls"
+      H48: "Using ol, ul and dl for lists or groups of links"
+      H49: "Using semantic markup to mark emphasized or special text"
+      H51: "Using table markup to present tabular information"
+      H63: "Using the scope attribute to associate header cells and data cells in data tables"
+      H65: "Using the title attribute to identify form controls when the label element cannot be used"
+      H71: " Providing a description for groups of form controls using fieldset and legend elements "
+      H73: "Using the summary attribute of the table element to give an overview of data tables"
+      H85: "Using OPTGROUP to group OPTION elements inside a SELECT"
+      T1: "Using standard text formatting conventions for paragraphs"
+      T2: "Using standard text formatting conventions for lists"
+      T3: "Using standard text formatting conventions for headings"
+      SCR21: "Using functions of the Document Object Model (DOM) to add content to a page"
+      SL20: "Relying on Silverlight AutomationPeer Behavior to Set AutomationProperties.Name"
+      SL26: "Using LabeledBy to Associate Labels and Targets in Silverlight"
+  1.3.2: 
+    id: "content-structure-separation-sequence"
+    title: "Meaningful Sequence"
+    description: "When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined."
+    uri: "http://www.w3.org/TR/WCAG20/#content-structure-separation-sequence"
+    techniques: 
+      C6: "Positioning content based on structural markup"
+      C8: "Using CSS letter-spacing to control spacing within a word"
+      C27: "Making the DOM order match the visual order"
+      F1: "Failure of Success Criterion 1.3.2 due to changing the meaning of content by positioning information with CSS"
+      F32: "Failure of Success Criterion 1.3.2 due to using white space characters to control spacing within a word"
+      F33: "Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to create multiple columns in plain text content"
+      F34: "Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to format tables in plain text content"
+      F49: " Failure of Success Criterion 1.3.2 due to using an HTML layout table that does not make sense when linearized  "
+      FLASH15: "Using the tabIndex property to specify a logical reading order and a logical tab order in Flash"
+      G57: "Ordering the content in a meaningful sequence"
+      H34: "Using a Unicode right-to-left mark (RLM) or left-to-right mark (LRM) to mix text direction inline"
+      H56: "Using the dir attribute on an inline element to resolve problems with nested directional runs"
+      SL34: "Using the Silverlight Default Tab Sequence and Altering Tab Sequences With Properties"
+  1.3.3: 
+    id: "content-structure-separation-understanding"
+    title: "Sensory Characteristics"
+    description: "Instructions provided for understandingand operating content do not rely solely on sensory characteristics of components such as shape, size, visual location, orientation, or sound."
+    uri: "http://www.w3.org/TR/WCAG20/#content-structure-separation-understanding"
+    techniques: 
+      F14: "Failure of Success Criterion 1.3.3 due to identifying content only by its shape or location"
+      F26: " Failure of Success Criterion 1.3.3 due to using a graphical symbol alone to convey information"
+      G96: "Providing textual identification of items that otherwise rely only on sensory information to be understood"
+  1.4.1: 
+    id: "visual-audio-contrast-without-color"
+    title: "Use of Color"
+    description: "Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element."
+    uri: "http://www.w3.org/TR/WCAG20/#visual-audio-contrast-without-color"
+    techniques: 
+      C15: "Using CSS to change the presentation of a user interface component when it receives focus"
+      F13: "Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not include information that is conveyed by color differences in the image"
+      F73: "Failure of Success Criterion 1.4.1 due to creating links that are not visually evident without color vision"
+      F81: "Failure of Success Criterion 1.4.1 due to identifying required or error fields using color differences only"
+      G14: "Ensuring that information conveyed by color differences is also available in text"
+      G111: "Using color and pattern"
+      G182: "Ensuring that additional visual cues are available when text color differences are used to convey information"
+      G183: "Using a contrast ratio of 3:1 with surrounding text and providing additional visual cues on focus for links or controls where color alone is used to identify them"
+      H92: "Including a text cue for colored form control labels"
+  1.4.2: 
+    id: "visual-audio-contrast-dis-audio"
+    title: "Audio Control"
+    description: "If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level."
+    uri: "http://www.w3.org/TR/WCAG20/#visual-audio-contrast-dis-audio"
+    techniques: 
+      F23: "Failure of  1.4.2 due to playing a sound longer than 3 seconds where there is no mechanism to turn it off"
+      FLASH18: "Providing a control to turn off sounds that play automatically in Flash"
+      FLASH34: "Turning off sounds that play automatically when an assistive technology is detected"
+      G60: "Playing a sound that turns off automatically within three seconds"
+      G170: "Providing a control near the beginning of the Web page that turns off sounds that play automatically"
+      G171: "Playing sounds only on user request"
+      SL3: "Controlling Silverlight MediaElement Audio Volume"
+      SL24: "Using AutoPlay to Keep Silverlight Media from Playing Automatically"
+  1.4.3: 
+    id: "visual-audio-contrast-contrast"
+    title: "Contrast (Minimum)"
+    description: "The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following:"
+    uri: "http://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast"
+    techniques: 
+      F24: "Failure of Success Criterion 1.4.3, 1.4.6 and 1.4.8 due to specifying foreground colors without specifying background colors or vice versa"
+      F83: "Failure of Success Criterion 1.4.3 and 1.4.6 due to using background images that do not provide sufficient contrast with foreground text (or images of text)"
+      G18: "Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text)  and background behind the text"
+      G145: "Ensuring that a contrast ratio of at least 3:1 exists between text (and images of text)  and background behind the text"
+      G148: "Not specifying background color, not specifying text color, and not using technology features that change those defaults"
+      G156: "Using a technology that has commonly-available user agents that can change the foreground and background of blocks of text"
+      G174: "Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast"
+      SL13: "Providing A Style Switcher To Switch To High Contrast"
+  1.4.4: 
+    id: "visual-audio-contrast-scale"
+    title: "Resize text"
+    description: "Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality."
+    uri: "http://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale"
+    techniques: 
+      C12: "Using percent for font sizes"
+      C13: "Using named font sizes"
+      C14: "Using em units for font sizes"
+      C17: "Scaling form elements which contain text"
+      C20: "Using relative measurements to set column widths so that lines can average 80 characters or less when the browser is resized"
+      C22: "Using CSS to control visual presentation of text"
+      C28: "Specifying the size of text containers using em units"
+      F69: "Failure of Success Criterion 1.4.4 when resizing visually rendered text up to 200 percent causes the text, image or controls to be clipped, truncated or obscured"
+      F80: "Failure of Success Criterion 1.4.4 when text-based form controls do not resize when visually rendered text is resized up to 200%"
+      G142: "Using a technology that has commonly-available user agents that support zoom"
+      G146: "Using liquid layout"
+      G178: "Providing controls on the Web page that allow users to incrementally change the size of all text on the page up to 200 percent"
+      G179: "Ensuring that there is no loss of content or functionality when the text resizes and text containers do not change their width"
+      SCR34: "Calculating size and position in a way that scales with text size"
+      SL22: "Supporting Browser Zoom in Silverlight"
+      SL23: "Using A Style Switcher to Increase Font Size of Silverlight Text Elements"
+  1.4.5: 
+    id: "visual-audio-contrast-text-presentation"
+    title: "Images of Text"
+    description: "If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text except for the following:"
+    uri: "http://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-presentation"
+    techniques: 
+      C6: "Positioning content based on structural markup"
+      C8: "Using CSS letter-spacing to control spacing within a word"
+      C12: "Using percent for font sizes"
+      C13: "Using named font sizes"
+      C14: "Using em units for font sizes"
+      C22: "Using CSS to control visual presentation of text"
+      C30: "Using CSS to replace text with images of text and providing user interface controls to switch"
+      G140: "Separating information and structure from presentation to enable different presentations"
+      SL31: "Using Silverlight Font Properties to Control Text Presentation"
+  1.4.6: 
+    id: "visual-audio-contrast7"
+    title: "Contrast (Enhanced)"
+    description: "The visual presentation of text and images of text has a contrast ratio of at least 7:1, except for the following:"
+    uri: "http://www.w3.org/TR/WCAG20/#visual-audio-contrast7"
+    techniques: 
+      F24: "Failure of Success Criterion 1.4.3, 1.4.6 and 1.4.8 due to specifying foreground colors without specifying background colors or vice versa"
+      F83: "Failure of Success Criterion 1.4.3 and 1.4.6 due to using background images that do not provide sufficient contrast with foreground text (or images of text)"
+      G17: "Ensuring that a contrast ratio of at least 7:1 exists between text (and images of text) and background behind the text"
+      G18: "Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text)  and background behind the text"
+      G148: "Not specifying background color, not specifying text color, and not using technology features that change those defaults"
+      G156: "Using a technology that has commonly-available user agents that can change the foreground and background of blocks of text"
+      G174: "Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast"
+      SL13: "Providing A Style Switcher To Switch To High Contrast"
+  1.4.7: 
+    id: "visual-audio-contrast-noaudio"
+    title: "Low or No Background Audio"
+    description: "For prerecorded audio-only content that (1) contains primarily speech in the foreground, (2) is not an audio CAPTCHA or audio logo, and (3) is not vocalization intended to be primarily musical expression such as singing or rapping, at least one of the following is true:"
+    uri: "http://www.w3.org/TR/WCAG20/#visual-audio-contrast-noaudio"
+    techniques: 
+      G56: "Mixing audio files so that non-speech sounds are at least 20 decibels lower than the speech audio content"
+  1.4.8: 
+    id: "visual-audio-contrast-visual-presentation"
+    title: "Visual Presentation"
+    description: "For the visual presentation of blocks of text, a mechanism is available to achieve the following:"
+    uri: "http://www.w3.org/TR/WCAG20/#visual-audio-contrast-visual-presentation"
+    techniques: 
+      C12: "Using percent for font sizes"
+      C13: "Using named font sizes"
+      C14: "Using em units for font sizes"
+      C19: "Specifying alignment either to the left OR right in CSS"
+      C20: "Using relative measurements to set column widths so that lines can average 80 characters or less when the browser is resized"
+      C21: "Specifying line spacing in CSS"
+      C23: "Specifying text and background colors of secondary content such as banners, features and navigation in CSS while not specifying text and background colors of the main content"
+      C24: "Using percentage values in CSS for container sizes"
+      C25: "Specifying borders and layout in CSS to delineate areas of a Web page while not specifying text and text-background colors"
+      C26: "Providing options within the content to switch to a layout that does not require the user to scroll horizontally to read a line of text"
+      F24: "Failure of Success Criterion 1.4.3, 1.4.6 and 1.4.8 due to specifying foreground colors without specifying background colors or vice versa"
+      F88: "Failure of Success Criterion 1.4.8 due to using text that is justified (aligned to both the left and the right margins)"
+      FLASH33: "Using relative values for Flash object dimensions"
+      G146: "Using liquid layout"
+      G148: "Not specifying background color, not specifying text color, and not using technology features that change those defaults"
+      G156: "Using a technology that has commonly-available user agents that can change the foreground and background of blocks of text"
+      G169: "Aligning text on only one side"
+      G172: "Providing a mechanism to remove full justification of text"
+      G175: "Providing a multi color selection tool on the page for foreground and background colors"
+      G188: "Providing a button on the page to increase line spaces and paragraph spaces"
+      H87: "Not interfering with the user agent's reflow of text as the viewing window is narrowed"
+      SCR34: "Calculating size and position in a way that scales with text size"
+  1.4.9: 
+    id: "visual-audio-contrast-text-images"
+    title: "Images of Text (No Exception)"
+    description: "Images of text are only used for pure decoration or where a particular presentation of text is essential to the information being conveyed."
+    uri: "http://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-images"
+    techniques: 
+      C6: "Positioning content based on structural markup"
+      C8: "Using CSS letter-spacing to control spacing within a word"
+      C12: "Using percent for font sizes"
+      C13: "Using named font sizes"
+      C14: "Using em units for font sizes"
+      C22: "Using CSS to control visual presentation of text"
+      C30: "Using CSS to replace text with images of text and providing user interface controls to switch"
+      G140: "Separating information and structure from presentation to enable different presentations"
+      SL31: "Using Silverlight Font Properties to Control Text Presentation"
+  2.1.1: 
+    id: "keyboard-operation-keyboard-operable"
+    title: "Keyboard"
+    description: "All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes, except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints."
+    uri: "http://www.w3.org/TR/WCAG20/#keyboard-operation-keyboard-operable"
+    techniques: 
+      F42: "Failure of Success Criterion 1.3.1 and 2.1.1 due to using scripting events to emulate links in a way that is not programmatically determinable"
+      F54: "Failure of Success Criterion 2.1.1 due to using only pointing-device-specific event handlers (including gesture) for a function"
+      F55: " Failure of Success Criteria 2.1.1, 2.4.7, and 3.2.1 due to using script to remove focus when focus is received"
+      FLASH14: "Using redundant keyboard and mouse event handlers in Flash"
+      FLASH16: "Making actions keyboard accessible by using the click event on standard components"
+      FLASH17: "Providing keyboard access to a Flash object and avoiding a keyboard trap"
+      FLASH22: "Adding keyboard-accessible actions to static elements"
+      G90: "Providing keyboard-triggered event handlers"
+      G202: "Ensuring keyboard control for all functionality"
+      H91: "Using HTML form controls and links"
+      SCR2: "Using redundant keyboard and mouse event handlers"
+      SCR20: "Using both keyboard and other device-specific functions"
+      SCR29: "Adding keyboard-accessible actions to static HTML elements"
+      SCR35: "Making actions keyboard accessible by using the onclick event of anchors and buttons"
+      SL9: "Handling Key Events to Enable Keyboard Functionality in Silverlight"
+      SL14: "Providing Custom Control Key Handling for Keyboard Functionality in Silverlight"
+      SL15: "Providing Keyboard Shortcuts that Work Across the Entire Silverlight Application"
+  2.1.2: 
+    id: "keyboard-operation-trapping"
+    title: "No Keyboard Trap"
+    description: "If keyboard focus can be moved to a component of the page using a keyboard interface, then focus can be moved away from that component using only a keyboard interface, and, if it requires more than unmodified arrow or tab keys or other standard exit methods, the user is advised of the method for moving focus away."
+    uri: "http://www.w3.org/TR/WCAG20/#keyboard-operation-trapping"
+    techniques: 
+      F10: "Failure of Success Criterion 2.1.2 and Conformance Requirement 5 due to combining multiple content formats in a way that traps users inside one format type"
+      FLASH17: "Providing keyboard access to a Flash object and avoiding a keyboard trap"
+      G21: "Ensuring that users are not trapped in content"
+  2.1.3: 
+    id: "keyboard-operation-all-funcs"
+    title: "Keyboard (No Exception)"
+    description: "All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes."
+    uri: "http://www.w3.org/TR/WCAG20/#keyboard-operation-all-funcs"
+    techniques: 
+      F42: "Failure of Success Criterion 1.3.1 and 2.1.1 due to using scripting events to emulate links in a way that is not programmatically determinable"
+      F54: "Failure of Success Criterion 2.1.1 due to using only pointing-device-specific event handlers (including gesture) for a function"
+      F55: " Failure of Success Criteria 2.1.1, 2.4.7, and 3.2.1 due to using script to remove focus when focus is received"
+      FLASH14: "Using redundant keyboard and mouse event handlers in Flash"
+      FLASH16: "Making actions keyboard accessible by using the click event on standard components"
+      FLASH17: "Providing keyboard access to a Flash object and avoiding a keyboard trap"
+      FLASH22: "Adding keyboard-accessible actions to static elements"
+      G90: "Providing keyboard-triggered event handlers"
+      G202: "Ensuring keyboard control for all functionality"
+      H91: "Using HTML form controls and links"
+      SCR2: "Using redundant keyboard and mouse event handlers"
+      SCR20: "Using both keyboard and other device-specific functions"
+      SCR29: "Adding keyboard-accessible actions to static HTML elements"
+      SCR35: "Making actions keyboard accessible by using the onclick event of anchors and buttons"
+      SL9: "Handling Key Events to Enable Keyboard Functionality in Silverlight"
+      SL14: "Providing Custom Control Key Handling for Keyboard Functionality in Silverlight"
+      SL15: "Providing Keyboard Shortcuts that Work Across the Entire Silverlight Application"
+  2.2.1: 
+    id: "time-limits-required-behaviors"
+    title: "Timing Adjustable"
+    description: "For each time limit that is  set by the content, at least one of the following is true:"
+    uri: "http://www.w3.org/TR/WCAG20/#time-limits-required-behaviors"
+    techniques: 
+      F40: "Failure of Success Criterion 2.2.1 and 2.2.4 due to using meta redirect with a time limit "
+      F41: "Failure of Success Criterion 2.2.1, 2.2.4, and 3.2.5 due to using meta refresh with a time-out"
+      F58: "Failure of Success Criterion 2.2.1 due to using server-side techniques to automatically redirect pages after a time-out"
+      FLASH19: "Providing a script that warns the user a time limit is about to expire and provides a way to extend it"
+      FLASH24: "Allowing the user to extend the default time limit"
+      G4: "Allowing the content to be paused and restarted from where it was paused"
+      G133: "Providing a checkbox on the first page of a multipart form that allows users to ask for longer session time limit or no session time limit"
+      G180: "Providing the user with a means to set the time limit to 10 times the default time limit"
+      G198: "Providing a way for the user to turn the time limit off"
+      SCR1: "Allowing the user to extend the default time limit "
+      SCR16: "Providing a script that warns the user a time limit is about to expire"
+      SCR33: "Using script to scroll content, and providing a mechanism to pause it"
+      SCR36: "Providing a mechanism to allow users to display moving, scrolling, or auto-updating text in a static window or area"
+      SL21: "Replacing A Silverlight Timed Animation With a Nonanimated Element"
+  2.2.2: 
+    id: "time-limits-pause"
+    title: "Pause, Stop, Hide"
+    description: "For moving, blinking, scrolling, or auto-updating information, all of the following are true:"
+    uri: "http://www.w3.org/TR/WCAG20/#time-limits-pause"
+    techniques: 
+      F4: "Failure of Success Criterion 2.2.2 due to using text-decoration:blink without a mechanism to stop it in less than five seconds"
+      F7: "Failure of Success Criterion 2.2.2 due to an object or applet, such as Java or Flash, that has blinking content without a mechanism to pause the content that blinks for more than five seconds"
+      F16: "Failure of Success Criterion 2.2.2 due to including scrolling content where movement is not essential to the activity without also including a mechanism to pause and restart the content"
+      F47: "Failure of Success Criterion 2.2.2 due to using the blink element"
+      F50: "Failure of Success Criterion 2.2.2 due to a script that causes a blink effect without a mechanism to stop the blinking at 5 seconds or less"
+      FLASH35: "Using script to scroll Flash content, and providing a mechanism to pause it"
+      FLASH36: "Using scripts to control blinking and stop it in five seconds or less"
+      G4: "Allowing the content to be paused and restarted from where it was paused"
+      G11: "Creating content that blinks for less than 5 seconds"
+      G152: "Setting animated gif images to stop blinking after n cycles (within 5 seconds)"
+      G186: "Using a control in the Web page that stops moving, blinking, or auto-updating content"
+      G187: "Using a technology to include blinking content that can be turned off via the user agent"
+      G191: "Providing a link, button, or other mechanism that reloads the page without any blinking content"
+      SCR22: "Using scripts to control blinking and stop it in five seconds or less"
+      SCR33: "Using script to scroll content, and providing a mechanism to pause it"
+      SL11: "Pausing or Stopping A Decorative Silverlight Animation"
+      SL12: "Pausing, Stopping, or Playing Media in Silverlight MediaElements"
+      SL24: "Using AutoPlay to Keep Silverlight Media from Playing Automatically"
+  2.2.3: 
+    id: "time-limits-no-exceptions"
+    title: "No Timing"
+    description: "Timing is not an essential part of the event or activity presented by the content, except for non-interactive synchronized media and real-time events."
+    uri: "http://www.w3.org/TR/WCAG20/#time-limits-no-exceptions"
+    techniques: 
+      G5: "Allowing users to complete an activity without any time limit"
+  2.2.4: 
+    id: "time-limits-postponed"
+    title: "Interruptions"
+    description: "Interruptions can be postponed or suppressed by the user, except interruptions involving an emergency."
+    uri: "http://www.w3.org/TR/WCAG20/#time-limits-postponed"
+    techniques: 
+      F40: "Failure of Success Criterion 2.2.1 and 2.2.4 due to using meta redirect with a time limit "
+      F41: "Failure of Success Criterion 2.2.1, 2.2.4, and 3.2.5 due to using meta refresh with a time-out"
+      G75: "Providing a mechanism to postpone any updating of content"
+      G76: "Providing a mechanism to request an update of the content instead of updating automatically"
+      SCR14: "Using scripts to make nonessential alerts optional"
+  2.2.5: 
+    id: "time-limits-server-timeout"
+    title: "Re-authenticating"
+    description: "When an authenticated session expires, the user can continue the activity without loss of data after re-authenticating."
+    uri: "http://www.w3.org/TR/WCAG20/#time-limits-server-timeout"
+    techniques: 
+      F12: "Failure of Success Criterion 2.2.5 due to having a session time limit without a mechanism for saving user's input and re-establishing that information upon re-authentication"
+      G105: "Saving data so that it can be used after a user re-authenticates"
+      G181: "Encoding user data as hidden or encrypted data in a re-authorization page"
+  2.3.1: 
+    id: "seizure-does-not-violate"
+    title: "Three Flashes or Below Threshold"
+    description: "Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds."
+    uri: "http://www.w3.org/TR/WCAG20/#seizure-does-not-violate"
+    techniques: 
+      G15: "Using a tool to ensure that content does not violate the general flash threshold or red flash threshold"
+      G19: "Ensuring that no component of the content flashes more than three times in any 1-second period"
+      G176: "Keeping the flashing area small enough"
+  2.3.2: 
+    id: "seizure-three-times"
+    title: "Three Flashes"
+    description: "Web pages do not contain anything that flashes more than three times in any one second period."
+    uri: "http://www.w3.org/TR/WCAG20/#seizure-three-times"
+    techniques: 
+      G19: "Ensuring that no component of the content flashes more than three times in any 1-second period"
+  2.4.1: 
+    id: "navigation-mechanisms-skip"
+    title: "Bypass Blocks"
+    description: "A mechanism is available to bypass blocks of content that are repeated on multiple Web pages."
+    uri: "http://www.w3.org/TR/WCAG20/#navigation-mechanisms-skip"
+    techniques: 
+      C6: "Positioning content based on structural markup"
+      G1: "Adding a link at the top of each page that goes directly to the main content area"
+      G123: "Adding a link at the beginning of a block of repeated content to go to the end of the block"
+      G124: "Adding links at the top of the page to each area of the content"
+      H64: "Using the title attribute of the frame and iframe elements"
+      H69: "Providing heading elements at the beginning of each section of content"
+      H70: "Using frame elements to group blocks of repeated material"
+      SCR28: "Using an expandable and collapsible menu to bypass block of content"
+      SL25: "Using Controls and Programmatic Focus to Bypass Blocks of Content in Silverlight"
+      SL29: "Using Silverlight 'List' Controls to Define Blocks that can be Bypassed"
+  2.4.2: 
+    id: "navigation-mechanisms-title"
+    title: "Page Titled"
+    description: "Web pages have titles that describe topic or purpose."
+    uri: "http://www.w3.org/TR/WCAG20/#navigation-mechanisms-title"
+    techniques: 
+      ARIA1: "Using the aria-describedby property to provide a descriptive label for input controls"
+      F25: "Failure of Success Criterion 2.4.2 due to the title of a Web page not identifying the contents"
+      G88: "Providing descriptive titles for Web pages"
+      G127: "Identifying a Web page's relationship to a larger collection of Web pages"
+      H25: "Providing a title using the title element"
+  2.4.3: 
+    id: "navigation-mechanisms-focus-order"
+    title: "Focus Order"
+    description: "If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability."
+    uri: "http://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-order"
+    techniques: 
+      C27: "Making the DOM order match the visual order"
+      F44: "Failure of Success Criterion 2.4.3 due to using tabindex to create a tab order that does not preserve meaning and operability"
+      F85: "Failure of Success Criterion 2.4.3 due to using dialogs or menus that are not adjacent to their trigger control in the sequential navigation order"
+      FLASH15: "Using the tabIndex property to specify a logical reading order and a logical tab order in Flash"
+      G59: "Placing the interactive elements in an order that follows sequences and relationships within the content"
+      H4: "Creating a logical tab order through links, form controls, and objects"
+      SCR26: "Inserting dynamic content into the Document Object Model immediately following its trigger element"
+      SCR27: "Reordering page sections using the Document Object Model"
+      SCR37: "Creating Custom Dialogs in a Device Independent Way"
+      SL34: "Using the Silverlight Default Tab Sequence and Altering Tab Sequences With Properties"
+  2.4.4: 
+    id: "navigation-mechanisms-refs"
+    title: "Link Purpose (In Context)"
+    description: "The purpose of each link can be determined from the link text alone or from the link text together with its programmatically determined link context, except where the purpose of the link would be ambiguous to users in general."
+    uri: "http://www.w3.org/TR/WCAG20/#navigation-mechanisms-refs"
+    techniques: 
+      ARIA1: "Using the aria-describedby property to provide a descriptive label for input controls"
+      C7: "Using CSS to hide a portion of the link text "
+      F63: "Failure of Success Criterion 2.4.4 due to providing link context only in content that is not related to the link"
+      F89: "Failure of Success Criteria 2.4.4, 2.4.9 and 4.1.2 due to using null alt on an image where the image is the only content in a link"
+      FLASH5: "Combining adjacent image and text buttons for the same resource"
+      FLASH7: "Using scripting to change control labels"
+      FLASH27: "Providing button labels that describe the purpose of a button"
+      G53: "Identifying the purpose of a link using link text combined with the text of the enclosing sentence"
+      G91: "Providing link text that describes the purpose of a link"
+      G189: "Providing a control near the beginning of the Web page that changes the link text"
+      H2: "Combining adjacent image and text links for the same resource"
+      H24: " Providing text alternatives for the area elements of image maps "
+      H30: "Providing link text that describes the purpose of a link for anchor elements"
+      H33: "Supplementing link text with the title attribute"
+      H77: "Identifying the purpose of a link using link text combined with its enclosing list item"
+      H78: "Identifying the purpose of a link using link text combined with its enclosing paragraph"
+      H79: "Identifying the purpose of a link using link text combined with its enclosing table cell and associated table headings"
+      H80: "Identifying the purpose of a link using link text combined with the preceding heading element"
+      H81: "Identifying the purpose of a link in a nested list using link text combined with the parent list item under which the list is nested"
+      SCR30: "Using scripts to change the link text"
+      SL18: "Providing Text Equivalent for Nontext Silverlight Controls With AutomationProperties.Name"
+  2.4.5: 
+    id: "navigation-mechanisms-mult-loc"
+    title: "Multiple Ways"
+    description: "More than one way is available to locate a Web page within a set of Web pages except where the Web Page is the result of, or a step in, a process."
+    uri: "http://www.w3.org/TR/WCAG20/#navigation-mechanisms-mult-loc"
+    techniques: 
+      G63: "Providing a site map"
+      G64: "Providing a Table of Contents"
+      G125: "Providing links to navigate to related Web pages"
+      G126: "Providing a list of links to all other Web pages"
+      G161: "Providing a search function to help users find content"
+      G185: "Linking to all of the pages on the site from the home page"
+      H59: "Using the link element and navigation tools"
+  2.4.6: 
+    id: "navigation-mechanisms-descriptive"
+    title: "Headings and Labels"
+    description: "Headings and labels describe topic or purpose."
+    uri: "http://www.w3.org/TR/WCAG20/#navigation-mechanisms-descriptive"
+    techniques: 
+      G130: "Providing descriptive headings"
+      G131: "Providing descriptive labels"
+  2.4.7: 
+    id: "navigation-mechanisms-focus-visible"
+    title: "Focus Visible"
+    description: "Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible."
+    uri: "http://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-visible"
+    techniques: 
+      C15: "Using CSS to change the presentation of a user interface component when it receives focus"
+      F55: " Failure of Success Criteria 2.1.1, 2.4.7, and 3.2.1 due to using script to remove focus when focus is received"
+      F78: "Failure of Success Criterion 2.4.7 due to styling element outlines and borders in a way that removes or renders non-visible the visual focus indicator"
+      FLASH20: "Reskinning Flash components to provide highly visible focus indication"
+      G149: "Using user interface components that are highlighted by the user agent when they receive focus"
+      G165: "Using the default focus indicator for the platform so that high visibility default focus indicators will carry over"
+      G195: "Using an author-supplied, highly visible focus indicator"
+      SCR31: "Using script to change the background color or border of the element with focus"
+      SL2: "Changing The Visual Focus Indicator in Silverlight"
+      SL7: "Designing a Focused Visual State for Custom Silverlight Controls"
+  2.4.8: 
+    id: "navigation-mechanisms-location"
+    title: "Location"
+    description: "Information about the user's location within a set of Web pages is available."
+    uri: "http://www.w3.org/TR/WCAG20/#navigation-mechanisms-location"
+    techniques: 
+      G63: "Providing a site map"
+      G65: "Providing a breadcrumb trail"
+      G127: "Identifying a Web page's relationship to a larger collection of Web pages"
+      G128: "Indicating current location within navigation bars"
+      H59: "Using the link element and navigation tools"
+  2.4.9: 
+    id: "navigation-mechanisms-link"
+    title: "Link Purpose (Link Only)"
+    description: "A mechanism is available to allow the purpose of each link to be identified from link text alone, except where the purpose of the link would be ambiguous to users in general."
+    uri: "http://www.w3.org/TR/WCAG20/#navigation-mechanisms-link"
+    techniques: 
+      C7: "Using CSS to hide a portion of the link text "
+      F84: "Failure of Success Criterion 2.4.9 due to using a non-specific link such as 'click here' or 'more' without a mechanism to change the link text to specific text."
+      F89: "Failure of Success Criteria 2.4.4, 2.4.9 and 4.1.2 due to using null alt on an image where the image is the only content in a link"
+      FLASH5: "Combining adjacent image and text buttons for the same resource"
+      FLASH7: "Using scripting to change control labels"
+      FLASH27: "Providing button labels that describe the purpose of a button"
+      G91: "Providing link text that describes the purpose of a link"
+      G189: "Providing a control near the beginning of the Web page that changes the link text"
+      H2: "Combining adjacent image and text links for the same resource"
+      H24: " Providing text alternatives for the area elements of image maps "
+      H30: "Providing link text that describes the purpose of a link for anchor elements"
+      H33: "Supplementing link text with the title attribute"
+      SCR30: "Using scripts to change the link text"
+      SL18: "Providing Text Equivalent for Nontext Silverlight Controls With AutomationProperties.Name"
+  2.4.10: 
+    id: "navigation-mechanisms-headings"
+    title: "Section Headings"
+    description: "Section headings are used to organize the content."
+    uri: "http://www.w3.org/TR/WCAG20/#navigation-mechanisms-headings"
+    techniques: 
+      G141: "Organizing a page using headings"
+  3.1.1: 
+    id: "meaning-doc-lang-id"
+    title: "Language of Page"
+    description: "The default human language of each Web page can be programmatically determined."
+    uri: "http://www.w3.org/TR/WCAG20/#meaning-doc-lang-id"
+    techniques: 
+      FLASH13: "Using HTML language attributes to specify language in Flash content"
+      H57: " Using language attributes on the html element "
+      SVR5: "Specifying the default language in the HTTP header"
+  3.1.2: 
+    id: "meaning-other-lang-id"
+    title: "Language of Parts"
+    description: "The human language of each passage or phrase in the  content can be programmatically determined except for proper names, technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediately surrounding text."
+    uri: "http://www.w3.org/TR/WCAG20/#meaning-other-lang-id"
+    techniques: 
+      FLASH13: "Using HTML language attributes to specify language in Flash content"
+      H58: "Using language attributes to identify changes in the human language "
+      SL4: "Declaring Discrete Silverlight Objects to Specify Language Parts in the HTML DOM"
+      SL27: "Using Language/Culture Properties as Exposed by Silverlight Applications and Assistive Technologies"
+  3.1.3: 
+    id: "meaning-idioms"
+    title: "Unusual Words"
+    description: "A mechanism is available for identifying specific definitions of words or phrases used in an unusual or restricted way, including idioms and jargon."
+    uri: "http://www.w3.org/TR/WCAG20/#meaning-idioms"
+    techniques: 
+      G55: "Linking to definitions"
+      G62: "Providing a glossary"
+      G70: "Providing a function to search an online dictionary"
+      G101: "Providing the definition of a word or phrase used in an unusual or restricted way"
+      G112: "Using inline definitions"
+      H40: "Using definition lists"
+      H54: "Using the dfn element to identify the defining instance of a word"
+      H60: "Using the link element to link to a glossary"
+  3.1.4: 
+    id: "meaning-located"
+    title: "Abbreviations"
+    description: "A mechanism for identifying the expanded form or meaning of abbreviations is available."
+    uri: "http://www.w3.org/TR/WCAG20/#meaning-located"
+    techniques: 
+      G55: "Linking to definitions"
+      G62: "Providing a glossary"
+      G70: "Providing a function to search an online dictionary"
+      G97: "Providing the first use of an abbreviation immediately before or after the expanded form"
+      G102: "Providing the expansion or explanation of an abbreviation"
+      H28: "Providing definitions for abbreviations by using the abbr and acronym elements"
+      H60: "Using the link element to link to a glossary"
+  3.1.5: 
+    id: "meaning-supplements"
+    title: "Reading Level"
+    description: "When text requires reading ability more advanced than the lower secondary education level after removal of proper names and titles,  supplemental content, or a version that does not require reading ability more advanced than the lower secondary education level, is available."
+    uri: "http://www.w3.org/TR/WCAG20/#meaning-supplements"
+    techniques: 
+      G79: "Providing a spoken version of the text"
+      G86: "Providing a text summary that requires reading ability less advanced than the upper secondary education level"
+      G103: "Providing visual illustrations, pictures, and symbols to help explain ideas, events, and processes"
+      G153: "Making the text easier to read"
+      G160: "Providing sign language versions of information, ideas, and processes that must be understood in order to use the content"
+  3.1.6: 
+    id: "meaning-pronunciation"
+    title: "Pronunciation"
+    description: "A mechanism is available for identifying specific pronunciation of words where meaning of the words, in context, is ambiguous without knowing the pronunciation."
+    uri: "http://www.w3.org/TR/WCAG20/#meaning-pronunciation"
+    techniques: 
+      G62: "Providing a glossary"
+      G120: "Providing the pronunciation immediately following the word"
+      G121: "Linking to pronunciations"
+      G163: "Using standard diacritical marks that can be turned off"
+      H62: "Using the ruby element"
+  3.2.1: 
+    id: "consistent-behavior-receive-focus"
+    title: "On Focus"
+    description: "When any user interface component receives focus, it does not  initiate a change of context."
+    uri: "http://www.w3.org/TR/WCAG20/#consistent-behavior-receive-focus"
+    techniques: 
+      F52: "Failure of Success Criterion 3.2.1 and 3.2.5 due to opening a new window as soon as a new page is loaded"
+      F55: " Failure of Success Criteria 2.1.1, 2.4.7, and 3.2.1 due to using script to remove focus when focus is received"
+      G107: "Using 'activate' rather than 'focus' as a trigger for changes of context"
+      G200: "Opening new windows and tabs from a link only when necessary"
+      G201: "Giving users advanced warning when opening a new window"
+  3.2.2: 
+    id: "consistent-behavior-unpredictable-change"
+    title: "On Input"
+    description: "Changing the setting of any  user interface component does not automatically cause a change of context unless the user has been advised of the behavior before using the component."
+    uri: "http://www.w3.org/TR/WCAG20/#consistent-behavior-unpredictable-change"
+    techniques: 
+      F36: "Failure of Success Criterion 3.2.2 due to automatically submitting a form and presenting new content without prior warning when the last field in the form is given a value"
+      F37: "Failure of Success Criterion 3.2.2 due to launching a new window without prior warning when the status of a radio button, check box or select list is changed"
+      F76: "Failure of Success Criterion 3.2.2 due to providing instruction material about the change of context by change of setting in a user interface element at a location that users may bypass"
+      FLASH4: "Providing submit buttons in Flash"
+      G13: "Describing what will happen before a change to a form control that causes a change of context to occur is made"
+      G80: "Providing a submit button to initiate a change of context"
+      G201: "Giving users advanced warning when opening a new window"
+      H32: "Providing submit buttons"
+      H84: "Using a button with a select element to perform an action"
+      SCR19: "Using an onchange event on a select element without causing a change of context"
+      SL10: "Implementing a Submit-Form Pattern in Silverlight"
+  3.2.3: 
+    id: "consistent-behavior-consistent-locations"
+    title: "Consistent Navigation"
+    description: "Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same relative order each time they are repeated, unless a change is initiated by the user."
+    uri: "http://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-locations"
+    techniques: 
+      F66: "Failure of Success Criterion 3.2.3 due to presenting navigation links in a different relative order on different pages"
+      G61: "Presenting repeated components in the same relative order each time they appear"
+  3.2.4: 
+    id: "consistent-behavior-consistent-functionality"
+    title: "Consistent Identification"
+    description: "Components that have the same functionality within a set of Web pages are identified consistently."
+    uri: "http://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-functionality"
+    techniques: 
+      F31: "Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages "
+      G197: "Using labels, names, and text alternatives consistently for content that has the same functionality"
+  3.2.5: 
+    id: "consistent-behavior-no-extreme-changes-context"
+    title: "Change on Request"
+    description: "Changes of context are initiated only by user request or a mechanism is available to turn off such changes."
+    uri: "http://www.w3.org/TR/WCAG20/#consistent-behavior-no-extreme-changes-context"
+    techniques: 
+      F9: "Failure of Success Criterion 3.2.5 due to changing the context when the user removes focus from a form element"
+      F22: "Failure of Success Criterion 3.2.5 due to opening windows that are not requested by the user"
+      F41: "Failure of Success Criterion 2.2.1, 2.2.4, and 3.2.5 due to using meta refresh with a time-out"
+      F52: "Failure of Success Criterion 3.2.1 and 3.2.5 due to opening a new window as soon as a new page is loaded"
+      F60: "Failure of Success Criterion 3.2.5 due to launching a new window when a user enters text into an input field"
+      F61: "Failure of Success Criterion 3.2.5 due to complete change of main content through an automatic update that the user cannot disable from within the content"
+      G76: "Providing a mechanism to request an update of the content instead of updating automatically"
+      G110: "Using an instant client-side redirect"
+      G200: "Opening new windows and tabs from a link only when necessary"
+      H76: "Using meta refresh to create an instant client-side redirect"
+      H83: "Using the target attribute to open a new window on user request and indicating this in link text"
+      SCR19: "Using an onchange event on a select element without causing a change of context"
+      SCR24: "Using progressive enhancement to open new windows on user request"
+      SVR1: "Implementing automatic redirects on the server side instead of on the client side"
+  3.3.1: 
+    id: "minimize-error-identified"
+    title: "Error Identification"
+    description: "If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text."
+    uri: "http://www.w3.org/TR/WCAG20/#minimize-error-identified"
+    techniques: 
+      FLASH12: "Providing client-side validation and adding error text via the accessible description"
+      G83: "Providing text descriptions to identify required fields that were not completed"
+      G84: "Providing a text description when the user provides information that is not in the list of allowed values"
+      G85: "Providing a text description when user input falls outside the required format or values"
+      G139: "Creating a mechanism that allows users to jump to errors"
+      G199: "Providing success feedback when data is submitted successfully"
+      SCR18: "Providing client-side validation and alert"
+      SCR32: "Providing client-side validation and adding error text via the DOM"
+      SL35: "Using the Validation and ValidationSummary APIs to Implement Client    Side Forms Validation in Silverlight"
+  3.3.2: 
+    id: "minimize-error-cues"
+    title: "Labels or Instructions"
+    description: "Labels or instructions are provided when content requires user input."
+    uri: "http://www.w3.org/TR/WCAG20/#minimize-error-cues"
+    techniques: 
+      ARIA1: "Using the aria-describedby property to provide a descriptive label for input controls"
+      ARIA2: "Identifying required fields with the   aria-required property"
+      F82: "Failure of Success Criterion 3.3.2 by visually formatting a set of phone number fields but not including a text label"
+      FLASH8: "Adding a group name to the accessible name of a form control"
+      FLASH10: "Indicating required form controls in Flash"
+      FLASH25: "Labeling a form control by setting its accessible name"
+      FLASH29: "Setting the label property for form components"
+      FLASH32: "Using auto labeling to associate text labels with form controls"
+      G13: "Describing what will happen before a change to a form control that causes a change of context to occur is made"
+      G83: "Providing text descriptions to identify required fields that were not completed"
+      G89: "Providing expected data format and example"
+      G131: "Providing descriptive labels"
+      G162: "Positioning labels to maximize predictability of relationships"
+      G167: "Using an adjacent button to label the purpose of a field"
+      G184: "Providing text instructions at the beginning of a form or set of fields that describes the necessary input"
+      H44: "Using label elements to associate text labels with form controls"
+      H65: "Using the title attribute to identify form controls when the label element cannot be used"
+      H71: " Providing a description for groups of form controls using fieldset and legend elements "
+      H90: "Indicating required form controls using label or legend"
+      SL8: "Displaying HelpText in Silverlight User Interfaces"
+      SL19: "Providing User Instructions With AutomationProperties.HelpText in Silverlight"
+      SL26: "Using LabeledBy to Associate Labels and Targets in Silverlight"
+  3.3.3: 
+    id: "minimize-error-suggestions"
+    title: "Error Suggestion"
+    description: "If an input error is automatically detected and suggestions for correction are known, then the suggestions are provided to the user, unless it would jeopardize the security or purpose of the content."
+    uri: "http://www.w3.org/TR/WCAG20/#minimize-error-suggestions"
+    techniques: 
+      ARIA2: "Identifying required fields with the   aria-required property"
+      ARIA3: "Identifying valid range information with the aria-valuemin and aria-valuemax properties"
+      FLASH12: "Providing client-side validation and adding error text via the accessible description"
+      G83: "Providing text descriptions to identify required fields that were not completed"
+      G84: "Providing a text description when the user provides information that is not in the list of allowed values"
+      G85: "Providing a text description when user input falls outside the required format or values"
+      G139: "Creating a mechanism that allows users to jump to errors"
+      G177: "Providing suggested correction text"
+      G199: "Providing success feedback when data is submitted successfully"
+      SCR18: "Providing client-side validation and alert"
+      SCR32: "Providing client-side validation and adding error text via the DOM"
+      SL35: "Using the Validation and ValidationSummary APIs to Implement Client Side Forms Validation in Silverlight"
+  3.3.4: 
+    id: "minimize-error-reversible"
+    title: "Error Prevention (Legal, Financial, Data)"
+    description: "For Web pages that cause legal commitments or financial transactions for the user to occur, that modify or delete user-controllable data in data storage systems, or that submit user test responses, at least one of the following is true:"
+    uri: "http://www.w3.org/TR/WCAG20/#minimize-error-reversible"
+    techniques: 
+      G98: "Providing the ability for the user to review and correct answers before submitting"
+      G99: "Providing the ability to recover deleted information"
+      G155: "Providing a checkbox in addition to a submit button"
+      G164: "Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request"
+      G168: "Requesting confirmation to continue with selected action"
+      G199: "Providing success feedback when data is submitted successfully"
+      SCR18: "Providing client-side validation and alert"
+      SL35: "Using the Validation and ValidationSummary APIs to Implement Client Side Forms Validation in Silverlight"
+  3.3.5: 
+    id: "minimize-error-context-help"
+    title: "Help"
+    description: "Context-sensitive help is available."
+    uri: "http://www.w3.org/TR/WCAG20/#minimize-error-context-help"
+    techniques: 
+      G71: "Providing a help link on every Web page"
+      G89: "Providing expected data format and example"
+      G184: "Providing text instructions at the beginning of a form or set of fields that describes the necessary input"
+      G193: "Providing help by an assistant in the Web page"
+      G194: "Providing spell checking and suggestions for text input"
+      H89: "Using the title attribute to provide context-sensitive help"
+  3.3.6: 
+    id: "minimize-error-reversible-all"
+    title: "Error Prevention (All)"
+    description: "For Web pages that require the user to submit information, at least one of the following is true:"
+    uri: "http://www.w3.org/TR/WCAG20/#minimize-error-reversible-all"
+    techniques: 
+      G98: "Providing the ability for the user to review and correct answers before submitting"
+      G99: "Providing the ability to recover deleted information"
+      G155: "Providing a checkbox in addition to a submit button"
+      G164: "Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request"
+      G168: "Requesting confirmation to continue with selected action"
+      G199: "Providing success feedback when data is submitted successfully"
+  4.1.1: 
+    id: "ensure-compat-parses"
+    title: "Parsing"
+    description: "In content implemented using markup languages, elements have complete start and end tags, elements are nested according to their specifications, elements do not contain duplicate attributes, and any IDs are unique, except where the specifications allow these features."
+    uri: "http://www.w3.org/TR/WCAG20/#ensure-compat-parses"
+    techniques: 
+      F17: "Failure of Success Criterion 1.3.1 and 4.1.1 due to insufficient information in DOM to determine one-to-one relationships (e.g., between labels with same id) in HTML"
+      F62: "Failure of Success Criterion 1.3.1 and 4.1.1 due to insufficient information in DOM to determine specific relationships in XML"
+      F70: "Failure of Success Criterion 4.1.1 due to incorrect use of start and end tags or attribute markup"
+      F77: "Failure of Success Criterion 4.1.1 due to duplicate values of type ID"
+      G134: "Validating Web pages"
+      G192: "Fully conforming to specifications"
+      H74: "Ensuring that opening and closing tags are used according to specification"
+      H75: "Ensuring that Web pages are well-formed"
+      H88: "Using HTML according to spec"
+      H93: "Ensuring that id attributes are unique on a Web page"
+      H94: "Ensuring that elements do not contain duplicate attributes"
+      SL33: "Using Well-Formed XAML to Define a Silverlight User Interface"
+  4.1.2: 
+    id: "ensure-compat-rsv"
+    title: "Name, Role, Value"
+    description: "For all user interface components (including but not limited to: form elements, links and components generated by scripts), the name and role can be programmatically determined; states, properties, and values that can be set by the user can be programmatically set; and notification of changes to these items is available to user agents, including assistive technologies."
+    uri: "http://www.w3.org/TR/WCAG20/#ensure-compat-rsv"
+    techniques: 
+      F15: "Failure of Success Criterion 4.1.2 due to implementing custom controls that do not use an accessibility API for the technology, or do so incompletely"
+      F20: "Failure of Success Criterion 1.1.1 and 4.1.2 due to not updating text alternatives when changes to non-text content occur"
+      F59: "Failure of Success Criterion 4.1.2 due to using script to make div or span a user interface control in HTML"
+      F68: "Failure of Success Criterion 1.3.1 and 4.1.2 due to the association of label and user interface controls not being programmatically determinable"
+      F79: "Failure of Success Criterion 4.1.2 due to the focus state of a user interface component not being programmatically determinable or no notification of change of focus state available"
+      F86: "Failure of Success Criterion 4.1.2 due to not providing names for each part of a multi-part form field, such as a US telephone number"
+      F89: "Failure of Success Criteria 2.4.4, 2.4.9 and 4.1.2 due to using null alt on an image where the image is the only content in a link"
+      FLASH29: "Setting the label property for form components"
+      FLASH30: "Specifying accessible names for image buttons"
+      FLASH32: "Using auto labeling to associate text labels with form controls"
+      G10: "Creating components using a technology that supports the accessibility API features of the platforms on which the user agents will be run to expose the names and roles, allow user-settable properties to be directly set, and provide notification of changes"
+      G108: "Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes"
+      G135: "Using the accessibility API features of a technology to expose names and roles, to allow user-settable properties to be directly set, and to provide notification of changes"
+      H44: "Using label elements to associate text labels with form controls"
+      H64: "Using the title attribute of the frame and iframe elements"
+      H65: "Using the title attribute to identify form controls when the label element cannot be used"
+      H88: "Using HTML according to spec"
+      H91: "Using HTML form controls and links"
+      SL6: "Defining a UI Automation Peer for a Custom Silverlight Control"
+      SL18: "Providing Text Equivalent for Nontext Silverlight Controls With AutomationProperties.Name"
+      SL20: "Relying on Silverlight AutomationPeer Behavior to Set AutomationProperties.Name"
+      SL26: "Using LabeledBy to Associate Labels and Targets in Silverlight"
+      SL30: "Using Silverlight Control Compositing and AutomationProperties.Name"
+      SL32: "Using Silverlight Text Elements for Appropriate Accessibility Role"
