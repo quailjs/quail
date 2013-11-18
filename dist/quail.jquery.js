@@ -1035,7 +1035,8 @@ quail.strings.redundant = {
     "go to",
     "click here",
     "link",
-    "click"
+    "click",
+    "more"
   ],
   "required":[
     "*"
