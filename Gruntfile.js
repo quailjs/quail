@@ -8,6 +8,19 @@ module.exports = function(grunt) {
     clean: {
       hooks: ['.git/hooks/pre-commit']
     },
+    convert: {
+      yml2json: {
+        files: [
+          {
+            expand: true,
+            cwd: 'src/resources/guidelines',
+            src: ['*.yml'],
+            dest: 'dist/guidelines/',
+            ext: '.json'
+          }
+        ]
+      }
+    },
     shell: {
       hooks: {
         command: 'cp git-hooks/pre-commit .git/hooks/'
@@ -72,6 +85,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
@@ -81,11 +95,11 @@ module.exports = function(grunt) {
   // By default, just run tests
   grunt.registerTask('default', ['concat', 'qunit']);
 
-  // Release task.
-  grunt.registerTask('build', ['jshint', 'concat', 'uglify']);
+  // Build task.
+  grunt.registerTask('build', ['convert', 'jshint', 'concat', 'uglify']);
 
   // Release task.
-  grunt.registerTask('release', ['jshint', 'concat', 'qunit', 'uglify']);
+  grunt.registerTask('release', ['convert', 'jshint', 'concat', 'qunit', 'uglify']);
 
   // Test task.
   grunt.registerTask('test', ['concat', 'jshint', 'qunit']);
