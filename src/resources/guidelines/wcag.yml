@@ -1125,6 +1125,10 @@
         description: "Failure of Success Criterion 2.4.4 due to providing link context only in content that is not related to the link"
     F65:
         description: "Failure of Success Criterion 1.1.1 due to omitting the alt attribute on img elements, area elements, and input elements of type 'image'"
+          tests:
+            - imgHasAlt
+            - inputImageHasAlt
+            - areaHasAltValue
     F66:
         description: "Failure of Success Criterion 3.2.3 due to presenting navigation links in a different relative order on different pages"
     F67:
@@ -1301,6 +1305,8 @@
         description: "Providing a glossary"
     G63:
         description: "Providing a site map"
+        tests:
+          - siteMap
     G64:
         description: "Providing a Table of Contents"
     G65:
@@ -1355,6 +1361,8 @@
         description: "Providing open (always visible) captions"
     G94:
         description: "Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content"
+          tests:
+            - inputImageHasAlt
     G95:
         description: "Providing short text alternatives that provide a brief description ofthe non-text content"
     G96:
@@ -1579,6 +1587,14 @@
         description: "Using id and headers attributes to associate data cells with header cells indata tables"
     H44:
         description: "Using label elements to associate text labels with form controls"
+          tests:
+            - checkboxHasLabel
+            - fileHasLabel
+            - inputTextHasLabel
+            - passwordHasLabel
+            - radioHasLabel
+            - selectHasAssociatedLabel
+            - textareaHasAssociatedLabel
     H45:
         description: "Using longdesc"
     H46:
