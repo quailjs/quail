@@ -16,7 +16,7 @@
 <script id="qunit-script">
 test('customTest', function() {
   var testResults = [];
-  $('.test-area').quail({ jsonPath : '../../../src/resources',
+  $('.test-area').quail({ jsonPath : '../../../dist',
                       guideline : [ 'imgHasAlt' ],
                       reset : true,
                       preFilter : function(testName, element) {
@@ -27,7 +27,7 @@ test('customTest', function() {
                       }});
   equal(1, testResults.imgHasAlt.length, 'Image was found.');
 
-  $('.test-area').quail({ jsonPath : '../../../src/resources',
+  $('.test-area').quail({ jsonPath : '../../../dist',
                       guideline : [ 'imgHasAlt' ],
                       reset : true,
                       preFilter : function(testName, element) {

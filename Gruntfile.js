@@ -17,6 +17,13 @@ module.exports = function(grunt) {
             src: ['*.yml'],
             dest: 'dist/guidelines/',
             ext: '.json'
+          },
+          {
+            expand: true,
+            cwd: 'src/resources',
+            src: ['*.yml'],
+            dest: 'dist/',
+            ext: '.json'
           }
         ]
       }
@@ -102,5 +109,5 @@ module.exports = function(grunt) {
   grunt.registerTask('release', ['convert', 'jshint', 'concat', 'qunit', 'uglify']);
 
   // Test task.
-  grunt.registerTask('test', ['concat', 'jshint', 'qunit']);
+  grunt.registerTask('test', ['convert', 'concat', 'jshint', 'qunit']);
 };
