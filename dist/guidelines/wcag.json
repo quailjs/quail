@@ -1299,7 +1299,10 @@
       ]
     },
     "F48": {
-      "description": "Failure of Success Criterion 1.3.1 due to using the pre element to markup tabular information"
+      "description": "Failure of Success Criterion 1.3.1 due to using the pre element to markup tabular information",
+      "tests": [
+        "preShouldNotBeUsedForTabularLayout"
+      ]
     },
     "F49": {
       "description": "Failure of Success Criterion 1.3.2 due to using an HTML layout table that does not make sense when linearized  "
@@ -1418,7 +1421,11 @@
       "description": "Failure of Success Criterion 1.3.1 for incorrectly associating table headers and content via the headers and id attributes"
     },
     "F91": {
-      "description": "Failure of Success Criterion 1.3.1 for not correctly marking up table headers"
+      "description": "Failure of Success Criterion 1.3.1 for not correctly marking up table headers",
+      "tests": [
+        "tableDataShouldHaveTh",
+        "tableWithBothHeadersUseScope"
+      ]
     },
     "FLASH1": {
       "description": "Setting the name property for a non-text object",
