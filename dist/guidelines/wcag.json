@@ -1999,7 +1999,9 @@
     },
     "H30": {
       "description": "Providing link text that describes the purpose of a link for anchor elements",
-      "tests": "-\"aImgAltNotRepetative\""
+      "tests": [
+        "aImgAltNotRepetative"
+      ]
     },
     "H32": {
       "description": "Providing submit buttons"
