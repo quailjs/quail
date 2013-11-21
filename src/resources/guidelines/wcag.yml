@@ -970,9 +970,11 @@ guidelines:
 techniques: 
   ARIA1: 
     description: "Using the aria-describedby property to provide a descriptive label for input controls"
-  ARIA2: 
-    description: "Identifying required fields with the   aria-required property"
-  ARIA3: 
+  ARIA2:
+    description: "Identifying required fields with the aria-required property"
+    tests:
+      - "formWithRequiredLabel"
+  ARIA3:
     description: "Identifying valid range information with the aria-valuemin and aria-valuemax properties"
   C6: 
     description: "Positioning content based on structural markup"
@@ -1291,6 +1293,8 @@ techniques:
     description: "Ensuring that a contrast ratio of at least 7:1 exists between text (and images of text)and background behind the text"
   G18:
     description: "Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text"
+    tests:
+     - "appletContainsTextEquivalentInAlt"
   G19:
     description: "Ensuring that no component of the content flashes more than three times in any 1-second period"
   G21:
@@ -1335,6 +1339,15 @@ techniques:
     description: "Providing a long description in another location with a link to it thatis immediately adjacent to the non-text content"
   G74:
     description: "Providing a long description in text near the non-text content, with areference to the location of the long description in the short description"
+    tests:
+      - "aLinksToMultiMediaRequireTranscript"
+      - "aLinksToSoundFilesNeedTranscripts"
+      - "appletContainsTextEquivalent"
+      - "appletContainsTextEquivalentInAlt"
+      - "areaAltIdentifiesDestination"
+      - "areaHasAltValue"
+      - "areaLinksToSoundFile"
+      - "imgAltIsSameInText"
   G75:
     description: "Providing a mechanism to postpone any updating of content"
   G76:
@@ -1367,6 +1380,8 @@ techniques:
     description: "Providing keyboard-triggered event handlers"
   G91:
     description: "Providing link text that describes the purpose of a link"
+    tests:
+     - "imgHasLongDesc"
   G92:
     description: "Providing long description for non-text content that serves the samepurpose and presents the same information"
   G93:
@@ -1433,6 +1448,8 @@ techniques:
     description: "Providing a checkbox on the first page of a multipart form that allows users to ask for longer session time limit or no session time limit"
   G134:
     description: "Validating Web pages"
+    tests:
+      - "documentValidatesToDocType"
   G135:
     description: "Using the accessibility API features of a technology to expose names androles, to allow user-settable properties to be directly set, and to providenotification of changes"
   G138:
@@ -1441,8 +1458,14 @@ techniques:
     description: "Creating a mechanism that allows users to jump to errors"
   G140:
     description: "Separating information and structure from presentation to enable different presentations"
+    tests:
+      - "cssDocumentMakesSenseStyleTurnedOff"
+      - "documentContentReadableWithoutStylesheets"
   G141:
     description: "Organizing a page using headings"
+    tests:
+      - "headersHaveText"
+      - "headersUseToMarkSections"
   G142:
     description: "Using a technology that has commonly-available user agents that support zoom"
   G143:
@@ -1451,6 +1474,8 @@ techniques:
     description: "Ensuring that the Web Page contains another CAPTCHA serving the same purpose using a different modality"
   G145:
     description: "Ensuring that a contrast ratio of at least 3:1 exists between text (and images of text) and background behind the text"
+    tests:
+      - "areaHasAltValue"
   G146:
     description: "Using liquid layout"
   G148:
@@ -1565,6 +1590,8 @@ techniques:
     description: "Combining adjacent image and text links for the same resource"
   H4:
     description: "Creating a logical tab order through links, form controls, and objects"
+    tests:
+      - "tabIndexFollowsLogicalOrder"
   H24:
     description: "Providing text alternatives for the area elements of image maps "
   H25:
@@ -1590,9 +1617,11 @@ techniques:
   H37: 
     description: "Using alt attributes on img elements"
     tests:
-        - "imgHasAlt"
+      - "imgHasAlt"
   H39:
     description: "Using caption elements to associate data table captions with data tables"
+    tests:
+      - "objectLinkToMultimediaHasTextTranscript"
   H40:
     description: "Using definition lists"
   H42:
@@ -1648,7 +1677,10 @@ techniques:
   H70:
     description: "Using frame elements to group blocks of repeated material"
   H71:
-    description: "Providing a description for groups of form controls using fieldset and legendelements "
+    description: "Providing a description for groups of form controls using fieldset and legendelements"
+    tests:
+      - "radioMarkedWithFieldgroupAndLegend"
+      - "legendTextNotEmpty"
   H73:
     description: "Using the summary attribute of the table element to give an overview of datatables"
   H74:
