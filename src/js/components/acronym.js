@@ -1,7 +1,7 @@
 quail.components.acronym = function(testName, acronymTag) {
   var predefined = { };
   var alreadyReported = { };
-  quail.html.find(acronymTag + '[title]').each(function() {
+  quail.html.find('acronym[title], abbr[title]').each(function() {
     predefined[$(this).text().toUpperCase()] = $(this).attr('title');
   });
   quail.html.find('p, div, h1, h2, h3, h4, h5').each(function(){
