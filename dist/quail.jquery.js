@@ -12,6 +12,11 @@ $.fn.quail = function(options) {
   return this;
 };
 
+$.expr[':'].quailCss = function(obj, index, meta, stack) {
+  var args = meta[3].split(/\s*=\s*/);
+  return $(obj).css(args[0]).search(args[1]) > -1;
+}
+
 var quail = {
   
   options : { },
@@ -262,6 +267,7 @@ var quail = {
     return false;
   }
 };
+
 quail.components.acronym = function(testName, acronymTag) {
   var predefined = { };
   var alreadyReported = { };
