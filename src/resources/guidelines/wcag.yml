@@ -1025,13 +1025,15 @@ techniques:
   F3: 
     description: "Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information"
   F4: 
-    description: "Failure of Success Criterion 2.2.2 due to using text-decoration:b link without a mechanism to stop it in less than five seconds"
+    description: "Failure of Success Criterion 2.2.2 due to using text-decoration:blink without a mechanism to stop it in less than five seconds"
   F7: 
     description: "Failure of Success Criterion 2.2.2 due to an object or applet, such as Java or Flash, that has blinking content without a mechanism to pause the content that blinks for more than five seconds"
   F8: 
     description: "Failure of Success Criterion 1.2.2 due to captions omitting some dialogue or important sound effects"
   F9: 
     description: "Failure of Success Criterion 3.2.5 due to changing the context when the user removes focus from a form element"
+    tests:
+      - "selectJumpMenu"
   F10: 
     description: "Failure of Success Criterion 2.1.2 and Conformance Requirement 5 due to combining multiple content formats in a way that traps users inside one format type"
   F12: 
@@ -1071,13 +1073,17 @@ techniques:
     tests:
       - "imgAltNotPlaceHolder"
   F31:
-    description: "Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages "
+    description: "Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages"
   F32:
     description: "Failure of Success Criterion 1.3.2 due to using white space characters to control spacing within a word"
   F33:
     description: "Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to create multiple columns in plain text content"
+    tests:
+      - "preShouldNotBeUsedForTabularLayout"
   F34:
     description: "Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to format tables in plain text content"
+    tests:
+      - "preShouldNotBeUsedForTabularLayout"
   F36:
     description: "Failure of Success Criterion 3.2.2 due to automatically submitting a form and presenting new content without prior warning when the last field in the form is given a value"
   F37:
@@ -1086,10 +1092,16 @@ techniques:
       - "selectJumpMenu"
   F38:
     description: "Failure of Success Criterion 1.1.1 due to omitting the alt-attribute for non-text content used for decorative purposes only in HTML"
+    tests:
+      - "imgNonDecorativeHasAlt"
   F39:
     description: "Failure of Success Criterion 1.1.1 due to providing a text alternative that is not null (e.g., alt='spacer' or alt='image') for images that should be ignored by assistive technology"
+    tests:
+      - "imgAltNotPlaceHolder"
   F40:
     description: "Failure of Success Criterion 2.2.1 and 2.2.4 due to using meta redirect with a time limit"
+    tests:
+      - "documentMetaNotUsedWithTimeout"
   F41:
     description: "Failure of Success Criterion 2.2.1, 2.2.4, and 3.2.5 due to using meta refresh with a time-out"
     tests:
@@ -1099,7 +1111,7 @@ techniques:
   F43:
     description: "Failure of Success Criterion 1.3.1 due to using structural markup in a way that does not represent relationships in the content"
   F44:
-    description: "Failure of Success Criterion 2.4.3 due to using tabindex to create a tab order that        does not preserve meaning and operability"
+    description: "Failure of Success Criterion 2.4.3 due to using tabindex to create a tab order that does not preserve meaning and operability"
   F46:
     description: "Failure of Success Criterion 1.3.1 due to using th elements, caption elements, or non-empty summary attributes in layout tables"
     tests:
@@ -1164,6 +1176,8 @@ techniques:
     description: "Failure of Success Criterion 3.2.2 due to providing instruction material about the change of context by change of setting in a user interface element at a location that users may bypass"
   F77:
     description: "Failure of Success Criterion 4.1.1 due to duplicate values of type ID"
+    tests:
+      - "documentIDsMustBeUnique"
   F78:
     description: "Failure of Success Criterion 2.4.7 due to styling element outlines and borders in a way that removes or renders non-visible the visual focus indicator"
   F79:
@@ -1178,6 +1192,8 @@ techniques:
     description: "Failure of Success Criterion 1.4.3 and 1.4.6 due to using background images that do not provide sufficient contrast with foreground text (or images of text)"
   F84:
     description: "Failure of Success Criterion 2.4.9 due to using a non-specific link such as 'click here' or 'more' without a mechanism to change the link text to specific text."
+    tests:
+      - "aLinkTextDoesNotBeginWithRedundantWord"
   F85:
     description: "Failure of Success Criterion 2.4.3 due to using dialogs or menus that are not adjacent to their trigger control in the sequential navigation order"
   F86:
@@ -1316,7 +1332,7 @@ techniques:
   G60:
     description: "Playing a sound that turns off automatically within three seconds"
   G61:
-    description: "Presenting repeated components in the same relative order each time theyappear"
+    description: "Presenting repeated components in the same relative order each time they appear"
   G62:
     description: "Providing a glossary"
   G63:
@@ -1372,16 +1388,27 @@ techniques:
     description: "Providing a text summary that requires reading ability less advanced than the upper secondary education level"
   G87:
     description: "Providing closed captions"
+    tests:
+      - "videosEmbeddedOrLinkedNeedCaptions"
+      - "videoProvidesCaptions"
   G88:
     description: "Providing descriptive titles for Web pages"
+    tests:
+      - "documentTitleDescribesDocument"
+      - "documentTitleIsNotPlaceholder"
   G89:
     description: "Providing expected data format and example"
   G90:
     description: "Providing keyboard-triggered event handlers"
+    tests:
+      - "scriptOnclickRequiresOnKeypress"
+      - "scriptOndblclickRequiresOnKeypress"
+      - "scriptOnmousedownRequiresOnKeypress"
+      - "scriptOnmouseupHasOnkeyup"
   G91:
     description: "Providing link text that describes the purpose of a link"
     tests:
-     - "imgHasLongDesc"
+      - "imgHasLongDesc"
   G92:
     description: "Providing long description for non-text content that serves the samepurpose and presents the same information"
   G93:
@@ -1466,6 +1493,7 @@ techniques:
     tests:
       - "headersHaveText"
       - "headersUseToMarkSections"
+      - "pNotUsedAsHeader"
   G142:
     description: "Using a technology that has commonly-available user agents that support zoom"
   G143:
@@ -1596,10 +1624,18 @@ techniques:
     description: "Providing text alternatives for the area elements of image maps "
   H25:
     description: "Providing a title using the title element"
+    tests:
+      - "documentTitleNotEmpty"
   H27:
     description: "Providing text and non-text alternatives for object"
+    tests:
+      - "objectMustContainText"
+      - "objectMustHaveTitle"
   H28:
     description: "Providing definitions for abbreviations by using the abbr and acronym elements"
+    tests:
+      - "documentAbbrIsUsed"
+      - "documentAcronymsHaveElement"
   H30:
     description: "Providing link text that describes the purpose of a link for anchor elements"
     tests:
@@ -1611,9 +1647,14 @@ techniques:
   H34:
     description: "Using a Unicode right-to-left mark (RLM) or left-to-right mark (LRM) to mix textdirection inline"
   H35:
-    description: "Providing text alternatives on applet elements "
+    description: "Providing text alternatives on applet elements"
+    tests:
+      - "appletContainsTextEquivalent"
+      - "appletContainsTextEquivalentInAlt"
   H36:
     description: "Using alt attributes on images used as submit buttons"
+    tests:
+      - "inputImageHasAlt"
   H37: 
     description: "Using alt attributes on img elements"
     tests:
@@ -1626,6 +1667,8 @@ techniques:
     description: "Using definition lists"
   H42:
     description: "Using h1-h6 to identify headings"
+    tests:
+      - "pNotUsedAsHeader"
   H43:
     description: "Using id and headers attributes to associate data cells with header cells indata tables"
   H44:

@@ -1096,7 +1096,10 @@
       "description": "Using the aria-describedby property to provide a descriptive label for input controls"
     },
     "ARIA2": {
-      "description": "Identifying required fields with the   aria-required property"
+      "description": "Identifying required fields with the aria-required property",
+      "tests": [
+        "formWithRequiredLabel"
+      ]
     },
     "ARIA3": {
       "description": "Identifying valid range information with the aria-valuemin and aria-valuemax properties"
@@ -1174,7 +1177,7 @@
       "description": "Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information"
     },
     "F4": {
-      "description": "Failure of Success Criterion 2.2.2 due to using text-decoration:b link without a mechanism to stop it in less than five seconds"
+      "description": "Failure of Success Criterion 2.2.2 due to using text-decoration:blink without a mechanism to stop it in less than five seconds"
     },
     "F7": {
       "description": "Failure of Success Criterion 2.2.2 due to an object or applet, such as Java or Flash, that has blinking content without a mechanism to pause the content that blinks for more than five seconds"
@@ -1183,7 +1186,10 @@
       "description": "Failure of Success Criterion 1.2.2 due to captions omitting some dialogue or important sound effects"
     },
     "F9": {
-      "description": "Failure of Success Criterion 3.2.5 due to changing the context when the user removes focus from a form element"
+      "description": "Failure of Success Criterion 3.2.5 due to changing the context when the user removes focus from a form element",
+      "tests": [
+        "selectJumpMenu"
+      ]
     },
     "F10": {
       "description": "Failure of Success Criterion 2.1.2 and Conformance Requirement 5 due to combining multiple content formats in a way that traps users inside one format type"
@@ -1242,16 +1248,22 @@
       ]
     },
     "F31": {
-      "description": "Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages "
+      "description": "Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages"
     },
     "F32": {
       "description": "Failure of Success Criterion 1.3.2 due to using white space characters to control spacing within a word"
     },
     "F33": {
-      "description": "Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to create multiple columns in plain text content"
+      "description": "Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to create multiple columns in plain text content",
+      "tests": [
+        "preShouldNotBeUsedForTabularLayout"
+      ]
     },
     "F34": {
-      "description": "Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to format tables in plain text content"
+      "description": "Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to format tables in plain text content",
+      "tests": [
+        "preShouldNotBeUsedForTabularLayout"
+      ]
     },
     "F36": {
       "description": "Failure of Success Criterion 3.2.2 due to automatically submitting a form and presenting new content without prior warning when the last field in the form is given a value"
@@ -1263,13 +1275,22 @@
       ]
     },
     "F38": {
-      "description": "Failure of Success Criterion 1.1.1 due to omitting the alt-attribute for non-text content used for decorative purposes only in HTML"
+      "description": "Failure of Success Criterion 1.1.1 due to omitting the alt-attribute for non-text content used for decorative purposes only in HTML",
+      "tests": [
+        "imgNonDecorativeHasAlt"
+      ]
     },
     "F39": {
-      "description": "Failure of Success Criterion 1.1.1 due to providing a text alternative that is not null (e.g., alt='spacer' or alt='image') for images that should be ignored by assistive technology"
+      "description": "Failure of Success Criterion 1.1.1 due to providing a text alternative that is not null (e.g., alt='spacer' or alt='image') for images that should be ignored by assistive technology",
+      "tests": [
+        "imgAltNotPlaceHolder"
+      ]
     },
     "F40": {
-      "description": "Failure of Success Criterion 2.2.1 and 2.2.4 due to using meta redirect with a time limit"
+      "description": "Failure of Success Criterion 2.2.1 and 2.2.4 due to using meta redirect with a time limit",
+      "tests": [
+        "documentMetaNotUsedWithTimeout"
+      ]
     },
     "F41": {
       "description": "Failure of Success Criterion 2.2.1, 2.2.4, and 3.2.5 due to using meta refresh with a time-out",
@@ -1284,7 +1305,7 @@
       "description": "Failure of Success Criterion 1.3.1 due to using structural markup in a way that does not represent relationships in the content"
     },
     "F44": {
-      "description": "Failure of Success Criterion 2.4.3 due to using tabindex to create a tab order that        does not preserve meaning and operability"
+      "description": "Failure of Success Criterion 2.4.3 due to using tabindex to create a tab order that does not preserve meaning and operability"
     },
     "F46": {
       "description": "Failure of Success Criterion 1.3.1 due to using th elements, caption elements, or non-empty summary attributes in layout tables",
@@ -1379,7 +1400,10 @@
       "description": "Failure of Success Criterion 3.2.2 due to providing instruction material about the change of context by change of setting in a user interface element at a location that users may bypass"
     },
     "F77": {
-      "description": "Failure of Success Criterion 4.1.1 due to duplicate values of type ID"
+      "description": "Failure of Success Criterion 4.1.1 due to duplicate values of type ID",
+      "tests": [
+        "documentIDsMustBeUnique"
+      ]
     },
     "F78": {
       "description": "Failure of Success Criterion 2.4.7 due to styling element outlines and borders in a way that removes or renders non-visible the visual focus indicator"
@@ -1400,7 +1424,10 @@
       "description": "Failure of Success Criterion 1.4.3 and 1.4.6 due to using background images that do not provide sufficient contrast with foreground text (or images of text)"
     },
     "F84": {
-      "description": "Failure of Success Criterion 2.4.9 due to using a non-specific link such as 'click here' or 'more' without a mechanism to change the link text to specific text."
+      "description": "Failure of Success Criterion 2.4.9 due to using a non-specific link such as 'click here' or 'more' without a mechanism to change the link text to specific text.",
+      "tests": [
+        "aLinkTextDoesNotBeginWithRedundantWord"
+      ]
     },
     "F85": {
       "description": "Failure of Success Criterion 2.4.3 due to using dialogs or menus that are not adjacent to their trigger control in the sequential navigation order"
@@ -1572,7 +1599,10 @@
       "description": "Ensuring that a contrast ratio of at least 7:1 exists between text (and images of text)and background behind the text"
     },
     "G18": {
-      "description": "Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text"
+      "description": "Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text",
+      "tests": [
+        "appletContainsTextEquivalentInAlt"
+      ]
     },
     "G19": {
       "description": "Ensuring that no component of the content flashes more than three times in any 1-second period"
@@ -1605,7 +1635,7 @@
       "description": "Playing a sound that turns off automatically within three seconds"
     },
     "G61": {
-      "description": "Presenting repeated components in the same relative order each time theyappear"
+      "description": "Presenting repeated components in the same relative order each time they appear"
     },
     "G62": {
       "description": "Providing a glossary"
@@ -1638,7 +1668,17 @@
       "description": "Providing a long description in another location with a link to it thatis immediately adjacent to the non-text content"
     },
     "G74": {
-      "description": "Providing a long description in text near the non-text content, with areference to the location of the long description in the short description"
+      "description": "Providing a long description in text near the non-text content, with areference to the location of the long description in the short description",
+      "tests": [
+        "aLinksToMultiMediaRequireTranscript",
+        "aLinksToSoundFilesNeedTranscripts",
+        "appletContainsTextEquivalent",
+        "appletContainsTextEquivalentInAlt",
+        "areaAltIdentifiesDestination",
+        "areaHasAltValue",
+        "areaLinksToSoundFile",
+        "imgAltIsSameInText"
+      ]
     },
     "G75": {
       "description": "Providing a mechanism to postpone any updating of content"
@@ -1674,19 +1714,36 @@
       "description": "Providing a text summary that requires reading ability less advanced than the upper secondary education level"
     },
     "G87": {
-      "description": "Providing closed captions"
+      "description": "Providing closed captions",
+      "tests": [
+        "videosEmbeddedOrLinkedNeedCaptions",
+        "videoProvidesCaptions"
+      ]
     },
     "G88": {
-      "description": "Providing descriptive titles for Web pages"
+      "description": "Providing descriptive titles for Web pages",
+      "tests": [
+        "documentTitleDescribesDocument",
+        "documentTitleIsNotPlaceholder"
+      ]
     },
     "G89": {
       "description": "Providing expected data format and example"
     },
     "G90": {
-      "description": "Providing keyboard-triggered event handlers"
+      "description": "Providing keyboard-triggered event handlers",
+      "tests": [
+        "scriptOnclickRequiresOnKeypress",
+        "scriptOndblclickRequiresOnKeypress",
+        "scriptOnmousedownRequiresOnKeypress",
+        "scriptOnmouseupHasOnkeyup"
+      ]
     },
     "G91": {
-      "description": "Providing link text that describes the purpose of a link"
+      "description": "Providing link text that describes the purpose of a link",
+      "tests": [
+        "imgHasLongDesc"
+      ]
     },
     "G92": {
       "description": "Providing long description for non-text content that serves the samepurpose and presents the same information"
@@ -1785,7 +1842,10 @@
       "description": "Providing a checkbox on the first page of a multipart form that allows users to ask for longer session time limit or no session time limit"
     },
     "G134": {
-      "description": "Validating Web pages"
+      "description": "Validating Web pages",
+      "tests": [
+        "documentValidatesToDocType"
+      ]
     },
     "G135": {
       "description": "Using the accessibility API features of a technology to expose names androles, to allow user-settable properties to be directly set, and to providenotification of changes"
@@ -1797,10 +1857,19 @@
       "description": "Creating a mechanism that allows users to jump to errors"
     },
     "G140": {
-      "description": "Separating information and structure from presentation to enable different presentations"
+      "description": "Separating information and structure from presentation to enable different presentations",
+      "tests": [
+        "cssDocumentMakesSenseStyleTurnedOff",
+        "documentContentReadableWithoutStylesheets"
+      ]
     },
     "G141": {
-      "description": "Organizing a page using headings"
+      "description": "Organizing a page using headings",
+      "tests": [
+        "headersHaveText",
+        "headersUseToMarkSections",
+        "pNotUsedAsHeader"
+      ]
     },
     "G142": {
       "description": "Using a technology that has commonly-available user agents that support zoom"
@@ -1812,7 +1881,10 @@
       "description": "Ensuring that the Web Page contains another CAPTCHA serving the same purpose using a different modality"
     },
     "G145": {
-      "description": "Ensuring that a contrast ratio of at least 3:1 exists between text (and images of text) and background behind the text"
+      "description": "Ensuring that a contrast ratio of at least 3:1 exists between text (and images of text) and background behind the text",
+      "tests": [
+        "areaHasAltValue"
+      ]
     },
     "G146": {
       "description": "Using liquid layout"
@@ -1983,19 +2055,33 @@
       "description": "Combining adjacent image and text links for the same resource"
     },
     "H4": {
-      "description": "Creating a logical tab order through links, form controls, and objects"
+      "description": "Creating a logical tab order through links, form controls, and objects",
+      "tests": [
+        "tabIndexFollowsLogicalOrder"
+      ]
     },
     "H24": {
       "description": "Providing text alternatives for the area elements of image maps "
     },
     "H25": {
-      "description": "Providing a title using the title element"
+      "description": "Providing a title using the title element",
+      "tests": [
+        "documentTitleNotEmpty"
+      ]
     },
     "H27": {
-      "description": "Providing text and non-text alternatives for object"
+      "description": "Providing text and non-text alternatives for object",
+      "tests": [
+        "objectMustContainText",
+        "objectMustHaveTitle"
+      ]
     },
     "H28": {
-      "description": "Providing definitions for abbreviations by using the abbr and acronym elements"
+      "description": "Providing definitions for abbreviations by using the abbr and acronym elements",
+      "tests": [
+        "documentAbbrIsUsed",
+        "documentAcronymsHaveElement"
+      ]
     },
     "H30": {
       "description": "Providing link text that describes the purpose of a link for anchor elements",
@@ -2013,10 +2099,17 @@
       "description": "Using a Unicode right-to-left mark (RLM) or left-to-right mark (LRM) to mix textdirection inline"
     },
     "H35": {
-      "description": "Providing text alternatives on applet elements "
+      "description": "Providing text alternatives on applet elements",
+      "tests": [
+        "appletContainsTextEquivalent",
+        "appletContainsTextEquivalentInAlt"
+      ]
     },
     "H36": {
-      "description": "Using alt attributes on images used as submit buttons"
+      "description": "Using alt attributes on images used as submit buttons",
+      "tests": [
+        "inputImageHasAlt"
+      ]
     },
     "H37": {
       "description": "Using alt attributes on img elements",
@@ -2025,13 +2118,19 @@
       ]
     },
     "H39": {
-      "description": "Using caption elements to associate data table captions with data tables"
+      "description": "Using caption elements to associate data table captions with data tables",
+      "tests": [
+        "objectLinkToMultimediaHasTextTranscript"
+      ]
     },
     "H40": {
       "description": "Using definition lists"
     },
     "H42": {
-      "description": "Using h1-h6 to identify headings"
+      "description": "Using h1-h6 to identify headings",
+      "tests": [
+        "pNotUsedAsHeader"
+      ]
     },
     "H43": {
       "description": "Using id and headers attributes to associate data cells with header cells indata tables"
@@ -2106,7 +2205,11 @@
       "description": "Using frame elements to group blocks of repeated material"
     },
     "H71": {
-      "description": "Providing a description for groups of form controls using fieldset and legendelements "
+      "description": "Providing a description for groups of form controls using fieldset and legendelements",
+      "tests": [
+        "radioMarkedWithFieldgroupAndLegend",
+        "legendTextNotEmpty"
+      ]
     },
     "H73": {
       "description": "Using the summary attribute of the table element to give an overview of datatables"
