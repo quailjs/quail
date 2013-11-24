@@ -7,4 +7,4 @@ quail.components.convertToPx = function(unit) {
 	var height = $test.height();
 	$test.remove();
 	return height;
-}
+};
