@@ -150,7 +150,9 @@
       ]
     },
     "d": {
-      "tests": null
+      "tests": [
+        "documentContentReadableWithoutStylesheets"
+      ]
     },
     "ef": {
       "tests": [
@@ -164,7 +166,9 @@
       ]
     },
     "h": {
-      "tests": null
+      "tests": [
+        "tableWithBothHeadersUseScope"
+      ]
     },
     "i": {
       "tests": null

@@ -111,6 +111,7 @@ techniques:
       - "scriptsDoNotUseColorAlone"
   d:
     tests:
+      - "documentContentReadableWithoutStylesheets"
   ef:
     tests:
       - "imgMapAreasHaveDuplicateLink"
@@ -120,6 +121,7 @@ techniques:
       - "tableDataShouldHaveTh"
   h:
     tests:
+      - "tableWithBothHeadersUseScope"
   i:
     tests:
   j:
@@ -152,7 +154,6 @@ techniques:
       - "fileHasLabel"
       - "passwordHasLabel"
       - "radioHasLabel"
-
   o:
     tests:
       - "skipToContentLinkProvided"
