@@ -36,7 +36,7 @@ module.exports = function(grunt) {
     concat: {
       options: {
         banner: '<%= pkg.options.banner %>' + "\n" + ';(function($) {' + "\n",
-        footer: "\n" + '})(jQuery)',
+        footer: "\n" + '})(jQuery);',
         stripBanners: true
       },  
       dist: {
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
             jQuery: true
         }
       },
-      files: ['Gruntfile.js', 'src/quail.js', 'src/resources/**/*.json']
+      files: ['Gruntfile.js', 'dist/quail.jquery.js']
     },
     watch: {
       scripts: {
@@ -84,9 +84,17 @@ module.exports = function(grunt) {
           spawn: false
         }
       }
+    },
+    buildGuideline : {
+      dist : {
+        files : [
+          { src : 'dist/guidelines/508.json', dest : 'dist/guidelines/508.tests.json' },
+          { src : 'dist/guidelines/wcag.json', dest : 'dist/guidelines/wcag.tests.json' }
+        ]
+      }
     }
   });
-  
+  grunt.loadTasks('tasks');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -96,18 +104,16 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-  // Linting, mostly to test JSON.
-  grunt.registerTask('lint', ['jshint']);
 
   // By default, just run tests
-  grunt.registerTask('default', ['concat', 'qunit']);
+  grunt.registerTask('default', ['convert', 'concat', 'jshint', 'buildGuideline', 'qunit']);
 
   // Build task.
-  grunt.registerTask('build', ['convert', 'jshint', 'concat', 'uglify']);
+  grunt.registerTask('build', ['convert', 'concat', 'jshint', 'buildGuideline', 'uglify']);
 
   // Release task.
-  grunt.registerTask('release', ['convert', 'jshint', 'concat', 'qunit', 'uglify']);
+  grunt.registerTask('release', ['convert', 'concat', 'jshint', 'qunit', 'buildGuideline', 'uglify']);
 
   // Test task.
-  grunt.registerTask('test', ['convert', 'concat', 'jshint', 'qunit']);
+  grunt.registerTask('test', ['convert', 'concat', 'jshint', 'buildGuideline', 'qunit']);
 };

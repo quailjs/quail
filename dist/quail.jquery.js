@@ -419,7 +419,8 @@ quail.components.convertToPx = function(unit) {
 	var height = $test.height();
 	$test.remove();
 	return height;
-}
+};
+
 quail.components.event = function(testName, options) {
   var $items = (typeof options.selector === 'undefined') ?
                 quail.html.find('*') :
@@ -433,11 +434,11 @@ quail.components.event = function(testName, options) {
   });
 };
 quail.components.hasEventListener = function(element, event) {
- 	if(typeof $(element).attr('on' + event) !== 'undefined') {
- 		return true;
- 	}
- 	return typeof $(element).get(0)[event] !== 'undefined';
- };
+	if(typeof $(element).attr('on' + event) !== 'undefined') {
+		return true;
+	}
+	return typeof $(element).get(0)[event] !== 'undefined';
+};
 quail.components.header = function(testName, options) {
   var current = parseInt(options.selector.substr(-1, 1), 10);
   var nextHeading = false;
@@ -1113,7 +1114,7 @@ quail.aLinksAreSeperatedByPrintableCharacters = function() {
 quail.aLinksNotSeparatedBySymbols = function() {
   quail.html.find('a').each(function() {
     if($(this).next('a').length &&
-    	quail.strings.symbols.indexOf($(this).get(0).nextSibling.wholeText.toLowerCase().trim()) !== -1 ) {
+			quail.strings.symbols.indexOf($(this).get(0).nextSibling.wholeText.toLowerCase().trim()) !== -1 ) {
       quail.testFails('aLinksNotSeparatedBySymbols', $(this));
     }
   });
@@ -1719,4 +1720,4 @@ quail.videosEmbeddedOrLinkedNeedCaptions = function() {
   });
 };
 
-})(jQuery)
+})(jQuery);
