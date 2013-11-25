@@ -1699,8 +1699,8 @@ techniques:
   H49:
     description: "Using semantic markup to mark emphasized or special text"
     tests:
-      -"blockquoteNotUsedForIndentation"
-      -"blockquoteUseForQuotations"
+      - "blockquoteNotUsedForIndentation"
+      - "blockquoteUseForQuotations"
   H51:
     description: "Using table markup to present tabular information"
   H53:
