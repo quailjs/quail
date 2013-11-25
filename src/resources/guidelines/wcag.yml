@@ -979,7 +979,7 @@ techniques:
   C6: 
     description: "Positioning content based on structural markup"
   C7: 
-    description: "Using CSS to hide a portion of the link text "
+    description: "Using CSS to hide a portion of the link text"
   C8: 
     description: "Using CSS letter-spacing to control spacing within a word"
   C9: 
@@ -1028,6 +1028,10 @@ techniques:
     description: "Failure of Success Criterion 2.2.2 due to using text-decoration:blink without a mechanism to stop it in less than five seconds"
   F7: 
     description: "Failure of Success Criterion 2.2.2 due to an object or applet, such as Java or Flash, that has blinking content without a mechanism to pause the content that blinks for more than five seconds"
+    tests:
+      - "appletsDoNotFlicker"
+      - "objectDoesNotFlicker"
+      - "scriptsDoNotFlicker"
   F8: 
     description: "Failure of Success Criterion 1.2.2 due to captions omitting some dialogue or important sound effects"
   F9: 
@@ -1152,6 +1156,7 @@ techniques:
       - "imgHasAlt"
       - "inputImageHasAlt"
       - "areaHasAltValue"
+      - "svgContainsTitle"
   F66:
     description: "Failure of Success Criterion 3.2.3 due to presenting navigation links in a different relative order on different pages"
   F67:
@@ -1386,6 +1391,8 @@ techniques:
     description: "Providing a text description when user input falls outside the required format or values"
   G86:
     description: "Providing a text summary that requires reading ability less advanced than the upper secondary education level"
+    tests:
+      - "paragarphIsWrittenClearly"
   G87:
     description: "Providing closed captions"
     tests:
@@ -1640,6 +1647,8 @@ techniques:
     description: "Providing link text that describes the purpose of a link for anchor elements"
     tests:
       - "aImgAltNotRepetative"
+      - "aMustContainText"
+      - "aSuspiciousLinkText"
   H32:
     description: "Providing submit buttons"
   H33:
@@ -1689,6 +1698,9 @@ techniques:
     description: "Using ol, ul and dl for lists or groups of links"
   H49:
     description: "Using semantic markup to mark emphasized or special text"
+    tests:
+      -"blockquoteNotUsedForIndentation"
+      -"blockquoteUseForQuotations"
   H51:
     description: "Using table markup to present tabular information"
   H53:
