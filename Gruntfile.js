@@ -78,8 +78,8 @@ module.exports = function(grunt) {
     },
     watch: {
       scripts: {
-        files: ['src/js/*.js', 'src/js/components/*', 'src/js/custom/*', 'src/js/strings/*'],
-        tasks: ['jshint', 'concat', 'uglify'],
+        files: ['src/**/*.js', 'src/**/*.yml'],
+        tasks: ['convert', 'concat', 'jshint', 'buildGuideline', 'uglify'],
         options: {
           spawn: false
         }
@@ -111,9 +111,6 @@ module.exports = function(grunt) {
   // Build task.
   grunt.registerTask('build', ['convert', 'concat', 'jshint', 'buildGuideline', 'uglify']);
 
-  // Watch task
-  grunt.registerTask('watch', ['default']);
-  
   // Release task.
   grunt.registerTask('release', ['convert', 'concat', 'jshint', 'qunit', 'buildGuideline', 'uglify']);
 
