@@ -1023,6 +1023,8 @@ quail.strings.placeholders = [
 "photo",
 "frame",
 "frame title",
+"iframe",
+"iframe title",
 "legend"
 ];
 quail.strings.redundant = {

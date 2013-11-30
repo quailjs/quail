@@ -691,7 +691,7 @@ frameTitlesDescribeFunction:
   testability: 0
   type: placeholder
 frameTitlesNotEmpty: 
-  selector: "frame:not(frame[title]), frame[title=]"
+  selector: "frame:not(frame[title]), frame[title=], iframe:not(iframe[title]), iframe[title=]"
   tags: 
     - deprecated
     - frame
@@ -701,14 +701,14 @@ frameTitlesNotPlaceholder:
   attribute: title
   components: 
     - placeholder
-  selector: frame
+  selector: "frame, iframe"
   tags: 
     - deprecated
     - frame
   testability: 1
   type: placeholder
 framesHaveATitle: 
-  selector: "frame:not(frame[title]),iframe:not(iframe[title])"
+  selector: "frame:not(frame[title]), iframe:not(iframe[title])"
   tags: 
     - deprecated
     - frame
