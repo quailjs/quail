@@ -906,7 +906,7 @@
     "type": "placeholder"
   },
   "framesHaveATitle": {
-    "selector": "frame:not(frame[title])",
+    "selector": "frame:not(frame[title]),iframe:not(iframe[title])",
     "tags": [
       "deprecated",
       "frame"
