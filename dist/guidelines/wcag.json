@@ -1917,7 +1917,10 @@
       "description": "Providing a link to a text transcript of a prepared statement or script if the script is followed"
     },
     "G152": {
-      "description": "Setting animated gif images to stop blinking after n cycles (within 5 seconds)"
+      "description": "Setting animated gif images to stop blinking after n cycles (within 5 seconds)",
+      "tests": [
+        "imgGifNoFlicker"
+      ]
     },
     "G153": {
       "description": "Making the text easier to read"
@@ -2212,7 +2215,12 @@
       "description": "Using the scope attribute to associate header cells and data cells in datatables"
     },
     "H64": {
-      "description": "Using the title attribute of the frame and iframe elements"
+      "description": "Using the title attribute of the frame and iframe elements",
+      "tests": [
+        "framesHaveATitle",
+        "frameTitlesNotEmpty",
+        "frameTitlesNotPlaceholder"
+      ]
     },
     "H65": {
       "description": "Using the title attribute to identify form controls when the label elementcannot be used"
