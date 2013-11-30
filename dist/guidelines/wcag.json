@@ -1168,7 +1168,10 @@
       "description": "Using CSS to replace text with images of text and providing user interface controls to switch"
     },
     "F1": {
-      "description": "Failure of Success Criterion 1.3.2 due to changing the meaning of content by positioning information with CSS"
+      "description": "Failure of Success Criterion 1.3.2 due to changing the meaning of content by positioning information with CSS",
+      "tests": [
+        "listNotUsedForFormatting"
+      ]
     },
     "F2": {
       "description": "Failure of Success Criterion 1.3.1 due to using changes in text presentation to convey information without using the appropriate markup or text"
@@ -1218,7 +1221,10 @@
       "description": "Failure of Success Criterion 2.2.2 due to including scrolling content where movement is not essential to the activity without also including a mechanism to pause and restart the content"
     },
     "F17": {
-      "description": "Failure of Success Criterion 1.3.1 and 4.1.1 due to insufficient information in DOM to determine one-to-one relationships (e.g., between labels with same id) in HTML"
+      "description": "Failure of Success Criterion 1.3.1 and 4.1.1 due to insufficient information in DOM to determine one-to-one relationships (e.g., between labels with same id) in HTML",
+      "tests": [
+        "labelMustBeUnique"
+      ]
     },
     "F20": {
       "description": "Failure of Success Criterion 1.1.1 and 4.1.2 due to not updating text alternatives when changes to non-text content occur"
@@ -2155,7 +2161,8 @@
         "passwordHasLabel",
         "radioHasLabel",
         "selectHasAssociatedLabel",
-        "textareaHasAssociatedLabel"
+        "textareaHasAssociatedLabel",
+        "labelMustNotBeEmpty"
       ]
     },
     "H45": {
