@@ -111,6 +111,9 @@ module.exports = function(grunt) {
   // Build task.
   grunt.registerTask('build', ['convert', 'concat', 'jshint', 'buildGuideline', 'uglify']);
 
+  // Watch task
+  grunt.registerTask('watch', ['default']);
+  
   // Release task.
   grunt.registerTask('release', ['convert', 'concat', 'jshint', 'qunit', 'buildGuideline', 'uglify']);
 
