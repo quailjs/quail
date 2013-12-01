@@ -16,5 +16,7 @@ quail.strings.placeholders = [
 "photo",
 "frame",
 "frame title",
+"iframe",
+"iframe title",
 "legend"
 ];

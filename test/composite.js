@@ -2,7 +2,7 @@
 
 var accessibilityTests = { };
 
-$.ajax({ url : '../../../src/resources/tests.json',
+$.ajax({ url : '../../../dist/tests.json',
  async : false,
  dataType : 'json',
  cache : false,

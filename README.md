@@ -23,6 +23,7 @@ Credits
 
 - QUAIL is maintained by [Kevin Miller](http://twitter.com/kevinmiyar)
 - Part of QUAIL development is supported by [Cal State Monterey Bay](http://csumb.edu)
+- Many thanks to [Jesse Renée Beach](https://twitter.com/jessebeach) for promoting QUAIL and the many commits.
 - Thanks to the hosts of [Chez JJ](http://chezjj.com/), who housed Kevin for a week while he worked on QUAIL 2.
 
 Legal

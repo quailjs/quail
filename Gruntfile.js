@@ -8,6 +8,26 @@ module.exports = function(grunt) {
     clean: {
       hooks: ['.git/hooks/pre-commit']
     },
+    convert: {
+      yml2json: {
+        files: [
+          {
+            expand: true,
+            cwd: 'src/resources/guidelines',
+            src: ['*.yml'],
+            dest: 'dist/guidelines/',
+            ext: '.json'
+          },
+          {
+            expand: true,
+            cwd: 'src/resources',
+            src: ['*.yml'],
+            dest: 'dist/',
+            ext: '.json'
+          }
+        ]
+      }
+    },
     shell: {
       hooks: {
         command: 'cp git-hooks/pre-commit .git/hooks/'
@@ -16,7 +36,7 @@ module.exports = function(grunt) {
     concat: {
       options: {
         banner: '<%= pkg.options.banner %>' + "\n" + ';(function($) {' + "\n",
-        footer: "\n" + '})(jQuery)',
+        footer: "\n" + '})(jQuery);',
         stripBanners: true
       },  
       dist: {
@@ -54,39 +74,46 @@ module.exports = function(grunt) {
             jQuery: true
         }
       },
-      files: ['Gruntfile.js', 'src/quail.js', 'src/resources/**/*.json']
+      files: ['Gruntfile.js', 'dist/quail.jquery.js']
     },
     watch: {
       scripts: {
-        files: ['src/js/*.js', 'src/js/components/*', 'src/js/custom/*', 'src/js/strings/*'],
-        tasks: ['jshint', 'concat', 'uglify'],
+        files: ['src/**/*.js', 'src/**/*.yml'],
+        tasks: ['convert', 'concat', 'jshint', 'buildGuideline', 'uglify'],
         options: {
           spawn: false
         }
       }
+    },
+    buildGuideline : {
+      dist : {
+        files : [
+          { src : 'dist/guidelines/508.json', dest : 'dist/guidelines/508.tests.json' },
+          { src : 'dist/guidelines/wcag.json', dest : 'dist/guidelines/wcag.tests.json' }
+        ]
+      }
     }
   });
-  
+  grunt.loadTasks('tasks');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-  // Linting, mostly to test JSON.
-  grunt.registerTask('lint', ['jshint']);
 
   // By default, just run tests
-  grunt.registerTask('default', ['concat', 'qunit']);
+  grunt.registerTask('default', ['convert', 'concat', 'jshint', 'buildGuideline', 'qunit']);
+
+  // Build task.
+  grunt.registerTask('build', ['convert', 'concat', 'jshint', 'buildGuideline', 'uglify']);
 
   // Release task.
-  grunt.registerTask('build', ['jshint', 'concat', 'uglify']);
-
-  // Release task.
-  grunt.registerTask('release', ['jshint', 'concat', 'qunit', 'uglify']);
+  grunt.registerTask('release', ['convert', 'concat', 'jshint', 'qunit', 'buildGuideline', 'uglify']);
 
   // Test task.
-  grunt.registerTask('test', ['concat', 'jshint', 'qunit']);
+  grunt.registerTask('test', ['convert', 'concat', 'jshint', 'buildGuideline', 'qunit']);
 };

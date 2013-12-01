@@ -1,0 +1,164 @@
+guidelines:
+  a:
+    id: a
+    title: "A text equivalent for every non-text element shall be provided (e.g., via 'alt', 'longdesc', or in element content)."
+    techniques:
+      - "a"
+  b:
+    id: b
+    title: "Equivalent alternatives for any multimedia presentation shall be synchronized with the presentation."
+    techniques:
+      - "b"
+  c:
+    id: c
+    title: "Web pages shall be designed so that all information conveyed with color is also available without color, for example from context or markup."
+    techniques:
+      - "c"
+  d:
+    id: d
+    title: "Documents shall be organized so they are readable without requiring an associated style sheet."
+    techniques:
+       - "d"
+  e:
+    id: e
+    title: "Redundant text links shall be provided for each active region of a server-side image map."
+    techniques:
+      - "ef"
+  f:
+    id: f
+    title: "Client-side image maps shall be provided instead of server-side image maps except where the regions cannot be defined with an available geometric shape."
+    techniques:
+      - "ef"
+  g:
+    id: g
+    title: "Row and column headers shall be identified for data tables."
+    techniques:
+      - "g"
+  h:
+    id: h
+    title: "Markup shall be used to associate data cells and header cells for data tables that have two or more logical levels of row or column headers."
+    techniques:
+      - "h"
+  i:
+    id: i
+    title: "Frames shall be titled with text that facilitates frame identification and navigation."
+    techniques:
+      - "i"
+  j:
+    id: j
+    title: "Pages shall be designed to avoid causing the screen to flicker with a frequency greater than 2 Hz and lower than 55 Hz."
+    techniques:
+      - "j"
+  k:
+    id: k
+    title: "A text-only page, with equivalent information or functionality, shall be provided to make a web site comply with the provisions of this part, when compliance cannot be accomplished in any other way. The content of the text-only page shall be updated whenever the primary page changes."
+    techniques:
+      - "k"
+  l:
+    id: l
+    title: "When pages utilize scripting languages to display content, or to create interface elements, the information provided by the script shall be identified with functional text that can be read by assistive technology."
+    techniques:
+      - "l"
+  m:
+    id: m
+    title: "When a web page requires that an applet, plug-in or other application be present on the client system to interpret page content, the page must provide a link to a plug-in or applet that complies with §1194.21(a) through (l)."
+    techniques:
+      - "m"
+  n:
+    id: n
+    title: "When electronic forms are designed to be completed on-line, the form shall allow people using assistive technology to access the information, field elements, and functionality required for completion and submission of the form, including all directions and cues."
+    techniques:
+      - "n"
+  o:
+    id: o
+    title: "A method shall be provided that permits users to skip repetitive navigation links."
+    techniques:
+      - "o"
+  p:
+    id: p
+    title: "When a timed response is required, the user shall be alerted and given sufficient time to indicate more time is required."
+    techniques:
+      - "p"
+techniques:
+  a:
+    tests:
+      - "imgAltIsDifferent"
+      - "imgAltIsSameInText"
+      - "imgAltIsTooLong"
+      - "imgAltNotEmptyInAnchor"
+      - "imgAltNotPlaceHolder"
+      - "imgHasAlt"
+      - "imgNonDecorativeHasAlt"
+      - "inputImageHasAlt"
+      - "objectTextUpdatesWhenObjectChanges"
+      - "objectLinkToMultimediaHasTextTranscript"
+      - "inputImageAltIsNotFileName"
+      - "inputImageAltIsNotPlaceholder"
+      - "inputImageAltIsShort"
+  b:
+    tests:
+      - "videoProvidesCaptions"
+      - "videoProvidesCaptions"
+  c:
+    tests:
+      - "aLinksToMultiMediaRequireTranscript"
+      - "aLinksToSoundFilesNeedTranscripts"
+      - "appletsDoneUseColorAlone"
+      - "checkboxHasLabel"
+      - "imgNotReferredToByColorAlone"
+      - "inputDoesNotUseColorAlone"
+      - "objectDoesNotUseColorAlone"
+      - "scriptsDoNotUseColorAlone"
+  d:
+    tests:
+      - "documentContentReadableWithoutStylesheets"
+  ef:
+    tests:
+      - "imgMapAreasHaveDuplicateLink"
+      - "imgWithMapHasUseMap"
+  g:
+    tests:
+      - "tableDataShouldHaveTh"
+  h:
+    tests:
+      - "tableWithBothHeadersUseScope"
+  i:
+    tests:
+  j:
+    tests:
+      - "appletsDoNotFlicker"
+      - "imgGifNoFlicker"
+      - "objectDoesNotFlicker"
+      - "scriptsDoNotFlicker"
+  k:
+    tests:
+  l:
+    tests:
+      - "scriptInBodyMustHaveNoscript"
+      - "scriptOnclickRequiresOnKeypress"
+      - "scriptOndblclickRequiresOnKeypress"
+      - "scriptOnmousedownRequiresOnKeypress"
+      - "scriptOnmousemove"
+      - "scriptOnmouseoutHasOnmouseblur"
+      - "scriptOnmouseoverHasOnfocus"
+      - "scriptOnmouseupHasOnkeyup"
+      - "scriptUIMustBeAccessible"
+  m:
+    tests:
+      - "appletContainsTextEquivalent"
+      - "appletContainsTextEquivalentInAlt"
+      - "appletTextEquivalentsGetUpdated"
+      - "appletUIMustBeAccessible"
+  n:
+    tests:
+      - "fileHasLabel"
+      - "passwordHasLabel"
+      - "radioHasLabel"
+  o:
+    tests:
+      - "skipToContentLinkProvided"
+  p:
+    test:
+      - "documentAutoRedirectNotUsed"
+      - "documentMetaNotUsedWithTimeout"
+

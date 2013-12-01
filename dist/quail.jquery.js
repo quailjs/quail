@@ -15,7 +15,7 @@ $.fn.quail = function(options) {
 $.expr[':'].quailCss = function(obj, index, meta, stack) {
   var args = meta[3].split(/\s*=\s*/);
   return $(obj).css(args[0]).search(args[1]) > -1;
-}
+};
 
 var quail = {
   
@@ -271,7 +271,7 @@ var quail = {
 quail.components.acronym = function(testName, acronymTag) {
   var predefined = { };
   var alreadyReported = { };
-  quail.html.find(acronymTag + '[title]').each(function() {
+  quail.html.find('acronym[title], abbr[title]').each(function() {
     predefined[$(this).text().toUpperCase()] = $(this).attr('title');
   });
   quail.html.find('p, div, h1, h2, h3, h4, h5').each(function(){
@@ -425,7 +425,8 @@ quail.components.convertToPx = function(unit) {
 	var height = $test.height();
 	$test.remove();
 	return height;
-}
+};
+
 quail.components.event = function(testName, options) {
   var $items = (typeof options.selector === 'undefined') ?
                 quail.html.find('*') :
@@ -439,11 +440,11 @@ quail.components.event = function(testName, options) {
   });
 };
 quail.components.hasEventListener = function(element, event) {
- 	if(typeof $(element).attr('on' + event) !== 'undefined') {
- 		return true;
- 	}
- 	return typeof $(element).get(0)[event] !== 'undefined';
- };
+	if(typeof $(element).attr('on' + event) !== 'undefined') {
+		return true;
+	}
+	return typeof $(element).get(0)[event] !== 'undefined';
+};
 quail.components.header = function(testName, options) {
   var current = parseInt(options.selector.substr(-1, 1), 10);
   var nextHeading = false;
@@ -1028,6 +1029,8 @@ quail.strings.placeholders = [
 "photo",
 "frame",
 "frame title",
+"iframe",
+"iframe title",
 "legend"
 ];
 quail.strings.redundant = {
@@ -1041,7 +1044,8 @@ quail.strings.redundant = {
     "go to",
     "click here",
     "link",
-    "click"
+    "click",
+    "more"
   ],
   "required":[
     "*"
@@ -1118,7 +1122,7 @@ quail.aLinksAreSeperatedByPrintableCharacters = function() {
 quail.aLinksNotSeparatedBySymbols = function() {
   quail.html.find('a').each(function() {
     if($(this).next('a').length &&
-    	quail.strings.symbols.indexOf($(this).get(0).nextSibling.wholeText.toLowerCase().trim()) !== -1 ) {
+			quail.strings.symbols.indexOf($(this).get(0).nextSibling.wholeText.toLowerCase().trim()) !== -1 ) {
       quail.testFails('aLinksNotSeparatedBySymbols', $(this));
     }
   });
@@ -1724,4 +1728,4 @@ quail.videosEmbeddedOrLinkedNeedCaptions = function() {
   });
 };
 
-})(jQuery)
+})(jQuery);

@@ -29,7 +29,7 @@ $(document).ready(function() {
    $('#edit').keyup(function() {
        var $text = $('<div>' + $(this).val() + '</div>');
        $text.quail({ guideline : guideline,
-        jsonPath : '../../src/resources',
+        jsonPath : '../../dist',
         reset : true,
         testFailed : function(event) {
           if(event.severity == 'severe') {
