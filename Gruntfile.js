@@ -61,7 +61,7 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      files: ['Gruntfile.js', 'dist/quail.jquery.js']
+      files: ['Gruntfile.js', 'src/**/*.js']
     },
     watch: {
       scripts: {
