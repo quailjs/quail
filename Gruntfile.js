@@ -59,22 +59,9 @@ module.exports = function(grunt) {
     },
     jshint: {
       options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        browser: true,
-        globals: {
-            jQuery: true
-        }
+        jshintrc: '.jshintrc'
       },
-      files: ['Gruntfile.js', 'dist/quail.jquery.js']
+      files: ['Gruntfile.js', 'src/**/*.js']
     },
     watch: {
       scripts: {
