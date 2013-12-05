@@ -16,13 +16,9 @@ module.exports = function(grunt) {
       });
       var data = JSON.parse(contents);
       var tests = [ ];
-      for (var technique in data.techniques ) {
-        if (typeof data.techniques[technique].tests !== 'undefined') {
-          for (var i in data.techniques[technique].tests ) {
-            if(tests.indexOf(data.techniques[technique].tests[i]) === -1) {
-              tests.push(data.techniques[technique].tests[i]);
-            }
-          }
+      for (var test in data) {
+        if (typeof data[test].guidelines[file.guideline] !== 'undefined') {
+          tests.push(test);
         }
       }
       grunt.file.write(file.dest, JSON.stringify(tests));

@@ -88,8 +88,8 @@ module.exports = function(grunt) {
     buildGuideline : {
       dist : {
         files : [
-          { src : 'dist/guidelines/508.json', dest : 'dist/guidelines/508.tests.json' },
-          { src : 'dist/guidelines/wcag.json', dest : 'dist/guidelines/wcag.tests.json' }
+          { guideline: '508', src : 'dist/tests.json', dest : 'dist/guidelines/508.tests.json' },
+          { guideline: 'wcag', src : 'dist/tests.json', dest : 'dist/guidelines/wcag.tests.json' }
         ]
       }
     }
