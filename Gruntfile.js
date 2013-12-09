@@ -75,10 +75,17 @@ module.exports = function(grunt) {
     buildGuideline : {
       dist : {
         files : [
-          { src : 'dist/guidelines/508.json', dest : 'dist/guidelines/508.tests.json' },
-          { src : 'dist/guidelines/wcag.json', dest : 'dist/guidelines/wcag.tests.json' }
+          { guideline: '508', src : 'dist/tests.json', dest : 'dist/guidelines/508.tests.json' },
+          { guideline: 'wcag', src : 'dist/tests.json', dest : 'dist/guidelines/wcag.tests.json' }
         ]
       }
+    },
+    'gh-pages': {
+      options: {
+        base: '',
+        add: true
+      },
+      src: ['dist/**']
     }
   });
   grunt.loadTasks('tasks');
@@ -90,6 +97,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-gh-pages');
 
 
   // By default, just run tests
@@ -99,8 +107,10 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['convert', 'concat', 'jshint', 'buildGuideline', 'uglify']);
 
   // Release task.
-  grunt.registerTask('release', ['convert', 'concat', 'jshint', 'qunit', 'buildGuideline', 'uglify']);
+  grunt.registerTask('release', ['convert', 'concat', 'jshint', 'qunit', 'buildGuideline', 'uglify', 'gh-pages']);
 
   // Test task.
   grunt.registerTask('test', ['convert', 'concat', 'jshint', 'buildGuideline', 'qunit']);
+
+  grunt.registerTask('publish', ['gh-pages']);
 };

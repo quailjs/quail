@@ -10,3 +10,4 @@ node_modules/*
 utilities/printTable.php
 utilities/guidelineFinder.php
 utilities/tests.json
+.grunt/*
