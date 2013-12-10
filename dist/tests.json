@@ -7,7 +7,15 @@
     ],
     "testability": 1,
     "type": "custom",
-    "guidelines": [],
+    "guidelines": {
+      "wcag": {
+        "2.4.4": {
+          "techniques": [
+            "H2"
+          ]
+        }
+      }
+    },
     "title": {
       "en": "Adjacent links that point to the same location should be merged"
     },
