@@ -2842,6 +2842,7 @@ scriptOnclickRequiresOnKeypress:
       2.1.1: 
         techniques: 
           - "G90"
+          - "SCR2"
       2.1.3: 
         techniques: 
           - "G90"
@@ -2866,6 +2867,7 @@ scriptOndblclickRequiresOnKeypress:
       2.1.1: 
         techniques: 
           - "G90"
+          - "SCR2"
       2.1.3: 
         techniques: 
           - "G90"
@@ -2890,6 +2892,7 @@ scriptOnmousedownRequiresOnKeypress:
       2.1.1: 
         techniques: 
           - "G90"
+          - "SCR2"
       2.1.3: 
         techniques: 
           - "G90"
@@ -2907,7 +2910,11 @@ scriptOnmousemove:
     - "javascript"
   testability: 1
   type: "event"
-  guidelines: 
+  guidelines:
+    wcag: 
+      2.1.1: 
+        techniques:
+          - "SCR2"
     508: 
       - "l"
   title: 
@@ -2924,7 +2931,11 @@ scriptOnmouseoutHasOnmouseblur:
     - "javascript"
   testability: 1
   type: "event"
-  guidelines: 
+  guidelines:
+    wcag: 
+      2.1.1: 
+        techniques:
+          - "SCR2" 
     508: 
       - "l"
   title: 
@@ -2941,7 +2952,11 @@ scriptOnmouseoverHasOnfocus:
     - "javascript"
   testability: 1
   type: "event"
-  guidelines: 
+  guidelines:
+    wcag: 
+      2.1.1: 
+        techniques:
+          - "SCR2"
     508: 
       - "l"
   title: 
@@ -2958,7 +2973,11 @@ scriptOnmouseupHasOnkeyup:
     - "javascript"
   testability: 1
   type: "event"
-  guidelines: 
+  guidelines:
+    wcag: 
+      2.1.1: 
+        techniques:
+          - "SCR2" 
     508: 
       - "l"
     wcag: 
