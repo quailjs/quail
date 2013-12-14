@@ -78,7 +78,7 @@ var quail = {
       }
     }
     if(typeof quail.options.guideline === 'string') {
-      $.ajax({ url : quail.options.jsonPath + '/guidelines/' + quail.options.guideline +'.json',
+      $.ajax({ url : quail.options.jsonPath + '/guidelines/' + quail.options.guideline +'.tests.json',
                async : false,
                dataType : 'json',
                success : function(data) {
