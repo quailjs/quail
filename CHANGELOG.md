@@ -1,6 +1,15 @@
 QUAIL Changelog
 ===============
 
+2.1
+---
+- Changed license to MIT
+- Quail is now split into various components and custom callbacks that are build using `grunt build`
+- Configuration is now in YAML format
+- Tests are explicitly aligned with WCAG techniques or success criteria.
+- Tests can have translatable titles and default descriptions.
+- Tests now support different configurations based on guideline alignment.
+
 2.0.4
 -----
 - Moved source files to different files in `/src`, `/dist` is now built versions of quail.
