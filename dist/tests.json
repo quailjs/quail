@@ -3996,7 +3996,8 @@
       "wcag": {
         "2.1.1": {
           "techniques": [
-            "G90"
+            "G90",
+            "SCR2"
           ]
         },
         "2.1.3": {
@@ -4032,7 +4033,8 @@
       "wcag": {
         "2.1.1": {
           "techniques": [
-            "G90"
+            "G90",
+            "SCR2"
           ]
         },
         "2.1.3": {
@@ -4068,7 +4070,8 @@
       "wcag": {
         "2.1.1": {
           "techniques": [
-            "G90"
+            "G90",
+            "SCR2"
           ]
         },
         "2.1.3": {
@@ -4100,7 +4103,14 @@
     "guidelines": {
       "508": [
         "l"
-      ]
+      ],
+      "wcag": {
+        "2.1.1": {
+          "techniques": [
+            "SCR2"
+          ]
+        }
+      }
     },
     "title": {
       "en": "Any element with an \"onmousemove\" attribute shoul have a keyboard-related action as well"
@@ -4124,7 +4134,14 @@
     "guidelines": {
       "508": [
         "l"
-      ]
+      ],
+      "wcag": {
+        "2.1.1": {
+          "techniques": [
+            "SCR2"
+          ]
+        }
+      }
     },
     "title": {
       "en": "If an element has a \"onmouseout\" attribute"
@@ -4148,7 +4165,14 @@
     "guidelines": {
       "508": [
         "l"
-      ]
+      ],
+      "wcag": {
+        "2.1.1": {
+          "techniques": [
+            "SCR2"
+          ]
+        }
+      }
     },
     "title": {
       "en": "If an element has an \"onmouseover\" attribute"
