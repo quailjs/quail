@@ -80,6 +80,13 @@ module.exports = function(grunt) {
         ]
       }
     },
+    compressTestsJson : {
+      dist : {
+        files : [
+          { src : 'dist/tests.json', dest : 'dist/tests.min.json' }
+        ]
+      }
+    },
     'gh-pages': {
       options: {
         base: '',
@@ -101,16 +108,16 @@ module.exports = function(grunt) {
 
 
   // By default, just run tests
-  grunt.registerTask('default', ['convert', 'concat', 'jshint', 'buildGuideline', 'qunit']);
+  grunt.registerTask('default', ['convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit']);
 
   // Build task.
-  grunt.registerTask('build', ['convert', 'concat', 'jshint', 'buildGuideline', 'uglify']);
+  grunt.registerTask('build', ['convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'uglify']);
 
   // Release task.
-  grunt.registerTask('release', ['convert', 'concat', 'jshint', 'qunit', 'buildGuideline', 'uglify', 'gh-pages']);
+  grunt.registerTask('release', ['convert', 'concat', 'jshint', 'qunit', 'buildGuideline', 'compressTestsJson', 'uglify', 'gh-pages']);
 
   // Test task.
-  grunt.registerTask('test', ['convert', 'concat', 'jshint', 'buildGuideline', 'qunit']);
+  grunt.registerTask('test', ['convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit']);
 
   grunt.registerTask('publish', ['gh-pages']);
 };
