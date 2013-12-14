@@ -1,4 +1,3 @@
-_site
 _site/*
 .htaccess
 *.DS_Store
@@ -7,8 +6,5 @@ examples/wysiwyg/editors/tinymce/*
 examples/wysiwyg/editors/ckeditor/*
 examples/wysiwyg/editors/ckeditor4/*
 node_modules/*
-utilities/printTable.php
-utilities/guidelineFinder.php
-utilities/tests.json
 .grunt/*
-dist/
+dist/*
