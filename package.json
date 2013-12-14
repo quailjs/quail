@@ -6,6 +6,10 @@
   "engines": {
     "node": ">= 0.10.20"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kevee/quail.git"
+  },
   "scripts": {
     "test": "grunt --verbose"
   },
