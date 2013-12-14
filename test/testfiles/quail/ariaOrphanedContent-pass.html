@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
-	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+	<link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css" media="screen">
 		<title>Pages using aria role do not contain orphaned conent - Fail</title>
 	</head>
 	<body>
@@ -10,10 +10,10 @@
     <div role="header">This is a header</div>
     <div role="footer">This is a footer</div>
 	</div>
-<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+<script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
 <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
-<script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
+<script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
 <script id="qunit-script">
 test('ariaOrphanedContent', function() {
   quailTest.runTest( 'ariaOrphanedContent', 'ariaOrphanedContent-pass.html');

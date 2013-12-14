@@ -1,0 +1,15 @@
+{
+  "name": "quail",
+  "version": "2.1",
+  "main": "dist/quail.jquery.js",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "qunit": "~1.12.0",
+    "qunit-composite": "https://github.com/jquery/qunit-composite.git"
+  },
+  "devDependencies": {}
+}

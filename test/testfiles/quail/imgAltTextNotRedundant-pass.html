@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Image alt attributes are not redundant unless the image files are the same - pass</title>
-	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+	<link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css" media="screen">
 	</head>
 	<body>
 	<div id="qunit-testrunner-toolbar"></div>
@@ -11,10 +11,10 @@
 <div id="qunit-fixture">test markup, will be hidden</div>
 	<img src="../oac/rex.jpg" alt="this is an image of rex">
 	<img src="../oac/rex.jpg" alt="this is an image of rex">
-	<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+	<script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
 <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
-<script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
+<script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
 <script id="qunit-script">
 test('imgAltTextNotRedundant', function() {
   quailTest.runTest( 'imgAltTextNotRedundant', 'imgAltTextNotRedundant-pass.html');
