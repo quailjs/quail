@@ -104,6 +104,16 @@ var quail = {
       quail.options.complete(results);
     }
   },
+
+  getConfiguration : function(testName) {
+    if(typeof this.options.guidelineName === 'undefined' ||
+       typeof this.accessibilityTests[testName].guidelines === 'undefined' ||
+       typeof this.accessibilityTests[testName].guidelines[this.options.guidelineName] === 'undefined' ||
+       typeof this.accessibilityTests[testName].guidelines[this.options.guidelineName].configuration === 'undefined') {
+      return false;
+    }
+    return this.accessibilityTests[testName].guidelines[this.options.guidelineName].configuration;
+  },
   
   /**
    * Utility function called whenever a test fails.
