@@ -29,4 +29,4 @@ Credits
 Legal
 -----
 
-QUAIL is covered under the GPL Version 2, and is copyright (c) 2012 by Kevin Miller. Current license is at http://quailjs.org/license.
+QUAIL is covered under the MIT License, and is copyright (c) 2013 by Kevin Miller. Current license is at http://quailjs.org/license.
