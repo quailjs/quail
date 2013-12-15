@@ -15,6 +15,11 @@
 <script id="qunit-script">
 test('cssDocumentMakesSenseStyleTurnedOff', function() {
   quailTest.runTest( 'cssDocumentMakesSenseStyleTurnedOff', '97-2.html');
+  $.each(quailTest.results['cssDocumentMakesSenseStyleTurnedOff'], function(index, item) {
+  	if(item.is('body')) {
+  		quailTest.results['cssDocumentMakesSenseStyleTurnedOff'].splice(index, 1);
+  	}
+  });
   equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
 });
 </script>
