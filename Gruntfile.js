@@ -93,6 +93,11 @@ module.exports = function(grunt) {
         add: true
       },
       src: ['dist/**']
+    },
+    bower: {
+      install: {
+  
+      }
     }
   });
   grunt.loadTasks('tasks');
@@ -105,19 +110,20 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-gh-pages');
+  grunt.loadNpmTasks('grunt-bower-task');
 
 
   // By default, just run tests
-  grunt.registerTask('default', ['convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit']);
+  grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit']);
 
   // Build task.
-  grunt.registerTask('build', ['convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'uglify']);
+  grunt.registerTask('build', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'uglify']);
 
   // Release task.
-  grunt.registerTask('release', ['convert', 'concat', 'jshint', 'qunit', 'buildGuideline', 'compressTestsJson', 'uglify', 'gh-pages']);
+  grunt.registerTask('release', ['bower:install', 'convert', 'concat', 'jshint', 'qunit', 'buildGuideline', 'compressTestsJson', 'uglify', 'gh-pages']);
 
   // Test task.
-  grunt.registerTask('test', ['convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit']);
+  grunt.registerTask('test', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit']);
 
   grunt.registerTask('publish', ['gh-pages']);
 };

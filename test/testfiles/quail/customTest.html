@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
-	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
+	<link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css" media="screen">
 		<title>Adding custom tests to QUAIL</title>
 	</head>
 	<body>
@@ -14,10 +14,10 @@
     	</p>
     	<h2 class="callback-error">Heading!</h2>
     </div>
-<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
+<script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
 <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
 <script id="qunit-composite" src="../../composite.js"></script>
-<script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
+<script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
 <script id="qunit-script">
 test('customTest', function() {
   var testResults = [];
@@ -37,7 +37,7 @@ test('customTest', function() {
   		}
   	}
   };
-  $('.test-area').quail({ jsonPath : '../../../src/resources',
+  $('.test-area').quail({ jsonPath : '../../../dist',
                       guideline : [ 'customTestSelector', 'customTestCallback' ],
                       reset : true,
                       customTests : custom,
