@@ -1,21 +1,25 @@
 <!doctype html>
-<html><head>
-<title>imgAltIdentifiesLinkDestination-fail</title>
-<link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css" media="screen">
-</head>
-<body>
+<html>
+    
+    <head>
+        <title>imgAltIdentifiesLinkDestination-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p><a href="routes.html"><img src="resources/topo.gif" alt="Current routes at Boulders Climbing Gym" /></a>
+        </p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('imgAltIdentifiesLinkDestination', function() {
+              quailTest.runTest( 'imgAltIdentifiesLinkDestination', '15-2.html');
+              equal(quailTest.results[quailTest.testName][0].attr('src'), 'resources/topo.gif', 'Item attribute check');
+            });
+        </script>
+    </body>
 
-<p><a href="routes.html"><img src="resources/topo.gif" alt="Current routes at Boulders Climbing Gym" /></a></p>
-<script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
-<script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
-<script id="qunit-composite" src="../../composite.js"></script>
-<script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
-<script id="qunit-script">
-test('imgAltIdentifiesLinkDestination', function() {
-  quailTest.runTest( 'imgAltIdentifiesLinkDestination', '15-2.html');
-  equal(quailTest.results[quailTest.testName][0].attr('src'), 'resources/topo.gif', 'Item attribute check');
-});
-</script>
-</body>
 </html>
-

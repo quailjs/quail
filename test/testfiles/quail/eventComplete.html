@@ -1,41 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
-<title>Test that QUAIL calls events correctly</title>
-<link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css" media="screen">
-</head>
-<body>
+    
+    <head>
+        <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+        <title>Test that QUAIL calls events correctly</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>
+            <img src="../oac/rex.jpg" />
+        </p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('quailEventComplete', function() {
+               var testPasses = false;
+               $.ajax({ url : '../../../dist/tests.json',
+                 async : false,
+                 dataType : 'json',
+                 cache : false,
+                 success : function(data) {
+                    if(typeof data === 'object') {
+                      $(document).quail({ jsonPath : '../../../src/resources',
+                                  guideline : [ 'imgHasAlt' ],
+                                  reset : true,
+                                  accessibilityTests : data,
+                                  complete : function(results) {
+                                    if(results.totals.severe == 1) {
+                                      testPasses = true;
+                                    }
+                                  }});
+                    }
+                }});
+                equal(true, testPasses, 'The test has passed');
+              });
+        </script>
+    </body>
 
-<p><img src="../oac/rex.jpg"/></p>
-<script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
-<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
-<script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
-<script id="qunit-composite" src="../../composite.js"></script>
-<script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
-<script>
-  test('quailEventComplete', function() {
-   var testPasses = false;
-   $.ajax({ url : '../../../dist/tests.json',
-     async : false,
-     dataType : 'json',
-     cache : false,
-     success : function(data) {
-        if(typeof data === 'object') {
-          $(document).quail({ jsonPath : '../../../src/resources',
-                      guideline : [ 'imgHasAlt' ],
-                      reset : true,
-                      accessibilityTests : data,
-                      complete : function(results) {
-                        if(results.totals.severe == 1) {
-                          testPasses = true;
-                        }
-                      }});
-        }
-    }});
-    equal(true, testPasses, 'The test has passed');
-  });
-</script>
-</body>
 </html>
