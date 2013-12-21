@@ -8,7 +8,12 @@
     </head>
     
     <body>
-        <applet alt="this is valid alt text for the applet" />
+        <applet alt="We are testing your java version" code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150">
+            <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
+            <param name="centerimage" value="true"><param name="boxborder" value="false">
+            <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
+        </applet>
+        <script>var setUserInfo = function() { };</script>
         <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
         <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
         <script id="qunit-composite" src="../../composite.js"></script>

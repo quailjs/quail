@@ -12,6 +12,7 @@
   "browser": true,
   "jquery": true,
   "globals": {
-    "quail": true
+    "quail": true,
+    "process": true
   }
 }

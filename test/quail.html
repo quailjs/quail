@@ -101,21 +101,6 @@
             "testfiles/common/aMustHaveTitle-pass.html",
             "testfiles/common/aMustNotHaveJavascriptHref-fail.html",
             "testfiles/common/aMustNotHaveJavascriptHref-pass.html",
-            "testfiles/common/appletContainsTextEquivalent-fail.html",
-            "testfiles/common/appletContainsTextEquivalent-pass.html",
-            "testfiles/common/appletContainsTextEquivalentInAlt-fail-2.html",
-            "testfiles/common/appletContainsTextEquivalentInAlt-fail.html",
-            "testfiles/common/appletContainsTextEquivalentInAlt-pass.html",
-            "testfiles/common/appletProvidesMechanismToReturnToParent-fail-2.html",
-            "testfiles/common/appletProvidesMechanismToReturnToParent-fail.html",
-            "testfiles/common/appletsDoneUseColorAlone-fail.html",
-            "testfiles/common/appletsDoneUseColorAlone-pass.html",
-            "testfiles/common/appletsDoNotFlicker-fail-2.html",
-            "testfiles/common/appletsDoNotFlicker-fail.html",
-            "testfiles/common/appletTextEquivalentsGetUpdated-fail.html",
-            "testfiles/common/appletTextEquivalentsGetUpdated-pass.html",
-            "testfiles/common/appletUIMustBeAccessible-fail.html",
-            "testfiles/common/appletUIMustBeAccessible-pass.html",
             "testfiles/common/areaAltIdentifiesDestination-fail-2.html",
             "testfiles/common/areaAltIdentifiesDestination-fail.html",
             "testfiles/common/areaAltRefersToText-fail-2.html",
@@ -570,6 +555,25 @@
             "testfiles/common/textareaLabelPositionedClose-fail.html",
             "testfiles/common/textareaLabelPositionedClose-pass.html"
    	]);
+      if(navigator.userAgent.search('PhantomJS') !== -1) {
+            QUnit.testSuites([
+                  "testfiles/common/appletContainsTextEquivalent-fail.html",
+                  "testfiles/common/appletContainsTextEquivalent-pass.html",
+                  "testfiles/common/appletContainsTextEquivalentInAlt-fail-2.html",
+                  "testfiles/common/appletContainsTextEquivalentInAlt-fail.html",
+                  "testfiles/common/appletContainsTextEquivalentInAlt-pass.html",
+                  "testfiles/common/appletProvidesMechanismToReturnToParent-fail-2.html",
+                  "testfiles/common/appletProvidesMechanismToReturnToParent-fail.html",
+                  "testfiles/common/appletsDoneUseColorAlone-fail.html",
+                  "testfiles/common/appletsDoneUseColorAlone-pass.html",
+                  "testfiles/common/appletsDoNotFlicker-fail-2.html",
+                  "testfiles/common/appletsDoNotFlicker-fail.html",
+                  "testfiles/common/appletTextEquivalentsGetUpdated-fail.html",
+                  "testfiles/common/appletTextEquivalentsGetUpdated-pass.html",
+                  "testfiles/common/appletUIMustBeAccessible-fail.html",
+                  "testfiles/common/appletUIMustBeAccessible-pass.html"
+            ]);
+      }
 	</script>
 </head>
 <body>
