@@ -142,7 +142,7 @@ module.exports = function(grunt) {
             },
             {
               browserName: 'internet explorer',
-              version: '11'
+              version: '11',
               platform: 'Windows 8.1'
             },
             {
