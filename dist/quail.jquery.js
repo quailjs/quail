@@ -498,7 +498,7 @@ quail.components.placeholder = function(testName, options) {
     if(typeof options.attribute !== 'undefined') {
       if(typeof $(this).attr(options.attribute) === 'undefined' ||
             (options.attribute === 'tabindex' &&
-              !$(this).attr(options.attribute)
+              $(this).attr(options.attribute) <= 0
             )
          ) {
         quail.testFails(testName, $(this));
