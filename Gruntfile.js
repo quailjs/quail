@@ -123,7 +123,7 @@ module.exports = function(grunt) {
             },
             {
               browserName: 'chrome',
-              platform: 'WIN8'
+              platform: 'Windows 8'
             },
             {
               browserName: 'firefox',
@@ -131,7 +131,7 @@ module.exports = function(grunt) {
             },
             {
               browserName: 'firefox',
-              platform: 'WIN8'
+              platform: 'Windows 8'
             },
             {
               browserName: 'opera'
@@ -143,6 +143,7 @@ module.exports = function(grunt) {
             {
               browserName: 'internet explorer',
               version: '11'
+              platform: 'Windows 8.1'
             },
             {
               browserName: 'iphone'
