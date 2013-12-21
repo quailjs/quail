@@ -142,7 +142,7 @@ module.exports = function(grunt) {
             },
             {
               browserName: 'internet explorer',
-              version: '9'
+              version: '11'
             },
             {
               browserName: 'iphone'
