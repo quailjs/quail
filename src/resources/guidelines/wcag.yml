@@ -1595,7 +1595,7 @@ techniques:
   H64:
     description: "Using the title attribute of the frame and iframe elements"
   H65:
-    description: "Using the title attribute to identify form controls when the label elementcannot be used"
+    description: "Using the title attribute to identify form controls when the label element cannot be used"
   H67:
     description: "Using null alt text and no title attribute on img elements for images that ATshould ignore"
   H69:
