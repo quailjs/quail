@@ -903,7 +903,11 @@ documentLangIsISO639Standard:
     - "language"
   testability: 1
   type: "custom"
-  guidelines: []
+  guidelines:
+    wcag:
+      3.1.1:
+        techniques:
+          - "H57"
   title: 
     en: "The document's language attribute should be a standard code"
   description: 
@@ -1141,7 +1145,11 @@ embedProvidesMechanismToReturnToParent:
     - "content"
   testability: 0
   type: "selector"
-  guidelines: []
+  guidelines:
+    wcag:
+      2.1.2:
+        techniques:
+          - "G21"
   title: 
     en: "All embed elements should provide a way for keyboard users to escape"
   description: 
@@ -1355,7 +1363,11 @@ frameTitlesDescribeFunction:
     - "frame"
   testability: 0
   type: "placeholder"
-  guidelines: []
+  guidelines:
+    wcag:
+      2.4.1:
+        techniques:
+          - "H64"
   title: 
     en: "All \"frame\" elemetns should have a \"title\" attribute that describes the purpose of the frame"
   description: 
@@ -1756,6 +1768,10 @@ imgAltIsDifferent:
   guidelines: 
     508: 
       - "a"
+    wcag:
+      1.1.1:
+        techniques:
+          - "H37"
   title: 
     en: "Image \"alt\" attributes should not be the same as the filename"
   description: 
@@ -1774,6 +1790,7 @@ imgAltIsSameInText:
       1.1.1: 
         techniques: 
           - "G74"
+          - "H37"
   title: 
     en: "Check that any text within an image is also in the \"alt\" attribute"
   description: 
@@ -1788,6 +1805,10 @@ imgAltIsTooLong:
   guidelines: 
     508: 
       - "a"
+    wcag:
+      1.1.1:
+        techniques:
+          - "H37"
   title: 
     en: "Image Alt text is short"
   description: 
@@ -1802,6 +1823,10 @@ imgAltNotEmptyInAnchor:
   guidelines: 
     508: 
       - "a"
+    wcag:
+      2.4.4:
+        techniques:
+          - "H30"
   title: 
     en: "An image within a link cannot have an empty \"alt\" attribute if there is no other text within the link"
   description: 
@@ -2101,7 +2126,11 @@ inputImageAltIdentifiesPurpose:
     - "content"
   testability: 0
   type: "selector"
-  guidelines: []
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
+          - "H36"
   title: 
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute that describes the function of the input"
   description: 
@@ -2117,6 +2146,10 @@ inputImageAltIsNotFileName:
   guidelines: 
     508: 
       - "a"
+    wcag:
+      1.1.1:
+        techniques:
+          - "H36"
   title: 
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not the same as the filename"
   description: 
@@ -2135,6 +2168,10 @@ inputImageAltIsNotPlaceholder:
   guidelines: 
     508: 
       - "a"
+    wcag:
+      1.1.1:
+        techniques:
+          - "H36"
   title: 
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not placeholder text"
   description: 
@@ -2150,6 +2187,10 @@ inputImageAltIsShort:
   guidelines: 
     508: 
       - "a"
+    wcag:
+      1.1.1:
+        techniques:
+          - "H36"
   title: 
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is as short as possible"
   description: 
@@ -2163,7 +2204,11 @@ inputImageAltNotRedundant:
     - "content"
   testability: 1
   type: "custom"
-  guidelines: []
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
+          - "H36"
   title: 
     en: "The \"alt\" text for input \"image\" submit buttons must not be filler text"
   description: 
@@ -2197,7 +2242,11 @@ inputImageNotDecorative:
     - "content"
   testability: 0
   type: "selector"
-  guidelines: []
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
+          - "H36"
   title: 
     en: "The \"alt\" text for input \"image\" buttons must be the same as text inside the image"
   description: 
@@ -2404,7 +2453,11 @@ legendDescribesListOfChoices:
     - "content"
   testability: 0
   type: "selector"
-  guidelines: []
+  guidelines:
+    wcag:
+      2.4.6:
+        techniques:
+          - "G131"
   title: 
     en: "All \"legend\" elements must describe the group of choices"
   description: 
@@ -2421,6 +2474,9 @@ legendTextNotEmpty:
       1.3.1: 
         techniques: 
           - "H71"
+      2.4.6:
+        techniques:
+          - "G131"
       3.3.2: 
         techniques: 
           - "H71"
@@ -2439,7 +2495,17 @@ legendTextNotPlaceholder:
     - "content"
   testability: 1
   type: "placeholder"
-  guidelines: []
+  guidelines: 
+    wcag: 
+      1.3.1: 
+        techniques: 
+          - "H71"
+      2.4.6:
+        techniques:
+          - "G131"
+      3.3.2: 
+        techniques: 
+          - "H71"
   title: 
     en: "Legend\" text must not contain placeholder text like \"form\" or \"field"
   description: 
@@ -3236,7 +3302,11 @@ skipToContentLinkProvided:
     - "document"
   testability: 0.5
   type: "selector"
-  guidelines: 
+  guidelines:
+    wcag:
+      2.4.1:
+        techniques:
+          - "G1"
     508: 
       - "o"
   title: 
@@ -3282,7 +3352,11 @@ tableCaptionIdentifiesTable:
     - "content"
   testability: 0
   type: "selector"
-  guidelines: []
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
+          - "H39"
   title: 
     en: "Captions should identify their table"
   description: 
@@ -3294,7 +3368,11 @@ tableComplexHasSummary:
     - "content"
   testability: 0.5
   type: "selector"
-  guidelines: []
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
+          - "H39"
   title: 
     en: "Complex tables should have a summary"
   description: 
