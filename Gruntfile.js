@@ -6,9 +6,6 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('quail.json'),
-    clean: {
-      hooks: ['.git/hooks/pre-commit']
-    },
     convert: {
       yml2json: {
         files: [
@@ -167,7 +164,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-shell');
-  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-saucelabs');

@@ -17,8 +17,8 @@
   },
   "licenses": [
     {
-      "type": "GPL",
-      "url": "https://github.com/kevee/quail/blob/master/LICENSE-GPL"
+      "type": "MIT",
+      "url": "http://quailjs.org/license"
     }
   ],
   "dependencies": {
