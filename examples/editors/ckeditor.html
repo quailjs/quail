@@ -18,9 +18,9 @@
 	</div>
 	
 	<script src="../../lib/jquery/jquery.js"></script>
-	<script src="editors/ckeditor/ckeditor.js"></script>
-	<script src="../../dist/quail.jsquery.js"></script>
-	<script src="../../dist/wysiwyg_plugins/ckeditor/quail/plugin.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.2/ckeditor.js"></script>
+	<script src="../../dist/quail.jquery.js"></script>
+	<script src="plugins/ckeditor/quail/plugin.js"></script>
 
 	<script type="text/javascript" >
 	(function($) {
@@ -34,7 +34,7 @@
           }
        },
        guideline : [ 'imgAltNotEmptyInAnchor' ],
-	     jsonPath  : '../../src/resources',
+	     jsonPath  : '../../dist',
 	     ckEditorMessage : function(event) {
   	     return 'Event fired ' + event.testName;
 	     }

@@ -16,9 +16,9 @@
 	</div>
 	
 	<script src="../../lib/jquery/jquery.js"></script>
-	<script src="editors/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
-	<script src="../../dist/quail.jsquery.js"></script>
-	<script src="../../dist/wysiwyg_plugins/tinymce/quail/editor_plugin.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/tinymce/3.5.8/tiny_mce.js"></script>
+	<script src="../../dist/quail.jquery.js"></script>
+	<script src="plugins/tinymce/quail/editor_plugin.js"></script>
 	<script type="text/javascript">
 	  (function($) {
 	    var options = {
@@ -30,15 +30,14 @@
           }
        },
        guideline : [ 'imgAltNotEmptyInAnchor' ],
-	     jsonPath  : '../../src/resources',
+	     jsonPath  : '../../dist',
 	     tinyMCEMessage : function(event) {
-  	     return 'Event fired ' + event.testName;
+  	     return 'Test failed ' + event.testName;
 	     }
 	    };
   	  tinyMCE.init({
         // General options
         mode : "textareas",
-        theme : "advanced",
         plugins : "quail",
         quailOptions: options,
         theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,quail"
