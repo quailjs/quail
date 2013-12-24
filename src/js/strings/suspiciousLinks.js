@@ -1,4 +1,4 @@
-quail.strings.suspicious_links = [
+quail.strings.suspiciousLinks = [
 "click here",
 "click",
 "more",

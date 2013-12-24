@@ -1,4 +1,4 @@
-quail.strings.site_map = [
+quail.strings.siteMap = [
   "site map",
   "map",
   "sitemap"

@@ -1,4 +1,4 @@
-quail.strings.language_codes = [
+quail.strings.languageCodes = [
   "bh",
   "bi",
   "nb",

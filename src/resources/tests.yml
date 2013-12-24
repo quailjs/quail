@@ -184,7 +184,7 @@ aMustNotHaveJavascriptHref:
     en: "Anchor (<code>a</code>.  elements may not use the \"javascript\" protocol in their \"href\" attributes."
 aSuspiciousLinkText: 
   callback: "aSuspiciousLinkText"
-  strings: "suspicious_links"
+  strings: "suspiciousLinks"
   tags: 
     - "link"
     - "content"
@@ -897,7 +897,7 @@ documentIsWrittenClearly:
     en: "If a document is beyond a 10th grade level, then a summary or other guide should also be provided to guide the user through the content."
 documentLangIsISO639Standard: 
   callback: "documentLangIsISO639Standard"
-  strings: "language_codes"
+  strings: "languageCodes"
   tags: 
     - "document"
     - "language"
@@ -3279,7 +3279,7 @@ selectWithOptionsHasOptgroup:
     en: ".. code-block:: html"
 siteMap: 
   callback: "siteMap"
-  strings: "site_map"
+  strings: "siteMap"
   tags: 
     - "document"
   testability: 0

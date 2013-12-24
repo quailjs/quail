@@ -2,7 +2,7 @@ quail.siteMap = function() {
   var set = true;
   quail.html.find('a').each(function() {
     var text = $(this).text().toLowerCase();
-    $.each(quail.strings.site_map, function(index, string) {
+    $.each(quail.strings.siteMap, function(index, string) {
       if(text.search(string) > -1) {
         set = false;
         return;
