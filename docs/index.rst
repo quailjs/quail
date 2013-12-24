@@ -1,7 +1,4 @@
-.. QUAIL: Accessibility Information Library documentation master file, created by
-   sphinx-quickstart on Wed Apr 11 20:34:30 2012.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. QUAIL: Accessibility Information Library documentation master file
 
 QUAIL: Accessibility Information Library
 ========================================
@@ -11,23 +8,42 @@ QUAIL is a jQuery and Sizzle-comptable library for checking content against acce
 Tests
 -----
 
-At the core of QUAIL are **tests**. Tests search for a single type of accessibility problem, and they are all defined in the file `src/resources/tests.json`. For example, one of the most common accessibility problems out there is an image missing an `alt` attribute (which allows users with screen readers to hear a description of the image). The test definition in the `tests.json` file looks like this:
+At the core of QUAIL are **tests**. Tests search for a single type of accessibility problem, and they are all defined in the file `src/resources/tests.yaml` (a JSON version is available in `dist/tests.json` - `read more about building these files <build.html>`_). For example, one of the most common accessibility problems out there is an image missing an `alt` attribute (which allows users with screen readers to hear a description of the image). The test definition in the `tests.yaml` file looks like this:
 
 .. code-block:: js
    
-    "imgHasAlt": {
-        "type": "selector",
-        "selector": "img:not(img[alt])",
-        "severity": "severe"
-    },
+    imgHasAlt: 
+      selector: "img:not(img[alt])"
+      tags: 
+        - "image"
+        - "content"
+      testability: 1
+      type: "selector"
+      guidelines: 
+        508: 
+          - "a"
+        wcag: 
+          1.1.1: 
+            techniques: 
+              - "F65"
+              - "H37"
+      title: 
+        en: "Image elements must have an \"alt\" attribute"
+      description: 
+        en: "All <code>img</code> elements must have an alt attribute"
     ....
 
 The **test name** in this example is "imgHasAlt," which is the unique label for the test. These are used in creating guidelines. There are at least two definitions for each test:
-  - **Type** - QUAIL has some default test types to simplify the process of writing test definitions. The simplest is a *selector*, which just takes a jQuery/Sizzle-compatable selector and finds all items that match that selector. For *selector* tests, we also must define the selector to use (in this case, `img:not(img[alt])`).
-  - **Severity** - The default severity level. Severity is a measure of how certain we are a test will not create false positives:
-    - **Severe** - We are 100% certain that this test is always correct. If an image is missing its `alt` attribute, it's missing its `alt` attribute.
-    - **Moderate** - We are mostly certain this test is correct. This is usually found for content-related tests, like testing to see if a block of text is written at or below a certain grade level.
-    - **Suggestion** - We cannot test for this, but can suggest things to manually review. For exmaple, we cannot test that content in a Flash object is accessible, but we can point out that a flash object is there and link to appropriate guidelines on making accessible flash.
+  - **type** - QUAIL has some default test types to simplify the process of writing test definitions. The simplest is a *selector*, which just takes a jQuery/Sizzle-compatable selector and finds all items that match that selector. For *selector* tests, we also must define the selector to use (in this case, `img:not(img[alt])`).
+  - **severity** - The default severity level. Severity is a measure of how certain we are a test will not create false positives:
+    - **severe** - We are 100% certain that this test is always correct. If an image is missing its `alt` attribute, it's missing its `alt` attribute.
+    - **moderate** - We are mostly certain this test is correct. This is usually found for content-related tests, like testing to see if a block of text is written at or below a certain grade level.
+    - **suggestion** - We cannot test for this, but can suggest things to manually review. For exmaple, we cannot test that content in a Flash object is accessible, but we can point out that a flash object is there and link to appropriate guidelines on making accessible flash.
+  - **guidelines** - A list of pre-defined guidelines (right now, either 508 or WCAG 2.0) including:
+    - **techinques** - The WCAG techniques aligned with this test
+    - **configuration** - Optional configuration options for this test only specific to this test.
+  - **title** - The human-readable title of the test, prefixed by language code.
+  - **description** - The human-readable description of the test, prefixed by language code.
 
 Guidelines
 ----------
