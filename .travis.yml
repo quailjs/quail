@@ -15,4 +15,4 @@ before_script:
   - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 
 after_success:
-  - grunt saucelabs --verbose
+  - grunt saucelabs-travis --verbose
