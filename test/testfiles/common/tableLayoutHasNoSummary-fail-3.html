@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>tableLayoutHasNoSummary-fail-3</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <table border="0" cellpadding="5" summary="OMG table for layout">
+            <tr>
+                <td rowspan="3">This would be a sidebar.</td>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>This is a footer.</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>This is another footer.</td>
+            </tr>
+        </table>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('tableLayoutHasNoSummary', function() {
+              quailTest.runTest( 'tableLayoutHasNoSummary', '114-5.html');
+              equal(true, quailTest.confirmIsTag('table'), 'Document is set');
+            });
+        </script>
+    </body>
+
+</html>

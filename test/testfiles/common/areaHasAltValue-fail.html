@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>areaHasAltValue-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>
+            <map id="map1" name="map1">
+                <area shape="rect" coords="0,0,30,30" href="reference.html" />
+            </map>
+        </p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('areaHasAltValue', function() {
+              quailTest.runTest( 'areaHasAltValue', '64-1.html');
+              equal(true, quailTest.confirmIsTag('area'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

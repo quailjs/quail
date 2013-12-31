@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>imgAltNotPlaceHolder-fail-5</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>
+            <img src="resources/rex.jpg" alt="nbsp" width="150" height="105" />
+        </p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('imgAltNotPlaceHolder', function() {
+              quailTest.runTest( 'imgAltNotPlaceHolder', '6-6.html');
+              equal(true, quailTest.confirmIsTag('img'), 'First item is an image');
+            });
+        </script>
+    </body>
+
+</html>

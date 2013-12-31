@@ -1,14 +1,8 @@
 <?php 
 
-  $tests = (array)json_decode(file_get_contents('../../src/resources/tests.json'));
+  $tests = (array)json_decode(file_get_contents('../../dist/tests.json'));
   $stats = json_decode(file_get_contents('data/stats.json'));
   
-  foreach($tests as $testname => &$test) {
-    if(file_exists('../../docs/tests/'. $testname .'.rst')) {
-      $file = file('../../docs/tests/'. $testname .'.rst');
-      $test->readableName = $file[1];
-    }
-  }
   if($_POST) {
     $guideline = array(); 
     foreach($_POST['guideline'] as $testname => $status) {
@@ -29,7 +23,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Settings | My CMS</title>
 		<link rel="stylesheet" href="../common/style.css"/>
-		<link rel="stylesheet" href="../common/bootstrap.css"/>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css"/>
 	</head>
 	<body>
 	<div class="container">
@@ -63,8 +57,8 @@
     	        </td>
     	        <td>
     	          <label for="<?php print $testname; ?>">
-    	            <?php if($test->readableName) 
-    	                    print $test->readableName; 
+    	            <?php if($test->title) 
+    	                    print $test->title->en; 
     	                  else
     	                    print $testname;  ?>
     	          </label>

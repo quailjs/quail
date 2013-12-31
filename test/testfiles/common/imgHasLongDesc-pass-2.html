@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>imgHasLongDesc-pass-2</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>The text in this document fully describes the image shown here and the
+            Alt text refers to this text.
+            <img src="resources/chart.gif" alt="a complex chart as described above"
+            />
+        </p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('imgHasLongDesc', function() {
+              quailTest.runTest( 'imgHasLongDesc', '8-4.html');
+              equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
+            });
+        </script>
+    </body>
+
+</html>

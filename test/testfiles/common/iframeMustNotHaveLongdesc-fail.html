@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <title>iframeMustNotHaveLongdesc-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <iframe longdesc="file.html"></iframe>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('iframeMustNotHaveLongdesc', function() {
+            	  quailTest.runTest( 'iframeMustNotHaveLongdesc', '167-1.html');
+            	  equal(true, quailTest.confirmIsTag('iframe'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

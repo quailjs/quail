@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <title>tableUsesAbbreviationForHeader-pass-2</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <TABLE border="1" summary="This simple data table demonstrates the use of summary">
+            <caption>A Test Table</caption>
+            <TR>
+                <TD></TD>
+                <TH abbr="long text">Col. 1 header really long text</TH>
+                <TH abbr="long text2">Col. 2 header really long text</TH>
+            </TR>
+            <TR>
+                <TH>Row 1 header</TH>
+                <TD>C1R1</TD>
+                <TD>C1R2</TD>
+            </TR>
+            <TR>
+                <TH>Row 2 header</TH>
+                <TD>C2R1</TD>
+                <TD>C2R2</TD>
+            </TR>
+        </TABLE>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('tableUsesAbbreviationForHeader', function() {
+            	  quailTest.runTest( 'tableUsesAbbreviationForHeader', '152-3.html');
+            	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+            });
+        </script>
+    </body>
+
+</html>

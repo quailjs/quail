@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <title>objectMustHaveTitle-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <object classid="http://www.miamachina.it/analogclock.py">The text equivalent for the object should go here.</object>
+        <script id="qunit-jquery"
+        src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('objectMustHaveTitle', function() {
+              quailTest.runTest( 'objectMustHaveTitle', '78-1.html');
+              equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

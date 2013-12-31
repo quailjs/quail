@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>documentTitleDescribesDocument-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        
+<h1>History Of Birds</h1>
+
+        <p>This document contains a history of birds. The title of this document
+            does not describe the contents of this document.</p>
+        <script id="qunit-jquery"
+        src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('documentTitleDescribesDocument', function() {
+              quailTest.runTest( 'documentTitleDescribesDocument', '54-1.html');
+              equal(true, quailTest.confirmIsTag('title'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

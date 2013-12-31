@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>inputCheckboxRequiresFieldset-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <form action="http://example.com/donut" method="post">
+            <p>
+                <input type="checkbox" name="flavour" id="choc" value="chocolate" />
+                <label for="choc">Chocolate</label>
+                <br/>
+                <input type="checkbox" name="flavour" id="cream" value="cream" />
+                <label for="cream">Cream Filled</label>
+                <br/>
+                <input type="checkbox" name="flavour" id="honey" value="honey" />
+                <label for="honey">Honey Glazed</label>
+                <br/>
+                <input type="submit" value="Purchase Donuts" />
+            </p>
+        </form>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('inputCheckboxRequiresFieldset', function() {
+            	  quailTest.runTest( 'inputCheckboxRequiresFieldset', '247-1.html');
+            	  equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

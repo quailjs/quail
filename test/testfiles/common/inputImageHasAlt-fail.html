@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>inputImageHasAlt-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <form action="http://example.com/prog/text-read" method="post">
+            <p>
+                <input type="image" name="submit" "resources/finddogs.gif" />
+            </p>
+        </form>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('inputImageHasAlt', function() {
+              quailTest.runTest( 'inputImageHasAlt', '58-1.html');
+              equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

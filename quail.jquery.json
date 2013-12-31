@@ -1,24 +1,24 @@
 {
-	"name"    		 : "quail",
-	"title"   		 : "QUAIL",
-	"description"  : "A plugin for checking content against accessibility guidelines. It provides a flexible way to test for certain problems (say, images missing an alt text) and a collection of over 200 tests to get you started. Defining your own tests is easy, and you can pick-and-choose tests to focus on the needs of your own app.",
-	"keywords"     : ["accessibility", "content"],
-	"homepage"     : "http://quailjs.org",
-	"docs"				 : "http://quail.readthedocs.org/en/latest/",
-	"demo" 				 : "http://quailjs.org/examples/",
-	"version" 		 : "2.0.3",
-	"author"  		 : {
-								 		"name"  : "Kevin Miller",
-										"email" : "kevin@csumb.edu",
-										"url"   : "http://kevee.org"
+	"name": "quail",
+	"title": "QUAIL",
+	"description": "A plugin for checking content against accessibility guidelines. It provides a flexible way to test for certain problems (say, images missing an alt text) and a collection of over 200 tests to get you started. Defining your own tests is easy, and you can pick-and-choose tests to focus on the needs of your own app.",
+	"keywords": ["accessibility", "content"],
+	"homepage": "http://quailjs.org",
+	"docs": "http://quail.readthedocs.org/en/latest/",
+	"demo": "http://quailjs.org/examples/",
+	"version": "2.1.0",
+	"author": {
+ 		"name": "Kevin Miller",
+		"email": "kevin@csumb.edu",
+		"url": "http://kevee.org"
 	},						
-	"licenses"		 : [
-						  		  {
-						  		      "type": "GPLv2",
-						  		      "url": "http://www.example.com/licenses/gpl.html"
-						  		  }
+	"licenses": [
+	  {
+	    "type": "MIT",
+	    "url": "http://quailjs.org/license"
+	  }
 	],						
 	"dependencies" : {
-      							"jquery" 					 : ">1.4.2"
+    "jquery": ">1.4.2"
 	}
 }

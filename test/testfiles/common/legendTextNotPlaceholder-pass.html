@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>legendTextNotPlaceholder-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <form action="http://example.com/donut" method="post">
+            <fieldset>
+                <legend>Donut Type</legend>
+                <p>
+                    <input type="radio" name="flavour" id="choc" value="chocolate" checked="checked"
+                    />
+                    <label for="choc">Chocolate</label>
+                    <br/>
+                    <input type="radio" name="flavour" id="cream" value="cream" />
+                    <label for="cream">Cream Filled</label>
+                    <br/>
+                    <input type="radio" name="flavour" id="honey" value="honey" />
+                    <label for="honey">Honey Glazed</label>
+                </p>
+            </fieldset>
+            <p>
+                <input type="submit" value="Purchase Donut" />
+            </p>
+        </form>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('legendTextNotPlaceholder', function() {
+            	  quailTest.runTest( 'legendTextNotPlaceholder', '200-2.html');
+            	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+            });
+        </script>
+    </body>
+
+</html>

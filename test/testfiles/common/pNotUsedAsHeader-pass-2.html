@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>pNotUsedAsHeader-pass-2</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <div id="quail-scope">
+            <p>Nobis nulla sollemnes assum est volutpat. Et ii wisi hendrerit saepius
+                duis.</p>
+            <p>Looks like a header, but it's not.</p>
+            <p>Nobis nulla sollemnes assum est volutpat. Et ii wisi hendrerit saepius
+                duis.</p>
+        </div>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('pNotUsedAsHeader', function() {
+              quailTest.runTest( 'pNotUsedAsHeader', '82-9.html');
+              equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+            });
+        </script>
+    </body>
+
+</html>

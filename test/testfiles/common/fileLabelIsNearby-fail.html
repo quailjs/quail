@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>fileLabelIsNearby-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>Please upload your file using the form below:</p>
+        <form action="http://www.example.com"
+        method="post">
+            <table width="100%">
+                <tr>
+                    <td>file:</td>
+                    <td align="right">
+                        <input type="file" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="submit" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('fileLabelIsNearby', function() {
+            	  quailTest.runTest( 'fileLabelIsNearby', '124-1.html');
+            	  equal(true, quailTest.confirmIsTag('input'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

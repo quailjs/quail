@@ -1,0 +1,63 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Aloha Editor Example</title>
+	<link rel="stylesheet" href="http://cdn.aloha-editor.org/latest/css/aloha.css" type="text/css">
+	<link rel="stylesheet" href="../../lib/aloha-editor/aloha/demo/simple/index.css" type="text/css">
+		<link rel="stylesheet" href="../common/style.css"/>
+	</head>
+	<body>
+	<div id="main">
+	 <div id="content"><p>Here is a picture of my dog, Kogepan:</p>
+		<p>
+		  <img src="../common/kogepan.png">
+		</p>
+		<p>
+		  I should really use an ABBR tag in this paragraph because QUAIL is an acronym.
+		</p>
+		</div>
+	</div>
+	
+	<script src="../../lib/jquery/jquery.js"></script>
+	<script type="text/javascript" src="http://cdn.aloha-editor.org/latest/lib/require.js"></script>
+	<script src="http://cdn.aloha-editor.org/latest/lib/aloha.js" data-aloha-plugins="common/ui,common/format,common/highlighteditables,common/link"></script>
+	<script src="../../dist/quail.jsquery.js"></script>
+	<script src="plugins/aloha/quail/vendor/tipsy.js"></script>
+	<script src="plugins/aloha/quail/lib/quail-plugin.js"></script>
+	<script type="text/javascript">
+	 Aloha.settings.quail = {
+  	 tests : {
+        "imgHasAlt": {
+            "type": "selector",
+            "selector": "img:not(img[alt])",
+            "severity": "severe",
+            "title" : "This image is missing an alt text."
+        },      
+        "documentAbbrIsUsed": {
+            "type": "custom",
+            "callback": "documentAbbrIsUsed",
+            "severity": "moderate",
+            "title" : "You need to add an abbreviation tag here."
+        },
+     },
+     guideline : [ 'imgHasAlt', 'documentAbbrIsUsed' ],
+     path : '../../dist',
+     baseUrl : '../../lib/',
+     title : function(event) {
+       if(event.testName == 'documentAbbrIsUsed') {
+         return 'The acronym ' + event.options.acronym + ' needs to be within an acronym tag.';
+       }
+       if(event.testName == 'imgHasAlt') {
+         return 'This image is missing a description. To add a description, select the image and click the image button.';
+       }
+     }
+	 }
+	 
+	 Aloha.ready( function() { 
+     Aloha.jQuery('#content').aloha();	
+	 });
+
+  </script >
+	</body>
+</html>

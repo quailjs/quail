@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>formWithRequiredLabel-fail-3</title>
+        <style type="text/css">
+            .required {
+            	color: red;
+            }
+        </style>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <form action="http://www.test.com">
+            <p>
+                <label for="firstname"><strong>First Name:</strong>
+                </label>
+                <input type="text" id="firstname" />
+                <br/>
+                <label for="lastname" class="required" style="color: red;">Last Name:</label>
+                <input type="text" id="lastname" />
+                <br/>
+                <label for="colour">Favourite Colour:</label>
+                <input type="text" id="colour" />
+                <br/>
+                <input type="submit" value="submit" />
+            </p>
+        </form>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('formWithRequiredLabel', function() {
+            	  quailTest.runTest( 'formWithRequiredLabel', '246-5.html');
+            	  equal(true, quailTest.confirmIsTag('label'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

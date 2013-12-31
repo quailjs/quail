@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>formErrorMessageHelpsUser-fail-2</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>Shown below are the steps required to purchase a concert ticket.</p>
+        <ol>
+            <li>User fills out the form and selects the "submit" button.</li>
+            <li>Data is presented to user with the option to correct data or submit it.</li>
+            <li>If user submits form then credit card is charged for the tickets and tickets
+                are mailed to user.</li>
+        </ol>
+        
+<h1>Step 1 - fill out form</h1>
+
+        <form action="http://www.test.com">
+            <p>
+                <label for="concert">concert</label>
+                <select name="concert" id="concert">
+                    <option label="Beethoven" value="c1">Beethoven</option>
+                    <option label="Mozart" value="c2">Mozart</option>
+                    <option label="Mamaday" value="c3">Mamaday</option>
+                    <option label="U2" value="c4">U2</option>
+                </select>
+                <br/>
+                <label for="card">credit card:</label>
+                <input type="text" size="30" id="card" name="card"
+                />
+                <br/>
+                <input type="submit" value="submit" />
+            </p>
+        </form>
+        
+<h1>Step 2 - data is presented to user</h1>
+
+        <p>Please review the data below. If the data is correct select the "Purchase
+            Ticket" button. If data is not correct then select this link to <a href="http://www.test.com/fix">modify the data</a>.</p>
+        <form
+        action="http://www.test.com">
+            <p>
+                <label for="concert">concert</label>
+                <select name="concert" id="concert">
+                    <option label="Beethoven" value="c1">Beethoven</option>
+                    <option label="Mozart" value="c2" selected="selected">Mozart</option>
+                    <option label="Mamaday" value="c3">Mamaday</option>
+                    <option label="U2" value="c4">U2</option>
+                </select>
+                <br/>
+                <label for="card">credit card:</label>
+                <input type="text" size="30" id="card" name="card"
+                value="1234xxxxxxx567" />
+                <br/>
+                <input type="submit" value="Purchase Ticket" />
+            </p>
+            </form>
+            <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+            <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+            <script id="qunit-composite" src="../../composite.js"></script>
+            <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+            <script>
+                test('formErrorMessageHelpsUser', function() {
+                	  quailTest.runTest( 'formErrorMessageHelpsUser', '269-2.html');
+                	  equal(true, quailTest.confirmIsTag('form'), 'First item tag test');
+                });
+            </script>
+    </body>
+
+</html>

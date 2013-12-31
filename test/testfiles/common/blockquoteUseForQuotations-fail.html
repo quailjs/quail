@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>blockquoteUseForQuotations-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>The following is an excerpt from the The Story of my Life by Helen Keller</p>
+        <p>"Even in the days before my teacher came, I used to feel along the square
+            stiff boxwood hedges, and, guided by the sense of smell, would find the
+            first violets and lilies. There, too, after a fit of temper, I went to
+            find comfort and to hide my hot face in the cool leaves and grass."</p>
+        <p>Helen Keller said, Self-pity is our worst enemy and if we yield to it,
+            we can never do anything good in the world.</p>
+        <p>Beth received 1st place in the 9th grade science competition.</p>
+        <p>The chemical notation for water is H2O.</p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('blockquoteUseForQuotations', function() {
+            	  quailTest.runTest( 'blockquoteUseForQuotations', '248-2.html');
+            	  equal(true, quailTest.confirmIsTag('p'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

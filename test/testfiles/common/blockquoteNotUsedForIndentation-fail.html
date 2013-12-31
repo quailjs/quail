@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <title>blockquoteNotUsedForIndentation-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <blockquote>If I have any sins to confess, I will tell them to my priest.</blockquote>.
+        <script
+        id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+            <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+            <script id="qunit-composite" src="../../composite.js"></script>
+            <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+            <script id="qunit-script">
+                test('blockquoteNotUsedForIndentation', function() {
+                  quailTest.runTest( 'blockquoteNotUsedForIndentation', '100-1.html');
+                  equal(true, quailTest.confirmIsTag('blockquote'), 'First item tag test');
+                });
+            </script>
+    </body>
+
+</html>
