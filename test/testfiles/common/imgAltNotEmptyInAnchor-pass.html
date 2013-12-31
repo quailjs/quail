@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>imgAltNotEmptyInAnchor-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p><a href="rex.html"><img src="resources/rex.jpg" alt="a story about Rex the cat"/></a>
+        </p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('imgAltNotEmptyInAnchor', function() {
+              quailTest.runTest( 'imgAltNotEmptyInAnchor', '7-2.html');
+              equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
+            });
+        </script>
+    </body>
+
+</html>

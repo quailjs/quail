@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+    
+    <head>
+        <title>bodyVisitedLinkColorContrast-pass-2</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>This is some <a href="http://www.example.com">example</a> text.</p>
+        <script
+        id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+            <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+            <script id="qunit-composite" src="../../composite.js"></script>
+            <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+            <script>
+                test('bodyVisitedLinkColorContrast', function() {
+                	  quailTest.runTest( 'bodyVisitedLinkColorContrast', '224-3.html');
+                	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+                });
+            </script>
+    </body>
+
+</html>

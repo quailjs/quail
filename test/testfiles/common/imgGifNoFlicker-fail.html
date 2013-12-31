@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang="en">
+    
+    <head>
+        <title>imgGifNoFlicker-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <img src="resources/eatatjoes.gif" alt="eat at Joes" width="200" height="200"
+        />
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('imgGifNoFlicker', function() {
+              quailTest.runTest('imgGifNoFlicker', '10-1.html');
+              equal(true, quailTest.confirmIsTag('img'), 'First item is an image');
+            });
+        </script>
+    </body>
+
+</html>

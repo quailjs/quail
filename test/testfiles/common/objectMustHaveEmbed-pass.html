@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html xml:lang="en-US" lang="en">
+    
+    <head>
+        <title>objectMustHaveEmbed-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <object classid="clsid:A12BCD3F-GH4I-56JK-xyz" codebase="http://example.com/content.cab"
+        width="100" height="80">
+            <param name="Movie" value="moviename.swf" />
+            <embed src="moviename.swf" width="100" height="80" pluginspage="http://example.com/shockwave/download/">
+            <noembed>
+                <img alt="Still from Movie" "resources/moviename.gif" width="100" height="80"
+                />
+            </noembed>
+            </embed>
+        </object>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('objectMustHaveEmbed', function() {
+            	  quailTest.runTest( 'objectMustHaveEmbed', '183-2.html');
+            	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+            });
+        </script>
+    </body>
+
+</html>

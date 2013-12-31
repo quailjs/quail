@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>tableWithMoreHeadersUseID-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <table border="1">
+            <tr>
+                <th>Class</th>
+                <th>Teacher</th>
+                <th>Males</th>
+                <th>Females</th>
+            </tr>
+            <tr>
+                <th rowspan="2">First Year</th>
+                <th>D. Bolter</th>
+                <td>5</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <th>A. Cheetham</th>
+                <td>7</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <th rowspan="3">Second Year</th>
+                <th>M. Lam</th>
+                <td>3</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <th>S. Crossy</th>
+                <td>4</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <th>A. Forsyth</th>
+                <td>6</td>
+                <td>9</td>
+            </tr>
+        </table>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('tableWithMoreHeadersUseID', function() {
+            	  quailTest.runTest( 'tableWithMoreHeadersUseID', '245-1.html');
+            	  equal(true, quailTest.confirmIsTag('table'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

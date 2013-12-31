@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <title>aLinksToSoundFilesNeedTranscripts-fail-5</title>
+        <link rel="stylesheet"
+        href="../../../lib/qunit/qunit/qunit.css" media="screen">
+    </head>
+    
+    <body>
+        <p>Read the <a href="carol-text-dogs.txt">text transcript of Carol's talk about dogs</a>.</p>
+        <script
+        id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+            <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+            <script id="qunit-composite" src="../../composite.js"></script>
+            <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+            <script>
+                test('aLinksToSoundFilesNeedTranscripts', function() {
+                  quailTest.runTest( 'aLinksToSoundFilesNeedTranscripts', '17-1.html');
+                  equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
+                });
+            </script>
+    </body>
+
+</html>

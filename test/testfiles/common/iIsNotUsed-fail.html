@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>iIsNotUsed-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>What she <i>really</i> meant to say was, "This isn't ok, it is <i>excellent</i>!"</p>
+        <script
+        id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+            <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+            <script id="qunit-composite" src="../../composite.js"></script>
+            <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+            <script>
+                test('iIsNotUsed', function() {
+                	  quailTest.runTest( 'iIsNotUsed', '117-1.html');
+                	  equal(true, quailTest.confirmIsTag('i'), 'First item tag test');
+                });
+            </script>
+    </body>
+
+</html>

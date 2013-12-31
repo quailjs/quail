@@ -5,10 +5,8 @@ examples/wysiwyg/editors/aloha/*
 examples/wysiwyg/editors/tinymce/*
 examples/wysiwyg/editors/ckeditor/*
 examples/wysiwyg/editors/ckeditor4/*
-_site
 node_modules/*
-utilities/printTable.php
-
-utilities/guidelineFinder.php
-
-utilities/tests.json
+.grunt/*
+dist/*
+bower_components/*
+lib/*

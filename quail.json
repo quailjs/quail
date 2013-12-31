@@ -17,12 +17,15 @@
   },
   "licenses": [
     {
-      "type": "GPL",
-      "url": "https://github.com/kevee/quail/blob/master/LICENSE-GPL"
+      "type": "MIT",
+      "url": "http://quailjs.org/license"
     }
   ],
   "dependencies": {
     "jquery": ">= 1.7"
   },
-  "keywords": []
+  "keywords": [],
+  "options" : {
+    "banner" : "/*! QUAIL quailjs.org | quailjs.org/license */"
+  }
 }

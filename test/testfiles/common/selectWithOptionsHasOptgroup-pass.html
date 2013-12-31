@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <title>selectWithOptionsHasOptgroup-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <form action="http://example.com/prog/someprog" method="post">
+            <select name="ComOS">
+                <optgroup label="PortMaster 3">
+                    <option label="3.7.1" value="pm3_3.7.1">PortMaster 3 with ComOS 3.7.1</option>
+                    <option label="3.7" value="pm3_3.7">PortMaster 3 with ComOS 3.7</option>
+                    <option label="3.5" value="pm3_3.5">PortMaster 3 with ComOS 3.5</option>
+                </optgroup>
+                <optgroup label="PortMaster 2">
+                    <option label="3.7" value="pm2_3.7">PortMaster 2 with ComOS 3.7</option>
+                    <option label="3.5" value="pm2_3.5">PortMaster 2 with ComOS 3.5</option>
+                </optgroup>
+                <optgroup label="IRX">
+                    <option label="3.7R" value="IRX_3.7R">IRX with ComOS 3.7R</option>
+                    <option label="3.5R" value="IRX_3.5R">IRX with ComOS 3.5R</option>
+                </optgroup>
+            </select>
+        </form>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('selectWithOptionsHasOptgroup', function() {
+            	  quailTest.runTest( 'selectWithOptionsHasOptgroup', '169-2.html');
+            	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+            });
+        </script>
+    </body>
+
+</html>

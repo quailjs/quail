@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>aImgAltNotRepetative-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>
+<a href="page1.html"><img src="resources/star.jpg" alt=""/>page1</a>
+
+        </p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('aImgAltNotRepetative', function() {
+            	  quailTest.runTest( 'aImgAltNotRepetative', '175-2.html');
+            	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+            });
+        </script>
+    </body>
+
+</html>

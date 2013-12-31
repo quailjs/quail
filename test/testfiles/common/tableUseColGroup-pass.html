@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>tableUseColGroup-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>From the WCAG 2.0 HTML techniques: "Describe the use and benefits of column
+            structure elements. Much of this may be theoretical."</p>
+        <script id="qunit-jquery"
+        src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('tableUseColGroup', function() {
+            	  quailTest.runTest( 'tableUseColGroup', '231-2.html');
+            	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+            });
+        </script>
+    </body>
+
+</html>

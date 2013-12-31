@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang="en">
+    
+    <head>
+        <title>imgNonDecorativeHasAlt-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>We would like to adopt another pet and are looking for one that is similar
+            to what's shown in the picture.</p>
+        <img src="resources/rex.jpg" alt=""
+        width="150" height="105" />
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('imgNonDecorativeHasAlt', function() {
+              quailTest.runTest( 'imgNonDecorativeHasAlt', '4-1.html');
+              equal(true, quailTest.confirmIsTag('img'), 'First item is an image');
+            });
+        </script>
+    </body>
+
+</html>

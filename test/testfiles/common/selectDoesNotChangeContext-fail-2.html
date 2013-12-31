@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>selectDoesNotChangeContext-fail-2</title>
+        <script type="text/javascript">
+            //<![CDATA[
+            // array of possible countries in the same order as they appear in the country selection list
+            var countryLists = new Array(4)
+            countryLists["empty"] = ["Select a Country"];
+            countryLists["North America"] = ["Canada", "United States", "Mexico"];
+            countryLists["South America"] = ["Brazil", "Argentina", "Chile", "Ecuador"];
+            countryLists["Asia"] = ["Russia", "China", "Japan"];
+            countryLists["Europe"]= ["Britain", "France", "Spain", "Germany"];
+            
+            function countryChange(selectObj) {
+            	var idx = selectObj.selectedIndex;
+            	var which = selectObj.options[idx].value;
+            	cList = countryLists[which];
+            	var cSelect = document.getElementById("country");
+            	// remove the current options
+            	var len=cSelect.options.length;
+            	while (cSelect.options.length > 0) {
+            		cSelect.remove(0);
+            	}
+            	var newOption;
+            	for (var i=0; i<cList.length; i++) {
+            		newOption = document.createElement("option");
+            		newOption.value = cList[i];  // assumes option string and value are the same
+            		newOption.text=cList[i];
+            		try {
+            			cSelect.add(newOption);  // this will fail in Dom browsers
+            		}
+            		catch (e) {
+            			cSelect.appendChild(newOption);
+            
+            		}
+            	}
+            }
+            
+            //]]>
+        </script>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        
+<h1>Dynamic Select Statements</h1>
+
+        <form action="http://www.example.com/test" method="post">
+            <p>
+                <label for="continent">Select Continent</label>
+                <select id="continent" onchange="countryChange(this);">
+                    <option value="empty">Select a Continent</option>
+                    <option value="North America">North America</option>
+                    <option value="South America">South America</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                </select>
+                <br />
+                <label for="country">Select a country</label>
+                <select id="country">
+                    <option value="0">Select a country</option>
+                </select>
+                <br/>
+                <input type="submit" value="select country" />
+            </p>
+        </form>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('selectDoesNotChangeContext', function() {
+              quailTest.runTest( 'selectDoesNotChangeContext', '92-3.html');
+              equal(true, quailTest.confirmIsTag('select'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>
