@@ -184,8 +184,5 @@ module.exports = function(grunt) {
   // Saucelabs task (need to add your own environment variables)
   grunt.registerTask('saucelabs', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'connect', 'supressSaucelabsOutput', 'saucelabs-qunit']);
 
-  // Saucelabs task (need to add your own environment variables)
-  grunt.registerTask('saucelabs-travis', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'supressSaucelabsOutput', 'saucelabs-qunit']);
-
   grunt.registerTask('publish', ['gh-pages']);
 };
