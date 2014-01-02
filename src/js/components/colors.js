@@ -69,8 +69,11 @@ quail.colors = {
     return 'rgb(' + data[0] + ',' + data[1] + ',' + data[2] + ')';
   },
 
-  passesWCAG : function(element) {
-    return (quail.colors.getLuminosity(quail.colors.getColor(element, 'foreground'), quail.colors.getColor(element, 'background')) > 5);
+  passesWCAG : function(element, level) {
+    if(typeof level === 'undefined') {
+      level = 5;
+    }
+    return (quail.colors.getLuminosity(quail.colors.getColor(element, 'foreground'), quail.colors.getColor(element, 'background')) > level);
   },
   
   passesWAI : function(element) {
@@ -103,7 +106,7 @@ quail.colors = {
     if(type === 'foreground') {
       return (element.css('color')) ? element.css('color') : 'rgb(255,255,255)';
     }
-    //return (element.css('background-color')) ? element.css('background-color') : 'rgb(0,0,0)';
+    
     if((element.css('background-color') !== 'rgba(0, 0, 0, 0)' &&
         element.css('background-color') !== 'transparent') ||
        element.get(0).tagName === 'body') {

@@ -13,6 +13,7 @@
   "jquery": true,
   "globals": {
     "quail": true,
-    "process": true
+    "process": true,
+    "console": true
   }
 }

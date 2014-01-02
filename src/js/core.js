@@ -50,7 +50,12 @@ var quail = {
    * Suspect CSS styles that might indicate a paragarph tag is being used as a header.
    */
   suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
-      
+  
+  /**
+   * Elements that can (naturally) recieve keyboard focus.
+   */
+  focusElements : 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]',
+
   /**
    * Main run function for quail. It bundles up some accessibility tests,
    * and if tests are not passed, it instead fetches them using getJSON.
