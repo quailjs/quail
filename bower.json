@@ -1,6 +1,6 @@
 {
   "name": "quail",
-  "version": "2.1",
+  "version": "2.1.0",
   "main": "dist/quail.jquery.js",
   "ignore": [
     ".jshintrc",

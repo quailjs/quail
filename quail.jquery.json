@@ -6,7 +6,7 @@
 	"homepage": "http://quailjs.org",
 	"docs": "http://quail.readthedocs.org/en/latest/",
 	"demo": "http://quailjs.org/examples/",
-	"version": "2.0.3",
+	"version": "2.1.0",
 	"author": {
  		"name": "Kevin Miller",
 		"email": "kevin@csumb.edu",
