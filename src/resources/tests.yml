@@ -1308,6 +1308,22 @@ formHasGoodErrorMessage:
     en: "Form error messages should assist in solving errors"
   description: 
     en: "If the form has some required fields or other ways in which the user can commit an error, check that the reply is accessible. Use the words \"required\" or \"error\" within the <code>label</code> element of input items where the errors happened"
+formHasSubmitButton:
+  selector: "form:not(form:has(input[type=image], input[type=submit], button[type=submit]))"
+  tags:
+    - "form"
+    - "content"
+  testability: 1
+  type: selector
+  guidelines:
+    wcag:
+      3.2.2:
+        techniques:
+          - "H32"
+  title:
+    en: "Form should have a submit button"
+  description:
+    en: "Forms should have a button that allows the user to select when they want to submit the form."
 formWithRequiredLabel: 
   callback: "formWithRequiredLabel"
   tags: 
