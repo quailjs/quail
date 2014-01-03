@@ -1320,6 +1320,7 @@ formHasSubmitButton:
       3.2.2:
         techniques:
           - "H32"
+          - "G80"
   title:
     en: "Form should have a submit button"
   description:
