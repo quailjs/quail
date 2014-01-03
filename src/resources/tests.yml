@@ -1102,11 +1102,7 @@ embedHasAssociatedNoEmbed:
     - "content"
   testability: 1
   type: "custom"
-  guidelines:
-    wcag:
-      1.1.1:
-        techniques:
-          - "H46"
+  guidelines: []
   title: 
     en: "All \"embed\" elements have an associated \"noembed\" element"
   description: 
@@ -1392,7 +1388,7 @@ frameTitlesDescribeFunction:
   components: 
     - "placeholder"
   empty: true
-  selector: "frame[title]"
+  selector: "frame[title], iframe[title]"
   tags: 
     - "deprecated"
     - "frame"
