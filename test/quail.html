@@ -577,7 +577,7 @@
                   "testfiles/common/appletUIMustBeAccessible-pass.html"
             ]);
       }
-      else {
+      if(navigator.userAgent.search('Chrome') !== -1) {
         //Unfortunately PhantomJS doesn't play nicely with focus, for now its browser only
         QUnit.testSuites([
           "testfiles/common/focusIndicatorVisible-pass.html",
