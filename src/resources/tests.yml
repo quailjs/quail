@@ -2477,6 +2477,22 @@ labelsAreAssignedToAnInput:
     en: "All labels should be associated with an input"
   description: 
     en: "All <code>label</code> elements should be assigned to an input item, and should have a <em>for</em> attribute which equals the <em>id</em> attribute of a form element."
+languageDirAttributeIsUsed:
+  callback: "languageDirAttributeIsUsed"
+  type: "custom"
+  testability: 0.5
+  tags:
+    - "language"
+    - "content"
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
+          - "H56"
+  title:
+    en: "Use the dir attribute when the language direction changes"
+  description:
+    en: "When there are nested directional changes in text, us an inline element with a <code>dir</code> attribute to indicate direction."
 legendDescribesListOfChoices: 
   selector: "legend"
   tags: 
