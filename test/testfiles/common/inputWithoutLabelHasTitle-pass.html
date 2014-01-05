@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!doctype html>
+<html>
+    
+    <head>
+        <title>inputWithoutLabelHasTitle-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css" media="screen">
+    </head>
+    
+    <body>
+        <div id="quail-scope">
+            <form>
+                <label for="select">Select your favorite pet</label>
+                <select id="select">
+                    <option>Cat</option>
+                    <option>Dog</option>
+                    <option>Fish</option>
+                </select>
+                <input type="text" title="Search keywords"></input>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('inputWithoutLabelHasTitle', function() {
+            	  quailTest.runTest( 'inputWithoutLabelHasTitle' );
+            	  equal(true, quailTest.confirmIsEmpty(), 'No errors were found');
+            });
+        </script>
+    </body>
+
+</html>
