@@ -16,7 +16,7 @@
         <script id="qunit-script">
             test('aLinksToMultiMediaRequireTranscript', function() {
               quailTest.runTest( 'aLinksToMultiMediaRequireTranscript', '20-4.html');
-              equal(quailTest.results[quailTest.testName][0].attr('href'), 'movie.mov', 'Item attribute check');
+              equal(quailTest.results[quailTest.testName].elements[0].attr('href'), 'movie.mov', 'Item attribute check');
             });
         </script>
     </body>

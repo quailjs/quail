@@ -27,7 +27,7 @@
                                   complete : function(results) {
                                     testResults = results.results;
                                   }});
-              equal('IMG', testResults.imgHasAlt[0].get(0).tagName, 'Default guideline has run');
+              equal('IMG', testResults.imgHasAlt.elements[0].get(0).tagName, 'Default guideline has run');
             });
         </script>
     </body>

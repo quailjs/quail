@@ -18,7 +18,7 @@
         <script id="qunit-script">
             test('imgAltEmptyForDecorativeImages', function() {
               quailTest.runTest( 'imgAltEmptyForDecorativeImages', '16-2.html');
-              equal(quailTest.results[quailTest.testName][0].attr('src'), 'resources/10pttab.gif', 'Item attribute check');
+              equal(quailTest.results[quailTest.testName].elements[0].attr('src'), 'resources/10pttab.gif', 'Item attribute check');
             });
         </script>
     </body>

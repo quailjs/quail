@@ -23,7 +23,7 @@
         <script id="qunit-script">
             test('imgNotReferredToByColorAlone', function() {
               quailTest.runTest( 'imgNotReferredToByColorAlone', '14-3.html');
-              equal(quailTest.results[quailTest.testName][0].attr('src'), 'resources/kids.jpg', 'Item attribute check');
+              equal(quailTest.results[quailTest.testName].elements[0].attr('src'), 'resources/kids.jpg', 'Item attribute check');
             });
         </script>
     </body>

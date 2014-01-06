@@ -43,8 +43,8 @@
                                   complete : function(results) {
                                     testResults = results.results;
                                   }});
-              equal('P', testResults.customTestSelector[0].get(0).tagName, 'Found paragraph with selector');
-              equal('H2', testResults.customTestCallback[0].get(0).tagName, 'Found header with custom callback');
+              equal('P', testResults.customTestSelector.elements[0].get(0).tagName, 'Found paragraph with selector');
+              equal('H2', testResults.customTestCallback.elements[0].get(0).tagName, 'Found header with custom callback');
             });
         </script>
     </body>

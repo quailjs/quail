@@ -17,7 +17,7 @@
             test('documentAcronymsHaveElement', function() {
               quailTest.runTest( 'documentAcronymsHaveElement', '99-1.html');
               var pass = false;
-              $.each(quailTest.results.documentAcronymsHaveElement, function(index, abbr) {
+              $.each(quailTest.results.documentAcronymsHaveElement.elements, function(index, abbr) {
                 if(abbr.hasClass('fail')) {
                   pass = true;
                 }
