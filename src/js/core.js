@@ -148,6 +148,7 @@ var quail = {
       var severity = 
       quail.options.testFailed({element  : $element,
                              testName    : testName,
+                             test        : quail.accessibilityTests[testName],
                              testability : testability,
                              severity    : quail.testabilityTranslation[testability],
                              options     : options
