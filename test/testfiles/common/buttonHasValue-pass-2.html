@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>buttonHasValue-pass-2</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css" media="screen">
+    </head>
+    
+    <body>
+        <button id="button">Submit form</button>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('buttonHasValue', function() {
+            	  quailTest.runTest( 'buttonHasValue');
+            	  equal(true, quailTest.confirmIsEmpty(), 'Button has a value');
+            });
+        </script>
+    </body>
+
+</html>

@@ -154,6 +154,9 @@ aMustContainText:
       2.4.9: 
         techniques: 
           - "H30"
+      4.1.2:
+        techniques:
+          - "H91"
   title: 
     en: "Links should contain text"
   description: 
@@ -614,6 +617,32 @@ boldIsNotUsed:
     en: "The \"b\" (bold) element is not used"
   description: 
     en: "The <code>b</code> (bold) element provides no emphasis for non-sighted readers. Use the <code>strong</code> tag instead."
+buttonHasValue: 
+  type: "placeholder"
+  components:
+    - "placeholder"
+  content: true
+  empty: true
+  attribute: "value"
+  selector: "button"
+  tags: 
+    - "content"
+  testability: 1
+  guidelines: 
+    wcag: 
+      2.1.1:
+        techniques:
+          - "H91"
+      2.1.3:
+        techniques:
+          - "H91"
+      4.1.2:
+        techniques:
+          - "H91"
+  title: 
+    en: "Button should contain text"
+  description: 
+    en: "Buttons should contain a text value within the element, or have a value attribute."
 checkboxHasLabel: 
   components: 
     - "label"

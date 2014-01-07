@@ -4,25 +4,33 @@
  */
 quail.components.placeholder = function(testName, options) {
   quail.html.find(options.selector).each(function() {
-    var text;
+    var text = '';
     if(typeof options.attribute !== 'undefined') {
-      if(typeof $(this).attr(options.attribute) === 'undefined' ||
+      if((typeof $(this).attr(options.attribute) === 'undefined' ||
             (options.attribute === 'tabindex' &&
               $(this).attr(options.attribute) <= 0
             )
-         ) {
+         ) &&
+         !options.content
+        ) {
         quail.testFails(testName, $(this));
         return;
       }
-      text = $(this).attr(options.attribute);
+      else {
+        if($(this).attr(options.attribute) && $(this).attr(options.attribute) !== 'undefined') {
+          text += $(this).attr(options.attribute);
+        }
+      }
     }
-    else {
-      text = $(this).text();
+    if(typeof options.attribute === 'undefined' ||
+      !options.attribute ||
+      options.content) {
+      text += $(this).text();
       $(this).find('img[alt]').each(function() {
         text += $(this).attr('alt');
       });
     }
-    if(typeof text === 'string') {
+    if(typeof text === 'string' && text.length > 0) {
       text = quail.cleanString(text);
       var regex = /^([0-9]*)(k|kb|mb|k bytes|k byte)$/g;
       var regexResults = regex.exec(text.toLowerCase());
