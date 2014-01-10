@@ -1251,6 +1251,28 @@ emoticonsMissingAbbr:
     en: "Emoticons should have abbreviations"
   description: 
     en: "Emoticons are not read by screen-readers, and are often used to communicate feelings or other things which are relevant to the content of the document. If this emoticon is important content, mark it up with an \"abbr\" or \"acronym\" tag."
+fieldsetHasLabel:
+  type: "selector"
+  selector: "fieldset:not(fieldset:has(legend))"
+  tags:
+    - "form"
+    - "content"
+  testability: 1
+  guidelines:
+    wcag:
+      2.1.1:
+        techniques:
+          - "H91"
+      2.1.3:
+        techniques:
+          - "H91"
+      4.1.2:
+        techniques:
+          - "H91"
+  title:
+    en: "Fieldsets require a label element"
+  description:
+    en: "Fieldsets used to group similar form elements like checkboxes should have a label that describes the group of elements."
 fileHasLabel: 
   components: 
     - "label"
@@ -2664,12 +2686,18 @@ legendTextNotPlaceholder:
       1.3.1: 
         techniques: 
           - "H71"
+      2.1.1:
+        techniques:
+          - "H91"
       2.4.6:
         techniques:
           - "G131"
       3.3.2: 
         techniques: 
           - "H71"
+      4.1.3:
+        techniques:
+          - "H91"
   title: 
     en: "Legend\" text must not contain placeholder text like \"form\" or \"field"
   description: 
