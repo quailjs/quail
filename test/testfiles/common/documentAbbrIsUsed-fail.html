@@ -15,7 +15,7 @@
         <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
         <script id="qunit-script">
             test('documentAbbrIsUsed', function() {
-              quailTest.runTest( 'documentAbbrIsUsed', '98-1.html');
+              quailTest.runTest('documentAbbrIsUsed');
               var pass = false;
               $.each(quailTest.results.documentAbbrIsUsed.elements, function(index, abbr) {
                 if(abbr.hasClass('fail')) {

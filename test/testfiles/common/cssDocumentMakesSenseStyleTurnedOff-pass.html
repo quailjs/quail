@@ -15,7 +15,7 @@
         <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
         <script id="qunit-script">
             test('cssDocumentMakesSenseStyleTurnedOff', function() {
-              quailTest.runTest( 'cssDocumentMakesSenseStyleTurnedOff', '97-2.html');
+              quailTest.runTest('cssDocumentMakesSenseStyleTurnedOff');
               $.each(quailTest.results['cssDocumentMakesSenseStyleTurnedOff'].elements, function(index, item) {
               	if(item.is('body')) {
               		quailTest.results['cssDocumentMakesSenseStyleTurnedOff'].elements.splice(index, 1);

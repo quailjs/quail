@@ -16,7 +16,7 @@
             <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
             <script id="qunit-script">
                 test('aLinksToSoundFilesNeedTranscripts', function() {
-                  quailTest.runTest( 'aLinksToSoundFilesNeedTranscripts', '17-1.html');
+                  quailTest.runTest('aLinksToSoundFilesNeedTranscripts');
                   equal(quailTest.results[quailTest.testName].elements[0].attr('href'), 'carol-talking.wav', 'Item attribute check');
                 });
             </script>
