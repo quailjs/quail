@@ -1355,6 +1355,28 @@ formAllowsCheckIfIrreversable:
   testability: 0
   type: "selector"
   guidelines: []
+formButtonsHaveValue:
+  type: selector
+  selector: "input[type=button]:not([value]), input[type=submit]:not([value]), input[type=reset]:not([value])"
+  tags:
+    - "form"
+    - "content"
+  testability: 1
+  guidelines:
+    wcag:
+      2.1.1:
+        techniques:
+          - "H91"
+      2.1.3:
+        techniques:
+          - "H91"
+      4.1.2:
+        techniques:
+          - "H91"
+  title:
+    en: "Input elements for button, submit, or reset must have a value attribute"
+  description:
+    en: "Any form element that is rendered as a buttom has to have a readable value attribute."
 formDeleteIsReversable: 
   selector: "form"
   tags: 
