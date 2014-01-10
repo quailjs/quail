@@ -10,6 +10,13 @@ aAdjacentWithSameResourceShouldBeCombined:
       2.4.4:
         techniques:
           - "H2"
+          - "F89"
+      2.4.9:
+        techniques:
+          - "F89"
+      4.1.2:
+        techniques:
+          - "F89"
   title: 
     en: "Adjacent links that point to the same location should be merged"
   description: 
