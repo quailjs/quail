@@ -134,6 +134,28 @@ aLinksToSoundFilesNeedTranscripts:
     en: "Any links to a sound file should also include a link to a transcript"
   description: 
     en: "Links to a sound file should be followed by a link to a transcript of the file."
+aLinkWithNonText:
+  type: "custom"
+  callback: "aLinkWithNonText"
+  tags:
+    - "link"
+    - "content"
+  guidelines: 
+    wcag:
+      2.4.4:
+        techniques:
+          - "H2"
+          - "F89"
+      2.4.9:
+        techniques:
+          - "F89"
+      4.1.2:
+        techniques:
+          - "F89"
+  title:
+    en: "Links with only non-text content should be readable"
+  description:
+    en: "If a link contains only non-text content like an image, that content must be readable by assistive technology."
 aMultimediaTextAlternative: 
   selector: "a[href$='.wmv'], a[href$='.wav'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']"
   tags: 
