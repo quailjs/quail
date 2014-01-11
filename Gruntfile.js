@@ -26,11 +26,6 @@ module.exports = function(grunt) {
         ]
       }
     },
-    shell: {
-      hooks: {
-        command: 'cp git-hooks/pre-commit .git/hooks/'
-      }
-    },
     concat: {
       options: {
         banner: '<%= pkg.options.banner %>' + "\n" + ';(function($) {' + "\n",
@@ -163,7 +158,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-convert');
-  grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-saucelabs');
