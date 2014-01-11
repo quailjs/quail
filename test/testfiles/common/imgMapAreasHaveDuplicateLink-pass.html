@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>imgMapAreasHaveDuplicateLink-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>
+            <map name="imagemap" id="map1">
+                <area shape="poly" coords="185,0,355,0,295,123" href="horses.html" alt="horses"
+                />
+                <area shape="poly" coords="336,202,549,203,549" href="dogs.html" alt="dogs"
+                />
+                <area shape="rect" coords="0,10,172,10" href="birds.html" alt="birds"
+                />
+            </map>
+        </p>
+        <p>
+            <img src="resources/navigation.gif" usemap="#imagemap" alt="navigation"
+            />
+        </p>
+        <p><a href="horses.html">Horses</a> | <a href="dogs.html">Dogs</a> | <a href="birds.html">Birds</a>
+        </p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('imgMapAreasHaveDuplicateLink', function() {
+              quailTest.runTest( 'imgMapAreasHaveDuplicateLink', '13-2.html');
+              equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+            });
+        </script>
+    </body>
+
+</html>

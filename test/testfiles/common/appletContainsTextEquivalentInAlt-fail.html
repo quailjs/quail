@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <title>appletContainsTextEquivalentInAlt-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <applet alt="" code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150">
+            <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
+            <param name="centerimage" value="true"><param name="boxborder" value="false">
+            <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
+        </applet>
+        <script>var setUserInfo = function() { };</script>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('appletContainsTextEquivalentInAlt', function() {
+              quailTest.runTest( 'appletContainsTextEquivalentInAlt', '23-1.html');
+              equal(true, quailTest.confirmIsTag('applet'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

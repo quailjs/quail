@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>textareaLabelPositionedClose-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <form action="http://www.example.com" method="post">
+            <table width="100%">
+                <tr>
+                    <td>first name:</td>
+                    <td align="right">
+                        <input type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>last name:</td>
+                    <td align="right">
+                        <input type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="test">comment:</label>
+                    </td>
+                    <td align="right">
+                        <textarea rows="3" cols="20" id="test"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="submit" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('textareaLabelPositionedClose', function() {
+              quailTest.runTest( 'textareaLabelPositionedClose', '96-1.html');
+              equal(true, quailTest.confirmIsTag('textarea'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

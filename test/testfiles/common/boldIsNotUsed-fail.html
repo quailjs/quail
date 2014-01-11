@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>boldIsNotUsed-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>What she
+            <bold>really</bold>meant to say was, "This isn't ok, it is
+            <bold>excellent</bold>!"</p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('boldIsNotUsed', function() {
+            	  quailTest.runTest( 'boldIsNotUsed', '116-1.html');
+            	  equal(true, quailTest.confirmIsTag('bold'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

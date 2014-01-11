@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>imgAltIsTooLong-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>
+            <img src="resources/rex.jpg" alt="A picture of Rex the cat with some extra text. This is very long alt text. In fact, it was much much too long for this image. Sort alt text would be much better and this alt text should be shortened."
+            />
+        </p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('imgAltIsTooLong', function() {
+              quailTest.runTest( 'imgAltIsTooLong', '3-1.html');
+              equal(true, quailTest.confirmIsTag('img'), 'First item is an image');
+            });
+        </script>
+    </body>
+
+</html>

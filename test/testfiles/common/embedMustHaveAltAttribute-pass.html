@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <title>embedMustHaveAltAttribute-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <embed alt="description of the embed" src="demo.mov">
+        <noembed>Alternate content for the embed</noembed>
+        </embed>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('embedMustHaveAltAttribute', function() {
+            	  quailTest.runTest( 'embedMustHaveAltAttribute', '165-2.html');
+            	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+            });
+        </script>
+    </body>
+
+</html>

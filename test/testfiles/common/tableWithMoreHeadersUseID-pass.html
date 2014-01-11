@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>tableWithMoreHeadersUseID-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <table border="1">
+            <tr>
+                <th id="class">Class</th>
+                <th id="teacher">Teacher</th>
+                <th id="males">Males</th>
+                <th id="females">Females</th>
+            </tr>
+            <tr>
+                <th id="firstyear" rowspan="2">First Year</th>
+                <th id="Bolter" headers="firstyear teacher">D. Bolter</th>
+                <td headers="firstyear Bolter males">5</td>
+                <td headers="firstyear Bolter females">4</td>
+            </tr>
+            <tr>
+                <th id="Cheetham" headers="firstyear teacher">A. Cheetham</th>
+                <td headers="firstyear Cheetham males">7</td>
+                <td headers="firstyear Cheetham females">9</td>
+            </tr>
+            <tr>
+                <th id="secondyear" rowspan="3">Second Year</th>
+                <th id="Lam" headers="secondyear teacher">M. Lam</th>
+                <td headers="secondyear Lam males">3</td>
+                <td headers="secondyear Lam females">9</td>
+            </tr>
+            <tr>
+                <th id="Crossy" headers="secondyear teacher">S. Crossy</th>
+                <td headers="secondyear Crossy males">4</td>
+                <td headers="secondyear Crossy females">3</td>
+            </tr>
+            <tr>
+                <th id="Forsyth" headers="secondyear teacher">A. Forsyth</th>
+                <td headers="secondyear Forsyth males">6</td>
+                <td headers="secondyear Forsyth females">9</td>
+            </tr>
+        </table>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('tableWithMoreHeadersUseID', function() {
+            	  quailTest.runTest( 'tableWithMoreHeadersUseID', '245-2.html');
+            	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+            });
+        </script>
+    </body>
+
+</html>

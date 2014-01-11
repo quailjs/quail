@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>aMustContainText-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>Select link for more <a href="dogs.html">information about dogs</a>.</p>
+        <script
+        id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+            <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+            <script id="qunit-composite" src="../../composite.js"></script>
+            <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+            <script>
+                test('aMustContainText', function() {
+                	  quailTest.runTest( 'aMustContainText', '174-2.html');
+                	  equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+                });
+            </script>
+    </body>
+
+</html>

@@ -2,7 +2,7 @@
 
 var accessibilityTests = { };
 
-$.ajax({ url : '../../../src/resources/tests.json',
+$.ajax({ url : '../../../dist/tests.json',
  async : false,
  dataType : 'json',
  cache : false,
@@ -39,6 +39,13 @@ var quailTest = {
   },
 
   confirmIsEmpty : function() {
+    $.each(quailTest.results[quailTest.testName], function(index, item) {
+      if(typeof item === 'undefined' ||
+         (item && item.attr('id') && item.attr('id').indexOf('qunit-') !== -1) ||
+         item.parents('#qunit-wrapper').length) {
+        quailTest.results[quailTest.testName].splice(index, 1);
+      }
+    });
     if(quailTest.results[quailTest.testName].length) {
       return false;
     }
@@ -53,11 +60,8 @@ var quailTest = {
   },
   
   insertElements : function(callback) {
-    
-      $('body').prepend('<div role="header" id="qunit-wrapper"><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div></div>');
-   
+   $('body').append('<div role="header" id="qunit-wrapper"><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div></div>');
   }
 };
 
-
-quailTest.insertElements();
+$(document).ready(quailTest.insertElements);

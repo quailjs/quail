@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>tableComplexHasSummary-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <table border="1">
+            <tr>
+                <th scope="col">State &amp; First</th>
+                <th scope="col">State &amp; Sixth</th>
+                <th scope="col">State &amp; Fifteenth</th>
+                <th scope="col">Fifteenth &amp; Morrison</th>
+            </tr>
+            </tr>
+            <td>4:00</td>
+            <td>4:05</td>
+            <td>4:11</td>
+            <td>4:19</td>
+            </tr>
+            </tr>
+            <td>5:00</td>
+            <td>5:05</td>
+            <td>5:11</td>
+            <td>5:19</td>
+            </tr>
+            </tr>
+            <td>6:00</td>
+            <td>6:05</td>
+            <td>6:11</td>
+            <td>6:19</td>
+            </tr>
+        </table>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('tableComplexHasSummary', function() {
+            	  quailTest.runTest( 'tableComplexHasSummary', '111-1.html');
+            	  equal(true, quailTest.confirmIsTag('table'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

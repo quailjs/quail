@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>imgHasAlt-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>
+            <img src="resources/rex.jpg" alt="A black and brown cat named Rex." />
+        </p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script>
+            test('imgHasAlt', function() {
+                quailTest.runTest( 'imgHasAlt', '1-2.html');
+                equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
+              });
+        </script>
+    </body>
+
+</html>

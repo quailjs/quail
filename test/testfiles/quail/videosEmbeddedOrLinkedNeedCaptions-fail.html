@@ -1,25 +1,26 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-	<head>
-		<title>Vide links are captioned - Fail</title>
-	<link rel="stylesheet" href="../../../libs/qunit/qunit.css" media="screen">
-	</head>
-	<body>
-		<div id="qunit-testrunner-toolbar"></div>
-<h2 id="qunit-userAgent"></h2>
-<ol id="qunit-tests"></ol>
-<div id="qunit-fixture">test markup, will be hidden</div>
-	<p>Hey, check <a href="http://www.youtube.com/watch?v=V1HSNV9y25A">Out this awesome video.</a></p>
-	<script id="qunit-jquery" src="../../../libs/jquery/jquery.js"></script>
-	<script id="qunit-events" src="../../../libs/jquery.hasEventListener/jquery.hasEventListener-2.0.3.js"></script>
-  <script id="qunit-quail" src="../../../src/quail.js"></script>
-  <script id="qunit-composite" src="../../composite.js"></script>
-  <script id="qunit-qunit" src="../../../libs/qunit/qunit.js"></script>
-  <script id="qunit-script">
-  test('videosEmbeddedOrLinkedNeedCaptions', function() {
-    quailTest.runTest( 'videosEmbeddedOrLinkedNeedCaptions', 'videosEmbeddedOrLinkedNeedCaptions-fail.html');
-    equal(true, quailTest.confirmIsTag('a'), 'link to captionless video');    
-  });
-  </script>
-	</body>
+    
+    <head>
+        <title>Video links are captioned - Fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        
+    <p>Hey, check <a href="http://www.youtube.com/watch?v=V1HSNV9y25A">Out this awesome video.</a>
+        </p>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('videosEmbeddedOrLinkedNeedCaptions', function() {
+                quailTest.runTest( 'videosEmbeddedOrLinkedNeedCaptions', 'videosEmbeddedOrLinkedNeedCaptions-fail.html');
+                equal(true, quailTest.confirmIsTag('a'), 'link to captionless video');    
+              });
+        </script>
+    </body>
+
 </html>

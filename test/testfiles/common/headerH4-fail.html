@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <title>headerH4-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        
+<h4>The First Heading</h4>
+
+        
+<h6>The Second Heading</h6>
+
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('headerH5', function() {
+              quailTest.runTest( 'headerH4', '41-1.html');
+              equal(true, quailTest.confirmIsTag('h6'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

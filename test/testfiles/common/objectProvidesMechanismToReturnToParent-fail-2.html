@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+    
+    <head>
+        <title>objectProvidesMechanismToReturnToParent-fail-2</title>
+        <link rel="stylesheet"
+        href="../../../lib/qunit/qunit/qunit.css" media="screen">
+    </head>
+    
+    <body>
+        <p>The following object is not working. This is just an example.</p>
+        <object
+        classid="http://www.test2.com" title="a simple object"></object>
+            <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+            <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+            <script id="qunit-composite" src="../../composite.js"></script>
+            <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+            <script>
+                test('objectProvidesMechanismToReturnToParent', function() {
+                	  quailTest.runTest( 'objectProvidesMechanismToReturnToParent', '259-2.html');
+                	  equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
+                });
+            </script>
+    </body>
+
+</html>

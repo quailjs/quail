@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>objectDoesNotFlicker-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>There is not a real object here. I need an object that flickers.</p>
+        <object></object>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('objectDoesNotFlicker', function() {
+              quailTest.runTest( 'objectDoesNotFlicker', '30-1.html');
+              equal(true, quailTest.confirmIsTag('object'), 'First item tag test');
+            });
+        </script>
+    </body>
+
+</html>

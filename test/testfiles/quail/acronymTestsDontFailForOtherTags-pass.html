@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        <title>acronymTestsDontFailForOtherTags-pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <div id="quail-scope">
+            <p>Everyone loves <abbr title="Quail accesibility information library">QUAIL</abbr> and
+                <acronym
+                title="Another Amazing Acronym Association">AAAA</acronym>.</p>
+        </div>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('acronymTestsDontFailForOtherTags', function() {
+              quailTest.runTest('documentAbbrIsUsed');
+              equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+              quailTest.runTest('documentAcronymsHaveElement');
+              equal(true, quailTest.confirmIsEmpty(), 'Results are empty');
+            });
+        </script>
+    </body>
+
+</html>

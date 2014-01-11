@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+    
+    <head>
+        <title>aLinksDontOpenNewWindow-fail</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+        <p>This link to a <a href="232-2.html" title="valid file - opens in a new window"
+            target="_new">valid file</a> opens in a new window.</p>
+        <script id="qunit-jquery"
+        src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            test('documentValidatesToDocType', function() {
+            	  quailTest.runTest( 'aLinksDontOpenNewWindow', '232-1.html');
+            	  equal(true, quailTest.confirmIsTag('a'), 'Link opens new window');
+            });
+        </script>
+    </body>
+
+</html>
