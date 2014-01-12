@@ -4004,3 +4004,19 @@ videosEmbeddedOrLinkedNeedCaptions:
     en: "All linked or embedded videos need captions"
   description: 
     en: "Any video hosted or otherwise which is linked or embedded must have a caption."
+whiteSpaceInWord:
+  callback: "whiteSpaceInWord"
+  type: "custom"
+  tags:
+    - "content"
+  testability: 0.5
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
+          - "F32"
+          - "C8"
+  title:
+    en: "Whitespace should not be used between characters in a word"
+  description:
+    en: "Using extra whitespace between letters in a word causes screen readers to not interpret the word correctly, use the letter-spacing CSS property instead."
