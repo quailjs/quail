@@ -27,7 +27,7 @@
                                   complete : function(results) {
                                     testResults = results.results;
                                   }});
-              equal(1, testResults.imgHasAlt.length, 'Image was found.');
+              equal(1, testResults.imgHasAlt.elements.length, 'Image was found.');
             
               $('.test-area').quail({ jsonPath : '../../../dist',
                                   guideline : [ 'imgHasAlt' ],
@@ -40,7 +40,7 @@
                                   complete : function(results) {
                                     testResults = results.results;
                                   }});
-              equal(0, testResults.imgHasAlt.length, 'Image was filtered out.');
+              equal(0, testResults.imgHasAlt.elements.length, 'Image was filtered out.');
             });
         </script>
     </body>

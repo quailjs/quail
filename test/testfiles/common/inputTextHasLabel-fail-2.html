@@ -20,7 +20,7 @@
         <script id="qunit-script">
             test('inputTextHasLabel', function() {
               quailTest.runTest( 'inputTextHasLabel', '57-3.html');
-              equal(quailTest.results[quailTest.testName][0].attr('name'), 'firstname', 'Item attribute check');
+              equal(quailTest.results[quailTest.testName].elements[0].attr('name'), 'firstname', 'Item attribute check');
             });
         </script>
     </body>

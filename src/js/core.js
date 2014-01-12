@@ -97,8 +97,7 @@ var quail = {
       var results = {totals : {severe : 0, moderate : 0, suggestion : 0 },
                     results : quail.accessibilityResults };
       $.each(results.results, function(testName, result) {
-        results.totals[quail.testabilityTranslation[quail.accessibilityTests[testName].testability]] += result.length;
-      });
+        results.totals[quail.testabilityTranslation[quail.accessibilityTests[testName].testability]] += result.elements.length;      });
       quail.options.complete(results);
     }
   },
@@ -127,7 +126,7 @@ var quail = {
       }
     }
 
-    quail.accessibilityResults[testName].push($element);
+    quail.accessibilityResults[testName].elements.push($element);
     if(typeof quail.options.testFailed !== 'undefined') {
       var testability = (typeof quail.accessibilityTests[testName].testability !== 'undefined') ?
                      quail.accessibilityTests[testName].testability :
@@ -135,6 +134,7 @@ var quail = {
       var severity = 
       quail.options.testFailed({element  : $element,
                              testName    : testName,
+                             test        : quail.accessibilityTests[testName],
                              testability : testability,
                              severity    : quail.testabilityTranslation[testability],
                              options     : options
@@ -155,7 +155,7 @@ var quail = {
       }
       var testType = quail.accessibilityTests[testName].type;
       if(typeof quail.accessibilityResults[testName] === 'undefined') {
-        quail.accessibilityResults[testName] = [ ];
+        quail.accessibilityResults[testName] = { test : quail.accessibilityTests[testName], elements : [ ] };
       }
       if(testType === 'selector') {
         quail.html.find(quail.accessibilityTests[testName].selector).each(function() {
