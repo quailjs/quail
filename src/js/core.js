@@ -145,7 +145,7 @@ var quail = {
       var testability = (typeof quail.accessibilityTests[testName].testability !== 'undefined') ?
                      quail.accessibilityTests[testName].testability :
                      'unknown';
-      var severity = 
+      
       quail.options.testFailed({element  : $element,
                              testName    : testName,
                              test        : quail.accessibilityTests[testName],
