@@ -19,7 +19,7 @@
         <script id="qunit-script">
             test('imgAltIsSameInText', function() {
               quailTest.runTest( 'imgAltIsSameInText', '11-2.html');
-              equal(quailTest.results[quailTest.testName][0].attr('alt'), 'W3C Working Draft logo', 'Item attribute check');
+              equal(quailTest.results[quailTest.testName].elements[0].attr('alt'), 'W3C Working Draft logo', 'Item attribute check');
             });
         </script>
     </body>
