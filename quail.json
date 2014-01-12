@@ -1,7 +1,7 @@
 {
   "name": "quail",
   "title": "Quail",
-  "description": "QUAIL Accessibility Information Library.",
+  "description": "Accessibility testing in the browser and on the server.",
   "version": "2.1.0",
   "homepage": "https://github.com/kevee/quail",
   "author": {

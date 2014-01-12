@@ -1,6 +1,6 @@
 {
   "name": "quail",
-  "description": "A javascript content accessibility checker.",
+  "description": "Accessibility testing in the browser and on the server.",
   "homepage": "http://quailjs.org",
   "version": "2.1.0",
   "engines": {
