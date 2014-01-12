@@ -19,7 +19,7 @@ hjp
         <script id="qunit-script">
             test('imgWithMapHasUseMap', function() {
               quailTest.runTest( 'imgWithMapHasUseMap', '12-1.html');
-              equal(quailTest.results[quailTest.testName][0].attr('src'), 'resources/image.gif', 'Item attribute check');
+              equal(quailTest.results[quailTest.testName].elements[0].attr('src'), 'resources/image.gif', 'Item attribute check');
             });
         </script>
     </body>

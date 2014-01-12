@@ -1,7 +1,7 @@
 {
   "name": "quail",
   "version": "2.1.0",
-  "main": "dist/quail.jquery.js",
+  "main": "dist/*",
   "ignore": [
     ".jshintrc",
     "**/*.txt"

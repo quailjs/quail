@@ -49,7 +49,7 @@
                                   reset : true,
                                   customTests : custom,
                                   complete : function(results) {
-                                    equal('STRONG', results.results.customConfigurationTest[0].get(0).tagName, 'Found strong tag');
+                                    equal('STRONG', results.results.customConfigurationTest.elements[0].get(0).tagName, 'Found strong tag');
                                   }});
             
               $('.test-area').quail({ jsonPath : '../../../dist',
@@ -58,7 +58,7 @@
                                   reset : true,
                                   customTests : custom,
                                   complete : function(results) {
-                                    equal('EM', results.results.customConfigurationTest[0].get(0).tagName, 'Found em tag');
+                                    equal('EM', results.results.customConfigurationTest.elements[0].get(0).tagName, 'Found em tag');
                                   }});
               
             });
