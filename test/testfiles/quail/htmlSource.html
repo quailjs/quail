@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>All labels have an input item - pass</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+
+        <p class="one" class="two">This page should load HTML code.</p>
+
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+            
+          var custom = {
+            htmlSourceAjaxTest : {
+                type : 'custom',
+                components: [ 'htmlSource' ],
+                callback : function(quail) {
+                    quail.components.htmlSource(function(html) {
+                        console.log(html);
+                        test('htmlSourceAjaxTest', function() {
+                        equal(true, html.search('class="one" class="two"') > -1, 'HTML string before DOM is loaded.');
+                        });
+                    });
+                }
+            },
+            htmlSourcePassedStringTest : {
+                type : 'custom',
+                components: [ 'htmlSource' ],
+                callback : function(quail) {
+                    quail.components.htmlSource(function(html) {
+                        test('htmlSourcePassedStringTest', function() {
+                        equal(true, html.search('class="a" class="b"') > -1, 'HTML string before DOM is loaded.');
+                        });
+                    });
+                }
+            }
+          };
+          $('body').quail({ jsonPath : '../../../dist',
+                              guideline : [ 'htmlSourceAjaxTest' ],
+                              reset : true,
+                              customTests : custom
+                          });
+          $('body').quail({ jsonPath : '../../../dist',
+                              guideline : [ 'htmlSourcePassedStringTest' ],
+                              reset : true,
+                              htmlSource : '<p class="a" class="b">This page should load HTML code.</p>',
+                              customTests : custom
+                          });
+        </script>
+    </body>
+
+</html>
