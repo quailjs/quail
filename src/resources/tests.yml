@@ -1598,22 +1598,22 @@ framesetMustHaveNoFramesSection:
     en: "If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames."
 headerH1: 
   components: 
-    - "header"
-  selector: "h1"
+    - "headingLevel"
+  headingLevel: 1
   tags: 
     - "header"
     - "content"
   testability: 0
-  type: "header"
+  type: "headingLevel"
   guidelines:
     wcag:
       2.4.6:
         techniques:
           - "G130"
   title: 
-    en: "The header following an h1 is h1 or h2"
+    en: "The header following an h1 is not h3 through  h6"
   description: 
-    en: "The header following an <code>h1</code> element should either be an <code>h2</code> or another <code>h1</code>. "
+    en: "Header order should not skip a level. Do not follow a <code>h1</head> haeder with a <code>h3</code>, <code>h4</code>, <code>h5</code>, or <code>h6</code>."
 headerH1Format: 
   components: 
     - "header"
@@ -1634,22 +1634,22 @@ headerH1Format:
     en: "An <code>h1</code> element may not be used purely for formatting."
 headerH2: 
   components: 
-    - "header"
-  selector: "h2"
+    - "headingLevel"
+  headingLevel: 2
   tags: 
     - "header"
     - "content"
   testability: 0
-  type: "header"
+  type: "headingLevel"
   guidelines:
     wcag:
       2.4.6:
         techniques:
           - "G130"
   title: 
-    en: "The header following an h2 is h1, h2 or h3"
+    en: "The header following an h2 is not h4, h5, or h6"
   description: 
-    en: "The header following an <code>h2</code> element should either be an <code>h3</code>,  <code>h1</code> or another <code>h2</code>. "
+    en: "Header order should not skip a level. Do not follow a <code>h2</head> haeder with a <code>h4</code>, <code>h5</code>, or <code>h6</code>."
 headerH2Format: 
   components: 
     - "header"
@@ -1670,22 +1670,22 @@ headerH2Format:
     en: "An <code>h2</code> element may not be used purely for formatting."
 headerH3: 
   components: 
-    - "header"
-  selector: "h3"
+    - "headingLevel"
+  headingLevel: 3
   tags: 
     - "header"
     - "content"
   testability: 0
-  type: "header"
+  type: "headingLevel"
   guidelines:
     wcag:
       2.4.6:
         techniques:
           - "G130"
   title: 
-    en: "The header following an h3 is h1, h2, h3 or h4"
+    en: "The header following an h3 is not an h5 or h6"
   description: 
-    en: "The header following an <code>h3</code> element should either be an <code>h4</code>,  <code>h2</code>,  <code>h1</code> or another <code>h3</code>. "
+    en: "Header order should not skip a level. Do not follow a <code>h3</head> haeder with a <code>h5<code> or <code>h6</code>. "
 headerH3Format: 
   components: 
     - "header"
@@ -1706,22 +1706,22 @@ headerH3Format:
     en: "An <code>h3</code> element may not be used purely for formatting."
 headerH4: 
   components: 
-    - "header"
-  selector: "h4"
+    - "headingLevel"
+  headingLevel: 4
   tags: 
     - "header"
     - "content"
   testability: 0
-  type: "header"
+  type: "headingLevel"
   guidelines:
     wcag:
       2.4.6:
         techniques:
           - "G130"
   title: 
-    en: "The header following an h4 is h1, h2, h3, h4 or h5"
+    en: "The header following an h4 is not an h6"
   description: 
-    en: "The header following an <code>h4</code> element should either be an <code>h5</code>,  <code>h3</code>,  <code>h2</code>,  <code>h1</code>,  or another <code>h4</code>. "
+    en: "Header order should not skip a level. Do not follow a <code>h4</head> haeder with a <code>h6</code>. "
 headerH4Format: 
   components: 
     - "header"
@@ -1740,24 +1740,6 @@ headerH4Format:
     en: "All h4 elements are not used for formatting"
   description: 
     en: "An <code>h4</code> element may not be used purely for formatting."
-headerH5: 
-  components: 
-    - "header"
-  selector: "h5"
-  tags: 
-    - "header"
-    - "content"
-  testability: 0
-  type: "header"
-  guidelines:
-    wcag:
-      2.4.6:
-        techniques:
-          - "G130"
-  title: 
-    en: "The header following an h5 is h6 or any header less than h6"
-  description: 
-    en: "The header following an <code>h5</code> element should either be an <code>h6</code>,   <code>h3</code>,  <code>h2</code>,  <code>h1</code>,  or another <code>h5</code>. "
 headerH5Format: 
   selector: "h5"
   tags: 
