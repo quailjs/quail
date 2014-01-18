@@ -4,7 +4,7 @@ quail.components.htmlSource = function(callback) {
 		return;
 	}
 	var html = '';
-	$.get(window.location.ajax, function(data) {
+	$.get(window.location.href, function(data) {
 		callback(data);
 	});
-}
+};

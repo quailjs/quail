@@ -23,7 +23,6 @@
                 components: [ 'htmlSource' ],
                 callback : function(quail) {
                     quail.components.htmlSource(function(html) {
-                        console.log(html);
                         test('htmlSourceAjaxTest', function() {
                         equal(true, html.search('class="one" class="two"') > -1, 'HTML string before DOM is loaded.');
                         });
