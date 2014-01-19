@@ -8,7 +8,7 @@ QUAIL is a jQuery and Sizzle-comptable library for checking content against acce
 Tests
 -----
 
-At the core of QUAIL are **tests**. Tests search for a single type of accessibility problem, and they are all defined in the file `src/resources/tests.yaml` (a JSON version is available in `dist/tests.json` - `read more about building these files <building.html>`_). For example, one of the most common accessibility problems out there is an image missing an `alt` attribute (which allows users with screen readers to hear a description of the image). The test definition in the `tests.yaml` file looks like this:
+At the core of QUAIL are **tests**. Tests search for a single type of accessibility problem, and they are all defined in the file `src/resources/tests.yaml` (a JSON version is available in `dist/tests.json` - `read more about building these files <build.html>`_). For example, one of the most common accessibility problems out there is an image missing an `alt` attribute (which allows users with screen readers to hear a description of the image). The test definition in the `tests.yaml` file looks like this:
 
 .. code-block:: js
    
