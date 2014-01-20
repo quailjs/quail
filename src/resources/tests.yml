@@ -1172,6 +1172,19 @@ embedHasAssociatedNoEmbed:
     en: "All \"embed\" elements have an associated \"noembed\" element"
   description: 
     en: "Because some users cannot use the <code>embed</code> element, provide alternative content in a <code>noembed</code> element."
+elementsDoNotHaveDuplicateAttributes:
+  callback: "elementsDoNotHaveDuplicateAttributes"
+  type: "custom"
+  components:
+    - "htmlSource"
+  testability: 1
+  tags:
+    - "content"
+  guidelines: []
+  title:
+    en: "Elements should not have duplicate attributes"
+  description:
+    en: "Elements should only have one type of any attribute. For example, there should not be two 'class' attributes."
 embedMustHaveAltAttribute: 
   selector: "embed:not(embed[alt])"
   tags: 

@@ -11,6 +11,7 @@
 
         <p class="one" class="two">This page should load HTML code.</p>
 
+        <script id="qunit-htmlparser" src="../../../lib/node-htmlparser/lib/htmlparser.js"></script>
         <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
         <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
         <script id="qunit-composite" src="../../composite.js"></script>
@@ -22,10 +23,10 @@
                 type : 'custom',
                 components: [ 'htmlSource' ],
                 callback : function(quail) {
-                    quail.components.htmlSource(function(html) {
-                        test('htmlSourceAjaxTest', function() {
-                        equal(true, html.search('class="one" class="two"') > -1, 'HTML string before DOM is loaded.');
-                        });
+                    quail.components.htmlSource(function(html, parsed) {
+                      test('htmlSourceAjaxTest', function() {
+                      equal(true, html.search('class="one" class="two"') > -1, 'HTML string before DOM is loaded.');
+                      });
                     });
                 }
             },
@@ -33,10 +34,10 @@
                 type : 'custom',
                 components: [ 'htmlSource' ],
                 callback : function(quail) {
-                    quail.components.htmlSource(function(html) {
-                        test('htmlSourcePassedStringTest', function() {
-                        equal(true, html.search('class="a" class="b"') > -1, 'HTML string before DOM is loaded.');
-                        });
+                    quail.components.htmlSource(function(html, parsed) {
+                      test('htmlSourcePassedStringTest', function() {
+                      equal(true, html.search('class="a" class="b"') > -1, 'HTML string before DOM is loaded.');
+                      });
                     });
                 }
             }
