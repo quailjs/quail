@@ -15,9 +15,15 @@ quail.components.htmlSource = {
 
   traverse: function(parsed, callback, number) {
     var that = this;
+    callback(parsed, number, false);
     if(typeof parsed.children !== 'undefined') {
-      $.each(parsed.children, function(number, child) {
-        that.traverse(child, callback, number);
+      parsed.childCount = 1;
+      $.each(parsed.children, function(index, child) {
+        callback(child, parsed.childCount, parsed);
+        that.traverse(child, callback, parsed.childCount);
+        if(child.type === 'tag') {
+          parsed.childCount++;
+        }
       });
     }
     if($.isArray(parsed)) {
@@ -25,9 +31,35 @@ quail.components.htmlSource = {
         that.traverse(element, callback);
       });
     }
-    else {
-      callback(parsed, number);
+  },
+
+  addSelector: function(element, childNumber, parent) {
+    if(element.type !== 'tag' || typeof element.name === 'undefined') {
+      return;
     }
+    if(typeof element.selector === 'undefined') {
+      element.selector = (parent && typeof parent.selector !== 'undefined') ? parent.selector.slice() : [];
+    }
+    else {
+      return;
+    }
+    var selector = element.name;
+    if(typeof element.attributes !== 'undefined') {
+      if(typeof element.attributes.id !== 'undefined') {
+        selector += '#' + element.attributes.id[0];
+      }
+      else {
+        if(typeof element.attributes.class !== 'undefined') {
+          selector += '.' + element.attributes.class[0].replace(/\s/, '.');
+        }
+      }
+    }
+
+    if(childNumber) {
+      selector += ':nth-child('+ childNumber + ')';
+    }
+    element.selector.push(selector);
+    return element.selector;
   },
 
   parseHtml: function(html) {
@@ -40,26 +72,9 @@ quail.components.htmlSource = {
     var parser = new Tautologistics.NodeHtmlParser.Parser(handler);
     parser.parseComplete(html);
     var parsed = handler.dom;
-    this.traverse(parsed, function(element, number) {
-      if(element.type !== 'tag') {
-        return;
-      }
-      if(typeof element.selector === 'undefined') {
-        element.selector = [];
-      }
-      var suffix = (number) ? ':nth-child(' + number + ')' : '';
-      if(typeof element.attributes !== 'undefined') {
-        if(typeof element.attributes.id !== 'undefined') {
-          element.selector.push(element.name + '#' + element.attributes.id[0] + suffix);
-        }
-        if(typeof element.attributes.class !== 'undefined') {
-          element.selector.push(element.name + '.' + element.attributes.class[0].replace(/\s/, '.') + suffix);
-        }
-      }
-      else {
-        element.selector.push(element.name + suffix);
-      }
-    });
+    var that = this;
+    //Traverse through the HTML objects and add a selector property
+    this.traverse(parsed, that.addSelector);
     return parsed;
   }
 };

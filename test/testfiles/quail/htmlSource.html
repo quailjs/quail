@@ -2,7 +2,7 @@
 <html>
     
     <head>
-        <title>All labels have an input item - pass</title>
+        <title>Quail can get the HTML code of the page - pass</title>
         <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
         media="screen">
     </head>
@@ -23,7 +23,7 @@
                 type : 'custom',
                 components: [ 'htmlSource' ],
                 callback : function(quail) {
-                    quail.components.htmlSource(function(html, parsed) {
+                    quail.components.htmlSource.getHtml(function(html, parsed) {
                       test('htmlSourceAjaxTest', function() {
                       equal(true, html.search('class="one" class="two"') > -1, 'HTML string before DOM is loaded.');
                       });
@@ -34,7 +34,7 @@
                 type : 'custom',
                 components: [ 'htmlSource' ],
                 callback : function(quail) {
-                    quail.components.htmlSource(function(html, parsed) {
+                    quail.components.htmlSource.getHtml(function(html, parsed) {
                       test('htmlSourcePassedStringTest', function() {
                       equal(true, html.search('class="a" class="b"') > -1, 'HTML string before DOM is loaded.');
                       });

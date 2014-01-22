@@ -8,14 +8,14 @@ quail.elementsDoNotHaveDuplicateAttributes = function() {
 				return;
 			}
 			var selector = element.selector.join(' ');
-			if(!quail.html.find(selector).length) {
+			if(!$.contains(quail.html.get(0), $(selector).get(0))) {
 				return;
 			}
 			if(typeof element.attributes !== 'undefined') {
 				$.each(element.attributes, function(index, attribute) {
 					if(attribute.length > 1) {
 						quail.testFails('elementsDoNotHaveDuplicateAttributes',
-							quail.html.find(selector).first(),
+							$(selector).first(),
 							{ attribute : index }
 							);
 					}
