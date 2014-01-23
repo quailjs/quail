@@ -3,28 +3,28 @@
  * element itself is not a placeholder (i.e. "click here" for links).
  */
 quail.components.placeholder = function(testName, options) {
-  quail.html.find(options.selector).each(function() {
+  quail.html.find(options.options.selector).each(function() {
     var text = '';
-    if(typeof options.attribute !== 'undefined') {
-      if((typeof $(this).attr(options.attribute) === 'undefined' ||
-            (options.attribute === 'tabindex' &&
-              $(this).attr(options.attribute) <= 0
+    if(typeof options.options.attribute !== 'undefined') {
+      if((typeof $(this).attr(options.options.attribute) === 'undefined' ||
+            (options.options.attribute === 'tabindex' &&
+              $(this).attr(options.options.attribute) <= 0
             )
          ) &&
-         !options.content
+         !options.options.content
         ) {
         quail.testFails(testName, $(this));
         return;
       }
       else {
-        if($(this).attr(options.attribute) && $(this).attr(options.attribute) !== 'undefined') {
-          text += $(this).attr(options.attribute);
+        if($(this).attr(options.options.attribute) && $(this).attr(options.options.attribute) !== 'undefined') {
+          text += $(this).attr(options.options.attribute);
         }
       }
     }
-    if(typeof options.attribute === 'undefined' ||
-      !options.attribute ||
-      options.content) {
+    if(typeof options.options.attribute === 'undefined' ||
+      !options.options.attribute ||
+      options.options.content) {
       text += $(this).text();
       $(this).find('img[alt]').each(function() {
         text += $(this).attr('alt');
@@ -38,7 +38,7 @@ quail.components.placeholder = function(testName, options) {
         quail.testFails(testName, $(this));
       }
       else {
-        if(options.empty && quail.isUnreadable(text)) {
+        if(options.options.empty && quail.isUnreadable(text)) {
           quail.testFails(testName, $(this));
         }
         else {
@@ -49,7 +49,7 @@ quail.components.placeholder = function(testName, options) {
       }
     }
     else {
-      if(options.empty && typeof text !== 'number') {
+      if(options.options.empty && typeof text !== 'number') {
         quail.testFails(testName, $(this));
       }
     }

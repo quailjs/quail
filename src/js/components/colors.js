@@ -3,10 +3,10 @@
  * color contrast/luminosity.
  */
 quail.components.color = function(testName, options) {
-  if(options.bodyForegroundAttribute && options.bodyBackgroundAttribute) {
+  if(options.options.bodyForegroundAttribute && options.options.bodyBackgroundAttribute) {
     var $body = quail.html.find('body').clone(false, false);
-    var foreground = $body.attr(options.bodyForegroundAttribute);
-    var background = $body.attr(options.bodyBackgroundAttribute);
+    var foreground = $body.attr(options.options.bodyForegroundAttribute);
+    var background = $body.attr(options.options.bodyBackgroundAttribute);
     if(typeof foreground === 'undefined') {
       foreground = 'rgb(0,0,0)';
     }
@@ -15,15 +15,15 @@ quail.components.color = function(testName, options) {
     }
     $body.css('color', foreground);
     $body.css('background-color', background);
-    if((options.algorithm === 'wcag' && !quail.colors.passesWCAG($body)) ||
-       (options.algorithm === 'wai' && !quail.colors.passesWAI($body))) {
+    if((options.options.algorithm === 'wcag' && !quail.colors.passesWCAG($body)) ||
+       (options.options.algorithm === 'wai' && !quail.colors.passesWAI($body))) {
        quail.testFails(testName, $body);
     }
   }
-  quail.html.find(options.selector).filter(quail.textSelector).each(function() {
+  quail.html.find(options.options.selector).filter(quail.textSelector).each(function() {
     if(!quail.isUnreadable($(this).text()) &&
-       (options.algorithm === 'wcag' && !quail.colors.passesWCAG($(this))) ||
-       (options.algorithm === 'wai' && !quail.colors.passesWAI($(this)))) {
+       (options.options.algorithm === 'wcag' && !quail.colors.passesWCAG($(this))) ||
+       (options.options.algorithm === 'wai' && !quail.colors.passesWAI($(this)))) {
        quail.testFails(testName, $(this));
     }
   });

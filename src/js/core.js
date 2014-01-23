@@ -168,11 +168,14 @@ var quail = {
         return;
       }
       var testType = quail.accessibilityTests[testName].type;
+      if(typeof quail.accessibilityTests[testName].options === 'undefined') {
+        quail.accessibilityTests[testName].options = { };
+      }
       if(typeof quail.accessibilityResults[testName] === 'undefined') {
         quail.accessibilityResults[testName] = { test : quail.accessibilityTests[testName], elements : [ ]};
       }
       if(testType === 'selector') {
-        quail.html.find(quail.accessibilityTests[testName].selector).each(function() {
+        quail.html.find(quail.accessibilityTests[testName].options.selector).each(function() {
           quail.testFails(testName, $(this));
         });
       }

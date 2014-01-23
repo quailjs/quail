@@ -23,7 +23,9 @@
               var custom = {
               	customTestSelector : {
               		type : 'selector',
-              		selector : '.error'
+              		options: {
+                    selector : '.error'
+                  }
               	},
               	customTestCallback : {
               		type : 'custom',
@@ -43,8 +45,8 @@
                                   complete : function(results) {
                                     testResults = results.results;
                                   }});
-              equal('P', testResults.customTestSelector.elements[0].get(0).tagName, 'Found paragraph with selector');
-              equal('H2', testResults.customTestCallback.elements[0].get(0).tagName, 'Found header with custom callback');
+              equal(true, testResults.customTestSelector.elements[0].is('p'), 'Found paragraph with selector');
+              equal(true, testResults.customTestCallback.elements[0].is('h2'), 'Found header with custom callback');
             });
         </script>
     </body>
