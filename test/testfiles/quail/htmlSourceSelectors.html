@@ -36,11 +36,10 @@
                   quail.components.htmlSource.getHtml(function(html, parsed) {
                     quail.components.htmlSource.traverse(parsed, function(element) {
                       if(element.type === 'tag' && typeof element.selector && element.name != 'script') {
-                        test('selector: ' + element.selector.join(' '), function() {
-                          equal(true, $(element.selector.join(' ')).length > 0, 'Selector ' + element.selector.join(' ') + ' returns an element.');
+                        var selector = element.selector.join('>');
+                        test('Quail can find an element using raw HTML', function() {
+                          equal($(selector).length, 1, selector);
                         });
-                        if($(element.selector.join(' ')).length == 0) {
-                        }
                       }
                     });
                   });

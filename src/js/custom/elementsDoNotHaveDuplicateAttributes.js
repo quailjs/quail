@@ -7,7 +7,7 @@ quail.elementsDoNotHaveDuplicateAttributes = function() {
 			if(element.type !== 'tag') {
 				return;
 			}
-			var selector = element.selector.join(' ');
+			var selector = element.selector.join('>');
 			if(!$.contains(quail.html.get(0), $(selector).get(0))) {
 				return;
 			}
