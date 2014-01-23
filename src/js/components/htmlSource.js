@@ -13,14 +13,16 @@ quail.components.htmlSource = {
     }
   },
 
-  traverse: function(parsed, callback, number) {
+  traverse: function(parsed, callback, number, alreadyCalled) {
     var that = this;
-    callback(parsed, number, false);
+    if(typeof alreadyCalled === 'undefined') {
+      callback(parsed, number, false);
+    }
     if(typeof parsed.children !== 'undefined') {
       parsed.childCount = 1;
       $.each(parsed.children, function(index, child) {
         callback(child, parsed.childCount, parsed);
-        that.traverse(child, callback, parsed.childCount);
+        that.traverse(child, callback, parsed.childCount, true);
         if(child.type === 'tag') {
           parsed.childCount++;
         }
