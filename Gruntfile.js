@@ -84,9 +84,10 @@ module.exports = function(grunt) {
     'gh-pages': {
       options: {
         base: '',
-        add: true
+        add: true,
+        message: 'Auto-generated commit from grunt gh-pages.'
       },
-      src: ['dist/**']
+      src: ['dist/**', 'src/**']
     },
     connect: {
       server: {
