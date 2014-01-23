@@ -48,7 +48,8 @@ module.exports = function(grunt) {
       }
     },
     qunit: {
-      files: ['test/quail.html']
+      all: ['test/quail.html'],
+      single: ['test/testfiles/' + grunt.option('file')]
     },
     jshint: {
       options: {
@@ -164,16 +165,16 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   // By default, just run tests
-  grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit']);
+  grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit:all']);
 
   // Build task.
   grunt.registerTask('build', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'uglify']);
 
   // Release task.
-  grunt.registerTask('release', ['bower:install', 'convert', 'concat', 'jshint', 'qunit', 'buildGuideline', 'compressTestsJson', 'uglify', 'gh-pages']);
+  grunt.registerTask('release', ['bower:install', 'convert', 'concat', 'jshint', 'qunit:all', 'buildGuideline', 'compressTestsJson', 'uglify', 'gh-pages']);
 
   // Test task.
-  grunt.registerTask('test', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit']);
+  grunt.registerTask('test', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit:all']);
 
   // Saucelabs task (need to add your own environment variables)
   grunt.registerTask('saucelabs', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'connect', 'supressSaucelabsOutput', 'saucelabs-qunit']);
