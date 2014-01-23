@@ -19,13 +19,15 @@ var quailTest = {
 
   testName : '',
 
-  runTest : function(testName) {
+  runTest : function(testName, testFailed, complete) {
     quailTest.testName = testName;
       var $target = ($('#quail-scope').length) ? $('#quail-scope') : $(document);
+      var testFails = (typeof testFails !== 'undefined') ? testFails : function() {};
       $target.quail({ jsonPath : '../../../src/resources',
                       guideline : [ testName ],
                       reset : true,
                       accessibilityTests : accessibilityTests,
+                      testFailed: testFailed,
                       complete : function(results) {
                         $.each(results.results[testName].elements, function(index, item) {
                           if(typeof item === 'undefined' ||
@@ -35,6 +37,9 @@ var quailTest = {
                           }
                         });
                         quailTest.results = results.results;
+                        if(typeof complete !== 'undefined') {
+                          complete(results);
+                        }
                       }});
   },
 

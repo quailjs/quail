@@ -7,7 +7,8 @@
     "**/*.txt"
   ],
   "dependencies": {
-    "jquery": "~2.0.3"
+    "jquery": "~2.0.3",
+    "node-htmlparser": "~2.0.0"
   },
   "devDependencies": {
     "qunit": "~1.12.0",
