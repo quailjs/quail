@@ -7,8 +7,8 @@ $.fn.quail = function(options) {
 
   //The quail builder at quailjs.org/build provides an in-scope test object.
   if(typeof quailBuilderTests !== 'undefined' &&
-     typeof quail.quailAccessibilityTests === 'undefined') {
-    quail.options.accessibilityTests = window.quailBuilderTests;
+     typeof options.accessibilityTests === 'undefined') {
+    quail.options.accessibilityTests = quailBuilderTests;
   }
   quail.run();
   
