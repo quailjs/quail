@@ -3,8 +3,13 @@ $.fn.quail = function(options) {
     return this;
   }
   quail.options = options;
-
   quail.html = this;
+
+  //The quail builder at quailjs.org/build provides an in-scope test object.
+  if(typeof quailBuilderTests !== 'undefined' &&
+     typeof quail.quailAccessibilityTests === 'undefined') {
+    quail.options.accessibilityTests = window.quailBuilderTests;
+  }
   quail.run();
   
   return this;
