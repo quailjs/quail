@@ -1398,6 +1398,7 @@ focusIndicatorVisible:
     wcag: 
       2.4.7: 
         techniques:
+          - "C15"
           - "G165"
           - "G195"
   tags: 
