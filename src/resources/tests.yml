@@ -2913,7 +2913,23 @@ menuNotUsedToFormatText:
     - "content"
   options: 
     selector: "menu:not(menu li:parent(menu))"
-noembedHasEquivalentContent: 
+newWindowIsOpened:
+  type: "custom"
+  testability: 1
+  title:
+    en: "A link should not open a new window"
+  description:
+    en: "Avoid confusion that may be caused by the appearance of new windows that were not requested by the user."
+  guidelines:
+    wcag:
+      2.0.0:
+        techniques:
+          - "H83"
+  tags:
+    - "javascript"
+    - "html"
+  callback: "newWindowIsOpened"
+noembedHasEquivalentContent:
   type: "selector"
   testability: 0
   title: 
