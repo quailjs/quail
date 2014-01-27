@@ -1,4214 +1,4214 @@
-aAdjacentWithSameResourceShouldBeCombined: 
+aAdjacentWithSameResourceShouldBeCombined:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Adjacent links that point to the same location should be merged"
-  description: 
+  description:
     en: "Because many users of screen-readers use links to navigate the page, providing two links right next to eachother that points to the same location can be confusing. Try combining the links."
-  guidelines: 
-    wcag: 
-      2.4.4: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.4:
+        techniques:
           - "H2"
           - "F89"
-      2.4.9: 
-        techniques: 
+      2.4.9:
+        techniques:
           - "F89"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "F89"
-  tags: 
+  tags:
     - "link"
     - "content"
   callback: "aAdjacentWithSameResourceShouldBeCombined"
-aImgAltNotRepetative: 
+aImgAltNotRepetative:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "When an image is in a link, its \"alt\" attribute should not repeat other text in the link"
-  description: 
+  description:
     en: "Images within a link should not have an alt attribute that simply repeats the text found in the link. This will cause screen readers to simply repeat the text twice."
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H30"
-      2.4.4: 
-        techniques: 
+      2.4.4:
+        techniques:
           - "H30"
-      2.4.9: 
-        techniques: 
+      2.4.9:
+        techniques:
           - "H30"
-  tags: 
+  tags:
     - "link"
     - "content"
   callback: "aImgAltNotRepetative"
-aLinkTextDoesNotBeginWithRedundantWord: 
+aLinkTextDoesNotBeginWithRedundantWord:
   type: "custom"
   testability: 0
-  title: 
+  title:
     en: "Link text should not begin with redundant text"
-  description: 
+  description:
     en: "Link text should not begin with redundant words or phrases like \"link\""
-  guidelines: 
-    wcag: 
-      2.4.9: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.9:
+        techniques:
           - "F84"
-  tags: 
+  tags:
     - "link"
     - "content"
   strings: "redundant.link"
   callback: "aLinkTextDoesNotBeginWithRedundantWord"
-aLinksAreSeperatedByPrintableCharacters: 
+aLinksAreSeperatedByPrintableCharacters:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Lists of links should be seperated by printable characters"
-  description: 
+  description:
     en: "If a list of links is provided within the same element, those links should be seperated by a non-linked, printable character. Structures like lists are not included in this."
   guidelines: []
-  tags: 
+  tags:
     - "link"
     - "content"
   callback: "aLinksAreSeperatedByPrintableCharacters"
-aLinksDontOpenNewWindow: 
+aLinksDontOpenNewWindow:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Links should not open a new window without warning"
-  description: 
+  description:
     en: "Links which open a new window using the \"target\" attribute should warn users."
-  guidelines: 
-    wcag: 
-      3.2.5: 
-        techniques: 
+  guidelines:
+    wcag:
+      3.2.5:
+        techniques:
           - "H83"
-  tags: 
+  tags:
     - "link"
     - "content"
-  options: 
+  options:
     selector: "a[target=_new], a[target=_blank], a[target=_blank]"
-aLinksNotSeparatedBySymbols: 
+aLinksNotSeparatedBySymbols:
   type: "custom"
   testability: 1
   guidelines: []
-  tags: 
+  tags:
     - "link"
     - "content"
   callback: "aLinksNotSeparatedBySymbols"
-aLinksToMultiMediaRequireTranscript: 
+aLinksToMultiMediaRequireTranscript:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Any links to a multimedia file should also include a link to a transcript"
-  description: 
+  description:
     en: "Links to a multimedia file should be followed by a link to a transcript of the file."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "c"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "G74"
-  tags: 
+  tags:
     - "link"
     - "media"
     - "content"
-  options: 
+  options:
     selector: "a[href$='.wmv'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']"
-aLinksToSoundFilesNeedTranscripts: 
+aLinksToSoundFilesNeedTranscripts:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Any links to a sound file should also include a link to a transcript"
-  description: 
+  description:
     en: "Links to a sound file should be followed by a link to a transcript of the file."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "c"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "G74"
-  tags: 
+  tags:
     - "link"
     - "media"
     - "content"
-  options: 
+  options:
     selector: "a[href$='.wav'], a[href$='.snd'], a[href$='.mp3'], a[href$='.iff'], a[href$='.svx'], a[href$='.sam'], a[href$='.smp'], a[href$='.vce'], a[href$='.vox'], a[href$='.pcm'], a[href$='.aif']"
-aLinkWithNonText: 
+aLinkWithNonText:
   type: "custom"
-  title: 
+  title:
     en: "Links with only non-text content should be readable"
-  description: 
+  description:
     en: "If a link contains only non-text content like an image, that content must be readable by assistive technology."
-  guidelines: 
-    wcag: 
-      2.4.4: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.4:
+        techniques:
           - "H2"
           - "F89"
-      2.4.9: 
-        techniques: 
+      2.4.9:
+        techniques:
           - "F89"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "F89"
-  tags: 
+  tags:
     - "link"
     - "content"
   callback: "aLinkWithNonText"
-aMultimediaTextAlternative: 
+aMultimediaTextAlternative:
   type: "selector"
   testability: 0
   guidelines: []
-  tags: 
+  tags:
     - "link"
     - "media"
     - "content"
-  options: 
+  options:
     selector: "a[href$='.wmv'], a[href$='.wav'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']"
-aMustContainText: 
+aMustContainText:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Links should contain text"
-  description: 
+  description:
     en: "Because many users of screen-readers use links to navigate the page, providing links with no text (or with images that have empty \"alt\" attributes and no other readable text) hinders these users."
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H30"
-      2.4.4: 
-        techniques: 
+      2.4.4:
+        techniques:
           - "H30"
-      2.4.9: 
-        techniques: 
+      2.4.9:
+        techniques:
           - "H30"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H91"
-  tags: 
+  tags:
     - "link"
     - "content"
   callback: "aMustContainText"
-aMustHaveTitle: 
+aMustHaveTitle:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "All links must have a \"title\" attribute"
-  description: 
+  description:
     en: "Every link must have a \"title\" attribute."
   guidelines: []
-  tags: 
+  tags:
     - "link"
     - "content"
-  options: 
+  options:
     selector: "a:not(a[title])"
-aMustNotHaveJavascriptHref: 
+aMustNotHaveJavascriptHref:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Links should not use \"javascript\" in their location"
-  description: 
+  description:
     en: "Anchor (<code>a</code>.  elements may not use the \"javascript\" protocol in their \"href\" attributes."
   guidelines: []
-  tags: 
+  tags:
     - "link"
     - "content"
-  options: 
+  options:
     selector: "a[href^='javascript:']"
-aSuspiciousLinkText: 
+aSuspiciousLinkText:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Link text should be useful"
-  description: 
+  description:
     en: "Because many users of screen-readers use links to navigate the page, providing links with text that simply read \"click here\" gives no hint of the function of the link"
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H30"
-      2.4.4: 
-        techniques: 
+      2.4.4:
+        techniques:
           - "H30"
-      2.4.9: 
-        techniques: 
+      2.4.9:
+        techniques:
           - "H30"
-  tags: 
+  tags:
     - "link"
     - "content"
   strings: "suspiciousLinks"
   callback: "aSuspiciousLinkText"
-aTitleDescribesDestination: 
+aTitleDescribesDestination:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "The title attribute of all source a (anchor) elements describes the link destination."
-  description: 
+  description:
     en: "Every link must have a \"title\" attribute which describes the purpose or destination of the link."
-  guidelines: 
-    wcag: 
-      2.4.9: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.9:
+        techniques:
           - "H33"
           - "H25"
-  tags: 
+  tags:
     - "link"
     - "content"
-  options: 
+  options:
     selector: "a[title]"
-addressForAuthor: 
+addressForAuthor:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "The document should contain an address for the author"
-  description: 
+  description:
     en: "Documents should provide a valid email address within an <code>address</code> element."
   guidelines: []
-  tags: 
+  tags:
     - "document"
-  options: 
+  options:
     selector: "body:not(body:has(address))"
-addressForAuthorMustBeValid: 
+addressForAuthorMustBeValid:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "The document should contain a valid email address for the author"
-  description: 
+  description:
     en: "Documents should provide a valid email address within an <code>address</code> element."
   guidelines: []
-  tags: 
+  tags:
     - "document"
-  options: 
+  options:
     selector: "address"
-appletContainsTextEquivalent: 
+appletContainsTextEquivalent:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "All applets should contain the same content within the body of the applet"
-  description: 
+  description:
     en: "Applets should contain their text equivalents or description within the <code>applet</code> tag itself."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "m"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "G74"
           - "H35"
-  tags: 
+  tags:
     - "objects"
     - "applet"
     - "content"
   callback: "appletContainsTextEquivalent"
-appletContainsTextEquivalentInAlt: 
+appletContainsTextEquivalentInAlt:
   type: "placeholder"
   testability: 0.5
-  title: 
+  title:
     en: "All applets should contain a text equivalent in the \"alt\" attribute"
-  description: 
+  description:
     en: "Applets should contain their text equivalents or description in an \"alt\" attribute."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "m"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "G74"
           - "H35"
-  tags: 
+  tags:
     - "objects"
     - "applet"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "alt"
     empty: true
     selector: "applet"
-appletProvidesMechanismToReturnToParent: 
+appletProvidesMechanismToReturnToParent:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All applets should provide a way for keyboard users to escape"
-  description: 
+  description:
     en: "Ensure that a user who has only a keyboard as an input device can escape an <code>applet</code> element. This requires manual confirmation."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "applet"
     - "content"
-  options: 
+  options:
     selector: "applet"
-appletTextEquivalentsGetUpdated: 
+appletTextEquivalentsGetUpdated:
   type: "selector"
   testability: 0
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "m"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "G74"
           - "H35"
-  tags: 
+  tags:
     - "objects"
     - "applet"
     - "content"
-  options: 
+  options:
     selector: "applet"
-appletUIMustBeAccessible: 
+appletUIMustBeAccessible:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Any user interface in an applet must be accessible"
-  description: 
+  description:
     en: "Applet content should be assessed for accessibility."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "m"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "G74"
           - "H35"
-  tags: 
+  tags:
     - "objects"
     - "applet"
     - "content"
-  options: 
+  options:
     selector: "applet"
-appletsDoNotFlicker: 
+appletsDoNotFlicker:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All applets do not flicker"
-  description: 
+  description:
     en: "Applets should not flicker."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "j"
-    wcag: 
-      2.2.2: 
-        techniques: 
+    wcag:
+      2.2.2:
+        techniques:
           - "F7"
-  tags: 
+  tags:
     - "objects"
     - "applet"
     - "content"
-  options: 
+  options:
     selector: "applet"
-appletsDoneUseColorAlone: 
+appletsDoneUseColorAlone:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Applets should not use color alone to communicate content"
-  description: 
+  description:
     en: "Applets should contain content that makes sense without color and is accessible to users who are color blind."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "c"
-  tags: 
+  tags:
     - "objects"
     - "applet"
     - "content"
-  options: 
+  options:
     selector: "applet"
-areaAltIdentifiesDestination: 
+areaAltIdentifiesDestination:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All \"area\" elements must have an \"alt\" attribute which describes the link destination"
-  description: 
+  description:
     en: "All <code>area</code> elements within a <code>map</code> must have an \"alt\" attribute"
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "G74"
-  tags: 
+  tags:
     - "objects"
     - "applet"
     - "content"
-  options: 
+  options:
     selector: "area[alt]"
-areaAltRefersToText: 
+areaAltRefersToText:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Alt text for \"area\" elements should replicate the text found in the image"
-  description: 
+  description:
     en: "If an image is being used as a map, and an <code>area</code> encompasses text within the image, then the \"alt\" attribute of that <code>area</code> element should be the same as the text found in the image."
   guidelines: []
-  tags: 
+  tags:
     - "imagemap"
     - "content"
-  options: 
+  options:
     selector: "area"
-areaDontOpenNewWindow: 
+areaDontOpenNewWindow:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "No \"area\" elements should open a new window without warning"
-  description: 
+  description:
     en: "No <code>area</code> elements should open a new window without warning."
   guidelines: []
-  tags: 
+  tags:
     - "imagemap"
     - "content"
-  options: 
+  options:
     selector: "area[target='new window'], area[target=_new], area[target=_blank], area[target=_blank]"
-areaHasAltValue: 
+areaHasAltValue:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "All \"area\" elements must have an \"alt\" attribute"
-  description: 
+  description:
     en: "All <code>area</code> elements within a <code>map</code> must have an \"alt\" attribute."
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "F65"
           - "G74"
           - "H24"
-      1.4.3: 
-        techniques: 
+      1.4.3:
+        techniques:
           - "G145"
-  tags: 
+  tags:
     - "imagemap"
     - "content"
-  options: 
+  options:
     selector: "area:not(area[alt])"
-areaLinksToSoundFile: 
+areaLinksToSoundFile:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "All \"area\" elements which link to a sound file should also provide a link to a transcript"
-  description: 
+  description:
     en: "All <code>area</code> elements which link to a sound file should have a text transcript"
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "G74"
-  tags: 
+  tags:
     - "imagemap"
     - "media"
     - "content"
-  options: 
+  options:
     selector: "area[href$=wav], area[href$=snd], area[href$=mp3], area[href$=iff], area[href$=svx], area[href$=sam], area[href$=smp], area[href$=vce], area[href$=vox], area[href$=pcm], area[href$=aif]"
-ariaOrphanedContent: 
+ariaOrphanedContent:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Pages using ARIA roles should not have orphaned content"
-  description: 
+  description:
     en: "If a page makes use of ARIA roles, then there should not be any content on the page which is not within an element that exposes a role, as it could cause that content to be rendreed inaccessible to users with screen readers."
   guidelines: []
-  tags: 
+  tags:
     - "aria"
     - "content"
-  options: 
+  options:
     selector: "body *:not(*[role] *, *[role], script, meta, link)"
-basefontIsNotUsed: 
+basefontIsNotUsed:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Basefont should not be used"
-  description: 
+  description:
     en: "The <code>basefont</code> tag is deprecated and should not be used. Investigate using stylesheets instead."
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "deprecated"
-  options: 
+  options:
     selector: "basefont"
-blinkIsNotUsed: 
+blinkIsNotUsed:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "The \"blink\" tag should not be used"
-  description: 
+  description:
     en: "The <code>blink</code> tag should not be used. Ever."
-  guidelines: 
-    wcag: 
-      2.2.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.2.2:
+        techniques:
           - "F47"
-  tags: 
+  tags:
     - "deprecated"
     - "content"
-  options: 
+  options:
     selector: "blink"
-blockquoteNotUsedForIndentation: 
+blockquoteNotUsedForIndentation:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "The \"blockquote\" tag should not be used just for indentation"
-  description: 
+  description:
     en: ".. code-block:: html"
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "H49"
-  tags: 
+  tags:
     - "blockquote"
     - "content"
-  options: 
+  options:
     selector: "blockquote:not(blockquote[cite])"
-blockquoteUseForQuotations: 
+blockquoteUseForQuotations:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "If long quotes are in the document, use the \"blockquote\" element to mark them"
-  description: 
+  description:
     en: ".. code-block:: html"
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "H49"
-  tags: 
+  tags:
     - "blockquote"
     - "content"
   callback: "blockquoteUseForQuotations"
-bodyActiveLinkColorContrast: 
+bodyActiveLinkColorContrast:
   type: "color"
   testability: 1
-  title: 
+  title:
     en: "Contrast between active link text and background should be 5:1"
-  description: 
+  description:
     en: "The contrast ratio of active link text should be at lest 5:1 between the foreground text and the background. <a href=\"http://www.w3.org/TR/WCAG20/#contrast-ratiodef\">Learn more about color contrast and how to measure it.</a>"
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "color"
-  components: 
+  components:
     - "color"
-  options: 
+  options:
     algorithm: "wcag"
     bodyBackgroundAttribute: "bgcolor"
     bodyForegroundAttribute: "alink"
     selector: "a:active"
-bodyColorContrast: 
+bodyColorContrast:
   type: "color"
   testability: 1
-  title: 
+  title:
     en: "Contrast between text and background should be 5:1"
-  description: 
+  description:
     en: "The contrast ratio of text should be at lest 5:1 between the foreground text and the background. <a href=\"http://www.w3.org/TR/WCAG20/#contrast-ratiodef\">Learn more about color contrast and how to measure it.</a>"
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "color"
-  components: 
+  components:
     - "color"
-  options: 
+  options:
     algorithm: "wcag"
     bodyBackgroundAttribute: "bgcolor"
     bodyForegroundAttribute: "text"
     selector: "body"
-bodyLinkColorContrast: 
+bodyLinkColorContrast:
   type: "color"
   testability: 1
-  title: 
+  title:
     en: "Contrast between link text and background should be 5:1"
-  description: 
+  description:
     en: "The contrast ratio of link text should be at lest 5:1 between the foreground text and the background. <a href=\"http://www.w3.org/TR/WCAG20/#contrast-ratiodef\">Learn more about color contrast and how to measure it.</a>"
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "color"
-  components: 
+  components:
     - "color"
-  options: 
+  options:
     algorithm: "wcag"
     bodyBackgroundAttribute: "bgcolor"
     bodyForegroundAttribute: "link"
     selector: "a"
-bodyMustNotHaveBackground: 
+bodyMustNotHaveBackground:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Body elements do not use a background image"
-  description: 
+  description:
     en: "The <code>body</code> element for the page may not have a \"background\" attribute."
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "color"
-  options: 
+  options:
     selector: "body[background]"
-bodyVisitedLinkColorContrast: 
+bodyVisitedLinkColorContrast:
   type: "color"
   testability: 1
-  title: 
+  title:
     en: "Contrast between visited link text and background should be 5:1"
-  description: 
+  description:
     en: "The contrast ratio of visited link text should be at lest 5:1 between the foreground text and the background. <a href=\"http://www.w3.org/TR/WCAG20/#contrast-ratiodef\">Learn more about color contrast and how to measure it.</a>"
   guidelines: []
-  tags: 
+  tags:
     - "link"
     - "color"
-  components: 
+  components:
     - "color"
-  options: 
+  options:
     algorithm: "wcag"
     bodyBackgroundAttribute: "bgcolor"
     bodyForegroundAttribute: "vlink"
     selector: "a:visited"
-boldIsNotUsed: 
+boldIsNotUsed:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "The \"b\" (bold) element is not used"
-  description: 
+  description:
     en: "The <code>b</code> (bold) element provides no emphasis for non-sighted readers. Use the <code>strong</code> tag instead."
   guidelines: []
-  tags: 
+  tags:
     - "semantics"
     - "content"
-  options: 
+  options:
     selector: "bold"
-buttonHasValue: 
+buttonHasValue:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "Button should contain text"
-  description: 
+  description:
     en: "Buttons should contain a text value within the element, or have a value attribute."
-  guidelines: 
-    wcag: 
-      2.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.1.1:
+        techniques:
           - "H91"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "H91"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H91"
-  tags: 
+  tags:
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     content: true
     empty: true
     attribute: "value"
     selector: "button"
-checkboxHasLabel: 
+checkboxHasLabel:
   type: "label"
   testability: 1
-  title: 
+  title:
     en: "All checkboxes must have a corresponding label"
-  description: 
+  description:
     en: "All <code>input</code> elements with a type of \"checkbox\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "c"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "H44"
-      1.3.1: 
-        techniques: 
+      1.3.1:
+        techniques:
           - "H44"
           - "F68"
-      2.1.1: 
-        techniques: 
+      2.1.1:
+        techniques:
           - "H91"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "H91"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H44"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H44"
           - "H91"
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "label"
-  options: 
+  options:
     selector: "input[type=checkbox]"
-checkboxLabelIsNearby: 
+checkboxLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
-  title: 
+  title:
     en: "All \"checkbox\" input elements have a label that is close"
-  description: 
+  description:
     en: "All input elements of type \"checkbox\" must have a corresponding label that is close to the form element. Users of screen magnification or with reduced spatial skills are hampered in using a form element if the label for that element is located far away."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "labelProximity"
-  options: 
+  options:
     selector: "input[type=checkbox]"
-cssDocumentMakesSenseStyleTurnedOff: 
+cssDocumentMakesSenseStyleTurnedOff:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "The document must be readable with styles turned off"
-  description: 
+  description:
     en: "With all the styles for a page turned off, the content of the page should still make sense. Try to turn styles off in the browser and see if the page content is readable and clear."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "G140"
-      1.4.5: 
-        techniques: 
+      1.4.5:
+        techniques:
           - "G140"
-      1.4.9: 
-        techniques: 
+      1.4.9:
+        techniques:
           - "G140"
-  tags: 
+  tags:
     - "color"
-  options: 
+  options:
     selector: "link[rel=stylesheet], stylesheet, *[style]"
-cssTextHasContrast: 
+cssTextHasContrast:
   type: "color"
   testability: 1
-  title: 
+  title:
     en: "All elements should have appropriate color contrast"
-  description: 
+  description:
     en: "For users who have color blindness, all text or other elements should have a color contrast of 5:1."
-  guidelines: 
-    wcag: 
-      1.4.3: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.4.3:
+        techniques:
           - "G18"
-  tags: 
+  tags:
     - "color"
-  components: 
+  components:
     - "color"
-  options: 
+  options:
     algorithm: "wcag"
     bodyBackgroundAttribute: "color"
     bodyForegroundAttribute: "background"
     selector: "*"
-doctypeProvided: 
+doctypeProvided:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "The document should contain a valid \"doctype\" declaration"
-  description: 
+  description:
     en: "Each document must contain a valid doctype declaration.."
   guidelines: []
-  tags: 
+  tags:
     - "doctype"
   callback: "doctypeProvided"
-documentAbbrIsUsed: 
+documentAbbrIsUsed:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Abbreviations must be marked with an \"abbr\" element"
-  description: 
+  description:
     en: "Abbreviations should be marked with an <code>abbr</code> element, at least once on the page for each abbreviation."
-  guidelines: 
-    wcag: 
-      3.1.4: 
-        techniques: 
+  guidelines:
+    wcag:
+      3.1.4:
+        techniques:
           - "H28"
-  tags: 
+  tags:
     - "acronym"
     - "content"
-  components: 
+  components:
     - "acronym"
   callback: "documentAbbrIsUsed"
-documentAcronymsHaveElement: 
+documentAcronymsHaveElement:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Acronyms must be marked with an \"acronym\" element"
-  description: 
+  description:
     en: "Abbreviations should be marked with an <code>acronym</code> element, at least once on the page for each abbreviation."
-  guidelines: 
-    wcag: 
-      3.1.4: 
-        techniques: 
+  guidelines:
+    wcag:
+      3.1.4:
+        techniques:
           - "H28"
-  tags: 
+  tags:
     - "acronym"
     - "content"
-  components: 
+  components:
     - "acronym"
   callback: "documentAcronymsHaveElement"
-documentAllColorsAreSet: 
+documentAllColorsAreSet:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "All the document colors must be set"
-  description: 
+  description:
     en: "If any colors for text or the background are set in the <code>body</code> element, then all colors must be set."
   guidelines: []
-  tags: 
+  tags:
     - "deprecated"
     - "color"
-  options: 
+  options:
     selector: "body:not(body[text][bgcolor][link][alink][vlink], body:not(body[text], body[bgcolor], body[link], body[alink], body[vlink]))"
-documentAutoRedirectNotUsed: 
+documentAutoRedirectNotUsed:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Auto-redirect with \"meta\" elements must not be used"
-  description: 
+  description:
     en: "Because different users have different speeds and abilities when it comes to parsing the content of a page, a \"meta-refresh\" method to redirect users can prevent users from fully understanding the document before being redirected. If a pure redirect is needed"
   guidelines: []
-  tags: 
+  tags:
     - "document"
-  options: 
+  options:
     selector: "meta[http-equiv=refresh]"
-documentColorWaiActiveLinkAlgorithm: 
+documentColorWaiActiveLinkAlgorithm:
   type: "color"
   testability: 1
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "color"
-  components: 
+  components:
     - "color"
-  options: 
+  options:
     algorithm: "wai"
     bodyBackgroundAttribute: "bgcolor"
     bodyForegroundAttribute: "alink"
     selector: "a:active"
-documentColorWaiAlgorithm: 
+documentColorWaiAlgorithm:
   type: "color"
   testability: 1
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "color"
-  components: 
+  components:
     - "color"
-  options: 
+  options:
     algorithm: "wai"
     bodyBackgroundAttribute: "bgcolor"
     bodyForegroundAttribute: "text"
     selector: "body"
-documentColorWaiLinkAlgorithm: 
+documentColorWaiLinkAlgorithm:
   type: "color"
   testability: 1
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "color"
-  components: 
+  components:
     - "color"
-  options: 
+  options:
     algorithm: "wai"
     bodyBackgroundAttribute: "bgcolor"
     bodyForegroundAttribute: "link"
     selector: "a"
-documentColorWaiVisitedLinkAlgorithm: 
+documentColorWaiVisitedLinkAlgorithm:
   type: "color"
   testability: 1
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "color"
-  components: 
+  components:
     - "color"
-  options: 
+  options:
     algorithm: "wai"
     bodyBackgroundAttribute: "bgcolor"
     bodyForegroundAttribute: "vlink"
     selector: "a:visited"
-documentContentReadableWithoutStylesheets: 
+documentContentReadableWithoutStylesheets:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Content should be readable without style sheets"
-  description: 
+  description:
     en: "With all the styles for a page turned off, the content of the page should still make sense. Try to turn styles off in the browser and see if the page content is readable and clear."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "d"
-    wcag: 
-      1.3.1: 
-        techniques: 
+    wcag:
+      1.3.1:
+        techniques:
           - "G140"
-      1.4.5: 
-        techniques: 
+      1.4.5:
+        techniques:
           - "G140"
-      1.4.9: 
-        techniques: 
+      1.4.9:
+        techniques:
           - "G140"
-  tags: 
+  tags:
     - "document"
     - "color"
-  options: 
+  options:
     selector: "html:has(link[rel=stylesheet], style) body, body:has(*[style])"
-documentHasTitleElement: 
+documentHasTitleElement:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "The document should have a title element"
-  description: 
+  description:
     en: "The document should have a title element."
-  guidelines: 
-    wcag: 
-      2.4.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.2:
+        techniques:
           - "H25"
-  tags: 
+  tags:
     - "document"
     - "head"
-  options: 
+  options:
     selector: "html:not(html:has(title))"
-documentIDsMustBeUnique: 
+documentIDsMustBeUnique:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "All element \"id\" attributes must be unique"
-  description: 
+  description:
     en: "Element \"id\" attributes must be unique."
-  guidelines: 
-    wcag: 
-      4.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      4.1.1:
+        techniques:
           - "F77"
-  tags: 
+  tags:
     - "document"
     - "semantics"
   callback: "documentIDsMustBeUnique"
-documentIsWrittenClearly: 
+documentIsWrittenClearly:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "The document should be written to the target audience and read clearly"
-  description: 
+  description:
     en: "If a document is beyond a 10th grade level, then a summary or other guide should also be provided to guide the user through the content."
-  guidelines: 
-    wcag: 
-      3.1.5: 
-        techniques: 
+  guidelines:
+    wcag:
+      3.1.5:
+        techniques:
           - "G86"
-  tags: 
+  tags:
     - "language"
     - "content"
-  components: 
+  components:
     - "textStatistics"
   callback: "documentIsWrittenClearly"
-documentLangIsISO639Standard: 
+documentLangIsISO639Standard:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "The document's language attribute should be a standard code"
-  description: 
+  description:
     en: "The document should have a default langauge, and that language should use the valid 2 or 3 letter language code according to ISO specification 639."
-  guidelines: 
-    wcag: 
-      3.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      3.1.1:
+        techniques:
           - "H57"
-  tags: 
+  tags:
     - "document"
     - "language"
   strings: "languageCodes"
   callback: "documentLangIsISO639Standard"
-documentLangNotIdentified: 
+documentLangNotIdentified:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "The document must have a \"lang\" attribute"
-  description: 
+  description:
     en: "The document should have a default langauge, by setting the \"lang\" attribute in the <code>html</code> element."
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "language"
-  options: 
+  options:
     selector: "html:not(html[lang])"
-documentMetaNotUsedWithTimeout: 
+documentMetaNotUsedWithTimeout:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Meta elements must not be used to refresh the content of a page"
-  description: 
+  description:
     en: "Because different users have different speeds and abilities when it comes to parsing the content of a page, a \"meta-refresh\" method to reload the content of the page can prevent users from having full access to the content. Try to use a \"refresh this\" link instead.."
-  guidelines: 
-    wcag: 
-      2.2.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.2.1:
+        techniques:
           - "F40"
           - "F41"
-      2.2.4: 
-        techniques: 
+      2.2.4:
+        techniques:
           - "F40"
           - "F41"
-      3.2.5: 
-        techniques: 
+      3.2.5:
+        techniques:
           - "F41"
-  tags: 
+  tags:
     - "document"
-  options: 
+  options:
     selector: "meta[http-equiv=refresh]"
-documentReadingDirection: 
+documentReadingDirection:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "Reading direction of text is correctly marked"
-  description: 
+  description:
     en: "Where required, the reading direction of the document (for language that read in different directions), or portions of the text, must be declared."
-  guidelines: 
-    wcag: 
-      1.3.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
           - "H34"
-  tags: 
+  tags:
     - "document"
     - "language"
-  options: 
+  options:
     selector: "*[lang=he]:not(*[dir=rtl]), *[lang=ar]:not(*[dir=rtl])"
-documentStrictDocType: 
+documentStrictDocType:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "The page uses a strict doctype"
-  description: 
+  description:
     en: "The doctype of the page or document should be either an HTML or XHTML strict doctype."
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "doctype"
   callback: "documentStrictDocType"
-documentTitleDescribesDocument: 
+documentTitleDescribesDocument:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "The title describes the document"
-  description: 
+  description:
     en: "The document title should actually describe the page. Often, screen readers use the title to navigate from one window to another."
-  guidelines: 
-    wcag: 
-      2.4.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.2:
+        techniques:
           - "F25"
           - "G88"
-  tags: 
+  tags:
     - "document"
     - "head"
-  options: 
+  options:
     selector: "head title:first"
-documentTitleIsNotPlaceholder: 
+documentTitleIsNotPlaceholder:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "The document title should not be placeholder text"
-  description: 
+  description:
     en: "The document title should not be wasted placeholder text which does not describe the page."
-  guidelines: 
-    wcag: 
-      2.4.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.2:
+        techniques:
           - "F25"
           - "G88"
-  tags: 
+  tags:
     - "document"
     - "head"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     content: true
     selector: "head title:first"
-documentTitleIsShort: 
+documentTitleIsShort:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "The document title should be short"
-  description: 
+  description:
     en: "The document title should be short and succinct. This test fails at 150 characters, but authors should consider this to be a suggestion."
   guidelines: []
-  tags: 
+  tags:
     - "document"
     - "head"
   callback: "documentTitleIsShort"
-documentTitleNotEmpty: 
+documentTitleNotEmpty:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "The document should not have an empty title"
-  description: 
+  description:
     en: "The document should have a title element that is not white space"
-  guidelines: 
-    wcag: 
-      2.4.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.2:
+        techniques:
           - "F25"
           - "H25"
-  tags: 
+  tags:
     - "document"
     - "head"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     content: true
     empty: true
     selector: "head title"
-documentValidatesToDocType: 
+documentValidatesToDocType:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Document must validate to the doctype"
-  description: 
+  description:
     en: "The document must validate to the declared doctype."
-  guidelines: 
-    wcag: 
-      4.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      4.1.1:
+        techniques:
           - "G134"
-  tags: 
+  tags:
     - "document"
     - "doctype"
   callback: "documentValidatesToDocType"
-documentVisualListsAreMarkedUp: 
+documentVisualListsAreMarkedUp:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Visual lists of items are marked using ordered or unordered lists"
-  description: 
+  description:
     en: "Use the ordered (<code>ol</code>.  or unordered (<code>ul</code>.  elements for lists of items, instead of just using new lines which start with numbers or characters to create a visual list."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "H28"
           - "T2"
-  tags: 
+  tags:
     - "list"
     - "semantics"
     - "content"
   callback: "documentVisualListsAreMarkedUp"
-documentWordsNotInLanguageAreMarked: 
+documentWordsNotInLanguageAreMarked:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Any words or phrases which are not the document's primary language should be marked"
-  description: 
+  description:
     en: "If a document has words or phrases which are not in the document's primary language, those words or phrases should be properly marked. This helps indicate which language or voice a screen-reader should use to read the text."
-  guidelines: 
-    wcag: 
-      3.1.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      3.1.2:
+        techniques:
           - "H58"
-  tags: 
+  tags:
     - "language"
-  options: 
+  options:
     selector: "body"
-embedHasAssociatedNoEmbed: 
+embedHasAssociatedNoEmbed:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "All \"embed\" elements have an associated \"noembed\" element"
-  description: 
+  description:
     en: "Because some users cannot use the <code>embed</code> element, provide alternative content in a <code>noembed</code> element."
   guidelines: []
-  tags: 
+  tags:
     - "object"
     - "embed"
     - "content"
   callback: "embedHasAssociatedNoEmbed"
-elementsDoNotHaveDuplicateAttributes: 
+elementsDoNotHaveDuplicateAttributes:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Elements should not have duplicate attributes"
-  description: 
+  description:
     en: "Elements should only have one type of any attribute. For example, there should not be two 'class' attributes."
   guidelines: []
-  tags: 
+  tags:
     - "content"
-  components: 
+  components:
     - "htmlSource"
   libraries:
     - "node-htmlparser/lib/htmlparser.js"
   callback: "elementsDoNotHaveDuplicateAttributes"
-embedMustHaveAltAttribute: 
+embedMustHaveAltAttribute:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Embed\" elements must have an \"alt\" attribute"
-  description: 
+  description:
     en: "All <code>embed</code> elements must have an \"alt\" attribute."
   guidelines: []
-  tags: 
+  tags:
     - "object"
     - "embed"
     - "content"
-  options: 
+  options:
     selector: "embed:not(embed[alt])"
-embedMustNotHaveEmptyAlt: 
+embedMustNotHaveEmptyAlt:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Embed\" elements cannot have an empty \"alt\" attribute"
-  description: 
+  description:
     en: "All <code>embed</code> elements must have an \"alt\" attribute that is not empty."
   guidelines: []
-  tags: 
+  tags:
     - "object"
     - "embed"
     - "content"
-  options: 
+  options:
     selector: "embed[alt=]"
-embedProvidesMechanismToReturnToParent: 
+embedProvidesMechanismToReturnToParent:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All embed elements should provide a way for keyboard users to escape"
-  description: 
+  description:
     en: "Ensure that a user who has only a keyboard as an input device can escape an <code>embed</code> element. This requires manual confirmation."
-  guidelines: 
-    wcag: 
-      2.1.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.1.2:
+        techniques:
           - "G21"
-  tags: 
+  tags:
     - "object"
     - "embed"
     - "content"
-  options: 
+  options:
     selector: "embed"
-emoticonsExcessiveUse: 
+emoticonsExcessiveUse:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Emoticons should not be used excessively"
-  description: 
+  description:
     en: "Emoticons should not be used excessively to communicate feelings or content. Try to rewrite the document to have more textual meaning, or wrapping the emoticons in an <code>abbr</code> element as outlined below. Emoticons are not read by screen-readers, and are often used to communicate feelings or other things which are relevant to the content of the document."
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H86"
-  tags: 
+  tags:
     - "language"
     - "emoticons"
     - "content"
   strings: "emoticons"
   callback: "emoticonsExcessiveUse"
-emoticonsMissingAbbr: 
+emoticonsMissingAbbr:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Emoticons should have abbreviations"
-  description: 
+  description:
     en: "Emoticons are not read by screen-readers, and are often used to communicate feelings or other things which are relevant to the content of the document. If this emoticon is important content, mark it up with an \"abbr\" or \"acronym\" tag."
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H86"
-  tags: 
+  tags:
     - "language"
     - "emoticons"
     - "content"
   strings: "emoticons"
   callback: "emoticonsMissingAbbr"
-fieldsetHasLabel: 
+fieldsetHasLabel:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Fieldsets require a label element"
-  description: 
+  description:
     en: "Fieldsets used to group similar form elements like checkboxes should have a label that describes the group of elements."
-  guidelines: 
-    wcag: 
-      2.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.1.1:
+        techniques:
           - "H91"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "H91"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H91"
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "fieldset:not(fieldset:has(legend))"
-fileHasLabel: 
+fileHasLabel:
   type: "label"
   testability: 1
-  title: 
+  title:
     en: "All \"file\" input elements have a corresponding label"
-  description: 
+  description:
     en: "All <code>input</code> elements of type \"file\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "n"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "H44"
-      1.3.1: 
-        techniques: 
+      1.3.1:
+        techniques:
           - "H44"
           - "F68"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H44"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H44"
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "label"
-  options: 
+  options:
     selector: "input[type=file]"
-fileLabelIsNearby: 
+fileLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
-  title: 
+  title:
     en: "All \"file\" input elements have a label that is close"
-  description: 
+  description:
     en: "All input elements of type \"file\" must have a corresponding label that is close to the form element. Users of screen magnification or with reduced spatial skills are hampered in using a form element if the label for that element is located far away."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "labelProximity"
-  options: 
+  options:
     selector: "input[type=file]"
-focusIndicatorVisible: 
+focusIndicatorVisible:
   type: "custom"
-  title: 
+  title:
     en: "Focus indicators have high visibility"
-  description: 
+  description:
     en: "When a focus indicator is used, it should have enough contrast with the background and big enough to be highly visible."
-  guidelines: 
-    wcag: 
-      2.4.7: 
+  guidelines:
+    wcag:
+      2.4.7:
         techniques:
           - "C15"
           - "G165"
           - "G195"
-  tags: 
+  tags:
     - "focus"
     - "content"
-  components: 
+  components:
     - "color"
     - "convertToPx"
   callback: "focusIndicatorVisible"
-fontIsNotUsed: 
+fontIsNotUsed:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Font elements should not be used"
-  description: 
+  description:
     en: "The <code>basefont</code> tag is deprecated and should not be used. Investigate using stylesheets instead."
   guidelines: []
-  tags: 
+  tags:
     - "deprecated"
     - "content"
-  options: 
+  options:
     selector: "font"
-formAllowsCheckIfIrreversable: 
+formAllowsCheckIfIrreversable:
   type: "selector"
   testability: 0
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "form"
-formButtonsHaveValue: 
+formButtonsHaveValue:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Input elements for button, submit, or reset must have a value attribute"
-  description: 
+  description:
     en: "Any form element that is rendered as a buttom has to have a readable value attribute."
-  guidelines: 
-    wcag: 
-      2.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.1.1:
+        techniques:
           - "H91"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "H91"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H91"
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "input[type=button]:not([value]), input[type=submit]:not([value]), input[type=reset]:not([value])"
-formDeleteIsReversable: 
+formDeleteIsReversable:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Deleting items using a form should be reversable"
-  description: 
+  description:
     en: "Check that, if a form has the option to delete an item, that the user has a chance to either reverse the delete process, or is asked for confirmation before the item is deleted. This is not something that can be checked through automated testing and requires manual confirmation."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "form"
-formErrorMessageHelpsUser: 
+formErrorMessageHelpsUser:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Forms offer the user a way to check the results of their form before performing an irrevokable action"
-  description: 
+  description:
     en: "If the form allows users to perform some irrevokable action, like ordreing a product, ensure that users have the ability to review the contents of the form they submitted first. This is not something that can be checked through automated testing and requires manual confirmation."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "form"
-formHasGoodErrorMessage: 
+formHasGoodErrorMessage:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Form error messages should assist in solving errors"
-  description: 
+  description:
     en: "If the form has some required fields or other ways in which the user can commit an error, check that the reply is accessible. Use the words \"required\" or \"error\" within the <code>label</code> element of input items where the errors happened"
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "form"
-formHasSubmitButton: 
+formHasSubmitButton:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Form should have a submit button"
-  description: 
+  description:
     en: "Forms should have a button that allows the user to select when they want to submit the form."
-  guidelines: 
-    wcag: 
-      3.2.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      3.2.2:
+        techniques:
           - "H32"
           - "G80"
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "form:not(form:has(input[type=image], input[type=submit], button[type=submit]))"
-formWithRequiredLabel: 
+formWithRequiredLabel:
   type: "custom"
   testability: 0
-  title: 
+  title:
     en: "Input items which are required are marked as so in the label element"
-  description: 
+  description:
     en: "If a form element is required, it should marked as so. This should not be a mere red asterisk, but instead either a 'required' image with alt text of \"required\" or the actual text \"required.\" The indicator that an item is required should be included in the input element's <code>label</code> element."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "ARIA2"
-      1.4.1: 
-        techniques: 
+      1.4.1:
+        techniques:
           - "F81"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "ARIA2"
           - "H90"
-      3.3.3: 
-        techniques: 
+      3.3.3:
+        techniques:
           - "ARIA2"
-  tags: 
+  tags:
     - "form"
     - "content"
   callback: "formWithRequiredLabel"
-frameIsNotUsed: 
+frameIsNotUsed:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Frames are not used"
-  description: 
+  description:
     en: ".. code-block:: html"
   guidelines: []
-  tags: 
+  tags:
     - "deprecated"
     - "frame"
-  options: 
+  options:
     selector: "frame"
-frameRelationshipsMustBeDescribed: 
+frameRelationshipsMustBeDescribed:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "Complex framesets should contain a \"longdesc\" attribute"
-  description: 
+  description:
     en: "If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames."
   guidelines: []
-  tags: 
+  tags:
     - "deprecated"
     - "frame"
-  options: 
+  options:
     selector: "frameset:not(frameset[longdesc])"
-frameSrcIsAccessible: 
+frameSrcIsAccessible:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "The source for each frame is accessible content."
-  description: 
+  description:
     en: "Each frame should contain accessible content, and contain content accessible to screen readers, like HTML as opposed to an image."
   guidelines: []
-  tags: 
+  tags:
     - "deprecated"
     - "frame"
-  options: 
+  options:
     selector: "frame"
-frameTitlesDescribeFunction: 
+frameTitlesDescribeFunction:
   type: "placeholder"
   testability: 0
-  title: 
+  title:
     en: "All \"frame\" elemetns should have a \"title\" attribute that describes the purpose of the frame"
-  description: 
+  description:
     en: "Each <code>frame</code> elements should have a \"title\" attribute which describes the purpose or function of the frame."
-  guidelines: 
-    wcag: 
-      2.4.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.1:
+        techniques:
           - "H64"
-  tags: 
+  tags:
     - "deprecated"
     - "frame"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "title"
     empty: true
     selector: "frame[title], iframe[title]"
-frameTitlesNotEmpty: 
+frameTitlesNotEmpty:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Frames cannot have empty \"title\" attributes"
-  description: 
+  description:
     en: "All <code>frame</code> elements must have a valid \"title\" attribute."
-  guidelines: 
-    wcag: 
-      2.4.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.1:
+        techniques:
           - "H64"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H64"
-  tags: 
+  tags:
     - "deprecated"
     - "frame"
-  options: 
+  options:
     selector: "frame:not(frame[title]), frame[title=], iframe:not(iframe[title]), iframe[title=]"
-frameTitlesNotPlaceholder: 
+frameTitlesNotPlaceholder:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "Frames cannot have \"title\" attributes that are just placeholder text"
-  description: 
+  description:
     en: "Frame \"title\" attributes should not be simple placeholder text like \"frame"
-  guidelines: 
-    wcag: 
-      2.4.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.1:
+        techniques:
           - "H64"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H64"
-  tags: 
+  tags:
     - "deprecated"
     - "frame"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "title"
     selector: "frame, iframe"
-framesHaveATitle: 
+framesHaveATitle:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "All \"frame\" elements should have a \"title\" attribute"
-  description: 
+  description:
     en: "Each <code>frame</code> elements should have a \"title\" attribute."
-  guidelines: 
-    wcag: 
-      2.4.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.1:
+        techniques:
           - "H64"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H64"
-  tags: 
+  tags:
     - "deprecated"
     - "frame"
-  options: 
+  options:
     selector: "frame:not(frame[title]), iframe:not(iframe[title])"
-framesetIsNotUsed: 
+framesetIsNotUsed:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "The \"frameset\" element should not be used"
-  description: 
+  description:
     en: ".. code-block:: html"
   guidelines: []
-  tags: 
+  tags:
     - "deprecated"
     - "frame"
-  options: 
+  options:
     selector: "frameset"
-framesetMustHaveNoFramesSection: 
+framesetMustHaveNoFramesSection:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "All framesets should contain a noframes section"
-  description: 
+  description:
     en: "If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames."
   guidelines: []
-  tags: 
+  tags:
     - "deprecated"
     - "frame"
-  options: 
+  options:
     selector: "frameset:not(frameset:has(noframes))"
-headerH1: 
+headerH1:
   type: "headingLevel"
   testability: 0
-  title: 
+  title:
     en: "The header following an h1 is not h3 through  h6"
-  description: 
+  description:
     en: "Header order should not skip a level. Do not follow a <code>h1</head> haeder with a <code>h3</code>, <code>h4</code>, <code>h5</code>, or <code>h6</code>."
-  guidelines: 
-    wcag: 
-      2.4.6: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.6:
+        techniques:
           - "G130"
-  tags: 
+  tags:
     - "header"
     - "content"
-  components: 
+  components:
     - "headingLevel"
-  options: 
+  options:
     headingLevel: 1
-headerH1Format: 
+headerH1Format:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All h1 elements are not used for formatting"
-  description: 
+  description:
     en: "An <code>h1</code> element may not be used purely for formatting."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "T3"
-  tags: 
+  tags:
     - "header"
     - "content"
-  components: 
+  components:
     - "header"
-  options: 
+  options:
     selector: "h1"
-headerH2: 
+headerH2:
   type: "headingLevel"
   testability: 0
-  title: 
+  title:
     en: "The header following an h2 is not h4, h5, or h6"
-  description: 
+  description:
     en: "Header order should not skip a level. Do not follow a <code>h2</head> haeder with a <code>h4</code>, <code>h5</code>, or <code>h6</code>."
-  guidelines: 
-    wcag: 
-      2.4.6: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.6:
+        techniques:
           - "G130"
-  tags: 
+  tags:
     - "header"
     - "content"
-  components: 
+  components:
     - "headingLevel"
-  options: 
+  options:
     headingLevel: 2
-headerH2Format: 
+headerH2Format:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All h2 elements are not used for formatting"
-  description: 
+  description:
     en: "An <code>h2</code> element may not be used purely for formatting."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "T3"
-  tags: 
+  tags:
     - "header"
     - "content"
-  components: 
+  components:
     - "header"
-  options: 
+  options:
     selector: "h2"
-headerH3: 
+headerH3:
   type: "headingLevel"
   testability: 0
-  title: 
+  title:
     en: "The header following an h3 is not an h5 or h6"
-  description: 
+  description:
     en: "Header order should not skip a level. Do not follow a <code>h3</head> haeder with a <code>h5<code> or <code>h6</code>. "
-  guidelines: 
-    wcag: 
-      2.4.6: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.6:
+        techniques:
           - "G130"
-  tags: 
+  tags:
     - "header"
     - "content"
-  components: 
+  components:
     - "headingLevel"
-  options: 
+  options:
     headingLevel: 3
-headerH3Format: 
+headerH3Format:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All h3 elements are not used for formatting"
-  description: 
+  description:
     en: "An <code>h3</code> element may not be used purely for formatting."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "T3"
-  tags: 
+  tags:
     - "header"
     - "content"
-  components: 
+  components:
     - "header"
-  options: 
+  options:
     selector: "h3"
-headerH4: 
+headerH4:
   type: "headingLevel"
   testability: 0
-  title: 
+  title:
     en: "The header following an h4 is not an h6"
-  description: 
+  description:
     en: "Header order should not skip a level. Do not follow a <code>h4</head> haeder with a <code>h6</code>. "
-  guidelines: 
-    wcag: 
-      2.4.6: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.6:
+        techniques:
           - "G130"
-  tags: 
+  tags:
     - "header"
     - "content"
-  components: 
+  components:
     - "headingLevel"
-  options: 
+  options:
     headingLevel: 4
-headerH4Format: 
+headerH4Format:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All h4 elements are not used for formatting"
-  description: 
+  description:
     en: "An <code>h4</code> element may not be used purely for formatting."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "T3"
-  tags: 
+  tags:
     - "header"
     - "content"
-  components: 
+  components:
     - "header"
-  options: 
+  options:
     selector: "h4"
-headerH5Format: 
+headerH5Format:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All h5 elements are not used for formatting"
-  description: 
+  description:
     en: "An <code>h5</code> element may not be used purely for formatting."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "T3"
-  tags: 
+  tags:
     - "header"
     - "content"
-  options: 
+  options:
     selector: "h5"
-headerH6Format: 
+headerH6Format:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All h6 elements are not used for formatting"
-  description: 
+  description:
     en: "An <code>h6</code> element may not be used purely for formatting."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "T3"
-  tags: 
+  tags:
     - "header"
     - "content"
-  options: 
+  options:
     selector: "h6"
-headersHaveText: 
+headersHaveText:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "All headers should contain readable text"
-  description: 
+  description:
     en: "Users with screen readers use headings like the tabs <em>h1</em> to navigate the structure of a page. All headings should contain either text, or images with appropriate <em>alt</em> attributes."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "G141"
-      2.4.10: 
-        techniques: 
+      2.4.10:
+        techniques:
           - "G141"
-  tags: 
+  tags:
     - "header"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     content: true
     empty: true
     selector: "h1, h2, h3, h4, h5, h6"
-headersUseToMarkSections: 
+headersUseToMarkSections:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Use headers to mark the beginning of each section"
-  description: 
+  description:
     en: "Check that each logical section of the page is broken or introduced with a header (<code></code>. h1-h6>) element."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "G141"
-      2.4.10: 
-        techniques: 
+      2.4.10:
+        techniques:
           - "G141"
-  tags: 
+  tags:
     - "header"
     - "content"
   callback: "headersUseToMarkSections"
-iIsNotUsed: 
+iIsNotUsed:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "The \"i\" (italic) element is not used"
-  description: 
+  description:
     en: "The <code>i</code> (italic) element provides no emphasis for non-sighted readers. Use the <code>em</code> tag instead."
   guidelines: []
-  tags: 
+  tags:
     - "deprecated"
     - "content"
-  options: 
+  options:
     selector: "i"
-iframeMustNotHaveLongdesc: 
+iframeMustNotHaveLongdesc:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Inline frames (\"iframes\") should not have a \"longdesc\" attribute"
-  description: 
+  description:
     en: ".. code-block:: html"
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "iframe"
     - "content"
-  options: 
+  options:
     selector: "iframe[longdesc]"
-imageMapServerSide: 
+imageMapServerSide:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "All links in a server-side map should have duplicate links available in the document"
-  description: 
+  description:
     en: "Any image with an \"usemap\" attribute for a server-side image map should have the available links duplicated elsewhere."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "iframe"
     - "content"
-  options: 
+  options:
     selector: "img[ismap]"
-imgAltEmptyForDecorativeImages: 
+imgAltEmptyForDecorativeImages:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "If an image is purely decorative, the \"alt\" text must be empty"
-  description: 
+  description:
     en: "Any image that is only decorative (serves no function or adds to the purpose of the page content) should have an \"alt\" attribute"
-  guidelines: 
-    wcag: 
-      1.3.3: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.3:
+        techniques:
           - "F26"
-  tags: 
+  tags:
     - "image"
     - "content"
-  options: 
+  options:
     selector: "img[alt]"
-imgAltIdentifiesLinkDestination: 
+imgAltIdentifiesLinkDestination:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Any image within a link must have \"alt\" text the describes the link destination"
-  description: 
+  description:
     en: "Any image that is within a link should have an \"alt\" attribute which identifies the destination or purpose of the link."
   guidelines: []
-  tags: 
+  tags:
     - "image"
     - "content"
-  options: 
+  options:
     selector: "a img[alt]:first"
-imgAltIsDifferent: 
+imgAltIsDifferent:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Image \"alt\" attributes should not be the same as the filename"
-  description: 
+  description:
     en: "All <code>img</code> elements should have an \"alt\" attribute that is not just the name of the file"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "H37"
-  tags: 
+  tags:
     - "image"
     - "content"
   callback: "imgAltIsDifferent"
-imgAltIsSameInText: 
+imgAltIsSameInText:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Check that any text within an image is also in the \"alt\" attribute"
-  description: 
+  description:
     en: "If an image has text within it, that text should be repeated in the \"alt\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "G74"
           - "H37"
-  tags: 
+  tags:
     - "image"
     - "content"
-  options: 
+  options:
     selector: "img"
-imgAltIsTooLong: 
+imgAltIsTooLong:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Image Alt text is short"
-  description: 
+  description:
     en: "All \"alt\" attributes for <code>img</code> elements should be clear and concise. \"Alt\" attributes over 100 characters long should be reviewed to see if they are too long."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "H37"
-  tags: 
+  tags:
     - "image"
     - "content"
   callback: "imgAltIsTooLong"
-imgAltNotEmptyInAnchor: 
+imgAltNotEmptyInAnchor:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "An image within a link cannot have an empty \"alt\" attribute if there is no other text within the link"
-  description: 
+  description:
     en: "Any image that is within a link (an <code>a</code> element) that has no other text cannot have an empty or missing \"alt\" attribute."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-    wcag: 
-      2.4.4: 
-        techniques: 
+    wcag:
+      2.4.4:
+        techniques:
           - "H30"
-  tags: 
+  tags:
     - "image"
     - "content"
   callback: "imgAltNotEmptyInAnchor"
-imgAltNotPlaceHolder: 
+imgAltNotPlaceHolder:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "Images should not have a simple placeholder text as an \"alt\" attribute"
-  description: 
+  description:
     en: "Any image that is not used decorativey or which is purely for layout purposes cannot have an \"alt\" attribute that consists solely of placeholders."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "F30"
           - "F39"
-      1.2.1: 
-        techniques: 
+      1.2.1:
+        techniques:
           - "F30"
-  tags: 
+  tags:
     - "image"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "alt"
     selector: "img"
-imgAltTextNotRedundant: 
+imgAltTextNotRedundant:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Unless the image files are the same, no image should contain redundant alt text"
-  description: 
+  description:
     en: "Every distinct image on a page should have it's own <em>alt</em> text which is different than all the others on the page to avoid redundancy and confusion."
   guidelines: []
-  tags: 
+  tags:
     - "image"
     - "content"
   callback: "imgAltTextNotRedundant"
-imgGifNoFlicker: 
+imgGifNoFlicker:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Any animated GIF should not flicker"
-  description: 
+  description:
     en: "Animated GIF files should not flicker with a frequency over 2 Hz and lower than 55 Hz. You can check the flicker rate of this GIF <a href=\"http://tools.webaccessibile.org/test/check.aspx\">using an online tool</a>."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "j"
-    wcag: 
-      2.2.2: 
-        techniques: 
+    wcag:
+      2.2.2:
+        techniques:
           - "G152"
-  tags: 
+  tags:
     - "image"
     - "content"
   callback: "imgGifNoFlicker"
-imgHasAlt: 
+imgHasAlt:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Image elements must have an \"alt\" attribute"
-  description: 
+  description:
     en: "All <code>img</code> elements must have an alt attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "F65"
           - "H37"
-  tags: 
+  tags:
     - "image"
     - "content"
-  options: 
+  options:
     selector: "img:not(img[alt])"
-imgHasLongDesc: 
+imgHasLongDesc:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "A \"longdesc\" attribute is required for any image where additional information not in the \"alt\" attribute is required"
-  description: 
+  description:
     en: "Any image that has an \"alt\" attribute that does not fully convey the meaning of the image must have a \"longdesc\" attribute."
-  guidelines: 
-    wcag: 
-      2.4.4: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.4:
+        techniques:
           - "G91"
-      2.4.9: 
-        techniques: 
+      2.4.9:
+        techniques:
           - "G91"
-  tags: 
+  tags:
     - "image"
     - "content"
   callback: "imgHasLongDesc"
-imgImportantNoSpacerAlt: 
+imgImportantNoSpacerAlt:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Images that are important should not have a purely white-space \"alt\" attribute"
-  description: 
+  description:
     en: "Any image that is not used decorativey or which is purely for layout purposes cannot have an \"alt\" attribute that consists solely of white space (i.e. a space"
   guidelines: []
-  tags: 
+  tags:
     - "image"
     - "content"
   callback: "imgImportantNoSpacerAlt"
-imgMapAreasHaveDuplicateLink: 
+imgMapAreasHaveDuplicateLink:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "All links within a client-side image are duplicated elsewhere in the document"
-  description: 
+  description:
     en: "Any image that has a \"usemap\" attribute must have links replicated somewhere else in the document."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "ef"
       - "ef"
-  tags: 
+  tags:
     - "image"
     - "imagemap"
   callback: "imgMapAreasHaveDuplicateLink"
-imgNonDecorativeHasAlt: 
+imgNonDecorativeHasAlt:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Any non-decorative images should have a non-empty \"alt\" attribute"
-  description: 
+  description:
     en: "Any image that is not used decorativey or which is purely for layout purposes cannot have an empty \"alt\" attribute."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "F38"
-  tags: 
+  tags:
     - "image"
     - "content"
   callback: "imgNonDecorativeHasAlt"
-imgNotReferredToByColorAlone: 
+imgNotReferredToByColorAlone:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "For any image, the \"alt\" text cannot refer to color alone"
-  description: 
+  description:
     en: "The \"alt\" text or content text for any image should not refer to the image by color alone. This is often fixed by changing the \"alt\" text to the meaning of the image"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "c"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "F13"
-      1.4.1: 
-        techniques: 
+      1.4.1:
+        techniques:
           - "F13"
-  tags: 
+  tags:
     - "image"
     - "color"
     - "content"
-  options: 
+  options:
     selector: "img"
-imgServerSideMapNotUsed: 
+imgServerSideMapNotUsed:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Server-side image maps should not be used"
-  description: 
+  description:
     en: "Server-side image maps should not be used."
   guidelines: []
-  tags: 
+  tags:
     - "image"
     - "imagemap"
     - "content"
-  options: 
+  options:
     selector: "img[ismap]"
-imgShouldNotHaveTitle: 
+imgShouldNotHaveTitle:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Images should not have a \"title\" attribute"
-  description: 
+  description:
     en: "Images should not contain a \"title\" attribute."
   guidelines: []
-  tags: 
+  tags:
     - "image"
     - "content"
-  options: 
+  options:
     selector: "img[title]"
-imgWithMapHasUseMap: 
+imgWithMapHasUseMap:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Any image with an \"ismap\" attribute have a valid \"usemap\" attribute"
-  description: 
+  description:
     en: "If an image has an \"ismap\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "ef"
       - "ef"
-  tags: 
+  tags:
     - "image"
     - "imagemap"
     - "content"
-  options: 
+  options:
     selector: "img[ismap]:not(img[usemap])"
-imgWithMathShouldHaveMathEquivalent: 
+imgWithMathShouldHaveMathEquivalent:
   type: "custom"
   testability: 0
-  title: 
+  title:
     en: "Images which contain math equations should provide equivalent MathML"
-  description: 
+  description:
     en: "Images which contain math equations should be accompanied or link to a document with the equivalent equation marked up with <a href=\"http://www.w3.org/Math/\">MathML</a>."
   guidelines: []
-  tags: 
+  tags:
     - "image"
     - "content"
   callback: "imgWithMathShouldHaveMathEquivalent"
-inputCheckboxHasTabIndex: 
+inputCheckboxHasTabIndex:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "All \"checkbox\" input elements require a valid \"tabindex\" attribute"
-  description: 
+  description:
     en: "All <code>input</code> elements of type \"checkbox\" should have a \"tabindex\" attribute to help navigate the form with a keyboard alone."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "tabindex"
     empty: true
     selector: "input[type=checkbox]"
-inputCheckboxRequiresFieldset: 
+inputCheckboxRequiresFieldset:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Logical groups of check boxes should be grouped with a fieldset"
-  description: 
+  description:
     en: "Related \"checkbox\" input fields should be grouped together using a <code>fieldset</code>."
-  guidelines: 
-    wcag: 
-      3.3.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      3.3.2:
+        techniques:
           - "H71"
-  tags: 
+  tags:
     - "form"
     - "content"
   callback: "inputCheckboxRequiresFieldset"
-inputDoesNotUseColorAlone: 
+inputDoesNotUseColorAlone:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "An \"input\" element should not use color alone"
-  description: 
+  description:
     en: "All input elements should not refer to content by color alone."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "c"
-  tags: 
+  tags:
     - "form"
     - "color"
     - "content"
-  options: 
+  options:
     selector: "input:not(input[type=hidden])"
-inputElementsDontHaveAlt: 
+inputElementsDontHaveAlt:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Input elements which are not images should not have an \"alt\" attribute"
-  description: 
+  description:
     en: "Because of inconsistencies in how user agents use the \"alt\" attribute"
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "input[type!=image][alt]"
-inputFileHasTabIndex: 
+inputFileHasTabIndex:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "All \"file\" input elements require a valid \"tabindex\" attribute"
-  description: 
+  description:
     en: "All <code>input</code> elements of type \"file\" should have a \"tabindex\" attribute to help navigate the form with a keyboard alone."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "tabindex"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "tabindex"
     empty: true
     selector: "input[type=file]"
-inputImageAltIdentifiesPurpose: 
+inputImageAltIdentifiesPurpose:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute that describes the function of the input"
-  description: 
+  description:
     en: "All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute"
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H36"
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "input[type=image][alt]"
-inputImageAltIsNotFileName: 
+inputImageAltIsNotFileName:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not the same as the filename"
-  description: 
+  description:
     en: "All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "H36"
-  tags: 
+  tags:
     - "form"
     - "image"
     - "content"
   callback: "inputImageAltIsNotFileName"
-inputImageAltIsNotPlaceholder: 
+inputImageAltIsNotPlaceholder:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not placeholder text"
-  description: 
+  description:
     en: "All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "H36"
-      2.1.1: 
-        techniques: 
+      2.1.1:
+        techniques:
           - "H91"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "H91"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H91"
-  tags: 
+  tags:
     - "form"
     - "image"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "alt"
     selector: "input[type=image]"
-inputImageAltIsShort: 
+inputImageAltIsShort:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is as short as possible"
-  description: 
+  description:
     en: "All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "H36"
-  tags: 
+  tags:
     - "form"
     - "image"
     - "content"
   callback: "inputImageAltIsShort"
-inputImageAltNotRedundant: 
+inputImageAltNotRedundant:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "The \"alt\" text for input \"image\" submit buttons must not be filler text"
-  description: 
+  description:
     en: "Every form image button should not simply use filler text like \"button\" or \"submit\" as the \"alt\" text."
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H36"
-  tags: 
+  tags:
     - "form"
     - "image"
     - "content"
   strings: "redundant.inputImage"
   callback: "inputImageAltNotRedundant"
-inputImageHasAlt: 
+inputImageHasAlt:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute"
-  description: 
+  description:
     en: "All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "F65"
           - "G94"
           - "H36"
-      2.1.1: 
-        techniques: 
+      2.1.1:
+        techniques:
           - "H91"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "H91"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H91"
-  tags: 
+  tags:
     - "form"
     - "image"
     - "content"
-  options: 
+  options:
     selector: "input[type=image]:not(input[type=image][alt])"
-inputImageNotDecorative: 
+inputImageNotDecorative:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "The \"alt\" text for input \"image\" buttons must be the same as text inside the image"
-  description: 
+  description:
     en: "Every form image button which has text within the image (say, a picture of the word \"Search\" in a special font)"
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H36"
-  tags: 
+  tags:
     - "form"
     - "image"
     - "content"
-  options: 
+  options:
     selector: "input[type=image]"
-inputPasswordHasTabIndex: 
+inputPasswordHasTabIndex:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "All \"password\" input elements require a valid \"tabindex\" attribute"
-  description: 
+  description:
     en: "All <code>input</code> elements of type \"password\" should have a \"tabindex\" attribute to help navigate the form with a keyboard alone."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "tabindex"
     empty: true
     selector: "input[type=password]"
-inputRadioHasTabIndex: 
+inputRadioHasTabIndex:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "All \"radio\" input elements require a valid \"tabindex\" attribute"
-  description: 
+  description:
     en: "All <code>input</code> elements of type \"radio\" should have a \"tabindex\" attribute to help navigate the form with a keyboard alone."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "tabindex"
     empty: true
     selector: "input[type=radio]"
-inputSubmitHasTabIndex: 
+inputSubmitHasTabIndex:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "All input elements, type of \"submit\" have a valid tab index."
-  description: 
+  description:
     en: ""
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "tabindex"
     empty: true
     selector: "input[type=submit]"
-inputTextHasLabel: 
+inputTextHasLabel:
   type: "label"
   testability: 1
-  title: 
+  title:
     en: "All \"input\" elements should have a corresponding \"label"
-  description: 
+  description:
     en: "All <code>input</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user"
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H44"
-      1.3.1: 
-        techniques: 
+      1.3.1:
+        techniques:
           - "H44"
           - "F68"
-      2.1.1: 
-        techniques: 
+      2.1.1:
+        techniques:
           - "H91"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "H91"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H44"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H44"
           - "H91"
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "input[type=text]"
-inputTextHasTabIndex: 
+inputTextHasTabIndex:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "All \"text\" input elements require a valid \"tabindex\" attribute"
-  description: 
+  description:
     en: "All <code>input</code> elements of type \"text\" should have a \"tabindex\" attribute to help navigate the form with a keyboard alone."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "tabindex"
     empty: true
     selector: "input[type=text]"
-inputTextHasValue: 
+inputTextHasValue:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "All \"input\" elements of type \"text\" must have a default text"
-  description: 
+  description:
     en: "All <code>input</code> elements with a type of \"text\" should have a default text."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "value"
     empty: true
     selector: "input[type=text]"
-inputTextValueNotEmpty: 
+inputTextValueNotEmpty:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "Text input elements require a non-whitespace default text"
-  description: 
+  description:
     en: "All <code>input</code> elements with a type of \"text\" should have a default text which is not empty."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "value"
     empty: true
     selector: "input[type=text]"
-inputWithoutLabelHasTitle: 
+inputWithoutLabelHasTitle:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Form controls without label should have a title attribute"
-  description: 
+  description:
     en: "If it is not possible to have a label for a form control, then a title attribute on the element should be provided that describes the purpose of the control."
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H65"
-      1.3.1: 
-        techniques: 
+      1.3.1:
+        techniques:
           - "H65"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H65"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H65"
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "placeholder"
   callback: "inputWithoutLabelHasTitle"
-labelDoesNotContainInput: 
+labelDoesNotContainInput:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Label elements should not contain an input element"
-  description: 
+  description:
     en: ".. code-block:: html"
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "label:has(input)"
-labelMustBeUnique: 
+labelMustBeUnique:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Every form input must have only one label"
-  description: 
+  description:
     en: "Each form input should have only one <code>label</code> element."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "F17"
-      4.1.1: 
-        techniques: 
+      4.1.1:
+        techniques:
           - "F17"
-  tags: 
+  tags:
     - "form"
     - "content"
   callback: "labelMustBeUnique"
-labelMustNotBeEmpty: 
+labelMustNotBeEmpty:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "Labels must contain text"
-  description: 
+  description:
     en: ".. code-block:: html"
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H44"
-      1.3.1: 
-        techniques: 
+      1.3.1:
+        techniques:
           - "H44"
           - "F68"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H44"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H44"
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     content: true
     empty: true
     selector: "label"
-labelsAreAssignedToAnInput: 
+labelsAreAssignedToAnInput:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "All labels should be associated with an input"
-  description: 
+  description:
     en: "All <code>label</code> elements should be assigned to an input item, and should have a <em>for</em> attribute which equals the <em>id</em> attribute of a form element."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
   callback: "labelsAreAssignedToAnInput"
-languageDirAttributeIsUsed: 
+languageDirAttributeIsUsed:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Use the dir attribute when the language direction changes"
-  description: 
+  description:
     en: "When there are nested directional changes in text, us an inline element with a <code>dir</code> attribute to indicate direction."
-  guidelines: 
-    wcag: 
-      1.3.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
           - "H56"
-  tags: 
+  tags:
     - "language"
     - "content"
   callback: "languageDirAttributeIsUsed"
-legendDescribesListOfChoices: 
+legendDescribesListOfChoices:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All \"legend\" elements must describe the group of choices"
-  description: 
+  description:
     en: "If a <code>legend</code> element is used in a fieldset, the <code>legend</code> content must describe the group of choices."
-  guidelines: 
-    wcag: 
-      2.4.6: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.6:
+        techniques:
           - "G131"
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "legend"
-legendTextNotEmpty: 
+legendTextNotEmpty:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Legend text must not contain just whitespace"
-  description: 
+  description:
     en: "If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain empty text."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "H71"
-      2.4.6: 
-        techniques: 
+      2.4.6:
+        techniques:
           - "G131"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H71"
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "legend:empty"
-legendTextNotPlaceholder: 
+legendTextNotPlaceholder:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "Legend\" text must not contain placeholder text like \"form\" or \"field"
-  description: 
+  description:
     en: "If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain useless placeholder text."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "H71"
-      2.1.1: 
-        techniques: 
+      2.1.1:
+        techniques:
           - "H91"
-      2.4.6: 
-        techniques: 
+      2.4.6:
+        techniques:
           - "G131"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H71"
-      4.1.3: 
-        techniques: 
+      4.1.3:
+        techniques:
           - "H91"
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     content: true
     emtpy: true
     selector: "legend"
-liDontUseImageForBullet: 
+liDontUseImageForBullet:
   type: "selector"
   testability: 0.5
   guidelines: []
-  tags: 
+  tags:
     - "list"
     - "content"
-  options: 
+  options:
     selector: "li:has(img)"
-linkUsedForAlternateContent: 
+linkUsedForAlternateContent:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Use a \"link\" element for alternate content"
-  description: 
+  description:
     en: "Documents which contain things like videos, sound, or other forms of media that are not accessible, should provide a <code>link</code> element with a \"rel\" attribute of \"alternate\" in the document header."
   guidelines: []
-  tags: 
+  tags:
     - "document"
-  options: 
+  options:
     selector: "html:not(html:has(link[rel=alternate])) body"
-linkUsedToDescribeNavigation: 
+linkUsedToDescribeNavigation:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Document uses link element to describe navigation if it is within a collection."
-  description: 
+  description:
     en: "The link element can provide metadata about the position of an HTML page within a set of Web units or can assist in locating content with a set of Web units."
   guidelines: []
-  tags: 
+  tags:
     - "document"
-  options: 
+  options:
     selector: "html:not(html:has(link[rel=index]))"
-listNotUsedForFormatting: 
+listNotUsedForFormatting:
   type: "custom"
   testability: 0
-  title: 
+  title:
     en: "Lists should not be used for formatting"
-  description: 
+  description:
     en: "Lists like <code>ul</code> and <code>ol</code> are to provide a structured list, and should not be used to format text. This test views any list with just one item as suspicious, but should be manually reviewed."
-  guidelines: 
-    wcag: 
-      1.3.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
           - "F1"
-  tags: 
+  tags:
     - "list"
     - "content"
   callback: "listNotUsedForFormatting"
-marqueeIsNotUsed: 
+marqueeIsNotUsed:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "The \"marquee\" tag should not be used"
-  description: 
+  description:
     en: "The <code>marquee</code> element is difficult for users to read and is not a standard HTML element. Try to find another way to convey the importance of this text."
   guidelines: []
-  tags: 
+  tags:
     - "deprecated"
     - "content"
-  options: 
+  options:
     selector: "marquee"
-menuNotUsedToFormatText: 
+menuNotUsedToFormatText:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Menu elements should not be used for formattin"
-  description: 
+  description:
     en: "Menu is a deprecated tag, but is still honored in a transitional DTD. Menu tags are to provide structure for a document and should not be used for formatting. If a menu tag is to be used, it should only contain an ordered or unordered list of links."
   guidelines: []
-  tags: 
+  tags:
     - "list"
     - "content"
-  options: 
+  options:
     selector: "menu:not(menu li:parent(menu))"
-noembedHasEquivalentContent: 
+noembedHasEquivalentContent:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Noembed elements must be the same content as their \"embed\" element"
-  description: 
+  description:
     en: "All <code>noembed</code> elements must contain or link to an accessible version of their <code>embed</code> counterparts."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "noembed"
-noframesSectionMustHaveTextEquivalent: 
+noframesSectionMustHaveTextEquivalent:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "All \"noframes\" elements should contain the text content from all frames"
-  description: 
+  description:
     en: "The <code>noframes</code> content should either replicate or link to the content visible within the frames."
   guidelines: []
-  tags: 
+  tags:
     - "deprecated"
     - "frame"
-  options: 
+  options:
     selector: "frameset:not(frameset:has(noframes))"
-objectContentUsableWhenDisabled: 
+objectContentUsableWhenDisabled:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "When objects are disabled, content should still be available"
-  description: 
+  description:
     en: "The content within objects should still be available, even if the object is disabled. To do this, place a link to the direct object source within the <code>object</code> tag."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object"
-objectDoesNotFlicker: 
+objectDoesNotFlicker:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Objects do not flicker"
-  description: 
+  description:
     en: "The content within an <code>object</code> tag must not flicker."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "j"
-    wcag: 
-      2.2.2: 
-        techniques: 
+    wcag:
+      2.2.2:
+        techniques:
           - "F7"
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object"
-objectDoesNotUseColorAlone: 
+objectDoesNotUseColorAlone:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Objects must not use color to communicate alone"
-  description: 
+  description:
     en: "Objects should contain content that makes sense without color and is accessible to users who are color blind."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "c"
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object"
-objectInterfaceIsAccessible: 
+objectInterfaceIsAccessible:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Interfaces within objects must be accessible"
-  description: 
+  description:
     en: "Object content should be assessed for accessibility."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object"
-objectLinkToMultimediaHasTextTranscript: 
+objectLinkToMultimediaHasTextTranscript:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Objects which reference multimedia files should also provide a link to a transcript"
-  description: 
+  description:
     en: "If an object contains a video, a link to the transcript should be provided near the object."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object"
-objectMustContainText: 
+objectMustContainText:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "Objects must contain their text equivalents"
-  description: 
+  description:
     en: "All <code>object</code> elements should contain a text equivalent if the object cannot be rendered."
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "FLASH1"
           - "H27"
-  tags: 
+  tags:
     - "objects"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     content: true
     empty: true
     selector: "object"
-objectMustHaveEmbed: 
+objectMustHaveEmbed:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Every object should contain an \"embed\" element"
-  description: 
+  description:
     en: "Every <code>object</code> element must also contain an <code>embed</code> element."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object:not(object:has(embed))"
-objectMustHaveTitle: 
+objectMustHaveTitle:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Objects should have a title attribute"
-  description: 
+  description:
     en: "All <code>object</code> elements should contain a \"title\" attribute."
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H27"
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object:not(object[title])"
-objectMustHaveValidTitle: 
+objectMustHaveValidTitle:
   type: "placeholder"
   testability: 1
-  title: 
+  title:
     en: "Objects must not have an empty title attribute"
-  description: 
+  description:
     en: "All <code>object</code> elements should have a \"title\" attribute which is not empty."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "title"
     empty: true
     selector: "object"
-objectProvidesMechanismToReturnToParent: 
+objectProvidesMechanismToReturnToParent:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All objects should provide a way for keyboard users to escape"
-  description: 
+  description:
     en: "Ensure that a user who has only a keyboard as an input device can escape a <code>object</code> element. This requires manual confirmation."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object"
-objectShouldHaveLongDescription: 
+objectShouldHaveLongDescription:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "An object might require a long description"
-  description: 
+  description:
     en: "Objects might require a long description, especially if their content is complicated."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object"
-objectTextUpdatesWhenObjectChanges: 
+objectTextUpdatesWhenObjectChanges:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "The text equivalents of an object should update if the object changes"
-  description: 
+  description:
     en: "If an object changes, the text equivalent of that object should also change."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "a"
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object"
-objectUIMustBeAccessible: 
+objectUIMustBeAccessible:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Content within an \"object\" element should be usable with objects disabled"
-  description: 
+  description:
     en: "Objects who's content changes using java, ActiveX, or other similar technologies, should have their default text change when the object's content changes."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object"
-objectWithClassIDHasNoText: 
+objectWithClassIDHasNoText:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Objects with \"classid\" attributes should change their text if the content of the object changes"
-  description: 
+  description:
     en: "Objects who's content changes using java, ActiveX, or other similar technologies, should have their default text change when the object's content changes."
   guidelines: []
-  tags: 
+  tags:
     - "objects"
     - "content"
-  options: 
+  options:
     selector: "object[classid]:not(object[classid]:empty)"
-pNotUsedAsHeader: 
+pNotUsedAsHeader:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Paragraphs must not be used for headers"
-  description: 
+  description:
     en: "Headers like <code>h1</code>. h6 are extremely useful for non-sighted users to navigate the structure of the page, and formatting a paragraph to just be big or bold, while it might visually look like a header, does not make it one."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "G141"
           - "H42"
-      2.4.10: 
-        techniques: 
+      2.4.10:
+        techniques:
           - "G141"
-  tags: 
+  tags:
     - "header"
     - "content"
   callback: "pNotUsedAsHeader"
-paragarphIsWrittenClearly: 
+paragarphIsWrittenClearly:
   type: "custom"
   testability: 0.5
-  guidelines: 
-    wcag: 
-      3.1.5: 
-        techniques: 
+  guidelines:
+    wcag:
+      3.1.5:
+        techniques:
           - "G86"
-  tags: 
+  tags:
     - "language"
     - "content"
-  components: 
+  components:
     - "textStatistics"
   callback: "paragarphIsWrittenClearly"
-passwordHasLabel: 
+passwordHasLabel:
   type: "label"
   testability: 1
-  title: 
+  title:
     en: "All password input elements should have a corresponding label"
-  description: 
+  description:
     en: "All <code>input</code> elements with a type of \"password\"should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "n"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "H44"
-      1.3.1: 
-        techniques: 
+      1.3.1:
+        techniques:
           - "H44"
           - "F68"
-      2.1.1: 
-        techniques: 
+      2.1.1:
+        techniques:
           - "H91"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "H91"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H44"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H44"
           - "H91"
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "label"
-  options: 
+  options:
     selector: "input[type=password]"
-passwordLabelIsNearby: 
+passwordLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
-  title: 
+  title:
     en: "All \"password\" input elements have a label that is close"
-  description: 
+  description:
     en: "All input elements of type \"password\" must have a corresponding label that is close to the form element. Users of screen magnification or with reduced spatial skills are hampered in using a form element if the label for that element is located far away."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "labelProximity"
-  options: 
+  options:
     selector: "input[type=password]"
-preShouldNotBeUsedForTabularLayout: 
+preShouldNotBeUsedForTabularLayout:
   type: "custom"
   testability: 0
-  title: 
+  title:
     en: "Pre elements should not be used for tabular data"
-  description: 
+  description:
     en: "If a <code>pre</code> element is used for tabular data, change the data to use a well-formed table."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "F33"
           - "F34"
           - "F48"
-      1.3.2: 
-        techniques: 
+      1.3.2:
+        techniques:
           - "F33"
           - "F34"
-  tags: 
+  tags:
     - "table"
     - "content"
   callback: "preShouldNotBeUsedForTabularLayout"
-radioHasLabel: 
+radioHasLabel:
   type: "label"
   testability: 1
-  title: 
+  title:
     en: "All \"radio\" input elements have a corresponding label"
-  description: 
+  description:
     en: "All <code>input</code> elements of type \"radio\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "n"
-    wcag: 
-      1.1.1: 
-        techniques: 
+    wcag:
+      1.1.1:
+        techniques:
           - "H44"
-      1.3.1: 
-        techniques: 
+      1.3.1:
+        techniques:
           - "H44"
           - "F68"
-      2.1.1: 
-        techniques: 
+      2.1.1:
+        techniques:
           - "H91"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "H91"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H44"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H44"
           - "H91"
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "label"
-  options: 
+  options:
     selector: "input[type=radio]"
-radioLabelIsNearby: 
+radioLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
-  title: 
+  title:
     en: "All \"radio\" input elements have a label that is close"
-  description: 
+  description:
     en: "All input elements of type \"radio\" must have a corresponding label that is close to the form element. Users of screen magnification or with reduced spatial skills are hampered in using a form element if the label for that element is located far away."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "labelProximity"
-  options: 
+  options:
     selector: "input[type=radio]"
-radioMarkedWithFieldgroupAndLegend: 
+radioMarkedWithFieldgroupAndLegend:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "All radio button groups are marked using fieldset and legend elements."
-  description: 
+  description:
     en: "form element content must contain both fieldset and legend elements if there are related radio buttons."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "H71"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H71"
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "input[type=radio]:not(fieldset input[type=radio])"
-scriptContentAccessibleWithScriptsTurnedOff: 
+scriptContentAccessibleWithScriptsTurnedOff:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Content on the page should still be available if scripts are disabled"
-  description: 
+  description:
     en: "All scripts should be assessed to see if, when the user is browing with scrips turned off, the page content is still available."
   guidelines: []
-  tags: 
+  tags:
     - "javascript"
-  options: 
+  options:
     selector: "script"
-scriptInBodyMustHaveNoscript: 
+scriptInBodyMustHaveNoscript:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "Scripts should have a corresponding \"noscript\" element"
-  description: 
+  description:
     en: "Scripts should be followed by a <code>noscripts</code> element to guide the user to content in an alternative way."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "l"
-  tags: 
+  tags:
     - "javascript"
-  options: 
+  options:
     selector: "html:not(html:has(noscript)):has(script) body"
-scriptOnclickRequiresOnKeypress: 
+scriptOnclickRequiresOnKeypress:
   type: "event"
   testability: 1
-  title: 
+  title:
     en: "If an element has an \"onclick\" attribute"
-  description: 
+  description:
     en: "it should also have an \"onkeypress\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "l"
-    wcag: 
-      2.1.1: 
-        techniques: 
+    wcag:
+      2.1.1:
+        techniques:
           - "G90"
           - "SCR2"
           - "SCR20"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "G90"
           - "SCR20"
-  tags: 
+  tags:
     - "javascript"
-  components: 
+  components:
     - "event"
     - "hasEventListener"
-  options: 
+  options:
     correspondingEvent: "onkeypress"
     searchEvent: "onclick"
-scriptOndblclickRequiresOnKeypress: 
+scriptOndblclickRequiresOnKeypress:
   type: "event"
   testability: 1
-  title: 
+  title:
     en: "Any element with an \"ondblclick\" attribute shoul have a keyboard-related action as well"
-  description: 
+  description:
     en: "If an element has an \"ondblclick\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "l"
-    wcag: 
-      2.1.1: 
-        techniques: 
+    wcag:
+      2.1.1:
+        techniques:
           - "G90"
           - "SCR2"
           - "SCR20"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "G90"
           - "SCR20"
-  tags: 
+  tags:
     - "javascript"
-  components: 
+  components:
     - "event"
     - "hasEventListener"
-  options: 
+  options:
     correspondingEvent: "onkeypress"
     searchEvent: "ondblclick"
-scriptOnmousedownRequiresOnKeypress: 
+scriptOnmousedownRequiresOnKeypress:
   type: "event"
   testability: 1
-  title: 
+  title:
     en: "If an element has a \"mousedown\" attribute"
-  description: 
+  description:
     en: "it should also have an \"onkeydown\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "l"
-    wcag: 
-      2.1.1: 
-        techniques: 
+    wcag:
+      2.1.1:
+        techniques:
           - "G90"
           - "SCR2"
           - "SCR20"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "G90"
           - "SCR20"
-  tags: 
+  tags:
     - "javascript"
-  components: 
+  components:
     - "event"
     - "hasEventListener"
-  options: 
+  options:
     correspondingEvent: "onkeydown"
     searchEvent: "onmousedown"
-scriptOnmousemove: 
+scriptOnmousemove:
   type: "event"
   testability: 1
-  title: 
+  title:
     en: "Any element with an \"onmousemove\" attribute shoul have a keyboard-related action as well"
-  description: 
+  description:
     en: "If an element has an \"onmousemove\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "l"
-    wcag: 
-      2.1.1: 
-        techniques: 
+    wcag:
+      2.1.1:
+        techniques:
           - "G90"
           - "SCR2"
           - "SCR20"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "G90"
           - "SCR20"
-  tags: 
+  tags:
     - "javascript"
-  components: 
+  components:
     - "event"
     - "hasEventListener"
-  options: 
+  options:
     correspondingEvent: "onkeypress"
     searchEvent: "onmousemove"
-scriptOnmouseoutHasOnmouseblur: 
+scriptOnmouseoutHasOnmouseblur:
   type: "event"
   testability: 1
-  title: 
+  title:
     en: "If an element has a \"onmouseout\" attribute"
-  description: 
+  description:
     en: "it should also have an \"onblur\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "l"
-    wcag: 
-      2.1.1: 
-        techniques: 
+    wcag:
+      2.1.1:
+        techniques:
           - "G90"
           - "SCR2"
           - "SCR20"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "G90"
           - "SCR20"
-  tags: 
+  tags:
     - "javascript"
-  components: 
+  components:
     - "event"
     - "hasEventListener"
-  options: 
+  options:
     correspondingEvent: "onblur"
     searchEvent: "onmouseout"
-scriptOnmouseoverHasOnfocus: 
+scriptOnmouseoverHasOnfocus:
   type: "event"
   testability: 1
-  title: 
+  title:
     en: "If an element has an \"onmouseover\" attribute"
-  description: 
+  description:
     en: "it should also have an \"onfocus\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "l"
-    wcag: 
-      2.1.1: 
-        techniques: 
+    wcag:
+      2.1.1:
+        techniques:
           - "G90"
           - "SCR2"
           - "SCR20"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "G90"
           - "SCR20"
-  tags: 
+  tags:
     - "javascript"
-  components: 
+  components:
     - "event"
     - "hasEventListener"
-  options: 
+  options:
     correspondingEvent: "onfocus"
     searchEvent: "onmouseover"
-scriptOnmouseupHasOnkeyup: 
+scriptOnmouseupHasOnkeyup:
   type: "event"
   testability: 1
-  title: 
+  title:
     en: "If an element has an \"onmouseup\" attribute"
-  description: 
+  description:
     en: "it should also have an \"onkeyup\" attribute"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "l"
-    wcag: 
-      2.1.1: 
-        techniques: 
+    wcag:
+      2.1.1:
+        techniques:
           - "G90"
           - "SCR2"
           - "SCR20"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "G90"
           - "SCR20"
-  tags: 
+  tags:
     - "javascript"
-  components: 
+  components:
     - "event"
     - "hasEventListener"
-  options: 
+  options:
     correspondingEvent: "onkeyup"
     searchEvent: "onmouseup"
-scriptUIMustBeAccessible: 
+scriptUIMustBeAccessible:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "The user interface for scripts should be accessible"
-  description: 
+  description:
     en: "All scripts should be assessed to see if their interface is accessible."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "l"
-  tags: 
+  tags:
     - "javascript"
-  options: 
+  options:
     selector: "script"
-scriptsDoNotFlicker: 
+scriptsDoNotFlicker:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Scripts should not cause the screen to flicker"
-  description: 
+  description:
     en: "All scripts should be assessed to see if their interface does not flicker."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "j"
-    wcag: 
-      2.2.2: 
-        techniques: 
+    wcag:
+      2.2.2:
+        techniques:
           - "F7"
-  tags: 
+  tags:
     - "javascript"
-  options: 
+  options:
     selector: "script"
-scriptsDoNotUseColorAlone: 
+scriptsDoNotUseColorAlone:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "The interface in scripts should not use color alone"
-  description: 
+  description:
     en: "All scripts should be assessed to see if their interface does not have an interface which requires distinguishing beteween colors alone."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "c"
-  tags: 
+  tags:
     - "javascript"
     - "color"
-  options: 
+  options:
     selector: "script"
-selectDoesNotChangeContext: 
+selectDoesNotChangeContext:
   type: "event"
   testability: 1
-  title: 
+  title:
     en: "Select\" elemetns must not contain an \"onchange\" attribute"
-  description: 
+  description:
     en: "Actions like \"onchange\" can take control away from users who are trying to navigate the page. Using an \"onchange\" attribute for things like select-list menus should instead be replaced with a drop-down and a button which initiates the action."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "event"
     - "hasEventListener"
-  options: 
+  options:
     searchEvent: "onchange"
     selector: "select"
-selectHasAssociatedLabel: 
+selectHasAssociatedLabel:
   type: "label"
   testability: 1
-  title: 
+  title:
     en: "All select elements have an explicitly associated label."
-  description: 
+  description:
     en: "All <code>select</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user"
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H44"
-      1.3.1: 
-        techniques: 
+      1.3.1:
+        techniques:
           - "H44"
           - "F68"
-      2.1.1: 
-        techniques: 
+      2.1.1:
+        techniques:
           - "H91"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "H91"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H44"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H44"
           - "H91"
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "label"
-  options: 
+  options:
     selector: "select"
-selectJumpMenu: 
+selectJumpMenu:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Select jump menus should jump on button press, not on state change"
-  description: 
+  description:
     en: "If you wish to use a 'Jump' menu with a select item that then redirects users to another page, the jump should occur on the user pressing a button, rather than on the change event of that select eleemnt."
-  guidelines: 
-    wcag: 
-      3.2.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      3.2.2:
+        techniques:
           - "F37"
-      3.2.5: 
-        techniques: 
+      3.2.5:
+        techniques:
           - "F9"
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "hasEventListener"
   callback: "selectJumpMenu"
-selectWithOptionsHasOptgroup: 
+selectWithOptionsHasOptgroup:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "Form select elements should use optgroups for long selections"
-  description: 
+  description:
     en: ".. code-block:: html"
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "H85"
-  tags: 
+  tags:
     - "form"
     - "content"
-  options: 
+  options:
     selector: "select:not(select:has(optgroup)) option:nth-child(5)"
-siteMap: 
+siteMap:
   type: "custom"
   testability: 0
-  title: 
+  title:
     en: "Websites must have a site map"
-  description: 
+  description:
     en: "Every web site should have a page which provides a site map or another method to navigate most of the site from a single page to save time for users of assistive devices."
-  guidelines: 
-    wcag: 
-      2.4.5: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.5:
+        techniques:
           - "G63"
-      2.4.8: 
-        techniques: 
+      2.4.8:
+        techniques:
           - "G63"
-  tags: 
+  tags:
     - "document"
   strings: "siteMap"
   callback: "siteMap"
-skipToContentLinkProvided: 
+skipToContentLinkProvided:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "A \"skip to content\" link should exist as one of the first links on the page"
-  description: 
+  description:
     en: "A link reading \"skip to content"
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "o"
-    wcag: 
-      2.4.1: 
-        techniques: 
+    wcag:
+      2.4.1:
+        techniques:
           - "G1"
-  tags: 
+  tags:
     - "document"
-  options: 
+  options:
     selector: "body:not(body:has(a:first[href^=#]))"
-svgContainsTitle: 
+svgContainsTitle:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Inline SVG should use Title elements"
-  description: 
+  description:
     en: "Any inline SVG image should have an embedded <code>title</code> element"
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "F65"
-  tags: 
+  tags:
     - "image"
     - "svg"
     - "content"
-  options: 
+  options:
     selector: "svg:not(svg:has(title))"
-tabIndexFollowsLogicalOrder: 
+tabIndexFollowsLogicalOrder:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "The tab order of a document is logical"
-  description: 
+  description:
     en: "Check that the tab-order of a page is logical."
-  guidelines: 
-    wcag: 
-      2.4.3: 
-        techniques: 
+  guidelines:
+    wcag:
+      2.4.3:
+        techniques:
           - "H4"
-  tags: 
+  tags:
     - "document"
   callback: "tabIndexFollowsLogicalOrder"
-tableCaptionIdentifiesTable: 
+tableCaptionIdentifiesTable:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Captions should identify their table"
-  description: 
+  description:
     en: "Check to make sure that a table's caption identifies the table with a name, figure number, etc."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "H39"
-  tags: 
+  tags:
     - "table"
     - "content"
-  options: 
+  options:
     selector: "caption"
-tableComplexHasSummary: 
+tableComplexHasSummary:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "Complex tables should have a summary"
-  description: 
+  description:
     en: "If a table is complex (for example, has some cells with \"colspan\" attributes"
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "H39"
-  tags: 
+  tags:
     - "table"
     - "content"
-  options: 
+  options:
     selector: "table:not(table[summary], table:has(caption))"
-tableDataShouldHaveTh: 
+tableDataShouldHaveTh:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Data tables should contain \"th\" elements"
-  description: 
+  description:
     en: "Tables which contain data (as opposed to layout tables) should contain <code>th</code> elements to mark headers for screen readers and enhance the structure of the document."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "g"
-    wcag: 
-      1.3.1: 
-        techniques: 
+    wcag:
+      1.3.1:
+        techniques:
           - "F91"
-  tags: 
+  tags:
     - "table"
     - "content"
-  options: 
+  options:
     selector: "table:not(table:has(th))"
-tableHeaderLabelMustBeTerse: 
+tableHeaderLabelMustBeTerse:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Table header lables must be terse"
-  description: 
+  description:
     en: "The \"abbr\" attribute for table headers must be terse (less than 20 characters long)."
   guidelines: []
-  tags: 
+  tags:
     - "table"
     - "content"
   callback: "tableHeaderLabelMustBeTerse"
-tableIsGrouped: 
+tableIsGrouped:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "Mark up the areas of tables using thead and tbody"
-  description: 
+  description:
     en: ""
   guidelines: []
-  tags: 
+  tags:
     - "table"
     - "content"
-  options: 
+  options:
     selector: "table:not(table:has(thead), table:has(tfoot))"
-tableLayoutDataShouldNotHaveTh: 
+tableLayoutDataShouldNotHaveTh:
   type: "custom"
   testability: 0
-  title: 
+  title:
     en: "Layout tables should not contain \"th\" elements"
-  description: 
+  description:
     en: "Tables which are used purely for layout (as opposed to data tables), <strong>should not</strong> contain <code>th</code> elements, which would make the table appear to be a data table."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "F46"
-  tags: 
+  tags:
     - "table"
     - "layout"
     - "content"
   callback: "tableLayoutDataShouldNotHaveTh"
-tableLayoutHasNoCaption: 
+tableLayoutHasNoCaption:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "All tables used for layout have no \"caption\" element"
-  description: 
+  description:
     en: "If a table contains no data, and is used simply for layout, then it should not contain a <code>caption</code> element."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "F46"
-  tags: 
+  tags:
     - "table"
     - "layout"
     - "content"
   callback: "tableLayoutHasNoCaption"
-tableLayoutHasNoSummary: 
+tableLayoutHasNoSummary:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "All tables used for layout have no summary or an empty summary"
-  description: 
+  description:
     en: "If a table contains no data, and is used simply for layout, then it should not have a \"summary\" attribute"
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "F46"
-  tags: 
+  tags:
     - "table"
     - "layout"
     - "content"
   callback: "tableLayoutHasNoSummary"
-tableLayoutMakesSenseLinearized: 
+tableLayoutMakesSenseLinearized:
   type: "custom"
   testability: 0
-  title: 
+  title:
     en: "All tables used for layout should make sense when removed"
-  description: 
+  description:
     en: "If a <code>table</code> element is used for layout purposes only, then the content of the table should make sense if the table is linearized."
   guidelines: []
-  tags: 
+  tags:
     - "table"
     - "layout"
     - "content"
   callback: "tableLayoutMakesSenseLinearized"
-tableNotUsedForLayout: 
+tableNotUsedForLayout:
   type: "custom"
   testability: 0.5
-  guidelines: 
-    wcag: 
-      1.3.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
           - "F49"
-  tags: 
+  tags:
     - "table"
     - "layout"
   callback: "tableNotUsedForLayout"
-tableSummaryDescribesTable: 
+tableSummaryDescribesTable:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "Table summaries should describe the navigation and structure of the table"
-  description: 
+  description:
     en: "Table <code>summary</code> elements should describe the navigation tools and structure of the table, as well as provide an overview of what the table describes."
   guidelines: []
-  tags: 
+  tags:
     - "table"
     - "content"
-  options: 
+  options:
     selector: "table[summary]"
-tableSummaryDoesNotDuplicateCaption: 
+tableSummaryDoesNotDuplicateCaption:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "Table \"summary\" elements should not duplicate the \"caption\" element"
-  description: 
+  description:
     en: "The summary and the caption must be different, as both provide different information. A <code>caption</code>. /code element identifies the table., while the \"summary\" attribute describes the table contents."
   guidelines: []
-  tags: 
+  tags:
     - "table"
     - "content"
   callback: "tableSummaryDoesNotDuplicateCaption"
-tableSummaryIsEmpty: 
+tableSummaryIsEmpty:
   type: "placeholder"
   testability: 0.5
-  title: 
+  title:
     en: "All data tables should have a summary"
-  description: 
+  description:
     en: "If a table contains data, it should have a \"summary\" attribute."
   guidelines: []
-  tags: 
+  tags:
     - "table"
     - "content"
-  components: 
+  components:
     - "placeholder"
-  options: 
+  options:
     attribute: "summary"
     empty: true
     selector: "table[summary]"
-tableSummaryIsNotTooLong: 
+tableSummaryIsNotTooLong:
   type: "custom"
   testability: 0
   guidelines: []
-  tags: 
+  tags:
     - "table"
     - "content"
   callback: "tableSummaryIsNotTooLong"
-tableSummaryIsSufficient: 
+tableSummaryIsSufficient:
   type: "selector"
   testability: 0
-  title: 
+  title:
     en: "All data tables should have an adequate summary"
-  description: 
+  description:
     en: "If a table contains data, it should have a \"summary\" attribute that completely communicates the function and use of the table."
   guidelines: []
-  tags: 
+  tags:
     - "table"
     - "content"
-  options: 
+  options:
     selector: "table[summary]"
-tableUseColGroup: 
+tableUseColGroup:
   type: "custom"
   testability: 0
-  title: 
+  title:
     en: "Group columns using \"colgroup\" or \"col\" elements"
-  description: 
+  description:
     en: "To help complex table headers make sense, use <code>colgroup</code> or <code>col</code> to group them together."
   guidelines: []
-  tags: 
+  tags:
     - "table"
     - "content"
   callback: "tableUseColGroup"
-tableUsesAbbreviationForHeader: 
+tableUsesAbbreviationForHeader:
   type: "custom"
   testability: 0
-  title: 
+  title:
     en: "Table headers over 20 characters should provide an \"abbr\" attribute"
-  description: 
+  description:
     en: "For long table headers, use an \"abbr\" attribute that is less than short (less than 20 characters long)."
   guidelines: []
-  tags: 
+  tags:
     - "table"
     - "content"
   callback: "tableUsesAbbreviationForHeader"
-tableUsesCaption: 
+tableUsesCaption:
   type: "selector"
   testability: 1
-  title: 
+  title:
     en: "Data tables should contain a \"caption\" element if not described elsewhere"
-  description: 
+  description:
     en: "Unless otherwise described in the document, tables should contain <code>caption</code> elements to describe the purpose of the table."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "H39"
-  tags: 
+  tags:
     - "table"
     - "content"
-  options: 
+  options:
     selector: "table:not(table:has(caption))"
-tableUsesScopeForRow: 
+tableUsesScopeForRow:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Data tables should use scoped headers for rows with headers"
-  description: 
+  description:
     en: "Where there are table headers for both rows and columns, use the \"scope\" attribute to help relate those headers with their appropriate cells. This test looks for the first and last cells in each row and sees if they differ in layout or font weight."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "H63"
-  tags: 
+  tags:
     - "table"
     - "content"
   callback: "tableUsesScopeForRow"
-tableWithBothHeadersUseScope: 
+tableWithBothHeadersUseScope:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "Data tables with multiple headers should use the \"scope\" attribute"
-  description: 
+  description:
     en: "Where there are table headers for both rows and columns, use the \"scope\" attribute to help relate those headers with their appropriate cells."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "h"
-    wcag: 
-      1.3.1: 
-        techniques: 
+    wcag:
+      1.3.1:
+        techniques:
           - "F91"
-  tags: 
+  tags:
     - "table"
     - "content"
-  options: 
+  options:
     selector: "table:has(tr:not(table tr:first) th:not(th[scope]))"
-tableWithMoreHeadersUseID: 
+tableWithMoreHeadersUseID:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Complex data tables should provide \"id\" attributes to headers"
-  description: 
+  description:
     en: "and \"headers\" attributes for data cells"
   guidelines: []
-  tags: 
+  tags:
     - "table"
     - "content"
   callback: "tableWithMoreHeadersUseID"
-tabularDataIsInTable: 
+tabularDataIsInTable:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "All tabular information should use a table"
-  description: 
+  description:
     en: "Tables should be used when displaying tabular information."
-  guidelines: 
-    wcag: 
-      1.3.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
           - "F33"
           - "F34"
           - "F48"
-      1.3.2: 
-        techniques: 
+      1.3.2:
+        techniques:
           - "F33"
           - "F34"
-  tags: 
+  tags:
     - "table"
     - "content"
   callback: "tabularDataIsInTable"
-textIsNotSmall: 
+textIsNotSmall:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "The text size is not less than 9 pixels high"
-  description: 
+  description:
     en: "To help users with difficulty reading small text, ensure text size is no less than 9 pixels high."
   guidelines: []
-  tags: 
+  tags:
     - "textsize"
     - "content"
-  components: 
+  components:
     - "convertToPx"
   callback: "textIsNotSmall"
-textareaHasAssociatedLabel: 
+textareaHasAssociatedLabel:
   type: "label"
   testability: 1
-  title: 
+  title:
     en: "All textareas should have a corresponding label"
-  description: 
+  description:
     en: "All <code>textarea</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user"
-  guidelines: 
-    wcag: 
-      1.1.1: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.1.1:
+        techniques:
           - "H44"
-      1.3.1: 
-        techniques: 
+      1.3.1:
+        techniques:
           - "H44"
           - "F68"
-      2.1.1: 
-        techniques: 
+      2.1.1:
+        techniques:
           - "H91"
-      2.1.3: 
-        techniques: 
+      2.1.3:
+        techniques:
           - "H91"
-      3.3.2: 
-        techniques: 
+      3.3.2:
+        techniques:
           - "H44"
-      4.1.2: 
-        techniques: 
+      4.1.2:
+        techniques:
           - "H44"
           - "H91"
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "label"
-  options: 
+  options:
     selector: "textarea"
-textareaLabelPositionedClose: 
+textareaLabelPositionedClose:
   type: "labelProximity"
   testability: 0.5
-  title: 
+  title:
     en: "All textareas should have a label that is close to it"
-  description: 
+  description:
     en: "All <code>textarea</code> elements should have a corresponding <code>label</code> element that is close in proximity.."
   guidelines: []
-  tags: 
+  tags:
     - "form"
     - "content"
-  components: 
+  components:
     - "labelProximity"
-  options: 
+  options:
     selector: "textarea"
-videoProvidesCaptions: 
+videoProvidesCaptions:
   type: "selector"
   testability: 0.5
-  title: 
+  title:
     en: "All video tags must provide captions"
-  description: 
+  description:
     en: "All HTML5 video tags must provide captions."
-  guidelines: 
-    508: 
+  guidelines:
+    508:
       - "b"
       - "b"
-    wcag: 
-      1.2.2: 
-        techniques: 
+    wcag:
+      1.2.2:
+        techniques:
           - "G87"
-      1.2.4: 
-        techniques: 
+      1.2.4:
+        techniques:
           - "G87"
-  tags: 
+  tags:
     - "media"
     - "content"
-  options: 
+  options:
     selector: "video"
-videosEmbeddedOrLinkedNeedCaptions: 
+videosEmbeddedOrLinkedNeedCaptions:
   type: "custom"
   testability: 1
-  title: 
+  title:
     en: "All linked or embedded videos need captions"
-  description: 
+  description:
     en: "Any video hosted or otherwise which is linked or embedded must have a caption."
-  guidelines: 
-    wcag: 
-      1.2.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.2.2:
+        techniques:
           - "G87"
-      1.2.4: 
-        techniques: 
+      1.2.4:
+        techniques:
           - "G87"
-  tags: 
+  tags:
     - "media"
     - "content"
-  components: 
+  components:
     - "video"
   callback: "videosEmbeddedOrLinkedNeedCaptions"
-whiteSpaceInWord: 
+whiteSpaceInWord:
   type: "custom"
   testability: 0.5
-  title: 
+  title:
     en: "Whitespace should not be used between characters in a word"
-  description: 
+  description:
     en: "Using extra whitespace between letters in a word causes screen readers to not interpret the word correctly, use the letter-spacing CSS property instead."
-  guidelines: 
-    wcag: 
-      1.3.2: 
-        techniques: 
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
           - "F32"
           - "C8"
-  tags: 
+  tags:
     - "content"
   callback: "whiteSpaceInWord"
