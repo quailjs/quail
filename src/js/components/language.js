@@ -116,6 +116,9 @@ quail.components.language = {
     if(quail.html.parents('[lang]').length) {
       return quail.html.parents('[lang]:first').attr('lang');
     }
+    if(typeof quail.options.language !== 'undefined') {
+      return quail.options.language;
+    }
     return navigator.language || navigator.userLanguage;
   }
 };
