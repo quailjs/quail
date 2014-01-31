@@ -1,0 +1,3 @@
+quail.languageChangesAreIdentified = function() {
+
+};

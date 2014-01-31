@@ -62,14 +62,6 @@ var quail = {
   focusElements : 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]',
 
   /**
-   * Regex to find right-to-left or left-to-right characters
-   */
-  textDirection : {
-    rtl : /[\u0600-\u06FF]|[\u0750-\u077F]|[\u0590-\u05FF]|[\uFE70-\uFEFF]/mg,
-    ltr : /[\u0041-\u007A]|[\u00C0-\u02AF]|[\u0388-\u058F]/mg
-  },
-
-  /**
    * Main run function for quail. It bundles up some accessibility tests,
    * and if tests are not passed, it instead fetches them using getJSON.
    */
