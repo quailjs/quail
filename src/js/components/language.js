@@ -109,16 +109,21 @@ quail.components.language = {
     th: /[\u0E00-\u0E7F]/g
   },
 
-  getDocumentLanguage: function() {
-    if(typeof quail.html.attr('lang') !== 'undefined') {
-      return quail.html.attr('lang');
+  getDocumentLanguage: function(returnIso) {
+    var language = navigator.language || navigator.userLanguage;
+    if(typeof quail.options.language !== 'undefined') {
+      language = quail.options.language;
     }
     if(quail.html.parents('[lang]').length) {
-      return quail.html.parents('[lang]:first').attr('lang');
+      language = quail.html.parents('[lang]:first').attr('lang');
     }
-    if(typeof quail.options.language !== 'undefined') {
-      return quail.options.language;
+    if(typeof quail.html.attr('lang') !== 'undefined') {
+      language = quail.html.attr('lang');
     }
-    return navigator.language || navigator.userLanguage;
+    language = language.toLowerCase().trim();
+    if(returnIso) {
+      return language.split('-')[0];
+    }
+    return language;
   }
 };

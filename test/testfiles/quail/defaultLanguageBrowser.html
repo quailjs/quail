@@ -30,7 +30,9 @@
           		components: [ 'language' ],
           		callback: function(quail) {
           			test('Default langauge found from browser', function() {
-          				equal(quail.components.language.getDocumentLanguage(), navigator.language || navigator.userLanguage, 'Browser language code found');
+                  var browserLanguage = navigator.language || navigator.userLanguage;
+                  browserLanguage = browserLanguage.trim().toLowerCase();
+          				equal(quail.components.language.getDocumentLanguage(), browserLanguage, 'Browser language code found');
           			});
           		}
           	}

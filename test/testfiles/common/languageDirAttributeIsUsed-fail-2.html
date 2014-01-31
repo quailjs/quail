@@ -10,7 +10,7 @@
     <body>
         <div id="quail-scope">
             <p>
-                The title says "<span lang="he" dir="rtl">פעילות הבינאום</span>, W3C" in Hebrew. This should also be wrapped in an inline element: "הבינאום."
+                The title says "<span lang="he" dir="rtl">פעילות הבינאום</span>, W3C" in Hebrew. This should also be wrapped in an inline element: "עפּעס אַנדערש."
             </p>
         </div>
         <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
@@ -20,7 +20,7 @@
         <script id="qunit-script">
             test('languageDirAttributeIsUsed', function() {
             	  quailTest.runTest('languageDirAttributeIsUsed');
-            	  equal(true, quailTest.confirmIsTag('p'), 'Paragraph has hebrew');
+                  equal(true, quailTest.confirmIsTag('p'), 'Paragraph has hebrew');
             });
         </script>
     </body>
