@@ -2,7 +2,7 @@
 <html>
     <meta charset="utf-8">
     <head>
-        <title>languageChangesAreIdentified-pass</title>
+        <title>languageChangesAreIdentified-fail</title>
         <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
         media="screen">
     </head>
@@ -10,7 +10,7 @@
     <body>
         <div id="quail-scope" lang="en">
             <p>This paragraph is just fine, it is written in English.</p>
-            <p lang="bn">এটি একটি ভাষা একক স্ক্রিপ্ট করা হবে না.</p>
+            <p class="bengali">এটি একটি ভাষা একক স্ক্রিপ্ট করা হবে না.</p>
         </div>
         <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
         <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
@@ -19,7 +19,7 @@
         <script>
             test('Language singleton changes are identified', function() {
         	  quailTest.runTest('languageChangesAreIdentified');
-        	  equal(true, quailTest.confirmIsEmpty(), 'The second paragraph changes language context and has lang attribute.');
+        	  equal(true, quailTest.confirmIsTag('p.bengali'), 'The second paragraph changes language context.');
             });
         </script>
     </body>

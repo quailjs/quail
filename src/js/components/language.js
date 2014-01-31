@@ -6,7 +6,7 @@ quail.components.language = {
 
   scripts: {
     basicLatin: {
-      expression: /[\u0000-\u007F]/g,
+      regularExpression: /[\u0041-\u007F]/g,
       languages: [    
         "ceb",
         "en",
@@ -29,7 +29,7 @@ quail.components.language = {
       ]
     },
     extendedLatin: {
-      expression: /[\u0100-\u017F]|[\u0180-\u024F]/g,
+      regularExpression: /[\u0100-\u017F]|[\u0180-\u024F]/g,
       languages: [  
         "af",
         "az",
@@ -64,7 +64,7 @@ quail.components.language = {
       ]
     },
     arabic: {
-      expression:  /[\u0600-\u06FF]/g,
+      regularExpression:  /[\u0600-\u06FF]/g,
       languages: [  
         "ar",
         "fa",
@@ -73,7 +73,7 @@ quail.components.language = {
       ]
     },
     cryllic: {
-      expression: /[\u0400-\u04FF]|[\u0500-\u052F]/g, 
+      regularExpression: /[\u0400-\u04FF]|[\u0500-\u052F]/g, 
       languages: [  
         "bg",
         "kk",
