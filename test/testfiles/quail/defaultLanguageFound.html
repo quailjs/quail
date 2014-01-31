@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <title>Document language can be found</title>
+        <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen">
+    </head>
+    
+    <body>
+	    	<div class="no-language">
+	    		<p>This has no language, fallback to the browser. Really bad idea.</p>
+	    	</div>
+        <div class="current-element" lang="ar-test-1">
+        	<p>I am some odd language code.</p>
+        </div>
+        <div class="parent-with-language" lang="ar-test-2">
+        	<div>
+        		<p class="parent-element">This is a paragraph with no language, find the language from an <strong>ancestor or parent</strong>.</p>
+        	</div>
+        </div>
+        <script id="qunit-jquery" src="../../../lib/jquery/jquery.js"></script>
+        <script id="qunit-quail" src="../../../dist/quail.jquery.js"></script>
+        <script id="qunit-composite" src="../../composite.js"></script>
+        <script id="qunit-qunit" src="../../../lib/qunit/qunit/qunit.js"></script>
+        <script id="qunit-script">
+          var custom = {
+          	findCurrentLanguage : {
+          		type: 'custom',
+          		components: [ 'language' ],
+          		callback: function(quail) {
+          			test('Default langauge found in current element', function() {
+          				equal(quail.components.language.getDocumentLanguage(), 'ar-test-1', 'Test language code found');
+          			});
+          		}
+          	}
+          };
+          $('.current-element').quail({ jsonPath : '../../../dist',
+	          guideline : [ 'findCurrentLanguage' ],
+	          reset : true,
+	          customTests : custom
+        	});
+        </script>
+    </body>
+
+</html>
