@@ -2,7 +2,7 @@ quail.languageDirAttributeIsUsed = function() {
 	var currentDirection = (quail.html.attr('dir')) ? quail.html.attr('dir').toLowerCase() : 'ltr';
 	var oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
 	var textDirection = quail.components.language.textDirection;
-	quail.html.find('p, blockquote, aside, h1, h2, h3, h4, h5, h6').each(function() {
+	quail.html.find(quail.textSelector).each(function() {
 		if($(this).attr('dir')) {
 			currentDirection = $(this).attr('dir').toLowerCase();
 		}
