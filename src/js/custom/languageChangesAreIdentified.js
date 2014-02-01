@@ -48,8 +48,6 @@ quail.languageChangesAreIdentified = function() {
 			}
 			matches = text.match(script.regularExpression);
 			if(matches && matches.length && noCharactersMatch($element, code, matches, regularExpression)) {
-				console.log(matches);
-				console.log(code);
 				quail.testFails('languageChangesAreIdentified', $element, { language : code });
 			}
 		});
