@@ -18,11 +18,19 @@ quail.languageChangesAreIdentified = function() {
 		return matches > 0;
 	};
 
+	var findCurrentLanguage = function($element) {
+		if($element.attr('lang')) {
+			return $element.attr('lang').trim().toLowerCase().split('-')[0];
+		}
+		if($element.parents('[lang]').length) {
+			return $element.parents('[lang]:first').attr('lang').trim().toLowerCase().split('-')[0];
+		}
+		return quail.components.language.getDocumentLanguage(true);
+	};
+
 	quail.html.find(quail.textSelector).each(function() {
 		$element = $(this);
-		if($element.attr('lang')) {
-			currentLanguage = $element.attr('lang').trim().toLowerCase().split('-')[0];
-		}
+		currentLanguage = findCurrentLanguage($element);
 		text = quail.getTextContents($element);
 		
 		$.each(quail.components.language.scriptSingletons, function(code, regularExpression) {
@@ -40,6 +48,8 @@ quail.languageChangesAreIdentified = function() {
 			}
 			matches = text.match(script.regularExpression);
 			if(matches && matches.length && noCharactersMatch($element, code, matches, regularExpression)) {
+				console.log(matches);
+				console.log(code);
 				quail.testFails('languageChangesAreIdentified', $element, { language : code });
 			}
 		});
