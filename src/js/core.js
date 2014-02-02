@@ -43,7 +43,7 @@ var quail = {
   /**
    * A list of HTML elements that can contain actual text.
    */
-  textSelector : 'p, h1, h2, h3, h4, h5, h6, div, pre, blockquote, aside, article, details, summary, figcaption, footer, header, hgroup, nav, section, strong, em, del, i, b',
+  textSelector : ':not(:empty)',
   
   /**
    * Suspect tags that would indicate a paragraph is being used as a header.
@@ -62,13 +62,9 @@ var quail = {
   focusElements : 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]',
 
   /**
-   * Regex to find right-to-left or left-to-right characters
+   * Regular expression to find emoticons.
    */
-  textDirection : {
-    rtl : /[\u0600-\u06FF]|[\u0750-\u077F]|[\u0590-\u05FF]|[\uFE70-\uFEFF]/mg,
-    ltr : /[\u0041-\u007A]|[\u00C0-\u02AF]|[\u0388-\u058F]/mg
-  },
-
+  emoticonRegex: /((?::|;|B|P|=)(?:-)?(?:\)|\(|o|O|D|P))/g,
   /**
    * Main run function for quail. It bundles up some accessibility tests,
    * and if tests are not passed, it instead fetches them using getJSON.
@@ -263,6 +259,20 @@ var quail = {
       });
     }
     return isDataTable;
+  },
+
+  /**
+   *  Returns text contents for nodes depending on their semantics
+   */
+  getTextContents : function($element) {
+    if($element.is('p, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption')) {
+      return $element.text();
+    }
+    return $element.clone()
+                   .children()
+                   .remove()
+                   .end()
+                   .text();
   },
 
   /**
