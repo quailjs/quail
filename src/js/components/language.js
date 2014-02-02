@@ -123,11 +123,5 @@ quail.components.language = {
       return language.split('-')[0];
     }
     return language;
-  },
-
-  findNGrams: function(size) {
-    if(typeof size === 'undefined') {
-        size = 3
-    }
   }
 };
