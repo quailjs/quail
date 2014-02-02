@@ -1299,7 +1299,6 @@ emoticonsExcessiveUse:
     - "language"
     - "emoticons"
     - "content"
-  strings: "emoticons"
   callback: "emoticonsExcessiveUse"
 emoticonsMissingAbbr:
   type: "custom"
@@ -1317,7 +1316,6 @@ emoticonsMissingAbbr:
     - "language"
     - "emoticons"
     - "content"
-  strings: "emoticons"
   callback: "emoticonsMissingAbbr"
 fieldsetHasLabel:
   type: "selector"
