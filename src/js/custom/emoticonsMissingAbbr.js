@@ -7,7 +7,6 @@ quail.emoticonsMissingAbbr = function() {
     });
     $.each($clone.text().split(' '), function(index, word) {
       if(word.search(quail.emoticonRegex) > -1 ) {
-        console.log(word);
         quail.testFails('emoticonsMissingAbbr', $element);
       }
     });
