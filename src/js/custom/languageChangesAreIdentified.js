@@ -51,6 +51,5 @@ quail.languageChangesAreIdentified = function() {
 				quail.testFails('languageChangesAreIdentified', $element, { language : code });
 			}
 		});
-
 	});
 };

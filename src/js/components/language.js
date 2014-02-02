@@ -25,12 +25,7 @@ quail.components.language = {
         "tn",
         "ts",
         "xh",
-        "zu"
-      ]
-    },
-    extendedLatin: {
-      regularExpression: /[\u0100-\u017F]|[\u0180-\u024F]/g,
-      languages: [  
+        "zu",
         "af",
         "az",
         "ca",
@@ -95,9 +90,11 @@ quail.components.language = {
     gu: /[\u0A80-\u0AFF]/g,
     he: /[\u0590-\u05FF]/g,
     hy: /[\u0530-\u058F]/g,
+    ja: /[\u3040-\u309F]|[\u30A0-\u30FF]/g,
     ka: /[\u10A0-\u10FF]/g,
     km: /[\u1780-\u17FF]|[\u19E0-\u19FF]/g,
     kn: /[\u0C80-\u0CFF]/g,
+    ko: /[\u1100-\u11FF]|[\u3130-\u318F]|[\uAC00-\uD7AF]/g,
     lo: /[\u0E80-\u0EFF]/g,
     ml: /[\u0D00-\u0D7F]/g,
     mn: /[\u1800-\u18AF]/g,
@@ -106,7 +103,8 @@ quail.components.language = {
     si: /[\u0D80-\u0DFF]/g,
     ta: /[\u0B80-\u0BFF]/g,
     te: /[\u0C00-\u0C7F]/g,
-    th: /[\u0E00-\u0E7F]/g
+    th: /[\u0E00-\u0E7F]/g,
+    zh: /[\u3100-\u312F]|[\u2F00-\u2FDF]/g
   },
 
   getDocumentLanguage: function(returnIso) {
@@ -125,5 +123,11 @@ quail.components.language = {
       return language.split('-')[0];
     }
     return language;
+  },
+
+  findNGrams: function(size) {
+    if(typeof size === 'undefined') {
+        size = 3
+    }
   }
 };
