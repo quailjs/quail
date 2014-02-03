@@ -21,26 +21,28 @@ var quailTest = {
 
   runTest : function(testName, testFailed, complete) {
     quailTest.testName = testName;
-      var $target = ($('#quail-scope').length) ? $('#quail-scope') : $(document);
-      var testFails = (typeof testFails !== 'undefined') ? testFails : function() {};
-      $target.quail({ jsonPath : '../../../src/resources',
-                      guideline : [ testName ],
-                      reset : true,
-                      accessibilityTests : accessibilityTests,
-                      testFailed: testFailed,
-                      complete : function(results) {
-                        $.each(results.results[testName].elements, function(index, item) {
-                          if(typeof item === 'undefined' ||
-                             (item && item.attr('id') && item.attr('id').indexOf('qunit-') !== -1) ||
-                             item.parents('#qunit-wrapper').length) {
-                            results.results[testName].elements.splice(index, 1);
-                          }
-                        });
-                        quailTest.results = results.results;
-                        if(typeof complete !== 'undefined') {
-                          complete(results);
-                        }
-                      }});
+    var $target = ($('#quail-scope').length) ? $('#quail-scope') : $(document);
+    var testFails = (typeof testFails !== 'undefined') ? testFails : function() {};
+    $target.quail({
+      jsonPath : '../../../src/resources',
+      guideline : [ testName ],
+      reset : true,
+      accessibilityTests : accessibilityTests,
+      testFailed: testFailed,
+      complete : function(results) {
+        $.each(results.results[testName].elements, function(index, item) {
+          if(typeof item === 'undefined' ||
+             (item && item.attr('id') && item.attr('id').indexOf('qunit-') !== -1) ||
+             item.parents('#qunit-wrapper').length) {
+            results.results[testName].elements.splice(index, 1);
+          }
+        });
+        quailTest.results = results.results;
+        if(typeof complete !== 'undefined') {
+          complete(results);
+        }
+      }
+    });
   },
 
   confirmIsEmpty : function() {
@@ -63,7 +65,7 @@ var quailTest = {
     }
     return quailTest.results[quailTest.testName].elements[0].is(tag);
   },
-  
+
   insertElements : function(callback) {
    $('body').append('<div role="header" id="qunit-wrapper"><h2 id="qunit-banner"></h2><div id="qunit-testrunner-toolbar"></div><h2 id="qunit-userAgent"></h2><ol id="qunit-tests"></ol><div id="qunit-fixture">test markup, will be hidden</div></div>');
   }
