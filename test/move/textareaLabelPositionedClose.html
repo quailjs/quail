@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+	<head>
+		<title>textareaLabelPositionedClose</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="textareaLabelPositionedClose">
+
+<form action="http://www.example.com" method="post">
+            <table width="100%">
+                <tr>
+                    <td>first name:</td>
+                    <td align="right">
+                        <input type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>last name:</td>
+                    <td align="right">
+                        <input type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="test">comment:</label>
+                    </td>
+                    <td align="right">
+                        <textarea rows="3" cols="20" id="test"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="submit" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+		</div>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="textareaLabelPositionedClose">
+
+<form action="http://www.example.com" method="post">
+            <table>
+                <tr>
+                    <td>first name:</td>
+                    <td>
+                        <input type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>last name:</td>
+                    <td>
+                        <input type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>comment:</td>
+                    <td align="right">
+                        <label for="text">comment:</label>
+                        <textarea id="text" rows="3" cols="20"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="submit" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+		</div>
+
+		<script src="../testrunner.js"></script>
+	</body>
+</html>

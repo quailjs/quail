@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+	<head>
+		<title>tableSummaryDescribesTable</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="tableSummaryDescribesTable">
+
+<table border="1" summary="Schedule for Route 7 going downtown. Service begins 
+at 4:00 AM and ends at midnight. Intersections are listed in the top row. 
+Find the intersection closest to your starting point or destination, then read 
+down that column to find out what time the bus leaves that intersection.">
+            <tr>
+                <th scope="col">State & First</th>
+                <th scope="col">State & Sixth</th>
+                <th scope="col">State & Fifteenth</th>
+                <th scope="col">Fifteenth & Morrison</th>
+            </tr>
+            <td>4:00</td>
+            <td>4:05</td>
+            <td>4:11</td>
+            <td>4:19</td>
+            </tr>
+            </tr>
+            <td>5:00</td>
+            <td>5:05</td>
+            <td>5:11</td>
+            <td>5:19</td>
+            </tr>
+            </tr>
+            <td>6:00</td>
+            <td>6:05</td>
+            <td>6:11</td>
+            <td>6:19</td>
+            </tr>
+        </table>
+		</div>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="tableSummaryDescribesTable">
+
+<table border="1" summary="bus schedule">
+            <tr>
+                <th scope="col">State & First</th>
+                <th scope="col">State & Sixth</th>
+                <th scope="col">State & Fifteenth</th>
+                <th scope="col">Fifteenth & Morrison</th>
+            </tr>
+            <td>4:00</td>
+            <td>4:05</td>
+            <td>4:11</td>
+            <td>4:19</td>
+            </tr>
+            </tr>
+            <td>5:00</td>
+            <td>5:05</td>
+            <td>5:11</td>
+            <td>5:19</td>
+            </tr>
+            </tr>
+            <td>6:00</td>
+            <td>6:05</td>
+            <td>6:11</td>
+            <td>6:19</td>
+            </tr>
+        </table>
+		</div>
+
+		<script src="../testrunner.js"></script>
+	</body>
+</html>

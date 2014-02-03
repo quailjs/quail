@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+	<head>
+		<title>aImgAltNotRepetative</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="imgHasAlt">
+			<a href="page1.html"><img src="../assets/rex.jpg" alt=""/>page1</a>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aImgAltNotRepetative">
+		  <a href="page1.html" class="quail-failed-element"><img src="../assets/rex.jpg" alt="page1"/>page1</a>
+		</div>
+
+		<script src="../testrunner.js"></script>	</body>
+</html>

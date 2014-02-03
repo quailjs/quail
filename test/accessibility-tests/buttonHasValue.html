@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	<title>buttonHasValue</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="buttonHasValue">
+
+		<button id="button" class="quail-failed-element"></button>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="buttonHasValue">
+
+		<button id="button">Submit form</button>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="buttonHasValue">
+
+		<button id="button" value="Submit form"></button>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

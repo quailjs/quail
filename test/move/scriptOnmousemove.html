@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+	<head>
+		<title>scriptOnmousemove</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="scriptOnmousemove">
+
+<div id="quail-scope">
+            <input name="num" onmousemove="bar" value="0">
+        </div>
+		</div>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="scriptOnmousemove">
+
+<div id="quail-scope">
+            <input name="num" value="0">
+        </div>
+		</div>
+
+		<script src="../testrunner.js"></script>
+	</body>
+</html>

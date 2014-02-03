@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+	<head>
+		<title>areaAltIdentifiesDestination</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="areaAltIdentifiesDestination">
+		  <p>
+          <img src="../assets/library.gif" usemap="#map1" alt="Image map of areas in the library"
+          />
+      </p>
+      <p>
+          <map id="map1" name="map1">
+              <area class="quail-failed-element" shape="rect" coords="0,0,50,50" href="../assets.html" alt="drawing of a blue book"
+              />
+          </map>
+      </p>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="areaAltIdentifiesDestination">
+		  <p>
+            <img src="../assets/library.gif" usemap="#map1" alt="Image map of areas in the library"
+            />
+        </p>
+        <p>
+            <map id="map1" name="map1">
+                <area class="quail-failed-element" shape="rect" coords="0,0,50,50" href="reference.html" alt="reference section"
+                />
+            </map>
+        </p>
+		</div>
+
+
+		<script src="../testrunner.js"></script>	</body>
+</html>

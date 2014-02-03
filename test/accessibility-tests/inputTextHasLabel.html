@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <title>inputTextHasLabel</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="inputTextHasLabel">
+        <form action="http://somesite.com/prog/adduser" method="post">
+            <p>
+                <input type="text" title="first name" name="firstname" tabindex="1" class="quail-failed-element"/>
+            </p>
+        </form>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="inputTextHasLabel">
+        <form>
+            Name:
+            <input type="text" name="name" id="name" class="quail-failed-element">
+            <input type="submit" value="Send">
+        </form>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="inputTextHasLabel">
+        <form action="http://somesite.com/prog/adduser" method="post">
+            <p>
+                <label>First name:</label>
+                <input type="text" name="firstname" tabindex="1" class="quail-failed-element"/>
+            </p>
+        </form>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="inputTextHasLabel">
+        <form action="http://somesite.com/prog/adduser" method="post">
+            <p>
+                <label>
+                    First name:
+                    <input type="text" name="firstname" />
+                </label>
+            </p>
+        </form>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="inputTextHasLabel">
+        <form action="http://somesite.com/prog/adduser" method="post">
+            <p>
+                <label for="firstname">First name:</label>
+                <input type="text" name="firstname" id="firstname"
+                tabindex="1" />
+            </p>
+        </form>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

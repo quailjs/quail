@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<title>labelDoesNotContainInput</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="labelDoesNotContainInput">
+		<form>
+			<label for="name" class="quail-failed-element">
+				First name:
+				<input type="text" name="firstname" id="name" />
+			</label>
+		</form>
+	</div>
+	
+	<div class="quail-test" data-expected="pass" data-accessibility-test="labelDoesNotContainInput">
+		<form>
+			<label for="name">First name:</label>
+			<input type="text" name="firstname" id="name" />
+		</form>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

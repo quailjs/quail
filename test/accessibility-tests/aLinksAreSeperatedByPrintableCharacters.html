@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+	<head>
+		<title>aLinksAreSeperatedByPrintableCharacters</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinksAreSeperatedByPrintableCharacters">
+			<a href="dogs">dogs</a> | <a href="cats">cats</a> | <a href="birds">birds</a> | <a href="snakes">snakes</a>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aLinksAreSeperatedByPrintableCharacters">
+			<a href="dogs">dogs</a>  <a href="cats" class="quail-failed-element">cats</a>  <a href="birds" class="quail-failed-element">birds</a> 
+      <a href="snakes" class="quail-failed-element">snakes</a>
+		</div>
+
+
+		<script src="../testrunner.js"></script>	</body>
+</html>

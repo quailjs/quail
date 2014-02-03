@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+	<title>imgNonDecorativeHasAlt</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="imgNonDecorativeHasAlt">
+		<p>
+			We would like to adopt another pet and are looking for one that is similar to what's shown in the picture.
+		</p>
+		<img src="resources/rex.jpg" alt="" width="150" height="105" class="quail-failed-element"/>
+	</div>
+
+	<div class="quail-test" data-expected="pass" data-accessibility-test="imgNonDecorativeHasAlt">
+		<p>
+			We would like to adopt another pet and are looking for one that is similar to what's shown in the picture.
+		</p>
+		<img src="resources/rex.jpg" alt="large brown and black cat named Rex" width="150" height="105" />
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

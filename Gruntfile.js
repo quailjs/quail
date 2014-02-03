@@ -59,8 +59,8 @@ module.exports = function(grunt) {
     },
     watch: {
       scripts: {
-        files: ['src/**/*.js', 'src/**/*.yml'],
-        tasks: ['convert', 'concat', 'jshint', 'buildGuideline', 'uglify'],
+        files: ['src/**/*.js', 'src/**/*.yml', 'test/accessibility-tests/*.html'],
+        tasks: ['convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'uglify'],
         options: {
           spawn: false
         }
@@ -78,6 +78,13 @@ module.exports = function(grunt) {
       dist: {
         files: [
           { src: 'dist/tests.json', dest: 'dist/tests.min.json' }
+        ]
+      }
+    },
+    buildTestFilesJson: {
+      dist: {
+        files: [
+          { src: 'test/accessibility-tests/*', dest: 'test/testfiles.json' }
         ]
       }
     },
@@ -166,19 +173,19 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   // By default, just run tests
-  grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit:all']);
+  grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all']);
 
   // Build task.
-  grunt.registerTask('build', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'uglify']);
+  grunt.registerTask('build', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'uglify']);
 
   // Release task.
   grunt.registerTask('release', ['bower:install', 'convert', 'concat', 'jshint', 'qunit:all', 'buildGuideline', 'compressTestsJson', 'uglify', 'gh-pages']);
 
   // Test task.
-  grunt.registerTask('test', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'qunit:all']);
+  grunt.registerTask('test', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all']);
 
   // Saucelabs task (need to add your own environment variables)
-  grunt.registerTask('saucelabs', ['bower:install', 'convert', 'concat', 'jshint', 'buildGuideline', 'compressTestsJson', 'connect', 'supressSaucelabsOutput', 'saucelabs-qunit']);
+  grunt.registerTask('saucelabs', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'connect', 'supressSaucelabsOutput', 'saucelabs-qunit']);
 
   grunt.registerTask('publish', ['gh-pages']);
 };

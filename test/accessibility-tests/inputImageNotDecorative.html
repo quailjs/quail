@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<title>inputImageNotDecorative</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="inputImageNotDecorative">
+		<form action="http://example.com/prog/text-read" method="post">
+			<p>
+				<input type="image" name="submit" "resources/finddogs.gif" alt="find dogs" class="quail-failed-element"/>
+			</p>
+		</form>
+	</div>
+
+	<div class="quail-test" data-expected="fail" data-accessibility-test="inputImageNotDecorative">
+		<form action="http://example.com/prog/text-read" method="post">
+			<p>
+				<input type="image" name="submit" "resources/finddogs.gif" alt="submit" class="quail-failed-element"/>
+			</p>
+		</form>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

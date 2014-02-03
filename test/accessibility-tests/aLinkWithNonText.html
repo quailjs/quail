@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<title>aLinkWithNonText</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinkWithNonText">
+		  <a href="something.html"><img src="../assets/rex.jpg" alt="Learn more about this cat"/></a>
+		</div>
+
+		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinkWithNonText">
+		  <a href="something.html"><img src="../assets/rex.jpg" alt=""/>Learn more about this cat</a>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aLinkWithNonText">
+		  <a href="something.html" class="quail-failed-element"><img src="../assets/rex.jpg" alt=""/></a>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aLinkWithNonText">
+		  <a href="something.html" class="quail-failed-element"><object classid="http://www.miamachina.it/analogclock.py" title="  "></object></a>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aLinkWithNonText">
+		  <a href="something.html" class="quail-failed-element"><img src="../assets/rex.jpg"/></a>
+		</div>
+
+		<script src="../testrunner.js"></script>	</body>
+</html>

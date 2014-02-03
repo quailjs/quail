@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<title>fieldsetHasLabel</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="fieldsetHasLabel">
+
+		<form id="quail-scope">
+			<fieldset class="quail-failed-element">
+				<input id="red" type="radio" name="color" value="red" />
+				<label for="red">Red</label>
+				<br />
+				<input id="blue" type="radio" name="color" value="blue" />
+				<label for="blue">Blue</label>
+				<br />
+				<input id="green" type="radio" name="color" value="green" />
+				<label for="green">Green</label>
+			</fieldset>
+		</form>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="fieldsetHasLabel">
+
+		<form id="quail-scope">
+			<fieldset>
+				<legend>Choose a Color:</legend>
+				<input id="red" type="radio" name="color" value="red" />
+				<label for="red">Red</label>
+				<br />
+				<input id="blue" type="radio" name="color" value="blue" />
+				<label for="blue">Blue</label>
+				<br />
+				<input id="green" type="radio" name="color" value="green" />
+				<label for="green">Green</label>
+			</fieldset>
+		</form>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

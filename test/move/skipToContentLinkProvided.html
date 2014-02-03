@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<title>skipToContentLinkProvided</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="skipToContentLinkProvided">
+
+<p>
+            <img src="resources/logo.png" width="50" height="50" alt="company logo"
+            />
+        </p>
+        <ul>
+            <li><a href="page1.html">front page</a>
+            </li>
+            <li><a href="page2.html">products</a>
+            </li>
+            <li><a href="page3.html">archives</a>
+            </li>
+            <li><a href="page4.html">dogs</a>
+            </li>
+            <li><a href="page5.html">cats</a>
+            </li>
+        </ul>
+        <p>The main content of the document goes here. This is some example text.</p>
+		</div>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="skipToContentLinkProvided">
+
+<p><a href="#content"><img src="resources/spacer.gif" width="0" height="0" border="0" alt="skip to content" /></a>
+        </p>
+        <p>
+            <img src="resources/logo.png" width="50" height="50" alt="company logo"
+            />
+        </p>
+        <ul class="navigation links">
+            <li><a href="page1.html">front page</a>
+            </li>
+            <li><a href="page2.html">products</a>
+            </li>
+            <li><a href="page3.html">archives</a>
+            </li>
+            <li><a href="page4.html">dogs</a>
+            </li>
+            <li><a href="page5.html">cats</a>
+            </li>
+        </ul>
+<a name="content"></a>
+
+        <p>The main content of the document goes here. This is some example text.</p>
+		</div>
+
+		<script src="../testrunner.js"></script>
+	</body>
+</html>

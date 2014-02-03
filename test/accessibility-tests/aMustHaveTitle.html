@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+	<head>
+		<title>aMustHaveTitle</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="aMustHaveTitle">
+		  <p>We have information about <a href="dogs.html" title="dogs information">dogs</a> on
+            our site.</p>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aMustHaveTitle">
+		  <p>We have more <a href="dogs.html" class="quail-failed-element">information about dogs</a> on our site.</p>
+        
+		</div>
+
+
+		<script src="../testrunner.js"></script>	</body>
+</html>

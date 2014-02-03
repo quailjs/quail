@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<title>liDontUseImageForBullet</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="liDontUseImageForBullet">
+		<ul>
+			<li>
+				<img src="resources/bullet.gif" alt="" class="quail-failed-element">Item One</li>
+			<li>
+				<img src="resources/bullet.gif" alt="" class="quail-failed-element">Item Two</li>
+		</ul>
+	</div>
+
+	<div class="quail-test" data-expected="pass" data-accessibility-test="liDontUseImageForBullet">
+		<ul>
+			<li>Item One</li>
+			<li>Item Two</li>
+		</ul>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

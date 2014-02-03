@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+	<head>
+		<title>selectHasAssociatedLabel</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="selectHasAssociatedLabel">
+
+<form method="post" action="http://www.test.com">
+            <p>
+                <select name="abcselect" id="animal" title="animal">
+                    <option value="1">dog</option>
+                    <option value="2">cat</option>
+                    <option value="3">bird</option>
+                </select>
+            </p>
+        </form>
+		</div>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="selectHasAssociatedLabel">
+
+<form method="post" action="http://www.test.com">
+            <p>
+                <select name="abcselect" id="animal" title="">
+                    <option value="1">dog</option>
+                    <option value="2">cat</option>
+                    <option value="3">bird</option>
+                </select>
+            </p>
+        </form>
+		</div>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="selectHasAssociatedLabel">
+
+<form method="post" action="http://www.test.com">
+            <p>
+                <select name="abcselect" id="animal" title="animal">
+                    <option value="1">dog</option>
+                    <option value="2">cat</option>
+                    <option value="3">bird</option>
+                </select>
+            </p>
+        </form>
+		</div>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="selectHasAssociatedLabel">
+
+<form method="post" action="http://www.test.com">
+            <p>
+                <select name="abcselect" id="animal" title="    ">
+                    <option value="1">dog</option>
+                    <option value="2">cat</option>
+                    <option value="3">bird</option>
+                </select>
+            </p>
+        </form>
+		</div>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="selectHasAssociatedLabel">
+
+<form method="post" action="http://www.test.com">
+            <p>
+                <label>
+                    <select name="abcselect" id="animal">
+                        <option value="1">dog</option>
+                        <option value="2">cat</option>
+                        <option value="3">bird</option>
+                    </select>
+                </label>
+            </p>
+        </form>
+		</div>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="selectHasAssociatedLabel">
+
+<form method="post" action="http://www.test.com">
+            <p>
+                <label>
+                    <select name="abcselect" id="animal">
+                        <option value="1">dog</option>
+                        <option value="2">cat</option>
+                        <option value="3">bird</option>
+                    </select>
+                </label>
+            </p>
+        </form>
+		</div>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="selectHasAssociatedLabel">
+
+<form method="post" action="http://www.test.com">
+            <p>
+                <label>Animal:</label>
+                <select name="abcselect" id="animal">
+                    <option value="1">dog</option>
+                    <option value="2">cat</option>
+                    <option value="3">bird</option>
+                </select>
+            </p>
+        </form>
+		</div>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="selectHasAssociatedLabel">
+
+<form method="post" action="http://www.test.com">
+            <p>
+                <label>Animal:
+                    <select name="abcselect" id="animal">
+                        <option value="1">dog</option>
+                        <option value="2">cat</option>
+                        <option value="3">bird</option>
+                    </select>
+                </label>
+            </p>
+        </form>
+		</div>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="selectHasAssociatedLabel">
+
+<form method="post" action="http://www.test.com">
+            <p>
+                <label for="animal">Animal:</label>
+                <select name="abcselect" id="animal">
+                    <option value="1">dog</option>
+                    <option value="2">cat</option>
+                    <option value="3">bird</option>
+                </select>
+            </p>
+        </form>
+		</div>
+
+		<script src="../testrunner.js"></script>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+	<head>
+		<title>tableUsesAbbreviationForHeader</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="tableUsesAbbreviationForHeader">
+
+<TABLE border="1" summary="This simple data table demonstrates the use of summary">
+            <caption>A Test Table</caption>
+            <TR>
+                <TD></TD>
+                <TH>Col. 1 header really long text</TH>
+                <TH>Col. 2 header really long text</TH>
+            </TR>
+            <TR>
+                <TH>Row 1 header</TH>
+                <TD>C1R1</TD>
+                <TD>C1R2</TD>
+            </TR>
+            <TR>
+                <TH>Row 2 header</TH>
+                <TD>C2R1</TD>
+                <TD>C2R2</TD>
+            </TR>
+        </TABLE>
+		</div>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="tableUsesAbbreviationForHeader">
+
+<TABLE border="1" summary="This simple data table demonstrates the use of summary">
+            <caption>A Test Table</caption>
+            <TR>
+                <TD></TD>
+                <TH abbr="long text">Col. 1 header really long text</TH>
+                <TH abbr="long text2">Col. 2 header really long text</TH>
+            </TR>
+            <TR>
+                <TH>Row 1 header</TH>
+                <TD>C1R1</TD>
+                <TD>C1R2</TD>
+            </TR>
+            <TR>
+                <TH>Row 2 header</TH>
+                <TD>C2R1</TD>
+                <TD>C2R2</TD>
+            </TR>
+        </TABLE>
+		</div>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="tableUsesAbbreviationForHeader">
+
+<TABLE border="1" summary="This simple data table demonstrates the use of summary">
+            <TR>
+                <TD></TD>
+                <TH>Col. 1 header</TH>
+                <TH>Col. 2 header</TH>
+            </TR>
+            <TR>
+                <TH>Row 1 header</TH>
+                <TD>C1R1</TD>
+                <TD>C1R2</TD>
+            </TR>
+            <TR>
+                <TH>Row 2 header</TH>
+                <TD>C2R1</TD>
+                <TD>C2R2</TD>
+            </TR>
+        </TABLE>
+		</div>
+
+		<script src="../testrunner.js"></script>
+	</body>
+</html>

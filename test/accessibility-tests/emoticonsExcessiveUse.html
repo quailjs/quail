@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+	<title>emoticonsExcessiveUse</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="emoticonsExcessiveUse">
+
+		<div id="quail-scope">
+			<p>Just a regular paragraph.</p>
+			<p class="quail-failed-element">I am feeling :) :( B) :/ :P :o</p>
+		</div>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="emoticonsExcessiveUse">
+
+		<div id="quail-scope">
+			<p>Just a regular paragraph.</p>
+		</div>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

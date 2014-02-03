@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+	<title>headerH4</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="headerH4">
+
+		<h4>The First Heading</h4>
+
+		<h6 class="quail-failed-element">The Second Heading</h6>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="headerH4">
+
+		<h4>The First Heading</h4>
+		<p>The first paragraph</p>
+
+		<h2>The Second Heading</h2>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="headerH4">
+
+		<h5>The First Heading</h5>
+		<p>The first paragraph</p>
+
+		<h6>The Second Heading</h6>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

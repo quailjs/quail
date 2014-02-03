@@ -402,7 +402,7 @@ appletsDoNotFlicker:
     - "content"
   options:
     selector: "applet"
-appletsDoneUseColorAlone:
+appletsDonotUseColorAlone:
   type: "selector"
   testability: 0
   title:

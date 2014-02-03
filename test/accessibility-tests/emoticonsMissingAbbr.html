@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<title>emoticonsMissingAbbr</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="emoticonsMissingAbbr">
+
+		<div id="quail-scope">
+			<p>Just a regular paragraph.</p>
+			<p class="quail-failed-element">I feel :)</p>
+		</div>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="emoticonsMissingAbbr">
+
+		<div id="quail-scope">
+			<p>Just a regular paragraph.</p>
+			<p>
+				I feel <abbr title="happy">:)</abbr>
+			</p>
+		</div>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

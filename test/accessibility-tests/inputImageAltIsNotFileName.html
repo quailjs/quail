@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<title>inputImageAltIsNotFileName</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="inputImageAltIsNotFileName">
+		<form>
+			<label for="name">Name</label>:
+			<br/>
+			<br/>
+			<input type="image" name="name" id="name" src="resources/name.jpg" alt="resources/name.jpg" class="quail-failed-element"/>
+		</form>
+	</div>
+
+	<div class="quail-test" data-expected="pass" data-accessibility-test="inputImageAltIsNotFileName">
+		<form>
+			<label for="name">Name</label>:
+			<br/>
+			<br/>
+			<input type="image" name="name" id="name" src="resources/input.jpg" alt="input name">
+		</form>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

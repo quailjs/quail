@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<title>formHasSubmitButton</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="formHasSubmitButton">
+
+		<p>This form is missing a submit button:</p>
+		<form class="quail-failed-element">
+			<label for="search">Search</label>
+			<input type="search" id="search">
+			<button type="reset">Search</button>
+		</form>
+	</div>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="formHasSubmitButton">
+
+		<p>This form is missing a submit button:</p>
+		<form class="quail-failed-element">
+			<label for="search">Search</label>
+			<input type="search" id="search"></form>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="formHasSubmitButton">
+
+		<p>This form has a submit button:</p>
+		<form>
+			<label for="search">Search</label>
+			<input type="search" id="search">
+			<button type="submit">Search</button>
+		</form>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="formHasSubmitButton">
+
+		<p>This form has a submit button:</p>
+		<form>
+			<label for="search">Search</label>
+			<input type="search" id="search">
+			<input type="submit" value="Search"/>
+		</form>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

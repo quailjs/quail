@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <title>radioMarkedWithFieldgroupAndLegend</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="radioMarkedWithFieldgroupAndLegend">
+
+        <form action="http://example.com/donut" method="post">
+            <p>
+                <input type="radio" name="flavour" id="choc" value="chocolate" checked="checked"
+                class="quail-failed-element"/>
+                <label for="choc">Chocolate</label>
+                <br/>
+                <input type="radio" name="flavour" id="cream" value="cream" class="quail-failed-element"/>
+                <label for="cream">Cream Filled</label>
+                <br/>
+                <input type="radio" name="flavour" id="honey" value="honey" class="quail-failed-element"/>
+                <label for="honey">Honey Glazed</label>
+                <br/>
+                <input type="submit" value="Purchase Donut" />
+            </p>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="radioMarkedWithFieldgroupAndLegend">
+
+        <form action="http://example.com/adduser" method="post">
+            <fieldset>
+                <label for="firstname">First name:</label>
+                <input type="text" id="firstname" tabindex="1" />
+                <label for="lastname">Last name:</label>
+                <input type="text" id="lastname" tabindex="2" />
+            </fieldset>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="radioMarkedWithFieldgroupAndLegend">
+
+        <form action="http://example.com/adduser" method="post">
+            <legend>Personal information</legend>
+            <label for="firstname">First name:</label>
+            <input type="text" id="firstname" tabindex="1" />
+            <label for="lastname">Last name:</label>
+            <input type="text" id="lastname" tabindex="2" />
+        </form>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="radioMarkedWithFieldgroupAndLegend">
+
+        <form action="http://example.com/donut" method="post">
+            <fieldset>
+                <legend>Donut Type</legend>
+                <p>
+                    <input type="radio" name="flavour" id="choc" value="chocolate" checked="checked"
+                    />
+                    <label for="choc">Chocolate</label>
+                    <br/>
+                    <input type="radio" name="flavour" id="cream" value="cream" />
+                    <label for="cream">Cream Filled</label>
+                    <br/>
+                    <input type="radio" name="flavour" id="honey" value="honey" />
+                    <label for="honey">Honey Glazed</label>
+                </p>
+            </fieldset>
+            <p>
+                <input type="submit" value="Purchase Donut" />
+            </p>
+        </form>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

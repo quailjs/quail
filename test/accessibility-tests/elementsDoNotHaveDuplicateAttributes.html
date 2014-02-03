@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <title>elementsDoNotHaveDuplicateAttributes</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="elementsDoNotHaveDuplicateAttributes">
+
+        <div id="quail-scope">
+            <p class="test quail-failed-element" class="another">This paragraph has a class.</p>
+            <h2 id="anothertest">This heading has an ID.</h2>
+        </div>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="elementsDoNotHaveDuplicateAttributes">
+
+        <div id="quail-scope">
+            <p class="test">This paragraph has a class.</p>
+            <h2 id="anothertest">This heading has an ID.</h2>
+        </div>
+        <a class="quail-failed-element" href="one.html" href="two.html">This link fails, but it is not within #quail-scope.</a>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="elementsDoNotHaveDuplicateAttributes">
+
+        <div id="quail-scope">
+            <p class="test">This paragraph has a class.</p>
+            <h2 id="anothertest">This heading has an ID.</h2>
+        </div>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<title>objectMustContainText</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="objectMustContainText">
+		<object classid="http://www.miamachina.it/analogclock.py" title="a clock object" class="quail-failed-element">
+			<img src="resources/clock.png" />
+		</object>
+	</div>
+
+	<div class="quail-test" data-expected="fail" data-accessibility-test="objectMustContainText">
+		<object classid="http://www.miamachina.it/analogclock.py" title="a clock object" class="quail-failed-element">
+		</object>
+	</div>
+
+	<div class="quail-test" data-expected="pass" data-accessibility-test="objectMustContainText">
+		<object classid="http://www.miamachina.it/analogclock.py" title="a clock object">
+			Here is some text that describes the object and its operation.
+		</object>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

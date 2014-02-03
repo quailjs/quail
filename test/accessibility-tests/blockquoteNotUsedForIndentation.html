@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+	<head>
+		<title>blockquoteNotUsedForIndentation</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="blockquoteNotUsedForIndentation">
+        <blockquote cite="John Steinbeck">Ideas are like rabbits. You get a couple and learn how to handle them, and pretty soon you have a dozen.</blockquote>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="blockquoteNotUsedForIndentation">
+		  <blockquote class="quail-failed-element">Ideas are like rabbits. You get a couple and learn how to handle them, and pretty soon you have a dozen.</blockquote>
+		</div>
+
+		<script src="../testrunner.js"></script>
+	</body>
+</html>

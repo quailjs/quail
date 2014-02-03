@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <title>imgNotReferredToByColorAlone</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="imgNotReferredToByColorAlone">
+        <h1>Clayton's Class</h1>
+
+        <p>
+            This is Clayton's class photo from 2004. Clayton is third from the left
+            wearing a red coat and no boots.
+        </p>
+        <p>
+            <img src="../assets/kids.jpg" alt="class photo showing 6 children" class="quail-failed-element"/>
+        </p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="imgNotReferredToByColorAlone">
+        <h1>Clayton's Class</h1>
+
+        <p>Clayton is shown below in the class photo from grade 3.</p>
+        <p>
+            <img src="../assets/kids.jpg" alt="class photo showing Clayton with red coat." class="quail-failed-element"
+            />
+        </p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="imgNotReferredToByColorAlone">
+        <h1>Clayton's Class</h1>
+
+        <p>
+            This is Clayton's class photo from 2004. Clayton is the one wearing a
+            red coat.
+        </p>
+        <p>
+            <img src="../assets/kids.jpg" alt="class photo showing 6 children" class="quail-failed-element" />
+        </p>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>
