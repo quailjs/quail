@@ -11,7 +11,7 @@ $.fn.quail = function(options) {
     quail.options.accessibilityTests = quailBuilderTests;
   }
   quail.run();
-  
+
   return this;
 };
 
@@ -21,17 +21,17 @@ $.expr[':'].quailCss = function(obj, index, meta, stack) {
 };
 
 var quail = {
-  
+
   options : { },
 
   components : { },
-  
+
   testabilityTranslation : {
 		0			: 'suggestion',
 		0.5		: 'moderate',
 		1			: 'severe'
   },
-  
+
   html : { },
 
   strings : { },
@@ -39,12 +39,12 @@ var quail = {
   accessibilityResults : { },
 
   accessibilityTests : { },
-  
+
   /**
    * A list of HTML elements that can contain actual text.
    */
   textSelector : ':not(:empty)',
-  
+
   /**
    * Suspect tags that would indicate a paragraph is being used as a header.
    * I know, font tag, I know. Don't get me started.
@@ -55,7 +55,7 @@ var quail = {
    * Suspect CSS styles that might indicate a paragarph tag is being used as a header.
    */
   suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
-  
+
   /**
    * Elements that can (naturally) recieve keyboard focus.
    */
@@ -126,7 +126,7 @@ var quail = {
     }
     return this.accessibilityTests[testName].guidelines[this.options.guidelineName].configuration;
   },
-  
+
   /**
    * Utility function called whenever a test fails.
    * If there is a callback for testFailed, then it
@@ -134,7 +134,7 @@ var quail = {
    */
   testFails : function(testName, $element, options) {
     options = options || {};
-    
+
     if(typeof quail.options.preFilter !== 'undefined') {
       if(quail.options.preFilter(testName, $element, options) === false) {
         return;
@@ -146,7 +146,7 @@ var quail = {
       var testability = (typeof quail.accessibilityTests[testName].testability !== 'undefined') ?
                      quail.accessibilityTests[testName].testability :
                      'unknown';
-      
+
       quail.options.testFailed({element  : $element,
                              selector    : quail.defineUniqueSelector($element.length && $element[0] || null),
                              location    : window && window.location || null,
@@ -281,7 +281,7 @@ var quail = {
   validURL : function(url) {
     return (url.search(' ') === -1) ? true : false;
   },
-  
+
   cleanString : function(string) {
     return string.toLowerCase().replace(/^\s\s*/, '');
   },
