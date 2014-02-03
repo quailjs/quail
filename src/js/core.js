@@ -20,6 +20,69 @@ $.expr[':'].quailCss = function(obj, index, meta, stack) {
   return $(obj).css(args[0]).search(args[1]) > -1;
 };
 
+/**
+ * Assembles data about the test and invokes appropriate callbacks.
+ *
+ * @param string type
+ *   Possible values: 'na', 'pass', 'fail'
+ * @param string testName
+ *   The name of the test.
+ * @param jQuery $element
+ *   The DOM element, wrapped in jQuery, that the test was run against.
+ * @param object options
+ */
+function _processTestResult (type, testName, $element, options) {
+  var test = quail.accessibilityTests[testName];
+  var result = quail.accessibilityResults[testName];
+  options = options || {};
+
+  function isCallable (func) {
+    return typeof func === 'function' || typeof func === 'object';
+  }
+
+  if(typeof quail.options.preFilter !== 'undefined') {
+    if(quail.options.preFilter(testName, $element, options) === false) {
+      return;
+    }
+  }
+  var testability = (typeof test.testability !== 'undefined') ? test.testability : 'unknown';
+  var info = {
+    element     : $element,
+    selector    : quail.defineUniqueSelector($element.length && $element[0] || null),
+    location    : window && window.location || null,
+    testName    : testName,
+    test        : quail.accessibilityTests[testName],
+    testability : testability,
+    severity    : quail.testabilityTranslation[testability],
+    options     : options
+  };
+
+  // Invoke test listeners;
+  switch (type) {
+    case 'na':
+      result.status = 'na';
+      if (isCallable(quail.options.testNotApplicable)) {
+        quail.options.testNotApplicable(info);
+      }
+      break;
+    case 'fail':
+      // @todo, this currently stores just the failures. We need to pass all
+      // results.
+      result.elements.push($element);
+      result.status = 'fail';
+      if (isCallable(quail.options.testFailed)) {
+        quail.options.testFailed(info);
+      }
+      break;
+    case 'pass':
+      result.status = 'pass';
+      if (isCallable(quail.options.testPassed)) {
+        quail.options.testPassed(info);
+      }
+      break;
+  }
+}
+
 var quail = {
 
   options : { },
@@ -131,32 +194,11 @@ var quail = {
    * Utility function called whenever a test fails.
    * If there is a callback for testFailed, then it
    * packages the object and calls it.
+   *
+   * @deprecated
    */
   testFails : function(testName, $element, options) {
-    options = options || {};
-
-    if(typeof quail.options.preFilter !== 'undefined') {
-      if(quail.options.preFilter(testName, $element, options) === false) {
-        return;
-      }
-    }
-
-    quail.accessibilityResults[testName].elements.push($element);
-    if(typeof quail.options.testFailed !== 'undefined') {
-      var testability = (typeof quail.accessibilityTests[testName].testability !== 'undefined') ?
-                     quail.accessibilityTests[testName].testability :
-                     'unknown';
-
-      quail.options.testFailed({element  : $element,
-                             selector    : quail.defineUniqueSelector($element.length && $element[0] || null),
-                             location    : window && window.location || null,
-                             testName    : testName,
-                             test        : quail.accessibilityTests[testName],
-                             testability : testability,
-                             severity    : quail.testabilityTranslation[testability],
-                             options     : options
-                             });
-    }
+    _processTestResult('fail', testName, $element, options);
   },
 
   /**
@@ -179,9 +221,29 @@ var quail = {
       };
 
       if(testType === 'selector') {
-        quail.html.find(options.selector).each(function() {
-          quail.testFails(testName, $(this));
-        });
+        // If options.filter is defined, then options.selector is collecting
+        // a set of candidate elements; it is not simply a selector to find
+        // elements that fail the test.
+        if (options.filter) {
+          var candidates = quail.html.find(options.selector);
+          // Not applicable.
+          if (!candidates.length) {
+            _processTestResult('na', testName, $(this));
+          }
+          // Passes.
+          candidates.not(options.filter).each(function () {
+            _processTestResult('pass', testName, $(this));
+          });
+          // Fails.
+          candidates.filter(options.filter).each(function () {
+            _processTestResult('fail', testName, $(this));
+          });
+        }
+        else {
+          quail.html.find(options.selector).each(function() {
+            _processTestResult('fail', testName, $(this));
+          });
+        }
       }
       if(testType === 'custom') {
         if(typeof test.callback === 'object' || typeof test.callback === 'function') {

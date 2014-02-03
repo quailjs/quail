@@ -45,6 +45,17 @@ var quailTest = {
     });
   },
 
+  /**
+   * Compares the status of the test result to the resultType argument.
+   *
+   * @param string resultType
+   *   Possible values include: 'na', 'fail', 'pass'
+   * @return boolean
+   */
+  confirmStatus: function (resultType) {
+    return quailTest.results[quailTest.testName].status === 'pass';
+  },
+
   confirmIsEmpty : function() {
     $.each(quailTest.results[quailTest.testName].elements, function(index, item) {
       if(typeof item === 'undefined' ||

@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
-    
+
     <head>
         <title>imgHasAlt-pass</title>
         <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
         media="screen">
     </head>
-    
+
     <body>
         <p>
             <img src="resources/rex.jpg" alt="A black and brown cat named Rex." />
@@ -18,7 +18,7 @@
         <script>
             test('imgHasAlt', function() {
                 quailTest.runTest('imgHasAlt');
-                equal(true, quailTest.confirmIsEmpty(), 'Item is empty');
+                equal(true, quailTest.confirmStatus('pass'), 'Image has an alt attribute');
               });
         </script>
     </body>
