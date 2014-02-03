@@ -167,38 +167,38 @@ var quail = {
   */
   runTests : function() {
     $.each(quail.options.guideline, function(index, testName) {
-      if(typeof quail.accessibilityTests[testName] === 'undefined') {
+      var test = quail.accessibilityTests[testName];
+      if(!test) {
         return;
       }
-      var testType = quail.accessibilityTests[testName].type;
-      if(typeof quail.accessibilityTests[testName].options === 'undefined') {
-        quail.accessibilityTests[testName].options = { };
-      }
-      if(typeof quail.accessibilityResults[testName] === 'undefined') {
-        quail.accessibilityResults[testName] = { test : quail.accessibilityTests[testName], elements : [ ]};
-      }
+      var testType = test.type;
+      var options = test.options || {};
+      quail.accessibilityResults[testName] = quail.accessibilityResults[testName] || {
+        test: test,
+        elements : []
+      };
+
       if(testType === 'selector') {
-        quail.html.find(quail.accessibilityTests[testName].options.selector).each(function() {
+        quail.html.find(options.selector).each(function() {
           quail.testFails(testName, $(this));
         });
       }
       if(testType === 'custom') {
-        if(typeof quail.accessibilityTests[testName].callback === 'object' ||
-           typeof quail.accessibilityTests[testName].callback === 'function') {
-          quail.accessibilityTests[testName].callback(quail);
+        if(typeof test.callback === 'object' || typeof test.callback === 'function') {
+          test.callback(quail);
         }
         else {
-          if(typeof quail[quail.accessibilityTests[testName].callback] !== 'undefined') {
-            quail[quail.accessibilityTests[testName].callback]();
+          if(typeof quail[test.callback] !== 'undefined') {
+            quail[test.callback]();
           }
         }
       }
       if(typeof quail.components[testType] !== 'undefined') {
-        quail.components[testType](testName, quail.accessibilityTests[testName]);
+        quail.components[testType](testName, test);
       }
     });
   },
-  
+
   /**
    * Helper function to determine if a string of text is even readable.
    * @todo - This will be added to in the future... we should also include
