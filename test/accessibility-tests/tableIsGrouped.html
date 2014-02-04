@@ -1,12 +1,11 @@
 <!doctype html>
 <html>
-	<head>
-		<title>tableIsGrouped</title>
-	</head>
-	<body>
-		<div class="quail-test" data-expected="fail" data-accessibility-test="tableIsGrouped">
-
-<table border="1" summary="cups of coffee consumed by city politicians">
+<head>
+    <title>tableIsGrouped</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="tableIsGrouped">
+        <table border="1" summary="cups of coffee consumed by city politicians" class="quail-failed-element">
             <tr>
                 <th>name</th>
                 <th>number of cups</th>
@@ -44,10 +43,10 @@
                 <td>no sugar</td>
             </tr>
         </table>
-		</div>
-		<div class="quail-test" data-expected="pass" data-accessibility-test="tableIsGrouped">
+    </div>
 
-<table border="1" summary="cups of coffee consumed by city politicians">
+    <div class="quail-test" data-expected="pass" data-accessibility-test="tableIsGrouped">
+        <table border="1" summary="cups of coffee consumed by city politicians">
             <thead>
                 <tr>
                     <th>name</th>
@@ -89,8 +88,8 @@
                 </tr>
             </tbody>
         </table>
-		</div>
+    </div>
 
-		<script src="../testrunner.js"></script>
-	</body>
+    <script src="../testrunner.js"></script>
+</body>
 </html>

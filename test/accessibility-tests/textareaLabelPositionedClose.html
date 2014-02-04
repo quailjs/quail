@@ -1,12 +1,11 @@
 <!doctype html>
 <html>
-	<head>
-		<title>textareaLabelPositionedClose</title>
-	</head>
-	<body>
-		<div class="quail-test" data-expected="fail" data-accessibility-test="textareaLabelPositionedClose">
-
-<form action="http://www.example.com" method="post">
+<head>
+    <title>textareaLabelPositionedClose</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="textareaLabelPositionedClose">
+        <form action="http://www.example.com" method="post">
             <table width="100%">
                 <tr>
                     <td>first name:</td>
@@ -25,7 +24,7 @@
                         <label for="test">comment:</label>
                     </td>
                     <td align="right">
-                        <textarea rows="3" cols="20" id="test"></textarea>
+                        <textarea rows="3" cols="20" id="test" class="quail-failed-element"></textarea>
                     </td>
                 </tr>
                 <tr>
@@ -35,10 +34,10 @@
                 </tr>
             </table>
         </form>
-		</div>
-		<div class="quail-test" data-expected="pass" data-accessibility-test="textareaLabelPositionedClose">
+    </div>
 
-<form action="http://www.example.com" method="post">
+    <div class="quail-test" data-expected="pass" data-accessibility-test="textareaLabelPositionedClose">
+        <form action="http://www.example.com" method="post">
             <table>
                 <tr>
                     <td>first name:</td>
@@ -66,8 +65,8 @@
                 </tr>
             </table>
         </form>
-		</div>
+    </div>
 
-		<script src="../testrunner.js"></script>
-	</body>
+    <script src="../testrunner.js"></script>
+</body>
 </html>

@@ -1,41 +1,41 @@
 <!doctype html>
 <html>
-	<head>
-		<title>tableComplexHasSummary</title>
-	</head>
-	<body>
-		<div class="quail-test" data-expected="fail" data-accessibility-test="tableComplexHasSummary">
+<head>
+    <title>tableComplexHasSummary</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="tableComplexHasSummary">
 
-<table border="1">
+        <table border="1" class="quail-failed-element">
             <tr>
                 <th scope="col">State &amp; First</th>
                 <th scope="col">State &amp; Sixth</th>
                 <th scope="col">State &amp; Fifteenth</th>
                 <th scope="col">Fifteenth &amp; Morrison</th>
             </tr>
+            <tr>
+                <td>4:00</td>
+                <td>4:05</td>
+                <td>4:11</td>
+                <td>4:19</td>
             </tr>
-            <td>4:00</td>
-            <td>4:05</td>
-            <td>4:11</td>
-            <td>4:19</td>
+            <tr>
+                <td>5:00</td>
+                <td>5:05</td>
+                <td>5:11</td>
+                <td>5:19</td>
             </tr>
-            </tr>
-            <td>5:00</td>
-            <td>5:05</td>
-            <td>5:11</td>
-            <td>5:19</td>
-            </tr>
-            </tr>
-            <td>6:00</td>
-            <td>6:05</td>
-            <td>6:11</td>
-            <td>6:19</td>
+            <tr>
+                <td>6:00</td>
+                <td>6:05</td>
+                <td>6:11</td>
+                <td>6:19</td>
             </tr>
         </table>
-		</div>
-		<div class="quail-test" data-expected="pass" data-accessibility-test="tableComplexHasSummary">
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="tableComplexHasSummary">
 
-<table border="1">
+        <table border="1">
             <caption>Manager Work Days</caption>
             <tr>
                 <th>Day</th>
@@ -62,8 +62,8 @@
                 <td>Piere</td>
             </tr>
         </table>
-		</div>
+    </div>
 
-		<script src="../testrunner.js"></script>
-	</body>
+    <script src="../testrunner.js"></script>
+</body>
 </html>

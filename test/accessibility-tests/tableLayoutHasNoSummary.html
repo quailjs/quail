@@ -1,12 +1,11 @@
 <!doctype html>
 <html>
-	<head>
-		<title>tableLayoutHasNoSummary</title>
-	</head>
-	<body>
-		<div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutHasNoSummary">
-
-<table border="0" cellpadding="5" summary="OMG table for layout">
+<head>
+    <title>tableLayoutHasNoSummary</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutHasNoSummary">
+        <table border="0" cellpadding="5" summary="OMG table for layout" class="quail-failed-element">
             <tr>
                 <td>This would be a sidebar.</td>
                 <td>
@@ -24,13 +23,12 @@
                 <td>This is another footer.</td>
             </tr>
         </table>
-		</div>
-		<div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutHasNoSummary">
+    </div>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutHasNoSummary">
 
-<table border="0" cellpadding="5" summary="OMG table for layout">
+        <table border="0" cellpadding="5" summary="OMG table for layout" class="quail-failed-element">
             <tr>
                 <td rowspan="3">This would be a sidebar.</td>
-                </td>
             </tr>
             <tr>
                 <td></td>
@@ -41,18 +39,21 @@
                 <td>This is another footer.</td>
             </tr>
         </table>
-		</div>
-		<div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutHasNoSummary">
+    </div>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutHasNoSummary">
 
-<table border="0" cellpadding="5" summary="this table is used to create 2 columns of text">
+        <table border="0" cellpadding="5" summary="this table is used to create 2 columns of text" class="quail-failed-element">
             <tr>
-                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                <td>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                <td>But I must explain to you how all this mistaken idea of denouncing pleasure
+                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </td>
+                <td>
+                    But I must explain to you how all this mistaken idea of denouncing pleasure
                     and praising pain was born and I will give you a complete account of the
                     system, and expound the actual teachings of the great explorer of the truth,
                     the master-builder of human happiness. No one rejects, dislikes, or avoids
@@ -64,21 +65,25 @@
                     a trivial example, which of us ever undertakes laborious physical exercise,
                     except to obtain some advantage from it? But who has any right to find
                     fault with a man who chooses to enjoy a pleasure that has no annoying consequences,
-                    or one who avoids a pain that produces no resultant pleasure.</td>
+                    or one who avoids a pain that produces no resultant pleasure.
+                </td>
             </tr>
         </table>
-		</div>
-		<div class="quail-test" data-expected="pass" data-accessibility-test="tableLayoutHasNoSummary">
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="tableLayoutHasNoSummary">
 
-<table border="0" cellpadding="5">
+        <table border="0" cellpadding="5">
             <tr>
-                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                <td>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                <td>But I must explain to you how all this mistaken idea of denouncing pleasure
+                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </td>
+                <td>
+                    But I must explain to you how all this mistaken idea of denouncing pleasure
                     and praising pain was born and I will give you a complete account of the
                     system, and expound the actual teachings of the great explorer of the truth,
                     the master-builder of human happiness. No one rejects, dislikes, or avoids
@@ -90,21 +95,25 @@
                     a trivial example, which of us ever undertakes laborious physical exercise,
                     except to obtain some advantage from it? But who has any right to find
                     fault with a man who chooses to enjoy a pleasure that has no annoying consequences,
-                    or one who avoids a pain that produces no resultant pleasure.</td>
+                    or one who avoids a pain that produces no resultant pleasure.
+                </td>
             </tr>
         </table>
-		</div>
-		<div class="quail-test" data-expected="pass" data-accessibility-test="tableLayoutHasNoSummary">
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="tableLayoutHasNoSummary">
 
-<table border="0" cellpadding="5" summary="">
+        <table border="0" cellpadding="5" summary="">
             <tr>
-                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                <td>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                <td>But I must explain to you how all this mistaken idea of denouncing pleasure
+                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </td>
+                <td>
+                    But I must explain to you how all this mistaken idea of denouncing pleasure
                     and praising pain was born and I will give you a complete account of the
                     system, and expound the actual teachings of the great explorer of the truth,
                     the master-builder of human happiness. No one rejects, dislikes, or avoids
@@ -116,11 +125,12 @@
                     a trivial example, which of us ever undertakes laborious physical exercise,
                     except to obtain some advantage from it? But who has any right to find
                     fault with a man who chooses to enjoy a pleasure that has no annoying consequences,
-                    or one who avoids a pain that produces no resultant pleasure.</td>
+                    or one who avoids a pain that produces no resultant pleasure.
+                </td>
             </tr>
         </table>
-		</div>
+    </div>
 
-		<script src="../testrunner.js"></script>
-	</body>
+    <script src="../testrunner.js"></script>
+</body>
 </html>

@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
-	<head>
-		<title>tableWithMoreHeadersUseID</title>
-	</head>
-	<body>
-		<div class="quail-test" data-expected="fail" data-accessibility-test="tableWithMoreHeadersUseID">
+<head>
+    <title>tableWithMoreHeadersUseID</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="tableWithMoreHeadersUseID">
 
-<table border="1">
+        <table border="1" class="quail-failed-element">
             <tr>
                 <th>Class</th>
                 <th>Teacher</th>
@@ -41,10 +41,10 @@
                 <td>9</td>
             </tr>
         </table>
-		</div>
-		<div class="quail-test" data-expected="pass" data-accessibility-test="tableWithMoreHeadersUseID">
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="tableWithMoreHeadersUseID">
 
-<table border="1">
+        <table border="1">
             <tr>
                 <th id="class">Class</th>
                 <th id="teacher">Teacher</th>
@@ -79,8 +79,8 @@
                 <td headers="secondyear Forsyth females">9</td>
             </tr>
         </table>
-		</div>
+    </div>
 
-		<script src="../testrunner.js"></script>
-	</body>
+    <script src="../testrunner.js"></script>
+</body>
 </html>

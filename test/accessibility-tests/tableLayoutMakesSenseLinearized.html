@@ -1,12 +1,11 @@
 <!doctype html>
 <html>
-	<head>
-		<title>tableLayoutMakesSenseLinearized</title>
-	</head>
-	<body>
-		<div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutMakesSenseLinearized">
-
-<table>
+<head>
+    <title>tableLayoutMakesSenseLinearized</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutMakesSenseLinearized">
+        <table class="quail-failed-element">
             <tr>
                 <td>
                     <img src="resources/logo.png" alt="XYZ mountaineering" />
@@ -17,10 +16,10 @@
                 <td colspan="2">XYZ gets you to the</td>
             </tr>
         </table>
-		</div>
-		<div class="quail-test" data-expected="pass" data-accessibility-test="tableLayoutMakesSenseLinearized">
-
-<table>
+    </div>
+    
+    <div class="quail-test" data-expected="pass" data-accessibility-test="tableLayoutMakesSenseLinearized">
+        <table>
             <tr>
                 <td colspan="2">
                     <img src="resources/logo.png" alt="XYZ mountaineering" />
@@ -31,8 +30,8 @@
                 <td>top!</td>
             </tr>
         </table>
-		</div>
+    </div>
 
-		<script src="../testrunner.js"></script>
-	</body>
+    <script src="../testrunner.js"></script>
+</body>
 </html>

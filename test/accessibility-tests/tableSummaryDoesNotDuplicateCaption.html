@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
-	<head>
-		<title>tableUsesCaption</title>
-	</head>
-	<body>
-		<div class="quail-test" data-expected="fail" data-accessibility-test="tableUsesCaption">
-
-<table border="1">
+<head>
+    <title>tableSummaryDoesNotDuplicateCaption</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="tableSummaryDoesNotDuplicateCaption">
+        <table border="1" summary="cups of coffee consumed by each senator"  class="quail-failed-element">
+            <caption>Cups of coffee consumed by each senator</caption>
             <tr>
                 <th>name</th>
                 <th>number of cups</th>
@@ -44,11 +44,11 @@
                 <td>no sugar</td>
             </tr>
         </table>
-		</div>
-		<div class="quail-test" data-expected="pass" data-accessibility-test="tableUsesCaption">
-
-<table border="1">
-            <caption>Coffee Consumed By Senators</caption>
+    </div>
+    
+    <div class="quail-test" data-expected="pass" data-accessibility-test="tableSummaryDoesNotDuplicateCaption">
+        <table border="1" summary="This table shows the number of cups of coffee consumed by each senator, the type of coffee (decaf or regular), and whether taken with sugar.">
+            <caption>Cups of coffee consumed by each senator</caption>
             <tr>
                 <th>name</th>
                 <th>number of cups</th>
@@ -86,8 +86,8 @@
                 <td>no sugar</td>
             </tr>
         </table>
-		</div>
+    </div>
 
-		<script src="../testrunner.js"></script>
-	</body>
+    <script src="../testrunner.js"></script>
+</body>
 </html>
