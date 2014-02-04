@@ -2132,7 +2132,8 @@ imgHasAlt:
     - "image"
     - "content"
   options:
-    selector: "img:not(img[alt])"
+    selector: "img"
+    filter: ":not(img[alt])"
 imgHasLongDesc:
   type: "custom"
   testability: 1
