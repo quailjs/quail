@@ -57,7 +57,7 @@ quail.components.htmlSource = {
       }
     }
 
-    if(childNumber) {
+    if(childNumber && (typeof element.attributes === 'undefined' || typeof element.attributes.id === 'undefined')) {
       selector += ':nth-child('+ childNumber + ')';
     }
     element.selector.push(selector);
