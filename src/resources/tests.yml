@@ -92,6 +92,10 @@ aLinksDontOpenNewWindow:
 aLinksNotSeparatedBySymbols:
   type: "custom"
   testability: 1
+  title:
+    en: "Links should not be separated by symbols alone"
+  description:
+    en: "Since symbols are either not read, or can be confusing when using a screen reader, do not separate links with un-readable symbols."
   guidelines: []
   tags:
     - "link"
