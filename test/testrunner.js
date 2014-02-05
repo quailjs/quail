@@ -1,3 +1,4 @@
+/*global console:true*/
 (function(global) {
 
 	var testRunner = {
@@ -113,6 +114,9 @@
           accessibilityTests : that.accessibilityTests,
           reset: true,
           complete: function(event) {
+	          if(window.location.href.search(/\?debug/) > -1) {
+	          	console.log(event);
+	          }
 	          test(testTitle +  thisTest.title, function() {
 	          	label = (thisTest.expectedPass) ? 'pass' : 'fail';
 	        		$that.addClass(label)
@@ -121,12 +125,24 @@
 	        			ok(event.results[thisTest.accessibilityTest].elements.length === 0, 'No elements failed test');
 	        		}
 	        		else {
-	        			expected = $that.find('.quail-failed-element').length;
-	        			if($that.data('self-fail')) {
+	        			if($that.hasClass('self-fail')) {
 	        				ok(event.results[thisTest.accessibilityTest].elements.length > 0, 'Self testing element failed (document-wide test)');
 	        			}
 	        			else {
-		        			ok(event.results[thisTest.accessibilityTest].elements.length === expected, expected + ' element(s) failed');	        				        				
+	        				$that.find('.quail-failed-element').each(function() {
+		        				var found = this;
+		        				expected = false;
+		        				$.each(event.results[thisTest.accessibilityTest].elements, function(index, $element) {
+		        					if($element.get(0) === found) {
+		        						expected = true;
+		        						$(found).addClass('found');
+		        					}
+		        				});
+		        				if(!expected) {
+		        					ok(false, 'Element not found:' + $('<div>').append($(found).clone().empty()).html());
+		        				}
+		        			});
+			        		ok($that.find('.quail-failed-element').length === $that.find('.quail-failed-element.found').length, $that.find('.quail-failed-element').length + ' element(s) failed');	        				        				
 	        			}
 	        		}
 	        	});

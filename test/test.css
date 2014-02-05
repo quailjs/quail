@@ -15,10 +15,15 @@
 	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-.quail-test.fail {
+.quail-test.fail, .quail-failed-element.found {
 	border-color: #ee5757;
 }
 
 .quail-test.fail .test-label {
 	color: #ee5757;
+}
+
+.quail-failed-element.found {
+	border-width: 2px;
+	border-style: dashed;
 }
