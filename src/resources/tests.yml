@@ -3749,7 +3749,7 @@ skipToContentLinkProvided:
   title:
     en: "A \"skip to content\" link should exist as one of the first links on the page"
   description:
-    en: "A link reading \"skip to content"
+    en: "A link reading \"skip to content\" should be the first link on a page."
   guidelines:
     508:
       - "o"
