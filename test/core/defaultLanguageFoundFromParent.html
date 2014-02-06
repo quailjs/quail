@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <title>Document language can be found from parent</title>
+  <link rel="stylesheet" href="../../../lib/qunit/qunit/qunit.css"
+        media="screen"></head>
+
+<body>
+  <div class="no-language">
+    <p>
+      This has no language, fallback to the browser. Really bad idea.
+    </p>
+  </div>
+  <div class="current-element" lang="ar-test-1">
+    <p>I am some odd language code.</p>
+  </div>
+  <div class="parent-with-language" lang="ar-test-2">
+    <div>
+      <p class="parent-element">
+        This is a paragraph with no language, find the language from an <strong>ancestor or parent</strong>
+        .
+      </p>
+    </div>
+  </div>
+  <script src="../testrunner.js"></script>
+  <script id="qunit-script">
+    (function(global) {
+      global.quailTest = function() {
+        var custom = {
+          findParentLanguage : {
+            type: 'custom',
+            components: [ 'language' ],
+            callback: function(quail) {
+              test('Default langauge found in parent element', function() {
+                equal(quail.components.language.getDocumentLanguage(), 'ar-test-2', 'Test language code found');
+              });
+            }
+          }
+        };
+        
+        $('.parent-element').quail({ jsonPath : '../../../dist',
+          guideline : [ 'findParentLanguage' ],
+          reset : true,
+          customTests : custom
+        });
+      };
+    })(this);
+  </script>
+</body>
+
+</html>

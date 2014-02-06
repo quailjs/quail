@@ -16,17 +16,17 @@
 
         <form action="http://www.test.com/testing" method="post">
             <p>
-                <input title="student file:" type="file" id="thefile" name="data" tabindex="1" class="quail-failed-element" />
+                <input title="student file:" type="file" id="thefile" name="data" tabindex="1" class="quail-failed-element"/>
             </p>
         </form>
     </div>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="fileHasLabel">
+    <div class="quail-test" data-expected="pass" data-accessibility-test="fileHasLabel">
 
         <form action="http://www.test.com/testing" method="post">
             <p>
                 <label>
                     student file:
-                    <input type="file" id="thefile" name="data" tabindex="1" class="quail-failed-element"/>
+                    <input type="file" id="thefile" name="data" tabindex="1"/>
                 </label>
             </p>
         </form>

@@ -8,7 +8,7 @@
         <table class="quail-failed-element">
             <tr>
                 <td>
-                    <img src="resources/logo.png" alt="XYZ mountaineering" />
+                    <img src="../assets/logo.png" alt="XYZ mountaineering" />
                 </td>
                 <td>top!</td>
             </tr>
@@ -20,15 +20,30 @@
     
     <div class="quail-test" data-expected="pass" data-accessibility-test="tableLayoutMakesSenseLinearized">
         <table>
-            <tr>
-                <td colspan="2">
-                    <img src="resources/logo.png" alt="XYZ mountaineering" />
-                </td>
-            </tr>
-            <tr>
-                <td>XYZ gets you to the</td>
-                <td>top!</td>
-            </tr>
+            <thead>
+                <tr>
+                    <td>Column A</td>
+                    <td>Column B</td>
+                    <td>Column C</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Row a</td>
+                    <td>Row b</td>
+                    <td>Row c</td>
+                </tr>
+                <tr>
+                    <td>Row a</td>
+                    <td>Row b</td>
+                    <td>Row c</td>
+                </tr>
+                <tr>
+                    <td>Row a</td>
+                    <td>Row b</td>
+                    <td>Row c</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 

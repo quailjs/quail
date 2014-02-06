@@ -7,14 +7,17 @@
 
   <link rel="stylesheet" href="../lib/qunit/qunit.css" media="screen">
 	<link rel="stylesheet" href="../lib/qunit-composite/qunit-composite.css">
-      <script src="../lib/jquery/jquery.js"></script>
+  <script src="../lib/jquery/jquery.js"></script>
 	<script src="../lib/qunit/qunit.js"></script>
 	<script src="../lib/qunit-composite/qunit-composite.js"></script>
 
 	<script>
             $(document).ready(function() {
-                  var tests = $.ajax({ url: 'testfiles.json', async: false, dataType: 'json' });
-                  QUnit.testSuites('Accessibility tests', tests.responseJSON);
+                  var accessibilityTests = $.ajax({ url: 'accessibility-tests/_tests.json', async: false, dataType: 'json' });
+                  var coreTests = $.ajax({ url: 'core/_tests.json', async: false, dataType: 'json' });
+
+                  QUnit.testSuites('Accessibility tests', accessibilityTests.responseJSON);
+                  QUnit.testSuites('Core quail tests', coreTests.responseJSON);
             });
 	</script>
 </head>

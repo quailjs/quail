@@ -15,7 +15,7 @@ $close = '
 ';
 
 $tests = array();
-foreach(glob('test/testfiles/common/*.html') as $file) {
+foreach(glob('test/testfiles/quail/*.html') as $file) {
 	$name = explode('/', $file);
 	$name = explode('-', array_pop($name));
 	$type = (strpos($file, '-pass')) ? 'pass' : 'fail';

@@ -29,16 +29,6 @@
             </p>
         </form>
     </div>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="radioHasLabel">
-        <form action="http://www.test.com/testing" method="post">
-            <p>
-                <label>
-                    birds
-                    <input type="radio" name="mytext" class="quail-failed-element"/>
-                </label>
-            </p>
-        </form>
-    </div>
 
     <div class="quail-test" data-expected="fail" data-accessibility-test="radioHasLabel">
         <form action="http://www.test.com/testing" method="post">
@@ -49,6 +39,17 @@
         </form>
     </div>
 
+    <div class="quail-test" data-expected="pass" data-accessibility-test="radioHasLabel">
+        <form action="http://www.test.com/testing" method="post">
+            <p>
+                <label>
+                    birds
+                    <input type="radio" name="mytext"/>
+                </label>
+            </p>
+        </form>
+    </div>
+    
     <div class="quail-test" data-expected="pass" data-accessibility-test="radioHasLabel">
         <form action="http://somesite.com/prog/adduser" method="post">
             <p>

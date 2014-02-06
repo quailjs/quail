@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>svgContainsTitle</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="svgContainsTitle">
+        <svg xmlns="http://www.w3.org/2000/svg"
+        version="1.1" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"
+        style="width:100%; height:100%; position:absolute; top:0; left:0; z-index:-1;" class="quail-failed-element">
+            <linearGradient id="gradient">
+                <stop class="begin" offset="0%" />
+                <stop class="end" offset="100%" />
+            </linearGradient>
+            <rect x="0" y="0" width="100" height="100" style="fill:url(#gradient)"
+            />
+            <circle cx="50" cy="50" r="30" style="fill:url(#gradient)" />
+        </svg>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="svgContainsTitle">
+        <svg xmlns="http://www.w3.org/2000/svg"
+        version="1.1" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice"
+        style="width:100%; height:100%; position:absolute; top:0; left:0; z-index:-1;">
+            <title>An example SVG file</title>
+            <linearGradient id="gradient">
+                <stop class="begin" offset="0%" />
+                <stop class="end" offset="100%" />
+            </linearGradient>
+            <rect x="0" y="0" width="100" height="100" style="fill:url(#gradient)"
+            />
+            <circle cx="50" cy="50" r="30" style="fill:url(#gradient)" />
+        </svg>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

@@ -1,25 +1,32 @@
 <!doctype html>
 <html>
 <head>
-	<title>liDontUseImageForBullet</title>
+  <title>liDontUseImageForBullet</title>
 </head>
 <body>
-	<div class="quail-test" data-expected="fail" data-accessibility-test="liDontUseImageForBullet">
-		<ul>
-			<li>
-				<img src="resources/bullet.gif" alt="" class="quail-failed-element">Item One</li>
-			<li>
-				<img src="resources/bullet.gif" alt="" class="quail-failed-element">Item Two</li>
-		</ul>
-	</div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="liDontUseImageForBullet">
+    <p>
+      <ul>
+        <li class="quail-failed-element">
+          <img src="bullet.png">This is item one</li>
+        <li class="quail-failed-element">
+          <img src="bullet.png">This is item two</li>
+        <li class="quail-failed-element">
+          <img src="bullet.png">This is item three</li>
+      </ul>
+    </p>
+  </div>
 
-	<div class="quail-test" data-expected="pass" data-accessibility-test="liDontUseImageForBullet">
-		<ul>
-			<li>Item One</li>
-			<li>Item Two</li>
-		</ul>
-	</div>
+  <div class="quail-test" data-expected="pass" data-accessibility-test="liDontUseImageForBullet">
+    <p>
+      <ul>
+        <li>This is item one</li>
+        <li>This is item two</li>
+        <li>This is item three</li>
+      </ul>
+    </p>
+  </div>
 
-	<script src="../testrunner.js"></script>
+  <script src="../testrunner.js"></script>
 </body>
 </html>

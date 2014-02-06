@@ -6,12 +6,12 @@
 <body>
     <div class="quail-test" data-expected="fail" data-accessibility-test="tableUsesAbbreviationForHeader">
 
-        <table border="1" summary="This simple data table demonstrates the use of summary" class="quail-failed-element">
+        <table border="1" summary="This simple data table demonstrates the use of summary" >
             <caption>A Test Table</caption>
             <tr>
                 <td></td>
-                <th>Col. 1 header really long text</th>
-                <th>Col. 2 header really long text</th>
+                <th class="quail-failed-element">Col. 1 header really long text</th>
+                <th class="quail-failed-element">Col. 2 header really long text</th>
             </tr>
             <tr>
                 <th>Row 1 header</th>

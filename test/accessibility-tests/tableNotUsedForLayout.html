@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <title>tableNotUsedForLayout</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="tableNotUsedForLayout">
+        <table class="quail-failed-element">
+            <tr>
+                <td>This is the content area of my table</td>
+                <td>This is a sidebar</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="tableNotUsedForLayout">
+        <table border="0" cellpadding="5" summary="Table being used for layout" class="quail-failed-element">
+            <tr>
+                <td>This would be a sidebar.</td>
+                <td>
+                    <table>
+                        <tr>
+                            <td>This is a content area given some border through a table.</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>This is a footer.</td>
+            </tr>
+            <tr>
+                <td>This is another footer.</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="tableNotUsedForLayout">
+        <table>
+            <thead>
+                <tr>
+                    <td>Head one</td>
+                    <td>Head two</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Item One</td>
+                    <td>Item two</td>
+                </tr>
+                <tr>
+                    <td>Item One</td>
+                    <td>Item two</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

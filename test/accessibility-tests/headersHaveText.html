@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <title>headersHaveText</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="headersHaveText">
+        <h1>This is a correct header</h1>
+
+        <p>
+            Intrinsicly actualize web-enabled users and cross functional growth strategies.
+                Monotonectally simplify B2B opportunities vis-a-vis top-line processes.
+        </p>
+        <h2 class="quail-failed-element"></h2>
+
+        <p>
+            Globally synergize ethical process improvements before go forward technology.
+                Synergistically seize backward-compatible quality vectors through magnetic
+                sources. Distinctively reintermediate virtual "outside the box" thinking
+                without market positioning supply chains.
+        </p>
+    </div>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="headersHaveText">
+
+        <h1>This is a correct header</h1>
+
+        <p>
+            Intrinsicly actualize web-enabled users and cross functional growth strategies.
+                Monotonectally simplify B2B opportunities vis-a-vis top-line processes.
+        </p>
+        <h2 class="quail-failed-element">
+            <img src="../assets/rex.jpg"></h2>
+
+        <p>
+            Globally synergize ethical process improvements before go forward technology.
+                Synergistically seize backward-compatible quality vectors through magnetic
+                sources. Distinctively reintermediate virtual "outside the box" thinking
+                without market positioning supply chains.
+        </p>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="headersHaveText">
+
+        <h1>This is a correct header</h1>
+
+        <p>
+            Intrinsicly actualize web-enabled users and cross functional growth strategies.
+                Monotonectally simplify B2B opportunities vis-a-vis top-line processes.
+        </p>
+        <h2>This header is also OK.</h2>
+
+        <p>
+            Globally synergize ethical process improvements before go forward technology.
+                Synergistically seize backward-compatible quality vectors through magnetic
+                sources. Distinctively reintermediate virtual "outside the box" thinking
+                without market positioning supply chains.
+        </p>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

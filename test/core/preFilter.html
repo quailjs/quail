@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title>Adding custom tests to QUAIL</title>
+</head>
+
+<body>
+  <div class="test-area">
+    <p>
+      This is an image
+      <img src="../assets/rex.jpg">.</p>
+  </div>
+  <script src="../testrunner.js"></script>
+  <script>
+    (function(global) {
+      global.quailTest = function() {
+        test('Test results can be filtered', function() {
+          var testResults = [];
+          $('.test-area').quail({ jsonPath : '../../dist',
+            guideline : [ 'imgHasAlt' ],
+            reset : true,
+            preFilter : function(testName, element) {
+
+            },
+            complete : function(results) {
+              testResults = results.results;
+            }});
+          equal(1, testResults.imgHasAlt.elements.length, 'Image was found.');
+        
+          $('.test-area').quail({ jsonPath : '../../dist',
+            guideline : [ 'imgHasAlt' ],
+            reset : true,
+            preFilter : function(testName, element) {
+              if(element.get(0).tagName == 'IMG') {
+                return false;
+              }
+            },
+            complete : function(results) {
+              testResults = results.results;
+            }});
+          equal(0, testResults.imgHasAlt.elements.length, 'Image was filtered out.');
+      });
+    };
+  })(this);
+  </script>
+</body>
+
+</html>

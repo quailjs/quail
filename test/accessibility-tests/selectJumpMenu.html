@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <title>selectJumpMenu</title>
+</head>
+<body>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="selectJumpMenu">
+    <form>
+      <select id="jumpie" name="jumpie" onchange="MM_jumpMenu('parent',this,1);" class="quail-failed-element">
+        <option value="home.html">Home</option>
+        <option value="rex.html">Rex</option>
+      </select>
+    </form>
+  </div>
+
+  <div class="quail-test" data-expected="pass" data-accessibility-test="selectJumpMenu">
+    <form>
+      <select id="jumpie" name="jumpie">
+        <option value="home.html">Home</option>
+        <option value="rex.html">Rex</option>
+      </select>
+      <input type="submit" value="go!"></form>
+  </div>
+
+  <script src="../testrunner.js"></script>
+</body>
+</html>

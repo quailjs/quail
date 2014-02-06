@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<title>videosEmbeddedOrLinkedNeedCaptions</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions">
+		<p>
+			Hey, check
+			<a href="http://www.youtube.com/watch?v=V1HSNV9y25A" class="quail-failed-element">Out this awesome video.</a>
+		</p>
+	</div>
+
+	<div class="quail-test" data-expected="pass" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions">
+		<p>
+			Hey, check
+			<a href="http://youtube.com/watch?v=zJOS0sV2a24">Out this awesome video.</a>
+		</p>
+		<p>
+			There's also
+			<a href="http://youtube.com/help">another link to throw you off.</a>
+		</p>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

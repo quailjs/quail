@@ -4,29 +4,21 @@
     <title>elementsDoNotHaveDuplicateAttributes</title>
 </head>
 <body>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="elementsDoNotHaveDuplicateAttributes">
-
-        <div id="quail-scope">
-            <p class="test quail-failed-element" class="another">This paragraph has a class.</p>
-            <h2 id="anothertest">This heading has an ID.</h2>
-        </div>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="elementsDoNotHaveDuplicateAttributes" id="test1">
+        <h2 id="anothertest">This heading has an ID.</h2>
+        <p class="quail-failed-element" style="weight: bold;" style="weight: normal;">
+            This paragraph has two inline styles.
+        </p>
     </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="elementsDoNotHaveDuplicateAttributes">
-
-        <div id="quail-scope">
-            <p class="test">This paragraph has a class.</p>
-            <h2 id="anothertest">This heading has an ID.</h2>
-        </div>
-        <a class="quail-failed-element" href="one.html" href="two.html">This link fails, but it is not within #quail-scope.</a>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="elementsDoNotHaveDuplicateAttributes" id="test2">
+        <p class="test">This paragraph has a class.</p>
+        <h2 id="anothertest">This heading has an ID.</h2>
     </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="elementsDoNotHaveDuplicateAttributes">
-
-        <div id="quail-scope">
-            <p class="test">This paragraph has a class.</p>
-            <h2 id="anothertest">This heading has an ID.</h2>
-        </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="elementsDoNotHaveDuplicateAttributes" id="test2">
+        <p class="test">This paragraph has a class.</p>
+        <h2 id="anothertest">This heading has an ID.</h2>
     </div>
-
+    <script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
     <script src="../testrunner.js"></script>
 </body>
 </html>

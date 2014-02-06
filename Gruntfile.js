@@ -59,7 +59,7 @@ module.exports = function(grunt) {
     },
     watch: {
       scripts: {
-        files: ['src/**/*.js', 'src/**/*.yml', 'test/accessibility-tests/*.html'],
+        files: ['src/**/*.js', 'src/**/*.yml', 'test/accessibility-tests/*.html', 'test/core/*.html'],
         tasks: ['convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'uglify'],
         options: {
           spawn: false
@@ -84,7 +84,8 @@ module.exports = function(grunt) {
     buildTestFilesJson: {
       dist: {
         files: [
-          { src: 'test/accessibility-tests/*', dest: 'test/testfiles.json' }
+          { src: 'test/accessibility-tests/*.html', dest: 'test/accessibility-tests/_tests.json' },
+          { src: 'test/core/*.html', dest: 'test/core/_tests.json'}
         ]
       }
     },

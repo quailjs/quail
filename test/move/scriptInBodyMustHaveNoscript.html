@@ -1,16 +1,10 @@
 <!doctype html>
-<html>
+<html class="quail-test" data-expected="fail" data-accessibility-test="scriptInBodyMustHaveNoscript">
 <head>
 	<title>scriptInBodyMustHaveNoscript</title>
 </head>
-<body>
-	<div class="quail-test" data-expected="fail" data-accessibility-test="scriptInBodyMustHaveNoscript">
-		<script></script>
-	</div>
-	<div class="quail-test" data-expected="pass" data-accessibility-test="scriptInBodyMustHaveNoscript">
-		<script></script>
-		<noscript>There are scripts in here.</noscript>
-	</div>
+<body class="quail-failed-element">
+	<p>There is a script element on this page.</p>
 
 	<script src="../testrunner.js"></script>
 </body>

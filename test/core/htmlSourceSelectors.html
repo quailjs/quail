@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>HTML code can be selected - pass</title>
+<body>
+  <div id="quail-scope">
+    <div id="contents">
+      <p>First paragraph</p>
+      <p>Second paragraph</p>
+      <p>Third paragraph Test inline element</p>
+    </div>
+    <ul class="list">
+      <li>A</li>
+      <li>B</li>
+      <li>C</li>
+    </ul>
+  </div>
+
+  <script id="qunit-htmlparser" src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
+  <script src="../testrunner.js"></script>
+  <script>
+    (function(global) {
+      global.quailTest = function() {
+        var custom = {
+          htmlSourceSelectorTest : {
+              type : 'custom',
+              components: [ 'htmlSource' ],
+              callback : function(quail) {
+                quail.components.htmlSource.getHtml(function(html, parsed) {
+                  quail.components.htmlSource.traverse(parsed, function(element) {
+                    if(element.type === 'tag' && typeof element.selector && element.name != 'script') {
+                      var selector = element.selector.join('>');
+                      test('Quail can find an element using raw HTML', function() {
+                        equal($(selector).length, 1, selector);
+                      });
+                    }
+                  });
+                });
+              }
+          }
+        };
+        $('#quail-scope').quail({ jsonPath : '../../dist',
+                            guideline : [ 'htmlSourceSelectorTest' ],
+                            reset : true,
+                            customTests : custom
+                        });
+      };
+    })(this);
+  </script>
+</body>
+
+</html>
