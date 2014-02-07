@@ -1197,22 +1197,6 @@ documentVisualListsAreMarkedUp:
     - "semantics"
     - "content"
   callback: "documentVisualListsAreMarkedUp"
-documentWordsNotInLanguageAreMarked:
-  type: "selector"
-  testability: 0
-  title:
-    en: "Any words or phrases which are not the document's primary language should be marked"
-  description:
-    en: "If a document has words or phrases which are not in the document's primary language, those words or phrases should be properly marked. This helps indicate which language or voice a screen-reader should use to read the text."
-  guidelines:
-    wcag:
-      3.1.2:
-        techniques:
-          - "H58"
-  tags:
-    - "language"
-  options:
-    selector: "body"
 embedHasAssociatedNoEmbed:
   type: "custom"
   testability: 1
