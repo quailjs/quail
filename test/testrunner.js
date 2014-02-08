@@ -137,6 +137,12 @@
 		        						expected = true;
 		        						$(found).addClass('found');
 		        					}
+		        					if($element.is('svg')) {
+		        						if($element.attr('class') === 'quail-failed-element') {
+		        							$element.attr('class', 'quail-failed-element found');
+		        							expected = true;
+		        						}
+		        					}
 		        				});
 		        				if(!expected) {
 		        					ok(false, 'Element not found:' + $('<div>').append($(found).clone().empty()).html());
