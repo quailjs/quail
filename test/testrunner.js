@@ -54,7 +54,7 @@
 			var that = this;
 			$('head').append('<link rel="stylesheet" href="../../lib/qunit/qunit.css" media="screen">');
 			$('head').append('<link rel="stylesheet" href="../test.css" media="screen">');
-			$('body').prepend('<div id="qunit"></div><div id="qunit-fixture"></div>');
+			$('body').prepend('<div role="status" id="qunit"></div><div role="status" id="qunit-fixture"></div>');
 			$.getScript('../../dist/quail.jquery.js', function() {
 				$.getScript('../../lib/qunit/qunit.js', function() {
 					$.ajax({ url: '../../dist/tests.json',
