@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<title>scriptInBodyMustHaveNoscript-fail</title>
+</head>
+<body class="quail-failed-element">
+	<p>There is a script element on this page.</p>
+
+	<script src="../testrunner.js"></script>
+	<script>
+    (function(global) {
+      global.quailTest = function() {
+        $(document).quail({ jsonPath : '../../dist',
+          guideline : [ 'scriptInBodyMustHaveNoscript' ],
+          reset : true,
+          testFailed : function(event) {
+            test('Body element selected', function() {
+                ok(event.element.is('body'), 'Body element had script tag, but no no-script tag.');
+            });
+          }
+        });
+      };
+    })(this);
+  </script>
+</body>
+</html>
