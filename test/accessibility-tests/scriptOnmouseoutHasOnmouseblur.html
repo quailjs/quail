@@ -5,10 +5,10 @@
 </head>
 <body>
 	<div class="quail-test" data-expected="fail" data-accessibility-test="scriptOnmouseoutHasOnmouseblur">
-		<input name="num" onmouseout="foo" value="0" class="quail-failed-element"/>
+		<input name="num1" onmouseout="'foo';" value="0" class="quail-failed-element"/>
 	</div>
 	<div class="quail-test" data-expected="pass" data-accessibility-test="scriptOnmouseoutHasOnmouseblur">
-		<input name="num" onmouseout="foo" onblur="bar" value="0"/>
+		<input name="num2" onmouseout="'foo';" onblur="'bar';" value="0"/>
 	</div>
 
 	<script src="../testrunner.js"></script>

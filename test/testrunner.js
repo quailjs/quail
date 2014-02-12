@@ -84,7 +84,6 @@
 			$.getScript('../../dist/quail.jquery.js', function() {
 				$.getScript('../../lib/qunit/qunit.js', function() {
 					$.ajax({ url: '../../dist/tests.json',
-						      cache: false,
 						      dataType: 'json',
 						      success: function(data) {
 										that.accessibilityTests = data;
@@ -148,6 +147,11 @@
           guideline: [ thisTest.accessibilityTest ],
           accessibilityTests : that.accessibilityTests,
           reset: true,
+          preFilter: function(testName, $element) {
+          	if($element.is('#qunit') || $element.parents('#qunit').length) {
+          		return false;
+          	}
+          },
           complete: function(event) {
 	          if(window.location.href.search(/\?debug/) > -1) {
 	          	console.log(event);
@@ -168,7 +172,8 @@
 		        				var found = this;
 		        				expected = false;
 		        				$.each(event.results[thisTest.accessibilityTest].elements, function(index, $element) {
-		        					if($element.get(0) === found) {
+		        					if($element.get(0) === found ||
+		        						 $element.is('body') && $that.find('body').hasClass('quail-failed-element')) {
 		        						expected = true;
 		        						$(found).addClass('found');
 		        					}
@@ -183,7 +188,7 @@
 		        					ok(false, 'Element not found:' + $('<div>').append($(found).clone().empty()).html());
 		        				}
 		        			});
-			        		ok($that.find('.quail-failed-element').length === $that.find('.quail-failed-element.found').length, $that.find('.quail-failed-element').length + ' element(s) failed');	        				        				
+			        		ok($that.find('.quail-failed-element').length === $that.find('.quail-failed-element.found').length, $that.find('.quail-failed-element').length + ' element(s) failed');
 	        			}
 	        		}
 	        	});

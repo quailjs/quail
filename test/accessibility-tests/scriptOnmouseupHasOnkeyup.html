@@ -5,11 +5,11 @@
 </head>
 <body>
 	<div class="quail-test" data-expected="fail" data-accessibility-test="scriptOnmouseupHasOnkeyup">
-		<input name="num" class="quail-failed-element" onmouseup="foo" value="0"/>
+		<input name="num" class="quail-failed-element" onmouseup="'foo';" value="0"/>
 	</div>
 	<div class="quail-test" data-expected="pass" data-accessibility-test="scriptOnmouseupHasOnkeyup">
 
-		<input name="num" onmouseup="foo" onkeyup="bar" value="0"/>
+		<input name="num" onmouseup="'foo';" onkeyup="'bar';" value="0"/>
 	</div>
 
 	<script src="../testrunner.js"></script>
