@@ -4,7 +4,7 @@
 		<title>appletContainsTextEquivalent</title>
 	</head>
 	<body>
-		<div class="quail-test" data-expected="pass" data-accessibility-test="appletContainsTextEquivalent">
+		<div class="quail-test limit-phantom" data-expected="pass" data-accessibility-test="appletContainsTextEquivalent">
 		  <applet code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150">
             We are testing your Java version.
             <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
@@ -13,7 +13,7 @@
         </applet>
 		</div>
 
-		<div class="quail-test" data-expected="fail" data-accessibility-test="appletContainsTextEquivalent">
+		<div class="quail-test limit-phantom" data-expected="fail" data-accessibility-test="appletContainsTextEquivalent">
 		  <applet code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150" class="quail-failed-element">
             <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
             <param name="centerimage" value="true"><param name="boxborder" value="false">

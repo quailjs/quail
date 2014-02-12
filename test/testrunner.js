@@ -127,6 +127,12 @@
 		runTests: function() {
 			var that = this;
 			$('.quail-test').each(function(index) {
+				if($(this).hasClass('limit-chrome') && navigator.userAgent.search('Chrome') === -1) {
+					return;
+				}
+				if($(this).hasClass('limit-phantom') && navigator.userAgent.search('PhantomJS') === -1) {
+					return;
+				}
 				var thisTest = {
 					title : ($(this).attr('title')) ? ': ' + $(this).attr('title') : '',
 					accessibilityTest: $(this).data('accessibility-test'),
@@ -153,9 +159,6 @@
           	}
           },
           complete: function(event) {
-	          if(window.location.href.search(/\?debug/) > -1) {
-	          	console.log(event);
-	          }
 	          test(testTitle +  thisTest.title, function() {
 	          	label = (thisTest.expectedPass) ? 'pass' : 'fail';
 	        		$that.addClass(label)
