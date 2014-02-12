@@ -1,3 +1,10 @@
+/**
+ * The test runner will take a properly-formatted page and 
+ * run accessibility tests against it. To learn more about how to use
+ * the test runner, read the wiki at:
+ * https://github.com/kevee/quail/wiki/New-test-file-format
+ */
+
 /*global console:true*/
 (function(global) {
 
@@ -6,6 +13,12 @@
 
 		qunitCallbacks : {},
 
+		/**
+		 * Run qunit tests against the page. We first capture any
+		 * test callbacks into our own object so we can call them later.
+		 * This is necessary to keep composite tests with long page
+		 * times working.
+		 */
 		run: function() {
 			var that = this;
 			if(typeof QUnit === 'undefined') {
@@ -30,6 +43,10 @@
 			this.includejQuery();
 		},
 
+		/**
+		 * Include jQuery on the page using vanilla JS, including differences
+		 * in script ready events.
+		 */
 		includejQuery: function() {
 			var em = document.createElement('script');
 		  em.type = 'text/javascript';
@@ -50,6 +67,15 @@
 		  s.parentNode.insertBefore(em, s);
 		},
 
+		/**
+		 * Once jQuery is available, insert Qunit styles, the placeholder for
+		 * the Qunit fixture, and load the rest of the needed JS on the page.
+		 * At the end, we request tests.json and set a 250ms timeout to prevent
+		 * the parent composite tester from timing out.
+		 * 
+		 * If the page has defined a global.quailTest function, we then run it, if
+		 * not, we run the runTests method.
+		 */
 		includeScripts: function() {
 			var that = this;
 			$('head').append('<link rel="stylesheet" href="../../lib/qunit/qunit.css" media="screen">');
@@ -79,6 +105,9 @@
 			});
 		},
 
+		/**
+		 * Assign callbacks for QUnit after the timeout has completed.
+		 */
 		buildQUnit: function() {
 			if(typeof this.qunitCallbacks.moduleStart === 'undefined') {
 				return;
@@ -90,6 +119,12 @@
 			QUnit.done = this.qunitCallbacks.done;
 		},
 
+		/**
+		 * For accessibility tests, we can (for most tests) just use markup on the page
+		 * to determine what test to run, where to run it, and whether to expect a failure.
+		 * This runs quail against all .quail-test elements, determines pass/fail, and
+		 * then runs comparisons into QUnit assertions.
+		 */
 		runTests: function() {
 			var that = this;
 			$('.quail-test').each(function(index) {
