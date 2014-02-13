@@ -128,9 +128,15 @@
 			var that = this;
 			$('.quail-test').each(function(index) {
 				if($(this).hasClass('limit-chrome') && navigator.userAgent.search('Chrome') === -1) {
+					test('Skipping', function() { 
+						ok(true, 'Skipping test because browser is not chrome.');
+					});
 					return;
 				}
 				if($(this).hasClass('limit-phantom') && navigator.userAgent.search('PhantomJS') === -1) {
+					test('Skipping', function() { 
+						ok(true, 'Skipping test because browser is not phantom.');
+					});
 					return;
 				}
 				var thisTest = {
