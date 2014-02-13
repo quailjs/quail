@@ -24,7 +24,8 @@ $.expr[':'].quailCss = function(obj, index, meta, stack) {
  * Assembles data about the test and invokes appropriate callbacks.
  *
  * @param string type
- *   Possible values: 'na', 'pass', 'fail'
+ *   Possible values:  'inapplicable', 'failed', 'passed', 'cantTell',
+ *   and 'untested'
  * @param string testName
  *   The name of the test.
  * @param jQuery $element
@@ -59,26 +60,29 @@ function _processTestResult (type, testName, $element, options) {
 
   // Invoke test listeners;
   switch (type) {
-    case 'na':
-      result.status = 'na';
+    case 'inapplicable':
+      result.status = 'inapplicable';
       if (isCallable(quail.options.testNotApplicable)) {
         quail.options.testNotApplicable(info);
       }
       break;
-    case 'fail':
+    case 'failed':
       // @todo, this currently stores just the failures. We need to pass all
       // results.
       result.elements.push($element);
-      result.status = 'fail';
+      result.status = 'failed';
       if (isCallable(quail.options.testFailed)) {
         quail.options.testFailed(info);
       }
       break;
-    case 'pass':
-      result.status = 'pass';
+    case 'passed':
+      result.status = 'passed';
       if (isCallable(quail.options.testPassed)) {
         quail.options.testPassed(info);
       }
+      break;
+    case 'cantTell':
+    case 'untested':
       break;
   }
 }
@@ -198,7 +202,7 @@ var quail = {
    * @deprecated
    */
   testFails : function(testName, $element, options) {
-    _processTestResult('fail', testName, $element, options);
+    _processTestResult('failed', testName, $element, options);
   },
 
   /**
@@ -228,20 +232,20 @@ var quail = {
           var candidates = quail.html.find(options.selector);
           // Not applicable.
           if (!candidates.length) {
-            _processTestResult('na', testName, $(this));
+            _processTestResult('inapplicable', testName, $(this));
           }
           // Passes.
           candidates.not(options.filter).each(function () {
-            _processTestResult('pass', testName, $(this));
+            _processTestResult('passed', testName, $(this));
           });
           // Fails.
           candidates.filter(options.filter).each(function () {
-            _processTestResult('fail', testName, $(this));
+            _processTestResult('failed', testName, $(this));
           });
         }
         else {
           quail.html.find(options.selector).each(function() {
-            _processTestResult('fail', testName, $(this));
+            _processTestResult('failed', testName, $(this));
           });
         }
       }

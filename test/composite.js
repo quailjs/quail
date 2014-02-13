@@ -49,11 +49,12 @@ var quailTest = {
    * Compares the status of the test result to the resultType argument.
    *
    * @param string resultType
-   *   Possible values include: 'na', 'fail', 'pass'
+   *   Possible values include: 'inapplicable', 'failed', 'passed', 'cantTell',
+   *   and 'untested'
    * @return boolean
    */
   confirmStatus: function (resultType) {
-    return quailTest.results[quailTest.testName].status === 'pass';
+    return quailTest.results[quailTest.testName].status === 'passed';
   },
 
   confirmIsEmpty : function() {
