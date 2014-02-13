@@ -43,7 +43,7 @@ module.exports = function(grunt) {
           banner: '<%= pkg.options.banner %>' + "\n" + 'var __testQuail = {};(function($) {' + "\n",
           footer: "\n" + '__testQuail = quail; })(jQuery);',
           stripBanners: true
-        },
+        }
       }
     },
     uglify: {
