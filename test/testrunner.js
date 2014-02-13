@@ -9,8 +9,15 @@
 (function(global) {
 
 	var testRunner = {
+
+		/**
+		 * Accessibility tests loaded from ../dist/tests.json
+		 */
 		accessibilityTests : {},
 
+		/**
+		 * An object to store QUnit callbacks while we scaffold a test for composite.
+		 */
 		qunitCallbacks : {},
 
 		/**
@@ -165,46 +172,50 @@
           	}
           },
           complete: function(event) {
-	          test(testTitle +  thisTest.title, function() {
-	          	label = (thisTest.expectedPass) ? 'pass' : 'fail';
-	        		$that.addClass(label)
-	        			   .prepend('<span class="test-label">#' + (index + 1) + ' (' + label + ')</span>');
-	        		if(thisTest.expectedPass) {
-	        			ok(event.results[thisTest.accessibilityTest].elements.length === 0, 'No elements failed test');
-	        		}
-	        		else {
-	        			if($that.hasClass('self-fail')) {
-	        				ok(event.results[thisTest.accessibilityTest].elements.length > 0, 'Self testing element failed (document-wide test)');
-	        			}
-	        			else {
-	        				$that.find('.quail-failed-element').each(function() {
-		        				var found = this;
-		        				expected = false;
-		        				$.each(event.results[thisTest.accessibilityTest].elements, function(index, $element) {
-		        					if($element.get(0) === found ||
-		        						 $element.is('body') && $that.find('body').hasClass('quail-failed-element')) {
-		        						expected = true;
-		        						$(found).addClass('found');
-		        					}
-		        					if($element.is('svg')) {
-		        						if($element.attr('class') === 'quail-failed-element') {
-		        							$element.attr('class', 'quail-failed-element found');
-		        							expected = true;
-		        						}
-		        					}
-		        				});
-		        				if(!expected) {
-		        					ok(false, 'Element not found:' + $('<div>').append($(found).clone().empty()).html());
-		        				}
-		        			});
-			        		ok($that.find('.quail-failed-element').length === $that.find('.quail-failed-element.found').length, $that.find('.quail-failed-element').length + ' element(s) failed');
-	        			}
-	        		}
-	        	});
-        	}
-				});
+          	that.quailComplete(event, index, testTitle, thisTest, $that);
+          }
+        });
 			});
-		}
+		},
+
+		quailComplete: function(event, index, testTitle, thisTest, $target) {
+      test(testTitle +  thisTest.title, function() {
+      	label = (thisTest.expectedPass) ? 'pass' : 'fail';
+    		$target.addClass(label)
+    			   .prepend('<span class="test-label">#' + (index + 1) + ' (' + label + ')</span>');
+    		if(thisTest.expectedPass) {
+    			ok(event.results[thisTest.accessibilityTest].elements.length === 0, 'No elements failed test');
+    		}
+    		else {
+    			if($target.hasClass('self-fail')) {
+    				ok(event.results[thisTest.accessibilityTest].elements.length > 0, 'Self testing element failed (document-wide test)');
+    			}
+    			else {
+    				$target.find('.quail-failed-element').each(function() {
+      				var found = this;
+      				expected = false;
+      				$.each(event.results[thisTest.accessibilityTest].elements, function(index, $element) {
+      					if($element.get(0) === found ||
+      						 $element.is('body') && $target.find('body').hasClass('quail-failed-element')) {
+      						expected = true;
+      						$(found).addClass('found');
+      					}
+      					if($element.is('svg')) {
+      						if($element.attr('class') === 'quail-failed-element') {
+      							$element.attr('class', 'quail-failed-element found');
+      							expected = true;
+      						}
+      					}
+      				});
+      				if(!expected) {
+      					ok(false, 'Element not found:' + $('<div>').append($(found).clone().empty()).html());
+      				}
+      			});
+        		ok($target.find('.quail-failed-element').length === $target.find('.quail-failed-element.found').length, $target.find('.quail-failed-element').length + ' element(s) failed');
+    			}
+    		}
+    	});
+  	}
 	};
 	
 	testRunner.run();
