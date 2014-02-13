@@ -35,6 +35,15 @@ module.exports = function(grunt) {
       dist: {
         src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js'],
         dest: 'dist/quail.jquery.js'
+      },
+      test: {
+        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js'],
+        dest: 'test/quail-testing.jquery.js',
+        options: {
+          banner: '<%= pkg.options.banner %>' + "\n" + 'var __testQuail = {};(function($) {' + "\n",
+          footer: "\n" + '__testQuail = quail; })(jQuery);',
+          stripBanners: true
+        },
       }
     },
     uglify: {

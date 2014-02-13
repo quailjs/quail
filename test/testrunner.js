@@ -88,7 +88,7 @@
 			$('head').append('<link rel="stylesheet" href="../../lib/qunit/qunit.css" media="screen">');
 			$('head').append('<link rel="stylesheet" href="../test.css" media="screen">');
 			$('body').prepend('<div role="status" id="qunit"></div><div role="status" id="qunit-fixture"></div>');
-			$.getScript('../../dist/quail.jquery.js', function() {
+			$.getScript('../quail-testing.jquery.js', function() {
 				$.getScript('../../lib/qunit/qunit.js', function() {
 					$.ajax({ url: '../../dist/tests.json',
 						      dataType: 'json',
@@ -178,6 +178,9 @@
 			});
 		},
 
+		/**
+		 * Callback for when quail is done running tests.
+		 */
 		quailComplete: function(event, index, testTitle, thisTest, $target) {
       test(testTitle +  thisTest.title, function() {
       	label = (thisTest.expectedPass) ? 'pass' : 'fail';
