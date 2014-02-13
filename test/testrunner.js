@@ -5,7 +5,7 @@
  * https://github.com/kevee/quail/wiki/New-test-file-format
  */
 
-/*global console:true*/
+
 (function(global) {
 
 	var testRunner = {
