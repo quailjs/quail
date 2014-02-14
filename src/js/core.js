@@ -461,14 +461,7 @@ var quail = {
       for (var i = 0, len = attributes.length; i < len; i++) {
         value = element.attributes[attributes[i]] && element.attributes[attributes[i]].value;
         if (value) {
-          // If the attr is href and it points to a specific user account,
-          // just tack on the attr name and not the value.
-          if (attributes[i] === 'href' && (/user\/[a-zA-z0-9]+/).test(value)) {
-            selector += '[' + attributes[i] + ']';
-          }
-          else {
-            selector += '[' + attributes[i] + '="' + value + '"]';
-          }
+          selector += '[' + attributes[i] + '="' + value + '"]';
         }
       }
       return selector;
