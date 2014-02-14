@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+	<title>newWindowIsOpened</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="newWindowIsOpened">
+		<p>
+			<a id="product" href="products.html" onclick="window.open('products.html');" class="quail-failed-element">
+				<img src="../assets/go.gif" alt="" />
+			</a>
+		</p>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>
