@@ -2,7 +2,7 @@
  * The test runner will take a properly-formatted page and 
  * run accessibility tests against it. To learn more about how to use
  * the test runner, read the wiki at:
- * https://github.com/kevee/quail/wiki/New-test-file-format
+ * https://github.com/kevee/quail/wiki/Writing-unit-tests-and-testing-accessibility-tests
  */
 
 
@@ -47,30 +47,29 @@
 					}
 				};
 			}
-			this.scaffold();
+			this.includejQuery();
 		},
 
 		/**
-		 * Helper to inject a script tag into the page. We aren't using jQuery's
-		 * $.getScript because it makes it hard to debug since same-domain scripts
-		 * in $.getScript are not available to browser debuggers.
+		 * Include jQuery on the page using vanilla JS, including differences
+		 * in script ready events.
 		 */
-		addScript: function(script, callback) {
+		includejQuery: function() {
 			var em = document.createElement('script');
 		  em.type = 'text/javascript';
 		  if (em.readyState) {
 		      em.onreadystatechange = function () {
 		          if (em.readyState == "loaded" || em.readyState == "complete") {
 		              em.onreadystatechange = null;
-				         callback();
+				         testRunner.includeScripts();
 		          }
 		      };
 		  } else {
 		      em.onload = function () {
-		         callback();
+		         testRunner.includeScripts();
 		      };
 		  }
-		  em.src = script;
+		  em.src = '../../lib/jquery/jquery.js';
 		  var s = document.getElementsByTagName('script')[0];
 		  s.parentNode.insertBefore(em, s);
 		},
@@ -84,32 +83,29 @@
 		 * If the page has defined a global.quailTest function, we then run it, if
 		 * not, we run the runTests method.
 		 */
-		scaffold: function() {
+		includeScripts: function() {
 			var that = this;
-			that.addScript('../../lib/jquery/jquery.js', function() {
-				that.addScript('../quail-testing.jquery.js', function() {
-					that.addScript('../../lib/qunit/qunit.js', function() {
-						$('head').append('<link rel="stylesheet" href="../../lib/qunit/qunit.css" media="screen">');
-						$('head').append('<link rel="stylesheet" href="../test.css" media="screen">');
-						$('body').prepend('<div role="status" id="qunit"></div><div role="status" id="qunit-fixture"></div>');
-						
-						$.ajax({ url: '../../dist/tests.json',
-					      dataType: 'json',
-					      success: function(data) {
-									that.accessibilityTests = data;
-									that.buildQUnit();
-									QUnit.init();
-									setTimeout(function() {
-										start();
-										if(typeof global.quailTest !== 'undefined') {
-											global.quailTest();
-										}
-										else {
-											that.runTests();
-										}
-									}, 250);
-								}
-						});
+			$('head').append('<link rel="stylesheet" href="../../lib/qunit/qunit.css" media="screen">');
+			$('head').append('<link rel="stylesheet" href="../test.css" media="screen">');
+			$('body').prepend('<div role="status" id="qunit"></div><div role="status" id="qunit-fixture"></div>');
+			$.getScript('../quail-testing.jquery.js', function() {
+				$.getScript('../../lib/qunit/qunit.js', function() {
+					$.ajax({ url: '../../dist/tests.json',
+						      dataType: 'json',
+						      success: function(data) {
+										that.accessibilityTests = data;
+										that.buildQUnit();
+										QUnit.init();
+										setTimeout(function() {
+											start();
+											if(typeof global.quailTest !== 'undefined') {
+												global.quailTest();
+											}
+											else {
+												that.runTests();
+											}
+										}, 250);
+									}
 					});
 				});
 			});
