@@ -9,7 +9,7 @@ $(document).ready(function() {
    $('#enable-accessibility a').click(function() {
      var $link = $(this);
      $('#content').quail({ guideline : guideline,
-      jsonPath : '../../src/resources',
+      jsonPath : '../../dist',
       testFailed : function(event) {
         event.element.addClass('quail-result')
                      .addClass(event.severity);

@@ -17,16 +17,42 @@
 	 $(document).ready(function() {
   	 
   	 /** Just to make this sample work without a server,
-  	     we are hard-coding the list of tests instead of
-  	     loading it using JSONP.
+  	 *   we are hard-coding the list of tests instead of
+  	 *   loading it using JSON.
   	 **/
   	 var accessibilityTests = {
-            "imgHasAlt": {
-                "type": "selector",
-                "selector": "img:not(img[alt])",
-                "severity": "severe"
-            }
-          };
+        "imgHasAlt": {
+		    "type": "selector",
+		    "testability": 1,
+		    "title": {
+		      "en": "Image elements must have an \"alt\" attribute"
+		    },
+		    "description": {
+		      "en": "All <code>img</code> elements must have an alt attribute"
+		    },
+		    "guidelines": {
+		      "508": [
+		        "a"
+		      ],
+		      "wcag": {
+		        "1.1.1": {
+		          "techniques": [
+		            "F65",
+		            "H37"
+		          ]
+		        }
+		      }
+		    },
+		    "tags": [
+		      "image",
+		      "content"
+		    ],
+		    "options": {
+		      "selector": "img",
+		      "filter": ":not(img[alt])"
+		    }
+		  }
+    };
   	 
   	 $('#test').quail({ guideline : [ 'imgHasAlt' ],
 	                    jsonPath : '../../dist',
@@ -34,7 +60,7 @@
 	                    testFailed : function(event) {
   	                    event.element.addClass('quail-result')
   	                         .addClass(event.severity)
-  	                         .before('<span class="quail-message">This is a message about why you should add alt text.</span>');
+  	                         .before('<span class="quail-message">ERROR: ' + event.test.title.en + '</span>');
   	                    
 	                    }});
 	 })
