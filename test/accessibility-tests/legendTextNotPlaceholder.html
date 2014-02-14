@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <title>legendTextNotPlaceholder</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="legendTextNotPlaceholder">
+
+        <form action="http://example.com/donut" method="post">
+            <fieldset>
+                <legend class="quail-failed-element">legend</legend>
+                <p>
+                    <input type="radio" name="flavour" id="choc" value="chocolate" checked="checked"
+                    />
+                    <label for="choc">Chocolate</label>
+                    <br/>
+                    <input type="radio" name="flavour" id="cream" value="cream" />
+                    <label for="cream">Cream Filled</label>
+                    <br/>
+                    <input type="radio" name="flavour" id="honey" value="honey" />
+                    <label for="honey">Honey Glazed</label>
+                </p>
+            </fieldset>
+            <p>
+                <input type="submit" value="Purchase Donut" />
+            </p>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="legendTextNotPlaceholder">
+
+        <form action="http://example.com/donut" method="post">
+            <fieldset>
+                <legend>Donut Type</legend>
+                <p>
+                    <input type="radio" name="flavour" id="choc" value="chocolate" checked="checked"
+                    />
+                    <label for="choc">Chocolate</label>
+                    <br/>
+                    <input type="radio" name="flavour" id="cream" value="cream" />
+                    <label for="cream">Cream Filled</label>
+                    <br/>
+                    <input type="radio" name="flavour" id="honey" value="honey" />
+                    <label for="honey">Honey Glazed</label>
+                </p>
+            </fieldset>
+            <p>
+                <input type="submit" value="Purchase Donut" />
+            </p>
+        </form>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <title>formDeleteIsReversable</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="formDeleteIsReversable">
+
+        <p>
+            Use the form below to remove your report from the repository.
+            <br/>
+            Select the following link if you would like to
+            <a href="http://www.example.com">recover a report</a>
+            that
+            has been previously deleted.
+        </p>
+        <form action="http://www.example.com" method="post" class="quail-failed-element">
+            <p>
+                <label for="r1">Report Name:</label>
+                <input type="text" id="r1" />
+                <br/>
+                <input type="submit" value="Delete Report" />
+            </p>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="formDeleteIsReversable">
+
+        <p>
+            Use the form below to remove your report from the repository.
+        </p>
+        <form
+        action="http://www.example.com" method="post" class="quail-failed-element">
+            <p>
+                <label for="r1">Report Name:</label>
+                <input type="text" id="r1" />
+                <br/>
+                <input type="submit" value="Delete Report" />
+            </p>
+        </form>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

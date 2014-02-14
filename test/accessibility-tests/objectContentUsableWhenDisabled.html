@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+	<title>objectContentUsableWhenDisabled</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="objectContentUsableWhenDisabled">
+		<object codebase="hello" class="quail-failed-element"/>
+	</div>
+	
+	<div class="quail-test" data-expected="pass" data-accessibility-test="objectContentUsableWhenDisabled">
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<title>documentContentReadableWithoutStylesheets-fail</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="">
+		<p class="quail-failed-element" style="font-size: 12pt; color: fuchsia">Hello.</p>
+		<p class="quail-failed-element" style="font-size: 12pt; color: fuchsia">Bye.</p>
+	</div>
+
+	<script src="../testrunner.js"></script>
+	<script>
+    (function(global) {
+      global.quailTest = function() {
+        $(document).quail({ jsonPath : '../../dist',
+          guideline : [ 'documentContentReadableWithoutStylesheets' ],
+          reset : true,
+          testFailed : function(event) {
+          	test('Body element selected', function() {
+          		ok(event.element.is('body'), 'Body element failed test');
+          	});
+          }
+        });
+      };
+    })(this);
+  </script>
+</body>
+</html>

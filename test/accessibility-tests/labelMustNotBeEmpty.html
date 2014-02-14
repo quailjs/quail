@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <title>labelMustNotBeEmpty</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="labelMustNotBeEmpty">
+        <form action="http://www.test.com" method="post">
+            <p>
+                <label for="name" class="quail-failed-element"></label>
+                <input type="text" name="firstname" id="name" />
+            </p>
+        </form>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="labelMustNotBeEmpty">
+        <form action="http://www.test.com" method="post">
+            <p>
+                <label for="name" class="quail-failed-element">
+                    <img src="../assets/name.jpg" alt="" />
+                </label>
+                <input type="text" name="firstname" id="name" />
+            </p>
+        </form>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="labelMustNotBeEmpty">
+        <form action="http://www.test.com" method="post">
+            <p>
+                <label for="name" class="quail-failed-element"></label>
+                <input type="text" name="firstname" id="name" />
+            </p>
+        </form>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="labelMustNotBeEmpty">
+        <form action="http://www.test.com" method="post">
+            <p>
+                <label for="name">
+                    <img src="../assets/name.jpg" alt="firstname" />
+                </label>
+                <input type="text" name="firstname" id="name" />
+            </p>
+        </form>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="labelMustNotBeEmpty">
+        <form action="http://www.test.com" method="post">
+            <p>
+                <label for="name">First name:</label>
+                <input type="text" name="firstname" id="name" />
+            </p>
+        </form>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

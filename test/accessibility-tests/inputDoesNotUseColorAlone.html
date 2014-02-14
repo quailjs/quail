@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+	<title>inputDoesNotUseColorAlone</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="inputDoesNotUseColorAlone">
+		<form>
+			<label for="name">Name:</label>
+			<input type="text" name="name" id="name" class="quail-failed-element"/>
+		</form>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="inputDoesNotUseColorAlone"></div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <title>pNotUsedAsHeader</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="pNotUsedAsHeader">
+        <p class="quail-failed-element"> <b>Looks like a header</b>
+        </p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="pNotUsedAsHeader">
+        <p class="quail-failed-element"> <i>Looks like a header</i>
+        </p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="pNotUsedAsHeader">
+        <p class="quail-failed-element"> <u>Looks like a header</u>
+        </p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="pNotUsedAsHeader">
+        <p class="quail-failed-element"> <font>Looks like a header</font>
+        </p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="pNotUsedAsHeader">
+        <p class="quail-failed-element"> <em>Looks like a header</em>
+        </p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="pNotUsedAsHeader">
+        <p>A regular paragraph.</p>
+        <p class="quail-failed-element" style="font-weight: bold;">Looks like a header</p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="pNotUsedAsHeader">
+        <p class="quail-failed-element"> <strong>Looks like a header</strong>
+        </p>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="pNotUsedAsHeader">
+        <p>
+            Nobis nulla sollemnes assum est volutpat. Et ii wisi hendrerit saepius
+                duis.
+        </p>
+        <p>Looks like a header, but it's not.</p>
+        <p>
+            Nobis nulla sollemnes assum est volutpat. Et ii wisi hendrerit saepius
+                duis.
+        </p>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="pNotUsedAsHeader">
+
+        <p>This is a regular paragraph</p>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+	<head>
+		<title>aMustNotHaveJavascriptHref</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="aMustNotHaveJavascriptHref">
+		  <a href="fallback.html" onclick="dosomething(); return false;">Scripted link with fallback href</a>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aMustNotHaveJavascriptHref">
+			<a href="javascript:dosomething()" class="quail-failed-element">Scripted link</a>
+		  
+		</div>
+
+
+		<script src="../testrunner.js"></script>	</body>
+</html>

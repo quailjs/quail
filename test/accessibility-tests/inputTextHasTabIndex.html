@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+    <title>inputTextHasTabIndex</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="inputTextHasTabIndex">
+
+        <form action="http://www.example.com" method="post">
+            <p>
+                <label for="name">Name</label>:
+                <input type="text" name="name" id="name" value="your name here" class="quail-failed-element" tabindex="" />
+            </p>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="inputTextHasTabIndex">
+
+        <form action="http://www.example.com" method="post">
+            <p>
+                <label for="name">Name</label>:
+                <input type="text" name="name" id="name" value="your name here" class="quail-failed-element"/>
+            </p>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="inputTextHasTabIndex">
+
+        <form action="http://www.example.com" method="post">
+            <p>
+                <label for="name">Name</label>:
+                <input type="text" name="name" id="name" value="your name here" tabindex="1" />
+            </p>
+        </form>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

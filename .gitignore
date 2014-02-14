@@ -10,3 +10,4 @@ node_modules/*
 dist/*
 bower_components/*
 lib/*
+test/quail-testing.jquery.js

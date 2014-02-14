@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>inputWithoutLabelHasTitle</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="inputWithoutLabelHasTitle"
+        <form>
+            <label for="select">Select your favorite pet</label>
+            <select id="select">
+                <option>Cat</option>
+                <option>Dog</option>
+                <option>Fish</option>
+            </select>
+            <input type="text" class="quail-failed-element"></input>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="inputWithoutLabelHasTitle">
+        <form>
+            <label for="select">Select your favorite pet</label>
+            <select id="select">
+                <option>Cat</option>
+                <option>Dog</option>
+                <option>Fish</option>
+            </select>
+            <input type="text" title="Search keywords"></input>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+<script src="../testrunner.js"></script>
+</body>
+</html>

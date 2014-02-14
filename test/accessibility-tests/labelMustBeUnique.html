@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+	<title>labelMustBeUnique</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="labelMustBeUnique">
+		<form>
+			<label for="name">First name:</label>
+			<input type="text" name="firstname" id="name" />
+			<label for="name" class="quail-fail-element">Enter your first name:</label>
+		</form>
+	</div>
+
+	<div class="quail-test" data-expected="pass" data-accessibility-test="labelMustBeUnique">
+		<form>
+			<label for="name">First name:</label>
+			<input type="text" name="firstname" id="name" />
+		</form>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<title>objectProvidesMechanismToReturnToParent</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="objectProvidesMechanismToReturnToParent">
+
+		<p>
+			The following object is not working. This is just an example.
+		</p>
+		<object
+        classid="http://www.test2.com" title="a simple object" class="quail-failed-element"></object>
+	</div>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="objectProvidesMechanismToReturnToParent">
+
+		<p>
+			The following object is not working. This is just an example.
+		</p>
+		<object
+        classid="http://www.test1.com" title="a simple object" class="quail-failed-element"></object>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

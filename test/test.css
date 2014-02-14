@@ -1,0 +1,29 @@
+.quail-test {
+	margin: 15px 0;
+	border: 1px solid #2b81af;
+	padding: 10px;
+	position: relative;
+	min-height: 40px;
+}
+
+.quail-test .test-label {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #2b81af;
+	font-weight: bold;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.quail-test.fail, .quail-failed-element.found {
+	border-color: #ee5757;
+}
+
+.quail-test.fail .test-label {
+	color: #ee5757;
+}
+
+.quail-failed-element.found {
+	border-width: 2px;
+	border-style: dashed;
+}

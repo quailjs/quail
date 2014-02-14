@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<title>areaAltRefersToText</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="fail" data-accessibility-test="areaAltRefersToText">
+		  <p>
+            <img src="../assets/welcome.gif" usemap="#map1" alt="Image map of areas in the library"
+            />
+        </p>
+        <p>
+            <map id="map1" name="map1">
+                <area class="quail-failed-element" shape="rect" coords="0,0,80,30" href="reference.html" alt="Reference"
+                />
+                <area class="quail-failed-element" shape="rect" coords="0,35,110,100" href="media.html" alt="Lab" />
+            </map>
+        </p>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="areaAltRefersToText">
+		  <p>
+            <img src="../assets/welcome.gif" usemap="#map1" alt="Image map of areas in the library"
+            />
+        </p>
+        <p>
+            <map id="map1" name="map1">
+                <area class="quail-failed-element" shape="rect" coords="0,0,80,30" href="reference.html" alt="Reference"
+                />
+                <area class="quail-failed-element" shape="rect" coords="0,35,110,100" href="media.html" alt="Audio Visual Lab"
+                />
+            </map>
+        </p>
+		</div>
+
+
+		<script src="../testrunner.js"></script>	</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <title>imgMapAreasHaveDuplicateLink</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="imgMapAreasHaveDuplicateLink">
+        <p>
+            <map name="imagemap" id="map1">
+                <area shape="poly" coords="185,0,355,0,295,123" href="horses.html" alt="horses"/>
+                <area shape="poly" coords="336,202,549,203,549" href="dogs.html" alt="dogs"/>
+                <area shape="rect" coords="0,10,172,10" href="birds.html" alt="birds"/>
+            </map>
+        </p>
+        <p>
+            <img src="../assets/navigation.png" usemap="#imagemap" alt="navigation" class="quail-failed-element" />
+        </p>
+        <p>
+            <a href="horses.html">Horses</a> | <a href="dogs.html">Dogs</a>
+        </p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="imgMapAreasHaveDuplicateLink">
+        <p>
+            <map name="imagemap" id="map1">
+                <area shape="poly" coords="185,0,355,0,295,123" href="horses.html" alt="horses"/>
+                <area shape="poly" coords="336,202,549,203,549" href="dogs.html" alt="dogs"/>
+                <area shape="rect" coords="0,10,172,10" href="birds.html" alt="birds"/>
+            </map>
+        </p>
+        <p>
+            <img src="../assets/navigation.png" usemap="#imagemap" alt="navigation"
+            class="quail-failed-element" />
+        </p>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="imgMapAreasHaveDuplicateLink">
+        <p>
+            <map name="imagemap" id="map1">
+                <area shape="poly" coords="185,0,355,0,295,123" href="horses.html" alt="horses"/>
+                <area shape="poly" coords="336,202,549,203,549" href="dogs.html" alt="dogs"/>
+                <area shape="rect" coords="0,10,172,10" href="birds.html" alt="birds"/>
+            </map>
+        </p>
+        <p>
+            <img src="../assets/navigation.png" usemap="#imagemap" alt="navigation"
+            />
+        </p>
+        <p>
+            <a href="horses.html">Horses</a> | <a href="dogs.html">Dogs</a> | <a href="birds.html">Birds</a>
+        </p>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

@@ -92,6 +92,10 @@ aLinksDontOpenNewWindow:
 aLinksNotSeparatedBySymbols:
   type: "custom"
   testability: 1
+  title:
+    en: "Links should not be separated by symbols alone"
+  description:
+    en: "Since symbols are either not read, or can be confusing when using a screen reader, do not separate links with un-readable symbols."
   guidelines: []
   tags:
     - "link"
@@ -402,7 +406,7 @@ appletsDoNotFlicker:
     - "content"
   options:
     selector: "applet"
-appletsDoneUseColorAlone:
+appletsDonotUseColorAlone:
   type: "selector"
   testability: 0
   title:
@@ -1193,22 +1197,6 @@ documentVisualListsAreMarkedUp:
     - "semantics"
     - "content"
   callback: "documentVisualListsAreMarkedUp"
-documentWordsNotInLanguageAreMarked:
-  type: "selector"
-  testability: 0
-  title:
-    en: "Any words or phrases which are not the document's primary language should be marked"
-  description:
-    en: "If a document has words or phrases which are not in the document's primary language, those words or phrases should be properly marked. This helps indicate which language or voice a screen-reader should use to read the text."
-  guidelines:
-    wcag:
-      3.1.2:
-        techniques:
-          - "H58"
-  tags:
-    - "language"
-  options:
-    selector: "body"
 embedHasAssociatedNoEmbed:
   type: "custom"
   testability: 1
@@ -3750,7 +3738,7 @@ skipToContentLinkProvided:
   title:
     en: "A \"skip to content\" link should exist as one of the first links on the page"
   description:
-    en: "A link reading \"skip to content"
+    en: "A link reading \"skip to content\" should be the first link on a page."
   guidelines:
     508:
       - "o"

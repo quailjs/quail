@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <title>fileHasLabel</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="fileHasLabel">
+
+        <form action="http://somesite.com/prog/adduser" method="post">
+            <p>
+                <input type="file" title="Your File" name="data" tabindex="1" class="quail-failed-element" />
+            </p>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="fileHasLabel">
+
+        <form action="http://www.test.com/testing" method="post">
+            <p>
+                <input title="student file:" type="file" id="thefile" name="data" tabindex="1" class="quail-failed-element"/>
+            </p>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="fileHasLabel">
+
+        <form action="http://www.test.com/testing" method="post">
+            <p>
+                <label>
+                    student file:
+                    <input type="file" id="thefile" name="data" tabindex="1"/>
+                </label>
+            </p>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="fileHasLabel">
+
+        <form action="http://www.test.com/testing" method="post">
+            <p>
+                <input title="I was walking down the street." type="file" id="thefile" class="quail-failed-element" name="data" tabindex="1" />
+            </p>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="fileHasLabel">
+
+        <form action="http://www.test.com/testing" method="post">
+            <p>
+                <label>
+                    I was walking down the street.
+                    <input type="file" id="thefile" name="data"
+                    tabindex="1" />
+                </label>
+            </p>
+        </form>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="fileHasLabel">
+
+        <form action="http://www.test.com/testing" method="post">
+            <p>
+                <label for="thefile">I was walking down the street.</label>
+                <input type="file" id="thefile"
+                name="data" tabindex="1" />
+            </p>
+        </form>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	<title>listNotUsedForFormatting</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="listNotUsedForFormatting">
+		<ol class="quail-failed-element">
+			<li>Item text</li>
+		</ol>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="listNotUsedForFormatting">
+
+		<ol>
+			<li>Item text 1</li>
+			<li>Item text 2</li>
+		</ol>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

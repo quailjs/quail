@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+	<head>
+		<title>aAdjacentWithSameResourceShouldBeCombined</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="aAdjacentWithSameResourceShouldBeCombined">
+		  <a href="products.html"><img src="../assets/go.gif" alt="" />Products page</a>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aAdjacentWithSameResourceShouldBeCombined" title="Image with empty alt text">
+		  <a href="products.html" class="quail-failed-element"><img src="../assets/go.gif" alt="" /></a>
+ 			<a href="products.html">Products page</a>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aAdjacentWithSameResourceShouldBeCombined" title="One image with alt text">
+		  <a href="products.html" class="quail-failed-element"><img src="../assets/go.gif" alt="Products page" /></a>
+      <a href="products.html">Products page</a>
+		</div>
+
+
+		<script src="../testrunner.js"></script>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>documentReadingDirection</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="documentReadingDirection" dir="ltr">
+		<p>
+			The title says "<span lang="he">פעילות הבינאום, W3C</span>" in Hebrew.
+		</p>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="documentReadingDirection" dir="ltr">
+
+		<p>
+			The title says "<span lang="he" dir="rtl">פעילות הבינאום, W3C</span>"in Hebrew.
+		</p>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

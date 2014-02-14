@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <title>tableUseColGroup</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="tableUseColGroup">
+        <p>
+            From the WCAG 2.0 HTML techniques: "Describe the use and benefits of column
+            structure elements. Much of this may be theoretical."
+        </p>
+        <table border="1" summary="cups of coffee consumed by city politicians">
+            class="quail-failed-element"
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>number of cups</th>
+                    <th>type</th>
+                    <th>with sugar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Adams, Willie</td>
+                    <td>2</td>
+                    <td>regular</td>
+                    <td>sugar</td>
+                </tr>
+                <tr>
+                    <td>Bacon, Lise</td>
+                    <td>4</td>
+                    <td>regular</td>
+                    <td>no sugar</td>
+                </tr>
+                <tr>
+                    <td>Chaput, Maria</td>
+                    <td>1</td>
+                    <td>decaf</td>
+                    <td>sugar</td>
+                </tr>
+                <tr>
+                    <td>Di Nino, Consiglio</td>
+                    <td>0</td>
+                    <td>not applicable</td>
+                    <td>not applicable</td>
+                </tr>
+                <tr>
+                    <td>Eggleton, Art</td>
+                    <td>6</td>
+                    <td>regular</td>
+                    <td>no sugar</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="tableUseColGroup">
+        <p>
+            From the WCAG 2.0 HTML techniques: "Describe the use and benefits of column
+            structure elements. Much of this may be theoretical."
+        </p>
+    </div>
+
+    <script src="../testrunner.js"></script>
+</body>
+</html>

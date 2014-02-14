@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+		<title>blockquoteUseForQuotations</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="blockquoteUseForQuotations">
+		  <p>The following is an excerpt from the <cite>The Story of my Life</cite> by
+          Helen Keller</p>
+      <blockquote>
+          <p>Even in the days before my teacher came, I used to feel along the square
+              stiff boxwood hedges, and, guided by the sense of smell, would find the
+              first violets and lilies. There, too, after a fit of temper, I went to
+              find comfort and to hide my hot face in the cool leaves and grass.</p>
+      </blockquote>
+      <p>Helen Keller said, <q>Self-pity is our worst enemy and if we yield to it, 
+we can never do anything good in the world.</q>
+      </p>
+      <p>Beth received 1<sup>st</sup> place in the 9<sup>th</sup> grade science competition.</p>
+      <p>The chemical notation for water is H<sub>2</sub>O.</p>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="blockquoteUseForQuotations">
+		  <p>The following is an excerpt from the The Story of my Life by Helen Keller</p>
+      <p class="quail-failed-element">"Even in the days before my teacher came, I used to feel along the square
+          stiff boxwood hedges, and, guided by the sense of smell, would find the
+          first violets and lilies. There, too, after a fit of temper, I went to
+          find comfort and to hide my hot face in the cool leaves and grass."</p>
+      <p>Helen Keller said, Self-pity is our worst enemy and if we yield to it,
+          we can never do anything good in the world.</p>
+      <p>Beth received 1st place in the 9th grade science competition.</p>
+      <p>The chemical notation for water is H2O.</p>
+		</div>
+
+		<script src="../testrunner.js"></script>
+	</body>
+</html>

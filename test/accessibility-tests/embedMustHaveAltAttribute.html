@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+	<title>embedMustHaveAltAttribute</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="embedMustHaveAltAttribute">
+
+		<embed src="demo.mov" class="quail-failed-element">
+			<noembed>Alternate content for the embed</noembed>
+		</embed>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="embedMustHaveAltAttribute">
+
+		<embed alt="description of the embed" src="demo.mov">
+			<noembed>Alternate content for the embed</noembed>
+		</embed>
+	</div>
+
+<script src="../testrunner.js"></script>
+</body>
+</html>

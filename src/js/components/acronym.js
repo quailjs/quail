@@ -2,7 +2,7 @@ quail.components.acronym = function(testName, acronymTag) {
   var predefined = { };
   var alreadyReported = { };
   quail.html.find('acronym[title], abbr[title]').each(function() {
-    predefined[$(this).text().toUpperCase()] = $(this).attr('title');
+    predefined[$(this).text().toUpperCase().trim()] = $(this).attr('title');
   });
   quail.html.find('p, div, h1, h2, h3, h4, h5').each(function(){
     var $el = $(this);
@@ -12,7 +12,7 @@ quail.components.acronym = function(testName, acronymTag) {
         word = word.replace(/[^a-zA-Zs]/, '');
         if(word.toUpperCase() === word &&
            word.length > 1 &&
-           typeof predefined[word.toUpperCase()] === 'undefined') {
+           typeof predefined[word.toUpperCase().trim()] === 'undefined') {
           if(typeof alreadyReported[word.toUpperCase()] === 'undefined') {
             quail.testFails(testName, $el, {acronym : word.toUpperCase()});
           }

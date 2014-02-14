@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+	<head>
+		<title>areaHasAltValue</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="areaHasAltValue">
+		  <map id="map1" name="map1">
+        <area shape="rect" coords="0,0,30,30" href="reference.html" alt="reference section"
+          />
+      </map>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="areaHasAltValue">
+		  <map id="map1" name="map2">
+          <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="reference.html" />
+      </map>
+		</div>
+
+
+		<script src="../testrunner.js"></script>	</body>
+</html>

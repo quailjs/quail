@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<title>inputImageAltIdentifiesPurpose</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="inputImageAltIdentifiesPurpose">
+		<form action="http://example.com" method="post">
+			<p>
+				<input type="image" name="submit" src="../assets/rex.jpg" alt="search for cats" class="quail-failed-element"/>
+			</p>
+		</form>
+	</div>
+
+	<div class="quail-test" data-expected="fail" data-accessibility-test="inputImageAltIdentifiesPurpose">
+		<form action="http://example.com" method="post">
+			<p>
+				<input type="image" name="submit" src="../assets/rex.jpg" alt="A brown and black cat named Rex."/>
+			</p>
+		</form>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>

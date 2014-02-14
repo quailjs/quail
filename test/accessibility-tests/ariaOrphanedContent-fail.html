@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>ariaOrphanedContent-fail</title>
+</head>
+
+<body>
+    <p>This is a paragraph.</p>
+    <div role="footer">This is a footer</div>
+
+    <script src="../testrunner.js"></script>
+    <script>
+    (function(global) {
+      global.quailTest = function() {
+        $(document).quail({ jsonPath : '../../dist',
+          guideline : [ 'ariaOrphanedContent' ],
+          reset : true,
+          testFailed : function(event) {
+            test('Paragraph element selected', function() {
+                ok(event.element.is('p'), 'Paragraph element was not in an aria role.');
+            });
+          }
+        });
+      };
+    })(this);
+  </script>
+</body>
+
+</html>

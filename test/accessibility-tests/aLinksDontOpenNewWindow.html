@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<title>aLinksDontOpenNewWindow</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinksDontOpenNewWindow">
+      <p>This link to an <a href="aLinksDontOpenNewWindow.html">invalid file</a> opens in the same window.</p>
+		</div>
+
+		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinksDontOpenNewWindow" title="Target is parent">
+      <p>This link to an <a href="aLinksDontOpenNewWindow.html" target="_parent">invalid file</a> opens in the same window.</p>
+		</div>
+
+		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinksDontOpenNewWindow" title="Target is top">
+      <a href="newwindow.html" target="_top">same window</a>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aLinksDontOpenNewWindow" title="target new">
+		  <p>This link to a <a href="aLinksDontOpenNewWindow.html" title="valid file - opens in a new window" target="_new" class="quail-failed-element">valid file</a> opens in a new window.</p>
+		</div>
+
+
+		<script src="../testrunner.js"></script>	</body>
+</html>
