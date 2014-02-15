@@ -98,6 +98,9 @@
 										QUnit.init();
 										setTimeout(function() {
 											start();
+											var eventObject = document.createEvent('MouseEvents');
+											eventObject.initEvent('testsReady', true, true );
+											document.dispatchEvent(eventObject);
 											if(typeof global.quailTest !== 'undefined') {
 												global.quailTest();
 											}
