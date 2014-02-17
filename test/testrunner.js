@@ -1,5 +1,5 @@
 /**
- * The test runner will take a properly-formatted page and 
+ * The test runner will take a properly-formatted page and
  * run accessibility tests against it. To learn more about how to use
  * the test runner, read the wiki at:
  * https://github.com/kevee/quail/wiki/Writing-unit-tests-and-testing-accessibility-tests
@@ -79,7 +79,7 @@
 		 * the Qunit fixture, and load the rest of the needed JS on the page.
 		 * At the end, we request tests.json and set a 250ms timeout to prevent
 		 * the parent composite tester from timing out.
-		 * 
+		 *
 		 * If the page has defined a global.quailTest function, we then run it, if
 		 * not, we run the runTests method.
 		 */
@@ -138,13 +138,13 @@
 			var that = this;
 			$('.quail-test').each(function(index) {
 				if($(this).hasClass('limit-chrome') && navigator.userAgent.search('Chrome') === -1) {
-					test('Skipping', function() { 
+					test('Skipping', function() {
 						ok(true, 'Skipping test because browser is not chrome.');
 					});
 					return;
 				}
 				if($(this).hasClass('limit-phantom') && navigator.userAgent.search('PhantomJS') === -1) {
-					test('Skipping', function() { 
+					test('Skipping', function() {
 						ok(true, 'Skipping test because browser is not phantom.');
 					});
 					return;
@@ -223,7 +223,7 @@
     	});
   	}
 	};
-	
+
 	testRunner.run();
 
 })(this);
