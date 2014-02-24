@@ -7,9 +7,8 @@ $.fn.quail = function(options) {
   quail.html = this;
 
   //The quail builder at quailjs.org/build provides an in-scope test object.
-  if(typeof quailBuilderTests !== 'undefined' &&
-     typeof options.accessibilityTests === 'undefined') {
-    quail.options.accessibilityTests = quailBuilderTests;
+  if(typeof quailBuilderTests !== 'undefined' && !options.accessibilityTests.length) {
+    quail.options.accessibilityTests = quail.lib.TestCollection(quailBuilderTests);
   }
   quail.run();
 
@@ -47,7 +46,8 @@ function _processTestResult (type, testName, $element, options) {
       return;
     }
   }
-  var testability = (typeof test.testability !== 'undefined') ? test.testability : 'unknown';
+  var testability = test.get('testability');
+  testability = (testability) ? testability : 'unknown';
   var info = {
     element     : $element,
     selector    : quail.defineUniqueSelector($element.length && $element[0] || null),
@@ -143,7 +143,7 @@ var quail = {
     if(quail.options.reset) {
       quail.accessibilityResults = { };
     }
-    if(typeof quail.options.accessibilityTests !== 'undefined') {
+    if(quail.options.accessibilityTests.length) {
       quail.accessibilityTests = quail.options.accessibilityTests;
     }
     else {
@@ -152,7 +152,7 @@ var quail = {
                dataType : 'json',
                success : function(data) {
                   if(typeof data === 'object') {
-                    quail.accessibilityTests = data;
+                    quail.accessibilityTests = quail.lib.TestCollection(data);
                   }
               }});
     }
@@ -171,30 +171,38 @@ var quail = {
     }
     if(typeof quail.options.guideline === 'undefined') {
       quail.options.guideline = [ ];
-      for (var guidelineTestName in quail.accessibilityTests) {
-        quail.options.guideline.push(guidelineTestName);
-      }
+      quail.accessibilityTests.each(function (index, test) {
+        quail.options.guideline.push(test.get('name'));
+      });
     }
 
     quail.runTests();
+    // Call the complete callback.
     if(typeof quail.options.complete !== 'undefined') {
-      var results = {totals : {severe : 0, moderate : 0, suggestion : 0 },
-                    results : quail.accessibilityResults };
+      var results = {
+        totals : {
+          severe : 0,
+          moderate : 0,
+          suggestion : 0
+        },
+        results : quail.accessibilityResults
+      };
       $.each(results.results, function(testName, result) {
-        results.totals[quail.testabilityTranslation[quail.accessibilityTests.find(testName).testability]] += result.elements.length;
+        results.totals[quail.testabilityTranslation[result.test.get('testability')]] += result.elements.length;
       });
       quail.options.complete(results);
     }
   },
 
   getConfiguration : function(testName) {
-    if(typeof this.options.guidelineName === 'undefined' ||
-       typeof this.accessibilityTests.find(testName).guidelines === 'undefined' ||
-       typeof this.accessibilityTests.find(testName).guidelines[this.options.guidelineName] === 'undefined' ||
-       typeof this.accessibilityTests.find(testName).guidelines[this.options.guidelineName].configuration === 'undefined') {
-      return false;
+    var test = this.accessibilityTests.find(testName);
+    var guidelines = test && test.get('guidelines');
+    var guideline = guidelines && this.options.guidelineName && guidelines[this.options.guidelineName];
+    var configuration = guideline && guideline.configuration;
+    if (configuration) {
+      return configuration;
     }
-    return this.accessibilityTests.find(testName).guidelines[this.options.guidelineName].configuration;
+    return false;
   },
 
   /**
@@ -216,56 +224,23 @@ var quail = {
   */
   runTests : function() {
     $.each(quail.options.guideline, function(index, testName) {
-      debugger;
       var test = quail.accessibilityTests.find(testName);
       if(!test) {
         return;
       }
-      var testType = test.type;
-      var options = test.options || {};
+
       quail.accessibilityResults[testName] = quail.accessibilityResults[testName] || {
         test: test,
         elements : []
       };
+      // Run the test.
+      test.invoke(quail);
 
-      if(testType === 'selector') {
-        // If options.filter is defined, then options.selector is collecting
-        // a set of candidate elements; it is not simply a selector to find
-        // elements that fail the test.
-        if (options.filter) {
-          var candidates = quail.html.find(options.selector);
-          // Not applicable.
-          if (!candidates.length) {
-            _processTestResult('inapplicable', testName, $(this));
-          }
-          // Passes.
-          candidates.not(options.filter).each(function () {
-            _processTestResult('passed', testName, $(this));
-          });
-          // Fails.
-          candidates.filter(options.filter).each(function () {
-            _processTestResult('failed', testName, $(this));
-          });
-        }
-        else {
-          quail.html.find(options.selector).each(function() {
-            _processTestResult('failed', testName, $(this));
-          });
-        }
-      }
-      if(testType === 'custom') {
-        if(typeof test.callback === 'object' || typeof test.callback === 'function') {
-          test.callback(quail);
-        }
-        else {
-          if(typeof quail[test.callback] !== 'undefined') {
-            quail[test.callback]();
-          }
-        }
-      }
-      if(typeof quail.components[testType] !== 'undefined') {
-        quail.components[testType](testName, test);
-      }
+      // Process the cases.
+      var options = test.get('options');
+      test.each(function (index, _case) {
+        _processTestResult(_case.get('status'), testName, $(_case.get('element')), options);
+      });
     });
   },
 

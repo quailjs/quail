@@ -1,5 +1,8 @@
-quail.lib.TestCollection = (function ($, Test) {
+quail.lib.TestCollection = (function () {
 
+  /**
+   * A Collection of Tests.
+   */
   var TestCollection = function (tests) {
     return new TestCollection.fn.init(tests);
   };
@@ -12,43 +15,48 @@ quail.lib.TestCollection = (function ($, Test) {
         return this;
       }
       if (typeof tests === 'object') {
-        var arrTests = [];
         for (var name in tests) {
           if (tests.hasOwnProperty(name)) {
-            arrTests.push({
-              name: name,
-              details: tests[name]
-            });
+            this.push(quail.lib.Test(name, tests[name]));
           }
         }
-        var ret = $.merge(this, arrTests);
-        return ret;
+        return this;
       }
       return this;
     },
     // Setting a length property makes it behave like an array.
     length: 0,
     // Execute a callback for every element in the matched set.
-    each: function(callback, args) {
-      return $.each(this, callback, args);
-    },
-    find: function (name) {
-      for (var i = 0, il = this.length; i < il; ++i) {
-        if (this[i].name === name) {
-          return this[i].details;
-        }
-      }
-      // Return an empty TestCollection for chaining.
-      return this.constructor(null);
-    },
-    set: function (name, details) {
-      for (var i = 0, il = this.length; i < il; ++i) {
-        if (this[i].name === name) {
-          this[i].details = details;
-        }
+    each: function (iterator) {
+      var args = [].slice(arguments, 1);
+      for (var i = 0, len = this.length; i < len; ++i) {
+        args.unshift(this[i]);
+        args.unshift(i);
+        iterator.apply(this[i], args);
       }
       return this;
     },
+    find: function (testname) {
+      for (var i = 0, il = this.length; i < il; ++i) {
+        if (this[i].get('name') === testname) {
+          return this[i];
+        }
+      }
+      // Return an empty TestCollection for chaining.
+      return null;
+    },
+    set: function (testname, details) {
+      for (var i = 0, il = this.length; i < il; ++i) {
+        if (this[i].get('name') === testname) {
+          this[i].set(details);
+          return this[i];
+        }
+      }
+      var test = quail.lib.Test(testname, details);
+      this.push(test);
+      return test;
+    },
+    push: [].push,
     sort: [].sort,
     splice: [].splice
   };
@@ -57,4 +65,4 @@ quail.lib.TestCollection = (function ($, Test) {
   TestCollection.fn.init.prototype = TestCollection.fn;
 
   return TestCollection;
-}(jQuery, quail.lib.Test));
+}());
