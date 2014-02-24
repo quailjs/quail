@@ -3,6 +3,7 @@ $.fn.quail = function(options) {
     return this;
   }
   quail.options = options;
+  quail.options.accessibilityTests = quail.lib.TestCollection(options.accessibilityTests);
   quail.html = this;
 
   //The quail builder at quailjs.org/build provides an in-scope test object.
@@ -33,7 +34,7 @@ $.expr[':'].quailCss = function(obj, index, meta, stack) {
  * @param object options
  */
 function _processTestResult (type, testName, $element, options) {
-  var test = quail.accessibilityTests[testName];
+  var test = quail.accessibilityTests.find(testName);
   var result = quail.accessibilityResults[testName];
   options = options || {};
 
@@ -52,7 +53,7 @@ function _processTestResult (type, testName, $element, options) {
     selector    : quail.defineUniqueSelector($element.length && $element[0] || null),
     location    : window && window.location || null,
     testName    : testName,
-    test        : quail.accessibilityTests[testName],
+    test        : quail.accessibilityTests.find(testName),
     testability : testability,
     severity    : quail.testabilityTranslation[testability],
     options     : options
@@ -92,6 +93,8 @@ var quail = {
   options : { },
 
   components : { },
+
+  lib : { },
 
   testabilityTranslation : {
 		0			: 'suggestion',
@@ -155,7 +158,7 @@ var quail = {
     }
     if(typeof quail.options.customTests !== 'undefined') {
       for (var testName in quail.options.customTests) {
-        quail.accessibilityTests[testName] = quail.options.customTests[testName];
+        quail.accessibilityTests.set(testName, quail.options.customTests[testName]);
       }
     }
     if(typeof quail.options.guideline === 'string') {
@@ -178,7 +181,7 @@ var quail = {
       var results = {totals : {severe : 0, moderate : 0, suggestion : 0 },
                     results : quail.accessibilityResults };
       $.each(results.results, function(testName, result) {
-        results.totals[quail.testabilityTranslation[quail.accessibilityTests[testName].testability]] += result.elements.length;
+        results.totals[quail.testabilityTranslation[quail.accessibilityTests.find(testName).testability]] += result.elements.length;
       });
       quail.options.complete(results);
     }
@@ -186,12 +189,12 @@ var quail = {
 
   getConfiguration : function(testName) {
     if(typeof this.options.guidelineName === 'undefined' ||
-       typeof this.accessibilityTests[testName].guidelines === 'undefined' ||
-       typeof this.accessibilityTests[testName].guidelines[this.options.guidelineName] === 'undefined' ||
-       typeof this.accessibilityTests[testName].guidelines[this.options.guidelineName].configuration === 'undefined') {
+       typeof this.accessibilityTests.find(testName).guidelines === 'undefined' ||
+       typeof this.accessibilityTests.find(testName).guidelines[this.options.guidelineName] === 'undefined' ||
+       typeof this.accessibilityTests.find(testName).guidelines[this.options.guidelineName].configuration === 'undefined') {
       return false;
     }
-    return this.accessibilityTests[testName].guidelines[this.options.guidelineName].configuration;
+    return this.accessibilityTests.find(testName).guidelines[this.options.guidelineName].configuration;
   },
 
   /**
@@ -213,7 +216,8 @@ var quail = {
   */
   runTests : function() {
     $.each(quail.options.guideline, function(index, testName) {
-      var test = quail.accessibilityTests[testName];
+      debugger;
+      var test = quail.accessibilityTests.find(testName);
       if(!test) {
         return;
       }
