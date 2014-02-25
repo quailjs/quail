@@ -14,6 +14,7 @@
   "globals": {
     "quail": true,
     "process": true,
-    "quailBuilderTests": true
+    "quailBuilderTests": true,
+    "guessLanguage": true
   }
 }

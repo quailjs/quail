@@ -51,5 +51,12 @@ quail.languageChangesAreIdentified = function() {
 				quail.testFails('languageChangesAreIdentified', $element, { language : code });
 			}
 		});
+		if(typeof guessLanguage !== 'undefined' && !$element.find('[lang]').length && $element.text().trim().length > 400) {
+			guessLanguage.info($element.text(), function(info) {
+				if(info[0] !== currentLanguage) {
+					quail.testFails('languageChangesAreIdentified', $element, { language : info[0] });
+				}
+			});
+		}
 	});
 };
