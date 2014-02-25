@@ -30,6 +30,15 @@
             Ceci est un texte français. Il est maintenant temps pour tous les hommes à venir à l'aide de leur pays. Exploiter Monotonectally compétences en leadership web-enabled plutôt que des normes conformes marchés. Visualiser correctement le capital humain centrée sur les processus par actions investi scénarios. Déployer continuellement communautés magnétiques alors que les potentialités en cas de pandémie.
         </p>
     </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="languageChangesAreIdentified" lang="zh">
+        <p>
+            这是一个较短的句子，但是这是没有问题，因为它是在中国。
+        </p>
+        <p class="quail-failed-element">
+            これは短い文ですが、日本語であるため、それは結構です。
+        </p>
+    </div>
     
     <div class="quail-test" data-expected="pass" data-accessibility-test="languageChangesAreIdentified">
         <p>
