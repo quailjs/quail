@@ -101,6 +101,8 @@ module.exports = function(grunt) {
     'gh-pages': {
       options: {
         base: '',
+        repo: 'https://example.com/other/repo.git',
+        branch: 'master',
         add: true,
         message: 'Auto-generated commit from grunt gh-pages.'
       },
