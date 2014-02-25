@@ -1,4 +1,4 @@
-quail.lib.Case = (function ($) {
+quail.lib.Case = (function () {
 
   /**
    * A Case is a test against an element.
@@ -41,4 +41,4 @@ quail.lib.Case = (function ($) {
   Case.fn.init.prototype = Case.fn;
 
   return Case;
-}(jQuery));
+}());

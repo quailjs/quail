@@ -1,4 +1,4 @@
-quail.lib.Test = (function ($) {
+quail.lib.Test = (function () {
 
   var details;
 
@@ -117,4 +117,4 @@ quail.lib.Test = (function ($) {
   Test.fn.init.prototype = Test.fn;
 
   return Test;
-}(jQuery));
+}());
