@@ -101,7 +101,7 @@ module.exports = function(grunt) {
     'gh-pages': {
       options: {
         base: '',
-        repo: 'https://example.com/other/repo.git',
+        repo: 'https://github.com/quailjs/quailjs.github.io.git',
         branch: 'master',
         add: true,
         message: 'Auto-generated commit from grunt gh-pages.'
