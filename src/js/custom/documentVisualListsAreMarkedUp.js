@@ -3,7 +3,6 @@ quail.documentVisualListsAreMarkedUp = function() {
   quail.html.find(quail.textSelector).each(function() {
     var $element = $(this);
     var matches = $element.html().match(symbols);
-    console.log(matches);
     if(matches && matches.length > 2) {
       quail.testFails('documentVisualListsAreMarkedUp', $element);
     }
