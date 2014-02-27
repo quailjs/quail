@@ -3956,6 +3956,10 @@ tableLayoutMakesSenseLinearized:
 tableNotUsedForLayout:
   type: "custom"
   testability: 0.5
+  title:
+    en: "Tables should not be used for layout"
+  description:
+    en: "Tables are for data, not for creating a page layout. Consider using standard HTML and CSS techniques instead."
   guidelines:
     wcag:
       1.3.2:
@@ -3964,7 +3968,24 @@ tableNotUsedForLayout:
   tags:
     - "table"
     - "layout"
+    - "content"
   callback: "tableNotUsedForLayout"
+tableShouldUseHeaderIDs:
+  type: "custom"
+  testability: 0.5
+  title:
+    en: "Table cells use IDs to identify headers"
+  description:
+    en: "If a table is not being used for layout, it should use IDs and header attributes to identify table headers."
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
+          - "H43"
+  tags:
+    - "table"
+    - "content"
+  callback: "tableShouldUseHeaderIDs"
 tableSummaryDescribesTable:
   type: "selector"
   testability: 0
