@@ -84,6 +84,7 @@ aLinksDontOpenNewWindow:
       3.2.5:
         techniques:
           - "H83"
+          - "SCR24"
   tags:
     - "link"
     - "content"
