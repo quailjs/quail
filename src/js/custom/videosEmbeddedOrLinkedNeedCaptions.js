@@ -20,7 +20,7 @@ quail.videosEmbeddedOrLinkedNeedCaptions = function() {
     }
     else {
       $captions.each(function() {
-        if($.ajax({ url : $(this).attr('src'), async: false }).status == 404) {
+        if($.ajax({ url : $(this).attr('src'), async: false }).status === 404) {
           quail.testFails('videosEmbeddedOrLinkedNeedCaptions', $video);
         }
       });
