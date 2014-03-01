@@ -4267,6 +4267,7 @@ videosEmbeddedOrLinkedNeedCaptions:
     - "content"
   components:
     - "video"
+    - "language"
   callback: "videosEmbeddedOrLinkedNeedCaptions"
 whiteSpaceInWord:
   type: "custom"

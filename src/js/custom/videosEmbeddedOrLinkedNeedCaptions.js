@@ -19,11 +19,32 @@ quail.videosEmbeddedOrLinkedNeedCaptions = function() {
       quail.testFails('videosEmbeddedOrLinkedNeedCaptions', $video);
     }
     else {
+      var language = quail.components.language.getDocumentLanguage(true);
+      if($video.parents('[lang]').length) {
+        language = $video.parents('[lang]').first().attr('lang').split('-')[0];
+      }
+      var foundLanguage = false;
       $captions.each(function() {
-        if($.ajax({ url : $(this).attr('src'), async: false }).status === 404) {
-          quail.testFails('videosEmbeddedOrLinkedNeedCaptions', $video);
+        if(!$(this).attr('srclang') || $(this).attr('srclang').toLowerCase() === language) {
+          foundLanguage = true;
+          try{
+            var request = $.ajax({ url: $(this).attr('src'),
+                      type: 'HEAD',
+                      async: false,
+                      error: function() { }
+                     });
+            if(request.status === 404) {
+              quail.testFails('videosEmbeddedOrLinkedNeedCaptions', $video);
+            }
+          }
+          catch(e) {
+
+          }
         }
       });
+      if(!foundLanguage) {
+        quail.testFails('videosEmbeddedOrLinkedNeedCaptions', $video);
+      }
     }
   });
 };
