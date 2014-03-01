@@ -11,9 +11,16 @@
 		</p>
 	</div>
 	<div class="quail-test" data-expected="fail" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions">
+		<video controls class="quail-failed-element">
+			<source src="../assets/sample.ogv" type="video/ogv"/>
+		</video>
+	</div>
+
+	<div class="quail-test" data-expected="fail" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions">
 
 		<video controls class="quail-failed-element">
-			<source src="sample.ogv" type="video/ogv"/>
+			<source src="../assets/sample.ogv" type="video/ogv"/>
+			<track kind="subtitles" src="../assets/broken.srt" srclang="en"></track>
 		</video>
 	</div>
 
@@ -26,12 +33,13 @@
 			There's also
 			<a href="http://youtube.com/help">another link to throw you off.</a>
 		</p>
+
 	</div>
 	<div class="quail-test" data-expected="pass" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions">
 
 		<video controls>
-			<source src="sample.ogv" type="video/ogv"/>
-			<track kind="subtitles" src="sampleSubtitles_en.srt" srclang="en"></track>
+			<source src="../assets/sample.ogv" type="video/ogv"/>
+			<track kind="subtitles" src="../assets/subtitle.srt" srclang="en"></track>
 		</video>
 	</div>
 

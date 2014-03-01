@@ -12,7 +12,18 @@ quail.videosEmbeddedOrLinkedNeedCaptions = function() {
       }
     });
   });
-  quail.html.find('video:not(video:has(track[kind=subtitles], track[kind=captions]))').each(function() {
-    quail.testFails('videosEmbeddedOrLinkedNeedCaptions', $(this));
+  quail.html.find('video').each(function() {
+    var $video = $(this);
+    var $captions = $video.find('track[kind=subtitles], track[kind=captions]');
+    if(!$captions.length) {
+      quail.testFails('videosEmbeddedOrLinkedNeedCaptions', $video);
+    }
+    else {
+      $captions.each(function() {
+        if($.ajax({ url : $(this).attr('src'), async: false }).status == 404) {
+          quail.testFails('videosEmbeddedOrLinkedNeedCaptions', $video);
+        }
+      });
+    }
   });
 };
