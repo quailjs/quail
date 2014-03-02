@@ -12,6 +12,30 @@ quail.videosEmbeddedOrLinkedNeedCaptions = function() {
       }
     });
   });
+  quail.html.find('object').each(function() {
+    var $object = $(this);
+    if(!$object.find('param').length) {
+      return;
+    }
+    var isVideo = false;
+    $object.find('param').each(function() {
+      if($(this).attr('value').search('.flv') > -1) {
+        isVideo = true;
+      }
+    });
+    if(isVideo) {
+      var hasCaptions = false;
+      $object.find('param[name=flashvars]').each(function() {
+        if($(this).attr('value').search('captions') > -1 &&
+           $(this).attr('value').search('.srt') > -1) {
+          hasCaptions = true;
+        }
+      });
+      if(!hasCaptions) {
+        quail.testFails('videosEmbeddedOrLinkedNeedCaptions', $object);
+      }  
+    }
+  });
   quail.html.find('video').each(function() {
     var $video = $(this);
     var $captions = $video.find('track[kind=subtitles], track[kind=captions]');
