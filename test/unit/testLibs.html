@@ -14,21 +14,122 @@
   <div role="status" id="qunit"></div>
   <div role="status" id="qunit-fixture"></div>
 
+  <a href="#" class="fail unittest">fake link</a>
+  <a href="#" class="pass unittest">fake link</a>
+
   <script>
     var libs = __testQuail.lib;
+    var _case, _test;
+    __testQuail.html = $('body');
+
     module('Case');
-
-    var _case = new libs.Case({bird: 'sandpiper'});
-
-    test('Instantiation', function() {
+    test('Instantiation', function () {
+      _case = new libs.Case({bird: 'sandpiper'});
       ok(_case instanceof libs.Case, 'Case is the constructor of _case');
     });
     test('Get/Set', function () {
+      _case = new libs.Case({bird: 'sandpiper'});
       equal(_case.get('bird'), 'sandpiper', 'Case.fn.get retrieves the object\'s attributes');
       _case.set('mammal', 'bear');
       equal(_case.get('mammal'), 'bear', 'Case.fn.get sets with a key/value argument pair');
       _case.set({'reptile': 'iguana'});
       equal(_case.get('reptile'), 'iguana', 'Case.fn.get sets with an object argument');
+    });
+
+    module('Test');
+    test('Instantiation', function () {
+      _test = new libs.Test('peregrine', {'bird': 'falcon'});
+      ok(_test instanceof libs.Test, 'Test is the constructor of _test');
+    });
+    test('Get/Set', function () {
+      _test = new libs.Test('peregrine', {'bird': 'falcon'});
+      equal(_test.get('name'), 'peregrine', 'Test.fn.get retrieves the object\'s name');
+      equal(_test.get('bird'), 'falcon', 'Test.fn.get retrieves the object\'s attributes');
+      _test.set('mammal', 'bear');
+      equal(_test.get('mammal'), 'bear', 'Test.fn.get sets with a key/value argument pair');
+      _test.set({'reptile': 'iguana'});
+      equal(_test.get('reptile'), 'iguana', 'Test.fn.get sets with an object argument');
+    });
+    test('Invoke/selector', function () {
+      _test = new libs.Test('inapplicableTest', {
+        'type': 'selector',
+        'options': {
+          'filter': '.fail',
+          'selector': 'small'
+        }
+      });
+      _test.invoke();
+      equal(_test.status, 'inapplicable', 'Test returns status:inapplicable when no selection is made');
+      _test = new libs.Test('fakeLinkTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'a.unittest',
+          'filter': '.fail'
+        }
+      });
+      _test.invoke();
+      equal(_test.length, 2, 'Two Cases were created');
+      _test = new libs.Test('fakeLinkTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'a.unittest.pass',
+          'filter': '.fail'
+        }
+      });
+      _test.invoke();
+      equal(_test.length, 1, 'One Case was created');
+      ok(_test[0] instanceof libs.Case, 'Case is the constructor of _test[0]');
+      equal(_test[0].get('status'), 'passed', 'The Case\'s status is passed');
+      _test = new libs.Test('fakeLinkTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'a.unittest.fail',
+          'filter': '.fail'
+        }
+      });
+      _test.invoke();
+      equal(_test.length, 1, 'One Case was created');
+      ok(_test[0] instanceof libs.Case, 'Case is the constructor of _test[0]');
+      equal(_test[0].get('status'), 'failed', 'The Case\'s status is failed');
+    });
+    test('Invoke/custom', function () {
+      expect(3);
+      var cb = function (quail) {
+        ok(quail, 'The custom callback was invoked');
+      };
+      __testQuail['customCallback'] = cb;
+      __testQuail.components.customCallback = cb;
+      _test = new libs.Test('fakeLinkTest', {
+        'type': 'custom',
+        'callback': cb
+      });
+      _test.invoke();
+      _test = new libs.Test('fakeLinkTest', {
+        'type': 'custom',
+        'callback': 'customCallback'
+      });
+      _test.invoke();
+      _test = new libs.Test('fakeLinkTest', {
+        'type': 'customCallback'
+      });
+      _test.invoke();
+    });
+    test('Iteration', function () {
+      _test = new libs.Test('fakeLinkTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'a.unittest',
+          'filter': '.fail'
+        }
+      });
+      _test.invoke();
+      equal(_test.length, 2, 'Two Cases were created');
+      var i;
+      _test.each(function (index, _case) {
+        i = index;
+        ok(_case instanceof libs.Case, 'Case is the constructor of _case');
+      });
+      equal(i, 1, 'Test.fn.each looped 2 times');
     });
   </script>
 </body>

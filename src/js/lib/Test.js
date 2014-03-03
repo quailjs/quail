@@ -5,9 +5,9 @@ quail.lib.Test = (function () {
   /**
    * A collection of Cases.
    */
-  var Test = function (name, attributes) {
+  function Test (name, attributes) {
     return new Test.fn.init(name, attributes);
-  };
+  }
 
   // Prototype object of the Test.
   Test.fn = Test.prototype = {
@@ -69,21 +69,24 @@ quail.lib.Test = (function () {
           // Not applicable.
           if (!candidates.length) {
             this.status = 'inapplicable';
+            return;
           }
-          // Passes.
-          candidates.not(options.filter).each(function () {
-            test.push(quail.lib.Case({
-              status: 'passed',
-              element: this
-            }));
-          });
-          // Fails.
-          candidates.filter(options.filter).each(function () {
-            test.push(quail.lib.Case({
-              status: 'failed',
-              element: this
-            }));
-          });
+          else {
+            // Passes.
+            candidates.not(options.filter).each(function () {
+              test.push(quail.lib.Case({
+                status: 'passed',
+                element: this
+              }));
+            });
+            // Fails.
+            candidates.filter(options.filter).each(function () {
+              test.push(quail.lib.Case({
+                status: 'failed',
+                element: this
+              }));
+            });
+          }
         }
         else {
           quail.html.find(options.selector).each(function() {
@@ -94,19 +97,20 @@ quail.lib.Test = (function () {
           });
         }
       }
-      if(type === 'custom') {
+      else if(type === 'custom') {
         if(typeof callback === 'object' || typeof callback === 'function') {
           callback(quail);
         }
         else {
           if(typeof quail[callback] !== 'undefined') {
-            quail[callback]();
+            quail[callback](quail);
           }
         }
       }
-      if(typeof quail.components[type] !== 'undefined') {
+      else if(typeof quail.components[type] !== 'undefined') {
         quail.components[type](name, this.attributes);
       }
+      return this;
     },
     push: [].push,
     sort: [].sort,
