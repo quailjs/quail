@@ -3,9 +3,9 @@ quail.lib.Case = (function () {
   /**
    * A Case is a test against an element.
    */
-  var Case = function (attributes) {
+  function Case (attributes) {
     return new Case.fn.init(attributes);
-  };
+  }
 
   // Prototype object of the Case.
   Case.fn = Case.prototype = {

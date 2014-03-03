@@ -58,7 +58,8 @@ module.exports = function(grunt) {
     },
     qunit: {
       all: ['test/quail.html'],
-      single: ['test/testfiles/' + grunt.option('file')]
+      single: ['test/testfiles/' + grunt.option('file')],
+      libs: ['test/unit']
     },
     jshint: {
       options: {

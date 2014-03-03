@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Guideline class unit tests</title>
+  <link rel="stylesheet" href="../../lib/qunit/qunit.css" media="screen">
+  <link rel="stylesheet" href="../test.css" media="screen">
+  <script src="../../../lib/jquery/jquery.js"></script>
+  <script src="../quail-testing.jquery.js"></script>
+  <script src="../../../lib/qunit/qunit.js"></script>
+</head>
+
+<body>
+  <div role="status" id="qunit"></div>
+  <div role="status" id="qunit-fixture"></div>
+
+  <script>
+    var libs = __testQuail.lib;
+    module('Case');
+
+    var _case = new libs.Case({bird: 'sandpiper'});
+
+    test('Instantiation', function() {
+      ok(_case instanceof libs.Case, 'Case is the constructor of _case');
+    });
+    test('Get/Set', function () {
+      equal(_case.get('bird'), 'sandpiper', 'Case.fn.get retrieves the object\'s attributes');
+      _case.set('mammal', 'bear');
+      equal(_case.get('mammal'), 'bear', 'Case.fn.get sets with a key/value argument pair');
+      _case.set({'reptile': 'iguana'});
+      equal(_case.get('reptile'), 'iguana', 'Case.fn.get sets with an object argument');
+    });
+  </script>
+</body>
+
+</html>
