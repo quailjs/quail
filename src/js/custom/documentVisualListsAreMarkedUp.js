@@ -1,10 +1,10 @@
 quail.documentVisualListsAreMarkedUp = function() {
-  quail.html.find('p, div, h1, h2, h3, h4, h5, h6').each(function() {
+  var symbols = /(<br(\/)?>)(\s)(♦|›|»|‣|▶|.|◦|✓|◽|•|—|◾|\||\*|&bull;|&#8226;|[0-9].|\(?[0-9]\)|(?:[IXC][MD]|D?C{0,4}))/i;
+  quail.html.find(quail.textSelector).each(function() {
     var $element = $(this);
-    $.each(quail.strings.symbols, function(index, item) {
-      if($element.text().split(item).length > 2) {
-        quail.testFails('documentVisualListsAreMarkedUp', $element);
-      }
-    });
+    var matches = $element.html().match(symbols);
+    if(matches && matches.length > 2) {
+      quail.testFails('documentVisualListsAreMarkedUp', $element);
+    }
   });
 };

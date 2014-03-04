@@ -73,7 +73,7 @@ aLinksAreSeperatedByPrintableCharacters:
     - "content"
   callback: "aLinksAreSeperatedByPrintableCharacters"
 aLinksDontOpenNewWindow:
-  type: "selector"
+  type: "custom"
   testability: 1
   title:
     en: "Links should not open a new window without warning"
@@ -84,11 +84,13 @@ aLinksDontOpenNewWindow:
       3.2.5:
         techniques:
           - "H83"
+          - "SCR24"
   tags:
     - "link"
     - "content"
-  options:
-    selector: "a[target=_new], a[target=_blank], a[target=_blank]"
+  strings:
+    - "newWindow"
+  callback: "aLinksDontOpenNewWindow"
 aLinksNotSeparatedBySymbols:
   type: "custom"
   testability: 1
@@ -1217,11 +1219,13 @@ documentVisualListsAreMarkedUp:
       1.3.1:
         techniques:
           - "H28"
+          - "H48"
           - "T2"
   tags:
     - "list"
     - "semantics"
     - "content"
+  strings: "symbols"
   callback: "documentVisualListsAreMarkedUp"
 embedHasAssociatedNoEmbed:
   type: "custom"
@@ -3379,6 +3383,27 @@ radioMarkedWithFieldgroupAndLegend:
     - "content"
   options:
     selector: "input[type=radio]:not(fieldset input[type=radio])"
+scriptFocusIndicatorVisible:
+  type: "custom"
+  title:
+    en: "Script focus indicators have high visibility"
+  description:
+    en: "When a focus indicator is used with script, it should have enough contrast with the background and big enough to be highly visible."
+  guidelines:
+    wcag:
+      2.4.7:
+        techniques:
+          - "C15"
+          - "G165"
+          - "G195"
+          - "SCR31"
+  tags:
+    - "focus"
+    - "content"
+  components:
+    - "color"
+    - "convertToPx"
+  callback: "scriptFocusIndicatorVisible"
 scriptContentAccessibleWithScriptsTurnedOff:
   type: "selector"
   testability: 0
@@ -3954,6 +3979,10 @@ tableLayoutMakesSenseLinearized:
 tableNotUsedForLayout:
   type: "custom"
   testability: 0.5
+  title:
+    en: "Tables should not be used for layout"
+  description:
+    en: "Tables are for data, not for creating a page layout. Consider using standard HTML and CSS techniques instead."
   guidelines:
     wcag:
       1.3.2:
@@ -3962,7 +3991,24 @@ tableNotUsedForLayout:
   tags:
     - "table"
     - "layout"
+    - "content"
   callback: "tableNotUsedForLayout"
+tableShouldUseHeaderIDs:
+  type: "custom"
+  testability: 0.5
+  title:
+    en: "Table cells use IDs to identify headers"
+  description:
+    en: "If a table is not being used for layout, it should use IDs and header attributes to identify table headers."
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
+          - "H43"
+  tags:
+    - "table"
+    - "content"
+  callback: "tableShouldUseHeaderIDs"
 tableSummaryDescribesTable:
   type: "selector"
   testability: 0
@@ -4244,6 +4290,7 @@ videosEmbeddedOrLinkedNeedCaptions:
     - "content"
   components:
     - "video"
+    - "language"
   callback: "videosEmbeddedOrLinkedNeedCaptions"
 whiteSpaceInWord:
   type: "custom"

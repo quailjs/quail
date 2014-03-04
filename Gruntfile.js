@@ -58,7 +58,7 @@ module.exports = function(grunt) {
     },
     qunit: {
       all: ['test/unit/*', 'test/quail.html'],
-      single: ['test/testfiles/' + grunt.option('file')],
+      single: ['test/' + grunt.option('file')],
       unit: ['test/unit/*']
     },
     jshint: {
@@ -102,6 +102,8 @@ module.exports = function(grunt) {
     'gh-pages': {
       options: {
         base: '',
+        repo: 'https://github.com/quailjs/quailjs.github.io.git',
+        branch: 'master',
         add: true,
         message: 'Auto-generated commit from grunt gh-pages.'
       },

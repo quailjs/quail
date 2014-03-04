@@ -10,14 +10,22 @@
 
 		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinksDontOpenNewWindow" title="Target is parent">
       <p>This link to an <a href="aLinksDontOpenNewWindow.html" target="_parent">invalid file</a> opens in the same window.</p>
-		</div>
+		</div>D
 
 		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinksDontOpenNewWindow" title="Target is top">
       <a href="newwindow.html" target="_top">same window</a>
 		</div>
 
 		<div class="quail-test" data-expected="fail" data-accessibility-test="aLinksDontOpenNewWindow" title="target new">
-		  <p>This link to a <a href="aLinksDontOpenNewWindow.html" title="valid file - opens in a new window" target="_new" class="quail-failed-element">valid file</a> opens in a new window.</p>
+		  <p>This link to a <a href="aLinksDontOpenNewWindow.html" target="_new" class="quail-failed-element">valid file</a> opens in a new window.</p>
+		</div>
+
+		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinksDontOpenNewWindow" title="target blank with new window text">
+		  <p>This link to a <a href="aLinksDontOpenNewWindow.html" target="_blank">valid file that opens in a new window</a>.</p>
+		</div>
+
+		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinksDontOpenNewWindow" title="target blank with new window text in title atribute">
+		  <p>This link to a <a href="aLinksDontOpenNewWindow.html" title="valid file - opens in a new window" target="_blank">valid file</a>.</p>
 		</div>
 
 

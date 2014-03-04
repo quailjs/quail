@@ -1,9 +1,22 @@
 quail.components.language = {
+  
+  /**
+   * The maximum distance possible between two trigram models.
+   */
+  maximumDistance: 300,
+
+  /**
+   * Regular expressions to capture unicode blocks that are either 
+   * explicitly right-to-left or left-to-right.
+   */
   textDirection : {
     rtl : /[\u0600-\u06FF]|[\u0750-\u077F]|[\u0590-\u05FF]|[\uFE70-\uFEFF]/mg,
     ltr : /[\u0041-\u007A]|[\u00C0-\u02AF]|[\u0388-\u058F]/mg
   },
 
+  /**
+   * List of single-script blocks that encapsulate a list of languages.
+   */
   scripts: {
     basicLatin: {
       regularExpression: /[\u0041-\u007F]/g,
@@ -83,6 +96,10 @@ quail.components.language = {
     }
   },
 
+  /**
+   * List of regular expressions that capture only unicode text blocks that are
+   * associated with a single language.
+   */
   scriptSingletons : {
     bn: /[\u0980-\u09FF]/g,
     bo: /[\u0F00-\u0FFF]/g,
@@ -107,6 +124,11 @@ quail.components.language = {
     zh: /[\u3100-\u312F]|[\u2F00-\u2FDF]/g
   },
 
+  /**
+   * Determines the document's language by looking at
+   * first the browser's default, then the HTML element's "lang" attribute,
+   * then the "lang" attribute of the element passed to quail.
+   */
   getDocumentLanguage: function(returnIso) {
     var language = navigator.language || navigator.userLanguage;
     if(typeof quail.options.language !== 'undefined') {
