@@ -1,3 +1,5 @@
+// Iterates over Techniques.
+
 quail.lib.WCAGGuideline = (function () {
 
   /**
@@ -55,6 +57,13 @@ quail.lib.WCAGGuideline = (function () {
       var test = quail.lib.Test(testname, details);
       this.push(test);
       return test;
+    },
+    evaluate: function () {
+      /* loop through all the techniques and evaluate them against the page. */
+    },
+    results: function (successCriteria) {
+      /* return evaluation results */
+      /* Filter by SC? */
     },
     push: [].push,
     sort: [].sort,

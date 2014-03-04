@@ -205,6 +205,10 @@ var quail = {
     return false;
   },
 
+  getGuideline: function (guidelineName) {
+    return null; /* a Guideline instance */
+  },
+
   /**
    * Utility function called whenever a test fails.
    * If there is a callback for testFailed, then it
@@ -537,5 +541,6 @@ var quail = {
 };
 
 var wcag = $.getJSON('/dist/guidelines/wcag.json', {}, function (result, status, jqXHR) {
+  debugger;
   var guideline = new quail.lib.WCAGGuideline(result.guidelines);
 });

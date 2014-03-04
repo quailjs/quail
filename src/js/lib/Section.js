@@ -1,41 +1,62 @@
 quail.lib.Section = (function () {
 
   /**
-   * A Section of a Guideline.
+   * A Collection of Tests.
    */
-  function Section (number, attributes) {
-    return new Section.fn.init(number, attributes);
+  function Section (id, details) {
+    return new Section.fn.init(id, details);
   }
 
   // Prototype object of the Section.
   Section.fn = Section.prototype = {
     constructor: Section,
-    init: function (number, attributes) {
-      this.attributes = attributes;
-      this.attributes.number = number;
-
+    init: function (id, details) {
+      if (!id) {
+        return this;
+      }
+      if (details.techniques && details.techniques.length) {
+        for (var i = 0, il = details.techniques.length; i < il; ++i) {
+          this.push(quail.lib.Technique(details.techniques[i]));
+        }
+        return this;
+      }
       return this;
     },
-    // Details of the Section.
-    attributes: {},
-    get: function (attr) {
-      return this.attributes[attr];
+    // Setting a length property makes it behave like an array.
+    length: 0,
+    // Execute a callback for every element in the matched set.
+    each: function (iterator) {
+      var args = [].slice(arguments, 1);
+      for (var i = 0, len = this.length; i < len; ++i) {
+        args.unshift(this[i]);
+        args.unshift(i);
+        iterator.apply(this[i], args);
+      }
+      return this;
     },
-    set: function (attr, value) {
-      // Allow an object of attributes to be passed in.
-      if (typeof attr === 'object') {
-        for (var prop in attr) {
-          if (attr.hasOwnProperty(prop)) {
-            this.attributes[prop] = attr[prop];
-          }
+    find: function (testname) {
+      for (var i = 0, il = this.length; i < il; ++i) {
+        if (this[i].get('name') === testname) {
+          return this[i];
         }
       }
-      // Assign a single attribute value.
-      else {
-        this.attributes[attr] = value;
+      // Return an empty Section for chaining.
+      return null;
+    },
+    set: function (testname, details) {
+      for (var i = 0, il = this.length; i < il; ++i) {
+        if (this[i].get('name') === testname) {
+          this[i].set(details);
+          return this[i];
+        }
       }
-      return this;
-    }
+      var test = quail.lib.Test(testname, details);
+      this.push(test);
+      return test;
+    },
+    push: [].push,
+    sort: [].sort,
+    splice: [].splice
   };
 
   // Give the init function the Section prototype.
