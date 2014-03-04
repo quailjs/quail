@@ -19,7 +19,7 @@
 
   <script>
     var libs = __testQuail.lib;
-    var _case, _test;
+    var _case, _test, _testCollection;
     __testQuail.html = $('body');
 
     module('Case');
@@ -130,6 +130,35 @@
         ok(_case instanceof libs.Case, 'Case is the constructor of _case');
       });
       equal(i, 1, 'Test.fn.each looped 2 times');
+    });
+
+    module('TestCollection');
+    test('Instantiation', function () {
+      _testCollection = new libs.TestCollection({'peregrine': {'bird': 'falcon'}});
+      ok(_testCollection instanceof libs.TestCollection, 'TestCollection is the constructor of _testCollection');
+    });
+    test('Set', function () {
+      _testCollection = new libs.TestCollection({'peregrine': {'bird': 'falcon'}});
+      _test = _testCollection.set('charlie', {'reptile': 'iguana'});
+      ok(_test instanceof libs.Test, 'Test is the constructor of _test');
+    });
+    test('Find', function () {
+      _testCollection = new libs.TestCollection({'peregrine': {'bird': 'falcon'}});
+      _test = _testCollection.find('peregrine');
+      equal('falcon', _test.get('bird'), 'TestCollection.fn.find retrieves the correct Test');
+    });
+    test('Iteration', function () {
+      _testCollection = new libs.TestCollection({
+        'peregrine': {'bird': 'falcon'},
+        'charlie': {'reptile': 'iguana'}
+      });
+      equal(_testCollection.length, 2, 'Two Tests were created');
+      var i;
+      _testCollection.each(function (index, _test) {
+        i = index;
+        ok(_test instanceof libs.Test, 'Test is the constructor of _test');
+      });
+      equal(i, 1, 'TestCollection.fn.each looped 2 times');
     });
   </script>
 </body>

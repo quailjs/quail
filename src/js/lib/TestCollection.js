@@ -3,9 +3,9 @@ quail.lib.TestCollection = (function () {
   /**
    * A Collection of Tests.
    */
-  var TestCollection = function (tests) {
+  function TestCollection (tests) {
     return new TestCollection.fn.init(tests);
-  };
+  }
 
   // Prototype object of the TestCollection.
   TestCollection.fn = TestCollection.prototype = {
