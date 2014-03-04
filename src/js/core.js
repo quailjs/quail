@@ -535,3 +535,7 @@ var quail = {
     return element && generateSelector(element);
   }
 };
+
+var wcag = $.getJSON('/dist/guidelines/wcag.json', {}, function (result, status, jqXHR) {
+  var guideline = new quail.lib.WCAGGuideline(result.guidelines);
+});
