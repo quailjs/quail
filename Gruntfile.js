@@ -31,13 +31,13 @@ module.exports = function(grunt) {
         banner: '<%= pkg.options.banner %>' + "\n" + ';(function($) {' + "\n",
         footer: "\n" + '})(jQuery);',
         stripBanners: true
-      },  
+      },
       dist: {
-        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js'],
+        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js', 'src/js/lib/*.js'],
         dest: 'dist/quail.jquery.js'
       },
       test: {
-        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js'],
+        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js', 'src/js/lib/*.js'],
         dest: 'test/quail-testing.jquery.js',
         options: {
           banner: '<%= pkg.options.banner %>' + "\n" + 'var __testQuail = {};(function($) {' + "\n",
@@ -57,8 +57,9 @@ module.exports = function(grunt) {
       }
     },
     qunit: {
-      all: ['test/quail.html'],
-      single: ['test/' + grunt.option('file')]
+      all: ['test/unit/*', 'test/quail.html'],
+      single: ['test/' + grunt.option('file')],
+      unit: ['test/unit/*']
     },
     jshint: {
       options: {
