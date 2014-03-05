@@ -3,23 +3,6 @@
  * color contrast/luminosity.
  */
 quail.components.color = function(testName, options) {
-  if(options.options.bodyForegroundAttribute && options.options.bodyBackgroundAttribute) {
-    var $body = quail.html.find('body').clone(false, false);
-    var foreground = $body.attr(options.options.bodyForegroundAttribute);
-    var background = $body.attr(options.options.bodyBackgroundAttribute);
-    if(typeof foreground === 'undefined') {
-      foreground = 'rgb(0,0,0)';
-    }
-    if(typeof background === 'undefined') {
-      foreground =  'rgb(255,255,255)';
-    }
-    $body.css('color', foreground);
-    $body.css('background-color', background);
-    if((options.options.algorithm === 'wcag' && !quail.colors.passesWCAG($body)) ||
-       (options.options.algorithm === 'wai' && !quail.colors.passesWAI($body))) {
-       quail.testFails(testName, $body);
-    }
-  }
   quail.html.find(options.options.selector).find(quail.textSelector).each(function() {
     if(!quail.isUnreadable($(this).text()) &&
        (options.options.algorithm === 'wcag' && !quail.colors.passesWCAG($(this))) ||
