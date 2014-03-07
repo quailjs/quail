@@ -58,7 +58,8 @@ aLinkTextDoesNotBeginWithRedundantWord:
   tags:
     - "link"
     - "content"
-  strings: "redundant.link"
+  strings:
+    - "redundant.link"
   callback: "aLinkTextDoesNotBeginWithRedundantWord"
 aLinksAreSeperatedByPrintableCharacters:
   type: "custom"
@@ -247,7 +248,8 @@ aSuspiciousLinkText:
   tags:
     - "link"
     - "content"
-  strings: "suspiciousLinks"
+  strings:
+    - "suspiciousLinks"
   callback: "aSuspiciousLinkText"
 aTitleDescribesDestination:
   type: "selector"
@@ -895,7 +897,8 @@ documentLangIsISO639Standard:
   tags:
     - "document"
     - "language"
-  strings: "languageCodes"
+  strings:
+    - "languageCodes"
   callback: "documentLangIsISO639Standard"
 documentLangNotIdentified:
   type: "selector"
@@ -1070,7 +1073,8 @@ documentVisualListsAreMarkedUp:
     - "list"
     - "semantics"
     - "content"
-  strings: "symbols"
+  strings:
+    - "symbols"
   callback: "documentVisualListsAreMarkedUp"
 embedHasAssociatedNoEmbed:
   type: "custom"
@@ -2322,7 +2326,8 @@ inputImageAltNotRedundant:
     - "form"
     - "image"
     - "content"
-  strings: "redundant.inputImage"
+  strings:
+    - "redundant.inputImage"
   callback: "inputImageAltNotRedundant"
 inputImageHasAlt:
   type: "selector"
@@ -3626,7 +3631,8 @@ siteMap:
           - "G63"
   tags:
     - "document"
-  strings: "siteMap"
+  strings:
+    - "siteMap"
   callback: "siteMap"
 skipToContentLinkProvided:
   type: "custom"
@@ -3644,6 +3650,8 @@ skipToContentLinkProvided:
           - "G1"
   tags:
     - "document"
+  strings:
+    - "skipContent"
   callback: "skipToContentLinkProvided"
 svgContainsTitle:
   type: "selector"

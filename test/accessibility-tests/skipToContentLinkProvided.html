@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <title>skipToContentLinkProvided</title>
+    <style>
+      #focus-visible {
+        position: absolute;
+        top: 0;
+        left: -9999px;
+      }
+
+      #focus-visible:focus {
+        left: 0px;
+      }
+    </style>
+</head>
+<body>
+    <div class="quail-test self-fail" data-expected="fail" data-accessibility-test="skipToContentLinkProvided">
+      <a href="somewhere.html">Somewhere else</a>
+      <div id="content">
+        This is the main page content.
+      </div>
+    </div>
+    <div class="quail-test self-fail" data-expected="fail" data-accessibility-test="skipToContentLinkProvided">
+      <a href="#content" style="display: none;">Skip to content</a>
+      <div id="content">
+        This is the main page content.
+      </div>
+    </div>
+    <div class="quail-test self-fail" data-expected="pass" data-accessibility-test="skipToContentLinkProvided">
+      <a href="#content">Skip to content</a>
+      <div id="content">
+        This is the main page content.
+      </div>
+    </div>
+
+    <div class="quail-test self-fail" data-expected="pass" data-accessibility-test="skipToContentLinkProvided">
+      <a href="#content" id="focus-visible">Skip to content</a>
+      <div id="content">
+        This is the main page content.
+      </div>
+    </div>
+    <script src="../testrunner.js"></script>
+</body>
+</html>
