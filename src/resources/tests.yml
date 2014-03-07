@@ -3629,7 +3629,7 @@ siteMap:
   strings: "siteMap"
   callback: "siteMap"
 skipToContentLinkProvided:
-  type: "selector"
+  type: "custom"
   testability: 0.5
   title:
     en: "A \"skip to content\" link should exist as one of the first links on the page"
@@ -3644,8 +3644,7 @@ skipToContentLinkProvided:
           - "G1"
   tags:
     - "document"
-  options:
-    selector: "body:not(body:has(a:first[href^=#]))"
+  callback: "skipToContentLinkProvided"
 svgContainsTitle:
   type: "selector"
   testability: 1
