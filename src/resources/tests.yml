@@ -58,7 +58,8 @@ aLinkTextDoesNotBeginWithRedundantWord:
   tags:
     - "link"
     - "content"
-  strings: "redundant.link"
+  strings:
+    - "redundant.link"
   callback: "aLinkTextDoesNotBeginWithRedundantWord"
 aLinksAreSeperatedByPrintableCharacters:
   type: "custom"
@@ -247,7 +248,8 @@ aSuspiciousLinkText:
   tags:
     - "link"
     - "content"
-  strings: "suspiciousLinks"
+  strings:
+    - "suspiciousLinks"
   callback: "aSuspiciousLinkText"
 aTitleDescribesDestination:
   type: "selector"
@@ -584,91 +586,6 @@ blockquoteUseForQuotations:
     - "blockquote"
     - "content"
   callback: "blockquoteUseForQuotations"
-bodyActiveLinkColorContrast:
-  type: "color"
-  testability: 1
-  title:
-    en: "Contrast between active link text and background should be 5:1"
-  description:
-    en: "The contrast ratio of active link text should be at lest 5:1 between the foreground text and the background. <a href=\"http://www.w3.org/TR/WCAG20/#contrast-ratiodef\">Learn more about color contrast and how to measure it.</a>"
-  guidelines: []
-  tags:
-    - "document"
-    - "color"
-  components:
-    - "color"
-  options:
-    algorithm: "wcag"
-    bodyBackgroundAttribute: "bgcolor"
-    bodyForegroundAttribute: "alink"
-    selector: "a:active"
-bodyColorContrast:
-  type: "color"
-  testability: 1
-  title:
-    en: "Contrast between text and background should be 5:1"
-  description:
-    en: "The contrast ratio of text should be at lest 5:1 between the foreground text and the background. <a href=\"http://www.w3.org/TR/WCAG20/#contrast-ratiodef\">Learn more about color contrast and how to measure it.</a>"
-  guidelines: []
-  tags:
-    - "document"
-    - "color"
-  components:
-    - "color"
-  options:
-    algorithm: "wcag"
-    bodyBackgroundAttribute: "bgcolor"
-    bodyForegroundAttribute: "text"
-    selector: "body"
-bodyLinkColorContrast:
-  type: "color"
-  testability: 1
-  title:
-    en: "Contrast between link text and background should be 5:1"
-  description:
-    en: "The contrast ratio of link text should be at lest 5:1 between the foreground text and the background. <a href=\"http://www.w3.org/TR/WCAG20/#contrast-ratiodef\">Learn more about color contrast and how to measure it.</a>"
-  guidelines: []
-  tags:
-    - "document"
-    - "color"
-  components:
-    - "color"
-  options:
-    algorithm: "wcag"
-    bodyBackgroundAttribute: "bgcolor"
-    bodyForegroundAttribute: "link"
-    selector: "a"
-bodyMustNotHaveBackground:
-  type: "selector"
-  testability: 1
-  title:
-    en: "Body elements do not use a background image"
-  description:
-    en: "The <code>body</code> element for the page may not have a \"background\" attribute."
-  guidelines: []
-  tags:
-    - "document"
-    - "color"
-  options:
-    selector: "body[background]"
-bodyVisitedLinkColorContrast:
-  type: "color"
-  testability: 1
-  title:
-    en: "Contrast between visited link text and background should be 5:1"
-  description:
-    en: "The contrast ratio of visited link text should be at lest 5:1 between the foreground text and the background. <a href=\"http://www.w3.org/TR/WCAG20/#contrast-ratiodef\">Learn more about color contrast and how to measure it.</a>"
-  guidelines: []
-  tags:
-    - "link"
-    - "color"
-  components:
-    - "color"
-  options:
-    algorithm: "wcag"
-    bodyBackgroundAttribute: "bgcolor"
-    bodyForegroundAttribute: "vlink"
-    selector: "a:visited"
 boldIsNotUsed:
   type: "selector"
   testability: 1
@@ -828,8 +745,6 @@ cssTextHasContrast:
     - "color"
   options:
     algorithm: "wcag"
-    bodyBackgroundAttribute: "color"
-    bodyForegroundAttribute: "background"
     selector: "*"
 doctypeProvided:
   type: "custom"
@@ -878,19 +793,6 @@ documentAcronymsHaveElement:
   components:
     - "acronym"
   callback: "documentAcronymsHaveElement"
-documentAllColorsAreSet:
-  type: "selector"
-  testability: 1
-  title:
-    en: "All the document colors must be set"
-  description:
-    en: "If any colors for text or the background are set in the <code>body</code> element, then all colors must be set."
-  guidelines: []
-  tags:
-    - "deprecated"
-    - "color"
-  options:
-    selector: "body:not(body[text][bgcolor][link][alink][vlink], body:not(body[text], body[bgcolor], body[link], body[alink], body[vlink]))"
 documentAutoRedirectNotUsed:
   type: "selector"
   testability: 1
@@ -903,62 +805,6 @@ documentAutoRedirectNotUsed:
     - "document"
   options:
     selector: "meta[http-equiv=refresh]"
-documentColorWaiActiveLinkAlgorithm:
-  type: "color"
-  testability: 1
-  guidelines: []
-  tags:
-    - "document"
-    - "color"
-  components:
-    - "color"
-  options:
-    algorithm: "wai"
-    bodyBackgroundAttribute: "bgcolor"
-    bodyForegroundAttribute: "alink"
-    selector: "a:active"
-documentColorWaiAlgorithm:
-  type: "color"
-  testability: 1
-  guidelines: []
-  tags:
-    - "document"
-    - "color"
-  components:
-    - "color"
-  options:
-    algorithm: "wai"
-    bodyBackgroundAttribute: "bgcolor"
-    bodyForegroundAttribute: "text"
-    selector: "body"
-documentColorWaiLinkAlgorithm:
-  type: "color"
-  testability: 1
-  guidelines: []
-  tags:
-    - "document"
-    - "color"
-  components:
-    - "color"
-  options:
-    algorithm: "wai"
-    bodyBackgroundAttribute: "bgcolor"
-    bodyForegroundAttribute: "link"
-    selector: "a"
-documentColorWaiVisitedLinkAlgorithm:
-  type: "color"
-  testability: 1
-  guidelines: []
-  tags:
-    - "document"
-    - "color"
-  components:
-    - "color"
-  options:
-    algorithm: "wai"
-    bodyBackgroundAttribute: "bgcolor"
-    bodyForegroundAttribute: "vlink"
-    selector: "a:visited"
 documentContentReadableWithoutStylesheets:
   type: "selector"
   testability: 0
@@ -1013,6 +859,7 @@ documentIDsMustBeUnique:
       4.1.1:
         techniques:
           - "F77"
+          - "H93"
   tags:
     - "document"
     - "semantics"
@@ -1050,7 +897,8 @@ documentLangIsISO639Standard:
   tags:
     - "document"
     - "language"
-  strings: "languageCodes"
+  strings:
+    - "languageCodes"
   callback: "documentLangIsISO639Standard"
 documentLangNotIdentified:
   type: "selector"
@@ -1225,7 +1073,8 @@ documentVisualListsAreMarkedUp:
     - "list"
     - "semantics"
     - "content"
-  strings: "symbols"
+  strings:
+    - "symbols"
   callback: "documentVisualListsAreMarkedUp"
 embedHasAssociatedNoEmbed:
   type: "custom"
@@ -2477,7 +2326,8 @@ inputImageAltNotRedundant:
     - "form"
     - "image"
     - "content"
-  strings: "redundant.inputImage"
+  strings:
+    - "redundant.inputImage"
   callback: "inputImageAltNotRedundant"
 inputImageHasAlt:
   type: "selector"
@@ -3781,10 +3631,11 @@ siteMap:
           - "G63"
   tags:
     - "document"
-  strings: "siteMap"
+  strings:
+    - "siteMap"
   callback: "siteMap"
 skipToContentLinkProvided:
-  type: "selector"
+  type: "custom"
   testability: 0.5
   title:
     en: "A \"skip to content\" link should exist as one of the first links on the page"
@@ -3799,8 +3650,9 @@ skipToContentLinkProvided:
           - "G1"
   tags:
     - "document"
-  options:
-    selector: "body:not(body:has(a:first[href^=#]))"
+  strings:
+    - "skipContent"
+  callback: "skipToContentLinkProvided"
 svgContainsTitle:
   type: "selector"
   testability: 1

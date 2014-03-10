@@ -440,6 +440,9 @@ var quail = {
       var selector = '';
       var attributes = ['href', 'type'];
       var value;
+      if(typeof element === 'undefined' || typeof element.attributes === 'undefined') {
+        return selector;
+      }
       // Try to make a selector from the element's classes.
       for (var i = 0, len = attributes.length; i < len; i++) {
         value = element.attributes[attributes[i]] && element.attributes[attributes[i]].value;
