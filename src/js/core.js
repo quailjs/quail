@@ -442,7 +442,9 @@ var quail = {
       var selector = '';
       var attributes = ['href', 'type'];
       var value;
-      if(typeof element === 'undefined' || typeof element.attributes === 'undefined') {
+      if(typeof element === 'undefined' ||
+        typeof element.attributes === 'undefined' ||
+        element.attributes === null) {
         return selector;
       }
       // Try to make a selector from the element's classes.
