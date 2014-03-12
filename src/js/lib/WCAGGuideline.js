@@ -12,14 +12,49 @@ quail.lib.WCAGGuideline = (function () {
   // Prototype object of the WCAGGuideline.
   WCAGGuideline.fn = WCAGGuideline.prototype = {
     constructor: WCAGGuideline,
-    init: function (guideline) {
-      if (!guideline) {
+    init: function (config) {
+      if (!config) {
         return this;
       }
-      if (typeof guideline === 'object') {
-        for (var sectionNumber in guideline) {
-          if (guideline.hasOwnProperty(sectionNumber)) {
-            this.push(quail.lib.Section(sectionNumber, guideline[sectionNumber]));
+      this.techniques = [];
+      var guidelines, section, techniques, techniqueName, technique;
+
+      if (typeof config === 'object') {
+        if (config.guidelines) {
+          guidelines = config.guidelines;
+          for (var sectionNumber in guidelines) {
+            if (guidelines.hasOwnProperty(sectionNumber)) {
+              section = guidelines[sectionNumber];
+              // Create a section object. Exclude techniques. These will be
+              // instantiated as object later.
+              if (section.techniques && section.techniques.length) {
+                techniques = section.techniques;
+                delete section.techniques;
+              }
+              // Instantiate a Section object.
+              section = quail.lib.Section(sectionNumber, section);
+              // Find all the techniques in the sections.
+              if (techniques.length) {
+                for (var i = 0, il = techniques.length; i < il; ++i) {
+                  techniqueName = techniques[i];
+                  // The technique requires a definition (description) within
+                  // the guideline.
+                  if (!config.techniques[techniqueName]) {
+                    throw new Error('Definition for Technique ' + techniqueName + ' is missing from the guideline specification');
+                  }
+                  // Create a new technique instance if this one does not exist
+                  // yet.
+                  technique = this.findTechnique(techniqueName);
+                  if (!technique) {
+                    technique = quail.lib.Technique(techniqueName, config.techniques[techniqueName]);
+                    this.techniques.push(technique);
+                  }
+                  // Add the technique to the currently processing section.
+                  section.addTechnique(technique);
+                }
+              }
+              this.push(section);
+            }
           }
         }
         return this;
@@ -44,7 +79,14 @@ quail.lib.WCAGGuideline = (function () {
           return this[i];
         }
       }
-      // Return an empty WCAGGuideline for chaining.
+      return null;
+    },
+    findTechnique : function (techniqueName) {
+      for (var i = 0, il = this.techniques.length; i < il; ++i) {
+        if (this.techniques[i].get('name') === techniqueName) {
+          return this.techniques[i];
+        }
+      }
       return null;
     },
     set: function (testname, details) {

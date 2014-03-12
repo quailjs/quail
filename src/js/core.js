@@ -10,7 +10,7 @@ $.fn.quail = function(options) {
   if(typeof quailBuilderTests !== 'undefined' && !options.accessibilityTests.length) {
     quail.options.accessibilityTests = quail.lib.TestCollection(quailBuilderTests);
   }
-  quail.run();
+  //quail.run();
 
   return this;
 };
@@ -109,6 +109,8 @@ var quail = {
   accessibilityResults : { },
 
   accessibilityTests : { },
+
+  tests : { },
 
   /**
    * A list of HTML elements that can contain actual text.
@@ -228,7 +230,7 @@ var quail = {
   */
   runTests : function() {
     $.each(quail.options.guideline, function(index, testName) {
-      var test = quail.accessibilityTests.find(testName);
+      var test = quail.tests.find(testName);
       if(!test) {
         return;
       }
@@ -543,7 +545,27 @@ var quail = {
   }
 };
 
-var wcag = $.getJSON('/dist/guidelines/wcag.json', {}, function (result, status, jqXHR) {
-  debugger;
-  var guideline = new quail.lib.WCAGGuideline(result.guidelines);
+$.getJSON('/dist/tests.json', {}, function (result, status, jqXHR) {
+  var tests;
+  quail.tests = new quail.lib.TestCollection(result);
+  // Register event listeners to the guideline Techniques.
+  var wcag = $.getJSON('/dist/guidelines/wcag.json', {}, function (result, status, jqXHR) {
+    var guideline = new quail.lib.WCAGGuideline(result);
+    // Round up the tests for each section in the guideline.
+    guideline.each(function (index, section) {
+      section.each(function (index, technique) {
+        // returns a TestCollection.
+        tests = quail.tests.findByGuideline('wcag', section, technique);
+        if (tests.length) {
+          // tests.listenTo(technique, 'invoke', tests.run);
+          technique.listenTo(tests, 'results', technique.report);
+        }
+      });
+    });
+  });
 });
+
+// Provide a global to access quail.
+if (window) {
+  window.quail = quail;
+}

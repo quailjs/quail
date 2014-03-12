@@ -34,6 +34,9 @@ quail.lib.Case = (function () {
         this.attributes[attr] = value;
       }
       return this;
+    },
+    evaluate: function () {
+
     }
   };
 

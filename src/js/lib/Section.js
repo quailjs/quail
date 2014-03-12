@@ -14,6 +14,8 @@ quail.lib.Section = (function () {
       if (!id) {
         return this;
       }
+      this.id = id;
+      // Create Technique instances for each technique in this section.
       if (details.techniques && details.techniques.length) {
         for (var i = 0, il = details.techniques.length; i < il; ++i) {
           this.push(quail.lib.Technique(details.techniques[i]));
@@ -26,7 +28,7 @@ quail.lib.Section = (function () {
     length: 0,
     // Execute a callback for every element in the matched set.
     each: function (iterator) {
-      var args = [].slice(arguments, 1);
+      var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
         args.unshift(i);
@@ -53,6 +55,14 @@ quail.lib.Section = (function () {
       var test = quail.lib.Test(testname, details);
       this.push(test);
       return test;
+    },
+    addTechnique: function (technique) {
+      // Register for result events on the technique.
+      //this.listenTo(technique, 'result', this.regiterTechniqueTestResult);
+      this.push(technique);
+    },
+    regiterTechniqueTestResult: function (event) {
+
     },
     push: [].push,
     sort: [].sort,
