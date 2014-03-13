@@ -113,6 +113,7 @@ if(typeof Tautologistics !== 'undefined') {
           if (element.type === Mode.Tag) {
               if (element.name.charAt(0) !== "/") { //Ignore closing tags that obviously don't have an opening tag
                   node = this._copyElement(element);
+                  node.closingTag = true;
                   this.dom.push(node);
                   if (!this.isEmptyTag(node)) { //Don't add tags to the tag stack that can't have children
                       this._tagStack.push(node);
@@ -130,7 +131,11 @@ if(typeof Tautologistics !== 'undefined') {
           } else { //Otherwise just add to the top level list
               this.dom.push(this._copyElement(element));
           }
-      } else { //There are parent elements
+      }
+      else { 
+          parent = this._tagStack.last();
+                  
+          //There are parent elements
           //If the element can be a container, add it as a child of the element
           //on top of the tag stack and then add it to the tag stack
           if (element.type === Mode.Tag) {
@@ -138,10 +143,11 @@ if(typeof Tautologistics !== 'undefined') {
                   //This is a closing tag, scan the tagStack to find the matching opening tag
                   //and pop the stack up to the opening tag's parent
                   var baseName = this._options.caseSensitiveTags ?
-                      element.name.substring(1)
-                      :
-                      element.name.substring(1).toLowerCase()
-                      ;
+                      element.name.substring(1) :
+                      element.name.substring(1).toLowerCase();
+                  if(parent.name === baseName) {
+                    parent.closingTag = true;
+                  }
                   if (!this.isEmptyTag(element)) {
                       var pos = this._tagStack.length - 1;
                       while (pos > -1 && this._tagStack[pos--].name !== baseName) { }
@@ -153,7 +159,6 @@ if(typeof Tautologistics !== 'undefined') {
                   }
               }
               else { //This is not a closing tag
-                  parent = this._tagStack.last();
                   if (element.type === Mode.Attr) {
                       if (!parent.attributes) {
                           parent.attributes = {};

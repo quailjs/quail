@@ -679,6 +679,23 @@ checkboxLabelIsNearby:
     - "labelProximity"
   options:
     selector: "input[type=checkbox]"
+closingTagsAreUsed:
+  type: "custom"
+  testability: 1
+  title:
+    en: "All tags that require closing tags have closing tags"
+  description:
+    en: "When using tags such as p, ul, or li, there must be a closing tag."
+  guidelines:
+    wcag:
+      4.1.1:
+        techniques:
+          - "H74"
+  tags:
+    - "html"
+  components:
+    - "htmlSource"
+  callback: "closingTagsAreUsed"
 contentPositioningShouldNotChangeMeaning:
   type: "custom"
   testability: 0.5

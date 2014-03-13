@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+	<title>closingTagsAreUsed</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="closingTagsAreUsed">
+		<p>This paragraph is fine</p>
+	</div>
+
+	<div class="quail-test" data-expected="fail" data-accessibility-test="closingTagsAreUsed">
+		<p class="quail-failed-element">This paragraph has no closing tag.</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="closingTagsAreUsed">
+			<div id="test-3">
+				<p>This paragraph is fine.</p>
+
+				<p>This paragraph is missing something.
+				</div>
+			</div>
+
+			<script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
+			<script src="../testrunner.js"></script>
+			<script>
+    (function(global) {
+      global.quailTest = function() {
+        $('body').quail({ jsonPath : '../../dist',
+                          guideline : [ 'closingTagsAreUsed' ],
+                          reset : true,
+                          htmlSource : '<div id="test-1"><p>This paragraph is fine</p></div>',
+                          complete: function(data) {
+                          	test('All tags were closed', function() {
+                          		equal(data.results.closingTagsAreUsed.elements.length, 0, 'No failed elements were found.');
+                          	});
+                          }
+                      });
+        $('body').quail({ jsonPath : '../../dist',
+                          guideline : [ 'closingTagsAreUsed' ],
+                          reset : true,
+                          htmlSource : '<div id="test-2"><p>This paragraph is missing something.</div>',
+                          complete: function(data) {
+                          	test('Only one element was not closed', function() {
+                          		equal(data.results.closingTagsAreUsed.elements.length, 1, 'One element was not closed.');
+                          	});
+                          }
+                      });
+				$('body').quail({ jsonPath : '../../dist',
+				                guideline : [ 'closingTagsAreUsed' ],
+				                reset : true,
+				                htmlSource : '<div id="test-3"><p>This paragraph is fine.</p><p>This paragraph is missing something.</div>',
+				                complete: function(data) {
+				                	test('Only one element was not closed', function() {
+				                		equal(data.results.closingTagsAreUsed.elements.length, 1, 'One element was not closed.');
+				                	});
+				                }
+				            });
+      };
+    })(this);
+  </script>
+</body>
+
+		</html>
