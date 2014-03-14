@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+	<title>idRefHasCorrespondingId</title>
+</head>
+<body>
+	<div class="quail-test" data-expected="fail" data-accessibility-test="idRefHasCorrespondingId" title="Div ID doesn't match idref">
+		<a href="something.html" class="quail-failed-element" idref="target">Link</a>
+		<div id="wrong">This DIV has an ID of "wrong"</div>
+	</div>
+	<div class="quail-test" data-expected="pass" data-accessibility-test="idRefHasCorrespondingId" title="Div ID matches idref">
+		<a href="something.html" idref="target">Link</a>
+		<div id="target">This DIV has an ID of "wrong"</div>
+	</div>
+
+	<script src="../testrunner.js"></script>
+</body>
+</html>
