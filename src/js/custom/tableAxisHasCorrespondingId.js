@@ -4,4 +4,4 @@ quail.tableAxisHasCorrespondingId = function() {
 			quail.testFails('tableAxisHasCorrespondingId', $(this));
 		}
 	});
-}
+};
