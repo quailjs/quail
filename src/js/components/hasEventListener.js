@@ -5,12 +5,12 @@ quail.components.hasEventListener = function(element, event) {
 	if(typeof $(element).attr('on' + event) !== 'undefined') {
 		return true;
 	}
-	//jQuery events are stored in private objects
+	// jQuery events are stored in private objects
 	if($._data($(element)[0], 'events') &&
 		typeof $._data($(element)[0], 'events')[event] !== 'undefined') {
 		return true;
 	}
-	//Certain elements always have default events, so we create a new element to compare default events.
+	// Certain elements always have default events, so we create a new element to compare default events.
 	if($(element).is('a[href], input, button, video, textarea') &&
 		typeof $(element)[0][event] !== 'undefined' &&
 		event === 'click') {

@@ -68,14 +68,14 @@ quail.components.htmlSource = {
     if(typeof Tautologistics === 'undefined') {
       return false;
     }
-    //NodeHtmlParser chokes on doctype tags
+    // NodeHtmlParser chokes on doctype tags
     html = html.replace(/<!doctype ([^>]*)>/g, '');
     var handler = new Tautologistics.NodeHtmlParser.HtmlBuilder(function(err, dom) { }, { });
     var parser = new Tautologistics.NodeHtmlParser.Parser(handler);
     parser.parseComplete(html);
     var parsed = handler.dom;
     var that = this;
-    //Traverse through the HTML objects and add a selector property
+    // Traverse through the HTML objects and add a selector property
     this.traverse(parsed, that.addSelector);
     return parsed;
   }
@@ -108,14 +108,14 @@ if(typeof Tautologistics !== 'undefined') {
       }
       var parent;
       var node;
-      if (!this._tagStack.last()) { //There are no parent elements
-          //If the element can be a container, add it to the tag stack and the top level list
+      if (!this._tagStack.last()) { // There are no parent elements
+          // If the element can be a container, add it to the tag stack and the top level list
           if (element.type === Mode.Tag) {
-              if (element.name.charAt(0) !== "/") { //Ignore closing tags that obviously don't have an opening tag
+              if (element.name.charAt(0) !== "/") { // Ignore closing tags that obviously don't have an opening tag
                   node = this._copyElement(element);
                   node.closingTag = true;
                   this.dom.push(node);
-                  if (!this.isEmptyTag(node)) { //Don't add tags to the tag stack that can't have children
+                  if (!this.isEmptyTag(node)) { // Don't add tags to the tag stack that can't have children
                       this._tagStack.push(node);
                   }
                   this._lastTag = node;
@@ -128,20 +128,20 @@ if(typeof Tautologistics !== 'undefined') {
                 this._lastTag.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] = [];
               }
               this._lastTag.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()].push(element.data);
-          } else { //Otherwise just add to the top level list
+          } else { // Otherwise just add to the top level list
               this.dom.push(this._copyElement(element));
           }
       }
       else { 
           parent = this._tagStack.last();
                   
-          //There are parent elements
-          //If the element can be a container, add it as a child of the element
-          //on top of the tag stack and then add it to the tag stack
+          // There are parent elements
+          // If the element can be a container, add it as a child of the element
+          // on top of the tag stack and then add it to the tag stack
           if (element.type === Mode.Tag) {
               if (element.name.charAt(0) === "/") {
-                  //This is a closing tag, scan the tagStack to find the matching opening tag
-                  //and pop the stack up to the opening tag's parent
+                  // This is a closing tag, scan the tagStack to find the matching opening tag
+                  // and pop the stack up to the opening tag's parent
                   var baseName = this._options.caseSensitiveTags ?
                       element.name.substring(1) :
                       element.name.substring(1).toLowerCase();
@@ -158,7 +158,7 @@ if(typeof Tautologistics !== 'undefined') {
                       }
                   }
               }
-              else { //This is not a closing tag
+              else { // This is not a closing tag
                   if (element.type === Mode.Attr) {
                       if (!parent.attributes) {
                           parent.attributes = {};
@@ -173,7 +173,7 @@ if(typeof Tautologistics !== 'undefined') {
                           parent.children = [];
                       }
                       parent.children.push(node);
-                      if (!this.isEmptyTag(node)) { //Don't add tags to the tag stack that can't have children
+                      if (!this.isEmptyTag(node)) { // Don't add tags to the tag stack that can't have children
                           this._tagStack.push(node);
                       }
                       if (element.type === Mode.Tag) {
@@ -182,7 +182,7 @@ if(typeof Tautologistics !== 'undefined') {
                   }
               }
           }
-          else { //This is not a container element
+          else { // This is not a container element
               parent = this._tagStack.last();
               if (element.type === Mode.Attr) {
                   if (!parent.attributes) {
