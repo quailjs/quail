@@ -559,7 +559,7 @@ blockquoteNotUsedForIndentation:
   title:
     en: "The \"blockquote\" tag should not be used just for indentation"
   description:
-    en: ".. code-block:: html"
+    en: "Blockquote tags are for long-form quotes, and should not be used to indent paragraphs. Use CSS to indent the paragraph instead."
   guidelines:
     wcag:
       1.3.1:
@@ -576,7 +576,7 @@ blockquoteUseForQuotations:
   title:
     en: "If long quotes are in the document, use the \"blockquote\" element to mark them"
   description:
-    en: ".. code-block:: html"
+    en: "If there is a paragraph or more of a quote, use the blockquote element to mark it as such."
   guidelines:
     wcag:
       1.3.1:
@@ -679,6 +679,23 @@ checkboxLabelIsNearby:
     - "labelProximity"
   options:
     selector: "input[type=checkbox]"
+closingTagsAreUsed:
+  type: "custom"
+  testability: 1
+  title:
+    en: "All tags that require closing tags have closing tags"
+  description:
+    en: "When using tags such as p, ul, or li, there must be a closing tag."
+  guidelines:
+    wcag:
+      4.1.1:
+        techniques:
+          - "H74"
+  tags:
+    - "html"
+  components:
+    - "htmlSource"
+  callback: "closingTagsAreUsed"
 contentPositioningShouldNotChangeMeaning:
   type: "custom"
   testability: 0.5
@@ -1422,7 +1439,7 @@ frameIsNotUsed:
   title:
     en: "Frames are not used"
   description:
-    en: ".. code-block:: html"
+    en: "Frames should not be used to organize a page."
   guidelines: []
   tags:
     - "deprecated"
@@ -1545,7 +1562,7 @@ framesetIsNotUsed:
   title:
     en: "The \"frameset\" element should not be used"
   description:
-    en: ".. code-block:: html"
+    en: "Frames and framesets should not be used to organize content."
   guidelines: []
   tags:
     - "deprecated"
@@ -1794,6 +1811,22 @@ headersUseToMarkSections:
     - "header"
     - "content"
   callback: "headersUseToMarkSections"
+idRefHasCorrespondingId:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Elements with an idref attribute must correspond to an element with an ID"
+  description:
+    en: "When using an idref attribute, the target element with the ID must exist on the page."
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
+          - "F17"
+      4.1.1:
+        techniques:
+          - "F17"
+  callback: "idRefHasCorrespondingId"
 iIsNotUsed:
   type: "selector"
   testability: 1
@@ -1813,7 +1846,7 @@ iframeMustNotHaveLongdesc:
   title:
     en: "Inline frames (\"iframes\") should not have a \"longdesc\" attribute"
   description:
-    en: ".. code-block:: html"
+    en: "Inline frames (iframe) should not have a \"longdesc\" attribute"
   guidelines: []
   tags:
     - "objects"
@@ -2562,7 +2595,7 @@ labelDoesNotContainInput:
   title:
     en: "Label elements should not contain an input element"
   description:
-    en: ".. code-block:: html"
+    en: "Label elements should not wrap around another input element, as this can cause the label to be read twice by screen readers."
   guidelines: []
   tags:
     - "form"
@@ -2594,7 +2627,7 @@ labelMustNotBeEmpty:
   title:
     en: "Labels must contain text"
   description:
-    en: ".. code-block:: html"
+    en: "Labels in forms must contain readable text that describes the target form element."
   guidelines:
     wcag:
       1.1.1:
@@ -3618,7 +3651,7 @@ selectWithOptionsHasOptgroup:
   title:
     en: "Form select elements should use optgroups for long selections"
   description:
-    en: ".. code-block:: html"
+    en: "If a select element has many options, use optgroups to help ease navigation."
   guidelines:
     wcag:
       1.3.1:
@@ -3686,6 +3719,22 @@ svgContainsTitle:
     - "content"
   options:
     selector: "svg:not(svg:has(title))"
+tableAxisHasCorrespondingId:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Axis attribute should have corresponding IDs"
+  description:
+    en: "When using the axis attribute to group cells together, ensure they have a target element with the same ID."
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
+          - "F17"
+      4.1.1:
+        techniques:
+          - "F17"
+  callback: "tableAxisHasCorrespondingId"
 tabIndexFollowsLogicalOrder:
   type: "custom"
   testability: 0.5

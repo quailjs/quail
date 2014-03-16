@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/kevee/quail.png?branch=master)](http://travis-ci.org/kevee/quail) [![Selenium Test Status](https://saucelabs.com/browser-matrix/quailjs.svg)](https://saucelabs.com/u/quailjs)
+[![Build Status](https://secure.travis-ci.org/quailjs/quail.png?branch=master)](http://travis-ci.org/kevee/quail) [![Selenium Test Status](https://saucelabs.com/browser-matrix/quailjs.svg)](https://saucelabs.com/u/quailjs)
 
 Quail: Accessibility Information Library
 ========================================

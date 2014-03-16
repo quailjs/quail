@@ -137,6 +137,12 @@ var quail = {
    * Regular expression to find emoticons.
    */
   emoticonRegex: /((?::|;|B|P|=)(?:-)?(?:\)|\(|o|O|D|P))/g,
+
+  /**
+   * A list of self-closing tags.
+   */
+  selfClosingTags : ['area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'],
+
   /**
    * Main run function for quail. It bundles up some accessibility tests,
    * and if tests are not passed, it instead fetches them using getJSON.
