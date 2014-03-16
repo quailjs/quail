@@ -21,7 +21,7 @@ aAdjacentWithSameResourceShouldBeCombined:
     - "link"
     - "content"
   callback: "aAdjacentWithSameResourceShouldBeCombined"
-aImgAltNotRepetative:
+aImgAltNotRepetitive:
   type: "custom"
   testability: 1
   title:
@@ -42,7 +42,7 @@ aImgAltNotRepetative:
   tags:
     - "link"
     - "content"
-  callback: "aImgAltNotRepetative"
+  callback: "aImgAltNotRepetitive"
 aLinkTextDoesNotBeginWithRedundantWord:
   type: "custom"
   testability: 0
