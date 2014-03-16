@@ -3119,7 +3119,7 @@ pNotUsedAsHeader:
     - "header"
     - "content"
   callback: "pNotUsedAsHeader"
-paragarphIsWrittenClearly:
+paragraphIsWrittenClearly:
   type: "custom"
   testability: 0.5
   guidelines:
@@ -3132,7 +3132,7 @@ paragarphIsWrittenClearly:
     - "content"
   components:
     - "textStatistics"
-  callback: "paragarphIsWrittenClearly"
+  callback: "paragraphIsWrittenClearly"
 passwordHasLabel:
   type: "label"
   testability: 1
