@@ -2,7 +2,6 @@ $.fn.quail = function(options) {
   if (!this.length) {
     return this;
   }
-  debugger;
   quail.options = options;
   quail.html = this;
 
@@ -209,7 +208,6 @@ var quail = {
       // Process the cases.
       var options = $.extend({},test.get('options'), quail.options);
       test.each(function (index, _case) {
-        debugger;
         _processTestResult(_case.get('status'), testName, $(_case.get('element')), options);
       });
 
@@ -263,7 +261,6 @@ var quail = {
    * @deprecated
    */
   testFails : function(testName, $element, options) {
-    debugger;
     _processTestResult('failed', testName, $element, options);
   },
 
