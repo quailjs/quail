@@ -7,7 +7,7 @@ $.fn.quail = function(options) {
   quail.html = this;
 
   // The quail builder at quailjs.org/build provides an in-scope test object.
-  if(typeof quailBuilderTests !== 'undefined' && !options.accessibilityTests.length) {
+  if (typeof quailBuilderTests !== 'undefined' && !options.accessibilityTests.length) {
     quail.options.accessibilityTests = quail.lib.TestCollection(quailBuilderTests);
   }
   quail.run();
@@ -15,7 +15,7 @@ $.fn.quail = function(options) {
   return this;
 };
 
-$.expr[':'].quailCss = function(obj, index, meta, stack) {
+$.expr[':'].quailCss = function(obj, index, meta) {
   var args = meta[3].split(/\s*=\s*/);
   return $(obj).css(args[0]).search(args[1]) > -1;
 };
@@ -41,8 +41,8 @@ function _processTestResult (type, testName, $element, options) {
     return typeof func === 'function' || typeof func === 'object';
   }
 
-  if(typeof quail.options.preFilter !== 'undefined') {
-    if(quail.options.preFilter(testName, $element, options) === false) {
+  if (typeof quail.options.preFilter !== 'undefined') {
+    if (quail.options.preFilter(testName, $element, options) === false) {
       return;
     }
   }
@@ -61,30 +61,30 @@ function _processTestResult (type, testName, $element, options) {
 
   // Invoke test listeners;
   switch (type) {
-    case 'inapplicable':
-      result.status = 'inapplicable';
-      if (isCallable(quail.options.testNotApplicable)) {
-        quail.options.testNotApplicable(info);
-      }
-      break;
-    case 'failed':
-      // @todo, this currently stores just the failures. We need to pass all
-      // results.
-      result.elements.push($element);
-      result.status = 'failed';
-      if (isCallable(quail.options.testFailed)) {
-        quail.options.testFailed(info);
-      }
-      break;
-    case 'passed':
-      result.status = 'passed';
-      if (isCallable(quail.options.testPassed)) {
-        quail.options.testPassed(info);
-      }
-      break;
-    case 'cantTell':
-    case 'untested':
-      break;
+  case 'inapplicable':
+    result.status = 'inapplicable';
+    if (isCallable(quail.options.testNotApplicable)) {
+      quail.options.testNotApplicable(info);
+    }
+    break;
+  case 'failed':
+    // @todo, this currently stores just the failures. We need to pass all
+    // results.
+    result.elements.push($element);
+    result.status = 'failed';
+    if (isCallable(quail.options.testFailed)) {
+      quail.options.testFailed(info);
+    }
+    break;
+  case 'passed':
+    result.status = 'passed';
+    if (isCallable(quail.options.testPassed)) {
+      quail.options.testPassed(info);
+    }
+    break;
+  case 'cantTell':
+  case 'untested':
+    break;
   }
 }
 
@@ -97,9 +97,9 @@ var quail = {
   lib : { },
 
   testabilityTranslation : {
-		0			: 'suggestion',
-		0.5		: 'moderate',
-		1			: 'severe'
+    0      : 'suggestion',
+    0.5    : 'moderate',
+    1      : 'severe'
   },
 
   html : { },
@@ -146,36 +146,42 @@ var quail = {
    * and if tests are not passed, it instead fetches them using getJSON.
    */
   run : function() {
-    if(quail.options.reset) {
+    if (quail.options.reset) {
       quail.accessibilityResults = { };
     }
-    if(quail.options.accessibilityTests.length) {
+    if (quail.options.accessibilityTests.length) {
       quail.accessibilityTests = quail.options.accessibilityTests;
     }
     else {
-      $.ajax({ url : quail.options.jsonPath + '/tests.json',
-               async : false,
-               dataType : 'json',
-               success : function(data) {
-                  if(typeof data === 'object') {
-                    quail.accessibilityTests = quail.lib.TestCollection(data);
-                  }
-              }});
+      $.ajax({
+        url : quail.options.jsonPath + '/tests.json',
+        async : false,
+        dataType : 'json',
+        success : function(data) {
+          if (typeof data === 'object') {
+            quail.accessibilityTests = quail.lib.TestCollection(data);
+          }
+        }
+      });
     }
-    if(typeof quail.options.customTests !== 'undefined') {
+    if (typeof quail.options.customTests !== 'undefined') {
       for (var testName in quail.options.customTests) {
-        quail.accessibilityTests.set(testName, quail.options.customTests[testName]);
+        if (quail.options.customTests.hasOwnProperty(testName)) {
+          quail.accessibilityTests.set(testName, quail.options.customTests[testName]);
+        }
       }
     }
-    if(typeof quail.options.guideline === 'string') {
-      $.ajax({ url : quail.options.jsonPath + '/guidelines/' + quail.options.guideline +'.tests.json',
-               async : false,
-               dataType : 'json',
-               success : function(data) {
-                  quail.options.guideline = data;
-              }});
+    if (typeof quail.options.guideline === 'string') {
+      $.ajax({
+        url : quail.options.jsonPath + '/guidelines/' + quail.options.guideline +'.tests.json',
+        async : false,
+        dataType : 'json',
+        success : function(data) {
+          quail.options.guideline = data;
+        }
+      });
     }
-    if(typeof quail.options.guideline === 'undefined') {
+    if (typeof quail.options.guideline === 'undefined') {
       quail.options.guideline = [ ];
       quail.accessibilityTests.each(function (index, test) {
         quail.options.guideline.push(test.get('name'));
@@ -184,7 +190,7 @@ var quail = {
 
     quail.runTests();
     // Call the complete callback.
-    if(typeof quail.options.complete !== 'undefined') {
+    if (typeof quail.options.complete !== 'undefined') {
       var results = {
         totals : {
           severe : 0,
@@ -231,7 +237,7 @@ var quail = {
   runTests : function() {
     $.each(quail.options.guideline, function(index, testName) {
       var test = quail.accessibilityTests.find(testName);
-      if(!test) {
+      if (!test) {
         return;
       }
 
@@ -256,7 +262,7 @@ var quail = {
    * phonetic tests.
    */
   isUnreadable : function(text) {
-    if(typeof text !== 'string') {
+    if (typeof text !== 'string') {
       return true;
     }
     return (text.trim().length) ? false : true;
@@ -267,44 +273,44 @@ var quail = {
    */
   isDataTable : function(table) {
     // If there are less than three rows, why do a table?
-    if(table.find('tr').length < 3) {
+    if (table.find('tr').length < 3) {
       return false;
     }
     // If you are scoping a table, it's probably not being used for layout
-    if(table.find('th[scope]').length) {
+    if (table.find('th[scope]').length) {
       return true;
     }
     var numberRows = table.find('tr:has(td)').length;
     // Check for odd cell spanning
     var spanCells = table.find('td[rowspan], td[colspan]');
     var isDataTable = true;
-    if(spanCells.length) {
+    if (spanCells.length) {
       var spanIndex = {};
       spanCells.each(function() {
-        if(typeof spanIndex[$(this).index()] === 'undefined') {
+        if (typeof spanIndex[$(this).index()] === 'undefined') {
           spanIndex[$(this).index()] = 0;
         }
         spanIndex[$(this).index()]++;
       });
       $.each(spanIndex, function(index, count) {
-        if(count < numberRows) {
+        if (count < numberRows) {
           isDataTable = false;
         }
       });
     }
     // If there are sub tables, but not in the same column row after row, this is a layout table
     var subTables = table.find('table');
-    if(subTables.length) {
+    if (subTables.length) {
       var subTablesIndexes = {};
       subTables.each(function() {
         var parentIndex = $(this).parent('td').index();
-        if(parentIndex !== false && typeof subTablesIndexes[parentIndex] === 'undefined') {
+        if (parentIndex !== false && typeof subTablesIndexes[parentIndex] === 'undefined') {
           subTablesIndexes[parentIndex] = 0;
         }
         subTablesIndexes[parentIndex]++;
       });
       $.each(subTablesIndexes, function(index, count) {
-        if(count < numberRows) {
+        if (count < numberRows) {
           isDataTable = false;
         }
       });
@@ -316,7 +322,7 @@ var quail = {
    *  Returns text contents for nodes depending on their semantics
    */
   getTextContents : function($element) {
-    if($element.is('p, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption')) {
+    if ($element.is('p, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption')) {
       return $element.text();
     }
     return $element.clone()
@@ -330,7 +336,7 @@ var quail = {
    * Helper function to determine if a given URL is even valid.
    */
   validURL : function(url) {
-    return (url.search(' ') === -1) ? true : false;
+    return url.search(' ') === -1;
   },
 
   cleanString : function(string) {
@@ -340,20 +346,20 @@ var quail = {
   containsReadableText : function(element, children) {
     element = element.clone();
     element.find('option').remove();
-    if(!quail.isUnreadable(element.text())) {
+    if (!quail.isUnreadable(element.text())) {
       return true;
     }
-    if(!quail.isUnreadable(element.attr('alt'))) {
+    if (!quail.isUnreadable(element.attr('alt'))) {
       return true;
     }
-    if(children) {
+    if (children) {
       var readable = false;
       element.find('*').each(function() {
-        if(quail.containsReadableText($(this), true)) {
+        if (quail.containsReadableText($(this), true)) {
           readable = true;
         }
       });
-      if(readable) {
+      if (readable) {
         return true;
       }
     }
@@ -442,7 +448,7 @@ var quail = {
       var selector = '';
       var attributes = ['href', 'type'];
       var value;
-      if(typeof element === 'undefined' ||
+      if (typeof element === 'undefined' ||
         typeof element.attributes === 'undefined' ||
         element.attributes === null) {
         return selector;

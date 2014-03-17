@@ -1,7 +1,5 @@
 quail.lib.Test = (function () {
 
-  var details;
-
   /**
    * A collection of Cases.
    */
@@ -53,14 +51,14 @@ quail.lib.Test = (function () {
       }
       return this;
     },
-    invoke: function (context) {
+    invoke: function () {
       var name = this.get('name');
       var type = this.get('type');
       var options = this.get('options') || {};
       var callback = this.get('callback');
       var test = this;
 
-      if(type === 'selector') {
+      if (type === 'selector') {
         // If options.filter is defined, then options.selector is collecting
         // a set of candidate elements; it is not simply a selector to find
         // elements that fail the test.
@@ -97,17 +95,17 @@ quail.lib.Test = (function () {
           });
         }
       }
-      else if(type === 'custom') {
-        if(typeof callback === 'object' || typeof callback === 'function') {
+      else if (type === 'custom') {
+        if (typeof callback === 'object' || typeof callback === 'function') {
           callback(quail);
         }
         else {
-          if(typeof quail[callback] !== 'undefined') {
+          if (typeof quail[callback] !== 'undefined') {
             quail[callback](quail);
           }
         }
       }
-      else if(typeof quail.components[type] !== 'undefined') {
+      else if (typeof quail.components[type] !== 'undefined') {
         quail.components[type](name, this.attributes);
       }
       return this;
