@@ -16,6 +16,7 @@
   "latedef": true,
   "newcap": true,
   "noarg": true,
+  "smarttabs": true,
   "sub": true,
   "undef": true
 }
