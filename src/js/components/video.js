@@ -25,7 +25,7 @@ quail.components.video = {
               async : false,
               dataType : 'json',
               success : function(data) {
-                callback((data.feed.openSearch$totalResults.$t > 0) ? true : false);
+                callback((data.feed.openSearch$totalResults.$t > 0));
               }
       });
     }

@@ -336,7 +336,7 @@ var quail = {
    * Helper function to determine if a given URL is even valid.
    */
   validURL : function(url) {
-    return (url.search(' ') === -1) ? true : false;
+    return url.search(' ') === -1;
   },
 
   cleanString : function(string) {
