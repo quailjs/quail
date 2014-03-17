@@ -30,6 +30,12 @@ quail.lib.TestCollection = (function () {
     },
     // Setting a length property makes it behave like an array.
     length: 0,
+    // Invoke all the tests in a set.
+    run: function () {
+      this.each(function (index, test) {
+        test.invoke();
+      });
+    },
     // Execute a callback for every element in the matched set.
     each: function (iterator) {
       var args = [].slice(arguments, 1);
