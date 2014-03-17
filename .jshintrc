@@ -4,6 +4,7 @@
   "curly": true,
   "eqeqeq": true,
   "eqnull": true,
+  "expr": true,
   "globals": {
     "guessLanguage": true,
     "process": true,
