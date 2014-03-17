@@ -17,7 +17,7 @@ quail.contentPositioningShouldNotChangeMeaning = function() {
 				}
 			}
 		});
-		
+
 		$.each(positions, function() {
 			$.each(coordinates[this], function() {
 				if(this > 2 && !failed) {

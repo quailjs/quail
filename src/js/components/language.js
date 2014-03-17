@@ -1,12 +1,12 @@
 quail.components.language = {
-  
+
   /**
    * The maximum distance possible between two trigram models.
    */
   maximumDistance: 300,
 
   /**
-   * Regular expressions to capture unicode blocks that are either 
+   * Regular expressions to capture unicode blocks that are either
    * explicitly right-to-left or left-to-right.
    */
   textDirection : {
@@ -20,7 +20,7 @@ quail.components.language = {
   scripts: {
     basicLatin: {
       regularExpression: /[\u0041-\u007F]/g,
-      languages: [    
+      languages: [
         "ceb",
         "en",
         "eu",
@@ -73,7 +73,7 @@ quail.components.language = {
     },
     arabic: {
       regularExpression:  /[\u0600-\u06FF]/g,
-      languages: [  
+      languages: [
         "ar",
         "fa",
         "ps",
@@ -81,8 +81,8 @@ quail.components.language = {
       ]
     },
     cryllic: {
-      regularExpression: /[\u0400-\u04FF]|[\u0500-\u052F]/g, 
-      languages: [  
+      regularExpression: /[\u0400-\u04FF]|[\u0500-\u052F]/g,
+      languages: [
         "bg",
         "kk",
         "ky",

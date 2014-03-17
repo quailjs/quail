@@ -132,9 +132,9 @@ if(typeof Tautologistics !== 'undefined') {
               this.dom.push(this._copyElement(element));
           }
       }
-      else { 
+      else {
           parent = this._tagStack.last();
-                  
+
           // There are parent elements
           // If the element can be a container, add it as a child of the element
           // on top of the tag stack and then add it to the tag stack

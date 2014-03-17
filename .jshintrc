@@ -18,5 +18,6 @@
   "noarg": true,
   "smarttabs": true,
   "sub": true,
+  "trailing": true,
   "undef": true
 }

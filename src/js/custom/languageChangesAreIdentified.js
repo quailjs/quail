@@ -32,7 +32,7 @@ quail.languageChangesAreIdentified = function() {
 		$element = $(this);
 		currentLanguage = findCurrentLanguage($element);
 		text = quail.getTextContents($element);
-		
+
 		$.each(quail.components.language.scriptSingletons, function(code, regularExpression) {
 			if(code === currentLanguage) {
 				return;

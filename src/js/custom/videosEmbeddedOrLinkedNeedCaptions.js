@@ -33,7 +33,7 @@ quail.videosEmbeddedOrLinkedNeedCaptions = function() {
       });
       if(!hasCaptions) {
         quail.testFails('videosEmbeddedOrLinkedNeedCaptions', $object);
-      }  
+      }
     }
   });
   quail.html.find('video').each(function() {

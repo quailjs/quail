@@ -3,7 +3,7 @@ quail.skipToContentLinkProvided = function() {
 	quail.html.find('a[href*="#"]').each(function() {
 		var $link = $(this);
 		$.each(quail.strings.skipContent, function() {
-			if($link.text().search(this) > -1 && 
+			if($link.text().search(this) > -1 &&
 					quail.html.find('#' + $link.attr('href').split('#').pop()).length
 					) {
 				$link.focus();
