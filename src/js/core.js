@@ -153,14 +153,16 @@ var quail = {
       quail.accessibilityTests = quail.options.accessibilityTests;
     }
     else {
-      $.ajax({ url : quail.options.jsonPath + '/tests.json',
-               async : false,
-               dataType : 'json',
-               success : function(data) {
-                  if(typeof data === 'object') {
-                    quail.accessibilityTests = quail.lib.TestCollection(data);
-                  }
-              }});
+      $.ajax({
+        url : quail.options.jsonPath + '/tests.json',
+        async : false,
+        dataType : 'json',
+        success : function(data) {
+          if(typeof data === 'object') {
+            quail.accessibilityTests = quail.lib.TestCollection(data);
+          }
+        }
+      });
     }
     if(typeof quail.options.customTests !== 'undefined') {
       for (var testName in quail.options.customTests) {
@@ -168,12 +170,14 @@ var quail = {
       }
     }
     if(typeof quail.options.guideline === 'string') {
-      $.ajax({ url : quail.options.jsonPath + '/guidelines/' + quail.options.guideline +'.tests.json',
-               async : false,
-               dataType : 'json',
-               success : function(data) {
-                  quail.options.guideline = data;
-              }});
+      $.ajax({
+        url : quail.options.jsonPath + '/guidelines/' + quail.options.guideline +'.tests.json',
+        async : false,
+        dataType : 'json',
+        success : function(data) {
+          quail.options.guideline = data;
+        }
+      });
     }
     if(typeof quail.options.guideline === 'undefined') {
       quail.options.guideline = [ ];

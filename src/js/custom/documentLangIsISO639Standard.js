@@ -4,6 +4,6 @@ quail.documentLangIsISO639Standard = function() {
     return;
   }
   if(quail.strings.languageCodes.indexOf(language) === -1) {
-      quail.testFails('documentLangIsISO639Standard', quail.html.find('html'));
+    quail.testFails('documentLangIsISO639Standard', quail.html.find('html'));
   }
 };

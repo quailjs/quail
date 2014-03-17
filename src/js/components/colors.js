@@ -93,11 +93,11 @@ quail.components.color = function(testName, options) {
      * Returns differences between two colors.
      */
     getWAIDiffs : function(foreground, background) {
-       var diff = { };
-       diff.red = Math.abs(foreground.r - background.r);
-       diff.green = Math.abs(foreground.g - background.g);
-       diff.blue = Math.abs(foreground.b - background.b);
-       return diff;
+      var diff = { };
+      diff.red = Math.abs(foreground.r - background.r);
+      diff.green = Math.abs(foreground.g - background.g);
+      diff.blue = Math.abs(foreground.b - background.b);
+      return diff;
     },
 
     /**
@@ -119,8 +119,8 @@ quail.components.color = function(testName, options) {
       element.parents().each(function(){
         if ($(this).css('background-color') !== 'rgba(0, 0, 0, 0)' &&
             $(this).css('background-color') !== 'transparent') {
-            color = $(this).css('background-color');
-            return false;
+          color = $(this).css('background-color');
+          return false;
         }
       });
       return color;
@@ -142,9 +142,9 @@ quail.components.color = function(testName, options) {
 
   quail.html.find(options.options.selector).find(quail.textSelector).each(function() {
     if(!quail.isUnreadable($(this).text()) &&
-       (options.options.algorithm === 'wcag' && !colors.passesWCAG($(this))) ||
-       (options.options.algorithm === 'wai' && !colors.passesWAI($(this)))) {
-       quail.testFails(testName, $(this));
+        (options.options.algorithm === 'wcag' && !colors.passesWCAG($(this))) ||
+        (options.options.algorithm === 'wai' && !colors.passesWAI($(this)))) {
+      quail.testFails(testName, $(this));
     }
   });
 };

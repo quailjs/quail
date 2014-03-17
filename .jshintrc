@@ -12,6 +12,7 @@
     "quailBuilderTests": true
   },
   "immed": true,
+  "indent": 2,
   "jquery": true,
   "latedef": true,
   "newcap": true,
