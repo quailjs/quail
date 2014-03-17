@@ -23,14 +23,14 @@ $.expr[':'].quailCss = function(obj, index, meta) {
 /**
  * Assembles data about the test and invokes appropriate callbacks.
  *
- * @param string type
+ * @param {string} type
  *   Possible values:  'inapplicable', 'failed', 'passed', 'cantTell',
  *   and 'untested'
- * @param string testName
+ * @param {string} testName
  *   The name of the test.
- * @param jQuery $element
+ * @param {jQuery} $element
  *   The DOM element, wrapped in jQuery, that the test was run against.
- * @param object options
+ * @param {object} options
  */
 function _processTestResult (type, testName, $element, options) {
   var test = quail.accessibilityTests.find(testName);
@@ -369,17 +369,17 @@ var quail = {
   /**
    * Creates a page-unique selector for the selected DOM element.
    *
-   * @param jQuery $element
+   * @param {jQuery} element
    *   An element in a jQuery wrapper.
    *
-   * @return String
+   * @return {string}
    *   A unique selector for this element.
    */
   defineUniqueSelector: function (element) {
     /**
      * Indicates whether the selector string represents a unique DOM element.
      *
-     * @param String selector
+     * @param {string} selector
      *   A string selector that can be used to query a DOM element.
      *
      * @return Boolean
@@ -394,9 +394,9 @@ var quail = {
      *
      * Temporary IDs created by the module that contain "visitorActions" are excluded.
      *
-     * @param DOM element
+     * @param {HTMLElement} element
      *
-     * @return String
+     * @return {string}
      *   An id selector or an empty string.
      */
     function applyID (element) {
@@ -414,9 +414,9 @@ var quail = {
      * Classes with known functional components like the word 'active' are
      * excluded because these often denote state, not identity.
      *
-     * @param DOM element
+     * @param {HTMLElement} element
      *
-     * @return String
+     * @return {string}
      *   A selector of classes or an empty string.
      */
     function applyClasses (element) {
@@ -439,9 +439,9 @@ var quail = {
     /**
      * Finds attributes on the element and creates a selector from them.
      *
-     * @param DOM element
+     * @param {HTMLElement} element
      *
-     * @return String
+     * @return {string}
      *   A selector of attributes or an empty string.
      */
     function applyAttributes (element) {
@@ -472,9 +472,9 @@ var quail = {
      * determined and is required, you will need to add a unique identifier
      * to the element through theming development.
      *
-     * @param DOM element
+     * @param {HTMLElement} element
      *
-     * @return String
+     * @return {string}
      *   A unique selector for the element.
      */
     function generateSelector (element) {
@@ -532,8 +532,8 @@ var quail = {
      * Helper function to filter items from a list that pass the comparator
      * test.
      *
-     * @param array list
-     * @param function comparator
+     * @param {Array} list
+     * @param {function} comparator
      *   A function that return a boolean. True means the list item will be
      *   discarded from the list.
      * @return array
