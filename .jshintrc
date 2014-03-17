@@ -1,20 +1,20 @@
 {
+  "boss": true,
+  "browser": true,
   "curly": true,
   "eqeqeq": true,
+  "eqnull": true,
+  "globals": {
+    "guessLanguage": true,
+    "process": true,
+    "quail": true,
+    "quailBuilderTests": true
+  },
   "immed": true,
+  "jquery": true,
   "latedef": true,
   "newcap": true,
   "noarg": true,
   "sub": true,
-  "undef": true,
-  "boss": true,
-  "eqnull": true,
-  "browser": true,
-  "jquery": true,
-  "globals": {
-    "quail": true,
-    "process": true,
-    "quailBuilderTests": true,
-    "guessLanguage": true
-  }
+  "undef": true
 }
