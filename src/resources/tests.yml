@@ -21,7 +21,7 @@ aAdjacentWithSameResourceShouldBeCombined:
     - "link"
     - "content"
   callback: "aAdjacentWithSameResourceShouldBeCombined"
-aImgAltNotRepetative:
+aImgAltNotRepetitive:
   type: "custom"
   testability: 1
   title:
@@ -42,7 +42,7 @@ aImgAltNotRepetative:
   tags:
     - "link"
     - "content"
-  callback: "aImgAltNotRepetative"
+  callback: "aImgAltNotRepetitive"
 aLinkTextDoesNotBeginWithRedundantWord:
   type: "custom"
   testability: 0
@@ -61,7 +61,7 @@ aLinkTextDoesNotBeginWithRedundantWord:
   strings:
     - "redundant.link"
   callback: "aLinkTextDoesNotBeginWithRedundantWord"
-aLinksAreSeperatedByPrintableCharacters:
+aLinksAreSeparatedByPrintableCharacters:
   type: "custom"
   testability: 1
   title:
@@ -72,7 +72,7 @@ aLinksAreSeperatedByPrintableCharacters:
   tags:
     - "link"
     - "content"
-  callback: "aLinksAreSeperatedByPrintableCharacters"
+  callback: "aLinksAreSeparatedByPrintableCharacters"
 aLinksDontOpenNewWindow:
   type: "custom"
   testability: 1
@@ -3119,7 +3119,7 @@ pNotUsedAsHeader:
     - "header"
     - "content"
   callback: "pNotUsedAsHeader"
-paragarphIsWrittenClearly:
+paragraphIsWrittenClearly:
   type: "custom"
   testability: 0.5
   guidelines:
@@ -3132,7 +3132,7 @@ paragarphIsWrittenClearly:
     - "content"
   components:
     - "textStatistics"
-  callback: "paragarphIsWrittenClearly"
+  callback: "paragraphIsWrittenClearly"
 passwordHasLabel:
   type: "label"
   testability: 1

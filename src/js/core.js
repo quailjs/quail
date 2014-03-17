@@ -6,7 +6,7 @@ $.fn.quail = function(options) {
   quail.options.accessibilityTests = quail.lib.TestCollection(options.accessibilityTests);
   quail.html = this;
 
-  //The quail builder at quailjs.org/build provides an in-scope test object.
+  // The quail builder at quailjs.org/build provides an in-scope test object.
   if(typeof quailBuilderTests !== 'undefined' && !options.accessibilityTests.length) {
     quail.options.accessibilityTests = quail.lib.TestCollection(quailBuilderTests);
   }
@@ -122,12 +122,12 @@ var quail = {
   suspectPHeaderTags : ['strong', 'b', 'em', 'i', 'u', 'font'],
 
   /**
-   * Suspect CSS styles that might indicate a paragarph tag is being used as a header.
+   * Suspect CSS styles that might indicate a paragraph tag is being used as a header.
    */
   suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
 
   /**
-   * Elements that can (naturally) recieve keyboard focus.
+   * Elements that can (naturally) receive keyboard focus.
    */
   focusElements : 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]',
 
@@ -266,16 +266,16 @@ var quail = {
    * Read more about this function here: https://github.com/kevee/quail/wiki/Layout-versus-data-tables
    */
   isDataTable : function(table) {
-    //If there are less than three rows, why do a table?
+    // If there are less than three rows, why do a table?
     if(table.find('tr').length < 3) {
       return false;
     }
-    //If you are scoping a table, it's probably not being used for layout
+    // If you are scoping a table, it's probably not being used for layout
     if(table.find('th[scope]').length) {
       return true;
     }
     var numberRows = table.find('tr:has(td)').length;
-    //Check for odd cell spanning
+    // Check for odd cell spanning
     var spanCells = table.find('td[rowspan], td[colspan]');
     var isDataTable = true;
     if(spanCells.length) {
@@ -292,7 +292,7 @@ var quail = {
         }
       });
     }
-    //If there are sub tables, but not in the same column row after row, this is a layout table
+    // If there are sub tables, but not in the same column row after row, this is a layout table
     var subTables = table.find('table');
     if(subTables.length) {
       var subTablesIndexes = {};

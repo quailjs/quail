@@ -80,7 +80,7 @@ quail.components.color = function(testName, options) {
     },
     
     /**
-     * Compused contrast of a foreground and background
+     * Computed contrast of a foreground and background
      * per the ERT brightness spec.
      */
     getWAIErtBrightness : function(foreground, background) {
