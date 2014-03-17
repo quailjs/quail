@@ -16,13 +16,11 @@ quail.components.textStatistics = {
   },
 
   sentenceCount : function(text) {
-    var copy = text;
-    return copy.split('.').length + 1;
+    return text.split('.').length + 1;
   },
 
   wordCount : function(text) {
-    var copy = text;
-    return copy.split(' ').length + 1;
+    return text.split(' ').length + 1;
   },
 
   averageWordsPerSentence : function(text) {

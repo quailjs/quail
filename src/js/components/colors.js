@@ -39,8 +39,7 @@ quail.components.color = function(testName, options) {
      */
     fetchImageColor : function() {
       var img = new Image();
-      var src = $(this).css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
-      img.src = src;
+      img.src = $(this).css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
       var can = document.createElement('canvas');
       var context = can.getContext('2d');
       context.drawImage(img, 0, 0);
