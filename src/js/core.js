@@ -61,30 +61,30 @@ function _processTestResult (type, testName, $element, options) {
 
   // Invoke test listeners;
   switch (type) {
-    case 'inapplicable':
-      result.status = 'inapplicable';
-      if (isCallable(quail.options.testNotApplicable)) {
-        quail.options.testNotApplicable(info);
-      }
-      break;
-    case 'failed':
-      // @todo, this currently stores just the failures. We need to pass all
-      // results.
-      result.elements.push($element);
-      result.status = 'failed';
-      if (isCallable(quail.options.testFailed)) {
-        quail.options.testFailed(info);
-      }
-      break;
-    case 'passed':
-      result.status = 'passed';
-      if (isCallable(quail.options.testPassed)) {
-        quail.options.testPassed(info);
-      }
-      break;
-    case 'cantTell':
-    case 'untested':
-      break;
+  case 'inapplicable':
+    result.status = 'inapplicable';
+    if (isCallable(quail.options.testNotApplicable)) {
+      quail.options.testNotApplicable(info);
+    }
+    break;
+  case 'failed':
+    // @todo, this currently stores just the failures. We need to pass all
+    // results.
+    result.elements.push($element);
+    result.status = 'failed';
+    if (isCallable(quail.options.testFailed)) {
+      quail.options.testFailed(info);
+    }
+    break;
+  case 'passed':
+    result.status = 'passed';
+    if (isCallable(quail.options.testPassed)) {
+      quail.options.testPassed(info);
+    }
+    break;
+  case 'cantTell':
+  case 'untested':
+    break;
   }
 }
 
