@@ -5,6 +5,7 @@
   "eqeqeq": true,
   "eqnull": true,
   "expr": true,
+  "forin": true,
   "globals": {
     "guessLanguage": true,
     "process": true,

@@ -166,7 +166,9 @@ var quail = {
     }
     if(typeof quail.options.customTests !== 'undefined') {
       for (var testName in quail.options.customTests) {
-        quail.accessibilityTests.set(testName, quail.options.customTests[testName]);
+        if (quail.options.customTests.hasOwnProperty(testName)) {
+          quail.accessibilityTests.set(testName, quail.options.customTests[testName]);
+        }
       }
     }
     if(typeof quail.options.guideline === 'string') {
