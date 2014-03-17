@@ -20,5 +20,6 @@
   "smarttabs": true,
   "sub": true,
   "trailing": true,
-  "undef": true
+  "undef": true,
+  "unused": true
 }

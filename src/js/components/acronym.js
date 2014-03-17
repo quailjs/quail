@@ -1,4 +1,4 @@
-quail.components.acronym = function(testName, acronymTag) {
+quail.components.acronym = function(testName) {
   var predefined = { };
   var alreadyReported = { };
   quail.html.find('acronym[title], abbr[title]').each(function() {

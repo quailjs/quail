@@ -70,7 +70,7 @@ quail.components.htmlSource = {
     }
     // NodeHtmlParser chokes on doctype tags
     html = html.replace(/<!doctype ([^>]*)>/g, '');
-    var handler = new Tautologistics.NodeHtmlParser.HtmlBuilder(function(err, dom) { }, { });
+    var handler = new Tautologistics.NodeHtmlParser.HtmlBuilder(function() { }, { });
     var parser = new Tautologistics.NodeHtmlParser.Parser(handler);
     parser.parseComplete(html);
     var parsed = handler.dom;

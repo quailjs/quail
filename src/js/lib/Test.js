@@ -1,7 +1,5 @@
 quail.lib.Test = (function () {
 
-  var details;
-
   /**
    * A collection of Cases.
    */
@@ -53,7 +51,7 @@ quail.lib.Test = (function () {
       }
       return this;
     },
-    invoke: function (context) {
+    invoke: function () {
       var name = this.get('name');
       var type = this.get('type');
       var options = this.get('options') || {};
