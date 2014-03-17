@@ -37,7 +37,7 @@ quail.scriptFocusIndicatorVisible = function() {
 
     // it is sufficient to not remove the default outline on focus: pass test
     var outlineWidth = quail.components.convertToPx($(this).css('outline-width'));
-    if(outlineWidth > 2 && outlineWidth !== quail.components.convertToPx(noFocus.outlineWidth)) {
+    if (outlineWidth > 2 && outlineWidth !== quail.components.convertToPx(noFocus.outlineWidth)) {
       $(this).blur();
       return;
     }
@@ -45,19 +45,19 @@ quail.scriptFocusIndicatorVisible = function() {
     // in any other case, it is acceptable to change other visual components
 
 
-    if(noFocus.backgroundColor !== $(this).css('background-color')) {
+    if (noFocus.backgroundColor !== $(this).css('background-color')) {
       $(this).blur();
       return;
     }
 
     var borderWidth = quail.components.convertToPx($(this).css('border-width'));
-    if(borderWidth > 2 && borderWidth !== quail.components.convertToPx(noFocus.borderWidth)) {
+    if (borderWidth > 2 && borderWidth !== quail.components.convertToPx(noFocus.borderWidth)) {
       $(this).blur();
       return;
     }
 
     var boxShadow = ($(this).css('box-shadow') && $(this).css('box-shadow') !== 'none') ? $(this).css('box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
-    if(boxShadow && $(this).css('box-shadow') !== noFocus.boxShadow && quail.components.convertToPx(boxShadow[3]) > 3) {
+    if (boxShadow && $(this).css('box-shadow') !== noFocus.boxShadow && quail.components.convertToPx(boxShadow[3]) > 3) {
       $(this).blur();
       return;
     }

@@ -7,19 +7,19 @@ quail.focusIndicatorVisible = function() {
       boxShadow : $(this).css('box-shadow')
     };
     $(this).focus();
-    if(noFocus.backgroundColor !== $(this).css('background-color')) {
+    if (noFocus.backgroundColor !== $(this).css('background-color')) {
       $(this).blur();
       return;
     }
 
     var borderWidth = quail.components.convertToPx($(this).css('border-width'));
-    if(borderWidth > 2 && borderWidth !== quail.components.convertToPx(noFocus.borderWidth)) {
+    if (borderWidth > 2 && borderWidth !== quail.components.convertToPx(noFocus.borderWidth)) {
       $(this).blur();
       return;
     }
 
     var boxShadow = ($(this).css('box-shadow') && $(this).css('box-shadow') !== 'none') ? $(this).css('box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
-    if(boxShadow && $(this).css('box-shadow') !== noFocus.boxShadow && quail.components.convertToPx(boxShadow[3]) > 3) {
+    if (boxShadow && $(this).css('box-shadow') !== noFocus.boxShadow && quail.components.convertToPx(boxShadow[3]) > 3) {
       $(this).blur();
       return;
     }

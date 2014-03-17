@@ -6,7 +6,7 @@ quail.imgGifNoFlicker = function() {
       async: false,
       dataType: 'text',
       success: function(data) {
-        if(data.search('NETSCAPE2.0') !== -1) {
+        if (data.search('NETSCAPE2.0') !== -1) {
           quail.testFails('imgGifNoFlicker', $image);
         }
       }

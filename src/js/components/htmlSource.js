@@ -3,32 +3,32 @@ quail.components.htmlSource = {
 
   getHtml: function(callback) {
     var that = this;
-    if(typeof quail.options.htmlSource !== 'undefined' && quail.options.htmlSource) {
+    if (typeof quail.options.htmlSource !== 'undefined' && quail.options.htmlSource) {
       callback(quail.options.htmlSource, that.parseHtml(quail.options.htmlSource));
       return;
     }
     var data = $.ajax({ url : window.location.href, async : false });
-    if(data && typeof data.responseText !== 'undefined') {
+    if (data && typeof data.responseText !== 'undefined') {
       callback(data.responseText, that.parseHtml(data.responseText));
     }
   },
 
   traverse: function(parsed, callback, number, alreadyCalled) {
     var that = this;
-    if(typeof alreadyCalled === 'undefined') {
+    if (typeof alreadyCalled === 'undefined') {
       callback(parsed, number, false);
     }
-    if(typeof parsed.children !== 'undefined') {
+    if (typeof parsed.children !== 'undefined') {
       parsed.childCount = 1;
       $.each(parsed.children, function(index, child) {
         callback(child, parsed.childCount, parsed);
         that.traverse(child, callback, parsed.childCount, true);
-        if(child.type === 'tag') {
+        if (child.type === 'tag') {
           parsed.childCount++;
         }
       });
     }
-    if($.isArray(parsed)) {
+    if ($.isArray(parsed)) {
       $.each(parsed, function(index, element) {
         that.traverse(element, callback);
       });
@@ -36,28 +36,28 @@ quail.components.htmlSource = {
   },
 
   addSelector: function(element, childNumber, parent) {
-    if(element.type !== 'tag' || typeof element.name === 'undefined') {
+    if (element.type !== 'tag' || typeof element.name === 'undefined') {
       return;
     }
-    if(typeof element.selector === 'undefined') {
+    if (typeof element.selector === 'undefined') {
       element.selector = (parent && typeof parent.selector !== 'undefined') ? parent.selector.slice() : [];
     }
     else {
       return;
     }
     var selector = element.name;
-    if(typeof element.attributes !== 'undefined') {
-      if(typeof element.attributes.id !== 'undefined') {
+    if (typeof element.attributes !== 'undefined') {
+      if (typeof element.attributes.id !== 'undefined') {
         selector += '#' + element.attributes.id[0];
       }
       else {
-        if(typeof element.attributes.class !== 'undefined') {
+        if (typeof element.attributes.class !== 'undefined') {
           selector += '.' + element.attributes.class[0].replace(/\s/, '.');
         }
       }
     }
 
-    if(childNumber && (typeof element.attributes === 'undefined' || typeof element.attributes.id === 'undefined')) {
+    if (childNumber && (typeof element.attributes === 'undefined' || typeof element.attributes.id === 'undefined')) {
       selector += ':nth-child('+ childNumber + ')';
     }
     element.selector.push(selector);
@@ -65,7 +65,7 @@ quail.components.htmlSource = {
   },
 
   parseHtml: function(html) {
-    if(typeof Tautologistics === 'undefined') {
+    if (typeof Tautologistics === 'undefined') {
       return false;
     }
     // NodeHtmlParser chokes on doctype tags
@@ -81,7 +81,7 @@ quail.components.htmlSource = {
   }
 };
 
-if(typeof Tautologistics !== 'undefined') {
+if (typeof Tautologistics !== 'undefined') {
   var Mode = {
     Text: 'text',
     Tag: 'tag',
@@ -124,7 +124,7 @@ if(typeof Tautologistics !== 'undefined') {
         if (!this._lastTag.attributes) {
           this._lastTag.attributes = {};
         }
-        if(typeof this._lastTag.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] === 'undefined') {
+        if (typeof this._lastTag.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] === 'undefined') {
           this._lastTag.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] = [];
         }
         this._lastTag.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()].push(element.data);
@@ -145,7 +145,7 @@ if(typeof Tautologistics !== 'undefined') {
           var baseName = this._options.caseSensitiveTags ?
             element.name.substring(1) :
             element.name.substring(1).toLowerCase();
-          if(parent.name === baseName) {
+          if (parent.name === baseName) {
             parent.closingTag = true;
           }
           if (!this.isEmptyTag(element)) {
@@ -164,7 +164,7 @@ if(typeof Tautologistics !== 'undefined') {
             if (!parent.attributes) {
               parent.attributes = {};
             }
-            if(typeof parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] === 'undefined') {
+            if (typeof parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] === 'undefined') {
               parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] = [];
             }
             parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()].push(element.data);
@@ -189,7 +189,7 @@ if(typeof Tautologistics !== 'undefined') {
           if (!parent.attributes) {
             parent.attributes = {};
           }
-          if(typeof parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] === 'undefined') {
+          if (typeof parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] === 'undefined') {
             parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] = [];
           }
           parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()].push(element.data);

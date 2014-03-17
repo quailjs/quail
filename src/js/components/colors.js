@@ -53,7 +53,7 @@ quail.components.color = function(testName, options) {
      * WCAG at a certain contrast ratio.
      */
     passesWCAG : function(element, level) {
-      if(typeof level === 'undefined') {
+      if (typeof level === 'undefined') {
         level = 5;
       }
       return (colors.getLuminosity(colors.getColor(element, 'foreground'), colors.getColor(element, 'background')) > level);
@@ -106,11 +106,11 @@ quail.components.color = function(testName, options) {
      * different browsers can return colors, and handling transparencies.
      */
     getColor : function(element, type) {
-      if(type === 'foreground') {
+      if (type === 'foreground') {
         return (element.css('color')) ? element.css('color') : 'rgb(255,255,255)';
       }
 
-      if((element.css('background-color') !== 'rgba(0, 0, 0, 0)' &&
+      if ((element.css('background-color') !== 'rgba(0, 0, 0, 0)' &&
           element.css('background-color') !== 'transparent') ||
          element.get(0).tagName === 'body') {
         return (element.css('background-color')) ? element.css('background-color') : 'rgb(0,0,0)';
@@ -141,7 +141,7 @@ quail.components.color = function(testName, options) {
   };
 
   quail.html.find(options.options.selector).find(quail.textSelector).each(function() {
-    if(!quail.isUnreadable($(this).text()) &&
+    if (!quail.isUnreadable($(this).text()) &&
         (options.options.algorithm === 'wcag' && !colors.passesWCAG($(this))) ||
         (options.options.algorithm === 'wai' && !colors.passesWAI($(this)))) {
       quail.testFails(testName, $(this));

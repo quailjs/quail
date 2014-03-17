@@ -6,12 +6,12 @@ quail.formWithRequiredLabel = function() {
     var text = $(this).text().toLowerCase();
     var $label = $(this);
     $.each(redundant.required, function(index, word) {
-      if(text.search(word) >= 0 && !quail.html.find('#' + $label.attr('for')).attr('aria-required')) {
+      if (text.search(word) >= 0 && !quail.html.find('#' + $label.attr('for')).attr('aria-required')) {
         quail.testFails('formWithRequiredLabel', $label);
       }
     });
     currentStyle = $label.css('color') + $label.css('font-weight') + $label.css('background-color');
-    if(lastStyle && currentStyle !== lastStyle) {
+    if (lastStyle && currentStyle !== lastStyle) {
       quail.testFails('formWithRequiredLabel', $label);
     }
     lastStyle = currentStyle;

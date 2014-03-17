@@ -1,5 +1,5 @@
 quail.documentValidatesToDocType = function() {
-  if(typeof document.doctype === 'undefined') {
+  if (typeof document.doctype === 'undefined') {
     return;
   }
 };

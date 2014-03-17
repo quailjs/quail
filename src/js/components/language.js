@@ -131,17 +131,17 @@ quail.components.language = {
    */
   getDocumentLanguage: function(returnIso) {
     var language = navigator.language || navigator.userLanguage;
-    if(typeof quail.options.language !== 'undefined') {
+    if (typeof quail.options.language !== 'undefined') {
       language = quail.options.language;
     }
-    if(quail.html.parents('[lang]').length) {
+    if (quail.html.parents('[lang]').length) {
       language = quail.html.parents('[lang]:first').attr('lang');
     }
-    if(typeof quail.html.attr('lang') !== 'undefined') {
+    if (typeof quail.html.attr('lang') !== 'undefined') {
       language = quail.html.attr('lang');
     }
     language = language.toLowerCase().trim();
-    if(returnIso) {
+    if (returnIso) {
       return language.split('-')[0];
     }
     return language;

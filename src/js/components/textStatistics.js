@@ -33,7 +33,7 @@ quail.components.textStatistics = {
     var that = this;
     var count = 0;
     var wordCount = that.wordCount(text);
-    if(!wordCount) {
+    if (!wordCount) {
       return 0;
     }
     $.each(text.split(' '), function(index, word) {
@@ -45,7 +45,7 @@ quail.components.textStatistics = {
   syllableCount : function(word) {
     var matchedWord = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
                           .match(/[aeiouy]{1,2}/g);
-    if(!matchedWord || matchedWord.length === 0) {
+    if (!matchedWord || matchedWord.length === 0) {
       return 1;
     }
     return matchedWord.length;

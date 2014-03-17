@@ -1,5 +1,5 @@
 quail.embedHasAssociatedNoEmbed = function() {
-  if(quail.html.find('noembed').length) {
+  if (quail.html.find('noembed').length) {
     return;
   }
   quail.html.find('embed').each(function() {
