@@ -16,7 +16,6 @@
   "indent": 2,
   "jquery": true,
   "latedef": true,
-  "newcap": true,
   "noarg": true,
   "smarttabs": true,
   "sub": true,
