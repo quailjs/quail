@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+	<title>elementAttributesAreValid</title>
+</head>
+<body>
+	<div>
+	<p>This paragraph is fine</p><a href="somewhere.html">This link is fine</a>
+	<a class="quail-failed-element" href="something.html>Link</a>
+	<a class="quail-failed-element" href="something.html"title="Something">Link</a>
+	<a class="quail-failed-element" href="something.html" title=Something Else>Link</a>
+	"</div>
+	<script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
+	<script src="../testrunner.js"></script>
+	<script>
+    (function(global) {
+      global.quailTest = function() {
+        $('body').quail({ jsonPath : '../../dist',
+                          guideline : [ 'elementAttributesAreValid' ],
+                          reset : true,
+                          htmlSource : '<p>This paragraph is fine</p><a href="somewhere.html">This link is fine</a>',
+                          complete: function(data) {
+                          	test('All attributes were well formed', function() {
+                          		equal(data.results.elementAttributesAreValid.elements.length, 0, 'No failed elements were found.');
+                          	});
+                          }
+                      });
+        $('body').quail({ jsonPath : '../../dist',
+                          guideline : [ 'elementAttributesAreValid' ],
+                          reset : true,
+                          htmlSource : '<a class="quail-failed-element" href="something.html>Link</a>',
+                          complete: function(data) {
+                          	test('Attribute was not closed with quote', function() {
+                          		equal(data.results.elementAttributesAreValid.elements.length, 1, 'One element was not closed.');
+                          	});
+                          }
+                      });
+				$('body').quail({ jsonPath : '../../dist',
+				                guideline : [ 'elementAttributesAreValid' ],
+				                reset : true,
+				                htmlSource : '<a class="quail-failed-element" href="something.html"title="Something">Link</a>',
+				                complete: function(data) {
+				                	test('Attributes not separated by a space', function() {
+				                		ok(data.results.elementAttributesAreValid.elements.length > 0, 'Attribute not separated by space.');
+				                	});
+				                }
+				            });
+				$('body').quail({ jsonPath : '../../dist',
+				                guideline : [ 'elementAttributesAreValid' ],
+				                reset : true,
+				                htmlSource : '<a class="quail-failed-element" href="something.html" title=Something Else>Link</a>',
+				                complete: function(data) {
+				                	console.log(data.results.elementAttributesAreValid);
+				                	test('No quote around attribute with space', function() {
+				                		ok(data.results.elementAttributesAreValid.elements.length > 0, 'No quote around attribute with space.');
+				                	});
+				                }
+				            });
+      };
+    })(this);
+  </script>
+</body>
+
+</html>

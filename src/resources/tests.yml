@@ -1108,6 +1108,18 @@ documentVisualListsAreMarkedUp:
   strings:
     - "symbols"
   callback: "documentVisualListsAreMarkedUp"
+elementAttributesAreValid:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Attributes should have spaces between them and be wrapped in quotes"
+  description:
+    en: ""
+  guidelines:
+    4.1.1:
+      techniques:
+        - "F70"
+  callback: "elementAttributesAreValid"
 embedHasAssociatedNoEmbed:
   type: "custom"
   testability: 1
@@ -3630,7 +3642,7 @@ selectJumpMenu:
   title:
     en: "Select jump menus should jump on button press, not on state change"
   description:
-    en: "If you wish to use a 'Jump' menu with a select item that then redirects users to another page, the jump should occur on the user pressing a button, rather than on the change event of that select eleemnt."
+    en: "If you wish to use a 'Jump' menu with a select item that then redirects users to another page, the jump should occur on the user pressing a button, rather than on the change event of that select elemnt."
   guidelines:
     wcag:
       3.2.2:
