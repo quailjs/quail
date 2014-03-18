@@ -10,7 +10,7 @@ $.fn.quail = function(options) {
   return this;
 };
 
-$.expr[':'].quailCss = function(obj, index, meta, stack) {
+$.expr[':'].quailCss = function(obj, index, meta) {
   var args = meta[3].split(/\s*=\s*/);
   return $(obj).css(args[0]).search(args[1]) > -1;
 };
@@ -18,14 +18,14 @@ $.expr[':'].quailCss = function(obj, index, meta, stack) {
 /**
  * Assembles data about the test and invokes appropriate callbacks.
  *
- * @param string type
+ * @param {string} type
  *   Possible values:  'inapplicable', 'failed', 'passed', 'cantTell',
  *   and 'untested'
- * @param string testName
+ * @param {string} testName
  *   The name of the test.
- * @param jQuery $element
+ * @param {jQuery} $element
  *   The DOM element, wrapped in jQuery, that the test was run against.
- * @param object options
+ * @param {object} options
  */
 function _processTestResult (type, testName, $element, options) {
   var test = quail.accessibilityTests.find(testName);
@@ -36,8 +36,8 @@ function _processTestResult (type, testName, $element, options) {
     return typeof func === 'function' || typeof func === 'object';
   }
 
-  if(typeof quail.options.preFilter !== 'undefined') {
-    if(quail.options.preFilter(testName, $element, options) === false) {
+  if (typeof quail.options.preFilter !== 'undefined') {
+    if (quail.options.preFilter(testName, $element, options) === false) {
       return;
     }
   }
@@ -56,35 +56,35 @@ function _processTestResult (type, testName, $element, options) {
 
   // Invoke test listeners;
   switch (type) {
-    case 'inapplicable':
-      result.status = 'inapplicable';
-      if (isCallable(quail.options.testNotApplicable)) {
-        quail.options.testNotApplicable(info);
-      }
-      break;
-    case 'failed':
-      // @todo, this currently stores just the failures. We need to pass all
-      // results.
-      result.elements.push($element);
-      result.status = 'failed';
-      if (isCallable(quail.options.testFailed)) {
-        quail.options.testFailed(info);
-      }
-      break;
-    case 'passed':
-      result.status = 'passed';
-      if (isCallable(quail.options.testPassed)) {
-        quail.options.testPassed(info);
-      }
-      break;
-    case 'cantTell':
-    case 'untested':
-      break;
-    default:
-      if (isCallable(quail.options.complete)) {
-        quail.options.complete(info);
-      }
-      break;
+  case 'inapplicable':
+    result.status = 'inapplicable';
+    if (isCallable(quail.options.testNotApplicable)) {
+      quail.options.testNotApplicable(info);
+    }
+    break;
+  case 'failed':
+    // @todo, this currently stores just the failures. We need to pass all
+    // results.
+    result.elements.push($element);
+    result.status = 'failed';
+    if (isCallable(quail.options.testFailed)) {
+      quail.options.testFailed(info);
+    }
+    break;
+  case 'passed':
+    result.status = 'passed';
+    if (isCallable(quail.options.testPassed)) {
+      quail.options.testPassed(info);
+    }
+    break;
+  case 'cantTell':
+  case 'untested':
+    break;
+  default:
+    if (isCallable(quail.options.complete)) {
+      quail.options.complete(info);
+    }
+    break;
   }
 }
 
@@ -97,9 +97,9 @@ var quail = {
   lib : { },
 
   testabilityTranslation : {
-		0			: 'suggestion',
-		0.5		: 'moderate',
-		1			: 'severe'
+    0      : 'suggestion',
+    0.5    : 'moderate',
+    1      : 'severe'
   },
 
   html : { },
@@ -125,12 +125,12 @@ var quail = {
   suspectPHeaderTags : ['strong', 'b', 'em', 'i', 'u', 'font'],
 
   /**
-   * Suspect CSS styles that might indicate a paragarph tag is being used as a header.
+   * Suspect CSS styles that might indicate a paragraph tag is being used as a header.
    */
   suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
 
   /**
-   * Elements that can (naturally) recieve keyboard focus.
+   * Elements that can (naturally) receive keyboard focus.
    */
   focusElements : 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]',
 
@@ -187,9 +187,11 @@ var quail = {
         }
       });
     }
-    if(typeof quail.options.customTests !== 'undefined') {
+    if (typeof quail.options.customTests !== 'undefined') {
       for (var testName in quail.options.customTests) {
-        quail.tests.set(testName, quail.options.customTests[testName]);
+        if (quail.options.customTests.hasOwnProperty(testName)) {
+          quail.tests.set(testName, quail.options.customTests[testName]);
+        }
       }
     }
     // @todo, make this a runtime configuration option.
@@ -231,12 +233,12 @@ var quail = {
     quail.tests.run();
   },
 
-    // @todo, make this a set of methods that all classes extend.
-    listenTo: function (dispatcher, eventName, handler) {
-      // @todo polyfill Function.prototype.bind.
-      handler = handler.bind(this);
-      dispatcher.registerListener.call(dispatcher, eventName, handler);
-    },
+  // @todo, make this a set of methods that all classes extend.
+  listenTo: function (dispatcher, eventName, handler) {
+    // @todo polyfill Function.prototype.bind.
+    handler = handler.bind(this);
+    dispatcher.registerListener.call(dispatcher, eventName, handler);
+  },
 
   getConfiguration : function(testName) {
     var test = this.tests.find(testName);
@@ -270,7 +272,7 @@ var quail = {
    * phonetic tests.
    */
   isUnreadable : function(text) {
-    if(typeof text !== 'string') {
+    if (typeof text !== 'string') {
       return true;
     }
     return (text.trim().length) ? false : true;
@@ -280,45 +282,45 @@ var quail = {
    * Read more about this function here: https://github.com/kevee/quail/wiki/Layout-versus-data-tables
    */
   isDataTable : function(table) {
-    //If there are less than three rows, why do a table?
-    if(table.find('tr').length < 3) {
+    // If there are less than three rows, why do a table?
+    if (table.find('tr').length < 3) {
       return false;
     }
-    //If you are scoping a table, it's probably not being used for layout
-    if(table.find('th[scope]').length) {
+    // If you are scoping a table, it's probably not being used for layout
+    if (table.find('th[scope]').length) {
       return true;
     }
     var numberRows = table.find('tr:has(td)').length;
-    //Check for odd cell spanning
+    // Check for odd cell spanning
     var spanCells = table.find('td[rowspan], td[colspan]');
     var isDataTable = true;
-    if(spanCells.length) {
+    if (spanCells.length) {
       var spanIndex = {};
       spanCells.each(function() {
-        if(typeof spanIndex[$(this).index()] === 'undefined') {
+        if (typeof spanIndex[$(this).index()] === 'undefined') {
           spanIndex[$(this).index()] = 0;
         }
         spanIndex[$(this).index()]++;
       });
       $.each(spanIndex, function(index, count) {
-        if(count < numberRows) {
+        if (count < numberRows) {
           isDataTable = false;
         }
       });
     }
-    //If there are sub tables, but not in the same column row after row, this is a layout table
+    // If there are sub tables, but not in the same column row after row, this is a layout table
     var subTables = table.find('table');
-    if(subTables.length) {
+    if (subTables.length) {
       var subTablesIndexes = {};
       subTables.each(function() {
         var parentIndex = $(this).parent('td').index();
-        if(parentIndex !== false && typeof subTablesIndexes[parentIndex] === 'undefined') {
+        if (parentIndex !== false && typeof subTablesIndexes[parentIndex] === 'undefined') {
           subTablesIndexes[parentIndex] = 0;
         }
         subTablesIndexes[parentIndex]++;
       });
       $.each(subTablesIndexes, function(index, count) {
-        if(count < numberRows) {
+        if (count < numberRows) {
           isDataTable = false;
         }
       });
@@ -330,7 +332,7 @@ var quail = {
    *  Returns text contents for nodes depending on their semantics
    */
   getTextContents : function($element) {
-    if($element.is('p, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption')) {
+    if ($element.is('p, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption')) {
       return $element.text();
     }
     return $element.clone()
@@ -344,7 +346,7 @@ var quail = {
    * Helper function to determine if a given URL is even valid.
    */
   validURL : function(url) {
-    return (url.search(' ') === -1) ? true : false;
+    return url.search(' ') === -1;
   },
 
   cleanString : function(string) {
@@ -354,20 +356,20 @@ var quail = {
   containsReadableText : function(element, children) {
     element = element.clone();
     element.find('option').remove();
-    if(!quail.isUnreadable(element.text())) {
+    if (!quail.isUnreadable(element.text())) {
       return true;
     }
-    if(!quail.isUnreadable(element.attr('alt'))) {
+    if (!quail.isUnreadable(element.attr('alt'))) {
       return true;
     }
-    if(children) {
+    if (children) {
       var readable = false;
       element.find('*').each(function() {
-        if(quail.containsReadableText($(this), true)) {
+        if (quail.containsReadableText($(this), true)) {
           readable = true;
         }
       });
-      if(readable) {
+      if (readable) {
         return true;
       }
     }
@@ -377,17 +379,17 @@ var quail = {
   /**
    * Creates a page-unique selector for the selected DOM element.
    *
-   * @param jQuery $element
+   * @param {jQuery} element
    *   An element in a jQuery wrapper.
    *
-   * @return String
+   * @return {string}
    *   A unique selector for this element.
    */
   defineUniqueSelector: function (element) {
     /**
      * Indicates whether the selector string represents a unique DOM element.
      *
-     * @param String selector
+     * @param {string} selector
      *   A string selector that can be used to query a DOM element.
      *
      * @return Boolean
@@ -402,9 +404,9 @@ var quail = {
      *
      * Temporary IDs created by the module that contain "visitorActions" are excluded.
      *
-     * @param DOM element
+     * @param {HTMLElement} element
      *
-     * @return String
+     * @return {string}
      *   An id selector or an empty string.
      */
     function applyID (element) {
@@ -422,9 +424,9 @@ var quail = {
      * Classes with known functional components like the word 'active' are
      * excluded because these often denote state, not identity.
      *
-     * @param DOM element
+     * @param {HTMLElement} element
      *
-     * @return String
+     * @return {string}
      *   A selector of classes or an empty string.
      */
     function applyClasses (element) {
@@ -447,16 +449,16 @@ var quail = {
     /**
      * Finds attributes on the element and creates a selector from them.
      *
-     * @param DOM element
+     * @param {HTMLElement} element
      *
-     * @return String
+     * @return {string}
      *   A selector of attributes or an empty string.
      */
     function applyAttributes (element) {
       var selector = '';
       var attributes = ['href', 'type'];
       var value;
-      if(typeof element === 'undefined' ||
+      if (typeof element === 'undefined' ||
         typeof element.attributes === 'undefined' ||
         element.attributes === null) {
         return selector;
@@ -480,9 +482,9 @@ var quail = {
      * determined and is required, you will need to add a unique identifier
      * to the element through theming development.
      *
-     * @param DOM element
+     * @param {HTMLElement} element
      *
-     * @return String
+     * @return {string}
      *   A unique selector for the element.
      */
     function generateSelector (element) {
@@ -540,8 +542,8 @@ var quail = {
      * Helper function to filter items from a list that pass the comparator
      * test.
      *
-     * @param array list
-     * @param function comparator
+     * @param {Array} list
+     * @param {function} comparator
      *   A function that return a boolean. True means the list item will be
      *   discarded from the list.
      * @return array

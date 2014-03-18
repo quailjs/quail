@@ -12,28 +12,26 @@ quail.components.textStatistics = {
                .replace(/[ ]*([\.])/, '$1')
                .replace(/[ ]+/, ' ')
                .toLowerCase();
-               
+
   },
-  
+
   sentenceCount : function(text) {
-    var copy = text;
-    return copy.split('.').length + 1;
+    return text.split('.').length + 1;
   },
-  
+
   wordCount : function(text) {
-    var copy = text;
-    return copy.split(' ').length + 1;
+    return text.split(' ').length + 1;
   },
-  
+
   averageWordsPerSentence : function(text) {
     return this.wordCount(text) / this.sentenceCount(text);
   },
-  
+
   averageSyllablesPerWord : function(text) {
     var that = this;
     var count = 0;
     var wordCount = that.wordCount(text);
-    if(!wordCount) {
+    if (!wordCount) {
       return 0;
     }
     $.each(text.split(' '), function(index, word) {
@@ -41,11 +39,11 @@ quail.components.textStatistics = {
     });
     return count / wordCount;
   },
-  
+
   syllableCount : function(word) {
     var matchedWord = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
                           .match(/[aeiouy]{1,2}/g);
-    if(!matchedWord || matchedWord.length === 0) {
+    if (!matchedWord || matchedWord.length === 0) {
       return 1;
     }
     return matchedWord.length;

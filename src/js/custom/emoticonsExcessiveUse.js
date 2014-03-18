@@ -3,14 +3,14 @@ quail.emoticonsExcessiveUse = function() {
   quail.html.find(quail.textSelector).each(function() {
     var $element = $(this);
     $.each($element.text().split(' '), function(index, word) {
-      if(word.search(quail.emoticonRegex) > -1 ) {
+      if (word.search(quail.emoticonRegex) > -1 ) {
         count++;
       }
-      if(count > 4) {
+      if (count > 4) {
         return;
       }
     });
-    if(count > 4) {
+    if (count > 4) {
       quail.testFails('emoticonsExcessiveUse', $element);
     }
   });

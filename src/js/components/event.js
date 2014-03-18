@@ -7,7 +7,7 @@ quail.components.event = function(testName, options) {
                 quail.html.find('*') :
                 quail.html.find(options.options.selector);
   $items.each(function() {
-    if(quail.components.hasEventListener($(this), options.options.searchEvent.replace('on', '')) &&
+    if (quail.components.hasEventListener($(this), options.options.searchEvent.replace('on', '')) &&
          (typeof options.options.correspondingEvent === 'undefined' ||
          !quail.components.hasEventListener($(this), options.options.correspondingEvent.replace('on', '')))) {
       quail.testFails(testName, $(this));

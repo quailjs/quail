@@ -1,20 +1,26 @@
 {
+  "boss": true,
+  "browser": true,
   "curly": true,
   "eqeqeq": true,
+  "eqnull": true,
+  "expr": true,
+  "forin": true,
+  "globals": {
+    "guessLanguage": true,
+    "process": true,
+    "quail": true,
+    "quailBuilderTests": true
+  },
   "immed": true,
+  "indent": 2,
+  "jquery": true,
   "latedef": true,
   "newcap": true,
   "noarg": true,
+  "smarttabs": true,
   "sub": true,
+  "trailing": true,
   "undef": true,
-  "boss": true,
-  "eqnull": true,
-  "browser": true,
-  "jquery": true,
-  "globals": {
-    "quail": true,
-    "process": true,
-    "quailBuilderTests": true,
-    "guessLanguage": true
-  }
+  "unused": true
 }

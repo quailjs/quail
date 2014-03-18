@@ -6,12 +6,12 @@ quail.imgMapAreasHaveDuplicateLink = function() {
   quail.html.find('img[usemap]').each(function() {
     var $image = $(this);
     var $map = quail.html.find($image.attr('usemap'));
-    if(!$map.length) {
+    if (!$map.length) {
       $map = quail.html.find('map[name="' + $image.attr('usemap').replace('#', '') + '"]');
     }
-    if($map.length) {
+    if ($map.length) {
       $map.find('area').each(function() {
-        if(typeof links[$(this).attr('href')] === 'undefined') {
+        if (typeof links[$(this).attr('href')] === 'undefined') {
           quail.testFails('imgMapAreasHaveDuplicateLink', $image);
         }
       });

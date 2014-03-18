@@ -3,16 +3,16 @@ quail.siteMap = function() {
   quail.html.find('a').each(function() {
     var text = $(this).text().toLowerCase();
     $.each(quail.strings.siteMap, function(index, string) {
-      if(text.search(string) > -1) {
+      if (text.search(string) > -1) {
         set = false;
         return;
       }
     });
-    if(set === false) {
+    if (set === false) {
       return;
     }
   });
-  if(set) {
+  if (set) {
     quail.testFails('siteMap', quail.html.find('body'));
   }
 };

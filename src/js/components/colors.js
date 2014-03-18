@@ -12,7 +12,7 @@ quail.components.color = function(testName, options) {
     getLuminosity : function(foreground, background) {
       foreground = this.cleanup(foreground);
       background = this.cleanup(background);
-      
+
       var RsRGB = foreground.r/255;
       var GsRGB = foreground.g/255;
       var BsRGB = foreground.b/255;
@@ -39,9 +39,8 @@ quail.components.color = function(testName, options) {
      */
     fetchImageColor : function() {
       var img = new Image();
-      var src = $(this).css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
-      img.src = src;
-      var can = document.createElement('canvas'); 
+      img.src = $(this).css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
+      var can = document.createElement('canvas');
       var context = can.getContext('2d');
       context.drawImage(img, 0, 0);
       var data = context.getImageData(0, 0, 1, 1).data;
@@ -53,7 +52,7 @@ quail.components.color = function(testName, options) {
      * WCAG at a certain contrast ratio.
      */
     passesWCAG : function(element, level) {
-      if(typeof level === 'undefined') {
+      if (typeof level === 'undefined') {
         level = 5;
       }
       return (colors.getLuminosity(colors.getColor(element, 'foreground'), colors.getColor(element, 'background')) > level);
@@ -69,7 +68,7 @@ quail.components.color = function(testName, options) {
       return (colors.getWAIErtContrast(foreground, background) > 500 &&
               colors.getWAIErtBrightness(foreground, background) > 125);
     },
-    
+
     /**
      * Compused contrast of a foreground and background
      * per the ERT contrast spec.
@@ -78,9 +77,9 @@ quail.components.color = function(testName, options) {
       var diffs = colors.getWAIDiffs(foreground, background);
       return diffs.red + diffs.green + diffs.blue;
     },
-    
+
     /**
-     * Compused contrast of a foreground and background
+     * Computed contrast of a foreground and background
      * per the ERT brightness spec.
      */
     getWAIErtBrightness : function(foreground, background) {
@@ -93,24 +92,24 @@ quail.components.color = function(testName, options) {
      * Returns differences between two colors.
      */
     getWAIDiffs : function(foreground, background) {
-       var diff = { };
-       diff.red = Math.abs(foreground.r - background.r);
-       diff.green = Math.abs(foreground.g - background.g);
-       diff.blue = Math.abs(foreground.b - background.b);
-       return diff;
+      var diff = { };
+      diff.red = Math.abs(foreground.r - background.r);
+      diff.green = Math.abs(foreground.g - background.g);
+      diff.blue = Math.abs(foreground.b - background.b);
+      return diff;
     },
-    
+
     /**
      * Retrieves the background or foreground of an element.
      * There are some normalizations here for the way
      * different browsers can return colors, and handling transparencies.
      */
     getColor : function(element, type) {
-      if(type === 'foreground') {
+      if (type === 'foreground') {
         return (element.css('color')) ? element.css('color') : 'rgb(255,255,255)';
       }
-      
-      if((element.css('background-color') !== 'rgba(0, 0, 0, 0)' &&
+
+      if ((element.css('background-color') !== 'rgba(0, 0, 0, 0)' &&
           element.css('background-color') !== 'transparent') ||
          element.get(0).tagName === 'body') {
         return (element.css('background-color')) ? element.css('background-color') : 'rgb(0,0,0)';
@@ -119,13 +118,13 @@ quail.components.color = function(testName, options) {
       element.parents().each(function(){
         if ($(this).css('background-color') !== 'rgba(0, 0, 0, 0)' &&
             $(this).css('background-color') !== 'transparent') {
-            color = $(this).css('background-color');
-            return false;
+          color = $(this).css('background-color');
+          return false;
         }
       });
       return color;
     },
-    
+
     /**
      * Returns an object with rgba taken from a string.
      */
@@ -141,10 +140,10 @@ quail.components.color = function(testName, options) {
   };
 
   quail.html.find(options.options.selector).find(quail.textSelector).each(function() {
-    if(!quail.isUnreadable($(this).text()) &&
-       (options.options.algorithm === 'wcag' && !colors.passesWCAG($(this))) ||
-       (options.options.algorithm === 'wai' && !colors.passesWAI($(this)))) {
-       quail.testFails(testName, $(this));
+    if (!quail.isUnreadable($(this).text()) &&
+        (options.options.algorithm === 'wcag' && !colors.passesWCAG($(this))) ||
+        (options.options.algorithm === 'wai' && !colors.passesWAI($(this)))) {
+      quail.testFails(testName, $(this));
     }
   });
 };
