@@ -1108,6 +1108,25 @@ documentVisualListsAreMarkedUp:
   strings:
     - "symbols"
   callback: "documentVisualListsAreMarkedUp"
+domOrderMatchesVisualOrder:
+  type: "selector"
+  testability: 0.5
+  title:
+    en: "Ensure that the visual order of the page matches the DOM"
+  description:
+    en: "When using positioning techniques, make sure that the visual order of the page matches the DOM."
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
+          - "C27"
+      2.4.3:
+        techniques:
+          - "C27"
+  tags:
+    - "content"
+  options:
+    selector: "*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)"
 elementAttributesAreValid:
   type: "custom"
   testability: 1
