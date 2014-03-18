@@ -135,51 +135,54 @@
 		 * then runs comparisons into QUnit assertions.
 		 */
 		runTests: function() {
-			var that = this;
-			$('.quail-test').each(function(index) {
-				if($(this).hasClass('limit-chrome') && navigator.userAgent.search('Chrome') === -1) {
-					test('Skipping', function() {
-						ok(true, 'Skipping test because browser is not chrome.');
-					});
-					return;
-				}
-				if($(this).hasClass('limit-phantom') && navigator.userAgent.search('PhantomJS') === -1) {
-					test('Skipping', function() {
-						ok(true, 'Skipping test because browser is not phantom.');
-					});
-					return;
-				}
-				var thisTest = {
-					title : ($(this).attr('title')) ? ': ' + $(this).attr('title') : '',
-					accessibilityTest: $(this).data('accessibility-test'),
-					expectedPass: ($(this).data('expected') === 'pass'),
-				};
-				if(typeof thisTest.accessibilityTest === 'undefined' ||
-					 !thisTest.accessibilityTest) {
-					test('Accessibility test is defined', function() {
-						ok(false, 'Accessibility test is not defined.');
-					});
-				}
-				var $that = $(this), expected, label, title;
-				testTitle = (typeof that.accessibilityTests[thisTest.accessibilityTest].title !== 'undefined') ?
-											that.accessibilityTests[thisTest.accessibilityTest].title.en :
-											'No test title defined';
-				$that.quail({
-					jsonPath: '../../dist',
-          guideline: [ thisTest.accessibilityTest ],
-          accessibilityTests : that.accessibilityTests,
-          reset: true,
-          preFilter: function(testName, $element) {
-          	if($element.is('#qunit') || $element.parents('#qunit').length) {
-          		return false;
-          	}
-          },
-          complete: function(event) {
-          	that.quailComplete(event, index, testTitle, thisTest, $that);
+      var that = this;
+      $('.quail-test').each(function(index) {
+        if($(this).hasClass('limit-chrome') && navigator.userAgent.search('Chrome') === -1) {
+          test('Skipping', function() {
+            ok(true, 'Skipping test because browser is not chrome.');
+          });
+          return;
+        }
+        if($(this).hasClass('limit-phantom') && navigator.userAgent.search('PhantomJS') === -1) {
+          test('Skipping', function() {
+            ok(true, 'Skipping test because browser is not phantom.');
+          });
+          return;
+        }
+        var thisTest = {
+          title : ($(this).attr('title')) ? ': ' + $(this).attr('title') : '',
+          accessibilityTest: $(this).data('accessibility-test'),
+          expectedPass: ($(this).data('expected') === 'pass')
+        };
+        if(typeof thisTest.accessibilityTest === 'undefined' || !thisTest.accessibilityTest) {
+          test('Accessibility test is defined', function() {
+            ok(false, 'Accessibility test is not defined.');
+          });
+        }
+        var $that = $(this);
+        var expected, label, title;
+        testTitle = (typeof that.accessibilityTests[thisTest.accessibilityTest].title !== 'undefined') ?
+          that.accessibilityTests[thisTest.accessibilityTest].title.en :
+          'No test title defined';
+      });
+
+      // Invoke Quail on the tests.
+      $that.quail({
+        jsonPath: '../../dist',
+        guideline: [ thisTest.accessibilityTest ],
+        accessibilityTests : that.accessibilityTests,
+        tests: tests,
+        reset: true,
+        preFilter: function(testName, $element) {
+          if($element.is('#qunit') || $element.parents('#qunit').length) {
+            return false;
           }
-        });
-			});
-		},
+        },
+        complete: function(event) {
+          that.quailComplete(event, index, testTitle, thisTest, $that);
+        }
+      });
+    },
 
 		/**
 		 * Callback for when quail is done running tests.
