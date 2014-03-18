@@ -3898,7 +3898,11 @@ tableLayoutMakesSenseLinearized:
     en: "All tables used for layout should make sense when removed"
   description:
     en: "If a <code>table</code> element is used for layout purposes only, then the content of the table should make sense if the table is linearized."
-  guidelines: []
+  guidelines:
+    wcag:
+      4.1.1:
+        techniques:
+          - "F49"
   tags:
     - "table"
     - "layout"
