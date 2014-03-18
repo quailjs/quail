@@ -61,7 +61,7 @@ quail.lib.Section = (function () {
       //this.listenTo(technique, 'result', this.regiterTechniqueTestResult);
       this.push(technique);
     },
-    regiterTechniqueTestResult: function (event) {
+    regiterTechniqueTestResult: function () {
 
     },
     push: [].push,

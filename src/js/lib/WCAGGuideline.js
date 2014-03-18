@@ -103,7 +103,7 @@ quail.lib.WCAGGuideline = (function () {
     evaluate: function () {
       /* loop through all the techniques and evaluate them against the page. */
     },
-    results: function (successCriteria) {
+    results: function () {
       /* return evaluation results */
       /* Filter by SC? */
     },

@@ -152,6 +152,7 @@ var quail = {
     if (quail.options.reset) {
       quail.accessibilityResults = { };
     }
+    var testName;
     // Create an empty TestCollection.
     quail.tests = quail.lib.TestCollection();
     // If test defintions are available, iterate through specific tests for this
@@ -159,7 +160,7 @@ var quail = {
     if (quail.options.accessibilityTests) {
       if (quail.options.guideline && quail.options.guideline.length) {
         for (var i = 0, il = quail.options.guideline.length; i < il; ++i) {
-          var testName = quail.options.guideline[i];
+          testName = quail.options.guideline[i];
           if (quail.options.accessibilityTests[testName]) {
             quail.tests.set(testName, quail.options.accessibilityTests[testName]);
           }
@@ -188,7 +189,7 @@ var quail = {
       });
     }
     if (typeof quail.options.customTests !== 'undefined') {
-      for (var testName in quail.options.customTests) {
+      for (testName in quail.options.customTests) {
         if (quail.options.customTests.hasOwnProperty(testName)) {
           quail.tests.set(testName, quail.options.customTests[testName]);
         }
@@ -210,7 +211,7 @@ var quail = {
       // Process the cases.
       var options = $.extend({},test.get('options'), quail.options);
       test.each(function (index, _case) {
-        _processTestResult(_case.get('status'), testName, $(_case.get('element')), options);
+        _processTestResult(_case.get('status'), test.get('name'), $(_case.get('element')), options);
       });
 
       // Call the complete callback.
@@ -249,10 +250,6 @@ var quail = {
       return configuration;
     }
     return false;
-  },
-
-  getGuideline: function (guidelineName) {
-    return null; /* a Guideline instance */
   },
 
   /**
@@ -563,11 +560,11 @@ var quail = {
   }
 };
 
-$.getJSON('/dist/tests.json', {}, function (result, status, jqXHR) {
+$.getJSON('/dist/tests.json', {}, function (result) {
   var tests;
   quail.tests = new quail.lib.TestCollection(result);
   // Register event listeners to the guideline Techniques.
-  var wcag = $.getJSON('/dist/guidelines/wcag.json', {}, function (result, status, jqXHR) {
+  $.getJSON('/dist/guidelines/wcag.json', {}, function (result) {
     var guideline = new quail.lib.WCAGGuideline(result);
     // Round up the tests for each section in the guideline.
     guideline.each(function (index, section) {

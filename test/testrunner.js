@@ -159,7 +159,6 @@
             ok(false, 'Accessibility test is not defined.');
           });
         }
-        var $that = $(this);
         var expected, label, title;
         testTitle = (typeof that.accessibilityTests[thisTest.accessibilityTest].title !== 'undefined') ?
           that.accessibilityTests[thisTest.accessibilityTest].title.en :
@@ -167,7 +166,7 @@
       });
 
       // Invoke Quail on the tests.
-      $that.quail({
+      $(this).quail({
         jsonPath: '../../dist',
         guideline: [ thisTest.accessibilityTest ],
         accessibilityTests : that.accessibilityTests,
