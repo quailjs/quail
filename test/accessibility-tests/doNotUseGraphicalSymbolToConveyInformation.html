@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>doNotUseGraphicalSymbolToConveyInformation</title>
+  </head>
+  <body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="doNotUseGraphicalSymbolToConveyInformation">
+      <p><span>✓</span> is ok to use?</p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="doNotUseGraphicalSymbolToConveyInformation">
+        <p><span class="quail-failed-element">★★★☆☆</span> can not be used.</p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="doNotUseGraphicalSymbolToConveyInformation">
+        <p><span class="quail-failed-element">*</span> can not be used to mark required fields.</p>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="doNotUseGraphicalSymbolToConveyInformation">
+        <p><span>B</span> can be used for testing.</p>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="doNotUseGraphicalSymbolToConveyInformation">
+        Single letter abbreviations are allowed <abbr title="Quail">X</abbr>.
+    </div>
+
+    <script src="../testrunner.js"></script>
+  </body>
+</html>

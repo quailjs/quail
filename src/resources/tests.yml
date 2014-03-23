@@ -1108,6 +1108,37 @@ documentVisualListsAreMarkedUp:
   strings:
     - "symbols"
   callback: "documentVisualListsAreMarkedUp"
+domOrderMatchesVisualOrder:
+  type: "selector"
+  testability: 0.5
+  title:
+    en: "Ensure that the visual order of the page matches the DOM"
+  description:
+    en: "When using positioning techniques, make sure that the visual order of the page matches the DOM."
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
+          - "C27"
+      2.4.3:
+        techniques:
+          - "C27"
+  tags:
+    - "content"
+  options:
+    selector: "*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)"
+elementAttributesAreValid:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Attributes should have spaces between them and be wrapped in quotes"
+  description:
+    en: ""
+  guidelines:
+    4.1.1:
+      techniques:
+        - "F70"
+  callback: "elementAttributesAreValid"
 embedHasAssociatedNoEmbed:
   type: "custom"
   testability: 1
@@ -1459,6 +1490,23 @@ frameRelationshipsMustBeDescribed:
     - "frame"
   options:
     selector: "frameset:not(frameset[longdesc])"
+framesAreUsedToGroupContent:
+  type: "selector"
+  testability: 0.5
+  title:
+    en: "Use frame elements to group repeated materials"
+  description:
+    en: "When blocks of repeated content are used on a site, use frames to group content that is the same across pages."
+  guidelines:
+    wcag:
+      2.4.1:
+        techniques:
+          - "H70"
+  tags:
+    - "deprecated"
+    - "frame"
+  options:
+    selector: "body:not(body:has(frameset))"
 frameSrcIsAccessible:
   type: "selector"
   testability: 0
@@ -3630,7 +3678,7 @@ selectJumpMenu:
   title:
     en: "Select jump menus should jump on button press, not on state change"
   description:
-    en: "If you wish to use a 'Jump' menu with a select item that then redirects users to another page, the jump should occur on the user pressing a button, rather than on the change event of that select eleemnt."
+    en: "If you wish to use a 'Jump' menu with a select item that then redirects users to another page, the jump should occur on the user pressing a button, rather than on the change event of that select elemnt."
   guidelines:
     wcag:
       3.2.2:
@@ -3886,7 +3934,11 @@ tableLayoutMakesSenseLinearized:
     en: "All tables used for layout should make sense when removed"
   description:
     en: "If a <code>table</code> element is used for layout purposes only, then the content of the table should make sense if the table is linearized."
-  guidelines: []
+  guidelines:
+    wcag:
+      4.1.1:
+        techniques:
+          - "F49"
   tags:
     - "table"
     - "layout"
@@ -4224,3 +4276,19 @@ whiteSpaceInWord:
   tags:
     - "content"
   callback: "whiteSpaceInWord"
+doNotUseGraphicalSymbolToConveyInformation:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Using a graphical symbol alone to convey information"
+  description:
+    en: "The objective of this technique is to show how using a graphical symbol to convey information can make content difficult to comprehend. A graphical symbol may be an image, an image of text or a pictorial or decorative character symbol (glyph) which imparts information nonverbally. Examples of graphical symbols include an image of a red circle with a line through it, a smiley face, or a glyph which represents a check mark, arrow, or other symbol but is not the character with that meaning. Assistive technology users may have difficulty determining the meaning of the graphical symbol. If a graphical symbol is used to convey information, provide an alternative using features of the technology or use a different mechanism that can be marked with an alternative to represent the graphical symbol. For example, an image with a text alternative can be used instead of the glyph."
+  guidelines:
+    wcag:
+      1.3.3:
+        techniques:
+          - "F26"
+  tags:
+    - "link"
+    - "content"
+  callback: "doNotUseGraphicalSymbolToConveyInformation"
