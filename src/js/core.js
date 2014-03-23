@@ -32,8 +32,7 @@ $.expr[':'].quailCss = function(obj, index, meta) {
  * @param {object} options
  */
 function _processTestResult (type, testName, $element, options) {
-  var test = quail.accessibilityTests.find(testName);
-  var result = quail.accessibilityResults[testName];
+  var test = quail.tests.find(testName);
   options = options || {};
 
   function isCallable (func) {
@@ -47,7 +46,7 @@ function _processTestResult (type, testName, $element, options) {
     selector    : quail.defineUniqueSelector($element.length && $element[0] || null),
     location    : window && window.location || null,
     testName    : testName,
-    test        : quail.accessibilityTests.find(testName),
+    test        : quail.tests.find(testName),
     testability : testability,
     severity    : quail.testabilityTranslation[testability],
     options     : options
@@ -56,7 +55,6 @@ function _processTestResult (type, testName, $element, options) {
   // Invoke test listeners;
   switch (type) {
   case 'inapplicable':
-    result.status = 'inapplicable';
     if (isCallable(quail.options.testNotApplicable)) {
       quail.options.testNotApplicable(info);
     }
@@ -64,14 +62,12 @@ function _processTestResult (type, testName, $element, options) {
   case 'failed':
     // @todo, this currently stores just the failures. We need to pass all
     // results.
-    result.elements.push($element);
-    result.status = 'failed';
+    // result.elements.push($element);
     if (isCallable(quail.options.testFailed)) {
       quail.options.testFailed(info);
     }
     break;
   case 'passed':
-    result.status = 'passed';
     if (isCallable(quail.options.testPassed)) {
       quail.options.testPassed(info);
     }

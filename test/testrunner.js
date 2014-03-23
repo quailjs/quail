@@ -159,12 +159,11 @@
           });
         }
         var testTitle = $(this).attr('title');
-        var testDefinition = that.tests.find('testName');
-        testTitle = !testTitle && testDefinition && (testDefinition.title) ? testDefinition.title.en : 'No test title defined';
+        var testDefinition = that.tests.find(testName);
+        testTitle = !testTitle && testDefinition && (testDefinition.get('title')) ? testDefinition.get('title').en : 'No test title defined';
 
         // Creat a Test object.
-        testsToEvaluate.add(quail.lib.Test(testName, {
-          title : testTitle,
+        testsToEvaluate.add(testDefinition.set({
           el: this,
           expectedPass: ($(this).data('expected') === 'pass'),
           index: index
@@ -179,26 +178,33 @@
             return false;
           }
         },
-        complete: function (event, test) {
-          that.quailComplete(event, test.get('index'), test.get('title'), test, test.get('el'));
-        }
+        complete: this.quailComplete
       });
     },
 
     /**
      * Callback for when quail is done running tests.
      */
-    quailComplete: function(event, index, testTitle, thisTest, $target) {
-      test(testTitle +  thisTest.title, function() {
-        label = (thisTest.expectedPass) ? 'pass' : 'fail';
-        $target.addClass(label)
-             .prepend('<span class="test-label">#' + (index + 1) + ' (' + label + ')</span>');
-        if(thisTest.expectedPass) {
-          ok(event.results[thisTest.accessibilityTest].elements.length === 0, 'No elements failed test');
+    quailComplete: function(eventName, thisTest, _case) {
+      test(thisTest.get('title'), function() {
+        var index = thisTest.get('index');
+        var expectedPass = thisTest.get('expectedPass');
+        var $target = $(thisTest.get('el'));
+        var label = (expectedPass) ? 'pass' : 'fail';
+        $target
+          .addClass(label)
+          .prepend('<span class="test-label">#' + (index + 1) + ' (' + label + ')</span>');
+        if(expectedPass) {
+          ok(_case.get('status') === 'passed', 'No elements failed test');
         }
         else {
+          ok(_case.get('status') === 'failed', 'No elements failed test');
+        }
+        return;
+        if (true) {}
+        else {
           if($target.hasClass('self-fail')) {
-            ok(event.results[thisTest.accessibilityTest].elements.length > 0, 'Self testing element failed (document-wide test)');
+            ok(_case.get('status') === 'failed', 'Self testing element failed (document-wide test)');
           }
           else {
             $target.find('.quail-failed-element').each(function() {

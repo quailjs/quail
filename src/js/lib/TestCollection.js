@@ -43,8 +43,12 @@ quail.lib.TestCollection = (function () {
           }
         }
         if (callbacks.complete) {
-          tc.listenTo(test, 'results', callbacks.complete);
+          tc.listenTo(test, 'resolved', callbacks.complete);
         }
+        // @todo, this is quite a hack. The tests should not assume a context
+        // like this. It should be passed to them. Refactor the tests to accept
+        // a context argument.
+        quail.html = $(test.get('el'));
         test.invoke();
       });
       //

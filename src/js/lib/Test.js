@@ -53,12 +53,22 @@ quail.lib.Test = (function () {
       }
       return this;
     },
+    add: function (_case) {
+      this.listenTo(_case, 'resolved', this.caseResolved);
+      // If the case is already resolved because it has a status, then trigger
+      // its resolved event.
+      if (_case.status) {
+        _case.dispatch('resolved', _case);
+      }
+      this.push(_case);
+    },
     invoke: function () {
       var name = this.get('name');
       var type = this.get('type');
       var options = this.get('options') || {};
       var callback = this.get('callback');
       var test = this;
+      var _case;
 
       if (type === 'selector') {
         // If options.filter is defined, then options.selector is collecting
@@ -74,14 +84,14 @@ quail.lib.Test = (function () {
           else {
             // Passes.
             candidates.not(options.filter).each(function () {
-              test.push(quail.lib.Case({
+              test.add(quail.lib.Case({
                 status: 'passed',
                 element: this
               }));
             });
             // Fails.
             candidates.filter(options.filter).each(function () {
-              test.push(quail.lib.Case({
+              test.add(quail.lib.Case({
                 status: 'failed',
                 element: this
               }));
@@ -90,7 +100,7 @@ quail.lib.Test = (function () {
         }
         else {
           quail.html.find(options.selector).each(function() {
-            test.push(quail.lib.Case({
+            test.add(quail.lib.Case({
               status: 'failed',
               element: this
             }));
@@ -99,20 +109,26 @@ quail.lib.Test = (function () {
       }
       else if (type === 'custom') {
         if (typeof callback === 'object' || typeof callback === 'function') {
-          callback(quail);
+          _case = quail.lib.Case();
+          callback(quail, test, quail.lib.Case);
         }
         else {
           if (typeof quail[callback] !== 'undefined') {
-            quail[callback](quail);
+            quail[callback](quail, test, quail.lib.Case);
           }
         }
       }
       else if (typeof quail.components[type] !== 'undefined') {
         quail.components[type](name, this.attributes);
       }
-
-      this.dispatch('results', test);
       return this;
+    },
+    /**
+     * Adds the test that owns the Case to the set of arguments passed up to
+     * listeners of this test's cases.
+     */
+    caseResolved: function (eventName, _case) {
+      this.dispatch(eventName, this, _case);
     },
     // @todo, make this a set of methods that all classes extend.
     listenTo: function (dispatcher, eventName, handler) {
