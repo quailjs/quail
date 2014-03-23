@@ -40,11 +40,6 @@ function _processTestResult (type, testName, $element, options) {
     return typeof func === 'function' || typeof func === 'object';
   }
 
-  if (typeof quail.options.preFilter !== 'undefined') {
-    if (quail.options.preFilter(testName, $element, options) === false) {
-      return;
-    }
-  }
   var testability = test.get('testability');
   testability = (testability) ? testability : 'unknown';
   var info = {

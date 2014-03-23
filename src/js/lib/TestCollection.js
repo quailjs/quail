@@ -31,10 +31,23 @@ quail.lib.TestCollection = (function () {
     // Setting a length property makes it behave like an array.
     length: 0,
     // Invoke all the tests in a set.
-    run: function () {
+    run: function (callbacks) {
+      var tc = this;
+      callbacks = callbacks || {};
       this.each(function (index, test) {
+        // Allow a prefilter to cancel the test.
+        if (callbacks.preFilter) {
+          var result = callbacks.preFilter.call(null, test.get('name'), test.get('el'));
+          if (result === false) {
+            return;
+          }
+        }
+        if (callbacks.complete) {
+          tc.listenTo(test, 'results', callbacks.complete);
+        }
         test.invoke();
       });
+      //
     },
     // Execute a callback for every element in the matched set.
     each: function (iterator) {
@@ -62,7 +75,7 @@ quail.lib.TestCollection = (function () {
       return null;
     },
     /**
-     *
+     * @info, this should be a static method.
      */
     findByGuideline: function (guidelineName) {
 

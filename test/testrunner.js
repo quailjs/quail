@@ -94,7 +94,7 @@
             url: '../../dist/tests.json',
             dataType: 'json',
             success: function(data) {
-              that.accessibilityTests = data;
+              that.tests = quail.lib.TestCollection(data);
               that.buildQUnit();
               QUnit.init();
               setTimeout(function() {
@@ -137,6 +137,7 @@
      */
     runTests: function () {
       var that = this;
+      var testsToEvaluate = quail.lib.TestCollection();
       $('.quail-test').each(function(index) {
         if($(this).hasClass('limit-chrome') && navigator.userAgent.search('Chrome') === -1) {
           test('Skipping', function() {
@@ -150,36 +151,37 @@
           });
           return;
         }
-        var thisTest = {
-          title : ($(this).attr('title')) ? ': ' + $(this).attr('title') : '',
-          accessibilityTest: $(this).data('accessibility-test'),
-          expectedPass: ($(this).data('expected') === 'pass')
-        };
-        if (typeof thisTest.accessibilityTest === 'undefined' ||
-           !thisTest.accessibilityTest) {
+        // The testing environment is legitimate. Assemble the test details.
+        var testName = $(this).data('accessibility-test');
+        if (!testName) {
           test('Accessibility test is defined', function () {
             ok(false, 'Accessibility test is not defined.');
           });
         }
-        var $that = $(this), expected, label, title;
-        testTitle = (typeof that.accessibilityTests[thisTest.accessibilityTest].title !== 'undefined') ?
-            that.accessibilityTests[thisTest.accessibilityTest].title.en :
-            'No test title defined';
+        var testTitle = $(this).attr('title');
+        var testDefinition = that.tests.find('testName');
+        testTitle = !testTitle && testDefinition && (testDefinition.title) ? testDefinition.title.en : 'No test title defined';
 
-        $that.quail({
-          jsonPath: '../../dist',
-          guideline: [thisTest.accessibilityTest],
-          accessibilityTests : that.accessibilityTests,
-          reset: true,
-          preFilter: function (testName, $element) {
-            if($element.is('#qunit') || $element.parents('#qunit').length) {
-              return false;
-            }
-          },
-          complete: function (event) {
-            that.quailComplete(event, index, testTitle, thisTest, $that);
+        // Creat a Test object.
+        testsToEvaluate.add(quail.lib.Test(testName, {
+          title : testTitle,
+          el: this,
+          expectedPass: ($(this).data('expected') === 'pass'),
+          index: index
+        }));
+      });
+
+      // Run the TestCollection Tests.
+      testsToEvaluate.run({
+        preFilter: function (testName, element) {
+          var $element = $(element);
+          if($element.is('#qunit') || $element.parents('#qunit').length) {
+            return false;
           }
-        });
+        },
+        complete: function (event, test) {
+          that.quailComplete(event, test.get('index'), test.get('title'), test, test.get('el'));
+        }
       });
     },
 
