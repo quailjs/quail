@@ -26,8 +26,9 @@ quail.videosEmbeddedOrLinkedNeedCaptions = function() {
     if (isVideo) {
       var hasCaptions = false;
       $object.find('param[name=flashvars]').each(function() {
-        if ($(this).attr('value').search('captions') > -1 &&
-           $(this).attr('value').search('.srt') > -1) {
+        if (($(this).attr('value').search('captions') > -1 &&
+           $(this).attr('value').search('.srt') > -1) ||
+           $(this).attr('value').search('captions.pluginmode') > -1) {
           hasCaptions = true;
         }
       });
