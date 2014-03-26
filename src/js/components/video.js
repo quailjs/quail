@@ -76,8 +76,8 @@ quail.components.video = {
         if (element.find('param').length === 0) {
           return false;
         }
-        element.find('param').each(function() {
-          if ($(this).attr('value').search('.flv') > -1) {
+        element.find('param[name=flashvars]').each(function() {
+          if ($(this).attr('value').search(/\.(flv|mp4)/i) > -1) {
             isVideo = true;
           }
         });
