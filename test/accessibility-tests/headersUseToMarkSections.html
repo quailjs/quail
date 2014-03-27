@@ -34,6 +34,46 @@
             Example 1...
         </p>
     </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="headersUseToMarkSections">
+      <div class="navigation">
+        <ul class="quail-failed-element">
+          <li><a href="1.html">Item 1</a></li>
+          <li><a href="2.html">Item 2</a></li>
+          <li><a href="3.html">Item 3</a></li>
+          <li><a href="4.html">Item 4</a></li>
+          <li><a href="5.html">Item 5</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="headersUseToMarkSections">
+      <div class="navigation">
+        <ul class="quail-failed-element">
+          <li><a href="1.html">Item 1</a></li>
+          <li><a href="2.html">Item 2</a></li>
+          <li><a href="3.html">Item 3</a></li>
+          <li><a href="4.html">Item 4</a></li>
+          <li><a href="5.html">Item 5</a></li>
+        </ul>
+        <h2>Navigation</h2>
+      </div>
+    </div>
+
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="headersUseToMarkSections">
+      <div class="navigation">
+        <h2>Navigation</h2>
+        <ul>
+          <li><a href="1.html">Item 1</a></li>
+          <li><a href="2.html">Item 2</a></li>
+          <li><a href="3.html">Item 3</a></li>
+          <li><a href="4.html">Item 4</a></li>
+          <li><a href="5.html">Item 5</a></li>
+        </ul>
+      </div>
+    </div>
+
     <div class="quail-test" data-expected="pass" data-accessibility-test="headersUseToMarkSections">
 
         <h2>User Agent and Assistive Technology Support Notes</h2>
