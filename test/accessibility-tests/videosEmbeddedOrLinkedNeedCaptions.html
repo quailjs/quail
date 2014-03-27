@@ -23,8 +23,27 @@
 			<track kind="subtitles" src="../assets/broken.srt" srclang="en"></track>
 		</video>
 	</div>
+<div class="quail-test" data-expected="fail" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="Flash without caption plugin">
+	<object class="quail-failed-element" id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
+		<param name="allowfullscreen" value="true">
+		<param name="allowscriptaccess" value="always">
+		<param name="seamlesstabbing" value="true">
+		<param name="wmode" value="opaque">
+		<param name="flashvars" value="netstreambasepath=http%3A%2F%2Fwww.rijksoverheid.nl%2Fdocumenten-en-publicaties%2Fvideos%2F2014%2F01%2F24%2Fpersconferentie-na-ministerraad-24-januari-2014.html&id=movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf&className=govvid&file=http%3A%2F%2Fserver.rijksoverheidsvideo.nl%2Fflash%2FMP-240114-5081.flv&image=http%3A%2F%2Fserver.rijksoverheidsvideo.nl%2Ffoto%2FMP-240114-5081.jpg&skin=%2Fbehaviour%2Fflash%2Fgovvid-v2-skin-video.zip&stretching=exactfit&audiodescription.file=http%3A%2F%2Fserver.rijksoverheidsvideo.nl%2Faudio%2FMP-240114-5081.mp3&audiodescription.state=false&audiodescription.pluginmode=FLASH&controlbar.position=bottom&playlist.position=none&dock=false">
+	</object>
+</div>
 
-	<div class="quail-tets" data-expected="pass" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="Flash with caption plugin">
+<div class="quail-test" data-expected="fail" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="Flash MP4 without caption plugin">
+	<object class="quail-failed-element" id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
+		<param name="allowfullscreen" value="true">
+		<param name="allowscriptaccess" value="always">
+		<param name="seamlesstabbing" value="true">
+		<param name="wmode" value="opaque">
+		<param name="flashvars" value="netstreambasepath=http%3A%2F%2Fwww.rijksoverheid.nl%2Fdocumenten-en-publicaties%2Fvideos%2F2014%2F01%2F24%2Fpersconferentie-na-ministerraad-24-januari-2014.html&id=movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf&className=govvid&file=http%3A%2F%2Fserver.rijksoverheidsvideo.nl%2Fflash%2FMP-240114-5081.mp4&image=http%3A%2F%2Fserver.rijksoverheidsvideo.nl%2Ffoto%2FMP-240114-5081.jpg&skin=%2Fbehaviour%2Fflash%2Fgovvid-v2-skin-video.zip&stretching=exactfit&audiodescription.file=http%3A%2F%2Fserver.rijksoverheidsvideo.nl%2Faudio%2FMP-240114-5081.mp3&audiodescription.state=false&audiodescription.pluginmode=FLASH&controlbar.position=bottom&playlist.position=none&dock=false">
+	</object>
+</div>
+
+	<div class="quail-test" data-expected="pass" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="Flash with caption plugin">
 		<object id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
 			<param name="allowfullscreen" value="true">
 			<param name="allowscriptaccess" value="always">
