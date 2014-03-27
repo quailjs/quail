@@ -15,7 +15,6 @@ quail.components.content = {
    *   The jQuery element that is considered the content element.
    */
   findContent : function($element) {
-    var contentNode = false;
     var $topScore = $element;
     if($element.find('[role=main]').length) {
       $element.find('[role=main]').first();
@@ -28,16 +27,23 @@ quail.components.content = {
 
         contentScore = $parent.find('p').length;
 
-        if (element.className.match(/(comment|meta|footer|footnote)/))
+        if (element.className.match(/(comment|meta|footer|footnote)/)) {
           contentScore -= 50;
-        else if (element.className.match(/((^|\\s)(post|hentry|entry[-]?(content|text|body)?|article[-]?(content|text|body)?)(\\s|$))/))
+        }
+        else {
+          if (element.className.match(/((^|\\s)(post|hentry|entry[-]?(content|text|body)?|article[-]?(content|text|body)?)(\\s|$))/)) {
             contentScore += 25;
+          }
+        }
 
-        if (element.id.match(/(comment|meta|footer|footnote)/))
-            contentScore -= 50;
-        else if (element.id.match(/^(post|hentry|entry[-]?(content|text|body)?|article[-]?(content|text|body)?)$/))
+        if (element.id.match(/(comment|meta|footer|footnote)/)) {
+          contentScore -= 50;
+        }
+        else {
+          if (element.id.match(/^(post|hentry|entry[-]?(content|text|body)?|article[-]?(content|text|body)?)$/)) {
             contentScore += 25;
-
+          }
+        }
         $parent.data('content-score', contentScore);
       }
       contentScore += $(this).text().split(',').length;
