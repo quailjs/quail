@@ -36,6 +36,13 @@ quail.lib.Test = (function () {
       return this;
     },
     get: function (attr) {
+      // Return an empty jQuery object if scope is not defined.
+      if (attr === '$scope') {
+        var scope = this.attributes['scope'];
+        var $scope = $(this.attributes['scope']);
+        // @todo, pass in a ref to jQuery to this module.
+        return (this.attributes[attr]) ? this.attributes[attr] : ((scope) ? $scope : $());
+      }
       return this.attributes[attr];
     },
     set: function (attr, value) {

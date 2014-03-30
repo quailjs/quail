@@ -1,7 +1,15 @@
-quail.aAdjacentWithSameResourceShouldBeCombined = function() {
-  quail.html.find('a').each(function() {
-    if ($(this).next('a').attr('href') === $(this).attr('href')) {
-      quail.testFails('aAdjacentWithSameResourceShouldBeCombined', $(this));
+quail.aAdjacentWithSameResourceShouldBeCombined = function(quail, test, Case) {
+  debugger;
+  test.get('$scope').find('a + a').each(function() {
+    var _case = Case({
+      element: this
+    });
+    test.add(_case);
+    if ($(this).prev('a').attr('href') === $(this).attr('href')) {
+      _case.set('status', 'failed');
+    }
+    else {
+      _case.set('status', 'passed');
     }
   });
 };

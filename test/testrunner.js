@@ -164,13 +164,14 @@
 
         // Creat a Test object.
         testsToEvaluate.add(testDefinition.set({
-          el: this,
+          scope: this,
           expectedPass: ($(this).data('expected') === 'pass'),
           index: index
         }));
       });
 
       // Run the TestCollection Tests.
+      debugger;
       testsToEvaluate.run({
         preFilter: function (testName, element) {
           var $element = $(element);
@@ -186,6 +187,7 @@
      * Callback for when quail is done running tests.
      */
     quailComplete: function(eventName, thisTest, _case) {
+      debugger;
       test(thisTest.get('title'), function() {
         var index = thisTest.get('index');
         var expectedPass = thisTest.get('expectedPass');
@@ -195,10 +197,10 @@
           .addClass(label)
           .prepend('<span class="test-label">#' + (index + 1) + ' (' + label + ')</span>');
         if(expectedPass) {
-          ok(_case.get('status') === 'passed', 'No elements failed test');
+          ok(_case.get('status') === 'passed', 'Elements expected to pass have passed.');
         }
         else {
-          ok(_case.get('status') === 'failed', 'No elements failed test');
+          ok(_case.get('status') === 'failed', 'Elements expected to fail have failed.');
         }
         return;
         if (true) {}

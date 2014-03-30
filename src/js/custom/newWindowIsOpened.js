@@ -15,7 +15,7 @@ quail.newWindowIsOpened = function(quail, test, Case) {
     });
   };
 
-  quail.html.find('a').each(function () {
+  test.get('$scope').find('a').each(function () {
     // Save a reference to this clicked tag.
     clicker = this;
     test.add(Case({
