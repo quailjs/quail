@@ -199,11 +199,19 @@
         $target
           .addClass(label)
           .prepend('<span class="test-label">#' + (index + 1) + ' (' + label + ')</span>');
-        if(expected == 'pass') {
-          ok(_case.get('status') === 'passed', 'Elements expected to pass have passed.');
-        }
-        else {
-          ok(_case.get('status') === 'failed', 'Elements expected to fail have failed.');
+
+        var message = 'Expected status: ' + expected;
+        // Process the results.
+        switch (expected) {
+        case 'pass':
+          ok(_case.get('status') === 'passed', message);
+          break;
+        case 'fail':
+          ok(_case.get('status') === 'failed', message);
+          break;
+        case 'notApplicable':
+          ok(_case.get('status') === 'notApplicable', message);
+          break;
         }
         return;
         if (true) {}
