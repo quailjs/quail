@@ -45,13 +45,11 @@ quail.lib.TestCollection = (function () {
         if (callbacks.complete) {
           tc.listenTo(test, 'resolved', callbacks.complete);
         }
-        // @todo, this is quite a hack. The tests should not assume a context
-        // like this. It should be passed to them. Refactor the tests to accept
-        // a context argument.
-        quail.html = $(test.get('el'));
+      });
+      // Invoke each test.
+      this.each(function(index, test) {
         test.invoke();
       });
-      //
     },
     // Execute a callback for every element in the matched set.
     each: function (iterator) {
@@ -67,7 +65,10 @@ quail.lib.TestCollection = (function () {
      * Add a Test object to the set.
      */
     add: function (test) {
-      this.push(test);
+      // Don't add a test that already exists in this set.
+      if (!this.find(test.get('name'))) {
+        this.push(test);
+      }
     },
     find: function (testname) {
       for (var i = 0, il = this.length; i < il; ++i) {
@@ -146,10 +147,11 @@ quail.lib.TestCollection = (function () {
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
     registerListener: function (eventName, handler) {
-      // This is the dispatcher object, not the one that invoked listenTo.
+      // nb: 'this' is the dispatcher object, not the one that invoked listenTo.
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
       }
+
       this.listeners[eventName].push(handler);
     },
     dispatch: function (eventName) {

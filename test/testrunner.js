@@ -162,16 +162,20 @@
         var testDefinition = that.tests.find(testName);
         testTitle = !testTitle && testDefinition && (testDefinition.get('title')) ? testDefinition.get('title').en : 'No test title defined';
 
-        // Creat a Test object.
-        testsToEvaluate.add(testDefinition.set({
-          scope: this,
-          expectedPass: ($(this).data('expected') === 'pass'),
-          index: index
-        }));
+        // Set the test scope. Add to the scope, don't replace it.
+        var $scope = testDefinition.get('$scope');
+        $scope = $scope.add(this);
+        testDefinition.set('scope', $scope.get());
+
+        // @todo, this is legacy stuff; remove eventually.
+        testDefinition.set('index', index);
+
+        // Track the test as one to evaluate.
+        // TestCollection.prototype.add is idempotent.
+        testsToEvaluate.add(testDefinition);
       });
 
       // Run the TestCollection Tests.
-      debugger;
       testsToEvaluate.run({
         preFilter: function (testName, element) {
           var $element = $(element);
@@ -187,16 +191,15 @@
      * Callback for when quail is done running tests.
      */
     quailComplete: function(eventName, thisTest, _case) {
-      debugger;
       test(thisTest.get('title'), function() {
         var index = thisTest.get('index');
-        var expectedPass = thisTest.get('expectedPass');
+        var expected = _case.get('expected');
         var $target = $(thisTest.get('el'));
-        var label = (expectedPass) ? 'pass' : 'fail';
+        var label = expected || 'no label'  ;
         $target
           .addClass(label)
           .prepend('<span class="test-label">#' + (index + 1) + ' (' + label + ')</span>');
-        if(expectedPass) {
+        if(expected == 'pass') {
           ok(_case.get('status') === 'passed', 'Elements expected to pass have passed.');
         }
         else {

@@ -1,5 +1,4 @@
 quail.aAdjacentWithSameResourceShouldBeCombined = function(quail, test, Case) {
-  debugger;
   test.get('$scope').find('a + a').each(function() {
     var _case = Case({
       element: this

@@ -58,65 +58,6 @@ quail.lib.Technique = (function () {
     report: function (eventName, test) {
       window.console && window.console.log(this.get('name'), test.status, test, test[0] && test[0].status);
     },
-    invoke: function () {
-      var name = this.get('name');
-      var type = this.get('type');
-      var options = this.get('options') || {};
-      var callback = this.get('callback');
-      var test = this;
-
-      if(type === 'selector') {
-        // If options.filter is defined, then options.selector is collecting
-        // a set of candidate elements; it is not simply a selector to find
-        // elements that fail the test.
-        if (options.filter) {
-          var candidates = quail.html.find(options.selector);
-          // Not applicable.
-          if (!candidates.length) {
-            this.status = 'inapplicable';
-            return;
-          }
-          else {
-            // Passes.
-            candidates.not(options.filter).each(function () {
-              test.push(quail.lib.Case({
-                status: 'passed',
-                element: this
-              }));
-            });
-            // Fails.
-            candidates.filter(options.filter).each(function () {
-              test.push(quail.lib.Case({
-                status: 'failed',
-                element: this
-              }));
-            });
-          }
-        }
-        else {
-          quail.html.find(options.selector).each(function() {
-            test.push(quail.lib.Case({
-              status: 'failed',
-              element: this
-            }));
-          });
-        }
-      }
-      else if(type === 'custom') {
-        if(typeof callback === 'object' || typeof callback === 'function') {
-          callback(quail);
-        }
-        else {
-          if(typeof quail[callback] !== 'undefined') {
-            quail[callback](quail);
-          }
-        }
-      }
-      else if(typeof quail.components[type] !== 'undefined') {
-        quail.components[type](name, this.attributes);
-      }
-      return this;
-    },
     // @todo, make this a set of methods that all classes extend.
     listenTo: function (dispatcher, eventName, handler) {
       // @todo polyfill Function.prototype.bind.

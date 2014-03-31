@@ -68,6 +68,7 @@ quail.lib.Test = (function () {
         _case.dispatch('resolved', _case);
       }
       this.push(_case);
+      return _case;
     },
     invoke: function () {
       var name = this.get('name');
@@ -77,44 +78,35 @@ quail.lib.Test = (function () {
       var test = this;
       var _case;
 
-      if (type === 'selector') {
-        // If options.filter is defined, then options.selector is collecting
-        // a set of candidate elements; it is not simply a selector to find
-        // elements that fail the test.
-        if (options.filter) {
-          var candidates = quail.html.find(options.selector);
+      switch(type) {
+      case 'selector':
+        this.get('$scope').each(function() {
+          var candidates = $(this).find(options.selector);
           // Not applicable.
           if (!candidates.length) {
-            this.status = 'inapplicable';
-            return;
+            // Passes.
+            _case = quail.lib.Case({
+              element: undefined,
+              expected: $(this).data('expected')
+            });
+            test.add(_case);
+            _case.set({status: 'passed'});
           }
           else {
-            // Passes.
-            candidates.not(options.filter).each(function () {
-              test.add(quail.lib.Case({
-                status: 'passed',
-                element: this
-              }));
-            });
             // Fails.
-            candidates.filter(options.filter).each(function () {
-              test.add(quail.lib.Case({
-                status: 'failed',
-                element: this
-              }));
+            candidates.each(function () {
+              // Get the data-expected attribute.
+              _case = quail.lib.Case({
+                element: this,
+                expected: $(this).closest('.quail-test').data('expected')
+              });
+              test.add(_case);
+              _case.set({status: 'failed'});
             });
           }
-        }
-        else {
-          quail.html.find(options.selector).each(function() {
-            test.add(quail.lib.Case({
-              status: 'failed',
-              element: this
-            }));
-          });
-        }
-      }
-      else if (type === 'custom') {
+        });
+        break;
+      case 'custom':
         if (typeof callback === 'object' || typeof callback === 'function') {
           _case = quail.lib.Case();
           callback(quail, test, quail.lib.Case);
@@ -124,10 +116,14 @@ quail.lib.Test = (function () {
             quail[callback](quail, test, quail.lib.Case);
           }
         }
+        break;
+      default:
+        if (typeof quail.components[type] !== 'undefined') {
+          quail.components[type](name, this.attributes);
+        }
+        break;
       }
-      else if (typeof quail.components[type] !== 'undefined') {
-        quail.components[type](name, this.attributes);
-      }
+
       return this;
     },
     /**
@@ -144,9 +140,11 @@ quail.lib.Test = (function () {
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
     registerListener: function (eventName, handler) {
+      // nb: 'this' is the dispatcher object, not the one that invoked listenTo.
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
       }
+
       this.listeners[eventName].push(handler);
     },
     dispatch: function (eventName) {

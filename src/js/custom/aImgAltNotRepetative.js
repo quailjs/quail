@@ -1,7 +1,13 @@
-quail.aImgAltNotRepetitive = function() {
-  quail.html.find('a img[alt]').each(function() {
+quail.aImgAltNotRepetitive = function(quail, test, Case) {
+  test.get('$scope').find('a img[alt]').each(function() {
+    var _case = test.add(Case({
+      element: this
+    }));
     if (quail.cleanString($(this).attr('alt')) === quail.cleanString($(this).parent('a').text())) {
-      quail.testFails('aImgAltNotRepetitive', $(this).parent('a'));
+      _case.set('status', 'failed');
+    }
+    else {
+      _case.set('status', 'passed');
     }
   });
 };
