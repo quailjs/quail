@@ -11,7 +11,7 @@ quail.labelsAreAssignedToAnInput = function(quail, test, Case) {
       });
     }
     else {
-        if (!test.get('$scope').find('#' + $(this).attr('for')).length ||
+      if (!test.get('$scope').find('#' + $(this).attr('for')).length ||
          !test.get('$scope').find('#' + $(this).attr('for')).is(':input')) {
         _case.set({
           'status': 'failed'
