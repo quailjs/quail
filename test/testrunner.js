@@ -191,7 +191,7 @@
      * Callback for when quail is done running tests.
      */
     quailComplete: function(eventName, thisTest, _case) {
-      test(thisTest.get('title'), function() {
+      test(thisTest.get('title').en, function() {
         var expected = _case.get('expected');
         var label = expected || 'no label'  ;
 
