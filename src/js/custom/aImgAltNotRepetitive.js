@@ -3,11 +3,18 @@ quail.aImgAltNotRepetitive = function(quail, test, Case) {
     var _case = test.add(Case({
       element: this
     }));
+    var expected = $(this).closest('.quail-test').data('expected');
     if (quail.cleanString($(this).attr('alt')) === quail.cleanString($(this).parent('a').text())) {
-      _case.set('status', 'failed');
+      _case.set({
+        'expected': expected,
+        'status': 'failed'
+      });
     }
     else {
-      _case.set('status', 'passed');
+      _case.set({
+        'expected': expected,
+        'status': 'passed'
+      });
     }
   });
 };

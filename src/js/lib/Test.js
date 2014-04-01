@@ -81,13 +81,14 @@ quail.lib.Test = (function () {
       switch(type) {
       case 'selector':
         this.get('$scope').each(function() {
+          var $scope = $(this);
           var candidates = $(this).find(options.selector);
           // Not applicable.
           if (!candidates.length) {
             // Passes.
             _case = quail.lib.Case({
               element: undefined,
-              expected: $(this).data('expected')
+              expected: $scope.data('expected')
             });
             test.add(_case);
             _case.set({status: 'passed'});
@@ -108,7 +109,6 @@ quail.lib.Test = (function () {
         break;
       case 'custom':
         if (typeof callback === 'object' || typeof callback === 'function') {
-          _case = quail.lib.Case();
           callback(quail, test, quail.lib.Case);
         }
         else {

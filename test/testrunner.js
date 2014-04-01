@@ -192,13 +192,11 @@
      */
     quailComplete: function(eventName, thisTest, _case) {
       test(thisTest.get('title'), function() {
-        var index = thisTest.get('index');
         var expected = _case.get('expected');
-        var $target = $(thisTest.get('el'));
         var label = expected || 'no label'  ;
-        $target
-          .addClass(label)
-          .prepend('<span class="test-label">#' + (index + 1) + ' (' + label + ')</span>');
+
+        // Label the individual test case.
+        $(_case.get('element')).addClass(label);
 
         var message = 'Expected status: ' + expected;
         // Process the results.
