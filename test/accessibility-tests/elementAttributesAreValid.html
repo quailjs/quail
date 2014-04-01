@@ -50,7 +50,6 @@
 				                reset : true,
 				                htmlSource : '<a class="quail-failed-element" href="something.html" title=Something Else>Link</a>',
 				                complete: function(data) {
-				                	console.log(data.results.elementAttributesAreValid);
 				                	test('No quote around attribute with space', function() {
 				                		ok(data.results.elementAttributesAreValid.elements.length > 0, 'No quote around attribute with space.');
 				                	});

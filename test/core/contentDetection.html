@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <title>Document main content section can be found</title>
+</head>
+
+<body>
+  <div class="content-test" title="Element with an ARIA main role.">
+    <div role="main" class="--test-target">
+      <p>Typi quam accumsan claritas nibh ut. Lobortis ipsum dolor mirum imperdiet hendrerit. Ad blandit autem quod zzril congue.</p>
+      <p>In notare qui delenit quam zzril. Tincidunt mirum quarta facilisi ii delenit. Nihil formas me id quinta luptatum.</p>
+      <p>Quod lius suscipit eodem vulputate me. In eros liber ipsum ut Investigationes. Parum iis praesent liber eros est.</p>
+    </div>
+  </div>
+
+  <div class="content-test" title="Element with a class that contains the word content.">
+    <div class="sidebar">
+      <ul>
+        <li><a href="one.html">Side link one</a></li>
+        <li><a href="two.html">Side link two</a></li>
+        <li><a href="three.html">Side link three</a></li>
+      </ul>
+    </div>
+    <div class="--test-target content">
+      <p>Typi quam accumsan claritas nibh ut. Lobortis ipsum dolor mirum imperdiet hendrerit. Ad blandit autem quod zzril congue.</p>
+      <p>In notare qui delenit quam zzril. Tincidunt mirum quarta facilisi ii delenit. Nihil formas me id quinta luptatum.</p>
+      <p>Quod lius suscipit eodem vulputate me. In eros liber ipsum ut Investigationes. Parum iis praesent liber eros est.</p>
+    </div>
+  </div>
+
+<div class="content-test" title="Element with paragraphs.">
+  <div class="sidebar">
+    <ul>
+      <li><a href="one.html">Side link one</a></li>
+      <li><a href="two.html">Side link two</a></li>
+      <li><a href="three.html">Side link three</a></li>
+    </ul>
+  </div>
+  <div class="--test-target">
+    <p>Typi quam accumsan claritas nibh ut. Lobortis ipsum dolor mirum imperdiet hendrerit. Ad blandit autem quod zzril congue.</p>
+    <p>In notare qui delenit quam zzril. Tincidunt mirum quarta facilisi ii delenit. Nihil formas me id quinta luptatum.</p>
+    <p>Quod lius suscipit eodem vulputate me. In eros liber ipsum ut Investigationes. Parum iis praesent liber eros est.</p>
+  </div>
+</div>
+
+  <script src="../testrunner.js"></script>
+  <script>
+    (function(global) {
+      global.quailTest = function() {
+        $('.content-test').each(function() {
+          test($(this).attr('title'), function() {
+            var $target = __testQuail.components.content.findContent($(this));
+            ok($target.hasClass('--test-target'), 'Found target element');
+          });
+        });
+      };
+    })(this);
+  </script>
+</body>
+
+</html>
