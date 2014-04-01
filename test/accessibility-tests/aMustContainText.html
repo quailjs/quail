@@ -4,13 +4,14 @@
 		<title>aMustContainText</title>
 	</head>
 	<body>
-		<div class="quail-test" data-expected="pass" data-accessibility-test="aMustContainText">
-		  <p>Select link for more information about dogs.<a href="dogs.html"><img src="../assets/rex.jpg" alt="more information about dogs"/></a>
-        </p>
+
+		<div class="quail-test" data-expected="notApplicable" data-accessibility-test="aMustContainText">
+			<p>This is a page with an anchor <a id="anchor"></a>
+				</p>
 		</div>
 
 		<div class="quail-test" data-expected="pass" data-accessibility-test="aMustContainText">
-		  <p>This is a page with an anchor <a id="anchor"></a>
+		  <p>Select link for more information about dogs.<a href="dogs.html"><img src="../assets/rex.jpg" alt="more information about dogs"/></a>
         </p>
 		</div>
 
@@ -20,11 +21,6 @@
 
 		<div class="quail-test" data-expected="fail" data-accessibility-test="aMustContainText" title="Title attribute only">
 		  <p>Select link for more information about dogs. <a href="dogs.html" title="more information about dogs" class="quail-failed-element"></a>
-        </p>
-		</div>
-
-		<div class="quail-test" data-expected="fail" data-accessibility-test="aMustContainText">
-		  <p>This is a page with an anchor <a name="anchor"></a>
         </p>
 		</div>
 

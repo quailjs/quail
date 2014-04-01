@@ -5,7 +5,7 @@ quail.aLinkWithNonText = function(quail, test, Case) {
       expected: $(this).closest('.quail-test').data('expected')
     });
     test.add(_case);
-    if(!$(this).is('a:has(img, object, embed)[href]')) {
+    if (!$(this).is('a:has(img, object, embed)[href]')) {
       _case.set({
         'status': 'notApplicable'
       });
