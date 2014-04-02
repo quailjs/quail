@@ -27,7 +27,6 @@ quail.aLinksDontOpenNewWindow = function(quail, test, Case) {
     } while (!passes && i < quail.strings.newWindow.length);
     // Build a Case.
     if (passes) {
-      debugger;
       test.add(Case({
         element: this,
         'expected': $link.closest('.quail-test').data('expected'),
