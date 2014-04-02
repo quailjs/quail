@@ -1,37 +1,38 @@
 <!doctype html>
 <html>
-	<head>
-		<title>aLinkTextDoesNotBeginWithRedundantWord</title>
-	</head>
-	<body>
-		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinkTextDoesNotBeginWithRedundantWord" title="Link text">
-		  <p>
-		  	<a href="home.html">home page</a>
+  <head>
+    <title>aLinkTextDoesNotBeginWithRedundantWord</title>
+  </head>
+  <body>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="aLinkTextDoesNotBeginWithRedundantWord" title="Link text">
+      <p>
+        <a href="home.html">home page</a>
       </p>
-		</div>
+    </div>
 
-		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinkTextDoesNotBeginWithRedundantWord" title="Image alt text">
-		  <p>
-		  	<a href="home.html">
-		  		<img src="../assets/star.gif" alt="home page"/>
-		  	</a>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="aLinkTextDoesNotBeginWithRedundantWord" title="Image alt text">
+      <p>
+        <a href="home.html">
+          <img src="../assets/star.gif" alt="home page"/>
+        </a>
       </p>
-		</div>
+    </div>
 
-		<div class="quail-test" data-expected="fail" data-accessibility-test="aLinkTextDoesNotBeginWithRedundantWord" title="Image alt">
-		  <p>
-		  	<a href="home.html" class="quail-failed-element">
-		  		<img src="../assets/star.gif" alt="link to home page"/>
-		  	</a>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="aLinkTextDoesNotBeginWithRedundantWord" title="Image alt">
+      <p>
+        <a href="home.html" class="quail-failed-element">
+          <img src="../assets/star.gif" alt="link to home page"/>
+        </a>
       </p>
-		</div>
+    </div>
 
-		<div class="quail-test" data-expected="fail" data-accessibility-test="aLinkTextDoesNotBeginWithRedundantWord" title="Link text">
-		  <p>
-		  	<a href="home.html" class="quail-failed-element">link to home page</a>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="aLinkTextDoesNotBeginWithRedundantWord" title="Link text">
+      <p>
+        <a href="home.html" class="quail-failed-element">link to home page</a>
       </p>
-		</div>
+    </div>
 
 
-		<script src="../testrunner.js"></script>	</body>
+    <script src="../testrunner.js"></script>
+  </body>
 </html>
