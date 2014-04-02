@@ -191,27 +191,29 @@
      * Callback for when quail is done running tests.
      */
     quailComplete: function(eventName, thisTest, _case) {
-      test(thisTest.get('title').en, function() {
-        var expected = _case.get('expected');
-        var label = expected || 'no label'  ;
+      // Only run a test if there is an expected outcome.
+      if (_case.get('expected')) {
+        test(thisTest.get('title').en, function() {
+          var expected = _case.get('expected');
+          var label = expected || 'no label';
+          // Label the individual test case.
+          $(_case.get('element')).addClass(label);
 
-        // Label the individual test case.
-        $(_case.get('element')).addClass(label);
-
-        var message = 'Expected status: ' + expected;
-        // Process the results.
-        switch (expected) {
-        case 'pass':
-          ok(_case.get('status') === 'passed', message);
-          break;
-        case 'fail':
-          ok(_case.get('status') === 'failed', message);
-          break;
-        case 'notApplicable':
-          ok(_case.get('status') === 'notApplicable', message);
-          break;
-        }
-      });
+          var message = 'Expected status: ' + expected;
+          // Process the results.
+          switch (expected) {
+          case 'pass':
+            ok(_case.get('status') === 'passed', message);
+            break;
+          case 'fail':
+            ok(_case.get('status') === 'failed', message);
+            break;
+          case 'notApplicable':
+            ok(_case.get('status') === 'notApplicable', message);
+            break;
+          }
+        });
+      }
     }
   };
 
