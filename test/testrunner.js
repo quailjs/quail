@@ -211,36 +211,6 @@
           ok(_case.get('status') === 'notApplicable', message);
           break;
         }
-        return;
-        if (true) {}
-        else {
-          if($target.hasClass('self-fail')) {
-            ok(_case.get('status') === 'failed', 'Self testing element failed (document-wide test)');
-          }
-          else {
-            $target.find('.quail-failed-element').each(function() {
-              var found = this;
-              expected = false;
-              $.each(event.results[thisTest.accessibilityTest].elements, function(index, $element) {
-                if($element.get(0) === found ||
-                   $element.is('body') && $target.find('body').hasClass('quail-failed-element')) {
-                  expected = true;
-                  $(found).addClass('found');
-                }
-                if($element.is('svg')) {
-                  if($element.attr('class') === 'quail-failed-element') {
-                    $element.attr('class', 'quail-failed-element found');
-                    expected = true;
-                  }
-                }
-              });
-              if(!expected) {
-                ok(false, 'Element not found:' + $('<div>').append($(found).clone().empty()).html());
-              }
-            });
-            ok($target.find('.quail-failed-element').length === $target.find('.quail-failed-element.found').length, $target.find('.quail-failed-element').length + ' element(s) failed');
-          }
-        }
       });
     }
   };
