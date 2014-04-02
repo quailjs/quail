@@ -5,7 +5,7 @@
 </head>
 
 <body>
-  <div class="content-test" title="Element with an ARIA main role.">
+  <div class="content-test" id="1" title="Element with an ARIA main role.">
     <div role="main" class="--test-target">
       <p>Typi quam accumsan claritas nibh ut. Lobortis ipsum dolor mirum imperdiet hendrerit. Ad blandit autem quod zzril congue.</p>
       <p>In notare qui delenit quam zzril. Tincidunt mirum quarta facilisi ii delenit. Nihil formas me id quinta luptatum.</p>
@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div class="content-test" title="Element with a class that contains the word content.">
+  <div class="content-test" id="2" title="Element with a class that contains the word content.">
     <div class="sidebar">
       <ul>
         <li><a href="one.html">Side link one</a></li>
@@ -28,7 +28,7 @@
     </div>
   </div>
 
-<div class="content-test" title="Element with paragraphs.">
+<div class="content-test" id="3" title="Element with paragraphs.">
   <div class="sidebar">
     <ul>
       <li><a href="one.html">Side link one</a></li>
@@ -48,8 +48,9 @@
     (function(global) {
       global.quailTest = function() {
         $('.content-test').each(function() {
-          test($(this).attr('title'), function() {
-            var $target = __testQuail.components.content.findContent($(this));
+          var $container = $(this);
+          test($container.attr('title'), function() {
+            var $target = __testQuail.components.content.findContent($container);
             ok($target.hasClass('--test-target'), 'Found target element');
           });
         });
