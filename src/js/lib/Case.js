@@ -14,6 +14,16 @@ quail.lib.Case = (function () {
       this.listeners = {};
       this.attributes = attributes;
 
+      // Dispatch a resolved event if the case is initiated with a status.
+      if (attributes.status) {
+        var that = this;
+        // Delay the status dispatch to the next execution cycle so that the
+        // Case will register listeners in this execution cycle first.
+        window.setTimeout(function() {
+          that.dispatch('resolved', that);
+        }, 0);
+      }
+
       return this;
     },
     // Details of the Case.
