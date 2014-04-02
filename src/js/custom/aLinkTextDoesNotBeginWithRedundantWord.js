@@ -1,5 +1,5 @@
-quail.aLinkTextDoesNotBeginWithRedundantWord = function() {
-  quail.html.find('a').each(function() {
+quail.aLinkTextDoesNotBeginWithRedundantWord = function(quail, test, Case) {
+  test.get('$scope').find('a').each(function() {
     var $link = $(this);
     var text = '';
     if ($(this).find('img[alt]').length) {
@@ -7,10 +7,23 @@ quail.aLinkTextDoesNotBeginWithRedundantWord = function() {
     }
     text = text + $(this).text();
     text = text.toLowerCase();
+    var _case = test.add(Case({
+      element: this
+    }));
     $.each(quail.strings.redundant.link, function(index, phrase) {
       if (text.search(phrase) > -1) {
-        quail.testFails('aLinkTextDoesNotBeginWithRedundantWord', $link);
+        _case.set({
+          'expected': $link.closest('.quail-test').data('expected'),
+          'status': 'failed'
+        });
       }
     });
+    // If the case didn't fail, then it passed.
+    if (!_case.get('status')) {
+      _case.set({
+        'expected': $link.closest('.quail-test').data('expected'),
+        'status': 'passed'
+      });
+    }
   });
 };
