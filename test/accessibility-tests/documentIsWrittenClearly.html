@@ -39,14 +39,18 @@
 
         <p>The quick brown fox jumped over the lazy dogs.</p>
     </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="documentIsWrittenClearly">
 
+    <div class="quail-test" data-expected="pass" data-accessibility-test="documentIsWrittenClearly">
         <p>
             The quick brown fox jumped over the lazy dogs. The quick brown fox jumped
                 over the lazy dogs. The quick brown fox jumped over the lazy dogs. The
                 quick brown fox jumped over the lazy dogs. The quick brown fox jumped over
                 the lazy dogs. The quick brown fox jumped over the lazy dogs.
         </p>
+    </div>
+
+    <div class="quail-test" data-expected="notApplicable" data-accessibility-test="documentIsWrittenClearly">
+      <a name="empty"></a>
     </div>
 
     <script src="../testrunner.js"></script>
