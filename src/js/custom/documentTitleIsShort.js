@@ -1,5 +1,20 @@
-quail.documentTitleIsShort = function() {
-  if (quail.html.find('head title:first').text().length > 150) {
-    quail.testFails('documentTitleIsShort', quail.html.find('head title:first'));
+quail.documentTitleIsShort = function(quail, test, Case) {
+  var $title = test.get('$scope').find('head title:first');
+  var _case = Case({
+    element: $title,
+    expected: $title.closest('.quail-test').data('expected')
+  });
+  test.add(_case);
+  if (!$title.length) {
+    _case.set({
+      element: $test.get('$scope'),
+      'status' : 'notApplicable'
+    });
+    return;
   }
+  _case.set({
+    'status': $title.text().length > 150 ?
+      'failed' :
+      'passed'
+  });
 };
