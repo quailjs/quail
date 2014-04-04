@@ -1,9 +1,31 @@
-quail.documentIDsMustBeUnique = function() {
-  var ids = [];
-  quail.html.find('*[id]').each(function() {
-    if (ids.indexOf($(this).attr('id')) >= 0) {
-      quail.testFails('documentIDsMustBeUnique', $(this));
+quail.documentIDsMustBeUnique = function(quail, test, Case) {
+  var ids = {};
+  test.get('$scope').find(':not([id])').each(function() {
+    var _case = Case({
+      element: this
+    });
+    test.add(_case);
+    _case.set({
+      'status': 'notApplicable',
+      expected: $(this).closest('.quail-test').data('expected')
+    });
+  });
+  test.get('$scope').find('[id]').each(function() {
+    var _case = Case({
+      element: this,
+      expected: $(this).closest('.quail-test').data('expected')
+    });
+    test.add(_case);
+    if (typeof ids[$(this).attr('id')] === 'undefined') {
+      _case.set({
+        'status': 'passed'
+      });
+      ids[$(this).attr('id')] = $(this).attr('id');
     }
-    ids.push($(this).attr('id'));
+    else {
+      _case.set({
+        'status': 'failed'
+      });
+    }
   });
 };
