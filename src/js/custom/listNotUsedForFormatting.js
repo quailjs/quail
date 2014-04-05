@@ -13,7 +13,7 @@ quail.listNotUsedForFormatting = function(quail, test, Case) {
     else {
       _case.set({
         'status': 'passed'
-      })
+      });
     }
   });
 };
