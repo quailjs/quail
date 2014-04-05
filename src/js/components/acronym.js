@@ -1,4 +1,4 @@
-quail.components.acronym = function(quail, test, Case, type) {
+quail.components.acronym = function(quail, test, Case) {
   test.get('$scope').each(function() {
     var $scope = $(this);
     var alreadyReported = { };
