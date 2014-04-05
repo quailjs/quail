@@ -1,9 +1,9 @@
-quail.contentPositioningShouldNotChangeMeaning = function() {
+quail.contentPositioningShouldNotChangeMeaning = function(quail, test, Case) {
   //Look for absolute positioned elements that are being put into grids or columns
   var positions = ['top', 'left', 'right', 'bottom'];
   var coordinates = {};
   var failed = false;
-  quail.html.find('*:has(*:quailCss(position=absolute))').each(function() {
+  test.get('$scope').find('*:has(*:quailCss(position=absolute))').each(function() {
     coordinates = {top: {}, left: {}, right: {}, bottom: {}};
     failed = false;
     var $container = $(this);
@@ -22,7 +22,11 @@ quail.contentPositioningShouldNotChangeMeaning = function() {
       $.each(coordinates[this], function() {
         if (this > 2 && !failed) {
           failed = true;
-          quail.testFails('contentPositioningShouldNotChangeMeaning', $container);
+          test.add(Case({
+            element: $container.get(0),
+            expected: $container.closest('.quail-test').data('expected'),
+            status: 'failed'
+          }));
         }
       });
     });
