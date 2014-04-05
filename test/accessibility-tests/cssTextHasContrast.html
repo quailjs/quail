@@ -5,38 +5,22 @@
   <style>
     #test-1 p {
       background: #E9E9E9;
-      color: #0500FF;
-    }
-
-    #test-1 p strong {
       color: #C8D8DF;
     }
 
     #test-2 p {
       background: #E9E9E9;
-      color: #0500FF;
-    }
-
-    #test-2 p strong {
       color: #000;
     }
   </style>
 </head>
 <body>
   <div class="quail-test" data-expected="fail" data-accessibility-test="cssTextHasContrast" id="test-1">
-    <p class="one">
-      This is some text that
-      <span class="wrapper"> <strong class="quail-failed-element">I have put into this paragraph</strong>, but <em>this is OK</em>
-      </span>.
-    </p>
-    <p class="two">This text contrast is OK</p>
+    <p>This text is not readable</p>
   </div>
 
   <div class="quail-test" data-expected="pass" data-accessibility-test="cssTextHasContrast" id="test-2">
-    <p class="one">
-      This is some text that <strong>I have put into this paragraph</strong>.
-    </p>
-    <p class="two">This text contrast is OK</p>
+    <p>This test is readable.</p>
   </div>
 
   <script src="../testrunner.js"></script>

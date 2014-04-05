@@ -2,8 +2,7 @@
  * Test callback for color tests. This handles both WAI and WCAG
  * color contrast/luminosity.
  */
-quail.components.color = function(testName, options) {
-
+quail.components.color = function(quail, test, Case, options) {
   var colors = {
     /**
      * Returns the lumosity of a given foreground and background object,
@@ -139,11 +138,22 @@ quail.components.color = function(testName, options) {
 
   };
 
-  quail.html.find(options.options.selector).find(quail.textSelector).each(function() {
+  test.get('$scope').find(options.options.selector).filter(quail.textSelector).each(function() {
     if (!quail.isUnreadable($(this).text()) &&
         (options.options.algorithm === 'wcag' && !colors.passesWCAG($(this))) ||
         (options.options.algorithm === 'wai' && !colors.passesWAI($(this)))) {
-      quail.testFails(testName, $(this));
+      test.add(Case({
+        element: this,
+        expected: $(this).closest('.quail-test').data('expected'),
+        status: 'failed'
+      }));
+    }
+    else {
+      test.add(Case({
+        element: this,
+        expected: $(this).closest('.quail-test').data('expected'),
+        status: 'passed'
+      }));
     }
   });
 };
