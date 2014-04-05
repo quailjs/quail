@@ -71,7 +71,6 @@ quail.lib.Test = (function () {
       return _case;
     },
     invoke: function () {
-      var name = this.get('name');
       var type = this.get('type');
       var options = this.get('options') || {};
       var callback = this.get('callback');
@@ -119,7 +118,7 @@ quail.lib.Test = (function () {
         break;
       default:
         if (typeof quail.components[type] !== 'undefined') {
-          quail.components[type](name, this.attributes);
+          quail.components[type](quail, test, quail.lib.Case, this.attributes);
         }
         break;
       }
