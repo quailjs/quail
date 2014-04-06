@@ -82,7 +82,7 @@ quail.lib.Test = (function () {
         this.get('$scope').each(function() {
           var $scope = $(this);
           var candidates = $(this).find(options.selector);
-          // Not applicable.
+          // Passes.
           if (!candidates.length) {
             // Passes.
             _case = quail.lib.Case({

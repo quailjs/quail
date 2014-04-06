@@ -51,20 +51,10 @@
       equal(_test.get('reptile'), 'iguana', 'Test.fn.get sets with an object argument');
     });
     test('Invoke/selector', function () {
-      _test = new libs.Test('inapplicableTest', {
-        'type': 'selector',
-        'options': {
-          'filter': '.fail',
-          'selector': 'small'
-        }
-      });
-      _test.invoke();
-      equal(_test.status, 'inapplicable', 'Test returns status:inapplicable when no selection is made');
       _test = new libs.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
           'selector': 'a.unittest',
-          'filter': '.fail'
         }
       });
       _test.invoke();
@@ -72,8 +62,7 @@
       _test = new libs.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
-          'selector': 'a.unittest.pass',
-          'filter': '.fail'
+          'selector': 'a.unittest.malarkey',
         }
       });
       _test.invoke();
@@ -84,7 +73,6 @@
         'type': 'selector',
         'options': {
           'selector': 'a.unittest.fail',
-          'filter': '.fail'
         }
       });
       _test.invoke();
@@ -119,7 +107,6 @@
         'type': 'selector',
         'options': {
           'selector': 'a.unittest',
-          'filter': '.fail'
         }
       });
       _test.invoke();
