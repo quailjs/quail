@@ -1,4 +1,3 @@
-/*global console:true */
 quail.focusIndicatorVisible = function(quail, test, Case) {
   test.get('$scope').find(quail.focusElements).each(function() {
     var _case = Case({
