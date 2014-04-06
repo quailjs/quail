@@ -1,7 +1,27 @@
-quail.imgAltIsDifferent = function() {
-  quail.html.find('img[alt][src]').each(function() {
+quail.imgAltIsDifferent = function(quail, test, Case) {
+  test.get('$scope').find('img:not([src])').each(function() {
+    var _case = Case({
+      element: this,
+      expected: $(this).closest('.quail-test').data('expected'),
+      'status': 'notApplicable'
+    });
+    test.add(_case);
+  });
+  test.get('$scope').find('img[alt][src]').each(function() {
+    var _case = Case({
+      element: this,
+      expected: $(this).closest('.quail-test').data('expected')
+    });
+    test.add(_case);
     if ($(this).attr('src') === $(this).attr('alt') || $(this).attr('src').split('/').pop() === $(this).attr('alt')) {
-      quail.testFails('imgAltIsDifferent', $(this));
+      _case.set({
+        'status': 'failed'
+      });
+    }
+    else {
+      _case.set({
+        'status': 'passed'
+      });
     }
   });
 };
