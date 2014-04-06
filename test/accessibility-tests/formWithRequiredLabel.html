@@ -7,33 +7,11 @@
     <div class="quail-test" data-expected="fail" data-accessibility-test="formWithRequiredLabel">
         <form action="http://www.test.com">
             <p>
-                <label for="firstname" style="color: red;" class="required">First Name:</label>
+                <label for="firstname" class="required">First Name:</label>
                 <input type="text" id="firstname" />
                 <br/>
-                <label for="lastname" class="quail-failed-element">Last Name:</label>
+                <label for="lastname" style="color: red;" class="quail-failed-element">Last Name:</label>
                 <input type="text" id="lastname" />
-                <br/>
-                <label for="colour">Favourite Colour:</label>
-                <input type="text" id="colour" />
-                <br/>
-                <input type="submit" value="submit" />
-            </p>
-        </form>
-    </div>
-
-    <div class="quail-test" data-expected="fail" data-accessibility-test="formWithRequiredLabel">
-        <form action="http://www.test.com">
-            <p>
-                <label for="firstname"> <strong>First Name:</strong>
-                </label>
-                <input type="text" id="firstname" />
-                <br/>
-                <label for="lastname" class="required quail-failed-element" style="color: red;">Last Name:</label>
-                <input type="text" id="lastname" />
-                <br/>
-                <label for="colour" class="quail-failed-element">Favourite Colour:</label>
-                <input type="text" id="colour" />
-                <br/>
                 <input type="submit" value="submit" />
             </p>
         </form>
@@ -44,14 +22,6 @@
             <p>
                 <label for="firstname" class="quail-failed-element">First Name: *</label>
                 <input type="text" id="firstname" />
-                <br/>
-                <label for="lastname">Last Name:</label>
-                <input type="text" id="lastname" />
-                <br/>
-                <label for="colour">Favourite Colour:</label>
-                <input type="text" id="colour" />
-                <br/>
-                <input type="submit" value="submit" />
             </p>
         </form>
     </div>
@@ -62,14 +32,6 @@
                 <label for="firstname">First Name: *</label>
                 <input type="text" id="firstname" aria-required="true"
                     />
-                <br/>
-                <label for="lastname">Last Name:</label>
-                <input type="text" id="lastname" />
-                <br/>
-                <label for="colour">Favourite Colour:</label>
-                <input type="text" id="colour" />
-                <br/>
-                <input type="submit" value="submit" />
             </p>
         </form>
     </div>
