@@ -1,17 +1,32 @@
-quail.headersUseToMarkSections = function() {
-  quail.html.find('p').each(function() {
+quail.headersUseToMarkSections = function(quail, test, Case) {
+  test.get('$scope').find('p').each(function() {
+    var _case = Case({
+      element: this,
+      expected: $(this).closest('.quail-test').data('expected')
+    });
+    test.add(_case);
     var $paragraph = $(this);
     $paragraph.find('strong:first, em:first, i:first, b:first').each(function() {
-      if ($paragraph.text().trim() === $(this).text().trim()) {
-        quail.testFails('headersUseToMarkSections', $paragraph);
-      }
+      _case.set({
+        'status': ($paragraph.text().trim() === $(this).text().trim()) ?
+          'failed' :
+          'passed'
+      });
     });
   });
 
-  quail.html.find('ul, ol').each(function() {
+  test.get('$scope').find('ul, ol').each(function() {
+    var _case = Case({
+      element: this,
+      expected: $(this).closest('.quail-test').data('expected')
+    });
+    test.add(_case);
     var $list = $(this);
     if ($list.prevAll(':header').length ||
       $list.find('li').length !== $list.find('li:has(a)').length) {
+      _case.set({
+        'status': 'passed'
+      });
       return;
     }
     var isNavigation = true;
@@ -21,7 +36,9 @@ quail.headersUseToMarkSections = function() {
       }
     });
     if (isNavigation) {
-      quail.testFails('headersUseToMarkSections', $list);
+      _case.set({
+        'status': 'failed'
+      });
     }
   });
 };
