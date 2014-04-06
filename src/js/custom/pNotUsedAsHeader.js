@@ -1,13 +1,27 @@
-quail.pNotUsedAsHeader = function() {
+quail.pNotUsedAsHeader = function(quail, test, Case) {
   var priorStyle = { };
-  quail.html.find('p').each(function() {
+  test.get('$scope').find('p').each(function() {
+    var _case = Case({
+      element : this,
+      expected: $(this).closest('.quail-test').data('expected')
+    });
+    test.add(_case);
+    if ($(this).text().search('.') >= 1) {
+      _case.set({
+        'status': 'notApplicable'
+      });
+    }
+    var failed = false;
     if ($(this).text().search('.') < 1) {
       var $paragraph = $(this);
       $.each(quail.suspectPHeaderTags, function(index, tag) {
         if ($paragraph.find(tag).length) {
           $paragraph.find(tag).each(function() {
             if ($(this).text().trim() === $paragraph.text().trim()) {
-              quail.testFails('pNotUsedAsHeader', $paragraph);
+              _case.set({
+                'status': 'failed'
+              });
+              failed = true;
             }
           });
         }
@@ -15,13 +29,24 @@ quail.pNotUsedAsHeader = function() {
       $.each(quail.suspectPCSSStyles, function(index, style) {
         if (typeof priorStyle[style] !== 'undefined' &&
            priorStyle[style] !== $paragraph.css(style)) {
-          quail.testFails('pNotUsedAsHeader', $paragraph);
+          _case.set({
+            'status': 'failed'
+          });
+          failed = true;
         }
         priorStyle[style] = $paragraph.css(style);
       });
       if ($paragraph.css('font-weight') === 'bold') {
-        quail.testFails('pNotUsedAsHeader', $paragraph);
+        _case.set({
+          'status': 'failed'
+        });
+        failed = true;
       }
+    }
+    if (!failed) {
+      _case.set({
+        'status': 'passed'
+      });
     }
   });
 };
