@@ -5,10 +5,12 @@
 </head>
 <body>
 	<div class="quail-test" data-expected="fail" data-accessibility-test="emoticonsExcessiveUse">
-		<p>Just a regular paragraph.</p>
 		<p class="quail-failed-element">I am feeling :) :( B) :/ :P :o</p>
 	</div>
 	<div class="quail-test" data-expected="pass" data-accessibility-test="emoticonsExcessiveUse">
+		<p>Just a regular paragraph with a single emoticon :).</p>
+	</div>
+	<div class="quail-test" data-expected="notApplicable" data-accessibility-test="emoticonsExcessiveUse">
 		<p>Just a regular paragraph.</p>
 	</div>
 
