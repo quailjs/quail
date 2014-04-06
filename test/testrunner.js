@@ -162,8 +162,17 @@
         var testDefinition = that.tests.find(testName);
         testTitle = !testTitle && testDefinition && (testDefinition.get('title')) ? testDefinition.get('title').en : 'No test title defined';
 
-        // Set the test scope. Add to the scope, don't replace it.
-        var $scope = testDefinition.get('$scope');
+        // Set the test scope. Add to the scope, don't replace it. On the first
+        // iteration of this loop, use an empty jQuery object as the first
+        // scope. A Test will return the document as its default scope and in
+        // the context of tests, we don't want this default.
+        var $scope;
+        if (index === 0) {
+          $scope = $();
+        }
+        else {
+          $scope = testDefinition.get('$scope');
+        }
         $scope = $scope.add(this);
         testDefinition.set('scope', $scope.get());
 
