@@ -202,7 +202,8 @@
     quailComplete: function(eventName, thisTest, _case) {
       // Only run a test if there is an expected outcome.
       if (_case.get('expected')) {
-        test(thisTest.get('title').en, function() {
+        var title = thisTest.get('title') && thisTest.get('title').en || 'No title for test';
+        test(title, function() {
           var expected = _case.get('expected');
           var label = expected || 'no label';
           // Label the individual test case.
