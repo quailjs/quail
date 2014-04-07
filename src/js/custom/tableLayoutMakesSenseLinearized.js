@@ -1,7 +1,13 @@
-quail.tableLayoutMakesSenseLinearized = function() {
-  quail.html.find('table').each(function() {
+quail.tableLayoutMakesSenseLinearized = function(quail, test, Case) {
+  test.get('$scope').find('table').each(function() {
     if (!quail.isDataTable($(this))) {
-      quail.testFails('tableLayoutMakesSenseLinearized', $(this));
+      test.add(Case({
+        element: this,
+        expected: (function (element) {
+          return quail.components.resolveExpectation(element);
+        }(this)),
+        status: 'failed'
+      }));
     }
   });
 };

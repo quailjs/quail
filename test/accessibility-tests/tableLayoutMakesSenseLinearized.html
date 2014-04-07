@@ -1,104 +1,104 @@
 <!doctype html>
 <html>
 <head>
-    <title>tableLayoutMakesSenseLinearized</title>
+  <title>tableLayoutMakesSenseLinearized</title>
 </head>
 <body>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutMakesSenseLinearized">
-        <table class="quail-failed-element">
-            <tr>
-                <td>
-                    <img src="../assets/logo.png" alt="XYZ mountaineering" />
-                </td>
-                <td>top!</td>
-            </tr>
-            <tr>
-                <td colspan="2">XYZ gets you to the</td>
-            </tr>
-        </table>
-    </div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutMakesSenseLinearized">
+    <table class="quail-failed-element">
+      <tr>
+        <td>
+          <img src="../assets/logo.png" alt="XYZ mountaineering" />
+        </td>
+        <td>top!</td>
+      </tr>
+      <tr>
+        <td colspan="2">XYZ gets you to the</td>
+      </tr>
+    </table>
+  </div>
 
-    <div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutMakesSenseLinearized">
-        <table class="quail-failed-element">
-            <thead>
-                <tr>
-                    <td>Header A</td>
-                    <td>Header B</td>
-                    <td>Header C</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>This is a sentence</td>
-                    <td>taht makes sense visually.</td>
-                    <td rowspan="2" valign="bottom">that makes sense but is in the wrong row</td>
-                </tr>
-                <tr>
-                    <td>This is another sentence</td>
-                    <td>about another thing</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="tableLayoutMakesSenseLinearized">
+    <table class="quail-failed-element">
+      <thead>
+        <tr>
+          <td>Header A</td>
+          <td>Header B</td>
+          <td>Header C</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>This is a sentence</td>
+          <td>taht makes sense visually.</td>
+          <td rowspan="2" valign="bottom">that makes sense but is in the wrong row</td>
+        </tr>
+        <tr>
+          <td>This is another sentence</td>
+          <td>about another thing</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="quail-test" data-expected="pass" data-accessibility-test="tableLayoutMakesSenseLinearized">
-        <table>
-            <thead>
-                <tr>
-                    <td>Column A</td>
-                    <td>Column B</td>
-                    <td>Column C</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Row a</td>
-                    <td>Row b</td>
-                    <td>Row c</td>
-                </tr>
-                <tr>
-                    <td>Row a</td>
-                    <td>Row b</td>
-                    <td>Row c</td>
-                </tr>
-                <tr>
-                    <td>Row a</td>
-                    <td>Row b</td>
-                    <td>Row c</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="quail-test" data-expected="pass" data-accessibility-test="tableLayoutMakesSenseLinearized">
+    <table>
+      <thead>
+        <tr>
+          <td>Column A</td>
+          <td>Column B</td>
+          <td>Column C</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Row a</td>
+          <td>Row b</td>
+          <td>Row c</td>
+        </tr>
+        <tr>
+          <td>Row a</td>
+          <td>Row b</td>
+          <td>Row c</td>
+        </tr>
+        <tr>
+          <td>Row a</td>
+          <td>Row b</td>
+          <td>Row c</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="quail-test" data-expected="pass" data-accessibility-test="tableLayoutMakesSenseLinearized">
-        <table>
-            <thead>
-                <tr>
-                    <td>Column A</td>
-                    <td>Column B</td>
-                    <td>Column C</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Row a</td>
-                    <td>Row b</td>
-                    <td>Row c</td>
-                </tr>
-                <tr>
-                    <td>Row a</td>
-                    <td>Row b</td>
-                    <td>Row c</td>
-                </tr>
-                <tr>
-                    <td>Row a</td>
-                    <td>Row b</td>
-                    <td>Row c</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="quail-test" data-expected="pass" data-accessibility-test="tableLayoutMakesSenseLinearized">
+    <table>
+      <thead>
+        <tr>
+          <td>Column A</td>
+          <td>Column B</td>
+          <td>Column C</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Row a</td>
+          <td>Row b</td>
+          <td>Row c</td>
+        </tr>
+        <tr>
+          <td>Row a</td>
+          <td>Row b</td>
+          <td>Row c</td>
+        </tr>
+        <tr>
+          <td>Row a</td>
+          <td>Row b</td>
+          <td>Row c</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <script src="../testrunner.js"></script>
+  <script src="../testrunner.js"></script>
 </body>
 </html>
