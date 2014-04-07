@@ -7,7 +7,7 @@
 	<div class="quail-test" data-expected="fail" data-accessibility-test="tableAxisHasCorrespondingId" title="Table where axis attributes are not matched">
 		<table>
 			<thead>
-				<tr><th>Group one</th><th id="b">Group two</th></tr>
+				<tr><th>Group one</th><th>Group two</th></tr>
 				<tr><th axis="a" class="quail-failed-element">Axis A</th><th axis="b">Axis B</th>
 			</thead>
 			<tbody>
@@ -20,8 +20,8 @@
 	<div class="quail-test" data-expected="pass" data-accessibility-test="idRefHasCorrespondingId" title="Table where axis attributes are matched">
 		<table>
 			<thead>
-				<tr><th id="a">Group one</th><th id="b">Group two</th></tr>
-				<tr><th axis="a" class="quail-failed-element">Axis A</th><th axis="b">Axis B</th>
+				<tr><th id="a1">Group one</th><th id="b1">Group two</th></tr>
+				<tr><th axis="a1">Axis A</th><th axis="b1">Axis B</th>
 			</thead>
 			<tbody>
 				<tr><td>A</td><td>B</td></tr>
