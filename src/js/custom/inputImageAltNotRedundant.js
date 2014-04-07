@@ -1,7 +1,19 @@
-quail.inputImageAltNotRedundant = function() {
-  quail.html.find('input[type=image][alt]').each(function() {
+quail.inputImageAltNotRedundant = function (quail, test, Case) {
+  test.get('$scope').find('input[type=image][alt]').each(function() {
+    var _case = Case({
+      element: this,
+      expected: $(this).closest('.quail-test').data('expected')
+    });
+    test.add(_case);
     if (quail.strings.redundant.inputImage.indexOf(quail.cleanString($(this).attr('alt'))) > -1) {
-      quail.testFails('inputImageAltNotRedundant', $(this));
+      _case.set({
+        'status': 'failed'
+      });
+    }
+    else {
+      _case.set({
+        'status': 'passed'
+      });
     }
   });
 };
