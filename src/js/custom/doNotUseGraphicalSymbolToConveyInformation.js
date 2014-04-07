@@ -1,5 +1,6 @@
-quail.doNotUseGraphicalSymbolToConveyInformation = function() {
-  quail.html.find(quail.textSelector + ':not(abbr, acronym)').each(function() {
+quail.doNotUseGraphicalSymbolToConveyInformation = function(quail, test, Case) {
+  // Passes and fails.
+  test.get('$scope').find(quail.textSelector + ':not(abbr, acronym)').each(function() {
     var whiteList = '✓';
     var blackList = '?xo[]()+-!*xX';
 
@@ -12,15 +13,43 @@ quail.doNotUseGraphicalSymbolToConveyInformation = function() {
     if (textLeft.length === 0) {
       // Unless if it's white listed.
       if (whiteList.indexOf(text) === -1) {
-        quail.testFails('doNotUseGraphicalSymbolToConveyInformation', $(this));
+        test.add(Case({
+          element: this,
+          expected: (function (element) {
+            return quail.components.resolveExpectation(element);
+          }(this)),
+          status: 'failed'
+        }));
       }
     }
-
-    if (text.length === 1) {
-      // Check regularly used single character symbols.
-      if (blackList.indexOf(text) >= 0) {
-        quail.testFails('doNotUseGraphicalSymbolToConveyInformation', $(this));
-      }
+    // Check regularly used single character symbols.
+    else if (text.length === 1 && blackList.indexOf(text) >= 0) {
+      test.add(Case({
+        element: this,
+        expected: (function (element) {
+          return quail.components.resolveExpectation(element);
+        }(this)),
+        status: 'failed'
+      }));
     }
+    else {
+      test.add(Case({
+        element: this,
+        expected: (function (element) {
+          return quail.components.resolveExpectation(element);
+        }(this)),
+        status: 'passed'
+      }));
+    }
+  });
+  // Not applicables.
+  test.get('$scope').find(quail.textSelector).filter('abbr, acronym').each(function() {
+    test.add(Case({
+      element: this,
+      expected: (function (element) {
+        return quail.components.resolveExpectation(element);
+      }(this)),
+      status: 'notApplicable'
+    }));
   });
 };
