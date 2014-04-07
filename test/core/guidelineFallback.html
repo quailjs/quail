@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Adding custom tests to QUAIL</title>
+  <title>Guideline fallback</title>
 </head>
 
 <body>
@@ -19,18 +19,20 @@
   <script>
     (function(global) {
       global.quailTest = function() {
-        test('guidelineFallback', function() {
-        
-          $('.test-area').quail({ jsonPath : '../../dist',
-                              reset : true,
-                              complete : function(results) {
-                                testResults = results.results;
-                              }});
-          equal('IMG', testResults.imgHasAlt.elements[0].get(0).tagName, 'Default guideline has run');
+        asyncTest('guidelineFallback', function() {
+          expect(1);
+          $('.test-area').quail({
+            jsonPath : '../../dist',
+            guideline: ['imgHasAlt'],
+            reset : true,
+            complete : function(eventName, thisTest, _case) {
+              equal('IMG', results.imgHasAlt.elements[0].get(0).tagName, 'Default guideline has run');
+              start();
+            }
+          });
         });
       };
-    })(this);
-</script>
+    }(this));
+  </script>
 </body>
-
 </html>
