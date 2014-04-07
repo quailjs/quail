@@ -7,11 +7,11 @@
   <div class="quail-test" data-expected="notApplicable" data-accessibility-test="documentIDsMustBeUnique">
     <p>This paragraph has no ID</p>
   </div>
-  <div class="quail-test" data-expected="h2:ignore|h4:fail" data-accessibility-test="documentIDsMustBeUnique">
+  <div class="quail-test" data-expected="h2:ignore|p:fail" data-accessibility-test="documentIDsMustBeUnique">
     <h2 id="one">This is a header.</h2>
     <p id="one" class="quail-failed-element">This is the second paragraph.</p>
   </div>
-  <div class="quail-test" data-expected="h2:pass|p:pass" data-accessibility-test="documentIDsMustBeUnique">
+  <div class="quail-test" data-expected="h2:ignore|p:pass" data-accessibility-test="documentIDsMustBeUnique">
     <h2 id="three">This is a header.</h2>
     <p id="four" class="quail-failed-element">This is the second paragraph.</p>
   </div>
