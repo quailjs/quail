@@ -26,7 +26,6 @@ quail.closingTagsAreUsed = function(quail, test, Case) {
       if (typeof element.closingTag === 'undefined' &&
             !element.closingTag &&
             quail.selfClosingTags.indexOf(element.name.toLowerCase()) === -1) {
-        debugger;
         test.add(Case({
           element: node,
           // Only attempt to get an expectation for the testrunner if the node
@@ -36,7 +35,6 @@ quail.closingTagsAreUsed = function(quail, test, Case) {
         }));
       }
       else {
-        debugger;
         test.add(Case({
           element: node,
           // Only attempt to get an expectation for the testrunner if the node
