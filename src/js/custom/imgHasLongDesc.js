@@ -1,8 +1,20 @@
-quail.imgHasLongDesc = function() {
-  quail.html.find('img[longdesc]').each(function() {
+quail.imgHasLongDesc = function (quail, test, Case) {
+  test.get('$scope').find('img[longdesc]').each(function() {
+    var _case = Case({
+      element: this,
+      expected: $(this).closest('.quail-test').data('expected')
+    });
+    test.add(_case);
     if ($(this).attr('longdesc') === $(this).attr('alt') ||
         !quail.validURL($(this).attr('longdesc'))) {
-      quail.testFails('imgHasLongDesc', $(this));
+      _case.set({
+        'status': 'failed'
+      });
+    }
+    else {
+      _case.set({
+        'status': 'passed'
+      });
     }
   });
 };
