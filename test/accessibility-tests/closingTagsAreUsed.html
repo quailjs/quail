@@ -5,17 +5,17 @@
 </head>
 <body>
   <div class="quail-test" data-expected="pass" data-accessibility-test="closingTagsAreUsed">
-    <p>This paragraph is fine</p>
+    <p id="test-1">This paragraph is fine</p>
   </div>
 
   <div class="quail-test" data-expected="fail" data-accessibility-test="closingTagsAreUsed">
-    <p class="quail-failed-element">This paragraph has no closing tag.
+    <p id="test-2" class="quail-failed-element">This paragraph has no closing tag.
   </div>
 
   <div class="quail-test" data-expected="fail" data-accessibility-test="closingTagsAreUsed">
-    <div id="test-3">
+    <div>
       <p>This paragraph is fine.</p>
-      <p>This paragraph is missing something.
+      <p id="test-3">This paragraph is missing something.
     </div>
   </div>
 
