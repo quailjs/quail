@@ -177,8 +177,21 @@ var quail = {
         async : false,
         dataType : 'json',
         success : function (data) {
+          quail.tests = quail.lib.TestCollection();
           if(typeof data === 'object') {
-            quail.tests = quail.lib.TestCollection(data);
+            // Filter for specific tests.
+            if (quail.options.guideline && quail.options.guideline.length) {
+              for (var i = 0, il = quail.options.guideline.length; i < il; ++i) {
+                var t = quail.options.guideline[i];
+                if (data[t]) {
+                  quail.tests.set(t, data[t]);
+                }
+              }
+            }
+            // Or use all of the tests.
+            else {
+              quail.tests = quail.lib.TestCollection(data);
+            }
           }
         }
       });
@@ -202,31 +215,31 @@ var quail = {
       });
     }
 
-    quail.listenTo(quail.tests, 'results', function (eventName, test) {
-      // Process the cases.
-      var options = $.extend({},test.get('options'), quail.options);
-      test.each(function (index, _case) {
-        _processTestResult(_case.get('status'), test.get('name'), $(_case.get('element')), options);
-      });
-
-      // Call the complete callback.
-      if(typeof quail.options.complete !== 'undefined') {
-        var results = {
-          totals : {
-            severe : 0,
-            moderate : 0,
-            suggestion : 0
-          },
-          results : quail.accessibilityResults
-        };
-        $.each(results.results, function(testName, result) {
-          results.totals[quail.testabilityTranslation[result.test.get('testability')]] += result.elements.length;
-        });
-        quail.options.complete(results);
-      }
-    });
+    /**
+     * @deprecated. Just keeping this around so we know what the old API looks
+     * like.
+     */
+    // var onResults = function (eventName, thisTest, _case) {
+    //   // Call the complete callback.
+    //   if(typeof quail.options.complete !== 'undefined') {
+    //     var results = {
+    //       totals : {
+    //         severe : 0,
+    //         moderate : 0,
+    //         suggestion : 0
+    //       },
+    //       results : quail.accessibilityResults
+    //     };
+    //     $.each(results.results, function(testName, result) {
+    //       results.totals[quail.testabilityTranslation[result.test.get('testability')]] += result.elements.length;
+    //     });
+    //     quail.options.complete(results);
+    //   }
+    // };
     // Invoke all the registered tests.
-    quail.tests.run();
+    quail.tests.run({
+      complete: quail.options.complete
+    });
   },
 
   // @todo, make this a set of methods that all classes extend.
