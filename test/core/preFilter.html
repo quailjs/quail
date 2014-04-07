@@ -14,34 +14,40 @@
   <script>
     (function(global) {
       global.quailTest = function() {
-        test('Test results can be filtered', function() {
+        asyncTest('Test results can be filtered', function() {
+          expect(1);
           var testResults = [];
-          $('.test-area').quail({ jsonPath : '../../dist',
+          $('.test-area').quail({
+            jsonPath : '../../dist',
             guideline : [ 'imgHasAlt' ],
             reset : true,
-            preFilter : function(testName, element) {
+            preFilter : function(eventName, thisTest, _case) {},
+            complete : function(eventName, thisTest, _case) {
+              ok(_case.get('element'), 'Image was found.');
+              start();
+            }
+          });
+        });
 
-            },
-            complete : function(results) {
-              testResults = results.results;
-            }});
-          equal(1, testResults.imgHasAlt.elements.length, 'Image was found.');
-        
-          $('.test-area').quail({ jsonPath : '../../dist',
+        asyncTest('Test results can be filtered', function() {
+          expect(1);
+          $('.test-area').quail({
+            jsonPath : '../../dist',
             guideline : [ 'imgHasAlt' ],
             reset : true,
-            preFilter : function(testName, element) {
-              if(element.get(0).tagName == 'IMG') {
+            preFilter : function(eventName, thisTest, _case) {
+              if(_case.get('element').tagName == 'IMG') {
                 return false;
               }
             },
-            complete : function(results) {
-              testResults = results.results;
-            }});
-          equal(0, testResults.imgHasAlt.elements.length, 'Image was filtered out.');
-      });
-    };
-  })(this);
+            complete : function(eventName, thisTest, _case) {
+              equal('NotTested', _case.get('status'), 'Image was filtered out.');
+              start();
+            }
+          });
+        });
+      };
+    }(this));
   </script>
 </body>
 

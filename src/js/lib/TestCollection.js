@@ -35,12 +35,17 @@ quail.lib.TestCollection = (function () {
       var tc = this;
       callbacks = callbacks || {};
       this.each(function (index, test) {
-        // Allow a prefilter to cancel the test.
+        // Allow a prefilter to remove a case.
         if (callbacks.preFilter) {
-          var result = callbacks.preFilter.call(null, test.get('name'), test.get('el'));
-          if (result === false) {
-            return;
-          }
+          tc.listenTo(test, 'resolved', function (eventName, test, _case) {
+            var result = callbacks.preFilter(eventName, test, _case);
+            if (result === false) {
+              // Manipulate the attributes directly so that change events
+              // are not triggered.
+              _case.attributes.status = 'NotTested';
+              _case.attributes.expected = null;
+            }
+          });
         }
         if (callbacks.complete) {
           tc.listenTo(test, 'resolved', callbacks.complete);

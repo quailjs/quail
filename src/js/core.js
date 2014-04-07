@@ -31,56 +31,19 @@ $.expr[':'].quailCss = function(obj, index, meta) {
  *   The DOM element, wrapped in jQuery, that the test was run against.
  * @param {object} options
  */
-function _processTestResult (type, testName, $element, options) {
-  var test = quail.tests.find(testName);
-  options = options || {};
-
-  function isCallable (func) {
-    return typeof func === 'function' || typeof func === 'object';
-  }
-
-  var testability = test.get('testability');
-  testability = (testability) ? testability : 'unknown';
-  var info = {
-    element     : $element,
-    selector    : quail.defineUniqueSelector($element.length && $element[0] || null),
-    location    : window && window.location || null,
-    testName    : testName,
-    test        : quail.tests.find(testName),
-    testability : testability,
-    severity    : quail.testabilityTranslation[testability],
-    options     : options
-  };
-
-  // Invoke test listeners;
-  switch (type) {
-  case 'inapplicable':
-    if (isCallable(quail.options.testNotApplicable)) {
-      quail.options.testNotApplicable(info);
-    }
-    break;
-  case 'failed':
-    // @todo, this currently stores just the failures. We need to pass all
-    // results.
-    // result.elements.push($element);
-    if (isCallable(quail.options.testFailed)) {
-      quail.options.testFailed(info);
-    }
-    break;
-  case 'passed':
-    if (isCallable(quail.options.testPassed)) {
-      quail.options.testPassed(info);
-    }
-    break;
-  case 'cantTell':
-  case 'untested':
-    break;
-  default:
-    if (isCallable(quail.options.complete)) {
-      quail.options.complete(info);
-    }
-    break;
-  }
+function _processTestResult () {
+  // var testability = test.get('testability');
+  // testability = (testability) ? testability : 'unknown';
+  // var info = {
+  //   element     : $element,
+  //   selector    : quail.defineUniqueSelector($element.length && $element[0] || null),
+  //   location    : window && window.location || null,
+  //   testName    : testName,
+  //   test        : quail.tests.find(testName),
+  //   testability : testability,
+  //   severity    : quail.testabilityTranslation[testability],
+  //   options     : options
+  // };
 }
 
 var quail = {
@@ -103,7 +66,7 @@ var quail = {
 
   accessibilityResults : { },
 
-  accessibilityTests : { },
+  //accessibilityTests : { },
 
   // @var TestCollection
   tests : { },
@@ -144,45 +107,33 @@ var quail = {
    * and if tests are not passed, it instead fetches them using getJSON.
    */
   run : function (options) {
-    if (quail.options.reset) {
+    if (options.reset) {
       quail.accessibilityResults = { };
     }
-    var testName;
     // Create an empty TestCollection.
     quail.tests = quail.lib.TestCollection();
-    // If test defintions are available, iterate through specific tests for this
-    // run (supplied in options.guidelines).
-    if (quail.options.accessibilityTests) {
-      if (quail.options.guideline && quail.options.guideline.length) {
-        for (var i = 0, il = quail.options.guideline.length; i < il; ++i) {
-          testName = quail.options.guideline[i];
-          if (quail.options.accessibilityTests[testName]) {
-            quail.tests.set(testName, quail.options.accessibilityTests[testName]);
-          }
-        }
-      }
-      // The quail builder at quailjs.org/build provides an in-scope test object.
-      else if (typeof quailBuilderTests !== 'undefined') {
-        quail.tests = quail.lib.TestCollection(quailBuilderTests);
-      }
-      // Use all the tests available as a default.
-      else {
-        quail.tests = quail.lib.TestCollection(options.accessibilityTests);
-      }
+    // The quail builder at quailjs.org/build provides an in-scope test object.
+    if (typeof quailBuilderTests !== 'undefined') {
+      quail.tests = quail.lib.TestCollection(quailBuilderTests);
     }
-    // @todo, make this a runtime configuration option.
-    if(!quail.tests.length) {
+    // Otherwise get the tests from the json data list.
+    else {
+      var url = options.jsonPath;
+      // Get a specific guideline.
+      if (typeof options.guideline === 'string') {
+        url += '/guidelines/' + options.guideline;
+      }
+
       $.ajax({
-        url : quail.options.jsonPath + '/tests.json',
+        url : url + '/tests.json',
         async : false,
         dataType : 'json',
         success : function (data) {
-          quail.tests = quail.lib.TestCollection();
           if(typeof data === 'object') {
             // Filter for specific tests.
-            if (quail.options.guideline && quail.options.guideline.length) {
-              for (var i = 0, il = quail.options.guideline.length; i < il; ++i) {
-                var t = quail.options.guideline[i];
+            if (options.guideline && options.guideline.length) {
+              for (var i = 0, il = options.guideline.length; i < il; ++i) {
+                var t = options.guideline[i];
                 if (data[t]) {
                   quail.tests.set(t, data[t]);
                 }
@@ -196,23 +147,13 @@ var quail = {
         }
       });
     }
-    if (typeof quail.options.customTests !== 'undefined') {
-      for (testName in quail.options.customTests) {
-        if (quail.options.customTests.hasOwnProperty(testName)) {
-          quail.tests.set(testName, quail.options.customTests[testName]);
+    // Push custom tests into the test collection.
+    if (typeof options.customTests !== 'undefined') {
+      for (var testName in options.customTests) {
+        if (options.customTests.hasOwnProperty(testName)) {
+          quail.tests.set(testName, options.customTests[testName]);
         }
       }
-    }
-    // @todo, make this a runtime configuration option.
-    if(typeof quail.options.guideline === 'string') {
-      $.ajax({
-        url : quail.options.jsonPath + '/guidelines/' + quail.options.guideline +'.tests.json',
-        async : false,
-        dataType : 'json',
-        success : function(data) {
-          quail.tests = quail.lib.TestCollection(data);
-        }
-      });
     }
 
     /**
@@ -236,9 +177,11 @@ var quail = {
     //     quail.options.complete(results);
     //   }
     // };
+
     // Invoke all the registered tests.
     quail.tests.run({
-      complete: quail.options.complete
+      preFilter: options.preFilter || function () {},
+      complete: options.complete || function () {}
     });
   },
 
