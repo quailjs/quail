@@ -15,6 +15,25 @@ quail.ariaOrphanedContent = function(quail, test, Case) {
         expected: $local.data('expected'),
         status: 'notApplicable'
       }));
+      return;
+    }
+    // If roles exist, make sure all content is within a role.
+    var $orphans = $local.find('*:not(*[role] *, *[role], script, meta, link)');
+    if (!$orphans.length) {
+      test.add(Case({
+        expected: $local.data('expected'),
+        status: 'passed'
+      }));
+    }
+    // Otherwise, fail the content that falls outside a role.
+    else {
+      $orphans.each(function() {
+        test.add(Case({
+          element: this,
+          expected: $(this).closest('.quail-test').data('expected'),
+          status: 'failed'
+        }));
+      });
     }
   });
 };
