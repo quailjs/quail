@@ -1,10 +1,7 @@
 quail.newWindowIsOpened = function(quail, test, Case) {
 
   var fenestrate = window.open;
-
-  // Save a reference to the link that is clicked, so it can be passed to
-  // quail.testFails() if window.open is called.
-  var clicker;
+  var _case;
 
   window.open = function (event) {
     test.each(function (index, _case) {
@@ -12,15 +9,19 @@ quail.newWindowIsOpened = function(quail, test, Case) {
       if (href.indexOf(event) > -1) {
         _case.set('status', 'failed');
       }
+      test.add(_case);
     });
   };
 
   test.get('$scope').find('a').each(function () {
     // Save a reference to this clicked tag.
-    clicker = this;
-    test.add(Case({
-      element: this
-    }));
+    _case = Case({
+      element: this,
+      expected: (function (element) {
+        return quail.components.resolveExpectation(element);
+      }(this)),
+      status: 'passed'
+    });
     $(this).trigger('click');
   });
 
