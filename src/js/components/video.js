@@ -112,7 +112,6 @@ quail.components.video = {
           return;
         }
         var language = quail.components.language.getDocumentLanguage(element, true);
-        console.log(element);
         if (element.parents('[lang]').length) {
           language = element.parents('[lang]').first().attr('lang').split('-')[0];
         }
