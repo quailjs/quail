@@ -144,7 +144,6 @@ var quail = {
             }
             // Or use all of the tests.
             else {
-              debugger;
               quail.tests = quail.lib.TestCollection(data, {
                 scope: quail.html || null
               });
