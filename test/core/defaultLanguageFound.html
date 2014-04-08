@@ -27,17 +27,20 @@
           findCurrentLanguage : {
             type: 'custom',
             components: [ 'language' ],
-            callback: function(quail) {
-              test('Default langauge found in current element', function() {
-                equal(quail.components.language.getDocumentLanguage(), 'ar-test-1', 'Test language code found');
-              });
+            callback: function(eventName, thisTest, _case) {
+              equal(quail.components.language.getDocumentLanguage(thisTest.get('$scope')), 'ar-test-1', 'Test language code found');
+              start();
             }
           }
         };
-        $('.current-element').quail({ jsonPath : '../../dist',
-          guideline : [ 'findCurrentLanguage' ],
-          reset : true,
-          customTests : custom
+
+        asyncTest('Default langauge found in current element', function() {
+          $('.current-element').quail({
+            jsonPath : '../../dist',
+            guideline : [ 'findCurrentLanguage' ],
+            reset : true,
+            customTests : custom
+          });
         });
       }
     })(this);

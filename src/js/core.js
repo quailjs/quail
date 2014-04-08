@@ -60,7 +60,7 @@ var quail = {
     1      : 'severe'
   },
 
-  html : { },
+  html : null,
 
   strings : { },
 
@@ -114,7 +114,9 @@ var quail = {
     quail.tests = quail.lib.TestCollection();
     // The quail builder at quailjs.org/build provides an in-scope test object.
     if (typeof quailBuilderTests !== 'undefined') {
-      quail.tests = quail.lib.TestCollection(quailBuilderTests);
+      quail.tests = quail.lib.TestCollection(quailBuilderTests, {
+        scope: quail.html || null
+      });
     }
     // Otherwise get the tests from the json data list.
     else {
@@ -135,13 +137,16 @@ var quail = {
               for (var i = 0, il = options.guideline.length; i < il; ++i) {
                 var t = options.guideline[i];
                 if (data[t]) {
+                  data[t].scope = quail.html || null;
                   quail.tests.set(t, data[t]);
                 }
               }
             }
             // Or use all of the tests.
             else {
-              quail.tests = quail.lib.TestCollection(data);
+              quail.tests = quail.lib.TestCollection(data, {
+                scope: quail.html || null
+              });
             }
           }
         }
@@ -151,6 +156,7 @@ var quail = {
     if (typeof options.customTests !== 'undefined') {
       for (var testName in options.customTests) {
         if (options.customTests.hasOwnProperty(testName)) {
+          options.customTests[testName].scope = quail.html || null;
           quail.tests.set(testName, options.customTests[testName]);
         }
       }

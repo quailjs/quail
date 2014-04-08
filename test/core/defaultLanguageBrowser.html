@@ -31,19 +31,22 @@
           findBrowserLanguage : {
             type: 'custom',
             components: [ 'language' ],
-            callback: function(quail) {
-              test('Default langauge found from browser', function() {
-                var browserLanguage = navigator.language || navigator.userLanguage;
-                browserLanguage = browserLanguage.trim().toLowerCase();
-                equal(quail.components.language.getDocumentLanguage(), browserLanguage, 'Browser language code found');
-              });
+            callback: function(eventName, thisTest, _case) {
+              var browserLanguage = navigator.language || navigator.userLanguage;
+              browserLanguage = browserLanguage.trim().toLowerCase();
+              equal(quail.components.language.getDocumentLanguage(thisTest.get('$scope')), browserLanguage, 'Browser language code found');
+              start();
             }
           }
         };
-        $('.no-language').quail({ jsonPath : '../../dist',
-          guideline : [ 'findBrowserLanguage' ],
-          reset : true,
-          customTests : custom
+
+        asyncTest('Default langauge found from browser', function() {
+          $('.no-language').quail({
+            jsonPath : '../../dist',
+            guideline : [ 'findBrowserLanguage' ],
+            reset : true,
+            customTests : custom
+          });
         });
       };
     })(this);

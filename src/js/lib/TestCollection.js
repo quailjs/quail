@@ -10,8 +10,9 @@ quail.lib.TestCollection = (function () {
   // Prototype object of the TestCollection.
   TestCollection.fn = TestCollection.prototype = {
     constructor: TestCollection,
-    init: function (tests) {
+    init: function (tests, options) {
       this.listeners = {};
+      options = options || {};
       if (!tests) {
         return this;
       }
@@ -19,6 +20,7 @@ quail.lib.TestCollection = (function () {
         var test;
         for (var name in tests) {
           if (tests.hasOwnProperty(name)) {
+            tests[name].scope = tests[name].scope || options.scope;
             test = new quail.lib.Test(name, tests[name]);
             this.listenTo(test, 'results', this.report);
             this.push(test);
