@@ -10,14 +10,15 @@
 	<script>
     (function(global) {
       global.quailTest = function() {
-        $(document).quail({ jsonPath : '../../dist',
-          guideline : [ 'documentTitleDescribesDocument' ],
-          reset : true,
-          testFailed : function(event) {
-          	test('Title element selected', function() {
-              ok(event.element.is('title'), 'Title element higlighted as possible fail');
-            });
-          }
+        asyncTest('Title element selected', function() {
+          $(document).quail({ jsonPath : '../../dist',
+            guideline : [ 'documentTitleDescribesDocument' ],
+            reset : true,
+            complete : function(eventName, thisTest, _case) {
+              ok(_case.get('status') === 'failed', 'Title element higlighted as possible fail');
+              start();
+            }
+          });
         });
       };
     })(this);
