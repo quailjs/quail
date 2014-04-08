@@ -1,26 +1,33 @@
 quail.tableLayoutHasNoCaption = function (quail, test, Case) {
   test.get('$scope').find('table').each(function() {
-    var _case = Case({
-      element: this,
-      expected: $(this).closest('.quail-test').data('expected')
-    });
-    test.add(_case);
     if ($(this).find('caption').length) {
       if (!quail.isDataTable($(this))) {
-        _case.set({
-          'status': 'failed'
-        });
+        test.add(Case({
+          element: this,
+          expected: (function (element) {
+            return quail.components.resolveExpectation(element);
+          }(this)),
+          status: 'failed'
+        }));
       }
       else {
-        _case.set({
-          'status': 'passed'
-        });
+        test.add(Case({
+          element: this,
+          expected: (function (element) {
+            return quail.components.resolveExpectation(element);
+          }(this)),
+          status: 'passed'
+        }));
       }
     }
     else {
-      _case.set({
+      test.add(Case({
+        element: this,
+        expected: (function (element) {
+          return quail.components.resolveExpectation(element);
+        }(this)),
         'status': 'notApplicable'
-      });
+      }));
     }
   });
 };
