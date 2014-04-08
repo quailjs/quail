@@ -26,22 +26,24 @@
   <script>
     (function(global) {
       global.quailTest = function() {
-        var custom = {
-          findParentLanguage : {
-            type: 'custom',
-            components: [ 'language' ],
-            callback: function(quail) {
-              test('Default langauge found in parent element', function() {
-                equal(quail.components.language.getDocumentLanguage(), 'ar-test-2', 'Test language code found');
-              });
+          var custom = {
+            findParentLanguage : {
+              type: 'custom',
+              components: [ 'language' ],
+              callback: function(eventName, thisTest, _case) {
+                equal(quail.components.language.getDocumentLanguage(thisTest.get('$scope')), 'ar-test-2', 'Test language code found');
+                start();
+              }
             }
-          }
-        };
-        
-        $('.parent-element').quail({ jsonPath : '../../dist',
-          guideline : [ 'findParentLanguage' ],
-          reset : true,
-          customTests : custom
+          };
+
+        asyncTest('Default langauge found in parent element', function() {
+          $('.parent-element').quail({
+            jsonPath : '../../dist',
+            guideline : [ 'findParentLanguage' ],
+            reset : true,
+            customTests : custom
+          });
         });
       };
     })(this);
