@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <h1>documentHasTitleElement-pass</h1>
+  <title>documentHasTitleElement-pass</title>
 </head>
 <body>
 
@@ -10,14 +10,15 @@
 	<script>
     (function(global) {
       global.quailTest = function() {
-        $(document).quail({ jsonPath : '../../dist',
-          guideline : [ 'documentHasTitleElement' ],
-          reset : true,
-          testFailed : function(event) {
-          	test('HTML element selected', function() {
-              ok(event.element.is('html'), 'HTML element failed test');
-            });
-          }
+        asyncTest('HTML element selected', function() {
+          $(document).quail({ jsonPath : '../../dist',
+            guideline : [ 'documentHasTitleElement' ],
+            reset : true,
+            complete : function(eventName, thisTest, _case) {
+              ok(_case.get('status') === 'passed', 'The document has a title element.');
+              start();
+            }
+          });
         });
       };
     })(this);
