@@ -1,7 +1,13 @@
-quail.tableUsesAbbreviationForHeader = function() {
-  quail.html.find('th:not(th[abbr])').each(function() {
+quail.tableUsesAbbreviationForHeader = function(quail, test, Case) {
+  test.get('$scope').find('th:not(th[abbr])').each(function() {
     if ($(this).text().length > 20) {
-      quail.testFails('tableUsesAbbreviationForHeader', $(this));
+      test.add(Case({
+        element: this,
+        expected: (function (element) {
+          return quail.components.resolveExpectation(element);
+        }(this)),
+        status: 'failed'
+      }));
     }
   });
 };

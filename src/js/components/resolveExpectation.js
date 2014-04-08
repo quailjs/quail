@@ -9,7 +9,7 @@
  */
 quail.components.resolveExpectation = function(element) {
   var expected = $(element).closest('.quail-test').data('expected');
-  var expectations = expected.split('|');
+  var expectations = typeof expected === 'string' && expected.split('|');
 
   if (expectations.length > 1 && element.nodeType === 1) {
     var conditions = {};

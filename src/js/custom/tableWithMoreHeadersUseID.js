@@ -1,5 +1,5 @@
-quail.tableWithMoreHeadersUseID = function() {
-  quail.html.find('table:has(th)').each(function() {
+quail.tableWithMoreHeadersUseID = function(quail, test, Case) {
+  test.get('$scope').find('table:has(th)').each(function() {
     var $table = $(this);
     var rows = 0;
     $table.find('tr').each(function() {
@@ -7,7 +7,13 @@ quail.tableWithMoreHeadersUseID = function() {
         rows++;
       }
       if (rows > 1 && !$(this).find('th[id]').length) {
-        quail.testFails('tableWithMoreHeadersUseID', $table);
+        test.add(Case({
+          element: this,
+          expected: (function (element) {
+            return quail.components.resolveExpectation(element);
+          }(this)),
+          status: 'failed'
+        }));
       }
     });
   });

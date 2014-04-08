@@ -1,21 +1,21 @@
 <!doctype html>
 <html>
 <head>
-	<title>whiteSpaceInWord</title>
+  <title>whiteSpaceInWord</title>
 </head>
 <body>
-	<div class="quail-test" data-expected="fail" data-accessibility-test="whiteSpaceInWord">
-		<h4 class="quail-failed-element">H E L L O T H E R E</h4>
-	</div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="whiteSpaceInWord">
+    <h4 class="quail-failed-element">H E L L O T H E R E</h4>
+  </div>
 
-	<div class="quail-test" data-expected="fail" data-accessibility-test="whiteSpaceInWord">
-		<h4 class="quail-failed-element">H&nbsp;E&nbsp;L&nbsp;L&nbsp;O T&nbsp;H&nbsp;E&nbsp;R&nbsp;E</h4>
-	</div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="whiteSpaceInWord">
+    <h4 class="quail-failed-element">H&nbsp;E&nbsp;L&nbsp;L&nbsp;O T&nbsp;H&nbsp;E&nbsp;R&nbsp;E</h4>
+  </div>
 
-	<div class="quail-test" data-expected="pass" data-accessibility-test="whiteSpaceInWord">
-		<h4>Hello there</h4>
-	</div>
+  <div class="quail-test" data-expected="pass" data-accessibility-test="whiteSpaceInWord">
+    <h4>Hello there</h4>
+  </div>
 
-	<script src="../testrunner.js"></script>
+  <script src="../testrunner.js"></script>
 </body>
 </html>
