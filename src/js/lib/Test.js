@@ -87,7 +87,7 @@ quail.lib.Test = (function () {
             // Passes.
             _case = quail.lib.Case({
               element: undefined,
-              expected: $scope.data('expected')
+              expected: $scope.data('expected') || $scope.find('[data-expected]').data('expected')
             });
             test.add(_case);
             _case.set({status: 'passed'});
