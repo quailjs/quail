@@ -11,10 +11,8 @@ quail.components.resolveExpectation = function(element) {
   var $scope = $(element).closest('.quail-test');
   var expected = $scope.data('expected');
   var expectations = typeof expected === 'string' && expected.split('|');
-    debugger;
 
   if (expectations.length > 1 && element.nodeType === 1) {
-    var conditions = {};
     var condition, $el;
     // Split apart the compound expectations.
     for (var i = 0, il = expectations.length; i < il; ++i) {
