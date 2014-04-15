@@ -2,13 +2,17 @@
 <html>
 <head>
 	<title>scriptsDoNotFlicker</title>
+  <script>
+    // Dummy script to provide an anchor for loading jQuery.
+    "use strict";
+  </script>
 </head>
 <body>
 	<div class="quail-test" data-expected="fail" data-accessibility-test="scriptsDoNotFlicker">
 		<script class="quail-failed-element"></script>
 	</div>
-	
-	<div class="quail-test" data-expected="fail" data-accessibility-test="scriptsDoNotFlicker">
+
+	<div class="quail-test" data-expected="pass" data-accessibility-test="scriptsDoNotFlicker">
 		<p>No scripts here.</p>
 	</div>
 
