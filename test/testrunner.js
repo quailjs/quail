@@ -173,7 +173,19 @@
         else {
           $scope = testDefinition.get('$scope');
         }
-        $scope = $scope.add(this);
+        // Sometimes the scope is overridden.
+        var dataScope = $(this).data('scope');
+        if (dataScope) {
+          if (dataScope === 'document') {
+            $scope = $scope.add(document);
+          }
+          else {
+            $scope = $scope.add(dataScope);
+          }
+        }
+        else {
+          $scope = $scope.add(this);
+        }
         testDefinition.set('scope', $scope.get());
 
         // @todo, this is legacy stuff; remove eventually.
