@@ -8,23 +8,28 @@
  * @hereDeDragons.
  */
 quail.components.resolveExpectation = function(element) {
-  var expected = $(element).closest('.quail-test').data('expected');
+  var $scope = $(element).closest('.quail-test');
+  var expected = $scope.data('expected');
   var expectations = typeof expected === 'string' && expected.split('|');
+    debugger;
 
   if (expectations.length > 1 && element.nodeType === 1) {
     var conditions = {};
-    var condition;
+    var condition, $el;
     // Split apart the compound expectations.
     for (var i = 0, il = expectations.length; i < il; ++i) {
       condition = expectations[i].split(':');
-      conditions[condition[0].toUpperCase()] = condition[1];
-    }
-    // Retrieve the expectation for this element.
-    expected = conditions[element.nodeName];
-    // Return nothing if told to ignore or there is no expectation for this
-    // node.
-    if (!expected || expected === 'ignore') {
-      return;
+      // Try to use the condition zero element as a selector.
+      $el = $(condition[0], $scope);
+      if ($el.length === 1 && element === $el.get(0)) {
+        if (!condition[1] || condition[1] === 'ignore') {
+          return;
+        }
+        else {
+          // Retrieve the expectation for this element.
+          expected = condition[1];
+        }
+      }
     }
   }
   // Otherwise the expectation is given as a simple value.

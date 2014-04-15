@@ -4,7 +4,7 @@
     <title>formWithRequiredLabel</title>
 </head>
 <body>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="formWithRequiredLabel">
+    <div class="quail-test" data-expected="label[for='firstname']:ignore|label[for='lastname']:fail" data-accessibility-test="formWithRequiredLabel">
         <form action="http://www.test.com">
             <p>
                 <label for="firstname" class="required">First Name:</label>
@@ -30,13 +30,12 @@
         <form action="http://www.test.com">
             <p>
                 <label for="firstname">First Name: *</label>
-                <input type="text" id="firstname" aria-required="true"
-                    />
+                <input type="text" id="firstname" aria-required="true" />
             </p>
         </form>
     </div>
 
-    <div class="quail-test" data-expected="pass" data-accessibility-test="formWithRequiredLabel">
+    <div class="quail-test" data-expected="label[for='firstname']:pass|label[for='lastname']:pass|label[for='colour']:pass" data-accessibility-test="formWithRequiredLabel">
         <form action="http://www.test.com">
             <p>
                 <label for="firstname">First Name (required):</label>
