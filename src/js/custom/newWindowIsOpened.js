@@ -9,7 +9,6 @@ quail.newWindowIsOpened = function(quail, test, Case) {
       if (href.indexOf(event) > -1) {
         _case.set('status', 'failed');
       }
-      test.add(_case);
     });
   };
 
@@ -19,9 +18,9 @@ quail.newWindowIsOpened = function(quail, test, Case) {
       element: this,
       expected: (function (element) {
         return quail.components.resolveExpectation(element);
-      }(this)),
-      status: 'passed'
+      }(this))
     });
+    test.add(_case);
     $(this).trigger('click');
   });
 
