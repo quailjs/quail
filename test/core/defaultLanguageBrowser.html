@@ -26,29 +26,27 @@
   <script src="../quail-testrunner.js"></script>
   <script>
     (function(global) {
-      global.quailTest = function() {
-        var custom = {
-          findBrowserLanguage : {
-            type: 'custom',
-            components: [ 'language' ],
-            callback: function(eventName, thisTest, _case) {
-              var browserLanguage = navigator.language || navigator.userLanguage;
-              browserLanguage = browserLanguage.trim().toLowerCase();
-              equal(quail.components.language.getDocumentLanguage(thisTest.get('$scope')), browserLanguage, 'Browser language code found');
-              start();
-            }
+      var custom = {
+        findBrowserLanguage : {
+          type: 'custom',
+          components: [ 'language' ],
+          callback: function(eventName, thisTest, _case) {
+            var browserLanguage = navigator.language || navigator.userLanguage;
+            browserLanguage = browserLanguage.trim().toLowerCase();
+            equal(quail.components.language.getDocumentLanguage(thisTest.get('$scope')), browserLanguage, 'Browser language code found');
+            start();
           }
-        };
-
-        asyncTest('Default langauge found from browser', function() {
-          $('.no-language').quail({
-            jsonPath : '../../dist',
-            guideline : [ 'findBrowserLanguage' ],
-            reset : true,
-            customTests : custom
-          });
-        });
+        }
       };
+
+      asyncTest('Default langauge found from browser', function() {
+        $('.no-language').quail({
+          jsonPath : '../../dist',
+          guideline : [ 'findBrowserLanguage' ],
+          reset : true,
+          customTests : custom
+        });
+      });
     })(this);
   </script>
 </body>

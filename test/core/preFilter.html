@@ -13,40 +13,38 @@
   <script src="../quail-testrunner.js"></script>
   <script>
     (function(global) {
-      global.quailTest = function() {
-        asyncTest('Test results can be filtered', function() {
-          expect(1);
-          var testResults = [];
-          $('.test-area').quail({
-            jsonPath : '../../dist',
-            guideline : [ 'imgHasAlt' ],
-            reset : true,
-            preFilter : function(eventName, thisTest, _case) {},
-            complete : function(eventName, thisTest, _case) {
-              ok(_case.get('element'), 'Image was found.');
-              start();
-            }
-          });
+      asyncTest('Test results can be filtered', function() {
+        expect(1);
+        var testResults = [];
+        $('.test-area').quail({
+          jsonPath : '../../dist',
+          guideline : [ 'imgHasAlt' ],
+          reset : true,
+          preFilter : function(eventName, thisTest, _case) {},
+          complete : function(eventName, thisTest, _case) {
+            ok(_case.get('element'), 'Image was found.');
+            start();
+          }
         });
+      });
 
-        asyncTest('Test results can be filtered', function() {
-          expect(1);
-          $('.test-area').quail({
-            jsonPath : '../../dist',
-            guideline : [ 'imgHasAlt' ],
-            reset : true,
-            preFilter : function(eventName, thisTest, _case) {
-              if(_case.get('element').tagName == 'IMG') {
-                return false;
-              }
-            },
-            complete : function(eventName, thisTest, _case) {
-              equal('NotTested', _case.get('status'), 'Image was filtered out.');
-              start();
+      asyncTest('Test results can be filtered', function() {
+        expect(1);
+        $('.test-area').quail({
+          jsonPath : '../../dist',
+          guideline : [ 'imgHasAlt' ],
+          reset : true,
+          preFilter : function(eventName, thisTest, _case) {
+            if(_case.get('element').tagName == 'IMG') {
+              return false;
             }
-          });
+          },
+          complete : function(eventName, thisTest, _case) {
+            equal('NotTested', _case.get('status'), 'Image was filtered out.');
+            start();
+          }
         });
-      };
+      });
     }(this));
   </script>
 </body>

@@ -128,7 +128,7 @@
     <div id="containsReadableText-6">
       <p>
         <span>
-          
+
         </span>
       </p>
     </div>
@@ -139,47 +139,45 @@
     <script src="../quail-testrunner.js"></script>
     <script>
     (function(global) {
-      global.quailTest = function() {
-        var quail = global.__testQuail;
-        test('quail.isUnreadable', function() {
-          equal(quail.isUnreadable(null), true, 'A non-string is unreadable');
-          equal(quail.isUnreadable(''), true, 'An empty string is unreadable');
-          equal(quail.isUnreadable("  \n  \t"), true, 'A string of non-text is unreadable');
-          equal(quail.isUnreadable('readable'), false, 'A string of text is readable');
-        });
+      var quail = global.__testQuail;
+      test('quail.isUnreadable', function() {
+        equal(quail.isUnreadable(null), true, 'A non-string is unreadable');
+        equal(quail.isUnreadable(''), true, 'An empty string is unreadable');
+        equal(quail.isUnreadable("  \n  \t"), true, 'A string of non-text is unreadable');
+        equal(quail.isUnreadable('readable'), false, 'A string of text is readable');
+      });
 
-        test('quail.isDataTable', function() {
-          ok(quail.isDataTable($('#isDataTable-1')), 'Data table is identified as a data table');
-          ok(quail.isDataTable($('#isDataTable-2')), 'Data table with no headers is identified as a data table');
-          ok(quail.isDataTable($('#isDataTable-3')), 'Data table with a colspan is identified as a data table');
-          ok(!quail.isDataTable($('#isDataTable-4')), 'Layout table is not a data table');
-        });
+      test('quail.isDataTable', function() {
+        ok(quail.isDataTable($('#isDataTable-1')), 'Data table is identified as a data table');
+        ok(quail.isDataTable($('#isDataTable-2')), 'Data table with no headers is identified as a data table');
+        ok(quail.isDataTable($('#isDataTable-3')), 'Data table with a colspan is identified as a data table');
+        ok(!quail.isDataTable($('#isDataTable-4')), 'Layout table is not a data table');
+      });
 
-        test('quail.getTextContents', function() {
-          equal(quail.getTextContents($('#getTextContents-1')).trim(), 'This is the content.', 'Text content of a semantically content-containing element is found.');
-          equal(quail.getTextContents($('#getTextContents-2')).trim(), 'This is the content.', 'Text within a div is found without the child p element text.');
-        });
+      test('quail.getTextContents', function() {
+        equal(quail.getTextContents($('#getTextContents-1')).trim(), 'This is the content.', 'Text content of a semantically content-containing element is found.');
+        equal(quail.getTextContents($('#getTextContents-2')).trim(), 'This is the content.', 'Text within a div is found without the child p element text.');
+      });
 
-        test('quail.validURL', function() {
-          ok(quail.validURL('http://quailjs.org'), 'http://quailjs.org is a valid URL');
-          ok(!quail.validURL('The URL'), 'A phrase is not a URL');
-        });
+      test('quail.validURL', function() {
+        ok(quail.validURL('http://quailjs.org'), 'http://quailjs.org is a valid URL');
+        ok(!quail.validURL('The URL'), 'A phrase is not a URL');
+      });
 
-        test('quail.containsReadableText', function() {
-          ok(quail.containsReadableText($('#containsReadableText-1'), true), 'Div with text is readable');
-          ok(quail.containsReadableText($('#containsReadableText-2'), true), 'Link with child image with alt text is readable');
-          ok(quail.containsReadableText($('#containsReadableText-3'), true), 'Nested readable children are readable');
-          ok(quail.containsReadableText($('#containsReadableText-4'), true), 'Nested element with alt attribute is readable');
-          ok(!quail.containsReadableText($('#containsReadableText-5'), true), 'Nested elements with no text is not readable');
-          ok(!quail.containsReadableText($('#containsReadableText-6'), true), 'Nested elements with no text is not readable');
-        });
+      test('quail.containsReadableText', function() {
+        ok(quail.containsReadableText($('#containsReadableText-1'), true), 'Div with text is readable');
+        ok(quail.containsReadableText($('#containsReadableText-2'), true), 'Link with child image with alt text is readable');
+        ok(quail.containsReadableText($('#containsReadableText-3'), true), 'Nested readable children are readable');
+        ok(quail.containsReadableText($('#containsReadableText-4'), true), 'Nested element with alt attribute is readable');
+        ok(!quail.containsReadableText($('#containsReadableText-5'), true), 'Nested elements with no text is not readable');
+        ok(!quail.containsReadableText($('#containsReadableText-6'), true), 'Nested elements with no text is not readable');
+      });
 
-        test('quail.defineUniqueSelector', function() {
-          equal(quail.defineUniqueSelector($('#defineUniqueSelector-1').get(0)), '#defineUniqueSelector-1', 'ID-based selector was found');
-          equal(quail.defineUniqueSelector($('#defineUniqueSelector-1 p').get(0)), '#defineUniqueSelector-1 p', 'Descendent selector was found');
-          equal(quail.defineUniqueSelector($('a img').get(0)), '#containsReadableText-2 img', 'Descendent selector was found');
-        });
-      };
+      test('quail.defineUniqueSelector', function() {
+        equal(quail.defineUniqueSelector($('#defineUniqueSelector-1').get(0)), '#defineUniqueSelector-1', 'ID-based selector was found');
+        equal(quail.defineUniqueSelector($('#defineUniqueSelector-1 p').get(0)), '#defineUniqueSelector-1 p', 'Descendent selector was found');
+        equal(quail.defineUniqueSelector($('a img').get(0)), '#containsReadableText-2 img', 'Descendent selector was found');
+      });
     })(this);
   </script>
 </body>

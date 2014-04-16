@@ -46,15 +46,13 @@
   <script src="../quail-testrunner.js"></script>
   <script>
     (function(global) {
-      global.quailTest = function() {
-        $('.content-test').each(function() {
-          var $container = $(this);
-          test($container.attr('title'), function() {
-            var $target = __testQuail.components.content.findContent($container);
-            ok($target.hasClass('--test-target'), 'Found target element');
-          });
+      $('.content-test').each(function() {
+        var $container = $(this);
+        test($container.attr('title'), function() {
+          var $target = __testQuail.components.content.findContent($container);
+          ok($target.hasClass('--test-target'), 'Found target element');
         });
-      };
+      });
     })(this);
   </script>
 </body>

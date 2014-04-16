@@ -10,29 +10,27 @@
   <script src="../quail-testrunner.js"></script>
   <script>
     (function(global) {
-      global.quailTest = function() {
-        var custom = {
-          htmlSourceAjaxTest : {
-            type : 'custom',
-            components: [ 'htmlSource' ],
-            callback : function(quail) {
-              quail.components.htmlSource.getHtml(function(html, parsed) {
-                ok(html.search('class="one" class="two"') > -1, 'HTML string before DOM is loaded.');
-                start();
-              });
-            }
+      var custom = {
+        htmlSourceAjaxTest : {
+          type : 'custom',
+          components: [ 'htmlSource' ],
+          callback : function(quail) {
+            quail.components.htmlSource.getHtml(function(html, parsed) {
+              ok(html.search('class="one" class="two"') > -1, 'HTML string before DOM is loaded.');
+              start();
+            });
           }
-        };
-        asyncTest('htmlSourceAjaxTest', function () {
-          expect(1);
-          $('body').quail({
-            jsonPath : '../../dist',
-            guideline : [ 'htmlSourceAjaxTest' ],
-            reset : true,
-            customTests : custom
-          });
-        });
+        }
       };
+      asyncTest('htmlSourceAjaxTest', function () {
+        expect(1);
+        $('body').quail({
+          jsonPath : '../../dist',
+          guideline : [ 'htmlSourceAjaxTest' ],
+          reset : true,
+          customTests : custom
+        });
+      });
     })(this);
   </script>
 </body>

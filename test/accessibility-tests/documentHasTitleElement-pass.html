@@ -9,7 +9,6 @@
 	<script src="../quail-testrunner.js"></script>
 	<script>
     (function(global) {
-      global.quailTest = function() {
         asyncTest('HTML element selected', function() {
           $(document).quail({ jsonPath : '../../dist',
             guideline : [ 'documentHasTitleElement' ],
@@ -20,7 +19,6 @@
             }
           });
         });
-      };
     })(this);
   </script>
 </body>

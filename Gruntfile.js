@@ -49,8 +49,8 @@ module.exports = function(grunt) {
         src: ['dist/tests.json', 'lib/jquery/jquery.js', 'lib/qunit/qunit.js', 'test/quail-testing.jquery.js', 'test/testrunner.js'],
         dest: 'test/quail-testrunner.js',
         options: {
-          banner: '',
-          footer: '',
+          banner: '(function() {',
+          footer: '})();',
           stripBanners: true,
           process: function(src, filepath) {
             if(filepath === 'dist/tests.json') {

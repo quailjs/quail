@@ -41,37 +41,35 @@
       }
     };
     (function(global) {
-      global.quailTest = function() {
-        asyncTest('testConfiguration', function() {
-          expect(1);
-          $('.test-area').quail({
-            jsonPath : '../../dist',
-            guideline : [ 'customConfigurationTest' ],
-            guidelineName : 'a',
-            reset : true,
-            customTests : custom,
-            complete : function(eventName, thisTest, _case) {
-              equal('STRONG', _case.get('element').tagName, 'Found strong tag');
-              start();
-            }
-          });
+      asyncTest('testConfiguration', function() {
+        expect(1);
+        $('.test-area').quail({
+          jsonPath : '../../dist',
+          guideline : [ 'customConfigurationTest' ],
+          guidelineName : 'a',
+          reset : true,
+          customTests : custom,
+          complete : function(eventName, thisTest, _case) {
+            equal('STRONG', _case.get('element').tagName, 'Found strong tag');
+            start();
+          }
         });
+      });
 
-        asyncTest('testConfiguration', function() {
-          expect(1);
-          $('.test-area').quail({
-            jsonPath : '../../dist',
-            guideline : [ 'customConfigurationTest' ],
-            guidelineName : 'b',
-            reset : true,
-            customTests : custom,
-            complete : function(eventName, thisTest, _case) {
-              equal('EM', _case.get('element').tagName, 'Found em tag');
-              start();
-            }
-          });
+      asyncTest('testConfiguration', function() {
+        expect(1);
+        $('.test-area').quail({
+          jsonPath : '../../dist',
+          guideline : [ 'customConfigurationTest' ],
+          guidelineName : 'b',
+          reset : true,
+          customTests : custom,
+          complete : function(eventName, thisTest, _case) {
+            equal('EM', _case.get('element').tagName, 'Found em tag');
+            start();
+          }
         });
-      };
+      });
     })(this);
   </script>
 </body>
