@@ -27,106 +27,19 @@
      * times working.
      */
     run: function() {
-      var that = this;
-      if(typeof QUnit === 'undefined') {
-        global.QUnit = {
-          moduleStart: function(callback) {
-            that.qunitCallbacks.moduleStart = callback;
-          },
-          testStart: function(callback) {
-            that.qunitCallbacks.testStart = callback;
-          },
-          testDone: function(callback) {
-            that.qunitCallbacks.testDone = callback;
-          },
-          log: function(callback) {
-            that.qunitCallbacks.log = callback;
-          },
-          done: function(callback) {
-            that.qunitCallbacks.done = callback;
-          }
-        };
-      }
-      this.includejQuery();
-    },
-
-    /**
-     * Include jQuery on the page using vanilla JS, including differences
-     * in script ready events.
-     */
-    includejQuery: function() {
-      var em = document.createElement('script');
-      em.type = 'text/javascript';
-      if (em.readyState) {
-        em.onreadystatechange = function () {
-          if (em.readyState == "loaded" || em.readyState == "complete") {
-            em.onreadystatechange = null;
-            testRunner.includeScripts();
-          }
-        };
-      } else {
-        em.onload = function () {
-          testRunner.includeScripts();
-        };
-      }
-      em.src = '../../lib/jquery/jquery.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(em, s);
-    },
-
-    /**
-     * Once jQuery is available, insert Qunit styles, the placeholder for
-     * the Qunit fixture, and load the rest of the needed JS on the page.
-     * At the end, we request tests.json and set a 250ms timeout to prevent
-     * the parent composite tester from timing out.
-     *
-     * If the page has defined a global.quailTest function, we then run it, if
-     * not, we run the runTests method.
-     */
-    includeScripts: function() {
-      var that = this;
       $('head').append('<link rel="stylesheet" href="../../lib/qunit/qunit.css" media="screen">');
       $('head').append('<link rel="stylesheet" href="../test.css" media="screen">');
       $('body').prepend('<div role="status" id="qunit"></div><div role="status" id="qunit-fixture"></div>');
-      $.getScript('../quail-testing.jquery.js', function() {
-        $.getScript('../../lib/qunit/qunit.js', function() {
-          $.ajax({
-            url: '../../dist/tests.json',
-            dataType: 'json',
-            success: function(data) {
-              that.tests = quail.lib.TestCollection(data);
-              that.buildQUnit();
-              QUnit.init();
-              setTimeout(function() {
-                start();
-                var eventObject = document.createEvent('MouseEvents');
-                eventObject.initEvent('testsReady', true, true );
-                document.dispatchEvent(eventObject);
-                if(typeof global.quailTest !== 'undefined') {
-                  global.quailTest();
-                }
-                else {
-                  that.runTests();
-                }
-              }, 250);
-            }
-          });
-        });
-      });
-    },
-
-    /**
-     * Assign callbacks for QUnit after the timeout has completed.
-     */
-    buildQUnit: function() {
-      if(typeof this.qunitCallbacks.moduleStart === 'undefined') {
-        return;
+      this.tests = quail.lib.TestCollection(__quailTests);
+      var eventObject = document.createEvent('MouseEvents');
+      eventObject.initEvent('testsReady', true, true );
+      document.dispatchEvent(eventObject);
+      if(typeof global.quailTest !== 'undefined') {
+        global.quailTest();
       }
-      QUnit.moduleStart = this.qunitCallbacks.moduleStart;
-      QUnit.testStart = this.qunitCallbacks.testStart;
-      QUnit.testDone = this.qunitCallbacks.testDone;
-      QUnit.log = this.qunitCallbacks.log;
-      QUnit.done = this.qunitCallbacks.done;
+      else {
+        this.runTests();
+      }
     },
 
     /**
