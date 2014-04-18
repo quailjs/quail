@@ -39,6 +39,26 @@
       font-size: 16px;
       font-weight: 700;
     }
+
+    #test-6 {
+      background-image: url('../assets/fish.gif');
+    }
+    #test-6 p {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    #test-6a {
+      background-image: url('../assets/kids.jpg');
+    }
+    #test-6a p {
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
   </style>
 </head>
 <body>
@@ -64,6 +84,14 @@
 
   <div class="quail-test" data-expected="pass" data-accessibility-test="cssTextHasContrast" id="test-5">
     <p>This test is readable, 16px and font weight 700</p>
+  </div>
+
+  <div class="quail-test" data-expected="fail" data-accessibility-test="cssTextHasContrast" id="test-6">
+    <p>This test is not readable, thanks to the fish</p>
+  </div>
+
+  <div class="quail-test" data-expected="pass" data-accessibility-test="cssTextHasContrast" id="test-6a">
+    <p>This test is readable, thanks to the kids</p>
   </div>
 
   <script src="../quail-testrunner.js"></script>

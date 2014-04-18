@@ -36,9 +36,9 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns the average color for a given image
      * using a canvas element.
      */
-    fetchImageColor : function() {
-      var img = new Image();
-      img.src = $(this).css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
+    fetchImageColorAtPixel : function(img, x, y) {
+      x = typeof x !== 'undefined' ? x : 1;
+      y = typeof y !== 'undefined' ? y : 1;
       var can = document.createElement('canvas');
       var context = can.getContext('2d');
       context.drawImage(img, 0, 0);
@@ -51,6 +51,14 @@ quail.components.color = function(quail, test, Case, options) {
      * WCAG at a certain contrast ratio.
      */
     passesWCAG : function(element, level) {
+      return colors.passesWCAGColor(element, colors.getColor(element, 'foreground'), colors.getColor(element, 'background'), level);
+    },
+
+    /**
+     * Returns whether an element's color passes
+     * WCAG at a certain contrast ratio.
+     */
+    passesWCAGColor : function(element, foreground, background, level) {
       if (typeof level === 'undefined') {
         if (quail.components.convertToPx(element.css('font-size')) >= 18) {
           level = 3;
@@ -63,7 +71,7 @@ quail.components.color = function(quail, test, Case, options) {
           level = 5;
         }
       }
-      return (colors.getLuminosity(colors.getColor(element, 'foreground'), colors.getColor(element, 'background')) > level);
+      return (colors.getLuminosity(foreground, background) > level);
     },
 
     /**
@@ -73,6 +81,14 @@ quail.components.color = function(quail, test, Case, options) {
     passesWAI : function(element) {
       var foreground = colors.cleanup(colors.getColor(element, 'foreground'));
       var background = colors.cleanup(colors.getColor(element, 'background'));
+      return colors.passesWAIColor(foreground, background);
+    },
+
+    /**
+     * Returns whether an element's color passes
+     * WAI brightness levels.
+     */
+    passesWAIColor : function(foreground, background) {
       return (colors.getWAIErtContrast(foreground, background) > 500 &&
               colors.getWAIErtBrightness(foreground, background) > 125);
     },
@@ -137,34 +153,127 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns an object with rgba taken from a string.
      */
     cleanup : function(color) {
+      if (typeof color === 'object') {
+        return color;
+      }
       color = color.replace('rgb(', '').replace('rgba(', '').replace(')', '').split(',');
       return { r : color[0],
                g : color[1],
                b : color[2],
                a : ((typeof color[3] === 'undefined') ? false : color[3])
              };
-    }
+    },
 
+    /**
+     * Returns background image of an element or its parents.
+     */
+    getBackgroundImage: function(element) {
+      while (element.length > 0) {
+        if (element.css('background-image') && element.css('background-image') !== 'none') {
+          return element.css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
+        }
+        element = element.parent();
+      }
+      return false;
+    },
+
+    /**
+     * Calculates average color of an image.
+     */
+    getAverageRGB: function(img) {
+      var blockSize = 5, // only visit every 5 pixels
+        defaultRGB = {r:0,g:0,b:0}, // for non-supporting envs
+        canvas = document.createElement('canvas'),
+        context = canvas.getContext && canvas.getContext('2d'),
+        data, width, height,
+        i = -4,
+        length,
+        rgb = {r:0, g:0, b:0, a:0},
+        count = 0;
+
+      if (!context) {
+        return defaultRGB;
+      }
+
+      height = canvas.height = img.height;
+      width = canvas.width = img.width;
+      context.drawImage(img, 0, 0);
+
+      try {
+        data = context.getImageData(0, 0, width, height);
+      } catch(e) {
+        return defaultRGB;
+      }
+
+      length = data.data.length;
+
+      while ((i += blockSize * 4) < length) {
+        ++count;
+        rgb.r += data.data[i];
+        rgb.g += data.data[i+1];
+        rgb.b += data.data[i+2];
+      }
+
+      // ~~ used to floor values
+      rgb.r = ~~(rgb.r/count);
+      rgb.g = ~~(rgb.g/count);
+      rgb.b = ~~(rgb.b/count);
+
+      return rgb;
+    }
   };
 
   test.get('$scope').find(options.options.selector).filter(quail.textSelector).each(function() {
-    if (!quail.isUnreadable($(this).text()) &&
-        (options.options.algorithm === 'wcag' && !colors.passesWCAG($(this))) ||
-        (options.options.algorithm === 'wai' && !colors.passesWAI($(this)))) {
-      test.add(Case({
-        element: this,
-        expected: $(this).closest('.quail-test').data('expected'),
-        status: 'failed'
-      }));
+    var $this = $(this);
+    if (!quail.isUnreadable($this.text())) {
+      if ((options.options.algorithm === 'wcag' && !colors.passesWCAG($this)) ||
+          (options.options.algorithm === 'wai' && !colors.passesWAI($this))) {
+        test.add(Case({
+          element: this,
+          expected: $this.closest('.quail-test').data('expected'),
+          status: 'failed'
+        }));
+      }
+      else {
+        // Check if there's a background-image.
+        var backgroundImage = colors.getBackgroundImage($this);
+        if (backgroundImage) {
+          var img = new Image();
+          img.src = backgroundImage;
+
+          // Get average color of the background image.
+          var averageColor = colors.getAverageRGB(img);
+          if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColor)) ||
+              (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColor))) {
+            test.add(Case({
+              element: this,
+              expected: $this.closest('.quail-test').data('expected'),
+              status: 'failed'
+            }));
+          }
+          else {
+            test.add(Case({
+              element: this,
+              expected: $this.closest('.quail-test').data('expected'),
+              status: 'passed'
+            }));
+          }
+        }
+        else {
+          test.add(Case({
+            element: this,
+            expected: $this.closest('.quail-test').data('expected'),
+            status: 'passed'
+          }));
+        }
+      }
     }
     else {
       test.add(Case({
         element: this,
-        expected: $(this).closest('.quail-test').data('expected'),
+        expected: $this.closest('.quail-test').data('expected'),
         status: 'passed'
       }));
     }
   });
-
-  return colors;
 };
