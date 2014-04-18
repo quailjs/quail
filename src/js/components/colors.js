@@ -52,7 +52,16 @@ quail.components.color = function(quail, test, Case, options) {
      */
     passesWCAG : function(element, level) {
       if (typeof level === 'undefined') {
-        level = 5;
+        if (quail.components.convertToPx(element.css('font-size')) >= 18) {
+          level = 3;
+        }
+        else if (quail.components.convertToPx(element.css('font-size')) >= 14 &&
+          (element.css('font-weight') === 'bold' || parseInt(element.css('font-weight'), 10) >= 700)) {
+          level = 3;
+        }
+        else {
+          level = 5;
+        }
       }
       return (colors.getLuminosity(colors.getColor(element, 'foreground'), colors.getColor(element, 'background')) > level);
     },
@@ -156,4 +165,6 @@ quail.components.color = function(quail, test, Case, options) {
       }));
     }
   });
+
+  return colors;
 };
