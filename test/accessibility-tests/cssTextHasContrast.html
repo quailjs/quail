@@ -76,10 +76,11 @@
       background-image: linear-gradient(to right, red, #f06d06, rgb(255, 255, 0), green);
     }
 
-    #test-7c p {
+    #test-7c {
       color: #fff;
       padding: 10px;
       background-image: radial-gradient(red, #f06d06, rgb(255, 255, 0), green);
+      text-align: center;
     }
 
   </style>
@@ -126,11 +127,11 @@
   </div>
 
   <div class="quail-test" data-expected="fail" data-accessibility-test="cssTextHasContrast" id="test-7b">
-    <p>This test is readable</p>
+    <p>This test is not readable</p>
   </div>
 
   <div class="quail-test" data-expected="fail" data-accessibility-test="cssTextHasContrast" id="test-7c">
-    <p>This test is readable</p>
+    <p>This test is not readable, but on screen it is</p>
   </div>
 
   <script src="../quail-testrunner.js"></script>
