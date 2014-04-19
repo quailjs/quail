@@ -46,7 +46,7 @@ module.exports = function(grunt) {
         }
       },
       testLib: {
-        src: ['dist/tests.json', 'lib/jquery/jquery.js', 'lib/qunit/qunit.js', 'test/quail-testing.jquery.js', 'test/testrunner.js'],
+        src: ['dist/tests.json', 'lib/jquery/jquery.js', 'lib/RainbowVis-JS/rainbowvis.js', 'lib/qunit/qunit.js', 'test/quail-testing.jquery.js', 'test/testrunner.js'],
         dest: 'test/quail-testrunner.js',
         options: {
           banner: '(function() {',

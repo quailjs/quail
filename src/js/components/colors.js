@@ -156,12 +156,23 @@ quail.components.color = function(quail, test, Case, options) {
       if (typeof color === 'object') {
         return color;
       }
-      color = color.replace('rgb(', '').replace('rgba(', '').replace(')', '').split(',');
-      return { r : color[0],
-               g : color[1],
-               b : color[2],
-               a : ((typeof color[3] === 'undefined') ? false : color[3])
-             };
+
+      if (color.substr(0, 1) === '#') {
+        return { r : parseInt(color.substr(1, 2), 16),
+                 g : parseInt(color.substr(3, 2), 16),
+                 b : parseInt(color.substr(5, 2), 16),
+                 a : false
+               };
+      }
+
+      if (color.substr(0, 3) === 'rgb') {
+        color = color.replace('rgb(', '').replace('rgba(', '').replace(')', '').split(',');
+        return { r : color[0],
+                 g : color[1],
+                 b : color[2],
+                 a : ((typeof color[3] === 'undefined') ? false : color[3])
+               };
+      }
     },
 
     /**
@@ -187,8 +198,6 @@ quail.components.color = function(quail, test, Case, options) {
       while (element.length > 0) {
         if (element.css('background-image') && element.css('background-image') !== 'none' && element.css('background-image').search(/^(.*?)gradient(.*?)$/i) !== -1) {
           var gradient = element.css('background-image').match(/gradient(\(.*\))/g);
-          /* global console */
-          console.log(gradient);
           if (gradient.length > 0) {
             gradient = gradient[0].replace(/(linear|radial|from|\bto\b|gradient|top|left|bottom|right|\d*%)/g, '');
             return $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notempty);
@@ -242,6 +251,11 @@ quail.components.color = function(quail, test, Case, options) {
       rgb.b = ~~(rgb.b/count);
 
       return rgb;
+    },
+
+    colorToHex: function(c) {
+      var m = /rgba?\((\d+), (\d+), (\d+)/.exec(c);
+      return m ? '#' + (1 << 24 | m[1] << 16 | m[2] << 8 | m[3]).toString(16).substr(1) : c;
     }
   };
 
@@ -286,12 +300,23 @@ quail.components.color = function(quail, test, Case, options) {
       if (!failureFound) {
         var backgroundGradientColors = colors.getBackgroundGradient($this);
         if (backgroundGradientColors) {
-          /* global console */
-          console.log(backgroundGradientColors);
-          // Check for each color used in the gradient.
-          for (var i = 0; !failureFound && i < backgroundGradientColors.length; i++) {
-            if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), backgroundGradientColors[i])) ||
-                (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), backgroundGradientColors[i]))) {
+          // Convert colors to hex notation.
+          for (var j = 0; j < backgroundGradientColors.length; j++) {
+            if (backgroundGradientColors[j].substr(0, 3) === 'rgb') {
+              backgroundGradientColors[j] = colors.colorToHex(backgroundGradientColors[j]);
+            }
+          }
+
+          // Create a rainbow.
+          /* global Rainbow */
+          var rainbow = new Rainbow();
+          rainbow.setSpectrumByArray(backgroundGradientColors);
+          var numberOfSamples = backgroundGradientColors.length * 3;
+
+          // Check each color.
+          for (var i = 0; !failureFound && i < numberOfSamples; i++) {
+            if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i))) ||
+                (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i)))) {
               test.add(Case({
                 element: this,
                 expected: $this.closest('.quail-test').data('expected'),
