@@ -70,6 +70,12 @@
       background-image: linear-gradient(to bottom, #610061, #032966);
     }
 
+    #test-7b p {
+      color: #fff;
+      padding: 10px;
+      background-image: linear-gradient(to right, red, #f06d06, rgb(255, 255, 0), green);
+    }
+
   </style>
 </head>
 <body>
@@ -110,6 +116,10 @@
   </div>
 
   <div class="quail-test" data-expected="pass" data-accessibility-test="cssTextHasContrast" id="test-7a">
+    <p>This test is readable</p>
+  </div>
+
+  <div class="quail-test" data-expected="pass" data-accessibility-test="cssTextHasContrast" id="test-7b">
     <p>This test is readable</p>
   </div>
 

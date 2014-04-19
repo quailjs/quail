@@ -181,10 +181,18 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns background image of an element or its parents.
      */
     getBackgroundGradient: function(element) {
+      var notempty = function(s) {
+        return $.trim(s) !== '';
+      };
       while (element.length > 0) {
-        if (element.css('background-image') && element.css('background-image') !== 'none' && element.css('background-image').search(/^(.*?)linear-gradient(.*?)$/i) !== -1) {
-          var linear = /^(.*?)(:?linear-gradient)(\()(rgb.*), (rgb.*)(\))(.*?)$/i;
-          return linear.exec(element.css('backgroundImage'));
+        if (element.css('background-image') && element.css('background-image') !== 'none' && element.css('background-image').search(/^(.*?)gradient(.*?)$/i) !== -1) {
+          var gradient = element.css('background-image').match(/gradient(\(.*\))/g);
+          /* global console */
+          console.log(gradient);
+          if (gradient.length > 0) {
+            gradient = gradient[0].replace(/(linear|radial|from|\bto\b|gradient|top|left|bottom|right|\d*%)/g, '');
+            return $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notempty);
+          }
         }
         element = element.parent();
       }
@@ -278,14 +286,19 @@ quail.components.color = function(quail, test, Case, options) {
       if (!failureFound) {
         var backgroundGradientColors = colors.getBackgroundGradient($this);
         if (backgroundGradientColors) {
-          if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), backgroundGradientColors[4])) ||
-              (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), backgroundGradientColors[4]))) {
-            test.add(Case({
-              element: this,
-              expected: $this.closest('.quail-test').data('expected'),
-              status: 'failed'
-            }));
-            failureFound = true;
+          /* global console */
+          console.log(backgroundGradientColors);
+          // Check for each color used in the gradient.
+          for (var i = 0; !failureFound && i < backgroundGradientColors.length; i++) {
+            if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), backgroundGradientColors[i])) ||
+                (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), backgroundGradientColors[i]))) {
+              test.add(Case({
+                element: this,
+                expected: $this.closest('.quail-test').data('expected'),
+                status: 'failed'
+              }));
+              failureFound = true;
+            }
           }
         }
       }
