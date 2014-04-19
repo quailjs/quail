@@ -169,8 +169,22 @@ quail.components.color = function(quail, test, Case, options) {
      */
     getBackgroundImage: function(element) {
       while (element.length > 0) {
-        if (element.css('background-image') && element.css('background-image') !== 'none') {
+        if (element.css('background-image') && element.css('background-image') !== 'none' && element.css('background-image').search(/^(.*?)url(.*?)$/i) !== -1) {
           return element.css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
+        }
+        element = element.parent();
+      }
+      return false;
+    },
+
+    /**
+     * Returns background image of an element or its parents.
+     */
+    getBackgroundGradient: function(element) {
+      while (element.length > 0) {
+        if (element.css('background-image') && element.css('background-image') !== 'none' && element.css('background-image').search(/^(.*?)linear-gradient(.*?)$/i) !== -1) {
+          var linear = /^(.*?)(:?linear-gradient)(\()(rgb.*), (rgb.*)(\))(.*?)$/i;
+          return linear.exec(element.css('backgroundImage'));
         }
         element = element.parent();
       }
@@ -225,7 +239,10 @@ quail.components.color = function(quail, test, Case, options) {
 
   test.get('$scope').find(options.options.selector).filter(quail.textSelector).each(function() {
     var $this = $(this);
+    var failureFound = false;
+
     if (!quail.isUnreadable($this.text())) {
+      // Check text and background color.
       if ((options.options.algorithm === 'wcag' && !colors.passesWCAG($this)) ||
           (options.options.algorithm === 'wai' && !colors.passesWAI($this))) {
         test.add(Case({
@@ -233,9 +250,11 @@ quail.components.color = function(quail, test, Case, options) {
           expected: $this.closest('.quail-test').data('expected'),
           status: 'failed'
         }));
+        failureFound = true;
       }
-      else {
-        // Check if there's a background-image.
+
+      // Check if there's a background-image.
+      if (!failureFound) {
         var backgroundImage = colors.getBackgroundImage($this);
         if (backgroundImage) {
           var img = new Image();
@@ -250,25 +269,29 @@ quail.components.color = function(quail, test, Case, options) {
               expected: $this.closest('.quail-test').data('expected'),
               status: 'failed'
             }));
+            failureFound = true;
           }
-          else {
+        }
+      }
+
+      // Check if there's a background gradient.
+      if (!failureFound) {
+        var backgroundGradientColors = colors.getBackgroundGradient($this);
+        if (backgroundGradientColors) {
+          if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), backgroundGradientColors[4])) ||
+              (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), backgroundGradientColors[4]))) {
             test.add(Case({
               element: this,
               expected: $this.closest('.quail-test').data('expected'),
-              status: 'passed'
+              status: 'failed'
             }));
+            failureFound = true;
           }
-        }
-        else {
-          test.add(Case({
-            element: this,
-            expected: $this.closest('.quail-test').data('expected'),
-            status: 'passed'
-          }));
         }
       }
     }
-    else {
+
+    if (!failureFound) {
       test.add(Case({
         element: this,
         expected: $this.closest('.quail-test').data('expected'),

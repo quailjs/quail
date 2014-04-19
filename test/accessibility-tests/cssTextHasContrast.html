@@ -59,6 +59,17 @@
       font-weight: 700;
     }
 
+    #test-7 p {
+      color: #fff;
+      padding: 10px;
+      background-image: linear-gradient(to bottom, #de88de, #98afd6);
+    }
+    #test-7a p {
+      color: #fff;
+      padding: 10px;
+      background-image: linear-gradient(to bottom, #610061, #032966);
+    }
+
   </style>
 </head>
 <body>
@@ -92,6 +103,14 @@
 
   <div class="quail-test" data-expected="pass" data-accessibility-test="cssTextHasContrast" id="test-6a">
     <p>This test is readable, thanks to the kids</p>
+  </div>
+
+  <div class="quail-test" data-expected="fail" data-accessibility-test="cssTextHasContrast" id="test-7">
+    <p>This test is not readable</p>
+  </div>
+
+  <div class="quail-test" data-expected="pass" data-accessibility-test="cssTextHasContrast" id="test-7a">
+    <p>This test is readable</p>
   </div>
 
   <script src="../quail-testrunner.js"></script>
