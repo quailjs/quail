@@ -195,7 +195,6 @@ quail.components.color = function(quail, test, Case, options) {
       while (element.length > 0) {
         // Exit if element has a background color.
         if (this.hasBackgroundColor(element)) {
-        if (this.hasBackgroundColor(element)) {
           return false;
         }
         if (element.css('background-image') && element.css('background-image') !== 'none' && element.css('background-image').search(/^(.*?)gradient(.*?)$/i) !== -1) {
