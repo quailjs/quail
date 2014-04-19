@@ -257,11 +257,17 @@ quail.components.color = function(quail, test, Case, options) {
       return rgb;
     },
 
+    /**
+     * Convert color to hex value.
+     */
     colorToHex: function(c) {
       var m = /rgba?\((\d+), (\d+), (\d+)/.exec(c);
       return m ? '#' + (1 << 24 | m[1] << 16 | m[2] << 8 | m[3]).toString(16).substr(1) : c;
     },
 
+    /**
+     * Check if element has a background color.
+     */
     hasBackgroundColor: function(element) {
       return element.css('background-color') !== 'rgba(0, 0, 0, 0)' &&
         element.css('background-color') !== 'transparent';
