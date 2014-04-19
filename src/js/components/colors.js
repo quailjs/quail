@@ -196,6 +196,10 @@ quail.components.color = function(quail, test, Case, options) {
         return $.trim(s) !== '';
       };
       while (element.length > 0) {
+        // Exit if element has a background color.
+        if (colors.hasBackgroundColor(element)) {
+          return false;
+        }
         if (element.css('background-image') && element.css('background-image') !== 'none' && element.css('background-image').search(/^(.*?)gradient(.*?)$/i) !== -1) {
           var gradient = element.css('background-image').match(/gradient(\(.*\))/g);
           if (gradient.length > 0) {
@@ -256,6 +260,11 @@ quail.components.color = function(quail, test, Case, options) {
     colorToHex: function(c) {
       var m = /rgba?\((\d+), (\d+), (\d+)/.exec(c);
       return m ? '#' + (1 << 24 | m[1] << 16 | m[2] << 8 | m[3]).toString(16).substr(1) : c;
+    },
+
+    hasBackgroundColor: function(element) {
+      return element.css('background-color') !== 'rgba(0, 0, 0, 0)' &&
+        element.css('background-color') !== 'transparent';
     }
   };
 
