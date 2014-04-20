@@ -93,6 +93,24 @@
       background: #E9E9E9;
     }
 
+    #test-14 {
+      position: relative;
+      padding: 0;
+    }
+    #test-14 .bck {
+      background-image: url('../assets/fish.gif');
+      background: #666;
+      height: 50px;
+      width: 100%;
+      position: absolute;
+    }
+    #test-14 .txt {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+      position: relative;
+    }
+
   </style>
 </head>
 <body>
@@ -146,6 +164,13 @@
 
   <div class="quail-test" data-expected="pass" data-accessibility-test="cssTextHasContrast" id="test-13">
     <p>This test is readable, does not check the gradient since there's a background color.</p>
+  </div>
+
+  <div class="quail-test" data-expected="fail" data-accessibility-test="cssTextHasContrast" id="test-14">
+    <div class="bck"></div>
+    <div class="txt">
+      <p>This test is not readable.</p>
+    </div>
   </div>
 
   <script src="../quail-testrunner.js"></script>

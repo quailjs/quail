@@ -138,7 +138,7 @@ quail.components.color = function(quail, test, Case, options) {
       }
       var color = 'rgb(0,0,0)';
       element.parents().each(function(){
-        if (this.hasBackgroundColor(element)) {
+        if (colors.hasBackgroundColor(element)) {
           color = element.css('background-color');
           return false;
         }
@@ -268,6 +268,55 @@ quail.components.color = function(quail, test, Case, options) {
     hasBackgroundColor: function(element) {
       return element.css('background-color') !== 'rgba(0, 0, 0, 0)' &&
         element.css('background-color') !== 'transparent';
+    },
+
+    /**
+     * Get first element behind current with a background color.
+     */
+    getBehindElementBackgroundColor: function(element) {
+      var foundBackgroundColor = false;
+      var scannedElements = [];
+
+      // Scroll to make sure element is visible.
+      $(window).scrollTop(element.offset().top);
+
+      // Get relative x and y.
+      var x = element.offset().left - $(window).scrollLeft();
+      var y = element.offset().top - $(window).scrollTop();
+
+      // Hide current element.
+      scannedElements.push({
+        element: element,
+        visibility: element.css('visibility')
+      });
+      element.css('visibility', 'hidden');
+
+      // Get element at position x, y.
+      var el = document.elementFromPoint(x,y);
+      while (!foundBackgroundColor && el && el.tagName !== 'BODY' && el.tagName !== 'HTML') {
+        el = $(el);
+        // Skip hidden elements.
+        if (el.css('visibility') !== "hidden" && el.css('display') !== 'none') {
+          if (this.hasBackgroundColor(el)) {
+            foundBackgroundColor = el.css('background-color');
+          }
+          else {
+            scannedElements.push({
+              element: el,
+              visibility: el.css('visibility')
+            });
+            el.css('visibility', 'hidden');
+            el = document.elementFromPoint(x,y);
+          }
+        }
+      }
+
+      // Reset visibility.
+      for(var i = 0; i < scannedElements.length; i++){
+        scannedElements[i].element.css('visibility', scannedElements[i].visibility);
+      }
+
+      return foundBackgroundColor;
     }
   };
 
@@ -285,6 +334,22 @@ quail.components.color = function(quail, test, Case, options) {
           status: 'failed'
         }));
         failureFound = true;
+      }
+
+      // Check text and background color of a behind image.
+      if (!failureFound) {
+        var backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
+        if (backgroundColorBehind) {
+          if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), backgroundColorBehind)) ||
+              (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), backgroundColorBehind))) {
+            test.add(Case({
+              element: this,
+              expected: $this.closest('.quail-test').data('expected'),
+              status: 'failed'
+            }));
+            failureFound = true;
+          }
+        }
       }
 
       // Check if there's a background-image.
