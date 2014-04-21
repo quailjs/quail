@@ -8,7 +8,7 @@ quail.contentPositioningShouldNotChangeMeaning = function(quail, test, Case) {
     failed = false;
     var $container = $(this);
     $container.find('h1, h2, h3, h4, h5, h6, p, blockquote, ol, li, ul, dd, dt').filter(':quailCss(position=absolute)').each(function() {
-      for(var i = 0; i < positions.length; i++) {
+      for (var i = 0; i < positions.length; i++) {
         if (typeof $(this).css(positions[i]) !== 'undefined' && $(this).css(positions[i]) !== 'auto') {
           if (typeof coordinates[positions[i]][$(this).css(positions[i])] === 'undefined') {
             coordinates[positions[i]][$(this).css(positions[i])] = 0;

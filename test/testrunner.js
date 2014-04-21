@@ -34,7 +34,7 @@
       var eventObject = document.createEvent('MouseEvents');
       eventObject.initEvent('testsReady', true, true );
       document.dispatchEvent(eventObject);
-      if(typeof global.quailTest !== 'undefined') {
+      if (typeof global.quailTest !== 'undefined') {
         global.quailTest();
       }
       else {
@@ -52,13 +52,13 @@
       var that = this;
       var testsToEvaluate = quail.lib.TestCollection();
       $('.quail-test').each(function(index) {
-        if($(this).hasClass('limit-chrome') && navigator.userAgent.search('Chrome') === -1) {
+        if ($(this).hasClass('limit-chrome') && navigator.userAgent.search('Chrome') === -1) {
           test('Skipping', function() {
             ok(true, 'Skipping test because browser is not chrome.');
           });
           return;
         }
-        if($(this).hasClass('limit-phantom') && navigator.userAgent.search('PhantomJS') === -1) {
+        if ($(this).hasClass('limit-phantom') && navigator.userAgent.search('PhantomJS') === -1) {
           test('Skipping', function() {
             ok(true, 'Skipping test because browser is not phantom.');
           });
@@ -113,7 +113,7 @@
       testsToEvaluate.run({
         preFilter: function (testName, element) {
           var $element = $(element);
-          if($element.is('#qunit') || $element.parents('#qunit').length) {
+          if ($element.is('#qunit') || $element.parents('#qunit').length) {
             return false;
           }
         },

@@ -131,7 +131,7 @@ var quail = {
         async : false,
         dataType : 'json',
         success : function (data) {
-          if(typeof data === 'object') {
+          if (typeof data === 'object') {
             // Filter for specific tests.
             if (options.guideline && options.guideline.length) {
               for (var i = 0, il = options.guideline.length; i < il; ++i) {

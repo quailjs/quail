@@ -5,7 +5,7 @@ quail.listNotUsedForFormatting = function(quail, test, Case) {
       expected: $(this).closest('.quail-test').data('expected')
     });
     test.add(_case);
-    if($(this).find('li').length < 2) {
+    if ($(this).find('li').length < 2) {
       _case.set({
         'status': 'failed'
       });
