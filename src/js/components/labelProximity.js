@@ -1,14 +1,30 @@
 /**
  * Tests that a label element is close (DOM-wise) to it's target form element.
  */
-quail.components.labelProximity = function(testName, options) {
-  quail.html.find(options.options.selector).each(function() {
-    var $label = quail.html.find('label[for=' + $(this).attr('id') + ']').first();
+quail.components.labelProximity = function(quail, test, Case, options) {
+  var $scope = test.get('$scope');
+  $scope.find(options.options.selector).each(function() {
+    var $label = $scope.find('label[for=' + $(this).attr('id') + ']').first();
     if (!$label.length) {
-      quail.testFails(testName, $(this));
+      test.add(Case({
+        element: this,
+        expected: $(this).closest('.quail-test').data('expected'),
+        status: 'failed'
+      }));
     }
-    if (!$(this).parent().is($label.parent())) {
-      quail.testFails(testName, $(this));
+    else if (!$(this).parent().is($label.parent())) {
+      test.add(Case({
+        element: this,
+        expected: $(this).closest('.quail-test').data('expected'),
+        status: 'failed'
+      }));
+    }
+    else {
+      test.add(Case({
+        element: this,
+        expected: $(this).closest('.quail-test').data('expected'),
+        status: 'passed'
+      }));
     }
   });
 };

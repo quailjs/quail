@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Adding custom tests to QUAIL</title>
+  <title>Guideline fallback</title>
 </head>
 
 <body>
@@ -15,22 +15,27 @@
     <h2 class="callback-error">Heading!</h2>
 
   </div>
-  <script src="../testrunner.js"></script>
+  <script src="../quail-testrunner.js"></script>
   <script>
     (function(global) {
-      global.quailTest = function() {
-        test('guidelineFallback', function() {
-        
-          $('.test-area').quail({ jsonPath : '../../dist',
-                              reset : true,
-                              complete : function(results) {
-                                testResults = results.results;
-                              }});
-          equal('IMG', testResults.imgHasAlt.elements[0].get(0).tagName, 'Default guideline has run');
+      var found = false;
+      asyncTest('guidelineFallback', function() {
+        // @todo, figure out why this is expect(2). Somewhere, there's another
+        // assertion being made. It should only be expect(1);
+        expect(1);
+        $('.test-area').quail({
+          jsonPath : '../../dist',
+          reset : true,
+          complete : function(eventName, thisTest, _case) {
+            if (thisTest.get('name') === 'imgHasAlt' && !found) {
+              equal('IMG', _case.get('element').tagName, 'Default guideline has run');
+              found = true;
+              start();
+            }
+          }
         });
-      };
-    })(this);
-</script>
+      });
+    }(this));
+  </script>
 </body>
-
 </html>

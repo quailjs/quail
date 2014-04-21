@@ -4,7 +4,7 @@
 	<title>headerH2</title>
 </head>
 <body>
-	<div class="quail-test" data-expected="fail" data-accessibility-test="headerH2">
+	<div class="quail-test" data-expected="h2:ignore|h4:fail" data-accessibility-test="headerH2">
 
 		<h2>The First Heading</h2>
 
@@ -14,7 +14,7 @@
 
 		<p>Here is some more demo text.</p>
 	</div>
-	<div class="quail-test" data-expected="pass" data-accessibility-test="headerH2">
+	<div class="quail-test" data-expected="h2:ignore|h3:pass" data-accessibility-test="headerH2">
 
 		<h2>The First Heading</h2>
 
@@ -25,6 +25,6 @@
 		<p>Here is some more demo text.</p>
 	</div>
 
-	<script src="../testrunner.js"></script>
+	<script src="../quail-testrunner.js"></script>
 </body>
 </html>

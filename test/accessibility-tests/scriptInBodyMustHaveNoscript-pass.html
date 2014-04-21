@@ -1,26 +1,11 @@
 <!doctype html>
-<html>
+<html class="quail-test" data-expected="pass" data-scope="document" data-accessibility-test="scriptInBodyMustHaveNoscript">
 <head>
 	<title>scriptInBodyMustHaveNoscript-pass</title>
 </head>
 <body class="quail-failed-element">
 	<p>There is a script element on this page.</p>
   <noscript>This is a no script message.</noscript>
-	<script src="../testrunner.js"></script>
-	<script>
-    (function(global) {
-      global.quailTest = function() {
-        $(document).quail({ jsonPath : '../../dist',
-          guideline : [ 'scriptInBodyMustHaveNoscript' ],
-          reset : true,
-          complete: function(event) {
-            test('The noscript element is on the page', function() {
-              ok(!event.results.scriptInBodyMustHaveNoscript.elements.length, 'There is a noscript element on the page if a script is present.');
-            });
-          }
-        });
-      };
-    })(this);
-  </script>
+	<script src="../quail-testrunner.js"></script>
 </body>
 </html>

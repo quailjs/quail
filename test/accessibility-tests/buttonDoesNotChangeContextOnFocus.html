@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <title>buttonDoesNotChangeContextOnFocus</title>
+</head>
+<body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="buttonDoesNotChangeContextOnFocus">
+      <form>
+        <input type="submit" value="submit" onfocus="foo;">
+      </form>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="buttonDoesNotChangeContextOnFocus">
+      <form>
+        <input type="button" value="submit" onfocus="foo;">
+      </form>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="buttonDoesNotChangeContextOnFocus">
+      <form>
+        <button onfocus="foo;">Button</button>
+      </form>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="buttonDoesNotChangeContextOnFocus">
+      <form>
+        <input type="submit" value="submit">
+      </form>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="buttonDoesNotChangeContextOnFocus">
+      <form>
+        <input type="button" value="submit">
+      </form>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="buttonDoesNotChangeContextOnFocus">
+      <form>
+        <button>Button</button>
+      </form>
+    </div>
+
+    <script src="../quail-testrunner.js"></script>
+</body>
+</html>

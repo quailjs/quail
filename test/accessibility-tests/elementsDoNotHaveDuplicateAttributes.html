@@ -4,21 +4,18 @@
     <title>elementsDoNotHaveDuplicateAttributes</title>
 </head>
 <body>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="elementsDoNotHaveDuplicateAttributes" id="test1">
-        <h2 id="anothertest">This heading has an ID.</h2>
-        <p class="quail-failed-element" style="weight: bold;" style="weight: normal;">
-            This paragraph has two inline styles.
-        </p>
-    </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="elementsDoNotHaveDuplicateAttributes" id="test2">
-        <p class="test">This paragraph has a class.</p>
-        <h2 id="anothertest">This heading has an ID.</h2>
-    </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="elementsDoNotHaveDuplicateAttributes" id="test2">
-        <p class="test">This paragraph has a class.</p>
-        <h2 id="anothertest">This heading has an ID.</h2>
-    </div>
-    <script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
-    <script src="../testrunner.js"></script>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="elementsDoNotHaveDuplicateAttributes">
+    <p id="test1" class="quail-failed-element" style="weight: bold;" style="weight: normal;">
+      This paragraph has two style attributes.
+    </p>
+  </div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="elementsDoNotHaveDuplicateAttributes">
+    <h2 id="test2" id="anothertest">This heading has two id attributes.</h2>
+  </div>
+  <div class="quail-test" data-expected="pass" data-accessibility-test="elementsDoNotHaveDuplicateAttributes">
+    <h2 id="test3">This heading has one id attribute.</h2>
+  </div>
+  <script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
+  <script src="../quail-testrunner.js"></script>
 </body>
 </html>

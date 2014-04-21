@@ -17,14 +17,14 @@ quail.components.content = {
   findContent : function($element) {
     var $topScore = $element;
     //If an element has the ARIA role of "main," it's safe to assume that it is the main content.
-    if($element.is('[role=main]')) {
+    if ($element.is('[role=main]')) {
       return $element;
     }
-    if($element.find('[role=main]').length) {
+    if ($element.find('[role=main]').length) {
       return $element.find('[role=main]').first();
     }
     //If there are no paragraphs in the subject at all, we return the subject.
-    if($element.find('p').length === 0) {
+    if ($element.find('p').length === 0) {
       return $element;
     }
     $element.find('p').each(function() {

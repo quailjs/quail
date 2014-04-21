@@ -9,34 +9,24 @@
   <p>
     <img src="../assets/rex.jpg" />
   </p>
-  <script src="../testrunner.js"></script>
+  <script src="../quail-testrunner.js"></script>
   <script>
     (function(global) {
-      global.quailTest = function() {
-        test('quailEventTester', function() {
-         var testPasses = false;
-         $.ajax({ url : '../../dist/tests.json',
-           async : false,
-           dataType : 'json',
-           cache : false,
-           success : function(data) {
-              if(typeof data === 'object') {
-                $(document).quail({ jsonPath : '../../dist',
-                            guideline : [ 'imgHasAlt' ],
-                            reset : true,
-                            accessibilityTests : data,
-                            testFailed : function(event) {
-                              if(event.severity == 'severe' && event.testName == 'imgHasAlt') {
-                                testPasses = true;
-                              }
-                            }});
-              }
-          }});
-          equal(true, testPasses, 'The test has passed');
+      asyncTest('quailEventTester', function() {
+        expect(2);
+        $(document).quail({
+          jsonPath : '../../dist',
+          guideline : [ 'imgHasAlt' ],
+          reset : true,
+          complete : function(eventName, thisTest, _case) {
+            equal(thisTest.get('name'), 'imgHasAlt', 'The test name is correct');
+            equal(thisTest.get('testability'), 1, 'The test\'s testability value is correct');
+            start();
+          }
         });
-    };
-  })(this);
-</script>
+      });
+    })(this);
+  </script>
 </body>
 
 </html>

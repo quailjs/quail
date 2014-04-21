@@ -5,7 +5,7 @@
       <style>
 
       #test-1 a:focus {
-        border: 3px solid black; 
+        border: 3px solid black;
       }
 
       #test-1 input:focus {
@@ -29,7 +29,7 @@
       }
 
       #test-4 a:focus {
-        background-color: #c6e746; 
+        background-color: #c6e746;
       }
 
       #test-4 input:focus {
@@ -37,7 +37,7 @@
       }
 
       #test-5 a:focus {
-        box-shadow: 0 0 5px #c6e746; 
+        box-shadow: 0 0 5px #c6e746;
       }
 
       #test-5 input:focus {
@@ -45,7 +45,7 @@
       }
 
       #test-6 *:focus {
-        border: 3px solid black; 
+        border: 3px solid black;
       }
 
       #test-6 input:focus {
@@ -55,48 +55,39 @@
 </head>
 <body>
   <div class="quail-test limit-chrome" data-expected="fail" data-accessibility-test="focusIndicatorVisible" id="test-1">
-    <a href="somewhere">This link is highly visible when it gets focus</a>
     <form>
-      <label for="input">An input element with a bad focus</label>
-      <input type="text" id="input" class="quail-failed-element"></form>
-  </div>
-
-  <div class="quail-test limit-chrome" data-expected="fail" data-accessibility-test="focusIndicatorVisible" id="test-2">
-
-    <a href="somewhere" class="quail-failed-element">This link doesn't change much on focus</a>
-    <form>
-      <label for="input">An input element with good focus</label>
-      <input type="text" id="input"></form>
+      <label for="input1">An input element with a bad focus</label>
+      <input type="text" id="input1" class="quail-failed-element"></form>
   </div>
 
   <div class="quail-test limit-chrome" data-expected="fail" data-accessibility-test="focusIndicatorVisible" id="test-3">
     <a href="somewhere">This link is highly visible when it gets focus</a>
     <form>
-      <label for="input">An input element with a bad focus</label>
-      <input type="text" id="input" class="quail-failed-element"></form>
+      <label for="input3">An input element with a bad focus</label>
+      <input type="text" id="input3" class="quail-failed-element"></form>
   </div>
 
   <div class="quail-test limit-chrome" data-expected="pass" data-accessibility-test="focusIndicatorVisible" id="test-4">
     <a href="somewhere">This link is highly visible when it gets focus</a>
     <form>
-      <label for="input">An input element with a highly-visible focus</label>
-      <input type="text" id="input"></form>
+      <label for="input4">An input element with a highly-visible focus</label>
+      <input type="text" id="input4"></form>
   </div>
 
   <div class="quail-test limit-chrome" data-expected="pass" data-accessibility-test="focusIndicatorVisible" id="test-5">
     <a href="somewhere">This link is highly visible when it gets focus</a>
     <form>
-      <label for="input">An input element with a highly-visible focus</label>
-      <input type="text" id="input"></form>
+      <label for="input5">An input element with a highly-visible focus</label>
+      <input type="text" id="input5"></form>
   </div>
 
   <div class="quail-test limit-chrome" data-expected="pass" data-accessibility-test="focusIndicatorVisible" id="test-6">
     <a href="somewhere">This link is highly visible when it gets focus</a>
     <form>
-      <label for="input">An input element with a highly-visible focus</label>
-      <input type="text" id="input"></form>
+      <label for="input6">An input element with a highly-visible focus</label>
+      <input type="text" id="input6"></form>
   </div>
 
-  <script src="../testrunner.js"></script>
+  <script src="../quail-testrunner.js"></script>
 </body>
 </html>

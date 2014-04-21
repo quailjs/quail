@@ -12,29 +12,27 @@
     <h2 class="callback-error">Heading!</h2>
 
   </div>
-  <script src="../testrunner.js"></script>
+  <script src="../quail-testrunner.js"></script>
   <script>
     (function(global) {
-      global.quailTest = function() {
-        test('Test that a defined quailBuilderTests variable can set configuration.', function() {
-          var testResults = [];
-          window.quailBuilderTests = {
-            quailBuilderTest : {
-              type : 'selector',
-              options: {
-                selector : '.error'
-              }
+      asyncTest('Test that a defined quailBuilderTests variable can set configuration.', function() {
+        expect(1);
+        window.quailBuilderTests = {
+          quailBuilderTest : {
+            type : 'selector',
+            options: {
+              selector : '.error'
             }
-          };
-          $('.test-area').quail({ jsonPath : '../../dist',
-                              reset : true,
-                              complete : function(results) {
-                                testResults = results.results;
-                              }});
-          equal(true, testResults.quailBuilderTest.elements[0].is('p'), 'Found paragraph with selector');
+          }
+        };
+        $('.test-area').quail({
+          complete : function(eventName, thisTest, _case) {
+            ok($(_case.get('element')).is('p'), 'Found paragraph with selector');
+            start();
+          }
         });
-      };
-    })(this);
+      });
+    }(this));
   </script>
 </body>
 

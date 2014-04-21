@@ -5,8 +5,8 @@
     <title>languageChangesAreIdentified</title>
 </head>
 <body lang="en">
-    <div class="quail-test" data-expected="fail" data-accessibility-test="languageChangesAreIdentified">
-        <p>This paragraph is just fine, it is written in English.</p>
+    <div class="quail-test" data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified">
+        <article>This paragraph is just fine, it is written in English.</article>
         <p class="bengali quail-failed-element">এটি একটি ভাষা একক স্ক্রিপ্ট করা হবে না.</p>
     </div>
 
@@ -16,30 +16,30 @@
         </p>
     </div>
 
-    <div class="quail-test" data-expected="fail" data-accessibility-test="languageChangesAreIdentified">
-        <p>This paragraph is just fine, it is written in English.</p>
+    <div class="quail-test" data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified">
+        <article>This paragraph is just fine, it is written in English.</article>
         <p class="bengali quail-failed-element">এটি একটি ভাষা একক স্ক্রিপ্ট করা হবে না.</p>
     </div>
 
 
-    <div class="quail-test" data-expected="fail" data-accessibility-test="languageChangesAreIdentified" lang="en">
-        <p>
-            This paragraph is just fine, but the paragraph after it is in French. Monotonectally exploit web-enabled leadership skills rather than standards compliant markets. Appropriately visualize process-centric human capital via equity invested scenarios. Continually deploy magnetic communities whereas pandemic potentialities. 
-        </p>
+    <div class="quail-test" data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified" lang="en">
+        <article>
+            This paragraph is just fine, but the paragraph after it is in French. Monotonectally exploit web-enabled leadership skills rather than standards compliant markets. Appropriately visualize process-centric human capital via equity invested scenarios. Continually deploy magnetic communities whereas pandemic potentialities.
+        </article>
         <p class="quail-failed-element">
             Ceci est un texte français. Il est maintenant temps pour tous les hommes à venir à l'aide de leur pays. Exploiter Monotonectally compétences en leadership web-enabled plutôt que des normes conformes marchés. Visualiser correctement le capital humain centrée sur les processus par actions investi scénarios. Déployer continuellement communautés magnétiques alors que les potentialités en cas de pandémie.
         </p>
     </div>
 
-    <div class="quail-test" data-expected="fail" data-accessibility-test="languageChangesAreIdentified" lang="zh">
-        <p>
+    <div class="quail-test" data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified" lang="zh">
+        <article>
             这是一个较短的句子，但是这是没有问题，因为它是在中国。
-        </p>
+        </article>
         <p class="quail-failed-element">
             これは短い文ですが、日本語であるため、それは結構です。
         </p>
     </div>
-    
+
     <div class="quail-test" data-expected="pass" data-accessibility-test="languageChangesAreIdentified">
         <p>
             This paragraph is just fine, it is written in English.
@@ -47,8 +47,8 @@
             .
         </p>
     </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="languageChangesAreIdentified">
-        <p>This paragraph is just fine, it is written in English. Monotonectally exploit web-enabled leadership skills rather than standards compliant markets. Appropriately visualize process-centric human capital via equity invested scenarios. Continually deploy magnetic communities whereas pandemic potentialities. </p>
+    <div class="quail-test" data-expected="article:pass|p:pass" data-accessibility-test="languageChangesAreIdentified">
+        <article>This paragraph is just fine, it is written <i></i>n English. Monotonectally exploit web-enabled leadership skills rather than standards compliant markets. Appropriately visualize process-centric human capital via equity invested scenarios. Continually deploy magnetic communities whereas pandemic potentialities. </article>
         <p lang="ar">هذا هو مكتوب باللغة العربية</p>
     </div>
     <div class="quail-test" data-expected="pass" data-accessibility-test="languageChangesAreIdentified" lang="fr">
@@ -68,6 +68,6 @@
     </div>
     <script src="../../lib/guessLanguage/lib/_languageData.js"></script>
     <script src="../../lib/guessLanguage/lib/guessLanguage.js"></script>
-    <script src="../testrunner.js"></script>
+    <script src="../quail-testrunner.js"></script>
 </body>
 </html>

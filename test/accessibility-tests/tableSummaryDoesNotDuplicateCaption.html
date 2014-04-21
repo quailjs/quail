@@ -1,93 +1,93 @@
 <!doctype html>
 <html>
 <head>
-    <title>tableSummaryDoesNotDuplicateCaption</title>
+  <title>tableSummaryDoesNotDuplicateCaption</title>
 </head>
 <body>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="tableSummaryDoesNotDuplicateCaption">
-        <table border="1" summary="cups of coffee consumed by each senator"  class="quail-failed-element">
-            <caption>Cups of coffee consumed by each senator</caption>
-            <tr>
-                <th>name</th>
-                <th>number of cups</th>
-                <th>type</th>
-                <th>with sugar</th>
-            </tr>
-            <tr>
-                <td>Adams, Willie</td>
-                <td>2</td>
-                <td>regular</td>
-                <td>sugar</td>
-            </tr>
-            <tr>
-                <td>Bacon, Lise</td>
-                <td>4</td>
-                <td>regular</td>
-                <td>no sugar</td>
-            </tr>
-            <tr>
-                <td>Chaput, Maria</td>
-                <td>1</td>
-                <td>decaf</td>
-                <td>sugar</td>
-            </tr>
-            <tr>
-                <td>Di Nino, Consiglio</td>
-                <td>0</td>
-                <td>not applicable</td>
-                <td>not applicable</td>
-            </tr>
-            <tr>
-                <td>Eggleton, Art</td>
-                <td>6</td>
-                <td>regular</td>
-                <td>no sugar</td>
-            </tr>
-        </table>
-    </div>
-    
-    <div class="quail-test" data-expected="pass" data-accessibility-test="tableSummaryDoesNotDuplicateCaption">
-        <table border="1" summary="This table shows the number of cups of coffee consumed by each senator, the type of coffee (decaf or regular), and whether taken with sugar.">
-            <caption>Cups of coffee consumed by each senator</caption>
-            <tr>
-                <th>name</th>
-                <th>number of cups</th>
-                <th>type</th>
-                <th>with sugar</th>
-            </tr>
-            <tr>
-                <td>Adams, Willie</td>
-                <td>2</td>
-                <td>regular</td>
-                <td>sugar</td>
-            </tr>
-            <tr>
-                <td>Bacon, Lise</td>
-                <td>4</td>
-                <td>regular</td>
-                <td>no sugar</td>
-            </tr>
-            <tr>
-                <td>Chaput, Maria</td>
-                <td>1</td>
-                <td>decaf</td>
-                <td>sugar</td>
-            </tr>
-            <tr>
-                <td>Di Nino, Consiglio</td>
-                <td>0</td>
-                <td>not applicable</td>
-                <td>not applicable</td>
-            </tr>
-            <tr>
-                <td>Eggleton, Art</td>
-                <td>6</td>
-                <td>regular</td>
-                <td>no sugar</td>
-            </tr>
-        </table>
-    </div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="tableSummaryDoesNotDuplicateCaption">
+    <table border="1" summary="cups of coffee consumed by each senator"  class="quail-failed-element">
+      <caption>Cups of coffee consumed by each senator</caption>
+      <tr>
+        <th>name</th>
+        <th>number of cups</th>
+        <th>type</th>
+        <th>with sugar</th>
+      </tr>
+      <tr>
+        <td>Adams, Willie</td>
+        <td>2</td>
+        <td>regular</td>
+        <td>sugar</td>
+      </tr>
+      <tr>
+        <td>Bacon, Lise</td>
+        <td>4</td>
+        <td>regular</td>
+        <td>no sugar</td>
+      </tr>
+      <tr>
+        <td>Chaput, Maria</td>
+        <td>1</td>
+        <td>decaf</td>
+        <td>sugar</td>
+      </tr>
+      <tr>
+        <td>Di Nino, Consiglio</td>
+        <td>0</td>
+        <td>not applicable</td>
+        <td>not applicable</td>
+      </tr>
+      <tr>
+        <td>Eggleton, Art</td>
+        <td>6</td>
+        <td>regular</td>
+        <td>no sugar</td>
+      </tr>
+    </table>
+  </div>
 
-    <script src="../testrunner.js"></script>
+  <div class="quail-test" data-expected="pass" data-accessibility-test="tableSummaryDoesNotDuplicateCaption">
+    <table border="1" summary="This table shows the number of cups of coffee consumed by each senator, the type of coffee (decaf or regular), and whether taken with sugar.">
+      <caption>Cups of coffee consumed by each senator</caption>
+      <tr>
+        <th>name</th>
+        <th>number of cups</th>
+        <th>type</th>
+        <th>with sugar</th>
+      </tr>
+      <tr>
+        <td>Adams, Willie</td>
+        <td>2</td>
+        <td>regular</td>
+        <td>sugar</td>
+      </tr>
+      <tr>
+        <td>Bacon, Lise</td>
+        <td>4</td>
+        <td>regular</td>
+        <td>no sugar</td>
+      </tr>
+      <tr>
+        <td>Chaput, Maria</td>
+        <td>1</td>
+        <td>decaf</td>
+        <td>sugar</td>
+      </tr>
+      <tr>
+        <td>Di Nino, Consiglio</td>
+        <td>0</td>
+        <td>not applicable</td>
+        <td>not applicable</td>
+      </tr>
+      <tr>
+        <td>Eggleton, Art</td>
+        <td>6</td>
+        <td>regular</td>
+        <td>no sugar</td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="../quail-testrunner.js"></script>
 </body>
 </html>

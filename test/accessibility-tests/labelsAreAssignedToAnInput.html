@@ -5,26 +5,19 @@
 </head>
 <body>
     <div class="quail-test" data-expected="fail" data-accessibility-test="labelsAreAssignedToAnInput">
-
         <form>
-            <label for="name">Your Name</label>
-            <input type="text" name="name" id="name">
             <label class="quail-failed-element">Orphaned Label</label>
         </form>
     </div>
     <div class="quail-test" data-expected="fail" data-accessibility-test="labelsAreAssignedToAnInput">
 
         <form>
-            <label for="name">Your Name</label>
-            <input type="text" name="name" id="name">
             <label for="something" class="quail-failed-element">Orphaned Label</label>
         </form>
     </div>
     <div class="quail-test" data-expected="fail" data-accessibility-test="labelsAreAssignedToAnInput">
 
         <form>
-            <label for="name">Your Name</label>
-            <input type="text" name="name" id="name">
             <label for="something" class="quail-failed-element">Orphaned Label</label>
             <p id="something">Wow, wrong thing</p>
         </form>
@@ -32,11 +25,11 @@
     <div class="quail-test" data-expected="pass" data-accessibility-test="labelsAreAssignedToAnInput">
 
         <form>
-            <label for="name">Your Name</label>
-            <input type="text" name="name" id="name"/>
+            <label for="name4">Your Name</label>
+            <input type="text" name="name" id="name4"/>
         </form>
     </div>
 
-    <script src="../testrunner.js"></script>
+    <script src="../quail-testrunner.js"></script>
 </body>
 </html>

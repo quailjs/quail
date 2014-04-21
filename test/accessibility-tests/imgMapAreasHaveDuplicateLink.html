@@ -7,50 +7,50 @@
     <div class="quail-test" data-expected="fail" data-accessibility-test="imgMapAreasHaveDuplicateLink">
         <p>
             <map name="imagemap" id="map1">
-                <area shape="poly" coords="185,0,355,0,295,123" href="horses.html" alt="horses"/>
-                <area shape="poly" coords="336,202,549,203,549" href="dogs.html" alt="dogs"/>
-                <area shape="rect" coords="0,10,172,10" href="birds.html" alt="birds"/>
+                <area shape="poly" coords="185,0,355,0,295,123" href="horses1.html" alt="horses"/>
+                <area shape="poly" coords="336,202,549,203,549" href="dogs1.html" alt="dogs"/>
+                <area shape="rect" coords="0,10,172,10" href="birds1.html" alt="birds"/>
             </map>
         </p>
         <p>
             <img src="../assets/navigation.png" usemap="#imagemap" alt="navigation" class="quail-failed-element" />
         </p>
         <p>
-            <a href="horses.html">Horses</a> | <a href="dogs.html">Dogs</a>
+            <a href="horses1.html">Horses</a> | <a href="dogs1.html">Dogs</a>
         </p>
     </div>
 
     <div class="quail-test" data-expected="fail" data-accessibility-test="imgMapAreasHaveDuplicateLink">
         <p>
-            <map name="imagemap" id="map1">
-                <area shape="poly" coords="185,0,355,0,295,123" href="horses.html" alt="horses"/>
-                <area shape="poly" coords="336,202,549,203,549" href="dogs.html" alt="dogs"/>
-                <area shape="rect" coords="0,10,172,10" href="birds.html" alt="birds"/>
+            <map name="imagemap2" id="imagemap2">
+                <area shape="poly" coords="185,0,355,0,295,123" href="horses2.html" alt="horses"/>
+                <area shape="poly" coords="336,202,549,203,549" href="dogs2.html" alt="dogs"/>
+                <area shape="rect" coords="0,10,172,10" href="birds2.html" alt="birds"/>
             </map>
         </p>
         <p>
-            <img src="../assets/navigation.png" usemap="#imagemap" alt="navigation"
+            <img src="../assets/navigation.png" usemap="#imagemap2" alt="navigation"
             class="quail-failed-element" />
         </p>
     </div>
 
     <div class="quail-test" data-expected="pass" data-accessibility-test="imgMapAreasHaveDuplicateLink">
         <p>
-            <map name="imagemap" id="map1">
-                <area shape="poly" coords="185,0,355,0,295,123" href="horses.html" alt="horses"/>
-                <area shape="poly" coords="336,202,549,203,549" href="dogs.html" alt="dogs"/>
-                <area shape="rect" coords="0,10,172,10" href="birds.html" alt="birds"/>
+            <map name="imagemap3" id="imagemap3">
+                <area shape="poly" coords="185,0,355,0,295,123" href="horses3.html" alt="horses"/>
+                <area shape="poly" coords="336,202,549,203,549" href="dogs3.html" alt="dogs"/>
+                <area shape="rect" coords="0,10,172,10" href="birds3.html" alt="birds"/>
             </map>
         </p>
         <p>
-            <img src="../assets/navigation.png" usemap="#imagemap" alt="navigation"
+            <img src="../assets/navigation.png" usemap="#imagemap3" alt="navigation"
             />
         </p>
         <p>
-            <a href="horses.html">Horses</a> | <a href="dogs.html">Dogs</a> | <a href="birds.html">Birds</a>
+            <a href="horses3.html">Horses</a> | <a href="dogs3.html">Dogs</a> | <a href="birds3.html">Birds</a>
         </p>
     </div>
 
-    <script src="../testrunner.js"></script>
+    <script src="../quail-testrunner.js"></script>
 </body>
 </html>

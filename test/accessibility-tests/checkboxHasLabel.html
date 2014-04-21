@@ -4,63 +4,56 @@
     <title>checkboxHasLabel</title>
 </head>
 <body>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
+  <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
+    <form action="http://somesite.com/prog/adduser" method="post">
+      <p>
+        <input type="checkbox" title="" name="mytext" tabindex="1" class="quail-failed-element"/>
+      </p>
+    </form>
+  </div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
+    <form action="http://somesite.com/prog/adduser" method="post">
+      <p>
+        <input type="checkbox" title="birds" name="mytext" tabindex="1" class="quail-failed-element" />
+      </p>
+    </form>
+  </div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
+    <form action="http://somesite.com/prog/adduser" method="post">
+      <p>
+        <label>
+          <input type="checkbox" name="mytext" class="quail-failed-element" />
+        </label>
+      </p>
+    </form>
+  </div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
+    <form action="http://somesite.com/prog/adduser" method="post">
+      <p>
+        <label for="boxa"></label>
+        <input id="boxa" type="checkbox" name="mytext" tabindex="1" class="quail-failed-element" />
+      </p>
+    </form>
+  </div>
+  <div class="quail-test" data-expected="pass" data-accessibility-test="checkboxHasLabel">
+    <form action="http://somesite.com/prog/adduser" method="post">
+      <p>
+        <label>
+          birds
+          <input type="checkbox" name="mytext" />
+        </label>
+      </p>
+    </form>
+  </div>
+  <div class="quail-test" data-expected="pass" data-accessibility-test="checkboxHasLabel">
+    <form action="http://somesite.com/prog/adduser" method="post">
+      <p>
+        <label for="boxa">birds</label>
+        <input id="boxa" type="checkbox" name="mytext" tabindex="1" />
+      </p>
+    </form>
+  </div>
 
-        <form action="http://somesite.com/prog/adduser" method="post">
-            <p>
-                <input type="checkbox" title="" name="mytext" tabindex="1" class="quail-failed-element"/>
-            </p>
-        </form>
-    </div>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
-
-        <form action="http://somesite.com/prog/adduser" method="post">
-            <p>
-                <input type="checkbox" title="birds" name="mytext" tabindex="1" class="quail-failed-element" />
-            </p>
-        </form>
-    </div>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
-
-        <form action="http://somesite.com/prog/adduser" method="post">
-            <p>
-                <label>
-                    <input type="checkbox" name="mytext" class="quail-failed-element" />
-                </label>
-            </p>
-        </form>
-    </div>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
-
-        <form action="http://somesite.com/prog/adduser" method="post">
-            <p>
-                <label for="boxa"></label>
-                <input id="boxa" type="checkbox" name="mytext" tabindex="1" class="quail-failed-element" />
-            </p>
-        </form>
-    </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="checkboxHasLabel">
-
-        <form action="http://somesite.com/prog/adduser" method="post">
-            <p>
-                <label>
-                    birds
-                    <input type="checkbox" name="mytext" />
-                </label>
-            </p>
-        </form>
-    </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="checkboxHasLabel">
-
-        <form action="http://somesite.com/prog/adduser" method="post">
-            <p>
-                <label for="boxa">birds</label>
-                <input id="boxa" type="checkbox" name="mytext" tabindex="1"
-                />
-            </p>
-        </form>
-    </div>
-
-    <script src="../testrunner.js"></script>
+  <script src="../quail-testrunner.js"></script>
 </body>
 </html>

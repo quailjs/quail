@@ -10,59 +10,68 @@
       and an <em>emphasis element</em>.
     </p>
   </div>
-  <script src="../testrunner.js"></script>
+  <script src="../quail-testrunner.js"></script>
   <script>
-    (function(global) {
-      global.quailTest = function() {
-        test('testConfiguration', function() {
-          var customCallback = function(quail) {
-            var configuration = quail.getConfiguration('customConfigurationTest');
-            quail.html.find(configuration.tag).each(function() {
-              quail.testFails('customConfigurationTest', $(this));
-            });
-          };
-        
-          var testResults = [];
-          var custom = {
-            customConfigurationTest : {
-              type : 'custom',
-              callback : customCallback,
-              guidelines : {
-                a : {
-                  configuration : {
-                    tag : 'strong'
-                  }
-                },
-                b : {
-                  configuration : {
-                    tag : 'em'
-                  }
-                }
-              }
-            }
-          };
-          $('.test-area').quail({ jsonPath : '../../dist',
-                              guideline : [ 'customConfigurationTest' ],
-                              guidelineName : 'a',
-                              reset : true,
-                              customTests : custom,
-                              complete : function(results) {
-                                equal('STRONG', results.results.customConfigurationTest.elements[0].get(0).tagName, 'Found strong tag');
-                              }});
-        
-          $('.test-area').quail({ jsonPath : '../../dist',
-                              guideline : [ 'customConfigurationTest' ],
-                              guidelineName : 'b',
-                              reset : true,
-                              customTests : custom,
-                              complete : function(results) {
-                                equal('EM', results.results.customConfigurationTest.elements[0].get(0).tagName, 'Found em tag');
-                              }});
-          
-        });
+    var customCallback = function(quail, test, Case) {
+      var configuration = quail.getConfiguration('customConfigurationTest');
+      quail.html.find(configuration.tag).each(function() {
+        test.add(Case({
+          element: this,
+          expected: 'fail',
+          status: 'failed'
+        }));
+      });
     };
-  })(this);
-</script>
+    var custom = {
+      customConfigurationTest : {
+        type : 'custom',
+        callback : customCallback,
+        guidelines : {
+          a : {
+            configuration : {
+              tag : 'strong'
+            }
+          },
+          b : {
+            configuration : {
+              tag : 'em'
+            }
+          }
+        }
+      }
+    };
+    (function(global) {
+      asyncTest('testConfiguration', function() {
+        expect(1);
+        $('.test-area').quail({
+          jsonPath : '../../dist',
+          guideline : [ 'customConfigurationTest' ],
+          guidelineName : 'a',
+          reset : true,
+          customTests : custom,
+          complete : function(eventName, thisTest, _case) {
+            equal('STRONG', _case.get('element').tagName, 'Found strong tag');
+            start();
+          }
+        });
+      });
+
+      asyncTest('testConfiguration', function() {
+        expect(1);
+        $('.test-area').quail({
+          jsonPath : '../../dist',
+          guideline : [ 'customConfigurationTest' ],
+          guidelineName : 'b',
+          reset : true,
+          customTests : custom,
+          complete : function(eventName, thisTest, _case) {
+            equal('EM', _case.get('element').tagName, 'Found em tag');
+            start();
+          }
+        });
+      });
+    })(this);
+  </script>
 </body>
 
 </html>

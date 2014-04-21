@@ -7,14 +7,9 @@ $.fn.quail = function(options) {
     return this;
   }
   quail.options = options;
-  quail.options.accessibilityTests = quail.lib.TestCollection(options.accessibilityTests);
   quail.html = this;
 
-  // The quail builder at quailjs.org/build provides an in-scope test object.
-  if (typeof quailBuilderTests !== 'undefined' && !options.accessibilityTests.length) {
-    quail.options.accessibilityTests = quail.lib.TestCollection(quailBuilderTests);
-  }
-  quail.run();
+  quail.run(options);
 
   return this;
 };
@@ -36,60 +31,19 @@ $.expr[':'].quailCss = function(obj, index, meta) {
  *   The DOM element, wrapped in jQuery, that the test was run against.
  * @param {object} options
  */
-function _processTestResult (type, testName, $element, options) {
-  var test = quail.accessibilityTests.find(testName);
-  var result = quail.accessibilityResults[testName];
-  options = options || {};
-
-  function isCallable (func) {
-    return typeof func === 'function' || typeof func === 'object';
-  }
-
-  if (typeof quail.options.preFilter !== 'undefined') {
-    if (quail.options.preFilter(testName, $element, options) === false) {
-      return;
-    }
-  }
-  var testability = test.get('testability');
-  testability = (testability) ? testability : 'unknown';
-  var info = {
-    element     : $element,
-    selector    : quail.defineUniqueSelector($element.length && $element[0] || null),
-    location    : window && window.location || null,
-    testName    : testName,
-    test        : quail.accessibilityTests.find(testName),
-    testability : testability,
-    severity    : quail.testabilityTranslation[testability],
-    options     : options
-  };
-
-  // Invoke test listeners;
-  switch (type) {
-  case 'inapplicable':
-    result.status = 'inapplicable';
-    if (isCallable(quail.options.testNotApplicable)) {
-      quail.options.testNotApplicable(info);
-    }
-    break;
-  case 'failed':
-    // @todo, this currently stores just the failures. We need to pass all
-    // results.
-    result.elements.push($element);
-    result.status = 'failed';
-    if (isCallable(quail.options.testFailed)) {
-      quail.options.testFailed(info);
-    }
-    break;
-  case 'passed':
-    result.status = 'passed';
-    if (isCallable(quail.options.testPassed)) {
-      quail.options.testPassed(info);
-    }
-    break;
-  case 'cantTell':
-  case 'untested':
-    break;
-  }
+function _processTestResult () {
+  // var testability = test.get('testability');
+  // testability = (testability) ? testability : 'unknown';
+  // var info = {
+  //   element     : $element,
+  //   selector    : quail.defineUniqueSelector($element.length && $element[0] || null),
+  //   location    : window && window.location || null,
+  //   testName    : testName,
+  //   test        : quail.tests.find(testName),
+  //   testability : testability,
+  //   severity    : quail.testabilityTranslation[testability],
+  //   options     : options
+  // };
 }
 
 var quail = {
@@ -106,13 +60,16 @@ var quail = {
     1      : 'severe'
   },
 
-  html : { },
+  html : null,
 
   strings : { },
 
   accessibilityResults : { },
 
-  accessibilityTests : { },
+  //accessibilityTests : { },
+
+  // @var TestCollection
+  tests : { },
 
   /**
    * A list of HTML elements that can contain actual text.
@@ -149,69 +106,100 @@ var quail = {
    * Main run function for quail. It bundles up some accessibility tests,
    * and if tests are not passed, it instead fetches them using getJSON.
    */
-  run : function() {
-    if (quail.options.reset) {
+  run : function (options) {
+    if (options.reset) {
       quail.accessibilityResults = { };
     }
-    if (quail.options.accessibilityTests.length) {
-      quail.accessibilityTests = quail.options.accessibilityTests;
+    // Create an empty TestCollection.
+    quail.tests = quail.lib.TestCollection();
+    // The quail builder at quailjs.org/build provides an in-scope test object.
+    if (typeof quailBuilderTests !== 'undefined') {
+      quail.tests = quail.lib.TestCollection(quailBuilderTests, {
+        scope: quail.html || null
+      });
     }
+    // Otherwise get the tests from the json data list.
     else {
+      var url = options.jsonPath;
+      // Get a specific guideline.
+      if (typeof options.guideline === 'string') {
+        url += '/guidelines/' + options.guideline;
+      }
+
       $.ajax({
-        url : quail.options.jsonPath + '/tests.json',
+        url : url + '/tests.json',
         async : false,
         dataType : 'json',
-        success : function(data) {
+        success : function (data) {
           if (typeof data === 'object') {
-            quail.accessibilityTests = quail.lib.TestCollection(data);
+            // Filter for specific tests.
+            if (options.guideline && options.guideline.length) {
+              for (var i = 0, il = options.guideline.length; i < il; ++i) {
+                var t = options.guideline[i];
+                if (data[t]) {
+                  data[t].scope = quail.html || null;
+                  quail.tests.set(t, data[t]);
+                }
+              }
+            }
+            // Or use all of the tests.
+            else {
+              quail.tests = quail.lib.TestCollection(data, {
+                scope: quail.html || null
+              });
+            }
           }
         }
       });
     }
-    if (typeof quail.options.customTests !== 'undefined') {
-      for (var testName in quail.options.customTests) {
-        if (quail.options.customTests.hasOwnProperty(testName)) {
-          quail.accessibilityTests.set(testName, quail.options.customTests[testName]);
+    // Push custom tests into the test collection.
+    if (typeof options.customTests !== 'undefined') {
+      for (var testName in options.customTests) {
+        if (options.customTests.hasOwnProperty(testName)) {
+          options.customTests[testName].scope = quail.html || null;
+          quail.tests.set(testName, options.customTests[testName]);
         }
       }
     }
-    if (typeof quail.options.guideline === 'string') {
-      $.ajax({
-        url : quail.options.jsonPath + '/guidelines/' + quail.options.guideline +'.tests.json',
-        async : false,
-        dataType : 'json',
-        success : function(data) {
-          quail.options.guideline = data;
-        }
-      });
-    }
-    if (typeof quail.options.guideline === 'undefined') {
-      quail.options.guideline = [ ];
-      quail.accessibilityTests.each(function (index, test) {
-        quail.options.guideline.push(test.get('name'));
-      });
-    }
 
-    quail.runTests();
-    // Call the complete callback.
-    if (typeof quail.options.complete !== 'undefined') {
-      var results = {
-        totals : {
-          severe : 0,
-          moderate : 0,
-          suggestion : 0
-        },
-        results : quail.accessibilityResults
-      };
-      $.each(results.results, function(testName, result) {
-        results.totals[quail.testabilityTranslation[result.test.get('testability')]] += result.elements.length;
-      });
-      quail.options.complete(results);
-    }
+    /**
+     * @deprecated. Just keeping this around so we know what the old API looks
+     * like.
+     */
+    // var onResults = function (eventName, thisTest, _case) {
+    //   // Call the complete callback.
+    //   if(typeof quail.options.complete !== 'undefined') {
+    //     var results = {
+    //       totals : {
+    //         severe : 0,
+    //         moderate : 0,
+    //         suggestion : 0
+    //       },
+    //       results : quail.accessibilityResults
+    //     };
+    //     $.each(results.results, function(testName, result) {
+    //       results.totals[quail.testabilityTranslation[result.test.get('testability')]] += result.elements.length;
+    //     });
+    //     quail.options.complete(results);
+    //   }
+    // };
+
+    // Invoke all the registered tests.
+    quail.tests.run({
+      preFilter: options.preFilter || function () {},
+      complete: options.complete || function () {}
+    });
+  },
+
+  // @todo, make this a set of methods that all classes extend.
+  listenTo: function (dispatcher, eventName, handler) {
+    // @todo polyfill Function.prototype.bind.
+    handler = handler.bind(this);
+    dispatcher.registerListener.call(dispatcher, eventName, handler);
   },
 
   getConfiguration : function(testName) {
-    var test = this.accessibilityTests.find(testName);
+    var test = this.tests.find(testName);
     var guidelines = test && test.get('guidelines');
     var guideline = guidelines && this.options.guidelineName && guidelines[this.options.guidelineName];
     var configuration = guideline && guideline.configuration;
@@ -230,34 +218,6 @@ var quail = {
    */
   testFails : function(testName, $element, options) {
     _processTestResult('failed', testName, $element, options);
-  },
-
-  /**
-  * Iterates over all the tests in the provided guideline and
-  * figures out which function or object will handle it.
-  * Custom callbacks are included directly, others might be part of a category
-  * of tests.
-  */
-  runTests : function() {
-    $.each(quail.options.guideline, function(index, testName) {
-      var test = quail.accessibilityTests.find(testName);
-      if (!test) {
-        return;
-      }
-
-      quail.accessibilityResults[testName] = quail.accessibilityResults[testName] || {
-        test: test,
-        elements : []
-      };
-      // Run the test.
-      test.invoke(quail);
-
-      // Process the cases.
-      var options = test.get('options');
-      test.each(function (index, _case) {
-        _processTestResult(_case.get('status'), testName, $(_case.get('element')), options);
-      });
-    });
   },
 
   /**
@@ -556,3 +516,28 @@ var quail = {
     return element && generateSelector(element);
   }
 };
+
+$.getJSON('/dist/tests.json', {}, function (result) {
+  var tests;
+  quail.tests = new quail.lib.TestCollection(result);
+  // Register event listeners to the guideline Techniques.
+  $.getJSON('/dist/guidelines/wcag.json', {}, function (result) {
+    var guideline = new quail.lib.WCAGGuideline(result);
+    // Round up the tests for each section in the guideline.
+    guideline.each(function (index, section) {
+      section.each(function (index, technique) {
+        // returns a TestCollection.
+        tests = quail.tests.findByGuideline('wcag', section, technique);
+        if (tests.length) {
+          // tests.listenTo(technique, 'invoke', tests.run);
+          technique.listenTo(tests, 'results', technique.report);
+        }
+      });
+    });
+  });
+});
+
+// Provide a global to access quail.
+if (window) {
+  window.quail = quail;
+}

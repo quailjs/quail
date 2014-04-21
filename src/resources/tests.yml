@@ -511,7 +511,7 @@ areaLinksToSoundFile:
   options:
     selector: "area[href$=wav], area[href$=snd], area[href$=mp3], area[href$=iff], area[href$=svx], area[href$=sam], area[href$=smp], area[href$=vce], area[href$=vox], area[href$=pcm], area[href$=aif]"
 ariaOrphanedContent:
-  type: "selector"
+  type: "custom"
   testability: 1
   title:
     en: "Pages using ARIA roles should not have orphaned content"
@@ -521,8 +521,7 @@ ariaOrphanedContent:
   tags:
     - "aria"
     - "content"
-  options:
-    selector: "body *:not(*[role] *, *[role], script, meta, link)"
+  callback: "ariaOrphanedContent"
 basefontIsNotUsed:
   type: "selector"
   testability: 1
@@ -2112,8 +2111,7 @@ imgHasAlt:
     - "image"
     - "content"
   options:
-    selector: "img"
-    filter: ":not(img[alt])"
+    selector: "img:not(img[alt])"
 imgHasLongDesc:
   type: "custom"
   testability: 1
@@ -4309,3 +4307,37 @@ doNotUseGraphicalSymbolToConveyInformation:
     - "link"
     - "content"
   callback: "doNotUseGraphicalSymbolToConveyInformation"
+linkDoesNotChangeContextOnFocus:
+  type: "event"
+  testability: 1
+  title:
+    en: "Link elements must not contain an \"onfocus\" attribute"
+  description:
+    en: "Actions like \"onfocus\" can take control away from users who are trying to navigate the page. Using an \"onfocus\" attribute for things like links should be replaced with css."
+  guidelines: []
+  tags:
+    - "form"
+    - "content"
+  components:
+    - "event"
+    - "hasEventListener"
+  options:
+    searchEvent: "onfocus"
+    selector: "a"
+buttonDoesNotChangeContextOnFocus:
+  type: "event"
+  testability: 1
+  title:
+    en: "Buttons must not contain an \"onfocus\" attribute"
+  description:
+    en: "Actions like \"onfocus\" can take control away from users who are trying to navigate the page. Using an \"onfocus\" attribute for things like buttons should be replaced with css."
+  guidelines: []
+  tags:
+    - "form"
+    - "content"
+  components:
+    - "event"
+    - "hasEventListener"
+  options:
+    searchEvent: "onfocus"
+    selector: "input[type=checkbox],input[type=text],button"

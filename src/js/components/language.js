@@ -129,16 +129,16 @@ quail.components.language = {
    * first the browser's default, then the HTML element's "lang" attribute,
    * then the "lang" attribute of the element passed to quail.
    */
-  getDocumentLanguage: function(returnIso) {
+  getDocumentLanguage: function(scope, returnIso) {
     var language = navigator.language || navigator.userLanguage;
     if (typeof quail.options.language !== 'undefined') {
       language = quail.options.language;
     }
-    if (quail.html.parents('[lang]').length) {
-      language = quail.html.parents('[lang]:first').attr('lang');
+    if (scope.parents('[lang]').length) {
+      language = scope.parents('[lang]:first').attr('lang');
     }
-    if (typeof quail.html.attr('lang') !== 'undefined') {
-      language = quail.html.attr('lang');
+    if (typeof scope.attr('lang') !== 'undefined') {
+      language = scope.attr('lang');
     }
     language = language.toLowerCase().trim();
     if (returnIso) {

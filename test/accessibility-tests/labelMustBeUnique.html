@@ -6,19 +6,24 @@
 <body>
 	<div class="quail-test" data-expected="fail" data-accessibility-test="labelMustBeUnique">
 		<form>
-			<label for="name">First name:</label>
-			<input type="text" name="firstname" id="name" />
-			<label for="name" class="quail-fail-element">Enter your first name:</label>
+			<label for="a">Label A:</label>
+			<input type="text" name="a" id="a" />
+
+				<label for="a">Label A:</label>
+				<input type="text" name="b" id="b" />
 		</form>
 	</div>
 
 	<div class="quail-test" data-expected="pass" data-accessibility-test="labelMustBeUnique">
 		<form>
-			<label for="name">First name:</label>
-			<input type="text" name="firstname" id="name" />
+			<label for="c">Label C:</label>
+			<input type="text" name="c" id="c" />
+
+				<label for="d">Label D:</label>
+				<input type="text" name="d" id="d" />
 		</form>
 	</div>
 
-	<script src="../testrunner.js"></script>
+	<script src="../quail-testrunner.js"></script>
 </body>
 </html>

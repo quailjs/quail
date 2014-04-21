@@ -1,72 +1,71 @@
 <!doctype html>
 <html>
 <head>
-    <title>tableUsesAbbreviationForHeader</title>
+  <title>tableUsesAbbreviationForHeader</title>
 </head>
 <body>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="tableUsesAbbreviationForHeader">
+  <div class="quail-test" data-expected="fail" data-accessibility-test="tableUsesAbbreviationForHeader">
+    <table border="1" summary="This simple data table demonstrates the use of summary" >
+      <caption>A Test Table</caption>
+      <tr>
+        <td></td>
+        <th class="quail-failed-element">Col. 1 header really long text</th>
+        <th class="quail-failed-element">Col. 2 header really long text</th>
+      </tr>
+      <tr>
+        <th>Row 1 header</th>
+        <td>C1R1</td>
+        <td>C1R2</td>
+      </tr>
+      <tr>
+        <th>Row 2 header</th>
+        <td>C2R1</td>
+        <td>C2R2</td>
+      </tr>
+    </table>
+  </div>
 
-        <table border="1" summary="This simple data table demonstrates the use of summary" >
-            <caption>A Test Table</caption>
-            <tr>
-                <td></td>
-                <th class="quail-failed-element">Col. 1 header really long text</th>
-                <th class="quail-failed-element">Col. 2 header really long text</th>
-            </tr>
-            <tr>
-                <th>Row 1 header</th>
-                <td>C1R1</td>
-                <td>C1R2</td>
-            </tr>
-            <tr>
-                <th>Row 2 header</th>
-                <td>C2R1</td>
-                <td>C2R2</td>
-            </tr>
-        </table>
-    </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="tableUsesAbbreviationForHeader">
+  <div class="quail-test" data-expected="pass" data-accessibility-test="tableUsesAbbreviationForHeader">
+    <table border="1" summary="This simple data table demonstrates the use of summary">
+      <caption>A Test Table</caption>
+      <tr>
+        <td></td>
+        <th abbr="long text">Col. 1 header really long text</th>
+        <th abbr="long text2">Col. 2 header really long text</th>
+      </tr>
+      <tr>
+        <th>Row 1 header</th>
+        <td>C1R1</td>
+        <td>C1R2</td>
+      </tr>
+      <tr>
+        <th>Row 2 header</th>
+        <td>C2R1</td>
+        <td>C2R2</td>
+      </tr>
+    </table>
+  </div>
 
-        <table border="1" summary="This simple data table demonstrates the use of summary">
-            <caption>A Test Table</caption>
-            <tr>
-                <td></td>
-                <th abbr="long text">Col. 1 header really long text</th>
-                <th abbr="long text2">Col. 2 header really long text</th>
-            </tr>
-            <tr>
-                <th>Row 1 header</th>
-                <td>C1R1</td>
-                <td>C1R2</td>
-            </tr>
-            <tr>
-                <th>Row 2 header</th>
-                <td>C2R1</td>
-                <td>C2R2</td>
-            </tr>
-        </table>
-    </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="tableUsesAbbreviationForHeader">
+  <div class="quail-test" data-expected="pass" data-accessibility-test="tableUsesAbbreviationForHeader">
+    <table border="1" summary="This simple data table demonstrates the use of summary">
+      <tr>
+        <td></td>
+        <th>Col. 1 header</th>
+        <th>Col. 2 header</th>
+      </tr>
+      <tr>
+        <th>Row 1 header</th>
+        <td>C1R1</td>
+        <td>C1R2</td>
+      </tr>
+      <tr>
+        <th>Row 2 header</th>
+        <td>C2R1</td>
+        <td>C2R2</td>
+      </tr>
+    </table>
+  </div>
 
-        <table border="1" summary="This simple data table demonstrates the use of summary">
-            <tr>
-                <td></td>
-                <th>Col. 1 header</th>
-                <th>Col. 2 header</th>
-            </tr>
-            <tr>
-                <th>Row 1 header</th>
-                <td>C1R1</td>
-                <td>C1R2</td>
-            </tr>
-            <tr>
-                <th>Row 2 header</th>
-                <td>C2R1</td>
-                <td>C2R2</td>
-            </tr>
-        </table>
-    </div>
-
-    <script src="../testrunner.js"></script>
+  <script src="../quail-testrunner.js"></script>
 </body>
 </html>

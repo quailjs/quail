@@ -12,42 +12,54 @@
     <h2 class="callback-error">Heading!</h2>
 
   </div>
-  <script src="../testrunner.js"></script>
+  <script src="../quail-testrunner.js"></script>
   <script>
     (function(global) {
-      global.quailTest = function() {
-        test('A custom test can be defined and run', function() {
-          var testResults = [];
-          var custom = {
-            customTestSelector : {
-              type : 'selector',
-              options: {
-                selector : '.error'
+      var custom = {
+        customTestSelector : {
+          type : 'selector',
+          options: {
+            selector : '.error'
+          }
+        },
+        customTestCallback : {
+          type : 'custom',
+          callback : function(quail, test, Case) {
+            test.get('$scope').find('p, h2').each(function() {
+              if ($(this).hasClass('callback-error')) {
+                test.add(Case({
+                  element: this,
+                  status: 'failed'
+                }));
               }
-            },
-            customTestCallback : {
-              type : 'custom',
-              callback : function(quail) {
-                quail.html.find('p, h2').each(function() {
-                  if($(this).hasClass('callback-error')) {
-                    quail.testFails('customTestCallback', $(this));
-                  }
-                });
-              }
-            }
-          };
-          $('.test-area').quail({ jsonPath : '../../dist',
-                              guideline : [ 'customTestSelector', 'customTestCallback' ],
-                              reset : true,
-                              customTests : custom,
-                              complete : function(results) {
-                                testResults = results.results;
-                              }});
-          equal(true, testResults.customTestSelector.elements[0].is('p'), 'Found paragraph with selector');
-          equal(true, testResults.customTestCallback.elements[0].is('h2'), 'Found header with custom callback');
-        });
+            });
+          }
+        }
       };
-    })(this);
+      var called = 0;
+      asyncTest('A custom test can be defined and run', function() {
+        expect(2);
+        $('.test-area').quail({
+          jsonPath : '../../dist',
+          guideline : [ 'customTestSelector', 'customTestCallback' ],
+          reset : true,
+          customTests : custom,
+          complete : function(eventName, test, _case) {
+            if (test.get('name') === 'customTestSelector') {
+              ok($(_case.get('element')).is('p'), 'Found paragraph with selector');
+              ++called;
+            }
+            if (test.get('name') === 'customTestCallback') {
+              ok($(_case.get('element')).is('h2'), 'Found header with custom callback');
+              ++called;
+            }
+            if (called === 2) {
+              start();
+            }
+          }
+        });
+      });
+    }(this));
   </script>
 </body>
 

@@ -4,7 +4,7 @@
     <title>tabIndexFollowsLogicalOrder</title>
 </head>
 <body>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="tabIndexFollowsLogicalOrder">
+    <div class="quail-test" data-expected="input[tabindex='1']:ignore|input[tabindex='4']:fail" data-accessibility-test="tabIndexFollowsLogicalOrder">
 
         <form action="http://www.example.com/servlet1" method="post">
             <p>
@@ -14,25 +14,11 @@
                 <label for="lastname">Last Name:</label>
                 <input type="text" id="lastname" value="" tabindex="4" class="quail-failed-element"/>
                 <br/>
-                <label for="color">Favorite Color:</label>
-                <input type="text" id="color" value="" tabindex="5" class="quail-failed-element"/>
-                <br/>
-                <input type="submit" value="submit color" tabindex="7" class="quail-failed-element"/>
-            </p>
-        </form>
-        <form action="http://www.example.com/servlet2" method="post">
-            <p>
-                <label for="dogname">Dog's Name:</label>
-                <input type="text" id="dogtname" value="" tabindex="2" class="quail-failed-element"/>
-                <br/>
-                <label for="catname">Cat's Name:</label>
-                <input type="text" id="catname" value="" tabindex="3" class="quail-failed-element"/>
-                <br/>
-                <input type="submit" value="submit pets" tabindex="6" class="quail-failed-element"/>
+                <input type="submit" value="submit color" class="quail-failed-element"/>
             </p>
         </form>
     </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="tabIndexFollowsLogicalOrder">
+    <div class="quail-test" data-expected="input[tabindex='1']:ignore|input[tabindex='2']:pass" data-accessibility-test="tabIndexFollowsLogicalOrder">
 
         <form action="http://www.example.com/servlet1" method="post">
             <p>
@@ -42,25 +28,11 @@
                 <label for="lastname">Last Name:</label>
                 <input type="text" id="lastname" value="" tabindex="2"/>
                 <br/>
-                <label for="color">Favorite Color:</label>
-                <input type="text" id="color" value="" tabindex="3"/>
-                <br/>
-                <input type="submit" value="submit color" tabindex="4" />
-            </p>
-        </form>
-        <form action="http://www.example.com/servlet2" method="post">
-            <p>
-                <label for="dogname">Dog's Name:</label>
-                <input type="text" id="dogtname" value="" tabindex="5"/>
-                <br/>
-                <label for="catname">Cat's Name:</label>
-                <input type="text" id="catname" value="" tabindex="6"/>
-                <br/>
-                <input type="submit" value="submit pets" tabindex="7" />
+                <input type="submit" value="submit color" />
             </p>
         </form>
     </div>
 
-    <script src="../testrunner.js"></script>
+    <script src="../quail-testrunner.js"></script>
 </body>
 </html>

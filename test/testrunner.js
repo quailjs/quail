@@ -27,106 +27,19 @@
      * times working.
      */
     run: function() {
-      var that = this;
-      if(typeof QUnit === 'undefined') {
-        global.QUnit = {
-          moduleStart: function(callback) {
-            that.qunitCallbacks.moduleStart = callback;
-          },
-          testStart: function(callback) {
-            that.qunitCallbacks.testStart = callback;
-          },
-          testDone: function(callback) {
-            that.qunitCallbacks.testDone = callback;
-          },
-          log: function(callback) {
-            that.qunitCallbacks.log = callback;
-          },
-          done: function(callback) {
-            that.qunitCallbacks.done = callback;
-          }
-        };
-      }
-      this.includejQuery();
-    },
-
-    /**
-     * Include jQuery on the page using vanilla JS, including differences
-     * in script ready events.
-     */
-    includejQuery: function() {
-      var em = document.createElement('script');
-      em.type = 'text/javascript';
-      if (em.readyState) {
-        em.onreadystatechange = function () {
-          if (em.readyState == "loaded" || em.readyState == "complete") {
-            em.onreadystatechange = null;
-            testRunner.includeScripts();
-          }
-        };
-      } else {
-        em.onload = function () {
-          testRunner.includeScripts();
-        };
-      }
-      em.src = '../../lib/jquery/jquery.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(em, s);
-    },
-
-    /**
-     * Once jQuery is available, insert Qunit styles, the placeholder for
-     * the Qunit fixture, and load the rest of the needed JS on the page.
-     * At the end, we request tests.json and set a 250ms timeout to prevent
-     * the parent composite tester from timing out.
-     *
-     * If the page has defined a global.quailTest function, we then run it, if
-     * not, we run the runTests method.
-     */
-    includeScripts: function() {
-      var that = this;
       $('head').append('<link rel="stylesheet" href="../../lib/qunit/qunit.css" media="screen">');
       $('head').append('<link rel="stylesheet" href="../test.css" media="screen">');
       $('body').prepend('<div role="status" id="qunit"></div><div role="status" id="qunit-fixture"></div>');
-      $.getScript('../quail-testing.jquery.js', function() {
-        $.getScript('../../lib/qunit/qunit.js', function() {
-          $.ajax({
-            url: '../../dist/tests.json',
-            dataType: 'json',
-            success: function(data) {
-              that.accessibilityTests = data;
-              that.buildQUnit();
-              QUnit.init();
-              setTimeout(function() {
-                start();
-                var eventObject = document.createEvent('MouseEvents');
-                eventObject.initEvent('testsReady', true, true );
-                document.dispatchEvent(eventObject);
-                if(typeof global.quailTest !== 'undefined') {
-                  global.quailTest();
-                }
-                else {
-                  that.runTests();
-                }
-              }, 250);
-            }
-          });
-        });
-      });
-    },
-
-    /**
-     * Assign callbacks for QUnit after the timeout has completed.
-     */
-    buildQUnit: function() {
-      if(typeof this.qunitCallbacks.moduleStart === 'undefined') {
-        return;
+      this.tests = quail.lib.TestCollection(__quailTests);
+      var eventObject = document.createEvent('MouseEvents');
+      eventObject.initEvent('testsReady', true, true );
+      document.dispatchEvent(eventObject);
+      if (typeof global.quailTest !== 'undefined') {
+        global.quailTest();
       }
-      QUnit.moduleStart = this.qunitCallbacks.moduleStart;
-      QUnit.testStart = this.qunitCallbacks.testStart;
-      QUnit.testDone = this.qunitCallbacks.testDone;
-      QUnit.log = this.qunitCallbacks.log;
-      QUnit.done = this.qunitCallbacks.done;
+      else {
+        this.runTests();
+      }
     },
 
     /**
@@ -135,93 +48,107 @@
      * This runs quail against all .quail-test elements, determines pass/fail, and
      * then runs comparisons into QUnit assertions.
      */
-    runTests: function() {
+    runTests: function () {
       var that = this;
+      var testsToEvaluate = quail.lib.TestCollection();
       $('.quail-test').each(function(index) {
-        if($(this).hasClass('limit-chrome') && navigator.userAgent.search('Chrome') === -1) {
+        if ($(this).hasClass('limit-chrome') && navigator.userAgent.search('Chrome') === -1) {
           test('Skipping', function() {
             ok(true, 'Skipping test because browser is not chrome.');
           });
           return;
         }
-        if($(this).hasClass('limit-phantom') && navigator.userAgent.search('PhantomJS') === -1) {
+        if ($(this).hasClass('limit-phantom') && navigator.userAgent.search('PhantomJS') === -1) {
           test('Skipping', function() {
             ok(true, 'Skipping test because browser is not phantom.');
           });
           return;
         }
-        var thisTest = {
-          title : ($(this).attr('title')) ? ': ' + $(this).attr('title') : '',
-          accessibilityTest: $(this).data('accessibility-test'),
-          expectedPass: ($(this).data('expected') === 'pass'),
-        };
-        if(typeof thisTest.accessibilityTest === 'undefined' ||
-           !thisTest.accessibilityTest) {
-          test('Accessibility test is defined', function() {
+        // The testing environment is legitimate. Assemble the test details.
+        var testName = $(this).data('accessibility-test');
+        if (!testName) {
+          test('Accessibility test is defined', function () {
             ok(false, 'Accessibility test is not defined.');
           });
         }
-        var $that = $(this), expected, label, title;
-        testTitle = (typeof that.accessibilityTests[thisTest.accessibilityTest].title !== 'undefined') ?
-                      that.accessibilityTests[thisTest.accessibilityTest].title.en :
-                      'No test title defined';
-        $that.quail({
-          jsonPath: '../../dist',
-          guideline: [ thisTest.accessibilityTest ],
-          accessibilityTests : that.accessibilityTests,
-          reset: true,
-          preFilter: function(testName, $element) {
-            if($element.is('#qunit') || $element.parents('#qunit').length) {
-              return false;
-            }
-          },
-          complete: function(event) {
-            that.quailComplete(event, index, testTitle, thisTest, $that);
+        var testTitle = $(this).attr('title');
+        var testDefinition = that.tests.find(testName);
+        testTitle = !testTitle && testDefinition && (testDefinition.get('title')) ? testDefinition.get('title').en : 'No test title defined';
+
+        // Set the test scope. Add to the scope, don't replace it. On the first
+        // iteration of this loop, use an empty jQuery object as the first
+        // scope. A Test will return the document as its default scope and in
+        // the context of tests, we don't want this default.
+        var $scope;
+        if (index === 0) {
+          $scope = $();
+        }
+        else {
+          $scope = testDefinition.get('$scope');
+        }
+        // Sometimes the scope is overridden.
+        var dataScope = $(this).data('scope');
+        if (dataScope) {
+          if (dataScope === 'document') {
+            $scope = $scope.add(document);
           }
-        });
+          else {
+            $scope = $scope.add(dataScope);
+          }
+        }
+        else {
+          $scope = $scope.add(this);
+        }
+        testDefinition.set('scope', $scope.get());
+
+        // @todo, this is legacy stuff; remove eventually.
+        testDefinition.set('index', index);
+
+        // Track the test as one to evaluate.
+        // TestCollection.prototype.add is idempotent.
+        testsToEvaluate.add(testDefinition);
+      });
+
+      // Run the TestCollection Tests.
+      testsToEvaluate.run({
+        preFilter: function (testName, element) {
+          var $element = $(element);
+          if ($element.is('#qunit') || $element.parents('#qunit').length) {
+            return false;
+          }
+        },
+        complete: this.quailComplete
       });
     },
 
     /**
      * Callback for when quail is done running tests.
      */
-    quailComplete: function(event, index, testTitle, thisTest, $target) {
-      test(testTitle +  thisTest.title, function() {
-        label = (thisTest.expectedPass) ? 'pass' : 'fail';
-        $target.addClass(label)
-             .prepend('<span class="test-label">#' + (index + 1) + ' (' + label + ')</span>');
-        if(thisTest.expectedPass) {
-          ok(event.results[thisTest.accessibilityTest].elements.length === 0, 'No elements failed test');
-        }
-        else {
-          if($target.hasClass('self-fail')) {
-            ok(event.results[thisTest.accessibilityTest].elements.length > 0, 'Self testing element failed (document-wide test)');
+    quailComplete: function(eventName, thisTest, _case) {
+      // Only run a test if there is an expected outcome.
+      if (_case.get('expected')) {
+        var title = thisTest.get('title') && thisTest.get('title').en || 'No title for test';
+        test(title, function() {
+          var expected = _case.get('expected');
+          var label = expected || 'no label';
+          // Label the individual test case.
+          $(_case.get('element')).addClass(label);
+
+          var message = 'Expected status: ' + expected;
+          // Process the results.
+          switch (expected) {
+          case 'pass':
+            ok(_case.get('status') === 'passed', message);
+            break;
+          case 'fail':
+            ok(_case.get('status') === 'failed', message);
+            break;
+          case 'notApplicable':
+            ok(_case.get('status') === 'notApplicable', message);
+            break;
           }
-          else {
-            $target.find('.quail-failed-element').each(function() {
-              var found = this;
-              expected = false;
-              $.each(event.results[thisTest.accessibilityTest].elements, function(index, $element) {
-                if($element.get(0) === found ||
-                   $element.is('body') && $target.find('body').hasClass('quail-failed-element')) {
-                  expected = true;
-                  $(found).addClass('found');
-                }
-                if($element.is('svg')) {
-                  if($element.attr('class') === 'quail-failed-element') {
-                    $element.attr('class', 'quail-failed-element found');
-                    expected = true;
-                  }
-                }
-              });
-              if(!expected) {
-                ok(false, 'Element not found:' + $('<div>').append($(found).clone().empty()).html());
-              }
-            });
-            ok($target.find('.quail-failed-element').length === $target.find('.quail-failed-element.found').length, $target.find('.quail-failed-element').length + ' element(s) failed');
-          }
-        }
-      });
+        });
+      }
     }
   };
 

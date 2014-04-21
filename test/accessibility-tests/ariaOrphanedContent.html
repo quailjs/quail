@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>ariaOrphanedContent</title>
+</head>
+
+<body>
+  <div class="quail-test" data-expected="notApplicable" data-accessibility-test="ariaOrphanedContent">
+    <p>This is a paragraph.</p>
+  </div>
+  <div class="quail-test" data-expected="pass" data-accessibility-test="ariaOrphanedContent">
+    <div role="main">
+      <p>This is a paragraph.</p>
+    </div>
+  </div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="ariaOrphanedContent">
+    <div role="main"></div>
+    <p>This is a paragraph.</p>
+  </div>
+
+  <script src="../quail-testrunner.js"></script>
+</body>
+
+</html>

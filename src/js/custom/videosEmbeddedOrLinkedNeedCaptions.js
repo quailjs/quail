@@ -1,9 +1,23 @@
-quail.videosEmbeddedOrLinkedNeedCaptions = function() {
+quail.videosEmbeddedOrLinkedNeedCaptions = function (quail, test, Case) {
 
-  quail.components.video.findVideos(quail.html, function(element, pass) {
+  quail.components.video.findVideos(test.get('$scope'), function(element, pass) {
     if (!pass) {
-      quail.testFails('videosEmbeddedOrLinkedNeedCaptions', element);
+      test.add(Case({
+        element: element,
+        expected: (function (element) {
+          return quail.components.resolveExpectation(element);
+        }(element)),
+        status: 'failed'
+      }));
+    }
+    else {
+      test.add(Case({
+        element: element,
+        expected: (function (element) {
+          return quail.components.resolveExpectation(element);
+        }(element)),
+        status: 'passed'
+      }));
     }
   });
-
 };

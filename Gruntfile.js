@@ -41,8 +41,23 @@ module.exports = function(grunt) {
         dest: 'test/quail-testing.jquery.js',
         options: {
           banner: '<%= pkg.options.banner %>' + "\n" + 'var __testQuail = {};(function($) {' + "\n",
-          footer: "\n" + '__testQuail = quail; })(jQuery);',
+          footer: "\n" + 'window.__testQuail = quail; })(jQuery);',
           stripBanners: true
+        }
+      },
+      testLib: {
+        src: ['dist/tests.json', 'lib/jquery/jquery.js', 'lib/qunit/qunit.js', 'test/quail-testing.jquery.js', 'test/testrunner.js'],
+        dest: 'test/quail-testrunner.js',
+        options: {
+          banner: '(function() {',
+          footer: '})();',
+          stripBanners: true,
+          process: function(src, filepath) {
+            if(filepath === 'dist/tests.json') {
+              return 'var __quailTests = ' + src + ';' + "\n";
+            }
+            return src;
+          }
         }
       }
     },
@@ -69,7 +84,7 @@ module.exports = function(grunt) {
     },
     watch: {
       scripts: {
-        files: ['src/**/*.js', 'src/**/*.yml', 'test/accessibility-tests/*.html', 'test/core/*.html'],
+        files: ['src/**/*.js', 'src/**/*.yml', 'test/accessibility-tests/*.html', 'test/core/*.html', 'test/testrunner.js'],
         tasks: ['convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'uglify'],
         options: {
           spawn: false

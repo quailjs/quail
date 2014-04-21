@@ -15,31 +15,31 @@
     </style>
 </head>
 <body>
-    <div class="quail-test self-fail" data-expected="fail" data-accessibility-test="skipToContentLinkProvided">
-      <a href="somewhere.html">Somewhere else</a>
-      <div id="content">
-        This is the main page content.
-      </div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="skipToContentLinkProvided">
+    <a href="somewhere.html">Somewhere else</a>
+    <div id="content1">
+      This is the main page content.
     </div>
-    <div class="quail-test self-fail" data-expected="fail" data-accessibility-test="skipToContentLinkProvided">
-      <a href="#content" style="display: none;">Skip to content</a>
-      <div id="content">
-        This is the main page content.
-      </div>
+  </div>
+  <div class="quail-test" data-expected="fail" data-accessibility-test="skipToContentLinkProvided">
+    <a href="#content2" style="display: none;">Skip to content</a>
+    <div id="content2">
+      This is the main page content.
     </div>
-    <div class="quail-test self-fail" data-expected="pass" data-accessibility-test="skipToContentLinkProvided">
-      <a href="#content">Skip to content</a>
-      <div id="content">
-        This is the main page content.
-      </div>
+  </div>
+  <div class="quail-test" data-expected="pass" data-accessibility-test="skipToContentLinkProvided">
+    <a href="#content3">Skip to content</a>
+    <div id="content3">
+      This is the main page content.
     </div>
+  </div>
 
-    <div class="quail-test self-fail" data-expected="pass" data-accessibility-test="skipToContentLinkProvided">
-      <a href="#content" id="focus-visible">Skip to content</a>
-      <div id="content">
-        This is the main page content.
-      </div>
+  <div class="quail-test" data-expected="pass" data-accessibility-test="skipToContentLinkProvided">
+    <a href="#content4" id="focus-visible">Skip to content</a>
+    <div id="content4">
+      This is the main page content.
     </div>
-    <script src="../testrunner.js"></script>
+  </div>
+  <script src="../quail-testrunner.js"></script>
 </body>
 </html>

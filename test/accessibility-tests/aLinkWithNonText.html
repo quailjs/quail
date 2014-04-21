@@ -4,6 +4,11 @@
 		<title>aLinkWithNonText</title>
 	</head>
 	<body>
+
+		<div class="quail-test" data-expected="notApplicable" data-accessibility-test="aLinkWithNonText">
+			<a name="anchor"></a>
+		</div>
+
 		<div class="quail-test" data-expected="pass" data-accessibility-test="aLinkWithNonText">
 		  <a href="something.html"><img src="../assets/rex.jpg" alt="Learn more about this cat"/></a>
 		</div>
@@ -24,5 +29,6 @@
 		  <a href="something.html" class="quail-failed-element"><img src="../assets/rex.jpg"/></a>
 		</div>
 
-		<script src="../testrunner.js"></script>	</body>
+		<script src="../quail-testrunner.js"></script>
+	</body>
 </html>

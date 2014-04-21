@@ -1,13 +1,24 @@
-quail.imgGifNoFlicker = function() {
-  quail.html.find('img[src$=".gif"]').each(function() {
+quail.imgGifNoFlicker = function(quail, test, Case) {
+  test.get('$scope').find('img[src$=".gif"]').each(function() {
     var $image = $(this);
+    var _case = Case({
+      element: this,
+      expected: $(this).closest('.quail-test').data('expected')
+    });
+    test.add(_case);
     $.ajax({
       url: $image.attr('src'),
-      async: false,
       dataType: 'text',
       success: function(data) {
         if (data.search('NETSCAPE2.0') !== -1) {
-          quail.testFails('imgGifNoFlicker', $image);
+          _case.set({
+            'status' : 'failed'
+          });
+        }
+        else {
+          _case.set({
+            'status' : 'notApplicable'
+          });
         }
       }
     });
