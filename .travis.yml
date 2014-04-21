@@ -13,7 +13,3 @@ install:
 
 after_success:
   - grunt saucelabs --verbose
-
-branches:
-  except:
-    - guideline
