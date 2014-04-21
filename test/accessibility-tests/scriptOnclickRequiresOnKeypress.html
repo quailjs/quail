@@ -32,13 +32,14 @@
 		<a href="scriptOnclickRequiresOnKeypress.html">A link!</a>
 	</div>
 
-	<script src="../quail-testrunner.js"></script>
+
 	<script>
 		document.addEventListener('testsReady', function() {
 			$('#jquery-event').on('click', function() {
-				alert('You clicked on the link');
+				return false;
 			});
 		});
 	</script>
+	<script src="../quail-testrunner.js"></script>
 	</body>
 </html>

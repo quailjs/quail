@@ -10,7 +10,14 @@ quail.components.event = function(quail, test, Case, options) {
   var searchEvent = options.searchEvent || '';
   var correspondingEvent = options.correspondingEvent || '';
   $items.each(function() {
-    var hasOnListener = quail.components.hasEventListener($(this), searchEvent.replace('on', ''));
+    var eventName = searchEvent.replace('on', '');
+    var hasOnListener = quail.components.hasEventListener($(this), eventName);
+    // Determine if the element has jQuery listeners for the event.
+    var jqevents;
+    if ($._data) {
+      jqevents = $._data(this, 'events');
+    }
+    var hasjQueryOnListener = jqevents && jqevents[eventName] && !!jqevents[eventName].length;
     var hasCorrespondingEvent = !!correspondingEvent.length;
     var hasSpecificCorrespondingEvent = quail.components.hasEventListener($(this), correspondingEvent.replace('on', ''));
     var expected = $(this).closest('.quail-test').data('expected');
@@ -18,7 +25,7 @@ quail.components.event = function(quail, test, Case, options) {
       element: this,
       expected: expected
     }));
-    if (hasOnListener && (!hasCorrespondingEvent || !hasSpecificCorrespondingEvent)) {
+    if ((hasOnListener || hasjQueryOnListener) && (!hasCorrespondingEvent || !hasSpecificCorrespondingEvent)) {
       _case.set({status: 'failed'});
     }
     else {
