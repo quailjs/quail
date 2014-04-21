@@ -41,7 +41,7 @@ module.exports = function(grunt) {
         dest: 'test/quail-testing.jquery.js',
         options: {
           banner: '<%= pkg.options.banner %>' + "\n" + 'var __testQuail = {};(function($) {' + "\n",
-          footer: "\n" + '__testQuail = quail; })(jQuery);',
+          footer: "\n" + 'window.__testQuail = quail; })(jQuery);',
           stripBanners: true
         }
       },
