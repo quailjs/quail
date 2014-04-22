@@ -271,10 +271,14 @@ quail.components.color = function(quail, test, Case, options) {
     },
 
     /**
-     * Get first element behind current with a background color.
+     * Traverse visual tree for background property.
      */
-    getBehindElementBackgroundColor: function(element) {
-      var foundBackgroundColor = false;
+    traverseVisualTreeForBackground: function(element, property) {
+      var notempty = function(s) {
+        return $.trim(s) !== '';
+      };
+
+      var foundIt;
       var scannedElements = [];
 
       // Scroll to make sure element is visible.
@@ -293,21 +297,45 @@ quail.components.color = function(quail, test, Case, options) {
 
       // Get element at position x, y.
       var el = document.elementFromPoint(x,y);
-      while (!foundBackgroundColor && el && el.tagName !== 'BODY' && el.tagName !== 'HTML') {
+      while (foundIt === undefined && el && el.tagName !== 'BODY' && el.tagName !== 'HTML') {
         el = $(el);
-        // Skip hidden elements.
+        // Only check visible elements.
         if (el.css('visibility') !== "hidden" && el.css('display') !== 'none') {
-          if (this.hasBackgroundColor(el)) {
-            foundBackgroundColor = el.css('background-color');
+          switch (property) {
+          case 'background-color':
+            if (this.hasBackgroundColor(el)) {
+              foundIt = el.css('background-color');
+            }
+            break;
+          case 'background-gradient':
+            if (el.css('background-image') && el.css('background-image') !== 'none' && el.css('background-image').search(/^(.*?)gradient(.*?)$/i) !== -1) {
+              var gradient = el.css('background-image').match(/gradient(\(.*\))/g);
+              if (gradient.length > 0) {
+                gradient = gradient[0].replace(/(linear|radial|from|\bto\b|gradient|top|left|bottom|right|\d*%)/g, '');
+                foundIt = $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notempty);
+              }
+            }
+            // Bail out if element has a background color;
+            if (this.hasBackgroundColor(el)) {
+              foundIt = false;
+            }
+            break;
+          case 'background-image':
+            if (el.css('background-image') && el.css('background-image') !== 'none' && el.css('background-image').search(/^(.*?)url(.*?)$/i) !== -1) {
+              return el.css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
+            }
+            // Bail out if element has a background color;
+            if (this.hasBackgroundColor(el)) {
+              foundIt = false;
+            }
+            break;
           }
-          else {
-            scannedElements.push({
-              element: el,
-              visibility: el.css('visibility')
-            });
-            el.css('visibility', 'hidden');
-            el = document.elementFromPoint(x,y);
-          }
+          scannedElements.push({
+            element: el,
+            visibility: el.css('visibility')
+          });
+          el.css('visibility', 'hidden');
+          el = document.elementFromPoint(x,y);
         }
       }
 
@@ -316,16 +344,39 @@ quail.components.color = function(quail, test, Case, options) {
         scannedElements[i].element.css('visibility', scannedElements[i].visibility);
       }
 
-      return foundBackgroundColor;
+      return foundIt;
+    },
+
+    /**
+     * Get first element behind current with a background color.
+     */
+    getBehindElementBackgroundColor: function(element) {
+      return colors.traverseVisualTreeForBackground(element, 'background-color');
+    },
+
+    /**
+     * Get first element behind current with a background gradient.
+     */
+    getBehindElementBackgroundGradient: function(element) {
+      return colors.traverseVisualTreeForBackground(element, 'background-gradient');
+    },
+
+    /**
+     * Get first element behind current with a background image.
+     */
+    getBehindElementBackgroundImage: function(element) {
+      return colors.traverseVisualTreeForBackground(element, 'background-image');
     }
   };
 
   test.get('$scope').find(options.options.selector).filter(quail.textSelector).each(function() {
     var $this = $(this);
     var failureFound = false;
+    var img, i, rainbow, numberOfSamples;
+
 
     if (!quail.isUnreadable($this.text())) {
-      // Check text and background color.
+      // Check text and background color using DOM.
       if ((options.options.algorithm === 'wcag' && !colors.passesWCAG($this)) ||
           (options.options.algorithm === 'wai' && !colors.passesWAI($this))) {
         test.add(Case({
@@ -336,7 +387,7 @@ quail.components.color = function(quail, test, Case, options) {
         failureFound = true;
       }
 
-      // Check text and background color of a behind image.
+      // Check text and background using element behind current element.
       if (!failureFound) {
         var backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
         if (backgroundColorBehind) {
@@ -352,17 +403,17 @@ quail.components.color = function(quail, test, Case, options) {
         }
       }
 
-      // Check if there's a background-image.
+      // Check if there's a background-image using DOM.
       if (!failureFound) {
         var backgroundImage = colors.getBackgroundImage($this);
         if (backgroundImage) {
-          var img = new Image();
+          img = new Image();
           img.src = backgroundImage;
 
           // Get average color of the background image.
-          var averageColor = colors.getAverageRGB(img);
-          if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColor)) ||
-              (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColor))) {
+          var averageColorBackgroundImage = colors.getAverageRGB(img);
+          if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColorBackgroundImage)) ||
+              (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColorBackgroundImage))) {
             test.add(Case({
               element: this,
               expected: $this.closest('.quail-test').data('expected'),
@@ -373,25 +424,78 @@ quail.components.color = function(quail, test, Case, options) {
         }
       }
 
-      // Check if there's a background gradient.
+      // Check if there's a background-image using element behind current element.
+      if (!failureFound) {
+        var behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
+        if (behindBackgroundImage) {
+          img = new Image();
+          img.src = behindBackgroundImage;
+
+          // Get average color of the background image.
+          var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
+          if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColorBehindBackgroundImage)) ||
+              (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColorBehindBackgroundImage))) {
+            test.add(Case({
+              element: this,
+              expected: $this.closest('.quail-test').data('expected'),
+              status: 'failed'
+            }));
+            failureFound = true;
+          }
+        }
+      }
+
+      // Check if there's a background gradient using DOM.
       if (!failureFound) {
         var backgroundGradientColors = colors.getBackgroundGradient($this);
         if (backgroundGradientColors) {
           // Convert colors to hex notation.
-          for (var j = 0; j < backgroundGradientColors.length; j++) {
-            if (backgroundGradientColors[j].substr(0, 3) === 'rgb') {
-              backgroundGradientColors[j] = colors.colorToHex(backgroundGradientColors[j]);
+          for (i = 0; i < backgroundGradientColors.length; i++) {
+            if (backgroundGradientColors[i].substr(0, 3) === 'rgb') {
+              backgroundGradientColors[i] = colors.colorToHex(backgroundGradientColors[i]);
             }
           }
 
           // Create a rainbow.
           /* global Rainbow */
-          var rainbow = new Rainbow();
+          rainbow = new Rainbow();
           rainbow.setSpectrumByArray(backgroundGradientColors);
-          var numberOfSamples = backgroundGradientColors.length * 3;
+          numberOfSamples = backgroundGradientColors.length * 3;
 
           // Check each color.
-          for (var i = 0; !failureFound && i < numberOfSamples; i++) {
+          for (i = 0; !failureFound && i < numberOfSamples; i++) {
+            if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i))) ||
+                (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i)))) {
+              test.add(Case({
+                element: this,
+                expected: $this.closest('.quail-test').data('expected'),
+                status: 'failed'
+              }));
+              failureFound = true;
+            }
+          }
+        }
+      }
+
+      // Check if there's a background gradient using element behind current element.
+      if (!failureFound) {
+        var behindGradientColors = colors.getBehindElementBackgroundGradient($this);
+        if (behindGradientColors) {
+          // Convert colors to hex notation.
+          for (i = 0; i < behindGradientColors.length; i++) {
+            if (behindGradientColors[i].substr(0, 3) === 'rgb') {
+              behindGradientColors[i] = colors.colorToHex(behindGradientColors[i]);
+            }
+          }
+
+          // Create a rainbow.
+          /* global Rainbow */
+          rainbow = new Rainbow();
+          rainbow.setSpectrumByArray(behindGradientColors);
+          numberOfSamples = behindGradientColors.length * 3;
+
+          // Check each color.
+          for (i = 0; !failureFound && i < numberOfSamples; i++) {
             if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i))) ||
                 (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i)))) {
               test.add(Case({

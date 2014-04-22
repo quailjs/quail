@@ -111,6 +111,40 @@
       position: relative;
     }
 
+    #test-16 {
+      position: relative;
+      padding: 0;
+    }
+    #test-16 .bck {
+      background-image: linear-gradient(to right, red, #f06d06, rgb(255, 255, 0), green);
+      height: 50px;
+      width: 100%;
+      position: absolute;
+    }
+    #test-16 .txt {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    #test-18 {
+      position: relative;
+      padding: 0;
+    }
+    #test-18 .bck {
+      background-image: url('../assets/fish.gif');
+      height: 50px;
+      width: 100%;
+      position: absolute;
+    }
+    #test-18 .txt {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+      position: relative;
+    }
+
   </style>
 </head>
 <body>
@@ -167,6 +201,20 @@
   </div>
 
   <div class="quail-test" data-expected="fail" data-accessibility-test="cssTextHasContrast" id="test-14">
+    <div class="bck"></div>
+    <div class="txt">
+      <p>This test is not readable.</p>
+    </div>
+  </div>
+
+  <div class="quail-test" data-expected="fail" data-accessibility-test="cssTextHasContrast" id="test-16">
+    <div class="bck"></div>
+    <div class="txt">
+      <p>This test is not readable.</p>
+    </div>
+  </div>
+
+  <div class="quail-test" data-expected="fail" data-accessibility-test="cssTextHasContrast" id="test-18">
     <div class="bck"></div>
     <div class="txt">
       <p>This test is not readable.</p>
