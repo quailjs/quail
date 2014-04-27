@@ -322,7 +322,7 @@ quail.components.color = function(quail, test, Case, options) {
             break;
           case 'background-image':
             if (el.css('background-image') && el.css('background-image') !== 'none' && el.css('background-image').search(/^(.*?)url(.*?)$/i) !== -1) {
-              return el.css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
+              foundIt = el.css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
             }
             // Bail out if element has a background color;
             if (this.hasBackgroundColor(el)) {
@@ -369,95 +369,108 @@ quail.components.color = function(quail, test, Case, options) {
     }
   };
 
-  test.get('$scope').find(options.options.selector).filter(quail.textSelector).each(function() {
-    var $this = $(this);
+  var buildCase = function (element, status, id, message) {
+    test.add(Case({
+      element: element,
+      expected: (function (element, id) {
+        return quail.components.resolveExpectation(element, id);
+      }(element, id)),
+      message: message,
+      status: status
+    }));
+  };
 
-    // Bail out is text is not readable.
-    if (quail.isUnreadable($this.text())) {
-      test.add(Case({
-        element: this,
-        expected: $this.closest('.quail-test').data('expected'),
-        status: 'passed'
-      }));
-      return;
-    }
+  test.get('$scope').each(function () {
+    $(this).find(options.options.selector).filter(quail.textSelector).each(function() {
+      var element = this;
+      var $this = $(element);
+      var algorithm = options.options.algorithm;
+      var id, failureFound, failedWCAGColorTest, failedWAIColorTest, failedWCAGColorContrast, failedWAIColorContrast;
 
-    var failureFound = false;
-    var img, i, rainbow, numberOfSamples;
+      // Bail out is text is not readable.
+      if (quail.isUnreadable($this.text())) {
+        buildCase(element, 'cannotTell', 'The text cannot be processed');
+        return;
+      }
 
-    // Check text and background color using DOM.
-    if ((options.options.algorithm === 'wcag' && !colors.passesWCAG($this)) ||
-        (options.options.algorithm === 'wai' && !colors.passesWAI($this))) {
-      test.add(Case({
-        element: this,
-        expected: $this.closest('.quail-test').data('expected'),
-        status: 'failed'
-      }));
-      failureFound = true;
-    }
+      var img, i, rainbow, numberOfSamples;
 
-    // Check text and background using element behind current element.
-    if (!failureFound) {
+      // Check text and background color using DOM.
+      id = 'colorFontSizing';
+      failedWCAGColorContrast = !colors.passesWCAG($this);
+      failedWAIColorContrast = !colors.passesWAI($this);
+      // Build a case.
+      if ((algorithm === 'wcag' && failedWCAGColorContrast) || (algorithm === 'wai' && failedWAIColorContrast)) {
+        buildCase(element, 'failed', id, 'The font sizing of the text impairs readability');
+      }
+      else {
+        buildCase(element, 'passed', id, 'The font sizing of the text is sufficient for readability');
+      }
+
+      // Check text and background using element behind current element.
       var backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
       if (backgroundColorBehind) {
-        if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), backgroundColorBehind)) ||
-            (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), backgroundColorBehind))) {
-          test.add(Case({
-            element: this,
-            expected: $this.closest('.quail-test').data('expected'),
-            status: 'failed'
-          }));
-          failureFound = true;
+        id = 'colorElementBehindContrast';
+        failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), backgroundColorBehind);
+        failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), backgroundColorBehind);
+        // Build a case.
+        if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+          buildCase(element, 'failed', id, 'The element behind this element makes the text unreadable');
+        }
+        else {
+          buildCase(element, 'passed', id, 'The element behind this element does not affect readability');
         }
       }
-    }
 
-    // Check if there's a background-image using DOM.
-    if (!failureFound) {
+      // Check if there's a background-image using DOM.
       var backgroundImage = colors.getBackgroundImage($this);
       if (backgroundImage) {
         img = new Image();
+        // Get average color of the background image. The image must first load
+        // before information about it is available to the DOM.
+        img.onload = function () {
+          var id = 'colorBackgroundImageContrast';
+          var averageColorBackgroundImage = colors.getAverageRGB(img);
+          var failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColorBackgroundImage);
+          var failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColorBackgroundImage);
+          // Build a case.
+          if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+            buildCase(element, 'failed', id, 'The element\'s background image makes the text unreadable');
+          }
+          else {
+            buildCase(element, 'passed', id, 'The element\'s background image does not affect readability');
+          }
+        };
+        // Load the image.
         img.src = backgroundImage;
-
-        // Get average color of the background image.
-        var averageColorBackgroundImage = colors.getAverageRGB(img);
-        if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColorBackgroundImage)) ||
-            (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColorBackgroundImage))) {
-          test.add(Case({
-            element: this,
-            expected: $this.closest('.quail-test').data('expected'),
-            status: 'failed'
-          }));
-          failureFound = true;
-        }
       }
-    }
 
-    // Check if there's a background-image using element behind current element.
-    if (!failureFound) {
+      // Check if there's a background-image using element behind current element.
       var behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
       if (behindBackgroundImage) {
         img = new Image();
+        // The image must first load before information about it is available to
+        // the DOM.
+        img.onload = function () {
+          var id = 'colorElementBehindBackgroundImageContrast';
+          // Get average color of the background image.
+          var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
+          var failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColorBehindBackgroundImage);
+          var failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColorBehindBackgroundImage);
+          if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+            buildCase(element, 'failed', id, 'The background image of the element behind this element makes the text unreadable');
+          }
+          else {
+            buildCase(element, 'passed', id, 'The background image of the element behind this element does not affect readability');
+          }
+        };
         img.src = behindBackgroundImage;
-
-        // Get average color of the background image.
-        var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
-        if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColorBehindBackgroundImage)) ||
-            (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColorBehindBackgroundImage))) {
-          test.add(Case({
-            element: this,
-            expected: $this.closest('.quail-test').data('expected'),
-            status: 'failed'
-          }));
-          failureFound = true;
-        }
       }
-    }
 
-    // Check if there's a background gradient using DOM.
-    if (!failureFound) {
+      // Check if there's a background gradient using DOM.
       var backgroundGradientColors = colors.getBackgroundGradient($this);
       if (backgroundGradientColors) {
+        id = 'colorBackgroundGradientContrast';
         // Convert colors to hex notation.
         for (i = 0; i < backgroundGradientColors.length; i++) {
           if (backgroundGradientColors[i].substr(0, 3) === 'rgb') {
@@ -469,27 +482,30 @@ quail.components.color = function(quail, test, Case, options) {
         /* global Rainbow */
         rainbow = new Rainbow();
         rainbow.setSpectrumByArray(backgroundGradientColors);
+        // @todo, make the number of samples configurable.
         numberOfSamples = backgroundGradientColors.length * 3;
 
         // Check each color.
+        failureFound = false;
         for (i = 0; !failureFound && i < numberOfSamples; i++) {
-          if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i))) ||
-              (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i)))) {
-            test.add(Case({
-              element: this,
-              expected: $this.closest('.quail-test').data('expected'),
-              status: 'failed'
-            }));
+          failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
+          failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
+          if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+            buildCase(element, 'failed', id, 'The background gradient makes the text unreadable');
             failureFound = true;
           }
         }
-      }
-    }
 
-    // Check if there's a background gradient using element behind current element.
-    if (!failureFound) {
+        // If no failure was found, the element passes for this case type.
+        if (!failureFound) {
+          buildCase(element, 'passed', id, 'The background gradient does not affect readability');
+        }
+      }
+
+      // Check if there's a background gradient using element behind current element.
       var behindGradientColors = colors.getBehindElementBackgroundGradient($this);
       if (behindGradientColors) {
+        id = 'colorElementBehindBackgroundGradientContrast';
         // Convert colors to hex notation.
         for (i = 0; i < behindGradientColors.length; i++) {
           if (behindGradientColors[i].substr(0, 3) === 'rgb') {
@@ -504,26 +520,21 @@ quail.components.color = function(quail, test, Case, options) {
         numberOfSamples = behindGradientColors.length * 3;
 
         // Check each color.
+        failureFound = false;
         for (i = 0; !failureFound && i < numberOfSamples; i++) {
-          if ((options.options.algorithm === 'wcag' && !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i))) ||
-              (options.options.algorithm === 'wai' && !colors.passesWAIColor(colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i)))) {
-            test.add(Case({
-              element: this,
-              expected: $this.closest('.quail-test').data('expected'),
-              status: 'failed'
-            }));
+          failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
+          failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
+          if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+            buildCase(element, 'failed', id, 'The background gradient of the element behind this element makes the text unreadable');
             failureFound = true;
           }
         }
-      }
-    }
 
-    if (!failureFound) {
-      test.add(Case({
-        element: this,
-        expected: $this.closest('.quail-test').data('expected'),
-        status: 'passed'
-      }));
-    }
+        // If no failure was found, the element passes for this case type.
+        if (!failureFound) {
+          buildCase(element, 'passed', id, 'The background gradient of the element behind this element does not affect readability');
+        }
+      }
+    });
   });
 };

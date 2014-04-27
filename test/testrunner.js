@@ -134,7 +134,7 @@
           // Label the individual test case.
           $(_case.get('element')).addClass(label);
 
-          var message = 'Expected status: ' + expected;
+          var message = _case.get('message') || 'Expected status: ' + expected;
           // Process the results.
           switch (expected) {
           case 'pass':
