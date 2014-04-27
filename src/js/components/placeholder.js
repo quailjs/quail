@@ -12,28 +12,28 @@ quail.components.placeholder = function(quail, test, Case, options) {
     }));
   };
 
-  test.get('$scope').find(options.options.selector).each(function() {
+  test.get('$scope').find(options.selector).each(function() {
     var text = '';
-    if (typeof options.options.attribute !== 'undefined') {
-      if ((typeof $(this).attr(options.options.attribute) === 'undefined' ||
-            (options.options.attribute === 'tabindex' &&
-              $(this).attr(options.options.attribute) <= 0
+    if (typeof options.attribute !== 'undefined') {
+      if ((typeof $(this).attr(options.attribute) === 'undefined' ||
+            (options.attribute === 'tabindex' &&
+              $(this).attr(options.attribute) <= 0
             )
          ) &&
-         !options.options.content
+         !options.content
         ) {
         resolve(this, 'failed');
         return;
       }
       else {
-        if ($(this).attr(options.options.attribute) && $(this).attr(options.options.attribute) !== 'undefined') {
-          text += $(this).attr(options.options.attribute);
+        if ($(this).attr(options.attribute) && $(this).attr(options.attribute) !== 'undefined') {
+          text += $(this).attr(options.attribute);
         }
       }
     }
-    if (typeof options.options.attribute === 'undefined' ||
-      !options.options.attribute ||
-      options.options.content) {
+    if (typeof options.attribute === 'undefined' ||
+      !options.attribute ||
+      options.content) {
       text += $(this).text();
       $(this).find('img[alt]').each(function() {
         text += $(this).attr('alt');
@@ -46,7 +46,7 @@ quail.components.placeholder = function(quail, test, Case, options) {
       if (regexResults && regexResults[0].length) {
         resolve(this, 'failed');
       }
-      else if (options.options.empty && quail.isUnreadable(text)) {
+      else if (options.empty && quail.isUnreadable(text)) {
         resolve(this, 'failed');
       }
       else if (quail.strings.placeholders.indexOf(text) > -1 ) {
@@ -58,7 +58,7 @@ quail.components.placeholder = function(quail, test, Case, options) {
       }
     }
     else {
-      if (options.options.empty && typeof text !== 'number') {
+      if (options.empty && typeof text !== 'number') {
         resolve(this, 'failed');
       }
     }

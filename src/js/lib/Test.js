@@ -75,52 +75,23 @@ quail.lib.Test = (function () {
       var options = this.get('options') || {};
       var callback = this.get('callback');
       var test = this;
-      var _case;
 
-      switch(type) {
-      case 'selector':
-        this.get('$scope').each(function() {
-          var $scope = $(this);
-          var candidates = $(this).find(options.selector);
-          // Passes.
-          if (!candidates.length) {
-            // Passes.
-            _case = quail.lib.Case({
-              element: undefined,
-              expected: $scope.data('expected') || $scope.find('[data-expected]').data('expected')
-            });
-            test.add(_case);
-            _case.set({status: 'passed'});
-          }
-          else {
-            // Fails.
-            candidates.each(function () {
-              // Get the data-expected attribute.
-              _case = quail.lib.Case({
-                element: this,
-                expected: $(this).closest('.quail-test').data('expected')
-              });
-              test.add(_case);
-              _case.set({status: 'failed'});
-            });
-          }
-        });
-        break;
-      case 'custom':
-        if (typeof callback === 'object' || typeof callback === 'function') {
-          callback(quail, test, quail.lib.Case);
+      if (type === 'custom') {
+        if (typeof callback === 'function') {
+          callback.call(this, quail, test, quail.lib.Case, options);
+        }
+        else if (type === 'custom' && typeof quail[callback] === 'function') {
+          quail[callback].call(this, quail, test, quail.lib.Case, options);
         }
         else {
-          if (typeof quail[callback] !== 'undefined') {
-            quail[callback](quail, test, quail.lib.Case);
-          }
+          throw new Error('The callback ' + callback + ' cannot be invoked.');
         }
-        break;
-      default:
-        if (typeof quail.components[type] !== 'undefined') {
-          quail.components[type](quail, test, quail.lib.Case, this.attributes);
-        }
-        break;
+      }
+      else if (typeof quail.components[type] === 'function') {
+        quail.components[type].call(this, quail, test, quail.lib.Case, options);
+      }
+      else {
+        throw new Error('The component type ' + type + ' is not defined.');
       }
 
       return this;

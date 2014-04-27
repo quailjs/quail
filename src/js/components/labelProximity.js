@@ -3,7 +3,7 @@
  */
 quail.components.labelProximity = function(quail, test, Case, options) {
   var $scope = test.get('$scope');
-  $scope.find(options.options.selector).each(function() {
+  $scope.find(options.selector).each(function() {
     var $label = $scope.find('label[for=' + $(this).attr('id') + ']').first();
     if (!$label.length) {
       test.add(Case({
