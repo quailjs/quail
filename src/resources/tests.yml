@@ -762,6 +762,7 @@ cssTextHasContrast:
   options:
     algorithm: "wcag"
     selector: "*"
+    gradientSampleMultiplier: 3
 definitionListsAreUsed:
   type: "custom"
   testability: 0.5

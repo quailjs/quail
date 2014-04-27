@@ -503,7 +503,7 @@ quail.components.color = function(quail, test, Case, options) {
         rainbow = new Rainbow();
         rainbow.setSpectrumByArray(backgroundGradientColors);
         // @todo, make the number of samples configurable.
-        numberOfSamples = backgroundGradientColors.length * 3;
+        numberOfSamples = backgroundGradientColors.length * options.gradientSampleMultiplier;
 
         // Check each color.
         failureFound = false;
@@ -537,7 +537,7 @@ quail.components.color = function(quail, test, Case, options) {
         /* global Rainbow */
         rainbow = new Rainbow();
         rainbow.setSpectrumByArray(behindGradientColors);
-        numberOfSamples = behindGradientColors.length * 3;
+        numberOfSamples = behindGradientColors.length * options.gradientSampleMultiplier;
 
         // Check each color.
         failureFound = false;
