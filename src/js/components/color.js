@@ -381,10 +381,10 @@ quail.components.color = function(quail, test, Case, options) {
   };
 
   test.get('$scope').each(function () {
-    $(this).find(options.options.selector).filter(quail.textSelector).each(function() {
+    $(this).find(options.selector).filter(quail.textSelector).each(function() {
       var element = this;
       var $this = $(element);
-      var algorithm = options.options.algorithm;
+      var algorithm = options.algorithm;
       var id, failureFound, failedWCAGColorTest, failedWAIColorTest, failedWCAGColorContrast, failedWAIColorContrast;
 
       // Bail out is the text is not readable.

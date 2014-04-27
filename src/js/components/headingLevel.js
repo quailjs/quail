@@ -3,7 +3,7 @@ quail.components.headingLevel = function(quail, test, Case, options) {
   test.get('$scope').find(':header').each(function() {
     var level = parseInt($(this).get(0).tagName.substr(-1, 1), 10);
     var element = this;
-    if (priorLevel === options.options.headingLevel && level > priorLevel + 1) {
+    if (priorLevel === options.headingLevel && level > priorLevel + 1) {
       test.add(Case({
         element: element,
         // @todo, make the expected property retrievable through a callback so

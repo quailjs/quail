@@ -3,8 +3,6 @@
  *  (like a mouse event has a keyboard event as well).
  */
 quail.components.event = function(quail, test, Case, options) {
-  // Ugly.
-  options = options && options.options || {};
   var $scope = test.get('$scope');
   var $items = options.selector && $scope.find(options.selector) || $scope.find('*');
   var searchEvent = options.searchEvent || '';
