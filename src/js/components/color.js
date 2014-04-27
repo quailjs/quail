@@ -189,7 +189,7 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns background image of an element or its parents.
      */
     getBackgroundGradient: function(element) {
-      var notempty = function(s) {
+      var notEmpty = function(s) {
         return $.trim(s) !== '';
       };
       while (element.length > 0) {
@@ -201,7 +201,7 @@ quail.components.color = function(quail, test, Case, options) {
           var gradient = element.css('background-image').match(/gradient(\(.*\))/g);
           if (gradient.length > 0) {
             gradient = gradient[0].replace(/(linear|radial|from|\bto\b|gradient|top|left|bottom|right|\d*%)/g, '');
-            return $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notempty);
+            return $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notEmpty);
           }
         }
         element = element.parent();
