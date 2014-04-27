@@ -315,7 +315,7 @@ quail.components.color = function(quail, test, Case, options) {
                 foundIt = $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notempty);
               }
             }
-            // Bail out if element has a background color;
+            // Bail out if the element has a background color.
             if (this.hasBackgroundColor(el)) {
               foundIt = false;
             }
@@ -324,7 +324,7 @@ quail.components.color = function(quail, test, Case, options) {
             if (el.css('background-image') && el.css('background-image') !== 'none' && el.css('background-image').search(/^(.*?)url(.*?)$/i) !== -1) {
               foundIt = el.css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
             }
-            // Bail out if element has a background color;
+            // Bail out if the element has a background color.
             if (this.hasBackgroundColor(el)) {
               foundIt = false;
             }
@@ -387,7 +387,7 @@ quail.components.color = function(quail, test, Case, options) {
       var algorithm = options.options.algorithm;
       var id, failureFound, failedWCAGColorTest, failedWAIColorTest, failedWCAGColorContrast, failedWAIColorContrast;
 
-      // Bail out is text is not readable.
+      // Bail out is the text is not readable.
       if (quail.isUnreadable($this.text())) {
         buildCase(element, 'cannotTell', 'The text cannot be processed');
         return;
