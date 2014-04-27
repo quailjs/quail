@@ -517,26 +517,6 @@ var quail = {
   }
 };
 
-$.getJSON('/dist/tests.json', {}, function (result) {
-  var tests;
-  quail.tests = new quail.lib.TestCollection(result);
-  // Register event listeners to the guideline Techniques.
-  $.getJSON('/dist/guidelines/wcag.json', {}, function (result) {
-    var guideline = new quail.lib.WCAGGuideline(result);
-    // Round up the tests for each section in the guideline.
-    guideline.each(function (index, section) {
-      section.each(function (index, technique) {
-        // returns a TestCollection.
-        tests = quail.tests.findByGuideline('wcag', section, technique);
-        if (tests.length) {
-          // tests.listenTo(technique, 'invoke', tests.run);
-          technique.listenTo(tests, 'results', technique.report);
-        }
-      });
-    });
-  });
-});
-
 // Provide a global to access quail.
 if (window) {
   window.quail = quail;
