@@ -145,6 +145,26 @@
       position: relative;
     }
 
+    #test-19 {
+      background-image: url('../assets/doesnotexist.jpg');
+    }
+    #test-19 p {
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    #test-20 {
+      background-image: url('http://quailjs.org/img/quail.png');
+    }
+    #test-20 p {
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
   </style>
 </head>
 <body>
@@ -213,6 +233,14 @@
   <div class="quail-test" data-expected="colorFontSizing:pass|colorElementBehindBackgroundImageContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-18">
     <div class="bck"></div>
     <p class="txt">This test is not readable.</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorBackgroundImageContrast:fail|colorElementBehindBackgroundImageContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-19">
+    <p>This test is readable, non existing background</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorBackgroundImageContrast:pass|colorElementBehindBackgroundImageContrast:pass" data-accessibility-test="cssTextHasContrast" id="test-20">
+    <p>This test is readable, external image</p>
   </div>
 
   <script src="../quail-testrunner.js"></script>
