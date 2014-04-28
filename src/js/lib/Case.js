@@ -56,9 +56,6 @@ quail.lib.Case = (function () {
       }
       return this;
     },
-    evaluate: function () {
-
-    },
     // @todo, make this a set of methods that all classes extend.
     listenTo: function (dispatcher, eventName, handler) {
       // @todo polyfill Function.prototype.bind.
