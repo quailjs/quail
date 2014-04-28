@@ -2,13 +2,16 @@ quail.aLinksNotSeparatedBySymbols = function(quail, test, Case) {
   test.get('$scope').find('a').each(function() {
     var $link = $(this);
     if ($link.next('a').length) {
-      // The string between the links is composed of symbols.
-      if (quail.strings.symbols.indexOf($link.get(0).nextSibling.wholeText.toLowerCase().trim()) !== -1 ) {
-        test.add(Case({
-          element: this,
-          'expected': $link.closest('.quail-test').data('expected'),
-          'status': 'failed'
-        }));
+      var text = $link.get(0).nextSibling.wholeText;
+      if (typeof text === 'string') {
+        // The string between the links is composed of symbols.
+        if (quail.strings.symbols.indexOf(text.toLowerCase().trim()) !== -1 ) {
+          test.add(Case({
+            element: this,
+            'expected': $link.closest('.quail-test').data('expected'),
+            'status': 'failed'
+          }));
+        }
       }
       // The string between the links is composed of words.
       else {
