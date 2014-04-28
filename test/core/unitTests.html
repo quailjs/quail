@@ -172,12 +172,6 @@
         ok(!quail.containsReadableText($('#containsReadableText-5'), true), 'Nested elements with no text is not readable');
         ok(!quail.containsReadableText($('#containsReadableText-6'), true), 'Nested elements with no text is not readable');
       });
-
-      test('quail.defineUniqueSelector', function() {
-        equal(quail.defineUniqueSelector($('#defineUniqueSelector-1').get(0)), '#defineUniqueSelector-1', 'ID-based selector was found');
-        equal(quail.defineUniqueSelector($('#defineUniqueSelector-1 p').get(0)), '#defineUniqueSelector-1 p', 'Descendent selector was found');
-        equal(quail.defineUniqueSelector($('a img').get(0)), '#containsReadableText-2 img', 'Descendent selector was found');
-      });
     })(this);
   </script>
 </body>

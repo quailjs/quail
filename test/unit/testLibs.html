@@ -14,6 +14,10 @@
   <div role="status" id="qunit"></div>
   <div role="status" id="qunit-fixture"></div>
 
+  <div id="defineUniqueSelector-1">
+    <p>First paragraph</p>
+  </div>
+
   <a href="#" class="fail unittest">fake link</a>
   <a href="#" class="pass unittest">fake link</a>
 
@@ -34,6 +38,12 @@
       equal(_case.get('mammal'), 'bear', 'Case.fn.get sets with a key/value argument pair');
       _case.set({'reptile': 'iguana'});
       equal(_case.get('reptile'), 'iguana', 'Case.fn.get sets with an object argument');
+    });
+    test('defineUniqueSelector', function() {
+      _case = new libs.Case({element: $('#defineUniqueSelector-1').get(0)});
+      equal(_case.get('selector'), '#defineUniqueSelector-1', 'ID-based selector was found');
+      _case.set({element: $('#defineUniqueSelector-1 p').get(0)});
+      equal(_case.get('selector'), '#defineUniqueSelector-1 p', 'Descendent selector was found');
     });
 
     module('Test');
