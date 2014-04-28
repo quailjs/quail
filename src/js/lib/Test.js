@@ -78,17 +78,32 @@ quail.lib.Test = (function () {
 
       if (type === 'custom') {
         if (typeof callback === 'function') {
-          callback.call(this, quail, test, quail.lib.Case, options);
+          try {
+            callback.call(this, quail, test, quail.lib.Case, options);
+          }
+          catch (e) {
+            // @todo, trigger an event for when the test fails outright.
+          }
         }
         else if (type === 'custom' && typeof quail[callback] === 'function') {
-          quail[callback].call(this, quail, test, quail.lib.Case, options);
+          try {
+            quail[callback].call(this, quail, test, quail.lib.Case, options);
+          }
+          catch (e) {
+            // @todo, trigger an event for when the test fails outright.
+          }
         }
         else {
           throw new Error('The callback ' + callback + ' cannot be invoked.');
         }
       }
       else if (typeof quail.components[type] === 'function') {
-        quail.components[type].call(this, quail, test, quail.lib.Case, options);
+        try {
+          quail.components[type].call(this, quail, test, quail.lib.Case, options);
+        }
+        catch (e) {
+          // @todo, trigger an event for when the test fails outright.
+        }
       }
       else {
         throw new Error('The component type ' + type + ' is not defined.');

@@ -66,7 +66,7 @@ var quail = {
 
   accessibilityResults : { },
 
-  //accessibilityTests : { },
+  accessibilityTests : null,
 
   // @var TestCollection
   tests : { },
@@ -110,6 +110,26 @@ var quail = {
     if (options.reset) {
       quail.accessibilityResults = { };
     }
+
+    function buildTests (quail, data, options) {
+      // Filter for specific tests.
+      if (options.guideline && options.guideline.length) {
+        for (var i = 0, il = options.guideline.length; i < il; ++i) {
+          var t = options.guideline[i];
+          if (data[t]) {
+            data[t].scope = quail.html || null;
+            quail.tests.set(t, data[t]);
+          }
+        }
+      }
+      // Or use all of the tests.
+      else {
+        quail.tests = quail.lib.TestCollection(data, {
+          scope: quail.html || null
+        });
+      }
+    }
+
     // Create an empty TestCollection.
     quail.tests = quail.lib.TestCollection();
     // The quail builder at quailjs.org/build provides an in-scope test object.
@@ -117,6 +137,10 @@ var quail = {
       quail.tests = quail.lib.TestCollection(quailBuilderTests, {
         scope: quail.html || null
       });
+    }
+    // If a list of specific tests is provided, use them.
+    else if (options.accessibilityTests) {
+      buildTests(quail, options.accessibilityTests, options);
     }
     // Otherwise get the tests from the json data list.
     else {
@@ -132,22 +156,7 @@ var quail = {
         dataType : 'json',
         success : function (data) {
           if (typeof data === 'object') {
-            // Filter for specific tests.
-            if (options.guideline && options.guideline.length) {
-              for (var i = 0, il = options.guideline.length; i < il; ++i) {
-                var t = options.guideline[i];
-                if (data[t]) {
-                  data[t].scope = quail.html || null;
-                  quail.tests.set(t, data[t]);
-                }
-              }
-            }
-            // Or use all of the tests.
-            else {
-              quail.tests = quail.lib.TestCollection(data, {
-                scope: quail.html || null
-              });
-            }
+            buildTests(quail, data, options);
           }
         }
       });
