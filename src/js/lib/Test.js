@@ -27,7 +27,7 @@ quail.lib.Test = (function () {
     attributes: {},
     // Execute a callback for every element in the matched set.
     each: function (iterator) {
-      var args = [].slice(arguments, 1);
+      var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
         args.unshift(i);
