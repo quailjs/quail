@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>listOfLinksUseList</title>
+  </head>
+  <body>
+    <div class="quail-test" data-expected="fail" data-accessibility-test="listOfLinksUseList">
+      <a href="#1">One</a> | <a href="#2">Two</a> | <a href="#3">Three</a>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="listOfLinksUseList">
+      <a href="#1">One</a> <a href="#2">Two</a> <a href="#3">Three</a>
+    </div>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="listOfLinksUseList">
+      <ul>
+        <li><a href="#1">One</a></li>
+        <li><a href="#2">Two</a></li>
+        <li><a href="#3">Three</a></li>
+        <li><a href="#4">Four</a></li>
+      </ul>
+    </div>
+
+
+    <script src="../quail-testrunner.js"></script>
+  </body>
+</html>

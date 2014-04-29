@@ -14,3 +14,5 @@ lib/*
 test/quail-testing.jquery.js
 test/accessibility-tests/_tests.json
 test/quail-testrunner.js
+
+test/accessibility-tests/_tests.json
