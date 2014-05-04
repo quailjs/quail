@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Guideline filtering</title>
+</head>
+
+<body>
+  <h1>Heading!</h1>
+  <script src="../quail-testrunner.js"></script>
+  <script>
+    (function(global) {
+      var found = false;
+      asyncTest('guidelineFiltering', function() {
+        expect(2);
+        $('body').quail({
+          jsonPath : '../../dist',
+          guideline: ['cssTextHasContrast'],
+          complete : function(eventName, testCollection) {
+            equal(testCollection.length, 1, 'One test was run.');
+            ok(testCollection.find('cssTextHasContrast'), 'The cssTextHasContrast exists in the TestCollection.');
+            start();
+          }
+        });
+      });
+    }(this));
+  </script>
+</body>
+</html>

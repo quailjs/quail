@@ -114,6 +114,9 @@ var quail = {
     function buildTests (quail, data, options) {
       // Filter for specific tests.
       if (options.guideline && options.guideline.length) {
+        quail.tests = quail.lib.TestCollection([], {
+          scope: quail.html || null
+        });
         for (var i = 0, il = options.guideline.length; i < il; ++i) {
           var t = options.guideline[i];
           if (data[t]) {
@@ -131,7 +134,9 @@ var quail = {
     }
 
     // Create an empty TestCollection.
-    quail.tests = quail.lib.TestCollection();
+    quail.tests = quail.lib.TestCollection([], {
+      scope: quail.html || null
+    });
     // The quail builder at quailjs.org/build provides an in-scope test object.
     if (typeof quailBuilderTests !== 'undefined') {
       quail.tests = quail.lib.TestCollection(quailBuilderTests, {
