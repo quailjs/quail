@@ -20,6 +20,17 @@
 
   <a href="#" class="fail unittest">fake link</a>
   <a href="#" class="pass unittest">fake link</a>
+  <b class="unittest">fake bold tag</b>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
 
   <script>
     var libs = __testQuail.lib;
@@ -46,6 +57,9 @@
       equal(_case.get('selector'), '#defineUniqueSelector-1 p', 'Descendent selector was found');
     });
 
+    /**
+     * Test Class.
+     */
     module('Test');
     test('Instantiation', function () {
       _test = new libs.Test('peregrine', {'bird': 'falcon'});
@@ -127,6 +141,37 @@
         ok(_case instanceof libs.Case, 'Case is the constructor of _case');
       });
       equal(i, 1, 'Test.fn.each looped 2 times');
+    });
+    asyncTest('Event dispatching: resolved', function () {
+      expect(1);
+      _testCollection = new libs.TestCollection();
+      _test = new libs.Test('testCompleteTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'b.unittest'
+        }
+      });
+      _testCollection.listenTo(_test, 'resolved', function (eventName, thisTest, _case) {
+        ok(eventName === 'resolved', 'Test bubbles up Case resolved events');
+        start();
+      });
+      _test.invoke();
+    });
+    asyncTest('Event dispatching: complete', function () {
+      expect(1);
+      var count = 0;
+      _testCollection = new libs.TestCollection();
+      _test = new libs.Test('testCompleteTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'i.unittest'
+        }
+      });
+      _testCollection.listenTo(_test, 'complete', function (eventName, thisTest) {
+        ok(eventName === 'complete', 'Test dispatches a complete event when all Cases have resolved.');
+        start();
+      });
+      _test.invoke();
     });
 
     module('TestCollection');

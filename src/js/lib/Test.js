@@ -71,10 +71,20 @@ quail.lib.Test = (function () {
       return _case;
     },
     invoke: function () {
+      // This test is already running.
+      if (this.testComplete) {
+        throw new Error('The test ' + this.get('name') + ' is already running.');
+      }
       var type = this.get('type');
       var options = this.get('options') || {};
       var callback = this.get('callback');
       var test = this;
+
+      // Set the test complete method to closure function that dispatches the
+      // complete event. This method needs to be debounced so it's only called
+      // after a pause of invocations.
+      this.testComplete = debounce(testComplete.bind(this), 250);
+
 
       if (type === 'custom') {
         if (typeof callback === 'function') {
@@ -109,6 +119,10 @@ quail.lib.Test = (function () {
         throw new Error('The component type ' + type + ' is not defined.');
       }
 
+      // Invoke the complete dispatcher to prevent the test from never
+      // completing in the off chance that no Cases are created.
+      this.testComplete();
+
       return this;
     },
     /**
@@ -117,7 +131,13 @@ quail.lib.Test = (function () {
      */
     caseResolved: function (eventName, _case) {
       this.dispatch(eventName, this, _case);
+      // Attempt to declare the Test complete.
+      this.testComplete();
     },
+    /**
+     * @needsdoc
+     */
+    testComplete: null,
     // @todo, make this a set of methods that all classes extend.
     listenTo: function (dispatcher, eventName, handler) {
       // @todo polyfill Function.prototype.bind.
@@ -146,6 +166,69 @@ quail.lib.Test = (function () {
     sort: [].sort,
     splice: [].splice
   };
+
+  /**
+   * @needsdoc
+   */
+  function testComplete () {
+    var complete = true;
+    // @todo, this iteration would be faster with _.findWhere, that breaks on
+    // the first match.
+    this.each(function (index, _case) {
+      if (!_case.get('status')) {
+        complete = false;
+      }
+    });
+    // If all the Cases have been evaluated, dispatch the event.
+    if (complete) {
+      this.testComplete = null;
+      this.dispatch('complete', this);
+    }
+    // Otherwise attempt to the complete the Test again after the debounce
+    // period has expired.
+    else {
+      this.testComplete();
+    }
+
+  }
+
+  /**
+   * Limits the invocations of a function in a given time frame.
+   *
+   * Adapted from underscore.js. Replace with debounce from underscore once class
+   * loading with modules is in place.
+   *
+   * @param {Function} callback
+   *   The function to be invoked.
+   *
+   * @param {Number} wait
+   *   The time period within which the callback function should only be
+   *   invoked once. For example if the wait period is 250ms, then the callback
+   *   will only be called at most 4 times per second.
+   */
+  function debounce (func, wait, immediate) {
+
+    "use strict";
+
+    var timeout, result;
+    return function () {
+      var context = this;
+      var args = arguments;
+      var later = function () {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+        }
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) {
+        result = func.apply(context, args);
+      }
+      return result;
+    };
+  }
 
   // Give the init function the Test prototype.
   Test.fn.init.prototype = Test.fn;
