@@ -20,8 +20,6 @@
     (function(global) {
       var found = false;
       asyncTest('guidelineFallback', function() {
-        // @todo, figure out why this is expect(2). Somewhere, there's another
-        // assertion being made. It should only be expect(1);
         expect(1);
         $('.test-area').quail({
           jsonPath : '../../dist',
