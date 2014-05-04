@@ -83,7 +83,7 @@ quail.lib.Test = (function () {
       // Set the test complete method to closure function that dispatches the
       // complete event. This method needs to be debounced so it's only called
       // after a pause of invocations.
-      this.testComplete = debounce(testComplete.bind(this), 250);
+      this.testComplete = debounce(testComplete.bind(this), 400);
 
 
       if (type === 'custom') {
@@ -135,7 +135,10 @@ quail.lib.Test = (function () {
       this.testComplete();
     },
     /**
-     * @needsdoc
+     * A stub method implementation.
+     *
+     * It is assigned a function value when the Test is invoked. See the
+     * testComplete function in outer scope.
      */
     testComplete: null,
     // @todo, make this a set of methods that all classes extend.
@@ -168,7 +171,10 @@ quail.lib.Test = (function () {
   };
 
   /**
-   * @needsdoc
+   * Dispatches the complete event.
+   *
+   * This function is meant to be bound to a Test as a method through
+   * a debounced proxy function.
    */
   function testComplete () {
     var complete = true;

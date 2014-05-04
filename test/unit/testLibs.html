@@ -37,6 +37,9 @@
     var _case, _test, _testCollection;
     __testQuail.html = $('body');
 
+    /**
+     * Case Class.
+     */
     module('Case');
     test('Instantiation', function () {
       _case = new libs.Case({bird: 'sandpiper'});
@@ -55,6 +58,15 @@
       equal(_case.get('selector'), '#defineUniqueSelector-1', 'ID-based selector was found');
       _case.set({element: $('#defineUniqueSelector-1 p').get(0)});
       equal(_case.get('selector'), '#defineUniqueSelector-1 p', 'Descendent selector was found');
+    });
+    asyncTest('Event dispatching: timeout', function () {
+      expect(1);
+      _test = new libs.Test('fakeTest');
+      _case = new libs.Case();
+      _test.listenTo(_case, 'timeout', function (eventName, _case) {
+        ok(eventName === 'timeout', 'The Case timed out.');
+        start();
+      });
     });
 
     /**
@@ -161,18 +173,36 @@
       expect(1);
       var count = 0;
       _testCollection = new libs.TestCollection();
+      // This selects 10 instances of this element.
       _test = new libs.Test('testCompleteTest', {
         'type': 'selector',
         'options': {
           'selector': 'i.unittest'
         }
       });
+      // The complete event should only be invoked once.
       _testCollection.listenTo(_test, 'complete', function (eventName, thisTest) {
         ok(eventName === 'complete', 'Test dispatches a complete event when all Cases have resolved.');
         start();
       });
       _test.invoke();
     });
+    // asyncTest('Event dispatching: fail', function () {
+    //   expect(1);
+    //   var count = 0;
+    //   _testCollection = new libs.TestCollection();
+    //   _test = new libs.Test('testCompleteTest', {
+    //     'type': 'selector',
+    //     'options': {
+    //       'selector': 'b.unittest'
+    //     }
+    //   });
+    //   _testCollection.listenTo(_test, 'fail', function (eventName, thisTest, _case) {
+    //     ok(eventName === 'fail', 'Test dispatches a fail event when the test does not run.');
+    //     start();
+    //   });
+    //   _test.invoke();
+    // });
 
     module('TestCollection');
     test('Instantiation', function () {

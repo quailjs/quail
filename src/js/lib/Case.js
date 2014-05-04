@@ -12,21 +12,28 @@ quail.lib.Case = (function () {
     constructor: Case,
     init: function (attributes) {
       this.listeners = {};
-      this.attributes = attributes;
+      this.timeout = null;
+      this.attributes = attributes || {};
 
       // Get a selector if an element is provided.
-      if (attributes.element && attributes.element.nodeType && attributes.element.nodeType === 1) {
-        this.attributes.selector = this.defineUniqueSelector(attributes.element);
+      if (this.attributes.element && this.attributes.element.nodeType && this.attributes.element.nodeType === 1) {
+        this.attributes.selector = this.defineUniqueSelector(this.attributes.element);
       }
 
+      var that = this;
       // Dispatch a resolved event if the case is initiated with a status.
-      if (attributes.status) {
-        var that = this;
+      if (this.attributes.status) {
         // Delay the status dispatch to the next execution cycle so that the
         // Case will register listeners in this execution cycle first.
-        window.setTimeout(function() {
-          that.dispatch('resolved', that);
+        setTimeout(function() {
+          that.resolve();
         }, 0);
+      }
+      // Set up a time out for this case to resolve within.
+      else {
+        this.timeout = setTimeout(function () {
+          that.dispatch('timeout', that);
+        }, 350);
       }
 
       return this;
@@ -63,9 +70,16 @@ quail.lib.Case = (function () {
       }
 
       if (isStatusChanged) {
-        this.dispatch('resolved', this);
+        this.resolve();
       }
       return this;
+    },
+    /**
+     * Dispatches the resolved event; clears the timeout fallback event.
+     */
+    resolve: function () {
+      clearTimeout(this.timeout);
+      this.dispatch('resolved', this);
     },
     // @todo, make this a set of methods that all classes extend.
     listenTo: function (dispatcher, eventName, handler) {
