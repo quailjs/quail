@@ -180,6 +180,8 @@
           'selector': 'i.unittest'
         }
       });
+      // Add a Case that will time out.
+      _test.add(new libs.Case());
       // The complete event should only be invoked once.
       _testCollection.listenTo(_test, 'complete', function (eventName, thisTest) {
         ok(eventName === 'complete', 'Test dispatches a complete event when all Cases have resolved.');
