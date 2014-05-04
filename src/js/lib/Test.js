@@ -18,6 +18,7 @@ quail.lib.Test = (function () {
       }
       this.attributes = attributes || {};
       this.attributes.name = name;
+      this.attributes.complete = false;
 
       return this;
     },
@@ -76,14 +77,18 @@ quail.lib.Test = (function () {
       if (this.testComplete) {
         throw new Error('The test ' + this.get('name') + ' is already running.');
       }
+      // This test has already been run.
+      if (this.attributes.complete) {
+        throw new Error('The test ' + this.get('name') + ' has already been run.');
+      }
       var type = this.get('type');
       var options = this.get('options') || {};
       var callback = this.get('callback');
       var test = this;
 
-      // Set the test complete method to closure function that dispatches the
-      // complete event. This method needs to be debounced so it's only called
-      // after a pause of invocations.
+      // Set the test complete method to the closure function that dispatches
+      // the complete event. This method needs to be debounced so it is only
+      // called after a pause of invocations.
       this.testComplete = debounce(testComplete.bind(this), 400);
 
 
@@ -189,6 +194,8 @@ quail.lib.Test = (function () {
     // If all the Cases have been evaluated, dispatch the event.
     if (complete) {
       this.testComplete = null;
+      // @todo, this should be set with the set method and a silent flag.
+      this.attributes.complete = true;
       this.dispatch('complete', this);
     }
     // Otherwise attempt to the complete the Test again after the debounce
@@ -196,7 +203,6 @@ quail.lib.Test = (function () {
     else {
       this.testComplete();
     }
-
   }
 
   /**
