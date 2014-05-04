@@ -163,8 +163,8 @@
           'selector': 'b.unittest'
         }
       });
-      _testCollection.listenTo(_test, 'resolved', function (eventName, thisTest, _case) {
-        ok(eventName === 'resolved', 'Test bubbles up Case resolved events');
+      _testCollection.listenTo(_test, 'resolve', function (eventName, thisTest, _case) {
+        ok(eventName === 'resolve', 'Test bubbles up Case resolve events');
         start();
       });
       _test.invoke();

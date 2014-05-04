@@ -39,7 +39,7 @@ quail.lib.TestCollection = (function () {
       this.each(function (index, test) {
         // Allow a prefilter to remove a case.
         if (callbacks.preFilter) {
-          tc.listenTo(test, 'resolved', function (eventName, test, _case) {
+          tc.listenTo(test, 'resolve', function (eventName, test, _case) {
             var result = callbacks.preFilter(eventName, test, _case);
             if (result === false) {
               // Manipulate the attributes directly so that change events
@@ -50,7 +50,7 @@ quail.lib.TestCollection = (function () {
           });
         }
         if (callbacks.complete) {
-          tc.listenTo(test, 'resolved', callbacks.complete);
+          tc.listenTo(test, 'resolve', callbacks.complete);
         }
       });
       // Invoke each test.

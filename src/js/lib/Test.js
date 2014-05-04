@@ -61,12 +61,12 @@ quail.lib.Test = (function () {
       return this;
     },
     add: function (_case) {
-      this.listenTo(_case, 'resolved', this.caseResponded);
+      this.listenTo(_case, 'resolve', this.caseResponded);
       this.listenTo(_case, 'timeout', this.caseResponded);
       // If the case is already resolved because it has a status, then trigger
-      // its resolved event.
+      // its resolve event.
       if (_case.status) {
-        _case.dispatch('resolved', _case);
+        _case.dispatch('resolve', _case);
       }
       this.push(_case);
       return _case;

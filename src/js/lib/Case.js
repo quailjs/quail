@@ -21,7 +21,7 @@ quail.lib.Case = (function () {
       }
 
       var that = this;
-      // Dispatch a resolved event if the case is initiated with a status.
+      // Dispatch a resolve event if the case is initiated with a status.
       if (this.attributes.status) {
         // Delay the status dispatch to the next execution cycle so that the
         // Case will register listeners in this execution cycle first.
@@ -75,11 +75,11 @@ quail.lib.Case = (function () {
       return this;
     },
     /**
-     * Dispatches the resolved event; clears the timeout fallback event.
+     * Dispatches the resolve event; clears the timeout fallback event.
      */
     resolve: function () {
       clearTimeout(this.timeout);
-      this.dispatch('resolved', this);
+      this.dispatch('resolve', this);
     },
     /**
      * Abandons the Case if it not resolved within the timeout period.
