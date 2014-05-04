@@ -44,7 +44,7 @@
           guideline : [ 'customTestSelector', 'customTestCallback' ],
           reset : true,
           customTests : custom,
-          complete : function(eventName, test, _case) {
+          caseResolve : function(eventName, test, _case) {
             if (test.get('name') === 'customTestSelector') {
               ok($(_case.get('element')).is('p'), 'Found paragraph with selector');
               ++called;

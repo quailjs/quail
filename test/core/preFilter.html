@@ -21,7 +21,7 @@
           guideline : [ 'imgHasAlt' ],
           reset : true,
           preFilter : function(eventName, thisTest, _case) {},
-          complete : function(eventName, thisTest, _case) {
+          caseResolve : function(eventName, thisTest, _case) {
             ok(_case.get('element'), 'Image was found.');
             start();
           }
@@ -39,7 +39,7 @@
               return false;
             }
           },
-          complete : function(eventName, thisTest, _case) {
+          caseResolve : function(eventName, thisTest, _case) {
             equal('notTested', _case.get('status'), 'Image was filtered out.');
             start();
           }

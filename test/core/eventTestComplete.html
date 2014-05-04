@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Test that QUAIL calls the caseResolve event correctly</title>
+  <title>Test that QUAIL calls the testComplete event correctly</title>
 </head>
 
 <body>
@@ -13,16 +13,15 @@
   <script>
     (function(global) {
       asyncTest('quailEventComplete', function () {
-        expect(5);
+        expect(4);
         $(document).quail({
           jsonPath : '../../dist',
           guideline : [ 'imgHasAlt' ],
           reset : true,
-          caseResolve : function(eventName, thisTest, _case) {
+          testComplete : function(eventName, thisTest) {
             ok(typeof eventName === 'string', 'The eventname argument is a string');
-            equal(eventName, 'resolve', 'The name of the event is \'resolve\'');
+            equal(eventName, 'complete', 'The name of the event is \'complete\'');
             ok(thisTest instanceof quail.lib.Test, 'The test argument is an instance of quail.lib.Test');
-            ok(_case instanceof quail.lib.Case, 'The case argument is an instance of quail.lib.Case');
             equal(thisTest.length, 1, 'The test has one case');
             start();
           }});

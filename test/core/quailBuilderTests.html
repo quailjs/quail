@@ -26,7 +26,7 @@
           }
         };
         $('.test-area').quail({
-          complete : function(eventName, thisTest, _case) {
+          caseResolve : function(eventName, thisTest, _case) {
             ok($(_case.get('element')).is('p'), 'Found paragraph with selector');
             start();
           }
