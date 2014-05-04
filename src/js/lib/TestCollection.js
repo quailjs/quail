@@ -57,7 +57,7 @@ quail.lib.TestCollection = (function () {
           tc.listenTo(test, 'complete', callbacks.testComplete);
         }
         if (callbacks.complete) {
-          this.listenTo(this, 'complete', callbacks.complete);
+          tc.listenTo(tc, 'complete', callbacks.complete);
         }
       });
 

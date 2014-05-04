@@ -201,6 +201,8 @@ var quail = {
     // Invoke all the registered tests.
     quail.tests.run({
       preFilter: options.preFilter || function () {},
+      caseResolve: options.caseResolve || function () {},
+      testComplete: options.testComplete || function () {},
       complete: options.complete || function () {}
     });
   },
