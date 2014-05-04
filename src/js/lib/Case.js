@@ -32,7 +32,7 @@ quail.lib.Case = (function () {
       // Set up a time out for this case to resolve within.
       else {
         this.timeout = setTimeout(function () {
-          that.dispatch('timeout', that);
+          that.giveup();
         }, 350);
       }
 
@@ -80,6 +80,15 @@ quail.lib.Case = (function () {
     resolve: function () {
       clearTimeout(this.timeout);
       this.dispatch('resolved', this);
+    },
+    /**
+     * Abandons the Case if it not resolved within the timeout period.
+     */
+    giveup: function () {
+      clearTimeout(this.timeout);
+      // @todo, the set method should really have a 'silent' option.
+      this.attributes.status = 'notTested';
+      this.dispatch('timeout', this);
     },
     // @todo, make this a set of methods that all classes extend.
     listenTo: function (dispatcher, eventName, handler) {
