@@ -61,7 +61,8 @@ quail.lib.Test = (function () {
       return this;
     },
     add: function (_case) {
-      this.listenTo(_case, 'resolved', this.caseResolved);
+      this.listenTo(_case, 'resolved', this.caseResponded);
+      this.listenTo(_case, 'timeout', this.caseResponded);
       // If the case is already resolved because it has a status, then trigger
       // its resolved event.
       if (_case.status) {
@@ -129,7 +130,7 @@ quail.lib.Test = (function () {
      * Adds the test that owns the Case to the set of arguments passed up to
      * listeners of this test's cases.
      */
-    caseResolved: function (eventName, _case) {
+    caseResponded: function (eventName, _case) {
       this.dispatch(eventName, this, _case);
       // Attempt to declare the Test complete.
       this.testComplete();
