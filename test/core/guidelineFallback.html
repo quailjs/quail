@@ -20,13 +20,11 @@
     (function(global) {
       var found = false;
       asyncTest('guidelineFallback', function() {
-        // @todo, figure out why this is expect(2). Somewhere, there's another
-        // assertion being made. It should only be expect(1);
         expect(1);
         $('.test-area').quail({
           jsonPath : '../../dist',
           reset : true,
-          complete : function(eventName, thisTest, _case) {
+          caseResolve : function(eventName, thisTest, _case) {
             if (thisTest.get('name') === 'imgHasAlt' && !found) {
               equal('IMG', _case.get('element').tagName, 'Default guideline has run');
               found = true;

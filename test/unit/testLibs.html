@@ -20,12 +20,26 @@
 
   <a href="#" class="fail unittest">fake link</a>
   <a href="#" class="pass unittest">fake link</a>
+  <b class="unittest">fake bold tag</b>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
+  <i class="unittest">fake italic tag</i>
 
   <script>
     var libs = __testQuail.lib;
     var _case, _test, _testCollection;
     __testQuail.html = $('body');
 
+    /**
+     * Case Class.
+     */
     module('Case');
     test('Instantiation', function () {
       _case = new libs.Case({bird: 'sandpiper'});
@@ -45,7 +59,19 @@
       _case.set({element: $('#defineUniqueSelector-1 p').get(0)});
       equal(_case.get('selector'), '#defineUniqueSelector-1 p', 'Descendent selector was found');
     });
+    asyncTest('Event dispatching: timeout', function () {
+      expect(1);
+      _test = new libs.Test('fakeTest');
+      _case = new libs.Case();
+      _test.listenTo(_case, 'timeout', function (eventName, _case) {
+        ok(eventName === 'timeout', 'The Case timed out.');
+        start();
+      });
+    });
 
+    /**
+     * Test Class.
+     */
     module('Test');
     test('Instantiation', function () {
       _test = new libs.Test('peregrine', {'bird': 'falcon'});
@@ -128,6 +154,58 @@
       });
       equal(i, 1, 'Test.fn.each looped 2 times');
     });
+    asyncTest('Event dispatching: resolved', function () {
+      expect(1);
+      _testCollection = new libs.TestCollection();
+      _test = new libs.Test('testCompleteTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'b.unittest'
+        }
+      });
+      _testCollection.listenTo(_test, 'resolve', function (eventName, thisTest, _case) {
+        ok(eventName === 'resolve', 'Test bubbles up Case resolve events');
+        start();
+      });
+      _test.invoke();
+    });
+    asyncTest('Event dispatching: complete', function () {
+      expect(2);
+      var count = 0;
+      _testCollection = new libs.TestCollection();
+      // This selects 10 instances of this element.
+      _test = new libs.Test('testCompleteTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'i.unittest'
+        }
+      });
+      // The complete event should only be invoked once.
+      _testCollection.listenTo(_test, 'complete', function (eventName, thisTest) {
+        equal(thisTest.length, 11, 'Eleven Cases resolved.');
+        ok(eventName === 'complete', 'Test dispatches a complete event when all Cases have resolved.');
+        start();
+      });
+      // Add a Case that will time out.
+      _test.add(new libs.Case());
+      _test.invoke();
+    });
+    // asyncTest('Event dispatching: fail', function () {
+    //   expect(1);
+    //   var count = 0;
+    //   _testCollection = new libs.TestCollection();
+    //   _test = new libs.Test('testCompleteTest', {
+    //     'type': 'selector',
+    //     'options': {
+    //       'selector': 'b.unittest'
+    //     }
+    //   });
+    //   _testCollection.listenTo(_test, 'fail', function (eventName, thisTest, _case) {
+    //     ok(eventName === 'fail', 'Test dispatches a fail event when the test does not run.');
+    //     start();
+    //   });
+    //   _test.invoke();
+    // });
 
     module('TestCollection');
     test('Instantiation', function () {
@@ -156,6 +234,32 @@
         ok(_test instanceof libs.Test, 'Test is the constructor of _test');
       });
       equal(i, 1, 'TestCollection.fn.each looped 2 times');
+    });
+    asyncTest('Event dispatching: complete', function () {
+      expect(2);
+      _testCollection = new libs.TestCollection();
+      // @todo, we need a mockable object that will listen to events.
+      var listener = new libs.TestCollection();
+      listener.listenTo(_testCollection, 'complete', function (eventName, testCollection) {
+        equal(testCollection.length, 6, 'Six tests completed.');
+        ok(eventName === 'complete', 'TestCollection dispatches a complete event when all Tests have completed.');
+        start();
+      });
+      // Create a few fake tests and add them to the collection.
+      for (var i = 0; i < 5; ++i) {
+        _test = new libs.Test('fakeTest-' + i, {
+          'type': 'selector',
+          'options': {
+            'selector': 'i.unittest'
+          }
+        });
+        _testCollection.add(_test);
+      }
+      // Add a test that will time out.
+      _testCollection.add(new libs.Test('timeoutTest', {
+        'type': 'selector'
+      }));
+      _testCollection.run();
     });
   </script>
 </body>

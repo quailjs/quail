@@ -39,24 +39,43 @@ quail.lib.TestCollection = (function () {
       this.each(function (index, test) {
         // Allow a prefilter to remove a case.
         if (callbacks.preFilter) {
-          tc.listenTo(test, 'resolved', function (eventName, test, _case) {
+          tc.listenTo(test, 'resolve', function (eventName, test, _case) {
             var result = callbacks.preFilter(eventName, test, _case);
             if (result === false) {
               // Manipulate the attributes directly so that change events
               // are not triggered.
-              _case.attributes.status = 'NotTested';
+              _case.attributes.status = 'notTested';
               _case.attributes.expected = null;
             }
           });
         }
+        // Allow the invoker to listen to resolve events on each Case.
+        if (callbacks.caseResolve) {
+          tc.listenTo(test, 'resolve', callbacks.caseResolve);
+        }
+        if (callbacks.testComplete) {
+          tc.listenTo(test, 'complete', callbacks.testComplete);
+        }
         if (callbacks.complete) {
-          tc.listenTo(test, 'resolved', callbacks.complete);
+          tc.listenTo(tc, 'complete', callbacks.complete);
         }
       });
+
+      // Set the test complete method to the closure function that dispatches
+      // the complete event. This method needs to be debounced so it is
+      // only called after a pause of invocations.
+      this.testsComplete = debounce(testsComplete.bind(this), 500);
+
       // Invoke each test.
       this.each(function(index, test) {
         test.invoke();
       });
+
+      // Invoke the complete dispatcher to prevent the collection from never
+      // completing in the off chance that no Tests are run.
+      this.testsComplete();
+
+      return this;
     },
     // Execute a callback for every element in the matched set.
     each: function (iterator) {
@@ -144,6 +163,13 @@ quail.lib.TestCollection = (function () {
       this.push(test);
       return test;
     },
+    /**
+     * A stub method implementation.
+     *
+     * It is assigned a function value when the collection is run. See the
+     * testsComplete function in outer scope.
+     */
+    testsComplete: null,
     report: function () {
       this.dispatch.apply(this, arguments);
     },
@@ -175,6 +201,71 @@ quail.lib.TestCollection = (function () {
     sort: [].sort,
     splice: [].splice
   };
+
+    /**
+   * Dispatches the complete event.
+   *
+   * This function is meant to be bound to a Test as a method through
+   * a debounced proxy function.
+   */
+  function testsComplete () {
+    var complete = true;
+    // @todo, this iteration would be faster with _.findWhere, that breaks on
+    // the first match.
+    this.each(function (index, test) {
+      if (!test.get('complete')) {
+        complete = false;
+      }
+    });
+    // If all the Tests have completed, dispatch the event.
+    if (complete) {
+      this.testsComplete = null;
+      this.dispatch('complete', this);
+    }
+    // Otherwise attempt to the complete the Tests again after the debounce
+    // period has expired.
+    else {
+      this.testsComplete();
+    }
+  }
+
+  /**
+   * Limits the invocations of a function in a given time frame.
+   *
+   * Adapted from underscore.js. Replace with debounce from underscore once class
+   * loading with modules is in place.
+   *
+   * @param {Function} callback
+   *   The function to be invoked.
+   *
+   * @param {Number} wait
+   *   The time period within which the callback function should only be
+   *   invoked once. For example if the wait period is 250ms, then the callback
+   *   will only be called at most 4 times per second.
+   */
+  function debounce (func, wait, immediate) {
+
+    "use strict";
+
+    var timeout, result;
+    return function () {
+      var context = this;
+      var args = arguments;
+      var later = function () {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+        }
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) {
+        result = func.apply(context, args);
+      }
+      return result;
+    };
+  }
 
   // Give the init function the TestCollection prototype.
   TestCollection.fn.init.prototype = TestCollection.fn;

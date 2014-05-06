@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Test that QUAIL calls the complete event correctly</title>
+  <title>Test that QUAIL calls the testComplete event correctly</title>
 </head>
 
 <body>
@@ -18,11 +18,11 @@
           jsonPath : '../../dist',
           guideline : [ 'imgHasAlt' ],
           reset : true,
-          complete : function(eventName, testCollection) {
+          testComplete : function(eventName, thisTest) {
             ok(typeof eventName === 'string', 'The eventname argument is a string');
             equal(eventName, 'complete', 'The name of the event is \'complete\'');
-            ok(testCollection instanceof quail.lib.TestCollection, 'The test argument is an instance of quail.lib.TestCollection');
-            equal(testCollection.length, 1, 'The test collection has one case');
+            ok(thisTest instanceof quail.lib.Test, 'The test argument is an instance of quail.lib.Test');
+            equal(thisTest.length, 1, 'The test has one case');
             start();
           }});
       });

@@ -18,6 +18,7 @@ quail.lib.Test = (function () {
       }
       this.attributes = attributes || {};
       this.attributes.name = name;
+      this.attributes.complete = false;
 
       return this;
     },
@@ -61,20 +62,35 @@ quail.lib.Test = (function () {
       return this;
     },
     add: function (_case) {
-      this.listenTo(_case, 'resolved', this.caseResolved);
+      this.listenTo(_case, 'resolve', this.caseResponded);
+      this.listenTo(_case, 'timeout', this.caseResponded);
       // If the case is already resolved because it has a status, then trigger
-      // its resolved event.
+      // its resolve event.
       if (_case.status) {
-        _case.dispatch('resolved', _case);
+        _case.dispatch('resolve', _case);
       }
       this.push(_case);
       return _case;
     },
     invoke: function () {
+      // This test is already running.
+      if (this.testComplete) {
+        throw new Error('The test ' + this.get('name') + ' is already running.');
+      }
+      // This test has already been run.
+      if (this.attributes.complete) {
+        throw new Error('The test ' + this.get('name') + ' has already been run.');
+      }
       var type = this.get('type');
       var options = this.get('options') || {};
       var callback = this.get('callback');
       var test = this;
+
+      // Set the test complete method to the closure function that dispatches
+      // the complete event. This method needs to be debounced so it is only
+      // called after a pause of invocations.
+      this.testComplete = debounce(testComplete.bind(this), 400);
+
 
       if (type === 'custom') {
         if (typeof callback === 'function') {
@@ -109,15 +125,28 @@ quail.lib.Test = (function () {
         throw new Error('The component type ' + type + ' is not defined.');
       }
 
+      // Invoke the complete dispatcher to prevent the test from never
+      // completing in the off chance that no Cases are created.
+      this.testComplete();
+
       return this;
     },
     /**
      * Adds the test that owns the Case to the set of arguments passed up to
      * listeners of this test's cases.
      */
-    caseResolved: function (eventName, _case) {
+    caseResponded: function (eventName, _case) {
       this.dispatch(eventName, this, _case);
+      // Attempt to declare the Test complete.
+      this.testComplete();
     },
+    /**
+     * A stub method implementation.
+     *
+     * It is assigned a function value when the Test is invoked. See the
+     * testComplete function in outer scope.
+     */
+    testComplete: null,
     // @todo, make this a set of methods that all classes extend.
     listenTo: function (dispatcher, eventName, handler) {
       // @todo polyfill Function.prototype.bind.
@@ -146,6 +175,73 @@ quail.lib.Test = (function () {
     sort: [].sort,
     splice: [].splice
   };
+
+  /**
+   * Dispatches the complete event.
+   *
+   * This function is meant to be bound to a Test as a method through
+   * a debounced proxy function.
+   */
+  function testComplete () {
+    var complete = true;
+    // @todo, this iteration would be faster with _.findWhere, that breaks on
+    // the first match.
+    this.each(function (index, _case) {
+      if (!_case.get('status')) {
+        complete = false;
+      }
+    });
+    // If all the Cases have been evaluated, dispatch the event.
+    if (complete) {
+      this.testComplete = null;
+      // @todo, this should be set with the set method and a silent flag.
+      this.attributes.complete = true;
+      this.dispatch('complete', this);
+    }
+    // Otherwise attempt to the complete the Test again after the debounce
+    // period has expired.
+    else {
+      this.testComplete();
+    }
+  }
+
+  /**
+   * Limits the invocations of a function in a given time frame.
+   *
+   * Adapted from underscore.js. Replace with debounce from underscore once class
+   * loading with modules is in place.
+   *
+   * @param {Function} callback
+   *   The function to be invoked.
+   *
+   * @param {Number} wait
+   *   The time period within which the callback function should only be
+   *   invoked once. For example if the wait period is 250ms, then the callback
+   *   will only be called at most 4 times per second.
+   */
+  function debounce (func, wait, immediate) {
+
+    "use strict";
+
+    var timeout, result;
+    return function () {
+      var context = this;
+      var args = arguments;
+      var later = function () {
+        timeout = null;
+        if (!immediate) {
+          result = func.apply(context, args);
+        }
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) {
+        result = func.apply(context, args);
+      }
+      return result;
+    };
+  }
 
   // Give the init function the Test prototype.
   Test.fn.init.prototype = Test.fn;

@@ -49,7 +49,7 @@
           guidelineName : 'a',
           reset : true,
           customTests : custom,
-          complete : function(eventName, thisTest, _case) {
+          caseResolve : function(eventName, thisTest, _case) {
             equal('STRONG', _case.get('element').tagName, 'Found strong tag');
             start();
           }
@@ -64,7 +64,7 @@
           guidelineName : 'b',
           reset : true,
           customTests : custom,
-          complete : function(eventName, thisTest, _case) {
+          caseResolve : function(eventName, thisTest, _case) {
             equal('EM', _case.get('element').tagName, 'Found em tag');
             start();
           }

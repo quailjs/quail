@@ -117,7 +117,7 @@
             return false;
           }
         },
-        complete: this.quailComplete
+        caseResolve: this.quailComplete
       });
     },
 
