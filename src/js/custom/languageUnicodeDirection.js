@@ -13,14 +13,14 @@ quail.languageUnicodeDirection = function(quail, test, Case) {
       }));
       var $el = $(this);
       var text = $el.text().trim();
-      var otherDirection = (text.substr(0, 1).match(textDirection['ltr'])) ?
+      var otherDirection = (text.substr(0, 1).search(textDirection['ltr']) !== -1) ?
         'rtl' :
         'ltr';
-      if (!text.match(textDirection[otherDirection])) {
+      if (text.search(textDirection[otherDirection]) === -1) {
         _case.set({status: 'notApplicable'});
       }
       else {
-        if(text.match(textDirectionChanges[otherDirection])) {
+        if(text.search(textDirectionChanges[otherDirection]) !== -1) {
           _case.set({status: 'passed'});
         }
         else {
