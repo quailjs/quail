@@ -15,6 +15,14 @@ quail.components.language = {
   },
 
   /**
+   * Special characters that indicate text direction changes.
+   */
+  textDirectionChanges : {
+    rtl : /[\u200E]|&rlm;/mg,
+    ltr : /[\u200F]|&lrm;/mg
+  },
+
+  /**
    * List of single-script blocks that encapsulate a list of languages.
    */
   scripts: {

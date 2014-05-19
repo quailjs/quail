@@ -2764,6 +2764,24 @@ languageChangesAreIdentified:
   callback: "languageChangesAreIdentified"
   components:
     - "language"
+languageUnicodeDirection:
+  type: "custom"
+  testability: 1
+  title:
+  en: "Use the unicode language direction"
+  description:
+  en: "When there are nested directional changes in language, use unicode RTL/LTR characters."
+  guidelines:
+  wcag:
+    1.3.2:
+      techniques:
+        - "H34"
+  tags:
+  - "language"
+  - "content"
+  callback: "languageUnicodeDirection"
+  components:
+  - "language"
 legendDescribesListOfChoices:
   type: "selector"
   testability: 0
