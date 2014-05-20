@@ -68,6 +68,23 @@ var quail = {
 
   accessibilityTests : null,
 
+  guidelines: {
+    wcag: {
+      /**
+       * Perform WCAG specific setup.
+       */
+      setup: function (tests) {
+        // Associate Success Criteria with the TestCollection.
+        for (var sc in this.successCriteria) {
+          if (this.successCriteria.hasOwnProperty(sc)) {
+            this.successCriteria[sc].add(tests);
+          }
+        }
+      },
+      successCriteria: { }
+    }
+  },
+
   // @var TestCollection
   tests : { },
 
@@ -175,28 +192,6 @@ var quail = {
         }
       }
     }
-
-    /**
-     * @deprecated. Just keeping this around so we know what the old API looks
-     * like.
-     */
-    // var onResults = function (eventName, thisTest, _case) {
-    //   // Call the complete callback.
-    //   if(typeof quail.options.complete !== 'undefined') {
-    //     var results = {
-    //       totals : {
-    //         severe : 0,
-    //         moderate : 0,
-    //         suggestion : 0
-    //       },
-    //       results : quail.accessibilityResults
-    //     };
-    //     $.each(results.results, function(testName, result) {
-    //       results.totals[quail.testabilityTranslation[result.test.get('testability')]] += result.elements.length;
-    //     });
-    //     quail.options.complete(results);
-    //   }
-    // };
 
     // Invoke all the registered tests.
     quail.tests.run({

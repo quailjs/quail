@@ -33,11 +33,11 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js', 'src/js/lib/*.js'],
+        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js', 'src/js/lib/*.js', 'src/js/lib/wcag/*.js'],
         dest: 'dist/quail.jquery.js'
       },
       test: {
-        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js', 'src/js/lib/*.js'],
+        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js', 'src/js/lib/*.js', 'src/js/lib/wcag/*.js'],
         dest: 'test/quail-testing.jquery.js',
         options: {
           banner: '<%= pkg.options.banner %>' + "\n" + 'var __testQuail = {};(function($) {' + "\n",

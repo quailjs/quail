@@ -1,0 +1,243 @@
+<html>
+<head>
+  <title>cssTextHasContrast</title>
+  <style>
+    #test-1 p {
+      background: #E9E9E9;
+      color: #C8D8DF;
+    }
+
+    #test-2 p {
+      background: #E9E9E9;
+      color: #C8D8DF;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    #test-3 p {
+      background: #E9E9E9;
+      color: #000;
+    }
+
+    #test-4 p {
+      background: #E9E9E9;
+      color: #666;
+      font-size: 16px;
+    }
+
+    #test-5 p {
+      background: #E9E9E9;
+      color: #666;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    #test-6 p {
+      background: #E9E9E9;
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    #test-7 {
+      background-image: url('../assets/fish.gif');
+    }
+    #test-7 p {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    #test-8 {
+      background-image: url('../assets/kids.jpg');
+    }
+    #test-8 p {
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    #test-9 p {
+      color: #fff;
+      padding: 10px;
+      background-image: linear-gradient(to bottom, #de88de, #98afd6);
+    }
+    #test-10 p {
+      color: #fff;
+      padding: 10px;
+      background-image: linear-gradient(to bottom, #610061, #032966);
+    }
+
+    #test-11 p {
+      color: #fff;
+      padding: 10px;
+      background-image: linear-gradient(to right, red, #f06d06, rgb(255, 255, 0), green);
+    }
+
+    #test-12 {
+      color: #fff;
+      padding: 10px;
+      background-image: radial-gradient(red, #f06d06, rgb(255, 255, 0), green);
+      text-align: center;
+    }
+
+    #test-13 {
+      color: #000;
+      padding: 10px;
+      background-image: radial-gradient(red, #f06d06, rgb(255, 255, 0), green);
+      text-align: center;
+    }
+    #test-13 p {
+      background: #E9E9E9;
+    }
+
+    #test-14 {
+      position: relative;
+      padding: 0;
+    }
+    #test-14 .bck {
+      background-image: url('../assets/fish.gif');
+      background: #666;
+      height: 50px;
+      width: 100%;
+      position: absolute;
+    }
+    #test-14 .txt {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    #test-16 {
+      position: relative;
+      padding: 0;
+    }
+    #test-16 .bck {
+      background-image: linear-gradient(to right, red, #f06d06, rgb(255, 255, 0), green);
+      height: 50px;
+      width: 100%;
+      position: absolute;
+    }
+    #test-16 .txt {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    #test-18 {
+      position: relative;
+      padding: 0;
+    }
+    #test-18 .bck {
+      background-image: url('../assets/fish.gif');
+      height: 50px;
+      width: 100%;
+      position: absolute;
+    }
+    #test-18 .txt {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    #test-19 {
+      background-image: url('../assets/doesnotexist.jpg');
+    }
+    #test-19 p {
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    #test-20 {
+      background-image: url('http://quailjs.org/img/quail.png');
+    }
+    #test-20 p {
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="quail-test" data-expected="colorFontSizing:fail" data-accessibility-test="cssTextHasContrast" id="test-1">
+    <p>This text is not readable</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:fail" data-accessibility-test="cssTextHasContrast" id="test-2">
+    <p>This text is not readable, even if it's huge and bold</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass" data-accessibility-test="cssTextHasContrast" id="test-3">
+    <p>This test is readable.</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:fail" data-accessibility-test="cssTextHasContrast" id="test-4">
+    <p>This test is not readable, only 16px and not bold</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass" data-accessibility-test="cssTextHasContrast" id="test-5">
+    <p>This test is readable, 16px and bold</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass" data-accessibility-test="cssTextHasContrast" id="test-6">
+    <p>This test is readable, 16px and font weight 700</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorElementBehindBackgroundImageContrast:fail|colorBackgroundImageContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-7">
+    <p>This test is not readable, thanks to the fish</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorBackgroundImageContrast:pass|colorElementBehindBackgroundImageContrast:pass" data-accessibility-test="cssTextHasContrast" id="test-8">
+    <p>This test is readable, thanks to the kids</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorBackgroundGradientContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-9">
+    <p>This test is not readable</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorBackgroundGradientContrast:pass" data-accessibility-test="cssTextHasContrast" id="test-10">
+    <p>This test is readable</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorBackgroundGradientContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-11">
+    <p>This test is not readable</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorBackgroundGradientContrast:fail|colorElementBehindBackgroundGradientContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-12">
+    <p>This test is not readable, but on screen it is</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorElementBehindBackgroundGradientContrast:pass" data-accessibility-test="cssTextHasContrast" id="test-13">
+    <p>This test is readable, does not check the gradient since there's a background color.</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorElementBehindContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-14">
+    <div class="bck"></div>
+    <p class="txt">This test is not readable.</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorElementBehindBackgroundGradientContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-16">
+    <div class="bck"></div>
+    <p class="txt">This test is not readable.</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorElementBehindBackgroundImageContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-18">
+    <div class="bck"></div>
+    <p class="txt">This test is not readable.</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorFontSizing:pass|colorBackgroundImageContrast:fail|colorElementBehindBackgroundImageContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-19">
+    <p>This test is readable, non existing background</p>
+  </div>
+
+  <script src="../quail-testrunner.js"></script>
+</body>
+</html>
