@@ -261,6 +261,90 @@
       }));
       _testCollection.run();
     });
+
+    module('SuccessCriteria');
+    var sc;
+    test('Instantiation', function () {
+      sc = new libs.SuccessCriteria();
+      ok(sc instanceof libs.SuccessCriteria, 'SuccessCriteria is the constructor of sc');
+    });
+    test('Set/Get', function () {
+      sc = new libs.SuccessCriteria();
+      sc.set('name', 'Pidgeon');
+      equal(sc.get('name'), 'Pidgeon', 'Set and Get function correctly.');
+    });
+    test('registerEvaluator', function () {
+      function evaluator () {
+        return 'puppies';
+      }
+      sc = new libs.SuccessCriteria();
+      sc.registerEvaluator(evaluator);
+      equal(evaluator, sc.get('evaluator'), 'The evaluator function is registered correctly.');
+    });
+    test('filterTests', function () {
+      var testCollection = new libs.TestCollection();
+      var sc = new libs.SuccessCriteria();
+      // Create a few fake tests and add them to the collection.
+      var test;
+      var requiredTests = [];
+      for (var i = 0; i < 5; ++i) {
+        test = new libs.Test('fakeTest-' + i, {
+          'type': 'selector',
+          'options': {
+            'selector': 'i.unittest'
+          }
+        });
+        testCollection.add(test);
+        requiredTests.push('fakeTest-' + i);
+      }
+      // Test a one-to-one match for test to required test.
+      var criteriaTests = sc.filterTests(testCollection, requiredTests);
+      equal(criteriaTests.length, 5, 'The SuccessCriteria correctly filters required tests');
+
+      // Test an off-by-one mismatch of tests to required tests.
+      testCollection = new libs.TestCollection();
+      requiredTests = [];
+      for (var i = 0; i < 5; ++i) {
+        test = new libs.Test('fakeTest-' + i, {
+          'type': 'selector',
+          'options': {
+            'selector': 'i.unittest'
+          }
+        });
+        testCollection.add(test);
+        requiredTests.push('fakeTest-' + (i + 1));
+      }
+      criteriaTests = sc.filterTests(testCollection, requiredTests);
+      equal(criteriaTests.length, 4, 'The SuccessCriteria correctly filters required tests');
+    });
+    asyncTest('Event dispatching: successCriteriaEvaluated', function () {
+      expect(2);
+      var testCollection = new libs.TestCollection();
+      var evaluator = function (tests) {
+        sc.set('status', 'passed');
+      };
+      var sc = libs.SuccessCriteria(evaluator);
+      // @todo, we need a mockable object that will listen to events.
+      var listener = new libs.TestCollection();
+      listener.listenTo(sc, 'successCriteriaEvaluated', function (eventName, successCriteria, testCollection) {
+        equal(testCollection.length, 5, 'Five tests completed.');
+        ok(eventName === 'successCriteriaEvaluated', 'SuccessCriteria dispatches a successCriteriaEvaluated event when the criteria has been evaluated.');
+        start();
+      });
+      // Create a few fake tests and add them to the collection.
+      var test;
+      for (var i = 0; i < 5; ++i) {
+        test = new libs.Test('fakeTest-' + i, {
+          'type': 'selector',
+          'options': {
+            'selector': 'i.unittest'
+          }
+        });
+        testCollection.add(test);
+      }
+      sc.add(testCollection);
+      testCollection.run();
+    });
   </script>
 </body>
 

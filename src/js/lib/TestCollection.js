@@ -53,9 +53,12 @@ quail.lib.TestCollection = (function () {
         if (callbacks.caseResolve) {
           tc.listenTo(test, 'resolve', callbacks.caseResolve);
         }
+        // Allow the invoker to listen to complete events on each Test.
         if (callbacks.testComplete) {
           tc.listenTo(test, 'complete', callbacks.testComplete);
         }
+        // Allow the invoker to listen to complete events for the
+        // TestCollection.
         if (callbacks.complete) {
           tc.listenTo(tc, 'complete', callbacks.complete);
         }
@@ -83,7 +86,11 @@ quail.lib.TestCollection = (function () {
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
         args.unshift(i);
-        iterator.apply(this[i], args);
+        var cont = iterator.apply(this[i], args);
+        // Allow an iterator to break from the loop.
+        if (cont === false) {
+          break;
+        }
       }
       return this;
     },

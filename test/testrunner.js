@@ -109,14 +109,6 @@
         testsToEvaluate.add(testDefinition);
       });
 
-      // Set up Guideline-specific behaviors.
-      var guideline;
-      for (guideline in quail.guidelines) {
-        if (quail.guidelines[guideline] && typeof quail.guidelines[guideline].setup === 'function') {
-          quail.guidelines[guideline].setup(testsToEvaluate);
-        }
-      }
-
       // Run the TestCollection Tests.
       testsToEvaluate.run({
         preFilter: function (testName, element) {

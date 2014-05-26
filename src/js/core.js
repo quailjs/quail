@@ -73,11 +73,20 @@ var quail = {
       /**
        * Perform WCAG specific setup.
        */
-      setup: function (tests) {
+      setup: function (tests, listener, callbacks) {
+        callbacks = callbacks || {};
         // Associate Success Criteria with the TestCollection.
         for (var sc in this.successCriteria) {
           if (this.successCriteria.hasOwnProperty(sc)) {
-            this.successCriteria[sc].add(tests);
+            var criteria = this.successCriteria[sc];
+            criteria.add(tests);
+            if (listener && listener.listenTo && typeof listener.listenTo === 'function') {
+              // Allow the invoker to listen to successCriteriaEvaluated events
+              // on each SuccessCriteria.
+              if (callbacks.successCriteriaEvaluated) {
+                listener.listenTo(criteria, 'successCriteriaEvaluated', callbacks.successCriteriaEvaluated);
+              }
+            }
           }
         }
       },
@@ -190,6 +199,16 @@ var quail = {
           options.customTests[testName].scope = quail.html || null;
           quail.tests.set(testName, options.customTests[testName]);
         }
+      }
+    }
+
+    // Set up Guideline-specific behaviors.
+    var noop = function () {};
+    for (var guideline in quail.guidelines) {
+      if (quail.guidelines[guideline] && typeof quail.guidelines[guideline].setup === 'function') {
+        quail.guidelines[guideline].setup(quail.tests, this, {
+          successCriteriaEvaluated: options.successCriteriaEvaluated || noop
+        });
       }
     }
 
