@@ -12,6 +12,9 @@ quail.lib.SuccessCriteria = (function () {
   SuccessCriteria.fn = SuccessCriteria.prototype = {
     constructor: SuccessCriteria,
     init: function (evaluator) {
+      // Event listeners.
+      this.listeners = {};
+
       if (typeof evaluator !== 'function') {
         return this;
       }
@@ -21,8 +24,6 @@ quail.lib.SuccessCriteria = (function () {
 
       return this;
     },
-    // Event listeners.
-    listeners: {},
     // Details of the test.
     attributes: {},
     get: function (attr) {

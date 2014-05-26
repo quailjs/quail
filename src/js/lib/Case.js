@@ -22,7 +22,7 @@ quail.lib.Case = (function () {
 
       var that = this;
       // Dispatch a resolve event if the case is initiated with a status.
-      if (this.attributes.status) {
+      if (this.attributes.status && this.attributes.status !== 'untested') {
         // Delay the status dispatch to the next execution cycle so that the
         // Case will register listeners in this execution cycle first.
         setTimeout(function() {
@@ -31,6 +31,7 @@ quail.lib.Case = (function () {
       }
       // Set up a time out for this case to resolve within.
       else {
+        this.attributes.status = 'untested';
         this.timeout = setTimeout(function () {
           that.giveup();
         }, 350);

@@ -154,6 +154,20 @@
       });
       equal(i, 1, 'Test.fn.each looped 2 times');
     });
+    test('findByStatus', function () {
+      var cases;
+      _test = new libs.Test('fakeLinkTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'a.unittest',
+        }
+      });
+      _test.invoke();
+      equal(_test.length, 2, 'Two Cases were created');
+      // Filter by statuses.
+      cases = _test.findByStatus('failed');
+      equal(cases.length, 2, 'Two cases found.');
+    });
     asyncTest('Event dispatching: resolved', function () {
       expect(1);
       _testCollection = new libs.TestCollection();
@@ -190,22 +204,6 @@
       _test.add(new libs.Case());
       _test.invoke();
     });
-    // asyncTest('Event dispatching: fail', function () {
-    //   expect(1);
-    //   var count = 0;
-    //   _testCollection = new libs.TestCollection();
-    //   _test = new libs.Test('testCompleteTest', {
-    //     'type': 'selector',
-    //     'options': {
-    //       'selector': 'b.unittest'
-    //     }
-    //   });
-    //   _testCollection.listenTo(_test, 'fail', function (eventName, thisTest, _case) {
-    //     ok(eventName === 'fail', 'Test dispatches a fail event when the test does not run.');
-    //     start();
-    //   });
-    //   _test.invoke();
-    // });
 
     module('TestCollection');
     test('Instantiation', function () {
@@ -234,6 +232,27 @@
         ok(_test instanceof libs.Test, 'Test is the constructor of _test');
       });
       equal(i, 1, 'TestCollection.fn.each looped 2 times');
+    });
+    test('findByStatus', function () {
+      var tests;
+      _testCollection = new libs.TestCollection({
+        'peregrine': {'bird': 'falcon'},
+        'charlie': {'reptile': 'iguana'},
+        'wayne': {'mammal': 'squirrel'},
+        'judy': {'fish': 'trout'},
+        'george': {'rock': 'granite'}
+      });
+      _testCollection[1].set('status', 'passed');
+      _testCollection[2].set('status', 'failed');
+      _testCollection[3].set('status', 'cantTell');
+      _testCollection[4].set('status', 'inapplicable');
+      // Filter by statuses.
+      tests = _testCollection.findByStatus('untested');
+      equal(tests.length, 1, 'One untested test found.');
+      tests = _testCollection.findByStatus(['untested', 'passed', 'failed']);
+      equal(tests.length, 3, 'Three tests found.');
+      tests = _testCollection.findByStatus(['cantTell', 'inapplicable']);
+      equal(tests.length, 2, 'Two tests found.');
     });
     asyncTest('Event dispatching: complete', function () {
       expect(2);

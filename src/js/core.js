@@ -159,6 +159,42 @@ var quail = {
       }
     }
 
+    /**
+     * A private, internal run function.
+     *
+     * This function is called when the tests are collected, which might occur
+     * after an AJAX request for a test JSON file.
+     */
+    function _run () {
+      // Push custom tests into the test collection.
+      if (typeof options.customTests !== 'undefined') {
+        for (var testName in options.customTests) {
+          if (options.customTests.hasOwnProperty(testName)) {
+            options.customTests[testName].scope = quail.html || null;
+            quail.tests.set(testName, options.customTests[testName]);
+          }
+        }
+      }
+
+      // Set up Guideline-specific behaviors.
+      var noop = function () {};
+      for (var guideline in quail.guidelines) {
+        if (quail.guidelines[guideline] && typeof quail.guidelines[guideline].setup === 'function') {
+          quail.guidelines[guideline].setup(quail.tests, this, {
+            successCriteriaEvaluated: options.successCriteriaEvaluated || noop
+          });
+        }
+      }
+
+      // Invoke all the registered tests.
+      quail.tests.run({
+        preFilter: options.preFilter || function () {},
+        caseResolve: options.caseResolve || function () {},
+        testComplete: options.testComplete || function () {},
+        complete: options.complete || function () {}
+      });
+    }
+
     // Create an empty TestCollection.
     quail.tests = quail.lib.TestCollection([], {
       scope: quail.html || null
@@ -168,10 +204,12 @@ var quail = {
       quail.tests = quail.lib.TestCollection(quailBuilderTests, {
         scope: quail.html || null
       });
+      _run.call(quail);
     }
     // If a list of specific tests is provided, use them.
     else if (options.accessibilityTests) {
       buildTests(quail, options.accessibilityTests, options);
+      _run.call(quail);
     }
     // Otherwise get the tests from the json data list.
     else {
@@ -188,37 +226,14 @@ var quail = {
         success : function (data) {
           if (typeof data === 'object') {
             buildTests(quail, data, options);
+            _run.call(quail);
           }
+        },
+        error : function () {
+          throw new Error('Tests could not be loaded');
         }
       });
     }
-    // Push custom tests into the test collection.
-    if (typeof options.customTests !== 'undefined') {
-      for (var testName in options.customTests) {
-        if (options.customTests.hasOwnProperty(testName)) {
-          options.customTests[testName].scope = quail.html || null;
-          quail.tests.set(testName, options.customTests[testName]);
-        }
-      }
-    }
-
-    // Set up Guideline-specific behaviors.
-    var noop = function () {};
-    for (var guideline in quail.guidelines) {
-      if (quail.guidelines[guideline] && typeof quail.guidelines[guideline].setup === 'function') {
-        quail.guidelines[guideline].setup(quail.tests, this, {
-          successCriteriaEvaluated: options.successCriteriaEvaluated || noop
-        });
-      }
-    }
-
-    // Invoke all the registered tests.
-    quail.tests.run({
-      preFilter: options.preFilter || function () {},
-      caseResolve: options.caseResolve || function () {},
-      testComplete: options.testComplete || function () {},
-      complete: options.complete || function () {}
-    });
   },
 
   // @todo, make this a set of methods that all classes extend.

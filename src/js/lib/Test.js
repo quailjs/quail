@@ -18,6 +18,7 @@ quail.lib.Test = (function () {
       }
       this.attributes = attributes || {};
       this.attributes.name = name;
+      this.attributes.status = 'untested';
       this.attributes.complete = false;
 
       return this;
@@ -47,17 +48,28 @@ quail.lib.Test = (function () {
       return this.attributes[attr];
     },
     set: function (attr, value) {
+      var isStatusChanged = false;
       // Allow an object of attributes to be passed in.
       if (typeof attr === 'object') {
         for (var prop in attr) {
           if (attr.hasOwnProperty(prop)) {
+            if (prop === 'status') {
+              isStatusChanged = true;
+            }
             this.attributes[prop] = attr[prop];
           }
         }
       }
       // Assign a single attribute value.
       else {
+        if (attr === 'status') {
+          isStatusChanged = true;
+        }
         this.attributes[attr] = value;
+      }
+
+      if (isStatusChanged) {
+        this.resolve();
       }
       return this;
     },
@@ -132,13 +144,72 @@ quail.lib.Test = (function () {
       return this;
     },
     /**
+     * Finds cases by their status.
+     */
+    findByStatus: function (statuses) {
+      if (!statuses) {
+        return;
+      }
+      var test = new Test();
+      // A single status or an array of statuses is allowed. Always act on an
+      // array.
+      if (typeof statuses === 'string') {
+        statuses = [statuses];
+      }
+      // Loop the through the statuses and find tests with them.
+      for (var i = 0, il = statuses.length; i < il; ++i) {
+        var status = statuses[i];
+        // Loop through the tests.
+        this.each(function (index, _case) {
+          var caseStatus = _case.get('status');
+          if (caseStatus === status) {
+            test.add(_case);
+          }
+        });
+      }
+      return test;
+    },
+    /**
      * Adds the test that owns the Case to the set of arguments passed up to
      * listeners of this test's cases.
      */
     caseResponded: function (eventName, _case) {
       this.dispatch(eventName, this, _case);
       // Attempt to declare the Test complete.
-      this.testComplete();
+      if (typeof this.testComplete === 'function') {
+        this.testComplete();
+      }
+    },
+    /**
+     *
+     */
+    determineStatus: function () {
+      // CantTell.
+      if (this.findByStatus(['cantTell']).length === this.length) {
+        this.set({
+          'status': 'cantTell'
+        });
+      }
+      // Inapplicable.
+      else if (this.findByStatus(['inapplicable']).length === this.length) {
+        this.set({
+          'status': 'inapplicable'
+        });
+      }
+      // Failed.
+      else if (this.findByStatus(['failed', 'untested']).length) {
+        this.set({
+          'status': 'failed'
+        });
+      }
+      else {
+        this.set({
+          'status': 'passed'
+        });
+      }
+    },
+    resolve: function () {
+      this.dispatch('complete', this);
     },
     /**
      * A stub method implementation.
@@ -196,7 +267,7 @@ quail.lib.Test = (function () {
       this.testComplete = null;
       // @todo, this should be set with the set method and a silent flag.
       this.attributes.complete = true;
-      this.dispatch('complete', this);
+      this.determineStatus();
     }
     // Otherwise attempt to the complete the Test again after the debounce
     // period has expired.

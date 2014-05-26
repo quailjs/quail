@@ -6,6 +6,7 @@
   "eqnull": true,
   "expr": true,
   "forin": true,
+  "loopfunc": true,
   "globals": {
     "guessLanguage": true,
     "process": true,

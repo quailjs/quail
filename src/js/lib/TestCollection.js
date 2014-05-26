@@ -157,6 +157,32 @@ quail.lib.TestCollection = (function () {
       }
     },
     /**
+     * Finds tests by their status.
+     */
+    findByStatus: function (statuses) {
+      if (!statuses) {
+        return;
+      }
+      var tests = new TestCollection();
+      // A single status or an array of statuses is allowed. Always act on an
+      // array.
+      if (typeof statuses === 'string') {
+        statuses = [statuses];
+      }
+      // Loop the through the statuses and find tests with them.
+      for (var i = 0, il = statuses.length; i < il; ++i) {
+        var status = statuses[i];
+        // Loop through the tests.
+        this.each(function (index, test) {
+          var testStatus = test.get('status');
+          if (testStatus === status) {
+            tests.add(test);
+          }
+        });
+      }
+      return tests;
+    },
+    /**
      * Create a new test from a name and details.
      */
     set: function (testname, details) {

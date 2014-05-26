@@ -15,15 +15,31 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
     // If the length of the union equals the length of the required tests,
     // then we have the necessary tests to evaluate this success criteria.
     if (criteriaTests.length === requiredTests.length) {
-      sc.set({
-        'message': 'The Success Criteria is satisfied',
-        'status': 'passed'
-      });
+      // If any of the tests failed or are untested, the SuccessCriteria failed.
+      if (tests.findByStatus(['failed', 'untested']).length) {
+        sc.set({
+          'message': 'The Success Criteria failed',
+          'status': 'failed'
+        });
+      }
+      // If all of the tests are inapplicable, the Success Criteria is as well.
+      else if (tests.findByStatus(['inapplicable']).length === requiredTests.length) {
+        sc.set({
+          'message': 'The Success Criteria does not apply',
+          'status': 'inapplicable'
+        });
+      }
+      else {
+        sc.set({
+          'message': 'The Success Criteria is satisfied',
+          'status': 'passed'
+        });
+      }
     }
     else {
       sc.set({
         'message': 'Insufficient test coverage. The tests [' + requiredTests.join(', ') + '] are required but only the tests [' + criteriaTests.join(', ') + '] were run.',
-        'status': 'cannotTell'
+        'status': 'cantTell'
       });
     }
   }
