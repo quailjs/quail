@@ -481,15 +481,10 @@ quail.components.color = function(quail, test, Case, options) {
           };
           img.onerror = img.onabort = function () {
             var id = 'colorElementBehindBackgroundImageContrast';
-            buildCase(element, 'failed', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
+            buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
           };
           // Load the image.
-          try {
-            img.src = behindBackgroundImage;
-          } catch(e) {
-            var id = 'colorElementBehindBackgroundImageContrast';
-            buildCase(element, 'failed', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
-          }
+          img.src = behindBackgroundImage;
         }
 
         // Check if there's a background gradient using DOM.
