@@ -130,13 +130,13 @@ quail.components.color = function(quail, test, Case, options) {
      */
     getColor : function(element, type) {
       if (type === 'foreground') {
-        return (element.css('color')) ? element.css('color') : 'rgb(255,255,255)';
+        return (element.css('color')) ? element.css('color') : 'rgb(0,0,0)';
       }
 
       if (this.hasBackgroundColor(element)) {
-        return (element.css('background-color')) ? element.css('background-color') : 'rgb(0,0,0)';
+        return (element.css('background-color')) ? element.css('background-color') : 'rgb(255,255,255)';
       }
-      var color = 'rgb(0,0,0)';
+      var color = 'rgb(255,255,255)';
       element.parents().each(function(){
         if (colors.hasBackgroundColor(element)) {
           color = element.css('background-color');
@@ -401,15 +401,15 @@ quail.components.color = function(quail, test, Case, options) {
         var img, i, rainbow, numberOfSamples;
 
         // Check text and background color using DOM.
-        id = 'colorFontSizing';
+        id = 'colorFontContrast';
         failedWCAGColorContrast = !colors.passesWCAG($this);
         failedWAIColorContrast = !colors.passesWAI($this);
         // Build a case.
         if ((algorithm === 'wcag' && failedWCAGColorContrast) || (algorithm === 'wai' && failedWAIColorContrast)) {
-          buildCase(element, 'failed', id, 'The font sizing of the text impairs readability');
+          buildCase(element, 'failed', id, 'The font contrast of the text impairs readability');
         }
         else {
-          buildCase(element, 'passed', id, 'The font sizing of the text is sufficient for readability');
+          buildCase(element, 'passed', id, 'The font contrast of the text is sufficient for readability');
         }
 
         // Check text and background using element behind current element.
@@ -481,15 +481,10 @@ quail.components.color = function(quail, test, Case, options) {
           };
           img.onerror = img.onabort = function () {
             var id = 'colorElementBehindBackgroundImageContrast';
-            buildCase(element, 'failed', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
+            buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
           };
           // Load the image.
-          try {
-            img.src = behindBackgroundImage;
-          } catch(e) {
-            var id = 'colorElementBehindBackgroundImageContrast';
-            buildCase(element, 'failed', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
-          }
+          img.src = behindBackgroundImage;
         }
 
         // Check if there's a background gradient using DOM.
