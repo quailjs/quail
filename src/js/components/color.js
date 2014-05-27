@@ -394,7 +394,7 @@ quail.components.color = function(quail, test, Case, options) {
 
         // Bail out is the text is not readable.
         if (quail.isUnreadable($this.text())) {
-          buildCase(element, 'cannotTell', '', 'The text cannot be processed');
+          buildCase(element, 'cantTell', '', 'The text cannot be processed');
           return;
         }
 
