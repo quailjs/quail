@@ -559,3 +559,48 @@ quail.components.color = function(quail, test, Case, options) {
     }
   });
 };
+
+/**
+ * For the color test, if any case passes for a given element, then all the
+ * cases for that element pass.
+ */
+quail.components.color.postInvoke = function (test) {
+  var passed = {};
+  var groupsBySelector = test.getGroupsBySelector();
+
+  /**
+   * Determine the length of an object.
+   *
+   * @param object obj
+   *   The object whose size will be determined.
+   *
+   * @return number
+   *   The size of the object determined by the number of keys.
+   */
+  function size (obj) {
+    var s = 0, key;
+    for (key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        s++;
+      }
+    }
+    return s;
+  }
+
+  // Go through each selector group.
+  var nub = '';
+  for (var selector in groupsBySelector) {
+    if (groupsBySelector.hasOwnProperty(selector)) {
+      var cases = groupsBySelector[selector];
+      cases.each(function (index, _case) {
+        if (_case.get('status') === passed) {
+          // This can just be an empty string. We only need the passed hash
+          // to contain keys, not values.
+          passed[selector] = nub;
+        }
+      });
+    }
+  }
+
+  return size(passed) === size(groupsBySelector);
+};

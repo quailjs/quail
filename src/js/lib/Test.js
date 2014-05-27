@@ -159,7 +159,7 @@ quail.lib.Test = (function () {
       // Loop the through the statuses and find tests with them.
       for (var i = 0, il = statuses.length; i < il; ++i) {
         var status = statuses[i];
-        // Loop through the tests.
+        // Loop through the cases.
         this.each(function (index, _case) {
           var caseStatus = _case.get('status');
           if (caseStatus === status) {
@@ -168,6 +168,24 @@ quail.lib.Test = (function () {
         });
       }
       return test;
+    },
+    /**
+     * Groups the cases by element selector.
+     *
+     * @return object
+     *  A hash of cases, keyed by the element selector.
+     */
+    getGroupsBySelector: function () {
+      var casesBySelector = {};
+      // Loop through the cases.
+      this.each(function (index, _case) {
+        var selector = _case.get('selector');
+        if (!casesBySelector[selector]) {
+          casesBySelector[selector] = new Test();
+        }
+        casesBySelector[selector].add(_case);
+      });
+      return casesBySelector;
     },
     /**
      * Adds the test that owns the Case to the set of arguments passed up to
@@ -181,11 +199,24 @@ quail.lib.Test = (function () {
       }
     },
     /**
-     *
+     * Evaluates the test's cases and sets the test's status.
      */
     determineStatus: function () {
+      // Invoke post filtering. This is a very special case for color.js.
+      var type = this.get('type');
+      var passed;
+      if (quail.components[type] && typeof quail.components[type].postInvoke === 'function') {
+        passed = quail.components[type].postInvoke.call(this, this);
+      }
+      // The post invocation function for the component declares that this test
+      // passed.
+      if (passed === true) {
+        this.set({
+          'status': 'passed'
+        });
+      }
       // CantTell.
-      if (this.findByStatus(['cantTell']).length === this.length) {
+      else if (this.findByStatus(['cantTell']).length === this.length) {
         this.set({
           'status': 'cantTell'
         });
