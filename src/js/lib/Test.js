@@ -103,6 +103,9 @@ quail.lib.Test = (function () {
       // called after a pause of invocations.
       this.testComplete = debounce(testComplete.bind(this), 400);
 
+      // Invoke the complete dispatcher to prevent the test from never
+      // completing in the off chance that no Cases are created.
+      this.testComplete(false);
 
       if (type === 'custom') {
         if (typeof callback === 'function') {
@@ -284,8 +287,8 @@ quail.lib.Test = (function () {
    * This function is meant to be bound to a Test as a method through
    * a debounced proxy function.
    */
-  function testComplete () {
-    var complete = true;
+  function testComplete (complete) {
+    complete = (typeof complete === 'undefined') ? true : complete;
     // @todo, this iteration would be faster with _.findWhere, that breaks on
     // the first match.
     this.each(function (index, _case) {
