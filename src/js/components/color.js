@@ -401,15 +401,15 @@ quail.components.color = function(quail, test, Case, options) {
         var img, i, rainbow, numberOfSamples;
 
         // Check text and background color using DOM.
-        id = 'colorFontSizing';
+        id = 'colorFontContrast';
         failedWCAGColorContrast = !colors.passesWCAG($this);
         failedWAIColorContrast = !colors.passesWAI($this);
         // Build a case.
         if ((algorithm === 'wcag' && failedWCAGColorContrast) || (algorithm === 'wai' && failedWAIColorContrast)) {
-          buildCase(element, 'failed', id, 'The font sizing of the text impairs readability');
+          buildCase(element, 'failed', id, 'The font contrast of the text impairs readability');
         }
         else {
-          buildCase(element, 'passed', id, 'The font sizing of the text is sufficient for readability');
+          buildCase(element, 'passed', id, 'The font contrast of the text is sufficient for readability');
         }
 
         // Check text and background using element behind current element.
