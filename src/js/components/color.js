@@ -130,13 +130,13 @@ quail.components.color = function(quail, test, Case, options) {
      */
     getColor : function(element, type) {
       if (type === 'foreground') {
-        return (element.css('color')) ? element.css('color') : 'rgb(255,255,255)';
+        return (element.css('color')) ? element.css('color') : 'rgb(0,0,0)';
       }
 
       if (this.hasBackgroundColor(element)) {
-        return (element.css('background-color')) ? element.css('background-color') : 'rgb(0,0,0)';
+        return (element.css('background-color')) ? element.css('background-color') : 'rgb(255,255,255)';
       }
-      var color = 'rgb(0,0,0)';
+      var color = 'rgb(255,255,255)';
       element.parents().each(function(){
         if (colors.hasBackgroundColor(element)) {
           color = element.css('background-color');
