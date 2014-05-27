@@ -175,7 +175,7 @@ quail.lib.Test = (function () {
      * @return object
      *  A hash of cases, keyed by the element selector.
      */
-    getGroupsBySelector: function () {
+    getCasesBySelector: function () {
       var casesBySelector = {};
       // Loop through the cases.
       this.each(function (index, _case) {

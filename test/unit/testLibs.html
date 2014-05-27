@@ -168,7 +168,7 @@
       cases = _test.findByStatus('failed');
       equal(cases.length, 2, 'Two cases found.');
     });
-    test('getGroupsBySelector', function () {
+    test('getCasesBySelector', function () {
       _test = new libs.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
@@ -176,7 +176,7 @@
         }
       });
       _test.invoke();
-      var casesBySelector = _test.getGroupsBySelector();
+      var casesBySelector = _test.getCasesBySelector();
       equal(casesBySelector['i.unittest'].length, 10, 'Cases are grouped by selector');
     });
     asyncTest('Event dispatching: resolved', function () {
