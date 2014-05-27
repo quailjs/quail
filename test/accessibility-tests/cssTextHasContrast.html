@@ -156,7 +156,7 @@
     }
 
     #test-20 {
-      background-image: url('http://quailjs.org/img/quail.png');
+      background-image: url('../assets/quail.png');
     }
     #test-20 p {
       background: #000;
@@ -208,15 +208,15 @@
     <p>This test is not readable</p>
   </div>
 
-  <div class="quail-test" data-expected="colorFontContrast:pass|colorBackgroundGradientContrast:pass" data-accessibility-test="cssTextHasContrast" id="test-10">
+  <div class="quail-test" data-expected="colorFontContrast:fail|colorBackgroundGradientContrast:pass" data-accessibility-test="cssTextHasContrast" id="test-10">
     <p>This test is readable</p>
   </div>
 
-  <div class="quail-test" data-expected="colorFontContrast:pass|colorBackgroundGradientContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-11">
+  <div class="quail-test" data-expected="colorFontContrast:fail|colorBackgroundGradientContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-11">
     <p>This test is not readable</p>
   </div>
 
-  <div class="quail-test" data-expected="colorFontContrast:pass|colorBackgroundGradientContrast:fail|colorElementBehindBackgroundGradientContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-12">
+  <div class="quail-test" data-expected="colorFontContrast:fail|colorBackgroundGradientContrast:fail|colorElementBehindBackgroundGradientContrast:fail" data-accessibility-test="cssTextHasContrast" id="test-12">
     <p>This test is not readable, but on screen it is</p>
   </div>
 
