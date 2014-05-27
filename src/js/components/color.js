@@ -449,14 +449,14 @@ quail.components.color = function(quail, test, Case, options) {
           };
           img.onerror = img.onabort = function () {
             var id = 'colorBackgroundImageContrast';
-            buildCase(element, 'failed', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
+            buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
           };
           // Load the image.
           try {
             img.src = backgroundImage;
           } catch(e) {
             var id = 'colorBackgroundImageContrast';
-            buildCase(element, 'failed', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
+            buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
           }
         }
 
@@ -484,7 +484,12 @@ quail.components.color = function(quail, test, Case, options) {
             buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
           };
           // Load the image.
-          img.src = behindBackgroundImage;
+          try {
+            img.src = behindBackgroundImage;
+          } catch(e) {
+            var id = 'colorElementBehindBackgroundImageContrast';
+            buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
+          }
         }
 
         // Check if there's a background gradient using DOM.

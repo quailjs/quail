@@ -59,8 +59,8 @@ quail.lib.TestCollection = (function () {
         }
         // Allow the invoker to listen to complete events for the
         // TestCollection.
-        if (callbacks.complete) {
-          tc.listenTo(tc, 'complete', callbacks.complete);
+        if (callbacks.testCollectionComplete) {
+          tc.listenTo(tc, 'complete', callbacks.testCollectionComplete);
         }
       });
 

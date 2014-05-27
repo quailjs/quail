@@ -191,6 +191,7 @@ var quail = {
         preFilter: options.preFilter || function () {},
         caseResolve: options.caseResolve || function () {},
         testComplete: options.testComplete || function () {},
+        testCollectionComplete: options.testCollectionComplete || function () {},
         complete: options.complete || function () {}
       });
     }
