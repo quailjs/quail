@@ -15,11 +15,6 @@ quail.lib.Case = (function () {
       this.timeout = null;
       this.attributes = attributes || {};
 
-      // Get a selector if an element is provided.
-      if (this.attributes.element && this.attributes.element.nodeType && this.attributes.element.nodeType === 1) {
-        this.attributes.selector = this.defineUniqueSelector(this.attributes.element);
-      }
-
       var that = this;
       // Dispatch a resolve event if the case is initiated with a status.
       if (this.attributes.status) {
@@ -64,11 +59,6 @@ quail.lib.Case = (function () {
         this.attributes[attr] = value;
       }
 
-      // Get a selector if an element is provided.
-      if (this.attributes.element && this.attributes.element.nodeType && this.attributes.element.nodeType === 1) {
-        this.attributes.selector = this.defineUniqueSelector(this.attributes.element);
-      }
-
       if (isStatusChanged) {
         this.resolve();
       }
@@ -79,6 +69,17 @@ quail.lib.Case = (function () {
      */
     resolve: function () {
       clearTimeout(this.timeout);
+
+      // Get a selector and HTML if an element is provided.
+      if (this.attributes.element && this.attributes.element.nodeType && this.attributes.element.nodeType === 1) {
+        this.attributes.selector = this.defineUniqueSelector(this.attributes.element);
+        // Get the parent node in order to get the innerHTML for the selected
+        // element. Trim wrapping whitespace, remove linebreaks and spaces.
+        if (typeof this.attributes.element.outerHTML === 'string') {
+          this.attributes.html = this.attributes.element.outerHTML.trim().replace(/(\r\n|\n|\r)/gm,"").replace(/>\s+</g, '><');
+        }
+      }
+
       this.dispatch('resolve', this);
     },
     /**
