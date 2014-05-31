@@ -55,9 +55,13 @@
     });
     test('defineUniqueSelector', function() {
       _case = new libs.Case({element: $('#defineUniqueSelector-1').get(0)});
+      _case.resolve();
       equal(_case.get('selector'), '#defineUniqueSelector-1', 'ID-based selector was found');
+      equal(_case.get('html'), '<div id="defineUniqueSelector-1"><p>First paragraph</p></div>', 'The correct HTML is returned');
       _case.set({element: $('#defineUniqueSelector-1 p').get(0)});
+      _case.resolve();
       equal(_case.get('selector'), '#defineUniqueSelector-1 p', 'Descendent selector was found');
+      equal(_case.get('html'), '<p>First paragraph</p>', 'The correct HTML is returned');
     });
     asyncTest('Event dispatching: timeout', function () {
       expect(1);
