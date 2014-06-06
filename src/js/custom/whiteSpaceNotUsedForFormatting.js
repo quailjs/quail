@@ -10,7 +10,7 @@ quail.whiteSpaceNotUsedForFormatting = function(quail, test, Case) {
       _case.set({status: 'passed'});
       return;
     }
-    var lines = $(this).html().toLowerCase().split('<br');
+    var lines = $(this).html().toLowerCase().split(/(<br\ ?\/?>)+/);
     var lineCount = 0;
     $.each(lines, function(index, line) {
       if (line.search(/(\s|\&nbsp;){2,}/g) !== -1) {
