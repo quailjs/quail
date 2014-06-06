@@ -2765,6 +2765,24 @@ languageChangesAreIdentified:
   callback: "languageChangesAreIdentified"
   components:
     - "language"
+languageDirectionPunctuation:
+  type: "custom"
+  testability: 0.5
+  title:
+    en: "Place punctuation around language direction changes in the right order"
+  description:
+    en: "If punctuation is used around a change in language direction, ensure the punctuation appears in the correct place."
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
+          - "G57"
+  tags:
+    - "language"
+    - "content"
+  callback: "languageDirectionPunctuation"
+  components:
+    - "language"
 languageUnicodeDirection:
   type: "custom"
   testability: 1

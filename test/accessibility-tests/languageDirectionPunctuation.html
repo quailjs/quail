@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>languageDirectionPunctuation</title>
+  </head>
+  <body dir="ltr">
+    <div class="quail-test" data-expected="p:pass|span:notApplicable" data-accessibility-test="languageDirectionPunctuation">
+      <p>
+          This paragraph has <span lang="he" dir="rtl">פעילות הבינאום</span> right-to-left text, but no punctuation.
+      </p>
+    </div>
+
+    <div class="quail-test" data-expected="notApplicable" data-accessibility-test="languageDirectionPunctuation">
+      <p>This paragraph has no language changes.</p>
+    </div>
+
+    <div class="quail-test" data-expected="p:fail|span:notApplicable" data-accessibility-test="languageDirectionPunctuation">
+      <p dir="ltr">
+          This paragraph has <span lang="he" dir="rtl">,פעילות הבינאום</span> right-to-left text, but no punctuation.
+      </p>
+    </div>
+    <script src="../quail-testrunner.js"></script>	</body>
+</html>
