@@ -14,6 +14,7 @@ quail.lib.SuccessCriteria = (function () {
     init: function (evaluator) {
       // Event listeners.
       this.listeners = {};
+      this.attributes = {};
 
       if (typeof evaluator !== 'function') {
         return this;
@@ -24,6 +25,8 @@ quail.lib.SuccessCriteria = (function () {
 
       return this;
     },
+    // Setting a length property makes it behave like an array.
+    length: 0,
     // Details of the test.
     attributes: {},
     get: function (attr) {
