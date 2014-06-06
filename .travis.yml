@@ -2,14 +2,6 @@ language: node_js
 node_js:
   - 0.10
 
-env:
-  global:
-    - secure: "chVihuGb0n35Lvu3H87JUCmVTg8UpIPLqRhtNHRQc/6a1bXH8Q0KMCIIhIO1lhSJXkIy/x9OwqXOve4Do8liXrwgJMuy673e9lGFxK4XFujTlvyEAwHhlMOhGpo/UYyt3wn3aFB0GY1lKn1+HtecJYSOqyVQ3unhY1lO1cCkkig="
-    - secure: "BWWoZltjRxfbKF4AlrPq9aSumY63n/xDnSvmuHXAEmbfJoWpOXXB0me5H6515I0zH1hjpHyusmQ0UXfRQAie26kvpPyGIdjs12mfGT0hLrkdO2ua/OlosufatnZAb4F0eg9Z6AR2w+94BK5vNfc+gSbHWWI8SLjMa29Oz+WLdL0="
-
 install:
   - npm install grunt-cli -g
   - npm install
-
-after_success:
-  - grunt saucelabs --verbose
