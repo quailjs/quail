@@ -79,7 +79,7 @@ var quail = {
         for (var sc in this.successCriteria) {
           if (this.successCriteria.hasOwnProperty(sc)) {
             var criteria = this.successCriteria[sc];
-            criteria.add(tests);
+            criteria.registerTests(tests);
             if (listener && listener.listenTo && typeof listener.listenTo === 'function') {
               // Allow the invoker to listen to successCriteriaEvaluated events
               // on each SuccessCriteria.
