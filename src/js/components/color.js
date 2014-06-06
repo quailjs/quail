@@ -130,13 +130,13 @@ quail.components.color = function(quail, test, Case, options) {
      */
     getColor : function(element, type) {
       if (type === 'foreground') {
-        return (element.css('color')) ? element.css('color') : 'rgb(255,255,255)';
+        return (element.css('color')) ? element.css('color') : 'rgb(0,0,0)';
       }
 
       if (this.hasBackgroundColor(element)) {
-        return (element.css('background-color')) ? element.css('background-color') : 'rgb(0,0,0)';
+        return (element.css('background-color')) ? element.css('background-color') : 'rgb(255,255,255)';
       }
-      var color = 'rgb(0,0,0)';
+      var color = 'rgb(255,255,255)';
       element.parents().each(function(){
         if (colors.hasBackgroundColor(element)) {
           color = element.css('background-color');
@@ -394,22 +394,22 @@ quail.components.color = function(quail, test, Case, options) {
 
         // Bail out is the text is not readable.
         if (quail.isUnreadable($this.text())) {
-          buildCase(element, 'cannotTell', '', 'The text cannot be processed');
+          buildCase(element, 'cantTell', '', 'The text cannot be processed');
           return;
         }
 
         var img, i, rainbow, numberOfSamples;
 
         // Check text and background color using DOM.
-        id = 'colorFontSizing';
+        id = 'colorFontContrast';
         failedWCAGColorContrast = !colors.passesWCAG($this);
         failedWAIColorContrast = !colors.passesWAI($this);
         // Build a case.
         if ((algorithm === 'wcag' && failedWCAGColorContrast) || (algorithm === 'wai' && failedWAIColorContrast)) {
-          buildCase(element, 'failed', id, 'The font sizing of the text impairs readability');
+          buildCase(element, 'failed', id, 'The font contrast of the text impairs readability');
         }
         else {
-          buildCase(element, 'passed', id, 'The font sizing of the text is sufficient for readability');
+          buildCase(element, 'passed', id, 'The font contrast of the text is sufficient for readability');
         }
 
         // Check text and background using element behind current element.
@@ -449,14 +449,14 @@ quail.components.color = function(quail, test, Case, options) {
           };
           img.onerror = img.onabort = function () {
             var id = 'colorBackgroundImageContrast';
-            buildCase(element, 'failed', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
+            buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
           };
           // Load the image.
           try {
             img.src = backgroundImage;
           } catch(e) {
             var id = 'colorBackgroundImageContrast';
-            buildCase(element, 'failed', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
+            buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
           }
         }
 
@@ -481,14 +481,14 @@ quail.components.color = function(quail, test, Case, options) {
           };
           img.onerror = img.onabort = function () {
             var id = 'colorElementBehindBackgroundImageContrast';
-            buildCase(element, 'failed', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
+            buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
           };
           // Load the image.
           try {
             img.src = behindBackgroundImage;
           } catch(e) {
             var id = 'colorElementBehindBackgroundImageContrast';
-            buildCase(element, 'failed', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
+            buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
           }
         }
 
@@ -563,4 +563,49 @@ quail.components.color = function(quail, test, Case, options) {
       });
     }
   });
+};
+
+/**
+ * For the color test, if any case passes for a given element, then all the
+ * cases for that element pass.
+ */
+quail.components.color.postInvoke = function (test) {
+  var passed = {};
+  var groupsBySelector = test.getCasesBySelector();
+
+  /**
+   * Determine the length of an object.
+   *
+   * @param object obj
+   *   The object whose size will be determined.
+   *
+   * @return number
+   *   The size of the object determined by the number of keys.
+   */
+  function size (obj) {
+    var s = 0, key;
+    for (key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        s++;
+      }
+    }
+    return s;
+  }
+
+  // Go through each selector group.
+  var nub = '';
+  for (var selector in groupsBySelector) {
+    if (groupsBySelector.hasOwnProperty(selector)) {
+      var cases = groupsBySelector[selector];
+      cases.each(function (index, _case) {
+        if (_case.get('status') === passed) {
+          // This can just be an empty string. We only need the passed hash
+          // to contain keys, not values.
+          passed[selector] = nub;
+        }
+      });
+    }
+  }
+
+  return size(passed) === size(groupsBySelector);
 };

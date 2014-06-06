@@ -53,11 +53,14 @@ quail.lib.TestCollection = (function () {
         if (callbacks.caseResolve) {
           tc.listenTo(test, 'resolve', callbacks.caseResolve);
         }
+        // Allow the invoker to listen to complete events on each Test.
         if (callbacks.testComplete) {
           tc.listenTo(test, 'complete', callbacks.testComplete);
         }
-        if (callbacks.complete) {
-          tc.listenTo(tc, 'complete', callbacks.complete);
+        // Allow the invoker to listen to complete events for the
+        // TestCollection.
+        if (callbacks.testCollectionComplete) {
+          tc.listenTo(tc, 'complete', callbacks.testCollectionComplete);
         }
       });
 
@@ -77,13 +80,19 @@ quail.lib.TestCollection = (function () {
 
       return this;
     },
-    // Execute a callback for every element in the matched set.
+    /**
+     * Execute a callback for every element in the matched set.
+     */
     each: function (iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
         args.unshift(i);
-        iterator.apply(this[i], args);
+        var cont = iterator.apply(this[i], args);
+        // Allow an iterator to break from the loop.
+        if (cont === false) {
+          break;
+        }
       }
       return this;
     },
@@ -96,13 +105,15 @@ quail.lib.TestCollection = (function () {
         this.push(test);
       }
     },
+    /**
+     * Finds a test by its name.
+     */
     find: function (testname) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           return this[i];
         }
       }
-      // Return an empty TestCollection for chaining.
       return null;
     },
     /**
@@ -148,6 +159,32 @@ quail.lib.TestCollection = (function () {
         var args = [].slice.call(arguments, 1);
         return methods[guidelineName].apply(this, args);
       }
+    },
+    /**
+     * Finds tests by their status.
+     */
+    findByStatus: function (statuses) {
+      if (!statuses) {
+        return;
+      }
+      var tests = new TestCollection();
+      // A single status or an array of statuses is allowed. Always act on an
+      // array.
+      if (typeof statuses === 'string') {
+        statuses = [statuses];
+      }
+      // Loop the through the statuses and find tests with them.
+      for (var i = 0, il = statuses.length; i < il; ++i) {
+        var status = statuses[i];
+        // Loop through the tests.
+        this.each(function (index, test) {
+          var testStatus = test.get('status');
+          if (testStatus === status) {
+            tests.add(test);
+          }
+        });
+      }
+      return tests;
     },
     /**
      * Create a new test from a name and details.

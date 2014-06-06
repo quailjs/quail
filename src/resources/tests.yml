@@ -2796,11 +2796,11 @@ languageUnicodeDirection:
         techniques:
           - "H34"
   tags:
-  - "language"
-  - "content"
+    - "language"
+    - "content"
   callback: "languageUnicodeDirection"
   components:
-  - "language"
+    - "language"
 legendDescribesListOfChoices:
   type: "selector"
   testability: 0

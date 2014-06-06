@@ -6,6 +6,12 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
+BUILDCHECK   := $(shell command -v $(SPHINXBUILD))
+
+# Check build script is installed
+ifeq ($(BUILDCHECK),)
+$(error Build command '$(SPHINXBUILD)' not found)
+endif
 
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
