@@ -708,6 +708,7 @@ contentPositioningShouldNotChangeMeaning:
         techniques:
           - "C6"
           - "F1"
+          - "G57"
       1.4.5:
         techniques:
           - "C6"
