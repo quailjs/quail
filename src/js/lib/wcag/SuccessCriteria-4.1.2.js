@@ -51,6 +51,12 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
       //   in the keyed-by-selector list of Cases. We need to think about this
       //   more.
     }
+    else {
+      sc.set({
+        'message': 'Insufficient test coverage. The tests [' + requiredTests.join(', ') + '] are required but only the tests [' + criteriaTests.join(', ') + '] were run.',
+        'status': 'cantTell'
+      });
+    }
   }
 
   // Create a new SuccessCriteria and pass it the evaluator.

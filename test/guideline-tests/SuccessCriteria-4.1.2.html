@@ -10,7 +10,10 @@
 </head>
 <body>
   <div id="test-scope">
-    <p>This test is readable.</p>
+    <form>
+      <label for=":a">Username</label>
+      <input id=":a" />
+    </form>
   </div>
 
   <script src="../quail-testrunner.js"></script>
@@ -20,10 +23,10 @@
         expect(3);
         $('#test-scope').quail({
           jsonPath : '../../dist',
-          guideline : ['cssTextHasContrast'],
+          guideline : ['labelsAreAssignedToAnInput', 'labelMustBeUnique', 'inputWithoutLabelHasTitle'],
           reset : true,
           successCriteriaEvaluated : function(eventName, successCriteria, testCollection) {
-            if (successCriteria.get('name') === 'wcag:1.4.3') {
+            if (successCriteria.get('name') === 'wcag:4.1.2') {
               equal(eventName, 'successCriteriaEvaluated', 'The event name is \'successCriteriaEvaluated\'');
               ok(successCriteria instanceof quail.lib.SuccessCriteria, 'The successCriteria argument is an instance of quail.lib.SuccessCriteria');
               ok(testCollection instanceof quail.lib.TestCollection, 'The testCollection argument is an instance of quail.lib.TestCollection');
