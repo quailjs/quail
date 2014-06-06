@@ -80,7 +80,9 @@ quail.lib.TestCollection = (function () {
 
       return this;
     },
-    // Execute a callback for every element in the matched set.
+    /**
+     * Execute a callback for every element in the matched set.
+     */
     each: function (iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
@@ -103,13 +105,15 @@ quail.lib.TestCollection = (function () {
         this.push(test);
       }
     },
+    /**
+     * Finds a test by its name.
+     */
     find: function (testname) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           return this[i];
         }
       }
-      // Return an empty TestCollection for chaining.
       return null;
     },
     /**
