@@ -1,5 +1,7 @@
 quail.languageDirectionPunctuation = function(quail, test, Case) {
   var $scope = test.get('$scope');
+  var punctuation = {};
+  var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
   var currentDirection = ($scope.attr('dir')) ? $scope.attr('dir').toLowerCase() : 'ltr';
   var oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
   var textDirection = quail.components.language.textDirection;
@@ -29,14 +31,16 @@ quail.languageDirectionPunctuation = function(quail, test, Case) {
         _case.set({status : 'notApplicable'});
         return;
       }
-      if (text.search('([\u2000-\u206F]' + textDirection[oppositeDirection] + ')|(' + textDirection[oppositeDirection] + '[\u2000-\u206F])')) {
-        _case.set({status : 'failed'});
+      var first = text.search(textDirection[oppositeDirection]);
+      var last = text.lastIndexOf(matches.pop());
+      while (punctuation = punctuationRegex.exec(text)) {
+        if(punctuation.index === first - 1 ||
+          punctuation.index === last + 1) {
+          _case.set({status: 'failed'});
+          return;
+        }
       }
-      else {
-        _case.set({status : 'passed'});
-      }
-      //console.log(matches.pop())
-//(^)|([\u2000-\u206F]$)/ig
+      _case.set({status : 'passed'});
     });
   });
 };
