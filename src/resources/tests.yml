@@ -4002,6 +4002,9 @@ tableLayoutMakesSenseLinearized:
     en: "If a <code>table</code> element is used for layout purposes only, then the content of the table should make sense if the table is linearized."
   guidelines:
     wcag:
+      1.3.2:
+        techniques:
+          - "G57"
       4.1.1:
         techniques:
           - "F49"
