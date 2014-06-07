@@ -15,6 +15,7 @@ quail.lib.SuccessCriteria = (function () {
       // Event listeners.
       this.listeners = {};
       this.attributes = {};
+      this.results = {};
 
       if (typeof evaluator !== 'function') {
         return this;
@@ -135,6 +136,7 @@ quail.lib.SuccessCriteria = (function () {
     evaluate: function (eventName, testCollection) {
       // Sort the test cases by selector.
       var sc = this;
+      // @todo Calculate this once and cache it.
       testCollection.each(function (index, test) {
         test.each(function (index, _case) {
           sc.add(_case);
