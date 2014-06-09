@@ -15,11 +15,27 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
     // If the length of the union equals the length of the required tests,
     // then we have the necessary tests to evaluate this success criteria.
     if (criteriaTests.length === requiredTests.length) {
+      // Find the tests to evaluate.
+      var cssTextHasContrast = tests.find('cssTextHasContrast');
+      // Cycle through the cases in the Success Criteria.
+      sc.each(function (index, _case) {
+        var selector = _case.get('selector');
+        var conclusion = 'untested';
+        var testCase;
 
+        // Process 'labelsAreAssignedToAnInput'.
+        testCase = cssTextHasContrast.groupCasesBySelector(selector)[selector][0];
+
+        if (testCase) {
+          conclusion = testCase.get('status') || 'cantTell';
+        }
+
+        // Add the case to the Success Criteria.
+        sc.addConclusion(conclusion, _case);
+      });
+      // Report the results.
+      sc.report();
     }
-
-    // Report the results.
-    sc.report();
   }
 
   // Create a new SuccessCriteria and pass it the evaluator.

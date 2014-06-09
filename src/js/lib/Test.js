@@ -173,12 +173,22 @@ quail.lib.Test = (function () {
       return test;
     },
     /**
+     * Returns a set of cases with corresponding to th supplied selector.
+     */
+    findCaseBySelector: function (selector) {
+      var cases = this.groupCasesBySelector();
+      if (cases.hasOwnProperty(selector)) {
+        return cases[selector];
+      }
+      return new Test();
+    },
+    /**
      * Groups the cases by element selector.
      *
      * @return object
      *  A hash of cases, keyed by the element selector.
      */
-    getCasesBySelector: function () {
+    groupCasesBySelector: function () {
       var casesBySelector = {};
       // Loop through the cases.
       this.each(function (index, _case) {

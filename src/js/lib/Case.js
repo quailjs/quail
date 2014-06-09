@@ -66,6 +66,25 @@ quail.lib.Case = (function () {
       return this;
     },
     /**
+     * A test that determines if a case has one of a set of statuses.
+     *
+     * @return boolean
+     *   A bit that indicates if the case has one of the supplied statuses.
+     */
+    hasStatus: function (statuses) {
+      // This is a rought test of arrayness.
+      if (typeof statuses !== 'object') {
+        statuses = [statuses];
+      }
+      var status = this.get('status');
+      for (var i = 0, il = statuses.length; i < il; ++i) {
+        if (statuses[i] === status) {
+          return true;
+        }
+      }
+      return false;
+    },
+    /**
      * Dispatches the resolve event; clears the timeout fallback event.
      */
     resolve: function () {

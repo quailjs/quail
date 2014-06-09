@@ -63,6 +63,11 @@
       equal(_case.get('selector'), '#defineUniqueSelector-1 p', 'Descendent selector was found');
       equal(_case.get('html'), '<p>First paragraph</p>', 'The correct HTML is returned');
     });
+    test('hasStatus', function () {
+      _case = new libs.Case({status: 'untested'});
+      ok(_case.hasStatus('untested'), 'The case has the status \'untested\'');
+      ok(_case.hasStatus(['passed', 'untested']), 'The case has the status \'untested\'');
+    });
     asyncTest('Event dispatching: timeout', function () {
       expect(1);
       _test = new libs.Test('fakeTest');
@@ -158,6 +163,16 @@
       });
       equal(i, 1, 'Test.fn.each looped 2 times');
     });
+    test('findCaseBySelector', function () {
+      var cases;
+      _test = new libs.Test('fakeLinkTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'a.unittest',
+        }
+      });
+      _test.invoke();
+    });
     test('findByStatus', function () {
       var cases;
       _test = new libs.Test('fakeLinkTest', {
@@ -172,7 +187,7 @@
       cases = _test.findByStatus('failed');
       equal(cases.length, 2, 'Two cases found.');
     });
-    test('getCasesBySelector', function () {
+    test('groupCasesBySelector', function () {
       _test = new libs.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
@@ -180,7 +195,7 @@
         }
       });
       _test.invoke();
-      var casesBySelector = _test.getCasesBySelector();
+      var casesBySelector = _test.groupCasesBySelector();
       equal(casesBySelector['i.unittest'].length, 10, 'Cases are grouped by selector');
     });
     asyncTest('Event dispatching: resolved', function () {
@@ -350,6 +365,12 @@
       }
       criteriaTests = sc.filterTests(testCollection, requiredTests);
       equal(criteriaTests.length, 4, 'The SuccessCriteria correctly filters required tests');
+    });
+    test('addConclusion', function () {
+      var _case = new libs.Case();
+      var sc = new libs.SuccessCriteria();
+      sc.addConclusion('untested', _case);
+      equal(sc.results['untested'][0], _case, 'Cases are registered by conclusion.');
     });
     asyncTest('Event dispatching: successCriteriaEvaluated', function () {
       expect(2);

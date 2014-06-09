@@ -131,6 +131,18 @@ quail.lib.SuccessCriteria = (function () {
       return criteriaTests;
     },
     /**
+     * Adds a Case conclusion to the Success Criteria.
+     *
+     * @param string concluion
+     * @param quail.lib.Case _case
+     */
+    addConclusion: function (conclusion, _case) {
+      if (!this.results[conclusion]) {
+        this.results[conclusion] = quail.lib.Test();
+      }
+      this.results[conclusion].add(_case);
+    },
+    /**
      * Runs the evaluator callbacks against the completed TestCollection.
      */
     evaluate: function (eventName, testCollection) {

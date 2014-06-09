@@ -571,7 +571,7 @@ quail.components.color = function(quail, test, Case, options) {
  */
 quail.components.color.postInvoke = function (test) {
   var passed = {};
-  var groupsBySelector = test.getCasesBySelector();
+  var groupsBySelector = test.groupCasesBySelector();
 
   /**
    * Determine the length of an object.
