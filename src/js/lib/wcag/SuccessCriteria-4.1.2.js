@@ -33,18 +33,18 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
           // @dev, we'll look at each test individually for this selector.
 
           // Process 'labelsAreAssignedToAnInput'.
-          var case_labelsAreAssignedToAnInput = labelsAreAssignedToAnInput.findCaseBySelector(selector)[0] || null;
+          var cases_labelsAreAssignedToAnInput = labelsAreAssignedToAnInput.findCasesBySelector(selector);
           // Process 'labelMustBeUnique'.
-          var case_labelMustBeUnique = labelMustBeUnique.findCaseBySelector(selector)[0] || null;
+          var cases_labelMustBeUnique = labelMustBeUnique.findCasesBySelector(selector);
           // Process 'inputWithoutLabelHasTitle'.
-          var case_inputWithoutLabelHasTitle = inputWithoutLabelHasTitle.findCaseBySelector(selector)[0] || null;
+          var cases_inputWithoutLabelHasTitle = inputWithoutLabelHasTitle.findCasesBySelector(selector);
 
           var passing = ['passed', 'notApplicable'];
 
           if (
-            case_labelsAreAssignedToAnInput.hasStatus(passing) &&
-            case_labelMustBeUnique.hasStatus(passing) &&
-            case_inputWithoutLabelHasTitle.hasStatus(passing)) {
+            cases_labelsAreAssignedToAnInput.hasStatus(passing) &&
+            cases_labelMustBeUnique.hasStatus(passing) &&
+            cases_inputWithoutLabelHasTitle.hasStatus(passing)) {
             conclusion = 'passed';
           }
 

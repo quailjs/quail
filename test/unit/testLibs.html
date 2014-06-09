@@ -34,7 +34,6 @@
 
   <script>
     var libs = __testQuail.lib;
-    var _case, _test, _testCollection;
     __testQuail.html = $('body');
 
     /**
@@ -42,11 +41,11 @@
      */
     module('Case');
     test('Instantiation', function () {
-      _case = new libs.Case({bird: 'sandpiper'});
+      var _case = new libs.Case({bird: 'sandpiper'});
       ok(_case instanceof libs.Case, 'Case is the constructor of _case');
     });
     test('Get/Set', function () {
-      _case = new libs.Case({bird: 'sandpiper'});
+      var _case = new libs.Case({bird: 'sandpiper'});
       equal(_case.get('bird'), 'sandpiper', 'Case.fn.get retrieves the object\'s attributes');
       _case.set('mammal', 'bear');
       equal(_case.get('mammal'), 'bear', 'Case.fn.get sets with a key/value argument pair');
@@ -54,7 +53,7 @@
       equal(_case.get('reptile'), 'iguana', 'Case.fn.get sets with an object argument');
     });
     test('defineUniqueSelector', function() {
-      _case = new libs.Case({element: $('#defineUniqueSelector-1').get(0)});
+      var _case = new libs.Case({element: $('#defineUniqueSelector-1').get(0)});
       _case.resolve();
       equal(_case.get('selector'), '#defineUniqueSelector-1', 'ID-based selector was found');
       equal(_case.get('html'), '<div id="defineUniqueSelector-1"><p>First paragraph</p></div>', 'The correct HTML is returned');
@@ -64,14 +63,14 @@
       equal(_case.get('html'), '<p>First paragraph</p>', 'The correct HTML is returned');
     });
     test('hasStatus', function () {
-      _case = new libs.Case({status: 'untested'});
+      var _case = new libs.Case({status: 'untested'});
       ok(_case.hasStatus('untested'), 'The case has the status \'untested\'');
       ok(_case.hasStatus(['passed', 'untested']), 'The case has the status \'untested\'');
     });
     asyncTest('Event dispatching: timeout', function () {
       expect(1);
-      _test = new libs.Test('fakeTest');
-      _case = new libs.Case();
+      var _test = new libs.Test('fakeTest');
+      var _case = new libs.Case();
       _test.listenTo(_case, 'timeout', function (eventName, _case) {
         ok(eventName === 'timeout', 'The Case timed out.');
         start();
@@ -83,11 +82,11 @@
      */
     module('Test');
     test('Instantiation', function () {
-      _test = new libs.Test('peregrine', {'bird': 'falcon'});
+      var _test = new libs.Test('peregrine', {'bird': 'falcon'});
       ok(_test instanceof libs.Test, 'Test is the constructor of _test');
     });
     test('Get/Set', function () {
-      _test = new libs.Test('peregrine', {'bird': 'falcon'});
+      var _test = new libs.Test('peregrine', {'bird': 'falcon'});
       equal(_test.get('name'), 'peregrine', 'Test.fn.get retrieves the object\'s name');
       equal(_test.get('bird'), 'falcon', 'Test.fn.get retrieves the object\'s attributes');
       _test.set('mammal', 'bear');
@@ -96,7 +95,7 @@
       equal(_test.get('reptile'), 'iguana', 'Test.fn.get sets with an object argument');
     });
     test('Invoke/selector', function () {
-      _test = new libs.Test('fakeLinkTest', {
+      var _test = new libs.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
           'selector': 'a.unittest',
@@ -132,7 +131,7 @@
       };
       __testQuail['customCallback'] = cb;
       __testQuail.components.customCallback = cb;
-      _test = new libs.Test('fakeLinkTest', {
+      var _test = new libs.Test('fakeLinkTest', {
         'type': 'custom',
         'callback': cb
       });
@@ -148,7 +147,7 @@
       _test.invoke();
     });
     test('Iteration', function () {
-      _test = new libs.Test('fakeLinkTest', {
+      var _test = new libs.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
           'selector': 'a.unittest',
@@ -163,19 +162,21 @@
       });
       equal(i, 1, 'Test.fn.each looped 2 times');
     });
-    test('findCaseBySelector', function () {
+    test('findCasesBySelector', function () {
       var cases;
-      _test = new libs.Test('fakeLinkTest', {
+      var _test = new libs.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
           'selector': 'a.unittest',
         }
       });
       _test.invoke();
+      cases = _test.findCasesBySelector('a.unittest');
+      equal(cases.length, 2, 'Cases are grouped by selector');
     });
     test('findByStatus', function () {
       var cases;
-      _test = new libs.Test('fakeLinkTest', {
+      var _test = new libs.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
           'selector': 'a.unittest',
@@ -188,7 +189,7 @@
       equal(cases.length, 2, 'Two cases found.');
     });
     test('groupCasesBySelector', function () {
-      _test = new libs.Test('fakeLinkTest', {
+      var _test = new libs.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
           'selector': 'i.unittest',
@@ -198,10 +199,26 @@
       var casesBySelector = _test.groupCasesBySelector();
       equal(casesBySelector['i.unittest'].length, 10, 'Cases are grouped by selector');
     });
+    asyncTest('groupCasesByHtml', function () {
+      expect(1);
+      var _testCollection = new libs.TestCollection();
+      var _test = new libs.Test('testCompleteTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'i.unittest'
+        }
+      });
+      _testCollection.listenTo(_test, 'complete', function (eventName, thisTest, _case) {
+        var casesByHtml = thisTest.groupCasesByHtml();
+        equal(casesByHtml['<i class="unittest">fake italic tag</i>'].length, 10, 'Cases are grouped by html');
+        start();
+      });
+      _test.invoke();
+    });
     asyncTest('Event dispatching: resolved', function () {
       expect(1);
-      _testCollection = new libs.TestCollection();
-      _test = new libs.Test('testCompleteTest', {
+      var _testCollection = new libs.TestCollection();
+      var _test = new libs.Test('testCompleteTest', {
         'type': 'selector',
         'options': {
           'selector': 'b.unittest'
@@ -216,9 +233,9 @@
     asyncTest('Event dispatching: complete', function () {
       expect(2);
       var count = 0;
-      _testCollection = new libs.TestCollection();
+      var _testCollection = new libs.TestCollection();
       // This selects 10 instances of this element.
-      _test = new libs.Test('testCompleteTest', {
+      var _test = new libs.Test('testCompleteTest', {
         'type': 'selector',
         'options': {
           'selector': 'i.unittest'
@@ -237,21 +254,21 @@
 
     module('TestCollection');
     test('Instantiation', function () {
-      _testCollection = new libs.TestCollection({'peregrine': {'bird': 'falcon'}});
+      var _testCollection = new libs.TestCollection({'peregrine': {'bird': 'falcon'}});
       ok(_testCollection instanceof libs.TestCollection, 'TestCollection is the constructor of _testCollection');
     });
     test('Set', function () {
-      _testCollection = new libs.TestCollection({'peregrine': {'bird': 'falcon'}});
-      _test = _testCollection.set('charlie', {'reptile': 'iguana'});
+      var _testCollection = new libs.TestCollection({'peregrine': {'bird': 'falcon'}});
+      var _test = _testCollection.set('charlie', {'reptile': 'iguana'});
       ok(_test instanceof libs.Test, 'Test is the constructor of _test');
     });
     test('Find', function () {
-      _testCollection = new libs.TestCollection({'peregrine': {'bird': 'falcon'}});
-      _test = _testCollection.find('peregrine');
+      var _testCollection = new libs.TestCollection({'peregrine': {'bird': 'falcon'}});
+      var _test = _testCollection.find('peregrine');
       equal('falcon', _test.get('bird'), 'TestCollection.fn.find retrieves the correct Test');
     });
     test('Iteration', function () {
-      _testCollection = new libs.TestCollection({
+      var _testCollection = new libs.TestCollection({
         'peregrine': {'bird': 'falcon'},
         'charlie': {'reptile': 'iguana'}
       });
@@ -265,7 +282,7 @@
     });
     test('findByStatus', function () {
       var tests;
-      _testCollection = new libs.TestCollection({
+      var _testCollection = new libs.TestCollection({
         'peregrine': {'bird': 'falcon'},
         'charlie': {'reptile': 'iguana'},
         'wayne': {'mammal': 'squirrel'},
@@ -286,7 +303,7 @@
     });
     asyncTest('Event dispatching: complete', function () {
       expect(2);
-      _testCollection = new libs.TestCollection();
+      var _testCollection = new libs.TestCollection();
       // @todo, we need a mockable object that will listen to events.
       var listener = new libs.TestCollection();
       listener.listenTo(_testCollection, 'complete', function (eventName, testCollection) {

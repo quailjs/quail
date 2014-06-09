@@ -175,7 +175,7 @@ quail.lib.Test = (function () {
     /**
      * Returns a set of cases with corresponding to th supplied selector.
      */
-    findCaseBySelector: function (selector) {
+    findCasesBySelector: function (selector) {
       var cases = this.groupCasesBySelector();
       if (cases.hasOwnProperty(selector)) {
         return cases[selector];
@@ -199,6 +199,26 @@ quail.lib.Test = (function () {
         casesBySelector[selector].add(_case);
       });
       return casesBySelector;
+    },
+    /**
+     * Groups the cases by serialized HTML string.
+     *
+     * @todo, the html string index needs to be hashed to a uniform length.
+     *
+     * @return object
+     *  A hash of cases, keyed by the element selector.
+     */
+    groupCasesByHtml: function () {
+      var casesByHtml = {};
+      // Loop through the cases.
+      this.each(function (index, _case) {
+        var html = _case.get('html');
+        if (!casesByHtml[html]) {
+          casesByHtml[html] = new Test();
+        }
+        casesByHtml[html].add(_case);
+      });
+      return casesByHtml;
     },
     /**
      * Adds the test that owns the Case to the set of arguments passed up to
