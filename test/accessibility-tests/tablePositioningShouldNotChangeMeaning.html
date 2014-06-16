@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <title>tablePositioningShouldNotChangeMeaning</title>
+    <style>
+
+      #fail-1 td {
+        position: absolute;
+      }
+
+      #fail-2 td {
+        float: right;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="quail-test" data-expected="fail" id="fail-1" data-accessibility-test="tablePositioningShouldNotChangeMeaning">
+      <table>
+        <thead>
+          <tr>
+            <th>One</th>
+            <th>Two</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>One</td>
+            <td>Two</td>
+          </tr>
+          <tr>
+            <td>One B</td>
+            <td>Two B</td>
+          </tr>
+          <tr>
+            <td>One C</td>
+            <td>Two C</td>
+          </tr>
+          <tr>
+            <td>One D</td>
+            <td>Two D</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="quail-test" data-expected="fail" id="fail-2" data-accessibility-test="tablePositioningShouldNotChangeMeaning">
+      <table>
+        <thead>
+          <tr>
+            <th>One</th>
+            <th>Two</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>One</td>
+            <td>Two</td>
+          </tr>
+          <tr>
+            <td>One B</td>
+            <td>Two B</td>
+          </tr>
+          <tr>
+            <td>One C</td>
+            <td>Two C</td>
+          </tr>
+          <tr>
+            <td>One D</td>
+            <td>Two D</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="tablePositioningShouldNotChangeMeaning">
+      <table>
+        <thead>
+          <tr>
+            <th>One</th>
+            <th>Two</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>One</td>
+            <td>Two</td>
+          </tr>
+          <tr>
+            <td>One B</td>
+            <td>Two B</td>
+          </tr>
+          <tr>
+            <td>One C</td>
+            <td>Two C</td>
+          </tr>
+          <tr>
+            <td>One D</td>
+            <td>Two D</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="../quail-testrunner.js"></script>	</body>
+</html>

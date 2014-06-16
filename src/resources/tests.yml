@@ -4011,6 +4011,32 @@ tableNotUsedForLayout:
     - "layout"
     - "content"
   callback: "tableNotUsedForLayout"
+tablePositioningShouldNotChangeMeaning:
+  type: "custom"
+  testability: 0.5
+  title:
+    en: "Meaning in tables should not be created through positioning"
+  description:
+    en: "A table should not use CSS to change the positioning of cells."
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
+          - "C6"
+      1.4.5:
+        techniques:
+          - "C6"
+      1.4.9:
+        techniques:
+          - "C6"
+      2.4.1:
+        techniques:
+          - "C6"
+  tags:
+    - "table"
+    - "content"
+    - "structure"
+  callback: "tablePositioningShouldNotChangeMeaning"
 tableShouldUseHeaderIDs:
   type: "custom"
   testability: 0.5
