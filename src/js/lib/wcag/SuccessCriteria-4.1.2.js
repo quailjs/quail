@@ -23,6 +23,7 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
       var labelsAreAssignedToAnInput = tests.find('labelsAreAssignedToAnInput');
       var labelMustBeUnique = tests.find('labelMustBeUnique');
       var inputWithoutLabelHasTitle = tests.find('inputWithoutLabelHasTitle');
+
       // Cycle through the cases in the Success Criteria.
       sc.each(function (index, _case) {
         var selector = _case.get('selector');
@@ -41,10 +42,10 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
 
           var passing = ['passed', 'notApplicable'];
 
-          if (
-            cases_labelsAreAssignedToAnInput.hasStatus(passing) &&
-            cases_labelMustBeUnique.hasStatus(passing) &&
-            cases_inputWithoutLabelHasTitle.hasStatus(passing)) {
+          // Make sure the arrays are not empty.
+          if ((cases_labelsAreAssignedToAnInput.length === 0 || cases_labelsAreAssignedToAnInput[0].hasStatus(passing)) &&
+            (cases_labelMustBeUnique.length === 0 || cases_labelMustBeUnique[0].hasStatus(passing)) &&
+            (cases_inputWithoutLabelHasTitle.length === 0 || cases_inputWithoutLabelHasTitle[0].hasStatus(passing))) {
             conclusion = 'passed';
           }
 
