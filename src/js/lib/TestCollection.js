@@ -57,12 +57,13 @@ quail.lib.TestCollection = (function () {
         if (callbacks.testComplete) {
           tc.listenTo(test, 'complete', callbacks.testComplete);
         }
-        // Allow the invoker to listen to complete events for the
-        // TestCollection.
-        if (callbacks.testCollectionComplete) {
-          tc.listenTo(tc, 'complete', callbacks.testCollectionComplete);
-        }
       });
+
+      // Allow the invoker to listen to complete events for the
+      // TestCollection.
+      if (callbacks.testCollectionComplete) {
+        tc.listenTo(tc, 'complete', callbacks.testCollectionComplete);
+      }
 
       // Set the test complete method to the closure function that dispatches
       // the complete event. This method needs to be debounced so it is

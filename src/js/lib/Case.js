@@ -35,7 +35,7 @@ quail.lib.Case = (function () {
       return this;
     },
     // Details of the Case.
-    attributes: {},
+    attributes: null,
     get: function (attr) {
       return this.attributes[attr];
     },

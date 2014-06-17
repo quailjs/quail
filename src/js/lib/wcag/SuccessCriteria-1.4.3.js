@@ -21,10 +21,11 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
       sc.each(function (index, _case) {
         var selector = _case.get('selector');
         var conclusion = 'untested';
-        var testCase;
+        var testCase, caseGroups;
 
         // Process 'labelsAreAssignedToAnInput'.
-        testCase = cssTextHasContrast.groupCasesBySelector(selector)[selector][0];
+        caseGroups = cssTextHasContrast.groupCasesBySelector(selector);
+        testCase = caseGroups && caseGroups[selector] && caseGroups[selector][0];
 
         if (testCase) {
           conclusion = testCase.get('status') || 'cantTell';
@@ -40,7 +41,10 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
 
   // Create a new SuccessCriteria and pass it the evaluator.
   sc = quail.lib.SuccessCriteria(evaluator);
-  sc.set('name', 'wcag:1.4.3');
+  sc.set({
+    'name': 'wcag:1.4.3',
+    'requiredTests': requiredTests
+  });
 
   return sc;
 }(quail));
