@@ -29,7 +29,7 @@ quail.lib.SuccessCriteria = (function () {
     // Setting a length property makes it behave like an array.
     length: 0,
     // Details of the test.
-    attributes: {},
+    attributes: null,
     get: function (attr) {
       // Return the document wrapped in jQuery if scope is not defined.
       if (attr === '$scope') {

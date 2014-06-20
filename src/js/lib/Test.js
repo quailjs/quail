@@ -26,7 +26,7 @@ quail.lib.Test = (function () {
     // Setting a length property makes it behave like an array.
     length: 0,
     // Details of the test.
-    attributes: {},
+    attributes: null,
     // Execute a callback for every element in the matched set.
     each: function (iterator) {
       var args = [].slice.call(arguments, 1);
@@ -181,6 +181,30 @@ quail.lib.Test = (function () {
         return cases[selector];
       }
       return new Test();
+    },
+    /**
+     * Returns a single Case object the matches the supplied HTML.
+     *
+     * We make the assumption, rightly or wrongly, that if the HTML is the
+     * same for a number of cases in a Test, then the outcome will also
+     * be the same, so only use this method if you are probing the result
+     * of the case, not other specifics of it.
+     *
+     * @param string html
+     *   A string representing an HTML structure.
+     *
+     * @needstests
+     */
+    findCaseByHtml: function (html) {
+      var _case;
+      for (var i = 0, il = this.length; i < il; ++i) {
+        _case = this[i];
+        if (html === _case.get('html')) {
+          return _case;
+        }
+      }
+      // Always return a Case object.
+      return quail.lib.Case();
     },
     /**
      * Groups the cases by element selector.

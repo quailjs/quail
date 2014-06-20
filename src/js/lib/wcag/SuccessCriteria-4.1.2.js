@@ -25,26 +25,26 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
       var inputWithoutLabelHasTitle = tests.find('inputWithoutLabelHasTitle');
       // Cycle through the cases in the Success Criteria.
       sc.each(function (index, _case) {
-        var selector = _case.get('selector');
+        var html = _case.get('html');
         var conclusion = 'untested';
 
-        if (selector) {
+        if (html) {
 
           // @dev, we'll look at each test individually for this selector.
 
           // Process 'labelsAreAssignedToAnInput'.
-          var cases_labelsAreAssignedToAnInput = labelsAreAssignedToAnInput.findCasesBySelector(selector);
+          var case_labelsAreAssignedToAnInput = labelsAreAssignedToAnInput.findCaseByHtml(html);
           // Process 'labelMustBeUnique'.
-          var cases_labelMustBeUnique = labelMustBeUnique.findCasesBySelector(selector);
+          var case_labelMustBeUnique = labelMustBeUnique.findCaseByHtml(html);
           // Process 'inputWithoutLabelHasTitle'.
-          var cases_inputWithoutLabelHasTitle = inputWithoutLabelHasTitle.findCasesBySelector(selector);
+          var case_inputWithoutLabelHasTitle = inputWithoutLabelHasTitle.findCaseByHtml(html);
 
           var passing = ['passed', 'notApplicable'];
 
           if (
-            cases_labelsAreAssignedToAnInput.hasStatus(passing) &&
-            cases_labelMustBeUnique.hasStatus(passing) &&
-            cases_inputWithoutLabelHasTitle.hasStatus(passing)) {
+            case_labelsAreAssignedToAnInput.hasStatus(passing) &&
+            case_labelMustBeUnique.hasStatus(passing) &&
+            case_inputWithoutLabelHasTitle.hasStatus(passing)) {
             conclusion = 'passed';
           }
 
@@ -83,7 +83,10 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
 
   // Create a new SuccessCriteria and pass it the evaluator.
   sc = quail.lib.SuccessCriteria(evaluator);
-  sc.set('name', 'wcag:4.1.2');
+  sc.set({
+    'name': 'wcag:4.1.2',
+    'requiredTests': requiredTests
+  });
 
   return sc;
 }(quail));
