@@ -83,14 +83,6 @@ quail.lib.SuccessCriteria = (function () {
       return this;
     },
     /**
-     * Add a Case to the Success Criteria instance, keyed by selector.
-     */
-    add: function (_case) {
-      if (!this.find(_case.get('selector'))) {
-        this.push(_case);
-      }
-    },
-    /**
      * Finds a case by its selector.
      */
     find: function (selector) {
@@ -146,14 +138,6 @@ quail.lib.SuccessCriteria = (function () {
      * Runs the evaluator callbacks against the completed TestCollection.
      */
     evaluate: function (eventName, testCollection) {
-      // Sort the test cases by selector.
-      var sc = this;
-      // @todo Calculate this once and cache it.
-      testCollection.each(function (index, test) {
-        test.each(function (index, _case) {
-          sc.add(_case);
-        });
-      });
       this.get('evaluator').call(this, testCollection);
     },
     /**
