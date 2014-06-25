@@ -5,9 +5,7 @@ quail.scriptOnFocusChangeBackgroundOrBorder = function(quail, test, Case) {
   var buildCase = function (element, status, id, message) {
     test.add(Case({
       element: element,
-      expected: (function (element, id) {
-        return quail.components.resolveExpectation(element, id);
-      }(element, id)),
+      expected: $(element).closest('.quail-test').data('expected'),
       message: message,
       status: status
     }));
