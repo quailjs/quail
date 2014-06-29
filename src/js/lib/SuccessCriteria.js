@@ -154,7 +154,10 @@ quail.lib.SuccessCriteria = (function () {
       // if (this.get('preEvaluator').call(this, testCollection)) {
       this.get('evaluator').call(this, testCollection);
       if (size(this.results) === 0) {
-        this.set('status', 'notApplicable');
+        this.set('status', 'untested');
+      }
+      else {
+        this.set('status', 'tested');
       }
       // }
       this.report();
