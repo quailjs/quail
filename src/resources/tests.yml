@@ -3398,27 +3398,27 @@ radioMarkedWithFieldgroupAndLegend:
     - "content"
   options:
     selector: "input[type=radio]:not(fieldset input[type=radio])"
-scriptFocusIndicatorVisible:
-  type: "custom"
-  title:
-    en: "Script focus indicators have high visibility"
-  description:
-    en: "When a focus indicator is used with script, it should have enough contrast with the background and big enough to be highly visible."
-  guidelines:
-    wcag:
-      2.4.7:
-        techniques:
-          - "C15"
-          - "G165"
-          - "G195"
-          - "SCR31"
-  tags:
-    - "focus"
-    - "content"
-  components:
-    - "color"
-    - "convertToPx"
-  callback: "scriptFocusIndicatorVisible"
+# scriptFocusIndicatorVisible:
+#   type: "custom"
+#   title:
+#     en: "Script focus indicators have high visibility"
+#   description:
+#     en: "When a focus indicator is used with script, it should have enough contrast with the background and big enough to be highly visible."
+#   guidelines:
+#     wcag:
+#       2.4.7:
+#         techniques:
+#           - "C15"
+#           - "G165"
+#           - "G195"
+#           - "SCR31"
+#   tags:
+#     - "focus"
+#     - "content"
+#   components:
+#     - "color"
+#     - "convertToPx"
+#   callback: "scriptFocusIndicatorVisible"
 scriptContentAccessibleWithScriptsTurnedOff:
   type: "selector"
   testability: 0
