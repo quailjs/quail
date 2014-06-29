@@ -34,8 +34,6 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
         // Add the case to the Success Criteria.
         sc.addConclusion(conclusion, _case);
       });
-      // Report the results.
-      sc.report();
     }
   }
 

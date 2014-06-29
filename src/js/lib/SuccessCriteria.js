@@ -17,12 +17,12 @@ quail.lib.SuccessCriteria = (function () {
       this.attributes = {};
       this.results = {};
 
-      if (typeof evaluator !== 'function') {
-        return this;
-      }
+      // By default a Success Criteria is untested.
+      this.attributes.status = 'untested';
+
       // The evaluator is a callback that will be invoked when tests have
       // finished running.
-      this.set('evaluator', evaluator);
+      this.set('evaluator', evaluator || function () {});
 
       return this;
     },
@@ -59,10 +59,6 @@ quail.lib.SuccessCriteria = (function () {
           isStatusChanged = true;
         }
         this.attributes[attr] = value;
-      }
-
-      if (isStatusChanged) {
-        this.report();
       }
       return this;
     },
@@ -138,7 +134,13 @@ quail.lib.SuccessCriteria = (function () {
      * Runs the evaluator callbacks against the completed TestCollection.
      */
     evaluate: function (eventName, testCollection) {
+      // if (this.get('preEvaluator').call(this, testCollection)) {
       this.get('evaluator').call(this, testCollection);
+      if (size(this.results) === 0) {
+        this.set('status', 'notApplicable');
+      }
+      // }
+      this.report();
     },
     /**
      * Dispatches the complete event.
@@ -176,6 +178,25 @@ quail.lib.SuccessCriteria = (function () {
     sort: [].sort,
     splice: [].splice
   };
+
+  /**
+   * Determines the length of an object.
+   *
+   * @param object obj
+   *   The object whose size will be determined.
+   *
+   * @return number
+   *   The size of the object determined by the number of keys.
+   */
+  function size (obj) {
+    var s = 0, key;
+    for (key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        s++;
+      }
+    }
+    return s;
+  }
 
   // Give the init function the SuccessCriteria prototype.
   SuccessCriteria.fn.init.prototype = SuccessCriteria.fn;
