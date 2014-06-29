@@ -43,9 +43,9 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
             var passing = ['passed', 'notApplicable'];
 
             // Make sure the arrays are not empty.
-            if ((cases_labelsAreAssignedToAnInput.length === 0 || cases_labelsAreAssignedToAnInput[0].hasStatus(passing)) &&
-              (cases_labelMustBeUnique.length === 0 || cases_labelMustBeUnique[0].hasStatus(passing)) &&
-              (cases_inputWithoutLabelHasTitle.length === 0 || cases_inputWithoutLabelHasTitle[0].hasStatus(passing))) {
+            if ((cases_labelsAreAssignedToAnInput.length >= 1 && cases_labelsAreAssignedToAnInput[0].hasStatus(passing)) &&
+              (cases_labelMustBeUnique.length >= 1 && cases_labelMustBeUnique[0].hasStatus(passing)) &&
+              (cases_inputWithoutLabelHasTitle.length >= 1 && cases_inputWithoutLabelHasTitle[0].hasStatus(passing))) {
               conclusion = 'passed';
             }
 
