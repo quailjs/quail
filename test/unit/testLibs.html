@@ -425,7 +425,6 @@
       };
       var sc = libs.SuccessCriteria(evaluator);
       sc.set('preEvaluator', function (testCollection) {
-        console.log(this, testCollection);
         // We skip all the tests.
         // This will set the status as 'inapplicable'.
         return false;
@@ -433,7 +432,6 @@
       // @todo, we need a mockable object that will listen to events.
       var listener = new libs.TestCollection();
       listener.listenTo(sc, 'successCriteriaEvaluated', function (eventName, successCriteria, testCollection) {
-        console.log(arguments);
         equal(successCriteria.get('status'), 'inapplicable', 'All tests were skipped');
         start();
       });
