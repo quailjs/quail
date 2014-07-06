@@ -278,10 +278,10 @@ quail.lib.Test = (function () {
           'status': 'cantTell'
         });
       }
-      // Inapplicable.
-      else if (this.findByStatus(['inapplicable']).length === this.length) {
+      // notApplicable.
+      else if (this.findByStatus(['notApplicable']).length === this.length) {
         this.set({
-          'status': 'inapplicable'
+          'status': 'notApplicable'
         });
       }
       // Failed.

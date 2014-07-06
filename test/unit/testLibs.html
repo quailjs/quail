@@ -292,13 +292,13 @@
       _testCollection[1].set('status', 'passed');
       _testCollection[2].set('status', 'failed');
       _testCollection[3].set('status', 'cantTell');
-      _testCollection[4].set('status', 'inapplicable');
+      _testCollection[4].set('status', 'notApplicable');
       // Filter by statuses.
       tests = _testCollection.findByStatus('untested');
       equal(tests.length, 1, 'One untested test found.');
       tests = _testCollection.findByStatus(['untested', 'passed', 'failed']);
       equal(tests.length, 3, 'Three tests found.');
-      tests = _testCollection.findByStatus(['cantTell', 'inapplicable']);
+      tests = _testCollection.findByStatus(['cantTell', 'notApplicable']);
       equal(tests.length, 2, 'Two tests found.');
     });
     asyncTest('Event dispatching: complete', function () {
@@ -426,13 +426,13 @@
       var sc = libs.SuccessCriteria(evaluator);
       sc.set('preEvaluator', function (testCollection) {
         // We skip all the tests.
-        // This will set the status as 'inapplicable'.
+        // This will set the status as 'notApplicable'.
         return false;
       });
       // @todo, we need a mockable object that will listen to events.
       var listener = new libs.TestCollection();
       listener.listenTo(sc, 'successCriteriaEvaluated', function (eventName, successCriteria, testCollection) {
-        equal(successCriteria.get('status'), 'inapplicable', 'All tests were skipped');
+        equal(successCriteria.get('status'), 'notApplicable', 'All tests were skipped');
         start();
       });
       // Create a few fake tests and add them to the collection.

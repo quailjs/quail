@@ -112,7 +112,7 @@ quail.lib.SuccessCriteria = (function () {
         passedPreEvaluation = preEvaluator.call(this, testCollection);
       }
       if (!passedPreEvaluation) {
-        this.set('status', 'inapplicable');
+        this.set('status', 'notApplicable');
         testCollection = new quail.lib.TestCollection();
       }
       this.set('tests', testCollection);
@@ -156,7 +156,7 @@ quail.lib.SuccessCriteria = (function () {
      * Runs the evaluator callbacks against the completed TestCollection.
      */
     evaluate: function (eventName, testCollection) {
-      if (this.get('status') !== 'inapplicable') {
+      if (this.get('status') !== 'notApplicable') {
         // Sort the test cases by selector.
         var sc = this;
         // @todo Calculate this once and cache it.
