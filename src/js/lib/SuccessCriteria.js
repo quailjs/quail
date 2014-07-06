@@ -99,8 +99,22 @@ quail.lib.SuccessCriteria = (function () {
     },
     /**
      * Adds a TestCollection to be listened to.
+     *
+     * There is a preEvaluator function run before tests are added to make sure
+     * that the test is actually needed.
      */
     registerTests: function (testCollection) {
+      var preEvaluator = this.get('preEvaluator');
+      var hasPreEvaluator = typeof preEvaluator !== 'undefined';
+      // true means we'll run all the tests as usual, false, we skip the whole thing.
+      var passedPreEvaluation = true;
+      if (hasPreEvaluator) {
+        passedPreEvaluation = preEvaluator.call(this, testCollection);
+      }
+      if (!passedPreEvaluation) {
+        this.set('status', 'inapplicable');
+        testCollection = new quail.lib.TestCollection();
+      }
       this.set('tests', testCollection);
       this.listenTo(testCollection, 'complete', this.evaluate);
     },
@@ -142,24 +156,24 @@ quail.lib.SuccessCriteria = (function () {
      * Runs the evaluator callbacks against the completed TestCollection.
      */
     evaluate: function (eventName, testCollection) {
-      // Sort the test cases by selector.
-      var sc = this;
-      // @todo Calculate this once and cache it.
-      testCollection.each(function (index, test) {
-        test.each(function (index, _case) {
-          sc.add(_case);
+      if (this.get('status') !== 'inapplicable') {
+        // Sort the test cases by selector.
+        var sc = this;
+        // @todo Calculate this once and cache it.
+        testCollection.each(function (index, test) {
+          test.each(function (index, _case) {
+            sc.add(_case);
+          });
         });
-      });
 
-      // if (this.get('preEvaluator').call(this, testCollection)) {
-      this.get('evaluator').call(this, testCollection);
-      if (size(this.results) === 0) {
-        this.set('status', 'untested');
+        this.get('evaluator').call(this, testCollection);
+        if (size(this.results) === 0) {
+          this.set('status', 'untested');
+        }
+        else {
+          this.set('status', 'tested');
+        }
       }
-      else {
-        this.set('status', 'tested');
-      }
-      // }
       this.report();
     },
     /**

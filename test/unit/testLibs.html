@@ -417,6 +417,38 @@
       sc.registerTests(testCollection);
       testCollection.run();
     });
+    asyncTest('preEvaluator', function () {
+      expect(1);
+      var testCollection = new libs.TestCollection();
+      var evaluator = function (tests) {
+        sc.set('status', 'passed');
+      };
+      var sc = libs.SuccessCriteria(evaluator);
+      sc.set('preEvaluator', function (testCollection) {
+        // We skip all the tests.
+        // This will set the status as 'inapplicable'.
+        return false;
+      });
+      // @todo, we need a mockable object that will listen to events.
+      var listener = new libs.TestCollection();
+      listener.listenTo(sc, 'successCriteriaEvaluated', function (eventName, successCriteria, testCollection) {
+        equal(successCriteria.get('status'), 'inapplicable', 'All tests were skipped');
+        start();
+      });
+      // Create a few fake tests and add them to the collection.
+      var test;
+      for (var i = 0; i < 5; ++i) {
+        test = new libs.Test('fakeTest-' + i, {
+          'type': 'selector',
+          'options': {
+            'selector': 'i.unittest'
+          }
+        });
+        testCollection.add(test);
+      }
+      sc.registerTests(testCollection);
+      sc.get('tests').run();
+    });
   </script>
 </body>
 
