@@ -1,3 +1,8 @@
+/**
+ * Success Criterion 1.4.3: Contrast
+ *
+ * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html
+ */
 quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
   var sc;
 
@@ -6,6 +11,14 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
   // The set of tests that were run that pertain to this Success Criteria. This
   // will be the union of the tests that were run and the required tests.
   var criteriaTests = [];
+
+  /**
+   * Determines if this Success Criteria applies to the document.
+   */
+  function preEvaluator(tests) {
+    tests = tests;
+    return true;
+  }
 
   /**
    * Evaluates the Success Criteria.
@@ -37,12 +50,11 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
     }
   }
 
-  // Create a new SuccessCriteria and pass it the evaluator.
-  sc = quail.lib.SuccessCriteria(evaluator);
-  sc.set({
+  // Create a new SuccessCriteria and pass it the evaluation callbacks.
+  return sc = quail.lib.SuccessCriteria({
     'name': 'wcag:1.4.3',
-    'requiredTests': requiredTests
+    'requiredTests': requiredTests,
+    preEvaluator: preEvaluator,
+    evaluator: evaluator
   });
-
-  return sc;
 }(quail));

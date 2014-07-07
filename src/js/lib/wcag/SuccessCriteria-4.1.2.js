@@ -12,6 +12,14 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
   var criteriaTests = [];
 
   /**
+   * Determines if this Success Criteria applies to the document.
+   */
+  function preEvaluator(tests) {
+    tests = tests;
+    return true;
+  }
+
+  /**
    * Evaluates the Success Criteria.
    */
   function evaluator(tests) {
@@ -92,12 +100,11 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
     }
   }
 
-  // Create a new SuccessCriteria and pass it the evaluator.
-  sc = quail.lib.SuccessCriteria(evaluator);
-  sc.set({
+  // Create a new SuccessCriteria and pass it the evaluation callbacks.
+  return sc = quail.lib.SuccessCriteria({
     'name': 'wcag:4.1.2',
-    'requiredTests': requiredTests
+    'requiredTests': requiredTests,
+    preEvaluator: preEvaluator,
+    evaluator: evaluator
   });
-
-  return sc;
 }(quail));

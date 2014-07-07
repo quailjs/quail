@@ -339,14 +339,6 @@
       sc.set('name', 'Pidgeon');
       equal(sc.get('name'), 'Pidgeon', 'Set and Get function correctly.');
     });
-    test('registerEvaluator', function () {
-      function evaluator () {
-        return 'puppies';
-      }
-      sc = new libs.SuccessCriteria();
-      sc.registerEvaluator(evaluator);
-      equal(evaluator, sc.get('evaluator'), 'The evaluator function is registered correctly.');
-    });
     test('filterTests', function () {
       var testCollection = new libs.TestCollection();
       var sc = new libs.SuccessCriteria();
@@ -387,7 +379,7 @@
       var _case = new libs.Case();
       var sc = new libs.SuccessCriteria();
       sc.addConclusion('untested', _case);
-      equal(sc.results['untested'][0], _case, 'Cases are registered by conclusion.');
+      equal(sc.get('results')['untested'][0], _case, 'Cases are registered by conclusion.');
     });
     asyncTest('Event dispatching: successCriteriaEvaluated', function () {
       expect(2);
@@ -395,7 +387,9 @@
       var evaluator = function (tests) {
         sc.set('status', 'passed');
       };
-      var sc = libs.SuccessCriteria(evaluator);
+      var sc = libs.SuccessCriteria({
+        evaluator: evaluator
+      });
       // @todo, we need a mockable object that will listen to events.
       var listener = new libs.TestCollection();
       listener.listenTo(sc, 'successCriteriaEvaluated', function (eventName, successCriteria, testCollection) {

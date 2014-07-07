@@ -11,18 +11,18 @@ quail.lib.SuccessCriteria = (function () {
   // Prototype object of the SuccessCriteria.
   SuccessCriteria.fn = SuccessCriteria.prototype = {
     constructor: SuccessCriteria,
-    init: function (evaluator) {
+    init: function (options) {
       // Event listeners.
       this.listeners = {};
-      this.attributes = {};
-      this.results = {};
 
       // By default a Success Criteria is untested.
+      this.attributes = this.attributes || {};
       this.attributes.status = 'untested';
+      this.attributes.results = {};
 
       // The evaluator is a callback that will be invoked when tests have
       // finished running.
-      this.set('evaluator', evaluator || function () {});
+      this.set(options || {});
 
       return this;
     },
@@ -55,9 +55,6 @@ quail.lib.SuccessCriteria = (function () {
       }
       // Assign a single attribute value.
       else {
-        if (attr === 'status') {
-          isStatusChanged = true;
-        }
         this.attributes[attr] = value;
       }
       return this;
@@ -113,16 +110,9 @@ quail.lib.SuccessCriteria = (function () {
       }
       if (!passedPreEvaluation) {
         this.set('status', 'notApplicable');
-        testCollection = new quail.lib.TestCollection();
       }
       this.set('tests', testCollection);
       this.listenTo(testCollection, 'complete', this.evaluate);
-    },
-    /**
-     * Registers a callback that will be run when all the tests are complete.
-     */
-    registerEvaluator: function (evaluator) {
-      this.set('evaluator', evaluator);
     },
     /**
      * Returns the union of the tests that were run and the required tests.
@@ -147,10 +137,10 @@ quail.lib.SuccessCriteria = (function () {
      * @param quail.lib.Case _case
      */
     addConclusion: function (conclusion, _case) {
-      if (!this.results[conclusion]) {
-        this.results[conclusion] = quail.lib.Test();
+      if (!this.get('results')[conclusion]) {
+        this.get('results')[conclusion] = quail.lib.Test();
       }
-      this.results[conclusion].add(_case);
+      this.get('results')[conclusion].add(_case);
     },
     /**
      * Runs the evaluator callbacks against the completed TestCollection.
