@@ -202,7 +202,7 @@ aMustContainText:
     nl: "Links moeten tekst bevatten"
   description:
     en: "Because many users of screen-readers use links to navigate the page, providing links with no text (or with images that have empty \"alt\" attributes and no other readable text) hinders these users."
-    nl: "Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Links zonder tekst (of met afbeeldingen die een leeg \"alt\"-attribuut hebben en geen andere leesbare tekst) hinderen deze gebruikers.
+    nl: "Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Links zonder tekst (of met afbeeldingen die een leeg \"alt\"-attribuut hebben en geen andere leesbare tekst) hinderen deze gebruikers."
   guidelines:
     wcag:
       1.1.1:
@@ -226,7 +226,7 @@ aMustHaveTitle:
   testability: 1
   title:
     en: "All links must have a \"title\" attribute"
-    nl: "Alle links moeten een \title\"-attribuut hebben
+    nl: "Alle links moeten een \title\"-attribuut hebben"
   description:
     en: "Every link must have a \"title\" attribute."
     nl: "Zorg ervoor dat elke link is voorzien van een \title\"-attribuut."
@@ -553,7 +553,7 @@ areaLinksToSoundFile:
     nl: "Alle \"area\"-elementen met een link naar een geluidsbestand moeten ook een link bevatten naar een transcriptie"
   description:
     en: "All <code>area</code> elements which link to a sound file should have a text transcript."
-    nl: "Alle \"area\"-elementen met een link naar een geluidsbestand moeten een transcriptie hebben in tekst.
+    nl: "Alle \"area\"-elementen met een link naar een geluidsbestand moeten een transcriptie hebben in tekst."
   guidelines:
     wcag:
       1.1.1:
@@ -880,10 +880,10 @@ documentAbbrIsUsed:
   testability: 0.5
   title:
     en: "Abbreviations must be marked with an \"abbr\" element"
-    nl: "Afkortingen moeten worden gemarkeerd met een \"abbr\"-element
+    nl: "Afkortingen moeten worden gemarkeerd met een \"abbr\"-element"
   description:
     en: "Abbreviations should be marked with an <code>abbr</code> element, at least once on the page for each abbreviation."
-    nl: "Afkortingen moeten worden gemarkeerd door middel van het <code>abbr</code>-element. Doe dit ten minste een keer per pagina voor elke afkorting.
+    nl: "Afkortingen moeten worden gemarkeerd door middel van het <code>abbr</code>-element. Doe dit ten minste een keer per pagina voor elke afkorting."
   guidelines:
     wcag:
       3.1.4:
@@ -900,7 +900,7 @@ documentAcronymsHaveElement:
   testability: 0.5
   title:
     en: "Acronyms must be marked with an \"acronym\" element"
-    nl: "Acroniemen moeten worden gemarkeerd met een \"acronym\"-element
+    nl: "Acroniemen moeten worden gemarkeerd met een \"acronym\"-element"
   description:
     en: "Acronyms should be marked with an <code>acronym</code> element, at least once on the page for each acronym."
     nl: "Acroniemen moeten worden gemarkeerd door middel van het <code>acronym</code>-element. Doe dit ten minste een keer per pagina voor elke acroniem."
@@ -1742,8 +1742,8 @@ frameTitlesNotPlaceholder:
     en: "Frames cannot have \"title\" attributes that are just placeholder text"
     nl: "Frames mogen geen \"title\"-attribuut hebben met placeholdertekst"
   description:
-    en: "Frame \"title\" attributes should not be simple placeholder text like \"frame"\."
-    nl: ""Frame \"title\"-attributen mogen geen placeholdertekst bevatten zoals \"frame"\."
+    en: "Frame \"title\" attributes should not be simple placeholder text like \"frame\"."
+    nl: "Frame \"title\"-attributen mogen geen placeholdertekst bevatten zoals \"frame\"."
   guidelines:
     wcag:
       2.4.1:
@@ -2233,7 +2233,7 @@ imgAltIsTooLong:
     nl: "Altteksten voor een afbeelding zijn kort
   description:
     en: "All \"alt\" attributes for <code>img</code> elements should be clear and concise. \"Alt\" attributes over 100 characters long should be reviewed to see if they are too long."
-    nl: "Alle \"alt\"-attributen voor <code>img</code>-elementen moeten duidelijk en bondig zijn. Verifieer \"alt\"-attributen langer dan 100 tekens en kort ze in waar mogelijk.
+    nl: "Alle \"alt\"-attributen voor <code>img</code>-elementen moeten duidelijk en bondig zijn. Verifieer \"alt\"-attributen langer dan 100 tekens en kort ze in waar mogelijk."
   guidelines:
     508:
       - "a"
@@ -2250,10 +2250,10 @@ imgAltNotEmptyInAnchor:
   testability: 1
   title:
     en: "An image within a link cannot have an empty \"alt\" attribute if there is no other text within the link"
-    nl: "Een afbeelding binnen een link mag geen leeg "alt\"-attribuut hebben als er geen andere tekst is in de link"
+    nl: "Een afbeelding binnen een link mag geen leeg \"alt\"-attribuut hebben als er geen andere tekst is in de link"
   description:
     en: "Any image that is within a link (an <code>a</code> element) that has no other text cannot have an empty or missing \"alt\" attribute."
-    nl: "Elke afbeelding binnen een link (een <code>a</code>-element) die geen andere tekst heeft, mag geen leeg of ontbrekend "alt\"-attribuut hebben."
+    nl: "Elke afbeelding binnen een link (een <code>a</code>-element) die geen andere tekst heeft, mag geen leeg of ontbrekend \"alt\"-attribuut hebben."
   guidelines:
     508:
       - "a"
@@ -2270,7 +2270,7 @@ imgAltNotPlaceHolder:
   testability: 1
   title:
     en: "Images should not have a simple placeholder text as an \"alt\" attribute"
-    nl: "Afbeeldingen mogen geen placeholdertkest als "alt\"-attribuut hebben"
+    nl: "Afbeeldingen mogen geen placeholdertkest als \"alt\"-attribuut hebben"
   description:
     en: "Any image that is not used decorativey or which is purely for layout purposes cannot have an \"alt\" attribute that consists solely of placeholders."
     nl: "Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen "alt\"-attribuut hebben met daarin placeholdertekst."
@@ -2702,7 +2702,7 @@ inputImageAltNotRedundant:
     nl: "De \"alt\"-tekst for \"image\"-knoppen moet anders zijn dan alleen placeholdertekst"
   description:
     en: "Every form image button should not simply use filler text like \"button\" or \"submit\" as the \"alt\" text."
-    nl: "Elke formulierknop die een afbeelding is moet bruikbare tekst als \"alt\"-tekst hebben, anders dan \"knop\" of \"verstuur\".
+    nl: "Elke formulierknop die een afbeelding is, moet bruikbare tekst als \"alt\"-tekst hebben, anders dan \"knop\" of \"verstuur\"".
   guidelines:
     wcag:
       1.1.1:
@@ -3162,7 +3162,7 @@ legendTextNotPlaceholder:
     nl: "\"Legend\"-tekst moet geen placeholdertekst bevatten"
   description:
     en: "If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain useless placeholder text like \"form\" or \"field"."
-    nl: ""Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> geen placeholdertekst bevatten zoals \"form\" of \"field"."
+    nl: ""Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> geen placeholdertekst bevatten zoals \"form\" of \"field\"."
   guidelines:
     wcag:
       1.3.1:
@@ -3743,7 +3743,7 @@ radioLabelIsNearby:
     nl: "Alle invoerelementen van het type \"radio\" hebben een label dat dicht bij het element staat"
   description:
     en: "All input elements of type \"radio\" must have a corresponding label that is close to the form element. Users of screen magnification or with reduced spatial skills are hampered in using a form element if the label for that element is located far away."
-    nl: "nl: "Alle inputelementen van het type \"radio\" moeten een bijbehorend label hebben dat dicht bij het formulierelement staat. Gebruikers die het scherm vergroten of met beperkte ruimtelijke vaardigheden kunnen een formulier niet gebruiken als het label van een veld te ver weg staat." 
+    nl: "Alle inputelementen van het type \"radio\" moeten een bijbehorend label hebben dat dicht bij het formulierelement staat. Gebruikers die het scherm vergroten of met beperkte ruimtelijke vaardigheden kunnen een formulier niet gebruiken als het label van een veld te ver weg staat." 
   guidelines: []
   tags:
     - "form"
