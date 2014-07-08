@@ -3161,8 +3161,8 @@ legendTextNotPlaceholder:
     en: "\"Legend\" text must not contain placeholder text"
     nl: "\"Legend\"-tekst moet geen placeholdertekst bevatten"
   description:
-    en: "If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain useless placeholder text like \"form\" or \"field"."
-    nl: ""Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> geen placeholdertekst bevatten zoals \"form\" of \"field\"."
+    en: "If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain useless placeholder text like \"form\" or \"field\"."
+    nl: "Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> geen placeholdertekst bevatten zoals \"form\" of \"field\"."
   guidelines:
     wcag:
       1.3.1:
