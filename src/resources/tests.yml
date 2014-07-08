@@ -3,7 +3,7 @@ aAdjacentWithSameResourceShouldBeCombined:
   testability: 1
   title:
     en: "Adjacent links that point to the same location should be merged"
-    nl: "Voeg naast elkaar gelegen links die naar dezelfde locatie verwijzen samen"	
+    nl: "Voeg naast elkaar gelegen links die naar dezelfde locatie verwijzen samen"
   description:
     en: "Because many users of screen-readers use links to navigate the page, providing two links right next to eachother that point to the same location can be confusing. Try combining the links."
     nl: "Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Voor hen zijn naast elkaar gelegen links die naar dezelfde locatie verwijzen verwarrend. Probeer de links samen te voegen."
@@ -226,10 +226,10 @@ aMustHaveTitle:
   testability: 1
   title:
     en: "All links must have a \"title\" attribute"
-    nl: "Alle links moeten een \title\"-attribuut hebben"
+    nl: "Alle links moeten een \"title\"-attribuut hebben"
   description:
     en: "Every link must have a \"title\" attribute."
-    nl: "Zorg ervoor dat elke link is voorzien van een \title\"-attribuut."
+    nl: "Zorg ervoor dat elke link is voorzien van een \"title\"-attribuut."
   guidelines: []
   tags:
     - "link"
@@ -526,7 +526,7 @@ areaHasAltValue:
   testability: 1
   title:
     en: "All \"area\" elements must have an \"alt\" attribute"
-    nl: "Alle "\"area\"-elementen moeten een \"alt\"-attribuut hebben"
+    nl: "Alle \"area\"-elementen moeten een \"alt\"-attribuut hebben"
   description:
     en: "All <code>area</code> elements within a <code>map</code> must have an \"alt\" attribute."
     nl: "Alle <code>area</code>-elementen binnen een <code>map</code> moeten een \"alt\"-attribuut hebben."
@@ -573,7 +573,7 @@ ariaOrphanedContent:
     nl: "Pagina's die ARIA-rollen gebruiken mogen geen verweesde content hebben" 
   description:
     en: "If a page makes use of ARIA roles, then there should not be any content on the page which is not within an element that exposes a role, as it could cause that content to be rendreed inaccessible to users with screen readers."
-    nl:" Als een pagina gebruik maakt van ARIA-rollen, mag er geen content op de pagina staan buiten een element dat een rol vertegenwoordigt. In dat geval kan het zijn dat deze content niet toegankelijk is voor gebruikers van schermlezers." 
+    nl: "Als een pagina gebruik maakt van ARIA-rollen, mag er geen content op de pagina staan buiten een element dat een rol vertegenwoordigt. In dat geval kan het zijn dat deze content niet toegankelijk is voor gebruikers van schermlezers." 
   guidelines: []
   tags:
     - "aria"
@@ -983,7 +983,7 @@ documentIDsMustBeUnique:
     nl: "Alle element \"id\"-attributen moeten uniek zijn"
   description:
     en: "Element \"id\" attributes must be unique."
-    nl: "Element \Ôd\"-attributen moeten uniek zijn."
+    nl: "Element \"id\"-attributen moeten uniek zijn."
   guidelines:
     wcag:
       4.1.1:
@@ -1257,7 +1257,7 @@ elementAttributesAreValid:
   title:
     en: "Attributes should have spaces between them and be wrapped in quotes"
     nl: "Attributen moeten gescheiden zijn door spaties en ze moeten tussen aanhalingstekens"
-  description:.
+  description:
     en: "Attributes should have spaces between them and be wrapped in quotes."
     nl: "Tussen attributen moeten spaties staan en ze moeten tussen aanhalingstekens staan."
   guidelines:
@@ -2230,7 +2230,7 @@ imgAltIsTooLong:
   testability: 1
   title:
     en: "Image Alt text is short"
-    nl: "Altteksten voor een afbeelding zijn kort
+    nl: "Altteksten voor een afbeelding zijn kort"
   description:
     en: "All \"alt\" attributes for <code>img</code> elements should be clear and concise. \"Alt\" attributes over 100 characters long should be reviewed to see if they are too long."
     nl: "Alle \"alt\"-attributen voor <code>img</code>-elementen moeten duidelijk en bondig zijn. Verifieer \"alt\"-attributen langer dan 100 tekens en kort ze in waar mogelijk."
@@ -2273,7 +2273,7 @@ imgAltNotPlaceHolder:
     nl: "Afbeeldingen mogen geen placeholdertkest als \"alt\"-attribuut hebben"
   description:
     en: "Any image that is not used decorativey or which is purely for layout purposes cannot have an \"alt\" attribute that consists solely of placeholders."
-    nl: "Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen "alt\"-attribuut hebben met daarin placeholdertekst."
+    nl: "Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen \"alt\"-attribuut hebben met daarin placeholdertekst."
   guidelines:
     508:
       - "a"
@@ -2378,7 +2378,7 @@ imgImportantNoSpacerAlt:
     nl: "Afbeeldingen die belangrijk zijn mogen geen leeg \"alt\"-attribuut hebben"
   description:
     en: "Any image that is not used decorativey or which is purely for layout purposes cannot have an \"alt\" attribute that consists solely of white space (i.e. a space)."
-    nl: "Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen leeg "alt\"-attribuut hebben (bijvoorbeeld alleen een spatie)."
+    nl: "Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen leeg \"alt\"-attribuut hebben (bijvoorbeeld alleen een spatie)."
   guidelines: []
   tags:
     - "image"
@@ -2515,10 +2515,10 @@ inputCheckboxHasTabIndex:
   testability: 1
   title:
     en: "All \"checkbox\" input elements require a valid \"tabindex\" attribute"
-    nl: "Alle \"keuzevakjes\"-invoerelementen moeten een geldig \"tabindex\"-attribuut hebben"
-   description:
+    nl: "Alle \"checkbox\"-invoerelementen moeten een geldig \"tabindex\"-attribuut hebben"
+  description:
     en: "All <code>input</code> elements of type \"checkbox\" should have a \"tabindex\" attribute to help navigate the form with a keyboard alone."
-    nl: "Alle invoerelementen van het type \"keuzevakje\" moeten \"tabindex\"-attribuut hebben dat ervoor zorgt dat je door een formulier kunt navigeren met het toetsenbord."
+    nl: "Alle invoerelementen van het type \"checkbox\" moeten \"tabindex\"-attribuut hebben dat ervoor zorgt dat je door een formulier kunt navigeren met het toetsenbord."
   guidelines: []
   tags:
     - "form"
@@ -2702,7 +2702,7 @@ inputImageAltNotRedundant:
     nl: "De \"alt\"-tekst for \"image\"-knoppen moet anders zijn dan alleen placeholdertekst"
   description:
     en: "Every form image button should not simply use filler text like \"button\" or \"submit\" as the \"alt\" text."
-    nl: "Elke formulierknop die een afbeelding is, moet bruikbare tekst als \"alt\"-tekst hebben, anders dan \"knop\" of \"verstuur\"".
+    nl: "Elke formulierknop die een afbeelding is, moet bruikbare tekst als \"alt\"-tekst hebben, anders dan \"knop\" of \"verstuur\"."
   guidelines:
     wcag:
       1.1.1:
@@ -2830,7 +2830,7 @@ inputTextHasLabel:
   testability: 1
   title:
     en: "All \"input\" elements should have a corresponding \"label\""
-    nl: "Alle invoerelementen moet een bijbehorend \"label\" hebben"
+    nl: "Alle invoerelementen moeten een bijbehorend \"label\" hebben"
   description:
     en: "All <code>input</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user"
     nl: "Alle <code>input</code>-elementen moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen."
@@ -4514,7 +4514,7 @@ tableSummaryDoesNotDuplicateCaption:
     nl: "Tabel \"summary\"-elementen mogen niet hetzelfde zijn als het \"caption\"-element"
   description:
     en: "The summary and the caption must be different, as both provide different information. A <code>caption</code>. /code element identifies the table, while the \"summary\" attribute describes the table contents."
-   nl: "De samenvatting en beschrijving van een tabel moeten verschillen, want ze bieden verschillende informatie. Een <code>caption</code>-element identificeert welke tabel het betreft en het \"summary\"-attribuut beschrijft de inhoud van de tabel."
+    nl: "De samenvatting en beschrijving van een tabel moeten verschillen, want ze bieden verschillende informatie. Een <code>caption</code>-element identificeert welke tabel het betreft en het \"summary\"-attribuut beschrijft de inhoud van de tabel."
   guidelines: []
   tags:
     - "table"
@@ -4656,7 +4656,7 @@ tableWithMoreHeadersUseID:
     nl: "Complexe datatabellen moeten \"id\"-attributen aan headers koppelen"
   description:
     en: "Complex data tables should provide \"id\" attributes to headers and \"headers\" attributes for data cells."
-    nl: "Complexe datatabellen moeten \"id\"-attributen aan headers koppelen en "headers\"-attributen aan datacellen." 
+    nl: "Complexe datatabellen moeten \"id\"-attributen aan headers koppelen en \"headers\"-attributen aan datacellen." 
   guidelines: []
   tags:
     - "table"
