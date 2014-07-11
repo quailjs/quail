@@ -1181,7 +1181,7 @@ embedMustHaveAltAttribute:
     - "embed"
     - "content"
   options:
-    selector: "embed:not(embed[alt])"
+    selector: "embed:not([alt])"
 embedMustNotHaveEmptyAlt:
   type: "selector"
   testability: 1
