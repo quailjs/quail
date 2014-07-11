@@ -59,16 +59,19 @@ quail.components.color = function(quail, test, Case, options) {
      * WCAG at a certain contrast ratio.
      */
     passesWCAGColor : function(element, foreground, background, level) {
+      var pxfsize = quail.components.convertToPx(element.css('fontSize'));
       if (typeof level === 'undefined') {
-        if (quail.components.convertToPx(element.css('font-size')) >= 18) {
-          level = 3;
-        }
-        else if (quail.components.convertToPx(element.css('font-size')) >= 14 &&
-          (element.css('font-weight') === 'bold' || parseInt(element.css('font-weight'), 10) >= 700)) {
+        if (pxfsize >= 18) {
           level = 3;
         }
         else {
-          level = 5;
+          var fweight = element.css('fontWeight');
+          if (pxfsize >= 14 &&  (fweight === 'bold' || parseInt(fweight, 10) >= 700)) {
+            level = 3;
+          }
+          else {
+            level = 5;
+          }
         }
       }
       return (this.getLuminosity(foreground, background) > level);
@@ -130,16 +133,19 @@ quail.components.color = function(quail, test, Case, options) {
      */
     getColor : function(element, type) {
       if (type === 'foreground') {
-        return (element.css('color')) ? element.css('color') : 'rgb(0,0,0)';
+        var fcolor = element.css('color');
+        return fcolor ? fcolor : 'rgb(0,0,0)';
       }
 
-      if (this.hasBackgroundColor(element)) {
-        return (element.css('background-color')) ? element.css('background-color') : 'rgb(255,255,255)';
+      var bcolor = element.css('backgroundColor');
+      if (this.hasBackgroundColor(bcolor)) {
+        return bcolor ? bcolor : 'rgb(255,255,255)';
       }
       var color = 'rgb(255,255,255)';
       element.parents().each(function(){
-        if (colors.hasBackgroundColor(element)) {
-          color = element.css('background-color');
+        var bcolor = element.css('backgroundColor');
+        if (colors.hasBackgroundColor(bcolor)) {
+          color = bcolor;
           return false;
         }
       });
@@ -177,8 +183,9 @@ quail.components.color = function(quail, test, Case, options) {
      */
     getBackgroundImage: function(element) {
       while (element.length > 0) {
-        if (element.css('background-image') && element.css('background-image') !== 'none' && element.css('background-image').search(/^(.*?)url(.*?)$/i) !== -1) {
-          return element.css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
+        var bimage = element.css('backgroundImage');
+        if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
+          return bimage.replace('url(', '').replace(/'/, '').replace(')', '');
         }
         element = element.parent();
       }
@@ -194,11 +201,13 @@ quail.components.color = function(quail, test, Case, options) {
       };
       while (element.length > 0) {
         // Exit if element has a background color.
-        if (this.hasBackgroundColor(element)) {
+        var bcolor = element.css('backgroundColor');
+        if (this.hasBackgroundColor(bcolor)) {
           return false;
         }
-        if (element.css('background-image') && element.css('background-image') !== 'none' && element.css('background-image').search(/^(.*?)gradient(.*?)$/i) !== -1) {
-          var gradient = element.css('background-image').match(/gradient(\(.*\))/g);
+        var bimage = element.css('backgroundImage');
+        if (bimage && bimage !== 'none' && bimage.search(/^(.*?)gradient(.*?)$/i) !== -1) {
+          var gradient = bimage.match(/gradient(\(.*\))/g);
           if (gradient.length > 0) {
             gradient = gradient[0].replace(/(linear|radial|from|\bto\b|gradient|top|left|bottom|right|\d*%)/g, '');
             return $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notEmpty);
@@ -265,9 +274,8 @@ quail.components.color = function(quail, test, Case, options) {
     /**
      * Check if element has a background color.
      */
-    hasBackgroundColor: function(element) {
-      return element.css('background-color') !== 'rgba(0, 0, 0, 0)' &&
-        element.css('background-color') !== 'transparent';
+    hasBackgroundColor: function(bcolor) {
+      return bcolor !== 'rgba(0, 0, 0, 0)' && bcolor !== 'transparent';
     },
 
     /**
@@ -282,7 +290,7 @@ quail.components.color = function(quail, test, Case, options) {
       var scannedElements = [];
 
       // Scroll to make sure element is visible.
-      $(window).scrollTop(element.offset().top);
+      element[0].scrollIntoView();
 
       // Get relative x and y.
       var x = element.offset().left - $(window).scrollLeft();
@@ -299,34 +307,41 @@ quail.components.color = function(quail, test, Case, options) {
       var el = document.elementFromPoint(x,y);
       while (foundIt === undefined && el && el.tagName !== 'BODY' && el.tagName !== 'HTML') {
         el = $(el);
+        var bcolor = el.css('backgroundColor');
+        var bimage;
         // Only check visible elements.
         if (el.css('visibility') !== "hidden" && el.css('display') !== 'none') {
           switch (property) {
           case 'background-color':
-            if (this.hasBackgroundColor(el)) {
-              foundIt = el.css('background-color');
+            if (this.hasBackgroundColor(bcolor)) {
+              foundIt = bcolor;
             }
             break;
           case 'background-gradient':
-            if (el.css('background-image') && el.css('background-image') !== 'none' && el.css('background-image').search(/^(.*?)gradient(.*?)$/i) !== -1) {
-              var gradient = el.css('background-image').match(/gradient(\(.*\))/g);
+            // Bail out if the element has a background color.
+            if (this.hasBackgroundColor(bcolor)) {
+              foundIt = false;
+              continue;
+            }
+
+            bimage = el.css('backgroundImage');
+            if (bimage && bimage !== 'none' && bimage.search(/^(.*?)gradient(.*?)$/i) !== -1) {
+              var gradient = bimage.match(/gradient(\(.*\))/g);
               if (gradient.length > 0) {
                 gradient = gradient[0].replace(/(linear|radial|from|\bto\b|gradient|top|left|bottom|right|\d*%)/g, '');
                 foundIt = $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notempty);
               }
             }
-            // Bail out if the element has a background color.
-            if (this.hasBackgroundColor(el)) {
-              foundIt = false;
-            }
             break;
           case 'background-image':
-            if (el.css('background-image') && el.css('background-image') !== 'none' && el.css('background-image').search(/^(.*?)url(.*?)$/i) !== -1) {
-              foundIt = el.css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
-            }
             // Bail out if the element has a background color.
-            if (this.hasBackgroundColor(el)) {
+            if (this.hasBackgroundColor(bcolor)) {
               foundIt = false;
+              continue;
+            }
+            bimage = el.css('backgroundImage');
+            if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
+              foundIt = bimage.replace('url(', '').replace(/'/, '').replace(')', '');
             }
             break;
           }
@@ -379,188 +394,196 @@ quail.components.color = function(quail, test, Case, options) {
       status: status
     }));
   };
+  function testCandidates (textNode) {
+    // We want a tag, not just the text node.
+    var element = textNode.parentNode;
+    var $this = $(element);
+    var algorithm = options.algorithm;
+    var id, failureFound, failedWCAGColorTest, failedWAIColorTest;
+
+    // Bail out is the text is not readable.
+    if (quail.isUnreadable($this.text())) {
+      buildCase(element, 'cantTell', '', 'The text cannot be processed');
+      return;
+    }
+
+    var img, i, rainbow, numberOfSamples;
+
+    // Check text and background color using DOM.
+    id = 'colorFontContrast';
+    // Build a case.
+    if ((algorithm === 'wcag' && !colors.passesWCAG($this)) || (algorithm === 'wai' && !colors.passesWAI($this))) {
+      buildCase(element, 'failed', id, 'The font contrast of the text impairs readability');
+    }
+    else {
+      buildCase(element, 'passed', id, 'The font contrast of the text is sufficient for readability');
+    }
+
+    // Check text and background using element behind current element.
+    var backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
+    if (backgroundColorBehind) {
+      id = 'colorElementBehindContrast';
+      failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), backgroundColorBehind);
+      failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), backgroundColorBehind);
+      // Build a case.
+      if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+        buildCase(element, 'failed', id, 'The element behind this element makes the text unreadable');
+      }
+      else {
+        buildCase(element, 'passed', id, 'The element behind this element does not affect readability');
+      }
+    }
+
+    // Check if there's a backgroundImage using DOM.
+    var backgroundImage = colors.getBackgroundImage($this);
+    if (backgroundImage) {
+      img = new Image();
+      img.crossOrigin = "Anonymous";
+      // Get average color of the background image. The image must first load
+      // before information about it is available to the DOM.
+      img.onload = function () {
+        var id = 'colorBackgroundImageContrast';
+        var averageColorBackgroundImage = colors.getAverageRGB(img);
+        var failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColorBackgroundImage);
+        var failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColorBackgroundImage);
+        // Build a case.
+        if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+          buildCase(element, 'failed', id, 'The element\'s background image makes the text unreadable');
+        }
+        else {
+          buildCase(element, 'passed', id, 'The element\'s background image does not affect readability');
+        }
+      };
+      img.onerror = img.onabort = function () {
+        var id = 'colorBackgroundImageContrast';
+        buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
+      };
+      // Load the image.
+      try {
+        img.src = backgroundImage;
+      } catch(e) {
+        var id = 'colorBackgroundImageContrast';
+        buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
+      }
+    }
+
+    // Check if there's a backgroundImage using element behind current element.
+    var behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
+    if (behindBackgroundImage) {
+      img = new Image();
+      // The image must first load before information about it is available to
+      // the DOM.
+      img.onload = function () {
+        var id = 'colorElementBehindBackgroundImageContrast';
+        // Get average color of the background image.
+        var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
+        var failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColorBehindBackgroundImage);
+        var failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColorBehindBackgroundImage);
+        if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+          buildCase(element, 'failed', id, 'The background image of the element behind this element makes the text unreadable');
+        }
+        else {
+          buildCase(element, 'passed', id, 'The background image of the element behind this element does not affect readability');
+        }
+      };
+      img.onerror = img.onabort = function () {
+        var id = 'colorElementBehindBackgroundImageContrast';
+        buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
+      };
+      // Load the image.
+      try {
+        img.src = behindBackgroundImage;
+      } catch(e) {
+        var id = 'colorElementBehindBackgroundImageContrast';
+        buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
+      }
+    }
+
+    // Check if there's a background gradient using DOM.
+    var backgroundGradientColors = colors.getBackgroundGradient($this);
+    if (backgroundGradientColors) {
+      id = 'colorBackgroundGradientContrast';
+      // Convert colors to hex notation.
+      for (i = 0; i < backgroundGradientColors.length; i++) {
+        if (backgroundGradientColors[i].substr(0, 3) === 'rgb') {
+          backgroundGradientColors[i] = colors.colorToHex(backgroundGradientColors[i]);
+        }
+      }
+
+      // Create a rainbow.
+      /* global Rainbow */
+      rainbow = new Rainbow();
+      rainbow.setSpectrumByArray(backgroundGradientColors);
+      // @todo, make the number of samples configurable.
+      numberOfSamples = backgroundGradientColors.length * options.gradientSampleMultiplier;
+
+      // Check each color.
+      failureFound = false;
+      for (i = 0; !failureFound && i < numberOfSamples; i++) {
+        failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
+        failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
+        if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+          buildCase(element, 'failed', id, 'The background gradient makes the text unreadable');
+          failureFound = true;
+        }
+      }
+
+      // If no failure was found, the element passes for this case type.
+      if (!failureFound) {
+        buildCase(element, 'passed', id, 'The background gradient does not affect readability');
+      }
+    }
+
+    // Check if there's a background gradient using element behind current element.
+    var behindGradientColors = colors.getBehindElementBackgroundGradient($this);
+    if (behindGradientColors) {
+      id = 'colorElementBehindBackgroundGradientContrast';
+      // Convert colors to hex notation.
+      for (i = 0; i < behindGradientColors.length; i++) {
+        if (behindGradientColors[i].substr(0, 3) === 'rgb') {
+          behindGradientColors[i] = colors.colorToHex(behindGradientColors[i]);
+        }
+      }
+
+      // Create a rainbow.
+      /* global Rainbow */
+      rainbow = new Rainbow();
+      rainbow.setSpectrumByArray(behindGradientColors);
+      numberOfSamples = behindGradientColors.length * options.gradientSampleMultiplier;
+
+      // Check each color.
+      failureFound = false;
+      for (i = 0; !failureFound && i < numberOfSamples; i++) {
+        failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
+        failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
+        if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+          buildCase(element, 'failed', id, 'The background gradient of the element behind this element makes the text unreadable');
+          failureFound = true;
+        }
+      }
+
+      // If no failure was found, the element passes for this case type.
+      if (!failureFound) {
+        buildCase(element, 'passed', id, 'The background gradient of the element behind this element does not affect readability');
+      }
+    }
+  }
 
   test.get('$scope').each(function () {
-    var $candidates = $(this).find(options.selector).filter(quail.textSelector);
-    if (!$candidates.length) {
+    var textnodes = document.evaluate('descendant::text()[normalize-space()]', this, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+    var nodes = [];
+    var text = textnodes.iterateNext();
+    if (!text) {
       buildCase(null, 'notApplicable', '', 'There is no text to evaluate');
     }
     else {
-      $candidates.each(function() {
-        var element = this;
-        var $this = $(element);
-        var algorithm = options.algorithm;
-        var id, failureFound, failedWCAGColorTest, failedWAIColorTest, failedWCAGColorContrast, failedWAIColorContrast;
-
-        // Bail out is the text is not readable.
-        if (quail.isUnreadable($this.text())) {
-          buildCase(element, 'cantTell', '', 'The text cannot be processed');
-          return;
-        }
-
-        var img, i, rainbow, numberOfSamples;
-
-        // Check text and background color using DOM.
-        id = 'colorFontContrast';
-        failedWCAGColorContrast = !colors.passesWCAG($this);
-        failedWAIColorContrast = !colors.passesWAI($this);
-        // Build a case.
-        if ((algorithm === 'wcag' && failedWCAGColorContrast) || (algorithm === 'wai' && failedWAIColorContrast)) {
-          buildCase(element, 'failed', id, 'The font contrast of the text impairs readability');
-        }
-        else {
-          buildCase(element, 'passed', id, 'The font contrast of the text is sufficient for readability');
-        }
-
-        // Check text and background using element behind current element.
-        var backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
-        if (backgroundColorBehind) {
-          id = 'colorElementBehindContrast';
-          failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), backgroundColorBehind);
-          failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), backgroundColorBehind);
-          // Build a case.
-          if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
-            buildCase(element, 'failed', id, 'The element behind this element makes the text unreadable');
-          }
-          else {
-            buildCase(element, 'passed', id, 'The element behind this element does not affect readability');
-          }
-        }
-
-        // Check if there's a background-image using DOM.
-        var backgroundImage = colors.getBackgroundImage($this);
-        if (backgroundImage) {
-          img = new Image();
-          img.crossOrigin = "Anonymous";
-          // Get average color of the background image. The image must first load
-          // before information about it is available to the DOM.
-          img.onload = function () {
-            var id = 'colorBackgroundImageContrast';
-            var averageColorBackgroundImage = colors.getAverageRGB(img);
-            var failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColorBackgroundImage);
-            var failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColorBackgroundImage);
-            // Build a case.
-            if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
-              buildCase(element, 'failed', id, 'The element\'s background image makes the text unreadable');
-            }
-            else {
-              buildCase(element, 'passed', id, 'The element\'s background image does not affect readability');
-            }
-          };
-          img.onerror = img.onabort = function () {
-            var id = 'colorBackgroundImageContrast';
-            buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
-          };
-          // Load the image.
-          try {
-            img.src = backgroundImage;
-          } catch(e) {
-            var id = 'colorBackgroundImageContrast';
-            buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
-          }
-        }
-
-        // Check if there's a background-image using element behind current element.
-        var behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
-        if (behindBackgroundImage) {
-          img = new Image();
-          // The image must first load before information about it is available to
-          // the DOM.
-          img.onload = function () {
-            var id = 'colorElementBehindBackgroundImageContrast';
-            // Get average color of the background image.
-            var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
-            var failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColorBehindBackgroundImage);
-            var failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), averageColorBehindBackgroundImage);
-            if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
-              buildCase(element, 'failed', id, 'The background image of the element behind this element makes the text unreadable');
-            }
-            else {
-              buildCase(element, 'passed', id, 'The background image of the element behind this element does not affect readability');
-            }
-          };
-          img.onerror = img.onabort = function () {
-            var id = 'colorElementBehindBackgroundImageContrast';
-            buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
-          };
-          // Load the image.
-          try {
-            img.src = behindBackgroundImage;
-          } catch(e) {
-            var id = 'colorElementBehindBackgroundImageContrast';
-            buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
-          }
-        }
-
-        // Check if there's a background gradient using DOM.
-        var backgroundGradientColors = colors.getBackgroundGradient($this);
-        if (backgroundGradientColors) {
-          id = 'colorBackgroundGradientContrast';
-          // Convert colors to hex notation.
-          for (i = 0; i < backgroundGradientColors.length; i++) {
-            if (backgroundGradientColors[i].substr(0, 3) === 'rgb') {
-              backgroundGradientColors[i] = colors.colorToHex(backgroundGradientColors[i]);
-            }
-          }
-
-          // Create a rainbow.
-          /* global Rainbow */
-          rainbow = new Rainbow();
-          rainbow.setSpectrumByArray(backgroundGradientColors);
-          // @todo, make the number of samples configurable.
-          numberOfSamples = backgroundGradientColors.length * options.gradientSampleMultiplier;
-
-          // Check each color.
-          failureFound = false;
-          for (i = 0; !failureFound && i < numberOfSamples; i++) {
-            failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
-            failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
-            if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
-              buildCase(element, 'failed', id, 'The background gradient makes the text unreadable');
-              failureFound = true;
-            }
-          }
-
-          // If no failure was found, the element passes for this case type.
-          if (!failureFound) {
-            buildCase(element, 'passed', id, 'The background gradient does not affect readability');
-          }
-        }
-
-        // Check if there's a background gradient using element behind current element.
-        var behindGradientColors = colors.getBehindElementBackgroundGradient($this);
-        if (behindGradientColors) {
-          id = 'colorElementBehindBackgroundGradientContrast';
-          // Convert colors to hex notation.
-          for (i = 0; i < behindGradientColors.length; i++) {
-            if (behindGradientColors[i].substr(0, 3) === 'rgb') {
-              behindGradientColors[i] = colors.colorToHex(behindGradientColors[i]);
-            }
-          }
-
-          // Create a rainbow.
-          /* global Rainbow */
-          rainbow = new Rainbow();
-          rainbow.setSpectrumByArray(behindGradientColors);
-          numberOfSamples = behindGradientColors.length * options.gradientSampleMultiplier;
-
-          // Check each color.
-          failureFound = false;
-          for (i = 0; !failureFound && i < numberOfSamples; i++) {
-            failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
-            failedWAIColorTest = !colors.passesWAIColor(colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
-            if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
-              buildCase(element, 'failed', id, 'The background gradient of the element behind this element makes the text unreadable');
-              failureFound = true;
-            }
-          }
-
-          // If no failure was found, the element passes for this case type.
-          if (!failureFound) {
-            buildCase(element, 'passed', id, 'The background gradient of the element behind this element does not affect readability');
-          }
-        }
-      });
+      // Loop has to be separated. If we try to iterate and rund testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (text) {
+        nodes.push(text);
+        text = textnodes.iterateNext();
+      }
+      nodes.forEach(testCandidates);
     }
   });
 };
