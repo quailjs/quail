@@ -1,44 +1,50 @@
 quail.aAdjacentWithSameResourceShouldBeCombined = function(quail, test, Case) {
+  //var $applicableElements = test.get('$scope').find('a');
 
-  var $applicableElements = test.get('$scope').find('a');
+  function findAdjacent(index, element) {
+    var $element = $(element);
+    var adjacentLinks = $element.find('a + a').length > 0;
+    var $links = $element.find('a');
 
-  test.get('$scope').find('a').each(function() {
-    // Find all of the <a> tags that are not followed or preceded
-    // by another <a> tag. These are not applicable.
-    var $this = $(this);
-    if (!$this.prev('a').length && !$this.next('a').length) {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      _case.set({
-        'status': 'notApplicable',
-        expected: $(this).closest('.quail-test').data('expected')
-      });
-      $applicableElements = $applicableElements.not(this);
+    // no adjacent links, exclude all.
+    if (!adjacentLinks) {
+      $links.each(excludeSingleLinks);
     }
-  });
+    else {
+      $links.each(checkNextLink);
+    }
+  }
 
-  $applicableElements
-    .filter(function() {
-      return $(this).next('a').length;
-    }).each(function() {
-      var _case = Case({
-        element: this,
-        expected: $(this).closest('.quail-test').data('expected')
-      });
-      test.add(_case);
-      // Adjacent <a> tags that point to the same resource fail.
-      if ($(this).attr('href') === $(this).next('a').attr('href')) {
-        _case.set({
-          'status': 'failed'
-        });
-      }
-      // Adjacent <a> tags that point to different resources pass.
-      else {
-        _case.set({
-          'status': 'passed'
-        });
-      }
+  function checkNextLink(index, element) {
+    var $element = $(element);
+    var thisHref = element.getAttribute('href');
+    var $nextLink = $element.find('+ a');
+    if (!$nextLink.length) {
+      // We're going over the second link.
+      return;
+    }
+    var nextHref = $nextLink[0].getAttribute('href');
+    var status = 'passed';
+    var _case = Case({
+      element: element,
+      expected: $element.closest('.quail-test').data('expected')
     });
+    if (thisHref === nextHref) {
+      status = 'failed';
+    }
+
+    test.add(_case);
+    _case.set({'status': status});
+  }
+
+  function excludeSingleLinks(index, element) {
+    var _case = Case({ element: element });
+    test.add(_case);
+    _case.set({
+      'status': 'notApplicable',
+      expected: $(element).closest('.quail-test').data('expected')
+    });
+  }
+
+  test.get('$scope').each(findAdjacent);
 };
