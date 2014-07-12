@@ -337,11 +337,7 @@ var quail = {
     if ($element.is('p, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption')) {
       return $element.text();
     }
-    return $element.clone()
-                   .children()
-                   .remove()
-                   .end()
-                   .text();
+    return $element[0].childNodes[0].nodeValue;
   },
 
   /**
