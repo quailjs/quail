@@ -606,13 +606,7 @@ quail.components.color.postInvoke = function (test) {
    *   The size of the object determined by the number of keys.
    */
   function size (obj) {
-    var s = 0, key;
-    for (key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        s++;
-      }
-    }
-    return s;
+    return Object.keys(obj).length;
   }
 
   // Go through each selector group.

@@ -213,13 +213,7 @@ quail.lib.SuccessCriteria = (function () {
    *   The size of the object determined by the number of keys.
    */
   function size (obj) {
-    var s = 0, key;
-    for (key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        s++;
-      }
-    }
-    return s;
+    return Object.keys(obj).length;
   }
 
   // Give the init function the SuccessCriteria prototype.
