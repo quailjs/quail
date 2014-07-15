@@ -51,10 +51,12 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
   }
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
-  return sc = quail.lib.SuccessCriteria({
+  sc = quail.lib.SuccessCriteria({
     'name': 'wcag:1.4.3',
     'requiredTests': requiredTests,
     preEvaluator: preEvaluator,
     evaluator: evaluator
   });
+
+  return sc;
 }(quail));
