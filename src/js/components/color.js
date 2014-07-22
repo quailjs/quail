@@ -4,13 +4,19 @@
  */
 quail.components.color = function(quail, test, Case, options) {
   var colors = {
+    cache: {},
     /**
      * Returns the lumosity of a given foreground and background object,
      * in the format of {r: red, g: green, b: blue } in rgb color values.
      */
     getLuminosity : function(foreground, background) {
+      var cacheKey = 'getLuminosity_' + foreground + '_' + background;
       foreground = this.cleanup(foreground);
       background = this.cleanup(background);
+
+      if (this.cache[cacheKey] !== undefined) {
+        return this.cache[cacheKey];
+      }
 
       var RsRGB = foreground.r/255;
       var GsRGB = foreground.g/255;
@@ -29,7 +35,8 @@ quail.components.color = function(quail, test, Case, options) {
       l1 = (0.2126 * R + 0.7152 * G + 0.0722 * B);
       l2 = (0.2126 * R2 + 0.7152 * G2 + 0.0722 * B2);
 
-      return Math.round((Math.max(l1, l2) + 0.05)/(Math.min(l1, l2) + 0.05)*10)/10;
+      this.cache[cacheKey] = Math.round((Math.max(l1, l2) + 0.05)/(Math.min(l1, l2) + 0.05)*10)/10;
+      return this.cache[cacheKey];
     },
 
     /**
@@ -42,7 +49,7 @@ quail.components.color = function(quail, test, Case, options) {
       var can = document.createElement('canvas');
       var context = can.getContext('2d');
       context.drawImage(img, 0, 0);
-      var data = context.getImageData(x, y, 1, 1).data;
+      var data = context.getImageData(0, 0, 1, 1).data;
       return 'rgb(' + data[0] + ',' + data[1] + ',' + data[2] + ')';
     },
 
@@ -129,21 +136,34 @@ quail.components.color = function(quail, test, Case, options) {
      * different browsers can return colors, and handling transparencies.
      */
     getColor : function(element, type) {
+      if (!element.attr('data-cacheId')) {
+        element.attr('data-cacheId', 'id_' + Math.random());
+      }
+
+      var cacheKey = 'getColor_' + type + '_' + element.attr('data-cacheId');
+      if (this.cache[cacheKey] !== undefined) {
+        return this.cache[cacheKey];
+      }
+
       if (type === 'foreground') {
-        return (element.css('color')) ? element.css('color') : 'rgb(0,0,0)';
+        this.cache[cacheKey] = (element.css('color')) ? element.css('color') : 'rgb(0,0,0)';
+        return this.cache[cacheKey];
       }
 
       if (this.hasBackgroundColor(element)) {
-        return (element.css('background-color')) ? element.css('background-color') : 'rgb(255,255,255)';
+        this.cache[cacheKey] = (element.css('background-color')) ? element.css('background-color') : 'rgb(255,255,255)';
+        return this.cache[cacheKey];
       }
       var color = 'rgb(255,255,255)';
       element.parents().each(function(){
         if (colors.hasBackgroundColor(element)) {
           color = element.css('background-color');
+          this.cache[cacheKey] = false;
           return false;
         }
       });
-      return color;
+      this.cache[cacheKey] = color;
+      return this.cache[cacheKey];
     },
 
     /**
@@ -176,12 +196,23 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns background image of an element or its parents.
      */
     getBackgroundImage: function(element) {
+      if (!element.attr('data-cacheId')) {
+        element.attr('data-cacheId', 'id_' + Math.random());
+      }
+
+      var cacheKey = 'getBackgroundImage_' + element.attr('data-cacheId');
+      if (this.cache[cacheKey] !== undefined) {
+        return this.cache[cacheKey];
+      }
+
       while (element.length > 0) {
         if (element.css('background-image') && element.css('background-image') !== 'none' && element.css('background-image').search(/^(.*?)url(.*?)$/i) !== -1) {
-          return element.css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
+          this.cache[cacheKey] = element.css('background-image').replace('url(', '').replace(/'/, '').replace(')', '');
+          return this.cache[cacheKey];
         }
         element = element.parent();
       }
+      this.cache[cacheKey] = false;
       return false;
     },
 
@@ -189,23 +220,35 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns background image of an element or its parents.
      */
     getBackgroundGradient: function(element) {
+      if (!element.attr('data-cacheId')) {
+        element.attr('data-cacheId', 'id_' + Math.random());
+      }
+
+      var cacheKey = 'getBackgroundGradient_' + element.attr('data-cacheId');
+      if (this.cache[cacheKey] !== undefined) {
+        return this.cache[cacheKey];
+      }
+
       var notEmpty = function(s) {
         return $.trim(s) !== '';
       };
       while (element.length > 0) {
         // Exit if element has a background color.
         if (this.hasBackgroundColor(element)) {
+          this.cache[cacheKey] = false;
           return false;
         }
         if (element.css('background-image') && element.css('background-image') !== 'none' && element.css('background-image').search(/^(.*?)gradient(.*?)$/i) !== -1) {
           var gradient = element.css('background-image').match(/gradient(\(.*\))/g);
           if (gradient.length > 0) {
             gradient = gradient[0].replace(/(linear|radial|from|\bto\b|gradient|top|left|bottom|right|\d*%)/g, '');
-            return $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notEmpty);
+            this.cache[cacheKey] = $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notEmpty);
+            return this.cache[cacheKey];
           }
         }
         element = element.parent();
       }
+      this.cache[cacheKey] = false;
       return false;
     },
 
@@ -213,6 +256,11 @@ quail.components.color = function(quail, test, Case, options) {
      * Calculates average color of an image.
      */
     getAverageRGB: function(img) {
+      var cacheKey = img.src;
+      if (this.cache[cacheKey] !== undefined) {
+        return this.cache[cacheKey];
+      }
+
       var blockSize = 5, // only visit every 5 pixels
         defaultRGB = {r:0,g:0,b:0}, // for non-supporting envs
         canvas = document.createElement('canvas'),
@@ -224,6 +272,7 @@ quail.components.color = function(quail, test, Case, options) {
         count = 0;
 
       if (!context) {
+        this.cache[cacheKey] = defaultRGB;
         return defaultRGB;
       }
 
@@ -234,6 +283,7 @@ quail.components.color = function(quail, test, Case, options) {
       try {
         data = context.getImageData(0, 0, width, height);
       } catch(e) {
+        this.cache[cacheKey] = defaultRGB;
         return defaultRGB;
       }
 
@@ -251,6 +301,7 @@ quail.components.color = function(quail, test, Case, options) {
       rgb.g = ~~(rgb.g/count);
       rgb.b = ~~(rgb.b/count);
 
+      this.cache[cacheKey] = rgb;
       return rgb;
     },
 
@@ -274,6 +325,15 @@ quail.components.color = function(quail, test, Case, options) {
      * Traverse visual tree for background property.
      */
     traverseVisualTreeForBackground: function(element, property) {
+      if (!element.attr('data-cacheId')) {
+        element.attr('data-cacheId', 'id_' + Math.random());
+      }
+
+      var cacheKey = 'traverseVisualTreeForBackground_' + element.attr('data-cacheId') + '_' + property;
+      if (this.cache[cacheKey] !== undefined) {
+        return this.cache[cacheKey];
+      }
+
       var notempty = function(s) {
         return $.trim(s) !== '';
       };
@@ -344,6 +404,7 @@ quail.components.color = function(quail, test, Case, options) {
         scannedElements[i].element.css('visibility', scannedElements[i].visibility);
       }
 
+      this.cache[cacheKey] = foundIt;
       return foundIt;
     },
 
