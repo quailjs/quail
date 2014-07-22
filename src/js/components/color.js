@@ -42,7 +42,7 @@ quail.components.color = function(quail, test, Case, options) {
       var can = document.createElement('canvas');
       var context = can.getContext('2d');
       context.drawImage(img, 0, 0);
-      var data = context.getImageData(0, 0, 1, 1).data;
+      var data = context.getImageData(x, y, 1, 1).data;
       return 'rgb(' + data[0] + ',' + data[1] + ',' + data[2] + ')';
     },
 
