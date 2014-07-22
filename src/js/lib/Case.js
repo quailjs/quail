@@ -90,13 +90,31 @@ quail.lib.Case = (function () {
     resolve: function () {
       clearTimeout(this.timeout);
 
+      var el = this.attributes.element;
+      var outerEl;
+
       // Get a selector and HTML if an element is provided.
-      if (this.attributes.element && this.attributes.element.nodeType && this.attributes.element.nodeType === 1) {
-        this.attributes.selector = this.defineUniqueSelector(this.attributes.element);
+      if (el && el.nodeType && el.nodeType === 1) {
+        this.attributes.selector = this.defineUniqueSelector(el);
+
+        this.attributes.html = '';
+
+        // If the element is either the <html> or <body> elements,
+        // just report that. Otherwise we might be returning the entire page
+        // as a string.
+        if (el.nodeName === 'HTML' || el.nodeName === 'BODY') {
+          this.attributes.html = '<' + el.nodeName + '>';
+        }
         // Get the parent node in order to get the innerHTML for the selected
         // element. Trim wrapping whitespace, remove linebreaks and spaces.
-        if (typeof this.attributes.element.outerHTML === 'string') {
-          this.attributes.html = this.attributes.element.outerHTML.trim().replace(/(\r\n|\n|\r)/gm,"").replace(/>\s+</g, '><');
+        else if (typeof el.outerHTML === 'string') {
+          outerEl = el.outerHTML.trim().replace(/(\r\n|\n|\r)/gm,"").replace(/>\s+</g, '><');
+          // Guard against insanely long elements.
+          // @todo, make this length configurable eventually.
+          if (outerEl.length > 200) {
+            outerEl = outerEl.substr(0, 200) + '... [truncated]';
+          }
+          this.attributes.html = outerEl;
         }
       }
 
