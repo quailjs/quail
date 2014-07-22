@@ -14,8 +14,7 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
   /**
    * Determines if this Success Criteria applies to the document.
    */
-  function preEvaluator(tests) {
-    tests = tests;
+  function preEvaluator() {
     return true;
   }
 
