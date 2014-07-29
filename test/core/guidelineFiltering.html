@@ -15,10 +15,10 @@
         expect(2);
         $('body').quail({
           jsonPath : '../../dist',
-          guideline: ['cssTextHasContrast'],
+          guideline: ['documentTitleDescribesDocument'],
           testCollectionComplete : function(eventName, testCollection) {
             equal(testCollection.length, 1, 'One test was run.');
-            ok(testCollection.find('cssTextHasContrast'), 'The cssTextHasContrast exists in the TestCollection.');
+            ok(testCollection.find('documentTitleDescribesDocument'), 'The cssTextHasContrast exists in the TestCollection.');
             start();
           }
         });

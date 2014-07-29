@@ -2,6 +2,8 @@
 // @see https://gist.github.com/dsingleton/1312328
 Function.prototype.bind=Function.prototype.bind||function(b){if(typeof this!=="function"){throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");}var a=Array.prototype.slice,f=a.call(arguments,1),e=this,c=function(){},d=function(){return e.apply(this instanceof c?this:b||window,f.concat(a.call(arguments)));};c.prototype=this.prototype;d.prototype=new c();return d;};
 
+"use strict";
+
 $.fn.quail = function(options) {
   if (!this.length) {
     return this;
@@ -335,11 +337,7 @@ var quail = {
     if ($element.is('p, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption')) {
       return $element.text();
     }
-    return $element.clone()
-                   .children()
-                   .remove()
-                   .end()
-                   .text();
+    return $element[0].childNodes[0].nodeValue;
   },
 
   /**
