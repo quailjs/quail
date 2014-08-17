@@ -775,7 +775,7 @@ contentPositioningShouldNotChangeMeaning:
   testability: 0.5
   title:
     en: "Meaning should not be created through positioning"
-    nl: "CreÎer geen betekenis door positionering"
+    nl: "Creï¿½er geen betekenis door positionering"
   description:
     en: "Positioning should not be used to change the meaning of an element."
     nl: "Positionering moet niet worden gebruikt om de betekenis van een element te veranderen."
@@ -1734,7 +1734,7 @@ frameTitlesNotEmpty:
     - "deprecated"
     - "frame"
   options:
-    selector: "frame:not(frame[title]), frame[title=], iframe:not(iframe[title]), iframe[title=]"
+    selector: "frame:not(frame[title]), frame[title=''], iframe:not(iframe[title]), iframe[title='']"
 frameTitlesNotPlaceholder:
   type: "placeholder"
   testability: 1
@@ -3556,7 +3556,7 @@ objectUIMustBeAccessible:
     nl: "Content binnen een \"object\"-element moet bruikbaar blijven als het object uitgeschakeld is"
   description:
     en: "Objects who's content changes using java, ActiveX, or other similar technologies, should have their default text change when the object's content changes."
-    nl: "Van objecten waarvan de content java, ActiveX of vergelijkbare technologieÎn gebruiken, moet de standaardtekst veranderen als de content van het object verandert."
+    nl: "Van objecten waarvan de content java, ActiveX of vergelijkbare technologieï¿½n gebruiken, moet de standaardtekst veranderen als de content van het object verandert."
   guidelines: []
   tags:
     - "objects"
