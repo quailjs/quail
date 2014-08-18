@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+  <title>KINGUseCurrencyAsSymbol</title>
+</head>
+<body>
+<div class="quail-test" data-expected="fail" data-accessibility-test="KINGUseCurrencyAsSymbol">
+  <p>Text with a few prices, 500 dollars, 500 euros. Dollars 500</p>
+</div>
+
+<div class="quail-test" data-expected="pass" data-accessibility-test="KINGUseCurrencyAsSymbol">
+  <p>Text with a few prices, 500 USD, 300€.</p>
+</div>
+
+
+<script src="../quail-testrunner.js"></script>	</body>
+</html>

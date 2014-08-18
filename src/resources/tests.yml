@@ -775,7 +775,7 @@ contentPositioningShouldNotChangeMeaning:
   testability: 0.5
   title:
     en: "Meaning should not be created through positioning"
-    nl: "CreÎer geen betekenis door positionering"
+    nl: "Creï¿½er geen betekenis door positionering"
   description:
     en: "Positioning should not be used to change the meaning of an element."
     nl: "Positionering moet niet worden gebruikt om de betekenis van een element te veranderen."
@@ -3556,7 +3556,7 @@ objectUIMustBeAccessible:
     nl: "Content binnen een \"object\"-element moet bruikbaar blijven als het object uitgeschakeld is"
   description:
     en: "Objects who's content changes using java, ActiveX, or other similar technologies, should have their default text change when the object's content changes."
-    nl: "Van objecten waarvan de content java, ActiveX of vergelijkbare technologieÎn gebruiken, moet de standaardtekst veranderen als de content van het object verandert."
+    nl: "Van objecten waarvan de content java, ActiveX of vergelijkbare technologieï¿½n gebruiken, moet de standaardtekst veranderen als de content van het object verandert."
   guidelines: []
   tags:
     - "objects"
@@ -4897,3 +4897,48 @@ buttonDoesNotChangeContextOnFocus:
   options:
     searchEvent: "onfocus"
     selector: "input[type=checkbox],input[type=text],button"
+KINGStrongList:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Use strong in lists only"
+  description:
+    en: "STRONG only allowed when parent element is LI."
+  guidelines: []
+  tags:
+    - "KING"
+  callback: "KINGStrongList"
+KINGUseLongDateFormat:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Use a long date format"
+  description:
+    en: "Short date formats might confuse users, Always use the month name: 20 May 2014."
+  guidelines: []
+  tags:
+    - "KING"
+  callback: "KINGUseLongDateFormat"
+KINGUsePercentageWithSymbol:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Use a symbol within a percentage"
+  description:
+    en: ""
+  guidelines: []
+  tags:
+    - "KING"
+  callback: "KINGUsePercentageWithSymbol"
+KINGUseCurrencyAsSymbol:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Use a symbol for a currency"
+  description:
+    en: "Only use symbol and currency name instead of common name such as â‚¬ or EUR."
+  guidelines: []
+  tags:
+    - "KING"
+  callback: "KINGUseCurrencyAsSymbol"
+
