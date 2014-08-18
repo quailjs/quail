@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>Success Criteria 1.4.2</title>
+  <style>
+    #test-scope {
+      font-size: x-large;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="test-scope">
+    <p>This test is readable.</p>
+    <object></object>
+  </div>
+
+  <script src="../quail-testrunner.js"></script>
+  <script>
+    (function(global) {
+      asyncTest('Success Criteria 1.4.2', function () {
+        expect(3);
+        $('#test-scope').quail({
+          jsonPath : '../../dist',
+          guideline : ['cssTextHasContrast'],
+          reset : true,
+          successCriteriaEvaluated : function(eventName, successCriteria, testCollection) {
+            if (successCriteria.get('name') === 'wcag:1.4.3') {
+              equal(eventName, 'successCriteriaEvaluated', 'The event name is \'successCriteriaEvaluated\'');
+              ok(successCriteria instanceof quail.lib.SuccessCriteria, 'The successCriteria argument is an instance of quail.lib.SuccessCriteria');
+              ok(testCollection instanceof quail.lib.TestCollection, 'The testCollection argument is an instance of quail.lib.TestCollection');
+              start();
+            }
+          }});
+      });
+    })(this);
+  </script>
+</body>
+</html>
