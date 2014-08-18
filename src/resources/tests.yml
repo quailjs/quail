@@ -1734,7 +1734,7 @@ frameTitlesNotEmpty:
     - "deprecated"
     - "frame"
   options:
-    selector: "frame:not(frame[title]), frame[title=], iframe:not(iframe[title]), iframe[title=]"
+    selector: "frame:not(frame[title]), frame[title=''], iframe:not(iframe[title]), iframe[title='']"
 frameTitlesNotPlaceholder:
   type: "placeholder"
   testability: 1
