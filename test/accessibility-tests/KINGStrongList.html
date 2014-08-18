@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <title>KINGStrongList</title>
+</head>
+<body>
+<div class="quail-test" data-expected="pass" data-accessibility-test="KINGStrongList">
+  <ul>
+    <li>Some <strong>bold</strong> text.</li>
+  </ul>
+</div>
+
+<div class="quail-test" data-expected="fail" data-accessibility-test="KINGStrongList">
+  <p><strong>Bold</strong> at the wrong place.</p>
+</div>
+
+
+<script src="../quail-testrunner.js"></script>	</body>
+</html>
