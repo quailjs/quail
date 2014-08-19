@@ -16,7 +16,9 @@ quail.guidelines.wcag.successCriteria['1.4.5'] = (function (quail) {
    * Determines if this Success Criteria applies to the document.
    */
   function preEvaluator() {
-    return true;
+    // Check for image tags. If the page does not have any, then there is
+    // nothing to test.
+    return !!document.querySelectorAll('img, map').length;
   }
 
   /**
