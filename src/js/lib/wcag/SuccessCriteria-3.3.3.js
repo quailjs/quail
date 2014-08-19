@@ -41,14 +41,38 @@ quail.guidelines.wcag.successCriteria['3.3.3'] = (function (quail) {
       'url', // Defines a field for entering a URL
       'week' //  Defines a week and year control (no time zone)
     ];
+
+    var requiredAttrs = [{
+      'required': 'required'
+    },
+    {
+      'aria-required': 'true'
+    }];
+
+    // Searches this for complex for types.
+    //
+    // @return boolean
+    //    Whether the complex input type exists in the scoped DOM element.
+    function hasComplexTypes (type) {
+      return !!this.querySelectorAll('[type="' + type + '"]').length;
+    }
+
+    function hasTypesWithAttr (attr) {
+      var key = Object.keys(attr)[0];
+      return !!this.querySelectorAll('[' + key + '="' + attr[key] + '"]').length;
+    }
+
+
     // Testing forms.
     //
     // If any of the complex form types are present in the document, this
     // success criteria applies.
     if (document.querySelectorAll('form').length) {
-      return complexInputTypes.some(function (type) {
-        return !!document.querySelectorAll('[type="' + type + '"]').length;
-      });
+      if (complexInputTypes.some(hasComplexTypes, document) ||
+        requiredAttrs.some(hasTypesWithAttr, document)
+      ) {
+        return true;
+      }
     }
     else {
       return false;
