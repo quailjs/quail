@@ -6,6 +6,28 @@
 quail.guidelines.wcag.successCriteria['3.3.3'] = (function (quail) {
   var sc;
 
+  // Techniques
+  sc.techniques = {
+    // Required fields
+    'G83': 'Providing text descriptions to identify required fields that were not completed',
+    'ARIA2': 'Identifying a required field with the aria-required property',
+    // Field that requires specific data formats
+    'ARIA18': 'Using aria-alertdialog to Identify Errors (ARIA)',
+    'G85': 'Providing a text description when user input falls outside the required format or values',
+    'G177': 'Providing suggested correction text',
+    'SCR18': 'Providing client-side validation and alert (Scripting)',
+    'SCR32': 'Providing client-side validation and adding error text via the DOM (Scripting)',
+    // Field with limited set of values
+    // 'ARIA18': 'Using aria-alertdialog to Identify Errors (ARIA)',
+    'G84': 'Providing a text description when the user provides information that is not in the list of allowed values'
+    // 'G177': 'Providing suggested correction text',
+    // 'SCR18': 'Providing client-side validation and alert (Scripting)',
+    // 'SCR32': 'Providing client-side validation and adding error text via the DOM (Scripting)'
+  };
+
+  // Failures
+  sc.failures = {};
+
   // The tests that must be run in order to evaluate this Success Criteria.
   var requiredTests = [];
   // The set of tests that were run that pertain to this Success Criteria. This

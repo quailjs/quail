@@ -6,6 +6,16 @@
 quail.guidelines.wcag.successCriteria['3.2.4'] = (function (quail) {
   var sc;
 
+  // Techniques
+  sc.techniques = {
+    'G197': 'Using labels, names, and text alternatives consistently for content that has the same functionality AND following the sufficient techniques for Success Criterion 1.1.1 and sufficient techniques for Success Criterion 4.1.2 for providing labels, names, and text alternatives.'
+  };
+
+  // Failures
+  sc.failures = {
+    'F31': 'Using two different labels for the same function on different Web pages within a set of Web pages'
+  };
+
   // The tests that must be run in order to evaluate this Success Criteria.
   var requiredTests = [];
   // The set of tests that were run that pertain to this Success Criteria. This

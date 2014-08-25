@@ -6,6 +6,17 @@
 quail.guidelines.wcag.successCriteria['1.2.4'] = (function (quail) {
   var sc;
 
+  // Techniques
+  sc.techniques = {
+    'G9': 'Creating captions for live synchronized media',
+    // AND
+    'G93': 'Providing open (always visible) captions',
+    'G87': 'Providing closed captions using any readily available media format that has a video player that supports closed captioning'
+  };
+
+  // Failures
+  sc.failures = {};
+
   // The tests that must be run in order to evaluate this Success Criteria.
   var requiredTests = [];
   // The set of tests that were run that pertain to this Success Criteria. This

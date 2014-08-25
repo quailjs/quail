@@ -6,6 +6,17 @@
 quail.guidelines.wcag.successCriteria['3.2.1'] = (function (quail) {
   var sc;
 
+  // Techniques
+  sc.techniques = {
+    'G107': 'Using "activate" rather than "focus" as a trigger for changes of context'
+  };
+
+  // Failures
+  sc.failures = {
+    'F52': 'Opening a new window as soon as a new page is loaded',
+    'F55': 'Using script to remove focus when focus is received'
+  };
+
   // The tests that must be run in order to evaluate this Success Criteria.
   var requiredTests = [];
   // The set of tests that were run that pertain to this Success Criteria. This

@@ -6,6 +6,18 @@
 quail.guidelines.wcag.successCriteria['1.4.2'] = (function (quail) {
   var sc;
 
+  // Techniques
+  sc.techniques = {
+    'G60': 'Playing a sound that turns off automatically within three seconds',
+    'G170': 'Providing a control near the beginning of the Web page that turns off sounds that play automatically',
+    'G171': 'Playing sounds only on user request'
+  };
+
+  // Failures
+  sc.failures = {
+    'F23': 'Playing a sound longer than 3 seconds where there is no mechanism to turn it off'
+  };
+
   // The tests that must be run in order to evaluate this Success Criteria.
   var requiredTests = [];
   // The set of tests that were run that pertain to this Success Criteria. This

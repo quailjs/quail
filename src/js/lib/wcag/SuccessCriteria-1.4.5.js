@@ -6,6 +6,16 @@
 quail.guidelines.wcag.successCriteria['1.4.5'] = (function (quail) {
   var sc;
 
+  // Techniques
+  sc.techniques = {
+    'C22': 'Using CSS to control visual presentation of text (CSS)',
+    'C30': 'Using CSS to replace text with images of text and providing user interface controls to switch',
+    'G140': 'Separating information and structure from presentation to enable different presentations'
+  };
+
+  // Failures
+  sc.failures = {};
+
   // The tests that must be run in order to evaluate this Success Criteria.
   var requiredTests = [];
   // The set of tests that were run that pertain to this Success Criteria. This

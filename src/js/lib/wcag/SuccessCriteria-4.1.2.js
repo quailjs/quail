@@ -4,6 +4,29 @@
 quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
   var sc;
 
+  // Techniques
+  sc.techniques = {
+    'ARIA14': 'Using aria-label to provide an invisible label where a visible label cannot be used',
+    'ARIA16': 'Using aria-labelledby to provide a name for user interface controls',
+    'G108': 'Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes using technology-specific techniques below:',
+    //AND
+    'H91': 'Using HTML form controls and links',
+    'H44': 'Using label elements to associate text labels with form controls',
+    'H64': 'Using the title attribute of the frame and iframe elements',
+    'H65': 'Using the title attribute to identify form controls when the label element cannot be used',
+    'H88': 'Using HTML according to spec'
+  };
+
+  // Failures
+  sc.failures = {
+    'F59': 'Using script to make div or span a user interface control in HTML without providing a role for the control (This failure may be solved in the future using DHTML roadmap techniques.)',
+    'F20': 'Not updating text alternatives when changes to non-text content occur',
+    'F68': 'Association of label and user interface controls not being programmatically determined',
+    'F79': 'Focus state of a user interface component not being programmatically determinable or no notification of change of focus state available',
+    'F86': 'Not providing names for each part of a multi-part form field, such as a US telephone number',
+    'F89': 'Using null alt on an image where the image is the only content in a link'
+  };
+
   // The tests that must be run in order to evaluate this Success Criteria.
   // @todo, identify the complete set of required tests for this Success Criteria.
   var requiredTests = ['labelsAreAssignedToAnInput', 'labelMustBeUnique', 'inputWithoutLabelHasTitle'];

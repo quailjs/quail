@@ -6,6 +6,16 @@
 quail.guidelines.wcag.successCriteria['3.2.3'] = (function (quail) {
   var sc;
 
+  // Techniques
+  sc.techniques = {
+    'G61': 'Presenting repeated components in the same relative order each time they appear'
+  };
+
+  // Failures
+  sc.failures = {
+    'F66': 'Presenting navigation links in a different relative order on different pages'
+  };
+
   // The tests that must be run in order to evaluate this Success Criteria.
   var requiredTests = [];
   // The set of tests that were run that pertain to this Success Criteria. This
