@@ -115,16 +115,19 @@ quail.lib.SuccessCriteria = (function () {
       this.listenTo(testCollection, 'complete', this.evaluate);
     },
     /**
-     * Returns the union of the tests that were run and the required tests.
+     * Returns a collection of tests for this success criteria.
      */
-    filterTests: function (tests, requiredTests) {
-      var criteriaTests = [];
+    filterTests: function (tests) {
+      var criteriaTests = new quail.lib.TestCollection();
+      var name = this.get('name').split(':')[1];
       tests.each(function (index, test) {
-        var name = test.get('name');
-        // Get the union of the tests that were run and the required tests.
-        for (var i = 0, il = requiredTests.length; i < il; ++i) {
-          if (name === requiredTests[i]) {
-            criteriaTests.push(name);
+        var guidelineCoverage = test.getGuidelineCoverage('wcag');
+        // Get tests for this success criteria.
+        for (var criteriaID in guidelineCoverage) {
+          if (guidelineCoverage.hasOwnProperty(criteriaID)) {
+            if (criteriaID === name) {
+              criteriaTests.add(test);
+            }
           }
         }
       });
@@ -136,27 +139,26 @@ quail.lib.SuccessCriteria = (function () {
      * @param string concluion
      * @param quail.lib.Case _case
      */
-    addConclusion: function (conclusion, _case) {
+    addConclusion: function (conclusion, details) {
       if (!this.get('results')[conclusion]) {
         this.get('results')[conclusion] = quail.lib.Test();
       }
-      this.get('results')[conclusion].add(_case);
+      this.get('results')[conclusion].push(details);
     },
     /**
      * Runs the evaluator callbacks against the completed TestCollection.
      */
     evaluate: function (eventName, testCollection) {
       if (this.get('status') !== 'notApplicable') {
-        // Sort the test cases by selector.
         var sc = this;
-        // @todo Calculate this once and cache it.
-        testCollection.each(function (index, test) {
+        var associatedTests = this.filterTests(testCollection);
+
+        associatedTests.each(function (index, test) {
           test.each(function (index, _case) {
-            sc.add(_case);
+            sc.addConclusion(_case.get('status'), _case);
           });
         });
 
-        this.get('evaluator').call(this, testCollection);
         if (size(this.get('results')) === 0) {
           this.set('status', 'untested');
         }

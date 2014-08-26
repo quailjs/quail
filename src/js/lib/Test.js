@@ -244,6 +244,14 @@ quail.lib.Test = (function () {
       });
       return casesByHtml;
     },
+
+    /**
+     * @needsdoc
+     */
+    getGuidelineCoverage: function (name) {
+      var config = this.get('guidelines');
+      return config && config[name] || {};
+    },
     /**
      * Adds the test that owns the Case to the set of arguments passed up to
      * listeners of this test's cases.

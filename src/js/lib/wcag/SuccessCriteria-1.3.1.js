@@ -4,7 +4,18 @@
  * @see http://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-programmatic
  */
 quail.guidelines.wcag.successCriteria['1.3.1'] = (function (quail) {
-  var sc;
+  /**
+   * Determines if this Success Criteria applies to the document.
+   */
+  function preEvaluator() {
+    return true;
+  }
+
+  // Create a new SuccessCriteria and pass it the evaluation callbacks.
+  var sc = quail.lib.SuccessCriteria({
+    'name': 'wcag:1.3.1',
+    preEvaluator: preEvaluator
+  });
 
   // Techniques
   sc.techniques = {
@@ -59,39 +70,6 @@ quail.guidelines.wcag.successCriteria['1.3.1'] = (function (quail) {
      // Forms
     'F68': 'Association of label and user interface controls not being programmatically determinable'
   };
-
-  // The tests that must be run in order to evaluate this Success Criteria.
-  var requiredTests = [];
-  // The set of tests that were run that pertain to this Success Criteria. This
-  // will be the union of the tests that were run and the required tests.
-  var criteriaTests = [];
-
-  /**
-   * Determines if this Success Criteria applies to the document.
-   */
-  function preEvaluator() {
-    return true;
-  }
-
-  /**
-   * Evaluates the Success Criteria.
-   */
-  function evaluator(tests) {
-    criteriaTests = sc.filterTests(tests, requiredTests);
-    // If the length of the union equals the length of the required tests,
-    // then we have the necessary tests to evaluate this success criteria.
-    if (criteriaTests.length === requiredTests.length) {
-
-    }
-  }
-
-  // Create a new SuccessCriteria and pass it the evaluation callbacks.
-  sc = quail.lib.SuccessCriteria({
-    'name': 'wcag:1.3.1',
-    'requiredTests': requiredTests,
-    preEvaluator: preEvaluator,
-    evaluator: evaluator
-  });
 
   return sc;
 }(quail));

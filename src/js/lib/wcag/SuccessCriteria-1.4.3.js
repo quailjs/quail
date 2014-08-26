@@ -4,7 +4,53 @@
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html
  */
 quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
-  var sc;
+
+  /**
+   * Determines if this Success Criteria applies to the document.
+   */
+  function preEvaluator() {
+    return true;
+  }
+
+  /**
+   * (unused right now)
+   *
+   * Evaluates the Success Criteria.
+   */
+  //function evaluator(tests) {
+    // // The set of tests that were run that pertain to this Success Criteria. This
+    // // will be the union of the tests that were run and the required tests.
+    // var criteriaTests = sc.filterTests(tests, sc.requiredTests);
+    // // If the length of the union equals the length of the required tests,
+    // // then we have the necessary tests to evaluate this success criteria.
+    // if (criteriaTests.length === requiredTests.length) {
+    //   // Find the tests to evaluate.
+    //   var cssTextHasContrast = tests.find('cssTextHasContrast');
+    //   // Cycle through the cases in the Success Criteria.
+    //   sc.each(function (index, _case) {
+    //     var selector = _case.get('selector');
+    //     var conclusion = 'untested';
+    //     var testCase, caseGroups;
+
+    //     // Process 'labelsAreAssignedToAnInput'.
+    //     caseGroups = cssTextHasContrast.groupCasesBySelector(selector);
+    //     testCase = caseGroups && caseGroups[selector] && caseGroups[selector][0];
+
+    //     if (testCase) {
+    //       conclusion = testCase.get('status') || 'cantTell';
+    //     }
+
+    //     // Add the case to the Success Criteria.
+    //     sc.addConclusion(conclusion, _case);
+    //   });
+    // }
+  //}
+
+  // Create a new SuccessCriteria and pass it the evaluation callbacks.
+  var sc = quail.lib.SuccessCriteria({
+    'name': 'wcag:1.4.3',
+    preEvaluator: preEvaluator
+  });
 
   // Techniques
   sc.techniques = {
@@ -18,57 +64,6 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
     'F24': 'Specifying foreground colors without specifying background colors or vice versa',
     'F83': 'Using background images that do not provide sufficient contrast with foreground text (or images of text)'
   };
-
-  // The tests that must be run in order to evaluate this Success Criteria.
-  var requiredTests = ['cssTextHasContrast'];
-  // The set of tests that were run that pertain to this Success Criteria. This
-  // will be the union of the tests that were run and the required tests.
-  var criteriaTests = [];
-
-  /**
-   * Determines if this Success Criteria applies to the document.
-   */
-  function preEvaluator() {
-    return true;
-  }
-
-  /**
-   * Evaluates the Success Criteria.
-   */
-  function evaluator(tests) {
-    criteriaTests = sc.filterTests(tests, requiredTests);
-    // If the length of the union equals the length of the required tests,
-    // then we have the necessary tests to evaluate this success criteria.
-    if (criteriaTests.length === requiredTests.length) {
-      // Find the tests to evaluate.
-      var cssTextHasContrast = tests.find('cssTextHasContrast');
-      // Cycle through the cases in the Success Criteria.
-      sc.each(function (index, _case) {
-        var selector = _case.get('selector');
-        var conclusion = 'untested';
-        var testCase, caseGroups;
-
-        // Process 'labelsAreAssignedToAnInput'.
-        caseGroups = cssTextHasContrast.groupCasesBySelector(selector);
-        testCase = caseGroups && caseGroups[selector] && caseGroups[selector][0];
-
-        if (testCase) {
-          conclusion = testCase.get('status') || 'cantTell';
-        }
-
-        // Add the case to the Success Criteria.
-        sc.addConclusion(conclusion, _case);
-      });
-    }
-  }
-
-  // Create a new SuccessCriteria and pass it the evaluation callbacks.
-  sc = quail.lib.SuccessCriteria({
-    'name': 'wcag:1.4.3',
-    'requiredTests': requiredTests,
-    preEvaluator: preEvaluator,
-    evaluator: evaluator
-  });
 
   return sc;
 }(quail));
