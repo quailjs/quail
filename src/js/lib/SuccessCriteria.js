@@ -119,13 +119,17 @@ quail.lib.SuccessCriteria = (function () {
      */
     filterTests: function (tests) {
       var criteriaTests = new quail.lib.TestCollection();
-      var name = this.get('name').split(':')[1];
+      var name = this.get('name');
+      if (!name) {
+        throw new Error('Success Criteria instances require a name in order to have tests filtered.');
+      }
+      var identifier = name.split(':')[1];
       tests.each(function (index, test) {
         var guidelineCoverage = test.getGuidelineCoverage('wcag');
         // Get tests for this success criteria.
         for (var criteriaID in guidelineCoverage) {
           if (guidelineCoverage.hasOwnProperty(criteriaID)) {
-            if (criteriaID === name) {
+            if (criteriaID === identifier) {
               criteriaTests.add(test);
             }
           }
@@ -136,14 +140,14 @@ quail.lib.SuccessCriteria = (function () {
     /**
      * Adds a Case conclusion to the Success Criteria.
      *
-     * @param string concluion
+     * @param string conclusion
      * @param quail.lib.Case _case
      */
-    addConclusion: function (conclusion, details) {
+    addConclusion: function (conclusion, _case) {
       if (!this.get('results')[conclusion]) {
         this.get('results')[conclusion] = quail.lib.Test();
       }
-      this.get('results')[conclusion].push(details);
+      this.get('results')[conclusion].push(_case);
     },
     /**
      * Runs the evaluator callbacks against the completed TestCollection.

@@ -215,6 +215,34 @@
       });
       _test.invoke();
     });
+    test('getGuidelineCoverage', function () {
+      var sc = {
+        '1.1.1': {
+          'techniques': [
+            "F65",
+            "G74",
+            "H24"
+          ]
+        },
+        '1.4.3': {
+          'techniques': [
+            "G145"
+          ]
+        }
+      };
+      var g = {
+        'wcag': sc
+      };
+      var _test = new libs.Test('fakeLinkTest', {
+        'type': 'selector',
+        'guidelines': g,
+        'options': {
+          'selector': 'i.unittest',
+        }
+      });
+      var coverage = _test.getGuidelineCoverage('wcag');
+      deepEqual(coverage, sc);
+    });
     asyncTest('Event dispatching: resolved', function () {
       expect(1);
       var _testCollection = new libs.TestCollection();
@@ -341,7 +369,20 @@
     });
     test('filterTests', function () {
       var testCollection = new libs.TestCollection();
-      var sc = new libs.SuccessCriteria();
+      var sc = new libs.SuccessCriteria({
+        'name': 'wcag:1.1.1'
+      });
+      var g = {
+        'wcag': {
+          '1.1.1': {
+            'techniques': [
+              "F65",
+              "G74",
+              "H24"
+            ]
+          }
+        }
+      };
       // Create a few fake tests and add them to the collection.
       var test;
       var requiredTests = [];
@@ -350,36 +391,21 @@
           'type': 'selector',
           'options': {
             'selector': 'i.unittest'
-          }
+          },
+          'guidelines': g
         });
         testCollection.add(test);
         requiredTests.push('fakeTest-' + i);
       }
-      // Test a one-to-one match for test to required test.
       var criteriaTests = sc.filterTests(testCollection, requiredTests);
       equal(criteriaTests.length, 5, 'The SuccessCriteria correctly filters required tests');
-
-      // Test an off-by-one mismatch of tests to required tests.
-      testCollection = new libs.TestCollection();
-      requiredTests = [];
-      for (var i = 0; i < 5; ++i) {
-        test = new libs.Test('fakeTest-' + i, {
-          'type': 'selector',
-          'options': {
-            'selector': 'i.unittest'
-          }
-        });
-        testCollection.add(test);
-        requiredTests.push('fakeTest-' + (i + 1));
-      }
-      criteriaTests = sc.filterTests(testCollection, requiredTests);
-      equal(criteriaTests.length, 4, 'The SuccessCriteria correctly filters required tests');
     });
     test('addConclusion', function () {
       var _case = new libs.Case();
       var sc = new libs.SuccessCriteria();
       sc.addConclusion('untested', _case);
-      equal(sc.get('results')['untested'][0], _case, 'Cases are registered by conclusion.');
+      // The results are wrapped in a Test object.
+      deepEqual(sc.get('results')['untested'][0], _case, 'Cases are registered by conclusion.');
     });
     asyncTest('Event dispatching: successCriteriaEvaluated', function () {
       expect(2);
@@ -388,7 +414,8 @@
         sc.set('status', 'passed');
       };
       var sc = libs.SuccessCriteria({
-        evaluator: evaluator
+        'name': 'wcag:1.1.1',
+        'evaluator': evaluator
       });
       // @todo, we need a mockable object that will listen to events.
       var listener = new libs.TestCollection();
@@ -414,10 +441,9 @@
     asyncTest('preEvaluator', function () {
       expect(1);
       var testCollection = new libs.TestCollection();
-      var evaluator = function (tests) {
-        sc.set('status', 'passed');
-      };
-      var sc = libs.SuccessCriteria(evaluator);
+      var sc = new libs.SuccessCriteria({
+        'name': 'wcag:1.1.1'
+      });
       sc.set('preEvaluator', function (testCollection) {
         // We skip all the tests.
         // This will set the status as 'notApplicable'.
@@ -431,12 +457,24 @@
       });
       // Create a few fake tests and add them to the collection.
       var test;
+      var g = {
+        'wcag': {
+          '1.1.1': {
+            'techniques': [
+              "F65",
+              "G74",
+              "H24"
+            ]
+          }
+        }
+      }
       for (var i = 0; i < 5; ++i) {
         test = new libs.Test('fakeTest-' + i, {
           'type': 'selector',
           'options': {
             'selector': 'i.unittest'
-          }
+          },
+          'guidelines': g
         });
         testCollection.add(test);
       }
