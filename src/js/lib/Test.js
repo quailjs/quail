@@ -244,7 +244,6 @@ quail.lib.Test = (function () {
       });
       return casesByHtml;
     },
-
     /**
      * @needsdoc
      */
