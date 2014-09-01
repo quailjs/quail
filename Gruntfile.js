@@ -71,8 +71,8 @@ module.exports = function(grunt) {
       }
     },
     qunit: {
-      all: ['test/quail.html'],
-      duplicate: ['test/unit/*', 'test/quail.html'],
+      all: ['test/unit/*', 'test/quail.html'],
+      a11ytests: ['test/quail.html'],
       single: ['test/' + grunt.option('file')],
       unit: ['test/unit/*']
     },
