@@ -157,17 +157,23 @@ quail.lib.SuccessCriteria = (function () {
         var sc = this;
         var associatedTests = this.filterTests(testCollection);
 
-        associatedTests.each(function (index, test) {
-          test.each(function (index, _case) {
-            sc.addConclusion(_case.get('status'), _case);
-          });
-        });
-
-        if (size(this.get('results')) === 0) {
-          this.set('status', 'untested');
+        // If there are no associated tests, then this Success
+        // Criteria has no coverage.
+        if (associatedTests.length === 0) {
+          this.set('status', 'noTestCoverage');
         }
         else {
-          this.set('status', 'tested');
+          associatedTests.each(function (index, test) {
+            test.each(function (index, _case) {
+              sc.addConclusion(_case.get('status'), _case);
+            });
+          });
+          if (size(this.get('results')) === 0) {
+            this.set('status', 'noResults');
+          }
+          else {
+            this.set('status', 'tested');
+          }
         }
       }
       this.report();

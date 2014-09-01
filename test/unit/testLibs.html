@@ -481,6 +481,85 @@
       sc.registerTests(testCollection);
       sc.get('tests').run();
     });
+    asyncTest('SuccessCriteria status: noTestCoverage', function () {
+      expect(1);
+      var testCollection = new libs.TestCollection();
+      var evaluator = function (tests) {
+        sc.set('status', 'passed');
+      };
+      var sc = libs.SuccessCriteria({
+        'name': 'wcag:1.1.1',
+        'evaluator': evaluator
+      });
+      // @todo, we need a mockable object that will listen to events.
+      var listener = new libs.TestCollection();
+      listener.listenTo(sc, 'successCriteriaEvaluated', function (eventName, successCriteria, testCollection) {
+        equal(successCriteria.get('status'), 'noTestCoverage');
+        start();
+      });
+      // Create a few fake tests and add them to the collection.
+      var test;
+      var g = {
+        'wcag': {
+          '1.3.2': {
+            'techniques': ["G57"]
+          },
+          '4.1.1': {
+            'techniques': ["F49"]
+          }
+        }
+      }
+      for (var i = 0; i < 5; ++i) {
+        test = new libs.Test('fakeTest-' + i, {
+          'type': 'custom',
+          'callback': 'tableLayoutMakesSenseLinearized',
+          'guidelines': g
+        });
+        testCollection.add(test);
+      }
+      sc.registerTests(testCollection);
+      testCollection.run();
+    });
+    asyncTest('SuccessCriteria status: noResults', function () {
+      expect(1);
+      var testCollection = new libs.TestCollection();
+      var evaluator = function (tests) {
+        sc.set('status', 'passed');
+      };
+      var sc = libs.SuccessCriteria({
+        'name': 'wcag:1.1.1',
+        'evaluator': evaluator
+      });
+      // @todo, we need a mockable object that will listen to events.
+      var listener = new libs.TestCollection();
+      listener.listenTo(sc, 'successCriteriaEvaluated', function (eventName, successCriteria, testCollection) {
+        equal(successCriteria.get('status'), 'noResults');
+        start();
+      });
+      // Create a few fake tests and add them to the collection.
+      var test;
+      var g = {
+        'wcag': {
+          '1.1.1': {
+            'techniques': [
+              "F65",
+              "G74",
+              "H24"
+            ]
+          }
+        }
+      }
+      for (var i = 0; i < 5; ++i) {
+        test = new libs.Test('fakeTest-' + i, {
+          'type': 'custom',
+          'callback': 'tableLayoutMakesSenseLinearized',
+          'guidelines': g
+        });
+        testCollection.add(test);
+      }
+      sc.registerTests(testCollection);
+      testCollection.run();
+    });
   </script>
 </body>
 
