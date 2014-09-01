@@ -19,6 +19,7 @@ quail.lib.SuccessCriteria = (function () {
       this.attributes = this.attributes || {};
       this.attributes.status = 'untested';
       this.attributes.results = {};
+      this.attributes.totals = {};
 
       // The evaluator is a callback that will be invoked when tests have
       // finished running.
@@ -148,6 +149,16 @@ quail.lib.SuccessCriteria = (function () {
         this.get('results')[conclusion] = quail.lib.Test();
       }
       this.get('results')[conclusion].push(_case);
+      // Incremement totals for this conclusion type.
+      if (!this.get('totals')[conclusion]) {
+        this.get('totals')[conclusion] = 0;
+      }
+      ++(this.get('totals')[conclusion]);
+      // Incremement totals for the number of cases found.
+      if (!this.get('totals')['cases']) {
+        this.get('totals')['cases'] = 0;
+      }
+      ++(this.get('totals')['cases']);
     },
     /**
      * Runs the evaluator callbacks against the completed TestCollection.

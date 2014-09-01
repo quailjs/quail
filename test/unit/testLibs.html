@@ -560,6 +560,54 @@
       sc.registerTests(testCollection);
       testCollection.run();
     });
+    asyncTest('SuccessCriteria totals', function () {
+      expect(3);
+      var testCollection = new libs.TestCollection();
+      var sc = libs.SuccessCriteria({
+        'name': 'wcag:1.1.1'
+      });
+      // @todo, we need a mockable object that will listen to events.
+      var listener = new libs.TestCollection();
+      listener.listenTo(sc, 'successCriteriaEvaluated', function (eventName, successCriteria, testCollection) {
+        equal(successCriteria.get('totals')['passed'], 1);
+        equal(successCriteria.get('totals')['failed'], 10);
+        equal(successCriteria.get('totals')['cases'], 11);
+        start();
+      });
+      // Create a few fake tests and add them to the collection.
+      var test;
+      var g = {
+        'wcag': {
+          '1.1.1': {
+            'techniques': [
+              "F65",
+              "G74",
+              "H24"
+            ]
+          }
+        }
+      }
+      // Test that will fail 10 times
+      test = new libs.Test('fakeTest-0', {
+        'type': 'selector',
+        'options': {
+          'selector': 'i.unittest'
+        },
+        'guidelines': g
+      });
+      testCollection.add(test);
+      // Test that will pass once
+      test = new libs.Test('fakeTest-1', {
+        'type': 'selector',
+        'options': {
+          'selector': 'abbr'
+        },
+        'guidelines': g
+      });
+      testCollection.add(test);
+      sc.registerTests(testCollection);
+      testCollection.run();
+    });
   </script>
 </body>
 
