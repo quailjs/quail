@@ -1,0 +1,32 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+        <link rel="stylesheet" href="../common/style.css"/>
+    </head>
+    <body>
+    <div id="test">
+     <p>This is an image of my dog, Kogepan:</p>
+     <img src="../common/kogepan.png">
+    </div>
+    
+    <script src="../../lib/jquery/jquery.js"></script>
+    <script src="../../dist/quail.jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('html').quail({
+            guideline : 'wcag2',
+            jsonPath : '../../dist',
+            complete : function(event) {
+                event.element.addClass('quail-result')
+                .addClass(event.severity)
+                .before('<span class="quail-message">ERROR: ' +
+                        event.test.title.en + '</span>');
+            }
+        });
+     })
+     
+    </script>
+    </body>
+</html>
