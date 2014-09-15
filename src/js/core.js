@@ -216,7 +216,7 @@ var quail = {
     }
 
     // Let wcag2 run itself, will call quail again when it knows what
-    // to test.
+    // to
     else if (options.guideline === 'wcag2') {
       quail.lib.wcag2.run(options);
     }

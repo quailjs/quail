@@ -34,7 +34,8 @@ quail.lib.wcag2 = (function () {
 			$(quail.html).quail({
 				accessibilityTests: accessibilityTests,
 				// Have wcag2 intercept the callback
-				complete: createCallback(criteria, options.complete)
+				testCollectionComplete: createCallback(
+						criteria, options.testCollectionComplete)
 			});
 		});
 	}
@@ -59,11 +60,9 @@ quail.lib.wcag2 = (function () {
 
 
 	function createCallback(criteria, callback) {
-		window.console.log('Quail started');
+		return function (status, data) {
 
-		return function (event) {
-			window.console.log('Quail finished');
-			callback(event);
+			callback(status, data);
 		};
 	}
 

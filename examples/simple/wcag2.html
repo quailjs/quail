@@ -15,17 +15,16 @@
     <script src="../../dist/quail.jquery.js"></script>
     <script>
     $(document).ready(function() {
+        window.console.log('Quail start');
         $('html').quail({
             guideline : 'wcag2',
             jsonPath : '../../dist',
-            complete : function(event) {
-                event.element.addClass('quail-result')
-                .addClass(event.severity)
-                .before('<span class="quail-message">ERROR: ' +
-                        event.test.title.en + '</span>');
+            testCollectionComplete : function(event, data) {
+                window.console.log('Quail finish');
+                window.console.log(data);
             }
         });
-     })
+     });
      
     </script>
     </body>
