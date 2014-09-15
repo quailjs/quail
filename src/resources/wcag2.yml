@@ -17,14 +17,14 @@
     - pass: "earl:cannotTell"
       fail: "earl:failed"
       tests: 
-      - "DoNotUseGraphicalSymbolToConveyInformation"
+      - "doNotUseGraphicalSymbolToConveyInformation"
     - pass: "earl:passed"
       fail: "earl:failed"
       tests: 
         - "inputImageAltNotRedundant"
-        - "InputImageAltIsNotPlaceholder"
-        - "InputImageAltIsNotFileName"
-        - "InputImageHasAlt"
+        - "inputImageAltIsNotPlaceholder"
+        - "inputImageAltIsNotFileName"
+        - "inputImageHasAlt"
 1.2.1:
   id: "wcag20:media-equiv-av-only-alt"
   level: "wcag20:level_a"
@@ -64,38 +64,38 @@
     - pass: "passed"
       fail: "failed"
       tests: 
-        - FileHasLabel
-        - InputWithoutLabelHasTitle
+        - fileHasLabel
+        - inputWithoutLabelHasTitle
     - pass: "passed"
       fail: "failed"
       tests: 
-        - InputTextHasLabel
-        - InputWithoutLabelHasTitle
+        - inputTextHasLabel
+        - inputWithoutLabelHasTitle
     - pass: "passed"
       fail: "failed"
       tests: 
-        - PasswordHasLabel
-        - InputWithoutLabelHasTitle
+        - passwordHasLabel
+        - inputWithoutLabelHasTitle
     - pass: "passed"
       fail: "failed"
       tests: 
-        - CheckboxHasLabel
-        - InputWithoutLabelHasTitle
+        - checkboxHasLabel
+        - inputWithoutLabelHasTitle
     - pass: "passed"
       fail: "failed"
       tests: 
-        - RadioHasLabel
-        - InputWithoutLabelHasTitle
+        - radioHasLabel
+        - inputWithoutLabelHasTitle
     - pass: "passed"
       fail: "failed"
       tests: 
-        - SelectHasAssociatedLabel
-        - InputWithoutLabelHasTitle
+        - selectHasAssociatedLabel
+        - inputWithoutLabelHasTitle
     - pass: "passed"
       fail: "failed"
       tests: 
-        - TextareaHasAssociatedLabel
-        - InputWithoutLabelHasTitle
+        - textareaHasAssociatedLabel
+        - inputWithoutLabelHasTitle
     # - pass: "cannotTell" # This test is still buggy
     #   fail: "failed"
     #   tests: 
@@ -103,11 +103,11 @@
     - pass: "passed"
       fail: "cannotTell"
       tests: 
-        - PnotUsedAsHeader
+        - pNotUsedAsHeader
     - pass: "cannotTell"
       fail: "failed"
       tests: 
-        - TableLayoutDataShouldNotHaveTh
+        - tableLayoutDataShouldNotHaveTh
     - pass: "cannotTell"
       fail: "failed"
       tests: 
@@ -227,7 +227,7 @@
     - pass: "cannotTell"
       fail: "failed"
       tests: 
-        - DocumentLangIsISO639Standard
+        - documentLangIsISO639Standard
         - documentLangNotIdentified
 3.1.2:
   id: "wcag20:meaning-other-lang-id"
@@ -288,7 +288,7 @@
     - pass: "passed"
       fail: "failed"
       tests: 
-        - ElementsDoNotHaveDuplicateAttributes
+        - elementsDoNotHaveDuplicateAttributes
     - pass: "passed"
       fail: "failed"
       tests: 
@@ -316,14 +316,14 @@
     - pass: "cannotTell"
       fail: "failed"
       tests: 
-        - FileHasLabel
-        - InputWithoutLabelHasTitle
+        - fileHasLabel
+        - inputWithoutLabelHasTitle
     - pass: "passed"
       fail: "failed"
       tests: 
-        - FrameTitlesNotEmpty
-        - FramesHaveATitle
-        - FrameTitlesNotPlaceholder
+        - frameTitlesNotEmpty
+        - framesHaveATitle
+        - frameTitlesNotPlaceholder
     - pass: "passed"
       fail: "cannotTell"
       tests: 
@@ -332,39 +332,39 @@
       fail: "failed"
       tests: 
         - inputImageAltNotRedundant
-        - InputImageAltIsNotFileName
-        - InputImageHasAlt
-        - InputImageAltIsNotPlaceholder
+        - inputImageAltIsNotFileName
+        - inputImageHasAlt
+        - inputImageAltIsNotPlaceholder
     - pass: "cannotTell"
       fail: "failed"
       tests: 
-        - InputTextHasLabel
-        - InputWithoutLabelHasTitle
+        - inputTextHasLabel
+        - inputWithoutLabelHasTitle
     - pass: "cannotTell"
       fail: "failed"
       tests: 
-        - PasswordHasLabel
-        - InputWithoutLabelHasTitle
+        - passwordHasLabel
+        - inputWithoutLabelHasTitle
     - pass: "cannotTell"
       fail: "failed"
       tests: 
-        - CheckboxHasLabel
-        - InputWithoutLabelHasTitle
+        - checkboxHasLabel
+        - inputWithoutLabelHasTitle
     - pass: "cannotTell"
       fail: "failed"
       tests: 
-        - RadioHasLabel
-        - InputWithoutLabelHasTitle
+        - radioHasLabel
+        - inputWithoutLabelHasTitle
     - pass: "cannotTell"
       fail: "failed"
       tests: 
-        - SelectHasAssociatedLabel
-        - InputWithoutLabelHasTitle
+        - selectHasAssociatedLabel
+        - inputWithoutLabelHasTitle
     - pass: "cannotTell"
       fail: "failed"
       tests: 
-        - TextareaHasAssociatedLabel
-        - InputWithoutLabelHasTitle
+        - textareaHasAssociatedLabel
+        - inputWithoutLabelHasTitle
     - pass: "passed"
       fail: "failed"
       tests: 
