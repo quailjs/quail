@@ -1,38 +1,38 @@
 /* A logical combo of Techniques and the intersection of their outcomes. */
 quail.lib.wcag2 = (function () {
 	'use strict';
+	var ajaxOpt = {async: false, dataType: 'json'};
 
 	/**
 	 * Run Quail using WCAG 2
 	 * @param  {[object]} options Quail options
 	 */
 	function runWCAG20Quail(options) {
-		var opt = {
-			async : false,
-			dataType : 'json'
-		};
 
 		// Load the required json files
 		$.when(
-			$.ajax(options.jsonPath + '/wcag2.json', opt),
-			$.ajax(options.jsonPath + '/tests.json', opt))
+			$.ajax(options.jsonPath + '/wcag2.json', ajaxOpt),
+			$.ajax(options.jsonPath + '/tests.json', ajaxOpt))
 
 		// Setup quail given the tests described in the json files
 		.done(function (wcag2Call, testsCall) {
-			var criteria = wcag2Call[0],
-				testData = testsCall[0],
-				accessibilityTests = {};
-			
+			var criteria,
+			allTests = [];
+
+			criteria = $.map(wcag2Call[0], function (critData) {
+				return new quail.lib.wcag2.Criterion(
+					critData, testsCall[0]);
+			});
+
 			// Create the accessibiliyTests object, based on the
 			// tests in the criteria
-			$.each(getTestsFromCriteria(criteria),
-			function (i, testName) {
-				accessibilityTests[testName] = testData[testName];
+			$.each(criteria, function (i, criterion) {
+				allTests.push.apply(allTests, criterion.getTests());
 			});
 
 			// Run quail with the tests instead of the guideline
 			$(quail.html).quail({
-				accessibilityTests: accessibilityTests,
+				accessibilityTests: $.unique(allTests),
 				// Have wcag2 intercept the callback
 				testCollectionComplete: createCallback(
 						criteria, options.testCollectionComplete)
@@ -40,32 +40,18 @@ quail.lib.wcag2 = (function () {
 		});
 	}
 
-	/**
-	 * Get a list of all test names given the provided criteria
-	 * @param  {[json]} criteria
-	 * @return {[array]}
-	 */
-	function getTestsFromCriteria(criteria) {
-		var tests = [];
-
-		$.each($.map(criteria, function (criterion) {
-			return criterion.testClusters;
-
-		}), function (i, cluster) {
-			tests.push.apply(tests, cluster.tests);
-		});
-
-		return $.unique(tests);
-	}
-
 
 	function createCallback(criteria, callback) {
 		return function (status, data) {
+			if (status === 'complete') {
+				data = $.map(criteria, function (criterion) {
+					return criterion.getResult();
+				});
+			}
 
 			callback(status, data);
 		};
 	}
-
 
 	return {
 		run: runWCAG20Quail
