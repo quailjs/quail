@@ -16,7 +16,7 @@ quail.lib.wcag2 = (function () {
 
 		// Setup quail given the tests described in the json files
 		.done(function (wcag2Call, testsCall) {
-			var criteria,
+			var criteria, accessibilityTests, knownTests,
 			allTests = [];
 
 			criteria = $.map(wcag2Call[0], function (critData) {
@@ -30,9 +30,21 @@ quail.lib.wcag2 = (function () {
 				allTests.push.apply(allTests, criterion.getTests());
 			});
 
+			knownTests = [];
+			accessibilityTests = [];
+
+			// Remove duplicates
+			// TODO: Figure out why some tests are created multiple times
+			$.each(allTests, function (i, test) {
+				if (knownTests.indexOf(test.title.en) === -1) {
+					knownTests.push(test.title.en);
+					accessibilityTests.push(test);
+				}
+			});
+
 			// Run quail with the tests instead of the guideline
 			$(quail.html).quail({
-				accessibilityTests: $.unique(allTests),
+				accessibilityTests: accessibilityTests,
 				// Have wcag2 intercept the callback
 				testCollectionComplete: createCallback(
 						criteria, options.testCollectionComplete)
@@ -45,7 +57,7 @@ quail.lib.wcag2 = (function () {
 		return function (status, data) {
 			if (status === 'complete') {
 				data = $.map(criteria, function (criterion) {
-					return criterion.getResult();
+					return criterion.getResult(data);
 				});
 			}
 

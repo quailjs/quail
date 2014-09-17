@@ -1,16 +1,30 @@
 quail.lib.wcag2.Criterion = (function () {
 	// Provide default values for the assert objects
 	var defaultAssert = {
-		type: 'assert',
-		subject: '',
-		assertedBy: '',
-		mode: 'automated'
+		// type: 'assert',
+		// subject: '',
+		// assertedBy: '',
+		// mode: 'automated'
 	};
 
-	function aggregateParts() {
+	var statusOptions = [
+		'untested', 'notApplicable', 'passed',
+		'cantTell', 'failed'
+	];
+
+	function aggregateParts(parts, defaultResult) {
 		var outcome = {
-			result: 'untested'
+			result: defaultResult
 		};
+		
+		$.each(parts, function (i, part) {
+			var indexCurr, indexNew;
+			indexCurr = statusOptions.indexOf(outcome.result);
+			indexNew = statusOptions.indexOf(part.outcome.result);
+			if (indexCurr < indexNew) {
+				outcome.result = part.outcome.result;
+			}
+		});
 		return outcome;
 	}
 
@@ -18,6 +32,7 @@ quail.lib.wcag2.Criterion = (function () {
 	function constructor (data, testDefinitions) {
 		var testClusters = [],
 		criterion = {},
+		defaultResult = data.default || 'untested',
 		id = data.id;
 
 		// Create a testCluster object for each cluster (if any)
@@ -30,18 +45,28 @@ quail.lib.wcag2.Criterion = (function () {
 		}
 
 
-		criterion.getResult = function () {
-			var parts;
+		criterion.getResult = function (data) {
+			var result,
+			parts = [];
 
-			parts = $.map(testClusters, function (cluster) {
-				return cluster.getResult();
+			$.each(testClusters, function (i, cluster) {
+				var part = cluster.getResults(data);
+				parts.push.apply(parts, part);
+
+				// This is for debugging only
+				if (cluster.log) {
+					console.log(id, part);
+				}
 			});
 
-			return $.extend({
+			result = $.extend({
 				testRequirement: id,
-				outcome: aggregateParts(parts),
-				hasPart: parts
+				outcome: aggregateParts(parts, defaultResult)
 			}, defaultAssert);
+			if (parts.length > 0) {
+				result.hasPart = parts;
+			}
+			return result;
 		};
 
 		/**

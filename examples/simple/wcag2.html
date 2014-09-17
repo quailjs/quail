@@ -7,8 +7,14 @@
     </head>
     <body>
     <div id="test">
+     <p><strong>I'm no error!</strong> Please forgive me.</p>
      <p>This is an image of my dog, Kogepan:</p>
      <img src="../common/kogepan.png">
+<!-- 
+     <input type="text">
+     <input type="text" title="Titel!">
+     <input type="text" id="myfield"><label for="myfield">label</label>
+      -->
     </div>
     
     <script src="../../lib/jquery/jquery.js"></script>
@@ -21,7 +27,16 @@
             jsonPath : '../../dist',
             testCollectionComplete : function(event, data) {
                 window.console.log('Quail finish');
-                window.console.log(data);
+
+                // Show all results
+                $.each(data, function (i, criterion) {
+                    if (criterion.outcome.result !== 'untested') {
+                        window.console.log(
+                            criterion.testRequirement,
+                            criterion.outcome,
+                            criterion.hasPart);
+                    }
+                });
             }
         });
      });
