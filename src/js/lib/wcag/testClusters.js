@@ -6,7 +6,7 @@ quail.lib.wcag2.TestCluster = (function () {
 		// mode: 'automated'
 	};
 
-	var statusOptions = [
+	var resultPrioMap = [
 		'untested', 'notApplicable', 'passed',
 		'cantTell', 'failed'
 	];
@@ -44,72 +44,139 @@ quail.lib.wcag2.TestCluster = (function () {
 		return common;
 	}
 
-	
-
-	function mergeCaseWithAssert(result, assert, test) {
-		var outcome = assert.outcome;		
-		outcome.result = result;
-		outcome.info = test.get('title');
+	/**
+	 * Run the callback for each testcase within the array of tests
+	 * @param  {array}   tests    
+	 * @param  {Function} callback Given the parameters (test, testcase)
+	 */
+	function eachTestcase(tests, callback) {
+		$.each(tests, function (i, test) {
+			test.each(function () {
+				callback.call(this, test, this);
+			});
+		});
 	}
+
+
+	/**
+	 * Look at each unique element and create an assert for it
+	 * @param  {array[DOM element]} elms
+	 * @param  {object} base Base object for the assert
+	 * @return {array[assert]}      Array with asserts
+	 */
+	function createAssertForEachElement(elms, base) {
+		var asserts = [];
+		// Create asserts for each element
+		$.each(elms, function (i, elm) {
+			var assert = $.extend(base, defaultAssert);
+
+			if (elm) { // Don't do undefined pointers
+				assert.outcome.pointer = elm;
+			}
+			asserts.push(assert);
+		});
+		return asserts;
+	}
+	
+	/**
+	 * Return the priorty index of the result
+	 * @param  {result|assert|outcome} val
+	 * @return {integer}     Result index in order of prioerty
+	 */
+	function getResultPrio(val) {
+		if (typeof val === 'object') {
+			if (val.outcome) {
+				val = val.outcome.result;
+			} else {
+				val = val.result;
+			}
+		}
+		return resultPrioMap.indexOf(val);
+	}
+
+
+	/**
+	 * Combine the test results of a cluster into asserts
+	 * @param  {Object} cluster
+	 * @param  {Array[Object]} tests
+	 * @return {Array[Object]}         Array of Asserts
+	 */
+	function getCombinedAsserts(cluster, tests) {
+		var elms = getCommonElements(tests),
+		asserts = createAssertForEachElement(elms, {
+			testCase: cluster.id,
+			outcome: {result: 'failed'}
+		});
+
+		// Iterate over all results to build the assert
+		eachTestcase(tests, function (test, testcase) {
+			// Look up the assert, if any
+			var newResult = testcase.get('status'),
+			assert = asserts[elms.indexOf(
+				testcase.get('element')
+			)];
+
+			// Allow the cluster to override the results
+			if (cluster[newResult]) {
+				newResult = cluster[newResult];
+			}
+
+			// Override if the resultId is higher or equal (combine)
+			if (assert && getResultPrio(assert) >= getResultPrio(newResult)) {
+				assert.outcome = {
+					result: newResult,
+					info: test.get('title')
+				};
+			}
+		});
+
+		return asserts;
+	}
+
+
+	/**
+	 * Stack the test results of a cluster into asserts
+	 * @param  {Object} cluster
+	 * @param  {Array[Object]} tests
+	 * @return {Array[Object]}         Array of Asserts
+	 */
+	function getStackedAsserts(cluster, tests) {
+		var elms = getCommonElements(tests),
+		asserts = createAssertForEachElement(elms, {
+			testCase: cluster.id,
+			outcome: { result: 'untested'}
+		});
+
+		// Iterate over all results to build the assert
+		eachTestcase(tests, function (test, testcase) {
+			// Look up the assert, if any
+			var newResult = testcase.get('status'),
+			assert = asserts[elms.indexOf(
+				testcase.get('element')
+			)];
+
+			// Allow the cluster to override the results
+			if (cluster[newResult]) {
+				newResult = cluster[newResult];
+			}
+
+			// Override if the resultId is lower (stacked)
+			if (assert && getResultPrio(assert) < getResultPrio(newResult)) {
+				assert.outcome = {
+					result: newResult,
+					info: test.get('title')
+				};
+			}
+		});
+		return asserts;
+	}
+
 
 	function constructor(config, testDefinitions) {
 		var cluster = $.extend({
 			id: config.tests.join('+')
 		}, config);
 
-		function getCombinedResults(tests) {
-			var elms = getCommonElements(tests),
-			asserts = [];
-
-			// Create asserts for each element
-			$.each(elms, function (i, elm) {
-				var assert = $.extend({
-					testCase: cluster.id,
-					outcome: {
-						result: 'failed',
-					}
-				}, defaultAssert);
-
-				if (elm) { // Don't do undefined pointers
-					assert.outcome.pointer = elm;
-				}
-				asserts.push(assert);
-			});
-
-			// Iterate over all results to build the assert
-			$.each(tests, function (i, test) {
-				test.each(function () {
-					// Look up the assert, if any
-					var indexCurr, indexNew, newResult,
-					assert = asserts[elms.indexOf(
-						this.get('element')
-					)];
-					// Ignore elements for which no assert is known
-					if (!assert) {
-						return;
-					}
-
-					// Allow the cluster to override the results
-					newResult = this.get('status');
-					if (cluster.log) {
-						console.log(newResult, cluster[newResult]);
-					}
-					if (cluster[newResult]) {
-						newResult = cluster[newResult];
-					}
-
-					indexCurr = statusOptions.indexOf(
-						assert.outcome.result);
-					indexNew = statusOptions.indexOf(newResult);
-
-					if (indexCurr >= indexNew) {
-						mergeCaseWithAssert(newResult, assert, test);
-					}
-				});
-			});
-
-			return asserts;
-		}
 
 		cluster.tests = $.map(cluster.tests, function (test) {
 			return testDefinitions[test];
@@ -132,18 +199,27 @@ quail.lib.wcag2.TestCluster = (function () {
 					testData.push(result);
 				}
 			});
-
 			return testData;
 		};
 
 		cluster.getResults = function (tests) {
 			var asserts;
 			tests = cluster.filterDataToTests(tests);
-			if (tests.length === 1 ||
-			cluster.type === 'combined') {
-				asserts = getCombinedResults(tests);
 
-				// Return a default assert if none was defined
+			if (tests.length === 1 || cluster.type === 'combined') {
+				asserts = getCombinedAsserts(cluster, tests);
+
+			} else if (cluster.type === "stacking") {
+				asserts = getStackedAsserts(cluster, tests);
+				
+			} else if (window) {
+				window.console.error(
+					"Unknown type for cluster " +cluster.id
+				);
+			}
+
+			// Return a default assert if none was defined
+			if (asserts) {
 				if (asserts.length === 0) {
 					asserts.push($.extend({
 						testCase: cluster.id,
@@ -153,12 +229,6 @@ quail.lib.wcag2.TestCluster = (function () {
 					}, defaultAssert));
 				}
 				return asserts;
-			} else if (cluster.type === "stacking") {
-				console.log("TODO: Build stacking");
-				
-			} else {
-				console.error("Unknown type for cluster " +
-					cluster.id);
 			}
 		};
 

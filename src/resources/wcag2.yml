@@ -5,7 +5,6 @@
   testClusters:
     - passed: "cantTell"
       failed: "failed"
-      log: true
       tests: 
       - "areaHasAltValue"
     - passed: "cantTell"
@@ -22,6 +21,7 @@
     #   - "doNotUseGraphicalSymbolToConveyInformation"
     - passed: "passed"
       failed: "failed"
+      type: stacking
       tests: 
         - "inputImageAltNotRedundant"
         - "inputImageAltIsNotPlaceholder"
@@ -237,6 +237,7 @@
     - passed: "cantTell"
       failed: "failed"
       type: stacking
+      log: true
       tests: 
         - documentLangIsISO639Standard
         - documentLangNotIdentified
@@ -328,21 +329,24 @@
         - formButtonsHaveValue
     - passed: "cantTell"
       failed: "failed"
+      type: combined
       tests: 
         - fileHasLabel
         - inputWithoutLabelHasTitle
     - passed: "passed"
       failed: "failed"
+      type: stacking
       tests: 
+        - frameTitlesNotPlaceholder
         - frameTitlesNotEmpty
         - framesHaveATitle
-        - frameTitlesNotPlaceholder
     - passed: "passed"
       failed: "cantTell"
       tests: 
         - imgAltNotEmptyInAnchor
     - passed: "passed"
       failed: "failed"
+      type: stacking
       tests: 
         - inputImageAltNotRedundant
         - inputImageAltIsNotFileName
@@ -350,31 +354,37 @@
         - inputImageAltIsNotPlaceholder
     - passed: "cantTell"
       failed: "failed"
+      type: combined
       tests: 
         - inputTextHasLabel
         - inputWithoutLabelHasTitle
     - passed: "cantTell"
       failed: "failed"
+      type: combined
       tests: 
         - passwordHasLabel
         - inputWithoutLabelHasTitle
     - passed: "cantTell"
       failed: "failed"
+      type: combined
       tests: 
         - checkboxHasLabel
         - inputWithoutLabelHasTitle
     - passed: "cantTell"
       failed: "failed"
+      type: combined
       tests: 
         - radioHasLabel
         - inputWithoutLabelHasTitle
     - passed: "cantTell"
       failed: "failed"
+      type: combined
       tests: 
         - selectHasAssociatedLabel
         - inputWithoutLabelHasTitle
     - passed: "cantTell"
       failed: "failed"
+      type: combined
       tests: 
         - textareaHasAssociatedLabel
         - inputWithoutLabelHasTitle
