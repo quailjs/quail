@@ -16,7 +16,7 @@ quail.documentLangIsISO639Standard = function(quail, test, Case) {
   test.add(_case);
   if (!$element.is('html') || typeof langAttr === 'undefined') {
     _case.set({
-      'status' : 'notApplicable'
+      'status' : 'inapplicable'
     });
   } else {
     // Loop over all language codes, checking if the current lang attribute starts
@@ -26,13 +26,13 @@ quail.documentLangIsISO639Standard = function(quail, test, Case) {
         matchedLang = true;
       }
     });
-    
+
     if (!matchedLang) {
       _case.set({'status': 'failed'});
-      
+
     } else if (langAttr.match(/^[a-z]{2}(-[A-Z]{2})?$/) === null) {
       _case.set({'status': 'failed'});
-      
+
     } else {
       _case.set({'status': 'passed'});
     }

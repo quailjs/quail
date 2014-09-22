@@ -25,7 +25,7 @@ quail.aLinksNotSeparatedBySymbols = function(quail, test, Case) {
     // If nothing follows the link, then there is nothing to test.
     else {
       test.add(Case({
-        'status': 'notApplicable'
+        'status': 'inapplicable'
       }));
     }
   });

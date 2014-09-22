@@ -8,7 +8,7 @@ quail.lib.wcag2.Criterion = (function () {
 	};
 
 	var statusOptions = [
-		'untested', 'notApplicable', 'passed',
+		'untested', 'inapplicable', 'passed',
 		'cantTell', 'failed'
 	];
 
@@ -16,7 +16,7 @@ quail.lib.wcag2.Criterion = (function () {
 		var outcome = {
 			result: defaultResult
 		};
-		
+
 		$.each(parts, function (i, part) {
 			var indexCurr, indexNew;
 			indexCurr = statusOptions.indexOf(outcome.result);
@@ -32,7 +32,7 @@ quail.lib.wcag2.Criterion = (function () {
 	function constructor (data, testDefinitions) {
 		var testClusters = [],
 		criterion = {},
-		defaultResult = data.default || 'untested',
+		defaultResult = data['default'] || 'untested',
 		id = data.id;
 
 		// Create a testCluster object for each cluster (if any)
@@ -52,11 +52,6 @@ quail.lib.wcag2.Criterion = (function () {
 			$.each(testClusters, function (i, cluster) {
 				var part = cluster.getResults(data);
 				parts.push.apply(parts, part);
-
-				// This is for debugging only
-				if (cluster.log) {
-					console.log(id, part);
-				}
 			});
 
 			result = $.extend({

@@ -7,20 +7,26 @@ quail.lib.wcag2.TestCluster = (function () {
 	};
 
 	var resultPrioMap = [
-		'untested', 'notApplicable', 'passed',
+		'untested', 'inapplicable', 'passed',
 		'cantTell', 'failed'
 	];
 
+	/**
+	 * TODO
+	 * @param  {DOM element} elm 
+	 * @return {Object}     RDF Pointer
+	 */
 	function createPointer(elm) {
-		return {
-			cssSelectorPointer: {
-				expression: '#foobar'
-			},
-			hashSnippet: {
-				metthod: 'md5',
-				expression: ''
-			}
-		};
+		return elm;
+		// return {
+		// 	cssSelectorPointer: {
+		// 		expression: '#foobar'
+		// 	},
+		// 	hashSnippet: {
+		// 		metthod: 'md5',
+		// 		expression: ''
+		// 	}
+		// };
 	}
 
 	/**
@@ -100,13 +106,13 @@ quail.lib.wcag2.TestCluster = (function () {
 				assert.outcome = $.extend({}, assert.outcome);
 			}
 			if (elm) { // Don't do undefined pointers
-				assert.outcome.pointer = elm;
+				assert.outcome.pointer = createPointer(elm);
 			}
 			asserts.push(assert);
 		});
 		return asserts;
 	}
-	
+
 	/**
 	 * Return the priorty index of the result
 	 * @param  {result|assert|outcome} val
@@ -243,7 +249,7 @@ quail.lib.wcag2.TestCluster = (function () {
 
 			} else if (cluster.type === "stacking") {
 				asserts = getStackedAsserts(cluster, tests);
-				
+
 			} else if (window) {
 				window.console.error(
 					"Unknown type for cluster " +cluster.id
@@ -256,7 +262,7 @@ quail.lib.wcag2.TestCluster = (function () {
 					asserts.push($.extend({
 						testCase: cluster.id,
 						outcome: {
-							result: 'notApplicable'
+							result: 'inapplicable'
 						}
 					}, defaultAssert));
 				}

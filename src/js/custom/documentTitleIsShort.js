@@ -8,7 +8,7 @@ quail.documentTitleIsShort = function(quail, test, Case) {
   if (!$title.length) {
     _case.set({
       element: test.get('$scope'),
-      'status' : 'notApplicable'
+      'status' : 'inapplicable'
     });
     return;
   }

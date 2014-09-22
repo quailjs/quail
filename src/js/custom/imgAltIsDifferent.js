@@ -3,7 +3,7 @@ quail.imgAltIsDifferent = function(quail, test, Case) {
     var _case = Case({
       element: this,
       expected: $(this).closest('.quail-test').data('expected'),
-      'status': 'notApplicable'
+      'status': 'inapplicable'
     });
     test.add(_case);
   });

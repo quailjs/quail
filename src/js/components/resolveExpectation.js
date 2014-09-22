@@ -12,7 +12,7 @@
  *   that will be identified by a unique string.
  *
  * @return string|null
- *   The expected result: 'pass', 'fail', 'notApplicable'
+ *   The expected result: 'pass', 'fail', 'inapplicable'
  *
  * @hereDeDragons.
  */
