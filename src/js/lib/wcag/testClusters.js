@@ -24,6 +24,19 @@ quail.lib.wcag2.TestCluster = (function () {
 	}
 
 	/**
+	 * Run the callback for each testcase within the array of tests
+	 * @param  {array}   tests    
+	 * @param  {Function} callback Given the parameters (test, testcase)
+	 */
+	function eachTestcase(tests, callback) {
+		$.each(tests, function (i, test) {
+			test.each(function () {
+				callback.call(this, test, this);
+			});
+		});
+	}
+
+	/**
 	 * Get an array of elements common to all tests provided
 	 * @param  {Object} tests
 	 * @return {Array}        Array of HTML elements
@@ -56,16 +69,19 @@ quail.lib.wcag2.TestCluster = (function () {
 	}
 
 	/**
-	 * Run the callback for each testcase within the array of tests
-	 * @param  {array}   tests    
-	 * @param  {Function} callback Given the parameters (test, testcase)
+	 * Get an array of elements in the given tests
+	 * @param  {Object} tests
+	 * @return {Array}        Array of HTML elements
 	 */
-	function eachTestcase(tests, callback) {
-		$.each(tests, function (i, test) {
-			test.each(function () {
-				callback.call(this, test, this);
-			});
+	function getAllElements(tests) {
+		var elms = [];
+		eachTestcase(tests, function (test, testCase) {
+			var elm = testCase.get('element');
+			if (elms.indexOf(elm) === -1) {
+				elms.push(elm);
+			}
 		});
+		return elms;
 	}
 
 
@@ -79,8 +95,10 @@ quail.lib.wcag2.TestCluster = (function () {
 		var asserts = [];
 		// Create asserts for each element
 		$.each(elms, function (i, elm) {
-			var assert = $.extend(base, defaultAssert);
-
+			var assert = $.extend({}, base, defaultAssert);
+			if (typeof assert.outcome === 'object') {
+				assert.outcome = $.extend({}, assert.outcome);
+			}
 			if (elm) { // Don't do undefined pointers
 				assert.outcome.pointer = elm;
 			}
@@ -134,10 +152,14 @@ quail.lib.wcag2.TestCluster = (function () {
 
 			// Override if the resultId is higher or equal (combine)
 			if (assert && getResultPrio(assert) >= getResultPrio(newResult)) {
+				var pointer = assert.outcome.pointer;
 				assert.outcome = {
 					result: newResult,
 					info: test.get('title')
 				};
+				if (pointer) {
+					assert.outcome.pointer = pointer;
+				}
 			}
 		});
 
@@ -152,15 +174,11 @@ quail.lib.wcag2.TestCluster = (function () {
 	 * @return {Array[Object]}         Array of Asserts
 	 */
 	function getStackedAsserts(cluster, tests) {
-		var elms = getCommonElements(tests),
+		var elms = getAllElements(tests),
 		asserts = createAssertForEachElement(elms, {
 			testCase: cluster.id,
 			outcome: { result: 'untested'}
 		});
-
-		if (cluster.log) {
-			console.log(tests, elms);
-		}
 
 		// Iterate over all results to build the assert
 		eachTestcase(tests, function (test, testcase) {
@@ -175,9 +193,6 @@ quail.lib.wcag2.TestCluster = (function () {
 				newResult = cluster[newResult];
 			}
 
-			if (cluster.log) {
-				console.log(assert, getResultPrio(assert), getResultPrio(newResult));
-			}
 			// Override if the resultId is lower (stacked)
 			if (assert && getResultPrio(assert) < getResultPrio(newResult)) {
 				assert.outcome = {
@@ -194,7 +209,6 @@ quail.lib.wcag2.TestCluster = (function () {
 		var cluster = $.extend({
 			id: config.tests.join('+')
 		}, config);
-
 
 		cluster.tests = $.map(cluster.tests, function (test) {
 			return testDefinitions[test];
