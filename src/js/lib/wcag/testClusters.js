@@ -11,6 +11,17 @@ quail.lib.wcag2.TestCluster = (function () {
 		'cantTell', 'failed'
 	];
 
+	function createPointer(elm) {
+		return {
+			cssSelectorPointer: {
+				expression: '#foobar'
+			},
+			hashSnippet: {
+				metthod: 'md5',
+				expression: ''
+			}
+		};
+	}
 
 	/**
 	 * Get an array of elements common to all tests provided
@@ -147,6 +158,10 @@ quail.lib.wcag2.TestCluster = (function () {
 			outcome: { result: 'untested'}
 		});
 
+		if (cluster.log) {
+			console.log(tests, elms);
+		}
+
 		// Iterate over all results to build the assert
 		eachTestcase(tests, function (test, testcase) {
 			// Look up the assert, if any
@@ -160,6 +175,9 @@ quail.lib.wcag2.TestCluster = (function () {
 				newResult = cluster[newResult];
 			}
 
+			if (cluster.log) {
+				console.log(assert, getResultPrio(assert), getResultPrio(newResult));
+			}
 			// Override if the resultId is lower (stacked)
 			if (assert && getResultPrio(assert) < getResultPrio(newResult)) {
 				assert.outcome = {
