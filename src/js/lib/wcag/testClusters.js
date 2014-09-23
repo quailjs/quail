@@ -1,40 +1,34 @@
 quail.lib.wcag2.TestCluster = (function () {
-	var defaultAssert = {
-		// type: 'assert',
-		// subject: '',
-		// assertedBy: '',
-		// mode: 'automated'
+
+	var pointerMap = {
+		elms: [],
+		pointers: [],
+		add: function (testCase) {
+			var newPointer;
+			if (pointerMap.elms.indexOf(testCase.get('element')) === -1) {
+				if (testCase.get('html')) {
+					newPointer = [{
+						type: 'CharSnippetCompoundPointer',
+						chars: testCase.get('html'),
+						CSSSelector: testCase.get('selector')
+					}];
+				}
+				pointerMap.elms.push(testCase.get('element'));
+				pointerMap.pointers.push(newPointer);
+			}
+		},
+		getPointer: function (elm) {
+			var index = pointerMap.elms.indexOf(elm);
+			return pointerMap.pointers[index];
+		}
 	};
-
-	var resultPrioMap = [
-		'untested', 'inapplicable', 'passed',
-		'cantTell', 'failed'
-	];
-
-	/**
-	 * TODO
-	 * @param  {DOM element} elm 
-	 * @return {Object}     RDF Pointer
-	 */
-	function createPointer(elm) {
-		return elm;
-		// return {
-		// 	cssSelectorPointer: {
-		// 		expression: '#foobar'
-		// 	},
-		// 	hashSnippet: {
-		// 		metthod: 'md5',
-		// 		expression: ''
-		// 	}
-		// };
-	}
 
 	/**
 	 * Run the callback for each testcase within the array of tests
 	 * @param  {array}   tests    
 	 * @param  {Function} callback Given the parameters (test, testcase)
 	 */
-	function eachTestcase(tests, callback) {
+	function eachTestCase(tests, callback) {
 		$.each(tests, function (i, test) {
 			test.each(function () {
 				callback.call(this, test, this);
@@ -55,6 +49,7 @@ quail.lib.wcag2.TestCluster = (function () {
 			var elms = [];
 			test.each(function () {
 				elms.push(this.get('element'));
+				pointerMap.add(this);
 			});
 			map.push(elms);
 		});
@@ -71,6 +66,7 @@ quail.lib.wcag2.TestCluster = (function () {
 			});
 			common = newArr;
 		});
+
 		return common;
 	}
 
@@ -81,10 +77,11 @@ quail.lib.wcag2.TestCluster = (function () {
 	 */
 	function getAllElements(tests) {
 		var elms = [];
-		eachTestcase(tests, function (test, testCase) {
+		eachTestCase(tests, function (test, testCase) {
 			var elm = testCase.get('element');
 			if (elms.indexOf(elm) === -1) {
 				elms.push(elm);
+				pointerMap.add(testCase);
 			}
 		});
 		return elms;
@@ -101,34 +98,14 @@ quail.lib.wcag2.TestCluster = (function () {
 		var asserts = [];
 		// Create asserts for each element
 		$.each(elms, function (i, elm) {
-			var assert = $.extend({}, base, defaultAssert);
-			if (typeof assert.outcome === 'object') {
-				assert.outcome = $.extend({}, assert.outcome);
-			}
+			var assert = new quail.lib.EarlAssert(base);
 			if (elm) { // Don't do undefined pointers
-				assert.outcome.pointer = createPointer(elm);
+				assert.outcome.pointer = pointerMap.getPointer(elm);
 			}
 			asserts.push(assert);
 		});
 		return asserts;
 	}
-
-	/**
-	 * Return the priorty index of the result
-	 * @param  {result|assert|outcome} val
-	 * @return {integer}     Result index in order of prioerty
-	 */
-	function getResultPrio(val) {
-		if (typeof val === 'object') {
-			if (val.outcome) {
-				val = val.outcome.result;
-			} else {
-				val = val.result;
-			}
-		}
-		return resultPrioMap.indexOf(val);
-	}
-
 
 	/**
 	 * Combine the test results of a cluster into asserts
@@ -144,11 +121,12 @@ quail.lib.wcag2.TestCluster = (function () {
 		});
 
 		// Iterate over all results to build the assert
-		eachTestcase(tests, function (test, testcase) {
+		eachTestCase(tests, function (test, testCase) {
 			// Look up the assert, if any
-			var newResult = testcase.get('status'),
+			var newResult = testCase.get('status'),
+			getResultPrio = quail.lib.EarlAssert.getResultPrio,
 			assert = asserts[elms.indexOf(
-				testcase.get('element')
+				testCase.get('element')
 			)];
 
 			// Allow the cluster to override the results
@@ -187,11 +165,12 @@ quail.lib.wcag2.TestCluster = (function () {
 		});
 
 		// Iterate over all results to build the assert
-		eachTestcase(tests, function (test, testcase) {
+		eachTestCase(tests, function (test, testCase) {
 			// Look up the assert, if any
-			var newResult = testcase.get('status'),
+			var newResult = testCase.get('status'),
+			getResultPrio = quail.lib.EarlAssert.getResultPrio,
 			assert = asserts[elms.indexOf(
-				testcase.get('element')
+				testCase.get('element')
 			)];
 
 			// Allow the cluster to override the results
@@ -241,7 +220,7 @@ quail.lib.wcag2.TestCluster = (function () {
 		};
 
 		cluster.getResults = function (tests) {
-			var asserts;
+			var asserts, assert;
 			tests = cluster.filterDataToTests(tests);
 
 			if (tests.length === 1 || cluster.type === 'combined') {
@@ -259,12 +238,13 @@ quail.lib.wcag2.TestCluster = (function () {
 			// Return a default assert if none was defined
 			if (asserts) {
 				if (asserts.length === 0) {
-					asserts.push($.extend({
+					assert = new quail.lib.EarlAssert({
 						testCase: cluster.id,
 						outcome: {
 							result: 'inapplicable'
 						}
-					}, defaultAssert));
+					}),
+					asserts.push(assert);
 				}
 				return asserts;
 			}

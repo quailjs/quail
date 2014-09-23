@@ -1,27 +1,13 @@
 quail.lib.wcag2.Criterion = (function () {
+
 	// Provide default values for the assert objects
-	var defaultAssert = {
-		// type: 'assert',
-		// subject: '',
-		// assertedBy: '',
-		// mode: 'automated'
-	};
-
-	var statusOptions = [
-		'untested', 'inapplicable', 'passed',
-		'cantTell', 'failed'
-	];
-
 	function aggregateParts(parts, defaultResult) {
-		var outcome = {
+		var getResultPrio = quail.lib.EarlAssert.getResultPrio,
+		outcome = {
 			result: defaultResult
 		};
-
 		$.each(parts, function (i, part) {
-			var indexCurr, indexNew;
-			indexCurr = statusOptions.indexOf(outcome.result);
-			indexNew = statusOptions.indexOf(part.outcome.result);
-			if (indexCurr < indexNew) {
+			if (getResultPrio(outcome) < getResultPrio(part)) {
 				outcome.result = part.outcome.result;
 			}
 		});
@@ -53,11 +39,10 @@ quail.lib.wcag2.Criterion = (function () {
 				var part = cluster.getResults(data);
 				parts.push.apply(parts, part);
 			});
-
-			result = $.extend({
+			result = new quail.lib.EarlAssert({
 				testRequirement: id,
 				outcome: aggregateParts(parts, defaultResult)
-			}, defaultAssert);
+			});
 			if (parts.length > 0) {
 				result.hasPart = parts;
 			}
