@@ -72,7 +72,7 @@ module.exports = function(grunt) {
       },
       vendor: {
         expand: true,
-        src: 'node_modules/{commander,shelljs,phantomjs}/**/*',
+        src: 'node_modules/{commander,shelljs,phantomjs,jquery}/**/*',
         dest: 'dist/vendor/'
       },
       evaluator: {

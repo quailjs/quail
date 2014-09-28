@@ -6,19 +6,22 @@ var shell = require('../vendor/node_modules/shelljs/');
 
 // phantomjs phantomquail.js http://quailpages/forms/simple-form.html && jsonpp results.js | less
 
+// Change to the dist dir.
 shell.cd(__dirname);
-console.log(shell.pwd());
-var command = '../vendor/node_modules/phantomjs/bin/phantomjs /Users/jessebeach/Code/KINGgemeenten/accessibilitymonitor/siteinspector/phantomquail.js http://quailpages/forms/simple-form.html';
+shell.cd('..');
+
+program
+  .version('0.0.1')
+  .option('-u, --url [url]', 'A [url] to test', null)
+  .parse(process.argv);
+
+var phantomjsExec = './vendor/node_modules/phantomjs/bin/phantomjs';
+var phantomEvaluator = './evaluator/phantom_evaluator.js';
+
+var command = [phantomjsExec, phantomEvaluator, program.url].join(' ');
 shell.exec(command, {
   async:true
 }, function (code, output) {
   console.log('code: ' + code);
   console.log('output: ' + output);
 });
-
-// program
-//   .version('0.0.1')
-//   .option('-u, --url [url]', 'A [url] to test', null)
-//   .parse(process.argv);
-//
-// console.log('Testing: %s', program.url);
