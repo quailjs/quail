@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var program = require('../vendor/commander/');
+
+program
+  .version('0.0.1')
+  .option('-u, --url [url]', 'A [url] to test', null)
+  .parse(process.argv);
+
+console.log('Testing: %s', program.url);

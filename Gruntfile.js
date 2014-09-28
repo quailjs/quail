@@ -60,6 +60,20 @@ module.exports = function(grunt) {
         }
       }
     },
+    copy: {
+      dist: {
+        expand: true,
+        flatten: true,
+        src: 'src/js/quail',
+        dest: 'dist/bin'
+      },
+      commander: {
+        expand: true,
+        flatten: true,
+        src: 'node_modules/commander/*',
+        dest: 'dist/vendor/commander'
+      }
+    },
     uglify: {
       dist: {
         files: {
@@ -89,6 +103,14 @@ module.exports = function(grunt) {
         options: {
           spawn: false
         }
+      }
+    },
+    chmod: {
+      bin: {
+        options: {
+          mode: '711'
+        },
+        src: ['dist/bin/*']
       }
     },
     buildGuideline: {
@@ -129,11 +151,13 @@ module.exports = function(grunt) {
     }
   });
   grunt.loadTasks('tasks');
+  grunt.loadNpmTasks('grunt-chmod');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-bower-task');
