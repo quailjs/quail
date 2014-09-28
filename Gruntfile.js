@@ -72,7 +72,7 @@ module.exports = function(grunt) {
       },
       vendor: {
         expand: true,
-        src: 'node_modules/{commander,shelljs}/**/*',
+        src: 'node_modules/{commander,shelljs,phantomjs}/**/*',
         dest: 'dist/vendor/'
       },
       evaluator: {
@@ -125,7 +125,7 @@ module.exports = function(grunt) {
         options: {
           mode: '711'
         },
-        src: ['dist/bin/*']
+        src: ['dist/bin/*', 'dist/vendor/**/bin/*']
       }
     },
     buildGuideline: {

@@ -2,12 +2,23 @@
 
 var program = require('../vendor/node_modules/commander/');
 var shell = require('../vendor/node_modules/shelljs/');
-console.log(shell.ls());
+// require('../vendor/node_modules/phantomjs');
 
+// phantomjs phantomquail.js http://quailpages/forms/simple-form.html && jsonpp results.js | less
 
-program
-  .version('0.0.1')
-  .option('-u, --url [url]', 'A [url] to test', null)
-  .parse(process.argv);
+shell.cd(__dirname);
+console.log(shell.pwd());
+var command = '../vendor/node_modules/phantomjs/bin/phantomjs /Users/jessebeach/Code/KINGgemeenten/accessibilitymonitor/siteinspector/phantomquail.js http://quailpages/forms/simple-form.html';
+shell.exec(command, {
+  async:true
+}, function (code, output) {
+  console.log('code: ' + code);
+  console.log('output: ' + output);
+});
 
-console.log('Testing: %s', program.url);
+// program
+//   .version('0.0.1')
+//   .option('-u, --url [url]', 'A [url] to test', null)
+//   .parse(process.argv);
+//
+// console.log('Testing: %s', program.url);
