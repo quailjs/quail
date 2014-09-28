@@ -5,6 +5,9 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('quail.json'),
+    clean: {
+      vendor: ['dist/vendor']
+    },
     convert: {
       yml2json: {
         files: [
@@ -67,11 +70,16 @@ module.exports = function(grunt) {
         src: 'src/js/quail',
         dest: 'dist/bin'
       },
-      commander: {
+      vendor: {
+        expand: true,
+        src: 'node_modules/{commander,shelljs}/**/*',
+        dest: 'dist/vendor/'
+      },
+      evaluator: {
         expand: true,
         flatten: true,
-        src: 'node_modules/commander/*',
-        dest: 'dist/vendor/commander'
+        src: 'src/js/lib/phantom_evaluator.js',
+        dest: 'dist/evaluator'
       }
     },
     uglify: {
@@ -100,6 +108,13 @@ module.exports = function(grunt) {
       scripts: {
         files: ['src/**/*.js', 'src/**/*.yml', 'test/accessibility-tests/*.html', 'test/core/*.html', 'test/testrunner.js'],
         tasks: ['convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'uglify'],
+        options: {
+          spawn: false
+        }
+      },
+      bin: {
+        files: ['src/js/quail'],
+        tasks: ['copy:dist'],
         options: {
           spawn: false
         }
@@ -156,6 +171,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-convert');

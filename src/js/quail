@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
-var program = require('../vendor/commander/');
+var program = require('../vendor/node_modules/commander/');
+var shell = require('../vendor/node_modules/shelljs/');
+console.log(shell.ls());
+
 
 program
   .version('0.0.1')
