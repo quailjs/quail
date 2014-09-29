@@ -7,9 +7,9 @@ quail.lib.EarlAssert = (function () {
 
 	function Assert(base) {
 		var earlAssert = $.extend({}, base, Assert.defaultAssert);
-		
+
 		earlAssert.outcome = $.extend({}, earlAssert.outcome);
-		
+
 		return earlAssert;
 	}
 
