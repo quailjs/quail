@@ -4,17 +4,17 @@ quail.lib.wcag2.TestCluster = (function () {
 		elms: [],
 		pointers: [],
 		add: function (testCase) {
-			var newPointer;
+			var pointer;
 			if (pointerMap.elms.indexOf(testCase.get('element')) === -1) {
 				if (testCase.get('html')) {
-					newPointer = [{
+					pointer = [{
 						type: 'CharSnippetCompoundPointer',
 						chars: testCase.get('html'),
 						CSSSelector: testCase.get('selector')
 					}];
 				}
 				pointerMap.elms.push(testCase.get('element'));
-				pointerMap.pointers.push(newPointer);
+				pointerMap.pointers.push(pointer);
 			}
 		},
 		getPointer: function (elm) {
@@ -86,7 +86,6 @@ quail.lib.wcag2.TestCluster = (function () {
 		});
 		return elms;
 	}
-
 
 	/**
 	 * Look at each unique element and create an assert for it
