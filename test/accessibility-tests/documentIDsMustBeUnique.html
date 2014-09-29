@@ -4,16 +4,31 @@
     <title>documentIDsMustBeUnique</title>
 </head>
 <body>
-  <div class="quail-test" data-expected="inapplicable" data-accessibility-test="documentIDsMustBeUnique">
-    <p>This paragraph has no ID</p>
+
+  <div class="quail-test" data-expected="inapplicable"
+  data-accessibility-test="documentIDsMustBeUnique">
+    <p id="uniqueid">This paragraph has a unique</p>
   </div>
-  <div class="quail-test" data-expected="h2:ignore|p:fail" data-accessibility-test="documentIDsMustBeUnique">
+
+  <div class="quail-test" data-expected="inapplicable"
+  data-accessibility-test="documentIDsMustBeUnique">
+    <!-- No content -->
+  </div>
+
+  <div class="quail-test" data-expected="h2:ignore|p:fail"
+  data-accessibility-test="documentIDsMustBeUnique">
     <h2 id="one">This is a header.</h2>
-    <p id="one" class="quail-failed-element">This is the second paragraph.</p>
+    <p id="one" class="quail-failed-element">
+      This is the second paragraph.
+    </p>
   </div>
-  <div class="quail-test" data-expected="h2:ignore|p:pass" data-accessibility-test="documentIDsMustBeUnique">
+
+  <div class="quail-test" data-expected="h2:ignore|p:pass"
+  data-accessibility-test="documentIDsMustBeUnique">
     <h2 id="three">This is a header.</h2>
-    <p id="four" class="quail-failed-element">This is the second paragraph.</p>
+    <p id="four">
+      This is the second paragraph.
+    </p>
   </div>
 
   <script src="../quail-testrunner.js"></script>
