@@ -12,8 +12,9 @@
 		class="quail-failed-element"></label>
 	</div>
 
-	<div class="quail-test" 
-	data-expected="fail" data-accessibility-test="idRefHasCorrespondingId" title="Elements with aria-activedescendant attributes pointing to a not existing ID should fail">
+	<div class="quail-test" data-expected="fail" 
+	data-accessibility-test="idRefHasCorrespondingId" 
+	title="Elements with aria-activedescendant attributes pointing to a not existing ID should fail">
 		 <input type="text" aria-activedescendant="nonexisting"
 		 class="quail-failed-element" />
 	</div>
@@ -25,8 +26,9 @@
 		<input id="myInput" />
 	</div>
 
-	<div class="quail-test" 
-	data-expected="pass" data-accessibility-test="idRefHasCorrespondingId" title="Elements with aria-activedescendant attributes pointing to an existing ID pass">
+	<div class="quail-test" data-expected="pass" 
+	data-accessibility-test="idRefHasCorrespondingId" 
+	title="Elements with aria-activedescendant attributes pointing to an existing ID pass">
 		 <input type="text" aria-activedescendant="myDescendant" />
 		 <div id="myDescendant"></div>
 	</div>
