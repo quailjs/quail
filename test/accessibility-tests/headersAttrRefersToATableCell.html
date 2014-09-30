@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+	<title>headersAttrRefersToATableCell</title>
+</head>
+<body>
+
+	<div class="quail-test" data-expected="inapplicable"
+	data-accessibility-test="headersAttrRefersToATableCell">
+		<table><tr>
+			<td id="tbl1-cell1"></td>
+			<td id="tbl1-cell2"></td>
+		</tr><tr>
+			<td></td>
+			<td></td>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="headersAttrRefersToATableCell">
+		<table><tr>
+			<th id="tbl2-cell1"></td>
+			<th id="tbl2-cell2"></td>
+		</tr><tr>
+			<td headers="tbl2-cell1"></td>
+			<td headers="tbl2-cell2"></td>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="headersAttrRefersToATableCell">
+		<table><tr>
+			<th id="tbl3-cell1" headers="tbl3-cell3"></td>
+			<th id="tbl3-cell2" headers="tbl3-cell1"></td>
+		</tr><tr>
+			<td headers="" id="tbl3-cell3"></td>
+			<td headers="tbl3-cell1 tbl3-cell2"></td>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="headersAttrRefersToATableCell">
+		<table><tr>
+			<th id="tbl4-cell1"></th>
+			<th id="tbl4-cell2"></th>
+		</tr><tr>
+			<td headers="tbl4-cell1   tbl4-cell2"></td>
+			<td headers="tbl4-cell1 
+						 tbl4-cell2"></td>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="headersAttrRefersToATableCell">
+		<table><tr>
+			<!-- refers to a different table -->
+			<td headers="tbl1-cell1"></td>
+		</tr></table>
+
+	</div>
+
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="headersAttrRefersToATableCell">
+		<table id="tbl6"><tr>
+			<td headers="tbl6"></td>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="headersAttrRefersToATableCell">
+		<table><tr id="tbl5-row1">
+			<th></th>
+		</tr><tr>
+			<td headers="tbl5-row1"></td>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="headersAttrRefersToATableCell">
+		<table><tr>
+			<td headers="not-existing"></td>
+		</tr></table>
+	</div>
+
+	<script src="../quail-testrunner.js"></script>
+</body>
+</html>
