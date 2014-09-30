@@ -54,7 +54,7 @@
 	data-accessibility-test="headersAttrRefersToATableCell">
 		<table><tr>
 			<!-- refers to a different table -->
-			<td headers="tbl1-cell1"></td>
+			<td headers="tbl1-cell1" class="quail-failed-element"></td>
 		</tr></table>
 
 	</div>
@@ -62,7 +62,7 @@
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="headersAttrRefersToATableCell">
 		<table id="tbl6"><tr>
-			<td headers="tbl6"></td>
+			<td headers="tbl6" class="quail-failed-element"></td>
 		</tr></table>
 	</div>
 
@@ -71,14 +71,14 @@
 		<table><tr id="tbl5-row1">
 			<th></th>
 		</tr><tr>
-			<td headers="tbl5-row1"></td>
+			<td headers="tbl5-row1" class="quail-failed-element"></td>
 		</tr></table>
 	</div>
 
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="headersAttrRefersToATableCell">
 		<table><tr>
-			<td headers="not-existing"></td>
+			<td headers="not-existing" class="quail-failed-element"></td>
 		</tr></table>
 	</div>
 
