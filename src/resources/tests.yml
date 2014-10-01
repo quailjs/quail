@@ -1783,7 +1783,8 @@ framesHaveATitle:
     - "deprecated"
     - "frame"
   options:
-    selector: "frame:not(frame[title]), iframe:not(iframe[title])"
+    selector: "frame, iframe"
+    test: ":not([title])"
 framesetIsNotUsed:
   type: "selector"
   testability: 1
