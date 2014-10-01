@@ -1533,7 +1533,8 @@ formButtonsHaveValue:
     - "form"
     - "content"
   options:
-    selector: "input[type=button]:not([value]), input[type=submit]:not([value]), input[type=reset]:not([value])"
+    selector: "input[type=button], input[type=submit], input[type=reset]"
+    test: ":not([value])"
 formDeleteIsReversable:
   type: "selector"
   testability: 0
