@@ -10,6 +10,12 @@
 		<!-- No frame here -->
 	</div>
 
+	<div class="quail-test" data-expected="inapplicable"
+	data-accessibility-test="framesHaveATitle">
+		<iframe style="display:none"
+		src="../assets/alternative1.html"></iframe>
+	</div>
+
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="framesHaveATitle">
 		<p>This is an iframe.</p>

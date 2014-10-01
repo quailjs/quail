@@ -544,7 +544,7 @@ areaHasAltValue:
     - "imagemap"
     - "content"
   options:
-    selector: "area"
+    selector: "area:visible"
     test: ":not(area[alt])"
 areaLinksToSoundFile:
   type: "selector"
@@ -1783,7 +1783,7 @@ framesHaveATitle:
     - "deprecated"
     - "frame"
   options:
-    selector: "frame, iframe"
+    selector: "frame:visible, iframe:visible"
     test: ":not([title])"
 framesetIsNotUsed:
   type: "selector"
@@ -2351,7 +2351,8 @@ imgHasAlt:
     - "image"
     - "content"
   options:
-    selector: "img:not(img[alt])"
+    selector: "img:visible"
+    test: ":not(img[alt])"
 imgHasLongDesc:
   type: "custom"
   testability: 1
@@ -2750,7 +2751,8 @@ inputImageHasAlt:
     - "image"
     - "content"
   options:
-    selector: "input[type=image]:not(input[type=image][alt])"
+    selector: "input[type=image]:visible"
+    test: ":not(input[type=image][alt])"
 inputImageNotDecorative:
   type: "selector"
   testability: 0
