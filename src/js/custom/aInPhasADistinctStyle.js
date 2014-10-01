@@ -1,5 +1,9 @@
-quail.aInPhasADistinctStyle = function( quail, test, Case ) {
+quail.aInPHasADistinctStyle = function( quail, test, Case ) {
+
+  window.console.log(quail);
+
   test.get( '$scope' ).find( 'p a' ).each( function() {
+    window.console.log(test.get("$scope"));
     var _case = Case( {
       element: this,
       expected: $(this).closest('.quail-test').data('expected')
