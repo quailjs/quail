@@ -56,7 +56,7 @@ aInPhasADistinctStyle:
   description:
     en: "When a link is in a text it should have a disticht style"
     nl: "Als een link in een tekst staat, moet deze een herkenbare stijl hebben"
-  guidelines:[]
+  guidelines: []
   tags:
     - "link"
     - "content"
