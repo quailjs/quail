@@ -27,8 +27,6 @@ quail.components.selector = function (quail, test, Case, options) {
         $this = $(this);
 
         // If a test is defined, then use it
-        window.console.log(options.test, $this, !$this.is(options.test));
-
         if (options.test && !$this.is(options.test)) {
           status = 'passed';
         } else {
