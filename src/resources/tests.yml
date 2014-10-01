@@ -544,7 +544,8 @@ areaHasAltValue:
     - "imagemap"
     - "content"
   options:
-    selector: "area:not(area[alt])"
+    selector: "area"
+    test: ":not(area[alt])"
 areaLinksToSoundFile:
   type: "selector"
   testability: 1

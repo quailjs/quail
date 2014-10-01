@@ -16,18 +16,30 @@ quail.components.selector = function (quail, test, Case, options) {
         element: undefined,
         selector: options.selector,
         expected: $scope.data('expected') || $scope.find('[data-expected]').data('expected'),
-        status: 'passed'
+        // status: 'passed'
+        status: (options.test ? 'inapplicable' : 'passed')
       }));
     }
     else {
       // Fails.
       candidates.each(function () {
-        // Get the data-expected attribute.
+        var status,
+        $this = $(this);
+
+        // If a test is defined, then use it
+        window.console.log(options.test, $this, !$this.is(options.test));
+
+        if (options.test && !$this.is(options.test)) {
+          status = 'passed';
+        } else {
+          status = 'failed';
+        }
+
         test.add(quail.lib.Case({
           element: this,
           selector: options.selector,
-          expected: $(this).closest('.quail-test').data('expected'),
-          status: 'failed'
+          expected: $this.closest('.quail-test').data('expected'),
+          status: status
         }));
       });
     }
