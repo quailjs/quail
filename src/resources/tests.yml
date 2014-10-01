@@ -47,6 +47,20 @@ aImgAltNotRepetitive:
     - "link"
     - "content"
   callback: "aImgAltNotRepetitive"
+aInPhasADistinctStyle:
+  type: "custom"
+  testability: 1
+  title:
+    en: "When a link is in a text it should have a disticht style"
+    nl: "Als een link in een tekst staat, moet deze een herkenbare stijl hebben"
+  description:
+    en: "When a link is in a text it should have a disticht style"
+    nl: "Als een link in een tekst staat, moet deze een herkenbare stijl hebben"
+  guidelines:[]
+  tags:
+    - "link"
+    - "content"
+  callback: "aInPhasADistinctStyle"
 aLinkTextDoesNotBeginWithRedundantWord:
   type: "custom"
   testability: 0
@@ -1816,14 +1830,11 @@ framesetMustHaveNoFramesSection:
   options:
     selector: "frameset:not(frameset:has(noframes))"
 headerH1:
-  type: "headingLevel"
-  testability: 0
-  title:
-    en: "The header following an h1 is not h3 through h6"
+  type: "headingLevel      testability:       title:
+    en    "The h ead     following an h1 is not h3 through h6"
     nl: "De header die volgt op een h1 is niet h3 tot h6"
   description:
-    en: "Header order should not skip a level. Do not follow a <code>h1</code> header with a <code>h3</code>, <code>h4</code>, <code>h5</code>, or <code>h6</code>."
-    nl: "Headers mogen geen niveau overslaan. Laat een <code>h1</code>-header niet volgen door een <code>h3</code>, <code>h4</code>, <code>h5</code>, of <code>h6</code>."
+      en: "Header order should not skip a level. Do not follow a <code>h1</code> header with a <code>h3</code>, <code>h4</code>, <code>h5</code>, or     ode>h6</code>."       nl:ecode>, <code>h5</code>, of <code>h6</code>."
   guidelines:
     wcag:
       2.4.6:
