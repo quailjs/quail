@@ -47,15 +47,15 @@ aImgAltNotRepetitive:
     - "link"
     - "content"
   callback: "aImgAltNotRepetitive"
-aInPhasADistinctStyle:
+aInPHasADistinctStyle:
   type: "custom"
   testability: 1
   title:
-    en: "When a link is in a text it should have a disticht style"
-    nl: "Als een link in een tekst staat, moet deze een herkenbare stijl hebben"
+    en: "Links should be have a distinct style inside a p tag"
+    nl: "Links moeten een afwijkende stijl hebben binnen een paragraaf"
   description:
-    en: "When a link is in a text it should have a disticht style"
-    nl: "Als een link in een tekst staat, moet deze een herkenbare stijl hebben"
+    en: ""
+    nl: ""
   guidelines: []
   tags:
     - "link"
