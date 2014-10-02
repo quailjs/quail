@@ -5,11 +5,6 @@
 </head>
 <body>
 
-	<div class="quail-test" data-expected="inapplicable"
-	data-accessibility-test="linkHasAUniqueContext">
-		<p><!-- No links here --></p>
-	</div>
-
 	<div class="quail-test" data-expected="pass"
 	data-accessibility-test="linkHasAUniqueContext">
 		<!-- Different link content -->
@@ -130,10 +125,10 @@
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="linkHasAUniqueContext">
 		<!-- Not in the same sentence -->
-		<div>Dogs! - 
+		<div>Dogs! -
 			<a href="dogs" class="quail-failed-element">Read more</a>
 		</div>
-		<div>Cats! - 
+		<div>Cats! -
 			<a href="cats" class="quail-failed-element">Read more</a>
 		</div>
 	</div>
@@ -152,10 +147,10 @@
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="linkHasAUniqueContext">
 		<!-- Not in the same sentence -->
-		<div>Dogs<br> 
+		<div>Dogs<br>
 			<a href="dogs" class="quail-failed-element">Read more</a>
 		</div>
-		<div>Cats<br> 
+		<div>Cats<br>
 			<a href="cats" class="quail-failed-element">Read more</a>
 		</div>
 	</div>
