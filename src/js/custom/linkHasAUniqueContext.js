@@ -17,12 +17,15 @@ quail.linkHasAUniqueContext = function( quail, test, Case ) {
     } );
     test.add( _case );
 
-    window.console.log( "LINK:", $( this ) );
+
+    window.console.log( "LINK:", $( this ).next('a').text(), $(this ).text() );
 
     if (
       ($( this ).find( 'img' ) && $( this ).find( 'img' ).attr( 'alt' ) !== $( this ).text()) ||
       ($( this ).attr( 'title' ) !== 'undefined' && $( this ).attr( 'title' ) !== $( this ).text()) ||
-      ($( this ).parent().text() !== "" && $( this ).parent().text() !== $( this ).text())
+      ($( this ).parent().text() !== "" && $( this ).parent().text() !== $( this ).text()) ||
+      $( this ).next('a').text() !== $(this ).text() ||
+      $( this ).prev().not('br')
       ) {
       _case.set( {
         'status': 'passed'
