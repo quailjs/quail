@@ -25,7 +25,7 @@ quail.linkHasAUniqueContext = function( quail, test, Case ) {
         test.add( _case );
 
 
-        window.console.log(similarStrings("Read more", "Read &nbsp; more..."));
+        window.console.log(similarStrings("(READ MORE!)", "Read &nbsp; more..."));
 
         counter++;
 
@@ -59,15 +59,13 @@ quail.linkHasAUniqueContext = function( quail, test, Case ) {
    * Functions for testing string similarity
    */
   function similarStrings( stringA, stringB ) {
-    var string1 = stringA.replace( /\s/g, "".toLowerCase() );
-    var string2 = stringB.replace( /\s/g, "".toLowerCase() );
+    var string1 = stringA.toLowerCase().replace( /\s/g, "".toLowerCase() );
+    var string2 = stringB.toLowerCase().replace( /\s/g, "".toLowerCase() );
 
 
     var similarity_number = 2 * stringIntersect( pairs( string1 ), pairs( string2 ) ).length;
     var similarity_density = pairs( string1 ).length + pairs( string2 ).length;
     var similarity = similarity_number / similarity_density;
-
-    window.console.log(similarity_number, similarity_density);
 
     return similarity;
   }
