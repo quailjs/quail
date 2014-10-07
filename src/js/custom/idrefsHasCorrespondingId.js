@@ -1,40 +1,57 @@
 quail.idrefsHasCorrespondingId = function( quail, test, Case ) {
 
+  function getAttribute($element){
+    var attribute = [];
+    var attributeList = ['headers', 'aria-controls', 'aria-describedby', 'aria-flowto', 'aria-labelledby', 'aria-owns'];
+
+    $.each(attributeList, function(index, item){
+
+      var attr =  $element.attr(item);
+
+      if(typeof attr !== typeof undefined && attr !== false){
+        attribute = attr;
+        return;
+      }
+    });
+    return attribute.split( /\s+/ );
+  }
+
   test.get( '$scope' ).each( function() {
 
-      var $local = $( this );
-      var testableElements = $local.find( 'td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], [aria-labelledby], [aria-owns]' );
+      var testableElements = $( this ).find( 'td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], [aria-labelledby], [aria-owns]' );
 
       if ( testableElements.length === 0 ) {
-        window.console.log( "No testable elements in this test" );
+
         test.add( Case( {
           element: this,
           expected: $( this ).closest( '.quail-test' ).data( 'expected' ),
           status: 'inapplicable'
         } ) );
         return;
-      }
-      else {
+      } else {
 
         testableElements.each( function() {
-
+          var element = this;
           var _case = test.add( Case( {
             element: this,
             expected: $( this ).closest( '.quail-test' ).data( 'expected' )
           } ) );
 
-          if ( $( this ).val() === "poep" ) {
-            window.console.log( $( this ).val() );
-            _case.set( {
-              'status': 'passed'
-            } );
-          }else{
-            _case.set( {
-              'status': 'failed'
-            } );
-          }
+          var attributes = getAttribute($(element));
+          var status = 'passed';
+
+          $.each( attributes, function( index, item ) {
+
+            if ( item !== "" && $( '#' + item ).length === 0 ) {
+              status = 'failed';
+              return;
+            }
+          } );
+
+          _case.set( {
+            'status': status
+          } );
         } );
-        return;
       }
 
     }
