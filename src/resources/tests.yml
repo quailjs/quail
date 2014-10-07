@@ -666,7 +666,7 @@ boldIsNotUsed:
     - "content"
   options:
     selector: "bold"
-buttonHasValue:
+buttonHasName:
   type: "placeholder"
   testability: 1
   title:
@@ -693,7 +693,6 @@ buttonHasValue:
   options:
     content: true
     empty: true
-    attribute: "value"
     selector: "button"
 checkboxHasLabel:
   type: "label"

@@ -5,21 +5,23 @@ quail.aMustContainText = function(quail, test, Case) {
       expected: $(this).closest('.quail-test').data('expected')
     });
     test.add(_case);
-    if (!$(this).attr('href')) {
+
+    if (!$(this).attr('href') ||
+      $(this).css('display') === 'none') {
       _case.set({
         'status': 'inapplicable'
       });
       return;
     }
-    if (!quail.containsReadableText($(this), true) &&
-       !(($(this).attr('name') || $(this).attr('id')) && !$(this).attr('href'))) {
+
+    if (quail.containsReadableText($(this), true)){
       _case.set({
-        'status': 'failed'
+        'status': 'passed'
       });
     }
     else {
       _case.set({
-        'status': 'passed'
+        'status': 'failed'
       });
     }
   });
