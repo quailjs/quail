@@ -3,8 +3,8 @@ quail.headersAttrRefersToATableCell = function( quail, test, Case ) {
   // Table cell headers without referred ids
   test.get( '$scope' ).find( 'table' ).each( function() {
 
-    var element = this,
-      _case = Case( {
+    var element = this;
+    var _case = Case( {
         element: element,
         expected: $( this ).closest( '.quail-test' ).data( 'expected' )
       } );
