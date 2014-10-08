@@ -558,7 +558,7 @@ areaHasAltValue:
     - "imagemap"
     - "content"
   options:
-    selector: "area"
+    selector: "area:visible"
     test: ":not(area[alt])"
 areaLinksToSoundFile:
   type: "selector"
@@ -707,7 +707,7 @@ buttonHasName:
   options:
     content: true
     empty: true
-    attribute: title
+    attribute: "title"
     selector: "button"
 checkboxHasLabel:
   type: "label"
@@ -1829,21 +1829,6 @@ framesetMustHaveNoFramesSection:
     - "frame"
   options:
     selector: "frameset:not(frameset:has(noframes))"
-headersAttrRefersToATableCell:
-  type: "custom"
-  testability: 1
-  title:
-    en: "Table cell headers attrtibutes must within the same table have an associated data cell with the same id"
-    nl: "Tabel cellen met een headers attribuut moeten binnen dezelfde tabel een overeenkomende data cel hebben in het id attribuut dezelfde waarde"
-  description:
-    en: ""
-    nl: ""
-  guidelines: []
-  tags:
-    - "headers"
-    - "td"
-    - "th"
-  callback: "headersAttrRefersToATableCell"
 headerH1:
   type: "headingLevel"
   testability: 0
@@ -2116,6 +2101,24 @@ headersUseToMarkSections:
     - "header"
     - "content"
   callback: "headersUseToMarkSections"
+idrefsHasCorrespondingId:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Elements with an idref attribute must correspond to an element with an ID"
+    nl: "Elementen met een idref-attribuut moeten corresponderen met een element met een ID"
+  description:
+    en: ""
+    nl: ""
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
+          - "F17"
+      4.1.1:
+        techniques:
+          - "F17"
+  callback: "idrefsHasCorrespondingId"
 iIsNotUsed:
   type: "selector"
   testability: 1
