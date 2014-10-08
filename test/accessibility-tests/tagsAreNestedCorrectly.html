@@ -51,7 +51,7 @@
 	  	<!-- tr closing is optional -->
 	  	</table>
 	</div>
-	
+
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="tagsAreNestedCorrectly">
 		<p>
@@ -61,7 +61,7 @@
 			<strong></strong>
 		</p>
 	</div>
-	
+
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="tagsAreNestedCorrectly">
 		<p>
@@ -71,7 +71,7 @@
 			<strong></strong>
 		</p>
 	</div>
-	
+
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="tagsAreNestedCorrectly">
 		<input class="quail-failed-element"></input>
@@ -81,7 +81,8 @@
 		<br class="quail-failed-element"></br>
 		<area class="quail-failed-element"></area>
 	</div>
-	
+
+    <script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
 	<script src="../quail-testrunner.js"></script>
 </body>
 </html>

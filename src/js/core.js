@@ -130,6 +130,12 @@ var quail = {
    */
   selfClosingTags : ['area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'],
 
+
+  /**
+   * A list of tags that optionally can be closed
+   */
+  optionalClosingTags: ['p', 'li', 'th','tr', 'td'],
+
   /**
    * Main run function for quail. It bundles up some accessibility tests,
    * and if tests are not passed, it instead fetches them using getJSON.

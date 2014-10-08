@@ -4696,6 +4696,21 @@ tableWithMoreHeadersUseID:
     - "table"
     - "content"
   callback: "tableWithMoreHeadersUseID"
+tagsAreNestedCorrectly:
+  type: "custom"
+  testability: 1
+  title:
+    en: "All tags should be nested correctly"
+    nl: "Alle tags moeten juist genest worden"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "html"
+  components:
+      - "htmlSource"
+  callback: "tagsAreNestedCorrectly"
 tabularDataIsInTable:
   type: "custom"
   testability: 0.5
