@@ -292,7 +292,7 @@ var quail = {
    */
   isDataTable : function(table) {
     // If there are less than three rows, why do a table?
-    if (table.find('tr').length < 2) {
+    if (table.find('tr').length < 3) {
       return false;
     }
     // If you are scoping a table, it's probably not being used for layout
