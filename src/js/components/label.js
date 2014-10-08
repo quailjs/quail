@@ -3,10 +3,10 @@ quail.components.label = function(quail, test, Case, options) {
   $scope.each(function() {
     var $local = $(this);
     $local.find(options.selector).each(function() {
-      if ((!$local.find('label[for=' + $(this).attr('id') + ']').length ||
-          !$(this).parent('label').length ||
+      if ((!$(this).parent('label').length ||
           !quail.containsReadableText($(this).parent('label'))) &&
-          (!quail.containsReadableText($local.find('label[for=' + $(this).attr('id') + ']')))) {
+          (!$local.find('label[for=' + $(this).attr('id') + ']').length ||
+          !quail.containsReadableText($local.find('label[for=' + $(this).attr('id') + ']')))) {
         test.add(Case({
           element: this,
           expected: $(this).closest('.quail-test').data('expected'),
