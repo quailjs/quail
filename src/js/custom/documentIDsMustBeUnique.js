@@ -1,14 +1,21 @@
 quail.documentIDsMustBeUnique = function(quail, test, Case) {
   var ids = {};
+
+  test.get('$scope').each(function(){
+    if($(this).children().length === 0) {
+      test.add(Case({
+        element: this,
+        'status': 'inapplicable',
+        expected: $(this).closest('.quail-test').data('expected')
+      }));
+    }
+  });
   test.get('$scope').find(':not([id])').each(function() {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    _case.set({
+    test.add(Case({
+      element: this,
       'status': 'inapplicable',
       expected: $(this).closest('.quail-test').data('expected')
-    });
+    }));
   });
   test.get('$scope').find('[id]').each(function() {
     var _case = Case({
