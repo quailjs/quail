@@ -693,6 +693,7 @@ buttonHasName:
   options:
     content: true
     empty: true
+    attribute: title
     selector: "button"
 checkboxHasLabel:
   type: "label"
