@@ -24,9 +24,10 @@ quail.tagsAreNestedCorrectly = function(quail, test, Case) {
         node = element.raw || selector;
       }
 
-      if (!element.closingTag &&
+      if ((!element.closingTag &&
         quail.selfClosingTags.indexOf(element.name.toLowerCase()) === -1 &&
-        quail.optionalClosingTags.indexOf(element.name.toLowerCase()) === -1) {
+        quail.optionalClosingTags.indexOf(element.name.toLowerCase()) === -1)) {
+
         test.add(Case({
           element: node,
           // Only attempt to get an expectation for the testrunner if the node
@@ -36,11 +37,12 @@ quail.tagsAreNestedCorrectly = function(quail, test, Case) {
         }));
       }
       else {
+
         test.add(Case({
           element: node,
           // Only attempt to get an expectation for the testrunner if the node
           // is a DOM node.
-          expected: (typeof node === 'object') && (node.nodeType === 1) && $(node).closest('.quail-test').data('expected') || null,
+          expected:(typeof node === 'object') && (node.nodeType === 1) && $(node).closest('.quail-test').data('expected') || null,
           status: 'passed'
         }));
       }

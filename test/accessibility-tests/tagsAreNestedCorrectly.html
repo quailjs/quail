@@ -7,79 +7,79 @@
 
 	<div class="quail-test" data-expected="pass"
 	data-accessibility-test="tagsAreNestedCorrectly">
-		<p>
-			<a href="">
-				<b></b> <input />
-			</a> <br>
-			<strong></strong>
+		<p id="1">
+			<a id="2" href="">
+				<b id="3"></b> <input id="4" />
+			</a> <br  id="5">
+			<strong  id="6"></strong>
 		</p>
 	</div>
 
 	<div class="quail-test" data-expected="pass"
 	data-accessibility-test="tagsAreNestedCorrectly">
-		<input>
-		<img>
-		<meta>
-		<link>
-		<br>
-		<area>
+		<input id="7">
+		<img id="8">
+		<meta id="9">
+		<link id="10">
+		<br id="11">
+		<area id="12">
 	</div>
 
 	<div class="quail-test" data-expected="pass"
 	data-accessibility-test="tagsAreNestedCorrectly">
-		<p>
-			<a href="">
-				<b></b> <input />
-			</a> <br>
-			<strong></strong>
+		<p id="13">
+			<a id="14" href="">
+				<b id="15"></b> <input id="16" />
+			</a> <br id="17">
+			<strong id="18"></strong>
 		<!-- Closing of <p> is optional -->
 	</div>
 
 	<div class="quail-test" data-expected="pass"
 	data-accessibility-test="tagsAreNestedCorrectly">
-		<ul>
-		  <li>Item <!-- li closing is optional -->
-		  <li>Item <!-- li closing is optional -->
+		<ul id="19">
+		  <li id="20">Item <!-- li closing is optional -->
+		  <li id="21">Item <!-- li closing is optional -->
 	  	</ul>
 	</div>
 
 	<div class="quail-test" data-expected="pass"
 	data-accessibility-test="tagsAreNestedCorrectly">
-		<table><tr>
-		  <th>Item <!-- th closing is optional -->
-		  <td>Item <!-- td closing is optional -->
+		<table id="22"><tr id="23">
+		  <th id="24">Item <!-- th closing is optional -->
+		  <td id="25">Item <!-- td closing is optional -->
 	  	<!-- tr closing is optional -->
 	  	</table>
 	</div>
 
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="tagsAreNestedCorrectly">
-		<p>
-			<a href="" class="quail-failed-element">
-				<b> <input />
-			</a></b> <br>
-			<strong></strong>
+		<p id="26">
+			<a id="27" href="" class="quail-failed-element">
+				<b id="28"> <input id="29" />
+			</a></b> <br id="30">
+			<strong id="31"></strong>
 		</p>
 	</div>
 
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="tagsAreNestedCorrectly">
-		<p>
-			<a href="" class="quail-failed-element">
-				<b> <input />
-			</b> <br>
-			<strong></strong>
+		<p id="32">
+			<a id="33" href="" class="quail-failed-element">
+				<b id="34"> <input id="35" />
+			</b> <br id="36">
+			<strong id="37"></strong>
 		</p>
 	</div>
 
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="tagsAreNestedCorrectly">
-		<input class="quail-failed-element"></input>
-		<img class="quail-failed-element"></img>
-		<meta class="quail-failed-element"></meta>
-		<link class="quail-failed-element"></link>
-		<br class="quail-failed-element"></br>
-		<area class="quail-failed-element"></area>
+		<input id="38" class="quail-failed-element"></input>
+		<img id="39" class="quail-failed-element"></img>
+		<meta id="40" class="quail-failed-element"></meta>
+		<link id="41" class="quail-failed-element"></link>
+		<br id="42" class="quail-failed-element"></br>
+		<area id="43" class="quail-failed-element"></area>
 	</div>
 
     <script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
