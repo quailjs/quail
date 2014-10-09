@@ -1,6 +1,4 @@
 quail.documentIDsMustBeUnique = function(quail, test, Case) {
-
-
   test.get('$scope').each(function(){
     if($(this).children().length === 0) {
       test.add(Case({
@@ -17,13 +15,9 @@ quail.documentIDsMustBeUnique = function(quail, test, Case) {
       expected: $(this).closest('.quail-test').data('expected')
     }));
   });
-
   test.get('$scope').each(function(){
     var ids = {};
-
-
     $(this).find('[id]').each(function() {
-
       var _case = Case({
         element: this,
         expected: (function (element) {
@@ -31,9 +25,6 @@ quail.documentIDsMustBeUnique = function(quail, test, Case) {
         }(this))
       });
       test.add(_case);
-
-      window.console.log(ids, typeof ids[$(this).attr('id')], Object.keys(ids).length);
-
       if(typeof ids[$(this).attr('id')] === 'undefined' && Object.keys(ids).length === 0){
         _case.set({
           'status': 'inapplicable'
@@ -51,7 +42,5 @@ quail.documentIDsMustBeUnique = function(quail, test, Case) {
         });
       }
     });
-
   });
-
 };
