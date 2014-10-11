@@ -125,7 +125,7 @@ module.exports = function(grunt) {
         options: {
           mode: '711'
         },
-        src: ['dist/bin/*', 'dist/vendor/**/bin/*']
+        src: ['bin/*']
       }
     },
     buildGuideline: {
