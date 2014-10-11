@@ -35,11 +35,25 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js', 'src/js/lib/*.js', 'src/js/lib/wcag/*.js'],
+        src: [
+          'src/js/core.js',
+          'src/js/components/*.js',
+          'src/js/strings/*.js',
+          'src/js/custom/*.js',
+          'src/js/lib/*.js',
+          'src/js/lib/wcag/*.js'
+        ],
         dest: 'dist/quail.jquery.js'
       },
       test: {
-        src: ['src/js/core.js', 'src/js/components/*.js', 'src/js/strings/*.js', 'src/js/custom/*.js', 'src/js/lib/*.js', 'src/js/lib/wcag/*.js'],
+        src: [
+          'src/js/core.js',
+          'src/js/components/*.js',
+          'src/js/strings/*.js',
+          'src/js/custom/*.js',
+          'src/js/lib/*.js',
+          'src/js/lib/wcag/*.js'
+        ],
         dest: 'test/quail-testing.jquery.js',
         options: {
           banner: '<%= pkg.options.banner %>' + "\n" + 'var __testQuail = {};(function($) {' + "\n",
@@ -48,7 +62,14 @@ module.exports = function(grunt) {
         }
       },
       testLib: {
-        src: ['dist/tests.json', 'lib/jquery/jquery.js', 'lib/RainbowVis-JS/rainbowvis.js', 'lib/qunit/qunit.js', 'test/quail-testing.jquery.js', 'test/testrunner.js'],
+        src: [
+          'dist/tests.json',
+          'lib/jquery/jquery.js',
+          'lib/RainbowVis-JS/rainbowvis.js',
+          'lib/qunit/qunit.js',
+          'test/quail-testing.jquery.js',
+          'test/testrunner.js'
+        ],
         dest: 'test/quail-testrunner.js',
         options: {
           banner: '(function() {',
@@ -64,12 +85,6 @@ module.exports = function(grunt) {
       }
     },
     copy: {
-      dist: {
-        expand: true,
-        flatten: true,
-        src: 'src/js/quail',
-        dest: 'dist/bin'
-      },
       vendor: {
         expand: true,
         src: 'node_modules/{commander,shelljs,phantomjs,jquery}/**/*',
@@ -106,8 +121,21 @@ module.exports = function(grunt) {
     },
     watch: {
       scripts: {
-        files: ['src/**/*.js', 'src/**/*.yml', 'test/accessibility-tests/*.html', 'test/core/*.html', 'test/testrunner.js'],
-        tasks: ['convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'uglify'],
+        files: [
+          'src/**/*.js',
+          'src/**/*.yml',
+          'test/accessibility-tests/*.html',
+          'test/core/*.html',
+          'test/testrunner.js'
+        ],
+        tasks: [
+          'convert',
+          'concat',
+          'jshint',
+          'buildTestFilesJson',
+          'buildGuideline',
+          'uglify'
+        ],
         options: {
           spawn: false
         }
@@ -128,26 +156,51 @@ module.exports = function(grunt) {
         src: ['bin/*']
       }
     },
+    chmod: {
+      bin: {
+        options: {
+          mode: '711'
+        },
+        src: ['bin/*']
+      }
+    },
     buildGuideline: {
       dist: {
         files: [
-          { guideline: '508', src: 'dist/tests.json', dest: 'dist/guidelines/508.tests.json' },
-          { guideline: 'wcag', src: 'dist/tests.json', dest: 'dist/guidelines/wcag.tests.json' }
+          {
+            guideline: '508',
+            src: 'dist/tests.json',
+            dest: 'dist/guidelines/508.tests.json'
+          },
+          {
+            guideline: 'wcag',
+            src: 'dist/tests.json',
+            dest: 'dist/guidelines/wcag.tests.json'
+          }
         ]
       }
     },
     compressTestsJson: {
       dist: {
         files: [
-          { src: 'dist/tests.json', dest: 'dist/tests.min.json' }
+          {
+            src: 'dist/tests.json',
+            dest: 'dist/tests.min.json'
+          }
         ]
       }
     },
     buildTestFilesJson: {
       dist: {
         files: [
-          { src: 'test/accessibility-tests/*.html', dest: 'test/accessibility-tests/_tests.json' },
-          { src: 'test/core/*.html', dest: 'test/core/_tests.json'}
+          {
+            src: 'test/accessibility-tests/*.html',
+            dest: 'test/accessibility-tests/_tests.json'
+          },
+          {
+            src: 'test/core/*.html',
+            dest: 'test/core/_tests.json'
+          }
         ]
       }
     },
