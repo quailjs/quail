@@ -1,7 +1,8 @@
 var system = require('system');
 var page = require('webpage').create();
 var fs = require('fs');
-var address, dir;
+var dir = system.args[2];
+var address;
 
 page.onConsoleMessage = function (msg) {
   console.log(msg);
@@ -64,7 +65,7 @@ phantom.onError = function(msg, trace) {
 address = system.args[1];
 console.log('address: ' + address);
 
-var distPath = fs.absolute('.'); // ./dist
+var distPath = dir + '/dist'; // ./dist
 
 // var guidelinedata = fs.read(distPath + '/guideline.json');
 var guidelines = {} // JSON.parse(guidelinedata);
@@ -101,7 +102,7 @@ else {
 // report back.
 var len = 0;
 // Open a write stream to an output file.
-var stream = fs.open(dir + '/results.js', 'w');
+var stream = fs.open(dir + '/analyses/' + (new Date()).getTime() + '-analysis.js', 'w');
 // The data to be written to file.
 var output = {};
 var start = (new Date()).getTime();

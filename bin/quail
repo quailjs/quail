@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-var program = require('../vendor/node_modules/commander/');
-var shell = require('../vendor/node_modules/shelljs/');
+var program = require('../node_modules/commander/');
+var shell = require('../node_modules/shelljs/');
 // require('../vendor/node_modules/phantomjs');
 
 // phantomjs phantomquail.js http://quailpages/forms/simple-form.html && jsonpp results.js | less
@@ -9,16 +9,17 @@ var shell = require('../vendor/node_modules/shelljs/');
 // Change to the dist dir.
 shell.cd(__dirname);
 shell.cd('..');
+var pwd = shell.pwd();
 
 program
   .version('0.0.1')
   .option('-u, --url [url]', 'A [url] to test', null)
   .parse(process.argv);
 
-var phantomjsExec = './vendor/node_modules/phantomjs/bin/phantomjs';
-var phantomEvaluator = './evaluator/phantom_evaluator.js';
+var phantomjsExec = './node_modules/.bin/phantomjs';
+var phantomEvaluator = './src/js/lib/phantom_evaluator.js';
 
-var command = [phantomjsExec, phantomEvaluator, program.url].join(' ');
+var command = [phantomjsExec, phantomEvaluator, program.url, pwd].join(' ');
 shell.exec(command, {
   async:true
 }, function (code, output) {
