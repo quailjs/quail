@@ -10,17 +10,31 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'requirejs', 'chai'],
+    frameworks: ['mocha', 'chai'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      'test-main.js',
-      'node_modules/jquery/dist/jquery.min.js',
-      'dist/*.js',
+      // Dependencies
       {
-        pattern: 'test/**/*Spec.js',
+        pattern: 'bower_components/jquery/jquery.min.js',
+        watched: false
+      },
+
+      // Fixtures
+      {
+        pattern: 'dist/tests.min.json',
+        watched: false,
         included: false
+      },
+      {
+        pattern: 'dist/quail.jquery.min.js',
+        watched: false
+      },
+
+      // Tests
+      {
+        pattern: 'test/**/*Spec.js'
       }
     ],
 
