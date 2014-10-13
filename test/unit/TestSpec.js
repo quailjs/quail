@@ -101,91 +101,85 @@ describe('Test', function () {
       var cb = function (quail) {};
       spy = sinon.spy(cb);
       quail.customCallback = spy;
+    });
 
+    it('should invoke a custom callback', function () {
       options = {
         'type': 'custom',
         'callback': spy
       };
-
-      _test = new quail.lib.Test('fakeLinkTest', options)
-    });
-
-    it('should create a callback', function () {
+      _test = new quail.lib.Test('fakeLinkTest', options);
       _test.invoke();
       sinon.assert.calledWith(spy, quail, _test, quail.lib.Case);
+    });
+
+    it('should invoke a callback', function () {
+      quail.customCallback = spy;
+      options = {
+        'type': 'customCallback'
+      };
+      _test = new quail.lib.Test('fakeLinkTest', options);
+    });
+  });
+
+  describe('methods', function () {
+    var _test;
+
+    beforeEach(function () {
+      _test = new quail.lib.Test('fakeLinkTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'a.unittest',
+        },
+        'scope': scope
+      });
+    });
+
+    describe('each', function () {
+      it('should create two Cases', function () {
+        _test.invoke();
+        expect(_test.length).to.equal(2);
+      });
+
+      it('should iterate over the two cases', function () {
+        var spy = sinon.spy();
+        _test.invoke();
+        _test.each(spy);
+        sinon.assert.calledTwice(spy);
+      });
+    });
+
+    describe('findCasesBySelector', function () {
+      it('should find cases by selector', function () {
+        _test.invoke();
+        var cases = _test.findCasesBySelector('a.unittest');
+        expect(cases.length).to.equal(2);
+      });
+    });
+
+    describe('findByStatus', function () {
+      it('should find cases by status', function () {
+        _test.invoke();
+        var cases = _test.findByStatus('failed');
+        expect(cases.length).to.equal(2);
+      });
+    });
+
+    describe('groupCasesBySelector', function () {
+      it('should group cases by selector', function () {
+        var options = _test.get('options');
+        options.selector = 'i.unittest';
+        _test.set('options', options);
+        _test.invoke();
+        var casesBySelector = _test.groupCasesBySelector();
+        expect(casesBySelector['i.unittest'].length).to.equal(10);
+      });
     });
   });
 });
 
 /**
  * Test Class.
-
-test('Invoke/custom', function () {
-
-  _test.invoke();
-  _test = new libs.Test('fakeLinkTest', {
-    'type': 'custom',
-    'callback': 'customCallback'
-  });
-  _test.invoke();
-  _test = new libs.Test('fakeLinkTest', {
-    'type': 'customCallback'
-  });
-  _test.invoke();
-});
-test('Iteration', function () {
-  var _test = new libs.Test('fakeLinkTest', {
-    'type': 'selector',
-    'options': {
-      'selector': 'a.unittest',
-    }
-  });
-  _test.invoke();
-  equal(_test.length, 2, 'Two Cases were created');
-  var i;
-  _test.each(function (index, _case) {
-    i = index;
-    ok(_case instanceof libs.Case, 'Case is the constructor of _case');
-  });
-  equal(i, 1, 'Test.fn.each looped 2 times');
-});
-test('findCasesBySelector', function () {
-  var cases;
-  var _test = new libs.Test('fakeLinkTest', {
-    'type': 'selector',
-    'options': {
-      'selector': 'a.unittest',
-    }
-  });
-  _test.invoke();
-  cases = _test.findCasesBySelector('a.unittest');
-  equal(cases.length, 2, 'Cases are grouped by selector');
-});
-test('findByStatus', function () {
-  var cases;
-  var _test = new libs.Test('fakeLinkTest', {
-    'type': 'selector',
-    'options': {
-      'selector': 'a.unittest',
-    }
-  });
-  _test.invoke();
-  equal(_test.length, 2, 'Two Cases were created');
-  // Filter by statuses.
-  cases = _test.findByStatus('failed');
-  equal(cases.length, 2, 'Two cases found.');
-});
-test('groupCasesBySelector', function () {
-  var _test = new libs.Test('fakeLinkTest', {
-    'type': 'selector',
-    'options': {
-      'selector': 'i.unittest',
-    }
-  });
-  _test.invoke();
-  var casesBySelector = _test.groupCasesBySelector();
-  equal(casesBySelector['i.unittest'].length, 10, 'Cases are grouped by selector');
-});
 asyncTest('groupCasesByHtml', function () {
   expect(1);
   var _testCollection = new libs.TestCollection();
