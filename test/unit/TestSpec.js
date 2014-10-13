@@ -92,22 +92,36 @@ describe('Test', function () {
       expect(_test[0].get('status')).to.equal('failed');
     });
   });
+
+  describe('invoke/custom', function () {
+    var _test;
+    var spy;
+    var options;
+    beforeEach(function () {
+      var cb = function (quail) {};
+      spy = sinon.spy(cb);
+      quail.customCallback = spy;
+
+      options = {
+        'type': 'custom',
+        'callback': spy
+      };
+
+      _test = new quail.lib.Test('fakeLinkTest', options)
+    });
+
+    it('should create a callback', function () {
+      _test.invoke();
+      sinon.assert.calledWith(spy, quail, _test, quail.lib.Case);
+    });
+  });
 });
 
 /**
  * Test Class.
 
 test('Invoke/custom', function () {
-  expect(3);
-  var cb = function (quail) {
-    ok(quail, 'The custom callback was invoked');
-  };
-  __testQuail['customCallback'] = cb;
-  __testQuail.components.customCallback = cb;
-  var _test = new libs.Test('fakeLinkTest', {
-    'type': 'custom',
-    'callback': cb
-  });
+
   _test.invoke();
   _test = new libs.Test('fakeLinkTest', {
     'type': 'custom',
