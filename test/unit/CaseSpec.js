@@ -7,7 +7,7 @@ describe("Case", function() {
   });
   it('should be an instance of Case', function () {
     expect(_case instanceof quail.lib.Case).to.be.true;
-  })
+  });
   describe('get/set', function () {
     it('should retrieve attributes', function () {
       expect(_case.get('bird')).to.equal('sandpiper');

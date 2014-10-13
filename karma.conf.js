@@ -16,26 +16,18 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // Dependencies
-      {
-        pattern: 'bower_components/jquery/jquery.min.js',
-        watched: false
-      },
+      {pattern: 'bower_components/jquery/jquery.min.js', watched: false},
 
       // Fixtures
-      {
-        pattern: 'dist/tests.min.json',
-        watched: false,
-        included: false
-      },
-      {
-        pattern: 'dist/quail.jquery.min.js',
-        watched: false
-      },
+      {pattern: 'src/js/core.js'},
+      {pattern: 'src/js/components/*.js'},
+      {pattern: 'src/js/strings/*.js'},
+      {pattern: 'src/js/custom/*.js'},
+      {pattern: 'src/js/lib/*.js'},
+      {pattern: 'src/js/lib/wcag/*.js'},
 
-      // Tests
-      {
-        pattern: 'test/**/*Spec.js'
-      }
+      // Specs
+      {pattern: 'test/**/*Spec.js'},
     ],
 
 
