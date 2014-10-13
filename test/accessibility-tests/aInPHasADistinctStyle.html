@@ -25,6 +25,11 @@
 
 <div class="quail-test" data-expected="inapplicable"
      data-accessibility-test="aInPHasADistinctStyle">
+    <!-- No link here -->
+</div>
+
+<div class="quail-test" data-expected="inapplicable"
+     data-accessibility-test="aInPHasADistinctStyle">
     <p><a href="">
         A link
     </a></p>
@@ -129,16 +134,16 @@
     <!--The above is also true when it comes from
     native style changes -->
     <p>Some text
-        <strong><a href="/" style="text-decoration:underline">
+        <strong><a href="/">
             With a link
         </a></strong>,
-        <em><a href="/" style="text-decoration:underline">
+        <em><a href="/">
             With a link
         </a></em>,
-        <b><a href="/" style="text-decoration:underline">
+        <b><a href="/">
             With a link
         </a></b>,
-        <u><a href="/" style="text-decoration:underline">
+        <u><a href="/">
             With a link
         </a></u>
         inside it.</p>
