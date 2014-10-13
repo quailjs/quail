@@ -33,7 +33,6 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      'src/js/lib/phantom_evaluator.js'
     ],
 
 

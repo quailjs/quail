@@ -13,7 +13,8 @@
     "quail": true,
     "quailBuilderTests": true,
     "require": true,
-    "phantom": true
+    "phantom": true,
+    "console": true
   },
   "immed": true,
   "indent": 2,

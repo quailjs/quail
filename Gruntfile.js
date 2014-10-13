@@ -122,7 +122,19 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      files: ['Gruntfile.js', 'src/**/*.js']
+      project_env: [
+        'Gruntfile.js'
+      ],
+      browser_env: [
+        'src/js/components/*.js',
+        'src/js/custom/*.js',
+        'src/js/lib/*.js',
+        'src/js/strings/*.js',
+        'src/js/core.js'
+      ],
+      cli_env: [
+        'src/js/scripts/*.js'
+      ]
     },
     watch: {
       scripts: {
@@ -141,13 +153,6 @@ module.exports = function(grunt) {
           'buildGuideline',
           'uglify'
         ],
-        options: {
-          spawn: false
-        }
-      },
-      bin: {
-        files: ['src/js/quail'],
-        tasks: ['copy:dist'],
         options: {
           spawn: false
         }

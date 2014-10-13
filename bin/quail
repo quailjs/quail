@@ -17,12 +17,11 @@ program
   .parse(process.argv);
 
 var phantomjsExec = './node_modules/.bin/phantomjs';
-var phantomEvaluator = './src/js/lib/phantom_evaluator.js';
+var phantomEvaluator = './src/js/scripts/phantom_evaluator.js';
 
 var command = [phantomjsExec, phantomEvaluator, program.url, pwd].join(' ');
 shell.exec(command, {
   async:true
 }, function (code, output) {
-  console.log('code: ' + code);
-  console.log('output: ' + output);
+  shell.echo('code: ' + code);
 });
