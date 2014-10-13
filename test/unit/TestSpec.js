@@ -182,10 +182,6 @@ describe('Test', function () {
     var _testCollection;
 
     beforeEach(function () {
-
-    });
-
-    it('should group cases by HTML', function (done) {
       _testCollection = new quail.lib.TestCollection();
       _test = new quail.lib.Test('testCompleteTest', {
         'type': 'selector',
@@ -194,6 +190,9 @@ describe('Test', function () {
         },
         'scope': scope
       });
+    });
+
+    it('should group cases by HTML', function (done) {
       _testCollection.listenTo(_test, 'complete', function (eventName, thisTest, _case) {
         var casesByHtml = thisTest.groupCasesByHtml();
         expect(casesByHtml['<i class="unittest">fake italic tag</i>'].length).to.equal(10);
@@ -202,72 +201,106 @@ describe('Test', function () {
       _test.invoke();
     });
   });
-});
 
-/**
- * Test Class.
-test('getGuidelineCoverage', function () {
-  var sc = {
-    '1.1.1': {
-      'techniques': [
-        "F65",
-        "G74",
-        "H24"
-      ]
-    },
-    '1.4.3': {
-      'techniques': [
-        "G145"
-      ]
-    }
-  };
-  var g = {
-    'wcag': sc
-  };
-  var _test = new libs.Test('fakeLinkTest', {
-    'type': 'selector',
-    'guidelines': g,
-    'options': {
-      'selector': 'i.unittest',
-    }
+  describe('getGuidelineCoverage', function () {
+    it('should expose its guideline coverage', function () {
+      var sc = {
+        '1.1.1': {
+          'techniques': [
+            "F65",
+            "G74",
+            "H24"
+          ]
+        },
+        '1.4.3': {
+          'techniques': [
+            "G145"
+          ]
+        }
+      };
+      var g = {
+        'wcag': sc
+      };
+      var _test = new quail.lib.Test('fakeLinkTest', {
+        'type': 'selector',
+        'guidelines': g,
+        'options': {
+          'selector': 'i.unittest',
+        },
+        'scope': scope
+      });
+      var coverage = _test.getGuidelineCoverage('wcag');
+      expect(coverage).to.deep.equal(sc);
+    });
   });
-  var coverage = _test.getGuidelineCoverage('wcag');
-  deepEqual(coverage, sc);
+
+  describe('event dispatching', function () {
+
+    beforeEach(function () {
+      _testCollection = new quail.lib.TestCollection();
+    });
+
+    describe('resolve event', function () {
+
+      beforeEach(function () {
+        _test = new quail.lib.Test('testCompleteTest', {
+          'type': 'selector',
+          'options': {
+            'selector': 'b.unittest'
+          },
+          'scope': scope
+        });
+      });
+
+      it('should fire the resolved event', function (done) {
+        _testCollection.listenTo(_test, 'resolve', function (eventName, thisTest, _case) {
+          expect(eventName).to.equal('resolve');
+          done();
+        });
+        _test.invoke();
+      });
+    });
+
+    describe('complete event', function () {
+      var spy;
+      var callback;
+
+      beforeEach(function () {
+        _test = new quail.lib.Test('testCompleteTest', {
+          'type': 'selector',
+          'options': {
+            'selector': 'i.unittest'
+          },
+          'scope': scope
+        });
+      });
+
+      it('should fire the event when all test cases are complete', function (done) {
+        this.timeout(2500);
+        callback = function (eventName, thisTest) {
+          expect(thisTest.length).to.equal(10);
+          expect(eventName).to.equal('complete');
+          done();
+        };
+        spy = sinon.spy(callback);
+        // The complete event should only be invoked once.
+        _testCollection.listenTo(_test, 'complete', spy);
+        _test.invoke();
+      });
+
+      it('should fire the event when a test case times out', function (done) {
+        this.timeout(2500);
+        callback = function (eventName, thisTest) {
+          expect(thisTest.length).to.equal(11);
+          expect(eventName).to.equal('complete');
+          done();
+        };
+        spy = sinon.spy(callback);
+        // The complete event should only be invoked once.
+        _testCollection.listenTo(_test, 'complete', spy);
+        _test.add(new quail.lib.Case());
+        _test.invoke();
+      });
+    });
+  });
 });
-asyncTest('Event dispatching: resolved', function () {
-  expect(1);
-  var _testCollection = new libs.TestCollection();
-  var _test = new libs.Test('testCompleteTest', {
-    'type': 'selector',
-    'options': {
-      'selector': 'b.unittest'
-    }
-  });
-  _testCollection.listenTo(_test, 'resolve', function (eventName, thisTest, _case) {
-    ok(eventName === 'resolve', 'Test bubbles up Case resolve events');
-    start();
-  });
-  _test.invoke();
-});
-asyncTest('Event dispatching: complete', function () {
-  expect(2);
-  var count = 0;
-  var _testCollection = new libs.TestCollection();
-  // This selects 10 instances of this element.
-  var _test = new libs.Test('testCompleteTest', {
-    'type': 'selector',
-    'options': {
-      'selector': 'i.unittest'
-    }
-  });
-  // The complete event should only be invoked once.
-  _testCollection.listenTo(_test, 'complete', function (eventName, thisTest) {
-    equal(thisTest.length, 11, 'Eleven Cases resolved.');
-    ok(eventName === 'complete', 'Test dispatches a complete event when all Cases have resolved.');
-    start();
-  });
-  // Add a Case that will time out.
-  _test.add(new libs.Case());
-  _test.invoke();
-});
-*/
