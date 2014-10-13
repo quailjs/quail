@@ -11,7 +11,7 @@ describe('TestCollection', function () {
   });
 
   it('should be an instance of TestCollection', function () {
-    expect(_testCollection instanceof quail.lib.TestCollection).to.be.true;
+    expect(_testCollection).to.be.instanceof(quail.lib.TestCollection);
   });
 
   describe('set', function () {
@@ -20,7 +20,7 @@ describe('TestCollection', function () {
       var _test = _testCollection.set('charlie', {
         'reptile': 'iguana'
       });
-      expect(_test instanceof quail.lib.Test).to.be.true;
+      expect(_test).to.be.instanceof(quail.lib.Test);
     });
   });
 

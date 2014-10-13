@@ -28,7 +28,7 @@ describe('Test', function () {
   });
 
   it('should be an instance of Test', function () {
-    expect(_test instanceof quail.lib.Test).to.be.true;
+    expect(_test).to.be.instanceof(quail.lib.Test);
   });
 
   describe('Get/Set', function () {
@@ -64,9 +64,9 @@ describe('Test', function () {
     it('should create two Cases', function () {
       _test.invoke();
       expect(_test.length).to.equal(2);
-      expect(_test[0] instanceof quail.lib.Case).to.be.true;
+      expect(_test[0]).to.be.instanceof(quail.lib.Case);
       expect(_test[0].get('status')).to.equal('failed');
-      expect(_test[1] instanceof quail.lib.Case).to.be.true;
+      expect(_test[1]).to.be.instanceof(quail.lib.Case);
       expect(_test[1].get('status')).to.equal('failed');
     });
 
@@ -77,7 +77,7 @@ describe('Test', function () {
       _test.invoke();
 
       expect(_test.length).to.equal(1);
-      expect(_test[0] instanceof quail.lib.Case).to.be.true;
+      expect(_test[0]).to.be.instanceof(quail.lib.Case);
       expect(_test[0].get('status')).to.equal('passed');
     });
 
@@ -88,7 +88,7 @@ describe('Test', function () {
       _test.invoke();
 
       expect(_test.length).to.equal(1);
-      expect(_test[0] instanceof quail.lib.Case).to.be.true;
+      expect(_test[0]).to.be.instanceof(quail.lib.Case);
       expect(_test[0].get('status')).to.equal('failed');
     });
   });

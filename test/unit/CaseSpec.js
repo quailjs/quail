@@ -6,7 +6,7 @@ describe("Case", function() {
     });
   });
   it('should be an instance of Case', function () {
-    expect(_case instanceof quail.lib.Case).to.be.true;
+    expect(_case).to.be.instanceof(quail.lib.Case);
   });
   describe('get/set', function () {
     it('should retrieve attributes', function () {
