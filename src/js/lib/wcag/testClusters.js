@@ -42,8 +42,8 @@ quail.lib.wcag2.TestCluster = (function () {
    * @return {Array}        Array of HTML elements
    */
   function getCommonElements(tests) {
-    var common = [],
-    map = [];
+    var common = [];
+    var map = [];
 
     $.each(tests, function (i, test) {
       var elms = [];
@@ -157,8 +157,8 @@ quail.lib.wcag2.TestCluster = (function () {
    * @return {Array[Object]}         Array of Asserts
    */
   function getStackedAssertions(cluster, tests) {
-    var elms = getAllElements(tests),
-    asserts = createAssertionsForEachElement(elms, {
+    var elms = getAllElements(tests);
+    var asserts = createAssertionsForEachElement(elms, {
       testCase: cluster.id,
       outcome: { result: 'untested'}
     });
@@ -166,9 +166,9 @@ quail.lib.wcag2.TestCluster = (function () {
     // Iterate over all results to build the assert
     eachTestCase(tests, function (test, testCase) {
       // Look up the assert, if any
-      var newResult = testCase.get('status'),
-      getResultPriority = quail.lib.EarlAssertion.getResultPriority,
-      assert = asserts[elms.indexOf(
+      var newResult = testCase.get('status');
+      var getResultPriority = quail.lib.EarlAssertion.getResultPriority;
+      var assert = asserts[elms.indexOf(
         testCase.get('element')
       )];
 
@@ -189,68 +189,72 @@ quail.lib.wcag2.TestCluster = (function () {
   }
 
 
-  function constructor(config, testDefinitions) {
-    var cluster = $.extend({
+  function TestCluster(config, testDefinitions) {
+    $.extend(this, {
       id: config.tests.join('+')
     }, config);
 
-    cluster.tests = $.map(cluster.tests, function (test) {
+    this.tests = $.map(this.tests, function (test) {
       return testDefinitions[test];
     });
-
-    /**
-     * Filter the data array so it only contains results 
-     * from this cluster
-     * @param  {Array} data
-     * @return {Array}
-     */
-    cluster.filterDataToTests = function (data) {
-      var names = $.map(cluster.tests, function (test) {
-        return test.name;
-      }),
-      testData = [];
-
-      $.each(data, function (i, result) {
-        if (names.indexOf(result.get('name')) !== -1) {
-          testData.push(result);
-        }
-      });
-      return testData;
-    };
-
-    cluster.getResults = function (tests) {
-      var assertions, assertion;
-      tests = cluster.filterDataToTests(tests);
-
-      if (tests.length === 1 || cluster.type === 'combined') {
-        assertions = getCombinedAssertions(cluster, tests);
-
-      } else if (cluster.type === "stacking") {
-        assertions = getStackedAssertions(cluster, tests);
-
-      } else if (window) {
-        window.console.error(
-          "Unknown type for cluster " +cluster.id
-        );
-      }
-
-      // Return a default assert if none was defined
-      if (assertions) {
-        if (assertions.length === 0) {
-          assertion = new quail.lib.EarlAssertion({
-            testCase: cluster.id,
-            outcome: {
-              result: 'inapplicable'
-            }
-          }),
-          assertions.push(assertion);
-        }
-        return assertions;
-      }
-    };
-
-    return cluster;
   }
 
-  return constructor;
+
+  /**
+   * Filter the data array so it only contains results 
+   * from this cluster
+   * @param  {Array} data
+   * @return {Array}
+   */
+  TestCluster.prototype.filterDataToTests = function (data) {
+    var names = $.map(this.tests, function (test) {
+      return test.name;
+    });
+    var testData = [];
+
+    $.each(data, function (i, result) {
+      if (names.indexOf(result.get('name')) !== -1) {
+        testData.push(result);
+      }
+    });
+    return testData;
+  };
+
+  /**
+   * Get the results of this test cluster based on the tests provided for it
+   * @param  {object} tests As provided by Quail
+   * @return {object}       EARL assertions
+   */
+  TestCluster.prototype.getResults = function (tests) {
+    var assertions, assertion;
+    tests = this.filterDataToTests(tests);
+
+    if (tests.length === 1 || this.type === 'combined') {
+      assertions = getCombinedAssertions(this, tests);
+
+    } else if (this.type === "stacking") {
+      assertions = getStackedAssertions(this, tests);
+
+    } else if (window) {
+      window.console.error(
+        "Unknown type for cluster " + this.id
+      );
+    }
+
+    // Return a default assert if none was defined
+    if (assertions) {
+      if (assertions.length === 0) {
+        assertion = new quail.lib.EarlAssertion({
+          testCase: this.id,
+          outcome: {
+            result: 'inapplicable'
+          }
+        }),
+        assertions.push(assertion);
+      }
+      return assertions;
+    }
+  };
+
+  return TestCluster;
 }());

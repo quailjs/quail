@@ -2,10 +2,9 @@ quail.lib.wcag2.Criterion = (function () {
 
   // Provide default values for the assert objects
   function aggregateParts(parts, defaultResult) {
-    var getResultPriority = quail.lib.EarlAssertion.getResultPriority,
-    outcome = {
-      result: defaultResult
-    };
+    var getResultPriority = quail.lib.EarlAssertion.getResultPriority;
+    var outcome = {result: defaultResult};
+
     $.each(parts, function (i, part) {
       if (getResultPriority(outcome) < getResultPriority(part)) {
         outcome.result = part.outcome.result;
@@ -16,10 +15,10 @@ quail.lib.wcag2.Criterion = (function () {
 
 
   function constructor (data, testDefinitions) {
-    var testClusters = [],
-    criterion = {},
-    defaultResult = data['default'] || 'untested',
-    id = data.id;
+    var testClusters = [];
+    var criterion = {};
+    var defaultResult = data['default'] || 'untested';
+    var id = data.id;
 
     // Create a testCluster object for each cluster (if any)
     if ($.isArray(data.testClusters)) {
@@ -32,8 +31,8 @@ quail.lib.wcag2.Criterion = (function () {
 
 
     criterion.getResult = function (data) {
-      var result,
-      parts = [];
+      var result;
+      var parts = [];
 
       $.each(testClusters, function (i, cluster) {
         var part = cluster.getResults(data);

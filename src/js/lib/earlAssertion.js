@@ -4,24 +4,7 @@ quail.lib.EarlAssertion = (function () {
     'untested', 'inapplicable', 'passed',
     'cantTell', 'failed'
   ];
-
-  if (window && window.location) {
-    pageUrl = window.location.href;
-  }
-
-  /**
-   * Create a new earl assert object
-   * @param {object} base An object on which the values of Assert are based
-   */
-  function Assertion(base) {
-    var earlAssertion = $.extend({}, base, Assertion.defaultAssertion);
-
-    earlAssertion.outcome = $.extend({}, earlAssertion.outcome);
-
-    return earlAssertion;
-  }
-
-  Assertion.defaultAssertion = {
+  var defaultAssertion = {
     type: 'assertion',
     subject: pageUrl,
     assertedBy: {
@@ -30,6 +13,22 @@ quail.lib.EarlAssertion = (function () {
     },
     mode: 'automated'
   };
+
+
+  if (window && window.location) {
+    pageUrl = window.location.href;
+  }
+
+  /**
+   * Create a new earl assert object
+   * @param {object} base Properties from this object are added to the Assertion
+   *                      and override the default.
+   */
+  function Assertion(base) {
+    $.extend(this, base, defaultAssertion);
+    this.outcome = $.extend({}, this.outcome);
+  }
+
 
   /**
    * Return the priorty index of the result
