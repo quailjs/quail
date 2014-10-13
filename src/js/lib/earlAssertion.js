@@ -14,7 +14,7 @@ quail.lib.EarlAssertion = (function () {
    * @param {object} base An object on which the values of Assert are based
    */
   function Assertion(base) {
-    var earlAssertion = $.extend({}, base, Assertion.defaultAssert);
+    var earlAssertion = $.extend({}, base, Assertion.defaultAssertion);
 
     earlAssertion.outcome = $.extend({}, earlAssertion.outcome);
 
