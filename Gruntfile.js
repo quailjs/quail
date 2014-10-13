@@ -105,10 +105,15 @@ module.exports = function(grunt) {
       }
     },
     qunit: {
-      all: ['test/unit/*', 'test/quail.html'],
-      a11ytests: ['test/quail.html'],
-      single: ['test/' + grunt.option('file')],
-      unit: ['test/unit/*']
+      all: ['test/quail.html'],
+      single: ['test/' + grunt.option('file')]
+    },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        singleRun: true,
+        browsers: ['PhantomJS']
+      }
     },
     jshint: {
       options: {
@@ -201,6 +206,7 @@ module.exports = function(grunt) {
     }
   });
   grunt.loadTasks('tasks');
+  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -211,16 +217,16 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-bower-task');
 
   // By default, just run tests
-  grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all']);
+  grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all', 'karma']);
 
   // Build task.
   grunt.registerTask('build', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'uglify']);
 
   // Release task.
-  grunt.registerTask('release', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'qunit:all', 'buildGuideline', 'compressTestsJson', 'uglify', 'gh-pages']);
+  grunt.registerTask('release', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'qunit:all', 'karma', 'buildGuideline', 'compressTestsJson', 'uglify', 'gh-pages']);
 
   // Test task.
-  grunt.registerTask('test', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all']);
+  grunt.registerTask('test', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all', 'karma']);
 
   grunt.registerTask('publish', ['gh-pages']);
 };
