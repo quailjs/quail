@@ -122,7 +122,7 @@ describe('Test', function () {
     });
   });
 
-  describe('synchronous methods', function () {
+  describe('methods', function () {
     var _test;
 
     beforeEach(function () {
