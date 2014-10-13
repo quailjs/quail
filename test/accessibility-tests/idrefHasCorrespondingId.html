@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <title>idrefHasCorrespondingId</title>
+</head>
+<body>
+
+  <div class="quail-test" data-expected="fail" 
+  data-accessibility-test="idrefHasCorrespondingId" 
+  title="Labels with for attributes pointing to a not existing ID should fail">
+    <label for="non-existing-id"
+    class="quail-failed-element"></label>
+  </div>
+
+  <div class="quail-test" data-expected="fail" 
+  data-accessibility-test="idrefHasCorrespondingId" 
+  title="Elements with aria-activedescendant attributes pointing to a not existing ID should fail">
+     <input type="text" aria-activedescendant="nonexisting"
+     class="quail-failed-element" />
+  </div>
+
+  <div class="quail-test" data-expected="pass" 
+  data-accessibility-test="idrefHasCorrespondingId" 
+  title="Labels with for attributes pointing to to an existing ID pass">
+    <label for="myInput"></label>
+    <input id="myInput" />
+  </div>
+
+  <div class="quail-test" data-expected="pass" 
+  data-accessibility-test="idrefHasCorrespondingId" 
+  title="Elements with aria-activedescendant attributes pointing to an existing ID pass">
+     <input type="text" aria-activedescendant="myDescendant" />
+     <div id="myDescendant"></div>
+  </div>
+
+  <script src="../quail-testrunner.js"></script>
+</body>
+</html>
