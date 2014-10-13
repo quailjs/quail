@@ -2116,7 +2116,7 @@ headersUseToMarkSections:
     - "header"
     - "content"
   callback: "headersUseToMarkSections"
-idrefHasCorrespondingId:
+idRefHasCorrespondingId:
   type: "custom"
   testability: 1
   title:
@@ -2133,8 +2133,8 @@ idrefHasCorrespondingId:
       4.1.1:
         techniques:
           - "F17"
-  callback: "idrefHasCorrespondingId"
-idrefsHasCorrespondingId:
+  callback: "idRefHasCorrespondingId"
+idRefsHasCorrespondingId:
   type: "custom"
   testability: 1
   title:
@@ -2151,7 +2151,7 @@ idrefsHasCorrespondingId:
       4.1.1:
         techniques:
           - "F17"
-  callback: "idrefsHasCorrespondingId"
+  callback: "idRefsHasCorrespondingId"
 iIsNotUsed:
   type: "selector"
   testability: 1

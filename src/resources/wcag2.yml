@@ -318,10 +318,10 @@
       failed: "failed"
       tests: 
         - idRefHasCorrespondingId
-    # - passed: "passed"  # Test not ready
+    # - passed: "passed"
     #   failed: "failed"
     #   tests: 
-    #     - idRefsHasCorrespondingId
+    #     - idrefsHasCorrespondingId
     # - passed: "passed"  # Test not ready
     #   failed: "failed"
     #   tests: 
