@@ -8,6 +8,24 @@
   <p>Text with a short date of 12/04/2014, 2/1/14, 12-04-12, 12.04.12.</p>
 </div>
 
+<div class="quail-test" data-expected="fail" data-accessibility-test="KINGUseLongDateFormat">
+  <ul>
+	<li>This list item contains short date: 12/04/2014</li>
+  </ul>
+</div>
+
+<div class="quail-test" data-expected="fail" data-accessibility-test="KINGUseLongDateFormat">
+  <table>
+	<tbody>
+	  <td>12/04/2014</td>
+	</tbody>
+  </table>
+</div>
+
+<div class="quail-test" data-expected="fail" data-accessibility-test="KINGUseLongDateFormat">
+  <h1>This headline has bad date format 12.4.2014.</h1>
+</div>
+
 <div class="quail-test" data-expected="pass" data-accessibility-test="KINGUseLongDateFormat">
   <p>
 	Date nested in an unsupported tag
@@ -19,6 +37,11 @@
   <p>Text with long date of 12 may 2014.</p>
 </div>
 
+<div class="quail-test" data-expected="pass" data-accessibility-test="KINGUseLongDateFormat">
+  <ul>
+	<li>Text with long date of 12 may 2014</li>
+  </ul>
+</div>
 
 <script src="../quail-testrunner.js"></script>	</body>
 </html>
