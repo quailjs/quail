@@ -122,7 +122,7 @@ describe('Test', function () {
     });
   });
 
-  describe('methods', function () {
+  describe('synchronous methods', function () {
     var _test;
 
     beforeEach(function () {
@@ -176,26 +176,36 @@ describe('Test', function () {
       });
     });
   });
+
+  describe('groupCasesByHtml', function () {
+    var _test;
+    var _testCollection;
+
+    beforeEach(function () {
+
+    });
+
+    it('should group cases by HTML', function (done) {
+      _testCollection = new quail.lib.TestCollection();
+      _test = new quail.lib.Test('testCompleteTest', {
+        'type': 'selector',
+        'options': {
+          'selector': 'i.unittest'
+        },
+        'scope': scope
+      });
+      _testCollection.listenTo(_test, 'complete', function (eventName, thisTest, _case) {
+        var casesByHtml = thisTest.groupCasesByHtml();
+        expect(casesByHtml['<i class="unittest">fake italic tag</i>'].length).to.equal(10);
+        done();
+      });
+      _test.invoke();
+    });
+  });
 });
 
 /**
  * Test Class.
-asyncTest('groupCasesByHtml', function () {
-  expect(1);
-  var _testCollection = new libs.TestCollection();
-  var _test = new libs.Test('testCompleteTest', {
-    'type': 'selector',
-    'options': {
-      'selector': 'i.unittest'
-    }
-  });
-  _testCollection.listenTo(_test, 'complete', function (eventName, thisTest, _case) {
-    var casesByHtml = thisTest.groupCasesByHtml();
-    equal(casesByHtml['<i class="unittest">fake italic tag</i>'].length, 10, 'Cases are grouped by html');
-    start();
-  });
-  _test.invoke();
-});
 test('getGuidelineCoverage', function () {
   var sc = {
     '1.1.1': {
