@@ -11,7 +11,10 @@
     "guessLanguage": true,
     "process": true,
     "quail": true,
-    "quailBuilderTests": true
+    "quailBuilderTests": true,
+    "require": true,
+    "phantom": true,
+    "console": true
   },
   "immed": true,
   "indent": 2,

@@ -25,6 +25,49 @@ grunt build
 
 This does two things: it downloads libraries (like qunit and jQuery) into the `/lib` directory, and builds quail (both a development version and a minified, production version) into the `/dist` directory.
 
+Command line
+-----------
+
+Quail has an executable file that will run the test suite against the a specific URL.
+
+To use this executable locally, you will need to add it to your path. In your ```.bashrc``` (or equivalent) add something like this.
+
+```
+export PATH=~/Code/quailjs/quail/bin:$PATH
+```
+
+Quit the editor and source the bash file.
+
+```
+source ~/.bashrc .
+```
+
+The ```quail``` command should be exectuable. If you run ```which quail```, you should see that path to the executable displayed. If it wasn't added to your path, you can also run the script directly:
+
+```
+node ./bin/quail
+```
+
+If it is not, try running the following:
+
+```
+grunt chmod
+```
+
+Which will attempt to set the permissions of this file to 711, an executable. Try running this from the Quail project directory.
+
+```
+sudo chmod 711 ./bin/quail
+```
+
+Once the command is set up, you can run the following to test any addressable web page.
+
+```
+quail --url=http://some.domain.com/page.html
+```
+
+The script will run and write the output to ```./analyses```
+
 Documentation
 -------------
 
