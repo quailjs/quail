@@ -161,14 +161,6 @@ module.exports = function(grunt) {
         src: ['bin/*']
       }
     },
-    chmod: {
-      bin: {
-        options: {
-          mode: '711'
-        },
-        src: ['bin/*']
-      }
-    },
     buildGuideline: {
       dist: {
         files: [

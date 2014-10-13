@@ -3,14 +3,45 @@ var page = require('webpage').create();
 var fs = require('fs');
 var dir = system.args[2];
 var address;
+// Stub out console to prevent errors.
+var log = window.console || {
+  log: function () {}
+};
+
+/**
+ * Logs the reason for exit; exits Phantom.
+ */
+function quitPhantom (reason) {
+  log('Exit' + (reason && (': ' + reason) || ''));
+  phantom.exit();
+}
+
+/**
+ * Determines the length of an object.
+ *
+ * @param object obj
+ *   The object whose size will be determined.
+ *
+ * @return number
+ *   The size of the object determined by the number of keys.
+ */
+function size (obj) {
+  var s = 0, key;
+  for (key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      s++;
+    }
+  }
+  return s;
+}
 
 page.onConsoleMessage = function (msg) {
-  console.log(msg);
+  log(msg);
 };
 
 // Catch script evaluation errors; quit Phantom.
 page.onError = function (msg, trace) {
-  console.log(JSON.stringify([
+  log(JSON.stringify([
     'Error on the evaluated page',
     msg,
     trace
@@ -20,14 +51,14 @@ page.onError = function (msg, trace) {
 page.settings.resourceTimeout = 5000; // 5 seconds
 
 page.onResourceRequested = function (request) {
-  console.log(JSON.stringify([
+  log(JSON.stringify([
     'Requested (' + request.method + ')',
     request.url
   ]));
 };
 
 page.onResourceReceived = function(response) {
-  console.log(JSON.stringify([
+  log(JSON.stringify([
     'Received',
     response.status,
     response.url
@@ -35,7 +66,7 @@ page.onResourceReceived = function(response) {
 };
 
 page.onResourceTimeout = function (error) {
-  console.log(JSON.stringify([
+  log(JSON.stringify([
     'Resource timeout',
     error.errorCode, // it'll probably be 408
     error.errorString, // it'll probably be 'Network timeout on resource'
@@ -44,7 +75,7 @@ page.onResourceTimeout = function (error) {
 };
 
 page.onResourceError = function (error) {
-  console.log(JSON.stringify([
+  log(JSON.stringify([
     'Resource error',
     'Error code: ' + error.errorCode,
     error.errorString,
@@ -54,7 +85,7 @@ page.onResourceError = function (error) {
 
 // This is the last chance to catch catestrophic errors.
 phantom.onError = function(msg, trace) {
-  console.log(JSON.stringify([
+  log(JSON.stringify([
     'Error in the phantom runner',
     msg,
     trace
@@ -63,12 +94,11 @@ phantom.onError = function(msg, trace) {
 
 // Open the page at the provided URL in Phantom.
 address = system.args[1];
-console.log('address: ' + address);
 
 var distPath = dir + '/dist'; // ./dist
 
 // var guidelinedata = fs.read(distPath + '/guideline.json');
-var guidelines = {} // JSON.parse(guidelinedata);
+var guidelines = {}; // JSON.parse(guidelinedata);
 
 var testsdata = fs.read(distPath + '/tests.json');
 // Save the testsdata in the array all tests.
@@ -109,47 +139,49 @@ var start = (new Date()).getTime();
 // The callback function reachable from the page.evaluate* methods.
 page.onCallback = function(action, data) {
   switch (action) {
-    // Len is the number of times we expect to log data.
-    case 'setCounter':
-      len = data;
-      break;
-    case 'writeData':
-      --len;
-      // Store all the keys in the object to an output object.
-      data = JSON.parse(data);
-      if (typeof data === 'object') {
-        for (var key in data) {
-          // Tests and Success Criteria are situated under their own keys.
-          if (key === 'tests' || key === 'successCriteria') {
-            if (!output[key]) {
-              output[key] = {};
-            }
-            for (var name in data[key]) {
+  // Len is the number of times we expect to log data.
+  case 'setCounter':
+    len = data;
+    break;
+  case 'writeData':
+    --len;
+    // Store all the keys in the object to an output object.
+    data = JSON.parse(data);
+    if (typeof data === 'object') {
+      for (var key in data) {
+        // Tests and Success Criteria are situated under their own keys.
+        if (key === 'tests' || key === 'successCriteria') {
+          if (!output[key]) {
+            output[key] = {};
+          }
+          for (var name in data[key]) {
+            if (data[key].hasOwnProperty(name)) {
               output[key][name] = data[key][name];
             }
           }
-          else {
-            output[key] = data[key];
-          }
+        }
+        else {
+          output[key] = data[key];
         }
       }
-      // All the tests have completed.
-      if (len === 0) {
-        console.log('Elapsed time: ' + ((new Date()).getTime() - start) / 1000 + ' seconds');
-        console.log('Cases found: ' + (output.stats && output.stats.cases || 0));
-        var out = JSON.stringify(output);
-        stream.write(out);
-        // Also write the output to the console.
-        // console.log(out);
-        stream.close();
-        quitPhantom('Testing complete');
-      }
-      break;
-    case 'quit':
-      quitPhantom(data);
-      break;
-    default:
-      break;
+    }
+    // All the tests have completed.
+    if (len === 0) {
+      log('Elapsed time: ' + ((new Date()).getTime() - start) / 1000 + ' seconds');
+      log('Cases found: ' + (output.stats && output.stats.cases || 0));
+      var out = JSON.stringify(output);
+      stream.write(out);
+      // Also write the output to the console.
+      // log(out);
+      stream.close();
+      quitPhantom('Testing complete');
+    }
+    break;
+  case 'quit':
+    quitPhantom(data);
+    break;
+  default:
+    break;
   }
 };
 
@@ -158,8 +190,9 @@ page.open(address);
 // Decorate the page once the HTML has been loaded.
 // This is where we run the tests.
 page.onLoadFinished = function (status) {
+  var callPhantom = window && window.callPhantom || function () {};
   if (status === 'success') {
-    console.log('Page opened successfully: ' + address);
+    log('Page opened successfully: ' + address);
     page.injectJs(distPath + '/vendor/node_modules/jquery/dist/jquery.min.js');
     // page.injectJs('js/jquery.hasEventListener-2.0.4.js');
     page.injectJs(distPath + '/quail.jquery.js');
@@ -170,10 +203,9 @@ page.onLoadFinished = function (status) {
     // incorporate outside scopes are not possible.
     try {
       page.evaluate(function (tests, size) {
-        var callPhantom = window && window.callPhantom || function () {};
         // Tell the client that we're starting the test run.
         var scLen = size(quail.guidelines.wcag.successCriteria);
-        console.log('Beginning evaluation of ' + size(tests) + ' tests and ' + scLen + ' Success Criteria.');
+        log('Beginning evaluation of ' + size(tests) + ' tests and ' + scLen + ' Success Criteria.');
         // Determine how many data writes we'll make.
         callPhantom('setCounter', scLen + 1); // +1 because we attempt a data write once for all tests on testCollectionComplete
         // Basic output structure attributes.
@@ -212,25 +244,24 @@ page.onLoadFinished = function (status) {
             output.stats.cases++;
           },
           // Called when all the Cases in a Test are resolved.
-          testComplete: function (eventName, test) {
-            // console.log('Finished testing ' + test.get('name') + '.');
+          testComplete: function () {
+            // log('Finished testing ' + test.get('name') + '.');
             // Increment the tests count.
             output.stats.tests++;
           },
           // Called when all the Tests in a TestCollection are completed.
-          testCollectionComplete: function (eventName, testCollection) {
+          testCollectionComplete: function () {
             // Push the results of the test out to the Phantom listener.
-            console.log('The test collection has been evaluated.');
+            log('The test collection has been evaluated.');
             callPhantom('writeData', JSON.stringify(output));
           },
-          successCriteriaEvaluated : function (eventName, successCriteria, testCollection) {
+          successCriteriaEvaluated : function (eventName, successCriteria) {
             var name = successCriteria.get('name');
             var status = successCriteria.get('status');
-            var totals = successCriteria.get('totals');
+            // var totals = successCriteria.get('totals');
             var output = {
               successCriteria: {}
             };
-            var result;
             // Get some stringifyable data from the results.
             var looper = function (index, _case) {
               output.successCriteria[name][result].push({
@@ -248,7 +279,7 @@ page.onLoadFinished = function (status) {
             else {
               output.successCriteria[name] = {};
               var results = successCriteria.get('results');
-              for (result in results) {
+              for (var result in results) {
                 if (results.hasOwnProperty(result)) {
                   output.successCriteria[name][result] = [];
                   // Go through each case for this result and get its selector and HTML.
@@ -259,7 +290,7 @@ page.onLoadFinished = function (status) {
               output.successCriteria[name]['totals'] = successCriteria.get('totals');
             }
             // Echo
-            // console.log('Evaluated: ' + name, 'conclusion: ' + status, 'totals: ' + JSON.stringify(totals));
+            // log('Evaluated: ' + name, 'conclusion: ' + status, 'totals: ' + JSON.stringify(totals));
             // Attempt to write out the data.
             callPhantom('writeData', JSON.stringify(output));
           }
@@ -274,30 +305,3 @@ page.onLoadFinished = function (status) {
     callPhantom('quit', 'Page failed to load');
   }
 };
-
-/**
- * Logs the reason for exit; exits Phantom.
- */
-function quitPhantom (reason) {
-  console.log('Exit' + (reason && (': ' + reason) || ''));
-  phantom.exit();
-}
-
-/**
- * Determines the length of an object.
- *
- * @param object obj
- *   The object whose size will be determined.
- *
- * @return number
- *   The size of the object determined by the number of keys.
- */
-function size (obj) {
-  var s = 0, key;
-  for (key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      s++;
-    }
-  }
-  return s;
-}
