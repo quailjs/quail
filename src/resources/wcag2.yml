@@ -135,11 +135,12 @@
 1.4.1:
   id: "wcag20:visual-audio-contrast-without-color"
   level: "wcag20:level_a"
+  default: "cantTell"
   testClusters:
-    # - passed: "passed" # Test doesn't yet exist
-    #   failed: "failed"
-    #   tests: 
-    #     - aInPhasADestinctStyle
+    - passed: "passed"
+      failed: "failed"
+      tests: 
+        - aInPHasADistinctStyle
 1.4.2:
   id: "wcag20:visual-audio-contrast-dis-audio"
   level: "wcag20:level_a"
@@ -151,10 +152,6 @@
       failed: failed
       tests:
         - cssTextHasContrast
-    # - passed: "passed" # Test doesn't yet exist
-    #   failed: "failed"
-    #   tests: 
-    #     - foreAndBackgroundAreDefinedTogether
 1.4.4:
   id: "wcag20:visual-audio-contrast-scale"
   level: "wcag20:level_aa"
@@ -215,11 +212,12 @@
 2.4.4:
   id: "wcag20:navigation-mechanisms-refs"
   level: "wcag20:level_a"
+  # default: "cantTell"
   testClusters:
     # - passed: "passed" # Test doesn't yet exist
     #   failed: "failed"
     #   tests: 
-    #     - linkHaveAUniqueContext
+    #     - linkHasAUniqueContext
 2.4.5:
   id: "wcag20:navigation-mechanisms-mult-loc"
   level: "wcag20:level_aa"
@@ -318,10 +316,10 @@
       failed: "failed"
       tests: 
         - idRefHasCorrespondingId
-    # - passed: "passed"
-    #   failed: "failed"
-    #   tests: 
-    #     - idrefsHasCorrespondingId
+    - passed: "passed"
+      failed: "failed"
+      tests: 
+        - idrefsHasCorrespondingId
     # - passed: "passed"  # Test not ready
     #   failed: "failed"
     #   tests: 
@@ -404,10 +402,10 @@
       failed: "failed"
       tests: 
         - aMustContainText
-    # - passed: "passed" # this test should be fixed
-    #   failed: "failed"
-    #   tests: 
-    #     - buttonHasValue
+    - passed: "passed"
+      failed: "failed"
+      tests: 
+        - buttonHasName
     # - passed: "passed" # This test doesn't exist yet
     #   failed: "failed"
     #   tests: 

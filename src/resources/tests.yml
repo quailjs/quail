@@ -2134,7 +2134,7 @@ idRefHasCorrespondingId:
         techniques:
           - "F17"
   callback: "idRefHasCorrespondingId"
-idRefsHasCorrespondingId:
+idrefsHasCorrespondingId:
   type: "custom"
   testability: 1
   title:
@@ -2151,7 +2151,7 @@ idRefsHasCorrespondingId:
       4.1.1:
         techniques:
           - "F17"
-  callback: "idRefsHasCorrespondingId"
+  callback: "idrefsHasCorrespondingId"
 iIsNotUsed:
   type: "selector"
   testability: 1
