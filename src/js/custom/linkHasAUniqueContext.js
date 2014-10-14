@@ -83,6 +83,9 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
         //Remove comments before testing
         clean($(this).closest('.quail-test')[0]);
 
+        /**
+         * todo: Variable below must be part of the failed test, but conflicts with the passed test. So have to find a way to integrate
+         */
         var foundElementWithSameText = otherElementsWithSameText($(this));
         window.console.log(foundElementWithSameText);
 
