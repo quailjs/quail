@@ -1,12 +1,70 @@
 quail.linkHasAUniqueContext=function(quail, test, Case){
 
+  /**
+   * Function for just testing the elements text, without checking text of children
+   * @returns {*|jQuery}
+   */
+  jQuery.fn.getElementText=function(){
+    return $(this).clone()
+      .children()
+      .remove()
+      .end()
+      .text();
+  };
+
+  function clean(node){
+    for (var n=0; n < node.childNodes.length; n++) {
+      var child=node.childNodes[n];
+      if (child.nodeType === 8) {
+        node.removeChild(child);
+        n--;
+      }
+      else if (child.nodeType === 1) {
+        clean(child);
+      }
+    }
+  }
+
+  function parentIsNativeStyle(parent){
+    var nativeStyles=['b', 'strong', 'i', 'em', 'u'];
+    var result=false;
+
+    $.each(nativeStyles, function(index, item){
+      if (parent.is(item)) {
+        result=true;
+      }
+    });
+
+    return result;
+  }
+
+  function hasTableHeaderContext(element){
+
+    var $td=element.closest('td');
+    var result=false;
+    var $th=$td.closest('table').find('th').eq($td.index());
+    var uniqueHeader=$td.attr('headers');
+    var linkedHeader=element.closest('table').find('th#' + uniqueHeader + ',td#' + uniqueHeader);
+
+    if ($th.length === 0) {
+      $th=$td.prev().is('th') ? $td.prev() : false;
+    }
+
+    if ($th.length > 0 && $th.text() !== "" && $th.text() !== element.text()) {
+      result=true;
+    }
+
+    if (uniqueHeader && linkedHeader.length > 0 && linkedHeader.text() !== "" && linkedHeader.text() !== element.text()) {
+      result=true;
+    }
+    return result;
+  }
+
   test.get('$scope').each(function(){
 
     var testableElements=$(this).find('a');
 
-
     if (testableElements.length === 0) {
-
       var _case=Case({
         element: this,
         status: 'inapplicable',
@@ -22,11 +80,25 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
         });
         test.add(_case);
 
+        //Remove comments before testing
+        clean($(this).closest('.quail-test')[0]);
+
+        var foundElementWithSameText = otherElementsWithSameText($(this));
+        window.console.log(foundElementWithSameText);
+
+        if(($(this).parent().getElementText().trim() !== "" && $(this).parent().getElementText().trim() === $(this).text()) ||
+          (parentIsNativeStyle($(this).parent()) === true && $(this).parent().parent().getElementText().trim() !== "" && $(this).parent().parent().text() === $(this).text())){
+          _case.set({
+            'status': 'failed'
+          });
+          return;
+        }
+
         if (
+          hasTableHeaderContext($(this)) ||
           ($(this).find('img').length > 0 && $(this).find('img').attr('alt') !== $(this).text()) ||
-          ($(this).attr('title') && $(this).attr('title') !== $(this).text()) ||
-          ($(this).parent().text() !== "" && $(this).parent().text() !== $(this).text()) ||
-          !otherElementsWithSameText($(this))
+          ($(this).attr('title') !== undefined && $(this).attr('title') !== $(this).text()) ||
+          !$(this).prev().is('br')
           ) {
           _case.set({
             'status': 'passed'
@@ -34,7 +106,7 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
           return;
         } else {
           _case.set({
-            'status': 'false'
+            'status': 'failed'
           });
           return;
         }
@@ -42,22 +114,19 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
       });
     }
   });
-
   function otherElementsWithSameText(element){
 
-    var result = true;
+    var result=false;
 
     element.parent().find('a').each(function(index, aElement){
-
       if (element.is($(aElement))) {
-        result = true;
-        return;
+        result=false;
       }
 
-      if(similarStrings(element.text(), $(aElement).text()) > 0.4){
-        result = false;
-      }else{
-        result = true;
+      if (similarStrings(element.text(), $(aElement).text()) > 0.4) {
+        result=true;
+      } else {
+        result=false;
       }
     });
 
@@ -108,4 +177,5 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
     }
     return pairsArray;
   }
-};
+}
+;
