@@ -25,7 +25,7 @@ quail.lib.wcag2 = (function () {
 
       // Setup quail given the tests described in the json files
       .done(function (wcag2Call, testsCall) {
-        startWCAG20Quail(options, wcag2Call, testsCall);
+        startWCAG20Quail(options, wcag2Call[0], testsCall[0]);
       });
     }
   }
@@ -34,9 +34,9 @@ quail.lib.wcag2 = (function () {
     var criteria, accessibilityTests, knownTests;
     var allTests = [];
 
-    criteria = $.map(wcag2Call[0], function (critData) {
+    criteria = $.map(wcag2Call, function (critData) {
       return new quail.lib.wcag2.Criterion(
-        critData, testsCall[0]);
+        critData, testsCall);
     });
 
     // Create the accessibiliyTests object, based on the
