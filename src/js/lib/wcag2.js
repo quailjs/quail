@@ -12,6 +12,7 @@ quail.lib.wcag2 = (function () {
     // Load the required json files
     $.when(
       $.ajax(options.jsonPath + '/wcag2.json', ajaxOpt),
+      $.ajax(options.jsonPath + '/preconditions.json', ajaxOpt),
       $.ajax(options.jsonPath + '/tests.json', ajaxOpt))
 
     // Setup quail given the tests described in the json files

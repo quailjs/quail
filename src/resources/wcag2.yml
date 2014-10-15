@@ -30,6 +30,10 @@
 1.2.1:
   id: "wcag20:media-equiv-av-only-alt"
   level: "wcag20:level_a"
+  preconditions:
+    - "videoMayBePresent"
+    - "audioMayBePresent"
+    - "animatedGifMayBePresent"
 1.2.2:
   id: "wcag20:media-equiv-captions"
   level: "wcag20:level_a"
@@ -41,12 +45,18 @@
 1.2.3:
   id: "wcag20:media-equiv-audio-desc"
   level: "wcag20:level_a"
+  preconditions:
+    - "videoMayBePresent"
 1.2.4:
   id: "wcag20:media-equiv-real-time-captions"
   level: "wcag20:level_aa"
+  preconditions:
+    - "videoMayBePresent"
 1.2.5:
   id: "wcag20:media-equiv-audio-desc-only"
   level: "wcag20:level_aa"
+  preconditions:
+    - "videoMayBePresent"
 1.2.6:
   id: "wcag20:media-equiv-sign"
   level: "wcag20:level_aaa"
@@ -144,6 +154,9 @@
 1.4.2:
   id: "wcag20:visual-audio-contrast-dis-audio"
   level: "wcag20:level_a"
+  preconditions:
+    - "videoMayBePresent"
+    - "audioMayBePresent"
 1.4.3:
   id: "wcag20:visual-audio-contrast-contrast"
   level: "wcag20:level_aa"
@@ -284,15 +297,21 @@
 3.3.1:
   id: "wcag20:minimize-error-identified"
   level: "wcag20:level_a"
+  preconditions:
+    - "userInputMayBeRequired"
 3.3.2:
   id: "wcag20:minimize-error-cues"
   level: "wcag20:level_a"
 3.3.3:
   id: "wcag20:minimize-error-suggestions"
   level: "wcag20:level_aa"
+  preconditions:
+        - "userInputMayBeRequired"
 3.3.4:
   id: "wcag20:minimize-error-reversible"
   level: "wcag20:level_aa"
+  preconditions:
+    - "userInputMayBeRequired"
 3.3.5:
   id: "wcag20:minimize-error-context-help"
   level: "wcag20:level_aaa"

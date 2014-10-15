@@ -1,0 +1,56 @@
+videoMayBePresent:
+  type: "precondition"
+  testability: 1
+  title:
+    en: "Video or object uses a link that points to a file with a video extension"
+    nl: "Video of object met een link naar een bestand met een video extensie"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "video"
+  callback: "videoMayBePresent"
+audioMayBePresent:
+  type: "precondition"
+  testability: 1
+  title:
+    en: "Audio or object uses a link that points to a file with a video extension"
+    nl: "Audio of object met een link naar een bestand met een video extensie"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "audio"
+  callback: "audioMayBePresent"
+animatedGifMayBePresent:
+  type: "precondition"
+  testability: 1
+  title:
+    en: "Test if a .gif is used on the page. Test if the .gif contains more then one frame"
+    nl: "Test of een .gif afbeelding gebruikt is op de pagina. Test of het .gif bestand uit meer dan één frame bestaat"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "gif"
+  callback: "animatedGifMayBePresent"
+userInputMayBeRequired:
+  type: "precondition"
+  testability: 1
+  title:
+    en: "Test if user input is required"
+    nl: "Test of er invoervelden zijn"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "form"
+    - "input"
+  callback: "userInputMayBeRequired"
