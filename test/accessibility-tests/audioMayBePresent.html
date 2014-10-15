@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>audioMayBePresent</title>
+  </head>
+  <body>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="audioMayBePresent">
+      <!-- no video element present -->
+    </div>
+
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="audioMayBePresent">
+      <audio controls>
+        <source src="horse.ogg" type="audio/ogg">
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="audioMayBePresent">
+      <object>
+        <param name="autostart" value="true">
+        <param name="src" value="horse.ogg">
+        <param name="autoplay" value="true">
+        <param name="controller" value="true">
+        <embed src="horse.ogg" controller="true" autoplay="true" autostart="True" type="audio/ogg" />
+      </object>
+    </div>
+
+    <script src="../quail-testrunner.js"></script>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 videoMayBePresent:
-  type: "precondition"
+  type: "custom"
   testability: 1
   title:
     en: "Video or object uses a link that points to a file with a video extension"
@@ -13,7 +13,7 @@ videoMayBePresent:
     - "video"
   callback: "videoMayBePresent"
 audioMayBePresent:
-  type: "precondition"
+  type: "custom"
   testability: 1
   title:
     en: "Audio or object uses a link that points to a file with a video extension"
@@ -27,7 +27,7 @@ audioMayBePresent:
     - "audio"
   callback: "audioMayBePresent"
 animatedGifMayBePresent:
-  type: "precondition"
+  type: "custom"
   testability: 1
   title:
     en: "Test if a .gif is used on the page. Test if the .gif contains more then one frame"
@@ -41,7 +41,7 @@ animatedGifMayBePresent:
     - "gif"
   callback: "animatedGifMayBePresent"
 userInputMayBeRequired:
-  type: "precondition"
+  type: "custom"
   testability: 1
   title:
     en: "Test if user input is required"

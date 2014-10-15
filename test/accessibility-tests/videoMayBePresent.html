@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>videoMayBePresent</title>
+  </head>
+  <body>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="videoMayBePresent">
+      <!-- no video element present -->
+    </div>
+
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="videoMayBePresent">
+      <video controls class="quail-failed-element">
+        <source src="../assets/sample.ogv" type="video/ogv"/>
+      </video>
+    </div>
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="videoMayBePresent">
+      <iframe width="420" height="315"
+              src="http://www.youtube.com/embed/XGSy3_Czz8k">
+      </iframe>
+    </div>
+
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="videoMayBePresent">
+      <iframe src="//player.vimeo.com/video/VIDEO_ID" width="300" height="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="videoMayBePresent">
+      <object id="flowplayer" data="flowplayer-3.2.2.swf" type="application/x-shockwave-flash" width="320" height="240" >
+        <param name="movie" value="flowplayer-3.2.2.swf">
+        <param name="allowfullscreen" value="true">
+        <param name="flashvars" value="config={'clip':{'url':'../assets/sample.ogv','autoPlay':false}}">
+      </object>
+    </div>
+
+    <script src="../quail-testrunner.js"></script>
+  </body>
+</html>
