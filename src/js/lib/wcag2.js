@@ -5,50 +5,64 @@ quail.lib.wcag2 = (function () {
 
   /**
    * Run Quail using WCAG 2
+   *
+   * Options can be used either to tell Quail where to load the wcag2 structure file
+   * or to give it directly (if it's already loaded). For the first, jsonPath
+   * must be provided. For the second the wcag2.json data must be given to 
+   * options.wcag2Structure and the tests data to options.accessibilityTests.
+   * 
    * @param  {[object]} options Quail options
    */
   function runWCAG20Quail(options) {
+    if (options.wcag2Structure && options.accessibilityTests) {
+      startWCAG20Quail(options, options.wcag2Structure, options.accessibilityTests);
 
-    // Load the required json files
-    $.when(
-      $.ajax(options.jsonPath + '/wcag2.json', ajaxOpt),
-      $.ajax(options.jsonPath + '/tests.json', ajaxOpt))
+    } else {
+      // Load the required json files
+      $.when(
+        $.ajax(options.jsonPath + '/wcag2.json', ajaxOpt),
+        $.ajax(options.jsonPath + '/tests.json', ajaxOpt))
 
-    // Setup quail given the tests described in the json files
-    .done(function (wcag2Call, testsCall) {
-      var criteria, accessibilityTests, knownTests;
-      var allTests = [];
-
-      criteria = $.map(wcag2Call[0], function (critData) {
-        return new quail.lib.wcag2.Criterion(
-          critData, testsCall[0]);
+      // Setup quail given the tests described in the json files
+      .done(function (wcag2Call, testsCall) {
+        startWCAG20Quail(options, wcag2Call, testsCall);
       });
+    }
+  }
 
-      // Create the accessibiliyTests object, based on the
-      // tests in the criteria
-      $.each(criteria, function (i, criterion) {
-        allTests.push.apply(allTests, criterion.getTests());
-      });
+  function startWCAG20Quail(options, wcag2Call, testsCall) {
+    var criteria, accessibilityTests, knownTests;
+    var allTests = [];
 
-      knownTests = [];
-      accessibilityTests = [];
+    criteria = $.map(wcag2Call[0], function (critData) {
+      return new quail.lib.wcag2.Criterion(
+        critData, testsCall[0]);
+    });
 
-      // Remove duplicates
-      // TODO: Figure out why some tests are created multiple times
-      $.each(allTests, function (i, test) {
-        if (knownTests.indexOf(test.title.en) === -1) {
-          knownTests.push(test.title.en);
-          accessibilityTests.push(test);
-        }
-      });
+    // Create the accessibiliyTests object, based on the
+    // tests in the criteria
+    $.each(criteria, function (i, criterion) {
+      allTests.push.apply(allTests, criterion.getTests());
+    });
 
-      // Run quail with the tests instead of the guideline
-      $(quail.html).quail({
-        accessibilityTests: accessibilityTests,
-        // Have wcag2 intercept the callback
-        testCollectionComplete: createCallback(
-            criteria, options.testCollectionComplete)
-      });
+    knownTests = [];
+    accessibilityTests = [];
+
+    // Remove duplicates
+    // TODO: Figure out why some tests are created multiple times
+    $.each(allTests, function (i, test) {
+      if (knownTests.indexOf(test.title.en) === -1) {
+        knownTests.push(test.title.en);
+        accessibilityTests.push(test);
+      }
+    });
+
+    // Run quail with the tests instead of the guideline
+    $(quail.html).quail({
+      accessibilityTests: accessibilityTests,
+      // Have wcag2 intercept the callback
+      testCollectionComplete: createCallback(
+          criteria, options.testCollectionComplete)
     });
   }
 
