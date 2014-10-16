@@ -35,14 +35,14 @@ quail.videoMayBePresent=function(quail, test, Case){
       test.add(_case);
 
       var source = getSource($(this));
-      if (source && $.inArray(source.split('.').pop(), fileTypes)) {
+      if (source && $.inArray(source.split('.').pop(), fileTypes) > -1) {
         _case.set({
           'status': 'cantTell'
         });
         return;
-      }else
+      }
+      if($(this).find('param[name="flashvars"]').attr('value') !== undefined){
 
-      if($(this).find('param').attr('value') !== undefined){
         source = $(this).find('param[name="flashvars"]').attr('value');
         $.each(fileTypes, function(index, item){
           if(source.indexOf("." + item) > -1) {
@@ -54,13 +54,12 @@ quail.videoMayBePresent=function(quail, test, Case){
         });
         return;
       }
-      window.console.log("TEST3");
-
-      _case.set({
-        'status': 'inapplicable'
-      });
-
+      if(source.indexOf('//www.youtube.com/embed/') > -1 || source.indexOf('//player.vimeo.com/video/') > -1){
+        _case.set({
+          'status': 'cantTell'
+        });
+        return;
+      }
     });
-
   });
 };
