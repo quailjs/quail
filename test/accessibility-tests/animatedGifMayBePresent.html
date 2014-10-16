@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title>animatedGifMayBePresent</title>
+  </head>
+  <body>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="animatedGifMayBePresent">
+      <img src="../assets/kids.jpg" alt="eat at Joes" width="200" height="200"/>
+    </div>
+
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="animatedGifMayBePresent">
+
+      <img src="../assets/fish.gif" alt="eat at Joes" width="200" height="200"/>
+    </div>
+
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="animatedGifMayBePresent">
+      <img src="../assets/fishswim.gif" alt="A brown and black cat named Rex."/>
+    </div>
+
+    <script src="../quail-testrunner.js"></script>
+  </body>
+</html>
