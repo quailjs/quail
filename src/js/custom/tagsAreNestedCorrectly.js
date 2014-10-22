@@ -7,15 +7,9 @@ quail.tagsAreNestedCorrectly=function(quail, test, Case){
 
     var match;
     while((match = regex.exec(html)) !== null){
-      window.console.log(match[1]);
       tests.push(match[1]);
     }
-
-    window.console.log(tests);
-
     $.each(tests, function(index, testHTML){
-
-
       var testBlock = testBlocks[index];
       var _case=Case({
         element: this,
