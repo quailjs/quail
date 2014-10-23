@@ -97,7 +97,7 @@ quail.lib.wcag2.TestCluster = (function () {
     var assertions = [];
     // Create asserts for each element
     $.each(elms, function (i, elm) {
-      var assertion = new quail.lib.EarlAssertion(base);
+      var assertion = new quail.lib.wcag2.EarlAssertion(base);
       if (elm) { // Don't do undefined pointers
         assertion.outcome.pointer = pointerMap.getPointer(elm);
       }
@@ -123,7 +123,7 @@ quail.lib.wcag2.TestCluster = (function () {
     eachTestCase(tests, function (test, testCase) {
       // Look up the assert, if any
       var newResult = testCase.get('status');
-      var getResultPriority = quail.lib.EarlAssertion.getResultPriority;
+      var getResultPriority = quail.lib.wcag2.EarlAssertion.getResultPriority;
       var assertion = assertions[elms.indexOf(
         testCase.get('element')
       )];
@@ -167,7 +167,7 @@ quail.lib.wcag2.TestCluster = (function () {
     eachTestCase(tests, function (test, testCase) {
       // Look up the assert, if any
       var newResult = testCase.get('status');
-      var getResultPriority = quail.lib.EarlAssertion.getResultPriority;
+      var getResultPriority = quail.lib.wcag2.EarlAssertion.getResultPriority;
       var assert = asserts[elms.indexOf(
         testCase.get('element')
       )];
@@ -227,15 +227,16 @@ quail.lib.wcag2.TestCluster = (function () {
    */
   TestCluster.prototype.getResults = function (tests) {
     var assertions, assertion;
-    tests = this.filterDataToTests(tests);
+    var filteredTests = this.filterDataToTests(tests);
 
-    if (tests.length === 1 || this.type === 'combined') {
-      assertions = getCombinedAssertions(this, tests);
+    if (filteredTests.length === 1 || this.type === 'combined') {
+      assertions = getCombinedAssertions(this, filteredTests);
 
     } else if (this.type === "stacking") {
-      assertions = getStackedAssertions(this, tests);
+      assertions = getStackedAssertions(this, filteredTests);
 
     } else if (window) {
+      console.log(tests);
       window.console.error(
         "Unknown type for cluster " + this.id
       );
@@ -244,7 +245,7 @@ quail.lib.wcag2.TestCluster = (function () {
     // Return a default assert if none was defined
     if (assertions) {
       if (assertions.length === 0) {
-        assertion = new quail.lib.EarlAssertion({
+        assertion = new quail.lib.wcag2.EarlAssertion({
           testCase: this.id,
           outcome: {
             result: 'inapplicable'

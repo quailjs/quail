@@ -1,4 +1,4 @@
-quail.lib.EarlAssertion = (function () {
+quail.lib.wcag2.EarlAssertion = (function () {
   var pageUrl;
   var resultPriorityMap = [
     'untested', 'inapplicable', 'passed',

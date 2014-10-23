@@ -12,17 +12,17 @@ quail.lib.wcag2 = (function () {
     // Load the required json files
     $.when(
       $.ajax(options.jsonPath + '/wcag2.json', ajaxOpt),
-      $.ajax(options.jsonPath + '/preconditions.json', ajaxOpt),
-      $.ajax(options.jsonPath + '/tests.json', ajaxOpt))
+      $.ajax(options.jsonPath + '/tests.json', ajaxOpt),
+      $.ajax(options.jsonPath + '/preconditions.json', ajaxOpt))
 
     // Setup quail given the tests described in the json files
-    .done(function (wcag2Call, testsCall) {
+    .done(function (wcag2Call, testsCall, preconditionCall) {
       var criteria, accessibilityTests, knownTests;
       var allTests = [];
 
       criteria = $.map(wcag2Call[0], function (critData) {
         return new quail.lib.wcag2.Criterion(
-          critData, testsCall[0]);
+          critData, testsCall[0], preconditionCall[0]);
       });
 
       // Create the accessibiliyTests object, based on the
