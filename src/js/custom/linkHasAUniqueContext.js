@@ -83,54 +83,55 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
         //Remove comments before testing
         clean($(this).closest('.quail-test')[0]);
 
-        /**
-         * todo: Variable below must be part of the failed test, but conflicts with the passed test. So have to find a way to integrate
-         */
-        var foundElementWithSameText = otherElementsWithSameText($(this));
-        window.console.log(foundElementWithSameText);
-
-        if(($(this).parent().getElementText().trim() !== "" && $(this).parent().getElementText().trim() === $(this).text()) ||
-          (parentIsNativeStyle($(this).parent()) === true && $(this).parent().parent().getElementText().trim() !== "" && $(this).parent().parent().text() === $(this).text())){
+        var foundElementWithSameText=otherElementsWithSameText($(this));
+        if (($(this).parent().getElementText().trim() !== "" && $(this).parent().getElementText().trim() === $(this).text()) ||
+          (parentIsNativeStyle($(this).parent()) === true && $(this).parent().parent().getElementText().trim() !== "" && $(this).parent().parent().text() === $(this).text())) {
           _case.set({
             'status': 'failed'
           });
-          return;
-        }
-
-        if (
+        } else if (
           hasTableHeaderContext($(this)) ||
           ($(this).find('img').length > 0 && $(this).find('img').attr('alt') !== $(this).text()) ||
-          ($(this).attr('title') !== undefined && $(this).attr('title') !== $(this).text()) ||
-          !$(this).prev().is('br')
+          ($(this).attr('title') !== undefined && $(this).attr('title') !== $(this).text())  ||
+            !foundElementWithSameText
           ) {
           _case.set({
             'status': 'passed'
           });
-          return;
         } else {
           _case.set({
             'status': 'failed'
           });
-          return;
         }
-
+        window.console.log("Condtions for pass", foundElementWithSameText,
+          hasTableHeaderContext($(this)),
+          ($(this).find('img').length > 0 && $(this).find('img').attr('alt') !== $(this).text()),
+          ($(this).attr('title') !== undefined && $(this).attr('title') !== $(this).text()),
+          foundElementWithSameText);
+        window.console.log($(this), $(this).closest('.quail-test').data('expected'), _case.attributes.status);
       });
     }
   });
   function otherElementsWithSameText(element){
 
     var result=false;
+    var elements=element.parent().find('a');
 
-    element.parent().find('a').each(function(index, aElement){
+
+    elements.each(function(index, aElement){
       if (element.is($(aElement))) {
+        window.console.log("IS SELF");
         result=false;
-      }
-
-      if (similarStrings(element.text(), $(aElement).text()) > 0.4) {
+      }else if (element[0].isEqualNode(aElement)) {
+        window.console.log("IS EQUAL");
+        result=false;
+      }else if (similarStrings(element.text(), $(aElement).text()) > 0.4) {
         result=true;
+        return false;
       } else {
         result=false;
       }
+      window.console.log("SIMILARITY RESULT", result, similarStrings(element.text(), $(aElement).text()));
     });
 
     return result;
