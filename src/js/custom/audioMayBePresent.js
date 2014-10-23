@@ -1,7 +1,10 @@
 quail.audioMayBePresent=function(quail, test, Case){
+  var fileTypes=['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];
 
   function getSource(element){
-    var source=false;
+    if (element.is('a')) {
+      return element.attr('href');
+    }
 
     if (element.attr('src') !== undefined) {
       return element.attr('src');
@@ -10,50 +13,51 @@ quail.audioMayBePresent=function(quail, test, Case){
     if (element.find('source').attr('src') !== undefined) {
       return element.find('source').attr('src');
     }
-
-    return source;
   }
 
-  test.get('$scope').each(function(){
-    var testableElements=$(this).find('audio, object');
+  test.get('$scope').each(function() {
+    var testableElements=$(this).find('audio, object, a[href]');
+    var hasCase = false;
 
-    if (testableElements.length === 0) {
-      var _case=Case({
+    testableElements.each(function(){
+      var $this = $(this);
+      var source = getSource($this);
+      
+      if ($this.is('object')) {
+        hasCase = true;
+        test.add(Case({
+          element: this,
+          expected: $this.closest('.quail-test').data('expected'),
+          status: 'cantTell'
+        }));
+
+      } else if (source && $.inArray(source.split('.').pop(), fileTypes) > -1) {
+        hasCase = true;
+        test.add(Case({
+          element: this,
+          expected: $this.closest('.quail-test').data('expected'),
+          status: 'cantTell'
+        }));
+
+      } else if($this.find('param[name="src"]').attr('value') !== undefined &&
+      $.inArray(source.split('.').pop(), fileTypes) > -1) {
+
+        hasCase = true;
+        test.add(Case({
+          element: this,
+          expected: $this.closest('.quail-test').data('expected'),
+          status: 'cantTell'
+        }));
+      }
+    });
+
+    if (!hasCase) {
+      test.add(Case({
         element: this,
         status: 'inapplicable',
         expected: $(this).closest('.quail-test').data('expected')
-      });
-      test.add(_case);
+      }));
     }
-
-    testableElements.each(function(){
-      var fileTypes=['webm', 'flv', 'ogv', 'ogg', 'avi', 'mov', 'qt', 'wmv', 'asf', 'mp4', 'm4p', 'm4v', 'mpg', 'mp2', 'mpeg', 'mpg', 'mpe', 'mpv', 'm2v', '3gp', '3g2'];
-      var _case=Case({
-        element: this,
-        expected: $(this).closest('.quail-test').data('expected')
-      });
-      test.add(_case);
-
-      var source = getSource($(this));
-      if (source && $.inArray(source.split('.').pop(), fileTypes) > -1) {
-        _case.set({
-          'status': 'cantTell'
-        });
-        return;
-      }
-      if($(this).find('param[name="src"]').attr('value') !== undefined){
-
-        source = $(this).find('param[name="src"]').attr('value');
-        $.each(fileTypes, function(index, item){
-          if(source.indexOf("." + item) > -1) {
-            _case.set({
-              'status': 'cantTell'
-            });
-            return false;
-          }
-        });
-        return;
-      }
-    });
   });
+
 };

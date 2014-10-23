@@ -32,8 +32,6 @@ quail.lib.wcag2.Criterion = (function () {
     // Create a precondition test
     if ($.isArray(data.preconditions)) {
       var preconditionTest = {
-        passed: 'inapplicable',
-        failed: 'cantTell',
         type: 'stacking', // If any of it's content is found it should return cantTell
         tests: data.preconditions
       };
