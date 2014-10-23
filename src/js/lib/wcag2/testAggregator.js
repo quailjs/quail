@@ -1,4 +1,4 @@
-quail.lib.wcag2.TestCluster = (function () {
+quail.lib.wcag2.TestAggregator = (function () {
 
   var pointerMap = {
     elms: [],
@@ -107,18 +107,18 @@ quail.lib.wcag2.TestCluster = (function () {
   }
 
   /**
-   * Combine the test results of a cluster into asserts
+   * Combine the test results of an Aggregator into asserts
    *
-   * A combinbing cluster is a cluster which only fails if all it's tests fail
+   * A combinbing aggregator is an aggregator which only fails if all it's tests fail
    * 
-   * @param  {Object} cluster
+   * @param  {Object} aggregator
    * @param  {Array[Object]} tests
    * @return {Array[Object]}         Array of Asserts
    */
-  function getCombinedAssertions(cluster, tests) {
+  function getCombinedAssertions(aggregator, tests) {
     var elms = getCommonElements(tests);
     var assertions = createAssertionsForEachElement(elms, {
-      testCase: cluster.id,
+      testCase: aggregator.id,
       outcome: {result: 'failed'}
     });
 
@@ -131,9 +131,9 @@ quail.lib.wcag2.TestCluster = (function () {
         testCase.get('element')
       )];
 
-      // Allow the cluster to override the results
-      if (cluster[newResult]) {
-        newResult = cluster[newResult];
+      // Allow the aggregator to override the results
+      if (aggregator[newResult]) {
+        newResult = aggregator[newResult];
       }
 
       // Override if the resultId is higher or equal (combine)
@@ -154,18 +154,18 @@ quail.lib.wcag2.TestCluster = (function () {
 
 
   /**
-   * Stack the test results of a cluster into asserts
+   * Stack the test results of a aggregator into asserts
    *
-   * A stacked cluster is one that fails if any of the tests fail
+   * A stacked aggregator is one that fails if any of the tests fail
    * 
-   * @param  {Object} cluster
+   * @param  {Object} aggregator
    * @param  {Array[Object]} tests
    * @return {Array[Object]}         Array of Asserts
    */
-  function getStackedAssertions(cluster, tests) {
+  function getStackedAssertions(aggregator, tests) {
     var elms = getAllElements(tests);
     var asserts = createAssertionsForEachElement(elms, {
-      testCase: cluster.id,
+      testCase: aggregator.id,
       outcome: { result: 'untested'}
     });
 
@@ -178,9 +178,9 @@ quail.lib.wcag2.TestCluster = (function () {
         testCase.get('element')
       )];
 
-      // Allow the cluster to override the results
-      if (cluster[newResult]) {
-        newResult = cluster[newResult];
+      // Allow the aggregator to override the results
+      if (aggregator[newResult]) {
+        newResult = aggregator[newResult];
       }
 
       // Override if the resultId is lower (stacked)
@@ -195,7 +195,7 @@ quail.lib.wcag2.TestCluster = (function () {
   }
 
 
-  function TestCluster(config, testDefinitions) {
+  function TestAggregator(config, testDefinitions) {
     $.extend(this, {
       id: config.tests.join('+')
     }, config);
@@ -208,11 +208,11 @@ quail.lib.wcag2.TestCluster = (function () {
 
   /**
    * Filter the data array so it only contains results 
-   * from this cluster
+   * from this aggregator
    * @param  {Array} data
    * @return {Array}
    */
-  TestCluster.prototype.filterDataToTests = function (data) {
+  TestAggregator.prototype.filterDataToTests = function (data) {
     var names = $.map(this.tests, function (test) {
       return test.name;
     });
@@ -227,11 +227,11 @@ quail.lib.wcag2.TestCluster = (function () {
   };
 
   /**
-   * Get the results of this test cluster based on the tests provided for it
+   * Get the results of this test aggregator based on the tests provided for it
    * @param  {object} tests As provided by Quail
    * @return {object}       EARL assertions
    */
-  TestCluster.prototype.getResults = function (tests) {
+  TestAggregator.prototype.getResults = function (tests) {
     var assertions, assertion;
     var filteredTests = this.filterDataToTests(tests);
 
@@ -243,7 +243,7 @@ quail.lib.wcag2.TestCluster = (function () {
 
     } else if (window) {
       window.console.error(
-        "Unknown type for cluster " + this.id
+        "Unknown type for aggregator " + this.id
       );
     }
 
@@ -262,5 +262,5 @@ quail.lib.wcag2.TestCluster = (function () {
     }
   };
 
-  return TestCluster;
+  return TestAggregator;
 }());

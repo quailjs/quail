@@ -2,7 +2,7 @@
   id: "wcag20:text-equiv-all"
   level: "wcag20:level_a"
   default: "cantTell"
-  testClusters:
+  testAggregators:
     - passed: "cantTell"
       failed: "failed"
       tests: 
@@ -37,7 +37,7 @@
 1.2.2:
   id: "wcag20:media-equiv-captions"
   level: "wcag20:level_a"
-  testClusters:
+  testAggregators:
     - passed: "cantTell"
       failed: "failed"
       tests: 
@@ -73,7 +73,7 @@
   id: "wcag20:content-structure-separation-programmatic"
   level: "wcag20:level_a"
   default: cantTell
-  testClusters:
+  testAggregators:
     - passed: "passed"
       failed: "failed"
       type: combined
@@ -146,7 +146,7 @@
   id: "wcag20:visual-audio-contrast-without-color"
   level: "wcag20:level_a"
   default: "cantTell"
-  testClusters:
+  testAggregators:
     - passed: "passed"
       failed: "failed"
       tests: 
@@ -160,7 +160,7 @@
 1.4.3:
   id: "wcag20:visual-audio-contrast-contrast"
   level: "wcag20:level_aa"
-  testClusters:
+  testAggregators:
     - passed: passed
       failed: failed
       tests:
@@ -226,7 +226,7 @@
   id: "wcag20:navigation-mechanisms-refs"
   level: "wcag20:level_a"
   # default: "cantTell"
-  testClusters:
+  testAggregators:
     # - passed: "passed" # Test doesn't yet exist
     #   failed: "failed"
     #   tests: 
@@ -240,7 +240,7 @@
 2.4.7:
   id: "wcag20:navigation-mechanisms-focus-visible"
   level: "wcag20:level_aa"
-  testClusters:
+  testAggregators:
     - passed: cannotTell  # Should also look at outline
       failed: failed
       tests:
@@ -257,7 +257,7 @@
 3.1.1:
   id: "wcag20:meaning-doc-lang-id"
   level: "wcag20:level_a"
-  testClusters:
+  testAggregators:
     - passed: "cantTell"
       failed: "failed"
       type: stacking
@@ -322,7 +322,7 @@
   id: "wcag20:ensure-compat-parses"
   level: "wcag20:level_a"
   default: cantTell
-  testClusters:
+  testAggregators:
     - passed: "passed"
       failed: "failed"
       tests: 
@@ -347,7 +347,7 @@
   id: "wcag20:ensure-compat-rsv"
   level: "wcag20:level_a"
   default: cantTell
-  testClusters:
+  testAggregators:
     - passed: "passed"
       failed: "failed"
       tests: 

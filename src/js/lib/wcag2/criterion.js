@@ -15,16 +15,16 @@ quail.lib.wcag2.Criterion = (function () {
 
 
   function constructor (data, testDefinitions, preconditionDefinitions) {
-    var testClusters = [];
+    var testAggregators = [];
     var criterion = {};
     var defaultResult = data['default'] || 'untested';
     var id = data.id;
 
-    // Create a testCluster object for each cluster (if any)
-    if ($.isArray(data.testClusters)) {
-      testClusters = $.map(data.testClusters, function (clusterConf) {
-        return new quail.lib.wcag2.TestCluster(
-          clusterConf, testDefinitions
+    // Create a TestAggregator object for each aggregator (if any)
+    if ($.isArray(data.testAggregators)) {
+      testAggregators = $.map(data.testAggregators, function (aggregateConf) {
+        return new quail.lib.wcag2.TestAggregator(
+          aggregateConf, testDefinitions
         );
       });
     }
@@ -37,8 +37,8 @@ quail.lib.wcag2.Criterion = (function () {
         type: 'stacking', // If any of it's content is found it should return cantTell
         tests: data.preconditions
       };
-      // Add a test cluster for the precondition tests
-      testClusters.push(new quail.lib.wcag2.TestCluster(
+      // Add a test aggregator for the precondition tests
+      testAggregators.push(new quail.lib.wcag2.TestAggregator(
         preconditionTest, preconditionDefinitions
       ));
     }
@@ -48,8 +48,8 @@ quail.lib.wcag2.Criterion = (function () {
       var result;
       var parts = [];
 
-      $.each(testClusters, function (i, cluster) {
-        var part = cluster.getResults(data);
+      $.each(testAggregators, function (i, aggregator) {
+        var part = aggregator.getResults(data);
         parts.push.apply(parts, part);
       });
       result = new quail.lib.wcag2.EarlAssertion({
@@ -69,8 +69,8 @@ quail.lib.wcag2.Criterion = (function () {
      */
     criterion.getTests = function () {
       var tests = [];
-      $.each(testClusters, function (i, cluster) {
-        tests.push.apply(tests, cluster.tests);
+      $.each(testAggregators, function (i, aggregator) {
+        tests.push.apply(tests, aggregator.tests);
       });
       return tests;
     };
