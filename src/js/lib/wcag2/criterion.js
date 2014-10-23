@@ -14,7 +14,7 @@ quail.lib.wcag2.Criterion = (function () {
   }
 
 
-  function constructor (data, testDefinitions) {
+  function constructor (data, testDefinitions, preconditionDefinitions) {
     var testClusters = [];
     var criterion = {};
     var defaultResult = data['default'] || 'untested';
@@ -27,6 +27,20 @@ quail.lib.wcag2.Criterion = (function () {
           clusterConf, testDefinitions
         );
       });
+    }
+
+    // Create a precondition test
+    if ($.isArray(data.preconditions)) {
+      var preconditionTest = {
+        passed: 'inapplicable',
+        failed: 'cantTell',
+        type: 'stacking', // If any of it's content is found it should return cantTell
+        tests: data.preconditions
+      };
+      // Add a test cluster for the precondition tests
+      testClusters.push(new quail.lib.wcag2.TestCluster(
+        preconditionTest, preconditionDefinitions
+      ));
     }
 
 

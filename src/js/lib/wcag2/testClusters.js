@@ -108,6 +108,9 @@ quail.lib.wcag2.TestCluster = (function () {
 
   /**
    * Combine the test results of a cluster into asserts
+   *
+   * A combinbing cluster is a cluster which only fails if all it's tests fail
+   * 
    * @param  {Object} cluster
    * @param  {Array[Object]} tests
    * @return {Array[Object]}         Array of Asserts
@@ -152,6 +155,9 @@ quail.lib.wcag2.TestCluster = (function () {
 
   /**
    * Stack the test results of a cluster into asserts
+   *
+   * A stacked cluster is one that fails if any of the tests fail
+   * 
    * @param  {Object} cluster
    * @param  {Array[Object]} tests
    * @return {Array[Object]}         Array of Asserts
@@ -236,7 +242,6 @@ quail.lib.wcag2.TestCluster = (function () {
       assertions = getStackedAssertions(this, filteredTests);
 
     } else if (window) {
-      console.log(tests);
       window.console.error(
         "Unknown type for cluster " + this.id
       );
