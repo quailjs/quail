@@ -83,9 +83,10 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
         //Remove comments before testing
         clean($(this).closest('.quail-test')[0]);
 
-        var regex = /(.{1})<a[^>]+>.+?<\/a>(.{1})/;
+        var regex = /(.?)<a[^>]+>.+?<\/a>(.?)/gmi;
+        var nextLineChars = ['.', '-'];
         var parentText = $(this).parent().html().replace(/\s+/g, '');
-        window.console.log(parentText);
+
 
         var foundElementWithSameText=otherElementsWithSameText($(this));
         if (($(this).parent().getElementText().trim() !== "" && $(this).parent().getElementText().trim() === $(this).text()) ||
