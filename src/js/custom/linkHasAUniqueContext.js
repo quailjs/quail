@@ -83,23 +83,18 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
         //Remove comments before testing
         clean($(this).closest('.quail-test')[0]);
 
-        var regex = /(.?)<a[^>]+>.+?<\/a>(.?)/gmi;
-        var nextLineChars = ['.', '-'];
-        var parentText = $(this).parent().html().replace(/\s+/g, '');
-
-
         var foundElementWithSameText=otherElementsWithSameText($(this));
         if (($(this).parent().getElementText().trim() !== "" && $(this).parent().getElementText().trim() === $(this).text()) ||
           (parentIsNativeStyle($(this).parent()) === true && $(this).parent().parent().getElementText().trim() !== "" && $(this).parent().parent().text() === $(this).text()) ||
-          $(this).prev().is('br')) {
+          $(this).prev().is('br') ||
+          notInSameSentence($(this))) {
           _case.set({
             'status': 'failed'
           });
         } else if (
           hasTableHeaderContext($(this)) ||
           ($(this).find('img').length > 0 && $(this).find('img').attr('alt') !== $(this).text()) ||
-          ($(this).attr('title') !== undefined && $(this).attr('title') !== $(this).text())  ||
-            !foundElementWithSameText
+          ($(this).attr('title') !== undefined && $(this).attr('title') !== $(this).text()) || !foundElementWithSameText
           ) {
           _case.set({
             'status': 'passed'
@@ -112,6 +107,22 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
       });
     }
   });
+
+  function notInSameSentence(element){
+    var regex=/<a[^>]+>.+?<\/a>(.?)/gmi;
+    var parentText=element.parent().html().replace(/ /g, '');
+    var match;
+    var result=false;
+
+    while ((match=regex.exec(parentText)) !== null) {
+      if (match[1] === '.') {
+        result=true;
+      }
+    }
+
+    return result;
+  }
+
   function otherElementsWithSameText(element){
 
     var result=false;
@@ -121,9 +132,9 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
     elements.each(function(index, aElement){
       if (element.is($(aElement))) {
         result=false;
-      }else if (element[0].isEqualNode(aElement)) {
+      } else if (element[0].isEqualNode(aElement)) {
         result=false;
-      }else if (similarStrings(element.text(), $(aElement).text()) > 0.4) {
+      } else if (similarStrings(element.text(), $(aElement).text()) > 0.4) {
         result=true;
         return false;
       } else {
