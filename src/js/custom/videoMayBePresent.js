@@ -1,17 +1,17 @@
 quail.videoMayBePresent=function(quail, test, Case){
 
   function getSource(element){
-    var source=false;
-
-    if (element.attr('src') !== undefined) {
-      return element.attr('src');
+    if (element.is('a')) {
+      return element.attr('href');
     }
 
     if (element.find('source').attr('src') !== undefined) {
       return element.find('source').attr('src');
     }
 
-    return source;
+    if (element.attr('src') !== undefined) {
+      return element.attr('src');
+    }
   }
 
   test.get('$scope').each(function(){
