@@ -113,9 +113,13 @@ module.exports = function(grunt) {
     },
     karma: {
       unit: {
-        configFile: 'karma.conf.js',
+        configFile: 'karma-unit.conf.js',
         singleRun: true,
         browsers: ['PhantomJS']
+      },
+      a11y: {
+        configFile: 'karma-a11y.conf.js',
+        singleRun: true
       }
     },
     jshint: {
@@ -233,6 +237,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-bower-task');
+  grunt.loadNpmTasks('grunt-selenium-webdriver');
+
+  // Run accessibility assessments in Selenium.
+  grunt.registerTask('testAssessments', [
+      'selenium_start',
+      'karma:a11y',
+      'selenium_stop'
+  ]);
 
   // By default, just run tests
   grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all', 'karma']);

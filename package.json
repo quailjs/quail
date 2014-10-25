@@ -18,9 +18,10 @@
     "test": "grunt test --verbose"
   },
   "dependencies": {
-    "jquery": ">1.4.2",
     "commander": "^2.3.0",
+    "jquery": ">1.4.2",
     "phantomjs": "^1.9.10",
+    "selenium-webdriver": "^2.44.0",
     "shelljs": "^0.3.0"
   },
   "devDependencies": {
@@ -28,21 +29,24 @@
     "chai": "^1.9.2",
     "grunt": "~0.4.1",
     "grunt-bower-task": "~0.4.0",
+    "grunt-chmod": "^1.0.3",
+    "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "^0.6.0",
     "grunt-contrib-jshint": "~0.4.3",
     "grunt-contrib-qunit": "~0.2.0",
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-copy": "^0.6.0",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-chmod": "^1.0.3",
     "grunt-convert": "~0.1.5",
     "grunt-gh-pages": "~0.8.1",
     "grunt-karma": "^0.9.0",
+    // This includes selenium server 2.43.1
+    "grunt-selenium-webdriver": "^0.2.431",
     "karma": "^0.12.24",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.1.5",
     "karma-firefox-launcher": "^0.1.3",
+    "karma-html-reporter": "^0.2.4",
     "karma-ie-launcher": "^0.1.5",
     "karma-mocha": "^0.1.9",
     "karma-opera-launcher": "^0.1.0",
@@ -50,6 +54,8 @@
     "karma-requirejs": "^0.2.2",
     "karma-safari-launcher": "^0.1.1",
     "karma-sinon": "^1.0.3",
+    "karma-spec-reporter": "0.0.13",
+    "karma-webdriver-launcher": "^0.2.0",
     "mocha": "^1.21.5",
     "requirejs": "^2.1.15",
     "sinon": "^1.10.3"

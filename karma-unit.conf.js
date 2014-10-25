@@ -1,4 +1,4 @@
-// Karma configuration
+// Karma configuration for Quail unit tests
 // Generated on Sat Oct 11 2014 17:44:41 GMT-0400 (EDT)
 
 module.exports = function(config) {
@@ -45,7 +45,13 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
+
+    // the default configuration
+    htmlReporter: {
+      outputDir: 'karma_html',
+      templatePath: __dirname + '/node_modules/karma-html-reporter/jasmine_template.html'
+    },
 
 
     // web server port
