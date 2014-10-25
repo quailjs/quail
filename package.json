@@ -40,7 +40,7 @@
     "grunt-convert": "~0.1.5",
     "grunt-gh-pages": "~0.8.1",
     "grunt-karma": "^0.9.0",
-    // This includes selenium server 2.43.1
+    "grunt-mocha-cli": "^1.10.0",
     "grunt-selenium-webdriver": "^0.2.431",
     "karma": "^0.12.24",
     "karma-chai": "^0.1.0",
@@ -56,7 +56,7 @@
     "karma-sinon": "^1.0.3",
     "karma-spec-reporter": "0.0.13",
     "karma-webdriver-launcher": "^0.2.0",
-    "mocha": "^1.21.5",
+    "mocha": "^2.0.1",
     "requirejs": "^2.1.15",
     "sinon": "^1.10.3"
   },

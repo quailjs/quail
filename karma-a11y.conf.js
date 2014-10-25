@@ -33,7 +33,7 @@ module.exports = function(config) {
       {pattern: 'src/js/lib/wcag/*.js'},
 
       // Specs
-      {pattern: 'test/**/*Spec.js'},
+      {pattern: 'test/selenium-test/*Spec.js'},
     ],
 
 
@@ -76,7 +76,17 @@ module.exports = function(config) {
       'ChromeSelenium': {
         base: 'WebDriver',
         config: webdriverConfig,
-        browserName: 'Chrome',
+        browserName: 'chrome',
+      },
+      'FirefoxSelenium': {
+        base: 'WebDriver',
+        config: webdriverConfig,
+        browserName: 'firefox',
+      },
+      'SafariSelenium': {
+        base: 'WebDriver',
+        config: webdriverConfig,
+        browserName: 'safari',
       }
     },
 
@@ -84,7 +94,10 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [
-      'ChromeSelenium'
+      // 'ChromeSelenium',
+      // 'FirefoxSelenium',
+      // 'SafariSelenium',
+      'Chrome'
     ],
 
 

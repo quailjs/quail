@@ -122,6 +122,20 @@ module.exports = function(grunt) {
         singleRun: true
       }
     },
+    mochacli: {
+      options: {
+        colors:        true,
+        'check-leaks': false,
+        ui:            'bdd',
+        reporter:      'spec',
+        timeout:       20000
+      },
+      a11y: {
+        options: {
+            files: ['test/selenium-test/*.js']
+        }
+      }
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -238,11 +252,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-selenium-webdriver');
+  grunt.loadNpmTasks('grunt-mocha-cli');
 
   // Run accessibility assessments in Selenium.
   grunt.registerTask('testAssessments', [
       'selenium_start',
-      'karma:a11y',
+      'mochacli:a11y',
       'selenium_stop'
   ]);
 
