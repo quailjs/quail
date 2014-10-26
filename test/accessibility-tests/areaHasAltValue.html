@@ -4,19 +4,46 @@
 		<title>areaHasAltValue</title>
 	</head>
 	<body>
+
+		<img  usemap="#map1" src="" alt="" />
 		<div class="quail-test" data-expected="pass" data-accessibility-test="areaHasAltValue">
 		  <map id="map1" name="map1">
-        <area shape="rect" coords="0,0,30,30" href="reference.html" alt="reference section"
-          />
+        <area shape="rect" coords="0,0,30,30" href="reference.html"
+        alt="reference section" />
       </map>
 		</div>
 
+		<img  usemap="#map2" src="" alt="" />
 		<div class="quail-test" data-expected="fail" data-accessibility-test="areaHasAltValue">
-		  <map id="map1" name="map2">
-          <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="reference.html" />
+		  <map id="map2" name="map2">
+        <area class="quail-failed-element" shape="rect" coords="0,0,30,30"
+        href="reference.html" />
       </map>
 		</div>
 
 
-		<script src="../quail-testrunner.js"></script>	</body>
+		<div  class="quail-test" data-expected="inapplicable"
+		data-accessibility-test="areaHasAltValue">
+			<!-- No area element -->
+		</div>
+
+<!--
+		<div  class="quail-test" data-expected="inapplicable"
+		data-accessibility-test="areaHasAltValue">
+		  <map id="map3" name="map2">
+          <area shape="rect" coords="0,0,30,30" href="reference.html" />
+      </map>
+		</div>
+
+		<img  usemap="#map4" src="" alt="" style="display:none;" />
+
+		<div  class="quail-test" data-expected="inapplicable"
+		data-accessibility-test="areaHasAltValue">
+		  <map id="map4" name="map2">
+          <area shape="rect" coords="0,0,30,30" href="reference.html" />
+      </map>
+		</div>
+-->
+		<script src="../quail-testrunner.js"></script>
+	</body>
 </html>

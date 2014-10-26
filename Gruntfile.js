@@ -237,6 +237,10 @@ module.exports = function(grunt) {
   // By default, just run tests
   grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all', 'karma']);
 
+  // Dev task
+  grunt.registerTask('dev', ['bower:install', 'convert', 'concat']);
+
+
   // Build task.
   grunt.registerTask('build', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'uglify']);
 

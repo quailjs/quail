@@ -214,6 +214,13 @@ var quail = {
       buildTests(quail, options.accessibilityTests, options);
       _run.call(quail);
     }
+
+    // Let wcag2 run itself, will call quail again when it knows what
+    // to
+    else if (options.guideline === 'wcag2') {
+      quail.lib.wcag2.run(options);
+    }
+
     // Otherwise get the tests from the json data list.
     else {
       var url = options.jsonPath;

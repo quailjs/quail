@@ -47,6 +47,20 @@ aImgAltNotRepetitive:
     - "link"
     - "content"
   callback: "aImgAltNotRepetitive"
+aInPHasADistinctStyle:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Links should be have a distinct style inside a p tag"
+    nl: "Links moeten een afwijkende stijl hebben binnen een paragraaf"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "content"
+  callback: "aInPHasADistinctStyle"
 aLinkTextDoesNotBeginWithRedundantWord:
   type: "custom"
   testability: 0
@@ -544,7 +558,8 @@ areaHasAltValue:
     - "imagemap"
     - "content"
   options:
-    selector: "area:not(area[alt])"
+    selector: "area"
+    test: ":not(area[alt])"
 areaLinksToSoundFile:
   type: "selector"
   testability: 1
@@ -665,7 +680,7 @@ boldIsNotUsed:
     - "content"
   options:
     selector: "bold"
-buttonHasValue:
+buttonHasName:
   type: "placeholder"
   testability: 1
   title:
@@ -692,7 +707,7 @@ buttonHasValue:
   options:
     content: true
     empty: true
-    attribute: "value"
+    attribute: title
     selector: "button"
 checkboxHasLabel:
   type: "label"
@@ -1532,7 +1547,8 @@ formButtonsHaveValue:
     - "form"
     - "content"
   options:
-    selector: "input[type=button]:not([value]), input[type=submit]:not([value]), input[type=reset]:not([value])"
+    selector: "input[type=button], input[type=submit], input[type=reset]"
+    test: ":not([value])"
 formDeleteIsReversable:
   type: "selector"
   testability: 0
@@ -1781,7 +1797,8 @@ framesHaveATitle:
     - "deprecated"
     - "frame"
   options:
-    selector: "frame:not(frame[title]), iframe:not(iframe[title])"
+    selector: "frame:visible, iframe:visible"
+    test: ":not([title])"
 framesetIsNotUsed:
   type: "selector"
   testability: 1
@@ -1812,6 +1829,21 @@ framesetMustHaveNoFramesSection:
     - "frame"
   options:
     selector: "frameset:not(frameset:has(noframes))"
+headersAttrRefersToATableCell:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Table cell headers attrtibutes must within the same table have an associated data cell with the same id"
+    nl: "Tabel cellen met een headers attribuut moeten binnen dezelfde tabel een overeenkomende data cel hebben in het id attribuut dezelfde waarde"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "headers"
+    - "td"
+    - "th"
+  callback: "headersAttrRefersToATableCell"
 headerH1:
   type: "headingLevel"
   testability: 0
@@ -2084,24 +2116,6 @@ headersUseToMarkSections:
     - "header"
     - "content"
   callback: "headersUseToMarkSections"
-idRefHasCorrespondingId:
-  type: "custom"
-  testability: 1
-  title:
-    en: "Elements with an idref attribute must correspond to an element with an ID"
-    nl: "Elementen met een idref-attribuut moeten corresponderen met een element met een ID"
-  description:
-    en: "When using an idref attribute, the target element with the ID must exist on the page."
-    nl: "Wanneer je een idref-attibuut gebruikt, moet het doelelement met dit ID ook bestaan op de pagina."
-  guidelines:
-    wcag:
-      1.3.1:
-        techniques:
-          - "F17"
-      4.1.1:
-        techniques:
-          - "F17"
-  callback: "idRefHasCorrespondingId"
 iIsNotUsed:
   type: "selector"
   testability: 1
@@ -2348,7 +2362,8 @@ imgHasAlt:
     - "image"
     - "content"
   options:
-    selector: "img:not(img[alt])"
+    selector: "img:visible"
+    test: ":not(img[alt])"
 imgHasLongDesc:
   type: "custom"
   testability: 1
@@ -2747,7 +2762,8 @@ inputImageHasAlt:
     - "image"
     - "content"
   options:
-    selector: "input[type=image]:not(input[type=image][alt])"
+    selector: "input[type=image]:visible"
+    test: ":not(input[type=image][alt])"
 inputImageNotDecorative:
   type: "selector"
   testability: 0

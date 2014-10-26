@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>tagsAreNestedCorrectly</title>
+</head>
+<body>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="tagsAreNestedCorrectly">
+		<input />
+		<img />
+		<meta />
+		<link />
+		<br />
+		<area />
+	</div>
+
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="tagsAreNestedCorrectly">
+	<!-- These are not allowed in an xhtml file -->
+		<input class="quail-failed-element">
+		<img class="quail-failed-element">
+		<meta class="quail-failed-element">
+		<link class="quail-failed-element">
+		<br class="quail-failed-element">
+		<area class="quail-failed-element">
+	</div>
+
+	<script src="../quail-testrunner.js"></script>
+</body>
+</html>

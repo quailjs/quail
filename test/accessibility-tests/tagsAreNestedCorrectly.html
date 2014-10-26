@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+	<title>tagsAreNestedCorrectly</title>
+</head>
+<body>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="tagsAreNestedCorrectly">
+		<p>
+			<a href="">
+				<b></b> <input />
+			</a> <br>
+			<strong></strong>
+		</p>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="tagsAreNestedCorrectly">
+		<input>
+		<img>
+		<meta>
+		<link>
+		<br>
+		<area>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="tagsAreNestedCorrectly">
+		<p>
+			<a href="">
+				<b></b> <input />
+			</a> <br>
+			<strong></strong>
+		<!-- Closing of <p> is optional -->
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="tagsAreNestedCorrectly">
+		<ul>
+		  <li>Item <!-- li closing is optional -->
+		  <li>Item <!-- li closing is optional -->
+	  	</ul>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="tagsAreNestedCorrectly">
+		<table><tr>
+		  <th>Item <!-- th closing is optional -->
+		  <td>Item <!-- td closing is optional -->
+	  	<!-- tr closing is optional -->
+	  	</table>
+	</div>
+	
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="tagsAreNestedCorrectly">
+		<p>
+			<a href="" class="quail-failed-element">
+				<b> <input />
+			</a></b> <br>
+			<strong></strong>
+		</p>
+	</div>
+	
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="tagsAreNestedCorrectly">
+		<p>
+			<a href="" class="quail-failed-element">
+				<b> <input />
+			</b> <br>
+			<strong></strong>
+		</p>
+	</div>
+	
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="tagsAreNestedCorrectly">
+		<input class="quail-failed-element"></input>
+		<img class="quail-failed-element"></img>
+		<meta class="quail-failed-element"></meta>
+		<link class="quail-failed-element"></link>
+		<br class="quail-failed-element"></br>
+		<area class="quail-failed-element"></area>
+	</div>
+	
+	<script src="../quail-testrunner.js"></script>
+</body>
+</html>
