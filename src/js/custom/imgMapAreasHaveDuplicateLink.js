@@ -30,7 +30,7 @@ quail.imgMapAreasHaveDuplicateLink = function (quail, test, Case) {
     }
     else {
       _case.set({
-        'status': 'notApplicable'
+        'status': 'inapplicable'
       });
     }
   });

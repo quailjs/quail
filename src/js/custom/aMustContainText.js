@@ -7,7 +7,7 @@ quail.aMustContainText = function(quail, test, Case) {
     test.add(_case);
     if (!$(this).attr('href')) {
       _case.set({
-        'status': 'notApplicable'
+        'status': 'inapplicable'
       });
       return;
     }

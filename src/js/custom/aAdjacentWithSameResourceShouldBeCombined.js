@@ -41,7 +41,7 @@ quail.aAdjacentWithSameResourceShouldBeCombined = function(quail, test, Case) {
     var _case = Case({ element: element });
     test.add(_case);
     _case.set({
-      'status': 'notApplicable',
+      'status': 'inapplicable',
       expected: $(element).closest('.quail-test').data('expected')
     });
   }

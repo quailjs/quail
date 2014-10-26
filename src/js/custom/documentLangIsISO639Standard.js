@@ -12,7 +12,7 @@ quail.documentLangIsISO639Standard = function(quail, test, Case) {
   test.add(_case);
   if (!$element.attr('lang')) {
     _case.set({
-      'status' : 'notApplicable'
+      'status' : 'inapplicable'
     });
   }
   _case.set({

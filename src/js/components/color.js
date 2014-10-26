@@ -632,7 +632,7 @@ quail.components.color = function(quail, test, Case, options) {
     var nodes = [];
     var text = textnodes.iterateNext();
     if (!text) {
-      buildCase(null, 'notApplicable', '', 'There is no text to evaluate');
+      buildCase(null, 'inapplicable', '', 'There is no text to evaluate');
     }
     else {
       // Loop has to be separated. If we try to iterate and rund testCandidates

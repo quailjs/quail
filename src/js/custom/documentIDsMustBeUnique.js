@@ -6,7 +6,7 @@ quail.documentIDsMustBeUnique = function(quail, test, Case) {
     });
     test.add(_case);
     _case.set({
-      'status': 'notApplicable',
+      'status': 'inapplicable',
       expected: $(this).closest('.quail-test').data('expected')
     });
   });

@@ -17,7 +17,7 @@ quail.languageUnicodeDirection = function(quail, test, Case) {
         'rtl' :
         'ltr';
       if (text.search(textDirection[otherDirection]) === -1) {
-        _case.set({status: 'notApplicable'});
+        _case.set({status: 'inapplicable'});
       }
       else {
         if(text.search(textDirectionChanges[otherDirection]) !== -1) {
