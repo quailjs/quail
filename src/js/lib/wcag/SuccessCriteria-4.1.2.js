@@ -47,7 +47,7 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
   //           // Process 'inputWithoutLabelHasTitle'.
   //           var cases_inputWithoutLabelHasTitle = inputWithoutLabelHasTitle.findCasesBySelector(selector);
 
-  //           var passing = ['passed', 'notApplicable'];
+  //           var passing = ['passed', 'inapplicable'];
 
   //           // Make sure the arrays are not empty.
   //           if ((cases_labelsAreAssignedToAnInput.length >= 1 && cases_labelsAreAssignedToAnInput[0].hasStatus(passing)) &&

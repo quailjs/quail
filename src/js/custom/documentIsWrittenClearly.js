@@ -8,7 +8,7 @@ quail.documentIsWrittenClearly = function(quail, test, Case) {
     test.add(_case);
     if (quail.isUnreadable(text)) {
       _case.set({
-        'status' : 'notApplicable'
+        'status' : 'inapplicable'
       });
       return;
     }

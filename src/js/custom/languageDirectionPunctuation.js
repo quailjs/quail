@@ -28,7 +28,7 @@ quail.languageDirectionPunctuation = function(quail, test, Case) {
         }(this))
       }));
       if (!matches) {
-        _case.set({status : 'notApplicable'});
+        _case.set({status : 'inapplicable'});
         return;
       }
       var first = text.search(textDirection[oppositeDirection]);

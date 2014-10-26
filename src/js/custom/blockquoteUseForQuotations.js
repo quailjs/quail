@@ -7,7 +7,7 @@ quail.blockquoteUseForQuotations = function(quail, test, Case) {
     test.add(_case);
     if ($(this).parents('blockquote').length > 0) {
       _case.set({
-        'status': 'notApplicable'
+        'status': 'inapplicable'
       });
       return;
     }

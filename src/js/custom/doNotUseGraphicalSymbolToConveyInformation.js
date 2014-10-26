@@ -49,7 +49,7 @@ quail.doNotUseGraphicalSymbolToConveyInformation = function(quail, test, Case) {
       expected: (function (element) {
         return quail.components.resolveExpectation(element);
       }(this)),
-      status: 'notApplicable'
+      status: 'inapplicable'
     }));
   });
 };

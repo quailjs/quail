@@ -146,8 +146,8 @@
           case 'cantTell':
             ok(_case.get('status') === 'cantTell', message);
             break;
-          case 'notApplicable':
-            ok(_case.get('status') === 'notApplicable', message);
+          case 'inapplicable':
+            ok(_case.get('status') === 'inapplicable', message);
             break;
           }
         });
