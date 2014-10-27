@@ -125,7 +125,7 @@ describe('SuccessCriteria', function () {
       });
       _successCriteria.set('preEvaluator', function (testCollection) {
         // We skip all the tests.
-        // This will set the status as 'notApplicable'.
+        // This will set the status as 'inapplicable'.
         return false;
       });
       // @todo, we need a mockable object that will listen to events.
@@ -134,7 +134,7 @@ describe('SuccessCriteria', function () {
 
     it('should should skip all tests if it fails', function (done) {
       listener.listenTo(_successCriteria, 'successCriteriaEvaluated', function (eventName, successCriteria, testCollection) {
-        expect(successCriteria.get('status')).to.equal('notApplicable');
+        expect(successCriteria.get('status')).to.equal('inapplicable');
         done();
       });
       // Create a few fake tests and add them to the collection.

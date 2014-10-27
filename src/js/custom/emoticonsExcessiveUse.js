@@ -13,7 +13,7 @@ quail.emoticonsExcessiveUse = function(quail, test, Case) {
     });
     if (count === 0) {
       _case.set({
-        'status': 'notApplicable'
+        'status': 'inapplicable'
       });
     }
     else {

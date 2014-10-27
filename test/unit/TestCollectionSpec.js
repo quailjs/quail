@@ -60,7 +60,7 @@ describe('TestCollection', function () {
       _testCollection[1].set('status', 'passed');
       _testCollection[2].set('status', 'failed');
       _testCollection[3].set('status', 'cantTell');
-      _testCollection[4].set('status', 'notApplicable');
+      _testCollection[4].set('status', 'inapplicable');
     });
 
     it('should find test cases by a status string', function () {
@@ -71,7 +71,7 @@ describe('TestCollection', function () {
     it('should find test cases by an array of statuses', function () {
       tests = _testCollection.findByStatus(['untested', 'passed', 'failed']);
       expect(tests.length).to.equal(3);
-      tests = _testCollection.findByStatus(['cantTell', 'notApplicable']);
+      tests = _testCollection.findByStatus(['cantTell', 'inapplicable']);
       expect(tests.length).to.equal(2);
     });
   });

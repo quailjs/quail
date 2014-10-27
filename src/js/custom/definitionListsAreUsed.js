@@ -6,7 +6,7 @@ quail.definitionListsAreUsed = function(quail, test, Case) {
     });
     test.add(_case);
     _case.set({
-      'status': 'notApplicable'
+      'status': 'inapplicable'
     });
   });
   test.get('$scope').find('p, li').each(function() {

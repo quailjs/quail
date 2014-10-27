@@ -25,7 +25,7 @@ $.expr[':'].quailCss = function(obj, index, meta) {
  * Assembles data about the test and invokes appropriate callbacks.
  *
  * @param {string} type
- *   Possible values:  'notApplicable', 'failed', 'passed', 'cantTell',
+ *   Possible values:  'inapplicable', 'failed', 'passed', 'cantTell',
  *   and 'untested'
  * @param {string} testName
  *   The name of the test.

@@ -8,7 +8,7 @@ quail.pNotUsedAsHeader = function(quail, test, Case) {
     test.add(_case);
     if ($(this).text().search('.') >= 1) {
       _case.set({
-        'status': 'notApplicable'
+        'status': 'inapplicable'
       });
     }
     var failed = false;

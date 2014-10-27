@@ -27,9 +27,11 @@
 </div>
 
 <div class="quail-test" data-expected="pass" data-accessibility-test="KINGUseLongDateFormat">
+  <!-- Since we don't support <font/> element in KINGUseLongDateFormat test, this TC should not
+  cause an error -->
   <p>
 	Date nested in an unsupported tag
-	<small>12-04-12</small>
+	<font>12-04-12</font>
   </p>
 </div>
 

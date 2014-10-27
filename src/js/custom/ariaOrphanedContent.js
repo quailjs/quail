@@ -13,7 +13,7 @@ quail.ariaOrphanedContent = function(quail, test, Case) {
     if (!scopeHasRole && !childrenHaveRole) {
       test.add(Case({
         expected: $local.data('expected'),
-        status: 'notApplicable'
+        status: 'inapplicable'
       }));
       return;
     }
