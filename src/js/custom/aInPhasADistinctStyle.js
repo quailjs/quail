@@ -4,13 +4,13 @@ quail.aInPHasADistinctStyle=function(quail, test, Case){
    * Function for just testing the elements text, without checking text of children
    * @returns {*|jQuery}
    */
-  jQuery.fn.getElementText=function(){
-    return $(this).clone()
+  function getElementText($elm){
+    return $elm.clone()
       .children()
       .remove()
       .end()
-      .text();
-  };
+      .text().trim();
+  }
 
   /**
    * Checks if an element has a border set
@@ -36,47 +36,68 @@ quail.aInPHasADistinctStyle=function(quail, test, Case){
     var result=false;
 
     $.each(nativeStyles, function(index, item){
-      if (parentElement.is(item) && parentElement.getElementText() === "") {
+      if (parentElement.is(item) && getElementText(parentElement) === "") {
         result=true;
       }
     });
     return result;
   }
 
+
+  function elmHasDistinctStyle($elm) {
+    var result = false;
+    var $p = $elm.closest('p').css;
+    var styleProperties = ['text-decoration', 'font-weight', 'font-style'];
+
+    if ($elm.css('background-color') === 'rgba(0, 0, 0, 0)') {
+      styleProperties.push('background-color');
+    }
+    $.each(styleProperties, function (i, styleProp) {
+      console.log(i, styleProp);
+      if (styleProp === 'text-decoration') {
+        console.log($elm, $elm.css(styleProp), $p.css(styleProp));
+      }
+      if (!result && $elm.css(styleProp) && $p.css(styleProp)) {
+        result = true;
+      }
+    });
+
+    return result || $elm.css('display') === 'block' || hasBorder($elm);
+  }
+
+
   test.get('$scope').find('p a').each(function(){
+    var $this = $(this);
+    var $parent = $this.parent();
     var _case=Case({
       element: this,
       expected: $(this).closest('.quail-test').data('expected')
     });
 
     test.add(_case);
-    var expected=$(this).closest('.quail-test').data('expected');
-    if (!$(this).attr('href') || quail.cleanString($(this).attr('href')) === "") {
+    var expected=$this.closest('.quail-test').data('expected');
+    if (!$this.attr('href') || quail.cleanString($this.attr('href')) === "") {
       _case.set({
         'expected': expected,
         'status': 'inapplicable'
       });
       return;
     }
-    if (
-      hasNativeStyle($(this).parent()) ||
-      $(this).css('text-decoration') === 'underline' ||
-      $(this).css('display') === 'block' ||
-      ($(this).css('background-color') !== 'rgba(0, 0, 0, 0)' && $(this).css('background-color') !== $(this).closest('p').css('background-color')) ||
-      hasBorder($(this)) ||
-      $(this).children('img').length > 0
-      ) {
+
+
+    if ($this.find('img').length >= 1 || // pass if there's an image
+    elmHasDistinctStyle($this) || // pass if the style is distinct
+    (getElementText($parent) === '' && elmHasDistinctStyle($parent))) { // pass if the parent style is distinct
       _case.set({
         'expected': expected,
         'status': 'passed'
       });
-      return;
+
     } else {
       _case.set({
         'expected': expected,
         'status': 'failed'
       });
-      return;
     }
   });
 };
