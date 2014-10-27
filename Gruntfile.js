@@ -136,6 +136,25 @@ module.exports = function(grunt) {
         }
       }
     },
+    connect: {
+      dev: {
+        options: {
+          port: '7000',
+          base: './dist',
+          hostname: 'localhost',
+          middleware: function (connect, options, middlewares) {
+            // inject a custom middleware
+            middlewares.unshift(function (req, res, next) {
+              res.setHeader('Access-Control-Allow-Origin', '*');
+              res.setHeader('Access-Control-Allow-Methods', '*');
+              return next();
+            });
+
+            return middlewares;
+          }
+        }
+      }
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -248,6 +267,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-bower-task');
@@ -257,6 +277,7 @@ module.exports = function(grunt) {
   // Run accessibility assessments in Selenium.
   grunt.registerTask('testAssessments', [
       'selenium_start',
+      'connect:dev',
       'mochacli:a11y',
       'selenium_stop'
   ]);
