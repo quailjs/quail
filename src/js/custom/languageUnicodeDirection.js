@@ -13,7 +13,7 @@ quail.languageUnicodeDirection = function(quail, test, Case) {
       }));
       var $el = $(this);
       var text = $el.text().trim();
-      var otherDirection = (text.substr(0, 1).search(textDirection['ltr']) !== -1) ?
+      var otherDirection = (text.substr(0, 1).search(textDirection.ltr) !== -1) ?
         'rtl' :
         'ltr';
       if (text.search(textDirection[otherDirection]) === -1) {

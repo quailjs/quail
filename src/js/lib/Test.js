@@ -40,8 +40,8 @@ quail.lib.Test = (function() {
     get: function(attr) {
       // Return the document wrapped in jQuery if scope is not defined.
       if (attr === '$scope') {
-        var scope = this.attributes['scope'];
-        var $scope = $(this.attributes['scope']);
+        var scope = this.attributes.scope;
+        var $scope = $(this.attributes.scope);
         // @todo, pass in a ref to jQuery to this module.
         return (this.attributes[attr]) ? this.attributes[attr] : ((scope) ? $scope : $(document));
       }

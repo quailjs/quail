@@ -3,7 +3,6 @@
   "validateQuoteMarks": "'",
   "disallowKeywordsOnNewLine": null,
   "maximumLineLength": null,
-  "requireDotNotation": null,
   "requireMultipleVarDecl": null,
   "disallowSpaceAfterObjectKeys": null,
   "disallowSpaceBeforeBinaryOperators": null,

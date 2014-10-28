@@ -133,7 +133,7 @@ quail.lib.TestCollection = (function() {
               var guidelines = test.get('guidelines');
               // If this test is configured for this section and it has
               // associated techniques, then loop thorugh them.
-              var testTechniques = guidelines[guidelineName] && guidelines[guidelineName][sectionId] && guidelines[guidelineName][sectionId]['techniques'];
+              var testTechniques = guidelines[guidelineName] && guidelines[guidelineName][sectionId] && guidelines[guidelineName][sectionId].techniques;
               if (testTechniques) {
                 for (var i = 0, il = testTechniques.length; i < il; ++i) {
                   // If this test is configured for the techniqueName, add it

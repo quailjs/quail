@@ -285,7 +285,7 @@ page.onLoadFinished = function(status) {
                 }
               }
               // List the totals for each type of result
-              output.successCriteria[name]['totals'] = successCriteria.get('totals');
+              output.successCriteria[name].totals = successCriteria.get('totals');
             }
             // Echo
             // console.log('Evaluated: ' + name, 'conclusion: ' + status, 'totals: ' + JSON.stringify(totals));
