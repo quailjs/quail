@@ -52,14 +52,14 @@
 <div class="quail-test" data-expected="inapplicable"
      data-accessibility-test="aInPHasADistinctStyle">
     <div style="display:none"><p>No text
-        <a href="">with no link</a>
+        <a href="/">with no link</a>
         inside it.</p></div>
 </div>
 
 <div class="quail-test" data-expected="inapplicable"
      data-accessibility-test="aInPHasADistinctStyle">
     <p>Some text with an empty link
-        <a href=""></a>
+        <a href="/"></a>
         inside it.</p>
 </div>
 
@@ -81,14 +81,6 @@
         inside it.</p>
 </div>
 
-<div class="quail-test" data-expected="pass"
-     data-accessibility-test="aInPHasADistinctStyle">
-    <p>Some text
-        <a href="/" style="float:right;">
-            With a link
-        </a>
-        inside it.</p>
-</div>
 
 <div class="quail-test" data-expected="pass"
      data-accessibility-test="aInPHasADistinctStyle">
@@ -136,16 +128,16 @@
     <p>Some text
         <strong><a href="/">
             With a link
-        </a></strong>,
+        </a> </strong>,
         <em><a href="/">
             With a link
-        </a></em>,
+        </a></em> - 
         <b><a href="/">
             With a link
-        </a></b>,
+        </a></b>  ====
         <u><a href="/">
             With a link
-        </a></u>
+        </a></u> / 
         inside it.</p>
 </div>
 
@@ -160,7 +152,7 @@
 
 <div class="quail-test" data-expected="fail"
      data-accessibility-test="aInPHasADistinctStyle">
-    <p style="font-decoration:underlined">Some text
+    <p style="text-decoration:underline">Some text
         <a href="/" class="quail-failed-element">
             With a link
         </a>

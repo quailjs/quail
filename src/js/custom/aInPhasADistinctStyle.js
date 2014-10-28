@@ -22,21 +22,16 @@ quail.aInPHasADistinctStyle=function(quail, test, Case){
   }
 
 
-  function elmHasDistinctStyle($elm) {
+  function elmHasDistinctStyle($elm, $parent) {
     var result = false;
-    var $p = $elm.closest('p').css;
     var styleProperties = ['text-decoration', 'font-weight', 'font-style'];
 
-    if ($elm.css('background-color') === 'rgba(0, 0, 0, 0)') {
-      styleProperties.push('background-color');
+    if ($elm.css('background-color') !== 'rgba(0, 0, 0, 0)') {
+      styleProperties.push('background');
     }
-    console.log(styleProperties.length);
+
     $.each(styleProperties, function (i, styleProp) {
-      console.log(styleProp);
-      if (styleProp === 'text-decoration') {
-        console.log($elm, $elm.css(styleProp), $p.css(styleProp));
-      }
-      if (!result && $elm.css(styleProp) && $p.css(styleProp)) {
+      if (!result && $elm.css(styleProp) !== $parent.css(styleProp)) {
         result = true;
       }
     });
@@ -44,27 +39,29 @@ quail.aInPHasADistinctStyle=function(quail, test, Case){
     return result || $elm.css('display') === 'block' || hasBorder($elm);
   }
 
+  console.log(test.get('$scope').find('p a'));
 
   test.get('$scope').find('p a').each(function() {
     var $this = $(this);
-    var $parent = $this.parent();
+    var $parent = (getElementText($this.parent()) ? $this.parent() : undefined);
+    var $p = $(this).closest('p');
+
     var _case=Case({
       element: this,
       expected: $(this).closest('.quail-test').data('expected')
     });
     test.add(_case);
 
-    if (!$this.attr('href') || quail.cleanString($this.attr('href')) === "") {
+    if (!$this.attr('href') || !$this.is(':visible') || $this.text() === '') {
       _case.set({
         'status': 'inapplicable'
       });
       return;
     }
 
-
     if ($this.find('img').length >= 1 || // pass if there's an image
-    elmHasDistinctStyle($this) || // pass if the style is distinct
-    (getElementText($parent) === '' && elmHasDistinctStyle($parent))) { // pass if the parent style is distinct
+    elmHasDistinctStyle($this, $p) || // pass if the style is distinct
+    (getElementText($parent) === '' && elmHasDistinctStyle($parent, $p))) { // pass if the parent style is distinct
       _case.set({'status': 'passed'});
 
     } else {
