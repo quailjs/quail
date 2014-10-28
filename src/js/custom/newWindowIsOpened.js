@@ -3,8 +3,8 @@ quail.newWindowIsOpened = function(quail, test, Case) {
   var fenestrate = window.open;
   var _case;
 
-  window.open = function (event) {
-    test.each(function (index, _case) {
+  window.open = function(event) {
+    test.each(function(index, _case) {
       var href = _case.get('element').href;
       if (href.indexOf(event) > -1) {
         _case.set('status', 'failed');
@@ -12,11 +12,11 @@ quail.newWindowIsOpened = function(quail, test, Case) {
     });
   };
 
-  test.get('$scope').find('a').each(function () {
+  test.get('$scope').find('a').each(function() {
     // Save a reference to this clicked tag.
     _case = Case({
       element: this,
-      expected: (function (element) {
+      expected: (function(element) {
         return quail.components.resolveExpectation(element);
       }(this))
     });

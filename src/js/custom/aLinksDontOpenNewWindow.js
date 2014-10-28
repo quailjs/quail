@@ -1,6 +1,6 @@
 quail.aLinksDontOpenNewWindow = function(quail, test, Case) {
   // Links without a target attribute pass.
-  test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function () {
+  test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function() {
     test.add(Case({
       element: this,
       'expected': $(this).closest('.quail-test').data('expected'),

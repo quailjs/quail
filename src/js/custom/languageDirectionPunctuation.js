@@ -5,7 +5,7 @@ quail.languageDirectionPunctuation = function(quail, test, Case) {
   var currentDirection = ($scope.attr('dir')) ? $scope.attr('dir').toLowerCase() : 'ltr';
   var oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
   var textDirection = quail.components.language.textDirection;
-  $scope.each(function () {
+  $scope.each(function() {
     var $local = $(this);
     $local.find(quail.textSelector).each(function() {
       var $el = $(this);
@@ -23,7 +23,7 @@ quail.languageDirectionPunctuation = function(quail, test, Case) {
       var matches = text.match(textDirection[oppositeDirection]);
       var _case = test.add(Case({
         element: this,
-        expected: (function (element) {
+        expected: (function(element) {
           return quail.components.resolveExpectation(element);
         }(this))
       }));

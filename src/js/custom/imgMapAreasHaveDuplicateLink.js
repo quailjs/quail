@@ -1,4 +1,4 @@
-quail.imgMapAreasHaveDuplicateLink = function (quail, test, Case) {
+quail.imgMapAreasHaveDuplicateLink = function(quail, test, Case) {
   var links = { };
   test.get('$scope').find('a').each(function() {
     links[$(this).attr('href')] = $(this).attr('href');

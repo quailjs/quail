@@ -1,7 +1,7 @@
 /**
  * Test for WCAG success criterion 4.1.2: Name, Role, Value.
  */
-quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
+quail.guidelines.wcag.successCriteria['4.1.2'] = (function(quail) {
 
   // The tests that must be run in order to evaluate this Success Criteria.
   // @todo, identify the complete set of required tests for this Success Criteria.
@@ -32,7 +32,7 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
   //     var inputWithoutLabelHasTitle = tests.find('inputWithoutLabelHasTitle');
 
   //     // Cycle through the cases in the Success Criteria.
-  //     sc.each(function (index, _case) {
+  //     sc.each(function(index, _case) {
   //       var conclusion = 'untested';
 
   //       if (_case.get('status') !== 'notTested') {

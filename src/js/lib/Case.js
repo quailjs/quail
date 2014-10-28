@@ -1,4 +1,4 @@
-quail.lib.Case = (function () {
+quail.lib.Case = (function() {
 
   /**
    * A Case is a test against an element.
@@ -10,7 +10,7 @@ quail.lib.Case = (function () {
   // Prototype object of the Case.
   Case.fn = Case.prototype = {
     constructor: Case,
-    init: function (attributes) {
+    init: function(attributes) {
       this.listeners = {};
       this.timeout = null;
       this.attributes = attributes || {};
@@ -27,7 +27,7 @@ quail.lib.Case = (function () {
       // Set up a time out for this case to resolve within.
       else {
         this.attributes.status = 'untested';
-        this.timeout = setTimeout(function () {
+        this.timeout = setTimeout(function() {
           that.giveup();
         }, 350);
       }
@@ -36,10 +36,10 @@ quail.lib.Case = (function () {
     },
     // Details of the Case.
     attributes: null,
-    get: function (attr) {
+    get: function(attr) {
       return this.attributes[attr];
     },
-    set: function (attr, value) {
+    set: function(attr, value) {
       var isStatusChanged = false;
       // Allow an object of attributes to be passed in.
       if (typeof attr === 'object') {
@@ -71,7 +71,7 @@ quail.lib.Case = (function () {
      * @return boolean
      *   A bit that indicates if the case has one of the supplied statuses.
      */
-    hasStatus: function (statuses) {
+    hasStatus: function(statuses) {
       // This is a rought test of arrayness.
       if (typeof statuses !== 'object') {
         statuses = [statuses];
@@ -87,7 +87,7 @@ quail.lib.Case = (function () {
     /**
      * Dispatches the resolve event; clears the timeout fallback event.
      */
-    resolve: function () {
+    resolve: function() {
       clearTimeout(this.timeout);
 
       var el = this.attributes.element;
@@ -123,28 +123,28 @@ quail.lib.Case = (function () {
     /**
      * Abandons the Case if it not resolved within the timeout period.
      */
-    giveup: function () {
+    giveup: function() {
       clearTimeout(this.timeout);
       // @todo, the set method should really have a 'silent' option.
       this.attributes.status = 'notTested';
       this.dispatch('timeout', this);
     },
     // @todo, make this a set of methods that all classes extend.
-    listenTo: function (dispatcher, eventName, handler) {
+    listenTo: function(dispatcher, eventName, handler) {
       // @todo polyfill Function.prototype.bind.
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
-    registerListener: function (eventName, handler) {
+    registerListener: function(eventName, handler) {
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
       }
       this.listeners[eventName].push(handler);
     },
-    dispatch: function (eventName) {
+    dispatch: function(eventName) {
       if (this.listeners[eventName] && this.listeners[eventName].length) {
         var eventArgs = [].slice.call(arguments);
-        this.listeners[eventName].forEach(function (handler) {
+        this.listeners[eventName].forEach(function(handler) {
           // Pass any additional arguments from the event dispatcher to the
           // handler function.
           handler.apply(null, eventArgs);
@@ -161,7 +161,7 @@ quail.lib.Case = (function () {
      * @return {string}
      *   A unique selector for this element.
      */
-    defineUniqueSelector: function (element) {
+    defineUniqueSelector: function(element) {
       /**
        * Indicates whether the selector string represents a unique DOM element.
        *
@@ -212,7 +212,7 @@ quail.lib.Case = (function () {
         if (classes.length > 0) {
           classes = classes.split(/\s+/);
           // Filter out classes that might represent state.
-          classes = reject(classes, function (cl) {
+          classes = reject(classes, function(cl) {
             return (/active|enabled|disabled|first|last|only|collapsed|open|clearfix|processed/).test(cl);
           });
           if (classes.length > 0) {

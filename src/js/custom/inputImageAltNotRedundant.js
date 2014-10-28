@@ -1,4 +1,4 @@
-quail.inputImageAltNotRedundant = function (quail, test, Case) {
+quail.inputImageAltNotRedundant = function(quail, test, Case) {
   test.get('$scope').find('input[type=image][alt]').each(function() {
     var _case = Case({
       element: this,

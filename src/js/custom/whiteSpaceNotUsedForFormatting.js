@@ -2,7 +2,7 @@ quail.whiteSpaceNotUsedForFormatting = function(quail, test, Case) {
   test.get('$scope').find(quail.textSelector).each(function() {
     var _case = test.add(Case({
       element: this,
-      expected: (function (element) {
+      expected: (function(element) {
         return quail.components.resolveExpectation(element);
       }(this))
     }));

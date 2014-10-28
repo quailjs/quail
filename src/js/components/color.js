@@ -159,7 +159,7 @@ quail.components.color = function(quail, test, Case, options) {
         return this.cache[cacheKey];
       }
 
-      element.parents().each(function(){
+      element.parents().each(function() {
         var pcolor = $(this).css('background-color');
         if (colors.hasBackgroundColor(pcolor)) {
           return this.cache[cacheKey] = pcolor;
@@ -412,7 +412,7 @@ quail.components.color = function(quail, test, Case, options) {
       }
 
       // Reset visibility.
-      for(var i = 0; i < scannedElements.length; i++){
+      for(var i = 0; i < scannedElements.length; i++) {
         scannedElements[i].element.css('visibility', scannedElements[i].visibility);
       }
 
@@ -442,10 +442,10 @@ quail.components.color = function(quail, test, Case, options) {
     }
   };
 
-  var buildCase = function (element, status, id, message) {
+  var buildCase = function(element, status, id, message) {
     test.add(Case({
       element: element,
-      expected: (function (element, id) {
+      expected: (function(element, id) {
         return quail.components.resolveExpectation(element, id);
       }(element, id)),
       message: message,
@@ -499,7 +499,7 @@ quail.components.color = function(quail, test, Case, options) {
       img.crossOrigin = "Anonymous";
       // Get average color of the background image. The image must first load
       // before information about it is available to the DOM.
-      img.onload = function () {
+      img.onload = function() {
         var id = 'colorBackgroundImageContrast';
         var averageColorBackgroundImage = colors.getAverageRGB(img);
         var failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), averageColorBackgroundImage);
@@ -512,7 +512,7 @@ quail.components.color = function(quail, test, Case, options) {
           buildCase(element, 'passed', id, 'The element\'s background image does not affect readability');
         }
       };
-      img.onerror = img.onabort = function () {
+      img.onerror = img.onabort = function() {
         var id = 'colorBackgroundImageContrast';
         buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
       };
@@ -531,7 +531,7 @@ quail.components.color = function(quail, test, Case, options) {
       img = new Image();
       // The image must first load before information about it is available to
       // the DOM.
-      img.onload = function () {
+      img.onload = function() {
         var id = 'colorElementBehindBackgroundImageContrast';
         // Get average color of the background image.
         var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
@@ -544,7 +544,7 @@ quail.components.color = function(quail, test, Case, options) {
           buildCase(element, 'passed', id, 'The background image of the element behind this element does not affect readability');
         }
       };
-      img.onerror = img.onabort = function () {
+      img.onerror = img.onabort = function() {
         var id = 'colorElementBehindBackgroundImageContrast';
         buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
       };
@@ -627,7 +627,7 @@ quail.components.color = function(quail, test, Case, options) {
     }
   }
 
-  test.get('$scope').each(function () {
+  test.get('$scope').each(function() {
     var textnodes = document.evaluate('descendant::text()[normalize-space()]', this, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
     var nodes = [];
     var text = textnodes.iterateNext();
@@ -650,7 +650,7 @@ quail.components.color = function(quail, test, Case, options) {
  * For the color test, if any case passes for a given element, then all the
  * cases for that element pass.
  */
-quail.components.color.postInvoke = function (test) {
+quail.components.color.postInvoke = function(test) {
   var passed = {};
   var groupsBySelector = test.groupCasesBySelector();
 
@@ -672,7 +672,7 @@ quail.components.color.postInvoke = function (test) {
   for (var selector in groupsBySelector) {
     if (groupsBySelector.hasOwnProperty(selector)) {
       var cases = groupsBySelector[selector];
-      cases.each(function (index, _case) {
+      cases.each(function(index, _case) {
         if (_case.get('status') === passed) {
           // This can just be an empty string. We only need the passed hash
           // to contain keys, not values.

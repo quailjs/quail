@@ -45,7 +45,7 @@ quail.languageChangesAreIdentified = function(quail, test, Case) {
       //debugger;
         test.add(Case({
           element: element,
-          expected: (function (element) {
+          expected: (function(element) {
             return quail.components.resolveExpectation(element);
           }(element)),
           info: { language : code },
@@ -63,7 +63,7 @@ quail.languageChangesAreIdentified = function(quail, test, Case) {
       //debugger;
         test.add(Case({
           element: element,
-          expected: (function (element) {
+          expected: (function(element) {
             return quail.components.resolveExpectation(element);
           }(element)),
           info: { language : code },
@@ -78,7 +78,7 @@ quail.languageChangesAreIdentified = function(quail, test, Case) {
       //debugger;
           test.add(Case({
             element: element,
-            expected: (function (element) {
+            expected: (function(element) {
               return quail.components.resolveExpectation(element);
             }(element)),
             info: { language : info[0] },
@@ -92,7 +92,7 @@ quail.languageChangesAreIdentified = function(quail, test, Case) {
     if (!failed) {
       test.add(Case({
         element: element,
-        expected: (function (element) {
+        expected: (function(element) {
           return quail.components.resolveExpectation(element);
         }(element)),
         status: 'passed'

@@ -1,4 +1,4 @@
-quail.imgHasLongDesc = function (quail, test, Case) {
+quail.imgHasLongDesc = function(quail, test, Case) {
   test.get('$scope').find('img[longdesc]').each(function() {
     var _case = Case({
       element: this,

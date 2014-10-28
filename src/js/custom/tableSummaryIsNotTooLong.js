@@ -3,7 +3,7 @@ quail.tableSummaryIsNotTooLong = function(quail, test, Case) {
     if ($(this).attr('summary').trim().length > 100) {
       test.add(Case({
         element: this,
-        expected: (function (element) {
+        expected: (function(element) {
           return quail.components.resolveExpectation(element);
         }(this)),
         status: 'failed'

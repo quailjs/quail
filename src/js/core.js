@@ -76,7 +76,7 @@ var quail = {
       /**
        * Perform WCAG specific setup.
        */
-      setup: function (tests, listener, callbacks) {
+      setup: function(tests, listener, callbacks) {
         callbacks = callbacks || {};
         // Associate Success Criteria with the TestCollection.
         for (var sc in this.successCriteria) {
@@ -135,7 +135,7 @@ var quail = {
    * Main run function for quail. It bundles up some accessibility tests,
    * and if tests are not passed, it instead fetches them using getJSON.
    */
-  run : function (options) {
+  run : function(options) {
     if (options.reset) {
       quail.accessibilityResults = { };
     }
@@ -180,7 +180,7 @@ var quail = {
       }
 
       // Set up Guideline-specific behaviors.
-      var noop = function () {};
+      var noop = function() {};
       for (var guideline in quail.guidelines) {
         if (quail.guidelines[guideline] && typeof quail.guidelines[guideline].setup === 'function') {
           quail.guidelines[guideline].setup(quail.tests, this, {
@@ -191,11 +191,11 @@ var quail = {
 
       // Invoke all the registered tests.
       quail.tests.run({
-        preFilter: options.preFilter || function () {},
-        caseResolve: options.caseResolve || function () {},
-        testComplete: options.testComplete || function () {},
-        testCollectionComplete: options.testCollectionComplete || function () {},
-        complete: options.complete || function () {}
+        preFilter: options.preFilter || function() {},
+        caseResolve: options.caseResolve || function() {},
+        testComplete: options.testComplete || function() {},
+        testCollectionComplete: options.testCollectionComplete || function() {},
+        complete: options.complete || function() {}
       });
     }
 
@@ -227,13 +227,13 @@ var quail = {
         url : url + '/tests.json',
         async : false,
         dataType : 'json',
-        success : function (data) {
+        success : function(data) {
           if (typeof data === 'object') {
             buildTests(quail, data, options);
             _run.call(quail);
           }
         },
-        error : function () {
+        error : function() {
           throw new Error('Tests could not be loaded');
         }
       });
@@ -241,7 +241,7 @@ var quail = {
   },
 
   // @todo, make this a set of methods that all classes extend.
-  listenTo: function (dispatcher, eventName, handler) {
+  listenTo: function(dispatcher, eventName, handler) {
     // @todo polyfill Function.prototype.bind.
     handler = handler.bind(this);
     dispatcher.registerListener.call(dispatcher, eventName, handler);

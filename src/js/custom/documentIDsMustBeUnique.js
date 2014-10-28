@@ -13,7 +13,7 @@ quail.documentIDsMustBeUnique = function(quail, test, Case) {
   test.get('$scope').find('[id]').each(function() {
     var _case = Case({
       element: this,
-      expected: (function (element) {
+      expected: (function(element) {
         return quail.components.resolveExpectation(element);
       }(this))
     });

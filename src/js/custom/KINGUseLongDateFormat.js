@@ -1,4 +1,4 @@
-quail.KINGUseLongDateFormat = function (quail, test, Case) {
+quail.KINGUseLongDateFormat = function(quail, test, Case) {
 
   function testDateFormat(index, element) {
     // Detect dates with several separators.

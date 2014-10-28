@@ -1,5 +1,5 @@
 quail.tableLayoutHasNoSummary = function(quail, test, Case) {
-  test.get('$scope').each(function () {
+  test.get('$scope').each(function() {
     var $local = $(this);
     $local.find('table[summary]').each(function() {
       var _case = test.add(Case({

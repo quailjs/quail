@@ -1,4 +1,4 @@
-quail.KINGUseCurrencyAsSymbol = function (quail, test, Case) {
+quail.KINGUseCurrencyAsSymbol = function(quail, test, Case) {
   function testCurrencyFormat(index, element) {
     // Detect dates with several separators.
     var currencyNames = [

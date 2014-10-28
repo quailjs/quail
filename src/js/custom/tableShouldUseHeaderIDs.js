@@ -8,7 +8,7 @@ quail.tableShouldUseHeaderIDs = function(quail, test, Case) {
           tableFailed = true;
           test.add(Case({
             element: this,
-            expected: (function (element) {
+            expected: (function(element) {
               return quail.components.resolveExpectation(element);
             }(this)),
             status: 'failed'
@@ -23,7 +23,7 @@ quail.tableShouldUseHeaderIDs = function(quail, test, Case) {
                 tableFailed = true;
                 test.add(Case({
                   element: this,
-                  expected: (function (element) {
+                  expected: (function(element) {
                     return quail.components.resolveExpectation(element);
                   }(this)),
                   status: 'failed'

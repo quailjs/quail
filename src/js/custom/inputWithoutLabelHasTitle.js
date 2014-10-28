@@ -1,4 +1,4 @@
-quail.inputWithoutLabelHasTitle = function (quail, test, Case) {
+quail.inputWithoutLabelHasTitle = function(quail, test, Case) {
   test.get('$scope').find('input, select, textarea').each(function() {
     var _case = Case({
       element: this,

@@ -1,4 +1,4 @@
-quail.tableAxisHasCorrespondingId = function (quail, test, Case) {
+quail.tableAxisHasCorrespondingId = function(quail, test, Case) {
   test.get('$scope').find('[axis]').each(function() {
     var _case = Case({
       element: this,

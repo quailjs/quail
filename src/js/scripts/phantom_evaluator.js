@@ -31,12 +31,12 @@ function size (obj) {
   return s;
 }
 
-page.onConsoleMessage = function (msg) {
+page.onConsoleMessage = function(msg) {
   console.log(msg);
 };
 
 // Catch script evaluation errors; quit Phantom.
-page.onError = function (msg, trace) {
+page.onError = function(msg, trace) {
   console.log(JSON.stringify([
     'Error on the evaluated page',
     msg,
@@ -46,7 +46,7 @@ page.onError = function (msg, trace) {
 
 page.settings.resourceTimeout = 5000; // 5 seconds
 
-page.onResourceRequested = function (request) {
+page.onResourceRequested = function(request) {
   console.log(JSON.stringify([
     'Requested (' + request.method + ')',
     request.url
@@ -61,7 +61,7 @@ page.onResourceReceived = function(response) {
   ]));
 };
 
-page.onResourceTimeout = function (error) {
+page.onResourceTimeout = function(error) {
   console.log(JSON.stringify([
     'Resource timeout',
     error.errorCode, // it'll probably be 408
@@ -70,7 +70,7 @@ page.onResourceTimeout = function (error) {
   ]));
 };
 
-page.onResourceError = function (error) {
+page.onResourceError = function(error) {
   console.log(JSON.stringify([
     'Resource error',
     'Error code: ' + error.errorCode,
@@ -187,8 +187,8 @@ page.open(address);
 
 // Decorate the page once the HTML has been loaded.
 // This is where we run the tests.
-page.onLoadFinished = function (status) {
-  var callPhantom = window && window.callPhantom || function () {};
+page.onLoadFinished = function(status) {
+  var callPhantom = window && window.callPhantom || function() {};
   if (status === 'success') {
     console.log('Page opened successfully: ' + address);
     page.injectJs(distPath + '/vendor/node_modules/jquery/dist/jquery.min.js');
@@ -200,7 +200,7 @@ page.onLoadFinished = function (status) {
     // The evaluation is executed in its own function scope. Closures that
     // incorporate outside scopes are not possible.
     try {
-      page.evaluate(function (tests, size) {
+      page.evaluate(function(tests, size) {
         // Tell the client that we're starting the test run.
         var scLen = size(quail.guidelines.wcag.successCriteria);
         console.log('Beginning evaluation of ' + size(tests) + ' tests and ' + scLen + ' Success Criteria.');
@@ -218,7 +218,7 @@ page.onLoadFinished = function (status) {
         jQuery('html').quail({
           accessibilityTests: tests,
           // Called when an individual Case in a test is resolved.
-          caseResolve: function (eventName, test, _case) {
+          caseResolve: function(eventName, test, _case) {
             var name = test.get('name');
             if (!output.tests[name]) {
               output.tests[name] = {
@@ -242,18 +242,18 @@ page.onLoadFinished = function (status) {
             output.stats.cases++;
           },
           // Called when all the Cases in a Test are resolved.
-          testComplete: function () {
+          testComplete: function() {
             // console.log('Finished testing ' + test.get('name') + '.');
             // Increment the tests count.
             output.stats.tests++;
           },
           // Called when all the Tests in a TestCollection are completed.
-          testCollectionComplete: function () {
+          testCollectionComplete: function() {
             // Push the results of the test out to the Phantom listener.
             console.log('The test collection has been evaluated.');
             callPhantom('writeData', JSON.stringify(output));
           },
-          successCriteriaEvaluated : function (eventName, successCriteria) {
+          successCriteriaEvaluated : function(eventName, successCriteria) {
             var name = successCriteria.get('name');
             var status = successCriteria.get('status');
             // var totals = successCriteria.get('totals');
@@ -261,7 +261,7 @@ page.onLoadFinished = function (status) {
               successCriteria: {}
             };
             // Get some stringifyable data from the results.
-            var looper = function (index, _case) {
+            var looper = function(index, _case) {
               output.successCriteria[name][result].push({
                 selector: _case.get('selector'),
                 html: _case.get('html')

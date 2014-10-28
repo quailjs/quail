@@ -1,4 +1,4 @@
-quail.inputCheckboxRequiresFieldset = function (quail, test, Case) {
+quail.inputCheckboxRequiresFieldset = function(quail, test, Case) {
   test.get('$scope').find(':checkbox').each(function() {
     var _case = Case({
       element: this,

@@ -3,7 +3,7 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-text-presentation.html
  */
-quail.guidelines.wcag.successCriteria['1.4.5'] = (function (quail) {
+quail.guidelines.wcag.successCriteria['1.4.5'] = (function(quail) {
 
   /**
    * Determines if this Success Criteria applies to the document.

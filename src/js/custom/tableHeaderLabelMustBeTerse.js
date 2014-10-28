@@ -1,4 +1,4 @@
-quail.tableHeaderLabelMustBeTerse = function (quail, test, Case) {
+quail.tableHeaderLabelMustBeTerse = function(quail, test, Case) {
   test.get('$scope').find('th, table tr:first td').each(function() {
     var _case = Case({
       element: this,
