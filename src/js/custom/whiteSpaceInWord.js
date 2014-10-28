@@ -26,4 +26,3 @@ quail.whiteSpaceInWord = function(quail, test, Case) {
     }
   });
 };
-

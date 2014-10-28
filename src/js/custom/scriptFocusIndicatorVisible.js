@@ -44,7 +44,6 @@ quail.scriptFocusIndicatorVisible = function() {
 
     // in any other case, it is acceptable to change other visual components
 
-
     if (noFocus.backgroundColor !== $(this).css('background-color')) {
       $(this).blur();
       return;

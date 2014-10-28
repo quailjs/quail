@@ -55,7 +55,6 @@ quail.guidelines.wcag.successCriteria['3.3.3'] = (function(quail) {
       return !!this.querySelectorAll('[' + key + '="' + attr[key] + '"]').length;
     }
 
-
     // Testing forms.
     //
     // If any of the complex form types are present in the document, this
