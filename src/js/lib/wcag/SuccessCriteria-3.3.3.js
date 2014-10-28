@@ -35,12 +35,14 @@ quail.guidelines.wcag.successCriteria['3.3.3'] = (function(quail) {
       'week' //  Defines a week and year control (no time zone)
     ];
 
-    var requiredAttrs = [{
-      'required': 'required'
-    },
-    {
-      'aria-required': 'true'
-    }];
+    var requiredAttrs = [
+      {
+        'required': 'required'
+      },
+      {
+        'aria-required': 'true'
+      }
+    ];
 
     // Searches this for complex for types.
     //

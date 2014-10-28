@@ -194,7 +194,7 @@ quail.lib.SuccessCriteria = (function() {
      */
     report: function() {
       var args = Array.prototype.slice.call(arguments);
-      args = [].concat(['successCriteriaEvaluated', this, this.get('tests')], args);
+      args = [].concat([ 'successCriteriaEvaluated', this, this.get('tests') ], args);
       this.dispatch.apply(this, args);
     },
     // @todo, make this a set of methods that all classes extend.

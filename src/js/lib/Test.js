@@ -157,7 +157,7 @@ quail.lib.Test = (function() {
       // A single status or an array of statuses is allowed. Always act on an
       // array.
       if (typeof statuses === 'string') {
-        statuses = [statuses];
+        statuses = [ statuses ];
       }
       // Loop the through the statuses and find tests with them.
       for (var i = 0, il = statuses.length; i < il; ++i) {
@@ -280,19 +280,19 @@ quail.lib.Test = (function() {
         });
       }
       // CantTell.
-      else if (this.findByStatus(['cantTell']).length === this.length) {
+      else if (this.findByStatus([ 'cantTell' ]).length === this.length) {
         this.set({
           'status': 'cantTell'
         });
       }
       // inapplicable.
-      else if (this.findByStatus(['inapplicable']).length === this.length) {
+      else if (this.findByStatus([ 'inapplicable' ]).length === this.length) {
         this.set({
           'status': 'inapplicable'
         });
       }
       // Failed.
-      else if (this.findByStatus(['failed', 'untested']).length) {
+      else if (this.findByStatus([ 'failed', 'untested' ]).length) {
         this.set({
           'status': 'failed'
         });

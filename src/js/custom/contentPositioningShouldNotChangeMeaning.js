@@ -1,6 +1,6 @@
 quail.contentPositioningShouldNotChangeMeaning = function(quail, test, Case) {
   //Look for absolute positioned elements that are being put into grids or columns
-  var positions = ['top', 'left', 'right', 'bottom'];
+  var positions = [ 'top', 'left', 'right', 'bottom' ];
   var coordinates = {};
   var failed = false;
   test.get('$scope').find('*:has(*:quailCss(position=absolute))').each(function() {

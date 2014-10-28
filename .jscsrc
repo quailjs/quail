@@ -5,7 +5,6 @@
   "maximumLineLength": null,
   "requireMultipleVarDecl": null,
   "requireSpacesInsideObjectBrackets": null,
-  "requireSpacesInsideArrayBrackets": null,
   "excludeFiles": [
     "dist/**",
     "node_modules/**"

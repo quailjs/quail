@@ -109,12 +109,12 @@ var quail = {
    * Suspect tags that would indicate a paragraph is being used as a header.
    * I know, font tag, I know. Don't get me started.
    */
-  suspectPHeaderTags: ['strong', 'b', 'em', 'i', 'u', 'font'],
+  suspectPHeaderTags: [ 'strong', 'b', 'em', 'i', 'u', 'font' ],
 
   /**
    * Suspect CSS styles that might indicate a paragraph tag is being used as a header.
    */
-  suspectPCSSStyles: ['color', 'font-weight', 'font-size', 'font-family'],
+  suspectPCSSStyles: [ 'color', 'font-weight', 'font-size', 'font-family' ],
 
   /**
    * Elements that can (naturally) receive keyboard focus.
@@ -129,7 +129,7 @@ var quail = {
   /**
    * A list of self-closing tags.
    */
-  selfClosingTags: ['area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'],
+  selfClosingTags: [ 'area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr' ],
 
   /**
    * Main run function for quail. It bundles up some accessibility tests,

@@ -74,7 +74,7 @@ quail.lib.Case = (function() {
     hasStatus: function(statuses) {
       // This is a rought test of arrayness.
       if (typeof statuses !== 'object') {
-        statuses = [statuses];
+        statuses = [ statuses ];
       }
       var status = this.get('status');
       for (var i = 0, il = statuses.length; i < il; ++i) {
@@ -232,7 +232,7 @@ quail.lib.Case = (function() {
        */
       function applyAttributes (element) {
         var selector = '';
-        var attributes = ['href', 'type'];
+        var attributes = [ 'href', 'type' ];
         var value;
         if (typeof element === 'undefined' ||
           typeof element.attributes === 'undefined' ||
