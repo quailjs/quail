@@ -4,7 +4,6 @@
   "disallowKeywordsOnNewLine": null,
   "maximumLineLength": null,
   "requireMultipleVarDecl": null,
-  "requireSpacesInsideObjectBrackets": null,
   "excludeFiles": [
     "dist/**",
     "node_modules/**"

@@ -34,7 +34,7 @@ quail.aAdjacentWithSameResourceShouldBeCombined = function(quail, test, Case) {
     }
 
     test.add(_case);
-    _case.set({'status': status});
+    _case.set({ 'status': status });
   }
 
   function excludeSingleLinks(index, element) {

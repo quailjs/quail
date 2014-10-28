@@ -34,7 +34,7 @@ quail.languageDirAttributeIsUsed = function(quail, test, Case) {
       }(this))
     }));
 
-    _case.set({status: (matches > 0) ? 'failed' : 'passed'});
+    _case.set({ status: (matches > 0) ? 'failed' : 'passed' });
   }
 
   test.get('$scope').each(function() {

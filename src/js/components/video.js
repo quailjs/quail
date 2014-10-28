@@ -57,12 +57,13 @@ quail.components.video = {
 
       hasCaptions: function(element, callback) {
         var videoId = this.getVideoId(element);
-        $.ajax({url: this.apiUrl.replace('%video', videoId),
-                async: false,
-                dataType: 'json',
-                success: function(data) {
-                  callback(element, (data.feed.openSearch$totalResults.$t > 0));
-                }
+        $.ajax({
+          url: this.apiUrl.replace('%video', videoId),
+          async: false,
+          dataType: 'json',
+          success: function(data) {
+            callback(element, (data.feed.openSearch$totalResults.$t > 0));
+          }
         });
       }
     },

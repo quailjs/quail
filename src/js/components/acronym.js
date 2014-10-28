@@ -41,7 +41,7 @@ quail.components.acronym = function(quail, test, Case) {
           test.add(Case({
             element: el,
             expected: $el.closest('.quail-test').data('expected'),
-            info: {acronyms: infractions},
+            info: { acronyms: infractions },
             status: 'failed'
           }));
         }

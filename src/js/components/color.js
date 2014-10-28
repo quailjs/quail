@@ -268,13 +268,13 @@ quail.components.color = function(quail, test, Case, options) {
       }
 
       var blockSize = 5, // only visit every 5 pixels
-        defaultRGB = {r:0, g:0, b:0}, // for non-supporting envs
+        defaultRGB = { r:0, g:0, b:0 }, // for non-supporting envs
         canvas = document.createElement('canvas'),
         context = canvas.getContext && canvas.getContext('2d'),
         data, width, height,
         i = -4,
         length,
-        rgb = {r:0, g:0, b:0, a:0},
+        rgb = { r:0, g:0, b:0, a:0 },
         count = 0;
 
       if (!context) {

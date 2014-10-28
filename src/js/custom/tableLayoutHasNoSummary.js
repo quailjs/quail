@@ -7,10 +7,10 @@ quail.tableLayoutHasNoSummary = function(quail, test, Case) {
         expected: $(this).closest('.quail-test').data('expected')
       }));
       if (!quail.isDataTable($(this)) && !quail.isUnreadable($(this).attr('summary'))) {
-        _case.set({status: 'failed'});
+        _case.set({ status: 'failed' });
       }
       else {
-        _case.set({status: 'passed'});
+        _case.set({ status: 'passed' });
       }
     });
   });
