@@ -4,7 +4,6 @@
   "disallowKeywordsOnNewLine": null,
   "maximumLineLength": null,
   "requireMultipleVarDecl": null,
-  "disallowSpaceAfterObjectKeys": null,
   "requireSpacesInsideObjectBrackets": null,
   "requireSpacesInsideArrayBrackets": null,
   "excludeFiles": [

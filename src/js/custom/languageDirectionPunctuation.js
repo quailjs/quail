@@ -28,7 +28,7 @@ quail.languageDirectionPunctuation = function(quail, test, Case) {
         }(this))
       }));
       if (!matches) {
-        _case.set({status : 'inapplicable'});
+        _case.set({status: 'inapplicable'});
         return;
       }
       var first = text.search(textDirection[oppositeDirection]);
@@ -40,7 +40,7 @@ quail.languageDirectionPunctuation = function(quail, test, Case) {
           return;
         }
       }
-      _case.set({status : 'passed'});
+      _case.set({status: 'passed'});
     });
   });
 };

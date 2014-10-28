@@ -253,7 +253,7 @@ page.onLoadFinished = function(status) {
             console.log('The test collection has been evaluated.');
             callPhantom('writeData', JSON.stringify(output));
           },
-          successCriteriaEvaluated : function(eventName, successCriteria) {
+          successCriteriaEvaluated: function(eventName, successCriteria) {
             var name = successCriteria.get('name');
             var status = successCriteria.get('status');
             // var totals = successCriteria.get('totals');

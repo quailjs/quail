@@ -6,10 +6,10 @@ quail.focusIndicatorVisible = function(quail, test, Case) {
     });
     test.add(_case);
     var noFocus = {
-      borderWidth : $(this).css('border-width'),
-      borderColor : $(this).css('border-color'),
-      backgroundColor : $(this).css('background-color'),
-      boxShadow : $(this).css('box-shadow')
+      borderWidth: $(this).css('border-width'),
+      borderColor: $(this).css('border-color'),
+      backgroundColor: $(this).css('background-color'),
+      boxShadow: $(this).css('box-shadow')
     };
     $(this).focus();
     if (noFocus.backgroundColor.trim() !== $(this).css('background-color').trim()) {

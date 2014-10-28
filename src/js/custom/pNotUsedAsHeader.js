@@ -2,7 +2,7 @@ quail.pNotUsedAsHeader = function(quail, test, Case) {
   var priorStyle = { };
   test.get('$scope').find('p').each(function() {
     var _case = Case({
-      element : this,
+      element: this,
       expected: $(this).closest('.quail-test').data('expected')
     });
     test.add(_case);

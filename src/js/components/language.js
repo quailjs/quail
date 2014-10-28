@@ -9,17 +9,17 @@ quail.components.language = {
    * Regular expressions to capture unicode blocks that are either
    * explicitly right-to-left or left-to-right.
    */
-  textDirection : {
-    rtl : /[\u0600-\u06FF]|[\u0750-\u077F]|[\u0590-\u05FF]|[\uFE70-\uFEFF]/mg,
-    ltr : /[\u0041-\u007A]|[\u00C0-\u02AF]|[\u0388-\u058F]/mg
+  textDirection: {
+    rtl: /[\u0600-\u06FF]|[\u0750-\u077F]|[\u0590-\u05FF]|[\uFE70-\uFEFF]/mg,
+    ltr: /[\u0041-\u007A]|[\u00C0-\u02AF]|[\u0388-\u058F]/mg
   },
 
   /**
    * Special characters that indicate text direction changes.
    */
-  textDirectionChanges : {
-    rtl : /[\u200E]|&rlm;/mg,
-    ltr : /[\u200F]|&lrm;/mg
+  textDirectionChanges: {
+    rtl: /[\u200E]|&rlm;/mg,
+    ltr: /[\u200F]|&lrm;/mg
   },
 
   /**
@@ -108,7 +108,7 @@ quail.components.language = {
    * List of regular expressions that capture only unicode text blocks that are
    * associated with a single language.
    */
-  scriptSingletons : {
+  scriptSingletons: {
     bn: /[\u0980-\u09FF]/g,
     bo: /[\u0F00-\u0FFF]/g,
     el: /[\u0370-\u03FF]/g,

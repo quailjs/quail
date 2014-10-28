@@ -48,7 +48,7 @@ quail.languageChangesAreIdentified = function(quail, test, Case) {
           expected: (function(element) {
             return quail.components.resolveExpectation(element);
           }(element)),
-          info: { language : code },
+          info: { language: code },
           status: 'failed'
         }));
         failed = true;
@@ -66,7 +66,7 @@ quail.languageChangesAreIdentified = function(quail, test, Case) {
           expected: (function(element) {
             return quail.components.resolveExpectation(element);
           }(element)),
-          info: { language : code },
+          info: { language: code },
           status: 'failed'
         }));
         failed = true;
@@ -81,7 +81,7 @@ quail.languageChangesAreIdentified = function(quail, test, Case) {
             expected: (function(element) {
               return quail.components.resolveExpectation(element);
             }(element)),
-            info: { language : info[0] },
+            info: { language: info[0] },
             status: 'failed'
           }));
           failed = true;

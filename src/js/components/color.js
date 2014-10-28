@@ -9,7 +9,7 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns the lumosity of a given foreground and background object,
      * in the format of {r: red, g: green, b: blue } in rgb color values.
      */
-    getLuminosity : function(foreground, background) {
+    getLuminosity: function(foreground, background) {
       var cacheKey = 'getLuminosity_' + foreground + '_' + background;
       foreground = this.cleanup(foreground);
       background = this.cleanup(background);
@@ -43,7 +43,7 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns the average color for a given image
      * using a canvas element.
      */
-    fetchImageColorAtPixel : function(img, x, y) {
+    fetchImageColorAtPixel: function(img, x, y) {
       x = typeof x !== 'undefined' ? x : 1;
       y = typeof y !== 'undefined' ? y : 1;
       var can = document.createElement('canvas');
@@ -57,7 +57,7 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns whether an element's color passes
      * WCAG at a certain contrast ratio.
      */
-    passesWCAG : function(element, level) {
+    passesWCAG: function(element, level) {
       return this.passesWCAGColor(element, this.getColor(element, 'foreground'), this.getColor(element, 'background'), level);
     },
 
@@ -65,7 +65,7 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns whether an element's color passes
      * WCAG at a certain contrast ratio.
      */
-    passesWCAGColor : function(element, foreground, background, level) {
+    passesWCAGColor: function(element, foreground, background, level) {
       var pxfsize = quail.components.convertToPx(element.css('fontSize'));
       if (typeof level === 'undefined') {
         if (pxfsize >= 18) {
@@ -88,7 +88,7 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns whether an element's color passes
      * WAI brightness levels.
      */
-    passesWAI : function(element) {
+    passesWAI: function(element) {
       var foreground = this.cleanup(this.getColor(element, 'foreground'));
       var background = this.cleanup(this.getColor(element, 'background'));
       return this.passesWAIColor(foreground, background);
@@ -98,7 +98,7 @@ quail.components.color = function(quail, test, Case, options) {
      * Returns whether an element's color passes
      * WAI brightness levels.
      */
-    passesWAIColor : function(foreground, background) {
+    passesWAIColor: function(foreground, background) {
       return (this.getWAIErtContrast(foreground, background) > 500 &&
               this.getWAIErtBrightness(foreground, background) > 125);
     },
@@ -107,7 +107,7 @@ quail.components.color = function(quail, test, Case, options) {
      * Compused contrast of a foreground and background
      * per the ERT contrast spec.
      */
-    getWAIErtContrast : function(foreground, background) {
+    getWAIErtContrast: function(foreground, background) {
       var diffs = this.getWAIDiffs(foreground, background);
       return diffs.red + diffs.green + diffs.blue;
     },
@@ -116,7 +116,7 @@ quail.components.color = function(quail, test, Case, options) {
      * Computed contrast of a foreground and background
      * per the ERT brightness spec.
      */
-    getWAIErtBrightness : function(foreground, background) {
+    getWAIErtBrightness: function(foreground, background) {
       var diffs = this.getWAIDiffs(foreground, background);
       return ((diffs.red * 299) + (diffs.green * 587) + (diffs.blue * 114)) / 1000;
 
@@ -125,7 +125,7 @@ quail.components.color = function(quail, test, Case, options) {
     /**
      * Returns differences between two colors.
      */
-    getWAIDiffs : function(foreground, background) {
+    getWAIDiffs: function(foreground, background) {
       var diff = { };
       diff.red = Math.abs(foreground.r - background.r);
       diff.green = Math.abs(foreground.g - background.g);
@@ -138,7 +138,7 @@ quail.components.color = function(quail, test, Case, options) {
      * There are some normalizations here for the way
      * different browsers can return colors, and handling transparencies.
      */
-    getColor : function(element, type) {
+    getColor: function(element, type) {
       if (!element.attr('data-cacheId')) {
         element.attr('data-cacheId', 'id_' + Math.random());
       }
@@ -173,25 +173,25 @@ quail.components.color = function(quail, test, Case, options) {
     /**
      * Returns an object with rgba taken from a string.
      */
-    cleanup : function(color) {
+    cleanup: function(color) {
       if (typeof color === 'object') {
         return color;
       }
 
       if (color.substr(0, 1) === '#') {
-        return { r : parseInt(color.substr(1, 2), 16),
-                 g : parseInt(color.substr(3, 2), 16),
-                 b : parseInt(color.substr(5, 2), 16),
-                 a : false
+        return { r: parseInt(color.substr(1, 2), 16),
+                 g: parseInt(color.substr(3, 2), 16),
+                 b: parseInt(color.substr(5, 2), 16),
+                 a: false
                };
       }
 
       if (color.substr(0, 3) === 'rgb') {
         color = color.replace('rgb(', '').replace('rgba(', '').replace(')', '').split(',');
-        return { r : color[0],
-                 g : color[1],
-                 b : color[2],
-                 a : ((typeof color[3] === 'undefined') ? false : color[3])
+        return { r: color[0],
+                 g: color[1],
+                 b: color[2],
+                 a: ((typeof color[3] === 'undefined') ? false : color[3])
                };
       }
     },

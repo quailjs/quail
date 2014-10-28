@@ -1,7 +1,7 @@
 quail.listNotUsedForFormatting = function(quail, test, Case) {
   test.get('$scope').find('ol, ul').each(function() {
     var _case = Case({
-      element : this,
+      element: this,
       expected: $(this).closest('.quail-test').data('expected')
     });
     test.add(_case);

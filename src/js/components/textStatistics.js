@@ -4,7 +4,7 @@
  */
 quail.components.textStatistics = {
 
-  cleanText : function(text) {
+  cleanText: function(text) {
     return text.replace(/[,:;()\-]/, ' ')
                .replace(/[\.!?]/, '.')
                .replace(/[ ]*(\n|\r\n|\r)[ ]*/, ' ')
@@ -15,19 +15,19 @@ quail.components.textStatistics = {
 
   },
 
-  sentenceCount : function(text) {
+  sentenceCount: function(text) {
     return text.split('.').length + 1;
   },
 
-  wordCount : function(text) {
+  wordCount: function(text) {
     return text.split(' ').length + 1;
   },
 
-  averageWordsPerSentence : function(text) {
+  averageWordsPerSentence: function(text) {
     return this.wordCount(text) / this.sentenceCount(text);
   },
 
-  averageSyllablesPerWord : function(text) {
+  averageSyllablesPerWord: function(text) {
     var that = this;
     var count = 0;
     var wordCount = that.wordCount(text);
@@ -40,7 +40,7 @@ quail.components.textStatistics = {
     return count / wordCount;
   },
 
-  syllableCount : function(word) {
+  syllableCount: function(word) {
     var matchedWord = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
                           .match(/[aeiouy]{1,2}/g);
     if (!matchedWord || matchedWord.length === 0) {

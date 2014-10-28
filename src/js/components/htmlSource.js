@@ -7,7 +7,7 @@ quail.components.htmlSource = {
       callback(quail.options.htmlSource, that.parseHtml(quail.options.htmlSource));
       return;
     }
-    var data = $.ajax({ url : window.location.href, async : false });
+    var data = $.ajax({ url: window.location.href, async: false });
     if (data && typeof data.responseText !== 'undefined') {
       callback(data.responseText, that.parseHtml(data.responseText));
     }

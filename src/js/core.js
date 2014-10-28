@@ -51,25 +51,25 @@ function _processTestResult () {
 
 var quail = {
 
-  options : { },
+  options: { },
 
-  components : { },
+  components: { },
 
-  lib : { },
+  lib: { },
 
-  testabilityTranslation : {
-    0      : 'suggestion',
-    0.5    : 'moderate',
-    1      : 'severe'
+  testabilityTranslation: {
+    0: 'suggestion',
+    0.5: 'moderate',
+    1: 'severe'
   },
 
-  html : null,
+  html: null,
 
-  strings : { },
+  strings: { },
 
-  accessibilityResults : { },
+  accessibilityResults: { },
 
-  accessibilityTests : null,
+  accessibilityTests: null,
 
   guidelines: {
     wcag: {
@@ -98,28 +98,28 @@ var quail = {
   },
 
   // @var TestCollection
-  tests : { },
+  tests: { },
 
   /**
    * A list of HTML elements that can contain actual text.
    */
-  textSelector : ':not(:empty)',
+  textSelector: ':not(:empty)',
 
   /**
    * Suspect tags that would indicate a paragraph is being used as a header.
    * I know, font tag, I know. Don't get me started.
    */
-  suspectPHeaderTags : ['strong', 'b', 'em', 'i', 'u', 'font'],
+  suspectPHeaderTags: ['strong', 'b', 'em', 'i', 'u', 'font'],
 
   /**
    * Suspect CSS styles that might indicate a paragraph tag is being used as a header.
    */
-  suspectPCSSStyles : ['color', 'font-weight', 'font-size', 'font-family'],
+  suspectPCSSStyles: ['color', 'font-weight', 'font-size', 'font-family'],
 
   /**
    * Elements that can (naturally) receive keyboard focus.
    */
-  focusElements : 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]',
+  focusElements: 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]',
 
   /**
    * Regular expression to find emoticons.
@@ -129,13 +129,13 @@ var quail = {
   /**
    * A list of self-closing tags.
    */
-  selfClosingTags : ['area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'],
+  selfClosingTags: ['area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'],
 
   /**
    * Main run function for quail. It bundles up some accessibility tests,
    * and if tests are not passed, it instead fetches them using getJSON.
    */
-  run : function(options) {
+  run: function(options) {
     if (options.reset) {
       quail.accessibilityResults = { };
     }
@@ -224,16 +224,16 @@ var quail = {
       }
 
       $.ajax({
-        url : url + '/tests.json',
-        async : false,
-        dataType : 'json',
-        success : function(data) {
+        url: url + '/tests.json',
+        async: false,
+        dataType: 'json',
+        success: function(data) {
           if (typeof data === 'object') {
             buildTests(quail, data, options);
             _run.call(quail);
           }
         },
-        error : function() {
+        error: function() {
           throw new Error('Tests could not be loaded');
         }
       });
@@ -247,7 +247,7 @@ var quail = {
     dispatcher.registerListener.call(dispatcher, eventName, handler);
   },
 
-  getConfiguration : function(testName) {
+  getConfiguration: function(testName) {
     var test = this.tests.find(testName);
     var guidelines = test && test.get('guidelines');
     var guideline = guidelines && this.options.guidelineName && guidelines[this.options.guidelineName];
@@ -265,7 +265,7 @@ var quail = {
    *
    * @deprecated
    */
-  testFails : function(testName, $element, options) {
+  testFails: function(testName, $element, options) {
     _processTestResult('failed', testName, $element, options);
   },
 
@@ -274,7 +274,7 @@ var quail = {
    * @todo - This will be added to in the future... we should also include
    * phonetic tests.
    */
-  isUnreadable : function(text) {
+  isUnreadable: function(text) {
     if (typeof text !== 'string') {
       return true;
     }
@@ -284,7 +284,7 @@ var quail = {
   /**
    * Read more about this function here: https://github.com/kevee/quail/wiki/Layout-versus-data-tables
    */
-  isDataTable : function(table) {
+  isDataTable: function(table) {
     // If there are less than three rows, why do a table?
     if (table.find('tr').length < 3) {
       return false;
@@ -334,7 +334,7 @@ var quail = {
   /**
    *  Returns text contents for nodes depending on their semantics
    */
-  getTextContents : function($element) {
+  getTextContents: function($element) {
     if ($element.is('p, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption')) {
       return $element.text();
     }
@@ -353,15 +353,15 @@ var quail = {
   /**
    * Helper function to determine if a given URL is even valid.
    */
-  validURL : function(url) {
+  validURL: function(url) {
     return url.search(' ') === -1;
   },
 
-  cleanString : function(string) {
+  cleanString: function(string) {
     return string.toLowerCase().replace(/^\s\s*/, '');
   },
 
-  containsReadableText : function(element, children) {
+  containsReadableText: function(element, children) {
     element = element.clone();
     element.find('option').remove();
     if (!quail.isUnreadable(element.text())) {
