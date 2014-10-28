@@ -10,7 +10,6 @@
   "requireSpaceAfterBinaryOperators": null,
   "requireSpacesInsideObjectBrackets": null,
   "requireSpacesInsideArrayBrackets": null,
-  "requireSpaceBeforeBlockStatements": null,
   "excludeFiles": [
     "dist/**",
     "node_modules/**"
