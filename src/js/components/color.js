@@ -18,24 +18,24 @@ quail.components.color = function(quail, test, Case, options) {
         return this.cache[cacheKey];
       }
 
-      var RsRGB = foreground.r/255;
-      var GsRGB = foreground.g/255;
-      var BsRGB = foreground.b/255;
-      var R = (RsRGB <= 0.03928) ? RsRGB/12.92 : Math.pow((RsRGB+0.055)/1.055, 2.4);
-      var G = (GsRGB <= 0.03928) ? GsRGB/12.92 : Math.pow((GsRGB+0.055)/1.055, 2.4);
-      var B = (BsRGB <= 0.03928) ? BsRGB/12.92 : Math.pow((BsRGB+0.055)/1.055, 2.4);
+      var RsRGB = foreground.r / 255;
+      var GsRGB = foreground.g / 255;
+      var BsRGB = foreground.b / 255;
+      var R = (RsRGB <= 0.03928) ? RsRGB / 12.92 : Math.pow((RsRGB + 0.055) / 1.055, 2.4);
+      var G = (GsRGB <= 0.03928) ? GsRGB / 12.92 : Math.pow((GsRGB + 0.055) / 1.055, 2.4);
+      var B = (BsRGB <= 0.03928) ? BsRGB / 12.92 : Math.pow((BsRGB + 0.055) / 1.055, 2.4);
 
-      var RsRGB2 = background.r/255;
-      var GsRGB2 = background.g/255;
-      var BsRGB2 = background.b/255;
-      var R2 = (RsRGB2 <= 0.03928) ? RsRGB2/12.92 : Math.pow((RsRGB2+0.055)/1.055, 2.4);
-      var G2 = (GsRGB2 <= 0.03928) ? GsRGB2/12.92 : Math.pow((GsRGB2+0.055)/1.055, 2.4);
-      var B2 = (BsRGB2 <= 0.03928) ? BsRGB2/12.92 : Math.pow((BsRGB2+0.055)/1.055, 2.4);
+      var RsRGB2 = background.r / 255;
+      var GsRGB2 = background.g / 255;
+      var BsRGB2 = background.b / 255;
+      var R2 = (RsRGB2 <= 0.03928) ? RsRGB2 / 12.92 : Math.pow((RsRGB2 + 0.055) / 1.055, 2.4);
+      var G2 = (GsRGB2 <= 0.03928) ? GsRGB2 / 12.92 : Math.pow((GsRGB2 + 0.055) / 1.055, 2.4);
+      var B2 = (BsRGB2 <= 0.03928) ? BsRGB2 / 12.92 : Math.pow((BsRGB2 + 0.055) / 1.055, 2.4);
       var l1, l2;
       l1 = (0.2126 * R + 0.7152 * G + 0.0722 * B);
       l2 = (0.2126 * R2 + 0.7152 * G2 + 0.0722 * B2);
 
-      this.cache[cacheKey] = Math.round((Math.max(l1, l2) + 0.05)/(Math.min(l1, l2) + 0.05)*10)/10;
+      this.cache[cacheKey] = Math.round((Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05) * 10) / 10;
       return this.cache[cacheKey];
     },
 
@@ -268,7 +268,7 @@ quail.components.color = function(quail, test, Case, options) {
       }
 
       var blockSize = 5, // only visit every 5 pixels
-        defaultRGB = {r:0,g:0,b:0}, // for non-supporting envs
+        defaultRGB = {r:0, g:0, b:0}, // for non-supporting envs
         canvas = document.createElement('canvas'),
         context = canvas.getContext && canvas.getContext('2d'),
         data, width, height,
@@ -298,14 +298,14 @@ quail.components.color = function(quail, test, Case, options) {
       while ((i += blockSize * 4) < length) {
         ++count;
         rgb.r += data.data[i];
-        rgb.g += data.data[i+1];
-        rgb.b += data.data[i+2];
+        rgb.g += data.data[i + 1];
+        rgb.b += data.data[i + 2];
       }
 
       // ~~ used to floor values
-      rgb.r = ~~(rgb.r/count);
-      rgb.g = ~~(rgb.g/count);
-      rgb.b = ~~(rgb.b/count);
+      rgb.r = ~~(rgb.r / count);
+      rgb.g = ~~(rgb.g / count);
+      rgb.b = ~~(rgb.b / count);
 
       this.cache[cacheKey] = rgb;
       return rgb;
@@ -361,7 +361,7 @@ quail.components.color = function(quail, test, Case, options) {
       element.css('visibility', 'hidden');
 
       // Get element at position x, y.
-      var el = document.elementFromPoint(x,y);
+      var el = document.elementFromPoint(x, y);
       while (foundIt === undefined && el && el.tagName !== 'BODY' && el.tagName !== 'HTML') {
         el = $(el);
         var bcolor = el.css('backgroundColor');
@@ -407,7 +407,7 @@ quail.components.color = function(quail, test, Case, options) {
             visibility: el.css('visibility')
           });
           el.css('visibility', 'hidden');
-          el = document.elementFromPoint(x,y);
+          el = document.elementFromPoint(x, y);
         }
       }
 
