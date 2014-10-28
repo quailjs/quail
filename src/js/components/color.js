@@ -288,7 +288,7 @@ quail.components.color = function(quail, test, Case, options) {
 
       try {
         data = context.getImageData(0, 0, width, height);
-      } catch(e) {
+      } catch (e) {
         this.cache[cacheKey] = defaultRGB;
         return defaultRGB;
       }
@@ -412,7 +412,7 @@ quail.components.color = function(quail, test, Case, options) {
       }
 
       // Reset visibility.
-      for(var i = 0; i < scannedElements.length; i++) {
+      for (var i = 0; i < scannedElements.length; i++) {
         scannedElements[i].element.css('visibility', scannedElements[i].visibility);
       }
 
@@ -519,7 +519,7 @@ quail.components.color = function(quail, test, Case, options) {
       // Load the image.
       try {
         img.src = backgroundImage;
-      } catch(e) {
+      } catch (e) {
         var id = 'colorBackgroundImageContrast';
         buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
       }
@@ -551,7 +551,7 @@ quail.components.color = function(quail, test, Case, options) {
       // Load the image.
       try {
         img.src = behindBackgroundImage;
-      } catch(e) {
+      } catch (e) {
         var id = 'colorElementBehindBackgroundImageContrast';
         buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
       }

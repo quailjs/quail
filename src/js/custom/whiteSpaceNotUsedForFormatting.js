@@ -17,7 +17,7 @@ quail.whiteSpaceNotUsedForFormatting = function(quail, test, Case) {
         lineCount++;
       }
     });
-    if(lineCount > 1) {
+    if (lineCount > 1) {
       _case.set({status: 'failed'});
     }
     else {

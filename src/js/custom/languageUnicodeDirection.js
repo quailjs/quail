@@ -20,7 +20,7 @@ quail.languageUnicodeDirection = function(quail, test, Case) {
         _case.set({status: 'inapplicable'});
       }
       else {
-        if(text.search(textDirectionChanges[otherDirection]) !== -1) {
+        if (text.search(textDirectionChanges[otherDirection]) !== -1) {
           _case.set({status: 'passed'});
         }
         else {

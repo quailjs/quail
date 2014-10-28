@@ -10,7 +10,6 @@
   "requireSpaceAfterBinaryOperators": null,
   "requireSpacesInsideObjectBrackets": null,
   "requireSpacesInsideArrayBrackets": null,
-  "requireSpaceAfterKeywords": null,
   "requireSpaceBeforeBlockStatements": null,
   "excludeFiles": [
     "dist/**",

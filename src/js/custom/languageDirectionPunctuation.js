@@ -34,7 +34,7 @@ quail.languageDirectionPunctuation = function(quail, test, Case) {
       var first = text.search(textDirection[oppositeDirection]);
       var last = text.lastIndexOf(matches.pop());
       while (punctuation = punctuationRegex.exec(text)) {
-        if(punctuation.index === first - 1 ||
+        if (punctuation.index === first - 1 ||
           punctuation.index === last + 1) {
           _case.set({status: 'failed'});
           return;

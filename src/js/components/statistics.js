@@ -11,7 +11,7 @@ quail.statistics = {
   average : function( numArr, numOfDec ) {
     var i = numArr.length,
       sum = 0;
-    while( i-- ){
+    while ( i-- ){
       sum += numArr[ i ];
     }
     return quail.statistics.setDecimal( (sum / numArr.length ), numOfDec );
@@ -22,7 +22,7 @@ quail.statistics = {
       i = numArr.length,
       v = 0;
 
-    while( i-- ){
+    while ( i-- ){
       v += Math.pow( (numArr[ i ] - avg), 2 );
     }
     v /= numArr.length;

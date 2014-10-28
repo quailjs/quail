@@ -119,7 +119,7 @@ quail.components.video = {
         $captions.each(function() {
           if (!$(this).attr('srclang') || $(this).attr('srclang').toLowerCase() === language) {
             foundLanguage = true;
-            try{
+            try {
               var request = $.ajax({ url: $(this).attr('src'),
                         type: 'HEAD',
                         async: false,
@@ -129,7 +129,7 @@ quail.components.video = {
                 foundLanguage = false;
               }
             }
-            catch(e) {
+            catch (e) {
 
             }
           }
