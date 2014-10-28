@@ -1,7 +1,6 @@
 {
   "preset": "jquery",
   "validateQuoteMarks": null,
-  "requireLineFeedAtFileEnd": null,
   "disallowKeywordsOnNewLine": null,
   "maximumLineLength": null,
   "requireDotNotation": null,
