@@ -1,0 +1,28 @@
+{
+  "preset": "jquery",
+  "validateQuoteMarks": null,
+  "requireLineFeedAtFileEnd": null,
+  "disallowKeywordsOnNewLine": null,
+  "maximumLineLength": null,
+  "requireDotNotation": null,
+  "requireMultipleVarDecl": null,
+  "requireSpacesInAnonymousFunctionExpression": null,
+  "disallowSpacesInAnonymousFunctionExpression": null,
+  "requireSpacesInNamedFunctionExpression": null,
+  "requireSpacesInFunctionExpression": null,
+  "disallowSpacesInFunctionExpression": null,
+  "disallowSpaceAfterObjectKeys": null,
+  "disallowSpaceBeforeBinaryOperators": null,
+  "requireSpaceBeforeBinaryOperators": null,
+  "requireSpaceAfterBinaryOperators": null,
+  "requireSpacesInsideObjectBrackets": null,
+  "requireSpacesInsideArrayBrackets": null,
+  "requireParenthesesAroundIIFE": true,
+  "disallowMultipleLineBreaks": null,
+  "requireSpaceAfterKeywords": null,
+  "requireSpaceBeforeBlockStatements":null,
+  "excludeFiles": [
+    "dist/**",
+    "node_modules/**"
+  ]
+}

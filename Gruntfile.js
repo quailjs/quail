@@ -149,6 +149,7 @@ module.exports = function(grunt) {
           'convert',
           'concat',
           'jshint',
+          'jscs',
           'buildTestFilesJson',
           'buildGuideline',
           'uglify'
@@ -156,6 +157,15 @@ module.exports = function(grunt) {
         options: {
           spawn: false
         }
+      },
+      jscs: {
+        files: [
+          '.jscsrc',
+          'src/**/*.js'
+        ],
+        tasks: [
+          'jscs'
+        ]
       }
     },
     chmod: {
@@ -218,21 +228,28 @@ module.exports = function(grunt) {
     },
     bower: {
       install: { }
+    },
+    jscs: {
+      options: {
+        config: '.jscsrc'
+      },
+      files: 'src/**/*.js'
     }
   });
   grunt.loadTasks('tasks');
+  grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-chmod');
-  grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-gh-pages');
-  grunt.loadNpmTasks('grunt-bower-task');
+  grunt.loadNpmTasks('grunt-jscs');
+  grunt.loadNpmTasks('grunt-karma');
 
   // By default, just run tests
   grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all', 'karma']);
