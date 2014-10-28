@@ -108,7 +108,7 @@ quail.lib.Case = (function() {
         // Get the parent node in order to get the innerHTML for the selected
         // element. Trim wrapping whitespace, remove linebreaks and spaces.
         else if (typeof el.outerHTML === 'string') {
-          outerEl = el.outerHTML.trim().replace(/(\r\n|\n|\r)/gm,"").replace(/>\s+</g, '><');
+          outerEl = el.outerHTML.trim().replace(/(\r\n|\n|\r)/gm, '').replace(/>\s+</g, '><');
           // Guard against insanely long elements.
           // @todo, make this length configurable eventually.
           if (outerEl.length > 200) {

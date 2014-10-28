@@ -93,7 +93,7 @@ if (typeof Tautologistics !== 'undefined') {
   Tautologistics.NodeHtmlParser.HtmlBuilder.prototype.write = function(element) {
     // this._raw.push(element);
     if (this._done) {
-      this.handleCallback(new Error("Writing to the builder after done() called is not allowed without a reset()"));
+      this.handleCallback(new Error('Writing to the builder after done() called is not allowed without a reset()'));
     }
     if (this._options.includeLocation) {
       if (element.type !== Mode.Attr) {
@@ -111,7 +111,7 @@ if (typeof Tautologistics !== 'undefined') {
     if (!this._tagStack.last()) { // There are no parent elements
       // If the element can be a container, add it to the tag stack and the top level list
       if (element.type === Mode.Tag) {
-        if (element.name.charAt(0) !== "/") { // Ignore closing tags that obviously don't have an opening tag
+        if (element.name.charAt(0) !== '/') { // Ignore closing tags that obviously don't have an opening tag
           node = this._copyElement(element);
           node.closingTag = true;
           this.dom.push(node);
@@ -139,7 +139,7 @@ if (typeof Tautologistics !== 'undefined') {
       // If the element can be a container, add it as a child of the element
       // on top of the tag stack and then add it to the tag stack
       if (element.type === Mode.Tag) {
-        if (element.name.charAt(0) === "/") {
+        if (element.name.charAt(0) === '/') {
           // This is a closing tag, scan the tagStack to find the matching opening tag
           // and pop the stack up to the opening tag's parent
           var baseName = this._options.caseSensitiveTags ?

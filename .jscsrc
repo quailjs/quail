@@ -1,6 +1,6 @@
 {
   "preset": "jquery",
-  "validateQuoteMarks": null,
+  "validateQuoteMarks": "'",
   "disallowKeywordsOnNewLine": null,
   "maximumLineLength": null,
   "requireDotNotation": null,

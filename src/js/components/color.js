@@ -367,7 +367,7 @@ quail.components.color = function(quail, test, Case, options) {
         var bcolor = el.css('backgroundColor');
         var bimage;
         // Only check visible elements.
-        if (el.css('visibility') !== "hidden" && el.css('display') !== 'none') {
+        if (el.css('visibility') !== 'hidden' && el.css('display') !== 'none') {
           switch (property) {
           case 'background-color':
             if (this.hasBackgroundColor(bcolor)) {
@@ -496,7 +496,7 @@ quail.components.color = function(quail, test, Case, options) {
     var backgroundImage = colors.getBackgroundImage($this);
     if (backgroundImage) {
       img = new Image();
-      img.crossOrigin = "Anonymous";
+      img.crossOrigin = 'Anonymous';
       // Get average color of the background image. The image must first load
       // before information about it is available to the DOM.
       img.onload = function() {

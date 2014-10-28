@@ -386,8 +386,7 @@ quail.lib.Test = (function() {
    *   will only be called at most 4 times per second.
    */
   function debounce (func, wait, immediate) {
-
-    "use strict";
+    'use strict';
 
     var timeout, result;
     return function() {
