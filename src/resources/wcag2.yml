@@ -228,10 +228,10 @@
   id: "wcag20:navigation-mechanisms-focus-visible"
   level: "wcag20:level_aa"
   testClusters:
-    - passed: cannotTell  # Should also look at outline
-      failed: failed
-      tests:
-      - focusIndicatorVisible
+    # - passed: cannotTell  # Link focus state isn't trigugered by this test
+    #   failed: failed
+    #   tests:
+    #   - focusIndicatorVisible
 2.4.8:
   id: "wcag20:navigation-mechanisms-location"
   level: "wcag20:level_aaa"
