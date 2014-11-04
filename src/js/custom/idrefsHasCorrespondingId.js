@@ -19,7 +19,7 @@ quail.idrefsHasCorrespondingId = function( quail, test, Case ) {
   test.get('$scope').each(function() {
 
       var testableElements = $(this).find(
-        'td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], '+ 
+        'td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], ' +
         '[aria-labelledby], [aria-owns]');
 
       if (testableElements.length === 0) {
