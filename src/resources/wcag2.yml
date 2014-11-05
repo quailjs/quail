@@ -148,10 +148,10 @@
   id: "wcag20:visual-audio-contrast-contrast"
   level: "wcag20:level_aa"
   testClusters:
-    - passed: passed
-      failed: failed
-      tests:
-        - cssTextHasContrast
+    # - passed: passed
+    #   failed: failed
+    #   tests:
+    #     - cssTextHasContrast
 1.4.4:
   id: "wcag20:visual-audio-contrast-scale"
   level: "wcag20:level_aa"
