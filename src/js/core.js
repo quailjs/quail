@@ -2,52 +2,6 @@
 // @see https://gist.github.com/dsingleton/1312328
 Function.prototype.bind=Function.prototype.bind||function(b){if(typeof this!=="function"){throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");}var a=Array.prototype.slice,f=a.call(arguments,1),e=this,c=function(){},d=function(){return e.apply(this instanceof c?this:b||window,f.concat(a.call(arguments)));};c.prototype=this.prototype;d.prototype=new c();return d;};
 
-"use strict";
-
-$.fn.quail = function(options) {
-  if (!this.length) {
-    return this;
-  }
-  quail.options = options;
-  quail.html = this;
-
-  quail.run(options);
-
-  return this;
-};
-
-$.expr[':'].quailCss = function(obj, index, meta) {
-  var args = meta[3].split(/\s*=\s*/);
-  return $(obj).css(args[0]).search(args[1]) > -1;
-};
-
-/**
- * Assembles data about the test and invokes appropriate callbacks.
- *
- * @param {string} type
- *   Possible values:  'inapplicable', 'failed', 'passed', 'cantTell',
- *   and 'untested'
- * @param {string} testName
- *   The name of the test.
- * @param {jQuery} $element
- *   The DOM element, wrapped in jQuery, that the test was run against.
- * @param {object} options
- */
-function _processTestResult () {
-  // var testability = test.get('testability');
-  // testability = (testability) ? testability : 'unknown';
-  // var info = {
-  //   element     : $element,
-  //   selector    : quail.defineUniqueSelector($element.length && $element[0] || null),
-  //   location    : window && window.location || null,
-  //   testName    : testName,
-  //   test        : quail.tests.find(testName),
-  //   testability : testability,
-  //   severity    : quail.testabilityTranslation[testability],
-  //   options     : options
-  // };
-}
-
 var quail = {
 
   options : { },
@@ -255,17 +209,6 @@ var quail = {
       return configuration;
     }
     return false;
-  },
-
-  /**
-   * Utility function called whenever a test fails.
-   * If there is a callback for testFailed, then it
-   * packages the object and calls it.
-   *
-   * @deprecated
-   */
-  testFails : function(testName, $element, options) {
-    _processTestResult('failed', testName, $element, options);
   },
 
   /**

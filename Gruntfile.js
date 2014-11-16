@@ -30,13 +30,14 @@ module.exports = function(grunt) {
     },
     concat: {
       options: {
-        banner: '<%= pkg.options.banner %>' + "\n" + ';(function($) {' + "\n",
+        banner: '<%= pkg.options.banner %>' + "\n" + ';(function($) {' + "\n" + '\'use strict\';' + '\n',
         footer: "\n" + '})(jQuery);',
         stripBanners: true
       },
       dist: {
         src: [
           'src/js/core.js',
+          'src/js/quail.jquery.js',
           'src/js/components/*.js',
           'src/js/strings/*.js',
           'src/js/custom/*.js',
@@ -48,6 +49,7 @@ module.exports = function(grunt) {
       test: {
         src: [
           'src/js/core.js',
+          'src/js/quail.jquery.js',
           'src/js/components/*.js',
           'src/js/strings/*.js',
           'src/js/custom/*.js',
