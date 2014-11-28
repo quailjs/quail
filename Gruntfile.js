@@ -36,8 +36,8 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'src/js/core.js',
           'src/js/quail.jquery.js',
+          'src/js/core.js',
           'src/js/components/*.js',
           'src/js/strings/*.js',
           'src/js/custom/*.js',
@@ -48,8 +48,8 @@ module.exports = function(grunt) {
       },
       test: {
         src: [
-          'src/js/core.js',
           'src/js/quail.jquery.js',
+          'src/js/core.js',
           'src/js/components/*.js',
           'src/js/strings/*.js',
           'src/js/custom/*.js',
