@@ -134,7 +134,7 @@ module.exports = function(grunt) {
       },
       a11y: {
         options: {
-            files: ['test/selenium-test/*.js']
+          files: ['test/selenium-test/*.js']
         }
       }
     },
@@ -278,10 +278,10 @@ module.exports = function(grunt) {
 
   // Run accessibility assessments in Selenium.
   grunt.registerTask('testAssessments', [
-      'selenium_start',
-      'connect:dev',
-      'mochacli:a11y',
-      'selenium_stop'
+    'selenium_start',
+    'connect:dev',
+    'mochacli:a11y',
+    'selenium_stop'
   ]);
 
   // By default, just run tests

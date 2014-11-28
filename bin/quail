@@ -21,7 +21,7 @@ var phantomEvaluator = './src/js/scripts/phantom_evaluator.js';
 
 var command = [phantomjsExec, phantomEvaluator, program.url, pwd].join(' ');
 shell.exec(command, {
-  async:true
+  async: true
 }, function (code, output) {
   shell.echo('code: ' + code);
 });

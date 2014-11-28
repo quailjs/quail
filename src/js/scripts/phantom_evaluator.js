@@ -42,6 +42,7 @@ page.onError = function (msg, trace) {
     msg,
     trace
   ], undefined, 2));
+  quitPhantom('Error on the evaluated page');
 };
 
 page.settings.resourceTimeout = 5000; // 5 seconds
