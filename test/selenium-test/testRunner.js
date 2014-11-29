@@ -61,7 +61,7 @@ var conf = {
   desiredCapabilities: {
     browserName: 'chrome'
   },
-  logLevel: 'verbose'
+  logLevel: 'result'
 };
 
 global.h = {
@@ -126,12 +126,6 @@ global.h = {
               ' StackTrace: ' +  errorObj + '\n';
             window.jsErrors.push(report);
           }
-        })
-        .execute(function () {
-          var _jQuery = function () {};
-          _jQuery.fn = {};
-          _jQuery.expr = {};
-          window.jQuery = _jQuery;
         });
 
       // Load Quail fixtures into the page.
