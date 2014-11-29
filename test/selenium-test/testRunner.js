@@ -11,18 +11,9 @@ var chai = require('chai');
 global.expect = chai.expect;
 global.assert = chai.assert;
 var glob = require('glob');
-var client, specFiles;
+var httpServerInstance, client, specFiles;
 
 var root = path.join(__dirname, '../..', 'dist');
-
-httpServer
-  .createServer({
-    root: root,
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
-  })
-  .listen(8080);
 
 var mocha = new Mocha({
   timeout: 1000000,
@@ -62,6 +53,9 @@ glob(specFiles, function (error, files) {
     }
 
     client.end(function() {
+      if (httpServerInstance) {
+        httpServerInstance.close();
+      }
       process.exit(failures);
     });
   });
@@ -69,7 +63,7 @@ glob(specFiles, function (error, files) {
 
 var conf = {
   desiredCapabilities: {
-      browserName: 'firefox'
+    browserName: 'chrome'
   },
   logLevel: 'verbose'
 };
@@ -90,26 +84,32 @@ global.h = {
     };
   },
   setup: function(url, newSession) {
-    return function(done) {
+    return function (done) {
       var wdjs = require('webdriverio');
 
-      /**
-       * if instance already exists and no new session was requested return existing instance
-       */
+      // HTTP server
+      if (!httpServerInstance) {
+        httpServerInstance = httpServer
+          .createServer({
+            root: root,
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            }
+          })
+          .listen(8888);
+      }
+
+      // if instance already exists and no new session was requested return existing instance
       if (client && !newSession && newSession !== null) {
         this.client = client;
 
-      /**
-       * if new session was requested create temporary instance
-       */
       }
+      // if new session was requested create temporary instance
       else if (newSession && newSession !== null) {
         this.client = wdjs.remote(conf).init();
 
-      /**
-       * otherwise store created intance for other specs
-       */
       }
+      // otherwise store created intance for other specs
       else {
         this.client = client = wdjs.remote(conf).init();
       }
@@ -117,14 +117,47 @@ global.h = {
       this.client
         .url(url)
         .timeoutsAsyncScript(5000)
+        .execute(function () {
+          window.jsErrors = [];
+
+          window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
+            var report = 'Error: ' + errorMsg +
+              ' Script: ' + url +
+              ' Line: ' + lineNumber +
+              ' Column: ' + column +
+              ' StackTrace: ' +  errorObj;
+            window.jsErrors.push(report);
+          }
+        })
+        .execute(function () {
+          var _jQuery = function () {};
+          _jQuery.fn = {};
+          _jQuery.expr = {};
+          window.jQuery = _jQuery;
+        })
         .executeAsync(function (finish) {
+
+          var intervalId;
+          var tries = 220;
 
           function loadError (oError) {
             finish('Failed to load the file: ' + oError);
           }
 
           function loadSuccess () {
-            finish('Loaded the file');
+            intervalId = setInterval(function () {
+              if (window.quail) {
+                clearInterval(intervalId);
+                finish(window.quail);
+              }
+              else {
+                tries--;
+                if (tries <= 0) {
+                  clearInterval(intervalId);
+                  finish("Failed to boot up Quail");
+                }
+              }
+            }, 20);
           }
 
           var s;
@@ -132,12 +165,17 @@ global.h = {
           // Append scripts.
           s = document.createElement("script");
           s.type = "text/javascript"
-          s.src = "http://localhost:8080/quail.jquery.js";
+          s.src = "http://localhost:8888/quail.jquery.js";
           s.onerror = loadError;
           s.onload = loadSuccess;
           if (domel) domel.appendChild(s, domel);
         }, function (err, ret) {
-          console.log(ret.value);
+          console.log(ret && ret.value || 'no value to log');
+        })
+        .execute(function () {
+          return window.jsErrors;
+        }, function (err, ret) {
+          console.log(ret && ret.value && ret.value.length && ret.value.join('\n'));
           done();
         });
     };
