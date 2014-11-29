@@ -59,7 +59,8 @@
     "karma-webdriver-launcher": "^0.2.0",
     "mocha": "^2.0.1",
     "requirejs": "^2.1.15",
-    "sinon": "^1.10.3"
+    "sinon": "^1.10.3",
+    "webdriverio": "^2.3.0"
   },
   "jam": {
     "dependencies": {
