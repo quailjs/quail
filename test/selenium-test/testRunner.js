@@ -35,10 +35,6 @@ server.stdout.on('data', function (output) {
   console.log(output);
 });
 
-function exit () {
-  process.exit();
-}
-
 specFiles = __dirname + '/Spec.js';
 
 glob(specFiles, function (error, files) {
@@ -85,6 +81,7 @@ global.h = {
   },
   setup: function(url, newSession) {
     return function (done) {
+      var self = this;
       var wdjs = require('webdriverio');
 
       // HTTP server
@@ -114,6 +111,7 @@ global.h = {
         this.client = client = wdjs.remote(conf).init();
       }
 
+      // Load the request URL and inject Quail onto the page.
       this.client
         .url(url)
         .timeoutsAsyncScript(5000)
@@ -121,11 +119,11 @@ global.h = {
           window.jsErrors = [];
 
           window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
-            var report = 'Error: ' + errorMsg +
-              ' Script: ' + url +
-              ' Line: ' + lineNumber +
-              ' Column: ' + column +
-              ' StackTrace: ' +  errorObj;
+            var report = 'Error: ' + errorMsg + '\n' +
+              ' Script: ' + url + '\n' +
+              ' Line: ' + lineNumber + '\n' +
+              ' Column: ' + column + '\n' +
+              ' StackTrace: ' +  errorObj + '\n';
             window.jsErrors.push(report);
           }
         })
@@ -171,12 +169,27 @@ global.h = {
           if (domel) domel.appendChild(s, domel);
         }, function (err, ret) {
           console.log(ret && ret.value || 'no value to log');
-        })
+        });
+
+      // Check the page for JavaScript errors. If any errors exist, close
+      // testing and report the error, otherwise return control to the test
+      // suite.
+      this.client
         .execute(function () {
           return window.jsErrors;
         }, function (err, ret) {
-          console.log(ret && ret.value && ret.value.length && ret.value.join('\n'));
-          done();
+          var pageErrors = ret && ret.value;
+          if (pageErrors.length > 0) {
+            self.client.end(function() {
+              if (httpServerInstance) {
+                httpServerInstance.close();
+              }
+              process.exit('JavaScript errors on the page halted evaluation\n\n' + ret.value.join('\n'));
+            });
+          }
+          else {
+            done();
+          }
         });
     };
   }
