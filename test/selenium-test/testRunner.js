@@ -2,6 +2,8 @@
 
 'use strict';
 
+var httpServer = require('http-server');
+var path = require('path');
 var selenium = require('selenium-standalone');
 var Mocha = require('mocha');
 var should = require('should');
@@ -10,6 +12,17 @@ global.expect = chai.expect;
 global.assert = chai.assert;
 var glob = require('glob');
 var client, specFiles;
+
+var root = path.join(__dirname, '../..', 'dist');
+
+httpServer
+  .createServer({
+    root: root,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  })
+  .listen(8080);
 
 var mocha = new Mocha({
   timeout: 1000000,
@@ -102,7 +115,31 @@ global.h = {
       }
 
       this.client
-        .url(url, done);
+        .url(url)
+        .timeoutsAsyncScript(5000)
+        .executeAsync(function (finish) {
+
+          function loadError (oError) {
+            finish('Failed to load the file: ' + oError);
+          }
+
+          function loadSuccess () {
+            finish('Loaded the file');
+          }
+
+          var s;
+          var domel = document.getElementsByTagName("head")[0];
+          // Append scripts.
+          s = document.createElement("script");
+          s.type = "text/javascript"
+          s.src = "http://localhost:8080/quail.jquery.js";
+          s.onerror = loadError;
+          s.onload = loadSuccess;
+          if (domel) domel.appendChild(s, domel);
+        }, function (err, ret) {
+          console.log(ret.value);
+          done();
+        });
     };
   }
 };
