@@ -111,7 +111,7 @@ global.h = {
         this.client = client = wdjs.remote(conf).init();
       }
 
-      // Load the request URL and inject Quail onto the page.
+      // Load the request URL and add some error handling.
       this.client
         .url(url)
         .timeoutsAsyncScript(5000)
@@ -132,43 +132,192 @@ global.h = {
           _jQuery.fn = {};
           _jQuery.expr = {};
           window.jQuery = _jQuery;
-        })
-        .executeAsync(function (finish) {
+        });
 
-          var intervalId;
-          var tries = 220;
+      // Load Quail fixtures into the page.
+      var fixtures = [
+        'jquery.min.js',
+        'quail.jquery.js'
+      ];
+      fixtures.forEach(function (filename) {
+        self
+          .client
+          .executeAsync(function (filename, finish) {
 
-          function loadError (oError) {
-            finish('Failed to load the file: ' + oError);
+            function loadError (error) {
+              finish('Failed to load \'' + filename + '\': ' + error);
+            }
+
+            function loadSuccess () {
+              finish('Loaded \'' + filename + '\'');
+            }
+
+            var head = document.getElementsByTagName('head')[0];
+            // Append scripts.
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.src = 'http://localhost:8888/' + filename;
+            s.onerror = loadError;
+            s.onload = loadSuccess;
+            if (head) head.appendChild(s);
+          }, filename, function (err, ret) {
+            if (err) {
+              done(err);
+              return;
+            }
+          });
+        });
+
+      // Load the test definitions.
+      var testfiles = ['tests.json'];
+      var tests = {
+        "inputTextHasLabel": {
+          "type": "label",
+          "testability": 1,
+          "title": {
+            "en": "All \"input\" elements should have a corresponding \"label\"",
+            "nl": "Alle invoerelementen moeten een bijbehorend \"label\" hebben"
+          },
+          "description": {
+            "en": "All <code>input</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user",
+            "nl": "Alle <code>input</code>-elementen moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen."
+          },
+          "guidelines": {
+            "wcag": {
+              "1.1.1": {
+                "techniques": [
+                  "H44"
+                ]
+              },
+              "1.3.1": {
+                "techniques": [
+                  "H44",
+                  "F68"
+                ]
+              },
+              "2.1.1": {
+                "techniques": [
+                  "H91"
+                ]
+              },
+              "2.1.3": {
+                "techniques": [
+                  "H91"
+                ]
+              },
+              "3.3.2": {
+                "techniques": [
+                  "H44"
+                ]
+              },
+              "4.1.2": {
+                "techniques": [
+                  "H44",
+                  "H91"
+                ]
+              }
+            }
+          },
+          "tags": [
+            "form",
+            "content"
+          ],
+          "options": {
+            "selector": "input[type=text]"
           }
+        }
+      };
+      testfiles.forEach(function (filename) {
+        self
+          .client
+          .executeAsync(function (filename, finish) {
 
-          function loadSuccess () {
-            intervalId = setInterval(function () {
-              if (window.quail) {
-                clearInterval(intervalId);
-                finish(window.quail);
+            function loadError (error) {
+              finish('Failed to load \'' + filename + '\': ' + error);
+            }
+
+            function loadSuccess () {
+              if (this.status == 200) {
+                finish(this.response);
               }
               else {
-                tries--;
-                if (tries <= 0) {
-                  clearInterval(intervalId);
-                  finish("Failed to boot up Quail");
-                }
+                loadError(this.status);
               }
-            }, 20);
-          }
+            }
 
-          var s;
-          var domel = document.getElementsByTagName("head")[0];
-          // Append scripts.
-          s = document.createElement("script");
-          s.type = "text/javascript"
-          s.src = "http://localhost:8888/quail.jquery.js";
-          s.onerror = loadError;
-          s.onload = loadSuccess;
-          if (domel) domel.appendChild(s, domel);
-        }, function (err, ret) {
-          console.log(ret && ret.value || 'no value to log');
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", 'http://localhost:8888/' + filename, true);
+            xhr.onload = loadSuccess;
+            xhr.onerror = loadError;
+            xhr.send();
+
+          }, filename, function (err, ret) {
+            if (err) {
+              done(err);
+              return;
+            }
+            tests = ret && JSON.parse(ret.value) || {};
+          });
+      });
+
+      // Run the Quail tests.
+      this.client
+        .executeAsync(function (tests, finish) {
+          // Basic output structure attributes.
+          var output = {
+            tests: {},
+            successCriteria: {},
+            stats: {
+              tests: 0,
+              cases: 0
+            }
+          };
+          jQuery('html').quail({
+            accessibilityTests: tests,
+            // Called when an individual Case in a test is resolved.
+            caseResolve: function (eventName, test, _case) {
+              var name = test.get('name');
+              if (!output.tests[name]) {
+                output.tests[name] = {
+                  id: name,
+                  title: test.get('title'),
+                  description: test.get('description'),
+                  type: test.get('type'),
+                  testability: test.get('testability'),
+                  guidelines: test.get('guidelines') || {},
+                  tags: test.get('tags'),
+                  cases: []
+                };
+              }
+              // Push the case into the results for this test.
+              output.tests[name].cases.push({
+                status: _case.get('status'),
+                selector: _case.get('selector'),
+                html: _case.get('html')
+              });
+              // Increment the cases count.
+              output.stats.cases++;
+            },
+            // Called when all the Cases in a Test are resolved.
+            testComplete: function () {
+              // console.log('Finished testing ' + test.get('name') + '.');
+              // Increment the tests count.
+              output.stats.tests++;
+            },
+            // Called when all the Tests in a TestCollection are completed.
+            testCollectionComplete: function () {
+              // Push the results of the test out to the Phantom listener.
+              finish(JSON.stringify(output));
+            }
+          });
+        }, tests, function (err, ret) {
+          if (err) {
+            done(err);
+            return;
+          }
+          if (ret && ret.value) {
+            self.results = JSON.parse(ret.value);
+          }
         });
 
       // Check the page for JavaScript errors. If any errors exist, close
@@ -180,12 +329,14 @@ global.h = {
         }, function (err, ret) {
           var pageErrors = ret && ret.value;
           if (pageErrors.length > 0) {
-            self.client.end(function() {
-              if (httpServerInstance) {
-                httpServerInstance.close();
-              }
-              process.exit('JavaScript errors on the page halted evaluation\n\n' + ret.value.join('\n'));
-            });
+            self
+              .client
+              .end(function () {
+                if (httpServerInstance) {
+                  httpServerInstance.close();
+                }
+                process.exit('JavaScript errors on the page halted evaluation\n\n' + ret.value.join('\n'));
+              });
           }
           else {
             done();
