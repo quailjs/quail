@@ -93,7 +93,6 @@ phantom.onError = function(msg, trace) {
 address = system.args[1];
 
 var distPath = dir + '/dist';
-var bowerPath = dir + '/bower_components';
 var nodeModulesPath = dir + '/node_modules';
 
 // var guidelinedata = fs.read(distPath + '/guideline.json');
