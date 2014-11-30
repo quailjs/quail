@@ -111,6 +111,39 @@ global.h = {
         this.client = client = wdjs.remote(conf).init();
       }
 
+      /**
+       *
+       */
+      function loadScriptFile (filename, finish) {
+
+        function loadError (error) {
+          finish('Failed to load \'' + filename + '\': ' + error);
+        }
+
+        function loadSuccess () {
+          finish('Loaded \'' + filename + '\'');
+        }
+
+        var head = document.getElementsByTagName('head')[0];
+        // Append scripts.
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.src = 'http://localhost:8888/' + filename;
+        s.onerror = loadError;
+        s.onload = loadSuccess;
+        if (head) head.appendChild(s);
+      }
+
+      /**
+       *
+       */
+      function respondToEvaluate (err, ret) {
+        if (err) {
+          done(err);
+          return;
+        }
+      }
+
       // Load the request URL and add some error handling.
       this.client
         .url(url)
@@ -130,37 +163,32 @@ global.h = {
 
       // Load Quail fixtures into the page.
       var fixtures = [
-        'jquery.min.js',
-        'quail.jquery.js'
+        {
+          filename: 'jquery.min.js',
+          evaluate: loadScriptFile,
+          respond: respondToEvaluate
+        },
+        {
+          filename: 'quail.jquery.js',
+          evaluate: loadScriptFile,
+          respond: respondToEvaluate
+        }
       ];
-      fixtures.forEach(function (filename) {
+
+      function loadFixture (fixture, index) {
         self
           .client
-          .executeAsync(function (filename, finish) {
-
-            function loadError (error) {
-              finish('Failed to load \'' + filename + '\': ' + error);
-            }
-
-            function loadSuccess () {
-              finish('Loaded \'' + filename + '\'');
-            }
-
-            var head = document.getElementsByTagName('head')[0];
-            // Append scripts.
-            var s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.src = 'http://localhost:8888/' + filename;
-            s.onerror = loadError;
-            s.onload = loadSuccess;
-            if (head) head.appendChild(s);
-          }, filename, function (err, ret) {
-            if (err) {
-              done(err);
-              return;
+          .executeAsync(fixture.evaluate, fixture.filename, function (err, ret) {
+            fixture.respond(err, ret);
+            // Load the next Fixture.
+            index = index + 1;
+            fixture = fixtures[index];
+            if (fixture) {
+              loadFixture(fixture, index);
             }
           });
-        });
+      }
+      loadFixture(fixtures[0], 0);
 
       // Load the test definitions.
       var testfiles = ['tests.json'];
