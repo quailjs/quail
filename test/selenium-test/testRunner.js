@@ -11,8 +11,10 @@ var chai = require('chai');
 global.expect = chai.expect;
 global.assert = chai.assert;
 var glob = require('glob');
+var tests = {};
 var httpServerInstance, client, specFiles;
 
+// The root path of the HTTP server at port 8888.
 var root = path.join(__dirname, '../..', 'dist');
 
 var mocha = new Mocha({
@@ -21,22 +23,27 @@ var mocha = new Mocha({
 });
 
 var spawnOptions = {
-  stdio: 'pipe'
+  stdio: 'inherit'
 };
 
-// options to pass to `java -jar selenium-server-standalone-X.XX.X.jar`
-var seleniumArgs = [
-  // '-debug'
-];
+// Options to pass to `java -jar selenium-server-standalone-X.XX.X.jar`
+var seleniumArgs = [];
 
+// Selenium browser driver instance configuration.
+var conf = {
+  desiredCapabilities: {
+    browserName: 'chrome'
+  },
+  logLevel: 'verbose' // verbose | silent | command | data | result
+};
+
+// The Selenium server.
 var server = selenium(spawnOptions, seleniumArgs);
 
-server.stdout.on('data', function (output) {
-  console.log(output);
-});
-
+// Set up the Mocha test runs.
 specFiles = __dirname + '/Spec.js';
 
+// Gather the spec files and add them to the Mocha run.
 glob(specFiles, function (error, files) {
 
   files.forEach(function(file) {
@@ -57,13 +64,7 @@ glob(specFiles, function (error, files) {
   });
 });
 
-var conf = {
-  desiredCapabilities: {
-    browserName: 'chrome'
-  },
-  logLevel: 'result'
-};
-
+//
 global.h = {
   noError: function(err) {
     assert(err === undefined);
@@ -101,7 +102,7 @@ global.h = {
         this.client = client;
 
       }
-      // if new session was requested create temporary instance
+      // if new session was requested create a temporary instance
       else if (newSession && newSession !== null) {
         this.client = wdjs.remote(conf).init();
 
@@ -112,7 +113,7 @@ global.h = {
       }
 
       /**
-       *
+       * Loads a file using a <script> tag.
        */
       function loadScriptFile (filename, finish) {
 
@@ -135,165 +136,68 @@ global.h = {
       }
 
       /**
-       *
+       * Loads files via AJAX GET in the browser instance.
+       */
+      function loadAjaxFile (filename, finish) {
+
+        function loadError (error) {
+          finish('Failed to load \'' + filename + '\': ' + error);
+        }
+
+        function loadSuccess () {
+          if (this.status == 200) {
+            finish(this.response);
+          }
+          else {
+            loadError(this.status);
+          }
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", 'http://localhost:8888/' + filename, true);
+        xhr.onload = loadSuccess;
+        xhr.onerror = loadError;
+        xhr.send();
+      }
+      /**
+       * Responds to an evaluateAsync call. It's a simple err reporting response.
        */
       function respondToEvaluate (err, ret) {
         if (err) {
-          done(err);
-          return;
+          return err;
         }
       }
 
-      // Load the request URL and add some error handling.
-      this.client
-        .url(url)
-        .timeoutsAsyncScript(5000)
-        .execute(function () {
-          window.jsErrors = [];
-
-          window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
-            var report = 'Error: ' + errorMsg + '\n' +
-              ' Script: ' + url + '\n' +
-              ' Line: ' + lineNumber + '\n' +
-              ' Column: ' + column + '\n' +
-              ' StackTrace: ' +  errorObj + '\n';
-            window.jsErrors.push(report);
-          }
-        });
-
-      // Load Quail fixtures into the page.
-      var fixtures = [
-        {
-          filename: 'jquery.min.js',
-          evaluate: loadScriptFile,
-          respond: respondToEvaluate
-        },
-        {
-          filename: 'quail.jquery.js',
-          evaluate: loadScriptFile,
-          respond: respondToEvaluate
+      /**
+       * Responds to an Ajax load of tests.
+       */
+      function respondToTestsLoaded (err, ret) {
+        if (err) {
+          return err;
         }
-      ];
-
-      function loadFixture (fixture, index) {
-        self
-          .client
-          .executeAsync(fixture.evaluate, fixture.filename, function (err, ret) {
-            fixture.respond(err, ret);
-            // Load the next Fixture.
-            index = index + 1;
-            fixture = fixtures[index];
-            if (fixture) {
-              loadFixture(fixture, index);
-            }
-          });
+        var testData = ret && JSON.parse(ret.value) || {};
+        var name;
+        for (name in testData) {
+          if (testData.hasOwnProperty(name)) {
+            tests[name] = testData[name];
+          }
+        }
       }
-      loadFixture(fixtures[0], 0);
 
-      // Load the test definitions.
-      var testfiles = ['tests.json'];
-      var tests = {
-        "inputTextHasLabel": {
-          "type": "label",
-          "testability": 1,
-          "title": {
-            "en": "All \"input\" elements should have a corresponding \"label\"",
-            "nl": "Alle invoerelementen moeten een bijbehorend \"label\" hebben"
-          },
-          "description": {
-            "en": "All <code>input</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user",
-            "nl": "Alle <code>input</code>-elementen moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen."
-          },
-          "guidelines": {
-            "wcag": {
-              "1.1.1": {
-                "techniques": [
-                  "H44"
-                ]
-              },
-              "1.3.1": {
-                "techniques": [
-                  "H44",
-                  "F68"
-                ]
-              },
-              "2.1.1": {
-                "techniques": [
-                  "H91"
-                ]
-              },
-              "2.1.3": {
-                "techniques": [
-                  "H91"
-                ]
-              },
-              "3.3.2": {
-                "techniques": [
-                  "H44"
-                ]
-              },
-              "4.1.2": {
-                "techniques": [
-                  "H44",
-                  "H91"
-                ]
-              }
-            }
-          },
-          "tags": [
-            "form",
-            "content"
-          ],
-          "options": {
-            "selector": "input[type=text]"
+      /**
+       * Evaluates a page using Quail, which has been loading into the page already.
+       */
+      function evaluateWithQuail (tests, finish) {
+        // Basic output structure attributes.
+        var output = {
+          tests: {},
+          successCriteria: {},
+          stats: {
+            tests: 0,
+            cases: 0
           }
-        }
-      };
-      testfiles.forEach(function (filename) {
-        self
-          .client
-          .executeAsync(function (filename, finish) {
-
-            function loadError (error) {
-              finish('Failed to load \'' + filename + '\': ' + error);
-            }
-
-            function loadSuccess () {
-              if (this.status == 200) {
-                finish(this.response);
-              }
-              else {
-                loadError(this.status);
-              }
-            }
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", 'http://localhost:8888/' + filename, true);
-            xhr.onload = loadSuccess;
-            xhr.onerror = loadError;
-            xhr.send();
-
-          }, filename, function (err, ret) {
-            if (err) {
-              done(err);
-              return;
-            }
-            tests = ret && JSON.parse(ret.value) || {};
-          });
-      });
-
-      // Run the Quail tests.
-      this.client
-        .executeAsync(function (tests, finish) {
-          // Basic output structure attributes.
-          var output = {
-            tests: {},
-            successCriteria: {},
-            stats: {
-              tests: 0,
-              cases: 0
-            }
-          };
+        };
+        try {
           jQuery('html').quail({
             accessibilityTests: tests,
             // Called when an individual Case in a test is resolved.
@@ -319,6 +223,7 @@ global.h = {
               });
               // Increment the cases count.
               output.stats.cases++;
+              console.log(output);
             },
             // Called when all the Cases in a Test are resolved.
             testComplete: function () {
@@ -332,38 +237,117 @@ global.h = {
               finish(JSON.stringify(output));
             }
           });
-        }, tests, function (err, ret) {
-          if (err) {
-            done(err);
-            return;
-          }
-          if (ret && ret.value) {
-            self.results = JSON.parse(ret.value);
-          }
-        });
+        }
+        catch (error) {
+          window.jsErrors.push(error);
+        }
+      }
 
-      // Check the page for JavaScript errors. If any errors exist, close
-      // testing and report the error, otherwise return control to the test
-      // suite.
+      /**
+       * Assigns the responds of a Quail evaluation to the test suite object.
+       */
+      function respondToQuailEvaluation (err, ret) {
+        if (err) {
+          return err;
+        }
+        if (ret && ret.value) {
+          self.results = JSON.parse(ret.value);
+        }
+      }
+
+      // Load Quail fixtures into the page.
+      var fixtures = [
+        // Add error handling into the page.
+        {
+          evaluate: function (finish) {
+            window.jsErrors = [];
+
+            window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
+              window.jsErrors.push(errorObj);
+            }
+            finish();
+          }
+        },
+        // Load jQuery into the page.
+        {
+          args: ['jquery.min.js'],
+          evaluate: loadScriptFile,
+          respond: respondToEvaluate
+        },
+        // Load the Quail script into the page.
+        {
+          args: ['quail.jquery.js'],
+          evaluate: loadScriptFile,
+          respond: respondToEvaluate
+        },
+        // Load the assessment definitions file.
+        {
+          args: ['tests.json'],
+          evaluate: loadAjaxFile,
+          respond: respondToTestsLoaded
+        },
+        // Evaluate the HTML with Quail.
+        {
+          args: [tests],
+          evaluate: evaluateWithQuail,
+          respond: respondToQuailEvaluation
+        },
+        // Check the page for JavaScript errors. If any errors exist, close
+        // testing and report the error, otherwise return control to the test
+        // suite.
+        {
+          evaluate: function (finish) {
+            finish(window.jsErrors);
+          },
+          respond: function (err, ret) {
+            // Return the last Error. The author will need to run down the stack
+            // if there are more than one or do some debugging here. But this at
+            // least gives us a real Error object to pass to the done() function.
+            var pageError = ret && ret.value && ret.value.length > 0 && ret.value[0];
+            return err || pageError || null;
+          }
+        }
+      ];
+
+      /**
+       * Loads fixtures in a linked list so that asynchronous script evalus are run
+       * sequentially. Later fixtures in the fixture array can depend on results from
+       * any previous fixture. Maybe it would be better to do this with promises?
+       */
+      function loadFixture (fixture, index) {
+        var self = this;
+        var args = [].concat(fixture.evaluate, fixture.args || [], function (err, ret) {
+            var error;
+            var resondFn = fixture.respond;
+            // Prepare the next fixture.
+            index = index + 1;
+            fixture = fixtures[index];
+            // Run the response method if it exists.
+            if (typeof resondFn === 'function') {
+              error = resondFn(err, ret);
+            }
+            // Run the next fixture if there is one and no error was returned from
+            // the response method.
+            if (fixture && !error) {
+              loadFixture.apply(self, [fixture, index]);
+            }
+            // Or return control to the test suite. Mocha complains if done() is
+            // invoked with anything that isn't an Error object.
+            else {
+              done(error);
+            }
+          });
+        // Run the async evaluation against the client object.
+        self
+          .client
+          .executeAsync.apply(self.client, args);
+      }
+      // Prepare to start the fixture loading.
+      var loadFixtureBound = loadFixture.bind(self, fixtures[0], 0);
+      // Load the requested URL then start the fixture loading.
       this.client
-        .execute(function () {
-          return window.jsErrors;
-        }, function (err, ret) {
-          var pageErrors = ret && ret.value;
-          if (pageErrors.length > 0) {
-            self
-              .client
-              .end(function () {
-                if (httpServerInstance) {
-                  httpServerInstance.close();
-                }
-                process.exit('JavaScript errors on the page halted evaluation\n\n' + ret.value.join('\n'));
-              });
-          }
-          else {
-            done();
-          }
-        });
+        .timeoutsAsyncScript(5000)
+        .url(url, loadFixtureBound);
     };
   }
 };
