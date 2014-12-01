@@ -12,10 +12,32 @@ global.expect = chai.expect;
 global.assert = chai.assert;
 var glob = require('glob');
 var tests = {};
-var httpServerInstance, client, specFiles;
+var client, specFiles;
 
 // The root path of the HTTP server at port 8888.
-var root = path.join(__dirname, '../..', 'dist');
+var fixturesRoot = path.join(__dirname, '../..', 'dist');
+var assessmentPagesRoot = path.join(__dirname, 'specs');
+
+// HTTP server for testing fixtures like jQuery and Quail.
+var httpServerFixtures = httpServer
+  .createServer({
+    root: fixturesRoot,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  })
+  .listen(8888);
+
+// HTTP server for assessment pages.
+var httpServerAssessmentPages = httpServer
+  .createServer({
+    root: assessmentPagesRoot,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  })
+  .listen(9999);
+
 
 var mocha = new Mocha({
   timeout: 1000000,
@@ -34,14 +56,14 @@ var conf = {
   desiredCapabilities: {
     browserName: 'chrome'
   },
-  logLevel: 'verbose' // verbose | silent | command | data | result
+  logLevel: 'silent' // verbose | silent | command | data | result
 };
 
 // The Selenium server.
 var server = selenium(spawnOptions, seleniumArgs);
 
 // Set up the Mocha test runs.
-specFiles = __dirname + '/Spec.js';
+specFiles = __dirname + '/specs/**/*Spec.js';
 
 // Gather the spec files and add them to the Mocha run.
 glob(specFiles, function (error, files) {
@@ -56,9 +78,12 @@ glob(specFiles, function (error, files) {
     }
 
     client.end(function() {
-      if (httpServerInstance) {
-        httpServerInstance.close();
+      if (httpServerFixtures) {
+        httpServerFixtures.close();
       }
+      if (httpServerAssessmentPages) {
+        httpServerAssessmentPages.close();
+      };
       process.exit(failures);
     });
   });
@@ -82,20 +107,8 @@ global.h = {
   },
   setup: function(url, newSession) {
     return function (done) {
-      var self = this;
+      var self = this; // This is the Mocha test object.
       var wdjs = require('webdriverio');
-
-      // HTTP server
-      if (!httpServerInstance) {
-        httpServerInstance = httpServer
-          .createServer({
-            root: root,
-            headers: {
-              'Access-Control-Allow-Origin': '*'
-            }
-          })
-          .listen(8888);
-      }
 
       // if instance already exists and no new session was requested return existing instance
       if (client && !newSession && newSession !== null) {

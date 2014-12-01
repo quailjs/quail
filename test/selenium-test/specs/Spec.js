@@ -10,10 +10,10 @@ describe('The form test', function () {
   });
 
   it('should have tests', function () {
-    expect(this.results.stats.tests).to.equal(1);
+    expect(this.results.stats.tests).to.equal(250);
   });
 
   it('should have cases', function () {
-    expect(this.results.stats.cases).to.equal(2);
+    expect(this.results.stats.cases).to.equal(280);
   });
 });
