@@ -2,6 +2,7 @@
 
 'use strict';
 
+var fs = require('fs');
 var httpServer = require('http-server');
 var path = require('path');
 var selenium = require('selenium-standalone');
@@ -17,6 +18,7 @@ var client, specFiles;
 // The root path of the HTTP server at port 8888.
 var fixturesRoot = path.join(__dirname, '../..', 'dist');
 var assessmentPagesRoot = path.join(__dirname, 'specs');
+var logPath = path.join(__dirname, '../..', 'logs');
 
 // HTTP server for testing fixtures like jQuery and Quail.
 var httpServerFixtures = httpServer
@@ -44,12 +46,17 @@ var mocha = new Mocha({
   reporter: 'spec'
 });
 
+// Set up logging for the Selenium server child process.
+var seleniumOut = fs.openSync(logPath + '/selenium-stdout.log', 'a');
+var seleniumError = fs.openSync(logPath + '/selenium-stderr.log', 'a');
 var spawnOptions = {
-  stdio: 'inherit'
+  stdio: ['pipe', seleniumError, seleniumOut]
 };
 
 // Options to pass to `java -jar selenium-server-standalone-X.XX.X.jar`
-var seleniumArgs = [];
+var seleniumArgs = [
+  // '-logLongForm'
+];
 
 // Selenium browser driver instance configuration.
 var conf = {
@@ -112,16 +119,17 @@ global.h = {
 
       // if instance already exists and no new session was requested return existing instance
       if (client && !newSession && newSession !== null) {
+        console.log('Reusing the existing Selenium session...');
         this.client = client;
-
       }
       // if new session was requested create a temporary instance
       else if (newSession && newSession !== null) {
+        console.log('Requesting a new Selenium session...');
         this.client = wdjs.remote(conf).init();
-
       }
       // otherwise store created intance for other specs
       else {
+        console.log('Creating a new Selenium session...');
         this.client = client = wdjs.remote(conf).init();
       }
 
