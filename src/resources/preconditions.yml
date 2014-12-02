@@ -2,11 +2,11 @@ videoMayBePresent:
   type: "custom"
   testability: 1
   title:
-    en: "Video or object uses a link that points to a file with a video extension"
-    nl: "Video of object met een link naar een bestand met een video extensie"
+    en: "The video should be tested if captions, transcript and audio description is required"
+    nl: "De video dient te worden getest of ondertiteling, transcript en  audiodescription nodig zijn"
   description:
-    en: ""
-    nl: ""
+    en: "The video should be tested if captions, transcript and audio description is required"
+    nl: "De video dient te worden getest of ondertiteling, transcript en  audiodescription nodig zijn"
   guidelines: []
   tags:
     - "link"
@@ -16,11 +16,11 @@ audioMayBePresent:
   type: "custom"
   testability: 1
   title:
-    en: "Audio or object uses a link that points to a file with a video extension"
-    nl: "Audio of object met een link naar een bestand met een video extensie"
+    en: "The audio should be tested if captions, transcript and audio description is required"
+    nl: "De audio dient te worden getest of ondertiteling, transcript en  audiodescription nodig zijn"
   description:
-    en: ""
-    nl: ""
+    en: "The audio should be tested if captions, transcript and audio description is required"
+    nl: "De audio dient te worden getest of ondertiteling, transcript en  audiodescription nodig zijn"
   guidelines: []
   tags:
     - "link"
@@ -44,8 +44,8 @@ userInputMayBeRequired:
   type: "custom"
   testability: 1
   title:
-    en: "Test if user input is required"
-    nl: "Test of er invoervelden zijn"
+    en: "Form should be checked to ensure sufficient feedback is given to the user"
+    nl: "Formulieren dienen te worden gecontroleerd of voldoende feedback aan gebruikers wordt gegeven"
   description:
     en: ""
     nl: ""
