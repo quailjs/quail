@@ -160,10 +160,10 @@
   id: "wcag20:visual-audio-contrast-contrast"
   level: "wcag20:level_aa"
   testAggregators:
-    - passed: passed
-      failed: failed
-      tests:
-        - cssTextHasContrast
+    # - passed: passed
+    #   failed: failed
+    #   tests:
+    #     - cssTextHasContrast
 1.4.4:
   id: "wcag20:visual-audio-contrast-scale"
   level: "wcag20:level_aa"
@@ -240,10 +240,10 @@
   id: "wcag20:navigation-mechanisms-focus-visible"
   level: "wcag20:level_aa"
   testAggregators:
-    - passed: cannotTell  # Should also look at outline
-      failed: failed
-      tests:
-      - focusIndicatorVisible
+    # - passed: cannotTell  # Link focus state isn't trigugered by this test
+    #   failed: failed
+    #   tests:
+    #   - focusIndicatorVisible
 2.4.8:
   id: "wcag20:navigation-mechanisms-location"
   level: "wcag20:level_aaa"

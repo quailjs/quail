@@ -77,7 +77,7 @@ quail.components.color = function(quail, test, Case, options) {
             level = 3;
           }
           else {
-            level = 5;
+            level = 4.5;
           }
         }
       }
@@ -142,7 +142,6 @@ quail.components.color = function(quail, test, Case, options) {
       if (!element.attr('data-cacheId')) {
         element.attr('data-cacheId', 'id_' + Math.random());
       }
-
       var cacheKey = 'getColor_' + type + '_' + element.attr('data-cacheId');
       if (this.cache[cacheKey] !== undefined) {
         return this.cache[cacheKey];
@@ -152,7 +151,7 @@ quail.components.color = function(quail, test, Case, options) {
         this.cache[cacheKey] = (element.css('color')) ? element.css('color') : 'rgb(0,0,0)';
         return this.cache[cacheKey];
       }
-
+      
       var bcolor = element.css('background-color');
       if (this.hasBackgroundColor(bcolor)) {
         this.cache[cacheKey] = bcolor;
@@ -458,6 +457,11 @@ quail.components.color = function(quail, test, Case, options) {
     var $this = $(element);
     var algorithm = options.algorithm;
     var id, failureFound, failedWCAGColorTest, failedWAIColorTest;
+    // Ignore elements who's content isn't displayed to the page
+    if (['script', 'style', 'title', 'object', 'applet', 'embed', 'template']
+    .indexOf(element.nodeName.toLowerCase()) !== -1)  {
+      return;
+    }
 
     // Bail out is the text is not readable.
     if (quail.isUnreadable($this.text())) {
@@ -470,7 +474,8 @@ quail.components.color = function(quail, test, Case, options) {
     // Check text and background color using DOM.
     id = 'colorFontContrast';
     // Build a case.
-    if ((algorithm === 'wcag' && !colors.passesWCAG($this)) || (algorithm === 'wai' && !colors.passesWAI($this))) {
+    if ((algorithm === 'wcag' && !colors.passesWCAG($this)) ||
+    (algorithm === 'wai' && !colors.passesWAI($this))) {
       buildCase(element, 'failed', id, 'The font contrast of the text impairs readability');
     }
     else {
@@ -641,7 +646,9 @@ quail.components.color = function(quail, test, Case, options) {
         nodes.push(text);
         text = textnodes.iterateNext();
       }
-      nodes.forEach(testCandidates);
+      nodes.forEach(function (textNode) {
+        testCandidates(textNode);
+      });
     }
   });
 };
