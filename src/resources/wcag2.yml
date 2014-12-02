@@ -33,7 +33,6 @@
   preconditions:
     - "videoMayBePresent"
     - "audioMayBePresent"
-    - "animatedGifMayBePresent"
 1.2.2:
   id: "wcag20:media-equiv-captions"
   level: "wcag20:level_a"
