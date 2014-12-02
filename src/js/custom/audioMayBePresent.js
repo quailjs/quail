@@ -7,26 +7,26 @@ quail.audioMayBePresent=function(quail, test, Case){
 
     // Audio is definately an audio, and objects could be too.
     $this.find('object, audio').each(function () {
-        hasCase = true;
-        test.add(Case({
-          element: this,
-          expected: $(this).closest('.quail-test').data('expected'),
-          status: 'cantTell'
-        }));
+      hasCase = true;
+      test.add(Case({
+        element: this,
+        expected: $(this).closest('.quail-test').data('expected'),
+        status: 'cantTell'
+      }));
     });
 
     // Links refering to files with an audio extensions are good indicators too
     $this.find('a[href]').each(function () {
-        var $this = $(this);
-        var extension = $this.attr('href').split('.').pop();
-        if ($.inArray(extension, audioExtensions) !== -1) {
-          hasCase = true;
-          test.add(Case({
-            element: this,
-            expected: $this.closest('.quail-test').data('expected'),
-            status: 'cantTell'
-          }));
-        }
+      var $this = $(this);
+      var extension = $this.attr('href').split('.').pop();
+      if ($.inArray(extension, audioExtensions) !== -1) {
+        hasCase = true;
+        test.add(Case({
+          element: this,
+          expected: $this.closest('.quail-test').data('expected'),
+          status: 'cantTell'
+        }));
+      }
     });
 
     // if no case was added, return inapplicable
