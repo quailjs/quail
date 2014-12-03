@@ -151,7 +151,7 @@ quail.components.color = function(quail, test, Case, options) {
         this.cache[cacheKey] = (element.css('color')) ? element.css('color') : 'rgb(0,0,0)';
         return this.cache[cacheKey];
       }
-      
+
       var bcolor = element.css('background-color');
       if (this.hasBackgroundColor(bcolor)) {
         this.cache[cacheKey] = bcolor;
