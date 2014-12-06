@@ -12,7 +12,7 @@ var chai = require('chai');
 global.expect = chai.expect;
 global.assert = chai.assert;
 var glob = require('glob');
-var client, specFiles;
+var mochaRunner, seleniumServer, webdriver, client, specFiles;
 
 // The root path of the HTTP server at port 8888.
 var fixturesRoot = path.join(__dirname, '../..', 'dist');
@@ -39,12 +39,6 @@ var httpServerAssessmentPages = httpServer
   })
   .listen(9999);
 
-
-var mocha = new Mocha({
-  timeout: 1000000,
-  reporter: 'spec'
-});
-
 // Set up logging for the Selenium server child process.
 var seleniumOut = fs.openSync(logPath + '/selenium-stdout.log', 'a');
 var seleniumError = fs.openSync(logPath + '/selenium-stderr.log', 'a');
@@ -66,7 +60,25 @@ var conf = {
 };
 
 // The Selenium server.
-var server = selenium(spawnOptions, seleniumArgs);
+seleniumServer = selenium(spawnOptions, seleniumArgs);
+// WebdriverIO requires a running selenium servier. This feels like it could easily
+// suffer from race conditions wherein the selenium server isn't started before
+// webdriver is initialized, but I don't see how to get a callback fired from
+// child_process.spawn.
+webdriver = require('webdriverio');
+
+/**
+ * Closes the HTTP servers and exits the process.
+ */
+function shutdownTestRunner (failures) {
+  if (httpServerFixtures) {
+    httpServerFixtures.close();
+  }
+  if (httpServerAssessmentPages) {
+    httpServerAssessmentPages.close();
+  };
+  return process.exit(failures);
+}
 
 /**
  * Sets up and runs the Specs.
@@ -75,34 +87,45 @@ function runSpecs (err, assessmentsJSON) {
   // Parse the assessements into a JavaScript object.
   var assessments = JSON.parse(assessmentsJSON);
 
+  // If we have no assessments to run, shut down the process with an error code.
+  if (Object.keys(assessments) == 0) {
+    shutdownTestRunner(1);
+  }
+
   // Set up the Mocha test runs.
   specFiles = __dirname + '/specs/**/*Spec.js';
 
   // Gather the spec files and add them to the Mocha run.
   glob(specFiles, function (error, files) {
 
-    files.forEach(function (file) {
-      mocha.addFile(file);
-    });
-
-    mocha.run(function (failures) {
+    /**
+     * Clean up after Mocha has finished its run.
+     */
+    function cleanup (failures) {
       if (!client) {
-        return process.exit(failures);
+        return shutdownTestRunner(failures);
       }
 
-      client.end(function () {
-        if (httpServerFixtures) {
-          httpServerFixtures.close();
-        }
-        if (httpServerAssessmentPages) {
-          httpServerAssessmentPages.close();
-        };
-        process.exit(failures);
-      });
+      debugger;
+
+      return client.end(shutdownTestRunner(failures));
+    }
+
+    mochaRunner = new Mocha({
+      timeout: 1000000,
+      reporter: 'spec'
     });
+
+    files.forEach(function (file) {
+      mochaRunner.addFile(file);
+    });
+
+    mochaRunner.run(cleanup);
   });
 
-  //
+  // Methods available in the Spec runner (e.g. Mocha).
+  // @todo Provide these methods through exports and move them into their
+  // own file.
   global.quailTestRunner = {
     noError: function(err) {
       assert(err === undefined);
@@ -118,10 +141,25 @@ function runSpecs (err, assessmentsJSON) {
         }
       };
     },
-    setup: function(url, newSession) {
+    setup: function(url, indicatedAssessments, newSession) {
+
+      // Filter the list of assessments if the Spec indicates a subset.
+      var assessmentsToRun = assessments;
+      if (indicatedAssessments && indicatedAssessments.length > 0) {
+        assessmentsToRun = {};
+        indicatedAssessments.forEach(function (name) {
+          if (name in assessments) {
+            assessmentsToRun[name] = assessments[name];
+          }
+        });
+      }
+
+      it('should have assessments to evaluate', function () {
+        expect(Object.keys(assessmentsToRun)).to.have.length.above(0);
+      });
+
       return function (done) {
         var self = this; // This is the Mocha test object.
-        var wdjs = require('webdriverio');
 
         // if instance already exists and no new session was requested return existing instance
         if (client && !newSession && newSession !== null) {
@@ -131,12 +169,12 @@ function runSpecs (err, assessmentsJSON) {
         // if new session was requested create a temporary instance
         else if (newSession && newSession !== null) {
           console.log('  Requesting a new Selenium session...');
-          this.client = wdjs.remote(conf).init();
+          this.client = webdriver.remote(conf).init();
         }
         // otherwise store created intance for other specs
         else {
           console.log('  Creating a new Selenium session...');
-          this.client = client = wdjs.remote(conf).init();
+          this.client = client = webdriver.remote(conf).init();
         }
 
         /**
@@ -293,7 +331,7 @@ function runSpecs (err, assessmentsJSON) {
           },
           // Evaluate the HTML with Quail.
           {
-            args: [assessments],
+            args: [assessmentsToRun],
             evaluate: evaluateWithQuail,
             respond: respondToQuailEvaluation
           },
