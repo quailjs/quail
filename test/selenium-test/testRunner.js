@@ -337,27 +337,42 @@ global.h = {
        */
       function loadFixture (fixture, index) {
         var self = this;
-        var args = [].concat(fixture.evaluate, fixture.args || [], function (err, ret) {
-            var error;
-            var resondFn = fixture.respond;
-            // Prepare the next fixture.
-            index = index + 1;
-            fixture = fixtures[index];
-            // Run the response method if it exists.
-            if (typeof resondFn === 'function') {
-              error = resondFn(err, ret);
-            }
-            // Run the next fixture if there is one and no error was returned from
-            // the response method.
-            if (fixture && !error) {
-              loadFixture.apply(self, [fixture, index]);
-            }
-            // Or return control to the test suite. Mocha complains if done() is
-            // invoked with anything that isn't an Error object.
-            else {
-              done(error);
-            }
-          });
+
+        /**
+         * Wraps the configured resolution script in order to kick off the next
+         * fixture evaluation.
+         *
+         * @param Object err
+         *   A WebdriverIO error object.
+         * @param Object ret
+         *   The result of the evalution of the script in the Selenium browser
+         *   context.
+         */
+        function resolveFixture (err, ret) {
+          var error;
+          var resondFn = fixture.respond;
+          // Prepare the next fixture.
+          index = index + 1;
+          fixture = fixtures[index];
+          // Run the response method if it exists.
+          if (typeof resondFn === 'function') {
+            error = resondFn(err, ret);
+          }
+          // Run the next fixture if there is one and no error was returned from
+          // the response method.
+          if (fixture && !error) {
+            loadFixture.apply(self, [fixture, index]);
+          }
+          // Or return control to the test suite. Mocha complains if done() is
+          // invoked with anything that isn't an Error object.
+          else {
+            done(error);
+          }
+        }
+        // Combine the evaluation script, any arguments and the wrapped resolve
+        // function into an arguments array that will be passed to Seleniums
+        // executeAsync method.
+        var args = [].concat(fixture.evaluate, (fixture.args || []), resolveFixture);
         // Run the async evaluation against the client object.
         self
           .client
