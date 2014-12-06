@@ -1,5 +1,5 @@
-describe('The form test', function () {
-  before(h.setup('http://quailpages/forms/simple-form.html'));
+describe('assessment: aMustHaveTitle', function () {
+  before(quailTestRunner.setup('http://localhost:9999/aMustHaveTitle/aMustHaveTitle.html'));
 
   it('should have a client', function () {
     expect(this.client).to.exist;
@@ -14,6 +14,6 @@ describe('The form test', function () {
   });
 
   it('should have cases', function () {
-    expect(this.results.stats.cases).to.equal(280);
+    expect(this.results.stats.cases).to.equal(331);
   });
 });

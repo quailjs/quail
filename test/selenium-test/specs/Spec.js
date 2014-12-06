@@ -1,5 +1,5 @@
 describe('The form test', function () {
-  before(h.setup('http://quailpages/forms/simple-form.html'));
+  before(quailTestRunner.setup('http://quailpages/forms/simple-form.html'));
 
   it('should have a client', function () {
     expect(this.client).to.exist;

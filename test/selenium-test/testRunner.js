@@ -103,7 +103,7 @@ function runSpecs (err, assessmentsJSON) {
   });
 
   //
-  global.h = {
+  global.quailTestRunner = {
     noError: function(err) {
       assert(err === undefined);
     },
