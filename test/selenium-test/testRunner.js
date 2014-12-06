@@ -125,17 +125,17 @@ function runSpecs (err, assessmentsJSON) {
 
         // if instance already exists and no new session was requested return existing instance
         if (client && !newSession && newSession !== null) {
-          console.log('Reusing the existing Selenium session...');
+          console.log('  Reusing the existing Selenium session');
           this.client = client;
         }
         // if new session was requested create a temporary instance
         else if (newSession && newSession !== null) {
-          console.log('Requesting a new Selenium session...');
+          console.log('  Requesting a new Selenium session...');
           this.client = wdjs.remote(conf).init();
         }
         // otherwise store created intance for other specs
         else {
-          console.log('Creating a new Selenium session...');
+          console.log('  Creating a new Selenium session...');
           this.client = client = wdjs.remote(conf).init();
         }
 
