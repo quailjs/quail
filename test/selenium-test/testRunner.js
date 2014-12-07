@@ -15,7 +15,15 @@ global.expect = chai.expect;
 global.assert = chai.assert;
 var glob = require('glob');
 var Q = require('q'); // https://github.com/kriskowal/q
-var mochaRunner, seleniumServer, webdriver, client, specFiles;
+var mochaRunner, seleniumServer, webdriver, client, specFiles, assessmentsPromise;
+
+Q.getUnhandledReasons(function (err) {
+  console.log('Caught unhandled reason: ' + err);
+});
+
+process.on('uncaughtException', function(err) {
+  console.log('Caught unhandled exception on process: ' + err);
+});
 
 // The root path of the HTTP server at port 8888.
 var fixturesRoot = path.join(__dirname, '../..', 'dist');
@@ -86,10 +94,7 @@ function shutdownTestRunner (failures) {
 /**
  * Sets up and runs the Specs.
  */
-function runSpecs (err, assessmentsJSON) {
-  // Parse the assessements into a JavaScript object.
-  var assessments = JSON.parse(assessmentsJSON);
-
+function runSpecs (assessments) {
   // If we have no assessments to run, shut down the process with an error code.
   if (Object.keys(assessments) == 0) {
     shutdownTestRunner(1);
@@ -180,21 +185,23 @@ function runSpecs (err, assessmentsJSON) {
       // Prepare the list of assessments.
       function prepareAssessmentList (resolve, reject) {
         // Filter the list of assessments if the Spec indicates a subset.
-        var assessmentsToRun = assessments;
-        if (indicatedAssessments && indicatedAssessments.length > 0) {
-          assessmentsToRun = {};
-          indicatedAssessments.forEach(function (name) {
-            if (name in assessments) {
-              assessmentsToRun[name] = assessments[name];
-            }
-          });
-        }
-        if (Object.keys(assessmentsToRun).length > 0) {
-          resolve(assessmentsToRun);
-        }
-        else {
-          reject(new Error('No assessments to evaluate'));
-        }
+        return assessmentsPromise.then(function (assessments) {
+          var assessmentsToRun = assessments;
+          if (indicatedAssessments && indicatedAssessments.length > 0) {
+            assessmentsToRun = {};
+            indicatedAssessments.forEach(function (name) {
+              if (name in assessments) {
+                assessmentsToRun[name] = assessments[name];
+              }
+            });
+          }
+          if (Object.keys(assessmentsToRun).length > 0) {
+            resolve(assessmentsToRun);
+          }
+          else {
+            reject(new Error('No assessments to evaluate'));
+          }
+        });
       }
 
       return Q.all([
@@ -209,4 +216,11 @@ function runSpecs (err, assessmentsJSON) {
 
 // Load the assessment defintions. The callback will start the evaluation of the
 // specifications.
-fs.readFile(fixturesRoot + '/tests.json', runSpecs);
+assessmentsPromise = Q.Promise(function (resolve) {
+  Q.nfcall(fs.readFile, fixturesRoot + '/tests.json', "utf-8")
+    .then(function (assessmentsJSON) {
+      resolve(JSON.parse(assessmentsJSON));
+    });
+});
+
+assessmentsPromise.done(runSpecs);
