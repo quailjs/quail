@@ -159,12 +159,18 @@ function runSpecs (assessments) {
     //   a. The evaluation of the page either resolves or rejects the promise
     //      object returned to the testing suite by the setup method.
     setup: function(url, indicatedAssessments, newSession) {
-      // Retrieve a webdriver client.
+
+      var clientPromise;
+      var quailDeferred;
+      var assessmentsDeferred;
+
+      /**
+       * Retrieves a webdriver client.
+       */
       function retrieveWebdriver (resolve, reject) {
         // If an instance already exists and no new session was requested, then
         // return existing instance.
         if (client && !newSession) {
-          debugger;
           console.log('  Reusing the existing Selenium session');
           resolve(client);
         }
@@ -182,8 +188,10 @@ function runSpecs (assessments) {
         }
       }
 
-      // Prepare the list of assessments.
-      function prepareAssessmentList (resolve, reject) {
+      /**
+       * Prepares the list of assessments.
+       */
+      function prepareAssessmentList (client) {
         // Filter the list of assessments if the Spec indicates a subset.
         return assessmentsPromise.then(function (assessments) {
           var assessmentsToRun = assessments;
@@ -196,19 +204,234 @@ function runSpecs (assessments) {
             });
           }
           if (Object.keys(assessmentsToRun).length > 0) {
-            resolve(assessmentsToRun);
+            assessmentsDeferred.resolve(assessmentsToRun);
+            return {
+              client: client,
+              assessments: assessmentsToRun
+            };
           }
           else {
-            reject(new Error('No assessments to evaluate'));
+            assessmentsDeferred.reject(new Error('No assessments to evaluate'));
           }
         });
       }
 
+      /**
+       * Loads a file using a <script> tag.
+       */
+      function loadScriptFile (filename, finish) {
+
+        function loadError (error) {
+          finish('Failed to load \'' + filename + '\': ' + error);
+        }
+
+        function loadSuccess () {
+          finish('Loaded \'' + filename + '\'');
+        }
+
+        var head = document.getElementsByTagName('head')[0];
+        // Append scripts.
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.src = 'http://localhost:8888/' + filename;
+        s.onerror = loadError;
+        s.onload = loadSuccess;
+        if (head) head.appendChild(s);
+      }
+
+      /**
+       * Loads files via AJAX GET in the browser instance.
+       */
+      function loadAjaxFile (filename, finish) {
+
+        function loadError (error) {
+          finish('Failed to load \'' + filename + '\': ' + error);
+        }
+
+        function loadSuccess () {
+          if (this.status == 200) {
+            finish(this.response);
+          }
+          else {
+            loadError(this.status);
+          }
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", 'http://localhost:8888/' + filename, true);
+        xhr.onload = loadSuccess;
+        xhr.onerror = loadError;
+        xhr.send();
+      }
+      /**
+       * Responds to an evaluateAsync call. It's a simple err reporting response.
+       */
+      function respondToEvaluate (err, ret) {
+        if (err) {
+          return err;
+        }
+      }
+
+      /**
+       * Evaluates a page using Quail, which has been loading into the page already.
+       */
+      function evaluateWithQuail (tests, finish) {
+        // Basic output structure attributes.
+        var output = {
+          tests: {},
+          successCriteria: {},
+          stats: {
+            tests: 0,
+            cases: 0
+          }
+        };
+
+        jQuery('html').quail({
+          accessibilityTests: tests,
+          // Called when an individual Case in a test is resolved.
+          caseResolve: function (eventName, test, _case) {
+            var name = test.get('name');
+            if (!output.tests[name]) {
+              output.tests[name] = {
+                id: name,
+                title: test.get('title'),
+                description: test.get('description'),
+                type: test.get('type'),
+                testability: test.get('testability'),
+                guidelines: test.get('guidelines') || {},
+                tags: test.get('tags'),
+                cases: []
+              };
+            }
+            // Push the case into the results for this test.
+            output.tests[name].cases.push({
+              status: _case.get('status'),
+              selector: _case.get('selector'),
+              html: _case.get('html')
+            });
+            // Increment the cases count.
+            output.stats.cases++;
+            console.log(output);
+          },
+          // Called when all the Cases in a Test are resolved.
+          testComplete: function () {
+            // console.log('Finished testing ' + test.get('name') + '.');
+            // Increment the tests count.
+            output.stats.tests++;
+          },
+          // Called when all the Tests in a TestCollection are completed.
+          testCollectionComplete: function () {
+            // Push the results of the test out to the Phantom listener.
+            finish(JSON.stringify(output));
+          }
+        });
+      }
+
+      /**
+       * Assigns the responds of a Quail evaluation to the test suite object.
+       */
+      function respondToQuailEvaluation (err, ret) {
+        if (err) {
+          return err;
+        }
+        if (ret && ret.value) {
+          self.results = JSON.parse(ret.value);
+        }
+      }
+
+      /**
+       * Inject Quail assets and runs the assessments against the provided
+       * webdriver client.
+       */
+      function evaluateQuail (assets) {
+        var client = assets.client;
+        var assessments = assets.assessments;
+
+        quailDeferred.resolve('hi');
+        return;
+
+        // Load Quail fixtures into the page.
+        var fixtures = [
+          // Load jQuery into the page.
+          {
+            args: ['jquery.min.js'],
+            evaluate: loadScriptFile,
+            respond: respondToEvaluate
+          },
+          // Load the Quail script into the page.
+          {
+            args: ['quail.jquery.js'],
+            evaluate: loadScriptFile,
+            respond: respondToEvaluate
+          },
+          // Evaluate the HTML with Quail.
+          {
+            args: [assessments],
+            evaluate: evaluateWithQuail,
+            respond: respondToQuailEvaluation
+          }
+        ];
+
+        /**
+         * Wraps the configured resolution script in order to kick off the next
+         * fixture evaluation.
+         *
+         * @param Object err
+         *   A WebdriverIO error object.
+         * @param Object ret
+         *   The result of the evalution of the script in the Selenium browser
+         *   context.
+         */
+        function resolveFixture (fixture, err, ret) {
+          debugger;
+          if (err) {
+            return err;
+          }
+          var data;
+          var resondFn = fixture.respond;
+          // Run the response method if it exists.
+          if (typeof resondFn === 'function') {
+            data = resondFn(err, ret);
+          }
+          // Or return control to the test suite. Mocha complains if done() is
+          // invoked with anything that isn't an Error object.
+          else {
+            return data;
+          }
+        }
+
+        var funcs = fixtures.map(function (fixture) {
+          // Bind the client, the evaluation script, any arguments and the wrapped resolve
+          // function into an arguments array that will be passed to Seleniums
+          // executeAsync method.
+          return Q.nbind(client.executeAsync, client, fixture.evaluate, (fixture.args || []), resolveFixture.bind(client, fixture));
+        });
+
+        return funcs.reduce(function (soFar, f) {
+          debugger;
+          return soFar.then(f);
+        }, Q(initialVal));
+
+        quailDeferred.resolve('hi');
+      }
+
+      // Set up the promises that will be returned to the Mocha before function.
+      clientPromise = Q.Promise(retrieveWebdriver);
+      quailDeferred = Q.defer();
+      assessmentsDeferred = Q.defer();
+
+      // Process the assessment list and then Quail once we have a client.
+      clientPromise
+        .then(prepareAssessmentList)
+        .then(evaluateQuail);
+
       return Q.all([
         // Retrieve a webdriver client.
-        Q.Promise(retrieveWebdriver),
+        clientPromise,
         // Prepare the list of assessments.
-        Q.Promise(prepareAssessmentList)
+        assessmentsDeferred.promise,
+        // Retrieve the results from the Quail evaluation.
+        quailDeferred.promise
       ]);
     }
   };
