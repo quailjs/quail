@@ -4,26 +4,27 @@
     <title>aAdjacentWithSameResourceShouldBeCombined</title>
   </head>
   <body>
+    <!-- inapplicable -->
     <div>
       <a href="products.html"><img src="../assets/go.gif" alt="" />Products page</a>
     </div>
 
+    <!-- passed -->
     <div>
       <a href="products.html"><img src="../assets/go.gif" alt="" />Products page</a>
       <a href="bullets.html"><img src="../assets/bullet.gif" alt="" />Bullet page</a>
     </div>
 
+    <!-- failed -->
     <div>
-      <a href="products.html" class="quail-failed-element"><img src="../assets/go.gif" alt="" /></a>
+      <a href="products.html"><img src="../assets/go.gif" alt="" /></a>
       <a href="products.html">Products page</a>
     </div>
 
+    <!-- failed -->
     <div>
-      <a href="products.html" class="quail-failed-element"><img src="../assets/go.gif" alt="Products page" /></a>
+      <a href="products.html"><img src="../assets/go.gif" alt="Products page" /></a>
       <a href="products.html">Products page</a>
     </div>
-
-
-    <script src="../quail-testrunner.js"></script>
   </body>
 </html>
