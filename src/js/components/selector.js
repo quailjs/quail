@@ -7,7 +7,6 @@
  */
 quail.components.selector = function (quail, test, Case, options) {
   this.get('$scope').each(function() {
-    var $scope = $(this);
     var candidates = $(this).find(options.selector);
     // Passes.
     if (!candidates.length) {

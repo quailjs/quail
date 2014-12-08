@@ -27,7 +27,7 @@ module.exports = function(config) {
       {pattern: 'src/js/lib/wcag/*.js'},
 
       // Specs
-      {pattern: 'test/**/*Spec.js'},
+      {pattern: 'test/unit/*Spec.js'},
     ],
 
 

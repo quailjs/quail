@@ -62,28 +62,6 @@ module.exports = function(grunt) {
           footer: "\n" + 'window.__testQuail = quail; })(jQuery);',
           stripBanners: true
         }
-      },
-      testLib: {
-        src: [
-          'dist/tests.json',
-          'lib/jquery/jquery.js',
-          'lib/RainbowVis-JS/rainbowvis.js',
-          'lib/qunit/qunit.js',
-          'test/quail-testing.jquery.js',
-          'test/testrunner.js'
-        ],
-        dest: 'test/quail-testrunner.js',
-        options: {
-          banner: '(function() {',
-          footer: '})();',
-          stripBanners: true,
-          process: function(src, filepath) {
-            if(filepath === 'dist/tests.json') {
-              return 'var __quailTests = ' + src + ';' + "\n";
-            }
-            return src;
-          }
-        }
       }
     },
     copy: {
@@ -109,52 +87,16 @@ module.exports = function(grunt) {
         banner: '<%= pkg.options.banner %>'
       }
     },
-    qunit: {
-      all: ['test/quail.html'],
-      single: ['test/' + grunt.option('file')]
-    },
     karma: {
       unit: {
         configFile: 'karma-unit.conf.js',
         singleRun: true,
         browsers: ['PhantomJS']
-      },
-      a11y: {
-        configFile: 'karma-a11y.conf.js',
-        singleRun: true
       }
     },
-    mochacli: {
-      options: {
-        colors:        true,
-        'check-leaks': false,
-        ui:            'bdd',
-        reporter:      'spec',
-        timeout:       20000
-      },
-      a11y: {
-        options: {
-          files: ['test/selenium-test/*.js']
-        }
-      }
-    },
-    connect: {
-      dev: {
-        options: {
-          port: '7000',
-          base: './dist',
-          hostname: 'localhost',
-          middleware: function (connect, options, middlewares) {
-            // inject a custom middleware
-            middlewares.unshift(function (req, res, next) {
-              res.setHeader('Access-Control-Allow-Origin', '*');
-              res.setHeader('Access-Control-Allow-Methods', '*');
-              return next();
-            });
-
-            return middlewares;
-          }
-        }
+    execute: {
+      assessments: {
+        src: ['test/assessmentSpecs/testrunner.js']
       }
     },
     jshint: {
@@ -180,9 +122,7 @@ module.exports = function(grunt) {
         files: [
           'src/**/*.js',
           'src/**/*.yml',
-          'test/accessibility-tests/*.html',
-          'test/core/*.html',
-          'test/testrunner.js'
+          'test/accessibility-tests/*.html'
         ],
         tasks: [
           'convert',
@@ -262,39 +202,69 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
   grunt.loadNpmTasks('grunt-chmod');
   grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-convert');
+  grunt.loadNpmTasks('grunt-execute');
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-bower-task');
-  grunt.loadNpmTasks('grunt-selenium-webdriver');
-  grunt.loadNpmTasks('grunt-mocha-cli');
-
-  // Run accessibility assessments in Selenium.
-  grunt.registerTask('testAssessments', [
-    'selenium_start',
-    'connect:dev',
-    'mochacli:a11y',
-    'selenium_stop'
-  ]);
 
   // By default, just run tests
-  grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all', 'karma']);
+  grunt.registerTask('default', [
+    'bower:install',
+    'convert',
+    'concat',
+    'jshint',
+    'buildTestFilesJson',
+    'buildGuideline',
+    'compressTestsJson',
+    'karma',
+    'execute:assessments'
+  ]);
 
   // Build task.
-  grunt.registerTask('build', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'uglify']);
+  grunt.registerTask('build', [
+    'bower:install',
+    'convert',
+    'concat',
+    'jshint',
+    'buildTestFilesJson',
+    'buildGuideline',
+    'compressTestsJson',
+    'uglify'
+  ]);
 
   // Release task.
-  grunt.registerTask('release', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'qunit:all', 'karma', 'buildGuideline', 'compressTestsJson', 'uglify', 'gh-pages']);
+  grunt.registerTask('release', [
+    'bower:install',
+    'convert',
+    'concat',
+    'jshint',
+    'buildTestFilesJson',
+    'karma',
+    'execute:assessments',
+    'buildGuideline',
+    'compressTestsJson',
+    'uglify',
+    'gh-pages'
+  ]);
 
   // Test task.
-  grunt.registerTask('test', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all', 'karma']);
+  grunt.registerTask('test', [
+    'bower:install',
+    'convert',
+    'concat',
+    'jshint',
+    'buildTestFilesJson',
+    'buildGuideline',
+    'compressTestsJson',
+    'karma',
+    'execute:assessments'
+  ]);
 
   grunt.registerTask('publish', ['gh-pages']);
 };
