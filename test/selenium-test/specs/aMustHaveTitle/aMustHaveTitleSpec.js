@@ -22,7 +22,7 @@ describe('assessment: aMustHaveTitle', function () {
 
   it('should return the correct stats', function () {
     expect(quailResults.stats.tests).to.equal(1);
-    expect(quailResults.stats.cases).to.equal(1);
+    expect(quailResults.stats.cases).to.equal(2);
   });
 
   it('should have correct key under the test results', function () {
@@ -31,9 +31,13 @@ describe('assessment: aMustHaveTitle', function () {
 
   it('should return the proper assessment for the test', function () {
     expect(quailResults.tests['aMustHaveTitle'].cases).to.deep.equal([{
-      html: "<a href=\"dogs.html\" class=\"quail-failed-element\">information about dogs</a>",
-      selector: "a[href=\"dogs.html\"].quail-failed-element",
+      html: "<a href=\"dogs.html\">information about dogs</a>",
+      selector: "a[href=\"dogs.html\"]",
       status: "failed"
+    },{
+      html: "<a href=\"dogs.html\">dogs</a>",
+      selector: "a[href=\"dogs.html\"]",
+      status: "passed"
     }]);
   });
 });

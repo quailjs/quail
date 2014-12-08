@@ -108,7 +108,8 @@ function runSpecs (assessments) {
 
     mochaRunner = new Mocha({
       timeout: 1000000,
-      reporter: 'spec'
+      reporter: 'spec',
+      bail: false
     });
 
     files.forEach(function (file) {
