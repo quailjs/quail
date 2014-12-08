@@ -106,19 +106,6 @@ function runSpecs (assessments) {
   // Gather the spec files and add them to the Mocha run.
   glob(specFiles, function (error, files) {
 
-    /**
-     * Clean up after Mocha has finished its run.
-     */
-    function cleanup (failures) {
-      if (!client) {
-        return shutdownTestRunner(failures);
-      }
-
-      return client.end(function (err, ret) {
-        shutdownTestRunner(failures);
-      });
-    }
-
     mochaRunner = new Mocha({
       timeout: 1000000,
       reporter: 'spec'
@@ -128,7 +115,7 @@ function runSpecs (assessments) {
       mochaRunner.addFile(file);
     });
 
-    mochaRunner.run(cleanup);
+    mochaRunner.run(shutdownTestRunner);
   });
 
   // Methods available in the Spec runner (e.g. Mocha).
@@ -161,7 +148,6 @@ function runSpecs (assessments) {
     setup: function(options) {
       var url = options.url;
       var indicatedAssessments = options.assessments;
-      var newSession = options.newSession;
 
       var clientPromise;
       var quailDeferred;
@@ -171,24 +157,13 @@ function runSpecs (assessments) {
        * Retrieves a webdriver client.
        */
       function retrieveWebdriver (resolve, reject) {
-        // If an instance already exists and no new session was requested, then
-        // return existing instance.
-        if (client && !newSession) {
-          console.log('  Reusing the existing Selenium session');
-          resolve(client);
-        }
-        // Otherwise return a new session instance.
-        else {
-          console.log('  Requesting a new Selenium session...');
-          return Q.when(webdriver.remote(conf).init())
-            .then(function (webdriver) {
-              client = webdriver;
-              client.timeoutsAsyncScript(5000);
-              resolve(client);
-            }, function () {
-              reject(new Error('Failed to start a webdriverio client.'));
-            });
-        }
+        return Q.when(webdriver.remote(conf).init())
+          .then(function (client) {
+            client.timeoutsAsyncScript(5000);
+            resolve(client);
+          }, function () {
+            reject(new Error('Failed to start a webdriverio client.'));
+          });
       }
 
       /**

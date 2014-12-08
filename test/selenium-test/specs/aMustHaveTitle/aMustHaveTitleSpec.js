@@ -16,6 +16,10 @@ describe('assessment: aMustHaveTitle', function () {
       });
   });
 
+  after('end the webdriver session', function () {
+    client.end();
+  });
+
   it('should have a client', function () {
     expect(client).to.exist;
   });
