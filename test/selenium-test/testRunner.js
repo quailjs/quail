@@ -158,7 +158,10 @@ function runSpecs (assessments) {
     // 4. Evaluating the page with Quail and returning the results object.
     //   a. The evaluation of the page either resolves or rejects the promise
     //      object returned to the testing suite by the setup method.
-    setup: function(url, indicatedAssessments, newSession) {
+    setup: function(options) {
+      var url = options.url;
+      var indicatedAssessments = options.assessments;
+      var newSession = options.newSession;
 
       var clientPromise;
       var quailDeferred;
@@ -218,9 +221,10 @@ function runSpecs (assessments) {
 
       /**
        * Loads a file using a <script> tag.
+       *
+       * This function is run in the browser context.
        */
       function loadScriptFile (filename, finish) {
-
         function loadError (error) {
           finish('Failed to load \'' + filename + '\': ' + error);
         }
@@ -241,6 +245,8 @@ function runSpecs (assessments) {
 
       /**
        * Loads files via AJAX GET in the browser instance.
+       *
+       * This function is run in the browser context.
        */
       function loadAjaxFile (filename, finish) {
 
@@ -263,17 +269,11 @@ function runSpecs (assessments) {
         xhr.onerror = loadError;
         xhr.send();
       }
-      /**
-       * Responds to an evaluateAsync call. It's a simple err reporting response.
-       */
-      function respondToEvaluate (err, ret) {
-        if (err) {
-          return err;
-        }
-      }
 
       /**
        * Evaluates a page using Quail, which has been loading into the page already.
+       *
+       * This function is run in the browser context.
        */
       function evaluateWithQuail (tests, finish) {
         // Basic output structure attributes.
@@ -330,39 +330,29 @@ function runSpecs (assessments) {
       /**
        * Assigns the responds of a Quail evaluation to the test suite object.
        */
-      function respondToQuailEvaluation (err, ret) {
-        if (err) {
-          return err;
-        }
-        if (ret && ret.value) {
-          self.results = JSON.parse(ret.value);
-        }
+      function respondToQuailEvaluation (ret) {
+        return ret && ret.value && JSON.parse(ret.value) || {};
       }
 
       /**
        * Inject Quail assets and runs the assessments against the provided
        * webdriver client.
        */
-      function evaluateQuail (assets) {
+      function communicateWithSelenium (assets) {
         var client = assets.client;
         var assessments = assets.assessments;
-
-        quailDeferred.resolve('hi');
-        return;
 
         // Load Quail fixtures into the page.
         var fixtures = [
           // Load jQuery into the page.
           {
             args: ['jquery.min.js'],
-            evaluate: loadScriptFile,
-            respond: respondToEvaluate
+            evaluate: loadScriptFile
           },
           // Load the Quail script into the page.
           {
             args: ['quail.jquery.js'],
-            evaluate: loadScriptFile,
-            respond: respondToEvaluate
+            evaluate: loadScriptFile
           },
           // Evaluate the HTML with Quail.
           {
@@ -373,46 +363,57 @@ function runSpecs (assessments) {
         ];
 
         /**
-         * Wraps the configured resolution script in order to kick off the next
-         * fixture evaluation.
-         *
-         * @param Object err
-         *   A WebdriverIO error object.
-         * @param Object ret
-         *   The result of the evalution of the script in the Selenium browser
-         *   context.
+         * Loads fixtures in a linked list so that asynchronous script evalus are run
+         * sequentially. Later fixtures in the fixture array can depend on results from
+         * any previous fixture. Maybe it would be better to do this with promises?
          */
-        function resolveFixture (fixture, err, ret) {
-          debugger;
-          if (err) {
-            return err;
+        function loadFixture (fixture, index) {
+          /**
+           * Wraps the configured resolution script in order to kick off the next
+           * fixture evaluation.
+           *
+           * @param Object err
+           *   A WebdriverIO error object.
+           * @param Object ret
+           *   The result of the evalution of the script in the Selenium browser
+           *   context.
+           */
+          function resolveFixture (err, ret) {
+            if (err) {
+              quailDeferred.reject(err);
+              return;
+            }
+            var data;
+            var resondFn = fixture.respond;
+            // Prepare the next fixture.
+            index = index + 1;
+            fixture = fixtures[index];
+            // Run the response method if it exists.
+            if (typeof resondFn === 'function') {
+              data = resondFn(ret);
+            }
+            // Run the next fixture if there is one and no error was returned from
+            // the response method.
+            if (fixture && !data) {
+              loadFixture.apply(client, [fixture, index]);
+            }
+            // Or return control to the test suite. Mocha complains if done() is
+            // invoked with anything that isn't an Error object.
+            else {
+              quailDeferred.resolve(data);
+            }
           }
-          var data;
-          var resondFn = fixture.respond;
-          // Run the response method if it exists.
-          if (typeof resondFn === 'function') {
-            data = resondFn(err, ret);
-          }
-          // Or return control to the test suite. Mocha complains if done() is
-          // invoked with anything that isn't an Error object.
-          else {
-            return data;
-          }
-        }
-
-        var funcs = fixtures.map(function (fixture) {
-          // Bind the client, the evaluation script, any arguments and the wrapped resolve
+          // Combine the evaluation script, any arguments and the wrapped resolve
           // function into an arguments array that will be passed to Seleniums
           // executeAsync method.
-          return Q.nbind(client.executeAsync, client, fixture.evaluate, (fixture.args || []), resolveFixture.bind(client, fixture));
-        });
-
-        return funcs.reduce(function (soFar, f) {
-          debugger;
-          return soFar.then(f);
-        }, Q(initialVal));
-
-        quailDeferred.resolve('hi');
+          var args = [].concat(fixture.evaluate, (fixture.args || []), resolveFixture);
+          // Run the async evaluation against the client object.
+          client.executeAsync.apply(client, args);
+        }
+        // Prepare to start the fixture loading.
+        var loadFixtureBound = loadFixture.bind(client, fixtures[0], 0);
+        // Load the requested URL then start the fixture loading.
+        client.url(url, loadFixtureBound);
       }
 
       // Set up the promises that will be returned to the Mocha before function.
@@ -423,7 +424,7 @@ function runSpecs (assessments) {
       // Process the assessment list and then Quail once we have a client.
       clientPromise
         .then(prepareAssessmentList)
-        .then(evaluateQuail);
+        .then(communicateWithSelenium);
 
       return Q.all([
         // Retrieve a webdriver client.
