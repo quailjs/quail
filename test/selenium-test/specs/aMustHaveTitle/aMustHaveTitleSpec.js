@@ -17,28 +17,19 @@ describe('assessment: aMustHaveTitle', function () {
   });
 
   after('end the webdriver session', function () {
-    client.end();
+    return quailTestRunner.teardown(client);
   });
 
-  it('should have a client', function () {
-    expect(client).to.exist;
-  });
-
-  it('should have results', function () {
-    expect(quailResults).to.exist;
-  });
-
-  it('should have tests', function () {
+  it('should return the correct stats', function () {
     expect(quailResults.stats.tests).to.equal(1);
-  });
-
-  it('should have cases', function () {
     expect(quailResults.stats.cases).to.equal(1);
-    expect(quailResults.tests).to.include.keys('aMustHaveTitle');
-    expect(quailResults.tests);
   });
 
-  it('should return the proper assessment for the tests', function () {
+  it('should have correct key under the test results', function () {
+    expect(quailResults.tests).to.include.keys('aMustHaveTitle');
+  });
+
+  it('should return the proper assessment for the test', function () {
     expect(quailResults.tests['aMustHaveTitle'].cases).to.deep.equal([{
       html: "<a href=\"dogs.html\" class=\"quail-failed-element\">information about dogs</a>",
       selector: "a[href=\"dogs.html\"].quail-failed-element",

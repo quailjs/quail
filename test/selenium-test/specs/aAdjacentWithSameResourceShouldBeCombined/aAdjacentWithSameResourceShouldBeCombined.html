@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <title>aAdjacentWithSameResourceShouldBeCombined</title>
+  </head>
+  <body>
+    <div>
+      <a href="products.html"><img src="../assets/go.gif" alt="" />Products page</a>
+    </div>
+
+    <div>
+      <a href="products.html"><img src="../assets/go.gif" alt="" />Products page</a>
+      <a href="bullets.html"><img src="../assets/bullet.gif" alt="" />Bullet page</a>
+    </div>
+
+    <div>
+      <a href="products.html" class="quail-failed-element"><img src="../assets/go.gif" alt="" /></a>
+      <a href="products.html">Products page</a>
+    </div>
+
+    <div>
+      <a href="products.html" class="quail-failed-element"><img src="../assets/go.gif" alt="Products page" /></a>
+      <a href="products.html">Products page</a>
+    </div>
+
+
+    <script src="../quail-testrunner.js"></script>
+  </body>
+</html>

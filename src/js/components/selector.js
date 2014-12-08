@@ -15,7 +15,6 @@ quail.components.selector = function (quail, test, Case, options) {
       test.add(quail.lib.Case({
         element: undefined,
         selector: options.selector,
-        expected: $scope.data('expected') || $scope.find('[data-expected]').data('expected'),
         status: 'passed'
       }));
     }
@@ -26,7 +25,6 @@ quail.components.selector = function (quail, test, Case, options) {
         test.add(quail.lib.Case({
           element: this,
           selector: options.selector,
-          expected: $(this).closest('.quail-test').data('expected'),
           status: 'failed'
         }));
       });

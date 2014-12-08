@@ -101,7 +101,7 @@ function runSpecs (assessments) {
   }
 
   // Set up the Mocha test runs.
-  specFiles = __dirname + '/specs/aMustHaveTitle/*Spec.js';
+  specFiles = __dirname + '/specs/**/*Spec.js';
 
   // Gather the spec files and add them to the Mocha run.
   glob(specFiles, function (error, files) {
@@ -136,15 +136,17 @@ function runSpecs (assessments) {
         }
       };
     },
-    // The setup process involves:
-    // 1. Preparing the list of assessments
-    // 2. Initiating a webdriver client for the test suite
-    // 3. Loading loading the indicated URL in a Selenium browser instance.
-    //   a. jQuery
-    //   b. Quail
-    // 4. Evaluating the page with Quail and returning the results object.
-    //   a. The evaluation of the page either resolves or rejects the promise
-    //      object returned to the testing suite by the setup method.
+    /**
+     * The setup process involves:
+     * 1. Initiating a webdriver client for the test suite
+     * 2. Preparing the list of assessments
+     * 3. Loading loading the indicated URL in a Selenium browser instance.
+     *   a. jQuery
+     *   b. Quail
+     * 4. Evaluating the page with Quail and returning the results object.
+     *   a. The evaluation of the page either resolves or rejects the promise
+     *      object returned to the testing suite by the setup method.
+     */
     setup: function(options) {
       var url = options.url;
       var indicatedAssessments = options.assessments;
@@ -286,7 +288,6 @@ function runSpecs (assessments) {
             });
             // Increment the cases count.
             output.stats.cases++;
-            console.log(output);
           },
           // Called when all the Cases in a Test are resolved.
           testComplete: function () {
@@ -409,6 +410,21 @@ function runSpecs (assessments) {
         // Retrieve the results from the Quail evaluation.
         quailDeferred.promise
       ]);
+    },
+    /**
+     * Closes the client associated with the test suite.
+     */
+    teardown: function (client) {
+      return Q.promise(function (resolve, reject) {
+        client.end(function (err, ret) {
+          if (err) {
+            reject(err);
+          }
+          else {
+            resolve(ret);
+          }
+        });
+      });
     }
   };
 }

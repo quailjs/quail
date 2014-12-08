@@ -26,8 +26,7 @@ quail.aAdjacentWithSameResourceShouldBeCombined = function(quail, test, Case) {
     var nextHref = $nextLink[0].getAttribute('href');
     var status = 'passed';
     var _case = Case({
-      element: element,
-      expected: $element.closest('.quail-test').data('expected')
+      element: element
     });
     if (thisHref === nextHref) {
       status = 'failed';
@@ -41,8 +40,7 @@ quail.aAdjacentWithSameResourceShouldBeCombined = function(quail, test, Case) {
     var _case = Case({ element: element });
     test.add(_case);
     _case.set({
-      'status': 'inapplicable',
-      expected: $(element).closest('.quail-test').data('expected')
+      'status': 'inapplicable'
     });
   }
 
