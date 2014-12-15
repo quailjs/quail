@@ -209,13 +209,13 @@ quail.components.color = function(quail, test, Case, options) {
         return this.cache[cacheKey];
       }
 
-      while (element.length > 0) {
+      while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
         var bimage = element.css('background-image');
         if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
           this.cache[cacheKey] = bimage.replace('url(', '').replace(/'/, '').replace(')', '');
           return this.cache[cacheKey];
         }
-        element = element.parent();
+        element = element[0].parentNode;
       }
       this.cache[cacheKey] = false;
       return false;
@@ -237,7 +237,8 @@ quail.components.color = function(quail, test, Case, options) {
       var notEmpty = function(s) {
         return $.trim(s) !== '';
       };
-      while (element.length > 0) {
+      while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
+        element = $(element);
         // Exit if element has a background color.
         if (this.hasBackgroundColor(element)) {
           this.cache[cacheKey] = false;
@@ -252,7 +253,7 @@ quail.components.color = function(quail, test, Case, options) {
             return this.cache[cacheKey];
           }
         }
-        element = element.parent();
+        element = element[0].parentNode;
       }
       this.cache[cacheKey] = false;
       return false;
@@ -458,8 +459,20 @@ quail.components.color = function(quail, test, Case, options) {
     var $this = $(element);
     var algorithm = options.algorithm;
     var id, failureFound, failedWCAGColorTest, failedWAIColorTest;
+    // The nodeType of the element must be 1. Nodes of type 1 implement the Element
+    // interface which is required of the first argument passed to window.getComputedStyle.
+    // Failure to pass an Element <node> to window.getComputedStyle will raised an exception
+    // if Firefox.
+    if (element.nodeType !== 1) {
+      return;
+    }
+    // Ignore elements whose content isn't displayed to the page.
+    if (['script', 'style', 'title', 'object', 'applet', 'embed', 'template']
+    .indexOf(element.nodeName.toLowerCase()) !== -1)  {
+      return;
+    }
 
-    // Bail out is the text is not readable.
+    // Bail out if the text is not readable.
     if (quail.isUnreadable($this.text())) {
       buildCase(element, 'cantTell', '', 'The text cannot be processed');
       return;
