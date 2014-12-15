@@ -1,10 +1,10 @@
-quail.linkHasAUniqueContext=function(quail, test, Case){
+quail.linkHasAUniqueContext = function(quail, test, Case) {
 
   /**
    * Function for just testing the elements text, without checking text of children
    * @returns {*|jQuery}
    */
-  jQuery.fn.getElementText=function(){
+  jQuery.fn.getElementText=function() {
     return $(this).clone()
       .children()
       .remove()
@@ -12,7 +12,7 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
       .text();
   };
 
-  function clean(node){
+  function clean(node) {
     for (var n=0; n < node.childNodes.length; n++) {
       var child=node.childNodes[n];
       if (child.nodeType === 8) {
@@ -25,7 +25,7 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
     }
   }
 
-  function parentIsNativeStyle(parent){
+  function parentIsNativeStyle(parent) {
     var nativeStyles=['b', 'strong', 'i', 'em', 'u'];
     var result=false;
 
@@ -38,7 +38,7 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
     return result;
   }
 
-  function hasTableHeaderContext(element){
+  function hasTableHeaderContext(element) {
 
     var $td=element.closest('td');
     var result=false;
@@ -60,53 +60,6 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
     return result;
   }
 
-  test.get('$scope').each(function(){
-
-    var testableElements=$(this).find('a');
-
-    if (testableElements.length === 0) {
-      var _case=Case({
-        element: this,
-        status: 'inapplicable',
-        expected: $(this).closest('.quail-test').data('expected')
-      });
-      test.add(_case);
-    } else {
-
-      testableElements.each(function(){
-        var _case=Case({
-          element: this,
-          expected: $(this).closest('.quail-test').data('expected')
-        });
-        test.add(_case);
-
-        //Remove comments before testing
-        clean($(this).closest('.quail-test')[0]);
-
-        var foundElementWithSameText=otherElementsWithSameText($(this));
-        if (($(this).parent().getElementText().trim() !== "" && $(this).parent().getElementText().trim() === $(this).text()) ||
-          (parentIsNativeStyle($(this).parent()) === true && $(this).parent().parent().getElementText().trim() !== "" && $(this).parent().parent().text() === $(this).text()) ||
-          $(this).prev().is('br') ||
-          notInSameSentence($(this))) {
-          _case.set({
-            'status': 'failed'
-          });
-        } else if (
-          hasTableHeaderContext($(this)) ||
-          ($(this).find('img').length > 0 && $(this).find('img').attr('alt') !== $(this).text()) ||
-          ($(this).attr('title') !== undefined && $(this).attr('title') !== $(this).text()) || !foundElementWithSameText
-          ) {
-          _case.set({
-            'status': 'passed'
-          });
-        } else {
-          _case.set({
-            'status': 'failed'
-          });
-        }
-      });
-    }
-  });
 
   function notInSameSentence(element){
     var regex=/<a[^>]+>.+?<\/a>(.?)/gmi;
@@ -125,20 +78,20 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
 
   function otherElementsWithSameText(element){
 
-    var result=false;
-    var elements=element.parent().find('a');
+    var result = false;
+    var elements = element.parent().find('a');
 
 
     elements.each(function(index, aElement){
       if (element.is($(aElement))) {
-        result=false;
+        result = false;
       } else if (element[0].isEqualNode(aElement)) {
-        result=false;
+        result = false;
       } else if (similarStrings(element.text(), $(aElement).text()) > 0.4) {
-        result=true;
+        result = true;
         return false;
       } else {
-        result=false;
+        result = false;
       }
     });
 
@@ -189,5 +142,52 @@ quail.linkHasAUniqueContext=function(quail, test, Case){
     }
     return pairsArray;
   }
-}
-;
+
+  test.get('$scope').each(function() {
+
+    var testableElements = $(this).find('a');
+
+    if (testableElements.length === 0) {
+      var _case = Case({
+        element: this,
+        status: 'inapplicable',
+        expected: $(this).closest('.quail-test').data('expected')
+      });
+      test.add(_case);
+    }
+
+    testableElements.each(function() {
+      var _case=Case({
+        element: this,
+        expected: $(this).closest('.quail-test').data('expected')
+      });
+      test.add(_case);
+
+      //Remove comments before testing
+      clean($(this).closest('.quail-test')[0]);
+
+      var foundElementWithSameText = otherElementsWithSameText($(this));
+      if (($(this).parent().getElementText().trim() !== "" && $(this).parent().getElementText().trim() === $(this).text()) ||
+      (parentIsNativeStyle($(this).parent()) === true && $(this).parent().parent().getElementText().trim() !== "" && $(this).parent().parent().text() === $(this).text()) ||
+      $(this).prev().is('br') ||
+      notInSameSentence($(this))) {
+        _case.set({
+          'status': 'failed'
+        });
+
+      } else if (hasTableHeaderContext($(this)) ||
+      ($(this).find('img').length > 0 && $(this).find('img').attr('alt') !== $(this).text()) ||
+      ($(this).attr('title') !== undefined && $(this).attr('title') !== $(this).text()) || !foundElementWithSameText) {
+        _case.set({
+          'status': 'passed'
+        });
+
+      } else {
+        _case.set({
+          'status': 'failed'
+        });
+      }
+    });
+  });
+
+};
