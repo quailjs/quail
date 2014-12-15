@@ -1,18 +1,6 @@
 quail.aInPHasADistinctStyle=function(quail, test, Case){
 
   /**
-   * Function for just testing the elements text, without checking text of children
-   * @returns {*|jQuery}
-   */
-  function getElementText($elm){
-    return $elm.clone()
-      .children()
-      .remove()
-      .end()
-      .text().trim();
-  }
-
-  /**
    * Checks if an element has a border set
    * @param element
    * @returns {boolean}
@@ -21,10 +9,21 @@ quail.aInPHasADistinctStyle=function(quail, test, Case){
     return (element.outerWidth() - element.innerWidth() > 0) ||(element.outerHeight() - element.innerHeight() > 0);
   }
 
-
+  /**
+   * Test if two elements have a distinct style from it's ancestor
+   * @param  {jQuery node} $elm    
+   * @param  {jQuery node} $parent
+   * @return {boolean}
+   */
   function elmHasDistinctStyle($elm, $parent) {
     var result = false;
-    var styleProperties = ['text-decoration', 'font-weight', 'font-style'];
+    var styleProperties = ['font-weight', 'font-style'];
+    var textDecoration = $elm.css('text-decoration');
+
+    if (textDecoration !== 'none' &&
+    textDecoration !== $parent.css('text-decoration')) {
+      result = true;
+    }
 
     if ($elm.css('background-color') !== 'rgba(0, 0, 0, 0)') {
       styleProperties.push('background');
@@ -36,37 +35,56 @@ quail.aInPHasADistinctStyle=function(quail, test, Case){
       }
     });
 
-    return result || $elm.css('display') === 'block' || hasBorder($elm);
+    return result  || hasBorder($elm);
   }
 
-  console.log(test.get('$scope').find('p a'));
+  function elmHasDistinctPosition($elm) {
+    var isBlock = ($elm.css('display') === 'block');
+    var position = $elm.css('position');
+    var isPositioned = position !== 'relative' && position !== 'static';
+    return isBlock || isPositioned;
+  }
 
-  test.get('$scope').find('p a').each(function() {
-    var $this = $(this);
-    var $parent = (getElementText($this.parent()) ? $this.parent() : undefined);
-    var $p = $(this).closest('p');
 
-    var _case=Case({
-      element: this,
-      expected: $(this).closest('.quail-test').data('expected')
-    });
-    test.add(_case);
+  test.get('$scope').each(function () {
+    var $scope = $(this);
+    var anchors = $scope.find('p a[href]:visible');
 
-    if (!$this.attr('href') || !$this.is(':visible') || $this.text() === '') {
-      _case.set({
-        'status': 'inapplicable'
+    anchors.each(function () {
+      var $this = $(this);
+      var $p = $this.closest('p');
+      var $parent = $this.parent();
+
+      var _case=Case({
+        element: this,
+        expected: $this.closest('.quail-test').data('expected')
       });
-      return;
-    }
+      test.add(_case);
 
-    if ($this.find('img').length >= 1 || // pass if there's an image
-    elmHasDistinctStyle($this, $p) || // pass if the style is distinct
-    (getElementText($parent) === '' && elmHasDistinctStyle($parent, $p))) { // pass if the parent style is distinct
-      _case.set({'status': 'passed'});
+      var aText = $this.text().trim();
+      var pText = $p.text().trim();
 
-    } else {
-      _case.set({'status': 'failed'});
-    }
+      if (aText === '' || aText === pText) {
+        _case.set('status', 'inapplicable');
+
+      } else if (elmHasDistinctStyle($this, $p)) {
+        _case.set('status', 'passed');
+
+      } else if (elmHasDistinctPosition($this)) {
+        _case.set('status', 'passed');
+
+      } else if ($this.find('img').length > 0) {
+        _case.set('status', 'passed');
+
+      } else if ($parent.text().trim() === aText &&
+      elmHasDistinctStyle($parent, $p)) {
+        _case.set('status', 'passed');
+
+      } else {
+        _case.set('status', 'failed');
+      }
+    });
 
   });
+
 };
