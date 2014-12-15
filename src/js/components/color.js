@@ -508,7 +508,7 @@ quail.components.color = function(quail, test, Case, options) {
     // Check if there's a backgroundImage using DOM.
     var backgroundImage = colors.getBackgroundImage($this);
     if (backgroundImage) {
-      img = new Image();
+      img = document.createElement('img');
       img.crossOrigin = "Anonymous";
       // Get average color of the background image. The image must first load
       // before information about it is available to the DOM.
@@ -530,18 +530,14 @@ quail.components.color = function(quail, test, Case, options) {
         buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
       };
       // Load the image.
-      try {
-        img.src = backgroundImage;
-      } catch(e) {
-        var id = 'colorBackgroundImageContrast';
-        buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
-      }
+      img.src = backgroundImage;
     }
 
     // Check if there's a backgroundImage using element behind current element.
     var behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
     if (behindBackgroundImage) {
-      img = new Image();
+      img = document.createElement('img');
+      img.crossOrigin = "Anonymous";
       // The image must first load before information about it is available to
       // the DOM.
       img.onload = function () {
@@ -562,12 +558,7 @@ quail.components.color = function(quail, test, Case, options) {
         buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
       };
       // Load the image.
-      try {
-        img.src = behindBackgroundImage;
-      } catch(e) {
-        var id = 'colorElementBehindBackgroundImageContrast';
-        buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
-      }
+      img.src = behindBackgroundImage;
     }
 
     // Check if there's a background gradient using DOM.
