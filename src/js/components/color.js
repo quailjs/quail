@@ -208,13 +208,13 @@ quail.components.color = function(quail, test, Case, options) {
         return this.cache[cacheKey];
       }
 
-      while (element.length > 0) {
+      while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
         var bimage = element.css('background-image');
         if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
-          this.cache[cacheKey] = bimage.replace('url(', '').replace(/'/, '').replace(')', '');
+          this.cache[cacheKey] = bimage.replace('url(', '').replace(/['"]/g, '').replace(')', '');
           return this.cache[cacheKey];
         }
-        element = element.parent();
+        element = element[0].parentNode;
       }
       this.cache[cacheKey] = false;
       return false;
@@ -236,7 +236,8 @@ quail.components.color = function(quail, test, Case, options) {
       var notEmpty = function(s) {
         return $.trim(s) !== '';
       };
-      while (element.length > 0) {
+      while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
+        element = $(element);
         // Exit if element has a background color.
         if (this.hasBackgroundColor(element)) {
           this.cache[cacheKey] = false;
@@ -251,7 +252,7 @@ quail.components.color = function(quail, test, Case, options) {
             return this.cache[cacheKey];
           }
         }
-        element = element.parent();
+        element = element[0].parentNode;
       }
       this.cache[cacheKey] = false;
       return false;
@@ -397,7 +398,7 @@ quail.components.color = function(quail, test, Case, options) {
             }
             bimage = el.css('backgroundImage');
             if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
-              foundIt = bimage.replace('url(', '').replace(/'/, '').replace(')', '');
+              foundIt = bimage.replace('url(', '').replace(/['"]/g, '').replace(')', '');
             }
             break;
           }
@@ -457,13 +458,20 @@ quail.components.color = function(quail, test, Case, options) {
     var $this = $(element);
     var algorithm = options.algorithm;
     var id, failureFound, failedWCAGColorTest, failedWAIColorTest;
-    // Ignore elements who's content isn't displayed to the page
+    // The nodeType of the element must be 1. Nodes of type 1 implement the Element
+    // interface which is required of the first argument passed to window.getComputedStyle.
+    // Failure to pass an Element <node> to window.getComputedStyle will raised an exception
+    // if Firefox.
+    if (element.nodeType !== 1) {
+      return;
+    }
+    // Ignore elements whose content isn't displayed to the page.
     if (['script', 'style', 'title', 'object', 'applet', 'embed', 'template']
     .indexOf(element.nodeName.toLowerCase()) !== -1)  {
       return;
     }
 
-    // Bail out is the text is not readable.
+    // Bail out if the text is not readable.
     if (quail.isUnreadable($this.text())) {
       buildCase(element, 'cantTell', '', 'The text cannot be processed');
       return;
@@ -500,7 +508,7 @@ quail.components.color = function(quail, test, Case, options) {
     // Check if there's a backgroundImage using DOM.
     var backgroundImage = colors.getBackgroundImage($this);
     if (backgroundImage) {
-      img = new Image();
+      img = document.createElement('img');
       img.crossOrigin = "Anonymous";
       // Get average color of the background image. The image must first load
       // before information about it is available to the DOM.
@@ -522,18 +530,14 @@ quail.components.color = function(quail, test, Case, options) {
         buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
       };
       // Load the image.
-      try {
-        img.src = backgroundImage;
-      } catch(e) {
-        var id = 'colorBackgroundImageContrast';
-        buildCase(element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
-      }
+      img.src = backgroundImage;
     }
 
     // Check if there's a backgroundImage using element behind current element.
     var behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
     if (behindBackgroundImage) {
-      img = new Image();
+      img = document.createElement('img');
+      img.crossOrigin = "Anonymous";
       // The image must first load before information about it is available to
       // the DOM.
       img.onload = function () {
@@ -554,12 +558,7 @@ quail.components.color = function(quail, test, Case, options) {
         buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
       };
       // Load the image.
-      try {
-        img.src = behindBackgroundImage;
-      } catch(e) {
-        var id = 'colorElementBehindBackgroundImageContrast';
-        buildCase(element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
-      }
+      img.src = behindBackgroundImage;
     }
 
     // Check if there's a background gradient using DOM.
