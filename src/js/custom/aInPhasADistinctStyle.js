@@ -5,8 +5,9 @@ quail.aInPHasADistinctStyle=function(quail, test, Case){
    * @param element
    * @returns {boolean}
    */
-  function hasBorder(element){
-    return (element.outerWidth() - element.innerWidth() > 0) ||(element.outerHeight() - element.innerHeight() > 0);
+  function hasBorder(element) {
+    return (element.outerWidth() - element.innerWidth() > 0) ||
+    (element.outerHeight() - element.innerHeight() > 0);
   }
 
   /**
