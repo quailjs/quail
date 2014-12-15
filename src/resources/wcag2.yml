@@ -2,7 +2,7 @@
   id: "wcag20:text-equiv-all"
   level: "wcag20:level_a"
   default: "cantTell"
-  testClusters:
+  testAggregators:
     - passed: "cantTell"
       failed: "failed"
       tests: 
@@ -30,10 +30,13 @@
 1.2.1:
   id: "wcag20:media-equiv-av-only-alt"
   level: "wcag20:level_a"
+  preconditions:
+    - "videoMayBePresent"
+    - "audioMayBePresent"
 1.2.2:
   id: "wcag20:media-equiv-captions"
   level: "wcag20:level_a"
-  testClusters:
+  testAggregators:
     - passed: "cantTell"
       failed: "failed"
       tests: 
@@ -41,12 +44,18 @@
 1.2.3:
   id: "wcag20:media-equiv-audio-desc"
   level: "wcag20:level_a"
+  preconditions:
+    - "videoMayBePresent"
 1.2.4:
   id: "wcag20:media-equiv-real-time-captions"
   level: "wcag20:level_aa"
+  preconditions:
+    - "videoMayBePresent"
 1.2.5:
   id: "wcag20:media-equiv-audio-desc-only"
   level: "wcag20:level_aa"
+  preconditions:
+    - "videoMayBePresent"
 1.2.6:
   id: "wcag20:media-equiv-sign"
   level: "wcag20:level_aaa"
@@ -63,7 +72,7 @@
   id: "wcag20:content-structure-separation-programmatic"
   level: "wcag20:level_a"
   default: cantTell
-  testClusters:
+  testAggregators:
     - passed: "passed"
       failed: "failed"
       type: combined
@@ -135,26 +144,26 @@
 1.4.1:
   id: "wcag20:visual-audio-contrast-without-color"
   level: "wcag20:level_a"
-  testClusters:
-    # - passed: "passed" # Test doesn't yet exist
-    #   failed: "failed"
-    #   tests: 
-    #     - aInPhasADestinctStyle
+  default: "cantTell"
+  testAggregators:
+    - passed: "passed"
+      failed: "failed"
+      tests: 
+        - aInPHasADistinctStyle
 1.4.2:
   id: "wcag20:visual-audio-contrast-dis-audio"
   level: "wcag20:level_a"
+  preconditions:
+    - "videoMayBePresent"
+    - "audioMayBePresent"
 1.4.3:
   id: "wcag20:visual-audio-contrast-contrast"
   level: "wcag20:level_aa"
-  testClusters:
-    - passed: passed
-      failed: failed
-      tests:
-        - cssTextHasContrast
-    # - passed: "passed" # Test doesn't yet exist
-    #   failed: "failed"
-    #   tests: 
-    #     - foreAndBackgroundAreDefinedTogether
+  testAggregators:
+    # - passed: passed
+    #   failed: failed
+    #   tests:
+    #     - cssTextHasContrast
 1.4.4:
   id: "wcag20:visual-audio-contrast-scale"
   level: "wcag20:level_aa"
@@ -215,11 +224,12 @@
 2.4.4:
   id: "wcag20:navigation-mechanisms-refs"
   level: "wcag20:level_a"
-  testClusters:
+  # default: "cantTell"
+  testAggregators:
     # - passed: "passed" # Test doesn't yet exist
     #   failed: "failed"
     #   tests: 
-    #     - linkHaveAUniqueContext
+    #     - linkHasAUniqueContext
 2.4.5:
   id: "wcag20:navigation-mechanisms-mult-loc"
   level: "wcag20:level_aa"
@@ -229,11 +239,11 @@
 2.4.7:
   id: "wcag20:navigation-mechanisms-focus-visible"
   level: "wcag20:level_aa"
-  testClusters:
-    - passed: cannotTell  # Should also look at outline
-      failed: failed
-      tests:
-      - focusIndicatorVisible
+  testAggregators:
+    # - passed: cannotTell  # Link focus state isn't trigugered by this test
+    #   failed: failed
+    #   tests:
+    #   - focusIndicatorVisible
 2.4.8:
   id: "wcag20:navigation-mechanisms-location"
   level: "wcag20:level_aaa"
@@ -246,7 +256,7 @@
 3.1.1:
   id: "wcag20:meaning-doc-lang-id"
   level: "wcag20:level_a"
-  testClusters:
+  testAggregators:
     - passed: "cantTell"
       failed: "failed"
       type: stacking
@@ -286,15 +296,21 @@
 3.3.1:
   id: "wcag20:minimize-error-identified"
   level: "wcag20:level_a"
+  preconditions:
+    - "userInputMayBeRequired"
 3.3.2:
   id: "wcag20:minimize-error-cues"
   level: "wcag20:level_a"
 3.3.3:
   id: "wcag20:minimize-error-suggestions"
   level: "wcag20:level_aa"
+  preconditions:
+        - "userInputMayBeRequired"
 3.3.4:
   id: "wcag20:minimize-error-reversible"
   level: "wcag20:level_aa"
+  preconditions:
+    - "userInputMayBeRequired"
 3.3.5:
   id: "wcag20:minimize-error-context-help"
   level: "wcag20:level_aaa"
@@ -305,7 +321,7 @@
   id: "wcag20:ensure-compat-parses"
   level: "wcag20:level_a"
   default: cantTell
-  testClusters:
+  testAggregators:
     - passed: "passed"
       failed: "failed"
       tests: 
@@ -318,10 +334,10 @@
       failed: "failed"
       tests: 
         - idRefHasCorrespondingId
-    # - passed: "passed"  # Test not ready
-    #   failed: "failed"
-    #   tests: 
-    #     - idRefsHasCorrespondingId
+    - passed: "passed"
+      failed: "failed"
+      tests: 
+        - idrefsHasCorrespondingId
     # - passed: "passed"  # Test not ready
     #   failed: "failed"
     #   tests: 
@@ -330,7 +346,7 @@
   id: "wcag20:ensure-compat-rsv"
   level: "wcag20:level_a"
   default: cantTell
-  testClusters:
+  testAggregators:
     - passed: "passed"
       failed: "failed"
       tests: 
@@ -404,10 +420,10 @@
       failed: "failed"
       tests: 
         - aMustContainText
-    # - passed: "passed" # this test should be fixed
-    #   failed: "failed"
-    #   tests: 
-    #     - buttonHasValue
+    - passed: "passed"
+      failed: "failed"
+      tests: 
+        - buttonHasName
     # - passed: "passed" # This test doesn't exist yet
     #   failed: "failed"
     #   tests: 
