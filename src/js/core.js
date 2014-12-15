@@ -209,16 +209,16 @@ var quail = {
       });
       _run.call(quail);
     }
-    // If a list of specific tests is provided, use them.
-    else if (options.accessibilityTests) {
-      buildTests(quail, options.accessibilityTests, options);
-      _run.call(quail);
-    }
-
     // Let wcag2 run itself, will call quail again when it knows what
     // to
     else if (options.guideline === 'wcag2') {
       quail.lib.wcag2.run(options);
+    }
+
+    // If a list of specific tests is provided, use them.
+    else if (options.accessibilityTests) {
+      buildTests(quail, options.accessibilityTests, options);
+      _run.call(quail);
     }
 
     // Otherwise get the tests from the json data list.

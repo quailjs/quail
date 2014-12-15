@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <title>videoMayBePresent</title>
+  </head>
+  <body>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="videoMayBePresent">
+      <!-- no video element present -->
+    </div>
+
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="videoMayBePresent">
+      <video controls class="quail-failed-element">
+        <source src="../assets/sample.ogv" type="video/ogv"/>
+      </video>
+    </div>
+
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="videoMayBePresent">
+      <iframe width="420" height="315"
+              src="http://www.youtube.com/embed/XGSy3_Czz8k">
+      </iframe>
+    </div>
+
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="videoMayBePresent">
+      <iframe src="http://player.vimeo.com/video/107692527" width="420" height="315"
+      frameborder="0"></iframe>
+    </div>
+
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="videoMayBePresent">
+      <object></object>
+    </div>
+
+    <div class="quail-test" data-expected="cantTell"
+    data-accessibility-test="videoMayBePresent">
+      <a href="horse.mov">Horse.mov</a>
+    </div>
+
+    <div class="quail-test" data-expected="inapplicable"
+    data-accessibility-test="videoMayBePresent">
+      <a href="horse">Horse</a>
+    </div>
+
+    <div class="quail-test" data-expected="inapplicable"
+    data-accessibility-test="videoMayBePresent">
+      <a href="about.mov.pdf">about.mov.pdf</a>
+    </div>
+
+    <script src="../quail-testrunner.js"></script>
+  </body>
+</html>

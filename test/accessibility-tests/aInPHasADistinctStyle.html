@@ -25,6 +25,11 @@
 
 <div class="quail-test" data-expected="inapplicable"
      data-accessibility-test="aInPHasADistinctStyle">
+    <!-- No link here -->
+</div>
+
+<div class="quail-test" data-expected="inapplicable"
+     data-accessibility-test="aInPHasADistinctStyle">
     <p><a href="">
         A link
     </a></p>
@@ -47,14 +52,14 @@
 <div class="quail-test" data-expected="inapplicable"
      data-accessibility-test="aInPHasADistinctStyle">
     <div style="display:none"><p>No text
-        <a href="">with no link</a>
+        <a href="/">with no link</a>
         inside it.</p></div>
 </div>
 
 <div class="quail-test" data-expected="inapplicable"
      data-accessibility-test="aInPHasADistinctStyle">
     <p>Some text with an empty link
-        <a href=""></a>
+        <a href="/"></a>
         inside it.</p>
 </div>
 
@@ -76,14 +81,6 @@
         inside it.</p>
 </div>
 
-<div class="quail-test" data-expected="pass"
-     data-accessibility-test="aInPHasADistinctStyle">
-    <p>Some text
-        <a href="/" style="float:right;">
-            With a link
-        </a>
-        inside it.</p>
-</div>
 
 <div class="quail-test" data-expected="pass"
      data-accessibility-test="aInPHasADistinctStyle">
@@ -129,18 +126,18 @@
     <!--The above is also true when it comes from
     native style changes -->
     <p>Some text
-        <strong><a href="/" style="text-decoration:underline">
+        <strong><a href="/">
             With a link
-        </a></strong>,
-        <em><a href="/" style="text-decoration:underline">
+        </a> </strong>,
+        <em><a href="/">
             With a link
-        </a></em>,
-        <b><a href="/" style="text-decoration:underline">
+        </a></em> - 
+        <b><a href="/">
             With a link
-        </a></b>,
-        <u><a href="/" style="text-decoration:underline">
+        </a></b>  ====
+        <u><a href="/">
             With a link
-        </a></u>
+        </a></u> / 
         inside it.</p>
 </div>
 
@@ -155,19 +152,10 @@
 
 <div class="quail-test" data-expected="fail"
      data-accessibility-test="aInPHasADistinctStyle">
-    <p style="font-decoration:underlined">Some text
+    <p style="text-decoration:underline">Some text
         <a href="/" class="quail-failed-element">
             With a link
         </a>
-        inside it.</p>
-</div>
-
-<div class="quail-test" data-expected="fail"
-     data-accessibility-test="aInPHasADistinctStyle">
-    <p><strong>Some text
-        <a href="/" class="quail-failed-element">
-            With a link
-        </a></strong>
         inside it.</p>
 </div>
 

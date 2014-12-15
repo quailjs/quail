@@ -16,42 +16,44 @@ quail.idrefsHasCorrespondingId = function( quail, test, Case ) {
     return attribute.split( /\s+/ );
   }
 
-  test.get( '$scope' ).each( function() {
+  test.get('$scope').each(function() {
 
-      var testableElements = $( this ).find( 'td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], [aria-labelledby], [aria-owns]' );
+      var testableElements = $(this).find(
+        'td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], ' +
+        '[aria-labelledby], [aria-owns]');
 
-      if ( testableElements.length === 0 ) {
+      if (testableElements.length === 0) {
 
-        test.add( Case( {
+        test.add(Case({
           element: this,
-          expected: $( this ).closest( '.quail-test' ).data( 'expected' ),
+          expected: $(this).closest('.quail-test').data('expected'),
           status: 'inapplicable'
-        } ) );
+        }));
         return;
       } else {
 
-        testableElements.each( function() {
+        testableElements.each(function() {
           var element = this;
-          var _case = test.add( Case( {
+          var _case = test.add(Case({
             element: this,
-            expected: $( this ).closest( '.quail-test' ).data( 'expected' )
-          } ) );
+            expected: $(this).closest('.quail-test').data('expected')
+          }));
 
           var attributes = getAttribute($(element));
           var status = 'passed';
 
-          $.each( attributes, function( index, item ) {
+          $.each(attributes, function(index, item) {
 
-            if ( item !== "" && $( '#' + item ).length === 0 ) {
+            if (item !== "" && $('#' + item).length === 0) {
               status = 'failed';
               return;
             }
-          } );
+          });
 
-          _case.set( {
+          _case.set({
             'status': status
-          } );
-        } );
+          });
+        });
       }
 
     }

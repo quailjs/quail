@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>audioMayBePresent</title>
+  </head>
+
+  <body>
+    <div class="quail-test" data-expected="inapplicable"
+    data-accessibility-test="audioMayBePresent">
+      <!-- no audio element present -->
+    </div>
+
+    <div class="quail-test" data-expected="inapplicable"
+    data-accessibility-test="audioMayBePresent">
+      <a href="horses">Horses</a>
+    </div>
+
+    <div class="quail-test" data-expected="cantTell"
+    data-accessibility-test="audioMayBePresent">
+      <a href="horses.mp3">Horses.mp3</a>
+    </div>
+
+    <div class="quail-test" data-expected="cantTell"
+    data-accessibility-test="audioMayBePresent">
+      <audio controls src="horse.ogg">
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+
+    <div class="quail-test" data-expected="cantTell"
+    data-accessibility-test="audioMayBePresent">
+      <audio controls>
+        <source src="horse.ogg" type="audio/ogg"></source>
+        Your browser does not support the audio tag.
+      </audio>
+    </div>
+
+    <div class="quail-test" data-expected="cantTell"
+    data-accessibility-test="audioMayBePresent">
+      <object>May be an audio player</object>
+    </div>
+
+    <script src="../quail-testrunner.js"></script>
+  </body>
+</html>

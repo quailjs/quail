@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <title>userInputMayBeRequired</title>
+  </head>
+  <body>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="userInputMayBeRequired">
+      <!-- no input elements present -->
+    </div>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="userInputMayBeRequired">
+      <input type="text" name="test-1"/>
+    </div>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="userInputMayBeRequired">
+      <form action="">
+        <input type="text" name="test-6"/>
+      </form>
+    </div>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="userInputMayBeRequired">
+      <form action="">
+        <input type="text" name="test-6"/>
+        <input type="button"/>
+      </form>
+    </div>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="userInputMayBeRequired">
+      <form action="">
+        <input type="text" name="test-6"/>
+        <input type="reset"/>
+      </form>
+    </div>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="userInputMayBeRequired">
+      <form action="">
+        <input type="text" name="test-6"/>
+        <input type="image"/>
+      </form>
+    </div>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="userInputMayBeRequired">
+      <form action="">
+        <input type="text" name="test-6"/>
+        <input type="submit"/>
+      </form>
+    </div>
+    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="userInputMayBeRequired">
+      <form action="">
+        <input type="text" name="test-6"/>
+        <input type="hidden"/>
+      </form>
+    </div>
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="userInputMayBeRequired">
+      <input type="text" name="test-5"/>
+      <input type="text" name="test-6"/>
+      <form action="">
+        <input type="text" name="test-6"/>
+      </form>
+    </div>
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="userInputMayBeRequired">
+      <input type="text" name="test-3"/>
+      <input type="text" name="test-4"/>
+    </div>
+    <div class="quail-test" data-expected="cantTell" data-accessibility-test="userInputMayBeRequired">
+      <form action="">
+        <input type="text" name="test-5"/>
+        <input type="text" name="test-6"/>
+      </form>
+    </div>
+
+    <script src="../quail-testrunner.js"></script>
+  </body>
+</html>
