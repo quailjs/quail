@@ -212,7 +212,7 @@ quail.components.color = function(quail, test, Case, options) {
       while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
         var bimage = element.css('background-image');
         if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
-          this.cache[cacheKey] = bimage.replace('url(', '').replace(/'/, '').replace(')', '');
+          this.cache[cacheKey] = bimage.replace('url(', '').replace(/['"]/g, '').replace(')', '');
           return this.cache[cacheKey];
         }
         element = element[0].parentNode;
@@ -399,7 +399,7 @@ quail.components.color = function(quail, test, Case, options) {
             }
             bimage = el.css('backgroundImage');
             if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
-              foundIt = bimage.replace('url(', '').replace(/'/, '').replace(')', '');
+              foundIt = bimage.replace('url(', '').replace(/['"]/g, '').replace(')', '');
             }
             break;
           }
