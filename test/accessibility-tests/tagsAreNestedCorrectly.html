@@ -1,56 +1,9 @@
 <!doctype html>
 <html>
 <head>
-	<title>tagsAreNestedCorrectly</title>
+	<title>tagsAreNestedCorrectly - Pass</title>
 </head>
 <body>
-
-	<div class="quail-test" data-expected="pass"
-	data-accessibility-test="tagsAreNestedCorrectly">
-		<p id="1">
-			<a id="2" href="">
-				<b id="3"></b> <input id="4" />
-			</a> <br  id="5">
-			<strong  id="6"></strong>
-		</p>
-	</div>
-
-	<div class="quail-test" data-expected="pass"
-	data-accessibility-test="tagsAreNestedCorrectly">
-		<input id="7">
-		<img id="8">
-		<meta id="9">
-		<link id="10">
-		<br id="11">
-		<area id="12">
-	</div>
-
-	<div class="quail-test" data-expected="pass"
-	data-accessibility-test="tagsAreNestedCorrectly">
-		<p id="13">
-			<a id="14" href="">
-				<b id="15"></b> <input id="16" />
-			</a> <br id="17">
-			<strong id="18"></strong>
-		<!-- Closing of <p> is optional -->
-	</div>
-
-	<div class="quail-test" data-expected="pass"
-	data-accessibility-test="tagsAreNestedCorrectly">
-		<ul id="19">
-		  <li id="20">Item <!-- li closing is optional -->
-		  <li id="21">Item <!-- li closing is optional -->
-	  	</ul>
-	</div>
-
-	<div class="quail-test" data-expected="pass"
-	data-accessibility-test="tagsAreNestedCorrectly">
-		<table id="22"><tr id="23">
-		  <th id="24">Item <!-- th closing is optional -->
-		  <td id="25">Item <!-- td closing is optional -->
-	  	<!-- tr closing is optional -->
-	  	</table>
-	</div>
 
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="tagsAreNestedCorrectly">
@@ -82,7 +35,7 @@
 		<area id="43" class="quail-failed-element"></area>
 	</div>
 
-    <script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
+  <script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
 	<script src="../quail-testrunner.js"></script>
 </body>
 </html>

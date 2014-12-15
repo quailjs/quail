@@ -1,32 +1,28 @@
 quail.tagsAreNestedCorrectly=function(quail, test, Case){
 
   quail.components.htmlSource.getHtml(function(html) {
-    var regex = /<div class="quail-test"[\S\s]*?>([\S\s]*?)<\/div>/gmi;
-    var tests = [];
-    var testBlocks = test.get('scope');
 
-    var match;
-    while((match = regex.exec(html)) !== null){
-      tests.push(match[1]);
-    }
-    $.each(tests, function(index, testHTML){
-      var testBlock = testBlocks[index];
-      var _case=Case({
-        element: this,
-        expected: $(testBlock).data('expected')
-      });
-      test.add(_case);
+    var validationResults = quail.components.htmlTagValidator(html);
 
-      if(quail.components.htmlTagValidator(testHTML)){
-        _case.set({
-          'status': 'passed'
-        });
-      }else{
-        _case.set({
-          'status': 'failed'
-        });
-      }
-      return;
+    var _case = Case({
+      // This is just for internal Quail testing. Get the first quail test element
+      // and then its expected attribute value. This will return 'undefined' for
+      // any other testing environment.
+      expected: test.get('$scope').filter('.quail-test').eq(0).data('expected')
     });
+
+    test.add(_case);
+
+    // An error message is returned if a parsing error is found.
+    if (validationResults) {
+      _case.set({
+        'status': 'failed'
+      });
+    // Null is return if no parsing error is found; thus the test passes.
+    } else {
+      _case.set({
+        'status': 'passed'
+      });
+    }
   });
 };

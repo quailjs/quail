@@ -231,7 +231,7 @@ var htmlTagValidator=function(){
 
   // comment finding
   // Look through the incoming characters until a full matching comment has been built,
-  // then reset the finder back to the startingTagBeginningFinder and clear the currentComment 
+  // then reset the finder back to the startingTagBeginningFinder and clear the currentComment
   var commentFinder=function commentFinder(character, lIndex, cIndex){
     if (!currentComment) {
       currentComment={content: "", line: lIndex + 1, char: cIndex + 1, name: "comment"};
@@ -248,7 +248,7 @@ var htmlTagValidator=function(){
   // Main entry point to the validator, it starts with the `startingTagBeginningFinder` first
   var checkTags=function(string, opts){
 
-    var returnState=false;
+    var returnState = null;
 
     try {
       var lines=string.split("\n");
@@ -283,13 +283,10 @@ var htmlTagValidator=function(){
           throwEndingTagError(lastStartTag);
         }
       }
-      returnState=true;
+      returnState = null;
     } catch (e) {
-      returnState=false;
-    } finally {
-      return returnState;
+      returnState = e.message;
     }
-
   };
 
   return checkTags;
