@@ -153,22 +153,29 @@ var htmlTagValidator=function(){
 
   var endingTagNameFinder=function endingTagNameFinder(character){
 
-    if (startTagPattern.test(character)) {
-      currentTagName+=character;
-    } else {
+    function loopThroughTags () {
+      lastStartTag=startingTags.pop();
 
-      var lastStartTag=startingTags.pop();
-
+      // If the next tag in the startTags stack is the current tag, then we move on.
       if (lastStartTag.name === currentTagName) {
         setParserFunc(startingTagBeginningFinder);
-      } else {
-
-        if(optionalClosing.indexOf(lastStartTag.name) === -1) {
-          throwEndingTagError(lastStartTag);
-        }else{
-          setParserFunc(startingTagBeginningFinder);
-        }
       }
+      // If the next tag in the startingTags is an optional tag, try popping it
+      // and repeating this process.
+      else if(optionalClosing.indexOf(lastStartTag.name) > -1) {
+        loopThroughTags();
+      }
+      // If this is not an optional closing tag, then the mismatch is an error.
+      else {
+        throwEndingTagError(lastStartTag);
+      }
+    }
+
+    if (startTagPattern.test(character)) {
+      currentTagName+=character;
+    }
+    else {
+      loopThroughTags();
       currentTagName="";
     }
   };
@@ -286,6 +293,8 @@ var htmlTagValidator=function(){
       returnState = null;
     } catch (e) {
       returnState = e.message;
+    } finally {
+      return returnState;
     }
   };
 
