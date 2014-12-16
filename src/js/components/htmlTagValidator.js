@@ -1,7 +1,7 @@
 /**
  *
- * Used: https://github.com/codeschool/htmlTagValidator
- * Added optionalClosing
+ * Based on https://github.com/codeschool/htmlTagValidator
+ * Added optionalClosing tags; refactored endingTagNameFinder to handle them.
  *
  */
 
