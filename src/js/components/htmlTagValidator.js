@@ -154,7 +154,7 @@ var htmlTagValidator=function(){
   var endingTagNameFinder=function endingTagNameFinder(character){
 
     function loopThroughTags () {
-      lastStartTag=startingTags.pop();
+      var lastStartTag=startingTags.pop();
 
       // If the next tag in the startTags stack is the current tag, then we move on.
       if (lastStartTag.name === currentTagName) {
