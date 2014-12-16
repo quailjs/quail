@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>tagsAreNestedCorrectly - Fail - Unclosed tag</title>
+</head>
+<body>
+
+  <div class="quail-test" data-expected="fail"
+  data-accessibility-test="tagsAreNestedCorrectly">
+    <p id="32">
+      <a id="33" href="" class="quail-failed-element">
+        <b id="34"> <input id="35" />
+      </b> <br id="36">
+      <strong id="37"></strong>
+    </p>
+  </div>
+
+  <script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
+  <script src="../quail-testrunner.js"></script>
+</body>
+</html>
+
+
+
