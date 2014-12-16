@@ -139,6 +139,7 @@ quail.components.color = function(quail, test, Case, options) {
      * different browsers can return colors, and handling transparencies.
      */
     getColor : function(element, type) {
+      var self = this;
       if (!element.attr('data-cacheId')) {
         element.attr('data-cacheId', 'id_' + Math.random());
       }
@@ -161,7 +162,7 @@ quail.components.color = function(quail, test, Case, options) {
       element.parents().each(function(){
         var pcolor = $(this).css('background-color');
         if (colors.hasBackgroundColor(pcolor)) {
-          return this.cache[cacheKey] = pcolor;
+          return self.cache[cacheKey] = pcolor;
         }
       });
       // Assume the background is white.
