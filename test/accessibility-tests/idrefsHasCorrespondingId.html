@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+	<title>idrefsHasCorrespondingId</title>
+</head>
+<body>
+
+	<span id="id1"></span>
+	<span id="id2"></span>
+
+	<div class="quail-test" data-expected="inapplicable" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+		<!-- no content -->
+	</div>
+
+	<div class="quail-test" data-expected="inapplicable" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+		<!-- headers attribute only applies to td or th -->
+		<span headers="id0"></span>
+	</div>
+
+	<div class="quail-test" data-expected="pass" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+	
+		<!-- Headers must be on th or td element -->
+		<table><tr><td headers="id1 id2"></td></tr></table>
+		<table><tr><th headers="id1 id2"></th></tr></table>
+		
+		<!-- aria attributes can be on any element -->
+		<input type="text" aria-controls="id1 id2" />
+		<input type="text" aria-describedby="id1 id2" />
+		<input type="text" aria-flowto="id1 id2" />
+		<input type="text" aria-labelledby="id1 id2" />
+		<input type="text" aria-owns="id1 id2" />
+	</div>
+
+	<div class="quail-test" data-expected="pass" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+		<!-- aria attributes on different elements -->
+		<div aria-controls="id1 id2"></div>
+		<button aria-describedby="id1 id2"></button>
+		<strong aria-flowto="id1 id2"></strong>
+		<custom-element aria-labelledby="id1 id2"></custom-element>
+		<video aria-owns="id1 id2"></video>
+	</div>
+
+	<div class="quail-test" data-expected="pass" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+		<!-- Some variations on the input -->
+		<div aria-controls="id1  id2"></div>
+		<div aria-controls="id1
+		id2"></div>
+		<div aria-controls="  "></div>
+	</div>
+
+	<div class="quail-test" data-expected="fail" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+	 	<table><tr>
+	 		<td class="quail-failed-element" headers="non-existing"></td>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="fail" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+	 	<table><tr>
+	 		<th class="quail-failed-element" headers="non-existing"></th>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="fail" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+	 	<div aria-controls="non-existing" 
+	 	class="quail-failed-element"></div>
+ 	</div>
+
+ 	<div class="quail-test" data-expected="fail" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+		<button aria-describedby="non-existing"
+		class="quail-failed-element"></button>
+ 	</div>
+
+ 	<div class="quail-test" data-expected="fail" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+		<strong aria-flowto="non-existing" 
+		class="quail-failed-element"></strong>
+ 	</div>
+
+ 	<div class="quail-test" data-expected="fail" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+		<custom-element aria-labelledby="non-existing" 
+		class="quail-failed-element"></custom-element>
+ 	</div>
+
+ 	<div class="quail-test" data-expected="fail" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+		<video aria-owns="non-existing" 
+		class="quail-failed-element"></video>
+	</div>
+
+ 	<div class="quail-test" data-expected="fail" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+		<video aria-owns="non-existing id1" 
+		class="quail-failed-element"></video>
+	</div>
+
+ 	<div class="quail-test" data-expected="fail" 
+	data-accessibility-test="idrefsHasCorrespondingId">
+		<video aria-owns="id1 non-existing id2"
+		class="quail-failed-element"></video>
+	</div>
+
+	<script src="../quail-testrunner.js"></script>
+</body>
+</html>

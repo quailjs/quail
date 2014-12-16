@@ -9,7 +9,9 @@ quail.languageDirAttributeIsUsed = function(quail, test, Case) {
       var parentDir = $el.closest('[dir]').attr('dir');
       currentDirection = parentDir || currentDirection;
     }
-    currentDirection = currentDirection.toLowerCase();
+    if (typeof currentDirection === 'string') {
+      currentDirection = currentDirection.toLowerCase();
+    }
     if (typeof textDirection[currentDirection] === 'undefined') {
       currentDirection = 'ltr';
     }

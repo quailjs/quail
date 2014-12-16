@@ -84,6 +84,12 @@ var quail = {
    */
   selfClosingTags : ['area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr'],
 
+
+  /**
+   * A list of tags that optionally can be closed
+   */
+  optionalClosingTags: ['p', 'li', 'th','tr', 'td'],
+
   /**
    * Main run function for quail. It bundles up some accessibility tests,
    * and if tests are not passed, it instead fetches them using getJSON.
@@ -163,11 +169,18 @@ var quail = {
       });
       _run.call(quail);
     }
+    // Let wcag2 run itself, will call quail again when it knows what
+    // to
+    else if (options.guideline === 'wcag2') {
+      quail.lib.wcag2.run(options);
+    }
+
     // If a list of specific tests is provided, use them.
     else if (options.accessibilityTests) {
       buildTests(quail, options.accessibilityTests, options);
       _run.call(quail);
     }
+
     // Otherwise get the tests from the json data list.
     else {
       var url = options.jsonPath;

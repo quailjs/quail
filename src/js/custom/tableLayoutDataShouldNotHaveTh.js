@@ -5,6 +5,7 @@ quail.tableLayoutDataShouldNotHaveTh = function (quail, test, Case) {
       expected: $(this).closest('.quail-test').data('expected')
     });
     test.add(_case);
+
     if ($(this).find('th').length !== 0) {
       if (!quail.isDataTable($(this))) {
         _case.set({

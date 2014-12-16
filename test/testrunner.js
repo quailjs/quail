@@ -107,6 +107,10 @@
         // Track the test as one to evaluate.
         // TestCollection.prototype.add is idempotent.
         testsToEvaluate.add(testDefinition);
+        testDefinition.registerListener('timeout', function (e, test, tc) {
+          console.log(e);
+        });
+
       });
 
       // Run the TestCollection Tests.

@@ -43,20 +43,29 @@ describe("Case", function() {
     it('should store an html representation of the case target', function () {
       expect(_case.get('html')).to.equal('<div id="defineUniqueSelector-1"><p>First paragraph</p></div>');
     });
+  });
 
-    it('should set the element property properly', function () {
+  describe('setting element property', function () {
+    var p;
+    beforeEach(function () {
+      var el = document.createElement('div');
+      el.setAttribute('id', 'defineUniqueSelector-1');
+      p = document.createElement('p');
+      p.textContent = 'First paragraph';
+      el.appendChild(p);
+
+      _case = new quail.lib.Case();
       _case.set({
         element: p
       });
       _case.resolve();
+    });
+
+    it('should work', function () {
       expect(_case.get('selector')).to.equal('#defineUniqueSelector-1 p');
     });
 
     it('should store an html representation of the updated case target', function () {
-      _case.set({
-        element: p
-      });
-      _case.resolve();
       expect(_case.get('html')).to.equal('<p>First paragraph</p>');
     });
   });

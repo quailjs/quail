@@ -14,6 +14,10 @@ quail.components.placeholder = function(quail, test, Case, options) {
 
   test.get('$scope').find(options.selector).each(function() {
     var text = '';
+    if($(this).css('display') === 'none' && !$(this).is('title')){
+      resolve(this, 'inapplicable');
+      return;
+    }
     if (typeof options.attribute !== 'undefined') {
       if ((typeof $(this).attr(options.attribute) === 'undefined' ||
             (options.attribute === 'tabindex' &&

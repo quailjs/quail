@@ -47,6 +47,20 @@ aImgAltNotRepetitive:
     - "link"
     - "content"
   callback: "aImgAltNotRepetitive"
+aInPHasADistinctStyle:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Links should be have a distinct style inside a p tag"
+    nl: "Links moeten een afwijkende stijl hebben binnen een paragraaf"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "content"
+  callback: "aInPHasADistinctStyle"
 aLinkTextDoesNotBeginWithRedundantWord:
   type: "custom"
   testability: 0
@@ -499,7 +513,7 @@ areaAltRefersToText:
     nl: "Alt-tekst voor \"area\"-elementen moeten de tekst bevatten zoals die ook in de afbeelding staat"
   description:
     en: "If an image is being used as a map, and an <code>area</code> encompasses text within the image, then the \"alt\" attribute of that <code>area</code> element should be the same as the text found in the image."
-    nl: "Als een afbeelding als kaart wordt gebruikt, en een <code>area</code> bevat tekst binnen de afbeelding, dan moet het \"alt\"-attribuut van dat <code>area</code>-element hetzelfde zijn als de tekst die in de afbeelding staat."  
+    nl: "Als een afbeelding als kaart wordt gebruikt, en een <code>area</code> bevat tekst binnen de afbeelding, dan moet het \"alt\"-attribuut van dat <code>area</code>-element hetzelfde zijn als de tekst die in de afbeelding staat."
   guidelines: []
   tags:
     - "imagemap"
@@ -544,7 +558,8 @@ areaHasAltValue:
     - "imagemap"
     - "content"
   options:
-    selector: "area:not(area[alt])"
+    selector: "area"
+    test: ":not(area[alt])"
 areaLinksToSoundFile:
   type: "selector"
   testability: 1
@@ -570,10 +585,10 @@ ariaOrphanedContent:
   testability: 1
   title:
     en: "Pages using ARIA roles should not have orphaned content"
-    nl: "Pagina's die ARIA-rollen gebruiken mogen geen verweesde content hebben" 
+    nl: "Pagina's die ARIA-rollen gebruiken mogen geen verweesde content hebben"
   description:
     en: "If a page makes use of ARIA roles, then there should not be any content on the page which is not within an element that exposes a role, as it could cause that content to be rendreed inaccessible to users with screen readers."
-    nl: "Als een pagina gebruik maakt van ARIA-rollen, mag er geen content op de pagina staan buiten een element dat een rol vertegenwoordigt. In dat geval kan het zijn dat deze content niet toegankelijk is voor gebruikers van schermlezers." 
+    nl: "Als een pagina gebruik maakt van ARIA-rollen, mag er geen content op de pagina staan buiten een element dat een rol vertegenwoordigt. In dat geval kan het zijn dat deze content niet toegankelijk is voor gebruikers van schermlezers."
   guidelines: []
   tags:
     - "aria"
@@ -665,7 +680,7 @@ boldIsNotUsed:
     - "content"
   options:
     selector: "bold"
-buttonHasValue:
+buttonHasName:
   type: "placeholder"
   testability: 1
   title:
@@ -692,7 +707,7 @@ buttonHasValue:
   options:
     content: true
     empty: true
-    attribute: "value"
+    attribute: "title"
     selector: "button"
 checkboxHasLabel:
   type: "label"
@@ -1083,7 +1098,7 @@ documentReadingDirection:
     nl: "De leesrichting van de tekst staat juist aangegeven"
   description:
     en: "Where required, the reading direction of the document (for language that read in different directions), or portions of the text, must be declared."
-    nl: "Voor talen die een andere leesrichting hebben, moet de leesrichting van (een deel van) de tekst in een document worden opgenomen." 
+    nl: "Voor talen die een andere leesrichting hebben, moet de leesrichting van (een deel van) de tekst in een document worden opgenomen."
   guidelines:
     wcag:
       1.3.2:
@@ -1215,7 +1230,7 @@ documentVisualListsAreMarkedUp:
     nl: "Lijsten moeten gemarkeerd worden als ordered of unordered lists"
   description:
     en: "Use the ordered (<code>ol</code>.  or unordered (<code>ul</code>.  elements for lists of items, instead of just using new lines which start with numbers or characters to create a visual list."
-    nl: "Gebruik ordered (<code>ol</code>. of unordered (<code>ul</code>. elementen voor lijsten, in plaats van een nieuwe regel per item aan te maken die je laat beginnen met een nummer of teken om een visuele lijst te maken." 
+    nl: "Gebruik ordered (<code>ol</code>. of unordered (<code>ul</code>. elementen voor lijsten, in plaats van een nieuwe regel per item aan te maken die je laat beginnen met een nummer of teken om een visuele lijst te maken."
   guidelines:
     wcag:
       1.3.1:
@@ -1376,7 +1391,7 @@ emoticonsMissingAbbr:
     nl: "Emoticons moeten afkortingen hebben"
   description:
     en: "Emoticons are not read by screen-readers, and are often used to communicate feelings or other things which are relevant to the content of the document. If this emoticon is important content, mark it up with an \"abbr\" or \"acronym\" tag."
-    nl: "Emoticons worden niet voorgelezen door schermlezers, maar bevatten wel vaak informatie die relevant is voor de content van het document. Als een emoticon belangrijke content is, gebruik dan een \"abbr\" or \"acronym\" tag om het te markeren."  
+    nl: "Emoticons worden niet voorgelezen door schermlezers, maar bevatten wel vaak informatie die relevant is voor de content van het document. Als een emoticon belangrijke content is, gebruik dan een \"abbr\" or \"acronym\" tag om het te markeren."
   guidelines:
     wcag:
       1.1.1:
@@ -1532,7 +1547,8 @@ formButtonsHaveValue:
     - "form"
     - "content"
   options:
-    selector: "input[type=button]:not([value]), input[type=submit]:not([value]), input[type=reset]:not([value])"
+    selector: "input[type=button], input[type=submit], input[type=reset]"
+    test: ":not([value])"
 formDeleteIsReversable:
   type: "selector"
   testability: 0
@@ -1541,7 +1557,7 @@ formDeleteIsReversable:
     nl: "De verwijdering van een item in een formulier moet ongedaan gemaakt kunnen worden"
   description:
     en: "Check that, if a form has the option to delete an item, that the user has a chance to either reverse the delete process, or is asked for confirmation before the item is deleted. This is not something that can be checked through automated testing and requires manual confirmation."
-    nl: "Controleer of een gebruiker de verwijdering van een invoer in een formulier ongedaan kan maken wanneer het mogelijk is om een invoer te verwijderen. Dit kan niet met een automatische test en moet handmatig gecontroleerd en bevestigd worden." 
+    nl: "Controleer of een gebruiker de verwijdering van een invoer in een formulier ongedaan kan maken wanneer het mogelijk is om een invoer te verwijderen. Dit kan niet met een automatische test en moet handmatig gecontroleerd en bevestigd worden."
   guidelines: []
   tags:
     - "form"
@@ -1556,7 +1572,7 @@ formErrorMessageHelpsUser:
     nl: "Formulieren bieden gebruikers de gelegenheid om hun formulier te controleren voor ze een onomkeerbare actie uitvoeren"
   description:
     en: "If the form allows users to perform some irrevocable action, like ordreing a product, ensure that users have the ability to review the contents of the form they submitted first. This is not something that can be checked through automated testing and requires manual confirmation."
-    nl: "Als een formulier een gebruiker toestaat om een onomkeerbare actie uit te voeren, zoals het bestellen van een product, zorg er dan voor dat ze eerst het formulier kunnen controleren. Dit kan niet met een automatische test en moet handmatig gecontroleerd en bevestigd worden."  
+    nl: "Als een formulier een gebruiker toestaat om een onomkeerbare actie uit te voeren, zoals het bestellen van een product, zorg er dan voor dat ze eerst het formulier kunnen controleren. Dit kan niet met een automatische test en moet handmatig gecontroleerd en bevestigd worden."
   guidelines: []
   tags:
     - "form"
@@ -1765,7 +1781,7 @@ framesHaveATitle:
   testability: 1
   title:
     en: "All \"frame\" elements should have a \"title\" attribute"
-    nl: "Alle \"frame\"-elementen moeten een \"title\"-attribuut hebben" 
+    nl: "Alle \"frame\"-elementen moeten een \"title\"-attribuut hebben"
   description:
     en: "Each <code>frame</code> elements should have a \"title\" attribute."
     nl: "Elk <code>frame</code>-elementen moeten een \"title\"-attribuut hebben."
@@ -1781,7 +1797,8 @@ framesHaveATitle:
     - "deprecated"
     - "frame"
   options:
-    selector: "frame:not(frame[title]), iframe:not(iframe[title])"
+    selector: "frame:visible, iframe:visible"
+    test: ":not([title])"
 framesetIsNotUsed:
   type: "selector"
   testability: 1
@@ -1812,6 +1829,21 @@ framesetMustHaveNoFramesSection:
     - "frame"
   options:
     selector: "frameset:not(frameset:has(noframes))"
+headersAttrRefersToATableCell:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Table cell headers attrtibutes must within the same table have an associated data cell with the same id"
+    nl: "Tabel cellen met een headers attribuut moeten binnen dezelfde tabel een overeenkomende data cel hebben in het id attribuut dezelfde waarde"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "headers"
+    - "td"
+    - "th"
+  callback: "headersAttrRefersToATableCell"
 headerH1:
   type: "headingLevel"
   testability: 0
@@ -2088,11 +2120,11 @@ idRefHasCorrespondingId:
   type: "custom"
   testability: 1
   title:
-    en: "Elements with an idref attribute must correspond to an element with an ID"
-    nl: "Elementen met een idref-attribuut moeten corresponderen met een element met een ID"
+    en: "Elements with an idref type attribute must correspond to an element with an ID"
+    nl: "Elementen met een idref type attribuut moeten corresponderen met een element met een ID"
   description:
-    en: "When using an idref attribute, the target element with the ID must exist on the page."
-    nl: "Wanneer je een idref-attibuut gebruikt, moet het doelelement met dit ID ook bestaan op de pagina."
+    en: "When using an idref type attribute, the target element with the ID must exist on the page."
+    nl: "Wanneer je een idref type attibuut gebruikt, moet het doelelement met dit ID ook bestaan op de pagina."
   guidelines:
     wcag:
       1.3.1:
@@ -2102,6 +2134,24 @@ idRefHasCorrespondingId:
         techniques:
           - "F17"
   callback: "idRefHasCorrespondingId"
+idrefsHasCorrespondingId:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Elements with an idref attribute must correspond to an element with an ID"
+    nl: "Elementen met een idref-attribuut moeten corresponderen met een element met een ID"
+  description:
+    en: ""
+    nl: ""
+  guidelines:
+    wcag:
+      1.3.1:
+        techniques:
+          - "F17"
+      4.1.1:
+        techniques:
+          - "F17"
+  callback: "idrefsHasCorrespondingId"
 iIsNotUsed:
   type: "selector"
   testability: 1
@@ -2110,7 +2160,7 @@ iIsNotUsed:
     nl: "Het \"i\"-element (cursief) wordt niet gebruikt"
   description:
     en: "The <code>i</code> (italic) element provides no emphasis for non-sighted readers. Use the <code>em</code> tag instead."
-    nl: "Het <code>i</code>-element biedt geen nadruk voor slechtziende en blinde lezers. Gebruik in plaats daarvan de <code>em</code>-tag." 
+    nl: "Het <code>i</code>-element biedt geen nadruk voor slechtziende en blinde lezers. Gebruik in plaats daarvan de <code>em</code>-tag."
   guidelines: []
   tags:
     - "deprecated"
@@ -2122,7 +2172,7 @@ iframeMustNotHaveLongdesc:
   testability: 1
   title:
     en: "Inline frames (\"iframes\") should not have a \"longdesc\" attribute"
-    nl: "Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut" 
+    nl: "Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut"
   description:
     en: "Inline frames (iframe) should not have a \"longdesc\" attribute."
     nl: "Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut."
@@ -2138,7 +2188,7 @@ imageMapServerSide:
   testability: 1
   title:
     en: "All links in a server-side map should have duplicate links available in the document"
-    nl: "Alle links in een server-side map moeten elders in het document terugkeren" 
+    nl: "Alle links in een server-side map moeten elders in het document terugkeren"
   description:
     en: "Any image with an \"usemap\" attribute for a server-side image map should have the available links duplicated elsewhere."
     nl: "Elke afbeelding met een \"usemap\"-attribuut voor een server-side map moet de beschikbare links ook elders hebben."
@@ -2348,7 +2398,8 @@ imgHasAlt:
     - "image"
     - "content"
   options:
-    selector: "img:not(img[alt])"
+    selector: "img:visible"
+    test: ":not(img[alt])"
 imgHasLongDesc:
   type: "custom"
   testability: 1
@@ -2747,7 +2798,8 @@ inputImageHasAlt:
     - "image"
     - "content"
   options:
-    selector: "input[type=image]:not(input[type=image][alt])"
+    selector: "input[type=image]:visible"
+    test: ":not(input[type=image][alt])"
 inputImageNotDecorative:
   type: "selector"
   testability: 0
@@ -3137,7 +3189,7 @@ legendTextNotEmpty:
     nl: "Legend-tekst moet ingevuld zijn"
   description:
     en: "If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain empty text."
-    nl: "Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> ingevuld zijn." 
+    nl: "Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> ingevuld zijn."
   guidelines:
     wcag:
       1.3.1:
@@ -3206,7 +3258,7 @@ linkUsedForAlternateContent:
     nl: "Gebruik een \"link\"-element for andersoortige content"
   description:
     en: "Documents which contain things like videos, sound, or other forms of media that are not accessible, should provide a <code>link</code> element with a \"rel\" attribute of \"alternate\" in the document header."
-    nl: "Documenten die content zoals video's, geluid of andere niet-toegankelijke vormen van media bevatten, moeten een <code>link</code>-element met een \"rel\"-attribuut of \"alternate\" in de documentheaderlink aanbieden." 
+    nl: "Documenten die content zoals video's, geluid of andere niet-toegankelijke vormen van media bevatten, moeten een <code>link</code>-element met een \"rel\"-attribuut of \"alternate\" in de documentheaderlink aanbieden."
   guidelines: []
   tags:
     - "document"
@@ -3743,7 +3795,7 @@ radioLabelIsNearby:
     nl: "Alle invoerelementen van het type \"radio\" hebben een label dat dicht bij het element staat"
   description:
     en: "All input elements of type \"radio\" must have a corresponding label that is close to the form element. Users of screen magnification or with reduced spatial skills are hampered in using a form element if the label for that element is located far away."
-    nl: "Alle inputelementen van het type \"radio\" moeten een bijbehorend label hebben dat dicht bij het formulierelement staat. Gebruikers die het scherm vergroten of met beperkte ruimtelijke vaardigheden kunnen een formulier niet gebruiken als het label van een veld te ver weg staat." 
+    nl: "Alle inputelementen van het type \"radio\" moeten een bijbehorend label hebben dat dicht bij het formulierelement staat. Gebruikers die het scherm vergroten of met beperkte ruimtelijke vaardigheden kunnen een formulier niet gebruiken als het label van een veld te ver weg staat."
   guidelines: []
   tags:
     - "form"
@@ -3925,7 +3977,7 @@ scriptOnmousemove:
     nl: "Elk element met een \"onmousemove\"-attribuut moet een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord"
   description:
     en: "If an element has an \"onmousemove\" attribute it should have a keyboard-related action as well."
-    nl: "Als een element een \"onmousemove\"-attribuut heeft, moet het een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord." 
+    nl: "Als een element een \"onmousemove\"-attribuut heeft, moet het een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord."
   guidelines:
     508:
       - "l"
@@ -3982,7 +4034,7 @@ scriptOnmouseoverHasOnfocus:
   testability: 1
   title:
     en: "If an element has a \"onmouseover\" attribute it should also have an \"onfocus\" attribute"
-    nl: "Als een element een \"onmouseover\"-attribuut heeft, moet het ook een \"onfocus\"-attribuut hebben"    
+    nl: "Als een element een \"onmouseover\"-attribuut heeft, moet het ook een \"onfocus\"-attribuut hebben"
   description:
     en: "If an element has a \"onmouseover\" attribute it should also have an \"onfocus\" attribute."
     nl: "Als een element een \"onmouseover\"-attribuut heeft, moet het ook een \"onfocus\"-attribuut hebben."
@@ -4584,7 +4636,7 @@ tableUsesAbbreviationForHeader:
     nl: "Tabelkoppen met meer dan 20 tekens moeten een \"abbr\"-attribuut hebben"
   description:
     en: "For long table headers, use an \"abbr\" attribute that is less than short (less than 20 characters long)."
-    nl: "Gebruik een \"abbr\"-attribuut korter dan 20 tekens voor lange tabelkoppen."  
+    nl: "Gebruik een \"abbr\"-attribuut korter dan 20 tekens voor lange tabelkoppen."
   guidelines: []
   tags:
     - "table"
@@ -4656,12 +4708,31 @@ tableWithMoreHeadersUseID:
     nl: "Complexe datatabellen moeten \"id\"-attributen aan headers koppelen"
   description:
     en: "Complex data tables should provide \"id\" attributes to headers and \"headers\" attributes for data cells."
-    nl: "Complexe datatabellen moeten \"id\"-attributen aan headers koppelen en \"headers\"-attributen aan datacellen." 
+    nl: "Complexe datatabellen moeten \"id\"-attributen aan headers koppelen en \"headers\"-attributen aan datacellen."
   guidelines: []
   tags:
     - "table"
     - "content"
   callback: "tableWithMoreHeadersUseID"
+tagsAreNestedCorrectly:
+  type: "custom"
+  testability: 1
+  title:
+    en: "All tags should be nested correctly"
+    nl: "Alle tags moeten juist genest worden"
+  description:
+    en: ""
+    nl: ""
+  guidelines:
+    wcag:
+      4.1.1:
+        techniques:
+          - "H74"
+  tags:
+    - "html"
+  components:
+      - "htmlSource"
+  callback: "tagsAreNestedCorrectly"
 tabularDataIsInTable:
   type: "custom"
   testability: 0.5
@@ -4707,7 +4778,7 @@ textareaHasAssociatedLabel:
   testability: 1
   title:
     en: "All textareas should have a corresponding label"
-    nl: "Alle \"textarea\"-elementen moeten een bijbehorend label hebben" 
+    nl: "Alle \"textarea\"-elementen moeten een bijbehorend label hebben"
   description:
     en: "All <code>textarea</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user"
     nl: "Alle \"textarea\"-elementen moeten een bijbehorend label hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen."
@@ -4762,7 +4833,7 @@ videoProvidesCaptions:
   testability: 0.5
   title:
     en: "All video tags must provide captions"
-    nl: "Alle video tags moeten bijschriften bieden" 
+    nl: "Alle video tags moeten bijschriften bieden"
   description:
     en: "All HTML5 video tags must provide captions."
     nl: "Alle HTML5 video tags moeten bijschriften bieden."
@@ -4849,7 +4920,7 @@ doNotUseGraphicalSymbolToConveyInformation:
     nl: "Gebruik van alleen een grafisch symbool om informatie over te brengen"
   description:
     en: "The objective of this technique is to show how using a graphical symbol to convey information can make content difficult to comprehend. A graphical symbol may be an image, an image of text or a pictorial or decorative character symbol (glyph) which imparts information nonverbally. Examples of graphical symbols include an image of a red circle with a line through it, a smiley face, or a glyph which represents a check mark, arrow, or other symbol but is not the character with that meaning. Assistive technology users may have difficulty determining the meaning of the graphical symbol. If a graphical symbol is used to convey information, provide an alternative using features of the technology or use a different mechanism that can be marked with an alternative to represent the graphical symbol. For example, an image with a text alternative can be used instead of the glyph."
-    nl: "Het doel van deze techniek is te laten zien dat content moeilijker begrepen kan worden wanneer een grafisch symbool wordt gebruikt om informatie over te brengen. Een grafisch symbool kan een afbeelding, een afbeelding van tekst of een pictogram of decoratief teken zijn (glyph) dat non-verbaal informatie overbrengt. Voorbeelden hiervan zijn een rode cirkel met een lijn erdoorheen, een smiley of een vinkje, pijl of ander symbool dat niet noodzakelijkerwijs een duidelijke betekenis heeft. Gebruikers van hulpprogramma's hebben vaak moeite om de bedoeling van een grafisch symbool te duiden. Als een grafisch symbool gebruikt wordt om informatie over te brengen, biedt dan ook een (tekstueel) alternatief." 
+    nl: "Het doel van deze techniek is te laten zien dat content moeilijker begrepen kan worden wanneer een grafisch symbool wordt gebruikt om informatie over te brengen. Een grafisch symbool kan een afbeelding, een afbeelding van tekst of een pictogram of decoratief teken zijn (glyph) dat non-verbaal informatie overbrengt. Voorbeelden hiervan zijn een rode cirkel met een lijn erdoorheen, een smiley of een vinkje, pijl of ander symbool dat niet noodzakelijkerwijs een duidelijke betekenis heeft. Gebruikers van hulpprogramma's hebben vaak moeite om de bedoeling van een grafisch symbool te duiden. Als een grafisch symbool gebruikt wordt om informatie over te brengen, biedt dan ook een (tekstueel) alternatief."
   guidelines:
     wcag:
       1.3.3:
@@ -4941,4 +5012,59 @@ KINGUseCurrencyAsSymbol:
   tags:
     - "KING"
   callback: "KINGUseCurrencyAsSymbol"
-
+videoMayBePresent:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Video or object uses a link that points to a file with a video extension"
+    nl: "Video of object met een link naar een bestand met een video extensie"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "video"
+  callback: "videoMayBePresent"
+audioMayBePresent:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Audio or object uses a link that points to a file with a video extension"
+    nl: "Audio of object met een link naar een bestand met een video extensie"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "audio"
+  callback: "audioMayBePresent"
+animatedGifMayBePresent:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Test if a .gif is used on the page. Test if the .gif contains more then one frame"
+    nl: "Test of een .gif afbeelding gebruikt is op de pagina. Test of het .gif bestand uit meer dan één frame bestaat"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "gif"
+  callback: "animatedGifMayBePresent"
+userInputMayBeRequired:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Test if user input is required"
+    nl: "Test of er invoervelden zijn"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "form"
+    - "input"
+  callback: "userInputMayBeRequired"

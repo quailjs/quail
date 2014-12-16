@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html lang="english">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+        <link rel="stylesheet" href="../common/style.css"/>
+    </head>
+    <body>
+    <div id="test">
+     <p><strong>I'm no error!</strong> Please forgive me.</p>
+     <p>This is an <code style="color:#DDD">image</code> of 
+       <a href="">my dog</a>, Kogepan:</p>
+     <img src="../common/kogepan.png">
+<!-- 
+     <input type="text">
+     <input type="text" title="Titel!">
+     <input type="text" id="myfield"><label for="myfield">label</label>
+-->
+    </div>
+    
+    <script src="../../lib/jquery/jquery.js"></script>
+    <script src="../../dist/quail.jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+        window.console.log('Quail start');
+        $('html').quail({
+            guideline : 'wcag2',
+            jsonPath : '../../dist',
+            testCollectionComplete : function(event, data) {
+                window.console.log('Quail finish');
+
+                // Show all results
+                $.each(data, function (i, criterion) {
+                    if (criterion.outcome.result !== 'untested') {
+                        window.console.log(
+                            criterion.testRequirement,
+                            criterion.outcome,
+                            criterion.hasPart);
+                    }
+                });
+            }
+        });
+     });
+     
+    </script>
+    </body>
+</html>
