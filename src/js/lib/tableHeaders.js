@@ -1,4 +1,5 @@
 (function ($) {
+  var scopeValues = ['row', 'col', 'rowgroup', 'colgroup'];
 
   $.fn.getTableMap = function () {
     var map = [];
@@ -15,17 +16,16 @@
         // Grab the width and height, undefined, invalid or 0 become 1
         var height = +cell.attr('rowspan') || 1;
         var width = +cell.attr('colspan') || 1;
-
         // Make x the first undefined cell in thw row
-        for (i=0; i < row.length; i+=1) {
-          if (!x && row[i] === undefined) {
+        for (i=0; i <= row.length; i+=1) {
+          if (x === undefined && row[i] === undefined) {
             x = i;
           }
         }
         // add 'this' to each coordinate in the map based on width and height
         for (i = 0; i < width * height; i+=1) {
           // Create a new row if it doesn't exist yet
-          if (map[y + ~~(i/width)]) {
+          if (map[y + ~~(i/width)] === undefined) {
             map[y + ~~(i/width)] = [];
           }
           // Add the cell to the correct x / y coordinates
@@ -36,6 +36,44 @@
     });
     return map;
   };
+
+  function isColumnHeader(tableMap, cell, x, y) {
+    var height = cell.attr('rowspan') || 1;
+    var scope = cell.attr('scope');
+    if (scope === 'col') {
+      return true;
+    } else if (scopeValues.indexOf(scope) !== -1) {
+      return false;
+    }
+    
+    for (var i = 0; i < height * tableMap[y].length -1; i+=1) {
+      var currCell = $(tableMap[y + i % height][~~(i / height)]);
+      if (currCell.is('td')) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function isRowHeader(tableMap, cell, x, y) {
+    var width = cell.attr('colspan') || 1;
+    var scope = cell.attr('scope');
+
+    if (scope === 'row') {
+      return true;
+    } else if (scopeValues.indexOf(scope) !== -1 ||
+    isColumnHeader(tableMap, cell, x, y)) {
+      return false;
+    }
+
+    for (var i = 0; i < width * tableMap.length -1; i+=1) {
+      var currCell = $(tableMap[~~(i / width)][x + i % width]);
+      if (currCell.is('td')) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   function scanHeaders(tableMap, x, y, deltaX, deltaY) {
     var headerList = $();
@@ -58,7 +96,7 @@
 
     for (; x >= 0 && y >= 0; x += deltaX, y += deltaY) {
       var currCell = $(tableMap[y][x]);
-      var scope = currCell.attr('scope') || 'auto';
+      var dir = (deltaX === 0 ? 'col' : 'row');
 
       if (currCell.is('th')) {
         inHeaderBlock = true;
@@ -67,34 +105,24 @@
           x: x, y: y
         });
         var blocked = false;
-        if (deltaX === 0) {
-          if (scope === 'col') {
-            blocked = true; 
-          } else {
-            $.each(opaqueHeaders, function (i, opaqueHeader) {
-              var currWidth = +currCell.attr('colspan') || 1;
-              var opaqueWidth = +$(opaqueHeader.cell).attr('colspan') || 1;
-              if (opaqueHeader.x === x && currWidth === opaqueWidth) {
+        if (deltaY === -1 && isRowHeader(tableMap, currCell, x, y) ||
+        deltaX === -1 && isColumnHeader(tableMap, currCell, x, y)) {
+          blocked = true;
+
+        } else {
+          $.each(opaqueHeaders, function (i, opaqueHeader) {
+            var currSize = +currCell.attr(dir + 'span') || 1;
+            var opaqueSize = +$(opaqueHeader.cell).attr(dir + 'span') || 1;
+            if (currSize === opaqueSize) {
+              if (deltaY === -1 && opaqueHeader.x === x ||
+                  deltaX === -1 && opaqueHeader.y === y)  {
                 blocked = true;
               }
-            });
-          }
-        } else if (deltaY === 0) {
-          //If there are any cells in the opaque headers list anchored with the same y-coordinate as the current cell, and with the same height as current cell, then let blocked be true.
-          if (scope === 'row') {
-            blocked = true; 
-          } else {
-            $.each(opaqueHeaders, function (i, opaqueHeader) {
-              var currHeight = +currCell.attr('rowspan') || 1;
-              var opaqueHeight = +$(opaqueHeader.cell).attr('rowspan') || 1;
-              if (opaqueHeader.y === y && currHeight === opaqueHeight) {
-                blocked = true;
-              }
-            });
-          }
+            }
+          });
         }
         if (blocked === false) {
-          headerList.add(currCell);
+          headerList = headerList.add(currCell);
         }
 
       } else if (currCell.is('td') && inHeaderBlock === true) {
@@ -113,31 +141,23 @@
     var table = cell.closest('table');
     var ids = cell.attr('headers').split(/\s/);
     var headerCells = $();
-
     // For each IDREF select an element with that ID from the table
     // Only th/td cells in the same table can be headers
     $.each(ids, function (i, id) {
-      headerCells.add('th#' + id + ', td#' + id, table);
+      headerCells = headerCells.add($('th#' + id + ', td#' + id, table));
     });
     return headerCells;
   }
 
-
-  function getHeadersFromScope(cell) {
-    var i, x, y;
-    var table = cell.closest('table');
-    var tableMap = table.getTableMap();
-    var headerCells = $();
-    
-    // Grab the width and height, undefined, invalid or 0 become 1
-    var height = +cell.attr('rowspan') || 1;
-    var width = +cell.attr('colspan') || 1;
-
-    i = 0;
-    y = 0;
+  function findCellInTableMap(tableMap, cell) {
+    var i = 0;
+    var y = 0;
+    var x;
     // Locate the x and y coordinates of the current cell
     while (x === undefined) {
-      if (tableMap[y][i] === cell[0]) {
+      if (tableMap[y] === undefined) {
+        return;
+      } else if (tableMap[y][i] === cell[0]) {
         x = i;
 
       } else if (i + 1 === tableMap[y].length) {
@@ -147,35 +167,71 @@
         i += 1;
       }
     }
-
-    for (i = 0; i < width; i++) {
-      scanHeaders(tableMap, x - i, y, 0, -1, headerCells);
-    }
-
-    for (i = 0; i < height; i++) {
-      scanHeaders(tableMap, x, y - i, -1, 0, headerCells);
-    }
-
+    return {x: x, y: y};
   }
 
 
-	$.fn.tableHeaders = function () {
-  	var headers = $();
-  	this.each(function () {
-  		var $this = $(this);
+  function getHeadersFromScope(cell, tableMap) {
+    var i;
+    var headerCells = $();
+    var coords = findCellInTableMap(tableMap, cell);
+    
+    // Grab the width and height, undefined, invalid or 0 become 1
+    var height = +cell.attr('rowspan') || 1;
+    var width = +cell.attr('colspan') || 1;
+    
+    for (i = 0; i < width; i++) {
+      headerCells = headerCells.add(
+        scanHeaders(tableMap, coords.x + i, coords.y, 0, -1)
+      );
+    }
 
-  		if ($this.is(':not(td, th)')) {
-  			return;
-  		}
+    for (i = 0; i < height; i++) {
+      headerCells = headerCells.add(
+        scanHeaders(tableMap, coords.x, coords.y + i, -1, 0)
+      );
+    }
+    return headerCells;
+  }
 
-  		if ($this.is('[headers]')) {
-  			headers.add(getHeadersFromAttr($this));
 
-  		} else {
-        headers.add(getHeadersFromScope($this));
-  		}
-  	});
-    return headers.not(':empty');
+  function getHeadersFromGroups(cell, tableMap) {
+    var cellCoords = findCellInTableMap(tableMap, cell);
+    var headers = $();
+
+    cell.closest('thead, tbody, tfoot')
+    .find('th[scope=rowgroup]').each(function () {
+      var headerCoords = findCellInTableMap(tableMap, $(this));
+      if (headerCoords.x <= cellCoords.x && headerCoords.y <= cellCoords.y) {
+        headers = headers.add(this);
+      }
+    });
+    
+    // TODO colgroups
+
+  }
+
+  $.fn.tableHeaders = function () {
+    var headers = $();
+    this.each(function () {
+      var $this = $(this);
+
+      if ($this.is(':not(td, th)')) {
+        return;
+      }
+
+      if ($this.is('[headers]')) {
+        headers = headers.add(getHeadersFromAttr($this));
+
+      } else {
+        var map = $this.closest('table').getTableMap();
+        headers = headers
+        .add(getHeadersFromScope($this, map))
+        .add(getHeadersFromGroups($this, map));
+
+      }
+    });
+    return headers.not(':empty').not(this);
   };
 
 
