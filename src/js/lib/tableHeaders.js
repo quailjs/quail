@@ -45,7 +45,7 @@
     } else if (scopeValues.indexOf(scope) !== -1) {
       return false;
     }
-    
+
     for (var i = 0; i < height * tableMap[y].length -1; i+=1) {
       var currCell = $(tableMap[y + i % height][~~(i / height)]);
       if (currCell.is('td')) {
@@ -85,7 +85,8 @@
     if (cell.is('th')) {
       headersFromCurrBlock = [{
         cell: cell,
-        x: x, y: y
+        x: x,
+        y: y
       }];
 
       inHeaderBlock = true;
@@ -102,7 +103,8 @@
         inHeaderBlock = true;
         headersFromCurrBlock.push({
           cell: currCell,
-          x: x, y: y
+          x: x,
+          y: y
         });
         var blocked = false;
         if (deltaY === -1 && isRowHeader(tableMap, currCell, x, y) ||
@@ -175,11 +177,11 @@
     var i;
     var headerCells = $();
     var coords = findCellInTableMap(tableMap, cell);
-    
+
     // Grab the width and height, undefined, invalid or 0 become 1
     var height = +cell.attr('rowspan') || 1;
     var width = +cell.attr('colspan') || 1;
-    
+
     for (i = 0; i < width; i++) {
       headerCells = headerCells.add(
         scanHeaders(tableMap, coords.x + i, coords.y, 0, -1)
@@ -206,7 +208,7 @@
         headers = headers.add(this);
       }
     });
-    
+
     // TODO colgroups
 
   }
