@@ -142,7 +142,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['bower:install', 'convert', 'concat', 'jshint', 'buildTestFilesJson', 'buildGuideline', 'compressTestsJson', 'qunit:all']);
 
   // Dev task
-  grunt.registerTask('dev', ['bower:install', 'convert', 'concat']);
+  grunt.registerTask('dev', ['convert', 'concat']);
 
 
   // Build task.

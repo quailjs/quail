@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+  <title>tagsAreNestedCorrectly - Pass</title>
+</head>
+<body>
+
+  <div class="quail-test" data-expected="pass"
+  data-accessibility-test="tagsAreNestedCorrectly">
+
+    <p>
+      <a href="">
+        <b></b> <input />
+      </a> <br>
+      <strong></strong>
+    </p>
+
+    <input>
+    <img>
+    <meta>
+    <link>
+    <br>
+    <area>
+
+    <table>
+      <tr>
+        <th>Item
+        <td>Item
+    </table>
+
+    <ul>
+      <li>Item
+      <li>Item
+    </ul>
+
+    <p>
+      <a href="">
+        <b></b> <input />
+      </a> <br>
+      <strong></strong>
+  </div>
+
+  <script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
+  <script src="../quail-testrunner.js"></script>
+</body>
+</html>
