@@ -160,10 +160,10 @@
   id: "wcag20:visual-audio-contrast-contrast"
   level: "wcag20:level_aa"
   testAggregators:
-    # - passed: passed
-    #   failed: failed
-    #   tests:
-    #     - cssTextHasContrast
+    - passed: passed
+      failed: failed
+      tests:
+        - cssTextHasContrast
 1.4.4:
   id: "wcag20:visual-audio-contrast-scale"
   level: "wcag20:level_aa"
@@ -224,12 +224,12 @@
 2.4.4:
   id: "wcag20:navigation-mechanisms-refs"
   level: "wcag20:level_a"
-  # default: "cantTell"
+  default: "cantTell"
   testAggregators:
-    # - passed: "passed" # Test doesn't yet exist
-    #   failed: "failed"
-    #   tests: 
-    #     - linkHasAUniqueContext
+    - passed: "passed"
+      failed: "failed"
+      tests: 
+        - linkHasAUniqueContext
 2.4.5:
   id: "wcag20:navigation-mechanisms-mult-loc"
   level: "wcag20:level_aa"
@@ -239,11 +239,6 @@
 2.4.7:
   id: "wcag20:navigation-mechanisms-focus-visible"
   level: "wcag20:level_aa"
-  testAggregators:
-    # - passed: cannotTell  # Link focus state isn't trigugered by this test
-    #   failed: failed
-    #   tests:
-    #   - focusIndicatorVisible
 2.4.8:
   id: "wcag20:navigation-mechanisms-location"
   level: "wcag20:level_aaa"
@@ -338,10 +333,10 @@
       failed: "failed"
       tests: 
         - idrefsHasCorrespondingId
-    # - passed: "passed"  # Test not ready
-    #   failed: "failed"
-    #   tests: 
-    #     - tagsAreNestedCorrectly
+    - passed: "passed"  # Test not ready
+      failed: "failed"
+      tests: 
+        - tagsAreNestedCorrectly
 4.1.2:
   id: "wcag20:ensure-compat-rsv"
   level: "wcag20:level_a"

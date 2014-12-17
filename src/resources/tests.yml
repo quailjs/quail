@@ -3250,6 +3250,20 @@ liDontUseImageForBullet:
     - "content"
   options:
     selector: "li:has(img)"
+linkHasAUniqueContext:
+  type: "custom"
+  testability: 1
+  title:
+    en: "Links should have a unique context"
+    nl: "Links moeten een unieke context hebben"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "content"
+  callback: "linkHasAUniqueContext"
 linkUsedForAlternateContent:
   type: "selector"
   testability: 0

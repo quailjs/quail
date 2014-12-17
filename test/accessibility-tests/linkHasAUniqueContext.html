@@ -19,16 +19,16 @@
 
 	<div class="quail-test" data-expected="pass"
 	data-accessibility-test="linkHasAUniqueContext">
-		<!-- Different img alt -->
-		<a href="dogs"><img alt="Dogs!">Read more</a>
-		<a href="cats"><img alt="Cats!">Read more</a>
+		<!-- same URL -->
+		<a href="dogs">Dogs!</a>
+		<a href="dogs">Dogs!</a>
 	</div>
 
 	<div class="quail-test" data-expected="pass"
 	data-accessibility-test="linkHasAUniqueContext">
-		<!-- same URL -->
-		<a href="dogs">Dogs!</a>
-		<a href="dogs">Dogs!</a>
+		<!-- Different img alt -->
+		<a href="dogs"><img alt="Dogs!">Read more</a>
+		<a href="cats"><img alt="Cats!">Read more</a>
 	</div>
 
 	<div class="quail-test" data-expected="pass"
@@ -74,6 +74,13 @@
 		</tr></table>
 	</div>
 
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- link text title -->
+		<a href="dogs" class="quail-failed-element">Read more</a>
+		<a href="cats" class="quail-failed-element">Read more</a>
+	</div>
+
 	<div class="quail-test" data-expected="pass"
 	data-accessibility-test="linkHasAUniqueContext">
 		<!-- Context heading -->
@@ -112,14 +119,6 @@
 		<p><a href="cats">Read more</a> <i>(about cats)</i></p>
 	</div>
 
-
-	<div class="quail-test" data-expected="fail"
-	data-accessibility-test="linkHasAUniqueContext">
-		<!-- link text title -->
-		<a href="dogs" class="quail-failed-element">Read more</a>
-		<a href="cats" class="quail-failed-element">Read more</a>
-	</div>
-
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="linkHasAUniqueContext">
 		<!-- similar text -->
@@ -130,10 +129,10 @@
 	<div class="quail-test" data-expected="fail"
 	data-accessibility-test="linkHasAUniqueContext">
 		<!-- Not in the same sentence -->
-		<div>Dogs! - 
+		<div>Dogs! -
 			<a href="dogs" class="quail-failed-element">Read more</a>
 		</div>
-		<div>Cats! - 
+		<div>Cats! -
 			<a href="cats" class="quail-failed-element">Read more</a>
 		</div>
 	</div>
@@ -149,13 +148,13 @@
 		</div>
 	</div>
 
-	<div class="quail-test" data-expected="fail"
+	<div class="quail-test" data-expected="pass"
 	data-accessibility-test="linkHasAUniqueContext">
 		<!-- Not in the same sentence -->
-		<div>Dogs<br> 
+		<div>Dogs<br>
 			<a href="dogs" class="quail-failed-element">Read more</a>
 		</div>
-		<div>Cats<br> 
+		<div>Cats<br>
 			<a href="cats" class="quail-failed-element">Read more</a>
 		</div>
 	</div>
