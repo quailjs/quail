@@ -97,7 +97,7 @@ quail.lib.Case = (function () {
       if (el && el.nodeType && el.nodeType === 1) {
         // Allow a test to provide a selector. Programmatically find one if none
         // is provided.
-        this.attributes.selector = this.attributes.selector ||  this.defineUniqueSelector(el);
+        this.attributes.selector = this.defineUniqueSelector(el);
 
         // Get a serialized HTML representation of the element the raised the error
         // if the Test did not provide it.
