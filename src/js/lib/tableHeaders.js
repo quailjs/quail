@@ -10,20 +10,20 @@
       var row = map[y];
       $(this).children().each(function () {
         var x;
-        var i;
+        var i, il;
         var cell = $(this);
 
         // Grab the width and height, undefined, invalid or 0 become 1
         var height = +cell.attr('rowspan') || 1;
         var width = +cell.attr('colspan') || 1;
-        // Make x the first undefined cell in thw row
-        for (i=0; i <= row.length; i+=1) {
+        // Make x the first undefined cell in the row
+        for (i = 0, il = row.length; i <= il; i += 1) {
           if (x === undefined && row[i] === undefined) {
             x = i;
           }
         }
         // add 'this' to each coordinate in the map based on width and height
-        for (i = 0; i < width * height; i+=1) {
+        for (i = 0, il = width * height; i < il; i += 1) {
           // Create a new row if it doesn't exist yet
           if (map[y + ~~(i/width)] === undefined) {
             map[y + ~~(i/width)] = [];
