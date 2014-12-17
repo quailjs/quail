@@ -128,7 +128,19 @@ else {
 // report back.
 var len = 0;
 // Open a write stream to an output file.
-var resultsFile = dir + '/analyses/' + (new Date()).getTime() + '-analysis.js';
+var date = new Date();
+var timestamp = [
+  date.getFullYear(),
+  ('0' + date.getMonth()).slice(-2),
+  ('0' + date.getDate()).slice(-2),
+  '-',
+  ('0' + date.getHours()).slice(-2),
+  ('0' + date.getMinutes()).slice(-2),
+  ('0' + date.getSeconds()).slice(-2),
+  '-',
+  date.getTime()
+].join('');
+var resultsFile = dir + '/analyses/' + timestamp + '-analysis.js';
 var stream = fs.open(resultsFile, 'w');
 // The data to be written to file.
 var output = {};
