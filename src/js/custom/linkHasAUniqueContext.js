@@ -1,16 +1,21 @@
-quail.linkHasAUniqueContext = function(quail, test, Case) {
+quail.linkHasAUniqueContext = function (quail, test, Case) {
 
-  var blockStyle = ['block', 'flex', 'list-item', 'table',
-  'table-caption', 'table-cell'];
+  var blockStyle = [
+    'block',
+    'flex',
+    'list-item',
+    'table',
+    'table-caption',
+    'table-cell'
+  ];
 
-  function getLinkSentence(link) {
+  function getLinkSentence (link) {
     // Find the closest block-like element
     var $link = $(link);
     var block = $link;
     var text = simplifyText($link.text());
 
-    while(!block.is('body, html') &&
-    blockStyle.indexOf(block.css('display')) === -1) {
+    while(!block.is('body, html') && blockStyle.indexOf(block.css('display')) === -1) {
       block = block.parent();
     }
 
@@ -26,7 +31,7 @@ quail.linkHasAUniqueContext = function(quail, test, Case) {
     }
   }
 
-  function simplifyText(text) {
+  function simplifyText (text) {
     var tmp = text.match(/\w+/g);
     if (tmp !== null) {
       text = tmp.join(' ');
@@ -34,12 +39,12 @@ quail.linkHasAUniqueContext = function(quail, test, Case) {
     return text.toLowerCase();
   }
 
-  function txtNotAlike(a, b) {
+  function txtNotAlike (a, b) {
     return simplifyText("" + a) !== simplifyText("" + b);
   }
 
 
-  function shareContext(linkA, linkB) {
+  function shareContext (linkA, linkB) {
 
     if (linkA.href === linkB.href) {
       return false;
@@ -103,7 +108,7 @@ quail.linkHasAUniqueContext = function(quail, test, Case) {
    * @param  {jQuery} $link
    * @return {string}
    */
-  function getLinkText($link) {
+  function getLinkText ($link) {
     var text = $link.text();
     $link.find('img[alt]').each(function () {
       text += ' ' + this.alt.trim();
@@ -173,6 +178,5 @@ quail.linkHasAUniqueContext = function(quail, test, Case) {
         }));
       }
     });
-
   });
 };
