@@ -234,6 +234,7 @@ page.onLoadFinished = function (status) {
         callPhantom('setCounter', 1); // +1 because we attempt a data write once for all tests on testCollectionComplete
         jQuery('html').quail({
           guideline: 'wcag2',
+          subject: address,
           accessibilityTests: tests,
           wcag2Structure: wcag2structure,
           preconditionTests: preconditionTests,

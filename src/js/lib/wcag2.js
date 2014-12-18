@@ -42,7 +42,7 @@ quail.lib.wcag2 = (function () {
 
     criteria = $.map(wcag2Call, function (critData) {
       return new quail.lib.wcag2.Criterion(
-        critData, tests, preconditionTests);
+        critData, tests, preconditionTests, options.subject);
     });
 
     // Create the accessibiliyTests object, based on the

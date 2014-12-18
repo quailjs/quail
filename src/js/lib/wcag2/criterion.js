@@ -14,7 +14,7 @@ quail.lib.wcag2.Criterion = (function () {
   }
 
 
-  function constructor (data, testDefinitions, preconditionDefinitions) {
+  function constructor (data, testDefinitions, preconditionDefinitions, subject) {
     var testAggregators = [];
     var criterion = {};
     var defaultResult = data['default'] || 'untested';
@@ -24,7 +24,7 @@ quail.lib.wcag2.Criterion = (function () {
     if ($.isArray(data.testAggregators)) {
       testAggregators = $.map(data.testAggregators, function (aggregateConf) {
         return new quail.lib.wcag2.TestAggregator(
-          aggregateConf, testDefinitions
+          aggregateConf, testDefinitions, subject
         );
       });
     }
@@ -37,7 +37,7 @@ quail.lib.wcag2.Criterion = (function () {
       };
       // Add a test aggregator for the precondition tests
       testAggregators.push(new quail.lib.wcag2.TestAggregator(
-        preconditionTest, preconditionDefinitions
+        preconditionTest, preconditionDefinitions, subject
       ));
     }
 
@@ -52,7 +52,8 @@ quail.lib.wcag2.Criterion = (function () {
       });
       result = new quail.lib.wcag2.EarlAssertion({
         testRequirement: id,
-        outcome: aggregateParts(parts, defaultResult)
+        outcome: aggregateParts(parts, defaultResult),
+        subject: subject
       });
       if (parts.length > 0) {
         result.hasPart = parts;

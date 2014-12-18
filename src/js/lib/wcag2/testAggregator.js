@@ -195,9 +195,10 @@ quail.lib.wcag2.TestAggregator = (function () {
   }
 
 
-  function TestAggregator(config, testDefinitions) {
+  function TestAggregator(config, testDefinitions, subject) {
     $.extend(this, {
-      id: config.tests.join('+')
+      id: config.tests.join('+'),
+      subject: subject
     }, config);
 
     this.tests = $.map(this.tests, function (test) {
@@ -252,6 +253,7 @@ quail.lib.wcag2.TestAggregator = (function () {
       if (assertions.length === 0) {
         assertion = new quail.lib.wcag2.EarlAssertion({
           testCase: this.id,
+          subject: this.subject,
           outcome: {
             result: 'inapplicable'
           }
