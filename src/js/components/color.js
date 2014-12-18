@@ -361,55 +361,53 @@ quail.components.color = function(quail, test, Case, options) {
       });
       element.css('visibility', 'hidden');
 
-      // Get element at position x, y.
+      // Get element at position x, y. This only selects visible elements.
       var el = document.elementFromPoint(x,y);
       while (foundIt === undefined && el && el.tagName !== 'BODY' && el.tagName !== 'HTML') {
         el = $(el);
         var bcolor = el.css('backgroundColor');
         var bimage;
         // Only check visible elements.
-        if (el.css('visibility') !== "hidden" && el.css('display') !== 'none') {
-          switch (property) {
-          case 'background-color':
-            if (this.hasBackgroundColor(bcolor)) {
-              foundIt = bcolor;
-            }
-            break;
-          case 'background-gradient':
-            // Bail out if the element has a background color.
-            if (this.hasBackgroundColor(bcolor)) {
-              foundIt = false;
-              continue;
-            }
-
-            bimage = el.css('backgroundImage');
-            if (bimage && bimage !== 'none' && bimage.search(/^(.*?)gradient(.*?)$/i) !== -1) {
-              var gradient = bimage.match(/gradient(\(.*\))/g);
-              if (gradient.length > 0) {
-                gradient = gradient[0].replace(/(linear|radial|from|\bto\b|gradient|top|left|bottom|right|\d*%)/g, '');
-                foundIt = $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notempty);
-              }
-            }
-            break;
-          case 'background-image':
-            // Bail out if the element has a background color.
-            if (this.hasBackgroundColor(bcolor)) {
-              foundIt = false;
-              continue;
-            }
-            bimage = el.css('backgroundImage');
-            if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
-              foundIt = bimage.replace('url(', '').replace(/['"]/g, '').replace(')', '');
-            }
-            break;
+        switch (property) {
+        case 'background-color':
+          if (this.hasBackgroundColor(bcolor)) {
+            foundIt = bcolor;
           }
-          scannedElements.push({
-            element: el,
-            visibility: el.css('visibility')
-          });
-          el.css('visibility', 'hidden');
-          el = document.elementFromPoint(x,y);
+          break;
+        case 'background-gradient':
+          // Bail out if the element has a background color.
+          if (this.hasBackgroundColor(bcolor)) {
+            foundIt = false;
+            continue;
+          }
+
+          bimage = el.css('backgroundImage');
+          if (bimage && bimage !== 'none' && bimage.search(/^(.*?)gradient(.*?)$/i) !== -1) {
+            var gradient = bimage.match(/gradient(\(.*\))/g);
+            if (gradient.length > 0) {
+              gradient = gradient[0].replace(/(linear|radial|from|\bto\b|gradient|top|left|bottom|right|\d*%)/g, '');
+              foundIt = $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notempty);
+            }
+          }
+          break;
+        case 'background-image':
+          // Bail out if the element has a background color.
+          if (this.hasBackgroundColor(bcolor)) {
+            foundIt = false;
+            continue;
+          }
+          bimage = el.css('backgroundImage');
+          if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
+            foundIt = bimage.replace('url(', '').replace(/['"]/g, '').replace(')', '');
+          }
+          break;
         }
+        scannedElements.push({
+          element: el,
+          visibility: el.css('visibility')
+        });
+        el.css('visibility', 'hidden');
+        el = document.elementFromPoint(x,y);
       }
 
       // Reset visibility.
@@ -492,7 +490,11 @@ quail.components.color = function(quail, test, Case, options) {
     }
 
     // Check text and background using element behind current element.
-    var backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
+    var backgroundColorBehind;
+    // The option element is problematic.
+    if (!$this.is('option')) {
+      backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
+    }
     if (backgroundColorBehind) {
       id = 'colorElementBehindContrast';
       failedWCAGColorTest = !colors.passesWCAGColor($this, colors.getColor($this, 'foreground'), backgroundColorBehind);
@@ -535,7 +537,11 @@ quail.components.color = function(quail, test, Case, options) {
     }
 
     // Check if there's a backgroundImage using element behind current element.
-    var behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
+    var behindBackgroundImage;
+    // The option element is problematic.
+    if (!$this.is('option')) {
+      behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
+    }
     if (behindBackgroundImage) {
       img = document.createElement('img');
       img.crossOrigin = "Anonymous";
@@ -598,7 +604,11 @@ quail.components.color = function(quail, test, Case, options) {
     }
 
     // Check if there's a background gradient using element behind current element.
-    var behindGradientColors = colors.getBehindElementBackgroundGradient($this);
+    var behindGradientColors;
+    // The option element is problematic.
+    if (!$this.is('option')) {
+      behindGradientColors = colors.getBehindElementBackgroundGradient($this);
+    }
     if (behindGradientColors) {
       id = 'colorElementBehindBackgroundGradientContrast';
       // Convert colors to hex notation.
