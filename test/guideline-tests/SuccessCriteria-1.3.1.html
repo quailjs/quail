@@ -29,7 +29,6 @@
           reset : true,
           successCriteriaEvaluated : function(eventName, successCriteria, testCollection) {
             if (successCriteria.get('name') === 'wcag:1.3.1') {
-              debugger;
               equal(eventName, 'successCriteriaEvaluated', 'The event name is \'successCriteriaEvaluated\'');
               ok(successCriteria instanceof quail.lib.SuccessCriteria, 'The successCriteria argument is an instance of quail.lib.SuccessCriteria');
               ok(testCollection instanceof quail.lib.TestCollection, 'The testCollection argument is an instance of quail.lib.TestCollection');
