@@ -5,24 +5,24 @@
   testAggregators:
     - passed: "cantTell"
       failed: "failed"
-      tests: 
+      tests:
       - "areaHasAltValue"
     - passed: "cantTell"
       failed: "failed"
-      tests: 
+      tests:
       - "imgAltNotEmptyInAnchor"
     - passed: "cantTell"
       failed: "failed"
-      tests: 
+      tests:
       - "imgHasAlt"
     # - passed: "cantTell"  # The test looks at many things it shouldn't
     #   failed: "failed"
-    #   tests: 
+    #   tests:
     #   - "doNotUseGraphicalSymbolToConveyInformation"
     - passed: "passed"
       failed: "failed"
       type: stacking
-      tests: 
+      tests:
         - "inputImageAltNotRedundant"
         - "inputImageAltIsNotPlaceholder"
         - "inputImageAltIsNotFileName"
@@ -39,7 +39,7 @@
   testAggregators:
     - passed: "cantTell"
       failed: "failed"
-      tests: 
+      tests:
         - videosEmbeddedOrLinkedNeedCaptions
 1.2.3:
   id: "wcag20:media-equiv-audio-desc"
@@ -76,64 +76,64 @@
     - passed: "passed"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - fileHasLabel
         - inputWithoutLabelHasTitle
     - passed: "passed"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - inputTextHasLabel
         - inputWithoutLabelHasTitle
     - passed: "passed"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - passwordHasLabel
         - inputWithoutLabelHasTitle
     - passed: "passed"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - checkboxHasLabel
         - inputWithoutLabelHasTitle
     - passed: "passed"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - radioHasLabel
         - inputWithoutLabelHasTitle
     - passed: "passed"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - selectHasAssociatedLabel
         - inputWithoutLabelHasTitle
     - passed: "passed"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - textareaHasAssociatedLabel
         - inputWithoutLabelHasTitle
     # - passed: "cantTell" # This test is still buggy
     #   failed: "failed"
-    #   tests: 
+    #   tests:
     #     - documentVisualListsAreMarkedUp
     - passed: "passed"
       failed: "cantTell"
-      tests: 
+      tests:
         - pNotUsedAsHeader
     - passed: "cantTell"
       failed: "failed"
-      tests: 
+      tests:
         - tableLayoutDataShouldNotHaveTh
     - passed: "cantTell"
       failed: "failed"
-      tests: 
+      tests:
         - tableLayoutHasNoSummary
     - passed: "cantTell"
       failed: "failed"
-      tests: 
+      tests:
         - tableLayoutHasNoCaption
 1.3.2:
   id: "wcag20:content-structure-separation-sequence"
@@ -148,7 +148,7 @@
   testAggregators:
     - passed: "passed"
       failed: "failed"
-      tests: 
+      tests:
         - aInPHasADistinctStyle
 1.4.2:
   id: "wcag20:visual-audio-contrast-dis-audio"
@@ -228,7 +228,7 @@
   testAggregators:
     - passed: "passed"
       failed: "failed"
-      tests: 
+      tests:
         - linkHasAUniqueContext
 2.4.5:
   id: "wcag20:navigation-mechanisms-mult-loc"
@@ -255,7 +255,7 @@
     - passed: "cantTell"
       failed: "failed"
       type: stacking
-      tests: 
+      tests:
         - documentLangIsISO639Standard
         - documentLangNotIdentified
 3.1.2:
@@ -319,23 +319,23 @@
   testAggregators:
     - passed: "passed"
       failed: "failed"
-      tests: 
+      tests:
         - documentIDsMustBeUnique
     - passed: "passed"
       failed: "failed"
-      tests: 
+      tests:
         - elementsDoNotHaveDuplicateAttributes
     - passed: "passed"
       failed: "failed"
-      tests: 
+      tests:
         - idRefHasCorrespondingId
     - passed: "passed"
       failed: "failed"
-      tests: 
+      tests:
         - idrefsHasCorrespondingId
     - passed: "passed"  # Test not ready
       failed: "failed"
-      tests: 
+      tests:
         - tagsAreNestedCorrectly
 4.1.2:
   id: "wcag20:ensure-compat-rsv"
@@ -344,33 +344,33 @@
   testAggregators:
     - passed: "passed"
       failed: "failed"
-      tests: 
+      tests:
         - areaHasAltValue
     - passed: "passed"
       failed: "failed"
-      tests: 
+      tests:
         - formButtonsHaveValue
     - passed: "cantTell"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - fileHasLabel
         - inputWithoutLabelHasTitle
     - passed: "passed"
       failed: "failed"
       type: stacking
-      tests: 
+      tests:
         - frameTitlesNotPlaceholder
         - frameTitlesNotEmpty
         - framesHaveATitle
     - passed: "passed"
       failed: "cantTell"
-      tests: 
+      tests:
         - imgAltNotEmptyInAnchor
     - passed: "passed"
       failed: "failed"
       type: stacking
-      tests: 
+      tests:
         - inputImageAltNotRedundant
         - inputImageAltIsNotFileName
         - inputImageHasAlt
@@ -378,48 +378,48 @@
     - passed: "cantTell"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - inputTextHasLabel
         - inputWithoutLabelHasTitle
     - passed: "cantTell"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - passwordHasLabel
         - inputWithoutLabelHasTitle
     - passed: "cantTell"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - checkboxHasLabel
         - inputWithoutLabelHasTitle
     - passed: "cantTell"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - radioHasLabel
         - inputWithoutLabelHasTitle
     - passed: "cantTell"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - selectHasAssociatedLabel
         - inputWithoutLabelHasTitle
     - passed: "cantTell"
       failed: "failed"
       type: combined
-      tests: 
+      tests:
         - textareaHasAssociatedLabel
         - inputWithoutLabelHasTitle
     - passed: "passed"
       failed: "failed"
-      tests: 
+      tests:
         - aMustContainText
     - passed: "passed"
       failed: "failed"
-      tests: 
+      tests:
         - buttonHasName
     # - passed: "passed" # This test doesn't exist yet
     #   failed: "failed"
-    #   tests: 
+    #   tests:
     #     - textLookalikesAsLinkOrButtonNames
