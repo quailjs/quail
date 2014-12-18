@@ -1,3 +1,5 @@
+// Context is phantom
+
 var system = require('system');
 var page = require('webpage').create();
 var fs = require('fs');
