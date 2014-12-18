@@ -19,10 +19,10 @@ program
   .parse(process.argv);
 
 var runnerScript;
-var phantomjsExec = './node_modules/.bin/phantomjs';
+var phantomjsExec = path.join(__dirname, '..', 'node_modules/.bin/phantomjs');
 var runners = {
-  'default': './src/js/scripts/phantom_evaluator.js',
-  'wcag2': './src/js/scripts/phantom_evaluator.js'
+  'default': path.join(__dirname, '..', 'src/js/scripts/phantom_evaluator.js'),
+  'wcag2': path.join(__dirname, '..', 'src/js/scripts/phantom_evaluator.js')
 };
 
 if (program.runnerScript in runners) {
