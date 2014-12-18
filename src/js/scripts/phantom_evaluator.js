@@ -94,6 +94,7 @@ phantom.onError = function(msg, trace) {
 address = system.args[1];
 
 var distPath = dir + '/dist'; // ./dist
+var nodeModulesPath = dir + '/node_modules';
 
 // var guidelinedata = fs.read(distPath + '/guideline.json');
 var guidelines = {}; // JSON.parse(guidelinedata);
@@ -205,8 +206,7 @@ page.onLoadFinished = function (status) {
   var callPhantom = window && window.callPhantom || function () {};
   if (status === 'success') {
     console.log('Page opened successfully: ' + address);
-    page.injectJs(distPath + '/vendor/node_modules/jquery/dist/jquery.min.js');
-    // page.injectJs('js/jquery.hasEventListener-2.0.4.js');
+    page.injectJs(nodeModulesPath + '/jquery/dist/jquery.min.js');
     page.injectJs(distPath + '/quail.jquery.js');
 
     // Run the evaluation.
