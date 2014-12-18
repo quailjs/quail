@@ -211,6 +211,7 @@ page.open(address);
 // Decorate the page once the HTML has been loaded.
 // This is where we run the tests.
 page.onLoadFinished = function (status) {
+  var callPhantom = window && window.callPhantom || function () {};
   if (status === 'success') {
     console.log('Page opened successfully: ' + address);
     page.injectJs(nodeModulesPath + '/jquery/dist/jquery.min.js');
@@ -224,7 +225,6 @@ page.onLoadFinished = function (status) {
     try {
       console.log(wcag2structure);
       page.evaluate(function (tests, size, wcag2structure, preconditionTests) {
-        var callPhantom = window && window.callPhantom || function () {};
         // Tell the client that we're starting the test run.
         var scLen = size(quail.guidelines.wcag.successCriteria);
         console.log('Beginning evaluation of ' + size(tests) + ' tests and ' + scLen + ' Success Criteria.');
@@ -232,15 +232,6 @@ page.onLoadFinished = function (status) {
         //console.log(JSON.stringify(tests));
         //console.log(JSON.stringify(wcag2structure));
         callPhantom('setCounter', 1); // +1 because we attempt a data write once for all tests on testCollectionComplete
-        // Basic output structure attributes.
-        var output = {
-          tests: {},
-          successCriteria: {},
-          stats: {
-            tests: 0,
-            cases: 0
-          }
-        };
         jQuery('html').quail({
           guideline: 'wcag2',
           accessibilityTests: tests,
