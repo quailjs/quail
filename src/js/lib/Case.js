@@ -342,7 +342,11 @@ quail.lib.Case = (function () {
       }
 
       return element && generateSelector(element);
-    }
+    },
+    push: [].push,
+    sort: [].sort,
+    concat: [].concat,
+    splice: [].splice
   };
 
   // Give the init function the Case prototype.

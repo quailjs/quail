@@ -124,8 +124,10 @@ describe('Test', function () {
 
   describe('methods', function () {
     var _test;
+    var _testCollection;
 
     beforeEach(function () {
+      _testCollection = new quail.lib.TestCollection();
       _test = new quail.lib.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
@@ -136,43 +138,60 @@ describe('Test', function () {
     });
 
     describe('each', function () {
-      it('should create two Cases', function () {
+      it('should create two Cases', function (done) {
+        _testCollection.listenTo(_test, 'complete', function (eventName, thisTest, _case) {
+          expect(_test.length).to.equal(2);
+          done();
+        });
         _test.invoke();
-        expect(_test.length).to.equal(2);
       });
 
-      it('should iterate over the two cases', function () {
+      it('should iterate over the two cases', function (done) {
         var spy = sinon.spy();
+        _testCollection.listenTo(_test, 'complete', function (eventName, thisTest, _case) {
+          _test.each(spy);
+          sinon.assert.calledTwice(spy);
+          done();
+        });
         _test.invoke();
-        _test.each(spy);
-        sinon.assert.calledTwice(spy);
       });
     });
 
     describe('findCasesBySelector', function () {
-      it('should find cases by selector', function () {
+      it('should find cases by selector', function (done) {
+        _testCollection.listenTo(_test, 'complete', function (eventName, thisTest, _case) {
+          var cases = thisTest.findCasesBySelector('a[href="#"].fail.unittest');
+          cases = cases.concat(thisTest.findCasesBySelector('a[href="#"].pass.unittest'));
+          expect(cases.length).to.equal(2);
+          done();
+        });
         _test.invoke();
-        var cases = _test.findCasesBySelector('a.unittest');
-        expect(cases.length).to.equal(2);
       });
     });
 
     describe('findByStatus', function () {
-      it('should find cases by status', function () {
+      it('should find cases by status', function (done) {
+        _testCollection.listenTo(_test, 'complete', function (eventName, thisTest, _case) {
+          var cases = _test.findByStatus('failed');
+          expect(cases.length).to.equal(2);
+          done();
+        });
         _test.invoke();
-        var cases = _test.findByStatus('failed');
-        expect(cases.length).to.equal(2);
       });
     });
 
     describe('groupCasesBySelector', function () {
-      it('should group cases by selector', function () {
+      it('should group cases by selector', function (done) {
         var options = _test.get('options');
         options.selector = 'i.unittest';
         _test.set('options', options);
+
+        _testCollection.listenTo(_test, 'complete', function (eventName, thisTest, _case) {
+          var casesBySelector = thisTest.groupCasesBySelector();
+          expect(casesBySelector['i.unittest'].length).to.equal(10);
+          done();
+        });
         _test.invoke();
-        var casesBySelector = _test.groupCasesBySelector();
-        expect(casesBySelector['i.unittest'].length).to.equal(10);
       });
     });
   });

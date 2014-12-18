@@ -345,6 +345,7 @@ quail.lib.Test = (function () {
     },
     push: [].push,
     sort: [].sort,
+    concat: [].concat,
     splice: [].splice
   };
 
