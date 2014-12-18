@@ -2,6 +2,7 @@
 
 var program = require('../node_modules/commander/');
 var shell = require('../node_modules/shelljs/');
+var path = require('path');
 // require('../vendor/node_modules/phantomjs');
 
 // phantomjs phantomquail.js http://quailpages/forms/simple-form.html && jsonpp results.js | less
@@ -14,12 +15,24 @@ var pwd = shell.pwd();
 program
   .version('0.0.1')
   .option('-u, --url [url]', 'A [url] to test', null)
+  .option('-R, --runner [runnerScript]', 'A [runnerScript] that will run the evaluation. Currently there exists \'default\' and \'wcag2\'.', 'default')
   .parse(process.argv);
 
+var runnerScript;
 var phantomjsExec = './node_modules/.bin/phantomjs';
-var phantomEvaluator = './src/js/scripts/phantom_evaluator.js';
+var runners = {
+  'default': './src/js/scripts/phantom_evaluator.js',
+  'wcag2': './src/js/scripts/phantom_evaluator.js'
+};
 
-var command = [phantomjsExec, phantomEvaluator, program.url, pwd].join(' ');
+if (program.runnerScript in runners) {
+  runnerScript = runners[program.runnerScript];
+}
+else {
+  runnerScript = runners['default'];
+}
+
+var command = [phantomjsExec, runnerScript, program.url, pwd].join(' ');
 shell.exec(command, {
   async:true
 }, function (code, output) {
