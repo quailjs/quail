@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>aInPHasADistinctStyle</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        .prepend:before,
+        .append:after {
+            content: " ";
+            background: green;
+            display: inline-block;
+            width: .8em;
+            height: .8em;
+        }
+
+        .onlyfocus:focus {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quail-test" data-expected="inapplicable"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <!-- No link here -->
+</div>
+
+<div class="quail-test" data-expected="inapplicable"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p><a href="">
+        A link
+    </a></p>
+</div>
+
+<div class="quail-test" data-expected="inapplicable"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p>Some text
+        <a>with no link</a>
+        inside it.</p>
+</div>
+
+<div class="quail-test" data-expected="inapplicable"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p>Some text
+        <a href="" style="display:none">with no link</a>
+        inside it.</p>
+</div>
+
+<div class="quail-test" data-expected="inapplicable"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <div style="display:none"><p>No text
+        <a href="/">with no link</a>
+        inside it.</p></div>
+</div>
+
+<div class="quail-test" data-expected="inapplicable"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p>Some text with an empty link
+        <a href="/"></a>
+        inside it.</p>
+</div>
+
+<div class="quail-test" data-expected="pass"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p>Some text
+        <a href="/" style="text-decoration:underline">
+            With a link
+        </a>
+        inside it.</p>
+</div>
+
+<div class="quail-test" data-expected="pass"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p>Some text
+        <a href="/" style="display:block; margin:1em;">
+            With a link
+        </a>
+        inside it.</p>
+</div>
+
+
+<div class="quail-test" data-expected="pass"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p>Some text
+        <a href="/" style="position:absolute; top:-1em; right:0;">
+            With a link
+        </a></p>
+</div>
+
+<div class="quail-test" data-expected="pass"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p>Some text
+        <a href="/" style="border-bottom:dashed 1px red">
+            With a link
+        </a>
+        inside it.</p>
+</div>
+
+<div class="quail-test" data-expected="pass"
+           data-accessibility-test="aInPHasADistinctStyle">
+    <!-- links with images are probably sufficiently distinguishable -->
+    <p>Some text
+        <a href="/">
+            With a link <img src="" alt=""/>
+        </a>
+        inside it.</p>
+</div>
+
+<div class="quail-test" data-expected="pass"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <!-- If the link is the only content of an element
+        with a destinct still, it also passes -->
+    <p>Some text
+			<span style="background:blue">
+			  <a href="/" style="text-decoration:underline">
+                  With a link
+              </a></span>
+        inside it.</p>
+</div>
+
+<div class="quail-test" data-expected="pass"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <!--The above is also true when it comes from
+    native style changes -->
+    <p>Some text
+        <strong><a href="/">
+            With a link
+        </a> </strong>,
+        <em><a href="/">
+            With a link
+        </a></em> - 
+        <b><a href="/">
+            With a link
+        </a></b>  ====
+        <u><a href="/">
+            With a link
+        </a></u> / 
+        inside it.</p>
+</div>
+
+<div class="quail-test" data-expected="fail"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p>Some text
+        <a href="/" class="quail-failed-element">
+            With a link
+        </a>
+        inside it.</p>
+</div>
+
+<div class="quail-test" data-expected="fail"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p style="text-decoration:underline">Some text
+        <a href="/" class="quail-failed-element">
+            With a link
+        </a>
+        inside it.</p>
+</div>
+
+<script src="../quail-testrunner.js"></script>
+</body>
+</html>

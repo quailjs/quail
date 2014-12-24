@@ -1,3 +1,5 @@
+// Context is phantom
+
 var system = require('system');
 var page = require('webpage').create();
 var fs = require('fs');
@@ -92,7 +94,7 @@ phantom.onError = function(msg, trace) {
 // Open the page at the provided URL in Phantom.
 address = system.args[1];
 
-var distPath = dir + '/dist';
+var distPath = dir + '/dist'; // ./dist
 var nodeModulesPath = dir + '/node_modules';
 
 // var guidelinedata = fs.read(distPath + '/guideline.json');
@@ -130,7 +132,19 @@ else {
 // report back.
 var len = 0;
 // Open a write stream to an output file.
-var resultsFile = dir + '/analyses/' + (new Date()).getTime() + '-analysis.js';
+var date = new Date();
+var timestamp = [
+  date.getFullYear(),
+  ('0' + date.getMonth()).slice(-2),
+  ('0' + date.getDate()).slice(-2),
+  '-',
+  ('0' + date.getHours()).slice(-2),
+  ('0' + date.getMinutes()).slice(-2),
+  ('0' + date.getSeconds()).slice(-2),
+  '-',
+  date.getTime()
+].join('');
+var resultsFile = dir + '/analyses/' + timestamp + '-analysis.js';
 var stream = fs.open(resultsFile, 'w');
 // The data to be written to file.
 var output = {};
@@ -194,7 +208,6 @@ page.onLoadFinished = function (status) {
   if (status === 'success') {
     console.log('Page opened successfully: ' + address);
     page.injectJs(nodeModulesPath + '/jquery/dist/jquery.min.js');
-    // page.injectJs('js/jquery.hasEventListener-2.0.4.js');
     page.injectJs(distPath + '/quail.jquery.js');
 
     // Run the evaluation.

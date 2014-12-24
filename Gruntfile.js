@@ -42,7 +42,8 @@ module.exports = function(grunt) {
           'src/js/strings/*.js',
           'src/js/custom/*.js',
           'src/js/lib/*.js',
-          'src/js/lib/wcag/*.js'
+          'src/js/lib/wcag/*.js',
+          'src/js/lib/wcag2/*.js'
         ],
         dest: 'dist/quail.jquery.js'
       },
@@ -54,7 +55,8 @@ module.exports = function(grunt) {
           'src/js/strings/*.js',
           'src/js/custom/*.js',
           'src/js/lib/*.js',
-          'src/js/lib/wcag/*.js'
+          'src/js/lib/wcag/*.js',
+          'src/js/lib/wcag2/*.js'
         ],
         dest: 'test/quail-testing.jquery.js',
         options: {
@@ -225,6 +227,10 @@ module.exports = function(grunt) {
     'karma',
     'execute:assessments'
   ]);
+
+  // Dev task
+  grunt.registerTask('dev', ['convert', 'concat']);
+
 
   // Build task.
   grunt.registerTask('build', [

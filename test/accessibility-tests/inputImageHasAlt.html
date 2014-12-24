@@ -4,10 +4,23 @@
 	<title>inputImageHasAlt</title>
 </head>
 <body>
+	<div class="quail-test" data-expected="inapplicable"
+	data-accessibility-test="inputImageHasAlt">
+
+	</div>
+
+	<div class="quail-test" data-expected="inapplicable"
+	data-accessibility-test="inputImageHasAlt">
+		<input type="image" src="../assets/finddogs.gif"
+		style="display:none" />
+	</div>
+
 	<div class="quail-test" data-expected="fail" data-accessibility-test="inputImageHasAlt">
 		<form action="http://example.com/prog/text-read" method="post">
 			<p>
-				<input type="image" name="submit" "../assets/finddogs.gif" class="quail-failed-element"/>
+				<!-- Providing a src value causes the tests to fail because the element is not available while the image loads. -->
+				<input type="image" name="submit"
+				src="" class="quail-failed-element"/>
 			</p>
 		</form>
 	</div>
@@ -15,7 +28,9 @@
 	<div class="quail-test" data-expected="pass" data-accessibility-test="inputImageHasAlt">
 		<form action="http://example.com/prog/text-read" method="post">
 			<p>
-				<input type="image" name="submit" "../assets/finddogs.gif" alt="Find Dogs"/>
+				<!-- Providing a src value causes the tests to fail because the element is not available while the image loads. -->
+				<input type="image" name="submit"
+				src="" alt="Find Dogs"/>
 			</p>
 		</form>
 	</div>

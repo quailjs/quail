@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<title>buttonHasContent</title>
+</head>
+<body>
+
+	<div class="quail-test" data-expected="inapplicable" 
+	data-accessibility-test="buttonHasName">
+		<!-- no button -->
+	</div>
+
+	<div class="quail-test" data-expected="inapplicable" 
+	data-accessibility-test="buttonHasName">
+		<button style="display:none"></button>
+	</div>
+
+	<div class="quail-test" data-expected="pass" 
+	data-accessibility-test="buttonHasName">
+		<button id="button">Submit form</button>
+	</div>
+
+	<div class="quail-test" data-expected="pass" 
+	data-accessibility-test="buttonHasName">
+		<!-- This should only be done if the button has some sort of background -->
+		<button id="button" title="Submit form"></button>
+	</div>
+
+	<div class="quail-test" data-expected="fail" 
+	data-accessibility-test="buttonHasName">
+		<button id="button" class="quail-failed-element"></button>
+	</div>
+
+	<script src="../quail-testrunner.js"></script>
+</body>
+</html>

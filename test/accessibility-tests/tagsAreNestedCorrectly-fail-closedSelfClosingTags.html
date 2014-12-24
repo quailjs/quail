@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <title>tagsAreNestedCorrectly - Fail - Closed self-closing tags</title>
+</head>
+<body>
+
+  <div class="quail-test" data-expected="fail"
+  data-accessibility-test="tagsAreNestedCorrectly">
+    <input id="38" class="quail-failed-element"></input>
+    <img id="39" class="quail-failed-element"></img>
+    <meta id="40" class="quail-failed-element"></meta>
+    <link id="41" class="quail-failed-element"></link>
+    <br id="42" class="quail-failed-element"></br>
+    <area id="43" class="quail-failed-element"></area>
+  </div>
+
+  <script src="../../lib/node-htmlparser/lib/htmlparser.js"></script>
+  <script src="../quail-testrunner.js"></script>
+</body>
+</html>

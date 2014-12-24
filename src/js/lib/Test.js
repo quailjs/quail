@@ -113,7 +113,9 @@ quail.lib.Test = (function () {
             callback.call(this, quail, test, quail.lib.Case, options);
           }
           catch (e) {
-            // @todo, trigger an event for when the test fails outright.
+            if (window.console && window.console.error) {
+              window.console.error(e);
+            }
           }
         }
         else if (type === 'custom' && typeof quail[callback] === 'function') {
@@ -121,7 +123,9 @@ quail.lib.Test = (function () {
             quail[callback].call(this, quail, test, quail.lib.Case, options);
           }
           catch (e) {
-            // @todo, trigger an event for when the test fails outright.
+            if (window.console && window.console.error) {
+              window.console.error(e);
+            }
           }
         }
         else {
@@ -133,7 +137,9 @@ quail.lib.Test = (function () {
           quail.components[type].call(this, quail, test, quail.lib.Case, options);
         }
         catch (e) {
-          // @todo, trigger an event for when the test fails outright.
+          if (window.console && window.console.error) {
+            window.console.error(e);
+          }
         }
       }
       else {
@@ -339,6 +345,7 @@ quail.lib.Test = (function () {
     },
     push: [].push,
     sort: [].sort,
+    concat: [].concat,
     splice: [].splice
   };
 

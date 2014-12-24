@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+	<title>linkHasAUniqueContext</title>
+</head>
+<body>
+
+	<div class="quail-test" data-expected="inapplicable"
+	data-accessibility-test="linkHasAUniqueContext">
+		<p><!-- No links here --></p>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Different link content -->
+		<a href="dogs">Doglss!</a>
+		<a href="cats">Cats!</a>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- same URL -->
+		<a href="dogs">Dogs!</a>
+		<a href="dogs">Dogs!</a>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Different img alt -->
+		<a href="dogs"><img alt="Dogs!">Read more</a>
+		<a href="cats"><img alt="Cats!">Read more</a>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Different title -->
+		<a href="dogs" title="dogs">Read more</a>
+		<a href="cats" title="cats">Read more</a>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Context paragraph -->
+	  	<p>Dogs! - <a href="dogs">Read more</a></p>
+		<p>Cats! - <a href="cats">Read more</a></p>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Context list items -->
+		<ul>
+		  	<li>Dogs! - <a href="dogs">Read more</a></li>
+			<li>Cats! - <a href="cats">Read more</a></li>
+		</ul>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Context list items -->
+		<dl>
+		  	<dd>Dogs! - <a href="dogs">Read more</a></dd>
+			<dd>Cats! - <a href="cats">Read more</a></dd>
+			<dt>Cows! - <a href="cows">Read more</a></dt>
+		  	<dt>Horses! - <a href="horses">Read more</a></dt>
+		</dl>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Context heading -->
+		<table><tr>
+		  	<td>Dogs! - <i><a href="dogs">Read more</a></i></td>
+			<td><i>Cats</i>! - <a href="cats">Read more</a></td>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- link text title -->
+		<a href="dogs" class="quail-failed-element">Read more</a>
+		<a href="cats" class="quail-failed-element">Read more</a>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Context heading -->
+		<table><tr>
+			<th>Dogs</th><th>Cats</th>
+		</tr><tr>
+		  	<td><a href="dogs">Read more</a></td>
+			<td><i><a href="cats">Read more</a></i></td>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Context heading -->
+		<table><tr>
+		  	<td headers="dogs"><i><a href="dogs">Read more</a></i></td>
+			<td headers="cats"><a href="cats">Read more</a></td>
+		</tr><tr>
+			<td id="dogs">Dogs!</td><td id="cats">Cats!</td>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Context heading -->
+		<table><tr>
+		  	<th>Dogs!</th><td><i><a href="dogs">Read more</a></i></td>
+			<th><i>Cats!</i></th><td><a href="cats">Read more</a></td>
+		</tr></table>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Part of the same sentence -->
+		<div><i><a href="dogs">Read more</a></i> (about dogs)</div>
+		<p><a href="cats">Read more</a> <i>(about cats)</i></p>
+	</div>
+
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- similar text -->
+		<a href="dogs" class="quail-failed-element">(READ MORE!)</a>
+		<a href="cats" class="quail-failed-element">Read &nbsp; more...</a>
+	</div>
+
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Not in the same sentence -->
+		<div>Dogs! -
+			<a href="dogs" class="quail-failed-element">Read more</a>
+		</div>
+		<div>Cats! -
+			<a href="cats" class="quail-failed-element">Read more</a>
+		</div>
+	</div>
+
+	<div class="quail-test" data-expected="fail"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Not in the same sentence -->
+		<div><a href="dogs" class="quail-failed-element">Read more</a>.
+			About Dogs!
+		</div>
+		<div><a href="cats" class="quail-failed-element">Read more</a>.
+			About Cats!
+		</div>
+	</div>
+
+	<div class="quail-test" data-expected="pass"
+	data-accessibility-test="linkHasAUniqueContext">
+		<!-- Not in the same sentence -->
+		<div>Dogs<br>
+			<a href="dogs" class="quail-failed-element">Read more</a>
+		</div>
+		<div>Cats<br>
+			<a href="cats" class="quail-failed-element">Read more</a>
+		</div>
+	</div>
+
+	<script src="../quail-testrunner.js"></script>
+</body>
+</html>

@@ -13,18 +13,26 @@ quail.components.selector = function (quail, test, Case, options) {
       // Passes.
       test.add(quail.lib.Case({
         element: undefined,
-        selector: options.selector,
-        status: 'passed'
+        // status: 'passed'
+        status: (options.test ? 'inapplicable' : 'passed')
       }));
     }
     else {
       // Fails.
       candidates.each(function () {
-        // Get the data-expected attribute.
+        var status,
+        $this = $(this);
+
+        // If a test is defined, then use it
+        if (options.test && !$this.is(options.test)) {
+          status = 'passed';
+        } else {
+          status = 'failed';
+        }
+
         test.add(quail.lib.Case({
           element: this,
-          selector: options.selector,
-          status: 'failed'
+          status: status
         }));
       });
     }

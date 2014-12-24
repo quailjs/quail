@@ -95,26 +95,32 @@ quail.lib.Case = (function () {
 
       // Get a selector and HTML if an element is provided.
       if (el && el.nodeType && el.nodeType === 1) {
+        // Allow a test to provide a selector. Programmatically find one if none
+        // is provided.
         this.attributes.selector = this.defineUniqueSelector(el);
 
-        this.attributes.html = '';
+        // Get a serialized HTML representation of the element the raised the error
+        // if the Test did not provide it.
+        if (!this.attributes.html) {
+          this.attributes.html = '';
 
-        // If the element is either the <html> or <body> elements,
-        // just report that. Otherwise we might be returning the entire page
-        // as a string.
-        if (el.nodeName === 'HTML' || el.nodeName === 'BODY') {
-          this.attributes.html = '<' + el.nodeName + '>';
-        }
-        // Get the parent node in order to get the innerHTML for the selected
-        // element. Trim wrapping whitespace, remove linebreaks and spaces.
-        else if (typeof el.outerHTML === 'string') {
-          outerEl = el.outerHTML.trim().replace(/(\r\n|\n|\r)/gm,"").replace(/>\s+</g, '><');
-          // Guard against insanely long elements.
-          // @todo, make this length configurable eventually.
-          if (outerEl.length > 200) {
-            outerEl = outerEl.substr(0, 200) + '... [truncated]';
+          // If the element is either the <html> or <body> elements,
+          // just report that. Otherwise we might be returning the entire page
+          // as a string.
+          if (el.nodeName === 'HTML' || el.nodeName === 'BODY') {
+            this.attributes.html = '<' + el.nodeName + '>';
           }
-          this.attributes.html = outerEl;
+          // Get the parent node in order to get the innerHTML for the selected
+          // element. Trim wrapping whitespace, remove linebreaks and spaces.
+          else if (typeof el.outerHTML === 'string') {
+            outerEl = el.outerHTML.trim().replace(/(\r\n|\n|\r)/gm,"").replace(/>\s+</g, '><');
+            // Guard against insanely long elements.
+            // @todo, make this length configurable eventually.
+            if (outerEl.length > 200) {
+              outerEl = outerEl.substr(0, 200) + '... [truncated]';
+            }
+            this.attributes.html = outerEl;
+          }
         }
       }
 
@@ -336,7 +342,11 @@ quail.lib.Case = (function () {
       }
 
       return element && generateSelector(element);
-    }
+    },
+    push: [].push,
+    sort: [].sort,
+    concat: [].concat,
+    splice: [].splice
   };
 
   // Give the init function the Case prototype.
