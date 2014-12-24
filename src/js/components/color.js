@@ -456,12 +456,12 @@ quail.components.color = {
   /**
    *
    */
-  testCandidates: function (textNode, test, Case, options) {
+  testCandidates: function (id, textNode, test, Case, options) {
     // We want a tag, not just the text node.
     var element = textNode.parentNode;
     var $this = $(element);
     var algorithm = options.algorithm;
-    var id, failureFound, failedWCAGColorTest, failedWAIColorTest;
+    var failureFound, failedWCAGColorTest, failedWAIColorTest;
     // The nodeType of the element must be 1. Nodes of type 1 implement the Element
     // interface which is required of the first argument passed to window.getComputedStyle.
     // Failure to pass an Element <node> to window.getComputedStyle will raised an exception
@@ -483,16 +483,25 @@ quail.components.color = {
 
     var img, i, rainbow, numberOfSamples;
 
-    // Check text and background color using DOM.
-    id = 'colorFontContrast';
-    // Build a case.
-    if ((algorithm === 'wcag' && !quail.components.color.colors.passesWCAG($this)) ||
-    (algorithm === 'wai' && !quail.components.color.colors.passesWAI($this))) {
-      quail.components.color.buildCase(test, Case, element, 'failed', id, 'The font contrast of the text impairs readability');
+    function colorFontContrast () {
+      // Check text and background color using DOM.
+      // Build a case.
+      if ((algorithm === 'wcag' && !quail.components.color.colors.passesWCAG($this)) ||
+      (algorithm === 'wai' && !quail.components.color.colors.passesWAI($this))) {
+        quail.components.color.buildCase(test, Case, element, 'failed', id, 'The font contrast of the text impairs readability');
+      }
+      else {
+        quail.components.color.buildCase(test, Case, element, 'passed', id, 'The font contrast of the text is sufficient for readability');
+      }
     }
-    else {
-      quail.components.color.buildCase(test, Case, element, 'passed', id, 'The font contrast of the text is sufficient for readability');
+
+    // Switch on the type of color test to run.
+    switch (id) {
+    case 'colorFontContrast':
+      colorFontContrast();
+      break;
     }
+    return;
 
     // Check text and background using element behind current element.
     var backgroundColorBehind;

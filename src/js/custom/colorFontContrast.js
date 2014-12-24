@@ -14,7 +14,7 @@ quail.colorFontContrast = function (quail, test, Case, options) {
         text = textnodes.iterateNext();
       }
       nodes.forEach(function (textNode) {
-        quail.components.color.testCandidates(textNode, test, Case, options);
+        quail.components.color.testCandidates('colorFontContrast', textNode, test, Case, options);
       });
     }
   });
