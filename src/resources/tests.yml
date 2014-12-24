@@ -839,7 +839,7 @@ cssDocumentMakesSenseStyleTurnedOff:
   options:
     selector: "link[rel=stylesheet], stylesheet, *[style]"
 cssTextHasContrast:
-  type: "color"
+  type: "custom"
   testability: 1
   title:
     en: "All elements should have appropriate color contrast"
@@ -854,8 +854,8 @@ cssTextHasContrast:
           - "G18"
   tags:
     - "color"
-  components:
-    - "color"
+  callback:
+    - "cssTextHasContrast"
   options:
     algorithm: "wcag"
     selector: "*"
