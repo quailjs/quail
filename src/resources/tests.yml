@@ -838,7 +838,7 @@ cssDocumentMakesSenseStyleTurnedOff:
     - "color"
   options:
     selector: "link[rel=stylesheet], stylesheet, *[style]"
-cssTextHasContrast:
+colorFontContrast:
   type: "custom"
   testability: 1
   title:
@@ -855,7 +855,7 @@ cssTextHasContrast:
   tags:
     - "color"
   callback:
-    - "cssTextHasContrast"
+    - "colorFontContrast"
   options:
     algorithm: "wcag"
     selector: "*"

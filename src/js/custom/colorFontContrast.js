@@ -1,4 +1,4 @@
-quail.cssTextHasContrast = function (quail, test, Case, options) {
+quail.colorFontContrast = function (quail, test, Case, options) {
   test.get('$scope').each(function () {
     var textnodes = document.evaluate('descendant::text()[normalize-space()]', this, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
     var nodes = [];
