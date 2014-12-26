@@ -483,6 +483,9 @@ quail.components.color = {
 
     var img, i, rainbow, numberOfSamples;
 
+    /**
+     *
+     */
     function colorFontContrast () {
       // Check text and background color using DOM.
       // Build a case.
@@ -495,32 +498,40 @@ quail.components.color = {
       }
     }
 
+    /**
+     *
+     */
+    function colorElementBehindContrast () {
+      // Check text and background using element behind current element.
+      var backgroundColorBehind;
+      // The option element is problematic.
+      if (!$this.is('option')) {
+        backgroundColorBehind = quail.components.color.colors.getBehindElementBackgroundColor($this);
+      }
+      if (backgroundColorBehind) {
+        id = 'colorElementBehindContrast';
+        failedWCAGColorTest = !quail.components.color.colors.passesWCAGColor($this, quail.components.color.colors.getColor($this, 'foreground'), backgroundColorBehind);
+        failedWAIColorTest = !quail.components.color.colors.passesWAIColor(quail.components.color.colors.getColor($this, 'foreground'), backgroundColorBehind);
+        // Build a case.
+        if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+          quail.components.color.buildCase(test, Case, element, 'failed', id, 'The element behind this element makes the text unreadable');
+        }
+        else {
+          quail.components.color.buildCase(test, Case, element, 'passed', id, 'The element behind this element does not affect readability');
+        }
+      }
+    }
+
     // Switch on the type of color test to run.
     switch (id) {
     case 'colorFontContrast':
       colorFontContrast();
       break;
+    case 'colorElementBehindContrast':
+      colorElementBehindContrast();
+      break;
     }
     return;
-
-    // Check text and background using element behind current element.
-    var backgroundColorBehind;
-    // The option element is problematic.
-    if (!$this.is('option')) {
-      backgroundColorBehind = quail.components.color.colors.getBehindElementBackgroundColor($this);
-    }
-    if (backgroundColorBehind) {
-      id = 'colorElementBehindContrast';
-      failedWCAGColorTest = !quail.components.color.colors.passesWCAGColor($this, quail.components.color.colors.getColor($this, 'foreground'), backgroundColorBehind);
-      failedWAIColorTest = !quail.components.color.colors.passesWAIColor(quail.components.color.colors.getColor($this, 'foreground'), backgroundColorBehind);
-      // Build a case.
-      if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
-        quail.components.color.buildCase(test, Case, element, 'failed', id, 'The element behind this element makes the text unreadable');
-      }
-      else {
-        quail.components.color.buildCase(test, Case, element, 'passed', id, 'The element behind this element does not affect readability');
-      }
-    }
 
     // Check if there's a backgroundImage using DOM.
     var backgroundImage = quail.components.color.colors.getBackgroundImage($this);
