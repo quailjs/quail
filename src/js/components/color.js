@@ -208,14 +208,14 @@ quail.components.color = {
       if (this.cache[cacheKey] !== undefined) {
         return this.cache[cacheKey];
       }
-
+      element = element[0];
       while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
-        var bimage = element.css('background-image');
+        var bimage = $(element).css('background-image');
         if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
           this.cache[cacheKey] = bimage.replace('url(', '').replace(/['"]/g, '').replace(')', '');
           return this.cache[cacheKey];
         }
-        element = element[0].parentNode;
+        element = element.parentNode;
       }
       this.cache[cacheKey] = false;
       return false;
@@ -522,6 +522,39 @@ quail.components.color = {
       }
     }
 
+    /**
+     *
+     */
+    function colorBackgroundImageContrast () {
+      // Check if there's a backgroundImage using DOM.
+      var backgroundImage = quail.components.color.colors.getBackgroundImage($this);
+      if (backgroundImage) {
+        img = document.createElement('img');
+        img.crossOrigin = "Anonymous";
+        // Get average color of the background image. The image must first load
+        // before information about it is available to the DOM.
+        img.onload = function () {
+          var id = 'colorBackgroundImageContrast';
+          var averageColorBackgroundImage = quail.components.color.colors.getAverageRGB(img);
+          var failedWCAGColorTest = !quail.components.color.colors.passesWCAGColor($this, quail.components.color.colors.getColor($this, 'foreground'), averageColorBackgroundImage);
+          var failedWAIColorTest = !quail.components.color.colors.passesWAIColor(quail.components.color.colors.getColor($this, 'foreground'), averageColorBackgroundImage);
+          // Build a case.
+          if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+            quail.components.color.buildCase(test, Case, element, 'failed', id, 'The element\'s background image makes the text unreadable');
+          }
+          else {
+            quail.components.color.buildCase(test, Case, element, 'passed', id, 'The element\'s background image does not affect readability');
+          }
+        };
+        img.onerror = img.onabort = function () {
+          var id = 'colorBackgroundImageContrast';
+          quail.components.color.buildCase(test, Case, element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
+        };
+        // Load the image.
+        img.src = backgroundImage;
+      }
+    }
+
     // Switch on the type of color test to run.
     switch (id) {
     case 'colorFontContrast':
@@ -530,36 +563,11 @@ quail.components.color = {
     case 'colorElementBehindContrast':
       colorElementBehindContrast();
       break;
+    case 'colorBackgroundImageContrast':
+      colorBackgroundImageContrast();
+      break;
     }
     return;
-
-    // Check if there's a backgroundImage using DOM.
-    var backgroundImage = quail.components.color.colors.getBackgroundImage($this);
-    if (backgroundImage) {
-      img = document.createElement('img');
-      img.crossOrigin = "Anonymous";
-      // Get average color of the background image. The image must first load
-      // before information about it is available to the DOM.
-      img.onload = function () {
-        var id = 'colorBackgroundImageContrast';
-        var averageColorBackgroundImage = quail.components.color.colors.getAverageRGB(img);
-        var failedWCAGColorTest = !quail.components.color.colors.passesWCAGColor($this, quail.components.color.colors.getColor($this, 'foreground'), averageColorBackgroundImage);
-        var failedWAIColorTest = !quail.components.color.colors.passesWAIColor(quail.components.color.colors.getColor($this, 'foreground'), averageColorBackgroundImage);
-        // Build a case.
-        if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
-          quail.components.color.buildCase(test, Case, element, 'failed', id, 'The element\'s background image makes the text unreadable');
-        }
-        else {
-          quail.components.color.buildCase(test, Case, element, 'passed', id, 'The element\'s background image does not affect readability');
-        }
-      };
-      img.onerror = img.onabort = function () {
-        var id = 'colorBackgroundImageContrast';
-        quail.components.color.buildCase(test, Case, element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
-      };
-      // Load the image.
-      img.src = backgroundImage;
-    }
 
     // Check if there's a backgroundImage using element behind current element.
     var behindBackgroundImage;
