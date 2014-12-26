@@ -167,6 +167,7 @@
         - colorElementBehindContrast
         - colorBackgroundImageContrast
         - colorElementBehindBackgroundImageContrast
+        - colorBackgroundGradientContrast
 1.4.4:
   id: "wcag20:visual-audio-contrast-scale"
   level: "wcag20:level_aa"

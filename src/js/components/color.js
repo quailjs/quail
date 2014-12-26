@@ -237,14 +237,14 @@ quail.components.color = {
       var notEmpty = function(s) {
         return $.trim(s) !== '';
       };
+      element = element[0];
       while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
-        element = $(element);
         // Exit if element has a background color.
-        if (this.hasBackgroundColor(element)) {
+        if (this.hasBackgroundColor($(element).css('background-color'))) {
           this.cache[cacheKey] = false;
           return false;
         }
-        var bimage = element.css('backgroundImage');
+        var bimage = $(element).css('backgroundImage');
         if (bimage && bimage !== 'none' && bimage.search(/^(.*?)gradient(.*?)$/i) !== -1) {
           var gradient = bimage.match(/gradient(\(.*\))/g);
           if (gradient.length > 0) {
@@ -253,7 +253,7 @@ quail.components.color = {
             return this.cache[cacheKey];
           }
         }
-        element = element[0].parentNode;
+        element = element.parentNode;
       }
       this.cache[cacheKey] = false;
       return false;
@@ -592,6 +592,46 @@ quail.components.color = {
       }
     }
 
+    /**
+     *
+     */
+    function colorBackgroundGradientContrast () {
+      // Check if there's a background gradient using DOM.
+      var backgroundGradientColors = quail.components.color.colors.getBackgroundGradient($this);
+      if (backgroundGradientColors) {
+        id = 'colorBackgroundGradientContrast';
+        // Convert colors to hex notation.
+        for (i = 0; i < backgroundGradientColors.length; i++) {
+          if (backgroundGradientColors[i].substr(0, 3) === 'rgb') {
+            backgroundGradientColors[i] = quail.components.color.colors.colorToHex(backgroundGradientColors[i]);
+          }
+        }
+
+        // Create a rainbow.
+        /* global Rainbow */
+        rainbow = new Rainbow();
+        rainbow.setSpectrumByArray(backgroundGradientColors);
+        // @todo, make the number of samples configurable.
+        numberOfSamples = backgroundGradientColors.length * options.gradientSampleMultiplier;
+
+        // Check each color.
+        failureFound = false;
+        for (i = 0; !failureFound && i < numberOfSamples; i++) {
+          failedWCAGColorTest = !quail.components.color.colors.passesWCAGColor($this, quail.components.color.colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
+          failedWAIColorTest = !quail.components.color.colors.passesWAIColor(quail.components.color.colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
+          if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
+            quail.components.color.buildCase(test, Case, element, 'failed', id, 'The background gradient makes the text unreadable');
+            failureFound = true;
+          }
+        }
+
+        // If no failure was found, the element passes for this case type.
+        if (!failureFound) {
+          quail.components.color.buildCase(test, Case, element, 'passed', id, 'The background gradient does not affect readability');
+        }
+      }
+    }
+
     // Switch on the type of color test to run.
     switch (id) {
     case 'colorFontContrast':
@@ -606,43 +646,11 @@ quail.components.color = {
     case 'colorElementBehindBackgroundImageContrast':
       colorElementBehindBackgroundImageContrast();
       break;
+    case 'colorBackgroundGradientContrast':
+      colorBackgroundGradientContrast();
+      break;
     }
     return;
-
-    // Check if there's a background gradient using DOM.
-    var backgroundGradientColors = quail.components.color.colors.getBackgroundGradient($this);
-    if (backgroundGradientColors) {
-      id = 'colorBackgroundGradientContrast';
-      // Convert colors to hex notation.
-      for (i = 0; i < backgroundGradientColors.length; i++) {
-        if (backgroundGradientColors[i].substr(0, 3) === 'rgb') {
-          backgroundGradientColors[i] = quail.components.color.colors.colorToHex(backgroundGradientColors[i]);
-        }
-      }
-
-      // Create a rainbow.
-      /* global Rainbow */
-      rainbow = new Rainbow();
-      rainbow.setSpectrumByArray(backgroundGradientColors);
-      // @todo, make the number of samples configurable.
-      numberOfSamples = backgroundGradientColors.length * options.gradientSampleMultiplier;
-
-      // Check each color.
-      failureFound = false;
-      for (i = 0; !failureFound && i < numberOfSamples; i++) {
-        failedWCAGColorTest = !quail.components.color.colors.passesWCAGColor($this, quail.components.color.colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
-        failedWAIColorTest = !quail.components.color.colors.passesWAIColor(quail.components.color.colors.getColor($this, 'foreground'), '#' + rainbow.colourAt(i));
-        if ((algorithm === 'wcag' && failedWCAGColorTest) || (algorithm === 'wai' && failedWAIColorTest)) {
-          quail.components.color.buildCase(test, Case, element, 'failed', id, 'The background gradient makes the text unreadable');
-          failureFound = true;
-        }
-      }
-
-      // If no failure was found, the element passes for this case type.
-      if (!failureFound) {
-        quail.components.color.buildCase(test, Case, element, 'passed', id, 'The background gradient does not affect readability');
-      }
-    }
 
     // Check if there's a background gradient using element behind current element.
     var behindGradientColors;

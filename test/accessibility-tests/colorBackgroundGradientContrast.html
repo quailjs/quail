@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <title>colorBackgroundGradientContrast</title>
+  <style>
+    #test-1 p {
+      color: #fff;
+      padding: 10px;
+      background-image: linear-gradient(to bottom, #de88de, #98afd6);
+    }
+    #test-2 p {
+      color: #fff;
+      padding: 10px;
+      background-image: linear-gradient(to bottom, #610061, #032966);
+    }
+
+    #test-3 p {
+      color: #fff;
+      padding: 10px;
+      background-image: linear-gradient(to right, red, #f06d06, rgb(255, 255, 0), green);
+    }
+
+    #test-4 {
+      color: #fff;
+      padding: 10px;
+      background-image: radial-gradient(red, #f06d06, rgb(255, 255, 0), green);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="quail-test" data-expected="colorBackgroundGradientContrast:fail" data-accessibility-test="colorBackgroundGradientContrast" id="test-1">
+    <p>This test is not readable</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorBackgroundGradientContrast:pass" data-accessibility-test="colorBackgroundGradientContrast" id="test-2">
+    <p>This test is readable</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorBackgroundGradientContrast:fail" data-accessibility-test="colorBackgroundGradientContrast" id="test-3">
+    <p>This test is not readable</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorBackgroundGradientContrast:fail" data-accessibility-test="colorBackgroundGradientContrast" id="test-4">
+    <p>This test is not readable, but on screen it is</p>
+  </div>
+
+  <script src="../quail-testrunner.js"></script>
+</body>
+</html>
