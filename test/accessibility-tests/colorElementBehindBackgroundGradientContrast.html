@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <title>colorElementBehindBackgroundGradientContrast</title>
+  <style>
+    #test-1 {
+      color: #fff;
+      padding: 10px;
+      background-image: radial-gradient(red, #f06d06, rgb(255, 255, 0), green);
+      text-align: center;
+    }
+    #test-2 {
+      color: #000;
+      padding: 10px;
+      background-image: radial-gradient(red, #f06d06, rgb(255, 255, 0), green);
+      text-align: center;
+    }
+    #test-2 p {
+      background: #E9E9E9;
+    }
+    #test-3 {
+      position: relative;
+      padding: 0;
+    }
+    #test-3 .bck {
+      background-image: linear-gradient(to right, red, #f06d06, rgb(255, 255, 0), green);
+      height: 50px;
+      width: 100%;
+      position: absolute;
+    }
+    #test-3 .txt {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+      height: 18px;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quail-test" data-expected="colorElementBehindBackgroundGradientContrast:fail" data-accessibility-test="colorElementBehindBackgroundGradientContrast" id="test-1">
+    <p>This test is not readable, but on screen it is</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorElementBehindBackgroundGradientContrast:pass" data-accessibility-test="colorElementBehindBackgroundGradientContrast" id="test-2">
+    <p>This test is readable, does not check the gradient since there's a background color.</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorElementBehindBackgroundGradientContrast:fail" data-accessibility-test="colorElementBehindBackgroundGradientContrast" id="test-3">
+    <div class="bck"></div>
+    <p class="txt">This test is not readable.</p>
+  </div>
+
+  <script src="../quail-testrunner.js"></script>
+</body>
+</html>

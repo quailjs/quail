@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <title>colorBackgroundImageContrast</title>
+  <style>
+    #test-1 {
+      background-image: url('../assets/fish.gif');
+    }
+    #test-1 p {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    #test-2 {
+      background-image: url('../assets/kids.jpg');
+    }
+    #test-2 p {
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    #test-3 {
+      background-image: url('../assets/doesnotexist.jpg');
+    }
+    #test-3 p {
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    #test-4 {
+      background-image: url('../assets/quail.png');
+    }
+    #test-4 p {
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="quail-test" data-expected="colorBackgroundImageContrast:fail" data-accessibility-test="colorBackgroundImageContrast" id="test-1">
+    <p>This test is not readable, thanks to the fish</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorBackgroundImageContrast:pass" data-accessibility-test="colorBackgroundImageContrast" id="test-2">
+    <p>This test is readable, thanks to the kids</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorBackgroundImageContrast:cantTell" data-accessibility-test="colorBackgroundImageContrast" id="test-3">
+    <p>This test is readable, non existing background</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorBackgroundImageContrast:pass" data-accessibility-test="colorBackgroundImageContrast" id="test-4">
+    <p>This test is readable, external image</p>
+  </div>
+
+  <script src="../quail-testrunner.js"></script>
+</body>
+</html>
