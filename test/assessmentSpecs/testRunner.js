@@ -2,6 +2,7 @@
 
 'use strict';
 
+var stdio = require('stdio');
 var fs = require('fs');
 var httpServer = require('http-server');
 var path = require('path');
@@ -15,7 +16,12 @@ global.expect = chai.expect;
 global.assert = chai.assert;
 var glob = require('glob');
 var Q = require('q'); // https://github.com/kriskowal/q
-var mochaRunner, seleniumServer, webdriver, client, specFiles, assessmentsPromise;
+var mochaRunner, seleniumServer, webdriver, client, assessmentsPromise;
+
+// Set up test command execution arguments.
+var execOptions = stdio.getopt({
+  'assessment': {key: 'I', args: 1, description: 'A single assessment to run.'}
+});
 
 Q.getUnhandledReasons(function (err) {
   console.log('Caught unhandled reason: ' + err);
@@ -29,6 +35,7 @@ process.on('uncaughtException', function(err) {
 var fixturesRoot = path.join(__dirname, '../..', 'dist');
 var assessmentPagesRoot = path.join(__dirname, 'specs');
 var logPath = path.join(__dirname, '../..', 'logs');
+var srcPath = path.join(__dirname, '../../', 'src');
 
 // HTTP server for testing fixtures like jQuery and Quail.
 var httpServerFixtures = httpServer
@@ -101,10 +108,21 @@ function runSpecs (assessments) {
   }
 
   // Set up the Mocha test runs.
-  specFiles = __dirname + '/specs/**/*Spec.js';
+  var specFiles;
+  // Run a single test if one is indicated, otherwise, run them all.
+  var single = execOptions.assessment;
+  if (single && (single in assessments)) {
+    specFiles = __dirname + '/specs/**/' + single + 'Spec.js';
+  }
+  else {
+    specFiles = __dirname + '/specs/**/*Spec.js';
+  }
 
   // Gather the spec files and add them to the Mocha run.
   glob(specFiles, function (error, files) {
+    if (error) {
+      shutdownTestRunner(error);
+    }
 
     mochaRunner = new Mocha({
       timeout: 1000000,

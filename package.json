@@ -62,6 +62,7 @@
     "requirejs": "^2.1.15",
     "should": "^4.3.0",
     "sinon": "^1.10.3",
+    "stdio": "^0.2.7",
     "webdriverio": "^2.3.0"
   },
   "jam": {
