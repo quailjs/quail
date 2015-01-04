@@ -21,10 +21,8 @@ module.exports = function(config) {
       // Fixtures
       {pattern: 'src/js/core.js'},
       {pattern: 'src/js/components/*.js'},
-      {pattern: 'src/js/strings/*.js'},
       {pattern: 'src/js/custom/*.js'},
       {pattern: 'src/js/lib/*.js'},
-      {pattern: 'src/js/lib/wcag/*.js'},
 
       // Specs
       {pattern: 'test/unit/*Spec.js'},
