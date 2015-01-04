@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+  <title>colorElementBehindBackgroundImageContrast</title>
+  <style>
+
+    #test-1 {
+      background-image: url('../assets/fish.gif');
+    }
+    #test-1 p {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    #test-2 {
+      background-image: url('../assets/kids.jpg');
+    }
+    #test-2 p {
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    #test-3 {
+      position: relative;
+      padding: 0;
+    }
+    #test-3 .bck {
+      background-image: url('../assets/fish.gif');
+      height: 50px;
+      width: 100%;
+      position: absolute;
+    }
+    #test-3 .txt {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+      height: 50px;
+      position: relative;
+    }
+
+    #test-4 {
+      background-image: url('../assets/quail.png');
+    }
+    #test-4 p {
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="quail-test" data-expected="colorElementBehindBackgroundImageContrast:fail" data-accessibility-test="colorElementBehindBackgroundImageContrast" id="test-1">
+    <p>This test is not readable, thanks to the fish</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorElementBehindBackgroundImageContrast:pass" data-accessibility-test="colorElementBehindBackgroundImageContrast" id="test-2">
+    <p>This test is readable, thanks to the kids</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorElementBehindBackgroundImageContrast:fail" data-accessibility-test="colorElementBehindBackgroundImageContrast" id="test-3">
+    <div class="bck"></div>
+    <p class="txt">This test is not readable.</p>
+  </div>
+
+  <div class="quail-test" data-expected="colorElementBehindBackgroundImageContrast:pass" data-accessibility-test="colorElementBehindBackgroundImageContrast" id="test-4">
+    <p>This test is readable, external image</p>
+  </div>
+
+  <script src="../quail-testrunner.js"></script>
+</body>
+</html>

@@ -93,6 +93,7 @@ quail.lib.Test = (function () {
       if (this.attributes.complete) {
         throw new Error('The test ' + this.get('name') + ' has already been run.');
       }
+
       var type = this.get('type');
       var options = this.get('options') || {};
       var callback = this.get('callback');

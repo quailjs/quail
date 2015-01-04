@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <title>colorElementBehindContrast</title>
+  <style>
+    #test-1 {
+      background: #666;
+    }
+    #test-1 .txt {
+      color: #666;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    #test-2 {
+      background: #fff;
+    }
+    #test-2 .txt {
+      color: #000;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="quail-test" data-expected="colorElementBehindContrast:fail" data-accessibility-test="colorElementBehindContrast" id="test-1">
+    <div class="bck"></div>
+    <p class="txt">This test is not readable.</p>
+  </div>
+  <div class="quail-test" data-expected="colorElementBehindContrast:pass" data-accessibility-test="colorElementBehindContrast" id="test-2">
+    <div class="bck"></div>
+    <p class="txt">This test is readable.</p>
+  </div>
+  <script src="../quail-testrunner.js"></script>
+</body>
+</html>
