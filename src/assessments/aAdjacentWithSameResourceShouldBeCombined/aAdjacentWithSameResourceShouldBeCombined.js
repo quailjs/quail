@@ -1,28 +1,30 @@
-quail.aAdjacentWithSameResourceShouldBeCombined = function(quail, test, Case) {
+quail.aAdjacentWithSameResourceShouldBeCombined = function (quail, test, Case) {
   //var $applicableElements = test.get('$scope').find('a');
 
   function findAdjacent(index, element) {
     var $element = $(element);
-    var adjacentLinks = $element.find('a + a').length > 0;
+    // Find all the links
     var $links = $element.find('a');
+    // Sort them into singletons and coupletons.
+    var $singletons = $(), $coupletons = $();
+    $links.each(function (index, link) {
+      var $link = $(link);
+      if ($link.next().is('a')) {
+        $coupletons = $coupletons.add($link);
+      }
+      else {
+        $singletons = $singletons.add($link);
+      }
+    });
 
-    // no adjacent links, exclude all.
-    if (!adjacentLinks) {
-      $links.each(excludeSingleLinks);
-    }
-    else {
-      $links.each(checkNextLink);
-    }
+    $singletons.each(excludeSingleLinks);
+    $coupletons.each(checkNextLink);
   }
 
   function checkNextLink(index, element) {
     var $element = $(element);
     var thisHref = element.getAttribute('href');
-    var $nextLink = $element.find('+ a');
-    if (!$nextLink.length) {
-      // We're going over the second link.
-      return;
-    }
+    var $nextLink = $element.next();
     var nextHref = $nextLink[0].getAttribute('href');
     var status = 'passed';
     var _case = Case({

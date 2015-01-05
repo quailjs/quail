@@ -1,5 +1,4 @@
 // Karma configuration for Quail unit tests
-// Generated on Sat Oct 11 2014 17:44:41 GMT-0400 (EDT)
 
 module.exports = function(config) {
   config.set({
@@ -37,6 +36,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      '**/*.html': ['html2js']
     },
 
 
@@ -83,6 +83,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: true
   });
 };

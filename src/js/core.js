@@ -95,28 +95,12 @@ var quail = {
    * and if tests are not passed, it instead fetches them using getJSON.
    */
   run : function (options) {
-    if (options.reset) {
-      quail.accessibilityResults = { };
-    }
-
-    function buildTests (quail, data, options) {
-      // Filter for specific tests.
-      if (options.guideline && options.guideline.length) {
-        quail.tests = quail.lib.TestCollection([], {
-          scope: quail.html || null
-        });
-        for (var i = 0, il = options.guideline.length; i < il; ++i) {
-          var t = options.guideline[i];
-          if (data[t]) {
-            data[t].scope = quail.html || null;
-            quail.tests.set(t, data[t]);
-          }
-        }
-      }
-      // Or use all of the tests.
-      else {
-        quail.tests = quail.lib.TestCollection(data, {
-          scope: quail.html || null
+    function buildTests (quail, assessmentList, options) {
+      // Create test configuration objects to appease the core app for now.
+      for (var i = 0, il = assessmentList.length; i < il; ++i) {
+        quail.tests.set(assessmentList[i], {
+          type: 'custom',
+          scope: options.html || null
         });
       }
     }
@@ -128,16 +112,6 @@ var quail = {
      * after an AJAX request for a test JSON file.
      */
     function _run () {
-      // Push custom tests into the test collection.
-      if (typeof options.customTests !== 'undefined') {
-        for (var testName in options.customTests) {
-          if (options.customTests.hasOwnProperty(testName)) {
-            options.customTests[testName].scope = quail.html || null;
-            quail.tests.set(testName, options.customTests[testName]);
-          }
-        }
-      }
-
       // Set up Guideline-specific behaviors.
       var noop = function () {};
       for (var guideline in quail.guidelines) {
@@ -162,16 +136,10 @@ var quail = {
     quail.tests = quail.lib.TestCollection([], {
       scope: quail.html || null
     });
-    // The quail builder at quailjs.org/build provides an in-scope test object.
-    if (typeof quailBuilderTests !== 'undefined') {
-      quail.tests = quail.lib.TestCollection(quailBuilderTests, {
-        scope: quail.html || null
-      });
-      _run.call(quail);
-    }
+
     // Let wcag2 run itself, will call quail again when it knows what
     // to
-    else if (options.guideline === 'wcag2') {
+    if (options.guideline === 'wcag2') {
       quail.lib.wcag2.run(options);
     }
 
@@ -179,30 +147,6 @@ var quail = {
     else if (options.accessibilityTests) {
       buildTests(quail, options.accessibilityTests, options);
       _run.call(quail);
-    }
-
-    // Otherwise get the tests from the json data list.
-    else {
-      var url = options.jsonPath;
-      // Get a specific guideline.
-      if (typeof options.guideline === 'string') {
-        url += '/guidelines/' + options.guideline;
-      }
-
-      $.ajax({
-        url : url + '/tests.json',
-        async : false,
-        dataType : 'json',
-        success : function (data) {
-          if (typeof data === 'object') {
-            buildTests(quail, data, options);
-            _run.call(quail);
-          }
-        },
-        error : function () {
-          throw new Error('Tests could not be loaded');
-        }
-      });
     }
   },
 

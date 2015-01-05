@@ -49,6 +49,7 @@
     "karma-chrome-launcher": "^0.1.5",
     "karma-firefox-launcher": "^0.1.3",
     "karma-html-reporter": "^0.2.4",
+    "karma-html2js-preprocessor": "^0.1.0",
     "karma-ie-launcher": "^0.1.5",
     "karma-mocha": "^0.1.9",
     "karma-opera-launcher": "^0.1.0",

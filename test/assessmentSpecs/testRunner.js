@@ -282,8 +282,9 @@ function runSpecs (assessments) {
           }
         };
 
-        jQuery('html').quail({
+        quail.run({
           accessibilityTests: tests,
+          html: jQuery('html'),
           // Called when an individual Case in a test is resolved.
           caseResolve: function (eventName, test, _case) {
             var name = test.get('name');
@@ -335,7 +336,7 @@ function runSpecs (assessments) {
        */
       function communicateWithSelenium (assets) {
         var client = assets.client;
-        var assessments = assets.assessments;
+        var assessments = Object.keys(assets.assessments);
 
         // Load Quail fixtures into the page.
         var fixtures = [

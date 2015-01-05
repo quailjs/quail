@@ -41,6 +41,7 @@ module.exports = function(grunt) {
           'src/js/components/*.js',
           'src/js/strings/*.js',
           'src/js/custom/*.js',
+          'src/assessments/**/*.js',
           'src/js/lib/*.js',
           'src/js/lib/wcag/*.js',
           'src/js/lib/wcag2/*.js'
@@ -54,6 +55,7 @@ module.exports = function(grunt) {
           'src/js/components/*.js',
           'src/js/strings/*.js',
           'src/js/custom/*.js',
+          'src/assessments/**/*.js',
           'src/js/lib/*.js',
           'src/js/lib/wcag/*.js',
           'src/js/lib/wcag2/*.js'

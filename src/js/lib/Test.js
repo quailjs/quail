@@ -85,18 +85,18 @@ quail.lib.Test = (function () {
       return _case;
     },
     invoke: function () {
+      var name = this.get('name');
       // This test is already running.
       if (this.testComplete) {
-        throw new Error('The test ' + this.get('name') + ' is already running.');
+        throw new Error('The test ' + name + ' is already running.');
       }
       // This test has already been run.
       if (this.attributes.complete) {
-        throw new Error('The test ' + this.get('name') + ' has already been run.');
+        throw new Error('The test ' + name + ' has already been run.');
       }
 
-      var type = this.get('type');
       var options = this.get('options') || {};
-      var callback = this.get('callback');
+      var callback = quail[name];
       var test = this;
 
       // Set the test complete method to the closure function that dispatches
@@ -108,43 +108,13 @@ quail.lib.Test = (function () {
       // completing in the off chance that no Cases are created.
       this.testComplete(false);
 
-      if (type === 'custom') {
-        if (typeof callback === 'function') {
-          try {
-            callback.call(this, quail, test, quail.lib.Case, options);
-          }
-          catch (e) {
-            if (window.console && window.console.error) {
-              window.console.error(e);
-            }
-          }
-        }
-        else if (type === 'custom' && typeof quail[callback] === 'function') {
-          try {
-            quail[callback].call(this, quail, test, quail.lib.Case, options);
-          }
-          catch (e) {
-            if (window.console && window.console.error) {
-              window.console.error(e);
-            }
-          }
-        }
-        else {
-          throw new Error('The callback ' + callback + ' cannot be invoked.');
-        }
+      try {
+        callback.call(test, quail, test, quail.lib.Case, options);
       }
-      else if (typeof quail.components[type] === 'function') {
-        try {
-          quail.components[type].call(this, quail, test, quail.lib.Case, options);
+      catch (e) {
+        if (window.console && window.console.error) {
+          window.console.error(e);
         }
-        catch (e) {
-          if (window.console && window.console.error) {
-            window.console.error(e);
-          }
-        }
-      }
-      else {
-        throw new Error('The component type ' + type + ' is not defined.');
       }
 
       // Invoke the complete dispatcher to prevent the test from never
