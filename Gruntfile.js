@@ -39,7 +39,8 @@ module.exports = function(grunt) {
           "    factory(root.jQuery);",
           "  }",
           "}(this, function($) {",
-          "  'use strict';"
+          "  'use strict';",
+          "  var jQuery = jQuery || $;"
           ].join("\n"),
         footer: "\n" + '});',
         stripBanners: true
