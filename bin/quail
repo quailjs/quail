@@ -32,6 +32,7 @@ program
   .command('develop <assessmentName>')
   .description('The name of an assessment to load into a browser for development')
   .alias('dev')
+  .option('-p, --port [port]', 'The port number of localhost to serve the development page from.', validateOptionPort, 8787)
   .action(function (assessmentName, cmd) {
     quailDevelop.call(this, assessmentName, cmd);
   })
@@ -39,7 +40,20 @@ program
     console.log('  Example:');
     console.log();
     console.log('    $ quail develop aMustHaveTitle');
+    console.log('    $ quail develop aMustHaveTitle -p 4444');
     console.log();
   });
 
 program.parse(process.argv);
+
+/**
+ *
+ */
+function validateOptionPort (val, def) {
+  val = parseInt(val);
+  if (isNaN(val)) {
+    console.error('Port must be a integer');
+    process.exit(1);
+  }
+  return val;
+}
