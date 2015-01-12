@@ -1,40 +1,45 @@
 #!/usr/bin/env node
 
-var program = require('../node_modules/commander/');
-var shell = require('../node_modules/shelljs/');
-var path = require('path');
-// require('../vendor/node_modules/phantomjs');
+var program = require('commander');
+var quailEvaluate = require('../lib/quailEvaluate');
+var quailDevelop = require('../lib/quailDevelop');
 
-// phantomjs phantomquail.js http://quailpages/forms/simple-form.html && jsonpp results.js | less
-
-// Change to the dist dir.
-shell.cd(__dirname);
-shell.cd('..');
-var pwd = shell.pwd();
-
+// `quail` command.
 program
   .version('0.0.1')
-  .option('-u, --url [url]', 'A [url] to test', null)
-  .option('-R, --runner [runnerScript]', 'A [runnerScript] that will run the evaluation. Currently there exists \'default\' and \'wcag2\'.', 'default')
-  .parse(process.argv);
+  .description('Automated accessibility assessment runner.')
+  .option('-R, --runner <runnerScript>', 'A <runnerScript> that will run the evaluation. Currently there exists \'default\' and \'wcag2\'.', 'default');
 
-var runnerScript;
-var phantomjsExec = path.join(__dirname, '..', 'node_modules/.bin/phantomjs');
-var runners = {
-  'default': path.join(__dirname, '..', 'src/js/scripts/phantom_evaluator.js'),
-  'wcag2': path.join(__dirname, '..', 'src/js/scripts/wcag2_evaluator.js')
-};
+// `evaluate` sub-command.
+program
+  .command('evaluate <url>')
+  .description('A <url> to test')
+  .alias('eval')
+  .option('-R, --runner <runnerScript>', 'A <runnerScript> that will run the evaluation. Currently there exists \'default\' and \'wcag2\'.', 'default')
+  .action(function (url, cmd) {
+    quailEvaluate.call(this, url, cmd);
+  })
+  .on('--help', function () {
+    console.log('  Example:');
+    console.log();
+    console.log('    $ quail evaluate http://example.com');
+    console.log('    $ quail evaluate http://example.com -R wcag2');
+    console.log();
+  });
 
-if (program.runner in runners) {
-  runnerScript = runners[program.runner];
-}
-else {
-  runnerScript = runners['default'];
-}
+// `develop` sub-command.
+program
+  .command('develop <assessmentName>')
+  .description('The name of an assessment to load into a browser for development')
+  .alias('dev')
+  .action(function (assessmentName, cmd) {
+    quailDevelop.call(this, assessmentName, cmd);
+  })
+  .on('--help', function () {
+    console.log('  Example:');
+    console.log();
+    console.log('    $ quail develop aMustHaveTitle');
+    console.log();
+  });
 
-var command = [phantomjsExec, runnerScript, program.url, pwd].join(' ');
-shell.exec(command, {
-  async: true
-}, function (code, output) {
-  shell.echo('code: ' + code);
-});
+program.parse(process.argv);

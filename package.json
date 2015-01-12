@@ -20,6 +20,7 @@
   "dependencies": {
     "commander": "^2.3.0",
     "jquery": ">1.4.2",
+    "opener": "^1.4.0",
     "phantomjs": "^1.9.10",
     "q": "^1.1.2",
     "selenium-webdriver": "^2.44.0",
