@@ -200,7 +200,11 @@ module.exports = function(grunt) {
       src: ['dist/**', 'src/**']
     },
     bower: {
-      install: { }
+      install: {
+        options: {
+          targetDir: 'bower_components'
+        }
+      },
     }
   });
   grunt.loadTasks('tasks');
