@@ -1,5 +1,27 @@
 [![Build Status](https://secure.travis-ci.org/quailjs/quail.png?branch=master)](http://travis-ci.org/kevee/quail)
 
+# Development
+
+## Commands you can run as a developer:
+
+CLI tools:
+
+```bash
+quail --help
+```
+
+Running assessments unit tests (via Selenium and Karma)
+
+### All assessments
+
+node ./test/assessmentSpecs/testrunner.js
+
+### A single assessments
+
+```bash
+node ./test/assessmentSpecs/testrunner.js -I aAdjacentWithSameResourceShouldBeCombined
+```
+
 Quail: Accessibility Information Library
 ========================================
 **The project website is [quailjs.org](http://quailjs.org/).**
