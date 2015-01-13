@@ -41,7 +41,7 @@ module.exports = function(grunt) {
           'src/js/components/*.js',
           'src/js/strings/*.js',
           'src/js/custom/*.js',
-          'src/assessments/**/*.js',
+          'lib/assessments/**/*.js',
           'src/js/lib/*.js',
           'src/js/lib/wcag/*.js',
           'src/js/lib/wcag2/*.js'
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
           'src/js/components/*.js',
           'src/js/strings/*.js',
           'src/js/custom/*.js',
-          'src/assessments/**/*.js',
+          'lib/assessments/**/*.js',
           'src/js/lib/*.js',
           'src/js/lib/wcag/*.js',
           'src/js/lib/wcag2/*.js'
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
           stripBanners: true
         }
       }
-    }
+    },
     uglify: {
       dist: {
         files: {
@@ -185,13 +185,6 @@ module.exports = function(grunt) {
         message: 'Auto-generated commit from grunt gh-pages.'
       },
       src: ['dist/**', 'src/**']
-    },
-    bower: {
-      install: {
-        options: {
-          targetDir: 'bower_components'
-        }
-      },
     }
   });
   grunt.loadTasks('tasks');
@@ -205,11 +198,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-execute');
   grunt.loadNpmTasks('grunt-gh-pages');
-  grunt.loadNpmTasks('grunt-bower-task');
 
   // By default, just run tests
   grunt.registerTask('default', [
-    'bower:install',
     'convert',
     'concat',
     'jshint',
@@ -226,7 +217,6 @@ module.exports = function(grunt) {
 
   // Build task.
   grunt.registerTask('build', [
-    'bower:install',
     'convert',
     'concat',
     'jshint',
@@ -238,7 +228,6 @@ module.exports = function(grunt) {
 
   // Release task.
   grunt.registerTask('release', [
-    'bower:install',
     'convert',
     'concat',
     'jshint',
@@ -253,7 +242,6 @@ module.exports = function(grunt) {
 
   // Test task.
   grunt.registerTask('test', [
-    'bower:install',
     'convert',
     'concat',
     'jshint',
