@@ -1,5 +1,4 @@
 aAdjacentWithSameResourceShouldBeCombined:
-  type: "custom"
   testability: 1
   title:
     en: "Adjacent links that point to the same location should be merged"
@@ -24,7 +23,6 @@ aAdjacentWithSameResourceShouldBeCombined:
     - "content"
   callback: "aAdjacentWithSameResourceShouldBeCombined"
 aImgAltNotRepetitive:
-  type: "custom"
   testability: 1
   title:
     en: "When an image is in a link, its \"alt\" attribute should not repeat other text in the link"
@@ -48,7 +46,6 @@ aImgAltNotRepetitive:
     - "content"
   callback: "aImgAltNotRepetitive"
 aInPHasADistinctStyle:
-  type: "custom"
   testability: 1
   title:
     en: "Links should be have a distinct style inside a p tag"
@@ -62,7 +59,6 @@ aInPHasADistinctStyle:
     - "content"
   callback: "aInPHasADistinctStyle"
 aLinkTextDoesNotBeginWithRedundantWord:
-  type: "custom"
   testability: 0
   title:
     en: "Link text should not begin with redundant text"
@@ -82,7 +78,6 @@ aLinkTextDoesNotBeginWithRedundantWord:
     - "redundant.link"
   callback: "aLinkTextDoesNotBeginWithRedundantWord"
 aLinksAreSeparatedByPrintableCharacters:
-  type: "custom"
   testability: 1
   title:
     en: "Lists of links should be seperated by printable characters"
@@ -96,7 +91,6 @@ aLinksAreSeparatedByPrintableCharacters:
     - "content"
   callback: "aLinksAreSeparatedByPrintableCharacters"
 aLinksDontOpenNewWindow:
-  type: "custom"
   testability: 1
   title:
     en: "Links should not open a new window without warning"
@@ -117,7 +111,6 @@ aLinksDontOpenNewWindow:
     - "newWindow"
   callback: "aLinksDontOpenNewWindow"
 aLinksNotSeparatedBySymbols:
-  type: "custom"
   testability: 1
   title:
     en: "Links should not be separated by symbols alone"
@@ -175,7 +168,6 @@ aLinksToSoundFilesNeedTranscripts:
   options:
     selector: "a[href$='.wav'], a[href$='.snd'], a[href$='.mp3'], a[href$='.iff'], a[href$='.svx'], a[href$='.sam'], a[href$='.smp'], a[href$='.vce'], a[href$='.vox'], a[href$='.pcm'], a[href$='.aif']"
 aLinkWithNonText:
-  type: "custom"
   title:
     en: "Links with only non-text content should be readable"
     nl: "Links zonder tekstuele content moeten leesbaar zijn"
@@ -209,7 +201,6 @@ aMultimediaTextAlternative:
   options:
     selector: "a[href$='.wmv'], a[href$='.wav'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']"
 aMustContainText:
-  type: "custom"
   testability: 1
   title:
     en: "Links should contain text"
@@ -266,7 +257,6 @@ aMustNotHaveJavascriptHref:
   options:
     selector: "a[href^='javascript:']"
 aSuspiciousLinkText:
-  type: "custom"
   testability: 1
   title:
     en: "Link text should be useful"
@@ -340,7 +330,6 @@ addressForAuthorMustBeValid:
   options:
     selector: "address"
 appletContainsTextEquivalent:
-  type: "custom"
   testability: 1
   title:
     en: "All applets should contain the same content within the body of the applet"
@@ -581,7 +570,6 @@ areaLinksToSoundFile:
   options:
     selector: "area[href$=wav], area[href$=snd], area[href$=mp3], area[href$=iff], area[href$=svx], area[href$=sam], area[href$=smp], area[href$=vce], area[href$=vox], area[href$=pcm], area[href$=aif]"
 ariaOrphanedContent:
-  type: "custom"
   testability: 1
   title:
     en: "Pages using ARIA roles should not have orphaned content"
@@ -648,7 +636,6 @@ blockquoteNotUsedForIndentation:
   options:
     selector: "blockquote:not(blockquote[cite])"
 blockquoteUseForQuotations:
-  type: "custom"
   testability: 0.5
   title:
     en: "If long quotes are in the document, use the \"blockquote\" element to mark them"
@@ -767,7 +754,6 @@ checkboxLabelIsNearby:
   options:
     selector: "input[type=checkbox]"
 closingTagsAreUsed:
-  type: "custom"
   testability: 1
   title:
     en: "All tags that require closing tags have closing tags"
@@ -786,7 +772,6 @@ closingTagsAreUsed:
     - "htmlSource"
   callback: "closingTagsAreUsed"
 contentPositioningShouldNotChangeMeaning:
-  type: "custom"
   testability: 0.5
   title:
     en: "Meaning should not be created through positioning"
@@ -839,7 +824,6 @@ cssDocumentMakesSenseStyleTurnedOff:
   options:
     selector: "link[rel=stylesheet], stylesheet, *[style]"
 colorFontContrast:
-  type: "custom"
   testability: 1
   title:
     en: "All elements should have appropriate color contrast"
@@ -861,7 +845,6 @@ colorFontContrast:
     selector: "*"
     gradientSampleMultiplier: 3
 colorElementBehindContrast:
-  type: "custom"
   testability: 1
   title:
     en: "All elements should have appropriate color contrast"
@@ -883,7 +866,6 @@ colorElementBehindContrast:
     selector: "*"
     gradientSampleMultiplier: 3
 colorBackgroundImageContrast:
-  type: "custom"
   testability: 1
   title:
     en: "All elements should have appropriate color contrast"
@@ -905,7 +887,6 @@ colorBackgroundImageContrast:
     selector: "*"
     gradientSampleMultiplier: 3
 colorElementBehindBackgroundImageContrast:
-  type: "custom"
   testability: 1
   title:
     en: "All elements should have appropriate color contrast"
@@ -927,7 +908,6 @@ colorElementBehindBackgroundImageContrast:
     selector: "*"
     gradientSampleMultiplier: 3
 colorBackgroundGradientContrast:
-  type: "custom"
   testability: 1
   title:
     en: "All elements should have appropriate color contrast"
@@ -949,7 +929,6 @@ colorBackgroundGradientContrast:
     selector: "*"
     gradientSampleMultiplier: 3
 colorElementBehindBackgroundGradientContrast:
-  type: "custom"
   testability: 1
   title:
     en: "All elements should have appropriate color contrast"
@@ -971,7 +950,6 @@ colorElementBehindBackgroundGradientContrast:
     selector: "*"
     gradientSampleMultiplier: 3
 definitionListsAreUsed:
-  type: "custom"
   testability: 0.5
   title:
     en: "Use a definition list for defining terms"
@@ -988,7 +966,6 @@ definitionListsAreUsed:
     - "structure"
   callback: "definitionListsAreUsed"
 doctypeProvided:
-  type: "custom"
   testability: 1
   title:
     en: "The document should contain a valid \"doctype\" declaration"
@@ -1001,7 +978,6 @@ doctypeProvided:
     - "doctype"
   callback: "doctypeProvided"
 documentAbbrIsUsed:
-  type: "custom"
   testability: 0.5
   title:
     en: "Abbreviations must be marked with an \"abbr\" element"
@@ -1021,7 +997,6 @@ documentAbbrIsUsed:
     - "acronym"
   callback: "documentAbbrIsUsed"
 documentAcronymsHaveElement:
-  type: "custom"
   testability: 0.5
   title:
     en: "Acronyms must be marked with an \"acronym\" element"
@@ -1101,7 +1076,6 @@ documentHasTitleElement:
   options:
     selector: "html:not(html:has(title))"
 documentIDsMustBeUnique:
-  type: "custom"
   testability: 1
   title:
     en: "All element \"id\" attributes must be unique"
@@ -1120,7 +1094,6 @@ documentIDsMustBeUnique:
     - "semantics"
   callback: "documentIDsMustBeUnique"
 documentIsWrittenClearly:
-  type: "custom"
   testability: 0.5
   title:
     en: "The document should be written to the target audience and read clearly"
@@ -1140,7 +1113,6 @@ documentIsWrittenClearly:
     - "textStatistics"
   callback: "documentIsWrittenClearly"
 documentLangIsISO639Standard:
-  type: "custom"
   testability: 1
   title:
     en: "The document's language attribute should be a standard code"
@@ -1220,7 +1192,6 @@ documentReadingDirection:
   options:
     selector: "*[lang=he]:not(*[dir=rtl]), *[lang=ar]:not(*[dir=rtl])"
 documentStrictDocType:
-  type: "custom"
   testability: 1
   title:
     en: "The page uses a strict doctype"
@@ -1277,7 +1248,6 @@ documentTitleIsNotPlaceholder:
     content: true
     selector: "head title:first"
 documentTitleIsShort:
-  type: "custom"
   testability: 0.5
   title:
     en: "The document title should be short"
@@ -1315,7 +1285,6 @@ documentTitleNotEmpty:
     empty: true
     selector: "head title"
 documentValidatesToDocType:
-  type: "custom"
   testability: 1
   title:
     en: "Document must validate to the doctype"
@@ -1333,7 +1302,6 @@ documentValidatesToDocType:
     - "doctype"
   callback: "documentValidatesToDocType"
 documentVisualListsAreMarkedUp:
-  type: "custom"
   testability: 1
   title:
     en: "Visual lists of items are marked using ordered or unordered lists"
@@ -1377,7 +1345,6 @@ domOrderMatchesVisualOrder:
   options:
     selector: "*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)"
 elementAttributesAreValid:
-  type: "custom"
   testability: 1
   title:
     en: "Attributes should have spaces between them and be wrapped in quotes"
@@ -1391,7 +1358,6 @@ elementAttributesAreValid:
         - "F70"
   callback: "elementAttributesAreValid"
 embedHasAssociatedNoEmbed:
-  type: "custom"
   testability: 1
   title:
     en: "All \"embed\" elements have an associated \"noembed\" element"
@@ -1406,7 +1372,6 @@ embedHasAssociatedNoEmbed:
     - "content"
   callback: "embedHasAssociatedNoEmbed"
 elementsDoNotHaveDuplicateAttributes:
-  type: "custom"
   testability: 1
   title:
     en: "Elements should not have duplicate attributes"
@@ -1475,7 +1440,6 @@ embedProvidesMechanismToReturnToParent:
   options:
     selector: "embed"
 emoticonsExcessiveUse:
-  type: "custom"
   testability: 0.5
   title:
     en: "Emoticons should not be used excessively"
@@ -1494,7 +1458,6 @@ emoticonsExcessiveUse:
     - "content"
   callback: "emoticonsExcessiveUse"
 emoticonsMissingAbbr:
-  type: "custom"
   testability: 1
   title:
     en: "Emoticons should have abbreviations"
@@ -1588,7 +1551,6 @@ fileLabelIsNearby:
   options:
     selector: "input[type=file]"
 focusIndicatorVisible:
-  type: "custom"
   title:
     en: "Focus indicators have high visibility"
     nl: "Focus indicators moeten goed zichtbaar zijn"
@@ -1725,7 +1687,6 @@ formHasSubmitButton:
   options:
     selector: "form:not(form:has(input[type=image], input[type=submit], button[type=submit]))"
 formWithRequiredLabel:
-  type: "custom"
   testability: 0
   title:
     en: "Input items which are required are marked as so in the label element"
@@ -1940,7 +1901,6 @@ framesetMustHaveNoFramesSection:
   options:
     selector: "frameset:not(frameset:has(noframes))"
 headersAttrRefersToATableCell:
-  type: "custom"
   testability: 1
   title:
     en: "Table cell headers attrtibutes must within the same table have an associated data cell with the same id"
@@ -2187,7 +2147,6 @@ headersHaveText:
     empty: true
     selector: "h1, h2, h3, h4, h5, h6"
 headersUsedToIndicateMainContent:
-  type: "custom"
   testability: 0.5
   title:
     en: "Use header to indicate start of main content"
@@ -2205,7 +2164,6 @@ headersUsedToIndicateMainContent:
     - "content"
   callback: "headersUsedToIndicateMainContent"
 headersUseToMarkSections:
-  type: "custom"
   testability: 0.5
   title:
     en: "Use headers to mark the beginning of each section"
@@ -2227,7 +2185,6 @@ headersUseToMarkSections:
     - "content"
   callback: "headersUseToMarkSections"
 idRefHasCorrespondingId:
-  type: "custom"
   testability: 1
   title:
     en: "Elements with an idref type attribute must correspond to an element with an ID"
@@ -2245,7 +2202,6 @@ idRefHasCorrespondingId:
           - "F17"
   callback: "idRefHasCorrespondingId"
 idrefsHasCorrespondingId:
-  type: "custom"
   testability: 1
   title:
     en: "Elements with an idref attribute must correspond to an element with an ID"
@@ -2344,7 +2300,6 @@ imgAltIdentifiesLinkDestination:
   options:
     selector: "a img[alt]:first"
 imgAltIsDifferent:
-  type: "custom"
   testability: 0.5
   title:
     en: "Image \"alt\" attributes should not be the same as the filename"
@@ -2386,7 +2341,6 @@ imgAltIsSameInText:
   options:
     selector: "img"
 imgAltIsTooLong:
-  type: "custom"
   testability: 1
   title:
     en: "Image Alt text is short"
@@ -2406,7 +2360,6 @@ imgAltIsTooLong:
     - "content"
   callback: "imgAltIsTooLong"
 imgAltNotEmptyInAnchor:
-  type: "custom"
   testability: 1
   title:
     en: "An image within a link cannot have an empty \"alt\" attribute if there is no other text within the link"
@@ -2454,7 +2407,6 @@ imgAltNotPlaceHolder:
     attribute: "alt"
     selector: "img"
 imgAltTextNotRedundant:
-  type: "custom"
   testability: 1
   title:
     en: "Unless the image files are the same, no image should contain redundant alt text"
@@ -2468,7 +2420,6 @@ imgAltTextNotRedundant:
     - "content"
   callback: "imgAltTextNotRedundant"
 imgGifNoFlicker:
-  type: "custom"
   testability: 1
   title:
     en: "Any animated GIF should not flicker"
@@ -2511,7 +2462,6 @@ imgHasAlt:
     selector: "img:visible"
     test: ":not(img[alt])"
 imgHasLongDesc:
-  type: "custom"
   testability: 1
   title:
     en: "A \"longdesc\" attribute is required for any image where additional information not in the \"alt\" attribute is required"
@@ -2532,7 +2482,6 @@ imgHasLongDesc:
     - "content"
   callback: "imgHasLongDesc"
 imgImportantNoSpacerAlt:
-  type: "custom"
   testability: 0.5
   title:
     en: "Images that are important should not have a purely white-space \"alt\" attribute"
@@ -2546,7 +2495,6 @@ imgImportantNoSpacerAlt:
     - "content"
   callback: "imgImportantNoSpacerAlt"
 imgMapAreasHaveDuplicateLink:
-  type: "custom"
   testability: 1
   title:
     en: "All links within a client-side image are duplicated elsewhere in the document"
@@ -2563,7 +2511,6 @@ imgMapAreasHaveDuplicateLink:
     - "imagemap"
   callback: "imgMapAreasHaveDuplicateLink"
 imgNonDecorativeHasAlt:
-  type: "custom"
   testability: 0.5
   title:
     en: "Any non-decorative images should have a non-empty \"alt\" attribute"
@@ -2658,7 +2605,6 @@ imgWithMapHasUseMap:
   options:
     selector: "img[ismap]:not(img[usemap])"
 imgWithMathShouldHaveMathEquivalent:
-  type: "custom"
   testability: 0
   title:
     en: "Images which contain math equations should provide equivalent MathML"
@@ -2691,7 +2637,6 @@ inputCheckboxHasTabIndex:
     empty: true
     selector: "input[type=checkbox]"
 inputCheckboxRequiresFieldset:
-  type: "custom"
   testability: 1
   title:
     en: "Logical groups of check boxes should be grouped with a fieldset"
@@ -2780,7 +2725,6 @@ inputImageAltIdentifiesPurpose:
   options:
     selector: "input[type=image][alt]"
 inputImageAltIsNotFileName:
-  type: "custom"
   testability: 1
   title:
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not the same as the filename"
@@ -2835,7 +2779,6 @@ inputImageAltIsNotPlaceholder:
     attribute: "alt"
     selector: "input[type=image]"
 inputImageAltIsShort:
-  type: "custom"
   testability: 1
   title:
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is as short as possible"
@@ -2856,7 +2799,6 @@ inputImageAltIsShort:
     - "content"
   callback: "inputImageAltIsShort"
 inputImageAltNotRedundant:
-  type: "custom"
   testability: 1
   title:
     en: "The \"alt\" text for input \"image\" submit buttons must not be filler text"
@@ -3081,7 +3023,6 @@ inputTextValueNotEmpty:
     empty: true
     selector: "input[type=text]"
 inputWithoutLabelHasTitle:
-  type: "custom"
   testability: 1
   title:
     en: "Form controls without label should have a title attribute"
@@ -3125,7 +3066,6 @@ labelDoesNotContainInput:
   options:
     selector: "label:has(input)"
 labelMustBeUnique:
-  type: "custom"
   testability: 1
   title:
     en: "Every form input must have only one label"
@@ -3179,7 +3119,6 @@ labelMustNotBeEmpty:
     empty: true
     selector: "label"
 labelsAreAssignedToAnInput:
-  type: "custom"
   testability: 1
   title:
     en: "All labels should be associated with an input"
@@ -3193,7 +3132,6 @@ labelsAreAssignedToAnInput:
     - "content"
   callback: "labelsAreAssignedToAnInput"
 languageDirAttributeIsUsed:
-  type: "custom"
   testability: 0.5
   title:
     en: "Use the dir attribute when the language direction changes"
@@ -3213,7 +3151,6 @@ languageDirAttributeIsUsed:
   components:
     - "language"
 languageChangesAreIdentified:
-  type: "custom"
   testability: 0.5
   title:
     en: "Use language attributes to indicate changes in language"
@@ -3233,7 +3170,6 @@ languageChangesAreIdentified:
   components:
     - "language"
 languageDirectionPunctuation:
-  type: "custom"
   testability: 0.5
   title:
     en: "Place punctuation around language direction changes in the right order"
@@ -3253,7 +3189,6 @@ languageDirectionPunctuation:
   components:
     - "language"
 languageUnicodeDirection:
-  type: "custom"
   testability: 1
   title:
     en: "Use the unicode language direction"
@@ -3361,7 +3296,6 @@ liDontUseImageForBullet:
   options:
     selector: "li:has(img)"
 linkHasAUniqueContext:
-  type: "custom"
   testability: 1
   title:
     en: "Links should have a unique context"
@@ -3403,7 +3337,6 @@ linkUsedToDescribeNavigation:
   options:
     selector: "html:not(html:has(link[rel=index]))"
 listNotUsedForFormatting:
-  type: "custom"
   testability: 0
   title:
     en: "Lists should not be used for formatting"
@@ -3422,7 +3355,6 @@ listNotUsedForFormatting:
     - "content"
   callback: "listNotUsedForFormatting"
 listOfLinksUseList:
-  type: "custom"
   testability: 1
   title:
     en: "A list of links separated by non-readable characters should be in an ul or ol"
@@ -3470,7 +3402,6 @@ menuNotUsedToFormatText:
   options:
     selector: "menu:not(menu li:parent(menu))"
 newWindowIsOpened:
-  type: "custom"
   testability: 1
   title:
     en: "A link should not open a new window"
@@ -3755,7 +3686,6 @@ objectWithClassIDHasNoText:
   options:
     selector: "object[classid]:not(object[classid]:empty)"
 pNotUsedAsHeader:
-  type: "custom"
   testability: 1
   title:
     en: "Paragraphs must not be used for headers"
@@ -3777,7 +3707,6 @@ pNotUsedAsHeader:
     - "content"
   callback: "pNotUsedAsHeader"
 paragraphIsWrittenClearly:
-  type: "custom"
   testability: 0.5
   guidelines:
     wcag:
@@ -3848,7 +3777,6 @@ passwordLabelIsNearby:
   options:
     selector: "input[type=password]"
 preShouldNotBeUsedForTabularLayout:
-  type: "custom"
   testability: 0
   title:
     en: "Pre elements should not be used for tabular data"
@@ -4324,7 +4252,6 @@ selectHasAssociatedLabel:
   options:
     selector: "select"
 selectJumpMenu:
-  type: "custom"
   testability: 0.5
   title:
     en: "Select jump menus should jump on button press, not on state change"
@@ -4366,7 +4293,6 @@ selectWithOptionsHasOptgroup:
   options:
     selector: "select:not(select:has(optgroup)) option:nth-child(5)"
 siteMap:
-  type: "custom"
   testability: 0
   title:
     en: "Websites must have a site map"
@@ -4388,7 +4314,6 @@ siteMap:
     - "siteMap"
   callback: "siteMap"
 skipToContentLinkProvided:
-  type: "custom"
   testability: 0.5
   title:
     en: "A \"skip to content\" link should exist as one of the first links on the page"
@@ -4429,7 +4354,6 @@ svgContainsTitle:
   options:
     selector: "svg:not(svg:has(title))"
 tableAxisHasCorrespondingId:
-  type: "custom"
   testability: 1
   title:
     en: "Axis attribute should have corresponding IDs"
@@ -4447,7 +4371,6 @@ tableAxisHasCorrespondingId:
           - "F17"
   callback: "tableAxisHasCorrespondingId"
 tabIndexFollowsLogicalOrder:
-  type: "custom"
   testability: 0.5
   title:
     en: "The tab order of a document is logical"
@@ -4523,7 +4446,6 @@ tableDataShouldHaveTh:
   options:
     selector: "table:not(table:has(th))"
 tableHeaderLabelMustBeTerse:
-  type: "custom"
   testability: 0.5
   title:
     en: "Table header lables must be terse"
@@ -4552,7 +4474,6 @@ tableIsGrouped:
   options:
     selector: "table:not(table:has(thead), table:has(tfoot))"
 tableLayoutDataShouldNotHaveTh:
-  type: "custom"
   testability: 0
   title:
     en: "Layout tables should not contain \"th\" elements"
@@ -4571,7 +4492,6 @@ tableLayoutDataShouldNotHaveTh:
     - "content"
   callback: "tableLayoutDataShouldNotHaveTh"
 tableLayoutHasNoCaption:
-  type: "custom"
   testability: 1
   title:
     en: "All tables used for layout have no \"caption\" element"
@@ -4590,7 +4510,6 @@ tableLayoutHasNoCaption:
     - "content"
   callback: "tableLayoutHasNoCaption"
 tableLayoutHasNoSummary:
-  type: "custom"
   testability: 0.5
   title:
     en: "All tables used for layout have no summary or an empty summary"
@@ -4609,7 +4528,6 @@ tableLayoutHasNoSummary:
     - "content"
   callback: "tableLayoutHasNoSummary"
 tableLayoutMakesSenseLinearized:
-  type: "custom"
   testability: 0
   title:
     en: "All tables used for layout should make sense when removed"
@@ -4631,7 +4549,6 @@ tableLayoutMakesSenseLinearized:
     - "content"
   callback: "tableLayoutMakesSenseLinearized"
 tableNotUsedForLayout:
-  type: "custom"
   testability: 0.5
   title:
     en: "Tables should not be used for layout"
@@ -4650,7 +4567,6 @@ tableNotUsedForLayout:
     - "content"
   callback: "tableNotUsedForLayout"
 tableShouldUseHeaderIDs:
-  type: "custom"
   testability: 0.5
   title:
     en: "Table cells use IDs to identify headers"
@@ -4683,7 +4599,6 @@ tableSummaryDescribesTable:
   options:
     selector: "table[summary]"
 tableSummaryDoesNotDuplicateCaption:
-  type: "custom"
   testability: 1
   title:
     en: "Table \"summary\" elements should not duplicate the \"caption\" element"
@@ -4716,7 +4631,6 @@ tableSummaryIsEmpty:
     empty: true
     selector: "table[summary]"
 tableSummaryIsNotTooLong:
-  type: "custom"
   testability: 0
   guidelines: []
   tags:
@@ -4739,7 +4653,6 @@ tableSummaryIsSufficient:
   options:
     selector: "table[summary]"
 tableUseColGroup:
-  type: "custom"
   testability: 0
   title:
     en: "Group columns using \"colgroup\" or \"col\" elements"
@@ -4753,7 +4666,6 @@ tableUseColGroup:
     - "content"
   callback: "tableUseColGroup"
 tableUsesAbbreviationForHeader:
-  type: "custom"
   testability: 0
   title:
     en: "Table headers over 20 characters should provide an \"abbr\" attribute"
@@ -4786,7 +4698,6 @@ tableUsesCaption:
   options:
     selector: "table:not(table:has(caption))"
 tableUsesScopeForRow:
-  type: "custom"
   testability: 0.5
   title:
     en: "Data tables should use scoped headers for rows with headers"
@@ -4825,7 +4736,6 @@ tableWithBothHeadersUseScope:
   options:
     selector: "table:has(tr:not(table tr:first) th:not(th[scope]))"
 tableWithMoreHeadersUseID:
-  type: "custom"
   testability: 0.5
   title:
     en: "Complex data tables should provide \"id\" attributes to headers"
@@ -4839,7 +4749,6 @@ tableWithMoreHeadersUseID:
     - "content"
   callback: "tableWithMoreHeadersUseID"
 tagsAreNestedCorrectly:
-  type: "custom"
   testability: 1
   title:
     en: "All tags should be nested correctly"
@@ -4858,7 +4767,6 @@ tagsAreNestedCorrectly:
       - "htmlSource"
   callback: "tagsAreNestedCorrectly"
 tabularDataIsInTable:
-  type: "custom"
   testability: 0.5
   title:
     en: "All tabular information should use a table"
@@ -4882,7 +4790,6 @@ tabularDataIsInTable:
     - "content"
   callback: "tabularDataIsInTable"
 textIsNotSmall:
-  type: "custom"
   testability: 0.5
   title:
     en: "The text size is not less than 9 pixels high"
@@ -4978,7 +4885,6 @@ videoProvidesCaptions:
   options:
     selector: "video"
 videosEmbeddedOrLinkedNeedCaptions:
-  type: "custom"
   testability: 1
   title:
     en: "All linked or embedded videos need captions"
@@ -5002,7 +4908,6 @@ videosEmbeddedOrLinkedNeedCaptions:
     - "language"
   callback: "videosEmbeddedOrLinkedNeedCaptions"
 whiteSpaceInWord:
-  type: "custom"
   testability: 0.5
   title:
     en: "Whitespace should not be used between characters in a word"
@@ -5020,7 +4925,6 @@ whiteSpaceInWord:
     - "content"
   callback: "whiteSpaceInWord"
 whiteSpaceNotUsedForFormatting:
-  type: "custom"
   testability: 0.5
   title:
     en: "Whitespace should not be used for conveying information"
@@ -5037,7 +4941,6 @@ whiteSpaceNotUsedForFormatting:
     - "content"
   callback: "whiteSpaceNotUsedForFormatting"
 doNotUseGraphicalSymbolToConveyInformation:
-  type: "custom"
   testability: 1
   title:
     en: "Using a graphical symbol alone to convey information"
@@ -5093,7 +4996,6 @@ buttonDoesNotChangeContextOnFocus:
     searchEvent: "onfocus"
     selector: "input[type=checkbox],input[type=text],button"
 KINGStrongList:
-  type: "custom"
   testability: 1
   title:
     en: "Use strong in lists only"
@@ -5104,7 +5006,6 @@ KINGStrongList:
     - "KING"
   callback: "KINGStrongList"
 KINGUseLongDateFormat:
-  type: "custom"
   testability: 1
   title:
     en: "Use a long date format"
@@ -5115,7 +5016,6 @@ KINGUseLongDateFormat:
     - "KING"
   callback: "KINGUseLongDateFormat"
 KINGUsePercentageWithSymbol:
-  type: "custom"
   testability: 1
   title:
     en: "Use a symbol within a percentage"
@@ -5126,7 +5026,6 @@ KINGUsePercentageWithSymbol:
     - "KING"
   callback: "KINGUsePercentageWithSymbol"
 KINGUseCurrencyAsSymbol:
-  type: "custom"
   testability: 1
   title:
     en: "Use a symbol for a currency"
@@ -5137,7 +5036,6 @@ KINGUseCurrencyAsSymbol:
     - "KING"
   callback: "KINGUseCurrencyAsSymbol"
 videoMayBePresent:
-  type: "custom"
   testability: 1
   title:
     en: "Video or object uses a link that points to a file with a video extension"
@@ -5151,7 +5049,6 @@ videoMayBePresent:
     - "video"
   callback: "videoMayBePresent"
 audioMayBePresent:
-  type: "custom"
   testability: 1
   title:
     en: "Audio or object uses a link that points to a file with a video extension"
@@ -5165,7 +5062,6 @@ audioMayBePresent:
     - "audio"
   callback: "audioMayBePresent"
 animatedGifMayBePresent:
-  type: "custom"
   testability: 1
   title:
     en: "Test if a .gif is used on the page. Test if the .gif contains more then one frame"
@@ -5179,7 +5075,6 @@ animatedGifMayBePresent:
     - "gif"
   callback: "animatedGifMayBePresent"
 userInputMayBeRequired:
-  type: "custom"
   testability: 1
   title:
     en: "Test if user input is required"
