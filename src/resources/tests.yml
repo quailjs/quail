@@ -57,7 +57,7 @@ aInPHasADistinctStyle:
   tags:
     - "link"
     - "content"
-  callback: "aInPHasADistinctStyle"
+
 aLinkTextDoesNotBeginWithRedundantWord:
   testability: 0
   title:
