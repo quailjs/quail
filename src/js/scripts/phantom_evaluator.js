@@ -1,9 +1,13 @@
 // Context is phantom
 
 var system = require('system');
-var page = require('webpage').create();
 var fs = require('fs');
-var dir = system.args[2];
+var page = require('webpage').create();
+
+// system.args[0], phantomjs
+// system.args[1], the url to evaluate.
+var dir = system.args[2]; // cwd
+var outputDir = system.args[3]; // Directory to write output to.
 var address;
 
 /**
@@ -144,8 +148,14 @@ var timestamp = [
   '-',
   date.getTime()
 ].join('');
-var resultsFile = dir + '/analyses/' + timestamp + '-analysis.js';
-var stream = fs.open(resultsFile, 'w');
+// Write out the results is an output directory path was provided.
+var resultsFile;
+var stream;
+if (outputDir) {
+  resultsFile = [outputDir, timestamp + '-analysis.js'].join('/');
+  stream = fs.open(resultsFile, 'w');
+}
+
 // The data to be written to file.
 var output = {};
 var start = (new Date()).getTime();
@@ -182,12 +192,11 @@ page.onCallback = function(action, data) {
     if (len === 0) {
       console.log('Elapsed time: ' + ((new Date()).getTime() - start) / 1000 + ' seconds');
       console.log('Cases found: ' + (output.stats && output.stats.cases || 0));
-      console.log('Results were written to ' + resultsFile);
-      var out = JSON.stringify(output);
-      stream.write(out);
-      // Also write the output to the console.
-      // console.log(out);
-      stream.close();
+      if (stream) {
+        console.log('Results were written to ' + resultsFile);
+        stream.write(JSON.stringify(output));
+        stream.close();
+      }
       quitPhantom('Testing complete');
     }
     break;

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-
+var fs = require('fs');
+var path = require('path');
 var program = require('commander');
 var quailEvaluate = require('../lib/quailEvaluate');
 var quailDevelop = require('../lib/quailDevelop');
@@ -16,6 +17,7 @@ program
   .description('A <url> to test')
   .alias('eval')
   .option('-R, --runner <runnerScript>', 'A <runnerScript> that will run the evaluation. Currently there exists \'default\' and \'wcag2\'.', 'default')
+  .option('-o, --output [outputDir]', 'An [outputDir] to write the analysis results to', validateOutputDirectory)
   .action(function (url, cmd) {
     quailEvaluate.call(this, url, cmd);
   })
@@ -24,6 +26,7 @@ program
     console.log();
     console.log('    $ quail evaluate http://example.com');
     console.log('    $ quail evaluate http://example.com -R wcag2');
+    console.log('    $ quail evaluate http://example.com -o analyses');
     console.log();
   });
 
@@ -49,11 +52,44 @@ program.parse(process.argv);
 /**
  *
  */
-function validateOptionPort (val, def) {
+function validateOptionPort (val) {
   val = parseInt(val);
   if (isNaN(val)) {
     console.error('Port must be a integer');
     process.exit(1);
   }
   return val;
+}
+
+/**
+ *
+ */
+function validateOutputDirectory (val) {
+  var stat;
+  // If it is a directory, then use it.
+  try {
+    stat = fs.lstatSync(val);
+    if (stat.isDirectory()) {
+      debugger;
+      return val;
+    }
+  }
+  catch (error) {
+    // Nothing to do here.
+  }
+  // Otherwise see if it's relative to the project. Make an assumption that paths
+  // are relative to the ROOT of the project, hence the '..'.
+  try {
+    stat = fs.lstatSync(path.join(__dirname, '..', val));
+    if (stat.isDirectory()) {
+      debugger;
+      return path.join(__dirname, '..', val);
+    }
+  }
+  catch (error) {
+    // Nothing to do here.
+  }
+  // If we got this far, then the val is not an existing directory.
+  console.error('`' + val + '` is not an existing absolute or relative directory path.');
+  process.exit(1);
 }
