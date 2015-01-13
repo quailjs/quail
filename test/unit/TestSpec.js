@@ -102,24 +102,6 @@ describe('Test', function () {
       spy = sinon.spy(cb);
       quail.customCallback = spy;
     });
-
-    it('should invoke a custom callback', function () {
-      options = {
-        'type': 'custom',
-        'callback': spy
-      };
-      _test = new quail.lib.Test('fakeLinkTest', options);
-      _test.invoke();
-      sinon.assert.calledWith(spy, quail, _test, quail.lib.Case);
-    });
-
-    it('should invoke a callback', function () {
-      quail.customCallback = spy;
-      options = {
-        'type': 'customCallback'
-      };
-      _test = new quail.lib.Test('fakeLinkTest', options);
-    });
   });
 
   describe('methods', function () {
