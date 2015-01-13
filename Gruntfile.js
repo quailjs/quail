@@ -67,20 +67,7 @@ module.exports = function(grunt) {
           stripBanners: true
         }
       }
-    },
-    copy: {
-      vendor: {
-        expand: true,
-        src: 'node_modules/{commander,shelljs,phantomjs,jquery}/**/*',
-        dest: 'dist/vendor/'
-      },
-      evaluator: {
-        expand: true,
-        flatten: true,
-        src: 'src/js/lib/phantom_evaluator.js',
-        dest: 'dist/evaluator'
-      }
-    },
+    }
     uglify: {
       dist: {
         files: {
@@ -215,7 +202,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-convert');
   grunt.loadNpmTasks('grunt-execute');
   grunt.loadNpmTasks('grunt-gh-pages');
