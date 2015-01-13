@@ -113,6 +113,7 @@ quail.lib.Test = (function () {
       }
       catch (e) {
         if (window.console && window.console.error) {
+          window.console.error(name + ' does not have an associated test callback on the Quail object.');
           window.console.error(e);
         }
       }

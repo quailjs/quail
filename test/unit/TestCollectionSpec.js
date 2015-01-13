@@ -120,9 +120,11 @@ describe('TestCollection', function () {
 
       listener.listenTo(_testCollection, 'complete', spy);
       // Create a few fake tests and add them to the collection.
+      var testName;
       for (var i = 0; i < 5; ++i) {
-        _test = new quail.lib.Test('fakeTest-' + i, {
-          'type': 'selector',
+        testName = 'fakeTest-' + i;
+        quail[testName] = function () {};
+        _test = new quail.lib.Test(testName, {
           'options': {
             'selector': 'i.unittest'
           }
@@ -130,9 +132,8 @@ describe('TestCollection', function () {
         _testCollection.add(_test);
       }
       // Add a test that will time out.
-      _testCollection.add(new quail.lib.Test('timeoutTest', {
-        'type': 'selector'
-      }));
+      quail['timeoutTest'] = function () {};
+      _testCollection.add(new quail.lib.Test('timeoutTest', {}));
       _testCollection.run();
     });
   });

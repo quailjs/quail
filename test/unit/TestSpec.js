@@ -3,6 +3,7 @@ describe('Test', function () {
   var scope;
 
   beforeEach(function () {
+    quail['peregrine'] = function () {};
     _test = new quail.lib.Test('peregrine', {
       'bird': 'falcon'
     });
@@ -52,6 +53,7 @@ describe('Test', function () {
 
   describe('Invoke/selector', function () {
     beforeEach(function () {
+      quail['fakeLinkTest'] = function () {};
       _test = new quail.lib.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
@@ -110,6 +112,7 @@ describe('Test', function () {
 
     beforeEach(function () {
       _testCollection = new quail.lib.TestCollection();
+      quail['fakeLinkTest'] = function () {};
       _test = new quail.lib.Test('fakeLinkTest', {
         'type': 'selector',
         'options': {
@@ -184,6 +187,7 @@ describe('Test', function () {
 
     beforeEach(function () {
       _testCollection = new quail.lib.TestCollection();
+      quail['testCompleteTest'] = function () {};
       _test = new quail.lib.Test('testCompleteTest', {
         'type': 'selector',
         'options': {
@@ -222,6 +226,7 @@ describe('Test', function () {
       var g = {
         'wcag': sc
       };
+      quail['fakeLinkTest'] = function () {};
       var _test = new quail.lib.Test('fakeLinkTest', {
         'type': 'selector',
         'guidelines': g,
@@ -244,6 +249,7 @@ describe('Test', function () {
     describe('resolve event', function () {
 
       beforeEach(function () {
+        quail['testCompleteTest'] = function () {};
         _test = new quail.lib.Test('testCompleteTest', {
           'type': 'selector',
           'options': {
@@ -267,6 +273,7 @@ describe('Test', function () {
       var callback;
 
       beforeEach(function () {
+        quail['testCompleteTest'] = function () {};
         _test = new quail.lib.Test('testCompleteTest', {
           'type': 'selector',
           'options': {

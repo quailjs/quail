@@ -99,8 +99,11 @@ describe('SuccessCriteria', function () {
         });
         // Create a few fake tests and add them to the collection.
         var test;
+        var testName;
         for (var i = 0; i < 5; ++i) {
-          test = new quail.lib.Test('fakeTest-' + i, {
+          testName = 'fakeTest-' + i;
+          quail[testName] = function () {};
+          test = new quail.lib.Test(testName, {
             'type': 'selector',
             'options': {
               'selector': 'i.unittest'
@@ -191,6 +194,7 @@ describe('SuccessCriteria', function () {
         });
         // Create a few fake tests and add them to the collection.
         var test;
+        var testName;
         var g = {
           'wcag': {
             '1.3.2': {
@@ -202,9 +206,10 @@ describe('SuccessCriteria', function () {
           }
         }
         for (var i = 0; i < 5; ++i) {
-          test = new quail.lib.Test('fakeTest-' + i, {
+          testName = 'fakeTest-' + i;
+          quail[testName] = function () {};
+          test = new quail.lib.Test(testName, {
             'type': 'custom',
-            'callback': 'tableLayoutMakesSenseLinearized',
             'guidelines': g
           });
           _testCollection.add(test);
@@ -222,6 +227,7 @@ describe('SuccessCriteria', function () {
         });
         // Create a few fake tests and add them to the collection.
         var test;
+        var testName;
         var g = {
         'wcag': {
           '1.1.1': {
@@ -234,9 +240,10 @@ describe('SuccessCriteria', function () {
         }
       }
         for (var i = 0; i < 5; ++i) {
-          test = new quail.lib.Test('fakeTest-' + i, {
+          testName = 'fakeTest-' + i;
+          quail[testName] = function () {};
+          test = new quail.lib.Test(testName, {
             'type': 'custom',
-            'callback': 'tableLayoutMakesSenseLinearized',
             'guidelines': g
           });
           _testCollection.add(test);
