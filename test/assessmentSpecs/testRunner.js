@@ -24,11 +24,17 @@ var execOptions = stdio.getopt({
 });
 
 Q.getUnhandledReasons(function (err) {
-  console.log('Caught unhandled reason: ' + err);
+  console.error('Caught unhandled reason: ' + err);
 });
 
 process.on('uncaughtException', function(err) {
-  console.log('Caught unhandled exception on process: ' + err);
+  if (err.code === 'EADDRINUSE') {
+    console.error('Oops!');
+    console.error('Check ports ' + httpServerFixturesPort + ' and ' + httpServerAssessmentPagesPort + ' for running processes.');
+    console.error('You can check for a process associated with a port like this: `lsof -i :8888`');
+    console.error('Get the PID associated with the process, then stop it with this command: `kill -9 <pid>`, where <pid> is the process number.\n');
+  }
+  shutdownTestRunner(err);
 });
 
 // The root path of the HTTP server at port 8888.
@@ -38,6 +44,7 @@ var logPath = path.join(__dirname, '../..', 'logs');
 var srcPath = path.join(__dirname, '../../', 'src');
 
 // HTTP server for testing fixtures like jQuery and Quail.
+var httpServerFixturesPort = 8888;
 var httpServerFixtures = httpServer
   .createServer({
     root: fixturesRoot,
@@ -45,9 +52,10 @@ var httpServerFixtures = httpServer
       'Access-Control-Allow-Origin': '*'
     }
   })
-  .listen(8888);
+  .listen(httpServerFixturesPort);
 
 // HTTP server for assessment pages.
+var httpServerAssessmentPagesPort = 9999;
 var httpServerAssessmentPages = httpServer
   .createServer({
     root: assessmentPagesRoot,
@@ -55,7 +63,7 @@ var httpServerAssessmentPages = httpServer
       'Access-Control-Allow-Origin': '*'
     }
   })
-  .listen(9999);
+  .listen(httpServerAssessmentPagesPort);
 
 // Set up logging for the Selenium server child process.
 var seleniumOut = fs.openSync(logPath + '/selenium-stdout.log', 'a');
@@ -88,14 +96,17 @@ webdriver = require('webdriverio');
 /**
  * Closes the HTTP servers and exits the process.
  */
-function shutdownTestRunner (failures) {
+function shutdownTestRunner (err) {
   if (httpServerFixtures) {
     httpServerFixtures.close();
   }
   if (httpServerAssessmentPages) {
     httpServerAssessmentPages.close();
   };
-  return process.exit(failures);
+  if (err) {
+    console.error(err);
+  }
+  return process.exit(1);
 }
 
 /**
