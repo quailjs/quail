@@ -238,7 +238,8 @@ quail.lib.Case = (function () {
        */
       function applyAttributes (element) {
         var selector = '';
-        var attributes = ['href', 'type'];
+        // Whitelisted attributes to include in a selector to disambiguate it.
+        var attributes = ['href', 'type', 'title', 'alt'];
         var value;
         if (typeof element === 'undefined' ||
           typeof element.attributes === 'undefined' ||
