@@ -30,14 +30,17 @@ describe('assessment: aMustHaveTitle', function () {
   });
 
   it('should return the proper assessment for the test', function () {
-    expect(quailResults.tests['aMustHaveTitle'].cases).to.deep.equal([{
-      html: "<a href=\"dogs.html\">information about dogs</a>",
-      selector: "a[href=\"dogs.html\"]",
-      status: "failed"
-    },{
-      html: "<a href=\"dogs.html\">dogs</a>",
-      selector: "a[href=\"dogs.html\"]",
-      status: "passed"
-    }]);
+    expect(quailResults.tests['aMustHaveTitle'].cases).to.deep.equal([
+      {
+        "html": "<a href=\"dogs.html\" title=\"dogs information\">dogs</a>",
+        "selector": "a[href=\"dogs.html\"][title=\"dogs information\"]",
+        "status": "passed"
+      },
+      {
+        "html": "<a href=\"dogs.html\">information about dogs</a>",
+        "selector": "a[href=\"dogs.html\"]",
+        "status": "failed"
+      }
+    ]);
   });
 });

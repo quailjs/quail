@@ -227,7 +227,6 @@ aMustContainText:
     - "content"
   callback: "aMustContainText"
 aMustHaveTitle:
-  type: "selector"
   testability: 1
   title:
     en: "All links must have a \"title\" attribute"
@@ -239,8 +238,6 @@ aMustHaveTitle:
   tags:
     - "link"
     - "content"
-  options:
-    selector: "a:not(a[title])"
 aMustNotHaveJavascriptHref:
   type: "selector"
   testability: 1
