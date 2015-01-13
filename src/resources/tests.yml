@@ -301,34 +301,6 @@ aTitleDescribesDestination:
     - "content"
   options:
     selector: "a[title]"
-addressForAuthor:
-  type: "selector"
-  testability: 1
-  title:
-    en: "The document should contain an address for the author"
-    nl: "Het document moet een adres voor de auteur bevatten"
-  description:
-    en: "Documents should provide a valid email address within an <code>address</code> element."
-    nl: "Documenten moeten een e-mailadres bevatten binnen het <code>address</code>-element."
-  guidelines: []
-  tags:
-    - "document"
-  options:
-    selector: "body:not(body:has(address))"
-addressForAuthorMustBeValid:
-  type: "selector"
-  testability: 0.5
-  title:
-    en: "The document should contain a valid email address for the author"
-    nl: "Het document moet een geldig e-mailadres bevatten voor de auteur"
-  description:
-    en: "Documents should provide a valid email address within an <code>address</code> element."
-    nl: "Documenten moeten een geldig e-mailadres bevatten binnen het <code>address</code> element."
-  guidelines: []
-  tags:
-    - "document"
-  options:
-    selector: "address"
 appletContainsTextEquivalent:
   testability: 1
   title:
