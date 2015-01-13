@@ -34,12 +34,12 @@ describe('assessment: aAdjacentWithSameResourceShouldBeCombined', function () {
       {
         "status": 'inapplicable',
         "selector": 'a[href=\"products.html\"]',
-        "html": '<a href=\"products.html\"><img src=\"../assets/go.gif\" alt=\"\">Products page</a>'
+        "html": '<a href=\"products.html\"><img src=\"assets/go.gif\" alt=\"\">Products page</a>'
       },
       {
         "status": 'inapplicable',
         "selector": 'a[href=\"bullets.html\"]',
-        "html": '<a href=\"bullets.html\"><img src=\"../assets/bullet.gif\" alt=\"\">Bullet page</a>'
+        "html": '<a href=\"bullets.html\"><img src=\"assets/bullet.gif\" alt=\"\">Bullet page</a>'
       },
       {
         "status": 'inapplicable',
@@ -54,17 +54,17 @@ describe('assessment: aAdjacentWithSameResourceShouldBeCombined', function () {
       {
         "status": 'passed',
         "selector": 'a[href=\"products.html\"]',
-        "html": '<a href=\"products.html\"><img src=\"../assets/go.gif\" alt=\"\">Products page</a>'
+        "html": '<a href=\"products.html\"><img src=\"assets/go.gif\" alt=\"\">Products page</a>'
       },
       {
         "status": 'failed',
         "selector": 'a[href=\"products.html\"]',
-        "html": '<a href=\"products.html\"><img src=\"../assets/go.gif\" alt=\"\"></a>'
+        "html": '<a href=\"products.html\"><img src=\"assets/go.gif\" alt=\"\"></a>'
       },
       {
         "status": 'failed',
         "selector": 'a[href=\"products.html\"]',
-        "html": '<a href=\"products.html\"><img src=\"../assets/go.gif\" alt=\"Products page\"></a>'
+        "html": '<a href=\"products.html\"><img src=\"assets/go.gif\" alt=\"Products page\"></a>'
       }
     ]);
   });
