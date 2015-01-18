@@ -12,8 +12,6 @@
     "guessLanguage": "https://github.com/richtr/guessLanguage.js.git"
   },
   "devDependencies": {
-    "qunit": "~1.14.0",
-    "qunit-composite": "https://github.com/jquery/qunit-composite.git",
     "guessLanguage": "*"
   }
 }
