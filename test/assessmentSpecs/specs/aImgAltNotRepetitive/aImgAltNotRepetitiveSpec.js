@@ -39,7 +39,7 @@ describe('assessment: aImgAltNotRepetitive', function () {
       {
         "status": 'failed',
         "html": "<img src=\"assets/rex.jpg\" alt=\"page1\">",
-        "selector": ".quail-failed-element img"
+        "selector": ".quail-failed-element img[alt=\"page1\"]"
       }
     ]);
   });
