@@ -196,7 +196,8 @@ function runSpecs (assessments) {
             resolve(client);
           }, function () {
             reject(new Error('Failed to start a webdriverio client.'));
-          });
+          })
+          .fail(shutdownTestRunner);
       }
 
       /**
@@ -224,7 +225,8 @@ function runSpecs (assessments) {
           else {
             assessmentsDeferred.reject(new Error('No assessments to evaluate'));
           }
-        });
+        })
+        .fail(shutdownTestRunner);
       }
 
       /**
@@ -432,7 +434,8 @@ function runSpecs (assessments) {
       // Process the assessment list and then Quail once we have a client.
       clientPromise
         .then(prepareAssessmentList)
-        .then(communicateWithSelenium);
+        .then(communicateWithSelenium)
+        .fail(shutdownTestRunner);
 
       return Q.all([
         // Retrieve a webdriver client.
@@ -441,7 +444,8 @@ function runSpecs (assessments) {
         assessmentsDeferred.promise,
         // Retrieve the results from the Quail evaluation.
         quailDeferred.promise
-      ]);
+      ])
+      .fail(shutdownTestRunner);
     },
     /**
      * Closes the client associated with the test suite.
@@ -463,11 +467,14 @@ function runSpecs (assessments) {
 
 // Load the assessment defintions. The callback will start the evaluation of the
 // specifications.
-assessmentsPromise = Q.Promise(function (resolve) {
+assessmentsPromise = Q.Promise(function (resolve, reject) {
   Q.nfcall(fs.readFile, fixturesRoot + '/tests.json', "utf-8")
     .then(function (assessmentsJSON) {
       resolve(JSON.parse(assessmentsJSON));
-    });
+    }, function (err) {
+      reject(err);
+    })
+    .fail(shutdownTestRunner);
 });
 
 assessmentsPromise.done(runSpecs);
