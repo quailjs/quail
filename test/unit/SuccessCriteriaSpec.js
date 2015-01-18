@@ -257,7 +257,6 @@ describe('SuccessCriteria', function () {
   describe('totals', function () {
     var _testCollection;
     var listener;
-    var scope;
 
     beforeEach(function () {
       _testCollection = new quail.lib.TestCollection();
@@ -265,25 +264,6 @@ describe('SuccessCriteria', function () {
         'name': 'wcag:1.1.1'
       });
       listener = new quail.lib.TestCollection();
-
-      // Create Dom elements for the test scope.
-      var div = document.createElement('div');
-      var html = '';
-      html += '<a href="#" class="fail unittest">fake link</a>';
-      html += '<a href="#" class="pass unittest">fake link</a>';
-      html += '<b class="unittest">fake bold tag</b>';
-      html += '<i class="unittest">fake italic tag</i>';
-      html += '<i class="unittest">fake italic tag</i>';
-      html += '<i class="unittest">fake italic tag</i>';
-      html += '<i class="unittest">fake italic tag</i>';
-      html += '<i class="unittest">fake italic tag</i>';
-      html += '<i class="unittest">fake italic tag</i>';
-      html += '<i class="unittest">fake italic tag</i>';
-      html += '<i class="unittest">fake italic tag</i>';
-      html += '<i class="unittest">fake italic tag</i>';
-      html += '<i class="unittest">fake italic tag</i>';
-      div.innerHTML = html;
-      scope = div;
     });
 
     it('should return the correct test totals', function (done) {
@@ -306,24 +286,29 @@ describe('SuccessCriteria', function () {
           }
         }
       }
+      quail['fakeTest-0'] = function (quail, test, Case) {
+        // Fail 10 times.
+        for (var i = 0, il = 10; i < il; ++i) {
+          test.add(Case({
+            element: $('<span></span>')[0],
+            status: 'failed'
+          }));
+        }
+      };
       // Test that will fail 10 times
       test = new quail.lib.Test('fakeTest-0', {
-        'type': 'selector',
-        'options': {
-          'selector': 'i.unittest'
-        },
-        'guidelines': g,
-        'scope': scope
+        'guidelines': g
       });
       _testCollection.add(test);
       // Test that will pass once
+      quail['fakeTest-1'] = function (quail, test, Case) {
+        test.add(Case({
+          element: $('<span></span>')[0],
+          status: 'passed'
+        }));
+      };
       test = new quail.lib.Test('fakeTest-1', {
-        'type': 'selector',
-        'options': {
-          'selector': 'abbr'
-        },
-        'guidelines': g,
-        'scope': scope
+        'guidelines': g
       });
       _testCollection.add(test);
       _successCriteria.registerTests(_testCollection);
