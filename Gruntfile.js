@@ -87,6 +87,9 @@ module.exports = function(grunt) {
     },
     execute: {
       assessments: {
+        options: {
+          cwd: '.'
+        },
         src: ['test/assessmentSpecs/testrunner.js']
       }
     },
@@ -244,11 +247,11 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'convert',
     'concat',
-    'jshint',
-    'buildTestFilesJson',
-    'buildGuideline',
-    'compressTestsJson',
-    'karma',
+    //'jshint',
+    // 'buildTestFilesJson',
+    // 'buildGuideline',
+    // 'compressTestsJson',
+    // 'karma',
     'execute:assessments'
   ]);
 
