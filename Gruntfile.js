@@ -90,7 +90,7 @@ module.exports = function(grunt) {
         options: {
           cwd: '.'
         },
-        src: ['test/assessmentSpecs/testrunner.js']
+        src: 'test/assessmentSpecs/testrunner.js'
       }
     },
     jshint: {
