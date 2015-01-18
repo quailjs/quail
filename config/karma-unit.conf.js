@@ -15,7 +15,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // Dependencies
-      {pattern: 'bower_components/jquery/jquery.min.js', watched: false},
+      {pattern: 'node_modules/jquery/dist/jquery.min.js', watched: false},
 
       // Fixtures
       {pattern: 'src/js/core.js'},
