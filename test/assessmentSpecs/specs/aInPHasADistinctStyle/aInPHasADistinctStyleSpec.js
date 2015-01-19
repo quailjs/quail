@@ -97,5 +97,7 @@ describe('assessment: aInPHasADistinctStyle', function () {
         "status": "failed"
       }
     ]);
+
+    expect(quailResults.tests['aInPHasADistinctStyle'].cases[0]).to.be.quailCase('inapplicable');
   });
 });
