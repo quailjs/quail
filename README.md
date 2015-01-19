@@ -10,11 +10,27 @@ CLI tools:
 quail --help
 ```
 
-Running assessments unit tests (via Selenium and Karma)
+## Running assessments unit tests (via Selenium and Karma)
+
+### Unit tests
+
+```bash
+karma start ./config/karma-unit.conf.js
+```
 
 ### All assessments
 
+#### Fast in PhantomJS
+
+```bash
 node ./test/assessmentSpecs/testrunner.js
+```
+
+#### In a specific browser
+
+```bash
+_BROWSER=chrome node ./test/assessmentSpecs/testRunner.js
+```
 
 ### A single assessments
 
