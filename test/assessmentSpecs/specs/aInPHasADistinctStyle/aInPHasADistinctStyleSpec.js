@@ -89,12 +89,12 @@ describe('assessment: aInPHasADistinctStyle', function () {
       {
         "html": "<a href=\"/\" class=\"quail-failed-element\">With a link</a>",
         "selector": "a[href=\"/\"].quail-failed-element",
-        "status": "failed"
+        "status": "passed"
       },
       {
         "html": "<a href=\"/\" class=\"quail-failed-element\">With a link</a>",
         "selector": "a[href=\"/\"].quail-failed-element",
-        "status": "failed"
+        "status": "passed"
       }
     ]);
   });
