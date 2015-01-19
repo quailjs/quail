@@ -1,5 +1,3 @@
-console.log(process.env);
-
 module.exports = {
   host: 'ondemand.saucelabs.com',
   port: 80,

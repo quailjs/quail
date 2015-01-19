@@ -191,7 +191,7 @@ function runSpecs (assessments) {
        * Retrieves a webdriver client.
        */
       function retrieveWebdriver (resolve, reject) {
-        console.log(conf);
+        console.log('retrieveWebdriver conf', conf);
         return Q.when(webdriver.remote(conf).init())
           .then(function (client) {
             client.timeoutsAsyncScript(5000);
