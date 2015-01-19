@@ -11,18 +11,24 @@ install:
   - npm install grunt-cli -g
   - npm install
 
+addons:
+  sauce_connect: true
+
 env:
+  global:
+    - secure: MS1TUD1f5k6FU+psyqjUXAm3gJbvDlNG4GDHWNshA6lNfTVeDxnCj1SccC/WgkrJkjE0/9KzLYmlO3sXg6ai6cmckbQknux/w4Mv+GgcZ2u4gdK83+PQfQxeeZT+AC3cW2n371tTsRjda+uj5krzEjurUPbdscBgjIEcIGzyV8Y=
+    - secure: evDYryTZn58xU0AiLt4E+FrVhtqhq7R9vpT7yOXjWyqIN/8GV/0CAFxYq7KO4rhwnCepOYIlR8TrU8dfEtk73WQdKjswkqUwJhRPzhn5d87WVfvydmVM4K9eWyOguYS3a2+epWFsI99c1G5wWSc+hB5SLZi6ioPw85UFHqqailY=
   matrix:
-    # - _BROWSER: "chrome"
-    #   _PLATFORM: "WIN8"
-    #   _VERSION: "34"
-    #   _ENV: "desktop"
-    - _BROWSER: "firefox"
-      _PLATFORM: "WIN8"
-      _VERSION: "29"
+    - _BROWSER: "chrome"
+      _PLATFORM: "Windows_8"
+      _VERSION: "34"
       _ENV: "desktop"
+    # - _BROWSER: "firefox"
+    #   _PLATFORM: "Windows_8"
+    #   _VERSION: "29"
+    #   _ENV: "desktop"
     # - _BROWSER: "internet_explorer"
-    #   _PLATFORM: "WIN8"
+    #   _PLATFORM: "Windows_8"
     #   _VERSION: "10"
     #   _ENV: "desktop"
     # - _BROWSER: "Safari"
@@ -47,5 +53,5 @@ env:
     #   _DEVICENAME: "Samsung_Galaxy_Nexus_Emulator"
     #   _VERSION: "4.3"
     #   _ENV: "mobile"
-    # - _BROWSER: "phantomjs"
-    #   _ENV: "functional"
+    - _BROWSER: "phantomjs"
+      _ENV: "functional"
