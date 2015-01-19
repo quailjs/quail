@@ -16,9 +16,29 @@ env:
   - secure: DkVmhBxHBkRFeVwfAifwjYzPGgj2TO/wX27zchhE9cTaS9kWnmn6W7p/m5Pps6yhZocZhSfSedL31501L94zIGCivM2Svi0mlAbEoXFaBhbOvFEy3dHwLmnzR36hdcdkzXqPxymw0o14lw2DwBGrsldGOnFetlux/7G8+i0NYDk=
   - secure: LNqb5VmAhD1mJsdBbkgc68d8e93QyRLWTlBfX9wksV09a4PJ+UVTncG/L52yDh3jpQ7je2SAzMiauZ/mXiPTveTAhioC4SA6f8NUJX2FhkUUfeMmxfzFMI3KkFr+Q9WPw+iAPxCkdpgxiVdbTDqi6p9NjDYxgaFP71KQy75aq2c=
   matrix:
-  - _BROWSER: chrome
-    _PLATFORM: Windows_8
-    _VERSION: '34'
-    _ENV: desktop
+  - _BROWSER: "chrome"
+    _PLATFORM: "Windows_8"
+    _VERSION: "34"
+    _ENV: "desktop"
+  - _BROWSER: "firefox"
+    _PLATFORM: "Windows_8"
+    _VERSION: "29"
+    _ENV: "desktop"
+  - _BROWSER: "internet_explorer"
+    _PLATFORM: "Windows_8"
+    _VERSION: "10"
+    _ENV: "desktop"
+  - _BROWSER: "Safari"
+    _PLATFORM: "iOS"
+    _APP: "safari"
+    _DEVICENAME: "iPhone_Simulator"
+    _VERSION: "7.1"
+    _ENV: "mobile"
+  - _BROWSER: "Safari"
+    _PLATFORM: "iOS"
+    _APP: "safari"
+    _DEVICENAME: "iPad_Simulator"
+    _VERSION: "7.1"
+    _ENV: "mobile"
   - _BROWSER: phantomjs
     _ENV: functional
