@@ -47,5 +47,5 @@ env:
     #   _DEVICENAME: "Samsung_Galaxy_Nexus_Emulator"
     #   _VERSION: "4.3"
     #   _ENV: "mobile"
-    - _BROWSER: "phantomjs"
-      _ENV: "functional"
+    # - _BROWSER: "phantomjs"
+    #   _ENV: "functional"
