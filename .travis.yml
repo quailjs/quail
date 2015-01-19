@@ -11,8 +11,8 @@ addons:
   sauce_connect: true
 env:
   global:
-  - secure: QU2BjJsjEN/b85zWPJ1VwJPFcfmjdcE+h6/S/h04uQv20nDrViWJTJgot6Q6VMmKh0Z+BB/QocEFLc4XKlHBPdYdVq1xlf6wv7AZ63rWbn1tzw7gy0dqX0rmP/gn+Lev4mKJ0r+cQVyBh/uSaJYKRotMOBPqICdPA+9ncFgyurk=
   - secure: DkVmhBxHBkRFeVwfAifwjYzPGgj2TO/wX27zchhE9cTaS9kWnmn6W7p/m5Pps6yhZocZhSfSedL31501L94zIGCivM2Svi0mlAbEoXFaBhbOvFEy3dHwLmnzR36hdcdkzXqPxymw0o14lw2DwBGrsldGOnFetlux/7G8+i0NYDk=
+  - secure: LNqb5VmAhD1mJsdBbkgc68d8e93QyRLWTlBfX9wksV09a4PJ+UVTncG/L52yDh3jpQ7je2SAzMiauZ/mXiPTveTAhioC4SA6f8NUJX2FhkUUfeMmxfzFMI3KkFr+Q9WPw+iAPxCkdpgxiVdbTDqi6p9NjDYxgaFP71KQy75aq2c=
   matrix:
   - _BROWSER: chrome
     _PLATFORM: Windows_8
