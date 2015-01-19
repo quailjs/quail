@@ -6,7 +6,6 @@ var stdio = require('stdio');
 var fs = require('fs');
 var httpServer = require('http-server');
 var path = require('path');
-var selenium = require('selenium-standalone');
 
 var conf = require('../config/index.js');
 
@@ -19,7 +18,7 @@ global.expect = chai.expect;
 global.assert = chai.assert;
 var glob = require('glob');
 var Q = require('q'); // https://github.com/kriskowal/q
-var mochaRunner, seleniumServer, webdriver, _client, assessmentsPromise;
+var mochaRunner, webdriver, _client, assessmentsPromise;
 
 // Set up test command execution arguments.
 var execOptions = stdio.getopt({
@@ -68,29 +67,31 @@ var httpServerAssessmentPages = httpServer
   })
   .listen(httpServerAssessmentPagesPort);
 
-// Set up logging for the Selenium server child process.
-var seleniumOut = fs.openSync(logPath + '/selenium-stdout.log', 'a');
-var seleniumError = fs.openSync(logPath + '/selenium-stderr.log', 'a');
-var spawnOptions = {
-  stdio: ['pipe', seleniumError, seleniumOut]
-};
-
-// Options to pass to `java -jar selenium-server-standalone-X.XX.X.jar`
-var seleniumArgs = [
-  // '-logLongForm'
-];
-
-// Selenium browser driver instance configuration.
-var conf = {
-  desiredCapabilities: {
-    browserName: 'chrome'
-  },
-  logLevel: 'silent' // verbose | silent | command | data | result
-};
-
-// The Selenium server.
+// The local Selenium server.
 if (!process.env.TRAVIS) {
-  seleniumServer = selenium(spawnOptions, seleniumArgs);
+  var selenium = require('selenium-standalone');
+  // Set up logging for the Selenium server child process.
+  var seleniumOut = fs.openSync(logPath + '/selenium-stdout.log', 'a');
+  var seleniumError = fs.openSync(logPath + '/selenium-stderr.log', 'a');
+  var spawnOptions = {
+    stdio: ['pipe', seleniumError, seleniumOut]
+  };
+
+  // Options to pass to `java -jar selenium-server-standalone-X.XX.X.jar`
+  var seleniumArgs = [
+    // '-logLongForm'
+  ];
+
+  // Selenium browser driver instance configuration.
+  var conf = {
+    desiredCapabilities: {
+      browserName: 'chrome'
+    },
+    logLevel: 'silent' // verbose | silent | command | data | result
+  };
+
+  // Start Selenium locally.
+  selenium(spawnOptions, seleniumArgs);
 }
 // WebdriverIO requires a running selenium servier. This feels like it could easily
 // suffer from race conditions wherein the selenium server isn't started before
