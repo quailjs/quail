@@ -7,6 +7,9 @@ var fs = require('fs');
 var httpServer = require('http-server');
 var path = require('path');
 var selenium = require('selenium-standalone');
+
+var conf = require('../config/index.js');
+
 var Mocha = require('mocha');
 var should = require('should');
 var chai = require('chai');
