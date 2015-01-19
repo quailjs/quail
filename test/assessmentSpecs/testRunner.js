@@ -82,14 +82,6 @@ if (!process.env.TRAVIS) {
     // '-logLongForm'
   ];
 
-  // Selenium browser driver instance configuration.
-  var conf = {
-    desiredCapabilities: {
-      browserName: 'chrome'
-    },
-    logLevel: 'silent' // verbose | silent | command | data | result
-  };
-
   // Start Selenium locally.
   selenium(spawnOptions, seleniumArgs);
 }
@@ -199,6 +191,7 @@ function runSpecs (assessments) {
        * Retrieves a webdriver client.
        */
       function retrieveWebdriver (resolve, reject) {
+        console.log(conf);
         return Q.when(webdriver.remote(conf).init())
           .then(function (client) {
             client.timeoutsAsyncScript(5000);
