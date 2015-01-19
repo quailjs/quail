@@ -1,9 +1,9 @@
 language: node_js
 node_js:
 - 0.1
-# before_script:
-# - curl -O http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
-# - java -jar selenium-server-standalone-2.44.0.jar 2>&1 >/dev/null &
+before_script:
+- curl -O http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-2.44.0.jar
+- java -jar selenium-server-standalone-2.44.0.jar 2>&1 >/dev/null &
 install:
 - npm install grunt-cli -g
 - npm install
