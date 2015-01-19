@@ -86,7 +86,9 @@ var conf = {
 };
 
 // The Selenium server.
-seleniumServer = selenium(spawnOptions, seleniumArgs);
+if (!process.env.TRAVIS) {
+  seleniumServer = selenium(spawnOptions, seleniumArgs);
+}
 // WebdriverIO requires a running selenium servier. This feels like it could easily
 // suffer from race conditions wherein the selenium server isn't started before
 // webdriver is initialized, but I don't see how to get a callback fired from
