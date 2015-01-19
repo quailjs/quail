@@ -13,7 +13,7 @@ install:
 
 env:
   matrix:
-    - _BROWSER: "chrome"
+    - _BROWSER: "firefox"
       _PLATFORM: "WIN8"
       _VERSION: "34"
       _ENV: "desktop"
