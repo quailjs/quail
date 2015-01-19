@@ -16,7 +16,7 @@ global.expect = chai.expect;
 global.assert = chai.assert;
 var glob = require('glob');
 var Q = require('q'); // https://github.com/kriskowal/q
-var mochaRunner, seleniumServer, webdriver, client, assessmentsPromise;
+var mochaRunner, seleniumServer, webdriver, _client, assessmentsPromise;
 
 // Set up test command execution arguments.
 var execOptions = stdio.getopt({
@@ -103,6 +103,9 @@ function shutdownTestRunner (err) {
   if (httpServerAssessmentPages) {
     httpServerAssessmentPages.close();
   };
+  if (_client && _client.end) {
+    _client.end();
+  }
   if (err) {
     console.error(err);
     return process.exit(1);
@@ -193,6 +196,9 @@ function runSpecs (assessments) {
         return Q.when(webdriver.remote(conf).init())
           .then(function (client) {
             client.timeoutsAsyncScript(5000);
+            // Save a reference in this script in case we need to force the client
+            // to close on error.
+            _client = client;
             resolve(client);
           }, function () {
             reject(new Error('Failed to start a webdriverio client.'));
@@ -236,7 +242,9 @@ function runSpecs (assessments) {
        */
       function loadScriptFile (filename, finish) {
         function loadError (error) {
-          finish('Failed to load \'' + filename + '\': ' + error);
+          finish(new Error({
+            message: error
+          }));
         }
 
         function loadSuccess () {
@@ -261,7 +269,9 @@ function runSpecs (assessments) {
       function loadAjaxFile (filename, finish) {
 
         function loadError (error) {
-          finish('Failed to load \'' + filename + '\': ' + error);
+          finish(new Error({
+            message: error
+          }));
         }
 
         function loadSuccess () {
