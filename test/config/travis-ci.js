@@ -1,5 +1,8 @@
 module.exports = {
-  port: 4445,
+  host: 'ondemand.saucelabs.com',
+  port: 80,
+  user: process.env.SAUCE_USERNAME,
+  key: process.env.SAUCE_ACCESS_KEY,
   logLevel: 'command',
   waitforTimeout: 1000,
   desiredCapabilities: {
