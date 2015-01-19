@@ -15,8 +15,9 @@ addons:
   sauce_connect: true
 
 env:
-  global:
+  SAUCE_USERNAME:
     - secure: MS1TUD1f5k6FU+psyqjUXAm3gJbvDlNG4GDHWNshA6lNfTVeDxnCj1SccC/WgkrJkjE0/9KzLYmlO3sXg6ai6cmckbQknux/w4Mv+GgcZ2u4gdK83+PQfQxeeZT+AC3cW2n371tTsRjda+uj5krzEjurUPbdscBgjIEcIGzyV8Y=
+  SAUCE_ACCESS_KEY:
     - secure: evDYryTZn58xU0AiLt4E+FrVhtqhq7R9vpT7yOXjWyqIN/8GV/0CAFxYq7KO4rhwnCepOYIlR8TrU8dfEtk73WQdKjswkqUwJhRPzhn5d87WVfvydmVM4K9eWyOguYS3a2+epWFsI99c1G5wWSc+hB5SLZi6ioPw85UFHqqailY=
   matrix:
     - _BROWSER: "chrome"
