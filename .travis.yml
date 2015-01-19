@@ -15,7 +15,7 @@ env:
   matrix:
     - _BROWSER: "firefox"
       _PLATFORM: "WIN8"
-      _VERSION: "34"
+      _VERSION: "18"
       _ENV: "desktop"
     # - _BROWSER: "firefox"
     #   _PLATFORM: "Windows_8"
