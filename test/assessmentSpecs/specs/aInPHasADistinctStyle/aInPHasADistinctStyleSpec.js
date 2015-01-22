@@ -98,6 +98,6 @@ describe('assessment: aInPHasADistinctStyle', function () {
       }
     ]);
 
-    expect(quailResults.tests['aInPHasADistinctStyle'].cases[0]).to.be.quailCase('inapplicable');
+    expect(quailResults.tests['aInPHasADistinctStyle'].cases[0]).to.have.quailStatus('inapplicable');
   });
 });
