@@ -30,17 +30,8 @@ describe('assessment: aMustHaveTitle', function () {
   });
 
   it('should return the proper assessment for the test', function () {
-    expect(quailResults.tests['aMustHaveTitle'].cases).to.deep.equal([
-      {
-        "html": "<a href=\"dogs.html\" title=\"dogs information\">dogs</a>",
-        "selector": "a[href=\"dogs.html\"][title=\"dogs information\"]",
-        "status": "passed"
-      },
-      {
-        "html": "<a href=\"dogs.html\">information about dogs</a>",
-        "selector": "a[href=\"dogs.html\"]",
-        "status": "failed"
-      }
-    ]);
+    var cases = quailResults.tests['aMustHaveTitle'].cases;
+    expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-2').to.have.quailStatus('failed');
   });
 });
