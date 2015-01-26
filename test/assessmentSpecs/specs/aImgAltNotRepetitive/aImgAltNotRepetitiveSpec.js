@@ -30,17 +30,8 @@ describe('assessment: aImgAltNotRepetitive', function () {
   });
 
   it('should return the proper assessment for the test', function () {
-    expect(quailResults.tests['aImgAltNotRepetitive'].cases).to.deep.equal([
-      {
-        "status": 'passed',
-        "html": "<img src=\"assets/rex.jpg\" alt=\"\">",
-        "selector": "img"
-      },
-      {
-        "status": 'failed',
-        "html": "<img src=\"assets/rex.jpg\" alt=\"page1\">",
-        "selector": ".quail-failed-element img[alt=\"page1\"]"
-      }
-    ]);
+    var cases = quailResults.tests['aImgAltNotRepetitive'].cases;
+    expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-2').to.have.quailStatus('failed');
   });
 });
