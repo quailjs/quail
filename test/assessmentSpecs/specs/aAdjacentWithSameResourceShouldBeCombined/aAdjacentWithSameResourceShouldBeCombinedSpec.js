@@ -30,42 +30,13 @@ describe('assessment: aAdjacentWithSameResourceShouldBeCombined', function () {
   });
 
   it('should return the proper assessment for the test', function () {
-    expect(quailResults.tests['aAdjacentWithSameResourceShouldBeCombined'].cases).to.deep.equal([
-      {
-        "status": 'inapplicable',
-        "selector": 'a[href=\"products.html\"]',
-        "html": '<a href=\"products.html\"><img src=\"assets/go.gif\" alt=\"\">Products page</a>'
-      },
-      {
-        "status": 'inapplicable',
-        "selector": 'a[href=\"bullets.html\"]',
-        "html": '<a href=\"bullets.html\"><img src=\"assets/bullet.gif\" alt=\"\">Bullet page</a>'
-      },
-      {
-        "status": 'inapplicable',
-        "selector": 'a[href=\"products.html\"]',
-        "html": '<a href=\"products.html\">Products page</a>'
-      },
-      {
-        "status": 'inapplicable',
-        "selector": 'a[href=\"products.html\"]',
-        "html": '<a href=\"products.html\">Products page</a>'
-      },
-      {
-        "status": 'passed',
-        "selector": 'a[href=\"products.html\"]',
-        "html": '<a href=\"products.html\"><img src=\"assets/go.gif\" alt=\"\">Products page</a>'
-      },
-      {
-        "status": 'failed',
-        "selector": 'a[href=\"products.html\"]',
-        "html": '<a href=\"products.html\"><img src=\"assets/go.gif\" alt=\"\"></a>'
-      },
-      {
-        "status": 'failed',
-        "selector": 'a[href=\"products.html\"]',
-        "html": '<a href=\"products.html\"><img src=\"assets/go.gif\" alt=\"Products page\"></a>'
-      }
-    ]);
+    var cases = quailResults.tests['aAdjacentWithSameResourceShouldBeCombined'].cases;
+    expect(cases).quailGetById('assert-1').to.have.quailStatus('inapplicable');
+    expect(cases).quailGetById('assert-2').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-3').to.have.quailStatus('inapplicable');
+    expect(cases).quailGetById('assert-4').to.have.quailStatus('failed');
+    expect(cases).quailGetById('assert-5').to.have.quailStatus('inapplicable');
+    expect(cases).quailGetById('assert-6').to.have.quailStatus('failed');
+    expect(cases).quailGetById('assert-7').to.have.quailStatus('inapplicable');
   });
 });
