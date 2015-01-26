@@ -6,6 +6,8 @@ var stdio = require('stdio');
 var fs = require('fs');
 var httpServer = require('http-server');
 var path = require('path');
+var glob = require('glob');
+var Q = require('q'); // https://github.com/kriskowal/q
 
 var conf = require('../config/index.js');
 
@@ -18,8 +20,7 @@ var chaiQuail = require('../../lib/customAssertions/chai-quail');
 chai.use(chaiQuail);
 global.expect = chai.expect;
 global.assert = chai.assert;
-var glob = require('glob');
-var Q = require('q'); // https://github.com/kriskowal/q
+
 var mochaRunner, webdriver, _client, assessmentsPromise;
 
 // Set up test command execution arguments.

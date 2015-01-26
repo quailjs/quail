@@ -30,74 +30,23 @@ describe('assessment: aInPHasADistinctStyle', function () {
   });
 
   it('should return the proper assessment for the test', function () {
-    expect(quailResults.tests['aInPHasADistinctStyle'].cases).to.deep.equal([
-      {
-        "html": "<a href=\"\">A link</a>",
-        "selector": "a",
-        "status": "inapplicable"
-      },
-      {
-        "html": "<a href=\"/\" style=\"text-decoration:underline\">With a link</a>",
-        "selector": "a[href=\"/\"]",
-        "status": "passed"
-      },
-      {
-        "html": "<a href=\"/\" style=\"display:block; margin:1em;\"> With a link</a>",
-        "selector": "a[href=\"/\"]",
-        "status": "passed"
-      },
-      {
-        "html": "<a href=\"/\" style=\"position:absolute; top:-1em; right:0;\">With a link</a>",
-        "selector": "a[href=\"/\"]",
-        "status": "passed"
-      },
-      {
-        "html": "<a href=\"/\" style=\"border-bottom:dashed 1px red\">With a link</a>",
-        "selector": "a[href=\"/\"]",
-        "status": "passed"
-      },
-      {
-        "html": "<a href=\"/\">With a link <img src=\"\" alt=\"\"></a>",
-        "selector": "a[href=\"/\"]",
-        "status": "passed"
-      },
-      {
-        "html": "<a href=\"/\" style=\"text-decoration:underline\">With a link</a>",
-        "selector": "a[href=\"/\"]",
-        "status": "passed"
-      },
-      {
-        "html": "<a href=\"/\">With a link</a>",
-        "selector": "a[href=\"/\"]",
-        "status": "passed"
-      },
-      {
-        "html": "<a href=\"/\">With a link</a>",
-        "selector": "a[href=\"/\"]",
-        "status": "passed"
-      },
-      {
-        "html": "<a href=\"/\">With a link</a>",
-        "selector": "a[href=\"/\"]",
-        "status": "passed"
-      },
-      {
-        "html": "<a href=\"/\">With a link</a>",
-        "selector": "a[href=\"/\"]",
-        "status": "passed"
-      },
-      {
-        "html": "<a href=\"/\" class=\"quail-failed-element\">With a link</a>",
-        "selector": "a[href=\"/\"].quail-failed-element",
-        "status": "failed"
-      },
-      {
-        "html": "<a href=\"/\" class=\"quail-failed-element\">With a link</a>",
-        "selector": "a[href=\"/\"].quail-failed-element",
-        "status": "failed"
-      }
-    ]);
-
-    expect(quailResults.tests['aInPHasADistinctStyle'].cases[0]).to.have.quailStatus('inapplicable');
+    var cases = quailResults.tests['aInPHasADistinctStyle'].cases;
+    expect(cases).quailGetById('assert-1').to.have.quailStatus('inapplicable');
+    // expect(cases).quailGetById('assert-2').to.have.quailStatus('passed');
+    // expect(cases).quailGetById('assert-3').to.have.quailStatus('passed');
+    // expect(cases).quailGetById('assert-4').to.have.quailStatus('passed');
+    // expect(cases).quailGetById('assert-5').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-6').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-7').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-8').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-9').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-10').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-11').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-12').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-13').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-14').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-15').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-16').to.have.quailStatus('failed');
+    expect(cases).quailGetById('assert-17').to.have.quailStatus('failed');
   });
 });
