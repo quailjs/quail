@@ -17,3 +17,4 @@ test/accessibility-tests/_tests.json
 test/core/_tests.json
 analyses/*
 karma_html/*
+tmp
