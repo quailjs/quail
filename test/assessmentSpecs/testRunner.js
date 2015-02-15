@@ -4,6 +4,7 @@
 
 var stdio = require('stdio');
 var fs = require('fs');
+var http = require('http');
 var httpServer = require('http-server');
 var path = require('path');
 var glob = require('glob');
@@ -36,13 +37,13 @@ process.on('uncaughtException', function(err) {
   if (err.code === 'EADDRINUSE') {
     console.error('Oops!');
     console.error('Check ports ' + httpServerFixturesPort + ' and ' + httpServerAssessmentPagesPort + ' for running processes.');
-    console.error('You can check for a process associated with a port like this: `lsof -i :8888`');
+    console.error('You can check for a process associated with a port like this: `lsof -i :' + httpServerFixturesPort + '`');
     console.error('Get the PID associated with the process, then stop it with this command: `kill -9 <pid>`, where <pid> is the process number.\n');
   }
   shutdownTestRunner(err);
 });
 
-// The root path of the HTTP server at port 8888.
+// The root path of the HTTP fixtures server.
 var fixturesRoot = path.join(__dirname, '../..', 'dist');
 var assessmentPagesRoot = path.join(__dirname, 'specs');
 var logPath = path.join(__dirname, '../..', 'logs');
@@ -50,14 +51,52 @@ var srcPath = path.join(__dirname, '../../', 'src');
 
 // HTTP server for testing fixtures like jQuery and Quail.
 var httpServerFixturesPort = 8888;
-var httpServerFixtures = httpServer
-  .createServer({
-    root: fixturesRoot,
-    headers: {
-      'Access-Control-Allow-Origin': '*'
+
+/**
+ * Load jQuery and Quail from different places in the repo.
+ */
+function serveScriptResource (response, resourcePath) {
+  var resource;
+
+  // jQuery
+  if (resourcePath.indexOf('jquery.min.js') > -1) {
+    resource = path.join(__dirname, '../..', 'node_modules/jquery/dist', resourcePath);
+  }
+  else if (resourcePath.indexOf('quail.jquery') > -1) {
+    resource = path.join(__dirname, '../..', 'dist', resourcePath);
+  }
+  else {
+    resource = resourcePath;
+  }
+
+  fs.readFile(resource, 'utf-8', function (err, source) {
+    if (err) {
+      response.writeHead(404, {'Content-Type': 'text/html'});
+      response.end('<!DOCTYPE html>\n<html><body><p>The resource at `' + resource + '` does not exist.</p></body></html>');
     }
-  })
-  .listen(httpServerFixturesPort);
+    else {
+      response.writeHead(200, {'Content-Type': 'application/javascript'});
+      response.end(source);
+    }
+  });
+}
+
+// Build a lightweight http server to serve assets for running Quail.
+// Using http instead of httpServer gives us more opportunity to debug requests.
+var httpServerFixtures = http.createServer(function (request, response) {
+  var accepts = request.headers.accept;
+  var url = request.url;
+  var assetPath;
+  if (url.indexOf('.js') > -1 || url.indexOf('.map') > -1) {
+    serveScriptResource(response, url);
+  }
+  // 406
+  else {
+    response.writeHead(406, {'Content-Type': 'text/html'});
+    response.end('<!DOCTYPE html>\n<html><body><p>The requested resource is only capable of generating content not acceptable according to the Accept headers sent in the request.</p></body></html>');
+  }
+})
+.listen(httpServerFixturesPort);
 
 // HTTP server for assessment pages.
 var httpServerAssessmentPagesPort = 9999;
@@ -242,7 +281,7 @@ function runSpecs (assessments) {
        *
        * This function is run in the browser context.
        */
-      function loadScriptFile (filename, finish) {
+      function loadScriptFile (filename, httpServerFixturesPort, finish) {
         function loadError (error) {
           finish(new Error({
             message: error
@@ -257,7 +296,7 @@ function runSpecs (assessments) {
         // Append scripts.
         var s = document.createElement('script');
         s.type = 'text/javascript';
-        s.src = 'http://localhost:8888/' + filename;
+        s.src = 'http://localhost:' + httpServerFixturesPort + '/' + filename;
         s.onerror = loadError;
         s.onload = loadSuccess;
         if (head) head.appendChild(s);
@@ -268,7 +307,7 @@ function runSpecs (assessments) {
        *
        * This function is run in the browser context.
        */
-      function loadAjaxFile (filename, finish) {
+      function loadAjaxFile (filename, httpServerFixturesPort, finish) {
 
         function loadError (error) {
           finish(new Error({
@@ -286,7 +325,7 @@ function runSpecs (assessments) {
         }
 
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", 'http://localhost:8888/' + filename, true);
+        xhr.open("GET", 'http://localhost:' + httpServerFixturesPort + '/' + filename, true);
         xhr.onload = loadSuccess;
         xhr.onerror = loadError;
         xhr.send();
@@ -368,12 +407,12 @@ function runSpecs (assessments) {
         var fixtures = [
           // Load jQuery into the page.
           {
-            args: ['jquery.min.js'],
+            args: ['jquery.min.js', httpServerFixturesPort],
             evaluate: loadScriptFile
           },
           // Load the Quail script into the page.
           {
-            args: ['quail.jquery.js'],
+            args: ['quail.jquery.js', httpServerFixturesPort],
             evaluate: loadScriptFile
           },
           // Evaluate the HTML with Quail.
