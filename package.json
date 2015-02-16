@@ -23,6 +23,7 @@
     "deepmerge": "^0.2.7",
     "http-server": "0.7.3",
     "jquery": ">1.4.2",
+    "node-fs-extra": "^0.8.1",
     "opener": "^1.4.0",
     "phantomjs": "^1.9.10",
     "q": "^1.1.2",
