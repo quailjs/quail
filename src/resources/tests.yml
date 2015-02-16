@@ -3655,7 +3655,8 @@ objectWithClassIDHasNoText:
   options:
     selector: "object[classid]:not(object[classid]:empty)"
 pNotUsedAsHeader:
-  testability: 1
+  type: "custom"
+  testability: 0.5
   title:
     en: "Paragraphs must not be used for headers"
     nl: "Alinea's worden niet gebruikt als header"
