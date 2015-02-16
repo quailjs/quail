@@ -4,6 +4,7 @@ var path = require('path');
 var program = require('commander');
 var quailEvaluate = require('../lib/quailEvaluate');
 var quailDevelop = require('../lib/quailDevelop');
+var quailGenerate = require('../lib/quailGenerate');
 
 // `quail` command.
 program
@@ -46,6 +47,20 @@ program
     console.log('    $ quail develop aMustHaveTitle -p 4444');
     console.log();
   });
+
+program
+  .command('generate <assessmentName>')
+  .description('Generate assessment test files for the named assessment.')
+  .alias('gen')
+  .action(function (assessmentName, cmd) {
+    quailGenerate.call(this, assessmentName, cmd);
+  })
+  .on('--help', function () {
+    console.log('  Example:');
+    console.log();
+    console.log('    $ quail generate aMustHaveTitle');
+    console.log();
+  })
 
 program.parse(process.argv);
 
