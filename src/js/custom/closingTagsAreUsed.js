@@ -20,14 +20,29 @@ quail.closingTagsAreUsed = function(quail, test, Case) {
       // transformed too drastically from the parsed DOM.
       var node = $(selector, test.get('$scope')).get(0);
       if (!node) {
-        node = element.raw || selector;
+        node = element.raw;
       }
-
-      if (typeof element.closingTag === 'undefined' &&
-            !element.closingTag &&
+      // The html-parser library somtimes returns an Element Node and sometimes
+      // a string. Normalize this for the Cases.
+      var elementRepresentation;
+      if (typeof node === 'string') {
+        if (node[0] === '<') {
+          elementRepresentation = node;
+        }
+        else {
+          elementRepresentation = '<' + node + '>';
+        }
+      }
+      else {
+        elementRepresentation = node;
+      }
+      // If this element does not have a closing tag and it is not a self-closing
+      // tag, then it fails.
+      if ((typeof element.closingTag === 'undefined' || !element.closingTag) &&
             quail.selfClosingTags.indexOf(element.name.toLowerCase()) === -1) {
         test.add(Case({
-          element: node,
+          element: elementRepresentation,
+          selector: selector,
           // Only attempt to get an expectation for the testrunner if the node
           // is a DOM node.
           expected: (typeof node === 'object') && (node.nodeType === 1) && $(node).closest('.quail-test').data('expected') || null,
@@ -36,7 +51,8 @@ quail.closingTagsAreUsed = function(quail, test, Case) {
       }
       else {
         test.add(Case({
-          element: node,
+          element: elementRepresentation,
+          selector: selector,
           // Only attempt to get an expectation for the testrunner if the node
           // is a DOM node.
           expected: (typeof node === 'object') && (node.nodeType === 1) && $(node).closest('.quail-test').data('expected') || null,
