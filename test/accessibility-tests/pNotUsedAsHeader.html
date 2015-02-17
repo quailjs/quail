@@ -4,6 +4,14 @@
     <title>pNotUsedAsHeader</title>
 </head>
 <body>
+    <style type="text/css">
+    blockquote.styled
+    {
+        font-style: italic;
+        font-family: Georgia, Times, "Times New Roman", serif;
+    }
+    </style>
+
     <div class="quail-test" data-expected="fail" data-accessibility-test="pNotUsedAsHeader">
         <p class="quail-failed-element"> <b>Looks like a header</b>
         </p>
@@ -53,6 +61,28 @@
     <div class="quail-test" data-expected="pass" data-accessibility-test="pNotUsedAsHeader">
 
         <p>This is a regular paragraph</p>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="pNotUsedAsHeader">
+        <p>Foo.</p>
+        <blockquote class="styled">
+            <p>Bar.</p>
+        </blockquote>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="pNotUsedAsHeader">
+        <table style="font-size:12.3199996948242px; line-height:1.5em;">
+            <tbody>
+                <tr>
+                    <td>
+                        <p>asd</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <strong>foo</strong> - bar baz bom.
+        </p>
     </div>
 
     <script src="../quail-testrunner.js"></script>
