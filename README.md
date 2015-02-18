@@ -113,7 +113,7 @@ Documentation
 
 Contributing
 ------------
-Pull requests should be made against the **dev** branch, as master is only for tracking releases.
+Pull requests should be made against the **master** branch.
 
 Credits
 -------
