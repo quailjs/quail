@@ -97,11 +97,14 @@ var quail = {
   run : function (options) {
     function buildTests (quail, assessmentList, options) {
       // Create test configuration objects to appease the core app for now.
-      for (var i = 0, il = assessmentList.length; i < il; ++i) {
-        quail.tests.set(assessmentList[i], {
-          type: 'custom',
-          scope: options.html || null
-        });
+      var name;
+      for (name in assessmentList) {
+        if (assessmentList.hasOwnProperty(name)) {
+          quail.tests.set(name, {
+            type: 'custom',
+            scope: options.html || null
+          });
+        }
       }
     }
 

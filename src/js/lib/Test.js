@@ -108,14 +108,23 @@ quail.lib.Test = (function () {
       // completing in the off chance that no Cases are created.
       this.testComplete(false);
 
-      try {
-        callback.call(test, quail, test, quail.lib.Case, options);
-      }
-      catch (e) {
-        if (window.console && window.console.error) {
-          window.console.error(name + ' does not have an associated test callback on the Quail object.');
-          window.console.error(e);
+      // Record the time the test started for performance monitoring.
+      var start = new Date();
+      this.set('startTime', start);
+
+      if (callback && typeof callback.call === 'function') {
+        try {
+          callback.call(test, quail, test, quail.lib.Case, options);
         }
+        catch (e) {
+          if (window.console && window.console.error) {
+            window.console.error(name + ' does not have an associated test callback on the Quail object.');
+            window.console.error(e);
+          }
+        }
+      }
+      else {
+        window.console.log('Skipping ' + name + ' because it does not have an associated method on Quail');
       }
 
       // Invoke the complete dispatcher to prevent the test from never
@@ -338,6 +347,10 @@ quail.lib.Test = (function () {
     });
     // If all the Cases have been evaluated, dispatch the event.
     if (complete) {
+      // Set the end time for performance monitoring.
+      var end = new Date();
+      this.set('endTime', end);
+      // Null out the testComplete callback on this test.
       this.testComplete = null;
       // @todo, this should be set with the set method and a silent flag.
       this.attributes.complete = true;
