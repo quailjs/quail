@@ -1,9 +1,43 @@
 #!/usr/bin/env node
 
+var fs = require('fs');
 var program = require('../node_modules/commander/');
 var shell = require('../node_modules/shelljs/');
 var path = require('path');
 // require('../vendor/node_modules/phantomjs');
+
+/**
+ *
+ */
+function validateOutputDirectory(val) {
+  var stat;
+  // If it is a directory, then use it.
+  try {
+    stat = fs.lstatSync(val);
+    if (stat.isDirectory()) {
+      debugger;
+      return val;
+    }
+  }
+  catch (error) {
+    // Nothing to do here.
+  }
+  // Otherwise see if it's relative to the project. Make an assumption that paths
+  // are relative to the ROOT of the project, hence the '..'.
+  try {
+    stat = fs.lstatSync(path.join(__dirname, '..', val));
+    if (stat.isDirectory()) {
+      debugger;
+      return path.join(__dirname, '..', val);
+    }
+  }
+  catch (error) {
+    // Nothing to do here.
+  }
+  // If we got this far, then the val is not an existing directory.
+  console.error('`' + val + '` is not an existing absolute or relative directory path.');
+  process.exit(1);
+}
 
 // phantomjs phantomquail.js http://quailpages/forms/simple-form.html && jsonpp results.js | less
 
@@ -13,9 +47,10 @@ shell.cd('..');
 var pwd = shell.pwd();
 
 program
-  .version('0.0.1')
+  .version('0.0.2')
   .option('-u, --url [url]', 'A [url] to test', null)
   .option('-R, --runner [runnerScript]', 'A [runnerScript] that will run the evaluation. Currently there exists \'default\' and \'wcag2\'.', 'default')
+  .option('-o, --output [outputDir]', 'An [outputDir] to write the analysis results to', validateOutputDirectory)
   .parse(process.argv);
 
 var runnerScript;
@@ -32,9 +67,12 @@ else {
   runnerScript = runners['default'];
 }
 
-var command = [phantomjsExec, runnerScript, program.url, pwd].join(' ');
+var command = [phantomjsExec, runnerScript, program.url, pwd, program.output].join(' ');
+console.log(command);
+
 shell.exec(command, {
   async:true
-}, function (code, output) {
+}, function (code) {
   shell.echo('code: ' + code);
 });
+
