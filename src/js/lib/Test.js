@@ -108,6 +108,10 @@ quail.lib.Test = (function () {
       // completing in the off chance that no Cases are created.
       this.testComplete(false);
 
+      // Record the time the test started for performance monitoring.
+      var start = new Date();
+      this.set('startTime', start);
+
       if (type === 'custom') {
         if (typeof callback === 'function') {
           try {
@@ -366,7 +370,9 @@ quail.lib.Test = (function () {
       }
     });
     // If all the Cases have been evaluated, dispatch the event.
-    if (complete) {
+    if (complete) {// Set the end time for performance monitoring.
+      var end = new Date();
+      this.set('endTime', end);
       this.testComplete = null;
       // @todo, this should be set with the set method and a silent flag.
       this.attributes.complete = true;

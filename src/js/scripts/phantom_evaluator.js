@@ -183,6 +183,27 @@ page.onCallback = function(action, data) {
       console.log('Cases found: ' + (output.stats && output.stats.cases || 0));
       console.log('Results were written to ' + resultsFile);
       var out = JSON.stringify(output);
+      // Performance data.
+      var descSort = function (a, b) {
+        return b.value - a.value;
+      };
+      // Sort the data.
+      output.performance.totalTime.sort(descSort);
+      output.performance.timePerCase.sort(descSort);
+      output.performance.numberOfCases.sort(descSort);
+      console.log('Elapsed time for tests:');
+      for (var i = 0, il = output.performance.totalTime.length; i < il; ++i) {
+        console.log('elapsed time:\t' + (output.performance.totalTime[i].value / 1000) + 's \t' + output.performance.totalTime[i].key);
+      }
+      console.log('Time per case by test:');
+      for (var i = 0, il = output.performance.timePerCase.length; i < il; ++i) {
+        console.log('elapsed time:\t' + (output.performance.timePerCase[i].value / 1000) + 's \t' + output.performance.timePerCase[i].key);
+      }
+      console.log('Total cases by test:');
+      for (var i = 0, il = output.performance.numberOfCases.length; i < il; ++i) {
+        console.log('elapsed time:\t' + (output.performance.numberOfCases[i].value) + ' \t' + output.performance.numberOfCases[i].key);
+      }
+
       stream.write(out);
       // Also write the output to the console.
       // console.log(out);
@@ -227,6 +248,11 @@ page.onLoadFinished = function (status) {
           stats: {
             tests: 0,
             cases: 0
+          },
+          performance: {
+            totalTime: [],
+            timePerCase: [],
+            numberOfCases: []
           }
         };
         jQuery('html').quail({
@@ -256,10 +282,26 @@ page.onLoadFinished = function (status) {
             output.stats.cases++;
           },
           // Called when all the Cases in a Test are resolved.
-          testComplete: function () {
+          testComplete: function (event, test) {
+            var name = test.get('name');
             // console.log('Finished testing ' + test.get('name') + '.');
             // Increment the tests count.
             output.stats.tests++;
+            // Record the elapsed time for the test.
+            output.performance.totalTime.push({
+              key: name,
+              value: test.get('endTime') - test.get('startTime')
+            });
+            // Record time per case.
+            output.performance.timePerCase.push({
+              key: name,
+              value: (test.get('endTime') - test.get('startTime')) / test.length
+            });
+            // Record number of cases.
+            output.performance.numberOfCases.push({
+              key: name,
+              value: test.length
+            });
           },
           // Called when all the Tests in a TestCollection are completed.
           testCollectionComplete: function () {
