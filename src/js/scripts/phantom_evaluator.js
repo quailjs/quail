@@ -193,15 +193,15 @@ page.onCallback = function(action, data) {
       output.performance.numberOfCases.sort(descSort);
       console.log('Elapsed time for tests:');
       for (var i = 0, il = output.performance.totalTime.length; i < il; ++i) {
-        console.log('elapsed time:\t' + (output.performance.totalTime[i].value / 1000) + 's \t' + output.performance.totalTime[i].key);
+        console.log('elapsed time:\t' + String(output.performance.totalTime[i].value / 1000).slice(0, 5) + 's \t' + output.performance.totalTime[i].key);
       }
       console.log('Time per case by test:');
       for (var i = 0, il = output.performance.timePerCase.length; i < il; ++i) {
-        console.log('elapsed time:\t' + (output.performance.timePerCase[i].value / 1000) + 's \t' + output.performance.timePerCase[i].key);
+        console.log('elapsed time:\t' + String(output.performance.timePerCase[i].value / 1000).slice(0, 5) + 's \t' + output.performance.timePerCase[i].key);
       }
       console.log('Total cases by test:');
       for (var i = 0, il = output.performance.numberOfCases.length; i < il; ++i) {
-        console.log('elapsed time:\t' + (output.performance.numberOfCases[i].value) + ' \t' + output.performance.numberOfCases[i].key);
+        console.log('cases:\t' + (output.performance.numberOfCases[i].value) + ' \t' + output.performance.numberOfCases[i].key);
       }
 
       stream.write(out);
@@ -290,12 +290,12 @@ page.onLoadFinished = function (status) {
             // Record the elapsed time for the test.
             output.performance.totalTime.push({
               key: name,
-              value: test.get('endTime') - test.get('startTime')
+              value: (test.get('endTime') - test.get('startTime') - 400)
             });
             // Record time per case.
             output.performance.timePerCase.push({
               key: name,
-              value: (test.get('endTime') - test.get('startTime')) / test.length
+              value: (test.get('endTime') - test.get('startTime') - 400) / test.length
             });
             // Record number of cases.
             output.performance.numberOfCases.push({
