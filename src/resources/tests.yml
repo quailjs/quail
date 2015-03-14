@@ -2485,7 +2485,7 @@ imgNonDecorativeHasAlt:
     en: "Any non-decorative images should have a non-empty \"alt\" attribute"
     nl: "Elke niet-decoratieve afbeelding moet een gevuld \"alt\"-attribuut hebben"
   description:
-    en: "Any image that is not used decorativey or which is purely for layout purposes cannot have an empty \"alt\" attribute."
+    en: "Any image that is not used decoratively or which is purely for layout purposes cannot have an empty \"alt\" attribute."
     nl: "Elke afbeelding die niet ter decoratie is of voor lay-out doeleinden wordt gebruikt, moet een gevuld \"alt\"-attribuut hebben."
   guidelines:
     508:
