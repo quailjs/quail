@@ -23,7 +23,7 @@ describe('assessment: pNotUsedAsHeader', function () {
 
   it('should return the correct stats', function () {
     expect(quailResults.stats.tests).to.equal(1);
-    expect(quailResults.stats.cases).to.equal(15);
+    expect(quailResults.stats.cases).to.equal(16);
   });
 
   it('should have correct key under the test results', function () {
