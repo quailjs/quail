@@ -3,7 +3,6 @@
   "version": "2.1.0",
   "main": "dist/*",
   "ignore": [
-    ".jshintrc",
     "**/*.txt"
   ],
   "dependencies": {
