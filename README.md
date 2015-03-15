@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/quailjs/quail.png?branch=master)](http://travis-ci.org/kevee/quail)
+[![Build Status](https://secure.travis-ci.org/quailjs/quail.png?branch=master)](http://travis-ci.org/quailjs/quail)
 
 # Development
 
@@ -55,7 +55,7 @@ You can include Quail into your project using Bower by using the command `bower 
 
 Building Quail
 --------------
-If you are not familiar with using grunt or just want to download a pre-built version of quail, [visit the releases page for the project](https://github.com/kevee/quail/releases).
+If you are not familiar with using grunt or just want to download a pre-built version of quail, [visit the releases page for the project](https://github.com/quailjs/quail/releases).
 
 If you are checking out quail from a repository, you will notice there is no `/dist` directory, quail must be built using [Grunt](http://gruntjs.com/). Use the following steps to get started (this is assuming you already have [Node](http://nodejs.org/) installed on your machine):
 

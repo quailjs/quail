@@ -3,17 +3,17 @@
   "title": "Quail",
   "description": "Accessibility testing in the browser and on the server.",
   "version": "2.1.0",
-  "homepage": "https://github.com/kevee/quail",
+  "homepage": "https://github.com/quailjs/quail",
   "author": {
     "name": "Kevin Miller",
     "email": "kemiller@csumb.edu"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/kevee/quail.git"
+    "url": "git://github.com/quailjs/quail.git"
   },
   "bugs": {
-    "url": "https://github.com/kevee/quail/issues"
+    "url": "https://github.com/quailjs/quail/issues"
   },
   "licenses": [
     {

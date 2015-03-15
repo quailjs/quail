@@ -195,7 +195,7 @@ var quail = {
   },
 
   /**
-   * Read more about this function here: https://github.com/kevee/quail/wiki/Layout-versus-data-tables
+   * Read more about this function here: https://github.com/quailjs/quail/wiki/Layout-versus-data-tables
    */
   isDataTable : function(table) {
     // If there are less than three rows, why do a table?
