@@ -2,6 +2,10 @@
 
 # Development
 
+## Notice for developers working in the 2.2.x version.
+
+Please base your changes on the [```master-2.2.x```](https://github.com/quailjs/quail/tree/master-2.2.x) branch.
+
 ## Commands you can run as a developer:
 
 CLI tools:
