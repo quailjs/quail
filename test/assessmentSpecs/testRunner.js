@@ -401,7 +401,6 @@ function runSpecs (assessments) {
        */
       function communicateWithSelenium (assets) {
         var client = assets.client;
-        var assessments = Object.keys(assets.assessments);
 
         // Load Quail fixtures into the page.
         var fixtures = [
@@ -417,7 +416,7 @@ function runSpecs (assessments) {
           },
           // Evaluate the HTML with Quail.
           {
-            args: [assessments],
+            args: assets.assessments,
             evaluate: evaluateWithQuail,
             respond: respondToQuailEvaluation
           }
