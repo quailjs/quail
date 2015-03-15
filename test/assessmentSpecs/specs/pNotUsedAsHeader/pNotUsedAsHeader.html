@@ -2,70 +2,37 @@
 <html>
   <head>
     <title>pNotUsedAsHeader</title>
-    <style type="text/css">
-      blockquote.styled {
-        font-style: italic;
-        font-family: Georgia, Times, "Times New Roman", serif;
-      }
-    </style>
   </head>
   <body>
+    <p id="paragraph-with-strong"><strong>Headline: foo bar.</strong></p>
+
+    <p id="paragraph-with-b"> <b>Looks like a header</b></p>
+
+    <p id="paragraph-with-i"> <i>Looks like a header</i></p>
+
+    <p id="paragraph-with-u"> <u>Looks like a header</u></p>
+
+    <p id="paragraph-with-font"> <font>Looks like a header</font></p>
+
+    <p id="paragraph-with-em"> <em>Looks like a header</em></p>
+
+    <p id="paragraph-with-bold-styling" style="font-weight: bold;">Looks like a header</p>
+
+    <p id="paragraph-with-strong"> <strong>Looks like a header</strong></p>
+
+    <!--@todo: We need to figure out a convenient way to test it.-->
     <div>
-      <p id="assert-1"><b>Looks like a header</b></p>
+      <p>
+        Nobis nulla sollemnes assum est volutpat. Et ii wisi hendrerit saepius
+          duis.
+      </p>
+      <p>Looks like a header, but it's not.</p>
+      <p>
+        Nobis nulla sollemnes assum est volutpat. Et ii wisi hendrerit saepius
+          duis.
+      </p>
     </div>
 
-    <div>
-      <p id="assert-2"><i>Looks like a header</i></p>
-    </div>
-
-    <div>
-      <p id="assert-3"><u>Looks like a header</u></p>
-    </div>
-
-    <div>
-      <p id="assert-4"><font>Looks like a header</font></p>
-    </div>
-
-    <div>
-      <p id="assert-5"><em>Looks like a header</em></p>
-    </div>
-
-    <div>
-      <p id="assert-6" style="font-weight: bold;">Looks like a header</p>
-    </div>
-
-    <div>
-      <p id="assert-7"><strong>Looks like a header</strong></p>
-    </div>
-
-    <div>
-      <p id="assert-8">Nobis nulla sollemnes assum est volutpat. Et ii wisi hendrerit saepius duis.</p>
-      <p id="assert-9">Looks like a header, but it's not.</p>
-      <p id="assert-10">Nobis nulla sollemnes assum est volutpat. Et ii wisi hendrerit saepius duis.</p>
-    </div>
-
-    <div>
-      <p id="assert-11">This is a regular paragraph</p>
-    </div>
-
-    <div>
-      <p id="assert-12">Foo.</p>
-      <blockquote class="styled">
-        <p id="assert-13">Bar.</p>
-      </blockquote>
-    </div>
-
-    <div>
-      <table style="font-size:12.3199996948242px; line-height:1.5em;">
-        <tbody>
-          <tr>
-            <td>
-              <p id="assert-14">asd</p>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p id="assert-15"><strong>foo</strong> - bar baz bom.</p>
-    </div>
+    <p id="regular-paragraph">This is a regular paragraph</p>
   </body>
 </html>
