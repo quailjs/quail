@@ -27,4 +27,4 @@ Right
 
 .. code-block:: html
 
-    To know more about me
+    To know more about me, visit <a href="page.html">my page</a>.
