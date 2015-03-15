@@ -96,14 +96,25 @@ var quail = {
    */
   run : function (options) {
     function buildTests (quail, assessmentList, options) {
-      // Create test configuration objects to appease the core app for now.
-      var name;
-      for (name in assessmentList) {
-        if (assessmentList.hasOwnProperty(name)) {
-          quail.tests.set(name, {
+      // An array of test names.
+      if (assessmentList.constructor === Array) {
+        for (var i = 0, il = assessmentList.length; i < il; ++i) {
+          quail.tests.set(assessmentList[i], {
             type: 'custom',
             scope: options.html || null
           });
+        }
+      }
+      else {
+        // Create test configuration objects to appease the core app for now.
+        var name;
+        for (name in assessmentList) {
+          if (assessmentList.hasOwnProperty(name)) {
+            quail.tests.set(name, {
+              type: 'custom',
+              scope: options.html || null
+            });
+          }
         }
       }
     }
