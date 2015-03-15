@@ -48,7 +48,7 @@ module.exports = function(grunt) {
           "}(this, function($) {",
           "  'use strict';",
           "  var jQuery = jQuery || $;"
-          ].join("\n"),
+        ].join("\n"),
         footer: "\n" + '});',
         stripBanners: true
       },
