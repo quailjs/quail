@@ -1,5 +1,9 @@
 [![Build Status](https://secure.travis-ci.org/quailjs/quail.png?branch=master)](http://travis-ci.org/kevee/quail)
 
+## Notice for developers working in the 2.2.x version.
+
+Please base your changes on the [```master-2.2.x```](https://github.com/quailjs/quail/tree/master-2.2.x) branch.
+
 Quail: Accessibility Information Library
 ========================================
 **The project website is [quailjs.org](http://quailjs.org/).**
