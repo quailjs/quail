@@ -1,6 +1,40 @@
 QUAIL Changelog
 ===============
 
+2.2.16
+------
+- Fixes for pNotUsedAsHeader (@mlewand)
+
+2.2.15
+------
+- Downgraded the testability of pNotUsedAsHeader to 0.5 from 1.0
+
+2.2.14
+------
+- Fixes for videosEmbeddedOrLinkedNeedCaptions
+
+2.2.13
+------
+- Flubbed up version, please ignore.
+
+2.2.12
+------
+- Make the address to test available to page.evaluate
+
+2.2.11
+------
+- Pulled the color tests into separate tests (PR #296)
+- Introduction WCAG2 test runner option
+- Implemented tableHeaders in linkHasAUniqueContext
+- Added tableHeaders.js
+- Fixed inputImageHasAlt test
+- Refactored tagsAreNestCorrectly to be a pass/fail test
+- Rewrote aInPHasADistinctStyle
+
+2.2.10
+------
+- No release, skipped.
+
 2.1
 ---
 - Changed license to MIT
