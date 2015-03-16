@@ -1,8 +1,8 @@
 aAdjacentWithSameResourceShouldBeCombined
 aImgAltNotRepetitive
--- Converted --
 aInPHasADistinctStyle
 aLinkTextDoesNotBeginWithRedundantWord
+-- Converted --
 aLinkWithNonText
 aLinksAreSeparatedByPrintableCharacters
 aLinksDontOpenNewWindow
