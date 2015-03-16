@@ -70,7 +70,8 @@ Once the command is set up, you can run the following to test any addressable we
 quail --url=http://some.domain.com/page.html
 ```
 
-The script will run and write the output to ```./analyses```
+The script will run and write the output to ```./analyses```. To change the
+output folder use the ```--output``` flag.
 
 Documentation
 -------------
