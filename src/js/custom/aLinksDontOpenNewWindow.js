@@ -3,7 +3,6 @@ quail.aLinksDontOpenNewWindow = function(quail, test, Case) {
   test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function () {
     test.add(Case({
       element: this,
-      'expected': $(this).closest('.quail-test').data('expected'),
       'status': 'passed'
     }));
   });
@@ -29,14 +28,12 @@ quail.aLinksDontOpenNewWindow = function(quail, test, Case) {
     if (passes) {
       test.add(Case({
         element: this,
-        'expected': $link.closest('.quail-test').data('expected'),
         'status': 'passed'
       }));
     }
     else {
       test.add(Case({
         element: this,
-        'expected': $link.closest('.quail-test').data('expected'),
         'status': 'failed'
       }));
     }
