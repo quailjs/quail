@@ -58,7 +58,6 @@ module.exports = function(grunt) {
           'src/js/core.js',
           'src/js/components/*.js',
           'src/js/strings/*.js',
-          'src/js/custom/*.js',
           'lib/assessments/**/*.js',
           'src/js/lib/*.js',
           'src/js/lib/wcag/*.js',
@@ -72,7 +71,6 @@ module.exports = function(grunt) {
           'src/js/core.js',
           'src/js/components/*.js',
           'src/js/strings/*.js',
-          'src/js/custom/*.js',
           'lib/assessments/**/*.js',
           'src/js/lib/*.js',
           'src/js/lib/wcag/*.js',
@@ -120,7 +118,6 @@ module.exports = function(grunt) {
       ],
       browser_env: [
         'src/js/components/*.js',
-        'src/js/custom/*.js',
         'src/js/lib/*.js',
         'src/js/strings/*.js',
         'src/js/core.js'
