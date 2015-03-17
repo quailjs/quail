@@ -35,4 +35,19 @@ describe('assessment: aLinkWithNonText', function () {
   it('should return the proper assessment for assert-1', function () {
     expect(cases).quailGetById('assert-1').to.have.quailStatus('inapplicable');
   });
+  it('should return the proper assessment for assert-2', function () {
+    expect(cases).quailGetById('assert-2').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-3', function () {
+    expect(cases).quailGetById('assert-3').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-4', function () {
+    expect(cases).quailGetById('assert-4').to.have.quailStatus('failed');
+  });
+  it('should return the proper assessment for assert-5', function () {
+    expect(cases).quailGetById('assert-5').to.have.quailStatus('failed');
+  });
+  it('should return the proper assessment for assert-6', function () {
+    expect(cases).quailGetById('assert-6').to.have.quailStatus('failed');
+  });
 });
