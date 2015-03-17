@@ -39,15 +39,15 @@
 </head>
 <body>
 
-  <div data-expected="colorElementBehindBackgroundGradientContrast:fail" data-accessibility-test="colorElementBehindBackgroundGradientContrast" id="test-1">
+  <div data-expected="colorElementBehindBackgroundGradientContrast:fail" id="test-1">
     <p>This test is not readable, but on screen it is</p>
   </div>
 
-  <div data-expected="colorElementBehindBackgroundGradientContrast:pass" data-accessibility-test="colorElementBehindBackgroundGradientContrast" id="test-2">
+  <div data-expected="colorElementBehindBackgroundGradientContrast:pass" id="test-2">
     <p>This test is readable, does not check the gradient since there's a background color.</p>
   </div>
 
-  <div data-expected="colorElementBehindBackgroundGradientContrast:fail" data-accessibility-test="colorElementBehindBackgroundGradientContrast" id="test-3">
+  <div data-expected="colorElementBehindBackgroundGradientContrast:fail" id="test-3">
     <div class="bck"></div>
     <p class="txt">This test is not readable.</p>
   </div>

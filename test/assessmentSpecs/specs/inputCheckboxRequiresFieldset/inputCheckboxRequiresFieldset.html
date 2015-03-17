@@ -5,7 +5,7 @@ tag
     <title>inputCheckboxRequiresFieldset</title>
 </head>
 <body>
-    <div data-expected="fail" data-accessibility-test="inputCheckboxRequiresFieldset">
+    <div data-expected="fail">
         <form action="http://example.com/donut" method="post">
             <p>
                 <input type="checkbox" name="flavour" id="choc" value="chocolate" class="quail-failed-element"/>
@@ -22,7 +22,7 @@ tag
         </form>
     </div>
 
-    <div data-expected="pass" data-accessibility-test="inputCheckboxRequiresFieldset">
+    <div data-expected="pass">
         <form action="http://example.com/donut" method="post">
             <fieldset>
                 <legend>Donuts Requested (check all that apply)</legend>

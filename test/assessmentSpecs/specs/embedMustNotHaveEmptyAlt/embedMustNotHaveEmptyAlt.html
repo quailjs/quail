@@ -4,13 +4,13 @@
 		<title>embedMustNotHaveEmptyAlt</title>
 	</head>
 	<body>
-		<div data-expected="fail" data-accessibility-test="embedMustNotHaveEmptyAlt">
+		<div data-expected="fail">
 
 			<embed alt="" src="demo.mov" class="quail-failed-element">
         <noembed>Alternate content for the embed</noembed>
       </embed>
 		</div>
-		<div data-expected="pass" data-accessibility-test="embedMustNotHaveEmptyAlt">
+		<div data-expected="pass">
 
 			<embed alt="description of the embed" src="demo.mov">
         <noembed>Alternate content for the embed</noembed>

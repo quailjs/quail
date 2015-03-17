@@ -4,17 +4,17 @@
   <title>KINGUseLongDateFormat</title>
 </head>
 <body>
-<div data-expected="fail" data-accessibility-test="KINGUseLongDateFormat">
+<div data-expected="fail">
   <p>Text with a short date of 12/04/2014, 2/1/14, 12-04-12, 12.04.12.</p>
 </div>
 
-<div data-expected="fail" data-accessibility-test="KINGUseLongDateFormat">
+<div data-expected="fail">
   <ul>
 	<li>This list item contains short date: 12/04/2014</li>
   </ul>
 </div>
 
-<div data-expected="fail" data-accessibility-test="KINGUseLongDateFormat">
+<div data-expected="fail">
   <table>
 	<tbody>
 	  <td>12/04/2014</td>
@@ -22,11 +22,11 @@
   </table>
 </div>
 
-<div data-expected="fail" data-accessibility-test="KINGUseLongDateFormat">
+<div data-expected="fail">
   <h1>This headline has bad date format 12.4.2014.</h1>
 </div>
 
-<div data-expected="pass" data-accessibility-test="KINGUseLongDateFormat">
+<div data-expected="pass">
   <!-- Since we don't support <font/> element in KINGUseLongDateFormat test, this TC should not
   cause an error -->
   <p>
@@ -35,11 +35,11 @@
   </p>
 </div>
 
-<div data-expected="pass" data-accessibility-test="KINGUseLongDateFormat">
+<div data-expected="pass">
   <p>Text with long date of 12 may 2014.</p>
 </div>
 
-<div data-expected="pass" data-accessibility-test="KINGUseLongDateFormat">
+<div data-expected="pass">
   <ul>
 	<li>Text with long date of 12 may 2014</li>
   </ul>

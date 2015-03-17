@@ -15,7 +15,7 @@
 		style="display:none" />
 	</div>
 
-	<div data-expected="fail" data-accessibility-test="inputImageHasAlt">
+	<div data-expected="fail">
 		<form action="http://example.com/prog/text-read" method="post">
 			<p>
 				<!-- Providing a src value causes the tests to fail because the element is not available while the image loads. -->
@@ -25,7 +25,7 @@
 		</form>
 	</div>
 
-	<div data-expected="pass" data-accessibility-test="inputImageHasAlt">
+	<div data-expected="pass">
 		<form action="http://example.com/prog/text-read" method="post">
 			<p>
 				<!-- Providing a src value causes the tests to fail because the element is not available while the image loads. -->

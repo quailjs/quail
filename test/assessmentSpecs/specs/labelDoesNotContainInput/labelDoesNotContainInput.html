@@ -4,7 +4,7 @@
 	<title>labelDoesNotContainInput</title>
 </head>
 <body>
-	<div data-expected="fail" data-accessibility-test="labelDoesNotContainInput">
+	<div data-expected="fail">
 		<form>
 			<label for="name" class="quail-failed-element">
 				First name:
@@ -13,7 +13,7 @@
 		</form>
 	</div>
 
-	<div data-expected="pass" data-accessibility-test="labelDoesNotContainInput">
+	<div data-expected="pass">
 		<form>
 			<label for="name">First name:</label>
 			<input type="text" name="firstname" id="name" />

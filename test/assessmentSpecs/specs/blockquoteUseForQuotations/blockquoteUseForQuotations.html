@@ -4,17 +4,17 @@
 		<title>blockquoteUseForQuotations</title>
 	</head>
 	<body>
-		<div data-expected="inapplicable" data-accessibility-test="blockquoteUseForQuotations">
+		<div data-expected="inapplicable">
 			<blockquote>
 				<p>"This is a paragraph that is a quote inside a larger blockquote."</p>
 			</blockquote>
 		</div>
 
-		<div data-expected="pass" data-accessibility-test="blockquoteUseForQuotations">
+		<div data-expected="pass">
 		  <p>This is a paragraph that is not a quote.</p>
 		</div>
 
-		<div data-expected="fail" data-accessibility-test="blockquoteUseForQuotations">
+		<div data-expected="fail">
 		  <p class="quail-failed-element">"This entire paragraph is a single quote."</p>
       </div>
 

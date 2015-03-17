@@ -4,16 +4,16 @@
 	<title>objectMustHaveValidTitle</title>
 </head>
 <body>
-	<div data-expected="fail" data-accessibility-test="objectMustHaveValidTitle">
+	<div data-expected="fail">
 			<object classid="http://www.miamachina.it/analogclock.py" title="  " class="quail-failed-element">The text equivalent for the object should go here.</object>
 	</div>
 
-	<div data-expected="fail" data-accessibility-test="objectMustHaveValidTitle">
+	<div data-expected="fail">
 		<object classid="http://www.miamachina.it/analogclock.py" title="" class="quail-failed-element">
 			The text equivalent for the object should go here.
 		</object>
 	</div>
-	<div data-expected="pass" data-accessibility-test="objectMustHaveValidTitle">
+	<div data-expected="pass">
 		<object classid="http://www.miamachina.it/analogclock.py" title="a clock object">
 			The text equivalent for the object should go here.
 		</object>

@@ -4,17 +4,17 @@
 	<title>embedHasAssociatedNoEmbed</title>
 </head>
 <body>
-	<div data-expected="fail" data-accessibility-test="embedHasAssociatedNoEmbed">
+	<div data-expected="fail">
 		<embed class="quail-failed-element" src="../movies/history_of_rome.mov" height="60" width="144" autostart="false"></embed>
 	</div>
-	<div data-expected="pass" data-accessibility-test="embedHasAssociatedNoEmbed">
+	<div data-expected="pass">
 		<embed src="../movies/history_of_rome.mov" height="60" width="144" autostart="false"></embed>
 		<noembed>
 			<a href="../transcripts/transcript_history_rome.htm">Transcript of "The history of Rome"</a>
 
 		</noembed>
 	</div>
-	<div data-expected="pass" data-accessibility-test="embedHasAssociatedNoEmbed">
+	<div data-expected="pass">
 		<embed src="../movies/history_of_rome.mov" height="60" width="144" autostart="false">
 		<noembed>
 			<a href="../transcripts/transcript_history_rome.htm">Transcript of "The history of Rome"</a>

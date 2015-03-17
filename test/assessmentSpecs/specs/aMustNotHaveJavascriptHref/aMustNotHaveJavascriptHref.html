@@ -4,11 +4,11 @@
 		<title>aMustNotHaveJavascriptHref</title>
 	</head>
 	<body>
-		<div data-expected="pass" data-accessibility-test="aMustNotHaveJavascriptHref">
+		<div data-expected="pass">
 		  <a href="fallback.html" onclick="dosomething(); return false;">Scripted link with fallback href</a>
 		</div>
 
-		<div data-expected="fail" data-accessibility-test="aMustNotHaveJavascriptHref">
+		<div data-expected="fail">
 			<a href="javascript:dosomething()" class="quail-failed-element">Scripted link</a>
 
 		</div>

@@ -21,7 +21,7 @@
 	</div>
 
 <div data-expected="inapplicable"
-     data-accessibility-test="headersAttrRefersToATableCell">
+    >
     <table>
         <tr>
             <td id="tbl1-cell1">a</td>
@@ -35,7 +35,7 @@
 </div>
 
 <div data-expected="pass"
-     data-accessibility-test="headersAttrRefersToATableCell">
+    >
     <table>
         <tr>
             <th id="tbl2-cell1">a</th>
@@ -49,7 +49,7 @@
 </div>
 
 <div data-expected="pass"
-     data-accessibility-test="headersAttrRefersToATableCell">
+    >
     <table>
         <tr>
             <th id="tbl3-cell1" headers="tbl3-cell3">a</th>
@@ -63,7 +63,7 @@
 </div>
 
 <div data-expected="pass"
-     data-accessibility-test="headersAttrRefersToATableCell">
+    >
     <table>
         <tr>
             <th id="tbl4-cell1">a</th>
@@ -78,7 +78,7 @@
 </div>
 
 <div data-expected="fail"
-     data-accessibility-test="headersAttrRefersToATableCell">
+    >
     <table>
         <tr>
             <!-- refers to a different table -->
@@ -89,7 +89,7 @@
 </div>
 
 <div data-expected="fail"
-     data-accessibility-test="headersAttrRefersToATableCell">
+    >
     <table id="tbl6">
         <tr>
             <td headers="tbl6" class="quail-failed-element">a</td>
@@ -98,7 +98,7 @@
 </div>
 
 <div data-expected="fail"
-     data-accessibility-test="headersAttrRefersToATableCell">
+    >
     <table>
         <tr id="tbl5-row1">
             <th>a</th>
@@ -110,7 +110,7 @@
 </div>
 
 <div data-expected="fail"
-     data-accessibility-test="headersAttrRefersToATableCell">
+    >
     <table>
         <tr>
             <td headers="not-existing" class="quail-failed-element">a</td>

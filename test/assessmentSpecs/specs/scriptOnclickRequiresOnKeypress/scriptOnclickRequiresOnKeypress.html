@@ -4,31 +4,31 @@
 	<title>scriptOnclickRequiresOnKeypress</title>
 </head>
 <body>
-	<div data-expected="fail" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="fail">
 		<input name="num" onclick="'foo';" value="0" class="quail-failed-element"/>
 	</div>
 
-	<div data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="pass">
 		<input name="num" type="text" value="0"/>
 	</div>
 
-	<div data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="pass">
 		<input name="num" onclick="'foo';" onkeypress="'bar';" value="0">
 	</div>
 
-	<div data-expected="fail" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="fail">
 		<a onclick="'foo';" class="quail-failed-element" href="scriptOnclickRequiresOnKeypress.html">A link!</a>
 	</div>
 
-	<div data-expected="fail" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="fail">
 		<a class="quail-failed-element" id="jquery-event" href="scriptOnclickRequiresOnKeypress.html">A jQuery event link!</a>
 	</div>
 
-	<div data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="pass">
 		<a onclick="'foo';" onkeypress="'bar';" href="scriptOnclickRequiresOnKeypress.html">A link!</a>
 	</div>
 
-	<div data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="pass">
 		<a href="scriptOnclickRequiresOnKeypress.html">A link!</a>
 	</div>
 

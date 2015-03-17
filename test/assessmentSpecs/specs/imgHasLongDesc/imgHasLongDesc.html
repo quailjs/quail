@@ -4,7 +4,7 @@
     <title>imgHasLongDesc</title>
 </head>
 <body>
-    <div data-expected="fail" data-accessibility-test="imgHasLongDesc">
+    <div data-expected="fail">
         <p>
             The text in this document fully describes the image shown here however
             the Alt text does not refer to this text.
@@ -12,7 +12,7 @@
         </p>
     </div>
 
-    <div data-expected="fail" data-accessibility-test="imgHasLongDesc">
+    <div data-expected="fail">
         <p>
             The text in this document does not fully describe the complex image shown
             here.
@@ -20,7 +20,7 @@
         </p>
     </div>
 
-    <div data-expected="pass" data-accessibility-test="imgHasLongDesc">
+    <div data-expected="pass">
         <p>
             The text in this document fully describes the image shown here and the
             Alt text refers to this text.
@@ -28,7 +28,7 @@
         </p>
     </div>
 
-    <div data-expected="pass" data-accessibility-test="imgHasLongDesc">
+    <div data-expected="pass">
         <p>
             The text in this document does not fully describe the image.
             <img src="../assets/chart.gif" alt="a complex chart" />
@@ -36,7 +36,7 @@
         </p>
     </div>
 
-    <div data-expected="pass" data-accessibility-test="imgHasLongDesc">
+    <div data-expected="pass">
         <p>
             The text in this document does not fully describe the image shown here
             but the image contains a longdesc attribute linking to a text file that

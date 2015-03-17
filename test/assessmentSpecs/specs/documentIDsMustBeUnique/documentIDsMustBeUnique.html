@@ -6,17 +6,17 @@
 <body>
 
   <div data-expected="inapplicable"
-  data-accessibility-test="documentIDsMustBeUnique">
+ >
     <p id="uniqueid">This paragraph has a unique</p>
   </div>
 
   <div data-expected="inapplicable"
-  data-accessibility-test="documentIDsMustBeUnique">
+ >
     <!-- No content -->
   </div>
 
   <div data-expected="h2:ignore|p:fail"
-  data-accessibility-test="documentIDsMustBeUnique">
+ >
     <h2 id="one">This is a header.</h2>
     <p id="one" class="quail-failed-element">
       This is the second paragraph.
@@ -24,7 +24,7 @@
   </div>
 
   <div data-expected="h2:ignore|p:pass"
-  data-accessibility-test="documentIDsMustBeUnique">
+ >
     <h2 id="three">This is a header.</h2>
     <p id="four">
       This is the second paragraph.

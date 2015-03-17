@@ -4,26 +4,26 @@
   <title>videosEmbeddedOrLinkedNeedCaptions</title>
 </head>
 <body lang="en">
-  <div data-expected="fail" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions">
+  <div data-expected="fail">
     <p>
       Hey, check
       <a href="http://www.youtube.com/watch?v=V1HSNV9y25A" class="quail-failed-element">Out this awesome video.</a>
     </p>
   </div>
-  <div data-expected="fail" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="No Subtitle">
+  <div data-expected="fail" title="No Subtitle">
     <video controls class="quail-failed-element">
       <source src="../assets/sample.ogv" type="video/ogv"/>
     </video>
   </div>
 
-  <div class="quail-test limit-chrome" data-expected="fail" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="Subtitle file missing">
+  <div class="quail-test limit-chrome" data-expected="fail" title="Subtitle file missing">
     <video controls class="quail-failed-element">
       <source src="../assets/sample.ogv" type="video/ogv"/>
       <track kind="subtitles" src="../assets/broken.srt" srclang="en"></track>
     </video>
   </div>
 
-  <div data-expected="fail" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="Flash without caption plugin">
+  <div data-expected="fail" title="Flash without caption plugin">
     <object class="quail-failed-element" id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
       <param name="allowfullscreen" value="true">
       <param name="allowscriptaccess" value="always">
@@ -33,7 +33,7 @@
     </object>
   </div>
 
-  <div data-expected="fail" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="Flash MP4 without caption plugin">
+  <div data-expected="fail" title="Flash MP4 without caption plugin">
     <object class="quail-failed-element" id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
       <param name="allowfullscreen" value="true">
       <param name="allowscriptaccess" value="always">
@@ -43,7 +43,7 @@
     </object>
   </div>
 
-  <div data-expected="pass" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="Flash with caption plugin">
+  <div data-expected="pass" title="Flash with caption plugin">
     <object id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
       <param name="allowfullscreen" value="true">
       <param name="allowscriptaccess" value="always">
@@ -53,14 +53,14 @@
     </object>
   </div>
 
-  <div data-expected="fail" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" lang="fr" title="Subtitle not matching language">
+  <div data-expected="fail" lang="fr" title="Subtitle not matching language">
     <video controls class="quail-failed-element">
       <source src="../assets/sample.ogv" type="video/ogv"/>
       <track kind="subtitles" src="../assets/subtitle.srt" srclang="en"></track>
     </video>
   </div>
 
-  <div class="quail-test limit-chrome" data-expected="pass" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="Object with no subtitles">
+  <div class="quail-test limit-chrome" data-expected="pass" title="Object with no subtitles">
     <object id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0" class="quail-failed-element">
     <param name="allowfullscreen" value="true">
     <param name="allowscriptaccess" value="always">
@@ -70,7 +70,7 @@
     </object>
   </div>
 
-  <div data-expected="pass" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions">
+  <div data-expected="pass">
     <p>
       Hey, check
       <a href="http://youtube.com/watch?v=zJOS0sV2a24">Out this awesome video.</a>
@@ -82,14 +82,14 @@
 
   </div>
 
-  <div class="quail-test limit-chrome" data-expected="pass" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="Video tag has correct subtitle">
+  <div class="quail-test limit-chrome" data-expected="pass" title="Video tag has correct subtitle">
     <video controls>
       <source src="../assets/sample.ogv" type="video/ogv"/>
       <track kind="subtitles" src="../assets/subtitle.srt" srclang="en"></track>
     </video>
   </div>
 
-  <div class="quail-test limit-chrome" data-expected="pass" data-accessibility-test="videosEmbeddedOrLinkedNeedCaptions" title="Object with subtitles">
+  <div class="quail-test limit-chrome" data-expected="pass" title="Object with subtitles">
     <object id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
     <param name="allowfullscreen" value="true">
     <param name="allowscriptaccess" value="always">

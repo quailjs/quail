@@ -4,7 +4,7 @@
     <title>formWithRequiredLabel</title>
 </head>
 <body>
-    <div data-expected="label[for='firstname']:ignore|label[for='lastname']:fail" data-accessibility-test="formWithRequiredLabel">
+    <div data-expected="label[for='firstname']:ignore|label[for='lastname']:fail">
         <form action="http://www.test.com">
             <p>
                 <label for="firstname" class="required">First Name:</label>
@@ -17,7 +17,7 @@
         </form>
     </div>
 
-    <div data-expected="fail" data-accessibility-test="formWithRequiredLabel">
+    <div data-expected="fail">
         <form action="http://www.test.com">
             <p>
                 <label for="firstname" class="quail-failed-element">First Name: *</label>
@@ -26,7 +26,7 @@
         </form>
     </div>
 
-    <div data-expected="pass" data-accessibility-test="formWithRequiredLabel">
+    <div data-expected="pass">
         <form action="http://www.test.com">
             <p>
                 <label for="firstname">First Name: *</label>
@@ -35,7 +35,7 @@
         </form>
     </div>
 
-    <div data-expected="label[for='firstname']:pass|label[for='lastname']:pass|label[for='colour']:pass" data-accessibility-test="formWithRequiredLabel">
+    <div data-expected="label[for='firstname']:pass|label[for='lastname']:pass|label[for='colour']:pass">
         <form action="http://www.test.com">
             <p>
                 <label for="firstname">First Name (required):</label>
