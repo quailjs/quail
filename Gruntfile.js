@@ -133,8 +133,7 @@ module.exports = function(grunt) {
       scripts: {
         files: [
           'src/**/*.js',
-          'src/**/*.yml',
-          'test/accessibility-tests/*.html'
+          'src/**/*.yml'
         ],
         tasks: [
           'convert',
@@ -186,10 +185,6 @@ module.exports = function(grunt) {
     buildTestFilesJson: {
       dist: {
         files: [
-          {
-            src: 'test/accessibility-tests/*.html',
-            dest: 'test/accessibility-tests/_tests.json'
-          },
           {
             src: 'test/core/*.html',
             dest: 'test/core/_tests.json'
