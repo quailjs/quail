@@ -34,6 +34,5 @@ describe('assessment: formAllowsCheckIfIrreversable', function () {
   it('should return the proper assessment for the test', function () {
     cases = quailResults.tests['formAllowsCheckIfIrreversable'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
-    expect(cases).quailGetById('assert-2').to.have.quailStatus('failed');
   });
 });

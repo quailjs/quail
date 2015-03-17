@@ -34,6 +34,5 @@ describe('assessment: elementAttributesAreValid', function () {
   it('should return the proper assessment for the test', function () {
     cases = quailResults.tests['elementAttributesAreValid'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
-    expect(cases).quailGetById('assert-2').to.have.quailStatus('failed');
   });
 });
