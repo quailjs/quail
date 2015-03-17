@@ -4,8 +4,8 @@ aInPHasADistinctStyle
 aLinkTextDoesNotBeginWithRedundantWord
 aLinkWithNonText
 aLinksAreSeparatedByPrintableCharacters
--- Converted --
 aLinksDontOpenNewWindow
+-- Converted --
 aLinksNotSeparatedBySymbols
 aLinksToMultiMediaRequireTranscript
 aLinksToSoundFilesNeedTranscripts
