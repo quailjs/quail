@@ -120,7 +120,8 @@ module.exports = function(grunt) {
         'src/js/components/*.js',
         'src/js/lib/*.js',
         'src/js/strings/*.js',
-        'src/js/core.js'
+        'src/js/core.js',
+        'lib/**/*.js'
       ],
       cli_env: [
         'src/js/scripts/*.js'

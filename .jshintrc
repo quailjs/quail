@@ -14,7 +14,11 @@
     "quailBuilderTests": true,
     "require": true,
     "phantom": true,
-    "console": true
+    "console": true,
+    "module": true,
+    "define": true,
+    "chai": true,
+    "__dirname": true
   },
   "immed": true,
   "indent": 2,
@@ -24,6 +28,5 @@
   "smarttabs": true,
   "sub": true,
   "trailing": true,
-  "undef": true,
-  "unused": true
+  "undef": true
 }
