@@ -124,7 +124,7 @@ aLinksNotSeparatedBySymbols:
     - "content"
   callback: "aLinksNotSeparatedBySymbols"
 aLinksToMultiMediaRequireTranscript:
-  type: "selector"
+  type: "custom"
   testability: 0
   title:
     en: "Any links to a multimedia file should also include a link to a transcript"
@@ -143,8 +143,6 @@ aLinksToMultiMediaRequireTranscript:
     - "link"
     - "media"
     - "content"
-  options:
-    selector: "a[href$='.wmv'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']"
 aLinksToSoundFilesNeedTranscripts:
   type: "selector"
   testability: 0
