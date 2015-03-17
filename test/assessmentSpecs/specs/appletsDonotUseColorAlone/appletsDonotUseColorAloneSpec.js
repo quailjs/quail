@@ -20,8 +20,10 @@ describe('assessment: appletsDonotUseColorAlone', function () {
     return quailTestRunner.teardown(client);
   });
 
-  it('should return the correct stats', function () {
+  it('should return the correct number of tests', function () {
     expect(quailResults.stats.tests).to.equal(0);
+  });
+  it('should return the correct number of cases', function () {
     expect(quailResults.stats.cases).to.equal(0);
   });
 
