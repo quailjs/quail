@@ -5,24 +5,24 @@
     <title>languageChangesAreIdentified</title>
 </head>
 <body lang="en">
-    <div class="quail-test" data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified">
+    <div data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified">
         <article>This paragraph is just fine, it is written in English.</article>
         <p class="bengali quail-failed-element">এটি একটি ভাষা একক স্ক্রিপ্ট করা হবে না.</p>
     </div>
 
-    <div class="quail-test" data-expected="fail" data-accessibility-test="languageChangesAreIdentified">
+    <div data-expected="fail" data-accessibility-test="languageChangesAreIdentified">
         <p class="quail-failed-element">
             This paragraph is just fine, but this arabic script is not OK. هذا هو مكتوب باللغة العربية.
         </p>
     </div>
 
-    <div class="quail-test" data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified">
+    <div data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified">
         <article>This paragraph is just fine, it is written in English.</article>
         <p class="bengali quail-failed-element">এটি একটি ভাষা একক স্ক্রিপ্ট করা হবে না.</p>
     </div>
 
 
-    <div class="quail-test" data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified" lang="en">
+    <div data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified" lang="en">
         <article>
             This paragraph is just fine, but the paragraph after it is in French. Monotonectally exploit web-enabled leadership skills rather than standards compliant markets. Appropriately visualize process-centric human capital via equity invested scenarios. Continually deploy magnetic communities whereas pandemic potentialities.
         </article>
@@ -31,7 +31,7 @@
         </p>
     </div>
 
-    <div class="quail-test" data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified" lang="zh">
+    <div data-expected="article:pass|p:fail" data-accessibility-test="languageChangesAreIdentified" lang="zh">
         <article>
             这是一个较短的句子，但是这是没有问题，因为它是在中国。
         </article>
@@ -40,18 +40,18 @@
         </p>
     </div>
 
-    <div class="quail-test" data-expected="pass" data-accessibility-test="languageChangesAreIdentified">
+    <div data-expected="pass" data-accessibility-test="languageChangesAreIdentified">
         <p>
             This paragraph is just fine, it is written in English.
             <span lang="bn">এটি একটি ভাষা একক স্ক্রিপ্ট করা হবে না</span>
             .
         </p>
     </div>
-    <div class="quail-test" data-expected="article:pass|p:pass" data-accessibility-test="languageChangesAreIdentified">
+    <div data-expected="article:pass|p:pass" data-accessibility-test="languageChangesAreIdentified">
         <article>This paragraph is just fine, it is written <i></i>n English. Monotonectally exploit web-enabled leadership skills rather than standards compliant markets. Appropriately visualize process-centric human capital via equity invested scenarios. Continually deploy magnetic communities whereas pandemic potentialities. </article>
         <p lang="ar">هذا هو مكتوب باللغة العربية</p>
     </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="languageChangesAreIdentified" lang="fr">
+    <div data-expected="pass" data-accessibility-test="languageChangesAreIdentified" lang="fr">
         <p>Ceci est un paragraphe en français.</p>
         <p lang="es">
             Este es un párrafo en español, traductor Google ha sido muy útil.
@@ -62,7 +62,7 @@
             mots japonais ainsi
         </p>
     </div>
-    <div class="quail-test" data-expected="pass" data-accessibility-test="languageChangesAreIdentified" lang="en">
+    <div data-expected="pass" data-accessibility-test="languageChangesAreIdentified" lang="en">
         <p>This paragraph is just fine, it is written in English. Monotonectally exploit web-enabled leadership skills rather than standards compliant markets. Appropriately visualize process-centric human capital via equity invested scenarios. Continually deploy magnetic communities whereas pandemic potentialities. </p>
         <p lang="bn">এটি একটি ভাষা একক স্ক্রিপ্ট করা হবে না.</p>
     </div>

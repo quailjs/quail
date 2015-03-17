@@ -9,25 +9,25 @@
 	<title>definitionListsAreUsed</title>
 </head>
 <body>
-	<div class="quail-test" data-expected="fail" data-accessibility-test="definitionListsAreUsed">
+	<div data-expected="fail" data-accessibility-test="definitionListsAreUsed">
 		<ul>
 			<li class="quail-failed-element"><strong>Term A</strong> - Definition for term A</li>
 			<li class="quail-failed-element"><strong>Term B</strong> - Definition for term B</li>
 		</ul>
 	</div>
-	<div class="quail-test" data-expected="fail" data-accessibility-test="definitionListsAreUsed">
+	<div data-expected="fail" data-accessibility-test="definitionListsAreUsed">
 		<ul class="span">
 			<li class="quail-failed-element"><span>Term A</span> - Definition for term A</li>
 			<li class="quail-failed-element"><span>Term B</span> - Definition for term B</li>
 		</ul>
 	</div>
-	<div class="quail-test" data-expected="pass" data-accessibility-test="definitionListsAreUsed">
+	<div data-expected="pass" data-accessibility-test="definitionListsAreUsed">
 		<ul>
 			<li>Definition for term A</li>
 			<li>Definition for term B</li>
 		</ul>
 	</div>
-	<div class="quail-test" data-expected="inapplicable" data-accessibility-test="definitionListsAreUsed">
+	<div data-expected="inapplicable" data-accessibility-test="definitionListsAreUsed">
 		<dl>
 			<dt>Term A</dt>
 			<dd>Definition for term A</dd>
@@ -35,7 +35,7 @@
 			<dd>Definition for term B</dd>
 		</dl>
 	</div>
-	<div class="quail-test" data-expected="pass" data-accessibility-test="definitionListsAreUsed">
+	<div data-expected="pass" data-accessibility-test="definitionListsAreUsed">
 		<ul>
 			<li><span>This thing</span> is pretty interesting</li>
 			<li><span>And this other thing</span> is also interesting.</li>

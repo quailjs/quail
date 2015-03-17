@@ -5,17 +5,17 @@
     <title>languageDirectionPunctuation</title>
   </head>
   <body dir="ltr">
-    <div class="quail-test" data-expected="p:pass|span:inapplicable" data-accessibility-test="languageDirectionPunctuation">
+    <div data-expected="p:pass|span:inapplicable" data-accessibility-test="languageDirectionPunctuation">
       <p>
           This paragraph has <span lang="he" dir="rtl">פעילות הבינאום</span> right-to-left text, but no punctuation.
       </p>
     </div>
 
-    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="languageDirectionPunctuation">
+    <div data-expected="inapplicable" data-accessibility-test="languageDirectionPunctuation">
       <p dir="ltr">This paragraph has no language changes.</p>
     </div>
 
-    <div class="quail-test" data-expected="p:fail|span:inapplicable" data-accessibility-test="languageDirectionPunctuation">
+    <div data-expected="p:fail|span:inapplicable" data-accessibility-test="languageDirectionPunctuation">
       <p dir="ltr">
           This paragraph has <span lang="he" dir="rtl">,פעילות הבינאום</span> right-to-left text, but no punctuation.
       </p>

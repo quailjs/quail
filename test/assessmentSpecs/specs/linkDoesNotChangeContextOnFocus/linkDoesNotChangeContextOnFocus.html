@@ -4,11 +4,11 @@
     <title>linkDoesNotChangeContextOnFocus</title>
 </head>
 <body>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="linkDoesNotChangeContextOnFocus">
+    <div data-expected="fail" data-accessibility-test="linkDoesNotChangeContextOnFocus">
       <a href="http://www.google.com" onfocus="foo;">Open a link</a>
     </div>
 
-    <div class="quail-test" data-expected="pass" data-accessibility-test="linkDoesNotChangeContextOnFocus">
+    <div data-expected="pass" data-accessibility-test="linkDoesNotChangeContextOnFocus">
       <a href="http://www.google.com">Open a link</a>
     </div>
 

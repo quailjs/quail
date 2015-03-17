@@ -5,29 +5,29 @@
 </head>
 <body>
 
-    <div class="quail-test" data-expected="inapplicable"
+    <div data-expected="inapplicable"
     data-accessibility-test="inputWithoutLabelHasTitle">
         <!-- no input element -->
     </div>
 
-    <div class="quail-test" data-expected="inapplicable"
+    <div data-expected="inapplicable"
     data-accessibility-test="inputWithoutLabelHasTitle">
         <input type="text" style="display:none" />
     </div>
 
-    <div class="quail-test" data-expected="fail"
+    <div data-expected="fail"
     data-accessibility-test="inputWithoutLabelHasTitle">
         <input type="text" class="quail-failed-element" />
     </div>
 
-    <div class="quail-test" data-expected="fail"
+    <div data-expected="fail"
     data-accessibility-test="inputWithoutLabelHasTitle">
         <label>Implicit label:
           <input type="text" class="quail-failed-element" />
         </label>
     </div>
 
-    <div class="quail-test" data-expected="pass"
+    <div data-expected="pass"
     data-accessibility-test="inputWithoutLabelHasTitle">
         <label for="select">Select your favorite pet</label>
         <select id="select">

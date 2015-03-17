@@ -5,33 +5,33 @@
 </head>
 <body>
 
-	<div class="quail-test" data-expected="inapplicable"
+	<div data-expected="inapplicable"
 	data-accessibility-test="formButtonsHaveValue">
 		<!-- No button here -->
 	</div>
 
-	<div class="quail-test" data-expected="fail"
+	<div data-expected="fail"
 	data-accessibility-test="formButtonsHaveValue">
 		<form>
 			<input type="submit" class="quail-failed-element">
 		</form>
 	</div>
 
-	<div class="quail-test" data-expected="fail"
+	<div data-expected="fail"
 	data-accessibility-test="formButtonsHaveValue">
 		<form>
 			<input type="button" class="quail-failed-element">
 		</form>
 	</div>
 
-	<div class="quail-test" data-expected="fail"
+	<div data-expected="fail"
 	data-accessibility-test="formButtonsHaveValue">
 		<form>
 			<input type="reset" class="quail-failed-element">
 		</form>
 	</div>
 
-	<div class="quail-test" data-expected="pass"
+	<div data-expected="pass"
 	data-accessibility-test="formButtonsHaveValue">
 		<form>
 			<input type="submit" value="Submit">

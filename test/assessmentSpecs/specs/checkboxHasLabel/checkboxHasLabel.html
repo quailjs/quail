@@ -4,21 +4,21 @@
     <title>checkboxHasLabel</title>
 </head>
 <body>
-  <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
+  <div data-expected="fail" data-accessibility-test="checkboxHasLabel">
     <form action="http://somesite.com/prog/adduser" method="post">
       <p>
         <input type="checkbox" title="" name="mytext" tabindex="1" class="quail-failed-element"/>
       </p>
     </form>
   </div>
-  <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
+  <div data-expected="fail" data-accessibility-test="checkboxHasLabel">
     <form action="http://somesite.com/prog/adduser" method="post">
       <p>
         <input type="checkbox" title="birds" name="mytext" tabindex="1" class="quail-failed-element" />
       </p>
     </form>
   </div>
-  <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
+  <div data-expected="fail" data-accessibility-test="checkboxHasLabel">
     <form action="http://somesite.com/prog/adduser" method="post">
       <p>
         <label>
@@ -27,7 +27,7 @@
       </p>
     </form>
   </div>
-  <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
+  <div data-expected="fail" data-accessibility-test="checkboxHasLabel">
     <form action="http://somesite.com/prog/adduser" method="post">
       <p>
         <label for="boxa"></label>
@@ -35,7 +35,7 @@
       </p>
     </form>
   </div>
-  <div class="quail-test" data-expected="fail" data-accessibility-test="checkboxHasLabel">
+  <div data-expected="fail" data-accessibility-test="checkboxHasLabel">
       <form action="http://somesite.com/prog/adduser" method="post">
           <p>
               <label>
@@ -45,7 +45,7 @@
           </p>
       </form>
   </div>
-  <div class="quail-test" data-expected="pass" data-accessibility-test="checkboxHasLabel">
+  <div data-expected="pass" data-accessibility-test="checkboxHasLabel">
     <form action="http://somesite.com/prog/adduser" method="post">
       <p>
         <label for="boxa">birds</label>

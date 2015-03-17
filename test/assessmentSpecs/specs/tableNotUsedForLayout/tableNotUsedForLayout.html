@@ -4,7 +4,7 @@
   <title>tableNotUsedForLayout</title>
 </head>
 <body>
-  <div class="quail-test" data-expected="fail" data-accessibility-test="tableNotUsedForLayout">
+  <div data-expected="fail" data-accessibility-test="tableNotUsedForLayout">
     <table class="quail-failed-element">
       <tr>
         <td>This is the content area of my table</td>
@@ -13,7 +13,7 @@
     </table>
   </div>
 
-  <div class="quail-test" data-expected="fail" data-accessibility-test="tableNotUsedForLayout">
+  <div data-expected="fail" data-accessibility-test="tableNotUsedForLayout">
     <table border="0" cellpadding="5" summary="Table being used for layout" class="quail-failed-element">
       <tr>
         <td>This would be a sidebar.</td>
@@ -34,7 +34,7 @@
     </table>
   </div>
 
-  <div class="quail-test" data-expected="pass" data-accessibility-test="tableNotUsedForLayout">
+  <div data-expected="pass" data-accessibility-test="tableNotUsedForLayout">
     <table>
       <thead>
         <tr>

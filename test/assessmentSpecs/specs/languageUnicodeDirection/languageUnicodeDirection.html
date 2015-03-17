@@ -5,25 +5,25 @@
     <title>languageUnicodeDirection</title>
 </head>
 <body>
-    <div class="quail-test" data-expected="fail" data-accessibility-test="languageUnicodeDirection" title="Missing unicode characters.">
+    <div data-expected="fail" data-accessibility-test="languageUnicodeDirection" title="Missing unicode characters.">
         <p>
             This should also be wrapped in an inline element: "עפּעס אַנדערש."
         </p>
     </div>
 
-    <div class="quail-test" data-expected="pass" data-accessibility-test="languageUnicodeDirection" title="Appropriate use of html special characters.">
+    <div data-expected="pass" data-accessibility-test="languageUnicodeDirection" title="Appropriate use of html special characters.">
         <p>
             The title says "&rlm;פעילות הבינאום,&lrm; W3C" in Hebrew.
         </p>
     </div>
 
-    <div class="quail-test" data-expected="pass" data-accessibility-test="languageUnicodeDirection" title="Appropriate use of unicode characters.">
+    <div data-expected="pass" data-accessibility-test="languageUnicodeDirection" title="Appropriate use of unicode characters.">
         <p>
             The title says "‎פעילות הבינאום,‎‏" W3C" in Hebrew.
         </p>
     </div>
 
-    <div class="quail-test" data-expected="inapplicable" data-accessibility-test="languageUnicodeDirection" title="No language direction change.">
+    <div data-expected="inapplicable" data-accessibility-test="languageUnicodeDirection" title="No language direction change.">
         <p>
             The title has no right-to-left characters.
         </p>

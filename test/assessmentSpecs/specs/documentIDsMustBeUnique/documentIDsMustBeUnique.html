@@ -5,17 +5,17 @@
 </head>
 <body>
 
-  <div class="quail-test" data-expected="inapplicable"
+  <div data-expected="inapplicable"
   data-accessibility-test="documentIDsMustBeUnique">
     <p id="uniqueid">This paragraph has a unique</p>
   </div>
 
-  <div class="quail-test" data-expected="inapplicable"
+  <div data-expected="inapplicable"
   data-accessibility-test="documentIDsMustBeUnique">
     <!-- No content -->
   </div>
 
-  <div class="quail-test" data-expected="h2:ignore|p:fail"
+  <div data-expected="h2:ignore|p:fail"
   data-accessibility-test="documentIDsMustBeUnique">
     <h2 id="one">This is a header.</h2>
     <p id="one" class="quail-failed-element">
@@ -23,7 +23,7 @@
     </p>
   </div>
 
-  <div class="quail-test" data-expected="h2:ignore|p:pass"
+  <div data-expected="h2:ignore|p:pass"
   data-accessibility-test="documentIDsMustBeUnique">
     <h2 id="three">This is a header.</h2>
     <p id="four">

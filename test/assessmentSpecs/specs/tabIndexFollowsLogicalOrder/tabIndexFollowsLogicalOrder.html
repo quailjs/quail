@@ -4,7 +4,7 @@
     <title>tabIndexFollowsLogicalOrder</title>
 </head>
 <body>
-    <div class="quail-test" data-expected="input[tabindex='1']:ignore|input[tabindex='4']:fail" data-accessibility-test="tabIndexFollowsLogicalOrder">
+    <div data-expected="input[tabindex='1']:ignore|input[tabindex='4']:fail" data-accessibility-test="tabIndexFollowsLogicalOrder">
 
         <form action="http://www.example.com/servlet1" method="post">
             <p>
@@ -18,7 +18,7 @@
             </p>
         </form>
     </div>
-    <div class="quail-test" data-expected="input[tabindex='1']:ignore|input[tabindex='2']:pass" data-accessibility-test="tabIndexFollowsLogicalOrder">
+    <div data-expected="input[tabindex='1']:ignore|input[tabindex='2']:pass" data-accessibility-test="tabIndexFollowsLogicalOrder">
 
         <form action="http://www.example.com/servlet1" method="post">
             <p>

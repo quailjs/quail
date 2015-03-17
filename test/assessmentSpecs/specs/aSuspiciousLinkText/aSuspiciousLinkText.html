@@ -4,37 +4,37 @@
 		<title>aSuspiciousLinkText</title>
 	</head>
 	<body>
-		<div class="quail-test" data-expected="inapplicable" data-accessibility-test="aSuspiciousLinkText">
+		<div data-expected="inapplicable" data-accessibility-test="aSuspiciousLinkText">
 			<a name="anchor"></a>
 		</div>
 
-		<div class="quail-test" data-expected="pass" data-accessibility-test="aSuspiciousLinkText">
+		<div data-expected="pass" data-accessibility-test="aSuspiciousLinkText">
 		  <p>Here is a link to <a href="dogs.html">information about dogs</a>.</p>
 		</div>
 
-		<div class="quail-test" data-expected="pass" data-accessibility-test="aSuspiciousLinkText">
+		<div data-expected="pass" data-accessibility-test="aSuspiciousLinkText">
 		  <p>This is the introduction to a news story about recent spending by our
           government.<a href="spending.html">read more <span class="invisible">about the news story</span></a>
       </p>
 		</div>
 
-		<div class="quail-test" data-expected="pass" data-accessibility-test="aSuspiciousLinkText" title="Image alt">
+		<div data-expected="pass" data-accessibility-test="aSuspiciousLinkText" title="Image alt">
 		  <p>This is the introduction to a news story about recent spending by our
           government.<a href="spending.html"><img src="../assets/go.gif" width="30" height="10" alt="government spending"/></a>
       </p>
 		</div>
 
-		<div class="quail-test" data-expected="fail" data-accessibility-test="aSuspiciousLinkText">
+		<div data-expected="fail" data-accessibility-test="aSuspiciousLinkText">
 		  <p>For more information about dogs, <a href="dogs.html" class="quail-failed-element">click here</a>.</p>
 		</div>
 
-		<div class="quail-test" data-expected="fail" data-accessibility-test="aSuspiciousLinkText">
+		<div data-expected="fail" data-accessibility-test="aSuspiciousLinkText">
 		  <p>This is the introduction to a news story about recent spending by our
             government.<a href="spending.html" class="quail-failed-element"><img src="../assets/go.gif" width="30" height="10" alt="image"/></a>
         </p>
 		</div>
 
-		<div class="quail-test" data-expected="fail" data-accessibility-test="aSuspiciousLinkText">
+		<div data-expected="fail" data-accessibility-test="aSuspiciousLinkText">
 		  <p>This is the introduction to a news story about recent spending by our
             government.
 <a href="spending.html" class="quail-failed-element">read more</a>

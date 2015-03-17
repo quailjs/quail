@@ -4,15 +4,15 @@
 	<title>imgAltIsDifferent</title>
 </head>
 <body>
-	<div class="quail-test" data-expected="fail" data-accessibility-test="imgAltIsDifferent">
+	<div data-expected="fail" data-accessibility-test="imgAltIsDifferent">
 		<img src="../assets/rex.jpg" alt="../assets/rex.jpg" class="quail-failed-element"/>
 	</div>
 
-	<div class="quail-test" data-expected="pass" data-accessibility-test="imgAltIsDifferent">
+	<div data-expected="pass" data-accessibility-test="imgAltIsDifferent">
 		<img src="../assets/rex.jpg" alt="photo of rex the cat" />
 	</div>
 
-	<div class="quail-test" data-expected="inapplicable" data-accessibility-test="imgAltIsDifferent">
+	<div data-expected="inapplicable" data-accessibility-test="imgAltIsDifferent">
 		<img alt="photo of rex the cat" />
 	</div>
 

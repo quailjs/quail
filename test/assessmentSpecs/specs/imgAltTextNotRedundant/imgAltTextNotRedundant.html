@@ -4,11 +4,11 @@
 	<title>imgAltTextNotRedundant</title>
 </head>
 <body>
-	<div class="quail-test" data-expected="fail" data-accessibility-test="imgAltTextNotRedundant">
+	<div data-expected="fail" data-accessibility-test="imgAltTextNotRedundant">
 		<img src="../assets/rex.jpg" alt="this is an image of rex">
 		<img src="../assets/chart.gif" alt="this is an image of rex" class="quail-failed-element">
 	</div>
-	<div class="quail-test" data-expected="pass" data-accessibility-test="imgAltTextNotRedundant">
+	<div data-expected="pass" data-accessibility-test="imgAltTextNotRedundant">
 
 		<img src="../assets/rex.jpg" alt="this is an image of rex">
 		<img src="../assets/rex.jpg" alt="this is an image of rex">

@@ -4,31 +4,31 @@
 	<title>scriptOnclickRequiresOnKeypress</title>
 </head>
 <body>
-	<div class="quail-test" data-expected="fail" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="fail" data-accessibility-test="scriptOnclickRequiresOnKeypress">
 		<input name="num" onclick="'foo';" value="0" class="quail-failed-element"/>
 	</div>
 
-	<div class="quail-test" data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
 		<input name="num" type="text" value="0"/>
 	</div>
 
-	<div class="quail-test" data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
 		<input name="num" onclick="'foo';" onkeypress="'bar';" value="0">
 	</div>
 
-	<div class="quail-test" data-expected="fail" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="fail" data-accessibility-test="scriptOnclickRequiresOnKeypress">
 		<a onclick="'foo';" class="quail-failed-element" href="scriptOnclickRequiresOnKeypress.html">A link!</a>
 	</div>
 
-	<div class="quail-test" data-expected="fail" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="fail" data-accessibility-test="scriptOnclickRequiresOnKeypress">
 		<a class="quail-failed-element" id="jquery-event" href="scriptOnclickRequiresOnKeypress.html">A jQuery event link!</a>
 	</div>
 
-	<div class="quail-test" data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
 		<a onclick="'foo';" onkeypress="'bar';" href="scriptOnclickRequiresOnKeypress.html">A link!</a>
 	</div>
 
-	<div class="quail-test" data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
+	<div data-expected="pass" data-accessibility-test="scriptOnclickRequiresOnKeypress">
 		<a href="scriptOnclickRequiresOnKeypress.html">A link!</a>
 	</div>
 
