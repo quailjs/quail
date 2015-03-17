@@ -1,5 +1,5 @@
 describe('assessment: liDontUseImageForBullet', function () {
-  var client, assessments, quailResults;
+  var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.
   before('load webdrivers and run evaluations with Quail', function () {
@@ -32,7 +32,7 @@ describe('assessment: liDontUseImageForBullet', function () {
   });
 
   it('should return the proper assessment for the test', function () {
-    var cases = quailResults.tests['liDontUseImageForBullet'].cases;
+    cases = quailResults.tests['liDontUseImageForBullet'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
     expect(cases).quailGetById('assert-2').to.have.quailStatus('failed');
   });

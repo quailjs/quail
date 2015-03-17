@@ -1,5 +1,5 @@
 describe('assessment: legendTextNotPlaceholder', function () {
-  var client, assessments, quailResults;
+  var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.
   before('load webdrivers and run evaluations with Quail', function () {
@@ -32,7 +32,7 @@ describe('assessment: legendTextNotPlaceholder', function () {
   });
 
   it('should return the proper assessment for the test', function () {
-    var cases = quailResults.tests['legendTextNotPlaceholder'].cases;
+    cases = quailResults.tests['legendTextNotPlaceholder'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
     expect(cases).quailGetById('assert-2').to.have.quailStatus('failed');
   });

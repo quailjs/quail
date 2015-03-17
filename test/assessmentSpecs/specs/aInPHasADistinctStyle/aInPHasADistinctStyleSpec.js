@@ -1,5 +1,5 @@
 describe('assessment: aInPHasADistinctStyle', function () {
-  var client, assessments, quailResults;
+  var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.
   before('load webdrivers and run evaluations with Quail', function () {
@@ -32,7 +32,7 @@ describe('assessment: aInPHasADistinctStyle', function () {
   });
 
   it('should return the proper assessment for the test', function () {
-    var cases = quailResults.tests['aInPHasADistinctStyle'].cases;
+    cases = quailResults.tests['aInPHasADistinctStyle'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('inapplicable');
     // expect(cases).quailGetById('assert-2').to.have.quailStatus('passed');
     // expect(cases).quailGetById('assert-3').to.have.quailStatus('passed');
