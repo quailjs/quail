@@ -2,9 +2,9 @@ aAdjacentWithSameResourceShouldBeCombined
 aImgAltNotRepetitive
 aInPHasADistinctStyle
 aLinkTextDoesNotBeginWithRedundantWord
--- Converted --
 aLinkWithNonText
 aLinksAreSeparatedByPrintableCharacters
+-- Converted --
 aLinksDontOpenNewWindow
 aLinksNotSeparatedBySymbols
 aLinksToMultiMediaRequireTranscript
