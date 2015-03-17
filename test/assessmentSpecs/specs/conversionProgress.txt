@@ -5,8 +5,10 @@ aLinkTextDoesNotBeginWithRedundantWord
 aLinkWithNonText
 aLinksAreSeparatedByPrintableCharacters
 aLinksDontOpenNewWindow
--- Converted --
 aLinksNotSeparatedBySymbols
+
+-- Converted --
+
 aLinksToMultiMediaRequireTranscript
 aLinksToSoundFilesNeedTranscripts
 aMultimediaTextAlternative
