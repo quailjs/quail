@@ -31,7 +31,7 @@ describe('assessment: documentLangIsISO639Standard', function () {
     expect(quailResults.tests).to.include.keys('documentLangIsISO639Standard');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['documentLangIsISO639Standard'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

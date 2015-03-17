@@ -31,7 +31,7 @@ describe('assessment: inputRadioHasTabIndex', function () {
     expect(quailResults.tests).to.include.keys('inputRadioHasTabIndex');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['inputRadioHasTabIndex'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

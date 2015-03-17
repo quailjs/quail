@@ -31,7 +31,7 @@ describe('assessment: domOrderMatchesVisualOrder', function () {
     expect(quailResults.tests).to.include.keys('domOrderMatchesVisualOrder');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['domOrderMatchesVisualOrder'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

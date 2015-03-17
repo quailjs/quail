@@ -31,7 +31,7 @@ describe('assessment: checkboxLabelIsNearby', function () {
     expect(quailResults.tests).to.include.keys('checkboxLabelIsNearby');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['checkboxLabelIsNearby'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

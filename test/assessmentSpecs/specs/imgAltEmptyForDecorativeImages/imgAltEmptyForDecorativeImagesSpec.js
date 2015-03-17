@@ -31,7 +31,7 @@ describe('assessment: imgAltEmptyForDecorativeImages', function () {
     expect(quailResults.tests).to.include.keys('imgAltEmptyForDecorativeImages');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['imgAltEmptyForDecorativeImages'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

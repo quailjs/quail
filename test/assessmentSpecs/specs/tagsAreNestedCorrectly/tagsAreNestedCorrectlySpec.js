@@ -31,7 +31,7 @@ describe('assessment: tagsAreNestedCorrectly', function () {
     expect(quailResults.tests).to.include.keys('tagsAreNestedCorrectly');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['tagsAreNestedCorrectly'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

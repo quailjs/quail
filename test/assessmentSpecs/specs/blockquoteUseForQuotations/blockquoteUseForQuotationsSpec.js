@@ -31,7 +31,7 @@ describe('assessment: blockquoteUseForQuotations', function () {
     expect(quailResults.tests).to.include.keys('blockquoteUseForQuotations');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['blockquoteUseForQuotations'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

@@ -31,7 +31,7 @@ describe('assessment: siteMap', function () {
     expect(quailResults.tests).to.include.keys('siteMap');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['siteMap'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

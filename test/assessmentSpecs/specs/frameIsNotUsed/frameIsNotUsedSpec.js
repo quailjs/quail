@@ -31,7 +31,7 @@ describe('assessment: frameIsNotUsed', function () {
     expect(quailResults.tests).to.include.keys('frameIsNotUsed');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['frameIsNotUsed'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

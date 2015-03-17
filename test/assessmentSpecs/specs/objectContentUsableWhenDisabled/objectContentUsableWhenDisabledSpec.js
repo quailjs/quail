@@ -31,7 +31,7 @@ describe('assessment: objectContentUsableWhenDisabled', function () {
     expect(quailResults.tests).to.include.keys('objectContentUsableWhenDisabled');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['objectContentUsableWhenDisabled'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

@@ -31,7 +31,7 @@ describe('assessment: legendDescribesListOfChoices', function () {
     expect(quailResults.tests).to.include.keys('legendDescribesListOfChoices');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['legendDescribesListOfChoices'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

@@ -31,7 +31,7 @@ describe('assessment: imgNonDecorativeHasAlt', function () {
     expect(quailResults.tests).to.include.keys('imgNonDecorativeHasAlt');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['imgNonDecorativeHasAlt'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

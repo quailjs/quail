@@ -31,7 +31,7 @@ describe('assessment: headersUsedToIndicateMainContent', function () {
     expect(quailResults.tests).to.include.keys('headersUsedToIndicateMainContent');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['headersUsedToIndicateMainContent'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

@@ -31,7 +31,7 @@ describe('assessment: frameTitlesNotEmpty', function () {
     expect(quailResults.tests).to.include.keys('frameTitlesNotEmpty');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['frameTitlesNotEmpty'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

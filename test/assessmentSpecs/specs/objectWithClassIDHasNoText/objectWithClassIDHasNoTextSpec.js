@@ -31,7 +31,7 @@ describe('assessment: objectWithClassIDHasNoText', function () {
     expect(quailResults.tests).to.include.keys('objectWithClassIDHasNoText');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['objectWithClassIDHasNoText'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

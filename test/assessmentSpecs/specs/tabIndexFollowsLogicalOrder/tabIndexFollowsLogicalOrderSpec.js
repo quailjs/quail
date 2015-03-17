@@ -31,7 +31,7 @@ describe('assessment: tabIndexFollowsLogicalOrder', function () {
     expect(quailResults.tests).to.include.keys('tabIndexFollowsLogicalOrder');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['tabIndexFollowsLogicalOrder'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

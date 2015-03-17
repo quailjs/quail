@@ -31,7 +31,7 @@ describe('assessment: inputTextValueNotEmpty', function () {
     expect(quailResults.tests).to.include.keys('inputTextValueNotEmpty');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['inputTextValueNotEmpty'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

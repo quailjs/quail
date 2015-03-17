@@ -31,7 +31,7 @@ describe('assessment: tableShouldUseHeaderIDs', function () {
     expect(quailResults.tests).to.include.keys('tableShouldUseHeaderIDs');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['tableShouldUseHeaderIDs'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

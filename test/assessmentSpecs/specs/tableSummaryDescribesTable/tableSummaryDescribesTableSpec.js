@@ -31,7 +31,7 @@ describe('assessment: tableSummaryDescribesTable', function () {
     expect(quailResults.tests).to.include.keys('tableSummaryDescribesTable');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['tableSummaryDescribesTable'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

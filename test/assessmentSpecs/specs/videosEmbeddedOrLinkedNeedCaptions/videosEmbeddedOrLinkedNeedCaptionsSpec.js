@@ -31,7 +31,7 @@ describe('assessment: videosEmbeddedOrLinkedNeedCaptions', function () {
     expect(quailResults.tests).to.include.keys('videosEmbeddedOrLinkedNeedCaptions');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['videosEmbeddedOrLinkedNeedCaptions'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

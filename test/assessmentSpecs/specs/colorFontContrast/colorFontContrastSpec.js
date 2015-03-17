@@ -31,7 +31,7 @@ describe('assessment: colorFontContrast', function () {
     expect(quailResults.tests).to.include.keys('colorFontContrast');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['colorFontContrast'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

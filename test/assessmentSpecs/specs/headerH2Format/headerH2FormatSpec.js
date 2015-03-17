@@ -31,7 +31,7 @@ describe('assessment: headerH2Format', function () {
     expect(quailResults.tests).to.include.keys('headerH2Format');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['headerH2Format'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });

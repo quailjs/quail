@@ -31,7 +31,7 @@ describe('assessment: headerH6Format', function () {
     expect(quailResults.tests).to.include.keys('headerH6Format');
   });
 
-  it('should return the proper assessment for the test', function () {
+  it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests['headerH6Format'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
