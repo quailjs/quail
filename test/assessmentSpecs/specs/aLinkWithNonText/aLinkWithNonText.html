@@ -6,27 +6,27 @@
 	<body>
 
 		<div data-expected="inapplicable">
-			<a name="anchor"></a>
+			<a id="assert-1" name="anchor"></a>
 		</div>
 
 		<div data-expected="pass">
-		  <a href="something.html"><img src="../assets/rex.jpg" alt="Learn more about this cat"/></a>
+		  <a id="assert-2" href="something.html"><img src="../assets/rex.jpg" alt="Learn more about this cat"/></a>
 		</div>
 
 		<div data-expected="pass">
-		  <a href="something.html"><img src="../assets/rex.jpg" alt=""/>Learn more about this cat</a>
+		  <a id="assert-3" href="something.html"><img src="../assets/rex.jpg" alt=""/>Learn more about this cat</a>
 		</div>
 
 		<div data-expected="fail">
-		  <a href="something.html" class="quail-failed-element"><img src="../assets/rex.jpg" alt=""/></a>
+		  <a id="assert-4" href="something.html" class="quail-failed-element"><img src="../assets/rex.jpg" alt=""/></a>
 		</div>
 
 		<div data-expected="fail">
-		  <a href="something.html" class="quail-failed-element"><object classid="http://www.miamachina.it/analogclock.py" title="  "></object></a>
+		  <a id="assert-5" href="something.html" class="quail-failed-element"><object classid="http://www.miamachina.it/analogclock.py" title="  "></object></a>
 		</div>
 
 		<div data-expected="fail">
-		  <a href="something.html" class="quail-failed-element"><img src="../assets/rex.jpg"/></a>
+		  <a id="assert-6" href="something.html" class="quail-failed-element"><img src="../assets/rex.jpg"/></a>
 		</div>
 
 			</body>

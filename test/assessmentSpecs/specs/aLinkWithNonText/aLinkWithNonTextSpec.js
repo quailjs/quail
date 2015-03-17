@@ -1,5 +1,5 @@
 describe('assessment: aLinkWithNonText', function () {
-  var client, assessments, quailResults;
+  var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.
   before('load webdrivers and run evaluations with Quail', function () {
@@ -13,6 +13,7 @@ describe('assessment: aLinkWithNonText', function () {
         client = _client_;
         assessments = _assessments_;
         quailResults = _quailResults_;
+        cases = quailResults.tests['aLinkWithNonText'].cases;
       });
   });
 
@@ -31,9 +32,7 @@ describe('assessment: aLinkWithNonText', function () {
     expect(quailResults.tests).to.include.keys('aLinkWithNonText');
   });
 
-  it('should return the proper assessment for the test', function () {
-    var cases = quailResults.tests['aLinkWithNonText'].cases;
-    expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
-    expect(cases).quailGetById('assert-2').to.have.quailStatus('failed');
+  it('should return the proper assessment for assert-1', function () {
+    expect(cases).quailGetById('assert-1').to.have.quailStatus('inapplicable');
   });
 });
