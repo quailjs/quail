@@ -41,7 +41,9 @@ quail.pNotUsedAsHeader = function(quail, test, Case) {
           }
         });
       }
-      if ($paragraph.css('font-weight') === 'bold') {
+
+      var fontWeight = $paragraph.css('font-weight');
+      if (fontWeight === 'bold' || +fontWeight >= 700) { // bold
         _case.set({
           'status': 'failed'
         });
