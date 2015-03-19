@@ -2310,7 +2310,7 @@ imgAltIsSameInText:
 imgAltIsTooLong:
   testability: 1
   title:
-    en: "Image Alt text is too short"
+    en: "Image Alt text is too long"
     nl: "Altteksten voor een afbeelding zijn kort"
   description:
     en: "All \"alt\" attributes for <code>img</code> elements should be clear and concise. \"Alt\" attributes over 100 characters long should be reviewed to see if they are too long."
