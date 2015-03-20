@@ -3,7 +3,7 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html
  */
-quail.guidelines.wcag.successCriteria['2.4.2'] = (function (quail) {
+quail.guidelines.wcag.successCriteria['2.4.2'] = (function(quail) {
   /**
    * Determines if this Success Criteria applies to the document.
    */

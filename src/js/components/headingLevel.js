@@ -8,7 +8,7 @@ quail.components.headingLevel = function(quail, test, Case, options) {
         element: element,
         // @todo, make the expected property retrievable through a callback so
         //   that we don't need to overload a test with this kind of logic.
-        expected: (function (element) {
+        expected: (function(element) {
           return quail.components.resolveExpectation(element);
         }(element)),
         status: 'failed'
@@ -17,7 +17,7 @@ quail.components.headingLevel = function(quail, test, Case, options) {
     else {
       test.add(Case({
         element: this,
-        expected: (function (element) {
+        expected: (function(element) {
           return quail.components.resolveExpectation(element);
         }(element)),
         status: 'passed'

@@ -1,4 +1,4 @@
-quail.lib.TestCollection = (function () {
+quail.lib.TestCollection = (function() {
 
   /**
    * A Collection of Tests.
@@ -10,7 +10,7 @@ quail.lib.TestCollection = (function () {
   // Prototype object of the TestCollection.
   TestCollection.fn = TestCollection.prototype = {
     constructor: TestCollection,
-    init: function (tests, options) {
+    init: function(tests, options) {
       this.listeners = {};
       options = options || {};
       if (!tests) {
@@ -33,13 +33,13 @@ quail.lib.TestCollection = (function () {
     // Setting a length property makes it behave like an array.
     length: 0,
     // Invoke all the tests in a set.
-    run: function (callbacks) {
+    run: function(callbacks) {
       var tc = this;
       callbacks = callbacks || {};
-      this.each(function (index, test) {
+      this.each(function(index, test) {
         // Allow a prefilter to remove a case.
         if (callbacks.preFilter) {
-          tc.listenTo(test, 'resolve', function (eventName, test, _case) {
+          tc.listenTo(test, 'resolve', function(eventName, test, _case) {
             var result = callbacks.preFilter(eventName, test, _case);
             if (result === false) {
               // Manipulate the attributes directly so that change events
@@ -84,7 +84,7 @@ quail.lib.TestCollection = (function () {
     /**
      * Execute a callback for every element in the matched set.
      */
-    each: function (iterator) {
+    each: function(iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
@@ -100,7 +100,7 @@ quail.lib.TestCollection = (function () {
     /**
      * Add a Test object to the set.
      */
-    add: function (test) {
+    add: function(test) {
       // Don't add a test that already exists in this set.
       if (!this.find(test.get('name'))) {
         this.push(test);
@@ -109,7 +109,7 @@ quail.lib.TestCollection = (function () {
     /**
      * Finds a test by its name.
      */
-    find: function (testname) {
+    find: function(testname) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           return this[i];
@@ -120,20 +120,20 @@ quail.lib.TestCollection = (function () {
     /**
      * @info, this should be a static method.
      */
-    findByGuideline: function (guidelineName) {
+    findByGuideline: function(guidelineName) {
 
       var methods = {
-        'wcag': function (section, technique) {
+        'wcag': function(section, technique) {
 
           function findAllTestsForTechnique (guidelineName, sectionId, techniqueName) {
             // Return a TestCollection instance.
             var tests = new TestCollection();
-            this.each(function (index, test) {
+            this.each(function(index, test) {
               // Get the configured guidelines for the test.
               var guidelines = test.get('guidelines');
               // If this test is configured for this section and it has
               // associated techniques, then loop thorugh them.
-              var testTechniques = guidelines[guidelineName] && guidelines[guidelineName][sectionId] && guidelines[guidelineName][sectionId]['techniques'];
+              var testTechniques = guidelines[guidelineName] && guidelines[guidelineName][sectionId] && guidelines[guidelineName][sectionId].techniques;
               if (testTechniques) {
                 for (var i = 0, il = testTechniques.length; i < il; ++i) {
                   // If this test is configured for the techniqueName, add it
@@ -164,7 +164,7 @@ quail.lib.TestCollection = (function () {
     /**
      * Finds tests by their status.
      */
-    findByStatus: function (statuses) {
+    findByStatus: function(statuses) {
       if (!statuses) {
         return;
       }
@@ -172,13 +172,13 @@ quail.lib.TestCollection = (function () {
       // A single status or an array of statuses is allowed. Always act on an
       // array.
       if (typeof statuses === 'string') {
-        statuses = [statuses];
+        statuses = [ statuses ];
       }
       // Loop the through the statuses and find tests with them.
       for (var i = 0, il = statuses.length; i < il; ++i) {
         var status = statuses[i];
         // Loop through the tests.
-        this.each(function (index, test) {
+        this.each(function(index, test) {
           var testStatus = test.get('status');
           if (testStatus === status) {
             tests.add(test);
@@ -190,7 +190,7 @@ quail.lib.TestCollection = (function () {
     /**
      * Create a new test from a name and details.
      */
-    set: function (testname, details) {
+    set: function(testname, details) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           this[i].set(details);
@@ -208,16 +208,16 @@ quail.lib.TestCollection = (function () {
      * testsComplete function in outer scope.
      */
     testsComplete: null,
-    report: function () {
+    report: function() {
       this.dispatch.apply(this, arguments);
     },
     // @todo, make this a set of methods that all classes extend.
-    listenTo: function (dispatcher, eventName, handler) {
+    listenTo: function(dispatcher, eventName, handler) {
       // @todo polyfill Function.prototype.bind.
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
-    registerListener: function (eventName, handler) {
+    registerListener: function(eventName, handler) {
       // nb: 'this' is the dispatcher object, not the one that invoked listenTo.
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
@@ -225,10 +225,10 @@ quail.lib.TestCollection = (function () {
 
       this.listeners[eventName].push(handler);
     },
-    dispatch: function (eventName) {
+    dispatch: function(eventName) {
       if (this.listeners[eventName] && this.listeners[eventName].length) {
         var eventArgs = [].slice.call(arguments);
-        this.listeners[eventName].forEach(function (handler) {
+        this.listeners[eventName].forEach(function(handler) {
           // Pass any additional arguments from the event dispatcher to the
           // handler function.
           handler.apply(null, eventArgs);
@@ -250,7 +250,7 @@ quail.lib.TestCollection = (function () {
     var complete = true;
     // @todo, this iteration would be faster with _.findWhere, that breaks on
     // the first match.
-    this.each(function (index, test) {
+    this.each(function(index, test) {
       if (!test.get('complete')) {
         complete = false;
       }
@@ -282,14 +282,13 @@ quail.lib.TestCollection = (function () {
    *   will only be called at most 4 times per second.
    */
   function debounce (func, wait, immediate) {
-
-    "use strict";
+    'use strict';
 
     var timeout, result;
-    return function () {
+    return function() {
       var context = this;
       var args = arguments;
-      var later = function () {
+      var later = function() {
         timeout = null;
         if (!immediate) {
           result = func.apply(context, args);

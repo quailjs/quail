@@ -3,7 +3,7 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-extended-ad.html
  */
-quail.guidelines.wcag.successCriteria['1.2.7'] = (function (quail) {
+quail.guidelines.wcag.successCriteria['1.2.7'] = (function(quail) {
   /**
    * Determines if this Success Criteria applies to the document.
    */

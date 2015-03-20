@@ -3,7 +3,7 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-suggestions.html
  */
-quail.guidelines.wcag.successCriteria['3.3.3'] = (function (quail) {
+quail.guidelines.wcag.successCriteria['3.3.3'] = (function(quail) {
 
   /**
    * Determines if this Success Criteria applies to the document.
@@ -35,12 +35,14 @@ quail.guidelines.wcag.successCriteria['3.3.3'] = (function (quail) {
       'week' //  Defines a week and year control (no time zone)
     ];
 
-    var requiredAttrs = [{
-      'required': 'required'
-    },
-    {
-      'aria-required': 'true'
-    }];
+    var requiredAttrs = [
+      {
+        'required': 'required'
+      },
+      {
+        'aria-required': 'true'
+      }
+    ];
 
     // Searches this for complex for types.
     //
@@ -54,7 +56,6 @@ quail.guidelines.wcag.successCriteria['3.3.3'] = (function (quail) {
       var key = Object.keys(attr)[0];
       return !!this.querySelectorAll('[' + key + '="' + attr[key] + '"]').length;
     }
-
 
     // Testing forms.
     //

@@ -1,0 +1,11 @@
+{
+  "preset": "jquery",
+  "validateQuoteMarks": "'",
+  "disallowKeywordsOnNewLine": null,
+  "maximumLineLength": null,
+  "requireMultipleVarDecl": null,
+  "excludeFiles": [
+    "dist/**",
+    "node_modules/**"
+  ]
+}

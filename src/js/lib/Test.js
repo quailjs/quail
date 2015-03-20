@@ -1,4 +1,4 @@
-quail.lib.Test = (function () {
+quail.lib.Test = (function() {
 
   /**
    * A collection of Cases.
@@ -10,7 +10,7 @@ quail.lib.Test = (function () {
   // Prototype object of the Test.
   Test.fn = Test.prototype = {
     constructor: Test,
-    init: function (name, attributes) {
+    init: function(name, attributes) {
       this.listeners = {};
       this.length = 0;
       if (!name) {
@@ -28,7 +28,7 @@ quail.lib.Test = (function () {
     // Details of the test.
     attributes: null,
     // Execute a callback for every element in the matched set.
-    each: function (iterator) {
+    each: function(iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
@@ -37,17 +37,17 @@ quail.lib.Test = (function () {
       }
       return this;
     },
-    get: function (attr) {
+    get: function(attr) {
       // Return the document wrapped in jQuery if scope is not defined.
       if (attr === '$scope') {
-        var scope = this.attributes['scope'];
-        var $scope = $(this.attributes['scope']);
+        var scope = this.attributes.scope;
+        var $scope = $(this.attributes.scope);
         // @todo, pass in a ref to jQuery to this module.
         return (this.attributes[attr]) ? this.attributes[attr] : ((scope) ? $scope : $(document));
       }
       return this.attributes[attr];
     },
-    set: function (attr, value) {
+    set: function(attr, value) {
       var isStatusChanged = false;
       // Allow an object of attributes to be passed in.
       if (typeof attr === 'object') {
@@ -73,7 +73,7 @@ quail.lib.Test = (function () {
       }
       return this;
     },
-    add: function (_case) {
+    add: function(_case) {
       this.listenTo(_case, 'resolve', this.caseResponded);
       this.listenTo(_case, 'timeout', this.caseResponded);
       // If the case is already resolved because it has a status, then trigger
@@ -136,7 +136,7 @@ quail.lib.Test = (function () {
     /**
      * Finds cases by their status.
      */
-    findByStatus: function (statuses) {
+    findByStatus: function(statuses) {
       if (!statuses) {
         return;
       }
@@ -144,13 +144,13 @@ quail.lib.Test = (function () {
       // A single status or an array of statuses is allowed. Always act on an
       // array.
       if (typeof statuses === 'string') {
-        statuses = [statuses];
+        statuses = [ statuses ];
       }
       // Loop the through the statuses and find tests with them.
       for (var i = 0, il = statuses.length; i < il; ++i) {
         var status = statuses[i];
         // Loop through the cases.
-        this.each(function (index, _case) {
+        this.each(function(index, _case) {
           var caseStatus = _case.get('status');
           if (caseStatus === status) {
             test.add(_case);
@@ -162,7 +162,7 @@ quail.lib.Test = (function () {
     /**
      * Returns a set of cases with corresponding to th supplied selector.
      */
-    findCasesBySelector: function (selector) {
+    findCasesBySelector: function(selector) {
       var cases = this.groupCasesBySelector();
       if (cases.hasOwnProperty(selector)) {
         return cases[selector];
@@ -182,7 +182,7 @@ quail.lib.Test = (function () {
      *
      * @needstests
      */
-    findCaseByHtml: function (html) {
+    findCaseByHtml: function(html) {
       var _case;
       for (var i = 0, il = this.length; i < il; ++i) {
         _case = this[i];
@@ -199,10 +199,10 @@ quail.lib.Test = (function () {
      * @return object
      *  A hash of cases, keyed by the element selector.
      */
-    groupCasesBySelector: function () {
+    groupCasesBySelector: function() {
       var casesBySelector = {};
       // Loop through the cases.
-      this.each(function (index, _case) {
+      this.each(function(index, _case) {
         var selector = _case.get('selector');
         if (!casesBySelector[selector]) {
           casesBySelector[selector] = new Test();
@@ -219,10 +219,10 @@ quail.lib.Test = (function () {
      * @return object
      *  A hash of cases, keyed by the element selector.
      */
-    groupCasesByHtml: function () {
+    groupCasesByHtml: function() {
       var casesByHtml = {};
       // Loop through the cases.
-      this.each(function (index, _case) {
+      this.each(function(index, _case) {
         var html = _case.get('html');
         if (!casesByHtml[html]) {
           casesByHtml[html] = new Test();
@@ -234,7 +234,7 @@ quail.lib.Test = (function () {
     /**
      * @needsdoc
      */
-    getGuidelineCoverage: function (name) {
+    getGuidelineCoverage: function(name) {
       var config = this.get('guidelines');
       return config && config[name] || {};
     },
@@ -242,7 +242,7 @@ quail.lib.Test = (function () {
      * Adds the test that owns the Case to the set of arguments passed up to
      * listeners of this test's cases.
      */
-    caseResponded: function (eventName, _case) {
+    caseResponded: function(eventName, _case) {
       this.dispatch(eventName, this, _case);
       // Attempt to declare the Test complete.
       if (typeof this.testComplete === 'function') {
@@ -252,7 +252,7 @@ quail.lib.Test = (function () {
     /**
      * Evaluates the test's cases and sets the test's status.
      */
-    determineStatus: function () {
+    determineStatus: function() {
       // Invoke post filtering. This is a very special case for color.js.
       var type = this.get('type');
       var passed;
@@ -267,19 +267,19 @@ quail.lib.Test = (function () {
         });
       }
       // CantTell.
-      else if (this.findByStatus(['cantTell']).length === this.length) {
+      else if (this.findByStatus([ 'cantTell' ]).length === this.length) {
         this.set({
           'status': 'cantTell'
         });
       }
       // inapplicable.
-      else if (this.findByStatus(['inapplicable']).length === this.length) {
+      else if (this.findByStatus([ 'inapplicable' ]).length === this.length) {
         this.set({
           'status': 'inapplicable'
         });
       }
       // Failed.
-      else if (this.findByStatus(['failed', 'untested']).length) {
+      else if (this.findByStatus([ 'failed', 'untested' ]).length) {
         this.set({
           'status': 'failed'
         });
@@ -290,7 +290,7 @@ quail.lib.Test = (function () {
         });
       }
     },
-    resolve: function () {
+    resolve: function() {
       this.dispatch('complete', this);
     },
     /**
@@ -301,12 +301,12 @@ quail.lib.Test = (function () {
      */
     testComplete: null,
     // @todo, make this a set of methods that all classes extend.
-    listenTo: function (dispatcher, eventName, handler) {
+    listenTo: function(dispatcher, eventName, handler) {
       // @todo polyfill Function.prototype.bind.
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
-    registerListener: function (eventName, handler) {
+    registerListener: function(eventName, handler) {
       // nb: 'this' is the dispatcher object, not the one that invoked listenTo.
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
@@ -314,10 +314,10 @@ quail.lib.Test = (function () {
 
       this.listeners[eventName].push(handler);
     },
-    dispatch: function (eventName) {
+    dispatch: function(eventName) {
       if (this.listeners[eventName] && this.listeners[eventName].length) {
         var eventArgs = [].slice.call(arguments);
-        this.listeners[eventName].forEach(function (handler) {
+        this.listeners[eventName].forEach(function(handler) {
           // Pass any additional arguments from the event dispatcher to the
           // handler function.
           handler.apply(null, eventArgs);
@@ -340,7 +340,7 @@ quail.lib.Test = (function () {
     complete = (typeof complete === 'undefined') ? true : complete;
     // @todo, this iteration would be faster with _.findWhere, that breaks on
     // the first match.
-    this.each(function (index, _case) {
+    this.each(function(index, _case) {
       if (!_case.get('status')) {
         complete = false;
       }
@@ -378,14 +378,13 @@ quail.lib.Test = (function () {
    *   will only be called at most 4 times per second.
    */
   function debounce (func, wait, immediate) {
-
-    "use strict";
+    'use strict';
 
     var timeout, result;
-    return function () {
+    return function() {
       var context = this;
       var args = arguments;
-      var later = function () {
+      var later = function() {
         timeout = null;
         if (!immediate) {
           result = func.apply(context, args);

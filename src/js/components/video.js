@@ -12,7 +12,7 @@ quail.components.video = {
    * @return Boolean
    *   Whether the element is a video.
    */
-  isVideo : function(element) {
+  isVideo: function(element) {
     var isVideo = false;
     $.each(this.providers, function() {
       if (element.is(this.selector) && this.isVideo(element)) {
@@ -22,7 +22,7 @@ quail.components.video = {
     return isVideo;
   },
 
-  findVideos : function(element, callback) {
+  findVideos: function(element, callback) {
     $.each(this.providers, function(name, provider) {
       element.find(this.selector).each(function() {
         var video = $(this);
@@ -33,19 +33,19 @@ quail.components.video = {
     });
   },
 
-  providers : {
+  providers: {
 
-    youTube : {
+    youTube: {
 
-      selector : 'a, iframe',
+      selector: 'a, iframe',
 
-      apiUrl : 'http://gdata.youtube.com/feeds/api/videos/?q=%video&caption&v=2&alt=json',
+      apiUrl: 'http://gdata.youtube.com/feeds/api/videos/?q=%video&caption&v=2&alt=json',
 
-      isVideo : function(element) {
+      isVideo: function(element) {
         return (this.getVideoId(element) !== false) ? true : false;
       },
 
-      getVideoId : function(element) {
+      getVideoId: function(element) {
         var attribute = (element.is('iframe')) ? 'src' : 'href';
         var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&\?]*).*/;
         var match = element.attr(attribute).match(regExp);
@@ -55,23 +55,24 @@ quail.components.video = {
         return false;
       },
 
-      hasCaptions : function(element, callback) {
+      hasCaptions: function(element, callback) {
         var videoId = this.getVideoId(element);
-        $.ajax({url : this.apiUrl.replace('%video', videoId),
-                async : false,
-                dataType : 'json',
-                success : function(data) {
-                  callback(element, (data.feed.openSearch$totalResults.$t > 0));
-                }
+        $.ajax({
+          url: this.apiUrl.replace('%video', videoId),
+          async: false,
+          dataType: 'json',
+          success: function(data) {
+            callback(element, (data.feed.openSearch$totalResults.$t > 0));
+          }
         });
       }
     },
 
-    flash : {
+    flash: {
 
-      selector : 'object',
+      selector: 'object',
 
-      isVideo : function(element) {
+      isVideo: function(element) {
         var isVideo = false;
         if (element.find('param').length === 0) {
           return false;
@@ -84,7 +85,7 @@ quail.components.video = {
         return isVideo;
       },
 
-      hasCaptions : function(element, callback) {
+      hasCaptions: function(element, callback) {
         var hasCaptions = false;
         element.find('param[name=flashvars]').each(function() {
           if (($(this).attr('value').search('captions') > -1 &&
@@ -97,15 +98,15 @@ quail.components.video = {
       }
     },
 
-    videoElement : {
+    videoElement: {
 
-      selector : 'video',
+      selector: 'video',
 
-      isVideo : function(element) {
+      isVideo: function(element) {
         return element.is('video');
       },
 
-      hasCaptions : function(element, callback) {
+      hasCaptions: function(element, callback) {
         var $captions = element.find('track[kind=subtitles], track[kind=captions]');
         if (!$captions.length) {
           callback(element, false);
@@ -119,7 +120,7 @@ quail.components.video = {
         $captions.each(function() {
           if (!$(this).attr('srclang') || $(this).attr('srclang').toLowerCase() === language) {
             foundLanguage = true;
-            try{
+            try {
               var request = $.ajax({ url: $(this).attr('src'),
                         type: 'HEAD',
                         async: false,
@@ -129,7 +130,7 @@ quail.components.video = {
                 foundLanguage = false;
               }
             }
-            catch(e) {
+            catch (e) {
 
             }
           }

@@ -1,5 +1,5 @@
 /* A logical combo of Techniques and the intersection of their outcomes. */
-quail.lib.SuccessCriteria = (function () {
+quail.lib.SuccessCriteria = (function() {
 
   /**
    * A Collection of Tests.
@@ -11,7 +11,7 @@ quail.lib.SuccessCriteria = (function () {
   // Prototype object of the SuccessCriteria.
   SuccessCriteria.fn = SuccessCriteria.prototype = {
     constructor: SuccessCriteria,
-    init: function (options) {
+    init: function(options) {
       // Event listeners.
       this.listeners = {};
 
@@ -31,17 +31,17 @@ quail.lib.SuccessCriteria = (function () {
     length: 0,
     // Details of the test.
     attributes: null,
-    get: function (attr) {
+    get: function(attr) {
       // Return the document wrapped in jQuery if scope is not defined.
       if (attr === '$scope') {
-        var scope = this.attributes['scope'];
-        var $scope = $(this.attributes['scope']);
+        var scope = this.attributes.scope;
+        var $scope = $(this.attributes.scope);
         // @todo, pass in a ref to jQuery to this module.
         return (this.attributes[attr]) ? this.attributes[attr] : ((scope) ? $scope : $(document));
       }
       return this.attributes[attr];
     },
-    set: function (attr, value) {
+    set: function(attr, value) {
       var isStatusChanged = false;
       // Allow an object of attributes to be passed in.
       if (typeof attr === 'object') {
@@ -63,7 +63,7 @@ quail.lib.SuccessCriteria = (function () {
     /**
      * Execute a callback for every element in the matched set.
      */
-    each: function (iterator) {
+    each: function(iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
@@ -79,7 +79,7 @@ quail.lib.SuccessCriteria = (function () {
     /**
      * Add a Case to the Success Criteria instance, keyed by selector.
      */
-    add: function (_case) {
+    add: function(_case) {
       if (!this.find(_case.get('selector'))) {
         this.push(_case);
       }
@@ -87,7 +87,7 @@ quail.lib.SuccessCriteria = (function () {
     /**
      * Finds a case by its selector.
      */
-    find: function (selector) {
+    find: function(selector) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('selector') === selector) {
           return this[i];
@@ -101,7 +101,7 @@ quail.lib.SuccessCriteria = (function () {
      * There is a preEvaluator function run before tests are added to make sure
      * that the test is actually needed.
      */
-    registerTests: function (testCollection) {
+    registerTests: function(testCollection) {
       var preEvaluator = this.get('preEvaluator');
       var hasPreEvaluator = typeof preEvaluator !== 'undefined';
       // true means we'll run all the tests as usual, false, we skip the whole thing.
@@ -118,14 +118,14 @@ quail.lib.SuccessCriteria = (function () {
     /**
      * Returns a collection of tests for this success criteria.
      */
-    filterTests: function (tests) {
+    filterTests: function(tests) {
       var criteriaTests = new quail.lib.TestCollection();
       var name = this.get('name');
       if (!name) {
         throw new Error('Success Criteria instances require a name in order to have tests filtered.');
       }
       var identifier = name.split(':')[1];
-      tests.each(function (index, test) {
+      tests.each(function(index, test) {
         var guidelineCoverage = test.getGuidelineCoverage('wcag');
         // Get tests for this success criteria.
         for (var criteriaID in guidelineCoverage) {
@@ -144,7 +144,7 @@ quail.lib.SuccessCriteria = (function () {
      * @param string conclusion
      * @param quail.lib.Case _case
      */
-    addConclusion: function (conclusion, _case) {
+    addConclusion: function(conclusion, _case) {
       if (!this.get('results')[conclusion]) {
         this.get('results')[conclusion] = quail.lib.Test();
       }
@@ -155,15 +155,15 @@ quail.lib.SuccessCriteria = (function () {
       }
       ++(this.get('totals')[conclusion]);
       // Incremement totals for the number of cases found.
-      if (!this.get('totals')['cases']) {
-        this.get('totals')['cases'] = 0;
+      if (!this.get('totals').cases) {
+        this.get('totals').cases = 0;
       }
-      ++(this.get('totals')['cases']);
+      ++(this.get('totals').cases);
     },
     /**
      * Runs the evaluator callbacks against the completed TestCollection.
      */
-    evaluate: function (eventName, testCollection) {
+    evaluate: function(eventName, testCollection) {
       if (this.get('status') !== 'inapplicable') {
         var sc = this;
         var associatedTests = this.filterTests(testCollection);
@@ -174,8 +174,8 @@ quail.lib.SuccessCriteria = (function () {
           this.set('status', 'noTestCoverage');
         }
         else {
-          associatedTests.each(function (index, test) {
-            test.each(function (index, _case) {
+          associatedTests.each(function(index, test) {
+            test.each(function(index, _case) {
               sc.addConclusion(_case.get('status'), _case);
             });
           });
@@ -192,18 +192,18 @@ quail.lib.SuccessCriteria = (function () {
     /**
      * Dispatches the complete event.
      */
-    report: function () {
+    report: function() {
       var args = Array.prototype.slice.call(arguments);
-      args = [].concat(['successCriteriaEvaluated', this, this.get('tests')], args);
+      args = [].concat([ 'successCriteriaEvaluated', this, this.get('tests') ], args);
       this.dispatch.apply(this, args);
     },
     // @todo, make this a set of methods that all classes extend.
-    listenTo: function (dispatcher, eventName, handler) {
+    listenTo: function(dispatcher, eventName, handler) {
       // @todo polyfill Function.prototype.bind.
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
-    registerListener: function (eventName, handler) {
+    registerListener: function(eventName, handler) {
       // nb: 'this' is the dispatcher object, not the one that invoked listenTo.
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
@@ -211,10 +211,10 @@ quail.lib.SuccessCriteria = (function () {
 
       this.listeners[eventName].push(handler);
     },
-    dispatch: function (eventName) {
+    dispatch: function(eventName) {
       if (this.listeners[eventName] && this.listeners[eventName].length) {
         var eventArgs = [].slice.call(arguments);
-        this.listeners[eventName].forEach(function (handler) {
+        this.listeners[eventName].forEach(function(handler) {
           // Pass any additional arguments from the event dispatcher to the
           // handler function.
           handler.apply(null, eventArgs);

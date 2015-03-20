@@ -24,10 +24,10 @@ quail.components.event = function(quail, test, Case, options) {
       expected: expected
     }));
     if ((hasOnListener || hasjQueryOnListener) && (!hasCorrespondingEvent || !hasSpecificCorrespondingEvent)) {
-      _case.set({status: 'failed'});
+      _case.set({ status: 'failed' });
     }
     else {
-      _case.set({status: 'passed'});
+      _case.set({ status: 'passed' });
     }
   });
 };

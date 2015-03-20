@@ -3,7 +3,7 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html
  */
-quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
+quail.guidelines.wcag.successCriteria['1.4.3'] = (function(quail) {
 
   /**
    * Determines if this Success Criteria applies to the document.
@@ -27,7 +27,7 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
     //   // Find the tests to evaluate.
     //   var cssTextHasContrast = tests.find('cssTextHasContrast');
     //   // Cycle through the cases in the Success Criteria.
-    //   sc.each(function (index, _case) {
+    //   sc.each(function(index, _case) {
     //     var selector = _case.get('selector');
     //     var conclusion = 'untested';
     //     var testCase, caseGroups;

@@ -9,7 +9,7 @@ quail.components.color = {
      * Returns the lumosity of a given foreground and background object,
      * in the format of {r: red, g: green, b: blue } in rgb color values.
      */
-    getLuminosity : function(foreground, background) {
+    getLuminosity: function(foreground, background) {
       var cacheKey = 'getLuminosity_' + foreground + '_' + background;
       foreground = this.cleanup(foreground);
       background = this.cleanup(background);
@@ -18,24 +18,24 @@ quail.components.color = {
         return this.cache[cacheKey];
       }
 
-      var RsRGB = foreground.r/255;
-      var GsRGB = foreground.g/255;
-      var BsRGB = foreground.b/255;
-      var R = (RsRGB <= 0.03928) ? RsRGB/12.92 : Math.pow((RsRGB+0.055)/1.055, 2.4);
-      var G = (GsRGB <= 0.03928) ? GsRGB/12.92 : Math.pow((GsRGB+0.055)/1.055, 2.4);
-      var B = (BsRGB <= 0.03928) ? BsRGB/12.92 : Math.pow((BsRGB+0.055)/1.055, 2.4);
+      var RsRGB = foreground.r / 255;
+      var GsRGB = foreground.g / 255;
+      var BsRGB = foreground.b / 255;
+      var R = (RsRGB <= 0.03928) ? RsRGB / 12.92 : Math.pow((RsRGB + 0.055) / 1.055, 2.4);
+      var G = (GsRGB <= 0.03928) ? GsRGB / 12.92 : Math.pow((GsRGB + 0.055) / 1.055, 2.4);
+      var B = (BsRGB <= 0.03928) ? BsRGB / 12.92 : Math.pow((BsRGB + 0.055) / 1.055, 2.4);
 
-      var RsRGB2 = background.r/255;
-      var GsRGB2 = background.g/255;
-      var BsRGB2 = background.b/255;
-      var R2 = (RsRGB2 <= 0.03928) ? RsRGB2/12.92 : Math.pow((RsRGB2+0.055)/1.055, 2.4);
-      var G2 = (GsRGB2 <= 0.03928) ? GsRGB2/12.92 : Math.pow((GsRGB2+0.055)/1.055, 2.4);
-      var B2 = (BsRGB2 <= 0.03928) ? BsRGB2/12.92 : Math.pow((BsRGB2+0.055)/1.055, 2.4);
+      var RsRGB2 = background.r / 255;
+      var GsRGB2 = background.g / 255;
+      var BsRGB2 = background.b / 255;
+      var R2 = (RsRGB2 <= 0.03928) ? RsRGB2 / 12.92 : Math.pow((RsRGB2 + 0.055) / 1.055, 2.4);
+      var G2 = (GsRGB2 <= 0.03928) ? GsRGB2 / 12.92 : Math.pow((GsRGB2 + 0.055) / 1.055, 2.4);
+      var B2 = (BsRGB2 <= 0.03928) ? BsRGB2 / 12.92 : Math.pow((BsRGB2 + 0.055) / 1.055, 2.4);
       var l1, l2;
       l1 = (0.2126 * R + 0.7152 * G + 0.0722 * B);
       l2 = (0.2126 * R2 + 0.7152 * G2 + 0.0722 * B2);
 
-      this.cache[cacheKey] = Math.round((Math.max(l1, l2) + 0.05)/(Math.min(l1, l2) + 0.05)*10)/10;
+      this.cache[cacheKey] = Math.round((Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05) * 10) / 10;
       return this.cache[cacheKey];
     },
 
@@ -43,7 +43,7 @@ quail.components.color = {
      * Returns the average color for a given image
      * using a canvas element.
      */
-    fetchImageColorAtPixel : function(img, x, y) {
+    fetchImageColorAtPixel: function (img, x, y) {
       x = typeof x !== 'undefined' ? x : 1;
       y = typeof y !== 'undefined' ? y : 1;
       var can = document.createElement('canvas');
@@ -57,7 +57,7 @@ quail.components.color = {
      * Returns whether an element's color passes
      * WCAG at a certain contrast ratio.
      */
-    passesWCAG : function(element, level) {
+    passesWCAG: function (element, level) {
       return this.passesWCAGColor(element, this.getColor(element, 'foreground'), this.getColor(element, 'background'), level);
     },
 
@@ -65,7 +65,7 @@ quail.components.color = {
      * Returns whether an element's color passes
      * WCAG at a certain contrast ratio.
      */
-    passesWCAGColor : function(element, foreground, background, level) {
+    passesWCAGColor: function (element, foreground, background, level) {
       var pxfsize = quail.components.convertToPx(element.css('fontSize'));
       if (typeof level === 'undefined') {
         if (pxfsize >= 18) {
@@ -88,7 +88,7 @@ quail.components.color = {
      * Returns whether an element's color passes
      * WAI brightness levels.
      */
-    passesWAI : function(element) {
+    passesWAI: function (element) {
       var foreground = this.cleanup(this.getColor(element, 'foreground'));
       var background = this.cleanup(this.getColor(element, 'background'));
       return this.passesWAIColor(foreground, background);
@@ -98,7 +98,7 @@ quail.components.color = {
      * Returns whether an element's color passes
      * WAI brightness levels.
      */
-    passesWAIColor : function(foreground, background) {
+    passesWAIColor: function (foreground, background) {
       return (this.getWAIErtContrast(foreground, background) > 500 &&
               this.getWAIErtBrightness(foreground, background) > 125);
     },
@@ -107,7 +107,7 @@ quail.components.color = {
      * Compused contrast of a foreground and background
      * per the ERT contrast spec.
      */
-    getWAIErtContrast : function(foreground, background) {
+    getWAIErtContrast: function (foreground, background) {
       var diffs = this.getWAIDiffs(foreground, background);
       return diffs.red + diffs.green + diffs.blue;
     },
@@ -116,7 +116,7 @@ quail.components.color = {
      * Computed contrast of a foreground and background
      * per the ERT brightness spec.
      */
-    getWAIErtBrightness : function(foreground, background) {
+    getWAIErtBrightness: function (foreground, background) {
       var diffs = this.getWAIDiffs(foreground, background);
       return ((diffs.red * 299) + (diffs.green * 587) + (diffs.blue * 114)) / 1000;
 
@@ -125,7 +125,7 @@ quail.components.color = {
     /**
      * Returns differences between two colors.
      */
-    getWAIDiffs : function(foreground, background) {
+    getWAIDiffs: function(foreground, background) {
       var diff = { };
       diff.red = Math.abs(foreground.r - background.r);
       diff.green = Math.abs(foreground.g - background.g);
@@ -138,7 +138,7 @@ quail.components.color = {
      * There are some normalizations here for the way
      * different browsers can return colors, and handling transparencies.
      */
-    getColor : function(element, type) {
+    getColor: function (element, type) {
       var self = this;
       if (!element.attr('data-cacheId')) {
         element.attr('data-cacheId', 'id_' + Math.random());
@@ -159,7 +159,7 @@ quail.components.color = {
         return this.cache[cacheKey];
       }
 
-      element.parents().each(function(){
+      element.parents().each(function() {
         var pcolor = $(this).css('background-color');
         if (quail.components.color.colors.hasBackgroundColor(pcolor)) {
           return self.cache[cacheKey] = pcolor;
@@ -173,25 +173,25 @@ quail.components.color = {
     /**
      * Returns an object with rgba taken from a string.
      */
-    cleanup : function(color) {
+    cleanup: function(color) {
       if (typeof color === 'object') {
         return color;
       }
 
       if (color.substr(0, 1) === '#') {
-        return { r : parseInt(color.substr(1, 2), 16),
-                 g : parseInt(color.substr(3, 2), 16),
-                 b : parseInt(color.substr(5, 2), 16),
-                 a : false
+        return { r: parseInt(color.substr(1, 2), 16),
+                 g: parseInt(color.substr(3, 2), 16),
+                 b: parseInt(color.substr(5, 2), 16),
+                 a: false
                };
       }
 
       if (color.substr(0, 3) === 'rgb') {
         color = color.replace('rgb(', '').replace('rgba(', '').replace(')', '').split(',');
-        return { r : color[0],
-                 g : color[1],
-                 b : color[2],
-                 a : ((typeof color[3] === 'undefined') ? false : color[3])
+        return { r: color[0],
+                 g: color[1],
+                 b: color[2],
+                 a: ((typeof color[3] === 'undefined') ? false : color[3])
                };
       }
     },
@@ -269,13 +269,13 @@ quail.components.color = {
       }
 
       var blockSize = 5, // only visit every 5 pixels
-        defaultRGB = {r:0,g:0,b:0}, // for non-supporting envs
+        defaultRGB = { r:0, g:0, b:0 }, // for non-supporting envs
         canvas = document.createElement('canvas'),
         context = canvas.getContext && canvas.getContext('2d'),
         data, width, height,
         i = -4,
         length,
-        rgb = {r:0, g:0, b:0, a:0},
+        rgb = { r:0, g:0, b:0, a:0 },
         count = 0;
 
       if (!context) {
@@ -289,7 +289,7 @@ quail.components.color = {
 
       try {
         data = context.getImageData(0, 0, width, height);
-      } catch(e) {
+      } catch (e) {
         this.cache[cacheKey] = defaultRGB;
         return defaultRGB;
       }
@@ -299,14 +299,14 @@ quail.components.color = {
       while ((i += blockSize * 4) < length) {
         ++count;
         rgb.r += data.data[i];
-        rgb.g += data.data[i+1];
-        rgb.b += data.data[i+2];
+        rgb.g += data.data[i + 1];
+        rgb.b += data.data[i + 2];
       }
 
       // ~~ used to floor values
-      rgb.r = ~~(rgb.r/count);
-      rgb.g = ~~(rgb.g/count);
-      rgb.b = ~~(rgb.b/count);
+      rgb.r = ~~(rgb.r / count);
+      rgb.g = ~~(rgb.g / count);
+      rgb.b = ~~(rgb.b / count);
 
       this.cache[cacheKey] = rgb;
       return rgb;
@@ -362,7 +362,7 @@ quail.components.color = {
       element.css('visibility', 'hidden');
 
       // Get element at position x, y. This only selects visible elements.
-      var el = document.elementFromPoint(x,y);
+      var el = document.elementFromPoint(x, y);
       while (foundIt === undefined && el && el.tagName !== 'BODY' && el.tagName !== 'HTML') {
         el = $(el);
         var bcolor = el.css('backgroundColor');
@@ -411,7 +411,7 @@ quail.components.color = {
       }
 
       // Reset visibility.
-      for(var i = 0; i < scannedElements.length; i++){
+      for (var i = 0; i < scannedElements.length; i++) {
         scannedElements[i].element.css('visibility', scannedElements[i].visibility);
       }
 
@@ -446,7 +446,7 @@ quail.components.color = {
   buildCase: function (test, Case, element, status, id, message) {
     test.add(Case({
       element: element,
-      expected: (function (element, id) {
+      expected: (function(element, id) {
         return quail.components.resolveExpectation(element, id);
       }(element, id)),
       message: message,

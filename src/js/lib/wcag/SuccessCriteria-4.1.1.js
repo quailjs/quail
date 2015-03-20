@@ -3,7 +3,7 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/ensure-compat-parses.html
  */
-quail.guidelines.wcag.successCriteria['4.1.1'] = (function (quail) {
+quail.guidelines.wcag.successCriteria['4.1.1'] = (function(quail) {
   /**
    * Determines if this Success Criteria applies to the document.
    */
