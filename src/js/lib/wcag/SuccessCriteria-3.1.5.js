@@ -3,11 +3,11 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-supplements.html
  */
-quail.guidelines.wcag.successCriteria['3.1.5'] = (function(quail) {
+quail.guidelines.wcag.successCriteria['3.1.5'] = (function (quail) {
   /**
    * Determines if this Success Criteria applies to the document.
    */
-  function preEvaluator() {
+  function preEvaluator () {
     return true;
   }
 

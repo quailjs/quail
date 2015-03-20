@@ -3,11 +3,11 @@
  *
  * @see http://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-programmatic
  */
-quail.guidelines.wcag.successCriteria['1.3.1'] = (function(quail) {
+quail.guidelines.wcag.successCriteria['1.3.1'] = (function (quail) {
   /**
    * Determines if this Success Criteria applies to the document.
    */
-  function preEvaluator() {
+  function preEvaluator () {
     return true;
   }
 

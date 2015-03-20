@@ -1,18 +1,18 @@
 // Iterates over Techniques.
 
-quail.lib.WCAGGuideline = (function() {
+quail.lib.WCAGGuideline = (function () {
 
   /**
    * A Collection of Tests.
    */
-  var WCAGGuideline = function(tests) {
+  var WCAGGuideline = function (tests) {
     return new WCAGGuideline.fn.init(tests);
   };
 
   // Prototype object of the WCAGGuideline.
   WCAGGuideline.fn = WCAGGuideline.prototype = {
     constructor: WCAGGuideline,
-    init: function(config) {
+    init: function (config) {
       if (!config) {
         return this;
       }
@@ -64,7 +64,7 @@ quail.lib.WCAGGuideline = (function() {
     // Setting a length property makes it behave like an array.
     length: 0,
     // Execute a callback for every element in the matched set.
-    each: function(iterator) {
+    each: function (iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
@@ -73,7 +73,7 @@ quail.lib.WCAGGuideline = (function() {
       }
       return this;
     },
-    find: function(testname) {
+    find: function (testname) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           return this[i];
@@ -81,7 +81,7 @@ quail.lib.WCAGGuideline = (function() {
       }
       return null;
     },
-    findTechnique: function(techniqueName) {
+    findTechnique: function (techniqueName) {
       for (var i = 0, il = this.techniques.length; i < il; ++i) {
         if (this.techniques[i].get('name') === techniqueName) {
           return this.techniques[i];
@@ -89,7 +89,7 @@ quail.lib.WCAGGuideline = (function() {
       }
       return null;
     },
-    set: function(testname, details) {
+    set: function (testname, details) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           this[i].set(details);
@@ -100,10 +100,10 @@ quail.lib.WCAGGuideline = (function() {
       this.push(test);
       return test;
     },
-    evaluate: function() {
+    evaluate: function () {
       /* loop through all the techniques and evaluate them against the page. */
     },
-    results: function() {
+    results: function () {
       /* return evaluation results */
       /* Filter by SC? */
     },

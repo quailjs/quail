@@ -3,12 +3,12 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-suggestions.html
  */
-quail.guidelines.wcag.successCriteria['3.3.3'] = (function(quail) {
+quail.guidelines.wcag.successCriteria['3.3.3'] = (function (quail) {
 
   /**
    * Determines if this Success Criteria applies to the document.
    */
-  function preEvaluator() {
+  function preEvaluator () {
     var complexInputTypes = [
       //'button', //  Defines a clickable button (mostly used with a JavaScript to activate a script)
       'checkbox', //  Defines a checkbox

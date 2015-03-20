@@ -28,7 +28,7 @@ quail.lib.wcag2.TestAggregator = (function () {
    * @param  {array}   tests
    * @param  {Function} callback Given the parameters (test, testcase)
    */
-  function eachTestCase(tests, callback) {
+  function eachTestCase (tests, callback) {
     $.each(tests, function (i, test) {
       test.each(function () {
         callback.call(this, test, this);
@@ -41,7 +41,7 @@ quail.lib.wcag2.TestAggregator = (function () {
    * @param  {Object} tests
    * @return {Array}        Array of HTML elements
    */
-  function getCommonElements(tests) {
+  function getCommonElements (tests) {
     var common = [];
     var map = [];
 
@@ -75,7 +75,7 @@ quail.lib.wcag2.TestAggregator = (function () {
    * @param  {Object} tests
    * @return {Array}        Array of HTML elements
    */
-  function getAllElements(tests) {
+  function getAllElements (tests) {
     var elms = [];
     eachTestCase(tests, function (test, testCase) {
       var elm = testCase.get('element');
@@ -93,7 +93,7 @@ quail.lib.wcag2.TestAggregator = (function () {
    * @param  {object} base Base object for the assert
    * @return {array[assert]}      Array with asserts
    */
-  function createAssertionsForEachElement(elms, base) {
+  function createAssertionsForEachElement (elms, base) {
     var assertions = [];
     // Create asserts for each element
     $.each(elms, function (i, elm) {
@@ -115,7 +115,7 @@ quail.lib.wcag2.TestAggregator = (function () {
    * @param  {Array[Object]} tests
    * @return {Array[Object]}         Array of Asserts
    */
-  function getCombinedAssertions(aggregator, tests) {
+  function getCombinedAssertions (aggregator, tests) {
     var elms = getCommonElements(tests);
     var assertions = createAssertionsForEachElement(elms, {
       testCase: aggregator.id,
@@ -162,7 +162,7 @@ quail.lib.wcag2.TestAggregator = (function () {
    * @param  {Array[Object]} tests
    * @return {Array[Object]}         Array of Asserts
    */
-  function getStackedAssertions(aggregator, tests) {
+  function getStackedAssertions (aggregator, tests) {
     var elms = getAllElements(tests);
     var asserts = createAssertionsForEachElement(elms, {
       testCase: aggregator.id,

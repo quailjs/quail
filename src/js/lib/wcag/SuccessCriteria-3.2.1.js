@@ -3,12 +3,12 @@
  *
  * @see http://www.w3.org/WAI/WCAG20/quickref/#qr-consistent-behavior-receive-focus
  */
-quail.guidelines.wcag.successCriteria['3.2.1'] = (function(quail) {
+quail.guidelines.wcag.successCriteria['3.2.1'] = (function (quail) {
 
   /**
    * Determines if this Success Criteria applies to the document.
    */
-  function preEvaluator() {
+  function preEvaluator () {
     return true;
   }
 

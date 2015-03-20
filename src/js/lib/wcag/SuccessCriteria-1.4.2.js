@@ -3,12 +3,12 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-dis-audio.html
  */
-quail.guidelines.wcag.successCriteria['1.4.2'] = (function(quail) {
+quail.guidelines.wcag.successCriteria['1.4.2'] = (function (quail) {
 
   /**
    * Determines if this Success Criteria applies to the document.
    */
-  function preEvaluator() {
+  function preEvaluator () {
     // This criteria applies if any media objects exist on the page. It's a
     // very crude preEvaluator, to be fair.
     return !!$('audio, video, object, embed').length;

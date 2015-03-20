@@ -13,7 +13,7 @@ quail.lib.wcag2 = (function () {
    *
    * @param  {[object]} options Quail options
    */
-  function runWCAG20Quail(options) {
+  function runWCAG20Quail (options) {
     if (options.wcag2Structure && options.accessibilityTests && options.preconditionTests) {
       startWCAG20Quail(
           options,
@@ -36,7 +36,7 @@ quail.lib.wcag2 = (function () {
     }
   }
 
-  function startWCAG20Quail(options, wcag2Call, tests, preconditionTests) {
+  function startWCAG20Quail (options, wcag2Call, tests, preconditionTests) {
     var criteria, accessibilityTests, knownTests;
     var allTests = [];
 
@@ -73,7 +73,7 @@ quail.lib.wcag2 = (function () {
   }
 
 
-  function createCallback(criteria, callback) {
+  function createCallback (criteria, callback) {
     return function (status, data) {
       if (status === 'complete') {
         data = $.map(criteria, function (criterion) {

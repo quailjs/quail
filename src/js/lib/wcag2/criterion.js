@@ -1,7 +1,7 @@
 quail.lib.wcag2.Criterion = (function () {
 
   // Provide default values for the assert objects
-  function aggregateParts(parts, defaultResult) {
+  function aggregateParts (parts, defaultResult) {
     var getResultPriority = quail.lib.wcag2.EarlAssertion.getResultPriority;
     var outcome = {result: defaultResult};
 

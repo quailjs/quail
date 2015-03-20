@@ -1,4 +1,4 @@
-quail.lib.Technique = (function() {
+quail.lib.Technique = (function () {
 
   /**
    * A collection of Cases.
@@ -10,7 +10,7 @@ quail.lib.Technique = (function() {
   // Prototype object of the Technique.
   Technique.fn = Technique.prototype = {
     constructor: Technique,
-    init: function(name, attributes) {
+    init: function (name, attributes) {
       this.listeners = {};
       if (!name) {
         return this;
@@ -25,7 +25,7 @@ quail.lib.Technique = (function() {
     // Details of the test.
     attributes: {},
     // Execute a callback for every element in the matched set.
-    each: function(iterator) {
+    each: function (iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
@@ -34,10 +34,10 @@ quail.lib.Technique = (function() {
       }
       return this;
     },
-    get: function(attr) {
+    get: function (attr) {
       return this.attributes[attr];
     },
-    set: function(attr, value) {
+    set: function (attr, value) {
       // Allow an object of attributes to be passed in.
       if (typeof attr === 'object') {
         for (var prop in attr) {
@@ -52,28 +52,28 @@ quail.lib.Technique = (function() {
       }
       return this;
     },
-    addTest: function() {
+    addTest: function () {
 
     },
-    report: function(eventName, test) {
+    report: function (eventName, test) {
       window.console && window.console.log(this.get('name'), test.status, test, test[0] && test[0].status);
     },
     // @todo, make this a set of methods that all classes extend.
-    listenTo: function(dispatcher, eventName, handler) {
+    listenTo: function (dispatcher, eventName, handler) {
       // @todo polyfill Function.prototype.bind.
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
-    registerListener: function(eventName, handler) {
+    registerListener: function (eventName, handler) {
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
       }
       this.listeners[eventName].push(handler);
     },
-    dispatch: function(eventName) {
+    dispatch: function (eventName) {
       if (this.listeners[eventName] && this.listeners[eventName].length) {
         var eventArgs = [].slice.call(arguments);
-        this.listeners[eventName].forEach(function(handler) {
+        this.listeners[eventName].forEach(function (handler) {
           // Pass any additional arguments from the event dispatcher to the
           // handler function.
           handler.apply(null, eventArgs);

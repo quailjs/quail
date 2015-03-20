@@ -1,4 +1,4 @@
-quail.lib.Section = (function() {
+quail.lib.Section = (function () {
 
   /**
    * A Collection of Tests.
@@ -10,7 +10,7 @@ quail.lib.Section = (function() {
   // Prototype object of the Section.
   Section.fn = Section.prototype = {
     constructor: Section,
-    init: function(id, details) {
+    init: function (id, details) {
       if (!id) {
         return this;
       }
@@ -27,7 +27,7 @@ quail.lib.Section = (function() {
     // Setting a length property makes it behave like an array.
     length: 0,
     // Execute a callback for every element in the matched set.
-    each: function(iterator) {
+    each: function (iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
@@ -36,7 +36,7 @@ quail.lib.Section = (function() {
       }
       return this;
     },
-    find: function(testname) {
+    find: function (testname) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           return this[i];
@@ -45,7 +45,7 @@ quail.lib.Section = (function() {
       // Return an empty Section for chaining.
       return null;
     },
-    set: function(testname, details) {
+    set: function (testname, details) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           this[i].set(details);
@@ -56,12 +56,12 @@ quail.lib.Section = (function() {
       this.push(test);
       return test;
     },
-    addTechnique: function(technique) {
+    addTechnique: function (technique) {
       // Register for result events on the technique.
       //this.listenTo(technique, 'result', this.regiterTechniqueTestResult);
       this.push(technique);
     },
-    regiterTechniqueTestResult: function() {
+    regiterTechniqueTestResult: function () {
 
     },
     push: [].push,

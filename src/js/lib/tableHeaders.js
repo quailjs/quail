@@ -37,7 +37,7 @@
     return map;
   };
 
-  function isColumnHeader(tableMap, cell, x, y) {
+  function isColumnHeader (tableMap, cell, x, y) {
     var height = cell.attr('rowspan') || 1;
     var scope = cell.attr('scope');
     if (scope === 'col') {
@@ -55,7 +55,7 @@
     return true;
   }
 
-  function isRowHeader(tableMap, cell, x, y) {
+  function isRowHeader (tableMap, cell, x, y) {
     var width = cell.attr('colspan') || 1;
     var scope = cell.attr('scope');
 
@@ -75,7 +75,7 @@
     return true;
   }
 
-  function scanHeaders(tableMap, x, y, deltaX, deltaY) {
+  function scanHeaders (tableMap, x, y, deltaX, deltaY) {
     var headerList = $();
     var cell = $(tableMap[y][x]);
     var opaqueHeaders = [];
@@ -139,7 +139,7 @@
   /**
    * Get header cells based on the headers attribute of a cell
    */
-  function getHeadersFromAttr(cell) {
+  function getHeadersFromAttr (cell) {
     var table = cell.closest('table');
     var ids = cell.attr('headers').split(/\s/);
     var headerCells = $();
@@ -151,7 +151,7 @@
     return headerCells;
   }
 
-  function findCellInTableMap(tableMap, cell) {
+  function findCellInTableMap (tableMap, cell) {
     var i = 0;
     var y = 0;
     var x;
@@ -173,7 +173,7 @@
   }
 
 
-  function getHeadersFromScope(cell, tableMap) {
+  function getHeadersFromScope (cell, tableMap) {
     var i;
     var headerCells = $();
     var coords = findCellInTableMap(tableMap, cell);
@@ -197,7 +197,7 @@
   }
 
 
-  function getHeadersFromGroups(cell, tableMap) {
+  function getHeadersFromGroups (cell, tableMap) {
     var cellCoords = findCellInTableMap(tableMap, cell);
     var headers = $();
 

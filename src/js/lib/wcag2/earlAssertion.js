@@ -24,7 +24,7 @@ quail.lib.wcag2.EarlAssertion = (function () {
    * @param {object} base Properties from this object are added to the Assertion
    *                      and override the default.
    */
-  function Assertion(base) {
+  function Assertion (base) {
     $.extend(this, base, defaultAssertion);
     this.outcome = $.extend({}, this.outcome);
   }
