@@ -26,7 +26,8 @@ quail.components.selector = function (quail, test, Case, options) {
         // If a test is defined, then use it
         if (options.test && !$this.is(options.test)) {
           status = 'passed';
-        } else {
+        }
+        else {
           status = 'failed';
         }
 

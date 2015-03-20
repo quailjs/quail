@@ -92,20 +92,24 @@ var htmlTagValidator=function (){
       currentTagName+=character;
       // If the character matches the closing tag second character set the finder function
       // to the endingTagNameFinder
-    } else if (character === closingTagSecondChar) {
+    }
+    else if (character === closingTagSecondChar) {
       setParserFunc(endingTagNameFinder);
       // If the character looks like a commentSecondCharacter(!) then check to see if it's
       // really a comment or a comment with the commentOrDoctypeFinder
-    } else if (character === commentSecondCharacter) {
+    }
+    else if (character === commentSecondCharacter) {
       currentTagName="";
       setParserFunc(commentOrDoctypeFinder);
 
       // If the current tag name is a self closing tag, start looking for a new
       // tag name with startingTagBeginningFinder
-    } else if (selfClosing.indexOf(currentTagName) > -1) {
+    }
+    else if (selfClosing.indexOf(currentTagName) > -1) {
       if (options['strict_self_closing_tags']) {
         setParserFunc(selfClosingEndingSlashFinder);
-      } else {
+      }
+      else {
         currentTagName="";
         setParserFunc(startingTagBeginningFinder);
       }
@@ -114,7 +118,8 @@ var htmlTagValidator=function (){
       //   ignore all the contents of the tag is an ignoredWithin tag (script, style, pre, etc)
       // or
       //   start looking for the matching ending tag.
-    } else {
+    }
+    else {
       var tagObj=tagObject(lIndex, cIndex);
       startingTags.push(tagObj);
 
@@ -122,7 +127,8 @@ var htmlTagValidator=function (){
         currentTagName="";
         goBackNumChars(1);
         setParserFunc(ignoredWithinEndingTagStartFinder);
-      } else {
+      }
+      else {
         currentTagName="";
         goBackNumChars(1);
         setParserFunc(startingTagEndingFinder);
@@ -134,7 +140,8 @@ var htmlTagValidator=function (){
     if (character === selfClosingTagSecondToLastChar) {
       currentTagName='';
       setParserFunc(endingTagBeginningFinder);
-    } else if (character === startingTagLastChar) {
+    }
+    else if (character === startingTagLastChar) {
       throwSelfClosingFormatError(tagObject(lIndex, cIndex));
     }
   };
@@ -183,7 +190,8 @@ var htmlTagValidator=function (){
   var endingTagSlashFinder=function endingTagSlashFinder(character){
     if (character === closingTagSecondChar) {
       setParserFunc(endingTagNameFinder);
-    } else {
+    }
+    else {
       goBackNumChars(1);
       setParserFunc(startingTagNameFinder);
     }
@@ -211,12 +219,14 @@ var htmlTagValidator=function (){
   var ignoredWithinEndingTagNameFinder=function ignoredWithinEndingTagNameFinder(character){
     if (startTagPattern.test(character)) {
       currentTagName+=character;
-    } else {
+    }
+    else {
       var lastStartTag=startingTags.pop();
 
       if (lastStartTag.name === currentTagName) {
         setParserFunc(startingTagBeginningFinder);
-      } else {
+      }
+      else {
         throwEndingTagError(lastStartTag);
       }
       currentTagName="";
@@ -230,7 +240,8 @@ var htmlTagValidator=function (){
     if (doctypeSecondCharacterPattern.test(character)) {
       currentTagName="";
       setParserFunc(startingTagBeginningFinder);
-    } else {
+    }
+    else {
       goBackNumChars(3);
       setParserFunc(commentFinder);
     }
@@ -283,7 +294,8 @@ var htmlTagValidator=function (){
         // matching ending tags are found. If there are any starting tags left at the end of
         // the loop we can assume that the ending tag was never found and throw and error
         // for the last tag in the array, unless the tag is optional closing.
-      } else if (startingTags.length > 0) {
+      }
+      else if (startingTags.length > 0) {
         var lastStartTag=startingTags[startingTags.length - 1];
 
         if(optionalClosing.indexOf(lastStartTag.name) === -1) {

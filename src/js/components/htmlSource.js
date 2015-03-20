@@ -120,7 +120,8 @@ if (typeof Tautologistics !== 'undefined') {
           }
           this._lastTag = node;
         }
-      } else if (element.type === Mode.Attr && this._lastTag) {
+      }
+      else if (element.type === Mode.Attr && this._lastTag) {
         if (!this._lastTag.attributes) {
           this._lastTag.attributes = {};
         }
