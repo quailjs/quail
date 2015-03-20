@@ -74,7 +74,7 @@ quail.lib.Case = (function () {
     hasStatus: function (statuses) {
       // This is a rought test of arrayness.
       if (typeof statuses !== 'object') {
-        statuses = [ statuses ];
+        statuses = [statuses];
       }
       var status = this.get('status');
       for (var i = 0, il = statuses.length; i < il; ++i) {
@@ -113,7 +113,7 @@ quail.lib.Case = (function () {
           // Get the parent node in order to get the innerHTML for the selected
           // element. Trim wrapping whitespace, remove linebreaks and spaces.
           else if (typeof el.outerHTML === 'string') {
-            outerEl = el.outerHTML.trim().replace(/(\r\n|\n|\r)/gm,"").replace(/>\s+</g, '><');
+            outerEl = el.outerHTML.trim().replace(/(\r\n|\n|\r)/gm, '').replace(/>\s+</g, '><');
             // Guard against insanely long elements.
             // @todo, make this length configurable eventually.
             if (outerEl.length > 200) {
