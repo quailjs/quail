@@ -1,5 +1,4 @@
 {
-  "preset": "jquery",
   "disallowKeywords": ["with"],
   "disallowMultipleLineBreaks": true,
   "disallowNewlineBeforeBlockStatements": true,
