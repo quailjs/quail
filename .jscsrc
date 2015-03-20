@@ -70,8 +70,7 @@
     "while",
     "with",
     "return",
-    "typeof",
-    "function"
+    "typeof"
   ],
   "requireSpaceAfterLineComment": true,
   "requireSpaceBeforeBinaryOperators": [
