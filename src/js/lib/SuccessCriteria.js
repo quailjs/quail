@@ -165,7 +165,7 @@ quail.lib.SuccessCriteria = (function () {
      */
     evaluate: function (eventName, testCollection) {
       if (this.get('status') !== 'inapplicable') {
-        var sc = this;
+        var self = this;
         var associatedTests = this.filterTests(testCollection);
 
         // If there are no associated tests, then this Success
@@ -176,7 +176,7 @@ quail.lib.SuccessCriteria = (function () {
         else {
           associatedTests.each(function (index, test) {
             test.each(function (index, _case) {
-              sc.addConclusion(_case.get('status'), _case);
+              self.addConclusion(_case.get('status'), _case);
             });
           });
           if (size(this.get('results')) === 0) {
@@ -194,7 +194,7 @@ quail.lib.SuccessCriteria = (function () {
      */
     report: function () {
       var args = Array.prototype.slice.call(arguments);
-      args = [].concat([ 'successCriteriaEvaluated', this, this.get('tests') ], args);
+      args = [].concat(['successCriteriaEvaluated', this, this.get('tests')], args);
       this.dispatch.apply(this, args);
     },
     // @todo, make this a set of methods that all classes extend.
