@@ -34,12 +34,12 @@ quail.lib.TestCollection = (function () {
     length: 0,
     // Invoke all the tests in a set.
     run: function (callbacks) {
-      var tc = this;
+      var self = this;
       callbacks = callbacks || {};
       this.each(function (index, test) {
         // Allow a prefilter to remove a case.
         if (callbacks.preFilter) {
-          tc.listenTo(test, 'resolve', function (eventName, test, _case) {
+          self.listenTo(test, 'resolve', function (eventName, test, _case) {
             var result = callbacks.preFilter(eventName, test, _case);
             if (result === false) {
               // Manipulate the attributes directly so that change events
@@ -51,18 +51,18 @@ quail.lib.TestCollection = (function () {
         }
         // Allow the invoker to listen to resolve events on each Case.
         if (callbacks.caseResolve) {
-          tc.listenTo(test, 'resolve', callbacks.caseResolve);
+          self.listenTo(test, 'resolve', callbacks.caseResolve);
         }
         // Allow the invoker to listen to complete events on each Test.
         if (callbacks.testComplete) {
-          tc.listenTo(test, 'complete', callbacks.testComplete);
+          self.listenTo(test, 'complete', callbacks.testComplete);
         }
       });
 
       // Allow the invoker to listen to complete events for the
       // TestCollection.
       if (callbacks.testCollectionComplete) {
-        tc.listenTo(tc, 'complete', callbacks.testCollectionComplete);
+        self.listenTo(self, 'complete', callbacks.testCollectionComplete);
       }
 
       // Set the test complete method to the closure function that dispatches
@@ -123,7 +123,7 @@ quail.lib.TestCollection = (function () {
     findByGuideline: function (guidelineName) {
 
       var methods = {
-        'wcag': function (section, technique) {
+        wcag: function (section, technique) {
 
           function findAllTestsForTechnique (guidelineName, sectionId, techniqueName) {
             // Return a TestCollection instance.
@@ -172,7 +172,7 @@ quail.lib.TestCollection = (function () {
       // A single status or an array of statuses is allowed. Always act on an
       // array.
       if (typeof statuses === 'string') {
-        statuses = [ statuses ];
+        statuses = [statuses];
       }
       // Loop the through the statuses and find tests with them.
       for (var i = 0, il = statuses.length; i < il; ++i) {
@@ -286,19 +286,19 @@ quail.lib.TestCollection = (function () {
 
     var timeout, result;
     return function () {
-      var context = this;
+      var self = this;
       var args = arguments;
       var later = function () {
         timeout = null;
         if (!immediate) {
-          result = func.apply(context, args);
+          result = func.apply(self, args);
         }
       };
       var callNow = immediate && !timeout;
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
       if (callNow) {
-        result = func.apply(context, args);
+        result = func.apply(self, args);
       }
       return result;
     };
