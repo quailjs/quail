@@ -2,6 +2,13 @@
 <html>
   <head>
     <title>pNotUsedAsHeader</title>
+
+    <style type="text/css">
+      blockquote.styled {
+        font-style: italic;
+        font-family: Georgia, Times, "Times New Roman", serif;
+      }
+    </style>
   </head>
   <body>
     <p id="paragraph-with-strong"><strong>Headline: foo bar.</strong></p>
@@ -34,5 +41,25 @@
     </div>
 
     <p id="regular-paragraph">This is a regular paragraph</p>
+
+    <div>
+        <p>Foo.</p>
+        <blockquote class="styled">
+          <p id="paragraph-in-block-quote">Bar.</p>
+        </blockquote>
+    </div>
+
+    <div>
+      <table style="font-size:12.3199996948242px; line-height:1.5em;">
+        <tbody>
+          <tr>
+            <td>
+              <p id="paragraph-in-a-table">asd</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p id="paragraph-following-a-table"><strong>foo</strong> - bar baz bom.</p>
+    </div>
   </body>
 </html>

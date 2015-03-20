@@ -1,6 +1,10 @@
 QUAIL Changelog
 ===============
 
+2.2.17
+------
+- Added --output option to the commandline
+
 2.2.16
 ------
 - Fixes for pNotUsedAsHeader (@mlewand)

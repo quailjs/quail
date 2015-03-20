@@ -42,6 +42,10 @@ _BROWSER=chrome node ./test/assessmentSpecs/testRunner.js
 node ./test/assessmentSpecs/testrunner.js -I aAdjacentWithSameResourceShouldBeCombined
 ```
 
+## Notice for developers working in the 2.2.x version.
+
+Please base your changes on the [```master-2.2.x```](https://github.com/quailjs/quail/tree/master-2.2.x) branch.
+
 Quail: Accessibility Information Library
 ========================================
 **The project website is [quailjs.org](http://quailjs.org/).**
@@ -108,7 +112,8 @@ Once the command is set up, you can run the following to test any addressable we
 quail --url=http://some.domain.com/page.html
 ```
 
-The script will run and write the output to ```./analyses```
+The script will run and write the output to ```./analyses```. To change the
+output folder use the ```--output``` flag.
 
 Documentation
 -------------
