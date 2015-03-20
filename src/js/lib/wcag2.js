@@ -8,9 +8,9 @@ quail.lib.wcag2 = (function () {
    *
    * Options can be used either to tell Quail where to load the wcag2 structure file
    * or to give it directly (if it's already loaded). For the first, jsonPath
-   * must be provided. For the second the wcag2.json data must be given to 
+   * must be provided. For the second the wcag2.json data must be given to
    * options.wcag2Structure and the tests data to options.accessibilityTests.
-   * 
+   *
    * @param  {[object]} options Quail options
    */
   function runWCAG20Quail(options) {
