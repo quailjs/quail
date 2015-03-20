@@ -14,20 +14,20 @@ quail.guidelines.wcag.successCriteria['1.2.5'] = (function (quail) {
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
   var sc = quail.lib.SuccessCriteria({
-    'name': 'wcag:1.2.5',
+    name: 'wcag:1.2.5',
     preEvaluator: preEvaluator
   });
 
   // Techniques
   sc.techniques = {
-    'G78': 'Providing a second, user-selectable, audio track that includes audio descriptions',
+    G78: 'Providing a second, user-selectable, audio track that includes audio descriptions',
     // OR
-    'G173': 'Providing a version of a movie with audio descriptions',
+    G173: 'Providing a version of a movie with audio descriptions',
     // OR
     'SC1.2.8': 'Providing a movie with extended audio descriptions',
-    'G8': 'Providing a movie with extended audio descriptions',
+    G8: 'Providing a movie with extended audio descriptions',
     // OR if a talking head video
-    'G203': 'Using a static text alternative to describe a talking head video'
+    G203: 'Using a static text alternative to describe a talking head video'
   };
 
   // Failures

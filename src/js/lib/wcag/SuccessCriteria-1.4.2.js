@@ -16,20 +16,20 @@ quail.guidelines.wcag.successCriteria['1.4.2'] = (function (quail) {
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
   var sc = quail.lib.SuccessCriteria({
-    'name': 'wcag:1.4.2',
+    name: 'wcag:1.4.2',
     preEvaluator: preEvaluator
   });
 
   // Techniques
   sc.techniques = {
-    'G60': 'Playing a sound that turns off automatically within three seconds',
-    'G170': 'Providing a control near the beginning of the Web page that turns off sounds that play automatically',
-    'G171': 'Playing sounds only on user request'
+    G60: 'Playing a sound that turns off automatically within three seconds',
+    G170: 'Providing a control near the beginning of the Web page that turns off sounds that play automatically',
+    G171: 'Playing sounds only on user request'
   };
 
   // Failures
   sc.failures = {
-    'F23': 'Playing a sound longer than 3 seconds where there is no mechanism to turn it off'
+    F23: 'Playing a sound longer than 3 seconds where there is no mechanism to turn it off'
   };
 
   return sc;

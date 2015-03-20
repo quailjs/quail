@@ -14,19 +14,19 @@ quail.guidelines.wcag.successCriteria['3.2.1'] = (function (quail) {
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
   var sc = quail.lib.SuccessCriteria({
-    'name': 'wcag:3.2.1',
+    name: 'wcag:3.2.1',
     preEvaluator: preEvaluator
   });
 
   // Techniques
   sc.techniques = {
-    'G107': 'Using "activate" rather than "focus" as a trigger for changes of context'
+    G107: 'Using "activate" rather than "focus" as a trigger for changes of context'
   };
 
   // Failures
   sc.failures = {
-    'F52': 'Opening a new window as soon as a new page is loaded',
-    'F55': 'Using script to remove focus when focus is received'
+    F52: 'Opening a new window as soon as a new page is loaded',
+    F55: 'Using script to remove focus when focus is received'
   };
 
   return sc;

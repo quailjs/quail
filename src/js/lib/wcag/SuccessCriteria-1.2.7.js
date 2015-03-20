@@ -13,7 +13,7 @@ quail.guidelines.wcag.successCriteria['1.2.7'] = (function (quail) {
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
   var sc = quail.lib.SuccessCriteria({
-    'name': 'wcag:1.2.7',
+    name: 'wcag:1.2.7',
     preEvaluator: preEvaluator
   });
 
