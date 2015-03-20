@@ -25,11 +25,11 @@
         // add 'this' to each coordinate in the map based on width and height
         for (i = 0, il = width * height; i < il; i += 1) {
           // Create a new row if it doesn't exist yet
-          if (map[y + ~~(i/width)] === undefined) {
-            map[y + ~~(i/width)] = [];
+          if (map[y + ~~(i / width)] === undefined) {
+            map[y + ~~(i / width)] = [];
           }
           // Add the cell to the correct x / y coordinates
-          map[y + ~~(i/width)][x + (i % width)] = this;
+          map[y + ~~(i / width)][x + (i % width)] = this;
         }
       });
 
@@ -42,11 +42,12 @@
     var scope = cell.attr('scope');
     if (scope === 'col') {
       return true;
-    } else if (scopeValues.indexOf(scope) !== -1) {
+    }
+    else if (scopeValues.indexOf(scope) !== -1) {
       return false;
     }
 
-    for (var i = 0; i < height * tableMap[y].length -1; i+=1) {
+    for (var i = 0; i < height * tableMap[y].length - 1; i += 1) {
       var currCell = $(tableMap[y + i % height][~~(i / height)]);
       if (currCell.is('td')) {
         return false;
@@ -61,12 +62,13 @@
 
     if (scope === 'row') {
       return true;
-    } else if (scopeValues.indexOf(scope) !== -1 ||
+    }
+    else if (scopeValues.indexOf(scope) !== -1 ||
     isColumnHeader(tableMap, cell, x, y)) {
       return false;
     }
 
-    for (var i = 0; i < width * tableMap.length -1; i+=1) {
+    for (var i = 0; i < width * tableMap.length - 1; i += 1) {
       var currCell = $(tableMap[~~(i / width)][x + i % width]);
       if (currCell.is('td')) {
         return false;
@@ -90,7 +92,8 @@
       }];
 
       inHeaderBlock = true;
-    } else {
+    }
+    else {
       inHeaderBlock = false;
       headersFromCurrBlock = [];
     }
@@ -111,13 +114,14 @@
         deltaX === -1 && isColumnHeader(tableMap, currCell, x, y)) {
           blocked = true;
 
-        } else {
+        }
+        else {
           $.each(opaqueHeaders, function (i, opaqueHeader) {
             var currSize = +currCell.attr(dir + 'span') || 1;
             var opaqueSize = +$(opaqueHeader.cell).attr(dir + 'span') || 1;
             if (currSize === opaqueSize) {
               if (deltaY === -1 && opaqueHeader.x === x ||
-                  deltaX === -1 && opaqueHeader.y === y)  {
+                  deltaX === -1 && opaqueHeader.y === y) {
                 blocked = true;
               }
             }
@@ -127,7 +131,8 @@
           headerList = headerList.add(currCell);
         }
 
-      } else if (currCell.is('td') && inHeaderBlock === true) {
+      }
+      else if (currCell.is('td') && inHeaderBlock === true) {
         inHeaderBlock = false;
         opaqueHeaders.push(headersFromCurrBlock);
         headersFromCurrBlock = $();
@@ -159,19 +164,21 @@
     while (x === undefined) {
       if (tableMap[y] === undefined) {
         return;
-      } else if (tableMap[y][i] === cell[0]) {
+      }
+      else if (tableMap[y][i] === cell[0]) {
         x = i;
 
-      } else if (i + 1 === tableMap[y].length) {
+      }
+      else if (i + 1 === tableMap[y].length) {
         y += 1;
         i = 0;
-      } else {
+      }
+      else {
         i += 1;
       }
     }
     return {x: x, y: y};
   }
-
 
   function getHeadersFromScope (cell, tableMap) {
     var i;
@@ -195,7 +202,6 @@
     }
     return headerCells;
   }
-
 
   function getHeadersFromGroups (cell, tableMap) {
     var cellCoords = findCellInTableMap(tableMap, cell);
@@ -225,7 +231,8 @@
       if ($this.is('[headers]')) {
         headers = headers.add(getHeadersFromAttr($this));
 
-      } else {
+      }
+      else {
         var map = $this.closest('table').getTableMap();
         headers = headers
         .add(getHeadersFromScope($this, map))
@@ -235,6 +242,5 @@
     });
     return headers.not(':empty').not(this);
   };
-
 
 }(jQuery));
