@@ -17,7 +17,7 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
    *
    * Evaluates the Success Criteria.
    */
-  //function evaluator (tests) {
+  // function evaluator (tests) {
     // // The set of tests that were run that pertain to this Success Criteria. This
     // // will be the union of the tests that were run and the required tests.
     // var criteriaTests = sc.filterTests(tests, sc.requiredTests);
@@ -44,7 +44,7 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
     //     sc.addConclusion(conclusion, _case);
     //   });
     // }
-  //}
+  // }
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
   var sc = quail.lib.SuccessCriteria({

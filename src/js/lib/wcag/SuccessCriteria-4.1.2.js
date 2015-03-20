@@ -110,7 +110,7 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
     ARIA14: 'Using aria-label to provide an invisible label where a visible label cannot be used',
     ARIA16: 'Using aria-labelledby to provide a name for user interface controls',
     G108: 'Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes using technology-specific techniques below:',
-    //AND
+    // AND
     H91: 'Using HTML form controls and links',
     H44: 'Using label elements to associate text labels with form controls',
     H64: 'Using the title attribute of the frame and iframe elements',

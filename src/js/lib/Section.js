@@ -58,7 +58,7 @@ quail.lib.Section = (function () {
     },
     addTechnique: function (technique) {
       // Register for result events on the technique.
-      //this.listenTo(technique, 'result', this.regiterTechniqueTestResult);
+      // this.listenTo(technique, 'result', this.regiterTechniqueTestResult);
       this.push(technique);
     },
     regiterTechniqueTestResult: function () {
