@@ -220,6 +220,7 @@ module.exports = function(grunt) {
         'lib/customAssertions/**/*.js',
         'lib/development/**/*.js',
         'lib/evaluators/**/*.js',
+        'lib/assessments/**/*.js',
         'lib/*.js'
       ]
     }
