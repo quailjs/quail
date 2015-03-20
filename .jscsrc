@@ -111,7 +111,7 @@
     "beforeOpeningRoundBrace": true,
     "beforeOpeningCurlyBrace": true
   },
-  "safeContextKeyword": ["self"],
+  "safeContextKeyword": ["self", "that"],
   "validateIndentation": 2,
   "validateQuoteMarks": "'",
   "validateParameterSeparator": ", "
