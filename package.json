@@ -49,7 +49,7 @@
     "grunt-convert": "~0.1.5",
     "grunt-execute": "^0.2.2",
     "grunt-gh-pages": "~0.8.1",
-    "grunt-jscs": "^0.8.1",
+    "grunt-jscs": "^1.5.0",
     "grunt-karma": "^0.9.0",
     "karma": "^0.12.24",
     "karma-chai": "^0.1.0",
