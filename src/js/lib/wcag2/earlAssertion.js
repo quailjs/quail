@@ -14,7 +14,6 @@ quail.lib.wcag2.EarlAssertion = (function () {
     mode: 'automated'
   };
 
-
   if (window && window.location) {
     pageUrl = window.location.href;
   }
@@ -29,7 +28,6 @@ quail.lib.wcag2.EarlAssertion = (function () {
     this.outcome = $.extend({}, this.outcome);
   }
 
-
   /**
    * Return the priorty index of the result
    * @param  {result|assert|outcome} val
@@ -39,7 +37,8 @@ quail.lib.wcag2.EarlAssertion = (function () {
     if (typeof val === 'object') {
       if (val.outcome) {
         val = val.outcome.result;
-      } else {
+      }
+      else {
         val = val.result;
       }
     }

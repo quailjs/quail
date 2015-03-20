@@ -152,7 +152,6 @@ quail.lib.wcag2.TestAggregator = (function () {
     return assertions;
   }
 
-
   /**
    * Stack the test results of a aggregator into asserts
    *

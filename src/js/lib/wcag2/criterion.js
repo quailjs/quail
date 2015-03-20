@@ -13,7 +13,6 @@ quail.lib.wcag2.Criterion = (function () {
     return outcome;
   }
 
-
   function constructor (data, testDefinitions, preconditionDefinitions, subject) {
     var testAggregators = [];
     var criterion = {};
@@ -40,7 +39,6 @@ quail.lib.wcag2.Criterion = (function () {
         preconditionTest, preconditionDefinitions, subject
       ));
     }
-
 
     criterion.getResult = function (data) {
       var result;

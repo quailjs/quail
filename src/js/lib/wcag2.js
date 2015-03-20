@@ -21,7 +21,8 @@ quail.lib.wcag2 = (function () {
           options.accessibilityTests,
           options.preconditionTests);
 
-    } else {
+    }
+    else {
       // Load the required json files
       $.when(
         $.ajax(options.jsonPath + '/wcag2.json', ajaxOpt),
@@ -32,7 +33,6 @@ quail.lib.wcag2 = (function () {
       .done(function (wcag2Call, testsCall, preconditionCall) {
         startWCAG20Quail(options, wcag2Call[0], testsCall[0], preconditionCall[0]);
       });
-
     }
   }
 
@@ -71,7 +71,6 @@ quail.lib.wcag2 = (function () {
           criteria, options.testCollectionComplete)
     });
   }
-
 
   function createCallback (criteria, callback) {
     return function (status, data) {
