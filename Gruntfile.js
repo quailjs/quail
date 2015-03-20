@@ -215,8 +215,10 @@ module.exports = function(grunt) {
         config: '.jscsrc'
       },
       files: [
-        'src/**/*.js',
-        'lib/**/*.js'
+        'lib/customAssertions/**/*.js',
+        'lib/development/**/*.js',
+        'lib/evaluators/**/*.js',
+        'lib/*.js'
       ]
     }
   });
