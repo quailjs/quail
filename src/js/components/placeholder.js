@@ -53,7 +53,7 @@ quail.components.placeholder = function (quail, test, Case, options) {
       else if (options.empty && quail.isUnreadable(text)) {
         resolve(this, 'failed');
       }
-      else if (quail.strings.placeholders.indexOf(text) > -1 ) {
+      else if (quail.strings.placeholders.indexOf(text) > -1) {
         resolve(this, 'failed');
       }
       // It passes.
