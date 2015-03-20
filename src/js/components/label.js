@@ -1,8 +1,8 @@
-quail.components.label = function(quail, test, Case, options) {
+quail.components.label = function (quail, test, Case, options) {
   var $scope = test.get('$scope');
-  $scope.each(function() {
+  $scope.each(function () {
     var $local = $(this);
-    $local.find(options.selector).each(function() {
+    $local.find(options.selector).each(function () {
       if ((!$(this).parent('label').length ||
         !$local.find('label[for=' + $(this).attr('id') + ']').length ||
           !quail.containsReadableText($(this).parent('label'))) &&

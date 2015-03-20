@@ -12,9 +12,9 @@ quail.components.video = {
    * @return Boolean
    *   Whether the element is a video.
    */
-  isVideo: function(element) {
+  isVideo: function (element) {
     var isVideo = false;
-    $.each(this.providers, function() {
+    $.each(this.providers, function () {
       if (element.is(this.selector) && this.isVideo(element)) {
         isVideo = true;
       }
@@ -22,9 +22,9 @@ quail.components.video = {
     return isVideo;
   },
 
-  findVideos: function(element, callback) {
-    $.each(this.providers, function(name, provider) {
-      element.find(this.selector).each(function() {
+  findVideos: function (element, callback) {
+    $.each(this.providers, function (name, provider) {
+      element.find(this.selector).each(function () {
         var video = $(this);
         if (provider.isVideo(video)) {
           provider.hasCaptions(video, callback);
@@ -41,11 +41,11 @@ quail.components.video = {
 
       apiUrl: 'http://gdata.youtube.com/feeds/api/videos/?q=%video&caption&v=2&alt=json',
 
-      isVideo: function(element) {
+      isVideo: function (element) {
         return (this.getVideoId(element) !== false) ? true : false;
       },
 
-      getVideoId: function(element) {
+      getVideoId: function (element) {
         var attribute = (element.is('iframe')) ? 'src' : 'href';
         var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&\?]*).*/;
         var match = element.attr(attribute).match(regExp);
@@ -55,13 +55,13 @@ quail.components.video = {
         return false;
       },
 
-      hasCaptions: function(element, callback) {
+      hasCaptions: function (element, callback) {
         var videoId = this.getVideoId(element);
         $.ajax({
           url: this.apiUrl.replace('%video', videoId),
           async: false,
           dataType: 'json',
-          success: function(data) {
+          success: function (data) {
             callback(element, (data.feed.openSearch$totalResults.$t > 0));
           }
         });
@@ -72,12 +72,12 @@ quail.components.video = {
 
       selector: 'object',
 
-      isVideo: function(element) {
+      isVideo: function (element) {
         var isVideo = false;
         if (element.find('param').length === 0) {
           return false;
         }
-        element.find('param[name=flashvars]').each(function() {
+        element.find('param[name=flashvars]').each(function () {
           if ($(this).attr('value').search(/\.(flv|mp4)/i) > -1) {
             isVideo = true;
           }
@@ -85,9 +85,9 @@ quail.components.video = {
         return isVideo;
       },
 
-      hasCaptions: function(element, callback) {
+      hasCaptions: function (element, callback) {
         var hasCaptions = false;
-        element.find('param[name=flashvars]').each(function() {
+        element.find('param[name=flashvars]').each(function () {
           if (($(this).attr('value').search('captions') > -1 &&
              $(this).attr('value').search('.srt') > -1) ||
              $(this).attr('value').search('captions.pluginmode') > -1) {
@@ -102,11 +102,11 @@ quail.components.video = {
 
       selector: 'video',
 
-      isVideo: function(element) {
+      isVideo: function (element) {
         return element.is('video');
       },
 
-      hasCaptions: function(element, callback) {
+      hasCaptions: function (element, callback) {
         var $captions = element.find('track[kind=subtitles], track[kind=captions]');
         if (!$captions.length) {
           callback(element, false);
@@ -117,22 +117,21 @@ quail.components.video = {
           language = element.parents('[lang]').first().attr('lang').split('-')[0];
         }
         var foundLanguage = false;
-        $captions.each(function() {
+        $captions.each(function () {
           if (!$(this).attr('srclang') || $(this).attr('srclang').toLowerCase() === language) {
             foundLanguage = true;
             try {
-              var request = $.ajax({ url: $(this).attr('src'),
-                        type: 'HEAD',
-                        async: false,
-                        error: function() { }
-                       });
+              var request = $.ajax({
+                url: $(this).attr('src'),
+                type: 'HEAD',
+                async: false,
+                error: function () {}
+              });
               if (request.status === 404) {
                 foundLanguage = false;
               }
             }
-            catch (e) {
-
-            }
+            catch (e) {}
           }
         });
         if (!foundLanguage) {

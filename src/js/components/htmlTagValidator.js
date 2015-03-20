@@ -5,7 +5,7 @@
  *
  */
 
-var htmlTagValidator=function(){
+var htmlTagValidator=function (){
   var startingTagFirstChar="<",
     startingTagLastChar=">",
     closingTagSecondChar="/",
@@ -53,34 +53,34 @@ var htmlTagValidator=function(){
     "td"
   ];
 
-  var tagObject=function(lIndex, cIndex){
+  var tagObject=function (lIndex, cIndex){
     return {name: currentTagName, line: lIndex + 1, char: cIndex};
   };
 
-  var throwEndingTagError=function(tagObj){
+  var throwEndingTagError=function (tagObj){
     var newError=new Error("Ending tag not found for: " + tagObj.name + " at line: " + tagObj.line + " char: " + tagObj.char + " starting tags: " + startingTags[0].name);
     newError.lineData=tagObj;
     throw newError;
   };
 
-  var throwEndingCommentError=function(commentObj){
+  var throwEndingCommentError=function (commentObj){
     var newError=new Error("Comment ending not found for: `comment` at line: " + commentObj.line + " char: " + commentObj.char);
     newError.lineData=commentObj;
     throw newError;
   };
 
-  var throwSelfClosingFormatError=function(tagObj){
+  var throwSelfClosingFormatError=function (tagObj){
     var newError=new Error("Ending `/` not found for: `" + tagObj.name + "` at line: " + tagObj.line + " char: " + tagObj.char);
     newError.lineData=tagObj.name;
     throw newError;
   };
 
-  var setParserFunc=function(func){
+  var setParserFunc=function (func){
     previousParserFunc=parserFunc;
     parserFunc=func;
   };
 
-  var goBackNumChars=function(num){
+  var goBackNumChars=function (num){
     characterIndex-=num;
   };
 
@@ -253,7 +253,7 @@ var htmlTagValidator=function(){
   };
 
   // Main entry point to the validator, it starts with the `startingTagBeginningFinder` first
-  var checkTags=function(string, opts){
+  var checkTags=function (string, opts){
 
     var returnState = null;
 

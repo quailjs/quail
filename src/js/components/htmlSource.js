@@ -1,7 +1,7 @@
 /*global Tautologistics:true, HtmlBuilder: true */
 quail.components.htmlSource = {
 
-  getHtml: function(callback) {
+  getHtml: function (callback) {
     var that = this;
     if (typeof quail.options.htmlSource !== 'undefined' && quail.options.htmlSource) {
       callback(quail.options.htmlSource, that.parseHtml(quail.options.htmlSource));
@@ -13,14 +13,14 @@ quail.components.htmlSource = {
     }
   },
 
-  traverse: function(parsed, callback, number, alreadyCalled) {
+  traverse: function (parsed, callback, number, alreadyCalled) {
     var that = this;
     if (typeof alreadyCalled === 'undefined') {
       callback(parsed, number, false);
     }
     if (typeof parsed.children !== 'undefined') {
       parsed.childCount = 1;
-      $.each(parsed.children, function(index, child) {
+      $.each(parsed.children, function (index, child) {
         callback(child, parsed.childCount, parsed);
         that.traverse(child, callback, parsed.childCount, true);
         if (child.type === 'tag') {
@@ -29,13 +29,13 @@ quail.components.htmlSource = {
       });
     }
     if ($.isArray(parsed)) {
-      $.each(parsed, function(index, element) {
+      $.each(parsed, function (index, element) {
         that.traverse(element, callback);
       });
     }
   },
 
-  addSelector: function(element, childNumber, parent) {
+  addSelector: function (element, childNumber, parent) {
     if (element.type !== 'tag' || typeof element.name === 'undefined') {
       return;
     }
@@ -64,13 +64,13 @@ quail.components.htmlSource = {
     return element.selector;
   },
 
-  parseHtml: function(html) {
+  parseHtml: function (html) {
     if (typeof Tautologistics === 'undefined') {
       return false;
     }
     // NodeHtmlParser chokes on doctype tags
     html = html.replace(/<!doctype ([^>]*)>/g, '');
-    var handler = new Tautologistics.NodeHtmlParser.HtmlBuilder(function() { }, { });
+    var handler = new Tautologistics.NodeHtmlParser.HtmlBuilder(function () { }, { });
     var parser = new Tautologistics.NodeHtmlParser.Parser(handler);
     parser.parseComplete(html);
     var parsed = handler.dom;
@@ -90,7 +90,7 @@ if (typeof Tautologistics !== 'undefined') {
     Comment: 'comment'
   };
 
-  Tautologistics.NodeHtmlParser.HtmlBuilder.prototype.write = function(element) {
+  Tautologistics.NodeHtmlParser.HtmlBuilder.prototype.write = function (element) {
     // this._raw.push(element);
     if (this._done) {
       this.handleCallback(new Error('Writing to the builder after done() called is not allowed without a reset()'));

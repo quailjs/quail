@@ -2,12 +2,12 @@
  * Test callback for tests that look for script events
  *  (like a mouse event has a keyboard event as well).
  */
-quail.components.event = function(quail, test, Case, options) {
+quail.components.event = function (quail, test, Case, options) {
   var $scope = test.get('$scope');
   var $items = options.selector && $scope.find(options.selector) || $scope.find('*');
   var searchEvent = options.searchEvent || '';
   var correspondingEvent = options.correspondingEvent || '';
-  $items.each(function() {
+  $items.each(function () {
     var eventName = searchEvent.replace('on', '');
     var hasOnListener = quail.components.hasEventListener($(this), eventName);
     // Determine if the element has jQuery listeners for the event.

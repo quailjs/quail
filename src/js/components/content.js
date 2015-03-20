@@ -14,7 +14,7 @@ quail.components.content = {
    * @return {jQuery}
    *   The jQuery element that is considered the most likely content element.
    */
-  findContent: function($element) {
+  findContent: function ($element) {
     var $topScore = $element;
     //If an element has the ARIA role of "main," it's safe to assume that it is the main content.
     if ($element.is('[role=main]')) {
@@ -27,7 +27,7 @@ quail.components.content = {
     if ($element.find('p').length === 0) {
       return $element;
     }
-    $element.find('p').each(function() {
+    $element.find('p').each(function () {
       var $parent = $(this).parent();
       var element = $parent.get(0);
       var contentScore = $parent.data('content-score') || 0;

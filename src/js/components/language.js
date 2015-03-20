@@ -137,7 +137,7 @@ quail.components.language = {
    * first the browser's default, then the HTML element's 'lang' attribute,
    * then the 'lang' attribute of the element passed to quail.
    */
-  getDocumentLanguage: function(scope, returnIso) {
+  getDocumentLanguage: function (scope, returnIso) {
     var language = navigator.language || navigator.userLanguage;
     if (typeof quail.options.language !== 'undefined') {
       language = quail.options.language;

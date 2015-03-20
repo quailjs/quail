@@ -5,8 +5,8 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.components.selector = function(quail, test, Case, options) {
-  this.get('$scope').each(function() {
+quail.components.selector = function (quail, test, Case, options) {
+  this.get('$scope').each(function () {
     var candidates = $(this).find(options.selector);
     // Passes.
     if (!candidates.length) {

@@ -9,7 +9,7 @@ quail.components.color = {
      * Returns the lumosity of a given foreground and background object,
      * in the format of {r: red, g: green, b: blue } in rgb color values.
      */
-    getLuminosity: function(foreground, background) {
+    getLuminosity: function (foreground, background) {
       var cacheKey = 'getLuminosity_' + foreground + '_' + background;
       foreground = this.cleanup(foreground);
       background = this.cleanup(background);
@@ -125,7 +125,7 @@ quail.components.color = {
     /**
      * Returns differences between two colors.
      */
-    getWAIDiffs: function(foreground, background) {
+    getWAIDiffs: function (foreground, background) {
       var diff = { };
       diff.red = Math.abs(foreground.r - background.r);
       diff.green = Math.abs(foreground.g - background.g);
@@ -159,7 +159,7 @@ quail.components.color = {
         return this.cache[cacheKey];
       }
 
-      element.parents().each(function() {
+      element.parents().each(function () {
         var pcolor = $(this).css('background-color');
         if (quail.components.color.colors.hasBackgroundColor(pcolor)) {
           return self.cache[cacheKey] = pcolor;
@@ -173,7 +173,7 @@ quail.components.color = {
     /**
      * Returns an object with rgba taken from a string.
      */
-    cleanup: function(color) {
+    cleanup: function (color) {
       if (typeof color === 'object') {
         return color;
       }
@@ -199,7 +199,7 @@ quail.components.color = {
     /**
      * Returns background image of an element or its parents.
      */
-    getBackgroundImage: function(element) {
+    getBackgroundImage: function (element) {
       if (!element.attr('data-cacheId')) {
         element.attr('data-cacheId', 'id_' + Math.random());
       }
@@ -224,7 +224,7 @@ quail.components.color = {
     /**
      * Returns background image of an element or its parents.
      */
-    getBackgroundGradient: function(element) {
+    getBackgroundGradient: function (element) {
       if (!element.attr('data-cacheId')) {
         element.attr('data-cacheId', 'id_' + Math.random());
       }
@@ -234,7 +234,7 @@ quail.components.color = {
         return this.cache[cacheKey];
       }
 
-      var notEmpty = function(s) {
+      var notEmpty = function (s) {
         return $.trim(s) !== '';
       };
       element = element[0];
@@ -262,7 +262,7 @@ quail.components.color = {
     /**
      * Calculates average color of an image.
      */
-    getAverageRGB: function(img) {
+    getAverageRGB: function (img) {
       var cacheKey = img.src;
       if (this.cache[cacheKey] !== undefined) {
         return this.cache[cacheKey];
@@ -315,7 +315,7 @@ quail.components.color = {
     /**
      * Convert color to hex value.
      */
-    colorToHex: function(c) {
+    colorToHex: function (c) {
       var m = /rgba?\((\d+), (\d+), (\d+)/.exec(c);
       return m ? '#' + (1 << 24 | m[1] << 16 | m[2] << 8 | m[3]).toString(16).substr(1) : c;
     },
@@ -323,14 +323,14 @@ quail.components.color = {
     /**
      * Check if element has a background color.
      */
-    hasBackgroundColor: function(bcolor) {
+    hasBackgroundColor: function (bcolor) {
       return bcolor !== 'rgba(0, 0, 0, 0)' && bcolor !== 'transparent';
     },
 
     /**
      * Traverse visual tree for background property.
      */
-    traverseVisualTreeForBackground: function(element, property) {
+    traverseVisualTreeForBackground: function (element, property) {
       if (!element.attr('data-cacheId')) {
         element.attr('data-cacheId', 'id_' + Math.random());
       }
@@ -340,7 +340,7 @@ quail.components.color = {
         return this.cache[cacheKey];
       }
 
-      var notempty = function(s) {
+      var notempty = function (s) {
         return $.trim(s) !== '';
       };
 
@@ -422,21 +422,21 @@ quail.components.color = {
     /**
      * Get first element behind current with a background color.
      */
-    getBehindElementBackgroundColor: function(element) {
+    getBehindElementBackgroundColor: function (element) {
       return quail.components.color.colors.traverseVisualTreeForBackground(element, 'background-color');
     },
 
     /**
      * Get first element behind current with a background gradient.
      */
-    getBehindElementBackgroundGradient: function(element) {
+    getBehindElementBackgroundGradient: function (element) {
       return quail.components.color.colors.traverseVisualTreeForBackground(element, 'background-gradient');
     },
 
     /**
      * Get first element behind current with a background image.
      */
-    getBehindElementBackgroundImage: function(element) {
+    getBehindElementBackgroundImage: function (element) {
       return quail.components.color.colors.traverseVisualTreeForBackground(element, 'background-image');
     }
   },
@@ -446,7 +446,7 @@ quail.components.color = {
   buildCase: function (test, Case, element, status, id, message) {
     test.add(Case({
       element: element,
-      expected: (function(element, id) {
+      expected: (function (element, id) {
         return quail.components.resolveExpectation(element, id);
       }(element, id)),
       message: message,
