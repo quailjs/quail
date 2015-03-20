@@ -2,7 +2,6 @@
   "disallowKeywords": ["with"],
   "disallowMultipleLineBreaks": true,
   "disallowNewlineBeforeBlockStatements": true,
-  "disallowPaddingNewlinesInBlocks": true,
   "disallowQuotedKeysInObjects": "allButReserved",
   "disallowSpaceAfterObjectKeys": true,
   "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "~", "!"],
