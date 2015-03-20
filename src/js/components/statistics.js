@@ -12,7 +12,7 @@ quail.statistics = {
     var i = numArr.length,
       sum = 0;
     while (i--) {
-      sum += numArr[ i ];
+      sum += numArr[i];
     }
     return quail.statistics.setDecimal((sum / numArr.length), numOfDec);
   },
@@ -23,14 +23,14 @@ quail.statistics = {
       v = 0;
 
     while (i--) {
-      v += Math.pow((numArr[ i ] - avg), 2);
+      v += Math.pow((numArr[i] - avg), 2);
     }
     v /= numArr.length;
     return quail.statistics.setDecimal(v, numOfDec);
   },
 
   standardDeviation: function (numArr, numOfDec) {
-    var stdDev = Math.sqrt(quail.statistics.variance(numArr, numOfDec) );
+    var stdDev = Math.sqrt(quail.statistics.variance(numArr, numOfDec));
     return quail.statistics.setDecimal(stdDev, numOfDec);
   }
 };

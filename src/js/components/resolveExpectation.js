@@ -28,7 +28,7 @@ quail.components.resolveExpectation = function (element, caseID) {
   var expectations = typeof expected === 'string' && expected.split('|');
   // This might be a single case ID expectation.
   if (caseID && expectations.length === 0 && expected.indexOf(':') > -1) {
-    expectations = [ expected ];
+    expectations = [expected];
   }
 
   if (expectations.length > 0 && element.nodeType === 1) {
