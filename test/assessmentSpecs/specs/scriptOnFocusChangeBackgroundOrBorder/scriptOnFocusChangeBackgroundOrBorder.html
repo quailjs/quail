@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <title>scriptOnFocusChangeBackgroundOrBorder</title>
+</head>
+<body>
+  <div>
+    <input id="assert-1" name="num-1" value="0">
+  </div>
+
+  <div>
+    <input id="assert-2" name="num-2" onfocus="jQuery(this).css('background-color', 'red');" onblur="jQuery(this).css('background-color', 'white');" value="0">
+  </div>
+
+  <div>
+    <input id="assert-3" name="num-3" onfocus="jQuery(this).css('background-color', 'red');" value="0">
+  </div>
+</body>
+</html>

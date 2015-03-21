@@ -3958,6 +3958,20 @@ scriptOndblclickRequiresOnKeypress:
   options:
     correspondingEvent: "onkeypress"
     searchEvent: "ondblclick"
+scriptOnFocusChangeBackgroundOrBorder:
+  testability: 0
+  title:
+    en: "Using script to change the background color or border of the element with focus"
+  description:
+    en: "Using script to change the background color or border of the element with focus"
+  guidelines:
+    wcag:
+      2.4.7:
+        techniques:
+          - "SCR31"
+  tags:
+    - "content"
+  callback: "scriptOnFocusChangeBackgroundOrBorder"
 scriptOnmousedownRequiresOnKeypress:
   type: "event"
   testability: 1
