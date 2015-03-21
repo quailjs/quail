@@ -86,10 +86,6 @@
   ],
   "requireSpaceBeforeBlockStatements": true,
   "requireSpaceBeforeObjectValues": true,
-  "requireSpacesInAnonymousFunctionExpression": {
-    "beforeOpeningRoundBrace": true,
-    "beforeOpeningCurlyBrace": true
-  },
   "requireSpacesInConditionalExpression": {
     "afterTest": true,
     "beforeConsequent": true,
