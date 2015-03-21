@@ -19,3 +19,4 @@ analyses/*
 karma_html/*
 tmp
 logs
+phantomjsdriver.log

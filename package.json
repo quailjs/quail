@@ -28,7 +28,6 @@
     "phantomjs": "^1.9.10",
     "q": "^1.1.2",
     "selenium-standalone": "2.43.1-5",
-    "selenium-webdriver": "2.44.0",
     "stdio": "^0.2.7",
     "webdriverio": "2.3.0"
   },
