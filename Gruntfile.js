@@ -217,11 +217,7 @@ module.exports = function(grunt) {
       files: [
         'src/js/lib/**/*.js',
         'src/js/*.js',
-        'lib/customAssertions/**/*.js',
-        'lib/development/**/*.js',
-        'lib/evaluators/**/*.js',
-        'lib/assessments/**/*.js',
-        'lib/*.js'
+        'lib/**/*.js'
       ]
     }
   });
@@ -245,6 +241,7 @@ module.exports = function(grunt) {
     'convert',
     'concat',
     'jshint',
+    'jscs',
     'buildTestFilesJson',
     'buildGuideline',
     'compressTestsJson',
@@ -253,14 +250,19 @@ module.exports = function(grunt) {
   ]);
 
   // Dev task
-  grunt.registerTask('dev', ['convert', 'concat']);
-
+  grunt.registerTask('dev', [
+    'convert',
+    'concat',
+    'jshint',
+    'jscs'
+  ]);
 
   // Build task.
   grunt.registerTask('build', [
     'convert',
     'concat',
     'jshint',
+    'jscs',
     'buildTestFilesJson',
     'buildGuideline',
     'compressTestsJson',
@@ -272,6 +274,7 @@ module.exports = function(grunt) {
     'convert',
     'concat',
     'jshint',
+    'jscs',
     'buildTestFilesJson',
     'karma',
     'execute:assessments',
@@ -290,7 +293,7 @@ module.exports = function(grunt) {
     // 'buildTestFilesJson',
     // 'buildGuideline',
     // 'compressTestsJson',
-    // 'karma',
+    'karma',
     'execute:assessments'
   ]);
 
