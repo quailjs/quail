@@ -1,16 +1,16 @@
-quail.components.acronym = function(quail, test, Case) {
-  test.get('$scope').each(function() {
+quail.components.acronym = function (quail, test, Case) {
+  test.get('$scope').each(function () {
     var $scope = $(this);
     var alreadyReported = { };
     var predefined = { };
 
     // Find defined acronyms within this scope.
-    $scope.find('acronym[title], abbr[title]').each(function() {
+    $scope.find('acronym[title], abbr[title]').each(function () {
       predefined[$(this).text().toUpperCase().trim()] = $(this).attr('title');
     });
 
     // Consider all block-level html elements that contain text.
-    $scope.find('p, div, h1, h2, h3, h4, h5').each(function(){
+    $scope.find('p, div, h1, h2, h3, h4, h5').each(function () {
       var el = this;
       var $el = $(el);
 
@@ -20,7 +20,7 @@ quail.components.acronym = function(quail, test, Case) {
       // If there is more than one word and ??.
       if (words.length > 1 && $el.text().toUpperCase() !== $el.text()) {
         // Check each word.
-        $.each(words, function(index, word) {
+        $.each(words, function (index, word) {
           // Only consider words great than one character.
           if (word.length < 2) {
             return;
@@ -41,7 +41,7 @@ quail.components.acronym = function(quail, test, Case) {
           test.add(Case({
             element: el,
             expected: $el.closest('.quail-test').data('expected'),
-            info: {acronyms : infractions},
+            info: { acronyms: infractions },
             status: 'failed'
           }));
         }

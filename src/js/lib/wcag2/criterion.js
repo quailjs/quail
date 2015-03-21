@@ -1,7 +1,7 @@
 quail.lib.wcag2.Criterion = (function () {
 
   // Provide default values for the assert objects
-  function aggregateParts(parts, defaultResult) {
+  function aggregateParts (parts, defaultResult) {
     var getResultPriority = quail.lib.wcag2.EarlAssertion.getResultPriority;
     var outcome = {result: defaultResult};
 
@@ -12,7 +12,6 @@ quail.lib.wcag2.Criterion = (function () {
     });
     return outcome;
   }
-
 
   function constructor (data, testDefinitions, preconditionDefinitions, subject) {
     var testAggregators = [];
@@ -40,7 +39,6 @@ quail.lib.wcag2.Criterion = (function () {
         preconditionTest, preconditionDefinitions, subject
       ));
     }
-
 
     criterion.getResult = function (data) {
       var result;

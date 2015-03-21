@@ -6,7 +6,7 @@
  * one. The test passes is the selector finds no matching elements.
  */
 quail.components.selector = function (quail, test, Case, options) {
-  this.get('$scope').each(function() {
+  this.get('$scope').each(function () {
     var candidates = $(this).find(options.selector);
     // Passes.
     if (!candidates.length) {
@@ -26,7 +26,8 @@ quail.components.selector = function (quail, test, Case, options) {
         // If a test is defined, then use it
         if (options.test && !$this.is(options.test)) {
           status = 'passed';
-        } else {
+        }
+        else {
           status = 'failed';
         }
 

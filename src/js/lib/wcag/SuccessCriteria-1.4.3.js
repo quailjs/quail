@@ -8,7 +8,7 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
   /**
    * Determines if this Success Criteria applies to the document.
    */
-  function preEvaluator() {
+  function preEvaluator () {
     return true;
   }
 
@@ -17,7 +17,7 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
    *
    * Evaluates the Success Criteria.
    */
-  //function evaluator(tests) {
+  // function evaluator (tests) {
     // // The set of tests that were run that pertain to this Success Criteria. This
     // // will be the union of the tests that were run and the required tests.
     // var criteriaTests = sc.filterTests(tests, sc.requiredTests);
@@ -44,25 +44,25 @@ quail.guidelines.wcag.successCriteria['1.4.3'] = (function (quail) {
     //     sc.addConclusion(conclusion, _case);
     //   });
     // }
-  //}
+  // }
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
   var sc = quail.lib.SuccessCriteria({
-    'name': 'wcag:1.4.3',
+    name: 'wcag:1.4.3',
     preEvaluator: preEvaluator
   });
 
   // Techniques
   sc.techniques = {
-    'G148': 'Not specifying background color, not specifying text color, and not using technology features that change those defaults',
-    'G174': 'Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast',
-    'G18': 'Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text for situation A AND G145: Ensuring that a contrast ratio of at least 3:1 exists between text (and images of text) and background behind the text for situation B'
+    G148: 'Not specifying background color, not specifying text color, and not using technology features that change those defaults',
+    G174: 'Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast',
+    G18: 'Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text for situation A AND G145: Ensuring that a contrast ratio of at least 3:1 exists between text (and images of text) and background behind the text for situation B'
   };
 
   // Failures
   sc.failures = {
-    'F24': 'Specifying foreground colors without specifying background colors or vice versa',
-    'F83': 'Using background images that do not provide sufficient contrast with foreground text (or images of text)'
+    F24: 'Specifying foreground colors without specifying background colors or vice versa',
+    F83: 'Using background images that do not provide sufficient contrast with foreground text (or images of text)'
   };
 
   return sc;

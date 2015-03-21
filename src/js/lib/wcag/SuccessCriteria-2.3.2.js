@@ -7,13 +7,13 @@ quail.guidelines.wcag.successCriteria['2.3.2'] = (function (quail) {
   /**
    * Determines if this Success Criteria applies to the document.
    */
-  function preEvaluator() {
+  function preEvaluator () {
     return true;
   }
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
   var sc = quail.lib.SuccessCriteria({
-    'name': 'wcag:2.3.2',
+    name: 'wcag:2.3.2',
     preEvaluator: preEvaluator
   });
 

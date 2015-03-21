@@ -81,7 +81,7 @@ quail.lib.WCAGGuideline = (function () {
       }
       return null;
     },
-    findTechnique : function (techniqueName) {
+    findTechnique: function (techniqueName) {
       for (var i = 0, il = this.techniques.length; i < il; ++i) {
         if (this.techniques[i].get('name') === techniqueName) {
           return this.techniques[i];

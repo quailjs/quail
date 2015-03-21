@@ -25,10 +25,10 @@ quail.lib.wcag2.TestAggregator = (function () {
 
   /**
    * Run the callback for each testcase within the array of tests
-   * @param  {array}   tests    
+   * @param  {array}   tests
    * @param  {Function} callback Given the parameters (test, testcase)
    */
-  function eachTestCase(tests, callback) {
+  function eachTestCase (tests, callback) {
     $.each(tests, function (i, test) {
       test.each(function () {
         callback.call(this, test, this);
@@ -41,7 +41,7 @@ quail.lib.wcag2.TestAggregator = (function () {
    * @param  {Object} tests
    * @return {Array}        Array of HTML elements
    */
-  function getCommonElements(tests) {
+  function getCommonElements (tests) {
     var common = [];
     var map = [];
 
@@ -75,7 +75,7 @@ quail.lib.wcag2.TestAggregator = (function () {
    * @param  {Object} tests
    * @return {Array}        Array of HTML elements
    */
-  function getAllElements(tests) {
+  function getAllElements (tests) {
     var elms = [];
     eachTestCase(tests, function (test, testCase) {
       var elm = testCase.get('element');
@@ -93,7 +93,7 @@ quail.lib.wcag2.TestAggregator = (function () {
    * @param  {object} base Base object for the assert
    * @return {array[assert]}      Array with asserts
    */
-  function createAssertionsForEachElement(elms, base) {
+  function createAssertionsForEachElement (elms, base) {
     var assertions = [];
     // Create asserts for each element
     $.each(elms, function (i, elm) {
@@ -110,12 +110,12 @@ quail.lib.wcag2.TestAggregator = (function () {
    * Combine the test results of an Aggregator into asserts
    *
    * A combinbing aggregator is an aggregator which only fails if all it's tests fail
-   * 
+   *
    * @param  {Object} aggregator
    * @param  {Array[Object]} tests
    * @return {Array[Object]}         Array of Asserts
    */
-  function getCombinedAssertions(aggregator, tests) {
+  function getCombinedAssertions (aggregator, tests) {
     var elms = getCommonElements(tests);
     var assertions = createAssertionsForEachElement(elms, {
       testCase: aggregator.id,
@@ -152,21 +152,22 @@ quail.lib.wcag2.TestAggregator = (function () {
     return assertions;
   }
 
-
   /**
    * Stack the test results of a aggregator into asserts
    *
    * A stacked aggregator is one that fails if any of the tests fail
-   * 
+   *
    * @param  {Object} aggregator
    * @param  {Array[Object]} tests
    * @return {Array[Object]}         Array of Asserts
    */
-  function getStackedAssertions(aggregator, tests) {
+  function getStackedAssertions (aggregator, tests) {
     var elms = getAllElements(tests);
     var asserts = createAssertionsForEachElement(elms, {
       testCase: aggregator.id,
-      outcome: { result: 'untested'}
+      outcome: {
+        result: 'untested'
+      }
     });
 
     // Iterate over all results to build the assert
@@ -194,8 +195,7 @@ quail.lib.wcag2.TestAggregator = (function () {
     return asserts;
   }
 
-
-  function TestAggregator(config, testDefinitions, subject) {
+  function TestAggregator (config, testDefinitions, subject) {
     $.extend(this, {
       id: config.tests.join('+'),
       subject: subject
@@ -206,9 +206,8 @@ quail.lib.wcag2.TestAggregator = (function () {
     });
   }
 
-
   /**
-   * Filter the data array so it only contains results 
+   * Filter the data array so it only contains results
    * from this aggregator
    * @param  {Array} data
    * @return {Array}
@@ -239,12 +238,14 @@ quail.lib.wcag2.TestAggregator = (function () {
     if (filteredTests.length === 1 || this.type === 'combined') {
       assertions = getCombinedAssertions(this, filteredTests);
 
-    } else if (this.type === "stacking") {
+    }
+    else if (this.type === 'stacking') {
       assertions = getStackedAssertions(this, filteredTests);
 
-    } else if (window) {
+    }
+    else if (window) {
       window.console.error(
-        "Unknown type for aggregator " + this.id
+        'Unknown type for aggregator ' + this.id
       );
     }
 

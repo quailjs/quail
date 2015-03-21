@@ -40,8 +40,8 @@ quail.lib.Test = (function () {
     get: function (attr) {
       // Return the document wrapped in jQuery if scope is not defined.
       if (attr === '$scope') {
-        var scope = this.attributes['scope'];
-        var $scope = $(this.attributes['scope']);
+        var scope = this.attributes.scope;
+        var $scope = $(this.attributes.scope);
         // @todo, pass in a ref to jQuery to this module.
         return (this.attributes[attr]) ? this.attributes[attr] : ((scope) ? $scope : $(document));
       }
@@ -97,7 +97,7 @@ quail.lib.Test = (function () {
 
       var options = this.get('options') || {};
       var callback = quail[name];
-      var test = this;
+      var self = this;
 
       // Set the test complete method to the closure function that dispatches
       // the complete event. This method needs to be debounced so it is only
@@ -114,7 +114,7 @@ quail.lib.Test = (function () {
 
       if (callback && typeof callback.call === 'function') {
         try {
-          callback.call(test, quail, test, quail.lib.Case, options);
+          callback.call(self, quail, self, quail.lib.Case, options);
         }
         catch (e) {
           if (window.console && window.console.error) {
@@ -263,30 +263,30 @@ quail.lib.Test = (function () {
       // passed.
       if (passed === true) {
         this.set({
-          'status': 'passed'
+          status: 'passed'
         });
       }
       // CantTell.
       else if (this.findByStatus(['cantTell']).length === this.length) {
         this.set({
-          'status': 'cantTell'
+          status: 'cantTell'
         });
       }
       // inapplicable.
       else if (this.findByStatus(['inapplicable']).length === this.length) {
         this.set({
-          'status': 'inapplicable'
+          status: 'inapplicable'
         });
       }
       // Failed.
       else if (this.findByStatus(['failed', 'untested']).length) {
         this.set({
-          'status': 'failed'
+          status: 'failed'
         });
       }
       else {
         this.set({
-          'status': 'passed'
+          status: 'passed'
         });
       }
     },
@@ -378,24 +378,23 @@ quail.lib.Test = (function () {
    *   will only be called at most 4 times per second.
    */
   function debounce (func, wait, immediate) {
-
-    "use strict";
+    'use strict';
 
     var timeout, result;
     return function () {
-      var context = this;
+      var self = this;
       var args = arguments;
       var later = function () {
         timeout = null;
         if (!immediate) {
-          result = func.apply(context, args);
+          result = func.apply(self, args);
         }
       };
       var callNow = immediate && !timeout;
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
       if (callNow) {
-        result = func.apply(context, args);
+        result = func.apply(self, args);
       }
       return result;
     };

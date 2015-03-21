@@ -8,12 +8,12 @@ quail.lib.wcag2 = (function () {
    *
    * Options can be used either to tell Quail where to load the wcag2 structure file
    * or to give it directly (if it's already loaded). For the first, jsonPath
-   * must be provided. For the second the wcag2.json data must be given to 
+   * must be provided. For the second the wcag2.json data must be given to
    * options.wcag2Structure and the tests data to options.accessibilityTests.
-   * 
+   *
    * @param  {[object]} options Quail options
    */
-  function runWCAG20Quail(options) {
+  function runWCAG20Quail (options) {
     if (options.wcag2Structure && options.accessibilityTests && options.preconditionTests) {
       startWCAG20Quail(
           options,
@@ -21,7 +21,8 @@ quail.lib.wcag2 = (function () {
           options.accessibilityTests,
           options.preconditionTests);
 
-    } else {
+    }
+    else {
       // Load the required json files
       $.when(
         $.ajax(options.jsonPath + '/wcag2.json', ajaxOpt),
@@ -32,11 +33,10 @@ quail.lib.wcag2 = (function () {
       .done(function (wcag2Call, testsCall, preconditionCall) {
         startWCAG20Quail(options, wcag2Call[0], testsCall[0], preconditionCall[0]);
       });
-
     }
   }
 
-  function startWCAG20Quail(options, wcag2Call, tests, preconditionTests) {
+  function startWCAG20Quail (options, wcag2Call, tests, preconditionTests) {
     var criteria, accessibilityTests, knownTests;
     var allTests = [];
 
@@ -72,8 +72,7 @@ quail.lib.wcag2 = (function () {
     });
   }
 
-
-  function createCallback(criteria, callback) {
+  function createCallback (criteria, callback) {
     return function (status, data) {
       if (status === 'complete') {
         data = $.map(criteria, function (criterion) {

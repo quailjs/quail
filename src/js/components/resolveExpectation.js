@@ -16,7 +16,7 @@
  *
  * @hereDeDragons.
  */
-quail.components.resolveExpectation = function(element, caseID) {
+quail.components.resolveExpectation = function (element, caseID) {
   var $scope = $(element).closest('.quail-test');
   var expected = $scope.data('expected');
   var result;
