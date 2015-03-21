@@ -18,6 +18,13 @@
 			<br/>
 		</p>
 	</div>
+
+	<div class="quail-test" data-expected="fail" data-accessibility-test="documentVisualListsAreMarkedUp">
+		<p class="quail-failed-element">
+			-chocolate<br class="somestuff">-vanilla<br>-cherry<br data-attribute>-bananna
+		</p>
+	</div>
+
 	<div class="quail-test" data-expected="fail" data-accessibility-test="documentVisualListsAreMarkedUp">
 
 		<p class="quail-failed-element">
@@ -82,11 +89,26 @@
 			♦ bananna
 			<br/>
 		</p>
-	</div>	
+	</div>
 	<div class="quail-test" data-expected="pass" data-accessibility-test="documentVisualListsAreMarkedUp">
 
 		<p>
 			Our ice-cream flavours include chocolate*, vanilla*, cherry, and bananna.
+		</p>
+	</div>
+
+	<div class="quail-test" data-expected="pass" data-accessibility-test="documentVisualListsAreMarkedUp">
+		<p class="quail-failed-element">
+			* Too short <br />
+			* May not be a list
+		</p>
+	</div>
+
+	<div class="quail-test" data-expected="pass" data-accessibility-test="documentVisualListsAreMarkedUp">
+		<p class="quail-failed-element">
+			* Footnotes, <br />
+			** are not lists, <br />
+			*** so they should pass.
 		</p>
 	</div>
 
