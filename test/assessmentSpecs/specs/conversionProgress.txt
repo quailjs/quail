@@ -6,7 +6,7 @@
 -- Converted -- aLinksAreSeparatedByPrintableCharacters
 -- Converted -- aLinksDontOpenNewWindow
 -- Converted -- aLinksNotSeparatedBySymbols
-aLinksToMultiMediaRequireTranscript
+-- Converted -- aLinksToMultiMediaRequireTranscript
 aLinksToSoundFilesNeedTranscripts
 aMultimediaTextAlternative
 aMustContainText
