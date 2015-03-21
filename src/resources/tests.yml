@@ -2508,8 +2508,7 @@ imgHasAlt:
     - "image"
     - "content"
   options:
-    selector: "img:visible"
-    test: ":not(img[alt])"
+    selector: "img:not(img[alt])"
 imgHasLongDesc:
   type: "custom"
   testability: 1
