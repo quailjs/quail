@@ -1,138 +1,114 @@
 [![Build Status](https://secure.travis-ci.org/quailjs/quail.png?branch=master)](http://travis-ci.org/quailjs/quail)
 
-# Development
+# Quail: Accessibility Information Library
 
-## Notice for developers working in the 2.2.x version.
+**The project website is [quailjs.io](http://quailjs.io/).**
+
+Quail is a Node module and a jQuery plugin that lets you easily check HTML for adherence to accessibility standards. It comes with over 200 tests which implement Open Accessibility Tests and comes with WCAG 1.0, WCAG 2.0, and Section 508 guidelines.
+
+Developers can build their own guidelines, or easily build a custom guideline that integrates with their project. While the project supports checking entire HTML pages, integration with a CMS to check partial HTML content is probably the most popular use case.
+
+**Notice for developers working in the 2.2.x version.**
 
 Please base your changes on the [```master-2.2.x```](https://github.com/quailjs/quail/tree/master-2.2.x) branch.
 
-## Commands you can run as a developer:
+## Requirements
 
-CLI tools:
+You will need the following installed on your system to run Quail.
+
+1. [Node.js](https://nodejs.org/download/)
+1. [Grunt & Grunt CLI](http://gruntjs.com/installing-grunt)
+1. [Bower](http://bower.io/)
+1. [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (To run Selenium Server)
+
+## Using Quail
+
+### Setup
+
+Run the following commands to build Quail.
 
 ```bash
-quail --help
+git clone https://github.com/quailjs/quail.git
+cd quail
+npm install
+bower install
+grunt build
 ```
 
-## Running assessments unit tests (via Selenium and Karma)
+### Using Quail from the command line
 
-### Unit tests
+To see the Quail CLI API, run the following.
+
+```bash
+./bin/quail --help
+```
+
+Once the command is set up, you can run the following to test any addressable web page.
+
+```bash
+quail eval http://placekitten.com
+```
+
+Write the results as a JSON object out to file in an existing directory.
+
+```bash
+quail evaluate http://placekitten.com -o ./analyses
+```
+
+To work on an existing assessment in a browser (so that breakpoints can be set in the console), run the following.
+
+```bash
+quail dev aMustHaveTitle
+```
+
+The following is experimental, which means it probably won\'t work. You can generate a new assessment with this command.
+
+```bash
+quail gen someNewAssessment
+```
+
+## Testing
+
+### Core unit tests in Karma
 
 ```bash
 karma start ./config/karma-unit.conf.js
 ```
 
-### All assessments
+### Testing assessments in Selenium
 
-#### Fast in PhantomJS
+All assessments. This takes about 10 minutes to run.
 
 ```bash
-node ./test/assessmentSpecs/testrunner.js
+node ./test/assessmentSpecs/testRunner.js
 ```
 
-#### In a specific browser
+An individual assessment. This takes about 2 seconds to run.
+
+```bash
+node ./test/assessmentSpecs/testRunner.js -I aMustHaveTitle
+```
+
+In a specific browser.
 
 ```bash
 _BROWSER=chrome node ./test/assessmentSpecs/testRunner.js
 ```
 
-### A single assessments
-
-```bash
-node ./test/assessmentSpecs/testrunner.js -I aAdjacentWithSameResourceShouldBeCombined
-```
-
-## Notice for developers working in the 2.2.x version.
-
-Please base your changes on the [```master-2.2.x```](https://github.com/quailjs/quail/tree/master-2.2.x) branch.
-
-Quail: Accessibility Information Library
-========================================
-**The project website is [quailjs.org](http://quailjs.org/).**
-
-A jQuery plugin that lets you easily check HTML for adherence to accessibility standards. It comes with over 200 tests which implement Open Accessibility Tests and comes with WCAG 1.0, WCAG 2.0, and Section 508 guidelines.
-
-Developers can build their own guidelines, or easily build a custom guideline that integrates with their project. While the project supports checking entire HTML pages, integration with a CMS to check partial HTML content is probably the most popular use case.
-
-### Installing via [Bower](http://bower.io)
-You can include Quail into your project using Bower by using the command `bower install quail`.
-
-Building Quail
---------------
-If you are not familiar with using grunt or just want to download a pre-built version of quail, [visit the releases page for the project](https://github.com/quailjs/quail/releases).
-
-If you are checking out quail from a repository, you will notice there is no `/dist` directory, quail must be built using [Grunt](http://gruntjs.com/). Use the following steps to get started (this is assuming you already have [Node](http://nodejs.org/) installed on your machine):
-
-```
-cd quail
-npm install
-grunt build
-```
-
-This does two things: it downloads libraries (like qunit and jQuery) into the `/lib` directory, and builds quail (both a development version and a minified, production version) into the `/dist` directory.
-
-Command line
------------
-
-Quail has an executable file that will run the test suite against the a specific URL.
-
-To use this executable locally, you will need to add it to your path. In your ```.bashrc``` (or equivalent) add something like this.
-
-```
-export PATH=~/Code/quailjs/quail/bin:$PATH
-```
-
-Quit the editor and source the bash file.
-
-```
-source ~/.bashrc .
-```
-
-The ```quail``` command should be exectuable. If you run ```which quail```, you should see that path to the executable displayed. If it wasn't added to your path, you can also run the script directly:
-
-```
-node ./bin/quail
-```
-
-If it is not, try running the following:
-
-```
-grunt chmod
-```
-
-Which will attempt to set the permissions of this file to 711, an executable. Try running this from the Quail project directory.
-
-```
-sudo chmod 711 ./bin/quail
-```
-
-Once the command is set up, you can run the following to test any addressable web page.
-
-```
-quail --url=http://some.domain.com/page.html
-```
-
-The script will run and write the output to ```./analyses```. To change the
-output folder use the ```--output``` flag.
-
-Documentation
--------------
+## Documentation
 
 [Full documentation is available via readthedocs.org](https://quail.readthedocs.org/en/latest/).
 
-Contributing
-------------
+## Contributing
+
 Pull requests should be made against the **master** branch.
 
-Credits
--------
+## Credits
 
-- Quail is maintained by [Kevin Miller](http://twitter.com/kevinmiyar)
-- Part of Quail development is supported by [Cal State Monterey Bay](http://csumb.edu)
-- Many thanks to [Jesse Renée Beach](https://twitter.com/jessebeach) for promoting Quail and the many commits.
-- Thanks to the hosts of [Chez JJ](http://chezjj.com/), who housed Kevin for a week while he worked on Quail 2.
+- Quail is maintained by [Jesse Renée Beach](http://twitter.com/jessebeach)
+- The [Kwaliteitsinstituut Nederlandse Gemeenten (KING)](https://www.kinggemeenten.nl/), who have funded many developer hours.
+- The [CKEditor development team](http://ckeditor.com/about) for their contributions.
 
-Legal
------
+## Legal
 
-QUAIL is covered under the MIT License, and is copyright (c) 2013 by Kevin Miller. Current license is at http://quailjs.org/license.
+QUAIL is covered under the MIT License, and is copyright (c) 2015 by Jesse Beach. Current license is at http://quailjs.org/license.
