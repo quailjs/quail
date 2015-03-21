@@ -10,7 +10,7 @@
 -- Converted -- aLinksToSoundFilesNeedTranscripts
 -- Converted -- aMultimediaTextAlternative
 -- Converted -- aMustContainText
-aMustHaveTitle
+-- Converted -- aMustHaveTitle
 aMustNotHaveJavascriptHref
 aSuspiciousLinkText
 aTitleDescribesDestination
