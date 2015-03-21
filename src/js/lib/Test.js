@@ -116,10 +116,9 @@ quail.lib.Test = (function () {
         try {
           callback.call(self, quail, self, quail.lib.Case, options);
         }
-        catch (e) {
+        catch (error) {
           if (window.console && window.console.error) {
-            window.console.error(name + ' does not have an associated test callback on the Quail object.');
-            window.console.error(e);
+            window.console.error(error.stack);
           }
         }
       }
