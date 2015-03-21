@@ -9,7 +9,7 @@
 -- Converted -- aLinksToMultiMediaRequireTranscript
 -- Converted -- aLinksToSoundFilesNeedTranscripts
 -- Converted -- aMultimediaTextAlternative
-aMustContainText
+-- Converted -- aMustContainText
 aMustHaveTitle
 aMustNotHaveJavascriptHref
 aSuspiciousLinkText

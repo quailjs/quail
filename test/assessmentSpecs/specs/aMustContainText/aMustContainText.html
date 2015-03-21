@@ -1,46 +1,39 @@
 <!doctype html>
 <html>
-	<head>
-		<title>aMustContainText</title>
-	</head>
-	<body>
+  <head>
+    <title>aMustContainText</title>
+  </head>
+  <body>
 
-		<div data-expected="inapplicable">
-			<p>This is a page with an anchor <a id="anchor"></a>
-				</p>
-		</div>
+    <div data-expected="inapplicable">
+      <p>This is a page with an anchor <a id="anchor"></a></p>
+    </div>
 
-		<div data-expected="inapplicable">
-		  <p>Select link for more information about dogs.
-		    <a href="dogs.html" style="display:none">Metadata!</a></p>
-		</div>
+    <div data-expected="inapplicable">
+      <p>Select link for more information about dogs.<a id="assert-1" href="dogs.html" style="display:none">Metadata!</a></p>
+    </div>
 
-		<div data-expected="pass">
-		  <p>Select link for more information about dogs.<a href="dogs.html"><img src="../assets/rex.jpg" alt="more information about dogs"/></a>
-        </p>
-		</div>
+    <div data-expected="pass">
+      <p>Select link for more information about dogs.<a id="assert-2" href="dogs.html"><img src="assets/rex.jpg" alt="more information about dogs"/></a></p>
+    </div>
 
-		<div data-expected="pass">
-		  <p>Select link for more <a href="dogs.html">information about dogs</a>.</p>
-		</div>
+    <div data-expected="pass">
+      <p>Select link for more <a id="assert-3" href="dogs.html">information about dogs</a>.</p>
+    </div>
 
-		<div data-expected="fail">
-		  <p>Select link for more information about dogs.
-		  	<!-- The following can fail other tests if CSS isn't used to give the link body. This may occure with background images -->
-		    <a href="dogs.html" title="About dogs"></a>
-	      </p>
-		</div>
+    <div data-expected="fail">
+      <p>Select link for more information about dogs.
+        <!-- The following can fail other tests if CSS isn't used to give the link body. This may occure with background images -->
+        <a id="assert-4" href="dogs.html" title="About dogs"></a>
+      </p>
+    </div>
 
-		<div data-expected="fail" title="Title attribute only">
-		  <p>Select link for more information about dogs. <a href="dogs.html" title="more information about dogs" class="quail-failed-element"></a>
-        </p>
-		</div>
+    <div data-expected="fail">
+      <p>Select link for more information about dogs. <a id="assert-5" href="dogs.html" title="more information about dogs"></a></p>
+    </div>
 
-		<div data-expected="fail" title="Title attribute only">
-		  <p>Select link for more information about dogs. <a href="dogs.html" title="more information about dogs" class="quail-failed-element"></a>
-        </p>
-		</div>
-
-
-		</body>
+    <div data-expected="fail">
+      <p>Select link for more information about dogs. <a id="assert-6" href="dogs.html" title="more information about dogs"></a></p>
+    </div>
+  </body>
 </html>
