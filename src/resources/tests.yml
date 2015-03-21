@@ -186,15 +186,12 @@ aLinkWithNonText:
     - "content"
   callback: "aLinkWithNonText"
 aMultimediaTextAlternative:
-  type: "selector"
   testability: 0
   guidelines: []
   tags:
     - "link"
     - "media"
     - "content"
-  options:
-    selector: "a[href$='.wmv'], a[href$='.wav'], a[href$='.mpg'], a[href$='.mov'], a[href$='.ram'], a[href$='.aif']"
 aMustContainText:
   testability: 1
   title:

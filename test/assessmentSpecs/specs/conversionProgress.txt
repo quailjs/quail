@@ -8,7 +8,7 @@
 -- Converted -- aLinksNotSeparatedBySymbols
 -- Converted -- aLinksToMultiMediaRequireTranscript
 -- Converted -- aLinksToSoundFilesNeedTranscripts
-aMultimediaTextAlternative
+-- Converted -- aMultimediaTextAlternative
 aMustContainText
 aMustHaveTitle
 aMustNotHaveJavascriptHref
