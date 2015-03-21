@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+	<head>
+		<title>imgHasAlt</title>
+	</head>
+	<body>
+		<div class="quail-test" data-expected="pass"
+		data-accessibility-test="imgHasAlt">
+		  <img src="../assets/rex.jpg" style="display:none" alt="My cat"/>
+		</div>
+
+		<div class="quail-test" data-expected="pass" data-accessibility-test="imgHasAlt">
+		  <img src="../assets/rex.jpg" alt="My cat"/>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="imgHasAlt">
+		  <img src="../assets/rex.jpg" class="quail-failed-element" />
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="imgHasAlt">
+			<div style="display: none">
+				<img src="../assets/rex.jpg" class="quail-failed-element" />
+			</div>
+		</div>
+
+		<script src="../quail-testrunner.js"></script>	</body>
+</html>
