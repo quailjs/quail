@@ -13,6 +13,8 @@ describe('assessment: scriptOnFocusChangeBackgroundOrBorder', function () {
         client = _client_;
         assessments = _assessments_;
         quailResults = _quailResults_;
+        cases = quailResults.tests['scriptOnFocusChangeBackgroundOrBorder'].cases;
+        debugger;
       });
   });
 
@@ -24,7 +26,7 @@ describe('assessment: scriptOnFocusChangeBackgroundOrBorder', function () {
     expect(quailResults.stats.tests).to.equal(1);
   });
   it('should return the correct number of cases', function () {
-    expect(quailResults.stats.cases).to.equal(0);
+    expect(quailResults.stats.cases).to.equal(3);
   });
 
   it('should have correct key under the test results', function () {
@@ -32,7 +34,12 @@ describe('assessment: scriptOnFocusChangeBackgroundOrBorder', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['scriptOnFocusChangeBackgroundOrBorder'].cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-2', function () {
+    expect(cases).quailGetById('assert-2').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-3', function () {
+    expect(cases).quailGetById('assert-3').to.have.quailStatus('failed');
   });
 });
