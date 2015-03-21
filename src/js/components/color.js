@@ -446,9 +446,6 @@ quail.components.color = {
   buildCase: function (test, Case, element, status, id, message) {
     test.add(Case({
       element: element,
-      expected: (function (element, id) {
-        return quail.components.resolveExpectation(element, id);
-      }(element, id)),
       message: message,
       status: status
     }));
