@@ -1,5 +1,5 @@
 quail.strings.siteMap = [
-  "site map",
-  "map",
-  "sitemap"
+  'site map',
+  'map',
+  'sitemap'
 ];

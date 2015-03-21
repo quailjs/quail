@@ -34,12 +34,12 @@ quail.lib.TestCollection = (function () {
     length: 0,
     // Invoke all the tests in a set.
     run: function (callbacks) {
-      var tc = this;
+      var self = this;
       callbacks = callbacks || {};
       this.each(function (index, test) {
         // Allow a prefilter to remove a case.
         if (callbacks.preFilter) {
-          tc.listenTo(test, 'resolve', function (eventName, test, _case) {
+          self.listenTo(test, 'resolve', function (eventName, test, _case) {
             var result = callbacks.preFilter(eventName, test, _case);
             if (result === false) {
               // Manipulate the attributes directly so that change events
@@ -51,18 +51,18 @@ quail.lib.TestCollection = (function () {
         }
         // Allow the invoker to listen to resolve events on each Case.
         if (callbacks.caseResolve) {
-          tc.listenTo(test, 'resolve', callbacks.caseResolve);
+          self.listenTo(test, 'resolve', callbacks.caseResolve);
         }
         // Allow the invoker to listen to complete events on each Test.
         if (callbacks.testComplete) {
-          tc.listenTo(test, 'complete', callbacks.testComplete);
+          self.listenTo(test, 'complete', callbacks.testComplete);
         }
       });
 
       // Allow the invoker to listen to complete events for the
       // TestCollection.
       if (callbacks.testCollectionComplete) {
-        tc.listenTo(tc, 'complete', callbacks.testCollectionComplete);
+        self.listenTo(self, 'complete', callbacks.testCollectionComplete);
       }
 
       // Set the test complete method to the closure function that dispatches
@@ -71,7 +71,7 @@ quail.lib.TestCollection = (function () {
       this.testsComplete = debounce(testsComplete.bind(this), 500);
 
       // Invoke each test.
-      this.each(function(index, test) {
+      this.each(function (index, test) {
         test.invoke();
       });
 
@@ -123,7 +123,7 @@ quail.lib.TestCollection = (function () {
     findByGuideline: function (guidelineName) {
 
       var methods = {
-        'wcag': function (section, technique) {
+        wcag: function (section, technique) {
 
           function findAllTestsForTechnique (guidelineName, sectionId, techniqueName) {
             // Return a TestCollection instance.
@@ -133,7 +133,7 @@ quail.lib.TestCollection = (function () {
               var guidelines = test.get('guidelines');
               // If this test is configured for this section and it has
               // associated techniques, then loop thorugh them.
-              var testTechniques = guidelines[guidelineName] && guidelines[guidelineName][sectionId] && guidelines[guidelineName][sectionId]['techniques'];
+              var testTechniques = guidelines[guidelineName] && guidelines[guidelineName][sectionId] && guidelines[guidelineName][sectionId].techniques;
               if (testTechniques) {
                 for (var i = 0, il = testTechniques.length; i < il; ++i) {
                   // If this test is configured for the techniqueName, add it
@@ -282,24 +282,23 @@ quail.lib.TestCollection = (function () {
    *   will only be called at most 4 times per second.
    */
   function debounce (func, wait, immediate) {
-
-    "use strict";
+    'use strict';
 
     var timeout, result;
     return function () {
-      var context = this;
+      var self = this;
       var args = arguments;
       var later = function () {
         timeout = null;
         if (!immediate) {
-          result = func.apply(context, args);
+          result = func.apply(self, args);
         }
       };
       var callNow = immediate && !timeout;
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
       if (callNow) {
-        result = func.apply(context, args);
+        result = func.apply(self, args);
       }
       return result;
     };

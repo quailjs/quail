@@ -34,8 +34,8 @@ quail.lib.SuccessCriteria = (function () {
     get: function (attr) {
       // Return the document wrapped in jQuery if scope is not defined.
       if (attr === '$scope') {
-        var scope = this.attributes['scope'];
-        var $scope = $(this.attributes['scope']);
+        var scope = this.attributes.scope;
+        var $scope = $(this.attributes.scope);
         // @todo, pass in a ref to jQuery to this module.
         return (this.attributes[attr]) ? this.attributes[attr] : ((scope) ? $scope : $(document));
       }
@@ -155,17 +155,17 @@ quail.lib.SuccessCriteria = (function () {
       }
       ++(this.get('totals')[conclusion]);
       // Incremement totals for the number of cases found.
-      if (!this.get('totals')['cases']) {
-        this.get('totals')['cases'] = 0;
+      if (!this.get('totals').cases) {
+        this.get('totals').cases = 0;
       }
-      ++(this.get('totals')['cases']);
+      ++(this.get('totals').cases);
     },
     /**
      * Runs the evaluator callbacks against the completed TestCollection.
      */
     evaluate: function (eventName, testCollection) {
       if (this.get('status') !== 'inapplicable') {
-        var sc = this;
+        var self = this;
         var associatedTests = this.filterTests(testCollection);
 
         // If there are no associated tests, then this Success
@@ -176,7 +176,7 @@ quail.lib.SuccessCriteria = (function () {
         else {
           associatedTests.each(function (index, test) {
             test.each(function (index, _case) {
-              sc.addConclusion(_case.get('status'), _case);
+              self.addConclusion(_case.get('status'), _case);
             });
           });
           if (size(this.get('results')) === 0) {

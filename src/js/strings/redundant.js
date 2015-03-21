@@ -1,18 +1,18 @@
 quail.strings.redundant = {
-  "inputImage":[
-    "submit",
-    "button"
+  'inputImage':[
+    'submit',
+    'button'
   ],
-  "link":[
-    "link to",
-    "link",
-    "go to",
-    "click here",
-    "link",
-    "click",
-    "more"
+  'link':[
+    'link to',
+    'link',
+    'go to',
+    'click here',
+    'link',
+    'click',
+    'more'
   ],
-  "required":[
-    "*"
+  'required':[
+    '*'
   ]
 };

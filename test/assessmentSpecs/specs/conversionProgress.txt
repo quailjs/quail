@@ -1,14 +1,11 @@
-aAdjacentWithSameResourceShouldBeCombined
-aImgAltNotRepetitive
-aInPHasADistinctStyle
-aLinkTextDoesNotBeginWithRedundantWord
-aLinkWithNonText
-aLinksAreSeparatedByPrintableCharacters
-aLinksDontOpenNewWindow
-aLinksNotSeparatedBySymbols
-
--- Converted --
-
+-- Converted -- aAdjacentWithSameResourceShouldBeCombined
+-- Converted -- aImgAltNotRepetitive
+-- Converted -- aInPHasADistinctStyle
+-- Converted -- aLinkTextDoesNotBeginWithRedundantWord
+-- Converted -- aLinkWithNonText
+-- Converted -- aLinksAreSeparatedByPrintableCharacters
+-- Converted -- aLinksDontOpenNewWindow
+-- Converted -- aLinksNotSeparatedBySymbols
 aLinksToMultiMediaRequireTranscript
 aLinksToSoundFilesNeedTranscripts
 aMultimediaTextAlternative
@@ -70,7 +67,7 @@ documentTitleIsNotPlaceholder
 documentTitleIsShort
 documentTitleNotEmpty
 documentValidatesToDocType
-documentVisualListsAreMarkedUp
+-- Converted -- documentVisualListsAreMarkedUp
 domOrderMatchesVisualOrder
 elementAttributesAreValid
 elementsDoNotHaveDuplicateAttributes

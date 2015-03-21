@@ -5,9 +5,8 @@
 	<title>documentVisualListsAreMarkedUp</title>
 </head>
 <body>
-	<div data-expected="fail">
-
-		<p class="quail-failed-element">
+	<div>
+		<p id="assert-1">
 			* chocolate
 			<br/>
 			* vanilla
@@ -18,9 +17,15 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="fail">
 
-		<p class="quail-failed-element">
+	<div>
+		<p id="assert-2">
+			-chocolate<br class="somestuff">-vanilla<br>-cherry<br data-attribute>-bananna
+		</p>
+	</div>
+
+	<div>
+		<p id="assert-3">
 			◤ chocolate
 			<br/>
 			◤ vanilla
@@ -31,9 +36,9 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="fail">
 
-		<p class="quail-failed-element">
+	<div>
+		<p id="assert-4">
 			1. chocolate
 			<br/>
 			2. vanilla
@@ -44,9 +49,9 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="fail">
 
-		<p class="quail-failed-element">
+	<div>
+		<p id="assert-5">
 			I. chocolate
 			<br/>
 			II. vanilla
@@ -57,9 +62,9 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="fail">
 
-		<p class="quail-failed-element">
+	<div>
+		<p id="assert-6">
 			1) chocolate
 			<br/>
 			2) vanilla
@@ -70,9 +75,9 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="fail">
 
-		<p class="quail-failed-element">
+	<div>
+		<p id="assert-7">
 			▶ chocolate
 			<br/>
 			* vanilla
@@ -83,20 +88,34 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="pass">
 
-		<p>
+	<div>
+		<p id="assert-8">
 			Our ice-cream flavours include chocolate*, vanilla*, cherry, and bananna.
 		</p>
 	</div>
 
-	<div data-expected="pass">
+	<div>
+		<p id="assert-9">
+			* Too short <br />
+			* May not be a list
+		</p>
+	</div>
 
+	<div>
+		<p id="assert-10">
+			* Footnotes, <br />
+			** are not lists, <br />
+			*** so they should pass.
+		</p>
+	</div>
+
+	<div>
 		<ul>
-			<li>chocolate</li>
-			<li>vanilla</li>
-			<li>cherry</li>
-			<li>bananna</li>
+			<li id="assert-11">chocolate</li>
+			<li id="assert-12">vanilla</li>
+			<li id="assert-13">cherry</li>
+			<li id="assert-14">bananna</li>
 		</ul>
 	</div>
 

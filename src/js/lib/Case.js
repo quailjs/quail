@@ -20,7 +20,7 @@ quail.lib.Case = (function () {
       if (this.attributes.status && this.attributes.status !== 'untested') {
         // Delay the status dispatch to the next execution cycle so that the
         // Case will register listeners in this execution cycle first.
-        setTimeout(function() {
+        setTimeout(function () {
           that.resolve();
         }, 0);
       }
@@ -113,7 +113,7 @@ quail.lib.Case = (function () {
           // Get the parent node in order to get the innerHTML for the selected
           // element. Trim wrapping whitespace, remove linebreaks and spaces.
           else if (typeof el.outerHTML === 'string') {
-            outerEl = el.outerHTML.trim().replace(/(\r\n|\n|\r)/gm,"").replace(/>\s+</g, '><');
+            outerEl = el.outerHTML.trim().replace(/(\r\n|\n|\r)/gm, '').replace(/>\s+</g, '><');
             // Guard against insanely long elements.
             // @todo, make this length configurable eventually.
             if (outerEl.length > 200) {

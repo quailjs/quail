@@ -1,26 +1,26 @@
 /*global Tautologistics:true, HtmlBuilder: true */
 quail.components.htmlSource = {
 
-  getHtml: function(callback) {
+  getHtml: function (callback) {
     var that = this;
     if (typeof quail.options.htmlSource !== 'undefined' && quail.options.htmlSource) {
       callback(quail.options.htmlSource, that.parseHtml(quail.options.htmlSource));
       return;
     }
-    var data = $.ajax({ url : window.location.href, async : false });
+    var data = $.ajax({ url: window.location.href, async: false });
     if (data && typeof data.responseText !== 'undefined') {
       callback(data.responseText, that.parseHtml(data.responseText));
     }
   },
 
-  traverse: function(parsed, callback, number, alreadyCalled) {
+  traverse: function (parsed, callback, number, alreadyCalled) {
     var that = this;
     if (typeof alreadyCalled === 'undefined') {
       callback(parsed, number, false);
     }
     if (typeof parsed.children !== 'undefined') {
       parsed.childCount = 1;
-      $.each(parsed.children, function(index, child) {
+      $.each(parsed.children, function (index, child) {
         callback(child, parsed.childCount, parsed);
         that.traverse(child, callback, parsed.childCount, true);
         if (child.type === 'tag') {
@@ -29,13 +29,13 @@ quail.components.htmlSource = {
       });
     }
     if ($.isArray(parsed)) {
-      $.each(parsed, function(index, element) {
+      $.each(parsed, function (index, element) {
         that.traverse(element, callback);
       });
     }
   },
 
-  addSelector: function(element, childNumber, parent) {
+  addSelector: function (element, childNumber, parent) {
     if (element.type !== 'tag' || typeof element.name === 'undefined') {
       return;
     }
@@ -58,19 +58,19 @@ quail.components.htmlSource = {
     }
 
     if (childNumber && (typeof element.attributes === 'undefined' || typeof element.attributes.id === 'undefined')) {
-      selector += ':nth-child('+ childNumber + ')';
+      selector += ':nth-child(' + childNumber + ')';
     }
     element.selector.push(selector);
     return element.selector;
   },
 
-  parseHtml: function(html) {
+  parseHtml: function (html) {
     if (typeof Tautologistics === 'undefined') {
       return false;
     }
     // NodeHtmlParser chokes on doctype tags
     html = html.replace(/<!doctype ([^>]*)>/g, '');
-    var handler = new Tautologistics.NodeHtmlParser.HtmlBuilder(function() { }, { });
+    var handler = new Tautologistics.NodeHtmlParser.HtmlBuilder(function () { }, { });
     var parser = new Tautologistics.NodeHtmlParser.Parser(handler);
     parser.parseComplete(html);
     var parsed = handler.dom;
@@ -90,10 +90,10 @@ if (typeof Tautologistics !== 'undefined') {
     Comment: 'comment'
   };
 
-  Tautologistics.NodeHtmlParser.HtmlBuilder.prototype.write = function(element) {
+  Tautologistics.NodeHtmlParser.HtmlBuilder.prototype.write = function (element) {
     // this._raw.push(element);
     if (this._done) {
-      this.handleCallback(new Error("Writing to the builder after done() called is not allowed without a reset()"));
+      this.handleCallback(new Error('Writing to the builder after done() called is not allowed without a reset()'));
     }
     if (this._options.includeLocation) {
       if (element.type !== Mode.Attr) {
@@ -111,7 +111,7 @@ if (typeof Tautologistics !== 'undefined') {
     if (!this._tagStack.last()) { // There are no parent elements
       // If the element can be a container, add it to the tag stack and the top level list
       if (element.type === Mode.Tag) {
-        if (element.name.charAt(0) !== "/") { // Ignore closing tags that obviously don't have an opening tag
+        if (element.name.charAt(0) !== '/') { // Ignore closing tags that obviously don't have an opening tag
           node = this._copyElement(element);
           node.closingTag = true;
           this.dom.push(node);
@@ -120,7 +120,8 @@ if (typeof Tautologistics !== 'undefined') {
           }
           this._lastTag = node;
         }
-      } else if (element.type === Mode.Attr && this._lastTag) {
+      }
+      else if (element.type === Mode.Attr && this._lastTag) {
         if (!this._lastTag.attributes) {
           this._lastTag.attributes = {};
         }
@@ -139,7 +140,7 @@ if (typeof Tautologistics !== 'undefined') {
       // If the element can be a container, add it as a child of the element
       // on top of the tag stack and then add it to the tag stack
       if (element.type === Mode.Tag) {
-        if (element.name.charAt(0) === "/") {
+        if (element.name.charAt(0) === '/') {
           // This is a closing tag, scan the tagStack to find the matching opening tag
           // and pop the stack up to the opening tag's parent
           var baseName = this._options.caseSensitiveTags ?
