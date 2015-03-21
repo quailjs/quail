@@ -6,8 +6,7 @@
 </head>
 <body>
 	<div data-expected="fail">
-
-		<p class="quail-failed-element">
+		<p>
 			* chocolate
 			<br/>
 			* vanilla
@@ -18,9 +17,15 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="fail">
 
-		<p class="quail-failed-element">
+	<div data-expected="fail">
+		<p>
+			-chocolate<br class="somestuff">-vanilla<br>-cherry<br data-attribute>-bananna
+		</p>
+	</div>
+
+	<div data-expected="fail">
+		<p>
 			◤ chocolate
 			<br/>
 			◤ vanilla
@@ -31,9 +36,9 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="fail">
 
-		<p class="quail-failed-element">
+	<div data-expected="fail">
+		<p>
 			1. chocolate
 			<br/>
 			2. vanilla
@@ -44,9 +49,9 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="fail">
 
-		<p class="quail-failed-element">
+	<div data-expected="fail">
+		<p>
 			I. chocolate
 			<br/>
 			II. vanilla
@@ -57,9 +62,9 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="fail">
 
-		<p class="quail-failed-element">
+	<div data-expected="fail">
+		<p>
 			1) chocolate
 			<br/>
 			2) vanilla
@@ -70,9 +75,9 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="fail">
 
-		<p class="quail-failed-element">
+	<div data-expected="fail">
+		<p>
 			▶ chocolate
 			<br/>
 			* vanilla
@@ -83,15 +88,29 @@
 			<br/>
 		</p>
 	</div>
-	<div data-expected="pass">
 
+	<div data-expected="pass">
 		<p>
 			Our ice-cream flavours include chocolate*, vanilla*, cherry, and bananna.
 		</p>
 	</div>
 
 	<div data-expected="pass">
+		<p>
+			* Too short <br />
+			* May not be a list
+		</p>
+	</div>
 
+	<div data-expected="pass">
+		<p>
+			* Footnotes, <br />
+			** are not lists, <br />
+			*** so they should pass.
+		</p>
+	</div>
+
+	<div data-expected="pass">
 		<ul>
 			<li>chocolate</li>
 			<li>vanilla</li>
