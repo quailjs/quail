@@ -144,7 +144,6 @@ aLinksToMultiMediaRequireTranscript:
     - "media"
     - "content"
 aLinksToSoundFilesNeedTranscripts:
-  type: "selector"
   testability: 0
   title:
     en: "Any links to a sound file should also include a link to a transcript"
@@ -163,8 +162,6 @@ aLinksToSoundFilesNeedTranscripts:
     - "link"
     - "media"
     - "content"
-  options:
-    selector: "a[href$='.wav'], a[href$='.snd'], a[href$='.mp3'], a[href$='.iff'], a[href$='.svx'], a[href$='.sam'], a[href$='.smp'], a[href$='.vce'], a[href$='.vox'], a[href$='.pcm'], a[href$='.aif']"
 aLinkWithNonText:
   title:
     en: "Links with only non-text content should be readable"

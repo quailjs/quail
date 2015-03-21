@@ -7,7 +7,7 @@
 -- Converted -- aLinksDontOpenNewWindow
 -- Converted -- aLinksNotSeparatedBySymbols
 -- Converted -- aLinksToMultiMediaRequireTranscript
-aLinksToSoundFilesNeedTranscripts
+-- Converted -- aLinksToSoundFilesNeedTranscripts
 aMultimediaTextAlternative
 aMustContainText
 aMustHaveTitle
