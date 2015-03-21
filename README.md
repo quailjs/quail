@@ -20,6 +20,7 @@ You will need the following installed on your system to run Quail.
 1. [Grunt & Grunt CLI](http://gruntjs.com/installing-grunt)
 1. [Bower](http://bower.io/)
 1. [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (To run Selenium Server)
+1. [Karma](http://karma-runner.github.io/0.8/intro/installation.html)
 
 ## Using Quail
 
@@ -37,7 +38,7 @@ grunt build
 
 ### Using Quail from the command line
 
-To see the Quail CLI API, run the following.
+To see the Quail CLI API, run the following. You can also add the Quail bin directory to your PATH if you are so inclined.
 
 ```bash
 ./bin/quail --help
@@ -46,25 +47,25 @@ To see the Quail CLI API, run the following.
 Once the command is set up, you can run the following to test any addressable web page.
 
 ```bash
-quail eval http://placekitten.com
+./bin/quail eval http://placekitten.com
 ```
 
 Write the results as a JSON object out to file in an existing directory.
 
 ```bash
-quail evaluate http://placekitten.com -o ./analyses
+./bin/quail evaluate http://placekitten.com -o ./analyses
 ```
 
 To work on an existing assessment in a browser (so that breakpoints can be set in the console), run the following.
 
 ```bash
-quail dev aMustHaveTitle
+./bin/quail dev aMustHaveTitle
 ```
 
 The following is experimental, which means it probably won\'t work. You can generate a new assessment with this command.
 
 ```bash
-quail gen someNewAssessment
+./bin/quail gen someNewAssessment
 ```
 
 ## Testing
@@ -72,7 +73,7 @@ quail gen someNewAssessment
 ### Core unit tests in Karma
 
 ```bash
-karma start ./config/karma-unit.conf.js
+./node_modules/karma/bin/karma start ./config/karma-unit.conf.js
 ```
 
 ### Testing assessments in Selenium
