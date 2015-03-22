@@ -31,7 +31,7 @@
                 audioMayBePresent
 -- Converted -- basefontIsNotUsed
 -- Converted -- blinkIsNotUsed
--- tagged --    blockquoteNotUsedForIndentation
+-- Converted -- blockquoteNotUsedForIndentation
                 blockquoteUseForQuotations
 -- tagged --    boldIsNotUsed
                 buttonDoesNotChangeContextOnFocus

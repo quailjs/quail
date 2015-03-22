@@ -1,16 +1,17 @@
 <!doctype html>
 <html>
-	<head>
-		<title>blockquoteNotUsedForIndentation</title>
-	</head>
-	<body>
-		<div data-expected="pass">
-        <blockquote cite="John Steinbeck">Ideas are like rabbits. You get a couple and learn how to handle them, and pretty soon you have a dozen.</blockquote>
-		</div>
+  <head>
+    <title>blockquoteNotUsedForIndentation</title>
+  </head>
+  <body>
 
-		<div data-expected="fail">
-		  <blockquote class="quail-failed-element">Ideas are like rabbits. You get a couple and learn how to handle them, and pretty soon you have a dozen.</blockquote>
-		</div>
+    <div data-expected="pass">
+      <blockquote id="assert-1" cite="John Steinbeck">Ideas are like rabbits. You get a couple and learn how to handle them, and pretty soon you have a dozen.</blockquote>
+    </div>
 
-			</body>
+    <div data-expected="cantTell">
+      <blockquote id="assert-2">Ideas are like rabbits. You get a couple and learn how to handle them, and pretty soon you have a dozen.</blockquote>
+    </div>
+
+  </body>
 </html>
