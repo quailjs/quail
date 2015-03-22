@@ -19,10 +19,10 @@
                 appletContainsTextEquivalentInAlt
 -- Converted -- appletProvidesMechanismToReturnToParent
 -- Converted -- appletTextEquivalentsGetUpdated
--- tagged --    appletUIMustBeAccessible
--- tagged --    appletsDoNotFlicker
--- tagged --    appletsDonotUseColorAlone
--- tagged --    areaAltIdentifiesDestination
+-- Converted -- appletUIMustBeAccessible
+-- Converted -- appletsDoNotFlicker
+-- Converted -- appletsDonotUseColorAlone
+-- Converted -- areaAltIdentifiesDestination
 -- tagged --    areaAltRefersToText
 -- tagged --    areaDontOpenNewWindow
 -- tagged --    areaHasAltValue

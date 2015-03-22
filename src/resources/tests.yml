@@ -428,6 +428,8 @@ areaAltIdentifiesDestination:
     - "objects"
     - "applet"
     - "content"
+  options:
+    test: 'area[alt]'
 areaAltRefersToText:
   testability: 0
   title:
