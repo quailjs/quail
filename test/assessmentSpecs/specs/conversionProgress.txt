@@ -52,7 +52,7 @@
                 doctypeProvided
                 documentAbbrIsUsed
                 documentAcronymsHaveElement
--- tagged --    documentAutoRedirectNotUsed
+-- Converted -- documentAutoRedirectNotUsed
 -- tagged --    documentContentReadableWithoutStylesheets
 -- tagged --    documentHasTitleElement
                 documentIDsMustBeUnique
