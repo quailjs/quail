@@ -46,7 +46,7 @@
                 colorElementBehindContrast
                 colorFontContrast
                 contentPositioningShouldNotChangeMeaning
--- tagged --    cssDocumentMakesSenseStyleTurnedOff
+-- Converted -- cssDocumentMakesSenseStyleTurnedOff
                 definitionListsAreUsed
                 doNotUseGraphicalSymbolToConveyInformation
                 doctypeProvided
