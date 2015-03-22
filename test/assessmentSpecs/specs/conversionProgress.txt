@@ -33,7 +33,7 @@
 -- Converted -- blinkIsNotUsed
 -- Converted -- blockquoteNotUsedForIndentation
                 blockquoteUseForQuotations
--- tagged --    boldIsNotUsed
+-- Converted -- boldIsNotUsed
                 buttonDoesNotChangeContextOnFocus
                 buttonHasName
                 checkboxHasLabel
