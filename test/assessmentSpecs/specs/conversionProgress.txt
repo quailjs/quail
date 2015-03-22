@@ -54,7 +54,7 @@
                 documentAcronymsHaveElement
 -- Converted -- documentAutoRedirectNotUsed
 -- Converted -- documentContentReadableWithoutStylesheets
--- tagged --    documentHasTitleElement
+-- Converted -- documentHasTitleElement
                 documentIDsMustBeUnique
                 documentIsWrittenClearly
                 documentLangIsISO639Standard

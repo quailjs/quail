@@ -1,24 +1,8 @@
 <!doctype html>
 <html>
-<head>
-  <title>documentHasTitleElement-pass</title>
-</head>
-<body>
-
-	<p>This document has a title element.</p>
-		<script>
-    (function(global) {
-        asyncTest('HTML element selected', function() {
-          $(document).quail({ jsonPath : '../../dist',
-            guideline : [ 'documentHasTitleElement' ],
-            reset : true,
-            caseResolve : function(eventName, thisTest, _case) {
-              ok(_case.get('status') === 'passed', 'The document has a title element.');
-              start();
-            }
-          });
-        });
-    })(this);
-  </script>
+  <head>
+    <title id="assert-1">documentHasTitleElement-pass</title>
+  </head>
+  <body>
   </body>
 </html>

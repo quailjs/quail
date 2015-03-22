@@ -1,23 +1,9 @@
 <!doctype html>
 <html>
-<head>
-</head>
-<body>
-	<h1>documentHasTitleElement-fail</h1>
-	<p>This document has a title element.</p>
-		<script>
-    (function(global) {
-      asyncTest('HTML element selected', function() {
-        $(document).quail({ jsonPath : '../../dist',
-          guideline : [ 'documentHasTitleElement' ],
-          reset : true,
-          caseResolve : function(eventName, thisTest, _case) {
-        		ok(_case.get('status') === 'failed', 'The document does not have a title element.');
-            start();
-          }
-        });
-      });
-    })(this);
-  </script>
+  <head>
+    <title id="assert-1">documentHasTitleElement</title>
+    <title id="assert-2">And another title</title>
+  </head>
+  <body>
   </body>
 </html>
