@@ -1,21 +1,18 @@
 <!doctype html>
 <html>
-	<head>
-		<title>appletUIMustBeAccessible</title>
-	</head>
-	<body>
-		<div class="quail-test limit-phantom" data-expected="pass">
+  <head>
+    <title>appletUIMustBeAccessible</title>
+  </head>
+  <body>
 
-		</div>
+    <div data-expected="fail">
+      <applet id="assert-1" code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150">
+        <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
+        <param name="centerimage" value="true">
+        <param name="boxborder" value="false">
+        <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
+      </applet>
+    </div>
 
-		<div class="quail-test limit-phantom" data-expected="fail">
-		  <applet code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150" class="quail-failed-element">
-            <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
-            <param name="centerimage" value="true"><param name="boxborder" value="false">
-            <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
-        </applet>
-		</div>
-
-
-		</body>
+  </body>
 </html>
