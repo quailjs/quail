@@ -1,79 +1,72 @@
 <!doctype html>
 <html>
-	<head>
-		<title>areaLinksToSoundFile</title>
-	</head>
-	<body>
+  <head>
+    <title>areaLinksToSoundFile</title>
+  </head>
+  <body>
 
-		<div data-expected="fail">
-		  <map name="map1">
-            <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="speach.pcm" alt="hello" />
-        </map>
-		</div>
-
-		<div data-expected="fail">
-		  <map name="map1">
-            <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="speach.aif" alt="hello" />
-        </map>
-		</div>
-
-		<div data-expected="fail">
-		  <map name="map1">
-            <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="speach.smp" alt="hello" />
-        </map>
-		</div>
-
-		<div data-expected="fail">
-		  <p>
-        <img src="../assets/welcome.gif" usemap="#map1" alt="Image map of areas in the library"
-          />
-      </p>
-      <p>
-        <map name="map1">
-          <area shape="rect" coords="0,0,80,30" href="reference.html" alt="Reference"
-          />
-          <area class="quail-failed-element" shape="rect" coords="0,35,110,100" href="avlab.mp3" alt="Audio Visual Lab"
-          />
-        </map>
-      </p>
-      <p><a href="avlab.txt">Audio Visual Lab Text Transcript</a>
-		</div>
-
-		<div data-expected="fail">
-		  <map name="map1">
-            <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="speach.snd" alt="hello" />
-        </map>
-		</div>
-
-		<div data-expected="fail">
-		  <map name="map1">
-          <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="speach.snd" alt="hello" />
+    <div data-expected="fail">
+      <map name="map1">
+        <area id="assert-1" shape="rect" coords="0,0,30,30" href="speach.pcm" alt="hello" />
       </map>
-		</div>
+    </div>
 
-		<div data-expected="fail">
-		  <map name="map1">
-          <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="speach.iff" alt="hello" />
+    <div data-expected="fail">
+      <map name="map1">
+        <area id="assert-2" shape="rect" coords="0,0,30,30" href="speach.aif" alt="hello" />
       </map>
-		</div>
+    </div>
 
-		<div data-expected="fail">
-		  <map name="map1">
-          <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="speach.svx" alt="hello" />
+    <div data-expected="fail">
+      <map name="map1">
+        <area id="assert-3" shape="rect" coords="0,0,30,30" href="speach.smp" alt="hello" />
       </map>
-		</div>
+    </div>
 
-		<div data-expected="fail">
-		  <map name="map1">
-        <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="speach.sam" alt="hello" />
+    <div data-expected="fail">
+      <img src="../assets/welcome.gif" usemap="#map1" alt="Image map of areas in the library" />
+      <map name="map1">
+        <area shape="rect" coords="0,0,80,30" href="reference.html" alt="Reference" />
+        <area id="assert-4" shape="rect" coords="0,35,110,100" href="avlab.mp3" alt="Audio Visual Lab" />
       </map>
-		</div>
+      <a href="avlab.txt">Audio Visual Lab Text Transcript</a>
+    </div>
 
-		<div data-expected="fail">
-		  <map name="map1">
-          <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="speach.vce" alt="hello" />
+    <div data-expected="fail">
+      <map name="map1">
+        <area id="assert-5" shape="rect" coords="0,0,30,30" href="speach.snd" alt="hello" />
       </map>
-		</div>
+    </div>
 
-		</body>
+    <div data-expected="fail">
+      <map name="map1">
+        <area id="assert-6" shape="rect" coords="0,0,30,30" href="speach.snd" alt="hello" />
+      </map>
+    </div>
+
+    <div data-expected="fail">
+      <map name="map1">
+        <area id="assert-7" shape="rect" coords="0,0,30,30" href="speach.iff" alt="hello" />
+      </map>
+    </div>
+
+    <div data-expected="fail">
+      <map name="map1">
+        <area id="assert-8" shape="rect" coords="0,0,30,30" href="speach.svx" alt="hello" />
+      </map>
+    </div>
+
+    <div data-expected="fail">
+      <map name="map1">
+        <area id="assert-9" shape="rect" coords="0,0,30,30" href="speach.sam" alt="hello" />
+      </map>
+    </div>
+
+    <div data-expected="fail">
+      <map name="map1">
+        <area id="assert-10" shape="rect" coords="0,0,30,30" href="speach.vce" alt="hello" />
+      </map>
+    </div>
+
+  </body>
 </html>

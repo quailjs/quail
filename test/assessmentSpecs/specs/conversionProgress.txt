@@ -26,7 +26,7 @@
 -- Converted -- areaAltRefersToText
 -- Converted -- areaDontOpenNewWindow
 -- Converted -- areaHasAltValue
--- tagged --    areaLinksToSoundFile
+-- Converted -- areaLinksToSoundFile
                 ariaOrphanedContent
                 audioMayBePresent
 -- tagged --    basefontIsNotUsed
