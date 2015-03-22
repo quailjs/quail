@@ -13,7 +13,7 @@
 -- Converted -- aMustHaveTitle
 -- tagged --    aMustNotHaveJavascriptHref
                 aSuspiciousLinkText
--- tagged --    aTitleDescribesDestination
+-- Converted -- aTitleDescribesDestination
                 animatedGifMayBePresent
                 appletContainsTextEquivalent
                 appletContainsTextEquivalentInAlt
