@@ -231,7 +231,6 @@ aMustHaveTitle:
     - "link"
     - "content"
 aMustNotHaveJavascriptHref:
-  type: "selector"
   testability: 1
   title:
     en: "Links should not use \"javascript\" in their location"
@@ -271,7 +270,6 @@ aSuspiciousLinkText:
     - "suspiciousLinks"
   callback: "aSuspiciousLinkText"
 aTitleDescribesDestination:
-  type: "selector"
   testability: 0
   title:
     en: "The title attribute of all source a (anchor) elements describes the link destination."
@@ -340,7 +338,6 @@ appletContainsTextEquivalentInAlt:
     empty: true
     selector: "applet"
 appletProvidesMechanismToReturnToParent:
-  type: "selector"
   testability: 0
   title:
     en: "All applets should provide a way for keyboard users to escape"
@@ -356,7 +353,6 @@ appletProvidesMechanismToReturnToParent:
   options:
     selector: "applet"
 appletTextEquivalentsGetUpdated:
-  type: "selector"
   testability: 0
   guidelines:
     508:
@@ -373,7 +369,6 @@ appletTextEquivalentsGetUpdated:
   options:
     selector: "applet"
 appletUIMustBeAccessible:
-  type: "selector"
   testability: 0
   title:
     en: "Any user interface in an applet must be accessible"
@@ -396,7 +391,6 @@ appletUIMustBeAccessible:
   options:
     selector: "applet"
 appletsDoNotFlicker:
-  type: "selector"
   testability: 0
   title:
     en: "All applets do not flicker"
@@ -418,7 +412,6 @@ appletsDoNotFlicker:
   options:
     selector: "applet"
 appletsDonotUseColorAlone:
-  type: "selector"
   testability: 0
   title:
     en: "Applets should not use color alone to communicate content"
@@ -436,7 +429,6 @@ appletsDonotUseColorAlone:
   options:
     selector: "applet"
 areaAltIdentifiesDestination:
-  type: "selector"
   testability: 0
   title:
     en: "All \"area\" elements must have an \"alt\" attribute which describes the link destination"
@@ -456,7 +448,6 @@ areaAltIdentifiesDestination:
   options:
     selector: "area[alt]"
 areaAltRefersToText:
-  type: "selector"
   testability: 0
   title:
     en: "Alt text for \"area\" elements should replicate the text found in the image"
@@ -471,7 +462,6 @@ areaAltRefersToText:
   options:
     selector: "area"
 areaDontOpenNewWindow:
-  type: "selector"
   testability: 1
   title:
     en: "No \"area\" elements should open a new window without warning"
@@ -486,7 +476,6 @@ areaDontOpenNewWindow:
   options:
     selector: "area[target='new window'], area[target=_new], area[target=_blank], area[target=_blank]"
 areaHasAltValue:
-  type: "selector"
   testability: 1
   title:
     en: "All \"area\" elements must have an \"alt\" attribute"
@@ -511,7 +500,6 @@ areaHasAltValue:
     selector: "area"
     test: ":not(area[alt])"
 areaLinksToSoundFile:
-  type: "selector"
   testability: 1
   title:
     en: "All \"area\" elements which link to a sound file should also provide a link to a transcript"
@@ -544,7 +532,6 @@ ariaOrphanedContent:
     - "content"
   callback: "ariaOrphanedContent"
 basefontIsNotUsed:
-  type: "selector"
   testability: 1
   title:
     en: "Basefont should not be used"
@@ -559,7 +546,6 @@ basefontIsNotUsed:
   options:
     selector: "basefont"
 blinkIsNotUsed:
-  type: "selector"
   testability: 1
   title:
     en: "The \"blink\" tag should not be used"
@@ -578,7 +564,6 @@ blinkIsNotUsed:
   options:
     selector: "blink"
 blockquoteNotUsedForIndentation:
-  type: "selector"
   testability: 0.5
   title:
     en: "The \"blockquote\" tag should not be used just for indentation"
@@ -614,7 +599,6 @@ blockquoteUseForQuotations:
     - "content"
   callback: "blockquoteUseForQuotations"
 boldIsNotUsed:
-  type: "selector"
   testability: 1
   title:
     en: "The \"b\" (bold) element is not used"
@@ -761,7 +745,6 @@ contentPositioningShouldNotChangeMeaning:
     - "structure"
   callback: "contentPositioningShouldNotChangeMeaning"
 cssDocumentMakesSenseStyleTurnedOff:
-  type: "selector"
   testability: 0
   title:
     en: "The document must be readable with styles turned off"
@@ -977,7 +960,6 @@ documentAcronymsHaveElement:
     - "acronym"
   callback: "documentAcronymsHaveElement"
 documentAutoRedirectNotUsed:
-  type: "selector"
   testability: 1
   title:
     en: "Auto-redirect with \"meta\" elements must not be used"
@@ -991,7 +973,6 @@ documentAutoRedirectNotUsed:
   options:
     selector: "meta[http-equiv=refresh]"
 documentContentReadableWithoutStylesheets:
-  type: "selector"
   testability: 0
   title:
     en: "Content should be readable without style sheets"
@@ -1018,7 +999,6 @@ documentContentReadableWithoutStylesheets:
   options:
     selector: "html:has(link[rel=stylesheet], style) body, body:has(*[style])"
 documentHasTitleElement:
-  type: "selector"
   testability: 1
   title:
     en: "The document should have a title element"
@@ -1093,7 +1073,6 @@ documentLangIsISO639Standard:
     - "languageCodes"
   callback: "documentLangIsISO639Standard"
 documentLangNotIdentified:
-  type: "selector"
   testability: 1
   title:
     en: "The document must have a \"lang\" attribute"
@@ -1108,7 +1087,6 @@ documentLangNotIdentified:
   options:
     selector: "html:not(html[lang])"
 documentMetaNotUsedWithTimeout:
-  type: "selector"
   testability: 1
   title:
     en: "Meta elements must not be used to refresh the content of a page"
@@ -1134,7 +1112,6 @@ documentMetaNotUsedWithTimeout:
   options:
     selector: "meta[http-equiv=refresh]"
 documentReadingDirection:
-  type: "selector"
   testability: 0.5
   title:
     en: "Reading direction of text is correctly marked"
@@ -1166,7 +1143,6 @@ documentStrictDocType:
     - "doctype"
   callback: "documentStrictDocType"
 documentTitleDescribesDocument:
-  type: "selector"
   testability: 0
   title:
     en: "The title describes the document"
@@ -1285,7 +1261,6 @@ documentVisualListsAreMarkedUp:
     - "symbols"
   callback: "documentVisualListsAreMarkedUp"
 domOrderMatchesVisualOrder:
-  type: "selector"
   testability: 0.5
   title:
     en: "Ensure that the visual order of the page matches the DOM"
@@ -1349,7 +1324,6 @@ elementsDoNotHaveDuplicateAttributes:
     - "node-htmlparser/lib/htmlparser.js"
   callback: "elementsDoNotHaveDuplicateAttributes"
 embedMustHaveAltAttribute:
-  type: "selector"
   testability: 1
   title:
     en: "\"Embed\" elements must have an \"alt\" attribute"
@@ -1365,7 +1339,6 @@ embedMustHaveAltAttribute:
   options:
     selector: "embed:not([alt])"
 embedMustNotHaveEmptyAlt:
-  type: "selector"
   testability: 1
   title:
     en: "\"Embed\" elements cannot have an empty \"alt\" attribute"
@@ -1381,7 +1354,6 @@ embedMustNotHaveEmptyAlt:
   options:
     selector: "embed[alt=]"
 embedProvidesMechanismToReturnToParent:
-  type: "selector"
   testability: 0
   title:
     en: "All embed elements should provide a way for keyboard users to escape"
@@ -1437,7 +1409,6 @@ emoticonsMissingAbbr:
     - "content"
   callback: "emoticonsMissingAbbr"
 fieldsetHasLabel:
-  type: "selector"
   testability: 1
   title:
     en: "Fieldsets require a label element"
@@ -1533,7 +1504,6 @@ focusIndicatorVisible:
     - "convertToPx"
   callback: "focusIndicatorVisible"
 fontIsNotUsed:
-  type: "selector"
   testability: 1
   title:
     en: "Font elements should not be used"
@@ -1548,7 +1518,6 @@ fontIsNotUsed:
   options:
     selector: "font"
 formAllowsCheckIfIrreversable:
-  type: "selector"
   testability: 0
   guidelines: []
   tags:
@@ -1557,7 +1526,6 @@ formAllowsCheckIfIrreversable:
   options:
     selector: "form"
 formButtonsHaveValue:
-  type: "selector"
   testability: 1
   title:
     en: "Input elements for button, submit, or reset must have a value attribute"
@@ -1583,7 +1551,6 @@ formButtonsHaveValue:
     selector: "input[type=button], input[type=submit], input[type=reset]"
     test: ":not([value])"
 formDeleteIsReversable:
-  type: "selector"
   testability: 0
   title:
     en: "Deleting items using a form should be reversable"
@@ -1598,7 +1565,6 @@ formDeleteIsReversable:
   options:
     selector: "form"
 formErrorMessageHelpsUser:
-  type: "selector"
   testability: 0
   title:
     en: "Forms offer the user a way to check the results of their form before performing an irrevocable action"
@@ -1613,7 +1579,6 @@ formErrorMessageHelpsUser:
   options:
     selector: "form"
 formHasGoodErrorMessage:
-  type: "selector"
   testability: 0
   title:
     en: "Form error messages should assist in solving errors"
@@ -1628,7 +1593,6 @@ formHasGoodErrorMessage:
   options:
     selector: "form"
 formHasSubmitButton:
-  type: "selector"
   testability: 1
   title:
     en: "Form should have a submit button"
@@ -1675,7 +1639,6 @@ formWithRequiredLabel:
     - "content"
   callback: "formWithRequiredLabel"
 frameIsNotUsed:
-  type: "selector"
   testability: 1
   title:
     en: "Frames are not used"
@@ -1690,7 +1653,6 @@ frameIsNotUsed:
   options:
     selector: "frame"
 frameRelationshipsMustBeDescribed:
-  type: "selector"
   testability: 0.5
   title:
     en: "Complex framesets should contain a \"longdesc\" attribute"
@@ -1705,7 +1667,6 @@ frameRelationshipsMustBeDescribed:
   options:
     selector: "frameset:not(frameset[longdesc])"
 framesAreUsedToGroupContent:
-  type: "selector"
   testability: 0.5
   title:
     en: "Use frame elements to group repeated materials"
@@ -1724,7 +1685,6 @@ framesAreUsedToGroupContent:
   options:
     selector: "body:not(body:has(frameset))"
 frameSrcIsAccessible:
-  type: "selector"
   testability: 0
   title:
     en: "The source for each frame is accessible content."
@@ -1762,7 +1722,6 @@ frameTitlesDescribeFunction:
     empty: true
     selector: "frame[title], iframe[title]"
 frameTitlesNotEmpty:
-  type: "selector"
   testability: 1
   title:
     en: "Frames cannot have empty \"title\" attributes"
@@ -1809,7 +1768,6 @@ frameTitlesNotPlaceholder:
     attribute: "title"
     selector: "frame, iframe"
 framesHaveATitle:
-  type: "selector"
   testability: 1
   title:
     en: "All \"frame\" elements should have a \"title\" attribute"
@@ -1832,7 +1790,6 @@ framesHaveATitle:
     selector: "frame:visible, iframe:visible"
     test: ":not([title])"
 framesetIsNotUsed:
-  type: "selector"
   testability: 1
   title:
     en: "The \"frameset\" element should not be used"
@@ -1847,7 +1804,6 @@ framesetIsNotUsed:
   options:
     selector: "frameset"
 framesetMustHaveNoFramesSection:
-  type: "selector"
   testability: 0.5
   title:
     en: "All framesets should contain a noframes section"
@@ -1897,7 +1853,6 @@ headerH1:
   options:
     headingLevel: 1
 headerH1Format:
-  type: "selector"
   testability: 0
   title:
     en: "All h1 elements are not used for formatting"
@@ -1939,7 +1894,6 @@ headerH2:
   options:
     headingLevel: 2
 headerH2Format:
-  type: "selector"
   testability: 0
   title:
     en: "All h2 elements are not used for formatting"
@@ -1981,7 +1935,6 @@ headerH3:
   options:
     headingLevel: 3
 headerH3Format:
-  type: "selector"
   testability: 0
   title:
     en: "All h3 elements are not used for formatting"
@@ -2023,7 +1976,6 @@ headerH4:
   options:
     headingLevel: 4
 headerH4Format:
-  type: "selector"
   testability: 0
   title:
     en: "All h4 elements are not used for formatting"
@@ -2044,7 +1996,6 @@ headerH4Format:
   options:
     selector: "h4"
 headerH5Format:
-  type: "selector"
   testability: 0
   title:
     en: "All h5 elements are not used for formatting"
@@ -2063,7 +2014,6 @@ headerH5Format:
   options:
     selector: "h5"
 headerH6Format:
-  type: "selector"
   testability: 0
   title:
     en: "All h6 elements are not used for formatting"
@@ -2180,7 +2130,6 @@ idrefsHasCorrespondingId:
           - "F17"
   callback: "idrefsHasCorrespondingId"
 iIsNotUsed:
-  type: "selector"
   testability: 1
   title:
     en: "The \"i\" (italic) element is not used"
@@ -2195,7 +2144,6 @@ iIsNotUsed:
   options:
     selector: "i"
 iframeMustNotHaveLongdesc:
-  type: "selector"
   testability: 1
   title:
     en: "Inline frames (\"iframes\") should not have a \"longdesc\" attribute"
@@ -2211,7 +2159,6 @@ iframeMustNotHaveLongdesc:
   options:
     selector: "iframe[longdesc]"
 imageMapServerSide:
-  type: "selector"
   testability: 1
   title:
     en: "All links in a server-side map should have duplicate links available in the document"
@@ -2227,7 +2174,6 @@ imageMapServerSide:
   options:
     selector: "img[ismap]"
 imgAltEmptyForDecorativeImages:
-  type: "selector"
   testability: 0
   title:
     en: "If an image is purely decorative, the \"alt\" text must be empty"
@@ -2246,7 +2192,6 @@ imgAltEmptyForDecorativeImages:
   options:
     selector: "img[alt]"
 imgAltIdentifiesLinkDestination:
-  type: "selector"
   testability: 0
   title:
     en: "Any image within a link must have \"alt\" text the describes the link destination"
@@ -2280,7 +2225,6 @@ imgAltIsDifferent:
     - "content"
   callback: "imgAltIsDifferent"
 imgAltIsSameInText:
-  type: "selector"
   testability: 0
   title:
     en: "Check that any text within an image is also in the \"alt\" attribute"
@@ -2400,7 +2344,6 @@ imgGifNoFlicker:
     - "content"
   callback: "imgGifNoFlicker"
 imgHasAlt:
-  type: "selector"
   testability: 1
   title:
     en: "Image elements must have an \"alt\" attribute"
@@ -2490,7 +2433,6 @@ imgNonDecorativeHasAlt:
     - "content"
   callback: "imgNonDecorativeHasAlt"
 imgNotReferredToByColorAlone:
-  type: "selector"
   testability: 0
   title:
     en: "For any image, the \"alt\" text cannot refer to color alone"
@@ -2515,7 +2457,6 @@ imgNotReferredToByColorAlone:
   options:
     selector: "img"
 imgServerSideMapNotUsed:
-  type: "selector"
   testability: 1
   title:
     en: "Server-side image maps should not be used"
@@ -2531,7 +2472,6 @@ imgServerSideMapNotUsed:
   options:
     selector: "img[ismap]"
 imgShouldNotHaveTitle:
-  type: "selector"
   testability: 1
   title:
     en: "Images should not have a \"title\" attribute"
@@ -2546,7 +2486,6 @@ imgShouldNotHaveTitle:
   options:
     selector: "img[title]"
 imgWithMapHasUseMap:
-  type: "selector"
   testability: 1
   title:
     en: "Any image with an \"ismap\" attribute have a valid \"usemap\" attribute"
@@ -2614,7 +2553,6 @@ inputCheckboxRequiresFieldset:
     - "content"
   callback: "inputCheckboxRequiresFieldset"
 inputDoesNotUseColorAlone:
-  type: "selector"
   testability: 0
   title:
     en: "An \"input\" element should not use color alone"
@@ -2632,7 +2570,6 @@ inputDoesNotUseColorAlone:
   options:
     selector: "input:not(input[type=hidden])"
 inputElementsDontHaveAlt:
-  type: "selector"
   testability: 1
   title:
     en: "Input elements which are not images should not have an \"alt\" attribute"
@@ -2666,7 +2603,6 @@ inputFileHasTabIndex:
     empty: true
     selector: "input[type=file]"
 inputImageAltIdentifiesPurpose:
-  type: "selector"
   testability: 0
   title:
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute that describes the function of the input"
@@ -2779,7 +2715,6 @@ inputImageAltNotRedundant:
     - "redundant.inputImage"
   callback: "inputImageAltNotRedundant"
 inputImageHasAlt:
-  type: "selector"
   testability: 1
   title:
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute"
@@ -2813,7 +2748,6 @@ inputImageHasAlt:
     selector: "input[type=image]:visible"
     test: ":not(input[type=image][alt])"
 inputImageNotDecorative:
-  type: "selector"
   testability: 0
   title:
     en: "The \"alt\" text for input \"image\" buttons must be the same as text inside the image"
@@ -3011,7 +2945,6 @@ inputWithoutLabelHasTitle:
     - "placeholder"
   callback: "inputWithoutLabelHasTitle"
 labelDoesNotContainInput:
-  type: "selector"
   testability: 1
   title:
     en: "Label elements should not contain an input element"
@@ -3168,7 +3101,6 @@ languageUnicodeDirection:
   components:
     - "language"
 legendDescribesListOfChoices:
-  type: "selector"
   testability: 0
   title:
     en: "All \"legend\" elements must describe the group of choices"
@@ -3187,7 +3119,6 @@ legendDescribesListOfChoices:
   options:
     selector: "legend"
 legendTextNotEmpty:
-  type: "selector"
   testability: 1
   title:
     en: "Legend text must not contain just whitespace"
@@ -3247,7 +3178,6 @@ legendTextNotPlaceholder:
     emtpy: true
     selector: "legend"
 liDontUseImageForBullet:
-  type: "selector"
   testability: 0.5
   guidelines: []
   tags:
@@ -3269,7 +3199,6 @@ linkHasAUniqueContext:
     - "content"
   callback: "linkHasAUniqueContext"
 linkUsedForAlternateContent:
-  type: "selector"
   testability: 0
   title:
     en: "Use a \"link\" element for alternate content"
@@ -3283,7 +3212,6 @@ linkUsedForAlternateContent:
   options:
     selector: "html:not(html:has(link[rel=alternate])) body"
 linkUsedToDescribeNavigation:
-  type: "selector"
   testability: 1
   title:
     en: "The document uses link elements to describe navigation if it is within a collection."
@@ -3332,7 +3260,6 @@ listOfLinksUseList:
     - "content"
   callback: "listOfLinksUseList"
 marqueeIsNotUsed:
-  type: "selector"
   testability: 1
   title:
     en: "The \"marquee\" tag should not be used"
@@ -3347,7 +3274,6 @@ marqueeIsNotUsed:
   options:
     selector: "marquee"
 menuNotUsedToFormatText:
-  type: "selector"
   testability: 0
   title:
     en: "Menu elements should not be used for formatting"
@@ -3379,7 +3305,6 @@ newWindowIsOpened:
     - "html"
   callback: "newWindowIsOpened"
 noembedHasEquivalentContent:
-  type: "selector"
   testability: 0
   title:
     en: "Noembed elements must be the same content as their \"embed\" element"
@@ -3394,7 +3319,6 @@ noembedHasEquivalentContent:
   options:
     selector: "noembed"
 noframesSectionMustHaveTextEquivalent:
-  type: "selector"
   testability: 0.5
   title:
     en: "All \"noframes\" elements should contain the text content from all frames"
@@ -3409,7 +3333,6 @@ noframesSectionMustHaveTextEquivalent:
   options:
     selector: "frameset:not(frameset:has(noframes))"
 objectContentUsableWhenDisabled:
-  type: "selector"
   testability: 0
   title:
     en: "When objects are disabled, content should still be available"
@@ -3424,7 +3347,6 @@ objectContentUsableWhenDisabled:
   options:
     selector: "object"
 objectDoesNotFlicker:
-  type: "selector"
   testability: 0
   title:
     en: "Objects do not flicker"
@@ -3445,7 +3367,6 @@ objectDoesNotFlicker:
   options:
     selector: "object"
 objectDoesNotUseColorAlone:
-  type: "selector"
   testability: 0
   title:
     en: "Objects must not use color to communicate alone"
@@ -3462,7 +3383,6 @@ objectDoesNotUseColorAlone:
   options:
     selector: "object"
 objectInterfaceIsAccessible:
-  type: "selector"
   testability: 0
   title:
     en: "Interfaces within objects must be accessible"
@@ -3477,7 +3397,6 @@ objectInterfaceIsAccessible:
   options:
     selector: "object"
 objectLinkToMultimediaHasTextTranscript:
-  type: "selector"
   testability: 0
   title:
     en: "Objects which reference multimedia files should also provide a link to a transcript"
@@ -3516,7 +3435,6 @@ objectMustContainText:
     empty: true
     selector: "object"
 objectMustHaveEmbed:
-  type: "selector"
   testability: 1
   title:
     en: "Every object should contain an \"embed\" element"
@@ -3531,7 +3449,6 @@ objectMustHaveEmbed:
   options:
     selector: "object:not(object:has(embed))"
 objectMustHaveTitle:
-  type: "selector"
   testability: 1
   title:
     en: "Objects should have a title attribute"
@@ -3569,7 +3486,6 @@ objectMustHaveValidTitle:
     empty: true
     selector: "object"
 objectProvidesMechanismToReturnToParent:
-  type: "selector"
   testability: 0
   title:
     en: "All objects should provide a way for keyboard users to escape"
@@ -3584,7 +3500,6 @@ objectProvidesMechanismToReturnToParent:
   options:
     selector: "object"
 objectShouldHaveLongDescription:
-  type: "selector"
   testability: 0
   title:
     en: "An object might require a long description"
@@ -3599,7 +3514,6 @@ objectShouldHaveLongDescription:
   options:
     selector: "object"
 objectTextUpdatesWhenObjectChanges:
-  type: "selector"
   testability: 0
   title:
     en: "The text equivalents of an object should update if the object changes"
@@ -3616,7 +3530,6 @@ objectTextUpdatesWhenObjectChanges:
   options:
     selector: "object"
 objectUIMustBeAccessible:
-  type: "selector"
   testability: 0
   title:
     en: "Content within an \"object\" element should be usable with objects disabled"
@@ -3631,7 +3544,6 @@ objectUIMustBeAccessible:
   options:
     selector: "object"
 objectWithClassIDHasNoText:
-  type: "selector"
   testability: 1
   title:
     en: "Objects with \"classid\" attributes should change their text if the content of the object changes"
@@ -3818,7 +3730,6 @@ radioLabelIsNearby:
   options:
     selector: "input[type=radio]"
 radioMarkedWithFieldgroupAndLegend:
-  type: "selector"
   testability: 1
   title:
     en: "All radio button groups are marked using fieldset and legend elements"
@@ -3863,7 +3774,6 @@ radioMarkedWithFieldgroupAndLegend:
 #     - "convertToPx"
 #   callback: "scriptFocusIndicatorVisible"
 scriptContentAccessibleWithScriptsTurnedOff:
-  type: "selector"
   testability: 0
   title:
     en: "Content on the page should still be available if scripts are disabled"
@@ -3877,7 +3787,6 @@ scriptContentAccessibleWithScriptsTurnedOff:
   options:
     selector: "script"
 scriptInBodyMustHaveNoscript:
-  type: "selector"
   testability: 0.5
   title:
     en: "Scripts should have a corresponding \"noscript\" element"
@@ -4117,7 +4026,6 @@ scriptOnmouseupHasOnkeyup:
     correspondingEvent: "onkeyup"
     searchEvent: "onmouseup"
 scriptUIMustBeAccessible:
-  type: "selector"
   testability: 0
   title:
     en: "The user interface for scripts should be accessible"
@@ -4133,7 +4041,6 @@ scriptUIMustBeAccessible:
   options:
     selector: "script"
 scriptsDoNotFlicker:
-  type: "selector"
   testability: 0
   title:
     en: "Scripts should not cause the screen to flicker"
@@ -4153,7 +4060,6 @@ scriptsDoNotFlicker:
   options:
     selector: "script"
 scriptsDoNotUseColorAlone:
-  type: "selector"
   testability: 0
   title:
     en: "The interface in scripts should not use color alone"
@@ -4249,7 +4155,6 @@ selectJumpMenu:
     - "hasEventListener"
   callback: "selectJumpMenu"
 selectWithOptionsHasOptgroup:
-  type: "selector"
   testability: 0.5
   title:
     en: "Form select elements should use optgroups for long selections"
@@ -4309,7 +4214,6 @@ skipToContentLinkProvided:
     - "skipContent"
   callback: "skipToContentLinkProvided"
 svgContainsTitle:
-  type: "selector"
   testability: 1
   title:
     en: "Inline SVG should use Title elements"
@@ -4362,7 +4266,6 @@ tabIndexFollowsLogicalOrder:
     - "document"
   callback: "tabIndexFollowsLogicalOrder"
 tableCaptionIdentifiesTable:
-  type: "selector"
   testability: 0
   title:
     en: "Captions should identify their table"
@@ -4381,7 +4284,6 @@ tableCaptionIdentifiesTable:
   options:
     selector: "caption"
 tableComplexHasSummary:
-  type: "selector"
   testability: 0.5
   title:
     en: "Complex tables should have a summary"
@@ -4400,7 +4302,6 @@ tableComplexHasSummary:
   options:
     selector: "table:not(table[summary], table:has(caption))"
 tableDataShouldHaveTh:
-  type: "selector"
   testability: 1
   title:
     en: "Data tables should contain \"th\" elements"
@@ -4434,7 +4335,6 @@ tableHeaderLabelMustBeTerse:
     - "content"
   callback: "tableHeaderLabelMustBeTerse"
 tableIsGrouped:
-  type: "selector"
   testability: 0.5
   title:
     en: "Mark up the areas of tables using thead and tbody"
@@ -4559,7 +4459,6 @@ tableShouldUseHeaderIDs:
     - "content"
   callback: "tableShouldUseHeaderIDs"
 tableSummaryDescribesTable:
-  type: "selector"
   testability: 0
   title:
     en: "Table summaries should describe the navigation and structure of the table"
@@ -4613,7 +4512,6 @@ tableSummaryIsNotTooLong:
     - "content"
   callback: "tableSummaryIsNotTooLong"
 tableSummaryIsSufficient:
-  type: "selector"
   testability: 0
   title:
     en: "All data tables should have an adequate summary"
@@ -4654,7 +4552,6 @@ tableUsesAbbreviationForHeader:
     - "content"
   callback: "tableUsesAbbreviationForHeader"
 tableUsesCaption:
-  type: "selector"
   testability: 1
   title:
     en: "Data tables should contain a \"caption\" element if not described elsewhere"
@@ -4690,7 +4587,6 @@ tableUsesScopeForRow:
     - "content"
   callback: "tableUsesScopeForRow"
 tableWithBothHeadersUseScope:
-  type: "selector"
   testability: 0.5
   title:
     en: "Data tables with multiple headers should use the \"scope\" attribute"
@@ -4835,7 +4731,6 @@ textareaLabelPositionedClose:
   options:
     selector: "textarea"
 videoProvidesCaptions:
-  type: "selector"
   testability: 0.5
   title:
     en: "All video tags must provide captions"
