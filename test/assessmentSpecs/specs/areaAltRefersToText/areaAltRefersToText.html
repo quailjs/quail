@@ -1,38 +1,16 @@
 <!doctype html>
 <html>
-	<head>
-		<title>areaAltRefersToText</title>
-	</head>
-	<body>
-		<div data-expected="fail">
-		  <p>
-            <img src="../assets/welcome.gif" usemap="#map1" alt="Image map of areas in the library"
-            />
-        </p>
-        <p>
-            <map id="map1" name="map1">
-                <area class="quail-failed-element" shape="rect" coords="0,0,80,30" href="reference.html" alt="Reference"
-                />
-                <area class="quail-failed-element" shape="rect" coords="0,35,110,100" href="media.html" alt="Lab" />
-            </map>
-        </p>
-		</div>
+  <head>
+    <title>areaAltRefersToText</title>
+  </head>
+  <body>
 
-		<div data-expected="fail">
-		  <p>
-            <img src="../assets/welcome.gif" usemap="#map1" alt="Image map of areas in the library"
-            />
-        </p>
-        <p>
-            <map id="map1" name="map1">
-                <area class="quail-failed-element" shape="rect" coords="0,0,80,30" href="reference.html" alt="Reference"
-                />
-                <area class="quail-failed-element" shape="rect" coords="0,35,110,100" href="media.html" alt="Audio Visual Lab"
-                />
-            </map>
-        </p>
-		</div>
+    <div data-expected="fail">
+      <img src="assets/welcome.gif" usemap="#map1" alt="Image map of areas in the library" />
+      <map id="map1" name="map1">
+        <area id="assert-1" shape="rect" coords="0,0,80,30" href="reference.html" alt="Reference" />
+      </map>
+    </div>
 
-
-		</body>
+  </body>
 </html>
