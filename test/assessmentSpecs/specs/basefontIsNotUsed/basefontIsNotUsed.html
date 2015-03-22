@@ -1,16 +1,13 @@
 <!doctype html>
 <html>
-	<head>
-		<title>basefontIsNotUsed</title>
-	</head>
-	<body>
-		<div data-expected="pass">
-		  <p>A paragraph with no basefont.</p>
-		</div>
+  <head>
+    <title>basefontIsNotUsed</title>
+  </head>
+  <body>
 
-		<div data-expected="fail">
-		  <basefont face="Arial" size="4" class="quail-failed-element" >Wow, basefont. Yeah</basefont>
-		</div>
+    <div data-expected="fail">
+      <basefont id="assert-1" face="Arial" size="4">Wow, basefont. Yeah</basefont>
+    </div>
 
-			</body>
+  </body>
 </html>

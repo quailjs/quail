@@ -29,7 +29,7 @@
 -- Converted -- areaLinksToSoundFile
                 ariaOrphanedContent
                 audioMayBePresent
--- tagged --    basefontIsNotUsed
+-- Converted -- basefontIsNotUsed
 -- tagged --    blinkIsNotUsed
 -- tagged --    blockquoteNotUsedForIndentation
                 blockquoteUseForQuotations
