@@ -1,16 +1,10 @@
 <!doctype html>
 <html>
-	<head>
-		<title>documentMetaNotUsedWithTimeout</title>
-	</head>
-	<body>
-		<div data-expected="fail">
-    	<meta http-equiv="refresh" content="3000; url=http://test.com" class="quail-failed-element"/>
-
-		</div>
-		<div data-expected="pass">
-			<p>There is no refresh here.</p>
-		</div>
-
-			</body>
+  <head>
+    <title>documentMetaNotUsedWithTimeout</title>
+    <meta id="assert-1" http-equiv="refresh" />
+    <meta id="assert-2" http-equiv="refresh" content="3000; url=http://test.com" />
+  </head>
+  <body>
+  </body>
 </html>
