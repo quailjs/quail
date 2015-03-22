@@ -242,7 +242,6 @@ aMustNotHaveJavascriptHref:
   tags:
     - "link"
     - "content"
-  options:
 aSuspiciousLinkText:
   testability: 1
   title:
@@ -285,7 +284,6 @@ aTitleDescribesDestination:
   tags:
     - "link"
     - "content"
-  options:
 appletContainsTextEquivalent:
   testability: 1
   title:
@@ -347,7 +345,6 @@ appletProvidesMechanismToReturnToParent:
     - "objects"
     - "applet"
     - "content"
-  options:
 appletTextEquivalentsGetUpdated:
   testability: 0
   guidelines:
@@ -362,7 +359,6 @@ appletTextEquivalentsGetUpdated:
     - "objects"
     - "applet"
     - "content"
-  options:
 appletUIMustBeAccessible:
   testability: 0
   title:
@@ -383,7 +379,6 @@ appletUIMustBeAccessible:
     - "objects"
     - "applet"
     - "content"
-  options:
 appletsDoNotFlicker:
   testability: 0
   title:
@@ -403,7 +398,6 @@ appletsDoNotFlicker:
     - "objects"
     - "applet"
     - "content"
-  options:
 appletsDonotUseColorAlone:
   testability: 0
   title:
@@ -419,7 +413,6 @@ appletsDonotUseColorAlone:
     - "objects"
     - "applet"
     - "content"
-  options:
 areaAltIdentifiesDestination:
   testability: 0
   title:
@@ -437,7 +430,6 @@ areaAltIdentifiesDestination:
     - "objects"
     - "applet"
     - "content"
-  options:
 areaAltRefersToText:
   testability: 0
   title:
@@ -450,7 +442,6 @@ areaAltRefersToText:
   tags:
     - "imagemap"
     - "content"
-  options:
 areaDontOpenNewWindow:
   testability: 1
   title:
@@ -463,7 +454,6 @@ areaDontOpenNewWindow:
   tags:
     - "imagemap"
     - "content"
-  options:
 areaHasAltValue:
   testability: 1
   title:
@@ -504,7 +494,6 @@ areaLinksToSoundFile:
     - "imagemap"
     - "media"
     - "content"
-  options:
 ariaOrphanedContent:
   testability: 1
   title:
@@ -530,7 +519,6 @@ basefontIsNotUsed:
   tags:
     - "document"
     - "deprecated"
-  options:
 blinkIsNotUsed:
   testability: 1
   title:
@@ -547,7 +535,6 @@ blinkIsNotUsed:
   tags:
     - "deprecated"
     - "content"
-  options:
 blockquoteNotUsedForIndentation:
   testability: 0.5
   title:
@@ -564,7 +551,6 @@ blockquoteNotUsedForIndentation:
   tags:
     - "blockquote"
     - "content"
-  options:
 blockquoteUseForQuotations:
   testability: 0.5
   title:
@@ -594,7 +580,6 @@ boldIsNotUsed:
   tags:
     - "semantics"
     - "content"
-  options:
 buttonHasName:
   type: "placeholder"
   testability: 1
@@ -661,7 +646,6 @@ checkboxHasLabel:
     - "content"
   components:
     - "label"
-  options:
 checkboxLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
@@ -677,7 +661,6 @@ checkboxLabelIsNearby:
     - "content"
   components:
     - "labelProximity"
-  options:
 closingTagsAreUsed:
   testability: 1
   title:
@@ -745,7 +728,6 @@ cssDocumentMakesSenseStyleTurnedOff:
           - "G140"
   tags:
     - "color"
-  options:
 colorFontContrast:
   testability: 1
   title:
@@ -943,7 +925,6 @@ documentAutoRedirectNotUsed:
   guidelines: []
   tags:
     - "document"
-  options:
 documentContentReadableWithoutStylesheets:
   testability: 0
   title:
@@ -968,7 +949,6 @@ documentContentReadableWithoutStylesheets:
   tags:
     - "document"
     - "color"
-  options:
 documentHasTitleElement:
   testability: 1
   title:
@@ -985,7 +965,6 @@ documentHasTitleElement:
   tags:
     - "document"
     - "head"
-  options:
 documentIDsMustBeUnique:
   testability: 1
   title:
@@ -1054,7 +1033,6 @@ documentLangNotIdentified:
   tags:
     - "document"
     - "language"
-  options:
 documentMetaNotUsedWithTimeout:
   testability: 1
   title:
@@ -1078,7 +1056,6 @@ documentMetaNotUsedWithTimeout:
           - "F41"
   tags:
     - "document"
-  options:
 documentReadingDirection:
   testability: 0.5
   title:
@@ -1095,7 +1072,6 @@ documentReadingDirection:
   tags:
     - "document"
     - "language"
-  options:
 documentStrictDocType:
   testability: 1
   title:
@@ -1126,7 +1102,6 @@ documentTitleDescribesDocument:
   tags:
     - "document"
     - "head"
-  options:
 documentTitleIsNotPlaceholder:
   type: "placeholder"
   testability: 1
@@ -1242,7 +1217,6 @@ domOrderMatchesVisualOrder:
           - "C27"
   tags:
     - "content"
-  options:
 elementAttributesAreValid:
   testability: 1
   title:
@@ -1299,7 +1273,6 @@ embedMustHaveAltAttribute:
     - "object"
     - "embed"
     - "content"
-  options:
 embedMustNotHaveEmptyAlt:
   testability: 1
   title:
@@ -1313,7 +1286,6 @@ embedMustNotHaveEmptyAlt:
     - "object"
     - "embed"
     - "content"
-  options:
 embedProvidesMechanismToReturnToParent:
   testability: 0
   title:
@@ -1331,7 +1303,6 @@ embedProvidesMechanismToReturnToParent:
     - "object"
     - "embed"
     - "content"
-  options:
 emoticonsExcessiveUse:
   testability: 0.5
   title:
@@ -1390,7 +1361,6 @@ fieldsetHasLabel:
   tags:
     - "form"
     - "content"
-  options:
 fileHasLabel:
   type: "label"
   testability: 1
@@ -1422,7 +1392,6 @@ fileHasLabel:
     - "content"
   components:
     - "label"
-  options:
 fileLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
@@ -1438,7 +1407,6 @@ fileLabelIsNearby:
     - "content"
   components:
     - "labelProximity"
-  options:
 focusIndicatorVisible:
   title:
     en: "Focus indicators have high visibility"
@@ -1472,14 +1440,12 @@ fontIsNotUsed:
   tags:
     - "deprecated"
     - "content"
-  options:
 formAllowsCheckIfIrreversable:
   testability: 0
   guidelines: []
   tags:
     - "form"
     - "content"
-  options:
 formButtonsHaveValue:
   testability: 1
   title:
@@ -1516,7 +1482,6 @@ formDeleteIsReversable:
   tags:
     - "form"
     - "content"
-  options:
 formErrorMessageHelpsUser:
   testability: 0
   title:
@@ -1529,7 +1494,6 @@ formErrorMessageHelpsUser:
   tags:
     - "form"
     - "content"
-  options:
 formHasGoodErrorMessage:
   testability: 0
   title:
@@ -1542,7 +1506,6 @@ formHasGoodErrorMessage:
   tags:
     - "form"
     - "content"
-  options:
 formHasSubmitButton:
   testability: 1
   title:
@@ -1560,7 +1523,6 @@ formHasSubmitButton:
   tags:
     - "form"
     - "content"
-  options:
 formWithRequiredLabel:
   testability: 0
   title:
@@ -1600,7 +1562,6 @@ frameIsNotUsed:
   tags:
     - "deprecated"
     - "frame"
-  options:
 frameRelationshipsMustBeDescribed:
   testability: 0.5
   title:
@@ -1613,7 +1574,6 @@ frameRelationshipsMustBeDescribed:
   tags:
     - "deprecated"
     - "frame"
-  options:
 framesAreUsedToGroupContent:
   testability: 0.5
   title:
@@ -1630,7 +1590,6 @@ framesAreUsedToGroupContent:
   tags:
     - "deprecated"
     - "frame"
-  options:
 frameSrcIsAccessible:
   testability: 0
   title:
@@ -1643,7 +1602,6 @@ frameSrcIsAccessible:
   tags:
     - "deprecated"
     - "frame"
-  options:
 frameTitlesDescribeFunction:
   type: "placeholder"
   testability: 0
@@ -1685,7 +1643,6 @@ frameTitlesNotEmpty:
   tags:
     - "deprecated"
     - "frame"
-  options:
 frameTitlesNotPlaceholder:
   type: "placeholder"
   testability: 1
@@ -1743,7 +1700,6 @@ framesetIsNotUsed:
   tags:
     - "deprecated"
     - "frame"
-  options:
 framesetMustHaveNoFramesSection:
   testability: 0.5
   title:
@@ -1756,7 +1712,6 @@ framesetMustHaveNoFramesSection:
   tags:
     - "deprecated"
     - "frame"
-  options:
 headersAttrRefersToATableCell:
   testability: 1
   title:
@@ -1810,7 +1765,6 @@ headerH1Format:
     - "content"
   components:
     - "header"
-  options:
 headerH2:
   type: "headingLevel"
   testability: 0
@@ -1850,7 +1804,6 @@ headerH2Format:
     - "content"
   components:
     - "header"
-  options:
 headerH3:
   type: "headingLevel"
   testability: 0
@@ -1890,7 +1843,6 @@ headerH3Format:
     - "content"
   components:
     - "header"
-  options:
 headerH4:
   type: "headingLevel"
   testability: 0
@@ -1930,7 +1882,6 @@ headerH4Format:
     - "content"
   components:
     - "header"
-  options:
 headerH5Format:
   testability: 0
   title:
@@ -1947,7 +1898,6 @@ headerH5Format:
   tags:
     - "header"
     - "content"
-  options:
 headerH6Format:
   testability: 0
   title:
@@ -1964,7 +1914,6 @@ headerH6Format:
   tags:
     - "header"
     - "content"
-  options:
 headersHaveText:
   type: "placeholder"
   testability: 1
@@ -2074,7 +2023,6 @@ iIsNotUsed:
   tags:
     - "deprecated"
     - "content"
-  options:
 iframeMustNotHaveLongdesc:
   testability: 1
   title:
@@ -2088,7 +2036,6 @@ iframeMustNotHaveLongdesc:
     - "objects"
     - "iframe"
     - "content"
-  options:
 imageMapServerSide:
   testability: 1
   title:
@@ -2102,7 +2049,6 @@ imageMapServerSide:
     - "objects"
     - "iframe"
     - "content"
-  options:
 imgAltEmptyForDecorativeImages:
   testability: 0
   title:
@@ -2119,7 +2065,6 @@ imgAltEmptyForDecorativeImages:
   tags:
     - "image"
     - "content"
-  options:
 imgAltIdentifiesLinkDestination:
   testability: 0
   title:
@@ -2132,7 +2077,6 @@ imgAltIdentifiesLinkDestination:
   tags:
     - "image"
     - "content"
-  options:
 imgAltIsDifferent:
   testability: 0.5
   title:
@@ -2171,7 +2115,6 @@ imgAltIsSameInText:
   tags:
     - "image"
     - "content"
-  options:
 imgAltIsTooLong:
   testability: 1
   title:
@@ -2288,7 +2231,6 @@ imgHasAlt:
   tags:
     - "image"
     - "content"
-  options:
 imgHasLongDesc:
   testability: 1
   title:
@@ -2379,7 +2321,6 @@ imgNotReferredToByColorAlone:
     - "image"
     - "color"
     - "content"
-  options:
 imgServerSideMapNotUsed:
   testability: 1
   title:
@@ -2393,7 +2334,6 @@ imgServerSideMapNotUsed:
     - "image"
     - "imagemap"
     - "content"
-  options:
 imgShouldNotHaveTitle:
   testability: 1
   title:
@@ -2406,7 +2346,6 @@ imgShouldNotHaveTitle:
   tags:
     - "image"
     - "content"
-  options:
 imgWithMapHasUseMap:
   testability: 1
   title:
@@ -2423,7 +2362,6 @@ imgWithMapHasUseMap:
     - "image"
     - "imagemap"
     - "content"
-  options:
 imgWithMathShouldHaveMathEquivalent:
   testability: 0
   title:
@@ -2487,7 +2425,6 @@ inputDoesNotUseColorAlone:
     - "form"
     - "color"
     - "content"
-  options:
 inputElementsDontHaveAlt:
   testability: 1
   title:
@@ -2500,7 +2437,6 @@ inputElementsDontHaveAlt:
   tags:
     - "form"
     - "content"
-  options:
 inputFileHasTabIndex:
   type: "placeholder"
   testability: 1
@@ -2535,7 +2471,6 @@ inputImageAltIdentifiesPurpose:
   tags:
     - "form"
     - "content"
-  options:
 inputImageAltIsNotFileName:
   testability: 1
   title:
@@ -2678,7 +2613,6 @@ inputImageNotDecorative:
     - "form"
     - "image"
     - "content"
-  options:
 inputPasswordHasTabIndex:
   type: "placeholder"
   testability: 1
@@ -2767,7 +2701,6 @@ inputTextHasLabel:
   tags:
     - "form"
     - "content"
-  options:
 inputTextHasTabIndex:
   type: "placeholder"
   testability: 1
@@ -2862,7 +2795,6 @@ labelDoesNotContainInput:
   tags:
     - "form"
     - "content"
-  options:
 labelMustBeUnique:
   testability: 1
   title:
@@ -3020,7 +2952,6 @@ legendDescribesListOfChoices:
   tags:
     - "form"
     - "content"
-  options:
 legendTextNotEmpty:
   testability: 1
   title:
@@ -3043,7 +2974,6 @@ legendTextNotEmpty:
   tags:
     - "form"
     - "content"
-  options:
 legendTextNotPlaceholder:
   type: "placeholder"
   testability: 1
@@ -3084,7 +3014,6 @@ liDontUseImageForBullet:
   tags:
     - "list"
     - "content"
-  options:
 linkHasAUniqueContext:
   testability: 1
   title:
@@ -3109,7 +3038,6 @@ linkUsedForAlternateContent:
   guidelines: []
   tags:
     - "document"
-  options:
 linkUsedToDescribeNavigation:
   testability: 1
   title:
@@ -3121,7 +3049,6 @@ linkUsedToDescribeNavigation:
   guidelines: []
   tags:
     - "document"
-  options:
 listNotUsedForFormatting:
   testability: 0
   title:
@@ -3169,7 +3096,6 @@ marqueeIsNotUsed:
   tags:
     - "deprecated"
     - "content"
-  options:
 menuNotUsedToFormatText:
   testability: 0
   title:
@@ -3182,7 +3108,6 @@ menuNotUsedToFormatText:
   tags:
     - "list"
     - "content"
-  options:
 newWindowIsOpened:
   testability: 1
   title:
@@ -3212,7 +3137,6 @@ noembedHasEquivalentContent:
   tags:
     - "objects"
     - "content"
-  options:
 noframesSectionMustHaveTextEquivalent:
   testability: 0.5
   title:
@@ -3225,7 +3149,6 @@ noframesSectionMustHaveTextEquivalent:
   tags:
     - "deprecated"
     - "frame"
-  options:
 objectContentUsableWhenDisabled:
   testability: 0
   title:
@@ -3238,7 +3161,6 @@ objectContentUsableWhenDisabled:
   tags:
     - "objects"
     - "content"
-  options:
 objectDoesNotFlicker:
   testability: 0
   title:
@@ -3257,7 +3179,6 @@ objectDoesNotFlicker:
   tags:
     - "objects"
     - "content"
-  options:
 objectDoesNotUseColorAlone:
   testability: 0
   title:
@@ -3272,7 +3193,6 @@ objectDoesNotUseColorAlone:
   tags:
     - "objects"
     - "content"
-  options:
 objectInterfaceIsAccessible:
   testability: 0
   title:
@@ -3285,7 +3205,6 @@ objectInterfaceIsAccessible:
   tags:
     - "objects"
     - "content"
-  options:
 objectLinkToMultimediaHasTextTranscript:
   testability: 0
   title:
@@ -3298,7 +3217,6 @@ objectLinkToMultimediaHasTextTranscript:
   tags:
     - "objects"
     - "content"
-  options:
 objectMustContainText:
   type: "placeholder"
   testability: 1
@@ -3334,7 +3252,6 @@ objectMustHaveEmbed:
   tags:
     - "objects"
     - "content"
-  options:
 objectMustHaveTitle:
   testability: 1
   title:
@@ -3351,7 +3268,6 @@ objectMustHaveTitle:
   tags:
     - "objects"
     - "content"
-  options:
 objectMustHaveValidTitle:
   type: "placeholder"
   testability: 1
@@ -3382,7 +3298,6 @@ objectProvidesMechanismToReturnToParent:
   tags:
     - "objects"
     - "content"
-  options:
 objectShouldHaveLongDescription:
   testability: 0
   title:
@@ -3395,7 +3310,6 @@ objectShouldHaveLongDescription:
   tags:
     - "objects"
     - "content"
-  options:
 objectTextUpdatesWhenObjectChanges:
   testability: 0
   title:
@@ -3410,7 +3324,6 @@ objectTextUpdatesWhenObjectChanges:
   tags:
     - "objects"
     - "content"
-  options:
 objectUIMustBeAccessible:
   testability: 0
   title:
@@ -3423,7 +3336,6 @@ objectUIMustBeAccessible:
   tags:
     - "objects"
     - "content"
-  options:
 objectWithClassIDHasNoText:
   testability: 1
   title:
@@ -3436,7 +3348,6 @@ objectWithClassIDHasNoText:
   tags:
     - "objects"
     - "content"
-  options:
 pNotUsedAsHeader:
   type: "custom"
   testability: 0.5
@@ -3510,7 +3421,6 @@ passwordHasLabel:
     - "content"
   components:
     - "label"
-  options:
 passwordLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
@@ -3526,7 +3436,6 @@ passwordLabelIsNearby:
     - "content"
   components:
     - "labelProximity"
-  options:
 preShouldNotBeUsedForTabularLayout:
   testability: 0
   title:
@@ -3588,7 +3497,6 @@ radioHasLabel:
     - "content"
   components:
     - "label"
-  options:
 radioLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
@@ -3604,7 +3512,6 @@ radioLabelIsNearby:
     - "content"
   components:
     - "labelProximity"
-  options:
 radioMarkedWithFieldgroupAndLegend:
   testability: 1
   title:
@@ -3624,7 +3531,6 @@ radioMarkedWithFieldgroupAndLegend:
   tags:
     - "form"
     - "content"
-  options:
 # scriptFocusIndicatorVisible:
 #   type: "custom"
 #   title:
@@ -3659,7 +3565,6 @@ scriptContentAccessibleWithScriptsTurnedOff:
   guidelines: []
   tags:
     - "javascript"
-  options:
 scriptInBodyMustHaveNoscript:
   testability: 0.5
   title:
@@ -3673,7 +3578,6 @@ scriptInBodyMustHaveNoscript:
       - "l"
   tags:
     - "javascript"
-  options:
 scriptOnclickRequiresOnKeypress:
   type: "event"
   testability: 1
@@ -3911,7 +3815,6 @@ scriptUIMustBeAccessible:
       - "l"
   tags:
     - "javascript"
-  options:
 scriptsDoNotFlicker:
   testability: 0
   title:
@@ -3929,7 +3832,6 @@ scriptsDoNotFlicker:
           - "F7"
   tags:
     - "javascript"
-  options:
 scriptsDoNotUseColorAlone:
   testability: 0
   title:
@@ -3944,7 +3846,6 @@ scriptsDoNotUseColorAlone:
   tags:
     - "javascript"
     - "color"
-  options:
 selectDoesNotChangeContext:
   type: "event"
   testability: 1
@@ -3999,7 +3900,6 @@ selectHasAssociatedLabel:
     - "content"
   components:
     - "label"
-  options:
 selectJumpMenu:
   testability: 0.5
   title:
@@ -4038,7 +3938,6 @@ selectWithOptionsHasOptgroup:
   tags:
     - "form"
     - "content"
-  options:
 siteMap:
   testability: 0
   title:
@@ -4097,7 +3996,6 @@ svgContainsTitle:
     - "image"
     - "svg"
     - "content"
-  options:
 tableAxisHasCorrespondingId:
   testability: 1
   title:
@@ -4147,7 +4045,6 @@ tableCaptionIdentifiesTable:
   tags:
     - "table"
     - "content"
-  options:
 tableComplexHasSummary:
   testability: 0.5
   title:
@@ -4164,7 +4061,6 @@ tableComplexHasSummary:
   tags:
     - "table"
     - "content"
-  options:
 tableDataShouldHaveTh:
   testability: 1
   title:
@@ -4183,7 +4079,6 @@ tableDataShouldHaveTh:
   tags:
     - "table"
     - "content"
-  options:
 tableHeaderLabelMustBeTerse:
   testability: 0.5
   title:
@@ -4209,7 +4104,6 @@ tableIsGrouped:
   tags:
     - "table"
     - "content"
-  options:
 tableLayoutDataShouldNotHaveTh:
   testability: 0
   title:
@@ -4332,7 +4226,6 @@ tableSummaryDescribesTable:
   tags:
     - "table"
     - "content"
-  options:
 tableSummaryDoesNotDuplicateCaption:
   testability: 1
   title:
@@ -4383,7 +4276,6 @@ tableSummaryIsSufficient:
   tags:
     - "table"
     - "content"
-  options:
 tableUseColGroup:
   testability: 0
   title:
@@ -4426,7 +4318,6 @@ tableUsesCaption:
   tags:
     - "table"
     - "content"
-  options:
 tableUsesScopeForRow:
   testability: 0.5
   title:
@@ -4462,7 +4353,6 @@ tableWithBothHeadersUseScope:
   tags:
     - "table"
     - "content"
-  options:
 tableWithMoreHeadersUseID:
   testability: 0.5
   title:
@@ -4568,7 +4458,6 @@ textareaHasAssociatedLabel:
     - "content"
   components:
     - "label"
-  options:
 textareaLabelPositionedClose:
   type: "labelProximity"
   testability: 0.5
@@ -4584,7 +4473,6 @@ textareaLabelPositionedClose:
     - "content"
   components:
     - "labelProximity"
-  options:
 videoProvidesCaptions:
   testability: 0.5
   title:
@@ -4607,7 +4495,6 @@ videoProvidesCaptions:
   tags:
     - "media"
     - "content"
-  options:
 videosEmbeddedOrLinkedNeedCaptions:
   testability: 1
   title:
