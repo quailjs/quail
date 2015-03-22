@@ -14,7 +14,7 @@ describe('assessment: aMultimediaTextAlternative', function () {
           client = _client_;
           assessments = _assessments_;
           quailResults = _quailResults_;
-          cases = quailResults.tests['aMultimediaTextAlternative'].cases;
+          cases = quailResults.tests.aMultimediaTextAlternative.cases;
         });
     });
 
@@ -52,7 +52,7 @@ describe('assessment: aMultimediaTextAlternative', function () {
           assessments = _assessments_;
           quailResults = _quailResults_;
           debugger;
-          cases = quailResults.tests['aMultimediaTextAlternative'].cases;
+          cases = quailResults.tests.aMultimediaTextAlternative.cases;
         });
     });
 

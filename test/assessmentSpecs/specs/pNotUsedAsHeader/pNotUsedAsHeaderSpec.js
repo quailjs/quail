@@ -30,31 +30,31 @@ describe('assessment: pNotUsedAsHeader', function () {
     expect(quailResults.tests).to.include.keys('pNotUsedAsHeader');
   });
 
-  it('should recognize b inside paragraph', function() {
+  it('should recognize b inside paragraph', function () {
     expect(cases).quailGetById('paragraph-with-b').to.have.quailStatus('failed');
   });
 
-  it('should recognize i inside paragraph', function() {
+  it('should recognize i inside paragraph', function () {
     expect(cases).quailGetById('paragraph-with-i').to.have.quailStatus('failed');
   });
 
-  it('should recognize u inside paragraph', function() {
+  it('should recognize u inside paragraph', function () {
     expect(cases).quailGetById('paragraph-with-u').to.have.quailStatus('failed');
   });
 
-  it('should recognize font inside paragraph', function() {
+  it('should recognize font inside paragraph', function () {
     expect(cases).quailGetById('paragraph-with-font').to.have.quailStatus('failed');
   });
 
-  it('should recognize em inside paragraph', function() {
+  it('should recognize em inside paragraph', function () {
     expect(cases).quailGetById('paragraph-with-em').to.have.quailStatus('failed');
   });
 
-  it('should recognize strong inside paragraph', function() {
+  it('should recognize strong inside paragraph', function () {
     expect(cases).quailGetById('paragraph-with-strong').to.have.quailStatus('failed');
   });
 
-  it('should pass regular paragraphs', function() {
+  it('should pass regular paragraphs', function () {
     expect(cases).quailGetById('regular-paragraph').to.have.quailStatus('passed');
   });
 

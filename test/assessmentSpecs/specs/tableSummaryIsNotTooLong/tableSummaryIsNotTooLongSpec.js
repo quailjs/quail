@@ -32,7 +32,7 @@ describe('assessment: tableSummaryIsNotTooLong', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['tableSummaryIsNotTooLong'].cases;
+    cases = quailResults.tests.tableSummaryIsNotTooLong.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

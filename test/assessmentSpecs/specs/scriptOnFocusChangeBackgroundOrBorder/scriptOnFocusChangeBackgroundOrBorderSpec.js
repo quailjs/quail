@@ -13,7 +13,7 @@ describe('assessment: scriptOnFocusChangeBackgroundOrBorder', function () {
         client = _client_;
         assessments = _assessments_;
         quailResults = _quailResults_;
-        cases = quailResults.tests['scriptOnFocusChangeBackgroundOrBorder'].cases;
+        cases = quailResults.tests.scriptOnFocusChangeBackgroundOrBorder.cases;
         debugger;
       });
   });

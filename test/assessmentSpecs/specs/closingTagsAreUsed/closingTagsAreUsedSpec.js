@@ -32,7 +32,7 @@ describe('assessment: closingTagsAreUsed', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['closingTagsAreUsed'].cases;
+    cases = quailResults.tests.closingTagsAreUsed.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

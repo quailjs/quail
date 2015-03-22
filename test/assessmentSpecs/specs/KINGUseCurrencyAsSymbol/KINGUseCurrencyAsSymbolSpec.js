@@ -32,7 +32,7 @@ describe('assessment: KINGUseCurrencyAsSymbol', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['KINGUseCurrencyAsSymbol'].cases;
+    cases = quailResults.tests.KINGUseCurrencyAsSymbol.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

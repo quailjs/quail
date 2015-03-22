@@ -32,7 +32,7 @@ describe('assessment: headerH1', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['headerH1'].cases;
+    cases = quailResults.tests.headerH1.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

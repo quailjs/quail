@@ -32,7 +32,7 @@ describe('assessment: documentTitleNotEmpty', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['documentTitleNotEmpty'].cases;
+    cases = quailResults.tests.documentTitleNotEmpty.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

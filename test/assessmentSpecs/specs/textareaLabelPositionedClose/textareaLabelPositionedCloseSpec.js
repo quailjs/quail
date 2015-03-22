@@ -32,7 +32,7 @@ describe('assessment: textareaLabelPositionedClose', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['textareaLabelPositionedClose'].cases;
+    cases = quailResults.tests.textareaLabelPositionedClose.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

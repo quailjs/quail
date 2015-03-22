@@ -32,7 +32,7 @@ describe('assessment: documentLangIsISO639Standard', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['documentLangIsISO639Standard'].cases;
+    cases = quailResults.tests.documentLangIsISO639Standard.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

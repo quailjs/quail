@@ -32,7 +32,7 @@ describe('assessment: headersAttrRefersToATableCell', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['headersAttrRefersToATableCell'].cases;
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

@@ -32,7 +32,7 @@ describe('assessment: tableWithMoreHeadersUseID', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['tableWithMoreHeadersUseID'].cases;
+    cases = quailResults.tests.tableWithMoreHeadersUseID.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

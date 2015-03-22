@@ -32,7 +32,7 @@ describe('assessment: imgWithMathShouldHaveMathEquivalent', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['imgWithMathShouldHaveMathEquivalent'].cases;
+    cases = quailResults.tests.imgWithMathShouldHaveMathEquivalent.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

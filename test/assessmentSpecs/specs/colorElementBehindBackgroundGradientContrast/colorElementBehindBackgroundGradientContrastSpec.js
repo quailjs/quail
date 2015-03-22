@@ -32,7 +32,7 @@ describe('assessment: colorElementBehindBackgroundGradientContrast', function ()
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['colorElementBehindBackgroundGradientContrast'].cases;
+    cases = quailResults.tests.colorElementBehindBackgroundGradientContrast.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

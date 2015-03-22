@@ -32,7 +32,7 @@ describe('assessment: headersUseToMarkSections', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['headersUseToMarkSections'].cases;
+    cases = quailResults.tests.headersUseToMarkSections.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

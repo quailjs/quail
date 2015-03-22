@@ -32,7 +32,7 @@ describe('assessment: imgGifNoFlicker', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['imgGifNoFlicker'].cases;
+    cases = quailResults.tests.imgGifNoFlicker.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

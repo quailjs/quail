@@ -32,7 +32,7 @@ describe('assessment: tableLayoutHasNoCaption', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['tableLayoutHasNoCaption'].cases;
+    cases = quailResults.tests.tableLayoutHasNoCaption.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

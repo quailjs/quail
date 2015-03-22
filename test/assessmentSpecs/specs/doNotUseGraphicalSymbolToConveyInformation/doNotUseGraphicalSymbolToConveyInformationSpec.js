@@ -32,7 +32,7 @@ describe('assessment: doNotUseGraphicalSymbolToConveyInformation', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['doNotUseGraphicalSymbolToConveyInformation'].cases;
+    cases = quailResults.tests.doNotUseGraphicalSymbolToConveyInformation.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

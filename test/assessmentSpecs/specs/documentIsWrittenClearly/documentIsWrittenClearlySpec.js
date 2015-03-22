@@ -32,7 +32,7 @@ describe('assessment: documentIsWrittenClearly', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['documentIsWrittenClearly'].cases;
+    cases = quailResults.tests.documentIsWrittenClearly.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

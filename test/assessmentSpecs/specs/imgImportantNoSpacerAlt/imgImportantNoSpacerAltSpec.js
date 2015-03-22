@@ -32,7 +32,7 @@ describe('assessment: imgImportantNoSpacerAlt', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['imgImportantNoSpacerAlt'].cases;
+    cases = quailResults.tests.imgImportantNoSpacerAlt.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

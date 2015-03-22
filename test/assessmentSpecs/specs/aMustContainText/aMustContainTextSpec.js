@@ -13,7 +13,7 @@ describe('assessment: aMustContainText', function () {
         client = _client_;
         assessments = _assessments_;
         quailResults = _quailResults_;
-        cases = quailResults.tests['aMustContainText'].cases;
+        cases = quailResults.tests.aMustContainText.cases;
       });
   });
 

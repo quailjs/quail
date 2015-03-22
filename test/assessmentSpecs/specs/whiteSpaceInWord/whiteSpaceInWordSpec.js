@@ -32,7 +32,7 @@ describe('assessment: whiteSpaceInWord', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['whiteSpaceInWord'].cases;
+    cases = quailResults.tests.whiteSpaceInWord.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

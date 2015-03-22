@@ -32,7 +32,7 @@ describe('assessment: embedHasAssociatedNoEmbed', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['embedHasAssociatedNoEmbed'].cases;
+    cases = quailResults.tests.embedHasAssociatedNoEmbed.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

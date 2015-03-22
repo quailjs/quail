@@ -32,7 +32,7 @@ describe('assessment: listNotUsedForFormatting', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['listNotUsedForFormatting'].cases;
+    cases = quailResults.tests.listNotUsedForFormatting.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

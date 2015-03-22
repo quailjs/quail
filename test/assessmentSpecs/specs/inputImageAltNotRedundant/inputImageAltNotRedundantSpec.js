@@ -32,7 +32,7 @@ describe('assessment: inputImageAltNotRedundant', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['inputImageAltNotRedundant'].cases;
+    cases = quailResults.tests.inputImageAltNotRedundant.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

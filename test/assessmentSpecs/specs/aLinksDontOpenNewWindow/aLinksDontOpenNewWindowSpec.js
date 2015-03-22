@@ -13,7 +13,7 @@ describe('assessment: aLinksDontOpenNewWindow', function () {
         client = _client_;
         assessments = _assessments_;
         quailResults = _quailResults_;
-        cases = quailResults.tests['aLinksDontOpenNewWindow'].cases;
+        cases = quailResults.tests.aLinksDontOpenNewWindow.cases;
       });
   });
 

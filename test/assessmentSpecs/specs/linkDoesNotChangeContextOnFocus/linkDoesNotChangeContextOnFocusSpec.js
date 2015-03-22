@@ -32,7 +32,7 @@ describe('assessment: linkDoesNotChangeContextOnFocus', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['linkDoesNotChangeContextOnFocus'].cases;
+    cases = quailResults.tests.linkDoesNotChangeContextOnFocus.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

@@ -13,7 +13,7 @@ describe('assessment: aLinksAreSeparatedByPrintableCharacters', function () {
         client = _client_;
         assessments = _assessments_;
         quailResults = _quailResults_;
-        cases = quailResults.tests['aLinksAreSeparatedByPrintableCharacters'].cases;
+        cases = quailResults.tests.aLinksAreSeparatedByPrintableCharacters.cases;
       });
   });
 

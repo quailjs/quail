@@ -32,7 +32,7 @@ describe('assessment: listOfLinksUseList', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['listOfLinksUseList'].cases;
+    cases = quailResults.tests.listOfLinksUseList.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

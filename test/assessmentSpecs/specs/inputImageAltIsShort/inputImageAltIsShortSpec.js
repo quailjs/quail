@@ -32,7 +32,7 @@ describe('assessment: inputImageAltIsShort', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['inputImageAltIsShort'].cases;
+    cases = quailResults.tests.inputImageAltIsShort.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

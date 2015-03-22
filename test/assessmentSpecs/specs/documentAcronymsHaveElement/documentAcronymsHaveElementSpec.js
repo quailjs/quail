@@ -32,7 +32,7 @@ describe('assessment: documentAcronymsHaveElement', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['documentAcronymsHaveElement'].cases;
+    cases = quailResults.tests.documentAcronymsHaveElement.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

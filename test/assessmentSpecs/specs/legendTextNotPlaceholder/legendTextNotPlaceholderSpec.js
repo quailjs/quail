@@ -32,7 +32,7 @@ describe('assessment: legendTextNotPlaceholder', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['legendTextNotPlaceholder'].cases;
+    cases = quailResults.tests.legendTextNotPlaceholder.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

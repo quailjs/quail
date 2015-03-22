@@ -32,7 +32,7 @@ describe('assessment: skipToContentLinkProvided', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['skipToContentLinkProvided'].cases;
+    cases = quailResults.tests.skipToContentLinkProvided.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

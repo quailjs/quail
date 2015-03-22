@@ -14,7 +14,7 @@ describe('assessment: aLinksToMultiMediaRequireTranscript', function () {
           client = _client_;
           assessments = _assessments_;
           quailResults = _quailResults_;
-          cases = quailResults.tests['aLinksToMultiMediaRequireTranscript'].cases;
+          cases = quailResults.tests.aLinksToMultiMediaRequireTranscript.cases;
         });
     });
 
@@ -51,7 +51,7 @@ describe('assessment: aLinksToMultiMediaRequireTranscript', function () {
           client = _client_;
           assessments = _assessments_;
           quailResults = _quailResults_;
-          cases = quailResults.tests['aLinksToMultiMediaRequireTranscript'].cases;
+          cases = quailResults.tests.aLinksToMultiMediaRequireTranscript.cases;
         });
     });
 

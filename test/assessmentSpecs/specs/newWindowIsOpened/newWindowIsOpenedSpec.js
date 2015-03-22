@@ -32,7 +32,7 @@ describe('assessment: newWindowIsOpened', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['newWindowIsOpened'].cases;
+    cases = quailResults.tests.newWindowIsOpened.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

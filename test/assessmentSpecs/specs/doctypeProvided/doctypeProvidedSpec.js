@@ -32,7 +32,7 @@ describe('assessment: doctypeProvided', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['doctypeProvided'].cases;
+    cases = quailResults.tests.doctypeProvided.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

@@ -32,7 +32,7 @@ describe('assessment: contentPositioningShouldNotChangeMeaning', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['contentPositioningShouldNotChangeMeaning'].cases;
+    cases = quailResults.tests.contentPositioningShouldNotChangeMeaning.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

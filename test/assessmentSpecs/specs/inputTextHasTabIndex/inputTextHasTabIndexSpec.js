@@ -32,7 +32,7 @@ describe('assessment: inputTextHasTabIndex', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['inputTextHasTabIndex'].cases;
+    cases = quailResults.tests.inputTextHasTabIndex.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

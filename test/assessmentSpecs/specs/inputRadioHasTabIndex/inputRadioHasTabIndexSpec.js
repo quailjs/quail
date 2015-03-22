@@ -32,7 +32,7 @@ describe('assessment: inputRadioHasTabIndex', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['inputRadioHasTabIndex'].cases;
+    cases = quailResults.tests.inputRadioHasTabIndex.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

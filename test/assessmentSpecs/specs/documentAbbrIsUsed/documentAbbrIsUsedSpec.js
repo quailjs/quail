@@ -32,7 +32,7 @@ describe('assessment: documentAbbrIsUsed', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['documentAbbrIsUsed'].cases;
+    cases = quailResults.tests.documentAbbrIsUsed.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

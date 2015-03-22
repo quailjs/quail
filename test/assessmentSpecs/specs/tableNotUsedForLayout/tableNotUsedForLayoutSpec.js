@@ -32,7 +32,7 @@ describe('assessment: tableNotUsedForLayout', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['tableNotUsedForLayout'].cases;
+    cases = quailResults.tests.tableNotUsedForLayout.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

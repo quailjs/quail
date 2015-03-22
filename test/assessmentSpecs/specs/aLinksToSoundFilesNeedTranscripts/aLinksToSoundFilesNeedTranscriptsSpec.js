@@ -14,7 +14,7 @@ describe('assessment: aLinksToSoundFilesNeedTranscripts', function () {
           client = _client_;
           assessments = _assessments_;
           quailResults = _quailResults_;
-          cases = quailResults.tests['aLinksToSoundFilesNeedTranscripts'].cases;
+          cases = quailResults.tests.aLinksToSoundFilesNeedTranscripts.cases;
         });
     });
 
@@ -51,7 +51,7 @@ describe('assessment: aLinksToSoundFilesNeedTranscripts', function () {
           client = _client_;
           assessments = _assessments_;
           quailResults = _quailResults_;
-          cases = quailResults.tests['aLinksToSoundFilesNeedTranscripts'].cases;
+          cases = quailResults.tests.aLinksToSoundFilesNeedTranscripts.cases;
         });
     });
 

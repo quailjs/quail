@@ -13,7 +13,7 @@ describe('assessment: aLinkWithNonText', function () {
         client = _client_;
         assessments = _assessments_;
         quailResults = _quailResults_;
-        cases = quailResults.tests['aLinkWithNonText'].cases;
+        cases = quailResults.tests.aLinkWithNonText.cases;
       });
   });
 

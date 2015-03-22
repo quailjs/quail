@@ -32,7 +32,7 @@ describe('assessment: definitionListsAreUsed', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['definitionListsAreUsed'].cases;
+    cases = quailResults.tests.definitionListsAreUsed.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

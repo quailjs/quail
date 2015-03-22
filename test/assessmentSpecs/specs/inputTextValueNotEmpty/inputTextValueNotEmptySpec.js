@@ -32,7 +32,7 @@ describe('assessment: inputTextValueNotEmpty', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['inputTextValueNotEmpty'].cases;
+    cases = quailResults.tests.inputTextValueNotEmpty.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

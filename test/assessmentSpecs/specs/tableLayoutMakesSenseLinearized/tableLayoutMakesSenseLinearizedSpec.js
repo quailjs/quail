@@ -32,7 +32,7 @@ describe('assessment: tableLayoutMakesSenseLinearized', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['tableLayoutMakesSenseLinearized'].cases;
+    cases = quailResults.tests.tableLayoutMakesSenseLinearized.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

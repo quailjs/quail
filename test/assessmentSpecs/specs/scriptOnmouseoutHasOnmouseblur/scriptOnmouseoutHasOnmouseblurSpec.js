@@ -32,7 +32,7 @@ describe('assessment: scriptOnmouseoutHasOnmouseblur', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['scriptOnmouseoutHasOnmouseblur'].cases;
+    cases = quailResults.tests.scriptOnmouseoutHasOnmouseblur.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

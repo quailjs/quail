@@ -13,7 +13,7 @@ describe('assessment: documentVisualListsAreMarkedUp', function () {
         client = _client_;
         assessments = _assessments_;
         quailResults = _quailResults_;
-        cases = quailResults.tests['documentVisualListsAreMarkedUp'].cases;
+        cases = quailResults.tests.documentVisualListsAreMarkedUp.cases;
       });
   });
 

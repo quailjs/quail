@@ -32,7 +32,7 @@ describe('assessment: textareaHasAssociatedLabel', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['textareaHasAssociatedLabel'].cases;
+    cases = quailResults.tests.textareaHasAssociatedLabel.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

@@ -32,7 +32,7 @@ describe('assessment: buttonDoesNotChangeContextOnFocus', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['buttonDoesNotChangeContextOnFocus'].cases;
+    cases = quailResults.tests.buttonDoesNotChangeContextOnFocus.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

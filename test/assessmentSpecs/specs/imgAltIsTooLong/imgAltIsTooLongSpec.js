@@ -32,7 +32,7 @@ describe('assessment: imgAltIsTooLong', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['imgAltIsTooLong'].cases;
+    cases = quailResults.tests.imgAltIsTooLong.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

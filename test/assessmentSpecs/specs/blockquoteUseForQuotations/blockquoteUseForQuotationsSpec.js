@@ -32,7 +32,7 @@ describe('assessment: blockquoteUseForQuotations', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['blockquoteUseForQuotations'].cases;
+    cases = quailResults.tests.blockquoteUseForQuotations.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

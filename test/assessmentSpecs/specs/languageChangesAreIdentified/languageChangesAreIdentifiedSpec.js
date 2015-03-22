@@ -32,7 +32,7 @@ describe('assessment: languageChangesAreIdentified', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['languageChangesAreIdentified'].cases;
+    cases = quailResults.tests.languageChangesAreIdentified.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

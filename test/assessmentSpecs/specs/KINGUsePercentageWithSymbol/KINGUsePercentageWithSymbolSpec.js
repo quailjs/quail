@@ -32,7 +32,7 @@ describe('assessment: KINGUsePercentageWithSymbol', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['KINGUsePercentageWithSymbol'].cases;
+    cases = quailResults.tests.KINGUsePercentageWithSymbol.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

@@ -32,7 +32,7 @@ describe('assessment: languageDirAttributeIsUsed', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['languageDirAttributeIsUsed'].cases;
+    cases = quailResults.tests.languageDirAttributeIsUsed.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

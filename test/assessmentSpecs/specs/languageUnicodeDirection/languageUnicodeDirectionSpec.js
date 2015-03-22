@@ -32,7 +32,7 @@ describe('assessment: languageUnicodeDirection', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['languageUnicodeDirection'].cases;
+    cases = quailResults.tests.languageUnicodeDirection.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

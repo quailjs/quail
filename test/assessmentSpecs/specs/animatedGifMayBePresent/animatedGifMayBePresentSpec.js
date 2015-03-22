@@ -32,7 +32,7 @@ describe('assessment: animatedGifMayBePresent', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['animatedGifMayBePresent'].cases;
+    cases = quailResults.tests.animatedGifMayBePresent.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

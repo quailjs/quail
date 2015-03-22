@@ -32,7 +32,7 @@ describe('assessment: focusIndicatorVisible', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['focusIndicatorVisible'].cases;
+    cases = quailResults.tests.focusIndicatorVisible.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

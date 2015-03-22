@@ -32,7 +32,7 @@ describe('assessment: headersUsedToIndicateMainContent', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['headersUsedToIndicateMainContent'].cases;
+    cases = quailResults.tests.headersUsedToIndicateMainContent.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

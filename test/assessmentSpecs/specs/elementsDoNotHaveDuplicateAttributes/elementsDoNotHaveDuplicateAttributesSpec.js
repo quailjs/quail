@@ -32,7 +32,7 @@ describe('assessment: elementsDoNotHaveDuplicateAttributes', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['elementsDoNotHaveDuplicateAttributes'].cases;
+    cases = quailResults.tests.elementsDoNotHaveDuplicateAttributes.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });

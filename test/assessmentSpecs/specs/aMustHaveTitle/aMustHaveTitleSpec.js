@@ -30,7 +30,7 @@ describe('assessment: aMustHaveTitle', function () {
   });
 
   it('should return the proper assessment for assert-1', function () {
-    cases = quailResults.tests['aMustHaveTitle'].cases;
+    cases = quailResults.tests.aMustHaveTitle.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
   });
 });
