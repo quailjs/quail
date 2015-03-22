@@ -217,7 +217,8 @@ module.exports = function(grunt) {
       files: [
         'src/js/lib/**/*.js',
         'src/js/*.js',
-        'lib/**/*.js'
+        'lib/**/*.js',
+        'test/assessmentSpecs/specs/**/*.js'
       ]
     }
   });
