@@ -53,7 +53,7 @@
                 documentAbbrIsUsed
                 documentAcronymsHaveElement
 -- Converted -- documentAutoRedirectNotUsed
--- tagged --    documentContentReadableWithoutStylesheets
+-- Converted -- documentContentReadableWithoutStylesheets
 -- tagged --    documentHasTitleElement
                 documentIDsMustBeUnique
                 documentIsWrittenClearly
