@@ -25,7 +25,7 @@
 -- Converted -- areaAltIdentifiesDestination
 -- Converted -- areaAltRefersToText
 -- Converted -- areaDontOpenNewWindow
--- tagged --    areaHasAltValue
+-- Converted -- areaHasAltValue
 -- tagged --    areaLinksToSoundFile
                 ariaOrphanedContent
                 audioMayBePresent

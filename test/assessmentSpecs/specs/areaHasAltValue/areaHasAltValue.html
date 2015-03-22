@@ -1,48 +1,19 @@
 <!doctype html>
 <html>
-	<head>
-		<title>areaHasAltValue</title>
-	</head>
-	<body>
+  <head>
+    <title>areaHasAltValue</title>
+  </head>
+  <body>
 
-		<img  usemap="#map1" src="" alt="" />
-		<div data-expected="pass">
-		  <map id="map1" name="map1">
-        <area shape="rect" coords="0,0,30,30" href="reference.html"
-        alt="reference section" />
-      </map>
-		</div>
+    <img  usemap="#map1" src="" alt="" />
+    <map id="map1" name="map1">
+      <area id="assert-1" shape="rect" coords="0,0,30,30" href="reference.html" alt="reference section" />
+    </map>
 
-		<img  usemap="#map2" src="" alt="" />
-		<div data-expected="fail">
-		  <map id="map2" name="map2">
-        <area class="quail-failed-element" shape="rect" coords="0,0,30,30"
-        href="reference.html" />
-      </map>
-		</div>
+    <img  usemap="#map2" src="" alt="" />
+    <map id="map2" name="map2">
+      <area id="assert-2" shape="rect" coords="0,0,30,30" href="reference.html" />
+    </map>
 
-
-		<div  data-expected="inapplicable"
-		data-accessibility-test="areaHasAltValue">
-			<!-- No area element -->
-		</div>
-
-<!--
-		<div  data-expected="inapplicable"
-		data-accessibility-test="areaHasAltValue">
-		  <map id="map3" name="map2">
-          <area shape="rect" coords="0,0,30,30" href="reference.html" />
-      </map>
-		</div>
-
-		<img  usemap="#map4" src="" alt="" style="display:none;" />
-
-		<div  data-expected="inapplicable"
-		data-accessibility-test="areaHasAltValue">
-		  <map id="map4" name="map2">
-          <area shape="rect" coords="0,0,30,30" href="reference.html" />
-      </map>
-		</div>
--->
-			</body>
+  </body>
 </html>
