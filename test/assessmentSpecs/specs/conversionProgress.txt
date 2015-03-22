@@ -30,7 +30,7 @@
                 ariaOrphanedContent
                 audioMayBePresent
 -- Converted -- basefontIsNotUsed
--- tagged --    blinkIsNotUsed
+-- Converted -- blinkIsNotUsed
 -- tagged --    blockquoteNotUsedForIndentation
                 blockquoteUseForQuotations
 -- tagged --    boldIsNotUsed
