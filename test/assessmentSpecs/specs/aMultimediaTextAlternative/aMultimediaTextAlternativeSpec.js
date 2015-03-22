@@ -51,7 +51,6 @@ describe('assessment: aMultimediaTextAlternative', function () {
           client = _client_;
           assessments = _assessments_;
           quailResults = _quailResults_;
-          debugger;
           cases = quailResults.tests.aMultimediaTextAlternative.cases;
         });
     });

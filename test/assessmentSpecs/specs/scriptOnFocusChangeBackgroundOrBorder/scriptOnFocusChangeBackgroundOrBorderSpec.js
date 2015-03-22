@@ -14,7 +14,6 @@ describe('assessment: scriptOnFocusChangeBackgroundOrBorder', function () {
         assessments = _assessments_;
         quailResults = _quailResults_;
         cases = quailResults.tests.scriptOnFocusChangeBackgroundOrBorder.cases;
-        debugger;
       });
   });
 

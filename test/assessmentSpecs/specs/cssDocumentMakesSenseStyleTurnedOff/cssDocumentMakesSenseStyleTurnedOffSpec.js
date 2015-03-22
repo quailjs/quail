@@ -34,7 +34,6 @@ describe('assessment: cssDocumentMakesSenseStyleTurnedOff', function () {
     });
 
     it('should return the proper assessment for the test', function () {
-      debugger;
       expect(cases[0]).to.have.quailStatus('untested');
     });
   });
