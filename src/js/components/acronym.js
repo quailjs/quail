@@ -40,7 +40,6 @@ quail.components.acronym = function (quail, test, Case) {
         if (infractions.length) {
           test.add(Case({
             element: el,
-            expected: $el.closest('.quail-test').data('expected'),
             info: { acronyms: infractions },
             status: 'failed'
           }));
@@ -48,7 +47,6 @@ quail.components.acronym = function (quail, test, Case) {
         else {
           test.add(Case({
             element: el,
-            expected: $el.closest('.quail-test').data('expected'),
             status: 'passed'
           }));
         }
@@ -56,7 +54,6 @@ quail.components.acronym = function (quail, test, Case) {
       else {
         test.add(Case({
           element: el,
-          expected: $el.closest('.quail-test').data('expected'),
           status: 'passed'
         }));
       }

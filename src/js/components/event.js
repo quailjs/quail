@@ -18,10 +18,8 @@ quail.components.event = function (quail, test, Case, options) {
     var hasjQueryOnListener = jqevents && jqevents[eventName] && !!jqevents[eventName].length;
     var hasCorrespondingEvent = !!correspondingEvent.length;
     var hasSpecificCorrespondingEvent = quail.components.hasEventListener($(this), correspondingEvent.replace('on', ''));
-    var expected = $(this).closest('.quail-test').data('expected');
     var _case = test.add(Case({
-      element: this,
-      expected: expected
+      element: this
     }));
     if ((hasOnListener || hasjQueryOnListener) && (!hasCorrespondingEvent || !hasSpecificCorrespondingEvent)) {
       _case.set({ status: 'failed' });

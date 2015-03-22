@@ -9,14 +9,12 @@ quail.components.label = function (quail, test, Case, options) {
           (!quail.containsReadableText($local.find('label[for=' + $(this).attr('id') + ']')))) {
         test.add(Case({
           element: this,
-          expected: $(this).closest('.quail-test').data('expected'),
           status: 'failed'
         }));
       }
       else {
         test.add(Case({
           element: this,
-          expected: $(this).closest('.quail-test').data('expected'),
           status: 'passed'
         }));
       }

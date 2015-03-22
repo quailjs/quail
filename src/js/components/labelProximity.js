@@ -8,21 +8,18 @@ quail.components.labelProximity = function (quail, test, Case, options) {
     if (!$label.length) {
       test.add(Case({
         element: this,
-        expected: $(this).closest('.quail-test').data('expected'),
         status: 'failed'
       }));
     }
     else if (!$(this).parent().is($label.parent())) {
       test.add(Case({
         element: this,
-        expected: $(this).closest('.quail-test').data('expected'),
         status: 'failed'
       }));
     }
     else {
       test.add(Case({
         element: this,
-        expected: $(this).closest('.quail-test').data('expected'),
         status: 'passed'
       }));
     }

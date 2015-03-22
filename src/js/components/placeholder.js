@@ -7,7 +7,6 @@ quail.components.placeholder = function (quail, test, Case, options) {
   var resolve = function (element, resolution) {
     test.add(Case({
       element: element,
-      expected: $(element).closest('.quail-test').data('expected'),
       status: resolution
     }));
   };
