@@ -11,13 +11,13 @@
 -- Converted -- aMultimediaTextAlternative
 -- Converted -- aMustContainText
 -- Converted -- aMustHaveTitle
--- tagged --    aMustNotHaveJavascriptHref
+-- Converted -- aMustNotHaveJavascriptHref
                 aSuspiciousLinkText
 -- Converted -- aTitleDescribesDestination
                 animatedGifMayBePresent
                 appletContainsTextEquivalent
                 appletContainsTextEquivalentInAlt
--- tagged --    appletProvidesMechanismToReturnToParent
+-- Converted -- appletProvidesMechanismToReturnToParent
 -- tagged --    appletTextEquivalentsGetUpdated
 -- tagged --    appletUIMustBeAccessible
 -- tagged --    appletsDoNotFlicker
