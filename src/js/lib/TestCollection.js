@@ -45,7 +45,6 @@ quail.lib.TestCollection = (function () {
               // Manipulate the attributes directly so that change events
               // are not triggered.
               _case.attributes.status = 'notTested';
-              _case.attributes.expected = null;
             }
           });
         }
