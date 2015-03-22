@@ -1,37 +1,68 @@
 <!doctype html>
 <html>
-	<head>
-		<title>areaDontOpenNewWindow</title>
-	</head>
-	<body>
-		<div data-expected="pass">
-		  <map id="map1" name="map1">
-          <area shape="rect" coords="0,0,30,30" href="reference.html" alt="reference section"
-          target="_top" />
+  <head>
+    <title>areaDontOpenNewWindow</title>
+  </head>
+  <body>
+    <div data-expected="pass">
+      <map id="map1" name="map1">
+        <area id="assert-1" shape="rect" coords="0,0,30,30" href="reference.html" alt="reference section" />
       </map>
-		</div>
+    </div>
 
-		<div data-expected="pass">
-		  <map id="map2" name="map1">
-            <area shape="rect" coords="0,0,30,30" href="reference.html" alt="reference section"
-            target="_parent" />
-        </map>
-		</div>
-
-		<div data-expected="pass">
-		  <map id="map3" name="map1">
-            <area shape="rect" coords="0,0,30,30" href="reference.html" alt="reference section"
-            target="_self" />
-        </map>
-		</div>
-
-		<div data-expected="fail">
-		  <map id="map4" name="map1">
-          <area class="quail-failed-element" shape="rect" coords="0,0,30,30" href="reference.html" alt="hello"
-          target="new window" />
+    <div data-expected="pass">
+      <map id="map4" name="map1">
+        <area id="assert-2" shape="rect" coords="0,0,30,30" href="reference.html" alt="hello" target="_parent" />
       </map>
-		</div>
+    </div>
 
+    <div data-expected="pass">
+      <map id="map1" name="map1">
+        <area id="assert-3" shape="rect" coords="0,0,30,30" href="reference.html" alt="reference section" target="_top" />
+      </map>
+    </div>
 
-		</body>
+    <div data-expected="fail">
+      <map id="map4" name="map1">
+        <area id="assert-4" shape="rect" coords="0,0,30,30" href="reference.html" alt="hello" target="_new" />
+      </map>
+    </div>
+
+    <div data-expected="fail">
+      <map id="map1" name="map1">
+        <area id="assert-5" shape="rect" coords="0,0,30,30" href="reference.html" alt="reference section" target="_blank" />
+      </map>
+    </div>
+
+    <div data-expected="pass">
+      <map id="map4" name="map1">
+        <area id="assert-6" shape="rect" coords="0,0,30,30" href="reference.html" alt="hello" title="valid file - opens in a new window" target="_blank" />
+      </map>
+    </div>
+
+    <div data-expected="pass">
+      <p>This link to an <a id="assert-1" href="aLinksDontOpenNewWindow.html">invalid file</a> opens in the same window.</p>
+    </div>
+
+    <div data-expected="pass" title="Target is parent">
+      <p>This link to an <a id="assert-2" href="aLinksDontOpenNewWindow.html" target="_parent">invalid file</a> opens in the same window.</p>
+    </div>D
+
+    <div data-expected="pass" title="Target is top">
+      <a id="assert-3" href="newwindow.html" target="_top">same window</a>
+    </div>
+
+    <div data-expected="fail" title="target new">
+      <p>This link to a <a id="assert-4" href="aLinksDontOpenNewWindow.html" target="_new">valid file</a> opens in a new window.</p>
+    </div>
+
+    <div data-expected="pass" title="target blank with new window text">
+      <p>This link to a <a id="assert-5" href="aLinksDontOpenNewWindow.html" target="_blank">valid file that opens in a new window</a>.</p>
+    </div>
+
+    <div data-expected="pass" title="target blank with new window text in title atribute">
+      <p>This link to a <a id="assert-6" href="aLinksDontOpenNewWindow.html" title="valid file - opens in a new window" target="_blank">valid file</a>.</p>
+    </div>
+
+  </body>
 </html>

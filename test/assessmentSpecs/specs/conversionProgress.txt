@@ -24,7 +24,7 @@
 -- Converted -- appletsDonotUseColorAlone
 -- Converted -- areaAltIdentifiesDestination
 -- Converted -- areaAltRefersToText
--- tagged --    areaDontOpenNewWindow
+-- Converted -- areaDontOpenNewWindow
 -- tagged --    areaHasAltValue
 -- tagged --    areaLinksToSoundFile
                 ariaOrphanedContent
