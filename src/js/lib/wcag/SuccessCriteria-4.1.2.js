@@ -35,7 +35,7 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
   //     sc.each(function (index, _case) {
   //       var conclusion = 'untested';
 
-  //       if (_case.get('status') !== 'notTested') {
+  //       if (_case.get('status') !== 'untested') {
   //         var selector = _case.get('selector');
   //         if (selector) {
 

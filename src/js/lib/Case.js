@@ -132,7 +132,7 @@ quail.lib.Case = (function () {
     giveup: function () {
       clearTimeout(this.timeout);
       // @todo, the set method should really have a 'silent' option.
-      this.attributes.status = 'notTested';
+      this.attributes.status = 'untested';
       this.dispatch('timeout', this);
     },
     // @todo, make this a set of methods that all classes extend.
