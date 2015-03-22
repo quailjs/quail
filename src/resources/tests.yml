@@ -124,7 +124,6 @@ aLinksNotSeparatedBySymbols:
     - "content"
   callback: "aLinksNotSeparatedBySymbols"
 aLinksToMultiMediaRequireTranscript:
-  type: "custom"
   testability: 0
   title:
     en: "Any links to a multimedia file should also include a link to a transcript"
@@ -3349,7 +3348,6 @@ objectWithClassIDHasNoText:
     - "objects"
     - "content"
 pNotUsedAsHeader:
-  type: "custom"
   testability: 0.5
   title:
     en: "Paragraphs must not be used for headers"
