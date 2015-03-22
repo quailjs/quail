@@ -243,7 +243,6 @@ aMustNotHaveJavascriptHref:
     - "link"
     - "content"
   options:
-    selector: "a[href^='javascript:']"
 aSuspiciousLinkText:
   testability: 1
   title:
@@ -287,7 +286,6 @@ aTitleDescribesDestination:
     - "link"
     - "content"
   options:
-    selector: "a[title]"
 appletContainsTextEquivalent:
   testability: 1
   title:
@@ -336,7 +334,6 @@ appletContainsTextEquivalentInAlt:
   options:
     attribute: "alt"
     empty: true
-    selector: "applet"
 appletProvidesMechanismToReturnToParent:
   testability: 0
   title:
@@ -351,7 +348,6 @@ appletProvidesMechanismToReturnToParent:
     - "applet"
     - "content"
   options:
-    selector: "applet"
 appletTextEquivalentsGetUpdated:
   testability: 0
   guidelines:
@@ -367,7 +363,6 @@ appletTextEquivalentsGetUpdated:
     - "applet"
     - "content"
   options:
-    selector: "applet"
 appletUIMustBeAccessible:
   testability: 0
   title:
@@ -389,7 +384,6 @@ appletUIMustBeAccessible:
     - "applet"
     - "content"
   options:
-    selector: "applet"
 appletsDoNotFlicker:
   testability: 0
   title:
@@ -410,7 +404,6 @@ appletsDoNotFlicker:
     - "applet"
     - "content"
   options:
-    selector: "applet"
 appletsDonotUseColorAlone:
   testability: 0
   title:
@@ -427,7 +420,6 @@ appletsDonotUseColorAlone:
     - "applet"
     - "content"
   options:
-    selector: "applet"
 areaAltIdentifiesDestination:
   testability: 0
   title:
@@ -446,7 +438,6 @@ areaAltIdentifiesDestination:
     - "applet"
     - "content"
   options:
-    selector: "area[alt]"
 areaAltRefersToText:
   testability: 0
   title:
@@ -460,7 +451,6 @@ areaAltRefersToText:
     - "imagemap"
     - "content"
   options:
-    selector: "area"
 areaDontOpenNewWindow:
   testability: 1
   title:
@@ -474,7 +464,6 @@ areaDontOpenNewWindow:
     - "imagemap"
     - "content"
   options:
-    selector: "area[target='new window'], area[target=_new], area[target=_blank], area[target=_blank]"
 areaHasAltValue:
   testability: 1
   title:
@@ -497,7 +486,6 @@ areaHasAltValue:
     - "imagemap"
     - "content"
   options:
-    selector: "area"
     test: ":not(area[alt])"
 areaLinksToSoundFile:
   testability: 1
@@ -517,7 +505,6 @@ areaLinksToSoundFile:
     - "media"
     - "content"
   options:
-    selector: "area[href$=wav], area[href$=snd], area[href$=mp3], area[href$=iff], area[href$=svx], area[href$=sam], area[href$=smp], area[href$=vce], area[href$=vox], area[href$=pcm], area[href$=aif]"
 ariaOrphanedContent:
   testability: 1
   title:
@@ -544,7 +531,6 @@ basefontIsNotUsed:
     - "document"
     - "deprecated"
   options:
-    selector: "basefont"
 blinkIsNotUsed:
   testability: 1
   title:
@@ -562,7 +548,6 @@ blinkIsNotUsed:
     - "deprecated"
     - "content"
   options:
-    selector: "blink"
 blockquoteNotUsedForIndentation:
   testability: 0.5
   title:
@@ -580,7 +565,6 @@ blockquoteNotUsedForIndentation:
     - "blockquote"
     - "content"
   options:
-    selector: "blockquote:not(blockquote[cite])"
 blockquoteUseForQuotations:
   testability: 0.5
   title:
@@ -611,7 +595,6 @@ boldIsNotUsed:
     - "semantics"
     - "content"
   options:
-    selector: "bold"
 buttonHasName:
   type: "placeholder"
   testability: 1
@@ -640,7 +623,6 @@ buttonHasName:
     content: true
     empty: true
     attribute: "title"
-    selector: "button"
 checkboxHasLabel:
   type: "label"
   testability: 1
@@ -680,7 +662,6 @@ checkboxHasLabel:
   components:
     - "label"
   options:
-    selector: "input[type=checkbox]"
 checkboxLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
@@ -697,7 +678,6 @@ checkboxLabelIsNearby:
   components:
     - "labelProximity"
   options:
-    selector: "input[type=checkbox]"
 closingTagsAreUsed:
   testability: 1
   title:
@@ -766,7 +746,6 @@ cssDocumentMakesSenseStyleTurnedOff:
   tags:
     - "color"
   options:
-    selector: "link[rel=stylesheet], stylesheet, *[style]"
 colorFontContrast:
   testability: 1
   title:
@@ -786,7 +765,6 @@ colorFontContrast:
     - "colorFontContrast"
   options:
     algorithm: "wcag"
-    selector: "*"
     gradientSampleMultiplier: 3
 colorElementBehindContrast:
   testability: 1
@@ -807,7 +785,6 @@ colorElementBehindContrast:
     - "colorElementBehindContrast"
   options:
     algorithm: "wcag"
-    selector: "*"
     gradientSampleMultiplier: 3
 colorBackgroundImageContrast:
   testability: 1
@@ -828,7 +805,6 @@ colorBackgroundImageContrast:
     - "colorBackgroundImageContrast"
   options:
     algorithm: "wcag"
-    selector: "*"
     gradientSampleMultiplier: 3
 colorElementBehindBackgroundImageContrast:
   testability: 1
@@ -849,7 +825,6 @@ colorElementBehindBackgroundImageContrast:
     - "colorElementBehindBackgroundImageContrast"
   options:
     algorithm: "wcag"
-    selector: "*"
     gradientSampleMultiplier: 3
 colorBackgroundGradientContrast:
   testability: 1
@@ -870,7 +845,6 @@ colorBackgroundGradientContrast:
     - "colorBackgroundGradientContrast"
   options:
     algorithm: "wcag"
-    selector: "*"
     gradientSampleMultiplier: 3
 colorElementBehindBackgroundGradientContrast:
   testability: 1
@@ -891,7 +865,6 @@ colorElementBehindBackgroundGradientContrast:
     - "colorElementBehindBackgroundGradientContrast"
   options:
     algorithm: "wcag"
-    selector: "*"
     gradientSampleMultiplier: 3
 definitionListsAreUsed:
   testability: 0.5
@@ -971,7 +944,6 @@ documentAutoRedirectNotUsed:
   tags:
     - "document"
   options:
-    selector: "meta[http-equiv=refresh]"
 documentContentReadableWithoutStylesheets:
   testability: 0
   title:
@@ -997,7 +969,6 @@ documentContentReadableWithoutStylesheets:
     - "document"
     - "color"
   options:
-    selector: "html:has(link[rel=stylesheet], style) body, body:has(*[style])"
 documentHasTitleElement:
   testability: 1
   title:
@@ -1015,7 +986,6 @@ documentHasTitleElement:
     - "document"
     - "head"
   options:
-    selector: "html:not(html:has(title))"
 documentIDsMustBeUnique:
   testability: 1
   title:
@@ -1085,7 +1055,6 @@ documentLangNotIdentified:
     - "document"
     - "language"
   options:
-    selector: "html:not(html[lang])"
 documentMetaNotUsedWithTimeout:
   testability: 1
   title:
@@ -1110,7 +1079,6 @@ documentMetaNotUsedWithTimeout:
   tags:
     - "document"
   options:
-    selector: "meta[http-equiv=refresh]"
 documentReadingDirection:
   testability: 0.5
   title:
@@ -1128,7 +1096,6 @@ documentReadingDirection:
     - "document"
     - "language"
   options:
-    selector: "*[lang=he]:not(*[dir=rtl]), *[lang=ar]:not(*[dir=rtl])"
 documentStrictDocType:
   testability: 1
   title:
@@ -1160,7 +1127,6 @@ documentTitleDescribesDocument:
     - "document"
     - "head"
   options:
-    selector: "head title:first"
 documentTitleIsNotPlaceholder:
   type: "placeholder"
   testability: 1
@@ -1183,7 +1149,6 @@ documentTitleIsNotPlaceholder:
     - "placeholder"
   options:
     content: true
-    selector: "head title:first"
 documentTitleIsShort:
   testability: 0.5
   title:
@@ -1220,7 +1185,6 @@ documentTitleNotEmpty:
   options:
     content: true
     empty: true
-    selector: "head title"
 documentValidatesToDocType:
   testability: 1
   title:
@@ -1279,7 +1243,6 @@ domOrderMatchesVisualOrder:
   tags:
     - "content"
   options:
-    selector: "*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)"
 elementAttributesAreValid:
   testability: 1
   title:
@@ -1337,7 +1300,6 @@ embedMustHaveAltAttribute:
     - "embed"
     - "content"
   options:
-    selector: "embed:not([alt])"
 embedMustNotHaveEmptyAlt:
   testability: 1
   title:
@@ -1352,7 +1314,6 @@ embedMustNotHaveEmptyAlt:
     - "embed"
     - "content"
   options:
-    selector: "embed[alt=]"
 embedProvidesMechanismToReturnToParent:
   testability: 0
   title:
@@ -1371,7 +1332,6 @@ embedProvidesMechanismToReturnToParent:
     - "embed"
     - "content"
   options:
-    selector: "embed"
 emoticonsExcessiveUse:
   testability: 0.5
   title:
@@ -1431,7 +1391,6 @@ fieldsetHasLabel:
     - "form"
     - "content"
   options:
-    selector: "fieldset:not(fieldset:has(legend))"
 fileHasLabel:
   type: "label"
   testability: 1
@@ -1464,7 +1423,6 @@ fileHasLabel:
   components:
     - "label"
   options:
-    selector: "input[type=file]"
 fileLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
@@ -1481,7 +1439,6 @@ fileLabelIsNearby:
   components:
     - "labelProximity"
   options:
-    selector: "input[type=file]"
 focusIndicatorVisible:
   title:
     en: "Focus indicators have high visibility"
@@ -1516,7 +1473,6 @@ fontIsNotUsed:
     - "deprecated"
     - "content"
   options:
-    selector: "font"
 formAllowsCheckIfIrreversable:
   testability: 0
   guidelines: []
@@ -1524,7 +1480,6 @@ formAllowsCheckIfIrreversable:
     - "form"
     - "content"
   options:
-    selector: "form"
 formButtonsHaveValue:
   testability: 1
   title:
@@ -1548,7 +1503,6 @@ formButtonsHaveValue:
     - "form"
     - "content"
   options:
-    selector: "input[type=button], input[type=submit], input[type=reset]"
     test: ":not([value])"
 formDeleteIsReversable:
   testability: 0
@@ -1563,7 +1517,6 @@ formDeleteIsReversable:
     - "form"
     - "content"
   options:
-    selector: "form"
 formErrorMessageHelpsUser:
   testability: 0
   title:
@@ -1577,7 +1530,6 @@ formErrorMessageHelpsUser:
     - "form"
     - "content"
   options:
-    selector: "form"
 formHasGoodErrorMessage:
   testability: 0
   title:
@@ -1591,7 +1543,6 @@ formHasGoodErrorMessage:
     - "form"
     - "content"
   options:
-    selector: "form"
 formHasSubmitButton:
   testability: 1
   title:
@@ -1610,7 +1561,6 @@ formHasSubmitButton:
     - "form"
     - "content"
   options:
-    selector: "form:not(form:has(input[type=image], input[type=submit], button[type=submit]))"
 formWithRequiredLabel:
   testability: 0
   title:
@@ -1651,7 +1601,6 @@ frameIsNotUsed:
     - "deprecated"
     - "frame"
   options:
-    selector: "frame"
 frameRelationshipsMustBeDescribed:
   testability: 0.5
   title:
@@ -1665,7 +1614,6 @@ frameRelationshipsMustBeDescribed:
     - "deprecated"
     - "frame"
   options:
-    selector: "frameset:not(frameset[longdesc])"
 framesAreUsedToGroupContent:
   testability: 0.5
   title:
@@ -1683,7 +1631,6 @@ framesAreUsedToGroupContent:
     - "deprecated"
     - "frame"
   options:
-    selector: "body:not(body:has(frameset))"
 frameSrcIsAccessible:
   testability: 0
   title:
@@ -1697,7 +1644,6 @@ frameSrcIsAccessible:
     - "deprecated"
     - "frame"
   options:
-    selector: "frame"
 frameTitlesDescribeFunction:
   type: "placeholder"
   testability: 0
@@ -1720,7 +1666,6 @@ frameTitlesDescribeFunction:
   options:
     attribute: "title"
     empty: true
-    selector: "frame[title], iframe[title]"
 frameTitlesNotEmpty:
   testability: 1
   title:
@@ -1741,7 +1686,6 @@ frameTitlesNotEmpty:
     - "deprecated"
     - "frame"
   options:
-    selector: "frame:not(frame[title]), frame[title=''], iframe:not(iframe[title]), iframe[title='']"
 frameTitlesNotPlaceholder:
   type: "placeholder"
   testability: 1
@@ -1766,7 +1710,6 @@ frameTitlesNotPlaceholder:
     - "placeholder"
   options:
     attribute: "title"
-    selector: "frame, iframe"
 framesHaveATitle:
   testability: 1
   title:
@@ -1787,7 +1730,6 @@ framesHaveATitle:
     - "deprecated"
     - "frame"
   options:
-    selector: "frame:visible, iframe:visible"
     test: ":not([title])"
 framesetIsNotUsed:
   testability: 1
@@ -1802,7 +1744,6 @@ framesetIsNotUsed:
     - "deprecated"
     - "frame"
   options:
-    selector: "frameset"
 framesetMustHaveNoFramesSection:
   testability: 0.5
   title:
@@ -1816,7 +1757,6 @@ framesetMustHaveNoFramesSection:
     - "deprecated"
     - "frame"
   options:
-    selector: "frameset:not(frameset:has(noframes))"
 headersAttrRefersToATableCell:
   testability: 1
   title:
@@ -1871,7 +1811,6 @@ headerH1Format:
   components:
     - "header"
   options:
-    selector: "h1"
 headerH2:
   type: "headingLevel"
   testability: 0
@@ -1912,7 +1851,6 @@ headerH2Format:
   components:
     - "header"
   options:
-    selector: "h2"
 headerH3:
   type: "headingLevel"
   testability: 0
@@ -1953,7 +1891,6 @@ headerH3Format:
   components:
     - "header"
   options:
-    selector: "h3"
 headerH4:
   type: "headingLevel"
   testability: 0
@@ -1994,7 +1931,6 @@ headerH4Format:
   components:
     - "header"
   options:
-    selector: "h4"
 headerH5Format:
   testability: 0
   title:
@@ -2012,7 +1948,6 @@ headerH5Format:
     - "header"
     - "content"
   options:
-    selector: "h5"
 headerH6Format:
   testability: 0
   title:
@@ -2030,7 +1965,6 @@ headerH6Format:
     - "header"
     - "content"
   options:
-    selector: "h6"
 headersHaveText:
   type: "placeholder"
   testability: 1
@@ -2056,7 +1990,6 @@ headersHaveText:
   options:
     content: true
     empty: true
-    selector: "h1, h2, h3, h4, h5, h6"
 headersUsedToIndicateMainContent:
   testability: 0.5
   title:
@@ -2142,7 +2075,6 @@ iIsNotUsed:
     - "deprecated"
     - "content"
   options:
-    selector: "i"
 iframeMustNotHaveLongdesc:
   testability: 1
   title:
@@ -2157,7 +2089,6 @@ iframeMustNotHaveLongdesc:
     - "iframe"
     - "content"
   options:
-    selector: "iframe[longdesc]"
 imageMapServerSide:
   testability: 1
   title:
@@ -2172,7 +2103,6 @@ imageMapServerSide:
     - "iframe"
     - "content"
   options:
-    selector: "img[ismap]"
 imgAltEmptyForDecorativeImages:
   testability: 0
   title:
@@ -2190,7 +2120,6 @@ imgAltEmptyForDecorativeImages:
     - "image"
     - "content"
   options:
-    selector: "img[alt]"
 imgAltIdentifiesLinkDestination:
   testability: 0
   title:
@@ -2204,7 +2133,6 @@ imgAltIdentifiesLinkDestination:
     - "image"
     - "content"
   options:
-    selector: "a img[alt]:first"
 imgAltIsDifferent:
   testability: 0.5
   title:
@@ -2244,7 +2172,6 @@ imgAltIsSameInText:
     - "image"
     - "content"
   options:
-    selector: "img"
 imgAltIsTooLong:
   testability: 1
   title:
@@ -2310,7 +2237,6 @@ imgAltNotPlaceHolder:
     - "placeholder"
   options:
     attribute: "alt"
-    selector: "img"
 imgAltTextNotRedundant:
   testability: 1
   title:
@@ -2363,7 +2289,6 @@ imgHasAlt:
     - "image"
     - "content"
   options:
-    selector: "img:not(img[alt])"
 imgHasLongDesc:
   testability: 1
   title:
@@ -2455,7 +2380,6 @@ imgNotReferredToByColorAlone:
     - "color"
     - "content"
   options:
-    selector: "img"
 imgServerSideMapNotUsed:
   testability: 1
   title:
@@ -2470,7 +2394,6 @@ imgServerSideMapNotUsed:
     - "imagemap"
     - "content"
   options:
-    selector: "img[ismap]"
 imgShouldNotHaveTitle:
   testability: 1
   title:
@@ -2484,7 +2407,6 @@ imgShouldNotHaveTitle:
     - "image"
     - "content"
   options:
-    selector: "img[title]"
 imgWithMapHasUseMap:
   testability: 1
   title:
@@ -2502,7 +2424,6 @@ imgWithMapHasUseMap:
     - "imagemap"
     - "content"
   options:
-    selector: "img[ismap]:not(img[usemap])"
 imgWithMathShouldHaveMathEquivalent:
   testability: 0
   title:
@@ -2534,7 +2455,6 @@ inputCheckboxHasTabIndex:
   options:
     attribute: "tabindex"
     empty: true
-    selector: "input[type=checkbox]"
 inputCheckboxRequiresFieldset:
   testability: 1
   title:
@@ -2568,7 +2488,6 @@ inputDoesNotUseColorAlone:
     - "color"
     - "content"
   options:
-    selector: "input:not(input[type=hidden])"
 inputElementsDontHaveAlt:
   testability: 1
   title:
@@ -2582,7 +2501,6 @@ inputElementsDontHaveAlt:
     - "form"
     - "content"
   options:
-    selector: "input[type!=image][alt]"
 inputFileHasTabIndex:
   type: "placeholder"
   testability: 1
@@ -2601,7 +2519,6 @@ inputFileHasTabIndex:
   options:
     attribute: "tabindex"
     empty: true
-    selector: "input[type=file]"
 inputImageAltIdentifiesPurpose:
   testability: 0
   title:
@@ -2619,7 +2536,6 @@ inputImageAltIdentifiesPurpose:
     - "form"
     - "content"
   options:
-    selector: "input[type=image][alt]"
 inputImageAltIsNotFileName:
   testability: 1
   title:
@@ -2673,7 +2589,6 @@ inputImageAltIsNotPlaceholder:
     - "placeholder"
   options:
     attribute: "alt"
-    selector: "input[type=image]"
 inputImageAltIsShort:
   testability: 1
   title:
@@ -2745,7 +2660,6 @@ inputImageHasAlt:
     - "image"
     - "content"
   options:
-    selector: "input[type=image]:visible"
     test: ":not(input[type=image][alt])"
 inputImageNotDecorative:
   testability: 0
@@ -2765,7 +2679,6 @@ inputImageNotDecorative:
     - "image"
     - "content"
   options:
-    selector: "input[type=image]"
 inputPasswordHasTabIndex:
   type: "placeholder"
   testability: 1
@@ -2784,7 +2697,6 @@ inputPasswordHasTabIndex:
   options:
     attribute: "tabindex"
     empty: true
-    selector: "input[type=password]"
 inputRadioHasTabIndex:
   type: "placeholder"
   testability: 1
@@ -2803,7 +2715,6 @@ inputRadioHasTabIndex:
   options:
     attribute: "tabindex"
     empty: true
-    selector: "input[type=radio]"
 inputSubmitHasTabIndex:
   type: "placeholder"
   testability: 1
@@ -2822,7 +2733,6 @@ inputSubmitHasTabIndex:
   options:
     attribute: "tabindex"
     empty: true
-    selector: "input[type=submit]"
 inputTextHasLabel:
   type: "label"
   testability: 1
@@ -2858,7 +2768,6 @@ inputTextHasLabel:
     - "form"
     - "content"
   options:
-    selector: "input[type=text]"
 inputTextHasTabIndex:
   type: "placeholder"
   testability: 1
@@ -2877,7 +2786,6 @@ inputTextHasTabIndex:
   options:
     attribute: "tabindex"
     empty: true
-    selector: "input[type=text]"
 inputTextHasValue:
   type: "placeholder"
   testability: 1
@@ -2896,7 +2804,6 @@ inputTextHasValue:
   options:
     attribute: "value"
     empty: true
-    selector: "input[type=text]"
 inputTextValueNotEmpty:
   type: "placeholder"
   testability: 1
@@ -2915,7 +2822,6 @@ inputTextValueNotEmpty:
   options:
     attribute: "value"
     empty: true
-    selector: "input[type=text]"
 inputWithoutLabelHasTitle:
   testability: 1
   title:
@@ -2957,7 +2863,6 @@ labelDoesNotContainInput:
     - "form"
     - "content"
   options:
-    selector: "label:has(input)"
 labelMustBeUnique:
   testability: 1
   title:
@@ -3010,7 +2915,6 @@ labelMustNotBeEmpty:
   options:
     content: true
     empty: true
-    selector: "label"
 labelsAreAssignedToAnInput:
   testability: 1
   title:
@@ -3117,7 +3021,6 @@ legendDescribesListOfChoices:
     - "form"
     - "content"
   options:
-    selector: "legend"
 legendTextNotEmpty:
   testability: 1
   title:
@@ -3141,7 +3044,6 @@ legendTextNotEmpty:
     - "form"
     - "content"
   options:
-    selector: "legend:empty"
 legendTextNotPlaceholder:
   type: "placeholder"
   testability: 1
@@ -3176,7 +3078,6 @@ legendTextNotPlaceholder:
   options:
     content: true
     emtpy: true
-    selector: "legend"
 liDontUseImageForBullet:
   testability: 0.5
   guidelines: []
@@ -3184,7 +3085,6 @@ liDontUseImageForBullet:
     - "list"
     - "content"
   options:
-    selector: "li:has(img)"
 linkHasAUniqueContext:
   testability: 1
   title:
@@ -3210,7 +3110,6 @@ linkUsedForAlternateContent:
   tags:
     - "document"
   options:
-    selector: "html:not(html:has(link[rel=alternate])) body"
 linkUsedToDescribeNavigation:
   testability: 1
   title:
@@ -3223,7 +3122,6 @@ linkUsedToDescribeNavigation:
   tags:
     - "document"
   options:
-    selector: "html:not(html:has(link[rel=index]))"
 listNotUsedForFormatting:
   testability: 0
   title:
@@ -3272,7 +3170,6 @@ marqueeIsNotUsed:
     - "deprecated"
     - "content"
   options:
-    selector: "marquee"
 menuNotUsedToFormatText:
   testability: 0
   title:
@@ -3286,7 +3183,6 @@ menuNotUsedToFormatText:
     - "list"
     - "content"
   options:
-    selector: "menu:not(menu li:parent(menu))"
 newWindowIsOpened:
   testability: 1
   title:
@@ -3317,7 +3213,6 @@ noembedHasEquivalentContent:
     - "objects"
     - "content"
   options:
-    selector: "noembed"
 noframesSectionMustHaveTextEquivalent:
   testability: 0.5
   title:
@@ -3331,7 +3226,6 @@ noframesSectionMustHaveTextEquivalent:
     - "deprecated"
     - "frame"
   options:
-    selector: "frameset:not(frameset:has(noframes))"
 objectContentUsableWhenDisabled:
   testability: 0
   title:
@@ -3345,7 +3239,6 @@ objectContentUsableWhenDisabled:
     - "objects"
     - "content"
   options:
-    selector: "object"
 objectDoesNotFlicker:
   testability: 0
   title:
@@ -3365,7 +3258,6 @@ objectDoesNotFlicker:
     - "objects"
     - "content"
   options:
-    selector: "object"
 objectDoesNotUseColorAlone:
   testability: 0
   title:
@@ -3381,7 +3273,6 @@ objectDoesNotUseColorAlone:
     - "objects"
     - "content"
   options:
-    selector: "object"
 objectInterfaceIsAccessible:
   testability: 0
   title:
@@ -3395,7 +3286,6 @@ objectInterfaceIsAccessible:
     - "objects"
     - "content"
   options:
-    selector: "object"
 objectLinkToMultimediaHasTextTranscript:
   testability: 0
   title:
@@ -3409,7 +3299,6 @@ objectLinkToMultimediaHasTextTranscript:
     - "objects"
     - "content"
   options:
-    selector: "object"
 objectMustContainText:
   type: "placeholder"
   testability: 1
@@ -3433,7 +3322,6 @@ objectMustContainText:
   options:
     content: true
     empty: true
-    selector: "object"
 objectMustHaveEmbed:
   testability: 1
   title:
@@ -3447,7 +3335,6 @@ objectMustHaveEmbed:
     - "objects"
     - "content"
   options:
-    selector: "object:not(object:has(embed))"
 objectMustHaveTitle:
   testability: 1
   title:
@@ -3465,7 +3352,6 @@ objectMustHaveTitle:
     - "objects"
     - "content"
   options:
-    selector: "object:not(object[title])"
 objectMustHaveValidTitle:
   type: "placeholder"
   testability: 1
@@ -3484,7 +3370,6 @@ objectMustHaveValidTitle:
   options:
     attribute: "title"
     empty: true
-    selector: "object"
 objectProvidesMechanismToReturnToParent:
   testability: 0
   title:
@@ -3498,7 +3383,6 @@ objectProvidesMechanismToReturnToParent:
     - "objects"
     - "content"
   options:
-    selector: "object"
 objectShouldHaveLongDescription:
   testability: 0
   title:
@@ -3512,7 +3396,6 @@ objectShouldHaveLongDescription:
     - "objects"
     - "content"
   options:
-    selector: "object"
 objectTextUpdatesWhenObjectChanges:
   testability: 0
   title:
@@ -3528,7 +3411,6 @@ objectTextUpdatesWhenObjectChanges:
     - "objects"
     - "content"
   options:
-    selector: "object"
 objectUIMustBeAccessible:
   testability: 0
   title:
@@ -3542,7 +3424,6 @@ objectUIMustBeAccessible:
     - "objects"
     - "content"
   options:
-    selector: "object"
 objectWithClassIDHasNoText:
   testability: 1
   title:
@@ -3556,7 +3437,6 @@ objectWithClassIDHasNoText:
     - "objects"
     - "content"
   options:
-    selector: "object[classid]:not(object[classid]:empty)"
 pNotUsedAsHeader:
   type: "custom"
   testability: 0.5
@@ -3631,7 +3511,6 @@ passwordHasLabel:
   components:
     - "label"
   options:
-    selector: "input[type=password]"
 passwordLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
@@ -3648,7 +3527,6 @@ passwordLabelIsNearby:
   components:
     - "labelProximity"
   options:
-    selector: "input[type=password]"
 preShouldNotBeUsedForTabularLayout:
   testability: 0
   title:
@@ -3711,7 +3589,6 @@ radioHasLabel:
   components:
     - "label"
   options:
-    selector: "input[type=radio]"
 radioLabelIsNearby:
   type: "labelProximity"
   testability: 0.5
@@ -3728,7 +3605,6 @@ radioLabelIsNearby:
   components:
     - "labelProximity"
   options:
-    selector: "input[type=radio]"
 radioMarkedWithFieldgroupAndLegend:
   testability: 1
   title:
@@ -3749,7 +3625,6 @@ radioMarkedWithFieldgroupAndLegend:
     - "form"
     - "content"
   options:
-    selector: "input[type=radio]:not(fieldset input[type=radio])"
 # scriptFocusIndicatorVisible:
 #   type: "custom"
 #   title:
@@ -3785,7 +3660,6 @@ scriptContentAccessibleWithScriptsTurnedOff:
   tags:
     - "javascript"
   options:
-    selector: "script"
 scriptInBodyMustHaveNoscript:
   testability: 0.5
   title:
@@ -3800,7 +3674,6 @@ scriptInBodyMustHaveNoscript:
   tags:
     - "javascript"
   options:
-    selector: "html:not(html:has(noscript)):has(script) body"
 scriptOnclickRequiresOnKeypress:
   type: "event"
   testability: 1
@@ -4039,7 +3912,6 @@ scriptUIMustBeAccessible:
   tags:
     - "javascript"
   options:
-    selector: "script"
 scriptsDoNotFlicker:
   testability: 0
   title:
@@ -4058,7 +3930,6 @@ scriptsDoNotFlicker:
   tags:
     - "javascript"
   options:
-    selector: "script"
 scriptsDoNotUseColorAlone:
   testability: 0
   title:
@@ -4074,7 +3945,6 @@ scriptsDoNotUseColorAlone:
     - "javascript"
     - "color"
   options:
-    selector: "script"
 selectDoesNotChangeContext:
   type: "event"
   testability: 1
@@ -4093,7 +3963,6 @@ selectDoesNotChangeContext:
     - "hasEventListener"
   options:
     searchEvent: "onchange"
-    selector: "select"
 selectHasAssociatedLabel:
   type: "label"
   testability: 1
@@ -4131,7 +4000,6 @@ selectHasAssociatedLabel:
   components:
     - "label"
   options:
-    selector: "select"
 selectJumpMenu:
   testability: 0.5
   title:
@@ -4171,7 +4039,6 @@ selectWithOptionsHasOptgroup:
     - "form"
     - "content"
   options:
-    selector: "select:not(select:has(optgroup)) option:nth-child(5)"
 siteMap:
   testability: 0
   title:
@@ -4231,7 +4098,6 @@ svgContainsTitle:
     - "svg"
     - "content"
   options:
-    selector: "svg:not(svg:has(title))"
 tableAxisHasCorrespondingId:
   testability: 1
   title:
@@ -4282,7 +4148,6 @@ tableCaptionIdentifiesTable:
     - "table"
     - "content"
   options:
-    selector: "caption"
 tableComplexHasSummary:
   testability: 0.5
   title:
@@ -4300,7 +4165,6 @@ tableComplexHasSummary:
     - "table"
     - "content"
   options:
-    selector: "table:not(table[summary], table:has(caption))"
 tableDataShouldHaveTh:
   testability: 1
   title:
@@ -4320,7 +4184,6 @@ tableDataShouldHaveTh:
     - "table"
     - "content"
   options:
-    selector: "table:not(table:has(th))"
 tableHeaderLabelMustBeTerse:
   testability: 0.5
   title:
@@ -4347,7 +4210,6 @@ tableIsGrouped:
     - "table"
     - "content"
   options:
-    selector: "table:not(table:has(thead), table:has(tfoot))"
 tableLayoutDataShouldNotHaveTh:
   testability: 0
   title:
@@ -4471,7 +4333,6 @@ tableSummaryDescribesTable:
     - "table"
     - "content"
   options:
-    selector: "table[summary]"
 tableSummaryDoesNotDuplicateCaption:
   testability: 1
   title:
@@ -4503,7 +4364,6 @@ tableSummaryIsEmpty:
   options:
     attribute: "summary"
     empty: true
-    selector: "table[summary]"
 tableSummaryIsNotTooLong:
   testability: 0
   guidelines: []
@@ -4524,7 +4384,6 @@ tableSummaryIsSufficient:
     - "table"
     - "content"
   options:
-    selector: "table[summary]"
 tableUseColGroup:
   testability: 0
   title:
@@ -4568,7 +4427,6 @@ tableUsesCaption:
     - "table"
     - "content"
   options:
-    selector: "table:not(table:has(caption))"
 tableUsesScopeForRow:
   testability: 0.5
   title:
@@ -4605,7 +4463,6 @@ tableWithBothHeadersUseScope:
     - "table"
     - "content"
   options:
-    selector: "table:has(tr:not(table tr:first) th:not(th[scope]))"
 tableWithMoreHeadersUseID:
   testability: 0.5
   title:
@@ -4712,7 +4569,6 @@ textareaHasAssociatedLabel:
   components:
     - "label"
   options:
-    selector: "textarea"
 textareaLabelPositionedClose:
   type: "labelProximity"
   testability: 0.5
@@ -4729,7 +4585,6 @@ textareaLabelPositionedClose:
   components:
     - "labelProximity"
   options:
-    selector: "textarea"
 videoProvidesCaptions:
   testability: 0.5
   title:
@@ -4753,7 +4608,6 @@ videoProvidesCaptions:
     - "media"
     - "content"
   options:
-    selector: "video"
 videosEmbeddedOrLinkedNeedCaptions:
   testability: 1
   title:
@@ -4845,7 +4699,6 @@ linkDoesNotChangeContextOnFocus:
     - "hasEventListener"
   options:
     searchEvent: "onfocus"
-    selector: "a"
 buttonDoesNotChangeContextOnFocus:
   type: "event"
   testability: 1
@@ -4864,7 +4717,6 @@ buttonDoesNotChangeContextOnFocus:
     - "hasEventListener"
   options:
     searchEvent: "onfocus"
-    selector: "input[type=checkbox],input[type=text],button"
 KINGStrongList:
   testability: 1
   title:
