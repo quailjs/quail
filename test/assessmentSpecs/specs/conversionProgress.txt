@@ -58,7 +58,7 @@
                 documentIDsMustBeUnique
                 documentIsWrittenClearly
                 documentLangIsISO639Standard
--- tagged --    documentLangNotIdentified
+-- Converted -- documentLangNotIdentified
 -- tagged --    documentMetaNotUsedWithTimeout
 -- tagged --    documentReadingDirection
                 documentStrictDocType
