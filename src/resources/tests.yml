@@ -2160,7 +2160,7 @@ headerH6Format:
     - "content"
   options:
     selector: "h6"
-headerTooLong:
+headerTextIsTooLong:
   type: "custom"
   testability: 1
   title:
@@ -2176,7 +2176,7 @@ headerTooLong:
           - "H42"
   tags:
     - "content"
-  callback: "headerTooLong"
+  callback: "headerTextIsTooLong"
 headersHaveText:
   type: "placeholder"
   testability: 1
