@@ -1,6 +1,24 @@
 QUAIL Changelog
 ===============
 
+2.2.18
+------
+- The order of the arguments to the test runners has changed. It was
+```
+// args[0]: The test runner script.
+// args[1]: The URL to evaluate.
+// args[2]: The current working directory.
+// args[3]: The file to write analysis to.
+```
+and it is now
+```
+// args[0]: The test runner script.
+// args[1]: The URL to evaluate.
+// args[2]: The current working directory.
+// args[3]: The configuration for the phantomjs instance.
+// args[4]: The file to write analysis to.
+```
+
 2.2.17
 ------
 - Added --output option to the commandline

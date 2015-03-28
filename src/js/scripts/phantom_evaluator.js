@@ -1,11 +1,16 @@
 // Context is phantom
 
 var system = require('system');
-var page = require('webpage').create();
+var webpage = require('webpage');
 var fs = require('fs');
+var address = system.args[1];
 var dir = system.args[2];
-var outputDir = system.args[3]; // Directory to write output to.
-var address;
+var configFilePath = system.args[3]; // Configuration JSON file.
+var outputDir = system.args[4]; // Directory to write output to.
+
+// Create the QtRuntimeObject with the desired configuration. This is the PhantomJS
+// controller object.
+var page = webpage.create(JSON.parse(fs.read(configFilePath)));
 
 /**
  * Logs the reason for exit; exits Phantom.
@@ -46,8 +51,6 @@ page.onError = function (msg, trace) {
     trace
   ], undefined, 2));
 };
-
-page.settings.resourceTimeout = 5000; // 5 seconds
 
 page.onResourceRequested = function (request) {
   console.log(JSON.stringify([
@@ -90,9 +93,6 @@ phantom.onError = function(msg, trace) {
     trace
   ], undefined, 2));
 };
-
-// Open the page at the provided URL in Phantom.
-address = system.args[1];
 
 var distPath = dir + '/dist'; // ./dist
 var nodeModulesPath = dir + '/node_modules';
