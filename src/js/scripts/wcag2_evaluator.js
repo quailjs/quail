@@ -53,20 +53,56 @@ page.onError = function (msg, trace) {
   ], undefined, 2));
 };
 
+page.onResourceRequested = function (requestData, request) {
+  // Block third-party resource requests.
+  var blocked = false;
+  var blockedDomains = [
+    'fbstatic',
+    'facebook',
+    'twitter',
+    'google-analytics',
+    'googleadservices',
+    'googlesyndication',
+    'perfectaudience',
+    'typekit',
+    'sharethis',
+    'doubleclick',
+    'optimizely',
+    'gigya'
+  ];
+  var domainMatcher = '\.(?:com|net|[a-z]{2,3})';
+  var rBlockedDomains = [];
+  blockedDomains.forEach(function (name) {
+    rBlockedDomains.push(new RegExp(name + domainMatcher, 'i'));
+  });
+  blocked = rBlockedDomains.some(function (reg) {
+    return reg.test(requestData.url);
+  });
 
-page.onResourceRequested = function (request) {
-  console.log(JSON.stringify([
-    'Requested (' + request.method + ')',
-    request.url
-  ]));
+  if (blocked) {
+    console.log(JSON.stringify([
+      'BLOCKED',
+      'Requested (' + requestData.method + ')',
+      requestData.url
+    ]));
+    request.abort();
+  }
+  else {
+    console.log(JSON.stringify([
+      'Requested (' + requestData.method + ')',
+      requestData.url
+    ]));
+  }
 };
 
 page.onResourceReceived = function(response) {
-  console.log(JSON.stringify([
-    'Received',
-    response.status,
-    response.url
-  ]));
+  if (response.status) {
+    console.log(JSON.stringify([
+      'Received',
+      response.status,
+      response.url
+    ]));
+  }
 };
 
 page.onResourceTimeout = function (error) {
@@ -79,12 +115,15 @@ page.onResourceTimeout = function (error) {
 };
 
 page.onResourceError = function (error) {
-  console.log(JSON.stringify([
-    'Resource error',
-    'Error code: ' + error.errorCode,
-    error.errorString,
-    error.url
-  ], undefined, 2));
+  // Ignore blocked resource errors.
+  if (error.errorCode != 301) {
+    console.log(JSON.stringify([
+      'Resource error',
+      'Error code: ' + error.errorCode,
+      error.errorString,
+      error.url
+    ], undefined, 2));
+  }
 };
 
 // This is the last chance to catch catestrophic errors.
