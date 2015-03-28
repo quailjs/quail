@@ -53,7 +53,6 @@ page.onError = function (msg, trace) {
   ], undefined, 2));
 };
 
-page.settings.resourceTimeout = 5000; // 5 seconds
 
 page.onResourceRequested = function (request) {
   console.log(JSON.stringify([
