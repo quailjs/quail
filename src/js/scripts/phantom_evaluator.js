@@ -69,7 +69,7 @@ page.onResourceRequested = function (requestData, request) {
     'optimizely',
     'gigya'
   ];
-  var domainMatcher = '\.(?:com|net|[a-z]{2,3})';
+  var domainMatcher = '\\.(?:com|net|[a-z]{2,3})';
   var rBlockedDomains = [];
   blockedDomains.forEach(function (name) {
     rBlockedDomains.push(new RegExp(name + domainMatcher, 'i'));
@@ -115,7 +115,7 @@ page.onResourceTimeout = function (error) {
 
 page.onResourceError = function (error) {
   // Ignore blocked resource errors.
-  if (error.errorCode != 301) {
+  if (error.errorCode !== 301) {
     console.log(JSON.stringify([
       'Resource error',
       'Error code: ' + error.errorCode,
