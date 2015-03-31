@@ -173,6 +173,16 @@
         inside it.</p>
 </div>
 
+<div class="quail-test" data-expected="pass"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p>Some text
+        <a href="/" style="color:black">
+            With a link
+        </a>
+        that is identical.
+        This sometimes happens in page footers with an e-mail address</p>
+</div>
+
 <div class="quail-test" data-expected="fail"
      data-accessibility-test="aInPHasADistinctStyle">
     <p style="text-decoration:underline">Some text
