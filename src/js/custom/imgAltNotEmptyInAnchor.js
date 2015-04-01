@@ -5,7 +5,7 @@ quail.imgAltNotEmptyInAnchor = function(quail, test, Case) {
     var text = $a.text();
 
     var _case = Case({
-      element: this,
+      element: $a[0],
       expected: $img.closest('.quail-test').data('expected')
     });
     test.add(_case);
