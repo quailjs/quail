@@ -1,12 +1,11 @@
 quail.imgAltNotEmptyInAnchor = function(quail, test, Case) {
-  test.get('$scope').find('a[href] img').each(function() {
-    var $img  = $(this);
-    var $a   = $img.closest('a');
+  test.get('$scope').find('a[href]:has(img)').each(function() {
+    var $a   = $(this);
     var text = $a.text();
 
     var _case = Case({
-      element: $a[0],
-      expected: $img.closest('.quail-test').data('expected')
+      element: this,
+      expected: $a.closest('.quail-test').data('expected')
     });
     test.add(_case);
 
