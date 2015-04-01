@@ -3,8 +3,6 @@
  * color contrast/luminosity.
  */
 quail.components.color = (function () {
-  var img, i, rainbow, numberOfSamples;
-
 
   function buildCase(test, Case, element, status, id, message) {
     test.add(Case({
@@ -465,220 +463,7 @@ quail.components.color = (function () {
     }
   };
 
-  var tests = {
-    /**
-     *
-     */
-    colorFontContrast: function (options, test, Case, element, id, $this) {
-      // Check text and background color using DOM.
-      // Build a case.
-
-      if (!colors.testElmContrast(options.algorithm, $this)) {
-        buildCase(test, Case, element, 'failed', id, 'The font contrast of the text impairs readability');
-      }
-      else {
-        buildCase(test, Case, element, 'passed', id, 'The font contrast of the text is sufficient for readability');
-      }
-    },
-
-    /**
-     *
-     */
-    colorElementBehindContrast: function (id, test, Case, options, $this, element) {
-      // Check text and background using element behind current element.
-      var backgroundColorBehind;
-      // The option element is problematic.
-      if (!$this.is('option')) {
-        backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
-      }
-      if (!backgroundColorBehind) {
-        return;
-      }
-
-      var testResult = colors.testElmBackground(options.algorithm, $this,
-            backgroundColorBehind);
-
-      // Build a case.
-      if (!testResult) {
-        buildCase(test, Case, element, 'failed', id, 'The element behind this element makes the text unreadable');
-      }
-      else {
-        buildCase(test, Case, element, 'passed', id, 'The element behind this element does not affect readability');
-      }
-
-    },
-
-    /**
-     *
-     */
-    colorBackgroundImageContrast: function (id, test, Case, options, $this, element) {
-      // Check if there's a backgroundImage using DOM.
-      var backgroundImage = colors.getBackgroundImage($this);
-      if (!backgroundImage) {
-        return;
-      }
-
-      img = document.createElement('img');
-      img.crossOrigin = "Anonymous";
-
-      // Get average color of the background image. The image must first load
-      // before information about it is available to the DOM.
-      img.onload = function () {
-        var averageColorBackgroundImage = colors.getAverageRGB(img);
-        var testResult = colors.testElmBackground(options.algorithm, $this,
-              averageColorBackgroundImage);
-
-        // Build a case.
-        if (!testResult) {
-          buildCase(test, Case, element, 'failed', id, 'The element\'s background image makes the text unreadable');
-
-        } else {
-          buildCase(test, Case, element, 'passed', id, 'The element\'s background image does not affect readability');
-        }
-      };
-
-      img.onerror = img.onabort = function () {
-        buildCase(test, Case, element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
-      };
-
-      // Load the image.
-      img.src = backgroundImage;
-    },
-
-    /**
-     *
-     */
-    colorElementBehindBackgroundImageContrast: function (id, test, Case, options, $this, element) {
-      // Check if there's a backgroundImage using element behind current element.
-      var behindBackgroundImage;
-
-      // The option element is problematic.
-      if (!$this.is('option')) {
-        behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
-      }
-
-      if (!behindBackgroundImage) {
-        return;
-      }
-
-      img = document.createElement('img');
-      img.crossOrigin = "Anonymous";
-      // The image must first load before information about it is available to
-      // the DOM.
-      img.onload = function () {
-
-        // Get average color of the background image.
-        var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
-        var testResult = colors.testElmBackground(options.algorithm, $this,
-              averageColorBehindBackgroundImage);
-        if (!testResult) {
-          buildCase(test, Case, element, 'failed', id, 'The background image of the element behind this element makes the text unreadable');
-
-        } else {
-          buildCase(test, Case, element, 'passed', id, 'The background image of the element behind this element does not affect readability');
-        }
-      };
-      img.onerror = img.onabort = function () {
-        buildCase(test, Case, element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
-      };
-      // Load the image.
-      img.src = behindBackgroundImage;
-
-    },
-
-    /**
-     *
-     */
-    colorBackgroundGradientContrast: function (id, test, Case, options, $this, element) {
-      // Check if there's a background gradient using DOM.
-      var failureFound;
-      var backgroundGradientColors = colors.getBackgroundGradient($this);
-
-      if (!backgroundGradientColors) {
-        return;
-      }
-
-      // Convert colors to hex notation.
-      for (i = 0; i < backgroundGradientColors.length; i++) {
-        if (backgroundGradientColors[i].substr(0, 3) === 'rgb') {
-          backgroundGradientColors[i] = colors.colorToHex(backgroundGradientColors[i]);
-        }
-      }
-
-      // Create a rainbow.
-      /* global Rainbow */
-      rainbow = new Rainbow();
-      rainbow.setSpectrumByArray(backgroundGradientColors);
-      // @todo, make the number of samples configurable.
-      numberOfSamples = backgroundGradientColors.length * options.gradientSampleMultiplier;
-
-      // Check each color.
-      failureFound = false;
-      for (i = 0; !failureFound && i < numberOfSamples; i++) {
-        var testResult = colors.testElmBackground(options.algorithm, $this,
-              '#' + rainbow.colourAt(i));
-
-        if (!testResult) {
-          buildCase(test, Case, element, 'failed', id, 'The background gradient makes the text unreadable');
-          failureFound = true;
-        }
-      }
-
-      // If no failure was found, the element passes for this case type.
-      if (!failureFound) {
-        buildCase(test, Case, element, 'passed', id, 'The background gradient does not affect readability');
-      }
-    },
-
-    /**
-     *
-     */
-    colorElementBehindBackgroundGradientContrast: function (id, test, Case, options, $this, element) {
-      // Check if there's a background gradient using element behind current element.
-      var behindGradientColors;
-      var failureFound;
-      // The option element is problematic.
-      if (!$this.is('option')) {
-        behindGradientColors = colors.getBehindElementBackgroundGradient($this);
-      }
-
-      if (!behindGradientColors) {
-        return;
-      }
-
-      // Convert colors to hex notation.
-      for (i = 0; i < behindGradientColors.length; i++) {
-        if (behindGradientColors[i].substr(0, 3) === 'rgb') {
-          behindGradientColors[i] = colors.colorToHex(behindGradientColors[i]);
-        }
-      }
-
-      // Create a rainbow.
-      /* global Rainbow */
-      rainbow = new Rainbow();
-      rainbow.setSpectrumByArray(behindGradientColors);
-      numberOfSamples = behindGradientColors.length * options.gradientSampleMultiplier;
-
-      // Check each color.
-      failureFound = false;
-      for (i = 0; !failureFound && i < numberOfSamples; i++) {
-        failureFound = !colors.testElmBackground(options.algorithm, $this,
-              '#' + rainbow.colourAt(i));
-      }
-
-      // If no failure was found, the element passes for this case type.
-      if (failureFound) {
-        buildCase(test, Case, element, 'failed', id, 'The background gradient of the element behind this element makes the text unreadable');
-      } else {
-        buildCase(test, Case, element, 'passed', id, 'The background gradient of the element behind this element does not affect readability');
-      }
-    }
-  };
-
-  /**
-   *
-   */
-  function testCandidates(id, textNode, test, Case, options) {
+  function textShouldBeTested(textNode) {
     // We want a tag, not just the text node.
     var element = textNode.parentNode;
     var $this = $(element);
@@ -688,32 +473,23 @@ quail.components.color = (function () {
     // Failure to pass an Element <node> to window.getComputedStyle will raised an exception
     // if Firefox.
     if (element.nodeType !== 1) {
-      return;
-    }
+      return false;
+
     // Ignore elements whose content isn't displayed to the page.
-    if (['script', 'style', 'title', 'object', 'applet', 'embed', 'template', 'noscript']
+    } else if (['script', 'style', 'title', 'object', 'applet', 'embed', 'template', 'noscript']
     .indexOf(element.nodeName.toLowerCase()) !== -1)  {
-      return;
-    }
+      return false;
 
     // Bail out if the text is not readable.
-    if (quail.isUnreadable($this.text())) {
-      buildCase(test, Case, element, 'cantTell', '', 'The text cannot be processed');
-      return;
-    }
+    } else if (quail.isUnreadable($this.text())) {
+      return false;
 
-    // Switch on the type of color test to run.
-    if (tests[id]) {
-      try {
-        tests[id](id, test, Case, options, $this, element);
-      } catch (e) {
-        console.log(e);
-      }
+    } else {
+      return true;
     }
   }
 
-
-    /**
+  /**
    * For the color test, if any case passes for a given element, then all the
    * cases for that element pass.
    */
@@ -754,7 +530,7 @@ quail.components.color = (function () {
 
   return {
     colors: colors,
-    testCandidates: testCandidates,
+    textShouldBeTested: textShouldBeTested,
     postInvoke: postInvoke,
     buildCase: buildCase
   };
