@@ -15,6 +15,12 @@ quail.components.color = (function () {
     }));
   }
 
+  function notempty(s) {
+    return $.trim(s) !== '';
+  }
+
+
+
   var colors = {
     cache: {},
     /**
@@ -23,8 +29,8 @@ quail.components.color = (function () {
      */
     getLuminosity : function(foreground, background) {
       var cacheKey = 'getLuminosity_' + foreground + '_' + background;
-      foreground = colors.cleanup(foreground);
-      background = colors.cleanup(background);
+      foreground = colors.parseColor(foreground);
+      background = colors.parseColor(background);
 
       if (colors.cache[cacheKey] !== undefined) {
         return colors.cache[cacheKey];
@@ -81,14 +87,6 @@ quail.components.color = (function () {
       return res;
     },
 
-    testColorContrast: function (algorithm, element, foreground, background, level) {
-      if (algorithm === 'wcag') {
-        return colors.passesWCAGColor(element, foreground, background, level);
-      } else if (algorithm === 'wai') {
-        return colors.passesWAIColor(foreground, background);
-      }
-    },
-
     /**
      * Returns whether an element's color passes
      * WCAG at a certain contrast ratio.
@@ -117,8 +115,10 @@ quail.components.color = (function () {
      * WAI brightness levels.
      */
     passesWAIColor : function(foreground, background) {
-      return (colors.getWAIErtContrast(foreground, background) > 500 &&
-              colors.getWAIErtBrightness(foreground, background) > 125);
+      var contrast   = colors.getWAIErtContrast(foreground, background);
+      var brightness = colors.getWAIErtBrightness(foreground, background);
+
+      return (contrast > 500 && brightness > 125);
     },
 
     /**
@@ -195,7 +195,7 @@ quail.components.color = (function () {
     /**
      * Returns an object with rgba taken from a string.
      */
-    cleanup : function(color) {
+    parseColor : function(color) {
       if (typeof color === 'object') {
         return color;
       }
@@ -361,10 +361,6 @@ quail.components.color = (function () {
       if (colors.cache[cacheKey] !== undefined) {
         return colors.cache[cacheKey];
       }
-
-      var notempty = function(s) {
-        return $.trim(s) !== '';
-      };
 
       var foundIt;
       var scannedElements = [];
