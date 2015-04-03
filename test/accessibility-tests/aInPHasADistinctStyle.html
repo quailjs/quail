@@ -109,6 +109,29 @@
         inside it.</p>
 </div>
 
+
+<div class="quail-test" data-expected="inapplicable"
+           data-accessibility-test="aInPHasADistinctStyle">
+    <!-- links with images are probably sufficiently distinguishable -->
+    <p>
+      <a href="/">Allow multiple links</a>
+      <a href="/">Inside a paragraph</a>
+    </p>
+</div>
+
+<div class="quail-test" data-expected="inapplicable"
+           data-accessibility-test="aInPHasADistinctStyle">
+    <!-- links with images are probably sufficiently distinguishable -->
+    <p>
+      <a href="/">Allow</a> |
+      <a href="/">For</a> -
+      <a href="/">Certain</a> >
+      <a href="/">Types</a> &gt;
+      <a href="/">Of</a> &lt;
+      <a href="/">Separators</a>
+    </p>
+</div>
+
 <div class="quail-test" data-expected="pass"
      data-accessibility-test="aInPHasADistinctStyle">
     <!-- If the link is the only content of an element
@@ -131,13 +154,13 @@
         </a> </strong>,
         <em><a href="/">
             With a link
-        </a></em> - 
+        </a></em> -
         <b><a href="/">
             With a link
         </a></b>  ====
         <u><a href="/">
             With a link
-        </a></u> / 
+        </a></u> /
         inside it.</p>
 </div>
 
@@ -148,6 +171,16 @@
             With a link
         </a>
         inside it.</p>
+</div>
+
+<div class="quail-test" data-expected="pass"
+     data-accessibility-test="aInPHasADistinctStyle">
+    <p>Some text
+        <a href="/" style="color:black">
+            With a link
+        </a>
+        that is identical.
+        This sometimes happens in page footers with an e-mail address</p>
 </div>
 
 <div class="quail-test" data-expected="fail"

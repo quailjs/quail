@@ -12,7 +12,7 @@ quail.aInPHasADistinctStyle=function(quail, test, Case){
 
   /**
    * Test if two elements have a distinct style from it's ancestor
-   * @param  {jQuery node} $elm    
+   * @param  {jQuery node} $elm
    * @param  {jQuery node} $parent
    * @return {boolean}
    */
@@ -46,6 +46,8 @@ quail.aInPHasADistinctStyle=function(quail, test, Case){
     return isBlock || isPositioned;
   }
 
+  // Ignore links where the p only contains white space, <, >, |, \, / and - chars
+  var allowedPText = /^([\s|-]|>|<|\\|\/|&(gt|lt);)*$/i;
 
   test.get('$scope').each(function () {
     var $scope = $(this);
@@ -63,10 +65,15 @@ quail.aInPHasADistinctStyle=function(quail, test, Case){
       test.add(_case);
 
       var aText = $this.text().trim();
-      var pText = $p.text().trim();
 
-      if (aText === '' || aText === pText) {
+      // Get all text of the p element with all anchors removed
+      var pText = $p.clone().find('a[href]').remove().end().text();
+
+      if (aText === '' || pText.match(allowedPText)) {
         _case.set('status', 'inapplicable');
+
+      } else if ($this.css('color') === $p.css('color')) {
+        _case.set('status', 'passed');
 
       } else if (elmHasDistinctStyle($this, $p)) {
         _case.set('status', 'passed');
