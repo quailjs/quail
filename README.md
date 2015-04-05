@@ -110,6 +110,10 @@ Pull requests should be made against the **master** branch.
 - The [Kwaliteitsinstituut Nederlandse Gemeenten (KING)](https://www.kinggemeenten.nl/), who have funded many developer hours.
 - The [CKEditor development team](http://ckeditor.com/about) for their contributions.
 
+## References
+
+[HTML Test Suite for WCAG 2.0, Sorted by Guideline](http://www.w3.org/WAI/GL/WCAG20/tests/)
+
 ## Legal
 
 QUAIL is covered under the MIT License, and is copyright (c) 2015 by Jesse Beach. Current license is at http://quailjs.org/license.
