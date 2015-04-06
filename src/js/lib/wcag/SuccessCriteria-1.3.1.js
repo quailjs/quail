@@ -60,14 +60,14 @@ quail.guidelines.wcag.successCriteria['1.3.1'] = (function (quail) {
     F42: 'Using scripting events to emulate links in a way that is not programmatically determinable',
     F43: 'Using structural markup in a way that does not represent relationships in the content',
     F87: 'Inserting non-decorative content by using :before and :after pseudo-elements and the content property in CSS',
-     // Tables
+    // Tables
     F46: 'Using th elements, caption elements, or non-empty summary attributes in layout tables',
     F48: 'Using the pre element to markup tabular information',
     F90: 'Incorrectly associating table headers and content via the headers and id attributes',
     F91: 'Not correctly marking up table headers',
     F33: 'Using white space characters to create multiple columns in plain text content',
     F34: 'Using white space characters to format tables in plain text content',
-     // Forms
+    // Forms
     F68: 'Association of label and user interface controls not being programmatically determinable'
   };
 

@@ -239,7 +239,7 @@ quail.lib.TestCollection = (function () {
     splice: [].splice
   };
 
-    /**
+  /**
    * Dispatches the complete event.
    *
    * This function is meant to be bound to a Test as a method through
