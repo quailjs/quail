@@ -290,10 +290,11 @@ module.exports = function(grunt) {
     'convert',
     'concat',
     'copy',
-    //'jshint',
-    // 'buildTestFilesJson',
-    // 'buildGuideline',
-    // 'compressTestsJson',
+    'jshint',
+    'jscs',
+    'buildTestFilesJson',
+    'buildGuideline',
+    'compressTestsJson',
     'karma',
     'execute:assessments'
   ]);

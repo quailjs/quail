@@ -34,18 +34,23 @@ Q.getUnhandledReasons(function (err) {
 });
 
 process.on('uncaughtException', function(err) {
+  console.error('uncaughtException');
   if (err.code === 'EADDRINUSE') {
     console.error('Oops!');
     console.error('Check ports ' + httpServerFixturesPort + ' and ' + httpServerAssessmentPagesPort + ' for running processes.');
     console.error('You can check for a process associated with a port like this: `lsof -i :' + httpServerFixturesPort + '`');
     console.error('Get the PID associated with the process, then stop it with this command: `kill -9 <pid>`, where <pid> is the process number.\n');
   }
-  shutdownTestRunner(err);
+  else {
+    console.error(err);
+  }
+  shutdownTestRunner(1);
 });
 
 // The root path of the HTTP fixtures server.
 var fixturesRoot = path.join(__dirname, '../..', 'dist');
 var assessmentPagesRoot = path.join(__dirname, 'specs');
+var testConfigPath = path.join(__dirname, '../', 'config');
 var logPath = path.join(__dirname, '../..', 'logs');
 var srcPath = path.join(__dirname, '../../', 'src');
 
@@ -131,6 +136,10 @@ if (!process.env.TRAVIS) {
 // suffer from race conditions wherein the selenium server isn't started before
 // webdriver is initialized, but I don't see how to get a callback fired from
 // child_process.spawn.
+//
+// selenium-standalone should be upgraded to the latest version that supplies
+// events, but the API is very different so it's not as simple as upgrading and
+// adding an event listener.
 webdriver = require('webdriverio');
 
 /**
@@ -159,39 +168,8 @@ function shutdownTestRunner (err) {
 function runSpecs (assessments) {
   // If we have no assessments to run, shut down the process with an error code.
   if (Object.keys(assessments) == 0) {
-    shutdownTestRunner(1);
+    shutdownTestRunner('No tests to run.');
   }
-
-  // Set up the Mocha test runs.
-  var specFiles;
-  // Run a single test if one is indicated, otherwise, run them all.
-  var single = execOptions.assessment;
-  if (single && (single in assessments)) {
-    specFiles = __dirname + '/specs/**/' + single + 'Spec.js';
-  }
-  else {
-    specFiles = __dirname + '/specs/**/*Spec.js';
-  }
-
-  // Gather the spec files and add them to the Mocha run.
-  glob(specFiles, function (error, files) {
-    if (error) {
-      shutdownTestRunner(error);
-    }
-
-    mochaRunner = new Mocha({
-      timeout: 1000000,
-      reporter: 'spec',
-      bail: false
-    });
-
-    files.forEach(function (file) {
-      mochaRunner.addFile(file);
-    });
-
-    mochaRunner.run(shutdownTestRunner);
-  });
-
   // Methods available in the Spec runner (e.g. Mocha).
   // @todo Provide these methods through exports and move them into their
   // own file.
@@ -513,12 +491,64 @@ function runSpecs (assessments) {
       });
     }
   };
+  // Set up Mocha.
+  mochaRunner = new Mocha({
+    timeout: 1000000,
+    reporter: 'spec',
+    bail: false
+  });
+  /**
+   * Adds files to Mocha and then runs Mocha.
+   */
+  function addAndRunMocha (files) {
+    files.forEach(function (file) {
+      mochaRunner.addFile(file);
+    });
+    mochaRunner.run(shutdownTestRunner);
+  };
+  // Set up the Mocha test runs.
+  var specFiles;
+  // Run a single test if one is indicated, otherwise, run them all.
+  var single = execOptions.assessment;
+  if (single && (single in assessments)) {
+    specFiles = __dirname + '/specs/**/' + single + 'Spec.js';
+    // Gather the spec files and add them to the Mocha run.
+    glob(specFiles, function (error, files) {
+      if (error) {
+        shutdownTestRunner(error);
+      }
+      addAndRunMocha(files);
+    });
+  }
+  else {
+    // specFiles = __dirname + '/specs/**/*Spec.js';
+    // Read in the configured test filenames.
+    fs.readFile(path.join(testConfigPath, 'assessmentsToRun.json'), {
+      encoding: 'utf-8'
+    }, function (err, assessmentsToRunJSON) {
+      if (err) {
+        shutdownTestRunner('Failed to load assessmentsToRun.json.');
+      }
+      var assessmentsToRun = JSON.parse(assessmentsToRunJSON);
+      // Create a list of Specs to run. Remove filenames prepended with underscore.
+      var assessmentSpecFiles = assessmentsToRun.filter(function (filename) {
+        return filename.charAt(0) !== '_';
+      }).map(function (filename) {
+        // Expand the file names to full paths.
+        return path.join(assessmentPagesRoot, filename, filename + 'Spec.js');
+      });
+      // Gather the spec files and add them to the Mocha run.
+      addAndRunMocha(assessmentSpecFiles);
+    });
+  }
 }
 
 // Load the assessment defintions. The callback will start the evaluation of the
 // specifications.
 assessmentsPromise = Q.Promise(function (resolve, reject) {
-  Q.nfcall(fs.readFile, fixturesRoot + '/tests.json', "utf-8")
+  Q.nfcall(fs.readFile, fixturesRoot + '/tests.json', {
+    encoding: 'utf-8'
+  })
     .then(function (assessmentsJSON) {
       resolve(JSON.parse(assessmentsJSON));
     }, function (err) {
