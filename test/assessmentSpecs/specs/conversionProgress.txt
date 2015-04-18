@@ -62,7 +62,7 @@
 -- Converted -- documentMetaNotUsedWithTimeout
 -- tagged --    documentReadingDirection
                 documentStrictDocType
--- tagged --    documentTitleDescribesDocument
+-- Converted -- documentTitleDescribesDocument
                 documentTitleIsNotPlaceholder
                 documentTitleIsShort
                 documentTitleNotEmpty
