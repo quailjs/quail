@@ -34,7 +34,7 @@ describe('assessment: documentReadingDirection', function () {
     });
 
     it('should return the proper assessment for the test', function () {
-      expect(cases[0]).to.have.quailStatus('passed');
+      expect(cases[0]).to.have.quailStatus('inapplicable');
     });
   });
 
@@ -63,7 +63,7 @@ describe('assessment: documentReadingDirection', function () {
       expect(quailResults.stats.tests).to.equal(1);
     });
     it('should return the correct number of cases', function () {
-      expect(quailResults.stats.cases).to.equal(1);
+      expect(quailResults.stats.cases).to.equal(2);
     });
 
     it('should have correct key under the test results', function () {
@@ -74,7 +74,7 @@ describe('assessment: documentReadingDirection', function () {
       expect(cases).quailGetById('assert-1').to.have.quailStatus('failed');
     });
     it('should return the proper assessment for assert-2', function () {
-      expect(cases).quailGetById('assert-2').to.have.quailStatus('failed');
+      expect(cases).quailGetById('assert-2').to.have.quailStatus('passed');
     });
   });
 });

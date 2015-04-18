@@ -60,7 +60,7 @@
                 documentLangIsISO639Standard
 -- Converted -- documentLangNotIdentified
 -- Converted -- documentMetaNotUsedWithTimeout
--- tagged --    documentReadingDirection
+-- Converted -- documentReadingDirection
                 documentStrictDocType
 -- Converted -- documentTitleDescribesDocument
                 documentTitleIsNotPlaceholder
