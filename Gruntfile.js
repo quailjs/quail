@@ -138,7 +138,6 @@ module.exports = function(grunt) {
           'concat',
           'jshint',
           'jscs',
-          'buildTestFilesJson',
           'buildGuideline',
           'uglify'
         ],
@@ -190,16 +189,6 @@ module.exports = function(grunt) {
         ]
       }
     },
-    buildTestFilesJson: {
-      dist: {
-        files: [
-          {
-            src: 'test/core/*.html',
-            dest: 'test/core/_tests.json'
-          }
-        ]
-      }
-    },
     'gh-pages': {
       options: {
         base: '',
@@ -243,7 +232,6 @@ module.exports = function(grunt) {
     'concat',
     'jshint',
     'jscs',
-    'buildTestFilesJson',
     'buildGuideline',
     'compressTestsJson',
     'karma',
@@ -264,7 +252,6 @@ module.exports = function(grunt) {
     'concat',
     'jshint',
     'jscs',
-    'buildTestFilesJson',
     'buildGuideline',
     'compressTestsJson',
     'uglify'
@@ -276,7 +263,6 @@ module.exports = function(grunt) {
     'concat',
     'jshint',
     'jscs',
-    'buildTestFilesJson',
     'karma',
     'execute:assessments',
     'buildGuideline',
@@ -292,7 +278,6 @@ module.exports = function(grunt) {
     'copy',
     'jshint',
     'jscs',
-    'buildTestFilesJson',
     'buildGuideline',
     'compressTestsJson',
     'karma',
