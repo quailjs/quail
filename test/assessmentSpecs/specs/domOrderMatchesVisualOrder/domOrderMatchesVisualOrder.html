@@ -1,26 +1,26 @@
 <!doctype html>
 <html>
-	<head>
-		<title>domOrderMatchesVisualOrder</title>
-	</head>
-	<body>
-		<div data-expected="pass">
-		  <div style="position: relative;">
-		  	<a href="here.html">Absolute positioned element</a>
-		  </div>
-		</div>
+  <head>
+    <title>domOrderMatchesVisualOrder</title>
+  </head>
+  <body>
+    <div data-expected="pass">
+      <div style="position: relative;">
+        <a href="here.html">Absolute positioned element</a>
+      </div>
+    </div>
 
-		<div data-expected="fail" title="Absolute positioned element">
-		  <div style="position: relative;">
-		  	<a style="position: absolute; top: 15px; left: 60px;" href="here.html" class="quail-failed-element">Absolute positioned element</a>
-		  </div>
-		</div>
+    <div data-expected="fail" title="Absolute positioned element">
+      <div style="position: relative;">
+        <a id="assert-1" style="position: absolute; top: 15px; left: 60px;" href="here.html">Absolute positioned element</a>
+      </div>
+    </div>
 
-		<div data-expected="fail" title="Floated element">
-		  <div>
-		  	<a style="float: right;" href="here.html" class="quail-failed-element">Floated positioned element</a>
-		  </div>
-		</div>
+    <div data-expected="fail" title="Floated element">
+      <div>
+        <a id="assert-2" style="float: right;" href="here.html">Floated positioned element</a>
+      </div>
+    </div>
 
-			</body>
+      </body>
 </html>

@@ -68,7 +68,7 @@
                 documentTitleNotEmpty
                 documentValidatesToDocType
 -- Converted -- documentVisualListsAreMarkedUp
--- tagged --    domOrderMatchesVisualOrder
+-- Converted -- domOrderMatchesVisualOrder
                 elementAttributesAreValid
                 elementsDoNotHaveDuplicateAttributes
                 embedHasAssociatedNoEmbed
