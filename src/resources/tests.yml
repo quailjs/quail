@@ -1273,19 +1273,6 @@ embedMustHaveAltAttribute:
     - "object"
     - "embed"
     - "content"
-embedMustNotHaveEmptyAlt:
-  testability: 1
-  title:
-    en: "\"Embed\" elements cannot have an empty \"alt\" attribute"
-    nl: "\"Embed\"-elementen mogen geen leeg \"alt\"-attribuut hebben"
-  description:
-    en: "All <code>embed</code> elements must have an \"alt\" attribute that is not empty."
-    nl: "Alle <code>embed</code>-elementen moeten een gevuld \"alt\"-attribuut hebben."
-  guidelines: []
-  tags:
-    - "object"
-    - "embed"
-    - "content"
 embedProvidesMechanismToReturnToParent:
   testability: 0
   title:

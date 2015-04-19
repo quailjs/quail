@@ -73,7 +73,6 @@
                 elementsDoNotHaveDuplicateAttributes
                 embedHasAssociatedNoEmbed
 -- Converted -- embedMustHaveAltAttribute
--- tagged --    embedMustNotHaveEmptyAlt
 -- tagged --    embedProvidesMechanismToReturnToParent
                 emoticonsExcessiveUse
                 emoticonsMissingAbbr
