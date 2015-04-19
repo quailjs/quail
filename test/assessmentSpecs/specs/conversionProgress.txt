@@ -73,7 +73,6 @@
                 elementsDoNotHaveDuplicateAttributes
                 embedHasAssociatedNoEmbed
 -- Converted -- embedMustHaveAltAttribute
--- tagged --    embedProvidesMechanismToReturnToParent
                 emoticonsExcessiveUse
                 emoticonsMissingAbbr
                 fieldsetHasLabel

@@ -1273,23 +1273,6 @@ embedMustHaveAltAttribute:
     - "object"
     - "embed"
     - "content"
-embedProvidesMechanismToReturnToParent:
-  testability: 0
-  title:
-    en: "All embed elements should provide a way for keyboard users to escape"
-    nl: "Alle embed-elementen moeten een manier bieden voor toetsenbordgebruikers om het element te verlaten"
-  description:
-    en: "Ensure that a user who has only a keyboard as an input device can escape an <code>embed</code> element. This requires manual confirmation."
-    nl: "Zorg ervoor dat een gebruiker die alleen het toetsenbord gebruikt voor bediening een <code>embed</code>-element kan verlaten. Hiervoor is handmatige bevestiging nodig."
-  guidelines:
-    wcag:
-      2.1.2:
-        techniques:
-          - "G21"
-  tags:
-    - "object"
-    - "embed"
-    - "content"
 emoticonsExcessiveUse:
   testability: 0.5
   title:
