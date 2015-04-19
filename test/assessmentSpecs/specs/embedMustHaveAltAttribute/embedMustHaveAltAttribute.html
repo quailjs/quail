@@ -5,14 +5,12 @@
 </head>
 <body>
 	<div data-expected="fail">
-
-		<embed src="demo.mov" class="quail-failed-element">
+		<embed id="assert-1" src="demo.mov">
 			<noembed>Alternate content for the embed</noembed>
 		</embed>
 	</div>
 	<div data-expected="pass">
-
-		<embed alt="description of the embed" src="demo.mov">
+		<embed id="assert-2" alt="description of the embed" src="demo.mov">
 			<noembed>Alternate content for the embed</noembed>
 		</embed>
 	</div>

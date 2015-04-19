@@ -72,7 +72,7 @@
                 elementAttributesAreValid
                 elementsDoNotHaveDuplicateAttributes
                 embedHasAssociatedNoEmbed
--- tagged --    embedMustHaveAltAttribute
+-- Converted -- embedMustHaveAltAttribute
 -- tagged --    embedMustNotHaveEmptyAlt
 -- tagged --    embedProvidesMechanismToReturnToParent
                 emoticonsExcessiveUse
