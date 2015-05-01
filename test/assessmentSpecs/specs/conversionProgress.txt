@@ -81,7 +81,7 @@
                 focusIndicatorVisible
 -- Converted -- fontIsNotUsed
 -- Converted -- formButtonsHaveValue
--- tagged --    formErrorMessageHelpsUser
+-- Converted -- formErrorMessageHelpsUser
 -- tagged --    formHasGoodErrorMessage
 -- tagged --    formHasSubmitButton
                 formWithRequiredLabel

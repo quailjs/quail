@@ -1,101 +1,82 @@
 <!doctype html>
 <html>
-<head>
+  <head>
     <title>formErrorMessageHelpsUser</title>
-</head>
-<body>
-    <div data-expected="fail">
+  </head>
+  <body>
+    <div data-expected="cantTell">
+      <p>Shown below are the steps required to purchase a concert ticket.</p>
+      <ol>
+        <li>User fills out the form and selects the "submit" button.</li>
+        <li>Data is presented to user with the option to correct data or submit it.</li>
+        <li>If user submits form then credit card is charged for the tickets and tickets are mailed to user.</li>
+      </ol>
 
+      <h1>Step 1 - fill out form</h1>
+
+      <form id="assert-1" action="http://www.test.com">
         <p>
-            Shown below are the steps required to purchase a concert ticket.
+          <label for="concert">concert</label>
+          <select name="concert" id="concert">
+            <option label="Beethoven" value="c1">Beethoven</option>
+            <option label="Mozart" value="c2">Mozart</option>
+            <option label="Mamaday" value="c3">Mamaday</option>
+            <option label="U2" value="c4">U2</option>
+          </select>
+          <br/>
+          <label for="card">credit card:</label>
+          <input type="text" size="30" id="card" name="card"
+          />
+          <br/>
+          <input type="submit" value="submit" />
         </p>
-        <ol>
-            <li>User fills out the form and selects the "submit" button.</li>
-            <li>
-                Data is presented to user with the option to correct data or submit it.
-            </li>
-            <li>
-                If user submits form then credit card is charged for the tickets and tickets
-                are mailed to user.
-            </li>
-        </ol>
+      </form>
 
-        <h1>Step 1 - fill out form</h1>
+      <h1>Step 2 - data is presented to user</h1>
 
-        <form action="http://www.test.com" class="quail-failed-element">
-            <p>
-                <label for="concert">concert</label>
-                <select name="concert" id="concert">
-                    <option label="Beethoven" value="c1">Beethoven</option>
-                    <option label="Mozart" value="c2">Mozart</option>
-                    <option label="Mamaday" value="c3">Mamaday</option>
-                    <option label="U2" value="c4">U2</option>
-                </select>
-                <br/>
-                <label for="card">credit card:</label>
-                <input type="text" size="30" id="card" name="card"
-                />
-                <br/>
-                <input type="submit" value="submit" />
-            </p>
-        </form>
+      <p>Please review the data below. If the data is correct select the "Purchase Ticket" button. If data is not correct then select this link to <a href="http://www.test.com/fix">modify the data</a>.</p>
 
-        <h1>Step 2 - data is presented to user</h1>
-
+      <form id="assert-2" action="http://www.test.com" >
         <p>
-            Please review the data below. If the data is correct select the "Purchase
-            Ticket" button. If data is not correct then select this link to
-            <a href="http://www.test.com/fix">modify the data</a>
-            .
+          <label for="concert">concert</label>
+          <select name="concert" id="concert">
+            <option label="Beethoven" value="c1">Beethoven</option>
+            <option label="Mozart" value="c2" selected="selected">Mozart</option>
+            <option label="Mamaday" value="c3">Mamaday</option>
+            <option label="U2" value="c4">U2</option>
+          </select>
+          <br/>
+          <label for="card">credit card:</label>
+          <input type="text" size="30" id="card" name="card"
+          value="1234xxxxxxx567" />
+          <br/>
+          <input type="submit" value="Purchase Ticket" />
         </p>
-        <form action="http://www.test.com"  class="quail-failed-element">
-            <p>
-                <label for="concert">concert</label>
-                <select name="concert" id="concert">
-                    <option label="Beethoven" value="c1">Beethoven</option>
-                    <option label="Mozart" value="c2" selected="selected">Mozart</option>
-                    <option label="Mamaday" value="c3">Mamaday</option>
-                    <option label="U2" value="c4">U2</option>
-                </select>
-                <br/>
-                <label for="card">credit card:</label>
-                <input type="text" size="30" id="card" name="card"
-                value="1234xxxxxxx567" />
-                <br/>
-                <input type="submit" value="Purchase Ticket" />
-            </p>
-        </form>
+      </form>
     </div>
-    <div data-expected="fail">
-
+    <div data-expected="cantTell">
+      <p>Shown below are the steps required to purchase a concert ticket.</p>
+      <ol>
+        <li>User fills out the form and selects the "submit" button.</li>
+        <li>User's credit card is charged for the tickets and tickets are mailed to user.</li>
+      </ol>
+      <form id="assert-3" action="http://www.test.com">
         <p>
-            Shown below are the steps required to purchase a concert ticket.
+          <label for="concert">concert</label>
+          <select name="concert" id="concert">
+            <option label="Beethoven" value="c1">Beethoven</option>
+            <option label="Mozart" value="c2">Mozart</option>
+            <option label="Mamaday" value="c3">Mamaday</option>
+            <option label="U2" value="c4">U2</option>
+          </select>
+          <br/>
+          <label for="card">credit card:</label>
+          <input type="text" size="30" id="card" name="card"
+          />
+          <br/>
+          <input type="submit" value="submit" />
         </p>
-        <ol>
-            <li>User fills out the form and selects the "submit" button.</li>
-            <li>
-                User's credit card is charged for the tickets and tickets are mailed to
-                user.
-            </li>
-        </ol>
-        <form action="http://www.test.com" class="quail-failed-element">
-            <p>
-                <label for="concert">concert</label>
-                <select name="concert" id="concert">
-                    <option label="Beethoven" value="c1">Beethoven</option>
-                    <option label="Mozart" value="c2">Mozart</option>
-                    <option label="Mamaday" value="c3">Mamaday</option>
-                    <option label="U2" value="c4">U2</option>
-                </select>
-                <br/>
-                <label for="card">credit card:</label>
-                <input type="text" size="30" id="card" name="card"
-                />
-                <br/>
-                <input type="submit" value="submit" />
-            </p>
-        </form>
+      </form>
     </div>
-
-    </body>
+  </body>
 </html>
