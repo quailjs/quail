@@ -79,7 +79,7 @@
 -- Converted -- fileHasLabel
                 fileLabelIsNearby
                 focusIndicatorVisible
--- tagged --    fontIsNotUsed
+-- Converted -- fontIsNotUsed
 -- tagged --    formAllowsCheckIfIrreversable
 -- tagged --    formButtonsHaveValue
 -- tagged --    formDeleteIsReversable

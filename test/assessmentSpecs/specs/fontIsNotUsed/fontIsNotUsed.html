@@ -1,15 +1,11 @@
 <!doctype html>
 <html>
 <head>
-	<title>fontIsNotUsed</title>
+  <title>fontIsNotUsed</title>
 </head>
 <body>
-	<div data-expected="fail">
-		<p>This paragraph has <font size="4" class="quail-failed-element">a font tag</font></p>
-	</div>
-	<div data-expected="pass">
-		<p>This paragraph has no font tag </p>
-	</div>
-
+  <div data-expected="fail">
+    <p>This paragraph has <font id="assert-1" size="4">a font tag</font></p>
+  </div>
   </body>
 </html>
