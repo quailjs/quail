@@ -82,7 +82,7 @@
 -- Converted -- fontIsNotUsed
 -- Converted -- formButtonsHaveValue
 -- Converted -- formErrorMessageHelpsUser
--- tagged --    formHasGoodErrorMessage
+-- Converted -- formHasGoodErrorMessage
 -- tagged --    formHasSubmitButton
                 formWithRequiredLabel
 -- tagged --    frameIsNotUsed

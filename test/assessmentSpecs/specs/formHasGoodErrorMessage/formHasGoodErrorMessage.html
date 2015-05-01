@@ -4,7 +4,7 @@
     <title>formHasGoodErrorMessage</title>
 </head>
 <body>
-    <div data-expected="fail">
+    <div data-expected="cantTell">
 
         <p>
             Assume the form below was submitted to the server and has now been returned
@@ -14,7 +14,7 @@
             Date should be entered as dd mm yyyy (e.g. 30 12
             2006).
         </p>
-        <form action="http://www.test.com" class="quail-failed-element">
+        <form id="assert-1" action="http://www.test.com">
             <p>
                 <label for="date">date:</label>
                 <input type="text" id="firstname" />
@@ -23,7 +23,7 @@
             </p>
         </form>
     </div>
-    <div data-expected="fail">
+    <div data-expected="cantTell">
 
         <p>
             Assume the form below was submitted to the server and has now been returned
@@ -32,7 +32,7 @@
         <p> <strong>Error:</strong>
             Form submission wrong.
         </p>
-        <form action="http://www.test.com" class="quail-failed-element">
+        <form id="assert-2" action="http://www.test.com">
             <p>
                 <label for="date">date:</label>
                 <input type="text" id="firstname" />
