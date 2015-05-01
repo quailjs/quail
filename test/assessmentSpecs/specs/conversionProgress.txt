@@ -80,7 +80,6 @@
                 fileLabelIsNearby
                 focusIndicatorVisible
 -- Converted -- fontIsNotUsed
--- tagged --    formAllowsCheckIfIrreversable
 -- tagged --    formButtonsHaveValue
 -- tagged --    formDeleteIsReversable
 -- tagged --    formErrorMessageHelpsUser

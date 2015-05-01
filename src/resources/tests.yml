@@ -1410,12 +1410,6 @@ fontIsNotUsed:
   tags:
     - "deprecated"
     - "content"
-formAllowsCheckIfIrreversable:
-  testability: 0
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
 formButtonsHaveValue:
   testability: 1
   title:
