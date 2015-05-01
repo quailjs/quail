@@ -1,66 +1,32 @@
 <!doctype html>
 <html>
-<head>
+  <head>
     <title>fileHasLabel</title>
-</head>
-<body>
+  </head>
+  <body>
     <div data-expected="fail">
-
-        <form action="http://somesite.com/prog/adduser" method="post">
-            <p>
-                <input type="file" title="Your File" name="data" tabindex="1" class="quail-failed-element" />
-            </p>
-        </form>
+      <form action="http://somesite.com/prog/adduser" method="post">
+        <input id="assert-1" type="file" title="Your File" name="data" tabindex="1" />
+      </form>
     </div>
     <div data-expected="fail">
-
-        <form action="http://www.test.com/testing" method="post">
-            <p>
-                <input title="student file:" type="file" id="thefile" name="data" tabindex="1" class="quail-failed-element"/>
-            </p>
-        </form>
-    </div>
-    <div data-expected="fail">
-
-        <form action="http://www.test.com/testing" method="post">
-            <p>
-                <label>
-                    student file:
-                    <input type="file" id="thefile" name="data" tabindex="1"/>
-                </label>
-            </p>
-        </form>
-    </div>
-    <div data-expected="fail">
-
-        <form action="http://www.test.com/testing" method="post">
-            <p>
-                <input title="I was walking down the street." type="file" id="thefile" class="quail-failed-element" name="data" tabindex="1" />
-            </p>
-        </form>
-    </div>
-    <div data-expected="fail">
-
-        <form action="http://www.test.com/testing" method="post">
-            <p>
-                <label>
-                    I was walking down the street.
-                    <input type="file" id="thefile" name="data"
-                    tabindex="1" />
-                </label>
-            </p>
-        </form>
+      <form action="http://www.test.com/testing" method="post">
+        <input title="student file:" type="file" id="assert-2" name="data" tabindex="1"/>
+      </form>
     </div>
     <div data-expected="pass">
-
-        <form action="http://www.test.com/testing" method="post">
-            <p>
-                <label for="thefile">I was walking down the street.</label>
-                <input type="file" id="thefile"
-                name="data" tabindex="1" />
-            </p>
-        </form>
+      <form action="http://www.test.com/testing" method="post">
+        <label for="assert-3">I was walking down the street.</label>
+        <input type="file" id="assert-3" name="data" tabindex="1" />
+      </form>
     </div>
-
-    </body>
+    <!-- <div data-expected="cantTell">
+      <form action="http://www.test.com/testing" method="post">
+        <label>
+          student file:
+          <input type="file" id="assert-4" name="data" tabindex="1"/>
+        </label>
+      </form>
+    </div> -->
+  </body>
 </html>

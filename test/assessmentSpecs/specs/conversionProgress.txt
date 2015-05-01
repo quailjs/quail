@@ -76,7 +76,7 @@
                 emoticonsExcessiveUse
                 emoticonsMissingAbbr
                 fieldsetHasLabel
--- tagged --    fileHasLabel
+-- Converted -- fileHasLabel
                 fileLabelIsNearby
                 focusIndicatorVisible
 -- tagged --    fontIsNotUsed
