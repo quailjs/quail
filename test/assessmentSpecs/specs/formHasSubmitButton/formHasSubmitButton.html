@@ -5,25 +5,23 @@
 </head>
 <body>
 	<div data-expected="fail">
-
 		<p>This form is missing a submit button:</p>
-		<form class="quail-failed-element">
+		<form id="assert-1">
 			<label for="search">Search</label>
 			<input type="search" id="search">
 			<button type="reset">Search</button>
 		</form>
 	</div>
 	<div data-expected="fail">
-
 		<p>This form is missing a submit button:</p>
-		<form class="quail-failed-element">
+		<form id="assert-2">
 			<label for="search">Search</label>
 			<input type="search" id="search"></form>
 	</div>
 	<div data-expected="pass">
 
 		<p>This form has a submit button:</p>
-		<form>
+		<form id="assert-3">
 			<label for="search">Search</label>
 			<input type="search" id="search">
 			<button type="submit">Search</button>
@@ -32,7 +30,7 @@
 	<div data-expected="pass">
 
 		<p>This form has a submit button:</p>
-		<form>
+		<form id="assert-4">
 			<label for="search">Search</label>
 			<input type="search" id="search">
 			<input type="submit" value="Search"/>

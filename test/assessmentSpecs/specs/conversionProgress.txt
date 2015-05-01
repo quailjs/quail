@@ -83,7 +83,7 @@
 -- Converted -- formButtonsHaveValue
 -- Converted -- formErrorMessageHelpsUser
 -- Converted -- formHasGoodErrorMessage
--- tagged --    formHasSubmitButton
+-- Converted -- formHasSubmitButton
                 formWithRequiredLabel
 -- tagged --    frameIsNotUsed
 -- tagged --    frameRelationshipsMustBeDescribed
