@@ -81,7 +81,6 @@
                 focusIndicatorVisible
 -- Converted -- fontIsNotUsed
 -- Converted -- formButtonsHaveValue
--- tagged --    formDeleteIsReversable
 -- tagged --    formErrorMessageHelpsUser
 -- tagged --    formHasGoodErrorMessage
 -- tagged --    formHasSubmitButton

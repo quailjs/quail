@@ -1432,18 +1432,6 @@ formButtonsHaveValue:
   tags:
     - "form"
     - "content"
-formDeleteIsReversable:
-  testability: 0
-  title:
-    en: "Deleting items using a form should be reversable"
-    nl: "De verwijdering van een item in een formulier moet ongedaan gemaakt kunnen worden"
-  description:
-    en: "Check that, if a form has the option to delete an item, that the user has a chance to either reverse the delete process, or is asked for confirmation before the item is deleted. This is not something that can be checked through automated testing and requires manual confirmation."
-    nl: "Controleer of een gebruiker de verwijdering van een invoer in een formulier ongedaan kan maken wanneer het mogelijk is om een invoer te verwijderen. Dit kan niet met een automatische test en moet handmatig gecontroleerd en bevestigd worden."
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
 formErrorMessageHelpsUser:
   testability: 0
   title:
