@@ -191,7 +191,6 @@ var quail = {
 
       $.ajax({
         url : url + '/tests.json',
-        async : false,
         dataType : 'json',
         success : function (data) {
           if (typeof data === 'object') {
