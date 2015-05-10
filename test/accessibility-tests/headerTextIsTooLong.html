@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <title>headerTextIsTooLong</title>
+  </head>
+  <body>
+    <div class="quail-test" data-expected="pass" data-accessibility-test="headerTextIsTooLong">
+      <h1>Nice and short headline</h1>
+      <p>Foo bar baz.</p>
+    </div>
+
+    <div class="quail-test" data-expected="fail" data-accessibility-test="headerTextIsTooLong">
+      <h1>This header has a verrry verrry verrry verrry verrry verrry verrry verrry verrry verrry verrry verrry verrry verrry verrry verrry long heading</h1>
+    </div>
+
+    <div class="quail-test" data-expected="pass" data-accessibility-test="headerTextIsTooLong">
+      <h1>                                This
+                                xHeader has a lot of whitespace, but it's still
+                short                                                   </h1>
+    </div>
+
+    <script src="../quail-testrunner.js"></script>
+  </body>
+</html>
