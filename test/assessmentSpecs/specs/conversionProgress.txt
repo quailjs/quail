@@ -1,184 +1,184 @@
--- Converted -- aAdjacentWithSameResourceShouldBeCombined
--- Converted -- aImgAltNotRepetitive
--- Converted -- aInPHasADistinctStyle
--- Converted -- aLinkTextDoesNotBeginWithRedundantWord
--- Converted -- aLinkWithNonText
--- Converted -- aLinksAreSeparatedByPrintableCharacters
--- Converted -- aLinksDontOpenNewWindow
--- Converted -- aLinksNotSeparatedBySymbols
--- Converted -- aLinksToMultiMediaRequireTranscript
--- Converted -- aLinksToSoundFilesNeedTranscripts
--- Converted -- aMultimediaTextAlternative
--- Converted -- aMustContainText
--- Converted -- aMustHaveTitle
--- Converted -- aMustNotHaveJavascriptHref
-                aSuspiciousLinkText
--- Converted -- aTitleDescribesDestination
-                animatedGifMayBePresent
-                appletContainsTextEquivalent
-                appletContainsTextEquivalentInAlt
--- Converted -- appletProvidesMechanismToReturnToParent
--- Converted -- appletTextEquivalentsGetUpdated
--- Converted -- appletUIMustBeAccessible
--- Converted -- appletsDoNotFlicker
--- Converted -- appletsDonotUseColorAlone
--- Converted -- areaAltIdentifiesDestination
--- Converted -- areaAltRefersToText
--- Converted -- areaDontOpenNewWindow
--- Converted -- areaHasAltValue
--- Converted -- areaLinksToSoundFile
-                ariaOrphanedContent
-                audioMayBePresent
--- Converted -- basefontIsNotUsed
--- Converted -- blinkIsNotUsed
--- Converted -- blockquoteNotUsedForIndentation
-                blockquoteUseForQuotations
--- Converted -- boldIsNotUsed
-                buttonDoesNotChangeContextOnFocus
-                buttonHasName
-                checkboxHasLabel
-                checkboxLabelIsNearby
-                closingTagsAreUsed
-                colorBackgroundGradientContrast
-                colorBackgroundImageContrast
-                colorElementBehindBackgroundGradientContrast
-                colorElementBehindBackgroundImageContrast
-                colorElementBehindContrast
-                colorFontContrast
-                contentPositioningShouldNotChangeMeaning
--- Converted -- cssDocumentMakesSenseStyleTurnedOff
-                definitionListsAreUsed
-                doNotUseGraphicalSymbolToConveyInformation
-                doctypeProvided
-                documentAbbrIsUsed
-                documentAcronymsHaveElement
--- Converted -- documentAutoRedirectNotUsed
--- Converted -- documentContentReadableWithoutStylesheets
--- Converted -- documentHasTitleElement
-                documentIDsMustBeUnique
-                documentIsWrittenClearly
-                documentLangIsISO639Standard
--- Converted -- documentLangNotIdentified
--- Converted -- documentMetaNotUsedWithTimeout
--- Converted -- documentReadingDirection
-                documentStrictDocType
--- Converted -- documentTitleDescribesDocument
-                documentTitleIsNotPlaceholder
-                documentTitleIsShort
-                documentTitleNotEmpty
-                documentValidatesToDocType
--- Converted -- documentVisualListsAreMarkedUp
--- Converted -- domOrderMatchesVisualOrder
-                elementAttributesAreValid
-                elementsDoNotHaveDuplicateAttributes
-                embedHasAssociatedNoEmbed
--- Converted -- embedMustHaveAltAttribute
-                emoticonsExcessiveUse
-                emoticonsMissingAbbr
-                fieldsetHasLabel
--- Converted -- fileHasLabel
-                fileLabelIsNearby
-                focusIndicatorVisible
--- Converted -- fontIsNotUsed
--- Converted -- formButtonsHaveValue
--- Converted -- formErrorMessageHelpsUser
--- Converted -- formHasGoodErrorMessage
--- Converted -- formHasSubmitButton
-                formWithRequiredLabel
+- [x] aAdjacentWithSameResourceShouldBeCombined
+- [x] aImgAltNotRepetitive
+- [x] aInPHasADistinctStyle
+- [x] aLinkTextDoesNotBeginWithRedundantWord
+- [x] aLinkWithNonText
+- [x] aLinksAreSeparatedByPrintableCharacters
+- [x] aLinksDontOpenNewWindow
+- [x] aLinksNotSeparatedBySymbols
+- [x] aLinksToMultiMediaRequireTranscript
+- [x] aLinksToSoundFilesNeedTranscripts
+- [x] aMultimediaTextAlternative
+- [x] aMustContainText
+- [x] aMustHaveTitle
+- [x] aMustNotHaveJavascriptHref
+- [ ] aSuspiciousLinkText
+- [x] aTitleDescribesDestination
+- [ ] animatedGifMayBePresent
+- [ ] appletContainsTextEquivalent
+- [ ] appletContainsTextEquivalentInAlt
+- [x] appletProvidesMechanismToReturnToParent
+- [x] appletTextEquivalentsGetUpdated
+- [x] appletUIMustBeAccessible
+- [x] appletsDoNotFlicker
+- [x] appletsDonotUseColorAlone
+- [x] areaAltIdentifiesDestination
+- [x] areaAltRefersToText
+- [x] areaDontOpenNewWindow
+- [x] areaHasAltValue
+- [x] areaLinksToSoundFile
+- [ ] ariaOrphanedContent
+- [ ] audioMayBePresent
+- [x] basefontIsNotUsed
+- [x] blinkIsNotUsed
+- [x] blockquoteNotUsedForIndentation
+- [ ] blockquoteUseForQuotations
+- [x] boldIsNotUsed
+- [ ] buttonDoesNotChangeContextOnFocus
+- [ ] buttonHasName
+- [ ] checkboxHasLabel
+- [ ] checkboxLabelIsNearby
+- [ ] closingTagsAreUsed
+- [ ] colorBackgroundGradientContrast
+- [ ] colorBackgroundImageContrast
+- [ ] colorElementBehindBackgroundGradientContrast
+- [ ] colorElementBehindBackgroundImageContrast
+- [ ] colorElementBehindContrast
+- [ ] colorFontContrast
+- [ ] contentPositioningShouldNotChangeMeaning
+- [x] cssDocumentMakesSenseStyleTurnedOff
+- [ ] definitionListsAreUsed
+- [ ] doNotUseGraphicalSymbolToConveyInformation
+- [ ] doctypeProvided
+- [ ] documentAbbrIsUsed
+- [ ] documentAcronymsHaveElement
+- [x] documentAutoRedirectNotUsed
+- [x] documentContentReadableWithoutStylesheets
+- [x] documentHasTitleElement
+- [ ] documentIDsMustBeUnique
+- [ ] documentIsWrittenClearly
+- [ ] documentLangIsISO639Standard
+- [x] documentLangNotIdentified
+- [x] documentMetaNotUsedWithTimeout
+- [x] documentReadingDirection
+- [ ] documentStrictDocType
+- [x] documentTitleDescribesDocument
+- [ ] documentTitleIsNotPlaceholder
+- [ ] documentTitleIsShort
+- [ ] documentTitleNotEmpty
+- [ ] documentValidatesToDocType
+- [x] documentVisualListsAreMarkedUp
+- [x] domOrderMatchesVisualOrder
+- [ ] elementAttributesAreValid
+- [ ] elementsDoNotHaveDuplicateAttributes
+- [ ] embedHasAssociatedNoEmbed
+- [x] embedMustHaveAltAttribute
+- [ ] emoticonsExcessiveUse
+- [ ] emoticonsMissingAbbr
+- [ ] fieldsetHasLabel
+- [x] fileHasLabel
+- [ ] fileLabelIsNearby
+- [ ] focusIndicatorVisible
+- [x] fontIsNotUsed
+- [x] formButtonsHaveValue
+- [x] formErrorMessageHelpsUser
+- [x] formHasGoodErrorMessage
+- [x] formHasSubmitButton
+- [ ] formWithRequiredLabel
 -- tagged --    frameIsNotUsed
 -- tagged --    frameRelationshipsMustBeDescribed
 -- tagged --    framesAreUsedToGroupContent
 -- tagged --    frameSrcIsAccessible
-                frameTitlesDescribeFunction
+- [ ] frameTitlesDescribeFunction
 -- tagged --    frameTitlesNotEmpty
-                frameTitlesNotPlaceholder
-                framesAreUsedToGroupContent
+- [ ] frameTitlesNotPlaceholder
+- [ ] framesAreUsedToGroupContent
 -- tagged --    framesHaveATitle
 -- tagged --    framesetIsNotUsed
 -- tagged --    framesetMustHaveNoFramesSection
-                headerH1
+- [ ] headerH1
 -- tagged --    headerH1Format
-                headerH2
+- [ ] headerH2
 -- tagged --    headerH2Format
-                headerH3
+- [ ] headerH3
 -- tagged --    headerH3Format
-                headerH4
+- [ ] headerH4
 -- tagged --    headerH4Format
 -- tagged --    headerH5Format
 -- tagged --    headerH6Format
-                headersAttrRefersToATableCell
-                headersHaveText
-                headersUseToMarkSections
-                headersUsedToIndicateMainContent
+- [ ] headersAttrRefersToATableCell
+- [ ] headersHaveText
+- [ ] headersUseToMarkSections
+- [ ] headersUsedToIndicateMainContent
 -- tagged --    iIsNotUsed
-                idRefHasCorrespondingId
-                idrefsHasCorrespondingId
+- [ ] idRefHasCorrespondingId
+- [ ] idrefsHasCorrespondingId
 -- tagged --    iframeMustNotHaveLongdesc
 -- tagged --    imageMapServerSide
 -- tagged --    imgAltEmptyForDecorativeImages
 -- tagged --    imgAltIdentifiesLinkDestination
-                imgAltIsDifferent
+- [ ] imgAltIsDifferent
 -- tagged --    imgAltIsSameInText
-                imgAltIsTooLong
-                imgAltNotEmptyInAnchor
-                imgAltNotPlaceHolder
-                imgAltTextNotRedundant
-                imgGifNoFlicker
+- [ ] imgAltIsTooLong
+- [ ] imgAltNotEmptyInAnchor
+- [ ] imgAltNotPlaceHolder
+- [ ] imgAltTextNotRedundant
+- [ ] imgGifNoFlicker
 -- tagged --    imgHasAlt
-                imgHasLongDesc
-                imgImportantNoSpacerAlt
-                imgMapAreasHaveDuplicateLink
-                imgNonDecorativeHasAlt
+- [ ] imgHasLongDesc
+- [ ] imgImportantNoSpacerAlt
+- [ ] imgMapAreasHaveDuplicateLink
+- [ ] imgNonDecorativeHasAlt
 -- tagged --    imgNotReferredToByColorAlone
 -- tagged --    imgServerSideMapNotUsed
 -- tagged --    imgShouldNotHaveTitle
 -- tagged --    imgWithMapHasUseMap
-                imgWithMathShouldHaveMathEquivalent
-                inputCheckboxHasTabIndex
-                inputCheckboxRequiresFieldset
+- [ ] imgWithMathShouldHaveMathEquivalent
+- [ ] inputCheckboxHasTabIndex
+- [ ] inputCheckboxRequiresFieldset
 -- tagged --    inputDoesNotUseColorAlone
 -- tagged --    inputElementsDontHaveAlt
-                inputFileHasTabIndex
+- [ ] inputFileHasTabIndex
 -- tagged --    inputImageAltIdentifiesPurpose
-                inputImageAltIsNotFileName
-                inputImageAltIsNotPlaceholder
-                inputImageAltIsShort
-                inputImageAltNotRedundant
+- [ ] inputImageAltIsNotFileName
+- [ ] inputImageAltIsNotPlaceholder
+- [ ] inputImageAltIsShort
+- [ ] inputImageAltNotRedundant
 -- tagged --    inputImageHasAlt
 -- tagged --    inputImageNotDecorative
-                inputPasswordHasTabIndex
-                inputRadioHasTabIndex
-                inputSubmitHasTabIndex
-                inputTextHasLabel
-                inputTextHasTabIndex
-                inputTextHasValue
-                inputTextValueNotEmpty
-                inputWithoutLabelHasTitle
-                KINGStrongList
-                KINGUseCurrencyAsSymbol
-                KINGUseLongDateFormat
-                KINGUsePercentageWithSymbol
+- [ ] inputPasswordHasTabIndex
+- [ ] inputRadioHasTabIndex
+- [ ] inputSubmitHasTabIndex
+- [ ] inputTextHasLabel
+- [ ] inputTextHasTabIndex
+- [ ] inputTextHasValue
+- [ ] inputTextValueNotEmpty
+- [ ] inputWithoutLabelHasTitle
+- [ ] KINGStrongList
+- [ ] KINGUseCurrencyAsSymbol
+- [ ] KINGUseLongDateFormat
+- [ ] KINGUsePercentageWithSymbol
 -- tagged --    labelDoesNotContainInput
-                labelMustBeUnique
-                labelMustNotBeEmpty
-                labelsAreAssignedToAnInput
-                languageChangesAreIdentified
-                languageDirAttributeIsUsed
-                languageDirectionPunctuation
-                languageUnicodeDirection
+- [ ] labelMustBeUnique
+- [ ] labelMustNotBeEmpty
+- [ ] labelsAreAssignedToAnInput
+- [ ] languageChangesAreIdentified
+- [ ] languageDirAttributeIsUsed
+- [ ] languageDirectionPunctuation
+- [ ] languageUnicodeDirection
 -- tagged --    legendDescribesListOfChoices
 -- tagged --    legendTextNotEmpty
-                legendTextNotPlaceholder
+- [ ] legendTextNotPlaceholder
 -- tagged --    liDontUseImageForBullet
-                linkDoesNotChangeContextOnFocus
-                linkHasAUniqueContext
+- [ ] linkDoesNotChangeContextOnFocus
+- [ ] linkHasAUniqueContext
 -- tagged --    linkUsedForAlternateContent
 -- tagged --    linkUsedToDescribeNavigation
-                listNotUsedForFormatting
-                listOfLinksUseList
+- [ ] listNotUsedForFormatting
+- [ ] listOfLinksUseList
 -- tagged --    marqueeIsNotUsed
 -- tagged --    menuNotUsedToFormatText
-                newWindowIsOpened
+- [ ] newWindowIsOpened
 -- tagged --    noembedHasEquivalentContent
 -- tagged --    noframesSectionMustHaveTextEquivalent
 -- tagged --    objectContentUsableWhenDisabled
@@ -186,76 +186,76 @@
 -- tagged --    objectDoesNotUseColorAlone
 -- tagged --    objectInterfaceIsAccessible
 -- tagged --    objectLinkToMultimediaHasTextTranscript
-                objectMustContainText
+- [ ] objectMustContainText
 -- tagged --    objectMustHaveEmbed
 -- tagged --    objectMustHaveTitle
-                objectMustHaveValidTitle
+- [ ] objectMustHaveValidTitle
 -- tagged --    objectProvidesMechanismToReturnToParent
 -- tagged --    objectShouldHaveLongDescription
 -- tagged --    objectTextUpdatesWhenObjectChanges
 -- tagged --    objectUIMustBeAccessible
 -- tagged --    objectWithClassIDHasNoText
-                pNotUsedAsHeader
-                paragraphIsWrittenClearly
-                passwordHasLabel
-                passwordLabelIsNearby
-                preShouldNotBeUsedForTabularLayout
-                radioHasLabel
-                radioLabelIsNearby
+- [ ] pNotUsedAsHeader
+- [ ] paragraphIsWrittenClearly
+- [ ] passwordHasLabel
+- [ ] passwordLabelIsNearby
+- [ ] preShouldNotBeUsedForTabularLayout
+- [ ] radioHasLabel
+- [ ] radioLabelIsNearby
 -- tagged --    radioMarkedWithFieldgroupAndLegend
 -- tagged --    scriptContentAccessibleWithScriptsTurnedOff
 -- tagged --    scriptInBodyMustHaveNoscript
-                scriptOnclickRequiresOnKeypress
-                scriptOndblclickRequiresOnKeypress
--- Converted -- scriptOnFocusChangeBackgroundOrBorder
-                scriptOnmousedownRequiresOnKeypress
-                scriptOnmousemove
-                scriptOnmouseoutHasOnmouseblur
-                scriptOnmouseoverHasOnfocus
-                scriptOnmouseupHasOnkeyup
+- [ ] scriptOnclickRequiresOnKeypress
+- [ ] scriptOndblclickRequiresOnKeypress
+- [x] scriptOnFocusChangeBackgroundOrBorder
+- [ ] scriptOnmousedownRequiresOnKeypress
+- [ ] scriptOnmousemove
+- [ ] scriptOnmouseoutHasOnmouseblur
+- [ ] scriptOnmouseoverHasOnfocus
+- [ ] scriptOnmouseupHasOnkeyup
 -- tagged --    scriptUIMustBeAccessible
 -- tagged --    scriptsDoNotFlicker
 -- tagged --    scriptsDoNotUseColorAlone
-                selectDoesNotChangeContext
-                selectHasAssociatedLabel
-                selectJumpMenu
+- [ ] selectDoesNotChangeContext
+- [ ] selectHasAssociatedLabel
+- [ ] selectJumpMenu
 -- tagged --    selectWithOptionsHasOptgroup
-                siteMap
-                skipToContentLinkProvided
+- [ ] siteMap
+- [ ] skipToContentLinkProvided
 -- tagged --    svgContainsTitle
-                tabIndexFollowsLogicalOrder
-                tableAxisHasCorrespondingId
+- [ ] tabIndexFollowsLogicalOrder
+- [ ] tableAxisHasCorrespondingId
 -- tagged --    tableCaptionIdentifiesTable
 -- tagged --    tableComplexHasSummary
 -- tagged --    tableDataShouldHaveTh
-                tableHeaderLabelMustBeTerse
+- [ ] tableHeaderLabelMustBeTerse
 -- tagged --    tableIsGrouped
-                tableLayoutDataShouldNotHaveTh
-                tableLayoutHasNoCaption
-                tableLayoutHasNoSummary
-                tableLayoutMakesSenseLinearized
-                tableNotUsedForLayout
-                tableShouldUseHeaderIDs
+- [ ] tableLayoutDataShouldNotHaveTh
+- [ ] tableLayoutHasNoCaption
+- [ ] tableLayoutHasNoSummary
+- [ ] tableLayoutMakesSenseLinearized
+- [ ] tableNotUsedForLayout
+- [ ] tableShouldUseHeaderIDs
 -- tagged --    tableSummaryDescribesTable
-                tableSummaryDoesNotDuplicateCaption
-                tableSummaryIsEmpty
-                tableSummaryIsNotTooLong
+- [ ] tableSummaryDoesNotDuplicateCaption
+- [ ] tableSummaryIsEmpty
+- [ ] tableSummaryIsNotTooLong
 -- tagged --    tableSummaryIsSufficient
-                tableUseColGroup
-                tableUsesAbbreviationForHeader
+- [ ] tableUseColGroup
+- [ ] tableUsesAbbreviationForHeader
 -- tagged --    tableUsesCaption
-                tableUsesScopeForRow
+- [ ] tableUsesScopeForRow
 -- tagged --    tableWithBothHeadersUseScope
-                tableWithMoreHeadersUseID
-                tabularDataIsInTable
-                tagsAreNestedCorrectly
-                textIsNotSmall
-                textareaHasAssociatedLabel
-                textareaLabelPositionedClose
-                things.txt
-                userInputMayBeRequired
-                videoMayBePresent
+- [ ] tableWithMoreHeadersUseID
+- [ ] tabularDataIsInTable
+- [ ] tagsAreNestedCorrectly
+- [ ] textIsNotSmall
+- [ ] textareaHasAssociatedLabel
+- [ ] textareaLabelPositionedClose
+- [ ] things.txt
+- [ ] userInputMayBeRequired
+- [ ] videoMayBePresent
 -- tagged --    videoProvidesCaptions
-                videosEmbeddedOrLinkedNeedCaptions
-                whiteSpaceInWord
-                whiteSpaceNotUsedForFormatting
+- [ ] videosEmbeddedOrLinkedNeedCaptions
+- [ ] whiteSpaceInWord
+- [ ] whiteSpaceNotUsedForFormatting
