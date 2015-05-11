@@ -22,44 +22,39 @@
     </style>
   </head>
   <body>
-
     <div data-expected="inapplicable">
-        <!-- No link here -->
-    </div>
-
-    <div data-expected="inapplicable">
-        <p><a href="">
+        <p><a id="assert-1" href="">
             A link
         </a></p>
     </div>
 
     <div data-expected="inapplicable">
         <p>Some text
-            <a>with no link</a>
+            <a id="assert-2">with no link</a>
             inside it.</p>
     </div>
 
     <div data-expected="inapplicable">
         <p>Some text
-            <a href="" style="display:none">with no link</a>
+            <a id="assert-3" href="" style="display:none">with no link</a>
             inside it.</p>
     </div>
 
     <div data-expected="inapplicable">
         <div style="display:none"><p>No text
-            <a href="/">with no link</a>
+            <a id="assert-4" href="/">with no link</a>
             inside it.</p></div>
     </div>
 
     <div data-expected="inapplicable">
         <p>Some text with an empty link
-            <a href="/"></a>
+            <a id="assert-5" href="/"></a>
             inside it.</p>
     </div>
 
     <div data-expected="pass">
         <p>Some text
-            <a href="/" style="text-decoration:underline">
+            <a id="assert-6" href="/" style="text-decoration:underline">
                 With a link
             </a>
             inside it.</p>
@@ -67,7 +62,7 @@
 
     <div data-expected="pass">
         <p>Some text
-            <a href="/" style="display:block; margin:1em;">
+            <a id="assert-7" href="/" style="display:block; margin:1em;">
                 With a link
             </a>
             inside it.</p>
@@ -76,14 +71,14 @@
 
     <div data-expected="pass">
         <p>Some text
-            <a href="/" style="position:absolute; top:-1em; right:0;">
+            <a id="assert-8" href="/" style="position:absolute; top:-1em; right:0;">
                 With a link
             </a></p>
     </div>
 
     <div data-expected="pass">
         <p>Some text
-            <a href="/" style="border-bottom:dashed 1px red">
+            <a id="assert-9" href="/" style="border-bottom:dashed 1px red">
                 With a link
             </a>
             inside it.</p>
@@ -93,7 +88,7 @@
         >
         <!-- links with images are probably sufficiently distinguishable -->
         <p>Some text
-            <a href="/">
+            <a id="assert-10" href="/">
                 With a link <img src="" alt=""/>
             </a>
             inside it.</p>
@@ -103,20 +98,20 @@
     <div data-expected="inapplicable">
         <!-- links with images are probably sufficiently distinguishable -->
         <p>
-          <a href="/">Allow multiple links</a>
-          <a href="/">Inside a paragraph</a>
+          <a id="assert-11" href="/">Allow multiple links</a>
+          <a id="assert-12" href="/">Inside a paragraph</a>
         </p>
     </div>
 
     <div data-expected="inapplicable">
         <!-- links with images are probably sufficiently distinguishable -->
         <p>
-          <a href="/">Allow</a> |
-          <a href="/">For</a> -
-          <a href="/">Certain</a> >
-          <a href="/">Types</a> &gt;
-          <a href="/">Of</a> &lt;
-          <a href="/">Separators</a>
+          <a id="assert-13" href="/">Allow</a> |
+          <a id="assert-14" href="/">For</a> -
+          <a id="assert-15" href="/">Certain</a> >
+          <a id="assert-16" href="/">Types</a> &gt;
+          <a id="assert-17" href="/">Of</a> &lt;
+          <a id="assert-18" href="/">Separators</a>
         </p>
     </div>
 
@@ -125,7 +120,7 @@
             with a destinct still, it also passes -->
         <p>Some text
           <span style="background:blue">
-            <a href="/" style="text-decoration:underline">
+            <a id="assert-19" href="/" style="text-decoration:underline">
                       With a link
                   </a></span>
             inside it.</p>
@@ -135,16 +130,16 @@
         <!--The above is also true when it comes from
         native style changes -->
         <p>Some text
-            <strong><a href="/">
+            <strong><a id="assert-20" href="/">
                 With a link
             </a> </strong>,
-            <em><a href="/">
+            <em><a id="assert-21" href="/">
                 With a link
             </a></em> -
-            <b><a href="/">
+            <b><a id="assert-22" href="/">
                 With a link
             </a></b>  ====
-            <u><a href="/">
+            <u><a id="assert-23" href="/">
                 With a link
             </a></u> /
             inside it.</p>
@@ -152,7 +147,7 @@
 
     <div data-expected="fail">
         <p>Some text
-            <a href="/" class="quail-failed-element">
+            <a id="assert-24" href="/" class="quail-failed-element">
                 With a link
             </a>
             inside it.</p>
@@ -160,7 +155,7 @@
 
     <div data-expected="pass">
         <p>Some text
-            <a href="/" style="color:black">
+            <a id="assert-25" href="/" style="color:black">
                 With a link
             </a>
             that is identical.
@@ -169,12 +164,10 @@
 
     <div data-expected="fail">
         <p style="text-decoration:underline">Some text
-            <a href="/" class="quail-failed-element">
+            <a id="assert-26" href="/" class="quail-failed-element">
                 With a link
             </a>
             inside it.</p>
     </div>
-
-    <script src="../quail-testrunner.js"></script>
   </body>
 </html>

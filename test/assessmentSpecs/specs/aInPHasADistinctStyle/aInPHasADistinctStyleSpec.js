@@ -24,7 +24,7 @@ describe('assessment: aInPHasADistinctStyle', function () {
     expect(quailResults.stats.tests).to.equal(1);
   });
   it('should return the correct number of cases', function () {
-    expect(quailResults.stats.cases).to.equal(13);
+    expect(quailResults.stats.cases).to.equal(22);
   });
 
   it('should have correct key under the test results', function () {
@@ -34,6 +34,8 @@ describe('assessment: aInPHasADistinctStyle', function () {
   it('should return the proper assessment for the test', function () {
     cases = quailResults.tests.aInPHasADistinctStyle.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('inapplicable');
+    // This test needs to be adjusted to return inapplicable for a tags without
+    // href attributes.
     // expect(cases).quailGetById('assert-2').to.have.quailStatus('passed');
     // expect(cases).quailGetById('assert-3').to.have.quailStatus('passed');
     // expect(cases).quailGetById('assert-4').to.have.quailStatus('passed');
@@ -43,12 +45,22 @@ describe('assessment: aInPHasADistinctStyle', function () {
     expect(cases).quailGetById('assert-8').to.have.quailStatus('passed');
     expect(cases).quailGetById('assert-9').to.have.quailStatus('passed');
     expect(cases).quailGetById('assert-10').to.have.quailStatus('passed');
-    expect(cases).quailGetById('assert-11').to.have.quailStatus('passed');
-    expect(cases).quailGetById('assert-12').to.have.quailStatus('passed');
-    expect(cases).quailGetById('assert-13').to.have.quailStatus('passed');
-    expect(cases).quailGetById('assert-14').to.have.quailStatus('passed');
-    expect(cases).quailGetById('assert-15').to.have.quailStatus('passed');
-    expect(cases).quailGetById('assert-16').to.have.quailStatus('failed');
-    expect(cases).quailGetById('assert-17').to.have.quailStatus('failed');
+    expect(cases).quailGetById('assert-11').to.have.quailStatus('inapplicable');
+    expect(cases).quailGetById('assert-12').to.have.quailStatus('inapplicable');
+    expect(cases).quailGetById('assert-13').to.have.quailStatus('inapplicable');
+    expect(cases).quailGetById('assert-14').to.have.quailStatus('inapplicable');
+    expect(cases).quailGetById('assert-15').to.have.quailStatus('inapplicable');
+    expect(cases).quailGetById('assert-16').to.have.quailStatus('inapplicable');
+    expect(cases).quailGetById('assert-17').to.have.quailStatus('inapplicable');
+    expect(cases).quailGetById('assert-18').to.have.quailStatus('inapplicable');
+    expect(cases).quailGetById('assert-19').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-20').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-21').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-22').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-23').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-24').to.have.quailStatus('failed');
+    expect(cases).quailGetById('assert-25').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-26').to.have.quailStatus('failed');
+
   });
 });
