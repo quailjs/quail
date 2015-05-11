@@ -2,6 +2,7 @@
   "disallowKeywords": ["with"],
   "disallowMixedSpacesAndTabs": true,
   "disallowMultipleLineBreaks": true,
+  "disallowMultipleSpaces": true,
   "disallowNewlineBeforeBlockStatements": true,
   "disallowQuotedKeysInObjects": "allButReserved",
   "disallowSpaceAfterObjectKeys": true,
