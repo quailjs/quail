@@ -47,7 +47,7 @@ function size (obj) {
  * @see http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
  */
 function escapeRegExp (str) {
-  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 }
 
 page.onConsoleMessage = function (msg) {
