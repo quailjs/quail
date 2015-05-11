@@ -1,5 +1,6 @@
 {
   "disallowKeywords": ["with"],
+  "disallowMixedSpacesAndTabs": true,
   "disallowMultipleLineBreaks": true,
   "disallowNewlineBeforeBlockStatements": true,
   "disallowQuotedKeysInObjects": "allButReserved",
@@ -28,6 +29,7 @@
   "requireDotNotation": true,
   "requireKeywordsOnNewLine": ["else"],
   "requireLineFeedAtFileEnd": true,
+  "requireLineBreakAfterVariableAssignment": true,
   "requireOperatorBeforeLineBreak": [
     "?",
     "=",

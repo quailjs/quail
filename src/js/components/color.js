@@ -226,7 +226,7 @@ quail.components.color = (function () {
 
       if (color.substr(0, 3) === 'rgb') {
         color = color.replace('rgb(', '').replace('rgba(', '').replace(')', '').split(',');
-        return { 
+        return {
           r: color[0],
           g: color[1],
           b: color[2],
