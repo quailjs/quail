@@ -7,6 +7,7 @@ var address = system.args[1];
 var dir = system.args[2];
 var configFilePath = system.args[3]; // Configuration JSON file.
 var outputDir = system.args[4]; // Directory to write output to.
+
 // Run time configurations.
 var config = JSON.parse(fs.read(configFilePath));
 
@@ -40,6 +41,14 @@ function size (obj) {
   }
   return s;
 }
+/**
+ * Escapes strings to pass to RegExp.
+ *
+ * @see http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+ */
+function escapeRegExp (str) {
+  return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+}
 
 page.onConsoleMessage = function (msg) {
   console.log(msg);
@@ -54,23 +63,59 @@ page.onError = function (msg, trace) {
   ], undefined, 2));
 };
 
+// Blocking resource requests by domain or type.
+var blacklists = config.blacklists || {};
+
+function rMapper (str) {
+  var r = escapeRegExp(str);
+  return new RegExp(r, 'i');
+}
+
+var rBlockedDomains = (blacklists.domains || []).map(rMapper);
+var rBlockedTypes = (blacklists.mimetypes || []).map(rMapper);
+var rBlockedHeaders = (blacklists.headers || []).map(rMapper);
+
 page.onResourceRequested = function (requestData, request) {
-  // Block third-party resource requests.
   var blocked = false;
-  var rBlockedDomains = [];
-  var blacklists = config.blacklists || [];
-  blacklists.domains.forEach(function (rDomain) {
-    // Double-escape periods.
-    rDomain.replace(/\./g, '\\\\.');
-    rBlockedDomains.push(new RegExp(rDomain, 'i'));
-  });
+  var reason = '';
+  // Block third-party resource requests from blacklisted domains.
   blocked = rBlockedDomains.some(function (reg) {
     return reg.test(requestData.url);
   });
+  // Block third-party resource requests of specific Accept types.
+  if (blocked) {
+    reason = 'domain';
+  }
+  else {
+    blocked = rBlockedTypes.some(function (reg) {
+      // Get the Accept header value.
+      var accept;
+      (requestData.headers || []).forEach(function (header) {
+        if (header.name.toLowerCase() === 'accept') {
+          accept = header.value;
+        }
+      });
+      return reg.test(accept || '');
+    });
+    if (blocked) {
+      reason = 'type';
+    }
+  }
+  // Block third-party resource requests by Header.
+  if (!blocked) {
+    blocked = rBlockedHeaders.some(function (reg) {
+      return (requestData.headers || []).some(function (header) {
+        return reg.test(header.name);
+      });
+    });
+    if (blocked) {
+      reason = 'header';
+    }
+  }
 
   if (blocked) {
     console.log(JSON.stringify([
-      'BLOCKED',
+      'BLOCKED (' + reason + ')',
       'Requested (' + requestData.method + ')',
       requestData.url
     ]));

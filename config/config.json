@@ -18,7 +18,11 @@
       "gigya.com"
     ],
     "mimetypes": [
-      "jpeg"
+      "application/x-shockwave-flash",
+      "application/(ms)?(word|powerpoint|excel)"
+    ],
+    "headers": [
+      "X-Requested-With"
     ]
   }
 }
