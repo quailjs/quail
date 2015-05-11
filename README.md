@@ -56,6 +56,47 @@ Write the results as a JSON object out to file in an existing directory.
 ./bin/quail evaluate http://placekitten.com -o ./analyses
 ```
 
+You can also pass configurations to the evaluator.
+
+```bash
+./bin/quail evaluate http://placekitten.com -c ~/path/to/myconfig.json -o ./analyses
+```
+
+This is the default set of configurations. Your configurations will replace the defaults.
+
+```json
+{
+  "phantomjs": {
+    "resourceTimeout": 5000
+  },
+  "blacklists": {
+    "domains": [
+      "fbstatic.com",
+      "facebook.com",
+      "twitter.com",
+      "google-analytics.com",
+      "googleadservices.com",
+      "googlesyndication.com",
+      "perfectaudience.com",
+      "typekit.com",
+      "sharethis.com",
+      "doubleclick.com",
+      "optimizely.com",
+      "gigya.com"
+    ],
+    "mimetypes": [
+      "application/x-shockwave-flash",
+      "application/(ms)?(word|powerpoint|excel)"
+    ],
+    "headers": []
+  }
+}
+```
+
+The ```phantomjs``` configurations affect the PhantomJS runtime.
+
+The ```blacklists``` block resource resource requests from PhantomJS by the resource's domain, its mime type or a header name in the request. Currently the only header value that can be blocked is the value of Accept (mime type).
+
 To work on an existing assessment in a browser (so that breakpoints can be set in the console), run the following.
 
 ```bash
