@@ -46,7 +46,6 @@ function validateFilePath (filepath) {
   try {
     stat = fs.statSync(path.join(__dirname, '..', filepath));
     if (stat.isFile()) {
-      debugger;
       return path.join(__dirname, '..', filepath);
     }
   }
@@ -57,7 +56,6 @@ function validateFilePath (filepath) {
   try {
     stat = fs.statSync(filepath);
     if (stat.isFile()) {
-      debugger;
       return filepath;
     }
   }
