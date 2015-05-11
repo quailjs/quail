@@ -99,7 +99,7 @@ else {
 }
 
 // Determine the configuration file path.
-var configFilePath = path.join(__dirname, '..', 'config/phantomjs-config.json');
+var configFilePath = path.join(__dirname, '..', 'config/config.json');
 if (program.config) {
   configFilePath = program.config;
 }

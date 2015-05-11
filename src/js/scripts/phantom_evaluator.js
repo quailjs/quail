@@ -7,10 +7,12 @@ var address = system.args[1];
 var dir = system.args[2];
 var configFilePath = system.args[3]; // Configuration JSON file.
 var outputDir = system.args[4]; // Directory to write output to.
+// Run time configurations.
+var config = JSON.parse(fs.read(configFilePath));
 
 // Create the QtRuntimeObject with the desired configuration. This is the PhantomJS
 // controller object.
-var page = webpage.create(JSON.parse(fs.read(configFilePath)));
+var page = webpage.create(config.phantomjs);
 
 /**
  * Logs the reason for exit; exits Phantom.
@@ -55,24 +57,12 @@ page.onError = function (msg, trace) {
 page.onResourceRequested = function (requestData, request) {
   // Block third-party resource requests.
   var blocked = false;
-  var blockedDomains = [
-    'fbstatic',
-    'facebook',
-    'twitter',
-    'google-analytics',
-    'googleadservices',
-    'googlesyndication',
-    'perfectaudience',
-    'typekit',
-    'sharethis',
-    'doubleclick',
-    'optimizely',
-    'gigya'
-  ];
-  var domainMatcher = '\\.(?:com|net|[a-z]{2,3})';
   var rBlockedDomains = [];
-  blockedDomains.forEach(function (name) {
-    rBlockedDomains.push(new RegExp(name + domainMatcher, 'i'));
+  var blacklists = config.blacklists || [];
+  blacklists.domains.forEach(function (rDomain) {
+    // Double-escape periods.
+    rDomain.replace(/\./g, '\\\\.');
+    rBlockedDomains.push(new RegExp(rDomain, 'i'));
   });
   blocked = rBlockedDomains.some(function (reg) {
     return reg.test(requestData.url);

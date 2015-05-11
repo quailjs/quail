@@ -1,3 +1,24 @@
 {
-  "resourceTimeout": 5000
+  "phantomjs": {
+    "resourceTimeout": 5000
+  },
+  "blacklists": {
+    "domains": [
+      "fbstatic.com",
+      "facebook.com",
+      "twitter.com",
+      "google-analytics.com",
+      "googleadservices.com",
+      "googlesyndication.com",
+      "perfectaudience.com",
+      "typekit.com",
+      "sharethis.com",
+      "doubleclick.com",
+      "optimizely.com",
+      "gigya.com"
+    ],
+    "mimetypes": [
+      "jpeg"
+    ]
+  }
 }
