@@ -19,6 +19,7 @@ program
   .alias('eval')
   .option('-R, --runner <runnerScript>', 'A <runnerScript> that will run the evaluation. Currently there exists \'default\' and \'wcag2\'.', 'default')
   .option('-o, --output [outputDir]', 'An [outputDir] to write the analysis results to', validateOutputDirectory)
+  .option('-c, --config [configFile]', 'A configuration file for the PhantomJS instance', validateFilePath)
   .action(function (url, cmd) {
     quailEvaluate.call(this, url, cmd);
   })
@@ -48,6 +49,7 @@ program
     console.log();
   });
 
+// `generate` sub-command.
 program
   .command('generate <assessmentName>')
   .description('Generate assessment test files for the named assessment.')
@@ -106,5 +108,38 @@ function validateOutputDirectory (val) {
   }
   // If we got this far, then the val is not an existing directory.
   console.error('`' + val + '` is not an existing absolute or relative directory path.');
+  process.exit(1);
+}
+
+/**
+ * Validates the existence of a file.
+ */
+function validateFilePath (filepath) {
+  var stat;
+  // See if it's relative to the project. Make an assumption that paths
+  // are relative to the ROOT of the project, hence the '..'.
+  try {
+    stat = fs.statSync(path.join(__dirname, '..', filepath));
+    if (stat.isFile()) {
+      debugger;
+      return path.join(__dirname, '..', filepath);
+    }
+  }
+  catch (error) {
+    // Nothing to do here.
+  }
+  // Otherwise just use the given file path.
+  try {
+    stat = fs.statSync(filepath);
+    if (stat.isFile()) {
+      debugger;
+      return filepath;
+    }
+  }
+  catch (error) {
+    // Nothing to do here.
+  }
+  // If we got this far, then the filepath is not an existing directory.
+  console.error('`' + filepath + '` is not an existing absolute or relative file path.');
   process.exit(1);
 }

@@ -1,24 +1,50 @@
 <!doctype html>
 <html>
-<head>
-	<title>imgAltNotEmptyInAnchor</title>
-</head>
-<body>
-	<div data-expected="fail">
-		<p>
-			<a href="rex.html">
-				<img src="../assets/rex.jpg" alt="" class="quail-failed-element"/>
-			</a>
-		</p>
-	</div>
+  <head>
+    <title>imgAltNotEmptyInAnchor</title>
+  </head>
+  <body>
+    <div data-expected="fail">
+      <p>
+        <a href="rex.html">
+          <img src="../assets/rex.jpg" alt="" class="quail-failed-element"/>
+        </a>
+      </p>
+    </div>
 
-	<div data-expected="pass">
-		<p>
-			<a href="rex.html">
-				<img src="../assets/rex.jpg" alt="a story about Rex the cat"/>
-			</a>
-		</p>
-	</div>
 
+    <div data-expected="fail">
+      <p>
+        <a href="rex.html">
+          <b><img src="../assets/rex.jpg" alt="" class="quail-failed-element"/></b>
+        </a>
+      </p>
+    </div>
+
+    <div data-expected="pass">
+      <p>
+        <a href="rex.html">
+          <img src="../assets/rex.jpg" alt="a story about Rex the cat"/>
+        </a>
+      </p>
+    </div>
+
+    <div data-expected="pass">
+      <p>
+        <a href="rex.html">
+          <img src="../assets/rex.jpg" alt=""/> <b>a story about Rex the cat</b>
+        </a>
+      </p>
+    </div>
+
+    <div data-expected="pass">
+      <p>
+        <a href="rex.html">
+          <img src="../assets/rex.jpg" alt="a story about Rex the cat"/>
+          <img src="../assets/rex.jpg" alt=""/>
+          <img src="../assets/rex.jpg" alt=""/>
+        </a>
+      </p>
+    </div>
   </body>
 </html>

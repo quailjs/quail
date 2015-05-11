@@ -116,8 +116,11 @@ quail.lib.wcag2.TestAggregator = (function () {
    * @return {Array[Object]}         Array of Asserts
    */
   function getCombinedAssertions (aggregator, tests) {
-    var elms = getCommonElements(tests);
-    var assertions = createAssertionsForEachElement(elms, {
+    // element should already be unique, but some tests have bugs that cause them
+    // not to be. This prevents those problems from escalating
+    var elms = jQuery.unique(getCommonElements(tests));
+
+    var assertions = createAssertionsForEachElement(jQuery.unique(elms), {
       testCase: aggregator.id,
       outcome: {result: 'failed'}
     });
