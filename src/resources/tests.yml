@@ -1500,168 +1500,168 @@ formWithRequiredLabel:
     - "form"
     - "content"
   callback: "formWithRequiredLabel"
-frameIsNotUsed:
-  testability: 1
-  title:
-    en: "Frames are not used"
-    nl: "Gebruik geen frames"
-  description:
-    en: "Frames should not be used to organize a page."
-    nl: "Gebruik geen frames om een pagina te organiseren."
-  guidelines: []
-  tags:
-    - "deprecated"
-    - "frame"
-frameRelationshipsMustBeDescribed:
-  testability: 0.5
-  title:
-    en: "Complex framesets should contain a \"longdesc\" attribute"
-    nl: "Complexe framesets moeten een \"longdesc\"-attribuut bevatten"
-  description:
-    en: "If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames."
-    nl: "Als een <code>frameset</code> drie of meer frames bevat, gebruik dan een \"longdesc\"-attribuut om het doel van de frames te beschrijven."
-  guidelines: []
-  tags:
-    - "deprecated"
-    - "frame"
-framesAreUsedToGroupContent:
-  testability: 0.5
-  title:
-    en: "Use frame elements to group repeated materials"
-    nl: "Gebruik frame-elementen om herhaalde content te groeperen"
-  description:
-    en: "When blocks of repeated content are used on a site, use frames to group content that is the same across pages."
-    nl: "Wanneer blokken content op een site herhaald worden, gebruik dan frames om content die op verschillende pagina's voorkomt te groeperen."
-  guidelines:
-    wcag:
-      2.4.1:
-        techniques:
-          - "H70"
-  tags:
-    - "deprecated"
-    - "frame"
-frameSrcIsAccessible:
-  testability: 0
-  title:
-    en: "The source for each frame is accessible content."
-    nl: "De bron van elk frame is toegankelijke content."
-  description:
-    en: "Each frame should contain accessible content, and contain content accessible to screen readers, like HTML as opposed to an image."
-    nl: "Elk frame moet toegankelijke content bevatten, en content die toegankelijk is voor schermlezers, zoals HTML in tegenstelling tot een afbeelding."
-  guidelines: []
-  tags:
-    - "deprecated"
-    - "frame"
-frameTitlesDescribeFunction:
-  type: "placeholder"
-  testability: 0
-  title:
-    en: "All \"frame\" elements should have a \"title\" attribute that describes the purpose of the frame"
-    nl: "Alle \"frame\" elementen moeten een \"title\"-attribuut hebben dat het doel van het frame beschrijft"
-  description:
-    en: "Each <code>frame</code> elements should have a \"title\" attribute which describes the purpose or function of the frame."
-    nl: "Elk <code>frame</code>-element moet een \"title\"-attribuut hebben dat het doel of de functie van het frame beschrijft."
-  guidelines:
-    wcag:
-      2.4.1:
-        techniques:
-          - "H64"
-  tags:
-    - "deprecated"
-    - "frame"
-  components:
-    - "placeholder"
-  options:
-    attribute: "title"
-    empty: true
-frameTitlesNotEmpty:
-  testability: 1
-  title:
-    en: "Frames cannot have empty \"title\" attributes"
-    nl: "Frames mogen geen leeg \"title\"-attribuut hebben"
-  description:
-    en: "All <code>frame</code> elements must have a valid \"title\" attribute."
-    nl: "Alle <code>frame</code>-elementen moeten een geldig \"title\"-attribuut hebben."
-  guidelines:
-    wcag:
-      2.4.1:
-        techniques:
-          - "H64"
-      4.1.2:
-        techniques:
-          - "H64"
-  tags:
-    - "deprecated"
-    - "frame"
-frameTitlesNotPlaceholder:
-  type: "placeholder"
-  testability: 1
-  title:
-    en: "Frames cannot have \"title\" attributes that are just placeholder text"
-    nl: "Frames mogen geen \"title\"-attribuut hebben met placeholdertekst"
-  description:
-    en: "Frame \"title\" attributes should not be simple placeholder text like \"frame\"."
-    nl: "Frame \"title\"-attributen mogen geen placeholdertekst bevatten zoals \"frame\"."
-  guidelines:
-    wcag:
-      2.4.1:
-        techniques:
-          - "H64"
-      4.1.2:
-        techniques:
-          - "H64"
-  tags:
-    - "deprecated"
-    - "frame"
-  components:
-    - "placeholder"
-  options:
-    attribute: "title"
-framesHaveATitle:
-  testability: 1
-  title:
-    en: "All \"frame\" elements should have a \"title\" attribute"
-    nl: "Alle \"frame\"-elementen moeten een \"title\"-attribuut hebben"
-  description:
-    en: "Each <code>frame</code> elements should have a \"title\" attribute."
-    nl: "Elk <code>frame</code>-elementen moeten een \"title\"-attribuut hebben."
-  guidelines:
-    wcag:
-      2.4.1:
-        techniques:
-          - "H64"
-      4.1.2:
-        techniques:
-          - "H64"
-  tags:
-    - "deprecated"
-    - "frame"
-  options:
-    test: ":not([title])"
-framesetIsNotUsed:
-  testability: 1
-  title:
-    en: "The \"frameset\" element should not be used"
-    nl: "Het \"frameset\"-element wordt niet gebruikt"
-  description:
-    en: "Frames and framesets should not be used to organize content."
-    nl: "Frames en framesets moeten niet gebruikt worden om content te organiseren."
-  guidelines: []
-  tags:
-    - "deprecated"
-    - "frame"
-framesetMustHaveNoFramesSection:
-  testability: 0.5
-  title:
-    en: "All framesets should contain a noframes section"
-    nl: "Alle framesets moeten een noframes-sectie bevatten"
-  description:
-    en: "If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames."
-    nl: "Als een <code>frameset</code> drie of meer frames bevat, gebruik dan een \"longdesc\"-attribuut om het doel van de frames te beschrijven."
-  guidelines: []
-  tags:
-    - "deprecated"
-    - "frame"
+# frameIsNotUsed:
+#   testability: 1
+#   title:
+#     en: "Frames are not used"
+#     nl: "Gebruik geen frames"
+#   description:
+#     en: "Frames should not be used to organize a page."
+#     nl: "Gebruik geen frames om een pagina te organiseren."
+#   guidelines: []
+#   tags:
+#     - "deprecated"
+#     - "frame"
+# frameRelationshipsMustBeDescribed:
+#   testability: 0.5
+#   title:
+#     en: "Complex framesets should contain a \"longdesc\" attribute"
+#     nl: "Complexe framesets moeten een \"longdesc\"-attribuut bevatten"
+#   description:
+#     en: "If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames."
+#     nl: "Als een <code>frameset</code> drie of meer frames bevat, gebruik dan een \"longdesc\"-attribuut om het doel van de frames te beschrijven."
+#   guidelines: []
+#   tags:
+#     - "deprecated"
+#     - "frame"
+# framesAreUsedToGroupContent:
+#   testability: 0.5
+#   title:
+#     en: "Use frame elements to group repeated materials"
+#     nl: "Gebruik frame-elementen om herhaalde content te groeperen"
+#   description:
+#     en: "When blocks of repeated content are used on a site, use frames to group content that is the same across pages."
+#     nl: "Wanneer blokken content op een site herhaald worden, gebruik dan frames om content die op verschillende pagina's voorkomt te groeperen."
+#   guidelines:
+#     wcag:
+#       2.4.1:
+#         techniques:
+#           - "H70"
+#   tags:
+#     - "deprecated"
+#     - "frame"
+# frameSrcIsAccessible:
+#   testability: 0
+#   title:
+#     en: "The source for each frame is accessible content."
+#     nl: "De bron van elk frame is toegankelijke content."
+#   description:
+#     en: "Each frame should contain accessible content, and contain content accessible to screen readers, like HTML as opposed to an image."
+#     nl: "Elk frame moet toegankelijke content bevatten, en content die toegankelijk is voor schermlezers, zoals HTML in tegenstelling tot een afbeelding."
+#   guidelines: []
+#   tags:
+#     - "deprecated"
+#     - "frame"
+# frameTitlesDescribeFunction:
+#   type: "placeholder"
+#   testability: 0
+#   title:
+#     en: "All \"frame\" elements should have a \"title\" attribute that describes the purpose of the frame"
+#     nl: "Alle \"frame\" elementen moeten een \"title\"-attribuut hebben dat het doel van het frame beschrijft"
+#   description:
+#     en: "Each <code>frame</code> elements should have a \"title\" attribute which describes the purpose or function of the frame."
+#     nl: "Elk <code>frame</code>-element moet een \"title\"-attribuut hebben dat het doel of de functie van het frame beschrijft."
+#   guidelines:
+#     wcag:
+#       2.4.1:
+#         techniques:
+#           - "H64"
+#   tags:
+#     - "deprecated"
+#     - "frame"
+#   components:
+#     - "placeholder"
+#   options:
+#     attribute: "title"
+#     empty: true
+# frameTitlesNotEmpty:
+#   testability: 1
+#   title:
+#     en: "Frames cannot have empty \"title\" attributes"
+#     nl: "Frames mogen geen leeg \"title\"-attribuut hebben"
+#   description:
+#     en: "All <code>frame</code> elements must have a valid \"title\" attribute."
+#     nl: "Alle <code>frame</code>-elementen moeten een geldig \"title\"-attribuut hebben."
+#   guidelines:
+#     wcag:
+#       2.4.1:
+#         techniques:
+#           - "H64"
+#       4.1.2:
+#         techniques:
+#           - "H64"
+#   tags:
+#     - "deprecated"
+#     - "frame"
+# frameTitlesNotPlaceholder:
+#   type: "placeholder"
+#   testability: 1
+#   title:
+#     en: "Frames cannot have \"title\" attributes that are just placeholder text"
+#     nl: "Frames mogen geen \"title\"-attribuut hebben met placeholdertekst"
+#   description:
+#     en: "Frame \"title\" attributes should not be simple placeholder text like \"frame\"."
+#     nl: "Frame \"title\"-attributen mogen geen placeholdertekst bevatten zoals \"frame\"."
+#   guidelines:
+#     wcag:
+#       2.4.1:
+#         techniques:
+#           - "H64"
+#       4.1.2:
+#         techniques:
+#           - "H64"
+#   tags:
+#     - "deprecated"
+#     - "frame"
+#   components:
+#     - "placeholder"
+#   options:
+#     attribute: "title"
+# framesHaveATitle:
+#   testability: 1
+#   title:
+#     en: "All \"frame\" elements should have a \"title\" attribute"
+#     nl: "Alle \"frame\"-elementen moeten een \"title\"-attribuut hebben"
+#   description:
+#     en: "Each <code>frame</code> elements should have a \"title\" attribute."
+#     nl: "Elk <code>frame</code>-elementen moeten een \"title\"-attribuut hebben."
+#   guidelines:
+#     wcag:
+#       2.4.1:
+#         techniques:
+#           - "H64"
+#       4.1.2:
+#         techniques:
+#           - "H64"
+#   tags:
+#     - "deprecated"
+#     - "frame"
+#   options:
+#     test: ":not([title])"
+# framesetIsNotUsed:
+#   testability: 1
+#   title:
+#     en: "The \"frameset\" element should not be used"
+#     nl: "Het \"frameset\"-element wordt niet gebruikt"
+#   description:
+#     en: "Frames and framesets should not be used to organize content."
+#     nl: "Frames en framesets moeten niet gebruikt worden om content te organiseren."
+#   guidelines: []
+#   tags:
+#     - "deprecated"
+#     - "frame"
+# framesetMustHaveNoFramesSection:
+#   testability: 0.5
+#   title:
+#     en: "All framesets should contain a noframes section"
+#     nl: "Alle framesets moeten een noframes-sectie bevatten"
+#   description:
+#     en: "If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames."
+#     nl: "Als een <code>frameset</code> drie of meer frames bevat, gebruik dan een \"longdesc\"-attribuut om het doel van de frames te beschrijven."
+#   guidelines: []
+#   tags:
+#     - "deprecated"
+#     - "frame"
 headersAttrRefersToATableCell:
   testability: 1
   title:
