@@ -15,25 +15,53 @@ var conf = require('../config/index.js');
 var Mocha = require('mocha');
 var should = require('should');
 var chai = require('chai');
-var chaiAsPromised = require("chai-as-promised");
+var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var chaiQuail = require('../../lib/customAssertions/chai-quail');
 chai.use(chaiQuail);
 global.expect = chai.expect;
 global.assert = chai.assert;
 
-var mochaRunner, webdriver, _client, assessmentsPromise;
+// HTTP server for testing fixtures like jQuery and Quail.
+var httpServerFixturesPort = 8888;
+var httpServerAssessmentPagesPort = 9999;
+
+var mochaRunner, webdriver, _client, assessmentsPromise, httpServerFixtures, httpServerAssessmentPages;
 
 // Set up test command execution arguments.
 var execOptions = stdio.getopt({
-  'assessment': {key: 'I', args: 1, description: 'A single assessment to run.'}
+  assessment: {
+    key: 'I',
+    args: 1,
+    description: 'A single assessment to run.'
+  }
 });
 
 Q.getUnhandledReasons(function (err) {
   console.error('Caught unhandled reason: ' + err);
 });
 
-process.on('uncaughtException', function(err) {
+/**
+ * Closes the HTTP servers and exits the process.
+ */
+function shutdownTestRunner (err) {
+  if (httpServerFixtures) {
+    httpServerFixtures.close();
+  }
+  if (httpServerAssessmentPages) {
+    httpServerAssessmentPages.close();
+  }
+  if (_client && _client.end) {
+    _client.end();
+  }
+  if (err) {
+    console.error(err);
+    return process.exit(1);
+  }
+  return process.exit(0);
+}
+
+process.on('uncaughtException', function (err) {
   console.error('uncaughtException');
   if (err.code === 'EADDRINUSE') {
     console.error('Oops!');
@@ -53,9 +81,6 @@ var assessmentPagesRoot = path.join(__dirname, 'specs');
 var testConfigPath = path.join(__dirname, '../', 'config');
 var logPath = path.join(__dirname, '../..', 'logs');
 var srcPath = path.join(__dirname, '../../', 'src');
-
-// HTTP server for testing fixtures like jQuery and Quail.
-var httpServerFixturesPort = 8888;
 
 /**
  * Load jQuery and Quail from different places in the repo.
@@ -88,7 +113,7 @@ function serveScriptResource (response, resourcePath) {
 
 // Build a lightweight http server to serve assets for running Quail.
 // Using http instead of httpServer gives us more opportunity to debug requests.
-var httpServerFixtures = http.createServer(function (request, response) {
+httpServerFixtures = http.createServer(function (request, response) {
   var accepts = request.headers.accept;
   var url = request.url;
   var assetPath;
@@ -104,8 +129,7 @@ var httpServerFixtures = http.createServer(function (request, response) {
 .listen(httpServerFixturesPort);
 
 // HTTP server for assessment pages.
-var httpServerAssessmentPagesPort = 9999;
-var httpServerAssessmentPages = httpServer
+httpServerAssessmentPages = httpServer
   .createServer({
     root: assessmentPagesRoot,
     headers: {
@@ -143,51 +167,17 @@ if (!process.env.TRAVIS) {
 webdriver = require('webdriverio');
 
 /**
- * Closes the HTTP servers and exits the process.
- */
-function shutdownTestRunner (err) {
-  if (httpServerFixtures) {
-    httpServerFixtures.close();
-  }
-  if (httpServerAssessmentPages) {
-    httpServerAssessmentPages.close();
-  };
-  if (_client && _client.end) {
-    _client.end();
-  }
-  if (err) {
-    console.error(err);
-    return process.exit(1);
-  }
-  return process.exit(0);
-}
-
-/**
  * Sets up and runs the Specs.
  */
 function runSpecs (assessments) {
   // If we have no assessments to run, shut down the process with an error code.
-  if (Object.keys(assessments) == 0) {
+  if (Object.keys(assessments) === 0) {
     shutdownTestRunner('No tests to run.');
   }
   // Methods available in the Spec runner (e.g. Mocha).
   // @todo Provide these methods through exports and move them into their
   // own file.
   global.quailTestRunner = {
-    noError: function(err) {
-      assert(err === undefined);
-    },
-    checkResult: function(expected) {
-      return function(err, result) {
-        h.noError(err);
-
-        if(expected instanceof Array) {
-          expected.should.containDeep([result]);
-        } else {
-          expected.should.be.exactly(result);
-        }
-      };
-    },
     /**
      * The setup process involves:
      * 1. Initiating a webdriver client for the test suite
@@ -199,7 +189,7 @@ function runSpecs (assessments) {
      *   a. The evaluation of the page either resolves or rejects the promise
      *      object returned to the testing suite by the setup method.
      */
-    setup: function(options) {
+    setup: function (options) {
       var url = options.url;
       var indicatedAssessments = options.assessments;
 
@@ -277,7 +267,9 @@ function runSpecs (assessments) {
         s.src = 'http://localhost:' + httpServerFixturesPort + '/' + filename;
         s.onerror = loadError;
         s.onload = loadSuccess;
-        if (head) head.appendChild(s);
+        if (head) {
+          head.appendChild(s);
+        }
       }
 
       /**
@@ -294,7 +286,10 @@ function runSpecs (assessments) {
         }
 
         function loadSuccess () {
-          if (this.status == 200) {
+          /*jshint validthis: true */
+          // There is no other way to get status. The only argument passed to
+          // this handler is an instance of XMLHttpRequestProgressEvent.
+          if (this.status === 200) {
             finish(this.response);
           }
           else {
@@ -303,7 +298,7 @@ function runSpecs (assessments) {
         }
 
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", 'http://localhost:' + httpServerFixturesPort + '/' + filename, true);
+        xhr.open('GET', 'http://localhost:' + httpServerFixturesPort + '/' + filename, true);
         xhr.onload = loadSuccess;
         xhr.onerror = loadError;
         xhr.send();
@@ -505,7 +500,7 @@ function runSpecs (assessments) {
       mochaRunner.addFile(file);
     });
     mochaRunner.run(shutdownTestRunner);
-  };
+  }
   // Set up the Mocha test runs.
   var specFiles;
   // Run a single test if one is indicated, otherwise, run them all.

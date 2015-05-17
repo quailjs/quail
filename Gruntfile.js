@@ -54,34 +54,14 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'src/js/quail.jquery.js',
-          'src/js/core.js',
+          'lib/quail.jquery.js',
+          'lib/quail.js',
           'src/js/components/*.js',
           'src/js/strings/*.js',
           'lib/assessments/**/*.js',
-          'src/js/lib/*.js',
-          'src/js/lib/wcag/*.js',
-          'src/js/lib/wcag2/*.js'
+          'lib/core/**/*.js'
         ],
         dest: 'dist/quail.jquery.js'
-      },
-      test: {
-        src: [
-          'src/js/quail.jquery.js',
-          'src/js/core.js',
-          'src/js/components/*.js',
-          'src/js/strings/*.js',
-          'lib/assessments/**/*.js',
-          'src/js/lib/*.js',
-          'src/js/lib/wcag/*.js',
-          'src/js/lib/wcag2/*.js'
-        ],
-        dest: 'test/quail-testing.jquery.js',
-        options: {
-          banner: '<%= pkg.options.banner %>' + "\n" + 'var __testQuail = {};(function($) {' + "\n",
-          footer: "\n" + 'window.__testQuail = quail; })(jQuery);',
-          stripBanners: true
-        }
       }
     },
     uglify: {
@@ -113,18 +93,11 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      project_env: [
-        'Gruntfile.js'
-      ],
-      browser_env: [
-        'src/js/components/*.js',
-        'src/js/lib/*.js',
-        'src/js/strings/*.js',
-        'src/js/core.js',
-        'lib/**/*.js'
-      ],
-      cli_env: [
-        'src/js/scripts/*.js'
+      all: [
+        'Gruntfile.js',
+        'src/js/**/*.js',
+        'lib/**/*.js',
+        'test/assessmentSpecs/*.js'
       ]
     },
     watch: {
@@ -204,9 +177,9 @@ module.exports = function(grunt) {
         config: '.jscsrc'
       },
       files: [
-        'src/js/lib/**/*.js',
-        'src/js/*.js',
         'lib/**/*.js',
+        'src/js/*.js',
+        'test/assessmentSpecs/testRunner.js',
         'test/assessmentSpecs/specs/**/*.js'
       ]
     }
