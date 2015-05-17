@@ -86,15 +86,15 @@
 - [x] formHasSubmitButton
 - [ ] formWithRequiredLabel
 - [ ] headerH1
--- tagged --    headerH1Format
+- [x] headerH1Format
 - [ ] headerH2
--- tagged --    headerH2Format
+- [x] headerH2Format
 - [ ] headerH3
--- tagged --    headerH3Format
+- [x] headerH3Format
 - [ ] headerH4
--- tagged --    headerH4Format
--- tagged --    headerH5Format
--- tagged --    headerH6Format
+- [x] headerH4Format
+- [x] headerH5Format
+- [x] headerH6Format
 - [ ] headersAttrRefersToATableCell
 - [ ] headersHaveText
 - [ ] headersUseToMarkSections
