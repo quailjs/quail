@@ -15,7 +15,7 @@
     "quail": "./bin/quail"
   },
   "scripts": {
-    "test": "grunt test --verbose"
+    "test": "grunt test"
   },
   "dependencies": {
     "chai-spies": "^0.5.1",

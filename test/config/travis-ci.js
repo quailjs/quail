@@ -3,7 +3,7 @@ module.exports = {
   port: 80,
   user: process.env.SAUCE_USERNAME,
   key: process.env.SAUCE_ACCESS_KEY,
-  logLevel: 'command',
+  logLevel: 'none',
   waitforTimeout: 1000,
   desiredCapabilities: {
     browserName: (process.env._BROWSER || '').replace(/_/g, ' '),
