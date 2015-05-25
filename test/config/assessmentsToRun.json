@@ -124,7 +124,7 @@
   "imgNotReferredToByColorAlone",
   "imgServerSideMapNotUsed",
   "imgShouldNotHaveTitle",
-  "_imgWithMapHasUseMap",
+  "imgWithMapHasUseMap",
   "_imgWithMathShouldHaveMathEquivalent",
   "_inputCheckboxHasTabIndex",
   "_inputCheckboxRequiresFieldset",

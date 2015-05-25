@@ -121,7 +121,7 @@
 - [x] imgNotReferredToByColorAlone
 - [x] imgServerSideMapNotUsed
 - [x] imgShouldNotHaveTitle
--- tagged --    imgWithMapHasUseMap
+- [x] imgWithMapHasUseMap
 - [ ] imgWithMathShouldHaveMathEquivalent
 - [ ] inputCheckboxHasTabIndex
 - [ ] inputCheckboxRequiresFieldset
