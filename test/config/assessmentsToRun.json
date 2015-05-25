@@ -121,7 +121,7 @@
   "_imgImportantNoSpacerAlt",
   "_imgMapAreasHaveDuplicateLink",
   "_imgNonDecorativeHasAlt",
-  "_imgNotReferredToByColorAlone",
+  "imgNotReferredToByColorAlone",
   "_imgServerSideMapNotUsed",
   "_imgShouldNotHaveTitle",
   "_imgWithMapHasUseMap",

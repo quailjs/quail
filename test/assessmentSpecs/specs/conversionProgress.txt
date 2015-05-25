@@ -118,7 +118,7 @@
 - [ ] imgImportantNoSpacerAlt
 - [ ] imgMapAreasHaveDuplicateLink
 - [ ] imgNonDecorativeHasAlt
--- tagged --    imgNotReferredToByColorAlone
+- [x] imgNotReferredToByColorAlone
 -- tagged --    imgServerSideMapNotUsed
 -- tagged --    imgShouldNotHaveTitle
 -- tagged --    imgWithMapHasUseMap
