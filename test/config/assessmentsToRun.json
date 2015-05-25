@@ -137,7 +137,7 @@
   "_inputImageAltIsShort",
   "_inputImageAltNotRedundant",
   "inputImageHasAlt",
-  "_inputImageNotDecorative",
+  "inputImageNotDecorative",
   "_inputPasswordHasTabIndex",
   "_inputRadioHasTabIndex",
   "_inputSubmitHasTabIndex",

@@ -134,7 +134,7 @@
 - [ ] inputImageAltIsShort
 - [ ] inputImageAltNotRedundant
 - [x] inputImageHasAlt
--- tagged --    inputImageNotDecorative
+- [x] inputImageNotDecorative
 - [ ] inputPasswordHasTabIndex
 - [ ] inputRadioHasTabIndex
 - [ ] inputSubmitHasTabIndex
