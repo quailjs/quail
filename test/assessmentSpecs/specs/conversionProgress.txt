@@ -155,7 +155,7 @@
 - [ ] languageDirAttributeIsUsed
 - [ ] languageDirectionPunctuation
 - [ ] languageUnicodeDirection
--- tagged --    legendDescribesListOfChoices
+- [x] legendDescribesListOfChoices
 -- tagged --    legendTextNotEmpty
 - [ ] legendTextNotPlaceholder
 -- tagged --    liDontUseImageForBullet

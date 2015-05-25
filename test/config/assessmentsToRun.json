@@ -158,7 +158,7 @@
   "_languageDirAttributeIsUsed",
   "_languageDirectionPunctuation",
   "_languageUnicodeDirection",
-  "_legendDescribesListOfChoices",
+  "legendDescribesListOfChoices",
   "_legendTextNotEmpty",
   "_legendTextNotPlaceholder",
   "_liDontUseImageForBullet",
