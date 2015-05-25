@@ -113,7 +113,7 @@
 - [ ] imgAltNotPlaceHolder
 - [ ] imgAltTextNotRedundant
 - [ ] imgGifNoFlicker
--- tagged --    imgHasAlt
+- [x] imgHasAlt
 - [ ] imgHasLongDesc
 - [ ] imgImportantNoSpacerAlt
 - [ ] imgMapAreasHaveDuplicateLink

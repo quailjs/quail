@@ -116,7 +116,7 @@
   "_imgAltNotPlaceHolder",
   "_imgAltTextNotRedundant",
   "_imgGifNoFlicker",
-  "_imgHasAlt",
+  "imgHasAlt",
   "_imgHasLongDesc",
   "_imgImportantNoSpacerAlt",
   "_imgMapAreasHaveDuplicateLink",
