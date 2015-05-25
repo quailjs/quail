@@ -1,31 +1,37 @@
 <!doctype html>
 <html>
 <head>
-	<title>imgServerSideMapNotUsed</title>
+  <title>imgServerSideMapNotUsed</title>
 </head>
 <body>
-	<div data-expected="fail">
+  <div data-expected="fail">
 
-		<p>
-			<img src="../assets/image.gif" alt="image map" ismap class="quail-failed-element"/>
-		</p>
-		<p>
-			To perform this test, you must look at the server-side image map file
+    <p>
+      <img id="assert-1" src="assets/image.gif" alt="image map" ismap />
+    </p>
+    <p>
+      To perform this test, you must look at the server-side image map file
             and determine if the active areas in the image map use available geometric
             shapes.
-		</p>
-	</div>
-	<div data-expected="fail">
+    </p>
+  </div>
+  <div data-expected="fail">
 
-		<p>
-			<img src="../assets/image.gif" alt="image map" ismap class="quail-failed-element"/>
-		</p>
-		<p>
-			To perform this test, you must look at the server-side image map file
+    <p>
+      <img id="assert-2" src="assets/image.gif" alt="image map" ismap />
+    </p>
+    <p>
+      To perform this test, you must look at the server-side image map file
             and determine if the active areas in the image map use available geometric
             shapes.
-		</p>
-	</div>
+    </p>
+  </div>
+
+  <div data-expected="pass">
+    <p>
+      <img id="assert-3" src="assets/image.gif" />
+    </p>
+  </div>
 
   </body>
 </html>
