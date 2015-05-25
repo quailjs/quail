@@ -108,7 +108,7 @@
   "iframeMustNotHaveLongdesc",
   "imageMapServerSide",
   "imgAltEmptyForDecorativeImages",
-  "_imgAltIdentifiesLinkDestination",
+  "imgAltIdentifiesLinkDestination",
   "_imgAltIsDifferent",
   "_imgAltIsSameInText",
   "_imgAltIsTooLong",

@@ -2034,18 +2034,18 @@ imageMapServerSide:
 #   tags:
 #     - "image"
 #     - "content"
-imgAltIdentifiesLinkDestination:
-  testability: 0
-  title:
-    en: "Any image within a link must have \"alt\" text the describes the link destination"
-    nl: "Elke afbeelding binnen een link moet een \"alt\"-tekst hebben die de bestemming van de link beschrijft"
-  description:
-    en: "Any image that is within a link should have an \"alt\" attribute which identifies the destination or purpose of the link."
-    nl: "Elke afbeelding binnen link moet een \"alt\"-tekst hebben die de bestemming of het doel van de link beschrijft."
-  guidelines: []
-  tags:
-    - "image"
-    - "content"
+# imgAltIdentifiesLinkDestination:
+#   testability: 0
+#   title:
+#     en: "Any image within a link must have \"alt\" text the describes the link destination"
+#     nl: "Elke afbeelding binnen een link moet een \"alt\"-tekst hebben die de bestemming van de link beschrijft"
+#   description:
+#     en: "Any image that is within a link should have an \"alt\" attribute which identifies the destination or purpose of the link."
+#     nl: "Elke afbeelding binnen link moet een \"alt\"-tekst hebben die de bestemming of het doel van de link beschrijft."
+#   guidelines: []
+#   tags:
+#     - "image"
+#     - "content"
 imgAltIsDifferent:
   testability: 0.5
   title:
