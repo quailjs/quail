@@ -128,7 +128,7 @@
   "_imgWithMathShouldHaveMathEquivalent",
   "_inputCheckboxHasTabIndex",
   "_inputCheckboxRequiresFieldset",
-  "_inputDoesNotUseColorAlone",
+  "inputDoesNotUseColorAlone",
   "_inputElementsDontHaveAlt",
   "_inputFileHasTabIndex",
   "_inputImageAltIdentifiesPurpose",

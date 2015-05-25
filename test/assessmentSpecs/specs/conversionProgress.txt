@@ -125,7 +125,7 @@
 - [ ] imgWithMathShouldHaveMathEquivalent
 - [ ] inputCheckboxHasTabIndex
 - [ ] inputCheckboxRequiresFieldset
--- tagged --    inputDoesNotUseColorAlone
+- [x] inputDoesNotUseColorAlone
 -- tagged --    inputElementsDontHaveAlt
 - [ ] inputFileHasTabIndex
 -- tagged --    inputImageAltIdentifiesPurpose
