@@ -104,7 +104,7 @@
 - [ ] idrefsHasCorrespondingId
 - [x] iframeMustNotHaveLongdesc
 - [x] imageMapServerSide
--- tagged --    imgAltEmptyForDecorativeImages
+- [x] imgAltEmptyForDecorativeImages
 -- tagged --    imgAltIdentifiesLinkDestination
 - [ ] imgAltIsDifferent
 -- tagged --    imgAltIsSameInText

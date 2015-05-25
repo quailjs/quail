@@ -107,7 +107,7 @@
   "_idrefsHasCorrespondingId",
   "iframeMustNotHaveLongdesc",
   "imageMapServerSide",
-  "_imgAltEmptyForDecorativeImages",
+  "imgAltEmptyForDecorativeImages",
   "_imgAltIdentifiesLinkDestination",
   "_imgAltIsDifferent",
   "_imgAltIsSameInText",
