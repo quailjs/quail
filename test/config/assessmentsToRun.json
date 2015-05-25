@@ -159,7 +159,7 @@
   "_languageDirectionPunctuation",
   "_languageUnicodeDirection",
   "legendDescribesListOfChoices",
-  "_legendTextNotEmpty",
+  "legendTextNotEmpty",
   "_legendTextNotPlaceholder",
   "_liDontUseImageForBullet",
   "_linkDoesNotChangeContextOnFocus",
