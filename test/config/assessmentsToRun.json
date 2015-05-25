@@ -105,7 +105,7 @@
   "iIsNotUsed",
   "_idRefHasCorrespondingId",
   "_idrefsHasCorrespondingId",
-  "_iframeMustNotHaveLongdesc",
+  "iframeMustNotHaveLongdesc",
   "_imageMapServerSide",
   "_imgAltEmptyForDecorativeImages",
   "_imgAltIdentifiesLinkDestination",

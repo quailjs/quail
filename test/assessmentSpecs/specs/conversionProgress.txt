@@ -102,7 +102,7 @@
 - [x] iIsNotUsed
 - [ ] idRefHasCorrespondingId
 - [ ] idrefsHasCorrespondingId
--- tagged --    iframeMustNotHaveLongdesc
+- [x] iframeMustNotHaveLongdesc
 -- tagged --    imageMapServerSide
 -- tagged --    imgAltEmptyForDecorativeImages
 -- tagged --    imgAltIdentifiesLinkDestination
