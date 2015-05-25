@@ -110,7 +110,7 @@
   "imgAltEmptyForDecorativeImages",
   "imgAltIdentifiesLinkDestination",
   "_imgAltIsDifferent",
-  "_imgAltIsSameInText",
+  "imgAltIsSameInText",
   "_imgAltIsTooLong",
   "_imgAltNotEmptyInAnchor",
   "_imgAltNotPlaceHolder",
