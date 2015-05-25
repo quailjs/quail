@@ -131,7 +131,7 @@
   "inputDoesNotUseColorAlone",
   "inputElementsDontHaveAlt",
   "_inputFileHasTabIndex",
-  "_inputImageAltIdentifiesPurpose",
+  "inputImageAltIdentifiesPurpose",
   "_inputImageAltIsNotFileName",
   "_inputImageAltIsNotPlaceholder",
   "_inputImageAltIsShort",

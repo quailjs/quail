@@ -128,7 +128,7 @@
 - [x] inputDoesNotUseColorAlone
 - [x] inputElementsDontHaveAlt
 - [ ] inputFileHasTabIndex
--- tagged --    inputImageAltIdentifiesPurpose
+- [x] inputImageAltIdentifiesPurpose
 - [ ] inputImageAltIsNotFileName
 - [ ] inputImageAltIsNotPlaceholder
 - [ ] inputImageAltIsShort
