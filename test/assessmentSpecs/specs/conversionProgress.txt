@@ -103,7 +103,7 @@
 - [ ] idRefHasCorrespondingId
 - [ ] idrefsHasCorrespondingId
 - [x] iframeMustNotHaveLongdesc
--- tagged --    imageMapServerSide
+- [x] imageMapServerSide
 -- tagged --    imgAltEmptyForDecorativeImages
 -- tagged --    imgAltIdentifiesLinkDestination
 - [ ] imgAltIsDifferent
