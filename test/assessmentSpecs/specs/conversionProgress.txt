@@ -133,7 +133,7 @@
 - [ ] inputImageAltIsNotPlaceholder
 - [ ] inputImageAltIsShort
 - [ ] inputImageAltNotRedundant
--- tagged --    inputImageHasAlt
+- [x] inputImageHasAlt
 -- tagged --    inputImageNotDecorative
 - [ ] inputPasswordHasTabIndex
 - [ ] inputRadioHasTabIndex
