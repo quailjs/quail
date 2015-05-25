@@ -1,22 +1,14 @@
 <!doctype html>
 <html>
-<head>
-	<title>iIsNotUsed</title>
-</head>
-<body>
-	<div data-expected="fail">
-		<p>
-			What she <i class="quail-failed-element">really</i>
-			meant to say was, "This isn't ok, it is <i class="quail-failed-element">excellent</i> !"
-		</p>
-	</div>
-
-	<div data-expected="pass">
-		<p>
-			What she <em>really</em>
-			meant to say was, "This isn't ok, it is <strong>excellent</strong>!"
-		</p>
-	</div>
-
+  <head>
+    <title>iIsNotUsed</title>
+  </head>
+  <body>
+    <div data-expected="fail">
+      <p>
+        What she <i id="assert-1">really</i>
+        meant to say was, "This isn't ok, it is <i id="assert-2">excellent</i> !"
+      </p>
+    </div>
   </body>
 </html>

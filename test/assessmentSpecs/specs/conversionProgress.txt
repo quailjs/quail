@@ -99,7 +99,7 @@
 - [ ] headersHaveText
 - [ ] headersUseToMarkSections
 - [ ] headersUsedToIndicateMainContent
--- tagged --    iIsNotUsed
+- [x] iIsNotUsed
 - [ ] idRefHasCorrespondingId
 - [ ] idrefsHasCorrespondingId
 -- tagged --    iframeMustNotHaveLongdesc
