@@ -120,7 +120,7 @@
 - [ ] imgNonDecorativeHasAlt
 - [x] imgNotReferredToByColorAlone
 - [x] imgServerSideMapNotUsed
--- tagged --    imgShouldNotHaveTitle
+- [x] imgShouldNotHaveTitle
 -- tagged --    imgWithMapHasUseMap
 - [ ] imgWithMathShouldHaveMathEquivalent
 - [ ] inputCheckboxHasTabIndex
