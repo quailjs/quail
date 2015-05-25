@@ -4,8 +4,12 @@
     <title>inputElementsDontHaveAlt</title>
   </head>
   <body>
-
-
-
+    <div data-expected="fail">
+      <form action="http://mysite.com">
+        <p>
+          <input type="image" value="submit" alt="submit the form" />
+        </p>
+      </form>
+    </div>
   </body>
 </html>

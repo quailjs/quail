@@ -129,7 +129,7 @@
   "_inputCheckboxHasTabIndex",
   "_inputCheckboxRequiresFieldset",
   "inputDoesNotUseColorAlone",
-  "_inputElementsDontHaveAlt",
+  "inputElementsDontHaveAlt",
   "_inputFileHasTabIndex",
   "_inputImageAltIdentifiesPurpose",
   "_inputImageAltIsNotFileName",

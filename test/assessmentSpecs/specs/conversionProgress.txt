@@ -126,7 +126,7 @@
 - [ ] inputCheckboxHasTabIndex
 - [ ] inputCheckboxRequiresFieldset
 - [x] inputDoesNotUseColorAlone
--- tagged --    inputElementsDontHaveAlt
+- [x] inputElementsDontHaveAlt
 - [ ] inputFileHasTabIndex
 -- tagged --    inputImageAltIdentifiesPurpose
 - [ ] inputImageAltIsNotFileName
