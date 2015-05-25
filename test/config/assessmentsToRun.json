@@ -150,7 +150,7 @@
   "_KINGUseCurrencyAsSymbol",
   "_KINGUseLongDateFormat",
   "_KINGUsePercentageWithSymbol",
-  "_labelDoesNotContainInput",
+  "labelDoesNotContainInput",
   "_labelMustBeUnique",
   "_labelMustNotBeEmpty",
   "_labelsAreAssignedToAnInput",

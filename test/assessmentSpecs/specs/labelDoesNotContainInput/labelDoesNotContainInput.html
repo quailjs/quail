@@ -6,7 +6,7 @@
 <body>
 	<div data-expected="fail">
 		<form>
-			<label for="name" class="quail-failed-element">
+			<label id="assert-1" for="name">
 				First name:
 				<input type="text" name="firstname" id="name" />
 			</label>
@@ -15,7 +15,7 @@
 
 	<div data-expected="pass">
 		<form>
-			<label for="name">First name:</label>
+			<label id="assert-2" for="name">First name:</label>
 			<input type="text" name="firstname" id="name" />
 		</form>
 	</div>

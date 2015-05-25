@@ -147,7 +147,7 @@
 - [ ] KINGUseCurrencyAsSymbol
 - [ ] KINGUseLongDateFormat
 - [ ] KINGUsePercentageWithSymbol
--- tagged --    labelDoesNotContainInput
+- [x] labelDoesNotContainInput
 - [ ] labelMustBeUnique
 - [ ] labelMustNotBeEmpty
 - [ ] labelsAreAssignedToAnInput
