@@ -168,7 +168,7 @@
 - [x] marqueeIsNotUsed
 - [x] menuNotUsedToFormatText
 - [ ] newWindowIsOpened
--- tagged --    noembedHasEquivalentContent
+- [x] noembedHasEquivalentContent
 -- tagged --    noframesSectionMustHaveTextEquivalent
 -- tagged --    objectContentUsableWhenDisabled
 -- tagged --    objectDoesNotFlicker

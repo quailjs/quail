@@ -171,7 +171,7 @@
   "marqueeIsNotUsed",
   "menuNotUsedToFormatText",
   "_newWindowIsOpened",
-  "_noembedHasEquivalentContent",
+  "noembedHasEquivalentContent",
   "_noframesSectionMustHaveTextEquivalent",
   "_objectContentUsableWhenDisabled",
   "_objectDoesNotFlicker",
