@@ -158,7 +158,7 @@
 - [x] legendDescribesListOfChoices
 - [x] legendTextNotEmpty
 - [ ] legendTextNotPlaceholder
--- tagged --    liDontUseImageForBullet
+- [x] liDontUseImageForBullet
 - [ ] linkDoesNotChangeContextOnFocus
 - [ ] linkHasAUniqueContext
 -- tagged --    linkUsedForAlternateContent
