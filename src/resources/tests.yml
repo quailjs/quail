@@ -3118,18 +3118,18 @@ newWindowIsOpened:
 #   tags:
 #     - "deprecated"
 #     - "frame"
-objectContentUsableWhenDisabled:
-  testability: 0
-  title:
-    en: "When objects are disabled, content should still be available"
-    nl: "Als objecten zijn uitgeschakeld, moet de content nog wel beschikbaar zijn"
-  description:
-    en: "The content within objects should still be available, even if the object is disabled. To do this, place a link to the direct object source within the <code>object</code> tag."
-    nl: "Content binnen objecten moet beschikbaar blijven, ook als het object is uitgeschakeld. Plaats hiervoor een link naar de bron van het object binnen de <code>object</code>-tag."
-  guidelines: []
-  tags:
-    - "objects"
-    - "content"
+# objectContentUsableWhenDisabled:
+#   testability: 0
+#   title:
+#     en: "When objects are disabled, content should still be available"
+#     nl: "Als objecten zijn uitgeschakeld, moet de content nog wel beschikbaar zijn"
+#   description:
+#     en: "The content within objects should still be available, even if the object is disabled. To do this, place a link to the direct object source within the <code>object</code> tag."
+#     nl: "Content binnen objecten moet beschikbaar blijven, ook als het object is uitgeschakeld. Plaats hiervoor een link naar de bron van het object binnen de <code>object</code>-tag."
+#   guidelines: []
+#   tags:
+#     - "objects"
+#     - "content"
 objectDoesNotFlicker:
   testability: 0
   title:

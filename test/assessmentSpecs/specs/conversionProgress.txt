@@ -170,7 +170,7 @@
 - [ ] newWindowIsOpened
 - [x] noembedHasEquivalentContent
 - [x] noframesSectionMustHaveTextEquivalent
--- tagged --    objectContentUsableWhenDisabled
+- [x] objectContentUsableWhenDisabled
 -- tagged --    objectDoesNotFlicker
 -- tagged --    objectDoesNotUseColorAlone
 -- tagged --    objectInterfaceIsAccessible

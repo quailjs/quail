@@ -173,7 +173,7 @@
   "_newWindowIsOpened",
   "noembedHasEquivalentContent",
   "noframesSectionMustHaveTextEquivalent",
-  "_objectContentUsableWhenDisabled",
+  "objectContentUsableWhenDisabled",
   "_objectDoesNotFlicker",
   "_objectDoesNotUseColorAlone",
   "_objectInterfaceIsAccessible",
