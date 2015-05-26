@@ -161,7 +161,7 @@
 - [x] liDontUseImageForBullet
 - [ ] linkDoesNotChangeContextOnFocus
 - [ ] linkHasAUniqueContext
--- tagged --    linkUsedForAlternateContent
+- [x] linkUsedForAlternateContent
 -- tagged --    linkUsedToDescribeNavigation
 - [ ] listNotUsedForFormatting
 - [ ] listOfLinksUseList

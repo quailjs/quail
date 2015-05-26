@@ -164,7 +164,7 @@
   "liDontUseImageForBullet",
   "_linkDoesNotChangeContextOnFocus",
   "_linkHasAUniqueContext",
-  "_linkUsedForAlternateContent",
+  "linkUsedForAlternateContent",
   "_linkUsedToDescribeNavigation",
   "_listNotUsedForFormatting",
   "_listOfLinksUseList",

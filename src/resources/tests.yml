@@ -2996,17 +2996,17 @@ linkHasAUniqueContext:
     - "link"
     - "content"
   callback: "linkHasAUniqueContext"
-linkUsedForAlternateContent:
-  testability: 0
-  title:
-    en: "Use a \"link\" element for alternate content"
-    nl: "Gebruik een \"link\"-element for andersoortige content"
-  description:
-    en: "Documents which contain things like videos, sound, or other forms of media that are not accessible, should provide a <code>link</code> element with a \"rel\" attribute of \"alternate\" in the document header."
-    nl: "Documenten die content zoals video's, geluid of andere niet-toegankelijke vormen van media bevatten, moeten een <code>link</code>-element met een \"rel\"-attribuut of \"alternate\" in de documentheaderlink aanbieden."
-  guidelines: []
-  tags:
-    - "document"
+# linkUsedForAlternateContent:
+#   testability: 0
+#   title:
+#     en: "Use a \"link\" element for alternate content"
+#     nl: "Gebruik een \"link\"-element for andersoortige content"
+#   description:
+#     en: "Documents which contain things like videos, sound, or other forms of media that are not accessible, should provide a <code>link</code> element with a \"rel\" attribute of \"alternate\" in the document header."
+#     nl: "Documenten die content zoals video's, geluid of andere niet-toegankelijke vormen van media bevatten, moeten een <code>link</code>-element met een \"rel\"-attribuut of \"alternate\" in de documentheaderlink aanbieden."
+#   guidelines: []
+#   tags:
+#     - "document"
 linkUsedToDescribeNavigation:
   testability: 1
   title:
