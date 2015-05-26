@@ -166,7 +166,7 @@
 - [ ] listNotUsedForFormatting
 - [ ] listOfLinksUseList
 - [x] marqueeIsNotUsed
--- tagged --    menuNotUsedToFormatText
+- [x] menuNotUsedToFormatText
 - [ ] newWindowIsOpened
 -- tagged --    noembedHasEquivalentContent
 -- tagged --    noframesSectionMustHaveTextEquivalent
