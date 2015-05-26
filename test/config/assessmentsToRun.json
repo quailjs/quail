@@ -165,7 +165,7 @@
   "_linkDoesNotChangeContextOnFocus",
   "_linkHasAUniqueContext",
   "linkUsedForAlternateContent",
-  "_linkUsedToDescribeNavigation",
+  "linkUsedToDescribeNavigation",
   "_listNotUsedForFormatting",
   "_listOfLinksUseList",
   "_marqueeIsNotUsed",

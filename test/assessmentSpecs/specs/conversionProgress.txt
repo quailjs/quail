@@ -162,7 +162,7 @@
 - [ ] linkDoesNotChangeContextOnFocus
 - [ ] linkHasAUniqueContext
 - [x] linkUsedForAlternateContent
--- tagged --    linkUsedToDescribeNavigation
+- [x] linkUsedToDescribeNavigation
 - [ ] listNotUsedForFormatting
 - [ ] listOfLinksUseList
 -- tagged --    marqueeIsNotUsed
