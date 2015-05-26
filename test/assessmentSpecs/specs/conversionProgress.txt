@@ -169,7 +169,7 @@
 - [x] menuNotUsedToFormatText
 - [ ] newWindowIsOpened
 - [x] noembedHasEquivalentContent
--- tagged --    noframesSectionMustHaveTextEquivalent
+- [x] noframesSectionMustHaveTextEquivalent
 -- tagged --    objectContentUsableWhenDisabled
 -- tagged --    objectDoesNotFlicker
 -- tagged --    objectDoesNotUseColorAlone
