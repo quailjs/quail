@@ -1,18 +1,13 @@
 <!doctype html>
 <html>
-<head>
-	<title>marqueeIsNotUsed</title>
-</head>
-<body>
-	<div data-expected="fail">
-		<p>
-			<marquee class="quail-failed-element">this is marquee text</marquee>
-		</p>
-	</div>
-
-	<div data-expected="pass">
-		<p>There is no marquee text in this document.</p>
-	</div>
-
+  <head>
+    <title>marqueeIsNotUsed</title>
+  </head>
+  <body>
+    <div data-expected="fail">
+      <p>
+        <marquee id="assert-1">this is marquee text</marquee>
+      </p>
+    </div>
   </body>
 </html>

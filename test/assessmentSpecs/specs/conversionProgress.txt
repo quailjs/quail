@@ -165,7 +165,7 @@
 - [x] linkUsedToDescribeNavigation
 - [ ] listNotUsedForFormatting
 - [ ] listOfLinksUseList
--- tagged --    marqueeIsNotUsed
+- [x] marqueeIsNotUsed
 -- tagged --    menuNotUsedToFormatText
 - [ ] newWindowIsOpened
 -- tagged --    noembedHasEquivalentContent
