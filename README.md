@@ -145,6 +145,14 @@ _BROWSER=chrome node ./test/assessmentSpecs/testRunner.js
 
 Pull requests should be made against the **master** branch.
 
+We are currently looking for the following types of contritions.
+
+1. Help with our current [Milestone objectives](https://github.com/quailjs/quail/milestones/Refactoring%20to%20a%20Selenium-based%20test%20runner%20and%20Mocha/Chai%20assessment%20tests).
+1. JavaScript enthusiasts who want a chance to build out:
+  1. A dependency injection load pattern: [Replace our load-order-depending spinup with an Inversion of Control pattern](https://github.com/quailjs/quail/issues/297)
+  1. A pub/sub pattern: [Refactor the custom event bubbling code in the core Classes (e.g. TestCollection) to use a real event pub/sub library](https://github.com/quailjs/quail/issues/351)
+  1. Improve an NPM package, better build and test scripts, etc: [Improve the Quail NPM package](https://github.com/quailjs/quail/issues/352)
+
 ## Credits
 
 - Quail is maintained by [Jesse Renée Beach](http://twitter.com/jessebeach)
