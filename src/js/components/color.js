@@ -266,7 +266,7 @@ quail.components.color = (function () {
           colors.cache[cacheKey] = false;
           return false;
         }
-        var bimage = $(element).css('backgroundImage');
+        var bimage = $(element).css('background-image');
         if (bimage && bimage !== 'none' && bimage.search(/^(.*?)gradient(.*?)$/i) !== -1) {
           var gradient = bimage.match(/gradient(\(.*\))/g);
           if (gradient.length > 0) {
