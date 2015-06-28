@@ -1183,8 +1183,8 @@ documentVisualListsAreMarkedUp:
     en: "Visual lists of items are marked using ordered or unordered lists"
     nl: "Lijsten moeten gemarkeerd worden als ordered of unordered lists"
   description:
-    en: "Use the ordered (<code>ol</code>.  or unordered (<code>ul</code>.  elements for lists of items, instead of just using new lines which start with numbers or characters to create a visual list."
-    nl: "Gebruik ordered (<code>ol</code>. of unordered (<code>ul</code>. elementen voor lijsten, in plaats van een nieuwe regel per item aan te maken die je laat beginnen met een nummer of teken om een visuele lijst te maken."
+    en: "Use the ordered (<code>ol</code>) or unordered (<code>ul</code>) elements for lists of items, instead of just using new lines which start with numbers or characters to create a visual list."
+    nl: "Gebruik ordered (<code>ol</code>) of unordered (<code>ul</code>) elementen voor lijsten, in plaats van een nieuwe regel per item aan te maken die je laat beginnen met een nummer of teken om een visuele lijst te maken."
   guidelines:
     wcag:
       1.3.1:
