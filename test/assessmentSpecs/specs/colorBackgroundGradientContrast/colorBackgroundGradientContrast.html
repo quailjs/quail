@@ -6,42 +6,62 @@
     #test-1 p {
       color: #fff;
       padding: 10px;
-      background-image: linear-gradient(to bottom, #de88de, #98afd6);
+      background-image: -webkit-linear-gradient(0deg, #de88de, #98afd6);
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#de88de), color-stop(100%,#98afd6));
+      background-image: -moz-linear-gradient(0deg, #de88de, #98afd6);
+      background-image: -o-linear-gradient(0deg, #de88de, #98afd6);
+      background-image: -ms-linear-gradient(0deg, #de88de, #98afd6);
+      background-image: linear-gradient(0deg, #de88de, #98afd6);
     }
     #test-2 p {
       color: #fff;
       padding: 10px;
-      background-image: linear-gradient(to bottom, #610061, #032966);
+      background-image: -webkit-linear-gradient(0deg, #610061, #032966);
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#610061), color-stop(100%,#032966));
+      background-image: -moz-linear-gradient(0deg, #610061, #032966);
+      background-image: -o-linear-gradient(0deg, #610061, #032966);
+      background-image: -ms-linear-gradient(0deg, #610061, #032966);
+      background-image: linear-gradient(0deg, #610061, #032966);
     }
 
     #test-3 p {
       color: #fff;
       padding: 10px;
-      background-image: linear-gradient(to right, red, #f06d06, rgb(255, 255, 0), green);
+      background-image: -webkit-linear-gradient(to right, #ff0000, #f06d06, #ffff00, #008000);
+      background-image: -webkit-gradient(linear, left top, right top, color-stop(0%,#ff0000), color-stop(25%,#f06d06), color-stop(25%,#f06d06), color-stop(50%,#ffff00), color-stop(75%,#008000), color-stop(100%,#008000));
+      background-image: -moz-linear-gradient(to right, #ff0000, #f06d06, #ffff00, #008000);
+      background-image: -o-linear-gradient(to right, #ff0000, #f06d06, #ffff00, #008000);
+      background-image: -ms-linear-gradient(to right, #ff0000, #f06d06, #ffff00, #008000);
+      background-image: linear-gradient(to right, #ff0000, #f06d06, #ffff00, #008000);
     }
 
     #test-4 {
       color: #fff;
       padding: 10px;
-      background-image: radial-gradient(red, #f06d06, rgb(255, 255, 0), green);
+      background-image: -webkit-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ff0000), color-stop(25%,#f06d06), color-stop(50%,#ffff00), color-stop(75%,#008000), color-stop(100%,#008000));
+      background-image: -moz-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: -o-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: -ms-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
       text-align: center;
     }
   </style>
 </head>
 <body>
-  <div data-expected="colorBackgroundGradientContrast:fail" id="test-1">
+  <div id="test-1" data-expected="fail">
     <p>This test is not readable</p>
   </div>
 
-  <div data-expected="colorBackgroundGradientContrast:pass" id="test-2">
+  <div id="test-2" data-expected="pass">
     <p>This test is readable</p>
   </div>
 
-  <div data-expected="colorBackgroundGradientContrast:fail" id="test-3">
+  <div id="test-3" data-expected="fail">
     <p>This test is not readable</p>
   </div>
 
-  <div data-expected="colorBackgroundGradientContrast:fail" id="test-4">
+  <div id="test-4" data-expected="fail">
     <p>This test is not readable, but on screen it is</p>
   </div>
 

@@ -6,13 +6,23 @@
     #test-1 {
       color: #fff;
       padding: 10px;
-      background-image: radial-gradient(red, #f06d06, rgb(255, 255, 0), green);
+      background-image: -webkit-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ff0000), color-stop(25%,#f06d06), color-stop(50%,#ffff00), color-stop(75%,#008000), color-stop(100%,#008000));
+      background-image: -moz-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: -o-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: -ms-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
       text-align: center;
     }
     #test-2 {
       color: #000;
       padding: 10px;
-      background-image: radial-gradient(red, #f06d06, rgb(255, 255, 0), green);
+      background-image: -webkit-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ff0000), color-stop(25%,#f06d06), color-stop(50%,#ffff00), color-stop(75%,#008000), color-stop(100%,#008000));
+      background-image: -moz-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: -o-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: -ms-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
+      background-image: radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
       text-align: center;
     }
     #test-2 p {
@@ -23,7 +33,12 @@
       padding: 0;
     }
     #test-3 .bck {
-      background-image: linear-gradient(to right, red, #f06d06, rgb(255, 255, 0), green);
+      background-image: -webkit-linear-gradient(to right, #ff0000, #f06d06, #ffff00, #008000);
+      background-image: -webkit-gradient(linear, left top, right top, color-stop(0%,#ff0000), color-stop(25%,#f06d06), color-stop(25%,#f06d06), color-stop(50%,#ffff00), color-stop(75%,#008000), color-stop(100%,#008000));
+      background-image: -moz-linear-gradient(to right, #ff0000, #f06d06, #ffff00, #008000);
+      background-image: -o-linear-gradient(to right, #ff0000, #f06d06, #ffff00, #008000);
+      background-image: -ms-linear-gradient(to right, #ff0000, #f06d06, #ffff00, #008000);
+      background-image: linear-gradient(to right, #ff0000, #f06d06, #ffff00, #008000);
       height: 50px;
       width: 100%;
       position: absolute;
