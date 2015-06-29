@@ -282,6 +282,19 @@ aTitleDescribesDestination:
   tags:
     - "link"
     - "content"
+animatedGifMayBePresent:
+  testability: 1
+  title:
+    en: "Test if a .gif is used on the page. Test if the .gif contains more then one frame"
+    nl: "Test of een .gif afbeelding gebruikt is op de pagina. Test of het .gif bestand uit meer dan één frame bestaat"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "gif"
+  callback: "animatedGifMayBePresent"
 appletContainsTextEquivalent:
   testability: 1
   title:
@@ -507,6 +520,19 @@ ariaOrphanedContent:
     - "aria"
     - "content"
   callback: "ariaOrphanedContent"
+audioMayBePresent:
+  testability: 1
+  title:
+    en: "Audio or object uses a link that points to a file with a video extension"
+    nl: "Audio of object met een link naar een bestand met een video extensie"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "audio"
+  callback: "audioMayBePresent"
 basefontIsNotUsed:
   testability: 1
   title:
@@ -580,6 +606,24 @@ boldIsNotUsed:
   tags:
     - "semantics"
     - "content"
+buttonDoesNotChangeContextOnFocus:
+  type: "event"
+  testability: 1
+  title:
+    en: "Buttons must not contain an \"onfocus\" attribute"
+    nl: "Knoppen bevatten geen \"onfocus\"-attribuut"
+  description:
+    en: "Actions like \"onfocus\" can take control away from users who are trying to navigate the page. Using an \"onfocus\" attribute for things like buttons should be replaced with css."
+    nl: "Acties zoals \"onfocus\" kunnen de controle ontnemen van gebruikers die op een pagina proberen te navigeren. Het gebruik van een \"onfocus\"-attribuut voor zaken als knoppen moet worden vervangen door middel van css."
+  guidelines: []
+  tags:
+    - "form"
+    - "content"
+  components:
+    - "event"
+    - "hasEventListener"
+  options:
+    searchEvent: "onfocus"
 buttonHasName:
   type: "placeholder"
   testability: 1
@@ -864,6 +908,23 @@ definitionListsAreUsed:
   tags:
     - "structure"
   callback: "definitionListsAreUsed"
+doNotUseGraphicalSymbolToConveyInformation:
+  testability: 1
+  title:
+    en: "Using a graphical symbol alone to convey information"
+    nl: "Gebruik van alleen een grafisch symbool om informatie over te brengen"
+  description:
+    en: "The objective of this technique is to show how using a graphical symbol to convey information can make content difficult to comprehend. A graphical symbol may be an image, an image of text or a pictorial or decorative character symbol (glyph) which imparts information nonverbally. Examples of graphical symbols include an image of a red circle with a line through it, a smiley face, or a glyph which represents a check mark, arrow, or other symbol but is not the character with that meaning. Assistive technology users may have difficulty determining the meaning of the graphical symbol. If a graphical symbol is used to convey information, provide an alternative using features of the technology or use a different mechanism that can be marked with an alternative to represent the graphical symbol. For example, an image with a text alternative can be used instead of the glyph."
+    nl: "Het doel van deze techniek is te laten zien dat content moeilijker begrepen kan worden wanneer een grafisch symbool wordt gebruikt om informatie over te brengen. Een grafisch symbool kan een afbeelding, een afbeelding van tekst of een pictogram of decoratief teken zijn (glyph) dat non-verbaal informatie overbrengt. Voorbeelden hiervan zijn een rode cirkel met een lijn erdoorheen, een smiley of een vinkje, pijl of ander symbool dat niet noodzakelijkerwijs een duidelijke betekenis heeft. Gebruikers van hulpprogramma's hebben vaak moeite om de bedoeling van een grafisch symbool te duiden. Als een grafisch symbool gebruikt wordt om informatie over te brengen, biedt dan ook een (tekstueel) alternatief."
+  guidelines:
+    wcag:
+      1.3.3:
+        techniques:
+          - "F26"
+  tags:
+    - "link"
+    - "content"
+  callback: "doNotUseGraphicalSymbolToConveyInformation"
 doctypeProvided:
   testability: 1
   title:
@@ -1230,20 +1291,6 @@ elementAttributesAreValid:
       techniques:
         - "F70"
   callback: "elementAttributesAreValid"
-embedHasAssociatedNoEmbed:
-  testability: 1
-  title:
-    en: "All \"embed\" elements have an associated \"noembed\" element"
-    nl: "Alle \"embed\" elementen moeten een bijbehorend \"noembed\"-element hebben"
-  description:
-    en: "Because some users cannot use the <code>embed</code> element, provide alternative content in a <code>noembed</code> element."
-    nl: "Sommige gebruikers kunnen het <code>embed</code>-element niet gebruiken. Biedt hiervoor alternatieve content aan in een <code>noembed</code>-element."
-  guidelines: []
-  tags:
-    - "object"
-    - "embed"
-    - "content"
-  callback: "embedHasAssociatedNoEmbed"
 elementsDoNotHaveDuplicateAttributes:
   testability: 1
   title:
@@ -1260,6 +1307,20 @@ elementsDoNotHaveDuplicateAttributes:
   libraries:
     - "node-htmlparser/lib/htmlparser.js"
   callback: "elementsDoNotHaveDuplicateAttributes"
+embedHasAssociatedNoEmbed:
+  testability: 1
+  title:
+    en: "All \"embed\" elements have an associated \"noembed\" element"
+    nl: "Alle \"embed\" elementen moeten een bijbehorend \"noembed\"-element hebben"
+  description:
+    en: "Because some users cannot use the <code>embed</code> element, provide alternative content in a <code>noembed</code> element."
+    nl: "Sommige gebruikers kunnen het <code>embed</code>-element niet gebruiken. Biedt hiervoor alternatieve content aan in een <code>noembed</code>-element."
+  guidelines: []
+  tags:
+    - "object"
+    - "embed"
+    - "content"
+  callback: "embedHasAssociatedNoEmbed"
 embedMustHaveAltAttribute:
   testability: 1
   title:
@@ -1662,20 +1723,6 @@ formWithRequiredLabel:
 #   tags:
 #     - "deprecated"
 #     - "frame"
-headersAttrRefersToATableCell:
-  testability: 1
-  title:
-    en: "Table cell headers attrtibutes must within the same table have an associated data cell with the same id"
-    nl: "Tabel cellen met een headers attribuut moeten binnen dezelfde tabel een overeenkomende data cel hebben in het id attribuut dezelfde waarde"
-  description:
-    en: ""
-    nl: ""
-  guidelines: []
-  tags:
-    - "headers"
-    - "td"
-    - "th"
-  callback: "headersAttrRefersToATableCell"
 headerH1:
   type: "headingLevel"
   testability: 0
@@ -1866,6 +1913,20 @@ headerH6Format:
     - "content"
   options:
     selector: "h6"
+headersAttrRefersToATableCell:
+  testability: 1
+  title:
+    en: "Table cell headers attrtibutes must within the same table have an associated data cell with the same id"
+    nl: "Tabel cellen met een headers attribuut moeten binnen dezelfde tabel een overeenkomende data cel hebben in het id attribuut dezelfde waarde"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "headers"
+    - "td"
+    - "th"
+  callback: "headersAttrRefersToATableCell"
 headerTextIsTooLong:
   type: "custom"
   testability: 1
@@ -1908,23 +1969,6 @@ headersHaveText:
   options:
     content: true
     empty: true
-headersUsedToIndicateMainContent:
-  testability: 0.5
-  title:
-    en: "Use header to indicate start of main content"
-    nl: "Gebruik headers om de start van belangrijke content aan te geven"
-  description:
-    en: "For every main content area, indicate the beginning of the main content using a header."
-    nl: "Geef het begin van de belangrijkste content in elk contentvlak aan door middel van een header."
-  guidelines:
-    wcag:
-      2.4.1:
-        techniques:
-          - "H69"
-  tags:
-    - "header"
-    - "content"
-  callback: "headersUsedToIndicateMainContent"
 headersUseToMarkSections:
   testability: 0.5
   title:
@@ -1946,6 +1990,35 @@ headersUseToMarkSections:
     - "header"
     - "content"
   callback: "headersUseToMarkSections"
+headersUsedToIndicateMainContent:
+  testability: 0.5
+  title:
+    en: "Use header to indicate start of main content"
+    nl: "Gebruik headers om de start van belangrijke content aan te geven"
+  description:
+    en: "For every main content area, indicate the beginning of the main content using a header."
+    nl: "Geef het begin van de belangrijkste content in elk contentvlak aan door middel van een header."
+  guidelines:
+    wcag:
+      2.4.1:
+        techniques:
+          - "H69"
+  tags:
+    - "header"
+    - "content"
+  callback: "headersUsedToIndicateMainContent"
+iIsNotUsed:
+  testability: 1
+  title:
+    en: "The \"i\" (italic) element is not used"
+    nl: "Het \"i\"-element (cursief) wordt niet gebruikt"
+  description:
+    en: "The <code>i</code> (italic) element provides no emphasis for non-sighted readers. Use the <code>em</code> tag instead."
+    nl: "Het <code>i</code>-element biedt geen nadruk voor slechtziende en blinde lezers. Gebruik in plaats daarvan de <code>em</code>-tag."
+  guidelines: []
+  tags:
+    - "deprecated"
+    - "content"
 idRefHasCorrespondingId:
   testability: 1
   title:
@@ -1980,18 +2053,6 @@ idrefsHasCorrespondingId:
         techniques:
           - "F17"
   callback: "idrefsHasCorrespondingId"
-iIsNotUsed:
-  testability: 1
-  title:
-    en: "The \"i\" (italic) element is not used"
-    nl: "Het \"i\"-element (cursief) wordt niet gebruikt"
-  description:
-    en: "The <code>i</code> (italic) element provides no emphasis for non-sighted readers. Use the <code>em</code> tag instead."
-    nl: "Het <code>i</code>-element biedt geen nadruk voor slechtziende en blinde lezers. Gebruik in plaats daarvan de <code>em</code>-tag."
-  guidelines: []
-  tags:
-    - "deprecated"
-    - "content"
 iframeMustNotHaveLongdesc:
   testability: 1
   title:
@@ -2829,25 +2890,6 @@ labelsAreAssignedToAnInput:
     - "form"
     - "content"
   callback: "labelsAreAssignedToAnInput"
-languageDirAttributeIsUsed:
-  testability: 0.5
-  title:
-    en: "Use the dir attribute when the language direction changes"
-    nl: "Gebruik het dir-attribuut als de richting van de taal verandert"
-  description:
-    en: "When there are nested directional changes in text, use an inline element with a <code>dir</code> attribute to indicate direction."
-    nl: "Gebruik een inline element met een <code>dir</code>-attribuut om richting aan te geven wanneer er geneste richtingsveranderingen in de tekst zijn."
-  guidelines:
-    wcag:
-      1.3.2:
-        techniques:
-          - "H56"
-  tags:
-    - "language"
-    - "content"
-  callback: "languageDirAttributeIsUsed"
-  components:
-    - "language"
 languageChangesAreIdentified:
   testability: 0.5
   title:
@@ -2865,6 +2907,25 @@ languageChangesAreIdentified:
     - "language"
     - "content"
   callback: "languageChangesAreIdentified"
+  components:
+    - "language"
+languageDirAttributeIsUsed:
+  testability: 0.5
+  title:
+    en: "Use the dir attribute when the language direction changes"
+    nl: "Gebruik het dir-attribuut als de richting van de taal verandert"
+  description:
+    en: "When there are nested directional changes in text, use an inline element with a <code>dir</code> attribute to indicate direction."
+    nl: "Gebruik een inline element met een <code>dir</code>-attribuut om richting aan te geven wanneer er geneste richtingsveranderingen in de tekst zijn."
+  guidelines:
+    wcag:
+      1.3.2:
+        techniques:
+          - "H56"
+  tags:
+    - "language"
+    - "content"
+  callback: "languageDirAttributeIsUsed"
   components:
     - "language"
 languageDirectionPunctuation:
@@ -2983,6 +3044,24 @@ liDontUseImageForBullet:
   tags:
     - "list"
     - "content"
+linkDoesNotChangeContextOnFocus:
+  type: "event"
+  testability: 1
+  title:
+    en: "Link elements must not contain an \"onfocus\" attribute"
+    nl: "Link-elementen bevatten geen \"onfocus\"-attribuut"
+  description:
+    en: "Actions like \"onfocus\" can take control away from users who are trying to navigate the page. Using an \"onfocus\" attribute for things like links should be replaced with css."
+    nl: "Acties zoals \"onfocus\" kunnen de controle ontnemen van gebruikers die op een pagina proberen te navigeren. Het gebruik van een \"onfocus\"-attribuut voor zaken als links moet worden vervangen door middel van css."
+  guidelines: []
+  tags:
+    - "form"
+    - "content"
+  components:
+    - "event"
+    - "hasEventListener"
+  options:
+    searchEvent: "onfocus"
 linkHasAUniqueContext:
   testability: 1
   title:
@@ -3499,29 +3578,29 @@ radioMarkedWithFieldgroupAndLegend:
   tags:
     - "form"
     - "content"
-# scriptFocusIndicatorVisible:
-#   type: "custom"
-#   title:
-#     en: "Script focus indicators have high visibility"
-#     nl: "Script focus indicatoren zijn goed zichtbaar"
-#   description:
-#     en: "When a focus indicator is used with script, it should have enough contrast with the background and big enough to be highly visible."
-#     nl: "Wanneer je een focus indicator gebruikt met script, moet het contrast tussen de indicator en de achtergrond groot genoeg zijn in verband met de zichtbaarheid."
-#   guidelines:
-#     wcag:
-#       2.4.7:
-#         techniques:
-#           - "C15"
-#           - "G165"
-#           - "G195"
-#           - "SCR31"
-#   tags:
-#     - "focus"
-#     - "content"
-#   components:
-#     - "color"
-#     - "convertToPx"
-#   callback: "scriptFocusIndicatorVisible"
+scriptFocusIndicatorVisible:
+  type: "custom"
+  title:
+    en: "Script focus indicators have high visibility"
+    nl: "Script focus indicatoren zijn goed zichtbaar"
+  description:
+    en: "When a focus indicator is used with script, it should have enough contrast with the background and big enough to be highly visible."
+    nl: "Wanneer je een focus indicator gebruikt met script, moet het contrast tussen de indicator en de achtergrond groot genoeg zijn in verband met de zichtbaarheid."
+  guidelines:
+    wcag:
+      2.4.7:
+        techniques:
+          - "C15"
+          - "G165"
+          - "G195"
+          - "SCR31"
+  tags:
+    - "focus"
+    - "content"
+  components:
+    - "color"
+    - "convertToPx"
+  callback: "scriptFocusIndicatorVisible"
 scriptContentAccessibleWithScriptsTurnedOff:
   testability: 0
   title:
@@ -3964,6 +4043,22 @@ svgContainsTitle:
     - "image"
     - "svg"
     - "content"
+tabIndexFollowsLogicalOrder:
+  testability: 0.5
+  title:
+    en: "The tab order of a document is logical"
+    nl: "De tabvolgorde van een document is logisch"
+  description:
+    en: "Check that the tab order of a page is logical."
+    nl: "Controleer of de tabvolgorde van een pagina logisch is."
+  guidelines:
+    wcag:
+      2.4.3:
+        techniques:
+          - "H4"
+  tags:
+    - "document"
+  callback: "tabIndexFollowsLogicalOrder"
 tableAxisHasCorrespondingId:
   testability: 1
   title:
@@ -3981,22 +4076,6 @@ tableAxisHasCorrespondingId:
         techniques:
           - "F17"
   callback: "tableAxisHasCorrespondingId"
-tabIndexFollowsLogicalOrder:
-  testability: 0.5
-  title:
-    en: "The tab order of a document is logical"
-    nl: "De tabvolgorde van een document is logisch"
-  description:
-    en: "Check that the tab order of a page is logical."
-    nl: "Controleer of de tabvolgorde van een pagina logisch is."
-  guidelines:
-    wcag:
-      2.4.3:
-        techniques:
-          - "H4"
-  tags:
-    - "document"
-  callback: "tabIndexFollowsLogicalOrder"
 tableCaptionIdentifiesTable:
   testability: 0
   title:
@@ -4441,6 +4520,32 @@ textareaLabelPositionedClose:
     - "content"
   components:
     - "labelProximity"
+userInputMayBeRequired:
+  testability: 1
+  title:
+    en: "Test if user input is required"
+    nl: "Test of er invoervelden zijn"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "form"
+    - "input"
+  callback: "userInputMayBeRequired"
+videoMayBePresent:
+  testability: 1
+  title:
+    en: "Video or object uses a link that points to a file with a video extension"
+    nl: "Video of object met een link naar een bestand met een video extensie"
+  description:
+    en: ""
+    nl: ""
+  guidelines: []
+  tags:
+    - "link"
+    - "video"
+  callback: "videoMayBePresent"
 videoProvidesCaptions:
   testability: 0.5
   title:
@@ -4519,59 +4624,6 @@ whiteSpaceNotUsedForFormatting:
   tags:
     - "content"
   callback: "whiteSpaceNotUsedForFormatting"
-doNotUseGraphicalSymbolToConveyInformation:
-  testability: 1
-  title:
-    en: "Using a graphical symbol alone to convey information"
-    nl: "Gebruik van alleen een grafisch symbool om informatie over te brengen"
-  description:
-    en: "The objective of this technique is to show how using a graphical symbol to convey information can make content difficult to comprehend. A graphical symbol may be an image, an image of text or a pictorial or decorative character symbol (glyph) which imparts information nonverbally. Examples of graphical symbols include an image of a red circle with a line through it, a smiley face, or a glyph which represents a check mark, arrow, or other symbol but is not the character with that meaning. Assistive technology users may have difficulty determining the meaning of the graphical symbol. If a graphical symbol is used to convey information, provide an alternative using features of the technology or use a different mechanism that can be marked with an alternative to represent the graphical symbol. For example, an image with a text alternative can be used instead of the glyph."
-    nl: "Het doel van deze techniek is te laten zien dat content moeilijker begrepen kan worden wanneer een grafisch symbool wordt gebruikt om informatie over te brengen. Een grafisch symbool kan een afbeelding, een afbeelding van tekst of een pictogram of decoratief teken zijn (glyph) dat non-verbaal informatie overbrengt. Voorbeelden hiervan zijn een rode cirkel met een lijn erdoorheen, een smiley of een vinkje, pijl of ander symbool dat niet noodzakelijkerwijs een duidelijke betekenis heeft. Gebruikers van hulpprogramma's hebben vaak moeite om de bedoeling van een grafisch symbool te duiden. Als een grafisch symbool gebruikt wordt om informatie over te brengen, biedt dan ook een (tekstueel) alternatief."
-  guidelines:
-    wcag:
-      1.3.3:
-        techniques:
-          - "F26"
-  tags:
-    - "link"
-    - "content"
-  callback: "doNotUseGraphicalSymbolToConveyInformation"
-linkDoesNotChangeContextOnFocus:
-  type: "event"
-  testability: 1
-  title:
-    en: "Link elements must not contain an \"onfocus\" attribute"
-    nl: "Link-elementen bevatten geen \"onfocus\"-attribuut"
-  description:
-    en: "Actions like \"onfocus\" can take control away from users who are trying to navigate the page. Using an \"onfocus\" attribute for things like links should be replaced with css."
-    nl: "Acties zoals \"onfocus\" kunnen de controle ontnemen van gebruikers die op een pagina proberen te navigeren. Het gebruik van een \"onfocus\"-attribuut voor zaken als links moet worden vervangen door middel van css."
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
-  components:
-    - "event"
-    - "hasEventListener"
-  options:
-    searchEvent: "onfocus"
-buttonDoesNotChangeContextOnFocus:
-  type: "event"
-  testability: 1
-  title:
-    en: "Buttons must not contain an \"onfocus\" attribute"
-    nl: "Knoppen bevatten geen \"onfocus\"-attribuut"
-  description:
-    en: "Actions like \"onfocus\" can take control away from users who are trying to navigate the page. Using an \"onfocus\" attribute for things like buttons should be replaced with css."
-    nl: "Acties zoals \"onfocus\" kunnen de controle ontnemen van gebruikers die op een pagina proberen te navigeren. Het gebruik van een \"onfocus\"-attribuut voor zaken als knoppen moet worden vervangen door middel van css."
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
-  components:
-    - "event"
-    - "hasEventListener"
-  options:
-    searchEvent: "onfocus"
 KINGStrongList:
   testability: 1
   title:
@@ -4582,6 +4634,16 @@ KINGStrongList:
   tags:
     - "KING"
   callback: "KINGStrongList"
+KINGUseCurrencyAsSymbol:
+  testability: 1
+  title:
+    en: "Use a symbol for a currency"
+  description:
+    en: "Only use symbol and currency name instead of common name such as € or EUR."
+  guidelines: []
+  tags:
+    - "KING"
+  callback: "KINGUseCurrencyAsSymbol"
 KINGUseLongDateFormat:
   testability: 1
   title:
@@ -4602,65 +4664,3 @@ KINGUsePercentageWithSymbol:
   tags:
     - "KING"
   callback: "KINGUsePercentageWithSymbol"
-KINGUseCurrencyAsSymbol:
-  testability: 1
-  title:
-    en: "Use a symbol for a currency"
-  description:
-    en: "Only use symbol and currency name instead of common name such as € or EUR."
-  guidelines: []
-  tags:
-    - "KING"
-  callback: "KINGUseCurrencyAsSymbol"
-videoMayBePresent:
-  testability: 1
-  title:
-    en: "Video or object uses a link that points to a file with a video extension"
-    nl: "Video of object met een link naar een bestand met een video extensie"
-  description:
-    en: ""
-    nl: ""
-  guidelines: []
-  tags:
-    - "link"
-    - "video"
-  callback: "videoMayBePresent"
-audioMayBePresent:
-  testability: 1
-  title:
-    en: "Audio or object uses a link that points to a file with a video extension"
-    nl: "Audio of object met een link naar een bestand met een video extensie"
-  description:
-    en: ""
-    nl: ""
-  guidelines: []
-  tags:
-    - "link"
-    - "audio"
-  callback: "audioMayBePresent"
-animatedGifMayBePresent:
-  testability: 1
-  title:
-    en: "Test if a .gif is used on the page. Test if the .gif contains more then one frame"
-    nl: "Test of een .gif afbeelding gebruikt is op de pagina. Test of het .gif bestand uit meer dan één frame bestaat"
-  description:
-    en: ""
-    nl: ""
-  guidelines: []
-  tags:
-    - "link"
-    - "gif"
-  callback: "animatedGifMayBePresent"
-userInputMayBeRequired:
-  testability: 1
-  title:
-    en: "Test if user input is required"
-    nl: "Test of er invoervelden zijn"
-  description:
-    en: ""
-    nl: ""
-  guidelines: []
-  tags:
-    - "form"
-    - "input"
-  callback: "userInputMayBeRequired"
