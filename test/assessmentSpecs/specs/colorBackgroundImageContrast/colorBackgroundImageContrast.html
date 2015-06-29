@@ -4,7 +4,7 @@
   <title>colorBackgroundImageContrast</title>
   <style>
     #test-1 {
-      background-image: url('../assets/fish.gif');
+      background-image: url('assets/fish.gif');
     }
     #test-1 p {
       color: #666;
@@ -12,28 +12,25 @@
       font-weight: 700;
     }
     #test-2 {
-      background-image: url('../assets/kids.jpg');
+      background-image: url('assets/kids.jpg');
     }
     #test-2 p {
-      background: #000;
       color: #fff;
       font-size: 16px;
       font-weight: 700;
     }
     #test-3 {
-      background-image: url('../assets/doesnotexist.jpg');
+      background-image: url('assets/doesnotexist.jpg');
     }
     #test-3 p {
-      background: #000;
       color: #fff;
       font-size: 16px;
       font-weight: 700;
     }
     #test-4 {
-      background-image: url('../assets/quail.png');
+      background-image: url('assets/quail.png');
     }
     #test-4 p {
-      background: #000;
       color: #fff;
       font-size: 16px;
       font-weight: 700;
@@ -41,20 +38,20 @@
   </style>
 </head>
 <body>
-  <div data-expected="colorBackgroundImageContrast:fail" id="test-1">
-    <p>This test is not readable, thanks to the fish</p>
+  <div id="test-1" data-expected="fail">
+    <p id="assert-1">This test is not readable, thanks to the fish</p>
   </div>
 
-  <div data-expected="colorBackgroundImageContrast:pass" id="test-2">
-    <p>This test is readable, thanks to the kids</p>
+  <div id="test-2" data-expected="pass">
+    <p id="assert-2">This test is readable, thanks to the kids</p>
   </div>
 
-  <div data-expected="colorBackgroundImageContrast:cantTell" id="test-3">
-    <p>This test is readable, non existing background</p>
+  <div id="test-3" data-expected="cantTell">
+    <p id="assert-3">This test is readable, non existing background</p>
   </div>
 
-  <div data-expected="colorBackgroundImageContrast:pass" id="test-4">
-    <p>This test is readable, external image</p>
+  <div id="test-4" data-expected="pass">
+    <p id="assert-4">This test is readable, external image</p>
   </div>
 
   </body>
