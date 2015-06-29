@@ -42,7 +42,7 @@
   "_closingTagsAreUsed",
   "colorBackgroundGradientContrast",
   "_colorBackgroundImageContrast",
-  "_colorElementBehindBackgroundGradientContrast",
+  "colorElementBehindBackgroundGradientContrast",
   "_colorElementBehindBackgroundImageContrast",
   "_colorElementBehindContrast",
   "_colorFontContrast",
