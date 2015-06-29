@@ -505,15 +505,20 @@ function runSpecs (assessments) {
   var specFiles;
   // Run a single test if one is indicated, otherwise, run them all.
   var single = execOptions.assessment;
-  if (single && (single in assessments)) {
-    specFiles = __dirname + '/specs/**/' + single + 'Spec.js';
-    // Gather the spec files and add them to the Mocha run.
-    glob(specFiles, function (error, files) {
-      if (error) {
-        shutdownTestRunner(error);
-      }
-      addAndRunMocha(files);
-    });
+  if (single) {
+    if (single in assessments) {
+      specFiles = __dirname + '/specs/**/' + single + 'Spec.js';
+      // Gather the spec files and add them to the Mocha run.
+      glob(specFiles, function (error, files) {
+        if (error) {
+          shutdownTestRunner(error);
+        }
+        addAndRunMocha(files);
+      });
+    }
+    else {
+      shutdownTestRunner('No implementation exists for the requested spec: ' + single);
+    }
   }
   else {
     // specFiles = __dirname + '/specs/**/*Spec.js';
