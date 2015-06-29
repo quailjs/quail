@@ -190,7 +190,7 @@
   "_radioHasLabel",
   "_radioLabelIsNearby",
   "_radioMarkedWithFieldgroupAndLegend",
-  "scriptFocusIndicatorVisible",
+  "_scriptFocusIndicatorVisible",
   "_scriptContentAccessibleWithScriptsTurnedOff",
   "_scriptInBodyMustHaveNoscript",
   "_scriptOnclickRequiresOnKeypress",
