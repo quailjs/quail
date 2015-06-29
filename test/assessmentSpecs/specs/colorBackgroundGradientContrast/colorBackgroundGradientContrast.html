@@ -35,7 +35,7 @@
       background-image: linear-gradient(to right, #ff0000, #f06d06, #ffff00, #008000);
     }
 
-    #test-4 {
+    #test-4 p {
       color: #fff;
       padding: 10px;
       background-image: -webkit-radial-gradient(#ff0000, #f06d06, #ffff00, #008000);
@@ -50,19 +50,19 @@
 </head>
 <body>
   <div id="test-1" data-expected="fail">
-    <p>This test is not readable</p>
+    <p id="assert-1">This test is not readable</p>
   </div>
 
   <div id="test-2" data-expected="pass">
-    <p>This test is readable</p>
+    <p id="assert-2">This test is readable</p>
   </div>
 
   <div id="test-3" data-expected="fail">
-    <p>This test is not readable</p>
+    <p id="assert-3">This test is not readable</p>
   </div>
 
   <div id="test-4" data-expected="fail">
-    <p>This test is not readable, but on screen it is</p>
+    <p id="assert-4">This test is not readable, but on screen it is</p>
   </div>
 
   </body>

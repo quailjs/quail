@@ -56,10 +56,11 @@ module.exports = function(grunt) {
         src: [
           'lib/quail.jquery.js',
           'lib/quail.js',
+          'bower_components/RainbowVis-JS/rainbowvis.js',
           'src/js/components/*.js',
           'src/js/strings/*.js',
-          'lib/assessments/**/*.js',
-          'lib/core/**/*.js'
+          'lib/core/**/*.js',
+          'lib/assessments/**/*.js'
         ],
         dest: 'dist/quail.jquery.js'
       }

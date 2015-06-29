@@ -54,17 +54,17 @@
 </head>
 <body>
 
-  <div data-expected="colorElementBehindBackgroundGradientContrast:fail" id="test-1">
-    <p>This test is not readable, but on screen it is</p>
+  <div id="test-1" data-expected="fail">
+    <p id="assert-1">This test is not readable, but on screen it is</p>
   </div>
 
-  <div data-expected="colorElementBehindBackgroundGradientContrast:pass" id="test-2">
-    <p>This test is readable, does not check the gradient since there's a background color.</p>
+  <div id="test-2" data-expected="pass">
+    <p id="assert-2">This test is readable, does not check the gradient since there's a background color.</p>
   </div>
 
-  <div data-expected="colorElementBehindBackgroundGradientContrast:fail" id="test-3">
+  <div id="test-3" data-expected="fail">
     <div class="bck"></div>
-    <p class="txt">This test is not readable.</p>
+    <p id="assert-3" class="txt">This test is not readable.</p>
   </div>
 
   </body>

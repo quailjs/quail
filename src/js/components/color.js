@@ -284,7 +284,7 @@ quail.components.color = (function () {
         if (bimage && bimage !== 'none' && bimage.search(/^(.*?)gradient(.*?)$/i) !== -1) {
           var gradient = bimage.match(/gradient(\(.*\))/g);
           if (gradient.length > 0) {
-            gradient = gradient[0].replace(/(linear|radial|from|\bto\b|gradient|top|left|bottom|right|color-stop|center|\d*%)/g, '');
+            gradient = gradient[0].replace(/(linear|radial|\d+deg|from|\bto\b|gradient|top|left|bottom|right|color-stop|center|\d*%)/g, '');
             colors.cache[cacheKey] = $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notEmpty);
             return colors.cache[cacheKey];
           }
@@ -421,7 +421,7 @@ quail.components.color = (function () {
           if (bimage && bimage !== 'none' && bimage.search(/^(.*?)gradient(.*?)$/i) !== -1) {
             var gradient = bimage.match(/gradient(\(.*\))/g);
             if (gradient.length > 0) {
-              gradient = gradient[0].replace(/(linear|radial|from|\bto\b|gradient|top|left|bottom|right|color-stop|center|\d*%)/g, '');
+              gradient = gradient[0].replace(/(linear|radial|\d+deg|from|\bto\b|gradient|top|left|bottom|right|color-stop|center|\d*%)/g, '');
               foundIt = $.grep(gradient.match(/(rgb\([^\)]+\)|#[a-z\d]*|[a-z]*)/g), notempty);
             }
           }

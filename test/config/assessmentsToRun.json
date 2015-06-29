@@ -40,7 +40,7 @@
   "_checkboxHasLabel",
   "_checkboxLabelIsNearby",
   "_closingTagsAreUsed",
-  "_colorBackgroundGradientContrast",
+  "colorBackgroundGradientContrast",
   "_colorBackgroundImageContrast",
   "_colorElementBehindBackgroundGradientContrast",
   "_colorElementBehindBackgroundImageContrast",
