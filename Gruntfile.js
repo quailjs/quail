@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         src: [
           'lib/quail.jquery.js',
           'lib/quail.js',
-          'bower_components/RainbowVis-JS/rainbowvis.js',
+          'vendor/RainbowVis-JS/rainbowvis.js',
           'src/js/components/*.js',
           'src/js/strings/*.js',
           'lib/core/**/*.js',
@@ -183,6 +183,14 @@ module.exports = function(grunt) {
         'test/assessmentSpecs/testRunner.js',
         'test/assessmentSpecs/specs/**/*.js'
       ]
+    },
+    bower: {
+      install: {
+        options: {
+          targetDir: './vendor',
+          cleanBowerDir: true
+        }
+      }
     }
   });
   grunt.loadTasks('tasks');
@@ -202,6 +210,7 @@ module.exports = function(grunt) {
 
   // By default, just run tests
   grunt.registerTask('default', [
+    'bower:install',
     'convert',
     'concat',
     'jshint',
@@ -222,6 +231,7 @@ module.exports = function(grunt) {
 
   // Build task.
   grunt.registerTask('build', [
+    'bower:install',
     'convert',
     'concat',
     'jshint',
@@ -233,6 +243,7 @@ module.exports = function(grunt) {
 
   // Release task.
   grunt.registerTask('release', [
+    'bower:install',
     'convert',
     'concat',
     'jshint',
@@ -247,6 +258,7 @@ module.exports = function(grunt) {
 
   // Test task.
   grunt.registerTask('test', [
+    'bower:install',
     'convert',
     'concat',
     'copy',
