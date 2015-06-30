@@ -17,3 +17,4 @@ test/quail-testrunner.js
 test/accessibility-tests/_tests.json
 test/core/_tests.json
 analyses/*
+vendor/*
