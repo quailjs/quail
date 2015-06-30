@@ -1,6 +1,6 @@
 {
   "name": "quail",
-  "version": "2.1.0",
+  "version": "2.2.18",
   "main": "dist/*",
   "ignore": [
     ".jshintrc",

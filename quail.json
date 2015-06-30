@@ -2,7 +2,7 @@
   "name": "quail",
   "title": "Quail",
   "description": "Accessibility testing in the browser and on the server.",
-  "version": "2.1.0",
+  "version": "2.2.18",
   "homepage": "https://github.com/kevee/quail",
   "author": {
     "name": "Kevin Miller",

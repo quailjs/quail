@@ -6,18 +6,18 @@
 	"homepage": "http://quailjs.org",
 	"docs": "http://quail.readthedocs.org/en/latest/",
 	"demo": "http://quailjs.org/examples/",
-	"version": "2.1.0",
+	"version": "2.2.18",
 	"author": {
  		"name": "Kevin Miller",
 		"email": "kevin@csumb.edu",
 		"url": "http://kevee.org"
-	},						
+	},
 	"licenses": [
 	  {
 	    "type": "MIT",
 	    "url": "http://quailjs.org/license"
 	  }
-	],						
+	],
 	"dependencies" : {
     "jquery": ">1.4.2"
 	}

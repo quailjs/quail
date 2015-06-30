@@ -73,7 +73,7 @@ shell.cd('..');
 var pwd = shell.pwd();
 
 program
-  .version('0.0.2')
+  .version('2.2.18')
   .option('-u, --url [url]', 'A [url] to test', null)
   .option('-R, --runner [runnerScript]', 'A [runnerScript] that will run the evaluation. Currently there exists \'default\' and \'wcag2\'.', 'default')
   .option('-o, --output [outputDir]', 'An [outputDir] to write the analysis results to', validateDirectory)
