@@ -176,7 +176,7 @@
 - [x] objectInterfaceIsAccessible
 - [x] objectLinkToMultimediaHasTextTranscript
 - [ ] objectMustContainText
--- tagged --    objectMustHaveEmbed
+- [x] objectMustHaveEmbed
 -- tagged --    objectMustHaveTitle
 - [ ] objectMustHaveValidTitle
 - [x] objectProvidesMechanismToReturnToParent
