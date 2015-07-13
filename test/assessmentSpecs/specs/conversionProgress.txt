@@ -232,7 +232,7 @@
 - [x] tableSummaryIsSufficient
 - [ ] tableUseColGroup
 - [ ] tableUsesAbbreviationForHeader
--- tagged --    tableUsesCaption
+- [x] tableUsesCaption
 - [ ] tableUsesScopeForRow
 - [x] tableWithBothHeadersUseScope
 - [ ] tableWithMoreHeadersUseID

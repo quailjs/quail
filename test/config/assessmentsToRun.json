@@ -231,7 +231,7 @@
   "_tableSummaryIsSufficient",
   "_tableUseColGroup",
   "_tableUsesAbbreviationForHeader",
-  "_tableUsesCaption",
+  "tableUsesCaption",
   "_tableUsesScopeForRow",
   "_tableWithBothHeadersUseScope",
   "_tableWithMoreHeadersUseID",
