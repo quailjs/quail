@@ -191,7 +191,7 @@
 - [ ] preShouldNotBeUsedForTabularLayout
 - [ ] radioHasLabel
 - [ ] radioLabelIsNearby
--- tagged --    radioMarkedWithFieldgroupAndLegend
+- [x] radioMarkedWithFieldgroupAndLegend
 - [x] scriptContentAccessibleWithScriptsTurnedOff
 -- tagged --    scriptInBodyMustHaveNoscript
 - [ ] scriptOnclickRequiresOnKeypress
