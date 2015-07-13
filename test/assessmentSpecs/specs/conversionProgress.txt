@@ -177,7 +177,7 @@
 - [x] objectLinkToMultimediaHasTextTranscript
 - [ ] objectMustContainText
 - [x] objectMustHaveEmbed
--- tagged --    objectMustHaveTitle
+- [x] objectMustHaveTitle
 - [ ] objectMustHaveValidTitle
 - [x] objectProvidesMechanismToReturnToParent
 - [x] objectShouldHaveLongDescription

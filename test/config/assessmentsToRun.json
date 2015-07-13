@@ -175,7 +175,7 @@
   "_objectLinkToMultimediaHasTextTranscript",
   "_objectMustContainText",
   "objectMustHaveEmbed",
-  "_objectMustHaveTitle",
+  "objectMustHaveTitle",
   "_objectMustHaveValidTitle",
   "_objectProvidesMechanismToReturnToParent",
   "_objectShouldHaveLongDescription",
