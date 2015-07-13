@@ -208,7 +208,7 @@
 - [ ] selectDoesNotChangeContext
 - [ ] selectHasAssociatedLabel
 - [ ] selectJumpMenu
--- tagged --    selectWithOptionsHasOptgroup
+- [x] selectWithOptionsHasOptgroup
 - [ ] siteMap
 - [ ] skipToContentLinkProvided
 -- tagged --    svgContainsTitle
