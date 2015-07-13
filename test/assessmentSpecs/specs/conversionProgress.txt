@@ -183,7 +183,7 @@
 - [x] objectShouldHaveLongDescription
 - [x] objectTextUpdatesWhenObjectChanges
 - [x] objectUIMustBeAccessible
--- tagged --    objectWithClassIDHasNoText
+- [x] objectWithClassIDHasNoText
 - [ ] pNotUsedAsHeader
 - [ ] paragraphIsWrittenClearly
 - [ ] passwordHasLabel
