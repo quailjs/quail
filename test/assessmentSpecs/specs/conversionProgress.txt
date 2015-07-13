@@ -211,7 +211,7 @@
 - [x] selectWithOptionsHasOptgroup
 - [ ] siteMap
 - [ ] skipToContentLinkProvided
--- tagged --    svgContainsTitle
+- [x] svgContainsTitle
 - [ ] tabIndexFollowsLogicalOrder
 - [ ] tableAxisHasCorrespondingId
 - [x] tableCaptionIdentifiesTable

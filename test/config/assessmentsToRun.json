@@ -210,7 +210,7 @@
   "_selectWithOptionsHasOptgroup",
   "_siteMap",
   "_skipToContentLinkProvided",
-  "_svgContainsTitle",
+  "svgContainsTitle",
   "_tabIndexFollowsLogicalOrder",
   "_tableAxisHasCorrespondingId",
   "_tableCaptionIdentifiesTable",
