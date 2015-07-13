@@ -193,7 +193,7 @@
 - [ ] radioLabelIsNearby
 - [x] radioMarkedWithFieldgroupAndLegend
 - [x] scriptContentAccessibleWithScriptsTurnedOff
--- tagged --    scriptInBodyMustHaveNoscript
+- [x] scriptInBodyMustHaveNoscript
 - [ ] scriptOnclickRequiresOnKeypress
 - [ ] scriptOndblclickRequiresOnKeypress
 - [x] scriptOnFocusChangeBackgroundOrBorder
