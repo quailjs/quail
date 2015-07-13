@@ -171,18 +171,18 @@
 - [x] noembedHasEquivalentContent
 - [x] noframesSectionMustHaveTextEquivalent
 - [x] objectContentUsableWhenDisabled
--- tagged --    objectDoesNotFlicker
--- tagged --    objectDoesNotUseColorAlone
--- tagged --    objectInterfaceIsAccessible
--- tagged --    objectLinkToMultimediaHasTextTranscript
+- [x] objectDoesNotFlicker
+- [x] objectDoesNotUseColorAlone
+- [x] objectInterfaceIsAccessible
+- [x] objectLinkToMultimediaHasTextTranscript
 - [ ] objectMustContainText
 -- tagged --    objectMustHaveEmbed
 -- tagged --    objectMustHaveTitle
 - [ ] objectMustHaveValidTitle
--- tagged --    objectProvidesMechanismToReturnToParent
--- tagged --    objectShouldHaveLongDescription
--- tagged --    objectTextUpdatesWhenObjectChanges
--- tagged --    objectUIMustBeAccessible
+- [x] objectProvidesMechanismToReturnToParent
+- [x] objectShouldHaveLongDescription
+- [x] objectTextUpdatesWhenObjectChanges
+- [x] objectUIMustBeAccessible
 -- tagged --    objectWithClassIDHasNoText
 - [ ] pNotUsedAsHeader
 - [ ] paragraphIsWrittenClearly
@@ -192,7 +192,7 @@
 - [ ] radioHasLabel
 - [ ] radioLabelIsNearby
 -- tagged --    radioMarkedWithFieldgroupAndLegend
--- tagged --    scriptContentAccessibleWithScriptsTurnedOff
+- [x] scriptContentAccessibleWithScriptsTurnedOff
 -- tagged --    scriptInBodyMustHaveNoscript
 - [ ] scriptOnclickRequiresOnKeypress
 - [ ] scriptOndblclickRequiresOnKeypress
@@ -202,9 +202,9 @@
 - [ ] scriptOnmouseoutHasOnmouseblur
 - [ ] scriptOnmouseoverHasOnfocus
 - [ ] scriptOnmouseupHasOnkeyup
--- tagged --    scriptUIMustBeAccessible
--- tagged --    scriptsDoNotFlicker
--- tagged --    scriptsDoNotUseColorAlone
+- [x] scriptUIMustBeAccessible
+- [x] scriptsDoNotFlicker
+- [x] scriptsDoNotUseColorAlone
 - [ ] selectDoesNotChangeContext
 - [ ] selectHasAssociatedLabel
 - [ ] selectJumpMenu
@@ -214,27 +214,27 @@
 -- tagged --    svgContainsTitle
 - [ ] tabIndexFollowsLogicalOrder
 - [ ] tableAxisHasCorrespondingId
--- tagged --    tableCaptionIdentifiesTable
--- tagged --    tableComplexHasSummary
+- [x] tableCaptionIdentifiesTable
+- [x] tableComplexHasSummary
 -- tagged --    tableDataShouldHaveTh
 - [ ] tableHeaderLabelMustBeTerse
--- tagged --    tableIsGrouped
+- [x] tableIsGrouped
 - [ ] tableLayoutDataShouldNotHaveTh
 - [ ] tableLayoutHasNoCaption
 - [ ] tableLayoutHasNoSummary
 - [ ] tableLayoutMakesSenseLinearized
 - [ ] tableNotUsedForLayout
 - [ ] tableShouldUseHeaderIDs
--- tagged --    tableSummaryDescribesTable
+- [x] tableSummaryDescribesTable
 - [ ] tableSummaryDoesNotDuplicateCaption
 - [ ] tableSummaryIsEmpty
 - [ ] tableSummaryIsNotTooLong
--- tagged --    tableSummaryIsSufficient
+- [x] tableSummaryIsSufficient
 - [ ] tableUseColGroup
 - [ ] tableUsesAbbreviationForHeader
 -- tagged --    tableUsesCaption
 - [ ] tableUsesScopeForRow
--- tagged --    tableWithBothHeadersUseScope
+- [x] tableWithBothHeadersUseScope
 - [ ] tableWithMoreHeadersUseID
 - [ ] tabularDataIsInTable
 - [ ] tagsAreNestedCorrectly
@@ -244,7 +244,7 @@
 - [ ] things.txt
 - [ ] userInputMayBeRequired
 - [ ] videoMayBePresent
--- tagged --    videoProvidesCaptions
+- [x] videoProvidesCaptions
 - [ ] videosEmbeddedOrLinkedNeedCaptions
 - [ ] whiteSpaceInWord
 - [ ] whiteSpaceNotUsedForFormatting
