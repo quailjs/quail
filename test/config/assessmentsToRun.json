@@ -215,7 +215,7 @@
   "_tableAxisHasCorrespondingId",
   "_tableCaptionIdentifiesTable",
   "_tableComplexHasSummary",
-  "_tableDataShouldHaveTh",
+  "tableDataShouldHaveTh",
   "_tableHeaderLabelMustBeTerse",
   "_tableIsGrouped",
   "_tableLayoutDataShouldNotHaveTh",

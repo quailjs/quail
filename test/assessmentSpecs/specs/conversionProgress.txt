@@ -216,7 +216,7 @@
 - [ ] tableAxisHasCorrespondingId
 - [x] tableCaptionIdentifiesTable
 - [x] tableComplexHasSummary
--- tagged --    tableDataShouldHaveTh
+- [x] tableDataShouldHaveTh
 - [ ] tableHeaderLabelMustBeTerse
 - [x] tableIsGrouped
 - [ ] tableLayoutDataShouldNotHaveTh
