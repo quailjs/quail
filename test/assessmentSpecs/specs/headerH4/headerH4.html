@@ -1,29 +1,29 @@
 <!doctype html>
 <html>
 <head>
-	<title>headerH4</title>
+  <title>headerH4</title>
 </head>
 <body>
-	<div data-expected="h4:ignore|h6:fail" data-accessibility-test="headerH4">
+  <div data-expected="fail">
 
-		<h4>The First Heading</h4>
+    <h4>The First Heading</h4>
 
-		<h6 class="quail-failed-element">The Second Heading</h6>
-	</div>
-	<div data-expected="h4:ignore|h2:pass" data-accessibility-test="headerH4">
+    <h6 id="assert-1">The Second Heading</h6>
+  </div>
+  <div data-expected="pass">
 
-		<h4>The First Heading</h4>
-		<p>The first paragraph</p>
+    <h4>The First Heading</h4>
+    <p>The first paragraph</p>
 
-		<h2>The Second Heading</h2>
-	</div>
-	<div data-expected="h5:ignore|h6:pass" data-accessibility-test="headerH4">
+    <h2 id="assert-2">The Second Heading</h2>
+  </div>
+  <div data-expected="pass">
 
-		<h5>The First Heading</h5>
-		<p>The first paragraph</p>
+    <h5>The First Heading</h5>
+    <p>The first paragraph</p>
 
-		<h6>The Second Heading</h6>
-	</div>
+    <h6 id="assert-3">The Second Heading</h6>
+  </div>
 
   </body>
 </html>

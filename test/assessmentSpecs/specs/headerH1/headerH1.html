@@ -4,23 +4,23 @@
 	<title>headerH1</title>
 </head>
 <body>
-	<div data-expected="h1:ignore|h3:fail" data-accessibility-test="headerH1">
+	<div data-expected="fail">
 
 		<h1>The First Heading</h1>
 
 		<p>Here is some demo text.</p>
 
-		<h3 class="quail-failed-element">The bad Heading</h3>
+		<h3 id="assert-1">The bad Heading</h3>
 
 		<p>Here is some more demo text.</p>
 	</div>
-	<div data-expected="h1:ignore|h2:pass" data-accessibility-test="headerH1">
+	<div data-expected="pass">
 
 		<h1>The First Heading</h1>
 
 		<p>Here is some demo text.</p>
 
-		<h2>The Second Heading</h2>
+		<h2 id="assert-2">The Second Heading</h2>
 
 		<p>Here is some more demo text.</p>
 	</div>

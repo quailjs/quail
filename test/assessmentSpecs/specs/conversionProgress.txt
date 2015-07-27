@@ -85,13 +85,13 @@
 - [x] formHasGoodErrorMessage
 - [x] formHasSubmitButton
 - [ ] formWithRequiredLabel
-- [ ] headerH1
+- [x] headerH1
 - [x] headerH1Format
-- [ ] headerH2
+- [x] headerH2
 - [x] headerH2Format
-- [ ] headerH3
+- [x] headerH3
 - [x] headerH3Format
-- [ ] headerH4
+- [x] headerH4
 - [x] headerH4Format
 - [x] headerH5Format
 - [x] headerH6Format

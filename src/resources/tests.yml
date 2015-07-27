@@ -1724,7 +1724,6 @@ formWithRequiredLabel:
 #     - "deprecated"
 #     - "frame"
 headerH1:
-  type: "headingLevel"
   testability: 0
   title:
     en: "The header following an h1 is not h3 through h6"
@@ -1740,10 +1739,6 @@ headerH1:
   tags:
     - "header"
     - "content"
-  components:
-    - "headingLevel"
-  options:
-    headingLevel: 1
 headerH1Format:
   testability: 0
   title:
@@ -1760,10 +1755,7 @@ headerH1Format:
   tags:
     - "header"
     - "content"
-  components:
-    - "header"
 headerH2:
-  type: "headingLevel"
   testability: 0
   title:
     en: "The header following an h2 is not h4, h5, or h6"
@@ -1779,10 +1771,6 @@ headerH2:
   tags:
     - "header"
     - "content"
-  components:
-    - "headingLevel"
-  options:
-    headingLevel: 2
 headerH2Format:
   testability: 0
   title:
@@ -1799,10 +1787,7 @@ headerH2Format:
   tags:
     - "header"
     - "content"
-  components:
-    - "header"
 headerH3:
-  type: "headingLevel"
   testability: 0
   title:
     en: "The header following an h3 is not an h5 or h6"
@@ -1818,10 +1803,6 @@ headerH3:
   tags:
     - "header"
     - "content"
-  components:
-    - "headingLevel"
-  options:
-    headingLevel: 3
 headerH3Format:
   testability: 0
   title:
@@ -1838,10 +1819,7 @@ headerH3Format:
   tags:
     - "header"
     - "content"
-  components:
-    - "header"
 headerH4:
-  type: "headingLevel"
   testability: 0
   title:
     en: "The header following an h4 is not an h6"
@@ -1857,10 +1835,6 @@ headerH4:
   tags:
     - "header"
     - "content"
-  components:
-    - "headingLevel"
-  options:
-    headingLevel: 4
 headerH4Format:
   testability: 0
   title:
@@ -1877,8 +1851,6 @@ headerH4Format:
   tags:
     - "header"
     - "content"
-  components:
-    - "header"
 headerH5Format:
   testability: 0
   title:
@@ -1911,8 +1883,6 @@ headerH6Format:
   tags:
     - "header"
     - "content"
-  options:
-    selector: "h6"
 headersAttrRefersToATableCell:
   testability: 1
   title:
