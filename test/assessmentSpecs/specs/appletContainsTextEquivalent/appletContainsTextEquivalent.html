@@ -1,26 +1,24 @@
 <!doctype html>
 <html>
-	<head>
-		<title>appletContainsTextEquivalent</title>
-	</head>
-	<body>
-		<div class="quail-test limit-phantom" data-expected="pass">
-		  <applet code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150">
-            We are testing your Java version.
-            <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
-            <param name="centerimage" value="true"><param name="boxborder" value="false">
-            <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
-        </applet>
-		</div>
+  <head>
+    <title>appletContainsTextEquivalent</title>
+  </head>
+  <body>
+    <div class="limit-phantom" data-expected="pass">
+      <applet id="assert-1" code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150">
+        We are testing your Java version.
+        <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
+        <param name="centerimage" value="true"><param name="boxborder" value="false">
+        <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
+      </applet>
+    </div>
 
-		<div class="quail-test limit-phantom" data-expected="fail">
-		  <applet code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150" class="quail-failed-element">
-            <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
-            <param name="centerimage" value="true"><param name="boxborder" value="false">
-            <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
-        </applet>
-		</div>
-
-
-		</body>
+    <div class="limit-phantom" data-expected="fail">
+      <applet id="assert-2" code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150" class="quail-failed-element">
+        <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
+        <param name="centerimage" value="true"><param name="boxborder" value="false">
+        <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
+      </applet>
+    </div>
+  </body>
 </html>

@@ -15,7 +15,7 @@
 - [x] aSuspiciousLinkText
 - [x] aTitleDescribesDestination
 - [x] animatedGifMayBePresent
-- [ ] appletContainsTextEquivalent
+- [x] appletContainsTextEquivalent
 - [ ] appletContainsTextEquivalentInAlt
 - [x] appletProvidesMechanismToReturnToParent
 - [x] appletTextEquivalentsGetUpdated

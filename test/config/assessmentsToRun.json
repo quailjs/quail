@@ -16,7 +16,7 @@
   "aSuspiciousLinkText",
   "aTitleDescribesDestination",
   "animatedGifMayBePresent",
-  "_appletContainsTextEquivalent",
+  "appletContainsTextEquivalent",
   "_appletContainsTextEquivalentInAlt",
   "appletProvidesMechanismToReturnToParent",
   "appletTextEquivalentsGetUpdated",

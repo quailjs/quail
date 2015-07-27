@@ -311,7 +311,6 @@ appletContainsTextEquivalent:
     - "objects"
     - "applet"
     - "content"
-  callback: "appletContainsTextEquivalent"
 appletContainsTextEquivalentInAlt:
   type: "placeholder"
   testability: 0.5
