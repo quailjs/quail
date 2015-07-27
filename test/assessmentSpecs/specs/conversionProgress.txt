@@ -14,7 +14,7 @@
 - [x] aMustNotHaveJavascriptHref
 - [x] aSuspiciousLinkText
 - [x] aTitleDescribesDestination
-- [ ] animatedGifMayBePresent
+- [x] animatedGifMayBePresent
 - [ ] appletContainsTextEquivalent
 - [ ] appletContainsTextEquivalentInAlt
 - [x] appletProvidesMechanismToReturnToParent

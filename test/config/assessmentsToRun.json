@@ -15,7 +15,7 @@
   "aMustNotHaveJavascriptHref",
   "aSuspiciousLinkText",
   "aTitleDescribesDestination",
-  "_animatedGifMayBePresent",
+  "animatedGifMayBePresent",
   "_appletContainsTextEquivalent",
   "_appletContainsTextEquivalentInAlt",
   "appletProvidesMechanismToReturnToParent",

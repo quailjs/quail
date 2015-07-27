@@ -291,7 +291,6 @@ animatedGifMayBePresent:
   tags:
     - "link"
     - "gif"
-  callback: "animatedGifMayBePresent"
 appletContainsTextEquivalent:
   testability: 1
   title:
