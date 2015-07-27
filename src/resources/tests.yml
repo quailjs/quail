@@ -312,7 +312,6 @@ appletContainsTextEquivalent:
     - "applet"
     - "content"
 appletContainsTextEquivalentInAlt:
-  type: "placeholder"
   testability: 0.5
   title:
     en: "All applets should contain a text equivalent in the \"alt\" attribute"
@@ -333,11 +332,6 @@ appletContainsTextEquivalentInAlt:
     - "objects"
     - "applet"
     - "content"
-  components:
-    - "placeholder"
-  options:
-    attribute: "alt"
-    empty: true
 appletProvidesMechanismToReturnToParent:
   testability: 0
   title:

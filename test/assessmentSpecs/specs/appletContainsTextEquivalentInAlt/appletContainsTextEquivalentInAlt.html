@@ -1,33 +1,33 @@
 <!doctype html>
 <html>
-	<head>
-		<title>appletContainsTextEquivalentInAlt</title>
-	</head>
-	<body>
-		<div class="quail-test limit-phantom" data-expected="pass">
-		  <applet alt="We are testing your java version" code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150">
-            <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
-            <param name="centerimage" value="true"><param name="boxborder" value="false">
-            <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
-        </applet>
-		</div>
+  <head>
+    <title>appletContainsTextEquivalentInAlt</title>
+  </head>
+  <body>
+    <div class="limit-phantom" data-expected="pass">
+      <applet id="assert-1" alt="We are testing your java version" code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150">
+        <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
+        <param name="centerimage" value="true"><param name="boxborder" value="false">
+        <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
+      </applet>
+    </div>
 
-		<div class="quail-test limit-phantom" data-expected="fail">
-		  <applet class="quail-failed-element" alt="" code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150">
-            <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
-            <param name="centerimage" value="true"><param name="boxborder" value="false">
-            <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
-        </applet>
-		</div>
+    <div class="limit-phantom" data-expected="fail">
+      <applet id="assert-2" alt="" code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150">
+        <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
+        <param name="centerimage" value="true"><param name="boxborder" value="false">
+        <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
+      </applet>
+    </div>
 
-		<div class="quail-test limit-phantom" data-expected="fail">
-		  <applet code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150" class="quail-failed-element">
-            <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
-            <param name="centerimage" value="true"><param name="boxborder" value="false">
-            <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
-        </applet>
-		</div>
+    <div class="limit-phantom" data-expected="fail">
+      <applet id="assert-3" code="http://www.java.com/en/download/JavaDetection.class" width="500" height="150">
+        <param name="image" value="http://www.java.com/im/download/verify_anim.gif">
+        <param name="centerimage" value="true"><param name="boxborder" value="false">
+        <param name="jnlp_href" value="http://www.java.com/en/download/JavaDetection_applet.jnlp">
+      </applet>
+    </div>
 
 
-		</body>
+    </body>
 </html>

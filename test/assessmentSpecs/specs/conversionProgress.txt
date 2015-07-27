@@ -16,7 +16,7 @@
 - [x] aTitleDescribesDestination
 - [x] animatedGifMayBePresent
 - [x] appletContainsTextEquivalent
-- [ ] appletContainsTextEquivalentInAlt
+- [x] appletContainsTextEquivalentInAlt
 - [x] appletProvidesMechanismToReturnToParent
 - [x] appletTextEquivalentsGetUpdated
 - [x] appletUIMustBeAccessible

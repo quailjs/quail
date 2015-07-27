@@ -17,7 +17,7 @@
   "aTitleDescribesDestination",
   "animatedGifMayBePresent",
   "appletContainsTextEquivalent",
-  "_appletContainsTextEquivalentInAlt",
+  "appletContainsTextEquivalentInAlt",
   "appletProvidesMechanismToReturnToParent",
   "appletTextEquivalentsGetUpdated",
   "appletUIMustBeAccessible",
