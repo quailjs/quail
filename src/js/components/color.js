@@ -158,10 +158,10 @@ quail.components.color = (function () {
      */
     getColor : function(element, type) {
       var self = colors;
-      if (!element.attr('data-cacheId')) {
-        element.attr('data-cacheId', 'id_' + Math.random());
+      if (!$(element).data('cache-id')) {
+        $(element).data('cache-id', 'id_' + Math.random());
       }
-      var cacheKey = 'getColor_' + type + '_' + element.attr('data-cacheId');
+      var cacheKey = 'getColor_' + type + '_' + $(element).data('cache-id');
       if (colors.cache[cacheKey] !== undefined) {
         return colors.cache[cacheKey];
       }
@@ -222,11 +222,11 @@ quail.components.color = (function () {
      * Returns background image of an element or its parents.
      */
     getBackgroundImage: function(element) {
-      if (!element.attr('data-cacheId')) {
-        element.attr('data-cacheId', 'id_' + Math.random());
+      if (!$(element).data('cache-id')) {
+        $(element).data('cache-id', 'id_' + Math.random());
       }
 
-      var cacheKey = 'getBackgroundImage_' + element.attr('data-cacheId');
+      var cacheKey = 'getBackgroundImage_' + $(element).data('cache-id');
       if (colors.cache[cacheKey] !== undefined) {
         return colors.cache[cacheKey];
       }
@@ -247,11 +247,11 @@ quail.components.color = (function () {
      * Returns background image of an element or its parents.
      */
     getBackgroundGradient: function(element) {
-      if (!element.attr('data-cacheId')) {
-        element.attr('data-cacheId', 'id_' + Math.random());
+      if (!$(element).data('cache-id')) {
+        $(element).data('cache-id', 'id_' + Math.random());
       }
 
-      var cacheKey = 'getBackgroundGradient_' + element.attr('data-cacheId');
+      var cacheKey = 'getBackgroundGradient_' + $(element).data('cache-id');
       if (colors.cache[cacheKey] !== undefined) {
         return colors.cache[cacheKey];
       }
@@ -353,11 +353,11 @@ quail.components.color = (function () {
      * Traverse visual tree for background property.
      */
     traverseVisualTreeForBackground: function(element, property) {
-      if (!element.attr('data-cacheId')) {
-        element.attr('data-cacheId', 'id_' + Math.random());
+      if (!$(element).data('cache-id')) {
+        $(element).data('cache-id', 'id_' + Math.random());
       }
 
-      var cacheKey = 'traverseVisualTreeForBackground_' + element.attr('data-cacheId') + '_' + property;
+      var cacheKey = 'traverseVisualTreeForBackground_' + $(element).data('cache-id') + '_' + property;
       if (colors.cache[cacheKey] !== undefined) {
         return colors.cache[cacheKey];
       }
