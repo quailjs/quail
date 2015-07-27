@@ -12,7 +12,7 @@
 - [x] aMustContainText
 - [x] aMustHaveTitle
 - [x] aMustNotHaveJavascriptHref
-- [ ] aSuspiciousLinkText
+- [x] aSuspiciousLinkText
 - [x] aTitleDescribesDestination
 - [ ] animatedGifMayBePresent
 - [ ] appletContainsTextEquivalent

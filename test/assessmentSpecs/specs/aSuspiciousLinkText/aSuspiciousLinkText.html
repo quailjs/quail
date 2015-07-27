@@ -1,46 +1,43 @@
 <!doctype html>
 <html>
-	<head>
-		<title>aSuspiciousLinkText</title>
-	</head>
-	<body>
-		<div data-expected="inapplicable">
-			<a name="anchor"></a>
-		</div>
+  <head>
+    <title>aSuspiciousLinkText</title>
+  </head>
+  <body>
+    <div data-expected="inapplicable">
+      <a id="assert-1" name="anchor"></a>
+    </div>
 
-		<div data-expected="pass">
-		  <p>Here is a link to <a href="dogs.html">information about dogs</a>.</p>
-		</div>
+    <div data-expected="pass">
+      <p>Here is a link to <a id="assert-2" href="dogs.html">information about dogs</a>.</p>
+    </div>
 
-		<div data-expected="pass">
-		  <p>This is the introduction to a news story about recent spending by our
-          government.<a href="spending.html">read more <span class="invisible">about the news story</span></a>
+    <div data-expected="pass">
+      <p>This is the introduction to a news story about recent spending by our
+          government.<a id="assert-3" href="spending.html">read more <span class="invisible">about the news story</span></a>
       </p>
-		</div>
+    </div>
 
-		<div data-expected="pass" title="Image alt">
-		  <p>This is the introduction to a news story about recent spending by our
-          government.<a href="spending.html"><img src="../assets/go.gif" width="30" height="10" alt="government spending"/></a>
+    <div data-expected="pass" title="Image alt">
+      <p>This is the introduction to a news story about recent spending by our
+          government.<a id="assert-4" href="spending.html"><img src="../assets/go.gif" width="30" height="10" alt="government spending"/></a>
       </p>
-		</div>
+    </div>
 
-		<div data-expected="fail">
-		  <p>For more information about dogs, <a href="dogs.html" class="quail-failed-element">click here</a>.</p>
-		</div>
+    <div data-expected="fail">
+      <p>For more information about dogs, <a id="assert-5" href="dogs.html">click here</a>.</p>
+    </div>
 
-		<div data-expected="fail">
-		  <p>This is the introduction to a news story about recent spending by our
-            government.<a href="spending.html" class="quail-failed-element"><img src="../assets/go.gif" width="30" height="10" alt="image"/></a>
-        </p>
-		</div>
+    <div data-expected="fail">
+      <p>This is the introduction to a news story about recent spending by our government.
+        <a id="assert-6" href="spending.html"><img src="../assets/go.gif" width="30" height="10" alt="image"/></a>
+      </p>
+    </div>
 
-		<div data-expected="fail">
-		  <p>This is the introduction to a news story about recent spending by our
-            government.
-<a href="spending.html" class="quail-failed-element">read more</a>
-        </p>
-		</div>
-
-
-		</body>
+    <div data-expected="fail">
+      <p>This is the introduction to a news story about recent spending by our government.
+        <a id="assert-7" href="spending.html">read more</a>
+      </p>
+    </div>
+  </body>
 </html>

@@ -262,9 +262,6 @@ aSuspiciousLinkText:
   tags:
     - "link"
     - "content"
-  strings:
-    - "suspiciousLinks"
-  callback: "aSuspiciousLinkText"
 aTitleDescribesDestination:
   testability: 0
   title:

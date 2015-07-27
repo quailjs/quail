@@ -13,7 +13,7 @@
   "aMustContainText",
   "aMustHaveTitle",
   "aMustNotHaveJavascriptHref",
-  "_aSuspiciousLinkText",
+  "aSuspiciousLinkText",
   "aTitleDescribesDestination",
   "_animatedGifMayBePresent",
   "_appletContainsTextEquivalent",
