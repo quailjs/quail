@@ -27,7 +27,7 @@
 - [x] areaDontOpenNewWindow
 - [x] areaHasAltValue
 - [x] areaLinksToSoundFile
-- [ ] ariaOrphanedContent
+- [x] ariaOrphanedContent
 - [ ] audioMayBePresent
 - [x] basefontIsNotUsed
 - [x] blinkIsNotUsed
