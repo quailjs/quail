@@ -2,11 +2,11 @@
   "name": "quail",
   "title": "Quail",
   "description": "Accessibility testing in the browser and on the server.",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "homepage": "https://github.com/quailjs/quail",
   "author": {
-    "name": "Kevin Miller",
-    "email": "kemiller@csumb.edu"
+    "name": "Jesse Beach",
+    "email": "jesse.r.beach@gmail.com"
   },
   "repository": {
     "type": "git",
