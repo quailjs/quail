@@ -4,7 +4,15 @@
  */
 quail.components.event = function (quail, test, Case, options) {
   var $scope = test.get('$scope');
-  var $items = options.selector && $scope.find(options.selector) || $scope.find('*');
+  var $items = options.selector && $scope.find(options.selector);
+  // Bail if nothing was found.
+  if ($items.length === 0) {
+    test.add(Case({
+      element: $scope.get(),
+      status: 'inapplicable'
+    }));
+    return;
+  }
   var searchEvent = options.searchEvent || '';
   var correspondingEvent = options.correspondingEvent || '';
   $items.each(function () {
