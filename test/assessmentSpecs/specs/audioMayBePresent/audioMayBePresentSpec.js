@@ -32,10 +32,10 @@ describe('assessment: audioMayBePresent', function () {
     expect(quailResults.tests).to.include.keys('audioMayBePresent');
   });
 
-//   it('should return the proper assessment for assert-1', function () {
-//     cases = quailResults.tests.audioMayBePresent.cases;
-//     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
-//   });
+  //   it('should return the proper assessment for assert-1', function () {
+  //     cases = quailResults.tests.audioMayBePresent.cases;
+  //     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
+  //   });
   it('should return the proper assessment for assert-2', function () {
     cases = quailResults.tests.audioMayBePresent.cases;
     expect(cases).quailGetById('assert-2').to.have.quailStatus('cantTell');
