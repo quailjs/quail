@@ -182,7 +182,7 @@
   "_objectTextUpdatesWhenObjectChanges",
   "_objectUIMustBeAccessible",
   "_objectWithClassIDHasNoText",
-  "_pNotUsedAsHeader",
+  "pNotUsedAsHeader",
   "_paragraphIsWrittenClearly",
   "_passwordHasLabel",
   "_passwordLabelIsNearby",
