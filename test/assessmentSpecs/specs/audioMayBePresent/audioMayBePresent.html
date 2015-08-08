@@ -5,40 +5,31 @@
   </head>
 
   <body>
-    <div data-expected="inapplicable"
-   >
-      <!-- no audio element present -->
+
+    <div data-expected="inapplicable">
+      <a id="assert-1" href="horses.html">Horses</a>
     </div>
 
-    <div data-expected="inapplicable"
-   >
-      <a href="horses">Horses</a>
+    <div data-expected="cantTell">
+      <a id="assert-2" href="horses.mp3">Horses.mp3</a>
     </div>
 
-    <div data-expected="cantTell"
-   >
-      <a href="horses.mp3">Horses.mp3</a>
-    </div>
-
-    <div data-expected="cantTell"
-   >
-      <audio controls src="horse.ogg">
+    <div data-expected="cantTell">
+      <audio id="assert-3" controls src="horse.ogg">
         Your browser does not support the audio tag.
       </audio>
     </div>
 
-    <div data-expected="cantTell"
-   >
-      <audio controls>
+    <div data-expected="cantTell">
+      <audio id="assert-4" controls>
         <source src="horse.ogg" type="audio/ogg"></source>
         Your browser does not support the audio tag.
       </audio>
     </div>
 
-    <div data-expected="cantTell"
-   >
-      <object>May be an audio player</object>
+    <div data-expected="cantTell">
+      <object id="assert-5">May be an audio player</object>
     </div>
 
-      </body>
+  </body>
 </html>

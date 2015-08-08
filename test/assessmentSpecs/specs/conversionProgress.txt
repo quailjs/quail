@@ -28,7 +28,7 @@
 - [x] areaHasAltValue
 - [x] areaLinksToSoundFile
 - [x] ariaOrphanedContent
-- [ ] audioMayBePresent
+- [x] audioMayBePresent
 - [x] basefontIsNotUsed
 - [x] blinkIsNotUsed
 - [x] blockquoteNotUsedForIndentation

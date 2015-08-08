@@ -509,7 +509,7 @@ areaLinksToSoundFile:
 #     - "aria"
 #     - "content"
 audioMayBePresent:
-  testability: 1
+  testability: 0.5
   title:
     en: "Audio or object uses a link that points to a file with a video extension"
     nl: "Audio of object met een link naar een bestand met een video extensie"
@@ -520,7 +520,6 @@ audioMayBePresent:
   tags:
     - "link"
     - "audio"
-  callback: "audioMayBePresent"
 basefontIsNotUsed:
   testability: 1
   title:

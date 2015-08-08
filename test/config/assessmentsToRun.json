@@ -28,7 +28,7 @@
   "areaDontOpenNewWindow",
   "areaHasAltValue",
   "areaLinksToSoundFile",
-  "_audioMayBePresent",
+  "audioMayBePresent",
   "_basefontIsNotUsed",
   "blinkIsNotUsed",
   "blockquoteNotUsedForIndentation",
