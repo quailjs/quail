@@ -12,5 +12,18 @@
 		  <a href="page1.html" class="quail-failed-element"><img src="../assets/rex.jpg" alt="page1"/>page1</a>
 		</div>
 
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aImgAltNotRepetitive">
+		  <a href="page1.html" class="quail-failed-element"><img src="../assets/rex.jpg" alt="page1"/><i>page1</i></a>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aImgAltNotRepetitive">
+		  <a href="page1.html" class="quail-failed-element"><img src="../assets/rex.jpg" alt="page1"/>Go to page1</a>
+		</div>
+
+		<div class="quail-test" data-expected="fail" data-accessibility-test="aImgAltNotRepetitive">
+		  <a href="page1.html" class="quail-failed-element">
+		  	<i><img src="../assets/rex.jpg" alt="page1"/></i>page1</a>
+		</div>
+
 		<script src="../quail-testrunner.js"></script>	</body>
 </html>
