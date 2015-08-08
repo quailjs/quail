@@ -9,7 +9,20 @@
     </div>
 
     <div>
-      <a href="page1.html" class="quail-failed-element"><img id="assert-2" src="assets/rex.jpg" alt="page1"/>page1</a>
+      <a href="page1.html"><img id="assert-2" src="assets/rex.jpg" alt="page1"/>page1</a>
+    </div>
+
+    <div>
+      <a href="page1.html"><img id="assert-3" data-expected="fail" src="assets/rex.jpg" alt="page1"/><i>page1</i></a>
+    </div>
+
+    <div>
+      <a href="page1.html"><img id="assert-4" data-expected="fail" src="assets/rex.jpg" alt="page1"/>Go to page1</a>
+    </div>
+
+    <div>
+      <a href="page1.html">
+        <i><img id="assert-5" data-expected="fail" src="assets/rex.jpg" alt="page1"/></i>page1</a>
     </div>
   </body>
 </html>

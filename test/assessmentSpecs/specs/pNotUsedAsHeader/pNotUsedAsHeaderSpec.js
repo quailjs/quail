@@ -23,7 +23,7 @@ describe('assessment: pNotUsedAsHeader', function () {
 
   it('should return the correct stats', function () {
     expect(quailResults.stats.tests).to.equal(1);
-    expect(quailResults.stats.cases).to.equal(20);
+    expect(quailResults.stats.cases).to.equal(28);
   });
 
   it('should have correct key under the test results', function () {
@@ -51,7 +51,15 @@ describe('assessment: pNotUsedAsHeader', function () {
   });
 
   it('should recognize strong inside paragraph', function () {
-    expect(cases).quailGetById('paragraph-with-strong').to.have.quailStatus('failed');
+    expect(cases).quailGetById('paragraph-with-strong').to.have.quailStatus('passed');
+  });
+
+  it('should pass single sentence paragraphs', function () {
+    expect(cases).quailGetById('single-sentence-paragraph').to.have.quailStatus('passed');
+  });
+
+  it('should pass regular paragraphs with bold text', function () {
+    expect(cases).quailGetById('regular-bold-paragraph').to.have.quailStatus('passed');
   });
 
   it('should pass regular paragraphs', function () {
