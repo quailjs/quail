@@ -6,17 +6,17 @@
 	<body>
 		<div data-expected="inapplicable">
 			<blockquote>
-				<p>"This is a paragraph that is a quote inside a larger blockquote."</p>
+				<p id="assert-1">"This is a paragraph that is a quote inside a larger blockquote."</p>
 			</blockquote>
 		</div>
 
 		<div data-expected="pass">
-		  <p>This is a paragraph that is not a quote.</p>
+		  <p id="assert-2">This is a paragraph that is not a quote.</p>
 		</div>
 
 		<div data-expected="fail">
-		  <p class="quail-failed-element">"This entire paragraph is a single quote."</p>
-      </div>
+		  <p id="assert-3">"This entire paragraph is a single quote."</p>
+    </div>
 
 			</body>
 </html>

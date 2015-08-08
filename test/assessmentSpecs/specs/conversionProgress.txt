@@ -32,7 +32,7 @@
 - [x] basefontIsNotUsed
 - [x] blinkIsNotUsed
 - [x] blockquoteNotUsedForIndentation
-- [ ] blockquoteUseForQuotations
+- [x] blockquoteUseForQuotations
 - [x] boldIsNotUsed
 - [ ] buttonDoesNotChangeContextOnFocus
 - [ ] buttonHasName

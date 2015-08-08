@@ -580,7 +580,6 @@ blockquoteUseForQuotations:
   tags:
     - "blockquote"
     - "content"
-  callback: "blockquoteUseForQuotations"
 boldIsNotUsed:
   testability: 1
   title:
