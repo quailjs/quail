@@ -765,9 +765,6 @@ colorFontContrast:
     - "color"
   callback:
     - "colorFontContrast"
-  options:
-    algorithm: "wcag"
-    gradientSampleMultiplier: 3
 colorElementBehindContrast:
   testability: 1
   title:
@@ -785,9 +782,6 @@ colorElementBehindContrast:
     - "color"
   callback:
     - "colorElementBehindContrast"
-  options:
-    algorithm: "wcag"
-    gradientSampleMultiplier: 3
 colorBackgroundImageContrast:
   testability: 1
   title:
@@ -805,9 +799,6 @@ colorBackgroundImageContrast:
     - "color"
   callback:
     - "colorBackgroundImageContrast"
-  options:
-    algorithm: "wcag"
-    gradientSampleMultiplier: 3
 colorElementBehindBackgroundImageContrast:
   testability: 1
   title:
@@ -825,9 +816,6 @@ colorElementBehindBackgroundImageContrast:
     - "color"
   callback:
     - "colorElementBehindBackgroundImageContrast"
-  options:
-    algorithm: "wcag"
-    gradientSampleMultiplier: 3
 colorBackgroundGradientContrast:
   testability: 1
   title:
@@ -845,9 +833,6 @@ colorBackgroundGradientContrast:
     - "color"
   callback:
     - "colorBackgroundGradientContrast"
-  options:
-    algorithm: "wcag"
-    gradientSampleMultiplier: 3
 colorElementBehindBackgroundGradientContrast:
   testability: 1
   title:
@@ -865,9 +850,6 @@ colorElementBehindBackgroundGradientContrast:
     - "color"
   callback:
     - "colorElementBehindBackgroundGradientContrast"
-  options:
-    algorithm: "wcag"
-    gradientSampleMultiplier: 3
 definitionListsAreUsed:
   testability: 0.5
   title:
