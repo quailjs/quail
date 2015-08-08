@@ -21,7 +21,6 @@ aAdjacentWithSameResourceShouldBeCombined:
   tags:
     - "link"
     - "content"
-  callback: "aAdjacentWithSameResourceShouldBeCombined"
 aImgAltNotRepetitive:
   testability: 1
   title:
@@ -44,7 +43,6 @@ aImgAltNotRepetitive:
   tags:
     - "link"
     - "content"
-  callback: "aImgAltNotRepetitive"
 aInPHasADistinctStyle:
   testability: 1
   title:
@@ -75,7 +73,6 @@ aLinkTextDoesNotBeginWithRedundantWord:
     - "content"
   strings:
     - "redundant.link"
-  callback: "aLinkTextDoesNotBeginWithRedundantWord"
 aLinksAreSeparatedByPrintableCharacters:
   testability: 1
   title:
@@ -88,7 +85,6 @@ aLinksAreSeparatedByPrintableCharacters:
   tags:
     - "link"
     - "content"
-  callback: "aLinksAreSeparatedByPrintableCharacters"
 aLinksDontOpenNewWindow:
   testability: 1
   title:
@@ -108,7 +104,6 @@ aLinksDontOpenNewWindow:
     - "content"
   strings:
     - "newWindow"
-  callback: "aLinksDontOpenNewWindow"
 aLinksNotSeparatedBySymbols:
   testability: 1
   title:
@@ -121,7 +116,6 @@ aLinksNotSeparatedBySymbols:
   tags:
     - "link"
     - "content"
-  callback: "aLinksNotSeparatedBySymbols"
 aLinksToMultiMediaRequireTranscript:
   testability: 0
   title:
@@ -182,7 +176,6 @@ aLinkWithNonText:
   tags:
     - "link"
     - "content"
-  callback: "aLinkWithNonText"
 aMultimediaTextAlternative:
   testability: 0
   guidelines: []
@@ -215,7 +208,6 @@ aMustContainText:
   tags:
     - "link"
     - "content"
-  callback: "aMustContainText"
 aMustHaveTitle:
   testability: 1
   title:
@@ -708,7 +700,6 @@ closingTagsAreUsed:
     - "html"
   components:
     - "htmlSource"
-  callback: "closingTagsAreUsed"
 contentPositioningShouldNotChangeMeaning:
   testability: 0.5
   title:
@@ -736,7 +727,6 @@ contentPositioningShouldNotChangeMeaning:
   tags:
     - "content"
     - "structure"
-  callback: "contentPositioningShouldNotChangeMeaning"
 cssDocumentMakesSenseStyleTurnedOff:
   testability: 0
   title:
@@ -893,7 +883,6 @@ definitionListsAreUsed:
           - "H48"
   tags:
     - "structure"
-  callback: "definitionListsAreUsed"
 doNotUseGraphicalSymbolToConveyInformation:
   testability: 1
   title:
@@ -910,7 +899,6 @@ doNotUseGraphicalSymbolToConveyInformation:
   tags:
     - "link"
     - "content"
-  callback: "doNotUseGraphicalSymbolToConveyInformation"
 doctypeProvided:
   testability: 1
   title:
@@ -922,7 +910,6 @@ doctypeProvided:
   guidelines: []
   tags:
     - "doctype"
-  callback: "doctypeProvided"
 documentAbbrIsUsed:
   testability: 0.5
   title:
@@ -941,7 +928,6 @@ documentAbbrIsUsed:
     - "content"
   components:
     - "acronym"
-  callback: "documentAbbrIsUsed"
 documentAcronymsHaveElement:
   testability: 0.5
   title:
@@ -960,7 +946,6 @@ documentAcronymsHaveElement:
     - "content"
   components:
     - "acronym"
-  callback: "documentAcronymsHaveElement"
 documentAutoRedirectNotUsed:
   testability: 1
   title:
@@ -1029,7 +1014,6 @@ documentIDsMustBeUnique:
   tags:
     - "document"
     - "semantics"
-  callback: "documentIDsMustBeUnique"
 documentIsWrittenClearly:
   testability: 0.5
   title:
@@ -1048,7 +1032,6 @@ documentIsWrittenClearly:
     - "content"
   components:
     - "textStatistics"
-  callback: "documentIsWrittenClearly"
 documentLangIsISO639Standard:
   testability: 1
   title:
@@ -1067,7 +1050,6 @@ documentLangIsISO639Standard:
     - "language"
   strings:
     - "languageCodes"
-  callback: "documentLangIsISO639Standard"
 documentLangNotIdentified:
   testability: 1
   title:
@@ -1131,7 +1113,6 @@ documentStrictDocType:
   tags:
     - "document"
     - "doctype"
-  callback: "documentStrictDocType"
 documentTitleDescribesDocument:
   testability: 0
   title:
@@ -1183,7 +1164,6 @@ documentTitleIsShort:
   tags:
     - "document"
     - "head"
-  callback: "documentTitleIsShort"
 documentTitleNotEmpty:
   type: "placeholder"
   testability: 1
@@ -1223,7 +1203,6 @@ documentValidatesToDocType:
   tags:
     - "document"
     - "doctype"
-  callback: "documentValidatesToDocType"
 documentVisualListsAreMarkedUp:
   testability: 1
   title:
@@ -1245,7 +1224,6 @@ documentVisualListsAreMarkedUp:
     - "content"
   strings:
     - "symbols"
-  callback: "documentVisualListsAreMarkedUp"
 domOrderMatchesVisualOrder:
   testability: 0.5
   title:
@@ -1276,7 +1254,6 @@ elementAttributesAreValid:
     4.1.1:
       techniques:
         - "F70"
-  callback: "elementAttributesAreValid"
 elementsDoNotHaveDuplicateAttributes:
   testability: 1
   title:
@@ -1292,7 +1269,6 @@ elementsDoNotHaveDuplicateAttributes:
     - "htmlSource"
   libraries:
     - "node-htmlparser/lib/htmlparser.js"
-  callback: "elementsDoNotHaveDuplicateAttributes"
 embedHasAssociatedNoEmbed:
   testability: 1
   title:
@@ -1306,7 +1282,6 @@ embedHasAssociatedNoEmbed:
     - "object"
     - "embed"
     - "content"
-  callback: "embedHasAssociatedNoEmbed"
 embedMustHaveAltAttribute:
   testability: 1
   title:
@@ -1337,7 +1312,6 @@ emoticonsExcessiveUse:
     - "language"
     - "emoticons"
     - "content"
-  callback: "emoticonsExcessiveUse"
 emoticonsMissingAbbr:
   testability: 1
   title:
@@ -1355,7 +1329,6 @@ emoticonsMissingAbbr:
     - "language"
     - "emoticons"
     - "content"
-  callback: "emoticonsMissingAbbr"
 fieldsetHasLabel:
   testability: 1
   title:
@@ -1444,7 +1417,6 @@ focusIndicatorVisible:
   components:
     - "color"
     - "convertToPx"
-  callback: "focusIndicatorVisible"
 fontIsNotUsed:
   testability: 1
   title:
@@ -1546,7 +1518,6 @@ formWithRequiredLabel:
   tags:
     - "form"
     - "content"
-  callback: "formWithRequiredLabel"
 # frameIsNotUsed:
 #   testability: 1
 #   title:
@@ -1882,7 +1853,6 @@ headersAttrRefersToATableCell:
     - "headers"
     - "td"
     - "th"
-  callback: "headersAttrRefersToATableCell"
 headerTextIsTooLong:
   type: "custom"
   testability: 1
@@ -1899,7 +1869,6 @@ headerTextIsTooLong:
           - "H42"
   tags:
     - "content"
-  callback: "headerTextIsTooLong"
 headersHaveText:
   type: "placeholder"
   testability: 1
@@ -1945,7 +1914,6 @@ headersUseToMarkSections:
   tags:
     - "header"
     - "content"
-  callback: "headersUseToMarkSections"
 headersUsedToIndicateMainContent:
   testability: 0.5
   title:
@@ -1962,7 +1930,6 @@ headersUsedToIndicateMainContent:
   tags:
     - "header"
     - "content"
-  callback: "headersUsedToIndicateMainContent"
 iIsNotUsed:
   testability: 1
   title:
@@ -1991,7 +1958,6 @@ idRefHasCorrespondingId:
       4.1.1:
         techniques:
           - "F17"
-  callback: "idRefHasCorrespondingId"
 idrefsHasCorrespondingId:
   testability: 1
   title:
@@ -2008,7 +1974,6 @@ idrefsHasCorrespondingId:
       4.1.1:
         techniques:
           - "F17"
-  callback: "idrefsHasCorrespondingId"
 iframeMustNotHaveLongdesc:
   testability: 1
   title:
@@ -2081,7 +2046,6 @@ imgAltIsDifferent:
   tags:
     - "image"
     - "content"
-  callback: "imgAltIsDifferent"
 # imgAltIsSameInText:
 #   testability: 0
 #   title:
@@ -2119,7 +2083,6 @@ imgAltIsTooLong:
   tags:
     - "image"
     - "content"
-  callback: "imgAltIsTooLong"
 imgAltNotEmptyInAnchor:
   testability: 1
   title:
@@ -2138,7 +2101,6 @@ imgAltNotEmptyInAnchor:
   tags:
     - "image"
     - "content"
-  callback: "imgAltNotEmptyInAnchor"
 imgAltNotPlaceHolder:
   type: "placeholder"
   testability: 1
@@ -2178,7 +2140,6 @@ imgAltTextNotRedundant:
   tags:
     - "image"
     - "content"
-  callback: "imgAltTextNotRedundant"
 imgGifNoFlicker:
   testability: 1
   title:
@@ -2197,7 +2158,6 @@ imgGifNoFlicker:
   tags:
     - "image"
     - "content"
-  callback: "imgGifNoFlicker"
 imgHasAlt:
   testability: 1
   title:
@@ -2236,7 +2196,6 @@ imgHasLongDesc:
   tags:
     - "image"
     - "content"
-  callback: "imgHasLongDesc"
 imgImportantNoSpacerAlt:
   testability: 0.5
   title:
@@ -2249,7 +2208,6 @@ imgImportantNoSpacerAlt:
   tags:
     - "image"
     - "content"
-  callback: "imgImportantNoSpacerAlt"
 imgMapAreasHaveDuplicateLink:
   testability: 1
   title:
@@ -2265,7 +2223,6 @@ imgMapAreasHaveDuplicateLink:
   tags:
     - "image"
     - "imagemap"
-  callback: "imgMapAreasHaveDuplicateLink"
 imgNonDecorativeHasAlt:
   testability: 0.5
   title:
@@ -2284,7 +2241,6 @@ imgNonDecorativeHasAlt:
   tags:
     - "image"
     - "content"
-  callback: "imgNonDecorativeHasAlt"
 # imgNotReferredToByColorAlone:
 #   testability: 0
 #   title:
@@ -2360,7 +2316,6 @@ imgWithMathShouldHaveMathEquivalent:
   tags:
     - "image"
     - "content"
-  callback: "imgWithMathShouldHaveMathEquivalent"
 inputCheckboxHasTabIndex:
   type: "placeholder"
   testability: 1
@@ -2395,7 +2350,6 @@ inputCheckboxRequiresFieldset:
   tags:
     - "form"
     - "content"
-  callback: "inputCheckboxRequiresFieldset"
 # inputDoesNotUseColorAlone:
 #   testability: 0
 #   title:
@@ -2476,7 +2430,6 @@ inputImageAltIsNotFileName:
     - "form"
     - "image"
     - "content"
-  callback: "inputImageAltIsNotFileName"
 inputImageAltIsNotPlaceholder:
   type: "placeholder"
   testability: 1
@@ -2529,7 +2482,6 @@ inputImageAltIsShort:
     - "form"
     - "image"
     - "content"
-  callback: "inputImageAltIsShort"
 inputImageAltNotRedundant:
   testability: 1
   title:
@@ -2549,7 +2501,6 @@ inputImageAltNotRedundant:
     - "content"
   strings:
     - "redundant.inputImage"
-  callback: "inputImageAltNotRedundant"
 inputImageHasAlt:
   testability: 1
   title:
@@ -2768,7 +2719,6 @@ inputWithoutLabelHasTitle:
     - "content"
   components:
     - "placeholder"
-  callback: "inputWithoutLabelHasTitle"
 labelDoesNotContainInput:
   testability: 1
   title:
@@ -2800,7 +2750,6 @@ labelMustBeUnique:
   tags:
     - "form"
     - "content"
-  callback: "labelMustBeUnique"
 labelMustNotBeEmpty:
   type: "placeholder"
   testability: 1
@@ -2845,7 +2794,6 @@ labelsAreAssignedToAnInput:
   tags:
     - "form"
     - "content"
-  callback: "labelsAreAssignedToAnInput"
 languageChangesAreIdentified:
   testability: 0.5
   title:
@@ -2862,7 +2810,6 @@ languageChangesAreIdentified:
   tags:
     - "language"
     - "content"
-  callback: "languageChangesAreIdentified"
   components:
     - "language"
 languageDirAttributeIsUsed:
@@ -2881,7 +2828,6 @@ languageDirAttributeIsUsed:
   tags:
     - "language"
     - "content"
-  callback: "languageDirAttributeIsUsed"
   components:
     - "language"
 languageDirectionPunctuation:
@@ -2900,7 +2846,6 @@ languageDirectionPunctuation:
   tags:
     - "language"
     - "content"
-  callback: "languageDirectionPunctuation"
   components:
     - "language"
 languageUnicodeDirection:
@@ -2919,7 +2864,6 @@ languageUnicodeDirection:
   tags:
     - "language"
     - "content"
-  callback: "languageUnicodeDirection"
   components:
     - "language"
 # legendDescribesListOfChoices:
@@ -3030,7 +2974,6 @@ linkHasAUniqueContext:
   tags:
     - "link"
     - "content"
-  callback: "linkHasAUniqueContext"
 # linkUsedForAlternateContent:
 #   testability: 0
 #   title:
@@ -3070,7 +3013,6 @@ listNotUsedForFormatting:
   tags:
     - "list"
     - "content"
-  callback: "listNotUsedForFormatting"
 listOfLinksUseList:
   testability: 1
   title:
@@ -3087,7 +3029,6 @@ listOfLinksUseList:
   tags:
     - "link"
     - "content"
-  callback: "listOfLinksUseList"
 marqueeIsNotUsed:
   testability: 1
   title:
@@ -3128,7 +3069,6 @@ newWindowIsOpened:
   tags:
     - "javascript"
     - "html"
-  callback: "newWindowIsOpened"
 # noembedHasEquivalentContent:
 #   testability: 0
 #   title:
@@ -3372,7 +3312,6 @@ pNotUsedAsHeader:
   tags:
     - "header"
     - "content"
-  callback: "pNotUsedAsHeader"
 paragraphIsWrittenClearly:
   testability: 0.5
   guidelines:
@@ -3385,7 +3324,6 @@ paragraphIsWrittenClearly:
     - "content"
   components:
     - "textStatistics"
-  callback: "paragraphIsWrittenClearly"
 passwordHasLabel:
   type: "label"
   testability: 1
@@ -3461,7 +3399,6 @@ preShouldNotBeUsedForTabularLayout:
   tags:
     - "table"
     - "content"
-  callback: "preShouldNotBeUsedForTabularLayout"
 radioHasLabel:
   type: "label"
   testability: 1
@@ -3556,7 +3493,6 @@ scriptFocusIndicatorVisible:
   components:
     - "color"
     - "convertToPx"
-  callback: "scriptFocusIndicatorVisible"
 # scriptContentAccessibleWithScriptsTurnedOff:
 #   testability: 0
 #   title:
@@ -3654,7 +3590,6 @@ scriptOnFocusChangeBackgroundOrBorder:
           - "SCR31"
   tags:
     - "content"
-  callback: "scriptOnFocusChangeBackgroundOrBorder"
 scriptOnmousedownRequiresOnKeypress:
   type: "event"
   testability: 1
@@ -3924,7 +3859,6 @@ selectJumpMenu:
     - "content"
   components:
     - "hasEventListener"
-  callback: "selectJumpMenu"
 # selectWithOptionsHasOptgroup:
 #   testability: 0.5
 #   title:
@@ -3961,7 +3895,6 @@ siteMap:
     - "document"
   strings:
     - "siteMap"
-  callback: "siteMap"
 skipToContentLinkProvided:
   testability: 0.5
   title:
@@ -3981,7 +3914,6 @@ skipToContentLinkProvided:
     - "document"
   strings:
     - "skipContent"
-  callback: "skipToContentLinkProvided"
 svgContainsTitle:
   testability: 1
   title:
@@ -4014,7 +3946,6 @@ tabIndexFollowsLogicalOrder:
           - "H4"
   tags:
     - "document"
-  callback: "tabIndexFollowsLogicalOrder"
 tableAxisHasCorrespondingId:
   testability: 1
   title:
@@ -4031,7 +3962,6 @@ tableAxisHasCorrespondingId:
       4.1.1:
         techniques:
           - "F17"
-  callback: "tableAxisHasCorrespondingId"
 # tableCaptionIdentifiesTable:
 #   testability: 0
 #   title:
@@ -4094,7 +4024,6 @@ tableHeaderLabelMustBeTerse:
   tags:
     - "table"
     - "content"
-  callback: "tableHeaderLabelMustBeTerse"
 # tableIsGrouped:
 #   testability: 0.5
 #   title:
@@ -4124,7 +4053,6 @@ tableLayoutDataShouldNotHaveTh:
     - "table"
     - "layout"
     - "content"
-  callback: "tableLayoutDataShouldNotHaveTh"
 tableLayoutHasNoCaption:
   testability: 1
   title:
@@ -4142,7 +4070,6 @@ tableLayoutHasNoCaption:
     - "table"
     - "layout"
     - "content"
-  callback: "tableLayoutHasNoCaption"
 tableLayoutHasNoSummary:
   testability: 0.5
   title:
@@ -4160,7 +4087,6 @@ tableLayoutHasNoSummary:
     - "table"
     - "layout"
     - "content"
-  callback: "tableLayoutHasNoSummary"
 tableLayoutMakesSenseLinearized:
   testability: 0
   title:
@@ -4181,7 +4107,6 @@ tableLayoutMakesSenseLinearized:
     - "table"
     - "layout"
     - "content"
-  callback: "tableLayoutMakesSenseLinearized"
 tableNotUsedForLayout:
   testability: 0.5
   title:
@@ -4199,7 +4124,6 @@ tableNotUsedForLayout:
     - "table"
     - "layout"
     - "content"
-  callback: "tableNotUsedForLayout"
 tableShouldUseHeaderIDs:
   testability: 0.5
   title:
@@ -4216,7 +4140,6 @@ tableShouldUseHeaderIDs:
   tags:
     - "table"
     - "content"
-  callback: "tableShouldUseHeaderIDs"
 # tableSummaryDescribesTable:
 #   testability: 0
 #   title:
@@ -4241,7 +4164,6 @@ tableSummaryDoesNotDuplicateCaption:
   tags:
     - "table"
     - "content"
-  callback: "tableSummaryDoesNotDuplicateCaption"
 tableSummaryIsEmpty:
   type: "placeholder"
   testability: 0.5
@@ -4266,7 +4188,6 @@ tableSummaryIsNotTooLong:
   tags:
     - "table"
     - "content"
-  callback: "tableSummaryIsNotTooLong"
 # tableSummaryIsSufficient:
 #   testability: 0
 #   title:
@@ -4291,7 +4212,6 @@ tableUseColGroup:
   tags:
     - "table"
     - "content"
-  callback: "tableUseColGroup"
 tableUsesAbbreviationForHeader:
   testability: 0
   title:
@@ -4304,7 +4224,6 @@ tableUsesAbbreviationForHeader:
   tags:
     - "table"
     - "content"
-  callback: "tableUsesAbbreviationForHeader"
 tableUsesCaption:
   testability: 1
   title:
@@ -4337,7 +4256,6 @@ tableUsesScopeForRow:
   tags:
     - "table"
     - "content"
-  callback: "tableUsesScopeForRow"
 # tableWithBothHeadersUseScope:
 #   testability: 0.5
 #   title:
@@ -4368,7 +4286,6 @@ tableWithMoreHeadersUseID:
   tags:
     - "table"
     - "content"
-  callback: "tableWithMoreHeadersUseID"
 tagsAreNestedCorrectly:
   testability: 1
   title:
@@ -4386,7 +4303,6 @@ tagsAreNestedCorrectly:
     - "html"
   components:
       - "htmlSource"
-  callback: "tagsAreNestedCorrectly"
 tabularDataIsInTable:
   testability: 0.5
   title:
@@ -4409,7 +4325,6 @@ tabularDataIsInTable:
   tags:
     - "table"
     - "content"
-  callback: "tabularDataIsInTable"
 textIsNotSmall:
   testability: 0.5
   title:
@@ -4424,7 +4339,6 @@ textIsNotSmall:
     - "content"
   components:
     - "convertToPx"
-  callback: "textIsNotSmall"
 textareaHasAssociatedLabel:
   type: "label"
   testability: 1
@@ -4488,7 +4402,6 @@ userInputMayBeRequired:
   tags:
     - "form"
     - "input"
-  callback: "userInputMayBeRequired"
 videoMayBePresent:
   testability: 1
   title:
@@ -4501,7 +4414,6 @@ videoMayBePresent:
   tags:
     - "link"
     - "video"
-  callback: "videoMayBePresent"
 # videoProvidesCaptions:
 #   testability: 0.5
 #   title:
@@ -4546,7 +4458,6 @@ videosEmbeddedOrLinkedNeedCaptions:
   components:
     - "video"
     - "language"
-  callback: "videosEmbeddedOrLinkedNeedCaptions"
 whiteSpaceInWord:
   testability: 0.5
   title:
@@ -4563,7 +4474,6 @@ whiteSpaceInWord:
           - "C8"
   tags:
     - "content"
-  callback: "whiteSpaceInWord"
 whiteSpaceNotUsedForFormatting:
   testability: 0.5
   title:
@@ -4579,7 +4489,6 @@ whiteSpaceNotUsedForFormatting:
           - "G57"
   tags:
     - "content"
-  callback: "whiteSpaceNotUsedForFormatting"
 KINGStrongList:
   testability: 1
   title:
@@ -4589,7 +4498,6 @@ KINGStrongList:
   guidelines: []
   tags:
     - "KING"
-  callback: "KINGStrongList"
 KINGUseCurrencyAsSymbol:
   testability: 1
   title:
@@ -4599,7 +4507,6 @@ KINGUseCurrencyAsSymbol:
   guidelines: []
   tags:
     - "KING"
-  callback: "KINGUseCurrencyAsSymbol"
 KINGUseLongDateFormat:
   testability: 1
   title:
@@ -4609,7 +4516,6 @@ KINGUseLongDateFormat:
   guidelines: []
   tags:
     - "KING"
-  callback: "KINGUseLongDateFormat"
 KINGUsePercentageWithSymbol:
   testability: 1
   title:
@@ -4619,4 +4525,3 @@ KINGUsePercentageWithSymbol:
   guidelines: []
   tags:
     - "KING"
-  callback: "KINGUsePercentageWithSymbol"
