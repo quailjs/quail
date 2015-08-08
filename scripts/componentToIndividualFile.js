@@ -38,10 +38,10 @@ fs.readFile(path.join(__dirname, '..', 'test', 'assessmentSpecs', 'templates', '
                 var optsArray = [];
                 for (var key in opts) {
                   if (opts.hasOwnProperty(key)) {
-                    optsArray.push(key + ': ' + opts[key]);
+                    optsArray.push(key + ': \'' + opts[key] + '\'');
                   }
                 }
-                return optsArray.join(',\n');
+                return optsArray.join(',\n    ');
               }());
               var newFile = template
                 .replace('%name%', key)
@@ -56,14 +56,14 @@ fs.readFile(path.join(__dirname, '..', 'test', 'assessmentSpecs', 'templates', '
                 }
                 // Close the file.
                 fs.close(fd, function() {
-                  console.log('Wrote file %s.', [key + '.js']);
+                  console.log('Wrote file %s.', (key + '.js'));
                 });
               });
             }
           });
         }
         else {
-          console.warn('The file %s already exists.', [key + '.js']);
+          console.warn('The file %s already exists.', (key + '.js'));
           fs.close(fd);
         }
       });
