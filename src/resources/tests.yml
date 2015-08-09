@@ -2543,22 +2543,6 @@ languageUnicodeDirection:
     - "content"
   components:
     - "language"
-# legendDescribesListOfChoices:
-#   testability: 0
-#   title:
-#     en: "All \"legend\" elements must describe the group of choices"
-#     nl: "Alle \"legend\"-elementen moeten een groep keuzes beschrijven"
-#   description:
-#     en: "If a <code>legend</code> element is used in a fieldset, the <code>legend</code> content must describe the group of choices."
-#     nl: "Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> content de groep keuzes beschrijven."
-#   guidelines:
-#     wcag:
-#       2.4.6:
-#         techniques:
-#           - "G131"
-#   tags:
-#     - "form"
-#     - "content"
 legendTextNotEmpty:
   testability: 1
   title:
