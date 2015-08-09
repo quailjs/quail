@@ -135,7 +135,7 @@
   "_inputImageNotDecorative",
   "_inputTextHasLabel",
   "inputTextHasValue",
-  "_inputTextValueNotEmpty",
+  "inputTextValueNotEmpty",
   "_inputWithoutLabelHasTitle",
   "labelDoesNotContainInput",
   "_labelMustBeUnique",

@@ -135,7 +135,7 @@
 - [x] inputImageNotDecorative
 - [x] inputTextHasLabel
 - [x] inputTextHasValue
-- [ ] inputTextValueNotEmpty
+- [x] inputTextValueNotEmpty
 - [ ] inputWithoutLabelHasTitle
 - [ ] KINGStrongList
 - [ ] KINGUseCurrencyAsSymbol

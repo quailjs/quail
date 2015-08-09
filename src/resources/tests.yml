@@ -2500,7 +2500,6 @@ inputTextHasValue:
     - "form"
     - "content"
 inputTextValueNotEmpty:
-  type: "placeholder"
   testability: 1
   title:
     en: "Text input elements require a non-whitespace default text"
@@ -2512,11 +2511,6 @@ inputTextValueNotEmpty:
   tags:
     - "form"
     - "content"
-  components:
-    - "placeholder"
-  options:
-    attribute: "value"
-    empty: true
 inputWithoutLabelHasTitle:
   testability: 1
   title:
