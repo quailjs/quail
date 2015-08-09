@@ -139,7 +139,7 @@
 - [x] legendTextNotPlaceholder
 - [x] liDontUseImageForBullet
 - [x] linkDoesNotChangeContextOnFocus
-- [ ] linkHasAUniqueContext
+- [x] linkHasAUniqueContext
 - [x] linkUsedForAlternateContent
 - [x] linkUsedToDescribeNavigation
 - [ ] listNotUsedForFormatting

@@ -121,7 +121,7 @@
   "legendTextNotEmpty",
   "legendTextNotPlaceholder",
   "liDontUseImageForBullet",
-  "_linkHasAUniqueContext",
+  "linkHasAUniqueContext",
   "_linkUsedForAlternateContent",
   "_linkUsedToDescribeNavigation",
   "_listNotUsedForFormatting",
