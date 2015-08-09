@@ -167,7 +167,6 @@
   "textIsNotSmall",
   "textareaHasAssociatedLabel",
   "videoMayBePresent",
-  "videoProvidesCaptions",
   "videosEmbeddedOrLinkedNeedCaptions",
   "whiteSpaceInWord",
   "whiteSpaceNotUsedForFormatting"
