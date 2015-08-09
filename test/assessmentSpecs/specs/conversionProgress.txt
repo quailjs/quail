@@ -182,7 +182,7 @@
 - [x] scriptsDoNotUseColorAlone
 - [x] selectDoesNotChangeContext
 - [x] selectHasAssociatedLabel
-- [ ] selectJumpMenu
+- [x] selectJumpMenu
 - [x] selectWithOptionsHasOptgroup
 - [ ] siteMap
 - [ ] skipToContentLinkProvided
