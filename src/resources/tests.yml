@@ -3581,12 +3581,6 @@ scriptOnmousedownRequiresOnKeypress:
           - "SCR20"
   tags:
     - "javascript"
-  components:
-    - "event"
-    - "hasEventListener"
-  options:
-    correspondingEvent: "onkeydown"
-    searchEvent: "onmousedown"
 scriptOnmousemove:
   type: "event"
   testability: 1
@@ -3611,12 +3605,6 @@ scriptOnmousemove:
           - "SCR20"
   tags:
     - "javascript"
-  components:
-    - "event"
-    - "hasEventListener"
-  options:
-    correspondingEvent: "onkeypress"
-    searchEvent: "onmousemove"
 scriptOnmouseoutHasOnmouseblur:
   type: "event"
   testability: 1

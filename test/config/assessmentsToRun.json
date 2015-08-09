@@ -195,7 +195,7 @@
   "scriptOndblclickRequiresOnKeypress",
   "_scriptOnFocusChangeBackgroundOrBorder",
   "_scriptOnmousedownRequiresOnKeypress",
-  "_scriptOnmousemove",
+  "scriptOnmousemove",
   "scriptOnmouseoutHasOnmouseblur",
   "scriptOnmouseoverHasOnfocus",
   "scriptOnmouseupHasOnkeyup",

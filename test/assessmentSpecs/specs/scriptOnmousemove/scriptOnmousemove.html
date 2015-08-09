@@ -1,15 +1,14 @@
 <!doctype html>
 <html>
-<head>
-	<title>scriptOnmousemove</title>
-</head>
-<body>
-	<div data-expected="fail">
-		<input name="num" onmousemove="'foo';" value="0" class="quail-failed-element"/>
-	</div>
-	<div data-expected="pass">
-			<input name="num" value="0"/>
-	</div>
-
+  <head>
+    <title>scriptOnmousemove</title>
+  </head>
+  <body>
+    <div data-expected="fail">
+      <input id="assert-1" name="num" onmousemove="'foo';" value="0" />
+    </div>
+    <div data-expected="pass">
+        <input id="assert-2" onmousemove="'foo';" onkeypress="'bar';" name="num" value="0"/>
+    </div>
   </body>
 </html>
