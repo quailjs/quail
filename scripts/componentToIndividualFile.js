@@ -16,7 +16,7 @@ fs.readFile(path.join(__dirname, '..', 'test', 'assessmentSpecs', 'templates', '
   }
   Object.keys(assessments).forEach(function (key) {
     var a = assessments[key];
-    if (a.type === 'label') {
+    if (a.type === 'placeholder') {
       var filePath = path.join(__dirname, '..', 'lib', 'assessments', key + '.js');
       // Stat if an assessment script exists.
       // Raise a warning if it does.
