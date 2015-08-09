@@ -64,7 +64,7 @@
   "_documentTitleDescribesDocument",
   "documentTitleIsNotPlaceholder",
   "_documentTitleIsShort",
-  "_documentTitleNotEmpty",
+  "documentTitleNotEmpty",
   "_documentValidatesToDocType",
   "documentVisualListsAreMarkedUp",
   "_domOrderMatchesVisualOrder",

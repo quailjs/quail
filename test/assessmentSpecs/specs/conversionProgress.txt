@@ -65,7 +65,7 @@
 - [x] documentTitleDescribesDocument
 - [x] documentTitleIsNotPlaceholder
 - [ ] documentTitleIsShort
-- [ ] documentTitleNotEmpty
+- [x] documentTitleNotEmpty
 - [ ] documentValidatesToDocType
 - [x] documentVisualListsAreMarkedUp
 - [x] domOrderMatchesVisualOrder

@@ -1128,7 +1128,6 @@ documentTitleIsShort:
     - "document"
     - "head"
 documentTitleNotEmpty:
-  type: "placeholder"
   testability: 1
   title:
     en: "The document should not have an empty title"
@@ -1145,11 +1144,6 @@ documentTitleNotEmpty:
   tags:
     - "document"
     - "head"
-  components:
-    - "placeholder"
-  options:
-    content: true
-    empty: true
 documentValidatesToDocType:
   testability: 1
   title:
