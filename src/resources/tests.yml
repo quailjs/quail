@@ -3707,12 +3707,6 @@ scriptOnmouseupHasOnkeyup:
           - "SCR20"
   tags:
     - "javascript"
-  components:
-    - "event"
-    - "hasEventListener"
-  options:
-    correspondingEvent: "onkeyup"
-    searchEvent: "onmouseup"
 # scriptUIMustBeAccessible:
 #   testability: 0
 #   title:

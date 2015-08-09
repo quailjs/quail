@@ -201,7 +201,7 @@
 - [ ] scriptOnmousemove
 - [ ] scriptOnmouseoutHasOnmouseblur
 - [ ] scriptOnmouseoverHasOnfocus
-- [ ] scriptOnmouseupHasOnkeyup
+- [x] scriptOnmouseupHasOnkeyup
 - [x] scriptUIMustBeAccessible
 - [x] scriptsDoNotFlicker
 - [x] scriptsDoNotUseColorAlone

@@ -198,7 +198,7 @@
   "_scriptOnmousemove",
   "_scriptOnmouseoutHasOnmouseblur",
   "_scriptOnmouseoverHasOnfocus",
-  "_scriptOnmouseupHasOnkeyup",
+  "scriptOnmouseupHasOnkeyup",
   "_scriptUIMustBeAccessible",
   "_scriptsDoNotFlicker",
   "_scriptsDoNotUseColorAlone",

@@ -1,16 +1,14 @@
 <!doctype html>
 <html>
-<head>
-	<title>scriptOnmouseupHasOnkeyup</title>
-</head>
-<body>
-	<div data-expected="fail">
-		<input name="num" class="quail-failed-element" onmouseup="'foo';" value="0"/>
-	</div>
-	<div data-expected="pass">
-
-		<input name="num" onmouseup="'foo';" onkeyup="'bar';" value="0"/>
-	</div>
-
+  <head>
+    <title>scriptOnmouseupHasOnkeyup</title>
+  </head>
+  <body>
+    <div data-expected="fail">
+      <input id="assert-1" name="num" onmouseup="'foo';" value="0"/>
+    </div>
+    <div data-expected="pass">
+      <input id="assert-2" name="num" onmouseup="'foo';" onkeyup="'bar';" value="0"/>
+    </div>
   </body>
 </html>
