@@ -70,8 +70,6 @@
 - [ ] elementAttributesAreValid
 - [ ] embedHasAssociatedNoEmbed
 - [x] embedMustHaveAltAttribute
-- [ ] emoticonsExcessiveUse
-- [ ] emoticonsMissingAbbr
 - [ ] fieldsetHasLabel
 - [x] fileHasLabel
 - [ ] focusIndicatorVisible
