@@ -7,7 +7,7 @@
     <div data-expected="fail">
         <form action="http://somesite.com/prog/adduser" method="post">
             <p>
-                <input type="text" title="first name" name="firstname" tabindex="1" class="quail-failed-element"/>
+                <input id="assert-1" type="text" title="first name" name="firstname" tabindex="1" />
             </p>
         </form>
     </div>
@@ -15,8 +15,8 @@
     <div data-expected="fail">
         <form>
             Name:
-            <input type="text" name="name" id="name" class="quail-failed-element">
-            <input type="submit" value="Send">
+            <input id="assert-2" type="text" name="name" >
+            <input id="assert-3" type="submit" value="Send">
         </form>
     </div>
 
@@ -24,7 +24,7 @@
         <form action="http://somesite.com/prog/adduser" method="post">
             <p>
                 <label>First name:</label>
-                <input type="text" name="firstname" tabindex="1" class="quail-failed-element"/>
+                <input id="assert-4" type="text" name="firstname" tabindex="1" />
             </p>
         </form>
     </div>
@@ -34,7 +34,7 @@
             <p>
                 <label>
                     First name:
-                    <input type="text" name="firstname" />
+                    <input id="assert-5" type="text" name="firstname" />
                 </label>
             </p>
         </form>
@@ -43,9 +43,8 @@
     <div data-expected="pass">
         <form action="http://somesite.com/prog/adduser" method="post">
             <p>
-                <label for="firstname">First name:</label>
-                <input type="text" name="firstname" id="firstname"
-                tabindex="1" />
+                <label for="assert-6">First name:</label>
+                <input id="assert-6" type="text" name="firstname" tabindex="1" />
             </p>
         </form>
     </div>

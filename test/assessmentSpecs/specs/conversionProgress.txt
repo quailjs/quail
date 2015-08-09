@@ -138,7 +138,7 @@
 - [ ] inputPasswordHasTabIndex
 - [ ] inputRadioHasTabIndex
 - [ ] inputSubmitHasTabIndex
-- [ ] inputTextHasLabel
+- [x] inputTextHasLabel
 - [ ] inputTextHasTabIndex
 - [ ] inputTextHasValue
 - [ ] inputTextValueNotEmpty
