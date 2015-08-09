@@ -97,11 +97,8 @@
 - [ ] idrefsHasCorrespondingId
 - [x] iframeMustNotHaveLongdesc
 - [x] imageMapServerSide
-- [x] imgAltEmptyForDecorativeImages
-- [x] imgAltIdentifiesLinkDestination
 - [x] imgAltIsDifferent
-- [x] imgAltIsSameInText
-- [ ] imgAltIsTooLong
+- [x] imgAltIsTooLong
 - [ ] imgAltNotEmptyInAnchor
 - [x] imgAltNotPlaceHolder
 - [ ] imgAltTextNotRedundant
