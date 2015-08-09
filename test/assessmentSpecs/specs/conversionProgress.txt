@@ -39,9 +39,9 @@
 - [ ] checkboxHasLabel
 - [ ] checkboxLabelIsNearby
 - [ ] closingTagsAreUsed
-- [ ] colorBackgroundGradientContrast
-- [ ] colorBackgroundImageContrast
-- [ ] colorElementBehindBackgroundGradientContrast
+- [x] colorBackgroundGradientContrast
+- [x] colorBackgroundImageContrast
+- [x] colorElementBehindBackgroundGradientContrast
 - [ ] colorElementBehindBackgroundImageContrast
 - [ ] colorElementBehindContrast
 - [ ] colorFontContrast
