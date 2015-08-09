@@ -2004,18 +2004,6 @@ imgAltNotPlaceHolder:
   tags:
     - "image"
     - "content"
-imgAltTextNotRedundant:
-  testability: 1
-  title:
-    en: "Unless the image files are the same, no image should contain redundant alt text"
-    nl: "Tenzij afbeeldingen hetzelfde zijn, mag geen enkele afbeelding dezelfde alttekst hebben"
-  description:
-    en: "Every distinct image on a page should have it's own alt text which is different than all the others on the page to avoid redundancy and confusion."
-    nl: "Elke unieke afbeelding op een pagina moet zijn eigen alttekst hebben die anders is dan die van andere afbeeldingen op de pagina om dubbeling en verwarring te voorkomen."
-  guidelines: []
-  tags:
-    - "image"
-    - "content"
 imgGifNoFlicker:
   testability: 1
   title:

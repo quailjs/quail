@@ -101,7 +101,6 @@
   "imgAltIsTooLong",
   "imgAltNotEmptyInAnchor",
   "imgAltNotPlaceHolder",
-  "_imgAltTextNotRedundant",
   "_imgGifNoFlicker",
   "imgHasAlt",
   "_imgHasLongDesc",
