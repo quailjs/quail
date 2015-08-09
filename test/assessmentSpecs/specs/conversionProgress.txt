@@ -59,7 +59,7 @@
 - [x] documentLangNotIdentified
 - [x] documentMetaNotUsedWithTimeout
 - [x] documentReadingDirection
-- [ ] documentStrictDocType
+- [x] documentStrictDocType
 - [x] documentTitleDescribesDocument
 - [x] documentTitleIsNotPlaceholder
 - [ ] documentTitleIsShort
