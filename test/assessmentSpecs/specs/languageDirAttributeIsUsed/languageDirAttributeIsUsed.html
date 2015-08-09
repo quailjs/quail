@@ -7,7 +7,7 @@
 <body>
     <div data-expected="div[dir='ltr']:ignore|p:ignore|span:fail">
         <div dir="ltr">
-            <p class="quail-failed-element">
+            <p id="assert-1" class="quail-failed-element">
                 The title says "
                 <span lang="he" dir="rtl">פעילות הבינאום</span>
                 , W3C" in Hebrew. This should also be wrapped in an inline element: "עפּעס אַנדערש."
@@ -17,26 +17,26 @@
 
     <div data-expected="fail">
         <div dir="rtl">
-            <p class="quail-failed-element">וואַכטל זענען זייער "some english text" קיוט איך טראַכטן.</p>
+            <p id="assert-2" class="quail-failed-element">וואַכטל זענען זייער "some english text" קיוט איך טראַכטן.</p>
         </div>
     </div>
 
     <div data-expected="fail">
         <div dir="rtl">
             <blockquote>וואַכטל זענען זייער קיוט איך טראַכטן.</blockquote>
-            <p class="quail-failed-element">וואַכטל זענען זייער "some english text" קיוט איך טראַכטן.</p>
+            <p id="assert-3" class="quail-failed-element">וואַכטל זענען זייער "some english text" קיוט איך טראַכטן.</p>
         </div>
     </div>
 
     <div data-expected="fail">
         <div dir="ltr">
-            <p class="quail-failed-element">The title says "פעילות הבינאום, W3C" in Hebrew.</p>
+            <p id="assert-4" class="quail-failed-element">The title says "פעילות הבינאום, W3C" in Hebrew.</p>
         </div>
     </div>
 
     <div data-expected="pass">
         <div dir="rtl">
-            <p>
+            <p id="assert-5">
                 וואַכטל זענען זייער "
                 <span lang="en" dir="ltr">some english text</span>
                 " קיוט איך טראַכטן.
@@ -45,7 +45,7 @@
     </div>
 
     <div data-expected="pass">
-        <p>
+        <p id="assert-6">
             The title says "
             <span lang="he" dir="rtl">פעילות הבינאום</span>
             , W3C" in Hebrew.

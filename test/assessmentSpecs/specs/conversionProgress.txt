@@ -131,7 +131,7 @@
 - [x] labelMustNotBeEmpty
 - [x] labelsAreAssignedToAnInput
 - [x] languageChangesAreIdentified
-- [ ] languageDirAttributeIsUsed
+- [x] languageDirAttributeIsUsed
 - [ ] languageDirectionPunctuation
 - [ ] languageUnicodeDirection
 - [x] legendDescribesListOfChoices
