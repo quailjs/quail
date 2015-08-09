@@ -165,7 +165,7 @@
 - [x] objectWithClassIDHasNoText
 - [x] pNotUsedAsHeader
 - [x] passwordHasLabel
-- [ ] preShouldNotBeUsedForTabularLayout
+- [x] preShouldNotBeUsedForTabularLayout
 - [x] radioHasLabel
 - [x] radioMarkedWithFieldgroupAndLegend
 - [x] scriptContentAccessibleWithScriptsTurnedOff
