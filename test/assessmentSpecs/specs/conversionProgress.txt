@@ -183,7 +183,6 @@
 - [x] selectDoesNotChangeContext
 - [x] selectHasAssociatedLabel
 - [x] selectJumpMenu
-- [x] selectWithOptionsHasOptgroup
 - [ ] siteMap
 - [ ] skipToContentLinkProvided
 - [x] svgContainsTitle

@@ -3380,22 +3380,6 @@ selectJumpMenu:
     - "content"
   components:
     - "hasEventListener"
-# selectWithOptionsHasOptgroup:
-#   testability: 0.5
-#   title:
-#     en: "Form select elements should use optgroups for long selections"
-#     nl: "Formulier select-elementen moeten optgroups gebruiken voor lange selecties"
-#   description:
-#     en: "If a select element has many options, use optgroups to help ease navigation."
-#     nl: "Als een select-element veel opties heeft, gebruik dan optgroups om navigatie makkelijker te maken."
-#   guidelines:
-#     wcag:
-#       1.3.1:
-#         techniques:
-#           - "H85"
-#   tags:
-#     - "form"
-#     - "content"
 siteMap:
   testability: 0
   title:
