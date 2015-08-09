@@ -6,14 +6,14 @@
 <body>
 	<div data-expected="fail">
 		<form action="http://www.test.com/testing" method="post">
-			<textarea title="comments" name="nametext" id="text1" rows="5" cols="40" class="quail-failed-element"></textarea>
+			<textarea title="comments" name="nametext" id="assert-1" rows="5" cols="40"></textarea>
 		</form>
 	</div>
 
 	<div data-expected="fail">
 		<form action="http://www.test.com/testing" method="post">
 			<label>Comments:</label>
-			<textarea name="nametext" id="text1" rows="5" cols="40" class="quail-failed-element"></textarea>
+			<textarea name="nametext" id="assert-2" rows="5" cols="40"></textarea>
 		</form>
 	</div>
 
@@ -21,15 +21,15 @@
 		<form action="http://www.test.com/testing" method="post">
 			<label>
 				Comments:
-				<textarea name="nametext" rows="5" cols="40"></textarea>
+				<textarea id="assert-3" name="nametext" rows="5" cols="40"></textarea>
 			</label>
 		</form>
 	</div>
 
 	<div data-expected="pass">
 		<form action="http://www.test.com/testing" method="post">
-			<label for="text1">Comments:</label>
-			<textarea name="nametext" id="text1" rows="5" cols="40"></textarea>
+			<label for="assert-4">Comments:</label>
+			<textarea name="nametext" id="assert-4" rows="5" cols="40"></textarea>
 		</form>
 	</div>
 

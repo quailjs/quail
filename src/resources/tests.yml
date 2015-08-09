@@ -4258,7 +4258,6 @@ textIsNotSmall:
   components:
     - "convertToPx"
 textareaHasAssociatedLabel:
-  type: "label"
   testability: 1
   title:
     en: "All textareas should have a corresponding label"
@@ -4291,8 +4290,6 @@ textareaHasAssociatedLabel:
   tags:
     - "form"
     - "content"
-  components:
-    - "label"
 textareaLabelPositionedClose:
   type: "labelProximity"
   testability: 0.5

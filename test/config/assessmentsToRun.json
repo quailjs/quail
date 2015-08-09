@@ -234,7 +234,7 @@
   "_tabularDataIsInTable",
   "_tagsAreNestedCorrectly",
   "_textIsNotSmall",
-  "_textareaHasAssociatedLabel",
+  "textareaHasAssociatedLabel",
   "_textareaLabelPositionedClose",
   "_userInputMayBeRequired",
   "_videoMayBePresent",
