@@ -48,7 +48,7 @@
 - [x] definitionListsAreUsed
 - [x] doNotUseGraphicalSymbolToConveyInformation
 - [x] doctypeProvided
-- [ ] documentAbbrIsUsed
+- [x] documentAbbrIsUsed
 - [ ] documentAcronymsHaveElement
 - [x] documentAutoRedirectNotUsed
 - [x] documentContentReadableWithoutStylesheets
