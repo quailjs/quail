@@ -125,7 +125,7 @@
 - [x] KINGStrongList
 - [x] KINGUseCurrencyAsSymbol
 - [x] KINGUseLongDateFormat
-- [ ] KINGUsePercentageWithSymbol
+- [x] KINGUsePercentageWithSymbol
 - [x] labelDoesNotContainInput
 - [ ] labelMustBeUnique
 - [x] labelMustNotBeEmpty
