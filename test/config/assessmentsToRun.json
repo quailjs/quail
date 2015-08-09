@@ -207,7 +207,7 @@
   "tableSummaryDoesNotDuplicateCaption",
   "tableSummaryIsEmpty",
   "tableSummaryIsNotTooLong",
-  "_tableUseColGroup",
+  "tableUseColGroup",
   "_tableUsesAbbreviationForHeader",
   "tableUsesCaption",
   "_tableUsesScopeForRow",

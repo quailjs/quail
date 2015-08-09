@@ -212,7 +212,7 @@
 - [x] tableSummaryDoesNotDuplicateCaption
 - [x] tableSummaryIsEmpty
 - [x] tableSummaryIsNotTooLong
-- [ ] tableUseColGroup
+- [x] tableUseColGroup
 - [ ] tableUsesAbbreviationForHeader
 - [x] tableUsesCaption
 - [ ] tableUsesScopeForRow
