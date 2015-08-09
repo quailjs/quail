@@ -3010,7 +3010,6 @@ objectMustHaveTitle:
     - "objects"
     - "content"
 objectMustHaveValidTitle:
-  type: "placeholder"
   testability: 1
   title:
     en: "Objects must not have an empty title attribute"
@@ -3022,11 +3021,6 @@ objectMustHaveValidTitle:
   tags:
     - "objects"
     - "content"
-  components:
-    - "placeholder"
-  options:
-    attribute: "title"
-    empty: true
 # objectProvidesMechanismToReturnToParent:
 #   testability: 0
 #   title:

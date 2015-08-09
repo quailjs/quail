@@ -172,7 +172,7 @@
 - [x] objectMustContainText
 - [x] objectMustHaveEmbed
 - [x] objectMustHaveTitle
-- [ ] objectMustHaveValidTitle
+- [x] objectMustHaveValidTitle
 - [x] objectProvidesMechanismToReturnToParent
 - [x] objectShouldHaveLongDescription
 - [x] objectTextUpdatesWhenObjectChanges

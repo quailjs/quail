@@ -1,23 +1,23 @@
 <!doctype html>
 <html>
 <head>
-	<title>objectMustHaveValidTitle</title>
+  <title>objectMustHaveValidTitle</title>
 </head>
 <body>
-	<div data-expected="fail">
-			<object classid="http://www.miamachina.it/analogclock.py" title="  " class="quail-failed-element">The text equivalent for the object should go here.</object>
-	</div>
+  <div data-expected="fail">
+      <object id="assert-1" classid="http://www.miamachina.it/analogclock.py" title="  ">The text equivalent for the object should go here.</object>
+  </div>
 
-	<div data-expected="fail">
-		<object classid="http://www.miamachina.it/analogclock.py" title="" class="quail-failed-element">
-			The text equivalent for the object should go here.
-		</object>
-	</div>
-	<div data-expected="pass">
-		<object classid="http://www.miamachina.it/analogclock.py" title="a clock object">
-			The text equivalent for the object should go here.
-		</object>
-	</div>
+  <div data-expected="fail">
+    <object id="assert-2" classid="http://www.miamachina.it/analogclock.py" title="">
+      The text equivalent for the object should go here.
+    </object>
+  </div>
+  <div data-expected="pass">
+    <object id="assert-3" classid="http://www.miamachina.it/analogclock.py" title="a clock object">
+      The text equivalent for the object should go here.
+    </object>
+  </div>
 
   </body>
 </html>

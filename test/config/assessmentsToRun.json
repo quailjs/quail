@@ -167,7 +167,7 @@
   "objectMustContainText",
   "objectMustHaveEmbed",
   "objectMustHaveTitle",
-  "_objectMustHaveValidTitle",
+  "objectMustHaveValidTitle",
   "_objectProvidesMechanismToReturnToParent",
   "_objectShouldHaveLongDescription",
   "_objectTextUpdatesWhenObjectChanges",
