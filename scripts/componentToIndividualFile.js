@@ -16,9 +16,7 @@ fs.readFile(path.join(__dirname, '..', 'test', 'assessmentSpecs', 'templates', '
   }
   Object.keys(assessments).forEach(function (key) {
     var a = assessments[key];
-    if (a.type === 'event' &&
-          a.components.indexOf('event') > -1 &&
-          a.components.indexOf('hasEventListener') > -1) {
+    if (a.type === 'label') {
       var filePath = path.join(__dirname, '..', 'lib', 'assessments', key + '.js');
       // Stat if an assessment script exists.
       // Raise a warning if it does.
@@ -31,7 +29,6 @@ fs.readFile(path.join(__dirname, '..', 'test', 'assessmentSpecs', 'templates', '
             }
             // Create the file.
             else {
-              debugger;
               var component = a.components[0];
               var options = (function () {
                 var opts = a.options || {};
