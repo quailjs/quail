@@ -206,7 +206,7 @@
 - [x] scriptsDoNotFlicker
 - [x] scriptsDoNotUseColorAlone
 - [x] selectDoesNotChangeContext
-- [ ] selectHasAssociatedLabel
+- [x] selectHasAssociatedLabel
 - [ ] selectJumpMenu
 - [x] selectWithOptionsHasOptgroup
 - [ ] siteMap

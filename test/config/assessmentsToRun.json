@@ -201,7 +201,7 @@
   "_scriptUIMustBeAccessible",
   "_scriptsDoNotFlicker",
   "_scriptsDoNotUseColorAlone",
-  "_selectHasAssociatedLabel",
+  "selectHasAssociatedLabel",
   "_selectJumpMenu",
   "_selectWithOptionsHasOptgroup",
   "_siteMap",

@@ -3715,7 +3715,6 @@ scriptOnmouseupHasOnkeyup:
 #     - "form"
 #     - "content"
 selectHasAssociatedLabel:
-  type: "label"
   testability: 1
   title:
     en: "All select elements have an explicitly associated label"
@@ -3748,8 +3747,6 @@ selectHasAssociatedLabel:
   tags:
     - "form"
     - "content"
-  components:
-    - "label"
 selectJumpMenu:
   testability: 0.5
   title:
