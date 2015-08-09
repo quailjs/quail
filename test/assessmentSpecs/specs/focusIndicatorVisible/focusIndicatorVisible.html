@@ -54,38 +54,38 @@
     </style>
 </head>
 <body>
-  <div class="quail-test limit-chrome" data-expected="fail" id="test-1">
+  <div data-expected="fail" id="test-1">
     <form>
-      <label for="input1">An input element with a bad focus</label>
-      <input type="text" id="input1" class="quail-failed-element"></form>
+      <label for="assert-1">An input element with a bad focus</label>
+      <input id="assert-1" type="text" id="input1" class="quail-failed-element"></form>
   </div>
 
-  <div class="quail-test limit-chrome" data-expected="fail" id="test-3">
-    <a href="somewhere">This link is highly visible when it gets focus</a>
+  <div data-expected="fail" id="test-3">
+    <a id="assert-2" href="somewhere">This link is highly visible when it gets focus</a>
     <form>
-      <label for="input3">An input element with a bad focus</label>
-      <input type="text" id="input3" class="quail-failed-element"></form>
+      <label for="assert-3">An input element with a bad focus</label>
+      <input id="assert-3" type="text" id="input3" class="quail-failed-element"></form>
   </div>
 
-  <div class="quail-test limit-chrome" data-expected="pass" id="test-4">
-    <a href="somewhere">This link is highly visible when it gets focus</a>
+  <div data-expected="pass" id="test-4">
+    <a id="assert-4" href="somewhere">This link is highly visible when it gets focus</a>
     <form>
-      <label for="input4">An input element with a highly-visible focus</label>
-      <input type="text" id="input4"></form>
+      <label for="assert-5">An input element with a highly-visible focus</label>
+      <input id="assert-5" type="text" id="input4"></form>
   </div>
 
-  <div class="quail-test limit-chrome" data-expected="pass" id="test-5">
-    <a href="somewhere">This link is highly visible when it gets focus</a>
+  <div data-expected="pass" id="test-5">
+    <a id="assert-6" href="somewhere">This link is highly visible when it gets focus</a>
     <form>
-      <label for="input5">An input element with a highly-visible focus</label>
-      <input type="text" id="input5"></form>
+      <label for="assert-7">An input element with a highly-visible focus</label>
+      <input id="assert-7" type="text" id="input5"></form>
   </div>
 
-  <div class="quail-test limit-chrome" data-expected="pass" id="test-6">
-    <a href="somewhere">This link is highly visible when it gets focus</a>
+  <div data-expected="pass" id="test-6">
+    <a id="assert-8" href="somewhere">This link is highly visible when it gets focus</a>
     <form>
-      <label for="input6">An input element with a highly-visible focus</label>
-      <input type="text" id="input6"></form>
+      <label for="assert-9">An input element with a highly-visible focus</label>
+      <input id="assert-9" type="text" id="input6"></form>
   </div>
 
   </body>

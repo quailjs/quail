@@ -70,7 +70,7 @@
 - [x] embedMustHaveAltAttribute
 - [x] fieldsetHasLabel
 - [x] fileHasLabel
-- [ ] focusIndicatorVisible
+- [x] focusIndicatorVisible
 - [x] fontIsNotUsed
 - [x] formButtonsHaveValue
 - [x] formErrorMessageHelpsUser
