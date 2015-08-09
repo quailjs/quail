@@ -53,7 +53,7 @@
 - [x] documentAutoRedirectNotUsed
 - [x] documentContentReadableWithoutStylesheets
 - [x] documentHasTitleElement
-- [ ] documentIDsMustBeUnique
+- [x] documentIDsMustBeUnique
 - [x] documentIsWrittenClearly
 - [ ] documentLangIsISO639Standard
 - [x] documentLangNotIdentified
