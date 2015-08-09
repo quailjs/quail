@@ -192,7 +192,7 @@
   "_scriptFocusIndicatorVisible",
   "_scriptContentAccessibleWithScriptsTurnedOff",
   "_scriptInBodyMustHaveNoscript",
-  "_scriptOnclickRequiresOnKeypress",
+  "scriptOnclickRequiresOnKeypress",
   "_scriptOndblclickRequiresOnKeypress",
   "_scriptOnFocusChangeBackgroundOrBorder",
   "_scriptOnmousedownRequiresOnKeypress",

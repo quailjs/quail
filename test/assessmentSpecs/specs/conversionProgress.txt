@@ -194,7 +194,7 @@
 - [x] radioMarkedWithFieldgroupAndLegend
 - [x] scriptContentAccessibleWithScriptsTurnedOff
 - [x] scriptInBodyMustHaveNoscript
-- [ ] scriptOnclickRequiresOnKeypress
+- [x] scriptOnclickRequiresOnKeypress
 - [ ] scriptOndblclickRequiresOnKeypress
 - [x] scriptOnFocusChangeBackgroundOrBorder
 - [ ] scriptOnmousedownRequiresOnKeypress
