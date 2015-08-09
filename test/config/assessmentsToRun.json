@@ -208,7 +208,7 @@
   "tableSummaryIsEmpty",
   "tableSummaryIsNotTooLong",
   "tableUseColGroup",
-  "_tableUsesAbbreviationForHeader",
+  "tableUsesAbbreviationForHeader",
   "tableUsesCaption",
   "_tableUsesScopeForRow",
   "_tableWithBothHeadersUseScope",
