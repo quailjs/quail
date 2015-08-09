@@ -1,26 +1,24 @@
 <!doctype html>
 <html>
-<head>
-	<title>embedHasAssociatedNoEmbed</title>
-</head>
-<body>
-	<div data-expected="fail">
-		<embed class="quail-failed-element" src="../movies/history_of_rome.mov" height="60" width="144" autostart="false"></embed>
-	</div>
-	<div data-expected="pass">
-		<embed src="../movies/history_of_rome.mov" height="60" width="144" autostart="false"></embed>
-		<noembed>
-			<a href="../transcripts/transcript_history_rome.htm">Transcript of "The history of Rome"</a>
-
-		</noembed>
-	</div>
-	<div data-expected="pass">
-		<embed src="../movies/history_of_rome.mov" height="60" width="144" autostart="false">
-		<noembed>
-			<a href="../transcripts/transcript_history_rome.htm">Transcript of "The history of Rome"</a>
-
-		</noembed>
-		</embed>
-	</div>
+  <head>
+    <title>embedHasAssociatedNoEmbed</title>
+  </head>
+  <body>
+    <div data-expected="fail">
+      <embed id="assert-1" src="assets/history_of_rome.mov" height="60" width="144" autostart="false"></embed>
+    </div>
+    <div data-expected="pass">
+      <embed id="assert-2" src="assets/history_of_rome.mov" height="60" width="144" autostart="false"></embed>
+      <noembed>
+        <a href="assets/transcript_history_rome.htm">Transcript of "The history of Rome"</a>
+      </noembed>
+    </div>
+    <div data-expected="pass">
+      <embed id="assert-3" src="assets/history_of_rome.mov" height="60" width="144" autostart="false">
+      <noembed>
+        <a href="assets/transcript_history_rome.htm">Transcript of "The history of Rome"</a>
+      </noembed>
+      </embed>
+    </div>
   </body>
 </html>
