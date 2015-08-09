@@ -136,7 +136,6 @@
   "inputImageHasAlt",
   "_inputImageNotDecorative",
   "_inputPasswordHasTabIndex",
-  "_inputRadioHasTabIndex",
   "_inputSubmitHasTabIndex",
   "_inputTextHasLabel",
   "_inputTextHasTabIndex",
