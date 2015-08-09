@@ -139,7 +139,7 @@
   "_inputWithoutLabelHasTitle",
   "labelDoesNotContainInput",
   "_labelMustBeUnique",
-  "_labelMustNotBeEmpty",
+  "labelMustNotBeEmpty",
   "_labelsAreAssignedToAnInput",
   "_languageChangesAreIdentified",
   "_languageDirAttributeIsUsed",

@@ -2570,7 +2570,6 @@ labelMustBeUnique:
     - "form"
     - "content"
 labelMustNotBeEmpty:
-  type: "placeholder"
   testability: 1
   title:
     en: "Labels must contain text"
@@ -2596,11 +2595,6 @@ labelMustNotBeEmpty:
   tags:
     - "form"
     - "content"
-  components:
-    - "placeholder"
-  options:
-    content: true
-    empty: true
 labelsAreAssignedToAnInput:
   testability: 1
   title:

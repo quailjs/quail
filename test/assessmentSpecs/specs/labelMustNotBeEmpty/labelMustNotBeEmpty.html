@@ -7,8 +7,8 @@
     <div data-expected="fail">
         <form action="http://www.test.com" method="post">
             <p>
-                <label for="name" class="quail-failed-element"></label>
-                <input type="text" name="firstname" id="name" />
+                <label id="assert-1" for="name1"></label>
+                <input type="text" name="firstname" id="name1" />
             </p>
         </form>
     </div>
@@ -16,10 +16,10 @@
     <div data-expected="fail">
         <form action="http://www.test.com" method="post">
             <p>
-                <label for="name" class="quail-failed-element">
-                    <img src="../assets/name.jpg" alt="" />
+                <label id="assert-2" for="name2">
+                    <img src="assets/name.jpg" alt="" />
                 </label>
-                <input type="text" name="firstname" id="name" />
+                <input type="text" name="firstname" id="name2" />
             </p>
         </form>
     </div>
@@ -27,8 +27,8 @@
     <div data-expected="fail">
         <form action="http://www.test.com" method="post">
             <p>
-                <label for="name" class="quail-failed-element"></label>
-                <input type="text" name="firstname" id="name" />
+                <label id="assert-3" for="name3"></label>
+                <input type="text" name="firstname" id="name3" />
             </p>
         </form>
     </div>
@@ -36,10 +36,10 @@
     <div data-expected="pass">
         <form action="http://www.test.com" method="post">
             <p>
-                <label for="name">
-                    <img src="../assets/name.jpg" alt="firstname" />
+                <label id="assert-4" for="name4">
+                    <img src="assets/name.jpg" alt="firstname" />
                 </label>
-                <input type="text" name="firstname" id="name" />
+                <input type="text" name="firstname" id="name4" />
             </p>
         </form>
     </div>
@@ -47,8 +47,8 @@
     <div data-expected="pass">
         <form action="http://www.test.com" method="post">
             <p>
-                <label for="name">First name:</label>
-                <input type="text" name="firstname" id="name" />
+                <label id="assert-5" for="name5">First name:</label>
+                <input type="text" name="firstname" id="name5" />
             </p>
         </form>
     </div>
