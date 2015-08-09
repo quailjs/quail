@@ -186,7 +186,7 @@
 - [x] siteMap
 - [x] skipToContentLinkProvided
 - [x] svgContainsTitle
-- [ ] tabIndexFollowsLogicalOrder
+- [x] tabIndexFollowsLogicalOrder
 - [x] tableAxisHasCorrespondingId
 - [x] tableCaptionIdentifiesTable
 - [x] tableComplexHasSummary

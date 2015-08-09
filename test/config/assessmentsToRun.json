@@ -147,7 +147,7 @@
   "siteMap",
   "skipToContentLinkProvided",
   "svgContainsTitle",
-  "_tabIndexFollowsLogicalOrder",
+  "tabIndexFollowsLogicalOrder",
   "tableAxisHasCorrespondingId",
   "tableDataShouldHaveTh",
   "tableLayoutDataShouldNotHaveTh",
@@ -171,9 +171,5 @@
   "_videoProvidesCaptions",
   "_videosEmbeddedOrLinkedNeedCaptions",
   "_whiteSpaceInWord",
-  "_whiteSpaceNotUsedForFormatting",
-  "_KINGStrongList",
-  "_KINGUseCurrencyAsSymbol",
-  "_KINGUseLongDateFormat",
-  "_KINGUsePercentageWithSymbol"
+  "_whiteSpaceNotUsedForFormatting"
 ]
