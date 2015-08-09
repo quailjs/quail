@@ -2965,7 +2965,6 @@ newWindowIsOpened:
 #     - "objects"
 #     - "content"
 objectMustContainText:
-  type: "placeholder"
   testability: 1
   title:
     en: "Objects must contain their text equivalents"
@@ -2982,11 +2981,6 @@ objectMustContainText:
   tags:
     - "objects"
     - "content"
-  components:
-    - "placeholder"
-  options:
-    content: true
-    empty: true
 objectMustHaveEmbed:
   testability: 1
   title:

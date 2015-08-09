@@ -169,7 +169,7 @@
 - [x] objectDoesNotUseColorAlone
 - [x] objectInterfaceIsAccessible
 - [x] objectLinkToMultimediaHasTextTranscript
-- [ ] objectMustContainText
+- [x] objectMustContainText
 - [x] objectMustHaveEmbed
 - [x] objectMustHaveTitle
 - [ ] objectMustHaveValidTitle

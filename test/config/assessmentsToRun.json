@@ -164,7 +164,7 @@
   "_objectDoesNotUseColorAlone",
   "_objectInterfaceIsAccessible",
   "_objectLinkToMultimediaHasTextTranscript",
-  "_objectMustContainText",
+  "objectMustContainText",
   "objectMustHaveEmbed",
   "objectMustHaveTitle",
   "_objectMustHaveValidTitle",
