@@ -116,7 +116,7 @@
   "labelMustNotBeEmpty",
   "labelsAreAssignedToAnInput",
   "languageDirAttributeIsUsed",
-  "_languageDirectionPunctuation",
+  "languageDirectionPunctuation",
   "_languageUnicodeDirection",
   "_legendDescribesListOfChoices",
   "legendTextNotEmpty",

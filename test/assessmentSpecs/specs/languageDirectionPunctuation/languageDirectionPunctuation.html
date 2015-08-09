@@ -6,18 +6,18 @@
   </head>
   <body dir="ltr">
     <div data-expected="p:pass|span:inapplicable">
-      <p>
-          This paragraph has <span lang="he" dir="rtl">פעילות הבינאום</span> right-to-left text, but no punctuation.
+      <p id="assert-1">
+          This paragraph has <span id="assert-2" lang="he" dir="rtl">פעילות הבינאום</span> right-to-left text, but no punctuation.
       </p>
     </div>
 
     <div data-expected="inapplicable">
-      <p dir="ltr">This paragraph has no language changes.</p>
+      <p id="assert-3" dir="ltr">This paragraph has no language changes.</p>
     </div>
 
     <div data-expected="p:fail|span:inapplicable">
-      <p dir="ltr">
-          This paragraph has <span lang="he" dir="rtl">,פעילות הבינאום</span> right-to-left text, but no punctuation.
+      <p id="assert-4" dir="ltr">
+          This paragraph has <span id="assert-5" lang="he" dir="rtl">,פעילות הבינאום</span> right-to-left text, but no punctuation.
       </p>
     </div>
       </body>
