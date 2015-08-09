@@ -205,7 +205,7 @@
 - [x] scriptUIMustBeAccessible
 - [x] scriptsDoNotFlicker
 - [x] scriptsDoNotUseColorAlone
-- [ ] selectDoesNotChangeContext
+- [x] selectDoesNotChangeContext
 - [ ] selectHasAssociatedLabel
 - [ ] selectJumpMenu
 - [x] selectWithOptionsHasOptgroup
