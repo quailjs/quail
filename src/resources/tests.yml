@@ -3839,18 +3839,6 @@ textareaHasAssociatedLabel:
   tags:
     - "form"
     - "content"
-userInputMayBeRequired:
-  testability: 1
-  title:
-    en: "Test if user input is required"
-    nl: "Test of er invoervelden zijn"
-  description:
-    en: ""
-    nl: ""
-  guidelines: []
-  tags:
-    - "form"
-    - "input"
 videoMayBePresent:
   testability: 1
   title:

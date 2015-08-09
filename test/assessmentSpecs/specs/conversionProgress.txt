@@ -209,7 +209,6 @@
 - [x] tabularDataIsInTable
 - [x] textIsNotSmall
 - [x] textareaHasAssociatedLabel
-- [ ] userInputMayBeRequired
 - [ ] videoMayBePresent
 - [x] videoProvidesCaptions
 - [ ] videosEmbeddedOrLinkedNeedCaptions

@@ -166,7 +166,6 @@
   "tabularDataIsInTable",
   "textIsNotSmall",
   "textareaHasAssociatedLabel",
-  "_userInputMayBeRequired",
   "_videoMayBePresent",
   "_videoProvidesCaptions",
   "_videosEmbeddedOrLinkedNeedCaptions",
