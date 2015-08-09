@@ -6,26 +6,26 @@
 <body>
     <div data-expected="fail">
         <form>
-            <label class="quail-failed-element">Orphaned Label</label>
+            <label id="assert-1" class="quail-failed-element">Orphaned Label</label>
         </form>
     </div>
     <div data-expected="fail">
 
         <form>
-            <label for="something" class="quail-failed-element">Orphaned Label</label>
+            <label id="assert-2" for="something" class="quail-failed-element">Orphaned Label</label>
         </form>
     </div>
     <div data-expected="fail">
 
         <form>
-            <label for="something" class="quail-failed-element">Orphaned Label</label>
+            <label id="assert-3" for="something" class="quail-failed-element">Orphaned Label</label>
             <p id="something">Wow, wrong thing</p>
         </form>
     </div>
     <div data-expected="pass">
 
         <form>
-            <label for="name4">Your Name</label>
+            <label id="assert-4" for="name4">Your Name</label>
             <input type="text" name="name" id="name4"/>
         </form>
     </div>

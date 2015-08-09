@@ -114,7 +114,7 @@
   "labelDoesNotContainInput",
   "labelMustBeUnique",
   "labelMustNotBeEmpty",
-  "_labelsAreAssignedToAnInput",
+  "labelsAreAssignedToAnInput",
   "_languageChangesAreIdentified",
   "_languageDirAttributeIsUsed",
   "_languageDirectionPunctuation",
