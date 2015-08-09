@@ -183,7 +183,6 @@
   "scriptOnmouseoutHasOnmouseblur",
   "scriptOnmouseoverHasOnfocus",
   "scriptOnmouseupHasOnkeyup",
-  "_scriptUIMustBeAccessible",
   "_scriptsDoNotFlicker",
   "_scriptsDoNotUseColorAlone",
   "selectHasAssociatedLabel",

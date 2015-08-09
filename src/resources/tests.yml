@@ -3376,19 +3376,6 @@ scriptOnmouseupHasOnkeyup:
           - "SCR20"
   tags:
     - "javascript"
-# scriptUIMustBeAccessible:
-#   testability: 0
-#   title:
-#     en: "The user interface for scripts should be accessible"
-#     nl: "De user interface voor scripts moet toegankelijk zijn"
-#   description:
-#     en: "All scripts should be assessed to see if their interface is accessible."
-#     nl: "Alle scripts moeten gecontroleerd worden op toegankelijkheid van hun interface."
-#   guidelines:
-#     508:
-#       - "l"
-#   tags:
-#     - "javascript"
 # scriptsDoNotFlicker:
 #   testability: 0
 #   title:

@@ -187,7 +187,6 @@
 - [x] scriptOnmouseoutHasOnmouseblur
 - [x] scriptOnmouseoverHasOnfocus
 - [x] scriptOnmouseupHasOnkeyup
-- [x] scriptUIMustBeAccessible
 - [x] scriptsDoNotFlicker
 - [x] scriptsDoNotUseColorAlone
 - [x] selectDoesNotChangeContext
