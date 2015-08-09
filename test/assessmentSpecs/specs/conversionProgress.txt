@@ -114,7 +114,7 @@
 - [x] inputImageAltIdentifiesPurpose
 - [x] inputImageAltIsNotFileName
 - [x] inputImageAltIsNotPlaceholder
-- [ ] inputImageAltIsShort
+- [x] inputImageAltIsShort
 - [ ] inputImageAltNotRedundant
 - [x] inputImageHasAlt
 - [x] inputImageNotDecorative
