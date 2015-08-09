@@ -3380,6 +3380,8 @@ selectJumpMenu:
     - "content"
   components:
     - "hasEventListener"
+#
+# @todo this assessment is broken and returning false positives.
 siteMap:
   testability: 0
   title:

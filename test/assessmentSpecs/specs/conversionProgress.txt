@@ -183,7 +183,7 @@
 - [x] selectDoesNotChangeContext
 - [x] selectHasAssociatedLabel
 - [x] selectJumpMenu
-- [ ] siteMap
+- [x] siteMap
 - [ ] skipToContentLinkProvided
 - [x] svgContainsTitle
 - [ ] tabIndexFollowsLogicalOrder

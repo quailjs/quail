@@ -144,7 +144,7 @@
   "scriptOnmouseupHasOnkeyup",
   "selectHasAssociatedLabel",
   "selectJumpMenu",
-  "_siteMap",
+  "siteMap",
   "_skipToContentLinkProvided",
   "svgContainsTitle",
   "_tabIndexFollowsLogicalOrder",
