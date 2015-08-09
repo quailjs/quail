@@ -37,7 +37,6 @@
 - [x] buttonDoesNotChangeContextOnFocus
 - [x] buttonHasName
 - [x] checkboxHasLabel
-- [ ] closingTagsAreUsed
 - [x] colorBackgroundGradientContrast
 - [x] colorBackgroundImageContrast
 - [x] colorElementBehindBackgroundGradientContrast
@@ -69,7 +68,6 @@
 - [x] documentVisualListsAreMarkedUp
 - [x] domOrderMatchesVisualOrder
 - [ ] elementAttributesAreValid
-- [ ] elementsDoNotHaveDuplicateAttributes
 - [ ] embedHasAssociatedNoEmbed
 - [x] embedMustHaveAltAttribute
 - [ ] emoticonsExcessiveUse
@@ -227,7 +225,6 @@
 - [x] tableWithBothHeadersUseScope
 - [ ] tableWithMoreHeadersUseID
 - [ ] tabularDataIsInTable
-- [ ] tagsAreNestedCorrectly
 - [ ] textIsNotSmall
 - [x] textareaHasAssociatedLabel
 - [ ] userInputMayBeRequired
