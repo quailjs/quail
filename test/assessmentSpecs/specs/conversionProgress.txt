@@ -47,7 +47,7 @@
 - [x] cssDocumentMakesSenseStyleTurnedOff
 - [ ] definitionListsAreUsed
 - [ ] doNotUseGraphicalSymbolToConveyInformation
-- [ ] doctypeProvided
+- [x] doctypeProvided
 - [ ] documentAbbrIsUsed
 - [ ] documentAcronymsHaveElement
 - [x] documentAutoRedirectNotUsed
