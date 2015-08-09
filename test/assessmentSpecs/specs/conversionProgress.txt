@@ -215,7 +215,7 @@
 - [x] tableUseColGroup
 - [x] tableUsesAbbreviationForHeader
 - [x] tableUsesCaption
-- [ ] tableUsesScopeForRow
+- [x] tableUsesScopeForRow
 - [x] tableWithBothHeadersUseScope
 - [ ] tableWithMoreHeadersUseID
 - [ ] tabularDataIsInTable

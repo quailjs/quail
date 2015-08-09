@@ -210,7 +210,7 @@
   "tableUseColGroup",
   "tableUsesAbbreviationForHeader",
   "tableUsesCaption",
-  "_tableUsesScopeForRow",
+  "tableUsesScopeForRow",
   "_tableWithBothHeadersUseScope",
   "_tableWithMoreHeadersUseID",
   "_tabularDataIsInTable",
