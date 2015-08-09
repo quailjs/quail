@@ -103,7 +103,7 @@
 - [x] imgAltNotPlaceHolder
 - [x] imgHasAlt
 - [x] imgHasLongDesc
-- [ ] imgImportantNoSpacerAlt
+- [x] imgImportantNoSpacerAlt
 - [ ] imgMapAreasHaveDuplicateLink
 - [ ] imgNonDecorativeHasAlt
 - [x] imgNotReferredToByColorAlone
