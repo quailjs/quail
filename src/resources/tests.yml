@@ -2575,24 +2575,6 @@ inputTextHasLabel:
   tags:
     - "form"
     - "content"
-inputTextHasTabIndex:
-  type: "placeholder"
-  testability: 1
-  title:
-    en: "All \"text\" input elements require a valid \"tabindex\" attribute"
-    nl: "Alle invoerelementen van het type \"text\" moeten een geldig \"tabindex\"-attribuut hebben"
-  description:
-    en: "All <code>input</code> elements of type \"text\" should have a \"tabindex\" attribute to help navigate the form with a keyboard alone."
-    nl: "Alle <code>input</code>-elementen van het type \"text\" moeten een \"tabindex\"-attribuut hebben om navigatie met alleen het toetsenbord mogelijk te maken."
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
-  components:
-    - "placeholder"
-  options:
-    attribute: "tabindex"
-    empty: true
 inputTextHasValue:
   type: "placeholder"
   testability: 1

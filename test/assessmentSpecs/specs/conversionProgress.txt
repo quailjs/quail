@@ -137,7 +137,6 @@
 - [x] inputImageNotDecorative
 - [ ] inputSubmitHasTabIndex
 - [x] inputTextHasLabel
-- [ ] inputTextHasTabIndex
 - [ ] inputTextHasValue
 - [ ] inputTextValueNotEmpty
 - [ ] inputWithoutLabelHasTitle
