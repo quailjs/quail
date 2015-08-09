@@ -1099,7 +1099,6 @@ documentTitleDescribesDocument:
     - "document"
     - "head"
 documentTitleIsNotPlaceholder:
-  type: "placeholder"
   testability: 1
   title:
     en: "The document title should not be placeholder text"
@@ -1116,10 +1115,6 @@ documentTitleIsNotPlaceholder:
   tags:
     - "document"
     - "head"
-  components:
-    - "placeholder"
-  options:
-    content: true
 documentTitleIsShort:
   testability: 0.5
   title:

@@ -62,7 +62,7 @@
   "_documentReadingDirection",
   "_documentStrictDocType",
   "_documentTitleDescribesDocument",
-  "_documentTitleIsNotPlaceholder",
+  "documentTitleIsNotPlaceholder",
   "_documentTitleIsShort",
   "_documentTitleNotEmpty",
   "_documentValidatesToDocType",

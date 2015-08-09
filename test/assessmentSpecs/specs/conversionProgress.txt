@@ -63,7 +63,7 @@
 - [x] documentReadingDirection
 - [ ] documentStrictDocType
 - [x] documentTitleDescribesDocument
-- [ ] documentTitleIsNotPlaceholder
+- [x] documentTitleIsNotPlaceholder
 - [ ] documentTitleIsShort
 - [ ] documentTitleNotEmpty
 - [ ] documentValidatesToDocType
