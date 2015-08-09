@@ -5,12 +5,13 @@
   </head>
   <body>
     <div data-expected="fail">
-      <a href="#1">One</a> | <a href="#2">Two</a> | <a href="#3">Three</a>
+      <a id="assert-1" href="#1">One</a> | <a id="assert-2" href="#2">Two</a> | <a href="#3">Three</a>
     </div>
 
     <div data-expected="fail">
-      <a href="#1">One</a> <a href="#2">Two</a> <a href="#3">Three</a>
+      <a id="assert-3" href="#1">One</a> <a id="assert-4" href="#2">Two</a> <a href="#3">Three</a>
     </div>
+
     <div data-expected="pass">
       <ul>
         <li><a href="#1">One</a></li>

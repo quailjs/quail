@@ -123,7 +123,7 @@
   "liDontUseImageForBullet",
   "linkHasAUniqueContext",
   "listNotUsedForFormatting",
-  "_listOfLinksUseList",
+  "listOfLinksUseList",
   "marqueeIsNotUsed",
   "menuNotUsedToFormatText",
   "_newWindowIsOpened",
