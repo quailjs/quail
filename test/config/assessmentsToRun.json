@@ -193,7 +193,7 @@
   "_skipToContentLinkProvided",
   "svgContainsTitle",
   "_tabIndexFollowsLogicalOrder",
-  "_tableAxisHasCorrespondingId",
+  "tableAxisHasCorrespondingId",
   "_tableCaptionIdentifiesTable",
   "_tableComplexHasSummary",
   "tableDataShouldHaveTh",

@@ -198,7 +198,7 @@
 - [ ] skipToContentLinkProvided
 - [x] svgContainsTitle
 - [ ] tabIndexFollowsLogicalOrder
-- [ ] tableAxisHasCorrespondingId
+- [x] tableAxisHasCorrespondingId
 - [x] tableCaptionIdentifiesTable
 - [x] tableComplexHasSummary
 - [x] tableDataShouldHaveTh
