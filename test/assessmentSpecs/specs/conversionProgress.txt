@@ -42,7 +42,7 @@
 - [x] colorElementBehindBackgroundGradientContrast
 - [x] colorElementBehindBackgroundImageContrast
 - [x] colorElementBehindContrast
-- [ ] colorFontContrast
+- [x] colorFontContrast
 - [ ] contentPositioningShouldNotChangeMeaning
 - [x] cssDocumentMakesSenseStyleTurnedOff
 - [ ] definitionListsAreUsed

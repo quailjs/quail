@@ -41,7 +41,7 @@
     }
 
     #test-7 {
-      background-image: url('../assets/fish.gif');
+      background-image: url('assets/fish.gif');
     }
     #test-7 p {
       color: #666;
@@ -50,7 +50,7 @@
     }
 
     #test-8 {
-      background-image: url('../assets/kids.jpg');
+      background-image: url('assets/kids.jpg');
     }
     #test-8 p {
       background: #000;
@@ -98,7 +98,7 @@
       padding: 0;
     }
     #test-14 .bck {
-      background-image: url('../assets/fish.gif');
+      background-image: url('assets/fish.gif');
       background: #666;
       height: 50px;
       width: 100%;
@@ -131,7 +131,7 @@
       padding: 0;
     }
     #test-18 .bck {
-      background-image: url('../assets/fish.gif');
+      background-image: url('assets/fish.gif');
       height: 50px;
       width: 100%;
     }
@@ -143,7 +143,7 @@
     }
 
     #test-19 {
-      background-image: url('../assets/doesnotexist.jpg');
+      background-image: url('assets/doesnotexist.jpg');
     }
     #test-19 p {
       background: #000;
@@ -153,7 +153,7 @@
     }
 
     #test-20 {
-      background-image: url('../assets/quail.png');
+      background-image: url('assets/quail.png');
     }
     #test-20 p {
       background: #000;
@@ -165,83 +165,83 @@
   </style>
 </head>
 <body>
-  <div data-expected="colorFontContrast:pass" id="test-0">
-    <p>This text is readable</p>
+  <div data-expected="pass" id="test-0">
+    <p id="assert-1">This text is readable</p>
   </div>
 
-  <div data-expected="colorFontContrast:fail" id="test-1">
-    <p>This text is not readable</p>
+  <div data-expected="fail" id="test-1">
+    <p id="assert-2">This text is not readable</p>
   </div>
 
-  <div data-expected="colorFontContrast:fail" id="test-2">
-    <p>This text is not readable, even if it's huge and bold</p>
+  <div data-expected="fail" id="test-2">
+    <p id="assert-3">This text is not readable, even if it's huge and bold</p>
   </div>
 
-  <div data-expected="colorFontContrast:pass" id="test-3">
-    <p>This test is readable.</p>
+  <div data-expected="pass" id="test-3">
+    <p id="assert-4">This test is readable.</p>
   </div>
 
-  <div data-expected="colorFontContrast:fail" id="test-4">
-    <p>This test is not readable, only 16px and not bold</p>
+  <div data-expected="fail" id="test-4">
+    <p id="assert-5">This test is not readable, only 16px and not bold</p>
   </div>
 
-  <div data-expected="colorFontContrast:pass" id="test-5">
-    <p>This test is readable, 16px and bold</p>
+  <div data-expected="pass" id="test-5">
+    <p id="assert-6">This test is readable, 16px and bold</p>
   </div>
 
-  <div data-expected="colorFontContrast:pass" id="test-6">
-    <p>This test is readable, 16px and font weight 700</p>
+  <div data-expected="pass" id="test-6">
+    <p id="assert-7">This test is readable, 16px and font weight 700</p>
   </div>
 
-  <div data-expected="colorFontContrast:pass" id="test-7">
-    <p>This test is not readable, thanks to the fish</p>
+  <div data-expected="pass" id="test-7">
+    <p id="assert-8">This test is not readable, thanks to the fish</p>
   </div>
 
-  <div data-expected="colorFontContrast:pass" id="test-8">
-    <p>This test is readable, thanks to the kids</p>
+  <div data-expected="pass" id="test-8">
+    <p id="assert-9">This test is readable, thanks to the kids</p>
   </div>
 
-  <div data-expected="colorFontContrast:fail" id="test-9">
-    <p>This test is not readable</p>
+  <div data-expected="fail" id="test-9">
+    <p id="assert-10">This test is not readable</p>
   </div>
 
-  <div data-expected="colorFontContrast:fail" id="test-10">
-    <p>This test is readable</p>
+  <div data-expected="fail" id="test-10">
+    <p id="assert-11">This test is readable</p>
   </div>
 
-  <div data-expected="colorFontContrast:fail" id="test-11">
-    <p>This test is not readable</p>
+  <div data-expected="fail" id="test-11">
+    <p id="assert-12">This test is not readable</p>
   </div>
 
-  <div data-expected="colorFontContrast:fail" id="test-12">
-    <p>This test is not readable, but on screen it is</p>
+  <div data-expected="fail" id="test-12">
+    <p id="assert-13">This test is not readable, but on screen it is</p>
   </div>
 
-  <div data-expected="colorFontContrast:pass" id="test-13">
-    <p>This test is readable, does not check the gradient since there's a background color.</p>
+  <div data-expected="pass" id="test-13">
+    <p id="assert-14">This test is readable, does not check the gradient since there's a background color.</p>
   </div>
 
-  <div data-expected="colorFontContrast:pass" id="test-14">
+  <div data-expected="pass" id="test-14">
     <div class="bck"></div>
-    <p class="txt">This test is not readable.</p>
+    <p id="assert-15" class="txt">This test is not readable.</p>
   </div>
 
-  <div data-expected="colorFontContrast:pass" id="test-16">
+  <div data-expected="pass" id="test-16">
     <div class="bck"></div>
-    <p class="txt">This test is not readable.</p>
+    <p id="assert-16" class="txt">This test is not readable.</p>
   </div>
 
-  <div data-expected="colorFontContrast:pass" id="test-18">
+  <div data-expected="pass" id="test-18">
     <div class="bck"></div>
-    <p class="txt">This test is not readable.</p>
+    <p id="assert-17" class="txt">This test is not readable.</p>
   </div>
 
-  <div data-expected="colorFontContrast:pass" id="test-19">
-    <p>This test is readable, non existing background</p>
+  <div data-expected="pass" id="test-19">
+    <p id="assert-18">This test is readable, non existing background</p>
   </div>
 
-  <div data-expected="colorFontContrast:pass" id="test-20">
-    <p>This test is readable, external image</p>
+  <div data-expected="pass" id="test-20">
+    <p id="assert-19">This test is readable, external image</p>
   </div>
 
   </body>

@@ -736,8 +736,6 @@ colorFontContrast:
           - "G18"
   tags:
     - "color"
-  callback:
-    - "colorFontContrast"
 colorElementBehindContrast:
   testability: 1
   title:
