@@ -200,7 +200,7 @@
 - [ ] scriptOnmousedownRequiresOnKeypress
 - [ ] scriptOnmousemove
 - [x] scriptOnmouseoutHasOnmouseblur
-- [ ] scriptOnmouseoverHasOnfocus
+- [x] scriptOnmouseoverHasOnfocus
 - [x] scriptOnmouseupHasOnkeyup
 - [x] scriptUIMustBeAccessible
 - [x] scriptsDoNotFlicker
