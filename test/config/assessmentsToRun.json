@@ -201,7 +201,7 @@
   "tableLayoutDataShouldNotHaveTh",
   "tableLayoutHasNoCaption",
   "tableLayoutHasNoSummary",
-  "_tableLayoutMakesSenseLinearized",
+  "tableLayoutMakesSenseLinearized",
   "_tableNotUsedForLayout",
   "_tableShouldUseHeaderIDs",
   "_tableSummaryDescribesTable",

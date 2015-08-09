@@ -206,7 +206,7 @@
 - [x] tableLayoutDataShouldNotHaveTh
 - [x] tableLayoutHasNoCaption
 - [x] tableLayoutHasNoSummary
-- [ ] tableLayoutMakesSenseLinearized
+- [x] tableLayoutMakesSenseLinearized
 - [ ] tableNotUsedForLayout
 - [ ] tableShouldUseHeaderIDs
 - [x] tableSummaryDescribesTable
