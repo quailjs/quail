@@ -37,7 +37,6 @@
 - [x] buttonDoesNotChangeContextOnFocus
 - [x] buttonHasName
 - [x] checkboxHasLabel
-- [ ] checkboxLabelIsNearby
 - [ ] closingTagsAreUsed
 - [x] colorBackgroundGradientContrast
 - [x] colorBackgroundImageContrast
@@ -77,7 +76,6 @@
 - [ ] emoticonsMissingAbbr
 - [ ] fieldsetHasLabel
 - [x] fileHasLabel
-- [ ] fileLabelIsNearby
 - [ ] focusIndicatorVisible
 - [x] fontIsNotUsed
 - [x] formButtonsHaveValue
@@ -181,10 +179,8 @@
 - [ ] pNotUsedAsHeader
 - [ ] paragraphIsWrittenClearly
 - [x] passwordHasLabel
-- [ ] passwordLabelIsNearby
 - [ ] preShouldNotBeUsedForTabularLayout
 - [x] radioHasLabel
-- [ ] radioLabelIsNearby
 - [x] radioMarkedWithFieldgroupAndLegend
 - [x] scriptContentAccessibleWithScriptsTurnedOff
 - [x] scriptInBodyMustHaveNoscript
@@ -234,7 +230,6 @@
 - [ ] tagsAreNestedCorrectly
 - [ ] textIsNotSmall
 - [x] textareaHasAssociatedLabel
-- [ ] textareaLabelPositionedClose
 - [ ] userInputMayBeRequired
 - [ ] videoMayBePresent
 - [x] videoProvidesCaptions

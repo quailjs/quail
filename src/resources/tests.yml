@@ -654,21 +654,6 @@ checkboxHasLabel:
   tags:
     - "form"
     - "content"
-checkboxLabelIsNearby:
-  type: "labelProximity"
-  testability: 0.5
-  title:
-    en: "All \"checkbox\" input elements have a label that is close"
-    nl: "Van alle \"keuzevakjes\" invoerelementen staat het label in de buurt"
-  description:
-    en: "All input elements of type \"checkbox\" must have a corresponding label that is close to the form element. Users of screen magnification or with reduced spatial skills are hampered in using a form element if the label for that element is located far away."
-    nl: "Alle inputelementen van het type \"keuzevakje\" moeten een bijbehorend label hebben dat dicht bij het formulierelement staat. Gebruikers die het scherm vergroten of met beperkte ruimtelijke vaardigheden kunnen een formulier niet gebruiken als het label van een veld te ver weg staat."
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
-  components:
-    - "labelProximity"
 closingTagsAreUsed:
   testability: 1
   title:
@@ -1309,7 +1294,6 @@ fieldsetHasLabel:
     - "form"
     - "content"
 fileHasLabel:
-  type: "label"
   testability: 1
   title:
     en: "All \"file\" input elements have a corresponding label"
@@ -1337,23 +1321,6 @@ fileHasLabel:
   tags:
     - "form"
     - "content"
-  components:
-    - "label"
-fileLabelIsNearby:
-  type: "labelProximity"
-  testability: 0.5
-  title:
-    en: "All \"file\" input elements have a label that is close"
-    nl: "Van alle \"file\"-invoerelementen staat het label in de buurt"
-  description:
-    en: "All input elements of type \"file\" must have a corresponding label that is close to the form element. Users of screen magnification or with reduced spatial skills are hampered in using a form element if the label for that element is located far away."
-    nl: "Alle inputelementen van het type \"file\" moeten een bijbehorend label hebben dat dicht bij het formulierelement staat. Gebruikers die het scherm vergroten of met beperkte ruimtelijke vaardigheden kunnen een formulier niet gebruiken als het label van een veld te ver weg staat."
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
-  components:
-    - "labelProximity"
 focusIndicatorVisible:
   title:
     en: "Focus indicators have high visibility"
@@ -3148,21 +3115,6 @@ passwordHasLabel:
   tags:
     - "form"
     - "content"
-passwordLabelIsNearby:
-  type: "labelProximity"
-  testability: 0.5
-  title:
-    en: "All \"password\" input elements have a label that is close"
-    nl: "Alle paswoordinvoerelementen hebben een label dat dicht bij het element staat"
-  description:
-    en: "All input elements of type \"password\" must have a corresponding label that is close to the form element. Users of screen magnification or with reduced spatial skills are hampered in using a form element if the label for that element is located far away."
-    nl: "Alle inputelementen van het type \"paswoord\" moeten een bijbehorend label hebben dat dicht bij het formulierelement staat. Gebruikers die het scherm vergroten of met beperkte ruimtelijke vaardigheden kunnen een formulier niet gebruiken als het label van een veld te ver weg staat."
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
-  components:
-    - "labelProximity"
 preShouldNotBeUsedForTabularLayout:
   testability: 0
   title:
@@ -3220,21 +3172,6 @@ radioHasLabel:
   tags:
     - "form"
     - "content"
-radioLabelIsNearby:
-  type: "labelProximity"
-  testability: 0.5
-  title:
-    en: "All \"radio\" input elements have a label that is close"
-    nl: "Alle invoerelementen van het type \"radio\" hebben een label dat dicht bij het element staat"
-  description:
-    en: "All input elements of type \"radio\" must have a corresponding label that is close to the form element. Users of screen magnification or with reduced spatial skills are hampered in using a form element if the label for that element is located far away."
-    nl: "Alle inputelementen van het type \"radio\" moeten een bijbehorend label hebben dat dicht bij het formulierelement staat. Gebruikers die het scherm vergroten of met beperkte ruimtelijke vaardigheden kunnen een formulier niet gebruiken als het label van een veld te ver weg staat."
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
-  components:
-    - "labelProximity"
 # radioMarkedWithFieldgroupAndLegend:
 #   testability: 1
 #   title:
@@ -4092,21 +4029,6 @@ textareaHasAssociatedLabel:
   tags:
     - "form"
     - "content"
-textareaLabelPositionedClose:
-  type: "labelProximity"
-  testability: 0.5
-  title:
-    en: "All textareas should have a label that is close to it"
-    nl: "Alle \"textarea\"-elementen moeten een label hebben dat dicht bij het element staat"
-  description:
-    en: "All <code>textarea</code> elements should have a corresponding <code>label</code> element that is close in proximity."
-    nl: "Alle \"textarea\"-elementen moeten een bijbehorend label hebben dat dicht bij het element staat."
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
-  components:
-    - "labelProximity"
 userInputMayBeRequired:
   testability: 1
   title:
