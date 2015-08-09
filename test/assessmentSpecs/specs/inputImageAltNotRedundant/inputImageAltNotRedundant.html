@@ -6,13 +6,13 @@
 <body>
 	<div data-expected="fail">
 		<form action="http://example.com/prog/text-read" method="post">
-			<input type="image" name="submit" "../assets/button.gif" alt="submit" class="quail-failed-element"/>
+			<input id="assert-1" type="image" name="submit" "assets/name.jpg" alt="submit" class="quail-failed-element"/>
 		</form>
 	</div>
 
 	<div data-expected="pass">
 		<form action="http://example.com/prog/text-read" method="post">
-			<input type="image" name="submit" "../assets/button.gif" alt="find dogs"/>
+			<input id="assert-2" type="image" name="submit" "assets/name.jpg" alt="find dogs"/>
 		</form>
 	</div>
 

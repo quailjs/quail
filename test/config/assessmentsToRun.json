@@ -105,7 +105,7 @@
   "inputImageAltIsNotFileName",
   "inputImageAltIsNotPlaceholder",
   "inputImageAltIsShort",
-  "_inputImageAltNotRedundant",
+  "inputImageAltNotRedundant",
   "inputImageHasAlt",
   "_inputImageNotDecorative",
   "_inputTextHasLabel",

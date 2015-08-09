@@ -115,7 +115,7 @@
 - [x] inputImageAltIsNotFileName
 - [x] inputImageAltIsNotPlaceholder
 - [x] inputImageAltIsShort
-- [ ] inputImageAltNotRedundant
+- [x] inputImageAltNotRedundant
 - [x] inputImageHasAlt
 - [x] inputImageNotDecorative
 - [x] inputTextHasLabel
