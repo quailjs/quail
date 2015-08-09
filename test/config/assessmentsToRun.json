@@ -145,7 +145,7 @@
   "selectHasAssociatedLabel",
   "selectJumpMenu",
   "siteMap",
-  "_skipToContentLinkProvided",
+  "skipToContentLinkProvided",
   "svgContainsTitle",
   "_tabIndexFollowsLogicalOrder",
   "tableAxisHasCorrespondingId",

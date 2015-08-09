@@ -184,7 +184,7 @@
 - [x] selectHasAssociatedLabel
 - [x] selectJumpMenu
 - [x] siteMap
-- [ ] skipToContentLinkProvided
+- [x] skipToContentLinkProvided
 - [x] svgContainsTitle
 - [ ] tabIndexFollowsLogicalOrder
 - [x] tableAxisHasCorrespondingId
