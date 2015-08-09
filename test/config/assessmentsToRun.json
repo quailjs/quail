@@ -108,7 +108,7 @@
   "imgServerSideMapNotUsed",
   "imgShouldNotHaveTitle",
   "imgWithMapHasUseMap",
-  "_imgWithMathShouldHaveMathEquivalent",
+  "imgWithMathShouldHaveMathEquivalent",
   "_inputCheckboxRequiresFieldset",
   "_inputDoesNotUseColorAlone",
   "inputElementsDontHaveAlt",
