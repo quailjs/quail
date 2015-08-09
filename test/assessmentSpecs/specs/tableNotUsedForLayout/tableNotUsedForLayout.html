@@ -5,7 +5,7 @@
 </head>
 <body>
   <div data-expected="fail">
-    <table class="quail-failed-element">
+    <table id="assert-1">
       <tr>
         <td>This is the content area of my table</td>
         <td>This is a sidebar</td>
@@ -14,7 +14,7 @@
   </div>
 
   <div data-expected="fail">
-    <table border="0" cellpadding="5" summary="Table being used for layout" class="quail-failed-element">
+    <table id="assert-2" border="0" cellpadding="5" summary="Table being used for layout">
       <tr>
         <td>This would be a sidebar.</td>
         <td>
@@ -35,7 +35,7 @@
   </div>
 
   <div data-expected="pass">
-    <table>
+    <table id="assert-3">
       <thead>
         <tr>
           <td>Head one</td>

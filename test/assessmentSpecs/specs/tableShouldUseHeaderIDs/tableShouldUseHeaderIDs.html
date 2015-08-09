@@ -1,97 +1,34 @@
 <!doctype html>
 <html>
-<head>
-  <title>tableShouldUseHeaderIDs</title>
-</head>
-<body>
-  <div data-expected="fail">
-    <table class="quail-failed-element">
-      <tr>
-        <th rowspan="2">Homework</th>
-        <th colspan="3">Exams</th>
-        <th colspan="3">Projects</th>
-      </tr>
-      <tr>
-        <th id="e1">1</th>
-        <th id="e2">2</th>
-        <th id="ef">Final</th>
-        <th id="p1">1</th>
-        <th id="p2">2</th>
-        <th id="pf">Final</th>
-      </tr>
-      <tr>
-        <td>15%</td>
-        <td>15%</td>
-        <td>15%</td>
-        <td>20%</td>
-        <td>10%</td>
-        <td>10%</td>
-        <td>15%</td>
-      </tr>
-    </table>
-  </div>
-
-  <div data-expected="fail">
-    <table>
-      <tr>
-        <th rowspan="2" id="h">Homework</th>
-        <th colspan="3" id="e">Exams</th>
-        <th colspan="3" id="p">Projects</th>
-      </tr>
-      <tr>
-        <th id="e1">1</th>
-        <th id="e2">2</th>
-        <th id="ef">Final</th>
-        <th id="p1">1</th>
-        <th id="p2">2</th>
-        <th id="pf">Final</th>
-      </tr>
-      <tr>
-        <td>15%</td>
-        <td>15%</td>
-        <td>15%</td>
-        <td>20%</td>
-        <td>10%</td>
-        <td>10%</td>
-        <td>15%</td>
-      </tr>
-    </table>
-  </div>
-
-  <div data-expected="pass">
-    <table>
-      <tr>
-        <th rowspan="2" id="h">Homework</th>
-        <th colspan="3" id="e">Exams</th>
-        <th colspan="3" id="p">Projects</th>
-      </tr>
-      <tr>
-        <th id="e1" headers="e">1</th>
-        <th id="e2" headers="e">2</th>
-        <th id="ef" headers="e">Final</th>
-        <th id="p1" headers="p">1</th>
-        <th id="p2" headers="p">2</th>
-        <th id="pf" headers="p">Final</th>
-      </tr>
-      <tr>
-        <td headers="h">15%</td>
-        <td headers="e e1">15%</td>
-        <td headers="e e2">15%</td>
-        <td headers="e ef">20%</td>
-        <td headers="p p1">10%</td>
-        <td headers="p p2">10%</td>
-        <td headers="p pf">15%</td>
-      </tr>
-    </table>
-  </div>
-
-  <div data-expected="pass">
-    <table>
-      <tr>
-        <td style="width: 25%">Left</td>
-        <td style="width: 75%">Right</td>
-      </tr>
-    </table>
-  </div>
+  <head>
+    <title>tableShouldUseHeaderIDs</title>
+  </head>
+  <body>
+    <div data-expected="fail">
+      <table id="assert-1">
+        <tr>
+          <th rowspan="2">Homework</th>
+          <th colspan="3">Exams</th>
+          <th colspan="3">Projects</th>
+        </tr>
+        <tr>
+          <th id="e1">1</th>
+          <th id="e2">2</th>
+          <th id="ef">Final</th>
+          <th id="p1">1</th>
+          <th id="p2">2</th>
+          <th id="pf">Final</th>
+        </tr>
+        <tr>
+          <td>15%</td>
+          <td>15%</td>
+          <td>15%</td>
+          <td>20%</td>
+          <td>10%</td>
+          <td>10%</td>
+          <td>15%</td>
+        </tr>
+      </table>
+    </div>
   </body>
 </html>
