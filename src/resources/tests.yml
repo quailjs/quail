@@ -3893,7 +3893,6 @@ tableSummaryDoesNotDuplicateCaption:
     - "table"
     - "content"
 tableSummaryIsEmpty:
-  type: "placeholder"
   testability: 0.5
   title:
     en: "All data tables should have a summary"
@@ -3905,11 +3904,6 @@ tableSummaryIsEmpty:
   tags:
     - "table"
     - "content"
-  components:
-    - "placeholder"
-  options:
-    attribute: "summary"
-    empty: true
 tableSummaryIsNotTooLong:
   testability: 0
   guidelines: []

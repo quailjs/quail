@@ -216,7 +216,7 @@
   "_tableShouldUseHeaderIDs",
   "_tableSummaryDescribesTable",
   "_tableSummaryDoesNotDuplicateCaption",
-  "_tableSummaryIsEmpty",
+  "tableSummaryIsEmpty",
   "_tableSummaryIsNotTooLong",
   "_tableSummaryIsSufficient",
   "_tableUseColGroup",
