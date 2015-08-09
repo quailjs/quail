@@ -104,7 +104,7 @@
   "_inputDoesNotUseColorAlone",
   "inputElementsDontHaveAlt",
   "_inputImageAltIdentifiesPurpose",
-  "_inputImageAltIsNotFileName",
+  "inputImageAltIsNotFileName",
   "inputImageAltIsNotPlaceholder",
   "_inputImageAltIsShort",
   "_inputImageAltNotRedundant",
