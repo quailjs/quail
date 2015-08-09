@@ -127,7 +127,7 @@
 - [x] KINGUseLongDateFormat
 - [x] KINGUsePercentageWithSymbol
 - [x] labelDoesNotContainInput
-- [ ] labelMustBeUnique
+- [x] labelMustBeUnique
 - [x] labelMustNotBeEmpty
 - [ ] labelsAreAssignedToAnInput
 - [ ] languageChangesAreIdentified

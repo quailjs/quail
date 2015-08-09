@@ -1,28 +1,28 @@
 <!doctype html>
 <html>
 <head>
-	<title>labelMustBeUnique</title>
+  <title>labelMustBeUnique</title>
 </head>
 <body>
-	<div data-expected="fail">
-		<form>
-			<label for="a">Label A:</label>
-			<input type="text" name="a" id="a" />
+  <div data-expected="fail">
+    <form>
+      <label id="assert-1" for="a">Label A:</label>
+      <input type="text" name="a" id="a" />
 
-				<label for="a">Label A:</label>
-				<input type="text" name="b" id="b" />
-		</form>
-	</div>
+        <label id="assert-2" for="a">Label A:</label>
+        <input type="text" name="b" id="b" />
+    </form>
+  </div>
 
-	<div data-expected="pass">
-		<form>
-			<label for="c">Label C:</label>
-			<input type="text" name="c" id="c" />
+  <div data-expected="pass">
+    <form>
+      <label id="assert-3" for="c">Label C:</label>
+      <input type="text" name="c" id="c" />
 
-				<label for="d">Label D:</label>
-				<input type="text" name="d" id="d" />
-		</form>
-	</div>
+        <label id="assert-4" for="d">Label D:</label>
+        <input type="text" name="d" id="d" />
+    </form>
+  </div>
 
   </body>
 </html>

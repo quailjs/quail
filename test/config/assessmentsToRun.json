@@ -112,7 +112,7 @@
   "inputTextValueNotEmpty",
   "inputWithoutLabelHasTitle",
   "labelDoesNotContainInput",
-  "_labelMustBeUnique",
+  "labelMustBeUnique",
   "labelMustNotBeEmpty",
   "_labelsAreAssignedToAnInput",
   "_languageChangesAreIdentified",
