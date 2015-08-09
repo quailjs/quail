@@ -67,7 +67,6 @@
 - [ ] documentValidatesToDocType
 - [x] documentVisualListsAreMarkedUp
 - [x] domOrderMatchesVisualOrder
-- [ ] elementAttributesAreValid
 - [ ] embedHasAssociatedNoEmbed
 - [x] embedMustHaveAltAttribute
 - [ ] fieldsetHasLabel
