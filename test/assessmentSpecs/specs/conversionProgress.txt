@@ -69,7 +69,7 @@
 - [x] domOrderMatchesVisualOrder
 - [ ] embedHasAssociatedNoEmbed
 - [x] embedMustHaveAltAttribute
-- [ ] fieldsetHasLabel
+- [x] fieldsetHasLabel
 - [x] fileHasLabel
 - [ ] focusIndicatorVisible
 - [x] fontIsNotUsed

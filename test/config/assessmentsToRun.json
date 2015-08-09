@@ -68,7 +68,7 @@
   "_domOrderMatchesVisualOrder",
   "_embedHasAssociatedNoEmbed",
   "_embedMustHaveAltAttribute",
-  "_fieldsetHasLabel",
+  "fieldsetHasLabel",
   "_fileHasLabel",
   "_focusIndicatorVisible",
   "fontIsNotUsed",
