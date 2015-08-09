@@ -3294,7 +3294,6 @@ paragraphIsWrittenClearly:
   components:
     - "textStatistics"
 passwordHasLabel:
-  type: "label"
   testability: 1
   title:
     en: "All password input elements should have a corresponding label"
@@ -3329,8 +3328,6 @@ passwordHasLabel:
   tags:
     - "form"
     - "content"
-  components:
-    - "label"
 passwordLabelIsNearby:
   type: "labelProximity"
   testability: 0.5

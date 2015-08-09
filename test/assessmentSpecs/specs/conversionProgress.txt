@@ -186,7 +186,7 @@
 - [x] objectWithClassIDHasNoText
 - [ ] pNotUsedAsHeader
 - [ ] paragraphIsWrittenClearly
-- [ ] passwordHasLabel
+- [x] passwordHasLabel
 - [ ] passwordLabelIsNearby
 - [ ] preShouldNotBeUsedForTabularLayout
 - [ ] radioHasLabel
