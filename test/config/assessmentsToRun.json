@@ -85,7 +85,7 @@
   "headersHaveText",
   "headersUseToMarkSections",
   "iIsNotUsed",
-  "_idrefsHasCorrespondingId",
+  "idrefsHasCorrespondingId",
   "iframeMustNotHaveLongdesc",
   "imageMapServerSide",
   "imgAltIsDifferent",

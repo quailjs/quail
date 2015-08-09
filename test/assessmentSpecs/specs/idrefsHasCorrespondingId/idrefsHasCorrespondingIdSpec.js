@@ -24,15 +24,95 @@ describe('assessment: idrefsHasCorrespondingId', function () {
     expect(quailResults.stats.tests).to.equal(1);
   });
   it('should return the correct number of cases', function () {
-    expect(quailResults.stats.cases).to.equal(0);
+    expect(quailResults.stats.cases).to.equal(21);
   });
 
   it('should have correct key under the test results', function () {
     expect(quailResults.tests).to.include.keys('idrefsHasCorrespondingId');
   });
 
-  it('should return the proper assessment for assert-1', function () {
+  it('should return the proper assessment for assert-2', function () {
     cases = quailResults.tests.idrefsHasCorrespondingId.cases;
-    expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
+    expect(cases).quailGetById('assert-2').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-3', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-3').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-4', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-4').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-5', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-5').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-6', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-6').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-7', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-7').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-8', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-8').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-9', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-9').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-10', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-10').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-11', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-11').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-12', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-12').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-13', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-13').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-14', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-14').to.have.quailStatus('failed');
+  });
+  it('should return the proper assessment for assert-15', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-15').to.have.quailStatus('failed');
+  });
+  it('should return the proper assessment for assert-16', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-16').to.have.quailStatus('failed');
+  });
+  it('should return the proper assessment for assert-17', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-17').to.have.quailStatus('failed');
+  });
+  it('should return the proper assessment for assert-18', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-18').to.have.quailStatus('failed');
+  });
+  it('should return the proper assessment for assert-19', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-19').to.have.quailStatus('failed');
+  });
+  it('should return the proper assessment for assert-20', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-20').to.have.quailStatus('failed');
+  });
+  it('should return the proper assessment for assert-21', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-21').to.have.quailStatus('failed');
+  });
+  it('should return the proper assessment for assert-22', function () {
+    cases = quailResults.tests.idrefsHasCorrespondingId.cases;
+    expect(cases).quailGetById('assert-22').to.have.quailStatus('failed');
   });
 });

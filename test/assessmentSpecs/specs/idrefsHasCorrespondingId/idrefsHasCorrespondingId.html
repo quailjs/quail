@@ -1,113 +1,82 @@
 <!doctype html>
 <html>
 <head>
-	<title>idrefsHasCorrespondingId</title>
+  <title>idrefsHasCorrespondingId</title>
 </head>
 <body>
 
-	<span id="id1"></span>
-	<span id="id2"></span>
+  <span id="id1"></span>
+  <span id="id2"></span>
 
-	<div data-expected="inapplicable"
-	data-accessibility-test="idrefsHasCorrespondingId">
-		<!-- no content -->
-	</div>
+  <div data-expected="pass">
 
-	<div data-expected="inapplicable"
-	data-accessibility-test="idrefsHasCorrespondingId">
-		<!-- headers attribute only applies to td or th -->
-		<span headers="id0"></span>
-	</div>
+    <!-- Headers must be on th or td element -->
+    <table><tr><td id="assert-2" headers="id1 id2"></td></tr></table>
+    <table><tr><th id="assert-3" headers="id1 id2"></th></tr></table>
 
-	<div data-expected="pass"
-	data-accessibility-test="idrefsHasCorrespondingId">
+    <!-- aria attributes can be on any element -->
+    <input type="text" id="assert-4" aria-controls="id1 id2" />
+    <input type="text" id="assert-5" aria-describedby="id1 id2" />
+    <input type="text" id="assert-6" aria-flowto="id1 id2" />
+    <input type="text" id="assert-7" aria-labelledby="id1 id2" />
+    <input type="text" id="assert-8" aria-owns="id1 id2" />
+  </div>
 
-		<!-- Headers must be on th or td element -->
-		<table><tr><td headers="id1 id2"></td></tr></table>
-		<table><tr><th headers="id1 id2"></th></tr></table>
+  <div data-expected="pass">
+    <!-- aria attributes on different elements -->
+    <div id="assert-9" aria-controls="id1 id2"></div>
+    <button id="assert-10" aria-describedby="id1 id2"></button>
+    <strong id="assert-11" aria-flowto="id1 id2"></strong>
+    <custom-element id="assert-12" aria-labelledby="id1 id2"></custom-element>
+    <video id="assert-13" aria-owns="id1 id2"></video>
+  </div>
 
-		<!-- aria attributes can be on any element -->
-		<input type="text" aria-controls="id1 id2" />
-		<input type="text" aria-describedby="id1 id2" />
-		<input type="text" aria-flowto="id1 id2" />
-		<input type="text" aria-labelledby="id1 id2" />
-		<input type="text" aria-owns="id1 id2" />
-	</div>
+  <div data-expected="fail">
+    <table><tr>
+      <td class="quail-failed-element" id="assert-14" headers="non-existing"></td>
+    </tr></table>
+  </div>
 
-	<div data-expected="pass"
-	data-accessibility-test="idrefsHasCorrespondingId">
-		<!-- aria attributes on different elements -->
-		<div aria-controls="id1 id2"></div>
-		<button aria-describedby="id1 id2"></button>
-		<strong aria-flowto="id1 id2"></strong>
-		<custom-element aria-labelledby="id1 id2"></custom-element>
-		<video aria-owns="id1 id2"></video>
-	</div>
+  <div data-expected="fail">
+    <table><tr>
+      <th class="quail-failed-element" id="assert-15" headers="non-existing"></th>
+    </tr></table>
+  </div>
 
-	<div data-expected="pass"
-	data-accessibility-test="idrefsHasCorrespondingId">
-		<!-- Some variations on the input -->
-		<div aria-controls="id1  id2"></div>
-		<div aria-controls="id1
-		id2"></div>
-		<div aria-controls="  "></div>
-	</div>
+  <div data-expected="fail">
+    <div id="assert-16" aria-controls="non-existing"
+    class="quail-failed-element"></div>
+  </div>
 
-	<div data-expected="fail"
-	data-accessibility-test="idrefsHasCorrespondingId">
-	 	<table><tr>
-	 		<td class="quail-failed-element" headers="non-existing"></td>
-		</tr></table>
-	</div>
+  <div data-expected="fail">
+    <button id="assert-17" aria-describedby="non-existing"
+    class="quail-failed-element"></button>
+  </div>
 
-	<div data-expected="fail"
-	data-accessibility-test="idrefsHasCorrespondingId">
-	 	<table><tr>
-	 		<th class="quail-failed-element" headers="non-existing"></th>
-		</tr></table>
-	</div>
+  <div data-expected="fail">
+    <strong id="assert-18" aria-flowto="non-existing"
+    class="quail-failed-element"></strong>
+  </div>
 
-	<div data-expected="fail"
-	data-accessibility-test="idrefsHasCorrespondingId">
-	 	<div aria-controls="non-existing"
-	 	class="quail-failed-element"></div>
- 	</div>
+  <div data-expected="fail">
+    <custom-element id="assert-19" aria-labelledby="non-existing"
+    class="quail-failed-element"></custom-element>
+  </div>
 
- 	<div data-expected="fail"
-	data-accessibility-test="idrefsHasCorrespondingId">
-		<button aria-describedby="non-existing"
-		class="quail-failed-element"></button>
- 	</div>
+  <div data-expected="fail">
+    <video id="assert-20" aria-owns="non-existing"
+    class="quail-failed-element"></video>
+  </div>
 
- 	<div data-expected="fail"
-	data-accessibility-test="idrefsHasCorrespondingId">
-		<strong aria-flowto="non-existing"
-		class="quail-failed-element"></strong>
- 	</div>
+  <div data-expected="fail">
+    <video id="assert-21" aria-owns="non-existing id1"
+    class="quail-failed-element"></video>
+  </div>
 
- 	<div data-expected="fail"
-	data-accessibility-test="idrefsHasCorrespondingId">
-		<custom-element aria-labelledby="non-existing"
-		class="quail-failed-element"></custom-element>
- 	</div>
-
- 	<div data-expected="fail"
-	data-accessibility-test="idrefsHasCorrespondingId">
-		<video aria-owns="non-existing"
-		class="quail-failed-element"></video>
-	</div>
-
- 	<div data-expected="fail"
-	data-accessibility-test="idrefsHasCorrespondingId">
-		<video aria-owns="non-existing id1"
-		class="quail-failed-element"></video>
-	</div>
-
- 	<div data-expected="fail"
-	data-accessibility-test="idrefsHasCorrespondingId">
-		<video aria-owns="id1 non-existing id2"
-		class="quail-failed-element"></video>
-	</div>
+  <div data-expected="fail">
+    <video id="assert-22" aria-owns="id1 non-existing id2"
+    class="quail-failed-element"></video>
+  </div>
 
   </body>
 </html>
