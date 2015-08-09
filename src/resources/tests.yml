@@ -1832,7 +1832,6 @@ headersAttrRefersToATableCell:
     - "td"
     - "th"
 headerTextIsTooLong:
-  type: "custom"
   testability: 1
   title:
     en: "Header text is too long"
@@ -3446,7 +3445,6 @@ radioLabelIsNearby:
 #     - "form"
 #     - "content"
 scriptFocusIndicatorVisible:
-  type: "custom"
   title:
     en: "Script focus indicators have high visibility"
     nl: "Script focus indicatoren zijn goed zichtbaar"
