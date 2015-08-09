@@ -34,7 +34,6 @@
   "blockquoteNotUsedForIndentation",
   "blockquoteUseForQuotations",
   "boldIsNotUsed",
-  "_buttonDoesNotChangeContextOnFocus",
   "_buttonHasName",
   "_checkboxHasLabel",
   "_checkboxLabelIsNearby",
