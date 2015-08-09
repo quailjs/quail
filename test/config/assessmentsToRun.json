@@ -169,6 +169,6 @@
   "videoMayBePresent",
   "videoProvidesCaptions",
   "videosEmbeddedOrLinkedNeedCaptions",
-  "_whiteSpaceInWord",
+  "whiteSpaceInWord",
   "_whiteSpaceNotUsedForFormatting"
 ]
