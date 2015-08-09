@@ -8,13 +8,13 @@ tag
     <div data-expected="fail">
         <form action="http://example.com/donut" method="post">
             <p>
-                <input type="checkbox" name="flavour" id="choc" value="chocolate" class="quail-failed-element"/>
+                <input id="assert-1" type="checkbox" name="flavour" id="choc" value="chocolate" class="quail-failed-element"/>
                 <label for="choc">Chocolate</label>
                 <br/>
-                <input type="checkbox" name="flavour" id="cream" value="cream" class="quail-failed-element"/>
+                <input id="assert-2" type="checkbox" name="flavour" id="cream" value="cream" class="quail-failed-element"/>
                 <label for="cream">Cream Filled</label>
                 <br/>
-                <input type="checkbox" name="flavour" id="honey" value="honey" class="quail-failed-element"/>
+                <input id="assert-3" type="checkbox" name="flavour" id="honey" value="honey" class="quail-failed-element"/>
                 <label for="honey">Honey Glazed</label>
                 <br/>
                 <input type="submit" value="Purchase Donuts" />
@@ -27,13 +27,13 @@ tag
             <fieldset>
                 <legend>Donuts Requested (check all that apply)</legend>
                 <p>
-                    <input type="checkbox" name="flavour" id="choc" value="chocolate" />
+                    <input id="assert-4" type="checkbox" name="flavour" id="choc" value="chocolate" />
                     <label for="choc">Chocolate</label>
                     <br/>
-                    <input type="checkbox" name="flavour" id="cream" value="cream" />
+                    <input id="assert-5" type="checkbox" name="flavour" id="cream" value="cream" />
                     <label for="cream">Cream Filled</label>
                     <br/>
-                    <input type="checkbox" name="flavour" id="honey" value="honey" />
+                    <input id="assert-6" type="checkbox" name="flavour" id="honey" value="honey" />
                     <label for="honey">Honey Glazed</label>
                 </p>
             </fieldset>

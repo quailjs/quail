@@ -108,7 +108,7 @@
 - [x] imgShouldNotHaveTitle
 - [x] imgWithMapHasUseMap
 - [x] imgWithMathShouldHaveMathEquivalent
-- [ ] inputCheckboxRequiresFieldset
+- [x] inputCheckboxRequiresFieldset
 - [x] inputDoesNotUseColorAlone
 - [x] inputElementsDontHaveAlt
 - [x] inputImageAltIdentifiesPurpose

@@ -100,7 +100,7 @@
   "imgShouldNotHaveTitle",
   "imgWithMapHasUseMap",
   "imgWithMathShouldHaveMathEquivalent",
-  "_inputCheckboxRequiresFieldset",
+  "inputCheckboxRequiresFieldset",
   "_inputDoesNotUseColorAlone",
   "inputElementsDontHaveAlt",
   "_inputImageAltIdentifiesPurpose",
