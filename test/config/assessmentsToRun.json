@@ -55,7 +55,7 @@
   "documentMetaNotUsedWithTimeout",
   "documentReadingDirection",
   "documentStrictDocType",
-  "_documentTitleDescribesDocument",
+  "documentTitleDescribesDocument",
   "documentTitleIsNotPlaceholder",
   "documentTitleIsShort",
   "documentTitleNotEmpty",
