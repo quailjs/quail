@@ -211,7 +211,7 @@
 - [x] tableShouldUseHeaderIDs
 - [x] tableSummaryDoesNotDuplicateCaption
 - [x] tableSummaryIsEmpty
-- [ ] tableSummaryIsNotTooLong
+- [x] tableSummaryIsNotTooLong
 - [x] tableSummaryIsSufficient
 - [ ] tableUseColGroup
 - [ ] tableUsesAbbreviationForHeader
