@@ -212,7 +212,6 @@
 - [x] tableSummaryDoesNotDuplicateCaption
 - [x] tableSummaryIsEmpty
 - [x] tableSummaryIsNotTooLong
-- [x] tableSummaryIsSufficient
 - [ ] tableUseColGroup
 - [ ] tableUsesAbbreviationForHeader
 - [x] tableUsesCaption

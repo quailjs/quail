@@ -3799,18 +3799,6 @@ tableSummaryIsNotTooLong:
   tags:
     - "table"
     - "content"
-# tableSummaryIsSufficient:
-#   testability: 0
-#   title:
-#     en: "All data tables should have an adequate summary"
-#     nl: "Alle datatabellen moeten een toepasselijke samenvatting hebben"
-#   description:
-#     en: "If a table contains data, it should have a \"summary\" attribute that completely communicates the function and use of the table."
-#     nl: "Als een tabel data bevat, moet er een \"summary\"-attribuut zijn dat de functie en het doel van de tabel duidelijk maakt."
-#   guidelines: []
-#   tags:
-#     - "table"
-#     - "content"
 tableUseColGroup:
   testability: 0
   title:
