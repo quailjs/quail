@@ -217,7 +217,7 @@
 - [x] tableUsesCaption
 - [x] tableUsesScopeForRow
 - [x] tableWithBothHeadersUseScope
-- [ ] tabularDataIsInTable
+- [x] tabularDataIsInTable
 - [ ] textIsNotSmall
 - [x] textareaHasAssociatedLabel
 - [ ] userInputMayBeRequired

@@ -208,7 +208,7 @@
   "tableUsesAbbreviationForHeader",
   "tableUsesCaption",
   "tableUsesScopeForRow",
-  "_tabularDataIsInTable",
+  "tabularDataIsInTable",
   "_textIsNotSmall",
   "textareaHasAssociatedLabel",
   "_userInputMayBeRequired",
