@@ -46,7 +46,7 @@
 - [x] contentPositioningShouldNotChangeMeaning
 - [x] cssDocumentMakesSenseStyleTurnedOff
 - [x] definitionListsAreUsed
-- [ ] doNotUseGraphicalSymbolToConveyInformation
+- [x] doNotUseGraphicalSymbolToConveyInformation
 - [x] doctypeProvided
 - [ ] documentAbbrIsUsed
 - [ ] documentAcronymsHaveElement
