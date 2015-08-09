@@ -142,7 +142,7 @@
 - [x] linkHasAUniqueContext
 - [x] linkUsedForAlternateContent
 - [x] linkUsedToDescribeNavigation
-- [ ] listNotUsedForFormatting
+- [x] listNotUsedForFormatting
 - [ ] listOfLinksUseList
 - [x] marqueeIsNotUsed
 - [x] menuNotUsedToFormatText
