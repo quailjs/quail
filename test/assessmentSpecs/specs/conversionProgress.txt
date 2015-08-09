@@ -135,7 +135,6 @@
 - [ ] inputImageAltNotRedundant
 - [x] inputImageHasAlt
 - [x] inputImageNotDecorative
-- [ ] inputPasswordHasTabIndex
 - [ ] inputSubmitHasTabIndex
 - [x] inputTextHasLabel
 - [ ] inputTextHasTabIndex

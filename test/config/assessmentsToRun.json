@@ -135,7 +135,6 @@
   "_inputImageAltNotRedundant",
   "inputImageHasAlt",
   "_inputImageNotDecorative",
-  "_inputPasswordHasTabIndex",
   "_inputSubmitHasTabIndex",
   "_inputTextHasLabel",
   "_inputTextHasTabIndex",
