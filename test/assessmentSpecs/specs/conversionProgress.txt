@@ -43,7 +43,7 @@
 - [x] colorElementBehindBackgroundImageContrast
 - [x] colorElementBehindContrast
 - [x] colorFontContrast
-- [ ] contentPositioningShouldNotChangeMeaning
+- [x] contentPositioningShouldNotChangeMeaning
 - [x] cssDocumentMakesSenseStyleTurnedOff
 - [ ] definitionListsAreUsed
 - [ ] doNotUseGraphicalSymbolToConveyInformation
