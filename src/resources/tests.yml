@@ -2290,24 +2290,6 @@ imgWithMathShouldHaveMathEquivalent:
   tags:
     - "image"
     - "content"
-inputCheckboxHasTabIndex:
-  type: "placeholder"
-  testability: 1
-  title:
-    en: "All \"checkbox\" input elements require a valid \"tabindex\" attribute"
-    nl: "Alle \"checkbox\"-invoerelementen moeten een geldig \"tabindex\"-attribuut hebben"
-  description:
-    en: "All <code>input</code> elements of type \"checkbox\" should have a \"tabindex\" attribute to help navigate the form with a keyboard alone."
-    nl: "Alle invoerelementen van het type \"checkbox\" moeten \"tabindex\"-attribuut hebben dat ervoor zorgt dat je door een formulier kunt navigeren met het toetsenbord."
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
-  components:
-    - "placeholder"
-  options:
-    attribute: "tabindex"
-    empty: true
 inputCheckboxRequiresFieldset:
   testability: 1
   title:
@@ -2351,24 +2333,6 @@ inputElementsDontHaveAlt:
   tags:
     - "form"
     - "content"
-inputFileHasTabIndex:
-  type: "placeholder"
-  testability: 1
-  title:
-    en: "All \"file\" input elements require a valid \"tabindex\" attribute"
-    nl: "Alle \"document\"-invoerelementen moeten een geldig \"tabindex\"-attribuut hebben"
-  description:
-    en: "All <code>input</code> elements of type \"file\" should have a \"tabindex\" attribute to help navigate the form with a keyboard alone."
-    nl: "Alle <code>invoer</code>-elementen van het type \"file\" moeten een \"tabindex\"-attribuut hebben om navigatie van het formulier met het toetsenbord mogelijk te maken."
-  guidelines: []
-  tags:
-    - "form"
-    - "tabindex"
-  components:
-    - "placeholder"
-  options:
-    attribute: "tabindex"
-    empty: true
 # inputImageAltIdentifiesPurpose:
 #   testability: 0
 #   title:
