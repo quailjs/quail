@@ -209,7 +209,6 @@
 - [x] tableLayoutMakesSenseLinearized
 - [x] tableNotUsedForLayout
 - [x] tableShouldUseHeaderIDs
-- [x] tableSummaryDescribesTable
 - [x] tableSummaryDoesNotDuplicateCaption
 - [x] tableSummaryIsEmpty
 - [ ] tableSummaryIsNotTooLong

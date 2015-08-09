@@ -204,7 +204,6 @@
   "tableLayoutMakesSenseLinearized",
   "tableNotUsedForLayout",
   "tableShouldUseHeaderIDs",
-  "_tableSummaryDescribesTable",
   "tableSummaryDoesNotDuplicateCaption",
   "tableSummaryIsEmpty",
   "_tableSummaryIsNotTooLong",
