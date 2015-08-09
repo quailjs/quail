@@ -196,7 +196,7 @@
   "_scriptOnFocusChangeBackgroundOrBorder",
   "_scriptOnmousedownRequiresOnKeypress",
   "_scriptOnmousemove",
-  "_scriptOnmouseoutHasOnmouseblur",
+  "scriptOnmouseoutHasOnmouseblur",
   "_scriptOnmouseoverHasOnfocus",
   "scriptOnmouseupHasOnkeyup",
   "_scriptUIMustBeAccessible",

@@ -1,12 +1,17 @@
 <!doctype html>
 <html>
-<head>
-	<title>scriptOnmouseoutHasOnmouseblur</title>
-</head>
-<body>
-	<div data-expected="pass">
-		<input name="num2" onmouseout="'foo';" onblur="'bar';" value="0"/>
-	</div>
-
+  <head>
+    <title>scriptOnmouseoutHasOnmouseblur</title>
+  </head>
+  <body>
+    <div data-expected="pass">
+      <!-- inputs always have an onblur, but this doesn't guarantee the same
+           behavior. Our test shouldn't be passing here outright, but should
+           report cantTell -->
+      <input id="assert-1" name="num2" onmouseout="'foo';" value="0"/>
+    </div>
+    <div data-expected="pass">
+      <input id="assert-2" name="num2" onmouseout="'foo';" onblur="'bar';" value="0"/>
+    </div>
   </body>
 </html>
