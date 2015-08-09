@@ -587,7 +587,6 @@ boldIsNotUsed:
 #
 # @see https://github.com/quailjs/quail/issues/375
 # buttonDoesNotChangeContextOnFocus:
-#   type: "event"
 #   testability: 1
 #   title:
 #     en: "Buttons must not contain an \"onfocus\" attribute"
@@ -2926,7 +2925,6 @@ liDontUseImageForBullet:
 #
 # @see https://github.com/quailjs/quail/issues/374
 # linkDoesNotChangeContextOnFocus:
-#   type: "event"
 #   testability: 1
 #   title:
 #     en: "Link elements must not contain an \"onfocus\" attribute"
@@ -3494,7 +3492,6 @@ scriptFocusIndicatorVisible:
 #   tags:
 #     - "javascript"
 scriptOnclickRequiresOnKeypress:
-  type: "event"
   testability: 1
   title:
     en: "If an element has an \"onclick\" attribute it should also have an \"onkeypress\" attribute"
@@ -3518,7 +3515,6 @@ scriptOnclickRequiresOnKeypress:
   tags:
     - "javascript"
 scriptOndblclickRequiresOnKeypress:
-  type: "event"
   testability: 1
   title:
     en: "Any element with an \"ondblclick\" attribute should have a keyboard-related action as well"
@@ -3555,7 +3551,6 @@ scriptOnFocusChangeBackgroundOrBorder:
   tags:
     - "content"
 scriptOnmousedownRequiresOnKeypress:
-  type: "event"
   testability: 1
   title:
     en: "If an element has a \"mousedown\" attribute it should also have an \"onkeydown\" attribute"
@@ -3579,7 +3574,6 @@ scriptOnmousedownRequiresOnKeypress:
   tags:
     - "javascript"
 scriptOnmousemove:
-  type: "event"
   testability: 1
   title:
     en: "Any element with an \"onmousemove\" attribute should have a keyboard-related action as well"
@@ -3603,7 +3597,6 @@ scriptOnmousemove:
   tags:
     - "javascript"
 scriptOnmouseoutHasOnmouseblur:
-  type: "event"
   testability: 1
   title:
     en: "If an element has a \"onmouseout\" attribute it should also have an \"onblur\" attribute"
@@ -3627,7 +3620,6 @@ scriptOnmouseoutHasOnmouseblur:
   tags:
     - "javascript"
 scriptOnmouseoverHasOnfocus:
-  type: "event"
   testability: 1
   title:
     en: "If an element has a \"onmouseover\" attribute it should also have an \"onfocus\" attribute"
@@ -3651,7 +3643,6 @@ scriptOnmouseoverHasOnfocus:
   tags:
     - "javascript"
 scriptOnmouseupHasOnkeyup:
-  type: "event"
   testability: 1
   title:
     en: "If an element has a \"onmouseup\" attribute it should also have an \"onkeyup\" attribute"
@@ -3721,7 +3712,6 @@ scriptOnmouseupHasOnkeyup:
 #
 # @see https://github.com/quailjs/quail/issues/373
 # selectDoesNotChangeContext:
-#   type: "event"
 #   testability: 1
 #   title:
 #     en: "\"Select\" elements must not contain an \"onchange\" attribute"
