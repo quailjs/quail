@@ -50,7 +50,7 @@
   "documentContentReadableWithoutStylesheets",
   "documentHasTitleElement",
   "documentIsWrittenClearly",
-  "_documentLangIsISO639Standard",
+  "documentLangIsISO639Standard",
   "documentLangNotIdentified",
   "documentMetaNotUsedWithTimeout",
   "_documentReadingDirection",

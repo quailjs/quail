@@ -55,7 +55,7 @@
 - [x] documentHasTitleElement
 - [x] documentIDsMustBeUnique
 - [x] documentIsWrittenClearly
-- [ ] documentLangIsISO639Standard
+- [x] documentLangIsISO639Standard
 - [x] documentLangNotIdentified
 - [x] documentMetaNotUsedWithTimeout
 - [x] documentReadingDirection
