@@ -24,13 +24,21 @@ describe('assessment: imgMapAreasHaveDuplicateLink', function () {
     expect(quailResults.stats.tests).to.equal(1);
   });
   it('should return the correct number of cases', function () {
-    expect(quailResults.stats.cases).to.equal(0);
+    expect(quailResults.stats.cases).to.equal(3);
   });
 
   it('should have correct key under the test results', function () {
     expect(quailResults.tests).to.include.keys('imgMapAreasHaveDuplicateLink');
   });
 
+  it('should return the proper assessment for assert-1', function () {
+    cases = quailResults.tests.imgMapAreasHaveDuplicateLink.cases;
+    expect(cases).quailGetById('assert-1').to.have.quailStatus('failed');
+  });
+  it('should return the proper assessment for assert-1', function () {
+    cases = quailResults.tests.imgMapAreasHaveDuplicateLink.cases;
+    expect(cases).quailGetById('assert-1').to.have.quailStatus('failed');
+  });
   it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests.imgMapAreasHaveDuplicateLink.cases;
     expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');

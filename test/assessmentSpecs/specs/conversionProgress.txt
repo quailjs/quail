@@ -104,7 +104,7 @@
 - [x] imgHasAlt
 - [x] imgHasLongDesc
 - [x] imgImportantNoSpacerAlt
-- [ ] imgMapAreasHaveDuplicateLink
+- [x] imgMapAreasHaveDuplicateLink
 - [ ] imgNonDecorativeHasAlt
 - [x] imgNotReferredToByColorAlone
 - [x] imgServerSideMapNotUsed
