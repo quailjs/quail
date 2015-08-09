@@ -979,8 +979,6 @@ documentIsWrittenClearly:
   tags:
     - "language"
     - "content"
-  components:
-    - "textStatistics"
 documentLangIsISO639Standard:
   testability: 1
   title:

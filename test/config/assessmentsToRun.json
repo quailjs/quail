@@ -53,7 +53,7 @@
   "documentContentReadableWithoutStylesheets",
   "documentHasTitleElement",
   "_documentIDsMustBeUnique",
-  "_documentIsWrittenClearly",
+  "documentIsWrittenClearly",
   "_documentLangIsISO639Standard",
   "documentLangNotIdentified",
   "documentMetaNotUsedWithTimeout",

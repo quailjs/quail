@@ -54,7 +54,7 @@
 - [x] documentContentReadableWithoutStylesheets
 - [x] documentHasTitleElement
 - [ ] documentIDsMustBeUnique
-- [ ] documentIsWrittenClearly
+- [x] documentIsWrittenClearly
 - [ ] documentLangIsISO639Standard
 - [x] documentLangNotIdentified
 - [x] documentMetaNotUsedWithTimeout
