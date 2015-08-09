@@ -91,7 +91,6 @@
 - [x] headersHaveText
 - [x] headersUseToMarkSections
 - [x] iIsNotUsed
-- [ ] idRefHasCorrespondingId
 - [ ] idrefsHasCorrespondingId
 - [x] iframeMustNotHaveLongdesc
 - [x] imageMapServerSide

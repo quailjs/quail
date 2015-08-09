@@ -1784,22 +1784,6 @@ iIsNotUsed:
   tags:
     - "deprecated"
     - "content"
-idRefHasCorrespondingId:
-  testability: 1
-  title:
-    en: "Elements with an idref type attribute must correspond to an element with an ID"
-    nl: "Elementen met een idref type attribuut moeten corresponderen met een element met een ID"
-  description:
-    en: "When using an idref type attribute, the target element with the ID must exist on the page."
-    nl: "Wanneer je een idref type attibuut gebruikt, moet het doelelement met dit ID ook bestaan op de pagina."
-  guidelines:
-    wcag:
-      1.3.1:
-        techniques:
-          - "F17"
-      4.1.1:
-        techniques:
-          - "F17"
 idrefsHasCorrespondingId:
   testability: 1
   title:
