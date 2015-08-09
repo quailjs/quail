@@ -130,7 +130,7 @@
 - [x] labelMustBeUnique
 - [x] labelMustNotBeEmpty
 - [x] labelsAreAssignedToAnInput
-- [ ] languageChangesAreIdentified
+- [x] languageChangesAreIdentified
 - [ ] languageDirAttributeIsUsed
 - [ ] languageDirectionPunctuation
 - [ ] languageUnicodeDirection

@@ -24,7 +24,7 @@ describe('assessment: languageChangesAreIdentified', function () {
     expect(quailResults.stats.tests).to.equal(1);
   });
   it('should return the correct number of cases', function () {
-    expect(quailResults.stats.cases).to.equal(0);
+    expect(quailResults.stats.cases).to.equal(15);
   });
 
   it('should have correct key under the test results', function () {
