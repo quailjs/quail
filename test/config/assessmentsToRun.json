@@ -212,7 +212,6 @@
   "tableUsesCaption",
   "tableUsesScopeForRow",
   "_tableWithBothHeadersUseScope",
-  "_tableWithMoreHeadersUseID",
   "_tabularDataIsInTable",
   "_textIsNotSmall",
   "textareaHasAssociatedLabel",

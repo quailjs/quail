@@ -3873,18 +3873,6 @@ tableUsesScopeForRow:
 #   tags:
 #     - "table"
 #     - "content"
-tableWithMoreHeadersUseID:
-  testability: 0.5
-  title:
-    en: "Complex data tables should provide \"id\" attributes to headers"
-    nl: "Complexe datatabellen moeten \"id\"-attributen aan headers koppelen"
-  description:
-    en: "Complex data tables should provide \"id\" attributes to headers and \"headers\" attributes for data cells."
-    nl: "Complexe datatabellen moeten \"id\"-attributen aan headers koppelen en \"headers\"-attributen aan datacellen."
-  guidelines: []
-  tags:
-    - "table"
-    - "content"
 #
 # @see https://github.com/quailjs/quail/issues/327
 # tagsAreNestedCorrectly:
