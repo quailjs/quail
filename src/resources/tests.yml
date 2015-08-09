@@ -599,7 +599,6 @@ boldIsNotUsed:
 #     - "form"
 #     - "content"
 buttonHasName:
-  type: "placeholder"
   testability: 1
   title:
     en: "Button should contain text"
@@ -620,12 +619,6 @@ buttonHasName:
           - "H91"
   tags:
     - "content"
-  components:
-    - "placeholder"
-  options:
-    content: true
-    empty: true
-    attribute: "title"
 checkboxHasLabel:
   testability: 1
   title:

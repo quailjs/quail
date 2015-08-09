@@ -35,7 +35,7 @@
 - [x] blockquoteUseForQuotations
 - [x] boldIsNotUsed
 - [x] buttonDoesNotChangeContextOnFocus
-- [ ] buttonHasName
+- [x] buttonHasName
 - [x] checkboxHasLabel
 - [ ] checkboxLabelIsNearby
 - [ ] closingTagsAreUsed
