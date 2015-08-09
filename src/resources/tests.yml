@@ -3641,18 +3641,6 @@ tableDataShouldHaveTh:
   tags:
     - "table"
     - "content"
-tableHeaderLabelMustBeTerse:
-  testability: 0.5
-  title:
-    en: "Table header lables must be terse"
-    nl: "Tabelkoppen moeten bondig zijn"
-  description:
-    en: "The \"abbr\" attribute for table headers must be terse (less than 20 characters long)."
-    nl: "Het \"abbr\"-attribuut voor tabelkoppen moet bondig zijn (minder dan 20 tekens lang)."
-  guidelines: []
-  tags:
-    - "table"
-    - "content"
 # tableIsGrouped:
 #   testability: 0.5
 #   title:

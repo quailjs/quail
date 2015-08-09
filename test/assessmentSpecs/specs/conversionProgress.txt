@@ -202,7 +202,6 @@
 - [x] tableCaptionIdentifiesTable
 - [x] tableComplexHasSummary
 - [x] tableDataShouldHaveTh
-- [ ] tableHeaderLabelMustBeTerse
 - [x] tableIsGrouped
 - [ ] tableLayoutDataShouldNotHaveTh
 - [ ] tableLayoutHasNoCaption

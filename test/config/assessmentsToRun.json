@@ -197,7 +197,6 @@
   "_tableCaptionIdentifiesTable",
   "_tableComplexHasSummary",
   "tableDataShouldHaveTh",
-  "_tableHeaderLabelMustBeTerse",
   "_tableIsGrouped",
   "_tableLayoutDataShouldNotHaveTh",
   "_tableLayoutHasNoCaption",
