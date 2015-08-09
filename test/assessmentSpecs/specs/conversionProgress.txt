@@ -159,7 +159,7 @@
 - [x] legendTextNotEmpty
 - [ ] legendTextNotPlaceholder
 - [x] liDontUseImageForBullet
-- [ ] linkDoesNotChangeContextOnFocus
+- [x] linkDoesNotChangeContextOnFocus
 - [ ] linkHasAUniqueContext
 - [x] linkUsedForAlternateContent
 - [x] linkUsedToDescribeNavigation

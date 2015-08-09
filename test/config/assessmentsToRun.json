@@ -156,7 +156,6 @@
   "legendTextNotEmpty",
   "_legendTextNotPlaceholder",
   "liDontUseImageForBullet",
-  "_linkDoesNotChangeContextOnFocus",
   "_linkHasAUniqueContext",
   "_linkUsedForAlternateContent",
   "_linkUsedToDescribeNavigation",
