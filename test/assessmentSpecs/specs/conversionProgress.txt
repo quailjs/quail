@@ -197,7 +197,7 @@
 - [x] scriptOnclickRequiresOnKeypress
 - [x] scriptOndblclickRequiresOnKeypress
 - [x] scriptOnFocusChangeBackgroundOrBorder
-- [ ] scriptOnmousedownRequiresOnKeypress
+- [x] scriptOnmousedownRequiresOnKeypress
 - [x] scriptOnmousemove
 - [x] scriptOnmouseoutHasOnmouseblur
 - [x] scriptOnmouseoverHasOnfocus

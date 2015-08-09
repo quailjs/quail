@@ -5,11 +5,11 @@
 </head>
 <body>
 	<div data-expected="fail">
-		<input name="num" onmousedown="'foo';" value="0" class="quail-failed-element"/>
+		<input id="assert-1" name="num" onmousedown="'foo';" value="0" />
 	</div>
 
 	<div data-expected="pass">
-		<input name="num" onmousedown="'foo';" onkeydown="'bar';" value="0" />
+		<input id="assert-2" name="num" onmousedown="'foo';" onkeydown="'bar';" value="0" />
 
 	</div>
 
