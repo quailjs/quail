@@ -57,7 +57,7 @@
   "documentStrictDocType",
   "_documentTitleDescribesDocument",
   "documentTitleIsNotPlaceholder",
-  "_documentTitleIsShort",
+  "documentTitleIsShort",
   "documentTitleNotEmpty",
   "_documentValidatesToDocType",
   "documentVisualListsAreMarkedUp",

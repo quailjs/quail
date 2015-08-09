@@ -62,7 +62,7 @@
 - [x] documentStrictDocType
 - [x] documentTitleDescribesDocument
 - [x] documentTitleIsNotPlaceholder
-- [ ] documentTitleIsShort
+- [x] documentTitleIsShort
 - [x] documentTitleNotEmpty
 - [ ] documentValidatesToDocType
 - [x] documentVisualListsAreMarkedUp
