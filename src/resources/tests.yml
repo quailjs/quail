@@ -753,8 +753,6 @@ colorElementBehindContrast:
           - "G18"
   tags:
     - "color"
-  callback:
-    - "colorElementBehindContrast"
 colorBackgroundImageContrast:
   testability: 1
   title:

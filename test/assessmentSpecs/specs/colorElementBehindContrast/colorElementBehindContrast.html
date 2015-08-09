@@ -22,13 +22,13 @@
   </style>
 </head>
 <body>
-  <div data-expected="colorElementBehindContrast:fail" id="test-1">
+  <div data-expected="fail" id="test-1">
     <div class="bck"></div>
-    <p class="txt">This test is not readable.</p>
+    <p id="assert-1" class="txt">This test is not readable.</p>
   </div>
-  <div data-expected="colorElementBehindContrast:pass" id="test-2">
+  <div data-expected="pass" id="test-2">
     <div class="bck"></div>
-    <p class="txt">This test is readable.</p>
+    <p id="assert-2" class="txt">This test is readable.</p>
   </div>
   </body>
 </html>

@@ -40,7 +40,7 @@
   "colorBackgroundImageContrast",
   "colorElementBehindBackgroundGradientContrast",
   "colorElementBehindBackgroundImageContrast",
-  "_colorElementBehindContrast",
+  "colorElementBehindContrast",
   "_colorFontContrast",
   "_contentPositioningShouldNotChangeMeaning",
   "cssDocumentMakesSenseStyleTurnedOff",
