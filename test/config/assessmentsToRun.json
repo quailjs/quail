@@ -110,7 +110,7 @@
   "_imgAltIsSameInText",
   "_imgAltIsTooLong",
   "_imgAltNotEmptyInAnchor",
-  "_imgAltNotPlaceHolder",
+  "imgAltNotPlaceHolder",
   "_imgAltTextNotRedundant",
   "_imgGifNoFlicker",
   "imgHasAlt",

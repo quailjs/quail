@@ -1,45 +1,38 @@
 <!doctype html>
 <html>
 <head>
-	<title>imgAltNotPlaceHolder</title>
+  <title>imgAltNotPlaceHolder</title>
 </head>
 <body>
-	<div data-expected="fail">
-		<img src="../assets/rex.jpg" alt="photo" width="150" height="105" class="quail-failed-element"/>
-	</div>
+  <div data-expected="fail">
+    <img id="assert-1" src="assets/rex.jpg" alt="photo" width="150" height="105" />
+  </div>
 
-	<div data-expected="fail">
-		<img src="../assets/rex.jpg" alt="13K bytes" width="150" height="105" class="quail-failed-element"/>
-	</div>
+  <div data-expected="fail">
+    <img id="assert-2" src="assets/rex.jpg" alt="13K bytes" width="150" height="105" />
+  </div>
 
-	<div data-expected="fail">
-		<p>
-			<img src="../assets/rex.jpg" alt="spacer" width="150" height="105" class="quail-failed-element"/>
-		</p>
-	</div>
+  <div data-expected="fail">
+    <p>
+      <img id="assert-3" src="assets/rex.jpg" alt="spacer" width="150" height="105" />
+    </p>
+  </div>
 
-	<div data-expected="fail">
-		<p>
-			<img src="../assets/rex.jpg" alt="nbsp" width="150" height="105" class="quail-failed-element"/>
-		</p>
-	</div>
+  <div data-expected="fail">
+    <p>
+      <img id="assert-4" src="assets/rex.jpg" alt="nbsp" width="150" height="105" />
+    </p>
+  </div>
 
-	<div data-expected="fail">
-		<img src="../assets/rex.jpg" alt="image" width="150" height="105" class="quail-failed-element"/>
-	</div>
+  <div data-expected="fail">
+    <img id="assert-5" src="assets/rex.jpg" alt="image" width="150" height="105" />
+  </div>
 
-	<div data-expected="pass">
-		<p>
-			<img src="../assets/rex.jpg" alt="" />
-		</p>
-	</div>
-
-	<div data-expected="pass">
-		<p>
-			<img src="../assets/rex.jpg" alt="Photo of a brown and black cat named Rex."
-            />
-		</p>
-	</div>
+  <div data-expected="pass">
+    <p>
+      <img id="assert-6" src="assets/rex.jpg" alt="Photo of a brown and black cat named Rex." />
+    </p>
+  </div>
 
   </body>
 </html>

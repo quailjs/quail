@@ -2052,7 +2052,6 @@ imgAltNotEmptyInAnchor:
     - "image"
     - "content"
 imgAltNotPlaceHolder:
-  type: "placeholder"
   testability: 1
   title:
     en: "Images should not have a simple placeholder text as an \"alt\" attribute"
@@ -2074,10 +2073,6 @@ imgAltNotPlaceHolder:
   tags:
     - "image"
     - "content"
-  components:
-    - "placeholder"
-  options:
-    attribute: "alt"
 imgAltTextNotRedundant:
   testability: 1
   title:
