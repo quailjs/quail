@@ -64,7 +64,6 @@
 - [x] documentTitleIsNotPlaceholder
 - [x] documentTitleIsShort
 - [x] documentTitleNotEmpty
-- [ ] documentValidatesToDocType
 - [x] documentVisualListsAreMarkedUp
 - [x] domOrderMatchesVisualOrder
 - [ ] embedHasAssociatedNoEmbed

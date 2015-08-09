@@ -59,7 +59,6 @@
   "documentTitleIsNotPlaceholder",
   "documentTitleIsShort",
   "documentTitleNotEmpty",
-  "_documentValidatesToDocType",
   "documentVisualListsAreMarkedUp",
   "_domOrderMatchesVisualOrder",
   "_embedHasAssociatedNoEmbed",

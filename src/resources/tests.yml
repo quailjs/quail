@@ -1129,22 +1129,6 @@ documentTitleNotEmpty:
   tags:
     - "document"
     - "head"
-documentValidatesToDocType:
-  testability: 1
-  title:
-    en: "Document must validate to the doctype"
-    nl: "Het document moet valideren met het doctype"
-  description:
-    en: "The document must validate to the declared doctype."
-    nl: "Het document moet valideren met het vastgestelde doctype."
-  guidelines:
-    wcag:
-      4.1.1:
-        techniques:
-          - "G134"
-  tags:
-    - "document"
-    - "doctype"
 documentVisualListsAreMarkedUp:
   testability: 1
   title:
