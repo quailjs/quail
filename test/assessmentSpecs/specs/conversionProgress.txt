@@ -151,7 +151,7 @@
 - [ ] languageUnicodeDirection
 - [x] legendDescribesListOfChoices
 - [x] legendTextNotEmpty
-- [ ] legendTextNotPlaceholder
+- [x] legendTextNotPlaceholder
 - [x] liDontUseImageForBullet
 - [x] linkDoesNotChangeContextOnFocus
 - [ ] linkHasAUniqueContext

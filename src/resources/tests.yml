@@ -2718,7 +2718,6 @@ legendTextNotEmpty:
     - "form"
     - "content"
 legendTextNotPlaceholder:
-  type: "placeholder"
   testability: 1
   title:
     en: "\"Legend\" text must not contain placeholder text"
@@ -2746,11 +2745,6 @@ legendTextNotPlaceholder:
   tags:
     - "form"
     - "content"
-  components:
-    - "placeholder"
-  options:
-    content: true
-    emtpy: true
 liDontUseImageForBullet:
   testability: 0.5
   guidelines: []

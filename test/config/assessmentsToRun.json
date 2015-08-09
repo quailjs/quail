@@ -147,7 +147,7 @@
   "_languageUnicodeDirection",
   "_legendDescribesListOfChoices",
   "legendTextNotEmpty",
-  "_legendTextNotPlaceholder",
+  "legendTextNotPlaceholder",
   "liDontUseImageForBullet",
   "_linkHasAUniqueContext",
   "_linkUsedForAlternateContent",
