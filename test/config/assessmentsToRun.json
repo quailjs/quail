@@ -211,7 +211,6 @@
   "tableUsesAbbreviationForHeader",
   "tableUsesCaption",
   "tableUsesScopeForRow",
-  "_tableWithBothHeadersUseScope",
   "_tabularDataIsInTable",
   "_textIsNotSmall",
   "textareaHasAssociatedLabel",
