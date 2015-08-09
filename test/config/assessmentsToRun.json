@@ -104,7 +104,7 @@
   "imgHasAlt",
   "imgHasLongDesc",
   "imgImportantNoSpacerAlt",
-  "_imgNonDecorativeHasAlt",
+  "imgNonDecorativeHasAlt",
   "_imgNotReferredToByColorAlone",
   "imgServerSideMapNotUsed",
   "imgShouldNotHaveTitle",
