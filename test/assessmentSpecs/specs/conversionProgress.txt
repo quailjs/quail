@@ -211,6 +211,6 @@
 - [x] textareaHasAssociatedLabel
 - [x] videoMayBePresent
 - [x] videoProvidesCaptions
-- [ ] videosEmbeddedOrLinkedNeedCaptions
+- [x] videosEmbeddedOrLinkedNeedCaptions
 - [ ] whiteSpaceInWord
 - [ ] whiteSpaceNotUsedForFormatting

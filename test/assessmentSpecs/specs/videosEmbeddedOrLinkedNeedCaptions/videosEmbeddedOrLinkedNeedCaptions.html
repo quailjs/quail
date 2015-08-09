@@ -11,20 +11,20 @@
     </p>
   </div>
   <div data-expected="fail" title="No Subtitle">
-    <video controls class="quail-failed-element">
+    <video id="assert-1" controls class="quail-failed-element">
       <source src="../assets/sample.ogv" type="video/ogv"/>
     </video>
   </div>
 
   <div class="quail-test limit-chrome" data-expected="fail" title="Subtitle file missing">
-    <video controls class="quail-failed-element">
+    <video id="assert-2" controls class="quail-failed-element">
       <source src="../assets/sample.ogv" type="video/ogv"/>
       <track kind="subtitles" src="../assets/broken.srt" srclang="en"></track>
     </video>
   </div>
 
   <div data-expected="fail" title="Flash without caption plugin">
-    <object class="quail-failed-element" id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
+    <object id="assert-3" class="quail-failed-element" id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
       <param name="allowfullscreen" value="true">
       <param name="allowscriptaccess" value="always">
       <param name="seamlesstabbing" value="true">
@@ -34,7 +34,7 @@
   </div>
 
   <div data-expected="fail" title="Flash MP4 without caption plugin">
-    <object class="quail-failed-element" id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
+    <object id="assert-4" class="quail-failed-element" id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
       <param name="allowfullscreen" value="true">
       <param name="allowscriptaccess" value="always">
       <param name="seamlesstabbing" value="true">
@@ -44,7 +44,7 @@
   </div>
 
   <div data-expected="pass" title="Flash with caption plugin">
-    <object id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
+    <object id="assert-5" id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
       <param name="allowfullscreen" value="true">
       <param name="allowscriptaccess" value="always">
       <param name="seamlesstabbing" value="true">
@@ -54,14 +54,14 @@
   </div>
 
   <div data-expected="fail" lang="fr" title="Subtitle not matching language">
-    <video controls class="quail-failed-element">
+    <video id="assert-6" controls class="quail-failed-element">
       <source src="../assets/sample.ogv" type="video/ogv"/>
       <track kind="subtitles" src="../assets/subtitle.srt" srclang="en"></track>
     </video>
   </div>
 
   <div class="quail-test limit-chrome" data-expected="pass" title="Object with no subtitles">
-    <object id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0" class="quail-failed-element">
+    <object id="assert-7" id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0" class="quail-failed-element">
     <param name="allowfullscreen" value="true">
     <param name="allowscriptaccess" value="always">
     <param name="seamlesstabbing" value="true">
@@ -83,14 +83,14 @@
   </div>
 
   <div class="quail-test limit-chrome" data-expected="pass" title="Video tag has correct subtitle">
-    <video controls>
+    <video id="assert-8" controls>
       <source src="../assets/sample.ogv" type="video/ogv"/>
       <track kind="subtitles" src="../assets/subtitle.srt" srclang="en"></track>
     </video>
   </div>
 
   <div class="quail-test limit-chrome" data-expected="pass" title="Object with subtitles">
-    <object id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
+    <object id="assert-9" id="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" width="100%" height="100%" type="application/x-shockwave-flash" data="/behaviour/flash/govvid-v2-mediaplayer.swf" bgcolor="#000000" name="movie-contentblock-0120192e-2452-4d96-9ba7-8a004d1415bf" tabindex="0">
     <param name="allowfullscreen" value="true">
     <param name="allowscriptaccess" value="always">
     <param name="seamlesstabbing" value="true">
