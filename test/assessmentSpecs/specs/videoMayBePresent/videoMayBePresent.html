@@ -4,45 +4,29 @@
     <title>videoMayBePresent</title>
   </head>
   <body>
-    <div data-expected="inapplicable">
-      <!-- no video element present -->
-    </div>
-
     <div data-expected="cantTell">
-      <video controls class="quail-failed-element">
+      <video id="assert-1" controls class="quail-failed-element">
         <source src="../assets/sample.ogv" type="video/ogv"/>
       </video>
     </div>
 
     <div data-expected="cantTell">
-      <iframe width="420" height="315"
+      <iframe id="assert-2" width="420" height="315"
               src="http://www.youtube.com/embed/XGSy3_Czz8k">
       </iframe>
     </div>
 
     <div data-expected="cantTell">
-      <iframe src="http://player.vimeo.com/video/107692527" width="420" height="315"
+      <iframe id="assert-3" src="http://player.vimeo.com/video/107692527" width="420" height="315"
       frameborder="0"></iframe>
     </div>
 
     <div data-expected="cantTell">
-      <object></object>
+      <object id="assert-4"></object>
     </div>
 
-    <div data-expected="cantTell"
-   >
-      <a href="horse.mov">Horse.mov</a>
+    <div data-expected="cantTell">
+      <a id="assert-5" href="horse.mov">Horse.mov</a>
     </div>
-
-    <div data-expected="inapplicable"
-   >
-      <a href="horse">Horse</a>
-    </div>
-
-    <div data-expected="inapplicable"
-   >
-      <a href="about.mov.pdf">about.mov.pdf</a>
-    </div>
-
-      </body>
+  </body>
 </html>

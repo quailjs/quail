@@ -209,7 +209,7 @@
 - [x] tabularDataIsInTable
 - [x] textIsNotSmall
 - [x] textareaHasAssociatedLabel
-- [ ] videoMayBePresent
+- [x] videoMayBePresent
 - [x] videoProvidesCaptions
 - [ ] videosEmbeddedOrLinkedNeedCaptions
 - [ ] whiteSpaceInWord

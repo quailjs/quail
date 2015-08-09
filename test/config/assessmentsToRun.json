@@ -166,7 +166,7 @@
   "tabularDataIsInTable",
   "textIsNotSmall",
   "textareaHasAssociatedLabel",
-  "_videoMayBePresent",
+  "videoMayBePresent",
   "_videoProvidesCaptions",
   "_videosEmbeddedOrLinkedNeedCaptions",
   "_whiteSpaceInWord",
