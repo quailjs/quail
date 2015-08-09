@@ -133,7 +133,7 @@
 - [x] languageChangesAreIdentified
 - [x] languageDirAttributeIsUsed
 - [x] languageDirectionPunctuation
-- [ ] languageUnicodeDirection
+- [x] languageUnicodeDirection
 - [x] legendDescribesListOfChoices
 - [x] legendTextNotEmpty
 - [x] legendTextNotPlaceholder

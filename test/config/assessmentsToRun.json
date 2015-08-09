@@ -117,7 +117,7 @@
   "labelsAreAssignedToAnInput",
   "languageDirAttributeIsUsed",
   "languageDirectionPunctuation",
-  "_languageUnicodeDirection",
+  "languageUnicodeDirection",
   "_legendDescribesListOfChoices",
   "legendTextNotEmpty",
   "legendTextNotPlaceholder",

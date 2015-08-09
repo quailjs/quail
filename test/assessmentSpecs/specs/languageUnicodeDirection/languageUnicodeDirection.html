@@ -6,25 +6,25 @@
 </head>
 <body>
     <div data-expected="fail" title="Missing unicode characters.">
-        <p>
+        <p id="assert-1">
             This should also be wrapped in an inline element: "עפּעס אַנדערש."
         </p>
     </div>
 
     <div data-expected="pass" title="Appropriate use of html special characters.">
-        <p>
+        <p id="assert-2">
             The title says "&rlm;פעילות הבינאום,&lrm; W3C" in Hebrew.
         </p>
     </div>
 
     <div data-expected="pass" title="Appropriate use of unicode characters.">
-        <p>
+        <p id="assert-3">
             The title says "‎פעילות הבינאום,‎‏" W3C" in Hebrew.
         </p>
     </div>
 
     <div data-expected="inapplicable" title="No language direction change.">
-        <p>
+        <p id="assert-4">
             The title has no right-to-left characters.
         </p>
     </div>
