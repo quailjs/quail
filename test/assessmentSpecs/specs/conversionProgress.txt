@@ -87,7 +87,7 @@
 - [x] headerH4Format
 - [x] headerH5Format
 - [x] headerH6Format
-- [ ] headersAttrRefersToATableCell
+- [x] headersAttrRefersToATableCell
 - [x] headersHaveText
 - [ ] headersUseToMarkSections
 - [ ] headersUsedToIndicateMainContent

@@ -24,15 +24,70 @@ describe('assessment: headersAttrRefersToATableCell', function () {
     expect(quailResults.stats.tests).to.equal(1);
   });
   it('should return the correct number of cases', function () {
-    expect(quailResults.stats.cases).to.equal(0);
+    expect(quailResults.stats.cases).to.equal(16);
   });
 
   it('should have correct key under the test results', function () {
     expect(quailResults.tests).to.include.keys('headersAttrRefersToATableCell');
   });
 
-  it('should return the proper assessment for assert-1', function () {
+  it('should return the proper assessment for tbl1-cell1', function () {
     cases = quailResults.tests.headersAttrRefersToATableCell.cases;
-    expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
+    expect(cases[0]).to.have.quailStatus('inapplicable');
+  });
+
+  it('should return the proper assessment for assert-2-1', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('assert-2-1').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-2-2', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('assert-2-2').to.have.quailStatus('passed');
+  });
+
+  it('should return the proper assessment for tbl3-cell1', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('tbl3-cell1').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for tbl3-cell2', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('tbl3-cell2').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for tbl3-cell3', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('tbl3-cell3').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-3', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('assert-3').to.have.quailStatus('passed');
+  });
+
+  it('should return the proper assessment for assert-4-1', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('assert-4-1').to.have.quailStatus('passed');
+  });
+  it('should return the proper assessment for assert-4-2', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('assert-4-2').to.have.quailStatus('passed');
+  });
+
+  it('should return the proper assessment for assert-5', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('assert-5').to.have.quailStatus('failed');
+  });
+
+  it('should return the proper assessment for assert-6', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('assert-6').to.have.quailStatus('failed');
+  });
+
+  it('should return the proper assessment for assert-7', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('assert-7').to.have.quailStatus('failed');
+  });
+
+  it('should return the proper assessment for assert-8', function () {
+    cases = quailResults.tests.headersAttrRefersToATableCell.cases;
+    expect(cases).quailGetById('assert-8').to.have.quailStatus('failed');
   });
 });

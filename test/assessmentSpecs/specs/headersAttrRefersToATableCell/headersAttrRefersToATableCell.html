@@ -1,121 +1,107 @@
 <!doctype html>
 <html>
-<head>
-    <title>headersAttrRefersToATableCell</title>
-    <style>
-        td,th {
-            border:solid 1px black;
-            width:100px;
-            padding:0 5px;
-        }
-        table {
-            border-collapse: collapse;
-        }
-    </style>
-</head>
-<body>
+  <head>
+      <title>headersAttrRefersToATableCell</title>
+      <style>
+          td,th {
+              border:solid 1px black;
+              width:100px;
+              padding:0 5px;
+          }
+          table {
+              border-collapse: collapse;
+          }
+      </style>
+  </head>
+  <body>
 
-	<div data-expected="inapplicable"
-	data-accessibility-test="headersAttrRefersToATableCell">
-		<!-- No content -->
-	</div>
+    <div data-expected="inapplicable">
+        <table>
+            <tr>
+                <td id="tbl1-cell1">a</td>
+                <td id="tbl1-cell2">b</td>
+            </tr>
+            <tr>
+                <td>c</td>
+                <td>d</td>
+            </tr>
+        </table>
+    </div>
 
-<div data-expected="inapplicable"
-    >
-    <table>
-        <tr>
-            <td id="tbl1-cell1">a</td>
-            <td id="tbl1-cell2">b</td>
-        </tr>
-        <tr>
-            <td>c</td>
-            <td>d</td>
-        </tr>
-    </table>
-</div>
+    <div data-expected="pass">
+        <table>
+            <tr>
+                <th id="tbl2-cell1">a</th>
+                <th id="tbl2-cell2">b</th>
+            </tr>
+            <tr>
+                <td id="assert-2-1" headers="tbl2-cell1">c</td>
+                <td id="assert-2-2" headers="tbl2-cell2">d</td>
+            </tr>
+        </table>
+    </div>
 
-<div data-expected="pass"
-    >
-    <table>
-        <tr>
-            <th id="tbl2-cell1">a</th>
-            <th id="tbl2-cell2">b</th>
-        </tr>
-        <tr>
-            <td headers="tbl2-cell1">c</td>
-            <td headers="tbl2-cell2">d</td>
-        </tr>
-    </table>
-</div>
+    <div data-expected="pass">
+        <table>
+            <tr>
+                <th id="tbl3-cell1" headers="tbl3-cell3">a</th>
+                <th id="tbl3-cell2" headers="tbl3-cell1">b</th>
+            </tr>
+            <tr>
+                <td headers="" id="tbl3-cell3">c</td>
+                <td id="assert-3" headers="tbl3-cell1 tbl3-cell2">d</td>
+            </tr>
+        </table>
+    </div>
 
-<div data-expected="pass"
-    >
-    <table>
-        <tr>
-            <th id="tbl3-cell1" headers="tbl3-cell3">a</th>
-            <th id="tbl3-cell2" headers="tbl3-cell1">b</th>
-        </tr>
-        <tr>
-            <td headers="" id="tbl3-cell3">c</td>
-            <td headers="tbl3-cell1 tbl3-cell2">d</td>
-        </tr>
-    </table>
-</div>
+    <div data-expected="pass">
+        <table>
+            <tr>
+                <th id="tbl4-cell1">a</th>
+                <th id="tbl4-cell2">b</th>
+            </tr>
+            <tr>
+                <td id="assert-4-1" headers="tbl4-cell1 tbl4-cell2">c</td>
+                <td id="assert-4-2" headers="tbl4-cell1 tbl4-cell2">d</td>
+            </tr>
+        </table>
+    </div>
 
-<div data-expected="pass"
-    >
-    <table>
-        <tr>
-            <th id="tbl4-cell1">a</th>
-            <th id="tbl4-cell2">b</th>
-        </tr>
-        <tr>
-            <td headers="tbl4-cell1   tbl4-cell2">c</td>
-            <td headers="tbl4-cell1
-						 tbl4-cell2">d</td>
-        </tr>
-    </table>
-</div>
+    <div data-expected="fail">
+        <table>
+            <tr>
+                <!-- refers to a different table -->
+                <td id="assert-5" headers="tbl5-cell1" class="quail-failed-element">a</td>
+            </tr>
+        </table>
 
-<div data-expected="fail"
-    >
-    <table>
-        <tr>
-            <!-- refers to a different table -->
-            <td headers="tbl1-cell1" class="quail-failed-element">a</td>
-        </tr>
-    </table>
+    </div>
 
-</div>
+    <div data-expected="fail">
+        <table id="tbl6">
+            <tr>
+                <td id="assert-6" headers="tbl6" class="quail-failed-element">a</td>
+            </tr>
+        </table>
+    </div>
 
-<div data-expected="fail"
-    >
-    <table id="tbl6">
-        <tr>
-            <td headers="tbl6" class="quail-failed-element">a</td>
-        </tr>
-    </table>
-</div>
+    <div data-expected="fail">
+        <table>
+            <tr id="tbl5-row1">
+                <th>a</th>
+            </tr>
+            <tr>
+                <td id="assert-7" headers="tbl7-row1" class="quail-failed-element">b</td>
+            </tr>
+        </table>
+    </div>
 
-<div data-expected="fail"
-    >
-    <table>
-        <tr id="tbl5-row1">
-            <th>a</th>
-        </tr>
-        <tr>
-            <td headers="tbl5-row1" class="quail-failed-element">b</td>
-        </tr>
-    </table>
-</div>
-
-<div data-expected="fail"
-    >
-    <table>
-        <tr>
-            <td headers="not-existing" class="quail-failed-element">a</td>
-        </tr>
-    </table>
-</div>
+    <div data-expected="fail">
+        <table>
+            <tr>
+                <td id="assert-8" headers="not-existing" class="quail-failed-element">a</td>
+            </tr>
+        </table>
+    </div>
   </body>
 </html>

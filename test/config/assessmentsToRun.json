@@ -81,7 +81,7 @@
   "headerH4Format",
   "headerH5Format",
   "headerH6Format",
-  "_headersAttrRefersToATableCell",
+  "headersAttrRefersToATableCell",
   "_headerTextIsTooLong",
   "headersHaveText",
   "_headersUseToMarkSections",
