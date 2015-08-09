@@ -213,4 +213,4 @@
 - [x] videoProvidesCaptions
 - [x] videosEmbeddedOrLinkedNeedCaptions
 - [x] whiteSpaceInWord
-- [ ] whiteSpaceNotUsedForFormatting
+- [x] whiteSpaceNotUsedForFormatting
