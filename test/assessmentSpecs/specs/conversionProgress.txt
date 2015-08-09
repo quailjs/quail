@@ -45,7 +45,7 @@
 - [x] colorFontContrast
 - [x] contentPositioningShouldNotChangeMeaning
 - [x] cssDocumentMakesSenseStyleTurnedOff
-- [ ] definitionListsAreUsed
+- [x] definitionListsAreUsed
 - [ ] doNotUseGraphicalSymbolToConveyInformation
 - [x] doctypeProvided
 - [ ] documentAbbrIsUsed

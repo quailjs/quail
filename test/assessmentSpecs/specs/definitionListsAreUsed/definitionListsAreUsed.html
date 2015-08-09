@@ -1,46 +1,40 @@
 <!doctype html>
 <html>
 <head>
-	<style>
-		.span span {
-			font-weight: bold;
-		}
-	</style>
-	<title>definitionListsAreUsed</title>
+  <style>
+    .span span {
+      font-weight: bold;
+    }
+  </style>
+  <title>definitionListsAreUsed</title>
 </head>
 <body>
-	<div data-expected="fail">
-		<ul>
-			<li class="quail-failed-element"><strong>Term A</strong> - Definition for term A</li>
-			<li class="quail-failed-element"><strong>Term B</strong> - Definition for term B</li>
-		</ul>
-	</div>
-	<div data-expected="fail">
-		<ul class="span">
-			<li class="quail-failed-element"><span>Term A</span> - Definition for term A</li>
-			<li class="quail-failed-element"><span>Term B</span> - Definition for term B</li>
-		</ul>
-	</div>
-	<div data-expected="pass">
-		<ul>
-			<li>Definition for term A</li>
-			<li>Definition for term B</li>
-		</ul>
-	</div>
-	<div data-expected="inapplicable">
-		<dl>
-			<dt>Term A</dt>
-			<dd>Definition for term A</dd>
-			<dt>Term B</dt>
-			<dd>Definition for term B</dd>
-		</dl>
-	</div>
-	<div data-expected="pass">
-		<ul>
-			<li><span>This thing</span> is pretty interesting</li>
-			<li><span>And this other thing</span> is also interesting.</li>
-		</ul>
-	</div>
+  <div data-expected="fail">
+    <ul>
+      <li id="assert-1" class="quail-failed-element"><strong>Term A</strong> - Definition for term A</li>
+      <li class="quail-failed-element"><strong>Term B</strong> - Definition for term B</li>
+    </ul>
+  </div>
+  <div data-expected="fail">
+    <ul class="span">
+      <li id="assert-2" class="quail-failed-element"><span>Term A</span> - Definition for term A</li>
+      <li class="quail-failed-element"><span>Term B</span> - Definition for term B</li>
+    </ul>
+  </div>
+  <div data-expected="inapplicable">
+    <dl id="assert-3">
+      <dt>Term A</dt>
+      <dd>Definition for term A</dd>
+      <dt>Term B</dt>
+      <dd>Definition for term B</dd>
+    </dl>
+  </div>
+  <div data-expected="pass">
+    <ul>
+      <li id="assert-4"><span>This thing</span> is pretty interesting</li>
+      <li><span>And this other thing</span> is also interesting.</li>
+    </ul>
+  </div>
 
   </body>
 </html>
