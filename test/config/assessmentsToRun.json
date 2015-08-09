@@ -198,7 +198,7 @@
   "_tableComplexHasSummary",
   "tableDataShouldHaveTh",
   "_tableIsGrouped",
-  "_tableLayoutDataShouldNotHaveTh",
+  "tableLayoutDataShouldNotHaveTh",
   "_tableLayoutHasNoCaption",
   "_tableLayoutHasNoSummary",
   "_tableLayoutMakesSenseLinearized",

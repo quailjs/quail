@@ -203,7 +203,7 @@
 - [x] tableComplexHasSummary
 - [x] tableDataShouldHaveTh
 - [x] tableIsGrouped
-- [ ] tableLayoutDataShouldNotHaveTh
+- [x] tableLayoutDataShouldNotHaveTh
 - [ ] tableLayoutHasNoCaption
 - [ ] tableLayoutHasNoSummary
 - [ ] tableLayoutMakesSenseLinearized
