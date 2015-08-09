@@ -2340,7 +2340,6 @@ inputImageAltIsNotFileName:
     - "image"
     - "content"
 inputImageAltIsNotPlaceholder:
-  type: "placeholder"
   testability: 1
   title:
     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not placeholder text."
@@ -2368,10 +2367,6 @@ inputImageAltIsNotPlaceholder:
     - "form"
     - "image"
     - "content"
-  components:
-    - "placeholder"
-  options:
-    attribute: "alt"
 inputImageAltIsShort:
   testability: 1
   title:

@@ -128,7 +128,7 @@
   "inputElementsDontHaveAlt",
   "_inputImageAltIdentifiesPurpose",
   "_inputImageAltIsNotFileName",
-  "_inputImageAltIsNotPlaceholder",
+  "inputImageAltIsNotPlaceholder",
   "_inputImageAltIsShort",
   "_inputImageAltNotRedundant",
   "inputImageHasAlt",

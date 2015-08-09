@@ -128,7 +128,7 @@
 - [x] inputElementsDontHaveAlt
 - [x] inputImageAltIdentifiesPurpose
 - [ ] inputImageAltIsNotFileName
-- [ ] inputImageAltIsNotPlaceholder
+- [x] inputImageAltIsNotPlaceholder
 - [ ] inputImageAltIsShort
 - [ ] inputImageAltNotRedundant
 - [x] inputImageHasAlt
