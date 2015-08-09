@@ -7,7 +7,7 @@
     <div data-expected="fail">
         <form action="http://www.test.com/testing" method="post">
             <p>
-                <input type="radio" title="" name="mytext" tabindex="1" class="quail-failed-element"class="quail-failed-element"/>
+                <input id="assert-1" type="radio" title="" name="mytext" tabindex="1" />
             </p>
         </form>
     </div>
@@ -15,7 +15,7 @@
     <div data-expected="fail">
         <form action="http://www.test.com/testing" method="post">
             <p>
-                <input type="radio" title="birds" name="mytext" tabindex="1" class="quail-failed-element"/>
+                <input id="assert-2" type="radio" title="birds" name="mytext" tabindex="1" />
             </p>
         </form>
     </div>
@@ -24,7 +24,7 @@
         <form action="http://www.test.com/testing" method="post">
             <p>
                 <label>
-                    <input type="radio" name="mytext" class="quail-failed-element"/>
+                    <input id="assert-3" type="radio" name="mytext" />
                 </label>
             </p>
         </form>
@@ -33,8 +33,8 @@
     <div data-expected="fail">
         <form action="http://www.test.com/testing" method="post">
             <p>
-                <label for="radioa"></label>
-                <input id="radioa" type="radio" name="aradio" tabindex="1" class="quail-failed-element"/>
+                <label for="assert-4"></label>
+                <input id="assert-4" type="radio" name="aradio" tabindex="1" />
             </p>
         </form>
     </div>
@@ -44,29 +44,17 @@
             <p>
                 <label>
                     birds
-                    <input type="radio" name="mytext"/>
+                    <input id="assert-5" type="radio" name="mytext"/>
                 </label>
             </p>
         </form>
     </div>
 
-    <!-- Same as above, but different result -->
-    <!--<div data-expected="pass">-->
-        <!--<form action="http://somesite.com/prog/adduser" method="post">-->
-            <!--<p>-->
-                <!--<label>-->
-                    <!--Dogs:-->
-                    <!--<input type="radio" name="choice1" tabindex="1" />-->
-                <!--</label>-->
-            <!--</p>-->
-        <!--</form>-->
-    <!--</div>-->
-    <!---->
     <div data-expected="pass">
         <form action="http://www.test.com/testing" method="post">
             <p>
-                <label for="radioa">birds</label>
-                <input id="radioa" type="radio" name="aradio" tabindex="1"
+                <label for="assert-6">birds</label>
+                <input id="assert-6" type="radio" name="aradio" tabindex="1"
                 />
             </p>
         </form>

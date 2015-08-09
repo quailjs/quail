@@ -184,7 +184,7 @@
   "passwordHasLabel",
   "_passwordLabelIsNearby",
   "_preShouldNotBeUsedForTabularLayout",
-  "_radioHasLabel",
+  "radioHasLabel",
   "_radioLabelIsNearby",
   "_radioMarkedWithFieldgroupAndLegend",
   "_scriptFocusIndicatorVisible",

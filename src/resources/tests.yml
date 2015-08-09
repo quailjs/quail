@@ -3366,7 +3366,6 @@ preShouldNotBeUsedForTabularLayout:
     - "table"
     - "content"
 radioHasLabel:
-  type: "label"
   testability: 1
   title:
     en: "All \"radio\" input elements have a corresponding label"
@@ -3401,8 +3400,6 @@ radioHasLabel:
   tags:
     - "form"
     - "content"
-  components:
-    - "label"
 radioLabelIsNearby:
   type: "labelProximity"
   testability: 0.5

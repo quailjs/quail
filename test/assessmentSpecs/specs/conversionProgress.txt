@@ -189,7 +189,7 @@
 - [x] passwordHasLabel
 - [ ] passwordLabelIsNearby
 - [ ] preShouldNotBeUsedForTabularLayout
-- [ ] radioHasLabel
+- [x] radioHasLabel
 - [ ] radioLabelIsNearby
 - [x] radioMarkedWithFieldgroupAndLegend
 - [x] scriptContentAccessibleWithScriptsTurnedOff
