@@ -207,7 +207,7 @@
 - [x] tableUsesScopeForRow
 - [x] tableWithBothHeadersUseScope
 - [x] tabularDataIsInTable
-- [ ] textIsNotSmall
+- [x] textIsNotSmall
 - [x] textareaHasAssociatedLabel
 - [ ] userInputMayBeRequired
 - [ ] videoMayBePresent

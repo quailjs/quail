@@ -164,7 +164,7 @@
   "tableUsesCaption",
   "tableUsesScopeForRow",
   "tabularDataIsInTable",
-  "_textIsNotSmall",
+  "textIsNotSmall",
   "textareaHasAssociatedLabel",
   "_userInputMayBeRequired",
   "_videoMayBePresent",

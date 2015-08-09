@@ -3,22 +3,22 @@
 <head>
   <title>textIsNotSmall</title>
   <style>
-    #testp {
+    #assert-2 {
       font-size: 7px;
     }
   </style>
 </head>
 <body>
   <div data-expected="fail">
-    <p style="font-size: 7px;" class="quail-failed-element">This text is fine.</p>
+    <p id="assert-1" style="font-size: 7px;">This text is fine.</p>
   </div>
 
   <div data-expected="fail">
-    <p id="testp" class="quail-failed-element">This text is too small.</p>
+    <p id="assert-2">This text is too small.</p>
   </div>
 
   <div data-expected="pass">
-    <p>This text is fine.</p>
+    <p id="assert-3">This text is fine.</p>
   </div>
 
   </body>
