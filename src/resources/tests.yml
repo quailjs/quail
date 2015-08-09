@@ -1772,22 +1772,6 @@ headersUseToMarkSections:
   tags:
     - "header"
     - "content"
-headersUsedToIndicateMainContent:
-  testability: 0.5
-  title:
-    en: "Use header to indicate start of main content"
-    nl: "Gebruik headers om de start van belangrijke content aan te geven"
-  description:
-    en: "For every main content area, indicate the beginning of the main content using a header."
-    nl: "Geef het begin van de belangrijkste content in elk contentvlak aan door middel van een header."
-  guidelines:
-    wcag:
-      2.4.1:
-        techniques:
-          - "H69"
-  tags:
-    - "header"
-    - "content"
 iIsNotUsed:
   testability: 1
   title:

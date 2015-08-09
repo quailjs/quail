@@ -90,7 +90,6 @@
 - [x] headersAttrRefersToATableCell
 - [x] headersHaveText
 - [x] headersUseToMarkSections
-- [ ] headersUsedToIndicateMainContent
 - [x] iIsNotUsed
 - [ ] idRefHasCorrespondingId
 - [ ] idrefsHasCorrespondingId
