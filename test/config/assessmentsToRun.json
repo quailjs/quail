@@ -126,7 +126,7 @@
   "listOfLinksUseList",
   "marqueeIsNotUsed",
   "menuNotUsedToFormatText",
-  "_newWindowIsOpened",
+  "newWindowIsOpened",
   "_noembedHasEquivalentContent",
   "_noframesSectionMustHaveTextEquivalent",
   "_objectContentUsableWhenDisabled",

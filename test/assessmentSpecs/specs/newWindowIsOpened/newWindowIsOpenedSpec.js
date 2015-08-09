@@ -24,15 +24,15 @@ describe('assessment: newWindowIsOpened', function () {
     expect(quailResults.stats.tests).to.equal(1);
   });
   it('should return the correct number of cases', function () {
-    expect(quailResults.stats.cases).to.equal(0);
+    expect(quailResults.stats.cases).to.equal(1);
   });
 
   it('should have correct key under the test results', function () {
     expect(quailResults.tests).to.include.keys('newWindowIsOpened');
   });
 
-  it('should return the proper assessment for assert-1', function () {
+  it('should return the proper assessment for product', function () {
     cases = quailResults.tests.newWindowIsOpened.cases;
-    expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
+    expect(cases).quailGetById('product').to.have.quailStatus('failed');
   });
 });

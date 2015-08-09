@@ -146,7 +146,7 @@
 - [x] listOfLinksUseList
 - [x] marqueeIsNotUsed
 - [x] menuNotUsedToFormatText
-- [ ] newWindowIsOpened
+- [x] newWindowIsOpened
 - [x] noembedHasEquivalentContent
 - [x] noframesSectionMustHaveTextEquivalent
 - [x] objectContentUsableWhenDisabled
