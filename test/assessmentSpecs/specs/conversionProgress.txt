@@ -172,7 +172,6 @@
 - [x] objectUIMustBeAccessible
 - [x] objectWithClassIDHasNoText
 - [x] pNotUsedAsHeader
-- [ ] paragraphIsWrittenClearly
 - [x] passwordHasLabel
 - [ ] preShouldNotBeUsedForTabularLayout
 - [x] radioHasLabel

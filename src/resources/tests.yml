@@ -3034,18 +3034,6 @@ pNotUsedAsHeader:
   tags:
     - "header"
     - "content"
-paragraphIsWrittenClearly:
-  testability: 0.5
-  guidelines:
-    wcag:
-      3.1.5:
-        techniques:
-          - "G86"
-  tags:
-    - "language"
-    - "content"
-  components:
-    - "textStatistics"
 passwordHasLabel:
   testability: 1
   title:
