@@ -210,7 +210,7 @@
 - [x] tableNotUsedForLayout
 - [x] tableShouldUseHeaderIDs
 - [x] tableSummaryDescribesTable
-- [ ] tableSummaryDoesNotDuplicateCaption
+- [x] tableSummaryDoesNotDuplicateCaption
 - [x] tableSummaryIsEmpty
 - [ ] tableSummaryIsNotTooLong
 - [x] tableSummaryIsSufficient

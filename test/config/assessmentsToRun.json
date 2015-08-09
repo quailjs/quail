@@ -205,7 +205,7 @@
   "tableNotUsedForLayout",
   "tableShouldUseHeaderIDs",
   "_tableSummaryDescribesTable",
-  "_tableSummaryDoesNotDuplicateCaption",
+  "tableSummaryDoesNotDuplicateCaption",
   "tableSummaryIsEmpty",
   "_tableSummaryIsNotTooLong",
   "_tableSummaryIsSufficient",
