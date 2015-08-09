@@ -110,7 +110,7 @@
   "inputTextHasLabel",
   "inputTextHasValue",
   "inputTextValueNotEmpty",
-  "_inputWithoutLabelHasTitle",
+  "inputWithoutLabelHasTitle",
   "labelDoesNotContainInput",
   "_labelMustBeUnique",
   "labelMustNotBeEmpty",

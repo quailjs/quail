@@ -5,37 +5,25 @@
 </head>
 <body>
 
-    <div data-expected="inapplicable"
-   >
-        <!-- no input element -->
+
+    <div data-expected="fail">
+        <input id="assert-1" type="text" class="quail-failed-element" />
     </div>
 
-    <div data-expected="inapplicable"
-   >
-        <input type="text" style="display:none" />
-    </div>
-
-    <div data-expected="fail"
-   >
-        <input type="text" class="quail-failed-element" />
-    </div>
-
-    <div data-expected="fail"
-   >
+    <div data-expected="fail">
         <label>Implicit label:
-          <input type="text" class="quail-failed-element" />
+          <input id="assert-2" type="text" class="quail-failed-element" />
         </label>
     </div>
 
-    <div data-expected="pass"
-   >
-        <label for="select">Select your favorite pet</label>
-        <select id="select">
+    <div data-expected="pass">
+        <label for="assert-3">Select your favorite pet</label>
+        <select id="assert-3">
             <option>Cat</option>
             <option>Dog</option>
             <option>Fish</option>
         </select>
-        <input type="text" title="Search keywords"></input>
+        <input id="assert-4" type="text" title="Search keywords"></input>
     </div>
 
 

@@ -121,7 +121,7 @@
 - [x] inputTextHasLabel
 - [x] inputTextHasValue
 - [x] inputTextValueNotEmpty
-- [ ] inputWithoutLabelHasTitle
+- [x] inputWithoutLabelHasTitle
 - [ ] KINGStrongList
 - [ ] KINGUseCurrencyAsSymbol
 - [ ] KINGUseLongDateFormat
