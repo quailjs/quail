@@ -101,7 +101,6 @@
 - [x] imgAltIsTooLong
 - [x] imgAltNotEmptyInAnchor
 - [x] imgAltNotPlaceHolder
-- [ ] imgGifNoFlicker
 - [x] imgHasAlt
 - [ ] imgHasLongDesc
 - [ ] imgImportantNoSpacerAlt
