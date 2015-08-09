@@ -49,7 +49,7 @@
 - [x] doNotUseGraphicalSymbolToConveyInformation
 - [x] doctypeProvided
 - [x] documentAbbrIsUsed
-- [ ] documentAcronymsHaveElement
+- [x] documentAcronymsHaveElement
 - [x] documentAutoRedirectNotUsed
 - [x] documentContentReadableWithoutStylesheets
 - [x] documentHasTitleElement

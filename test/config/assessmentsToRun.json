@@ -45,7 +45,7 @@
   "cssDocumentMakesSenseStyleTurnedOff",
   "definitionListsAreUsed",
   "doctypeProvided",
-  "_documentAcronymsHaveElement",
+  "documentAcronymsHaveElement",
   "documentAutoRedirectNotUsed",
   "documentContentReadableWithoutStylesheets",
   "documentHasTitleElement",
