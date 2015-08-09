@@ -204,7 +204,7 @@
 - [x] tableDataShouldHaveTh
 - [x] tableIsGrouped
 - [x] tableLayoutDataShouldNotHaveTh
-- [ ] tableLayoutHasNoCaption
+- [x] tableLayoutHasNoCaption
 - [ ] tableLayoutHasNoSummary
 - [ ] tableLayoutMakesSenseLinearized
 - [ ] tableNotUsedForLayout
