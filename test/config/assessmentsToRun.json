@@ -135,7 +135,6 @@
   "_inputImageAltNotRedundant",
   "inputImageHasAlt",
   "_inputImageNotDecorative",
-  "_inputSubmitHasTabIndex",
   "_inputTextHasLabel",
   "_inputTextHasValue",
   "_inputTextValueNotEmpty",

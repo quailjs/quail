@@ -2524,24 +2524,6 @@ inputImageHasAlt:
 #     - "form"
 #     - "image"
 #     - "content"
-inputSubmitHasTabIndex:
-  type: "placeholder"
-  testability: 1
-  title:
-    en: "All \"submit\" input elements require a \"tabindex\" attribute"
-    nl: "Alle invoerelementen van het type \"submit\" moeten een geldig \"tabindex\"-attribuut hebben"
-  description:
-    en: "All <code>input</code> elements of type \"submit\" should have a \"tabindex\" attribute to help navigate the form with a keyboard alone."
-    nl: "Alle <code>input</code>-elementen van het type \"submit\" moeten een \"tabindex\"-attribuut hebben om navigatie met alleen het toetsenbord mogelijk te maken."
-  guidelines: []
-  tags:
-    - "form"
-    - "content"
-  components:
-    - "placeholder"
-  options:
-    attribute: "tabindex"
-    empty: true
 inputTextHasLabel:
   testability: 1
   title:
