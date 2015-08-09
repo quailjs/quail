@@ -195,7 +195,7 @@
 - [x] scriptContentAccessibleWithScriptsTurnedOff
 - [x] scriptInBodyMustHaveNoscript
 - [x] scriptOnclickRequiresOnKeypress
-- [ ] scriptOndblclickRequiresOnKeypress
+- [x] scriptOndblclickRequiresOnKeypress
 - [x] scriptOnFocusChangeBackgroundOrBorder
 - [ ] scriptOnmousedownRequiresOnKeypress
 - [ ] scriptOnmousemove

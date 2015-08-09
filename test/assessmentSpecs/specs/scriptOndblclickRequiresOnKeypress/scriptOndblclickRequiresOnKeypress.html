@@ -1,16 +1,16 @@
 <!doctype html>
 <html>
 <head>
-	<title>scriptOndblclickRequiresOnKeypress</title>
+  <title>scriptOndblclickRequiresOnKeypress</title>
 </head>
 <body>
-	<div data-expected="fail">
-		<input name="num" ondblclick="'foo';" value="0" class="quail-failed-element"/>
-	</div>
+  <div data-expected="fail">
+    <input id="assert-1" name="num" ondblclick="'foo';" value="0" />
+  </div>
 
-	<div data-expected="pass">
-		<input name="num" value="0" />
-	</div>
+  <div data-expected="pass">
+    <input id="assert-2" name="num" value="0" ondblclick="'foo';" onkeypress="'foo';" />
+  </div>
 
   </body>
 </html>

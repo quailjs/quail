@@ -3544,12 +3544,6 @@ scriptOndblclickRequiresOnKeypress:
           - "SCR20"
   tags:
     - "javascript"
-  components:
-    - "event"
-    - "hasEventListener"
-  options:
-    correspondingEvent: "onkeypress"
-    searchEvent: "ondblclick"
 scriptOnFocusChangeBackgroundOrBorder:
   testability: 0
   title:
