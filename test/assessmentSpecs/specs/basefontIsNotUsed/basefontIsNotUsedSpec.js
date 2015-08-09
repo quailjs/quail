@@ -34,7 +34,7 @@ describe('assessment: basefontIsNotUsed', function () {
     });
 
     it('should return the proper assessment for the test', function () {
-      expect(cases[0]).to.have.quailStatus('passed');
+      expect(cases[0]).to.have.quailStatus('inapplicable');
     });
   });
 
