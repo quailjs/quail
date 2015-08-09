@@ -99,7 +99,7 @@
 - [x] imageMapServerSide
 - [x] imgAltIsDifferent
 - [x] imgAltIsTooLong
-- [ ] imgAltNotEmptyInAnchor
+- [x] imgAltNotEmptyInAnchor
 - [x] imgAltNotPlaceHolder
 - [ ] imgAltTextNotRedundant
 - [ ] imgGifNoFlicker

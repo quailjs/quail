@@ -6,8 +6,8 @@
   <body>
     <div data-expected="fail">
       <p>
-        <a href="rex.html">
-          <img src="../assets/rex.jpg" alt="" class="quail-failed-element"/>
+        <a id="assert-1" href="rex.html">
+          <img src="assets/rex.jpg" alt="" />
         </a>
       </p>
     </div>
@@ -15,34 +15,34 @@
 
     <div data-expected="fail">
       <p>
-        <a href="rex.html">
-          <b><img src="../assets/rex.jpg" alt="" class="quail-failed-element"/></b>
+        <a id="assert-2" href="rex.html">
+          <b><img src="assets/rex.jpg" alt="" /></b>
         </a>
       </p>
     </div>
 
     <div data-expected="pass">
       <p>
-        <a href="rex.html">
-          <img src="../assets/rex.jpg" alt="a story about Rex the cat"/>
+        <a id="assert-3" href="rex.html">
+          <img src="assets/rex.jpg" alt="a story about Rex the cat"/>
         </a>
       </p>
     </div>
 
     <div data-expected="pass">
       <p>
-        <a href="rex.html">
-          <img src="../assets/rex.jpg" alt=""/> <b>a story about Rex the cat</b>
+        <a id="assert-4" href="rex.html">
+          <img src="assets/rex.jpg" alt=""/> <b>a story about Rex the cat</b>
         </a>
       </p>
     </div>
 
     <div data-expected="pass">
       <p>
-        <a href="rex.html">
-          <img src="../assets/rex.jpg" alt="a story about Rex the cat"/>
-          <img src="../assets/rex.jpg" alt=""/>
-          <img src="../assets/rex.jpg" alt=""/>
+        <a id="assert-5" href="rex.html">
+          <img src="assets/rex.jpg" alt="a story about Rex the cat"/>
+          <img src="assets/rex.jpg" alt=""/>
+          <img src="assets/rex.jpg" alt=""/>
         </a>
       </p>
     </div>
