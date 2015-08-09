@@ -36,7 +36,7 @@
 - [x] boldIsNotUsed
 - [x] buttonDoesNotChangeContextOnFocus
 - [ ] buttonHasName
-- [ ] checkboxHasLabel
+- [x] checkboxHasLabel
 - [ ] checkboxLabelIsNearby
 - [ ] closingTagsAreUsed
 - [x] colorBackgroundGradientContrast

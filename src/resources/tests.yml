@@ -627,7 +627,6 @@ buttonHasName:
     empty: true
     attribute: "title"
 checkboxHasLabel:
-  type: "label"
   testability: 1
   title:
     en: "All checkboxes must have a corresponding label"
@@ -662,8 +661,6 @@ checkboxHasLabel:
   tags:
     - "form"
     - "content"
-  components:
-    - "label"
 checkboxLabelIsNearby:
   type: "labelProximity"
   testability: 0.5

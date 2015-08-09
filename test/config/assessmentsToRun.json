@@ -35,7 +35,7 @@
   "blockquoteUseForQuotations",
   "boldIsNotUsed",
   "_buttonHasName",
-  "_checkboxHasLabel",
+  "checkboxHasLabel",
   "_checkboxLabelIsNearby",
   "_closingTagsAreUsed",
   "colorBackgroundGradientContrast",

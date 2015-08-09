@@ -7,14 +7,14 @@
   <div data-expected="fail">
     <form action="http://somesite.com/prog/adduser" method="post">
       <p>
-        <input type="checkbox" title="" name="mytext" tabindex="1" class="quail-failed-element"/>
+        <input id="assert-1" type="checkbox" title="" name="mytext" tabindex="1"/>
       </p>
     </form>
   </div>
   <div data-expected="fail">
     <form action="http://somesite.com/prog/adduser" method="post">
       <p>
-        <input type="checkbox" title="birds" name="mytext" tabindex="1" class="quail-failed-element" />
+        <input id="assert-2" type="checkbox" title="birds" name="mytext" tabindex="1" />
       </p>
     </form>
   </div>
@@ -22,7 +22,7 @@
     <form action="http://somesite.com/prog/adduser" method="post">
       <p>
         <label>
-          <input type="checkbox" name="mytext" class="quail-failed-element" />
+          <input id="assert-3" type="checkbox" name="mytext" />
         </label>
       </p>
     </form>
@@ -30,8 +30,8 @@
   <div data-expected="fail">
     <form action="http://somesite.com/prog/adduser" method="post">
       <p>
-        <label for="boxa"></label>
-        <input id="boxa" type="checkbox" name="mytext" tabindex="1" class="quail-failed-element" />
+        <label for="assert-4"></label>
+        <input id="assert-4" type="checkbox" name="mytext" tabindex="1" />
       </p>
     </form>
   </div>
@@ -40,7 +40,7 @@
           <p>
               <label>
                   birds
-                  <input type="checkbox" name="mytext" />
+                  <input id="assert-5" type="checkbox" name="mytext" />
               </label>
           </p>
       </form>
@@ -48,8 +48,8 @@
   <div data-expected="pass">
     <form action="http://somesite.com/prog/adduser" method="post">
       <p>
-        <label for="boxa">birds</label>
-        <input id="boxa" type="checkbox" name="mytext" tabindex="1" />
+        <label for="assert-6">birds</label>
+        <input id="assert-6" id="boxa" type="checkbox" name="mytext" tabindex="1" />
       </p>
     </form>
   </div>
