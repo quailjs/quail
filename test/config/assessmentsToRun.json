@@ -96,7 +96,7 @@
   "headerH6Format",
   "_headersAttrRefersToATableCell",
   "_headerTextIsTooLong",
-  "_headersHaveText",
+  "headersHaveText",
   "_headersUseToMarkSections",
   "_headersUsedToIndicateMainContent",
   "_iIsNotUsed",

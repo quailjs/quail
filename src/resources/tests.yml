@@ -1826,7 +1826,6 @@ headerTextIsTooLong:
   tags:
     - "content"
 headersHaveText:
-  type: "placeholder"
   testability: 1
   title:
     en: "All headers should contain readable text"
@@ -1845,11 +1844,6 @@ headersHaveText:
   tags:
     - "header"
     - "content"
-  components:
-    - "placeholder"
-  options:
-    content: true
-    empty: true
 headersUseToMarkSections:
   testability: 0.5
   title:

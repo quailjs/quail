@@ -96,7 +96,7 @@
 - [x] headerH5Format
 - [x] headerH6Format
 - [ ] headersAttrRefersToATableCell
-- [ ] headersHaveText
+- [x] headersHaveText
 - [ ] headersUseToMarkSections
 - [ ] headersUsedToIndicateMainContent
 - [x] iIsNotUsed
