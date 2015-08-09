@@ -5,43 +5,43 @@
 </head>
 <body>
 <div data-expected="fail">
-  <p>Text with a short date of 12/04/2014, 2/1/14, 12-04-12, 12.04.12.</p>
+  <p id="assert-1">Text with a short date of 12/04/2014, 2/1/14, 12-04-12, 12.04.12.</p>
 </div>
 
 <div data-expected="fail">
   <ul>
-	<li>This list item contains short date: 12/04/2014</li>
+	<li id="assert-2">This list item contains short date: 12/04/2014</li>
   </ul>
 </div>
 
 <div data-expected="fail">
   <table>
 	<tbody>
-	  <td>12/04/2014</td>
+	  <td id="assert-3">12/04/2014</td>
 	</tbody>
   </table>
 </div>
 
 <div data-expected="fail">
-  <h1>This headline has bad date format 12.4.2014.</h1>
+  <h1 id="assert-4">This headline has bad date format 12.4.2014.</h1>
 </div>
 
 <div data-expected="pass">
   <!-- Since we don't support <font/> element in KINGUseLongDateFormat test, this TC should not
   cause an error -->
-  <p>
+  <p id="assert-5">
 	Date nested in an unsupported tag
 	<font>12-04-12</font>
   </p>
 </div>
 
 <div data-expected="pass">
-  <p>Text with long date of 12 may 2014.</p>
+  <p id="assert-6">Text with long date of 12 may 2014.</p>
 </div>
 
 <div data-expected="pass">
   <ul>
-	<li>Text with long date of 12 may 2014</li>
+	<li id="assert-7">Text with long date of 12 may 2014</li>
   </ul>
 </div>
   </body>
