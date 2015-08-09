@@ -2488,7 +2488,6 @@ inputTextHasLabel:
     - "form"
     - "content"
 inputTextHasValue:
-  type: "placeholder"
   testability: 1
   title:
     en: "All \"input\" elements of type \"text\" must have a default text"
@@ -2500,11 +2499,6 @@ inputTextHasValue:
   tags:
     - "form"
     - "content"
-  components:
-    - "placeholder"
-  options:
-    attribute: "value"
-    empty: true
 inputTextValueNotEmpty:
   type: "placeholder"
   testability: 1

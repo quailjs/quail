@@ -134,7 +134,7 @@
 - [x] inputImageHasAlt
 - [x] inputImageNotDecorative
 - [x] inputTextHasLabel
-- [ ] inputTextHasValue
+- [x] inputTextHasValue
 - [ ] inputTextValueNotEmpty
 - [ ] inputWithoutLabelHasTitle
 - [ ] KINGStrongList

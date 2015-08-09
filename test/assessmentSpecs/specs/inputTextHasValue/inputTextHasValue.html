@@ -1,23 +1,23 @@
 <!doctype html>
 <html>
 <head>
-	<title>inputTextHasValue</title>
+  <title>inputTextHasValue</title>
 </head>
 <body>
-	<div data-expected="fail">
-		<form action="http://somesite.com/prog/adduser" method="post">
-			<label for="name">Name</label>:
-			<input type="text" name="name" id="name" class="quail-failed-element">
-			<input type="submit" value="Send">
-		</form>
-	</div>
+  <div data-expected="fail">
+    <form action="http://somesite.com/prog/adduser" method="post">
+      <label for="name">Name</label>:
+      <input id="assert-1" type="text" name="name" id="name" />
+      <input type="submit" value="Send" />
+    </form>
+  </div>
 
-	<div data-expected="pass">
-		<form action="http://somesite.com/prog/adduser" method="post">
-			<label for="name">Name</label>:
-			<input type="text" name="name" id="name" value="your name here">
-			<input type="submit" value="Send">
-		</form>
-	</div>
+  <div data-expected="pass">
+    <form action="http://somesite.com/prog/adduser" method="post">
+      <label for="name">Name</label>:
+      <input id="assert-2" type="text" name="name" id="name" value="your name here" />
+      <input type="submit" value="Send" />
+    </form>
+  </div>
   </body>
 </html>
