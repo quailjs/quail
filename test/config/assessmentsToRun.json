@@ -84,7 +84,7 @@
   "headersAttrRefersToATableCell",
   "headersHaveText",
   "headersUseToMarkSections",
-  "_iIsNotUsed",
+  "iIsNotUsed",
   "_idRefHasCorrespondingId",
   "_idrefsHasCorrespondingId",
   "iframeMustNotHaveLongdesc",
