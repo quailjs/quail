@@ -99,7 +99,7 @@
   "imageMapServerSide",
   "_imgAltEmptyForDecorativeImages",
   "_imgAltIdentifiesLinkDestination",
-  "_imgAltIsDifferent",
+  "imgAltIsDifferent",
   "_imgAltIsSameInText",
   "_imgAltIsTooLong",
   "_imgAltNotEmptyInAnchor",

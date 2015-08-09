@@ -99,7 +99,7 @@
 - [x] imageMapServerSide
 - [x] imgAltEmptyForDecorativeImages
 - [x] imgAltIdentifiesLinkDestination
-- [ ] imgAltIsDifferent
+- [x] imgAltIsDifferent
 - [x] imgAltIsSameInText
 - [ ] imgAltIsTooLong
 - [ ] imgAltNotEmptyInAnchor

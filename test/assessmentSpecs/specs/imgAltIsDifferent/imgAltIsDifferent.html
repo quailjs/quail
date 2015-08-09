@@ -5,15 +5,15 @@
 </head>
 <body>
 	<div data-expected="fail">
-		<img src="../assets/rex.jpg" alt="../assets/rex.jpg" class="quail-failed-element"/>
+		<img id="assert-1" src="assets/rex.jpg" alt="assets/rex.jpg" />
 	</div>
 
 	<div data-expected="pass">
-		<img src="../assets/rex.jpg" alt="photo of rex the cat" />
+		<img id="assert-2" src="assets/rex.jpg" alt="photo of rex the cat" />
 	</div>
 
 	<div data-expected="inapplicable">
-		<img alt="photo of rex the cat" />
+		<img id="assert-3" alt="photo of rex the cat" />
 	</div>
 
   </body>
