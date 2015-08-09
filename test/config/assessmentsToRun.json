@@ -84,7 +84,7 @@
   "headersAttrRefersToATableCell",
   "_headerTextIsTooLong",
   "headersHaveText",
-  "_headersUseToMarkSections",
+  "headersUseToMarkSections",
   "_headersUsedToIndicateMainContent",
   "_iIsNotUsed",
   "_idRefHasCorrespondingId",

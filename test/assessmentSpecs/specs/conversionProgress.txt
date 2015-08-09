@@ -89,7 +89,7 @@
 - [x] headerH6Format
 - [x] headersAttrRefersToATableCell
 - [x] headersHaveText
-- [ ] headersUseToMarkSections
+- [x] headersUseToMarkSections
 - [ ] headersUsedToIndicateMainContent
 - [x] iIsNotUsed
 - [ ] idRefHasCorrespondingId
