@@ -8,7 +8,7 @@
         <p>
             The text in this document fully describes the image shown here however
             the Alt text does not refer to this text.
-            <img src="../assets/chart.gif" alt="a complex chart" longdesc="this should be a URL, OK?" class="quail-failed-element"/>
+            <img id="assert-1" src="../assets/chart.gif" alt="a complex chart" longdesc="this should be a URL, OK?" />
         </p>
     </div>
 
@@ -16,7 +16,7 @@
         <p>
             The text in this document does not fully describe the complex image shown
             here.
-            <img src="../assets/chart.gif" alt="a complex chart" longdesc="a complex chart" class="quail-failed-element"/>
+            <img id="assert-2" src="../assets/chart.gif" alt="a complex chart" longdesc="a complex chart" />
         </p>
     </div>
 
@@ -41,7 +41,7 @@
             The text in this document does not fully describe the image shown here
             but the image contains a longdesc attribute linking to a text file that
             does describe the image.
-            <img src="../assets/chart.gif" alt="a complex chart" longdesc="chart.html" />
+            <img id="assert-3" src="../assets/chart.gif" alt="a complex chart" longdesc="chart.html" />
         </p>
     </div>
 

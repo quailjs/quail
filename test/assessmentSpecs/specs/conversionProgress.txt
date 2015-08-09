@@ -102,7 +102,7 @@
 - [x] imgAltNotEmptyInAnchor
 - [x] imgAltNotPlaceHolder
 - [x] imgHasAlt
-- [ ] imgHasLongDesc
+- [x] imgHasLongDesc
 - [ ] imgImportantNoSpacerAlt
 - [ ] imgMapAreasHaveDuplicateLink
 - [ ] imgNonDecorativeHasAlt
