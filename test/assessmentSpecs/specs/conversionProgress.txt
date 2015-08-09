@@ -205,7 +205,7 @@
 - [x] tableIsGrouped
 - [x] tableLayoutDataShouldNotHaveTh
 - [x] tableLayoutHasNoCaption
-- [ ] tableLayoutHasNoSummary
+- [x] tableLayoutHasNoSummary
 - [ ] tableLayoutMakesSenseLinearized
 - [ ] tableNotUsedForLayout
 - [ ] tableShouldUseHeaderIDs
