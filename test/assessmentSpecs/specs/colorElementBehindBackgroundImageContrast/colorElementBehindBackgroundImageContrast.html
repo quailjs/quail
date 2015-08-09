@@ -5,7 +5,7 @@
   <style>
 
     #test-1 {
-      background-image: url('../assets/fish.gif');
+      background-image: url('assets/fish.gif');
     }
     #test-1 p {
       color: #666;
@@ -14,7 +14,7 @@
     }
 
     #test-2 {
-      background-image: url('../assets/kids.jpg');
+      background-image: url('assets/kids.jpg');
     }
     #test-2 p {
       background: #000;
@@ -28,7 +28,7 @@
       padding: 0;
     }
     #test-3 .bck {
-      background-image: url('../assets/fish.gif');
+      background-image: url('assets/fish.gif');
       height: 50px;
       width: 100%;
       position: absolute;
@@ -42,7 +42,7 @@
     }
 
     #test-4 {
-      background-image: url('../assets/quail.png');
+      background-image: url('assets/quail.png');
     }
     #test-4 p {
       background: #000;
@@ -55,21 +55,21 @@
 </head>
 <body>
 
-  <div data-expected="colorElementBehindBackgroundImageContrast:fail" id="test-1">
-    <p>This test is not readable, thanks to the fish</p>
+  <div data-expected="fail" id="test-1">
+    <p id="assert-1">This test is not readable, thanks to the fish</p>
   </div>
 
-  <div data-expected="colorElementBehindBackgroundImageContrast:pass" id="test-2">
-    <p>This test is readable, thanks to the kids</p>
+  <div data-expected="pass" id="test-2">
+    <p id="assert-2">This test is readable, thanks to the kids</p>
   </div>
 
-  <div data-expected="colorElementBehindBackgroundImageContrast:fail" id="test-3">
+  <div data-expected="fail" id="test-3">
     <div class="bck"></div>
-    <p class="txt">This test is not readable.</p>
+    <p id="assert-3" class="txt">This test is not readable.</p>
   </div>
 
-  <div data-expected="colorElementBehindBackgroundImageContrast:pass" id="test-4">
-    <p>This test is readable, external image</p>
+  <div data-expected="pass" id="test-4">
+    <p id="assert-4">This test is readable, external image</p>
   </div>
 
   </body>

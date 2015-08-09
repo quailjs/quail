@@ -39,7 +39,7 @@
   "colorBackgroundGradientContrast",
   "colorBackgroundImageContrast",
   "colorElementBehindBackgroundGradientContrast",
-  "_colorElementBehindBackgroundImageContrast",
+  "colorElementBehindBackgroundImageContrast",
   "_colorElementBehindContrast",
   "_colorFontContrast",
   "_contentPositioningShouldNotChangeMeaning",

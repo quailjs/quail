@@ -40,7 +40,7 @@
 - [x] colorBackgroundGradientContrast
 - [x] colorBackgroundImageContrast
 - [x] colorElementBehindBackgroundGradientContrast
-- [ ] colorElementBehindBackgroundImageContrast
+- [x] colorElementBehindBackgroundImageContrast
 - [ ] colorElementBehindContrast
 - [ ] colorFontContrast
 - [ ] contentPositioningShouldNotChangeMeaning
