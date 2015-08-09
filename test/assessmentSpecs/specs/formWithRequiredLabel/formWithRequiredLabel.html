@@ -10,7 +10,7 @@
                 <label for="firstname" class="required">First Name:</label>
                 <input type="text" id="firstname" />
                 <br/>
-                <label for="lastname" style="color: red;" class="quail-failed-element">Last Name:</label>
+                <label id="assert-1" for="lastname" style="color: red;">Last Name:</label>
                 <input type="text" id="lastname" />
                 <input type="submit" value="submit" />
             </p>
@@ -20,7 +20,7 @@
     <div data-expected="fail">
         <form action="http://www.test.com">
             <p>
-                <label for="firstname" class="quail-failed-element">First Name: *</label>
+                <label id="assert-2" for="firstname">First Name: *</label>
                 <input type="text" id="firstname" />
             </p>
         </form>

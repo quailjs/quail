@@ -70,7 +70,7 @@
   "formErrorMessageHelpsUser",
   "formHasGoodErrorMessage",
   "formHasSubmitButton",
-  "_formWithRequiredLabel",
+  "formWithRequiredLabel",
   "headerH1",
   "headerH1Format",
   "headerH2",

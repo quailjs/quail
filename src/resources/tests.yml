@@ -1373,7 +1373,7 @@ formHasSubmitButton:
     - "form"
     - "content"
 formWithRequiredLabel:
-  testability: 0
+  testability: 0.5
   title:
     en: "Input items which are required are marked as so in the label element"
     nl: "Invoervelden die verplicht zijn, zijn zo gemarkeerd in het label-element"

@@ -76,7 +76,7 @@
 - [x] formErrorMessageHelpsUser
 - [x] formHasGoodErrorMessage
 - [x] formHasSubmitButton
-- [ ] formWithRequiredLabel
+- [x] formWithRequiredLabel
 - [x] headerH1
 - [x] headerH1Format
 - [x] headerH2
