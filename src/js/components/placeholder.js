@@ -1,6 +1,6 @@
 /**
  * Placeholder test - checks that an attribute or the content of an
- * element itself is not a placeholder (i.e. "click here" for links).
+ * element itself is not a placeholder (i.e. 'click here' for links).
  */
 quail.components.placeholder = function (quail, test, Case, options) {
 

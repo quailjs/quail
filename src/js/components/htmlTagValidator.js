@@ -6,51 +6,51 @@
  */
 
 var htmlTagValidator = function () {
-  var startingTagFirstChar = "<",
-    startingTagLastChar = ">",
-    closingTagSecondChar = "/",
-    selfClosingTagSecondToLastChar = "/",
-    commentSecondCharacter = "!",
-    doctypeSecondCharacterPattern = new RegExp("[dD]"),
-    startTagPattern = new RegExp("[a-z0-9-]"),
-    commentPattern = new RegExp("^<!--.*-->");
+  var startingTagFirstChar = '<',
+    startingTagLastChar = '>',
+    closingTagSecondChar = '/',
+    selfClosingTagSecondToLastChar = '/',
+    commentSecondCharacter = '!',
+    doctypeSecondCharacterPattern = new RegExp('[dD]'),
+    startTagPattern = new RegExp('[a-z0-9-]'),
+    commentPattern = new RegExp('^<!--.*-->');
 
   var parserFunc, previousParserFunc, currentTagName, startingTags,
     characterIndex, currentComment, options;
 
   var selfClosing = [
-    "area",
-    "base",
-    "br",
-    "col",
-    "command",
-    "embed",
-    "hr",
-    "img",
-    "input",
-    "keygen",
-    "link",
-    "meta",
-    "param",
-    "source",
-    "track",
-    "wbr"
+    'area',
+    'base',
+    'br',
+    'col',
+    'command',
+    'embed',
+    'hr',
+    'img',
+    'input',
+    'keygen',
+    'link',
+    'meta',
+    'param',
+    'source',
+    'track',
+    'wbr'
   ];
 
   var ignoreWithin = [
-    "pre",
-    "code",
-    "textarea",
-    "script",
-    "style"
+    'pre',
+    'code',
+    'textarea',
+    'script',
+    'style'
   ];
 
   var optionalClosing = [
-    "p",
-    "li",
-    "tr",
-    "th",
-    "td"
+    'p',
+    'li',
+    'tr',
+    'th',
+    'td'
   ];
 
   var tagObject = function (lIndex, cIndex) {
@@ -58,19 +58,19 @@ var htmlTagValidator = function () {
   };
 
   var throwEndingTagError = function (tagObj) {
-    var newError = new Error("Ending tag not found for: " + tagObj.name + " at line: " + tagObj.line + " char: " + tagObj.char + " starting tags: " + startingTags[0].name);
+    var newError = new Error('Ending tag not found for: ' + tagObj.name + ' at line: ' + tagObj.line + ' char: ' + tagObj.char + ' starting tags: ' + startingTags[0].name);
     newError.lineData = tagObj;
     throw newError;
   };
 
   var throwEndingCommentError = function (commentObj) {
-    var newError = new Error("Comment ending not found for: `comment` at line: " + commentObj.line + " char: " + commentObj.char);
+    var newError = new Error('Comment ending not found for: `comment` at line: ' + commentObj.line + ' char: ' + commentObj.char);
     newError.lineData = commentObj;
     throw newError;
   };
 
   var throwSelfClosingFormatError = function (tagObj) {
-    var newError = new Error("Ending `/` not found for: `" + tagObj.name + "` at line: " + tagObj.line + " char: " + tagObj.char);
+    var newError = new Error('Ending `/` not found for: `' + tagObj.name + '` at line: ' + tagObj.line + ' char: ' + tagObj.char);
     newError.lineData = tagObj.name;
     throw newError;
   };
@@ -99,7 +99,7 @@ var htmlTagValidator = function () {
       // really a comment or a comment with the commentOrDoctypeFinder
     }
     else if (character === commentSecondCharacter) {
-      currentTagName = "";
+      currentTagName = '';
       setParserFunc(commentOrDoctypeFinder);
 
       // If the current tag name is a self closing tag, start looking for a new
@@ -110,7 +110,7 @@ var htmlTagValidator = function () {
         setParserFunc(selfClosingEndingSlashFinder);
       }
       else {
-        currentTagName = "";
+        currentTagName = '';
         setParserFunc(startingTagBeginningFinder);
       }
 
@@ -124,12 +124,12 @@ var htmlTagValidator = function () {
       startingTags.push(tagObj);
 
       if (ignoreWithin.indexOf(currentTagName) > -1) {
-        currentTagName = "";
+        currentTagName = '';
         goBackNumChars(1);
         setParserFunc(ignoredWithinEndingTagStartFinder);
       }
       else {
-        currentTagName = "";
+        currentTagName = '';
         goBackNumChars(1);
         setParserFunc(startingTagEndingFinder);
       }
@@ -183,7 +183,7 @@ var htmlTagValidator = function () {
     }
     else {
       loopThroughTags();
-      currentTagName = "";
+      currentTagName = '';
     }
   };
 
@@ -229,7 +229,7 @@ var htmlTagValidator = function () {
       else {
         throwEndingTagError(lastStartTag);
       }
-      currentTagName = "";
+      currentTagName = '';
     }
   };
 
@@ -238,7 +238,7 @@ var htmlTagValidator = function () {
   // while if it's a comment, we want to look for a full comment.
   var commentOrDoctypeFinder = function commentOrDoctypeFinder (character) {
     if (doctypeSecondCharacterPattern.test(character)) {
-      currentTagName = "";
+      currentTagName = '';
       setParserFunc(startingTagBeginningFinder);
     }
     else {
@@ -253,10 +253,10 @@ var htmlTagValidator = function () {
   var commentFinder = function commentFinder (character, lIndex, cIndex) {
     if (!currentComment) {
       currentComment = {
-        content: "",
+        content: '',
         line: lIndex + 1,
         char: cIndex + 1,
-        name: "comment"
+        name: 'comment'
       };
     }
 
@@ -274,10 +274,10 @@ var htmlTagValidator = function () {
     var returnState = null;
 
     try {
-      var lines = string.split("\n");
+      var lines = string.split('\n');
       var ll;
       setParserFunc(startingTagBeginningFinder);
-      currentTagName = "";
+      currentTagName = '';
       startingTags = [];
       currentComment = null;
       options = opts || {};

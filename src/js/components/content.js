@@ -16,7 +16,7 @@ quail.components.content = {
    */
   findContent: function ($element) {
     var $topScore = $element;
-    //If an element has the ARIA role of "main," it's safe to assume that it is the main content.
+    //If an element has the ARIA role of 'main,' it's safe to assume that it is the main content.
     if ($element.is('[role=main]')) {
       return $element;
     }
