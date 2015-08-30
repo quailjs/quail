@@ -54,13 +54,13 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'lib/quail.jquery.js',
-          'lib/quail.js',
+          'src/quail.jquery.js',
+          'src/quail.js',
           'vendor/RainbowVis-JS/rainbowvis.js',
           'src/js/components/*.js',
           'src/js/strings/*.js',
-          'lib/core/**/*.js',
-          'lib/assessments/**/*.js'
+          'src/core/**/*.js',
+          'src/assessments/**/*.js'
         ],
         dest: 'dist/quail.jquery.js'
       }
@@ -96,8 +96,7 @@ module.exports = function(grunt) {
       },
       all: [
         'Gruntfile.js',
-        'src/js/**/*.js',
-        'lib/**/*.js',
+        'src/**/*.js',
         'test/assessmentSpecs/*.js'
       ]
     },
@@ -178,8 +177,7 @@ module.exports = function(grunt) {
         config: '.jscsrc'
       },
       files: [
-        'lib/**/*.js',
-        'src/js/*.js',
+        'src/**/*.js',
         'test/assessmentSpecs/testRunner.js',
         'test/assessmentSpecs/specs/**/*.js'
       ]
