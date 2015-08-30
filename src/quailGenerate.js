@@ -78,7 +78,7 @@ function createAssessmentTestDirectory (assessmentName, dir) {
     // The directory does not exit, create it.
     if (err) {
       console.log('Create directory ' + dir + '\n');
-      fs.mkdir(dir, 0755, function (err) {
+      fs.mkdir(dir, '0755', function (err) {
         if (err) {
           process.exit(err);
         }
