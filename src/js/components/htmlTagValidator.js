@@ -18,7 +18,7 @@ var htmlTagValidator = function () {
   var parserFunc, previousParserFunc, currentTagName, startingTags,
     characterIndex, currentComment, options;
 
-  var selfClosing=[
+  var selfClosing = [
     "area",
     "base",
     "br",
@@ -37,7 +37,7 @@ var htmlTagValidator = function () {
     "wbr"
   ];
 
-  var ignoreWithin=[
+  var ignoreWithin = [
     "pre",
     "code",
     "textarea",
@@ -45,7 +45,7 @@ var htmlTagValidator = function () {
     "style"
   ];
 
-  var optionalClosing=[
+  var optionalClosing = [
     "p",
     "li",
     "tr",
@@ -81,7 +81,7 @@ var htmlTagValidator = function () {
   };
 
   var goBackNumChars = function (num) {
-    characterIndex-=num;
+    characterIndex -= num;
   };
 
   // Handle starting html tags
@@ -89,7 +89,7 @@ var htmlTagValidator = function () {
     // If the character matches the matcher for approved tag name characters add it to
     // the currentTagName
     if (startTagPattern.test(character)) {
-      currentTagName+=character;
+      currentTagName += character;
       // If the character matches the closing tag second character set the finder function
       // to the endingTagNameFinder
     }
@@ -138,7 +138,7 @@ var htmlTagValidator = function () {
 
   var selfClosingEndingSlashFinder = function selfClosingEndingSlashFinder (character, lIndex, cIndex) {
     if (character === selfClosingTagSecondToLastChar) {
-      currentTagName='';
+      currentTagName ='';
       setParserFunc(endingTagBeginningFinder);
     }
     else if (character === startingTagLastChar) {
@@ -179,7 +179,7 @@ var htmlTagValidator = function () {
     }
 
     if (startTagPattern.test(character)) {
-      currentTagName+=character;
+      currentTagName += character;
     }
     else {
       loopThroughTags();
@@ -252,10 +252,15 @@ var htmlTagValidator = function () {
   // then reset the finder back to the startingTagBeginningFinder and clear the currentComment
   var commentFinder = function commentFinder (character, lIndex, cIndex) {
     if (!currentComment) {
-      currentComment={content: "", line: lIndex + 1, char: cIndex + 1, name: "comment"};
+      currentComment = {
+        content: "",
+        line: lIndex + 1,
+        char: cIndex + 1,
+        name: "comment"
+      };
     }
 
-    currentComment.content+=character;
+    currentComment.content += character;
 
     if (commentPattern.test(currentComment.content)) {
       currentComment = null;
@@ -273,13 +278,15 @@ var htmlTagValidator = function () {
       var ll;
       setParserFunc(startingTagBeginningFinder);
       currentTagName = "";
-      startingTags=[];
+      startingTags = [];
       currentComment = null;
       options = opts || {};
 
       for (var lineIndex = 0, l = lines.length; lineIndex < l; lineIndex++) {
         for (characterIndex = 0, ll = lines[lineIndex].length; characterIndex < ll; characterIndex++) {
-          if (!parserFunc) {break;}
+          if (!parserFunc) {
+            break;
+          }
 
           parserFunc(lines[lineIndex][characterIndex], lineIndex, characterIndex);
         }

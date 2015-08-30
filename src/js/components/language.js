@@ -80,7 +80,7 @@ quail.components.language = {
       ]
     },
     arabic: {
-      regularExpression:  /[\u0600-\u06FF]/g,
+      regularExpression: /[\u0600-\u06FF]/g,
       languages: [
         'ar',
         'fa',
