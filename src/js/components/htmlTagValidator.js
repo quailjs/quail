@@ -85,7 +85,7 @@ var htmlTagValidator = function () {
   };
 
   // Handle starting html tags
-  var startingTagNameFinder = function startingTagNameFinder(character, lIndex, cIndex) {
+  var startingTagNameFinder = function startingTagNameFinder (character, lIndex, cIndex) {
     // If the character matches the matcher for approved tag name characters add it to
     // the currentTagName
     if (startTagPattern.test(character)) {
@@ -136,7 +136,7 @@ var htmlTagValidator = function () {
     }
   };
 
-  var selfClosingEndingSlashFinder = function selfClosingEndingSlashFinder(character, lIndex, cIndex) {
+  var selfClosingEndingSlashFinder = function selfClosingEndingSlashFinder (character, lIndex, cIndex) {
     if (character === selfClosingTagSecondToLastChar) {
       currentTagName='';
       setParserFunc(endingTagBeginningFinder);
@@ -146,19 +146,19 @@ var htmlTagValidator = function () {
     }
   };
 
-  var startingTagEndingFinder = function startingTagEndingFinder(character) {
+  var startingTagEndingFinder = function startingTagEndingFinder (character) {
     if (character === startingTagLastChar) {
       setParserFunc(endingTagBeginningFinder);
     }
   };
 
-  var startingTagBeginningFinder = function startingTagBeginningFinder(character) {
+  var startingTagBeginningFinder = function startingTagBeginningFinder (character) {
     if (character === startingTagFirstChar) {
       setParserFunc(startingTagNameFinder);
     }
   };
 
-  var endingTagNameFinder = function endingTagNameFinder(character) {
+  var endingTagNameFinder = function endingTagNameFinder (character) {
 
     function loopThroughTags () {
       var lastStartTag = startingTags.pop();
@@ -187,7 +187,7 @@ var htmlTagValidator = function () {
     }
   };
 
-  var endingTagSlashFinder = function endingTagSlashFinder(character) {
+  var endingTagSlashFinder = function endingTagSlashFinder (character) {
     if (character === closingTagSecondChar) {
       setParserFunc(endingTagNameFinder);
     }
@@ -197,26 +197,26 @@ var htmlTagValidator = function () {
     }
   };
 
-  var endingTagBeginningFinder = function endingTagBeginningFinder(character) {
+  var endingTagBeginningFinder = function endingTagBeginningFinder (character) {
     if (character === startingTagFirstChar) {
       setParserFunc(endingTagSlashFinder);
     }
   };
 
   // Ignore with ignored tag list ex. pre, script, code
-  var ignoredWithinEndingTagStartFinder = function ignoredWithinEndingTagStartFinder(character) {
+  var ignoredWithinEndingTagStartFinder = function ignoredWithinEndingTagStartFinder (character) {
     if (character === startingTagFirstChar) {
       setParserFunc(ignoredWithinEndingTagSlashFinder);
     }
   };
 
-  var ignoredWithinEndingTagSlashFinder = function ignoredWithinEndingTagSlashFinder(character) {
+  var ignoredWithinEndingTagSlashFinder = function ignoredWithinEndingTagSlashFinder (character) {
     if (character === closingTagSecondChar) {
       setParserFunc(ignoredWithinEndingTagNameFinder);
     }
   };
 
-  var ignoredWithinEndingTagNameFinder = function ignoredWithinEndingTagNameFinder(character) {
+  var ignoredWithinEndingTagNameFinder = function ignoredWithinEndingTagNameFinder (character) {
     if (startTagPattern.test(character)) {
       currentTagName+=character;
     }
@@ -236,7 +236,7 @@ var htmlTagValidator = function () {
   // Comments and doctypes both start with `<!` So we needed a custom finder to determine what it
   // really is. If it's a doctype we want to ignore it and look for a new starting tag character,
   // while if it's a comment, we want to look for a full comment.
-  var commentOrDoctypeFinder = function commentOrDoctypeFinder(character) {
+  var commentOrDoctypeFinder = function commentOrDoctypeFinder (character) {
     if (doctypeSecondCharacterPattern.test(character)) {
       currentTagName = "";
       setParserFunc(startingTagBeginningFinder);
@@ -250,7 +250,7 @@ var htmlTagValidator = function () {
   // comment finding
   // Look through the incoming characters until a full matching comment has been built,
   // then reset the finder back to the startingTagBeginningFinder and clear the currentComment
-  var commentFinder = function commentFinder(character, lIndex, cIndex) {
+  var commentFinder = function commentFinder (character, lIndex, cIndex) {
     if (!currentComment) {
       currentComment={content: "", line: lIndex + 1, char: cIndex + 1, name: "comment"};
     }
