@@ -18,9 +18,9 @@ module.exports = function(config) {
       {pattern: 'node_modules/jquery/dist/jquery.min.js', watched: false},
 
       // Fixtures
-      {pattern: 'lib/quail.js'},
+      {pattern: 'src/quail.js'},
       {pattern: 'src/js/components/*.js'},
-      {pattern: 'lib/core/*.js'},
+      {pattern: 'src/core/*.js'},
 
       // Specs
       {pattern: 'test/unit/*Spec.js'},

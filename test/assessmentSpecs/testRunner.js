@@ -17,7 +17,7 @@ var should = require('should');
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-var chaiQuail = require('../../lib/customAssertions/chai-quail');
+var chaiQuail = require('../../src/customAssertions/chai-quail');
 chai.use(chaiQuail);
 global.expect = chai.expect;
 global.assert = chai.assert;

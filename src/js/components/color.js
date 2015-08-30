@@ -499,16 +499,8 @@ quail.components.color = (function () {
     if (element.nodeType !== 1) {
       return false;
     }
-    else if ([
-        'script',
-        'style',
-        'title',
-        'object',
-        'applet',
-        'embed',
-        'template',
-        'noscript'
-      ].indexOf(element.nodeName.toLowerCase()) !== -1) {
+    else if (['script', 'style', 'title', 'object', 'applet', 'embed', 'template', 'noscript']
+      .indexOf(element.nodeName.toLowerCase()) !== -1) {
       // Ignore elements whose content isn't displayed to the page.
       return false;
     }
