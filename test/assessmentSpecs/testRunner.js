@@ -490,7 +490,8 @@ function runSpecs (assessments) {
   mochaRunner = new Mocha({
     timeout: 1000000,
     reporter: 'spec',
-    bail: false
+    bail: false,
+    require: 'babelhook'
   });
   /**
    * Adds files to Mocha and then runs Mocha.
