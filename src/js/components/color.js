@@ -84,7 +84,8 @@ quail.components.color = (function () {
       var res;
       if (algorithm === 'wcag') {
         res = colors.passesWCAGColor(element, foreground, background, level);
-      } else if (algorithm === 'wai') {
+      }
+      else if (algorithm === 'wai') {
         res = colors.passesWAIColor(foreground, background);
       }
       return res;
@@ -102,7 +103,7 @@ quail.components.color = (function () {
         }
         else {
           var fweight = element.css('fontWeight');
-          if (pxfsize >= 14 &&  (fweight === 'bold' || parseInt(fweight, 10) >= 700)) {
+          if (pxfsize >= 14 && (fweight === 'bold' || parseInt(fweight, 10) >= 700)) {
             level = 3;
           }
           else {
@@ -127,8 +128,8 @@ quail.components.color = (function () {
      * Returns whether an element's color passes
      * WAI brightness levels.
      */
-    passesWAIColor : function(foreground, background) {
-      var contrast   = colors.getWAIErtContrast(foreground, background);
+    passesWAIColor: function (foreground, background) {
+      var contrast = colors.getWAIErtContrast(foreground, background);
       var brightness = colors.getWAIErtBrightness(foreground, background);
 
       return (contrast > 500 && brightness > 125);
@@ -138,7 +139,7 @@ quail.components.color = (function () {
      * Compused contrast of a foreground and background
      * per the ERT contrast spec.
      */
-    getWAIErtContrast : function(foreground, background) {
+    getWAIErtContrast: function (foreground, background) {
       var diffs = colors.getWAIDiffs(foreground, background);
       return diffs.red + diffs.green + diffs.blue;
     },
@@ -147,7 +148,7 @@ quail.components.color = (function () {
      * Computed contrast of a foreground and background
      * per the ERT brightness spec.
      */
-    getWAIErtBrightness : function(foreground, background) {
+    getWAIErtBrightness: function (foreground, background) {
       var diffs = colors.getWAIDiffs(foreground, background);
       return ((diffs.red * 299) + (diffs.green * 587) + (diffs.blue * 114)) / 1000;
     },
@@ -155,11 +156,11 @@ quail.components.color = (function () {
     /**
      * Returns differences between two colors.
      */
-    getWAIDiffs : function(foreground, background) {
+    getWAIDiffs: function (foreground, background) {
       return {
-        red:   Math.abs(foreground.r - background.r),
+        red: Math.abs(foreground.r - background.r),
         green: Math.abs(foreground.g - background.g),
-        blue:  Math.abs(foreground.b - background.b)
+        blue: Math.abs(foreground.b - background.b)
       };
     },
 
@@ -168,7 +169,7 @@ quail.components.color = (function () {
      * There are some normalizations here for the way
      * different browsers can return colors, and handling transparencies.
      */
-    getColor : function (element, type) {
+    getColor: function (element, type) {
       var self = colors;
       if (!$(element).data('cache-id')) {
         $(element).data('cache-id', 'id_' + Math.random());
@@ -200,7 +201,7 @@ quail.components.color = (function () {
       return colors.cache[cacheKey];
     },
 
-    getForeground: function(element) {
+    getForeground: function (element) {
       return colors.getColor(element, 'foreground');
     },
 
@@ -245,7 +246,7 @@ quail.components.color = (function () {
         return colors.cache[cacheKey];
       }
       element = element[0];
-      while(element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
+      while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
         var bimage = $(element).css('background-image');
         if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
           colors.cache[cacheKey] = bimage.replace('url(', '').replace(/['"]/g, '').replace(')', '');
@@ -274,7 +275,7 @@ quail.components.color = (function () {
         return $.trim(s) !== '';
       };
       element = element[0];
-      while(element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
+      while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
         // Exit if element has a background color.
         if (colors.hasBackgroundColor($(element).css('background-color'))) {
           colors.cache[cacheKey] = false;
@@ -305,13 +306,22 @@ quail.components.color = (function () {
       }
 
       var blockSize = 5, // only visit every 5 pixels
-        defaultRGB = { r:0, g:0, b:0 }, // for non-supporting envs
+        defaultRGB = {
+          r: 0,
+          g: 0,
+          b: 0
+        }, // for non-supporting envs
         canvas = document.createElement('canvas'),
         context = canvas.getContext && canvas.getContext('2d'),
         data, width, height,
         i = -4,
         length,
-        rgb = { r:0, g:0, b:0, a:0 },
+        rgb = {
+          r: 0,
+          g: 0,
+          b: 0,
+          a: 0
+        },
         count = 0;
 
       if (!context) {
@@ -443,7 +453,7 @@ quail.components.color = (function () {
           visibility: el.css('visibility')
         });
         el.css('visibility', 'hidden');
-        el = document.elementFromPoint(x,y);
+        el = document.elementFromPoint(x, y);
       }
 
       // Reset visibility.
@@ -458,26 +468,26 @@ quail.components.color = (function () {
     /**
      * Get first element behind current with a background color.
      */
-    getBehindElementBackgroundColor: function(element) {
+    getBehindElementBackgroundColor: function (element) {
       return colors.traverseVisualTreeForBackground(element, 'background-color');
     },
 
     /**
      * Get first element behind current with a background gradient.
      */
-    getBehindElementBackgroundGradient: function(element) {
+    getBehindElementBackgroundGradient: function (element) {
       return colors.traverseVisualTreeForBackground(element, 'background-gradient');
     },
 
     /**
      * Get first element behind current with a background image.
      */
-    getBehindElementBackgroundImage: function(element) {
+    getBehindElementBackgroundImage: function (element) {
       return colors.traverseVisualTreeForBackground(element, 'background-image');
     }
   };
 
-  function textShouldBeTested(textNode) {
+  function textShouldBeTested (textNode) {
     // We want a tag, not just the text node.
     var element = textNode.parentNode;
     var $this = $(element);
@@ -488,17 +498,26 @@ quail.components.color = (function () {
     // if Firefox.
     if (element.nodeType !== 1) {
       return false;
-
-    // Ignore elements whose content isn't displayed to the page.
-    } else if (['script', 'style', 'title', 'object', 'applet', 'embed', 'template', 'noscript']
-    .indexOf(element.nodeName.toLowerCase()) !== -1)  {
+    }
+    else if ([
+        'script',
+        'style',
+        'title',
+        'object',
+        'applet',
+        'embed',
+        'template',
+        'noscript'
+      ].indexOf(element.nodeName.toLowerCase()) !== -1) {
+      // Ignore elements whose content isn't displayed to the page.
+      return false;
+    }
+    else if (quail.isUnreadable($this.text())) {
+      // Bail out if the text is not readable.
       return false;
 
-    // Bail out if the text is not readable.
-    } else if (quail.isUnreadable($this.text())) {
-      return false;
-
-    } else {
+    }
+    else {
       return true;
     }
   }
@@ -507,7 +526,7 @@ quail.components.color = (function () {
    * For the color test, if any case passes for a given element, then all the
    * cases for that element pass.
    */
-  function postInvoke(test) {
+  function postInvoke (test) {
     var passed = {};
     var groupsBySelector = test.groupCasesBySelector();
 

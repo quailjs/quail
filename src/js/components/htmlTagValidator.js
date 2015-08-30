@@ -106,7 +106,7 @@ var htmlTagValidator = function () {
       // tag name with startingTagBeginningFinder
     }
     else if (selfClosing.indexOf(currentTagName) > -1) {
-      if (options['strict_self_closing_tags']) {
+      if (options.strict_self_closing_tags) {
         setParserFunc(selfClosingEndingSlashFinder);
       }
       else {
@@ -138,7 +138,7 @@ var htmlTagValidator = function () {
 
   var selfClosingEndingSlashFinder = function selfClosingEndingSlashFinder (character, lIndex, cIndex) {
     if (character === selfClosingTagSecondToLastChar) {
-      currentTagName ='';
+      currentTagName = '';
       setParserFunc(endingTagBeginningFinder);
     }
     else if (character === startingTagLastChar) {

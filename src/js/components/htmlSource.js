@@ -7,7 +7,10 @@ quail.components.htmlSource = {
       callback(quail.options.htmlSource, that.parseHtml(quail.options.htmlSource));
       return;
     }
-    var data = $.ajax({ url: window.location.href, async: false });
+    var data = $.ajax({
+      url: window.location.href,
+      async: false
+    });
     if (data && typeof data.responseText !== 'undefined') {
       callback(data.responseText, that.parseHtml(data.responseText));
     }
@@ -70,7 +73,7 @@ quail.components.htmlSource = {
     }
     // NodeHtmlParser chokes on doctype tags
     html = html.replace(/<!doctype ([^>]*)>/g, '');
-    var handler = new Tautologistics.NodeHtmlParser.HtmlBuilder(function () { }, { });
+    var handler = new Tautologistics.NodeHtmlParser.HtmlBuilder(function () {}, {});
     var parser = new Tautologistics.NodeHtmlParser.Parser(handler);
     parser.parseComplete(html);
     var parsed = handler.dom;
@@ -129,7 +132,8 @@ if (typeof Tautologistics !== 'undefined') {
           this._lastTag.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] = [];
         }
         this._lastTag.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()].push(element.data);
-      } else { // Otherwise just add to the top level list
+      }
+      else { // Otherwise just add to the top level list
         this.dom.push(this._copyElement(element));
       }
     }
@@ -169,7 +173,8 @@ if (typeof Tautologistics !== 'undefined') {
               parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] = [];
             }
             parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()].push(element.data);
-          } else {
+          }
+          else {
             node = this._copyElement(element);
             if (!parent.children) {
               parent.children = [];
@@ -194,7 +199,8 @@ if (typeof Tautologistics !== 'undefined') {
             parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()] = [];
           }
           parent.attributes[this._options.caseSensitiveAttr ? element.name : element.name.toLowerCase()].push(element.data);
-        } else {
+        }
+        else {
           if (!parent.children) {
             parent.children = [];
           }

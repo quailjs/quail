@@ -1,8 +1,8 @@
 quail.components.acronym = function (quail, test, Case) {
   test.get('$scope').each(function () {
     var $scope = $(this);
-    var alreadyReported = { };
-    var predefined = { };
+    var alreadyReported = {};
+    var predefined = {};
 
     // Find defined acronyms within this scope.
     $scope.find('acronym[title], abbr[title]').each(function () {
@@ -11,8 +11,8 @@ quail.components.acronym = function (quail, test, Case) {
 
     // Consider all block-level html elements that contain text.
     $scope.find('p, span, h1, h2, h3, h4, h5').each(function () {
-      var el = this;
-      var $el = $(el);
+      var self = this;
+      var $el = $(self);
 
       var words = $el.text().split(' ');
       // Keep a list of words that might be acronyms.
@@ -39,25 +39,26 @@ quail.components.acronym = function (quail, test, Case) {
         // If undefined acronyms are discovered, fail this case.
         if (infractions.length) {
           test.add(Case({
-            element: el,
-            info: { acronyms: infractions },
+            element: self,
+            info: {
+              acronyms: infractions
+            },
             status: 'failed'
           }));
         }
         else {
           test.add(Case({
-            element: el,
+            element: self,
             status: 'passed'
           }));
         }
       }
       else {
         test.add(Case({
-          element: el,
+          element: self,
           status: 'passed'
         }));
       }
     });
-
   });
 };
