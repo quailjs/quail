@@ -54,13 +54,13 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'src/quail.jquery.js',
-          'src/quail.js',
+          'lib/quail.jquery.js',
+          'lib/quail.js',
           'vendor/RainbowVis-JS/rainbowvis.js',
-          'src/js/components/*.js',
-          'src/js/strings/*.js',
-          'src/core/**/*.js',
-          'src/assessments/**/*.js'
+          'lib/js/components/*.js',
+          'lib/js/strings/*.js',
+          'lib/core/**/*.js',
+          'lib/assessments/**/*.js'
         ],
         dest: 'dist/quail.jquery.js'
       }
@@ -88,6 +88,11 @@ module.exports = function(grunt) {
           cwd: '.'
         },
         src: ['test/assessmentSpecs/testRunner.js']
+      }
+    },
+    exec: {
+      babel: {
+        cmd: 'npm run compile'
       }
     },
     jshint: {
@@ -204,68 +209,51 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-execute');
+  grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-gh-pages');
+
+  // Dev task
+  grunt.registerTask('dev', [
+    'jshint',
+    'jscs',
+    'exec:babel',
+    'convert',
+    'concat'
+  ]);
 
   // By default, just run tests
   grunt.registerTask('default', [
     'bower:install',
-    'convert',
-    'concat',
-    'jshint',
-    'jscs',
-    'buildGuideline',
-    'compressTestsJson',
-    'karma',
-    'execute:assessments'
-  ]);
-
-  // Dev task
-  grunt.registerTask('dev', [
-    'convert',
-    'concat',
-    'jshint',
-    'jscs'
+    'dev',
+    'test'
   ]);
 
   // Build task.
   grunt.registerTask('build', [
     'bower:install',
-    'convert',
-    'concat',
-    'jshint',
-    'jscs',
+    'dev',
     'buildGuideline',
     'compressTestsJson',
     'uglify'
   ]);
 
-  // Release task.
-  grunt.registerTask('release', [
-    'bower:install',
-    'convert',
-    'concat',
-    'jshint',
-    'jscs',
-    'karma',
-    'execute:assessments',
-    'buildGuideline',
-    'compressTestsJson',
-    'uglify',
-    'gh-pages'
-  ]);
-
   // Test task.
   grunt.registerTask('test', [
     'bower:install',
-    'convert',
-    'concat',
-    'copy',
-    'jshint',
-    'jscs',
+    'dev',
     'buildGuideline',
     'compressTestsJson',
     'karma',
     'execute:assessments'
+  ]);
+
+  // Release task.
+  grunt.registerTask('release', [
+    'bower:install',
+    'dev',
+    'test',
+    'uglify',
+    'gh-pages'
   ]);
 
   grunt.registerTask('publish', ['gh-pages']);
