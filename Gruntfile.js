@@ -91,54 +91,14 @@ module.exports = function(grunt) {
       }
     },
     exec: {
+      jscs: {
+        cmd: 'npm run jscs'
+      },
+      eslint: {
+        cmd: 'npm run eslint'
+      },
       babel: {
         cmd: 'npm run compile'
-      }
-    },
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc'
-      },
-      all: [
-        'Gruntfile.js',
-        'src/**/*.js',
-        'test/assessmentSpecs/*.js'
-      ]
-    },
-    watch: {
-      scripts: {
-        files: [
-          'src/**/*.js',
-          'src/**/*.yml'
-        ],
-        tasks: [
-          'convert',
-          'concat',
-          'jshint',
-          'jscs',
-          'buildGuideline',
-          'uglify'
-        ],
-        options: {
-          spawn: false
-        }
-      },
-      jscs: {
-        files: [
-          '.jscsrc',
-          'src/**/*.js'
-        ],
-        tasks: [
-          'jscs'
-        ]
-      }
-    },
-    chmod: {
-      bin: {
-        options: {
-          mode: '711'
-        },
-        src: ['bin/*']
       }
     },
     buildGuideline: {
@@ -177,16 +137,6 @@ module.exports = function(grunt) {
       },
       src: ['dist/**', 'src/**']
     },
-    jscs: {
-      options: {
-        config: '.jscsrc'
-      },
-      files: [
-        'src/**/*.js',
-        'test/assessmentSpecs/testRunner.js',
-        'test/assessmentSpecs/specs/**/*.js'
-      ]
-    },
     bower: {
       install: {
         options: {
@@ -198,15 +148,12 @@ module.exports = function(grunt) {
   });
   grunt.loadTasks('tasks');
   grunt.loadNpmTasks('grunt-bower-task');
-  grunt.loadNpmTasks('grunt-chmod');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-convert');
-  grunt.loadNpmTasks('grunt-jscs');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-execute');
   grunt.loadNpmTasks('grunt-exec');
@@ -214,8 +161,8 @@ module.exports = function(grunt) {
 
   // Dev task
   grunt.registerTask('dev', [
-    'jshint',
-    'jscs',
+    'exec:jscs',
+    //'exec:eslint',
     'exec:babel',
     'convert',
     'concat'
@@ -250,7 +197,6 @@ module.exports = function(grunt) {
   // Release task.
   grunt.registerTask('release', [
     'bower:install',
-    'dev',
     'test',
     'uglify',
     'gh-pages'
