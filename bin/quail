@@ -2,9 +2,9 @@
 var fs = require('fs');
 var path = require('path');
 var program = require('commander');
-var quailEvaluate = require('../lib/quailEvaluate');
-var quailDevelop = require('../lib/quailDevelop');
-var quailGenerate = require('../lib/quailGenerate');
+var quailEvaluate = require('../lib/commands/quailEvaluate');
+var quailDevelop = require('../lib/commands/quailDevelop');
+var quailGenerate = require('../lib/commands/quailGenerate');
 
 // `quail` command.
 program
