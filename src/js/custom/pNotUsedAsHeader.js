@@ -11,7 +11,8 @@ quail.pNotUsedAsHeader = function(quail, test, Case) {
       });
     }
     var failed = false;
-    if ($(this).text().search('.') < 1) {
+    // Look for any indication that the paragraph contains at least a full sentence
+    if ($(this).text().search(/[.!:;]/) < 1) {
       var $paragraph = $(this),
         priorParagraph = $paragraph.prev('p');
       // Checking if any of suspectPHeaderTags has exact the same text as a paragraph.
@@ -40,7 +41,9 @@ quail.pNotUsedAsHeader = function(quail, test, Case) {
           }
         });
       }
-      if ($paragraph.css('font-weight') === 'bold') {
+
+      var fontWeight = $paragraph.css('font-weight');
+      if (fontWeight === 'bold' || +fontWeight >= 700) { // bold
         _case.set({
           'status': 'failed'
         });
