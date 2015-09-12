@@ -1,7 +1,7 @@
 /**
  * Test for a label associated with a file input element.
  */
-quail.fileHasLabel = function (quail, test, Case, options) {
+quail.fileHasLabel = function (quail, test, Case) {
 
   var sFiles = '[type="file"]';
   var sLabels = 'label';
@@ -24,7 +24,7 @@ quail.fileHasLabel = function (quail, test, Case, options) {
     var labels = $scope.find(sLabels);
 
     if (files.length === 0) {
-      test.add(quail.lib.Case({
+      test.add(Case({
         element: undefined,
         status: 'inapplicable'
       }));
@@ -43,7 +43,7 @@ quail.fileHasLabel = function (quail, test, Case, options) {
           }
         }
 
-        test.add(quail.lib.Case({
+        test.add(Case({
           element: this,
           status: status
         }));

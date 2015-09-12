@@ -3,17 +3,10 @@
 
   function chaiQuail (chai, utils) {
     var Assertion = chai.Assertion;
-    var assert = chai.assert;
     var flag = utils.flag;
 
     function method (name, asserter) {
       utils.addMethod(Assertion.prototype, name, function () {
-        return asserter.apply(this, arguments);
-      });
-    }
-
-    function property (name, asserter) {
-      utils.addProperty(Assertion.prototype, name, function () {
         return asserter.apply(this, arguments);
       });
     }
@@ -29,7 +22,7 @@
       }
     }
 
-    method('quailStatus', function (status, id) {
+    method('quailStatus', function (status) {
       var actual = flag(this, 'object');
       this.assert(
         actual.status === status,

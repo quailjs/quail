@@ -42,14 +42,10 @@ quail.lib.SuccessCriteria = (function () {
       return this.attributes[attr];
     },
     set: function (attr, value) {
-      var isStatusChanged = false;
       // Allow an object of attributes to be passed in.
       if (typeof attr === 'object') {
         for (var prop in attr) {
           if (attr.hasOwnProperty(prop)) {
-            if (prop === 'status') {
-              isStatusChanged = true;
-            }
             this.attributes[prop] = attr[prop];
           }
         }

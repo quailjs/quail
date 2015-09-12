@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.formHasSubmitButton = function (quail, test, Case, options) {
+quail.formHasSubmitButton = function (quail, test, Case) {
 
   var selector = 'input[type=submit], button[type=submit]';
 
@@ -13,7 +13,7 @@ quail.formHasSubmitButton = function (quail, test, Case, options) {
     var candidates = $(this).find('form');
 
     if (candidates.length === 0) {
-      test.add(quail.lib.Case({
+      test.add(Case({
         element: this,
         status: 'inapplicable'
       }));
@@ -24,7 +24,7 @@ quail.formHasSubmitButton = function (quail, test, Case, options) {
 
         var status = (submitButton.length === 1) ? 'passed' : 'failed';
 
-        test.add(quail.lib.Case({
+        test.add(Case({
           element: this,
           status: status
         }));

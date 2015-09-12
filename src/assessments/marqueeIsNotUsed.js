@@ -5,14 +5,14 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.marqueeIsNotUsed = function (quail, test, Case, options) {
+quail.marqueeIsNotUsed = function (quail, test, Case) {
 
   var selector = 'marquee';
 
   this.get('$scope').each(function () {
     var candidates = $(this).find(selector);
     if (!candidates.length) {
-      test.add(quail.lib.Case({
+      test.add(Case({
         element: undefined,
         status: 'passed'
       }));
@@ -21,7 +21,7 @@ quail.marqueeIsNotUsed = function (quail, test, Case, options) {
       candidates.each(function () {
         var status = 'failed';
 
-        test.add(quail.lib.Case({
+        test.add(Case({
           element: this,
           status: status
         }));

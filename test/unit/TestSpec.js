@@ -1,3 +1,5 @@
+import quail from '../../src/quail';
+
 describe('Test', function () {
   var _test;
 

@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.areaDontOpenNewWindow = function (quail, test, Case, options) {
+quail.areaDontOpenNewWindow = function (quail, test, Case) {
   // Links without a target attribute pass.
   test.get('$scope').find('area').not('[target=_new], [target=_blank]').each(function () {
     test.add(Case({

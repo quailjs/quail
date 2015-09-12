@@ -32,7 +32,13 @@ quail.colorElementBehindContrast = function (quail, test, Case, options) {
   }
 
   test.get('$scope').each(function () {
-    var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+    var textNodes = document.evaluate(
+      'descendant::text()[normalize-space()]',
+      this,
+      null,
+      window.XPathResult.ORDERED_NODE_ITERATOR_TYPE,
+      null
+    );
     var nodes = [];
     var textNode = textNodes.iterateNext();
 

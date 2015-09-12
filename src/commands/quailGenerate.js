@@ -1,5 +1,4 @@
 var fs = require('fs');
-var fse = require('node-fs-extra');
 var path = require('path');
 var assessmentSpecsPath = path.join(__dirname, '..', 'test', 'assessmentSpecs');
 var accessibilityTestsPath = path.join(__dirname, '..', 'test', 'accessibility-tests');
@@ -17,7 +16,7 @@ function copyTestTemplate (assessmentName, dir) {
     // Replace the placeholders with the assessment name.
     var interpolatedFile = template.replace(/\{\{assessmentName\}\}/g, assessmentName);
     var newFile = path.join(dir, assessmentName + 'Spec.js');
-    fs.stat(newFile, function (err, stats) {
+    fs.stat(newFile, function (err) {
       if (err) {
         // Write the file to the assessment directory.
         fs.writeFile(newFile, interpolatedFile, {
@@ -66,15 +65,12 @@ function moveOrCopyHtmlTemplates (assessmentName, dir) {
         });
       });
     }
-    else {
-
-    }
   });
 }
 
 function createAssessmentTestDirectory (assessmentName, dir) {
   // Create the directory for the assessment in assessmentSpecs/specs.
-  fs.stat(dir, function (err, stats) {
+  fs.stat(dir, function (err) {
     // The directory does not exit, create it.
     if (err) {
       console.log('Create directory ' + dir + '\n');
@@ -99,7 +95,7 @@ function createAssessmentTestDirectory (assessmentName, dir) {
 /**
  * Generates the files necessary to test an assessment.
  */
-module.exports = function quailGenerate (assessmentName, cmd) {
+module.exports = function quailGenerate (assessmentName) {
   var dir = path.join(assessmentSpecsPath, 'specs', assessmentName);
   createAssessmentTestDirectory(assessmentName, dir);
 };

@@ -1,3 +1,5 @@
+import quail from '../../src/quail';
+
 describe('SuccessCriteria', function () {
   var _successCriteria;
 

@@ -22,7 +22,7 @@ quail.aMultimediaTextAlternative = function (quail, test, Case) {
     var candidates = $(this).find(selector);
     // Inapplicable.
     if (!candidates.length) {
-      test.add(quail.lib.Case({
+      test.add(Case({
         element: undefined,
         status: 'inapplicable'
       }));
@@ -30,7 +30,7 @@ quail.aMultimediaTextAlternative = function (quail, test, Case) {
     else {
       // cantTell.
       candidates.each(function () {
-        test.add(quail.lib.Case({
+        test.add(Case({
           element: this,
           status: 'cantTell'
         }));

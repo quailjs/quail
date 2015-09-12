@@ -1,3 +1,7 @@
+import quail from '../../src/quail';
+
+debugger;
+
 describe("Case", function() {
   var _case;
   beforeEach(function () {

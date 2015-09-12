@@ -12,7 +12,7 @@ quail.focusIndicatorVisible = function (quail, test, Case) {
       boxShadow: $el.css('box-shadow')
     };
 
-    var listener = function (event) {
+    var listener = function () {
       if (noFocus.backgroundColor.trim() !== $el.css('background-color').trim()) {
         this.blur();
         _case.set({

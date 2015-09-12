@@ -5,14 +5,14 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.blockquoteNotUsedForIndentation = function (quail, test, Case, options) {
+quail.blockquoteNotUsedForIndentation = function (quail, test, Case) {
 
   var selector = 'blockquote';
 
   this.get('$scope').each(function () {
     var candidates = $(this).find(selector);
     if (!candidates.length) {
-      test.add(quail.lib.Case({
+      test.add(Case({
         element: undefined,
         status: 'inapplicable'
       }));
@@ -21,13 +21,13 @@ quail.blockquoteNotUsedForIndentation = function (quail, test, Case, options) {
       candidates.each(function () {
 
         if (this.hasAttribute('cite') && (this.getAttribute('cite') || '').length > 0) {
-          test.add(quail.lib.Case({
+          test.add(Case({
             element: this,
             status: 'passed'
           }));
         }
         else {
-          test.add(quail.lib.Case({
+          test.add(Case({
             element: this,
             status: 'cantTell'
           }));

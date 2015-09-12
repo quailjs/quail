@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.documentTitleDescribesDocument = function (quail, test, Case, options) {
+quail.documentTitleDescribesDocument = function (quail, test, Case) {
 
   var selector = 'head title';
 
@@ -14,14 +14,14 @@ quail.documentTitleDescribesDocument = function (quail, test, Case, options) {
     var status = (candidates.length === 1) ? 'passed' : 'failed';
 
     if (candidates.length === 0) {
-      test.add(quail.lib.Case({
+      test.add(Case({
         element: undefined,
         status: status
       }));
     }
     else {
       candidates.each(function () {
-        test.add(quail.lib.Case({
+        test.add(Case({
           element: this,
           status: status
         }));

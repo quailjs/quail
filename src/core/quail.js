@@ -1,9 +1,10 @@
 /* jscs: disable */
 // Polyfill Function.prototype.bind
 // @see https://gist.github.com/dsingleton/1312328
-Function.prototype.bind=Function.prototype.bind||function(b){if(typeof this!=="function"){throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");}var a=Array.prototype.slice,f=a.call(arguments,1),e=this,c=function(){},d=function(){return e.apply(this instanceof c?this:b||window,f.concat(a.call(arguments)));};c.prototype=this.prototype;d.prototype=new c();return d;};
 
-var quail = {
+Function.prototype.bind=Function.prototype.bind||function(b){if(typeof this!=='function'){throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');}var a=Array.prototype.slice,f=a.call(arguments,1),e=this,c=function(){},d=function(){return e.apply(this instanceof c?this:b||window,f.concat(a.call(arguments)));};c.prototype=this.prototype;d.prototype=new c();return d;};
+
+export default {
 
   options: { },
 
@@ -19,9 +20,9 @@ var quail = {
 
   html: null,
 
-  strings: { },
+  strings: {},
 
-  accessibilityResults: { },
+  accessibilityResults: {},
 
   accessibilityTests: null,
 
@@ -141,7 +142,7 @@ var quail = {
   /**
    * Main run function for quail.
    */
-  run : function (options) {
+  run: function (options) {
     function buildTests (quail, assessmentList, options) {
       // An array of test names.
       if (assessmentList.constructor === Array) {
@@ -344,8 +345,3 @@ var quail = {
     return false;
   }
 };
-
-// Provide a global to access quail.
-if (window) {
-  window.quail = quail;
-}

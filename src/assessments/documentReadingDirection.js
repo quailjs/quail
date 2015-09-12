@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.documentReadingDirection = function (quail, test, Case, options) {
+quail.documentReadingDirection = function (quail, test, Case) {
 
   var selector = [
     '[lang="he"]',
@@ -15,7 +15,7 @@ quail.documentReadingDirection = function (quail, test, Case, options) {
   this.get('$scope').each(function () {
     var candidates = $(this).find(selector);
     if (!candidates.length) {
-      test.add(quail.lib.Case({
+      test.add(Case({
         element: undefined,
         status: 'inapplicable'
       }));
@@ -23,13 +23,13 @@ quail.documentReadingDirection = function (quail, test, Case, options) {
     else {
       candidates.each(function () {
         if (this.hasAttribute('dir') && (this.getAttribute('dir') || '') === 'rtl') {
-          test.add(quail.lib.Case({
+          test.add(Case({
             element: this,
             status: 'passed'
           }));
         }
         else {
-          test.add(quail.lib.Case({
+          test.add(Case({
             element: this,
             status: 'failed'
           }));

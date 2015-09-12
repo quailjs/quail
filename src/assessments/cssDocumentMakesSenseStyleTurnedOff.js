@@ -9,7 +9,7 @@
  */
 quail.cssDocumentMakesSenseStyleTurnedOff = function (quail, test, Case) {
   this.get('$scope').each(function () {
-    test.add(quail.lib.Case({
+    test.add(Case({
       element: undefined,
       status: 'untested'
     }));

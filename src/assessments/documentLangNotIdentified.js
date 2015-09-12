@@ -9,13 +9,13 @@ quail.documentLangNotIdentified = function (quail, test, Case) {
   this.get('$scope').each(function () {
     var lang = ('getAttribute' in this) && this.getAttribute('lang');
     if (lang && lang.length > 1) {
-      test.add(quail.lib.Case({
+      test.add(Case({
         element: this,
         status: 'passed'
       }));
     }
     else {
-      test.add(quail.lib.Case({
+      test.add(Case({
         element: this,
         status: 'failed'
       }));

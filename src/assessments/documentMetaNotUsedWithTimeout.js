@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.documentMetaNotUsedWithTimeout = function (quail, test, Case, options) {
+quail.documentMetaNotUsedWithTimeout = function (quail, test, Case) {
 
   var selector = 'meta';
 
@@ -13,7 +13,7 @@ quail.documentMetaNotUsedWithTimeout = function (quail, test, Case, options) {
     var candidates = $(this).find(selector);
 
     if (!candidates.length) {
-      test.add(quail.lib.Case({
+      test.add(Case({
         element: undefined,
         status: 'inapplicable'
       }));
@@ -28,7 +28,7 @@ quail.documentMetaNotUsedWithTimeout = function (quail, test, Case, options) {
           }
         }
 
-        test.add(quail.lib.Case({
+        test.add(Case({
           element: this,
           status: status
         }));

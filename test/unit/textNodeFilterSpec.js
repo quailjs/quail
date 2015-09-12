@@ -1,3 +1,5 @@
+import quail from '../../src/quail';
+
 describe('textNodeFilter', function () {
   var filter;
   var element;
