@@ -162,7 +162,7 @@ module.exports = function(grunt) {
   // Dev task
   grunt.registerTask('dev', [
     'exec:jscs',
-    //'exec:eslint',
+    'exec:eslint',
     'exec:babel',
     'convert',
     'concat'
