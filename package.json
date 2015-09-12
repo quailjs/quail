@@ -17,7 +17,7 @@
   "scripts": {
     "jscs": "jscs -c .jscsrc src/**/*.js test/assessmentSpecs/testRunner.js test/assessmentSpecs/*.js",
     "eslint": "eslint -c .eslintrc src/**/*.js test/assessmentSpecs/*.js",
-    "browserify": "node ./scripts/browserifyLib.js",
+    "browserify": "node ./scripts/browserifyLib.js && node ./scripts/browserifyDev.js",
     "compile": "babel -e -d lib/ src/",
     "prepublish": "npm run compile",
     "test": "grunt test"

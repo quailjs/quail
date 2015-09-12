@@ -30,6 +30,7 @@ glob(quailLibFilesPath, function (error, coreFiles) {
         .transform(babelify)
         .bundle()
         .on('error', function (err) {
+          debugger;
           console.log('Error : ' + err.message);
         })
         .pipe(fs.createWriteStream('dist/bundle.js'));

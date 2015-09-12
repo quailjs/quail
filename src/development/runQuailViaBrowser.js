@@ -1,4 +1,7 @@
 // Basic output structure attributes.
+
+var quail = require('../core/quail');
+
 var output = {
   tests: {},
   successCriteria: {},

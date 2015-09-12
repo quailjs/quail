@@ -2,7 +2,14 @@ var fs = require('fs');
 var path = require('path');
 var http = require('http');
 var appOpener = require('opener');
-var assessmentSpecsPath = path.join(__dirname, '..', 'test', 'assessmentSpecs', 'specs');
+var assessmentSpecsPath = path.join(
+  __dirname,
+  '..',
+  '..',
+  'test',
+  'assessmentSpecs',
+  'specs'
+);
 
 /**
  *
@@ -19,13 +26,13 @@ function serveAssessmentTestPage (response, assessmentName) {
     source = source.slice(0, source.indexOf(bodyTag));
     // Javascript resources.
     source += '<script src="node_modules/jquery/dist/jquery.min.js" type="application/javascript"></script>';
-    source += '<script src="dist/quail.jquery.js" type="application/javascript"></script>';
+    source += '<script src="dist/bundle.js" type="application/javascript"></script>';
     source += [
       '<script>',
       'window.assessmentName = \'' + assessmentName + '\';',
       '</script>'
     ].join('\n');
-    source += '<script src="lib/development/runQuailViaBrowser.js" type="application/javascript"></script>';
+    source += '<script src="dist/runInBrowser.js" type="application/javascript"></script>';
 
     source += bodyTag + '</html>';
     // Respond to the HTTP request.
@@ -37,7 +44,12 @@ function serveAssessmentTestPage (response, assessmentName) {
 }
 
 function serveScriptResource (response, resourcePath) {
-  fs.readFile(path.join(__dirname, '..', resourcePath), 'utf-8', function (err, source) {
+  fs.readFile(path.join(
+    __dirname,
+    '..',
+    '..',
+    resourcePath
+  ), 'utf-8', function (err, source) {
     if (err) {
       response.writeHead(404, {
         'Content-Type': 'text/html'
