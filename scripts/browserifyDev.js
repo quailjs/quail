@@ -9,12 +9,17 @@ glob(quailDevelopmentFilesPath, function (error, developmentFiles) {
   if (error) {
     process.exit(1);
   }
-  browserify(
-    developmentFiles,
-    {
+  browserify({
+    entries: developmentFiles,
+    paths: [
+      './src/core/',
+      './src/js/',
+      './src/assessments/'
+    ],
+    options: {
       debug: false
     }
-  )
+  })
     .transform(babelify)
     .bundle()
     .on('error', function (err) {
