@@ -1,4 +1,5 @@
-quail.lib.TestCollection = (function () {
+var Test = require('Test');
+var TestCollection = (function () {
 
   /**
    * A Collection of Tests.
@@ -21,7 +22,7 @@ quail.lib.TestCollection = (function () {
         for (var name in tests) {
           if (tests.hasOwnProperty(name)) {
             tests[name].scope = tests[name].scope || options.scope;
-            test = new quail.lib.Test(name, tests[name]);
+            test = new Test(name, tests[name]);
             this.listenTo(test, 'results', this.report);
             this.push(test);
           }
@@ -196,7 +197,7 @@ quail.lib.TestCollection = (function () {
           return this[i];
         }
       }
-      var test = quail.lib.Test(testname, details);
+      var test = Test(testname, details);
       this.push(test);
       return test;
     },
@@ -308,3 +309,4 @@ quail.lib.TestCollection = (function () {
 
   return TestCollection;
 }());
+module.exports = TestCollection;

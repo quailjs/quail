@@ -1,4 +1,4 @@
-quail.lib.Technique = (function () {
+var Technique = (function () {
 
   /**
    * A collection of Cases.
@@ -90,3 +90,4 @@ quail.lib.Technique = (function () {
 
   return Technique;
 }());
+module.exports = Technique;

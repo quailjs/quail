@@ -1,5 +1,8 @@
 /* A logical combo of Techniques and the intersection of their outcomes. */
-quail.lib.SuccessCriteria = (function () {
+var Test = require('Test');
+
+var TestCollection = require('TestCollection');
+var SuccessCriteria = (function () {
 
   /**
    * A Collection of Tests.
@@ -115,7 +118,7 @@ quail.lib.SuccessCriteria = (function () {
      * Returns a collection of tests for this success criteria.
      */
     filterTests: function (tests) {
-      var criteriaTests = new quail.lib.TestCollection();
+      var criteriaTests = new TestCollection();
       var name = this.get('name');
       if (!name) {
         throw new Error('Success Criteria instances require a name in order to have tests filtered.');
@@ -142,7 +145,7 @@ quail.lib.SuccessCriteria = (function () {
      */
     addConclusion: function (conclusion, _case) {
       if (!this.get('results')[conclusion]) {
-        this.get('results')[conclusion] = quail.lib.Test();
+        this.get('results')[conclusion] = Test();
       }
       this.get('results')[conclusion].push(_case);
       // Incremement totals for this conclusion type.
@@ -240,3 +243,4 @@ quail.lib.SuccessCriteria = (function () {
 
   return SuccessCriteria;
 }());
+module.exports = SuccessCriteria;

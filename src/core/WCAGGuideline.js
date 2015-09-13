@@ -1,6 +1,11 @@
 // Iterates over Techniques.
 
-quail.lib.WCAGGuideline = (function () {
+var Section = require('Section');
+
+var Technique = require('Technique');
+var Test = require('Test');
+
+var WCAGGuideline = (function () {
 
   /**
    * A Collection of Tests.
@@ -32,7 +37,7 @@ quail.lib.WCAGGuideline = (function () {
                 delete section.techniques;
               }
               // Instantiate a Section object.
-              section = quail.lib.Section(sectionNumber, section);
+              section = Section(sectionNumber, section);
               // Find all the techniques in the sections.
               if (techniques.length) {
                 for (var i = 0, il = techniques.length; i < il; ++i) {
@@ -46,7 +51,7 @@ quail.lib.WCAGGuideline = (function () {
                   // yet.
                   technique = this.findTechnique(techniqueName);
                   if (!technique) {
-                    technique = quail.lib.Technique(techniqueName, config.techniques[techniqueName]);
+                    technique = Technique(techniqueName, config.techniques[techniqueName]);
                     this.techniques.push(technique);
                   }
                   // Add the technique to the currently processing section.
@@ -96,7 +101,7 @@ quail.lib.WCAGGuideline = (function () {
           return this[i];
         }
       }
-      var test = quail.lib.Test(testname, details);
+      var test = Test(testname, details);
       this.push(test);
       return test;
     },
@@ -117,3 +122,4 @@ quail.lib.WCAGGuideline = (function () {
 
   return WCAGGuideline;
 }());
+module.exports = WCAGGuideline;

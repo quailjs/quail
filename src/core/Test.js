@@ -1,4 +1,5 @@
-quail.lib.Test = (function () {
+var Case = require('Case');
+var Test = (function () {
 
   /**
    * A collection of Cases.
@@ -114,7 +115,7 @@ quail.lib.Test = (function () {
 
       if (callback && typeof callback.call === 'function') {
         try {
-          callback.call(self, quail, self, quail.lib.Case, options);
+          callback.call(self, quail, self, Case, options);
         }
         catch (error) {
           if (window.console && window.console.error) {
@@ -190,7 +191,7 @@ quail.lib.Test = (function () {
         }
       }
       // Always return a Case object.
-      return quail.lib.Case();
+      return Case();
     },
     /**
      * Groups the cases by element selector.
@@ -404,3 +405,4 @@ quail.lib.Test = (function () {
 
   return Test;
 }());
+module.exports = Test;

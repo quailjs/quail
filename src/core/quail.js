@@ -5,6 +5,10 @@
 // Polyfill Function.prototype.bind
 // @see https://gist.github.com/dsingleton/1312328
 
+var TestCollection = require('TestCollection');
+
+var wcag2 = require('wcag2');
+
 Function.prototype.bind = Function.prototype.bind || function (b) {
   if (typeof this !== 'function') {
     throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
@@ -255,14 +259,14 @@ var quail = {
     }
 
     // Create an empty TestCollection.
-    quail.tests = quail.lib.TestCollection([], {
+    quail.tests = TestCollection([], {
       scope: quail.html || null
     });
 
     // Let wcag2 run itself, will call quail again when it knows what
     // to
     if (options.guideline === 'wcag2') {
-      quail.lib.wcag2.run(options);
+      wcag2.run(options);
     }
 
     // If a list of specific tests is provided, use them.

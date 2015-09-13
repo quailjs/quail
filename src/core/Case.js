@@ -2,7 +2,7 @@
  * @providesModule Case
  */
 
-quail.lib.Case = (function () {
+var Case = (function () {
 
   /**
    * A Case is a test against an element.
@@ -359,3 +359,4 @@ quail.lib.Case = (function () {
 
   return Case;
 }());
+module.exports = Case;
