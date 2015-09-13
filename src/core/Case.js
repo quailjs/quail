@@ -2,8 +2,6 @@
  * @providesModule Case
  */
 
-var quail = require('./quail');
-
 quail.lib.Case = (function () {
 
   /**
