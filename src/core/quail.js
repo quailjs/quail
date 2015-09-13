@@ -5,15 +5,32 @@
 // Polyfill Function.prototype.bind
 // @see https://gist.github.com/dsingleton/1312328
 
-Function.prototype.bind=Function.prototype.bind||function(b){if(typeof this!=='function'){throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');}var a=Array.prototype.slice,f=a.call(arguments,1),e=this,c=function(){},d=function(){return e.apply(this instanceof c?this:b||window,f.concat(a.call(arguments)));};c.prototype=this.prototype;d.prototype=new c();return d;};
+Function.prototype.bind = Function.prototype.bind || function (b) {
+  if (typeof this !== 'function') {
+    throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+  }
+  var a = Array.prototype.slice;
+  var f = a.call(arguments, 1);
+  var self = this;
+  var C = function C () {};
+  var d = function d () {
+    return self.apply(
+      this instanceof C ? this : b || window,
+      f.concat(a.call(arguments))
+    );
+  };
+  C.prototype = self.prototype;
+  d.prototype = new C();
+  return d;
+};
 
 var quail = {
 
-  options: { },
+  options: {},
 
-  components: { },
+  components: {},
 
-  lib: { },
+  lib: {},
 
   testabilityTranslation: {
     0: 'suggestion',
@@ -34,7 +51,7 @@ var quail = {
       /**
        * Perform WCAG specific setup.
        */
-      setup: function(tests, listener, callbacks) {
+      setup: function (tests, listener, callbacks) {
         callbacks = callbacks || {};
         // Associate Success Criteria with the TestCollection.
         for (var sc in this.successCriteria) {
@@ -51,12 +68,12 @@ var quail = {
           }
         }
       },
-      successCriteria: { }
+      successCriteria: {}
     }
   },
 
   // @var TestCollection
-  tests: { },
+  tests: {},
 
   /**
    * A list of HTML elements that can contain actual text.
@@ -114,17 +131,41 @@ var quail = {
    * Suspect tags that would indicate a paragraph is being used as a header.
    * I know, font tag, I know. Don't get me started.
    */
-  suspectPHeaderTags: [ 'strong', 'b', 'em', 'i', 'u', 'font' ],
+  suspectPHeaderTags: [
+    'strong',
+    'b',
+    'em',
+    'i',
+    'u',
+    'font'
+  ],
 
   /**
    * Suspect CSS styles that might indicate a paragraph tag is being used as a header.
    */
-  suspectPCSSStyles: [ 'color', 'font-weight', 'font-size', 'font-family' ],
+  suspectPCSSStyles: [
+    'color',
+    'font-weight',
+    'font-size',
+    'font-family'
+  ],
 
   /**
    * Elements that can (naturally) receive keyboard focus.
    */
-  focusElements: 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]',
+  focusElements: [
+    'a[href]',
+    'area[href]',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    'button:not([disabled])',
+    'iframe',
+    'object',
+    'embed',
+    '*[tabindex]',
+    '*[contenteditable]'
+  ].join(', '),
 
   /**
    * Regular expression to find emoticons.
@@ -134,13 +175,29 @@ var quail = {
   /**
    * A list of self-closing tags.
    */
-  selfClosingTags: [ 'area', 'base', 'br', 'col', 'command', 'embed', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr' ],
-
+  selfClosingTags: [
+    'area',
+    'base',
+    'br',
+    'col',
+    'command',
+    'embed',
+    'hr',
+    'img',
+    'input',
+    'keygen',
+    'link',
+    'meta',
+    'param',
+    'source',
+    'track',
+    'wbr'
+  ],
 
   /**
    * A list of tags that optionally can be closed
    */
-  optionalClosingTags: ['p', 'li', 'th','tr', 'td'],
+  optionalClosingTags: ['p', 'li', 'th', 'tr', 'td'],
 
   /**
    * Main run function for quail.
@@ -178,7 +235,7 @@ var quail = {
      */
     function _run () {
       // Set up Guideline-specific behaviors.
-      var noop = function() {};
+      var noop = function () {};
       for (var guideline in quail.guidelines) {
         if (quail.guidelines[guideline] && typeof quail.guidelines[guideline].setup === 'function') {
           quail.guidelines[guideline].setup(quail.tests, this, {
@@ -189,11 +246,11 @@ var quail = {
 
       // Invoke all the registered tests.
       quail.tests.run({
-        preFilter: options.preFilter || function() {},
-        caseResolve: options.caseResolve || function() {},
-        testComplete: options.testComplete || function() {},
-        testCollectionComplete: options.testCollectionComplete || function() {},
-        complete: options.complete || function() {}
+        preFilter: options.preFilter || function () {},
+        caseResolve: options.caseResolve || function () {},
+        testComplete: options.testComplete || function () {},
+        testCollectionComplete: options.testCollectionComplete || function () {},
+        complete: options.complete || function () {}
       });
     }
 
@@ -216,13 +273,13 @@ var quail = {
   },
 
   // @todo, make this a set of methods that all classes extend.
-  listenTo: function(dispatcher, eventName, handler) {
+  listenTo: function (dispatcher, eventName, handler) {
     // @todo polyfill Function.prototype.bind.
     handler = handler.bind(this);
     dispatcher.registerListener.call(dispatcher, eventName, handler);
   },
 
-  getConfiguration: function(testName) {
+  getConfiguration: function (testName) {
     var test = this.tests.find(testName);
     var guidelines = test && test.get('guidelines');
     var guideline = guidelines && this.options.guidelineName && guidelines[this.options.guidelineName];
@@ -238,7 +295,7 @@ var quail = {
    * @todo - This will be added to in the future... we should also include
    * phonetic tests.
    */
-  isUnreadable: function(text) {
+  isUnreadable: function (text) {
     if (typeof text !== 'string') {
       return true;
     }
@@ -248,7 +305,7 @@ var quail = {
   /**
    * Read more about this function here: https://github.com/quailjs/quail/wiki/Layout-versus-data-tables
    */
-  isDataTable: function(table) {
+  isDataTable: function (table) {
     // If there are less than three rows, why do a table?
     if (table.find('tr').length < 3) {
       return false;
@@ -263,13 +320,13 @@ var quail = {
     var isDataTable = true;
     if (spanCells.length) {
       var spanIndex = {};
-      spanCells.each(function() {
+      spanCells.each(function () {
         if (typeof spanIndex[$(this).index()] === 'undefined') {
           spanIndex[$(this).index()] = 0;
         }
         spanIndex[$(this).index()]++;
       });
-      $.each(spanIndex, function(index, count) {
+      $.each(spanIndex, function (index, count) {
         if (count < numberRows) {
           isDataTable = false;
         }
@@ -279,14 +336,14 @@ var quail = {
     var subTables = table.find('table');
     if (subTables.length) {
       var subTablesIndexes = {};
-      subTables.each(function() {
+      subTables.each(function () {
         var parentIndex = $(this).parent('td').index();
         if (parentIndex !== false && typeof subTablesIndexes[parentIndex] === 'undefined') {
           subTablesIndexes[parentIndex] = 0;
         }
         subTablesIndexes[parentIndex]++;
       });
-      $.each(subTablesIndexes, function(index, count) {
+      $.each(subTablesIndexes, function (index, count) {
         if (count < numberRows) {
           isDataTable = false;
         }
@@ -298,7 +355,7 @@ var quail = {
   /**
    *  Returns text contents for nodes depending on their semantics
    */
-  getTextContents: function($element) {
+  getTextContents: function ($element) {
     if ($element.is('p, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption')) {
       return $element.text();
     }
@@ -317,15 +374,15 @@ var quail = {
   /**
    * Helper function to determine if a given URL is even valid.
    */
-  validURL: function(url) {
+  validURL: function (url) {
     return url.search(' ') === -1;
   },
 
-  cleanString: function(string) {
+  cleanString: function (string) {
     return string.toLowerCase().replace(/^\s\s*/, '');
   },
 
-  containsReadableText: function(element, children) {
+  containsReadableText: function (element, children) {
     element = element.clone();
     element.find('option').remove();
     if (!quail.isUnreadable(element.text())) {
@@ -336,7 +393,7 @@ var quail = {
     }
     if (children) {
       var readable = false;
-      element.find('*').each(function() {
+      element.find('*').each(function () {
         if (quail.containsReadableText($(this), true)) {
           readable = true;
         }
