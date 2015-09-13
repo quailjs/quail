@@ -19,18 +19,23 @@ glob(quailLibFilesPath, function (error, coreFiles) {
       if (error) {
         process.exit(1);
       }
-      browserify(
-        coreFiles
+      browserify({
+        entries: []
+          .concat(coreFiles)
           .concat(componentFiles)
           .concat(assessmentFiles),
-        {
+        paths: [
+          './src/core/',
+          './src/js/',
+          './src/assessments/'
+        ],
+        options: {
           debug: false
         }
-      )
+      })
         .transform(babelify)
         .bundle()
         .on('error', function (err) {
-          debugger;
           console.log('Error : ' + err.message);
         })
         .pipe(fs.createWriteStream('dist/bundle.js'));
