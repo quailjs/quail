@@ -2,7 +2,7 @@
  * Placeholder test - checks that an attribute or the content of an
  * element itself is not a placeholder (i.e. 'click here' for links).
  */
-quail.components.placeholder = function (quail, test, Case, options) {
+var Placeholder = function (quail, test, Case, options) {
 
   var resolve = function (element, resolution) {
     test.add(Case({
@@ -66,4 +66,5 @@ quail.components.placeholder = function (quail, test, Case, options) {
       }
     }
   });
-};
+};;
+module.exports = Placeholder;

@@ -2,7 +2,9 @@
  * Test callback for color tests. This handles both WAI and WCAG
  * color contrast/luminosity.
  */
-quail.components.color = (function () {
+var convertToPx = require('convertToPx');
+
+var Color = function () {
 
   function buildCase (test, Case, element, status, id, message) {
     test.add(Case({
@@ -96,7 +98,7 @@ quail.components.color = (function () {
      * WCAG at a certain contrast ratio.
      */
     passesWCAGColor: function (element, foreground, background, level) {
-      var pxfsize = quail.components.convertToPx(element.css('fontSize'));
+      var pxfsize = ConvertToPx(element.css('fontSize'));
       if (typeof level === 'undefined') {
         if (pxfsize >= 18) {
           level = 3;
@@ -560,4 +562,5 @@ quail.components.color = (function () {
     buildCase: buildCase
   };
 
-}());
+}();;
+module.exports = Color;

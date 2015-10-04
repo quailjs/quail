@@ -1,4 +1,4 @@
-quail.components.headingLevel = function (quail, test, Case, options) {
+var HeadingLevel = function (quail, test, Case, options) {
   var priorLevel = false;
   test.get('$scope').find(':header').each(function () {
     var level = parseInt($(this).get(0).tagName.substr(-1, 1), 10);
@@ -16,4 +16,5 @@ quail.components.headingLevel = function (quail, test, Case, options) {
     }
     priorLevel = level;
   });
-};
+};;
+module.exports = HeadingLevel;

@@ -1,7 +1,7 @@
 /**
  * Returns whether an element has an event handler or not.
  */
-quail.components.hasEventListener = function (element, event) {
+var HasEventListener = function (element, event) {
   if (typeof $(element).attr('on' + event) !== 'undefined') {
     return true;
   }
@@ -19,4 +19,5 @@ quail.components.hasEventListener = function (element, event) {
     }
   }
   return typeof $(element)[0][event] !== 'undefined';
-};
+};;
+module.exports = HasEventListener;

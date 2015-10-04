@@ -2,7 +2,7 @@
  * Converts units to pixels.
  */
 
-quail.components.convertToPx = function (unit) {
+var ConvertToPx = function (unit) {
   if (unit.search('px') > -1) {
     return parseInt(unit, 10);
   }
@@ -10,4 +10,5 @@ quail.components.convertToPx = function (unit) {
   var height = $test.height();
   $test.remove();
   return height;
-};
+};;
+module.exports = ConvertToPx;

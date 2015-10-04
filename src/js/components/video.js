@@ -2,7 +2,9 @@
  * Helper object that tests videos.
  * @todo - allow this to be exteded more easily.
  */
-quail.components.video = {
+var language = require('language');
+
+var Video = {
 
   /**
    * Iterates over listed video providers and runs their `isVideo` method.
@@ -112,7 +114,7 @@ quail.components.video = {
           callback(element, false);
           return;
         }
-        var language = quail.components.language.getDocumentLanguage(element, true);
+        var language = Language.getDocumentLanguage(element, true);
         if (element.parents('[lang]').length) {
           language = element.parents('[lang]').first().attr('lang').split('-')[0];
         }
@@ -143,4 +145,5 @@ quail.components.video = {
     }
   }
 
-};
+};;
+module.exports = Video;

@@ -1,4 +1,4 @@
-quail.components.label = function (quail, test, Case, options) {
+var Label = function (quail, test, Case, options) {
   var $scope = test.get('$scope');
   $scope.each(function () {
     var $local = $(this);
@@ -20,4 +20,5 @@ quail.components.label = function (quail, test, Case, options) {
       }
     });
   });
-};
+};;
+module.exports = Label;

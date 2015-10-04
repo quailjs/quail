@@ -1,7 +1,7 @@
 /**
  * Returns DOM nodes that contain at least one text node.
  */
-quail.components.textNodeFilter = function (element) {
+var TextNodeFilter = function (element) {
   var nodes = Array.prototype.slice.call(element.childNodes);
   var hasTextNode = false;
   var node;
@@ -16,4 +16,5 @@ quail.components.textNodeFilter = function (element) {
     }
   }
   return hasTextNode;
-};
+};;
+module.exports = TextNodeFilter;

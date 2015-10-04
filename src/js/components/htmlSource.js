@@ -1,5 +1,5 @@
 /*global Tautologistics:true, HtmlBuilder: true */
-quail.components.htmlSource = {
+var HtmlSource = {
 
   getHtml: function (callback) {
     var that = this;
@@ -82,7 +82,7 @@ quail.components.htmlSource = {
     this.traverse(parsed, that.addSelector);
     return parsed;
   }
-};
+};;
 
 if (typeof Tautologistics !== 'undefined') {
   var Mode = {
@@ -210,3 +210,4 @@ if (typeof Tautologistics !== 'undefined') {
     }
   };
 }
+module.exports = HtmlSource;

@@ -2,7 +2,7 @@
  * Utility object that runs text statistics, like sentence count,
  * reading level, etc.
  */
-quail.components.textStatistics = {
+var TextStatistics = {
 
   cleanText: function (text) {
     return text.replace(/[,:;()\-]/, ' ')
@@ -48,4 +48,5 @@ quail.components.textStatistics = {
     }
     return matchedWord.length;
   }
-};
+};;
+module.exports = TextStatistics;

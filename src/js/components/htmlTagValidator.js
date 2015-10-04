@@ -320,4 +320,5 @@ var htmlTagValidator = function () {
   return checkTags;
 };
 
-quail.components.htmlTagValidator = htmlTagValidator();
+var HtmlTagValidator = htmlTagValidator();;
+module.exports = HtmlTagValidator;

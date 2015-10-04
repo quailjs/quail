@@ -3,7 +3,7 @@
  * contains the main content.
  */
 
-quail.components.content = {
+var Content = {
 
   /**
    * Iterates over elments in the given context and looks
@@ -63,4 +63,5 @@ quail.components.content = {
     });
     return $topScore;
   }
-};
+};;
+module.exports = Content;

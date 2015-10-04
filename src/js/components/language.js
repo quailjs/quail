@@ -1,4 +1,4 @@
-quail.components.language = {
+var Language = {
 
   /**
    * The maximum distance possible between two trigram models.
@@ -154,4 +154,5 @@ quail.components.language = {
     }
     return language;
   }
-};
+};;
+module.exports = Language;
