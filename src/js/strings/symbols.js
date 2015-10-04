@@ -1,4 +1,4 @@
-quail.strings.symbols = [
+var SymbolsStringsComponent = [
   '|',
   '*',
   /\*/g,
@@ -17,4 +17,5 @@ quail.strings.symbols = [
   '•',
   '—',
   '◾'
-];
+];;
+module.exports = SymbolsStringsComponent;

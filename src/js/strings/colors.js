@@ -1,4 +1,4 @@
-quail.strings.colors = {
+var ColorsStringsComponent = {
   aliceblue: 'f0f8ff',
   antiquewhite: 'faebd7',
   aqua: '00ffff',
@@ -139,4 +139,5 @@ quail.strings.colors = {
   whitesmoke: 'f5f5f5',
   yellow: 'ffff00',
   yellowgreen: '9acd32'
-};
+};;
+module.exports = ColorsStringsComponent;

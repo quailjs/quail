@@ -1,4 +1,4 @@
-quail.strings.suspiciousLinks = [
+var SuspiciousLinksStringsComponent = [
   'click here',
   'click',
   'more',
@@ -17,4 +17,5 @@ quail.strings.suspiciousLinks = [
   'm&aacute;s',
   'aqu&iacute;',
   'image'
-];
+];;
+module.exports = SuspiciousLinksStringsComponent;

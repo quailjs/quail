@@ -1,4 +1,4 @@
-quail.strings.placeholders = [
+var PlaceholdersStringsComponent = [
   'title',
   'untitled',
   'untitled document',
@@ -19,4 +19,5 @@ quail.strings.placeholders = [
   'iframe',
   'iframe title',
   'legend'
-];
+];;
+module.exports = PlaceholdersStringsComponent;

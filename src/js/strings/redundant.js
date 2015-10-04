@@ -1,4 +1,4 @@
-quail.strings.redundant = {
+var RedundantStringsComponent = {
   inputImage: [
     'submit',
     'button'
@@ -15,4 +15,5 @@ quail.strings.redundant = {
   required: [
     '*'
   ]
-};
+};;
+module.exports = RedundantStringsComponent;

@@ -1,4 +1,4 @@
-quail.strings.languageCodes = [
+var LanguageCodesStringsComponent = [
   'bh',
   'bi',
   'nb',
@@ -199,4 +199,5 @@ quail.strings.languageCodes = [
   'yo',
   'za',
   'zu'
-];
+];;
+module.exports = LanguageCodesStringsComponent;

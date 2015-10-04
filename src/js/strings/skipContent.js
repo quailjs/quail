@@ -1,3 +1,4 @@
-quail.strings.skipContent = [
+var SkipContentStringsComponent = [
   /(jump|skip) (.*) (content|main|post)/i
-];
+];;
+module.exports = SkipContentStringsComponent;
