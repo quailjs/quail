@@ -2,7 +2,7 @@
  * Utility object that runs text statistics, like sentence count,
  * reading level, etc.
  */
-var TextStatistics = {
+var TextStatisticsComponent = {
 
   cleanText: function (text) {
     return text.replace(/[,:;()\-]/, ' ')
@@ -48,5 +48,5 @@ var TextStatistics = {
     }
     return matchedWord.length;
   }
-};;
-module.exports = TextStatistics;
+};
+module.exports = TextStatisticsComponent;

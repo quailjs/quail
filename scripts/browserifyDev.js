@@ -14,6 +14,7 @@ glob(quailDevelopmentFilesPath, function (error, developmentFiles) {
     paths: [
       './src/core/',
       './src/js/',
+      './src/js/components/',
       './src/assessments/'
     ],
     options: {
