@@ -1,4 +1,6 @@
-quail.lib.wcag2.EarlAssertion = (function () {
+var jQuery = require('jquery');
+
+var EarlAssertion = (function () {
   var pageUrl;
   var resultPriorityMap = [
     'untested', 'inapplicable', 'passed',
@@ -24,7 +26,7 @@ quail.lib.wcag2.EarlAssertion = (function () {
    *                      and override the default.
    */
   function Assertion (base) {
-    $.extend(this, base, defaultAssertion);
+    jQuery.extend(this, base, defaultAssertion);
     this.outcome = $.extend({}, this.outcome);
   }
 
@@ -48,3 +50,5 @@ quail.lib.wcag2.EarlAssertion = (function () {
   return Assertion;
 
 }());
+
+module.exports = EarlAssertion;
