@@ -3,6 +3,11 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-skip.html
  */
+var quail = require('quail');
+
+var SuccessCriteria = require('SuccessCriteria');
+
+var quail = require('quail');
 quail.guidelines.wcag.successCriteria['2.4.1'] = (function (quail) {
 
   /**
@@ -13,7 +18,7 @@ quail.guidelines.wcag.successCriteria['2.4.1'] = (function (quail) {
   }
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
-  var sc = quail.lib.SuccessCriteria({
+  var sc = SuccessCriteria({
     name: 'wcag:2.4.1',
     preEvaluator: preEvaluator
   });

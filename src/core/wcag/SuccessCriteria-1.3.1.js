@@ -3,6 +3,11 @@
  *
  * @see http://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-programmatic
  */
+var quail = require('quail');
+
+var SuccessCriteria = require('SuccessCriteria');
+
+var quail = require('quail');
 quail.guidelines.wcag.successCriteria['1.3.1'] = (function (quail) {
   /**
    * Determines if this Success Criteria applies to the document.
@@ -12,7 +17,7 @@ quail.guidelines.wcag.successCriteria['1.3.1'] = (function (quail) {
   }
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
-  var sc = quail.lib.SuccessCriteria({
+  var sc = SuccessCriteria({
     name: 'wcag:1.3.1',
     preEvaluator: preEvaluator
   });

@@ -3,6 +3,11 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-understanding.html
  */
+var quail = require('quail');
+
+var SuccessCriteria = require('SuccessCriteria');
+
+var quail = require('quail');
 quail.guidelines.wcag.successCriteria['1.3.3'] = (function (quail) {
 
   /**
@@ -13,7 +18,7 @@ quail.guidelines.wcag.successCriteria['1.3.3'] = (function (quail) {
   }
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
-  var sc = quail.lib.SuccessCriteria({
+  var sc = SuccessCriteria({
     name: 'wcag:1.3.3',
     preEvaluator: preEvaluator
   });
