@@ -3,6 +3,11 @@ module.exports = function(file, api, options) {
   var root = j(file.source);
   var body = root.get().value.program.body;
 
+  var capitalizeName = function (name) {
+    var firstletter = name[0];
+    return firstletter.toUpperCase() + name.substring(1);
+  };
+
   var withComments = function (to, from) {
     to.comments = from.comments;
     return to;
