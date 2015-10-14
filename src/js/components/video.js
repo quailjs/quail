@@ -35,38 +35,6 @@ quail.components.video = {
 
   providers : {
 
-    youTube : {
-
-      selector : 'a, iframe',
-
-      apiUrl : 'http://gdata.youtube.com/feeds/api/videos/?q=%video&caption&v=2&alt=json',
-
-      isVideo : function(element) {
-        return (this.getVideoId(element) !== false) ? true : false;
-      },
-
-      getVideoId : function(element) {
-        var attribute = (element.is('iframe')) ? 'src' : 'href';
-        var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&\?]*).*/;
-        var match = element.attr(attribute).match(regExp);
-        if (match && match[7].length === 11) {
-          return match[7];
-        }
-        return false;
-      },
-
-      hasCaptions : function(element, callback) {
-        var videoId = this.getVideoId(element);
-        $.ajax({url : this.apiUrl.replace('%video', videoId),
-                async : false,
-                dataType : 'json',
-                success : function(data) {
-                  callback(element, (data.feed.openSearch$totalResults.$t > 0));
-                }
-        });
-      }
-    },
-
     flash : {
 
       selector : 'object',
