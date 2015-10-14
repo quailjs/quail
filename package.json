@@ -2,7 +2,7 @@
   "name": "quail",
   "description": "Accessibility testing in the browser and on the server.",
   "homepage": "http://quailjs.org",
-  "version": "2.2.18",
+  "version": "2.2.19",
   "engines": {
     "node": ">= 0.10.20"
   },

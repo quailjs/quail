@@ -1,6 +1,10 @@
 QUAIL Changelog
 ===============
 
+2.2.19
+------
+- Removed YouTube subtitle check
+
 2.2.18
 ------
 - The order of the arguments to the test runners has changed. It was
