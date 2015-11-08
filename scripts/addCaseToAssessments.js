@@ -7,6 +7,10 @@ module.exports = function(file, api, options) {
     return null;
   }
 
+  var dedupe = function (item, pos, self) {
+    return self.indexOf(item) === pos;
+  };
+
   var capitalizeName = function (name) {
     var firstletter = name[0];
     // Components
@@ -74,18 +78,25 @@ module.exports = function(file, api, options) {
     'Case'
   ];
 
-  var hasCaseRequirement = root
+  const needsCaseRequirement = root
     .find(j.CallExpression)
     .filter(function (exp) {
-      return exp &&
+      let val = exp &&
         exp.value &&
         exp.value.arguments &&
         exp.value.arguments[0] &&
-        exp.value.arguments[0].value === 'Case';
-    }).length > 0;
+        exp.value.arguments[0].value;
+      return val === 'Case';
+    })
+    .nodes()
+    .map(function (exp) {
+      return 'Case';
+    })
+    .filter(dedupe)
+    .length === 0;
 
   // Add require statements.
-  if (!hasCaseRequirement) {
+  if (needsCaseRequirement) {
     createRequireExpression(requirementNames)
       .forEach(function (req) {
         body.unshift(req);
