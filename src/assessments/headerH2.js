@@ -1,5 +1,7 @@
-quail.headerH2 = function (quail, test, Case) {
-  quail.components.headingLevel(quail, test, Case, {
+var HeadingLevelComponent = require('HeadingLevelComponent');
+var HeaderH2 = function (quail, test, Case) {
+  HeadingLevelComponent(quail, test, Case, {
     headingLevel: 2
   });
-};
+};;
+module.exports = HeaderH2;

@@ -7,7 +7,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.liDontUseImageForBullet = function (quail, test, Case) {
+var LiDontUseImageForBullet = function (quail, test, Case) {
 
   var selector = 'li';
 
@@ -34,4 +34,5 @@ quail.liDontUseImageForBullet = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = LiDontUseImageForBullet;

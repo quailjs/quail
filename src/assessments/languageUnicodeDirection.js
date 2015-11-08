@@ -1,13 +1,15 @@
-quail.languageUnicodeDirection = function (quail, test, Case) {
+var LanguageComponent = require('LanguageComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var LanguageUnicodeDirection = function (quail, test, Case) {
   var $scope = test.get('$scope');
-  var textDirection = quail.components.language.textDirection;
-  var textDirectionChanges = quail.components.language.textDirectionChanges;
+  var textDirection = LanguageComponent.textDirection;
+  var textDirectionChanges = LanguageComponent.textDirectionChanges;
   $scope.each(function () {
     var $local = $(this);
     $local
       .find(quail.textSelector)
       .filter(function (index, element) {
-        return quail.components.textNodeFilter(element);
+        return TextNodeFilterComponent(element);
       })
       .each(function () {
         var _case = test.add(Case({
@@ -31,4 +33,5 @@ quail.languageUnicodeDirection = function (quail, test, Case) {
         }
       });
   });
-};
+};;
+module.exports = LanguageUnicodeDirection;

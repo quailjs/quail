@@ -1,8 +1,9 @@
-quail.whiteSpaceNotUsedForFormatting = function (quail, test, Case) {
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var WhiteSpaceNotUsedForFormatting = function (quail, test, Case) {
   test.get('$scope')
     .find(quail.textSelector)
     .filter(function (index, element) {
-      return quail.components.textNodeFilter(element);
+      return TextNodeFilterComponent(element);
     })
     .each(function () {
       var _case = test.add(Case({
@@ -26,4 +27,5 @@ quail.whiteSpaceNotUsedForFormatting = function (quail, test, Case) {
         _case.set({status: 'cantTell'});
       }
     });
-};
+};;
+module.exports = WhiteSpaceNotUsedForFormatting;

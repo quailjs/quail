@@ -1,4 +1,4 @@
-quail.labelMustBeUnique = function (quail, test, Case) {
+var LabelMustBeUnique = function (quail, test, Case) {
   var labels = {};
   test.get('$scope').find('label[for]').each(function () {
     if (typeof labels[$(this).attr('for')] === 'undefined') {
@@ -15,4 +15,5 @@ quail.labelMustBeUnique = function (quail, test, Case) {
     });
     test.add(_case);
   });
-};
+};;
+module.exports = LabelMustBeUnique;

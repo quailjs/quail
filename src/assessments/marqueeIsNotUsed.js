@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.marqueeIsNotUsed = function (quail, test, Case) {
+var MarqueeIsNotUsed = function (quail, test, Case) {
 
   var selector = 'marquee';
 
@@ -28,4 +28,5 @@ quail.marqueeIsNotUsed = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = MarqueeIsNotUsed;

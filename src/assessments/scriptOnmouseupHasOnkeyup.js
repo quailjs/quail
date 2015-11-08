@@ -2,11 +2,14 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-quail.scriptOnmouseupHasOnkeyup = function (quail, test, Case) {
+var EventComponent = require('EventComponent');
+
+var ScriptOnmouseupHasOnkeyup = function (quail, test, Case) {
   var options = {
     selector: '[onmouseup]',
     correspondingEvent: 'onkeyup',
     searchEvent: 'onmouseup'
   };
-  quail.components.event(quail, test, Case, options);
-};
+  EventComponent(quail, test, Case, options);
+};;
+module.exports = ScriptOnmouseupHasOnkeyup;

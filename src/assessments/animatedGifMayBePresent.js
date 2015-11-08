@@ -1,4 +1,4 @@
-quail.animatedGifMayBePresent = function (quail, test, Case) {
+var AnimatedGifMayBePresent = function (quail, test, Case) {
 
   /**
    * Test if gif is animated
@@ -85,4 +85,5 @@ quail.animatedGifMayBePresent = function (quail, test, Case) {
       }
     });
   });
-};
+};;
+module.exports = AnimatedGifMayBePresent;

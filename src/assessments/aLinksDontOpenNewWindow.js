@@ -1,4 +1,5 @@
-quail.aLinksDontOpenNewWindow = function (quail, test, Case) {
+var NewWindowStringsComponent = require('NewWindowStringsComponent');
+var ALinksDontOpenNewWindow = function (quail, test, Case) {
   // Links without a target attribute pass.
   test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function () {
     test.add(Case({
@@ -17,13 +18,13 @@ quail.aLinksDontOpenNewWindow = function (quail, test, Case) {
     // Test the link text against strings the indicate the link will open
     // in a new window.
     do {
-      phrase = quail.strings.newWindow[i];
+      phrase = NewWindowStringsComponent[i];
       if (text.search(phrase) > -1) {
         passes = true;
       }
       ++i;
 
-    } while (!passes && i < quail.strings.newWindow.length);
+    } while (!passes && i < NewWindowStringsComponent.length);
     // Build a Case.
     if (passes) {
       test.add(Case({
@@ -38,4 +39,5 @@ quail.aLinksDontOpenNewWindow = function (quail, test, Case) {
       }));
     }
   });
-};
+};;
+module.exports = ALinksDontOpenNewWindow;

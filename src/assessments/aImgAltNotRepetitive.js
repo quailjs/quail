@@ -1,4 +1,4 @@
-quail.aImgAltNotRepetitive = function (quail, test, Case) {
+var AImgAltNotRepetitive = function (quail, test, Case) {
   test.get('$scope').find('a img[alt]').each(function () {
     var _case = test.add(Case({
       element: this
@@ -18,4 +18,5 @@ quail.aImgAltNotRepetitive = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = AImgAltNotRepetitive;

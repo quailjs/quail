@@ -1,4 +1,4 @@
-quail.aLinksToSoundFilesNeedTranscripts = function (quail, test, Case) {
+var ALinksToSoundFilesNeedTranscripts = function (quail, test, Case) {
 
   var selector = [
     'a[href$=".wav"]',
@@ -33,4 +33,5 @@ quail.aLinksToSoundFilesNeedTranscripts = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ALinksToSoundFilesNeedTranscripts;

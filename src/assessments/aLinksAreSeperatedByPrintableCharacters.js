@@ -1,4 +1,4 @@
-quail.aLinksAreSeparatedByPrintableCharacters = function (quail, test, Case) {
+var ALinksAreSeparatedByPrintableCharacters = function (quail, test, Case) {
   test.get('$scope').find('a').each(function () {
     var _case = test.add(Case({
       element: this
@@ -17,4 +17,5 @@ quail.aLinksAreSeparatedByPrintableCharacters = function (quail, test, Case) {
       }
     }
   });
-};
+};;
+module.exports = ALinksAreSeparatedByPrintableCharacters;

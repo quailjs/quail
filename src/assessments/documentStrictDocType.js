@@ -1,4 +1,4 @@
-quail.documentStrictDocType = function (quail, test, Case) {
+var DocumentStrictDocType = function (quail, test, Case) {
   if (typeof document.doctype === 'undefined' ||
     !document.doctype ||
     document.doctype.systemId.search('strict') === -1) {
@@ -13,4 +13,5 @@ quail.documentStrictDocType = function (quail, test, Case) {
       status: 'passed'
     }));
   }
-};
+};;
+module.exports = DocumentStrictDocType;

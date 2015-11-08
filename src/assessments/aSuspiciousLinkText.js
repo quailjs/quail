@@ -1,4 +1,5 @@
-quail.aSuspiciousLinkText = function (quail, test, Case) {
+var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
+var ASuspiciousLinkText = function (quail, test, Case) {
   test.get('$scope').find('a').each(function () {
     var _case = Case({
       element: this
@@ -14,7 +15,7 @@ quail.aSuspiciousLinkText = function (quail, test, Case) {
     $(this).find('img[alt]').each(function () {
       text = text + $(this).attr('alt');
     });
-    if (quail.strings.suspiciousLinks.indexOf(quail.cleanString(text)) > -1) {
+    if (SuspiciousLinksStringsComponent.indexOf(quail.cleanString(text)) > -1) {
       _case.set({
         status: 'failed'
       });
@@ -25,4 +26,5 @@ quail.aSuspiciousLinkText = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ASuspiciousLinkText;

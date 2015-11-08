@@ -1,10 +1,11 @@
-quail.inputImageAltNotRedundant = function (quail, test, Case) {
+var RedundantStringsComponent = require('RedundantStringsComponent');
+var InputImageAltNotRedundant = function (quail, test, Case) {
   test.get('$scope').find('input[type=image][alt]').each(function () {
     var _case = Case({
       element: this
     });
     test.add(_case);
-    if (quail.strings.redundant.inputImage.indexOf(quail.cleanString($(this).attr('alt'))) > -1) {
+    if (RedundantStringsComponent.inputImage.indexOf(quail.cleanString($(this).attr('alt'))) > -1) {
       _case.set({
         status: 'failed'
       });
@@ -15,4 +16,5 @@ quail.inputImageAltNotRedundant = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = InputImageAltNotRedundant;

@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.objectMustHaveEmbed = function (quail, test, Case) {
+var ObjectMustHaveEmbed = function (quail, test, Case) {
 
   var selector = 'object';
 
@@ -34,4 +34,5 @@ quail.objectMustHaveEmbed = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ObjectMustHaveEmbed;

@@ -1,4 +1,4 @@
-quail.doctypeProvided = function (quail, test, Case) {
+var DoctypeProvided = function (quail, test, Case) {
   var doc = test.get('$scope').get(0);
   if ($(doc.doctype).length === 0 && !document.doctype) {
     test.add(Case({
@@ -12,4 +12,5 @@ quail.doctypeProvided = function (quail, test, Case) {
       status: 'passed'
     }));
   }
-};
+};;
+module.exports = DoctypeProvided;

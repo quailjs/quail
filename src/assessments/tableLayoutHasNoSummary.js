@@ -1,4 +1,4 @@
-quail.tableLayoutHasNoSummary = function (quail, test, Case) {
+var TableLayoutHasNoSummary = function (quail, test, Case) {
   test.get('$scope').each(function () {
     var $local = $(this);
     $local.find('table[summary]').each(function () {
@@ -13,4 +13,5 @@ quail.tableLayoutHasNoSummary = function (quail, test, Case) {
       }
     });
   });
-};
+};;
+module.exports = TableLayoutHasNoSummary;

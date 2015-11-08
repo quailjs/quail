@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.imgHasAlt = function (quail, test, Case) {
+var ImgHasAlt = function (quail, test, Case) {
 
   var selector = 'img';
 
@@ -32,4 +32,5 @@ quail.imgHasAlt = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ImgHasAlt;

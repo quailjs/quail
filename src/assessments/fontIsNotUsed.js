@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.fontIsNotUsed = function (quail, test, Case) {
+var FontIsNotUsed = function (quail, test, Case) {
 
   var selector = 'font';
 
@@ -26,4 +26,5 @@ quail.fontIsNotUsed = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = FontIsNotUsed;

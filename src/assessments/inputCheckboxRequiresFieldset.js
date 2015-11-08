@@ -1,4 +1,4 @@
-quail.inputCheckboxRequiresFieldset = function (quail, test, Case) {
+var InputCheckboxRequiresFieldset = function (quail, test, Case) {
   test.get('$scope').find('input[type="checkbox"]').each(function () {
     var _case = Case({
       element: this
@@ -15,4 +15,5 @@ quail.inputCheckboxRequiresFieldset = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = InputCheckboxRequiresFieldset;

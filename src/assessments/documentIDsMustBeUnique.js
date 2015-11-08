@@ -1,4 +1,4 @@
-quail.documentIDsMustBeUnique = function (quail, test, Case) {
+var DocumentIDsMustBeUnique = function (quail, test, Case) {
   test.get('$scope').each(function () {
     if ($(this).children().length === 0) {
       test.add(Case({
@@ -39,4 +39,5 @@ quail.documentIDsMustBeUnique = function (quail, test, Case) {
       }
     });
   });
-};
+};;
+module.exports = DocumentIDsMustBeUnique;

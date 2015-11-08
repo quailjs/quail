@@ -1,4 +1,4 @@
-quail.KINGUseCurrencyAsSymbol = function (quail, test, Case) {
+var KINGUseCurrencyAsSymbol = function (quail, test, Case) {
   function testCurrencyFormat (index, element) {
     // Detect dates with several separators.
     var currencyNames = [
@@ -25,4 +25,5 @@ quail.KINGUseCurrencyAsSymbol = function (quail, test, Case) {
     });
   }
   test.get('$scope').find('p').each(testCurrencyFormat);
-};
+};;
+module.exports = KINGUseCurrencyAsSymbol;

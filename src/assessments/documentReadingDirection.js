@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.documentReadingDirection = function (quail, test, Case) {
+var DocumentReadingDirection = function (quail, test, Case) {
 
   var selector = [
     '[lang="he"]',
@@ -37,4 +37,5 @@ quail.documentReadingDirection = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = DocumentReadingDirection;

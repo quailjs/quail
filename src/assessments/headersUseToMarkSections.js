@@ -1,4 +1,4 @@
-quail.headersUseToMarkSections = function (quail, test, Case) {
+var HeadersUseToMarkSections = function (quail, test, Case) {
   test.get('$scope').find('p').each(function () {
     var _case = Case({
       element: this
@@ -37,4 +37,5 @@ quail.headersUseToMarkSections = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = HeadersUseToMarkSections;

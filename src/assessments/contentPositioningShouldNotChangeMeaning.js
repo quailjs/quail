@@ -1,4 +1,4 @@
-quail.contentPositioningShouldNotChangeMeaning = function (quail, test, Case) {
+var ContentPositioningShouldNotChangeMeaning = function (quail, test, Case) {
   // Look for absolute positioned elements that are being put into grids or columns.
   var positions = [
     'top',
@@ -40,4 +40,5 @@ quail.contentPositioningShouldNotChangeMeaning = function (quail, test, Case) {
       });
     });
   });
-};
+};;
+module.exports = ContentPositioningShouldNotChangeMeaning;

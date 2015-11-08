@@ -1,4 +1,4 @@
-quail.newWindowIsOpened = function (quail, test, Case) {
+var NewWindowIsOpened = function (quail, test, Case) {
 
   var fenestrate = window.open;
   var _case;
@@ -22,4 +22,5 @@ quail.newWindowIsOpened = function (quail, test, Case) {
   });
 
   window.open = fenestrate;
-};
+};;
+module.exports = NewWindowIsOpened;

@@ -1,4 +1,5 @@
-quail.focusIndicatorVisible = function (quail, test, Case) {
+var ConvertToPxComponent = require('ConvertToPxComponent');
+var FocusIndicatorVisible = function (quail, test, Case) {
   test.get('$scope').find(quail.focusElements).each(function () {
     var _case = Case({
       element: this
@@ -21,8 +22,8 @@ quail.focusIndicatorVisible = function (quail, test, Case) {
         return;
       }
 
-      var borderWidth = quail.components.convertToPx($el.css('border-width'));
-      if (borderWidth > 2 && borderWidth !== quail.components.convertToPx(noFocus.borderWidth)) {
+      var borderWidth = ConvertToPxComponent($el.css('border-width'));
+      if (borderWidth > 2 && borderWidth !== ConvertToPxComponent(noFocus.borderWidth)) {
         this.blur();
         _case.set({
           status: 'passed'
@@ -31,7 +32,7 @@ quail.focusIndicatorVisible = function (quail, test, Case) {
       }
 
       var boxShadow = ($el.css('box-shadow') && $el.css('box-shadow') !== 'none') ? $el.css('box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
-      if (boxShadow && $el.css('box-shadow') !== noFocus.boxShadow && quail.components.convertToPx(boxShadow[3]) > 3) {
+      if (boxShadow && $el.css('box-shadow') !== noFocus.boxShadow && ConvertToPxComponent(boxShadow[3]) > 3) {
         this.blur();
         _case.set({
           status: 'passed'
@@ -48,4 +49,5 @@ quail.focusIndicatorVisible = function (quail, test, Case) {
     // Focus needs to be triggered through a web driver protocol.
     this.addEventListener('focus', listener, false);
   });
-};
+};;
+module.exports = FocusIndicatorVisible;

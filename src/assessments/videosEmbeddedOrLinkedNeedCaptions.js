@@ -1,6 +1,7 @@
-quail.videosEmbeddedOrLinkedNeedCaptions = function (quail, test, Case) {
+var VideoComponent = require('VideoComponent');
+var VideosEmbeddedOrLinkedNeedCaptions = function (quail, test, Case) {
 
-  quail.components.video.findVideos(test.get('$scope'), function (element, pass) {
+  VideoComponent.findVideos(test.get('$scope'), function (element, pass) {
     if (!pass) {
       test.add(Case({
         element: element[0],
@@ -14,4 +15,5 @@ quail.videosEmbeddedOrLinkedNeedCaptions = function (quail, test, Case) {
       }));
     }
   });
-};
+};;
+module.exports = VideosEmbeddedOrLinkedNeedCaptions;

@@ -1,4 +1,4 @@
-quail.imgHasLongDesc = function (quail, test, Case) {
+var ImgHasLongDesc = function (quail, test, Case) {
   test.get('$scope').find('img[longdesc]').each(function () {
     var _case = Case({
       element: this
@@ -16,4 +16,5 @@ quail.imgHasLongDesc = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ImgHasLongDesc;

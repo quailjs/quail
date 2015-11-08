@@ -1,4 +1,4 @@
-quail.tableNotUsedForLayout = function (quail, test, Case) {
+var TableNotUsedForLayout = function (quail, test, Case) {
   test.get('$scope').find('table').each(function () {
     if (!quail.isDataTable($(this))) {
       test.add(Case({
@@ -13,4 +13,5 @@ quail.tableNotUsedForLayout = function (quail, test, Case) {
       }));
     }
   });
-};
+};;
+module.exports = TableNotUsedForLayout;

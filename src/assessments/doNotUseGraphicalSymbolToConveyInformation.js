@@ -1,6 +1,9 @@
-quail.doNotUseGraphicalSymbolToConveyInformation = function (quail, test, Case) {
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var TextSelector = require('TextSelector');
+
+var DoNotUseGraphicalSymbolToConveyInformation = function (quail, test, Case) {
   // Passes and fails.
-  test.get('$scope').find(quail.textSelector + ':not(abbr, acronym)').each(function () {
+  test.get('$scope').find(TextSelector + ':not(abbr, acronym)').each(function () {
     var whiteList = '✓';
     var blackList = '?xo[]()+-!*xX';
 
@@ -38,7 +41,7 @@ quail.doNotUseGraphicalSymbolToConveyInformation = function (quail, test, Case) 
     .find(quail.textSelector)
     .filter('abbr, acronym')
     .filter(function (index, element) {
-      return quail.components.textNodeFilter(element);
+      return TextNodeFilterComponent(element);
     })
     .each(function () {
       test.add(Case({
@@ -46,4 +49,6 @@ quail.doNotUseGraphicalSymbolToConveyInformation = function (quail, test, Case) 
         status: 'inapplicable'
       }));
     });
-};
+};;
+module.exports = DoNotUseGraphicalSymbolToConveyInformation;
+module.exports = TextSelector;

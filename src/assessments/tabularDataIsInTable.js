@@ -1,4 +1,4 @@
-quail.tabularDataIsInTable = function (quail, test, Case) {
+var TabularDataIsInTable = function (quail, test, Case) {
   test.get('$scope').find('pre').each(function () {
     if ($(this).html().search('\t') >= 0) {
       test.add(Case({
@@ -13,4 +13,5 @@ quail.tabularDataIsInTable = function (quail, test, Case) {
       }));
     }
   });
-};
+};;
+module.exports = TabularDataIsInTable;

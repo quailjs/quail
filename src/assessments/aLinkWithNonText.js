@@ -1,4 +1,4 @@
-quail.aLinkWithNonText = function (quail, test, Case) {
+var ALinkWithNonText = function (quail, test, Case) {
   test.get('$scope').find('a').each(function () {
     var _case = Case({
       element: this
@@ -34,4 +34,5 @@ quail.aLinkWithNonText = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ALinkWithNonText;

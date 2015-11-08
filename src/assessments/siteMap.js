@@ -1,4 +1,5 @@
-quail.siteMap = function (quail, test, Case) {
+var SiteMapStringsComponent = require('SiteMapStringsComponent');
+var SiteMapStringsComponent = function (quail, test, Case) {
   var set = true;
   var _case = Case({
     element: test.get('$scope').get(0)
@@ -9,7 +10,7 @@ quail.siteMap = function (quail, test, Case) {
       return;
     }
     var text = $(this).text().toLowerCase();
-    $.each(quail.strings.siteMap, function (index, string) {
+    $.each(SiteMapStringsComponent, function (index, string) {
       if (text.search(string) > -1) {
         set = false;
         return;
@@ -28,4 +29,5 @@ quail.siteMap = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = SiteMapStringsComponent;

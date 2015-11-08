@@ -1,4 +1,4 @@
-quail.inputWithoutLabelHasTitle = function (quail, test, Case) {
+var InputWithoutLabelHasTitle = function (quail, test, Case) {
 
   test.get('$scope').each(function () {
 
@@ -39,4 +39,5 @@ quail.inputWithoutLabelHasTitle = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = InputWithoutLabelHasTitle;

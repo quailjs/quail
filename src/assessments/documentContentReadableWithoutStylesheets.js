@@ -7,11 +7,12 @@
  *
  * This test did not test anything, so now it just returns untested.
  */
-quail.documentContentReadableWithoutStylesheets = function (quail, test, Case) {
+var DocumentContentReadableWithoutStylesheets = function (quail, test, Case) {
   this.get('$scope').each(function () {
     test.add(Case({
       element: undefined,
       status: 'untested'
     }));
   });
-};
+};;
+module.exports = DocumentContentReadableWithoutStylesheets;

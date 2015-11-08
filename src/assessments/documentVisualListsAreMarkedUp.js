@@ -1,4 +1,5 @@
-quail.documentVisualListsAreMarkedUp = function (quail, test, Case) {
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var DocumentVisualListsAreMarkedUp = function (quail, test, Case) {
 
   var itemStarters = [
     '♦', '›', '»', '‣', '▶', '◦', '✓', '◽', '•', '—', '◾', // single characters
@@ -21,7 +22,7 @@ quail.documentVisualListsAreMarkedUp = function (quail, test, Case) {
   test.get('$scope')
     .find(quail.textSelector)
     .filter(function (index, element) {
-      return quail.components.textNodeFilter(element);
+      return TextNodeFilterComponent(element);
     })
     .each(function () {
       var _case = Case({
@@ -33,4 +34,5 @@ quail.documentVisualListsAreMarkedUp = function (quail, test, Case) {
         status: (matches && matches.length > 2) ? 'failed' : 'passed'
       });
     });
-};
+};;
+module.exports = DocumentVisualListsAreMarkedUp;

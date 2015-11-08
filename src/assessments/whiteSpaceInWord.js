@@ -1,9 +1,10 @@
-quail.whiteSpaceInWord = function (quail, test, Case) {
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var WhiteSpaceInWord = function (quail, test, Case) {
   var whitespaceGroup, nonWhitespace;
   test.get('$scope')
     .find(quail.textSelector)
     .filter(function (index, element) {
-      return quail.components.textNodeFilter(element);
+      return TextNodeFilterComponent(element);
     })
     .each(function () {
       nonWhitespace = ($(this).text()) ? $(this).text().match(/[^\s\\]/g) : false;
@@ -24,4 +25,5 @@ quail.whiteSpaceInWord = function (quail, test, Case) {
         }));
       }
     });
-};
+};;
+module.exports = WhiteSpaceInWord;

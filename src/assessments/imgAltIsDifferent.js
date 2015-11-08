@@ -1,4 +1,4 @@
-quail.imgAltIsDifferent = function (quail, test, Case) {
+var ImgAltIsDifferent = function (quail, test, Case) {
   test.get('$scope').find('img:not([src])').each(function () {
     var _case = Case({
       element: this,
@@ -22,4 +22,5 @@ quail.imgAltIsDifferent = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ImgAltIsDifferent;

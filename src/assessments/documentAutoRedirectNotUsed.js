@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.documentAutoRedirectNotUsed = function (quail, test, Case) {
+var DocumentAutoRedirectNotUsed = function (quail, test, Case) {
 
   var selector = 'meta[http-equiv=refresh]';
 
@@ -26,4 +26,5 @@ quail.documentAutoRedirectNotUsed = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = DocumentAutoRedirectNotUsed;

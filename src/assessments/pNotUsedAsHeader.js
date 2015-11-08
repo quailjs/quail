@@ -1,4 +1,4 @@
-quail.pNotUsedAsHeader = function (quail, test, Case) {
+var PNotUsedAsHeader = function (quail, test, Case) {
   test.get('$scope').find('p').each(function () {
     var _case = Case({
       element: this
@@ -55,4 +55,5 @@ quail.pNotUsedAsHeader = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = PNotUsedAsHeader;

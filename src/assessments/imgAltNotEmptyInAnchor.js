@@ -1,4 +1,4 @@
-quail.imgAltNotEmptyInAnchor = function (quail, test, Case) {
+var ImgAltNotEmptyInAnchor = function (quail, test, Case) {
   test.get('$scope').find('a[href]:has(img)').each(function () {
     var $a = $(this);
     var text = $a.text();
@@ -24,4 +24,5 @@ quail.imgAltNotEmptyInAnchor = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ImgAltNotEmptyInAnchor;

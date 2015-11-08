@@ -1,4 +1,5 @@
-quail.documentLangIsISO639Standard = function (quail, test, Case) {
+var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
+var DocumentLangIsISO639Standard = function (quail, test, Case) {
   var $element = (test.get('$scope').is('html')) ?
     test.get('$scope') :
     test.get('$scope').find('html').first();
@@ -19,7 +20,7 @@ quail.documentLangIsISO639Standard = function (quail, test, Case) {
   else {
     // Loop over all language codes, checking if the current lang attribute starts
     // with a value that's in the languageCodes array
-    $.each(quail.strings.languageCodes, function (i, currentLangCode) {
+    $.each(LanguageCodesStringsComponent, function (i, currentLangCode) {
       if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
         matchedLang = true;
       }
@@ -38,4 +39,5 @@ quail.documentLangIsISO639Standard = function (quail, test, Case) {
     }
   }
 
-};
+};;
+module.exports = DocumentLangIsISO639Standard;

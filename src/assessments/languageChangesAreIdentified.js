@@ -1,6 +1,8 @@
-quail.languageChangesAreIdentified = function (quail, test, Case) {
+var LanguageComponent = require('LanguageComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var LanguageChangesAreIdentified = function (quail, test, Case) {
   var $scope = test.get('$scope');
-  var currentLanguage = quail.components.language.getDocumentLanguage($scope, true);
+  var currentLanguage = LanguageComponent.getDocumentLanguage($scope, true);
   var text, regularExpression, matches, $element, failed;
 
   var noCharactersMatch = function ($element, language, matches, regularExpression) {
@@ -26,13 +28,13 @@ quail.languageChangesAreIdentified = function (quail, test, Case) {
     if ($element.parents('[lang]').length) {
       return $element.parents('[lang]:first').attr('lang').trim().toLowerCase().split('-')[0];
     }
-    return quail.components.language.getDocumentLanguage($scope, true);
+    return LanguageComponent.getDocumentLanguage($scope, true);
   };
 
   $scope
     .find(quail.textSelector)
     .filter(function (index, element) {
-      return quail.components.textNodeFilter(element);
+      return TextNodeFilterComponent(element);
     })
     .each(function () {
       var self = this;
@@ -41,7 +43,7 @@ quail.languageChangesAreIdentified = function (quail, test, Case) {
       text = quail.getTextContents($element);
       failed = false;
 
-      $.each(quail.components.language.scriptSingletons, function (code, regularExpression) {
+      $.each(LanguageComponent.scriptSingletons, function (code, regularExpression) {
         if (code === currentLanguage) {
           return;
         }
@@ -57,7 +59,7 @@ quail.languageChangesAreIdentified = function (quail, test, Case) {
           failed = true;
         }
       });
-      $.each(quail.components.language.scripts, function (code, script) {
+      $.each(LanguageComponent.scripts, function (code, script) {
         if (script.languages.indexOf(currentLanguage) !== -1) {
           return;
         }
@@ -95,4 +97,5 @@ quail.languageChangesAreIdentified = function (quail, test, Case) {
         }));
       }
     });
-};
+};;
+module.exports = LanguageChangesAreIdentified;

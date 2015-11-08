@@ -1,16 +1,18 @@
-quail.languageDirectionPunctuation = function (quail, test, Case) {
+var LanguageComponent = require('LanguageComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var LanguageDirectionPunctuation = function (quail, test, Case) {
   var $scope = test.get('$scope');
   var punctuation = {};
   var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
   var currentDirection = ($scope.attr('dir')) ? $scope.attr('dir').toLowerCase() : 'ltr';
   var oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
-  var textDirection = quail.components.language.textDirection;
+  var textDirection = LanguageComponent.textDirection;
   $scope.each(function () {
     var $local = $(this);
     $local
       .find(quail.textSelector)
       .filter(function (index, element) {
-        return quail.components.textNodeFilter(element);
+        return TextNodeFilterComponent(element);
       })
       .each(function () {
         var $el = $(this);
@@ -45,4 +47,5 @@ quail.languageDirectionPunctuation = function (quail, test, Case) {
         _case.set({status: 'passed'});
       });
   });
-};
+};;
+module.exports = LanguageDirectionPunctuation;

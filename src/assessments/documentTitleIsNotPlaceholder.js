@@ -2,10 +2,13 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-quail.documentTitleIsNotPlaceholder = function (quail, test, Case) {
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var DocumentTitleIsNotPlaceholder = function (quail, test, Case) {
   var options = {
     selector: 'head > title',
     content: 'true'
   };
-  quail.components.placeholder(quail, test, Case, options);
-};
+  PlaceholderComponent(quail, test, Case, options);
+};;
+module.exports = DocumentTitleIsNotPlaceholder;

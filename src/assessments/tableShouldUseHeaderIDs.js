@@ -1,4 +1,4 @@
-quail.tableShouldUseHeaderIDs = function (quail, test, Case) {
+var TableShouldUseHeaderIDs = function (quail, test, Case) {
   test.get('$scope').find('table').each(function () {
     var $table = $(this);
     var tableFailed = false;
@@ -29,4 +29,5 @@ quail.tableShouldUseHeaderIDs = function (quail, test, Case) {
       }
     }
   });
-};
+};;
+module.exports = TableShouldUseHeaderIDs;

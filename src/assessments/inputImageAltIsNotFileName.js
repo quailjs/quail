@@ -1,4 +1,4 @@
-quail.inputImageAltIsNotFileName = function (quail, test, Case) {
+var InputImageAltIsNotFileName = function (quail, test, Case) {
   test.get('$scope').find('input[type=image][alt]').each(function () {
     var _case = Case({
       element: this
@@ -15,4 +15,5 @@ quail.inputImageAltIsNotFileName = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = InputImageAltIsNotFileName;

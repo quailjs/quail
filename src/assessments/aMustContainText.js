@@ -1,4 +1,4 @@
-quail.aMustContainText = function (quail, test, Case) {
+var AMustContainText = function (quail, test, Case) {
   test.get('$scope').find('a').each(function () {
     var _case = Case({
       element: this
@@ -24,4 +24,5 @@ quail.aMustContainText = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = AMustContainText;

@@ -1,4 +1,4 @@
-quail.headersAttrRefersToATableCell = function (quail, test, Case) {
+var HeadersAttrRefersToATableCell = function (quail, test, Case) {
   // Table cell headers without referred ids
   test.get('$scope').find('table').each(function () {
     var self = this;
@@ -35,4 +35,5 @@ quail.headersAttrRefersToATableCell = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = HeadersAttrRefersToATableCell;

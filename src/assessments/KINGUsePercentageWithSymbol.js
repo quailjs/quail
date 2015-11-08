@@ -1,4 +1,4 @@
-quail.KINGUsePercentageWithSymbol = function (quail, test, Case) {
+var KINGUsePercentageWithSymbol = function (quail, test, Case) {
   function testPercentFormat (index, element) {
     // Detect dates with several separators.
     var percentName = [
@@ -19,4 +19,5 @@ quail.KINGUsePercentageWithSymbol = function (quail, test, Case) {
     });
   }
   test.get('$scope').find('p').each(testPercentFormat);
-};
+};;
+module.exports = KINGUsePercentageWithSymbol;

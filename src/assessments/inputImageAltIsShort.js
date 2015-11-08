@@ -1,4 +1,4 @@
-quail.inputImageAltIsShort = function (quail, test, Case) {
+var InputImageAltIsShort = function (quail, test, Case) {
   test.get('$scope').find('input[type=image]').each(function () {
     var _case = Case({
       element: this
@@ -15,4 +15,5 @@ quail.inputImageAltIsShort = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = InputImageAltIsShort;

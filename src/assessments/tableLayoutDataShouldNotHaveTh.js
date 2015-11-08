@@ -1,4 +1,4 @@
-quail.tableLayoutDataShouldNotHaveTh = function (quail, test, Case) {
+var TableLayoutDataShouldNotHaveTh = function (quail, test, Case) {
   test.get('$scope').find('table').each(function () {
     var _case = Case({
       element: this
@@ -23,4 +23,5 @@ quail.tableLayoutDataShouldNotHaveTh = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = TableLayoutDataShouldNotHaveTh;

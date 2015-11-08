@@ -1,4 +1,4 @@
-quail.aAdjacentWithSameResourceShouldBeCombined = function (quail, test, Case) {
+var AAdjacentWithSameResourceShouldBeCombined = function (quail, test, Case) {
 
   function findAdjacent (index, element) {
     var $element = $(element);
@@ -48,4 +48,5 @@ quail.aAdjacentWithSameResourceShouldBeCombined = function (quail, test, Case) {
   }
 
   test.get('$scope').each(findAdjacent);
-};
+};;
+module.exports = AAdjacentWithSameResourceShouldBeCombined;

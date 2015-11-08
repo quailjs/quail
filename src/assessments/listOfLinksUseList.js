@@ -1,4 +1,4 @@
-quail.listOfLinksUseList = function (quail, test, Case) {
+var ListOfLinksUseList = function (quail, test, Case) {
   var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
   test.get('$scope').find('a').each(function () {
     var _case = test.add(Case({
@@ -19,4 +19,5 @@ quail.listOfLinksUseList = function (quail, test, Case) {
       }
     }
   });
-};
+};;
+module.exports = ListOfLinksUseList;

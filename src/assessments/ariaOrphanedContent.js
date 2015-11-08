@@ -1,6 +1,6 @@
 // options: selector: "body *:not(*[role] *, *[role], script, meta, link)"
 
-quail.ariaOrphanedContent = function (quail, test, Case) {
+var AriaOrphanedContent = function (quail, test, Case) {
   var $scope = test.get('$scope');
 
   $scope.each(function () {
@@ -33,4 +33,5 @@ quail.ariaOrphanedContent = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = AriaOrphanedContent;

@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.iframeMustNotHaveLongdesc = function (quail, test, Case) {
+var IframeMustNotHaveLongdesc = function (quail, test, Case) {
 
   var selector = 'iframe';
 
@@ -32,4 +32,5 @@ quail.iframeMustNotHaveLongdesc = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = IframeMustNotHaveLongdesc;

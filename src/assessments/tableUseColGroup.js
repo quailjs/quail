@@ -1,4 +1,4 @@
-quail.tableUseColGroup = function (quail, test, Case) {
+var TableUseColGroup = function (quail, test, Case) {
   test.get('$scope').find('table').each(function () {
     if (quail.isDataTable($(this)) && !$(this).find('colgroup').length) {
       test.add(Case({
@@ -7,4 +7,5 @@ quail.tableUseColGroup = function (quail, test, Case) {
       }));
     }
   });
-};
+};;
+module.exports = TableUseColGroup;

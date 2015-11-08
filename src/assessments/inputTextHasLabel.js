@@ -2,9 +2,12 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-quail.inputTextHasLabel = function (quail, test, Case) {
+var LabelComponent = require('LabelComponent');
+
+var InputTextHasLabel = function (quail, test, Case) {
   var options = {
     selector: 'input'
   };
-  quail.components.label(quail, test, Case, options);
-};
+  LabelComponent(quail, test, Case, options);
+};;
+module.exports = InputTextHasLabel;

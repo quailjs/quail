@@ -1,6 +1,8 @@
-quail.languageDirAttributeIsUsed = function (quail, test, Case) {
+var LanguageComponent = require('LanguageComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var LanguageDirAttributeIsUsed = function (quail, test, Case) {
 
-  var textDirection = quail.components.language.textDirection;
+  var textDirection = LanguageComponent.textDirection;
 
   function countDirAttributes () {
     var $el = $(this);
@@ -40,8 +42,9 @@ quail.languageDirAttributeIsUsed = function (quail, test, Case) {
     $(this)
       .find(quail.textSelector)
       .filter(function (index, element) {
-        return quail.components.textNodeFilter(element);
+        return TextNodeFilterComponent(element);
       })
       .each(countDirAttributes);
   });
-};
+};;
+module.exports = LanguageDirAttributeIsUsed;

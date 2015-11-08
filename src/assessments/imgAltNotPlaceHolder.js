@@ -2,10 +2,13 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-quail.imgAltNotPlaceHolder = function (quail, test, Case) {
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var ImgAltNotPlaceHolder = function (quail, test, Case) {
   var options = {
     selector: 'img',
     attribute: 'alt'
   };
-  quail.components.placeholder(quail, test, Case, options);
-};
+  PlaceholderComponent(quail, test, Case, options);
+};;
+module.exports = ImgAltNotPlaceHolder;

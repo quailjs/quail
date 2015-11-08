@@ -5,14 +5,16 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.appletTextEquivalentsGetUpdated = function (quail, test, Case, options) {
+var Case = require('Case');
+
+var AppletTextEquivalentsGetUpdated = function (quail, test, Case, options) {
 
   var selector = 'applet';
 
   this.get('$scope').each(function () {
     var candidates = $(this).find(selector);
     if (!candidates.length) {
-      test.add(quail.lib.Case({
+      test.add(Case({
         element: undefined,
         status: (options.test ? 'inapplicable' : 'passed')
       }));
@@ -29,11 +31,12 @@ quail.appletTextEquivalentsGetUpdated = function (quail, test, Case, options) {
           status = 'failed';
         }
 
-        test.add(quail.lib.Case({
+        test.add(Case({
           element: this,
           status: status
         }));
       });
     }
   });
-};
+};;
+module.exports = AppletTextEquivalentsGetUpdated;

@@ -1,7 +1,8 @@
-quail.colorBackgroundImageContrast = function (quail, test, Case, options) {
+var ColorComponent = require('ColorComponent');
+var ColorBackgroundImageContrast = function (quail, test, Case, options) {
 
-  var colors = quail.components.color.colors;
-  var buildCase = quail.components.color.buildCase;
+  var colors = ColorComponent.colors;
+  var buildCase = ColorComponent.buildCase;
   var id = 'colorBackgroundImageContrast';
   // Hard-coding this for now. Requires a way to pass options from the test
   // definitions down to the test functions.
@@ -60,7 +61,7 @@ quail.colorBackgroundImageContrast = function (quail, test, Case, options) {
     // Loop has to be separated. If we try to iterate and rund testCandidates
     // the xpath thing will crash because document is being modified.
     while (textNode) {
-      if (quail.components.color.textShouldBeTested(textNode)) {
+      if (ColorComponent.textShouldBeTested(textNode)) {
         nodes.push(textNode.parentNode);
       }
       textNode = textNodes.iterateNext();
@@ -74,4 +75,5 @@ quail.colorBackgroundImageContrast = function (quail, test, Case, options) {
       colorBackgroundImageContrast(test, Case, options, $(element), element);
     });
   });
-};
+};;
+module.exports = ColorBackgroundImageContrast;

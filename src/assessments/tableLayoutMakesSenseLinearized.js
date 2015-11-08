@@ -1,4 +1,4 @@
-quail.tableLayoutMakesSenseLinearized = function (quail, test, Case) {
+var TableLayoutMakesSenseLinearized = function (quail, test, Case) {
   test.get('$scope').find('table').each(function () {
     if (!quail.isDataTable($(this))) {
       test.add(Case({
@@ -7,4 +7,5 @@ quail.tableLayoutMakesSenseLinearized = function (quail, test, Case) {
       }));
     }
   });
-};
+};;
+module.exports = TableLayoutMakesSenseLinearized;

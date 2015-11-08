@@ -1,4 +1,4 @@
-quail.aMustHaveTitle = function (quail, test, Case) {
+var AMustHaveTitle = function (quail, test, Case) {
   this.get('$scope').each(function () {
     var links = $(this).find('a');
 
@@ -20,4 +20,5 @@ quail.aMustHaveTitle = function (quail, test, Case) {
       }
     });
   });
-};
+};;
+module.exports = AMustHaveTitle;

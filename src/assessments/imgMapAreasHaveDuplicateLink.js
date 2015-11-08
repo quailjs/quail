@@ -1,4 +1,4 @@
-quail.imgMapAreasHaveDuplicateLink = function (quail, test, Case) {
+var ImgMapAreasHaveDuplicateLink = function (quail, test, Case) {
   var links = {};
   test.get('$scope').find('a').each(function () {
     links[$(this).attr('href')] = $(this).attr('href');
@@ -30,4 +30,5 @@ quail.imgMapAreasHaveDuplicateLink = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ImgMapAreasHaveDuplicateLink;

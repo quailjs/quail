@@ -1,4 +1,4 @@
-quail.aMultimediaTextAlternative = function (quail, test, Case) {
+var AMultimediaTextAlternative = function (quail, test, Case) {
 
   var selector = [
     'a[href$=".aif"]',
@@ -37,4 +37,5 @@ quail.aMultimediaTextAlternative = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = AMultimediaTextAlternative;

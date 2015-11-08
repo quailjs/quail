@@ -1,4 +1,4 @@
-quail.appletContainsTextEquivalent = function (quail, test, Case) {
+var AppletContainsTextEquivalent = function (quail, test, Case) {
   test.get('$scope').find('applet[alt=""], applet:not(applet[alt])').each(function () {
     var _case = Case({
       element: this
@@ -15,4 +15,5 @@ quail.appletContainsTextEquivalent = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = AppletContainsTextEquivalent;

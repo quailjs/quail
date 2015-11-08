@@ -1,5 +1,6 @@
-quail.formWithRequiredLabel = function (quail, test, Case) {
-  var redundant = quail.strings.redundant;
+var RedundantStringsComponent = require('RedundantStringsComponent');
+var FormWithRequiredLabel = function (quail, test, Case) {
+  var redundant = RedundantStringsComponent;
   var lastStyle, currentStyle = false;
   redundant.required[redundant.required.indexOf('*')] = /\*/g;
   test.get('$scope').each(function () {
@@ -31,4 +32,5 @@ quail.formWithRequiredLabel = function (quail, test, Case) {
       }
     });
   });
-};
+};;
+module.exports = FormWithRequiredLabel;

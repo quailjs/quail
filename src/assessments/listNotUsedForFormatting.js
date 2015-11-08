@@ -1,4 +1,4 @@
-quail.listNotUsedForFormatting = function (quail, test, Case) {
+var ListNotUsedForFormatting = function (quail, test, Case) {
   test.get('$scope').find('ol, ul').each(function () {
     var _case = Case({
       element: this
@@ -15,4 +15,5 @@ quail.listNotUsedForFormatting = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ListNotUsedForFormatting;

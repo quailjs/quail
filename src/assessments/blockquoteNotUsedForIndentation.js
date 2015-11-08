@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.blockquoteNotUsedForIndentation = function (quail, test, Case) {
+var BlockquoteNotUsedForIndentation = function (quail, test, Case) {
 
   var selector = 'blockquote';
 
@@ -35,4 +35,5 @@ quail.blockquoteNotUsedForIndentation = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = BlockquoteNotUsedForIndentation;

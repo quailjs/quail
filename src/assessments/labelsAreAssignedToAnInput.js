@@ -1,4 +1,4 @@
-quail.labelsAreAssignedToAnInput = function (quail, test, Case) {
+var LabelsAreAssignedToAnInput = function (quail, test, Case) {
   test.get('$scope').find('label').each(function () {
     var _case = Case({
       element: this
@@ -23,4 +23,5 @@ quail.labelsAreAssignedToAnInput = function (quail, test, Case) {
       }
     }
   });
-};
+};;
+module.exports = LabelsAreAssignedToAnInput;

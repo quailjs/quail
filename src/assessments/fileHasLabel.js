@@ -1,7 +1,7 @@
 /**
  * Test for a label associated with a file input element.
  */
-quail.fileHasLabel = function (quail, test, Case) {
+var FileHasLabel = function (quail, test, Case) {
 
   var sFiles = '[type="file"]';
   var sLabels = 'label';
@@ -50,4 +50,5 @@ quail.fileHasLabel = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = FileHasLabel;

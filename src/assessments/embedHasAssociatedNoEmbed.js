@@ -1,4 +1,4 @@
-quail.embedHasAssociatedNoEmbed = function (quail, test, Case) {
+var EmbedHasAssociatedNoEmbed = function (quail, test, Case) {
   test.get('$scope').find('embed').each(function () {
     var _case = Case({
       element: this
@@ -8,4 +8,5 @@ quail.embedHasAssociatedNoEmbed = function (quail, test, Case) {
       status: ($(this).find('noembed').length || $(this).next().is('noembed')) ? 'passed' : 'failed'
     });
   });
-};
+};;
+module.exports = EmbedHasAssociatedNoEmbed;

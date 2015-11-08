@@ -1,4 +1,4 @@
-quail.tableUsesAbbreviationForHeader = function (quail, test, Case) {
+var TableUsesAbbreviationForHeader = function (quail, test, Case) {
   test.get('$scope').find('th:not(th[abbr])').each(function () {
     if ($(this).text().length > 20) {
       test.add(Case({
@@ -7,4 +7,5 @@ quail.tableUsesAbbreviationForHeader = function (quail, test, Case) {
       }));
     }
   });
-};
+};;
+module.exports = TableUsesAbbreviationForHeader;

@@ -1,4 +1,4 @@
-quail.aLinksToMultiMediaRequireTranscript = function (quail, test, Case) {
+var ALinksToMultiMediaRequireTranscript = function (quail, test, Case) {
   var selector = [
     'a[href$=".wmv"]',
     'a[href$=".mpg"]',
@@ -26,4 +26,5 @@ quail.aLinksToMultiMediaRequireTranscript = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ALinksToMultiMediaRequireTranscript;

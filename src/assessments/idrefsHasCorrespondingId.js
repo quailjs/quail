@@ -1,4 +1,4 @@
-quail.idrefsHasCorrespondingId = function (quail, test, Case) {
+var IdrefsHasCorrespondingId = function (quail, test, Case) {
 
   function getAttribute ($element) {
     var attribute = [];
@@ -50,4 +50,5 @@ quail.idrefsHasCorrespondingId = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = IdrefsHasCorrespondingId;

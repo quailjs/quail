@@ -1,4 +1,4 @@
-quail.linkHasAUniqueContext = function (quail, test, Case) {
+var LinkHasAUniqueContext = function (quail, test, Case) {
 
   var blockStyle = [
     'block',
@@ -172,4 +172,5 @@ quail.linkHasAUniqueContext = function (quail, test, Case) {
       }
     });
   });
-};
+};;
+module.exports = LinkHasAUniqueContext;

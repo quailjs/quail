@@ -5,7 +5,45 @@ module.exports = function(file, api, options) {
 
   var capitalizeName = function (name) {
     var firstletter = name[0];
-    return firstletter.toUpperCase() + name.substring(1);
+    // Components
+    if ([
+      'acronym',
+      'color',
+      'content',
+      'convertToPx',
+      'event',
+      'hasEventListener',
+      'headingLevel',
+      'htmlSource',
+      'htmlTagValidator',
+      'label',
+      'language',
+      'placeholder',
+      'statisticsPl',
+      'textNodeFilter',
+      'textStatistics',
+      'video'
+    ].indexOf(name) > -1) {
+      name = name + 'Component';
+    }
+    // Strings
+    if ([
+      'colors',
+      'languageCodes',
+      'newWindow',
+      'placeholders',
+      'redundant',
+      'siteMap',
+      'skipContent',
+      'suspiciousLinks',
+      'symbols'
+    ].indexOf(name) > -1) {
+      name = name + 'StringsComponent';
+    }
+    // Capitalize
+    name = firstletter.toUpperCase() + name.substring(1);
+
+    return name;
   };
 
   var withComments = function (to, from) {
@@ -18,10 +56,10 @@ module.exports = function(file, api, options) {
       return j.variableDeclaration(
         'var',
         [j.variableDeclarator(
-          j.identifier(name),
+          j.identifier(capitalizeName(name)),
           j.callExpression(
             j.identifier('require'),
-            [j.literal(name)]
+            [j.literal(capitalizeName(name))]
           )
         )]
       );
@@ -37,7 +75,7 @@ module.exports = function(file, api, options) {
             j.identifier('module'),
             j.identifier('exports')
           ),
-          j.identifier(name)
+          j.identifier(capitalizeName(name))
         )
       );
     });
@@ -46,10 +84,15 @@ module.exports = function(file, api, options) {
   var getLibMemberExpressionNode = function (path) {
     var node, reqName;
     if (path.parent.value.type === 'MemberExpression') {
-      node = path.parent;
-      if (node.value.object.type === 'Identifier' &&
-        node.value.object.name === 'quail') {
-        return node.parent;
+      if (path.value.name === 'quail') {
+        return path.parent;
+      }
+      else {
+        node = path.parent;
+        if (node.value.object.type === 'Identifier' &&
+          node.value.object.name === 'quail') {
+          return node.parent;
+        }
       }
     }
   };
@@ -88,8 +131,12 @@ module.exports = function(file, api, options) {
     return false;
   };
 
+  var quailIdents = root
+    .find(j.Identifier, {
+      name: 'quail'
+    });
+
   var requirementUsages = libIdents.filter(identFilter);
-  //requirementUsages.add(componentIdents.filter(identFilter));
 
   var requirementNames = requirementUsages
     .map(getLibMemberExpressionNode)
@@ -100,21 +147,17 @@ module.exports = function(file, api, options) {
     .filter(dedupe);
 
   // Module names.
-  var moduleExports = libIdents
+  var moduleExports = quailIdents
     .filter(function (path) {
       var node, reqName;
       if (path.parent.value.type === 'MemberExpression') {
         node = path.parent;
-        if (node.value.object.type === 'Identifier' &&
-          node.value.object.name === 'quail') {
-          node = node.parent;
-          // Include assignments; these are module exports.
-          if (node.name === 'left') {
-            return true;
-          }
-          else {
-            return false;
-          }
+        // Include assignments; these are module exports.
+        if (node.name === 'left') {
+          return true;
+        }
+        else {
+          return false;
         }
       }
       return false;
@@ -130,6 +173,9 @@ module.exports = function(file, api, options) {
         })
         .filter(dedupe);
     });
+
+  // Get quail.* expressions
+
 
   // Add require statements.
   if (requirementNames.length > 0) {
@@ -155,7 +201,7 @@ module.exports = function(file, api, options) {
       .map(getLibMemberExpressionNode)
       .forEach(function (node) {
         j(node).replaceWith(
-          j.identifier(node.value.property.name)
+          j.identifier(capitalizeName(node.value.property.name))
         )
       });
   }
@@ -164,15 +210,17 @@ module.exports = function(file, api, options) {
     moduleExports
       .map(getLibMemberExpressionNode)
       .forEach(function (node) {
-        j(node.parent).replaceWith(
-          j.variableDeclaration(
-            'var',
-            [j.variableDeclarator(
-              j.identifier(node.value.property.name),
-              node.parent.value.right
-            )]
+        if (node) {
+          j(node.parent).replaceWith(
+            j.variableDeclaration(
+              'var',
+              [j.variableDeclarator(
+                j.identifier(capitalizeName(node.value.property.name)),
+                node.parent.value.right
+              )]
+            )
           )
-        )
+        }
       });
   }
 

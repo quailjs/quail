@@ -1,4 +1,4 @@
-quail.tableUsesScopeForRow = function (quail, test, Case) {
+var TableUsesScopeForRow = function (quail, test, Case) {
   test.get('$scope').find('table').each(function () {
     $(this).find('td:first-child').each(function () {
       var $next = $(this).next('td');
@@ -21,4 +21,5 @@ quail.tableUsesScopeForRow = function (quail, test, Case) {
       }
     });
   });
-};
+};;
+module.exports = TableUsesScopeForRow;

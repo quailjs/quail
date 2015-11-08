@@ -2,12 +2,15 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-quail.buttonHasName = function (quail, test, Case) {
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var ButtonHasName = function (quail, test, Case) {
   var options = {
     selector: 'button',
     content: 'true',
     empty: 'true',
     attribute: 'title'
   };
-  quail.components.placeholder(quail, test, Case, options);
-};
+  PlaceholderComponent(quail, test, Case, options);
+};;
+module.exports = ButtonHasName;

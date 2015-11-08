@@ -1,4 +1,4 @@
-quail.tabIndexFollowsLogicalOrder = function (quail, test, Case) {
+var TabIndexFollowsLogicalOrder = function (quail, test, Case) {
   test.get('$scope').each(function () {
     var $local = $(this);
     var index = 0;
@@ -20,4 +20,5 @@ quail.tabIndexFollowsLogicalOrder = function (quail, test, Case) {
       index++;
     });
   });
-};
+};;
+module.exports = TabIndexFollowsLogicalOrder;

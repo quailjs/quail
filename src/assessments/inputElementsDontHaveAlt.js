@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.inputElementsDontHaveAlt = function (quail, test, Case) {
+var InputElementsDontHaveAlt = function (quail, test, Case) {
 
   var selector = 'input[type!=image]';
 
@@ -32,4 +32,5 @@ quail.inputElementsDontHaveAlt = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = InputElementsDontHaveAlt;

@@ -1,5 +1,7 @@
 /**globals console:true */
-quail.skipToContentLinkProvided = function (quail, test, Case) {
+var SkipContentStringsComponent = require('SkipContentStringsComponent');
+
+var SkipToContentLinkProvided = function (quail, test, Case) {
   test.get('$scope').each(function () {
     var $local = $(this);
     var skipLinkFound = false;
@@ -12,7 +14,7 @@ quail.skipToContentLinkProvided = function (quail, test, Case) {
 
       var fragment = $link.attr('href').split('#').pop();
       var $target = $local.find('#' + fragment);
-      var strs = quail.strings.skipContent.slice();
+      var strs = SkipContentStringsComponent.slice();
       while (!skipLinkFound && strs.length) {
         var str = strs.pop();
         if ($link.text().search(str) > -1 && $target.length) {
@@ -35,4 +37,5 @@ quail.skipToContentLinkProvided = function (quail, test, Case) {
       }));
     }
   });
-};
+};;
+module.exports = SkipToContentLinkProvided;

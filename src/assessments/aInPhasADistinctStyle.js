@@ -1,4 +1,4 @@
-quail.aInPHasADistinctStyle = function (quail, test, Case) {
+var AInPHasADistinctStyle = function (quail, test, Case) {
 
   /**
    * Checks if an element has a border set
@@ -94,4 +94,5 @@ quail.aInPHasADistinctStyle = function (quail, test, Case) {
 
   });
 
-};
+};;
+module.exports = AInPHasADistinctStyle;

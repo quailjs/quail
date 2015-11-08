@@ -1,13 +1,15 @@
-quail.textIsNotSmall = function (quail, test, Case) {
+var ConvertToPxComponent = require('ConvertToPxComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var TextIsNotSmall = function (quail, test, Case) {
   test.get('$scope')
     .find(quail.textSelector)
     .filter(function (index, element) {
-      return quail.components.textNodeFilter(element);
+      return TextNodeFilterComponent(element);
     })
     .each(function () {
       var fontSize = $(this).css('font-size');
       if (fontSize.search('em') > 0) {
-        fontSize = quail.components.convertToPx(fontSize);
+        fontSize = ConvertToPxComponent(fontSize);
       }
       fontSize = parseInt(fontSize.replace('px', ''), 10);
 
@@ -24,4 +26,5 @@ quail.textIsNotSmall = function (quail, test, Case) {
         }));
       }
     });
-};
+};;
+module.exports = TextIsNotSmall;

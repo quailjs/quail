@@ -1,4 +1,4 @@
-quail.imgImportantNoSpacerAlt = function (quail, test, Case) {
+var ImgImportantNoSpacerAlt = function (quail, test, Case) {
   test.get('$scope').find('img[alt]').each(function () {
     var width = ($(this).width()) ? $(this).width() : parseInt($(this).attr('width'), 10);
     var height = ($(this).height()) ? $(this).height() : parseInt($(this).attr('height'), 10);
@@ -20,4 +20,5 @@ quail.imgImportantNoSpacerAlt = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = ImgImportantNoSpacerAlt;

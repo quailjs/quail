@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.frameIsNotUsed = function (quail, test, Case) {
+var FrameIsNotUsed = function (quail, test, Case) {
   var selector = 'frame';
 
   this.get('$scope').each(function () {
@@ -25,4 +25,5 @@ quail.frameIsNotUsed = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = FrameIsNotUsed;

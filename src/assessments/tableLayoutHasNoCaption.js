@@ -1,4 +1,4 @@
-quail.tableLayoutHasNoCaption = function (quail, test, Case) {
+var TableLayoutHasNoCaption = function (quail, test, Case) {
   test.get('$scope').find('table').each(function () {
     if ($(this).find('caption').length) {
       if (!quail.isDataTable($(this))) {
@@ -21,4 +21,5 @@ quail.tableLayoutHasNoCaption = function (quail, test, Case) {
       }));
     }
   });
-};
+};;
+module.exports = TableLayoutHasNoCaption;

@@ -1,4 +1,4 @@
-quail.definitionListsAreUsed = function (quail, test, Case) {
+var DefinitionListsAreUsed = function (quail, test, Case) {
   test.get('$scope').find('dl').each(function () {
     var _case = Case({
       element: this
@@ -31,4 +31,5 @@ quail.definitionListsAreUsed = function (quail, test, Case) {
       }
     });
   });
-};
+};;
+module.exports = DefinitionListsAreUsed;

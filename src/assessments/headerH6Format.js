@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.headerH6Format = function (quail, test, Case) {
+var HeaderH6Format = function (quail, test, Case) {
 
   var selector = 'h6';
 
@@ -26,4 +26,5 @@ quail.headerH6Format = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = HeaderH6Format;

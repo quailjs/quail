@@ -1,4 +1,4 @@
-quail.imgAltIsTooLong = function (quail, test, Case) {
+var ImgAltIsTooLong = function (quail, test, Case) {
   test.get('$scope').find('img[alt]').each(function () {
     var _case = Case({
       element: this
@@ -8,4 +8,5 @@ quail.imgAltIsTooLong = function (quail, test, Case) {
       status: ($(this).attr('alt').length > 100) ? 'failed' : 'passed'
     });
   });
-};
+};;
+module.exports = ImgAltIsTooLong;

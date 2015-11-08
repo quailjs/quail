@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.boldIsNotUsed = function (quail, test, Case) {
+var BoldIsNotUsed = function (quail, test, Case) {
 
   var selector = 'bold';
 
@@ -26,4 +26,5 @@ quail.boldIsNotUsed = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = BoldIsNotUsed;

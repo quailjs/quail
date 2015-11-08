@@ -5,7 +5,7 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-quail.formHasSubmitButton = function (quail, test, Case) {
+var FormHasSubmitButton = function (quail, test, Case) {
 
   var selector = 'input[type=submit], button[type=submit]';
 
@@ -31,4 +31,5 @@ quail.formHasSubmitButton = function (quail, test, Case) {
       });
     }
   });
-};
+};;
+module.exports = FormHasSubmitButton;

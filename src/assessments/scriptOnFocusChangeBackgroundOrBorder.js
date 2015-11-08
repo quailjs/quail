@@ -1,7 +1,7 @@
 /**
  * Test scriptOnFocusChangeBackgroundOrBorder.
  */
-quail.scriptOnFocusChangeBackgroundOrBorder = function (quail, test, Case) {
+var ScriptOnFocusChangeBackgroundOrBorder = function (quail, test, Case) {
   var buildCase = function (element, status, id, message) {
     test.add(Case({
       element: element,
@@ -29,4 +29,5 @@ quail.scriptOnFocusChangeBackgroundOrBorder = function (quail, test, Case) {
       buildCase(this, 'passed', null, 'Using script to change the background color or border of the element with focus');
     }
   });
-};
+};;
+module.exports = ScriptOnFocusChangeBackgroundOrBorder;
