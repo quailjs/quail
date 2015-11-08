@@ -32,5 +32,5 @@ var ImgWithMapHasUseMap = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ImgWithMapHasUseMap;

@@ -75,5 +75,5 @@ var ColorBackgroundImageContrast = function (quail, test, Case, options) {
       colorBackgroundImageContrast(test, Case, options, $(element), element);
     });
   });
-};;
+};
 module.exports = ColorBackgroundImageContrast;

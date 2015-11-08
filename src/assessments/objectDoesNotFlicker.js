@@ -38,5 +38,5 @@ var ObjectDoesNotFlicker = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ObjectDoesNotFlicker;

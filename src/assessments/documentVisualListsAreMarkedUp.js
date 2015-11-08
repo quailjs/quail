@@ -34,5 +34,5 @@ var DocumentVisualListsAreMarkedUp = function (quail, test, Case) {
         status: (matches && matches.length > 2) ? 'failed' : 'passed'
       });
     });
-};;
+};
 module.exports = DocumentVisualListsAreMarkedUp;

@@ -10,5 +10,5 @@ var DocumentTitleIsNotPlaceholder = function (quail, test, Case) {
     content: 'true'
   };
   PlaceholderComponent(quail, test, Case, options);
-};;
+};
 module.exports = DocumentTitleIsNotPlaceholder;

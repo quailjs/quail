@@ -49,6 +49,6 @@ var DoNotUseGraphicalSymbolToConveyInformation = function (quail, test, Case) {
         status: 'inapplicable'
       }));
     });
-};;
+};
 module.exports = DoNotUseGraphicalSymbolToConveyInformation;
 module.exports = TextSelector;

@@ -38,5 +38,5 @@ var AppletTextEquivalentsGetUpdated = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = AppletTextEquivalentsGetUpdated;

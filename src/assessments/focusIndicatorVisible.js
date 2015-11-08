@@ -49,5 +49,5 @@ var FocusIndicatorVisible = function (quail, test, Case) {
     // Focus needs to be triggered through a web driver protocol.
     this.addEventListener('focus', listener, false);
   });
-};;
+};
 module.exports = FocusIndicatorVisible;

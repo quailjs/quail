@@ -74,5 +74,5 @@ var ScriptFocusIndicatorVisible = function () {
 
     quail.testFails('scriptFocusIndicatorVisible', $(this));
   });
-};;
+};
 module.exports = ScriptFocusIndicatorVisible;

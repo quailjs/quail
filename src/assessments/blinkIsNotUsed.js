@@ -26,5 +26,5 @@ var BlinkIsNotUsed = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = BlinkIsNotUsed;

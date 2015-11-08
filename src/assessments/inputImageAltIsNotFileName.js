@@ -15,5 +15,5 @@ var InputImageAltIsNotFileName = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = InputImageAltIsNotFileName;

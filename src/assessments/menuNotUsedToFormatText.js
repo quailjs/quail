@@ -30,5 +30,5 @@ var MenuNotUsedToFormatText = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = MenuNotUsedToFormatText;

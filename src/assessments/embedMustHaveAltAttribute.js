@@ -32,5 +32,5 @@ var EmbedMustHaveAltAttribute = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = EmbedMustHaveAltAttribute;

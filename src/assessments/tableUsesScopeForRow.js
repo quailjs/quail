@@ -21,5 +21,5 @@ var TableUsesScopeForRow = function (quail, test, Case) {
       }
     });
   });
-};;
+};
 module.exports = TableUsesScopeForRow;

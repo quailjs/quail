@@ -22,5 +22,5 @@ var BlockquoteUseForQuotations = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = BlockquoteUseForQuotations;

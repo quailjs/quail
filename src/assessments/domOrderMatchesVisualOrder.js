@@ -38,5 +38,5 @@ var DomOrderMatchesVisualOrder = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = DomOrderMatchesVisualOrder;

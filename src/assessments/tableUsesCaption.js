@@ -34,5 +34,5 @@ var TableUsesCaption = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = TableUsesCaption;

@@ -28,5 +28,5 @@ var MarqueeIsNotUsed = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = MarqueeIsNotUsed;

@@ -9,5 +9,5 @@ var RadioHasLabel = function (quail, test, Case) {
     selector: 'input[type="radio"]'
   };
   LabelComponent(quail, test, Case, options);
-};;
+};
 module.exports = RadioHasLabel;

@@ -40,5 +40,5 @@ var ImgNotReferredToByColorAlone = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ImgNotReferredToByColorAlone;

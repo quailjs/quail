@@ -10,5 +10,5 @@ var InputImageAltIsNotPlaceholder = function (quail, test, Case) {
     attribute: 'alt'
   };
   PlaceholderComponent(quail, test, Case, options);
-};;
+};
 module.exports = InputImageAltIsNotPlaceholder;

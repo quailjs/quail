@@ -5,5 +5,5 @@ var AppletContainsTextEquivalentInAlt = function (quail, test, Case) {
     attribute: 'alt',
     empty: true
   });
-};;
+};
 module.exports = AppletContainsTextEquivalentInAlt;

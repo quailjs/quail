@@ -15,5 +15,5 @@ var AppletContainsTextEquivalent = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = AppletContainsTextEquivalent;

@@ -20,5 +20,5 @@ var TabIndexFollowsLogicalOrder = function (quail, test, Case) {
       index++;
     });
   });
-};;
+};
 module.exports = TabIndexFollowsLogicalOrder;

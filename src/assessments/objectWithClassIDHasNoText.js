@@ -38,5 +38,5 @@ var ObjectWithClassIDHasNoText = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ObjectWithClassIDHasNoText;

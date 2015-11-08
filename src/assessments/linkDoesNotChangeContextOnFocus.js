@@ -10,5 +10,5 @@ var LinkDoesNotChangeContextOnFocus = function (quail, test, Case) {
     searchEvent: 'onfocus'
   };
   EventComponent(quail, test, Case, options);
-};;
+};
 module.exports = LinkDoesNotChangeContextOnFocus;

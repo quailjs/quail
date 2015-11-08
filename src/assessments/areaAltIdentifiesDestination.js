@@ -38,5 +38,5 @@ var AreaAltIdentifiesDestination = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = AreaAltIdentifiesDestination;

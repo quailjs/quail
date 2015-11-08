@@ -16,5 +16,5 @@ var ImgHasLongDesc = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ImgHasLongDesc;

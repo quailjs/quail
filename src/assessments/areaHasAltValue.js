@@ -36,5 +36,5 @@ var AreaHasAltValue = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = AreaHasAltValue;

@@ -40,5 +40,5 @@ var ImgAltIdentifiesLinkDestination = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ImgAltIdentifiesLinkDestination;

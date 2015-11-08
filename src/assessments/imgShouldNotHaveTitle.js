@@ -32,5 +32,5 @@ var ImgShouldNotHaveTitle = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ImgShouldNotHaveTitle;

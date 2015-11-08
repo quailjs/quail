@@ -26,5 +26,5 @@ var ALinksToMultiMediaRequireTranscript = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ALinksToMultiMediaRequireTranscript;

@@ -37,5 +37,5 @@ var DocumentReadingDirection = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = DocumentReadingDirection;

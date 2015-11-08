@@ -38,5 +38,5 @@ var RadioMarkedWithFieldgroupAndLegend = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = RadioMarkedWithFieldgroupAndLegend;

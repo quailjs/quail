@@ -7,5 +7,5 @@ var TableLayoutMakesSenseLinearized = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = TableLayoutMakesSenseLinearized;

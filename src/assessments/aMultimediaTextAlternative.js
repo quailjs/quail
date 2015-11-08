@@ -37,5 +37,5 @@ var AMultimediaTextAlternative = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = AMultimediaTextAlternative;

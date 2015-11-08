@@ -15,5 +15,5 @@ var TableAxisHasCorrespondingId = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = TableAxisHasCorrespondingId;

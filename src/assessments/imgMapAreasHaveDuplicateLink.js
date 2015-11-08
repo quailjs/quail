@@ -30,5 +30,5 @@ var ImgMapAreasHaveDuplicateLink = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ImgMapAreasHaveDuplicateLink;

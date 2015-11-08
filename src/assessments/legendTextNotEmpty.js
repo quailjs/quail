@@ -32,5 +32,5 @@ var LegendTextNotEmpty = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = LegendTextNotEmpty;

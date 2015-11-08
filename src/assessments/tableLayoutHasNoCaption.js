@@ -21,5 +21,5 @@ var TableLayoutHasNoCaption = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = TableLayoutHasNoCaption;

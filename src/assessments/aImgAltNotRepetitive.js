@@ -18,5 +18,5 @@ var AImgAltNotRepetitive = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = AImgAltNotRepetitive;

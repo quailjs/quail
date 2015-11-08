@@ -40,5 +40,5 @@ var NoframesSectionMustHaveTextEquivalent = function (quail, test, Case, options
       });
     }
   });
-};;
+};
 module.exports = NoframesSectionMustHaveTextEquivalent;

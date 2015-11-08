@@ -34,5 +34,5 @@ var ObjectMustHaveTitle = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ObjectMustHaveTitle;

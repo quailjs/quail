@@ -15,5 +15,5 @@ var LabelMustBeUnique = function (quail, test, Case) {
     });
     test.add(_case);
   });
-};;
+};
 module.exports = LabelMustBeUnique;

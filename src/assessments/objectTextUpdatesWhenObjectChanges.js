@@ -38,5 +38,5 @@ var ObjectTextUpdatesWhenObjectChanges = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ObjectTextUpdatesWhenObjectChanges;

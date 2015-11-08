@@ -11,5 +11,5 @@ var TableSummaryIsEmpty = function (quail, test, Case) {
     empty: 'true'
   };
   PlaceholderComponent(quail, test, Case, options);
-};;
+};
 module.exports = TableSummaryIsEmpty;

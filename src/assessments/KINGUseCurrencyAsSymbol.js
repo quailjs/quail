@@ -25,5 +25,5 @@ var KINGUseCurrencyAsSymbol = function (quail, test, Case) {
     });
   }
   test.get('$scope').find('p').each(testCurrencyFormat);
-};;
+};
 module.exports = KINGUseCurrencyAsSymbol;

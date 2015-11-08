@@ -32,5 +32,5 @@ var FormWithRequiredLabel = function (quail, test, Case) {
       }
     });
   });
-};;
+};
 module.exports = FormWithRequiredLabel;

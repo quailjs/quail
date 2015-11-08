@@ -15,5 +15,5 @@ var InputImageAltIsShort = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = InputImageAltIsShort;

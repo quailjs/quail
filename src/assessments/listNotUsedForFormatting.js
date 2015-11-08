@@ -15,5 +15,5 @@ var ListNotUsedForFormatting = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ListNotUsedForFormatting;

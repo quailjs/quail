@@ -26,5 +26,5 @@ var FormErrorMessageHelpsUser = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = FormErrorMessageHelpsUser;

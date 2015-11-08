@@ -39,5 +39,5 @@ var DocumentLangIsISO639Standard = function (quail, test, Case) {
     }
   }
 
-};;
+};
 module.exports = DocumentLangIsISO639Standard;

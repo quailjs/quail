@@ -33,5 +33,5 @@ var LanguageUnicodeDirection = function (quail, test, Case) {
         }
       });
   });
-};;
+};
 module.exports = LanguageUnicodeDirection;

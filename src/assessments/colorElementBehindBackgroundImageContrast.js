@@ -78,5 +78,5 @@ var ColorElementBehindBackgroundImageContrast = function (quail, test, Case, opt
       colorElementBehindBackgroundImageContrast(test, Case, options, $(element), element);
     });
   });
-};;
+};
 module.exports = ColorElementBehindBackgroundImageContrast;

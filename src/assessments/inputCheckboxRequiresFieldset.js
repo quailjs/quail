@@ -15,5 +15,5 @@ var InputCheckboxRequiresFieldset = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = InputCheckboxRequiresFieldset;

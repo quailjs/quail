@@ -8,5 +8,5 @@ var EmbedHasAssociatedNoEmbed = function (quail, test, Case) {
       status: ($(this).find('noembed').length || $(this).next().is('noembed')) ? 'passed' : 'failed'
     });
   });
-};;
+};
 module.exports = EmbedHasAssociatedNoEmbed;

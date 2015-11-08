@@ -38,5 +38,5 @@ var FrameTitlesNotEmpty = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = FrameTitlesNotEmpty;

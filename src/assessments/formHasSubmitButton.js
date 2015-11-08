@@ -31,5 +31,5 @@ var FormHasSubmitButton = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = FormHasSubmitButton;

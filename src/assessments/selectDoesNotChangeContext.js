@@ -10,5 +10,5 @@ var SelectDoesNotChangeContext = function (quail, test, Case) {
     searchEvent: 'onchange'
   };
   EventComponent(quail, test, Case, options);
-};;
+};
 module.exports = SelectDoesNotChangeContext;

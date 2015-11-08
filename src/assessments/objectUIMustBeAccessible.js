@@ -38,5 +38,5 @@ var ObjectUIMustBeAccessible = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ObjectUIMustBeAccessible;

@@ -38,5 +38,5 @@ var AppletsDonotUseColorAlone = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = AppletsDonotUseColorAlone;

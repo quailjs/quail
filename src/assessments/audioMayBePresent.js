@@ -36,5 +36,5 @@ var AudioMayBePresent = function (quail, test, Case) {
     }
   });
 
-};;
+};
 module.exports = AudioMayBePresent;

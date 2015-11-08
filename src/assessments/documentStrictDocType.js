@@ -13,5 +13,5 @@ var DocumentStrictDocType = function (quail, test, Case) {
       status: 'passed'
     }));
   }
-};;
+};
 module.exports = DocumentStrictDocType;

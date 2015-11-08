@@ -50,5 +50,5 @@ var FileHasLabel = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = FileHasLabel;

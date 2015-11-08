@@ -32,5 +32,5 @@ var ImageMapServerSide = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ImageMapServerSide;

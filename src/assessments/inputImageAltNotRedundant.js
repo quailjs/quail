@@ -16,5 +16,5 @@ var InputImageAltNotRedundant = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = InputImageAltNotRedundant;

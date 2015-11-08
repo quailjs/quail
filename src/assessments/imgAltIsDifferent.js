@@ -22,5 +22,5 @@ var ImgAltIsDifferent = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ImgAltIsDifferent;

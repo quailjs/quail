@@ -38,5 +38,5 @@ var ScriptInBodyMustHaveNoscript = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ScriptInBodyMustHaveNoscript;

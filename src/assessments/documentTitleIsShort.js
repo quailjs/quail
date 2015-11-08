@@ -4,5 +4,5 @@ var DocumentTitleIsShort = function (quail, test, Case) {
     element: $title.get(0),
     status: $title.text().length > 150 ? 'failed' : 'passed'
   }));
-};;
+};
 module.exports = DocumentTitleIsShort;

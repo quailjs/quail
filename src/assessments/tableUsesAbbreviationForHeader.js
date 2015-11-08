@@ -7,5 +7,5 @@ var TableUsesAbbreviationForHeader = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = TableUsesAbbreviationForHeader;

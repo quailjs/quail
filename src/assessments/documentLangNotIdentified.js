@@ -21,5 +21,5 @@ var DocumentLangNotIdentified = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = DocumentLangNotIdentified;

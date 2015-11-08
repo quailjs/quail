@@ -40,5 +40,5 @@ var LinkUsedForAlternateContent = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = LinkUsedForAlternateContent;

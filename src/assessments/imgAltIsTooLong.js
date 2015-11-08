@@ -8,5 +8,5 @@ var ImgAltIsTooLong = function (quail, test, Case) {
       status: ($(this).attr('alt').length > 100) ? 'failed' : 'passed'
     });
   });
-};;
+};
 module.exports = ImgAltIsTooLong;

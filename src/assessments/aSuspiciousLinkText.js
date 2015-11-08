@@ -26,5 +26,5 @@ var ASuspiciousLinkText = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ASuspiciousLinkText;

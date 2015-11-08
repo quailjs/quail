@@ -40,5 +40,5 @@ var ImgAltEmptyForDecorativeImages = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ImgAltEmptyForDecorativeImages;

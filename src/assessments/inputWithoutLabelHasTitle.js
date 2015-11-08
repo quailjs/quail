@@ -39,5 +39,5 @@ var InputWithoutLabelHasTitle = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = InputWithoutLabelHasTitle;

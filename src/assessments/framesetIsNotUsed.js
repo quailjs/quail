@@ -38,5 +38,5 @@ var FramesetIsNotUsed = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = FramesetIsNotUsed;

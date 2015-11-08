@@ -33,5 +33,5 @@ var ALinksToSoundFilesNeedTranscripts = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ALinksToSoundFilesNeedTranscripts;

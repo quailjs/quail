@@ -15,5 +15,5 @@ var VideosEmbeddedOrLinkedNeedCaptions = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = VideosEmbeddedOrLinkedNeedCaptions;

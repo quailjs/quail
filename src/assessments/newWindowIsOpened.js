@@ -22,5 +22,5 @@ var NewWindowIsOpened = function (quail, test, Case) {
   });
 
   window.open = fenestrate;
-};;
+};
 module.exports = NewWindowIsOpened;

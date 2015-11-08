@@ -37,5 +37,5 @@ var SkipToContentLinkProvided = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = SkipToContentLinkProvided;

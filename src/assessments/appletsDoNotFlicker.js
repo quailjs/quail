@@ -38,5 +38,5 @@ var AppletsDoNotFlicker = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = AppletsDoNotFlicker;

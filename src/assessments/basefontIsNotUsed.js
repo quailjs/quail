@@ -26,5 +26,5 @@ var BasefontIsNotUsed = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = BasefontIsNotUsed;

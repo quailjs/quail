@@ -94,5 +94,5 @@ var AInPHasADistinctStyle = function (quail, test, Case) {
 
   });
 
-};;
+};
 module.exports = AInPHasADistinctStyle;

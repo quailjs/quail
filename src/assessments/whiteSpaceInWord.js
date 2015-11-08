@@ -25,5 +25,5 @@ var WhiteSpaceInWord = function (quail, test, Case) {
         }));
       }
     });
-};;
+};
 module.exports = WhiteSpaceInWord;

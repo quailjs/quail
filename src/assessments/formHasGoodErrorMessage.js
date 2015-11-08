@@ -26,5 +26,5 @@ var FormHasGoodErrorMessage = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = FormHasGoodErrorMessage;

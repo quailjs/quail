@@ -38,5 +38,5 @@ var TableWithBothHeadersUseScope = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = TableWithBothHeadersUseScope;

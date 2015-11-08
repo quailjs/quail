@@ -47,5 +47,5 @@ var LanguageDirectionPunctuation = function (quail, test, Case) {
         _case.set({status: 'passed'});
       });
   });
-};;
+};
 module.exports = LanguageDirectionPunctuation;

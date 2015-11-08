@@ -11,5 +11,5 @@ var ScriptOnclickRequiresOnKeypress = function (quail, test, Case) {
     searchEvent: 'onclick'
   };
   EventComponent(quail, test, Case, options);
-};;
+};
 module.exports = ScriptOnclickRequiresOnKeypress;

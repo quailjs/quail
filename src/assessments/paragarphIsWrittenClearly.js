@@ -17,5 +17,5 @@ var ParagraphIsWrittenClearly = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ParagraphIsWrittenClearly;

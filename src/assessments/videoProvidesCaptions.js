@@ -38,5 +38,5 @@ var VideoProvidesCaptions = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = VideoProvidesCaptions;

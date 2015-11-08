@@ -55,5 +55,5 @@ var PNotUsedAsHeader = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = PNotUsedAsHeader;

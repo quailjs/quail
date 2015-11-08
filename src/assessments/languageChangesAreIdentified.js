@@ -97,5 +97,5 @@ var LanguageChangesAreIdentified = function (quail, test, Case) {
         }));
       }
     });
-};;
+};
 module.exports = LanguageChangesAreIdentified;

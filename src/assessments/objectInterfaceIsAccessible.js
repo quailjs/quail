@@ -38,5 +38,5 @@ var ObjectInterfaceIsAccessible = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ObjectInterfaceIsAccessible;

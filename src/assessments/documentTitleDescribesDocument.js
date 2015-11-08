@@ -28,5 +28,5 @@ var DocumentTitleDescribesDocument = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = DocumentTitleDescribesDocument;

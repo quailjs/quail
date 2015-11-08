@@ -38,5 +38,5 @@ var TableCaptionIdentifiesTable = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = TableCaptionIdentifiesTable;

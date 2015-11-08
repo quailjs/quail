@@ -9,5 +9,5 @@ var PasswordHasLabel = function (quail, test, Case) {
     selector: 'input[type="password"]'
   };
   LabelComponent(quail, test, Case, options);
-};;
+};
 module.exports = PasswordHasLabel;

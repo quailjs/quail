@@ -13,5 +13,5 @@ var TabularDataIsInTable = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = TabularDataIsInTable;

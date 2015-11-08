@@ -38,5 +38,5 @@ var AreaAltRefersToText = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = AreaAltRefersToText;

@@ -50,5 +50,5 @@ var IdrefsHasCorrespondingId = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = IdrefsHasCorrespondingId;

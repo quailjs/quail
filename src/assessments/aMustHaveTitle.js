@@ -20,5 +20,5 @@ var AMustHaveTitle = function (quail, test, Case) {
       }
     });
   });
-};;
+};
 module.exports = AMustHaveTitle;

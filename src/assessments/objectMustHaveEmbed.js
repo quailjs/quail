@@ -34,5 +34,5 @@ var ObjectMustHaveEmbed = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ObjectMustHaveEmbed;

@@ -19,5 +19,5 @@ var KINGUsePercentageWithSymbol = function (quail, test, Case) {
     });
   }
   test.get('$scope').find('p').each(testPercentFormat);
-};;
+};
 module.exports = KINGUsePercentageWithSymbol;

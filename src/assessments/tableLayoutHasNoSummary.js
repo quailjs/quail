@@ -13,5 +13,5 @@ var TableLayoutHasNoSummary = function (quail, test, Case) {
       }
     });
   });
-};;
+};
 module.exports = TableLayoutHasNoSummary;

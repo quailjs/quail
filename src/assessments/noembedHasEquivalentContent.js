@@ -40,5 +40,5 @@ var NoembedHasEquivalentContent = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = NoembedHasEquivalentContent;

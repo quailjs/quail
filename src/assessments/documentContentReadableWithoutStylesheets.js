@@ -14,5 +14,5 @@ var DocumentContentReadableWithoutStylesheets = function (quail, test, Case) {
       status: 'untested'
     }));
   });
-};;
+};
 module.exports = DocumentContentReadableWithoutStylesheets;

@@ -32,5 +32,5 @@ var DocumentHasTitleElement = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = DocumentHasTitleElement;

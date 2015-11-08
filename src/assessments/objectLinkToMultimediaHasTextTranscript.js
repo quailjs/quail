@@ -38,5 +38,5 @@ var ObjectLinkToMultimediaHasTextTranscript = function (quail, test, Case, optio
       });
     }
   });
-};;
+};
 module.exports = ObjectLinkToMultimediaHasTextTranscript;

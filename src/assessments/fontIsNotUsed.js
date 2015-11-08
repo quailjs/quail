@@ -26,5 +26,5 @@ var FontIsNotUsed = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = FontIsNotUsed;

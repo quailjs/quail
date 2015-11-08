@@ -82,5 +82,5 @@ var ColorElementBehindBackgroundGradientContrast = function (quail, test, Case, 
       colorElementBehindBackgroundGradientContrast(test, Case, options, $(element), element);
     });
   });
-};;
+};
 module.exports = ColorElementBehindBackgroundGradientContrast;

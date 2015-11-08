@@ -32,5 +32,5 @@ var IframeMustNotHaveLongdesc = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = IframeMustNotHaveLongdesc;

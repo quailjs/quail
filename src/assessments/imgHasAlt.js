@@ -32,5 +32,5 @@ var ImgHasAlt = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ImgHasAlt;

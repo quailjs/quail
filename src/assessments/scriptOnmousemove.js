@@ -11,5 +11,5 @@ var ScriptOnmousemove = function (quail, test, Case) {
     searchEvent: 'onmousemove'
   };
   EventComponent(quail, test, Case, options);
-};;
+};
 module.exports = ScriptOnmousemove;

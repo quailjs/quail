@@ -16,5 +16,5 @@ var ImgNonDecorativeHasAlt = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ImgNonDecorativeHasAlt;

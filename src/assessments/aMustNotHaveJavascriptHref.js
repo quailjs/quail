@@ -38,5 +38,5 @@ var AMustNotHaveJavascriptHref = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = AMustNotHaveJavascriptHref;

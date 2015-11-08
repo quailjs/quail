@@ -40,5 +40,5 @@ var ContentPositioningShouldNotChangeMeaning = function (quail, test, Case) {
       });
     });
   });
-};;
+};
 module.exports = ContentPositioningShouldNotChangeMeaning;

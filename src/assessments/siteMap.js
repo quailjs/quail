@@ -29,5 +29,5 @@ var SiteMapStringsComponent = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = SiteMapStringsComponent;

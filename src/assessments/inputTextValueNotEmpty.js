@@ -11,5 +11,5 @@ var InputTextValueNotEmpty = function (quail, test, Case) {
     empty: 'true'
   };
   PlaceholderComponent(quail, test, Case, options);
-};;
+};
 module.exports = InputTextValueNotEmpty;

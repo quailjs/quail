@@ -19,5 +19,5 @@ var ListOfLinksUseList = function (quail, test, Case) {
       }
     }
   });
-};;
+};
 module.exports = ListOfLinksUseList;

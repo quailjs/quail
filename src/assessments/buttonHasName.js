@@ -12,5 +12,5 @@ var ButtonHasName = function (quail, test, Case) {
     attribute: 'title'
   };
   PlaceholderComponent(quail, test, Case, options);
-};;
+};
 module.exports = ButtonHasName;

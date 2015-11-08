@@ -34,5 +34,5 @@ var ALinkWithNonText = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ALinkWithNonText;

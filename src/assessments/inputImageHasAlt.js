@@ -32,5 +32,5 @@ var InputImageHasAlt = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = InputImageHasAlt;

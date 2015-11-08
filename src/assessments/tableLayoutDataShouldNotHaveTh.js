@@ -23,5 +23,5 @@ var TableLayoutDataShouldNotHaveTh = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = TableLayoutDataShouldNotHaveTh;

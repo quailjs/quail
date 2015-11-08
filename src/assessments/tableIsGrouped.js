@@ -38,5 +38,5 @@ var TableIsGrouped = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = TableIsGrouped;

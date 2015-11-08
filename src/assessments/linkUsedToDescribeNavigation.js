@@ -40,5 +40,5 @@ var LinkUsedToDescribeNavigation = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = LinkUsedToDescribeNavigation;

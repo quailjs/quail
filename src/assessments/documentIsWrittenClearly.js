@@ -29,5 +29,5 @@ var DocumentIsWrittenClearly = function (quail, test, Case) {
         });
       }
     });
-};;
+};
 module.exports = DocumentIsWrittenClearly;

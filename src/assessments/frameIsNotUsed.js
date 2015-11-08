@@ -25,5 +25,5 @@ var FrameIsNotUsed = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = FrameIsNotUsed;

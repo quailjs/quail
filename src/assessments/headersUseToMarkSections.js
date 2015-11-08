@@ -37,5 +37,5 @@ var HeadersUseToMarkSections = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = HeadersUseToMarkSections;

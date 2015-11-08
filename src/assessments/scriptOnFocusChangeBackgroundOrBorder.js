@@ -29,5 +29,5 @@ var ScriptOnFocusChangeBackgroundOrBorder = function (quail, test, Case) {
       buildCase(this, 'passed', null, 'Using script to change the background color or border of the element with focus');
     }
   });
-};;
+};
 module.exports = ScriptOnFocusChangeBackgroundOrBorder;

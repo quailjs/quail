@@ -17,5 +17,5 @@ var ALinksAreSeparatedByPrintableCharacters = function (quail, test, Case) {
       }
     }
   });
-};;
+};
 module.exports = ALinksAreSeparatedByPrintableCharacters;

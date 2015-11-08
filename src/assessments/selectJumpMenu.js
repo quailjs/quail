@@ -20,5 +20,5 @@ var SelectJumpMenu = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = SelectJumpMenu;

@@ -38,5 +38,5 @@ var ATitleDescribesDestination = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ATitleDescribesDestination;

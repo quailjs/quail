@@ -51,5 +51,5 @@ var ColorFontContrast = function (quail, test, Case, options) {
       colorFontContrast(test, Case, options, $(element), element);
     });
   });
-};;
+};
 module.exports = ColorFontContrast;

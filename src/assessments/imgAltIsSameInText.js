@@ -40,5 +40,5 @@ var ImgAltIsSameInText = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ImgAltIsSameInText;

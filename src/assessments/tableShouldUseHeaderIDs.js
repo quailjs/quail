@@ -29,5 +29,5 @@ var TableShouldUseHeaderIDs = function (quail, test, Case) {
       }
     }
   });
-};;
+};
 module.exports = TableShouldUseHeaderIDs;

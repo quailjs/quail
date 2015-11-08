@@ -38,5 +38,5 @@ var FrameRelationshipsMustBeDescribed = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = FrameRelationshipsMustBeDescribed;

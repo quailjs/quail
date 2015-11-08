@@ -20,5 +20,5 @@ var ImgImportantNoSpacerAlt = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ImgImportantNoSpacerAlt;

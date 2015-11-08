@@ -9,5 +9,5 @@ var InputTextHasLabel = function (quail, test, Case) {
     selector: 'input'
   };
   LabelComponent(quail, test, Case, options);
-};;
+};
 module.exports = InputTextHasLabel;

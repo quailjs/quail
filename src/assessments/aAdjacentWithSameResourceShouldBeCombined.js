@@ -48,5 +48,5 @@ var AAdjacentWithSameResourceShouldBeCombined = function (quail, test, Case) {
   }
 
   test.get('$scope').each(findAdjacent);
-};;
+};
 module.exports = AAdjacentWithSameResourceShouldBeCombined;

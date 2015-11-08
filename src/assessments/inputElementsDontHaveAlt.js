@@ -32,5 +32,5 @@ var InputElementsDontHaveAlt = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = InputElementsDontHaveAlt;

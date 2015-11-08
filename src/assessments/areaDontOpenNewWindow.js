@@ -47,5 +47,5 @@ var AreaDontOpenNewWindow = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = AreaDontOpenNewWindow;

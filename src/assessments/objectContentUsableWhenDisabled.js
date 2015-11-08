@@ -40,5 +40,5 @@ var ObjectContentUsableWhenDisabled = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ObjectContentUsableWhenDisabled;

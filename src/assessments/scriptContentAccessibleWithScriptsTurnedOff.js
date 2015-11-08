@@ -38,5 +38,5 @@ var ScriptContentAccessibleWithScriptsTurnedOff = function (quail, test, Case, o
       });
     }
   });
-};;
+};
 module.exports = ScriptContentAccessibleWithScriptsTurnedOff;

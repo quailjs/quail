@@ -38,5 +38,5 @@ var FramesetMustHaveNoFramesSection = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = FramesetMustHaveNoFramesSection;

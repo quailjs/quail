@@ -7,5 +7,5 @@ var TableSummaryIsNotTooLong = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = TableSummaryIsNotTooLong;

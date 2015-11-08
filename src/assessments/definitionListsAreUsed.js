@@ -31,5 +31,5 @@ var DefinitionListsAreUsed = function (quail, test, Case) {
       }
     });
   });
-};;
+};
 module.exports = DefinitionListsAreUsed;

@@ -38,5 +38,5 @@ var ScriptsDoNotFlicker = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ScriptsDoNotFlicker;

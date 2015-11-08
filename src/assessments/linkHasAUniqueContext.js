@@ -172,5 +172,5 @@ var LinkHasAUniqueContext = function (quail, test, Case) {
       }
     });
   });
-};;
+};
 module.exports = LinkHasAUniqueContext;

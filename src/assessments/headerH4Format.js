@@ -26,5 +26,5 @@ var HeaderH4Format = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = HeaderH4Format;

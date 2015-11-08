@@ -13,5 +13,5 @@ var TableNotUsedForLayout = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = TableNotUsedForLayout;

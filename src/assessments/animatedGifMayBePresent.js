@@ -85,5 +85,5 @@ var AnimatedGifMayBePresent = function (quail, test, Case) {
       }
     });
   });
-};;
+};
 module.exports = AnimatedGifMayBePresent;

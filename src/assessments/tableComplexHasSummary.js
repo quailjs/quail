@@ -38,5 +38,5 @@ var TableComplexHasSummary = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = TableComplexHasSummary;

@@ -24,5 +24,5 @@ var ImgAltNotEmptyInAnchor = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ImgAltNotEmptyInAnchor;

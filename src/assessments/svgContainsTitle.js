@@ -34,5 +34,5 @@ var SvgContainsTitle = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = SvgContainsTitle;

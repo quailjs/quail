@@ -61,5 +61,5 @@ var ColorElementBehindContrast = function (quail, test, Case, options) {
     });
 
   });
-};;
+};
 module.exports = ColorElementBehindContrast;

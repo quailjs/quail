@@ -38,5 +38,5 @@ var FieldsetHasLabel = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = FieldsetHasLabel;

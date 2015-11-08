@@ -38,5 +38,5 @@ var ObjectProvidesMechanismToReturnToParent = function (quail, test, Case, optio
       });
     }
   });
-};;
+};
 module.exports = ObjectProvidesMechanismToReturnToParent;

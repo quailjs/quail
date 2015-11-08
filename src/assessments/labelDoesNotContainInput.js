@@ -32,5 +32,5 @@ var LabelDoesNotContainInput = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = LabelDoesNotContainInput;

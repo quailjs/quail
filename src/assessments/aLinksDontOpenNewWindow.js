@@ -39,5 +39,5 @@ var ALinksDontOpenNewWindow = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = ALinksDontOpenNewWindow;

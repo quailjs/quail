@@ -38,5 +38,5 @@ var AppletUIMustBeAccessible = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = AppletUIMustBeAccessible;

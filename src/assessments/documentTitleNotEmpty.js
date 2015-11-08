@@ -11,5 +11,5 @@ var DocumentTitleNotEmpty = function (quail, test, Case) {
     empty: 'true'
   };
   PlaceholderComponent(quail, test, Case, options);
-};;
+};
 module.exports = DocumentTitleNotEmpty;

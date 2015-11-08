@@ -27,5 +27,5 @@ var WhiteSpaceNotUsedForFormatting = function (quail, test, Case) {
         _case.set({status: 'cantTell'});
       }
     });
-};;
+};
 module.exports = WhiteSpaceNotUsedForFormatting;

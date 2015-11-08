@@ -34,5 +34,5 @@ var LiDontUseImageForBullet = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = LiDontUseImageForBullet;

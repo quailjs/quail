@@ -26,5 +26,5 @@ var TextIsNotSmall = function (quail, test, Case) {
         }));
       }
     });
-};;
+};
 module.exports = TextIsNotSmall;

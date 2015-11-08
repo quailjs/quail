@@ -38,5 +38,5 @@ var ScriptsDoNotUseColorAlone = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = ScriptsDoNotUseColorAlone;

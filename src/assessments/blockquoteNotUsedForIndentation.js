@@ -35,5 +35,5 @@ var BlockquoteNotUsedForIndentation = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = BlockquoteNotUsedForIndentation;

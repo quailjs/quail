@@ -46,5 +46,5 @@ var LanguageDirAttributeIsUsed = function (quail, test, Case) {
       })
       .each(countDirAttributes);
   });
-};;
+};
 module.exports = LanguageDirAttributeIsUsed;

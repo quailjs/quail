@@ -10,5 +10,5 @@ var ImgWithMathShouldHaveMathEquivalent = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = ImgWithMathShouldHaveMathEquivalent;

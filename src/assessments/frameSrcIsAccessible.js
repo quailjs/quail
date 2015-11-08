@@ -38,5 +38,5 @@ var FrameSrcIsAccessible = function (quail, test, Case, options) {
       });
     }
   });
-};;
+};
 module.exports = FrameSrcIsAccessible;

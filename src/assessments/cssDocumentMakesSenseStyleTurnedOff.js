@@ -14,5 +14,5 @@ var CssDocumentMakesSenseStyleTurnedOff = function (quail, test, Case) {
       status: 'untested'
     }));
   });
-};;
+};
 module.exports = CssDocumentMakesSenseStyleTurnedOff;

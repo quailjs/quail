@@ -7,5 +7,5 @@ var TableUseColGroup = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = TableUseColGroup;

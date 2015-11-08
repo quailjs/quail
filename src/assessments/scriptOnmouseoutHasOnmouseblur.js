@@ -11,5 +11,5 @@ var ScriptOnmouseoutHasOnmouseblur = function (quail, test, Case) {
     searchEvent: 'onmouseout'
   };
   EventComponent(quail, test, Case, options);
-};;
+};
 module.exports = ScriptOnmouseoutHasOnmouseblur;

@@ -38,5 +38,5 @@ var AppletProvidesMechanismToReturnToParent = function (quail, test, Case, optio
       });
     }
   });
-};;
+};
 module.exports = AppletProvidesMechanismToReturnToParent;

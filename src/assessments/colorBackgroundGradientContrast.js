@@ -83,5 +83,5 @@ var ColorBackgroundGradientContrast = function (quail, test, Case, options) {
     });
 
   });
-};;
+};
 module.exports = ColorBackgroundGradientContrast;

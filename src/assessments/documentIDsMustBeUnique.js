@@ -39,5 +39,5 @@ var DocumentIDsMustBeUnique = function (quail, test, Case) {
       }
     });
   });
-};;
+};
 module.exports = DocumentIDsMustBeUnique;

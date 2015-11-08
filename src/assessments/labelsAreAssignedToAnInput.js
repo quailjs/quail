@@ -23,5 +23,5 @@ var LabelsAreAssignedToAnInput = function (quail, test, Case) {
       }
     }
   });
-};;
+};
 module.exports = LabelsAreAssignedToAnInput;

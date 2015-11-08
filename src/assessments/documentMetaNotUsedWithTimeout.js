@@ -35,5 +35,5 @@ var DocumentMetaNotUsedWithTimeout = function (quail, test, Case) {
       });
     }
   });
-};;
+};
 module.exports = DocumentMetaNotUsedWithTimeout;

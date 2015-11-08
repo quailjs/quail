@@ -30,5 +30,5 @@ var ALinkTextDoesNotBeginWithRedundantWord = function (quail, test, Case) {
       }));
     }
   });
-};;
+};
 module.exports = ALinkTextDoesNotBeginWithRedundantWord;
