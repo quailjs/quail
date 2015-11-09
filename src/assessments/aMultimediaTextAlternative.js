@@ -1,4 +1,5 @@
-var AMultimediaTextAlternative = function (quail, test, Case) {
+var Case = require('Case');
+var AMultimediaTextAlternative = function (quail, test) {
 
   var selector = [
     'a[href$=".aif"]',

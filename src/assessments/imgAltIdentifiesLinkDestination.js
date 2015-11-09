@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var ImgAltIdentifiesLinkDestination = function (quail, test, Case, options) {
+var ImgAltIdentifiesLinkDestination = function (quail, test, options) {
 
   var selector = 'a img[alt]:first';
 

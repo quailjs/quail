@@ -1,5 +1,6 @@
+var Case = require('Case');
 var ConvertToPxComponent = require('ConvertToPxComponent');
-var FocusIndicatorVisible = function (quail, test, Case) {
+var FocusIndicatorVisible = function (quail, test) {
   test.get('$scope').find(quail.focusElements).each(function () {
     var _case = Case({
       element: this

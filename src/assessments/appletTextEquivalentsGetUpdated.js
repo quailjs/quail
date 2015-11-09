@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var AppletTextEquivalentsGetUpdated = function (quail, test, Case, options) {
+var AppletTextEquivalentsGetUpdated = function (quail, test, options) {
 
   var selector = 'applet';
 

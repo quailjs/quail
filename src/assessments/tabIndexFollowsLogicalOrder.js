@@ -1,4 +1,5 @@
-var TabIndexFollowsLogicalOrder = function (quail, test, Case) {
+var Case = require('Case');
+var TabIndexFollowsLogicalOrder = function (quail, test) {
   test.get('$scope').each(function () {
     var $local = $(this);
     var index = 0;

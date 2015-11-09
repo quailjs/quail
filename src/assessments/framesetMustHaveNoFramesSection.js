@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FramesetMustHaveNoFramesSection = function (quail, test, Case, options) {
+var FramesetMustHaveNoFramesSection = function (quail, test, options) {
 
   var selector = 'frameset:not(frameset:has(noframes))';
 

@@ -1,6 +1,7 @@
+var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var LanguageDirectionPunctuation = function (quail, test, Case) {
+var LanguageDirectionPunctuation = function (quail, test) {
   var $scope = test.get('$scope');
   var punctuation = {};
   var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;

@@ -1,6 +1,7 @@
+var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var TextStatisticsComponent = require('TextStatisticsComponent');
-var DocumentIsWrittenClearly = function (quail, test, Case) {
+var DocumentIsWrittenClearly = function (quail, test) {
   test.get('$scope')
     .find(quail.textSelector)
     .filter(function (index, element) {

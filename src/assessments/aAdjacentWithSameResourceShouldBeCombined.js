@@ -1,4 +1,5 @@
-var AAdjacentWithSameResourceShouldBeCombined = function (quail, test, Case) {
+var Case = require('Case');
+var AAdjacentWithSameResourceShouldBeCombined = function (quail, test) {
 
   function findAdjacent (index, element) {
     var $element = $(element);

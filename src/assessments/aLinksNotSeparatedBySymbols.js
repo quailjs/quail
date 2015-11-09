@@ -1,5 +1,6 @@
+var Case = require('Case');
 var SymbolsStringsComponent = require('SymbolsStringsComponent');
-var ALinksNotSeparatedBySymbols = function (quail, test, Case) {
+var ALinksNotSeparatedBySymbols = function (quail, test) {
   test.get('$scope').find('a').each(function () {
     var $link = $(this);
     if ($link.next('a').length) {

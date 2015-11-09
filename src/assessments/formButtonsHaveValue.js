@@ -5,7 +5,9 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-var FormButtonsHaveValue = function (quail, test, Case) {
+var Case = require('Case');
+
+var FormButtonsHaveValue = function (quail, test) {
 
   var selector = 'input[type=button], input[type=submit], input[type=reset]';
 

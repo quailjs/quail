@@ -1,5 +1,6 @@
+var Case = require('Case');
 var RedundantStringsComponent = require('RedundantStringsComponent');
-var InputImageAltNotRedundant = function (quail, test, Case) {
+var InputImageAltNotRedundant = function (quail, test) {
   test.get('$scope').find('input[type=image][alt]').each(function () {
     var _case = Case({
       element: this

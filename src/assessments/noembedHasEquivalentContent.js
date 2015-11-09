@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var NoembedHasEquivalentContent = function (quail, test, Case, options) {
+var NoembedHasEquivalentContent = function (quail, test, options) {
 
   var selector = 'noembed';
 

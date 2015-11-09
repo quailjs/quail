@@ -1,5 +1,6 @@
+var Case = require('Case');
 var SiteMapStringsComponent = require('SiteMapStringsComponent');
-var SiteMapStringsComponent = function (quail, test, Case) {
+var SiteMapStringsComponent = function (quail, test) {
   var set = true;
   var _case = Case({
     element: test.get('$scope').get(0)

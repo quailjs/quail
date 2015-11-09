@@ -1,4 +1,5 @@
-var ImgAltNotEmptyInAnchor = function (quail, test, Case) {
+var Case = require('Case');
+var ImgAltNotEmptyInAnchor = function (quail, test) {
   test.get('$scope').find('a[href]:has(img)').each(function () {
     var $a = $(this);
     var text = $a.text();

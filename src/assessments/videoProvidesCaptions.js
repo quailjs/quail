@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var VideoProvidesCaptions = function (quail, test, Case, options) {
+var VideoProvidesCaptions = function (quail, test, options) {
 
   var selector = 'video';
 

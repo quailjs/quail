@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var LinkUsedToDescribeNavigation = function (quail, test, Case, options) {
+var LinkUsedToDescribeNavigation = function (quail, test, options) {
 
   var selector = 'html:not(html:has(link[rel=index]))';
 

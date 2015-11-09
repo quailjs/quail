@@ -1,4 +1,5 @@
-var ALinksToSoundFilesNeedTranscripts = function (quail, test, Case) {
+var Case = require('Case');
+var ALinksToSoundFilesNeedTranscripts = function (quail, test) {
 
   var selector = [
     'a[href$=".wav"]',

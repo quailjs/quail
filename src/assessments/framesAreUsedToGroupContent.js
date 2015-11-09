@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FramesAreUsedToGroupContent = function (quail, test, Case, options) {
+var FramesAreUsedToGroupContent = function (quail, test, options) {
 
   var selector = 'body:not(body:has(frameset))';
 

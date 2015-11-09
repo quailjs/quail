@@ -1,4 +1,5 @@
-var DocumentStrictDocType = function (quail, test, Case) {
+var Case = require('Case');
+var DocumentStrictDocType = function (quail, test) {
   if (typeof document.doctype === 'undefined' ||
     !document.doctype ||
     document.doctype.systemId.search('strict') === -1) {

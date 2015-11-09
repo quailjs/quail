@@ -5,7 +5,9 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-var TableUsesCaption = function (quail, test, Case) {
+var Case = require('Case');
+
+var TableUsesCaption = function (quail, test) {
 
   var selector = 'table';
 

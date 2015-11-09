@@ -2,9 +2,11 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
+var Case = require('Case');
+
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var HeadersHaveText = function (quail, test, Case) {
+var HeadersHaveText = function (quail, test) {
   var options = {
     selector: 'h1, h2, h3, h4, h5, h6',
     content: 'true',

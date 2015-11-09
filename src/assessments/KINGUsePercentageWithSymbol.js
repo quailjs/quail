@@ -1,4 +1,5 @@
-var KINGUsePercentageWithSymbol = function (quail, test, Case) {
+var Case = require('Case');
+var KINGUsePercentageWithSymbol = function (quail, test) {
   function testPercentFormat (index, element) {
     // Detect dates with several separators.
     var percentName = [

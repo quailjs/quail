@@ -1,4 +1,5 @@
-var PNotUsedAsHeader = function (quail, test, Case) {
+var Case = require('Case');
+var PNotUsedAsHeader = function (quail, test) {
   test.get('$scope').find('p').each(function () {
     var _case = Case({
       element: this

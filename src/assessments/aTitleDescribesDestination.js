@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ATitleDescribesDestination = function (quail, test, Case, options) {
+var ATitleDescribesDestination = function (quail, test, options) {
 
   var selector = 'a[title]';
 

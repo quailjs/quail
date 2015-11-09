@@ -1,7 +1,9 @@
 /**globals console:true */
+var Case = require('Case');
+
 var SkipContentStringsComponent = require('SkipContentStringsComponent');
 
-var SkipToContentLinkProvided = function (quail, test, Case) {
+var SkipToContentLinkProvided = function (quail, test) {
   test.get('$scope').each(function () {
     var $local = $(this);
     var skipLinkFound = false;

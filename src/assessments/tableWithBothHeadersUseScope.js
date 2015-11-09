@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var TableWithBothHeadersUseScope = function (quail, test, Case, options) {
+var TableWithBothHeadersUseScope = function (quail, test, options) {
 
   var selector = 'table:has(tr:not(table tr:first) th:not(th[scope]))';
 

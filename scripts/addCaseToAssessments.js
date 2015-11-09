@@ -95,6 +95,8 @@ module.exports = function(file, api, options) {
     .filter(dedupe)
     .length === 0;
 
+  const needsCaseParamRemoved = true;
+
   // Add require statements.
   if (needsCaseRequirement) {
     createRequireExpression(requirementNames)
@@ -106,6 +108,21 @@ module.exports = function(file, api, options) {
   }
 
   // Remove Case parameters.
+
+  root
+    .find(j.FunctionExpression)
+    .forEach(function (funcExp) {
+      let index = -1;
+      funcExp.value.params.forEach(function (param, ii) {
+        if (param.name === 'Case') {
+          index = ii;
+        }
+      });
+      if (index > -1) {
+        console.log(index);
+        funcExp.value.params.splice(index, 1);
+      }
+    })
 
   return root.toSource(options.printOptions || {
     quote: 'single'

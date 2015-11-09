@@ -1,4 +1,5 @@
-var AMustContainText = function (quail, test, Case) {
+var Case = require('Case');
+var AMustContainText = function (quail, test) {
   test.get('$scope').find('a').each(function () {
     var _case = Case({
       element: this

@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var TableIsGrouped = function (quail, test, Case, options) {
+var TableIsGrouped = function (quail, test, options) {
 
   var selector = 'table:not(table:has(thead), table:has(tfoot))';
 

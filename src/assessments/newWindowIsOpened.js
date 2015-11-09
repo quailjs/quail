@@ -1,4 +1,5 @@
-var NewWindowIsOpened = function (quail, test, Case) {
+var Case = require('Case');
+var NewWindowIsOpened = function (quail, test) {
 
   var fenestrate = window.open;
   var _case;

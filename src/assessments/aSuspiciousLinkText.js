@@ -1,5 +1,6 @@
+var Case = require('Case');
 var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
-var ASuspiciousLinkText = function (quail, test, Case) {
+var ASuspiciousLinkText = function (quail, test) {
   test.get('$scope').find('a').each(function () {
     var _case = Case({
       element: this

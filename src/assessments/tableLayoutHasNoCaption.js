@@ -1,4 +1,5 @@
-var TableLayoutHasNoCaption = function (quail, test, Case) {
+var Case = require('Case');
+var TableLayoutHasNoCaption = function (quail, test) {
   test.get('$scope').find('table').each(function () {
     if ($(this).find('caption').length) {
       if (!quail.isDataTable($(this))) {

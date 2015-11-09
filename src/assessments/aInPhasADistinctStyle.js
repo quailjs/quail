@@ -1,4 +1,5 @@
-var AInPHasADistinctStyle = function (quail, test, Case) {
+var Case = require('Case');
+var AInPHasADistinctStyle = function (quail, test) {
 
   /**
    * Checks if an element has a border set

@@ -1,4 +1,5 @@
-var AMustHaveTitle = function (quail, test, Case) {
+var Case = require('Case');
+var AMustHaveTitle = function (quail, test) {
   this.get('$scope').each(function () {
     var links = $(this).find('a');
 

@@ -1,4 +1,5 @@
-var AppletContainsTextEquivalent = function (quail, test, Case) {
+var Case = require('Case');
+var AppletContainsTextEquivalent = function (quail, test) {
   test.get('$scope').find('applet[alt=""], applet:not(applet[alt])').each(function () {
     var _case = Case({
       element: this

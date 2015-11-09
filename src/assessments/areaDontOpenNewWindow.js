@@ -5,9 +5,11 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
+var Case = require('Case');
+
 var NewWindowStringsComponent = require('NewWindowStringsComponent');
 
-var AreaDontOpenNewWindow = function (quail, test, Case) {
+var AreaDontOpenNewWindow = function (quail, test) {
   // Links without a target attribute pass.
   test.get('$scope').find('area').not('[target=_new], [target=_blank]').each(function () {
     test.add(Case({

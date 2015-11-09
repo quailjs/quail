@@ -1,4 +1,5 @@
-var DocumentIDsMustBeUnique = function (quail, test, Case) {
+var Case = require('Case');
+var DocumentIDsMustBeUnique = function (quail, test) {
   test.get('$scope').each(function () {
     if ($(this).children().length === 0) {
       test.add(Case({

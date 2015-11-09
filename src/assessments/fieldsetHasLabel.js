@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FieldsetHasLabel = function (quail, test, Case, options) {
+var FieldsetHasLabel = function (quail, test, options) {
 
   var selector = 'fieldset:not(fieldset:has(legend))';
 

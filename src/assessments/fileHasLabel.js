@@ -1,7 +1,9 @@
 /**
  * Test for a label associated with a file input element.
  */
-var FileHasLabel = function (quail, test, Case) {
+var Case = require('Case');
+
+var FileHasLabel = function (quail, test) {
 
   var sFiles = '[type="file"]';
   var sLabels = 'label';

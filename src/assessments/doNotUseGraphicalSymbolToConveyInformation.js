@@ -1,7 +1,8 @@
+var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var TextSelector = require('TextSelector');
 
-var DoNotUseGraphicalSymbolToConveyInformation = function (quail, test, Case) {
+var DoNotUseGraphicalSymbolToConveyInformation = function (quail, test) {
   // Passes and fails.
   test.get('$scope').find(TextSelector + ':not(abbr, acronym)').each(function () {
     var whiteList = '✓';

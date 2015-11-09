@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var AreaAltIdentifiesDestination = function (quail, test, Case, options) {
+var AreaAltIdentifiesDestination = function (quail, test, options) {
 
   var selector = 'area:not(area[alt])';
 

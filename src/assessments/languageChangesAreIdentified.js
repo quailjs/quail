@@ -1,6 +1,7 @@
+var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var LanguageChangesAreIdentified = function (quail, test, Case) {
+var LanguageChangesAreIdentified = function (quail, test) {
   var $scope = test.get('$scope');
   var currentLanguage = LanguageComponent.getDocumentLanguage($scope, true);
   var text, regularExpression, matches, $element, failed;

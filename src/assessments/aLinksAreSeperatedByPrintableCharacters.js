@@ -1,4 +1,5 @@
-var ALinksAreSeparatedByPrintableCharacters = function (quail, test, Case) {
+var Case = require('Case');
+var ALinksAreSeparatedByPrintableCharacters = function (quail, test) {
   test.get('$scope').find('a').each(function () {
     var _case = test.add(Case({
       element: this

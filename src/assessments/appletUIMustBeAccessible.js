@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var AppletUIMustBeAccessible = function (quail, test, Case, options) {
+var AppletUIMustBeAccessible = function (quail, test, options) {
 
   var selector = 'applet';
 

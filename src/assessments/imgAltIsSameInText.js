@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var ImgAltIsSameInText = function (quail, test, Case, options) {
+var ImgAltIsSameInText = function (quail, test, options) {
 
   var selector = 'img';
 

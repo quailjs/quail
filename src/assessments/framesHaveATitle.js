@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FramesHaveATitle = function (quail, test, Case, options) {
+var FramesHaveATitle = function (quail, test, options) {
 
   var selector = 'frame:visible, iframe:visible';
 

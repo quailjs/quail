@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FrameSrcIsAccessible = function (quail, test, Case, options) {
+var FrameSrcIsAccessible = function (quail, test, options) {
 
   var selector = 'frame';
 

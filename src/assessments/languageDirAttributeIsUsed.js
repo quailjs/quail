@@ -1,6 +1,7 @@
+var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var LanguageDirAttributeIsUsed = function (quail, test, Case) {
+var LanguageDirAttributeIsUsed = function (quail, test) {
 
   var textDirection = LanguageComponent.textDirection;
 

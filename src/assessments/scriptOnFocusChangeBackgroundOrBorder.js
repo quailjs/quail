@@ -1,7 +1,9 @@
 /**
  * Test scriptOnFocusChangeBackgroundOrBorder.
  */
-var ScriptOnFocusChangeBackgroundOrBorder = function (quail, test, Case) {
+var Case = require('Case');
+
+var ScriptOnFocusChangeBackgroundOrBorder = function (quail, test) {
   var buildCase = function (element, status, id, message) {
     test.add(Case({
       element: element,

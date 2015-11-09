@@ -1,4 +1,5 @@
-var InputImageAltIsNotFileName = function (quail, test, Case) {
+var Case = require('Case');
+var InputImageAltIsNotFileName = function (quail, test) {
   test.get('$scope').find('input[type=image][alt]').each(function () {
     var _case = Case({
       element: this

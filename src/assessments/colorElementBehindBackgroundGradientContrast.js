@@ -1,5 +1,6 @@
+var Case = require('Case');
 var ColorComponent = require('ColorComponent');
-var ColorElementBehindBackgroundGradientContrast = function (quail, test, Case, options) {
+var ColorElementBehindBackgroundGradientContrast = function (quail, test, options) {
 
   var colors = ColorComponent.colors;
   var buildCase = ColorComponent.buildCase;

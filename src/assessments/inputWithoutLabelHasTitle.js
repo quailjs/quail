@@ -1,4 +1,5 @@
-var InputWithoutLabelHasTitle = function (quail, test, Case) {
+var Case = require('Case');
+var InputWithoutLabelHasTitle = function (quail, test) {
 
   test.get('$scope').each(function () {
 

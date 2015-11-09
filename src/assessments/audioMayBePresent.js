@@ -1,4 +1,5 @@
-var AudioMayBePresent = function (quail, test, Case) {
+var Case = require('Case');
+var AudioMayBePresent = function (quail, test) {
   var audioExtensions = ['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];
 
   test.get('$scope').each(function () {

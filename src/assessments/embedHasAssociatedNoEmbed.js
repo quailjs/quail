@@ -1,4 +1,5 @@
-var EmbedHasAssociatedNoEmbed = function (quail, test, Case) {
+var Case = require('Case');
+var EmbedHasAssociatedNoEmbed = function (quail, test) {
   test.get('$scope').find('embed').each(function () {
     var _case = Case({
       element: this

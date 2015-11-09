@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var AMustNotHaveJavascriptHref = function (quail, test, Case, options) {
+var AMustNotHaveJavascriptHref = function (quail, test, options) {
 
   var selector = 'a[href^="javascript:"]';
 

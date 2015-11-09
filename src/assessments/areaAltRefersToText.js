@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var AreaAltRefersToText = function (quail, test, Case, options) {
+var AreaAltRefersToText = function (quail, test, options) {
 
   var selector = 'area';
 

@@ -1,4 +1,5 @@
-var KINGUseCurrencyAsSymbol = function (quail, test, Case) {
+var Case = require('Case');
+var KINGUseCurrencyAsSymbol = function (quail, test) {
   function testCurrencyFormat (index, element) {
     // Detect dates with several separators.
     var currencyNames = [

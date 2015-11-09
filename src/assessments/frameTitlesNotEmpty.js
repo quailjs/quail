@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FrameTitlesNotEmpty = function (quail, test, Case, options) {
+var FrameTitlesNotEmpty = function (quail, test, options) {
 
   var selector = 'frame:not(frame[title]), frame[title=""], iframe:not(iframe[title]), iframe[title=""]';
 

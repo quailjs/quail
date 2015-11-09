@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ObjectProvidesMechanismToReturnToParent = function (quail, test, Case, options) {
+var ObjectProvidesMechanismToReturnToParent = function (quail, test, options) {
 
   var selector = 'object';
 

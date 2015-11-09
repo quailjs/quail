@@ -1,4 +1,5 @@
-var BlockquoteUseForQuotations = function (quail, test, Case) {
+var Case = require('Case');
+var BlockquoteUseForQuotations = function (quail, test) {
   test.get('$scope').find('p').each(function () {
     var _case = Case({
       element: this

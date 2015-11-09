@@ -1,6 +1,7 @@
+var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var LanguageUnicodeDirection = function (quail, test, Case) {
+var LanguageUnicodeDirection = function (quail, test) {
   var $scope = test.get('$scope');
   var textDirection = LanguageComponent.textDirection;
   var textDirectionChanges = LanguageComponent.textDirectionChanges;

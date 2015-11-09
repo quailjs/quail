@@ -1,6 +1,7 @@
+var Case = require('Case');
 var ConvertToPxComponent = require('ConvertToPxComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var TextIsNotSmall = function (quail, test, Case) {
+var TextIsNotSmall = function (quail, test) {
   test.get('$scope')
     .find(quail.textSelector)
     .filter(function (index, element) {

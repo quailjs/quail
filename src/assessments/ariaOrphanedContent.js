@@ -1,6 +1,8 @@
 // options: selector: "body *:not(*[role] *, *[role], script, meta, link)"
 
-var AriaOrphanedContent = function (quail, test, Case) {
+var Case = require('Case');
+
+var AriaOrphanedContent = function (quail, test) {
   var $scope = test.get('$scope');
 
   $scope.each(function () {

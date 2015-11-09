@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var AreaLinksToSoundFile = function (quail, test, Case, options) {
+var AreaLinksToSoundFile = function (quail, test, options) {
 
   var selector = [
     'area[href$="wav"]',

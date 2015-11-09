@@ -1,4 +1,5 @@
-var TableUseColGroup = function (quail, test, Case) {
+var Case = require('Case');
+var TableUseColGroup = function (quail, test) {
   test.get('$scope').find('table').each(function () {
     if (quail.isDataTable($(this)) && !$(this).find('colgroup').length) {
       test.add(Case({

@@ -1,4 +1,5 @@
-var TableLayoutDataShouldNotHaveTh = function (quail, test, Case) {
+var Case = require('Case');
+var TableLayoutDataShouldNotHaveTh = function (quail, test) {
   test.get('$scope').find('table').each(function () {
     var _case = Case({
       element: this

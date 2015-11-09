@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FramesetIsNotUsed = function (quail, test, Case, options) {
+var FramesetIsNotUsed = function (quail, test, options) {
 
   var selector = 'frameset';
 

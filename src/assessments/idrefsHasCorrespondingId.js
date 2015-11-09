@@ -1,4 +1,5 @@
-var IdrefsHasCorrespondingId = function (quail, test, Case) {
+var Case = require('Case');
+var IdrefsHasCorrespondingId = function (quail, test) {
 
   function getAttribute ($element) {
     var attribute = [];

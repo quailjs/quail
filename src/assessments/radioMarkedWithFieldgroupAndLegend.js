@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var RadioMarkedWithFieldgroupAndLegend = function (quail, test, Case, options) {
+var RadioMarkedWithFieldgroupAndLegend = function (quail, test, options) {
 
   var selector = 'input[type=radio]:not(fieldset input[type=radio])';
 

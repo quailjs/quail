@@ -1,4 +1,5 @@
-var TableShouldUseHeaderIDs = function (quail, test, Case) {
+var Case = require('Case');
+var TableShouldUseHeaderIDs = function (quail, test) {
   test.get('$scope').find('table').each(function () {
     var $table = $(this);
     var tableFailed = false;
