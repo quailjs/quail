@@ -1,4 +1,6 @@
 var Case = require('Case');
+var TextIsNotSmall = require('TextIsNotSmall');
+
 var Test = (function () {
 
   /**
@@ -97,7 +99,7 @@ var Test = (function () {
       }
 
       var options = this.get('options') || {};
-      var callback = quail[name];
+      var callback = TextIsNotSmall;
       var self = this;
 
       // Set the test complete method to the closure function that dispatches
@@ -115,7 +117,7 @@ var Test = (function () {
 
       if (callback && typeof callback.call === 'function') {
         try {
-          callback.call(self, quail, self, Case, options);
+          callback.call(self, self, options);
         }
         catch (error) {
           if (window.console && window.console.error) {
@@ -253,21 +255,8 @@ var Test = (function () {
      * Evaluates the test's cases and sets the test's status.
      */
     determineStatus: function () {
-      // Invoke post filtering. This is a very special case for color.js.
-      var type = this.get('type');
-      var passed;
-      if (quail.components[type] && typeof quail.components[type].postInvoke === 'function') {
-        passed = quail.components[type].postInvoke.call(this, this);
-      }
-      // The post invocation function for the component declares that this test
-      // passed.
-      if (passed === true) {
-        this.set({
-          status: 'passed'
-        });
-      }
       // CantTell.
-      else if (this.findByStatus(['cantTell']).length === this.length) {
+      if (this.findByStatus(['cantTell']).length === this.length) {
         this.set({
           status: 'cantTell'
         });

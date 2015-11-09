@@ -3792,7 +3792,7 @@ tabularDataIsInTable:
   tags:
     - "table"
     - "content"
-textIsNotSmall:
+TextIsNotSmall:
   testability: 0.5
   title:
     en: "The text size is not less than 9 pixels high"
