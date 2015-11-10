@@ -5,7 +5,51 @@ module.exports = function(file, api, options) {
 
   var capitalizeName = function (name) {
     var firstletter = name[0];
-    return firstletter.toUpperCase() + name.substring(1);
+    // Components
+    if ([
+      'acronym',
+      'color',
+      'content',
+      'convertToPx',
+      'event',
+      'hasEventListener',
+      'headingLevel',
+      'htmlSource',
+      'htmlTagValidator',
+      'label',
+      'language',
+      'placeholder',
+      'statisticsPl',
+      'textNodeFilter',
+      'textStatistics',
+      'video',
+      'isDataTable',
+      'getTextContents',
+      'validURL',
+      'cleanString',
+      'containsReadableText',
+      'textSelector'
+    ].indexOf(name) > -1) {
+      name = name + 'Component';
+    }
+    // Strings
+    if ([
+      'colors',
+      'languageCodes',
+      'newWindow',
+      'placeholders',
+      'redundant',
+      'siteMap',
+      'skipContent',
+      'suspiciousLinks',
+      'symbols'
+    ].indexOf(name) > -1) {
+      name = name + 'StringsComponent';
+    }
+    // Capitalize
+    name = firstletter.toUpperCase() + name.substring(1);
+
+    return name;
   };
 
   var withComments = function (to, from) {
@@ -18,10 +62,10 @@ module.exports = function(file, api, options) {
       return j.variableDeclaration(
         'var',
         [j.variableDeclarator(
-          j.identifier(name),
+          j.identifier(capitalizeName(name)),
           j.callExpression(
             j.identifier('require'),
-            [j.literal(name)]
+            [j.literal(capitalizeName(name))]
           )
         )]
       );
@@ -46,11 +90,7 @@ module.exports = function(file, api, options) {
   var getLibMemberExpressionNode = function (path) {
     var node, reqName;
     if (path.parent.value.type === 'MemberExpression') {
-      node = path.parent;
-      if (node.value.object.type === 'Identifier' &&
-        node.value.object.name === 'quail') {
-        return node.parent;
-      }
+      return path.parent;
     }
   };
 
@@ -62,26 +102,35 @@ module.exports = function(file, api, options) {
     return null;
   }
 
-  var libIdents = root.find(
+  var quailIdents = root.find(
     j.Identifier, {
-      name: 'lib'
+      name: 'quail'
     }
   )
-  var requirementUsages = libIdents
+  var requirementUsages = quailIdents
     .filter(function (path) {
       var node, reqName;
       if (path.parent.value.type === 'MemberExpression') {
         node = path.parent;
-        if (node.value.object.type === 'Identifier' &&
-          node.value.object.name === 'quail') {
-          node = node.parent;
-          // Do not include assignments; these are module exports.
-          if (node.name === 'left') {
-            return false;
-          }
-          else {
-            return true;
-          }
+        if ([
+          'html',
+          'guidelines',
+          'tests',
+          'testFails',
+          'run',
+          'options',
+          'strings',
+          'statistics',
+
+        ].indexOf(node.value.property.name) > -1) {
+          return false;
+        }
+        // Do not include assignments; these are module exports.
+        if (node.name === 'left') {
+          return false;
+        }
+        else {
+          return true;
         }
       }
       return false;
@@ -96,27 +145,13 @@ module.exports = function(file, api, options) {
     .filter(dedupe);
 
   // Module names.
-  var moduleExports = libIdents
-    .filter(function (path) {
-      var node, reqName;
-      if (path.parent.value.type === 'MemberExpression') {
-        node = path.parent;
-        if (node.value.object.type === 'Identifier' &&
-          node.value.object.name === 'quail') {
-          node = node.parent;
-          // Include assignments; these are module exports.
-          if (node.name === 'left') {
-            return true;
-          }
-          else {
-            return false;
-          }
-        }
-      }
-      return false;
-    });
+  var moduleExports = {
+    size: function () {
+      return 0;
+    }
+  };
 
-  var [requirementNames, moduleNames] = [requirementUsages, moduleExports]
+  var [requirementNames] = [requirementUsages]
     .map(function (usage) {
       return usage
         .map(getLibMemberExpressionNode)
@@ -137,6 +172,7 @@ module.exports = function(file, api, options) {
     delete body[requirementNames.length].comments;
   }
 
+  var moduleNames = [];
   // Add export expressions.
   if (moduleNames.length > 0) {
     createExportExpression(moduleNames.sort())
@@ -151,7 +187,7 @@ module.exports = function(file, api, options) {
       .map(getLibMemberExpressionNode)
       .forEach(function (node) {
         j(node).replaceWith(
-          j.identifier(node.value.property.name)
+          j.identifier(capitalizeName(node.value.property.name))
         )
       });
   }

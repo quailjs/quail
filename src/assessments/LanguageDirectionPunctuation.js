@@ -1,3 +1,5 @@
+var GetTextContentsComponent = require('GetTextContentsComponent');
+var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
@@ -11,7 +13,7 @@ var LanguageDirectionPunctuation = function (quail, test) {
   $scope.each(function () {
     var $local = $(this);
     $local
-      .find(quail.textSelector)
+      .find(TextSelectorComponent)
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);
       })
@@ -27,7 +29,7 @@ var LanguageDirectionPunctuation = function (quail, test) {
           currentDirection = 'ltr';
         }
         oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
-        var text = quail.getTextContents($el);
+        var text = GetTextContentsComponent($el);
         var matches = text.match(textDirection[oppositeDirection]);
         var _case = test.add(Case({
           element: this

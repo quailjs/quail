@@ -1,8 +1,9 @@
+var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceNotUsedForFormatting = function (quail, test) {
   test.get('$scope')
-    .find(quail.textSelector)
+    .find(TextSelectorComponent)
     .filter(function (index, element) {
       return TextNodeFilterComponent(element);
     })

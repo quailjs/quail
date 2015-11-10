@@ -1,3 +1,4 @@
+var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
 var Case = require('Case');
 var AMustContainText = function (quail, test) {
   test.get('$scope').find('a').each(function () {
@@ -14,7 +15,7 @@ var AMustContainText = function (quail, test) {
       return;
     }
 
-    if (quail.containsReadableText($(this), true)) {
+    if (ContainsReadableTextComponent($(this), true)) {
       _case.set({
         status: 'passed'
       });

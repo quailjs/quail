@@ -1,3 +1,5 @@
+var GetTextContentsComponent = require('GetTextContentsComponent');
+var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
@@ -19,7 +21,7 @@ var LanguageDirAttributeIsUsed = function (quail, test) {
       currentDirection = 'ltr';
     }
     var oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
-    var text = quail.getTextContents($el);
+    var text = GetTextContentsComponent($el);
     var textMatches = text.match(textDirection[oppositeDirection]);
     if (!textMatches) {
       return;
@@ -41,7 +43,7 @@ var LanguageDirAttributeIsUsed = function (quail, test) {
 
   test.get('$scope').each(function () {
     $(this)
-      .find(quail.textSelector)
+      .find(TextSelectorComponent)
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);
       })

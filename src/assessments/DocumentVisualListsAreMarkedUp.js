@@ -1,3 +1,4 @@
+var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var DocumentVisualListsAreMarkedUp = function (quail, test) {
@@ -21,7 +22,7 @@ var DocumentVisualListsAreMarkedUp = function (quail, test) {
   'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
 
   test.get('$scope')
-    .find(quail.textSelector)
+    .find(TextSelectorComponent)
     .filter(function (index, element) {
       return TextNodeFilterComponent(element);
     })

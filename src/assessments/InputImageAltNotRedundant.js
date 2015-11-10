@@ -1,3 +1,4 @@
+var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var InputImageAltNotRedundant = function (quail, test) {
@@ -6,7 +7,7 @@ var InputImageAltNotRedundant = function (quail, test) {
       element: this
     });
     test.add(_case);
-    if (RedundantStringsComponent.inputImage.indexOf(quail.cleanString($(this).attr('alt'))) > -1) {
+    if (RedundantStringsComponent.inputImage.indexOf(CleanStringComponent($(this).attr('alt'))) > -1) {
       _case.set({
         status: 'failed'
       });

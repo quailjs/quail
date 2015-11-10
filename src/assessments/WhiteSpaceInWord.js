@@ -1,9 +1,10 @@
+var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceInWord = function (quail, test) {
   var whitespaceGroup, nonWhitespace;
   test.get('$scope')
-    .find(quail.textSelector)
+    .find(TextSelectorComponent)
     .filter(function (index, element) {
       return TextNodeFilterComponent(element);
     })

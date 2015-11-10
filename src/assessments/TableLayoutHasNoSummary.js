@@ -1,3 +1,4 @@
+var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var TableLayoutHasNoSummary = function (quail, test) {
@@ -7,7 +8,7 @@ var TableLayoutHasNoSummary = function (quail, test) {
       var _case = test.add(Case({
         element: this
       }));
-      if (!quail.isDataTable($(this)) && !IsUnreadable($(this).attr('summary'))) {
+      if (!IsDataTableComponent($(this)) && !IsUnreadable($(this).attr('summary'))) {
         _case.set({status: 'failed'});
       }
       else {

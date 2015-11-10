@@ -1,10 +1,10 @@
+var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var TextSelector = require('TextSelector');
 
 var DoNotUseGraphicalSymbolToConveyInformation = function (quail, test) {
   // Passes and fails.
-  test.get('$scope').find(TextSelector + ':not(abbr, acronym)').each(function () {
+  test.get('$scope').find(TextSelectorComponent + ':not(abbr, acronym)').each(function () {
     var whiteList = '✓';
     var blackList = '?xo[]()+-!*xX';
 
@@ -39,7 +39,7 @@ var DoNotUseGraphicalSymbolToConveyInformation = function (quail, test) {
   });
   // Not applicables.
   test.get('$scope')
-    .find(quail.textSelector)
+    .find(TextSelectorComponent)
     .filter('abbr, acronym')
     .filter(function (index, element) {
       return TextNodeFilterComponent(element);
@@ -52,4 +52,3 @@ var DoNotUseGraphicalSymbolToConveyInformation = function (quail, test) {
     });
 };
 module.exports = DoNotUseGraphicalSymbolToConveyInformation;
-module.exports = TextSelector;

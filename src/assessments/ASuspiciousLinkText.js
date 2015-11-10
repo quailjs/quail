@@ -1,3 +1,4 @@
+var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
 var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
 var ASuspiciousLinkText = function (quail, test) {
@@ -16,7 +17,7 @@ var ASuspiciousLinkText = function (quail, test) {
     $(this).find('img[alt]').each(function () {
       text = text + $(this).attr('alt');
     });
-    if (SuspiciousLinksStringsComponent.indexOf(quail.cleanString(text)) > -1) {
+    if (SuspiciousLinksStringsComponent.indexOf(CleanStringComponent(text)) > -1) {
       _case.set({
         status: 'failed'
       });

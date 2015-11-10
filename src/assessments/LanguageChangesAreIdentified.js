@@ -1,3 +1,5 @@
+var GetTextContentsComponent = require('GetTextContentsComponent');
+var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
@@ -14,7 +16,7 @@ var LanguageChangesAreIdentified = function (quail, test) {
     }
     matches = matches.length;
     $children.each(function () {
-      childMatches = quail.getTextContents($(this)).match(regularExpression);
+      childMatches = GetTextContentsComponent($(this)).match(regularExpression);
       if (childMatches) {
         matches -= childMatches.length;
       }
@@ -33,7 +35,7 @@ var LanguageChangesAreIdentified = function (quail, test) {
   };
 
   $scope
-    .find(quail.textSelector)
+    .find(TextSelectorComponent)
     .filter(function (index, element) {
       return TextNodeFilterComponent(element);
     })
@@ -41,7 +43,7 @@ var LanguageChangesAreIdentified = function (quail, test) {
       var self = this;
       $element = $(this);
       currentLanguage = findCurrentLanguage($element);
-      text = quail.getTextContents($element);
+      text = GetTextContentsComponent($element);
       failed = false;
 
       $.each(LanguageComponent.scriptSingletons, function (code, regularExpression) {

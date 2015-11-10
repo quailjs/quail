@@ -2,6 +2,8 @@
  * Placeholder test - checks that an attribute or the content of an
  * element itself is not a placeholder (i.e. 'click here' for links).
  */
+var CleanStringComponent = require('CleanStringComponent');
+
 var IsUnreadable = require('IsUnreadable');
 var PlaceholderComponent = function (quail, test, Case, options) {
 
@@ -44,7 +46,7 @@ var PlaceholderComponent = function (quail, test, Case, options) {
       });
     }
     if (typeof text === 'string' && text.length > 0) {
-      text = quail.cleanString(text);
+      text = CleanStringComponent(text);
       var regex = /^([0-9]*)(k|kb|mb|k bytes|k byte)$/g;
       var regexResults = regex.exec(text.toLowerCase());
       if (regexResults && regexResults[0].length) {

@@ -1,3 +1,4 @@
+var GetTextContentsComponent = require('GetTextContentsComponent');
 var Case = require('Case');
 var KINGUseCurrencyAsSymbol = function (quail, test) {
   function testCurrencyFormat (index, element) {
@@ -15,7 +16,7 @@ var KINGUseCurrencyAsSymbol = function (quail, test) {
     // Test the words and any eventual extra letters for s and all.
     var currencyReg = new RegExp('\\d{1,}\\s*(' + currencyNames.join('|') + ')\\w*\\b|(' + currencyNames.join('|') + ')\\w*\\b\\s*\\d{1,}', 'ig');
 
-    var text = quail.getTextContents($(element));
+    var text = GetTextContentsComponent($(element));
     var _case = Case({
       element: this
     });

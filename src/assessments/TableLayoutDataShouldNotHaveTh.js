@@ -1,3 +1,4 @@
+var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var TableLayoutDataShouldNotHaveTh = function (quail, test) {
   test.get('$scope').find('table').each(function () {
@@ -7,7 +8,7 @@ var TableLayoutDataShouldNotHaveTh = function (quail, test) {
     test.add(_case);
 
     if ($(this).find('th').length !== 0) {
-      if (!quail.isDataTable($(this))) {
+      if (!IsDataTableComponent($(this))) {
         _case.set({
           status: 'failed'
         });

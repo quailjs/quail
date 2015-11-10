@@ -1,3 +1,4 @@
+var ValidURLComponent = require('ValidURLComponent');
 var Case = require('Case');
 var ImgHasLongDesc = function (quail, test) {
   test.get('$scope').find('img[longdesc]').each(function () {
@@ -6,7 +7,7 @@ var ImgHasLongDesc = function (quail, test) {
     });
     test.add(_case);
     if ($(this).attr('longdesc') === $(this).attr('alt') ||
-        !quail.validURL($(this).attr('longdesc'))) {
+        !ValidURLComponent($(this).attr('longdesc'))) {
       _case.set({
         status: 'failed'
       });

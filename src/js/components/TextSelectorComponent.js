@@ -1,7 +1,7 @@
 /**
  * A list of HTML elements that can contain actual text.
  */
-var TextSelector = [
+var TextSelectorComponent = [
   'tt',
   'i',
   'b',
@@ -49,4 +49,4 @@ var TextSelector = [
   'td',
   'th'
 ].join(', ');
-module.exports = TextSelector;
+module.exports = TextSelectorComponent;

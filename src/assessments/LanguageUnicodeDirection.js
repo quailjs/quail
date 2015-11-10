@@ -1,3 +1,4 @@
+var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
@@ -8,7 +9,7 @@ var LanguageUnicodeDirection = function (quail, test) {
   $scope.each(function () {
     var $local = $(this);
     $local
-      .find(quail.textSelector)
+      .find(TextSelectorComponent)
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);
       })

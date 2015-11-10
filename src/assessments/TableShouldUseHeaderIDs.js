@@ -1,9 +1,10 @@
+var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var TableShouldUseHeaderIDs = function (quail, test) {
   test.get('$scope').find('table').each(function () {
     var $table = $(this);
     var tableFailed = false;
-    if (quail.isDataTable($table)) {
+    if (IsDataTableComponent($table)) {
       $table.find('th').each(function () {
         if (!tableFailed && !$(this).attr('id')) {
           tableFailed = true;

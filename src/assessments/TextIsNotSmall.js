@@ -1,11 +1,11 @@
 var Case = require('Case');
 var ConvertToPxComponent = require('ConvertToPxComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var TextSelector = require('TextSelector');
+var TextSelectorComponent = require('TextSelectorComponent');
 
 var TextIsNotSmall = function (test) {
   test.get('$scope')
-    .find(TextSelector)
+    .find(TextSelectorComponent)
     .filter(function (index, element) {
       return TextNodeFilterComponent(element);
     })

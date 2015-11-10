@@ -1,3 +1,4 @@
+var GetTextContentsComponent = require('GetTextContentsComponent');
 var Case = require('Case');
 var KINGUsePercentageWithSymbol = function (quail, test) {
   function testPercentFormat (index, element) {
@@ -9,7 +10,7 @@ var KINGUsePercentageWithSymbol = function (quail, test) {
     // Test the words and any eventual extra letters for s and all.
     var percentReg = new RegExp('\\d{1,}\\s*(' + percentName.join('|') + ')|(' + percentName.join('|') + ')\\s*\\d{1,}', 'ig');
 
-    var text = quail.getTextContents($(element));
+    var text = GetTextContentsComponent($(element));
     var _case = Case({
       element: this
     });
