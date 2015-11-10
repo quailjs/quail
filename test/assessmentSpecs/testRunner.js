@@ -90,7 +90,7 @@ function serveScriptResource (response, resourcePath) {
   if (resourcePath.indexOf('jquery.min.js') > -1) {
     resource = path.join(__dirname, '../..', 'node_modules/jquery/dist', resourcePath);
   }
-  else if (resourcePath.indexOf('quail.jquery') > -1) {
+  else if (resourcePath.indexOf('bundle.js') > -1) {
     resource = path.join(__dirname, '../..', 'dist', resourcePath);
   }
   else {
@@ -348,7 +348,7 @@ function runSpecs (assessments) {
           },
           // Load the Quail script into the page.
           {
-            args: ['quail.jquery.js', httpServerFixturesPort],
+            args: ['bundle.js', httpServerFixturesPort],
             evaluate: loadScriptFile
           },
           // Evaluate the HTML with Quail.

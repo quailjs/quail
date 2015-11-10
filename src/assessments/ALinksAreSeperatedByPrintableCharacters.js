@@ -1,4 +1,5 @@
 var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
 var ALinksAreSeparatedByPrintableCharacters = function (quail, test) {
   test.get('$scope').find('a').each(function () {
     var _case = test.add(Case({
@@ -6,7 +7,7 @@ var ALinksAreSeparatedByPrintableCharacters = function (quail, test) {
     }));
     // Only test if there's another a tag.
     if ($(this).next('a').length) {
-      if (quail.isUnreadable($(this).get(0).nextSibling.wholeText)) {
+      if (IsUnreadable($(this).get(0).nextSibling.wholeText)) {
         _case.set({
           status: 'failed'
         });

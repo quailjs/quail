@@ -1,4 +1,5 @@
 var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
 var ListOfLinksUseList = function (quail, test) {
   var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
   test.get('$scope').find('a').each(function () {
@@ -8,7 +9,7 @@ var ListOfLinksUseList = function (quail, test) {
     // Only test if there's another a tag.
     if ($(this).next('a').length) {
       var nextText = $(this).get(0).nextSibling.wholeText.replace(unreadableText, '');
-      if (!$(this).parent('li').length && quail.isUnreadable(nextText)) {
+      if (!$(this).parent('li').length && IsUnreadable(nextText)) {
         _case.set({
           status: 'failed'
         });

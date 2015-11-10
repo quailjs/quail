@@ -1,4 +1,5 @@
 var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
 var ImgImportantNoSpacerAlt = function (quail, test) {
   test.get('$scope').find('img[alt]').each(function () {
     var width = ($(this).width()) ? $(this).width() : parseInt($(this).attr('width'), 10);
@@ -7,7 +8,7 @@ var ImgImportantNoSpacerAlt = function (quail, test) {
       element: this
     });
     test.add(_case);
-    if (quail.isUnreadable($(this).attr('alt').trim()) &&
+    if (IsUnreadable($(this).attr('alt').trim()) &&
         $(this).attr('alt').length > 0 &&
         width > 50 &&
         height > 50) {

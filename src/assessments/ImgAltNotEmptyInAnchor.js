@@ -1,4 +1,5 @@
 var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
 var ImgAltNotEmptyInAnchor = function (quail, test) {
   test.get('$scope').find('a[href]:has(img)').each(function () {
     var $a = $(this);
@@ -14,7 +15,7 @@ var ImgAltNotEmptyInAnchor = function (quail, test) {
       text += ' ' + $(this).attr('alt');
     });
 
-    if (quail.isUnreadable(text)) {
+    if (IsUnreadable(text)) {
       _case.set({
         status: 'failed'
       });

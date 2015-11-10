@@ -2,6 +2,7 @@
  * Placeholder test - checks that an attribute or the content of an
  * element itself is not a placeholder (i.e. 'click here' for links).
  */
+var IsUnreadable = require('IsUnreadable');
 var PlaceholderComponent = function (quail, test, Case, options) {
 
   var resolve = function (element, resolution) {
@@ -49,7 +50,7 @@ var PlaceholderComponent = function (quail, test, Case, options) {
       if (regexResults && regexResults[0].length) {
         resolve(this, 'failed');
       }
-      else if (options.empty && quail.isUnreadable(text)) {
+      else if (options.empty && IsUnreadable(text)) {
         resolve(this, 'failed');
       }
       else if (quail.strings.placeholders.indexOf(text) > -1) {

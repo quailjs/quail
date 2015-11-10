@@ -2,49 +2,34 @@
  * @providesModule quail
  */
 
-// Polyfill Function.prototype.bind
-// @see https://gist.github.com/dsingleton/1312328
-
 var TestCollection = require('TestCollection');
-
 var wcag2 = require('wcag2');
+var IsUnreadable = require('IsUnreadable');
 
-Function.prototype.bind = Function.prototype.bind || function (b) {
-  if (typeof this !== 'function') {
-    throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
-  }
-  var a = Array.prototype.slice;
-  var f = a.call(arguments, 1);
-  var self = this;
-  var C = function C () {};
-  var d = function d () {
-    return self.apply(
-      this instanceof C ? this : b || window,
-      f.concat(a.call(arguments))
-    );
-  };
-  C.prototype = self.prototype;
-  d.prototype = new C();
-  return d;
-};
+// Function.prototype.bind = Function.prototype.bind || function (b) {
+//   if (typeof this !== 'function') {
+//     throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+//   }
+//   var a = Array.prototype.slice;
+//   var f = a.call(arguments, 1);
+//   var self = this;
+//   var C = function C () {};
+//   var d = function d () {
+//     return self.apply(
+//       this instanceof C ? this : b || window,
+//       f.concat(a.call(arguments))
+//     );
+//   };
+//   C.prototype = self.prototype;
+//   d.prototype = new C();
+//   return d;
+// };
 
 var quail = {
 
   options: {},
 
-  components: {},
-
-  lib: {},
-
-  testabilityTranslation: {
-    0: 'suggestion',
-    0.5: 'moderate',
-    1: 'severe'
-  },
-
   html: null,
-
-  strings: {},
 
   accessibilityResults: {},
 
@@ -78,78 +63,6 @@ var quail = {
 
   // @var TestCollection
   tests: {},
-
-  /**
-   * Suspect tags that would indicate a paragraph is being used as a header.
-   * I know, font tag, I know. Don't get me started.
-   */
-  suspectPHeaderTags: [
-    'strong',
-    'b',
-    'em',
-    'i',
-    'u',
-    'font'
-  ],
-
-  /**
-   * Suspect CSS styles that might indicate a paragraph tag is being used as a header.
-   */
-  suspectPCSSStyles: [
-    'color',
-    'font-weight',
-    'font-size',
-    'font-family'
-  ],
-
-  /**
-   * Elements that can (naturally) receive keyboard focus.
-   */
-  focusElements: [
-    'a[href]',
-    'area[href]',
-    'input:not([disabled])',
-    'select:not([disabled])',
-    'textarea:not([disabled])',
-    'button:not([disabled])',
-    'iframe',
-    'object',
-    'embed',
-    '*[tabindex]',
-    '*[contenteditable]'
-  ].join(', '),
-
-  /**
-   * Regular expression to find emoticons.
-   */
-  emoticonRegex: /((?::|;|B|P|=)(?:-)?(?:\)|\(|o|O|D|P))/g,
-
-  /**
-   * A list of self-closing tags.
-   */
-  selfClosingTags: [
-    'area',
-    'base',
-    'br',
-    'col',
-    'command',
-    'embed',
-    'hr',
-    'img',
-    'input',
-    'keygen',
-    'link',
-    'meta',
-    'param',
-    'source',
-    'track',
-    'wbr'
-  ],
-
-  /**
-   * A list of tags that optionally can be closed
-   */
-  optionalClosingTags: ['p', 'li', 'th', 'tr', 'td'],
 
   /**
    * Main run function for quail.
@@ -243,18 +156,6 @@ var quail = {
   },
 
   /**
-   * Helper function to determine if a string of text is even readable.
-   * @todo - This will be added to in the future... we should also include
-   * phonetic tests.
-   */
-  isUnreadable: function (text) {
-    if (typeof text !== 'string') {
-      return true;
-    }
-    return (text.trim().length) ? false : true;
-  },
-
-  /**
    * Read more about this function here: https://github.com/quailjs/quail/wiki/Layout-versus-data-tables
    */
   isDataTable: function (table) {
@@ -337,10 +238,10 @@ var quail = {
   containsReadableText: function (element, children) {
     element = element.clone();
     element.find('option').remove();
-    if (!quail.isUnreadable(element.text())) {
+    if (!IsUnreadable(element.text())) {
       return true;
     }
-    if (!quail.isUnreadable(element.attr('alt'))) {
+    if (!IsUnreadable(element.attr('alt'))) {
       return true;
     }
     if (children) {

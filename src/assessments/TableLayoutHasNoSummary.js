@@ -1,4 +1,5 @@
 var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
 var TableLayoutHasNoSummary = function (quail, test) {
   test.get('$scope').each(function () {
     var $local = $(this);
@@ -6,7 +7,7 @@ var TableLayoutHasNoSummary = function (quail, test) {
       var _case = test.add(Case({
         element: this
       }));
-      if (!quail.isDataTable($(this)) && !quail.isUnreadable($(this).attr('summary'))) {
+      if (!quail.isDataTable($(this)) && !IsUnreadable($(this).attr('summary'))) {
         _case.set({status: 'failed'});
       }
       else {

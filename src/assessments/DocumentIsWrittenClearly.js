@@ -1,6 +1,7 @@
 var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var TextStatisticsComponent = require('TextStatisticsComponent');
+var IsUnreadable = require('IsUnreadable');
 var DocumentIsWrittenClearly = function (quail, test) {
   test.get('$scope')
     .find(quail.textSelector)
@@ -13,7 +14,7 @@ var DocumentIsWrittenClearly = function (quail, test) {
         element: this
       });
       test.add(_case);
-      if (quail.isUnreadable(text)) {
+      if (IsUnreadable(text)) {
         _case.set({
           status: 'inapplicable'
         });

@@ -1,4 +1,5 @@
 var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
 var InputWithoutLabelHasTitle = function (quail, test) {
 
   test.get('$scope').each(function () {
@@ -27,7 +28,7 @@ var InputWithoutLabelHasTitle = function (quail, test) {
           return;
         }
         if (!test.get('$scope').find('label[for=' + $(this).attr('id') + ']').length &&
-          (!$(this).attr('title') || quail.isUnreadable($(this).attr('title')))) {
+          (!$(this).attr('title') || IsUnreadable($(this).attr('title')))) {
           _case.set({
             status: 'failed'
           });

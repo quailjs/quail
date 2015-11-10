@@ -3,6 +3,7 @@
  * color contrast/luminosity.
  */
 var convertToPx = require('ConvertToPxComponent');
+var IsUnreadable = require('IsUnreadable');
 
 var ColorComponent = function () {
 
@@ -506,7 +507,7 @@ var ColorComponent = function () {
       // Ignore elements whose content isn't displayed to the page.
       return false;
     }
-    else if (quail.isUnreadable($this.text())) {
+    else if (IsUnreadable($this.text())) {
       // Bail out if the text is not readable.
       return false;
 

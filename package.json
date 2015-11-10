@@ -30,7 +30,7 @@
     "jquery": ">1.4.2",
     "node-fs-extra": "^0.8.1",
     "opener": "^1.4.0",
-    "phantomjs": "^1.9.10",
+    "phantomjs": "^1.9.18",
     "q": "^1.1.2",
     "selenium-standalone": "2.43.1-5",
     "stdio": "^0.2.7",

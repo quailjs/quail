@@ -10,6 +10,7 @@ var output = {
     cases: 0
   }
 };
+
 quail.run({
   accessibilityTests: [window.assessmentName],
   html: jQuery('html'),

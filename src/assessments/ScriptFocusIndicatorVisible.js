@@ -1,6 +1,8 @@
 var ConvertToPxComponent = require('ConvertToPxComponent');
+var FocusElements = require('FocusElements');
+
 var ScriptFocusIndicatorVisible = function () {
-  quail.html.find(quail.focusElements).each(function () {
+  quail.html.find(FocusElements).each(function () {
 
     // Preparation for test: remove focus indicators done with CSS
     var sheet, rules, rulesCache, rule;

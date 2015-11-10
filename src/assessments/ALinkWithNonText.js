@@ -1,4 +1,5 @@
 var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
 var ALinkWithNonText = function (quail, test) {
   test.get('$scope').find('a').each(function () {
     var _case = Case({
@@ -11,7 +12,7 @@ var ALinkWithNonText = function (quail, test) {
       });
       return;
     }
-    if (!quail.isUnreadable($(this).text())) {
+    if (!IsUnreadable($(this).text())) {
       _case.set({
         status: 'passed'
       });
@@ -19,8 +20,8 @@ var ALinkWithNonText = function (quail, test) {
     }
     var unreadable = 0;
     $(this).find('img, object, embed').each(function () {
-      if (($(this).is('img') && quail.isUnreadable($(this).attr('alt'))) ||
-        (!$(this).is('img') && quail.isUnreadable($(this).attr('title')))) {
+      if (($(this).is('img') && IsUnreadable($(this).attr('alt'))) ||
+        (!$(this).is('img') && IsUnreadable($(this).attr('title')))) {
         unreadable++;
       }
     });
