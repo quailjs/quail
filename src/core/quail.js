@@ -1,6 +1,9 @@
 /**
  * @providesModule quail
  */
+
+require('babelify/polyfill');
+
 var TestCollection = require('TestCollection');
 var wcag2 = require('wcag2');
 
@@ -154,4 +157,4 @@ var quail = {
   }
 };
 
-module.exports = quail;
+module.exports = window.quail = quail;
