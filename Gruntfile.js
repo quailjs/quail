@@ -45,13 +45,6 @@ module.exports = function(grunt) {
         banner: '<%= pkg.options.banner %>'
       }
     },
-    karma: {
-      unit: {
-        configFile: 'config/karma-unit.conf.js',
-        singleRun: true,
-        browsers: ['PhantomJS']
-      }
-    },
     execute: {
       assessments: {
         options: {
@@ -117,13 +110,11 @@ module.exports = function(grunt) {
     }
   });
   grunt.loadTasks('tasks');
-  grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-convert');
-  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-execute');
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-gh-pages');
@@ -138,14 +129,12 @@ module.exports = function(grunt) {
 
   // By default, just run tests
   grunt.registerTask('default', [
-    'bower:install',
     'dev',
     'test'
   ]);
 
   // Build task.
   grunt.registerTask('build', [
-    'bower:install',
     'dev',
     'buildGuideline',
     'compressTestsJson',
@@ -154,17 +143,14 @@ module.exports = function(grunt) {
 
   // Test task.
   grunt.registerTask('test', [
-    'bower:install',
     'dev',
     'buildGuideline',
     'compressTestsJson',
-    'karma',
     'execute:assessments'
   ]);
 
   // Release task.
   grunt.registerTask('release', [
-    'bower:install',
     'test',
     'uglify',
     'gh-pages'

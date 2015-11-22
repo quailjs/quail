@@ -1,5 +1,5 @@
 var Case = require('Case');
-var $ = require('jquery');
+var $ = require('jquery/dist/jquery');
 var VideoMayBePresent = function (test) {
 
   var videoExtensions = ['webm', 'flv', 'ogv', 'ogg', 'avi', 'mov', 'qt', 'wmv', 'asf',

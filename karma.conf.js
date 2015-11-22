@@ -6,31 +6,36 @@ module.exports = function(karma) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: [
-      'browserify',
       'mocha',
       'chai',
-      'sinon'
+      'sinon',
+      'browserify'
     ],
 
     // list of files / patterns to load in the browser
     files: [
-      // Dependencies
-      {pattern: 'node_modules/jquery/dist/jquery.min.js', watched: false},
+      // Fixtures
+      'vendor/jquery/dist/*.js',
+      'src/core/*.js',
+      'src/core/wcag/*.js',
+      'src/js/components/*.js',
       // Specs
-      {pattern: 'test/unit/*Spec.js'},
-    ],
-
-    // list of files to exclude
-    exclude: [
+      'test/unit/*Spec.js',
     ],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'vendor/jquery/dist/*.js': [
+        'browserify'
+      ],
       'src/js/components/*.js': [
         'browserify'
       ],
       'src/core/*.js': [
+        'browserify'
+      ],
+      'src/core/wcag/*.js': [
         'browserify'
       ],
       'test/unit/*Spec.js': [
@@ -76,12 +81,29 @@ module.exports = function(karma) {
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true,
+    autoWatch: false,
 
     browserify: {
+      paths: [
+        './config/',
+        './src/core/',
+        './src/core/wcag/',
+        './src/js/',
+        './src/js/components/',
+        './src/js/strings/',
+        './src/assessments/',
+        './vendor/',
+      ],
+      debug: true,
       transform: [
         'brfs',
         'browserify-shim'
-      ]
+      ],
+      configure: function(bundle) {
+        bundle.once('prebundle', function() {
+          bundle.transform('babelify');
+        });
+      }
     },
   });
 };

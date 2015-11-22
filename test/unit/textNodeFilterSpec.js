@@ -1,15 +1,16 @@
-import quail from '../../src/quail';
+const TextNodeFilterComponent = require('TextNodeFilterComponent');
+const jquery = require('jquery/dist/jquery');
 
-describe('textNodeFilter', function () {
+describe('TextNodeFilterComponent', function () {
   var filter;
   var element;
 
   beforeEach(function () {
-    filter = quail.components.textNodeFilter;
+    filter = TextNodeFilterComponent;
   });
   describe('given an element without content', function () {
     beforeEach(function () {
-      element = $('<div></div>').get(0);
+      element = jquery('<div></div>').get(0);
     });
     it('should return false', function () {
       expect(filter(element)).to.be.false;
@@ -17,7 +18,7 @@ describe('textNodeFilter', function () {
   });
   describe('given an element without text nodes', function () {
     beforeEach(function () {
-      element = $('<div><p>hello</p></div>').get(0);
+      element = jquery('<div><p>hello</p></div>').get(0);
     });
     it('should return false', function () {
       expect(filter(element)).to.be.false;
@@ -25,7 +26,7 @@ describe('textNodeFilter', function () {
   });
   describe('given an element with text nodes that are only whitespace', function () {
     beforeEach(function () {
-      element = $([
+      element = jquery([
         '<div>',
           '            \n',
           '            \n',
@@ -38,7 +39,7 @@ describe('textNodeFilter', function () {
   });
   describe('given an element with a text node', function () {
     beforeEach(function () {
-      element = $([
+      element = jquery([
         '<div>',
           'hi',
         '</div>'
@@ -50,7 +51,7 @@ describe('textNodeFilter', function () {
   });
   describe('given an element with a text node and whitespace text nodes', function () {
     beforeEach(function () {
-      element = $([
+      element = jquery([
         '<div>',
           '            \n',
           'hi',
@@ -64,7 +65,7 @@ describe('textNodeFilter', function () {
   });
   describe('given an element with a text node and a dom node', function () {
     beforeEach(function () {
-      element = $([
+      element = jquery([
         '<div>',
           '<p>derp</p>',
           'hi',
@@ -77,7 +78,7 @@ describe('textNodeFilter', function () {
   });
   describe('given an element with just dom nodes', function () {
     beforeEach(function () {
-      element = $([
+      element = jquery([
         '<div>',
           '<p>derp</p>',
           '<p>derp</p>',
@@ -93,7 +94,7 @@ describe('textNodeFilter', function () {
   });
   describe('given an element with dom nodes and whitespace text nodes', function () {
     beforeEach(function () {
-      element = $([
+      element = jquery([
         '<div>',
           '<p>derp</p>',
           '            \n',
@@ -114,7 +115,7 @@ describe('textNodeFilter', function () {
   });
   describe('given an element with dom nodes, whitespace text nodes, and one real text node', function () {
     beforeEach(function () {
-      element = $([
+      element = jquery([
         '<div>',
           '<p>derp</p>',
           '            \n',

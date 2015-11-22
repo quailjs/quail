@@ -5,7 +5,7 @@
 var CleanStringComponent = require('CleanStringComponent');
 var IsUnreadable = require('IsUnreadable');
 var PlaceholdersStringsComponent = require('PlaceholdersStringsComponent');
-var $ = require('jquery');
+var $ = require('jquery/dist/jquery');
 
 var PlaceholderComponent = function (quail, test, Case, options) {
 

@@ -3,7 +3,7 @@
  *  (like a mouse event has a keyboard event as well).
  */
 var HasEventListenerComponent = require('HasEventListenerComponent');
-var $ = require('jquery');
+var $ = require('jquery/dist/jquery');
 
 var EventComponent = function (quail, test, Case, options) {
   var $scope = test.get('$scope');

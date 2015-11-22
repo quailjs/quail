@@ -1,4 +1,4 @@
-var jQuery = require('jquery');
+var jQuery = require('jquery/dist/jquery');
 
 var TestAggregator = (function () {
   var pointerMap = {

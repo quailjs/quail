@@ -1,3 +1,5 @@
+let $ = require('jquery/dist/jquery');
+
 $.fn.quail = function (options) {
   if (!this.length) {
     return this;
