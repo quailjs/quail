@@ -119,7 +119,6 @@ module.exports = function(file, api, options) {
         }
       });
       if (index > -1) {
-        console.log(index);
         funcExp.value.params.splice(index, 1);
       }
     })
