@@ -198,7 +198,6 @@ var SuccessCriteria = (function () {
     },
     // @todo, make this a set of methods that all classes extend.
     listenTo: function (dispatcher, eventName, handler) {
-      // @todo polyfill Function.prototype.bind.
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },

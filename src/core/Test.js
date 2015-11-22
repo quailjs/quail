@@ -1,5 +1,5 @@
 var Case = require('Case');
-var TextIsNotSmall = require('TextIsNotSmall');
+var BlinkIsNotUsed = require('BlinkIsNotUsed');
 
 var Test = (function () {
 
@@ -99,7 +99,7 @@ var Test = (function () {
       }
 
       var options = this.get('options') || {};
-      var callback = TextIsNotSmall;
+      var callback = BlinkIsNotUsed;
       var self = this;
 
       // Set the test complete method to the closure function that dispatches
@@ -291,7 +291,6 @@ var Test = (function () {
     testComplete: null,
     // @todo, make this a set of methods that all classes extend.
     listenTo: function (dispatcher, eventName, handler) {
-      // @todo polyfill Function.prototype.bind.
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
