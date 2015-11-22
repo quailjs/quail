@@ -2,7 +2,8 @@
  * Test callback for tests that look for script events
  *  (like a mouse event has a keyboard event as well).
  */
-var hasEventListener = require('HasEventListenerComponent');
+var HasEventListenerComponent = require('HasEventListenerComponent');
+var $ = require('jquery');
 
 var EventComponent = function (quail, test, Case, options) {
   var $scope = test.get('$scope');
@@ -19,7 +20,7 @@ var EventComponent = function (quail, test, Case, options) {
   var correspondingEvent = options.correspondingEvent || '';
   $items.each(function () {
     var eventName = searchEvent.replace('on', '');
-    var hasOnListener = HasEventListener($(this), eventName);
+    var hasOnListener = HasEventListenerComponent($(this), eventName);
     // Determine if the element has jQuery listeners for the event.
     var jqevents;
     if ($._data) {
@@ -27,7 +28,7 @@ var EventComponent = function (quail, test, Case, options) {
     }
     var hasjQueryOnListener = jqevents && jqevents[eventName] && !!jqevents[eventName].length;
     var hasCorrespondingEvent = !!correspondingEvent.length;
-    var hasSpecificCorrespondingEvent = HasEventListener($(this), correspondingEvent.replace('on', ''));
+    var hasSpecificCorrespondingEvent = HasEventListenerComponent($(this), correspondingEvent.replace('on', ''));
     var _case = test.add(Case({
       element: this
     }));
