@@ -2,7 +2,7 @@
  * Helper object that tests videos.
  * @todo - allow this to be exteded more easily.
  */
-var language = require('LanguageComponent');
+var Language = require('LanguageComponent');
 
 var VideoComponent = {
 
