@@ -27,6 +27,7 @@ glob(quailLibFilesPath, function (error, coreFiles) {
         paths: [
           './config/',
           './src/core/',
+          './src/core/lib',
           './src/js/',
           './src/js/components/',
           './src/js/strings/',
