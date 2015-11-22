@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var DocumentReadingDirection = function (quail, test) {
+var DocumentReadingDirection = function (test) {
 
   var selector = [
     '[lang="he"]',

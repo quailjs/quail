@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var IframeMustNotHaveLongdesc = function (quail, test) {
+var IframeMustNotHaveLongdesc = function (test) {
 
   var selector = 'iframe';
 

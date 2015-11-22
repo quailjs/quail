@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FrameIsNotUsed = function (quail, test) {
+var FrameIsNotUsed = function (test) {
   var selector = 'frame';
 
   this.get('$scope').each(function () {

@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ScriptsDoNotFlicker = function (quail, test, options) {
+var ScriptsDoNotFlicker = function (test, options) {
 
   var selector = 'script';
 

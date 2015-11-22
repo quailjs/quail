@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ImgServerSideMapNotUsed = function (quail, test) {
+var ImgServerSideMapNotUsed = function (test) {
 
   var selector = 'img';
 

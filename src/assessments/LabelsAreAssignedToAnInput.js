@@ -1,5 +1,5 @@
 var Case = require('Case');
-var LabelsAreAssignedToAnInput = function (quail, test) {
+var LabelsAreAssignedToAnInput = function (test) {
   test.get('$scope').find('label').each(function () {
     var _case = Case({
       element: this

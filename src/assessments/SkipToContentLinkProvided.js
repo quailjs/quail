@@ -3,7 +3,7 @@ var Case = require('Case');
 
 var SkipContentStringsComponent = require('SkipContentStringsComponent');
 
-var SkipToContentLinkProvided = function (quail, test) {
+var SkipToContentLinkProvided = function (test) {
   test.get('$scope').each(function () {
     var $local = $(this);
     var skipLinkFound = false;

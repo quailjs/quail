@@ -3,7 +3,7 @@
  */
 var Case = require('Case');
 
-var FileHasLabel = function (quail, test) {
+var FileHasLabel = function (test) {
 
   var sFiles = '[type="file"]';
   var sLabels = 'label';

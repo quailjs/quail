@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ObjectDoesNotUseColorAlone = function (quail, test, options) {
+var ObjectDoesNotUseColorAlone = function (test, options) {
 
   var selector = 'object';
 

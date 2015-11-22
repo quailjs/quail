@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var InputTextValueNotEmpty = function (quail, test) {
+var InputTextValueNotEmpty = function (test) {
   var options = {
     selector: 'input[type="text"]',
     attribute: 'value',

@@ -1,6 +1,6 @@
 var Case = require('Case');
 var RedundantStringsComponent = require('RedundantStringsComponent');
-var ALinkTextDoesNotBeginWithRedundantWord = function (quail, test) {
+var ALinkTextDoesNotBeginWithRedundantWord = function (test) {
   test.get('$scope').find('a').each(function () {
     var self = this;
     var $link = $(this);

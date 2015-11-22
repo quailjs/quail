@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var AreaHasAltValue = function (quail, test) {
+var AreaHasAltValue = function (test) {
 
   var selector = 'area';
 

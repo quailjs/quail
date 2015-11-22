@@ -1,6 +1,6 @@
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
-var InputWithoutLabelHasTitle = function (quail, test) {
+var InputWithoutLabelHasTitle = function (test) {
 
   test.get('$scope').each(function () {
 

@@ -1,5 +1,5 @@
 var Case = require('Case');
-var ImgAltIsDifferent = function (quail, test) {
+var ImgAltIsDifferent = function (test) {
   test.get('$scope').find('img:not([src])').each(function () {
     var _case = Case({
       element: this,

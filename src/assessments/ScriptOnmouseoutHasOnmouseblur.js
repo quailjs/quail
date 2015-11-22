@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var EventComponent = require('EventComponent');
 
-var ScriptOnmouseoutHasOnmouseblur = function (quail, test) {
+var ScriptOnmouseoutHasOnmouseblur = function (test) {
   var options = {
     selector: '[onmouseout]',
     correspondingEvent: 'onblur',

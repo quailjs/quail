@@ -1,5 +1,5 @@
 var Case = require('Case');
-var DefinitionListsAreUsed = function (quail, test) {
+var DefinitionListsAreUsed = function (test) {
   test.get('$scope').find('dl').each(function () {
     var _case = Case({
       element: this

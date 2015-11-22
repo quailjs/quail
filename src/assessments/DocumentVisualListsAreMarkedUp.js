@@ -1,7 +1,7 @@
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var DocumentVisualListsAreMarkedUp = function (quail, test) {
+var DocumentVisualListsAreMarkedUp = function (test) {
 
   var itemStarters = [
     '♦', '›', '»', '‣', '▶', '◦', '✓', '◽', '•', '—', '◾', // single characters

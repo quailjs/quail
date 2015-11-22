@@ -1,6 +1,6 @@
 var Case = require('Case');
 var HeadingLevelComponent = require('HeadingLevelComponent');
-var HeaderH4 = function (quail, test) {
+var HeaderH4 = function (test) {
   HeadingLevelComponent(quail, test, Case, {
     headingLevel: 4
   });

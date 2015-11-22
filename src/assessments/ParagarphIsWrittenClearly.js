@@ -1,6 +1,6 @@
 var Case = require('Case');
 var TextStatisticsComponent = require('TextStatisticsComponent');
-var ParagraphIsWrittenClearly = function (quail, test) {
+var ParagraphIsWrittenClearly = function (test) {
   test.get('$scope').find('p').each(function () {
     var _case = Case({
       element: this

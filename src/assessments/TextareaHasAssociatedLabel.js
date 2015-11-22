@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var LabelComponent = require('LabelComponent');
 
-var TextareaHasAssociatedLabel = function (quail, test) {
+var TextareaHasAssociatedLabel = function (test) {
   var options = {
     selector: 'textarea'
   };

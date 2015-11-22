@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var ObjectContentUsableWhenDisabled = function (quail, test, options) {
+var ObjectContentUsableWhenDisabled = function (test, options) {
 
   var selector = 'object';
 

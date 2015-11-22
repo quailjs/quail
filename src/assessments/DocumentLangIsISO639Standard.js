@@ -1,6 +1,6 @@
 var Case = require('Case');
 var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
-var DocumentLangIsISO639Standard = function (quail, test) {
+var DocumentLangIsISO639Standard = function (test) {
   var $element = (test.get('$scope').is('html')) ?
     test.get('$scope') :
     test.get('$scope').find('html').first();

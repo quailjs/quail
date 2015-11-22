@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ObjectMustHaveEmbed = function (quail, test) {
+var ObjectMustHaveEmbed = function (test) {
 
   var selector = 'object';
 

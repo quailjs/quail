@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ImgShouldNotHaveTitle = function (quail, test) {
+var ImgShouldNotHaveTitle = function (test) {
 
   var selector = 'img';
 

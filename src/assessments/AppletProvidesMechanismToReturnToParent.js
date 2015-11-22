@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var AppletProvidesMechanismToReturnToParent = function (quail, test, options) {
+var AppletProvidesMechanismToReturnToParent = function (test, options) {
 
   var selector = 'applet';
 

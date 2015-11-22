@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ObjectWithClassIDHasNoText = function (quail, test, options) {
+var ObjectWithClassIDHasNoText = function (test, options) {
 
   var selector = 'object[classid]:not(object[classid]:empty)';
 

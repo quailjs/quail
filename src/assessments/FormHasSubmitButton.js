@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FormHasSubmitButton = function (quail, test) {
+var FormHasSubmitButton = function (test) {
 
   var selector = 'input[type=submit], button[type=submit]';
 

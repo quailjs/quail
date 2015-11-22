@@ -1,6 +1,6 @@
 var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
 var Case = require('Case');
-var AMustContainText = function (quail, test) {
+var AMustContainText = function (test) {
   test.get('$scope').find('a').each(function () {
     var _case = Case({
       element: this

@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var TableUsesCaption = function (quail, test) {
+var TableUsesCaption = function (test) {
 
   var selector = 'table';
 

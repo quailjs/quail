@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var LiDontUseImageForBullet = function (quail, test) {
+var LiDontUseImageForBullet = function (test) {
 
   var selector = 'li';
 

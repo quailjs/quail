@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var InputImageHasAlt = function (quail, test) {
+var InputImageHasAlt = function (test) {
 
   var selector = 'input[type=image]:visible';
 

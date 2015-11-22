@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var ButtonHasName = function (quail, test) {
+var ButtonHasName = function (test) {
   var options = {
     selector: 'button',
     content: 'true',

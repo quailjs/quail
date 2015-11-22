@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ObjectMustHaveTitle = function (quail, test) {
+var ObjectMustHaveTitle = function (test) {
 
   var selector = 'object';
 

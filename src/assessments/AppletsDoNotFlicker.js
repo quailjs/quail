@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var AppletsDoNotFlicker = function (quail, test, options) {
+var AppletsDoNotFlicker = function (test, options) {
 
   var selector = 'applet';
 

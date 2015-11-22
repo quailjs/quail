@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var DocumentTitleIsNotPlaceholder = function (quail, test) {
+var DocumentTitleIsNotPlaceholder = function (test) {
   var options = {
     selector: 'head > title',
     content: 'true'

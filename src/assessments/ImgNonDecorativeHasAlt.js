@@ -1,6 +1,6 @@
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
-var ImgNonDecorativeHasAlt = function (quail, test) {
+var ImgNonDecorativeHasAlt = function (test) {
   test.get('$scope').find('img[alt]').each(function () {
     var _case = Case({
       element: this

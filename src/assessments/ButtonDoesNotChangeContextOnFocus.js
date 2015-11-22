@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var EventComponent = require('EventComponent');
 
-var ButtonDoesNotChangeContextOnFocus = function (quail, test) {
+var ButtonDoesNotChangeContextOnFocus = function (test) {
   var options = {
     searchEvent: 'onfocus'
   };

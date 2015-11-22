@@ -1,5 +1,5 @@
 var Case = require('Case');
-var InputImageAltIsShort = function (quail, test) {
+var InputImageAltIsShort = function (test) {
   test.get('$scope').find('input[type=image]').each(function () {
     var _case = Case({
       element: this

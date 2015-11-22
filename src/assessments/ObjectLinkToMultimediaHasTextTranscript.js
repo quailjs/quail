@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ObjectLinkToMultimediaHasTextTranscript = function (quail, test, options) {
+var ObjectLinkToMultimediaHasTextTranscript = function (test, options) {
 
   var selector = 'object';
 

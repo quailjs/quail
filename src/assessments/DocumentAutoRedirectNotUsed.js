@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var DocumentAutoRedirectNotUsed = function (quail, test) {
+var DocumentAutoRedirectNotUsed = function (test) {
 
   var selector = 'meta[http-equiv=refresh]';
 

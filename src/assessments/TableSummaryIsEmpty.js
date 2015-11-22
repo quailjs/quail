@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var TableSummaryIsEmpty = function (quail, test) {
+var TableSummaryIsEmpty = function (test) {
   var options = {
     selector: 'table',
     attribute: 'summary',

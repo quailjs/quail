@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var InputElementsDontHaveAlt = function (quail, test) {
+var InputElementsDontHaveAlt = function (test) {
 
   var selector = 'input[type!=image]';
 

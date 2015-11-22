@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ObjectTextUpdatesWhenObjectChanges = function (quail, test, options) {
+var ObjectTextUpdatesWhenObjectChanges = function (test, options) {
 
   var selector = 'object';
 

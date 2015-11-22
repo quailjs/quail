@@ -3,7 +3,7 @@
  */
 var Case = require('Case');
 
-var ScriptOnFocusChangeBackgroundOrBorder = function (quail, test) {
+var ScriptOnFocusChangeBackgroundOrBorder = function (test) {
   var buildCase = function (element, status, id, message) {
     test.add(Case({
       element: element,

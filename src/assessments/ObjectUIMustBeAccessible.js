@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ObjectUIMustBeAccessible = function (quail, test, options) {
+var ObjectUIMustBeAccessible = function (test, options) {
 
   var selector = 'object';
 

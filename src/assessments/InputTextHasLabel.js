@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var LabelComponent = require('LabelComponent');
 
-var InputTextHasLabel = function (quail, test) {
+var InputTextHasLabel = function (test) {
   var options = {
     selector: 'input'
   };

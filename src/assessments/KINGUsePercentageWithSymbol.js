@@ -1,6 +1,6 @@
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var Case = require('Case');
-var KINGUsePercentageWithSymbol = function (quail, test) {
+var KINGUsePercentageWithSymbol = function (test) {
   function testPercentFormat (index, element) {
     // Detect dates with several separators.
     var percentName = [

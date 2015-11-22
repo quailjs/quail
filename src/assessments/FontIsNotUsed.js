@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FontIsNotUsed = function (quail, test) {
+var FontIsNotUsed = function (test) {
 
   var selector = 'font';
 

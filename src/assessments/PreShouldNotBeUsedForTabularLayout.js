@@ -1,5 +1,5 @@
 var Case = require('Case');
-var PreShouldNotBeUsedForTabularLayout = function (quail, test) {
+var PreShouldNotBeUsedForTabularLayout = function (test) {
   test.get('$scope').find('pre').each(function () {
     var _case = Case({
       element: this

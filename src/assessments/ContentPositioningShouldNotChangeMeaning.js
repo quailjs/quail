@@ -1,5 +1,5 @@
 var Case = require('Case');
-var ContentPositioningShouldNotChangeMeaning = function (quail, test) {
+var ContentPositioningShouldNotChangeMeaning = function (test) {
   // Look for absolute positioned elements that are being put into grids or columns.
   var positions = [
     'top',

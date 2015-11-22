@@ -1,6 +1,6 @@
 var Case = require('Case');
 var RedundantStringsComponent = require('RedundantStringsComponent');
-var FormWithRequiredLabel = function (quail, test) {
+var FormWithRequiredLabel = function (test) {
   var redundant = RedundantStringsComponent;
   var lastStyle, currentStyle = false;
   redundant.required[redundant.required.indexOf('*')] = /\*/g;

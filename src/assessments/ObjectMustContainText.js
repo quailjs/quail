@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var ObjectMustContainText = function (quail, test) {
+var ObjectMustContainText = function (test) {
   var options = {
     selector: 'object',
     content: 'true',

@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var DocumentHasTitleElement = function (quail, test) {
+var DocumentHasTitleElement = function (test) {
 
   var selector = 'head title';
 

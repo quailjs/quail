@@ -1,6 +1,6 @@
 var Case = require('Case');
 var NewWindowStringsComponent = require('NewWindowStringsComponent');
-var ALinksDontOpenNewWindow = function (quail, test) {
+var ALinksDontOpenNewWindow = function (test) {
   // Links without a target attribute pass.
   test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function () {
     test.add(Case({

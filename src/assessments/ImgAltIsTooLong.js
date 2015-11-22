@@ -1,5 +1,5 @@
 var Case = require('Case');
-var ImgAltIsTooLong = function (quail, test) {
+var ImgAltIsTooLong = function (test) {
   test.get('$scope').find('img[alt]').each(function () {
     var _case = Case({
       element: this

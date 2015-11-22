@@ -1,5 +1,5 @@
 var Case = require('Case');
-var AnimatedGifMayBePresent = function (quail, test) {
+var AnimatedGifMayBePresent = function (test) {
 
   /**
    * Test if gif is animated

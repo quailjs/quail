@@ -1,5 +1,5 @@
 var Case = require('Case');
-var HeadersAttrRefersToATableCell = function (quail, test) {
+var HeadersAttrRefersToATableCell = function (test) {
   // Table cell headers without referred ids
   test.get('$scope').find('table').each(function () {
     var self = this;

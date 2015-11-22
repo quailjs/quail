@@ -3,7 +3,7 @@ var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var LanguageDirAttributeIsUsed = function (quail, test) {
+var LanguageDirAttributeIsUsed = function (test) {
 
   var textDirection = LanguageComponent.textDirection;
 

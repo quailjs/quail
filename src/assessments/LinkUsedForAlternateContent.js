@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var LinkUsedForAlternateContent = function (quail, test, options) {
+var LinkUsedForAlternateContent = function (test, options) {
 
   var selector = 'html:not(html:has(link[rel=alternate])) body';
 

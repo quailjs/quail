@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var DocumentTitleNotEmpty = function (quail, test) {
+var DocumentTitleNotEmpty = function (test) {
   var options = {
     selector: 'head > title',
     content: 'true',

@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var NoframesSectionMustHaveTextEquivalent = function (quail, test, options) {
+var NoframesSectionMustHaveTextEquivalent = function (test, options) {
 
   var selector = 'frameset:not(frameset:has(noframes))';
 

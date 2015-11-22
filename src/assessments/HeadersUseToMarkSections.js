@@ -1,5 +1,5 @@
 var Case = require('Case');
-var HeadersUseToMarkSections = function (quail, test) {
+var HeadersUseToMarkSections = function (test) {
   test.get('$scope').find('p').each(function () {
     var _case = Case({
       element: this

@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var HeaderH1Format = function (quail, test) {
+var HeaderH1Format = function (test) {
 
   var selector = 'h1';
 

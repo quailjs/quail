@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var LabelDoesNotContainInput = function (quail, test) {
+var LabelDoesNotContainInput = function (test) {
 
   var selector = 'label';
 

@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var LabelMustNotBeEmpty = function (quail, test) {
+var LabelMustNotBeEmpty = function (test) {
   var options = {
     selector: 'label',
     content: 'true',

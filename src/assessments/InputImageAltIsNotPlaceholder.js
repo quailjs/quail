@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var InputImageAltIsNotPlaceholder = function (quail, test) {
+var InputImageAltIsNotPlaceholder = function (test) {
   var options = {
     selector: 'input[type="image"]',
     attribute: 'alt'

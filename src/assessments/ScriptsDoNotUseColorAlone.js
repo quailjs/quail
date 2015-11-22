@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ScriptsDoNotUseColorAlone = function (quail, test, options) {
+var ScriptsDoNotUseColorAlone = function (test, options) {
 
   var selector = 'script';
 

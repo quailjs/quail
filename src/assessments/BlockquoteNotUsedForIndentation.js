@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var BlockquoteNotUsedForIndentation = function (quail, test) {
+var BlockquoteNotUsedForIndentation = function (test) {
 
   var selector = 'blockquote';
 

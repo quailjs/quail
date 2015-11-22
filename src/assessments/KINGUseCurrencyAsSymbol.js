@@ -1,6 +1,6 @@
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var Case = require('Case');
-var KINGUseCurrencyAsSymbol = function (quail, test) {
+var KINGUseCurrencyAsSymbol = function (test) {
   function testCurrencyFormat (index, element) {
     // Detect dates with several separators.
     var currencyNames = [

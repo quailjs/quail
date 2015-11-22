@@ -1,5 +1,5 @@
 var Case = require('Case');
-var KINGStrongList = function (quail, test) {
+var KINGStrongList = function (test) {
   test.get('$scope').find('strong').each(function () {
     var _case = Case({
       element: this

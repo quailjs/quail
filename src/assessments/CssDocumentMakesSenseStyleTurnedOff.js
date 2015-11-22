@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var CssDocumentMakesSenseStyleTurnedOff = function (quail, test) {
+var CssDocumentMakesSenseStyleTurnedOff = function (test) {
   this.get('$scope').each(function () {
     test.add(Case({
       element: undefined,

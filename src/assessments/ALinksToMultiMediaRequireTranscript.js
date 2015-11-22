@@ -1,5 +1,5 @@
 var Case = require('Case');
-var ALinksToMultiMediaRequireTranscript = function (quail, test) {
+var ALinksToMultiMediaRequireTranscript = function (test) {
   var selector = [
     'a[href$=".wmv"]',
     'a[href$=".mpg"]',

@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var LabelComponent = require('LabelComponent');
 
-var CheckboxHasLabel = function (quail, test) {
+var CheckboxHasLabel = function (test) {
   var options = {
     selector: 'input[type="checkbox"]'
   };

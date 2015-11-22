@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var EventComponent = require('EventComponent');
 
-var ScriptOnmouseoverHasOnfocus = function (quail, test) {
+var ScriptOnmouseoverHasOnfocus = function (test) {
   var options = {
     selector: '[onmouseover]',
     correspondingEvent: 'onfocus',

@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ScriptInBodyMustHaveNoscript = function (quail, test, options) {
+var ScriptInBodyMustHaveNoscript = function (test, options) {
 
   var selector = 'html:not(html:has(noscript)):has(script) body';
 

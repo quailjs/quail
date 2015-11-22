@@ -1,5 +1,5 @@
 var Case = require('Case');
-var ImgWithMathShouldHaveMathEquivalent = function (quail, test) {
+var ImgWithMathShouldHaveMathEquivalent = function (test) {
   test.get('$scope').find('img:not(img:has(math), img:has(tagName))').each(function () {
     var _case = Case({
       element: this

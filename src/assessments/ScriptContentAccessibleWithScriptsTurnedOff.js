@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ScriptContentAccessibleWithScriptsTurnedOff = function (quail, test, options) {
+var ScriptContentAccessibleWithScriptsTurnedOff = function (test, options) {
 
   var selector = 'script';
 

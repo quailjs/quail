@@ -1,6 +1,6 @@
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
-var AppletContainsTextEquivalent = function (quail, test) {
+var AppletContainsTextEquivalent = function (test) {
   test.get('$scope').find('applet[alt=""], applet:not(applet[alt])').each(function () {
     var _case = Case({
       element: this

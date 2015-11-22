@@ -1,7 +1,7 @@
 var Case = require('Case');
 var SuspectPHeaderTags = require('SuspectPHeaderTags');
 var SuspectPCSSStyles = require('SuspectPCSSStyles');
-var PNotUsedAsHeader = function (quail, test) {
+var PNotUsedAsHeader = function (test) {
   test.get('$scope').find('p').each(function () {
     var _case = Case({
       element: this

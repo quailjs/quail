@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var TableComplexHasSummary = function (quail, test, options) {
+var TableComplexHasSummary = function (test, options) {
 
   var selector = 'table:not(table[summary], table:has(caption))';
 

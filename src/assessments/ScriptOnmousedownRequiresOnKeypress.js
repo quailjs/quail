@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var EventComponent = require('EventComponent');
 
-var ScriptOnmousedownRequiresOnKeypress = function (quail, test) {
+var ScriptOnmousedownRequiresOnKeypress = function (test) {
   var options = {
     selector: '[onmousedown]',
     correspondingEvent: 'onkeydown',

@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ObjectShouldHaveLongDescription = function (quail, test, options) {
+var ObjectShouldHaveLongDescription = function (test, options) {
 
   var selector = 'object';
 

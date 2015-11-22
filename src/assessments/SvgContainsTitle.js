@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var SvgContainsTitle = function (quail, test) {
+var SvgContainsTitle = function (test) {
 
   var selector = 'svg';
 

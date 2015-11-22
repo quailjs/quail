@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var LegendTextNotEmpty = function (quail, test) {
+var LegendTextNotEmpty = function (test) {
 
   var selector = 'legend';
 

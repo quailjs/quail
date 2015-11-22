@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var AppletsDonotUseColorAlone = function (quail, test, options) {
+var AppletsDonotUseColorAlone = function (test, options) {
 
   var selector = 'applet';
 

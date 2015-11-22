@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var DocumentLangNotIdentified = function (quail, test) {
+var DocumentLangNotIdentified = function (test) {
   this.get('$scope').each(function () {
     var lang = ('getAttribute' in this) && this.getAttribute('lang');
     if (lang && lang.length > 1) {

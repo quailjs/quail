@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var BoldIsNotUsed = function (quail, test) {
+var BoldIsNotUsed = function (test) {
 
   var selector = 'bold';
 

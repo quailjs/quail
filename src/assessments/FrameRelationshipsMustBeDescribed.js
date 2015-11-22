@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FrameRelationshipsMustBeDescribed = function (quail, test, options) {
+var FrameRelationshipsMustBeDescribed = function (test, options) {
 
   var selector = 'frameset:not(frameset[longdesc])';
 

@@ -1,6 +1,6 @@
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
-var ALinksAreSeparatedByPrintableCharacters = function (quail, test) {
+var ALinksAreSeparatedByPrintableCharacters = function (test) {
   test.get('$scope').find('a').each(function () {
     var _case = test.add(Case({
       element: this

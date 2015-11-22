@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var LegendTextNotPlaceholder = function (quail, test) {
+var LegendTextNotPlaceholder = function (test) {
   var options = {
     selector: 'legend',
     content: 'true',

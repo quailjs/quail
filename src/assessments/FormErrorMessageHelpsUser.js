@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var FormErrorMessageHelpsUser = function (quail, test) {
+var FormErrorMessageHelpsUser = function (test) {
 
   var selector = 'form';
 

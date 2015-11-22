@@ -1,5 +1,5 @@
 var Case = require('Case');
-var VideoMayBePresent = function (quail, test) {
+var VideoMayBePresent = function (test) {
 
   var videoExtensions = ['webm', 'flv', 'ogv', 'ogg', 'avi', 'mov', 'qt', 'wmv', 'asf',
   'mp4', 'm4p', 'm4v', 'mpg', 'mp2', 'mpeg', 'mpg', 'mpe', 'mpv', 'm2v', '3gp', '3g2'];

@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var EventComponent = require('EventComponent');
 
-var LinkDoesNotChangeContextOnFocus = function (quail, test) {
+var LinkDoesNotChangeContextOnFocus = function (test) {
   var options = {
     selector: 'a[href]',
     searchEvent: 'onfocus'

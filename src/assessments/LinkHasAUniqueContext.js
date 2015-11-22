@@ -1,5 +1,5 @@
 var Case = require('Case');
-var LinkHasAUniqueContext = function (quail, test) {
+var LinkHasAUniqueContext = function (test) {
 
   var blockStyle = [
     'block',

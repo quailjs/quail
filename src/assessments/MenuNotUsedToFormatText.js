@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var MenuNotUsedToFormatText = function (quail, test) {
+var MenuNotUsedToFormatText = function (test) {
 
   var selector = 'menu:not(menu li:parent(menu))';
 

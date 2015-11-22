@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var IIsNotUsed = function (quail, test) {
+var IIsNotUsed = function (test) {
 
   var selector = 'i';
 

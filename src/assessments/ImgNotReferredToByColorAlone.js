@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var ImgNotReferredToByColorAlone = function (quail, test, options) {
+var ImgNotReferredToByColorAlone = function (test, options) {
 
   var selector = 'img';
 

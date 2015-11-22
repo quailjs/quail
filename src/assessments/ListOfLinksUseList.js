@@ -1,6 +1,6 @@
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
-var ListOfLinksUseList = function (quail, test) {
+var ListOfLinksUseList = function (test) {
   var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
   test.get('$scope').find('a').each(function () {
     var _case = test.add(Case({

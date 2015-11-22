@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var BlinkIsNotUsed = function (quail, test) {
+var BlinkIsNotUsed = function (test) {
 
   var selector = 'blink';
 

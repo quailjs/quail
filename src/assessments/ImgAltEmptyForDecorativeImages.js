@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var ImgAltEmptyForDecorativeImages = function (quail, test, options) {
+var ImgAltEmptyForDecorativeImages = function (test, options) {
 
   var selector = 'img[alt]';
 

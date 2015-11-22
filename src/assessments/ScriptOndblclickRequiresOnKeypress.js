@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var EventComponent = require('EventComponent');
 
-var ScriptOndblclickRequiresOnKeypress = function (quail, test) {
+var ScriptOndblclickRequiresOnKeypress = function (test) {
   var options = {
     selector: '[ondblclick]',
     correspondingEvent: 'onkeypress',

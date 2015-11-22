@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var MarqueeIsNotUsed = function (quail, test) {
+var MarqueeIsNotUsed = function (test) {
 
   var selector = 'marquee';
 

@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var DomOrderMatchesVisualOrder = function (quail, test, options) {
+var DomOrderMatchesVisualOrder = function (test, options) {
 
   var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
 

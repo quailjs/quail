@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ImgWithMapHasUseMap = function (quail, test) {
+var ImgWithMapHasUseMap = function (test) {
 
   var selector = 'img[ismap]';
 

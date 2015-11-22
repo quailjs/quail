@@ -1,5 +1,5 @@
 var Case = require('Case');
-var DocumentTitleIsShort = function (quail, test) {
+var DocumentTitleIsShort = function (test) {
   var $title = test.get('$scope').find('head title');
   test.add(Case({
     element: $title.get(0),

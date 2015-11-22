@@ -1,5 +1,5 @@
 var Case = require('Case');
-var KINGUseLongDateFormat = function (quail, test) {
+var KINGUseLongDateFormat = function (test) {
 
   function testDateFormat (index, element) {
     // Detect dates with several separators.

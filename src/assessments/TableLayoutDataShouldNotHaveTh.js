@@ -1,6 +1,6 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
-var TableLayoutDataShouldNotHaveTh = function (quail, test) {
+var TableLayoutDataShouldNotHaveTh = function (test) {
   test.get('$scope').find('table').each(function () {
     var _case = Case({
       element: this

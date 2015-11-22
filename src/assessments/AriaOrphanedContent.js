@@ -2,7 +2,7 @@
 
 var Case = require('Case');
 
-var AriaOrphanedContent = function (quail, test) {
+var AriaOrphanedContent = function (test) {
   var $scope = test.get('$scope');
 
   $scope.each(function () {

@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var LabelComponent = require('LabelComponent');
 
-var PasswordHasLabel = function (quail, test) {
+var PasswordHasLabel = function (test) {
   var options = {
     selector: 'input[type="password"]'
   };

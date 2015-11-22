@@ -1,6 +1,6 @@
 var Case = require('Case');
 var VideoComponent = require('VideoComponent');
-var VideosEmbeddedOrLinkedNeedCaptions = function (quail, test) {
+var VideosEmbeddedOrLinkedNeedCaptions = function (test) {
 
   VideoComponent.findVideos(test.get('$scope'), function (element, pass) {
     if (!pass) {

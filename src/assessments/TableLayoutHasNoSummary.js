@@ -1,7 +1,7 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
-var TableLayoutHasNoSummary = function (quail, test) {
+var TableLayoutHasNoSummary = function (test) {
   test.get('$scope').each(function () {
     var $local = $(this);
     $local.find('table[summary]').each(function () {

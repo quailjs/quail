@@ -9,7 +9,7 @@
  */
 var Case = require('Case');
 
-var DocumentContentReadableWithoutStylesheets = function (quail, test) {
+var DocumentContentReadableWithoutStylesheets = function (test) {
   this.get('$scope').each(function () {
     test.add(Case({
       element: undefined,

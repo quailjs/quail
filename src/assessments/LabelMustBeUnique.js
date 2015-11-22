@@ -1,5 +1,5 @@
 var Case = require('Case');
-var LabelMustBeUnique = function (quail, test) {
+var LabelMustBeUnique = function (test) {
   var labels = {};
   test.get('$scope').find('label[for]').each(function () {
     if (typeof labels[$(this).attr('for')] === 'undefined') {

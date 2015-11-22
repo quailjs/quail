@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var TableDataShouldHaveTh = function (quail, test) {
+var TableDataShouldHaveTh = function (test) {
 
   var selector = 'table';
 

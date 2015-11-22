@@ -1,5 +1,5 @@
 var Case = require('Case');
-var ImgMapAreasHaveDuplicateLink = function (quail, test) {
+var ImgMapAreasHaveDuplicateLink = function (test) {
   var links = {};
   test.get('$scope').find('a').each(function () {
     links[$(this).attr('href')] = $(this).attr('href');

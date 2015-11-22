@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ObjectInterfaceIsAccessible = function (quail, test, options) {
+var ObjectInterfaceIsAccessible = function (test, options) {
 
   var selector = 'object';
 

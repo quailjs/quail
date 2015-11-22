@@ -9,7 +9,7 @@ var Case = require('Case');
 
 var NewWindowStringsComponent = require('NewWindowStringsComponent');
 
-var AreaDontOpenNewWindow = function (quail, test) {
+var AreaDontOpenNewWindow = function (test) {
   // Links without a target attribute pass.
   test.get('$scope').find('area').not('[target=_new], [target=_blank]').each(function () {
     test.add(Case({

@@ -1,6 +1,6 @@
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
-var AImgAltNotRepetitive = function (quail, test) {
+var AImgAltNotRepetitive = function (test) {
   test.get('$scope').find('a img[alt]').each(function () {
     var _case = test.add(Case({
       element: this

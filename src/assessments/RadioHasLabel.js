@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var LabelComponent = require('LabelComponent');
 
-var RadioHasLabel = function (quail, test) {
+var RadioHasLabel = function (test) {
   var options = {
     selector: 'input[type="radio"]'
   };

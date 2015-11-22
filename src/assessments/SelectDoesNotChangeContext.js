@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var EventComponent = require('EventComponent');
 
-var SelectDoesNotChangeContext = function (quail, test) {
+var SelectDoesNotChangeContext = function (test) {
   var options = {
     selector: 'select',
     searchEvent: 'onchange'

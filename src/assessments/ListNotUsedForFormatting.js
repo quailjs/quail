@@ -1,5 +1,5 @@
 var Case = require('Case');
-var ListNotUsedForFormatting = function (quail, test) {
+var ListNotUsedForFormatting = function (test) {
   test.get('$scope').find('ol, ul').each(function () {
     var _case = Case({
       element: this

@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var ImgHasAlt = function (quail, test) {
+var ImgHasAlt = function (test) {
 
   var selector = 'img';
 

@@ -1,5 +1,5 @@
 var Case = require('Case');
-var InputCheckboxRequiresFieldset = function (quail, test) {
+var InputCheckboxRequiresFieldset = function (test) {
   test.get('$scope').find('input[type="checkbox"]').each(function () {
     var _case = Case({
       element: this

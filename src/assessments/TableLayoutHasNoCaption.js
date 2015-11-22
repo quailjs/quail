@@ -1,6 +1,6 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
-var TableLayoutHasNoCaption = function (quail, test) {
+var TableLayoutHasNoCaption = function (test) {
   test.get('$scope').find('table').each(function () {
     if ($(this).find('caption').length) {
       if (!IsDataTableComponent($(this))) {

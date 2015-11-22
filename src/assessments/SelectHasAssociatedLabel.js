@@ -6,7 +6,7 @@ var Case = require('Case');
 
 var LabelComponent = require('LabelComponent');
 
-var SelectHasAssociatedLabel = function (quail, test) {
+var SelectHasAssociatedLabel = function (test) {
   var options = {
     selector: 'select'
   };

@@ -1,6 +1,6 @@
 var Case = require('Case');
 var HasEventListenerComponent = require('HasEventListenerComponent');
-var SelectJumpMenu = function (quail, test) {
+var SelectJumpMenu = function (test) {
   var $scope = test.get('$scope');
   if ($scope.find('select').length === 0) {
     return;

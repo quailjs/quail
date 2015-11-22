@@ -1,5 +1,5 @@
 var Case = require('Case');
-var TableUsesScopeForRow = function (quail, test) {
+var TableUsesScopeForRow = function (test) {
   test.get('$scope').find('table').each(function () {
     $(this).find('td:first-child').each(function () {
       var $next = $(this).next('td');

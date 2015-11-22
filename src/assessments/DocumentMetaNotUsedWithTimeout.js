@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var DocumentMetaNotUsedWithTimeout = function (quail, test) {
+var DocumentMetaNotUsedWithTimeout = function (test) {
 
   var selector = 'meta';
 

@@ -7,7 +7,7 @@
  */
 var Case = require('Case');
 
-var EmbedMustHaveAltAttribute = function (quail, test) {
+var EmbedMustHaveAltAttribute = function (test) {
 
   var selector = 'embed';
 
