@@ -1,4 +1,6 @@
-(function ($) {
+const $ = require('jquery/dist/jquery');
+
+var TableHeaders = (function () {
   var scopeValues = ['row', 'col', 'rowgroup', 'colgroup'];
 
   $.fn.getTableMap = function () {
@@ -243,4 +245,6 @@
     return headers.not(':empty').not(this);
   };
 
-}(jQuery));
+}());
+
+module.exports = TableHeaders;
