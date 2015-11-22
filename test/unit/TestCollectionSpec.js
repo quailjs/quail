@@ -3,14 +3,15 @@ const Test = require('Test');
 const Case = require('Case');
 const quail = {};
 
-describe('TestCollection', function () {
+xdescribe('TestCollection', function () {
 
   var _testCollection;
 
   beforeEach(function () {
     _testCollection = new TestCollection({
       'peregrine': {
-        'bird': 'falcon'
+        'bird': 'falcon',
+        callback: function () {}
       }
     });
   });

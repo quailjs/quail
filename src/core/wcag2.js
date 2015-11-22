@@ -1,6 +1,4 @@
 /* A logical combo of Techniques and the intersection of their outcomes. */
-var wcag2 = require('wcag2');
-
 var wcag2 = (function () {
   'use strict';
   var ajaxOpt = {async: false, dataType: 'json'};

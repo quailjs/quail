@@ -2,6 +2,7 @@ const TestCollection = require('TestCollection');
 const Test = require('Test');
 const Case = require('Case');
 const $ = require('jquery/dist/jquery');
+const quail = {};
 
 describe('Test', function () {
   var _test;

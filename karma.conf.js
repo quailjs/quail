@@ -16,8 +16,7 @@ module.exports = function(karma) {
     files: [
       // Fixtures
       'vendor/jquery/dist/*.js',
-      'src/core/*.js',
-      'src/core/wcag/*.js',
+      'src/core/lib/*.js',
       // Specs
       'test/unit/*Spec.js',
     ],
@@ -28,10 +27,7 @@ module.exports = function(karma) {
       'vendor/jquery/dist/*.js': [
         'browserify'
       ],
-      'src/core/*.js': [
-        'browserify'
-      ],
-      'src/core/wcag/*.js': [
+      'src/core/lib/*.js': [
         'browserify'
       ],
       'test/unit/*Spec.js': [
@@ -81,8 +77,7 @@ module.exports = function(karma) {
 
     browserify: {
       paths: [
-        'src/core/',
-        'src/core/wcag/',
+        'src/core/lib/',
         'vendor/',
       ],
       debug: true,
