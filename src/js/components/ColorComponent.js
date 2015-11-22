@@ -2,7 +2,7 @@
  * Test callback for color tests. This handles both WAI and WCAG
  * color contrast/luminosity.
  */
-var convertToPx = require('ConvertToPxComponent');
+var ConvertToPx = require('ConvertToPxComponent');
 var IsUnreadable = require('IsUnreadable');
 
 var ColorComponent = function () {

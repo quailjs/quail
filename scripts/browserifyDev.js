@@ -18,6 +18,7 @@ glob(quailDevelopmentFilesPath, function (error, developmentFiles) {
       './src/js/components/',
       './src/js/strings/',
       './src/assessments/',
+      './vendor/',
     ],
     options: {
       debug: false

@@ -31,6 +31,7 @@ glob(quailLibFilesPath, function (error, coreFiles) {
           './src/js/components/',
           './src/js/strings/',
           './src/assessments/',
+          './vendor/',
         ],
         options: {
           debug: false

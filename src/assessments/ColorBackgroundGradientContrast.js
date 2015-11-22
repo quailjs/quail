@@ -1,5 +1,7 @@
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
+var Rainbow = require('RainbowVis-JS/rainbowvis');
+
 var ColorBackgroundGradientContrast = function (test, options) {
 
   var colors = ColorComponent.colors;
@@ -15,7 +17,8 @@ var ColorBackgroundGradientContrast = function (test, options) {
    */
   function colorBackgroundGradientContrast (test, Case, options, $this, element) {
     // Check if there's a background gradient using DOM.
-    var failureFound, rainbow, numberOfSamples;
+    var failureFound, numberOfSamples;
+    var rainbow = new Rainbow();
     var backgroundGradientColors = colors.getBackgroundGradient($this);
 
     if (!backgroundGradientColors) {
@@ -30,8 +33,6 @@ var ColorBackgroundGradientContrast = function (test, options) {
     }
 
     // Create a rainbow.
-    /* global Rainbow */
-    rainbow = new Rainbow();
     rainbow.setSpectrumByArray(backgroundGradientColors);
     // @todo, make the number of samples configurable.
     numberOfSamples = backgroundGradientColors.length * options.gradientSampleMultiplier;
