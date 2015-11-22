@@ -1,4 +1,5 @@
 var fs = require('fs');
+var mkdirp = require('mkdirp');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var path = require('path');
@@ -19,32 +20,39 @@ glob(quailLibFilesPath, function (error, coreFiles) {
       if (error) {
         process.exit(1);
       }
-      browserify({
-        entries: []
-          .concat(coreFiles)
-          .concat(componentFiles)
-          .concat(assessmentFiles),
-        paths: [
-          './config/',
-          './src/core/',
-          './src/core/lib',
-          './src/js/',
-          './src/js/components/',
-          './src/js/strings/',
-          './src/assessments/',
-          './vendor/',
-        ],
-        options: {
-          debug: false
+      mkdirp('dist', function (err) {
+        if (err) {
+          console.log(err);
         }
-      })
-        .add('./config/AllTests.js')
-        .transform(babelify)
-        .bundle()
-        .on('error', function (err) {
-          console.log('Error : ' + err.message);
-        })
-        .pipe(fs.createWriteStream('dist/bundle.js'));
+        else {
+          browserify({
+            entries: []
+              .concat(coreFiles)
+              .concat(componentFiles)
+              .concat(assessmentFiles),
+            paths: [
+              './config/',
+              './src/core/',
+              './src/core/lib',
+              './src/js/',
+              './src/js/components/',
+              './src/js/strings/',
+              './src/assessments/',
+              './vendor/',
+            ],
+            options: {
+              debug: false
+            }
+          })
+            .add('./config/AllTests.js')
+            .transform(babelify)
+            .bundle()
+            .on('error', function (err) {
+              console.log('Error : ' + err.message);
+            })
+            .pipe(fs.createWriteStream('dist/bundle.js'));
+        }
+      });
     });
   });
 });
