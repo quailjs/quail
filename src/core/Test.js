@@ -1,5 +1,4 @@
 var Case = require('Case');
-var BlinkIsNotUsed = require('BlinkIsNotUsed');
 
 var Test = (function () {
 
@@ -99,7 +98,7 @@ var Test = (function () {
       }
 
       var options = this.get('options') || {};
-      var callback = BlinkIsNotUsed;
+      var callback = this.get('callback');
       var self = this;
 
       // Set the test complete method to the closure function that dispatches
