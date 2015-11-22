@@ -26,7 +26,6 @@ function serveAssessmentTestPage (response, assessmentName) {
     source = source.slice(0, source.indexOf(bodyTag));
     // Javascript resources.
     source += '<script src="node_modules/jquery/dist/jquery.min.js" type="application/javascript"></script>';
-    source += '<script src="dist/bundle.js" type="application/javascript"></script>';
     source += [
       '<script>',
       'window.assessmentName = \'' + assessmentName + '\';',
