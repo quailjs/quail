@@ -1,9 +1,7 @@
 // Karma configuration for Quail unit tests
 
-module.exports = function(config) {
-  config.set({
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '..',
+module.exports = function(karma) {
+  karma.set({
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -18,12 +16,6 @@ module.exports = function(config) {
     files: [
       // Dependencies
       {pattern: 'node_modules/jquery/dist/jquery.min.js', watched: false},
-
-      // Fixtures
-      {pattern: 'src/quail.js'},
-      {pattern: 'src/js/components/*.js'},
-      {pattern: 'src/core/*.js'},
-
       // Specs
       {pattern: 'test/unit/*Spec.js'},
     ],
@@ -35,13 +27,15 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      '**/*.html': ['html2js']
-    },
-    preprocessors: {
-      'src/quail.js': [ 'browserify' ],
-      'src/js/components/*.js': [ 'browserify' ],
-      'src/core/*.js': [ 'browserify' ],
-      'test/unit/*Spec.js': [ 'browserify' ],
+      'src/js/components/*.js': [
+        'browserify'
+      ],
+      'src/core/*.js': [
+        'browserify'
+      ],
+      'test/unit/*Spec.js': [
+        'browserify'
+      ],
     },
 
     // test results reporter to use
@@ -62,8 +56,8 @@ module.exports = function(config) {
     colors: true,
 
     // level of logging
-    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    // possible values: karma.LOG_DISABLE || karma.LOG_ERROR || karma.LOG_WARN || karma.LOG_INFO || karma.LOG_DEBUG
+    logLevel: karma.LOG_INFO,
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
@@ -71,7 +65,7 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [
-      'Chrome',
+      // 'Chrome',
       // 'IE',
       //'Safari',
       //'Firefox',
@@ -85,7 +79,8 @@ module.exports = function(config) {
 
     browserify: {
       transform: [
-        "babelify"
+        'brfs',
+        'browserify-shim'
       ]
     },
   });
