@@ -56,7 +56,7 @@ var quail = {
       if (assessmentList.constructor === Array) {
         for (var i = 0, il = assessmentList.length; i < il; ++i) {
           let name = assessmentList[i];
-          let mod = AllTests.get(name)
+          let mod = AllTests.get(name);
           if (mod) {
             quail.tests.set(name, {
               type: 'custom',
@@ -71,7 +71,7 @@ var quail = {
         var name;
         for (name in assessmentList) {
           if (assessmentList.hasOwnProperty(name)) {
-            let mod = AllTests.get(name)
+            let mod = AllTests.get(name);
             if (mod) {
               quail.tests.set(name, {
                 type: 'custom',
