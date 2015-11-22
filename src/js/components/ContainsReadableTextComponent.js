@@ -1,3 +1,4 @@
+var IsUnreadable = require('IsUnreadable');
 const ContainsReadableTextComponent = function (element, children) {
   element = element.clone();
   element.find('option').remove();

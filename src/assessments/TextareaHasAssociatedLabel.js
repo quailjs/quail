@@ -3,6 +3,7 @@
  * the test outcome.
  */
 var Case = require('Case');
+var quail = require('quail');
 
 var LabelComponent = require('LabelComponent');
 

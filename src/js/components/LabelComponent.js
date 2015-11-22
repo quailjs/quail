@@ -1,4 +1,5 @@
 var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
+var $ = require('jquery');
 var LabelComponent = function (quail, test, Case, options) {
   var $scope = test.get('$scope');
   $scope.each(function () {
