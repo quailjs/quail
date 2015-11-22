@@ -6,6 +6,7 @@ require('babelify/polyfill');
 
 var TestCollection = require('TestCollection');
 var wcag2 = require('wcag2');
+var AllTests = require('AllTests');
 
 var quail = {
 
@@ -54,10 +55,15 @@ var quail = {
       // An array of test names.
       if (assessmentList.constructor === Array) {
         for (var i = 0, il = assessmentList.length; i < il; ++i) {
-          quail.tests.set(assessmentList[i], {
-            type: 'custom',
-            scope: options.html || null
-          });
+          let name = assessmentList[i];
+          let mod = AllTests.get(name)
+          if (mod) {
+            quail.tests.set(name, {
+              type: 'custom',
+              scope: options.html || null,
+              callback: mod
+            });
+          }
         }
       }
       else {
@@ -65,10 +71,14 @@ var quail = {
         var name;
         for (name in assessmentList) {
           if (assessmentList.hasOwnProperty(name)) {
-            quail.tests.set(name, {
-              type: 'custom',
-              scope: options.html || null
-            });
+            let mod = AllTests.get(name)
+            if (mod) {
+              quail.tests.set(name, {
+                type: 'custom',
+                scope: options.html || null,
+                callback: mod
+              });
+            }
           }
         }
       }

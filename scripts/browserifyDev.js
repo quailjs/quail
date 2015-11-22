@@ -12,16 +12,18 @@ glob(quailDevelopmentFilesPath, function (error, developmentFiles) {
   browserify({
     entries: developmentFiles,
     paths: [
+      './config/',
       './src/core/',
       './src/js/',
       './src/js/components/',
       './src/js/strings/',
-      './src/assessments/'
+      './src/assessments/',
     ],
     options: {
       debug: false
     }
   })
+    .add('./config/AllTests.js')
     .transform(babelify)
     .bundle()
     .on('error', function (err) {
