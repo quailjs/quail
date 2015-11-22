@@ -1,7 +1,7 @@
 const TestCollection = require('TestCollection');
 const Test = require('Test');
 const Case = require('Case');
-const quail = require('quail');
+const quail = {};
 
 describe('TestCollection', function () {
 
@@ -116,7 +116,7 @@ describe('TestCollection', function () {
       _testCollection.run();
     });
 
-    it('should dispatch the complete event when a test times out', function (done) {
+    xit('should dispatch the complete event when a test times out', function (done) {
       this.timeout(2500);
       callback = function (eventName, testCollection) {
         expect(testCollection.length).to.equal(6);

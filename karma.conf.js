@@ -18,7 +18,6 @@ module.exports = function(karma) {
       'vendor/jquery/dist/*.js',
       'src/core/*.js',
       'src/core/wcag/*.js',
-      'src/js/components/*.js',
       // Specs
       'test/unit/*Spec.js',
     ],
@@ -27,9 +26,6 @@ module.exports = function(karma) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'vendor/jquery/dist/*.js': [
-        'browserify'
-      ],
-      'src/js/components/*.js': [
         'browserify'
       ],
       'src/core/*.js': [
@@ -85,14 +81,9 @@ module.exports = function(karma) {
 
     browserify: {
       paths: [
-        './config/',
-        './src/core/',
-        './src/core/wcag/',
-        './src/js/',
-        './src/js/components/',
-        './src/js/strings/',
-        './src/assessments/',
-        './vendor/',
+        'src/core/',
+        'src/core/wcag/',
+        'vendor/',
       ],
       debug: true,
       transform: [

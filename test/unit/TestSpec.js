@@ -1,7 +1,6 @@
 const TestCollection = require('TestCollection');
 const Test = require('Test');
 const Case = require('Case');
-const quail = require('quail');
 const $ = require('jquery/dist/jquery');
 
 describe('Test', function () {

@@ -2,7 +2,6 @@ const TestCollection = require('TestCollection');
 const Test = require('Test');
 const Case = require('Case');
 const SuccessCriteria = require('SuccessCriteria');
-const quail = require('quail');
 
 describe('SuccessCriteria', function () {
   var _successCriteria;
