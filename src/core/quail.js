@@ -7,25 +7,6 @@ require('babelify/polyfill');
 var TestCollection = require('TestCollection');
 var wcag2 = require('wcag2');
 
-// Function.prototype.bind = Function.prototype.bind || function (b) {
-//   if (typeof this !== 'function') {
-//     throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
-//   }
-//   var a = Array.prototype.slice;
-//   var f = a.call(arguments, 1);
-//   var self = this;
-//   var C = function C () {};
-//   var d = function d () {
-//     return self.apply(
-//       this instanceof C ? this : b || window,
-//       f.concat(a.call(arguments))
-//     );
-//   };
-//   C.prototype = self.prototype;
-//   d.prototype = new C();
-//   return d;
-// };
-
 var quail = {
 
   options: {},
