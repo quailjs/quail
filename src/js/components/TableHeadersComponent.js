@@ -1,6 +1,6 @@
 const $ = require('jquery/dist/jquery');
 
-var TableHeaders = (function () {
+var TableHeadersComponent = (function () {
   var scopeValues = ['row', 'col', 'rowgroup', 'colgroup'];
 
   $.fn.getTableMap = function () {
@@ -247,4 +247,4 @@ var TableHeaders = (function () {
 
 }());
 
-module.exports = TableHeaders;
+module.exports = TableHeadersComponent;
