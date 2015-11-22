@@ -3,8 +3,10 @@
  * element itself is not a placeholder (i.e. 'click here' for links).
  */
 var CleanStringComponent = require('CleanStringComponent');
-
 var IsUnreadable = require('IsUnreadable');
+var PlaceholdersStringsComponent = require('PlaceholdersStringsComponent');
+var $ = require('jquery');
+
 var PlaceholderComponent = function (quail, test, Case, options) {
 
   var resolve = function (element, resolution) {
@@ -55,7 +57,7 @@ var PlaceholderComponent = function (quail, test, Case, options) {
       else if (options.empty && IsUnreadable(text)) {
         resolve(this, 'failed');
       }
-      else if (quail.strings.placeholders.indexOf(text) > -1) {
+      else if (PlaceholdersStringsComponent.indexOf(text) > -1) {
         resolve(this, 'failed');
       }
       // It passes.
