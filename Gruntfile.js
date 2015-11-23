@@ -121,9 +121,6 @@ module.exports = function(grunt) {
 
   // Dev task
   grunt.registerTask('dev', [
-    'exec:jscs',
-    'exec:eslint',
-    'exec:babel',
     'convert'
   ]);
 
@@ -133,20 +130,11 @@ module.exports = function(grunt) {
     'test'
   ]);
 
-  // Build task.
-  grunt.registerTask('build', [
-    'dev',
-    'buildGuideline',
-    'compressTestsJson',
-    'uglify'
-  ]);
-
   // Test task.
   grunt.registerTask('test', [
     'dev',
     'buildGuideline',
-    'compressTestsJson',
-    'execute:assessments'
+    'compressTestsJson'
   ]);
 
   // Release task.
