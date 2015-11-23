@@ -1,5 +1,5 @@
 /* A logical combo of Techniques and the intersection of their outcomes. */
-quail.lib.wcag2 = (function () {
+var wcag2 = (function () {
   'use strict';
   var ajaxOpt = {async: false, dataType: 'json'};
 
@@ -41,7 +41,7 @@ quail.lib.wcag2 = (function () {
     var allTests = [];
 
     criteria = $.map(wcag2Call, function (critData) {
-      return new quail.lib.wcag2.Criterion(
+      return new wcag2.Criterion(
         critData, tests, preconditionTests, options.subject);
     });
 
@@ -89,3 +89,4 @@ quail.lib.wcag2 = (function () {
   };
 
 }());
+module.exports = wcag2;

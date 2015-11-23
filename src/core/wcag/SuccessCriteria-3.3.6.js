@@ -3,6 +3,11 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-reversible-all.html
  */
+var quail = require('quail');
+
+var SuccessCriteria = require('SuccessCriteria');
+
+var quail = require('quail');
 quail.guidelines.wcag.successCriteria['3.3.6'] = (function (quail) {
   /**
    * Determines if this Success Criteria applies to the document.
@@ -12,7 +17,7 @@ quail.guidelines.wcag.successCriteria['3.3.6'] = (function (quail) {
   }
 
   // Create a new SuccessCriteria and pass it the evaluation callbacks.
-  var sc = quail.lib.SuccessCriteria({
+  var sc = SuccessCriteria({
     name: 'wcag:3.3.6',
     preEvaluator: preEvaluator
   });

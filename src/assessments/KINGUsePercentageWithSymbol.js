@@ -1,4 +1,6 @@
-quail.KINGUsePercentageWithSymbol = function (quail, test, Case) {
+var GetTextContentsComponent = require('GetTextContentsComponent');
+var Case = require('Case');
+var KINGUsePercentageWithSymbol = function (test) {
   function testPercentFormat (index, element) {
     // Detect dates with several separators.
     var percentName = [
@@ -8,7 +10,7 @@ quail.KINGUsePercentageWithSymbol = function (quail, test, Case) {
     // Test the words and any eventual extra letters for s and all.
     var percentReg = new RegExp('\\d{1,}\\s*(' + percentName.join('|') + ')|(' + percentName.join('|') + ')\\s*\\d{1,}', 'ig');
 
-    var text = quail.getTextContents($(element));
+    var text = GetTextContentsComponent($(element));
     var _case = Case({
       element: this
     });
@@ -20,3 +22,4 @@ quail.KINGUsePercentageWithSymbol = function (quail, test, Case) {
   }
   test.get('$scope').find('p').each(testPercentFormat);
 };
+module.exports = KINGUsePercentageWithSymbol;

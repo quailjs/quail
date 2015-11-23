@@ -1,12 +1,14 @@
+const Case = require('Case');
+
 describe("Case", function() {
   var _case;
   beforeEach(function () {
-    _case = new quail.lib.Case({
+    _case = new Case({
       bird: 'sandpiper'
     });
   });
   it('should be an instance of Case', function () {
-    expect(_case).to.be.instanceof(quail.lib.Case);
+    expect(_case).to.be.instanceof(Case);
   });
   describe('get/set', function () {
     it('should retrieve attributes', function () {
@@ -30,7 +32,7 @@ describe("Case", function() {
       p.textContent = 'First paragraph';
       el.appendChild(p);
 
-      _case = new quail.lib.Case({
+      _case = new Case({
         element: el
       });
       _case.resolve();
@@ -54,7 +56,7 @@ describe("Case", function() {
       p.textContent = 'First paragraph';
       el.appendChild(p);
 
-      _case = new quail.lib.Case();
+      _case = new Case();
       _case.set({
         element: p
       });

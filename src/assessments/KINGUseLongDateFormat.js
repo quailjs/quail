@@ -1,4 +1,5 @@
-quail.KINGUseLongDateFormat = function (quail, test, Case) {
+var Case = require('Case');
+var KINGUseLongDateFormat = function (test) {
 
   function testDateFormat (index, element) {
     // Detect dates with several separators.
@@ -44,3 +45,4 @@ quail.KINGUseLongDateFormat = function (quail, test, Case) {
 
   test.get('$scope').find(appliableElements).each(testDateFormat);
 };
+module.exports = KINGUseLongDateFormat;

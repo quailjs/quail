@@ -9,7 +9,7 @@ examples/wysiwyg/editors/ckeditor4/*
 node_modules/*
 .grunt/*
 dist/*
-bower_components/*
+lib
 test/quail-testing.jquery.js
 test/accessibility-tests/_tests.json
 test/quail-testrunner.js

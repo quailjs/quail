@@ -13,7 +13,6 @@ var Q = require('q'); // https://github.com/kriskowal/q
 var conf = require('../config/index.js');
 
 var Mocha = require('mocha');
-var should = require('should');
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
@@ -80,7 +79,6 @@ var fixturesRoot = path.join(__dirname, '../..', 'dist');
 var assessmentPagesRoot = path.join(__dirname, 'specs');
 var testConfigPath = path.join(__dirname, '../', 'config');
 var logPath = path.join(__dirname, '../..', 'logs');
-var srcPath = path.join(__dirname, '../../', 'src');
 
 /**
  * Load jQuery and Quail from different places in the repo.
@@ -92,7 +90,7 @@ function serveScriptResource (response, resourcePath) {
   if (resourcePath.indexOf('jquery.min.js') > -1) {
     resource = path.join(__dirname, '../..', 'node_modules/jquery/dist', resourcePath);
   }
-  else if (resourcePath.indexOf('quail.jquery') > -1) {
+  else if (resourcePath.indexOf('bundle.js') > -1) {
     resource = path.join(__dirname, '../..', 'dist', resourcePath);
   }
   else {
@@ -114,9 +112,7 @@ function serveScriptResource (response, resourcePath) {
 // Build a lightweight http server to serve assets for running Quail.
 // Using http instead of httpServer gives us more opportunity to debug requests.
 httpServerFixtures = http.createServer(function (request, response) {
-  var accepts = request.headers.accept;
   var url = request.url;
-  var assetPath;
   if (url.indexOf('.js') > -1 || url.indexOf('.map') > -1) {
     serveScriptResource(response, url);
   }
@@ -273,38 +269,6 @@ function runSpecs (assessments) {
       }
 
       /**
-       * Loads files via AJAX GET in the browser instance.
-       *
-       * This function is run in the browser context.
-       */
-      function loadAjaxFile (filename, httpServerFixturesPort, finish) {
-
-        function loadError (error) {
-          finish(new Error({
-            message: error
-          }));
-        }
-
-        function loadSuccess () {
-          /*jshint validthis: true */
-          // There is no other way to get status. The only argument passed to
-          // this handler is an instance of XMLHttpRequestProgressEvent.
-          if (this.status === 200) {
-            finish(this.response);
-          }
-          else {
-            loadError(this.status);
-          }
-        }
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://localhost:' + httpServerFixturesPort + '/' + filename, true);
-        xhr.onload = loadSuccess;
-        xhr.onerror = loadError;
-        xhr.send();
-      }
-
-      /**
        * Evaluates a page using Quail, which has been loading into the page already.
        *
        * This function is run in the browser context.
@@ -384,7 +348,7 @@ function runSpecs (assessments) {
           },
           // Load the Quail script into the page.
           {
-            args: ['quail.jquery.js', httpServerFixturesPort],
+            args: ['bundle.js', httpServerFixturesPort],
             evaluate: loadScriptFile
           },
           // Evaluate the HTML with Quail.

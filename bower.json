@@ -2,15 +2,10 @@
   "name": "quail",
   "version": "2.2.18",
   "main": "dist/*",
-  "ignore": [
-    "**/*.txt"
-  ],
   "dependencies": {
     "node-htmlparser": "~2.0.0",
     "RainbowVis-JS": "https://github.com/anomal/RainbowVis-JS.git",
-    "guessLanguage": "https://github.com/richtr/guessLanguage.js.git"
-  },
-  "devDependencies": {
-    "guessLanguage": "*"
+    "guessLanguage": "https://github.com/richtr/guessLanguage.js.git",
+    "jquery": "~2.1.4"
   }
 }

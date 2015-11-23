@@ -1,4 +1,7 @@
 // Basic output structure attributes.
+
+var quail = require('quail');
+
 var output = {
   tests: {},
   successCriteria: {},
@@ -7,6 +10,7 @@ var output = {
     cases: 0
   }
 };
+
 quail.run({
   accessibilityTests: [window.assessmentName],
   html: jQuery('html'),

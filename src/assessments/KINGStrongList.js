@@ -1,4 +1,5 @@
-quail.KINGStrongList = function (quail, test, Case) {
+var Case = require('Case');
+var KINGStrongList = function (test) {
   test.get('$scope').find('strong').each(function () {
     var _case = Case({
       element: this
@@ -9,3 +10,4 @@ quail.KINGStrongList = function (quail, test, Case) {
     });
   });
 };
+module.exports = KINGStrongList;
