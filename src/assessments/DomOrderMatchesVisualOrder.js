@@ -6,8 +6,13 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+var $ = require('jquery/dist/jquery');
+var quailJquery = require('quail.jquery.js');
 
 var DomOrderMatchesVisualOrder = function (test, options) {
+
+  // Run the Quail jQuery. It will attach a selector expression to jQuery.
+  quailJquery($);
 
   var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
 
