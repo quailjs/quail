@@ -21,6 +21,7 @@
     "test": "bower install && npm run compile && karma start && node ./test/assessmentSpecs/testRunner.js"
   },
   "dependencies": {
+    "@quailjs/quail-core": "0.0.2",
     "chai-spies": "^0.5.1",
     "deepmerge": "^0.2.7",
     "http-server": "0.7.3",
