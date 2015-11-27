@@ -3,9 +3,7 @@
   "description": "Accessibility testing in the browser and on the server.",
   "homepage": "http://quailjs.org",
   "version": "2.2.18",
-  "engines": {
-    "node": ">= 0.10.20"
-  },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/quailjs/quail.git"
