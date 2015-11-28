@@ -13,9 +13,9 @@
     "jscs": "jscs -c .jscsrc src/**/*.js test/assessmentSpecs/testRunner.js test/assessmentSpecs/*.js",
     "eslint": "eslint -c .eslintrc src/**/*.js test/assessmentSpecs/*.js",
     "browserify": "node ./scripts/browserifyLib.js && node ./scripts/browserifyDev.js",
-    "compile": "grunt test && npm run jscs && npm run eslint && npm run babelify && npm run browserify",
+    "compile": "grunt test && npm run jscs && npm run eslint && quail build",
     "prepublish": "npm run compile",
-    "test": "bower install && npm run compile && karma start && node ./test/assessmentSpecs/testRunner.js"
+    "test": "bower install && npm run compile && node ./test/assessmentSpecs/testRunner.js"
   },
   "dependencies": {
     "@quailjs/quail-core": "0.0.2",
