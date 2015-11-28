@@ -1,3 +1,5 @@
+'use strict';
+
 const AAdjacentWithSameResourceShouldBeCombined = require('AAdjacentWithSameResourceShouldBeCombined');
 const AImgAltNotRepetitive = require('AImgAltNotRepetitive');
 const AInPHasADistinctStyle = require('AInPHasADistinctStyle');

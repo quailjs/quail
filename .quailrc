@@ -1,5 +1,13 @@
 {
   "assessmentSpecsPath": "test/assessmentSpecs/specs",
   "jquery": "node_modules/jquery/dist/jquery.min.js",
-  "quail": "dist/runInBrowser.js"
+  "quail": "dist/runInBrowser.js",
+  "requirePaths": [
+    "./config",
+    "./src/assessments",
+    "./vendor"
+  ],
+  "requireModules": [
+    "AllTests"
+  ]
 }
