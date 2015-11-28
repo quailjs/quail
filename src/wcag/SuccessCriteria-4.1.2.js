@@ -3,7 +3,7 @@
  */
 var SuccessCriteria = require('SuccessCriteria');
 
-quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
+var SuccessCriteriaP4G1C2 = (function () {
 
   // The tests that must be run in order to evaluate this Success Criteria.
   // @todo, identify the complete set of required tests for this Success Criteria.
@@ -131,4 +131,6 @@ quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
   };
 
   return sc;
-}(quail));
+}());
+
+module.exports = SuccessCriteriaP4G1C2;

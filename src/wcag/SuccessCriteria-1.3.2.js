@@ -5,7 +5,7 @@
  */
 var SuccessCriteria = require('SuccessCriteria');
 
-quail.guidelines.wcag.successCriteria['1.3.2'] = (function (quail) {
+var SuccessCriteriaP1G3C2 = (function () {
 
   /**
    * Determines if this Success Criteria applies to the document.
@@ -44,4 +44,6 @@ quail.guidelines.wcag.successCriteria['1.3.2'] = (function (quail) {
   };
 
   return sc;
-}(quail));
+}());
+
+module.exports = SuccessCriteriaP1G3C2;
