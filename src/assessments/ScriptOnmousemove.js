@@ -12,6 +12,6 @@ var ScriptOnmousemove = function (test) {
     correspondingEvent: 'onkeypress',
     searchEvent: 'onmousemove'
   };
-  EventComponent(quail, test, Case, options);
+  EventComponent(test, options);
 };
 module.exports = ScriptOnmousemove;

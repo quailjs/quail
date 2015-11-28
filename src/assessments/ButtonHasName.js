@@ -13,6 +13,6 @@ var ButtonHasName = function (test) {
     empty: 'true',
     attribute: 'title'
   };
-  PlaceholderComponent(quail, test, Case, options);
+  PlaceholderComponent(test, options);
 };
 module.exports = ButtonHasName;

@@ -12,6 +12,6 @@ var ScriptOnmouseoutHasOnmouseblur = function (test) {
     correspondingEvent: 'onblur',
     searchEvent: 'onmouseout'
   };
-  EventComponent(quail, test, Case, options);
+  EventComponent(test, options);
 };
 module.exports = ScriptOnmouseoutHasOnmouseblur;

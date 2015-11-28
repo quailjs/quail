@@ -12,6 +12,6 @@ var ScriptOnmousedownRequiresOnKeypress = function (test) {
     correspondingEvent: 'onkeydown',
     searchEvent: 'onmousedown'
   };
-  EventComponent(quail, test, Case, options);
+  EventComponent(test, options);
 };
 module.exports = ScriptOnmousedownRequiresOnKeypress;

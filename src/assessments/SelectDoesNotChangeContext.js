@@ -11,6 +11,6 @@ var SelectDoesNotChangeContext = function (test) {
     selector: 'select',
     searchEvent: 'onchange'
   };
-  EventComponent(quail, test, Case, options);
+  EventComponent(test, options);
 };
 module.exports = SelectDoesNotChangeContext;

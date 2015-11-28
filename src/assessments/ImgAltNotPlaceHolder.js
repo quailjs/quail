@@ -11,6 +11,6 @@ var ImgAltNotPlaceHolder = function (test) {
     selector: 'img',
     attribute: 'alt'
   };
-  PlaceholderComponent(quail, test, Case, options);
+  PlaceholderComponent(test, options);
 };
 module.exports = ImgAltNotPlaceHolder;

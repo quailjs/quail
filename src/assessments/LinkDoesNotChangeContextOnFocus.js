@@ -11,6 +11,6 @@ var LinkDoesNotChangeContextOnFocus = function (test) {
     selector: 'a[href]',
     searchEvent: 'onfocus'
   };
-  EventComponent(quail, test, Case, options);
+  EventComponent(test, options);
 };
 module.exports = LinkDoesNotChangeContextOnFocus;

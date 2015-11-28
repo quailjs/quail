@@ -12,6 +12,6 @@ var ScriptOndblclickRequiresOnKeypress = function (test) {
     correspondingEvent: 'onkeypress',
     searchEvent: 'ondblclick'
   };
-  EventComponent(quail, test, Case, options);
+  EventComponent(test, options);
 };
 module.exports = ScriptOndblclickRequiresOnKeypress;

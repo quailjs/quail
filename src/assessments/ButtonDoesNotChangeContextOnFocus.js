@@ -10,6 +10,6 @@ var ButtonDoesNotChangeContextOnFocus = function (test) {
   var options = {
     searchEvent: 'onfocus'
   };
-  EventComponent(quail, test, Case, options);
+  EventComponent(test, options);
 };
 module.exports = ButtonDoesNotChangeContextOnFocus;

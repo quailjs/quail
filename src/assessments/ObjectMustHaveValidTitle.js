@@ -12,6 +12,6 @@ var ObjectMustHaveValidTitle = function (test) {
     attribute: 'title',
     empty: 'true'
   };
-  PlaceholderComponent(quail, test, Case, options);
+  PlaceholderComponent(test, options);
 };
 module.exports = ObjectMustHaveValidTitle;

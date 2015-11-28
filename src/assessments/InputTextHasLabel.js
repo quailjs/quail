@@ -10,6 +10,6 @@ var InputTextHasLabel = function (test) {
   var options = {
     selector: 'input'
   };
-  LabelComponent(quail, test, Case, options);
+  LabelComponent(test, options);
 };
 module.exports = InputTextHasLabel;

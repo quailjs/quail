@@ -11,6 +11,6 @@ var DocumentTitleIsNotPlaceholder = function (test) {
     selector: 'head > title',
     content: 'true'
   };
-  PlaceholderComponent(quail, test, Case, options);
+  PlaceholderComponent(test, options);
 };
 module.exports = DocumentTitleIsNotPlaceholder;

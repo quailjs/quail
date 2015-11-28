@@ -12,6 +12,6 @@ var TableSummaryIsEmpty = function (test) {
     attribute: 'summary',
     empty: 'true'
   };
-  PlaceholderComponent(quail, test, Case, options);
+  PlaceholderComponent(test, options);
 };
 module.exports = TableSummaryIsEmpty;

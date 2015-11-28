@@ -11,6 +11,6 @@ var TextareaHasAssociatedLabel = function (test) {
   var options = {
     selector: 'textarea'
   };
-  LabelComponent(quail, test, Case, options);
+  LabelComponent(test, options);
 };
 module.exports = TextareaHasAssociatedLabel;

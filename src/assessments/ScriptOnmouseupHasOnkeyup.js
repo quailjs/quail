@@ -12,6 +12,6 @@ var ScriptOnmouseupHasOnkeyup = function (test) {
     correspondingEvent: 'onkeyup',
     searchEvent: 'onmouseup'
   };
-  EventComponent(quail, test, Case, options);
+  EventComponent(test, options);
 };
 module.exports = ScriptOnmouseupHasOnkeyup;

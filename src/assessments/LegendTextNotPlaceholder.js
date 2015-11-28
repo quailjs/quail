@@ -12,6 +12,6 @@ var LegendTextNotPlaceholder = function (test) {
     content: 'true',
     emtpy: 'true'
   };
-  PlaceholderComponent(quail, test, Case, options);
+  PlaceholderComponent(test, options);
 };
 module.exports = LegendTextNotPlaceholder;

@@ -10,6 +10,6 @@ var SelectHasAssociatedLabel = function (test) {
   var options = {
     selector: 'select'
   };
-  LabelComponent(quail, test, Case, options);
+  LabelComponent(test, options);
 };
 module.exports = SelectHasAssociatedLabel;

@@ -10,6 +10,6 @@ var CheckboxHasLabel = function (test) {
   var options = {
     selector: 'input[type="checkbox"]'
   };
-  LabelComponent(quail, test, Case, options);
+  LabelComponent(test, options);
 };
 module.exports = CheckboxHasLabel;

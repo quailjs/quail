@@ -12,6 +12,6 @@ var InputTextHasValue = function (test) {
     attribute: 'value',
     empty: 'true'
   };
-  PlaceholderComponent(quail, test, Case, options);
+  PlaceholderComponent(test, options);
 };
 module.exports = InputTextHasValue;

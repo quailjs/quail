@@ -12,6 +12,6 @@ var ScriptOnmouseoverHasOnfocus = function (test) {
     correspondingEvent: 'onfocus',
     searchEvent: 'onmouseover'
   };
-  EventComponent(quail, test, Case, options);
+  EventComponent(test, options);
 };
 module.exports = ScriptOnmouseoverHasOnfocus;

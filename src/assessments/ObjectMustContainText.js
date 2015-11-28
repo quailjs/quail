@@ -12,6 +12,6 @@ var ObjectMustContainText = function (test) {
     content: 'true',
     empty: 'true'
   };
-  PlaceholderComponent(quail, test, Case, options);
+  PlaceholderComponent(test, options);
 };
 module.exports = ObjectMustContainText;
