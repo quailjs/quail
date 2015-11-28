@@ -3,11 +3,8 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-consistent-functionality.html
  */
-var quail = require('quail');
-
 var SuccessCriteria = require('SuccessCriteria');
 
-var quail = require('quail');
 quail.guidelines.wcag.successCriteria['3.2.4'] = (function (quail) {
 
   /**

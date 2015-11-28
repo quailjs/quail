@@ -3,11 +3,8 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-cues.html
  */
-var quail = require('quail');
-
 var SuccessCriteria = require('SuccessCriteria');
 
-var quail = require('quail');
 quail.guidelines.wcag.successCriteria['3.3.2'] = (function (quail) {
   /**
    * Determines if this Success Criteria applies to the document.

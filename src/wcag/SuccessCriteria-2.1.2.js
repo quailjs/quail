@@ -3,11 +3,8 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation-trapping.html
  */
-var quail = require('quail');
-
 var SuccessCriteria = require('SuccessCriteria');
 
-var quail = require('quail');
 quail.guidelines.wcag.successCriteria['2.1.2'] = (function (quail) {
   /**
    * Determines if this Success Criteria applies to the document.

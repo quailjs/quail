@@ -1,11 +1,8 @@
 /**
  * Test for WCAG success criterion 4.1.2: Name, Role, Value.
  */
-var quail = require('quail');
-
 var SuccessCriteria = require('SuccessCriteria');
 
-var quail = require('quail');
 quail.guidelines.wcag.successCriteria['4.1.2'] = (function (quail) {
 
   // The tests that must be run in order to evaluate this Success Criteria.

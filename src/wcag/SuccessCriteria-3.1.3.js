@@ -3,11 +3,8 @@
  *
  * @see http://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-idioms.html
  */
-var quail = require('quail');
-
 var SuccessCriteria = require('SuccessCriteria');
 
-var quail = require('quail');
 quail.guidelines.wcag.successCriteria['3.1.3'] = (function (quail) {
   /**
    * Determines if this Success Criteria applies to the document.
