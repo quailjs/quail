@@ -7,12 +7,13 @@
  */
 var Case = require('Case');
 var $ = require('jquery/dist/jquery');
-var quailJquery = require('quail.jquery.js');
 
 var DomOrderMatchesVisualOrder = function (test, options) {
 
-  // Run the Quail jQuery. It will attach a selector expression to jQuery.
-  quailJquery($);
+  $.expr[':'].quailCss = function (obj, index, meta) {
+    var args = meta[3].split(/\s*=\s*/);
+    return $(obj).css(args[0]).search(args[1]) > -1;
+  };
 
   var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
 
