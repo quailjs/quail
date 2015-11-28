@@ -2,12 +2,10 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-
 var EventComponent = require('EventComponent');
 
-var ScriptOndblclickRequiresOnKeypress = function (test) {
-  var options = {
+var ScriptOndblclickRequiresOnKeypress = function (test, options) {
+  options = options || {
     selector: '[ondblclick]',
     correspondingEvent: 'onkeypress',
     searchEvent: 'ondblclick'

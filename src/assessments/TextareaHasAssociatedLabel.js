@@ -2,13 +2,10 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-var quail = require('quail');
-
 var LabelComponent = require('LabelComponent');
 
-var TextareaHasAssociatedLabel = function (test) {
-  var options = {
+var TextareaHasAssociatedLabel = function (test, options) {
+  options = options || {
     selector: 'textarea'
   };
   LabelComponent(test, options);

@@ -1,4 +1,3 @@
-var Case = require('Case');
 var HeadingLevelComponent = require('HeadingLevelComponent');
 var HeaderH2 = function (test) {
   HeadingLevelComponent(test, {

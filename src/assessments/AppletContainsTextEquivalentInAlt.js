@@ -1,4 +1,3 @@
-var Case = require('Case');
 var PlaceholderComponent = require('PlaceholderComponent');
 var AppletContainsTextEquivalentInAlt = function (test) {
   PlaceholderComponent(test, {

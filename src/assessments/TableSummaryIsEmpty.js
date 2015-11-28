@@ -2,12 +2,10 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var TableSummaryIsEmpty = function (test) {
-  var options = {
+var TableSummaryIsEmpty = function (test, options) {
+  options = options || {
     selector: 'table',
     attribute: 'summary',
     empty: 'true'

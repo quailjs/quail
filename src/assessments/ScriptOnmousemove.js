@@ -2,12 +2,10 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-
 var EventComponent = require('EventComponent');
 
-var ScriptOnmousemove = function (test) {
-  var options = {
+var ScriptOnmousemove = function (test, options) {
+  options = options || {
     selector: '[onmousemove]',
     correspondingEvent: 'onkeypress',
     searchEvent: 'onmousemove'

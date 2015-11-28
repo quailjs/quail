@@ -2,12 +2,10 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var LegendTextNotPlaceholder = function (test) {
-  var options = {
+var LegendTextNotPlaceholder = function (test, options) {
+  options = options || {
     selector: 'legend',
     content: 'true',
     emtpy: 'true'

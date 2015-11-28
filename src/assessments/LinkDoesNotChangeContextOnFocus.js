@@ -2,12 +2,10 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-
 var EventComponent = require('EventComponent');
 
-var LinkDoesNotChangeContextOnFocus = function (test) {
-  var options = {
+var LinkDoesNotChangeContextOnFocus = function (test, options) {
+  options = options || {
     selector: 'a[href]',
     searchEvent: 'onfocus'
   };

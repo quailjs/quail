@@ -2,12 +2,10 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var InputImageAltIsNotPlaceholder = function (test) {
-  var options = {
+var InputImageAltIsNotPlaceholder = function (test, options) {
+  options = options || {
     selector: 'input[type="image"]',
     attribute: 'alt'
   };
