@@ -41,7 +41,7 @@ var BlockquoteNotUsedForIndentation = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = BlockquoteNotUsedForIndentation;

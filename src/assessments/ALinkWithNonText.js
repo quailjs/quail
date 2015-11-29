@@ -40,7 +40,7 @@ var ALinkWithNonText = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ALinkWithNonText;

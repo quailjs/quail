@@ -38,7 +38,7 @@ var ImgShouldNotHaveTitle = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgShouldNotHaveTitle;

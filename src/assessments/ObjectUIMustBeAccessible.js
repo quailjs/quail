@@ -42,7 +42,7 @@ var ObjectUIMustBeAccessible = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectUIMustBeAccessible;

@@ -42,7 +42,7 @@ var VideoProvidesCaptions = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = VideoProvidesCaptions;

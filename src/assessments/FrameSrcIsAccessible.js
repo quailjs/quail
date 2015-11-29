@@ -42,7 +42,7 @@ var FrameSrcIsAccessible = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FrameSrcIsAccessible;

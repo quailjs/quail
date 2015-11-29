@@ -15,7 +15,7 @@ var TableSummaryIsEmpty = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableSummaryIsEmpty;

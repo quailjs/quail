@@ -12,7 +12,7 @@ var TableSummaryIsNotTooLong = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableSummaryIsNotTooLong;

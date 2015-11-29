@@ -31,7 +31,7 @@ var ALinksToMultiMediaRequireTranscript = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ALinksToMultiMediaRequireTranscript;

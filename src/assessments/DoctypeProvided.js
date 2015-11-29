@@ -17,7 +17,7 @@ var DoctypeProvided = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DoctypeProvided;

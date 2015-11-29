@@ -58,7 +58,7 @@ var VideoMayBePresent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = VideoMayBePresent;

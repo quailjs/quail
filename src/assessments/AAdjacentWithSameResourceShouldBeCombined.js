@@ -53,7 +53,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AAdjacentWithSameResourceShouldBeCombined;

@@ -27,7 +27,7 @@ var BlockquoteUseForQuotations = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = BlockquoteUseForQuotations;

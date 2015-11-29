@@ -42,7 +42,7 @@ var FramesetMustHaveNoFramesSection = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FramesetMustHaveNoFramesSection;

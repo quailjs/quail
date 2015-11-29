@@ -13,7 +13,7 @@ var RadioHasLabel = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = RadioHasLabel;

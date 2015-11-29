@@ -22,7 +22,7 @@ var ParagraphIsWrittenClearly = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ParagraphIsWrittenClearly;

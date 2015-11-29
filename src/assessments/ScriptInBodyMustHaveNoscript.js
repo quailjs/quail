@@ -42,7 +42,7 @@ var ScriptInBodyMustHaveNoscript = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptInBodyMustHaveNoscript;

@@ -20,7 +20,7 @@ var CssDocumentMakesSenseStyleTurnedOff = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = CssDocumentMakesSenseStyleTurnedOff;

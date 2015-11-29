@@ -20,7 +20,7 @@ var ListNotUsedForFormatting = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ListNotUsedForFormatting;

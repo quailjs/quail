@@ -31,7 +31,7 @@ var WhiteSpaceInWord = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = WhiteSpaceInWord;

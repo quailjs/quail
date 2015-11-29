@@ -38,7 +38,7 @@ var ImgServerSideMapNotUsed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgServerSideMapNotUsed;

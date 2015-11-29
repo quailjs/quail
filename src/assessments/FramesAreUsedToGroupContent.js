@@ -42,7 +42,7 @@ var FramesAreUsedToGroupContent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FramesAreUsedToGroupContent;

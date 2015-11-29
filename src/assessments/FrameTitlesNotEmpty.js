@@ -42,7 +42,7 @@ var FrameTitlesNotEmpty = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FrameTitlesNotEmpty;

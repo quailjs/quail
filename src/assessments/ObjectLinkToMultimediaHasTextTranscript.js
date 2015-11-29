@@ -42,7 +42,7 @@ var ObjectLinkToMultimediaHasTextTranscript = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectLinkToMultimediaHasTextTranscript;

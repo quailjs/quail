@@ -15,7 +15,7 @@ var HeadersHaveText = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = HeadersHaveText;

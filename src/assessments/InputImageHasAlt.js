@@ -38,7 +38,7 @@ var InputImageHasAlt = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = InputImageHasAlt;

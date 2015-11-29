@@ -44,7 +44,7 @@ var ObjectContentUsableWhenDisabled = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectContentUsableWhenDisabled;

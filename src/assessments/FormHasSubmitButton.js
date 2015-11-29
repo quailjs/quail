@@ -37,7 +37,7 @@ var FormHasSubmitButton = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FormHasSubmitButton;

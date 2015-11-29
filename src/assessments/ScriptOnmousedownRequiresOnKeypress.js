@@ -15,7 +15,7 @@ var ScriptOnmousedownRequiresOnKeypress = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptOnmousedownRequiresOnKeypress;

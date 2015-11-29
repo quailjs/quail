@@ -56,7 +56,7 @@ var FileHasLabel = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FileHasLabel;

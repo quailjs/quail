@@ -15,7 +15,7 @@ var ScriptOndblclickRequiresOnKeypress = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptOndblclickRequiresOnKeypress;

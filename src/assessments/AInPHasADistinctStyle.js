@@ -99,7 +99,7 @@ var AInPHasADistinctStyle = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AInPHasADistinctStyle;

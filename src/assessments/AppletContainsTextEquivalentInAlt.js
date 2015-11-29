@@ -9,7 +9,7 @@ var AppletContainsTextEquivalentInAlt = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AppletContainsTextEquivalentInAlt;

@@ -35,7 +35,7 @@ var TableShouldUseHeaderIDs = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableShouldUseHeaderIDs;

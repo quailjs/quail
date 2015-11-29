@@ -66,7 +66,7 @@ var ColorElementBehindContrast = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ColorElementBehindContrast;

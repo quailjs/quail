@@ -16,7 +16,7 @@ var ButtonHasName = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ButtonHasName;

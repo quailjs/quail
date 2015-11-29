@@ -20,7 +20,7 @@ var LabelMustBeUnique = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LabelMustBeUnique;

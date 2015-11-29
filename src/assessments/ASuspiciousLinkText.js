@@ -32,7 +32,7 @@ var ASuspiciousLinkText = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ASuspiciousLinkText;

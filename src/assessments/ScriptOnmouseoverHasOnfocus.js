@@ -15,7 +15,7 @@ var ScriptOnmouseoverHasOnfocus = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptOnmouseoverHasOnfocus;

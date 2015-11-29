@@ -20,7 +20,7 @@ var TableAxisHasCorrespondingId = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableAxisHasCorrespondingId;

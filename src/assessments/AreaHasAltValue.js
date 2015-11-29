@@ -42,7 +42,7 @@ var AreaHasAltValue = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AreaHasAltValue;

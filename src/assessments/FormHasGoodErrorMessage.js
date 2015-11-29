@@ -32,7 +32,7 @@ var FormHasGoodErrorMessage = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FormHasGoodErrorMessage;

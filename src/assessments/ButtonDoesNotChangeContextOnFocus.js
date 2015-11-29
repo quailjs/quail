@@ -13,7 +13,7 @@ var ButtonDoesNotChangeContextOnFocus = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ButtonDoesNotChangeContextOnFocus;

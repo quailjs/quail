@@ -62,7 +62,7 @@ var PNotUsedAsHeader = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = PNotUsedAsHeader;

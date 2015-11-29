@@ -41,7 +41,7 @@ var DocumentMetaNotUsedWithTimeout = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentMetaNotUsedWithTimeout;

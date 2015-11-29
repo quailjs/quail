@@ -22,7 +22,7 @@ var InputImageAltNotRedundant = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = InputImageAltNotRedundant;

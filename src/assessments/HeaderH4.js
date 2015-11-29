@@ -7,7 +7,7 @@ var HeaderH4 = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = HeaderH4;

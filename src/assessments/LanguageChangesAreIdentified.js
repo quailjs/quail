@@ -104,7 +104,7 @@ var LanguageChangesAreIdentified = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LanguageChangesAreIdentified;

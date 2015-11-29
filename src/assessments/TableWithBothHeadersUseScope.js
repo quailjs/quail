@@ -42,7 +42,7 @@ var TableWithBothHeadersUseScope = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableWithBothHeadersUseScope;

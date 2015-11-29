@@ -42,7 +42,7 @@ var AppletsDoNotFlicker = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AppletsDoNotFlicker;

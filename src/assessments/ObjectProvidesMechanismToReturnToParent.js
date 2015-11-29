@@ -42,7 +42,7 @@ var ObjectProvidesMechanismToReturnToParent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectProvidesMechanismToReturnToParent;

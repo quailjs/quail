@@ -14,7 +14,7 @@ var SelectDoesNotChangeContext = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = SelectDoesNotChangeContext;

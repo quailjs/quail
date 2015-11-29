@@ -15,7 +15,7 @@ var InputTextHasValue = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = InputTextHasValue;

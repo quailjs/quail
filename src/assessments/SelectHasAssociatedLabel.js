@@ -13,7 +13,7 @@ var SelectHasAssociatedLabel = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = SelectHasAssociatedLabel;

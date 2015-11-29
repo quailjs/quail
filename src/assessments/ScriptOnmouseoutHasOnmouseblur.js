@@ -15,7 +15,7 @@ var ScriptOnmouseoutHasOnmouseblur = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptOnmouseoutHasOnmouseblur;

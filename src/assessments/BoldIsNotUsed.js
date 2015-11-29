@@ -32,7 +32,7 @@ var BoldIsNotUsed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = BoldIsNotUsed;

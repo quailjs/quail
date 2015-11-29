@@ -36,7 +36,7 @@ var DocumentIsWrittenClearly = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentIsWrittenClearly;

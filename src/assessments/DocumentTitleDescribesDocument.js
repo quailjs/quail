@@ -34,7 +34,7 @@ var DocumentTitleDescribesDocument = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentTitleDescribesDocument;

@@ -53,7 +53,7 @@ var AreaDontOpenNewWindow = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AreaDontOpenNewWindow;

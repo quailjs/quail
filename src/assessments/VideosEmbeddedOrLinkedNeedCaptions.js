@@ -20,7 +20,7 @@ var VideosEmbeddedOrLinkedNeedCaptions = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = VideosEmbeddedOrLinkedNeedCaptions;

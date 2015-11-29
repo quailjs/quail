@@ -15,7 +15,7 @@ var ObjectMustContainText = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectMustContainText;

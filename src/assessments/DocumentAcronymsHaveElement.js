@@ -5,7 +5,7 @@ var DocumentAcronymsHaveElement = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentAcronymsHaveElement;

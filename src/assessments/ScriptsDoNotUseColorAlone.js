@@ -42,7 +42,7 @@ var ScriptsDoNotUseColorAlone = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptsDoNotUseColorAlone;

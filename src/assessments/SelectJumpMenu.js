@@ -25,7 +25,7 @@ var SelectJumpMenu = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = SelectJumpMenu;

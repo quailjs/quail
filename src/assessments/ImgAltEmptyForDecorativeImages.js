@@ -44,7 +44,7 @@ var ImgAltEmptyForDecorativeImages = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgAltEmptyForDecorativeImages;

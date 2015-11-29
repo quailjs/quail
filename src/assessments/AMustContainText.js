@@ -30,7 +30,7 @@ var AMustContainText = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AMustContainText;

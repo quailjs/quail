@@ -38,7 +38,7 @@ var IframeMustNotHaveLongdesc = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = IframeMustNotHaveLongdesc;

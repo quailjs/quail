@@ -40,7 +40,7 @@ var LiDontUseImageForBullet = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LiDontUseImageForBullet;

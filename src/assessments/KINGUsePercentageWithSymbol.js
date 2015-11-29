@@ -25,7 +25,7 @@ var KINGUsePercentageWithSymbol = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = KINGUsePercentageWithSymbol;

@@ -42,7 +42,7 @@ var HeadersUseToMarkSections = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = HeadersUseToMarkSections;

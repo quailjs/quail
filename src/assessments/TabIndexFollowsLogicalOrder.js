@@ -25,7 +25,7 @@ var TabIndexFollowsLogicalOrder = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TabIndexFollowsLogicalOrder;

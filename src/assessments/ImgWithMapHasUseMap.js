@@ -38,7 +38,7 @@ var ImgWithMapHasUseMap = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgWithMapHasUseMap;

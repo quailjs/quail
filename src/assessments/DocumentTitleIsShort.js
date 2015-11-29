@@ -9,7 +9,7 @@ var DocumentTitleIsShort = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentTitleIsShort;

@@ -38,7 +38,7 @@ var LegendTextNotEmpty = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LegendTextNotEmpty;

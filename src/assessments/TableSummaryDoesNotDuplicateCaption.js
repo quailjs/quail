@@ -19,7 +19,7 @@ var TableSummaryDoesNotDuplicateCaption = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableSummaryDoesNotDuplicateCaption;

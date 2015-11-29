@@ -32,7 +32,7 @@ var FormErrorMessageHelpsUser = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FormErrorMessageHelpsUser;

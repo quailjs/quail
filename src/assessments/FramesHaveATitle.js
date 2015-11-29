@@ -42,7 +42,7 @@ var FramesHaveATitle = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FramesHaveATitle;

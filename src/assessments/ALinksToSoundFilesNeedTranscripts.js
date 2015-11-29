@@ -38,7 +38,7 @@ var ALinksToSoundFilesNeedTranscripts = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ALinksToSoundFilesNeedTranscripts;

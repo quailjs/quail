@@ -44,7 +44,7 @@ var LinkUsedForAlternateContent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LinkUsedForAlternateContent;

@@ -13,7 +13,7 @@ var TableLayoutMakesSenseLinearized = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableLayoutMakesSenseLinearized;

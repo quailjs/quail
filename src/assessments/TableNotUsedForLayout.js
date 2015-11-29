@@ -19,7 +19,7 @@ var TableNotUsedForLayout = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableNotUsedForLayout;

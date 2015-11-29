@@ -15,7 +15,7 @@ var ScriptOnmouseupHasOnkeyup = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptOnmouseupHasOnkeyup;

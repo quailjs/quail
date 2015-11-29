@@ -34,7 +34,7 @@ var SiteMapStringsComponent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = SiteMapStringsComponent;

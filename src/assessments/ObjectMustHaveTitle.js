@@ -40,7 +40,7 @@ var ObjectMustHaveTitle = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectMustHaveTitle;

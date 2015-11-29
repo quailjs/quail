@@ -40,7 +40,7 @@ var TableUsesCaption = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableUsesCaption;

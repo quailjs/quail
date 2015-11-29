@@ -15,7 +15,7 @@ var InputTextValueNotEmpty = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = InputTextValueNotEmpty;

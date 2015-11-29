@@ -48,7 +48,7 @@ var KINGUseLongDateFormat = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = KINGUseLongDateFormat;

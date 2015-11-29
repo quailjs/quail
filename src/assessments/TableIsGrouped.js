@@ -42,7 +42,7 @@ var TableIsGrouped = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableIsGrouped;

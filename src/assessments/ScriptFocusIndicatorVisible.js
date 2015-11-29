@@ -79,7 +79,7 @@ var ScriptFocusIndicatorVisible = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptFocusIndicatorVisible;

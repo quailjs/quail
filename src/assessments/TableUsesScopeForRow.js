@@ -26,7 +26,7 @@ var TableUsesScopeForRow = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableUsesScopeForRow;

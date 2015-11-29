@@ -14,7 +14,7 @@ var ImgAltNotPlaceHolder = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgAltNotPlaceHolder;

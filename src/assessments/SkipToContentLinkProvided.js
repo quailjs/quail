@@ -43,7 +43,7 @@ var SkipToContentLinkProvided = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = SkipToContentLinkProvided;

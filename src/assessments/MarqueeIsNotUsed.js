@@ -34,7 +34,7 @@ var MarqueeIsNotUsed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = MarqueeIsNotUsed;

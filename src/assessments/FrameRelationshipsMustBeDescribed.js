@@ -42,7 +42,7 @@ var FrameRelationshipsMustBeDescribed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FrameRelationshipsMustBeDescribed;

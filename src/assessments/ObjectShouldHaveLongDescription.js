@@ -42,7 +42,7 @@ var ObjectShouldHaveLongDescription = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectShouldHaveLongDescription;

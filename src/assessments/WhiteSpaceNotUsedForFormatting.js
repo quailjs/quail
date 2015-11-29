@@ -33,7 +33,7 @@ var WhiteSpaceNotUsedForFormatting = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = WhiteSpaceNotUsedForFormatting;

@@ -42,7 +42,7 @@ var AppletUIMustBeAccessible = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AppletUIMustBeAccessible;

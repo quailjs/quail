@@ -42,7 +42,7 @@ var RadioMarkedWithFieldgroupAndLegend = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = RadioMarkedWithFieldgroupAndLegend;

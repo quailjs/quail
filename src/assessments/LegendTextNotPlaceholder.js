@@ -15,7 +15,7 @@ var LegendTextNotPlaceholder = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LegendTextNotPlaceholder;

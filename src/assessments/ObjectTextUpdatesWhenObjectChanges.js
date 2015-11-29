@@ -42,7 +42,7 @@ var ObjectTextUpdatesWhenObjectChanges = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectTextUpdatesWhenObjectChanges;

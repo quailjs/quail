@@ -42,7 +42,7 @@ var ObjectInterfaceIsAccessible = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectInterfaceIsAccessible;

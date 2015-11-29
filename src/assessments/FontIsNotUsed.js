@@ -32,7 +32,7 @@ var FontIsNotUsed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FontIsNotUsed;

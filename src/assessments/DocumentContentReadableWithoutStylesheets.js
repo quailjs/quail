@@ -20,7 +20,7 @@ var DocumentContentReadableWithoutStylesheets = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentContentReadableWithoutStylesheets;

@@ -42,7 +42,7 @@ var ObjectDoesNotUseColorAlone = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectDoesNotUseColorAlone;

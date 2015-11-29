@@ -48,7 +48,7 @@ var DomOrderMatchesVisualOrder = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DomOrderMatchesVisualOrder;

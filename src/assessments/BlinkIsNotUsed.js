@@ -32,7 +32,7 @@ var BlinkIsNotUsed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = BlinkIsNotUsed;

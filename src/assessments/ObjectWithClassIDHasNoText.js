@@ -42,7 +42,7 @@ var ObjectWithClassIDHasNoText = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectWithClassIDHasNoText;

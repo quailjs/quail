@@ -38,7 +38,7 @@ var InputElementsDontHaveAlt = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = InputElementsDontHaveAlt;

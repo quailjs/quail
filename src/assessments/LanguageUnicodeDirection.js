@@ -39,7 +39,7 @@ var LanguageUnicodeDirection = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LanguageUnicodeDirection;

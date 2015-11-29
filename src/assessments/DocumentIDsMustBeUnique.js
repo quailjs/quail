@@ -44,7 +44,7 @@ var DocumentIDsMustBeUnique = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentIDsMustBeUnique;

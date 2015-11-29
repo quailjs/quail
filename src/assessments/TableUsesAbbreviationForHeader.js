@@ -12,7 +12,7 @@ var TableUsesAbbreviationForHeader = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableUsesAbbreviationForHeader;

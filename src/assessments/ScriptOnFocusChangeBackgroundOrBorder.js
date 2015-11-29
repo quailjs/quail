@@ -35,7 +35,7 @@ var ScriptOnFocusChangeBackgroundOrBorder = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptOnFocusChangeBackgroundOrBorder;

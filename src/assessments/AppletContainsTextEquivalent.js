@@ -21,7 +21,7 @@ var AppletContainsTextEquivalent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AppletContainsTextEquivalent;

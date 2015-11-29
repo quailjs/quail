@@ -37,7 +37,7 @@ var FormWithRequiredLabel = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FormWithRequiredLabel;

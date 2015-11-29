@@ -39,7 +39,7 @@ var TableDataShouldHaveTh = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableDataShouldHaveTh;

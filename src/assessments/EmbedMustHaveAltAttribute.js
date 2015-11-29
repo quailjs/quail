@@ -38,7 +38,7 @@ var EmbedMustHaveAltAttribute = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = EmbedMustHaveAltAttribute;

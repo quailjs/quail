@@ -42,7 +42,7 @@ var AreaAltRefersToText = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AreaAltRefersToText;

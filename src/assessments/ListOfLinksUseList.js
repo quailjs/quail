@@ -25,7 +25,7 @@ var ListOfLinksUseList = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ListOfLinksUseList;

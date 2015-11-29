@@ -44,7 +44,7 @@ var NoembedHasEquivalentContent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = NoembedHasEquivalentContent;

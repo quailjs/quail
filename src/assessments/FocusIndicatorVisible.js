@@ -55,7 +55,7 @@ var FocusIndicatorVisible = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FocusIndicatorVisible;

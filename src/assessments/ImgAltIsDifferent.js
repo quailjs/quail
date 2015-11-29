@@ -27,7 +27,7 @@ var ImgAltIsDifferent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgAltIsDifferent;

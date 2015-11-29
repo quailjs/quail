@@ -44,7 +44,7 @@ var DocumentLangIsISO639Standard = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentLangIsISO639Standard;

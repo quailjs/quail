@@ -41,7 +41,7 @@ var AudioMayBePresent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AudioMayBePresent;

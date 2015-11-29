@@ -38,7 +38,7 @@ var ImageMapServerSide = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImageMapServerSide;

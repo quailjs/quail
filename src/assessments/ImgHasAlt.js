@@ -38,7 +38,7 @@ var ImgHasAlt = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgHasAlt;

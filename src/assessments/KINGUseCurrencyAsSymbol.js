@@ -31,7 +31,7 @@ var KINGUseCurrencyAsSymbol = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = KINGUseCurrencyAsSymbol;

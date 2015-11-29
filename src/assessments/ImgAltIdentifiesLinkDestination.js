@@ -44,7 +44,7 @@ var ImgAltIdentifiesLinkDestination = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgAltIdentifiesLinkDestination;

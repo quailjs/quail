@@ -44,7 +44,7 @@ var ImgNotReferredToByColorAlone = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgNotReferredToByColorAlone;

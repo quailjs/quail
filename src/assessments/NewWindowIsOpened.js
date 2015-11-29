@@ -27,7 +27,7 @@ var NewWindowIsOpened = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = NewWindowIsOpened;

@@ -13,7 +13,7 @@ var EmbedHasAssociatedNoEmbed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = EmbedHasAssociatedNoEmbed;

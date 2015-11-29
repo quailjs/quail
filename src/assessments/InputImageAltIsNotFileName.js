@@ -20,7 +20,7 @@ var InputImageAltIsNotFileName = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = InputImageAltIsNotFileName;

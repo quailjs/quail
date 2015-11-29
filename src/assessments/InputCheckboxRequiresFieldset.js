@@ -20,7 +20,7 @@ var InputCheckboxRequiresFieldset = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = InputCheckboxRequiresFieldset;

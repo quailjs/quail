@@ -44,7 +44,7 @@ var LinkUsedToDescribeNavigation = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LinkUsedToDescribeNavigation;

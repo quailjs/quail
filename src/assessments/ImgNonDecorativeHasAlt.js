@@ -22,7 +22,7 @@ var ImgNonDecorativeHasAlt = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgNonDecorativeHasAlt;

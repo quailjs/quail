@@ -24,7 +24,7 @@ var AImgAltNotRepetitive = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AImgAltNotRepetitive;

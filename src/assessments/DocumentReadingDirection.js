@@ -43,7 +43,7 @@ var DocumentReadingDirection = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentReadingDirection;

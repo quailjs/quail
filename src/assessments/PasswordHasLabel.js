@@ -13,7 +13,7 @@ var PasswordHasLabel = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = PasswordHasLabel;

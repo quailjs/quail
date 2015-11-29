@@ -14,7 +14,7 @@ var DocumentTitleIsNotPlaceholder = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentTitleIsNotPlaceholder;

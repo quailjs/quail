@@ -22,7 +22,7 @@ var ImgHasLongDesc = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgHasLongDesc;

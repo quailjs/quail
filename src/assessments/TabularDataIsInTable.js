@@ -18,7 +18,7 @@ var TabularDataIsInTable = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TabularDataIsInTable;

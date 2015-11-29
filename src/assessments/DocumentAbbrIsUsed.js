@@ -5,7 +5,7 @@ var DocumentAbbrIsUsed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentAbbrIsUsed;

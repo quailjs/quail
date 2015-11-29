@@ -83,7 +83,7 @@ var ColorElementBehindBackgroundImageContrast = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ColorElementBehindBackgroundImageContrast;

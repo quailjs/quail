@@ -14,7 +14,7 @@ var LinkDoesNotChangeContextOnFocus = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LinkDoesNotChangeContextOnFocus;

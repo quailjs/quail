@@ -40,7 +40,7 @@ var DocumentVisualListsAreMarkedUp = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentVisualListsAreMarkedUp;

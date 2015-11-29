@@ -15,7 +15,7 @@ var ObjectMustHaveValidTitle = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectMustHaveValidTitle;

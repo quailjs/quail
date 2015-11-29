@@ -31,7 +31,7 @@ var FrameIsNotUsed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FrameIsNotUsed;

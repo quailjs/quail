@@ -13,7 +13,7 @@ var KINGStrongList = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = KINGStrongList;

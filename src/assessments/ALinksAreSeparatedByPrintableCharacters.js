@@ -23,7 +23,7 @@ var ALinksAreSeparatedByPrintableCharacters = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ALinksAreSeparatedByPrintableCharacters;

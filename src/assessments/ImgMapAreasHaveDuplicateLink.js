@@ -35,7 +35,7 @@ var ImgMapAreasHaveDuplicateLink = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgMapAreasHaveDuplicateLink;

@@ -32,7 +32,7 @@ var IIsNotUsed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = IIsNotUsed;

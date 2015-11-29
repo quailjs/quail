@@ -15,7 +15,7 @@ var LabelMustNotBeEmpty = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LabelMustNotBeEmpty;

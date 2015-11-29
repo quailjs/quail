@@ -28,7 +28,7 @@ var LabelsAreAssignedToAnInput = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LabelsAreAssignedToAnInput;

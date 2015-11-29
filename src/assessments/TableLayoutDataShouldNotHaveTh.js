@@ -29,7 +29,7 @@ var TableLayoutDataShouldNotHaveTh = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableLayoutDataShouldNotHaveTh;

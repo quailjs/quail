@@ -42,7 +42,7 @@ var ATitleDescribesDestination = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ATitleDescribesDestination;

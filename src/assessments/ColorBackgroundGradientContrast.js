@@ -89,7 +89,7 @@ var ColorBackgroundGradientContrast = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ColorBackgroundGradientContrast;

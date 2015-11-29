@@ -36,7 +36,7 @@ var MenuNotUsedToFormatText = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = MenuNotUsedToFormatText;

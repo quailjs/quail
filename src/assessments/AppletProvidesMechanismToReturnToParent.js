@@ -42,7 +42,7 @@ var AppletProvidesMechanismToReturnToParent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AppletProvidesMechanismToReturnToParent;

@@ -33,7 +33,7 @@ var TextIsNotSmall = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TextIsNotSmall;

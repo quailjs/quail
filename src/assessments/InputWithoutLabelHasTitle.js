@@ -45,7 +45,7 @@ var InputWithoutLabelHasTitle = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = InputWithoutLabelHasTitle;

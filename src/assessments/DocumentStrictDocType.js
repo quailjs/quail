@@ -18,7 +18,7 @@ var DocumentStrictDocType = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentStrictDocType;

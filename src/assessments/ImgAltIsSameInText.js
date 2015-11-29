@@ -44,7 +44,7 @@ var ImgAltIsSameInText = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgAltIsSameInText;

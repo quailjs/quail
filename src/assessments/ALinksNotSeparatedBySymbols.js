@@ -32,7 +32,7 @@ var ALinksNotSeparatedBySymbols = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ALinksNotSeparatedBySymbols;

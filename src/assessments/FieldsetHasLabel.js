@@ -42,7 +42,7 @@ var FieldsetHasLabel = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FieldsetHasLabel;

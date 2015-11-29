@@ -44,7 +44,7 @@ var ALinksDontOpenNewWindow = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ALinksDontOpenNewWindow;

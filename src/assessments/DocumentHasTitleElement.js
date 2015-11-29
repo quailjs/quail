@@ -38,7 +38,7 @@ var DocumentHasTitleElement = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentHasTitleElement;

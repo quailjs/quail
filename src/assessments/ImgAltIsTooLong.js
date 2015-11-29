@@ -13,7 +13,7 @@ var ImgAltIsTooLong = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgAltIsTooLong;

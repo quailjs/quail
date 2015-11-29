@@ -90,7 +90,7 @@ var AnimatedGifMayBePresent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AnimatedGifMayBePresent;

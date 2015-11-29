@@ -38,7 +38,7 @@ var LabelDoesNotContainInput = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LabelDoesNotContainInput;

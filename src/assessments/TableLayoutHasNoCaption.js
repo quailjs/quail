@@ -27,7 +27,7 @@ var TableLayoutHasNoCaption = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableLayoutHasNoCaption;

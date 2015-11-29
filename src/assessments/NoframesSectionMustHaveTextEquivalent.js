@@ -44,7 +44,7 @@ var NoframesSectionMustHaveTextEquivalent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = NoframesSectionMustHaveTextEquivalent;

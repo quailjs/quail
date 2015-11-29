@@ -42,7 +42,7 @@ var AreaAltIdentifiesDestination = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AreaAltIdentifiesDestination;

@@ -32,7 +32,7 @@ var HeaderH3Format = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = HeaderH3Format;

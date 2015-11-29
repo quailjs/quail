@@ -35,7 +35,7 @@ var ALinkTextDoesNotBeginWithRedundantWord = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ALinkTextDoesNotBeginWithRedundantWord;

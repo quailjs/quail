@@ -42,7 +42,7 @@ var TableComplexHasSummary = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableComplexHasSummary;

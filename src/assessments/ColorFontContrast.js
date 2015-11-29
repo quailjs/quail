@@ -56,7 +56,7 @@ var ColorFontContrast = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ColorFontContrast;

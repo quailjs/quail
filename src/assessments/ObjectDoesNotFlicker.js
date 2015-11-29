@@ -42,7 +42,7 @@ var ObjectDoesNotFlicker = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectDoesNotFlicker;

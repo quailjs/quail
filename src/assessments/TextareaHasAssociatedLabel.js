@@ -13,7 +13,7 @@ var TextareaHasAssociatedLabel = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TextareaHasAssociatedLabel;

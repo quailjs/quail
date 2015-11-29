@@ -42,7 +42,7 @@ var ScriptContentAccessibleWithScriptsTurnedOff = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptContentAccessibleWithScriptsTurnedOff;

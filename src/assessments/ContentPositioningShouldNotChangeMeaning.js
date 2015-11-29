@@ -45,7 +45,7 @@ var ContentPositioningShouldNotChangeMeaning = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ContentPositioningShouldNotChangeMeaning;

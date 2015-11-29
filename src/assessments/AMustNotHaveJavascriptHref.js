@@ -42,7 +42,7 @@ var AMustNotHaveJavascriptHref = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AMustNotHaveJavascriptHref;

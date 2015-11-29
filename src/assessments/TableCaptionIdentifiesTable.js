@@ -42,7 +42,7 @@ var TableCaptionIdentifiesTable = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableCaptionIdentifiesTable;

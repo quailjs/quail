@@ -32,7 +32,7 @@ var DocumentAutoRedirectNotUsed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentAutoRedirectNotUsed;

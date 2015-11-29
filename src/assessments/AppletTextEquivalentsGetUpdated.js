@@ -42,7 +42,7 @@ var AppletTextEquivalentsGetUpdated = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AppletTextEquivalentsGetUpdated;

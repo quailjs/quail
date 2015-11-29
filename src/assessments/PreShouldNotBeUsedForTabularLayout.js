@@ -14,7 +14,7 @@ var PreShouldNotBeUsedForTabularLayout = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = PreShouldNotBeUsedForTabularLayout;

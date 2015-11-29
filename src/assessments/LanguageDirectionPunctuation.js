@@ -54,7 +54,7 @@ var LanguageDirectionPunctuation = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LanguageDirectionPunctuation;

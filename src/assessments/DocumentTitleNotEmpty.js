@@ -15,7 +15,7 @@ var DocumentTitleNotEmpty = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentTitleNotEmpty;

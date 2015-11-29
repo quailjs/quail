@@ -15,7 +15,7 @@ var ScriptOnclickRequiresOnKeypress = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptOnclickRequiresOnKeypress;

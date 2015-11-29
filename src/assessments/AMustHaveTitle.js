@@ -25,7 +25,7 @@ var AMustHaveTitle = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AMustHaveTitle;

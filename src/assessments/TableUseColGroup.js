@@ -13,7 +13,7 @@ var TableUseColGroup = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = TableUseColGroup;

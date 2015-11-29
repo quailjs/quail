@@ -13,7 +13,7 @@ var InputTextHasLabel = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = InputTextHasLabel;

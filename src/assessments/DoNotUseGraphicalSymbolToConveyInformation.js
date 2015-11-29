@@ -54,7 +54,7 @@ var DoNotUseGraphicalSymbolToConveyInformation = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DoNotUseGraphicalSymbolToConveyInformation;

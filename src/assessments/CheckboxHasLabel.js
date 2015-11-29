@@ -13,7 +13,7 @@ var CheckboxHasLabel = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = CheckboxHasLabel;

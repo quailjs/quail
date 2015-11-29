@@ -39,7 +39,7 @@ var AriaOrphanedContent = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AriaOrphanedContent;

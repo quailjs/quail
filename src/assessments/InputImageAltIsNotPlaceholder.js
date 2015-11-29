@@ -14,7 +14,7 @@ var InputImageAltIsNotPlaceholder = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = InputImageAltIsNotPlaceholder;

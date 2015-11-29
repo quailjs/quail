@@ -40,7 +40,7 @@ var HeadersAttrRefersToATableCell = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = HeadersAttrRefersToATableCell;

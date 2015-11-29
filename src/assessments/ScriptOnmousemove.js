@@ -15,7 +15,7 @@ var ScriptOnmousemove = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ScriptOnmousemove;

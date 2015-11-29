@@ -55,7 +55,7 @@ var IdrefsHasCorrespondingId = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = IdrefsHasCorrespondingId;

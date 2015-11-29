@@ -20,7 +20,7 @@ var InputImageAltIsShort = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = InputImageAltIsShort;

@@ -26,7 +26,7 @@ var ImgImportantNoSpacerAlt = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgImportantNoSpacerAlt;

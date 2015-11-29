@@ -27,7 +27,7 @@ var DocumentLangNotIdentified = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = DocumentLangNotIdentified;

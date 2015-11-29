@@ -30,7 +30,7 @@ var ImgAltNotEmptyInAnchor = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ImgAltNotEmptyInAnchor;

@@ -54,7 +54,7 @@ var AreaLinksToSoundFile = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AreaLinksToSoundFile;

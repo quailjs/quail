@@ -40,7 +40,7 @@ var ObjectMustHaveEmbed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = ObjectMustHaveEmbed;

@@ -42,7 +42,7 @@ var AppletsDonotUseColorAlone = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = AppletsDonotUseColorAlone;

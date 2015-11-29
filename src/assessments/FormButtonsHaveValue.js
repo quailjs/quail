@@ -40,7 +40,7 @@ var FormButtonsHaveValue = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = FormButtonsHaveValue;

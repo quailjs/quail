@@ -53,7 +53,7 @@ var LanguageDirAttributeIsUsed = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = LanguageDirAttributeIsUsed;

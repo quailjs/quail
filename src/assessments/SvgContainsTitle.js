@@ -40,7 +40,7 @@ var SvgContainsTitle = {
   },
 
   meta: {
-    replace: 'this'
+replace: 'this'
   }
 };
 module.exports = SvgContainsTitle;
