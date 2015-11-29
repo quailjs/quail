@@ -11,8 +11,8 @@ before_script:
 sudo: false
 
 install:
-- npm install grunt-cli -g
-- npm install
+- npm --version
+- npm install bower
 addons:
   sauce_connect: true
 env:
