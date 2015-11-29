@@ -9605,6 +9605,8 @@ var Case = require('Case');
 
 var AMustNotHaveJavascriptHref = function AMustNotHaveJavascriptHref(test, options) {
 
+  options = options || {};
+
   var selector = 'a[href^="javascript:"]';
 
   this.get('$scope').each(function () {
@@ -9683,6 +9685,8 @@ module.exports = ASuspiciousLinkText;
 var Case = require('Case');
 
 var ATitleDescribesDestination = function ATitleDescribesDestination(test, options) {
+
+  options = options || {};
 
   var selector = 'a[title]';
 
@@ -9855,6 +9859,8 @@ var Case = require('Case');
 
 var AppletProvidesMechanismToReturnToParent = function AppletProvidesMechanismToReturnToParent(test, options) {
 
+  options = options || {};
+
   var selector = 'applet';
 
   this.get('$scope').each(function () {
@@ -9898,6 +9904,8 @@ module.exports = AppletProvidesMechanismToReturnToParent;
 var Case = require('Case');
 
 var AppletTextEquivalentsGetUpdated = function AppletTextEquivalentsGetUpdated(test, options) {
+
+  options = options || {};
 
   var selector = 'applet';
 
@@ -9943,6 +9951,8 @@ var Case = require('Case');
 
 var AppletUIMustBeAccessible = function AppletUIMustBeAccessible(test, options) {
 
+  options = options || {};
+
   var selector = 'applet';
 
   this.get('$scope').each(function () {
@@ -9986,6 +9996,8 @@ module.exports = AppletUIMustBeAccessible;
 var Case = require('Case');
 
 var AppletsDoNotFlicker = function AppletsDoNotFlicker(test, options) {
+
+  options = options || {};
 
   var selector = 'applet';
 
@@ -10031,6 +10043,8 @@ var Case = require('Case');
 
 var AppletsDonotUseColorAlone = function AppletsDonotUseColorAlone(test, options) {
 
+  options = options || {};
+
   var selector = 'applet';
 
   this.get('$scope').each(function () {
@@ -10075,6 +10089,8 @@ var Case = require('Case');
 
 var AreaAltIdentifiesDestination = function AreaAltIdentifiesDestination(test, options) {
 
+  options = options || {};
+
   var selector = 'area:not(area[alt])';
 
   this.get('$scope').each(function () {
@@ -10118,6 +10134,8 @@ module.exports = AreaAltIdentifiesDestination;
 var Case = require('Case');
 
 var AreaAltRefersToText = function AreaAltRefersToText(test, options) {
+
+  options = options || {};
 
   var selector = 'area';
 
@@ -10261,6 +10279,8 @@ module.exports = AreaHasAltValue;
 var Case = require('Case');
 
 var AreaLinksToSoundFile = function AreaLinksToSoundFile(test, options) {
+
+  options = options || {};
 
   var selector = ['area[href$="wav"]', 'area[href$="snd"]', 'area[href$="mp3"]', 'area[href$="iff"]', 'area[href$="svx"]', 'area[href$="sam"]', 'area[href$="smp"]', 'area[href$="vce"]', 'area[href$="vox"]', 'area[href$="pcm"]', 'area[href$="aif"]'].join(', ');
 
@@ -10559,6 +10579,8 @@ var Rainbow = require('RainbowVis-JS/rainbowvis');
 
 var ColorBackgroundGradientContrast = function ColorBackgroundGradientContrast(test, options) {
 
+  options = options || {};
+
   var colors = ColorComponent.colors;
   var buildCase = ColorComponent.buildCase;
   var id = 'colorBackgroundGradientContrast';
@@ -10642,6 +10664,8 @@ var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorBackgroundImageContrast = function ColorBackgroundImageContrast(test, options) {
 
+  options = options || {};
+
   var colors = ColorComponent.colors;
   var buildCase = ColorComponent.buildCase;
   var id = 'colorBackgroundImageContrast';
@@ -10718,6 +10742,8 @@ var ColorComponent = require('ColorComponent');
 var Rainbow = require('RainbowVis-JS/rainbowvis');
 
 var ColorElementBehindBackgroundGradientContrast = function ColorElementBehindBackgroundGradientContrast(test, options) {
+
+  options = options || {};
 
   var colors = ColorComponent.colors;
   var buildCase = ColorComponent.buildCase;
@@ -10801,6 +10827,8 @@ var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorElementBehindBackgroundImageContrast = function ColorElementBehindBackgroundImageContrast(test, options) {
 
+  options = options || {};
+
   var colors = ColorComponent.colors;
   var buildCase = ColorComponent.buildCase;
   var id = 'colorElementBehindBackgroundImageContrast';
@@ -10879,6 +10907,8 @@ var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorElementBehindContrast = function ColorElementBehindContrast(test, options) {
 
+  options = options || {};
+
   var colors = ColorComponent.colors;
   var buildCase = ColorComponent.buildCase;
   var id = 'colorElementBehindContrast';
@@ -10939,6 +10969,8 @@ module.exports = ColorElementBehindContrast;
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorFontContrast = function ColorFontContrast(test, options) {
+
+  options = options || {};
 
   var colors = ColorComponent.colors;
   var buildCase = ColorComponent.buildCase;
@@ -11529,6 +11561,8 @@ var $ = require('jquery/dist/jquery');
 
 var DomOrderMatchesVisualOrder = function DomOrderMatchesVisualOrder(test, options) {
 
+  options = options || {};
+
   $.expr[':'].quailCss = function (obj, index, meta) {
     var args = meta[3].split(/\s*=\s*/);
     return $(obj).css(args[0]).search(args[1]) > -1;
@@ -11635,6 +11669,8 @@ module.exports = EmbedMustHaveAltAttribute;
 var Case = require('Case');
 
 var FieldsetHasLabel = function FieldsetHasLabel(test, options) {
+
+  options = options || {};
 
   var selector = 'fieldset:not(fieldset:has(legend))';
 
