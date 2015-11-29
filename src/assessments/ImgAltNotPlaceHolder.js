@@ -4,11 +4,17 @@
  */
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var ImgAltNotPlaceHolder = function (test, options) {
-  options = options || {
-    selector: 'img',
-    attribute: 'alt'
-  };
-  PlaceholderComponent(test, options);
+var ImgAltNotPlaceHolder = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'img',
+      attribute: 'alt'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = ImgAltNotPlaceHolder;

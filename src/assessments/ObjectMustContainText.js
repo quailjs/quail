@@ -4,12 +4,18 @@
  */
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var ObjectMustContainText = function (test, options) {
-  options = options || {
-    selector: 'object',
-    content: 'true',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
+var ObjectMustContainText = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'object',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = ObjectMustContainText;

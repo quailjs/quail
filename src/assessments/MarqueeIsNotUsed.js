@@ -7,28 +7,34 @@
  */
 var Case = require('Case');
 
-var MarqueeIsNotUsed = function (test) {
+var MarqueeIsNotUsed = {
+  run: function (test) {
 
-  var selector = 'marquee';
+    var selector = 'marquee';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'passed'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'failed';
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'passed'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = MarqueeIsNotUsed;

@@ -12,11 +12,13 @@ module.exports = function(file, api, options) {
     .find(j.FunctionExpression)
   	.filter(function (ident) {
     	var keep = false;
-  		ident.value.params.forEach(function (param) {
+      if (ident.value && ident.value.params && ident.value.params.length) {
+    		ident.value.params.forEach(function (param) {
         	if (param.name === 'test') {
             	keep = true;
             }
         });
+      }
     	return keep;
   	});
   assessmentFunc

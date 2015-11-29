@@ -4,11 +4,17 @@
  */
 var EventComponent = require('EventComponent');
 
-var LinkDoesNotChangeContextOnFocus = function (test, options) {
-  options = options || {
-    selector: 'a[href]',
-    searchEvent: 'onfocus'
-  };
-  EventComponent(test, options);
+var LinkDoesNotChangeContextOnFocus = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'a[href]',
+      searchEvent: 'onfocus'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = LinkDoesNotChangeContextOnFocus;

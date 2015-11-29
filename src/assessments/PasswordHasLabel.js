@@ -4,10 +4,16 @@
  */
 var LabelComponent = require('LabelComponent');
 
-var PasswordHasLabel = function (test, options) {
-  options = options || {
-    selector: 'input[type="password"]'
-  };
-  LabelComponent(test, options);
+var PasswordHasLabel = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'input[type="password"]'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = PasswordHasLabel;

@@ -7,35 +7,41 @@
  */
 var Case = require('Case');
 
-var DocumentMetaNotUsedWithTimeout = function (test) {
+var DocumentMetaNotUsedWithTimeout = {
+  run: function (test) {
 
-  var selector = 'meta';
+    var selector = 'meta';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
 
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if (this.hasAttribute('http-equiv') && this.getAttribute('http-equiv') === 'refresh') {
-          if (this.hasAttribute('content') && (this.getAttribute('content') || '').length > 0) {
-            status = 'failed';
-          }
-        }
-
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('http-equiv') && this.getAttribute('http-equiv') === 'refresh') {
+            if (this.hasAttribute('content') && (this.getAttribute('content') || '').length > 0) {
+              status = 'failed';
+            }
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = DocumentMetaNotUsedWithTimeout;

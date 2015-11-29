@@ -7,32 +7,38 @@
  */
 var Case = require('Case');
 
-var InputElementsDontHaveAlt = function (test) {
+var InputElementsDontHaveAlt = {
+  run: function (test) {
 
-  var selector = 'input[type!=image]';
+    var selector = 'input[type!=image]';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if (this.hasAttribute('alt')) {
-          status = 'failed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('alt')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = InputElementsDontHaveAlt;

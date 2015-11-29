@@ -7,31 +7,37 @@
  */
 var Case = require('Case');
 
-var FormHasSubmitButton = function (test) {
+var FormHasSubmitButton = {
+  run: function (test) {
 
-  var selector = 'input[type=submit], button[type=submit]';
+    var selector = 'input[type=submit], button[type=submit]';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find('form');
+    this.get('$scope').each(function () {
+      var candidates = $(this).find('form');
 
-    if (candidates.length === 0) {
-      test.add(Case({
-        element: this,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var submitButton = $(this).find(selector);
-
-        var status = (submitButton.length === 1) ? 'passed' : 'failed';
-
+      if (candidates.length === 0) {
         test.add(Case({
           element: this,
-          status: status
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var submitButton = $(this).find(selector);
+
+          var status = (submitButton.length === 1) ? 'passed' : 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = FormHasSubmitButton;

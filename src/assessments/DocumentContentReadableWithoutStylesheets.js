@@ -9,12 +9,18 @@
  */
 var Case = require('Case');
 
-var DocumentContentReadableWithoutStylesheets = function (test) {
-  this.get('$scope').each(function () {
-    test.add(Case({
-      element: undefined,
-      status: 'untested'
-    }));
-  });
+var DocumentContentReadableWithoutStylesheets = {
+  run: function (test) {
+    this.get('$scope').each(function () {
+      test.add(Case({
+        element: undefined,
+        status: 'untested'
+      }));
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = DocumentContentReadableWithoutStylesheets;

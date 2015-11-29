@@ -4,11 +4,17 @@
  */
 var EventComponent = require('EventComponent');
 
-var SelectDoesNotChangeContext = function (test, options) {
-  options = options || {
-    selector: 'select',
-    searchEvent: 'onchange'
-  };
-  EventComponent(test, options);
+var SelectDoesNotChangeContext = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'select',
+      searchEvent: 'onchange'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = SelectDoesNotChangeContext;

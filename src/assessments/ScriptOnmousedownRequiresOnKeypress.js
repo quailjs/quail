@@ -4,12 +4,18 @@
  */
 var EventComponent = require('EventComponent');
 
-var ScriptOnmousedownRequiresOnKeypress = function (test, options) {
-  options = options || {
-    selector: '[onmousedown]',
-    correspondingEvent: 'onkeydown',
-    searchEvent: 'onmousedown'
-  };
-  EventComponent(test, options);
+var ScriptOnmousedownRequiresOnKeypress = {
+  run: function (test, options) {
+    options = options || {
+      selector: '[onmousedown]',
+      correspondingEvent: 'onkeydown',
+      searchEvent: 'onmousedown'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = ScriptOnmousedownRequiresOnKeypress;

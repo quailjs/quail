@@ -9,32 +9,38 @@
  */
 var Case = require('Case');
 
-var LiDontUseImageForBullet = function (test) {
+var LiDontUseImageForBullet = {
+  run: function (test) {
 
-  var selector = 'li';
+    var selector = 'li';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if ($(this).children('img').length > 0) {
-          status = 'failed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if ($(this).children('img').length > 0) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = LiDontUseImageForBullet;

@@ -8,41 +8,47 @@
 var Case = require('Case');
 var $ = require('jquery/dist/jquery');
 
-var DomOrderMatchesVisualOrder = function (test, options) {
+var DomOrderMatchesVisualOrder = {
+  run: function (test, options) {
 
-  $.expr[':'].quailCss = function (obj, index, meta) {
-    var args = meta[3].split(/\s*=\s*/);
-    return $(obj).css(args[0]).search(args[1]) > -1;
-  };
+    $.expr[':'].quailCss = function (obj, index, meta) {
+      var args = meta[3].split(/\s*=\s*/);
+      return $(obj).css(args[0]).search(args[1]) > -1;
+    };
 
-  var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
+    var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: (options.test ? 'inapplicable' : 'passed')
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        }
-        else {
-          status = 'failed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: (options.test ? 'inapplicable' : 'passed')
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          }
+          else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = DomOrderMatchesVisualOrder;

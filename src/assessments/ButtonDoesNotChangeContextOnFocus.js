@@ -4,10 +4,16 @@
  */
 var EventComponent = require('EventComponent');
 
-var ButtonDoesNotChangeContextOnFocus = function (test, options) {
-  options = options || {
-    searchEvent: 'onfocus'
-  };
-  EventComponent(test, options);
+var ButtonDoesNotChangeContextOnFocus = {
+  run: function (test, options) {
+    options = options || {
+      searchEvent: 'onfocus'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = ButtonDoesNotChangeContextOnFocus;

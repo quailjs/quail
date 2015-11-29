@@ -9,12 +9,18 @@
  */
 var Case = require('Case');
 
-var CssDocumentMakesSenseStyleTurnedOff = function (test) {
-  this.get('$scope').each(function () {
-    test.add(Case({
-      element: undefined,
-      status: 'untested'
-    }));
-  });
+var CssDocumentMakesSenseStyleTurnedOff = {
+  run: function (test) {
+    this.get('$scope').each(function () {
+      test.add(Case({
+        element: undefined,
+        status: 'untested'
+      }));
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = CssDocumentMakesSenseStyleTurnedOff;

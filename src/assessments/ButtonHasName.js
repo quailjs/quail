@@ -4,13 +4,19 @@
  */
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var ButtonHasName = function (test, options) {
-  options = options || {
-    selector: 'button',
-    content: 'true',
-    empty: 'true',
-    attribute: 'title'
-  };
-  PlaceholderComponent(test, options);
+var ButtonHasName = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'button',
+      content: 'true',
+      empty: 'true',
+      attribute: 'title'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = ButtonHasName;

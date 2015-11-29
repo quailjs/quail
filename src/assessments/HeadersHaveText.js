@@ -4,12 +4,18 @@
  */
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var HeadersHaveText = function (test, options) {
-  options = options || {
-    selector: 'h1, h2, h3, h4, h5, h6',
-    content: 'true',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
+var HeadersHaveText = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'h1, h2, h3, h4, h5, h6',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = HeadersHaveText;

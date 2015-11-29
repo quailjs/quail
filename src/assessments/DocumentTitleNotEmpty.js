@@ -4,12 +4,18 @@
  */
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var DocumentTitleNotEmpty = function (test, options) {
-  options = options || {
-    selector: 'head > title',
-    content: 'true',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
+var DocumentTitleNotEmpty = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'head > title',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = DocumentTitleNotEmpty;

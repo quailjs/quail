@@ -7,32 +7,38 @@
  */
 var Case = require('Case');
 
-var LegendTextNotEmpty = function (test) {
+var LegendTextNotEmpty = {
+  run: function (test) {
 
-  var selector = 'legend';
+    var selector = 'legend';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'failed';
-
-        if ($(this).text().trim().length > 0) {
-          status = 'passed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if ($(this).text().trim().length > 0) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = LegendTextNotEmpty;

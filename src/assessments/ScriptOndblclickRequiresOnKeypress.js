@@ -4,12 +4,18 @@
  */
 var EventComponent = require('EventComponent');
 
-var ScriptOndblclickRequiresOnKeypress = function (test, options) {
-  options = options || {
-    selector: '[ondblclick]',
-    correspondingEvent: 'onkeypress',
-    searchEvent: 'ondblclick'
-  };
-  EventComponent(test, options);
+var ScriptOndblclickRequiresOnKeypress = {
+  run: function (test, options) {
+    options = options || {
+      selector: '[ondblclick]',
+      correspondingEvent: 'onkeypress',
+      searchEvent: 'ondblclick'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = ScriptOndblclickRequiresOnKeypress;

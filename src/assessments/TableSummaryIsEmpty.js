@@ -4,12 +4,18 @@
  */
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var TableSummaryIsEmpty = function (test, options) {
-  options = options || {
-    selector: 'table',
-    attribute: 'summary',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
+var TableSummaryIsEmpty = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'table',
+      attribute: 'summary',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = TableSummaryIsEmpty;

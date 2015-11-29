@@ -4,12 +4,18 @@
  */
 var EventComponent = require('EventComponent');
 
-var ScriptOnmouseoverHasOnfocus = function (test, options) {
-  options = options || {
-    selector: '[onmouseover]',
-    correspondingEvent: 'onfocus',
-    searchEvent: 'onmouseover'
-  };
-  EventComponent(test, options);
+var ScriptOnmouseoverHasOnfocus = {
+  run: function (test, options) {
+    options = options || {
+      selector: '[onmouseover]',
+      correspondingEvent: 'onfocus',
+      searchEvent: 'onmouseover'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = ScriptOnmouseoverHasOnfocus;

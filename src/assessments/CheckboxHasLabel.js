@@ -4,10 +4,16 @@
  */
 var LabelComponent = require('LabelComponent');
 
-var CheckboxHasLabel = function (test, options) {
-  options = options || {
-    selector: 'input[type="checkbox"]'
-  };
-  LabelComponent(test, options);
+var CheckboxHasLabel = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'input[type="checkbox"]'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = CheckboxHasLabel;

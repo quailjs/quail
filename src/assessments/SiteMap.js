@@ -1,34 +1,40 @@
 var Case = require('Case');
 var SiteMapStringsComponent = require('SiteMapStringsComponent');
-var SiteMapStringsComponent = function (test) {
-  var set = true;
-  var _case = Case({
-    element: test.get('$scope').get(0)
-  });
-  test.add(_case);
-  test.get('$scope').find('a').each(function () {
-    if (_case.get('status') === 'passed') {
-      return;
-    }
-    var text = $(this).text().toLowerCase();
-    $.each(SiteMapStringsComponent, function (index, string) {
-      if (text.search(string) > -1) {
-        set = false;
+var SiteMapStringsComponent = {
+  run: function (test) {
+    var set = true;
+    var _case = Case({
+      element: test.get('$scope').get(0)
+    });
+    test.add(_case);
+    test.get('$scope').find('a').each(function () {
+      if (_case.get('status') === 'passed') {
         return;
       }
-    });
-    if (set === false) {
-      _case.set({
-        status: 'failed'
+      var text = $(this).text().toLowerCase();
+      $.each(SiteMapStringsComponent, function (index, string) {
+        if (text.search(string) > -1) {
+          set = false;
+          return;
+        }
       });
-      return;
-    }
+      if (set === false) {
+        _case.set({
+          status: 'failed'
+        });
+        return;
+      }
 
-    if (set) {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
+      if (set) {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = SiteMapStringsComponent;

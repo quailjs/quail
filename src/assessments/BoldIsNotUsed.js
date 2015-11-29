@@ -7,26 +7,32 @@
  */
 var Case = require('Case');
 
-var BoldIsNotUsed = function (test) {
+var BoldIsNotUsed = {
+  run: function (test) {
 
-  var selector = 'bold';
+    var selector = 'bold';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: 'failed'
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = BoldIsNotUsed;

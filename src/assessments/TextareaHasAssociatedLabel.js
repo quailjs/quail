@@ -4,10 +4,16 @@
  */
 var LabelComponent = require('LabelComponent');
 
-var TextareaHasAssociatedLabel = function (test, options) {
-  options = options || {
-    selector: 'textarea'
-  };
-  LabelComponent(test, options);
+var TextareaHasAssociatedLabel = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'textarea'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = TextareaHasAssociatedLabel;

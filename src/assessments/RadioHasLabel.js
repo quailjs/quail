@@ -4,10 +4,16 @@
  */
 var LabelComponent = require('LabelComponent');
 
-var RadioHasLabel = function (test, options) {
-  options = options || {
-    selector: 'input[type="radio"]'
-  };
-  LabelComponent(test, options);
+var RadioHasLabel = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'input[type="radio"]'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = RadioHasLabel;

@@ -1,5 +1,11 @@
 var AcronymComponent = require('AcronymComponent');
-var DocumentAbbrIsUsed = function (test) {
-  AcronymComponent(test, 'abbr');
+var DocumentAbbrIsUsed = {
+  run: function (test) {
+    AcronymComponent(test, 'abbr');
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = DocumentAbbrIsUsed;

@@ -7,26 +7,32 @@
  */
 var Case = require('Case');
 
-var FormHasGoodErrorMessage = function (test) {
+var FormHasGoodErrorMessage = {
+  run: function (test) {
 
-  var selector = 'form';
+    var selector = 'form';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: 'cantTell'
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = FormHasGoodErrorMessage;

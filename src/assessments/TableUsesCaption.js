@@ -7,34 +7,40 @@
  */
 var Case = require('Case');
 
-var TableUsesCaption = function (test) {
+var TableUsesCaption = {
+  run: function (test) {
 
-  var selector = 'table';
+    var selector = 'table';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'failed';
-        var hasCaption = $(this).find('caption').length === 1;
-
-        // If a test is defined, then use it
-        if (hasCaption) {
-          status = 'passed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasCaption = $(this).find('caption').length === 1;
+
+          // If a test is defined, then use it
+          if (hasCaption) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = TableUsesCaption;

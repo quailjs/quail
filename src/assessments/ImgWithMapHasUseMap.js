@@ -7,32 +7,38 @@
  */
 var Case = require('Case');
 
-var ImgWithMapHasUseMap = function (test) {
+var ImgWithMapHasUseMap = {
+  run: function (test) {
 
-  var selector = 'img[ismap]';
+    var selector = 'img[ismap]';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'failed';
-
-        if (this.hasAttribute('usemap')) {
-          status = 'passed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if (this.hasAttribute('usemap')) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = ImgWithMapHasUseMap;

@@ -7,34 +7,40 @@
  */
 var Case = require('Case');
 
-var ObjectMustHaveTitle = function (test) {
+var ObjectMustHaveTitle = {
+  run: function (test) {
 
-  var selector = 'object';
+    var selector = 'object';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'failed';
-        var hasTitle = this.hasAttribute('title');
-
-        // If a test is defined, then use it
-        if (hasTitle) {
-          status = 'passed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasTitle = this.hasAttribute('title');
+
+          // If a test is defined, then use it
+          if (hasTitle) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = ObjectMustHaveTitle;

@@ -7,26 +7,32 @@
  */
 var Case = require('Case');
 
-var HeaderH6Format = function (test) {
+var HeaderH6Format = {
+  run: function (test) {
 
-  var selector = 'h6';
+    var selector = 'h6';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: 'cantTell'
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = HeaderH6Format;

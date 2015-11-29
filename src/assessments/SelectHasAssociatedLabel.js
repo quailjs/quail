@@ -4,10 +4,16 @@
  */
 var LabelComponent = require('LabelComponent');
 
-var SelectHasAssociatedLabel = function (test, options) {
-  options = options || {
-    selector: 'select'
-  };
-  LabelComponent(test, options);
+var SelectHasAssociatedLabel = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'select'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = SelectHasAssociatedLabel;

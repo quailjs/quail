@@ -4,12 +4,18 @@
  */
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var ObjectMustHaveValidTitle = function (test, options) {
-  options = options || {
-    selector: 'object',
-    attribute: 'title',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
+var ObjectMustHaveValidTitle = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'object',
+      attribute: 'title',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = ObjectMustHaveValidTitle;

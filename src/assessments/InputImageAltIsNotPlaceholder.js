@@ -4,11 +4,17 @@
  */
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var InputImageAltIsNotPlaceholder = function (test, options) {
-  options = options || {
-    selector: 'input[type="image"]',
-    attribute: 'alt'
-  };
-  PlaceholderComponent(test, options);
+var InputImageAltIsNotPlaceholder = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'input[type="image"]',
+      attribute: 'alt'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = InputImageAltIsNotPlaceholder;

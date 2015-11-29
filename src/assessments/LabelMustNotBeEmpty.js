@@ -4,12 +4,18 @@
  */
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var LabelMustNotBeEmpty = function (test, options) {
-  options = options || {
-    selector: 'label',
-    content: 'true',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
+var LabelMustNotBeEmpty = {
+  run: function (test, options) {
+    options = options || {
+      selector: 'label',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = LabelMustNotBeEmpty;

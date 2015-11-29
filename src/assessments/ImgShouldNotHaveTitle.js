@@ -7,32 +7,38 @@
  */
 var Case = require('Case');
 
-var ImgShouldNotHaveTitle = function (test) {
+var ImgShouldNotHaveTitle = {
+  run: function (test) {
 
-  var selector = 'img';
+    var selector = 'img';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if (this.hasAttribute('title')) {
-          status = 'failed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('title')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = ImgShouldNotHaveTitle;

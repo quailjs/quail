@@ -7,32 +7,38 @@
  */
 var Case = require('Case');
 
-var InputImageHasAlt = function (test) {
+var InputImageHasAlt = {
+  run: function (test) {
 
-  var selector = 'input[type=image]:visible';
+    var selector = 'input[type=image]:visible';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'failed';
-
-        if (this.hasAttribute('alt')) {
-          status = 'passed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if (this.hasAttribute('alt')) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    replace: 'this'
+  }
 };
 module.exports = InputImageHasAlt;
