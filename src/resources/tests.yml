@@ -488,18 +488,18 @@ areaLinksToSoundFile:
     - "imagemap"
     - "media"
     - "content"
-# ariaOrphanedContent:
-#   testability: 1
-#   title:
-#     en: "Pages using ARIA roles should not have orphaned content"
-#     nl: "Pagina's die ARIA-rollen gebruiken mogen geen verweesde content hebben"
-#   description:
-#     en: "If a page makes use of ARIA roles, then there should not be any content on the page which is not within an element that exposes a role, as it could cause that content to be rendreed inaccessible to users with screen readers."
-#     nl: "Als een pagina gebruik maakt van ARIA-rollen, mag er geen content op de pagina staan buiten een element dat een rol vertegenwoordigt. In dat geval kan het zijn dat deze content niet toegankelijk is voor gebruikers van schermlezers."
-#   guidelines: []
-#   tags:
-#     - "aria"
-#     - "content"
+ariaOrphanedContent:
+ testability: 1
+ title:
+   en: "Pages using ARIA roles should not have orphaned content"
+   nl: "Pagina's die ARIA-rollen gebruiken mogen geen verweesde content hebben"
+ description:
+   en: "If a page makes use of ARIA roles, then there should not be any content on the page which is not within an element that exposes a role, as it could cause that content to be rendreed inaccessible to users with screen readers."
+   nl: "Als een pagina gebruik maakt van ARIA-rollen, mag er geen content op de pagina staan buiten een element dat een rol vertegenwoordigt. In dat geval kan het zijn dat deze content niet toegankelijk is voor gebruikers van schermlezers."
+ guidelines: []
+ tags:
+   - "aria"
+   - "content"
 audioMayBePresent:
   testability: 0.5
   title:
@@ -584,20 +584,18 @@ boldIsNotUsed:
   tags:
     - "semantics"
     - "content"
-#
-# @see https://github.com/quailjs/quail/issues/375
-# buttonDoesNotChangeContextOnFocus:
-#   testability: 1
-#   title:
-#     en: "Buttons must not contain an \"onfocus\" attribute"
-#     nl: "Knoppen bevatten geen \"onfocus\"-attribuut"
-#   description:
-#     en: "Actions like \"onfocus\" can take control away from users who are trying to navigate the page. Using an \"onfocus\" attribute for things like buttons should be replaced with css."
-#     nl: "Acties zoals \"onfocus\" kunnen de controle ontnemen van gebruikers die op een pagina proberen te navigeren. Het gebruik van een \"onfocus\"-attribuut voor zaken als knoppen moet worden vervangen door middel van css."
-#   guidelines: []
-#   tags:
-#     - "form"
-#     - "content"
+buttonDoesNotChangeContextOnFocus:
+ testability: 1
+ title:
+   en: "Buttons must not contain an \"onfocus\" attribute"
+   nl: "Knoppen bevatten geen \"onfocus\"-attribuut"
+ description:
+   en: "Actions like \"onfocus\" can take control away from users who are trying to navigate the page. Using an \"onfocus\" attribute for things like buttons should be replaced with css."
+   nl: "Acties zoals \"onfocus\" kunnen de controle ontnemen van gebruikers die op een pagina proberen te navigeren. Het gebruik van een \"onfocus\"-attribuut voor zaken als knoppen moet worden vervangen door middel van css."
+ guidelines: []
+ tags:
+   - "form"
+   - "content"
 buttonHasName:
   testability: 1
   title:
@@ -654,54 +652,50 @@ checkboxHasLabel:
   tags:
     - "form"
     - "content"
-#
-# @see https://github.com/quailjs/quail/issues/327
-# closingTagsAreUsed:
-#   testability: 1
-#   title:
-#     en: "All tags that require closing tags have closing tags"
-#     nl: "Alle tags die een afsluitende tag behoeven, hebben een afsluitende tag"
-#   description:
-#     en: "When using tags such as p, ul, or li, there must be a closing tag."
-#     nl: "Gebruik voor tags als p, ul, of li altijd een afsluitende tag, dus /p, /ul, /li."
-#   guidelines:
-#     wcag:
-#       4.1.1:
-#         techniques:
-#           - "H74"
-#   tags:
-#     - "html"
-#   components:
-#     - "htmlSource"
-#
-# @todo The value of this assessment is dubious.
-# contentPositioningShouldNotChangeMeaning:
-#   testability: 0.5
-#   title:
-#     en: "Meaning should not be created through positioning"
-#     nl: "Cre�er geen betekenis door positionering"
-#   description:
-#     en: "Positioning should not be used to change the meaning of an element."
-#     nl: "Positionering moet niet worden gebruikt om de betekenis van een element te veranderen."
-#   guidelines:
-#     wcag:
-#       1.3.2:
-#         techniques:
-#           - "C6"
-#           - "F1"
-#           - "G57"
-#       1.4.5:
-#         techniques:
-#           - "C6"
-#       1.4.9:
-#         techniques:
-#           - "C6"
-#       2.4.1:
-#         techniques:
-#           - "C6"
-#   tags:
-#     - "content"
-#     - "structure"
+closingTagsAreUsed:
+ testability: 1
+ title:
+   en: "All tags that require closing tags have closing tags"
+   nl: "Alle tags die een afsluitende tag behoeven, hebben een afsluitende tag"
+ description:
+   en: "When using tags such as p, ul, or li, there must be a closing tag."
+   nl: "Gebruik voor tags als p, ul, of li altijd een afsluitende tag, dus /p, /ul, /li."
+ guidelines:
+   wcag:
+     4.1.1:
+       techniques:
+         - "H74"
+ tags:
+   - "html"
+ components:
+   - "htmlSource"
+contentPositioningShouldNotChangeMeaning:
+ testability: 0.5
+ title:
+   en: "Meaning should not be created through positioning"
+   nl: "Cre�er geen betekenis door positionering"
+ description:
+   en: "Positioning should not be used to change the meaning of an element."
+   nl: "Positionering moet niet worden gebruikt om de betekenis van een element te veranderen."
+ guidelines:
+   wcag:
+     1.3.2:
+       techniques:
+         - "C6"
+         - "F1"
+         - "G57"
+     1.4.5:
+       techniques:
+         - "C6"
+     1.4.9:
+       techniques:
+         - "C6"
+     2.4.1:
+       techniques:
+         - "C6"
+ tags:
+   - "content"
+   - "structure"
 cssDocumentMakesSenseStyleTurnedOff:
   testability: 0
   title:
@@ -834,24 +828,22 @@ definitionListsAreUsed:
           - "H48"
   tags:
     - "structure"
-#
-# @todo The value of this assessment is dubious.
-# doNotUseGraphicalSymbolToConveyInformation:
-#   testability: 1
-#   title:
-#     en: "Using a graphical symbol alone to convey information"
-#     nl: "Gebruik van alleen een grafisch symbool om informatie over te brengen"
-#   description:
-#     en: "The objective of this technique is to show how using a graphical symbol to convey information can make content difficult to comprehend. A graphical symbol may be an image, an image of text or a pictorial or decorative character symbol (glyph) which imparts information nonverbally. Examples of graphical symbols include an image of a red circle with a line through it, a smiley face, or a glyph which represents a check mark, arrow, or other symbol but is not the character with that meaning. Assistive technology users may have difficulty determining the meaning of the graphical symbol. If a graphical symbol is used to convey information, provide an alternative using features of the technology or use a different mechanism that can be marked with an alternative to represent the graphical symbol. For example, an image with a text alternative can be used instead of the glyph."
-#     nl: "Het doel van deze techniek is te laten zien dat content moeilijker begrepen kan worden wanneer een grafisch symbool wordt gebruikt om informatie over te brengen. Een grafisch symbool kan een afbeelding, een afbeelding van tekst of een pictogram of decoratief teken zijn (glyph) dat non-verbaal informatie overbrengt. Voorbeelden hiervan zijn een rode cirkel met een lijn erdoorheen, een smiley of een vinkje, pijl of ander symbool dat niet noodzakelijkerwijs een duidelijke betekenis heeft. Gebruikers van hulpprogramma's hebben vaak moeite om de bedoeling van een grafisch symbool te duiden. Als een grafisch symbool gebruikt wordt om informatie over te brengen, biedt dan ook een (tekstueel) alternatief."
-#   guidelines:
-#     wcag:
-#       1.3.3:
-#         techniques:
-#           - "F26"
-#   tags:
-#     - "link"
-#     - "content"
+doNotUseGraphicalSymbolToConveyInformation:
+ testability: 1
+ title:
+   en: "Using a graphical symbol alone to convey information"
+   nl: "Gebruik van alleen een grafisch symbool om informatie over te brengen"
+ description:
+   en: "The objective of this technique is to show how using a graphical symbol to convey information can make content difficult to comprehend. A graphical symbol may be an image, an image of text or a pictorial or decorative character symbol (glyph) which imparts information nonverbally. Examples of graphical symbols include an image of a red circle with a line through it, a smiley face, or a glyph which represents a check mark, arrow, or other symbol but is not the character with that meaning. Assistive technology users may have difficulty determining the meaning of the graphical symbol. If a graphical symbol is used to convey information, provide an alternative using features of the technology or use a different mechanism that can be marked with an alternative to represent the graphical symbol. For example, an image with a text alternative can be used instead of the glyph."
+   nl: "Het doel van deze techniek is te laten zien dat content moeilijker begrepen kan worden wanneer een grafisch symbool wordt gebruikt om informatie over te brengen. Een grafisch symbool kan een afbeelding, een afbeelding van tekst of een pictogram of decoratief teken zijn (glyph) dat non-verbaal informatie overbrengt. Voorbeelden hiervan zijn een rode cirkel met een lijn erdoorheen, een smiley of een vinkje, pijl of ander symbool dat niet noodzakelijkerwijs een duidelijke betekenis heeft. Gebruikers van hulpprogramma's hebben vaak moeite om de bedoeling van een grafisch symbool te duiden. Als een grafisch symbool gebruikt wordt om informatie over te brengen, biedt dan ook een (tekstueel) alternatief."
+ guidelines:
+   wcag:
+     1.3.3:
+       techniques:
+         - "F26"
+ tags:
+   - "link"
+   - "content"
 doctypeProvided:
   testability: 1
   title:
@@ -863,24 +855,22 @@ doctypeProvided:
   guidelines: []
   tags:
     - "doctype"
-#
-# @todo This assessment creates false positives
-# documentAbbrIsUsed:
-#   testability: 0.5
-#   title:
-#     en: "Abbreviations must be marked with an \"abbr\" element"
-#     nl: "Afkortingen moeten worden gemarkeerd met een \"abbr\"-element"
-#   description:
-#     en: "Abbreviations should be marked with an <code>abbr</code> element, at least once on the page for each abbreviation."
-#     nl: "Afkortingen moeten worden gemarkeerd door middel van het <code>abbr</code>-element. Doe dit ten minste een keer per pagina voor elke afkorting."
-#   guidelines:
-#     wcag:
-#       3.1.4:
-#         techniques:
-#           - "H28"
-#   tags:
-#     - "acronym"
-#     - "content"
+documentAbbrIsUsed:
+ testability: 0.5
+ title:
+   en: "Abbreviations must be marked with an \"abbr\" element"
+   nl: "Afkortingen moeten worden gemarkeerd met een \"abbr\"-element"
+ description:
+   en: "Abbreviations should be marked with an <code>abbr</code> element, at least once on the page for each abbreviation."
+   nl: "Afkortingen moeten worden gemarkeerd door middel van het <code>abbr</code>-element. Doe dit ten minste een keer per pagina voor elke afkorting."
+ guidelines:
+   wcag:
+     3.1.4:
+       techniques:
+         - "H28"
+ tags:
+   - "acronym"
+   - "content"
 documentAcronymsHaveElement:
   testability: 0.5
   title:
@@ -950,25 +940,23 @@ documentHasTitleElement:
   tags:
     - "document"
     - "head"
-#
-# @todo We need a custom Mocha selector that doesn't use ids to test this
-# documentIDsMustBeUnique:
-#   testability: 1
-#   title:
-#     en: "All element \"id\" attributes must be unique"
-#     nl: "Alle element \"id\"-attributen moeten uniek zijn"
-#   description:
-#     en: "Element \"id\" attributes must be unique."
-#     nl: "Element \"id\"-attributen moeten uniek zijn."
-#   guidelines:
-#     wcag:
-#       4.1.1:
-#         techniques:
-#           - "F77"
-#           - "H93"
-#   tags:
-#     - "document"
-#     - "semantics"
+documentIDsMustBeUnique:
+ testability: 1
+ title:
+   en: "All element \"id\" attributes must be unique"
+   nl: "Alle element \"id\"-attributen moeten uniek zijn"
+ description:
+   en: "Element \"id\" attributes must be unique."
+   nl: "Element \"id\"-attributen moeten uniek zijn."
+ guidelines:
+   wcag:
+     4.1.1:
+       techniques:
+         - "F77"
+         - "H93"
+ tags:
+   - "document"
+   - "semantics"
 documentIsWrittenClearly:
   testability: 0.5
   title:
@@ -1168,37 +1156,33 @@ domOrderMatchesVisualOrder:
           - "C27"
   tags:
     - "content"
-#
-# @see https://github.com/quailjs/quail/issues/327
-# elementAttributesAreValid:
-#   testability: 1
-#   title:
-#     en: "Attributes should have spaces between them and be wrapped in quotes"
-#     nl: "Attributen moeten gescheiden zijn door spaties en ze moeten tussen aanhalingstekens"
-#   description:
-#     en: "Attributes should have spaces between them and be wrapped in quotes."
-#     nl: "Tussen attributen moeten spaties staan en ze moeten tussen aanhalingstekens staan."
-#   guidelines:
-#     4.1.1:
-#       techniques:
-#         - "F70"
-#
-# @see https://github.com/quailjs/quail/issues/327
-# elementsDoNotHaveDuplicateAttributes:
-#   testability: 1
-#   title:
-#     en: "Elements should not have duplicate attributes"
-#     nl: "Elementen mogen geen dubbele attributen hebben"
-#   description:
-#     en: "Elements should only have one type of any attribute. For example, there should not be two 'class' attributes."
-#     nl: "Elementen mogen maar een type attribuut hebben. Er mogen bijvoorbeeld niet twee 'class'-attributen zijn."
-#   guidelines: []
-#   tags:
-#     - "content"
-#   components:
-#     - "htmlSource"
-#   libraries:
-#     - "node-htmlparser/lib/htmlparser.js"
+elementAttributesAreValid:
+ testability: 1
+ title:
+   en: "Attributes should have spaces between them and be wrapped in quotes"
+   nl: "Attributen moeten gescheiden zijn door spaties en ze moeten tussen aanhalingstekens"
+ description:
+   en: "Attributes should have spaces between them and be wrapped in quotes."
+   nl: "Tussen attributen moeten spaties staan en ze moeten tussen aanhalingstekens staan."
+ guidelines:
+   4.1.1:
+     techniques:
+       - "F70"
+elementsDoNotHaveDuplicateAttributes:
+ testability: 1
+ title:
+   en: "Elements should not have duplicate attributes"
+   nl: "Elementen mogen geen dubbele attributen hebben"
+ description:
+   en: "Elements should only have one type of any attribute. For example, there should not be two 'class' attributes."
+   nl: "Elementen mogen maar een type attribuut hebben. Er mogen bijvoorbeeld niet twee 'class'-attributen zijn."
+ guidelines: []
+ tags:
+   - "content"
+ components:
+   - "htmlSource"
+ libraries:
+   - "node-htmlparser/lib/htmlparser.js"
 embedHasAssociatedNoEmbed:
   testability: 1
   title:
@@ -1275,28 +1259,26 @@ fileHasLabel:
   tags:
     - "form"
     - "content"
-#
-# @see https://github.com/quailjs/quail/issues/377
-# focusIndicatorVisible:
-#   title:
-#     en: "Focus indicators have high visibility"
-#     nl: "Focus indicators moeten goed zichtbaar zijn"
-#   description:
-#     en: "When a focus indicator is used, it should have enough contrast with the background and big enough to be highly visible."
-#     nl: "Wanneer je een focus indicator gebruikt, moet het contrast tussen de indicator en de achtergrond groot genoeg zijn in verband met de zichtbaarheid."
-#   guidelines:
-#     wcag:
-#       2.4.7:
-#         techniques:
-#           - "C15"
-#           - "G165"
-#           - "G195"
-#   tags:
-#     - "focus"
-#     - "content"
-#   components:
-#     - "color"
-#     - "convertToPx"
+focusIndicatorVisible:
+ title:
+   en: "Focus indicators have high visibility"
+   nl: "Focus indicators moeten goed zichtbaar zijn"
+ description:
+   en: "When a focus indicator is used, it should have enough contrast with the background and big enough to be highly visible."
+   nl: "Wanneer je een focus indicator gebruikt, moet het contrast tussen de indicator en de achtergrond groot genoeg zijn in verband met de zichtbaarheid."
+ guidelines:
+   wcag:
+     2.4.7:
+       techniques:
+         - "C15"
+         - "G165"
+         - "G195"
+ tags:
+   - "focus"
+   - "content"
+ components:
+   - "color"
+   - "convertToPx"
 fontIsNotUsed:
   testability: 1
   title:
@@ -1398,168 +1380,168 @@ formWithRequiredLabel:
   tags:
     - "form"
     - "content"
-# frameIsNotUsed:
-#   testability: 1
-#   title:
-#     en: "Frames are not used"
-#     nl: "Gebruik geen frames"
-#   description:
-#     en: "Frames should not be used to organize a page."
-#     nl: "Gebruik geen frames om een pagina te organiseren."
-#   guidelines: []
-#   tags:
-#     - "deprecated"
-#     - "frame"
-# frameRelationshipsMustBeDescribed:
-#   testability: 0.5
-#   title:
-#     en: "Complex framesets should contain a \"longdesc\" attribute"
-#     nl: "Complexe framesets moeten een \"longdesc\"-attribuut bevatten"
-#   description:
-#     en: "If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames."
-#     nl: "Als een <code>frameset</code> drie of meer frames bevat, gebruik dan een \"longdesc\"-attribuut om het doel van de frames te beschrijven."
-#   guidelines: []
-#   tags:
-#     - "deprecated"
-#     - "frame"
-# framesAreUsedToGroupContent:
-#   testability: 0.5
-#   title:
-#     en: "Use frame elements to group repeated materials"
-#     nl: "Gebruik frame-elementen om herhaalde content te groeperen"
-#   description:
-#     en: "When blocks of repeated content are used on a site, use frames to group content that is the same across pages."
-#     nl: "Wanneer blokken content op een site herhaald worden, gebruik dan frames om content die op verschillende pagina's voorkomt te groeperen."
-#   guidelines:
-#     wcag:
-#       2.4.1:
-#         techniques:
-#           - "H70"
-#   tags:
-#     - "deprecated"
-#     - "frame"
-# frameSrcIsAccessible:
-#   testability: 0
-#   title:
-#     en: "The source for each frame is accessible content."
-#     nl: "De bron van elk frame is toegankelijke content."
-#   description:
-#     en: "Each frame should contain accessible content, and contain content accessible to screen readers, like HTML as opposed to an image."
-#     nl: "Elk frame moet toegankelijke content bevatten, en content die toegankelijk is voor schermlezers, zoals HTML in tegenstelling tot een afbeelding."
-#   guidelines: []
-#   tags:
-#     - "deprecated"
-#     - "frame"
-# frameTitlesDescribeFunction:
-#   type: "placeholder"
-#   testability: 0
-#   title:
-#     en: "All \"frame\" elements should have a \"title\" attribute that describes the purpose of the frame"
-#     nl: "Alle \"frame\" elementen moeten een \"title\"-attribuut hebben dat het doel van het frame beschrijft"
-#   description:
-#     en: "Each <code>frame</code> elements should have a \"title\" attribute which describes the purpose or function of the frame."
-#     nl: "Elk <code>frame</code>-element moet een \"title\"-attribuut hebben dat het doel of de functie van het frame beschrijft."
-#   guidelines:
-#     wcag:
-#       2.4.1:
-#         techniques:
-#           - "H64"
-#   tags:
-#     - "deprecated"
-#     - "frame"
-#   components:
-#     - "placeholder"
-#   options:
-#     attribute: "title"
-#     empty: true
-# frameTitlesNotEmpty:
-#   testability: 1
-#   title:
-#     en: "Frames cannot have empty \"title\" attributes"
-#     nl: "Frames mogen geen leeg \"title\"-attribuut hebben"
-#   description:
-#     en: "All <code>frame</code> elements must have a valid \"title\" attribute."
-#     nl: "Alle <code>frame</code>-elementen moeten een geldig \"title\"-attribuut hebben."
-#   guidelines:
-#     wcag:
-#       2.4.1:
-#         techniques:
-#           - "H64"
-#       4.1.2:
-#         techniques:
-#           - "H64"
-#   tags:
-#     - "deprecated"
-#     - "frame"
-# frameTitlesNotPlaceholder:
-#   type: "placeholder"
-#   testability: 1
-#   title:
-#     en: "Frames cannot have \"title\" attributes that are just placeholder text"
-#     nl: "Frames mogen geen \"title\"-attribuut hebben met placeholdertekst"
-#   description:
-#     en: "Frame \"title\" attributes should not be simple placeholder text like \"frame\"."
-#     nl: "Frame \"title\"-attributen mogen geen placeholdertekst bevatten zoals \"frame\"."
-#   guidelines:
-#     wcag:
-#       2.4.1:
-#         techniques:
-#           - "H64"
-#       4.1.2:
-#         techniques:
-#           - "H64"
-#   tags:
-#     - "deprecated"
-#     - "frame"
-#   components:
-#     - "placeholder"
-#   options:
-#     attribute: "title"
-# framesHaveATitle:
-#   testability: 1
-#   title:
-#     en: "All \"frame\" elements should have a \"title\" attribute"
-#     nl: "Alle \"frame\"-elementen moeten een \"title\"-attribuut hebben"
-#   description:
-#     en: "Each <code>frame</code> elements should have a \"title\" attribute."
-#     nl: "Elk <code>frame</code>-elementen moeten een \"title\"-attribuut hebben."
-#   guidelines:
-#     wcag:
-#       2.4.1:
-#         techniques:
-#           - "H64"
-#       4.1.2:
-#         techniques:
-#           - "H64"
-#   tags:
-#     - "deprecated"
-#     - "frame"
-#   options:
-#     test: ":not([title])"
-# framesetIsNotUsed:
-#   testability: 1
-#   title:
-#     en: "The \"frameset\" element should not be used"
-#     nl: "Het \"frameset\"-element wordt niet gebruikt"
-#   description:
-#     en: "Frames and framesets should not be used to organize content."
-#     nl: "Frames en framesets moeten niet gebruikt worden om content te organiseren."
-#   guidelines: []
-#   tags:
-#     - "deprecated"
-#     - "frame"
-# framesetMustHaveNoFramesSection:
-#   testability: 0.5
-#   title:
-#     en: "All framesets should contain a noframes section"
-#     nl: "Alle framesets moeten een noframes-sectie bevatten"
-#   description:
-#     en: "If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames."
-#     nl: "Als een <code>frameset</code> drie of meer frames bevat, gebruik dan een \"longdesc\"-attribuut om het doel van de frames te beschrijven."
-#   guidelines: []
-#   tags:
-#     - "deprecated"
-#     - "frame"
+frameIsNotUsed:
+ testability: 1
+ title:
+   en: "Frames are not used"
+   nl: "Gebruik geen frames"
+ description:
+   en: "Frames should not be used to organize a page."
+   nl: "Gebruik geen frames om een pagina te organiseren."
+ guidelines: []
+ tags:
+   - "deprecated"
+   - "frame"
+frameRelationshipsMustBeDescribed:
+ testability: 0.5
+ title:
+   en: "Complex framesets should contain a \"longdesc\" attribute"
+   nl: "Complexe framesets moeten een \"longdesc\"-attribuut bevatten"
+ description:
+   en: "If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames."
+   nl: "Als een <code>frameset</code> drie of meer frames bevat, gebruik dan een \"longdesc\"-attribuut om het doel van de frames te beschrijven."
+ guidelines: []
+ tags:
+   - "deprecated"
+   - "frame"
+framesAreUsedToGroupContent:
+ testability: 0.5
+ title:
+   en: "Use frame elements to group repeated materials"
+   nl: "Gebruik frame-elementen om herhaalde content te groeperen"
+ description:
+   en: "When blocks of repeated content are used on a site, use frames to group content that is the same across pages."
+   nl: "Wanneer blokken content op een site herhaald worden, gebruik dan frames om content die op verschillende pagina's voorkomt te groeperen."
+ guidelines:
+   wcag:
+     2.4.1:
+       techniques:
+         - "H70"
+ tags:
+   - "deprecated"
+   - "frame"
+frameSrcIsAccessible:
+ testability: 0
+ title:
+   en: "The source for each frame is accessible content."
+   nl: "De bron van elk frame is toegankelijke content."
+ description:
+   en: "Each frame should contain accessible content, and contain content accessible to screen readers, like HTML as opposed to an image."
+   nl: "Elk frame moet toegankelijke content bevatten, en content die toegankelijk is voor schermlezers, zoals HTML in tegenstelling tot een afbeelding."
+ guidelines: []
+ tags:
+   - "deprecated"
+   - "frame"
+frameTitlesDescribeFunction:
+ type: "placeholder"
+ testability: 0
+ title:
+   en: "All \"frame\" elements should have a \"title\" attribute that describes the purpose of the frame"
+   nl: "Alle \"frame\" elementen moeten een \"title\"-attribuut hebben dat het doel van het frame beschrijft"
+ description:
+   en: "Each <code>frame</code> elements should have a \"title\" attribute which describes the purpose or function of the frame."
+   nl: "Elk <code>frame</code>-element moet een \"title\"-attribuut hebben dat het doel of de functie van het frame beschrijft."
+ guidelines:
+   wcag:
+     2.4.1:
+       techniques:
+         - "H64"
+ tags:
+   - "deprecated"
+   - "frame"
+ components:
+   - "placeholder"
+ options:
+   attribute: "title"
+   empty: true
+frameTitlesNotEmpty:
+ testability: 1
+ title:
+   en: "Frames cannot have empty \"title\" attributes"
+   nl: "Frames mogen geen leeg \"title\"-attribuut hebben"
+ description:
+   en: "All <code>frame</code> elements must have a valid \"title\" attribute."
+   nl: "Alle <code>frame</code>-elementen moeten een geldig \"title\"-attribuut hebben."
+ guidelines:
+   wcag:
+     2.4.1:
+       techniques:
+         - "H64"
+     4.1.2:
+       techniques:
+         - "H64"
+ tags:
+   - "deprecated"
+   - "frame"
+frameTitlesNotPlaceholder:
+ type: "placeholder"
+ testability: 1
+ title:
+   en: "Frames cannot have \"title\" attributes that are just placeholder text"
+   nl: "Frames mogen geen \"title\"-attribuut hebben met placeholdertekst"
+ description:
+   en: "Frame \"title\" attributes should not be simple placeholder text like \"frame\"."
+   nl: "Frame \"title\"-attributen mogen geen placeholdertekst bevatten zoals \"frame\"."
+ guidelines:
+   wcag:
+     2.4.1:
+       techniques:
+         - "H64"
+     4.1.2:
+       techniques:
+         - "H64"
+ tags:
+   - "deprecated"
+   - "frame"
+ components:
+   - "placeholder"
+ options:
+   attribute: "title"
+framesHaveATitle:
+ testability: 1
+ title:
+   en: "All \"frame\" elements should have a \"title\" attribute"
+   nl: "Alle \"frame\"-elementen moeten een \"title\"-attribuut hebben"
+ description:
+   en: "Each <code>frame</code> elements should have a \"title\" attribute."
+   nl: "Elk <code>frame</code>-elementen moeten een \"title\"-attribuut hebben."
+ guidelines:
+   wcag:
+     2.4.1:
+       techniques:
+         - "H64"
+     4.1.2:
+       techniques:
+         - "H64"
+ tags:
+   - "deprecated"
+   - "frame"
+ options:
+   test: ":not([title])"
+framesetIsNotUsed:
+ testability: 1
+ title:
+   en: "The \"frameset\" element should not be used"
+   nl: "Het \"frameset\"-element wordt niet gebruikt"
+ description:
+   en: "Frames and framesets should not be used to organize content."
+   nl: "Frames en framesets moeten niet gebruikt worden om content te organiseren."
+ guidelines: []
+ tags:
+   - "deprecated"
+   - "frame"
+framesetMustHaveNoFramesSection:
+ testability: 0.5
+ title:
+   en: "All framesets should contain a noframes section"
+   nl: "Alle framesets moeten een noframes-sectie bevatten"
+ description:
+   en: "If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames."
+   nl: "Als een <code>frameset</code> drie of meer frames bevat, gebruik dan een \"longdesc\"-attribuut om het doel van de frames te beschrijven."
+ guidelines: []
+ tags:
+   - "deprecated"
+   - "frame"
 headerH1:
   testability: 0
   title:
@@ -1826,34 +1808,34 @@ imageMapServerSide:
     - "objects"
     - "iframe"
     - "content"
-# imgAltEmptyForDecorativeImages:
-#   testability: 0
-#   title:
-#     en: "If an image is purely decorative, the \"alt\" text must be empty"
-#     nl: "Als een afbeelding alleen ter decoratie is, moet de \"alt\"-tekst leeg zijn"
-#   description:
-#     en: "Any image that is only decorative (serves no function or adds to the purpose of the page content) should have an empty \"alt\" attribute."
-#     nl: "Elke afbeelding die alleen ter decoratie is (en die dus geen functie heeft of bijdraagt aan het doel van een contentpagina) moet een leeg \"alt\"-attirbuut hebben."
-#   guidelines:
-#     wcag:
-#       1.3.3:
-#         techniques:
-#           - "F26"
-#   tags:
-#     - "image"
-#     - "content"
-# imgAltIdentifiesLinkDestination:
-#   testability: 0
-#   title:
-#     en: "Any image within a link must have \"alt\" text the describes the link destination"
-#     nl: "Elke afbeelding binnen een link moet een \"alt\"-tekst hebben die de bestemming van de link beschrijft"
-#   description:
-#     en: "Any image that is within a link should have an \"alt\" attribute which identifies the destination or purpose of the link."
-#     nl: "Elke afbeelding binnen link moet een \"alt\"-tekst hebben die de bestemming of het doel van de link beschrijft."
-#   guidelines: []
-#   tags:
-#     - "image"
-#     - "content"
+imgAltEmptyForDecorativeImages:
+ testability: 0
+ title:
+   en: "If an image is purely decorative, the \"alt\" text must be empty"
+   nl: "Als een afbeelding alleen ter decoratie is, moet de \"alt\"-tekst leeg zijn"
+ description:
+   en: "Any image that is only decorative (serves no function or adds to the purpose of the page content) should have an empty \"alt\" attribute."
+   nl: "Elke afbeelding die alleen ter decoratie is (en die dus geen functie heeft of bijdraagt aan het doel van een contentpagina) moet een leeg \"alt\"-attirbuut hebben."
+ guidelines:
+   wcag:
+     1.3.3:
+       techniques:
+         - "F26"
+ tags:
+   - "image"
+   - "content"
+imgAltIdentifiesLinkDestination:
+ testability: 0
+ title:
+   en: "Any image within a link must have \"alt\" text the describes the link destination"
+   nl: "Elke afbeelding binnen een link moet een \"alt\"-tekst hebben die de bestemming van de link beschrijft"
+ description:
+   en: "Any image that is within a link should have an \"alt\" attribute which identifies the destination or purpose of the link."
+   nl: "Elke afbeelding binnen link moet een \"alt\"-tekst hebben die de bestemming of het doel van de link beschrijft."
+ guidelines: []
+ tags:
+   - "image"
+   - "content"
 imgAltIsDifferent:
   testability: 0.5
   title:
@@ -1872,25 +1854,25 @@ imgAltIsDifferent:
   tags:
     - "image"
     - "content"
-# imgAltIsSameInText:
-#   testability: 0
-#   title:
-#     en: "Check that any text within an image is also in the \"alt\" attribute"
-#     nl: "Controleer dat tekst in een afbeelding ook is opgenomen in het \"alt\"-attribuut"
-#   description:
-#     en: "If an image has text within it, that text should be repeated in the \"alt\" attribute"
-#     nl: "Als een afbeelding tekst bevat, moet deze tekst herhaald worden in het \"alt\"-attribuut."
-#   guidelines:
-#     508:
-#       - "a"
-#     wcag:
-#       1.1.1:
-#         techniques:
-#           - "G74"
-#           - "H37"
-#   tags:
-#     - "image"
-#     - "content"
+imgAltIsSameInText:
+ testability: 0
+ title:
+   en: "Check that any text within an image is also in the \"alt\" attribute"
+   nl: "Controleer dat tekst in een afbeelding ook is opgenomen in het \"alt\"-attribuut"
+ description:
+   en: "If an image has text within it, that text should be repeated in the \"alt\" attribute"
+   nl: "Als een afbeelding tekst bevat, moet deze tekst herhaald worden in het \"alt\"-attribuut."
+ guidelines:
+   508:
+     - "a"
+   wcag:
+     1.1.1:
+       techniques:
+         - "G74"
+         - "H37"
+ tags:
+   - "image"
+   - "content"
 imgAltIsTooLong:
   testability: 1
   title:
@@ -1949,24 +1931,24 @@ imgAltNotPlaceHolder:
   tags:
     - "image"
     - "content"
-# imgGifNoFlicker:
-#   testability: 1
-#   title:
-#     en: "Any animated GIF should not flicker"
-#     nl: "Geen enkele animated GIF mag knipperen of flitsen"
-#   description:
-#     en: "Animated GIF files should not flicker with a frequency over 2 Hz and lower than 55 Hz. You can check the flicker rate of this GIF <a href=\"http://tools.webaccessibile.org/test/check.aspx\">using an online tool</a>."
-#     nl: "Animated GIF-bestanden mogen niet knipperen of flitsen met een frequentie hoger dan 2 Hz en lager dan 55 Hz. Controleer de frequentie van deze GIF met een <a href=\"http://tools.webaccessibile.org/test/check.aspx\">online tool</a>."
-#   guidelines:
-#     508:
-#       - "j"
-#     wcag:
-#       2.2.2:
-#         techniques:
-#           - "G152"
-#   tags:
-#     - "image"
-#     - "content"
+imgGifNoFlicker:
+ testability: 1
+ title:
+   en: "Any animated GIF should not flicker"
+   nl: "Geen enkele animated GIF mag knipperen of flitsen"
+ description:
+   en: "Animated GIF files should not flicker with a frequency over 2 Hz and lower than 55 Hz. You can check the flicker rate of this GIF <a href=\"http://tools.webaccessibile.org/test/check.aspx\">using an online tool</a>."
+   nl: "Animated GIF-bestanden mogen niet knipperen of flitsen met een frequentie hoger dan 2 Hz en lager dan 55 Hz. Controleer de frequentie van deze GIF met een <a href=\"http://tools.webaccessibile.org/test/check.aspx\">online tool</a>."
+ guidelines:
+   508:
+     - "j"
+   wcag:
+     2.2.2:
+       techniques:
+         - "G152"
+ tags:
+   - "image"
+   - "content"
 imgHasAlt:
   testability: 1
   title:
@@ -2017,23 +1999,21 @@ imgImportantNoSpacerAlt:
   tags:
     - "image"
     - "content"
-#
-# @todo this test creates false negatives.
-# imgMapAreasHaveDuplicateLink:
-#   testability: 1
-#   title:
-#     en: "All links within a client-side image are duplicated elsewhere in the document"
-#     nl: "Alle links met een client-side afbeelding moeten elders in het document terugkeren"
-#   description:
-#     en: "Any image that has a \"usemap\" attribute must have links replicated somewhere else in the document."
-#     nl: "Elke afbeelding met een \"usemap\"-attribuut moet een link elders in het document hebben."
-#   guidelines:
-#     508:
-#       - "ef"
-#       - "ef"
-#   tags:
-#     - "image"
-#     - "imagemap"
+imgMapAreasHaveDuplicateLink:
+ testability: 1
+ title:
+   en: "All links within a client-side image are duplicated elsewhere in the document"
+   nl: "Alle links met een client-side afbeelding moeten elders in het document terugkeren"
+ description:
+   en: "Any image that has a \"usemap\" attribute must have links replicated somewhere else in the document."
+   nl: "Elke afbeelding met een \"usemap\"-attribuut moet een link elders in het document hebben."
+ guidelines:
+   508:
+     - "ef"
+     - "ef"
+ tags:
+   - "image"
+   - "imagemap"
 imgNonDecorativeHasAlt:
   testability: 0.5
   title:
@@ -2052,28 +2032,28 @@ imgNonDecorativeHasAlt:
   tags:
     - "image"
     - "content"
-# imgNotReferredToByColorAlone:
-#   testability: 0
-#   title:
-#     en: "For any image, the \"alt\" text cannot refer to color alone"
-#     nl: "Voor elke afbeelding geldt dat de \"alt\"-tekst niet alleen aan kleur mag refereren"
-#   description:
-#     en: "The \"alt\" text or content text for any image should not refer to the image by color alone. This is often fixed by changing the \"alt\" text to the meaning of the image"
-#     nl: "De \"alt\"-tekst of content voor elke afbeelding mag niet alleen maar een kleur bevatten. Neem in de \"alt\"-tekst de betekenis van de afbeelding op."
-#   guidelines:
-#     508:
-#       - "c"
-#     wcag:
-#       1.1.1:
-#         techniques:
-#           - "F13"
-#       1.4.1:
-#         techniques:
-#           - "F13"
-#   tags:
-#     - "image"
-#     - "color"
-#     - "content"
+imgNotReferredToByColorAlone:
+ testability: 0
+ title:
+   en: "For any image, the \"alt\" text cannot refer to color alone"
+   nl: "Voor elke afbeelding geldt dat de \"alt\"-tekst niet alleen aan kleur mag refereren"
+ description:
+   en: "The \"alt\" text or content text for any image should not refer to the image by color alone. This is often fixed by changing the \"alt\" text to the meaning of the image"
+   nl: "De \"alt\"-tekst of content voor elke afbeelding mag niet alleen maar een kleur bevatten. Neem in de \"alt\"-tekst de betekenis van de afbeelding op."
+ guidelines:
+   508:
+     - "c"
+   wcag:
+     1.1.1:
+       techniques:
+         - "F13"
+     1.4.1:
+       techniques:
+         - "F13"
+ tags:
+   - "image"
+   - "color"
+   - "content"
 imgServerSideMapNotUsed:
   testability: 1
   title:
@@ -2143,21 +2123,21 @@ inputCheckboxRequiresFieldset:
   tags:
     - "form"
     - "content"
-# inputDoesNotUseColorAlone:
-#   testability: 0
-#   title:
-#     en: "An \"input\" element should not use color alone"
-#     nl: "Een invoerveld mag niet alleen maar kleur gebruiken"
-#   description:
-#     en: "All input elements should not refer to content by color alone."
-#     nl: "Elk invoerveld moet naar content verwijzen door middel van meer dan alleen kleur."
-#   guidelines:
-#     508:
-#       - "c"
-#   tags:
-#     - "form"
-#     - "color"
-#     - "content"
+inputDoesNotUseColorAlone:
+ testability: 0
+ title:
+   en: "An \"input\" element should not use color alone"
+   nl: "Een invoerveld mag niet alleen maar kleur gebruiken"
+ description:
+   en: "All input elements should not refer to content by color alone."
+   nl: "Elk invoerveld moet naar content verwijzen door middel van meer dan alleen kleur."
+ guidelines:
+   508:
+     - "c"
+ tags:
+   - "form"
+   - "color"
+   - "content"
 inputElementsDontHaveAlt:
   testability: 1
   title:
@@ -2170,22 +2150,22 @@ inputElementsDontHaveAlt:
   tags:
     - "form"
     - "content"
-# inputImageAltIdentifiesPurpose:
-#   testability: 0
-#   title:
-#     en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute that describes the function of the input"
-#     nl: "Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat de functie van de invoer beschrijft"
-#   description:
-#     en: "All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute."
-#     nl: "Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben."
-#   guidelines:
-#     wcag:
-#       1.1.1:
-#         techniques:
-#           - "H36"
-#   tags:
-#     - "form"
-#     - "content"
+inputImageAltIdentifiesPurpose:
+ testability: 0
+ title:
+   en: "All \"input\" elements with a type of \"image\" must have an \"alt\" attribute that describes the function of the input"
+   nl: "Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat de functie van de invoer beschrijft"
+ description:
+   en: "All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute."
+   nl: "Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben."
+ guidelines:
+   wcag:
+     1.1.1:
+       techniques:
+         - "H36"
+ tags:
+   - "form"
+   - "content"
 inputImageAltIsNotFileName:
   testability: 1
   title:
@@ -2303,23 +2283,23 @@ inputImageHasAlt:
     - "content"
   options:
     test: ":not(input[type=image][alt])"
-# inputImageNotDecorative:
-#   testability: 0
-#   title:
-#     en: "The \"alt\" text for input \"image\" buttons must be the same as text inside the image"
-#     nl: "De \"alt\"-tekst voor afbeeldingen van invoerknoppen moet hetzelfde zijn als de tekst in de afbeeldingen"
-#   description:
-#     en: "Every form image button which has text within the image (say, a picture of the word \"Search\" in a special font) must also have this text in the \"alt\" text."
-#     nl: "Elke formulierknop die een afbeelding is en tekst in de afbeelding heeft (bijvoorbeeld \"Zoek\") moet deze tekst ook in de \"alt\"-tekst hebben."
-#   guidelines:
-#     wcag:
-#       1.1.1:
-#         techniques:
-#           - "H36"
-#   tags:
-#     - "form"
-#     - "image"
-#     - "content"
+inputImageNotDecorative:
+ testability: 0
+ title:
+   en: "The \"alt\" text for input \"image\" buttons must be the same as text inside the image"
+   nl: "De \"alt\"-tekst voor afbeeldingen van invoerknoppen moet hetzelfde zijn als de tekst in de afbeeldingen"
+ description:
+   en: "Every form image button which has text within the image (say, a picture of the word \"Search\" in a special font) must also have this text in the \"alt\" text."
+   nl: "Elke formulierknop die een afbeelding is en tekst in de afbeelding heeft (bijvoorbeeld \"Zoek\") moet deze tekst ook in de \"alt\"-tekst hebben."
+ guidelines:
+   wcag:
+     1.1.1:
+       techniques:
+         - "H36"
+ tags:
+   - "form"
+   - "image"
+   - "content"
 inputTextHasLabel:
   testability: 1
   title:
@@ -2471,24 +2451,22 @@ labelsAreAssignedToAnInput:
   tags:
     - "form"
     - "content"
-#
-# @see https://github.com/quailjs/quail/issues/378
-# languageChangesAreIdentified:
-#   testability: 0.5
-#   title:
-#     en: "Use language attributes to indicate changes in language"
-#     nl: "Gebruik het taal-attribuut om aan te geven dat de taal verandert"
-#   description:
-#     en: "When the language of the document changes, make sure to wrap those changes in an element with the <code>lang</code> attribute."
-#     nl: "Als de taal van het document verandert, zet deze veranderingen dan in een element met het <code>lang</code>-attribuut."
-#   guidelines:
-#     wcag:
-#       3.1.2:
-#         techniques:
-#           - "H58"
-#   tags:
-#     - "language"
-#     - "content"
+languageChangesAreIdentified:
+ testability: 0.5
+ title:
+   en: "Use language attributes to indicate changes in language"
+   nl: "Gebruik het taal-attribuut om aan te geven dat de taal verandert"
+ description:
+   en: "When the language of the document changes, make sure to wrap those changes in an element with the <code>lang</code> attribute."
+   nl: "Als de taal van het document verandert, zet deze veranderingen dan in een element met het <code>lang</code>-attribuut."
+ guidelines:
+   wcag:
+     3.1.2:
+       techniques:
+         - "H58"
+ tags:
+   - "language"
+   - "content"
 languageDirAttributeIsUsed:
   testability: 0.5
   title:
@@ -2599,20 +2577,18 @@ liDontUseImageForBullet:
   tags:
     - "list"
     - "content"
-#
-# @see https://github.com/quailjs/quail/issues/374
-# linkDoesNotChangeContextOnFocus:
-#   testability: 1
-#   title:
-#     en: "Link elements must not contain an \"onfocus\" attribute"
-#     nl: "Link-elementen bevatten geen \"onfocus\"-attribuut"
-#   description:
-#     en: "Actions like \"onfocus\" can take control away from users who are trying to navigate the page. Using an \"onfocus\" attribute for things like links should be replaced with css."
-#     nl: "Acties zoals \"onfocus\" kunnen de controle ontnemen van gebruikers die op een pagina proberen te navigeren. Het gebruik van een \"onfocus\"-attribuut voor zaken als links moet worden vervangen door middel van css."
-#   guidelines: []
-#   tags:
-#     - "form"
-#     - "content"
+linkDoesNotChangeContextOnFocus:
+ testability: 1
+ title:
+   en: "Link elements must not contain an \"onfocus\" attribute"
+   nl: "Link-elementen bevatten geen \"onfocus\"-attribuut"
+ description:
+   en: "Actions like \"onfocus\" can take control away from users who are trying to navigate the page. Using an \"onfocus\" attribute for things like links should be replaced with css."
+   nl: "Acties zoals \"onfocus\" kunnen de controle ontnemen van gebruikers die op een pagina proberen te navigeren. Het gebruik van een \"onfocus\"-attribuut voor zaken als links moet worden vervangen door middel van css."
+ guidelines: []
+ tags:
+   - "form"
+   - "content"
 linkHasAUniqueContext:
   testability: 1
   title:
@@ -2625,28 +2601,28 @@ linkHasAUniqueContext:
   tags:
     - "link"
     - "content"
-# linkUsedForAlternateContent:
-#   testability: 0
-#   title:
-#     en: "Use a \"link\" element for alternate content"
-#     nl: "Gebruik een \"link\"-element for andersoortige content"
-#   description:
-#     en: "Documents which contain things like videos, sound, or other forms of media that are not accessible, should provide a <code>link</code> element with a \"rel\" attribute of \"alternate\" in the document header."
-#     nl: "Documenten die content zoals video's, geluid of andere niet-toegankelijke vormen van media bevatten, moeten een <code>link</code>-element met een \"rel\"-attribuut of \"alternate\" in de documentheaderlink aanbieden."
-#   guidelines: []
-#   tags:
-#     - "document"
-# linkUsedToDescribeNavigation:
-#   testability: 1
-#   title:
-#     en: "The document uses link elements to describe navigation if it is within a collection."
-#     nl: "Het document gebruikt link-elementen om navigatie te beschrijven wanneer het binnen een collectie staat."
-#   description:
-#     en: "The link element can provide metadata about the position of an HTML page within a set of Web units or can assist in locating content with a set of Web units."
-#     nl: "Het link-element kan metadata bevatten over de positie van een HTML-pagina binnen een swet web units, of kan behulpzaamn zijn bij het lokaliseren van content binnen web units."
-#   guidelines: []
-#   tags:
-#     - "document"
+linkUsedForAlternateContent:
+ testability: 0
+ title:
+   en: "Use a \"link\" element for alternate content"
+   nl: "Gebruik een \"link\"-element for andersoortige content"
+ description:
+   en: "Documents which contain things like videos, sound, or other forms of media that are not accessible, should provide a <code>link</code> element with a \"rel\" attribute of \"alternate\" in the document header."
+   nl: "Documenten die content zoals video's, geluid of andere niet-toegankelijke vormen van media bevatten, moeten een <code>link</code>-element met een \"rel\"-attribuut of \"alternate\" in de documentheaderlink aanbieden."
+ guidelines: []
+ tags:
+   - "document"
+linkUsedToDescribeNavigation:
+ testability: 1
+ title:
+   en: "The document uses link elements to describe navigation if it is within a collection."
+   nl: "Het document gebruikt link-elementen om navigatie te beschrijven wanneer het binnen een collectie staat."
+ description:
+   en: "The link element can provide metadata about the position of an HTML page within a set of Web units or can assist in locating content with a set of Web units."
+   nl: "Het link-element kan metadata bevatten over de positie van een HTML-pagina binnen een swet web units, of kan behulpzaamn zijn bij het lokaliseren van content binnen web units."
+ guidelines: []
+ tags:
+   - "document"
 listNotUsedForFormatting:
   testability: 0
   title:
@@ -2720,98 +2696,98 @@ newWindowIsOpened:
   tags:
     - "javascript"
     - "html"
-# noembedHasEquivalentContent:
-#   testability: 0
-#   title:
-#     en: "Noembed elements must be the same content as their \"embed\" element"
-#     nl: "Noembed-elementen moeten dezelfde content hebben als hun \"embed\"-element"
-#   description:
-#     en: "All <code>noembed</code> elements must contain or link to an accessible version of their <code>embed</code> counterparts."
-#     nl: "Alle <code>noembed</code>-elementen moeten een toegankelijke versie van hun <code>embed</code>-tegenhangers bevatten of hier naar linken."
-#   guidelines: []
-#   tags:
-#     - "objects"
-#     - "content"
-# noframesSectionMustHaveTextEquivalent:
-#   testability: 0.5
-#   title:
-#     en: "All \"noframes\" elements should contain the text content from all frames"
-#     nl: "Alle \"noframes\"-elementen moeten de content van alle frames bevatten"
-#   description:
-#     en: "The <code>noframes</code> content should either replicate or link to the content visible within the frames."
-#     nl: "The <code>noframes</code>-content moet de zichtbare content binnen de frames repliceren of er naar linken."
-#   guidelines: []
-#   tags:
-#     - "deprecated"
-#     - "frame"
-# objectContentUsableWhenDisabled:
-#   testability: 0
-#   title:
-#     en: "When objects are disabled, content should still be available"
-#     nl: "Als objecten zijn uitgeschakeld, moet de content nog wel beschikbaar zijn"
-#   description:
-#     en: "The content within objects should still be available, even if the object is disabled. To do this, place a link to the direct object source within the <code>object</code> tag."
-#     nl: "Content binnen objecten moet beschikbaar blijven, ook als het object is uitgeschakeld. Plaats hiervoor een link naar de bron van het object binnen de <code>object</code>-tag."
-#   guidelines: []
-#   tags:
-#     - "objects"
-#     - "content"
-# objectDoesNotFlicker:
-#   testability: 0
-#   title:
-#     en: "Objects do not flicker"
-#     nl: "Objecten knipperen of flitsen niet"
-#   description:
-#     en: "The content within an <code>object</code> tag must not flicker."
-#     nl: "De content binnen een <code>object</code>-tag knippert of flitst niet."
-#   guidelines:
-#     508:
-#       - "j"
-#     wcag:
-#       2.2.2:
-#         techniques:
-#           - "F7"
-#   tags:
-#     - "objects"
-#     - "content"
-# objectDoesNotUseColorAlone:
-#   testability: 0
-#   title:
-#     en: "Objects must not use color to communicate alone"
-#     nl: "Objecten gebruiken meer dan alleen kleur om hun boodschap over te brengen"
-#   description:
-#     en: "Objects should contain content that makes sense without color and is accessible to users who are color blind."
-#     nl: "Objecten moeten content bevatten die duidelijk is zonder het kleurgebruik en toegankelijk is voor gebruikers met kleurenblindheid."
-#   guidelines:
-#     508:
-#       - "c"
-#   tags:
-#     - "objects"
-#     - "content"
-# objectInterfaceIsAccessible:
-#   testability: 0
-#   title:
-#     en: "Interfaces within objects must be accessible"
-#     nl: "Interfaces binnen objecten moeten toegankelijk zijn"
-#   description:
-#     en: "Object content should be assessed for accessibility."
-#     nl: "Content binnen objecten moeten gecontroleerd worden op toegankelijkheid."
-#   guidelines: []
-#   tags:
-#     - "objects"
-#     - "content"
-# objectLinkToMultimediaHasTextTranscript:
-#   testability: 0
-#   title:
-#     en: "Objects which reference multimedia files should also provide a link to a transcript"
-#     nl: "Objecten die verwijzen naar multimediabestanden moeten ook een link aanbieden naar de transcriptie"
-#   description:
-#     en: "If an object contains a video, a link to the transcript should be provided near the object."
-#     nl: "Als een object een video bevat, moet een link naar de transcriptie hiervan worden aangeboden bij het object."
-#   guidelines: []
-#   tags:
-#     - "objects"
-#     - "content"
+noembedHasEquivalentContent:
+ testability: 0
+ title:
+   en: "Noembed elements must be the same content as their \"embed\" element"
+   nl: "Noembed-elementen moeten dezelfde content hebben als hun \"embed\"-element"
+ description:
+   en: "All <code>noembed</code> elements must contain or link to an accessible version of their <code>embed</code> counterparts."
+   nl: "Alle <code>noembed</code>-elementen moeten een toegankelijke versie van hun <code>embed</code>-tegenhangers bevatten of hier naar linken."
+ guidelines: []
+ tags:
+   - "objects"
+   - "content"
+noframesSectionMustHaveTextEquivalent:
+ testability: 0.5
+ title:
+   en: "All \"noframes\" elements should contain the text content from all frames"
+   nl: "Alle \"noframes\"-elementen moeten de content van alle frames bevatten"
+ description:
+   en: "The <code>noframes</code> content should either replicate or link to the content visible within the frames."
+   nl: "The <code>noframes</code>-content moet de zichtbare content binnen de frames repliceren of er naar linken."
+ guidelines: []
+ tags:
+   - "deprecated"
+   - "frame"
+objectContentUsableWhenDisabled:
+ testability: 0
+ title:
+   en: "When objects are disabled, content should still be available"
+   nl: "Als objecten zijn uitgeschakeld, moet de content nog wel beschikbaar zijn"
+ description:
+   en: "The content within objects should still be available, even if the object is disabled. To do this, place a link to the direct object source within the <code>object</code> tag."
+   nl: "Content binnen objecten moet beschikbaar blijven, ook als het object is uitgeschakeld. Plaats hiervoor een link naar de bron van het object binnen de <code>object</code>-tag."
+ guidelines: []
+ tags:
+   - "objects"
+   - "content"
+objectDoesNotFlicker:
+ testability: 0
+ title:
+   en: "Objects do not flicker"
+   nl: "Objecten knipperen of flitsen niet"
+ description:
+   en: "The content within an <code>object</code> tag must not flicker."
+   nl: "De content binnen een <code>object</code>-tag knippert of flitst niet."
+ guidelines:
+   508:
+     - "j"
+   wcag:
+     2.2.2:
+       techniques:
+         - "F7"
+ tags:
+   - "objects"
+   - "content"
+objectDoesNotUseColorAlone:
+ testability: 0
+ title:
+   en: "Objects must not use color to communicate alone"
+   nl: "Objecten gebruiken meer dan alleen kleur om hun boodschap over te brengen"
+ description:
+   en: "Objects should contain content that makes sense without color and is accessible to users who are color blind."
+   nl: "Objecten moeten content bevatten die duidelijk is zonder het kleurgebruik en toegankelijk is voor gebruikers met kleurenblindheid."
+ guidelines:
+   508:
+     - "c"
+ tags:
+   - "objects"
+   - "content"
+objectInterfaceIsAccessible:
+ testability: 0
+ title:
+   en: "Interfaces within objects must be accessible"
+   nl: "Interfaces binnen objecten moeten toegankelijk zijn"
+ description:
+   en: "Object content should be assessed for accessibility."
+   nl: "Content binnen objecten moeten gecontroleerd worden op toegankelijkheid."
+ guidelines: []
+ tags:
+   - "objects"
+   - "content"
+objectLinkToMultimediaHasTextTranscript:
+ testability: 0
+ title:
+   en: "Objects which reference multimedia files should also provide a link to a transcript"
+   nl: "Objecten die verwijzen naar multimediabestanden moeten ook een link aanbieden naar de transcriptie"
+ description:
+   en: "If an object contains a video, a link to the transcript should be provided near the object."
+   nl: "Als een object een video bevat, moet een link naar de transcriptie hiervan worden aangeboden bij het object."
+ guidelines: []
+ tags:
+   - "objects"
+   - "content"
 objectMustContainText:
   testability: 1
   title:
@@ -2869,68 +2845,68 @@ objectMustHaveValidTitle:
   tags:
     - "objects"
     - "content"
-# objectProvidesMechanismToReturnToParent:
-#   testability: 0
-#   title:
-#     en: "All objects should provide a way for keyboard users to escape"
-#     nl: "Alle objecten moeten een manier bevatten voor toetsenbordgebruikers een manier om het object te verlaten"
-#   description:
-#     en: "Ensure that a user who has only a keyboard as an input device can escape a <code>object</code> element. This requires manual confirmation."
-#     nl: "Zorg ervoor dat een gebruiker die alleen het toetsenbord als bediening gebruikt een <code>object</code>-element. Hiervoor is handmatige bevestiging nodig."
-#   guidelines: []
-#   tags:
-#     - "objects"
-#     - "content"
-# objectShouldHaveLongDescription:
-#   testability: 0
-#   title:
-#     en: "An object might require a long description"
-#     nl: "Een object heeft soms een lange beschrijving nodig"
-#   description:
-#     en: "Objects might require a long description, especially if their content is complicated."
-#     nl: "Objecten hebben soms een lange beschrijving nodig, zeker in het geval van ingewikkelde content."
-#   guidelines: []
-#   tags:
-#     - "objects"
-#     - "content"
-# objectTextUpdatesWhenObjectChanges:
-#   testability: 0
-#   title:
-#     en: "The text equivalents of an object should update if the object changes"
-#     nl: "De tekstuele equivalent van een object moet bijgewerkt worden als het object verandert"
-#   description:
-#     en: "If an object changes, the text equivalent of that object should also change."
-#     nl: "Als een object verandert, moet zijn tekstuele equivalent ook veranderen."
-#   guidelines:
-#     508:
-#       - "a"
-#   tags:
-#     - "objects"
-#     - "content"
-# objectUIMustBeAccessible:
-#   testability: 0
-#   title:
-#     en: "Content within an \"object\" element should be usable with objects disabled"
-#     nl: "Content binnen een \"object\"-element moet bruikbaar blijven als het object uitgeschakeld is"
-#   description:
-#     en: "Objects who's content changes using java, ActiveX, or other similar technologies, should have their default text change when the object's content changes."
-#     nl: "Van objecten waarvan de content java, ActiveX of vergelijkbare technologie�n gebruiken, moet de standaardtekst veranderen als de content van het object verandert."
-#   guidelines: []
-#   tags:
-#     - "objects"
-#     - "content"
-# objectWithClassIDHasNoText:
-#   testability: 1
-#   title:
-#     en: "Objects with \"classid\" attributes should change their text if the content of the object changes"
-#     nl: "Objecten met \"classid\"-attributen moeten hun tekst veranderen wanneer de content van het object verandert"
-#   description:
-#     en: "Objects with \"classid\" attributes, should have their default text change when the object's content changes."
-#     nl: "Van objecten met \"classid\"-attributen moet de standaardtekst veranderen als de content van het object verandert."
-#   guidelines: []
-#   tags:
-#     - "objects"
-#     - "content"
+objectProvidesMechanismToReturnToParent:
+ testability: 0
+ title:
+   en: "All objects should provide a way for keyboard users to escape"
+   nl: "Alle objecten moeten een manier bevatten voor toetsenbordgebruikers een manier om het object te verlaten"
+ description:
+   en: "Ensure that a user who has only a keyboard as an input device can escape a <code>object</code> element. This requires manual confirmation."
+   nl: "Zorg ervoor dat een gebruiker die alleen het toetsenbord als bediening gebruikt een <code>object</code>-element. Hiervoor is handmatige bevestiging nodig."
+ guidelines: []
+ tags:
+   - "objects"
+   - "content"
+objectShouldHaveLongDescription:
+ testability: 0
+ title:
+   en: "An object might require a long description"
+   nl: "Een object heeft soms een lange beschrijving nodig"
+ description:
+   en: "Objects might require a long description, especially if their content is complicated."
+   nl: "Objecten hebben soms een lange beschrijving nodig, zeker in het geval van ingewikkelde content."
+ guidelines: []
+ tags:
+   - "objects"
+   - "content"
+objectTextUpdatesWhenObjectChanges:
+ testability: 0
+ title:
+   en: "The text equivalents of an object should update if the object changes"
+   nl: "De tekstuele equivalent van een object moet bijgewerkt worden als het object verandert"
+ description:
+   en: "If an object changes, the text equivalent of that object should also change."
+   nl: "Als een object verandert, moet zijn tekstuele equivalent ook veranderen."
+ guidelines:
+   508:
+     - "a"
+ tags:
+   - "objects"
+   - "content"
+objectUIMustBeAccessible:
+ testability: 0
+ title:
+   en: "Content within an \"object\" element should be usable with objects disabled"
+   nl: "Content binnen een \"object\"-element moet bruikbaar blijven als het object uitgeschakeld is"
+ description:
+   en: "Objects who's content changes using java, ActiveX, or other similar technologies, should have their default text change when the object's content changes."
+   nl: "Van objecten waarvan de content java, ActiveX of vergelijkbare technologie�n gebruiken, moet de standaardtekst veranderen als de content van het object verandert."
+ guidelines: []
+ tags:
+   - "objects"
+   - "content"
+objectWithClassIDHasNoText:
+ testability: 1
+ title:
+   en: "Objects with \"classid\" attributes should change their text if the content of the object changes"
+   nl: "Objecten met \"classid\"-attributen moeten hun tekst veranderen wanneer de content van het object verandert"
+ description:
+   en: "Objects with \"classid\" attributes, should have their default text change when the object's content changes."
+   nl: "Van objecten met \"classid\"-attributen moet de standaardtekst veranderen als de content van het object verandert."
+ guidelines: []
+ tags:
+   - "objects"
+   - "content"
 pNotUsedAsHeader:
   testability: 0.5
   title:
@@ -3043,25 +3019,25 @@ radioHasLabel:
   tags:
     - "form"
     - "content"
-# radioMarkedWithFieldgroupAndLegend:
-#   testability: 1
-#   title:
-#     en: "All radio button groups are marked using fieldset and legend elements"
-#     nl: "Alle groepjes van radio buttons zijn gemarkeerd met fieldset- en legend-elementen"
-#   description:
-#     en: "Form element content must contain both fieldset and legend elements if there are related radio buttons."
-#     nl: "Content van formulierelementen moeten zowel fieldset- als legend-elementen bevatten als er gerelateerde radio buttons instaan."
-#   guidelines:
-#     wcag:
-#       1.3.1:
-#         techniques:
-#           - "H71"
-#       3.3.2:
-#         techniques:
-#           - "H71"
-#   tags:
-#     - "form"
-#     - "content"
+radioMarkedWithFieldgroupAndLegend:
+ testability: 1
+ title:
+   en: "All radio button groups are marked using fieldset and legend elements"
+   nl: "Alle groepjes van radio buttons zijn gemarkeerd met fieldset- en legend-elementen"
+ description:
+   en: "Form element content must contain both fieldset and legend elements if there are related radio buttons."
+   nl: "Content van formulierelementen moeten zowel fieldset- als legend-elementen bevatten als er gerelateerde radio buttons instaan."
+ guidelines:
+   wcag:
+     1.3.1:
+       techniques:
+         - "H71"
+     3.3.2:
+       techniques:
+         - "H71"
+ tags:
+   - "form"
+   - "content"
 scriptFocusIndicatorVisible:
   title:
     en: "Script focus indicators have high visibility"
@@ -3083,30 +3059,30 @@ scriptFocusIndicatorVisible:
   components:
     - "color"
     - "convertToPx"
-# scriptContentAccessibleWithScriptsTurnedOff:
-#   testability: 0
-#   title:
-#     en: "Content on the page should still be available if scripts are disabled"
-#     nl: "Content op de pagina moet beschikbaar blijven als scripts zijn uitgeschakeld"
-#   description:
-#     en: "All scripts should be assessed to see if, when the user is browsing with scrips turned off, the page content is still available."
-#     nl: "Alle scripts moeten gecontroleerd worden of, wanneer een gebruiker scripts heeft uitgezet, de content van de pagina nog steeds beschikbaar is."
-#   guidelines: []
-#   tags:
-#     - "javascript"
-# scriptInBodyMustHaveNoscript:
-#   testability: 0.5
-#   title:
-#     en: "Scripts should have a corresponding \"noscript\" element"
-#     nl: "Scripts moeten een bijbehorend \"noscript\"-element hebben"
-#   description:
-#     en: "Scripts should be followed by a <code>noscripts</code> element to guide the user to content in an alternative way."
-#     nl: "Scripts moeten worden gevolgd door een <code>noscripts</code>-element om de gebruiker de weg te wijzen naar de content op een andere manier."
-#   guidelines:
-#     508:
-#       - "l"
-#   tags:
-#     - "javascript"
+scriptContentAccessibleWithScriptsTurnedOff:
+ testability: 0
+ title:
+   en: "Content on the page should still be available if scripts are disabled"
+   nl: "Content op de pagina moet beschikbaar blijven als scripts zijn uitgeschakeld"
+ description:
+   en: "All scripts should be assessed to see if, when the user is browsing with scrips turned off, the page content is still available."
+   nl: "Alle scripts moeten gecontroleerd worden of, wanneer een gebruiker scripts heeft uitgezet, de content van de pagina nog steeds beschikbaar is."
+ guidelines: []
+ tags:
+   - "javascript"
+scriptInBodyMustHaveNoscript:
+ testability: 0.5
+ title:
+   en: "Scripts should have a corresponding \"noscript\" element"
+   nl: "Scripts moeten een bijbehorend \"noscript\"-element hebben"
+ description:
+   en: "Scripts should be followed by a <code>noscripts</code> element to guide the user to content in an alternative way."
+   nl: "Scripts moeten worden gevolgd door een <code>noscripts</code>-element om de gebruiker de weg te wijzen naar de content op een andere manier."
+ guidelines:
+   508:
+     - "l"
+ tags:
+   - "javascript"
 scriptOnclickRequiresOnKeypress:
   testability: 1
   title:
@@ -3281,51 +3257,49 @@ scriptOnmouseupHasOnkeyup:
           - "SCR20"
   tags:
     - "javascript"
-# scriptsDoNotFlicker:
-#   testability: 0
-#   title:
-#     en: "Scripts should not cause the screen to flicker"
-#     nl: "Scripts mogen het scherm niet laten knipperen of flitsen"
-#   description:
-#     en: "All scripts should be assessed to see if their interface does not flicker."
-#     nl: "Alle scripts moeten gecontroleerd worden om te zien of zij de interface niet laten knipperen of flitsen."
-#   guidelines:
-#     508:
-#       - "j"
-#     wcag:
-#       2.2.2:
-#         techniques:
-#           - "F7"
-#   tags:
-#     - "javascript"
-# scriptsDoNotUseColorAlone:
-#   testability: 0
-#   title:
-#     en: "The interface in scripts should not use color alone"
-#     nl: "De interface in scripts gebruikt niet alleen maar kleur"
-#   description:
-#     en: "All scripts should be assessed to see if their interface does not have an interface which requires distinguishing between colors alone."
-#     nl: "Alle scripts moeten gecontroleerd worden om te zien of hun interface geen interface heeft die alleen op kleur kan worden onderscheiden."
-#   guidelines:
-#     508:
-#       - "c"
-#   tags:
-#     - "javascript"
-#     - "color"
-#
-# @see https://github.com/quailjs/quail/issues/373
-# selectDoesNotChangeContext:
-#   testability: 1
-#   title:
-#     en: "\"Select\" elements must not contain an \"onchange\" attribute"
-#     nl: "\"Select\" elements bevatten geen \"onchange\" attribute"
-#   description:
-#     en: "Actions like \"onchange\" can take control away from users who are trying to navigate the page. Using an \"onchange\" attribute for things like select-list menus should instead be replaced with a drop-down and a button which initiates the action."
-#     nl: "Acties als \"onchange\" kunnen de controle ontnemen van gebruikers die op een pagina proberen te navigeren. Het gebruik van een \"onchange\"-attribuut voor zaken zoals select-list menu's moet vervangen worden door een drop-down en een knop waarmee je de actie start."
-#   guidelines: []
-#   tags:
-#     - "form"
-#     - "content"
+scriptsDoNotFlicker:
+ testability: 0
+ title:
+   en: "Scripts should not cause the screen to flicker"
+   nl: "Scripts mogen het scherm niet laten knipperen of flitsen"
+ description:
+   en: "All scripts should be assessed to see if their interface does not flicker."
+   nl: "Alle scripts moeten gecontroleerd worden om te zien of zij de interface niet laten knipperen of flitsen."
+ guidelines:
+   508:
+     - "j"
+   wcag:
+     2.2.2:
+       techniques:
+         - "F7"
+ tags:
+   - "javascript"
+scriptsDoNotUseColorAlone:
+ testability: 0
+ title:
+   en: "The interface in scripts should not use color alone"
+   nl: "De interface in scripts gebruikt niet alleen maar kleur"
+ description:
+   en: "All scripts should be assessed to see if their interface does not have an interface which requires distinguishing between colors alone."
+   nl: "Alle scripts moeten gecontroleerd worden om te zien of hun interface geen interface heeft die alleen op kleur kan worden onderscheiden."
+ guidelines:
+   508:
+     - "c"
+ tags:
+   - "javascript"
+   - "color"
+selectDoesNotChangeContext:
+ testability: 1
+ title:
+   en: "\"Select\" elements must not contain an \"onchange\" attribute"
+   nl: "\"Select\" elements bevatten geen \"onchange\" attribute"
+ description:
+   en: "Actions like \"onchange\" can take control away from users who are trying to navigate the page. Using an \"onchange\" attribute for things like select-list menus should instead be replaced with a drop-down and a button which initiates the action."
+   nl: "Acties als \"onchange\" kunnen de controle ontnemen van gebruikers die op een pagina proberen te navigeren. Het gebruik van een \"onchange\"-attribuut voor zaken zoals select-list menu's moet vervangen worden door een drop-down en een knop waarmee je de actie start."
+ guidelines: []
+ tags:
+   - "form"
+   - "content"
 selectHasAssociatedLabel:
   testability: 1
   title:
@@ -3380,8 +3354,6 @@ selectJumpMenu:
     - "content"
   components:
     - "hasEventListener"
-#
-# @todo this assessment is broken and returning false positives.
 siteMap:
   testability: 0
   title:
@@ -3469,38 +3441,38 @@ tableAxisHasCorrespondingId:
       4.1.1:
         techniques:
           - "F17"
-# tableCaptionIdentifiesTable:
-#   testability: 0
-#   title:
-#     en: "Captions should identify their table"
-#     nl: "Beschrijvingen moeten hun tabellen identificeren"
-#   description:
-#     en: "Check to make sure that a table's caption identifies the table with a name, figure number, etc."
-#     nl: "Controleer of de beschrijving van een tabel de tabel identificeert met een naam, nummer en dergelijke."
-#   guidelines:
-#     wcag:
-#       1.3.1:
-#         techniques:
-#           - "H39"
-#   tags:
-#     - "table"
-#     - "content"
-# tableComplexHasSummary:
-#   testability: 0.5
-#   title:
-#     en: "Complex tables should have a summary"
-#     nl: "Complexe tabellen moeten een samenvatting hebben"
-#   description:
-#     en: "If a table is complex (for example, has some cells with \"colspan\" attributes, the table should have a summary."
-#     nl: "Als een tabel complex is (bijvoorbeeld, als er cellen zijn met \"colspan\"-attributen, moet de tabel een samenvatting hebben."
-#   guidelines:
-#     wcag:
-#       1.3.1:
-#         techniques:
-#           - "H39"
-#   tags:
-#     - "table"
-#     - "content"
+tableCaptionIdentifiesTable:
+ testability: 0
+ title:
+   en: "Captions should identify their table"
+   nl: "Beschrijvingen moeten hun tabellen identificeren"
+ description:
+   en: "Check to make sure that a table's caption identifies the table with a name, figure number, etc."
+   nl: "Controleer of de beschrijving van een tabel de tabel identificeert met een naam, nummer en dergelijke."
+ guidelines:
+   wcag:
+     1.3.1:
+       techniques:
+         - "H39"
+ tags:
+   - "table"
+   - "content"
+tableComplexHasSummary:
+ testability: 0.5
+ title:
+   en: "Complex tables should have a summary"
+   nl: "Complexe tabellen moeten een samenvatting hebben"
+ description:
+   en: "If a table is complex (for example, has some cells with \"colspan\" attributes, the table should have a summary."
+   nl: "Als een tabel complex is (bijvoorbeeld, als er cellen zijn met \"colspan\"-attributen, moet de tabel een samenvatting hebben."
+ guidelines:
+   wcag:
+     1.3.1:
+       techniques:
+         - "H39"
+ tags:
+   - "table"
+   - "content"
 tableDataShouldHaveTh:
   testability: 1
   title:
@@ -3519,18 +3491,18 @@ tableDataShouldHaveTh:
   tags:
     - "table"
     - "content"
-# tableIsGrouped:
-#   testability: 0.5
-#   title:
-#     en: "Mark up the areas of tables using thead and tbody"
-#     nl: "Gebruik thead en tbody voor tabellen"
-#   description:
-#     en: "Mark up the areas of tables using thead and tbody."
-#     nl: "Gebruik thead en tbody voor tabellen."
-#   guidelines: []
-#   tags:
-#     - "table"
-#     - "content"
+tableIsGrouped:
+ testability: 0.5
+ title:
+   en: "Mark up the areas of tables using thead and tbody"
+   nl: "Gebruik thead en tbody voor tabellen"
+ description:
+   en: "Mark up the areas of tables using thead and tbody."
+   nl: "Gebruik thead en tbody voor tabellen."
+ guidelines: []
+ tags:
+   - "table"
+   - "content"
 tableLayoutDataShouldNotHaveTh:
   testability: 0
   title:
@@ -3635,18 +3607,18 @@ tableShouldUseHeaderIDs:
   tags:
     - "table"
     - "content"
-# tableSummaryDescribesTable:
-#   testability: 0
-#   title:
-#     en: "Table summaries should describe the navigation and structure of the table"
-#     nl: "Tabelsamenvattingen moeten de navigatie en structuur van de tabel beschrijven"
-#   description:
-#     en: "Table <code>summary</code> elements should describe the navigation tools and structure of the table, as well as provide an overview of what the table describes."
-#     nl: "Tabel \"summary\"-elementen moeten de navigatie en structuur van de tabel beschrijven, en een overzicht bieden van wat er in de tabel staat."
-#   guidelines: []
-#   tags:
-#     - "table"
-#     - "content"
+tableSummaryDescribesTable:
+ testability: 0
+ title:
+   en: "Table summaries should describe the navigation and structure of the table"
+   nl: "Tabelsamenvattingen moeten de navigatie en structuur van de tabel beschrijven"
+ description:
+   en: "Table <code>summary</code> elements should describe the navigation tools and structure of the table, as well as provide an overview of what the table describes."
+   nl: "Tabel \"summary\"-elementen moeten de navigatie en structuur van de tabel beschrijven, en een overzicht bieden van wat er in de tabel staat."
+ guidelines: []
+ tags:
+   - "table"
+   - "content"
 tableSummaryDoesNotDuplicateCaption:
   testability: 1
   title:
@@ -3733,43 +3705,41 @@ tableUsesScopeForRow:
   tags:
     - "table"
     - "content"
-# tableWithBothHeadersUseScope:
-#   testability: 0.5
-#   title:
-#     en: "Data tables with multiple headers should use the \"scope\" attribute"
-#     nl: "Datatabellen met meerdere headers moeten het \"scope\"-attribuut gebruiken"
-#   description:
-#     en: "Where there are table headers for both rows and columns, use the \"scope\" attribute to help relate those headers with their appropriate cells."
-#     nl: "Als er tabelkoppen zijn voor zowel rijen als kolommen, gebruik dan het \"scope\"-attribuut om het juiste verband te leggen tussen de koppen en bijbehorende cellen."
-#   guidelines:
-#     508:
-#       - "h"
-#     wcag:
-#       1.3.1:
-#         techniques:
-#           - "F91"
-#   tags:
-#     - "table"
-#     - "content"
-#
-# @see https://github.com/quailjs/quail/issues/327
-# tagsAreNestedCorrectly:
-#   testability: 1
-#   title:
-#     en: "All tags should be nested correctly"
-#     nl: "Alle tags moeten juist genest worden"
-#   description:
-#     en: ""
-#     nl: ""
-#   guidelines:
-#     wcag:
-#       4.1.1:
-#         techniques:
-#           - "H74"
-#   tags:
-#     - "html"
-#   components:
-#       - "htmlSource"
+tableWithBothHeadersUseScope:
+ testability: 0.5
+ title:
+   en: "Data tables with multiple headers should use the \"scope\" attribute"
+   nl: "Datatabellen met meerdere headers moeten het \"scope\"-attribuut gebruiken"
+ description:
+   en: "Where there are table headers for both rows and columns, use the \"scope\" attribute to help relate those headers with their appropriate cells."
+   nl: "Als er tabelkoppen zijn voor zowel rijen als kolommen, gebruik dan het \"scope\"-attribuut om het juiste verband te leggen tussen de koppen en bijbehorende cellen."
+ guidelines:
+   508:
+     - "h"
+   wcag:
+     1.3.1:
+       techniques:
+         - "F91"
+ tags:
+   - "table"
+   - "content"
+tagsAreNestedCorrectly:
+ testability: 1
+ title:
+   en: "All tags should be nested correctly"
+   nl: "Alle tags moeten juist genest worden"
+ description:
+   en: ""
+   nl: ""
+ guidelines:
+   wcag:
+     4.1.1:
+       techniques:
+         - "H74"
+ tags:
+   - "html"
+ components:
+     - "htmlSource"
 tabularDataIsInTable:
   testability: 0.5
   title:
@@ -3851,28 +3821,28 @@ videoMayBePresent:
   tags:
     - "link"
     - "video"
-# videoProvidesCaptions:
-#   testability: 0.5
-#   title:
-#     en: "All video tags must provide captions"
-#     nl: "Alle video tags moeten bijschriften bieden"
-#   description:
-#     en: "All HTML5 video tags must provide captions."
-#     nl: "Alle HTML5 video tags moeten bijschriften bieden."
-#   guidelines:
-#     508:
-#       - "b"
-#       - "b"
-#     wcag:
-#       1.2.2:
-#         techniques:
-#           - "G87"
-#       1.2.4:
-#         techniques:
-#           - "G87"
-#   tags:
-#     - "media"
-#     - "content"
+videoProvidesCaptions:
+ testability: 0.5
+ title:
+   en: "All video tags must provide captions"
+   nl: "Alle video tags moeten bijschriften bieden"
+ description:
+   en: "All HTML5 video tags must provide captions."
+   nl: "Alle HTML5 video tags moeten bijschriften bieden."
+ guidelines:
+   508:
+     - "b"
+     - "b"
+   wcag:
+     1.2.2:
+       techniques:
+         - "G87"
+     1.2.4:
+       techniques:
+         - "G87"
+ tags:
+   - "media"
+   - "content"
 videosEmbeddedOrLinkedNeedCaptions:
   testability: 1
   title:
