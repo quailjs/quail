@@ -8,7 +8,6 @@ examples/wysiwyg/editors/ckeditor/*
 examples/wysiwyg/editors/ckeditor4/*
 node_modules/*
 .grunt/*
-dist/*
 lib
 test/quail-testing.jquery.js
 test/accessibility-tests/_tests.json

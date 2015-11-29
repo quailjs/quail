@@ -9,6 +9,8 @@ var Case = require('Case');
 
 var AppletsDoNotFlicker = function (test, options) {
 
+  options = options || {};
+
   var selector = 'applet';
 
   this.get('$scope').each(function () {

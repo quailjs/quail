@@ -2,16 +2,14 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-
 var EventComponent = require('EventComponent');
 
-var ScriptOnmouseupHasOnkeyup = function (test) {
-  var options = {
+var ScriptOnmouseupHasOnkeyup = function (test, options) {
+  options = options || {
     selector: '[onmouseup]',
     correspondingEvent: 'onkeyup',
     searchEvent: 'onmouseup'
   };
-  EventComponent(quail, test, Case, options);
+  EventComponent(test, options);
 };
 module.exports = ScriptOnmouseupHasOnkeyup;

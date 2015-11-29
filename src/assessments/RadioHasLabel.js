@@ -2,14 +2,12 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-
 var LabelComponent = require('LabelComponent');
 
-var RadioHasLabel = function (test) {
-  var options = {
+var RadioHasLabel = function (test, options) {
+  options = options || {
     selector: 'input[type="radio"]'
   };
-  LabelComponent(quail, test, Case, options);
+  LabelComponent(test, options);
 };
 module.exports = RadioHasLabel;

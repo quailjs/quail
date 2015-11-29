@@ -9,6 +9,8 @@ var Case = require('Case');
 
 var AreaLinksToSoundFile = function (test, options) {
 
+  options = options || {};
+
   var selector = [
     'area[href$="wav"]',
     'area[href$="snd"]',
