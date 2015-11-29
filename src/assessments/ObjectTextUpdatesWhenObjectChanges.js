@@ -42,7 +42,24 @@ var ObjectTextUpdatesWhenObjectChanges = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'The text equivalents of an object should update if the object changes',
+      nl: 'De tekstuele equivalent van een object moet bijgewerkt worden als het object verandert'
+    },
+    description: {
+      en: 'If an object changes, the text equivalent of that object should also change.',
+      nl: 'Als een object verandert, moet zijn tekstuele equivalent ook veranderen.'
+    },
+    guidelines: {
+      508:  [
+        'a'
+      ]
+    },
+    tags: [
+      'objects',
+      'content'
+    ]
   }
 };
 module.exports = ObjectTextUpdatesWhenObjectChanges;

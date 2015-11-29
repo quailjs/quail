@@ -41,7 +41,28 @@ var BlockquoteNotUsedForIndentation = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'The \"blockquote\" tag should not be used just for indentation',
+      nl: 'De \"blockquote\"-tag mag niet gebruikt worden om in te springen'
+    },
+    description: {
+      en: 'Blockquote tags are for long-form quotes, and should not be used to indent paragraphs. Use CSS to indent the paragraph instead.',
+      nl: 'Blockquotes zijn bedoeld voor lange stukken geciteerde tekst, en niet om tekst te laten inspringen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'H49'
+          ]
+        }
+      }
+    },
+    tags: [
+      'blockquote',
+      'content'
+    ]
   }
 };
 module.exports = BlockquoteNotUsedForIndentation;

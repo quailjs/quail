@@ -40,7 +40,38 @@ var FormButtonsHaveValue = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Input elements for button, submit, or reset must have a value attribute',
+      nl: 'Invoerelementen voor knoppen, indienen of resetten moeten een waarde-attribuut hebben'
+    },
+    description: {
+      en: 'Any form element that is rendered as a button has to have a readable value attribute.',
+      nl: 'Elk invoerelement dat eruit ziet als een knop moet een leesbaar waarde-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '2.1.1': {
+          techniques:  [
+            'H91'
+          ]
+        },
+        '2.1.3': {
+          techniques:  [
+            'H91'
+          ]
+        },
+        '4.1.2': {
+          techniques:  [
+            'H91'
+          ]
+        }
+      }
+    },
+    tags: [
+      'form',
+      'content'
+    ]
   }
 };
 module.exports = FormButtonsHaveValue;

@@ -20,7 +20,28 @@ var InputCheckboxRequiresFieldset = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Logical groups of check boxes should be grouped with a fieldset',
+      nl: 'Logische groepen van keuzevakjes moeten gegroepeerd zijn in een fieldset'
+    },
+    description: {
+      en: 'Related \"checkbox\" input fields should be grouped together using a <code>fieldset</code>.',
+      nl: 'Gerelateerde \"keuzevakjes\"-invoervelden moeten bij elkaar staan in een <code>fieldset</code>.'
+    },
+    guidelines: {
+      wcag: {
+        '3.3.2': {
+          techniques:  [
+            'H71'
+          ]
+        }
+      }
+    },
+    tags: [
+      'form',
+      'content'
+    ]
   }
 };
 module.exports = InputCheckboxRequiresFieldset;

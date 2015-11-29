@@ -42,7 +42,25 @@ var AppletTextEquivalentsGetUpdated = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    guidelines: {
+      508:  [
+        'm'
+      ],
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'G74',
+            'H35'
+          ]
+        }
+      }
+    },
+    tags: [
+      'objects',
+      'applet',
+      'content'
+    ]
   }
 };
 module.exports = AppletTextEquivalentsGetUpdated;

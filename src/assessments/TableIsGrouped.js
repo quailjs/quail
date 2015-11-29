@@ -42,7 +42,22 @@ var TableIsGrouped = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Mark up the areas of tables using thead and tbody',
+      nl: 'Gebruik thead en tbody voor tabellen'
+    },
+    description: {
+      en: 'Mark up the areas of tables using thead and tbody.',
+      nl: 'Gebruik thead en tbody voor tabellen.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'table',
+      'content'
+    ]
   }
 };
 module.exports = TableIsGrouped;

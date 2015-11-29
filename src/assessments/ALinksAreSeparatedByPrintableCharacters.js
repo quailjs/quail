@@ -23,7 +23,22 @@ var ALinksAreSeparatedByPrintableCharacters = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Lists of links should be seperated by printable characters',
+      nl: 'Lijsten met links moeten gescheiden worden door afdrukbare tekens'
+    },
+    description: {
+      en: 'If a list of links is provided within the same element, those links should be seperated by a non-linked, printable character. Structures like lists are not included in this.',
+      nl: 'Als een rij met links binnen eenzelfde element staat, moeten de links gescheiden zijn door een niet-gelinkt, afdrukbaar teken. Dit geldt niet voor een gestructureerde lijst.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = ALinksAreSeparatedByPrintableCharacters;

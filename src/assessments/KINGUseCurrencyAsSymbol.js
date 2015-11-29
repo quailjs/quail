@@ -31,7 +31,19 @@ var KINGUseCurrencyAsSymbol = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Use a symbol for a currency'
+    },
+    description: {
+      en: 'Only use symbol and currency name instead of common name such as € or EUR.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'KING'
+    ]
   }
 };
 module.exports = KINGUseCurrencyAsSymbol;

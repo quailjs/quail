@@ -42,7 +42,32 @@ var AppletsDoNotFlicker = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'All applets do not flicker',
+      nl: 'Applets knipperen of flitsen niet'
+    },
+    description: {
+      en: 'Applets should not flicker.',
+      nl: 'Geen enkele applet mag knipperen of flitsen.'
+    },
+    guidelines: {
+      508:  [
+        'j'
+      ],
+      wcag: {
+        '2.2.2': {
+          techniques:  [
+            'F7'
+          ]
+        }
+      }
+    },
+    tags: [
+      'objects',
+      'applet',
+      'content'
+    ]
   }
 };
 module.exports = AppletsDoNotFlicker;

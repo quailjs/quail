@@ -39,7 +39,28 @@ var LanguageUnicodeDirection = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Use the unicode language direction',
+      nl: 'Gebruik de unicode taalrichting'
+    },
+    description: {
+      en: 'When there are nested directional changes in language, use unicode RTL/LTR characters.',
+      nl: 'Gebruik de unicode RTL/LTR afkortingen als er geneste richtingsveranderingen in de taal zijn.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques:  [
+            'H34'
+          ]
+        }
+      }
+    },
+    tags: [
+      'language',
+      'content'
+    ]
   }
 };
 module.exports = LanguageUnicodeDirection;

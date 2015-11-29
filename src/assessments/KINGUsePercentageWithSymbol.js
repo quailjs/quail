@@ -25,7 +25,19 @@ var KINGUsePercentageWithSymbol = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Use a symbol within a percentage'
+    },
+    description: {
+      en: ''
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'KING'
+    ]
   }
 };
 module.exports = KINGUsePercentageWithSymbol;

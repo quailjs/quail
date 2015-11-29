@@ -40,7 +40,29 @@ var SvgContainsTitle = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Inline SVG should use Title elements',
+      nl: 'Inline SVG moet titelelementen gebruiken'
+    },
+    description: {
+      en: 'Any inline SVG image should have an embedded <code>title</code> element.',
+      nl: 'Elke inline SVG-afbeelding moet een ingebed <code>title</code>-element hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'F65'
+          ]
+        }
+      }
+    },
+    tags: [
+      'image',
+      'svg',
+      'content'
+    ]
   }
 };
 module.exports = SvgContainsTitle;

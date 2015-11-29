@@ -42,7 +42,22 @@ var FramesetMustHaveNoFramesSection = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'All framesets should contain a noframes section',
+      nl: 'Alle framesets moeten een noframes-sectie bevatten'
+    },
+    description: {
+      en: 'If a <code>frameset</code> contains three or more frames, use a \"longdesc\" attribute to help describe the purpose of the frames.',
+      nl: 'Als een <code>frameset</code> drie of meer frames bevat, gebruik dan een \"longdesc\"-attribuut om het doel van de frames te beschrijven.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'deprecated',
+      'frame'
+    ]
   }
 };
 module.exports = FramesetMustHaveNoFramesSection;

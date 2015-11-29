@@ -34,7 +34,22 @@ var MarqueeIsNotUsed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'The \"marquee\" tag should not be used',
+      nl: 'De \"marquee\"-tag wordt niet gebruikt'
+    },
+    description: {
+      en: 'The <code>marquee</code> element is difficult for users to read and is not a standard HTML element. Try to find another way to convey the importance of this text.',
+      nl: 'Het <code>marquee</code>-element is moeilijk te lezen voor gebruikers en is geen standaard HTML-element. Gebruik een andere manier om aan te duiden dat het belangrijke content is.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'deprecated',
+      'content'
+    ]
   }
 };
 module.exports = MarqueeIsNotUsed;

@@ -44,7 +44,22 @@ var NoembedHasEquivalentContent = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Noembed elements must be the same content as their \"embed\" element',
+      nl: 'Noembed-elementen moeten dezelfde content hebben als hun \"embed\"-element'
+    },
+    description: {
+      en: 'All <code>noembed</code> elements must contain or link to an accessible version of their <code>embed</code> counterparts.',
+      nl: 'Alle <code>noembed</code>-elementen moeten een toegankelijke versie van hun <code>embed</code>-tegenhangers bevatten of hier naar linken.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'content'
+    ]
   }
 };
 module.exports = NoembedHasEquivalentContent;

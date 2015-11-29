@@ -35,7 +35,25 @@ var ScriptOnFocusChangeBackgroundOrBorder = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Using script to change the background color or border of the element with focus'
+    },
+    description: {
+      en: 'Using script to change the background color or border of the element with focus'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.7': {
+          techniques:  [
+            'SCR31'
+          ]
+        }
+      }
+    },
+    tags: [
+      'content'
+    ]
   }
 };
 module.exports = ScriptOnFocusChangeBackgroundOrBorder;

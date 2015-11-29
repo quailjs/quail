@@ -35,7 +35,28 @@ var ALinkTextDoesNotBeginWithRedundantWord = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Link text should not begin with redundant text',
+      nl: 'Laat linkteksten niet beginnen met overbodige tekst'
+    },
+    description: {
+      en: 'Link text should not begin with redundant words or phrases like \"link\".',
+      nl: 'Laat linkteksten niet beginnen met overbodige woorden of woordcombinaties als \"link\" of \"klik hier\".'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.9': {
+          techniques:  [
+            'F84'
+          ]
+        }
+      }
+    },
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = ALinkTextDoesNotBeginWithRedundantWord;

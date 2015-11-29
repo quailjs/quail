@@ -44,7 +44,32 @@ var ImgAltIsSameInText = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Check that any text within an image is also in the \"alt\" attribute',
+      nl: 'Controleer dat tekst in een afbeelding ook is opgenomen in het \"alt\"-attribuut'
+    },
+    description: {
+      en: 'If an image has text within it, that text should be repeated in the \"alt\" attribute',
+      nl: 'Als een afbeelding tekst bevat, moet deze tekst herhaald worden in het \"alt\"-attribuut.'
+    },
+    guidelines: {
+      508:  [
+        'a'
+      ],
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'G74',
+            'H37'
+          ]
+        }
+      }
+    },
+    tags: [
+      'image',
+      'content'
+    ]
   }
 };
 module.exports = ImgAltIsSameInText;

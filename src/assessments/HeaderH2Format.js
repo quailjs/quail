@@ -32,7 +32,28 @@ var HeaderH2Format = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'All h2 elements are not used for formatting',
+      nl: 'H2-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h2</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h2</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'T3'
+          ]
+        }
+      }
+    },
+    tags: [
+      'header',
+      'content'
+    ]
   }
 };
 module.exports = HeaderH2Format;

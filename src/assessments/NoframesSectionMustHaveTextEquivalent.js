@@ -44,7 +44,22 @@ var NoframesSectionMustHaveTextEquivalent = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'All \"noframes\" elements should contain the text content from all frames',
+      nl: 'Alle \"noframes\"-elementen moeten de content van alle frames bevatten'
+    },
+    description: {
+      en: 'The <code>noframes</code> content should either replicate or link to the content visible within the frames.',
+      nl: 'The <code>noframes</code>-content moet de zichtbare content binnen de frames repliceren of er naar linken.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'deprecated',
+      'frame'
+    ]
   }
 };
 module.exports = NoframesSectionMustHaveTextEquivalent;

@@ -36,7 +36,22 @@ var MenuNotUsedToFormatText = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Menu elements should not be used for formatting',
+      nl: 'Menu-elementen worden niet gebruikt voor opmaak'
+    },
+    description: {
+      en: 'Menu is a deprecated tag, but is still honored in a transitional DTD. Menu tags are to provide structure for a document and should not be used for formatting. If a menu tag is to be used, it should only contain an ordered or unordered list of links.',
+      nl: 'Menu is een afgekeurd tag, maar wordt nog wel gebruikt om structuur aan een document te geven. Het mag niet worden gebruikt voor opmaak. Als een menu-tag wordt gebruikt, mag het alleen bulleted of genummerde lijsten bevatten.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'list',
+      'content'
+    ]
   }
 };
 module.exports = MenuNotUsedToFormatText;

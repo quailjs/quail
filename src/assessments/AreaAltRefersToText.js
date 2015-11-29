@@ -42,7 +42,22 @@ var AreaAltRefersToText = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Alt text for \"area\" elements should replicate the text found in the image',
+      nl: 'Alt-tekst voor \"area\"-elementen moeten de tekst bevatten zoals die ook in de afbeelding staat'
+    },
+    description: {
+      en: 'If an image is being used as a map, and an <code>area</code> encompasses text within the image, then the \"alt\" attribute of that <code>area</code> element should be the same as the text found in the image.',
+      nl: 'Als een afbeelding als kaart wordt gebruikt, en een <code>area</code> bevat tekst binnen de afbeelding, dan moet het \"alt\"-attribuut van dat <code>area</code>-element hetzelfde zijn als de tekst die in de afbeelding staat.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'imagemap',
+      'content'
+    ]
   }
 };
 module.exports = AreaAltRefersToText;

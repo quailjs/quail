@@ -38,7 +38,22 @@ var LabelDoesNotContainInput = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Label elements should not contain an input element',
+      nl: 'Labelelementen moeten geen invoerelementen bevatten'
+    },
+    description: {
+      en: 'Label elements should not wrap around another input element, as this can cause the label to be read twice by screen readers.',
+      nl: 'Labelelementen moeten niet om een ander invoerelement heenstaan, omdat dan het label twee keer kan worden voorgelezen door schermlezers.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'form',
+      'content'
+    ]
   }
 };
 module.exports = LabelDoesNotContainInput;

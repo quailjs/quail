@@ -42,7 +42,36 @@ var FramesHaveATitle = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'All \"frame\" elements should have a \"title\" attribute',
+      nl: 'Alle \"frame\"-elementen moeten een \"title\"-attribuut hebben'
+    },
+    description: {
+      en: 'Each <code>frame</code> elements should have a \"title\" attribute.',
+      nl: 'Elk <code>frame</code>-elementen moeten een \"title\"-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.1': {
+          techniques:  [
+            'H64'
+          ]
+        },
+        '4.1.2': {
+          techniques:  [
+            'H64'
+          ]
+        }
+      }
+    },
+    tags: [
+      'deprecated',
+      'frame'
+    ],
+    options: {
+      test: ':not([title])'
+    }
   }
 };
 module.exports = FramesHaveATitle;

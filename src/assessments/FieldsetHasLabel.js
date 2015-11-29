@@ -42,7 +42,38 @@ var FieldsetHasLabel = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Fieldsets require a label element',
+      nl: 'Fieldsets behoeven een label-element'
+    },
+    description: {
+      en: 'Fieldsets used to group similar form elements like checkboxes should have a label that describes the group of elements.',
+      nl: 'Fieldsets die een groep gelijkwaardige elementen bevatten moeten een label hebben die deze groep elementen beschrijft.'
+    },
+    guidelines: {
+      wcag: {
+        '2.1.1': {
+          techniques:  [
+            'H91'
+          ]
+        },
+        '2.1.3': {
+          techniques:  [
+            'H91'
+          ]
+        },
+        '4.1.2': {
+          techniques:  [
+            'H91'
+          ]
+        }
+      }
+    },
+    tags: [
+      'form',
+      'content'
+    ]
   }
 };
 module.exports = FieldsetHasLabel;

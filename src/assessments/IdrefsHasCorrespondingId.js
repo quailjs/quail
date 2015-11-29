@@ -55,7 +55,29 @@ var IdrefsHasCorrespondingId = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Elements with an idref attribute must correspond to an element with an ID',
+      nl: 'Elementen met een idref-attribuut moeten corresponderen met een element met een ID'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'F17'
+          ]
+        },
+        '4.1.1': {
+          techniques:  [
+            'F17'
+          ]
+        }
+      }
+    }
   }
 };
 module.exports = IdrefsHasCorrespondingId;

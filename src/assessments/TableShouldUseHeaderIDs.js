@@ -35,7 +35,28 @@ var TableShouldUseHeaderIDs = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Table cells use IDs to identify headers',
+      nl: 'Tabelcellen gebruiken IDs om koppen te identificeren'
+    },
+    description: {
+      en: 'If a table is not being used for layout, it should use IDs and header attributes to identify table headers.',
+      nl: 'Een tabel moet IDs en header-attributen gebruiken om tabelkoppen te identificeren.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'H43'
+          ]
+        }
+      }
+    },
+    tags: [
+      'table',
+      'content'
+    ]
   }
 };
 module.exports = TableShouldUseHeaderIDs;

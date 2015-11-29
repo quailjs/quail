@@ -42,7 +42,15 @@ var AMultimediaTextAlternative = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    guidelines: [
+
+    ],
+    tags: [
+      'link',
+      'media',
+      'content'
+    ]
   }
 };
 module.exports = AMultimediaTextAlternative;

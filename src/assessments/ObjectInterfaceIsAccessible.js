@@ -42,7 +42,22 @@ var ObjectInterfaceIsAccessible = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Interfaces within objects must be accessible',
+      nl: 'Interfaces binnen objecten moeten toegankelijk zijn'
+    },
+    description: {
+      en: 'Object content should be assessed for accessibility.',
+      nl: 'Content binnen objecten moeten gecontroleerd worden op toegankelijkheid.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'content'
+    ]
   }
 };
 module.exports = ObjectInterfaceIsAccessible;

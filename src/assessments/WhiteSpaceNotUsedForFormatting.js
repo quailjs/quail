@@ -33,7 +33,27 @@ var WhiteSpaceNotUsedForFormatting = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Whitespace should not be used for conveying information',
+      nl: 'Gebruik geen witruimte om informatie over te brengen'
+    },
+    description: {
+      en: 'Spaces or tabs are not read by assistive technology and should not be used to convey meaning.',
+      nl: 'Spaties of tabs worden niet voorgelezen door hulpprogramma\'s en moeten niet worden gebruikt om betekenis over te dragen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques:  [
+            'G57'
+          ]
+        }
+      }
+    },
+    tags: [
+      'content'
+    ]
   }
 };
 module.exports = WhiteSpaceNotUsedForFormatting;

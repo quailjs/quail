@@ -38,7 +38,23 @@ var EmbedMustHaveAltAttribute = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: '\"Embed\" elements must have an \"alt\" attribute',
+      nl: '\"Embed\"-elementen moeten een \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>embed</code> elements must have an \"alt\" attribute.',
+      nl: 'Alle <code>embed</code>-elementen moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'object',
+      'embed',
+      'content'
+    ]
   }
 };
 module.exports = EmbedMustHaveAltAttribute;

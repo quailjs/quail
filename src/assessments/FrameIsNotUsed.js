@@ -31,7 +31,22 @@ var FrameIsNotUsed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Frames are not used',
+      nl: 'Gebruik geen frames'
+    },
+    description: {
+      en: 'Frames should not be used to organize a page.',
+      nl: 'Gebruik geen frames om een pagina te organiseren.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'deprecated',
+      'frame'
+    ]
   }
 };
 module.exports = FrameIsNotUsed;

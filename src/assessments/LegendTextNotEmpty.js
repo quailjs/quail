@@ -38,7 +38,38 @@ var LegendTextNotEmpty = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Legend text must not contain just whitespace',
+      nl: 'Legend-tekst moet ingevuld zijn'
+    },
+    description: {
+      en: 'If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain empty text.',
+      nl: 'Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> ingevuld zijn.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'H71'
+          ]
+        },
+        '2.4.6': {
+          techniques:  [
+            'G131'
+          ]
+        },
+        '3.3.2': {
+          techniques:  [
+            'H71'
+          ]
+        }
+      }
+    },
+    tags: [
+      'form',
+      'content'
+    ]
   }
 };
 module.exports = LegendTextNotEmpty;

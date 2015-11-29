@@ -32,7 +32,21 @@ var DocumentAutoRedirectNotUsed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Auto-redirect with \"meta\" elements must not be used',
+      nl: 'Auto-redirect met \"meta\"-elementen moeten niet worden gebruikt'
+    },
+    description: {
+      en: 'Because different users have different speeds and abilities when it comes to parsing the content of a page, a \"meta-refresh\" method to redirect users can prevent users from fully understanding the document before being redirected.',
+      nl: 'Omdat verschillende gebruikers verschillende snelheden en vaardigheden hebben met het scannen van content op een pagina, kan een \"meta-refresh\"-methode om gebruikers door te sturen hen verhinderen het document volledig te begrijpen voor ze worden doorgestuurd.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'document'
+    ]
   }
 };
 module.exports = DocumentAutoRedirectNotUsed;

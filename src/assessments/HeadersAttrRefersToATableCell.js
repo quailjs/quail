@@ -40,7 +40,23 @@ var HeadersAttrRefersToATableCell = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Table cell headers attrtibutes must within the same table have an associated data cell with the same id',
+      nl: 'Tabel cellen met een headers attribuut moeten binnen dezelfde tabel een overeenkomende data cel hebben in het id attribuut dezelfde waarde'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'headers',
+      'td',
+      'th'
+    ]
   }
 };
 module.exports = HeadersAttrRefersToATableCell;

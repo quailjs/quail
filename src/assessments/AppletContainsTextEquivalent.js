@@ -21,7 +21,33 @@ var AppletContainsTextEquivalent = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'All applets should contain the same content within the body of the applet',
+      nl: 'Alle applets moeten dezelfde content bevatten in de body van de applet'
+    },
+    description: {
+      en: 'Applets should contain their text equivalents or description within the <code>applet</code> tag itself.',
+      nl: 'Applets moeten hun tekstuele equivalent of beschrijving bevatten in de <code>applet</code> tag.'
+    },
+    guidelines: {
+      508:  [
+        'm'
+      ],
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'G74',
+            'H35'
+          ]
+        }
+      }
+    },
+    tags: [
+      'objects',
+      'applet',
+      'content'
+    ]
   }
 };
 module.exports = AppletContainsTextEquivalent;

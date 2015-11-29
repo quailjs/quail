@@ -40,7 +40,14 @@ var LiDontUseImageForBullet = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    guidelines: [
+
+    ],
+    tags: [
+      'list',
+      'content'
+    ]
   }
 };
 module.exports = LiDontUseImageForBullet;

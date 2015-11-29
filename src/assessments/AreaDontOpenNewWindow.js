@@ -53,7 +53,22 @@ var AreaDontOpenNewWindow = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'No \"area\" elements should open a new window without warning',
+      nl: '\"area\"-elementen mogen geen nieuw scherm openen zonder melding'
+    },
+    description: {
+      en: 'No <code>area</code> elements should open a new window without warning.',
+      nl: '<code>area</code>-elementen mogen geen nieuw scherm openen zonder dat de gebruiker hiervan een melding krijgt.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'imagemap',
+      'content'
+    ]
   }
 };
 module.exports = AreaDontOpenNewWindow;

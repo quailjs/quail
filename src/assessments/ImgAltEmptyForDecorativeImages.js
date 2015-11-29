@@ -44,7 +44,28 @@ var ImgAltEmptyForDecorativeImages = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'If an image is purely decorative, the \"alt\" text must be empty',
+      nl: 'Als een afbeelding alleen ter decoratie is, moet de \"alt\"-tekst leeg zijn'
+    },
+    description: {
+      en: 'Any image that is only decorative (serves no function or adds to the purpose of the page content) should have an empty \"alt\" attribute.',
+      nl: 'Elke afbeelding die alleen ter decoratie is (en die dus geen functie heeft of bijdraagt aan het doel van een contentpagina) moet een leeg \"alt\"-attirbuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.3': {
+          techniques:  [
+            'F26'
+          ]
+        }
+      }
+    },
+    tags: [
+      'image',
+      'content'
+    ]
   }
 };
 module.exports = ImgAltEmptyForDecorativeImages;

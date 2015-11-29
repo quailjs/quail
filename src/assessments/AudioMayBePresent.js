@@ -41,7 +41,22 @@ var AudioMayBePresent = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Audio or object uses a link that points to a file with a video extension',
+      nl: 'Audio of object met een link naar een bestand met een video extensie'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'link',
+      'audio'
+    ]
   }
 };
 module.exports = AudioMayBePresent;

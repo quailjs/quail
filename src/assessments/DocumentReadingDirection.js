@@ -43,7 +43,28 @@ var DocumentReadingDirection = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Reading direction of text is correctly marked',
+      nl: 'De leesrichting van de tekst staat juist aangegeven'
+    },
+    description: {
+      en: 'Where required, the reading direction of the document (for language that read in different directions), or portions of the text, must be declared.',
+      nl: 'Voor talen die een andere leesrichting hebben, moet de leesrichting van (een deel van) de tekst in een document worden opgenomen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques:  [
+            'H34'
+          ]
+        }
+      }
+    },
+    tags: [
+      'document',
+      'language'
+    ]
   }
 };
 module.exports = DocumentReadingDirection;

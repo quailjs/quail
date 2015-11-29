@@ -34,7 +34,32 @@ var SiteMapStringsComponent = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Websites must have a site map',
+      nl: 'Websites moeten een sitemap hebben'
+    },
+    description: {
+      en: 'Every web site should have a page which provides a site map or another method to navigate most of the site from a single page to save time for users of assistive devices.',
+      nl: 'Elke website moet een pagina hebben waarop een sitemap staat of een andere methode om op de site te navigeren vanaf een pagina. Dit spaart gebruikers die hulpmiddelen gebruiken tijd.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.5': {
+          techniques:  [
+            'G63'
+          ]
+        },
+        '2.4.8': {
+          techniques:  [
+            'G63'
+          ]
+        }
+      }
+    },
+    tags: [
+      'document'
+    ]
   }
 };
 module.exports = SiteMapStringsComponent;

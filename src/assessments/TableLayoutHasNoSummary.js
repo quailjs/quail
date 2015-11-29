@@ -20,7 +20,29 @@ var TableLayoutHasNoSummary = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'All tables used for layout have no summary or an empty summary',
+      nl: 'Alle tabellen die alleen voor lay-out worden gebruikt hebben geen samenvatting'
+    },
+    description: {
+      en: 'If a table contains no data, and is used simply for layout, then it should not have a \"summary\" attribute.',
+      nl: 'Als een tabel geen data bevat en alleen voor lay-out wordt gebruikt, moet hij geen \"summary\"-attribuut krijgen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'F46'
+          ]
+        }
+      }
+    },
+    tags: [
+      'table',
+      'layout',
+      'content'
+    ]
   }
 };
 module.exports = TableLayoutHasNoSummary;

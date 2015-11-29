@@ -32,7 +32,22 @@ var BoldIsNotUsed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'The \"b\" (bold) element is not used',
+      nl: 'Het \"b\"-element (bold) wordt niet gebruikt'
+    },
+    description: {
+      en: 'The <code>b</code> (bold) element provides no emphasis for non-sighted readers. Use the <code>strong</code> tag instead.',
+      nl: 'Het <code>b</code>-element voorziet niet in nadruk voor blinde en slechtziende gebruikers. Gebruik de <code>strong</code>-tag instead.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'semantics',
+      'content'
+    ]
   }
 };
 module.exports = BoldIsNotUsed;

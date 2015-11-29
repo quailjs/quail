@@ -27,7 +27,22 @@ var DocumentLangNotIdentified = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'The document must have a \"lang\" attribute',
+      nl: 'Het document moet een \"lang\"-attribuut hebben'
+    },
+    description: {
+      en: 'The document should have a default langauge, by setting the \"lang\" attribute in the <code>html</code> element.',
+      nl: 'Het document moet een standaardtaal hebben, vastgelegd in het \"lang\"-attribuut in het <code>html</code>-element.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'document',
+      'language'
+    ]
   }
 };
 module.exports = DocumentLangNotIdentified;

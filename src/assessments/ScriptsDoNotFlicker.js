@@ -42,7 +42,30 @@ var ScriptsDoNotFlicker = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Scripts should not cause the screen to flicker',
+      nl: 'Scripts mogen het scherm niet laten knipperen of flitsen'
+    },
+    description: {
+      en: 'All scripts should be assessed to see if their interface does not flicker.',
+      nl: 'Alle scripts moeten gecontroleerd worden om te zien of zij de interface niet laten knipperen of flitsen.'
+    },
+    guidelines: {
+      508:  [
+        'j'
+      ],
+      wcag: {
+        '2.2.2': {
+          techniques:  [
+            'F7'
+          ]
+        }
+      }
+    },
+    tags: [
+      'javascript'
+    ]
   }
 };
 module.exports = ScriptsDoNotFlicker;

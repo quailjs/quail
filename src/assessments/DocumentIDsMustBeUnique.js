@@ -44,7 +44,29 @@ var DocumentIDsMustBeUnique = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'All element \"id\" attributes must be unique',
+      nl: 'Alle element \"id\"-attributen moeten uniek zijn'
+    },
+    description: {
+      en: 'Element \"id\" attributes must be unique.',
+      nl: 'Element \"id\"-attributen moeten uniek zijn.'
+    },
+    guidelines: {
+      wcag: {
+        '4.1.1': {
+          techniques:  [
+            'F77',
+            'H93'
+          ]
+        }
+      }
+    },
+    tags: [
+      'document',
+      'semantics'
+    ]
   }
 };
 module.exports = DocumentIDsMustBeUnique;

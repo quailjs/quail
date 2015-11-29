@@ -62,7 +62,34 @@ var PNotUsedAsHeader = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Paragraphs must not be used for headers',
+      nl: 'Alinea\'s worden niet gebruikt als header'
+    },
+    description: {
+      en: 'Headers like <code>h1</code> - <code>h6</code> are extremely useful for non-sighted users to navigate the structure of the page, and formatting a paragraph to just be big or bold, while it might visually look like a header, does not make it one.',
+      nl: 'Headers van <code>h1</code> - <code>h6</code> zijn handig voor blinde en slechtziende gebruikers om door een pagina te navigeren. Maak alinea\'s daarom niet op zodat deze lijkt op een header. Dit werkt verwarrend.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'G141',
+            'H42'
+          ]
+        },
+        '2.4.10': {
+          techniques:  [
+            'G141'
+          ]
+        }
+      }
+    },
+    tags: [
+      'header',
+      'content'
+    ]
   }
 };
 module.exports = PNotUsedAsHeader;

@@ -90,7 +90,22 @@ var AnimatedGifMayBePresent = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Test if a .gif is used on the page. Test if the .gif contains more then one frame',
+      nl: 'Test of een .gif afbeelding gebruikt is op de pagina. Test of het .gif bestand uit meer dan één frame bestaat'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'link',
+      'gif'
+    ]
   }
 };
 module.exports = AnimatedGifMayBePresent;

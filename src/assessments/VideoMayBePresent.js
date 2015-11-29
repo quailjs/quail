@@ -58,7 +58,22 @@ var VideoMayBePresent = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Video or object uses a link that points to a file with a video extension',
+      nl: 'Video of object met een link naar een bestand met een video extensie'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'link',
+      'video'
+    ]
   }
 };
 module.exports = VideoMayBePresent;

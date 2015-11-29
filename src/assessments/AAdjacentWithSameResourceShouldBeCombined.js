@@ -53,7 +53,39 @@ var AAdjacentWithSameResourceShouldBeCombined = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Adjacent links that point to the same location should be merged',
+      nl: 'Voeg naast elkaar gelegen links die naar dezelfde locatie verwijzen samen'
+    },
+    description: {
+      en: 'Because many users of screen-readers use links to navigate the page, providing two links right next to each other that point to the same location can be confusing. Try combining the links.',
+      nl: 'Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Voor hen zijn naast elkaar gelegen links die naar dezelfde locatie verwijzen verwarrend. Probeer de links samen te voegen.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.4': {
+          techniques:  [
+            'H2',
+            'F89'
+          ]
+        },
+        '2.4.9': {
+          techniques:  [
+            'F89'
+          ]
+        },
+        '4.1.2': {
+          techniques:  [
+            'F89'
+          ]
+        }
+      }
+    },
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = AAdjacentWithSameResourceShouldBeCombined;

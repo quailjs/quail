@@ -27,7 +27,28 @@ var NewWindowIsOpened = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'A link should not open a new window',
+      nl: 'Een link opent geen nieuw scherm'
+    },
+    description: {
+      en: 'Avoid confusion that may be caused by the appearance of new windows that were not requested by the user.',
+      nl: 'Voorkom verwarring die veroorzaakt wordt door het openen van nieuwe schermen die de gebruiker niet verwacht.'
+    },
+    guidelines: {
+      wcag: {
+        '2.0.0': {
+          techniques:  [
+            'H83'
+          ]
+        }
+      }
+    },
+    tags: [
+      'javascript',
+      'html'
+    ]
   }
 };
 module.exports = NewWindowIsOpened;

@@ -80,7 +80,27 @@ var ColorBackgroundImageContrast = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques:  [
+            'G18'
+          ]
+        }
+      }
+    },
+    tags: [
+      'color'
+    ]
   }
 };
 module.exports = ColorBackgroundImageContrast;

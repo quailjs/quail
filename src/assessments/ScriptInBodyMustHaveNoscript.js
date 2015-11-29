@@ -42,7 +42,23 @@ var ScriptInBodyMustHaveNoscript = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Scripts should have a corresponding \"noscript\" element',
+      nl: 'Scripts moeten een bijbehorend \"noscript\"-element hebben'
+    },
+    description: {
+      en: 'Scripts should be followed by a <code>noscripts</code> element to guide the user to content in an alternative way.',
+      nl: 'Scripts moeten worden gevolgd door een <code>noscripts</code>-element om de gebruiker de weg te wijzen naar de content op een andere manier.'
+    },
+    guidelines: {
+      508:  [
+        'l'
+      ]
+    },
+    tags: [
+      'javascript'
+    ]
   }
 };
 module.exports = ScriptInBodyMustHaveNoscript;

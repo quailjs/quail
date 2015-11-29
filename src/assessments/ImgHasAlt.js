@@ -38,7 +38,32 @@ var ImgHasAlt = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Image elements must have an \"alt\" attribute',
+      nl: 'Afbeeldingselementen moeten een \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>img</code> elements must have an alt attribute.',
+      nl: 'Alle <code>img</code>-elementen moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      508:  [
+        'a'
+      ],
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'F65',
+            'H37'
+          ]
+        }
+      }
+    },
+    tags: [
+      'image',
+      'content'
+    ]
   }
 };
 module.exports = ImgHasAlt;

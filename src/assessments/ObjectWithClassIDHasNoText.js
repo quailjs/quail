@@ -42,7 +42,22 @@ var ObjectWithClassIDHasNoText = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Objects with \"classid\" attributes should change their text if the content of the object changes',
+      nl: 'Objecten met \"classid\"-attributen moeten hun tekst veranderen wanneer de content van het object verandert'
+    },
+    description: {
+      en: 'Objects with \"classid\" attributes, should have their default text change when the object\'s content changes.',
+      nl: 'Van objecten met \"classid\"-attributen moet de standaardtekst veranderen als de content van het object verandert.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'content'
+    ]
   }
 };
 module.exports = ObjectWithClassIDHasNoText;

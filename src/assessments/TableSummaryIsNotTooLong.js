@@ -12,7 +12,14 @@ var TableSummaryIsNotTooLong = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    guidelines: [
+
+    ],
+    tags: [
+      'table',
+      'content'
+    ]
   }
 };
 module.exports = TableSummaryIsNotTooLong;

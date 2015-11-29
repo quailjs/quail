@@ -25,7 +25,22 @@ var AMustHaveTitle = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'All links must have a \"title\" attribute',
+      nl: 'Alle links moeten een \"title\"-attribuut hebben'
+    },
+    description: {
+      en: 'Every link must have a \"title\" attribute.',
+      nl: 'Zorg ervoor dat elke link is voorzien van een \"title\"-attribuut.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = AMustHaveTitle;

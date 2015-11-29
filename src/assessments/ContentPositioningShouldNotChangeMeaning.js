@@ -45,7 +45,45 @@ var ContentPositioningShouldNotChangeMeaning = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Meaning should not be created through positioning',
+      nl: 'Cre�er geen betekenis door positionering'
+    },
+    description: {
+      en: 'Positioning should not be used to change the meaning of an element.',
+      nl: 'Positionering moet niet worden gebruikt om de betekenis van een element te veranderen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques:  [
+            'C6',
+            'F1',
+            'G57'
+          ]
+        },
+        '1.4.5': {
+          techniques:  [
+            'C6'
+          ]
+        },
+        '1.4.9': {
+          techniques:  [
+            'C6'
+          ]
+        },
+        '2.4.1': {
+          techniques:  [
+            'C6'
+          ]
+        }
+      }
+    },
+    tags: [
+      'content',
+      'structure'
+    ]
   }
 };
 module.exports = ContentPositioningShouldNotChangeMeaning;

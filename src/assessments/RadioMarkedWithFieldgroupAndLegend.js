@@ -42,7 +42,33 @@ var RadioMarkedWithFieldgroupAndLegend = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'All radio button groups are marked using fieldset and legend elements',
+      nl: 'Alle groepjes van radio buttons zijn gemarkeerd met fieldset- en legend-elementen'
+    },
+    description: {
+      en: 'Form element content must contain both fieldset and legend elements if there are related radio buttons.',
+      nl: 'Content van formulierelementen moeten zowel fieldset- als legend-elementen bevatten als er gerelateerde radio buttons instaan.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'H71'
+          ]
+        },
+        '3.3.2': {
+          techniques:  [
+            'H71'
+          ]
+        }
+      }
+    },
+    tags: [
+      'form',
+      'content'
+    ]
   }
 };
 module.exports = RadioMarkedWithFieldgroupAndLegend;

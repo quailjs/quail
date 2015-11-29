@@ -31,7 +31,28 @@ var WhiteSpaceInWord = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Whitespace should not be used between characters in a word',
+      nl: 'Zet geen witruimte tussen letters in een woord'
+    },
+    description: {
+      en: 'Using extra whitespace between letters in a word causes screen readers to not interpret the word correctly, use the letter-spacing CSS property instead.',
+      nl: 'Het gebruik van witruimte tussen de letters van een woord, zorgen dat schermlezers het woord niet volledig kunnen lezen. Gebruik in plaats hiervan css om de ruimte tussen letters te bepalen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques:  [
+            'F32',
+            'C8'
+          ]
+        }
+      }
+    },
+    tags: [
+      'content'
+    ]
   }
 };
 module.exports = WhiteSpaceInWord;

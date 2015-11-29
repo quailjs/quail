@@ -42,7 +42,22 @@ var ObjectLinkToMultimediaHasTextTranscript = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Objects which reference multimedia files should also provide a link to a transcript',
+      nl: 'Objecten die verwijzen naar multimediabestanden moeten ook een link aanbieden naar de transcriptie'
+    },
+    description: {
+      en: 'If an object contains a video, a link to the transcript should be provided near the object.',
+      nl: 'Als een object een video bevat, moet een link naar de transcriptie hiervan worden aangeboden bij het object.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'content'
+    ]
   }
 };
 module.exports = ObjectLinkToMultimediaHasTextTranscript;

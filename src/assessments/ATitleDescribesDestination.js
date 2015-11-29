@@ -42,7 +42,29 @@ var ATitleDescribesDestination = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'The title attribute of all source a (anchor) elements describes the link destination.',
+      nl: 'Het titel-attribuut van alle source a (anchor)-elementen beschrijven de bestemming van de link'
+    },
+    description: {
+      en: 'Every link must have a \"title\" attribute which describes the purpose or destination of the link.',
+      nl: 'Elke link moet een \"title\"-attribuut hebben waarin het doel of de bestemming van de link wordt beschreven.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.9': {
+          techniques:  [
+            'H33',
+            'H25'
+          ]
+        }
+      }
+    },
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = ATitleDescribesDestination;

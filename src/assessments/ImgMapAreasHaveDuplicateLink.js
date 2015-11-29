@@ -35,7 +35,25 @@ var ImgMapAreasHaveDuplicateLink = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'All links within a client-side image are duplicated elsewhere in the document',
+      nl: 'Alle links met een client-side afbeelding moeten elders in het document terugkeren'
+    },
+    description: {
+      en: 'Any image that has a \"usemap\" attribute must have links replicated somewhere else in the document.',
+      nl: 'Elke afbeelding met een \"usemap\"-attribuut moet een link elders in het document hebben.'
+    },
+    guidelines: {
+      508:  [
+        'ef',
+        'ef'
+      ]
+    },
+    tags: [
+      'image',
+      'imagemap'
+    ]
   }
 };
 module.exports = ImgMapAreasHaveDuplicateLink;

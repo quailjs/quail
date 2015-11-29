@@ -36,7 +36,27 @@ var DefinitionListsAreUsed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Use a definition list for defining terms',
+      nl: 'Gebruik een definition list voor definities'
+    },
+    description: {
+      en: 'When providing a list of terms or definitions, use a definition list.',
+      nl: 'Wanneer er gebruik wordt gemaakt van een lijst termen of definities, gebruik hiervoor dan een definition list.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'H48'
+          ]
+        }
+      }
+    },
+    tags: [
+      'structure'
+    ]
   }
 };
 module.exports = DefinitionListsAreUsed;

@@ -54,7 +54,28 @@ var LanguageDirectionPunctuation = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Place punctuation around language direction changes in the right order',
+      nl: 'Zet interpunctie bij richtingsveranderingen in taal in de juiste volgorde'
+    },
+    description: {
+      en: 'If punctuation is used around a change in language direction, ensure the punctuation appears in the correct place.',
+      nl: 'Als er interpunctie staat bij een richtingsverandering in de taal, zorg dat deze dan op de goede plek staat.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques:  [
+            'G57'
+          ]
+        }
+      }
+    },
+    tags: [
+      'language',
+      'content'
+    ]
   }
 };
 module.exports = LanguageDirectionPunctuation;

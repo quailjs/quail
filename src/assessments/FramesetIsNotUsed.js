@@ -42,7 +42,22 @@ var FramesetIsNotUsed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'The \"frameset\" element should not be used',
+      nl: 'Het \"frameset\"-element wordt niet gebruikt'
+    },
+    description: {
+      en: 'Frames and framesets should not be used to organize content.',
+      nl: 'Frames en framesets moeten niet gebruikt worden om content te organiseren.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'deprecated',
+      'frame'
+    ]
   }
 };
 module.exports = FramesetIsNotUsed;

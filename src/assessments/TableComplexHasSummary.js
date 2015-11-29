@@ -42,7 +42,28 @@ var TableComplexHasSummary = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Complex tables should have a summary',
+      nl: 'Complexe tabellen moeten een samenvatting hebben'
+    },
+    description: {
+      en: 'If a table is complex (for example, has some cells with \"colspan\" attributes, the table should have a summary.',
+      nl: 'Als een tabel complex is (bijvoorbeeld, als er cellen zijn met \"colspan\"-attributen, moet de tabel een samenvatting hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'H39'
+          ]
+        }
+      }
+    },
+    tags: [
+      'table',
+      'content'
+    ]
   }
 };
 module.exports = TableComplexHasSummary;

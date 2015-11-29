@@ -32,7 +32,22 @@ var FontIsNotUsed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Font elements should not be used',
+      nl: 'Het font element moet niet worden gebruikt'
+    },
+    description: {
+      en: 'The <code>basefont</code> tag is deprecated and should not be used. Investigate using stylesheets instead.',
+      nl: 'De <code>basefont</code>-tag is afgekeurd en moet niet worden gebruikt. Gebruik in plaats hiervan stylesheets.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'deprecated',
+      'content'
+    ]
   }
 };
 module.exports = FontIsNotUsed;

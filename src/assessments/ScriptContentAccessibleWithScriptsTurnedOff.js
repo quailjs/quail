@@ -42,7 +42,21 @@ var ScriptContentAccessibleWithScriptsTurnedOff = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Content on the page should still be available if scripts are disabled',
+      nl: 'Content op de pagina moet beschikbaar blijven als scripts zijn uitgeschakeld'
+    },
+    description: {
+      en: 'All scripts should be assessed to see if, when the user is browsing with scrips turned off, the page content is still available.',
+      nl: 'Alle scripts moeten gecontroleerd worden of, wanneer een gebruiker scripts heeft uitgezet, de content van de pagina nog steeds beschikbaar is.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'javascript'
+    ]
   }
 };
 module.exports = ScriptContentAccessibleWithScriptsTurnedOff;

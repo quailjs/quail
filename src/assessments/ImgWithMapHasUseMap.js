@@ -38,7 +38,26 @@ var ImgWithMapHasUseMap = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Any image with an \"ismap\" attribute have a valid \"usemap\" attribute',
+      nl: 'Elke afbeelding met een \"ismap\"-attribuut heeft een geldig \"usemap\"-attribuut'
+    },
+    description: {
+      en: 'If an image has an \"ismap\" attribute it must have a valid \"usemap\" attribute.',
+      nl: 'Als een afbeelding een \"ismap\"-attribuut heeft, moet het ook een geldig \"usemap\"-attribuut hebben'
+    },
+    guidelines: {
+      508:  [
+        'ef',
+        'ef'
+      ]
+    },
+    tags: [
+      'image',
+      'imagemap',
+      'content'
+    ]
   }
 };
 module.exports = ImgWithMapHasUseMap;

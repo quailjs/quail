@@ -38,7 +38,23 @@ var IframeMustNotHaveLongdesc = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Inline frames (\"iframes\") should not have a \"longdesc\" attribute',
+      nl: 'Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut'
+    },
+    description: {
+      en: 'Inline frames (iframe) should not have a \"longdesc\" attribute.',
+      nl: 'Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'iframe',
+      'content'
+    ]
   }
 };
 module.exports = IframeMustNotHaveLongdesc;

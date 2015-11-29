@@ -53,7 +53,28 @@ var LanguageDirAttributeIsUsed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Use the dir attribute when the language direction changes',
+      nl: 'Gebruik het dir-attribuut als de richting van de taal verandert'
+    },
+    description: {
+      en: 'When there are nested directional changes in text, use an inline element with a <code>dir</code> attribute to indicate direction.',
+      nl: 'Gebruik een inline element met een <code>dir</code>-attribuut om richting aan te geven wanneer er geneste richtingsveranderingen in de tekst zijn.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques:  [
+            'H56'
+          ]
+        }
+      }
+    },
+    tags: [
+      'language',
+      'content'
+    ]
   }
 };
 module.exports = LanguageDirAttributeIsUsed;

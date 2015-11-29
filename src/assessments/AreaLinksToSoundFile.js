@@ -54,7 +54,29 @@ var AreaLinksToSoundFile = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'All \"area\" elements which link to a sound file should also provide a link to a transcript',
+      nl: 'Alle \"area\"-elementen met een link naar een geluidsbestand moeten ook een link bevatten naar een transcriptie'
+    },
+    description: {
+      en: 'All <code>area</code> elements which link to a sound file should have a text transcript.',
+      nl: 'Alle \"area\"-elementen met een link naar een geluidsbestand moeten een transcriptie hebben in tekst.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'G74'
+          ]
+        }
+      }
+    },
+    tags: [
+      'imagemap',
+      'media',
+      'content'
+    ]
   }
 };
 module.exports = AreaLinksToSoundFile;

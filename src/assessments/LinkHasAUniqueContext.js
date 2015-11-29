@@ -177,7 +177,22 @@ var LinkHasAUniqueContext = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Links should have a unique context',
+      nl: 'Links moeten een unieke context hebben'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = LinkHasAUniqueContext;

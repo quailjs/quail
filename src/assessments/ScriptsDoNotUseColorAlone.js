@@ -42,7 +42,24 @@ var ScriptsDoNotUseColorAlone = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'The interface in scripts should not use color alone',
+      nl: 'De interface in scripts gebruikt niet alleen maar kleur'
+    },
+    description: {
+      en: 'All scripts should be assessed to see if their interface does not have an interface which requires distinguishing between colors alone.',
+      nl: 'Alle scripts moeten gecontroleerd worden om te zien of hun interface geen interface heeft die alleen op kleur kan worden onderscheiden.'
+    },
+    guidelines: {
+      508:  [
+        'c'
+      ]
+    },
+    tags: [
+      'javascript',
+      'color'
+    ]
   }
 };
 module.exports = ScriptsDoNotUseColorAlone;

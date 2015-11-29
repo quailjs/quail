@@ -44,7 +44,21 @@ var LinkUsedToDescribeNavigation = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'The document uses link elements to describe navigation if it is within a collection.',
+      nl: 'Het document gebruikt link-elementen om navigatie te beschrijven wanneer het binnen een collectie staat.'
+    },
+    description: {
+      en: 'The link element can provide metadata about the position of an HTML page within a set of Web units or can assist in locating content with a set of Web units.',
+      nl: 'Het link-element kan metadata bevatten over de positie van een HTML-pagina binnen een swet web units, of kan behulpzaamn zijn bij het lokaliseren van content binnen web units.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'document'
+    ]
   }
 };
 module.exports = LinkUsedToDescribeNavigation;

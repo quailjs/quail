@@ -42,7 +42,32 @@ var AreaAltIdentifiesDestination = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'All \"area\" elements must have an \"alt\" attribute which describes the link destination',
+      nl: 'Alle \"area\"-elementen moeten een \"alt\"-attribuut hebben die de bestemming van de link beschrijft'
+    },
+    description: {
+      en: 'All <code>area</code> elements within a <code>map</code> must have an \"alt\" attribute',
+      nl: 'Alle <code>area</code>-elementen binnen een <code>map</code> moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'G74'
+          ]
+        }
+      }
+    },
+    tags: [
+      'objects',
+      'applet',
+      'content'
+    ],
+    options: {
+      test: 'area[alt]'
+    }
   }
 };
 module.exports = AreaAltIdentifiesDestination;

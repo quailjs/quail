@@ -38,7 +38,22 @@ var InputElementsDontHaveAlt = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Input elements which are not images should not have an \"alt\" attribute',
+      nl: 'Invoervelden die geen afbeelding zijn, moeten geen \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'Input elements which are not images should not have an \"alt\" attribute, because of inconsistencies in how user agents use the \"alt\" attribute.',
+      nl: 'Invoervelden die geen afbeelding zijn, moeten geen \"alt\"-attribuut hebben, omdat user agents het \"alt\"-attribuut niet consistent gebruiken.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'form',
+      'content'
+    ]
   }
 };
 module.exports = InputElementsDontHaveAlt;

@@ -31,7 +31,32 @@ var ALinksToMultiMediaRequireTranscript = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Any links to a multimedia file should also include a link to a transcript',
+      nl: 'Elke link naar een multimediabestand moet ook een link bevatten naar een transcriptie'
+    },
+    description: {
+      en: 'Links to a multimedia file should be followed by a link to a transcript of the file.',
+      nl: 'Links naar een multimediabestand moeten worden gevolgd door een link naar de transcriptie van dit bestand.'
+    },
+    guidelines: {
+      508:  [
+        'c'
+      ],
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'G74'
+          ]
+        }
+      }
+    },
+    tags: [
+      'link',
+      'media',
+      'content'
+    ]
   }
 };
 module.exports = ALinksToMultiMediaRequireTranscript;

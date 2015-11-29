@@ -32,7 +32,22 @@ var IIsNotUsed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'The \"i\" (italic) element is not used',
+      nl: 'Het \"i\"-element (cursief) wordt niet gebruikt'
+    },
+    description: {
+      en: 'The <code>i</code> (italic) element provides no emphasis for non-sighted readers. Use the <code>em</code> tag instead.',
+      nl: 'Het <code>i</code>-element biedt geen nadruk voor slechtziende en blinde lezers. Gebruik in plaats daarvan de <code>em</code>-tag.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'deprecated',
+      'content'
+    ]
   }
 };
 module.exports = IIsNotUsed;

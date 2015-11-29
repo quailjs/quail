@@ -42,7 +42,22 @@ var ObjectShouldHaveLongDescription = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'An object might require a long description',
+      nl: 'Een object heeft soms een lange beschrijving nodig'
+    },
+    description: {
+      en: 'Objects might require a long description, especially if their content is complicated.',
+      nl: 'Objecten hebben soms een lange beschrijving nodig, zeker in het geval van ingewikkelde content.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'content'
+    ]
   }
 };
 module.exports = ObjectShouldHaveLongDescription;

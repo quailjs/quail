@@ -42,7 +42,28 @@ var TableCaptionIdentifiesTable = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Captions should identify their table',
+      nl: 'Beschrijvingen moeten hun tabellen identificeren'
+    },
+    description: {
+      en: 'Check to make sure that a table\'s caption identifies the table with a name, figure number, etc.',
+      nl: 'Controleer of de beschrijving van een tabel de tabel identificeert met een naam, nummer en dergelijke.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'H39'
+          ]
+        }
+      }
+    },
+    tags: [
+      'table',
+      'content'
+    ]
   }
 };
 module.exports = TableCaptionIdentifiesTable;

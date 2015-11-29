@@ -27,7 +27,31 @@ var ImgAltIsDifferent = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Image \"alt\" attributes should not be the same as the filename',
+      nl: '\"Alt\"-attributen van afbeeldingen moeten niet hetzelfde zijn als de bestandsnaam'
+    },
+    description: {
+      en: 'All <code>img</code> elements should have an \"alt\" attribute that is not just the name of the file',
+      nl: 'Alle <code>img</code>-elementen moeten een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam van de afbeelding.'
+    },
+    guidelines: {
+      508:  [
+        'a'
+      ],
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'H37'
+          ]
+        }
+      }
+    },
+    tags: [
+      'image',
+      'content'
+    ]
   }
 };
 module.exports = ImgAltIsDifferent;

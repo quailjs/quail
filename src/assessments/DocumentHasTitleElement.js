@@ -38,7 +38,28 @@ var DocumentHasTitleElement = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'The document should have a title element',
+      nl: 'Het document moet een titelelement hebben'
+    },
+    description: {
+      en: 'The document should have a title element.',
+      nl: 'Het document moet een titelelement hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques:  [
+            'H25'
+          ]
+        }
+      }
+    },
+    tags: [
+      'document',
+      'head'
+    ]
   }
 };
 module.exports = DocumentHasTitleElement;

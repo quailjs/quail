@@ -48,7 +48,19 @@ var KINGUseLongDateFormat = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Use a long date format'
+    },
+    description: {
+      en: 'Short date formats might confuse users, Always use the month name: 20 May 2014.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'KING'
+    ]
   }
 };
 module.exports = KINGUseLongDateFormat;

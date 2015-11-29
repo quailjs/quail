@@ -42,7 +42,31 @@ var TableWithBothHeadersUseScope = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Data tables with multiple headers should use the \"scope\" attribute',
+      nl: 'Datatabellen met meerdere headers moeten het \"scope\"-attribuut gebruiken'
+    },
+    description: {
+      en: 'Where there are table headers for both rows and columns, use the \"scope\" attribute to help relate those headers with their appropriate cells.',
+      nl: 'Als er tabelkoppen zijn voor zowel rijen als kolommen, gebruik dan het \"scope\"-attribuut om het juiste verband te leggen tussen de koppen en bijbehorende cellen.'
+    },
+    guidelines: {
+      508:  [
+        'h'
+      ],
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'F91'
+          ]
+        }
+      }
+    },
+    tags: [
+      'table',
+      'content'
+    ]
   }
 };
 module.exports = TableWithBothHeadersUseScope;

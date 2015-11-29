@@ -32,7 +32,22 @@ var ALinksNotSeparatedBySymbols = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Links should not be separated by symbols alone',
+      nl: 'Links mogen niet alleen door symbolen gescheidn worden'
+    },
+    description: {
+      en: 'Since symbols are either not read, or can be confusing when using a screen reader, do not separate links with un-readable symbols.',
+      nl: 'Symbolen worden niet voorgelezen of zijn verwarrend bij het gebruik van een schermlezer. Gebruik geen onleesbare symbolen om links van elkaar te scheiden.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = ALinksNotSeparatedBySymbols;

@@ -15,7 +15,22 @@ var InputTextValueNotEmpty = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Text input elements require a non-whitespace default text',
+      nl: 'Tekstinvoerelementen mogen geen lege standaardtekst hebben'
+    },
+    description: {
+      en: 'All <code>input</code> elements with a type of \"text\" should have a default text which is not empty.',
+      nl: 'Alle invoerelementen van het type \"text\" moeten een standaardtekst hebben die gevuld is.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'form',
+      'content'
+    ]
   }
 };
 module.exports = InputTextValueNotEmpty;

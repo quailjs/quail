@@ -38,7 +38,23 @@ var ImageMapServerSide = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'All links in a server-side map should have duplicate links available in the document',
+      nl: 'Alle links in een server-side map moeten elders in het document terugkeren'
+    },
+    description: {
+      en: 'Any image with an \"usemap\" attribute for a server-side image map should have the available links duplicated elsewhere.',
+      nl: 'Elke afbeelding met een \"usemap\"-attribuut voor een server-side map moet de beschikbare links ook elders hebben.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'iframe',
+      'content'
+    ]
   }
 };
 module.exports = ImageMapServerSide;

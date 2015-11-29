@@ -79,7 +79,30 @@ var ScriptFocusIndicatorVisible = {
   },
 
   meta: {
-replace: 'this'
+    title: {
+      en: 'Script focus indicators have high visibility',
+      nl: 'Script focus indicatoren zijn goed zichtbaar'
+    },
+    description: {
+      en: 'When a focus indicator is used with script, it should have enough contrast with the background and big enough to be highly visible.',
+      nl: 'Wanneer je een focus indicator gebruikt met script, moet het contrast tussen de indicator en de achtergrond groot genoeg zijn in verband met de zichtbaarheid.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.7': {
+          techniques:  [
+            'C15',
+            'G165',
+            'G195',
+            'SCR31'
+          ]
+        }
+      }
+    },
+    tags: [
+      'focus',
+      'content'
+    ]
   }
 };
 module.exports = ScriptFocusIndicatorVisible;

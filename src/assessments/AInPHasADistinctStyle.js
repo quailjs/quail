@@ -99,7 +99,22 @@ var AInPHasADistinctStyle = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Links should be have a distinct style inside a p tag',
+      nl: 'Links moeten een afwijkende stijl hebben binnen een paragraaf'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = AInPHasADistinctStyle;

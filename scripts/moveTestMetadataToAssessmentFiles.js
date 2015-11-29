@@ -73,6 +73,11 @@ Object.keys(assessments).forEach(function (key) {
   var a = assessments[key];
   // Build the string the represents the metadata.
   var meta = [];
+  delete a.type;
+  delete a.libraries;
+  delete a.callback;
+  delete a.strings;
+  delete a.components;
   Object.keys(a).forEach(function (name) {
     var line = '    ' + cleanName(name) + ': ';
     switch (typeof a[name]) {

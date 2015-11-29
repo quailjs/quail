@@ -13,7 +13,19 @@ var KINGStrongList = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Use strong in lists only'
+    },
+    description: {
+      en: 'STRONG only allowed when parent element is LI.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'KING'
+    ]
   }
 };
 module.exports = KINGStrongList;

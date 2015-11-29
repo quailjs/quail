@@ -42,7 +42,22 @@ var ObjectProvidesMechanismToReturnToParent = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'All objects should provide a way for keyboard users to escape',
+      nl: 'Alle objecten moeten een manier bevatten voor toetsenbordgebruikers een manier om het object te verlaten'
+    },
+    description: {
+      en: 'Ensure that a user who has only a keyboard as an input device can escape a <code>object</code> element. This requires manual confirmation.',
+      nl: 'Zorg ervoor dat een gebruiker die alleen het toetsenbord als bediening gebruikt een <code>object</code>-element. Hiervoor is handmatige bevestiging nodig.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'content'
+    ]
   }
 };
 module.exports = ObjectProvidesMechanismToReturnToParent;

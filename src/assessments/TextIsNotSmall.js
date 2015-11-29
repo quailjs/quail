@@ -33,7 +33,22 @@ var TextIsNotSmall = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'The text size is not less than 9 pixels high',
+      nl: 'De grootte van de tekst is meer dan 8 pixels hoog'
+    },
+    description: {
+      en: 'To help users with difficulty reading small text, ensure text size is no less than 9 pixels high.',
+      nl: 'Help gebruikers die moeite hebben met het lezen van kleine letters, door ervoor te zorgen dat tekst groter is dan 8 pixels hoog.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'textsize',
+      'content'
+    ]
   }
 };
 module.exports = TextIsNotSmall;

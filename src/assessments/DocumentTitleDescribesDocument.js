@@ -34,7 +34,29 @@ var DocumentTitleDescribesDocument = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'The title describes the document',
+      nl: 'De titel beschrijft het document'
+    },
+    description: {
+      en: 'The document title should actually describe the page. Often, screen readers use the title to navigate from one window to another.',
+      nl: 'De documenttitel moet een beschrijving zijn van de pagina. Schermlezen gebruiken de titels van pagina\'s om van het ene naar het andere scherm te navigeren.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques:  [
+            'F25',
+            'G88'
+          ]
+        }
+      }
+    },
+    tags: [
+      'document',
+      'head'
+    ]
   }
 };
 module.exports = DocumentTitleDescribesDocument;

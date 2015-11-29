@@ -40,7 +40,28 @@ var ObjectMustHaveTitle = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Objects should have a title attribute',
+      nl: 'Objecten moeten een titelattribuut hebben'
+    },
+    description: {
+      en: 'All <code>object</code> elements should contain a \"title\" attribute.',
+      nl: 'Alle <code>object</code>-elementen moeten een \"titel\"-attribuut bevatten.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'H27'
+          ]
+        }
+      }
+    },
+    tags: [
+      'objects',
+      'content'
+    ]
   }
 };
 module.exports = ObjectMustHaveTitle;

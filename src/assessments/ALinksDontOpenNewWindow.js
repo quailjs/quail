@@ -44,7 +44,29 @@ var ALinksDontOpenNewWindow = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Links should not open a new window without warning',
+      nl: 'Met links open je geen nieuw scherm zonder melding'
+    },
+    description: {
+      en: 'Links which open a new window using the \"target\" attribute should warn users.',
+      nl: 'Voordat links door middel van het \"target\"-attribuut een nieuw scherm openen moet de gebruiker een melding hiervan krijgen.'
+    },
+    guidelines: {
+      wcag: {
+        '3.2.5': {
+          techniques:  [
+            'H83',
+            'SCR24'
+          ]
+        }
+      }
+    },
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = ALinksDontOpenNewWindow;

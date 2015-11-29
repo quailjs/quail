@@ -42,7 +42,25 @@ var AppletsDonotUseColorAlone = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Applets should not use color alone to communicate content',
+      nl: 'Applets mogen niet alleen kleur gebruiken om een boodschap over te brengen'
+    },
+    description: {
+      en: 'Applets should contain content that makes sense without color and is accessible to users who are color blind.',
+      nl: 'Applets moeten content bevatten die ook bruikbaar is zonder kleur en die toegankelijk is voor gebruikers met kleurenblindheid.'
+    },
+    guidelines: {
+      508:  [
+        'c'
+      ]
+    },
+    tags: [
+      'objects',
+      'applet',
+      'content'
+    ]
   }
 };
 module.exports = AppletsDonotUseColorAlone;

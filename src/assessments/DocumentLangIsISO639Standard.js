@@ -44,7 +44,28 @@ var DocumentLangIsISO639Standard = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'The document\'s language attribute should be a standard code',
+      nl: 'Het language-attribuut van het document moet een standaard code zijn'
+    },
+    description: {
+      en: 'The document should have a default langauge, and that language should use the valid 2 or 3 letter language code according to ISO specification 639.',
+      nl: 'Het document moet een standaardtaal hebben en die taal moet de geldige 2- of 3-letterige taalcode hebben volgens de ISO-specificatie 639.'
+    },
+    guidelines: {
+      wcag: {
+        '3.1.1': {
+          techniques:  [
+            'H57'
+          ]
+        }
+      }
+    },
+    tags: [
+      'document',
+      'language'
+    ]
   }
 };
 module.exports = DocumentLangIsISO639Standard;

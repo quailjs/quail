@@ -42,7 +42,33 @@ var FrameTitlesNotEmpty = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Frames cannot have empty \"title\" attributes',
+      nl: 'Frames mogen geen leeg \"title\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>frame</code> elements must have a valid \"title\" attribute.',
+      nl: 'Alle <code>frame</code>-elementen moeten een geldig \"title\"-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.1': {
+          techniques:  [
+            'H64'
+          ]
+        },
+        '4.1.2': {
+          techniques:  [
+            'H64'
+          ]
+        }
+      }
+    },
+    tags: [
+      'deprecated',
+      'frame'
+    ]
   }
 };
 module.exports = FrameTitlesNotEmpty;

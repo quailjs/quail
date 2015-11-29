@@ -42,7 +42,24 @@ var ObjectDoesNotUseColorAlone = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Objects must not use color to communicate alone',
+      nl: 'Objecten gebruiken meer dan alleen kleur om hun boodschap over te brengen'
+    },
+    description: {
+      en: 'Objects should contain content that makes sense without color and is accessible to users who are color blind.',
+      nl: 'Objecten moeten content bevatten die duidelijk is zonder het kleurgebruik en toegankelijk is voor gebruikers met kleurenblindheid.'
+    },
+    guidelines: {
+      508:  [
+        'c'
+      ]
+    },
+    tags: [
+      'objects',
+      'content'
+    ]
   }
 };
 module.exports = ObjectDoesNotUseColorAlone;

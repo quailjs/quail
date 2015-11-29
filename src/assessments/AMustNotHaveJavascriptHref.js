@@ -42,7 +42,22 @@ var AMustNotHaveJavascriptHref = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Links should not use \"javascript\" in their location',
+      nl: 'Links moeten geen \"javascript\" in hun locatie hebben'
+    },
+    description: {
+      en: 'Anchor (<code>a</code>.  elements may not use the \"javascript\" protocol in their \"href\" attributes.',
+      nl: 'Anchor(<code>a</code>.-elementen mogen geen \"javascript\"protocol in hun \"href\"-attributen hebben staan.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = AMustNotHaveJavascriptHref;

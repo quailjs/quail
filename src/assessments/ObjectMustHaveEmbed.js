@@ -40,7 +40,22 @@ var ObjectMustHaveEmbed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Every object should contain an \"embed\" element',
+      nl: 'Elk object moet een \"embed\"-element bevatten'
+    },
+    description: {
+      en: 'Every <code>object</code> element must also contain an <code>embed</code> element.',
+      nl: 'Elk <code>object</code>-element moet ook een \"embed\"-element bevatten.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'content'
+    ]
   }
 };
 module.exports = ObjectMustHaveEmbed;

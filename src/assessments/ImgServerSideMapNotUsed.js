@@ -38,7 +38,23 @@ var ImgServerSideMapNotUsed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Server-side image maps should not be used',
+      nl: 'Server-side image maps moeten niet worden gebruikt'
+    },
+    description: {
+      en: 'Server-side image maps should not be used.',
+      nl: 'Server-side image maps mogen niet worden gebruikt.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'image',
+      'imagemap',
+      'content'
+    ]
   }
 };
 module.exports = ImgServerSideMapNotUsed;

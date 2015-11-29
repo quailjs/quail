@@ -32,7 +32,28 @@ var BlinkIsNotUsed = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'The \"blink\" tag should not be used',
+      nl: 'De \"blink\"-tag moet niet worden gebruikt'
+    },
+    description: {
+      en: 'The <code>blink</code> tag should not be used. Ever.',
+      nl: 'Het is nooit toegestaan om de \"blink\"-tag te gebruiken.'
+    },
+    guidelines: {
+      wcag: {
+        '2.2.2': {
+          techniques:  [
+            'F47'
+          ]
+        }
+      }
+    },
+    tags: [
+      'deprecated',
+      'content'
+    ]
   }
 };
 module.exports = BlinkIsNotUsed;

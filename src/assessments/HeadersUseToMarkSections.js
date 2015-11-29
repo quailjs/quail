@@ -42,7 +42,34 @@ var HeadersUseToMarkSections = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Use headers to mark the beginning of each section',
+      nl: 'Gebruik headers om de start van elke sectie aan te geven.'
+    },
+    description: {
+      en: 'Check that each logical section of the page is broken or introduced with a header (h1-h6) element.',
+      nl: 'Controleer dat elke logische sectie van een pagina wordt onderbroken door of start met een header-element (h1-h6).'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'G141'
+          ]
+        },
+        '2.4.1': {
+          techniques:  [
+            'G141',
+            'H69'
+          ]
+        }
+      }
+    },
+    tags: [
+      'header',
+      'content'
+    ]
   }
 };
 module.exports = HeadersUseToMarkSections;

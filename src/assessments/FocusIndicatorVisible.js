@@ -55,7 +55,29 @@ var FocusIndicatorVisible = {
   },
 
   meta: {
-replace: 'this'
+    title: {
+      en: 'Focus indicators have high visibility',
+      nl: 'Focus indicators moeten goed zichtbaar zijn'
+    },
+    description: {
+      en: 'When a focus indicator is used, it should have enough contrast with the background and big enough to be highly visible.',
+      nl: 'Wanneer je een focus indicator gebruikt, moet het contrast tussen de indicator en de achtergrond groot genoeg zijn in verband met de zichtbaarheid.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.7': {
+          techniques:  [
+            'C15',
+            'G165',
+            'G195'
+          ]
+        }
+      }
+    },
+    tags: [
+      'focus',
+      'content'
+    ]
   }
 };
 module.exports = FocusIndicatorVisible;

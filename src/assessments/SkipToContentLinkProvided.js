@@ -43,7 +43,30 @@ var SkipToContentLinkProvided = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'A \"skip to content\" link should exist as one of the first links on the page',
+      nl: 'Er moet een \"skip to content\"-link zijn als een van de eerste links op de pagina'
+    },
+    description: {
+      en: 'A link reading \"skip to content\" should be the first link on a page.',
+      nl: 'Er moet een link zijn om naar de content te navigeren als een van de eerste links op de pagina.'
+    },
+    guidelines: {
+      508:  [
+        'o'
+      ],
+      wcag: {
+        '2.4.1': {
+          techniques:  [
+            'G1'
+          ]
+        }
+      }
+    },
+    tags: [
+      'document'
+    ]
   }
 };
 module.exports = SkipToContentLinkProvided;

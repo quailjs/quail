@@ -48,7 +48,32 @@ var DomOrderMatchesVisualOrder = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Ensure that the visual order of the page matches the DOM',
+      nl: 'Zorg ervoor dat de visuele ordening van de pagina overeenkomt met de DOM'
+    },
+    description: {
+      en: 'When using positioning techniques, make sure that the visual order of the page matches the DOM.',
+      nl: 'Wanneer je gebruik maakt van positioneringstechnieken, zorg er dan voor dat de visuele ordening van de pagina overeenkomt met de DOM.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques:  [
+            'C27'
+          ]
+        },
+        '2.4.3': {
+          techniques:  [
+            'C27'
+          ]
+        }
+      }
+    },
+    tags: [
+      'content'
+    ]
   }
 };
 module.exports = DomOrderMatchesVisualOrder;

@@ -42,7 +42,31 @@ var ObjectDoesNotFlicker = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Objects do not flicker',
+      nl: 'Objecten knipperen of flitsen niet'
+    },
+    description: {
+      en: 'The content within an <code>object</code> tag must not flicker.',
+      nl: 'De content binnen een <code>object</code>-tag knippert of flitst niet.'
+    },
+    guidelines: {
+      508:  [
+        'j'
+      ],
+      wcag: {
+        '2.2.2': {
+          techniques:  [
+            'F7'
+          ]
+        }
+      }
+    },
+    tags: [
+      'objects',
+      'content'
+    ]
   }
 };
 module.exports = ObjectDoesNotFlicker;

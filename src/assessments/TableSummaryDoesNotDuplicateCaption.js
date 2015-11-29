@@ -19,7 +19,22 @@ var TableSummaryDoesNotDuplicateCaption = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Table \"summary\" elements should not duplicate the \"caption\" element',
+      nl: 'Tabel \"summary\"-elementen mogen niet hetzelfde zijn als het \"caption\"-element'
+    },
+    description: {
+      en: 'The summary and the caption must be different, as both provide different information. A <code>caption</code>. /code element identifies the table, while the \"summary\" attribute describes the table contents.',
+      nl: 'De samenvatting en beschrijving van een tabel moeten verschillen, want ze bieden verschillende informatie. Een <code>caption</code>-element identificeert welke tabel het betreft en het \"summary\"-attribuut beschrijft de inhoud van de tabel.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'table',
+      'content'
+    ]
   }
 };
 module.exports = TableSummaryDoesNotDuplicateCaption;

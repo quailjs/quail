@@ -32,7 +32,28 @@ var HeaderH3Format = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'All h3 elements are not used for formatting',
+      nl: 'H3-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h3</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h3</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'T3'
+          ]
+        }
+      }
+    },
+    tags: [
+      'header',
+      'content'
+    ]
   }
 };
 module.exports = HeaderH3Format;

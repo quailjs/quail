@@ -32,7 +32,38 @@ var ASuspiciousLinkText = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Link text should be useful',
+      nl: 'Linkteksten moeten bruikbaar en betekenisvol zijn'
+    },
+    description: {
+      en: 'Because many users of screen-readers use links to navigate the page, providing links with text that simply read \"click here\" gives no hint of the function of the link.',
+      nl: 'Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Links met de tekst \"klik hier\" zijn voor deze gebruikers niet betekenisvol en niet bruikbaar.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'H30'
+          ]
+        },
+        '2.4.4': {
+          techniques:  [
+            'H30'
+          ]
+        },
+        '2.4.9': {
+          techniques:  [
+            'H30'
+          ]
+        }
+      }
+    },
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = ASuspiciousLinkText;

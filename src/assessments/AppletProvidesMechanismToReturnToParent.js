@@ -42,7 +42,23 @@ var AppletProvidesMechanismToReturnToParent = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'All applets should provide a way for keyboard users to escape',
+      nl: 'Alle applets moeten door toetsenbordgebruikers kunnen worden verlaten'
+    },
+    description: {
+      en: 'Ensure that a user who has only a keyboard as an input device can escape an <code>applet</code> element. This requires manual confirmation.',
+      nl: 'Zorg ervoor dat gebruikers die alleen het toetsenbord gebruiken als bediening een <code>applet</code>-element kunnen verlaten. Hiervoor is handmatige bevestiging nodig.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'applet',
+      'content'
+    ]
   }
 };
 module.exports = AppletProvidesMechanismToReturnToParent;

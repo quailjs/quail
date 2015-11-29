@@ -25,7 +25,27 @@ var TabIndexFollowsLogicalOrder = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'The tab order of a document is logical',
+      nl: 'De tabvolgorde van een document is logisch'
+    },
+    description: {
+      en: 'Check that the tab order of a page is logical.',
+      nl: 'Controleer of de tabvolgorde van een pagina logisch is.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.3': {
+          techniques:  [
+            'H4'
+          ]
+        }
+      }
+    },
+    tags: [
+      'document'
+    ]
   }
 };
 module.exports = TabIndexFollowsLogicalOrder;

@@ -42,7 +42,33 @@ var AppletUIMustBeAccessible = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0,
+    title: {
+      en: 'Any user interface in an applet must be accessible',
+      nl: 'Elke user interface in een applet moet toegankelijk zijn'
+    },
+    description: {
+      en: 'Applet content should be assessed for accessibility.',
+      nl: 'Content in een applet moet getoetst worden op toegankelijkheid.'
+    },
+    guidelines: {
+      508:  [
+        'm'
+      ],
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'G74',
+            'H35'
+          ]
+        }
+      }
+    },
+    tags: [
+      'objects',
+      'applet',
+      'content'
+    ]
   }
 };
 module.exports = AppletUIMustBeAccessible;

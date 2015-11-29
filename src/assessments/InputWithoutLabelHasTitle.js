@@ -45,7 +45,43 @@ var InputWithoutLabelHasTitle = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'Form controls without label should have a title attribute',
+      nl: 'Formulierelementen zonder label moeten een titelattribuut hebben'
+    },
+    description: {
+      en: 'If it is not possible to have a label for a form control, then a title attribute on the element should be provided that describes the purpose of the control.',
+      nl: 'Als een formulierelement geen label kan krijgen, dan moet een dat element een titelattribuut krijgen dat het doel van het element beschrijft.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques:  [
+            'H65'
+          ]
+        },
+        '1.3.1': {
+          techniques:  [
+            'H65'
+          ]
+        },
+        '3.3.2': {
+          techniques:  [
+            'H65'
+          ]
+        },
+        '4.1.2': {
+          techniques:  [
+            'H65'
+          ]
+        }
+      }
+    },
+    tags: [
+      'form',
+      'content'
+    ]
   }
 };
 module.exports = InputWithoutLabelHasTitle;

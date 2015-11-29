@@ -104,7 +104,28 @@ var LanguageChangesAreIdentified = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'Use language attributes to indicate changes in language',
+      nl: 'Gebruik het taal-attribuut om aan te geven dat de taal verandert'
+    },
+    description: {
+      en: 'When the language of the document changes, make sure to wrap those changes in an element with the <code>lang</code> attribute.',
+      nl: 'Als de taal van het document verandert, zet deze veranderingen dan in een element met het <code>lang</code>-attribuut.'
+    },
+    guidelines: {
+      wcag: {
+        '3.1.2': {
+          techniques:  [
+            'H58'
+          ]
+        }
+      }
+    },
+    tags: [
+      'language',
+      'content'
+    ]
   }
 };
 module.exports = LanguageChangesAreIdentified;

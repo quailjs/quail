@@ -25,7 +25,28 @@ var ListOfLinksUseList = {
   },
 
   meta: {
-replace: 'this'
+    testability: 1,
+    title: {
+      en: 'A list of links separated by non-readable characters should be in an ul or ol',
+      nl: 'Een lijst van links die worden gescheiden door onleesbare tekens moeten in een bulleted of genummerde lijst staan'
+    },
+    description: {
+      en: 'A list of links without separation between them should be placed in an ol or ul element.',
+      nl: 'Een lijst van links die niet duidelijk gescheiden zijn moeten in een bulleted of genummerde lijst staan.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques:  [
+            'H48'
+          ]
+        }
+      }
+    },
+    tags: [
+      'link',
+      'content'
+    ]
   }
 };
 module.exports = ListOfLinksUseList;

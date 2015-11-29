@@ -42,7 +42,37 @@ var VideoProvidesCaptions = {
   },
 
   meta: {
-replace: 'this'
+    testability: 0.5,
+    title: {
+      en: 'All video tags must provide captions',
+      nl: 'Alle video tags moeten bijschriften bieden'
+    },
+    description: {
+      en: 'All HTML5 video tags must provide captions.',
+      nl: 'Alle HTML5 video tags moeten bijschriften bieden.'
+    },
+    guidelines: {
+      508:  [
+        'b',
+        'b'
+      ],
+      wcag: {
+        '1.2.2': {
+          techniques:  [
+            'G87'
+          ]
+        },
+        '1.2.4': {
+          techniques:  [
+            'G87'
+          ]
+        }
+      }
+    },
+    tags: [
+      'media',
+      'content'
+    ]
   }
 };
 module.exports = VideoProvidesCaptions;
