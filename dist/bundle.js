@@ -1,8 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AcronymComponent = function AcronymComponent(test) {
+const Case = require('Case');
+var AcronymComponent = function (test) {
   test.get('$scope').each(function () {
     var $scope = $(this);
     var alreadyReported = {};
@@ -67,9 +65,7 @@ var AcronymComponent = function AcronymComponent(test) {
 module.exports = AcronymComponent;
 
 },{"Case":30}],2:[function(require,module,exports){
-'use strict';
-
-var CleanStringComponent = function CleanStringComponent(string) {
+const CleanStringComponent = function (string) {
   return string.toLowerCase().replace(/^\s\s*/, '');
 };
 
@@ -80,8 +76,6 @@ module.exports = CleanStringComponent;
  * Test callback for color tests. This handles both WAI and WCAG
  * color contrast/luminosity.
  */
-'use strict';
-
 var ConvertToPx = require('ConvertToPxComponent');
 var IsUnreadable = require('IsUnreadable');
 
@@ -101,7 +95,7 @@ var ColorComponent = (function () {
      * Returns the lumosity of a given foreground and background object,
      * in the format of {r: red, g: green, b: blue } in rgb color values.
      */
-    getLuminosity: function getLuminosity(foreground, background) {
+    getLuminosity: function (foreground, background) {
       var cacheKey = 'getLuminosity_' + foreground + '_' + background;
       foreground = colors.parseColor(foreground);
       background = colors.parseColor(background);
@@ -135,7 +129,7 @@ var ColorComponent = (function () {
      * Returns the average color for a given image
      * using a canvas element.
      */
-    fetchImageColorAtPixel: function fetchImageColorAtPixel(img, x, y) {
+    fetchImageColorAtPixel: function (img, x, y) {
       x = typeof x !== 'undefined' ? x : 1;
       y = typeof y !== 'undefined' ? y : 1;
       var can = document.createElement('canvas');
@@ -149,16 +143,16 @@ var ColorComponent = (function () {
      * Returns whether an element's color passes
      * WCAG at a certain contrast ratio.
      */
-    passesWCAG: function passesWCAG(element, level) {
+    passesWCAG: function (element, level) {
       return this.passesWCAGColor(element, this.getColor(element, 'foreground'), this.getColor(element, 'background'), level);
     },
 
-    testElmContrast: function testElmContrast(algorithm, element, level) {
+    testElmContrast: function (algorithm, element, level) {
       var background = colors.getColor(element, 'background');
       return colors.testElmBackground(algorithm, element, background, level);
     },
 
-    testElmBackground: function testElmBackground(algorithm, element, background, level) {
+    testElmBackground: function (algorithm, element, background, level) {
       var foreground = colors.getColor(element, 'foreground');
       var res;
       if (algorithm === 'wcag') {
@@ -173,7 +167,7 @@ var ColorComponent = (function () {
      * Returns whether an element's color passes
      * WCAG at a certain contrast ratio.
      */
-    passesWCAGColor: function passesWCAGColor(element, foreground, background, level) {
+    passesWCAGColor: function (element, foreground, background, level) {
       var pxfsize = ConvertToPx(element.css('fontSize'));
       if (typeof level === 'undefined') {
         if (pxfsize >= 18) {
@@ -194,7 +188,7 @@ var ColorComponent = (function () {
      * Returns whether an element's color passes
      * WAI brightness levels.
      */
-    passesWAI: function passesWAI(element) {
+    passesWAI: function (element) {
       var foreground = this.parseColor(this.getColor(element, 'foreground'));
       var background = this.parseColor(this.getColor(element, 'background'));
       return this.passesWAIColor(foreground, background);
@@ -204,7 +198,7 @@ var ColorComponent = (function () {
      * Returns whether an element's color passes
      * WAI brightness levels.
      */
-    passesWAIColor: function passesWAIColor(foreground, background) {
+    passesWAIColor: function (foreground, background) {
       var contrast = colors.getWAIErtContrast(foreground, background);
       var brightness = colors.getWAIErtBrightness(foreground, background);
 
@@ -215,7 +209,7 @@ var ColorComponent = (function () {
      * Compused contrast of a foreground and background
      * per the ERT contrast spec.
      */
-    getWAIErtContrast: function getWAIErtContrast(foreground, background) {
+    getWAIErtContrast: function (foreground, background) {
       var diffs = colors.getWAIDiffs(foreground, background);
       return diffs.red + diffs.green + diffs.blue;
     },
@@ -224,7 +218,7 @@ var ColorComponent = (function () {
      * Computed contrast of a foreground and background
      * per the ERT brightness spec.
      */
-    getWAIErtBrightness: function getWAIErtBrightness(foreground, background) {
+    getWAIErtBrightness: function (foreground, background) {
       var diffs = colors.getWAIDiffs(foreground, background);
       return (diffs.red * 299 + diffs.green * 587 + diffs.blue * 114) / 1000;
     },
@@ -232,7 +226,7 @@ var ColorComponent = (function () {
     /**
      * Returns differences between two colors.
      */
-    getWAIDiffs: function getWAIDiffs(foreground, background) {
+    getWAIDiffs: function (foreground, background) {
       return {
         red: Math.abs(foreground.r - background.r),
         green: Math.abs(foreground.g - background.g),
@@ -245,7 +239,7 @@ var ColorComponent = (function () {
      * There are some normalizations here for the way
      * different browsers can return colors, and handling transparencies.
      */
-    getColor: function getColor(element, type) {
+    getColor: function (element, type) {
       var self = colors;
       if (!$(element).data('cache-id')) {
         $(element).data('cache-id', 'id_' + Math.random());
@@ -277,14 +271,14 @@ var ColorComponent = (function () {
       return colors.cache[cacheKey];
     },
 
-    getForeground: function getForeground(element) {
+    getForeground: function (element) {
       return colors.getColor(element, 'foreground');
     },
 
     /**
      * Returns an object with rgba taken from a string.
      */
-    parseColor: function parseColor(color) {
+    parseColor: function (color) {
       if (typeof color === 'object') {
         return color;
       }
@@ -312,7 +306,7 @@ var ColorComponent = (function () {
     /**
      * Returns background image of an element or its parents.
      */
-    getBackgroundImage: function getBackgroundImage(element) {
+    getBackgroundImage: function (element) {
       if (!$(element).data('cache-id')) {
         $(element).data('cache-id', 'id_' + Math.random());
       }
@@ -337,7 +331,7 @@ var ColorComponent = (function () {
     /**
      * Returns background image of an element or its parents.
      */
-    getBackgroundGradient: function getBackgroundGradient(element) {
+    getBackgroundGradient: function (element) {
       if (!$(element).data('cache-id')) {
         $(element).data('cache-id', 'id_' + Math.random());
       }
@@ -347,7 +341,7 @@ var ColorComponent = (function () {
         return colors.cache[cacheKey];
       }
 
-      var notEmpty = function notEmpty(s) {
+      var notEmpty = function (s) {
         return $.trim(s) !== '';
       };
       element = element[0];
@@ -375,7 +369,7 @@ var ColorComponent = (function () {
     /**
      * Calculates average color of an image.
      */
-    getAverageRGB: function getAverageRGB(img) {
+    getAverageRGB: function (img) {
       var cacheKey = img.src;
       if (colors.cache[cacheKey] !== undefined) {
         return colors.cache[cacheKey];
@@ -443,7 +437,7 @@ var ColorComponent = (function () {
     /**
      * Convert color to hex value.
      */
-    colorToHex: function colorToHex(c) {
+    colorToHex: function (c) {
       var m = /rgba?\((\d+), (\d+), (\d+)/.exec(c);
       return m ? '#' + (1 << 24 | m[1] << 16 | m[2] << 8 | m[3]).toString(16).substr(1) : c;
     },
@@ -451,14 +445,14 @@ var ColorComponent = (function () {
     /**
      * Check if element has a background color.
      */
-    hasBackgroundColor: function hasBackgroundColor(bcolor) {
+    hasBackgroundColor: function (bcolor) {
       return bcolor !== 'rgba(0, 0, 0, 0)' && bcolor !== 'transparent';
     },
 
     /**
      * Traverse visual tree for background property.
      */
-    traverseVisualTreeForBackground: function traverseVisualTreeForBackground(element, property) {
+    traverseVisualTreeForBackground: function (element, property) {
       if (!$(element).data('cache-id')) {
         $(element).data('cache-id', 'id_' + Math.random());
       }
@@ -468,7 +462,7 @@ var ColorComponent = (function () {
         return colors.cache[cacheKey];
       }
 
-      var notempty = function notempty(s) {
+      var notempty = function (s) {
         return $.trim(s) !== '';
       };
 
@@ -550,21 +544,21 @@ var ColorComponent = (function () {
     /**
      * Get first element behind current with a background color.
      */
-    getBehindElementBackgroundColor: function getBehindElementBackgroundColor(element) {
+    getBehindElementBackgroundColor: function (element) {
       return colors.traverseVisualTreeForBackground(element, 'background-color');
     },
 
     /**
      * Get first element behind current with a background gradient.
      */
-    getBehindElementBackgroundGradient: function getBehindElementBackgroundGradient(element) {
+    getBehindElementBackgroundGradient: function (element) {
       return colors.traverseVisualTreeForBackground(element, 'background-gradient');
     },
 
     /**
      * Get first element behind current with a background image.
      */
-    getBehindElementBackgroundImage: function getBehindElementBackgroundImage(element) {
+    getBehindElementBackgroundImage: function (element) {
       return colors.traverseVisualTreeForBackground(element, 'background-image');
     }
   };
@@ -640,10 +634,8 @@ var ColorComponent = (function () {
 module.exports = ColorComponent;
 
 },{"ConvertToPxComponent":5,"IsUnreadable":11}],4:[function(require,module,exports){
-'use strict';
-
 var IsUnreadable = require('IsUnreadable');
-var ContainsReadableTextComponent = function ContainsReadableTextComponent(element, children) {
+const ContainsReadableTextComponent = function (element, children) {
   element = element.clone();
   element.find('option').remove();
   if (!IsUnreadable(element.text())) {
@@ -673,9 +665,7 @@ module.exports = ContainsReadableTextComponent;
  * Converts units to pixels.
  */
 
-'use strict';
-
-var ConvertToPxComponent = function ConvertToPxComponent(unit) {
+var ConvertToPxComponent = function (unit) {
   if (unit.search('px') > -1) {
     return parseInt(unit, 10);
   }
@@ -691,13 +681,11 @@ module.exports = ConvertToPxComponent;
  * Test callback for tests that look for script events
  *  (like a mouse event has a keyboard event as well).
  */
-'use strict';
-
-var Case = require('Case');
+const Case = require('Case');
 var HasEventListenerComponent = require('HasEventListenerComponent');
 var $ = require('jquery/dist/jquery');
 
-var EventComponent = function EventComponent(test, options) {
+var EventComponent = function (test, options) {
   var $scope = test.get('$scope');
   var $items = options.selector && $scope.find(options.selector);
   // Bail if nothing was found.
@@ -737,13 +725,11 @@ var EventComponent = function EventComponent(test, options) {
 };
 module.exports = EventComponent;
 
-},{"Case":30,"HasEventListenerComponent":8,"jquery/dist/jquery":401}],7:[function(require,module,exports){
+},{"Case":30,"HasEventListenerComponent":8,"jquery/dist/jquery":211}],7:[function(require,module,exports){
 /**
  *  Returns text contents for nodes depending on their semantics
  */
-'use strict';
-
-var getTextContentsComponent = function getTextContentsComponent($element) {
+const getTextContentsComponent = function ($element) {
   if ($element.is('p, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption')) {
     return $element.text();
   }
@@ -765,9 +751,7 @@ module.exports = getTextContentsComponent;
 /**
  * Returns whether an element has an event handler or not.
  */
-'use strict';
-
-var HasEventListenerComponent = function HasEventListenerComponent(element, event) {
+var HasEventListenerComponent = function (element, event) {
   if (typeof $(element).attr('on' + event) !== 'undefined') {
     return true;
   }
@@ -786,10 +770,8 @@ var HasEventListenerComponent = function HasEventListenerComponent(element, even
 module.exports = HasEventListenerComponent;
 
 },{}],9:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var HeadingLevelComponent = function HeadingLevelComponent(test, options) {
+const Case = require('Case');
+var HeadingLevelComponent = function (test, options) {
   var priorLevel = false;
   test.get('$scope').find(':header').each(function () {
     var level = parseInt($(this).get(0).tagName.substr(-1, 1), 10);
@@ -813,9 +795,7 @@ module.exports = HeadingLevelComponent;
 /**
  * Read more about this function here: https://github.com/quailjs/quail/wiki/Layout-versus-data-tables
  */
-'use strict';
-
-var IsDataTableComponent = function IsDataTableComponent(table) {
+const IsDataTableComponent = function (table) {
   // If there are less than three rows, why do a table?
   if (table.find('tr').length < 3) {
     return false;
@@ -870,9 +850,7 @@ module.exports = IsDataTableComponent;
  * @todo - This will be added to in the future... we should also include
  * phonetic tests.
  */
-'use strict';
-
-var IsUnreadable = function IsUnreadable(text) {
+const IsUnreadable = function (text) {
   if (typeof text !== 'string') {
     return true;
   }
@@ -882,12 +860,10 @@ var IsUnreadable = function IsUnreadable(text) {
 module.exports = IsUnreadable;
 
 },{}],12:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
+const Case = require('Case');
 var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
 var $ = require('jquery/dist/jquery');
-var LabelComponent = function LabelComponent(test, options) {
+var LabelComponent = function (test, options) {
 
   options = options || {};
 
@@ -911,15 +887,11 @@ var LabelComponent = function LabelComponent(test, options) {
 };
 module.exports = LabelComponent;
 
-},{"Case":30,"ContainsReadableTextComponent":4,"jquery/dist/jquery":401}],13:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"ContainsReadableTextComponent":4,"jquery/dist/jquery":211}],13:[function(require,module,exports){
 var LanguageCodesStringsComponent = ['bh', 'bi', 'nb', 'bs', 'br', 'bg', 'my', 'es', 'ca', 'km', 'ch', 'ce', 'ny', 'ny', 'zh', 'za', 'cu', 'cu', 'cv', 'kw', 'co', 'cr', 'hr', 'cs', 'da', 'dv', 'dv', 'nl', 'dz', 'en', 'eo', 'et', 'ee', 'fo', 'fj', 'fi', 'nl', 'fr', 'ff', 'gd', 'gl', 'lg', 'ka', 'de', 'ki', 'el', 'kl', 'gn', 'gu', 'ht', 'ht', 'ha', 'he', 'hz', 'hi', 'ho', 'hu', 'is', 'io', 'ig', 'id', 'ia', 'ie', 'iu', 'ik', 'ga', 'it', 'ja', 'jv', 'kl', 'kn', 'kr', 'ks', 'kk', 'ki', 'rw', 'ky', 'kv', 'kg', 'ko', 'kj', 'ku', 'kj', 'ky', 'lo', 'la', 'lv', 'lb', 'li', 'li', 'li', 'ln', 'lt', 'lu', 'lb', 'mk', 'mg', 'ms', 'ml', 'dv', 'mt', 'gv', 'mi', 'mr', 'mh', 'ro', 'ro', 'mn', 'na', 'nv', 'nv', 'nd', 'nr', 'ng', 'ne', 'nd', 'se', 'no', 'nb', 'nn', 'ii', 'ny', 'nn', 'ie', 'oc', 'oj', 'cu', 'cu', 'cu', 'or', 'om', 'os', 'os', 'pi', 'pa', 'ps', 'fa', 'pl', 'pt', 'pa', 'ps', 'qu', 'ro', 'rm', 'rn', 'ru', 'sm', 'sg', 'sa', 'sc', 'gd', 'sr', 'sn', 'ii', 'sd', 'si', 'si', 'sk', 'sl', 'so', 'st', 'nr', 'es', 'su', 'sw', 'ss', 'sv', 'tl', 'ty', 'tg', 'ta', 'tt', 'te', 'th', 'bo', 'ti', 'to', 'ts', 'tn', 'tr', 'tk', 'tw', 'ug', 'uk', 'ur', 'ug', 'uz', 'ca', 've', 'vi', 'vo', 'wa', 'cy', 'fy', 'wo', 'xh', 'yi', 'yo', 'za', 'zu'];
 module.exports = LanguageCodesStringsComponent;
 
 },{}],14:[function(require,module,exports){
-'use strict';
-
 var LanguageComponent = {
 
   /**
@@ -995,7 +967,7 @@ var LanguageComponent = {
    * first the browser's default, then the HTML element's 'lang' attribute,
    * then the 'lang' attribute of the element passed to quail.
    */
-  getDocumentLanguage: function getDocumentLanguage(scope, returnIso) {
+  getDocumentLanguage: function (scope, returnIso) {
     var language = navigator.language || navigator.userLanguage;
     if (typeof quail.options.language !== 'undefined') {
       language = quail.options.language;
@@ -1016,8 +988,6 @@ var LanguageComponent = {
 module.exports = LanguageComponent;
 
 },{}],15:[function(require,module,exports){
-"use strict";
-
 var NewWindowStringsComponent = [/new (browser )?(window|frame)/, /popup (window|frame)/];
 module.exports = NewWindowStringsComponent;
 
@@ -1026,17 +996,15 @@ module.exports = NewWindowStringsComponent;
  * Placeholder test - checks that an attribute or the content of an
  * element itself is not a placeholder (i.e. 'click here' for links).
  */
-'use strict';
-
-var Case = require('Case');
+const Case = require('Case');
 var CleanStringComponent = require('CleanStringComponent');
 var IsUnreadable = require('IsUnreadable');
 var PlaceholdersStringsComponent = require('PlaceholdersStringsComponent');
 var $ = require('jquery/dist/jquery');
 
-var PlaceholderComponent = function PlaceholderComponent(test, options) {
+var PlaceholderComponent = function (test, options) {
 
-  var resolve = function resolve(element, resolution) {
+  var resolve = function (element, resolution) {
     test.add(Case({
       element: element,
       status: resolution
@@ -1089,15 +1057,11 @@ var PlaceholderComponent = function PlaceholderComponent(test, options) {
 };
 module.exports = PlaceholderComponent;
 
-},{"Case":30,"CleanStringComponent":2,"IsUnreadable":11,"PlaceholdersStringsComponent":17,"jquery/dist/jquery":401}],17:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"CleanStringComponent":2,"IsUnreadable":11,"PlaceholdersStringsComponent":17,"jquery/dist/jquery":211}],17:[function(require,module,exports){
 var PlaceholdersStringsComponent = ['title', 'untitled', 'untitled document', 'this is the title', 'the title', 'content', ' ', 'new page', 'new', 'nbsp', '&nbsp;', 'spacer', 'image', 'img', 'photo', 'frame', 'frame title', 'iframe', 'iframe title', 'legend'];
 module.exports = PlaceholdersStringsComponent;
 
 },{}],18:[function(require,module,exports){
-'use strict';
-
 var RedundantStringsComponent = {
   inputImage: ['submit', 'button'],
   link: ['link to', 'link', 'go to', 'click here', 'link', 'click', 'more'],
@@ -1106,14 +1070,10 @@ var RedundantStringsComponent = {
 module.exports = RedundantStringsComponent;
 
 },{}],19:[function(require,module,exports){
-'use strict';
-
 var SiteMapStringsComponent = ['site map', 'map', 'sitemap'];
 module.exports = SiteMapStringsComponent;
 
 },{}],20:[function(require,module,exports){
-"use strict";
-
 var SkipContentStringsComponent = [/(jump|skip) (.*) (content|main|post)/i];
 module.exports = SkipContentStringsComponent;
 
@@ -1121,8 +1081,6 @@ module.exports = SkipContentStringsComponent;
 /**
  * Suspect CSS styles that might indicate a paragraph tag is being used as a header.
  */
-'use strict';
-
 var SuspectPCSSStyles = ['color', 'font-weight', 'font-size', 'font-family'];
 
 module.exports = SuspectPCSSStyles;
@@ -1131,21 +1089,15 @@ module.exports = SuspectPCSSStyles;
 /**
  * Suspect tags that would indicate a paragraph is being used as a header.
  */
-'use strict';
-
 var SuspectPHeaderTags = ['strong', 'b', 'em', 'i', 'u', 'font'];
 
 module.exports = SuspectPHeaderTags;
 
 },{}],23:[function(require,module,exports){
-'use strict';
-
 var SuspiciousLinksStringsComponent = ['click here', 'click', 'more', 'here', 'read more', 'download', 'add', 'delete', 'clone', 'order', 'view', 'read', 'clic aqu&iacute;', 'clic', 'haga clic', 'm&aacute;s', 'aqu&iacute;', 'image'];
 module.exports = SuspiciousLinksStringsComponent;
 
 },{}],24:[function(require,module,exports){
-'use strict';
-
 var SymbolsStringsComponent = ['|', '*', /\*/g, '<br>*', '&bull;', '&#8226', '♦', '›', '»', '‣', '▶', '.', '◦', '✓', '◽', '•', '—', '◾'];
 module.exports = SymbolsStringsComponent;
 
@@ -1153,9 +1105,7 @@ module.exports = SymbolsStringsComponent;
 /**
  * Returns DOM nodes that contain at least one text node.
  */
-"use strict";
-
-var TextNodeFilterComponent = function TextNodeFilterComponent(element) {
+var TextNodeFilterComponent = function (element) {
   var nodes = Array.prototype.slice.call(element.childNodes);
   var hasTextNode = false;
   var node;
@@ -1177,8 +1127,6 @@ module.exports = TextNodeFilterComponent;
 /**
  * A list of HTML elements that can contain actual text.
  */
-'use strict';
-
 var TextSelectorComponent = ['tt', 'i', 'b', 'big', 'small', 'em', 'strong', 'dfn', 'code', 'samp', 'kbd', 'var', 'cite', 'abbr', 'acronym', 'sub', 'sup', 'span', 'bdo', 'address', 'div', 'a', 'object', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'q', 'ins', 'del', 'dt', 'dd', 'li', 'label', 'option', 'textarea', 'fieldset', 'legend', 'button', 'caption', 'td', 'th'].join(', ');
 module.exports = TextSelectorComponent;
 
@@ -1187,27 +1135,25 @@ module.exports = TextSelectorComponent;
  * Utility object that runs text statistics, like sentence count,
  * reading level, etc.
  */
-'use strict';
-
 var TextStatisticsComponent = {
 
-  cleanText: function cleanText(text) {
+  cleanText: function (text) {
     return text.replace(/[,:;()\-]/, ' ').replace(/[\.!?]/, '.').replace(/[ ]*(\n|\r\n|\r)[ ]*/, ' ').replace(/([\.])[\. ]+/, '$1').replace(/[ ]*([\.])/, '$1').replace(/[ ]+/, ' ').toLowerCase();
   },
 
-  sentenceCount: function sentenceCount(text) {
+  sentenceCount: function (text) {
     return text.split('.').length + 1;
   },
 
-  wordCount: function wordCount(text) {
+  wordCount: function (text) {
     return text.split(' ').length + 1;
   },
 
-  averageWordsPerSentence: function averageWordsPerSentence(text) {
+  averageWordsPerSentence: function (text) {
     return this.wordCount(text) / this.sentenceCount(text);
   },
 
-  averageSyllablesPerWord: function averageSyllablesPerWord(text) {
+  averageSyllablesPerWord: function (text) {
     var that = this;
     var count = 0;
     var wordCount = that.wordCount(text);
@@ -1220,7 +1166,7 @@ var TextStatisticsComponent = {
     return count / wordCount;
   },
 
-  syllableCount: function syllableCount(word) {
+  syllableCount: function (word) {
     var matchedWord = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '').match(/[aeiouy]{1,2}/g);
     if (!matchedWord || matchedWord.length === 0) {
       return 1;
@@ -1234,9 +1180,7 @@ module.exports = TextStatisticsComponent;
 /**
  * Helper function to determine if a given URL is even valid.
  */
-'use strict';
-
-var ValidURLComponent = function ValidURLComponent(url) {
+const ValidURLComponent = function (url) {
   return url.search(' ') === -1;
 };
 
@@ -1247,8 +1191,6 @@ module.exports = ValidURLComponent;
 * Helper object that tests videos.
 * @todo - allow this to be exteded more easily.
 */
-'use strict';
-
 var Language = require('LanguageComponent');
 
 var VideoComponent = {
@@ -1261,7 +1203,7 @@ var VideoComponent = {
    * @return Boolean
    *   Whether the element is a video.
    */
-  isVideo: function isVideo(element) {
+  isVideo: function (element) {
     var isVideo = false;
     $.each(this.providers, function () {
       if (element.is(this.selector) && this.isVideo(element)) {
@@ -1271,7 +1213,7 @@ var VideoComponent = {
     return isVideo;
   },
 
-  findVideos: function findVideos(element, callback) {
+  findVideos: function (element, callback) {
     $.each(this.providers, function (name, provider) {
       element.find(this.selector).each(function () {
         var video = $(this);
@@ -1290,11 +1232,11 @@ var VideoComponent = {
 
       apiUrl: 'http://gdata.youtube.com/feeds/api/videos/?q=%video&caption&v=2&alt=json',
 
-      isVideo: function isVideo(element) {
+      isVideo: function (element) {
         return this.getVideoId(element) !== false ? true : false;
       },
 
-      getVideoId: function getVideoId(element) {
+      getVideoId: function (element) {
         var attribute = element.is('iframe') ? 'src' : 'href';
         var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&\?]*).*/;
         var match = element.attr(attribute).match(regExp);
@@ -1304,13 +1246,13 @@ var VideoComponent = {
         return false;
       },
 
-      hasCaptions: function hasCaptions(element, callback) {
+      hasCaptions: function (element, callback) {
         var videoId = this.getVideoId(element);
         $.ajax({
           url: this.apiUrl.replace('%video', videoId),
           async: false,
           dataType: 'json',
-          success: function success(data) {
+          success: function (data) {
             callback(element, data.feed.openSearch$totalResults.$t > 0);
           }
         });
@@ -1321,7 +1263,7 @@ var VideoComponent = {
 
       selector: 'object',
 
-      isVideo: function isVideo(element) {
+      isVideo: function (element) {
         var isVideo = false;
         if (element.find('param').length === 0) {
           return false;
@@ -1334,7 +1276,7 @@ var VideoComponent = {
         return isVideo;
       },
 
-      hasCaptions: function hasCaptions(element, callback) {
+      hasCaptions: function (element, callback) {
         var hasCaptions = false;
         element.find('param[name=flashvars]').each(function () {
           if ($(this).attr('value').search('captions') > -1 && $(this).attr('value').search('.srt') > -1 || $(this).attr('value').search('captions.pluginmode') > -1) {
@@ -1349,11 +1291,11 @@ var VideoComponent = {
 
       selector: 'video',
 
-      isVideo: function isVideo(element) {
+      isVideo: function (element) {
         return element.is('video');
       },
 
-      hasCaptions: function hasCaptions(element, callback) {
+      hasCaptions: function (element, callback) {
         var $captions = element.find('track[kind=subtitles], track[kind=captions]');
         if (!$captions.length) {
           callback(element, false);
@@ -1372,7 +1314,7 @@ var VideoComponent = {
                 url: $(this).attr('src'),
                 type: 'HEAD',
                 async: false,
-                error: function error() {}
+                error: function () {}
               });
               if (request.status === 404) {
                 foundLanguage = false;
@@ -1400,8 +1342,6 @@ module.exports = VideoComponent;
  * @providesModule Case
  */
 
-'use strict';
-
 var Case = (function () {
 
   /**
@@ -1414,7 +1354,7 @@ var Case = (function () {
   // Prototype object of the Case.
   Case.fn = Case.prototype = {
     constructor: Case,
-    init: function init(attributes) {
+    init: function (attributes) {
       this.listeners = {};
       this.timeout = null;
       this.attributes = attributes || {};
@@ -1440,10 +1380,10 @@ var Case = (function () {
     },
     // Details of the Case.
     attributes: null,
-    get: function get(attr) {
+    get: function (attr) {
       return this.attributes[attr];
     },
-    set: function set(attr, value) {
+    set: function (attr, value) {
       var isStatusChanged = false;
       // Allow an object of attributes to be passed in.
       if (typeof attr === 'object') {
@@ -1475,7 +1415,7 @@ var Case = (function () {
      * @return boolean
      *   A bit that indicates if the case has one of the supplied statuses.
      */
-    hasStatus: function hasStatus(statuses) {
+    hasStatus: function (statuses) {
       // This is a rought test of arrayness.
       if (typeof statuses !== 'object') {
         statuses = [statuses];
@@ -1491,7 +1431,7 @@ var Case = (function () {
     /**
      * Dispatches the resolve event; clears the timeout fallback event.
      */
-    resolve: function resolve() {
+    resolve: function () {
       clearTimeout(this.timeout);
 
       var el = this.attributes.element;
@@ -1533,24 +1473,24 @@ var Case = (function () {
     /**
      * Abandons the Case if it not resolved within the timeout period.
      */
-    giveup: function giveup() {
+    giveup: function () {
       clearTimeout(this.timeout);
       // @todo, the set method should really have a 'silent' option.
       this.attributes.status = 'untested';
       this.dispatch('timeout', this);
     },
     // @todo, make this a set of methods that all classes extend.
-    listenTo: function listenTo(dispatcher, eventName, handler) {
+    listenTo: function (dispatcher, eventName, handler) {
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
-    registerListener: function registerListener(eventName, handler) {
+    registerListener: function (eventName, handler) {
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
       }
       this.listeners[eventName].push(handler);
     },
-    dispatch: function dispatch(eventName) {
+    dispatch: function (eventName) {
       if (this.listeners[eventName] && this.listeners[eventName].length) {
         var eventArgs = [].slice.call(arguments);
         this.listeners[eventName].forEach(function (handler) {
@@ -1570,7 +1510,7 @@ var Case = (function () {
      * @return {string}
      *   A unique selector for this element.
      */
-    defineUniqueSelector: function defineUniqueSelector(element) {
+    defineUniqueSelector: function (element) {
       /**
        * Indicates whether the selector string represents a unique DOM element.
        *
@@ -1776,11 +1716,11 @@ var _extends = Object.assign || function (target) {
   }return target;
 };
 
-require('babelify/polyfill');
+require('babel-polyfill/dist/polyfill');
 
-var TestCollection = require('TestCollection');
-var wcag2 = require('wcag2');
-var _Assessments = require('_Assessments');
+const TestCollection = require('TestCollection');
+const wcag2 = require('wcag2');
+const _Assessments = require('_Assessments');
 
 var quail = {
 
@@ -1797,7 +1737,7 @@ var quail = {
       /**
        * Perform WCAG specific setup.
        */
-      setup: function setup(tests, listener, callbacks) {
+      setup: function (tests, listener, callbacks) {
         callbacks = callbacks || {};
         // Associate Success Criteria with the TestCollection.
         for (var sc in this.successCriteria) {
@@ -1824,15 +1764,15 @@ var quail = {
   /**
    * Main run function for quail.
    */
-  run: function run(options) {
+  run: function (options) {
     function buildTests(quail, assessmentList, options) {
       // An array of test names.
       if (assessmentList.constructor === Array) {
         for (var i = 0, il = assessmentList.length; i < il; ++i) {
-          var _name = assessmentList[i];
-          var mod = _Assessments.get(_name);
+          let name = assessmentList[i];
+          let mod = _Assessments.get(name);
           if (mod) {
-            quail.tests.set(_name, _extends({
+            quail.tests.set(name, _extends({
               scope: options.html || null,
               callback: mod.run
             }, mod.meta));
@@ -1843,7 +1783,7 @@ var quail = {
         var name;
         for (name in assessmentList) {
           if (assessmentList.hasOwnProperty(name)) {
-            var mod = _Assessments.get(name);
+            let mod = _Assessments.get(name);
             if (mod) {
               quail.tests.set(name, _extends({
                 scope: options.html || null,
@@ -1863,7 +1803,7 @@ var quail = {
      */
     function _run() {
       // Set up Guideline-specific behaviors.
-      var noop = function noop() {};
+      var noop = function () {};
       for (var guideline in quail.guidelines) {
         if (quail.guidelines[guideline] && typeof quail.guidelines[guideline].setup === 'function') {
           quail.guidelines[guideline].setup(quail.tests, this, {
@@ -1901,12 +1841,12 @@ var quail = {
   },
 
   // @todo, make this a set of methods that all classes extend.
-  listenTo: function listenTo(dispatcher, eventName, handler) {
+  listenTo: function (dispatcher, eventName, handler) {
     handler = handler.bind(this);
     dispatcher.registerListener.call(dispatcher, eventName, handler);
   },
 
-  getConfiguration: function getConfiguration(testName) {
+  getConfiguration: function (testName) {
     var test = this.tests.find(testName);
     var guidelines = test && test.get('guidelines');
     var guideline = guidelines && this.options.guidelineName && guidelines[this.options.guidelineName];
@@ -1919,9 +1859,7 @@ var quail = {
 };
 module.exports = window.quail = quail;
 
-},{"TestCollection":33,"_Assessments":227,"babelify/polyfill":225,"wcag2":34}],32:[function(require,module,exports){
-'use strict';
-
+},{"TestCollection":33,"_Assessments":37,"babel-polyfill/dist/polyfill":35,"wcag2":34}],32:[function(require,module,exports){
 var Case = require('Case');
 
 var Test = (function () {
@@ -1936,7 +1874,7 @@ var Test = (function () {
   // Prototype object of the Test.
   Test.fn = Test.prototype = {
     constructor: Test,
-    init: function init(name, attributes) {
+    init: function (name, attributes) {
       this.listeners = {};
       this.length = 0;
       if (!name) {
@@ -1954,7 +1892,7 @@ var Test = (function () {
     // Details of the test.
     attributes: null,
     // Execute a callback for every element in the matched set.
-    each: function each(iterator) {
+    each: function (iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
@@ -1963,7 +1901,7 @@ var Test = (function () {
       }
       return this;
     },
-    get: function get(attr) {
+    get: function (attr) {
       // Return the document wrapped in jQuery if scope is not defined.
       if (attr === '$scope') {
         var scope = this.attributes.scope;
@@ -1973,7 +1911,7 @@ var Test = (function () {
       }
       return this.attributes[attr];
     },
-    set: function set(attr, value) {
+    set: function (attr, value) {
       var isStatusChanged = false;
       // Allow an object of attributes to be passed in.
       if (typeof attr === 'object') {
@@ -1999,7 +1937,7 @@ var Test = (function () {
       }
       return this;
     },
-    add: function add(_case) {
+    add: function (_case) {
       this.listenTo(_case, 'resolve', this.caseResponded);
       this.listenTo(_case, 'timeout', this.caseResponded);
       // If the case is already resolved because it has a status, then trigger
@@ -2010,7 +1948,7 @@ var Test = (function () {
       this.push(_case);
       return _case;
     },
-    invoke: function invoke() {
+    invoke: function () {
       var name = this.get('name');
       // This test is already running.
       if (this.testComplete) {
@@ -2059,7 +1997,7 @@ var Test = (function () {
     /**
      * Finds cases by their status.
      */
-    findByStatus: function findByStatus(statuses) {
+    findByStatus: function (statuses) {
       if (!statuses) {
         return;
       }
@@ -2085,7 +2023,7 @@ var Test = (function () {
     /**
      * Returns a set of cases with corresponding to th supplied selector.
      */
-    findCasesBySelector: function findCasesBySelector(selector) {
+    findCasesBySelector: function (selector) {
       var cases = this.groupCasesBySelector();
       if (cases.hasOwnProperty(selector)) {
         return cases[selector];
@@ -2105,7 +2043,7 @@ var Test = (function () {
      *
      * @needstests
      */
-    findCaseByHtml: function findCaseByHtml(html) {
+    findCaseByHtml: function (html) {
       var _case;
       for (var i = 0, il = this.length; i < il; ++i) {
         _case = this[i];
@@ -2122,7 +2060,7 @@ var Test = (function () {
      * @return object
      *  A hash of cases, keyed by the element selector.
      */
-    groupCasesBySelector: function groupCasesBySelector() {
+    groupCasesBySelector: function () {
       var casesBySelector = {};
       // Loop through the cases.
       this.each(function (index, _case) {
@@ -2142,7 +2080,7 @@ var Test = (function () {
      * @return object
      *  A hash of cases, keyed by the element selector.
      */
-    groupCasesByHtml: function groupCasesByHtml() {
+    groupCasesByHtml: function () {
       var casesByHtml = {};
       // Loop through the cases.
       this.each(function (index, _case) {
@@ -2157,7 +2095,7 @@ var Test = (function () {
     /**
      * @needsdoc
      */
-    getGuidelineCoverage: function getGuidelineCoverage(name) {
+    getGuidelineCoverage: function (name) {
       var config = this.get('guidelines');
       return config && config[name] || {};
     },
@@ -2165,7 +2103,7 @@ var Test = (function () {
      * Adds the test that owns the Case to the set of arguments passed up to
      * listeners of this test's cases.
      */
-    caseResponded: function caseResponded(eventName, _case) {
+    caseResponded: function (eventName, _case) {
       this.dispatch(eventName, this, _case);
       // Attempt to declare the Test complete.
       if (typeof this.testComplete === 'function') {
@@ -2175,7 +2113,7 @@ var Test = (function () {
     /**
      * Evaluates the test's cases and sets the test's status.
      */
-    determineStatus: function determineStatus() {
+    determineStatus: function () {
       // CantTell.
       if (this.findByStatus(['cantTell']).length === this.length) {
         this.set({
@@ -2199,7 +2137,7 @@ var Test = (function () {
             });
           }
     },
-    resolve: function resolve() {
+    resolve: function () {
       this.dispatch('complete', this);
     },
     /**
@@ -2210,11 +2148,11 @@ var Test = (function () {
      */
     testComplete: null,
     // @todo, make this a set of methods that all classes extend.
-    listenTo: function listenTo(dispatcher, eventName, handler) {
+    listenTo: function (dispatcher, eventName, handler) {
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
-    registerListener: function registerListener(eventName, handler) {
+    registerListener: function (eventName, handler) {
       // nb: 'this' is the dispatcher object, not the one that invoked listenTo.
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
@@ -2222,7 +2160,7 @@ var Test = (function () {
 
       this.listeners[eventName].push(handler);
     },
-    dispatch: function dispatch(eventName) {
+    dispatch: function (eventName) {
       if (this.listeners[eventName] && this.listeners[eventName].length) {
         var eventArgs = [].slice.call(arguments);
         this.listeners[eventName].forEach(function (handler) {
@@ -2292,7 +2230,7 @@ var Test = (function () {
     return function () {
       var self = this;
       var args = arguments;
-      var later = function later() {
+      var later = function () {
         timeout = null;
         if (!immediate) {
           result = func.apply(self, args);
@@ -2316,8 +2254,6 @@ var Test = (function () {
 module.exports = Test;
 
 },{"Case":30}],33:[function(require,module,exports){
-'use strict';
-
 var Test = require('Test');
 var TestCollection = (function () {
 
@@ -2331,7 +2267,7 @@ var TestCollection = (function () {
   // Prototype object of the TestCollection.
   TestCollection.fn = TestCollection.prototype = {
     constructor: TestCollection,
-    init: function init(tests, options) {
+    init: function (tests, options) {
       this.listeners = {};
       options = options || {};
       if (!tests) {
@@ -2354,7 +2290,7 @@ var TestCollection = (function () {
     // Setting a length property makes it behave like an array.
     length: 0,
     // Invoke all the tests in a set.
-    run: function run(callbacks) {
+    run: function (callbacks) {
       var self = this;
       callbacks = callbacks || {};
       this.each(function (index, test) {
@@ -2404,7 +2340,7 @@ var TestCollection = (function () {
     /**
      * Execute a callback for every element in the matched set.
      */
-    each: function each(iterator) {
+    each: function (iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
@@ -2420,7 +2356,7 @@ var TestCollection = (function () {
     /**
      * Add a Test object to the set.
      */
-    add: function add(test) {
+    add: function (test) {
       // Don't add a test that already exists in this set.
       if (!this.find(test.get('name'))) {
         this.push(test);
@@ -2429,7 +2365,7 @@ var TestCollection = (function () {
     /**
      * Finds a test by its name.
      */
-    find: function find(testname) {
+    find: function (testname) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           return this[i];
@@ -2440,10 +2376,10 @@ var TestCollection = (function () {
     /**
      * @info, this should be a static method.
      */
-    findByGuideline: function findByGuideline(guidelineName) {
+    findByGuideline: function (guidelineName) {
 
       var methods = {
-        wcag: function wcag(section, technique) {
+        wcag: function (section, technique) {
 
           function findAllTestsForTechnique(guidelineName, sectionId, techniqueName) {
             // Return a TestCollection instance.
@@ -2484,7 +2420,7 @@ var TestCollection = (function () {
     /**
      * Finds tests by their status.
      */
-    findByStatus: function findByStatus(statuses) {
+    findByStatus: function (statuses) {
       if (!statuses) {
         return;
       }
@@ -2510,7 +2446,7 @@ var TestCollection = (function () {
     /**
      * Create a new test from a name and details.
      */
-    set: function set(testname, details) {
+    set: function (testname, details) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           this[i].set(details);
@@ -2528,15 +2464,15 @@ var TestCollection = (function () {
      * testsComplete function in outer scope.
      */
     testsComplete: null,
-    report: function report() {
+    report: function () {
       this.dispatch.apply(this, arguments);
     },
     // @todo, make this a set of methods that all classes extend.
-    listenTo: function listenTo(dispatcher, eventName, handler) {
+    listenTo: function (dispatcher, eventName, handler) {
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
-    registerListener: function registerListener(eventName, handler) {
+    registerListener: function (eventName, handler) {
       // nb: 'this' is the dispatcher object, not the one that invoked listenTo.
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
@@ -2544,7 +2480,7 @@ var TestCollection = (function () {
 
       this.listeners[eventName].push(handler);
     },
-    dispatch: function dispatch(eventName) {
+    dispatch: function (eventName) {
       if (this.listeners[eventName] && this.listeners[eventName].length) {
         var eventArgs = [].slice.call(arguments);
         this.listeners[eventName].forEach(function (handler) {
@@ -2607,7 +2543,7 @@ var TestCollection = (function () {
     return function () {
       var self = this;
       var args = arguments;
-      var later = function later() {
+      var later = function () {
         timeout = null;
         if (!immediate) {
           result = func.apply(self, args);
@@ -2632,10 +2568,9 @@ module.exports = TestCollection;
 
 },{"Test":32}],34:[function(require,module,exports){
 /* A logical combo of Techniques and the intersection of their outcomes. */
-'use strict';
-
 var wcag2 = (function () {
   'use strict';
+
   var ajaxOpt = { async: false, dataType: 'json' };
 
   /**
@@ -2715,43 +2650,47 @@ var wcag2 = (function () {
 module.exports = wcag2;
 
 },{}],35:[function(require,module,exports){
+(function (process,global){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 (function (global){
 "use strict";
 
-require("core-js/shim");
+_dereq_(189);
 
-require("regenerator/runtime");
+_dereq_(2);
 
 if (global._babelPolyfill) {
-  throw new Error("only one instance of babel/polyfill is allowed");
+  throw new Error("only one instance of babel-polyfill is allowed");
 }
 global._babelPolyfill = true;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"core-js/shim":222,"regenerator/runtime":223}],36:[function(require,module,exports){
+},{"189":189,"2":2}],2:[function(_dereq_,module,exports){
+module.exports = _dereq_(190);
+},{"190":190}],3:[function(_dereq_,module,exports){
 module.exports = function(it){
   if(typeof it != 'function')throw TypeError(it + ' is not a function!');
   return it;
 };
-},{}],37:[function(require,module,exports){
+},{}],4:[function(_dereq_,module,exports){
 // 22.1.3.31 Array.prototype[@@unscopables]
-var UNSCOPABLES = require('./$.wks')('unscopables')
+var UNSCOPABLES = _dereq_(84)('unscopables')
   , ArrayProto  = Array.prototype;
-if(ArrayProto[UNSCOPABLES] == undefined)require('./$.hide')(ArrayProto, UNSCOPABLES, {});
+if(ArrayProto[UNSCOPABLES] == undefined)_dereq_(32)(ArrayProto, UNSCOPABLES, {});
 module.exports = function(key){
   ArrayProto[UNSCOPABLES][key] = true;
 };
-},{"./$.hide":65,"./$.wks":117}],38:[function(require,module,exports){
-var isObject = require('./$.is-object');
+},{"32":32,"84":84}],5:[function(_dereq_,module,exports){
+var isObject = _dereq_(39);
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
 };
-},{"./$.is-object":72}],39:[function(require,module,exports){
+},{"39":39}],6:[function(_dereq_,module,exports){
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 'use strict';
-var toObject = require('./$.to-object')
-  , toIndex  = require('./$.to-index')
-  , toLength = require('./$.to-length');
+var toObject = _dereq_(81)
+  , toIndex  = _dereq_(77)
+  , toLength = _dereq_(80);
 
 module.exports = [].copyWithin || function copyWithin(target/*= 0*/, start/*= 0, end = @length*/){
   var O     = toObject(this)
@@ -2774,12 +2713,12 @@ module.exports = [].copyWithin || function copyWithin(target/*= 0*/, start/*= 0,
     from += inc;
   } return O;
 };
-},{"./$.to-index":110,"./$.to-length":113,"./$.to-object":114}],40:[function(require,module,exports){
+},{"77":77,"80":80,"81":81}],7:[function(_dereq_,module,exports){
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 'use strict';
-var toObject = require('./$.to-object')
-  , toIndex  = require('./$.to-index')
-  , toLength = require('./$.to-length');
+var toObject = _dereq_(81)
+  , toIndex  = _dereq_(77)
+  , toLength = _dereq_(80);
 module.exports = [].fill || function fill(value /*, start = 0, end = @length */){
   var O      = toObject(this)
     , length = toLength(O.length)
@@ -2791,12 +2730,12 @@ module.exports = [].fill || function fill(value /*, start = 0, end = @length */)
   while(endPos > index)O[index++] = value;
   return O;
 };
-},{"./$.to-index":110,"./$.to-length":113,"./$.to-object":114}],41:[function(require,module,exports){
+},{"77":77,"80":80,"81":81}],8:[function(_dereq_,module,exports){
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = require('./$.to-iobject')
-  , toLength  = require('./$.to-length')
-  , toIndex   = require('./$.to-index');
+var toIObject = _dereq_(79)
+  , toLength  = _dereq_(80)
+  , toIndex   = _dereq_(77);
 module.exports = function(IS_INCLUDES){
   return function($this, el, fromIndex){
     var O      = toIObject($this)
@@ -2813,7 +2752,7 @@ module.exports = function(IS_INCLUDES){
     } return !IS_INCLUDES && -1;
   };
 };
-},{"./$.to-index":110,"./$.to-iobject":112,"./$.to-length":113}],42:[function(require,module,exports){
+},{"77":77,"79":79,"80":80}],9:[function(_dereq_,module,exports){
 // 0 -> Array#forEach
 // 1 -> Array#map
 // 2 -> Array#filter
@@ -2821,11 +2760,11 @@ module.exports = function(IS_INCLUDES){
 // 4 -> Array#every
 // 5 -> Array#find
 // 6 -> Array#findIndex
-var ctx      = require('./$.ctx')
-  , IObject  = require('./$.iobject')
-  , toObject = require('./$.to-object')
-  , toLength = require('./$.to-length')
-  , asc      = require('./$.array-species-create');
+var ctx      = _dereq_(18)
+  , IObject  = _dereq_(35)
+  , toObject = _dereq_(81)
+  , toLength = _dereq_(80)
+  , asc      = _dereq_(10);
 module.exports = function(TYPE){
   var IS_MAP        = TYPE == 1
     , IS_FILTER     = TYPE == 2
@@ -2857,11 +2796,11 @@ module.exports = function(TYPE){
     return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : result;
   };
 };
-},{"./$.array-species-create":43,"./$.ctx":51,"./$.iobject":68,"./$.to-length":113,"./$.to-object":114}],43:[function(require,module,exports){
+},{"10":10,"18":18,"35":35,"80":80,"81":81}],10:[function(_dereq_,module,exports){
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-var isObject = require('./$.is-object')
-  , isArray  = require('./$.is-array')
-  , SPECIES  = require('./$.wks')('species');
+var isObject = _dereq_(39)
+  , isArray  = _dereq_(37)
+  , SPECIES  = _dereq_(84)('species');
 module.exports = function(original, length){
   var C;
   if(isArray(original)){
@@ -2874,10 +2813,10 @@ module.exports = function(original, length){
     }
   } return new (C === undefined ? Array : C)(length);
 };
-},{"./$.is-array":70,"./$.is-object":72,"./$.wks":117}],44:[function(require,module,exports){
+},{"37":37,"39":39,"84":84}],11:[function(_dereq_,module,exports){
 // getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = require('./$.cof')
-  , TAG = require('./$.wks')('toStringTag')
+var cof = _dereq_(12)
+  , TAG = _dereq_(84)('toStringTag')
   // ES3 wrong here
   , ARG = cof(function(){ return arguments; }()) == 'Arguments';
 
@@ -2891,28 +2830,28 @@ module.exports = function(it){
     // ES3 arguments fallback
     : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
 };
-},{"./$.cof":45,"./$.wks":117}],45:[function(require,module,exports){
+},{"12":12,"84":84}],12:[function(_dereq_,module,exports){
 var toString = {}.toString;
 
 module.exports = function(it){
   return toString.call(it).slice(8, -1);
 };
-},{}],46:[function(require,module,exports){
+},{}],13:[function(_dereq_,module,exports){
 'use strict';
-var $            = require('./$')
-  , hide         = require('./$.hide')
-  , redefineAll  = require('./$.redefine-all')
-  , ctx          = require('./$.ctx')
-  , strictNew    = require('./$.strict-new')
-  , defined      = require('./$.defined')
-  , forOf        = require('./$.for-of')
-  , $iterDefine  = require('./$.iter-define')
-  , step         = require('./$.iter-step')
-  , ID           = require('./$.uid')('id')
-  , $has         = require('./$.has')
-  , isObject     = require('./$.is-object')
-  , setSpecies   = require('./$.set-species')
-  , DESCRIPTORS  = require('./$.descriptors')
+var $            = _dereq_(47)
+  , hide         = _dereq_(32)
+  , redefineAll  = _dereq_(61)
+  , ctx          = _dereq_(18)
+  , strictNew    = _dereq_(70)
+  , defined      = _dereq_(19)
+  , forOf        = _dereq_(28)
+  , $iterDefine  = _dereq_(43)
+  , step         = _dereq_(45)
+  , ID           = _dereq_(83)('id')
+  , $has         = _dereq_(31)
+  , isObject     = _dereq_(39)
+  , setSpecies   = _dereq_(66)
+  , DESCRIPTORS  = _dereq_(20)
   , isExtensible = Object.isExtensible || isObject
   , SIZE         = DESCRIPTORS ? '_s' : 'size'
   , id           = 0;
@@ -3057,10 +2996,10 @@ module.exports = {
     setSpecies(NAME);
   }
 };
-},{"./$":80,"./$.ctx":51,"./$.defined":52,"./$.descriptors":53,"./$.for-of":61,"./$.has":64,"./$.hide":65,"./$.is-object":72,"./$.iter-define":76,"./$.iter-step":78,"./$.redefine-all":94,"./$.set-species":99,"./$.strict-new":103,"./$.uid":116}],47:[function(require,module,exports){
+},{"18":18,"19":19,"20":20,"28":28,"31":31,"32":32,"39":39,"43":43,"45":45,"47":47,"61":61,"66":66,"70":70,"83":83}],14:[function(_dereq_,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var forOf   = require('./$.for-of')
-  , classof = require('./$.classof');
+var forOf   = _dereq_(28)
+  , classof = _dereq_(11);
 module.exports = function(NAME){
   return function toJSON(){
     if(classof(this) != NAME)throw TypeError(NAME + "#toJSON isn't generic");
@@ -3069,17 +3008,17 @@ module.exports = function(NAME){
     return arr;
   };
 };
-},{"./$.classof":44,"./$.for-of":61}],48:[function(require,module,exports){
+},{"11":11,"28":28}],15:[function(_dereq_,module,exports){
 'use strict';
-var hide              = require('./$.hide')
-  , redefineAll       = require('./$.redefine-all')
-  , anObject          = require('./$.an-object')
-  , isObject          = require('./$.is-object')
-  , strictNew         = require('./$.strict-new')
-  , forOf             = require('./$.for-of')
-  , createArrayMethod = require('./$.array-methods')
-  , $has              = require('./$.has')
-  , WEAK              = require('./$.uid')('weak')
+var hide              = _dereq_(32)
+  , redefineAll       = _dereq_(61)
+  , anObject          = _dereq_(5)
+  , isObject          = _dereq_(39)
+  , strictNew         = _dereq_(70)
+  , forOf             = _dereq_(28)
+  , createArrayMethod = _dereq_(9)
+  , $has              = _dereq_(31)
+  , WEAK              = _dereq_(83)('weak')
   , isExtensible      = Object.isExtensible || isObject
   , arrayFind         = createArrayMethod(5)
   , arrayFindIndex    = createArrayMethod(6)
@@ -3156,18 +3095,18 @@ module.exports = {
   frozenStore: frozenStore,
   WEAK: WEAK
 };
-},{"./$.an-object":38,"./$.array-methods":42,"./$.for-of":61,"./$.has":64,"./$.hide":65,"./$.is-object":72,"./$.redefine-all":94,"./$.strict-new":103,"./$.uid":116}],49:[function(require,module,exports){
+},{"28":28,"31":31,"32":32,"39":39,"5":5,"61":61,"70":70,"83":83,"9":9}],16:[function(_dereq_,module,exports){
 'use strict';
-var global         = require('./$.global')
-  , $export        = require('./$.export')
-  , redefine       = require('./$.redefine')
-  , redefineAll    = require('./$.redefine-all')
-  , forOf          = require('./$.for-of')
-  , strictNew      = require('./$.strict-new')
-  , isObject       = require('./$.is-object')
-  , fails          = require('./$.fails')
-  , $iterDetect    = require('./$.iter-detect')
-  , setToStringTag = require('./$.set-to-string-tag');
+var global         = _dereq_(30)
+  , $export        = _dereq_(23)
+  , redefine       = _dereq_(62)
+  , redefineAll    = _dereq_(61)
+  , forOf          = _dereq_(28)
+  , strictNew      = _dereq_(70)
+  , isObject       = _dereq_(39)
+  , fails          = _dereq_(25)
+  , $iterDetect    = _dereq_(44)
+  , setToStringTag = _dereq_(67);
 
 module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
   var Base  = global[NAME]
@@ -3236,12 +3175,12 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
 
   return C;
 };
-},{"./$.export":56,"./$.fails":58,"./$.for-of":61,"./$.global":63,"./$.is-object":72,"./$.iter-detect":77,"./$.redefine":95,"./$.redefine-all":94,"./$.set-to-string-tag":100,"./$.strict-new":103}],50:[function(require,module,exports){
+},{"23":23,"25":25,"28":28,"30":30,"39":39,"44":44,"61":61,"62":62,"67":67,"70":70}],17:[function(_dereq_,module,exports){
 var core = module.exports = {version: '1.2.6'};
 if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-},{}],51:[function(require,module,exports){
+},{}],18:[function(_dereq_,module,exports){
 // optional / simple context binding
-var aFunction = require('./$.a-function');
+var aFunction = _dereq_(3);
 module.exports = function(fn, that, length){
   aFunction(fn);
   if(that === undefined)return fn;
@@ -3260,28 +3199,28 @@ module.exports = function(fn, that, length){
     return fn.apply(that, arguments);
   };
 };
-},{"./$.a-function":36}],52:[function(require,module,exports){
+},{"3":3}],19:[function(_dereq_,module,exports){
 // 7.2.1 RequireObjectCoercible(argument)
 module.exports = function(it){
   if(it == undefined)throw TypeError("Can't call method on  " + it);
   return it;
 };
-},{}],53:[function(require,module,exports){
+},{}],20:[function(_dereq_,module,exports){
 // Thank's IE8 for his funny defineProperty
-module.exports = !require('./$.fails')(function(){
+module.exports = !_dereq_(25)(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 });
-},{"./$.fails":58}],54:[function(require,module,exports){
-var isObject = require('./$.is-object')
-  , document = require('./$.global').document
+},{"25":25}],21:[function(_dereq_,module,exports){
+var isObject = _dereq_(39)
+  , document = _dereq_(30).document
   // in old IE typeof document.createElement is 'object'
   , is = isObject(document) && isObject(document.createElement);
 module.exports = function(it){
   return is ? document.createElement(it) : {};
 };
-},{"./$.global":63,"./$.is-object":72}],55:[function(require,module,exports){
+},{"30":30,"39":39}],22:[function(_dereq_,module,exports){
 // all enumerable object keys, includes symbols
-var $ = require('./$');
+var $ = _dereq_(47);
 module.exports = function(it){
   var keys       = $.getKeys(it)
     , getSymbols = $.getSymbols;
@@ -3294,12 +3233,12 @@ module.exports = function(it){
   }
   return keys;
 };
-},{"./$":80}],56:[function(require,module,exports){
-var global    = require('./$.global')
-  , core      = require('./$.core')
-  , hide      = require('./$.hide')
-  , redefine  = require('./$.redefine')
-  , ctx       = require('./$.ctx')
+},{"47":47}],23:[function(_dereq_,module,exports){
+var global    = _dereq_(30)
+  , core      = _dereq_(17)
+  , hide      = _dereq_(32)
+  , redefine  = _dereq_(62)
+  , ctx       = _dereq_(18)
   , PROTOTYPE = 'prototype';
 
 var $export = function(type, name, source){
@@ -3336,8 +3275,8 @@ $export.P = 8;  // proto
 $export.B = 16; // bind
 $export.W = 32; // wrap
 module.exports = $export;
-},{"./$.core":50,"./$.ctx":51,"./$.global":63,"./$.hide":65,"./$.redefine":95}],57:[function(require,module,exports){
-var MATCH = require('./$.wks')('match');
+},{"17":17,"18":18,"30":30,"32":32,"62":62}],24:[function(_dereq_,module,exports){
+var MATCH = _dereq_(84)('match');
 module.exports = function(KEY){
   var re = /./;
   try {
@@ -3349,7 +3288,7 @@ module.exports = function(KEY){
     } catch(f){ /* empty */ }
   } return true;
 };
-},{"./$.wks":117}],58:[function(require,module,exports){
+},{"84":84}],25:[function(_dereq_,module,exports){
 module.exports = function(exec){
   try {
     return !!exec();
@@ -3357,13 +3296,13 @@ module.exports = function(exec){
     return true;
   }
 };
-},{}],59:[function(require,module,exports){
+},{}],26:[function(_dereq_,module,exports){
 'use strict';
-var hide     = require('./$.hide')
-  , redefine = require('./$.redefine')
-  , fails    = require('./$.fails')
-  , defined  = require('./$.defined')
-  , wks      = require('./$.wks');
+var hide     = _dereq_(32)
+  , redefine = _dereq_(62)
+  , fails    = _dereq_(25)
+  , defined  = _dereq_(19)
+  , wks      = _dereq_(84);
 
 module.exports = function(KEY, length, exec){
   var SYMBOL   = wks(KEY)
@@ -3384,10 +3323,10 @@ module.exports = function(KEY, length, exec){
     );
   }
 };
-},{"./$.defined":52,"./$.fails":58,"./$.hide":65,"./$.redefine":95,"./$.wks":117}],60:[function(require,module,exports){
+},{"19":19,"25":25,"32":32,"62":62,"84":84}],27:[function(_dereq_,module,exports){
 'use strict';
 // 21.2.5.3 get RegExp.prototype.flags
-var anObject = require('./$.an-object');
+var anObject = _dereq_(5);
 module.exports = function(){
   var that   = anObject(this)
     , result = '';
@@ -3398,13 +3337,13 @@ module.exports = function(){
   if(that.sticky)     result += 'y';
   return result;
 };
-},{"./$.an-object":38}],61:[function(require,module,exports){
-var ctx         = require('./$.ctx')
-  , call        = require('./$.iter-call')
-  , isArrayIter = require('./$.is-array-iter')
-  , anObject    = require('./$.an-object')
-  , toLength    = require('./$.to-length')
-  , getIterFn   = require('./core.get-iterator-method');
+},{"5":5}],28:[function(_dereq_,module,exports){
+var ctx         = _dereq_(18)
+  , call        = _dereq_(41)
+  , isArrayIter = _dereq_(36)
+  , anObject    = _dereq_(5)
+  , toLength    = _dereq_(80)
+  , getIterFn   = _dereq_(85);
 module.exports = function(iterable, entries, fn, that){
   var iterFn = getIterFn(iterable)
     , f      = ctx(fn, that, entries ? 2 : 1)
@@ -3418,10 +3357,10 @@ module.exports = function(iterable, entries, fn, that){
     call(iterator, f, step.value, entries);
   }
 };
-},{"./$.an-object":38,"./$.ctx":51,"./$.is-array-iter":69,"./$.iter-call":74,"./$.to-length":113,"./core.get-iterator-method":118}],62:[function(require,module,exports){
+},{"18":18,"36":36,"41":41,"5":5,"80":80,"85":85}],29:[function(_dereq_,module,exports){
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-var toIObject = require('./$.to-iobject')
-  , getNames  = require('./$').getNames
+var toIObject = _dereq_(79)
+  , getNames  = _dereq_(47).getNames
   , toString  = {}.toString;
 
 var windowNames = typeof window == 'object' && Object.getOwnPropertyNames
@@ -3439,28 +3378,28 @@ module.exports.get = function getOwnPropertyNames(it){
   if(windowNames && toString.call(it) == '[object Window]')return getWindowNames(it);
   return getNames(toIObject(it));
 };
-},{"./$":80,"./$.to-iobject":112}],63:[function(require,module,exports){
+},{"47":47,"79":79}],30:[function(_dereq_,module,exports){
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
   ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
 if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-},{}],64:[function(require,module,exports){
+},{}],31:[function(_dereq_,module,exports){
 var hasOwnProperty = {}.hasOwnProperty;
 module.exports = function(it, key){
   return hasOwnProperty.call(it, key);
 };
-},{}],65:[function(require,module,exports){
-var $          = require('./$')
-  , createDesc = require('./$.property-desc');
-module.exports = require('./$.descriptors') ? function(object, key, value){
+},{}],32:[function(_dereq_,module,exports){
+var $          = _dereq_(47)
+  , createDesc = _dereq_(60);
+module.exports = _dereq_(20) ? function(object, key, value){
   return $.setDesc(object, key, createDesc(1, value));
 } : function(object, key, value){
   object[key] = value;
   return object;
 };
-},{"./$":80,"./$.descriptors":53,"./$.property-desc":93}],66:[function(require,module,exports){
-module.exports = require('./$.global').document && document.documentElement;
-},{"./$.global":63}],67:[function(require,module,exports){
+},{"20":20,"47":47,"60":60}],33:[function(_dereq_,module,exports){
+module.exports = _dereq_(30).document && document.documentElement;
+},{"30":30}],34:[function(_dereq_,module,exports){
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
 module.exports = function(fn, args, that){
   var un = that === undefined;
@@ -3477,50 +3416,50 @@ module.exports = function(fn, args, that){
                       : fn.call(that, args[0], args[1], args[2], args[3]);
   } return              fn.apply(that, args);
 };
-},{}],68:[function(require,module,exports){
+},{}],35:[function(_dereq_,module,exports){
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = require('./$.cof');
+var cof = _dereq_(12);
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
-},{"./$.cof":45}],69:[function(require,module,exports){
+},{"12":12}],36:[function(_dereq_,module,exports){
 // check on default Array iterator
-var Iterators  = require('./$.iterators')
-  , ITERATOR   = require('./$.wks')('iterator')
+var Iterators  = _dereq_(46)
+  , ITERATOR   = _dereq_(84)('iterator')
   , ArrayProto = Array.prototype;
 
 module.exports = function(it){
   return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
 };
-},{"./$.iterators":79,"./$.wks":117}],70:[function(require,module,exports){
+},{"46":46,"84":84}],37:[function(_dereq_,module,exports){
 // 7.2.2 IsArray(argument)
-var cof = require('./$.cof');
+var cof = _dereq_(12);
 module.exports = Array.isArray || function(arg){
   return cof(arg) == 'Array';
 };
-},{"./$.cof":45}],71:[function(require,module,exports){
+},{"12":12}],38:[function(_dereq_,module,exports){
 // 20.1.2.3 Number.isInteger(number)
-var isObject = require('./$.is-object')
+var isObject = _dereq_(39)
   , floor    = Math.floor;
 module.exports = function isInteger(it){
   return !isObject(it) && isFinite(it) && floor(it) === it;
 };
-},{"./$.is-object":72}],72:[function(require,module,exports){
+},{"39":39}],39:[function(_dereq_,module,exports){
 module.exports = function(it){
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
-},{}],73:[function(require,module,exports){
+},{}],40:[function(_dereq_,module,exports){
 // 7.2.8 IsRegExp(argument)
-var isObject = require('./$.is-object')
-  , cof      = require('./$.cof')
-  , MATCH    = require('./$.wks')('match');
+var isObject = _dereq_(39)
+  , cof      = _dereq_(12)
+  , MATCH    = _dereq_(84)('match');
 module.exports = function(it){
   var isRegExp;
   return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : cof(it) == 'RegExp');
 };
-},{"./$.cof":45,"./$.is-object":72,"./$.wks":117}],74:[function(require,module,exports){
+},{"12":12,"39":39,"84":84}],41:[function(_dereq_,module,exports){
 // call something on iterator step with safe closing on error
-var anObject = require('./$.an-object');
+var anObject = _dereq_(5);
 module.exports = function(iterator, fn, value, entries){
   try {
     return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -3531,32 +3470,32 @@ module.exports = function(iterator, fn, value, entries){
     throw e;
   }
 };
-},{"./$.an-object":38}],75:[function(require,module,exports){
+},{"5":5}],42:[function(_dereq_,module,exports){
 'use strict';
-var $              = require('./$')
-  , descriptor     = require('./$.property-desc')
-  , setToStringTag = require('./$.set-to-string-tag')
+var $              = _dereq_(47)
+  , descriptor     = _dereq_(60)
+  , setToStringTag = _dereq_(67)
   , IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-require('./$.hide')(IteratorPrototype, require('./$.wks')('iterator'), function(){ return this; });
+_dereq_(32)(IteratorPrototype, _dereq_(84)('iterator'), function(){ return this; });
 
 module.exports = function(Constructor, NAME, next){
   Constructor.prototype = $.create(IteratorPrototype, {next: descriptor(1, next)});
   setToStringTag(Constructor, NAME + ' Iterator');
 };
-},{"./$":80,"./$.hide":65,"./$.property-desc":93,"./$.set-to-string-tag":100,"./$.wks":117}],76:[function(require,module,exports){
+},{"32":32,"47":47,"60":60,"67":67,"84":84}],43:[function(_dereq_,module,exports){
 'use strict';
-var LIBRARY        = require('./$.library')
-  , $export        = require('./$.export')
-  , redefine       = require('./$.redefine')
-  , hide           = require('./$.hide')
-  , has            = require('./$.has')
-  , Iterators      = require('./$.iterators')
-  , $iterCreate    = require('./$.iter-create')
-  , setToStringTag = require('./$.set-to-string-tag')
-  , getProto       = require('./$').getProto
-  , ITERATOR       = require('./$.wks')('iterator')
+var LIBRARY        = _dereq_(49)
+  , $export        = _dereq_(23)
+  , redefine       = _dereq_(62)
+  , hide           = _dereq_(32)
+  , has            = _dereq_(31)
+  , Iterators      = _dereq_(46)
+  , $iterCreate    = _dereq_(42)
+  , setToStringTag = _dereq_(67)
+  , getProto       = _dereq_(47).getProto
+  , ITERATOR       = _dereq_(84)('iterator')
   , BUGGY          = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
   , FF_ITERATOR    = '@@iterator'
   , KEYS           = 'keys'
@@ -3612,8 +3551,8 @@ module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED
   }
   return methods;
 };
-},{"./$":80,"./$.export":56,"./$.has":64,"./$.hide":65,"./$.iter-create":75,"./$.iterators":79,"./$.library":82,"./$.redefine":95,"./$.set-to-string-tag":100,"./$.wks":117}],77:[function(require,module,exports){
-var ITERATOR     = require('./$.wks')('iterator')
+},{"23":23,"31":31,"32":32,"42":42,"46":46,"47":47,"49":49,"62":62,"67":67,"84":84}],44:[function(_dereq_,module,exports){
+var ITERATOR     = _dereq_(84)('iterator')
   , SAFE_CLOSING = false;
 
 try {
@@ -3634,13 +3573,13 @@ module.exports = function(exec, skipClosing){
   } catch(e){ /* empty */ }
   return safe;
 };
-},{"./$.wks":117}],78:[function(require,module,exports){
+},{"84":84}],45:[function(_dereq_,module,exports){
 module.exports = function(done, value){
   return {value: value, done: !!done};
 };
-},{}],79:[function(require,module,exports){
+},{}],46:[function(_dereq_,module,exports){
 module.exports = {};
-},{}],80:[function(require,module,exports){
+},{}],47:[function(_dereq_,module,exports){
 var $Object = Object;
 module.exports = {
   create:     $Object.create,
@@ -3654,9 +3593,9 @@ module.exports = {
   getSymbols: $Object.getOwnPropertySymbols,
   each:       [].forEach
 };
-},{}],81:[function(require,module,exports){
-var $         = require('./$')
-  , toIObject = require('./$.to-iobject');
+},{}],48:[function(_dereq_,module,exports){
+var $         = _dereq_(47)
+  , toIObject = _dereq_(79);
 module.exports = function(object, el){
   var O      = toIObject(object)
     , keys   = $.getKeys(O)
@@ -3665,30 +3604,30 @@ module.exports = function(object, el){
     , key;
   while(length > index)if(O[key = keys[index++]] === el)return key;
 };
-},{"./$":80,"./$.to-iobject":112}],82:[function(require,module,exports){
+},{"47":47,"79":79}],49:[function(_dereq_,module,exports){
 module.exports = false;
-},{}],83:[function(require,module,exports){
+},{}],50:[function(_dereq_,module,exports){
 // 20.2.2.14 Math.expm1(x)
 module.exports = Math.expm1 || function expm1(x){
   return (x = +x) == 0 ? x : x > -1e-6 && x < 1e-6 ? x + x * x / 2 : Math.exp(x) - 1;
 };
-},{}],84:[function(require,module,exports){
+},{}],51:[function(_dereq_,module,exports){
 // 20.2.2.20 Math.log1p(x)
 module.exports = Math.log1p || function log1p(x){
   return (x = +x) > -1e-8 && x < 1e-8 ? x - x * x / 2 : Math.log(1 + x);
 };
-},{}],85:[function(require,module,exports){
+},{}],52:[function(_dereq_,module,exports){
 // 20.2.2.28 Math.sign(x)
 module.exports = Math.sign || function sign(x){
   return (x = +x) == 0 || x != x ? x : x < 0 ? -1 : 1;
 };
-},{}],86:[function(require,module,exports){
-var global    = require('./$.global')
-  , macrotask = require('./$.task').set
+},{}],53:[function(_dereq_,module,exports){
+var global    = _dereq_(30)
+  , macrotask = _dereq_(76).set
   , Observer  = global.MutationObserver || global.WebKitMutationObserver
   , process   = global.process
   , Promise   = global.Promise
-  , isNode    = require('./$.cof')(process) == 'process'
+  , isNode    = _dereq_(12)(process) == 'process'
   , head, last, notify;
 
 var flush = function(){
@@ -3747,14 +3686,14 @@ module.exports = function asap(fn){
     notify();
   } last = task;
 };
-},{"./$.cof":45,"./$.global":63,"./$.task":109}],87:[function(require,module,exports){
+},{"12":12,"30":30,"76":76}],54:[function(_dereq_,module,exports){
 // 19.1.2.1 Object.assign(target, source, ...)
-var $        = require('./$')
-  , toObject = require('./$.to-object')
-  , IObject  = require('./$.iobject');
+var $        = _dereq_(47)
+  , toObject = _dereq_(81)
+  , IObject  = _dereq_(35);
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = require('./$.fails')(function(){
+module.exports = _dereq_(25)(function(){
   var a = Object.assign
     , A = {}
     , B = {}
@@ -3781,20 +3720,20 @@ module.exports = require('./$.fails')(function(){
   }
   return T;
 } : Object.assign;
-},{"./$":80,"./$.fails":58,"./$.iobject":68,"./$.to-object":114}],88:[function(require,module,exports){
+},{"25":25,"35":35,"47":47,"81":81}],55:[function(_dereq_,module,exports){
 // most Object methods by ES6 should accept primitives
-var $export = require('./$.export')
-  , core    = require('./$.core')
-  , fails   = require('./$.fails');
+var $export = _dereq_(23)
+  , core    = _dereq_(17)
+  , fails   = _dereq_(25);
 module.exports = function(KEY, exec){
   var fn  = (core.Object || {})[KEY] || Object[KEY]
     , exp = {};
   exp[KEY] = exec(fn);
   $export($export.S + $export.F * fails(function(){ fn(1); }), 'Object', exp);
 };
-},{"./$.core":50,"./$.export":56,"./$.fails":58}],89:[function(require,module,exports){
-var $         = require('./$')
-  , toIObject = require('./$.to-iobject')
+},{"17":17,"23":23,"25":25}],56:[function(_dereq_,module,exports){
+var $         = _dereq_(47)
+  , toIObject = _dereq_(79)
   , isEnum    = $.isEnum;
 module.exports = function(isEntries){
   return function(it){
@@ -3809,21 +3748,21 @@ module.exports = function(isEntries){
     } return result;
   };
 };
-},{"./$":80,"./$.to-iobject":112}],90:[function(require,module,exports){
+},{"47":47,"79":79}],57:[function(_dereq_,module,exports){
 // all object keys, includes non-enumerable and symbols
-var $        = require('./$')
-  , anObject = require('./$.an-object')
-  , Reflect  = require('./$.global').Reflect;
+var $        = _dereq_(47)
+  , anObject = _dereq_(5)
+  , Reflect  = _dereq_(30).Reflect;
 module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
   var keys       = $.getNames(anObject(it))
     , getSymbols = $.getSymbols;
   return getSymbols ? keys.concat(getSymbols(it)) : keys;
 };
-},{"./$":80,"./$.an-object":38,"./$.global":63}],91:[function(require,module,exports){
+},{"30":30,"47":47,"5":5}],58:[function(_dereq_,module,exports){
 'use strict';
-var path      = require('./$.path')
-  , invoke    = require('./$.invoke')
-  , aFunction = require('./$.a-function');
+var path      = _dereq_(59)
+  , invoke    = _dereq_(34)
+  , aFunction = _dereq_(3);
 module.exports = function(/* ...pargs */){
   var fn     = aFunction(this)
     , length = arguments.length
@@ -3844,9 +3783,9 @@ module.exports = function(/* ...pargs */){
     return invoke(fn, args, that);
   };
 };
-},{"./$.a-function":36,"./$.invoke":67,"./$.path":92}],92:[function(require,module,exports){
-module.exports = require('./$.global');
-},{"./$.global":63}],93:[function(require,module,exports){
+},{"3":3,"34":34,"59":59}],59:[function(_dereq_,module,exports){
+module.exports = _dereq_(30);
+},{"30":30}],60:[function(_dereq_,module,exports){
 module.exports = function(bitmap, value){
   return {
     enumerable  : !(bitmap & 1),
@@ -3855,23 +3794,23 @@ module.exports = function(bitmap, value){
     value       : value
   };
 };
-},{}],94:[function(require,module,exports){
-var redefine = require('./$.redefine');
+},{}],61:[function(_dereq_,module,exports){
+var redefine = _dereq_(62);
 module.exports = function(target, src){
   for(var key in src)redefine(target, key, src[key]);
   return target;
 };
-},{"./$.redefine":95}],95:[function(require,module,exports){
+},{"62":62}],62:[function(_dereq_,module,exports){
 // add fake Function#toString
 // for correct work wrapped methods / constructors with methods like LoDash isNative
-var global    = require('./$.global')
-  , hide      = require('./$.hide')
-  , SRC       = require('./$.uid')('src')
+var global    = _dereq_(30)
+  , hide      = _dereq_(32)
+  , SRC       = _dereq_(83)('src')
   , TO_STRING = 'toString'
   , $toString = Function[TO_STRING]
   , TPL       = ('' + $toString).split(TO_STRING);
 
-require('./$.core').inspectSource = function(it){
+_dereq_(17).inspectSource = function(it){
   return $toString.call(it);
 };
 
@@ -3889,7 +3828,7 @@ require('./$.core').inspectSource = function(it){
 })(Function.prototype, TO_STRING, function toString(){
   return typeof this == 'function' && this[SRC] || $toString.call(this);
 });
-},{"./$.core":50,"./$.global":63,"./$.hide":65,"./$.uid":116}],96:[function(require,module,exports){
+},{"17":17,"30":30,"32":32,"83":83}],63:[function(_dereq_,module,exports){
 module.exports = function(regExp, replace){
   var replacer = replace === Object(replace) ? function(part){
     return replace[part];
@@ -3898,17 +3837,17 @@ module.exports = function(regExp, replace){
     return String(it).replace(regExp, replacer);
   };
 };
-},{}],97:[function(require,module,exports){
+},{}],64:[function(_dereq_,module,exports){
 // 7.2.9 SameValue(x, y)
 module.exports = Object.is || function is(x, y){
   return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
 };
-},{}],98:[function(require,module,exports){
+},{}],65:[function(_dereq_,module,exports){
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var getDesc  = require('./$').getDesc
-  , isObject = require('./$.is-object')
-  , anObject = require('./$.an-object');
+var getDesc  = _dereq_(47).getDesc
+  , isObject = _dereq_(39)
+  , anObject = _dereq_(5);
 var check = function(O, proto){
   anObject(O);
   if(!isObject(proto) && proto !== null)throw TypeError(proto + ": can't set as prototype!");
@@ -3917,7 +3856,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
     function(test, buggy, set){
       try {
-        set = require('./$.ctx')(Function.call, getDesc(Object.prototype, '__proto__').set, 2);
+        set = _dereq_(18)(Function.call, getDesc(Object.prototype, '__proto__').set, 2);
         set(test, []);
         buggy = !(test instanceof Array);
       } catch(e){ buggy = true; }
@@ -3930,12 +3869,12 @@ module.exports = {
     }({}, false) : undefined),
   check: check
 };
-},{"./$":80,"./$.an-object":38,"./$.ctx":51,"./$.is-object":72}],99:[function(require,module,exports){
+},{"18":18,"39":39,"47":47,"5":5}],66:[function(_dereq_,module,exports){
 'use strict';
-var global      = require('./$.global')
-  , $           = require('./$')
-  , DESCRIPTORS = require('./$.descriptors')
-  , SPECIES     = require('./$.wks')('species');
+var global      = _dereq_(30)
+  , $           = _dereq_(47)
+  , DESCRIPTORS = _dereq_(20)
+  , SPECIES     = _dereq_(84)('species');
 
 module.exports = function(KEY){
   var C = global[KEY];
@@ -3944,38 +3883,38 @@ module.exports = function(KEY){
     get: function(){ return this; }
   });
 };
-},{"./$":80,"./$.descriptors":53,"./$.global":63,"./$.wks":117}],100:[function(require,module,exports){
-var def = require('./$').setDesc
-  , has = require('./$.has')
-  , TAG = require('./$.wks')('toStringTag');
+},{"20":20,"30":30,"47":47,"84":84}],67:[function(_dereq_,module,exports){
+var def = _dereq_(47).setDesc
+  , has = _dereq_(31)
+  , TAG = _dereq_(84)('toStringTag');
 
 module.exports = function(it, tag, stat){
   if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
 };
-},{"./$":80,"./$.has":64,"./$.wks":117}],101:[function(require,module,exports){
-var global = require('./$.global')
+},{"31":31,"47":47,"84":84}],68:[function(_dereq_,module,exports){
+var global = _dereq_(30)
   , SHARED = '__core-js_shared__'
   , store  = global[SHARED] || (global[SHARED] = {});
 module.exports = function(key){
   return store[key] || (store[key] = {});
 };
-},{"./$.global":63}],102:[function(require,module,exports){
+},{"30":30}],69:[function(_dereq_,module,exports){
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
-var anObject  = require('./$.an-object')
-  , aFunction = require('./$.a-function')
-  , SPECIES   = require('./$.wks')('species');
+var anObject  = _dereq_(5)
+  , aFunction = _dereq_(3)
+  , SPECIES   = _dereq_(84)('species');
 module.exports = function(O, D){
   var C = anObject(O).constructor, S;
   return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
 };
-},{"./$.a-function":36,"./$.an-object":38,"./$.wks":117}],103:[function(require,module,exports){
+},{"3":3,"5":5,"84":84}],70:[function(_dereq_,module,exports){
 module.exports = function(it, Constructor, name){
   if(!(it instanceof Constructor))throw TypeError(name + ": use the 'new' operator!");
   return it;
 };
-},{}],104:[function(require,module,exports){
-var toInteger = require('./$.to-integer')
-  , defined   = require('./$.defined');
+},{}],71:[function(_dereq_,module,exports){
+var toInteger = _dereq_(78)
+  , defined   = _dereq_(19);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function(TO_STRING){
@@ -3991,20 +3930,20 @@ module.exports = function(TO_STRING){
       : TO_STRING ? s.slice(i, i + 2) : (a - 0xd800 << 10) + (b - 0xdc00) + 0x10000;
   };
 };
-},{"./$.defined":52,"./$.to-integer":111}],105:[function(require,module,exports){
+},{"19":19,"78":78}],72:[function(_dereq_,module,exports){
 // helper for String#{startsWith, endsWith, includes}
-var isRegExp = require('./$.is-regexp')
-  , defined  = require('./$.defined');
+var isRegExp = _dereq_(40)
+  , defined  = _dereq_(19);
 
 module.exports = function(that, searchString, NAME){
   if(isRegExp(searchString))throw TypeError('String#' + NAME + " doesn't accept regex!");
   return String(defined(that));
 };
-},{"./$.defined":52,"./$.is-regexp":73}],106:[function(require,module,exports){
+},{"19":19,"40":40}],73:[function(_dereq_,module,exports){
 // https://github.com/ljharb/proposal-string-pad-left-right
-var toLength = require('./$.to-length')
-  , repeat   = require('./$.string-repeat')
-  , defined  = require('./$.defined');
+var toLength = _dereq_(80)
+  , repeat   = _dereq_(74)
+  , defined  = _dereq_(19);
 
 module.exports = function(that, maxLength, fillString, left){
   var S            = String(defined(that))
@@ -4018,10 +3957,10 @@ module.exports = function(that, maxLength, fillString, left){
   if(stringFiller.length > fillLen)stringFiller = stringFiller.slice(0, fillLen);
   return left ? stringFiller + S : S + stringFiller;
 };
-},{"./$.defined":52,"./$.string-repeat":107,"./$.to-length":113}],107:[function(require,module,exports){
+},{"19":19,"74":74,"80":80}],74:[function(_dereq_,module,exports){
 'use strict';
-var toInteger = require('./$.to-integer')
-  , defined   = require('./$.defined');
+var toInteger = _dereq_(78)
+  , defined   = _dereq_(19);
 
 module.exports = function repeat(count){
   var str = String(defined(this))
@@ -4031,10 +3970,10 @@ module.exports = function repeat(count){
   for(;n > 0; (n >>>= 1) && (str += str))if(n & 1)res += str;
   return res;
 };
-},{"./$.defined":52,"./$.to-integer":111}],108:[function(require,module,exports){
-var $export = require('./$.export')
-  , defined = require('./$.defined')
-  , fails   = require('./$.fails')
+},{"19":19,"78":78}],75:[function(_dereq_,module,exports){
+var $export = _dereq_(23)
+  , defined = _dereq_(19)
+  , fails   = _dereq_(25)
   , spaces  = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
       '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF'
   , space   = '[' + spaces + ']'
@@ -4061,12 +4000,12 @@ var trim = exporter.trim = function(string, TYPE){
 };
 
 module.exports = exporter;
-},{"./$.defined":52,"./$.export":56,"./$.fails":58}],109:[function(require,module,exports){
-var ctx                = require('./$.ctx')
-  , invoke             = require('./$.invoke')
-  , html               = require('./$.html')
-  , cel                = require('./$.dom-create')
-  , global             = require('./$.global')
+},{"19":19,"23":23,"25":25}],76:[function(_dereq_,module,exports){
+var ctx                = _dereq_(18)
+  , invoke             = _dereq_(34)
+  , html               = _dereq_(33)
+  , cel                = _dereq_(21)
+  , global             = _dereq_(30)
   , process            = global.process
   , setTask            = global.setImmediate
   , clearTask          = global.clearImmediate
@@ -4101,7 +4040,7 @@ if(!setTask || !clearTask){
     delete queue[id];
   };
   // Node.js 0.8-
-  if(require('./$.cof')(process) == 'process'){
+  if(_dereq_(12)(process) == 'process'){
     defer = function(id){
       process.nextTick(ctx(run, id, 1));
     };
@@ -4137,44 +4076,44 @@ module.exports = {
   set:   setTask,
   clear: clearTask
 };
-},{"./$.cof":45,"./$.ctx":51,"./$.dom-create":54,"./$.global":63,"./$.html":66,"./$.invoke":67}],110:[function(require,module,exports){
-var toInteger = require('./$.to-integer')
+},{"12":12,"18":18,"21":21,"30":30,"33":33,"34":34}],77:[function(_dereq_,module,exports){
+var toInteger = _dereq_(78)
   , max       = Math.max
   , min       = Math.min;
 module.exports = function(index, length){
   index = toInteger(index);
   return index < 0 ? max(index + length, 0) : min(index, length);
 };
-},{"./$.to-integer":111}],111:[function(require,module,exports){
+},{"78":78}],78:[function(_dereq_,module,exports){
 // 7.1.4 ToInteger
 var ceil  = Math.ceil
   , floor = Math.floor;
 module.exports = function(it){
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
-},{}],112:[function(require,module,exports){
+},{}],79:[function(_dereq_,module,exports){
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = require('./$.iobject')
-  , defined = require('./$.defined');
+var IObject = _dereq_(35)
+  , defined = _dereq_(19);
 module.exports = function(it){
   return IObject(defined(it));
 };
-},{"./$.defined":52,"./$.iobject":68}],113:[function(require,module,exports){
+},{"19":19,"35":35}],80:[function(_dereq_,module,exports){
 // 7.1.15 ToLength
-var toInteger = require('./$.to-integer')
+var toInteger = _dereq_(78)
   , min       = Math.min;
 module.exports = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
-},{"./$.to-integer":111}],114:[function(require,module,exports){
+},{"78":78}],81:[function(_dereq_,module,exports){
 // 7.1.13 ToObject(argument)
-var defined = require('./$.defined');
+var defined = _dereq_(19);
 module.exports = function(it){
   return Object(defined(it));
 };
-},{"./$.defined":52}],115:[function(require,module,exports){
+},{"19":19}],82:[function(_dereq_,module,exports){
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = require('./$.is-object');
+var isObject = _dereq_(39);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function(it, S){
@@ -4185,53 +4124,53 @@ module.exports = function(it, S){
   if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
   throw TypeError("Can't convert object to primitive value");
 };
-},{"./$.is-object":72}],116:[function(require,module,exports){
+},{"39":39}],83:[function(_dereq_,module,exports){
 var id = 0
   , px = Math.random();
 module.exports = function(key){
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
-},{}],117:[function(require,module,exports){
-var store  = require('./$.shared')('wks')
-  , uid    = require('./$.uid')
-  , Symbol = require('./$.global').Symbol;
+},{}],84:[function(_dereq_,module,exports){
+var store  = _dereq_(68)('wks')
+  , uid    = _dereq_(83)
+  , Symbol = _dereq_(30).Symbol;
 module.exports = function(name){
   return store[name] || (store[name] =
     Symbol && Symbol[name] || (Symbol || uid)('Symbol.' + name));
 };
-},{"./$.global":63,"./$.shared":101,"./$.uid":116}],118:[function(require,module,exports){
-var classof   = require('./$.classof')
-  , ITERATOR  = require('./$.wks')('iterator')
-  , Iterators = require('./$.iterators');
-module.exports = require('./$.core').getIteratorMethod = function(it){
+},{"30":30,"68":68,"83":83}],85:[function(_dereq_,module,exports){
+var classof   = _dereq_(11)
+  , ITERATOR  = _dereq_(84)('iterator')
+  , Iterators = _dereq_(46);
+module.exports = _dereq_(17).getIteratorMethod = function(it){
   if(it != undefined)return it[ITERATOR]
     || it['@@iterator']
     || Iterators[classof(it)];
 };
-},{"./$.classof":44,"./$.core":50,"./$.iterators":79,"./$.wks":117}],119:[function(require,module,exports){
+},{"11":11,"17":17,"46":46,"84":84}],86:[function(_dereq_,module,exports){
 'use strict';
-var $                 = require('./$')
-  , $export           = require('./$.export')
-  , DESCRIPTORS       = require('./$.descriptors')
-  , createDesc        = require('./$.property-desc')
-  , html              = require('./$.html')
-  , cel               = require('./$.dom-create')
-  , has               = require('./$.has')
-  , cof               = require('./$.cof')
-  , invoke            = require('./$.invoke')
-  , fails             = require('./$.fails')
-  , anObject          = require('./$.an-object')
-  , aFunction         = require('./$.a-function')
-  , isObject          = require('./$.is-object')
-  , toObject          = require('./$.to-object')
-  , toIObject         = require('./$.to-iobject')
-  , toInteger         = require('./$.to-integer')
-  , toIndex           = require('./$.to-index')
-  , toLength          = require('./$.to-length')
-  , IObject           = require('./$.iobject')
-  , IE_PROTO          = require('./$.uid')('__proto__')
-  , createArrayMethod = require('./$.array-methods')
-  , arrayIndexOf      = require('./$.array-includes')(false)
+var $                 = _dereq_(47)
+  , $export           = _dereq_(23)
+  , DESCRIPTORS       = _dereq_(20)
+  , createDesc        = _dereq_(60)
+  , html              = _dereq_(33)
+  , cel               = _dereq_(21)
+  , has               = _dereq_(31)
+  , cof               = _dereq_(12)
+  , invoke            = _dereq_(34)
+  , fails             = _dereq_(25)
+  , anObject          = _dereq_(5)
+  , aFunction         = _dereq_(3)
+  , isObject          = _dereq_(39)
+  , toObject          = _dereq_(81)
+  , toIObject         = _dereq_(79)
+  , toInteger         = _dereq_(78)
+  , toIndex           = _dereq_(77)
+  , toLength          = _dereq_(80)
+  , IObject           = _dereq_(35)
+  , IE_PROTO          = _dereq_(83)('__proto__')
+  , createArrayMethod = _dereq_(9)
+  , arrayIndexOf      = _dereq_(8)(false)
   , ObjectProto       = Object.prototype
   , ArrayProto        = Array.prototype
   , arraySlice        = ArrayProto.slice
@@ -4397,7 +4336,7 @@ $export($export.P + $export.F * (IObject != Object), 'Array', {
 });
 
 // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
-$export($export.S, 'Array', {isArray: require('./$.is-array')});
+$export($export.S, 'Array', {isArray: _dereq_(37)});
 
 var createArrayReduce = function(isRight){
   return function(callbackfn, memo){
@@ -4485,25 +4424,25 @@ $export($export.P + $export.F * (fails(function(){
       ':' + lz(d.getUTCSeconds()) + '.' + (m > 99 ? m : '0' + lz(m)) + 'Z';
   }
 });
-},{"./$":80,"./$.a-function":36,"./$.an-object":38,"./$.array-includes":41,"./$.array-methods":42,"./$.cof":45,"./$.descriptors":53,"./$.dom-create":54,"./$.export":56,"./$.fails":58,"./$.has":64,"./$.html":66,"./$.invoke":67,"./$.iobject":68,"./$.is-array":70,"./$.is-object":72,"./$.property-desc":93,"./$.to-index":110,"./$.to-integer":111,"./$.to-iobject":112,"./$.to-length":113,"./$.to-object":114,"./$.uid":116}],120:[function(require,module,exports){
+},{"12":12,"20":20,"21":21,"23":23,"25":25,"3":3,"31":31,"33":33,"34":34,"35":35,"37":37,"39":39,"47":47,"5":5,"60":60,"77":77,"78":78,"79":79,"8":8,"80":80,"81":81,"83":83,"9":9}],87:[function(_dereq_,module,exports){
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
-$export($export.P, 'Array', {copyWithin: require('./$.array-copy-within')});
+$export($export.P, 'Array', {copyWithin: _dereq_(6)});
 
-require('./$.add-to-unscopables')('copyWithin');
-},{"./$.add-to-unscopables":37,"./$.array-copy-within":39,"./$.export":56}],121:[function(require,module,exports){
+_dereq_(4)('copyWithin');
+},{"23":23,"4":4,"6":6}],88:[function(_dereq_,module,exports){
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
-$export($export.P, 'Array', {fill: require('./$.array-fill')});
+$export($export.P, 'Array', {fill: _dereq_(7)});
 
-require('./$.add-to-unscopables')('fill');
-},{"./$.add-to-unscopables":37,"./$.array-fill":40,"./$.export":56}],122:[function(require,module,exports){
+_dereq_(4)('fill');
+},{"23":23,"4":4,"7":7}],89:[function(_dereq_,module,exports){
 'use strict';
 // 22.1.3.9 Array.prototype.findIndex(predicate, thisArg = undefined)
-var $export = require('./$.export')
-  , $find   = require('./$.array-methods')(6)
+var $export = _dereq_(23)
+  , $find   = _dereq_(9)(6)
   , KEY     = 'findIndex'
   , forced  = true;
 // Shouldn't skip holes
@@ -4513,12 +4452,12 @@ $export($export.P + $export.F * forced, 'Array', {
     return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
-require('./$.add-to-unscopables')(KEY);
-},{"./$.add-to-unscopables":37,"./$.array-methods":42,"./$.export":56}],123:[function(require,module,exports){
+_dereq_(4)(KEY);
+},{"23":23,"4":4,"9":9}],90:[function(_dereq_,module,exports){
 'use strict';
 // 22.1.3.8 Array.prototype.find(predicate, thisArg = undefined)
-var $export = require('./$.export')
-  , $find   = require('./$.array-methods')(5)
+var $export = _dereq_(23)
+  , $find   = _dereq_(9)(5)
   , KEY     = 'find'
   , forced  = true;
 // Shouldn't skip holes
@@ -4528,17 +4467,17 @@ $export($export.P + $export.F * forced, 'Array', {
     return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
-require('./$.add-to-unscopables')(KEY);
-},{"./$.add-to-unscopables":37,"./$.array-methods":42,"./$.export":56}],124:[function(require,module,exports){
+_dereq_(4)(KEY);
+},{"23":23,"4":4,"9":9}],91:[function(_dereq_,module,exports){
 'use strict';
-var ctx         = require('./$.ctx')
-  , $export     = require('./$.export')
-  , toObject    = require('./$.to-object')
-  , call        = require('./$.iter-call')
-  , isArrayIter = require('./$.is-array-iter')
-  , toLength    = require('./$.to-length')
-  , getIterFn   = require('./core.get-iterator-method');
-$export($export.S + $export.F * !require('./$.iter-detect')(function(iter){ Array.from(iter); }), 'Array', {
+var ctx         = _dereq_(18)
+  , $export     = _dereq_(23)
+  , toObject    = _dereq_(81)
+  , call        = _dereq_(41)
+  , isArrayIter = _dereq_(36)
+  , toLength    = _dereq_(80)
+  , getIterFn   = _dereq_(85);
+$export($export.S + $export.F * !_dereq_(44)(function(iter){ Array.from(iter); }), 'Array', {
   // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
   from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
     var O       = toObject(arrayLike)
@@ -4567,18 +4506,18 @@ $export($export.S + $export.F * !require('./$.iter-detect')(function(iter){ Arra
   }
 });
 
-},{"./$.ctx":51,"./$.export":56,"./$.is-array-iter":69,"./$.iter-call":74,"./$.iter-detect":77,"./$.to-length":113,"./$.to-object":114,"./core.get-iterator-method":118}],125:[function(require,module,exports){
+},{"18":18,"23":23,"36":36,"41":41,"44":44,"80":80,"81":81,"85":85}],92:[function(_dereq_,module,exports){
 'use strict';
-var addToUnscopables = require('./$.add-to-unscopables')
-  , step             = require('./$.iter-step')
-  , Iterators        = require('./$.iterators')
-  , toIObject        = require('./$.to-iobject');
+var addToUnscopables = _dereq_(4)
+  , step             = _dereq_(45)
+  , Iterators        = _dereq_(46)
+  , toIObject        = _dereq_(79);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = require('./$.iter-define')(Array, 'Array', function(iterated, kind){
+module.exports = _dereq_(43)(Array, 'Array', function(iterated, kind){
   this._t = toIObject(iterated); // target
   this._i = 0;                   // next index
   this._k = kind;                // kind
@@ -4602,12 +4541,12 @@ Iterators.Arguments = Iterators.Array;
 addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
-},{"./$.add-to-unscopables":37,"./$.iter-define":76,"./$.iter-step":78,"./$.iterators":79,"./$.to-iobject":112}],126:[function(require,module,exports){
+},{"4":4,"43":43,"45":45,"46":46,"79":79}],93:[function(_dereq_,module,exports){
 'use strict';
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 // WebKit Array.of isn't generic
-$export($export.S + $export.F * require('./$.fails')(function(){
+$export($export.S + $export.F * _dereq_(25)(function(){
   function F(){}
   return !(Array.of.call(F) instanceof F);
 }), 'Array', {
@@ -4622,13 +4561,13 @@ $export($export.S + $export.F * require('./$.fails')(function(){
     return result;
   }
 });
-},{"./$.export":56,"./$.fails":58}],127:[function(require,module,exports){
-require('./$.set-species')('Array');
-},{"./$.set-species":99}],128:[function(require,module,exports){
+},{"23":23,"25":25}],94:[function(_dereq_,module,exports){
+_dereq_(66)('Array');
+},{"66":66}],95:[function(_dereq_,module,exports){
 'use strict';
-var $             = require('./$')
-  , isObject      = require('./$.is-object')
-  , HAS_INSTANCE  = require('./$.wks')('hasInstance')
+var $             = _dereq_(47)
+  , isObject      = _dereq_(39)
+  , HAS_INSTANCE  = _dereq_(84)('hasInstance')
   , FunctionProto = Function.prototype;
 // 19.2.3.6 Function.prototype[@@hasInstance](V)
 if(!(HAS_INSTANCE in FunctionProto))$.setDesc(FunctionProto, HAS_INSTANCE, {value: function(O){
@@ -4638,15 +4577,15 @@ if(!(HAS_INSTANCE in FunctionProto))$.setDesc(FunctionProto, HAS_INSTANCE, {valu
   while(O = $.getProto(O))if(this.prototype === O)return true;
   return false;
 }});
-},{"./$":80,"./$.is-object":72,"./$.wks":117}],129:[function(require,module,exports){
-var setDesc    = require('./$').setDesc
-  , createDesc = require('./$.property-desc')
-  , has        = require('./$.has')
+},{"39":39,"47":47,"84":84}],96:[function(_dereq_,module,exports){
+var setDesc    = _dereq_(47).setDesc
+  , createDesc = _dereq_(60)
+  , has        = _dereq_(31)
   , FProto     = Function.prototype
   , nameRE     = /^\s*function ([^ (]*)/
   , NAME       = 'name';
 // 19.2.4.2 name
-NAME in FProto || require('./$.descriptors') && setDesc(FProto, NAME, {
+NAME in FProto || _dereq_(20) && setDesc(FProto, NAME, {
   configurable: true,
   get: function(){
     var match = ('' + this).match(nameRE)
@@ -4655,12 +4594,12 @@ NAME in FProto || require('./$.descriptors') && setDesc(FProto, NAME, {
     return name;
   }
 });
-},{"./$":80,"./$.descriptors":53,"./$.has":64,"./$.property-desc":93}],130:[function(require,module,exports){
+},{"20":20,"31":31,"47":47,"60":60}],97:[function(_dereq_,module,exports){
 'use strict';
-var strong = require('./$.collection-strong');
+var strong = _dereq_(13);
 
 // 23.1 Map Objects
-require('./$.collection')('Map', function(get){
+_dereq_(16)('Map', function(get){
   return function Map(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.1.3.6 Map.prototype.get(key)
@@ -4673,10 +4612,10 @@ require('./$.collection')('Map', function(get){
     return strong.def(this, key === 0 ? 0 : key, value);
   }
 }, strong, true);
-},{"./$.collection":49,"./$.collection-strong":46}],131:[function(require,module,exports){
+},{"13":13,"16":16}],98:[function(_dereq_,module,exports){
 // 20.2.2.3 Math.acosh(x)
-var $export = require('./$.export')
-  , log1p   = require('./$.math-log1p')
+var $export = _dereq_(23)
+  , log1p   = _dereq_(51)
   , sqrt    = Math.sqrt
   , $acosh  = Math.acosh;
 
@@ -4688,46 +4627,46 @@ $export($export.S + $export.F * !($acosh && Math.floor($acosh(Number.MAX_VALUE))
       : log1p(x - 1 + sqrt(x - 1) * sqrt(x + 1));
   }
 });
-},{"./$.export":56,"./$.math-log1p":84}],132:[function(require,module,exports){
+},{"23":23,"51":51}],99:[function(_dereq_,module,exports){
 // 20.2.2.5 Math.asinh(x)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 function asinh(x){
   return !isFinite(x = +x) || x == 0 ? x : x < 0 ? -asinh(-x) : Math.log(x + Math.sqrt(x * x + 1));
 }
 
 $export($export.S, 'Math', {asinh: asinh});
-},{"./$.export":56}],133:[function(require,module,exports){
+},{"23":23}],100:[function(_dereq_,module,exports){
 // 20.2.2.7 Math.atanh(x)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Math', {
   atanh: function atanh(x){
     return (x = +x) == 0 ? x : Math.log((1 + x) / (1 - x)) / 2;
   }
 });
-},{"./$.export":56}],134:[function(require,module,exports){
+},{"23":23}],101:[function(_dereq_,module,exports){
 // 20.2.2.9 Math.cbrt(x)
-var $export = require('./$.export')
-  , sign    = require('./$.math-sign');
+var $export = _dereq_(23)
+  , sign    = _dereq_(52);
 
 $export($export.S, 'Math', {
   cbrt: function cbrt(x){
     return sign(x = +x) * Math.pow(Math.abs(x), 1 / 3);
   }
 });
-},{"./$.export":56,"./$.math-sign":85}],135:[function(require,module,exports){
+},{"23":23,"52":52}],102:[function(_dereq_,module,exports){
 // 20.2.2.11 Math.clz32(x)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Math', {
   clz32: function clz32(x){
     return (x >>>= 0) ? 31 - Math.floor(Math.log(x + 0.5) * Math.LOG2E) : 32;
   }
 });
-},{"./$.export":56}],136:[function(require,module,exports){
+},{"23":23}],103:[function(_dereq_,module,exports){
 // 20.2.2.12 Math.cosh(x)
-var $export = require('./$.export')
+var $export = _dereq_(23)
   , exp     = Math.exp;
 
 $export($export.S, 'Math', {
@@ -4735,15 +4674,15 @@ $export($export.S, 'Math', {
     return (exp(x = +x) + exp(-x)) / 2;
   }
 });
-},{"./$.export":56}],137:[function(require,module,exports){
+},{"23":23}],104:[function(_dereq_,module,exports){
 // 20.2.2.14 Math.expm1(x)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
-$export($export.S, 'Math', {expm1: require('./$.math-expm1')});
-},{"./$.export":56,"./$.math-expm1":83}],138:[function(require,module,exports){
+$export($export.S, 'Math', {expm1: _dereq_(50)});
+},{"23":23,"50":50}],105:[function(_dereq_,module,exports){
 // 20.2.2.16 Math.fround(x)
-var $export   = require('./$.export')
-  , sign      = require('./$.math-sign')
+var $export   = _dereq_(23)
+  , sign      = _dereq_(52)
   , pow       = Math.pow
   , EPSILON   = pow(2, -52)
   , EPSILON32 = pow(2, -23)
@@ -4767,9 +4706,9 @@ $export($export.S, 'Math', {
     return $sign * result;
   }
 });
-},{"./$.export":56,"./$.math-sign":85}],139:[function(require,module,exports){
+},{"23":23,"52":52}],106:[function(_dereq_,module,exports){
 // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
-var $export = require('./$.export')
+var $export = _dereq_(23)
   , abs     = Math.abs;
 
 $export($export.S, 'Math', {
@@ -4794,13 +4733,13 @@ $export($export.S, 'Math', {
     return larg === Infinity ? Infinity : larg * Math.sqrt(sum);
   }
 });
-},{"./$.export":56}],140:[function(require,module,exports){
+},{"23":23}],107:[function(_dereq_,module,exports){
 // 20.2.2.18 Math.imul(x, y)
-var $export = require('./$.export')
+var $export = _dereq_(23)
   , $imul   = Math.imul;
 
 // some WebKit versions fails with big numbers, some has wrong arity
-$export($export.S + $export.F * require('./$.fails')(function(){
+$export($export.S + $export.F * _dereq_(25)(function(){
   return $imul(0xffffffff, 5) != -5 || $imul.length != 2;
 }), 'Math', {
   imul: function imul(x, y){
@@ -4812,42 +4751,42 @@ $export($export.S + $export.F * require('./$.fails')(function(){
     return 0 | xl * yl + ((UINT16 & xn >>> 16) * yl + xl * (UINT16 & yn >>> 16) << 16 >>> 0);
   }
 });
-},{"./$.export":56,"./$.fails":58}],141:[function(require,module,exports){
+},{"23":23,"25":25}],108:[function(_dereq_,module,exports){
 // 20.2.2.21 Math.log10(x)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Math', {
   log10: function log10(x){
     return Math.log(x) / Math.LN10;
   }
 });
-},{"./$.export":56}],142:[function(require,module,exports){
+},{"23":23}],109:[function(_dereq_,module,exports){
 // 20.2.2.20 Math.log1p(x)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
-$export($export.S, 'Math', {log1p: require('./$.math-log1p')});
-},{"./$.export":56,"./$.math-log1p":84}],143:[function(require,module,exports){
+$export($export.S, 'Math', {log1p: _dereq_(51)});
+},{"23":23,"51":51}],110:[function(_dereq_,module,exports){
 // 20.2.2.22 Math.log2(x)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Math', {
   log2: function log2(x){
     return Math.log(x) / Math.LN2;
   }
 });
-},{"./$.export":56}],144:[function(require,module,exports){
+},{"23":23}],111:[function(_dereq_,module,exports){
 // 20.2.2.28 Math.sign(x)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
-$export($export.S, 'Math', {sign: require('./$.math-sign')});
-},{"./$.export":56,"./$.math-sign":85}],145:[function(require,module,exports){
+$export($export.S, 'Math', {sign: _dereq_(52)});
+},{"23":23,"52":52}],112:[function(_dereq_,module,exports){
 // 20.2.2.30 Math.sinh(x)
-var $export = require('./$.export')
-  , expm1   = require('./$.math-expm1')
+var $export = _dereq_(23)
+  , expm1   = _dereq_(50)
   , exp     = Math.exp;
 
 // V8 near Chromium 38 has a problem with very small numbers
-$export($export.S + $export.F * require('./$.fails')(function(){
+$export($export.S + $export.F * _dereq_(25)(function(){
   return !Math.sinh(-2e-17) != -2e-17;
 }), 'Math', {
   sinh: function sinh(x){
@@ -4856,10 +4795,10 @@ $export($export.S + $export.F * require('./$.fails')(function(){
       : (exp(x - 1) - exp(-x - 1)) * (Math.E / 2);
   }
 });
-},{"./$.export":56,"./$.fails":58,"./$.math-expm1":83}],146:[function(require,module,exports){
+},{"23":23,"25":25,"50":50}],113:[function(_dereq_,module,exports){
 // 20.2.2.33 Math.tanh(x)
-var $export = require('./$.export')
-  , expm1   = require('./$.math-expm1')
+var $export = _dereq_(23)
+  , expm1   = _dereq_(50)
   , exp     = Math.exp;
 
 $export($export.S, 'Math', {
@@ -4869,24 +4808,24 @@ $export($export.S, 'Math', {
     return a == Infinity ? 1 : b == Infinity ? -1 : (a - b) / (exp(x) + exp(-x));
   }
 });
-},{"./$.export":56,"./$.math-expm1":83}],147:[function(require,module,exports){
+},{"23":23,"50":50}],114:[function(_dereq_,module,exports){
 // 20.2.2.34 Math.trunc(x)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Math', {
   trunc: function trunc(it){
     return (it > 0 ? Math.floor : Math.ceil)(it);
   }
 });
-},{"./$.export":56}],148:[function(require,module,exports){
+},{"23":23}],115:[function(_dereq_,module,exports){
 'use strict';
-var $           = require('./$')
-  , global      = require('./$.global')
-  , has         = require('./$.has')
-  , cof         = require('./$.cof')
-  , toPrimitive = require('./$.to-primitive')
-  , fails       = require('./$.fails')
-  , $trim       = require('./$.string-trim').trim
+var $           = _dereq_(47)
+  , global      = _dereq_(30)
+  , has         = _dereq_(31)
+  , cof         = _dereq_(12)
+  , toPrimitive = _dereq_(82)
+  , fails       = _dereq_(25)
+  , $trim       = _dereq_(75).trim
   , NUMBER      = 'Number'
   , $Number     = global[NUMBER]
   , Base        = $Number
@@ -4930,7 +4869,7 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
       && (BROKEN_COF ? fails(function(){ proto.valueOf.call(that); }) : cof(that) != NUMBER)
         ? new Base(toNumber(it)) : toNumber(it);
   };
-  $.each.call(require('./$.descriptors') ? $.getNames(Base) : (
+  $.each.call(_dereq_(20) ? $.getNames(Base) : (
     // ES3:
     'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
     // ES6 (in case, if modules with ES6 Number statics required before):
@@ -4943,41 +4882,41 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
   });
   $Number.prototype = proto;
   proto.constructor = $Number;
-  require('./$.redefine')(global, NUMBER, $Number);
+  _dereq_(62)(global, NUMBER, $Number);
 }
-},{"./$":80,"./$.cof":45,"./$.descriptors":53,"./$.fails":58,"./$.global":63,"./$.has":64,"./$.redefine":95,"./$.string-trim":108,"./$.to-primitive":115}],149:[function(require,module,exports){
+},{"12":12,"20":20,"25":25,"30":30,"31":31,"47":47,"62":62,"75":75,"82":82}],116:[function(_dereq_,module,exports){
 // 20.1.2.1 Number.EPSILON
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Number', {EPSILON: Math.pow(2, -52)});
-},{"./$.export":56}],150:[function(require,module,exports){
+},{"23":23}],117:[function(_dereq_,module,exports){
 // 20.1.2.2 Number.isFinite(number)
-var $export   = require('./$.export')
-  , _isFinite = require('./$.global').isFinite;
+var $export   = _dereq_(23)
+  , _isFinite = _dereq_(30).isFinite;
 
 $export($export.S, 'Number', {
   isFinite: function isFinite(it){
     return typeof it == 'number' && _isFinite(it);
   }
 });
-},{"./$.export":56,"./$.global":63}],151:[function(require,module,exports){
+},{"23":23,"30":30}],118:[function(_dereq_,module,exports){
 // 20.1.2.3 Number.isInteger(number)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
-$export($export.S, 'Number', {isInteger: require('./$.is-integer')});
-},{"./$.export":56,"./$.is-integer":71}],152:[function(require,module,exports){
+$export($export.S, 'Number', {isInteger: _dereq_(38)});
+},{"23":23,"38":38}],119:[function(_dereq_,module,exports){
 // 20.1.2.4 Number.isNaN(number)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Number', {
   isNaN: function isNaN(number){
     return number != number;
   }
 });
-},{"./$.export":56}],153:[function(require,module,exports){
+},{"23":23}],120:[function(_dereq_,module,exports){
 // 20.1.2.5 Number.isSafeInteger(number)
-var $export   = require('./$.export')
-  , isInteger = require('./$.is-integer')
+var $export   = _dereq_(23)
+  , isInteger = _dereq_(38)
   , abs       = Math.abs;
 
 $export($export.S, 'Number', {
@@ -4985,154 +4924,154 @@ $export($export.S, 'Number', {
     return isInteger(number) && abs(number) <= 0x1fffffffffffff;
   }
 });
-},{"./$.export":56,"./$.is-integer":71}],154:[function(require,module,exports){
+},{"23":23,"38":38}],121:[function(_dereq_,module,exports){
 // 20.1.2.6 Number.MAX_SAFE_INTEGER
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
-},{"./$.export":56}],155:[function(require,module,exports){
+},{"23":23}],122:[function(_dereq_,module,exports){
 // 20.1.2.10 Number.MIN_SAFE_INTEGER
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
-},{"./$.export":56}],156:[function(require,module,exports){
+},{"23":23}],123:[function(_dereq_,module,exports){
 // 20.1.2.12 Number.parseFloat(string)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Number', {parseFloat: parseFloat});
-},{"./$.export":56}],157:[function(require,module,exports){
+},{"23":23}],124:[function(_dereq_,module,exports){
 // 20.1.2.13 Number.parseInt(string, radix)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Number', {parseInt: parseInt});
-},{"./$.export":56}],158:[function(require,module,exports){
+},{"23":23}],125:[function(_dereq_,module,exports){
 // 19.1.3.1 Object.assign(target, source)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
-$export($export.S + $export.F, 'Object', {assign: require('./$.object-assign')});
-},{"./$.export":56,"./$.object-assign":87}],159:[function(require,module,exports){
+$export($export.S + $export.F, 'Object', {assign: _dereq_(54)});
+},{"23":23,"54":54}],126:[function(_dereq_,module,exports){
 // 19.1.2.5 Object.freeze(O)
-var isObject = require('./$.is-object');
+var isObject = _dereq_(39);
 
-require('./$.object-sap')('freeze', function($freeze){
+_dereq_(55)('freeze', function($freeze){
   return function freeze(it){
     return $freeze && isObject(it) ? $freeze(it) : it;
   };
 });
-},{"./$.is-object":72,"./$.object-sap":88}],160:[function(require,module,exports){
+},{"39":39,"55":55}],127:[function(_dereq_,module,exports){
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
-var toIObject = require('./$.to-iobject');
+var toIObject = _dereq_(79);
 
-require('./$.object-sap')('getOwnPropertyDescriptor', function($getOwnPropertyDescriptor){
+_dereq_(55)('getOwnPropertyDescriptor', function($getOwnPropertyDescriptor){
   return function getOwnPropertyDescriptor(it, key){
     return $getOwnPropertyDescriptor(toIObject(it), key);
   };
 });
-},{"./$.object-sap":88,"./$.to-iobject":112}],161:[function(require,module,exports){
+},{"55":55,"79":79}],128:[function(_dereq_,module,exports){
 // 19.1.2.7 Object.getOwnPropertyNames(O)
-require('./$.object-sap')('getOwnPropertyNames', function(){
-  return require('./$.get-names').get;
+_dereq_(55)('getOwnPropertyNames', function(){
+  return _dereq_(29).get;
 });
-},{"./$.get-names":62,"./$.object-sap":88}],162:[function(require,module,exports){
+},{"29":29,"55":55}],129:[function(_dereq_,module,exports){
 // 19.1.2.9 Object.getPrototypeOf(O)
-var toObject = require('./$.to-object');
+var toObject = _dereq_(81);
 
-require('./$.object-sap')('getPrototypeOf', function($getPrototypeOf){
+_dereq_(55)('getPrototypeOf', function($getPrototypeOf){
   return function getPrototypeOf(it){
     return $getPrototypeOf(toObject(it));
   };
 });
-},{"./$.object-sap":88,"./$.to-object":114}],163:[function(require,module,exports){
+},{"55":55,"81":81}],130:[function(_dereq_,module,exports){
 // 19.1.2.11 Object.isExtensible(O)
-var isObject = require('./$.is-object');
+var isObject = _dereq_(39);
 
-require('./$.object-sap')('isExtensible', function($isExtensible){
+_dereq_(55)('isExtensible', function($isExtensible){
   return function isExtensible(it){
     return isObject(it) ? $isExtensible ? $isExtensible(it) : true : false;
   };
 });
-},{"./$.is-object":72,"./$.object-sap":88}],164:[function(require,module,exports){
+},{"39":39,"55":55}],131:[function(_dereq_,module,exports){
 // 19.1.2.12 Object.isFrozen(O)
-var isObject = require('./$.is-object');
+var isObject = _dereq_(39);
 
-require('./$.object-sap')('isFrozen', function($isFrozen){
+_dereq_(55)('isFrozen', function($isFrozen){
   return function isFrozen(it){
     return isObject(it) ? $isFrozen ? $isFrozen(it) : false : true;
   };
 });
-},{"./$.is-object":72,"./$.object-sap":88}],165:[function(require,module,exports){
+},{"39":39,"55":55}],132:[function(_dereq_,module,exports){
 // 19.1.2.13 Object.isSealed(O)
-var isObject = require('./$.is-object');
+var isObject = _dereq_(39);
 
-require('./$.object-sap')('isSealed', function($isSealed){
+_dereq_(55)('isSealed', function($isSealed){
   return function isSealed(it){
     return isObject(it) ? $isSealed ? $isSealed(it) : false : true;
   };
 });
-},{"./$.is-object":72,"./$.object-sap":88}],166:[function(require,module,exports){
+},{"39":39,"55":55}],133:[function(_dereq_,module,exports){
 // 19.1.3.10 Object.is(value1, value2)
-var $export = require('./$.export');
-$export($export.S, 'Object', {is: require('./$.same-value')});
-},{"./$.export":56,"./$.same-value":97}],167:[function(require,module,exports){
+var $export = _dereq_(23);
+$export($export.S, 'Object', {is: _dereq_(64)});
+},{"23":23,"64":64}],134:[function(_dereq_,module,exports){
 // 19.1.2.14 Object.keys(O)
-var toObject = require('./$.to-object');
+var toObject = _dereq_(81);
 
-require('./$.object-sap')('keys', function($keys){
+_dereq_(55)('keys', function($keys){
   return function keys(it){
     return $keys(toObject(it));
   };
 });
-},{"./$.object-sap":88,"./$.to-object":114}],168:[function(require,module,exports){
+},{"55":55,"81":81}],135:[function(_dereq_,module,exports){
 // 19.1.2.15 Object.preventExtensions(O)
-var isObject = require('./$.is-object');
+var isObject = _dereq_(39);
 
-require('./$.object-sap')('preventExtensions', function($preventExtensions){
+_dereq_(55)('preventExtensions', function($preventExtensions){
   return function preventExtensions(it){
     return $preventExtensions && isObject(it) ? $preventExtensions(it) : it;
   };
 });
-},{"./$.is-object":72,"./$.object-sap":88}],169:[function(require,module,exports){
+},{"39":39,"55":55}],136:[function(_dereq_,module,exports){
 // 19.1.2.17 Object.seal(O)
-var isObject = require('./$.is-object');
+var isObject = _dereq_(39);
 
-require('./$.object-sap')('seal', function($seal){
+_dereq_(55)('seal', function($seal){
   return function seal(it){
     return $seal && isObject(it) ? $seal(it) : it;
   };
 });
-},{"./$.is-object":72,"./$.object-sap":88}],170:[function(require,module,exports){
+},{"39":39,"55":55}],137:[function(_dereq_,module,exports){
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
-var $export = require('./$.export');
-$export($export.S, 'Object', {setPrototypeOf: require('./$.set-proto').set});
-},{"./$.export":56,"./$.set-proto":98}],171:[function(require,module,exports){
+var $export = _dereq_(23);
+$export($export.S, 'Object', {setPrototypeOf: _dereq_(65).set});
+},{"23":23,"65":65}],138:[function(_dereq_,module,exports){
 'use strict';
 // 19.1.3.6 Object.prototype.toString()
-var classof = require('./$.classof')
+var classof = _dereq_(11)
   , test    = {};
-test[require('./$.wks')('toStringTag')] = 'z';
+test[_dereq_(84)('toStringTag')] = 'z';
 if(test + '' != '[object z]'){
-  require('./$.redefine')(Object.prototype, 'toString', function toString(){
+  _dereq_(62)(Object.prototype, 'toString', function toString(){
     return '[object ' + classof(this) + ']';
   }, true);
 }
-},{"./$.classof":44,"./$.redefine":95,"./$.wks":117}],172:[function(require,module,exports){
+},{"11":11,"62":62,"84":84}],139:[function(_dereq_,module,exports){
 'use strict';
-var $          = require('./$')
-  , LIBRARY    = require('./$.library')
-  , global     = require('./$.global')
-  , ctx        = require('./$.ctx')
-  , classof    = require('./$.classof')
-  , $export    = require('./$.export')
-  , isObject   = require('./$.is-object')
-  , anObject   = require('./$.an-object')
-  , aFunction  = require('./$.a-function')
-  , strictNew  = require('./$.strict-new')
-  , forOf      = require('./$.for-of')
-  , setProto   = require('./$.set-proto').set
-  , same       = require('./$.same-value')
-  , SPECIES    = require('./$.wks')('species')
-  , speciesConstructor = require('./$.species-constructor')
-  , asap       = require('./$.microtask')
+var $          = _dereq_(47)
+  , LIBRARY    = _dereq_(49)
+  , global     = _dereq_(30)
+  , ctx        = _dereq_(18)
+  , classof    = _dereq_(11)
+  , $export    = _dereq_(23)
+  , isObject   = _dereq_(39)
+  , anObject   = _dereq_(5)
+  , aFunction  = _dereq_(3)
+  , strictNew  = _dereq_(70)
+  , forOf      = _dereq_(28)
+  , setProto   = _dereq_(65).set
+  , same       = _dereq_(64)
+  , SPECIES    = _dereq_(84)('species')
+  , speciesConstructor = _dereq_(69)
+  , asap       = _dereq_(53)
   , PROMISE    = 'Promise'
   , process    = global.process
   , isNode     = classof(process) == 'process'
@@ -5161,7 +5100,7 @@ var USE_NATIVE = function(){
       works = false;
     }
     // actual V8 bug, https://code.google.com/p/v8/issues/detail?id=4162
-    if(works && require('./$.descriptors')){
+    if(works && _dereq_(20)){
       var thenableThenGotten = false;
       P.resolve($.setDesc({}, 'then', {
         get: function(){ thenableThenGotten = true; }
@@ -5317,7 +5256,7 @@ if(!USE_NATIVE){
       $reject.call(record, err);
     }
   };
-  require('./$.redefine-all')(P.prototype, {
+  _dereq_(61)(P.prototype, {
     // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
     then: function then(onFulfilled, onRejected){
       var reaction = new PromiseCapability(speciesConstructor(this, P))
@@ -5338,9 +5277,9 @@ if(!USE_NATIVE){
 }
 
 $export($export.G + $export.W + $export.F * !USE_NATIVE, {Promise: P});
-require('./$.set-to-string-tag')(P, PROMISE);
-require('./$.set-species')(PROMISE);
-Wrapper = require('./$.core')[PROMISE];
+_dereq_(67)(P, PROMISE);
+_dereq_(66)(PROMISE);
+Wrapper = _dereq_(17)[PROMISE];
 
 // statics
 $export($export.S + $export.F * !USE_NATIVE, PROMISE, {
@@ -5363,7 +5302,7 @@ $export($export.S + $export.F * (!USE_NATIVE || testResolve(true)), PROMISE, {
     return capability.promise;
   }
 });
-$export($export.S + $export.F * !(USE_NATIVE && require('./$.iter-detect')(function(iter){
+$export($export.S + $export.F * !(USE_NATIVE && _dereq_(44)(function(iter){
   P.all(iter)['catch'](function(){});
 })), PROMISE, {
   // 25.4.4.1 Promise.all(iterable)
@@ -5405,9 +5344,9 @@ $export($export.S + $export.F * !(USE_NATIVE && require('./$.iter-detect')(funct
     return capability.promise;
   }
 });
-},{"./$":80,"./$.a-function":36,"./$.an-object":38,"./$.classof":44,"./$.core":50,"./$.ctx":51,"./$.descriptors":53,"./$.export":56,"./$.for-of":61,"./$.global":63,"./$.is-object":72,"./$.iter-detect":77,"./$.library":82,"./$.microtask":86,"./$.redefine-all":94,"./$.same-value":97,"./$.set-proto":98,"./$.set-species":99,"./$.set-to-string-tag":100,"./$.species-constructor":102,"./$.strict-new":103,"./$.wks":117}],173:[function(require,module,exports){
+},{"11":11,"17":17,"18":18,"20":20,"23":23,"28":28,"3":3,"30":30,"39":39,"44":44,"47":47,"49":49,"5":5,"53":53,"61":61,"64":64,"65":65,"66":66,"67":67,"69":69,"70":70,"84":84}],140:[function(_dereq_,module,exports){
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
-var $export = require('./$.export')
+var $export = _dereq_(23)
   , _apply  = Function.apply;
 
 $export($export.S, 'Reflect', {
@@ -5415,18 +5354,18 @@ $export($export.S, 'Reflect', {
     return _apply.call(target, thisArgument, argumentsList);
   }
 });
-},{"./$.export":56}],174:[function(require,module,exports){
+},{"23":23}],141:[function(_dereq_,module,exports){
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
-var $         = require('./$')
-  , $export   = require('./$.export')
-  , aFunction = require('./$.a-function')
-  , anObject  = require('./$.an-object')
-  , isObject  = require('./$.is-object')
-  , bind      = Function.bind || require('./$.core').Function.prototype.bind;
+var $         = _dereq_(47)
+  , $export   = _dereq_(23)
+  , aFunction = _dereq_(3)
+  , anObject  = _dereq_(5)
+  , isObject  = _dereq_(39)
+  , bind      = Function.bind || _dereq_(17).Function.prototype.bind;
 
 // MS Edge supports only 2 arguments
 // FF Nightly sets third argument as `new.target`, but does not create `this` from it
-$export($export.S + $export.F * require('./$.fails')(function(){
+$export($export.S + $export.F * _dereq_(25)(function(){
   function F(){}
   return !(Reflect.construct(function(){}, [], F) instanceof F);
 }), 'Reflect', {
@@ -5454,14 +5393,14 @@ $export($export.S + $export.F * require('./$.fails')(function(){
     return isObject(result) ? result : instance;
   }
 });
-},{"./$":80,"./$.a-function":36,"./$.an-object":38,"./$.core":50,"./$.export":56,"./$.fails":58,"./$.is-object":72}],175:[function(require,module,exports){
+},{"17":17,"23":23,"25":25,"3":3,"39":39,"47":47,"5":5}],142:[function(_dereq_,module,exports){
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
-var $        = require('./$')
-  , $export  = require('./$.export')
-  , anObject = require('./$.an-object');
+var $        = _dereq_(47)
+  , $export  = _dereq_(23)
+  , anObject = _dereq_(5);
 
 // MS Edge has broken Reflect.defineProperty - throwing instead of returning false
-$export($export.S + $export.F * require('./$.fails')(function(){
+$export($export.S + $export.F * _dereq_(25)(function(){
   Reflect.defineProperty($.setDesc({}, 1, {value: 1}), 1, {value: 2});
 }), 'Reflect', {
   defineProperty: function defineProperty(target, propertyKey, attributes){
@@ -5474,11 +5413,11 @@ $export($export.S + $export.F * require('./$.fails')(function(){
     }
   }
 });
-},{"./$":80,"./$.an-object":38,"./$.export":56,"./$.fails":58}],176:[function(require,module,exports){
+},{"23":23,"25":25,"47":47,"5":5}],143:[function(_dereq_,module,exports){
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
-var $export  = require('./$.export')
-  , getDesc  = require('./$').getDesc
-  , anObject = require('./$.an-object');
+var $export  = _dereq_(23)
+  , getDesc  = _dereq_(47).getDesc
+  , anObject = _dereq_(5);
 
 $export($export.S, 'Reflect', {
   deleteProperty: function deleteProperty(target, propertyKey){
@@ -5486,11 +5425,11 @@ $export($export.S, 'Reflect', {
     return desc && !desc.configurable ? false : delete target[propertyKey];
   }
 });
-},{"./$":80,"./$.an-object":38,"./$.export":56}],177:[function(require,module,exports){
+},{"23":23,"47":47,"5":5}],144:[function(_dereq_,module,exports){
 'use strict';
 // 26.1.5 Reflect.enumerate(target)
-var $export  = require('./$.export')
-  , anObject = require('./$.an-object');
+var $export  = _dereq_(23)
+  , anObject = _dereq_(5);
 var Enumerate = function(iterated){
   this._t = anObject(iterated); // target
   this._i = 0;                  // next index
@@ -5498,7 +5437,7 @@ var Enumerate = function(iterated){
     , key;
   for(key in iterated)keys.push(key);
 };
-require('./$.iter-create')(Enumerate, 'Object', function(){
+_dereq_(42)(Enumerate, 'Object', function(){
   var that = this
     , keys = that._k
     , key;
@@ -5513,35 +5452,35 @@ $export($export.S, 'Reflect', {
     return new Enumerate(target);
   }
 });
-},{"./$.an-object":38,"./$.export":56,"./$.iter-create":75}],178:[function(require,module,exports){
+},{"23":23,"42":42,"5":5}],145:[function(_dereq_,module,exports){
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
-var $        = require('./$')
-  , $export  = require('./$.export')
-  , anObject = require('./$.an-object');
+var $        = _dereq_(47)
+  , $export  = _dereq_(23)
+  , anObject = _dereq_(5);
 
 $export($export.S, 'Reflect', {
   getOwnPropertyDescriptor: function getOwnPropertyDescriptor(target, propertyKey){
     return $.getDesc(anObject(target), propertyKey);
   }
 });
-},{"./$":80,"./$.an-object":38,"./$.export":56}],179:[function(require,module,exports){
+},{"23":23,"47":47,"5":5}],146:[function(_dereq_,module,exports){
 // 26.1.8 Reflect.getPrototypeOf(target)
-var $export  = require('./$.export')
-  , getProto = require('./$').getProto
-  , anObject = require('./$.an-object');
+var $export  = _dereq_(23)
+  , getProto = _dereq_(47).getProto
+  , anObject = _dereq_(5);
 
 $export($export.S, 'Reflect', {
   getPrototypeOf: function getPrototypeOf(target){
     return getProto(anObject(target));
   }
 });
-},{"./$":80,"./$.an-object":38,"./$.export":56}],180:[function(require,module,exports){
+},{"23":23,"47":47,"5":5}],147:[function(_dereq_,module,exports){
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
-var $        = require('./$')
-  , has      = require('./$.has')
-  , $export  = require('./$.export')
-  , isObject = require('./$.is-object')
-  , anObject = require('./$.an-object');
+var $        = _dereq_(47)
+  , has      = _dereq_(31)
+  , $export  = _dereq_(23)
+  , isObject = _dereq_(39)
+  , anObject = _dereq_(5);
 
 function get(target, propertyKey/*, receiver*/){
   var receiver = arguments.length < 3 ? target : arguments[2]
@@ -5556,19 +5495,19 @@ function get(target, propertyKey/*, receiver*/){
 }
 
 $export($export.S, 'Reflect', {get: get});
-},{"./$":80,"./$.an-object":38,"./$.export":56,"./$.has":64,"./$.is-object":72}],181:[function(require,module,exports){
+},{"23":23,"31":31,"39":39,"47":47,"5":5}],148:[function(_dereq_,module,exports){
 // 26.1.9 Reflect.has(target, propertyKey)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
 $export($export.S, 'Reflect', {
   has: function has(target, propertyKey){
     return propertyKey in target;
   }
 });
-},{"./$.export":56}],182:[function(require,module,exports){
+},{"23":23}],149:[function(_dereq_,module,exports){
 // 26.1.10 Reflect.isExtensible(target)
-var $export       = require('./$.export')
-  , anObject      = require('./$.an-object')
+var $export       = _dereq_(23)
+  , anObject      = _dereq_(5)
   , $isExtensible = Object.isExtensible;
 
 $export($export.S, 'Reflect', {
@@ -5577,15 +5516,15 @@ $export($export.S, 'Reflect', {
     return $isExtensible ? $isExtensible(target) : true;
   }
 });
-},{"./$.an-object":38,"./$.export":56}],183:[function(require,module,exports){
+},{"23":23,"5":5}],150:[function(_dereq_,module,exports){
 // 26.1.11 Reflect.ownKeys(target)
-var $export = require('./$.export');
+var $export = _dereq_(23);
 
-$export($export.S, 'Reflect', {ownKeys: require('./$.own-keys')});
-},{"./$.export":56,"./$.own-keys":90}],184:[function(require,module,exports){
+$export($export.S, 'Reflect', {ownKeys: _dereq_(57)});
+},{"23":23,"57":57}],151:[function(_dereq_,module,exports){
 // 26.1.12 Reflect.preventExtensions(target)
-var $export            = require('./$.export')
-  , anObject           = require('./$.an-object')
+var $export            = _dereq_(23)
+  , anObject           = _dereq_(5)
   , $preventExtensions = Object.preventExtensions;
 
 $export($export.S, 'Reflect', {
@@ -5599,10 +5538,10 @@ $export($export.S, 'Reflect', {
     }
   }
 });
-},{"./$.an-object":38,"./$.export":56}],185:[function(require,module,exports){
+},{"23":23,"5":5}],152:[function(_dereq_,module,exports){
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
-var $export  = require('./$.export')
-  , setProto = require('./$.set-proto');
+var $export  = _dereq_(23)
+  , setProto = _dereq_(65);
 
 if(setProto)$export($export.S, 'Reflect', {
   setPrototypeOf: function setPrototypeOf(target, proto){
@@ -5615,14 +5554,14 @@ if(setProto)$export($export.S, 'Reflect', {
     }
   }
 });
-},{"./$.export":56,"./$.set-proto":98}],186:[function(require,module,exports){
+},{"23":23,"65":65}],153:[function(_dereq_,module,exports){
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
-var $          = require('./$')
-  , has        = require('./$.has')
-  , $export    = require('./$.export')
-  , createDesc = require('./$.property-desc')
-  , anObject   = require('./$.an-object')
-  , isObject   = require('./$.is-object');
+var $          = _dereq_(47)
+  , has        = _dereq_(31)
+  , $export    = _dereq_(23)
+  , createDesc = _dereq_(60)
+  , anObject   = _dereq_(5)
+  , isObject   = _dereq_(39);
 
 function set(target, propertyKey, V/*, receiver*/){
   var receiver = arguments.length < 4 ? target : arguments[3]
@@ -5645,11 +5584,11 @@ function set(target, propertyKey, V/*, receiver*/){
 }
 
 $export($export.S, 'Reflect', {set: set});
-},{"./$":80,"./$.an-object":38,"./$.export":56,"./$.has":64,"./$.is-object":72,"./$.property-desc":93}],187:[function(require,module,exports){
-var $        = require('./$')
-  , global   = require('./$.global')
-  , isRegExp = require('./$.is-regexp')
-  , $flags   = require('./$.flags')
+},{"23":23,"31":31,"39":39,"47":47,"5":5,"60":60}],154:[function(_dereq_,module,exports){
+var $        = _dereq_(47)
+  , global   = _dereq_(30)
+  , isRegExp = _dereq_(40)
+  , $flags   = _dereq_(27)
   , $RegExp  = global.RegExp
   , Base     = $RegExp
   , proto    = $RegExp.prototype
@@ -5658,8 +5597,8 @@ var $        = require('./$')
   // "new" creates a new object, old webkit buggy here
   , CORRECT_NEW = new $RegExp(re1) !== re1;
 
-if(require('./$.descriptors') && (!CORRECT_NEW || require('./$.fails')(function(){
-  re2[require('./$.wks')('match')] = false;
+if(_dereq_(20) && (!CORRECT_NEW || _dereq_(25)(function(){
+  re2[_dereq_(84)('match')] = false;
   // RegExp constructor can alter flags and IsRegExp works correct with @@match
   return $RegExp(re1) != re1 || $RegExp(re2) == re2 || $RegExp(re1, 'i') != '/a/i';
 }))){
@@ -5680,20 +5619,20 @@ if(require('./$.descriptors') && (!CORRECT_NEW || require('./$.fails')(function(
   });
   proto.constructor = $RegExp;
   $RegExp.prototype = proto;
-  require('./$.redefine')(global, 'RegExp', $RegExp);
+  _dereq_(62)(global, 'RegExp', $RegExp);
 }
 
-require('./$.set-species')('RegExp');
-},{"./$":80,"./$.descriptors":53,"./$.fails":58,"./$.flags":60,"./$.global":63,"./$.is-regexp":73,"./$.redefine":95,"./$.set-species":99,"./$.wks":117}],188:[function(require,module,exports){
+_dereq_(66)('RegExp');
+},{"20":20,"25":25,"27":27,"30":30,"40":40,"47":47,"62":62,"66":66,"84":84}],155:[function(_dereq_,module,exports){
 // 21.2.5.3 get RegExp.prototype.flags()
-var $ = require('./$');
-if(require('./$.descriptors') && /./g.flags != 'g')$.setDesc(RegExp.prototype, 'flags', {
+var $ = _dereq_(47);
+if(_dereq_(20) && /./g.flags != 'g')$.setDesc(RegExp.prototype, 'flags', {
   configurable: true,
-  get: require('./$.flags')
+  get: _dereq_(27)
 });
-},{"./$":80,"./$.descriptors":53,"./$.flags":60}],189:[function(require,module,exports){
+},{"20":20,"27":27,"47":47}],156:[function(_dereq_,module,exports){
 // @@match logic
-require('./$.fix-re-wks')('match', 1, function(defined, MATCH){
+_dereq_(26)('match', 1, function(defined, MATCH){
   // 21.1.3.11 String.prototype.match(regexp)
   return function match(regexp){
     'use strict';
@@ -5702,9 +5641,9 @@ require('./$.fix-re-wks')('match', 1, function(defined, MATCH){
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[MATCH](String(O));
   };
 });
-},{"./$.fix-re-wks":59}],190:[function(require,module,exports){
+},{"26":26}],157:[function(_dereq_,module,exports){
 // @@replace logic
-require('./$.fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
+_dereq_(26)('replace', 2, function(defined, REPLACE, $replace){
   // 21.1.3.14 String.prototype.replace(searchValue, replaceValue)
   return function replace(searchValue, replaceValue){
     'use strict';
@@ -5715,9 +5654,9 @@ require('./$.fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
       : $replace.call(String(O), searchValue, replaceValue);
   };
 });
-},{"./$.fix-re-wks":59}],191:[function(require,module,exports){
+},{"26":26}],158:[function(_dereq_,module,exports){
 // @@search logic
-require('./$.fix-re-wks')('search', 1, function(defined, SEARCH){
+_dereq_(26)('search', 1, function(defined, SEARCH){
   // 21.1.3.15 String.prototype.search(regexp)
   return function search(regexp){
     'use strict';
@@ -5726,9 +5665,9 @@ require('./$.fix-re-wks')('search', 1, function(defined, SEARCH){
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[SEARCH](String(O));
   };
 });
-},{"./$.fix-re-wks":59}],192:[function(require,module,exports){
+},{"26":26}],159:[function(_dereq_,module,exports){
 // @@split logic
-require('./$.fix-re-wks')('split', 2, function(defined, SPLIT, $split){
+_dereq_(26)('split', 2, function(defined, SPLIT, $split){
   // 21.1.3.17 String.prototype.split(separator, limit)
   return function split(separator, limit){
     'use strict';
@@ -5739,12 +5678,12 @@ require('./$.fix-re-wks')('split', 2, function(defined, SPLIT, $split){
       : $split.call(String(O), separator, limit);
   };
 });
-},{"./$.fix-re-wks":59}],193:[function(require,module,exports){
+},{"26":26}],160:[function(_dereq_,module,exports){
 'use strict';
-var strong = require('./$.collection-strong');
+var strong = _dereq_(13);
 
 // 23.2 Set Objects
-require('./$.collection')('Set', function(get){
+_dereq_(16)('Set', function(get){
   return function Set(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.2.3.1 Set.prototype.add(value)
@@ -5752,26 +5691,26 @@ require('./$.collection')('Set', function(get){
     return strong.def(this, value = value === 0 ? 0 : value, value);
   }
 }, strong);
-},{"./$.collection":49,"./$.collection-strong":46}],194:[function(require,module,exports){
+},{"13":13,"16":16}],161:[function(_dereq_,module,exports){
 'use strict';
-var $export = require('./$.export')
-  , $at     = require('./$.string-at')(false);
+var $export = _dereq_(23)
+  , $at     = _dereq_(71)(false);
 $export($export.P, 'String', {
   // 21.1.3.3 String.prototype.codePointAt(pos)
   codePointAt: function codePointAt(pos){
     return $at(this, pos);
   }
 });
-},{"./$.export":56,"./$.string-at":104}],195:[function(require,module,exports){
+},{"23":23,"71":71}],162:[function(_dereq_,module,exports){
 // 21.1.3.6 String.prototype.endsWith(searchString [, endPosition])
 'use strict';
-var $export   = require('./$.export')
-  , toLength  = require('./$.to-length')
-  , context   = require('./$.string-context')
+var $export   = _dereq_(23)
+  , toLength  = _dereq_(80)
+  , context   = _dereq_(72)
   , ENDS_WITH = 'endsWith'
   , $endsWith = ''[ENDS_WITH];
 
-$export($export.P + $export.F * require('./$.fails-is-regexp')(ENDS_WITH), 'String', {
+$export($export.P + $export.F * _dereq_(24)(ENDS_WITH), 'String', {
   endsWith: function endsWith(searchString /*, endPosition = @length */){
     var that = context(this, searchString, ENDS_WITH)
       , $$   = arguments
@@ -5784,9 +5723,9 @@ $export($export.P + $export.F * require('./$.fails-is-regexp')(ENDS_WITH), 'Stri
       : that.slice(end - search.length, end) === search;
   }
 });
-},{"./$.export":56,"./$.fails-is-regexp":57,"./$.string-context":105,"./$.to-length":113}],196:[function(require,module,exports){
-var $export        = require('./$.export')
-  , toIndex        = require('./$.to-index')
+},{"23":23,"24":24,"72":72,"80":80}],163:[function(_dereq_,module,exports){
+var $export        = _dereq_(23)
+  , toIndex        = _dereq_(77)
   , fromCharCode   = String.fromCharCode
   , $fromCodePoint = String.fromCodePoint;
 
@@ -5809,25 +5748,25 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
     } return res.join('');
   }
 });
-},{"./$.export":56,"./$.to-index":110}],197:[function(require,module,exports){
+},{"23":23,"77":77}],164:[function(_dereq_,module,exports){
 // 21.1.3.7 String.prototype.includes(searchString, position = 0)
 'use strict';
-var $export  = require('./$.export')
-  , context  = require('./$.string-context')
+var $export  = _dereq_(23)
+  , context  = _dereq_(72)
   , INCLUDES = 'includes';
 
-$export($export.P + $export.F * require('./$.fails-is-regexp')(INCLUDES), 'String', {
+$export($export.P + $export.F * _dereq_(24)(INCLUDES), 'String', {
   includes: function includes(searchString /*, position = 0 */){
     return !!~context(this, searchString, INCLUDES)
       .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
-},{"./$.export":56,"./$.fails-is-regexp":57,"./$.string-context":105}],198:[function(require,module,exports){
+},{"23":23,"24":24,"72":72}],165:[function(_dereq_,module,exports){
 'use strict';
-var $at  = require('./$.string-at')(true);
+var $at  = _dereq_(71)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-require('./$.iter-define')(String, 'String', function(iterated){
+_dereq_(43)(String, 'String', function(iterated){
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -5840,10 +5779,10 @@ require('./$.iter-define')(String, 'String', function(iterated){
   this._i += point.length;
   return {value: point, done: false};
 });
-},{"./$.iter-define":76,"./$.string-at":104}],199:[function(require,module,exports){
-var $export   = require('./$.export')
-  , toIObject = require('./$.to-iobject')
-  , toLength  = require('./$.to-length');
+},{"43":43,"71":71}],166:[function(_dereq_,module,exports){
+var $export   = _dereq_(23)
+  , toIObject = _dereq_(79)
+  , toLength  = _dereq_(80);
 
 $export($export.S, 'String', {
   // 21.1.2.4 String.raw(callSite, ...substitutions)
@@ -5860,23 +5799,23 @@ $export($export.S, 'String', {
     } return res.join('');
   }
 });
-},{"./$.export":56,"./$.to-iobject":112,"./$.to-length":113}],200:[function(require,module,exports){
-var $export = require('./$.export');
+},{"23":23,"79":79,"80":80}],167:[function(_dereq_,module,exports){
+var $export = _dereq_(23);
 
 $export($export.P, 'String', {
   // 21.1.3.13 String.prototype.repeat(count)
-  repeat: require('./$.string-repeat')
+  repeat: _dereq_(74)
 });
-},{"./$.export":56,"./$.string-repeat":107}],201:[function(require,module,exports){
+},{"23":23,"74":74}],168:[function(_dereq_,module,exports){
 // 21.1.3.18 String.prototype.startsWith(searchString [, position ])
 'use strict';
-var $export     = require('./$.export')
-  , toLength    = require('./$.to-length')
-  , context     = require('./$.string-context')
+var $export     = _dereq_(23)
+  , toLength    = _dereq_(80)
+  , context     = _dereq_(72)
   , STARTS_WITH = 'startsWith'
   , $startsWith = ''[STARTS_WITH];
 
-$export($export.P + $export.F * require('./$.fails-is-regexp')(STARTS_WITH), 'String', {
+$export($export.P + $export.F * _dereq_(24)(STARTS_WITH), 'String', {
   startsWith: function startsWith(searchString /*, position = 0 */){
     var that   = context(this, searchString, STARTS_WITH)
       , $$     = arguments
@@ -5887,35 +5826,35 @@ $export($export.P + $export.F * require('./$.fails-is-regexp')(STARTS_WITH), 'St
       : that.slice(index, index + search.length) === search;
   }
 });
-},{"./$.export":56,"./$.fails-is-regexp":57,"./$.string-context":105,"./$.to-length":113}],202:[function(require,module,exports){
+},{"23":23,"24":24,"72":72,"80":80}],169:[function(_dereq_,module,exports){
 'use strict';
 // 21.1.3.25 String.prototype.trim()
-require('./$.string-trim')('trim', function($trim){
+_dereq_(75)('trim', function($trim){
   return function trim(){
     return $trim(this, 3);
   };
 });
-},{"./$.string-trim":108}],203:[function(require,module,exports){
+},{"75":75}],170:[function(_dereq_,module,exports){
 'use strict';
 // ECMAScript 6 symbols shim
-var $              = require('./$')
-  , global         = require('./$.global')
-  , has            = require('./$.has')
-  , DESCRIPTORS    = require('./$.descriptors')
-  , $export        = require('./$.export')
-  , redefine       = require('./$.redefine')
-  , $fails         = require('./$.fails')
-  , shared         = require('./$.shared')
-  , setToStringTag = require('./$.set-to-string-tag')
-  , uid            = require('./$.uid')
-  , wks            = require('./$.wks')
-  , keyOf          = require('./$.keyof')
-  , $names         = require('./$.get-names')
-  , enumKeys       = require('./$.enum-keys')
-  , isArray        = require('./$.is-array')
-  , anObject       = require('./$.an-object')
-  , toIObject      = require('./$.to-iobject')
-  , createDesc     = require('./$.property-desc')
+var $              = _dereq_(47)
+  , global         = _dereq_(30)
+  , has            = _dereq_(31)
+  , DESCRIPTORS    = _dereq_(20)
+  , $export        = _dereq_(23)
+  , redefine       = _dereq_(62)
+  , $fails         = _dereq_(25)
+  , shared         = _dereq_(68)
+  , setToStringTag = _dereq_(67)
+  , uid            = _dereq_(83)
+  , wks            = _dereq_(84)
+  , keyOf          = _dereq_(48)
+  , $names         = _dereq_(29)
+  , enumKeys       = _dereq_(22)
+  , isArray        = _dereq_(37)
+  , anObject       = _dereq_(5)
+  , toIObject      = _dereq_(79)
+  , createDesc     = _dereq_(60)
   , getDesc        = $.getDesc
   , setDesc        = $.setDesc
   , _create        = $.create
@@ -6055,7 +5994,7 @@ if(!useNative){
   $.getNames   = $names.get = $getOwnPropertyNames;
   $.getSymbols = $getOwnPropertySymbols;
 
-  if(DESCRIPTORS && !require('./$.library')){
+  if(DESCRIPTORS && !_dereq_(49)){
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 }
@@ -6123,20 +6062,20 @@ setToStringTag($Symbol, 'Symbol');
 setToStringTag(Math, 'Math', true);
 // 24.3.3 JSON[@@toStringTag]
 setToStringTag(global.JSON, 'JSON', true);
-},{"./$":80,"./$.an-object":38,"./$.descriptors":53,"./$.enum-keys":55,"./$.export":56,"./$.fails":58,"./$.get-names":62,"./$.global":63,"./$.has":64,"./$.is-array":70,"./$.keyof":81,"./$.library":82,"./$.property-desc":93,"./$.redefine":95,"./$.set-to-string-tag":100,"./$.shared":101,"./$.to-iobject":112,"./$.uid":116,"./$.wks":117}],204:[function(require,module,exports){
+},{"20":20,"22":22,"23":23,"25":25,"29":29,"30":30,"31":31,"37":37,"47":47,"48":48,"49":49,"5":5,"60":60,"62":62,"67":67,"68":68,"79":79,"83":83,"84":84}],171:[function(_dereq_,module,exports){
 'use strict';
-var $            = require('./$')
-  , redefine     = require('./$.redefine')
-  , weak         = require('./$.collection-weak')
-  , isObject     = require('./$.is-object')
-  , has          = require('./$.has')
+var $            = _dereq_(47)
+  , redefine     = _dereq_(62)
+  , weak         = _dereq_(15)
+  , isObject     = _dereq_(39)
+  , has          = _dereq_(31)
   , frozenStore  = weak.frozenStore
   , WEAK         = weak.WEAK
   , isExtensible = Object.isExtensible || isObject
   , tmp          = {};
 
 // 23.3 WeakMap Objects
-var $WeakMap = require('./$.collection')('WeakMap', function(get){
+var $WeakMap = _dereq_(16)('WeakMap', function(get){
   return function WeakMap(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.3.3.3 WeakMap.prototype.get(key)
@@ -6167,12 +6106,12 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
     });
   });
 }
-},{"./$":80,"./$.collection":49,"./$.collection-weak":48,"./$.has":64,"./$.is-object":72,"./$.redefine":95}],205:[function(require,module,exports){
+},{"15":15,"16":16,"31":31,"39":39,"47":47,"62":62}],172:[function(_dereq_,module,exports){
 'use strict';
-var weak = require('./$.collection-weak');
+var weak = _dereq_(15);
 
 // 23.4 WeakSet Objects
-require('./$.collection')('WeakSet', function(get){
+_dereq_(16)('WeakSet', function(get){
   return function WeakSet(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.4.3.1 WeakSet.prototype.add(value)
@@ -6180,10 +6119,10 @@ require('./$.collection')('WeakSet', function(get){
     return weak.def(this, value, true);
   }
 }, weak, false, true);
-},{"./$.collection":49,"./$.collection-weak":48}],206:[function(require,module,exports){
+},{"15":15,"16":16}],173:[function(_dereq_,module,exports){
 'use strict';
-var $export   = require('./$.export')
-  , $includes = require('./$.array-includes')(true);
+var $export   = _dereq_(23)
+  , $includes = _dereq_(8)(true);
 
 $export($export.P, 'Array', {
   // https://github.com/domenic/Array.prototype.includes
@@ -6192,29 +6131,29 @@ $export($export.P, 'Array', {
   }
 });
 
-require('./$.add-to-unscopables')('includes');
-},{"./$.add-to-unscopables":37,"./$.array-includes":41,"./$.export":56}],207:[function(require,module,exports){
+_dereq_(4)('includes');
+},{"23":23,"4":4,"8":8}],174:[function(_dereq_,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var $export  = require('./$.export');
+var $export  = _dereq_(23);
 
-$export($export.P, 'Map', {toJSON: require('./$.collection-to-json')('Map')});
-},{"./$.collection-to-json":47,"./$.export":56}],208:[function(require,module,exports){
+$export($export.P, 'Map', {toJSON: _dereq_(14)('Map')});
+},{"14":14,"23":23}],175:[function(_dereq_,module,exports){
 // http://goo.gl/XkBrjD
-var $export  = require('./$.export')
-  , $entries = require('./$.object-to-array')(true);
+var $export  = _dereq_(23)
+  , $entries = _dereq_(56)(true);
 
 $export($export.S, 'Object', {
   entries: function entries(it){
     return $entries(it);
   }
 });
-},{"./$.export":56,"./$.object-to-array":89}],209:[function(require,module,exports){
+},{"23":23,"56":56}],176:[function(_dereq_,module,exports){
 // https://gist.github.com/WebReflection/9353781
-var $          = require('./$')
-  , $export    = require('./$.export')
-  , ownKeys    = require('./$.own-keys')
-  , toIObject  = require('./$.to-iobject')
-  , createDesc = require('./$.property-desc');
+var $          = _dereq_(47)
+  , $export    = _dereq_(23)
+  , ownKeys    = _dereq_(57)
+  , toIObject  = _dereq_(79)
+  , createDesc = _dereq_(60);
 
 $export($export.S, 'Object', {
   getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object){
@@ -6232,81 +6171,81 @@ $export($export.S, 'Object', {
     } return result;
   }
 });
-},{"./$":80,"./$.export":56,"./$.own-keys":90,"./$.property-desc":93,"./$.to-iobject":112}],210:[function(require,module,exports){
+},{"23":23,"47":47,"57":57,"60":60,"79":79}],177:[function(_dereq_,module,exports){
 // http://goo.gl/XkBrjD
-var $export = require('./$.export')
-  , $values = require('./$.object-to-array')(false);
+var $export = _dereq_(23)
+  , $values = _dereq_(56)(false);
 
 $export($export.S, 'Object', {
   values: function values(it){
     return $values(it);
   }
 });
-},{"./$.export":56,"./$.object-to-array":89}],211:[function(require,module,exports){
+},{"23":23,"56":56}],178:[function(_dereq_,module,exports){
 // https://github.com/benjamingr/RexExp.escape
-var $export = require('./$.export')
-  , $re     = require('./$.replacer')(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+var $export = _dereq_(23)
+  , $re     = _dereq_(63)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 $export($export.S, 'RegExp', {escape: function escape(it){ return $re(it); }});
 
-},{"./$.export":56,"./$.replacer":96}],212:[function(require,module,exports){
+},{"23":23,"63":63}],179:[function(_dereq_,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
-var $export  = require('./$.export');
+var $export  = _dereq_(23);
 
-$export($export.P, 'Set', {toJSON: require('./$.collection-to-json')('Set')});
-},{"./$.collection-to-json":47,"./$.export":56}],213:[function(require,module,exports){
+$export($export.P, 'Set', {toJSON: _dereq_(14)('Set')});
+},{"14":14,"23":23}],180:[function(_dereq_,module,exports){
 'use strict';
 // https://github.com/mathiasbynens/String.prototype.at
-var $export = require('./$.export')
-  , $at     = require('./$.string-at')(true);
+var $export = _dereq_(23)
+  , $at     = _dereq_(71)(true);
 
 $export($export.P, 'String', {
   at: function at(pos){
     return $at(this, pos);
   }
 });
-},{"./$.export":56,"./$.string-at":104}],214:[function(require,module,exports){
+},{"23":23,"71":71}],181:[function(_dereq_,module,exports){
 'use strict';
-var $export = require('./$.export')
-  , $pad    = require('./$.string-pad');
+var $export = _dereq_(23)
+  , $pad    = _dereq_(73);
 
 $export($export.P, 'String', {
   padLeft: function padLeft(maxLength /*, fillString = ' ' */){
     return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, true);
   }
 });
-},{"./$.export":56,"./$.string-pad":106}],215:[function(require,module,exports){
+},{"23":23,"73":73}],182:[function(_dereq_,module,exports){
 'use strict';
-var $export = require('./$.export')
-  , $pad    = require('./$.string-pad');
+var $export = _dereq_(23)
+  , $pad    = _dereq_(73);
 
 $export($export.P, 'String', {
   padRight: function padRight(maxLength /*, fillString = ' ' */){
     return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, false);
   }
 });
-},{"./$.export":56,"./$.string-pad":106}],216:[function(require,module,exports){
+},{"23":23,"73":73}],183:[function(_dereq_,module,exports){
 'use strict';
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
-require('./$.string-trim')('trimLeft', function($trim){
+_dereq_(75)('trimLeft', function($trim){
   return function trimLeft(){
     return $trim(this, 1);
   };
 });
-},{"./$.string-trim":108}],217:[function(require,module,exports){
+},{"75":75}],184:[function(_dereq_,module,exports){
 'use strict';
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
-require('./$.string-trim')('trimRight', function($trim){
+_dereq_(75)('trimRight', function($trim){
   return function trimRight(){
     return $trim(this, 2);
   };
 });
-},{"./$.string-trim":108}],218:[function(require,module,exports){
+},{"75":75}],185:[function(_dereq_,module,exports){
 // JavaScript 1.6 / Strawman array statics shim
-var $       = require('./$')
-  , $export = require('./$.export')
-  , $ctx    = require('./$.ctx')
-  , $Array  = require('./$.core').Array || Array
+var $       = _dereq_(47)
+  , $export = _dereq_(23)
+  , $ctx    = _dereq_(18)
+  , $Array  = _dereq_(17).Array || Array
   , statics = {};
 var setStatics = function(keys, length){
   $.each.call(keys.split(','), function(key){
@@ -6319,12 +6258,12 @@ setStatics('indexOf,every,some,forEach,map,filter,find,findIndex,includes', 3);
 setStatics('join,slice,concat,push,splice,unshift,sort,lastIndexOf,' +
            'reduce,reduceRight,copyWithin,fill');
 $export($export.S, 'Array', statics);
-},{"./$":80,"./$.core":50,"./$.ctx":51,"./$.export":56}],219:[function(require,module,exports){
-require('./es6.array.iterator');
-var global      = require('./$.global')
-  , hide        = require('./$.hide')
-  , Iterators   = require('./$.iterators')
-  , ITERATOR    = require('./$.wks')('iterator')
+},{"17":17,"18":18,"23":23,"47":47}],186:[function(_dereq_,module,exports){
+_dereq_(92);
+var global      = _dereq_(30)
+  , hide        = _dereq_(32)
+  , Iterators   = _dereq_(46)
+  , ITERATOR    = _dereq_(84)('iterator')
   , NL          = global.NodeList
   , HTC         = global.HTMLCollection
   , NLProto     = NL && NL.prototype
@@ -6332,19 +6271,19 @@ var global      = require('./$.global')
   , ArrayValues = Iterators.NodeList = Iterators.HTMLCollection = Iterators.Array;
 if(NLProto && !NLProto[ITERATOR])hide(NLProto, ITERATOR, ArrayValues);
 if(HTCProto && !HTCProto[ITERATOR])hide(HTCProto, ITERATOR, ArrayValues);
-},{"./$.global":63,"./$.hide":65,"./$.iterators":79,"./$.wks":117,"./es6.array.iterator":125}],220:[function(require,module,exports){
-var $export = require('./$.export')
-  , $task   = require('./$.task');
+},{"30":30,"32":32,"46":46,"84":84,"92":92}],187:[function(_dereq_,module,exports){
+var $export = _dereq_(23)
+  , $task   = _dereq_(76);
 $export($export.G + $export.B, {
   setImmediate:   $task.set,
   clearImmediate: $task.clear
 });
-},{"./$.export":56,"./$.task":109}],221:[function(require,module,exports){
+},{"23":23,"76":76}],188:[function(_dereq_,module,exports){
 // ie9- setTimeout & setInterval additional parameters fix
-var global     = require('./$.global')
-  , $export    = require('./$.export')
-  , invoke     = require('./$.invoke')
-  , partial    = require('./$.partial')
+var global     = _dereq_(30)
+  , $export    = _dereq_(23)
+  , invoke     = _dereq_(34)
+  , partial    = _dereq_(58)
   , navigator  = global.navigator
   , MSIE       = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
 var wrap = function(set){
@@ -6360,113 +6299,113 @@ $export($export.G + $export.B + $export.F * MSIE, {
   setTimeout:  wrap(global.setTimeout),
   setInterval: wrap(global.setInterval)
 });
-},{"./$.export":56,"./$.global":63,"./$.invoke":67,"./$.partial":91}],222:[function(require,module,exports){
-require('./modules/es5');
-require('./modules/es6.symbol');
-require('./modules/es6.object.assign');
-require('./modules/es6.object.is');
-require('./modules/es6.object.set-prototype-of');
-require('./modules/es6.object.to-string');
-require('./modules/es6.object.freeze');
-require('./modules/es6.object.seal');
-require('./modules/es6.object.prevent-extensions');
-require('./modules/es6.object.is-frozen');
-require('./modules/es6.object.is-sealed');
-require('./modules/es6.object.is-extensible');
-require('./modules/es6.object.get-own-property-descriptor');
-require('./modules/es6.object.get-prototype-of');
-require('./modules/es6.object.keys');
-require('./modules/es6.object.get-own-property-names');
-require('./modules/es6.function.name');
-require('./modules/es6.function.has-instance');
-require('./modules/es6.number.constructor');
-require('./modules/es6.number.epsilon');
-require('./modules/es6.number.is-finite');
-require('./modules/es6.number.is-integer');
-require('./modules/es6.number.is-nan');
-require('./modules/es6.number.is-safe-integer');
-require('./modules/es6.number.max-safe-integer');
-require('./modules/es6.number.min-safe-integer');
-require('./modules/es6.number.parse-float');
-require('./modules/es6.number.parse-int');
-require('./modules/es6.math.acosh');
-require('./modules/es6.math.asinh');
-require('./modules/es6.math.atanh');
-require('./modules/es6.math.cbrt');
-require('./modules/es6.math.clz32');
-require('./modules/es6.math.cosh');
-require('./modules/es6.math.expm1');
-require('./modules/es6.math.fround');
-require('./modules/es6.math.hypot');
-require('./modules/es6.math.imul');
-require('./modules/es6.math.log10');
-require('./modules/es6.math.log1p');
-require('./modules/es6.math.log2');
-require('./modules/es6.math.sign');
-require('./modules/es6.math.sinh');
-require('./modules/es6.math.tanh');
-require('./modules/es6.math.trunc');
-require('./modules/es6.string.from-code-point');
-require('./modules/es6.string.raw');
-require('./modules/es6.string.trim');
-require('./modules/es6.string.iterator');
-require('./modules/es6.string.code-point-at');
-require('./modules/es6.string.ends-with');
-require('./modules/es6.string.includes');
-require('./modules/es6.string.repeat');
-require('./modules/es6.string.starts-with');
-require('./modules/es6.array.from');
-require('./modules/es6.array.of');
-require('./modules/es6.array.iterator');
-require('./modules/es6.array.species');
-require('./modules/es6.array.copy-within');
-require('./modules/es6.array.fill');
-require('./modules/es6.array.find');
-require('./modules/es6.array.find-index');
-require('./modules/es6.regexp.constructor');
-require('./modules/es6.regexp.flags');
-require('./modules/es6.regexp.match');
-require('./modules/es6.regexp.replace');
-require('./modules/es6.regexp.search');
-require('./modules/es6.regexp.split');
-require('./modules/es6.promise');
-require('./modules/es6.map');
-require('./modules/es6.set');
-require('./modules/es6.weak-map');
-require('./modules/es6.weak-set');
-require('./modules/es6.reflect.apply');
-require('./modules/es6.reflect.construct');
-require('./modules/es6.reflect.define-property');
-require('./modules/es6.reflect.delete-property');
-require('./modules/es6.reflect.enumerate');
-require('./modules/es6.reflect.get');
-require('./modules/es6.reflect.get-own-property-descriptor');
-require('./modules/es6.reflect.get-prototype-of');
-require('./modules/es6.reflect.has');
-require('./modules/es6.reflect.is-extensible');
-require('./modules/es6.reflect.own-keys');
-require('./modules/es6.reflect.prevent-extensions');
-require('./modules/es6.reflect.set');
-require('./modules/es6.reflect.set-prototype-of');
-require('./modules/es7.array.includes');
-require('./modules/es7.string.at');
-require('./modules/es7.string.pad-left');
-require('./modules/es7.string.pad-right');
-require('./modules/es7.string.trim-left');
-require('./modules/es7.string.trim-right');
-require('./modules/es7.regexp.escape');
-require('./modules/es7.object.get-own-property-descriptors');
-require('./modules/es7.object.values');
-require('./modules/es7.object.entries');
-require('./modules/es7.map.to-json');
-require('./modules/es7.set.to-json');
-require('./modules/js.array.statics');
-require('./modules/web.timers');
-require('./modules/web.immediate');
-require('./modules/web.dom.iterable');
-module.exports = require('./modules/$.core');
-},{"./modules/$.core":50,"./modules/es5":119,"./modules/es6.array.copy-within":120,"./modules/es6.array.fill":121,"./modules/es6.array.find":123,"./modules/es6.array.find-index":122,"./modules/es6.array.from":124,"./modules/es6.array.iterator":125,"./modules/es6.array.of":126,"./modules/es6.array.species":127,"./modules/es6.function.has-instance":128,"./modules/es6.function.name":129,"./modules/es6.map":130,"./modules/es6.math.acosh":131,"./modules/es6.math.asinh":132,"./modules/es6.math.atanh":133,"./modules/es6.math.cbrt":134,"./modules/es6.math.clz32":135,"./modules/es6.math.cosh":136,"./modules/es6.math.expm1":137,"./modules/es6.math.fround":138,"./modules/es6.math.hypot":139,"./modules/es6.math.imul":140,"./modules/es6.math.log10":141,"./modules/es6.math.log1p":142,"./modules/es6.math.log2":143,"./modules/es6.math.sign":144,"./modules/es6.math.sinh":145,"./modules/es6.math.tanh":146,"./modules/es6.math.trunc":147,"./modules/es6.number.constructor":148,"./modules/es6.number.epsilon":149,"./modules/es6.number.is-finite":150,"./modules/es6.number.is-integer":151,"./modules/es6.number.is-nan":152,"./modules/es6.number.is-safe-integer":153,"./modules/es6.number.max-safe-integer":154,"./modules/es6.number.min-safe-integer":155,"./modules/es6.number.parse-float":156,"./modules/es6.number.parse-int":157,"./modules/es6.object.assign":158,"./modules/es6.object.freeze":159,"./modules/es6.object.get-own-property-descriptor":160,"./modules/es6.object.get-own-property-names":161,"./modules/es6.object.get-prototype-of":162,"./modules/es6.object.is":166,"./modules/es6.object.is-extensible":163,"./modules/es6.object.is-frozen":164,"./modules/es6.object.is-sealed":165,"./modules/es6.object.keys":167,"./modules/es6.object.prevent-extensions":168,"./modules/es6.object.seal":169,"./modules/es6.object.set-prototype-of":170,"./modules/es6.object.to-string":171,"./modules/es6.promise":172,"./modules/es6.reflect.apply":173,"./modules/es6.reflect.construct":174,"./modules/es6.reflect.define-property":175,"./modules/es6.reflect.delete-property":176,"./modules/es6.reflect.enumerate":177,"./modules/es6.reflect.get":180,"./modules/es6.reflect.get-own-property-descriptor":178,"./modules/es6.reflect.get-prototype-of":179,"./modules/es6.reflect.has":181,"./modules/es6.reflect.is-extensible":182,"./modules/es6.reflect.own-keys":183,"./modules/es6.reflect.prevent-extensions":184,"./modules/es6.reflect.set":186,"./modules/es6.reflect.set-prototype-of":185,"./modules/es6.regexp.constructor":187,"./modules/es6.regexp.flags":188,"./modules/es6.regexp.match":189,"./modules/es6.regexp.replace":190,"./modules/es6.regexp.search":191,"./modules/es6.regexp.split":192,"./modules/es6.set":193,"./modules/es6.string.code-point-at":194,"./modules/es6.string.ends-with":195,"./modules/es6.string.from-code-point":196,"./modules/es6.string.includes":197,"./modules/es6.string.iterator":198,"./modules/es6.string.raw":199,"./modules/es6.string.repeat":200,"./modules/es6.string.starts-with":201,"./modules/es6.string.trim":202,"./modules/es6.symbol":203,"./modules/es6.weak-map":204,"./modules/es6.weak-set":205,"./modules/es7.array.includes":206,"./modules/es7.map.to-json":207,"./modules/es7.object.entries":208,"./modules/es7.object.get-own-property-descriptors":209,"./modules/es7.object.values":210,"./modules/es7.regexp.escape":211,"./modules/es7.set.to-json":212,"./modules/es7.string.at":213,"./modules/es7.string.pad-left":214,"./modules/es7.string.pad-right":215,"./modules/es7.string.trim-left":216,"./modules/es7.string.trim-right":217,"./modules/js.array.statics":218,"./modules/web.dom.iterable":219,"./modules/web.immediate":220,"./modules/web.timers":221}],223:[function(require,module,exports){
-(function (process,global){
+},{"23":23,"30":30,"34":34,"58":58}],189:[function(_dereq_,module,exports){
+_dereq_(86);
+_dereq_(170);
+_dereq_(125);
+_dereq_(133);
+_dereq_(137);
+_dereq_(138);
+_dereq_(126);
+_dereq_(136);
+_dereq_(135);
+_dereq_(131);
+_dereq_(132);
+_dereq_(130);
+_dereq_(127);
+_dereq_(129);
+_dereq_(134);
+_dereq_(128);
+_dereq_(96);
+_dereq_(95);
+_dereq_(115);
+_dereq_(116);
+_dereq_(117);
+_dereq_(118);
+_dereq_(119);
+_dereq_(120);
+_dereq_(121);
+_dereq_(122);
+_dereq_(123);
+_dereq_(124);
+_dereq_(98);
+_dereq_(99);
+_dereq_(100);
+_dereq_(101);
+_dereq_(102);
+_dereq_(103);
+_dereq_(104);
+_dereq_(105);
+_dereq_(106);
+_dereq_(107);
+_dereq_(108);
+_dereq_(109);
+_dereq_(110);
+_dereq_(111);
+_dereq_(112);
+_dereq_(113);
+_dereq_(114);
+_dereq_(163);
+_dereq_(166);
+_dereq_(169);
+_dereq_(165);
+_dereq_(161);
+_dereq_(162);
+_dereq_(164);
+_dereq_(167);
+_dereq_(168);
+_dereq_(91);
+_dereq_(93);
+_dereq_(92);
+_dereq_(94);
+_dereq_(87);
+_dereq_(88);
+_dereq_(90);
+_dereq_(89);
+_dereq_(154);
+_dereq_(155);
+_dereq_(156);
+_dereq_(157);
+_dereq_(158);
+_dereq_(159);
+_dereq_(139);
+_dereq_(97);
+_dereq_(160);
+_dereq_(171);
+_dereq_(172);
+_dereq_(140);
+_dereq_(141);
+_dereq_(142);
+_dereq_(143);
+_dereq_(144);
+_dereq_(147);
+_dereq_(145);
+_dereq_(146);
+_dereq_(148);
+_dereq_(149);
+_dereq_(150);
+_dereq_(151);
+_dereq_(153);
+_dereq_(152);
+_dereq_(173);
+_dereq_(180);
+_dereq_(181);
+_dereq_(182);
+_dereq_(183);
+_dereq_(184);
+_dereq_(178);
+_dereq_(176);
+_dereq_(177);
+_dereq_(175);
+_dereq_(174);
+_dereq_(179);
+_dereq_(185);
+_dereq_(188);
+_dereq_(187);
+_dereq_(186);
+module.exports = _dereq_(17);
+},{"100":100,"101":101,"102":102,"103":103,"104":104,"105":105,"106":106,"107":107,"108":108,"109":109,"110":110,"111":111,"112":112,"113":113,"114":114,"115":115,"116":116,"117":117,"118":118,"119":119,"120":120,"121":121,"122":122,"123":123,"124":124,"125":125,"126":126,"127":127,"128":128,"129":129,"130":130,"131":131,"132":132,"133":133,"134":134,"135":135,"136":136,"137":137,"138":138,"139":139,"140":140,"141":141,"142":142,"143":143,"144":144,"145":145,"146":146,"147":147,"148":148,"149":149,"150":150,"151":151,"152":152,"153":153,"154":154,"155":155,"156":156,"157":157,"158":158,"159":159,"160":160,"161":161,"162":162,"163":163,"164":164,"165":165,"166":166,"167":167,"168":168,"169":169,"17":17,"170":170,"171":171,"172":172,"173":173,"174":174,"175":175,"176":176,"177":177,"178":178,"179":179,"180":180,"181":181,"182":182,"183":183,"184":184,"185":185,"186":186,"187":187,"188":188,"86":86,"87":87,"88":88,"89":89,"90":90,"91":91,"92":92,"93":93,"94":94,"95":95,"96":96,"97":97,"98":98,"99":99}],190:[function(_dereq_,module,exports){
+(function (global){
 /**
  * Copyright (c) 2014, Facebook, Inc.
  * All rights reserved.
@@ -6769,12 +6708,13 @@ module.exports = require('./modules/$.core');
         }
 
         if (method === "next") {
+          context._sent = arg;
+
           if (state === GenStateSuspendedYield) {
             context.sent = arg;
           } else {
             context.sent = undefined;
           }
-
         } else if (method === "throw") {
           if (state === GenStateSuspendedStart) {
             state = GenStateCompleted;
@@ -7124,14 +7064,11 @@ module.exports = require('./modules/$.core');
   typeof self === "object" ? self : this
 );
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}]},{},[1]);
+
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":226}],224:[function(require,module,exports){
-module.exports = require("./lib/polyfill");
-
-},{"./lib/polyfill":35}],225:[function(require,module,exports){
-module.exports = require("babel-core/polyfill");
-
-},{"babel-core/polyfill":224}],226:[function(require,module,exports){
+},{"_process":36}],36:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -7224,180 +7161,181 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],227:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
-var WhiteSpaceNotUsedForFormatting = require('WhiteSpaceNotUsedForFormatting');
-var WhiteSpaceInWord = require('WhiteSpaceInWord');
-var VideosEmbeddedOrLinkedNeedCaptions = require('VideosEmbeddedOrLinkedNeedCaptions');
-var VideoMayBePresent = require('VideoMayBePresent');
-var TextareaHasAssociatedLabel = require('TextareaHasAssociatedLabel');
-var TextIsNotSmall = require('TextIsNotSmall');
-var TabularDataIsInTable = require('TabularDataIsInTable');
-var TableUsesScopeForRow = require('TableUsesScopeForRow');
-var TableUsesCaption = require('TableUsesCaption');
-var TableUsesAbbreviationForHeader = require('TableUsesAbbreviationForHeader');
-var TableUseColGroup = require('TableUseColGroup');
-var TableSummaryIsNotTooLong = require('TableSummaryIsNotTooLong');
-var TableSummaryIsEmpty = require('TableSummaryIsEmpty');
-var TableSummaryDoesNotDuplicateCaption = require('TableSummaryDoesNotDuplicateCaption');
-var TableShouldUseHeaderIDs = require('TableShouldUseHeaderIDs');
-var TableNotUsedForLayout = require('TableNotUsedForLayout');
-var TableLayoutMakesSenseLinearized = require('TableLayoutMakesSenseLinearized');
-var TableLayoutHasNoSummary = require('TableLayoutHasNoSummary');
-var TableLayoutHasNoCaption = require('TableLayoutHasNoCaption');
-var TableLayoutDataShouldNotHaveTh = require('TableLayoutDataShouldNotHaveTh');
-var TableDataShouldHaveTh = require('TableDataShouldHaveTh');
-var TableAxisHasCorrespondingId = require('TableAxisHasCorrespondingId');
-var TabIndexFollowsLogicalOrder = require('TabIndexFollowsLogicalOrder');
-var SvgContainsTitle = require('SvgContainsTitle');
-var SkipToContentLinkProvided = require('SkipToContentLinkProvided');
-var SiteMap = require('SiteMap');
-var SelectJumpMenu = require('SelectJumpMenu');
-var SelectHasAssociatedLabel = require('SelectHasAssociatedLabel');
-var ScriptOnmouseupHasOnkeyup = require('ScriptOnmouseupHasOnkeyup');
-var ScriptOnmouseoverHasOnfocus = require('ScriptOnmouseoverHasOnfocus');
-var ScriptOnmouseoutHasOnmouseblur = require('ScriptOnmouseoutHasOnmouseblur');
-var ScriptOnmousemove = require('ScriptOnmousemove');
-var ScriptOnmousedownRequiresOnKeypress = require('ScriptOnmousedownRequiresOnKeypress');
-var ScriptOndblclickRequiresOnKeypress = require('ScriptOndblclickRequiresOnKeypress');
-var ScriptOnclickRequiresOnKeypress = require('ScriptOnclickRequiresOnKeypress');
-var RadioHasLabel = require('RadioHasLabel');
-var PreShouldNotBeUsedForTabularLayout = require('PreShouldNotBeUsedForTabularLayout');
-var PasswordHasLabel = require('PasswordHasLabel');
-var PNotUsedAsHeader = require('PNotUsedAsHeader');
-var ObjectMustHaveValidTitle = require('ObjectMustHaveValidTitle');
-var ObjectMustHaveTitle = require('ObjectMustHaveTitle');
-var ObjectMustHaveEmbed = require('ObjectMustHaveEmbed');
-var ObjectMustContainText = require('ObjectMustContainText');
-var NewWindowIsOpened = require('NewWindowIsOpened');
-var MenuNotUsedToFormatText = require('MenuNotUsedToFormatText');
-var MarqueeIsNotUsed = require('MarqueeIsNotUsed');
-var ListOfLinksUseList = require('ListOfLinksUseList');
-var ListNotUsedForFormatting = require('ListNotUsedForFormatting');
-var LinkHasAUniqueContext = require('LinkHasAUniqueContext');
-var LiDontUseImageForBullet = require('LiDontUseImageForBullet');
-var LegendTextNotPlaceholder = require('LegendTextNotPlaceholder');
-var LegendTextNotEmpty = require('LegendTextNotEmpty');
-var LanguageUnicodeDirection = require('LanguageUnicodeDirection');
-var LanguageDirectionPunctuation = require('LanguageDirectionPunctuation');
-var LanguageDirAttributeIsUsed = require('LanguageDirAttributeIsUsed');
-var LabelsAreAssignedToAnInput = require('LabelsAreAssignedToAnInput');
-var LabelMustNotBeEmpty = require('LabelMustNotBeEmpty');
-var LabelMustBeUnique = require('LabelMustBeUnique');
-var LabelDoesNotContainInput = require('LabelDoesNotContainInput');
-var InputWithoutLabelHasTitle = require('InputWithoutLabelHasTitle');
-var InputTextValueNotEmpty = require('InputTextValueNotEmpty');
-var InputTextHasValue = require('InputTextHasValue');
-var InputTextHasLabel = require('InputTextHasLabel');
-var InputImageHasAlt = require('InputImageHasAlt');
-var InputImageAltNotRedundant = require('InputImageAltNotRedundant');
-var InputImageAltIsShort = require('InputImageAltIsShort');
-var InputImageAltIsNotPlaceholder = require('InputImageAltIsNotPlaceholder');
-var InputImageAltIsNotFileName = require('InputImageAltIsNotFileName');
-var InputElementsDontHaveAlt = require('InputElementsDontHaveAlt');
-var InputCheckboxRequiresFieldset = require('InputCheckboxRequiresFieldset');
-var ImgWithMathShouldHaveMathEquivalent = require('ImgWithMathShouldHaveMathEquivalent');
-var ImgWithMapHasUseMap = require('ImgWithMapHasUseMap');
-var ImgShouldNotHaveTitle = require('ImgShouldNotHaveTitle');
-var ImgServerSideMapNotUsed = require('ImgServerSideMapNotUsed');
-var ImgNonDecorativeHasAlt = require('ImgNonDecorativeHasAlt');
-var ImgImportantNoSpacerAlt = require('ImgImportantNoSpacerAlt');
-var ImgHasLongDesc = require('ImgHasLongDesc');
-var ImgHasAlt = require('ImgHasAlt');
-var ImgAltNotPlaceHolder = require('ImgAltNotPlaceHolder');
-var ImgAltNotEmptyInAnchor = require('ImgAltNotEmptyInAnchor');
-var ImgAltIsTooLong = require('ImgAltIsTooLong');
-var ImgAltIsDifferent = require('ImgAltIsDifferent');
-var ImageMapServerSide = require('ImageMapServerSide');
-var IframeMustNotHaveLongdesc = require('IframeMustNotHaveLongdesc');
-var IdrefsHasCorrespondingId = require('IdrefsHasCorrespondingId');
-var IIsNotUsed = require('IIsNotUsed');
-var HeadersUseToMarkSections = require('HeadersUseToMarkSections');
-var HeadersHaveText = require('HeadersHaveText');
-var HeadersAttrRefersToATableCell = require('HeadersAttrRefersToATableCell');
-var HeaderH6Format = require('HeaderH6Format');
-var HeaderH5Format = require('HeaderH5Format');
-var HeaderH4Format = require('HeaderH4Format');
-var HeaderH4 = require('HeaderH4');
-var HeaderH3Format = require('HeaderH3Format');
-var HeaderH3 = require('HeaderH3');
-var HeaderH2Format = require('HeaderH2Format');
-var HeaderH2 = require('HeaderH2');
-var HeaderH1Format = require('HeaderH1Format');
-var HeaderH1 = require('HeaderH1');
-var FormWithRequiredLabel = require('FormWithRequiredLabel');
-var FormHasSubmitButton = require('FormHasSubmitButton');
-var FormHasGoodErrorMessage = require('FormHasGoodErrorMessage');
-var FormErrorMessageHelpsUser = require('FormErrorMessageHelpsUser');
-var FormButtonsHaveValue = require('FormButtonsHaveValue');
-var FontIsNotUsed = require('FontIsNotUsed');
-var FileHasLabel = require('FileHasLabel');
-var FieldsetHasLabel = require('FieldsetHasLabel');
-var EmbedMustHaveAltAttribute = require('EmbedMustHaveAltAttribute');
-var EmbedHasAssociatedNoEmbed = require('EmbedHasAssociatedNoEmbed');
-var DomOrderMatchesVisualOrder = require('DomOrderMatchesVisualOrder');
-var DocumentVisualListsAreMarkedUp = require('DocumentVisualListsAreMarkedUp');
-var DocumentTitleNotEmpty = require('DocumentTitleNotEmpty');
-var DocumentTitleIsShort = require('DocumentTitleIsShort');
-var DocumentTitleIsNotPlaceholder = require('DocumentTitleIsNotPlaceholder');
-var DocumentTitleDescribesDocument = require('DocumentTitleDescribesDocument');
-var DocumentStrictDocType = require('DocumentStrictDocType');
-var DocumentReadingDirection = require('DocumentReadingDirection');
-var DocumentMetaNotUsedWithTimeout = require('DocumentMetaNotUsedWithTimeout');
-var DocumentLangNotIdentified = require('DocumentLangNotIdentified');
-var DocumentLangIsISO639Standard = require('DocumentLangIsISO639Standard');
-var DocumentIsWrittenClearly = require('DocumentIsWrittenClearly');
-var DocumentHasTitleElement = require('DocumentHasTitleElement');
-var DocumentContentReadableWithoutStylesheets = require('DocumentContentReadableWithoutStylesheets');
-var DocumentAutoRedirectNotUsed = require('DocumentAutoRedirectNotUsed');
-var DocumentAcronymsHaveElement = require('DocumentAcronymsHaveElement');
-var DoctypeProvided = require('DoctypeProvided');
-var DefinitionListsAreUsed = require('DefinitionListsAreUsed');
-var CssDocumentMakesSenseStyleTurnedOff = require('CssDocumentMakesSenseStyleTurnedOff');
-var ColorFontContrast = require('ColorFontContrast');
-var ColorElementBehindContrast = require('ColorElementBehindContrast');
-var ColorElementBehindBackgroundImageContrast = require('ColorElementBehindBackgroundImageContrast');
-var ColorElementBehindBackgroundGradientContrast = require('ColorElementBehindBackgroundGradientContrast');
-var ColorBackgroundImageContrast = require('ColorBackgroundImageContrast');
-var ColorBackgroundGradientContrast = require('ColorBackgroundGradientContrast');
-var CheckboxHasLabel = require('CheckboxHasLabel');
-var ButtonHasName = require('ButtonHasName');
-var BoldIsNotUsed = require('BoldIsNotUsed');
-var BlockquoteUseForQuotations = require('BlockquoteUseForQuotations');
-var BlockquoteNotUsedForIndentation = require('BlockquoteNotUsedForIndentation');
-var BlinkIsNotUsed = require('BlinkIsNotUsed');
-var BasefontIsNotUsed = require('BasefontIsNotUsed');
-var AudioMayBePresent = require('AudioMayBePresent');
-var AreaLinksToSoundFile = require('AreaLinksToSoundFile');
-var AreaHasAltValue = require('AreaHasAltValue');
-var AreaDontOpenNewWindow = require('AreaDontOpenNewWindow');
-var AreaAltRefersToText = require('AreaAltRefersToText');
-var AreaAltIdentifiesDestination = require('AreaAltIdentifiesDestination');
-var AnimatedGifMayBePresent = require('AnimatedGifMayBePresent');
-var ATitleDescribesDestination = require('ATitleDescribesDestination');
-var ASuspiciousLinkText = require('ASuspiciousLinkText');
-var AppletsDonotUseColorAlone = require('AppletsDonotUseColorAlone');
-var AppletsDoNotFlicker = require('AppletsDoNotFlicker');
-var AppletUIMustBeAccessible = require('AppletUIMustBeAccessible');
-var AppletTextEquivalentsGetUpdated = require('AppletTextEquivalentsGetUpdated');
-var AppletProvidesMechanismToReturnToParent = require('AppletProvidesMechanismToReturnToParent');
-var AppletContainsTextEquivalentInAlt = require('AppletContainsTextEquivalentInAlt');
-var AppletContainsTextEquivalent = require('AppletContainsTextEquivalent');
-var AMustNotHaveJavascriptHref = require('AMustNotHaveJavascriptHref');
-var AMustHaveTitle = require('AMustHaveTitle');
-var AMustContainText = require('AMustContainText');
-var AMultimediaTextAlternative = require('AMultimediaTextAlternative');
-var ALinksToSoundFilesNeedTranscripts = require('ALinksToSoundFilesNeedTranscripts');
-var ALinksToMultiMediaRequireTranscript = require('ALinksToMultiMediaRequireTranscript');
-var ALinksNotSeparatedBySymbols = require('ALinksNotSeparatedBySymbols');
-var ALinksDontOpenNewWindow = require('ALinksDontOpenNewWindow');
-var ALinksAreSeparatedByPrintableCharacters = require('ALinksAreSeparatedByPrintableCharacters');
-var ALinkWithNonText = require('ALinkWithNonText');
-var ALinkTextDoesNotBeginWithRedundantWord = require('ALinkTextDoesNotBeginWithRedundantWord');
-var AInPHasADistinctStyle = require('AInPHasADistinctStyle');
-var AImgAltNotRepetitive = require('AImgAltNotRepetitive');
-var AAdjacentWithSameResourceShouldBeCombined = require('AAdjacentWithSameResourceShouldBeCombined');
-var map = new Map();
+
+const WhiteSpaceNotUsedForFormatting = require('WhiteSpaceNotUsedForFormatting');
+const WhiteSpaceInWord = require('WhiteSpaceInWord');
+const VideosEmbeddedOrLinkedNeedCaptions = require('VideosEmbeddedOrLinkedNeedCaptions');
+const VideoMayBePresent = require('VideoMayBePresent');
+const TextareaHasAssociatedLabel = require('TextareaHasAssociatedLabel');
+const TextIsNotSmall = require('TextIsNotSmall');
+const TabularDataIsInTable = require('TabularDataIsInTable');
+const TableUsesScopeForRow = require('TableUsesScopeForRow');
+const TableUsesCaption = require('TableUsesCaption');
+const TableUsesAbbreviationForHeader = require('TableUsesAbbreviationForHeader');
+const TableUseColGroup = require('TableUseColGroup');
+const TableSummaryIsNotTooLong = require('TableSummaryIsNotTooLong');
+const TableSummaryIsEmpty = require('TableSummaryIsEmpty');
+const TableSummaryDoesNotDuplicateCaption = require('TableSummaryDoesNotDuplicateCaption');
+const TableShouldUseHeaderIDs = require('TableShouldUseHeaderIDs');
+const TableNotUsedForLayout = require('TableNotUsedForLayout');
+const TableLayoutMakesSenseLinearized = require('TableLayoutMakesSenseLinearized');
+const TableLayoutHasNoSummary = require('TableLayoutHasNoSummary');
+const TableLayoutHasNoCaption = require('TableLayoutHasNoCaption');
+const TableLayoutDataShouldNotHaveTh = require('TableLayoutDataShouldNotHaveTh');
+const TableDataShouldHaveTh = require('TableDataShouldHaveTh');
+const TableAxisHasCorrespondingId = require('TableAxisHasCorrespondingId');
+const TabIndexFollowsLogicalOrder = require('TabIndexFollowsLogicalOrder');
+const SvgContainsTitle = require('SvgContainsTitle');
+const SkipToContentLinkProvided = require('SkipToContentLinkProvided');
+const SiteMap = require('SiteMap');
+const SelectJumpMenu = require('SelectJumpMenu');
+const SelectHasAssociatedLabel = require('SelectHasAssociatedLabel');
+const ScriptOnmouseupHasOnkeyup = require('ScriptOnmouseupHasOnkeyup');
+const ScriptOnmouseoverHasOnfocus = require('ScriptOnmouseoverHasOnfocus');
+const ScriptOnmouseoutHasOnmouseblur = require('ScriptOnmouseoutHasOnmouseblur');
+const ScriptOnmousemove = require('ScriptOnmousemove');
+const ScriptOnmousedownRequiresOnKeypress = require('ScriptOnmousedownRequiresOnKeypress');
+const ScriptOndblclickRequiresOnKeypress = require('ScriptOndblclickRequiresOnKeypress');
+const ScriptOnclickRequiresOnKeypress = require('ScriptOnclickRequiresOnKeypress');
+const RadioHasLabel = require('RadioHasLabel');
+const PreShouldNotBeUsedForTabularLayout = require('PreShouldNotBeUsedForTabularLayout');
+const PasswordHasLabel = require('PasswordHasLabel');
+const PNotUsedAsHeader = require('PNotUsedAsHeader');
+const ObjectMustHaveValidTitle = require('ObjectMustHaveValidTitle');
+const ObjectMustHaveTitle = require('ObjectMustHaveTitle');
+const ObjectMustHaveEmbed = require('ObjectMustHaveEmbed');
+const ObjectMustContainText = require('ObjectMustContainText');
+const NewWindowIsOpened = require('NewWindowIsOpened');
+const MenuNotUsedToFormatText = require('MenuNotUsedToFormatText');
+const MarqueeIsNotUsed = require('MarqueeIsNotUsed');
+const ListOfLinksUseList = require('ListOfLinksUseList');
+const ListNotUsedForFormatting = require('ListNotUsedForFormatting');
+const LinkHasAUniqueContext = require('LinkHasAUniqueContext');
+const LiDontUseImageForBullet = require('LiDontUseImageForBullet');
+const LegendTextNotPlaceholder = require('LegendTextNotPlaceholder');
+const LegendTextNotEmpty = require('LegendTextNotEmpty');
+const LanguageUnicodeDirection = require('LanguageUnicodeDirection');
+const LanguageDirectionPunctuation = require('LanguageDirectionPunctuation');
+const LanguageDirAttributeIsUsed = require('LanguageDirAttributeIsUsed');
+const LabelsAreAssignedToAnInput = require('LabelsAreAssignedToAnInput');
+const LabelMustNotBeEmpty = require('LabelMustNotBeEmpty');
+const LabelMustBeUnique = require('LabelMustBeUnique');
+const LabelDoesNotContainInput = require('LabelDoesNotContainInput');
+const InputWithoutLabelHasTitle = require('InputWithoutLabelHasTitle');
+const InputTextValueNotEmpty = require('InputTextValueNotEmpty');
+const InputTextHasValue = require('InputTextHasValue');
+const InputTextHasLabel = require('InputTextHasLabel');
+const InputImageHasAlt = require('InputImageHasAlt');
+const InputImageAltNotRedundant = require('InputImageAltNotRedundant');
+const InputImageAltIsShort = require('InputImageAltIsShort');
+const InputImageAltIsNotPlaceholder = require('InputImageAltIsNotPlaceholder');
+const InputImageAltIsNotFileName = require('InputImageAltIsNotFileName');
+const InputElementsDontHaveAlt = require('InputElementsDontHaveAlt');
+const InputCheckboxRequiresFieldset = require('InputCheckboxRequiresFieldset');
+const ImgWithMathShouldHaveMathEquivalent = require('ImgWithMathShouldHaveMathEquivalent');
+const ImgWithMapHasUseMap = require('ImgWithMapHasUseMap');
+const ImgShouldNotHaveTitle = require('ImgShouldNotHaveTitle');
+const ImgServerSideMapNotUsed = require('ImgServerSideMapNotUsed');
+const ImgNonDecorativeHasAlt = require('ImgNonDecorativeHasAlt');
+const ImgImportantNoSpacerAlt = require('ImgImportantNoSpacerAlt');
+const ImgHasLongDesc = require('ImgHasLongDesc');
+const ImgHasAlt = require('ImgHasAlt');
+const ImgAltNotPlaceHolder = require('ImgAltNotPlaceHolder');
+const ImgAltNotEmptyInAnchor = require('ImgAltNotEmptyInAnchor');
+const ImgAltIsTooLong = require('ImgAltIsTooLong');
+const ImgAltIsDifferent = require('ImgAltIsDifferent');
+const ImageMapServerSide = require('ImageMapServerSide');
+const IframeMustNotHaveLongdesc = require('IframeMustNotHaveLongdesc');
+const IdrefsHasCorrespondingId = require('IdrefsHasCorrespondingId');
+const IIsNotUsed = require('IIsNotUsed');
+const HeadersUseToMarkSections = require('HeadersUseToMarkSections');
+const HeadersHaveText = require('HeadersHaveText');
+const HeadersAttrRefersToATableCell = require('HeadersAttrRefersToATableCell');
+const HeaderH6Format = require('HeaderH6Format');
+const HeaderH5Format = require('HeaderH5Format');
+const HeaderH4Format = require('HeaderH4Format');
+const HeaderH4 = require('HeaderH4');
+const HeaderH3Format = require('HeaderH3Format');
+const HeaderH3 = require('HeaderH3');
+const HeaderH2Format = require('HeaderH2Format');
+const HeaderH2 = require('HeaderH2');
+const HeaderH1Format = require('HeaderH1Format');
+const HeaderH1 = require('HeaderH1');
+const FormWithRequiredLabel = require('FormWithRequiredLabel');
+const FormHasSubmitButton = require('FormHasSubmitButton');
+const FormHasGoodErrorMessage = require('FormHasGoodErrorMessage');
+const FormErrorMessageHelpsUser = require('FormErrorMessageHelpsUser');
+const FormButtonsHaveValue = require('FormButtonsHaveValue');
+const FontIsNotUsed = require('FontIsNotUsed');
+const FileHasLabel = require('FileHasLabel');
+const FieldsetHasLabel = require('FieldsetHasLabel');
+const EmbedMustHaveAltAttribute = require('EmbedMustHaveAltAttribute');
+const EmbedHasAssociatedNoEmbed = require('EmbedHasAssociatedNoEmbed');
+const DomOrderMatchesVisualOrder = require('DomOrderMatchesVisualOrder');
+const DocumentVisualListsAreMarkedUp = require('DocumentVisualListsAreMarkedUp');
+const DocumentTitleNotEmpty = require('DocumentTitleNotEmpty');
+const DocumentTitleIsShort = require('DocumentTitleIsShort');
+const DocumentTitleIsNotPlaceholder = require('DocumentTitleIsNotPlaceholder');
+const DocumentTitleDescribesDocument = require('DocumentTitleDescribesDocument');
+const DocumentStrictDocType = require('DocumentStrictDocType');
+const DocumentReadingDirection = require('DocumentReadingDirection');
+const DocumentMetaNotUsedWithTimeout = require('DocumentMetaNotUsedWithTimeout');
+const DocumentLangNotIdentified = require('DocumentLangNotIdentified');
+const DocumentLangIsISO639Standard = require('DocumentLangIsISO639Standard');
+const DocumentIsWrittenClearly = require('DocumentIsWrittenClearly');
+const DocumentHasTitleElement = require('DocumentHasTitleElement');
+const DocumentContentReadableWithoutStylesheets = require('DocumentContentReadableWithoutStylesheets');
+const DocumentAutoRedirectNotUsed = require('DocumentAutoRedirectNotUsed');
+const DocumentAcronymsHaveElement = require('DocumentAcronymsHaveElement');
+const DoctypeProvided = require('DoctypeProvided');
+const DefinitionListsAreUsed = require('DefinitionListsAreUsed');
+const CssDocumentMakesSenseStyleTurnedOff = require('CssDocumentMakesSenseStyleTurnedOff');
+const ColorFontContrast = require('ColorFontContrast');
+const ColorElementBehindContrast = require('ColorElementBehindContrast');
+const ColorElementBehindBackgroundImageContrast = require('ColorElementBehindBackgroundImageContrast');
+const ColorElementBehindBackgroundGradientContrast = require('ColorElementBehindBackgroundGradientContrast');
+const ColorBackgroundImageContrast = require('ColorBackgroundImageContrast');
+const ColorBackgroundGradientContrast = require('ColorBackgroundGradientContrast');
+const CheckboxHasLabel = require('CheckboxHasLabel');
+const ButtonHasName = require('ButtonHasName');
+const BoldIsNotUsed = require('BoldIsNotUsed');
+const BlockquoteUseForQuotations = require('BlockquoteUseForQuotations');
+const BlockquoteNotUsedForIndentation = require('BlockquoteNotUsedForIndentation');
+const BlinkIsNotUsed = require('BlinkIsNotUsed');
+const BasefontIsNotUsed = require('BasefontIsNotUsed');
+const AudioMayBePresent = require('AudioMayBePresent');
+const AreaLinksToSoundFile = require('AreaLinksToSoundFile');
+const AreaHasAltValue = require('AreaHasAltValue');
+const AreaDontOpenNewWindow = require('AreaDontOpenNewWindow');
+const AreaAltRefersToText = require('AreaAltRefersToText');
+const AreaAltIdentifiesDestination = require('AreaAltIdentifiesDestination');
+const AnimatedGifMayBePresent = require('AnimatedGifMayBePresent');
+const ATitleDescribesDestination = require('ATitleDescribesDestination');
+const ASuspiciousLinkText = require('ASuspiciousLinkText');
+const AppletsDonotUseColorAlone = require('AppletsDonotUseColorAlone');
+const AppletsDoNotFlicker = require('AppletsDoNotFlicker');
+const AppletUIMustBeAccessible = require('AppletUIMustBeAccessible');
+const AppletTextEquivalentsGetUpdated = require('AppletTextEquivalentsGetUpdated');
+const AppletProvidesMechanismToReturnToParent = require('AppletProvidesMechanismToReturnToParent');
+const AppletContainsTextEquivalentInAlt = require('AppletContainsTextEquivalentInAlt');
+const AppletContainsTextEquivalent = require('AppletContainsTextEquivalent');
+const AMustNotHaveJavascriptHref = require('AMustNotHaveJavascriptHref');
+const AMustHaveTitle = require('AMustHaveTitle');
+const AMustContainText = require('AMustContainText');
+const AMultimediaTextAlternative = require('AMultimediaTextAlternative');
+const ALinksToSoundFilesNeedTranscripts = require('ALinksToSoundFilesNeedTranscripts');
+const ALinksToMultiMediaRequireTranscript = require('ALinksToMultiMediaRequireTranscript');
+const ALinksNotSeparatedBySymbols = require('ALinksNotSeparatedBySymbols');
+const ALinksDontOpenNewWindow = require('ALinksDontOpenNewWindow');
+const ALinksAreSeparatedByPrintableCharacters = require('ALinksAreSeparatedByPrintableCharacters');
+const ALinkWithNonText = require('ALinkWithNonText');
+const ALinkTextDoesNotBeginWithRedundantWord = require('ALinkTextDoesNotBeginWithRedundantWord');
+const AInPHasADistinctStyle = require('AInPHasADistinctStyle');
+const AImgAltNotRepetitive = require('AImgAltNotRepetitive');
+const AAdjacentWithSameResourceShouldBeCombined = require('AAdjacentWithSameResourceShouldBeCombined');
+let map = new Map();
 map.set('aAdjacentWithSameResourceShouldBeCombined', AAdjacentWithSameResourceShouldBeCombined);
 map.set('aImgAltNotRepetitive', AImgAltNotRepetitive);
 map.set('aInPHasADistinctStyle', AInPHasADistinctStyle);
@@ -7571,7 +7509,7 @@ map.set('whiteSpaceInWord', WhiteSpaceInWord);
 map.set('whiteSpaceNotUsedForFormatting', WhiteSpaceNotUsedForFormatting);
 module.exports = map;
 
-},{"AAdjacentWithSameResourceShouldBeCombined":229,"AImgAltNotRepetitive":230,"AInPHasADistinctStyle":231,"ALinkTextDoesNotBeginWithRedundantWord":232,"ALinkWithNonText":233,"ALinksAreSeparatedByPrintableCharacters":234,"ALinksDontOpenNewWindow":235,"ALinksNotSeparatedBySymbols":236,"ALinksToMultiMediaRequireTranscript":237,"ALinksToSoundFilesNeedTranscripts":238,"AMultimediaTextAlternative":239,"AMustContainText":240,"AMustHaveTitle":241,"AMustNotHaveJavascriptHref":242,"ASuspiciousLinkText":243,"ATitleDescribesDestination":244,"AnimatedGifMayBePresent":245,"AppletContainsTextEquivalent":246,"AppletContainsTextEquivalentInAlt":247,"AppletProvidesMechanismToReturnToParent":248,"AppletTextEquivalentsGetUpdated":249,"AppletUIMustBeAccessible":250,"AppletsDoNotFlicker":251,"AppletsDonotUseColorAlone":252,"AreaAltIdentifiesDestination":253,"AreaAltRefersToText":254,"AreaDontOpenNewWindow":255,"AreaHasAltValue":256,"AreaLinksToSoundFile":257,"AudioMayBePresent":258,"BasefontIsNotUsed":259,"BlinkIsNotUsed":260,"BlockquoteNotUsedForIndentation":261,"BlockquoteUseForQuotations":262,"BoldIsNotUsed":263,"ButtonHasName":264,"CheckboxHasLabel":265,"ColorBackgroundGradientContrast":266,"ColorBackgroundImageContrast":267,"ColorElementBehindBackgroundGradientContrast":268,"ColorElementBehindBackgroundImageContrast":269,"ColorElementBehindContrast":270,"ColorFontContrast":271,"CssDocumentMakesSenseStyleTurnedOff":272,"DefinitionListsAreUsed":273,"DoctypeProvided":274,"DocumentAcronymsHaveElement":275,"DocumentAutoRedirectNotUsed":276,"DocumentContentReadableWithoutStylesheets":277,"DocumentHasTitleElement":278,"DocumentIsWrittenClearly":279,"DocumentLangIsISO639Standard":280,"DocumentLangNotIdentified":281,"DocumentMetaNotUsedWithTimeout":282,"DocumentReadingDirection":283,"DocumentStrictDocType":284,"DocumentTitleDescribesDocument":285,"DocumentTitleIsNotPlaceholder":286,"DocumentTitleIsShort":287,"DocumentTitleNotEmpty":288,"DocumentVisualListsAreMarkedUp":289,"DomOrderMatchesVisualOrder":290,"EmbedHasAssociatedNoEmbed":291,"EmbedMustHaveAltAttribute":292,"FieldsetHasLabel":293,"FileHasLabel":294,"FontIsNotUsed":295,"FormButtonsHaveValue":296,"FormErrorMessageHelpsUser":297,"FormHasGoodErrorMessage":298,"FormHasSubmitButton":299,"FormWithRequiredLabel":300,"HeaderH1":301,"HeaderH1Format":302,"HeaderH2":303,"HeaderH2Format":304,"HeaderH3":305,"HeaderH3Format":306,"HeaderH4":307,"HeaderH4Format":308,"HeaderH5Format":309,"HeaderH6Format":310,"HeadersAttrRefersToATableCell":311,"HeadersHaveText":312,"HeadersUseToMarkSections":313,"IIsNotUsed":314,"IdrefsHasCorrespondingId":315,"IframeMustNotHaveLongdesc":316,"ImageMapServerSide":317,"ImgAltIsDifferent":318,"ImgAltIsTooLong":319,"ImgAltNotEmptyInAnchor":320,"ImgAltNotPlaceHolder":321,"ImgHasAlt":322,"ImgHasLongDesc":323,"ImgImportantNoSpacerAlt":324,"ImgNonDecorativeHasAlt":325,"ImgServerSideMapNotUsed":326,"ImgShouldNotHaveTitle":327,"ImgWithMapHasUseMap":328,"ImgWithMathShouldHaveMathEquivalent":329,"InputCheckboxRequiresFieldset":330,"InputElementsDontHaveAlt":331,"InputImageAltIsNotFileName":332,"InputImageAltIsNotPlaceholder":333,"InputImageAltIsShort":334,"InputImageAltNotRedundant":335,"InputImageHasAlt":336,"InputTextHasLabel":337,"InputTextHasValue":338,"InputTextValueNotEmpty":339,"InputWithoutLabelHasTitle":340,"LabelDoesNotContainInput":341,"LabelMustBeUnique":342,"LabelMustNotBeEmpty":343,"LabelsAreAssignedToAnInput":344,"LanguageDirAttributeIsUsed":345,"LanguageDirectionPunctuation":346,"LanguageUnicodeDirection":347,"LegendTextNotEmpty":348,"LegendTextNotPlaceholder":349,"LiDontUseImageForBullet":350,"LinkHasAUniqueContext":351,"ListNotUsedForFormatting":352,"ListOfLinksUseList":353,"MarqueeIsNotUsed":354,"MenuNotUsedToFormatText":355,"NewWindowIsOpened":356,"ObjectMustContainText":357,"ObjectMustHaveEmbed":358,"ObjectMustHaveTitle":359,"ObjectMustHaveValidTitle":360,"PNotUsedAsHeader":361,"PasswordHasLabel":362,"PreShouldNotBeUsedForTabularLayout":363,"RadioHasLabel":364,"ScriptOnclickRequiresOnKeypress":365,"ScriptOndblclickRequiresOnKeypress":366,"ScriptOnmousedownRequiresOnKeypress":367,"ScriptOnmousemove":368,"ScriptOnmouseoutHasOnmouseblur":369,"ScriptOnmouseoverHasOnfocus":370,"ScriptOnmouseupHasOnkeyup":371,"SelectHasAssociatedLabel":372,"SelectJumpMenu":373,"SiteMap":374,"SkipToContentLinkProvided":375,"SvgContainsTitle":376,"TabIndexFollowsLogicalOrder":377,"TableAxisHasCorrespondingId":378,"TableDataShouldHaveTh":379,"TableLayoutDataShouldNotHaveTh":380,"TableLayoutHasNoCaption":381,"TableLayoutHasNoSummary":382,"TableLayoutMakesSenseLinearized":383,"TableNotUsedForLayout":384,"TableShouldUseHeaderIDs":385,"TableSummaryDoesNotDuplicateCaption":386,"TableSummaryIsEmpty":387,"TableSummaryIsNotTooLong":388,"TableUseColGroup":389,"TableUsesAbbreviationForHeader":390,"TableUsesCaption":391,"TableUsesScopeForRow":392,"TabularDataIsInTable":393,"TextIsNotSmall":394,"TextareaHasAssociatedLabel":395,"VideoMayBePresent":396,"VideosEmbeddedOrLinkedNeedCaptions":397,"WhiteSpaceInWord":398,"WhiteSpaceNotUsedForFormatting":399}],228:[function(require,module,exports){
+},{"AAdjacentWithSameResourceShouldBeCombined":39,"AImgAltNotRepetitive":40,"AInPHasADistinctStyle":41,"ALinkTextDoesNotBeginWithRedundantWord":42,"ALinkWithNonText":43,"ALinksAreSeparatedByPrintableCharacters":44,"ALinksDontOpenNewWindow":45,"ALinksNotSeparatedBySymbols":46,"ALinksToMultiMediaRequireTranscript":47,"ALinksToSoundFilesNeedTranscripts":48,"AMultimediaTextAlternative":49,"AMustContainText":50,"AMustHaveTitle":51,"AMustNotHaveJavascriptHref":52,"ASuspiciousLinkText":53,"ATitleDescribesDestination":54,"AnimatedGifMayBePresent":55,"AppletContainsTextEquivalent":56,"AppletContainsTextEquivalentInAlt":57,"AppletProvidesMechanismToReturnToParent":58,"AppletTextEquivalentsGetUpdated":59,"AppletUIMustBeAccessible":60,"AppletsDoNotFlicker":61,"AppletsDonotUseColorAlone":62,"AreaAltIdentifiesDestination":63,"AreaAltRefersToText":64,"AreaDontOpenNewWindow":65,"AreaHasAltValue":66,"AreaLinksToSoundFile":67,"AudioMayBePresent":68,"BasefontIsNotUsed":69,"BlinkIsNotUsed":70,"BlockquoteNotUsedForIndentation":71,"BlockquoteUseForQuotations":72,"BoldIsNotUsed":73,"ButtonHasName":74,"CheckboxHasLabel":75,"ColorBackgroundGradientContrast":76,"ColorBackgroundImageContrast":77,"ColorElementBehindBackgroundGradientContrast":78,"ColorElementBehindBackgroundImageContrast":79,"ColorElementBehindContrast":80,"ColorFontContrast":81,"CssDocumentMakesSenseStyleTurnedOff":82,"DefinitionListsAreUsed":83,"DoctypeProvided":84,"DocumentAcronymsHaveElement":85,"DocumentAutoRedirectNotUsed":86,"DocumentContentReadableWithoutStylesheets":87,"DocumentHasTitleElement":88,"DocumentIsWrittenClearly":89,"DocumentLangIsISO639Standard":90,"DocumentLangNotIdentified":91,"DocumentMetaNotUsedWithTimeout":92,"DocumentReadingDirection":93,"DocumentStrictDocType":94,"DocumentTitleDescribesDocument":95,"DocumentTitleIsNotPlaceholder":96,"DocumentTitleIsShort":97,"DocumentTitleNotEmpty":98,"DocumentVisualListsAreMarkedUp":99,"DomOrderMatchesVisualOrder":100,"EmbedHasAssociatedNoEmbed":101,"EmbedMustHaveAltAttribute":102,"FieldsetHasLabel":103,"FileHasLabel":104,"FontIsNotUsed":105,"FormButtonsHaveValue":106,"FormErrorMessageHelpsUser":107,"FormHasGoodErrorMessage":108,"FormHasSubmitButton":109,"FormWithRequiredLabel":110,"HeaderH1":111,"HeaderH1Format":112,"HeaderH2":113,"HeaderH2Format":114,"HeaderH3":115,"HeaderH3Format":116,"HeaderH4":117,"HeaderH4Format":118,"HeaderH5Format":119,"HeaderH6Format":120,"HeadersAttrRefersToATableCell":121,"HeadersHaveText":122,"HeadersUseToMarkSections":123,"IIsNotUsed":124,"IdrefsHasCorrespondingId":125,"IframeMustNotHaveLongdesc":126,"ImageMapServerSide":127,"ImgAltIsDifferent":128,"ImgAltIsTooLong":129,"ImgAltNotEmptyInAnchor":130,"ImgAltNotPlaceHolder":131,"ImgHasAlt":132,"ImgHasLongDesc":133,"ImgImportantNoSpacerAlt":134,"ImgNonDecorativeHasAlt":135,"ImgServerSideMapNotUsed":136,"ImgShouldNotHaveTitle":137,"ImgWithMapHasUseMap":138,"ImgWithMathShouldHaveMathEquivalent":139,"InputCheckboxRequiresFieldset":140,"InputElementsDontHaveAlt":141,"InputImageAltIsNotFileName":142,"InputImageAltIsNotPlaceholder":143,"InputImageAltIsShort":144,"InputImageAltNotRedundant":145,"InputImageHasAlt":146,"InputTextHasLabel":147,"InputTextHasValue":148,"InputTextValueNotEmpty":149,"InputWithoutLabelHasTitle":150,"LabelDoesNotContainInput":151,"LabelMustBeUnique":152,"LabelMustNotBeEmpty":153,"LabelsAreAssignedToAnInput":154,"LanguageDirAttributeIsUsed":155,"LanguageDirectionPunctuation":156,"LanguageUnicodeDirection":157,"LegendTextNotEmpty":158,"LegendTextNotPlaceholder":159,"LiDontUseImageForBullet":160,"LinkHasAUniqueContext":161,"ListNotUsedForFormatting":162,"ListOfLinksUseList":163,"MarqueeIsNotUsed":164,"MenuNotUsedToFormatText":165,"NewWindowIsOpened":166,"ObjectMustContainText":167,"ObjectMustHaveEmbed":168,"ObjectMustHaveTitle":169,"ObjectMustHaveValidTitle":170,"PNotUsedAsHeader":171,"PasswordHasLabel":172,"PreShouldNotBeUsedForTabularLayout":173,"RadioHasLabel":174,"ScriptOnclickRequiresOnKeypress":175,"ScriptOndblclickRequiresOnKeypress":176,"ScriptOnmousedownRequiresOnKeypress":177,"ScriptOnmousemove":178,"ScriptOnmouseoutHasOnmouseblur":179,"ScriptOnmouseoverHasOnfocus":180,"ScriptOnmouseupHasOnkeyup":181,"SelectHasAssociatedLabel":182,"SelectJumpMenu":183,"SiteMap":184,"SkipToContentLinkProvided":185,"SvgContainsTitle":186,"TabIndexFollowsLogicalOrder":187,"TableAxisHasCorrespondingId":188,"TableDataShouldHaveTh":189,"TableLayoutDataShouldNotHaveTh":190,"TableLayoutHasNoCaption":191,"TableLayoutHasNoSummary":192,"TableLayoutMakesSenseLinearized":193,"TableNotUsedForLayout":194,"TableShouldUseHeaderIDs":195,"TableSummaryDoesNotDuplicateCaption":196,"TableSummaryIsEmpty":197,"TableSummaryIsNotTooLong":198,"TableUseColGroup":199,"TableUsesAbbreviationForHeader":200,"TableUsesCaption":201,"TableUsesScopeForRow":202,"TabularDataIsInTable":203,"TextIsNotSmall":204,"TextareaHasAssociatedLabel":205,"VideoMayBePresent":206,"VideosEmbeddedOrLinkedNeedCaptions":207,"WhiteSpaceInWord":208,"WhiteSpaceNotUsedForFormatting":209}],38:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -16783,12 +16721,10 @@ return jQuery;
 
 }));
 
-},{}],229:[function(require,module,exports){
-'use strict';
-
+},{}],39:[function(require,module,exports){
 var Case = require('Case');
 var AAdjacentWithSameResourceShouldBeCombined = {
-  run: function run(test) {
+  run: function (test) {
 
     function findAdjacent(index, element) {
       var $element = $(element);
@@ -16867,13 +16803,11 @@ var AAdjacentWithSameResourceShouldBeCombined = {
 };
 module.exports = AAdjacentWithSameResourceShouldBeCombined;
 
-},{"Case":30}],230:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],40:[function(require,module,exports){
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
 var AImgAltNotRepetitive = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('a img[alt]').each(function () {
       var _case = test.add(Case({
         element: this
@@ -16922,12 +16856,10 @@ var AImgAltNotRepetitive = {
 };
 module.exports = AImgAltNotRepetitive;
 
-},{"Case":30,"CleanStringComponent":2}],231:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"CleanStringComponent":2}],41:[function(require,module,exports){
 var Case = require('Case');
 var AInPHasADistinctStyle = {
-  run: function run(test) {
+  run: function (test) {
 
     /**
      * Checks if an element has a border set
@@ -17030,13 +16962,11 @@ var AInPHasADistinctStyle = {
 };
 module.exports = AInPHasADistinctStyle;
 
-},{"Case":30}],232:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],42:[function(require,module,exports){
 var Case = require('Case');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var ALinkTextDoesNotBeginWithRedundantWord = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('a').each(function () {
       var self = this;
       var $link = $(this);
@@ -17091,13 +17021,11 @@ var ALinkTextDoesNotBeginWithRedundantWord = {
 };
 module.exports = ALinkTextDoesNotBeginWithRedundantWord;
 
-},{"Case":30,"RedundantStringsComponent":18}],233:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"RedundantStringsComponent":18}],43:[function(require,module,exports){
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var ALinkWithNonText = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('a').each(function () {
       var _case = Case({
         element: this
@@ -17160,13 +17088,11 @@ var ALinkWithNonText = {
 };
 module.exports = ALinkWithNonText;
 
-},{"Case":30,"IsUnreadable":11}],234:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsUnreadable":11}],44:[function(require,module,exports){
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var ALinksAreSeparatedByPrintableCharacters = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('a').each(function () {
       var _case = test.add(Case({
         element: this
@@ -17202,13 +17128,11 @@ var ALinksAreSeparatedByPrintableCharacters = {
 };
 module.exports = ALinksAreSeparatedByPrintableCharacters;
 
-},{"Case":30,"IsUnreadable":11}],235:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsUnreadable":11}],45:[function(require,module,exports){
 var Case = require('Case');
 var NewWindowStringsComponent = require('NewWindowStringsComponent');
 var ALinksDontOpenNewWindow = {
-  run: function run(test) {
+  run: function (test) {
     // Links without a target attribute pass.
     test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function () {
       test.add(Case({
@@ -17270,13 +17194,11 @@ var ALinksDontOpenNewWindow = {
 };
 module.exports = ALinksDontOpenNewWindow;
 
-},{"Case":30,"NewWindowStringsComponent":15}],236:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"NewWindowStringsComponent":15}],46:[function(require,module,exports){
 var Case = require('Case');
 var SymbolsStringsComponent = require('SymbolsStringsComponent');
 var ALinksNotSeparatedBySymbols = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('a').each(function () {
       var $link = $(this);
       if ($link.next('a').length) {
@@ -17322,12 +17244,10 @@ var ALinksNotSeparatedBySymbols = {
 };
 module.exports = ALinksNotSeparatedBySymbols;
 
-},{"Case":30,"SymbolsStringsComponent":24}],237:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"SymbolsStringsComponent":24}],47:[function(require,module,exports){
 var Case = require('Case');
 var ALinksToMultiMediaRequireTranscript = {
-  run: function run(test) {
+  run: function (test) {
     var selector = ['a[href$=".wmv"]', 'a[href$=".mpg"]', 'a[href$=".mov"]', 'a[href$=".ram"]', 'a[href$=".aif"]'].join(', ');
 
     this.get('$scope').each(function () {
@@ -17373,12 +17293,10 @@ var ALinksToMultiMediaRequireTranscript = {
 };
 module.exports = ALinksToMultiMediaRequireTranscript;
 
-},{"Case":30}],238:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],48:[function(require,module,exports){
 var Case = require('Case');
 var ALinksToSoundFilesNeedTranscripts = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = ['a[href$=".wav"]', 'a[href$=".snd"]', 'a[href$=".mp3"]', 'a[href$=".iff"]', 'a[href$=".svx"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".pcm"]', 'a[href$=".aif"]'].join(', ');
 
@@ -17425,12 +17343,10 @@ var ALinksToSoundFilesNeedTranscripts = {
 };
 module.exports = ALinksToSoundFilesNeedTranscripts;
 
-},{"Case":30}],239:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],49:[function(require,module,exports){
 var Case = require('Case');
 var AMultimediaTextAlternative = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = ['a[href$=".aif"]', 'a[href$=".iff"]', 'a[href$=".mov"]', 'a[href$=".mp3"]', 'a[href$=".mpg"]', 'a[href$=".ram"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".snd"]', 'a[href$=".svx"]', 'a[href$=".pcm"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".wav"]', 'a[href$=".wmv"]'].join(', ');
 
@@ -17462,13 +17378,11 @@ var AMultimediaTextAlternative = {
 };
 module.exports = AMultimediaTextAlternative;
 
-},{"Case":30}],240:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],50:[function(require,module,exports){
 var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
 var Case = require('Case');
 var AMustContainText = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('a').each(function () {
       var _case = Case({
         element: this
@@ -17525,12 +17439,10 @@ var AMustContainText = {
 };
 module.exports = AMustContainText;
 
-},{"Case":30,"ContainsReadableTextComponent":4}],241:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"ContainsReadableTextComponent":4}],51:[function(require,module,exports){
 var Case = require('Case');
 var AMustHaveTitle = {
-  run: function run(test) {
+  run: function (test) {
     this.get('$scope').each(function () {
       var links = $(this).find('a');
 
@@ -17570,7 +17482,7 @@ var AMustHaveTitle = {
 };
 module.exports = AMustHaveTitle;
 
-},{"Case":30}],242:[function(require,module,exports){
+},{"Case":30}],52:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -17578,12 +17490,10 @@ module.exports = AMustHaveTitle;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var AMustNotHaveJavascriptHref = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -17632,14 +17542,12 @@ var AMustNotHaveJavascriptHref = {
 };
 module.exports = AMustNotHaveJavascriptHref;
 
-},{"Case":30}],243:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],53:[function(require,module,exports){
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
 var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
 var ASuspiciousLinkText = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('a').each(function () {
       var _case = Case({
         element: this
@@ -17695,7 +17603,7 @@ var ASuspiciousLinkText = {
 };
 module.exports = ASuspiciousLinkText;
 
-},{"Case":30,"CleanStringComponent":2,"SuspiciousLinksStringsComponent":23}],244:[function(require,module,exports){
+},{"Case":30,"CleanStringComponent":2,"SuspiciousLinksStringsComponent":23}],54:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -17703,12 +17611,10 @@ module.exports = ASuspiciousLinkText;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var ATitleDescribesDestination = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -17763,12 +17669,10 @@ var ATitleDescribesDestination = {
 };
 module.exports = ATitleDescribesDestination;
 
-},{"Case":30}],245:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],55:[function(require,module,exports){
 var Case = require('Case');
 var AnimatedGifMayBePresent = {
-  run: function run(test) {
+  run: function (test) {
 
     /**
      * Test if gif is animated
@@ -17869,13 +17773,11 @@ var AnimatedGifMayBePresent = {
 };
 module.exports = AnimatedGifMayBePresent;
 
-},{"Case":30}],246:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],56:[function(require,module,exports){
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var AppletContainsTextEquivalent = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('applet[alt=""], applet:not(applet[alt])').each(function () {
       var _case = Case({
         element: this
@@ -17916,12 +17818,10 @@ var AppletContainsTextEquivalent = {
 };
 module.exports = AppletContainsTextEquivalent;
 
-},{"Case":30,"IsUnreadable":11}],247:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsUnreadable":11}],57:[function(require,module,exports){
 var PlaceholderComponent = require('PlaceholderComponent');
 var AppletContainsTextEquivalentInAlt = {
-  run: function run(test) {
+  run: function (test) {
     PlaceholderComponent(test, {
       selector: 'applet',
       attribute: 'alt',
@@ -17952,7 +17852,7 @@ var AppletContainsTextEquivalentInAlt = {
 };
 module.exports = AppletContainsTextEquivalentInAlt;
 
-},{"PlaceholderComponent":16}],248:[function(require,module,exports){
+},{"PlaceholderComponent":16}],58:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -17960,12 +17860,10 @@ module.exports = AppletContainsTextEquivalentInAlt;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var AppletProvidesMechanismToReturnToParent = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -18014,7 +17912,7 @@ var AppletProvidesMechanismToReturnToParent = {
 };
 module.exports = AppletProvidesMechanismToReturnToParent;
 
-},{"Case":30}],249:[function(require,module,exports){
+},{"Case":30}],59:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18022,12 +17920,10 @@ module.exports = AppletProvidesMechanismToReturnToParent;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var AppletTextEquivalentsGetUpdated = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -18075,7 +17971,7 @@ var AppletTextEquivalentsGetUpdated = {
 };
 module.exports = AppletTextEquivalentsGetUpdated;
 
-},{"Case":30}],250:[function(require,module,exports){
+},{"Case":30}],60:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18083,12 +17979,10 @@ module.exports = AppletTextEquivalentsGetUpdated;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var AppletUIMustBeAccessible = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -18144,7 +18038,7 @@ var AppletUIMustBeAccessible = {
 };
 module.exports = AppletUIMustBeAccessible;
 
-},{"Case":30}],251:[function(require,module,exports){
+},{"Case":30}],61:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18152,12 +18046,10 @@ module.exports = AppletUIMustBeAccessible;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var AppletsDoNotFlicker = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -18213,7 +18105,7 @@ var AppletsDoNotFlicker = {
 };
 module.exports = AppletsDoNotFlicker;
 
-},{"Case":30}],252:[function(require,module,exports){
+},{"Case":30}],62:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18221,12 +18113,10 @@ module.exports = AppletsDoNotFlicker;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var AppletsDonotUseColorAlone = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -18277,7 +18167,7 @@ var AppletsDonotUseColorAlone = {
 };
 module.exports = AppletsDonotUseColorAlone;
 
-},{"Case":30}],253:[function(require,module,exports){
+},{"Case":30}],63:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18285,13 +18175,11 @@ module.exports = AppletsDonotUseColorAlone;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 var $ = require('jquery/dist/jquery');
 
 var AreaAltIdentifiesDestination = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -18342,7 +18230,7 @@ var AreaAltIdentifiesDestination = {
 };
 module.exports = AreaAltIdentifiesDestination;
 
-},{"Case":30,"jquery/dist/jquery":228}],254:[function(require,module,exports){
+},{"Case":30,"jquery/dist/jquery":38}],64:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18350,12 +18238,10 @@ module.exports = AreaAltIdentifiesDestination;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var AreaAltRefersToText = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -18404,7 +18290,7 @@ var AreaAltRefersToText = {
 };
 module.exports = AreaAltRefersToText;
 
-},{"Case":30}],255:[function(require,module,exports){
+},{"Case":30}],65:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18412,14 +18298,12 @@ module.exports = AreaAltRefersToText;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var NewWindowStringsComponent = require('NewWindowStringsComponent');
 
 var AreaDontOpenNewWindow = {
-  run: function run(test) {
+  run: function (test) {
     // Links without a target attribute pass.
     test.get('$scope').find('area').not('[target=_new], [target=_blank]').each(function () {
       test.add(Case({
@@ -18475,7 +18359,7 @@ var AreaDontOpenNewWindow = {
 };
 module.exports = AreaDontOpenNewWindow;
 
-},{"Case":30,"NewWindowStringsComponent":15}],256:[function(require,module,exports){
+},{"Case":30,"NewWindowStringsComponent":15}],66:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18483,12 +18367,10 @@ module.exports = AreaDontOpenNewWindow;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var AreaHasAltValue = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'area';
 
@@ -18547,7 +18429,7 @@ var AreaHasAltValue = {
 };
 module.exports = AreaHasAltValue;
 
-},{"Case":30}],257:[function(require,module,exports){
+},{"Case":30}],67:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18555,12 +18437,10 @@ module.exports = AreaHasAltValue;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var AreaLinksToSoundFile = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -18615,12 +18495,10 @@ var AreaLinksToSoundFile = {
 };
 module.exports = AreaLinksToSoundFile;
 
-},{"Case":30}],258:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],68:[function(require,module,exports){
 var Case = require('Case');
 var AudioMayBePresent = {
-  run: function run(test) {
+  run: function (test) {
     var audioExtensions = ['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];
 
     test.get('$scope').each(function () {
@@ -18675,7 +18553,7 @@ var AudioMayBePresent = {
 };
 module.exports = AudioMayBePresent;
 
-},{"Case":30}],259:[function(require,module,exports){
+},{"Case":30}],69:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18683,12 +18561,10 @@ module.exports = AudioMayBePresent;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var BasefontIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'basefont';
 
@@ -18726,7 +18602,7 @@ var BasefontIsNotUsed = {
 };
 module.exports = BasefontIsNotUsed;
 
-},{"Case":30}],260:[function(require,module,exports){
+},{"Case":30}],70:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18734,12 +18610,10 @@ module.exports = BasefontIsNotUsed;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var BlinkIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'blink';
 
@@ -18783,7 +18657,7 @@ var BlinkIsNotUsed = {
 };
 module.exports = BlinkIsNotUsed;
 
-},{"Case":30}],261:[function(require,module,exports){
+},{"Case":30}],71:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18791,12 +18665,10 @@ module.exports = BlinkIsNotUsed;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var BlockquoteNotUsedForIndentation = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'blockquote';
 
@@ -18848,12 +18720,10 @@ var BlockquoteNotUsedForIndentation = {
 };
 module.exports = BlockquoteNotUsedForIndentation;
 
-},{"Case":30}],262:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],72:[function(require,module,exports){
 var Case = require('Case');
 var BlockquoteUseForQuotations = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('p').each(function () {
       var _case = Case({
         element: this
@@ -18899,7 +18769,7 @@ var BlockquoteUseForQuotations = {
 };
 module.exports = BlockquoteUseForQuotations;
 
-},{"Case":30}],263:[function(require,module,exports){
+},{"Case":30}],73:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -18907,12 +18777,10 @@ module.exports = BlockquoteUseForQuotations;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var BoldIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'bold';
 
@@ -18950,17 +18818,15 @@ var BoldIsNotUsed = {
 };
 module.exports = BoldIsNotUsed;
 
-},{"Case":30}],264:[function(require,module,exports){
+},{"Case":30}],74:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var ButtonHasName = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'button',
       content: 'true',
@@ -18998,17 +18864,15 @@ var ButtonHasName = {
 };
 module.exports = ButtonHasName;
 
-},{"PlaceholderComponent":16}],265:[function(require,module,exports){
+},{"PlaceholderComponent":16}],75:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var LabelComponent = require('LabelComponent');
 
 var CheckboxHasLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="checkbox"]'
     };
@@ -19053,15 +18917,13 @@ var CheckboxHasLabel = {
 };
 module.exports = CheckboxHasLabel;
 
-},{"LabelComponent":12}],266:[function(require,module,exports){
-'use strict';
-
+},{"LabelComponent":12}],76:[function(require,module,exports){
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var Rainbow = require('RainbowVis-JS/rainbowvis');
 
 var ColorBackgroundGradientContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -19162,13 +19024,11 @@ var ColorBackgroundGradientContrast = {
 };
 module.exports = ColorBackgroundGradientContrast;
 
-},{"Case":30,"ColorComponent":3,"RainbowVis-JS/rainbowvis":400}],267:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"ColorComponent":3,"RainbowVis-JS/rainbowvis":210}],77:[function(require,module,exports){
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorBackgroundImageContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -19261,15 +19121,13 @@ var ColorBackgroundImageContrast = {
 };
 module.exports = ColorBackgroundImageContrast;
 
-},{"Case":30,"ColorComponent":3}],268:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"ColorComponent":3}],78:[function(require,module,exports){
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var Rainbow = require('RainbowVis-JS/rainbowvis');
 
 var ColorElementBehindBackgroundGradientContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -19369,13 +19227,11 @@ var ColorElementBehindBackgroundGradientContrast = {
 };
 module.exports = ColorElementBehindBackgroundGradientContrast;
 
-},{"Case":30,"ColorComponent":3,"RainbowVis-JS/rainbowvis":400}],269:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"ColorComponent":3,"RainbowVis-JS/rainbowvis":210}],79:[function(require,module,exports){
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorElementBehindBackgroundImageContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -19471,13 +19327,11 @@ var ColorElementBehindBackgroundImageContrast = {
 };
 module.exports = ColorElementBehindBackgroundImageContrast;
 
-},{"Case":30,"ColorComponent":3}],270:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"ColorComponent":3}],80:[function(require,module,exports){
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorElementBehindContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -19556,13 +19410,11 @@ var ColorElementBehindContrast = {
 };
 module.exports = ColorElementBehindContrast;
 
-},{"Case":30,"ColorComponent":3}],271:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"ColorComponent":3}],81:[function(require,module,exports){
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorFontContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -19633,7 +19485,7 @@ var ColorFontContrast = {
 };
 module.exports = ColorFontContrast;
 
-},{"Case":30,"ColorComponent":3}],272:[function(require,module,exports){
+},{"Case":30,"ColorComponent":3}],82:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -19643,12 +19495,10 @@ module.exports = ColorFontContrast;
  *
  * This test did not test anything, so now it just returns untested.
  */
-'use strict';
-
 var Case = require('Case');
 
 var CssDocumentMakesSenseStyleTurnedOff = {
-  run: function run(test) {
+  run: function (test) {
     this.get('$scope').each(function () {
       test.add(Case({
         element: undefined,
@@ -19685,12 +19535,10 @@ var CssDocumentMakesSenseStyleTurnedOff = {
 };
 module.exports = CssDocumentMakesSenseStyleTurnedOff;
 
-},{"Case":30}],273:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],83:[function(require,module,exports){
 var Case = require('Case');
 var DefinitionListsAreUsed = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('dl').each(function () {
       var _case = Case({
         element: this
@@ -19746,12 +19594,10 @@ var DefinitionListsAreUsed = {
 };
 module.exports = DefinitionListsAreUsed;
 
-},{"Case":30}],274:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],84:[function(require,module,exports){
 var Case = require('Case');
 var DoctypeProvided = {
-  run: function run(test) {
+  run: function (test) {
     var doc = test.get('$scope').get(0);
     if ($(doc.doctype).length === 0 && !document.doctype) {
       test.add(Case({
@@ -19782,12 +19628,10 @@ var DoctypeProvided = {
 };
 module.exports = DoctypeProvided;
 
-},{"Case":30}],275:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],85:[function(require,module,exports){
 var AcronymComponent = require('AcronymComponent');
 var DocumentAcronymsHaveElement = {
-  run: function run(test) {
+  run: function (test) {
     AcronymComponent(test, 'acronym');
   },
 
@@ -19813,7 +19657,7 @@ var DocumentAcronymsHaveElement = {
 };
 module.exports = DocumentAcronymsHaveElement;
 
-},{"AcronymComponent":1}],276:[function(require,module,exports){
+},{"AcronymComponent":1}],86:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -19821,12 +19665,10 @@ module.exports = DocumentAcronymsHaveElement;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var DocumentAutoRedirectNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'meta[http-equiv=refresh]';
 
@@ -19864,7 +19706,7 @@ var DocumentAutoRedirectNotUsed = {
 };
 module.exports = DocumentAutoRedirectNotUsed;
 
-},{"Case":30}],277:[function(require,module,exports){
+},{"Case":30}],87:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -19874,12 +19716,10 @@ module.exports = DocumentAutoRedirectNotUsed;
  *
  * This test did not test anything, so now it just returns untested.
  */
-'use strict';
-
 var Case = require('Case');
 
 var DocumentContentReadableWithoutStylesheets = {
-  run: function run(test) {
+  run: function (test) {
     this.get('$scope').each(function () {
       test.add(Case({
         element: undefined,
@@ -19917,7 +19757,7 @@ var DocumentContentReadableWithoutStylesheets = {
 };
 module.exports = DocumentContentReadableWithoutStylesheets;
 
-},{"Case":30}],278:[function(require,module,exports){
+},{"Case":30}],88:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -19925,12 +19765,10 @@ module.exports = DocumentContentReadableWithoutStylesheets;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var DocumentHasTitleElement = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'head title';
 
@@ -19979,16 +19817,14 @@ var DocumentHasTitleElement = {
 };
 module.exports = DocumentHasTitleElement;
 
-},{"Case":30}],279:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],89:[function(require,module,exports){
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var TextStatisticsComponent = require('TextStatisticsComponent');
 var IsUnreadable = require('IsUnreadable');
 var DocumentIsWrittenClearly = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
       return TextNodeFilterComponent(element);
     }).each(function () {
@@ -20037,13 +19873,11 @@ var DocumentIsWrittenClearly = {
 };
 module.exports = DocumentIsWrittenClearly;
 
-},{"Case":30,"IsUnreadable":11,"TextNodeFilterComponent":25,"TextSelectorComponent":26,"TextStatisticsComponent":27}],280:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsUnreadable":11,"TextNodeFilterComponent":25,"TextSelectorComponent":26,"TextStatisticsComponent":27}],90:[function(require,module,exports){
 var Case = require('Case');
 var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
 var DocumentLangIsISO639Standard = {
-  run: function run(test) {
+  run: function (test) {
     var $element = test.get('$scope').is('html') ? test.get('$scope') : test.get('$scope').find('html').first();
 
     var _case = Case({
@@ -20099,7 +19933,7 @@ var DocumentLangIsISO639Standard = {
 };
 module.exports = DocumentLangIsISO639Standard;
 
-},{"Case":30,"LanguageCodesStringsComponent":13}],281:[function(require,module,exports){
+},{"Case":30,"LanguageCodesStringsComponent":13}],91:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -20107,12 +19941,10 @@ module.exports = DocumentLangIsISO639Standard;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var DocumentLangNotIdentified = {
-  run: function run(test) {
+  run: function (test) {
     this.get('$scope').each(function () {
       var lang = 'getAttribute' in this && this.getAttribute('lang');
       if (lang && lang.length > 1) {
@@ -20145,7 +19977,7 @@ var DocumentLangNotIdentified = {
 };
 module.exports = DocumentLangNotIdentified;
 
-},{"Case":30}],282:[function(require,module,exports){
+},{"Case":30}],92:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -20153,12 +19985,10 @@ module.exports = DocumentLangNotIdentified;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var DocumentMetaNotUsedWithTimeout = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'meta';
 
@@ -20217,7 +20047,7 @@ var DocumentMetaNotUsedWithTimeout = {
 };
 module.exports = DocumentMetaNotUsedWithTimeout;
 
-},{"Case":30}],283:[function(require,module,exports){
+},{"Case":30}],93:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -20225,12 +20055,10 @@ module.exports = DocumentMetaNotUsedWithTimeout;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var DocumentReadingDirection = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = ['[lang="he"]', '[lang="ar"]'].join(', ');
 
@@ -20281,12 +20109,10 @@ var DocumentReadingDirection = {
 };
 module.exports = DocumentReadingDirection;
 
-},{"Case":30}],284:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],94:[function(require,module,exports){
 var Case = require('Case');
 var DocumentStrictDocType = {
-  run: function run(test) {
+  run: function (test) {
     if (typeof document.doctype === 'undefined' || !document.doctype || document.doctype.systemId.search('strict') === -1) {
       test.add(Case({
         element: document,
@@ -20316,7 +20142,7 @@ var DocumentStrictDocType = {
 };
 module.exports = DocumentStrictDocType;
 
-},{"Case":30}],285:[function(require,module,exports){
+},{"Case":30}],95:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -20324,12 +20150,10 @@ module.exports = DocumentStrictDocType;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var DocumentTitleDescribesDocument = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'head title';
 
@@ -20375,17 +20199,15 @@ var DocumentTitleDescribesDocument = {
 };
 module.exports = DocumentTitleDescribesDocument;
 
-},{"Case":30}],286:[function(require,module,exports){
+},{"Case":30}],96:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var DocumentTitleIsNotPlaceholder = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'head > title',
       content: 'true'
@@ -20415,12 +20237,10 @@ var DocumentTitleIsNotPlaceholder = {
 };
 module.exports = DocumentTitleIsNotPlaceholder;
 
-},{"PlaceholderComponent":16}],287:[function(require,module,exports){
-'use strict';
-
+},{"PlaceholderComponent":16}],97:[function(require,module,exports){
 var Case = require('Case');
 var DocumentTitleIsShort = {
-  run: function run(test) {
+  run: function (test) {
     var $title = test.get('$scope').find('head title');
     test.add(Case({
       element: $title.get(0),
@@ -20444,17 +20264,15 @@ var DocumentTitleIsShort = {
 };
 module.exports = DocumentTitleIsShort;
 
-},{"Case":30}],288:[function(require,module,exports){
+},{"Case":30}],98:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var DocumentTitleNotEmpty = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'head > title',
       content: 'true',
@@ -20485,14 +20303,12 @@ var DocumentTitleNotEmpty = {
 };
 module.exports = DocumentTitleNotEmpty;
 
-},{"PlaceholderComponent":16}],289:[function(require,module,exports){
-'use strict';
-
+},{"PlaceholderComponent":16}],99:[function(require,module,exports){
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var DocumentVisualListsAreMarkedUp = {
-  run: function run(test) {
+  run: function (test) {
 
     var itemStarters = ['♦', '›', '»', '‣', '▶', '◦', '✓', '◽', '•', '—', '◾', // single characters
     '-\\D', // dash, except for negative numbers
@@ -20546,7 +20362,7 @@ var DocumentVisualListsAreMarkedUp = {
 };
 module.exports = DocumentVisualListsAreMarkedUp;
 
-},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],290:[function(require,module,exports){
+},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],100:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -20554,13 +20370,11 @@ module.exports = DocumentVisualListsAreMarkedUp;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 var $ = require('jquery/dist/jquery');
 
 var DomOrderMatchesVisualOrder = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -20623,12 +20437,10 @@ var DomOrderMatchesVisualOrder = {
 };
 module.exports = DomOrderMatchesVisualOrder;
 
-},{"Case":30,"jquery/dist/jquery":228}],291:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"jquery/dist/jquery":38}],101:[function(require,module,exports){
 var Case = require('Case');
 var EmbedHasAssociatedNoEmbed = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('embed').each(function () {
       var _case = Case({
         element: this
@@ -20656,7 +20468,7 @@ var EmbedHasAssociatedNoEmbed = {
 };
 module.exports = EmbedHasAssociatedNoEmbed;
 
-},{"Case":30}],292:[function(require,module,exports){
+},{"Case":30}],102:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -20664,12 +20476,10 @@ module.exports = EmbedHasAssociatedNoEmbed;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var EmbedMustHaveAltAttribute = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'embed';
 
@@ -20713,7 +20523,7 @@ var EmbedMustHaveAltAttribute = {
 };
 module.exports = EmbedMustHaveAltAttribute;
 
-},{"Case":30}],293:[function(require,module,exports){
+},{"Case":30}],103:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -20721,12 +20531,10 @@ module.exports = EmbedMustHaveAltAttribute;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var FieldsetHasLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -20787,16 +20595,14 @@ var FieldsetHasLabel = {
 };
 module.exports = FieldsetHasLabel;
 
-},{"Case":30}],294:[function(require,module,exports){
+},{"Case":30}],104:[function(require,module,exports){
 /**
  * Test for a label associated with a file input element.
  */
-'use strict';
-
 var Case = require('Case');
 
 var FileHasLabel = {
-  run: function run(test) {
+  run: function (test) {
 
     var sFiles = '[type="file"]';
     var sLabels = 'label';
@@ -20878,7 +20684,7 @@ var FileHasLabel = {
 };
 module.exports = FileHasLabel;
 
-},{"Case":30}],295:[function(require,module,exports){
+},{"Case":30}],105:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -20886,12 +20692,10 @@ module.exports = FileHasLabel;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var FontIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'font';
 
@@ -20929,7 +20733,7 @@ var FontIsNotUsed = {
 };
 module.exports = FontIsNotUsed;
 
-},{"Case":30}],296:[function(require,module,exports){
+},{"Case":30}],106:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -20937,12 +20741,10 @@ module.exports = FontIsNotUsed;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var FormButtonsHaveValue = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'input[type=button], input[type=submit], input[type=reset]';
 
@@ -21000,7 +20802,7 @@ var FormButtonsHaveValue = {
 };
 module.exports = FormButtonsHaveValue;
 
-},{"Case":30}],297:[function(require,module,exports){
+},{"Case":30}],107:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -21008,12 +20810,10 @@ module.exports = FormButtonsHaveValue;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var FormErrorMessageHelpsUser = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'form';
 
@@ -21051,7 +20851,7 @@ var FormErrorMessageHelpsUser = {
 };
 module.exports = FormErrorMessageHelpsUser;
 
-},{"Case":30}],298:[function(require,module,exports){
+},{"Case":30}],108:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -21059,12 +20859,10 @@ module.exports = FormErrorMessageHelpsUser;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var FormHasGoodErrorMessage = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'form';
 
@@ -21102,7 +20900,7 @@ var FormHasGoodErrorMessage = {
 };
 module.exports = FormHasGoodErrorMessage;
 
-},{"Case":30}],299:[function(require,module,exports){
+},{"Case":30}],109:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -21110,12 +20908,10 @@ module.exports = FormHasGoodErrorMessage;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var FormHasSubmitButton = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'input[type=submit], button[type=submit]';
 
@@ -21164,13 +20960,11 @@ var FormHasSubmitButton = {
 };
 module.exports = FormHasSubmitButton;
 
-},{"Case":30}],300:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],110:[function(require,module,exports){
 var Case = require('Case');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var FormWithRequiredLabel = {
-  run: function run(test) {
+  run: function (test) {
     var redundant = RedundantStringsComponent;
     var lastStyle,
         currentStyle = false;
@@ -21237,12 +21031,10 @@ var FormWithRequiredLabel = {
 };
 module.exports = FormWithRequiredLabel;
 
-},{"Case":30,"RedundantStringsComponent":18}],301:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"RedundantStringsComponent":18}],111:[function(require,module,exports){
 var HeadingLevelComponent = require('HeadingLevelComponent');
 var HeaderH1 = {
-  run: function run(test) {
+  run: function (test) {
     HeadingLevelComponent(test, {
       headingLevel: 1
     });
@@ -21270,7 +21062,7 @@ var HeaderH1 = {
 };
 module.exports = HeaderH1;
 
-},{"HeadingLevelComponent":9}],302:[function(require,module,exports){
+},{"HeadingLevelComponent":9}],112:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -21278,12 +21070,10 @@ module.exports = HeaderH1;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var HeaderH1Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h1';
 
@@ -21327,12 +21117,10 @@ var HeaderH1Format = {
 };
 module.exports = HeaderH1Format;
 
-},{"Case":30}],303:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],113:[function(require,module,exports){
 var HeadingLevelComponent = require('HeadingLevelComponent');
 var HeaderH2 = {
-  run: function run(test) {
+  run: function (test) {
     HeadingLevelComponent(test, {
       headingLevel: 2
     });
@@ -21360,7 +21148,7 @@ var HeaderH2 = {
 };
 module.exports = HeaderH2;
 
-},{"HeadingLevelComponent":9}],304:[function(require,module,exports){
+},{"HeadingLevelComponent":9}],114:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -21368,12 +21156,10 @@ module.exports = HeaderH2;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var HeaderH2Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h2';
 
@@ -21417,12 +21203,10 @@ var HeaderH2Format = {
 };
 module.exports = HeaderH2Format;
 
-},{"Case":30}],305:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],115:[function(require,module,exports){
 var HeadingLevelComponent = require('HeadingLevelComponent');
 var HeaderH3 = {
-  run: function run(test) {
+  run: function (test) {
     HeadingLevelComponent(test, {
       headingLevel: 3
     });
@@ -21450,7 +21234,7 @@ var HeaderH3 = {
 };
 module.exports = HeaderH3;
 
-},{"HeadingLevelComponent":9}],306:[function(require,module,exports){
+},{"HeadingLevelComponent":9}],116:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -21458,12 +21242,10 @@ module.exports = HeaderH3;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var HeaderH3Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h3';
 
@@ -21507,12 +21289,10 @@ var HeaderH3Format = {
 };
 module.exports = HeaderH3Format;
 
-},{"Case":30}],307:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],117:[function(require,module,exports){
 var HeadingLevelComponent = require('HeadingLevelComponent');
 var HeaderH4 = {
-  run: function run(test) {
+  run: function (test) {
     HeadingLevelComponent(test, {
       headingLevel: 4
     });
@@ -21540,7 +21320,7 @@ var HeaderH4 = {
 };
 module.exports = HeaderH4;
 
-},{"HeadingLevelComponent":9}],308:[function(require,module,exports){
+},{"HeadingLevelComponent":9}],118:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -21548,12 +21328,10 @@ module.exports = HeaderH4;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var HeaderH4Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h4';
 
@@ -21597,7 +21375,7 @@ var HeaderH4Format = {
 };
 module.exports = HeaderH4Format;
 
-},{"Case":30}],309:[function(require,module,exports){
+},{"Case":30}],119:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -21605,12 +21383,10 @@ module.exports = HeaderH4Format;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var HeaderH5Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h5';
 
@@ -21654,7 +21430,7 @@ var HeaderH5Format = {
 };
 module.exports = HeaderH5Format;
 
-},{"Case":30}],310:[function(require,module,exports){
+},{"Case":30}],120:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -21662,12 +21438,10 @@ module.exports = HeaderH5Format;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var HeaderH6Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h6';
 
@@ -21711,12 +21485,10 @@ var HeaderH6Format = {
 };
 module.exports = HeaderH6Format;
 
-},{"Case":30}],311:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],121:[function(require,module,exports){
 var Case = require('Case');
 var HeadersAttrRefersToATableCell = {
-  run: function run(test) {
+  run: function (test) {
     // Table cell headers without referred ids
     test.get('$scope').find('table').each(function () {
       var self = this;
@@ -21769,17 +21541,15 @@ var HeadersAttrRefersToATableCell = {
 };
 module.exports = HeadersAttrRefersToATableCell;
 
-},{"Case":30}],312:[function(require,module,exports){
+},{"Case":30}],122:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var HeadersHaveText = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'h1, h2, h3, h4, h5, h6',
       content: 'true',
@@ -21813,12 +21583,10 @@ var HeadersHaveText = {
 };
 module.exports = HeadersHaveText;
 
-},{"PlaceholderComponent":16}],313:[function(require,module,exports){
-'use strict';
-
+},{"PlaceholderComponent":16}],123:[function(require,module,exports){
 var Case = require('Case');
 var HeadersUseToMarkSections = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('p').each(function () {
       var _case = Case({
         element: this
@@ -21883,7 +21651,7 @@ var HeadersUseToMarkSections = {
 };
 module.exports = HeadersUseToMarkSections;
 
-},{"Case":30}],314:[function(require,module,exports){
+},{"Case":30}],124:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -21891,12 +21659,10 @@ module.exports = HeadersUseToMarkSections;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var IIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'i';
 
@@ -21934,12 +21700,10 @@ var IIsNotUsed = {
 };
 module.exports = IIsNotUsed;
 
-},{"Case":30}],315:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],125:[function(require,module,exports){
 var Case = require('Case');
 var IdrefsHasCorrespondingId = {
-  run: function run(test) {
+  run: function (test) {
 
     function getAttribute($element) {
       var attribute = [];
@@ -22014,7 +21778,7 @@ var IdrefsHasCorrespondingId = {
 };
 module.exports = IdrefsHasCorrespondingId;
 
-},{"Case":30}],316:[function(require,module,exports){
+},{"Case":30}],126:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -22022,12 +21786,10 @@ module.exports = IdrefsHasCorrespondingId;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var IframeMustNotHaveLongdesc = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'iframe';
 
@@ -22071,7 +21833,7 @@ var IframeMustNotHaveLongdesc = {
 };
 module.exports = IframeMustNotHaveLongdesc;
 
-},{"Case":30}],317:[function(require,module,exports){
+},{"Case":30}],127:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -22079,12 +21841,10 @@ module.exports = IframeMustNotHaveLongdesc;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var ImageMapServerSide = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'img';
 
@@ -22128,12 +21888,10 @@ var ImageMapServerSide = {
 };
 module.exports = ImageMapServerSide;
 
-},{"Case":30}],318:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],128:[function(require,module,exports){
 var Case = require('Case');
 var ImgAltIsDifferent = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('img:not([src])').each(function () {
       var _case = Case({
         element: this,
@@ -22181,12 +21939,10 @@ var ImgAltIsDifferent = {
 };
 module.exports = ImgAltIsDifferent;
 
-},{"Case":30}],319:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],129:[function(require,module,exports){
 var Case = require('Case');
 var ImgAltIsTooLong = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('img[alt]').each(function () {
       var _case = Case({
         element: this
@@ -22221,13 +21977,11 @@ var ImgAltIsTooLong = {
 };
 module.exports = ImgAltIsTooLong;
 
-},{"Case":30}],320:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],130:[function(require,module,exports){
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var ImgAltNotEmptyInAnchor = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('a[href]:has(img)').each(function () {
       var $a = $(this);
       var text = $a.text();
@@ -22277,17 +22031,15 @@ var ImgAltNotEmptyInAnchor = {
 };
 module.exports = ImgAltNotEmptyInAnchor;
 
-},{"Case":30,"IsUnreadable":11}],321:[function(require,module,exports){
+},{"Case":30,"IsUnreadable":11}],131:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var ImgAltNotPlaceHolder = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'img',
       attribute: 'alt'
@@ -22321,7 +22073,7 @@ var ImgAltNotPlaceHolder = {
 };
 module.exports = ImgAltNotPlaceHolder;
 
-},{"PlaceholderComponent":16}],322:[function(require,module,exports){
+},{"PlaceholderComponent":16}],132:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -22329,12 +22081,10 @@ module.exports = ImgAltNotPlaceHolder;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var ImgHasAlt = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'img';
 
@@ -22385,13 +22135,11 @@ var ImgHasAlt = {
 };
 module.exports = ImgHasAlt;
 
-},{"Case":30}],323:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],133:[function(require,module,exports){
 var ValidURLComponent = require('ValidURLComponent');
 var Case = require('Case');
 var ImgHasLongDesc = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('img[longdesc]').each(function () {
       var _case = Case({
         element: this
@@ -22434,13 +22182,11 @@ var ImgHasLongDesc = {
 };
 module.exports = ImgHasLongDesc;
 
-},{"Case":30,"ValidURLComponent":28}],324:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"ValidURLComponent":28}],134:[function(require,module,exports){
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var ImgImportantNoSpacerAlt = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('img[alt]').each(function () {
       var width = $(this).width() ? $(this).width() : parseInt($(this).attr('width'), 10);
       var height = $(this).height() ? $(this).height() : parseInt($(this).attr('height'), 10);
@@ -22476,13 +22222,11 @@ var ImgImportantNoSpacerAlt = {
 };
 module.exports = ImgImportantNoSpacerAlt;
 
-},{"Case":30,"IsUnreadable":11}],325:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsUnreadable":11}],135:[function(require,module,exports){
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var ImgNonDecorativeHasAlt = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('img[alt]').each(function () {
       var _case = Case({
         element: this
@@ -22523,7 +22267,7 @@ var ImgNonDecorativeHasAlt = {
 };
 module.exports = ImgNonDecorativeHasAlt;
 
-},{"Case":30,"IsUnreadable":11}],326:[function(require,module,exports){
+},{"Case":30,"IsUnreadable":11}],136:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -22531,12 +22275,10 @@ module.exports = ImgNonDecorativeHasAlt;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var ImgServerSideMapNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'img';
 
@@ -22580,7 +22322,7 @@ var ImgServerSideMapNotUsed = {
 };
 module.exports = ImgServerSideMapNotUsed;
 
-},{"Case":30}],327:[function(require,module,exports){
+},{"Case":30}],137:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -22588,12 +22330,10 @@ module.exports = ImgServerSideMapNotUsed;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var ImgShouldNotHaveTitle = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'img';
 
@@ -22637,7 +22377,7 @@ var ImgShouldNotHaveTitle = {
 };
 module.exports = ImgShouldNotHaveTitle;
 
-},{"Case":30}],328:[function(require,module,exports){
+},{"Case":30}],138:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -22645,12 +22385,10 @@ module.exports = ImgShouldNotHaveTitle;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var ImgWithMapHasUseMap = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'img[ismap]';
 
@@ -22696,12 +22434,10 @@ var ImgWithMapHasUseMap = {
 };
 module.exports = ImgWithMapHasUseMap;
 
-},{"Case":30}],329:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],139:[function(require,module,exports){
 var Case = require('Case');
 var ImgWithMathShouldHaveMathEquivalent = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('img:not(img:has(math), img:has(tagName))').each(function () {
       var _case = Case({
         element: this
@@ -22731,12 +22467,10 @@ var ImgWithMathShouldHaveMathEquivalent = {
 };
 module.exports = ImgWithMathShouldHaveMathEquivalent;
 
-},{"Case":30}],330:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],140:[function(require,module,exports){
 var Case = require('Case');
 var InputCheckboxRequiresFieldset = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('input[type="checkbox"]').each(function () {
       var _case = Case({
         element: this
@@ -22776,7 +22510,7 @@ var InputCheckboxRequiresFieldset = {
 };
 module.exports = InputCheckboxRequiresFieldset;
 
-},{"Case":30}],331:[function(require,module,exports){
+},{"Case":30}],141:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -22784,12 +22518,10 @@ module.exports = InputCheckboxRequiresFieldset;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var InputElementsDontHaveAlt = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'input[type!=image]';
 
@@ -22833,12 +22565,10 @@ var InputElementsDontHaveAlt = {
 };
 module.exports = InputElementsDontHaveAlt;
 
-},{"Case":30}],332:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],142:[function(require,module,exports){
 var Case = require('Case');
 var InputImageAltIsNotFileName = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('input[type=image][alt]').each(function () {
       var _case = Case({
         element: this
@@ -22879,17 +22609,15 @@ var InputImageAltIsNotFileName = {
 };
 module.exports = InputImageAltIsNotFileName;
 
-},{"Case":30}],333:[function(require,module,exports){
+},{"Case":30}],143:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var InputImageAltIsNotPlaceholder = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="image"]',
       attribute: 'alt'
@@ -22929,12 +22657,10 @@ var InputImageAltIsNotPlaceholder = {
 };
 module.exports = InputImageAltIsNotPlaceholder;
 
-},{"PlaceholderComponent":16}],334:[function(require,module,exports){
-'use strict';
-
+},{"PlaceholderComponent":16}],144:[function(require,module,exports){
 var Case = require('Case');
 var InputImageAltIsShort = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('input[type=image]').each(function () {
       var _case = Case({
         element: this
@@ -22975,14 +22701,12 @@ var InputImageAltIsShort = {
 };
 module.exports = InputImageAltIsShort;
 
-},{"Case":30}],335:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],145:[function(require,module,exports){
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var InputImageAltNotRedundant = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('input[type=image][alt]').each(function () {
       var _case = Case({
         element: this
@@ -23022,7 +22746,7 @@ var InputImageAltNotRedundant = {
 };
 module.exports = InputImageAltNotRedundant;
 
-},{"Case":30,"CleanStringComponent":2,"RedundantStringsComponent":18}],336:[function(require,module,exports){
+},{"Case":30,"CleanStringComponent":2,"RedundantStringsComponent":18}],146:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -23030,12 +22754,10 @@ module.exports = InputImageAltNotRedundant;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var InputImageHasAlt = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'input[type=image]:visible';
 
@@ -23098,17 +22820,15 @@ var InputImageHasAlt = {
 };
 module.exports = InputImageHasAlt;
 
-},{"Case":30}],337:[function(require,module,exports){
+},{"Case":30}],147:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var LabelComponent = require('LabelComponent');
 
 var InputTextHasLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input'
     };
@@ -23152,17 +22872,15 @@ var InputTextHasLabel = {
 };
 module.exports = InputTextHasLabel;
 
-},{"LabelComponent":12}],338:[function(require,module,exports){
+},{"LabelComponent":12}],148:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var InputTextHasValue = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="text"]',
       attribute: 'value',
@@ -23187,17 +22905,15 @@ var InputTextHasValue = {
 };
 module.exports = InputTextHasValue;
 
-},{"PlaceholderComponent":16}],339:[function(require,module,exports){
+},{"PlaceholderComponent":16}],149:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var InputTextValueNotEmpty = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="text"]',
       attribute: 'value',
@@ -23222,13 +22938,11 @@ var InputTextValueNotEmpty = {
 };
 module.exports = InputTextValueNotEmpty;
 
-},{"PlaceholderComponent":16}],340:[function(require,module,exports){
-'use strict';
-
+},{"PlaceholderComponent":16}],150:[function(require,module,exports){
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var InputWithoutLabelHasTitle = {
-  run: function run(test) {
+  run: function (test) {
 
     test.get('$scope').each(function () {
 
@@ -23299,7 +23013,7 @@ var InputWithoutLabelHasTitle = {
 };
 module.exports = InputWithoutLabelHasTitle;
 
-},{"Case":30,"IsUnreadable":11}],341:[function(require,module,exports){
+},{"Case":30,"IsUnreadable":11}],151:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -23307,12 +23021,10 @@ module.exports = InputWithoutLabelHasTitle;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var LabelDoesNotContainInput = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'label';
 
@@ -23356,12 +23068,10 @@ var LabelDoesNotContainInput = {
 };
 module.exports = LabelDoesNotContainInput;
 
-},{"Case":30}],342:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],152:[function(require,module,exports){
 var Case = require('Case');
 var LabelMustBeUnique = {
-  run: function run(test) {
+  run: function (test) {
     var labels = {};
     test.get('$scope').find('label[for]').each(function () {
       if (typeof labels[$(this).attr('for')] === 'undefined') {
@@ -23403,17 +23113,15 @@ var LabelMustBeUnique = {
 };
 module.exports = LabelMustBeUnique;
 
-},{"Case":30}],343:[function(require,module,exports){
+},{"Case":30}],153:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var LabelMustNotBeEmpty = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'label',
       content: 'true',
@@ -23453,12 +23161,10 @@ var LabelMustNotBeEmpty = {
 };
 module.exports = LabelMustNotBeEmpty;
 
-},{"PlaceholderComponent":16}],344:[function(require,module,exports){
-'use strict';
-
+},{"PlaceholderComponent":16}],154:[function(require,module,exports){
 var Case = require('Case');
 var LabelsAreAssignedToAnInput = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('label').each(function () {
       var _case = Case({
         element: this
@@ -23498,16 +23204,14 @@ var LabelsAreAssignedToAnInput = {
 };
 module.exports = LabelsAreAssignedToAnInput;
 
-},{"Case":30}],345:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],155:[function(require,module,exports){
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageDirAttributeIsUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var textDirection = LanguageComponent.textDirection;
 
@@ -23574,16 +23278,14 @@ var LanguageDirAttributeIsUsed = {
 };
 module.exports = LanguageDirAttributeIsUsed;
 
-},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],346:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],156:[function(require,module,exports){
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageDirectionPunctuation = {
-  run: function run(test) {
+  run: function (test) {
     var $scope = test.get('$scope');
     var punctuation = {};
     var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
@@ -23649,15 +23351,13 @@ var LanguageDirectionPunctuation = {
 };
 module.exports = LanguageDirectionPunctuation;
 
-},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],347:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],157:[function(require,module,exports){
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageUnicodeDirection = {
-  run: function run(test) {
+  run: function (test) {
     var $scope = test.get('$scope');
     var textDirection = LanguageComponent.textDirection;
     var textDirectionChanges = LanguageComponent.textDirectionChanges;
@@ -23707,7 +23407,7 @@ var LanguageUnicodeDirection = {
 };
 module.exports = LanguageUnicodeDirection;
 
-},{"Case":30,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],348:[function(require,module,exports){
+},{"Case":30,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],158:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -23715,12 +23415,10 @@ module.exports = LanguageUnicodeDirection;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var LegendTextNotEmpty = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'legend';
 
@@ -23776,17 +23474,15 @@ var LegendTextNotEmpty = {
 };
 module.exports = LegendTextNotEmpty;
 
-},{"Case":30}],349:[function(require,module,exports){
+},{"Case":30}],159:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var LegendTextNotPlaceholder = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'legend',
       content: 'true',
@@ -23829,7 +23525,7 @@ var LegendTextNotPlaceholder = {
 };
 module.exports = LegendTextNotPlaceholder;
 
-},{"PlaceholderComponent":16}],350:[function(require,module,exports){
+},{"PlaceholderComponent":16}],160:[function(require,module,exports){
 /**
  * @todo Needs refinement.
  *
@@ -23839,12 +23535,10 @@ module.exports = LegendTextNotPlaceholder;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var LiDontUseImageForBullet = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'li';
 
@@ -23880,12 +23574,10 @@ var LiDontUseImageForBullet = {
 };
 module.exports = LiDontUseImageForBullet;
 
-},{"Case":30}],351:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],161:[function(require,module,exports){
 var Case = require('Case');
 var LinkHasAUniqueContext = {
-  run: function run(test) {
+  run: function (test) {
 
     var blockStyle = ['block', 'flex', 'list-item', 'table', 'table-caption', 'table-cell'];
 
@@ -24066,12 +23758,10 @@ var LinkHasAUniqueContext = {
 };
 module.exports = LinkHasAUniqueContext;
 
-},{"Case":30}],352:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],162:[function(require,module,exports){
 var Case = require('Case');
 var ListNotUsedForFormatting = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('ol, ul').each(function () {
       var _case = Case({
         element: this
@@ -24111,13 +23801,11 @@ var ListNotUsedForFormatting = {
 };
 module.exports = ListNotUsedForFormatting;
 
-},{"Case":30}],353:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],163:[function(require,module,exports){
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var ListOfLinksUseList = {
-  run: function run(test) {
+  run: function (test) {
     var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
     test.get('$scope').find('a').each(function () {
       var _case = test.add(Case({
@@ -24161,7 +23849,7 @@ var ListOfLinksUseList = {
 };
 module.exports = ListOfLinksUseList;
 
-},{"Case":30,"IsUnreadable":11}],354:[function(require,module,exports){
+},{"Case":30,"IsUnreadable":11}],164:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -24169,12 +23857,10 @@ module.exports = ListOfLinksUseList;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var MarqueeIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'marquee';
 
@@ -24214,7 +23900,7 @@ var MarqueeIsNotUsed = {
 };
 module.exports = MarqueeIsNotUsed;
 
-},{"Case":30}],355:[function(require,module,exports){
+},{"Case":30}],165:[function(require,module,exports){
 /**
  * @todo Needs refinement.
  *
@@ -24224,12 +23910,10 @@ module.exports = MarqueeIsNotUsed;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var MenuNotUsedToFormatText = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'menu:not(menu li:parent(menu))';
 
@@ -24269,12 +23953,10 @@ var MenuNotUsedToFormatText = {
 };
 module.exports = MenuNotUsedToFormatText;
 
-},{"Case":30}],356:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],166:[function(require,module,exports){
 var Case = require('Case');
 var NewWindowIsOpened = {
-  run: function run(test) {
+  run: function (test) {
 
     var fenestrate = window.open;
     var _case;
@@ -24322,17 +24004,15 @@ var NewWindowIsOpened = {
 };
 module.exports = NewWindowIsOpened;
 
-},{"Case":30}],357:[function(require,module,exports){
+},{"Case":30}],167:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var ObjectMustContainText = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'object',
       content: 'true',
@@ -24363,7 +24043,7 @@ var ObjectMustContainText = {
 };
 module.exports = ObjectMustContainText;
 
-},{"PlaceholderComponent":16}],358:[function(require,module,exports){
+},{"PlaceholderComponent":16}],168:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -24371,12 +24051,10 @@ module.exports = ObjectMustContainText;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var ObjectMustHaveEmbed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'object';
 
@@ -24422,7 +24100,7 @@ var ObjectMustHaveEmbed = {
 };
 module.exports = ObjectMustHaveEmbed;
 
-},{"Case":30}],359:[function(require,module,exports){
+},{"Case":30}],169:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -24430,12 +24108,10 @@ module.exports = ObjectMustHaveEmbed;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var ObjectMustHaveTitle = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'object';
 
@@ -24487,17 +24163,15 @@ var ObjectMustHaveTitle = {
 };
 module.exports = ObjectMustHaveTitle;
 
-},{"Case":30}],360:[function(require,module,exports){
+},{"Case":30}],170:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var ObjectMustHaveValidTitle = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'object',
       attribute: 'title',
@@ -24522,14 +24196,12 @@ var ObjectMustHaveValidTitle = {
 };
 module.exports = ObjectMustHaveValidTitle;
 
-},{"PlaceholderComponent":16}],361:[function(require,module,exports){
-'use strict';
-
+},{"PlaceholderComponent":16}],171:[function(require,module,exports){
 var Case = require('Case');
 var SuspectPHeaderTags = require('SuspectPHeaderTags');
 var SuspectPCSSStyles = require('SuspectPCSSStyles');
 var PNotUsedAsHeader = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('p').each(function () {
       var _case = Case({
         element: this
@@ -24613,17 +24285,15 @@ var PNotUsedAsHeader = {
 };
 module.exports = PNotUsedAsHeader;
 
-},{"Case":30,"SuspectPCSSStyles":21,"SuspectPHeaderTags":22}],362:[function(require,module,exports){
+},{"Case":30,"SuspectPCSSStyles":21,"SuspectPHeaderTags":22}],172:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var LabelComponent = require('LabelComponent');
 
 var PasswordHasLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="password"]'
     };
@@ -24668,12 +24338,10 @@ var PasswordHasLabel = {
 };
 module.exports = PasswordHasLabel;
 
-},{"LabelComponent":12}],363:[function(require,module,exports){
-'use strict';
-
+},{"LabelComponent":12}],173:[function(require,module,exports){
 var Case = require('Case');
 var PreShouldNotBeUsedForTabularLayout = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('pre').each(function () {
       var _case = Case({
         element: this
@@ -24711,17 +24379,15 @@ var PreShouldNotBeUsedForTabularLayout = {
 };
 module.exports = PreShouldNotBeUsedForTabularLayout;
 
-},{"Case":30}],364:[function(require,module,exports){
+},{"Case":30}],174:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var LabelComponent = require('LabelComponent');
 
 var RadioHasLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="radio"]'
     };
@@ -24766,17 +24432,15 @@ var RadioHasLabel = {
 };
 module.exports = RadioHasLabel;
 
-},{"LabelComponent":12}],365:[function(require,module,exports){
+},{"LabelComponent":12}],175:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var EventComponent = require('EventComponent');
 
 var ScriptOnclickRequiresOnKeypress = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onclick]',
       correspondingEvent: 'onkeypress',
@@ -24811,17 +24475,15 @@ var ScriptOnclickRequiresOnKeypress = {
 };
 module.exports = ScriptOnclickRequiresOnKeypress;
 
-},{"EventComponent":6}],366:[function(require,module,exports){
+},{"EventComponent":6}],176:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var EventComponent = require('EventComponent');
 
 var ScriptOndblclickRequiresOnKeypress = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[ondblclick]',
       correspondingEvent: 'onkeypress',
@@ -24856,17 +24518,15 @@ var ScriptOndblclickRequiresOnKeypress = {
 };
 module.exports = ScriptOndblclickRequiresOnKeypress;
 
-},{"EventComponent":6}],367:[function(require,module,exports){
+},{"EventComponent":6}],177:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var EventComponent = require('EventComponent');
 
 var ScriptOnmousedownRequiresOnKeypress = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onmousedown]',
       correspondingEvent: 'onkeydown',
@@ -24901,17 +24561,15 @@ var ScriptOnmousedownRequiresOnKeypress = {
 };
 module.exports = ScriptOnmousedownRequiresOnKeypress;
 
-},{"EventComponent":6}],368:[function(require,module,exports){
+},{"EventComponent":6}],178:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var EventComponent = require('EventComponent');
 
 var ScriptOnmousemove = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onmousemove]',
       correspondingEvent: 'onkeypress',
@@ -24946,17 +24604,15 @@ var ScriptOnmousemove = {
 };
 module.exports = ScriptOnmousemove;
 
-},{"EventComponent":6}],369:[function(require,module,exports){
+},{"EventComponent":6}],179:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var EventComponent = require('EventComponent');
 
 var ScriptOnmouseoutHasOnmouseblur = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onmouseout]',
       correspondingEvent: 'onblur',
@@ -24991,17 +24647,15 @@ var ScriptOnmouseoutHasOnmouseblur = {
 };
 module.exports = ScriptOnmouseoutHasOnmouseblur;
 
-},{"EventComponent":6}],370:[function(require,module,exports){
+},{"EventComponent":6}],180:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var EventComponent = require('EventComponent');
 
 var ScriptOnmouseoverHasOnfocus = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onmouseover]',
       correspondingEvent: 'onfocus',
@@ -25036,17 +24690,15 @@ var ScriptOnmouseoverHasOnfocus = {
 };
 module.exports = ScriptOnmouseoverHasOnfocus;
 
-},{"EventComponent":6}],371:[function(require,module,exports){
+},{"EventComponent":6}],181:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var EventComponent = require('EventComponent');
 
 var ScriptOnmouseupHasOnkeyup = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onmouseup]',
       correspondingEvent: 'onkeyup',
@@ -25081,17 +24733,15 @@ var ScriptOnmouseupHasOnkeyup = {
 };
 module.exports = ScriptOnmouseupHasOnkeyup;
 
-},{"EventComponent":6}],372:[function(require,module,exports){
+},{"EventComponent":6}],182:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var LabelComponent = require('LabelComponent');
 
 var SelectHasAssociatedLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'select'
     };
@@ -25135,13 +24785,11 @@ var SelectHasAssociatedLabel = {
 };
 module.exports = SelectHasAssociatedLabel;
 
-},{"LabelComponent":12}],373:[function(require,module,exports){
-'use strict';
-
+},{"LabelComponent":12}],183:[function(require,module,exports){
 var Case = require('Case');
 var HasEventListenerComponent = require('HasEventListenerComponent');
 var SelectJumpMenu = {
-  run: function run(test) {
+  run: function (test) {
     var $scope = test.get('$scope');
     if ($scope.find('select').length === 0) {
       return;
@@ -25187,15 +24835,13 @@ var SelectJumpMenu = {
 };
 module.exports = SelectJumpMenu;
 
-},{"Case":30,"HasEventListenerComponent":8}],374:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"HasEventListenerComponent":8}],184:[function(require,module,exports){
 var Case = require('Case');
 var SiteMapStringsComponent = require('SiteMapStringsComponent');
 var $ = require('jquery/dist/jquery');
 
 var SiteMap = {
-  run: function run(test) {
+  run: function (test) {
     var set = false;
     var _case = Case({
       element: test.get('$scope').get(0)
@@ -25250,16 +24896,14 @@ var SiteMap = {
 
 module.exports = SiteMap;
 
-},{"Case":30,"SiteMapStringsComponent":19,"jquery/dist/jquery":228}],375:[function(require,module,exports){
+},{"Case":30,"SiteMapStringsComponent":19,"jquery/dist/jquery":38}],185:[function(require,module,exports){
 /**globals console:true */
-'use strict';
-
 var Case = require('Case');
 
 var SkipContentStringsComponent = require('SkipContentStringsComponent');
 
 var SkipToContentLinkProvided = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').each(function () {
       var $local = $(this);
       var skipLinkFound = false;
@@ -25320,7 +24964,7 @@ var SkipToContentLinkProvided = {
 };
 module.exports = SkipToContentLinkProvided;
 
-},{"Case":30,"SkipContentStringsComponent":20}],376:[function(require,module,exports){
+},{"Case":30,"SkipContentStringsComponent":20}],186:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -25328,12 +24972,10 @@ module.exports = SkipToContentLinkProvided;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var SvgContainsTitle = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'svg';
 
@@ -25385,12 +25027,10 @@ var SvgContainsTitle = {
 };
 module.exports = SvgContainsTitle;
 
-},{"Case":30}],377:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],187:[function(require,module,exports){
 var Case = require('Case');
 var TabIndexFollowsLogicalOrder = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').each(function () {
       var $local = $(this);
       var index = 0;
@@ -25435,12 +25075,10 @@ var TabIndexFollowsLogicalOrder = {
 };
 module.exports = TabIndexFollowsLogicalOrder;
 
-},{"Case":30}],378:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],188:[function(require,module,exports){
 var Case = require('Case');
 var TableAxisHasCorrespondingId = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('[axis]').each(function () {
       var _case = Case({
         element: this
@@ -25482,7 +25120,7 @@ var TableAxisHasCorrespondingId = {
 };
 module.exports = TableAxisHasCorrespondingId;
 
-},{"Case":30}],379:[function(require,module,exports){
+},{"Case":30}],189:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -25490,12 +25128,10 @@ module.exports = TableAxisHasCorrespondingId;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var TableDataShouldHaveTh = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'table';
 
@@ -25547,13 +25183,11 @@ var TableDataShouldHaveTh = {
 };
 module.exports = TableDataShouldHaveTh;
 
-},{"Case":30}],380:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],190:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var TableLayoutDataShouldNotHaveTh = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('table').each(function () {
       var _case = Case({
         element: this
@@ -25600,13 +25234,11 @@ var TableLayoutDataShouldNotHaveTh = {
 };
 module.exports = TableLayoutDataShouldNotHaveTh;
 
-},{"Case":30,"IsDataTableComponent":10}],381:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsDataTableComponent":10}],191:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var TableLayoutHasNoCaption = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('table').each(function () {
       if ($(this).find('caption').length) {
         if (!IsDataTableComponent($(this))) {
@@ -25651,14 +25283,12 @@ var TableLayoutHasNoCaption = {
 };
 module.exports = TableLayoutHasNoCaption;
 
-},{"Case":30,"IsDataTableComponent":10}],382:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsDataTableComponent":10}],192:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var TableLayoutHasNoSummary = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').each(function () {
       var $local = $(this);
       $local.find('table[summary]').each(function () {
@@ -25696,13 +25326,11 @@ var TableLayoutHasNoSummary = {
 };
 module.exports = TableLayoutHasNoSummary;
 
-},{"Case":30,"IsDataTableComponent":10,"IsUnreadable":11}],383:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsDataTableComponent":10,"IsUnreadable":11}],193:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var TableLayoutMakesSenseLinearized = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('table').each(function () {
       if (!IsDataTableComponent($(this))) {
         test.add(Case({
@@ -25738,13 +25366,11 @@ var TableLayoutMakesSenseLinearized = {
 };
 module.exports = TableLayoutMakesSenseLinearized;
 
-},{"Case":30,"IsDataTableComponent":10}],384:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsDataTableComponent":10}],194:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var TableNotUsedForLayout = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('table').each(function () {
       if (!IsDataTableComponent($(this))) {
         test.add(Case({
@@ -25782,13 +25408,11 @@ var TableNotUsedForLayout = {
 };
 module.exports = TableNotUsedForLayout;
 
-},{"Case":30,"IsDataTableComponent":10}],385:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsDataTableComponent":10}],195:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var TableShouldUseHeaderIDs = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('table').each(function () {
       var $table = $(this);
       var tableFailed = false;
@@ -25843,13 +25467,11 @@ var TableShouldUseHeaderIDs = {
 };
 module.exports = TableShouldUseHeaderIDs;
 
-},{"Case":30,"IsDataTableComponent":10}],386:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsDataTableComponent":10}],196:[function(require,module,exports){
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
 var TableSummaryDoesNotDuplicateCaption = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('table[summary]:has(caption)').each(function () {
       if (CleanStringComponent($(this).attr('summary')) === CleanStringComponent($(this).find('caption:first').text())) {
         test.add(Case({
@@ -25881,17 +25503,15 @@ var TableSummaryDoesNotDuplicateCaption = {
 };
 module.exports = TableSummaryDoesNotDuplicateCaption;
 
-},{"Case":30,"CleanStringComponent":2}],387:[function(require,module,exports){
+},{"Case":30,"CleanStringComponent":2}],197:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var TableSummaryIsEmpty = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'table',
       attribute: 'summary',
@@ -25916,12 +25536,10 @@ var TableSummaryIsEmpty = {
 };
 module.exports = TableSummaryIsEmpty;
 
-},{"PlaceholderComponent":16}],388:[function(require,module,exports){
-'use strict';
-
+},{"PlaceholderComponent":16}],198:[function(require,module,exports){
 var Case = require('Case');
 var TableSummaryIsNotTooLong = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('table[summary]').each(function () {
       if ($(this).attr('summary').trim().length > 100) {
         test.add(Case({
@@ -25940,13 +25558,11 @@ var TableSummaryIsNotTooLong = {
 };
 module.exports = TableSummaryIsNotTooLong;
 
-},{"Case":30}],389:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],199:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var TableUseColGroup = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('table').each(function () {
       if (IsDataTableComponent($(this)) && !$(this).find('colgroup').length) {
         test.add(Case({
@@ -25973,12 +25589,10 @@ var TableUseColGroup = {
 };
 module.exports = TableUseColGroup;
 
-},{"Case":30,"IsDataTableComponent":10}],390:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"IsDataTableComponent":10}],200:[function(require,module,exports){
 var Case = require('Case');
 var TableUsesAbbreviationForHeader = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('th:not(th[abbr])').each(function () {
       if ($(this).text().length > 20) {
         test.add(Case({
@@ -26005,7 +25619,7 @@ var TableUsesAbbreviationForHeader = {
 };
 module.exports = TableUsesAbbreviationForHeader;
 
-},{"Case":30}],391:[function(require,module,exports){
+},{"Case":30}],201:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -26013,12 +25627,10 @@ module.exports = TableUsesAbbreviationForHeader;
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-'use strict';
-
 var Case = require('Case');
 
 var TableUsesCaption = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'table';
 
@@ -26070,12 +25682,10 @@ var TableUsesCaption = {
 };
 module.exports = TableUsesCaption;
 
-},{"Case":30}],392:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],202:[function(require,module,exports){
 var Case = require('Case');
 var TableUsesScopeForRow = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('table').each(function () {
       $(this).find('td:first-child').each(function () {
         var $next = $(this).next('td');
@@ -26120,12 +25730,10 @@ var TableUsesScopeForRow = {
 };
 module.exports = TableUsesScopeForRow;
 
-},{"Case":30}],393:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],203:[function(require,module,exports){
 var Case = require('Case');
 var TabularDataIsInTable = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find('pre').each(function () {
       if ($(this).html().search('\t') >= 0) {
         test.add(Case({
@@ -26166,16 +25774,14 @@ var TabularDataIsInTable = {
 };
 module.exports = TabularDataIsInTable;
 
-},{"Case":30}],394:[function(require,module,exports){
-'use strict';
-
+},{"Case":30}],204:[function(require,module,exports){
 var Case = require('Case');
 var ConvertToPxComponent = require('ConvertToPxComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 
 var TextIsNotSmall = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
       return TextNodeFilterComponent(element);
     }).each(function () {
@@ -26215,17 +25821,15 @@ var TextIsNotSmall = {
 };
 module.exports = TextIsNotSmall;
 
-},{"Case":30,"ConvertToPxComponent":5,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],395:[function(require,module,exports){
+},{"Case":30,"ConvertToPxComponent":5,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],205:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-'use strict';
-
 var LabelComponent = require('LabelComponent');
 
 var TextareaHasAssociatedLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'textarea'
     };
@@ -26269,13 +25873,11 @@ var TextareaHasAssociatedLabel = {
 };
 module.exports = TextareaHasAssociatedLabel;
 
-},{"LabelComponent":12}],396:[function(require,module,exports){
-'use strict';
-
+},{"LabelComponent":12}],206:[function(require,module,exports){
 var Case = require('Case');
 var $ = require('jquery/dist/jquery');
 var VideoMayBePresent = {
-  run: function run(test) {
+  run: function (test) {
 
     var videoExtensions = ['webm', 'flv', 'ogv', 'ogg', 'avi', 'mov', 'qt', 'wmv', 'asf', 'mp4', 'm4p', 'm4v', 'mpg', 'mp2', 'mpeg', 'mpg', 'mpe', 'mpv', 'm2v', '3gp', '3g2'];
     var videoHosts = ['//www.youtube.com/embed/', '//player.vimeo.com/video/'];
@@ -26344,13 +25946,11 @@ var VideoMayBePresent = {
 };
 module.exports = VideoMayBePresent;
 
-},{"Case":30,"jquery/dist/jquery":228}],397:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"jquery/dist/jquery":38}],207:[function(require,module,exports){
 var Case = require('Case');
 var VideoComponent = require('VideoComponent');
 var VideosEmbeddedOrLinkedNeedCaptions = {
-  run: function run(test) {
+  run: function (test) {
 
     VideoComponent.findVideos(test.get('$scope'), function (element, pass) {
       if (!pass) {
@@ -26392,14 +25992,12 @@ var VideosEmbeddedOrLinkedNeedCaptions = {
 };
 module.exports = VideosEmbeddedOrLinkedNeedCaptions;
 
-},{"Case":30,"VideoComponent":29}],398:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"VideoComponent":29}],208:[function(require,module,exports){
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceInWord = {
-  run: function run(test) {
+  run: function (test) {
     var whitespaceGroup, nonWhitespace;
     test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
       return TextNodeFilterComponent(element);
@@ -26442,14 +26040,12 @@ var WhiteSpaceInWord = {
 };
 module.exports = WhiteSpaceInWord;
 
-},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],399:[function(require,module,exports){
-'use strict';
-
+},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],209:[function(require,module,exports){
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceNotUsedForFormatting = {
-  run: function run(test) {
+  run: function (test) {
     test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
       return TextNodeFilterComponent(element);
     }).each(function () {
@@ -26497,16 +26093,15 @@ var WhiteSpaceNotUsedForFormatting = {
 };
 module.exports = WhiteSpaceNotUsedForFormatting;
 
-},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],400:[function(require,module,exports){
+},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],210:[function(require,module,exports){
 /*
 RainbowVis-JS 
 Released under Eclipse Public License - v 1.0
 */
 
-'use strict';
-
 function Rainbow() {
 	"use strict";
+
 	var gradients = null;
 	var minNum = 0;
 	var maxNum = 100;
@@ -26572,6 +26167,7 @@ function Rainbow() {
 
 function ColourGradient() {
 	"use strict";
+
 	var startColour = 'ff0000';
 	var endColour = '0000ff';
 	var minNum = 0;
@@ -26793,7 +26389,7 @@ if (typeof module !== 'undefined') {
 	module.exports = Rainbow;
 }
 
-},{}],401:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -26806,7 +26402,7 @@ if (typeof module !== 'undefined') {
  * http://jquery.org/license
  *
  * Date: 2015-04-28T16:01Z
- */"use strict";(function(global,factory){if(typeof module === "object" && typeof module.exports === "object"){ // For CommonJS and CommonJS-like environments where a proper `window`
+ */(function(global,factory){if(typeof module === "object" && typeof module.exports === "object"){ // For CommonJS and CommonJS-like environments where a proper `window`
 // is present, execute the factory and get jQuery.
 // For environments that do not have a `window` with a `document`
 // (such as Node.js), expose a factory as module.exports.
@@ -26814,35 +26410,35 @@ if (typeof module !== 'undefined') {
 // e.g. var jQuery = require("jquery")(window);
 // See ticket #14549 for more info.
 module.exports = global.document?factory(global,true):function(w){if(!w.document){throw new Error("jQuery requires a window with a document");}return factory(w);};}else {factory(global);} // Pass this if window is not defined yet
-})(typeof window !== "undefined"?window:undefined,function(window,noGlobal){ // Support: Firefox 18+
+})(typeof window !== "undefined"?window:this,function(window,noGlobal){ // Support: Firefox 18+
 // Can't be in strict mode, several libs including ASP.NET trace
 // the stack via arguments.caller.callee and Firefox dies if
 // you try to trace through "use strict" call chains. (#13335)
 //
-var arr=[];var _slice=arr.slice;var concat=arr.concat;var push=arr.push;var indexOf=arr.indexOf;var class2type={};var toString=class2type.toString;var hasOwn=class2type.hasOwnProperty;var support={};var  // Use the correct document accordingly with window argument (sandbox)
+var arr=[];var slice=arr.slice;var concat=arr.concat;var push=arr.push;var indexOf=arr.indexOf;var class2type={};var toString=class2type.toString;var hasOwn=class2type.hasOwnProperty;var support={};var  // Use the correct document accordingly with window argument (sandbox)
 document=window.document,version="2.1.4", // Define a local copy of jQuery
-jQuery=function jQuery(selector,context){ // The jQuery object is actually just the init constructor 'enhanced'
+jQuery=function(selector,context){ // The jQuery object is actually just the init constructor 'enhanced'
 // Need init if jQuery is called (just allow error to be thrown if not included)
 return new jQuery.fn.init(selector,context);}, // Support: Android<4.1
 // Make sure we trim BOM and NBSP
 rtrim=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, // Matches dashed string for camelizing
 rmsPrefix=/^-ms-/,rdashAlpha=/-([\da-z])/gi, // Used by jQuery.camelCase as callback to replace()
-fcamelCase=function fcamelCase(all,letter){return letter.toUpperCase();};jQuery.fn = jQuery.prototype = { // The current version of jQuery being used
+fcamelCase=function(all,letter){return letter.toUpperCase();};jQuery.fn = jQuery.prototype = { // The current version of jQuery being used
 jquery:version,constructor:jQuery, // Start with an empty selector
 selector:"", // The default length of a jQuery object is 0
-length:0,toArray:function toArray(){return _slice.call(this);}, // Get the Nth element in the matched element set OR
+length:0,toArray:function(){return slice.call(this);}, // Get the Nth element in the matched element set OR
 // Get the whole matched element set as a clean array
-get:function get(num){return num != null? // Return just the one element from the set
+get:function(num){return num != null? // Return just the one element from the set
 num < 0?this[num + this.length]:this[num]: // Return all the elements in a clean array
-_slice.call(this);}, // Take an array of elements and push it onto the stack
+slice.call(this);}, // Take an array of elements and push it onto the stack
 // (returning the new matched element set)
-pushStack:function pushStack(elems){ // Build a new jQuery matched element set
+pushStack:function(elems){ // Build a new jQuery matched element set
 var ret=jQuery.merge(this.constructor(),elems); // Add the old object onto the stack (as a reference)
 ret.prevObject = this;ret.context = this.context; // Return the newly-formed element set
 return ret;}, // Execute a callback for every element in the matched set.
 // (You can seed the arguments with an array of args, but this is
 // only used internally.)
-each:function each(callback,args){return jQuery.each(this,callback,args);},map:function map(callback){return this.pushStack(jQuery.map(this,function(elem,i){return callback.call(elem,i,elem);}));},slice:function slice(){return this.pushStack(_slice.apply(this,arguments));},first:function first(){return this.eq(0);},last:function last(){return this.eq(-1);},eq:function eq(i){var len=this.length,j=+i + (i < 0?len:0);return this.pushStack(j >= 0 && j < len?[this[j]]:[]);},end:function end(){return this.prevObject || this.constructor(null);}, // For internal use only.
+each:function(callback,args){return jQuery.each(this,callback,args);},map:function(callback){return this.pushStack(jQuery.map(this,function(elem,i){return callback.call(elem,i,elem);}));},slice:function(){return this.pushStack(slice.apply(this,arguments));},first:function(){return this.eq(0);},last:function(){return this.eq(-1);},eq:function(i){var len=this.length,j=+i + (i < 0?len:0);return this.pushStack(j >= 0 && j < len?[this[j]]:[]);},end:function(){return this.prevObject || this.constructor(null);}, // For internal use only.
 // Behaves like an Array's method, not like a jQuery method.
 push:push,sort:arr.sort,splice:arr.splice};jQuery.extend = jQuery.fn.extend = function(){var options,name,src,copy,copyIsArray,clone,target=arguments[0] || {},i=1,length=arguments.length,deep=false; // Handle a deep copy situation
 if(typeof target === "boolean"){deep = target; // Skip the boolean and the target
@@ -26857,19 +26453,19 @@ target[name] = jQuery.extend(deep,clone,copy); // Don't bring in undefined value
 }else if(copy !== undefined){target[name] = copy;}}}} // Return the modified object
 return target;};jQuery.extend({ // Unique for each copy of jQuery on the page
 expando:"jQuery" + (version + Math.random()).replace(/\D/g,""), // Assume jQuery is ready without the ready module
-isReady:true,error:function error(msg){throw new Error(msg);},noop:function noop(){},isFunction:function isFunction(obj){return jQuery.type(obj) === "function";},isArray:Array.isArray,isWindow:function isWindow(obj){return obj != null && obj === obj.window;},isNumeric:function isNumeric(obj){ // parseFloat NaNs numeric-cast false positives (null|true|false|"")
+isReady:true,error:function(msg){throw new Error(msg);},noop:function(){},isFunction:function(obj){return jQuery.type(obj) === "function";},isArray:Array.isArray,isWindow:function(obj){return obj != null && obj === obj.window;},isNumeric:function(obj){ // parseFloat NaNs numeric-cast false positives (null|true|false|"")
 // ...but misinterprets leading-number strings, particularly hex literals ("0x...")
 // subtraction forces infinities to NaN
 // adding 1 corrects loss of precision from parseFloat (#15100)
-return !jQuery.isArray(obj) && obj - parseFloat(obj) + 1 >= 0;},isPlainObject:function isPlainObject(obj){ // Not plain objects:
+return !jQuery.isArray(obj) && obj - parseFloat(obj) + 1 >= 0;},isPlainObject:function(obj){ // Not plain objects:
 // - Any object or value whose internal [[Class]] property is not "[object Object]"
 // - DOM nodes
 // - window
 if(jQuery.type(obj) !== "object" || obj.nodeType || jQuery.isWindow(obj)){return false;}if(obj.constructor && !hasOwn.call(obj.constructor.prototype,"isPrototypeOf")){return false;} // If the function hasn't returned already, we're confident that
 // |obj| is a plain object, created by {} or constructed with new Object
-return true;},isEmptyObject:function isEmptyObject(obj){var name;for(name in obj) {return false;}return true;},type:function type(obj){if(obj == null){return obj + "";} // Support: Android<4.0, iOS<6 (functionish RegExp)
+return true;},isEmptyObject:function(obj){var name;for(name in obj) {return false;}return true;},type:function(obj){if(obj == null){return obj + "";} // Support: Android<4.0, iOS<6 (functionish RegExp)
 return typeof obj === "object" || typeof obj === "function"?class2type[toString.call(obj)] || "object":typeof obj;}, // Evaluates a script in a global context
-globalEval:function globalEval(code){var script,indirect=eval;code = jQuery.trim(code);if(code){ // If the code includes a valid, prologue position
+globalEval:function(code){var script,indirect=eval;code = jQuery.trim(code);if(code){ // If the code includes a valid, prologue position
 // strict mode pragma, execute code by injecting a
 // script tag into the document.
 if(code.indexOf("use strict") === 1){script = document.createElement("script");script.text = code;document.head.appendChild(script).parentNode.removeChild(script);}else { // Otherwise, avoid the DOM node creation, insertion
@@ -26877,23 +26473,23 @@ if(code.indexOf("use strict") === 1){script = document.createElement("script");s
 indirect(code);}}}, // Convert dashed to camelCase; used by the css and data modules
 // Support: IE9-11+
 // Microsoft forgot to hump their vendor prefix (#9572)
-camelCase:function camelCase(string){return string.replace(rmsPrefix,"ms-").replace(rdashAlpha,fcamelCase);},nodeName:function nodeName(elem,name){return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();}, // args is for internal usage only
-each:function each(obj,callback,args){var value,i=0,length=obj.length,isArray=isArraylike(obj);if(args){if(isArray){for(;i < length;i++) {value = callback.apply(obj[i],args);if(value === false){break;}}}else {for(i in obj) {value = callback.apply(obj[i],args);if(value === false){break;}}} // A special, fast, case for the most common use of each
+camelCase:function(string){return string.replace(rmsPrefix,"ms-").replace(rdashAlpha,fcamelCase);},nodeName:function(elem,name){return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();}, // args is for internal usage only
+each:function(obj,callback,args){var value,i=0,length=obj.length,isArray=isArraylike(obj);if(args){if(isArray){for(;i < length;i++) {value = callback.apply(obj[i],args);if(value === false){break;}}}else {for(i in obj) {value = callback.apply(obj[i],args);if(value === false){break;}}} // A special, fast, case for the most common use of each
 }else {if(isArray){for(;i < length;i++) {value = callback.call(obj[i],i,obj[i]);if(value === false){break;}}}else {for(i in obj) {value = callback.call(obj[i],i,obj[i]);if(value === false){break;}}}}return obj;}, // Support: Android<4.1
-trim:function trim(text){return text == null?"":(text + "").replace(rtrim,"");}, // results is for internal usage only
-makeArray:function makeArray(arr,results){var ret=results || [];if(arr != null){if(isArraylike(Object(arr))){jQuery.merge(ret,typeof arr === "string"?[arr]:arr);}else {push.call(ret,arr);}}return ret;},inArray:function inArray(elem,arr,i){return arr == null?-1:indexOf.call(arr,elem,i);},merge:function merge(first,second){var len=+second.length,j=0,i=first.length;for(;j < len;j++) {first[i++] = second[j];}first.length = i;return first;},grep:function grep(elems,callback,invert){var callbackInverse,matches=[],i=0,length=elems.length,callbackExpect=!invert; // Go through the array, only saving the items
+trim:function(text){return text == null?"":(text + "").replace(rtrim,"");}, // results is for internal usage only
+makeArray:function(arr,results){var ret=results || [];if(arr != null){if(isArraylike(Object(arr))){jQuery.merge(ret,typeof arr === "string"?[arr]:arr);}else {push.call(ret,arr);}}return ret;},inArray:function(elem,arr,i){return arr == null?-1:indexOf.call(arr,elem,i);},merge:function(first,second){var len=+second.length,j=0,i=first.length;for(;j < len;j++) {first[i++] = second[j];}first.length = i;return first;},grep:function(elems,callback,invert){var callbackInverse,matches=[],i=0,length=elems.length,callbackExpect=!invert; // Go through the array, only saving the items
 // that pass the validator function
 for(;i < length;i++) {callbackInverse = !callback(elems[i],i);if(callbackInverse !== callbackExpect){matches.push(elems[i]);}}return matches;}, // arg is for internal usage only
-map:function map(elems,callback,arg){var value,i=0,length=elems.length,isArray=isArraylike(elems),ret=[]; // Go through the array, translating each of the items to their new values
+map:function(elems,callback,arg){var value,i=0,length=elems.length,isArray=isArraylike(elems),ret=[]; // Go through the array, translating each of the items to their new values
 if(isArray){for(;i < length;i++) {value = callback(elems[i],i,arg);if(value != null){ret.push(value);}} // Go through every key on the object,
 }else {for(i in elems) {value = callback(elems[i],i,arg);if(value != null){ret.push(value);}}} // Flatten any nested arrays
 return concat.apply([],ret);}, // A global GUID counter for objects
 guid:1, // Bind a function to a context, optionally partially applying any
 // arguments.
-proxy:function proxy(fn,context){var tmp,args,proxy;if(typeof context === "string"){tmp = fn[context];context = fn;fn = tmp;} // Quick check to determine if target is callable, in the spec
+proxy:function(fn,context){var tmp,args,proxy;if(typeof context === "string"){tmp = fn[context];context = fn;fn = tmp;} // Quick check to determine if target is callable, in the spec
 // this throws a TypeError, but we will just return undefined.
 if(!jQuery.isFunction(fn)){return undefined;} // Simulated bind
-args = _slice.call(arguments,2);proxy = function(){return fn.apply(context || this,args.concat(_slice.call(arguments)));}; // Set the guid of unique handler to the same of original handler, so it can be removed
+args = slice.call(arguments,2);proxy = function(){return fn.apply(context || this,args.concat(slice.call(arguments)));}; // Set the guid of unique handler to the same of original handler, so it can be removed
 proxy.guid = fn.guid = fn.guid || jQuery.guid++;return proxy;},now:Date.now, // jQuery.support is not used in Core but other projects attach their
 // properties to it so it needs to exist.
 support:support}); // Populate the class2type map
@@ -26912,11 +26508,11 @@ var length="length" in obj && obj.length,type=jQuery.type(obj);if(type === "func
  * Date: 2014-12-16
  */(function(window){var i,support,Expr,getText,isXML,tokenize,compile,select,outermostContext,sortInput,hasDuplicate, // Local document vars
 setDocument,document,docElem,documentIsHTML,rbuggyQSA,rbuggyMatches,matches,contains, // Instance-specific data
-expando="sizzle" + 1 * new Date(),preferredDoc=window.document,dirruns=0,done=0,classCache=createCache(),tokenCache=createCache(),compilerCache=createCache(),sortOrder=function sortOrder(a,b){if(a === b){hasDuplicate = true;}return 0;}, // General-purpose constants
+expando="sizzle" + 1 * new Date(),preferredDoc=window.document,dirruns=0,done=0,classCache=createCache(),tokenCache=createCache(),compilerCache=createCache(),sortOrder=function(a,b){if(a === b){hasDuplicate = true;}return 0;}, // General-purpose constants
 MAX_NEGATIVE=1 << 31, // Instance methods
 hasOwn=({}).hasOwnProperty,arr=[],pop=arr.pop,push_native=arr.push,push=arr.push,slice=arr.slice, // Use a stripped-down indexOf as it's faster than native
 // http://jsperf.com/thor-indexof-vs-for/5
-indexOf=function indexOf(list,elem){var i=0,len=list.length;for(;i < len;i++) {if(list[i] === elem){return i;}}return -1;},booleans="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped", // Regular expressions
+indexOf=function(list,elem){var i=0,len=list.length;for(;i < len;i++) {if(list[i] === elem){return i;}}return -1;},booleans="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped", // Regular expressions
 // Whitespace characters http://www.w3.org/TR/css3-selectors/#whitespace
 whitespace="[\\x20\\t\\r\\n\\f]", // http://www.w3.org/TR/css3-syntax/#characters
 characterEncoding="(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+", // Loosely modeled on CSS identifier characters
@@ -26934,7 +26530,7 @@ rwhitespace=new RegExp(whitespace + "+","g"),rtrim=new RegExp("^" + whitespace +
 // We use this for POS matching in `select`
 "needsContext":new RegExp("^" + whitespace + "*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\(" + whitespace + "*((?:-\\d)?\\d*)" + whitespace + "*\\)|)(?=[^-]|$)","i")},rinputs=/^(?:input|select|textarea|button)$/i,rheader=/^h\d$/i,rnative=/^[^{]+\{\s*\[native \w/, // Easily-parseable/retrievable ID or TAG or CLASS selectors
 rquickExpr=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,rsibling=/[+~]/,rescape=/'|\\/g, // CSS escapes http://www.w3.org/TR/CSS21/syndata.html#escaped-characters
-runescape=new RegExp("\\\\([\\da-f]{1,6}" + whitespace + "?|(" + whitespace + ")|.)","ig"),funescape=function funescape(_,escaped,escapedWhitespace){var high="0x" + escaped - 0x10000; // NaN means non-codepoint
+runescape=new RegExp("\\\\([\\da-f]{1,6}" + whitespace + "?|(" + whitespace + ")|.)","ig"),funescape=function(_,escaped,escapedWhitespace){var high="0x" + escaped - 0x10000; // NaN means non-codepoint
 // Support: Firefox<24
 // Workaround erroneous numeric interpretation of +"0x"
 return high !== high || escapedWhitespace?escaped:high < 0? // BMP codepoint
@@ -26943,11 +26539,12 @@ String.fromCharCode(high >> 10 | 0xD800,high & 0x3FF | 0xDC00);}, // Used for if
 // See setDocument()
 // Removing the function wrapper causes a "Permission Denied"
 // error in IE
-unloadHandler=function unloadHandler(){setDocument();}; // Optimize for push.apply( _, NodeList )
+unloadHandler=function(){setDocument();}; // Optimize for push.apply( _, NodeList )
 try{push.apply(arr = slice.call(preferredDoc.childNodes),preferredDoc.childNodes); // Support: Android<4.0
 // Detect silently failing push.apply
 arr[preferredDoc.childNodes.length].nodeType;}catch(e) {push = {apply:arr.length? // Leverage slice if possible
 function(target,els){push_native.apply(target,slice.call(els));}: // Support: IE<9
+// Otherwise append directly
 function(target,els){var j=target.length,i=0; // Can't trust NodeList.length
 while(target[j++] = els[i++]) {}target.length = j - 1;}};}function Sizzle(selector,context,results,seed){var match,elem,m,nodeType, // QSA vars
 i,groups,old,nid,newContext,newSelector;if((context?context.ownerDocument || context:preferredDoc) !== document){setDocument(context);}context = context || document;results = results || [];nodeType = context.nodeType;if(typeof selector !== "string" || !selector || nodeType !== 1 && nodeType !== 9 && nodeType !== 11){return results;}if(!seed && documentIsHTML){ // Try to shortcut find operations when possible (e.g., not under DocumentFragment)
@@ -27128,8 +26725,8 @@ ret += getText(node);}}else if(nodeType === 1 || nodeType === 9 || nodeType === 
 if(typeof elem.textContent === "string"){return elem.textContent;}else { // Traverse its children
 for(elem = elem.firstChild;elem;elem = elem.nextSibling) {ret += getText(elem);}}}else if(nodeType === 3 || nodeType === 4){return elem.nodeValue;} // Do not include comment or processing instruction nodes
 return ret;};Expr = Sizzle.selectors = { // Can be adjusted by the user
-cacheLength:50,createPseudo:markFunction,match:matchExpr,attrHandle:{},find:{},relative:{">":{dir:"parentNode",first:true}," ":{dir:"parentNode"},"+":{dir:"previousSibling",first:true},"~":{dir:"previousSibling"}},preFilter:{"ATTR":function ATTR(match){match[1] = match[1].replace(runescape,funescape); // Move the given value to match[3] whether quoted or unquoted
-match[3] = (match[3] || match[4] || match[5] || "").replace(runescape,funescape);if(match[2] === "~="){match[3] = " " + match[3] + " ";}return match.slice(0,4);},"CHILD":function CHILD(match){ /* matches from matchExpr["CHILD"]
+cacheLength:50,createPseudo:markFunction,match:matchExpr,attrHandle:{},find:{},relative:{">":{dir:"parentNode",first:true}," ":{dir:"parentNode"},"+":{dir:"previousSibling",first:true},"~":{dir:"previousSibling"}},preFilter:{"ATTR":function(match){match[1] = match[1].replace(runescape,funescape); // Move the given value to match[3] whether quoted or unquoted
+match[3] = (match[3] || match[4] || match[5] || "").replace(runescape,funescape);if(match[2] === "~="){match[3] = " " + match[3] + " ";}return match.slice(0,4);},"CHILD":function(match){ /* matches from matchExpr["CHILD"]
 				1 type (only|nth|...)
 				2 what (child|of-type)
 				3 argument (even|odd|\d*|\d*n([+-]\d+)?|...)
@@ -27142,13 +26739,13 @@ match[3] = (match[3] || match[4] || match[5] || "").replace(runescape,funescape)
 if(!match[3]){Sizzle.error(match[0]);} // numeric x and y parameters for Expr.filter.CHILD
 // remember that false/true cast respectively to 0/1
 match[4] = +(match[4]?match[5] + (match[6] || 1):2 * (match[3] === "even" || match[3] === "odd"));match[5] = +(match[7] + match[8] || match[3] === "odd"); // other types prohibit arguments
-}else if(match[3]){Sizzle.error(match[0]);}return match;},"PSEUDO":function PSEUDO(match){var excess,unquoted=!match[6] && match[2];if(matchExpr["CHILD"].test(match[0])){return null;} // Accept quoted arguments as-is
+}else if(match[3]){Sizzle.error(match[0]);}return match;},"PSEUDO":function(match){var excess,unquoted=!match[6] && match[2];if(matchExpr["CHILD"].test(match[0])){return null;} // Accept quoted arguments as-is
 if(match[3]){match[2] = match[4] || match[5] || ""; // Strip excess characters from unquoted arguments
 }else if(unquoted && rpseudo.test(unquoted) && ( // Get excess from tokenize (recursively)
 excess = tokenize(unquoted,true)) && ( // advance to the next closing parenthesis
 excess = unquoted.indexOf(")",unquoted.length - excess) - unquoted.length)){ // excess is a negative index
 match[0] = match[0].slice(0,excess);match[2] = unquoted.slice(0,excess);} // Return only captures needed by the pseudo filter method (type and argument)
-return match.slice(0,3);}},filter:{"TAG":function TAG(nodeNameSelector){var nodeName=nodeNameSelector.replace(runescape,funescape).toLowerCase();return nodeNameSelector === "*"?function(){return true;}:function(elem){return elem.nodeName && elem.nodeName.toLowerCase() === nodeName;};},"CLASS":function CLASS(className){var pattern=classCache[className + " "];return pattern || (pattern = new RegExp("(^|" + whitespace + ")" + className + "(" + whitespace + "|$)")) && classCache(className,function(elem){return pattern.test(typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== "undefined" && elem.getAttribute("class") || "");});},"ATTR":function ATTR(name,operator,check){return function(elem){var result=Sizzle.attr(elem,name);if(result == null){return operator === "!=";}if(!operator){return true;}result += "";return operator === "="?result === check:operator === "!="?result !== check:operator === "^="?check && result.indexOf(check) === 0:operator === "*="?check && result.indexOf(check) > -1:operator === "$="?check && result.slice(-check.length) === check:operator === "~="?(" " + result.replace(rwhitespace," ") + " ").indexOf(check) > -1:operator === "|="?result === check || result.slice(0,check.length + 1) === check + "-":false;};},"CHILD":function CHILD(type,what,argument,first,last){var simple=type.slice(0,3) !== "nth",forward=type.slice(-4) !== "last",ofType=what === "of-type";return first === 1 && last === 0? // Shortcut for :nth-*(n)
+return match.slice(0,3);}},filter:{"TAG":function(nodeNameSelector){var nodeName=nodeNameSelector.replace(runescape,funescape).toLowerCase();return nodeNameSelector === "*"?function(){return true;}:function(elem){return elem.nodeName && elem.nodeName.toLowerCase() === nodeName;};},"CLASS":function(className){var pattern=classCache[className + " "];return pattern || (pattern = new RegExp("(^|" + whitespace + ")" + className + "(" + whitespace + "|$)")) && classCache(className,function(elem){return pattern.test(typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== "undefined" && elem.getAttribute("class") || "");});},"ATTR":function(name,operator,check){return function(elem){var result=Sizzle.attr(elem,name);if(result == null){return operator === "!=";}if(!operator){return true;}result += "";return operator === "="?result === check:operator === "!="?result !== check:operator === "^="?check && result.indexOf(check) === 0:operator === "*="?check && result.indexOf(check) > -1:operator === "$="?check && result.slice(-check.length) === check:operator === "~="?(" " + result.replace(rwhitespace," ") + " ").indexOf(check) > -1:operator === "|="?result === check || result.slice(0,check.length + 1) === check + "-":false;};},"CHILD":function(type,what,argument,first,last){var simple=type.slice(0,3) !== "nth",forward=type.slice(-4) !== "last",ofType=what === "of-type";return first === 1 && last === 0? // Shortcut for :nth-*(n)
 function(elem){return !!elem.parentNode;}:function(elem,context,xml){var cache,outerCache,node,diff,nodeIndex,start,dir=simple !== forward?"nextSibling":"previousSibling",parent=elem.parentNode,name=ofType && elem.nodeName.toLowerCase(),useCache=!xml && !ofType;if(parent){ // :(first|last|only)-(child|of-type)
 if(simple){while(dir) {node = elem;while(node = node[dir]) {if(ofType?node.nodeName.toLowerCase() === name:node.nodeType === 1){return false;}} // Reverse direction for :only-* (if we haven't yet done so)
 start = dir = type === "only" && !start && "nextSibling";}return true;}start = [forward?parent.firstChild:parent.lastChild]; // non-xml :nth-child(...) stores cache data on `parent`
@@ -27160,7 +26757,7 @@ if(node.nodeType === 1 && ++diff && node === elem){outerCache[type] = [dirruns,n
 }else { // Use the same loop as above to seek `elem` from the start
 while(node = ++nodeIndex && node && node[dir] || (diff = nodeIndex = 0) || start.pop()) {if((ofType?node.nodeName.toLowerCase() === name:node.nodeType === 1) && ++diff){ // Cache the index of each encountered element
 if(useCache){(node[expando] || (node[expando] = {}))[type] = [dirruns,diff];}if(node === elem){break;}}}} // Incorporate the offset, then check against cycle size
-diff -= last;return diff === first || diff % first === 0 && diff / first >= 0;}};},"PSEUDO":function PSEUDO(pseudo,argument){ // pseudo-class names are case-insensitive
+diff -= last;return diff === first || diff % first === 0 && diff / first >= 0;}};},"PSEUDO":function(pseudo,argument){ // pseudo-class names are case-insensitive
 // http://www.w3.org/TR/selectors/#pseudo-classes
 // Prioritize by case sensitivity in case custom pseudos are added with uppercase letters
 // Remember that setFilters inherits from pseudos
@@ -27183,18 +26780,18 @@ input[0] = null;return !results.pop();};}),"has":markFunction(function(selector)
 // http://www.w3.org/TR/selectors/#lang-pseudo
 "lang":markFunction(function(lang){ // lang value must be a valid identifier
 if(!ridentifier.test(lang || "")){Sizzle.error("unsupported lang: " + lang);}lang = lang.replace(runescape,funescape).toLowerCase();return function(elem){var elemLang;do {if(elemLang = documentIsHTML?elem.lang:elem.getAttribute("xml:lang") || elem.getAttribute("lang")){elemLang = elemLang.toLowerCase();return elemLang === lang || elemLang.indexOf(lang + "-") === 0;}}while((elem = elem.parentNode) && elem.nodeType === 1);return false;};}), // Miscellaneous
-"target":function target(elem){var hash=window.location && window.location.hash;return hash && hash.slice(1) === elem.id;},"root":function root(elem){return elem === docElem;},"focus":function focus(elem){return elem === document.activeElement && (!document.hasFocus || document.hasFocus()) && !!(elem.type || elem.href || ~elem.tabIndex);}, // Boolean properties
-"enabled":function enabled(elem){return elem.disabled === false;},"disabled":function disabled(elem){return elem.disabled === true;},"checked":function checked(elem){ // In CSS3, :checked should return both checked and selected elements
+"target":function(elem){var hash=window.location && window.location.hash;return hash && hash.slice(1) === elem.id;},"root":function(elem){return elem === docElem;},"focus":function(elem){return elem === document.activeElement && (!document.hasFocus || document.hasFocus()) && !!(elem.type || elem.href || ~elem.tabIndex);}, // Boolean properties
+"enabled":function(elem){return elem.disabled === false;},"disabled":function(elem){return elem.disabled === true;},"checked":function(elem){ // In CSS3, :checked should return both checked and selected elements
 // http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
-var nodeName=elem.nodeName.toLowerCase();return nodeName === "input" && !!elem.checked || nodeName === "option" && !!elem.selected;},"selected":function selected(elem){ // Accessing this property makes selected-by-default
+var nodeName=elem.nodeName.toLowerCase();return nodeName === "input" && !!elem.checked || nodeName === "option" && !!elem.selected;},"selected":function(elem){ // Accessing this property makes selected-by-default
 // options in Safari work properly
 if(elem.parentNode){elem.parentNode.selectedIndex;}return elem.selected === true;}, // Contents
-"empty":function empty(elem){ // http://www.w3.org/TR/selectors/#empty-pseudo
+"empty":function(elem){ // http://www.w3.org/TR/selectors/#empty-pseudo
 // :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
 //   but not by others (comment: 8; processing instruction: 7; etc.)
 // nodeType < 6 works because attributes (2) do not appear as children
-for(elem = elem.firstChild;elem;elem = elem.nextSibling) {if(elem.nodeType < 6){return false;}}return true;},"parent":function parent(elem){return !Expr.pseudos["empty"](elem);}, // Element/input types
-"header":function header(elem){return rheader.test(elem.nodeName);},"input":function input(elem){return rinputs.test(elem.nodeName);},"button":function button(elem){var name=elem.nodeName.toLowerCase();return name === "input" && elem.type === "button" || name === "button";},"text":function text(elem){var attr;return elem.nodeName.toLowerCase() === "input" && elem.type === "text" && ( // Support: IE<8
+for(elem = elem.firstChild;elem;elem = elem.nextSibling) {if(elem.nodeType < 6){return false;}}return true;},"parent":function(elem){return !Expr.pseudos["empty"](elem);}, // Element/input types
+"header":function(elem){return rheader.test(elem.nodeName);},"input":function(elem){return rinputs.test(elem.nodeName);},"button":function(elem){var name=elem.nodeName.toLowerCase();return name === "input" && elem.type === "button" || name === "button";},"text":function(elem){var attr;return elem.nodeName.toLowerCase() === "input" && elem.type === "text" && ( // Support: IE<8
 // New HTML5 attribute values (e.g., "search") appear with elem.type === "text"
 (attr = elem.getAttribute("type")) == null || attr.toLowerCase() === "text");}, // Position-in-collection
 "first":createPositionalPseudo(function(){return [0];}),"last":createPositionalPseudo(function(matchIndexes,length){return [length - 1];}),"eq":createPositionalPseudo(function(matchIndexes,length,argument){return [argument < 0?argument + length:argument];}),"even":createPositionalPseudo(function(matchIndexes,length){var i=0;for(;i < length;i += 2) {matchIndexes.push(i);}return matchIndexes;}),"odd":createPositionalPseudo(function(matchIndexes,length){var i=1;for(;i < length;i += 2) {matchIndexes.push(i);}return matchIndexes;}),"lt":createPositionalPseudo(function(matchIndexes,length,argument){var i=argument < 0?argument + length:argument;for(;--i >= 0;) {matchIndexes.push(i);}return matchIndexes;}),"gt":createPositionalPseudo(function(matchIndexes,length,argument){var i=argument < 0?argument + length:argument;for(;++i < length;) {matchIndexes.push(i);}return matchIndexes;})}};Expr.pseudos["nth"] = Expr.pseudos["eq"]; // Add button/input type pseudos
@@ -27231,7 +26828,7 @@ matchContext=addCombinator(function(elem){return elem === checkContext;},implici
 checkContext = null;return ret;}];for(;i < len;i++) {if(matcher = Expr.relative[tokens[i].type]){matchers = [addCombinator(elementMatcher(matchers),matcher)];}else {matcher = Expr.filter[tokens[i].type].apply(null,tokens[i].matches); // Return special upon seeing a positional matcher
 if(matcher[expando]){ // Find the next relative operator (if any) for proper handling
 j = ++i;for(;j < len;j++) {if(Expr.relative[tokens[j].type]){break;}}return setMatcher(i > 1 && elementMatcher(matchers),i > 1 && toSelector( // If the preceding token was a descendant combinator, insert an implicit any-element `*`
-tokens.slice(0,i - 1).concat({value:tokens[i - 2].type === " "?"*":""})).replace(rtrim,"$1"),matcher,i < j && matcherFromTokens(tokens.slice(i,j)),j < len && matcherFromTokens(tokens = tokens.slice(j)),j < len && toSelector(tokens));}matchers.push(matcher);}}return elementMatcher(matchers);}function matcherFromGroupMatchers(elementMatchers,setMatchers){var bySet=setMatchers.length > 0,byElement=elementMatchers.length > 0,superMatcher=function superMatcher(seed,context,xml,results,outermost){var elem,j,matcher,matchedCount=0,i="0",unmatched=seed && [],setMatched=[],contextBackup=outermostContext, // We must always have either seed elements or outermost context
+tokens.slice(0,i - 1).concat({value:tokens[i - 2].type === " "?"*":""})).replace(rtrim,"$1"),matcher,i < j && matcherFromTokens(tokens.slice(i,j)),j < len && matcherFromTokens(tokens = tokens.slice(j)),j < len && toSelector(tokens));}matchers.push(matcher);}}return elementMatcher(matchers);}function matcherFromGroupMatchers(elementMatchers,setMatchers){var bySet=setMatchers.length > 0,byElement=elementMatchers.length > 0,superMatcher=function(seed,context,xml,results,outermost){var elem,j,matcher,matchedCount=0,i="0",unmatched=seed && [],setMatched=[],contextBackup=outermostContext, // We must always have either seed elements or outermost context
 elems=seed || byElement && Expr.find["TAG"]("*",outermost), // Use integer dirruns iff this is the outermost matcher
 dirrunsUnique=dirruns += contextBackup == null?1:Math.random() || 0.1,len=elems.length;if(outermost){outermostContext = context !== document && context;} // Add elements passing elementMatchers directly to results
 // Keep `i` a string if there are no elements so `matchedCount` will be "00" below
@@ -27282,8 +26879,8 @@ if(!assert(function(div){div.innerHTML = "<a href='#'></a>";return div.firstChil
 if(!support.attributes || !assert(function(div){div.innerHTML = "<input/>";div.firstChild.setAttribute("value","");return div.firstChild.getAttribute("value") === "";})){addHandle("value",function(elem,name,isXML){if(!isXML && elem.nodeName.toLowerCase() === "input"){return elem.defaultValue;}});} // Support: IE<9
 // Use getAttributeNode to fetch booleans when getAttribute lies
 if(!assert(function(div){return div.getAttribute("disabled") == null;})){addHandle(booleans,function(elem,name,isXML){var val;if(!isXML){return elem[name] === true?name.toLowerCase():(val = elem.getAttributeNode(name)) && val.specified?val.value:null;}});}return Sizzle;})(window);jQuery.find = Sizzle;jQuery.expr = Sizzle.selectors;jQuery.expr[":"] = jQuery.expr.pseudos;jQuery.unique = Sizzle.uniqueSort;jQuery.text = Sizzle.getText;jQuery.isXMLDoc = Sizzle.isXML;jQuery.contains = Sizzle.contains;var rneedsContext=jQuery.expr.match.needsContext;var rsingleTag=/^<(\w+)\s*\/?>(?:<\/\1>|)$/;var risSimple=/^.[^:#\[\.,]*$/; // Implement the identical functionality for filter and not
-function winnow(elements,qualifier,not){if(jQuery.isFunction(qualifier)){return jQuery.grep(elements,function(elem,i){ /* jshint -W018 */return !!qualifier.call(elem,i,elem) !== not;});}if(qualifier.nodeType){return jQuery.grep(elements,function(elem){return elem === qualifier !== not;});}if(typeof qualifier === "string"){if(risSimple.test(qualifier)){return jQuery.filter(qualifier,elements,not);}qualifier = jQuery.filter(qualifier,elements);}return jQuery.grep(elements,function(elem){return indexOf.call(qualifier,elem) >= 0 !== not;});}jQuery.filter = function(expr,elems,not){var elem=elems[0];if(not){expr = ":not(" + expr + ")";}return elems.length === 1 && elem.nodeType === 1?jQuery.find.matchesSelector(elem,expr)?[elem]:[]:jQuery.find.matches(expr,jQuery.grep(elems,function(elem){return elem.nodeType === 1;}));};jQuery.fn.extend({find:function find(selector){var i,len=this.length,ret=[],self=this;if(typeof selector !== "string"){return this.pushStack(jQuery(selector).filter(function(){for(i = 0;i < len;i++) {if(jQuery.contains(self[i],this)){return true;}}}));}for(i = 0;i < len;i++) {jQuery.find(selector,self[i],ret);} // Needed because $( selector, context ) becomes $( context ).find( selector )
-ret = this.pushStack(len > 1?jQuery.unique(ret):ret);ret.selector = this.selector?this.selector + " " + selector:selector;return ret;},filter:function filter(selector){return this.pushStack(winnow(this,selector || [],false));},not:function not(selector){return this.pushStack(winnow(this,selector || [],true));},is:function is(selector){return !!winnow(this, // If this is a positional/relative selector, check membership in the returned set
+function winnow(elements,qualifier,not){if(jQuery.isFunction(qualifier)){return jQuery.grep(elements,function(elem,i){ /* jshint -W018 */return !!qualifier.call(elem,i,elem) !== not;});}if(qualifier.nodeType){return jQuery.grep(elements,function(elem){return elem === qualifier !== not;});}if(typeof qualifier === "string"){if(risSimple.test(qualifier)){return jQuery.filter(qualifier,elements,not);}qualifier = jQuery.filter(qualifier,elements);}return jQuery.grep(elements,function(elem){return indexOf.call(qualifier,elem) >= 0 !== not;});}jQuery.filter = function(expr,elems,not){var elem=elems[0];if(not){expr = ":not(" + expr + ")";}return elems.length === 1 && elem.nodeType === 1?jQuery.find.matchesSelector(elem,expr)?[elem]:[]:jQuery.find.matches(expr,jQuery.grep(elems,function(elem){return elem.nodeType === 1;}));};jQuery.fn.extend({find:function(selector){var i,len=this.length,ret=[],self=this;if(typeof selector !== "string"){return this.pushStack(jQuery(selector).filter(function(){for(i = 0;i < len;i++) {if(jQuery.contains(self[i],this)){return true;}}}));}for(i = 0;i < len;i++) {jQuery.find(selector,self[i],ret);} // Needed because $( selector, context ) becomes $( context ).find( selector )
+ret = this.pushStack(len > 1?jQuery.unique(ret):ret);ret.selector = this.selector?this.selector + " " + selector:selector;return ret;},filter:function(selector){return this.pushStack(winnow(this,selector || [],false));},not:function(selector){return this.pushStack(winnow(this,selector || [],true));},is:function(selector){return !!winnow(this, // If this is a positional/relative selector, check membership in the returned set
 // so $("p:first").is("p:last") won't return true for a doc with two "p".
 typeof selector === "string" && rneedsContext.test(selector)?jQuery(selector):selector || [],false).length;}}); // Initialize a jQuery object
 // A central reference to the root jQuery(document)
@@ -27314,14 +26911,14 @@ this.length = 1;this[0] = elem;}this.context = document;this.selector = selector
 selector(jQuery);}if(selector.selector !== undefined){this.selector = selector.selector;this.context = selector.context;}return jQuery.makeArray(selector,this);}; // Give the init function the jQuery prototype for later instantiation
 init.prototype = jQuery.fn; // Initialize central reference
 rootjQuery = jQuery(document);var rparentsprev=/^(?:parents|prev(?:Until|All))/, // Methods guaranteed to produce a unique set when starting from a unique set
-guaranteedUnique={children:true,contents:true,next:true,prev:true};jQuery.extend({dir:function dir(elem,_dir,until){var matched=[],truncate=until !== undefined;while((elem = elem[_dir]) && elem.nodeType !== 9) {if(elem.nodeType === 1){if(truncate && jQuery(elem).is(until)){break;}matched.push(elem);}}return matched;},sibling:function sibling(n,elem){var matched=[];for(;n;n = n.nextSibling) {if(n.nodeType === 1 && n !== elem){matched.push(n);}}return matched;}});jQuery.fn.extend({has:function has(target){var targets=jQuery(target,this),l=targets.length;return this.filter(function(){var i=0;for(;i < l;i++) {if(jQuery.contains(this,targets[i])){return true;}}});},closest:function closest(selectors,context){var cur,i=0,l=this.length,matched=[],pos=rneedsContext.test(selectors) || typeof selectors !== "string"?jQuery(selectors,context || this.context):0;for(;i < l;i++) {for(cur = this[i];cur && cur !== context;cur = cur.parentNode) { // Always skip document fragments
+guaranteedUnique={children:true,contents:true,next:true,prev:true};jQuery.extend({dir:function(elem,dir,until){var matched=[],truncate=until !== undefined;while((elem = elem[dir]) && elem.nodeType !== 9) {if(elem.nodeType === 1){if(truncate && jQuery(elem).is(until)){break;}matched.push(elem);}}return matched;},sibling:function(n,elem){var matched=[];for(;n;n = n.nextSibling) {if(n.nodeType === 1 && n !== elem){matched.push(n);}}return matched;}});jQuery.fn.extend({has:function(target){var targets=jQuery(target,this),l=targets.length;return this.filter(function(){var i=0;for(;i < l;i++) {if(jQuery.contains(this,targets[i])){return true;}}});},closest:function(selectors,context){var cur,i=0,l=this.length,matched=[],pos=rneedsContext.test(selectors) || typeof selectors !== "string"?jQuery(selectors,context || this.context):0;for(;i < l;i++) {for(cur = this[i];cur && cur !== context;cur = cur.parentNode) { // Always skip document fragments
 if(cur.nodeType < 11 && (pos?pos.index(cur) > -1: // Don't pass non-elements to Sizzle
 cur.nodeType === 1 && jQuery.find.matchesSelector(cur,selectors))){matched.push(cur);break;}}}return this.pushStack(matched.length > 1?jQuery.unique(matched):matched);}, // Determine the position of an element within the set
-index:function index(elem){ // No argument, return index in parent
+index:function(elem){ // No argument, return index in parent
 if(!elem){return this[0] && this[0].parentNode?this.first().prevAll().length:-1;} // Index in selector
 if(typeof elem === "string"){return indexOf.call(jQuery(elem),this[0]);} // Locate the position of the desired element
 return indexOf.call(this, // If it receives a jQuery object, the first element is used
-elem.jquery?elem[0]:elem);},add:function add(selector,context){return this.pushStack(jQuery.unique(jQuery.merge(this.get(),jQuery(selector,context))));},addBack:function addBack(selector){return this.add(selector == null?this.prevObject:this.prevObject.filter(selector));}});function sibling(cur,dir){while((cur = cur[dir]) && cur.nodeType !== 1) {}return cur;}jQuery.each({parent:function parent(elem){var parent=elem.parentNode;return parent && parent.nodeType !== 11?parent:null;},parents:function parents(elem){return jQuery.dir(elem,"parentNode");},parentsUntil:function parentsUntil(elem,i,until){return jQuery.dir(elem,"parentNode",until);},next:function next(elem){return sibling(elem,"nextSibling");},prev:function prev(elem){return sibling(elem,"previousSibling");},nextAll:function nextAll(elem){return jQuery.dir(elem,"nextSibling");},prevAll:function prevAll(elem){return jQuery.dir(elem,"previousSibling");},nextUntil:function nextUntil(elem,i,until){return jQuery.dir(elem,"nextSibling",until);},prevUntil:function prevUntil(elem,i,until){return jQuery.dir(elem,"previousSibling",until);},siblings:function siblings(elem){return jQuery.sibling((elem.parentNode || {}).firstChild,elem);},children:function children(elem){return jQuery.sibling(elem.firstChild);},contents:function contents(elem){return elem.contentDocument || jQuery.merge([],elem.childNodes);}},function(name,fn){jQuery.fn[name] = function(until,selector){var matched=jQuery.map(this,fn,until);if(name.slice(-5) !== "Until"){selector = until;}if(selector && typeof selector === "string"){matched = jQuery.filter(selector,matched);}if(this.length > 1){ // Remove duplicates
+elem.jquery?elem[0]:elem);},add:function(selector,context){return this.pushStack(jQuery.unique(jQuery.merge(this.get(),jQuery(selector,context))));},addBack:function(selector){return this.add(selector == null?this.prevObject:this.prevObject.filter(selector));}});function sibling(cur,dir){while((cur = cur[dir]) && cur.nodeType !== 1) {}return cur;}jQuery.each({parent:function(elem){var parent=elem.parentNode;return parent && parent.nodeType !== 11?parent:null;},parents:function(elem){return jQuery.dir(elem,"parentNode");},parentsUntil:function(elem,i,until){return jQuery.dir(elem,"parentNode",until);},next:function(elem){return sibling(elem,"nextSibling");},prev:function(elem){return sibling(elem,"previousSibling");},nextAll:function(elem){return jQuery.dir(elem,"nextSibling");},prevAll:function(elem){return jQuery.dir(elem,"previousSibling");},nextUntil:function(elem,i,until){return jQuery.dir(elem,"nextSibling",until);},prevUntil:function(elem,i,until){return jQuery.dir(elem,"previousSibling",until);},siblings:function(elem){return jQuery.sibling((elem.parentNode || {}).firstChild,elem);},children:function(elem){return jQuery.sibling(elem.firstChild);},contents:function(elem){return elem.contentDocument || jQuery.merge([],elem.childNodes);}},function(name,fn){jQuery.fn[name] = function(until,selector){var matched=jQuery.map(this,fn,until);if(name.slice(-5) !== "Until"){selector = until;}if(selector && typeof selector === "string"){matched = jQuery.filter(selector,matched);}if(this.length > 1){ // Remove duplicates
 if(!guaranteedUnique[name]){jQuery.unique(matched);} // Reverse order for parents* and prev-derivatives
 if(rparentsprev.test(name)){matched.reverse();}}return this.pushStack(matched);};});var rnotwhite=/\S+/g; // String to Object options format cache
 var optionsCache={}; // Convert String-formatted options into Object-formatted ones and store in cache
@@ -27350,53 +26947,53 @@ function createOptions(options){var object=optionsCache[options] = {};jQuery.eac
 // (we check in cache first)
 options = typeof options === "string"?optionsCache[options] || createOptions(options):jQuery.extend({},options);var  // Last fire value (for non-forgettable lists)
 memory, // Flag to know if list was already fired
-_fired, // Flag to know if list is currently firing
+fired, // Flag to know if list is currently firing
 firing, // First callback to fire (used internally by add and fireWith)
 firingStart, // End of the loop when firing
 firingLength, // Index of currently firing callback (modified by remove if needed)
 firingIndex, // Actual callback list
 list=[], // Stack of fire calls for repeatable lists
 stack=!options.once && [], // Fire callbacks
-fire=function fire(data){memory = options.memory && data;_fired = true;firingIndex = firingStart || 0;firingStart = 0;firingLength = list.length;firing = true;for(;list && firingIndex < firingLength;firingIndex++) {if(list[firingIndex].apply(data[0],data[1]) === false && options.stopOnFalse){memory = false; // To prevent further calls using add
+fire=function(data){memory = options.memory && data;fired = true;firingIndex = firingStart || 0;firingStart = 0;firingLength = list.length;firing = true;for(;list && firingIndex < firingLength;firingIndex++) {if(list[firingIndex].apply(data[0],data[1]) === false && options.stopOnFalse){memory = false; // To prevent further calls using add
 break;}}firing = false;if(list){if(stack){if(stack.length){fire(stack.shift());}}else if(memory){list = [];}else {self.disable();}}}, // Actual Callbacks object
 self={ // Add a callback or a collection of callbacks to the list
-add:function add(){if(list){ // First, we save the current length
+add:function(){if(list){ // First, we save the current length
 var start=list.length;(function add(args){jQuery.each(args,function(_,arg){var type=jQuery.type(arg);if(type === "function"){if(!options.unique || !self.has(arg)){list.push(arg);}}else if(arg && arg.length && type !== "string"){ // Inspect recursively
 add(arg);}});})(arguments); // Do we need to add the callbacks to the
 // current firing batch?
 if(firing){firingLength = list.length; // With memory, if we're not firing then
 // we should call right away
 }else if(memory){firingStart = start;fire(memory);}}return this;}, // Remove a callback from the list
-remove:function remove(){if(list){jQuery.each(arguments,function(_,arg){var index;while((index = jQuery.inArray(arg,list,index)) > -1) {list.splice(index,1); // Handle firing indexes
+remove:function(){if(list){jQuery.each(arguments,function(_,arg){var index;while((index = jQuery.inArray(arg,list,index)) > -1) {list.splice(index,1); // Handle firing indexes
 if(firing){if(index <= firingLength){firingLength--;}if(index <= firingIndex){firingIndex--;}}}});}return this;}, // Check if a given callback is in the list.
 // If no argument is given, return whether or not list has callbacks attached.
-has:function has(fn){return fn?jQuery.inArray(fn,list) > -1:!!(list && list.length);}, // Remove all callbacks from the list
-empty:function empty(){list = [];firingLength = 0;return this;}, // Have the list do nothing anymore
-disable:function disable(){list = stack = memory = undefined;return this;}, // Is it disabled?
-disabled:function disabled(){return !list;}, // Lock the list in its current state
-lock:function lock(){stack = undefined;if(!memory){self.disable();}return this;}, // Is it locked?
-locked:function locked(){return !stack;}, // Call all callbacks with the given context and arguments
-fireWith:function fireWith(context,args){if(list && (!_fired || stack)){args = args || [];args = [context,args.slice?args.slice():args];if(firing){stack.push(args);}else {fire(args);}}return this;}, // Call all the callbacks with the given arguments
-fire:function fire(){self.fireWith(this,arguments);return this;}, // To know if the callbacks have already been called at least once
-fired:function fired(){return !!_fired;}};return self;};jQuery.extend({Deferred:function Deferred(func){var tuples=[ // action, add listener, listener list, final state
-["resolve","done",jQuery.Callbacks("once memory"),"resolved"],["reject","fail",jQuery.Callbacks("once memory"),"rejected"],["notify","progress",jQuery.Callbacks("memory")]],_state="pending",_promise={state:function state(){return _state;},always:function always(){deferred.done(arguments).fail(arguments);return this;},then:function then() /* fnDone, fnFail, fnProgress */{var fns=arguments;return jQuery.Deferred(function(newDefer){jQuery.each(tuples,function(i,tuple){var fn=jQuery.isFunction(fns[i]) && fns[i]; // deferred[ done | fail | progress ] for forwarding actions to newDefer
-deferred[tuple[1]](function(){var returned=fn && fn.apply(this,arguments);if(returned && jQuery.isFunction(returned.promise)){returned.promise().done(newDefer.resolve).fail(newDefer.reject).progress(newDefer.notify);}else {newDefer[tuple[0] + "With"](this === _promise?newDefer.promise():this,fn?[returned]:arguments);}});});fns = null;}).promise();}, // Get a promise for this deferred
+has:function(fn){return fn?jQuery.inArray(fn,list) > -1:!!(list && list.length);}, // Remove all callbacks from the list
+empty:function(){list = [];firingLength = 0;return this;}, // Have the list do nothing anymore
+disable:function(){list = stack = memory = undefined;return this;}, // Is it disabled?
+disabled:function(){return !list;}, // Lock the list in its current state
+lock:function(){stack = undefined;if(!memory){self.disable();}return this;}, // Is it locked?
+locked:function(){return !stack;}, // Call all callbacks with the given context and arguments
+fireWith:function(context,args){if(list && (!fired || stack)){args = args || [];args = [context,args.slice?args.slice():args];if(firing){stack.push(args);}else {fire(args);}}return this;}, // Call all the callbacks with the given arguments
+fire:function(){self.fireWith(this,arguments);return this;}, // To know if the callbacks have already been called at least once
+fired:function(){return !!fired;}};return self;};jQuery.extend({Deferred:function(func){var tuples=[ // action, add listener, listener list, final state
+["resolve","done",jQuery.Callbacks("once memory"),"resolved"],["reject","fail",jQuery.Callbacks("once memory"),"rejected"],["notify","progress",jQuery.Callbacks("memory")]],state="pending",promise={state:function(){return state;},always:function(){deferred.done(arguments).fail(arguments);return this;},then:function() /* fnDone, fnFail, fnProgress */{var fns=arguments;return jQuery.Deferred(function(newDefer){jQuery.each(tuples,function(i,tuple){var fn=jQuery.isFunction(fns[i]) && fns[i]; // deferred[ done | fail | progress ] for forwarding actions to newDefer
+deferred[tuple[1]](function(){var returned=fn && fn.apply(this,arguments);if(returned && jQuery.isFunction(returned.promise)){returned.promise().done(newDefer.resolve).fail(newDefer.reject).progress(newDefer.notify);}else {newDefer[tuple[0] + "With"](this === promise?newDefer.promise():this,fn?[returned]:arguments);}});});fns = null;}).promise();}, // Get a promise for this deferred
 // If obj is provided, the promise aspect is added to the object
-promise:function promise(obj){return obj != null?jQuery.extend(obj,_promise):_promise;}},deferred={}; // Keep pipe for back-compat
-_promise.pipe = _promise.then; // Add list-specific methods
+promise:function(obj){return obj != null?jQuery.extend(obj,promise):promise;}},deferred={}; // Keep pipe for back-compat
+promise.pipe = promise.then; // Add list-specific methods
 jQuery.each(tuples,function(i,tuple){var list=tuple[2],stateString=tuple[3]; // promise[ done | fail | progress ] = list.add
-_promise[tuple[1]] = list.add; // Handle state
+promise[tuple[1]] = list.add; // Handle state
 if(stateString){list.add(function(){ // state = [ resolved | rejected ]
-_state = stateString; // [ reject_list | resolve_list ].disable; progress_list.lock
+state = stateString; // [ reject_list | resolve_list ].disable; progress_list.lock
 },tuples[i ^ 1][2].disable,tuples[2][2].lock);} // deferred[ resolve | reject | notify ]
-deferred[tuple[0]] = function(){deferred[tuple[0] + "With"](this === deferred?_promise:this,arguments);return this;};deferred[tuple[0] + "With"] = list.fireWith;}); // Make the deferred a promise
-_promise.promise(deferred); // Call given func if any
+deferred[tuple[0]] = function(){deferred[tuple[0] + "With"](this === deferred?promise:this,arguments);return this;};deferred[tuple[0] + "With"] = list.fireWith;}); // Make the deferred a promise
+promise.promise(deferred); // Call given func if any
 if(func){func.call(deferred,deferred);} // All done!
 return deferred;}, // Deferred helper
-when:function when(subordinate /* , ..., subordinateN */){var i=0,resolveValues=_slice.call(arguments),length=resolveValues.length, // the count of uncompleted subordinates
+when:function(subordinate /* , ..., subordinateN */){var i=0,resolveValues=slice.call(arguments),length=resolveValues.length, // the count of uncompleted subordinates
 remaining=length !== 1 || subordinate && jQuery.isFunction(subordinate.promise)?length:0, // the master Deferred. If resolveValues consist of only a single Deferred, just use that.
 deferred=remaining === 1?subordinate:jQuery.Deferred(), // Update function for both resolve and progress values
-updateFunc=function updateFunc(i,contexts,values){return function(value){contexts[i] = this;values[i] = arguments.length > 1?_slice.call(arguments):value;if(values === progressValues){deferred.notifyWith(contexts,values);}else if(! --remaining){deferred.resolveWith(contexts,values);}};},progressValues,progressContexts,resolveContexts; // Add listeners to Deferred subordinates; treat others as resolved
+updateFunc=function(i,contexts,values){return function(value){contexts[i] = this;values[i] = arguments.length > 1?slice.call(arguments):value;if(values === progressValues){deferred.notifyWith(contexts,values);}else if(! --remaining){deferred.resolveWith(contexts,values);}};},progressValues,progressContexts,resolveContexts; // Add listeners to Deferred subordinates; treat others as resolved
 if(length > 1){progressValues = new Array(length);progressContexts = new Array(length);resolveContexts = new Array(length);for(;i < length;i++) {if(resolveValues[i] && jQuery.isFunction(resolveValues[i].promise)){resolveValues[i].promise().done(updateFunc(i,resolveContexts,resolveValues)).fail(deferred.reject).progress(updateFunc(i,progressContexts,progressValues));}else {--remaining;}}} // If we're not waiting on anything, resolve the master
 if(!remaining){deferred.resolveWith(resolveContexts,resolveValues);}return deferred.promise();}}); // The deferred used on DOM ready
 var readyList;jQuery.fn.ready = function(fn){ // Add the callback
@@ -27404,8 +27001,8 @@ jQuery.ready.promise().done(fn);return this;};jQuery.extend({ // Is the DOM read
 isReady:false, // A counter to track how many items to wait for before
 // the ready event fires. See #6781
 readyWait:1, // Hold (or release) the ready event
-holdReady:function holdReady(hold){if(hold){jQuery.readyWait++;}else {jQuery.ready(true);}}, // Handle when the DOM is ready
-ready:function ready(wait){ // Abort if there are pending holds or we're already ready
+holdReady:function(hold){if(hold){jQuery.readyWait++;}else {jQuery.ready(true);}}, // Handle when the DOM is ready
+ready:function(wait){ // Abort if there are pending holds or we're already ready
 if(wait === true?--jQuery.readyWait:jQuery.isReady){return;} // Remember that the DOM is ready
 jQuery.isReady = true; // If a normal DOM Ready event fired, decrement, and wait if need be
 if(wait !== true && --jQuery.readyWait > 0){return;} // If there are functions bound, to execute
@@ -27437,7 +27034,7 @@ bulk?fn.call(elems):len?fn(elems[0],key):emptyGet;}; /**
 /* jshint -W018 */return owner.nodeType === 1 || owner.nodeType === 9 || ! +owner.nodeType;};function Data(){ // Support: Android<4,
 // Old WebKit does not have Object.preventExtensions/freeze method,
 // return new empty object instead with no [[set]] accessor
-Object.defineProperty(this.cache = {},0,{get:function get(){return {};}});this.expando = jQuery.expando + Data.uid++;}Data.uid = 1;Data.accepts = jQuery.acceptData;Data.prototype = {key:function key(owner){ // We can accept data for non-element nodes in modern browsers,
+Object.defineProperty(this.cache = {},0,{get:function(){return {};}});this.expando = jQuery.expando + Data.uid++;}Data.uid = 1;Data.accepts = jQuery.acceptData;Data.prototype = {key:function(owner){ // We can accept data for non-element nodes in modern browsers,
 // but we should not, see #8335.
 // Always return the key for a frozen object.
 if(!Data.accepts(owner)){return 0;}var descriptor={}, // Check if the owner object already has a cache key
@@ -27446,18 +27043,18 @@ if(!unlock){unlock = Data.uid++; // Secure it in a non-enumerable, non-writable 
 try{descriptor[this.expando] = {value:unlock};Object.defineProperties(owner,descriptor); // Support: Android<4
 // Fallback to a less secure definition
 }catch(e) {descriptor[this.expando] = unlock;jQuery.extend(owner,descriptor);}} // Ensure the cache object
-if(!this.cache[unlock]){this.cache[unlock] = {};}return unlock;},set:function set(owner,data,value){var prop, // There may be an unlock assigned to this node,
+if(!this.cache[unlock]){this.cache[unlock] = {};}return unlock;},set:function(owner,data,value){var prop, // There may be an unlock assigned to this node,
 // if there is no entry for this "owner", create one inline
 // and set the unlock as though an owner entry had always existed
 unlock=this.key(owner),cache=this.cache[unlock]; // Handle: [ owner, key, value ] args
 if(typeof data === "string"){cache[data] = value; // Handle: [ owner, { properties } ] args
 }else { // Fresh assignments by object are shallow copied
 if(jQuery.isEmptyObject(cache)){jQuery.extend(this.cache[unlock],data); // Otherwise, copy the properties one-by-one to the cache object
-}else {for(prop in data) {cache[prop] = data[prop];}}}return cache;},get:function get(owner,key){ // Either a valid cache is found, or will be created.
+}else {for(prop in data) {cache[prop] = data[prop];}}}return cache;},get:function(owner,key){ // Either a valid cache is found, or will be created.
 // New caches will be created and the unlock returned,
 // allowing direct access to the newly created
 // empty data object. A valid owner object must be provided.
-var cache=this.cache[this.key(owner)];return key === undefined?cache:cache[key];},access:function access(owner,key,value){var stored; // In cases where either:
+var cache=this.cache[this.key(owner)];return key === undefined?cache:cache[key];},access:function(owner,key,value){var stored; // In cases where either:
 //
 //   1. No key was specified
 //   2. A string key was specified, but no value provided
@@ -27476,7 +27073,7 @@ if(key === undefined || key && typeof key === "string" && value === undefined){s
 //
 this.set(owner,key,value); // Since the "set" path can have two possible entry points
 // return the expected data based on which path was taken[*]
-return value !== undefined?value:key;},remove:function remove(owner,key){var i,name,camel,unlock=this.key(owner),cache=this.cache[unlock];if(key === undefined){this.cache[unlock] = {};}else { // Support array or space separated string of keys
+return value !== undefined?value:key;},remove:function(owner,key){var i,name,camel,unlock=this.key(owner),cache=this.cache[unlock];if(key === undefined){this.cache[unlock] = {};}else { // Support array or space separated string of keys
 if(jQuery.isArray(key)){ // If "name" is an array of keys...
 // When data is initially created, via ("key", "val") signature,
 // keys will be converted to camelCase.
@@ -27486,7 +27083,7 @@ if(jQuery.isArray(key)){ // If "name" is an array of keys...
 name = key.concat(key.map(jQuery.camelCase));}else {camel = jQuery.camelCase(key); // Try the string as a key before any manipulation
 if(key in cache){name = [key,camel];}else { // If a key with the spaces exists, use it.
 // Otherwise, create an array by matching non-whitespace
-name = camel;name = name in cache?[name]:name.match(rnotwhite) || [];}}i = name.length;while(i--) {delete cache[name[i]];}}},hasData:function hasData(owner){return !jQuery.isEmptyObject(this.cache[owner[this.expando]] || {});},discard:function discard(owner){if(owner[this.expando]){delete this.cache[owner[this.expando]];}}};var data_priv=new Data();var data_user=new Data(); //	Implementation Summary
+name = camel;name = name in cache?[name]:name.match(rnotwhite) || [];}}i = name.length;while(i--) {delete cache[name[i]];}}},hasData:function(owner){return !jQuery.isEmptyObject(this.cache[owner[this.expando]] || {});},discard:function(owner){if(owner[this.expando]){delete this.cache[owner[this.expando]];}}};var data_priv=new Data();var data_user=new Data(); //	Implementation Summary
 //
 //	1. Enforce API surface and semantic compatibility with 1.9.x branch
 //	2. Improve the module's maintainability by reducing the storage
@@ -27499,9 +27096,9 @@ var rbrace=/^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,rmultiDash=/([A-Z])/g;function dataAt
 // data from the HTML5 data-* attribute
 if(data === undefined && elem.nodeType === 1){name = "data-" + key.replace(rmultiDash,"-$1").toLowerCase();data = elem.getAttribute(name);if(typeof data === "string"){try{data = data === "true"?true:data === "false"?false:data === "null"?null: // Only convert to a number if it doesn't change the string
 +data + "" === data?+data:rbrace.test(data)?jQuery.parseJSON(data):data;}catch(e) {} // Make sure we set the data so it isn't changed later
-data_user.set(elem,key,data);}else {data = undefined;}}return data;}jQuery.extend({hasData:function hasData(elem){return data_user.hasData(elem) || data_priv.hasData(elem);},data:function data(elem,name,_data){return data_user.access(elem,name,_data);},removeData:function removeData(elem,name){data_user.remove(elem,name);}, // TODO: Now that all calls to _data and _removeData have been replaced
+data_user.set(elem,key,data);}else {data = undefined;}}return data;}jQuery.extend({hasData:function(elem){return data_user.hasData(elem) || data_priv.hasData(elem);},data:function(elem,name,data){return data_user.access(elem,name,data);},removeData:function(elem,name){data_user.remove(elem,name);}, // TODO: Now that all calls to _data and _removeData have been replaced
 // with direct calls to data_priv methods, these can be deprecated.
-_data:function _data(elem,name,data){return data_priv.access(elem,name,data);},_removeData:function _removeData(elem,name){data_priv.remove(elem,name);}});jQuery.fn.extend({data:function data(key,value){var i,name,data,elem=this[0],attrs=elem && elem.attributes; // Gets all values
+_data:function(elem,name,data){return data_priv.access(elem,name,data);},_removeData:function(elem,name){data_priv.remove(elem,name);}});jQuery.fn.extend({data:function(key,value){var i,name,data,elem=this[0],attrs=elem && elem.attributes; // Gets all values
 if(key === undefined){if(this.length){data = data_user.get(elem);if(elem.nodeType === 1 && !data_priv.get(elem,"hasDataAttrs")){i = attrs.length;while(i--) { // Support: IE11+
 // The attrs elements can be null (#14894)
 if(attrs[i]){name = attrs[i].name;if(name.indexOf("data-") === 0){name = jQuery.camelCase(name.slice(5));dataAttr(elem,name,data[name]);}}}data_priv.set(elem,"hasDataAttrs",true);}}return data;} // Sets multiple values
@@ -27526,16 +27123,16 @@ var data=data_user.get(this,camelKey); // For HTML5 data-* attribute interop, we
 data_user.set(this,camelKey,value); // *... In the case of properties that might _actually_
 // have dashes, we need to also store a copy of that
 // unchanged property.
-if(key.indexOf("-") !== -1 && data !== undefined){data_user.set(this,key,value);}});},null,value,arguments.length > 1,null,true);},removeData:function removeData(key){return this.each(function(){data_user.remove(this,key);});}});jQuery.extend({queue:function queue(elem,type,data){var queue;if(elem){type = (type || "fx") + "queue";queue = data_priv.get(elem,type); // Speed up dequeue by getting out quickly if this is just a lookup
-if(data){if(!queue || jQuery.isArray(data)){queue = data_priv.access(elem,type,jQuery.makeArray(data));}else {queue.push(data);}}return queue || [];}},dequeue:function dequeue(elem,type){type = type || "fx";var queue=jQuery.queue(elem,type),startLength=queue.length,fn=queue.shift(),hooks=jQuery._queueHooks(elem,type),next=function next(){jQuery.dequeue(elem,type);}; // If the fx queue is dequeued, always remove the progress sentinel
+if(key.indexOf("-") !== -1 && data !== undefined){data_user.set(this,key,value);}});},null,value,arguments.length > 1,null,true);},removeData:function(key){return this.each(function(){data_user.remove(this,key);});}});jQuery.extend({queue:function(elem,type,data){var queue;if(elem){type = (type || "fx") + "queue";queue = data_priv.get(elem,type); // Speed up dequeue by getting out quickly if this is just a lookup
+if(data){if(!queue || jQuery.isArray(data)){queue = data_priv.access(elem,type,jQuery.makeArray(data));}else {queue.push(data);}}return queue || [];}},dequeue:function(elem,type){type = type || "fx";var queue=jQuery.queue(elem,type),startLength=queue.length,fn=queue.shift(),hooks=jQuery._queueHooks(elem,type),next=function(){jQuery.dequeue(elem,type);}; // If the fx queue is dequeued, always remove the progress sentinel
 if(fn === "inprogress"){fn = queue.shift();startLength--;}if(fn){ // Add a progress sentinel to prevent the fx queue from being
 // automatically dequeued
 if(type === "fx"){queue.unshift("inprogress");} // Clear up the last queue stop function
 delete hooks.stop;fn.call(elem,next,hooks);}if(!startLength && hooks){hooks.empty.fire();}}, // Not public - generate a queueHooks object, or return the current one
-_queueHooks:function _queueHooks(elem,type){var key=type + "queueHooks";return data_priv.get(elem,key) || data_priv.access(elem,key,{empty:jQuery.Callbacks("once memory").add(function(){data_priv.remove(elem,[type + "queue",key]);})});}});jQuery.fn.extend({queue:function queue(type,data){var setter=2;if(typeof type !== "string"){data = type;type = "fx";setter--;}if(arguments.length < setter){return jQuery.queue(this[0],type);}return data === undefined?this:this.each(function(){var queue=jQuery.queue(this,type,data); // Ensure a hooks for this queue
-jQuery._queueHooks(this,type);if(type === "fx" && queue[0] !== "inprogress"){jQuery.dequeue(this,type);}});},dequeue:function dequeue(type){return this.each(function(){jQuery.dequeue(this,type);});},clearQueue:function clearQueue(type){return this.queue(type || "fx",[]);}, // Get a promise resolved when queues of a certain type
+_queueHooks:function(elem,type){var key=type + "queueHooks";return data_priv.get(elem,key) || data_priv.access(elem,key,{empty:jQuery.Callbacks("once memory").add(function(){data_priv.remove(elem,[type + "queue",key]);})});}});jQuery.fn.extend({queue:function(type,data){var setter=2;if(typeof type !== "string"){data = type;type = "fx";setter--;}if(arguments.length < setter){return jQuery.queue(this[0],type);}return data === undefined?this:this.each(function(){var queue=jQuery.queue(this,type,data); // Ensure a hooks for this queue
+jQuery._queueHooks(this,type);if(type === "fx" && queue[0] !== "inprogress"){jQuery.dequeue(this,type);}});},dequeue:function(type){return this.each(function(){jQuery.dequeue(this,type);});},clearQueue:function(type){return this.queue(type || "fx",[]);}, // Get a promise resolved when queues of a certain type
 // are emptied (fx is the type by default)
-promise:function promise(type,obj){var tmp,count=1,defer=jQuery.Deferred(),elements=this,i=this.length,resolve=function resolve(){if(! --count){defer.resolveWith(elements,[elements]);}};if(typeof type !== "string"){obj = type;type = undefined;}type = type || "fx";while(i--) {tmp = data_priv.get(elements[i],type + "queueHooks");if(tmp && tmp.empty){count++;tmp.empty.add(resolve);}}resolve();return defer.promise(obj);}});var pnum=/[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/.source;var cssExpand=["Top","Right","Bottom","Left"];var isHidden=function isHidden(elem,el){ // isHidden might be called from jQuery#filter function;
+promise:function(type,obj){var tmp,count=1,defer=jQuery.Deferred(),elements=this,i=this.length,resolve=function(){if(! --count){defer.resolveWith(elements,[elements]);}};if(typeof type !== "string"){obj = type;type = undefined;}type = type || "fx";while(i--) {tmp = data_priv.get(elements[i],type + "queueHooks");if(tmp && tmp.empty){count++;tmp.empty.add(resolve);}}resolve();return defer.promise(obj);}});var pnum=/[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/.source;var cssExpand=["Top","Right","Bottom","Left"];var isHidden=function(elem,el){ // isHidden might be called from jQuery#filter function;
 // in that case, element will be second argument
 elem = el || elem;return jQuery.css(elem,"display") === "none" || !jQuery.contains(elem.ownerDocument,elem);};var rcheckableType=/^(?:checkbox|radio)$/i;(function(){var fragment=document.createDocumentFragment(),div=fragment.appendChild(document.createElement("div")),input=document.createElement("input"); // Support: Safari<=5.1
 // Check state lost if the name is set (#11217)
@@ -27548,7 +27145,7 @@ support.checkClone = div.cloneNode(true).cloneNode(true).lastChild.checked; // S
 div.innerHTML = "<textarea>x</textarea>";support.noCloneChecked = !!div.cloneNode(true).lastChild.defaultValue;})();var strundefined=typeof undefined;support.focusinBubbles = "onfocusin" in window;var rkeyEvent=/^key/,rmouseEvent=/^(?:mouse|pointer|contextmenu)|click/,rfocusMorph=/^(?:focusinfocus|focusoutblur)$/,rtypenamespace=/^([^.]*)(?:\.(.+)|)$/;function returnTrue(){return true;}function returnFalse(){return false;}function safeActiveElement(){try{return document.activeElement;}catch(err) {}} /*
  * Helper functions for managing events -- not part of the public interface.
  * Props to Dean Edwards' addEvent library for many of the ideas.
- */jQuery.event = {global:{},add:function add(elem,types,handler,data,selector){var handleObjIn,eventHandle,tmp,events,t,handleObj,special,handlers,type,namespaces,origType,elemData=data_priv.get(elem); // Don't attach events to noData or text/comment nodes (but allow plain objects)
+ */jQuery.event = {global:{},add:function(elem,types,handler,data,selector){var handleObjIn,eventHandle,tmp,events,t,handleObj,special,handlers,type,namespaces,origType,elemData=data_priv.get(elem); // Don't attach events to noData or text/comment nodes (but allow plain objects)
 if(!elemData){return;} // Caller can pass in an object of custom data in lieu of the handler
 if(handler.handler){handleObjIn = handler;handler = handleObjIn.handler;selector = handleObjIn.selector;} // Make sure that the handler has a unique ID, used to find/remove it later
 if(!handler.guid){handler.guid = jQuery.guid++;} // Init the element's event structure and main handler, if this is the first
@@ -27565,13 +27162,13 @@ if(!(handlers = events[type])){handlers = events[type] = [];handlers.delegateCou
 if(!special.setup || special.setup.call(elem,data,namespaces,eventHandle) === false){if(elem.addEventListener){elem.addEventListener(type,eventHandle,false);}}}if(special.add){special.add.call(elem,handleObj);if(!handleObj.handler.guid){handleObj.handler.guid = handler.guid;}} // Add to the element's handler list, delegates in front
 if(selector){handlers.splice(handlers.delegateCount++,0,handleObj);}else {handlers.push(handleObj);} // Keep track of which events have ever been used, for event optimization
 jQuery.event.global[type] = true;}}, // Detach an event or set of events from an element
-remove:function remove(elem,types,handler,selector,mappedTypes){var j,origCount,tmp,events,t,handleObj,special,handlers,type,namespaces,origType,elemData=data_priv.hasData(elem) && data_priv.get(elem);if(!elemData || !(events = elemData.events)){return;} // Once for each type.namespace in types; type may be omitted
+remove:function(elem,types,handler,selector,mappedTypes){var j,origCount,tmp,events,t,handleObj,special,handlers,type,namespaces,origType,elemData=data_priv.hasData(elem) && data_priv.get(elem);if(!elemData || !(events = elemData.events)){return;} // Once for each type.namespace in types; type may be omitted
 types = (types || "").match(rnotwhite) || [""];t = types.length;while(t--) {tmp = rtypenamespace.exec(types[t]) || [];type = origType = tmp[1];namespaces = (tmp[2] || "").split(".").sort(); // Unbind all events (on this namespace, if provided) for the element
 if(!type){for(type in events) {jQuery.event.remove(elem,type + types[t],handler,selector,true);}continue;}special = jQuery.event.special[type] || {};type = (selector?special.delegateType:special.bindType) || type;handlers = events[type] || [];tmp = tmp[2] && new RegExp("(^|\\.)" + namespaces.join("\\.(?:.*\\.|)") + "(\\.|$)"); // Remove matching events
 origCount = j = handlers.length;while(j--) {handleObj = handlers[j];if((mappedTypes || origType === handleObj.origType) && (!handler || handler.guid === handleObj.guid) && (!tmp || tmp.test(handleObj.namespace)) && (!selector || selector === handleObj.selector || selector === "**" && handleObj.selector)){handlers.splice(j,1);if(handleObj.selector){handlers.delegateCount--;}if(special.remove){special.remove.call(elem,handleObj);}}} // Remove generic event handler if we removed something and no more handlers exist
 // (avoids potential for endless recursion during removal of special event handlers)
 if(origCount && !handlers.length){if(!special.teardown || special.teardown.call(elem,namespaces,elemData.handle) === false){jQuery.removeEvent(elem,type,elemData.handle);}delete events[type];}} // Remove the expando if it's no longer used
-if(jQuery.isEmptyObject(events)){delete elemData.handle;data_priv.remove(elem,"events");}},trigger:function trigger(event,data,elem,onlyHandlers){var i,cur,tmp,bubbleType,ontype,handle,special,eventPath=[elem || document],type=hasOwn.call(event,"type")?event.type:event,namespaces=hasOwn.call(event,"namespace")?event.namespace.split("."):[];cur = tmp = elem = elem || document; // Don't do events on text and comment nodes
+if(jQuery.isEmptyObject(events)){delete elemData.handle;data_priv.remove(elem,"events");}},trigger:function(event,data,elem,onlyHandlers){var i,cur,tmp,bubbleType,ontype,handle,special,eventPath=[elem || document],type=hasOwn.call(event,"type")?event.type:event,namespaces=hasOwn.call(event,"namespace")?event.namespace.split("."):[];cur = tmp = elem = elem || document; // Don't do events on text and comment nodes
 if(elem.nodeType === 3 || elem.nodeType === 8){return;} // focus/blur morphs to focusin/out; ensure we're not firing them right now
 if(rfocusMorph.test(type + jQuery.event.triggered)){return;}if(type.indexOf(".") >= 0){ // Namespaced trigger; create a regexp to match event type in handle()
 namespaces = type.split(".");type = namespaces.shift();namespaces.sort();}ontype = type.indexOf(":") < 0 && "on" + type; // Caller can pass in a jQuery.Event object, Object, or just an event type string
@@ -27590,37 +27187,37 @@ if(!onlyHandlers && !event.isDefaultPrevented()){if((!special._default || specia
 // Don't do default actions on window, that's where global variables be (#6170)
 if(ontype && jQuery.isFunction(elem[type]) && !jQuery.isWindow(elem)){ // Don't re-trigger an onFOO event when we call its FOO() method
 tmp = elem[ontype];if(tmp){elem[ontype] = null;} // Prevent re-triggering of the same event, since we already bubbled it above
-jQuery.event.triggered = type;elem[type]();jQuery.event.triggered = undefined;if(tmp){elem[ontype] = tmp;}}}}return event.result;},dispatch:function dispatch(event){ // Make a writable jQuery.Event from the native event object
-event = jQuery.event.fix(event);var i,j,ret,matched,handleObj,handlerQueue=[],args=_slice.call(arguments),handlers=(data_priv.get(this,"events") || {})[event.type] || [],special=jQuery.event.special[event.type] || {}; // Use the fix-ed jQuery.Event rather than the (read-only) native event
+jQuery.event.triggered = type;elem[type]();jQuery.event.triggered = undefined;if(tmp){elem[ontype] = tmp;}}}}return event.result;},dispatch:function(event){ // Make a writable jQuery.Event from the native event object
+event = jQuery.event.fix(event);var i,j,ret,matched,handleObj,handlerQueue=[],args=slice.call(arguments),handlers=(data_priv.get(this,"events") || {})[event.type] || [],special=jQuery.event.special[event.type] || {}; // Use the fix-ed jQuery.Event rather than the (read-only) native event
 args[0] = event;event.delegateTarget = this; // Call the preDispatch hook for the mapped type, and let it bail if desired
 if(special.preDispatch && special.preDispatch.call(this,event) === false){return;} // Determine handlers
 handlerQueue = jQuery.event.handlers.call(this,event,handlers); // Run delegates first; they may want to stop propagation beneath us
 i = 0;while((matched = handlerQueue[i++]) && !event.isPropagationStopped()) {event.currentTarget = matched.elem;j = 0;while((handleObj = matched.handlers[j++]) && !event.isImmediatePropagationStopped()) { // Triggered event must either 1) have no namespace, or 2) have namespace(s)
 // a subset or equal to those in the bound event (both can have no namespace).
 if(!event.namespace_re || event.namespace_re.test(handleObj.namespace)){event.handleObj = handleObj;event.data = handleObj.data;ret = ((jQuery.event.special[handleObj.origType] || {}).handle || handleObj.handler).apply(matched.elem,args);if(ret !== undefined){if((event.result = ret) === false){event.preventDefault();event.stopPropagation();}}}}} // Call the postDispatch hook for the mapped type
-if(special.postDispatch){special.postDispatch.call(this,event);}return event.result;},handlers:function handlers(event,_handlers){var i,matches,sel,handleObj,handlerQueue=[],delegateCount=_handlers.delegateCount,cur=event.target; // Find delegate handlers
+if(special.postDispatch){special.postDispatch.call(this,event);}return event.result;},handlers:function(event,handlers){var i,matches,sel,handleObj,handlerQueue=[],delegateCount=handlers.delegateCount,cur=event.target; // Find delegate handlers
 // Black-hole SVG <use> instance trees (#13180)
 // Avoid non-left-click bubbling in Firefox (#3861)
 if(delegateCount && cur.nodeType && (!event.button || event.type !== "click")){for(;cur !== this;cur = cur.parentNode || this) { // Don't process clicks on disabled elements (#6911, #8165, #11382, #11764)
-if(cur.disabled !== true || event.type !== "click"){matches = [];for(i = 0;i < delegateCount;i++) {handleObj = _handlers[i]; // Don't conflict with Object.prototype properties (#13203)
+if(cur.disabled !== true || event.type !== "click"){matches = [];for(i = 0;i < delegateCount;i++) {handleObj = handlers[i]; // Don't conflict with Object.prototype properties (#13203)
 sel = handleObj.selector + " ";if(matches[sel] === undefined){matches[sel] = handleObj.needsContext?jQuery(sel,this).index(cur) >= 0:jQuery.find(sel,this,null,[cur]).length;}if(matches[sel]){matches.push(handleObj);}}if(matches.length){handlerQueue.push({elem:cur,handlers:matches});}}}} // Add the remaining (directly-bound) handlers
-if(delegateCount < _handlers.length){handlerQueue.push({elem:this,handlers:_handlers.slice(delegateCount)});}return handlerQueue;}, // Includes some event props shared by KeyEvent and MouseEvent
-props:"altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which".split(" "),fixHooks:{},keyHooks:{props:"char charCode key keyCode".split(" "),filter:function filter(event,original){ // Add which for key events
-if(event.which == null){event.which = original.charCode != null?original.charCode:original.keyCode;}return event;}},mouseHooks:{props:"button buttons clientX clientY offsetX offsetY pageX pageY screenX screenY toElement".split(" "),filter:function filter(event,original){var eventDoc,doc,body,button=original.button; // Calculate pageX/Y if missing and clientX/Y available
+if(delegateCount < handlers.length){handlerQueue.push({elem:this,handlers:handlers.slice(delegateCount)});}return handlerQueue;}, // Includes some event props shared by KeyEvent and MouseEvent
+props:"altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which".split(" "),fixHooks:{},keyHooks:{props:"char charCode key keyCode".split(" "),filter:function(event,original){ // Add which for key events
+if(event.which == null){event.which = original.charCode != null?original.charCode:original.keyCode;}return event;}},mouseHooks:{props:"button buttons clientX clientY offsetX offsetY pageX pageY screenX screenY toElement".split(" "),filter:function(event,original){var eventDoc,doc,body,button=original.button; // Calculate pageX/Y if missing and clientX/Y available
 if(event.pageX == null && original.clientX != null){eventDoc = event.target.ownerDocument || document;doc = eventDoc.documentElement;body = eventDoc.body;event.pageX = original.clientX + (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);event.pageY = original.clientY + (doc && doc.scrollTop || body && body.scrollTop || 0) - (doc && doc.clientTop || body && body.clientTop || 0);} // Add which for click: 1 === left; 2 === middle; 3 === right
 // Note: button is not normalized, so don't use it
-if(!event.which && button !== undefined){event.which = button & 1?1:button & 2?3:button & 4?2:0;}return event;}},fix:function fix(event){if(event[jQuery.expando]){return event;} // Create a writable copy of the event object and normalize some properties
+if(!event.which && button !== undefined){event.which = button & 1?1:button & 2?3:button & 4?2:0;}return event;}},fix:function(event){if(event[jQuery.expando]){return event;} // Create a writable copy of the event object and normalize some properties
 var i,prop,copy,type=event.type,originalEvent=event,fixHook=this.fixHooks[type];if(!fixHook){this.fixHooks[type] = fixHook = rmouseEvent.test(type)?this.mouseHooks:rkeyEvent.test(type)?this.keyHooks:{};}copy = fixHook.props?this.props.concat(fixHook.props):this.props;event = new jQuery.Event(originalEvent);i = copy.length;while(i--) {prop = copy[i];event[prop] = originalEvent[prop];} // Support: Cordova 2.5 (WebKit) (#13255)
 // All events should have a target; Cordova deviceready doesn't
 if(!event.target){event.target = document;} // Support: Safari 6.0+, Chrome<28
 // Target should not be a text node (#504, #13143)
 if(event.target.nodeType === 3){event.target = event.target.parentNode;}return fixHook.filter?fixHook.filter(event,originalEvent):event;},special:{load:{ // Prevent triggered image.load events from bubbling to window.load
 noBubble:true},focus:{ // Fire native event if possible so blur/focus sequence is correct
-trigger:function trigger(){if(this !== safeActiveElement() && this.focus){this.focus();return false;}},delegateType:"focusin"},blur:{trigger:function trigger(){if(this === safeActiveElement() && this.blur){this.blur();return false;}},delegateType:"focusout"},click:{ // For checkbox, fire native event so checked state will be right
-trigger:function trigger(){if(this.type === "checkbox" && this.click && jQuery.nodeName(this,"input")){this.click();return false;}}, // For cross-browser consistency, don't fire native .click() on links
-_default:function _default(event){return jQuery.nodeName(event.target,"a");}},beforeunload:{postDispatch:function postDispatch(event){ // Support: Firefox 20+
+trigger:function(){if(this !== safeActiveElement() && this.focus){this.focus();return false;}},delegateType:"focusin"},blur:{trigger:function(){if(this === safeActiveElement() && this.blur){this.blur();return false;}},delegateType:"focusout"},click:{ // For checkbox, fire native event so checked state will be right
+trigger:function(){if(this.type === "checkbox" && this.click && jQuery.nodeName(this,"input")){this.click();return false;}}, // For cross-browser consistency, don't fire native .click() on links
+_default:function(event){return jQuery.nodeName(event.target,"a");}},beforeunload:{postDispatch:function(event){ // Support: Firefox 20+
 // Firefox doesn't alert if the returnValue field is not set.
-if(event.result !== undefined && event.originalEvent){event.originalEvent.returnValue = event.result;}}}},simulate:function simulate(type,elem,event,bubble){ // Piggyback on a donor event to simulate a different one.
+if(event.result !== undefined && event.originalEvent){event.originalEvent.returnValue = event.result;}}}},simulate:function(type,elem,event,bubble){ // Piggyback on a donor event to simulate a different one.
 // Fake originalEvent to avoid donor's stopPropagation, but if the
 // simulated event prevents default then we do the same on the donor.
 var e=jQuery.extend(new jQuery.Event(),event,{type:type,isSimulated:true,originalEvent:{}});if(bubble){jQuery.event.trigger(e,null,elem);}else {jQuery.event.dispatch.call(elem,e);}if(e.isDefaultPrevented()){event.preventDefault();}}};jQuery.removeEvent = function(elem,type,handle){if(elem.removeEventListener){elem.removeEventListener(type,handle,false);}};jQuery.Event = function(src,props){ // Allow instantiation without the 'new' keyword
@@ -27634,14 +27231,14 @@ if(props){jQuery.extend(this,props);} // Create a timestamp if incoming event do
 this.timeStamp = src && src.timeStamp || jQuery.now(); // Mark it as fixed
 this[jQuery.expando] = true;}; // jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
 // http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
-jQuery.Event.prototype = {isDefaultPrevented:returnFalse,isPropagationStopped:returnFalse,isImmediatePropagationStopped:returnFalse,preventDefault:function preventDefault(){var e=this.originalEvent;this.isDefaultPrevented = returnTrue;if(e && e.preventDefault){e.preventDefault();}},stopPropagation:function stopPropagation(){var e=this.originalEvent;this.isPropagationStopped = returnTrue;if(e && e.stopPropagation){e.stopPropagation();}},stopImmediatePropagation:function stopImmediatePropagation(){var e=this.originalEvent;this.isImmediatePropagationStopped = returnTrue;if(e && e.stopImmediatePropagation){e.stopImmediatePropagation();}this.stopPropagation();}}; // Create mouseenter/leave events using mouseover/out and event-time checks
+jQuery.Event.prototype = {isDefaultPrevented:returnFalse,isPropagationStopped:returnFalse,isImmediatePropagationStopped:returnFalse,preventDefault:function(){var e=this.originalEvent;this.isDefaultPrevented = returnTrue;if(e && e.preventDefault){e.preventDefault();}},stopPropagation:function(){var e=this.originalEvent;this.isPropagationStopped = returnTrue;if(e && e.stopPropagation){e.stopPropagation();}},stopImmediatePropagation:function(){var e=this.originalEvent;this.isImmediatePropagationStopped = returnTrue;if(e && e.stopImmediatePropagation){e.stopImmediatePropagation();}this.stopPropagation();}}; // Create mouseenter/leave events using mouseover/out and event-time checks
 // Support: Chrome 15+
-jQuery.each({mouseenter:"mouseover",mouseleave:"mouseout",pointerenter:"pointerover",pointerleave:"pointerout"},function(orig,fix){jQuery.event.special[orig] = {delegateType:fix,bindType:fix,handle:function handle(event){var ret,target=this,related=event.relatedTarget,handleObj=event.handleObj; // For mousenter/leave call the handler if related is outside the target.
+jQuery.each({mouseenter:"mouseover",mouseleave:"mouseout",pointerenter:"pointerover",pointerleave:"pointerout"},function(orig,fix){jQuery.event.special[orig] = {delegateType:fix,bindType:fix,handle:function(event){var ret,target=this,related=event.relatedTarget,handleObj=event.handleObj; // For mousenter/leave call the handler if related is outside the target.
 // NB: No relatedTarget if the mouse left/entered the browser window
 if(!related || related !== target && !jQuery.contains(target,related)){event.type = handleObj.origType;ret = handleObj.handler.apply(this,arguments);event.type = fix;}return ret;}};}); // Support: Firefox, Chrome, Safari
 // Create "bubbling" focus and blur events
 if(!support.focusinBubbles){jQuery.each({focus:"focusin",blur:"focusout"},function(orig,fix){ // Attach a single capturing handler on the document while someone wants focusin/focusout
-var handler=function handler(event){jQuery.event.simulate(fix,event.target,jQuery.event.fix(event),true);};jQuery.event.special[fix] = {setup:function setup(){var doc=this.ownerDocument || this,attaches=data_priv.access(doc,fix);if(!attaches){doc.addEventListener(orig,handler,true);}data_priv.access(doc,fix,(attaches || 0) + 1);},teardown:function teardown(){var doc=this.ownerDocument || this,attaches=data_priv.access(doc,fix) - 1;if(!attaches){doc.removeEventListener(orig,handler,true);data_priv.remove(doc,fix);}else {data_priv.access(doc,fix,attaches);}}};});}jQuery.fn.extend({on:function on(types,selector,data,fn, /*INTERNAL*/one){var origFn,type; // Types can be a map of types/handlers
+var handler=function(event){jQuery.event.simulate(fix,event.target,jQuery.event.fix(event),true);};jQuery.event.special[fix] = {setup:function(){var doc=this.ownerDocument || this,attaches=data_priv.access(doc,fix);if(!attaches){doc.addEventListener(orig,handler,true);}data_priv.access(doc,fix,(attaches || 0) + 1);},teardown:function(){var doc=this.ownerDocument || this,attaches=data_priv.access(doc,fix) - 1;if(!attaches){doc.removeEventListener(orig,handler,true);data_priv.remove(doc,fix);}else {data_priv.access(doc,fix,attaches);}}};});}jQuery.fn.extend({on:function(types,selector,data,fn, /*INTERNAL*/one){var origFn,type; // Types can be a map of types/handlers
 if(typeof types === "object"){ // ( types-Object, selector, data )
 if(typeof selector !== "string"){ // ( types-Object, data )
 data = data || selector;selector = undefined;}for(type in types) {this.on(type,selector,data,types[type],one);}return this;}if(data == null && fn == null){ // ( types, fn )
@@ -27649,10 +27246,10 @@ fn = selector;data = selector = undefined;}else if(fn == null){if(typeof selecto
 fn = data;data = undefined;}else { // ( types, data, fn )
 fn = data;data = selector;selector = undefined;}}if(fn === false){fn = returnFalse;}else if(!fn){return this;}if(one === 1){origFn = fn;fn = function(event){ // Can use an empty set, since event contains the info
 jQuery().off(event);return origFn.apply(this,arguments);}; // Use same guid so caller can remove using origFn
-fn.guid = origFn.guid || (origFn.guid = jQuery.guid++);}return this.each(function(){jQuery.event.add(this,types,fn,data,selector);});},one:function one(types,selector,data,fn){return this.on(types,selector,data,fn,1);},off:function off(types,selector,fn){var handleObj,type;if(types && types.preventDefault && types.handleObj){ // ( event )  dispatched jQuery.Event
+fn.guid = origFn.guid || (origFn.guid = jQuery.guid++);}return this.each(function(){jQuery.event.add(this,types,fn,data,selector);});},one:function(types,selector,data,fn){return this.on(types,selector,data,fn,1);},off:function(types,selector,fn){var handleObj,type;if(types && types.preventDefault && types.handleObj){ // ( event )  dispatched jQuery.Event
 handleObj = types.handleObj;jQuery(types.delegateTarget).off(handleObj.namespace?handleObj.origType + "." + handleObj.namespace:handleObj.origType,handleObj.selector,handleObj.handler);return this;}if(typeof types === "object"){ // ( types-object [, selector] )
 for(type in types) {this.off(type,selector,types[type]);}return this;}if(selector === false || typeof selector === "function"){ // ( types [, fn] )
-fn = selector;selector = undefined;}if(fn === false){fn = returnFalse;}return this.each(function(){jQuery.event.remove(this,types,fn,selector);});},trigger:function trigger(type,data){return this.each(function(){jQuery.event.trigger(type,data,this);});},triggerHandler:function triggerHandler(type,data){var elem=this[0];if(elem){return jQuery.event.trigger(type,data,elem,true);}}});var rxhtmlTag=/<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,rtagName=/<([\w:]+)/,rhtml=/<|&#?\w+;/,rnoInnerhtml=/<(?:script|style|link)/i, // checked="checked" or checked
+fn = selector;selector = undefined;}if(fn === false){fn = returnFalse;}return this.each(function(){jQuery.event.remove(this,types,fn,selector);});},trigger:function(type,data){return this.each(function(){jQuery.event.trigger(type,data,this);});},triggerHandler:function(type,data){var elem=this[0];if(elem){return jQuery.event.trigger(type,data,elem,true);}}});var rxhtmlTag=/<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,rtagName=/<([\w:]+)/,rhtml=/<|&#?\w+;/,rnoInnerhtml=/<(?:script|style|link)/i, // checked="checked" or checked
 rchecked=/checked\s*(?:[^=]|=\s*.checked.)/i,rscriptType=/^$|\/(?:java|ecma)script/i,rscriptTypeMasked=/^true\/(.*)/,rcleanScript=/^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g, // We have to close these tags to support XHTML (#13200)
 wrapMap={ // Support: IE9
 option:[1,"<select multiple='multiple'>","</select>"],thead:[1,"<table>","</table>"],col:[2,"<table><colgroup>","</colgroup></table>"],tr:[2,"<table><tbody>","</tbody></table>"],td:[3,"<table><tbody><tr>","</tr></tbody></table>"],_default:[0,"",""]}; // Support: IE9
@@ -27665,12 +27262,12 @@ if(data_priv.hasData(src)){pdataOld = data_priv.access(src);pdataCur = data_priv
 if(data_user.hasData(src)){udataOld = data_user.access(src);udataCur = jQuery.extend({},udataOld);data_user.set(dest,udataCur);}}function getAll(context,tag){var ret=context.getElementsByTagName?context.getElementsByTagName(tag || "*"):context.querySelectorAll?context.querySelectorAll(tag || "*"):[];return tag === undefined || tag && jQuery.nodeName(context,tag)?jQuery.merge([context],ret):ret;} // Fix IE bugs, see support tests
 function fixInput(src,dest){var nodeName=dest.nodeName.toLowerCase(); // Fails to persist the checked state of a cloned checkbox or radio button.
 if(nodeName === "input" && rcheckableType.test(src.type)){dest.checked = src.checked; // Fails to return the selected option to the default selected state when cloning options
-}else if(nodeName === "input" || nodeName === "textarea"){dest.defaultValue = src.defaultValue;}}jQuery.extend({clone:function clone(elem,dataAndEvents,deepDataAndEvents){var i,l,srcElements,destElements,clone=elem.cloneNode(true),inPage=jQuery.contains(elem.ownerDocument,elem); // Fix IE cloning issues
+}else if(nodeName === "input" || nodeName === "textarea"){dest.defaultValue = src.defaultValue;}}jQuery.extend({clone:function(elem,dataAndEvents,deepDataAndEvents){var i,l,srcElements,destElements,clone=elem.cloneNode(true),inPage=jQuery.contains(elem.ownerDocument,elem); // Fix IE cloning issues
 if(!support.noCloneChecked && (elem.nodeType === 1 || elem.nodeType === 11) && !jQuery.isXMLDoc(elem)){ // We eschew Sizzle here for performance reasons: http://jsperf.com/getall-vs-sizzle/2
 destElements = getAll(clone);srcElements = getAll(elem);for(i = 0,l = srcElements.length;i < l;i++) {fixInput(srcElements[i],destElements[i]);}} // Copy the events from the original to the clone
 if(dataAndEvents){if(deepDataAndEvents){srcElements = srcElements || getAll(elem);destElements = destElements || getAll(clone);for(i = 0,l = srcElements.length;i < l;i++) {cloneCopyEvent(srcElements[i],destElements[i]);}}else {cloneCopyEvent(elem,clone);}} // Preserve script evaluation history
 destElements = getAll(clone,"script");if(destElements.length > 0){setGlobalEval(destElements,!inPage && getAll(elem,"script"));} // Return the cloned set
-return clone;},buildFragment:function buildFragment(elems,context,scripts,selection){var elem,tmp,tag,wrap,contains,j,fragment=context.createDocumentFragment(),nodes=[],i=0,l=elems.length;for(;i < l;i++) {elem = elems[i];if(elem || elem === 0){ // Add nodes directly
+return clone;},buildFragment:function(elems,context,scripts,selection){var elem,tmp,tag,wrap,contains,j,fragment=context.createDocumentFragment(),nodes=[],i=0,l=elems.length;for(;i < l;i++) {elem = elems[i];if(elem || elem === 0){ // Add nodes directly
 if(jQuery.type(elem) === "object"){ // Support: QtWebKit, PhantomJS
 // push.apply(_, arraylike) throws on ancient WebKit
 jQuery.merge(nodes,elem.nodeType?[elem]:elem); // Convert non-html into a text node
@@ -27687,17 +27284,17 @@ fragment.textContent = "";i = 0;while(elem = nodes[i++]) { // #4087 - If origin 
 if(selection && jQuery.inArray(elem,selection) !== -1){continue;}contains = jQuery.contains(elem.ownerDocument,elem); // Append to fragment
 tmp = getAll(fragment.appendChild(elem),"script"); // Preserve script evaluation history
 if(contains){setGlobalEval(tmp);} // Capture executables
-if(scripts){j = 0;while(elem = tmp[j++]) {if(rscriptType.test(elem.type || "")){scripts.push(elem);}}}}return fragment;},cleanData:function cleanData(elems){var data,elem,type,key,special=jQuery.event.special,i=0;for(;(elem = elems[i]) !== undefined;i++) {if(jQuery.acceptData(elem)){key = elem[data_priv.expando];if(key && (data = data_priv.cache[key])){if(data.events){for(type in data.events) {if(special[type]){jQuery.event.remove(elem,type); // This is a shortcut to avoid jQuery.event.remove's overhead
+if(scripts){j = 0;while(elem = tmp[j++]) {if(rscriptType.test(elem.type || "")){scripts.push(elem);}}}}return fragment;},cleanData:function(elems){var data,elem,type,key,special=jQuery.event.special,i=0;for(;(elem = elems[i]) !== undefined;i++) {if(jQuery.acceptData(elem)){key = elem[data_priv.expando];if(key && (data = data_priv.cache[key])){if(data.events){for(type in data.events) {if(special[type]){jQuery.event.remove(elem,type); // This is a shortcut to avoid jQuery.event.remove's overhead
 }else {jQuery.removeEvent(elem,type,data.handle);}}}if(data_priv.cache[key]){ // Discard any remaining `private` data
 delete data_priv.cache[key];}}} // Discard any remaining `user` data
-delete data_user.cache[elem[data_user.expando]];}}});jQuery.fn.extend({text:function text(value){return access(this,function(value){return value === undefined?jQuery.text(this):this.empty().each(function(){if(this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9){this.textContent = value;}});},null,value,arguments.length);},append:function append(){return this.domManip(arguments,function(elem){if(this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9){var target=manipulationTarget(this,elem);target.appendChild(elem);}});},prepend:function prepend(){return this.domManip(arguments,function(elem){if(this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9){var target=manipulationTarget(this,elem);target.insertBefore(elem,target.firstChild);}});},before:function before(){return this.domManip(arguments,function(elem){if(this.parentNode){this.parentNode.insertBefore(elem,this);}});},after:function after(){return this.domManip(arguments,function(elem){if(this.parentNode){this.parentNode.insertBefore(elem,this.nextSibling);}});},remove:function remove(selector,keepData /* Internal Use Only */){var elem,elems=selector?jQuery.filter(selector,this):this,i=0;for(;(elem = elems[i]) != null;i++) {if(!keepData && elem.nodeType === 1){jQuery.cleanData(getAll(elem));}if(elem.parentNode){if(keepData && jQuery.contains(elem.ownerDocument,elem)){setGlobalEval(getAll(elem,"script"));}elem.parentNode.removeChild(elem);}}return this;},empty:function empty(){var elem,i=0;for(;(elem = this[i]) != null;i++) {if(elem.nodeType === 1){ // Prevent memory leaks
+delete data_user.cache[elem[data_user.expando]];}}});jQuery.fn.extend({text:function(value){return access(this,function(value){return value === undefined?jQuery.text(this):this.empty().each(function(){if(this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9){this.textContent = value;}});},null,value,arguments.length);},append:function(){return this.domManip(arguments,function(elem){if(this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9){var target=manipulationTarget(this,elem);target.appendChild(elem);}});},prepend:function(){return this.domManip(arguments,function(elem){if(this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9){var target=manipulationTarget(this,elem);target.insertBefore(elem,target.firstChild);}});},before:function(){return this.domManip(arguments,function(elem){if(this.parentNode){this.parentNode.insertBefore(elem,this);}});},after:function(){return this.domManip(arguments,function(elem){if(this.parentNode){this.parentNode.insertBefore(elem,this.nextSibling);}});},remove:function(selector,keepData /* Internal Use Only */){var elem,elems=selector?jQuery.filter(selector,this):this,i=0;for(;(elem = elems[i]) != null;i++) {if(!keepData && elem.nodeType === 1){jQuery.cleanData(getAll(elem));}if(elem.parentNode){if(keepData && jQuery.contains(elem.ownerDocument,elem)){setGlobalEval(getAll(elem,"script"));}elem.parentNode.removeChild(elem);}}return this;},empty:function(){var elem,i=0;for(;(elem = this[i]) != null;i++) {if(elem.nodeType === 1){ // Prevent memory leaks
 jQuery.cleanData(getAll(elem,false)); // Remove any remaining nodes
-elem.textContent = "";}}return this;},clone:function clone(dataAndEvents,deepDataAndEvents){dataAndEvents = dataAndEvents == null?false:dataAndEvents;deepDataAndEvents = deepDataAndEvents == null?dataAndEvents:deepDataAndEvents;return this.map(function(){return jQuery.clone(this,dataAndEvents,deepDataAndEvents);});},html:function html(value){return access(this,function(value){var elem=this[0] || {},i=0,l=this.length;if(value === undefined && elem.nodeType === 1){return elem.innerHTML;} // See if we can take a shortcut and just use innerHTML
+elem.textContent = "";}}return this;},clone:function(dataAndEvents,deepDataAndEvents){dataAndEvents = dataAndEvents == null?false:dataAndEvents;deepDataAndEvents = deepDataAndEvents == null?dataAndEvents:deepDataAndEvents;return this.map(function(){return jQuery.clone(this,dataAndEvents,deepDataAndEvents);});},html:function(value){return access(this,function(value){var elem=this[0] || {},i=0,l=this.length;if(value === undefined && elem.nodeType === 1){return elem.innerHTML;} // See if we can take a shortcut and just use innerHTML
 if(typeof value === "string" && !rnoInnerhtml.test(value) && !wrapMap[(rtagName.exec(value) || ["",""])[1].toLowerCase()]){value = value.replace(rxhtmlTag,"<$1></$2>");try{for(;i < l;i++) {elem = this[i] || {}; // Remove element nodes and prevent memory leaks
 if(elem.nodeType === 1){jQuery.cleanData(getAll(elem,false));elem.innerHTML = value;}}elem = 0; // If using innerHTML throws an exception, use the fallback method
-}catch(e) {}}if(elem){this.empty().append(value);}},null,value,arguments.length);},replaceWith:function replaceWith(){var arg=arguments[0]; // Make the changes, replacing each context element with the new content
+}catch(e) {}}if(elem){this.empty().append(value);}},null,value,arguments.length);},replaceWith:function(){var arg=arguments[0]; // Make the changes, replacing each context element with the new content
 this.domManip(arguments,function(elem){arg = this.parentNode;jQuery.cleanData(getAll(this));if(arg){arg.replaceChild(elem,this);}}); // Force removal if there was no new content (e.g., from empty arguments)
-return arg && (arg.length || arg.nodeType)?this:this.remove();},detach:function detach(selector){return this.remove(selector,true);},domManip:function domManip(args,callback){ // Flatten any nested arrays
+return arg && (arg.length || arg.nodeType)?this:this.remove();},detach:function(selector){return this.remove(selector,true);},domManip:function(args,callback){ // Flatten any nested arrays
 args = concat.apply([],args);var fragment,first,scripts,hasScripts,node,doc,i=0,l=this.length,set=this,iNoClone=l - 1,value=args[0],isFunction=jQuery.isFunction(value); // We can't cloneNode fragments that contain checked, in WebKit
 if(isFunction || l > 1 && typeof value === "string" && !support.checkClone && rchecked.test(value)){return this.each(function(index){var self=set.eq(index);if(isFunction){args[0] = value.call(this,index,self.html());}self.domManip(args,callback);});}if(l){fragment = jQuery.buildFragment(args,this[0].ownerDocument,false,this);first = fragment.firstChild;if(fragment.childNodes.length === 1){fragment = first;}if(first){scripts = jQuery.map(getAll(fragment,"script"),disableScript);hasScripts = scripts.length; // Use the original fragment for the last item instead of the first because it can end up
 // being emptied incorrectly in certain situations (#8070).
@@ -27727,7 +27324,7 @@ if(display === "none" || !display){ // Use the already-created iframe if possibl
 iframe = (iframe || jQuery("<iframe frameborder='0' width='0' height='0'/>")).appendTo(doc.documentElement); // Always write a new HTML skeleton so Webkit and Firefox don't choke on reuse
 doc = iframe[0].contentDocument; // Support: IE
 doc.write();doc.close();display = actualDisplay(nodeName,doc);iframe.detach();} // Store the correct default display
-elemdisplay[nodeName] = display;}return display;}var rmargin=/^margin/;var rnumnonpx=new RegExp("^(" + pnum + ")(?!px)[a-z%]+$","i");var getStyles=function getStyles(elem){ // Support: IE<=11+, Firefox<=30+ (#15098, #14150)
+elemdisplay[nodeName] = display;}return display;}var rmargin=/^margin/;var rnumnonpx=new RegExp("^(" + pnum + ")(?!px)[a-z%]+$","i");var getStyles=function(elem){ // Support: IE<=11+, Firefox<=30+ (#15098, #14150)
 // IE throws on elements created in popups
 // FF meanwhile throws on frame elements through "defaultView.getComputedStyle"
 if(elem.ownerDocument.defaultView.opener){return elem.ownerDocument.defaultView.getComputedStyle(elem,null);}return window.getComputedStyle(elem,null);};function curCSS(elem,name,computed){var width,minWidth,maxWidth,ret,style=elem.style;computed = computed || getStyles(elem); // Support: IE9
@@ -27742,7 +27339,7 @@ style.minWidth = style.maxWidth = style.width = ret;ret = computed.width; // Rev
 style.width = width;style.minWidth = minWidth;style.maxWidth = maxWidth;}}return ret !== undefined? // Support: IE
 // IE returns zIndex value as an integer.
 ret + "":ret;}function addGetHookIf(conditionFn,hookFn){ // Define the hook, we'll check on the first run if it's really needed.
-return {get:function get(){if(conditionFn()){ // Hook not needed (or it's not possible to use it due
+return {get:function(){if(conditionFn()){ // Hook not needed (or it's not possible to use it due
 // to missing dependency), remove it.
 delete this.get;return;} // Hook needed; redefine it so that the support test is not executed again.
 return (this.get = hookFn).apply(this,arguments);}};}(function(){var pixelPositionVal,boxSizingReliableVal,docElem=document.documentElement,container=document.createElement("div"),div=document.createElement("div");if(!div.style){return;} // Support: IE9-11+
@@ -27753,10 +27350,10 @@ function computePixelPositionAndBoxSizingReliable(){div.style.cssText =  // Supp
 // Vendor-prefix box-sizing
 "-webkit-box-sizing:border-box;-moz-box-sizing:border-box;" + "box-sizing:border-box;display:block;margin-top:1%;top:1%;" + "border:1px;padding:1px;width:4px;position:absolute";div.innerHTML = "";docElem.appendChild(container);var divStyle=window.getComputedStyle(div,null);pixelPositionVal = divStyle.top !== "1%";boxSizingReliableVal = divStyle.width === "4px";docElem.removeChild(container);} // Support: node.js jsdom
 // Don't assume that getComputedStyle is a property of the global object
-if(window.getComputedStyle){jQuery.extend(support,{pixelPosition:function pixelPosition(){ // This test is executed only once but we still do memoizing
+if(window.getComputedStyle){jQuery.extend(support,{pixelPosition:function(){ // This test is executed only once but we still do memoizing
 // since we can use the boxSizingReliable pre-computing.
 // No need to check if the test was already performed, though.
-computePixelPositionAndBoxSizingReliable();return pixelPositionVal;},boxSizingReliable:function boxSizingReliable(){if(boxSizingReliableVal == null){computePixelPositionAndBoxSizingReliable();}return boxSizingReliableVal;},reliableMarginRight:function reliableMarginRight(){ // Support: Android 2.3
+computePixelPositionAndBoxSizingReliable();return pixelPositionVal;},boxSizingReliable:function(){if(boxSizingReliableVal == null){computePixelPositionAndBoxSizingReliable();}return boxSizingReliableVal;},reliableMarginRight:function(){ // Support: Android 2.3
 // Check if div with explicit width and no margin-right incorrectly
 // gets computed margin-right based on width of container. (#3333)
 // WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
@@ -27799,12 +27396,12 @@ if(elem.style.display === "" && isHidden(elem)){values[index] = data_priv.access
 // to avoid the constant reflow
 for(index = 0;index < length;index++) {elem = elements[index];if(!elem.style){continue;}if(!show || elem.style.display === "none" || elem.style.display === ""){elem.style.display = show?values[index] || "":"none";}}return elements;}jQuery.extend({ // Add in style property hooks for overriding the default
 // behavior of getting and setting a style property
-cssHooks:{opacity:{get:function get(elem,computed){if(computed){ // We should always get a number back from opacity
+cssHooks:{opacity:{get:function(elem,computed){if(computed){ // We should always get a number back from opacity
 var ret=curCSS(elem,"opacity");return ret === ""?"1":ret;}}}}, // Don't automatically add "px" to these possibly-unitless properties
 cssNumber:{"columnCount":true,"fillOpacity":true,"flexGrow":true,"flexShrink":true,"fontWeight":true,"lineHeight":true,"opacity":true,"order":true,"orphans":true,"widows":true,"zIndex":true,"zoom":true}, // Add in properties whose names you wish to fix before
 // setting or getting the value
 cssProps:{"float":"cssFloat"}, // Get and set the style property on a DOM Node
-style:function style(elem,name,value,extra){ // Don't set styles on text and comment nodes
+style:function(elem,name,value,extra){ // Don't set styles on text and comment nodes
 if(!elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style){return;} // Make sure that we're working with the right name
 var ret,type,hooks,origName=jQuery.camelCase(name),style=elem.style;name = jQuery.cssProps[origName] || (jQuery.cssProps[origName] = vendorPropName(style,origName)); // Gets hook for the prefixed version, then unprefixed version
 hooks = jQuery.cssHooks[name] || jQuery.cssHooks[origName]; // Check if we're setting a value
@@ -27817,28 +27414,28 @@ if(type === "number" && !jQuery.cssNumber[origName]){value += "px";} // Support:
 if(!support.clearCloneStyle && value === "" && name.indexOf("background") === 0){style[name] = "inherit";} // If a hook was provided, use that value, otherwise just set the specified value
 if(!hooks || !("set" in hooks) || (value = hooks.set(elem,value,extra)) !== undefined){style[name] = value;}}else { // If a hook was provided get the non-computed value from there
 if(hooks && "get" in hooks && (ret = hooks.get(elem,false,extra)) !== undefined){return ret;} // Otherwise just get the value from the style object
-return style[name];}},css:function css(elem,name,extra,styles){var val,num,hooks,origName=jQuery.camelCase(name); // Make sure that we're working with the right name
+return style[name];}},css:function(elem,name,extra,styles){var val,num,hooks,origName=jQuery.camelCase(name); // Make sure that we're working with the right name
 name = jQuery.cssProps[origName] || (jQuery.cssProps[origName] = vendorPropName(elem.style,origName)); // Try prefixed name followed by the unprefixed name
 hooks = jQuery.cssHooks[name] || jQuery.cssHooks[origName]; // If a hook was provided get the computed value from there
 if(hooks && "get" in hooks){val = hooks.get(elem,true,extra);} // Otherwise, if a way to get the computed value exists, use that
 if(val === undefined){val = curCSS(elem,name,styles);} // Convert "normal" to computed value
 if(val === "normal" && name in cssNormalTransform){val = cssNormalTransform[name];} // Make numeric if forced or a qualifier was provided and val looks numeric
-if(extra === "" || extra){num = parseFloat(val);return extra === true || jQuery.isNumeric(num)?num || 0:val;}return val;}});jQuery.each(["height","width"],function(i,name){jQuery.cssHooks[name] = {get:function get(elem,computed,extra){if(computed){ // Certain elements can have dimension info if we invisibly show them
+if(extra === "" || extra){num = parseFloat(val);return extra === true || jQuery.isNumeric(num)?num || 0:val;}return val;}});jQuery.each(["height","width"],function(i,name){jQuery.cssHooks[name] = {get:function(elem,computed,extra){if(computed){ // Certain elements can have dimension info if we invisibly show them
 // but it must have a current display style that would benefit
-return rdisplayswap.test(jQuery.css(elem,"display")) && elem.offsetWidth === 0?jQuery.swap(elem,cssShow,function(){return getWidthOrHeight(elem,name,extra);}):getWidthOrHeight(elem,name,extra);}},set:function set(elem,value,extra){var styles=extra && getStyles(elem);return setPositiveNumber(elem,value,extra?augmentWidthOrHeight(elem,name,extra,jQuery.css(elem,"boxSizing",false,styles) === "border-box",styles):0);}};}); // Support: Android 2.3
+return rdisplayswap.test(jQuery.css(elem,"display")) && elem.offsetWidth === 0?jQuery.swap(elem,cssShow,function(){return getWidthOrHeight(elem,name,extra);}):getWidthOrHeight(elem,name,extra);}},set:function(elem,value,extra){var styles=extra && getStyles(elem);return setPositiveNumber(elem,value,extra?augmentWidthOrHeight(elem,name,extra,jQuery.css(elem,"boxSizing",false,styles) === "border-box",styles):0);}};}); // Support: Android 2.3
 jQuery.cssHooks.marginRight = addGetHookIf(support.reliableMarginRight,function(elem,computed){if(computed){return jQuery.swap(elem,{"display":"inline-block"},curCSS,[elem,"marginRight"]);}}); // These hooks are used by animate to expand properties
-jQuery.each({margin:"",padding:"",border:"Width"},function(prefix,suffix){jQuery.cssHooks[prefix + suffix] = {expand:function expand(value){var i=0,expanded={}, // Assumes a single number if not a string
-parts=typeof value === "string"?value.split(" "):[value];for(;i < 4;i++) {expanded[prefix + cssExpand[i] + suffix] = parts[i] || parts[i - 2] || parts[0];}return expanded;}};if(!rmargin.test(prefix)){jQuery.cssHooks[prefix + suffix].set = setPositiveNumber;}});jQuery.fn.extend({css:function css(name,value){return access(this,function(elem,name,value){var styles,len,map={},i=0;if(jQuery.isArray(name)){styles = getStyles(elem);len = name.length;for(;i < len;i++) {map[name[i]] = jQuery.css(elem,name[i],false,styles);}return map;}return value !== undefined?jQuery.style(elem,name,value):jQuery.css(elem,name);},name,value,arguments.length > 1);},show:function show(){return showHide(this,true);},hide:function hide(){return showHide(this);},toggle:function toggle(state){if(typeof state === "boolean"){return state?this.show():this.hide();}return this.each(function(){if(isHidden(this)){jQuery(this).show();}else {jQuery(this).hide();}});}});function Tween(elem,options,prop,end,easing){return new Tween.prototype.init(elem,options,prop,end,easing);}jQuery.Tween = Tween;Tween.prototype = {constructor:Tween,init:function init(elem,options,prop,end,easing,unit){this.elem = elem;this.prop = prop;this.easing = easing || "swing";this.options = options;this.start = this.now = this.cur();this.end = end;this.unit = unit || (jQuery.cssNumber[prop]?"":"px");},cur:function cur(){var hooks=Tween.propHooks[this.prop];return hooks && hooks.get?hooks.get(this):Tween.propHooks._default.get(this);},run:function run(percent){var eased,hooks=Tween.propHooks[this.prop];if(this.options.duration){this.pos = eased = jQuery.easing[this.easing](percent,this.options.duration * percent,0,1,this.options.duration);}else {this.pos = eased = percent;}this.now = (this.end - this.start) * eased + this.start;if(this.options.step){this.options.step.call(this.elem,this.now,this);}if(hooks && hooks.set){hooks.set(this);}else {Tween.propHooks._default.set(this);}return this;}};Tween.prototype.init.prototype = Tween.prototype;Tween.propHooks = {_default:{get:function get(tween){var result;if(tween.elem[tween.prop] != null && (!tween.elem.style || tween.elem.style[tween.prop] == null)){return tween.elem[tween.prop];} // Passing an empty string as a 3rd parameter to .css will automatically
+jQuery.each({margin:"",padding:"",border:"Width"},function(prefix,suffix){jQuery.cssHooks[prefix + suffix] = {expand:function(value){var i=0,expanded={}, // Assumes a single number if not a string
+parts=typeof value === "string"?value.split(" "):[value];for(;i < 4;i++) {expanded[prefix + cssExpand[i] + suffix] = parts[i] || parts[i - 2] || parts[0];}return expanded;}};if(!rmargin.test(prefix)){jQuery.cssHooks[prefix + suffix].set = setPositiveNumber;}});jQuery.fn.extend({css:function(name,value){return access(this,function(elem,name,value){var styles,len,map={},i=0;if(jQuery.isArray(name)){styles = getStyles(elem);len = name.length;for(;i < len;i++) {map[name[i]] = jQuery.css(elem,name[i],false,styles);}return map;}return value !== undefined?jQuery.style(elem,name,value):jQuery.css(elem,name);},name,value,arguments.length > 1);},show:function(){return showHide(this,true);},hide:function(){return showHide(this);},toggle:function(state){if(typeof state === "boolean"){return state?this.show():this.hide();}return this.each(function(){if(isHidden(this)){jQuery(this).show();}else {jQuery(this).hide();}});}});function Tween(elem,options,prop,end,easing){return new Tween.prototype.init(elem,options,prop,end,easing);}jQuery.Tween = Tween;Tween.prototype = {constructor:Tween,init:function(elem,options,prop,end,easing,unit){this.elem = elem;this.prop = prop;this.easing = easing || "swing";this.options = options;this.start = this.now = this.cur();this.end = end;this.unit = unit || (jQuery.cssNumber[prop]?"":"px");},cur:function(){var hooks=Tween.propHooks[this.prop];return hooks && hooks.get?hooks.get(this):Tween.propHooks._default.get(this);},run:function(percent){var eased,hooks=Tween.propHooks[this.prop];if(this.options.duration){this.pos = eased = jQuery.easing[this.easing](percent,this.options.duration * percent,0,1,this.options.duration);}else {this.pos = eased = percent;}this.now = (this.end - this.start) * eased + this.start;if(this.options.step){this.options.step.call(this.elem,this.now,this);}if(hooks && hooks.set){hooks.set(this);}else {Tween.propHooks._default.set(this);}return this;}};Tween.prototype.init.prototype = Tween.prototype;Tween.propHooks = {_default:{get:function(tween){var result;if(tween.elem[tween.prop] != null && (!tween.elem.style || tween.elem.style[tween.prop] == null)){return tween.elem[tween.prop];} // Passing an empty string as a 3rd parameter to .css will automatically
 // attempt a parseFloat and fallback to a string if the parse fails.
 // Simple values such as "10px" are parsed to Float;
 // complex values such as "rotate(1rad)" are returned as-is.
 result = jQuery.css(tween.elem,tween.prop,""); // Empty strings, null, undefined and "auto" are converted to 0.
-return !result || result === "auto"?0:result;},set:function set(tween){ // Use step hook for back compat.
+return !result || result === "auto"?0:result;},set:function(tween){ // Use step hook for back compat.
 // Use cssHook if its there.
 // Use .style if available and use plain properties where available.
 if(jQuery.fx.step[tween.prop]){jQuery.fx.step[tween.prop](tween);}else if(tween.elem.style && (tween.elem.style[jQuery.cssProps[tween.prop]] != null || jQuery.cssHooks[tween.prop])){jQuery.style(tween.elem,tween.prop,tween.now + tween.unit);}else {tween.elem[tween.prop] = tween.now;}}}}; // Support: IE9
 // Panic based approach to setting things on disconnected nodes
-Tween.propHooks.scrollTop = Tween.propHooks.scrollLeft = {set:function set(tween){if(tween.elem.nodeType && tween.elem.parentNode){tween.elem[tween.prop] = tween.now;}}};jQuery.easing = {linear:function linear(p){return p;},swing:function swing(p){return 0.5 - Math.cos(p * Math.PI) / 2;}};jQuery.fx = Tween.prototype.init; // Back Compat <1.8 extension point
+Tween.propHooks.scrollTop = Tween.propHooks.scrollLeft = {set:function(tween){if(tween.elem.nodeType && tween.elem.parentNode){tween.elem[tween.prop] = tween.now;}}};jQuery.easing = {linear:function(p){return p;},swing:function(p){return 0.5 - Math.cos(p * Math.PI) / 2;}};jQuery.fx = Tween.prototype.init; // Back Compat <1.8 extension point
 jQuery.fx.step = {};var fxNow,timerId,rfxtypes=/^(?:toggle|show|hide)$/,rfxnum=new RegExp("^(?:([+-])=|)(" + pnum + ")([a-z%]*)$","i"),rrun=/queueHooks$/,animationPrefilters=[defaultPrefilter],tweeners={"*":[function(prop,value){var tween=this.createTween(prop,value),target=tween.cur(),parts=rfxnum.exec(value),unit=parts && parts[3] || (jQuery.cssNumber[prop]?"":"px"), // Starting value computation is required for potential unit mismatches
 start=(jQuery.cssNumber[prop] || unit !== "px" && +target) && rfxnum.exec(jQuery.css(tween.elem,prop)),scale=1,maxIterations=20;if(start && start[3] !== unit){ // Trust units reported by jQuery.css
 unit = unit || start[3]; // Make sure we update the tween properties later on
@@ -27874,22 +27471,22 @@ if(toggle){dataShow.hidden = !hidden;}if(hidden){jQuery(elem).show();}else {anim
 for(index in props) {name = jQuery.camelCase(index);easing = specialEasing[name];value = props[index];if(jQuery.isArray(value)){easing = value[1];value = props[index] = value[0];}if(index !== name){props[name] = value;delete props[index];}hooks = jQuery.cssHooks[name];if(hooks && "expand" in hooks){value = hooks.expand(value);delete props[name]; // Not quite $.extend, this won't overwrite existing keys.
 // Reusing 'index' because we have the correct "name"
 for(index in value) {if(!(index in props)){props[index] = value[index];specialEasing[index] = easing;}}}else {specialEasing[name] = easing;}}}function Animation(elem,properties,options){var result,stopped,index=0,length=animationPrefilters.length,deferred=jQuery.Deferred().always(function(){ // Don't match elem in the :animated selector
-delete tick.elem;}),tick=function tick(){if(stopped){return false;}var currentTime=fxNow || createFxNow(),remaining=Math.max(0,animation.startTime + animation.duration - currentTime), // Support: Android 2.3
+delete tick.elem;}),tick=function(){if(stopped){return false;}var currentTime=fxNow || createFxNow(),remaining=Math.max(0,animation.startTime + animation.duration - currentTime), // Support: Android 2.3
 // Archaic crash bug won't allow us to use `1 - ( 0.5 || 0 )` (#12497)
-temp=remaining / animation.duration || 0,percent=1 - temp,index=0,length=animation.tweens.length;for(;index < length;index++) {animation.tweens[index].run(percent);}deferred.notifyWith(elem,[animation,percent,remaining]);if(percent < 1 && length){return remaining;}else {deferred.resolveWith(elem,[animation]);return false;}},animation=deferred.promise({elem:elem,props:jQuery.extend({},properties),opts:jQuery.extend(true,{specialEasing:{}},options),originalProperties:properties,originalOptions:options,startTime:fxNow || createFxNow(),duration:options.duration,tweens:[],createTween:function createTween(prop,end){var tween=jQuery.Tween(elem,animation.opts,prop,end,animation.opts.specialEasing[prop] || animation.opts.easing);animation.tweens.push(tween);return tween;},stop:function stop(gotoEnd){var index=0, // If we are going to the end, we want to run all the tweens
+temp=remaining / animation.duration || 0,percent=1 - temp,index=0,length=animation.tweens.length;for(;index < length;index++) {animation.tweens[index].run(percent);}deferred.notifyWith(elem,[animation,percent,remaining]);if(percent < 1 && length){return remaining;}else {deferred.resolveWith(elem,[animation]);return false;}},animation=deferred.promise({elem:elem,props:jQuery.extend({},properties),opts:jQuery.extend(true,{specialEasing:{}},options),originalProperties:properties,originalOptions:options,startTime:fxNow || createFxNow(),duration:options.duration,tweens:[],createTween:function(prop,end){var tween=jQuery.Tween(elem,animation.opts,prop,end,animation.opts.specialEasing[prop] || animation.opts.easing);animation.tweens.push(tween);return tween;},stop:function(gotoEnd){var index=0, // If we are going to the end, we want to run all the tweens
 // otherwise we skip this part
 length=gotoEnd?animation.tweens.length:0;if(stopped){return this;}stopped = true;for(;index < length;index++) {animation.tweens[index].run(1);} // Resolve when we played the last frame; otherwise, reject
 if(gotoEnd){deferred.resolveWith(elem,[animation,gotoEnd]);}else {deferred.rejectWith(elem,[animation,gotoEnd]);}return this;}}),props=animation.props;propFilter(props,animation.opts.specialEasing);for(;index < length;index++) {result = animationPrefilters[index].call(animation,elem,props,animation.opts);if(result){return result;}}jQuery.map(props,createTween,animation);if(jQuery.isFunction(animation.opts.start)){animation.opts.start.call(elem,animation);}jQuery.fx.timer(jQuery.extend(tick,{elem:elem,anim:animation,queue:animation.opts.queue})); // attach callbacks from options
-return animation.progress(animation.opts.progress).done(animation.opts.done,animation.opts.complete).fail(animation.opts.fail).always(animation.opts.always);}jQuery.Animation = jQuery.extend(Animation,{tweener:function tweener(props,callback){if(jQuery.isFunction(props)){callback = props;props = ["*"];}else {props = props.split(" ");}var prop,index=0,length=props.length;for(;index < length;index++) {prop = props[index];tweeners[prop] = tweeners[prop] || [];tweeners[prop].unshift(callback);}},prefilter:function prefilter(callback,prepend){if(prepend){animationPrefilters.unshift(callback);}else {animationPrefilters.push(callback);}}});jQuery.speed = function(speed,easing,fn){var opt=speed && typeof speed === "object"?jQuery.extend({},speed):{complete:fn || !fn && easing || jQuery.isFunction(speed) && speed,duration:speed,easing:fn && easing || easing && !jQuery.isFunction(easing) && easing};opt.duration = jQuery.fx.off?0:typeof opt.duration === "number"?opt.duration:opt.duration in jQuery.fx.speeds?jQuery.fx.speeds[opt.duration]:jQuery.fx.speeds._default; // Normalize opt.queue - true/undefined/null -> "fx"
+return animation.progress(animation.opts.progress).done(animation.opts.done,animation.opts.complete).fail(animation.opts.fail).always(animation.opts.always);}jQuery.Animation = jQuery.extend(Animation,{tweener:function(props,callback){if(jQuery.isFunction(props)){callback = props;props = ["*"];}else {props = props.split(" ");}var prop,index=0,length=props.length;for(;index < length;index++) {prop = props[index];tweeners[prop] = tweeners[prop] || [];tweeners[prop].unshift(callback);}},prefilter:function(callback,prepend){if(prepend){animationPrefilters.unshift(callback);}else {animationPrefilters.push(callback);}}});jQuery.speed = function(speed,easing,fn){var opt=speed && typeof speed === "object"?jQuery.extend({},speed):{complete:fn || !fn && easing || jQuery.isFunction(speed) && speed,duration:speed,easing:fn && easing || easing && !jQuery.isFunction(easing) && easing};opt.duration = jQuery.fx.off?0:typeof opt.duration === "number"?opt.duration:opt.duration in jQuery.fx.speeds?jQuery.fx.speeds[opt.duration]:jQuery.fx.speeds._default; // Normalize opt.queue - true/undefined/null -> "fx"
 if(opt.queue == null || opt.queue === true){opt.queue = "fx";} // Queueing
-opt.old = opt.complete;opt.complete = function(){if(jQuery.isFunction(opt.old)){opt.old.call(this);}if(opt.queue){jQuery.dequeue(this,opt.queue);}};return opt;};jQuery.fn.extend({fadeTo:function fadeTo(speed,to,easing,callback){ // Show any hidden elements after setting opacity to 0
+opt.old = opt.complete;opt.complete = function(){if(jQuery.isFunction(opt.old)){opt.old.call(this);}if(opt.queue){jQuery.dequeue(this,opt.queue);}};return opt;};jQuery.fn.extend({fadeTo:function(speed,to,easing,callback){ // Show any hidden elements after setting opacity to 0
 return this.filter(isHidden).css("opacity",0).show() // Animate to the value specified
-.end().animate({opacity:to},speed,easing,callback);},animate:function animate(prop,speed,easing,callback){var empty=jQuery.isEmptyObject(prop),optall=jQuery.speed(speed,easing,callback),doAnimation=function doAnimation(){ // Operate on a copy of prop so per-property easing won't be lost
+.end().animate({opacity:to},speed,easing,callback);},animate:function(prop,speed,easing,callback){var empty=jQuery.isEmptyObject(prop),optall=jQuery.speed(speed,easing,callback),doAnimation=function(){ // Operate on a copy of prop so per-property easing won't be lost
 var anim=Animation(this,jQuery.extend({},prop),optall); // Empty animations, or finishing resolves immediately
-if(empty || data_priv.get(this,"finish")){anim.stop(true);}};doAnimation.finish = doAnimation;return empty || optall.queue === false?this.each(doAnimation):this.queue(optall.queue,doAnimation);},stop:function stop(type,clearQueue,gotoEnd){var stopQueue=function stopQueue(hooks){var stop=hooks.stop;delete hooks.stop;stop(gotoEnd);};if(typeof type !== "string"){gotoEnd = clearQueue;clearQueue = type;type = undefined;}if(clearQueue && type !== false){this.queue(type || "fx",[]);}return this.each(function(){var dequeue=true,index=type != null && type + "queueHooks",timers=jQuery.timers,data=data_priv.get(this);if(index){if(data[index] && data[index].stop){stopQueue(data[index]);}}else {for(index in data) {if(data[index] && data[index].stop && rrun.test(index)){stopQueue(data[index]);}}}for(index = timers.length;index--;) {if(timers[index].elem === this && (type == null || timers[index].queue === type)){timers[index].anim.stop(gotoEnd);dequeue = false;timers.splice(index,1);}} // Start the next in the queue if the last step wasn't forced.
+if(empty || data_priv.get(this,"finish")){anim.stop(true);}};doAnimation.finish = doAnimation;return empty || optall.queue === false?this.each(doAnimation):this.queue(optall.queue,doAnimation);},stop:function(type,clearQueue,gotoEnd){var stopQueue=function(hooks){var stop=hooks.stop;delete hooks.stop;stop(gotoEnd);};if(typeof type !== "string"){gotoEnd = clearQueue;clearQueue = type;type = undefined;}if(clearQueue && type !== false){this.queue(type || "fx",[]);}return this.each(function(){var dequeue=true,index=type != null && type + "queueHooks",timers=jQuery.timers,data=data_priv.get(this);if(index){if(data[index] && data[index].stop){stopQueue(data[index]);}}else {for(index in data) {if(data[index] && data[index].stop && rrun.test(index)){stopQueue(data[index]);}}}for(index = timers.length;index--;) {if(timers[index].elem === this && (type == null || timers[index].queue === type)){timers[index].anim.stop(gotoEnd);dequeue = false;timers.splice(index,1);}} // Start the next in the queue if the last step wasn't forced.
 // Timers currently will call their complete callbacks, which
 // will dequeue but only if they were gotoEnd.
-if(dequeue || !gotoEnd){jQuery.dequeue(this,type);}});},finish:function finish(type){if(type !== false){type = type || "fx";}return this.each(function(){var index,data=data_priv.get(this),queue=data[type + "queue"],hooks=data[type + "queueHooks"],timers=jQuery.timers,length=queue?queue.length:0; // Enable finishing flag on private data
+if(dequeue || !gotoEnd){jQuery.dequeue(this,type);}});},finish:function(type){if(type !== false){type = type || "fx";}return this.each(function(){var index,data=data_priv.get(this),queue=data[type + "queue"],hooks=data[type + "queueHooks"],timers=jQuery.timers,length=queue?queue.length:0; // Enable finishing flag on private data
 data.finish = true; // Empty the queue first
 jQuery.queue(this,type,[]);if(hooks && hooks.stop){hooks.stop.call(this,true);} // Look for any active animations, and finish them
 for(index = timers.length;index--;) {if(timers[index].elem === this && timers[index].queue === type){timers[index].anim.stop(true);timers.splice(index,1);}} // Look for any animations in the old queue and finish them
@@ -27907,24 +27504,24 @@ support.optSelected = opt.selected; // Support: Android<=2.3
 // Options inside disabled selects are incorrectly marked as disabled
 select.disabled = true;support.optDisabled = !opt.disabled; // Support: IE<=11+
 // An input loses its value after becoming a radio
-input = document.createElement("input");input.value = "t";input.type = "radio";support.radioValue = input.value === "t";})();var nodeHook,boolHook,attrHandle=jQuery.expr.attrHandle;jQuery.fn.extend({attr:function attr(name,value){return access(this,jQuery.attr,name,value,arguments.length > 1);},removeAttr:function removeAttr(name){return this.each(function(){jQuery.removeAttr(this,name);});}});jQuery.extend({attr:function attr(elem,name,value){var hooks,ret,nType=elem.nodeType; // don't get/set attributes on text, comment and attribute nodes
+input = document.createElement("input");input.value = "t";input.type = "radio";support.radioValue = input.value === "t";})();var nodeHook,boolHook,attrHandle=jQuery.expr.attrHandle;jQuery.fn.extend({attr:function(name,value){return access(this,jQuery.attr,name,value,arguments.length > 1);},removeAttr:function(name){return this.each(function(){jQuery.removeAttr(this,name);});}});jQuery.extend({attr:function(elem,name,value){var hooks,ret,nType=elem.nodeType; // don't get/set attributes on text, comment and attribute nodes
 if(!elem || nType === 3 || nType === 8 || nType === 2){return;} // Fallback to prop when attributes are not supported
 if(typeof elem.getAttribute === strundefined){return jQuery.prop(elem,name,value);} // All attributes are lowercase
 // Grab necessary hook if one is defined
 if(nType !== 1 || !jQuery.isXMLDoc(elem)){name = name.toLowerCase();hooks = jQuery.attrHooks[name] || (jQuery.expr.match.bool.test(name)?boolHook:nodeHook);}if(value !== undefined){if(value === null){jQuery.removeAttr(elem,name);}else if(hooks && "set" in hooks && (ret = hooks.set(elem,value,name)) !== undefined){return ret;}else {elem.setAttribute(name,value + "");return value;}}else if(hooks && "get" in hooks && (ret = hooks.get(elem,name)) !== null){return ret;}else {ret = jQuery.find.attr(elem,name); // Non-existent attributes return null, we normalize to undefined
-return ret == null?undefined:ret;}},removeAttr:function removeAttr(elem,value){var name,propName,i=0,attrNames=value && value.match(rnotwhite);if(attrNames && elem.nodeType === 1){while(name = attrNames[i++]) {propName = jQuery.propFix[name] || name; // Boolean attributes get special treatment (#10870)
+return ret == null?undefined:ret;}},removeAttr:function(elem,value){var name,propName,i=0,attrNames=value && value.match(rnotwhite);if(attrNames && elem.nodeType === 1){while(name = attrNames[i++]) {propName = jQuery.propFix[name] || name; // Boolean attributes get special treatment (#10870)
 if(jQuery.expr.match.bool.test(name)){ // Set corresponding property to false
-elem[propName] = false;}elem.removeAttribute(name);}}},attrHooks:{type:{set:function set(elem,value){if(!support.radioValue && value === "radio" && jQuery.nodeName(elem,"input")){var val=elem.value;elem.setAttribute("type",value);if(val){elem.value = val;}return value;}}}}}); // Hooks for boolean attributes
-boolHook = {set:function set(elem,value,name){if(value === false){ // Remove boolean attributes when set to false
+elem[propName] = false;}elem.removeAttribute(name);}}},attrHooks:{type:{set:function(elem,value){if(!support.radioValue && value === "radio" && jQuery.nodeName(elem,"input")){var val=elem.value;elem.setAttribute("type",value);if(val){elem.value = val;}return value;}}}}}); // Hooks for boolean attributes
+boolHook = {set:function(elem,value,name){if(value === false){ // Remove boolean attributes when set to false
 jQuery.removeAttr(elem,name);}else {elem.setAttribute(name,name);}return name;}};jQuery.each(jQuery.expr.match.bool.source.match(/\w+/g),function(i,name){var getter=attrHandle[name] || jQuery.find.attr;attrHandle[name] = function(elem,name,isXML){var ret,handle;if(!isXML){ // Avoid an infinite loop by temporarily removing this function from the getter
-handle = attrHandle[name];attrHandle[name] = ret;ret = getter(elem,name,isXML) != null?name.toLowerCase():null;attrHandle[name] = handle;}return ret;};});var rfocusable=/^(?:input|select|textarea|button)$/i;jQuery.fn.extend({prop:function prop(name,value){return access(this,jQuery.prop,name,value,arguments.length > 1);},removeProp:function removeProp(name){return this.each(function(){delete this[jQuery.propFix[name] || name];});}});jQuery.extend({propFix:{"for":"htmlFor","class":"className"},prop:function prop(elem,name,value){var ret,hooks,notxml,nType=elem.nodeType; // Don't get/set properties on text, comment and attribute nodes
+handle = attrHandle[name];attrHandle[name] = ret;ret = getter(elem,name,isXML) != null?name.toLowerCase():null;attrHandle[name] = handle;}return ret;};});var rfocusable=/^(?:input|select|textarea|button)$/i;jQuery.fn.extend({prop:function(name,value){return access(this,jQuery.prop,name,value,arguments.length > 1);},removeProp:function(name){return this.each(function(){delete this[jQuery.propFix[name] || name];});}});jQuery.extend({propFix:{"for":"htmlFor","class":"className"},prop:function(elem,name,value){var ret,hooks,notxml,nType=elem.nodeType; // Don't get/set properties on text, comment and attribute nodes
 if(!elem || nType === 3 || nType === 8 || nType === 2){return;}notxml = nType !== 1 || !jQuery.isXMLDoc(elem);if(notxml){ // Fix name and attach hooks
-name = jQuery.propFix[name] || name;hooks = jQuery.propHooks[name];}if(value !== undefined){return hooks && "set" in hooks && (ret = hooks.set(elem,value,name)) !== undefined?ret:elem[name] = value;}else {return hooks && "get" in hooks && (ret = hooks.get(elem,name)) !== null?ret:elem[name];}},propHooks:{tabIndex:{get:function get(elem){return elem.hasAttribute("tabindex") || rfocusable.test(elem.nodeName) || elem.href?elem.tabIndex:-1;}}}});if(!support.optSelected){jQuery.propHooks.selected = {get:function get(elem){var parent=elem.parentNode;if(parent && parent.parentNode){parent.parentNode.selectedIndex;}return null;}};}jQuery.each(["tabIndex","readOnly","maxLength","cellSpacing","cellPadding","rowSpan","colSpan","useMap","frameBorder","contentEditable"],function(){jQuery.propFix[this.toLowerCase()] = this;});var rclass=/[\t\r\n\f]/g;jQuery.fn.extend({addClass:function addClass(value){var classes,elem,cur,clazz,j,finalValue,proceed=typeof value === "string" && value,i=0,len=this.length;if(jQuery.isFunction(value)){return this.each(function(j){jQuery(this).addClass(value.call(this,j,this.className));});}if(proceed){ // The disjunction here is for better compressibility (see removeClass)
+name = jQuery.propFix[name] || name;hooks = jQuery.propHooks[name];}if(value !== undefined){return hooks && "set" in hooks && (ret = hooks.set(elem,value,name)) !== undefined?ret:elem[name] = value;}else {return hooks && "get" in hooks && (ret = hooks.get(elem,name)) !== null?ret:elem[name];}},propHooks:{tabIndex:{get:function(elem){return elem.hasAttribute("tabindex") || rfocusable.test(elem.nodeName) || elem.href?elem.tabIndex:-1;}}}});if(!support.optSelected){jQuery.propHooks.selected = {get:function(elem){var parent=elem.parentNode;if(parent && parent.parentNode){parent.parentNode.selectedIndex;}return null;}};}jQuery.each(["tabIndex","readOnly","maxLength","cellSpacing","cellPadding","rowSpan","colSpan","useMap","frameBorder","contentEditable"],function(){jQuery.propFix[this.toLowerCase()] = this;});var rclass=/[\t\r\n\f]/g;jQuery.fn.extend({addClass:function(value){var classes,elem,cur,clazz,j,finalValue,proceed=typeof value === "string" && value,i=0,len=this.length;if(jQuery.isFunction(value)){return this.each(function(j){jQuery(this).addClass(value.call(this,j,this.className));});}if(proceed){ // The disjunction here is for better compressibility (see removeClass)
 classes = (value || "").match(rnotwhite) || [];for(;i < len;i++) {elem = this[i];cur = elem.nodeType === 1 && (elem.className?(" " + elem.className + " ").replace(rclass," "):" ");if(cur){j = 0;while(clazz = classes[j++]) {if(cur.indexOf(" " + clazz + " ") < 0){cur += clazz + " ";}} // only assign if different to avoid unneeded rendering.
-finalValue = jQuery.trim(cur);if(elem.className !== finalValue){elem.className = finalValue;}}}}return this;},removeClass:function removeClass(value){var classes,elem,cur,clazz,j,finalValue,proceed=arguments.length === 0 || typeof value === "string" && value,i=0,len=this.length;if(jQuery.isFunction(value)){return this.each(function(j){jQuery(this).removeClass(value.call(this,j,this.className));});}if(proceed){classes = (value || "").match(rnotwhite) || [];for(;i < len;i++) {elem = this[i]; // This expression is here for better compressibility (see addClass)
+finalValue = jQuery.trim(cur);if(elem.className !== finalValue){elem.className = finalValue;}}}}return this;},removeClass:function(value){var classes,elem,cur,clazz,j,finalValue,proceed=arguments.length === 0 || typeof value === "string" && value,i=0,len=this.length;if(jQuery.isFunction(value)){return this.each(function(j){jQuery(this).removeClass(value.call(this,j,this.className));});}if(proceed){classes = (value || "").match(rnotwhite) || [];for(;i < len;i++) {elem = this[i]; // This expression is here for better compressibility (see addClass)
 cur = elem.nodeType === 1 && (elem.className?(" " + elem.className + " ").replace(rclass," "):"");if(cur){j = 0;while(clazz = classes[j++]) { // Remove *all* instances
 while(cur.indexOf(" " + clazz + " ") >= 0) {cur = cur.replace(" " + clazz + " "," ");}} // Only assign if different to avoid unneeded rendering.
-finalValue = value?jQuery.trim(cur):"";if(elem.className !== finalValue){elem.className = finalValue;}}}}return this;},toggleClass:function toggleClass(value,stateVal){var type=typeof value;if(typeof stateVal === "boolean" && type === "string"){return stateVal?this.addClass(value):this.removeClass(value);}if(jQuery.isFunction(value)){return this.each(function(i){jQuery(this).toggleClass(value.call(this,i,this.className,stateVal),stateVal);});}return this.each(function(){if(type === "string"){ // Toggle individual class names
+finalValue = value?jQuery.trim(cur):"";if(elem.className !== finalValue){elem.className = finalValue;}}}}return this;},toggleClass:function(value,stateVal){var type=typeof value;if(typeof stateVal === "boolean" && type === "string"){return stateVal?this.addClass(value):this.removeClass(value);}if(jQuery.isFunction(value)){return this.each(function(i){jQuery(this).toggleClass(value.call(this,i,this.className,stateVal),stateVal);});}return this.each(function(){if(type === "string"){ // Toggle individual class names
 var className,i=0,self=jQuery(this),classNames=value.match(rnotwhite) || [];while(className = classNames[i++]) { // Check each className given, space separated list
 if(self.hasClass(className)){self.removeClass(className);}else {self.addClass(className);}} // Toggle whole class name
 }else if(type === strundefined || type === "boolean"){if(this.className){ // store className if set
@@ -27932,23 +27529,23 @@ data_priv.set(this,"__className__",this.className);} // If the element has a cla
 // then remove the whole classname (if there was one, the above saved it).
 // Otherwise bring back whatever was previously saved (if anything),
 // falling back to the empty string if nothing was stored.
-this.className = this.className || value === false?"":data_priv.get(this,"__className__") || "";}});},hasClass:function hasClass(selector){var className=" " + selector + " ",i=0,l=this.length;for(;i < l;i++) {if(this[i].nodeType === 1 && (" " + this[i].className + " ").replace(rclass," ").indexOf(className) >= 0){return true;}}return false;}});var rreturn=/\r/g;jQuery.fn.extend({val:function val(value){var hooks,ret,isFunction,elem=this[0];if(!arguments.length){if(elem){hooks = jQuery.valHooks[elem.type] || jQuery.valHooks[elem.nodeName.toLowerCase()];if(hooks && "get" in hooks && (ret = hooks.get(elem,"value")) !== undefined){return ret;}ret = elem.value;return typeof ret === "string"? // Handle most common string cases
+this.className = this.className || value === false?"":data_priv.get(this,"__className__") || "";}});},hasClass:function(selector){var className=" " + selector + " ",i=0,l=this.length;for(;i < l;i++) {if(this[i].nodeType === 1 && (" " + this[i].className + " ").replace(rclass," ").indexOf(className) >= 0){return true;}}return false;}});var rreturn=/\r/g;jQuery.fn.extend({val:function(value){var hooks,ret,isFunction,elem=this[0];if(!arguments.length){if(elem){hooks = jQuery.valHooks[elem.type] || jQuery.valHooks[elem.nodeName.toLowerCase()];if(hooks && "get" in hooks && (ret = hooks.get(elem,"value")) !== undefined){return ret;}ret = elem.value;return typeof ret === "string"? // Handle most common string cases
 ret.replace(rreturn,""): // Handle cases where value is null/undef or number
 ret == null?"":ret;}return;}isFunction = jQuery.isFunction(value);return this.each(function(i){var val;if(this.nodeType !== 1){return;}if(isFunction){val = value.call(this,i,jQuery(this).val());}else {val = value;} // Treat null/undefined as ""; convert numbers to string
 if(val == null){val = "";}else if(typeof val === "number"){val += "";}else if(jQuery.isArray(val)){val = jQuery.map(val,function(value){return value == null?"":value + "";});}hooks = jQuery.valHooks[this.type] || jQuery.valHooks[this.nodeName.toLowerCase()]; // If set returns undefined, fall back to normal setting
-if(!hooks || !("set" in hooks) || hooks.set(this,val,"value") === undefined){this.value = val;}});}});jQuery.extend({valHooks:{option:{get:function get(elem){var val=jQuery.find.attr(elem,"value");return val != null?val: // Support: IE10-11+
+if(!hooks || !("set" in hooks) || hooks.set(this,val,"value") === undefined){this.value = val;}});}});jQuery.extend({valHooks:{option:{get:function(elem){var val=jQuery.find.attr(elem,"value");return val != null?val: // Support: IE10-11+
 // option.text throws exceptions (#14686, #14858)
-jQuery.trim(jQuery.text(elem));}},select:{get:function get(elem){var value,option,options=elem.options,index=elem.selectedIndex,one=elem.type === "select-one" || index < 0,values=one?null:[],max=one?index + 1:options.length,i=index < 0?max:one?index:0; // Loop through all the selected options
+jQuery.trim(jQuery.text(elem));}},select:{get:function(elem){var value,option,options=elem.options,index=elem.selectedIndex,one=elem.type === "select-one" || index < 0,values=one?null:[],max=one?index + 1:options.length,i=index < 0?max:one?index:0; // Loop through all the selected options
 for(;i < max;i++) {option = options[i]; // IE6-9 doesn't update selected after form reset (#2551)
 if((option.selected || i === index) && ( // Don't return options that are disabled or in a disabled optgroup
 support.optDisabled?!option.disabled:option.getAttribute("disabled") === null) && (!option.parentNode.disabled || !jQuery.nodeName(option.parentNode,"optgroup"))){ // Get the specific value for the option
 value = jQuery(option).val(); // We don't need an array for one selects
 if(one){return value;} // Multi-Selects return an array
-values.push(value);}}return values;},set:function set(elem,value){var optionSet,option,options=elem.options,values=jQuery.makeArray(value),i=options.length;while(i--) {option = options[i];if(option.selected = jQuery.inArray(option.value,values) >= 0){optionSet = true;}} // Force browsers to behave consistently when non-matching value is set
+values.push(value);}}return values;},set:function(elem,value){var optionSet,option,options=elem.options,values=jQuery.makeArray(value),i=options.length;while(i--) {option = options[i];if(option.selected = jQuery.inArray(option.value,values) >= 0){optionSet = true;}} // Force browsers to behave consistently when non-matching value is set
 if(!optionSet){elem.selectedIndex = -1;}return values;}}}}); // Radios and checkboxes getter/setter
-jQuery.each(["radio","checkbox"],function(){jQuery.valHooks[this] = {set:function set(elem,value){if(jQuery.isArray(value)){return elem.checked = jQuery.inArray(jQuery(elem).val(),value) >= 0;}}};if(!support.checkOn){jQuery.valHooks[this].get = function(elem){return elem.getAttribute("value") === null?"on":elem.value;};}}); // Return jQuery for attributes-only inclusion
+jQuery.each(["radio","checkbox"],function(){jQuery.valHooks[this] = {set:function(elem,value){if(jQuery.isArray(value)){return elem.checked = jQuery.inArray(jQuery(elem).val(),value) >= 0;}}};if(!support.checkOn){jQuery.valHooks[this].get = function(elem){return elem.getAttribute("value") === null?"on":elem.value;};}}); // Return jQuery for attributes-only inclusion
 jQuery.each(("blur focus focusin focusout load resize scroll unload click dblclick " + "mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " + "change select submit keydown keypress keyup error contextmenu").split(" "),function(i,name){ // Handle event binding
-jQuery.fn[name] = function(data,fn){return arguments.length > 0?this.on(name,null,data,fn):this.trigger(name);};});jQuery.fn.extend({hover:function hover(fnOver,fnOut){return this.mouseenter(fnOver).mouseleave(fnOut || fnOver);},bind:function bind(types,data,fn){return this.on(types,null,data,fn);},unbind:function unbind(types,fn){return this.off(types,null,fn);},delegate:function delegate(selector,types,data,fn){return this.on(types,selector,data,fn);},undelegate:function undelegate(selector,types,fn){ // ( namespace ) or ( selector, types [, fn] )
+jQuery.fn[name] = function(data,fn){return arguments.length > 0?this.on(name,null,data,fn):this.trigger(name);};});jQuery.fn.extend({hover:function(fnOver,fnOut){return this.mouseenter(fnOver).mouseleave(fnOut || fnOver);},bind:function(types,data,fn){return this.on(types,null,data,fn);},unbind:function(types,fn){return this.off(types,null,fn);},delegate:function(selector,types,data,fn){return this.on(types,selector,data,fn);},undelegate:function(selector,types,fn){ // ( namespace ) or ( selector, types [, fn] )
 return arguments.length === 1?this.off(selector,"**"):this.off(types,selector || "**",fn);}});var nonce=jQuery.now();var rquery=/\?/; // Support: Android 2.3
 // Workaround failure to string-cast null input
 jQuery.parseJSON = function(data){return JSON.parse(data + "");}; // Cross-browser xml parsing
@@ -28030,10 +27627,10 @@ converters:{ // Convert anything to text
 flatOptions:{url:true,context:true}}, // Creates a full fledged settings object into target
 // with both ajaxSettings and settings fields.
 // If target is omitted, writes into ajaxSettings.
-ajaxSetup:function ajaxSetup(target,settings){return settings? // Building a settings object
+ajaxSetup:function(target,settings){return settings? // Building a settings object
 ajaxExtend(ajaxExtend(target,jQuery.ajaxSettings),settings): // Extending ajaxSettings
 ajaxExtend(jQuery.ajaxSettings,target);},ajaxPrefilter:addToPrefiltersOrTransports(prefilters),ajaxTransport:addToPrefiltersOrTransports(transports), // Main method
-ajax:function ajax(url,options){ // If url is an object, simulate pre-1.5 signature
+ajax:function(url,options){ // If url is an object, simulate pre-1.5 signature
 if(typeof url === "object"){options = url;url = undefined;} // Force options to be an object
 options = options || {};var transport, // URL without anti-cache param
 cacheURL, // Response headers
@@ -28046,19 +27643,19 @@ s=jQuery.ajaxSetup({},options), // Callbacks context
 callbackContext=s.context || s, // Context for global events is callbackContext if it is a DOM node or jQuery collection
 globalEventContext=s.context && (callbackContext.nodeType || callbackContext.jquery)?jQuery(callbackContext):jQuery.event, // Deferreds
 deferred=jQuery.Deferred(),completeDeferred=jQuery.Callbacks("once memory"), // Status-dependent callbacks
-_statusCode=s.statusCode || {}, // Headers (they are sent all at once)
+statusCode=s.statusCode || {}, // Headers (they are sent all at once)
 requestHeaders={},requestHeadersNames={}, // The jqXHR state
 state=0, // Default abort message
 strAbort="canceled", // Fake xhr
 jqXHR={readyState:0, // Builds headers hashtable if needed
-getResponseHeader:function getResponseHeader(key){var match;if(state === 2){if(!responseHeaders){responseHeaders = {};while(match = rheaders.exec(responseHeadersString)) {responseHeaders[match[1].toLowerCase()] = match[2];}}match = responseHeaders[key.toLowerCase()];}return match == null?null:match;}, // Raw string
-getAllResponseHeaders:function getAllResponseHeaders(){return state === 2?responseHeadersString:null;}, // Caches the header
-setRequestHeader:function setRequestHeader(name,value){var lname=name.toLowerCase();if(!state){name = requestHeadersNames[lname] = requestHeadersNames[lname] || name;requestHeaders[name] = value;}return this;}, // Overrides response content-type header
-overrideMimeType:function overrideMimeType(type){if(!state){s.mimeType = type;}return this;}, // Status-dependent callbacks
-statusCode:function statusCode(map){var code;if(map){if(state < 2){for(code in map) { // Lazy-add the new callback in a way that preserves old ones
-_statusCode[code] = [_statusCode[code],map[code]];}}else { // Execute the appropriate callbacks
+getResponseHeader:function(key){var match;if(state === 2){if(!responseHeaders){responseHeaders = {};while(match = rheaders.exec(responseHeadersString)) {responseHeaders[match[1].toLowerCase()] = match[2];}}match = responseHeaders[key.toLowerCase()];}return match == null?null:match;}, // Raw string
+getAllResponseHeaders:function(){return state === 2?responseHeadersString:null;}, // Caches the header
+setRequestHeader:function(name,value){var lname=name.toLowerCase();if(!state){name = requestHeadersNames[lname] = requestHeadersNames[lname] || name;requestHeaders[name] = value;}return this;}, // Overrides response content-type header
+overrideMimeType:function(type){if(!state){s.mimeType = type;}return this;}, // Status-dependent callbacks
+statusCode:function(map){var code;if(map){if(state < 2){for(code in map) { // Lazy-add the new callback in a way that preserves old ones
+statusCode[code] = [statusCode[code],map[code]];}}else { // Execute the appropriate callbacks
 jqXHR.always(map[jqXHR.status]);}}return this;}, // Cancel the request
-abort:function abort(statusText){var finalText=statusText || strAbort;if(transport){transport.abort(finalText);}done(0,finalText);return this;}}; // Attach deferreds
+abort:function(statusText){var finalText=statusText || strAbort;if(transport){transport.abort(finalText);}done(0,finalText);return this;}}; // Attach deferreds
 deferred.promise(jqXHR).complete = completeDeferred.add;jqXHR.success = jqXHR.done;jqXHR.error = jqXHR.fail; // Remove hash character (#7531: and string promotion)
 // Add protocol if not provided (prefilters might expect it)
 // Handle falsy url in the settings object (#10093: consistency with old signature)
@@ -28116,11 +27713,11 @@ if(status === 204 || s.type === "HEAD"){statusText = "nocontent"; // if not modi
 error = statusText;if(status || !statusText){statusText = "error";if(status < 0){status = 0;}}} // Set data for the fake xhr object
 jqXHR.status = status;jqXHR.statusText = (nativeStatusText || statusText) + ""; // Success/Error
 if(isSuccess){deferred.resolveWith(callbackContext,[success,statusText,jqXHR]);}else {deferred.rejectWith(callbackContext,[jqXHR,statusText,error]);} // Status-dependent callbacks
-jqXHR.statusCode(_statusCode);_statusCode = undefined;if(fireGlobals){globalEventContext.trigger(isSuccess?"ajaxSuccess":"ajaxError",[jqXHR,s,isSuccess?success:error]);} // Complete
+jqXHR.statusCode(statusCode);statusCode = undefined;if(fireGlobals){globalEventContext.trigger(isSuccess?"ajaxSuccess":"ajaxError",[jqXHR,s,isSuccess?success:error]);} // Complete
 completeDeferred.fireWith(callbackContext,[jqXHR,statusText]);if(fireGlobals){globalEventContext.trigger("ajaxComplete",[jqXHR,s]); // Handle the global AJAX counter
-if(! --jQuery.active){jQuery.event.trigger("ajaxStop");}}}return jqXHR;},getJSON:function getJSON(url,data,callback){return jQuery.get(url,data,callback,"json");},getScript:function getScript(url,callback){return jQuery.get(url,undefined,callback,"script");}});jQuery.each(["get","post"],function(i,method){jQuery[method] = function(url,data,callback,type){ // Shift arguments if data argument was omitted
-if(jQuery.isFunction(data)){type = type || callback;callback = data;data = undefined;}return jQuery.ajax({url:url,type:method,dataType:type,data:data,success:callback});};});jQuery._evalUrl = function(url){return jQuery.ajax({url:url,type:"GET",dataType:"script",async:false,global:false,"throws":true});};jQuery.fn.extend({wrapAll:function wrapAll(html){var wrap;if(jQuery.isFunction(html)){return this.each(function(i){jQuery(this).wrapAll(html.call(this,i));});}if(this[0]){ // The elements to wrap the target around
-wrap = jQuery(html,this[0].ownerDocument).eq(0).clone(true);if(this[0].parentNode){wrap.insertBefore(this[0]);}wrap.map(function(){var elem=this;while(elem.firstElementChild) {elem = elem.firstElementChild;}return elem;}).append(this);}return this;},wrapInner:function wrapInner(html){if(jQuery.isFunction(html)){return this.each(function(i){jQuery(this).wrapInner(html.call(this,i));});}return this.each(function(){var self=jQuery(this),contents=self.contents();if(contents.length){contents.wrapAll(html);}else {self.append(html);}});},wrap:function wrap(html){var isFunction=jQuery.isFunction(html);return this.each(function(i){jQuery(this).wrapAll(isFunction?html.call(this,i):html);});},unwrap:function unwrap(){return this.parent().each(function(){if(!jQuery.nodeName(this,"body")){jQuery(this).replaceWith(this.childNodes);}}).end();}});jQuery.expr.filters.hidden = function(elem){ // Support: Opera <= 12.12
+if(! --jQuery.active){jQuery.event.trigger("ajaxStop");}}}return jqXHR;},getJSON:function(url,data,callback){return jQuery.get(url,data,callback,"json");},getScript:function(url,callback){return jQuery.get(url,undefined,callback,"script");}});jQuery.each(["get","post"],function(i,method){jQuery[method] = function(url,data,callback,type){ // Shift arguments if data argument was omitted
+if(jQuery.isFunction(data)){type = type || callback;callback = data;data = undefined;}return jQuery.ajax({url:url,type:method,dataType:type,data:data,success:callback});};});jQuery._evalUrl = function(url){return jQuery.ajax({url:url,type:"GET",dataType:"script",async:false,global:false,"throws":true});};jQuery.fn.extend({wrapAll:function(html){var wrap;if(jQuery.isFunction(html)){return this.each(function(i){jQuery(this).wrapAll(html.call(this,i));});}if(this[0]){ // The elements to wrap the target around
+wrap = jQuery(html,this[0].ownerDocument).eq(0).clone(true);if(this[0].parentNode){wrap.insertBefore(this[0]);}wrap.map(function(){var elem=this;while(elem.firstElementChild) {elem = elem.firstElementChild;}return elem;}).append(this);}return this;},wrapInner:function(html){if(jQuery.isFunction(html)){return this.each(function(i){jQuery(this).wrapInner(html.call(this,i));});}return this.each(function(){var self=jQuery(this),contents=self.contents();if(contents.length){contents.wrapAll(html);}else {self.append(html);}});},wrap:function(html){var isFunction=jQuery.isFunction(html);return this.each(function(i){jQuery(this).wrapAll(isFunction?html.call(this,i):html);});},unwrap:function(){return this.parent().each(function(){if(!jQuery.nodeName(this,"body")){jQuery(this).replaceWith(this.childNodes);}}).end();}});jQuery.expr.filters.hidden = function(elem){ // Support: Opera <= 12.12
 // Opera reports offsetWidths and offsetHeights less than zero on some elements
 return elem.offsetWidth <= 0 && elem.offsetHeight <= 0;};jQuery.expr.filters.visible = function(elem){return !jQuery.expr.filters.hidden(elem);};var r20=/%20/g,rbracket=/\[\]$/,rCRLF=/\r?\n/g,rsubmitterTypes=/^(?:submit|button|image|reset|file)$/i,rsubmittable=/^(?:input|select|textarea|keygen)/i;function buildParams(prefix,obj,traditional,add){var name;if(jQuery.isArray(obj)){ // Serialize array item.
 jQuery.each(obj,function(i,v){if(traditional || rbracket.test(prefix)){ // Treat each array item as a scalar.
@@ -28129,14 +27726,14 @@ buildParams(prefix + "[" + (typeof v === "object"?i:"") + "]",v,traditional,add)
 for(name in obj) {buildParams(prefix + "[" + name + "]",obj[name],traditional,add);}}else { // Serialize scalar item.
 add(prefix,obj);}} // Serialize an array of form elements or a set of
 // key/values into a query string
-jQuery.param = function(a,traditional){var prefix,s=[],add=function add(key,value){ // If value is a function, invoke it and return its value
+jQuery.param = function(a,traditional){var prefix,s=[],add=function(key,value){ // If value is a function, invoke it and return its value
 value = jQuery.isFunction(value)?value():value == null?"":value;s[s.length] = encodeURIComponent(key) + "=" + encodeURIComponent(value);}; // Set traditional to true for jQuery <= 1.3.2 behavior.
 if(traditional === undefined){traditional = jQuery.ajaxSettings && jQuery.ajaxSettings.traditional;} // If an array was passed in, assume that it is an array of form elements.
 if(jQuery.isArray(a) || a.jquery && !jQuery.isPlainObject(a)){ // Serialize the form elements
 jQuery.each(a,function(){add(this.name,this.value);});}else { // If traditional, encode the "old" way (the way 1.3.2 or older
 // did it), otherwise encode params recursively.
 for(prefix in a) {buildParams(prefix,a[prefix],traditional,add);}} // Return the resulting serialization
-return s.join("&").replace(r20,"+");};jQuery.fn.extend({serialize:function serialize(){return jQuery.param(this.serializeArray());},serializeArray:function serializeArray(){return this.map(function(){ // Can add propHook for "elements" to filter or add form elements
+return s.join("&").replace(r20,"+");};jQuery.fn.extend({serialize:function(){return jQuery.param(this.serializeArray());},serializeArray:function(){return this.map(function(){ // Can add propHook for "elements" to filter or add form elements
 var elements=jQuery.prop(this,"elements");return elements?jQuery.makeArray(elements):this;}).filter(function(){var type=this.type; // Use .is( ":disabled" ) so that fieldset[disabled] works
 return this.name && !jQuery(this).is(":disabled") && rsubmittable.test(this.nodeName) && !rsubmitterTypes.test(type) && (this.checked || !rcheckableType.test(type));}).map(function(i,elem){var val=jQuery(this).val();return val == null?null:jQuery.isArray(val)?jQuery.map(val,function(val){return {name:elem.name,value:val.replace(rCRLF,"\r\n")};}):{name:elem.name,value:val.replace(rCRLF,"\r\n")};}).get();}});jQuery.ajaxSettings.xhr = function(){try{return new XMLHttpRequest();}catch(e) {}};var xhrId=0,xhrCallbacks={},xhrSuccessStatus={ // file protocol always yields status code 0, assume 200
 0:200, // Support: IE9
@@ -28145,7 +27742,7 @@ return this.name && !jQuery(this).is(":disabled") && rsubmittable.test(this.node
 // Open requests must be manually aborted on unload (#5280)
 // See https://support.microsoft.com/kb/2856746 for more info
 if(window.attachEvent){window.attachEvent("onunload",function(){for(var key in xhrCallbacks) {xhrCallbacks[key]();}});}support.cors = !!xhrSupported && "withCredentials" in xhrSupported;support.ajax = xhrSupported = !!xhrSupported;jQuery.ajaxTransport(function(options){var callback; // Cross domain only allowed if supported through XMLHttpRequest
-if(support.cors || xhrSupported && !options.crossDomain){return {send:function send(headers,complete){var i,xhr=options.xhr(),id=++xhrId;xhr.open(options.type,options.url,options.async,options.username,options.password); // Apply custom fields if provided
+if(support.cors || xhrSupported && !options.crossDomain){return {send:function(headers,complete){var i,xhr=options.xhr(),id=++xhrId;xhr.open(options.type,options.url,options.async,options.username,options.password); // Apply custom fields if provided
 if(options.xhrFields){for(i in options.xhrFields) {xhr[i] = options.xhrFields[i];}} // Override mime type if needed
 if(options.mimeType && xhr.overrideMimeType){xhr.overrideMimeType(options.mimeType);} // X-Requested-With header
 // For cross-domain requests, seeing as conditions for a preflight are
@@ -28162,12 +27759,12 @@ typeof xhr.responseText === "string"?{text:xhr.responseText}:undefined,xhr.getAl
 xhr.onload = callback();xhr.onerror = callback("error"); // Create the abort callback
 callback = xhrCallbacks[id] = callback("abort");try{ // Do send the request (this may raise an exception)
 xhr.send(options.hasContent && options.data || null);}catch(e) { // #14683: Only rethrow if this hasn't been notified as an error yet
-if(callback){throw e;}}},abort:function abort(){if(callback){callback();}}};}}); // Install script dataType
-jQuery.ajaxSetup({accepts:{script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"},contents:{script:/(?:java|ecma)script/},converters:{"text script":function textScript(text){jQuery.globalEval(text);return text;}}}); // Handle cache's special case and crossDomain
+if(callback){throw e;}}},abort:function(){if(callback){callback();}}};}}); // Install script dataType
+jQuery.ajaxSetup({accepts:{script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"},contents:{script:/(?:java|ecma)script/},converters:{"text script":function(text){jQuery.globalEval(text);return text;}}}); // Handle cache's special case and crossDomain
 jQuery.ajaxPrefilter("script",function(s){if(s.cache === undefined){s.cache = false;}if(s.crossDomain){s.type = "GET";}}); // Bind script tag hack transport
 jQuery.ajaxTransport("script",function(s){ // This transport only deals with cross domain requests
-if(s.crossDomain){var script,callback;return {send:function send(_,complete){script = jQuery("<script>").prop({async:true,charset:s.scriptCharset,src:s.url}).on("load error",callback = function(evt){script.remove();callback = null;if(evt){complete(evt.type === "error"?404:200,evt.type);}});document.head.appendChild(script[0]);},abort:function abort(){if(callback){callback();}}};}});var oldCallbacks=[],rjsonp=/(=)\?(?=&|$)|\?\?/; // Default jsonp settings
-jQuery.ajaxSetup({jsonp:"callback",jsonpCallback:function jsonpCallback(){var callback=oldCallbacks.pop() || jQuery.expando + "_" + nonce++;this[callback] = true;return callback;}}); // Detect, normalize options and install callbacks for jsonp requests
+if(s.crossDomain){var script,callback;return {send:function(_,complete){script = jQuery("<script>").prop({async:true,charset:s.scriptCharset,src:s.url}).on("load error",callback = function(evt){script.remove();callback = null;if(evt){complete(evt.type === "error"?404:200,evt.type);}});document.head.appendChild(script[0]);},abort:function(){if(callback){callback();}}};}});var oldCallbacks=[],rjsonp=/(=)\?(?=&|$)|\?\?/; // Default jsonp settings
+jQuery.ajaxSetup({jsonp:"callback",jsonpCallback:function(){var callback=oldCallbacks.pop() || jQuery.expando + "_" + nonce++;this[callback] = true;return callback;}}); // Detect, normalize options and install callbacks for jsonp requests
 jQuery.ajaxPrefilter("json jsonp",function(s,originalSettings,jqXHR){var callbackName,overwritten,responseContainer,jsonProp=s.jsonp !== false && (rjsonp.test(s.url)?"url":typeof s.data === "string" && !(s.contentType || "").indexOf("application/x-www-form-urlencoded") && rjsonp.test(s.data) && "data"); // Handle iff the expected data type is "jsonp" or we have a parameter to set
 if(jsonProp || s.dataTypes[0] === "jsonp"){ // Get callback name, remembering preexisting value associated with it
 callbackName = s.jsonpCallback = jQuery.isFunction(s.jsonpCallback)?s.jsonpCallback():s.jsonpCallback; // Insert callback into url or form data
@@ -28200,19 +27797,19 @@ jQuery("<div>").append(jQuery.parseHTML(responseText)).find(selector): // Otherw
 responseText);}).complete(callback && function(jqXHR,status){self.each(callback,response || [jqXHR.responseText,status,jqXHR]);});}return this;}; // Attach a bunch of functions for handling common AJAX events
 jQuery.each(["ajaxStart","ajaxStop","ajaxComplete","ajaxError","ajaxSuccess","ajaxSend"],function(i,type){jQuery.fn[type] = function(fn){return this.on(type,fn);};});jQuery.expr.filters.animated = function(elem){return jQuery.grep(jQuery.timers,function(fn){return elem === fn.elem;}).length;};var docElem=window.document.documentElement; /**
  * Gets a window from an element
- */function getWindow(elem){return jQuery.isWindow(elem)?elem:elem.nodeType === 9 && elem.defaultView;}jQuery.offset = {setOffset:function setOffset(elem,options,i){var curPosition,curLeft,curCSSTop,curTop,curOffset,curCSSLeft,calculatePosition,position=jQuery.css(elem,"position"),curElem=jQuery(elem),props={}; // Set position first, in-case top/left are set even on static elem
+ */function getWindow(elem){return jQuery.isWindow(elem)?elem:elem.nodeType === 9 && elem.defaultView;}jQuery.offset = {setOffset:function(elem,options,i){var curPosition,curLeft,curCSSTop,curTop,curOffset,curCSSLeft,calculatePosition,position=jQuery.css(elem,"position"),curElem=jQuery(elem),props={}; // Set position first, in-case top/left are set even on static elem
 if(position === "static"){elem.style.position = "relative";}curOffset = curElem.offset();curCSSTop = jQuery.css(elem,"top");curCSSLeft = jQuery.css(elem,"left");calculatePosition = (position === "absolute" || position === "fixed") && (curCSSTop + curCSSLeft).indexOf("auto") > -1; // Need to be able to calculate position if either
 // top or left is auto and position is either absolute or fixed
-if(calculatePosition){curPosition = curElem.position();curTop = curPosition.top;curLeft = curPosition.left;}else {curTop = parseFloat(curCSSTop) || 0;curLeft = parseFloat(curCSSLeft) || 0;}if(jQuery.isFunction(options)){options = options.call(elem,i,curOffset);}if(options.top != null){props.top = options.top - curOffset.top + curTop;}if(options.left != null){props.left = options.left - curOffset.left + curLeft;}if("using" in options){options.using.call(elem,props);}else {curElem.css(props);}}};jQuery.fn.extend({offset:function offset(options){if(arguments.length){return options === undefined?this:this.each(function(i){jQuery.offset.setOffset(this,options,i);});}var docElem,win,elem=this[0],box={top:0,left:0},doc=elem && elem.ownerDocument;if(!doc){return;}docElem = doc.documentElement; // Make sure it's not a disconnected DOM node
+if(calculatePosition){curPosition = curElem.position();curTop = curPosition.top;curLeft = curPosition.left;}else {curTop = parseFloat(curCSSTop) || 0;curLeft = parseFloat(curCSSLeft) || 0;}if(jQuery.isFunction(options)){options = options.call(elem,i,curOffset);}if(options.top != null){props.top = options.top - curOffset.top + curTop;}if(options.left != null){props.left = options.left - curOffset.left + curLeft;}if("using" in options){options.using.call(elem,props);}else {curElem.css(props);}}};jQuery.fn.extend({offset:function(options){if(arguments.length){return options === undefined?this:this.each(function(i){jQuery.offset.setOffset(this,options,i);});}var docElem,win,elem=this[0],box={top:0,left:0},doc=elem && elem.ownerDocument;if(!doc){return;}docElem = doc.documentElement; // Make sure it's not a disconnected DOM node
 if(!jQuery.contains(docElem,elem)){return box;} // Support: BlackBerry 5, iOS 3 (original iPhone)
 // If we don't have gBCR, just use 0,0 rather than error
-if(typeof elem.getBoundingClientRect !== strundefined){box = elem.getBoundingClientRect();}win = getWindow(doc);return {top:box.top + win.pageYOffset - docElem.clientTop,left:box.left + win.pageXOffset - docElem.clientLeft};},position:function position(){if(!this[0]){return;}var offsetParent,offset,elem=this[0],parentOffset={top:0,left:0}; // Fixed elements are offset from window (parentOffset = {top:0, left: 0}, because it is its only offset parent
+if(typeof elem.getBoundingClientRect !== strundefined){box = elem.getBoundingClientRect();}win = getWindow(doc);return {top:box.top + win.pageYOffset - docElem.clientTop,left:box.left + win.pageXOffset - docElem.clientLeft};},position:function(){if(!this[0]){return;}var offsetParent,offset,elem=this[0],parentOffset={top:0,left:0}; // Fixed elements are offset from window (parentOffset = {top:0, left: 0}, because it is its only offset parent
 if(jQuery.css(elem,"position") === "fixed"){ // Assume getBoundingClientRect is there when computed position is fixed
 offset = elem.getBoundingClientRect();}else { // Get *real* offsetParent
 offsetParent = this.offsetParent(); // Get correct offsets
 offset = this.offset();if(!jQuery.nodeName(offsetParent[0],"html")){parentOffset = offsetParent.offset();} // Add offsetParent borders
 parentOffset.top += jQuery.css(offsetParent[0],"borderTopWidth",true);parentOffset.left += jQuery.css(offsetParent[0],"borderLeftWidth",true);} // Subtract parent offsets and element margins
-return {top:offset.top - parentOffset.top - jQuery.css(elem,"marginTop",true),left:offset.left - parentOffset.left - jQuery.css(elem,"marginLeft",true)};},offsetParent:function offsetParent(){return this.map(function(){var offsetParent=this.offsetParent || docElem;while(offsetParent && !jQuery.nodeName(offsetParent,"html") && jQuery.css(offsetParent,"position") === "static") {offsetParent = offsetParent.offsetParent;}return offsetParent || docElem;});}}); // Create scrollLeft and scrollTop methods
+return {top:offset.top - parentOffset.top - jQuery.css(elem,"marginTop",true),left:offset.left - parentOffset.left - jQuery.css(elem,"marginLeft",true)};},offsetParent:function(){return this.map(function(){var offsetParent=this.offsetParent || docElem;while(offsetParent && !jQuery.nodeName(offsetParent,"html") && jQuery.css(offsetParent,"position") === "static") {offsetParent = offsetParent.offsetParent;}return offsetParent || docElem;});}}); // Create scrollLeft and scrollTop methods
 jQuery.each({scrollLeft:"pageXOffset",scrollTop:"pageYOffset"},function(method,prop){var top="pageYOffset" === prop;jQuery.fn[method] = function(val){return access(this,function(elem,method,val){var win=getWindow(elem);if(val === undefined){return win?win[prop]:elem[method];}if(win){win.scrollTo(!top?val:window.pageXOffset,top?val:window.pageYOffset);}else {elem[method] = val;}},method,val,arguments.length,null);};}); // Support: Safari<7+, Chrome<37+
 // Add the top/left cssHooks using jQuery.fn.position
 // Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
@@ -28247,6 +27844,6 @@ _jQuery=window.jQuery, // Map over the $ in case of overwrite
 _$=window.$;jQuery.noConflict = function(deep){if(window.$ === jQuery){window.$ = _$;}if(deep && window.jQuery === jQuery){window.jQuery = _jQuery;}return jQuery;}; // Expose jQuery and $ identifiers, even in AMD
 // (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
 // and CommonJS for browser emulators (#13566)
-if(typeof noGlobal === strundefined){window.jQuery = window.$ = jQuery;}return jQuery;}); // Otherwise append directly
+if(typeof noGlobal === strundefined){window.jQuery = window.$ = jQuery;}return jQuery;});
 
-},{}]},{},[31,227]);
+},{}]},{},[31,37]);
