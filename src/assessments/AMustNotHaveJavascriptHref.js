@@ -7,38 +7,59 @@
  */
 var Case = require('Case');
 
-var AMustNotHaveJavascriptHref = function (test, options) {
+var AMustNotHaveJavascriptHref = {
+  run: function (test, options) {
 
-  options = options || {};
+    options = options || {};
 
-  var selector = 'a[href^="javascript:"]';
+    var selector = 'a[href^="javascript:"]';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: (options.test ? 'inapplicable' : 'passed')
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        }
-        else {
-          status = 'failed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: (options.test ? 'inapplicable' : 'passed')
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          }
+          else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should not use \"javascript\" in their location',
+      nl: 'Links moeten geen \"javascript\" in hun locatie hebben'
+    },
+    description: {
+      en: 'Anchor (<code>a</code>.  elements may not use the \"javascript\" protocol in their \"href\" attributes.',
+      nl: 'Anchor(<code>a</code>.-elementen mogen geen \"javascript\"protocol in hun \"href\"-attributen hebben staan.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'link',
+      'content'
+    ]
+  }
 };
 module.exports = AMustNotHaveJavascriptHref;

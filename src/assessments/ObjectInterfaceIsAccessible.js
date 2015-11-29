@@ -7,36 +7,57 @@
  */
 var Case = require('Case');
 
-var ObjectInterfaceIsAccessible = function (test, options) {
+var ObjectInterfaceIsAccessible = {
+  run: function (test, options) {
 
-  var selector = 'object';
+    var selector = 'object';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: (options.test ? 'inapplicable' : 'passed')
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        }
-        else {
-          status = 'failed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: (options.test ? 'inapplicable' : 'passed')
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          }
+          else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Interfaces within objects must be accessible',
+      nl: 'Interfaces binnen objecten moeten toegankelijk zijn'
+    },
+    description: {
+      en: 'Object content should be assessed for accessibility.',
+      nl: 'Content binnen objecten moeten gecontroleerd worden op toegankelijkheid.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'content'
+    ]
+  }
 };
 module.exports = ObjectInterfaceIsAccessible;

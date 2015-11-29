@@ -7,26 +7,47 @@
  */
 var Case = require('Case');
 
-var BasefontIsNotUsed = function (test) {
+var BasefontIsNotUsed = {
+  run: function (test) {
 
-  var selector = 'basefont';
+    var selector = 'basefont';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: 'failed'
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Basefont should not be used',
+      nl: 'Basefont moet niet worden gebruikt'
+    },
+    description: {
+      en: 'The <code>basefont</code> tag is deprecated and should not be used. Investigate using stylesheets instead.',
+      nl: 'The <code>basefont</code>-tag is afgekeurd en moet niet worden gebruikt. Gebruik in plaats hiervan stylesheets.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'document',
+      'deprecated'
+    ]
+  }
 };
 module.exports = BasefontIsNotUsed;

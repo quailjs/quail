@@ -7,36 +7,63 @@
  */
 var Case = require('Case');
 
-var TableComplexHasSummary = function (test, options) {
+var TableComplexHasSummary = {
+  run: function (test, options) {
 
-  var selector = 'table:not(table[summary], table:has(caption))';
+    var selector = 'table:not(table[summary], table:has(caption))';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: (options.test ? 'inapplicable' : 'passed')
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        }
-        else {
-          status = 'failed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: (options.test ? 'inapplicable' : 'passed')
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          }
+          else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Complex tables should have a summary',
+      nl: 'Complexe tabellen moeten een samenvatting hebben'
+    },
+    description: {
+      en: 'If a table is complex (for example, has some cells with \"colspan\" attributes, the table should have a summary.',
+      nl: 'Als een tabel complex is (bijvoorbeeld, als er cellen zijn met \"colspan\"-attributen, moet de tabel een samenvatting hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: [
+            'H39'
+          ]
+        }
+      }
+    },
+    tags: [
+      'table',
+      'content'
+    ]
+  }
 };
 module.exports = TableComplexHasSummary;

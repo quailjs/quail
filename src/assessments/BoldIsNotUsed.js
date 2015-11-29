@@ -7,26 +7,47 @@
  */
 var Case = require('Case');
 
-var BoldIsNotUsed = function (test) {
+var BoldIsNotUsed = {
+  run: function (test) {
 
-  var selector = 'bold';
+    var selector = 'bold';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: 'failed'
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The \"b\" (bold) element is not used',
+      nl: 'Het \"b\"-element (bold) wordt niet gebruikt'
+    },
+    description: {
+      en: 'The <code>b</code> (bold) element provides no emphasis for non-sighted readers. Use the <code>strong</code> tag instead.',
+      nl: 'Het <code>b</code>-element voorziet niet in nadruk voor blinde en slechtziende gebruikers. Gebruik de <code>strong</code>-tag instead.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'semantics',
+      'content'
+    ]
+  }
 };
 module.exports = BoldIsNotUsed;

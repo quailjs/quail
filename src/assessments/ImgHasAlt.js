@@ -7,32 +7,63 @@
  */
 var Case = require('Case');
 
-var ImgHasAlt = function (test) {
+var ImgHasAlt = {
+  run: function (test) {
 
-  var selector = 'img';
+    var selector = 'img';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'failed';
-
-        if (this.hasAttribute('alt')) {
-          status = 'passed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if (this.hasAttribute('alt')) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Image elements must have an \"alt\" attribute',
+      nl: 'Afbeeldingselementen moeten een \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>img</code> elements must have an alt attribute.',
+      nl: 'Alle <code>img</code>-elementen moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: [
+        'a'
+      ],
+      wcag: {
+        '1.1.1': {
+          techniques: [
+            'F65',
+            'H37'
+          ]
+        }
+      }
+    },
+    tags: [
+      'image',
+      'content'
+    ]
+  }
 };
 module.exports = ImgHasAlt;

@@ -7,32 +7,59 @@
  */
 var Case = require('Case');
 
-var DocumentHasTitleElement = function (test) {
+var DocumentHasTitleElement = {
+  run: function (test) {
 
-  var selector = 'head title';
+    var selector = 'head title';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (candidates.length === 1) {
-      test.add(Case({
-        element: candidates.get(0),
-        status: 'passed'
-      }));
-    }
-    else if (candidates.length === 0) {
-      test.add(Case({
-        element: undefined,
-        status: 'failed'
-      }));
-    }
-    else if (candidates.length > 1) {
-      candidates.each(function () {
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (candidates.length === 1) {
         test.add(Case({
-          element: this,
+          element: candidates.get(0),
+          status: 'passed'
+        }));
+      }
+      else if (candidates.length === 0) {
+        test.add(Case({
+          element: undefined,
           status: 'failed'
         }));
-      });
-    }
-  });
+      }
+      else if (candidates.length > 1) {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document should have a title element',
+      nl: 'Het document moet een titelelement hebben'
+    },
+    description: {
+      en: 'The document should have a title element.',
+      nl: 'Het document moet een titelelement hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques: [
+            'H25'
+          ]
+        }
+      }
+    },
+    tags: [
+      'document',
+      'head'
+    ]
+  }
 };
 module.exports = DocumentHasTitleElement;

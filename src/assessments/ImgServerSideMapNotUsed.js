@@ -7,32 +7,54 @@
  */
 var Case = require('Case');
 
-var ImgServerSideMapNotUsed = function (test) {
+var ImgServerSideMapNotUsed = {
+  run: function (test) {
 
-  var selector = 'img';
+    var selector = 'img';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if (this.hasAttribute('ismap')) {
-          status = 'failed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('ismap')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Server-side image maps should not be used',
+      nl: 'Server-side image maps moeten niet worden gebruikt'
+    },
+    description: {
+      en: 'Server-side image maps should not be used.',
+      nl: 'Server-side image maps mogen niet worden gebruikt.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'image',
+      'imagemap',
+      'content'
+    ]
+  }
 };
 module.exports = ImgServerSideMapNotUsed;

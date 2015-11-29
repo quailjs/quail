@@ -7,28 +7,56 @@
  */
 var Case = require('Case');
 
-var DocumentTitleDescribesDocument = function (test) {
+var DocumentTitleDescribesDocument = {
+  run: function (test) {
 
-  var selector = 'head title';
+    var selector = 'head title';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    var status = (candidates.length === 1) ? 'passed' : 'failed';
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      var status = (candidates.length === 1) ? 'passed' : 'failed';
 
-    if (candidates.length === 0) {
-      test.add(Case({
-        element: undefined,
-        status: status
-      }));
-    }
-    else {
-      candidates.each(function () {
+      if (candidates.length === 0) {
         test.add(Case({
-          element: this,
+          element: undefined,
           status: status
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The title describes the document',
+      nl: 'De titel beschrijft het document'
+    },
+    description: {
+      en: 'The document title should actually describe the page. Often, screen readers use the title to navigate from one window to another.',
+      nl: 'De documenttitel moet een beschrijving zijn van de pagina. Schermlezen gebruiken de titels van pagina\'s om van het ene naar het andere scherm te navigeren.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques: [
+            'F25',
+            'G88'
+          ]
+        }
+      }
+    },
+    tags: [
+      'document',
+      'head'
+    ]
+  }
 };
 module.exports = DocumentTitleDescribesDocument;

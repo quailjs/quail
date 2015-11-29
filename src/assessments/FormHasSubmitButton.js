@@ -7,31 +7,59 @@
  */
 var Case = require('Case');
 
-var FormHasSubmitButton = function (test) {
+var FormHasSubmitButton = {
+  run: function (test) {
 
-  var selector = 'input[type=submit], button[type=submit]';
+    var selector = 'input[type=submit], button[type=submit]';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find('form');
+    this.get('$scope').each(function () {
+      var candidates = $(this).find('form');
 
-    if (candidates.length === 0) {
-      test.add(Case({
-        element: this,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var submitButton = $(this).find(selector);
-
-        var status = (submitButton.length === 1) ? 'passed' : 'failed';
-
+      if (candidates.length === 0) {
         test.add(Case({
           element: this,
-          status: status
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var submitButton = $(this).find(selector);
+
+          var status = (submitButton.length === 1) ? 'passed' : 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Form should have a submit button',
+      nl: 'Formulieren moeten een indienknop hebben'
+    },
+    description: {
+      en: 'Forms should have a button that allows the user to select when they want to submit the form.',
+      nl: 'Formulieren moeten een knop hebben waarmee de gebruiker kan bepalen wanneer zij een formulieren willen versturen.'
+    },
+    guidelines: {
+      wcag: {
+        '3.2.2': {
+          techniques: [
+            'H32',
+            'G80'
+          ]
+        }
+      }
+    },
+    tags: [
+      'form',
+      'content'
+    ]
+  }
 };
 module.exports = FormHasSubmitButton;

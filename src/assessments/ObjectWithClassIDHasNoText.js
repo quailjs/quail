@@ -7,36 +7,57 @@
  */
 var Case = require('Case');
 
-var ObjectWithClassIDHasNoText = function (test, options) {
+var ObjectWithClassIDHasNoText = {
+  run: function (test, options) {
 
-  var selector = 'object[classid]:not(object[classid]:empty)';
+    var selector = 'object[classid]:not(object[classid]:empty)';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: (options.test ? 'inapplicable' : 'passed')
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        }
-        else {
-          status = 'failed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: (options.test ? 'inapplicable' : 'passed')
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          }
+          else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Objects with \"classid\" attributes should change their text if the content of the object changes',
+      nl: 'Objecten met \"classid\"-attributen moeten hun tekst veranderen wanneer de content van het object verandert'
+    },
+    description: {
+      en: 'Objects with \"classid\" attributes, should have their default text change when the object\'s content changes.',
+      nl: 'Van objecten met \"classid\"-attributen moet de standaardtekst veranderen als de content van het object verandert.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'content'
+    ]
+  }
 };
 module.exports = ObjectWithClassIDHasNoText;

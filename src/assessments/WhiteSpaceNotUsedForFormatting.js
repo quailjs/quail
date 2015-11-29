@@ -1,33 +1,59 @@
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var WhiteSpaceNotUsedForFormatting = function (test) {
-  test.get('$scope')
-    .find(TextSelectorComponent)
-    .filter(function (index, element) {
-      return TextNodeFilterComponent(element);
-    })
-    .each(function () {
-      var _case = test.add(Case({
-        element: this
-      }));
-      if ($(this).find('br').length === 0) {
-        _case.set({status: 'passed'});
-        return;
-      }
-      var lines = $(this).html().toLowerCase().split(/(<br\ ?\/?>)+/);
-      var lineCount = 0;
-      $.each(lines, function (index, line) {
-        if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
-          lineCount++;
+var WhiteSpaceNotUsedForFormatting = {
+  run: function (test) {
+    test.get('$scope')
+      .find(TextSelectorComponent)
+      .filter(function (index, element) {
+        return TextNodeFilterComponent(element);
+      })
+      .each(function () {
+        var _case = test.add(Case({
+          element: this
+        }));
+        if ($(this).find('br').length === 0) {
+          _case.set({status: 'passed'});
+          return;
+        }
+        var lines = $(this).html().toLowerCase().split(/(<br\ ?\/?>)+/);
+        var lineCount = 0;
+        $.each(lines, function (index, line) {
+          if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
+            lineCount++;
+          }
+        });
+        if (lineCount > 1) {
+          _case.set({status: 'failed'});
+        }
+        else {
+          _case.set({status: 'cantTell'});
         }
       });
-      if (lineCount > 1) {
-        _case.set({status: 'failed'});
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Whitespace should not be used for conveying information',
+      nl: 'Gebruik geen witruimte om informatie over te brengen'
+    },
+    description: {
+      en: 'Spaces or tabs are not read by assistive technology and should not be used to convey meaning.',
+      nl: 'Spaties of tabs worden niet voorgelezen door hulpprogramma\'s en moeten niet worden gebruikt om betekenis over te dragen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: [
+            'G57'
+          ]
+        }
       }
-      else {
-        _case.set({status: 'cantTell'});
-      }
-    });
+    },
+    tags: [
+      'content'
+    ]
+  }
 };
 module.exports = WhiteSpaceNotUsedForFormatting;

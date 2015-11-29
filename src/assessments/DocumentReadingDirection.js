@@ -7,37 +7,64 @@
  */
 var Case = require('Case');
 
-var DocumentReadingDirection = function (test) {
+var DocumentReadingDirection = {
+  run: function (test) {
 
-  var selector = [
-    '[lang="he"]',
-    '[lang="ar"]'
-  ].join(', ');
+    var selector = [
+      '[lang="he"]',
+      '[lang="ar"]'
+    ].join(', ');
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        if (this.hasAttribute('dir') && (this.getAttribute('dir') || '') === 'rtl') {
-          test.add(Case({
-            element: this,
-            status: 'passed'
-          }));
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      }
+      else {
+        candidates.each(function () {
+          if (this.hasAttribute('dir') && (this.getAttribute('dir') || '') === 'rtl') {
+            test.add(Case({
+              element: this,
+              status: 'passed'
+            }));
+          }
+          else {
+            test.add(Case({
+              element: this,
+              status: 'failed'
+            }));
+          }
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Reading direction of text is correctly marked',
+      nl: 'De leesrichting van de tekst staat juist aangegeven'
+    },
+    description: {
+      en: 'Where required, the reading direction of the document (for language that read in different directions), or portions of the text, must be declared.',
+      nl: 'Voor talen die een andere leesrichting hebben, moet de leesrichting van (een deel van) de tekst in een document worden opgenomen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: [
+            'H34'
+          ]
         }
-        else {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        }
-      });
-    }
-  });
+      }
+    },
+    tags: [
+      'document',
+      'language'
+    ]
+  }
 };
 module.exports = DocumentReadingDirection;

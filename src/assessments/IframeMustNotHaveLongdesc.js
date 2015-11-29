@@ -7,32 +7,54 @@
  */
 var Case = require('Case');
 
-var IframeMustNotHaveLongdesc = function (test) {
+var IframeMustNotHaveLongdesc = {
+  run: function (test) {
 
-  var selector = 'iframe';
+    var selector = 'iframe';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if (this.hasAttribute('longdesc')) {
-          status = 'failed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('longdesc')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Inline frames (\"iframes\") should not have a \"longdesc\" attribute',
+      nl: 'Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut'
+    },
+    description: {
+      en: 'Inline frames (iframe) should not have a \"longdesc\" attribute.',
+      nl: 'Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'iframe',
+      'content'
+    ]
+  }
 };
 module.exports = IframeMustNotHaveLongdesc;

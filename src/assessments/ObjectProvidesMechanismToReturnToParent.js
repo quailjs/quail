@@ -7,36 +7,57 @@
  */
 var Case = require('Case');
 
-var ObjectProvidesMechanismToReturnToParent = function (test, options) {
+var ObjectProvidesMechanismToReturnToParent = {
+  run: function (test, options) {
 
-  var selector = 'object';
+    var selector = 'object';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: (options.test ? 'inapplicable' : 'passed')
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        }
-        else {
-          status = 'failed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: (options.test ? 'inapplicable' : 'passed')
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          }
+          else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All objects should provide a way for keyboard users to escape',
+      nl: 'Alle objecten moeten een manier bevatten voor toetsenbordgebruikers een manier om het object te verlaten'
+    },
+    description: {
+      en: 'Ensure that a user who has only a keyboard as an input device can escape a <code>object</code> element. This requires manual confirmation.',
+      nl: 'Zorg ervoor dat een gebruiker die alleen het toetsenbord als bediening gebruikt een <code>object</code>-element. Hiervoor is handmatige bevestiging nodig.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'content'
+    ]
+  }
 };
 module.exports = ObjectProvidesMechanismToReturnToParent;

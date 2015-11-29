@@ -737,7 +737,7 @@ var EventComponent = function EventComponent(test, options) {
 };
 module.exports = EventComponent;
 
-},{"Case":30,"HasEventListenerComponent":8,"jquery/dist/jquery":228}],7:[function(require,module,exports){
+},{"Case":30,"HasEventListenerComponent":8,"jquery/dist/jquery":401}],7:[function(require,module,exports){
 /**
  *  Returns text contents for nodes depending on their semantics
  */
@@ -888,6 +888,9 @@ var Case = require('Case');
 var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
 var $ = require('jquery/dist/jquery');
 var LabelComponent = function LabelComponent(test, options) {
+
+  options = options || {};
+
   var $scope = test.get('$scope');
   $scope.each(function () {
     var $local = $(this);
@@ -908,7 +911,7 @@ var LabelComponent = function LabelComponent(test, options) {
 };
 module.exports = LabelComponent;
 
-},{"Case":30,"ContainsReadableTextComponent":4,"jquery/dist/jquery":228}],13:[function(require,module,exports){
+},{"Case":30,"ContainsReadableTextComponent":4,"jquery/dist/jquery":401}],13:[function(require,module,exports){
 'use strict';
 
 var LanguageCodesStringsComponent = ['bh', 'bi', 'nb', 'bs', 'br', 'bg', 'my', 'es', 'ca', 'km', 'ch', 'ce', 'ny', 'ny', 'zh', 'za', 'cu', 'cu', 'cv', 'kw', 'co', 'cr', 'hr', 'cs', 'da', 'dv', 'dv', 'nl', 'dz', 'en', 'eo', 'et', 'ee', 'fo', 'fj', 'fi', 'nl', 'fr', 'ff', 'gd', 'gl', 'lg', 'ka', 'de', 'ki', 'el', 'kl', 'gn', 'gu', 'ht', 'ht', 'ha', 'he', 'hz', 'hi', 'ho', 'hu', 'is', 'io', 'ig', 'id', 'ia', 'ie', 'iu', 'ik', 'ga', 'it', 'ja', 'jv', 'kl', 'kn', 'kr', 'ks', 'kk', 'ki', 'rw', 'ky', 'kv', 'kg', 'ko', 'kj', 'ku', 'kj', 'ky', 'lo', 'la', 'lv', 'lb', 'li', 'li', 'li', 'ln', 'lt', 'lu', 'lb', 'mk', 'mg', 'ms', 'ml', 'dv', 'mt', 'gv', 'mi', 'mr', 'mh', 'ro', 'ro', 'mn', 'na', 'nv', 'nv', 'nd', 'nr', 'ng', 'ne', 'nd', 'se', 'no', 'nb', 'nn', 'ii', 'ny', 'nn', 'ie', 'oc', 'oj', 'cu', 'cu', 'cu', 'or', 'om', 'os', 'os', 'pi', 'pa', 'ps', 'fa', 'pl', 'pt', 'pa', 'ps', 'qu', 'ro', 'rm', 'rn', 'ru', 'sm', 'sg', 'sa', 'sc', 'gd', 'sr', 'sn', 'ii', 'sd', 'si', 'si', 'sk', 'sl', 'so', 'st', 'nr', 'es', 'su', 'sw', 'ss', 'sv', 'tl', 'ty', 'tg', 'ta', 'tt', 'te', 'th', 'bo', 'ti', 'to', 'ts', 'tn', 'tr', 'tk', 'tw', 'ug', 'uk', 'ur', 'ug', 'uz', 'ca', 've', 'vi', 'vo', 'wa', 'cy', 'fy', 'wo', 'xh', 'yi', 'yo', 'za', 'zu'];
@@ -1086,7 +1089,7 @@ var PlaceholderComponent = function PlaceholderComponent(test, options) {
 };
 module.exports = PlaceholderComponent;
 
-},{"Case":30,"CleanStringComponent":2,"IsUnreadable":11,"PlaceholdersStringsComponent":17,"jquery/dist/jquery":228}],17:[function(require,module,exports){
+},{"Case":30,"CleanStringComponent":2,"IsUnreadable":11,"PlaceholdersStringsComponent":17,"jquery/dist/jquery":401}],17:[function(require,module,exports){
 'use strict';
 
 var PlaceholdersStringsComponent = ['title', 'untitled', 'untitled document', 'this is the title', 'the title', 'content', ' ', 'new page', 'new', 'nbsp', '&nbsp;', 'spacer', 'image', 'img', 'photo', 'frame', 'frame title', 'iframe', 'iframe title', 'legend'];
@@ -1763,6 +1766,16 @@ module.exports = Case;
 
 'use strict';
 
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
+
 require('babelify/polyfill');
 
 var TestCollection = require('TestCollection');
@@ -1819,11 +1832,10 @@ var quail = {
           var _name = assessmentList[i];
           var mod = _Assessments.get(_name);
           if (mod) {
-            quail.tests.set(_name, {
-              type: 'custom',
+            quail.tests.set(_name, _extends({
               scope: options.html || null,
-              callback: mod
-            });
+              callback: mod.run
+            }, mod.meta));
           }
         }
       } else {
@@ -1833,11 +1845,10 @@ var quail = {
           if (assessmentList.hasOwnProperty(name)) {
             var mod = _Assessments.get(name);
             if (mod) {
-              quail.tests.set(name, {
-                type: 'custom',
+              quail.tests.set(name, _extends({
                 scope: options.html || null,
-                callback: mod
-              });
+                callback: mod.run
+              }, mod.meta));
             }
           }
         }
@@ -1908,7 +1919,7 @@ var quail = {
 };
 module.exports = window.quail = quail;
 
-},{"TestCollection":33,"_Assessments":35,"babelify/polyfill":226,"wcag2":34}],32:[function(require,module,exports){
+},{"TestCollection":33,"_Assessments":227,"babelify/polyfill":225,"wcag2":34}],32:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -2704,353 +2715,6 @@ var wcag2 = (function () {
 module.exports = wcag2;
 
 },{}],35:[function(require,module,exports){
-'use strict';
-var WhiteSpaceNotUsedForFormatting = require('WhiteSpaceNotUsedForFormatting');
-var WhiteSpaceInWord = require('WhiteSpaceInWord');
-var VideosEmbeddedOrLinkedNeedCaptions = require('VideosEmbeddedOrLinkedNeedCaptions');
-var VideoMayBePresent = require('VideoMayBePresent');
-var TextareaHasAssociatedLabel = require('TextareaHasAssociatedLabel');
-var TextIsNotSmall = require('TextIsNotSmall');
-var TabularDataIsInTable = require('TabularDataIsInTable');
-var TableUsesScopeForRow = require('TableUsesScopeForRow');
-var TableUsesCaption = require('TableUsesCaption');
-var TableUsesAbbreviationForHeader = require('TableUsesAbbreviationForHeader');
-var TableUseColGroup = require('TableUseColGroup');
-var TableSummaryIsNotTooLong = require('TableSummaryIsNotTooLong');
-var TableSummaryIsEmpty = require('TableSummaryIsEmpty');
-var TableSummaryDoesNotDuplicateCaption = require('TableSummaryDoesNotDuplicateCaption');
-var TableShouldUseHeaderIDs = require('TableShouldUseHeaderIDs');
-var TableNotUsedForLayout = require('TableNotUsedForLayout');
-var TableLayoutMakesSenseLinearized = require('TableLayoutMakesSenseLinearized');
-var TableLayoutHasNoSummary = require('TableLayoutHasNoSummary');
-var TableLayoutHasNoCaption = require('TableLayoutHasNoCaption');
-var TableLayoutDataShouldNotHaveTh = require('TableLayoutDataShouldNotHaveTh');
-var TableDataShouldHaveTh = require('TableDataShouldHaveTh');
-var TableAxisHasCorrespondingId = require('TableAxisHasCorrespondingId');
-var TabIndexFollowsLogicalOrder = require('TabIndexFollowsLogicalOrder');
-var SvgContainsTitle = require('SvgContainsTitle');
-var SkipToContentLinkProvided = require('SkipToContentLinkProvided');
-var SiteMap = require('SiteMap');
-var SelectJumpMenu = require('SelectJumpMenu');
-var SelectHasAssociatedLabel = require('SelectHasAssociatedLabel');
-var ScriptOnmouseupHasOnkeyup = require('ScriptOnmouseupHasOnkeyup');
-var ScriptOnmouseoverHasOnfocus = require('ScriptOnmouseoverHasOnfocus');
-var ScriptOnmouseoutHasOnmouseblur = require('ScriptOnmouseoutHasOnmouseblur');
-var ScriptOnmousemove = require('ScriptOnmousemove');
-var ScriptOnmousedownRequiresOnKeypress = require('ScriptOnmousedownRequiresOnKeypress');
-var ScriptOndblclickRequiresOnKeypress = require('ScriptOndblclickRequiresOnKeypress');
-var ScriptOnclickRequiresOnKeypress = require('ScriptOnclickRequiresOnKeypress');
-var RadioHasLabel = require('RadioHasLabel');
-var PreShouldNotBeUsedForTabularLayout = require('PreShouldNotBeUsedForTabularLayout');
-var PasswordHasLabel = require('PasswordHasLabel');
-var PNotUsedAsHeader = require('PNotUsedAsHeader');
-var ObjectMustHaveValidTitle = require('ObjectMustHaveValidTitle');
-var ObjectMustHaveTitle = require('ObjectMustHaveTitle');
-var ObjectMustHaveEmbed = require('ObjectMustHaveEmbed');
-var ObjectMustContainText = require('ObjectMustContainText');
-var NewWindowIsOpened = require('NewWindowIsOpened');
-var MenuNotUsedToFormatText = require('MenuNotUsedToFormatText');
-var MarqueeIsNotUsed = require('MarqueeIsNotUsed');
-var ListOfLinksUseList = require('ListOfLinksUseList');
-var ListNotUsedForFormatting = require('ListNotUsedForFormatting');
-var LinkHasAUniqueContext = require('LinkHasAUniqueContext');
-var LiDontUseImageForBullet = require('LiDontUseImageForBullet');
-var LegendTextNotPlaceholder = require('LegendTextNotPlaceholder');
-var LegendTextNotEmpty = require('LegendTextNotEmpty');
-var LanguageUnicodeDirection = require('LanguageUnicodeDirection');
-var LanguageDirectionPunctuation = require('LanguageDirectionPunctuation');
-var LanguageDirAttributeIsUsed = require('LanguageDirAttributeIsUsed');
-var LabelsAreAssignedToAnInput = require('LabelsAreAssignedToAnInput');
-var LabelMustNotBeEmpty = require('LabelMustNotBeEmpty');
-var LabelMustBeUnique = require('LabelMustBeUnique');
-var LabelDoesNotContainInput = require('LabelDoesNotContainInput');
-var InputWithoutLabelHasTitle = require('InputWithoutLabelHasTitle');
-var InputTextValueNotEmpty = require('InputTextValueNotEmpty');
-var InputTextHasValue = require('InputTextHasValue');
-var InputTextHasLabel = require('InputTextHasLabel');
-var InputImageHasAlt = require('InputImageHasAlt');
-var InputImageAltNotRedundant = require('InputImageAltNotRedundant');
-var InputImageAltIsShort = require('InputImageAltIsShort');
-var InputImageAltIsNotPlaceholder = require('InputImageAltIsNotPlaceholder');
-var InputImageAltIsNotFileName = require('InputImageAltIsNotFileName');
-var InputElementsDontHaveAlt = require('InputElementsDontHaveAlt');
-var InputCheckboxRequiresFieldset = require('InputCheckboxRequiresFieldset');
-var ImgWithMathShouldHaveMathEquivalent = require('ImgWithMathShouldHaveMathEquivalent');
-var ImgWithMapHasUseMap = require('ImgWithMapHasUseMap');
-var ImgShouldNotHaveTitle = require('ImgShouldNotHaveTitle');
-var ImgServerSideMapNotUsed = require('ImgServerSideMapNotUsed');
-var ImgNonDecorativeHasAlt = require('ImgNonDecorativeHasAlt');
-var ImgImportantNoSpacerAlt = require('ImgImportantNoSpacerAlt');
-var ImgHasLongDesc = require('ImgHasLongDesc');
-var ImgHasAlt = require('ImgHasAlt');
-var ImgAltNotPlaceHolder = require('ImgAltNotPlaceHolder');
-var ImgAltNotEmptyInAnchor = require('ImgAltNotEmptyInAnchor');
-var ImgAltIsTooLong = require('ImgAltIsTooLong');
-var ImgAltIsDifferent = require('ImgAltIsDifferent');
-var ImageMapServerSide = require('ImageMapServerSide');
-var IframeMustNotHaveLongdesc = require('IframeMustNotHaveLongdesc');
-var IdrefsHasCorrespondingId = require('IdrefsHasCorrespondingId');
-var IIsNotUsed = require('IIsNotUsed');
-var HeadersUseToMarkSections = require('HeadersUseToMarkSections');
-var HeadersHaveText = require('HeadersHaveText');
-var HeadersAttrRefersToATableCell = require('HeadersAttrRefersToATableCell');
-var HeaderH6Format = require('HeaderH6Format');
-var HeaderH5Format = require('HeaderH5Format');
-var HeaderH4Format = require('HeaderH4Format');
-var HeaderH4 = require('HeaderH4');
-var HeaderH3Format = require('HeaderH3Format');
-var HeaderH3 = require('HeaderH3');
-var HeaderH2Format = require('HeaderH2Format');
-var HeaderH2 = require('HeaderH2');
-var HeaderH1Format = require('HeaderH1Format');
-var HeaderH1 = require('HeaderH1');
-var FormWithRequiredLabel = require('FormWithRequiredLabel');
-var FormHasSubmitButton = require('FormHasSubmitButton');
-var FormHasGoodErrorMessage = require('FormHasGoodErrorMessage');
-var FormErrorMessageHelpsUser = require('FormErrorMessageHelpsUser');
-var FormButtonsHaveValue = require('FormButtonsHaveValue');
-var FontIsNotUsed = require('FontIsNotUsed');
-var FileHasLabel = require('FileHasLabel');
-var FieldsetHasLabel = require('FieldsetHasLabel');
-var EmbedMustHaveAltAttribute = require('EmbedMustHaveAltAttribute');
-var EmbedHasAssociatedNoEmbed = require('EmbedHasAssociatedNoEmbed');
-var DomOrderMatchesVisualOrder = require('DomOrderMatchesVisualOrder');
-var DocumentVisualListsAreMarkedUp = require('DocumentVisualListsAreMarkedUp');
-var DocumentTitleNotEmpty = require('DocumentTitleNotEmpty');
-var DocumentTitleIsShort = require('DocumentTitleIsShort');
-var DocumentTitleIsNotPlaceholder = require('DocumentTitleIsNotPlaceholder');
-var DocumentTitleDescribesDocument = require('DocumentTitleDescribesDocument');
-var DocumentStrictDocType = require('DocumentStrictDocType');
-var DocumentReadingDirection = require('DocumentReadingDirection');
-var DocumentMetaNotUsedWithTimeout = require('DocumentMetaNotUsedWithTimeout');
-var DocumentLangNotIdentified = require('DocumentLangNotIdentified');
-var DocumentLangIsISO639Standard = require('DocumentLangIsISO639Standard');
-var DocumentIsWrittenClearly = require('DocumentIsWrittenClearly');
-var DocumentHasTitleElement = require('DocumentHasTitleElement');
-var DocumentContentReadableWithoutStylesheets = require('DocumentContentReadableWithoutStylesheets');
-var DocumentAutoRedirectNotUsed = require('DocumentAutoRedirectNotUsed');
-var DocumentAcronymsHaveElement = require('DocumentAcronymsHaveElement');
-var DoctypeProvided = require('DoctypeProvided');
-var DefinitionListsAreUsed = require('DefinitionListsAreUsed');
-var CssDocumentMakesSenseStyleTurnedOff = require('CssDocumentMakesSenseStyleTurnedOff');
-var ColorFontContrast = require('ColorFontContrast');
-var ColorElementBehindContrast = require('ColorElementBehindContrast');
-var ColorElementBehindBackgroundImageContrast = require('ColorElementBehindBackgroundImageContrast');
-var ColorElementBehindBackgroundGradientContrast = require('ColorElementBehindBackgroundGradientContrast');
-var ColorBackgroundImageContrast = require('ColorBackgroundImageContrast');
-var ColorBackgroundGradientContrast = require('ColorBackgroundGradientContrast');
-var CheckboxHasLabel = require('CheckboxHasLabel');
-var ButtonHasName = require('ButtonHasName');
-var BoldIsNotUsed = require('BoldIsNotUsed');
-var BlockquoteUseForQuotations = require('BlockquoteUseForQuotations');
-var BlockquoteNotUsedForIndentation = require('BlockquoteNotUsedForIndentation');
-var BlinkIsNotUsed = require('BlinkIsNotUsed');
-var BasefontIsNotUsed = require('BasefontIsNotUsed');
-var AudioMayBePresent = require('AudioMayBePresent');
-var AreaLinksToSoundFile = require('AreaLinksToSoundFile');
-var AreaHasAltValue = require('AreaHasAltValue');
-var AreaDontOpenNewWindow = require('AreaDontOpenNewWindow');
-var AreaAltRefersToText = require('AreaAltRefersToText');
-var AreaAltIdentifiesDestination = require('AreaAltIdentifiesDestination');
-var AnimatedGifMayBePresent = require('AnimatedGifMayBePresent');
-var ATitleDescribesDestination = require('ATitleDescribesDestination');
-var ASuspiciousLinkText = require('ASuspiciousLinkText');
-var AppletsDonotUseColorAlone = require('AppletsDonotUseColorAlone');
-var AppletsDoNotFlicker = require('AppletsDoNotFlicker');
-var AppletUIMustBeAccessible = require('AppletUIMustBeAccessible');
-var AppletTextEquivalentsGetUpdated = require('AppletTextEquivalentsGetUpdated');
-var AppletProvidesMechanismToReturnToParent = require('AppletProvidesMechanismToReturnToParent');
-var AppletContainsTextEquivalentInAlt = require('AppletContainsTextEquivalentInAlt');
-var AppletContainsTextEquivalent = require('AppletContainsTextEquivalent');
-var AMustNotHaveJavascriptHref = require('AMustNotHaveJavascriptHref');
-var AMustHaveTitle = require('AMustHaveTitle');
-var AMustContainText = require('AMustContainText');
-var AMultimediaTextAlternative = require('AMultimediaTextAlternative');
-var ALinksToSoundFilesNeedTranscripts = require('ALinksToSoundFilesNeedTranscripts');
-var ALinksToMultiMediaRequireTranscript = require('ALinksToMultiMediaRequireTranscript');
-var ALinksNotSeparatedBySymbols = require('ALinksNotSeparatedBySymbols');
-var ALinksDontOpenNewWindow = require('ALinksDontOpenNewWindow');
-var ALinksAreSeparatedByPrintableCharacters = require('ALinksAreSeparatedByPrintableCharacters');
-var ALinkWithNonText = require('ALinkWithNonText');
-var ALinkTextDoesNotBeginWithRedundantWord = require('ALinkTextDoesNotBeginWithRedundantWord');
-var AInPHasADistinctStyle = require('AInPHasADistinctStyle');
-var AImgAltNotRepetitive = require('AImgAltNotRepetitive');
-var AAdjacentWithSameResourceShouldBeCombined = require('AAdjacentWithSameResourceShouldBeCombined');
-var map = new Map();
-map.set('aAdjacentWithSameResourceShouldBeCombined', AAdjacentWithSameResourceShouldBeCombined);
-map.set('aImgAltNotRepetitive', AImgAltNotRepetitive);
-map.set('aInPHasADistinctStyle', AInPHasADistinctStyle);
-map.set('aLinkTextDoesNotBeginWithRedundantWord', ALinkTextDoesNotBeginWithRedundantWord);
-map.set('aLinkWithNonText', ALinkWithNonText);
-map.set('aLinksAreSeparatedByPrintableCharacters', ALinksAreSeparatedByPrintableCharacters);
-map.set('aLinksDontOpenNewWindow', ALinksDontOpenNewWindow);
-map.set('aLinksNotSeparatedBySymbols', ALinksNotSeparatedBySymbols);
-map.set('aLinksToMultiMediaRequireTranscript', ALinksToMultiMediaRequireTranscript);
-map.set('aLinksToSoundFilesNeedTranscripts', ALinksToSoundFilesNeedTranscripts);
-map.set('aMultimediaTextAlternative', AMultimediaTextAlternative);
-map.set('aMustContainText', AMustContainText);
-map.set('aMustHaveTitle', AMustHaveTitle);
-map.set('aMustNotHaveJavascriptHref', AMustNotHaveJavascriptHref);
-map.set('appletContainsTextEquivalent', AppletContainsTextEquivalent);
-map.set('appletContainsTextEquivalentInAlt', AppletContainsTextEquivalentInAlt);
-map.set('appletProvidesMechanismToReturnToParent', AppletProvidesMechanismToReturnToParent);
-map.set('appletTextEquivalentsGetUpdated', AppletTextEquivalentsGetUpdated);
-map.set('appletUIMustBeAccessible', AppletUIMustBeAccessible);
-map.set('appletsDoNotFlicker', AppletsDoNotFlicker);
-map.set('appletsDonotUseColorAlone', AppletsDonotUseColorAlone);
-map.set('aSuspiciousLinkText', ASuspiciousLinkText);
-map.set('aTitleDescribesDestination', ATitleDescribesDestination);
-map.set('animatedGifMayBePresent', AnimatedGifMayBePresent);
-map.set('areaAltIdentifiesDestination', AreaAltIdentifiesDestination);
-map.set('areaAltRefersToText', AreaAltRefersToText);
-map.set('areaDontOpenNewWindow', AreaDontOpenNewWindow);
-map.set('areaHasAltValue', AreaHasAltValue);
-map.set('areaLinksToSoundFile', AreaLinksToSoundFile);
-map.set('audioMayBePresent', AudioMayBePresent);
-map.set('basefontIsNotUsed', BasefontIsNotUsed);
-map.set('blinkIsNotUsed', BlinkIsNotUsed);
-map.set('blockquoteNotUsedForIndentation', BlockquoteNotUsedForIndentation);
-map.set('blockquoteUseForQuotations', BlockquoteUseForQuotations);
-map.set('boldIsNotUsed', BoldIsNotUsed);
-map.set('buttonHasName', ButtonHasName);
-map.set('checkboxHasLabel', CheckboxHasLabel);
-map.set('colorBackgroundGradientContrast', ColorBackgroundGradientContrast);
-map.set('colorBackgroundImageContrast', ColorBackgroundImageContrast);
-map.set('colorElementBehindBackgroundGradientContrast', ColorElementBehindBackgroundGradientContrast);
-map.set('colorElementBehindBackgroundImageContrast', ColorElementBehindBackgroundImageContrast);
-map.set('colorElementBehindContrast', ColorElementBehindContrast);
-map.set('colorFontContrast', ColorFontContrast);
-map.set('cssDocumentMakesSenseStyleTurnedOff', CssDocumentMakesSenseStyleTurnedOff);
-map.set('definitionListsAreUsed', DefinitionListsAreUsed);
-map.set('doctypeProvided', DoctypeProvided);
-map.set('documentAcronymsHaveElement', DocumentAcronymsHaveElement);
-map.set('documentAutoRedirectNotUsed', DocumentAutoRedirectNotUsed);
-map.set('documentContentReadableWithoutStylesheets', DocumentContentReadableWithoutStylesheets);
-map.set('documentHasTitleElement', DocumentHasTitleElement);
-map.set('documentIsWrittenClearly', DocumentIsWrittenClearly);
-map.set('documentLangIsISO639Standard', DocumentLangIsISO639Standard);
-map.set('documentLangNotIdentified', DocumentLangNotIdentified);
-map.set('documentMetaNotUsedWithTimeout', DocumentMetaNotUsedWithTimeout);
-map.set('documentReadingDirection', DocumentReadingDirection);
-map.set('documentStrictDocType', DocumentStrictDocType);
-map.set('documentTitleDescribesDocument', DocumentTitleDescribesDocument);
-map.set('documentTitleIsNotPlaceholder', DocumentTitleIsNotPlaceholder);
-map.set('documentTitleIsShort', DocumentTitleIsShort);
-map.set('documentTitleNotEmpty', DocumentTitleNotEmpty);
-map.set('documentVisualListsAreMarkedUp', DocumentVisualListsAreMarkedUp);
-map.set('domOrderMatchesVisualOrder', DomOrderMatchesVisualOrder);
-map.set('embedHasAssociatedNoEmbed', EmbedHasAssociatedNoEmbed);
-map.set('embedMustHaveAltAttribute', EmbedMustHaveAltAttribute);
-map.set('fieldsetHasLabel', FieldsetHasLabel);
-map.set('fileHasLabel', FileHasLabel);
-map.set('fontIsNotUsed', FontIsNotUsed);
-map.set('formButtonsHaveValue', FormButtonsHaveValue);
-map.set('formErrorMessageHelpsUser', FormErrorMessageHelpsUser);
-map.set('formHasGoodErrorMessage', FormHasGoodErrorMessage);
-map.set('formHasSubmitButton', FormHasSubmitButton);
-map.set('formWithRequiredLabel', FormWithRequiredLabel);
-map.set('headerH1', HeaderH1);
-map.set('headerH1Format', HeaderH1Format);
-map.set('headerH2', HeaderH2);
-map.set('headerH2Format', HeaderH2Format);
-map.set('headerH3', HeaderH3);
-map.set('headerH3Format', HeaderH3Format);
-map.set('headerH4', HeaderH4);
-map.set('headerH4Format', HeaderH4Format);
-map.set('headerH5Format', HeaderH5Format);
-map.set('headerH6Format', HeaderH6Format);
-map.set('headersAttrRefersToATableCell', HeadersAttrRefersToATableCell);
-map.set('headersHaveText', HeadersHaveText);
-map.set('headersUseToMarkSections', HeadersUseToMarkSections);
-map.set('iIsNotUsed', IIsNotUsed);
-map.set('idrefsHasCorrespondingId', IdrefsHasCorrespondingId);
-map.set('iframeMustNotHaveLongdesc', IframeMustNotHaveLongdesc);
-map.set('imageMapServerSide', ImageMapServerSide);
-map.set('imgAltIsDifferent', ImgAltIsDifferent);
-map.set('imgAltIsTooLong', ImgAltIsTooLong);
-map.set('imgAltNotEmptyInAnchor', ImgAltNotEmptyInAnchor);
-map.set('imgAltNotPlaceHolder', ImgAltNotPlaceHolder);
-map.set('imgHasAlt', ImgHasAlt);
-map.set('imgHasLongDesc', ImgHasLongDesc);
-map.set('imgImportantNoSpacerAlt', ImgImportantNoSpacerAlt);
-map.set('imgNonDecorativeHasAlt', ImgNonDecorativeHasAlt);
-map.set('imgServerSideMapNotUsed', ImgServerSideMapNotUsed);
-map.set('imgShouldNotHaveTitle', ImgShouldNotHaveTitle);
-map.set('imgWithMapHasUseMap', ImgWithMapHasUseMap);
-map.set('imgWithMathShouldHaveMathEquivalent', ImgWithMathShouldHaveMathEquivalent);
-map.set('inputCheckboxRequiresFieldset', InputCheckboxRequiresFieldset);
-map.set('inputElementsDontHaveAlt', InputElementsDontHaveAlt);
-map.set('inputImageAltIsNotFileName', InputImageAltIsNotFileName);
-map.set('inputImageAltIsNotPlaceholder', InputImageAltIsNotPlaceholder);
-map.set('inputImageAltIsShort', InputImageAltIsShort);
-map.set('inputImageAltNotRedundant', InputImageAltNotRedundant);
-map.set('inputImageHasAlt', InputImageHasAlt);
-map.set('inputTextHasLabel', InputTextHasLabel);
-map.set('inputTextHasValue', InputTextHasValue);
-map.set('inputTextValueNotEmpty', InputTextValueNotEmpty);
-map.set('inputWithoutLabelHasTitle', InputWithoutLabelHasTitle);
-map.set('labelDoesNotContainInput', LabelDoesNotContainInput);
-map.set('labelMustBeUnique', LabelMustBeUnique);
-map.set('labelMustNotBeEmpty', LabelMustNotBeEmpty);
-map.set('labelsAreAssignedToAnInput', LabelsAreAssignedToAnInput);
-map.set('languageDirAttributeIsUsed', LanguageDirAttributeIsUsed);
-map.set('languageDirectionPunctuation', LanguageDirectionPunctuation);
-map.set('languageUnicodeDirection', LanguageUnicodeDirection);
-map.set('legendTextNotEmpty', LegendTextNotEmpty);
-map.set('legendTextNotPlaceholder', LegendTextNotPlaceholder);
-map.set('liDontUseImageForBullet', LiDontUseImageForBullet);
-map.set('linkHasAUniqueContext', LinkHasAUniqueContext);
-map.set('listNotUsedForFormatting', ListNotUsedForFormatting);
-map.set('listOfLinksUseList', ListOfLinksUseList);
-map.set('marqueeIsNotUsed', MarqueeIsNotUsed);
-map.set('menuNotUsedToFormatText', MenuNotUsedToFormatText);
-map.set('newWindowIsOpened', NewWindowIsOpened);
-map.set('objectMustContainText', ObjectMustContainText);
-map.set('objectMustHaveEmbed', ObjectMustHaveEmbed);
-map.set('objectMustHaveTitle', ObjectMustHaveTitle);
-map.set('objectMustHaveValidTitle', ObjectMustHaveValidTitle);
-map.set('pNotUsedAsHeader', PNotUsedAsHeader);
-map.set('passwordHasLabel', PasswordHasLabel);
-map.set('preShouldNotBeUsedForTabularLayout', PreShouldNotBeUsedForTabularLayout);
-map.set('radioHasLabel', RadioHasLabel);
-map.set('scriptOnclickRequiresOnKeypress', ScriptOnclickRequiresOnKeypress);
-map.set('scriptOndblclickRequiresOnKeypress', ScriptOndblclickRequiresOnKeypress);
-map.set('scriptOnmousedownRequiresOnKeypress', ScriptOnmousedownRequiresOnKeypress);
-map.set('scriptOnmousemove', ScriptOnmousemove);
-map.set('scriptOnmouseoutHasOnmouseblur', ScriptOnmouseoutHasOnmouseblur);
-map.set('scriptOnmouseoverHasOnfocus', ScriptOnmouseoverHasOnfocus);
-map.set('scriptOnmouseupHasOnkeyup', ScriptOnmouseupHasOnkeyup);
-map.set('selectHasAssociatedLabel', SelectHasAssociatedLabel);
-map.set('selectJumpMenu', SelectJumpMenu);
-map.set('siteMap', SiteMap);
-map.set('skipToContentLinkProvided', SkipToContentLinkProvided);
-map.set('svgContainsTitle', SvgContainsTitle);
-map.set('tabIndexFollowsLogicalOrder', TabIndexFollowsLogicalOrder);
-map.set('tableAxisHasCorrespondingId', TableAxisHasCorrespondingId);
-map.set('tableDataShouldHaveTh', TableDataShouldHaveTh);
-map.set('tableLayoutDataShouldNotHaveTh', TableLayoutDataShouldNotHaveTh);
-map.set('tableLayoutHasNoCaption', TableLayoutHasNoCaption);
-map.set('tableLayoutHasNoSummary', TableLayoutHasNoSummary);
-map.set('tableLayoutMakesSenseLinearized', TableLayoutMakesSenseLinearized);
-map.set('tableNotUsedForLayout', TableNotUsedForLayout);
-map.set('tableShouldUseHeaderIDs', TableShouldUseHeaderIDs);
-map.set('tableSummaryDoesNotDuplicateCaption', TableSummaryDoesNotDuplicateCaption);
-map.set('tableSummaryIsEmpty', TableSummaryIsEmpty);
-map.set('tableSummaryIsNotTooLong', TableSummaryIsNotTooLong);
-map.set('tableUseColGroup', TableUseColGroup);
-map.set('tableUsesAbbreviationForHeader', TableUsesAbbreviationForHeader);
-map.set('tableUsesCaption', TableUsesCaption);
-map.set('tableUsesScopeForRow', TableUsesScopeForRow);
-map.set('tabularDataIsInTable', TabularDataIsInTable);
-map.set('textIsNotSmall', TextIsNotSmall);
-map.set('textareaHasAssociatedLabel', TextareaHasAssociatedLabel);
-map.set('videoMayBePresent', VideoMayBePresent);
-map.set('videosEmbeddedOrLinkedNeedCaptions', VideosEmbeddedOrLinkedNeedCaptions);
-map.set('whiteSpaceInWord', WhiteSpaceInWord);
-map.set('whiteSpaceNotUsedForFormatting', WhiteSpaceNotUsedForFormatting);
-module.exports = map;
-
-},{"AAdjacentWithSameResourceShouldBeCombined":229,"AImgAltNotRepetitive":230,"AInPHasADistinctStyle":231,"ALinkTextDoesNotBeginWithRedundantWord":232,"ALinkWithNonText":233,"ALinksAreSeparatedByPrintableCharacters":234,"ALinksDontOpenNewWindow":235,"ALinksNotSeparatedBySymbols":236,"ALinksToMultiMediaRequireTranscript":237,"ALinksToSoundFilesNeedTranscripts":238,"AMultimediaTextAlternative":239,"AMustContainText":240,"AMustHaveTitle":241,"AMustNotHaveJavascriptHref":242,"ASuspiciousLinkText":243,"ATitleDescribesDestination":244,"AnimatedGifMayBePresent":245,"AppletContainsTextEquivalent":246,"AppletContainsTextEquivalentInAlt":247,"AppletProvidesMechanismToReturnToParent":248,"AppletTextEquivalentsGetUpdated":249,"AppletUIMustBeAccessible":250,"AppletsDoNotFlicker":251,"AppletsDonotUseColorAlone":252,"AreaAltIdentifiesDestination":253,"AreaAltRefersToText":254,"AreaDontOpenNewWindow":255,"AreaHasAltValue":256,"AreaLinksToSoundFile":257,"AudioMayBePresent":258,"BasefontIsNotUsed":259,"BlinkIsNotUsed":260,"BlockquoteNotUsedForIndentation":261,"BlockquoteUseForQuotations":262,"BoldIsNotUsed":263,"ButtonHasName":264,"CheckboxHasLabel":265,"ColorBackgroundGradientContrast":266,"ColorBackgroundImageContrast":267,"ColorElementBehindBackgroundGradientContrast":268,"ColorElementBehindBackgroundImageContrast":269,"ColorElementBehindContrast":270,"ColorFontContrast":271,"CssDocumentMakesSenseStyleTurnedOff":272,"DefinitionListsAreUsed":273,"DoctypeProvided":274,"DocumentAcronymsHaveElement":275,"DocumentAutoRedirectNotUsed":276,"DocumentContentReadableWithoutStylesheets":277,"DocumentHasTitleElement":278,"DocumentIsWrittenClearly":279,"DocumentLangIsISO639Standard":280,"DocumentLangNotIdentified":281,"DocumentMetaNotUsedWithTimeout":282,"DocumentReadingDirection":283,"DocumentStrictDocType":284,"DocumentTitleDescribesDocument":285,"DocumentTitleIsNotPlaceholder":286,"DocumentTitleIsShort":287,"DocumentTitleNotEmpty":288,"DocumentVisualListsAreMarkedUp":289,"DomOrderMatchesVisualOrder":290,"EmbedHasAssociatedNoEmbed":291,"EmbedMustHaveAltAttribute":292,"FieldsetHasLabel":293,"FileHasLabel":294,"FontIsNotUsed":295,"FormButtonsHaveValue":296,"FormErrorMessageHelpsUser":297,"FormHasGoodErrorMessage":298,"FormHasSubmitButton":299,"FormWithRequiredLabel":300,"HeaderH1":301,"HeaderH1Format":302,"HeaderH2":303,"HeaderH2Format":304,"HeaderH3":305,"HeaderH3Format":306,"HeaderH4":307,"HeaderH4Format":308,"HeaderH5Format":309,"HeaderH6Format":310,"HeadersAttrRefersToATableCell":311,"HeadersHaveText":312,"HeadersUseToMarkSections":313,"IIsNotUsed":314,"IdrefsHasCorrespondingId":315,"IframeMustNotHaveLongdesc":316,"ImageMapServerSide":317,"ImgAltIsDifferent":318,"ImgAltIsTooLong":319,"ImgAltNotEmptyInAnchor":320,"ImgAltNotPlaceHolder":321,"ImgHasAlt":322,"ImgHasLongDesc":323,"ImgImportantNoSpacerAlt":324,"ImgNonDecorativeHasAlt":325,"ImgServerSideMapNotUsed":326,"ImgShouldNotHaveTitle":327,"ImgWithMapHasUseMap":328,"ImgWithMathShouldHaveMathEquivalent":329,"InputCheckboxRequiresFieldset":330,"InputElementsDontHaveAlt":331,"InputImageAltIsNotFileName":332,"InputImageAltIsNotPlaceholder":333,"InputImageAltIsShort":334,"InputImageAltNotRedundant":335,"InputImageHasAlt":336,"InputTextHasLabel":337,"InputTextHasValue":338,"InputTextValueNotEmpty":339,"InputWithoutLabelHasTitle":340,"LabelDoesNotContainInput":341,"LabelMustBeUnique":342,"LabelMustNotBeEmpty":343,"LabelsAreAssignedToAnInput":344,"LanguageDirAttributeIsUsed":345,"LanguageDirectionPunctuation":346,"LanguageUnicodeDirection":347,"LegendTextNotEmpty":348,"LegendTextNotPlaceholder":349,"LiDontUseImageForBullet":350,"LinkHasAUniqueContext":351,"ListNotUsedForFormatting":352,"ListOfLinksUseList":353,"MarqueeIsNotUsed":354,"MenuNotUsedToFormatText":355,"NewWindowIsOpened":356,"ObjectMustContainText":357,"ObjectMustHaveEmbed":358,"ObjectMustHaveTitle":359,"ObjectMustHaveValidTitle":360,"PNotUsedAsHeader":361,"PasswordHasLabel":362,"PreShouldNotBeUsedForTabularLayout":363,"RadioHasLabel":364,"ScriptOnclickRequiresOnKeypress":365,"ScriptOndblclickRequiresOnKeypress":366,"ScriptOnmousedownRequiresOnKeypress":367,"ScriptOnmousemove":368,"ScriptOnmouseoutHasOnmouseblur":369,"ScriptOnmouseoverHasOnfocus":370,"ScriptOnmouseupHasOnkeyup":371,"SelectHasAssociatedLabel":372,"SelectJumpMenu":373,"SiteMap":374,"SkipToContentLinkProvided":375,"SvgContainsTitle":376,"TabIndexFollowsLogicalOrder":377,"TableAxisHasCorrespondingId":378,"TableDataShouldHaveTh":379,"TableLayoutDataShouldNotHaveTh":380,"TableLayoutHasNoCaption":381,"TableLayoutHasNoSummary":382,"TableLayoutMakesSenseLinearized":383,"TableNotUsedForLayout":384,"TableShouldUseHeaderIDs":385,"TableSummaryDoesNotDuplicateCaption":386,"TableSummaryIsEmpty":387,"TableSummaryIsNotTooLong":388,"TableUseColGroup":389,"TableUsesAbbreviationForHeader":390,"TableUsesCaption":391,"TableUsesScopeForRow":392,"TabularDataIsInTable":393,"TextIsNotSmall":394,"TextareaHasAssociatedLabel":395,"VideoMayBePresent":396,"VideosEmbeddedOrLinkedNeedCaptions":397,"WhiteSpaceInWord":398,"WhiteSpaceNotUsedForFormatting":399}],36:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -3063,12 +2727,12 @@ if (global._babelPolyfill) {
 }
 global._babelPolyfill = true;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"core-js/shim":223,"regenerator/runtime":224}],37:[function(require,module,exports){
+},{"core-js/shim":222,"regenerator/runtime":223}],36:[function(require,module,exports){
 module.exports = function(it){
   if(typeof it != 'function')throw TypeError(it + ' is not a function!');
   return it;
 };
-},{}],38:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 // 22.1.3.31 Array.prototype[@@unscopables]
 var UNSCOPABLES = require('./$.wks')('unscopables')
   , ArrayProto  = Array.prototype;
@@ -3076,13 +2740,13 @@ if(ArrayProto[UNSCOPABLES] == undefined)require('./$.hide')(ArrayProto, UNSCOPAB
 module.exports = function(key){
   ArrayProto[UNSCOPABLES][key] = true;
 };
-},{"./$.hide":66,"./$.wks":118}],39:[function(require,module,exports){
+},{"./$.hide":65,"./$.wks":117}],38:[function(require,module,exports){
 var isObject = require('./$.is-object');
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
 };
-},{"./$.is-object":73}],40:[function(require,module,exports){
+},{"./$.is-object":72}],39:[function(require,module,exports){
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 'use strict';
 var toObject = require('./$.to-object')
@@ -3110,7 +2774,7 @@ module.exports = [].copyWithin || function copyWithin(target/*= 0*/, start/*= 0,
     from += inc;
   } return O;
 };
-},{"./$.to-index":111,"./$.to-length":114,"./$.to-object":115}],41:[function(require,module,exports){
+},{"./$.to-index":110,"./$.to-length":113,"./$.to-object":114}],40:[function(require,module,exports){
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 'use strict';
 var toObject = require('./$.to-object')
@@ -3127,7 +2791,7 @@ module.exports = [].fill || function fill(value /*, start = 0, end = @length */)
   while(endPos > index)O[index++] = value;
   return O;
 };
-},{"./$.to-index":111,"./$.to-length":114,"./$.to-object":115}],42:[function(require,module,exports){
+},{"./$.to-index":110,"./$.to-length":113,"./$.to-object":114}],41:[function(require,module,exports){
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = require('./$.to-iobject')
@@ -3149,7 +2813,7 @@ module.exports = function(IS_INCLUDES){
     } return !IS_INCLUDES && -1;
   };
 };
-},{"./$.to-index":111,"./$.to-iobject":113,"./$.to-length":114}],43:[function(require,module,exports){
+},{"./$.to-index":110,"./$.to-iobject":112,"./$.to-length":113}],42:[function(require,module,exports){
 // 0 -> Array#forEach
 // 1 -> Array#map
 // 2 -> Array#filter
@@ -3193,7 +2857,7 @@ module.exports = function(TYPE){
     return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : result;
   };
 };
-},{"./$.array-species-create":44,"./$.ctx":52,"./$.iobject":69,"./$.to-length":114,"./$.to-object":115}],44:[function(require,module,exports){
+},{"./$.array-species-create":43,"./$.ctx":51,"./$.iobject":68,"./$.to-length":113,"./$.to-object":114}],43:[function(require,module,exports){
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
 var isObject = require('./$.is-object')
   , isArray  = require('./$.is-array')
@@ -3210,7 +2874,7 @@ module.exports = function(original, length){
     }
   } return new (C === undefined ? Array : C)(length);
 };
-},{"./$.is-array":71,"./$.is-object":73,"./$.wks":118}],45:[function(require,module,exports){
+},{"./$.is-array":70,"./$.is-object":72,"./$.wks":117}],44:[function(require,module,exports){
 // getting tag from 19.1.3.6 Object.prototype.toString()
 var cof = require('./$.cof')
   , TAG = require('./$.wks')('toStringTag')
@@ -3227,13 +2891,13 @@ module.exports = function(it){
     // ES3 arguments fallback
     : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
 };
-},{"./$.cof":46,"./$.wks":118}],46:[function(require,module,exports){
+},{"./$.cof":45,"./$.wks":117}],45:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = function(it){
   return toString.call(it).slice(8, -1);
 };
-},{}],47:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 'use strict';
 var $            = require('./$')
   , hide         = require('./$.hide')
@@ -3393,7 +3057,7 @@ module.exports = {
     setSpecies(NAME);
   }
 };
-},{"./$":81,"./$.ctx":52,"./$.defined":53,"./$.descriptors":54,"./$.for-of":62,"./$.has":65,"./$.hide":66,"./$.is-object":73,"./$.iter-define":77,"./$.iter-step":79,"./$.redefine-all":95,"./$.set-species":100,"./$.strict-new":104,"./$.uid":117}],48:[function(require,module,exports){
+},{"./$":80,"./$.ctx":51,"./$.defined":52,"./$.descriptors":53,"./$.for-of":61,"./$.has":64,"./$.hide":65,"./$.is-object":72,"./$.iter-define":76,"./$.iter-step":78,"./$.redefine-all":94,"./$.set-species":99,"./$.strict-new":103,"./$.uid":116}],47:[function(require,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var forOf   = require('./$.for-of')
   , classof = require('./$.classof');
@@ -3405,7 +3069,7 @@ module.exports = function(NAME){
     return arr;
   };
 };
-},{"./$.classof":45,"./$.for-of":62}],49:[function(require,module,exports){
+},{"./$.classof":44,"./$.for-of":61}],48:[function(require,module,exports){
 'use strict';
 var hide              = require('./$.hide')
   , redefineAll       = require('./$.redefine-all')
@@ -3492,7 +3156,7 @@ module.exports = {
   frozenStore: frozenStore,
   WEAK: WEAK
 };
-},{"./$.an-object":39,"./$.array-methods":43,"./$.for-of":62,"./$.has":65,"./$.hide":66,"./$.is-object":73,"./$.redefine-all":95,"./$.strict-new":104,"./$.uid":117}],50:[function(require,module,exports){
+},{"./$.an-object":38,"./$.array-methods":42,"./$.for-of":61,"./$.has":64,"./$.hide":65,"./$.is-object":72,"./$.redefine-all":94,"./$.strict-new":103,"./$.uid":116}],49:[function(require,module,exports){
 'use strict';
 var global         = require('./$.global')
   , $export        = require('./$.export')
@@ -3572,10 +3236,10 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
 
   return C;
 };
-},{"./$.export":57,"./$.fails":59,"./$.for-of":62,"./$.global":64,"./$.is-object":73,"./$.iter-detect":78,"./$.redefine":96,"./$.redefine-all":95,"./$.set-to-string-tag":101,"./$.strict-new":104}],51:[function(require,module,exports){
+},{"./$.export":56,"./$.fails":58,"./$.for-of":61,"./$.global":63,"./$.is-object":72,"./$.iter-detect":77,"./$.redefine":95,"./$.redefine-all":94,"./$.set-to-string-tag":100,"./$.strict-new":103}],50:[function(require,module,exports){
 var core = module.exports = {version: '1.2.6'};
 if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-},{}],52:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 // optional / simple context binding
 var aFunction = require('./$.a-function');
 module.exports = function(fn, that, length){
@@ -3596,18 +3260,18 @@ module.exports = function(fn, that, length){
     return fn.apply(that, arguments);
   };
 };
-},{"./$.a-function":37}],53:[function(require,module,exports){
+},{"./$.a-function":36}],52:[function(require,module,exports){
 // 7.2.1 RequireObjectCoercible(argument)
 module.exports = function(it){
   if(it == undefined)throw TypeError("Can't call method on  " + it);
   return it;
 };
-},{}],54:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 // Thank's IE8 for his funny defineProperty
 module.exports = !require('./$.fails')(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 });
-},{"./$.fails":59}],55:[function(require,module,exports){
+},{"./$.fails":58}],54:[function(require,module,exports){
 var isObject = require('./$.is-object')
   , document = require('./$.global').document
   // in old IE typeof document.createElement is 'object'
@@ -3615,7 +3279,7 @@ var isObject = require('./$.is-object')
 module.exports = function(it){
   return is ? document.createElement(it) : {};
 };
-},{"./$.global":64,"./$.is-object":73}],56:[function(require,module,exports){
+},{"./$.global":63,"./$.is-object":72}],55:[function(require,module,exports){
 // all enumerable object keys, includes symbols
 var $ = require('./$');
 module.exports = function(it){
@@ -3630,7 +3294,7 @@ module.exports = function(it){
   }
   return keys;
 };
-},{"./$":81}],57:[function(require,module,exports){
+},{"./$":80}],56:[function(require,module,exports){
 var global    = require('./$.global')
   , core      = require('./$.core')
   , hide      = require('./$.hide')
@@ -3672,7 +3336,7 @@ $export.P = 8;  // proto
 $export.B = 16; // bind
 $export.W = 32; // wrap
 module.exports = $export;
-},{"./$.core":51,"./$.ctx":52,"./$.global":64,"./$.hide":66,"./$.redefine":96}],58:[function(require,module,exports){
+},{"./$.core":50,"./$.ctx":51,"./$.global":63,"./$.hide":65,"./$.redefine":95}],57:[function(require,module,exports){
 var MATCH = require('./$.wks')('match');
 module.exports = function(KEY){
   var re = /./;
@@ -3685,7 +3349,7 @@ module.exports = function(KEY){
     } catch(f){ /* empty */ }
   } return true;
 };
-},{"./$.wks":118}],59:[function(require,module,exports){
+},{"./$.wks":117}],58:[function(require,module,exports){
 module.exports = function(exec){
   try {
     return !!exec();
@@ -3693,7 +3357,7 @@ module.exports = function(exec){
     return true;
   }
 };
-},{}],60:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 'use strict';
 var hide     = require('./$.hide')
   , redefine = require('./$.redefine')
@@ -3720,7 +3384,7 @@ module.exports = function(KEY, length, exec){
     );
   }
 };
-},{"./$.defined":53,"./$.fails":59,"./$.hide":66,"./$.redefine":96,"./$.wks":118}],61:[function(require,module,exports){
+},{"./$.defined":52,"./$.fails":58,"./$.hide":65,"./$.redefine":95,"./$.wks":117}],60:[function(require,module,exports){
 'use strict';
 // 21.2.5.3 get RegExp.prototype.flags
 var anObject = require('./$.an-object');
@@ -3734,7 +3398,7 @@ module.exports = function(){
   if(that.sticky)     result += 'y';
   return result;
 };
-},{"./$.an-object":39}],62:[function(require,module,exports){
+},{"./$.an-object":38}],61:[function(require,module,exports){
 var ctx         = require('./$.ctx')
   , call        = require('./$.iter-call')
   , isArrayIter = require('./$.is-array-iter')
@@ -3754,7 +3418,7 @@ module.exports = function(iterable, entries, fn, that){
     call(iterator, f, step.value, entries);
   }
 };
-},{"./$.an-object":39,"./$.ctx":52,"./$.is-array-iter":70,"./$.iter-call":75,"./$.to-length":114,"./core.get-iterator-method":119}],63:[function(require,module,exports){
+},{"./$.an-object":38,"./$.ctx":51,"./$.is-array-iter":69,"./$.iter-call":74,"./$.to-length":113,"./core.get-iterator-method":118}],62:[function(require,module,exports){
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = require('./$.to-iobject')
   , getNames  = require('./$').getNames
@@ -3775,17 +3439,17 @@ module.exports.get = function getOwnPropertyNames(it){
   if(windowNames && toString.call(it) == '[object Window]')return getWindowNames(it);
   return getNames(toIObject(it));
 };
-},{"./$":81,"./$.to-iobject":113}],64:[function(require,module,exports){
+},{"./$":80,"./$.to-iobject":112}],63:[function(require,module,exports){
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
   ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
 if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-},{}],65:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 var hasOwnProperty = {}.hasOwnProperty;
 module.exports = function(it, key){
   return hasOwnProperty.call(it, key);
 };
-},{}],66:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 var $          = require('./$')
   , createDesc = require('./$.property-desc');
 module.exports = require('./$.descriptors') ? function(object, key, value){
@@ -3794,9 +3458,9 @@ module.exports = require('./$.descriptors') ? function(object, key, value){
   object[key] = value;
   return object;
 };
-},{"./$":81,"./$.descriptors":54,"./$.property-desc":94}],67:[function(require,module,exports){
+},{"./$":80,"./$.descriptors":53,"./$.property-desc":93}],66:[function(require,module,exports){
 module.exports = require('./$.global').document && document.documentElement;
-},{"./$.global":64}],68:[function(require,module,exports){
+},{"./$.global":63}],67:[function(require,module,exports){
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
 module.exports = function(fn, args, that){
   var un = that === undefined;
@@ -3813,13 +3477,13 @@ module.exports = function(fn, args, that){
                       : fn.call(that, args[0], args[1], args[2], args[3]);
   } return              fn.apply(that, args);
 };
-},{}],69:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
 var cof = require('./$.cof');
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
-},{"./$.cof":46}],70:[function(require,module,exports){
+},{"./$.cof":45}],69:[function(require,module,exports){
 // check on default Array iterator
 var Iterators  = require('./$.iterators')
   , ITERATOR   = require('./$.wks')('iterator')
@@ -3828,24 +3492,24 @@ var Iterators  = require('./$.iterators')
 module.exports = function(it){
   return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
 };
-},{"./$.iterators":80,"./$.wks":118}],71:[function(require,module,exports){
+},{"./$.iterators":79,"./$.wks":117}],70:[function(require,module,exports){
 // 7.2.2 IsArray(argument)
 var cof = require('./$.cof');
 module.exports = Array.isArray || function(arg){
   return cof(arg) == 'Array';
 };
-},{"./$.cof":46}],72:[function(require,module,exports){
+},{"./$.cof":45}],71:[function(require,module,exports){
 // 20.1.2.3 Number.isInteger(number)
 var isObject = require('./$.is-object')
   , floor    = Math.floor;
 module.exports = function isInteger(it){
   return !isObject(it) && isFinite(it) && floor(it) === it;
 };
-},{"./$.is-object":73}],73:[function(require,module,exports){
+},{"./$.is-object":72}],72:[function(require,module,exports){
 module.exports = function(it){
   return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
-},{}],74:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 // 7.2.8 IsRegExp(argument)
 var isObject = require('./$.is-object')
   , cof      = require('./$.cof')
@@ -3854,7 +3518,7 @@ module.exports = function(it){
   var isRegExp;
   return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : cof(it) == 'RegExp');
 };
-},{"./$.cof":46,"./$.is-object":73,"./$.wks":118}],75:[function(require,module,exports){
+},{"./$.cof":45,"./$.is-object":72,"./$.wks":117}],74:[function(require,module,exports){
 // call something on iterator step with safe closing on error
 var anObject = require('./$.an-object');
 module.exports = function(iterator, fn, value, entries){
@@ -3867,7 +3531,7 @@ module.exports = function(iterator, fn, value, entries){
     throw e;
   }
 };
-},{"./$.an-object":39}],76:[function(require,module,exports){
+},{"./$.an-object":38}],75:[function(require,module,exports){
 'use strict';
 var $              = require('./$')
   , descriptor     = require('./$.property-desc')
@@ -3881,7 +3545,7 @@ module.exports = function(Constructor, NAME, next){
   Constructor.prototype = $.create(IteratorPrototype, {next: descriptor(1, next)});
   setToStringTag(Constructor, NAME + ' Iterator');
 };
-},{"./$":81,"./$.hide":66,"./$.property-desc":94,"./$.set-to-string-tag":101,"./$.wks":118}],77:[function(require,module,exports){
+},{"./$":80,"./$.hide":65,"./$.property-desc":93,"./$.set-to-string-tag":100,"./$.wks":117}],76:[function(require,module,exports){
 'use strict';
 var LIBRARY        = require('./$.library')
   , $export        = require('./$.export')
@@ -3948,7 +3612,7 @@ module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED
   }
   return methods;
 };
-},{"./$":81,"./$.export":57,"./$.has":65,"./$.hide":66,"./$.iter-create":76,"./$.iterators":80,"./$.library":83,"./$.redefine":96,"./$.set-to-string-tag":101,"./$.wks":118}],78:[function(require,module,exports){
+},{"./$":80,"./$.export":56,"./$.has":64,"./$.hide":65,"./$.iter-create":75,"./$.iterators":79,"./$.library":82,"./$.redefine":95,"./$.set-to-string-tag":100,"./$.wks":117}],77:[function(require,module,exports){
 var ITERATOR     = require('./$.wks')('iterator')
   , SAFE_CLOSING = false;
 
@@ -3970,13 +3634,13 @@ module.exports = function(exec, skipClosing){
   } catch(e){ /* empty */ }
   return safe;
 };
-},{"./$.wks":118}],79:[function(require,module,exports){
+},{"./$.wks":117}],78:[function(require,module,exports){
 module.exports = function(done, value){
   return {value: value, done: !!done};
 };
-},{}],80:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 module.exports = {};
-},{}],81:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 var $Object = Object;
 module.exports = {
   create:     $Object.create,
@@ -3990,7 +3654,7 @@ module.exports = {
   getSymbols: $Object.getOwnPropertySymbols,
   each:       [].forEach
 };
-},{}],82:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 var $         = require('./$')
   , toIObject = require('./$.to-iobject');
 module.exports = function(object, el){
@@ -4001,24 +3665,24 @@ module.exports = function(object, el){
     , key;
   while(length > index)if(O[key = keys[index++]] === el)return key;
 };
-},{"./$":81,"./$.to-iobject":113}],83:[function(require,module,exports){
+},{"./$":80,"./$.to-iobject":112}],82:[function(require,module,exports){
 module.exports = false;
-},{}],84:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 // 20.2.2.14 Math.expm1(x)
 module.exports = Math.expm1 || function expm1(x){
   return (x = +x) == 0 ? x : x > -1e-6 && x < 1e-6 ? x + x * x / 2 : Math.exp(x) - 1;
 };
-},{}],85:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 // 20.2.2.20 Math.log1p(x)
 module.exports = Math.log1p || function log1p(x){
   return (x = +x) > -1e-8 && x < 1e-8 ? x - x * x / 2 : Math.log(1 + x);
 };
-},{}],86:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 // 20.2.2.28 Math.sign(x)
 module.exports = Math.sign || function sign(x){
   return (x = +x) == 0 || x != x ? x : x < 0 ? -1 : 1;
 };
-},{}],87:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 var global    = require('./$.global')
   , macrotask = require('./$.task').set
   , Observer  = global.MutationObserver || global.WebKitMutationObserver
@@ -4083,7 +3747,7 @@ module.exports = function asap(fn){
     notify();
   } last = task;
 };
-},{"./$.cof":46,"./$.global":64,"./$.task":110}],88:[function(require,module,exports){
+},{"./$.cof":45,"./$.global":63,"./$.task":109}],87:[function(require,module,exports){
 // 19.1.2.1 Object.assign(target, source, ...)
 var $        = require('./$')
   , toObject = require('./$.to-object')
@@ -4117,7 +3781,7 @@ module.exports = require('./$.fails')(function(){
   }
   return T;
 } : Object.assign;
-},{"./$":81,"./$.fails":59,"./$.iobject":69,"./$.to-object":115}],89:[function(require,module,exports){
+},{"./$":80,"./$.fails":58,"./$.iobject":68,"./$.to-object":114}],88:[function(require,module,exports){
 // most Object methods by ES6 should accept primitives
 var $export = require('./$.export')
   , core    = require('./$.core')
@@ -4128,7 +3792,7 @@ module.exports = function(KEY, exec){
   exp[KEY] = exec(fn);
   $export($export.S + $export.F * fails(function(){ fn(1); }), 'Object', exp);
 };
-},{"./$.core":51,"./$.export":57,"./$.fails":59}],90:[function(require,module,exports){
+},{"./$.core":50,"./$.export":56,"./$.fails":58}],89:[function(require,module,exports){
 var $         = require('./$')
   , toIObject = require('./$.to-iobject')
   , isEnum    = $.isEnum;
@@ -4145,7 +3809,7 @@ module.exports = function(isEntries){
     } return result;
   };
 };
-},{"./$":81,"./$.to-iobject":113}],91:[function(require,module,exports){
+},{"./$":80,"./$.to-iobject":112}],90:[function(require,module,exports){
 // all object keys, includes non-enumerable and symbols
 var $        = require('./$')
   , anObject = require('./$.an-object')
@@ -4155,7 +3819,7 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
     , getSymbols = $.getSymbols;
   return getSymbols ? keys.concat(getSymbols(it)) : keys;
 };
-},{"./$":81,"./$.an-object":39,"./$.global":64}],92:[function(require,module,exports){
+},{"./$":80,"./$.an-object":38,"./$.global":63}],91:[function(require,module,exports){
 'use strict';
 var path      = require('./$.path')
   , invoke    = require('./$.invoke')
@@ -4180,9 +3844,9 @@ module.exports = function(/* ...pargs */){
     return invoke(fn, args, that);
   };
 };
-},{"./$.a-function":37,"./$.invoke":68,"./$.path":93}],93:[function(require,module,exports){
+},{"./$.a-function":36,"./$.invoke":67,"./$.path":92}],92:[function(require,module,exports){
 module.exports = require('./$.global');
-},{"./$.global":64}],94:[function(require,module,exports){
+},{"./$.global":63}],93:[function(require,module,exports){
 module.exports = function(bitmap, value){
   return {
     enumerable  : !(bitmap & 1),
@@ -4191,13 +3855,13 @@ module.exports = function(bitmap, value){
     value       : value
   };
 };
-},{}],95:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 var redefine = require('./$.redefine');
 module.exports = function(target, src){
   for(var key in src)redefine(target, key, src[key]);
   return target;
 };
-},{"./$.redefine":96}],96:[function(require,module,exports){
+},{"./$.redefine":95}],95:[function(require,module,exports){
 // add fake Function#toString
 // for correct work wrapped methods / constructors with methods like LoDash isNative
 var global    = require('./$.global')
@@ -4225,7 +3889,7 @@ require('./$.core').inspectSource = function(it){
 })(Function.prototype, TO_STRING, function toString(){
   return typeof this == 'function' && this[SRC] || $toString.call(this);
 });
-},{"./$.core":51,"./$.global":64,"./$.hide":66,"./$.uid":117}],97:[function(require,module,exports){
+},{"./$.core":50,"./$.global":63,"./$.hide":65,"./$.uid":116}],96:[function(require,module,exports){
 module.exports = function(regExp, replace){
   var replacer = replace === Object(replace) ? function(part){
     return replace[part];
@@ -4234,12 +3898,12 @@ module.exports = function(regExp, replace){
     return String(it).replace(regExp, replacer);
   };
 };
-},{}],98:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 // 7.2.9 SameValue(x, y)
 module.exports = Object.is || function is(x, y){
   return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
 };
-},{}],99:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var getDesc  = require('./$').getDesc
@@ -4266,7 +3930,7 @@ module.exports = {
     }({}, false) : undefined),
   check: check
 };
-},{"./$":81,"./$.an-object":39,"./$.ctx":52,"./$.is-object":73}],100:[function(require,module,exports){
+},{"./$":80,"./$.an-object":38,"./$.ctx":51,"./$.is-object":72}],99:[function(require,module,exports){
 'use strict';
 var global      = require('./$.global')
   , $           = require('./$')
@@ -4280,7 +3944,7 @@ module.exports = function(KEY){
     get: function(){ return this; }
   });
 };
-},{"./$":81,"./$.descriptors":54,"./$.global":64,"./$.wks":118}],101:[function(require,module,exports){
+},{"./$":80,"./$.descriptors":53,"./$.global":63,"./$.wks":117}],100:[function(require,module,exports){
 var def = require('./$').setDesc
   , has = require('./$.has')
   , TAG = require('./$.wks')('toStringTag');
@@ -4288,14 +3952,14 @@ var def = require('./$').setDesc
 module.exports = function(it, tag, stat){
   if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
 };
-},{"./$":81,"./$.has":65,"./$.wks":118}],102:[function(require,module,exports){
+},{"./$":80,"./$.has":64,"./$.wks":117}],101:[function(require,module,exports){
 var global = require('./$.global')
   , SHARED = '__core-js_shared__'
   , store  = global[SHARED] || (global[SHARED] = {});
 module.exports = function(key){
   return store[key] || (store[key] = {});
 };
-},{"./$.global":64}],103:[function(require,module,exports){
+},{"./$.global":63}],102:[function(require,module,exports){
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
 var anObject  = require('./$.an-object')
   , aFunction = require('./$.a-function')
@@ -4304,12 +3968,12 @@ module.exports = function(O, D){
   var C = anObject(O).constructor, S;
   return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
 };
-},{"./$.a-function":37,"./$.an-object":39,"./$.wks":118}],104:[function(require,module,exports){
+},{"./$.a-function":36,"./$.an-object":38,"./$.wks":117}],103:[function(require,module,exports){
 module.exports = function(it, Constructor, name){
   if(!(it instanceof Constructor))throw TypeError(name + ": use the 'new' operator!");
   return it;
 };
-},{}],105:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 var toInteger = require('./$.to-integer')
   , defined   = require('./$.defined');
 // true  -> String#at
@@ -4327,7 +3991,7 @@ module.exports = function(TO_STRING){
       : TO_STRING ? s.slice(i, i + 2) : (a - 0xd800 << 10) + (b - 0xdc00) + 0x10000;
   };
 };
-},{"./$.defined":53,"./$.to-integer":112}],106:[function(require,module,exports){
+},{"./$.defined":52,"./$.to-integer":111}],105:[function(require,module,exports){
 // helper for String#{startsWith, endsWith, includes}
 var isRegExp = require('./$.is-regexp')
   , defined  = require('./$.defined');
@@ -4336,7 +4000,7 @@ module.exports = function(that, searchString, NAME){
   if(isRegExp(searchString))throw TypeError('String#' + NAME + " doesn't accept regex!");
   return String(defined(that));
 };
-},{"./$.defined":53,"./$.is-regexp":74}],107:[function(require,module,exports){
+},{"./$.defined":52,"./$.is-regexp":73}],106:[function(require,module,exports){
 // https://github.com/ljharb/proposal-string-pad-left-right
 var toLength = require('./$.to-length')
   , repeat   = require('./$.string-repeat')
@@ -4354,7 +4018,7 @@ module.exports = function(that, maxLength, fillString, left){
   if(stringFiller.length > fillLen)stringFiller = stringFiller.slice(0, fillLen);
   return left ? stringFiller + S : S + stringFiller;
 };
-},{"./$.defined":53,"./$.string-repeat":108,"./$.to-length":114}],108:[function(require,module,exports){
+},{"./$.defined":52,"./$.string-repeat":107,"./$.to-length":113}],107:[function(require,module,exports){
 'use strict';
 var toInteger = require('./$.to-integer')
   , defined   = require('./$.defined');
@@ -4367,7 +4031,7 @@ module.exports = function repeat(count){
   for(;n > 0; (n >>>= 1) && (str += str))if(n & 1)res += str;
   return res;
 };
-},{"./$.defined":53,"./$.to-integer":112}],109:[function(require,module,exports){
+},{"./$.defined":52,"./$.to-integer":111}],108:[function(require,module,exports){
 var $export = require('./$.export')
   , defined = require('./$.defined')
   , fails   = require('./$.fails')
@@ -4397,7 +4061,7 @@ var trim = exporter.trim = function(string, TYPE){
 };
 
 module.exports = exporter;
-},{"./$.defined":53,"./$.export":57,"./$.fails":59}],110:[function(require,module,exports){
+},{"./$.defined":52,"./$.export":56,"./$.fails":58}],109:[function(require,module,exports){
 var ctx                = require('./$.ctx')
   , invoke             = require('./$.invoke')
   , html               = require('./$.html')
@@ -4473,7 +4137,7 @@ module.exports = {
   set:   setTask,
   clear: clearTask
 };
-},{"./$.cof":46,"./$.ctx":52,"./$.dom-create":55,"./$.global":64,"./$.html":67,"./$.invoke":68}],111:[function(require,module,exports){
+},{"./$.cof":45,"./$.ctx":51,"./$.dom-create":54,"./$.global":63,"./$.html":66,"./$.invoke":67}],110:[function(require,module,exports){
 var toInteger = require('./$.to-integer')
   , max       = Math.max
   , min       = Math.min;
@@ -4481,34 +4145,34 @@ module.exports = function(index, length){
   index = toInteger(index);
   return index < 0 ? max(index + length, 0) : min(index, length);
 };
-},{"./$.to-integer":112}],112:[function(require,module,exports){
+},{"./$.to-integer":111}],111:[function(require,module,exports){
 // 7.1.4 ToInteger
 var ceil  = Math.ceil
   , floor = Math.floor;
 module.exports = function(it){
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
-},{}],113:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = require('./$.iobject')
   , defined = require('./$.defined');
 module.exports = function(it){
   return IObject(defined(it));
 };
-},{"./$.defined":53,"./$.iobject":69}],114:[function(require,module,exports){
+},{"./$.defined":52,"./$.iobject":68}],113:[function(require,module,exports){
 // 7.1.15 ToLength
 var toInteger = require('./$.to-integer')
   , min       = Math.min;
 module.exports = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
-},{"./$.to-integer":112}],115:[function(require,module,exports){
+},{"./$.to-integer":111}],114:[function(require,module,exports){
 // 7.1.13 ToObject(argument)
 var defined = require('./$.defined');
 module.exports = function(it){
   return Object(defined(it));
 };
-},{"./$.defined":53}],116:[function(require,module,exports){
+},{"./$.defined":52}],115:[function(require,module,exports){
 // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = require('./$.is-object');
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
@@ -4521,13 +4185,13 @@ module.exports = function(it, S){
   if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
   throw TypeError("Can't convert object to primitive value");
 };
-},{"./$.is-object":73}],117:[function(require,module,exports){
+},{"./$.is-object":72}],116:[function(require,module,exports){
 var id = 0
   , px = Math.random();
 module.exports = function(key){
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
-},{}],118:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 var store  = require('./$.shared')('wks')
   , uid    = require('./$.uid')
   , Symbol = require('./$.global').Symbol;
@@ -4535,7 +4199,7 @@ module.exports = function(name){
   return store[name] || (store[name] =
     Symbol && Symbol[name] || (Symbol || uid)('Symbol.' + name));
 };
-},{"./$.global":64,"./$.shared":102,"./$.uid":117}],119:[function(require,module,exports){
+},{"./$.global":63,"./$.shared":101,"./$.uid":116}],118:[function(require,module,exports){
 var classof   = require('./$.classof')
   , ITERATOR  = require('./$.wks')('iterator')
   , Iterators = require('./$.iterators');
@@ -4544,7 +4208,7 @@ module.exports = require('./$.core').getIteratorMethod = function(it){
     || it['@@iterator']
     || Iterators[classof(it)];
 };
-},{"./$.classof":45,"./$.core":51,"./$.iterators":80,"./$.wks":118}],120:[function(require,module,exports){
+},{"./$.classof":44,"./$.core":50,"./$.iterators":79,"./$.wks":117}],119:[function(require,module,exports){
 'use strict';
 var $                 = require('./$')
   , $export           = require('./$.export')
@@ -4821,21 +4485,21 @@ $export($export.P + $export.F * (fails(function(){
       ':' + lz(d.getUTCSeconds()) + '.' + (m > 99 ? m : '0' + lz(m)) + 'Z';
   }
 });
-},{"./$":81,"./$.a-function":37,"./$.an-object":39,"./$.array-includes":42,"./$.array-methods":43,"./$.cof":46,"./$.descriptors":54,"./$.dom-create":55,"./$.export":57,"./$.fails":59,"./$.has":65,"./$.html":67,"./$.invoke":68,"./$.iobject":69,"./$.is-array":71,"./$.is-object":73,"./$.property-desc":94,"./$.to-index":111,"./$.to-integer":112,"./$.to-iobject":113,"./$.to-length":114,"./$.to-object":115,"./$.uid":117}],121:[function(require,module,exports){
+},{"./$":80,"./$.a-function":36,"./$.an-object":38,"./$.array-includes":41,"./$.array-methods":42,"./$.cof":45,"./$.descriptors":53,"./$.dom-create":54,"./$.export":56,"./$.fails":58,"./$.has":64,"./$.html":66,"./$.invoke":67,"./$.iobject":68,"./$.is-array":70,"./$.is-object":72,"./$.property-desc":93,"./$.to-index":110,"./$.to-integer":111,"./$.to-iobject":112,"./$.to-length":113,"./$.to-object":114,"./$.uid":116}],120:[function(require,module,exports){
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 var $export = require('./$.export');
 
 $export($export.P, 'Array', {copyWithin: require('./$.array-copy-within')});
 
 require('./$.add-to-unscopables')('copyWithin');
-},{"./$.add-to-unscopables":38,"./$.array-copy-within":40,"./$.export":57}],122:[function(require,module,exports){
+},{"./$.add-to-unscopables":37,"./$.array-copy-within":39,"./$.export":56}],121:[function(require,module,exports){
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 var $export = require('./$.export');
 
 $export($export.P, 'Array', {fill: require('./$.array-fill')});
 
 require('./$.add-to-unscopables')('fill');
-},{"./$.add-to-unscopables":38,"./$.array-fill":41,"./$.export":57}],123:[function(require,module,exports){
+},{"./$.add-to-unscopables":37,"./$.array-fill":40,"./$.export":56}],122:[function(require,module,exports){
 'use strict';
 // 22.1.3.9 Array.prototype.findIndex(predicate, thisArg = undefined)
 var $export = require('./$.export')
@@ -4850,7 +4514,7 @@ $export($export.P + $export.F * forced, 'Array', {
   }
 });
 require('./$.add-to-unscopables')(KEY);
-},{"./$.add-to-unscopables":38,"./$.array-methods":43,"./$.export":57}],124:[function(require,module,exports){
+},{"./$.add-to-unscopables":37,"./$.array-methods":42,"./$.export":56}],123:[function(require,module,exports){
 'use strict';
 // 22.1.3.8 Array.prototype.find(predicate, thisArg = undefined)
 var $export = require('./$.export')
@@ -4865,7 +4529,7 @@ $export($export.P + $export.F * forced, 'Array', {
   }
 });
 require('./$.add-to-unscopables')(KEY);
-},{"./$.add-to-unscopables":38,"./$.array-methods":43,"./$.export":57}],125:[function(require,module,exports){
+},{"./$.add-to-unscopables":37,"./$.array-methods":42,"./$.export":56}],124:[function(require,module,exports){
 'use strict';
 var ctx         = require('./$.ctx')
   , $export     = require('./$.export')
@@ -4903,7 +4567,7 @@ $export($export.S + $export.F * !require('./$.iter-detect')(function(iter){ Arra
   }
 });
 
-},{"./$.ctx":52,"./$.export":57,"./$.is-array-iter":70,"./$.iter-call":75,"./$.iter-detect":78,"./$.to-length":114,"./$.to-object":115,"./core.get-iterator-method":119}],126:[function(require,module,exports){
+},{"./$.ctx":51,"./$.export":56,"./$.is-array-iter":69,"./$.iter-call":74,"./$.iter-detect":77,"./$.to-length":113,"./$.to-object":114,"./core.get-iterator-method":118}],125:[function(require,module,exports){
 'use strict';
 var addToUnscopables = require('./$.add-to-unscopables')
   , step             = require('./$.iter-step')
@@ -4938,7 +4602,7 @@ Iterators.Arguments = Iterators.Array;
 addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
-},{"./$.add-to-unscopables":38,"./$.iter-define":77,"./$.iter-step":79,"./$.iterators":80,"./$.to-iobject":113}],127:[function(require,module,exports){
+},{"./$.add-to-unscopables":37,"./$.iter-define":76,"./$.iter-step":78,"./$.iterators":79,"./$.to-iobject":112}],126:[function(require,module,exports){
 'use strict';
 var $export = require('./$.export');
 
@@ -4958,9 +4622,9 @@ $export($export.S + $export.F * require('./$.fails')(function(){
     return result;
   }
 });
-},{"./$.export":57,"./$.fails":59}],128:[function(require,module,exports){
+},{"./$.export":56,"./$.fails":58}],127:[function(require,module,exports){
 require('./$.set-species')('Array');
-},{"./$.set-species":100}],129:[function(require,module,exports){
+},{"./$.set-species":99}],128:[function(require,module,exports){
 'use strict';
 var $             = require('./$')
   , isObject      = require('./$.is-object')
@@ -4974,7 +4638,7 @@ if(!(HAS_INSTANCE in FunctionProto))$.setDesc(FunctionProto, HAS_INSTANCE, {valu
   while(O = $.getProto(O))if(this.prototype === O)return true;
   return false;
 }});
-},{"./$":81,"./$.is-object":73,"./$.wks":118}],130:[function(require,module,exports){
+},{"./$":80,"./$.is-object":72,"./$.wks":117}],129:[function(require,module,exports){
 var setDesc    = require('./$').setDesc
   , createDesc = require('./$.property-desc')
   , has        = require('./$.has')
@@ -4991,7 +4655,7 @@ NAME in FProto || require('./$.descriptors') && setDesc(FProto, NAME, {
     return name;
   }
 });
-},{"./$":81,"./$.descriptors":54,"./$.has":65,"./$.property-desc":94}],131:[function(require,module,exports){
+},{"./$":80,"./$.descriptors":53,"./$.has":64,"./$.property-desc":93}],130:[function(require,module,exports){
 'use strict';
 var strong = require('./$.collection-strong');
 
@@ -5009,7 +4673,7 @@ require('./$.collection')('Map', function(get){
     return strong.def(this, key === 0 ? 0 : key, value);
   }
 }, strong, true);
-},{"./$.collection":50,"./$.collection-strong":47}],132:[function(require,module,exports){
+},{"./$.collection":49,"./$.collection-strong":46}],131:[function(require,module,exports){
 // 20.2.2.3 Math.acosh(x)
 var $export = require('./$.export')
   , log1p   = require('./$.math-log1p')
@@ -5024,7 +4688,7 @@ $export($export.S + $export.F * !($acosh && Math.floor($acosh(Number.MAX_VALUE))
       : log1p(x - 1 + sqrt(x - 1) * sqrt(x + 1));
   }
 });
-},{"./$.export":57,"./$.math-log1p":85}],133:[function(require,module,exports){
+},{"./$.export":56,"./$.math-log1p":84}],132:[function(require,module,exports){
 // 20.2.2.5 Math.asinh(x)
 var $export = require('./$.export');
 
@@ -5033,7 +4697,7 @@ function asinh(x){
 }
 
 $export($export.S, 'Math', {asinh: asinh});
-},{"./$.export":57}],134:[function(require,module,exports){
+},{"./$.export":56}],133:[function(require,module,exports){
 // 20.2.2.7 Math.atanh(x)
 var $export = require('./$.export');
 
@@ -5042,7 +4706,7 @@ $export($export.S, 'Math', {
     return (x = +x) == 0 ? x : Math.log((1 + x) / (1 - x)) / 2;
   }
 });
-},{"./$.export":57}],135:[function(require,module,exports){
+},{"./$.export":56}],134:[function(require,module,exports){
 // 20.2.2.9 Math.cbrt(x)
 var $export = require('./$.export')
   , sign    = require('./$.math-sign');
@@ -5052,7 +4716,7 @@ $export($export.S, 'Math', {
     return sign(x = +x) * Math.pow(Math.abs(x), 1 / 3);
   }
 });
-},{"./$.export":57,"./$.math-sign":86}],136:[function(require,module,exports){
+},{"./$.export":56,"./$.math-sign":85}],135:[function(require,module,exports){
 // 20.2.2.11 Math.clz32(x)
 var $export = require('./$.export');
 
@@ -5061,7 +4725,7 @@ $export($export.S, 'Math', {
     return (x >>>= 0) ? 31 - Math.floor(Math.log(x + 0.5) * Math.LOG2E) : 32;
   }
 });
-},{"./$.export":57}],137:[function(require,module,exports){
+},{"./$.export":56}],136:[function(require,module,exports){
 // 20.2.2.12 Math.cosh(x)
 var $export = require('./$.export')
   , exp     = Math.exp;
@@ -5071,12 +4735,12 @@ $export($export.S, 'Math', {
     return (exp(x = +x) + exp(-x)) / 2;
   }
 });
-},{"./$.export":57}],138:[function(require,module,exports){
+},{"./$.export":56}],137:[function(require,module,exports){
 // 20.2.2.14 Math.expm1(x)
 var $export = require('./$.export');
 
 $export($export.S, 'Math', {expm1: require('./$.math-expm1')});
-},{"./$.export":57,"./$.math-expm1":84}],139:[function(require,module,exports){
+},{"./$.export":56,"./$.math-expm1":83}],138:[function(require,module,exports){
 // 20.2.2.16 Math.fround(x)
 var $export   = require('./$.export')
   , sign      = require('./$.math-sign')
@@ -5103,7 +4767,7 @@ $export($export.S, 'Math', {
     return $sign * result;
   }
 });
-},{"./$.export":57,"./$.math-sign":86}],140:[function(require,module,exports){
+},{"./$.export":56,"./$.math-sign":85}],139:[function(require,module,exports){
 // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
 var $export = require('./$.export')
   , abs     = Math.abs;
@@ -5130,7 +4794,7 @@ $export($export.S, 'Math', {
     return larg === Infinity ? Infinity : larg * Math.sqrt(sum);
   }
 });
-},{"./$.export":57}],141:[function(require,module,exports){
+},{"./$.export":56}],140:[function(require,module,exports){
 // 20.2.2.18 Math.imul(x, y)
 var $export = require('./$.export')
   , $imul   = Math.imul;
@@ -5148,7 +4812,7 @@ $export($export.S + $export.F * require('./$.fails')(function(){
     return 0 | xl * yl + ((UINT16 & xn >>> 16) * yl + xl * (UINT16 & yn >>> 16) << 16 >>> 0);
   }
 });
-},{"./$.export":57,"./$.fails":59}],142:[function(require,module,exports){
+},{"./$.export":56,"./$.fails":58}],141:[function(require,module,exports){
 // 20.2.2.21 Math.log10(x)
 var $export = require('./$.export');
 
@@ -5157,12 +4821,12 @@ $export($export.S, 'Math', {
     return Math.log(x) / Math.LN10;
   }
 });
-},{"./$.export":57}],143:[function(require,module,exports){
+},{"./$.export":56}],142:[function(require,module,exports){
 // 20.2.2.20 Math.log1p(x)
 var $export = require('./$.export');
 
 $export($export.S, 'Math', {log1p: require('./$.math-log1p')});
-},{"./$.export":57,"./$.math-log1p":85}],144:[function(require,module,exports){
+},{"./$.export":56,"./$.math-log1p":84}],143:[function(require,module,exports){
 // 20.2.2.22 Math.log2(x)
 var $export = require('./$.export');
 
@@ -5171,12 +4835,12 @@ $export($export.S, 'Math', {
     return Math.log(x) / Math.LN2;
   }
 });
-},{"./$.export":57}],145:[function(require,module,exports){
+},{"./$.export":56}],144:[function(require,module,exports){
 // 20.2.2.28 Math.sign(x)
 var $export = require('./$.export');
 
 $export($export.S, 'Math', {sign: require('./$.math-sign')});
-},{"./$.export":57,"./$.math-sign":86}],146:[function(require,module,exports){
+},{"./$.export":56,"./$.math-sign":85}],145:[function(require,module,exports){
 // 20.2.2.30 Math.sinh(x)
 var $export = require('./$.export')
   , expm1   = require('./$.math-expm1')
@@ -5192,7 +4856,7 @@ $export($export.S + $export.F * require('./$.fails')(function(){
       : (exp(x - 1) - exp(-x - 1)) * (Math.E / 2);
   }
 });
-},{"./$.export":57,"./$.fails":59,"./$.math-expm1":84}],147:[function(require,module,exports){
+},{"./$.export":56,"./$.fails":58,"./$.math-expm1":83}],146:[function(require,module,exports){
 // 20.2.2.33 Math.tanh(x)
 var $export = require('./$.export')
   , expm1   = require('./$.math-expm1')
@@ -5205,7 +4869,7 @@ $export($export.S, 'Math', {
     return a == Infinity ? 1 : b == Infinity ? -1 : (a - b) / (exp(x) + exp(-x));
   }
 });
-},{"./$.export":57,"./$.math-expm1":84}],148:[function(require,module,exports){
+},{"./$.export":56,"./$.math-expm1":83}],147:[function(require,module,exports){
 // 20.2.2.34 Math.trunc(x)
 var $export = require('./$.export');
 
@@ -5214,7 +4878,7 @@ $export($export.S, 'Math', {
     return (it > 0 ? Math.floor : Math.ceil)(it);
   }
 });
-},{"./$.export":57}],149:[function(require,module,exports){
+},{"./$.export":56}],148:[function(require,module,exports){
 'use strict';
 var $           = require('./$')
   , global      = require('./$.global')
@@ -5281,12 +4945,12 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
   proto.constructor = $Number;
   require('./$.redefine')(global, NUMBER, $Number);
 }
-},{"./$":81,"./$.cof":46,"./$.descriptors":54,"./$.fails":59,"./$.global":64,"./$.has":65,"./$.redefine":96,"./$.string-trim":109,"./$.to-primitive":116}],150:[function(require,module,exports){
+},{"./$":80,"./$.cof":45,"./$.descriptors":53,"./$.fails":58,"./$.global":63,"./$.has":64,"./$.redefine":95,"./$.string-trim":108,"./$.to-primitive":115}],149:[function(require,module,exports){
 // 20.1.2.1 Number.EPSILON
 var $export = require('./$.export');
 
 $export($export.S, 'Number', {EPSILON: Math.pow(2, -52)});
-},{"./$.export":57}],151:[function(require,module,exports){
+},{"./$.export":56}],150:[function(require,module,exports){
 // 20.1.2.2 Number.isFinite(number)
 var $export   = require('./$.export')
   , _isFinite = require('./$.global').isFinite;
@@ -5296,12 +4960,12 @@ $export($export.S, 'Number', {
     return typeof it == 'number' && _isFinite(it);
   }
 });
-},{"./$.export":57,"./$.global":64}],152:[function(require,module,exports){
+},{"./$.export":56,"./$.global":63}],151:[function(require,module,exports){
 // 20.1.2.3 Number.isInteger(number)
 var $export = require('./$.export');
 
 $export($export.S, 'Number', {isInteger: require('./$.is-integer')});
-},{"./$.export":57,"./$.is-integer":72}],153:[function(require,module,exports){
+},{"./$.export":56,"./$.is-integer":71}],152:[function(require,module,exports){
 // 20.1.2.4 Number.isNaN(number)
 var $export = require('./$.export');
 
@@ -5310,7 +4974,7 @@ $export($export.S, 'Number', {
     return number != number;
   }
 });
-},{"./$.export":57}],154:[function(require,module,exports){
+},{"./$.export":56}],153:[function(require,module,exports){
 // 20.1.2.5 Number.isSafeInteger(number)
 var $export   = require('./$.export')
   , isInteger = require('./$.is-integer')
@@ -5321,32 +4985,32 @@ $export($export.S, 'Number', {
     return isInteger(number) && abs(number) <= 0x1fffffffffffff;
   }
 });
-},{"./$.export":57,"./$.is-integer":72}],155:[function(require,module,exports){
+},{"./$.export":56,"./$.is-integer":71}],154:[function(require,module,exports){
 // 20.1.2.6 Number.MAX_SAFE_INTEGER
 var $export = require('./$.export');
 
 $export($export.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
-},{"./$.export":57}],156:[function(require,module,exports){
+},{"./$.export":56}],155:[function(require,module,exports){
 // 20.1.2.10 Number.MIN_SAFE_INTEGER
 var $export = require('./$.export');
 
 $export($export.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
-},{"./$.export":57}],157:[function(require,module,exports){
+},{"./$.export":56}],156:[function(require,module,exports){
 // 20.1.2.12 Number.parseFloat(string)
 var $export = require('./$.export');
 
 $export($export.S, 'Number', {parseFloat: parseFloat});
-},{"./$.export":57}],158:[function(require,module,exports){
+},{"./$.export":56}],157:[function(require,module,exports){
 // 20.1.2.13 Number.parseInt(string, radix)
 var $export = require('./$.export');
 
 $export($export.S, 'Number', {parseInt: parseInt});
-},{"./$.export":57}],159:[function(require,module,exports){
+},{"./$.export":56}],158:[function(require,module,exports){
 // 19.1.3.1 Object.assign(target, source)
 var $export = require('./$.export');
 
 $export($export.S + $export.F, 'Object', {assign: require('./$.object-assign')});
-},{"./$.export":57,"./$.object-assign":88}],160:[function(require,module,exports){
+},{"./$.export":56,"./$.object-assign":87}],159:[function(require,module,exports){
 // 19.1.2.5 Object.freeze(O)
 var isObject = require('./$.is-object');
 
@@ -5355,7 +5019,7 @@ require('./$.object-sap')('freeze', function($freeze){
     return $freeze && isObject(it) ? $freeze(it) : it;
   };
 });
-},{"./$.is-object":73,"./$.object-sap":89}],161:[function(require,module,exports){
+},{"./$.is-object":72,"./$.object-sap":88}],160:[function(require,module,exports){
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
 var toIObject = require('./$.to-iobject');
 
@@ -5364,12 +5028,12 @@ require('./$.object-sap')('getOwnPropertyDescriptor', function($getOwnPropertyDe
     return $getOwnPropertyDescriptor(toIObject(it), key);
   };
 });
-},{"./$.object-sap":89,"./$.to-iobject":113}],162:[function(require,module,exports){
+},{"./$.object-sap":88,"./$.to-iobject":112}],161:[function(require,module,exports){
 // 19.1.2.7 Object.getOwnPropertyNames(O)
 require('./$.object-sap')('getOwnPropertyNames', function(){
   return require('./$.get-names').get;
 });
-},{"./$.get-names":63,"./$.object-sap":89}],163:[function(require,module,exports){
+},{"./$.get-names":62,"./$.object-sap":88}],162:[function(require,module,exports){
 // 19.1.2.9 Object.getPrototypeOf(O)
 var toObject = require('./$.to-object');
 
@@ -5378,7 +5042,7 @@ require('./$.object-sap')('getPrototypeOf', function($getPrototypeOf){
     return $getPrototypeOf(toObject(it));
   };
 });
-},{"./$.object-sap":89,"./$.to-object":115}],164:[function(require,module,exports){
+},{"./$.object-sap":88,"./$.to-object":114}],163:[function(require,module,exports){
 // 19.1.2.11 Object.isExtensible(O)
 var isObject = require('./$.is-object');
 
@@ -5387,7 +5051,7 @@ require('./$.object-sap')('isExtensible', function($isExtensible){
     return isObject(it) ? $isExtensible ? $isExtensible(it) : true : false;
   };
 });
-},{"./$.is-object":73,"./$.object-sap":89}],165:[function(require,module,exports){
+},{"./$.is-object":72,"./$.object-sap":88}],164:[function(require,module,exports){
 // 19.1.2.12 Object.isFrozen(O)
 var isObject = require('./$.is-object');
 
@@ -5396,7 +5060,7 @@ require('./$.object-sap')('isFrozen', function($isFrozen){
     return isObject(it) ? $isFrozen ? $isFrozen(it) : false : true;
   };
 });
-},{"./$.is-object":73,"./$.object-sap":89}],166:[function(require,module,exports){
+},{"./$.is-object":72,"./$.object-sap":88}],165:[function(require,module,exports){
 // 19.1.2.13 Object.isSealed(O)
 var isObject = require('./$.is-object');
 
@@ -5405,11 +5069,11 @@ require('./$.object-sap')('isSealed', function($isSealed){
     return isObject(it) ? $isSealed ? $isSealed(it) : false : true;
   };
 });
-},{"./$.is-object":73,"./$.object-sap":89}],167:[function(require,module,exports){
+},{"./$.is-object":72,"./$.object-sap":88}],166:[function(require,module,exports){
 // 19.1.3.10 Object.is(value1, value2)
 var $export = require('./$.export');
 $export($export.S, 'Object', {is: require('./$.same-value')});
-},{"./$.export":57,"./$.same-value":98}],168:[function(require,module,exports){
+},{"./$.export":56,"./$.same-value":97}],167:[function(require,module,exports){
 // 19.1.2.14 Object.keys(O)
 var toObject = require('./$.to-object');
 
@@ -5418,7 +5082,7 @@ require('./$.object-sap')('keys', function($keys){
     return $keys(toObject(it));
   };
 });
-},{"./$.object-sap":89,"./$.to-object":115}],169:[function(require,module,exports){
+},{"./$.object-sap":88,"./$.to-object":114}],168:[function(require,module,exports){
 // 19.1.2.15 Object.preventExtensions(O)
 var isObject = require('./$.is-object');
 
@@ -5427,7 +5091,7 @@ require('./$.object-sap')('preventExtensions', function($preventExtensions){
     return $preventExtensions && isObject(it) ? $preventExtensions(it) : it;
   };
 });
-},{"./$.is-object":73,"./$.object-sap":89}],170:[function(require,module,exports){
+},{"./$.is-object":72,"./$.object-sap":88}],169:[function(require,module,exports){
 // 19.1.2.17 Object.seal(O)
 var isObject = require('./$.is-object');
 
@@ -5436,11 +5100,11 @@ require('./$.object-sap')('seal', function($seal){
     return $seal && isObject(it) ? $seal(it) : it;
   };
 });
-},{"./$.is-object":73,"./$.object-sap":89}],171:[function(require,module,exports){
+},{"./$.is-object":72,"./$.object-sap":88}],170:[function(require,module,exports){
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = require('./$.export');
 $export($export.S, 'Object', {setPrototypeOf: require('./$.set-proto').set});
-},{"./$.export":57,"./$.set-proto":99}],172:[function(require,module,exports){
+},{"./$.export":56,"./$.set-proto":98}],171:[function(require,module,exports){
 'use strict';
 // 19.1.3.6 Object.prototype.toString()
 var classof = require('./$.classof')
@@ -5451,7 +5115,7 @@ if(test + '' != '[object z]'){
     return '[object ' + classof(this) + ']';
   }, true);
 }
-},{"./$.classof":45,"./$.redefine":96,"./$.wks":118}],173:[function(require,module,exports){
+},{"./$.classof":44,"./$.redefine":95,"./$.wks":117}],172:[function(require,module,exports){
 'use strict';
 var $          = require('./$')
   , LIBRARY    = require('./$.library')
@@ -5741,7 +5405,7 @@ $export($export.S + $export.F * !(USE_NATIVE && require('./$.iter-detect')(funct
     return capability.promise;
   }
 });
-},{"./$":81,"./$.a-function":37,"./$.an-object":39,"./$.classof":45,"./$.core":51,"./$.ctx":52,"./$.descriptors":54,"./$.export":57,"./$.for-of":62,"./$.global":64,"./$.is-object":73,"./$.iter-detect":78,"./$.library":83,"./$.microtask":87,"./$.redefine-all":95,"./$.same-value":98,"./$.set-proto":99,"./$.set-species":100,"./$.set-to-string-tag":101,"./$.species-constructor":103,"./$.strict-new":104,"./$.wks":118}],174:[function(require,module,exports){
+},{"./$":80,"./$.a-function":36,"./$.an-object":38,"./$.classof":44,"./$.core":50,"./$.ctx":51,"./$.descriptors":53,"./$.export":56,"./$.for-of":61,"./$.global":63,"./$.is-object":72,"./$.iter-detect":77,"./$.library":82,"./$.microtask":86,"./$.redefine-all":94,"./$.same-value":97,"./$.set-proto":98,"./$.set-species":99,"./$.set-to-string-tag":100,"./$.species-constructor":102,"./$.strict-new":103,"./$.wks":117}],173:[function(require,module,exports){
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
 var $export = require('./$.export')
   , _apply  = Function.apply;
@@ -5751,7 +5415,7 @@ $export($export.S, 'Reflect', {
     return _apply.call(target, thisArgument, argumentsList);
   }
 });
-},{"./$.export":57}],175:[function(require,module,exports){
+},{"./$.export":56}],174:[function(require,module,exports){
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
 var $         = require('./$')
   , $export   = require('./$.export')
@@ -5790,7 +5454,7 @@ $export($export.S + $export.F * require('./$.fails')(function(){
     return isObject(result) ? result : instance;
   }
 });
-},{"./$":81,"./$.a-function":37,"./$.an-object":39,"./$.core":51,"./$.export":57,"./$.fails":59,"./$.is-object":73}],176:[function(require,module,exports){
+},{"./$":80,"./$.a-function":36,"./$.an-object":38,"./$.core":50,"./$.export":56,"./$.fails":58,"./$.is-object":72}],175:[function(require,module,exports){
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
 var $        = require('./$')
   , $export  = require('./$.export')
@@ -5810,7 +5474,7 @@ $export($export.S + $export.F * require('./$.fails')(function(){
     }
   }
 });
-},{"./$":81,"./$.an-object":39,"./$.export":57,"./$.fails":59}],177:[function(require,module,exports){
+},{"./$":80,"./$.an-object":38,"./$.export":56,"./$.fails":58}],176:[function(require,module,exports){
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
 var $export  = require('./$.export')
   , getDesc  = require('./$').getDesc
@@ -5822,7 +5486,7 @@ $export($export.S, 'Reflect', {
     return desc && !desc.configurable ? false : delete target[propertyKey];
   }
 });
-},{"./$":81,"./$.an-object":39,"./$.export":57}],178:[function(require,module,exports){
+},{"./$":80,"./$.an-object":38,"./$.export":56}],177:[function(require,module,exports){
 'use strict';
 // 26.1.5 Reflect.enumerate(target)
 var $export  = require('./$.export')
@@ -5849,7 +5513,7 @@ $export($export.S, 'Reflect', {
     return new Enumerate(target);
   }
 });
-},{"./$.an-object":39,"./$.export":57,"./$.iter-create":76}],179:[function(require,module,exports){
+},{"./$.an-object":38,"./$.export":56,"./$.iter-create":75}],178:[function(require,module,exports){
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
 var $        = require('./$')
   , $export  = require('./$.export')
@@ -5860,7 +5524,7 @@ $export($export.S, 'Reflect', {
     return $.getDesc(anObject(target), propertyKey);
   }
 });
-},{"./$":81,"./$.an-object":39,"./$.export":57}],180:[function(require,module,exports){
+},{"./$":80,"./$.an-object":38,"./$.export":56}],179:[function(require,module,exports){
 // 26.1.8 Reflect.getPrototypeOf(target)
 var $export  = require('./$.export')
   , getProto = require('./$').getProto
@@ -5871,7 +5535,7 @@ $export($export.S, 'Reflect', {
     return getProto(anObject(target));
   }
 });
-},{"./$":81,"./$.an-object":39,"./$.export":57}],181:[function(require,module,exports){
+},{"./$":80,"./$.an-object":38,"./$.export":56}],180:[function(require,module,exports){
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
 var $        = require('./$')
   , has      = require('./$.has')
@@ -5892,7 +5556,7 @@ function get(target, propertyKey/*, receiver*/){
 }
 
 $export($export.S, 'Reflect', {get: get});
-},{"./$":81,"./$.an-object":39,"./$.export":57,"./$.has":65,"./$.is-object":73}],182:[function(require,module,exports){
+},{"./$":80,"./$.an-object":38,"./$.export":56,"./$.has":64,"./$.is-object":72}],181:[function(require,module,exports){
 // 26.1.9 Reflect.has(target, propertyKey)
 var $export = require('./$.export');
 
@@ -5901,7 +5565,7 @@ $export($export.S, 'Reflect', {
     return propertyKey in target;
   }
 });
-},{"./$.export":57}],183:[function(require,module,exports){
+},{"./$.export":56}],182:[function(require,module,exports){
 // 26.1.10 Reflect.isExtensible(target)
 var $export       = require('./$.export')
   , anObject      = require('./$.an-object')
@@ -5913,12 +5577,12 @@ $export($export.S, 'Reflect', {
     return $isExtensible ? $isExtensible(target) : true;
   }
 });
-},{"./$.an-object":39,"./$.export":57}],184:[function(require,module,exports){
+},{"./$.an-object":38,"./$.export":56}],183:[function(require,module,exports){
 // 26.1.11 Reflect.ownKeys(target)
 var $export = require('./$.export');
 
 $export($export.S, 'Reflect', {ownKeys: require('./$.own-keys')});
-},{"./$.export":57,"./$.own-keys":91}],185:[function(require,module,exports){
+},{"./$.export":56,"./$.own-keys":90}],184:[function(require,module,exports){
 // 26.1.12 Reflect.preventExtensions(target)
 var $export            = require('./$.export')
   , anObject           = require('./$.an-object')
@@ -5935,7 +5599,7 @@ $export($export.S, 'Reflect', {
     }
   }
 });
-},{"./$.an-object":39,"./$.export":57}],186:[function(require,module,exports){
+},{"./$.an-object":38,"./$.export":56}],185:[function(require,module,exports){
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
 var $export  = require('./$.export')
   , setProto = require('./$.set-proto');
@@ -5951,7 +5615,7 @@ if(setProto)$export($export.S, 'Reflect', {
     }
   }
 });
-},{"./$.export":57,"./$.set-proto":99}],187:[function(require,module,exports){
+},{"./$.export":56,"./$.set-proto":98}],186:[function(require,module,exports){
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
 var $          = require('./$')
   , has        = require('./$.has')
@@ -5981,7 +5645,7 @@ function set(target, propertyKey, V/*, receiver*/){
 }
 
 $export($export.S, 'Reflect', {set: set});
-},{"./$":81,"./$.an-object":39,"./$.export":57,"./$.has":65,"./$.is-object":73,"./$.property-desc":94}],188:[function(require,module,exports){
+},{"./$":80,"./$.an-object":38,"./$.export":56,"./$.has":64,"./$.is-object":72,"./$.property-desc":93}],187:[function(require,module,exports){
 var $        = require('./$')
   , global   = require('./$.global')
   , isRegExp = require('./$.is-regexp')
@@ -6020,14 +5684,14 @@ if(require('./$.descriptors') && (!CORRECT_NEW || require('./$.fails')(function(
 }
 
 require('./$.set-species')('RegExp');
-},{"./$":81,"./$.descriptors":54,"./$.fails":59,"./$.flags":61,"./$.global":64,"./$.is-regexp":74,"./$.redefine":96,"./$.set-species":100,"./$.wks":118}],189:[function(require,module,exports){
+},{"./$":80,"./$.descriptors":53,"./$.fails":58,"./$.flags":60,"./$.global":63,"./$.is-regexp":73,"./$.redefine":95,"./$.set-species":99,"./$.wks":117}],188:[function(require,module,exports){
 // 21.2.5.3 get RegExp.prototype.flags()
 var $ = require('./$');
 if(require('./$.descriptors') && /./g.flags != 'g')$.setDesc(RegExp.prototype, 'flags', {
   configurable: true,
   get: require('./$.flags')
 });
-},{"./$":81,"./$.descriptors":54,"./$.flags":61}],190:[function(require,module,exports){
+},{"./$":80,"./$.descriptors":53,"./$.flags":60}],189:[function(require,module,exports){
 // @@match logic
 require('./$.fix-re-wks')('match', 1, function(defined, MATCH){
   // 21.1.3.11 String.prototype.match(regexp)
@@ -6038,7 +5702,7 @@ require('./$.fix-re-wks')('match', 1, function(defined, MATCH){
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[MATCH](String(O));
   };
 });
-},{"./$.fix-re-wks":60}],191:[function(require,module,exports){
+},{"./$.fix-re-wks":59}],190:[function(require,module,exports){
 // @@replace logic
 require('./$.fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
   // 21.1.3.14 String.prototype.replace(searchValue, replaceValue)
@@ -6051,7 +5715,7 @@ require('./$.fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
       : $replace.call(String(O), searchValue, replaceValue);
   };
 });
-},{"./$.fix-re-wks":60}],192:[function(require,module,exports){
+},{"./$.fix-re-wks":59}],191:[function(require,module,exports){
 // @@search logic
 require('./$.fix-re-wks')('search', 1, function(defined, SEARCH){
   // 21.1.3.15 String.prototype.search(regexp)
@@ -6062,7 +5726,7 @@ require('./$.fix-re-wks')('search', 1, function(defined, SEARCH){
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[SEARCH](String(O));
   };
 });
-},{"./$.fix-re-wks":60}],193:[function(require,module,exports){
+},{"./$.fix-re-wks":59}],192:[function(require,module,exports){
 // @@split logic
 require('./$.fix-re-wks')('split', 2, function(defined, SPLIT, $split){
   // 21.1.3.17 String.prototype.split(separator, limit)
@@ -6075,7 +5739,7 @@ require('./$.fix-re-wks')('split', 2, function(defined, SPLIT, $split){
       : $split.call(String(O), separator, limit);
   };
 });
-},{"./$.fix-re-wks":60}],194:[function(require,module,exports){
+},{"./$.fix-re-wks":59}],193:[function(require,module,exports){
 'use strict';
 var strong = require('./$.collection-strong');
 
@@ -6088,7 +5752,7 @@ require('./$.collection')('Set', function(get){
     return strong.def(this, value = value === 0 ? 0 : value, value);
   }
 }, strong);
-},{"./$.collection":50,"./$.collection-strong":47}],195:[function(require,module,exports){
+},{"./$.collection":49,"./$.collection-strong":46}],194:[function(require,module,exports){
 'use strict';
 var $export = require('./$.export')
   , $at     = require('./$.string-at')(false);
@@ -6098,7 +5762,7 @@ $export($export.P, 'String', {
     return $at(this, pos);
   }
 });
-},{"./$.export":57,"./$.string-at":105}],196:[function(require,module,exports){
+},{"./$.export":56,"./$.string-at":104}],195:[function(require,module,exports){
 // 21.1.3.6 String.prototype.endsWith(searchString [, endPosition])
 'use strict';
 var $export   = require('./$.export')
@@ -6120,7 +5784,7 @@ $export($export.P + $export.F * require('./$.fails-is-regexp')(ENDS_WITH), 'Stri
       : that.slice(end - search.length, end) === search;
   }
 });
-},{"./$.export":57,"./$.fails-is-regexp":58,"./$.string-context":106,"./$.to-length":114}],197:[function(require,module,exports){
+},{"./$.export":56,"./$.fails-is-regexp":57,"./$.string-context":105,"./$.to-length":113}],196:[function(require,module,exports){
 var $export        = require('./$.export')
   , toIndex        = require('./$.to-index')
   , fromCharCode   = String.fromCharCode
@@ -6145,7 +5809,7 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
     } return res.join('');
   }
 });
-},{"./$.export":57,"./$.to-index":111}],198:[function(require,module,exports){
+},{"./$.export":56,"./$.to-index":110}],197:[function(require,module,exports){
 // 21.1.3.7 String.prototype.includes(searchString, position = 0)
 'use strict';
 var $export  = require('./$.export')
@@ -6158,7 +5822,7 @@ $export($export.P + $export.F * require('./$.fails-is-regexp')(INCLUDES), 'Strin
       .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
   }
 });
-},{"./$.export":57,"./$.fails-is-regexp":58,"./$.string-context":106}],199:[function(require,module,exports){
+},{"./$.export":56,"./$.fails-is-regexp":57,"./$.string-context":105}],198:[function(require,module,exports){
 'use strict';
 var $at  = require('./$.string-at')(true);
 
@@ -6176,7 +5840,7 @@ require('./$.iter-define')(String, 'String', function(iterated){
   this._i += point.length;
   return {value: point, done: false};
 });
-},{"./$.iter-define":77,"./$.string-at":105}],200:[function(require,module,exports){
+},{"./$.iter-define":76,"./$.string-at":104}],199:[function(require,module,exports){
 var $export   = require('./$.export')
   , toIObject = require('./$.to-iobject')
   , toLength  = require('./$.to-length');
@@ -6196,14 +5860,14 @@ $export($export.S, 'String', {
     } return res.join('');
   }
 });
-},{"./$.export":57,"./$.to-iobject":113,"./$.to-length":114}],201:[function(require,module,exports){
+},{"./$.export":56,"./$.to-iobject":112,"./$.to-length":113}],200:[function(require,module,exports){
 var $export = require('./$.export');
 
 $export($export.P, 'String', {
   // 21.1.3.13 String.prototype.repeat(count)
   repeat: require('./$.string-repeat')
 });
-},{"./$.export":57,"./$.string-repeat":108}],202:[function(require,module,exports){
+},{"./$.export":56,"./$.string-repeat":107}],201:[function(require,module,exports){
 // 21.1.3.18 String.prototype.startsWith(searchString [, position ])
 'use strict';
 var $export     = require('./$.export')
@@ -6223,7 +5887,7 @@ $export($export.P + $export.F * require('./$.fails-is-regexp')(STARTS_WITH), 'St
       : that.slice(index, index + search.length) === search;
   }
 });
-},{"./$.export":57,"./$.fails-is-regexp":58,"./$.string-context":106,"./$.to-length":114}],203:[function(require,module,exports){
+},{"./$.export":56,"./$.fails-is-regexp":57,"./$.string-context":105,"./$.to-length":113}],202:[function(require,module,exports){
 'use strict';
 // 21.1.3.25 String.prototype.trim()
 require('./$.string-trim')('trim', function($trim){
@@ -6231,7 +5895,7 @@ require('./$.string-trim')('trim', function($trim){
     return $trim(this, 3);
   };
 });
-},{"./$.string-trim":109}],204:[function(require,module,exports){
+},{"./$.string-trim":108}],203:[function(require,module,exports){
 'use strict';
 // ECMAScript 6 symbols shim
 var $              = require('./$')
@@ -6459,7 +6123,7 @@ setToStringTag($Symbol, 'Symbol');
 setToStringTag(Math, 'Math', true);
 // 24.3.3 JSON[@@toStringTag]
 setToStringTag(global.JSON, 'JSON', true);
-},{"./$":81,"./$.an-object":39,"./$.descriptors":54,"./$.enum-keys":56,"./$.export":57,"./$.fails":59,"./$.get-names":63,"./$.global":64,"./$.has":65,"./$.is-array":71,"./$.keyof":82,"./$.library":83,"./$.property-desc":94,"./$.redefine":96,"./$.set-to-string-tag":101,"./$.shared":102,"./$.to-iobject":113,"./$.uid":117,"./$.wks":118}],205:[function(require,module,exports){
+},{"./$":80,"./$.an-object":38,"./$.descriptors":53,"./$.enum-keys":55,"./$.export":56,"./$.fails":58,"./$.get-names":62,"./$.global":63,"./$.has":64,"./$.is-array":70,"./$.keyof":81,"./$.library":82,"./$.property-desc":93,"./$.redefine":95,"./$.set-to-string-tag":100,"./$.shared":101,"./$.to-iobject":112,"./$.uid":116,"./$.wks":117}],204:[function(require,module,exports){
 'use strict';
 var $            = require('./$')
   , redefine     = require('./$.redefine')
@@ -6503,7 +6167,7 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
     });
   });
 }
-},{"./$":81,"./$.collection":50,"./$.collection-weak":49,"./$.has":65,"./$.is-object":73,"./$.redefine":96}],206:[function(require,module,exports){
+},{"./$":80,"./$.collection":49,"./$.collection-weak":48,"./$.has":64,"./$.is-object":72,"./$.redefine":95}],205:[function(require,module,exports){
 'use strict';
 var weak = require('./$.collection-weak');
 
@@ -6516,7 +6180,7 @@ require('./$.collection')('WeakSet', function(get){
     return weak.def(this, value, true);
   }
 }, weak, false, true);
-},{"./$.collection":50,"./$.collection-weak":49}],207:[function(require,module,exports){
+},{"./$.collection":49,"./$.collection-weak":48}],206:[function(require,module,exports){
 'use strict';
 var $export   = require('./$.export')
   , $includes = require('./$.array-includes')(true);
@@ -6529,12 +6193,12 @@ $export($export.P, 'Array', {
 });
 
 require('./$.add-to-unscopables')('includes');
-},{"./$.add-to-unscopables":38,"./$.array-includes":42,"./$.export":57}],208:[function(require,module,exports){
+},{"./$.add-to-unscopables":37,"./$.array-includes":41,"./$.export":56}],207:[function(require,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export  = require('./$.export');
 
 $export($export.P, 'Map', {toJSON: require('./$.collection-to-json')('Map')});
-},{"./$.collection-to-json":48,"./$.export":57}],209:[function(require,module,exports){
+},{"./$.collection-to-json":47,"./$.export":56}],208:[function(require,module,exports){
 // http://goo.gl/XkBrjD
 var $export  = require('./$.export')
   , $entries = require('./$.object-to-array')(true);
@@ -6544,7 +6208,7 @@ $export($export.S, 'Object', {
     return $entries(it);
   }
 });
-},{"./$.export":57,"./$.object-to-array":90}],210:[function(require,module,exports){
+},{"./$.export":56,"./$.object-to-array":89}],209:[function(require,module,exports){
 // https://gist.github.com/WebReflection/9353781
 var $          = require('./$')
   , $export    = require('./$.export')
@@ -6568,7 +6232,7 @@ $export($export.S, 'Object', {
     } return result;
   }
 });
-},{"./$":81,"./$.export":57,"./$.own-keys":91,"./$.property-desc":94,"./$.to-iobject":113}],211:[function(require,module,exports){
+},{"./$":80,"./$.export":56,"./$.own-keys":90,"./$.property-desc":93,"./$.to-iobject":112}],210:[function(require,module,exports){
 // http://goo.gl/XkBrjD
 var $export = require('./$.export')
   , $values = require('./$.object-to-array')(false);
@@ -6578,19 +6242,19 @@ $export($export.S, 'Object', {
     return $values(it);
   }
 });
-},{"./$.export":57,"./$.object-to-array":90}],212:[function(require,module,exports){
+},{"./$.export":56,"./$.object-to-array":89}],211:[function(require,module,exports){
 // https://github.com/benjamingr/RexExp.escape
 var $export = require('./$.export')
   , $re     = require('./$.replacer')(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 $export($export.S, 'RegExp', {escape: function escape(it){ return $re(it); }});
 
-},{"./$.export":57,"./$.replacer":97}],213:[function(require,module,exports){
+},{"./$.export":56,"./$.replacer":96}],212:[function(require,module,exports){
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export  = require('./$.export');
 
 $export($export.P, 'Set', {toJSON: require('./$.collection-to-json')('Set')});
-},{"./$.collection-to-json":48,"./$.export":57}],214:[function(require,module,exports){
+},{"./$.collection-to-json":47,"./$.export":56}],213:[function(require,module,exports){
 'use strict';
 // https://github.com/mathiasbynens/String.prototype.at
 var $export = require('./$.export')
@@ -6601,7 +6265,7 @@ $export($export.P, 'String', {
     return $at(this, pos);
   }
 });
-},{"./$.export":57,"./$.string-at":105}],215:[function(require,module,exports){
+},{"./$.export":56,"./$.string-at":104}],214:[function(require,module,exports){
 'use strict';
 var $export = require('./$.export')
   , $pad    = require('./$.string-pad');
@@ -6611,7 +6275,7 @@ $export($export.P, 'String', {
     return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, true);
   }
 });
-},{"./$.export":57,"./$.string-pad":107}],216:[function(require,module,exports){
+},{"./$.export":56,"./$.string-pad":106}],215:[function(require,module,exports){
 'use strict';
 var $export = require('./$.export')
   , $pad    = require('./$.string-pad');
@@ -6621,7 +6285,7 @@ $export($export.P, 'String', {
     return $pad(this, maxLength, arguments.length > 1 ? arguments[1] : undefined, false);
   }
 });
-},{"./$.export":57,"./$.string-pad":107}],217:[function(require,module,exports){
+},{"./$.export":56,"./$.string-pad":106}],216:[function(require,module,exports){
 'use strict';
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
 require('./$.string-trim')('trimLeft', function($trim){
@@ -6629,7 +6293,7 @@ require('./$.string-trim')('trimLeft', function($trim){
     return $trim(this, 1);
   };
 });
-},{"./$.string-trim":109}],218:[function(require,module,exports){
+},{"./$.string-trim":108}],217:[function(require,module,exports){
 'use strict';
 // https://github.com/sebmarkbage/ecmascript-string-left-right-trim
 require('./$.string-trim')('trimRight', function($trim){
@@ -6637,7 +6301,7 @@ require('./$.string-trim')('trimRight', function($trim){
     return $trim(this, 2);
   };
 });
-},{"./$.string-trim":109}],219:[function(require,module,exports){
+},{"./$.string-trim":108}],218:[function(require,module,exports){
 // JavaScript 1.6 / Strawman array statics shim
 var $       = require('./$')
   , $export = require('./$.export')
@@ -6655,7 +6319,7 @@ setStatics('indexOf,every,some,forEach,map,filter,find,findIndex,includes', 3);
 setStatics('join,slice,concat,push,splice,unshift,sort,lastIndexOf,' +
            'reduce,reduceRight,copyWithin,fill');
 $export($export.S, 'Array', statics);
-},{"./$":81,"./$.core":51,"./$.ctx":52,"./$.export":57}],220:[function(require,module,exports){
+},{"./$":80,"./$.core":50,"./$.ctx":51,"./$.export":56}],219:[function(require,module,exports){
 require('./es6.array.iterator');
 var global      = require('./$.global')
   , hide        = require('./$.hide')
@@ -6668,14 +6332,14 @@ var global      = require('./$.global')
   , ArrayValues = Iterators.NodeList = Iterators.HTMLCollection = Iterators.Array;
 if(NLProto && !NLProto[ITERATOR])hide(NLProto, ITERATOR, ArrayValues);
 if(HTCProto && !HTCProto[ITERATOR])hide(HTCProto, ITERATOR, ArrayValues);
-},{"./$.global":64,"./$.hide":66,"./$.iterators":80,"./$.wks":118,"./es6.array.iterator":126}],221:[function(require,module,exports){
+},{"./$.global":63,"./$.hide":65,"./$.iterators":79,"./$.wks":117,"./es6.array.iterator":125}],220:[function(require,module,exports){
 var $export = require('./$.export')
   , $task   = require('./$.task');
 $export($export.G + $export.B, {
   setImmediate:   $task.set,
   clearImmediate: $task.clear
 });
-},{"./$.export":57,"./$.task":110}],222:[function(require,module,exports){
+},{"./$.export":56,"./$.task":109}],221:[function(require,module,exports){
 // ie9- setTimeout & setInterval additional parameters fix
 var global     = require('./$.global')
   , $export    = require('./$.export')
@@ -6696,7 +6360,7 @@ $export($export.G + $export.B + $export.F * MSIE, {
   setTimeout:  wrap(global.setTimeout),
   setInterval: wrap(global.setInterval)
 });
-},{"./$.export":57,"./$.global":64,"./$.invoke":68,"./$.partial":92}],223:[function(require,module,exports){
+},{"./$.export":56,"./$.global":63,"./$.invoke":67,"./$.partial":91}],222:[function(require,module,exports){
 require('./modules/es5');
 require('./modules/es6.symbol');
 require('./modules/es6.object.assign');
@@ -6801,7 +6465,7 @@ require('./modules/web.timers');
 require('./modules/web.immediate');
 require('./modules/web.dom.iterable');
 module.exports = require('./modules/$.core');
-},{"./modules/$.core":51,"./modules/es5":120,"./modules/es6.array.copy-within":121,"./modules/es6.array.fill":122,"./modules/es6.array.find":124,"./modules/es6.array.find-index":123,"./modules/es6.array.from":125,"./modules/es6.array.iterator":126,"./modules/es6.array.of":127,"./modules/es6.array.species":128,"./modules/es6.function.has-instance":129,"./modules/es6.function.name":130,"./modules/es6.map":131,"./modules/es6.math.acosh":132,"./modules/es6.math.asinh":133,"./modules/es6.math.atanh":134,"./modules/es6.math.cbrt":135,"./modules/es6.math.clz32":136,"./modules/es6.math.cosh":137,"./modules/es6.math.expm1":138,"./modules/es6.math.fround":139,"./modules/es6.math.hypot":140,"./modules/es6.math.imul":141,"./modules/es6.math.log10":142,"./modules/es6.math.log1p":143,"./modules/es6.math.log2":144,"./modules/es6.math.sign":145,"./modules/es6.math.sinh":146,"./modules/es6.math.tanh":147,"./modules/es6.math.trunc":148,"./modules/es6.number.constructor":149,"./modules/es6.number.epsilon":150,"./modules/es6.number.is-finite":151,"./modules/es6.number.is-integer":152,"./modules/es6.number.is-nan":153,"./modules/es6.number.is-safe-integer":154,"./modules/es6.number.max-safe-integer":155,"./modules/es6.number.min-safe-integer":156,"./modules/es6.number.parse-float":157,"./modules/es6.number.parse-int":158,"./modules/es6.object.assign":159,"./modules/es6.object.freeze":160,"./modules/es6.object.get-own-property-descriptor":161,"./modules/es6.object.get-own-property-names":162,"./modules/es6.object.get-prototype-of":163,"./modules/es6.object.is":167,"./modules/es6.object.is-extensible":164,"./modules/es6.object.is-frozen":165,"./modules/es6.object.is-sealed":166,"./modules/es6.object.keys":168,"./modules/es6.object.prevent-extensions":169,"./modules/es6.object.seal":170,"./modules/es6.object.set-prototype-of":171,"./modules/es6.object.to-string":172,"./modules/es6.promise":173,"./modules/es6.reflect.apply":174,"./modules/es6.reflect.construct":175,"./modules/es6.reflect.define-property":176,"./modules/es6.reflect.delete-property":177,"./modules/es6.reflect.enumerate":178,"./modules/es6.reflect.get":181,"./modules/es6.reflect.get-own-property-descriptor":179,"./modules/es6.reflect.get-prototype-of":180,"./modules/es6.reflect.has":182,"./modules/es6.reflect.is-extensible":183,"./modules/es6.reflect.own-keys":184,"./modules/es6.reflect.prevent-extensions":185,"./modules/es6.reflect.set":187,"./modules/es6.reflect.set-prototype-of":186,"./modules/es6.regexp.constructor":188,"./modules/es6.regexp.flags":189,"./modules/es6.regexp.match":190,"./modules/es6.regexp.replace":191,"./modules/es6.regexp.search":192,"./modules/es6.regexp.split":193,"./modules/es6.set":194,"./modules/es6.string.code-point-at":195,"./modules/es6.string.ends-with":196,"./modules/es6.string.from-code-point":197,"./modules/es6.string.includes":198,"./modules/es6.string.iterator":199,"./modules/es6.string.raw":200,"./modules/es6.string.repeat":201,"./modules/es6.string.starts-with":202,"./modules/es6.string.trim":203,"./modules/es6.symbol":204,"./modules/es6.weak-map":205,"./modules/es6.weak-set":206,"./modules/es7.array.includes":207,"./modules/es7.map.to-json":208,"./modules/es7.object.entries":209,"./modules/es7.object.get-own-property-descriptors":210,"./modules/es7.object.values":211,"./modules/es7.regexp.escape":212,"./modules/es7.set.to-json":213,"./modules/es7.string.at":214,"./modules/es7.string.pad-left":215,"./modules/es7.string.pad-right":216,"./modules/es7.string.trim-left":217,"./modules/es7.string.trim-right":218,"./modules/js.array.statics":219,"./modules/web.dom.iterable":220,"./modules/web.immediate":221,"./modules/web.timers":222}],224:[function(require,module,exports){
+},{"./modules/$.core":50,"./modules/es5":119,"./modules/es6.array.copy-within":120,"./modules/es6.array.fill":121,"./modules/es6.array.find":123,"./modules/es6.array.find-index":122,"./modules/es6.array.from":124,"./modules/es6.array.iterator":125,"./modules/es6.array.of":126,"./modules/es6.array.species":127,"./modules/es6.function.has-instance":128,"./modules/es6.function.name":129,"./modules/es6.map":130,"./modules/es6.math.acosh":131,"./modules/es6.math.asinh":132,"./modules/es6.math.atanh":133,"./modules/es6.math.cbrt":134,"./modules/es6.math.clz32":135,"./modules/es6.math.cosh":136,"./modules/es6.math.expm1":137,"./modules/es6.math.fround":138,"./modules/es6.math.hypot":139,"./modules/es6.math.imul":140,"./modules/es6.math.log10":141,"./modules/es6.math.log1p":142,"./modules/es6.math.log2":143,"./modules/es6.math.sign":144,"./modules/es6.math.sinh":145,"./modules/es6.math.tanh":146,"./modules/es6.math.trunc":147,"./modules/es6.number.constructor":148,"./modules/es6.number.epsilon":149,"./modules/es6.number.is-finite":150,"./modules/es6.number.is-integer":151,"./modules/es6.number.is-nan":152,"./modules/es6.number.is-safe-integer":153,"./modules/es6.number.max-safe-integer":154,"./modules/es6.number.min-safe-integer":155,"./modules/es6.number.parse-float":156,"./modules/es6.number.parse-int":157,"./modules/es6.object.assign":158,"./modules/es6.object.freeze":159,"./modules/es6.object.get-own-property-descriptor":160,"./modules/es6.object.get-own-property-names":161,"./modules/es6.object.get-prototype-of":162,"./modules/es6.object.is":166,"./modules/es6.object.is-extensible":163,"./modules/es6.object.is-frozen":164,"./modules/es6.object.is-sealed":165,"./modules/es6.object.keys":167,"./modules/es6.object.prevent-extensions":168,"./modules/es6.object.seal":169,"./modules/es6.object.set-prototype-of":170,"./modules/es6.object.to-string":171,"./modules/es6.promise":172,"./modules/es6.reflect.apply":173,"./modules/es6.reflect.construct":174,"./modules/es6.reflect.define-property":175,"./modules/es6.reflect.delete-property":176,"./modules/es6.reflect.enumerate":177,"./modules/es6.reflect.get":180,"./modules/es6.reflect.get-own-property-descriptor":178,"./modules/es6.reflect.get-prototype-of":179,"./modules/es6.reflect.has":181,"./modules/es6.reflect.is-extensible":182,"./modules/es6.reflect.own-keys":183,"./modules/es6.reflect.prevent-extensions":184,"./modules/es6.reflect.set":186,"./modules/es6.reflect.set-prototype-of":185,"./modules/es6.regexp.constructor":187,"./modules/es6.regexp.flags":188,"./modules/es6.regexp.match":189,"./modules/es6.regexp.replace":190,"./modules/es6.regexp.search":191,"./modules/es6.regexp.split":192,"./modules/es6.set":193,"./modules/es6.string.code-point-at":194,"./modules/es6.string.ends-with":195,"./modules/es6.string.from-code-point":196,"./modules/es6.string.includes":197,"./modules/es6.string.iterator":198,"./modules/es6.string.raw":199,"./modules/es6.string.repeat":200,"./modules/es6.string.starts-with":201,"./modules/es6.string.trim":202,"./modules/es6.symbol":203,"./modules/es6.weak-map":204,"./modules/es6.weak-set":205,"./modules/es7.array.includes":206,"./modules/es7.map.to-json":207,"./modules/es7.object.entries":208,"./modules/es7.object.get-own-property-descriptors":209,"./modules/es7.object.values":210,"./modules/es7.regexp.escape":211,"./modules/es7.set.to-json":212,"./modules/es7.string.at":213,"./modules/es7.string.pad-left":214,"./modules/es7.string.pad-right":215,"./modules/es7.string.trim-left":216,"./modules/es7.string.trim-right":217,"./modules/js.array.statics":218,"./modules/web.dom.iterable":219,"./modules/web.immediate":220,"./modules/web.timers":221}],223:[function(require,module,exports){
 (function (process,global){
 /**
  * Copyright (c) 2014, Facebook, Inc.
@@ -7461,15 +7125,13 @@ module.exports = require('./modules/$.core');
 );
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":227}],225:[function(require,module,exports){
+},{"_process":226}],224:[function(require,module,exports){
 module.exports = require("./lib/polyfill");
 
-},{"./lib/polyfill":36}],226:[function(require,module,exports){
-"use strict";
-
+},{"./lib/polyfill":35}],225:[function(require,module,exports){
 module.exports = require("babel-core/polyfill");
 
-},{"babel-core/polyfill":225}],227:[function(require,module,exports){
+},{"babel-core/polyfill":224}],226:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -7562,7 +7224,19576 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],228:[function(require,module,exports){
+},{}],227:[function(require,module,exports){
+'use strict';
+var WhiteSpaceNotUsedForFormatting = require('WhiteSpaceNotUsedForFormatting');
+var WhiteSpaceInWord = require('WhiteSpaceInWord');
+var VideosEmbeddedOrLinkedNeedCaptions = require('VideosEmbeddedOrLinkedNeedCaptions');
+var VideoMayBePresent = require('VideoMayBePresent');
+var TextareaHasAssociatedLabel = require('TextareaHasAssociatedLabel');
+var TextIsNotSmall = require('TextIsNotSmall');
+var TabularDataIsInTable = require('TabularDataIsInTable');
+var TableUsesScopeForRow = require('TableUsesScopeForRow');
+var TableUsesCaption = require('TableUsesCaption');
+var TableUsesAbbreviationForHeader = require('TableUsesAbbreviationForHeader');
+var TableUseColGroup = require('TableUseColGroup');
+var TableSummaryIsNotTooLong = require('TableSummaryIsNotTooLong');
+var TableSummaryIsEmpty = require('TableSummaryIsEmpty');
+var TableSummaryDoesNotDuplicateCaption = require('TableSummaryDoesNotDuplicateCaption');
+var TableShouldUseHeaderIDs = require('TableShouldUseHeaderIDs');
+var TableNotUsedForLayout = require('TableNotUsedForLayout');
+var TableLayoutMakesSenseLinearized = require('TableLayoutMakesSenseLinearized');
+var TableLayoutHasNoSummary = require('TableLayoutHasNoSummary');
+var TableLayoutHasNoCaption = require('TableLayoutHasNoCaption');
+var TableLayoutDataShouldNotHaveTh = require('TableLayoutDataShouldNotHaveTh');
+var TableDataShouldHaveTh = require('TableDataShouldHaveTh');
+var TableAxisHasCorrespondingId = require('TableAxisHasCorrespondingId');
+var TabIndexFollowsLogicalOrder = require('TabIndexFollowsLogicalOrder');
+var SvgContainsTitle = require('SvgContainsTitle');
+var SkipToContentLinkProvided = require('SkipToContentLinkProvided');
+var SiteMap = require('SiteMap');
+var SelectJumpMenu = require('SelectJumpMenu');
+var SelectHasAssociatedLabel = require('SelectHasAssociatedLabel');
+var ScriptOnmouseupHasOnkeyup = require('ScriptOnmouseupHasOnkeyup');
+var ScriptOnmouseoverHasOnfocus = require('ScriptOnmouseoverHasOnfocus');
+var ScriptOnmouseoutHasOnmouseblur = require('ScriptOnmouseoutHasOnmouseblur');
+var ScriptOnmousemove = require('ScriptOnmousemove');
+var ScriptOnmousedownRequiresOnKeypress = require('ScriptOnmousedownRequiresOnKeypress');
+var ScriptOndblclickRequiresOnKeypress = require('ScriptOndblclickRequiresOnKeypress');
+var ScriptOnclickRequiresOnKeypress = require('ScriptOnclickRequiresOnKeypress');
+var RadioHasLabel = require('RadioHasLabel');
+var PreShouldNotBeUsedForTabularLayout = require('PreShouldNotBeUsedForTabularLayout');
+var PasswordHasLabel = require('PasswordHasLabel');
+var PNotUsedAsHeader = require('PNotUsedAsHeader');
+var ObjectMustHaveValidTitle = require('ObjectMustHaveValidTitle');
+var ObjectMustHaveTitle = require('ObjectMustHaveTitle');
+var ObjectMustHaveEmbed = require('ObjectMustHaveEmbed');
+var ObjectMustContainText = require('ObjectMustContainText');
+var NewWindowIsOpened = require('NewWindowIsOpened');
+var MenuNotUsedToFormatText = require('MenuNotUsedToFormatText');
+var MarqueeIsNotUsed = require('MarqueeIsNotUsed');
+var ListOfLinksUseList = require('ListOfLinksUseList');
+var ListNotUsedForFormatting = require('ListNotUsedForFormatting');
+var LinkHasAUniqueContext = require('LinkHasAUniqueContext');
+var LiDontUseImageForBullet = require('LiDontUseImageForBullet');
+var LegendTextNotPlaceholder = require('LegendTextNotPlaceholder');
+var LegendTextNotEmpty = require('LegendTextNotEmpty');
+var LanguageUnicodeDirection = require('LanguageUnicodeDirection');
+var LanguageDirectionPunctuation = require('LanguageDirectionPunctuation');
+var LanguageDirAttributeIsUsed = require('LanguageDirAttributeIsUsed');
+var LabelsAreAssignedToAnInput = require('LabelsAreAssignedToAnInput');
+var LabelMustNotBeEmpty = require('LabelMustNotBeEmpty');
+var LabelMustBeUnique = require('LabelMustBeUnique');
+var LabelDoesNotContainInput = require('LabelDoesNotContainInput');
+var InputWithoutLabelHasTitle = require('InputWithoutLabelHasTitle');
+var InputTextValueNotEmpty = require('InputTextValueNotEmpty');
+var InputTextHasValue = require('InputTextHasValue');
+var InputTextHasLabel = require('InputTextHasLabel');
+var InputImageHasAlt = require('InputImageHasAlt');
+var InputImageAltNotRedundant = require('InputImageAltNotRedundant');
+var InputImageAltIsShort = require('InputImageAltIsShort');
+var InputImageAltIsNotPlaceholder = require('InputImageAltIsNotPlaceholder');
+var InputImageAltIsNotFileName = require('InputImageAltIsNotFileName');
+var InputElementsDontHaveAlt = require('InputElementsDontHaveAlt');
+var InputCheckboxRequiresFieldset = require('InputCheckboxRequiresFieldset');
+var ImgWithMathShouldHaveMathEquivalent = require('ImgWithMathShouldHaveMathEquivalent');
+var ImgWithMapHasUseMap = require('ImgWithMapHasUseMap');
+var ImgShouldNotHaveTitle = require('ImgShouldNotHaveTitle');
+var ImgServerSideMapNotUsed = require('ImgServerSideMapNotUsed');
+var ImgNonDecorativeHasAlt = require('ImgNonDecorativeHasAlt');
+var ImgImportantNoSpacerAlt = require('ImgImportantNoSpacerAlt');
+var ImgHasLongDesc = require('ImgHasLongDesc');
+var ImgHasAlt = require('ImgHasAlt');
+var ImgAltNotPlaceHolder = require('ImgAltNotPlaceHolder');
+var ImgAltNotEmptyInAnchor = require('ImgAltNotEmptyInAnchor');
+var ImgAltIsTooLong = require('ImgAltIsTooLong');
+var ImgAltIsDifferent = require('ImgAltIsDifferent');
+var ImageMapServerSide = require('ImageMapServerSide');
+var IframeMustNotHaveLongdesc = require('IframeMustNotHaveLongdesc');
+var IdrefsHasCorrespondingId = require('IdrefsHasCorrespondingId');
+var IIsNotUsed = require('IIsNotUsed');
+var HeadersUseToMarkSections = require('HeadersUseToMarkSections');
+var HeadersHaveText = require('HeadersHaveText');
+var HeadersAttrRefersToATableCell = require('HeadersAttrRefersToATableCell');
+var HeaderH6Format = require('HeaderH6Format');
+var HeaderH5Format = require('HeaderH5Format');
+var HeaderH4Format = require('HeaderH4Format');
+var HeaderH4 = require('HeaderH4');
+var HeaderH3Format = require('HeaderH3Format');
+var HeaderH3 = require('HeaderH3');
+var HeaderH2Format = require('HeaderH2Format');
+var HeaderH2 = require('HeaderH2');
+var HeaderH1Format = require('HeaderH1Format');
+var HeaderH1 = require('HeaderH1');
+var FormWithRequiredLabel = require('FormWithRequiredLabel');
+var FormHasSubmitButton = require('FormHasSubmitButton');
+var FormHasGoodErrorMessage = require('FormHasGoodErrorMessage');
+var FormErrorMessageHelpsUser = require('FormErrorMessageHelpsUser');
+var FormButtonsHaveValue = require('FormButtonsHaveValue');
+var FontIsNotUsed = require('FontIsNotUsed');
+var FileHasLabel = require('FileHasLabel');
+var FieldsetHasLabel = require('FieldsetHasLabel');
+var EmbedMustHaveAltAttribute = require('EmbedMustHaveAltAttribute');
+var EmbedHasAssociatedNoEmbed = require('EmbedHasAssociatedNoEmbed');
+var DomOrderMatchesVisualOrder = require('DomOrderMatchesVisualOrder');
+var DocumentVisualListsAreMarkedUp = require('DocumentVisualListsAreMarkedUp');
+var DocumentTitleNotEmpty = require('DocumentTitleNotEmpty');
+var DocumentTitleIsShort = require('DocumentTitleIsShort');
+var DocumentTitleIsNotPlaceholder = require('DocumentTitleIsNotPlaceholder');
+var DocumentTitleDescribesDocument = require('DocumentTitleDescribesDocument');
+var DocumentStrictDocType = require('DocumentStrictDocType');
+var DocumentReadingDirection = require('DocumentReadingDirection');
+var DocumentMetaNotUsedWithTimeout = require('DocumentMetaNotUsedWithTimeout');
+var DocumentLangNotIdentified = require('DocumentLangNotIdentified');
+var DocumentLangIsISO639Standard = require('DocumentLangIsISO639Standard');
+var DocumentIsWrittenClearly = require('DocumentIsWrittenClearly');
+var DocumentHasTitleElement = require('DocumentHasTitleElement');
+var DocumentContentReadableWithoutStylesheets = require('DocumentContentReadableWithoutStylesheets');
+var DocumentAutoRedirectNotUsed = require('DocumentAutoRedirectNotUsed');
+var DocumentAcronymsHaveElement = require('DocumentAcronymsHaveElement');
+var DoctypeProvided = require('DoctypeProvided');
+var DefinitionListsAreUsed = require('DefinitionListsAreUsed');
+var CssDocumentMakesSenseStyleTurnedOff = require('CssDocumentMakesSenseStyleTurnedOff');
+var ColorFontContrast = require('ColorFontContrast');
+var ColorElementBehindContrast = require('ColorElementBehindContrast');
+var ColorElementBehindBackgroundImageContrast = require('ColorElementBehindBackgroundImageContrast');
+var ColorElementBehindBackgroundGradientContrast = require('ColorElementBehindBackgroundGradientContrast');
+var ColorBackgroundImageContrast = require('ColorBackgroundImageContrast');
+var ColorBackgroundGradientContrast = require('ColorBackgroundGradientContrast');
+var CheckboxHasLabel = require('CheckboxHasLabel');
+var ButtonHasName = require('ButtonHasName');
+var BoldIsNotUsed = require('BoldIsNotUsed');
+var BlockquoteUseForQuotations = require('BlockquoteUseForQuotations');
+var BlockquoteNotUsedForIndentation = require('BlockquoteNotUsedForIndentation');
+var BlinkIsNotUsed = require('BlinkIsNotUsed');
+var BasefontIsNotUsed = require('BasefontIsNotUsed');
+var AudioMayBePresent = require('AudioMayBePresent');
+var AreaLinksToSoundFile = require('AreaLinksToSoundFile');
+var AreaHasAltValue = require('AreaHasAltValue');
+var AreaDontOpenNewWindow = require('AreaDontOpenNewWindow');
+var AreaAltRefersToText = require('AreaAltRefersToText');
+var AreaAltIdentifiesDestination = require('AreaAltIdentifiesDestination');
+var AnimatedGifMayBePresent = require('AnimatedGifMayBePresent');
+var ATitleDescribesDestination = require('ATitleDescribesDestination');
+var ASuspiciousLinkText = require('ASuspiciousLinkText');
+var AppletsDonotUseColorAlone = require('AppletsDonotUseColorAlone');
+var AppletsDoNotFlicker = require('AppletsDoNotFlicker');
+var AppletUIMustBeAccessible = require('AppletUIMustBeAccessible');
+var AppletTextEquivalentsGetUpdated = require('AppletTextEquivalentsGetUpdated');
+var AppletProvidesMechanismToReturnToParent = require('AppletProvidesMechanismToReturnToParent');
+var AppletContainsTextEquivalentInAlt = require('AppletContainsTextEquivalentInAlt');
+var AppletContainsTextEquivalent = require('AppletContainsTextEquivalent');
+var AMustNotHaveJavascriptHref = require('AMustNotHaveJavascriptHref');
+var AMustHaveTitle = require('AMustHaveTitle');
+var AMustContainText = require('AMustContainText');
+var AMultimediaTextAlternative = require('AMultimediaTextAlternative');
+var ALinksToSoundFilesNeedTranscripts = require('ALinksToSoundFilesNeedTranscripts');
+var ALinksToMultiMediaRequireTranscript = require('ALinksToMultiMediaRequireTranscript');
+var ALinksNotSeparatedBySymbols = require('ALinksNotSeparatedBySymbols');
+var ALinksDontOpenNewWindow = require('ALinksDontOpenNewWindow');
+var ALinksAreSeparatedByPrintableCharacters = require('ALinksAreSeparatedByPrintableCharacters');
+var ALinkWithNonText = require('ALinkWithNonText');
+var ALinkTextDoesNotBeginWithRedundantWord = require('ALinkTextDoesNotBeginWithRedundantWord');
+var AInPHasADistinctStyle = require('AInPHasADistinctStyle');
+var AImgAltNotRepetitive = require('AImgAltNotRepetitive');
+var AAdjacentWithSameResourceShouldBeCombined = require('AAdjacentWithSameResourceShouldBeCombined');
+var map = new Map();
+map.set('aAdjacentWithSameResourceShouldBeCombined', AAdjacentWithSameResourceShouldBeCombined);
+map.set('aImgAltNotRepetitive', AImgAltNotRepetitive);
+map.set('aInPHasADistinctStyle', AInPHasADistinctStyle);
+map.set('aLinkTextDoesNotBeginWithRedundantWord', ALinkTextDoesNotBeginWithRedundantWord);
+map.set('aLinkWithNonText', ALinkWithNonText);
+map.set('aLinksAreSeparatedByPrintableCharacters', ALinksAreSeparatedByPrintableCharacters);
+map.set('aLinksDontOpenNewWindow', ALinksDontOpenNewWindow);
+map.set('aLinksNotSeparatedBySymbols', ALinksNotSeparatedBySymbols);
+map.set('aLinksToMultiMediaRequireTranscript', ALinksToMultiMediaRequireTranscript);
+map.set('aLinksToSoundFilesNeedTranscripts', ALinksToSoundFilesNeedTranscripts);
+map.set('aMultimediaTextAlternative', AMultimediaTextAlternative);
+map.set('aMustContainText', AMustContainText);
+map.set('aMustHaveTitle', AMustHaveTitle);
+map.set('aMustNotHaveJavascriptHref', AMustNotHaveJavascriptHref);
+map.set('appletContainsTextEquivalent', AppletContainsTextEquivalent);
+map.set('appletContainsTextEquivalentInAlt', AppletContainsTextEquivalentInAlt);
+map.set('appletProvidesMechanismToReturnToParent', AppletProvidesMechanismToReturnToParent);
+map.set('appletTextEquivalentsGetUpdated', AppletTextEquivalentsGetUpdated);
+map.set('appletUIMustBeAccessible', AppletUIMustBeAccessible);
+map.set('appletsDoNotFlicker', AppletsDoNotFlicker);
+map.set('appletsDonotUseColorAlone', AppletsDonotUseColorAlone);
+map.set('aSuspiciousLinkText', ASuspiciousLinkText);
+map.set('aTitleDescribesDestination', ATitleDescribesDestination);
+map.set('animatedGifMayBePresent', AnimatedGifMayBePresent);
+map.set('areaAltIdentifiesDestination', AreaAltIdentifiesDestination);
+map.set('areaAltRefersToText', AreaAltRefersToText);
+map.set('areaDontOpenNewWindow', AreaDontOpenNewWindow);
+map.set('areaHasAltValue', AreaHasAltValue);
+map.set('areaLinksToSoundFile', AreaLinksToSoundFile);
+map.set('audioMayBePresent', AudioMayBePresent);
+map.set('basefontIsNotUsed', BasefontIsNotUsed);
+map.set('blinkIsNotUsed', BlinkIsNotUsed);
+map.set('blockquoteNotUsedForIndentation', BlockquoteNotUsedForIndentation);
+map.set('blockquoteUseForQuotations', BlockquoteUseForQuotations);
+map.set('boldIsNotUsed', BoldIsNotUsed);
+map.set('buttonHasName', ButtonHasName);
+map.set('checkboxHasLabel', CheckboxHasLabel);
+map.set('colorBackgroundGradientContrast', ColorBackgroundGradientContrast);
+map.set('colorBackgroundImageContrast', ColorBackgroundImageContrast);
+map.set('colorElementBehindBackgroundGradientContrast', ColorElementBehindBackgroundGradientContrast);
+map.set('colorElementBehindBackgroundImageContrast', ColorElementBehindBackgroundImageContrast);
+map.set('colorElementBehindContrast', ColorElementBehindContrast);
+map.set('colorFontContrast', ColorFontContrast);
+map.set('cssDocumentMakesSenseStyleTurnedOff', CssDocumentMakesSenseStyleTurnedOff);
+map.set('definitionListsAreUsed', DefinitionListsAreUsed);
+map.set('doctypeProvided', DoctypeProvided);
+map.set('documentAcronymsHaveElement', DocumentAcronymsHaveElement);
+map.set('documentAutoRedirectNotUsed', DocumentAutoRedirectNotUsed);
+map.set('documentContentReadableWithoutStylesheets', DocumentContentReadableWithoutStylesheets);
+map.set('documentHasTitleElement', DocumentHasTitleElement);
+map.set('documentIsWrittenClearly', DocumentIsWrittenClearly);
+map.set('documentLangIsISO639Standard', DocumentLangIsISO639Standard);
+map.set('documentLangNotIdentified', DocumentLangNotIdentified);
+map.set('documentMetaNotUsedWithTimeout', DocumentMetaNotUsedWithTimeout);
+map.set('documentReadingDirection', DocumentReadingDirection);
+map.set('documentStrictDocType', DocumentStrictDocType);
+map.set('documentTitleDescribesDocument', DocumentTitleDescribesDocument);
+map.set('documentTitleIsNotPlaceholder', DocumentTitleIsNotPlaceholder);
+map.set('documentTitleIsShort', DocumentTitleIsShort);
+map.set('documentTitleNotEmpty', DocumentTitleNotEmpty);
+map.set('documentVisualListsAreMarkedUp', DocumentVisualListsAreMarkedUp);
+map.set('domOrderMatchesVisualOrder', DomOrderMatchesVisualOrder);
+map.set('embedHasAssociatedNoEmbed', EmbedHasAssociatedNoEmbed);
+map.set('embedMustHaveAltAttribute', EmbedMustHaveAltAttribute);
+map.set('fieldsetHasLabel', FieldsetHasLabel);
+map.set('fileHasLabel', FileHasLabel);
+map.set('fontIsNotUsed', FontIsNotUsed);
+map.set('formButtonsHaveValue', FormButtonsHaveValue);
+map.set('formErrorMessageHelpsUser', FormErrorMessageHelpsUser);
+map.set('formHasGoodErrorMessage', FormHasGoodErrorMessage);
+map.set('formHasSubmitButton', FormHasSubmitButton);
+map.set('formWithRequiredLabel', FormWithRequiredLabel);
+map.set('headerH1', HeaderH1);
+map.set('headerH1Format', HeaderH1Format);
+map.set('headerH2', HeaderH2);
+map.set('headerH2Format', HeaderH2Format);
+map.set('headerH3', HeaderH3);
+map.set('headerH3Format', HeaderH3Format);
+map.set('headerH4', HeaderH4);
+map.set('headerH4Format', HeaderH4Format);
+map.set('headerH5Format', HeaderH5Format);
+map.set('headerH6Format', HeaderH6Format);
+map.set('headersAttrRefersToATableCell', HeadersAttrRefersToATableCell);
+map.set('headersHaveText', HeadersHaveText);
+map.set('headersUseToMarkSections', HeadersUseToMarkSections);
+map.set('iIsNotUsed', IIsNotUsed);
+map.set('idrefsHasCorrespondingId', IdrefsHasCorrespondingId);
+map.set('iframeMustNotHaveLongdesc', IframeMustNotHaveLongdesc);
+map.set('imageMapServerSide', ImageMapServerSide);
+map.set('imgAltIsDifferent', ImgAltIsDifferent);
+map.set('imgAltIsTooLong', ImgAltIsTooLong);
+map.set('imgAltNotEmptyInAnchor', ImgAltNotEmptyInAnchor);
+map.set('imgAltNotPlaceHolder', ImgAltNotPlaceHolder);
+map.set('imgHasAlt', ImgHasAlt);
+map.set('imgHasLongDesc', ImgHasLongDesc);
+map.set('imgImportantNoSpacerAlt', ImgImportantNoSpacerAlt);
+map.set('imgNonDecorativeHasAlt', ImgNonDecorativeHasAlt);
+map.set('imgServerSideMapNotUsed', ImgServerSideMapNotUsed);
+map.set('imgShouldNotHaveTitle', ImgShouldNotHaveTitle);
+map.set('imgWithMapHasUseMap', ImgWithMapHasUseMap);
+map.set('imgWithMathShouldHaveMathEquivalent', ImgWithMathShouldHaveMathEquivalent);
+map.set('inputCheckboxRequiresFieldset', InputCheckboxRequiresFieldset);
+map.set('inputElementsDontHaveAlt', InputElementsDontHaveAlt);
+map.set('inputImageAltIsNotFileName', InputImageAltIsNotFileName);
+map.set('inputImageAltIsNotPlaceholder', InputImageAltIsNotPlaceholder);
+map.set('inputImageAltIsShort', InputImageAltIsShort);
+map.set('inputImageAltNotRedundant', InputImageAltNotRedundant);
+map.set('inputImageHasAlt', InputImageHasAlt);
+map.set('inputTextHasLabel', InputTextHasLabel);
+map.set('inputTextHasValue', InputTextHasValue);
+map.set('inputTextValueNotEmpty', InputTextValueNotEmpty);
+map.set('inputWithoutLabelHasTitle', InputWithoutLabelHasTitle);
+map.set('labelDoesNotContainInput', LabelDoesNotContainInput);
+map.set('labelMustBeUnique', LabelMustBeUnique);
+map.set('labelMustNotBeEmpty', LabelMustNotBeEmpty);
+map.set('labelsAreAssignedToAnInput', LabelsAreAssignedToAnInput);
+map.set('languageDirAttributeIsUsed', LanguageDirAttributeIsUsed);
+map.set('languageDirectionPunctuation', LanguageDirectionPunctuation);
+map.set('languageUnicodeDirection', LanguageUnicodeDirection);
+map.set('legendTextNotEmpty', LegendTextNotEmpty);
+map.set('legendTextNotPlaceholder', LegendTextNotPlaceholder);
+map.set('liDontUseImageForBullet', LiDontUseImageForBullet);
+map.set('linkHasAUniqueContext', LinkHasAUniqueContext);
+map.set('listNotUsedForFormatting', ListNotUsedForFormatting);
+map.set('listOfLinksUseList', ListOfLinksUseList);
+map.set('marqueeIsNotUsed', MarqueeIsNotUsed);
+map.set('menuNotUsedToFormatText', MenuNotUsedToFormatText);
+map.set('newWindowIsOpened', NewWindowIsOpened);
+map.set('objectMustContainText', ObjectMustContainText);
+map.set('objectMustHaveEmbed', ObjectMustHaveEmbed);
+map.set('objectMustHaveTitle', ObjectMustHaveTitle);
+map.set('objectMustHaveValidTitle', ObjectMustHaveValidTitle);
+map.set('pNotUsedAsHeader', PNotUsedAsHeader);
+map.set('passwordHasLabel', PasswordHasLabel);
+map.set('preShouldNotBeUsedForTabularLayout', PreShouldNotBeUsedForTabularLayout);
+map.set('radioHasLabel', RadioHasLabel);
+map.set('scriptOnclickRequiresOnKeypress', ScriptOnclickRequiresOnKeypress);
+map.set('scriptOndblclickRequiresOnKeypress', ScriptOndblclickRequiresOnKeypress);
+map.set('scriptOnmousedownRequiresOnKeypress', ScriptOnmousedownRequiresOnKeypress);
+map.set('scriptOnmousemove', ScriptOnmousemove);
+map.set('scriptOnmouseoutHasOnmouseblur', ScriptOnmouseoutHasOnmouseblur);
+map.set('scriptOnmouseoverHasOnfocus', ScriptOnmouseoverHasOnfocus);
+map.set('scriptOnmouseupHasOnkeyup', ScriptOnmouseupHasOnkeyup);
+map.set('selectHasAssociatedLabel', SelectHasAssociatedLabel);
+map.set('selectJumpMenu', SelectJumpMenu);
+map.set('siteMap', SiteMap);
+map.set('skipToContentLinkProvided', SkipToContentLinkProvided);
+map.set('svgContainsTitle', SvgContainsTitle);
+map.set('tabIndexFollowsLogicalOrder', TabIndexFollowsLogicalOrder);
+map.set('tableAxisHasCorrespondingId', TableAxisHasCorrespondingId);
+map.set('tableDataShouldHaveTh', TableDataShouldHaveTh);
+map.set('tableLayoutDataShouldNotHaveTh', TableLayoutDataShouldNotHaveTh);
+map.set('tableLayoutHasNoCaption', TableLayoutHasNoCaption);
+map.set('tableLayoutHasNoSummary', TableLayoutHasNoSummary);
+map.set('tableLayoutMakesSenseLinearized', TableLayoutMakesSenseLinearized);
+map.set('tableNotUsedForLayout', TableNotUsedForLayout);
+map.set('tableShouldUseHeaderIDs', TableShouldUseHeaderIDs);
+map.set('tableSummaryDoesNotDuplicateCaption', TableSummaryDoesNotDuplicateCaption);
+map.set('tableSummaryIsEmpty', TableSummaryIsEmpty);
+map.set('tableSummaryIsNotTooLong', TableSummaryIsNotTooLong);
+map.set('tableUseColGroup', TableUseColGroup);
+map.set('tableUsesAbbreviationForHeader', TableUsesAbbreviationForHeader);
+map.set('tableUsesCaption', TableUsesCaption);
+map.set('tableUsesScopeForRow', TableUsesScopeForRow);
+map.set('tabularDataIsInTable', TabularDataIsInTable);
+map.set('textIsNotSmall', TextIsNotSmall);
+map.set('textareaHasAssociatedLabel', TextareaHasAssociatedLabel);
+map.set('videoMayBePresent', VideoMayBePresent);
+map.set('videosEmbeddedOrLinkedNeedCaptions', VideosEmbeddedOrLinkedNeedCaptions);
+map.set('whiteSpaceInWord', WhiteSpaceInWord);
+map.set('whiteSpaceNotUsedForFormatting', WhiteSpaceNotUsedForFormatting);
+module.exports = map;
+
+},{"AAdjacentWithSameResourceShouldBeCombined":229,"AImgAltNotRepetitive":230,"AInPHasADistinctStyle":231,"ALinkTextDoesNotBeginWithRedundantWord":232,"ALinkWithNonText":233,"ALinksAreSeparatedByPrintableCharacters":234,"ALinksDontOpenNewWindow":235,"ALinksNotSeparatedBySymbols":236,"ALinksToMultiMediaRequireTranscript":237,"ALinksToSoundFilesNeedTranscripts":238,"AMultimediaTextAlternative":239,"AMustContainText":240,"AMustHaveTitle":241,"AMustNotHaveJavascriptHref":242,"ASuspiciousLinkText":243,"ATitleDescribesDestination":244,"AnimatedGifMayBePresent":245,"AppletContainsTextEquivalent":246,"AppletContainsTextEquivalentInAlt":247,"AppletProvidesMechanismToReturnToParent":248,"AppletTextEquivalentsGetUpdated":249,"AppletUIMustBeAccessible":250,"AppletsDoNotFlicker":251,"AppletsDonotUseColorAlone":252,"AreaAltIdentifiesDestination":253,"AreaAltRefersToText":254,"AreaDontOpenNewWindow":255,"AreaHasAltValue":256,"AreaLinksToSoundFile":257,"AudioMayBePresent":258,"BasefontIsNotUsed":259,"BlinkIsNotUsed":260,"BlockquoteNotUsedForIndentation":261,"BlockquoteUseForQuotations":262,"BoldIsNotUsed":263,"ButtonHasName":264,"CheckboxHasLabel":265,"ColorBackgroundGradientContrast":266,"ColorBackgroundImageContrast":267,"ColorElementBehindBackgroundGradientContrast":268,"ColorElementBehindBackgroundImageContrast":269,"ColorElementBehindContrast":270,"ColorFontContrast":271,"CssDocumentMakesSenseStyleTurnedOff":272,"DefinitionListsAreUsed":273,"DoctypeProvided":274,"DocumentAcronymsHaveElement":275,"DocumentAutoRedirectNotUsed":276,"DocumentContentReadableWithoutStylesheets":277,"DocumentHasTitleElement":278,"DocumentIsWrittenClearly":279,"DocumentLangIsISO639Standard":280,"DocumentLangNotIdentified":281,"DocumentMetaNotUsedWithTimeout":282,"DocumentReadingDirection":283,"DocumentStrictDocType":284,"DocumentTitleDescribesDocument":285,"DocumentTitleIsNotPlaceholder":286,"DocumentTitleIsShort":287,"DocumentTitleNotEmpty":288,"DocumentVisualListsAreMarkedUp":289,"DomOrderMatchesVisualOrder":290,"EmbedHasAssociatedNoEmbed":291,"EmbedMustHaveAltAttribute":292,"FieldsetHasLabel":293,"FileHasLabel":294,"FontIsNotUsed":295,"FormButtonsHaveValue":296,"FormErrorMessageHelpsUser":297,"FormHasGoodErrorMessage":298,"FormHasSubmitButton":299,"FormWithRequiredLabel":300,"HeaderH1":301,"HeaderH1Format":302,"HeaderH2":303,"HeaderH2Format":304,"HeaderH3":305,"HeaderH3Format":306,"HeaderH4":307,"HeaderH4Format":308,"HeaderH5Format":309,"HeaderH6Format":310,"HeadersAttrRefersToATableCell":311,"HeadersHaveText":312,"HeadersUseToMarkSections":313,"IIsNotUsed":314,"IdrefsHasCorrespondingId":315,"IframeMustNotHaveLongdesc":316,"ImageMapServerSide":317,"ImgAltIsDifferent":318,"ImgAltIsTooLong":319,"ImgAltNotEmptyInAnchor":320,"ImgAltNotPlaceHolder":321,"ImgHasAlt":322,"ImgHasLongDesc":323,"ImgImportantNoSpacerAlt":324,"ImgNonDecorativeHasAlt":325,"ImgServerSideMapNotUsed":326,"ImgShouldNotHaveTitle":327,"ImgWithMapHasUseMap":328,"ImgWithMathShouldHaveMathEquivalent":329,"InputCheckboxRequiresFieldset":330,"InputElementsDontHaveAlt":331,"InputImageAltIsNotFileName":332,"InputImageAltIsNotPlaceholder":333,"InputImageAltIsShort":334,"InputImageAltNotRedundant":335,"InputImageHasAlt":336,"InputTextHasLabel":337,"InputTextHasValue":338,"InputTextValueNotEmpty":339,"InputWithoutLabelHasTitle":340,"LabelDoesNotContainInput":341,"LabelMustBeUnique":342,"LabelMustNotBeEmpty":343,"LabelsAreAssignedToAnInput":344,"LanguageDirAttributeIsUsed":345,"LanguageDirectionPunctuation":346,"LanguageUnicodeDirection":347,"LegendTextNotEmpty":348,"LegendTextNotPlaceholder":349,"LiDontUseImageForBullet":350,"LinkHasAUniqueContext":351,"ListNotUsedForFormatting":352,"ListOfLinksUseList":353,"MarqueeIsNotUsed":354,"MenuNotUsedToFormatText":355,"NewWindowIsOpened":356,"ObjectMustContainText":357,"ObjectMustHaveEmbed":358,"ObjectMustHaveTitle":359,"ObjectMustHaveValidTitle":360,"PNotUsedAsHeader":361,"PasswordHasLabel":362,"PreShouldNotBeUsedForTabularLayout":363,"RadioHasLabel":364,"ScriptOnclickRequiresOnKeypress":365,"ScriptOndblclickRequiresOnKeypress":366,"ScriptOnmousedownRequiresOnKeypress":367,"ScriptOnmousemove":368,"ScriptOnmouseoutHasOnmouseblur":369,"ScriptOnmouseoverHasOnfocus":370,"ScriptOnmouseupHasOnkeyup":371,"SelectHasAssociatedLabel":372,"SelectJumpMenu":373,"SiteMap":374,"SkipToContentLinkProvided":375,"SvgContainsTitle":376,"TabIndexFollowsLogicalOrder":377,"TableAxisHasCorrespondingId":378,"TableDataShouldHaveTh":379,"TableLayoutDataShouldNotHaveTh":380,"TableLayoutHasNoCaption":381,"TableLayoutHasNoSummary":382,"TableLayoutMakesSenseLinearized":383,"TableNotUsedForLayout":384,"TableShouldUseHeaderIDs":385,"TableSummaryDoesNotDuplicateCaption":386,"TableSummaryIsEmpty":387,"TableSummaryIsNotTooLong":388,"TableUseColGroup":389,"TableUsesAbbreviationForHeader":390,"TableUsesCaption":391,"TableUsesScopeForRow":392,"TabularDataIsInTable":393,"TextIsNotSmall":394,"TextareaHasAssociatedLabel":395,"VideoMayBePresent":396,"VideosEmbeddedOrLinkedNeedCaptions":397,"WhiteSpaceInWord":398,"WhiteSpaceNotUsedForFormatting":399}],228:[function(require,module,exports){
+/*!
+ * jQuery JavaScript Library v2.1.4
+ * http://jquery.com/
+ *
+ * Includes Sizzle.js
+ * http://sizzlejs.com/
+ *
+ * Copyright 2005, 2014 jQuery Foundation, Inc. and other contributors
+ * Released under the MIT license
+ * http://jquery.org/license
+ *
+ * Date: 2015-04-28T16:01Z
+ */
+
+(function( global, factory ) {
+
+	if ( typeof module === "object" && typeof module.exports === "object" ) {
+		// For CommonJS and CommonJS-like environments where a proper `window`
+		// is present, execute the factory and get jQuery.
+		// For environments that do not have a `window` with a `document`
+		// (such as Node.js), expose a factory as module.exports.
+		// This accentuates the need for the creation of a real `window`.
+		// e.g. var jQuery = require("jquery")(window);
+		// See ticket #14549 for more info.
+		module.exports = global.document ?
+			factory( global, true ) :
+			function( w ) {
+				if ( !w.document ) {
+					throw new Error( "jQuery requires a window with a document" );
+				}
+				return factory( w );
+			};
+	} else {
+		factory( global );
+	}
+
+// Pass this if window is not defined yet
+}(typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
+
+// Support: Firefox 18+
+// Can't be in strict mode, several libs including ASP.NET trace
+// the stack via arguments.caller.callee and Firefox dies if
+// you try to trace through "use strict" call chains. (#13335)
+//
+
+var arr = [];
+
+var slice = arr.slice;
+
+var concat = arr.concat;
+
+var push = arr.push;
+
+var indexOf = arr.indexOf;
+
+var class2type = {};
+
+var toString = class2type.toString;
+
+var hasOwn = class2type.hasOwnProperty;
+
+var support = {};
+
+
+
+var
+	// Use the correct document accordingly with window argument (sandbox)
+	document = window.document,
+
+	version = "2.1.4",
+
+	// Define a local copy of jQuery
+	jQuery = function( selector, context ) {
+		// The jQuery object is actually just the init constructor 'enhanced'
+		// Need init if jQuery is called (just allow error to be thrown if not included)
+		return new jQuery.fn.init( selector, context );
+	},
+
+	// Support: Android<4.1
+	// Make sure we trim BOM and NBSP
+	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
+
+	// Matches dashed string for camelizing
+	rmsPrefix = /^-ms-/,
+	rdashAlpha = /-([\da-z])/gi,
+
+	// Used by jQuery.camelCase as callback to replace()
+	fcamelCase = function( all, letter ) {
+		return letter.toUpperCase();
+	};
+
+jQuery.fn = jQuery.prototype = {
+	// The current version of jQuery being used
+	jquery: version,
+
+	constructor: jQuery,
+
+	// Start with an empty selector
+	selector: "",
+
+	// The default length of a jQuery object is 0
+	length: 0,
+
+	toArray: function() {
+		return slice.call( this );
+	},
+
+	// Get the Nth element in the matched element set OR
+	// Get the whole matched element set as a clean array
+	get: function( num ) {
+		return num != null ?
+
+			// Return just the one element from the set
+			( num < 0 ? this[ num + this.length ] : this[ num ] ) :
+
+			// Return all the elements in a clean array
+			slice.call( this );
+	},
+
+	// Take an array of elements and push it onto the stack
+	// (returning the new matched element set)
+	pushStack: function( elems ) {
+
+		// Build a new jQuery matched element set
+		var ret = jQuery.merge( this.constructor(), elems );
+
+		// Add the old object onto the stack (as a reference)
+		ret.prevObject = this;
+		ret.context = this.context;
+
+		// Return the newly-formed element set
+		return ret;
+	},
+
+	// Execute a callback for every element in the matched set.
+	// (You can seed the arguments with an array of args, but this is
+	// only used internally.)
+	each: function( callback, args ) {
+		return jQuery.each( this, callback, args );
+	},
+
+	map: function( callback ) {
+		return this.pushStack( jQuery.map(this, function( elem, i ) {
+			return callback.call( elem, i, elem );
+		}));
+	},
+
+	slice: function() {
+		return this.pushStack( slice.apply( this, arguments ) );
+	},
+
+	first: function() {
+		return this.eq( 0 );
+	},
+
+	last: function() {
+		return this.eq( -1 );
+	},
+
+	eq: function( i ) {
+		var len = this.length,
+			j = +i + ( i < 0 ? len : 0 );
+		return this.pushStack( j >= 0 && j < len ? [ this[j] ] : [] );
+	},
+
+	end: function() {
+		return this.prevObject || this.constructor(null);
+	},
+
+	// For internal use only.
+	// Behaves like an Array's method, not like a jQuery method.
+	push: push,
+	sort: arr.sort,
+	splice: arr.splice
+};
+
+jQuery.extend = jQuery.fn.extend = function() {
+	var options, name, src, copy, copyIsArray, clone,
+		target = arguments[0] || {},
+		i = 1,
+		length = arguments.length,
+		deep = false;
+
+	// Handle a deep copy situation
+	if ( typeof target === "boolean" ) {
+		deep = target;
+
+		// Skip the boolean and the target
+		target = arguments[ i ] || {};
+		i++;
+	}
+
+	// Handle case when target is a string or something (possible in deep copy)
+	if ( typeof target !== "object" && !jQuery.isFunction(target) ) {
+		target = {};
+	}
+
+	// Extend jQuery itself if only one argument is passed
+	if ( i === length ) {
+		target = this;
+		i--;
+	}
+
+	for ( ; i < length; i++ ) {
+		// Only deal with non-null/undefined values
+		if ( (options = arguments[ i ]) != null ) {
+			// Extend the base object
+			for ( name in options ) {
+				src = target[ name ];
+				copy = options[ name ];
+
+				// Prevent never-ending loop
+				if ( target === copy ) {
+					continue;
+				}
+
+				// Recurse if we're merging plain objects or arrays
+				if ( deep && copy && ( jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)) ) ) {
+					if ( copyIsArray ) {
+						copyIsArray = false;
+						clone = src && jQuery.isArray(src) ? src : [];
+
+					} else {
+						clone = src && jQuery.isPlainObject(src) ? src : {};
+					}
+
+					// Never move original objects, clone them
+					target[ name ] = jQuery.extend( deep, clone, copy );
+
+				// Don't bring in undefined values
+				} else if ( copy !== undefined ) {
+					target[ name ] = copy;
+				}
+			}
+		}
+	}
+
+	// Return the modified object
+	return target;
+};
+
+jQuery.extend({
+	// Unique for each copy of jQuery on the page
+	expando: "jQuery" + ( version + Math.random() ).replace( /\D/g, "" ),
+
+	// Assume jQuery is ready without the ready module
+	isReady: true,
+
+	error: function( msg ) {
+		throw new Error( msg );
+	},
+
+	noop: function() {},
+
+	isFunction: function( obj ) {
+		return jQuery.type(obj) === "function";
+	},
+
+	isArray: Array.isArray,
+
+	isWindow: function( obj ) {
+		return obj != null && obj === obj.window;
+	},
+
+	isNumeric: function( obj ) {
+		// parseFloat NaNs numeric-cast false positives (null|true|false|"")
+		// ...but misinterprets leading-number strings, particularly hex literals ("0x...")
+		// subtraction forces infinities to NaN
+		// adding 1 corrects loss of precision from parseFloat (#15100)
+		return !jQuery.isArray( obj ) && (obj - parseFloat( obj ) + 1) >= 0;
+	},
+
+	isPlainObject: function( obj ) {
+		// Not plain objects:
+		// - Any object or value whose internal [[Class]] property is not "[object Object]"
+		// - DOM nodes
+		// - window
+		if ( jQuery.type( obj ) !== "object" || obj.nodeType || jQuery.isWindow( obj ) ) {
+			return false;
+		}
+
+		if ( obj.constructor &&
+				!hasOwn.call( obj.constructor.prototype, "isPrototypeOf" ) ) {
+			return false;
+		}
+
+		// If the function hasn't returned already, we're confident that
+		// |obj| is a plain object, created by {} or constructed with new Object
+		return true;
+	},
+
+	isEmptyObject: function( obj ) {
+		var name;
+		for ( name in obj ) {
+			return false;
+		}
+		return true;
+	},
+
+	type: function( obj ) {
+		if ( obj == null ) {
+			return obj + "";
+		}
+		// Support: Android<4.0, iOS<6 (functionish RegExp)
+		return typeof obj === "object" || typeof obj === "function" ?
+			class2type[ toString.call(obj) ] || "object" :
+			typeof obj;
+	},
+
+	// Evaluates a script in a global context
+	globalEval: function( code ) {
+		var script,
+			indirect = eval;
+
+		code = jQuery.trim( code );
+
+		if ( code ) {
+			// If the code includes a valid, prologue position
+			// strict mode pragma, execute code by injecting a
+			// script tag into the document.
+			if ( code.indexOf("use strict") === 1 ) {
+				script = document.createElement("script");
+				script.text = code;
+				document.head.appendChild( script ).parentNode.removeChild( script );
+			} else {
+			// Otherwise, avoid the DOM node creation, insertion
+			// and removal by using an indirect global eval
+				indirect( code );
+			}
+		}
+	},
+
+	// Convert dashed to camelCase; used by the css and data modules
+	// Support: IE9-11+
+	// Microsoft forgot to hump their vendor prefix (#9572)
+	camelCase: function( string ) {
+		return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
+	},
+
+	nodeName: function( elem, name ) {
+		return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
+	},
+
+	// args is for internal usage only
+	each: function( obj, callback, args ) {
+		var value,
+			i = 0,
+			length = obj.length,
+			isArray = isArraylike( obj );
+
+		if ( args ) {
+			if ( isArray ) {
+				for ( ; i < length; i++ ) {
+					value = callback.apply( obj[ i ], args );
+
+					if ( value === false ) {
+						break;
+					}
+				}
+			} else {
+				for ( i in obj ) {
+					value = callback.apply( obj[ i ], args );
+
+					if ( value === false ) {
+						break;
+					}
+				}
+			}
+
+		// A special, fast, case for the most common use of each
+		} else {
+			if ( isArray ) {
+				for ( ; i < length; i++ ) {
+					value = callback.call( obj[ i ], i, obj[ i ] );
+
+					if ( value === false ) {
+						break;
+					}
+				}
+			} else {
+				for ( i in obj ) {
+					value = callback.call( obj[ i ], i, obj[ i ] );
+
+					if ( value === false ) {
+						break;
+					}
+				}
+			}
+		}
+
+		return obj;
+	},
+
+	// Support: Android<4.1
+	trim: function( text ) {
+		return text == null ?
+			"" :
+			( text + "" ).replace( rtrim, "" );
+	},
+
+	// results is for internal usage only
+	makeArray: function( arr, results ) {
+		var ret = results || [];
+
+		if ( arr != null ) {
+			if ( isArraylike( Object(arr) ) ) {
+				jQuery.merge( ret,
+					typeof arr === "string" ?
+					[ arr ] : arr
+				);
+			} else {
+				push.call( ret, arr );
+			}
+		}
+
+		return ret;
+	},
+
+	inArray: function( elem, arr, i ) {
+		return arr == null ? -1 : indexOf.call( arr, elem, i );
+	},
+
+	merge: function( first, second ) {
+		var len = +second.length,
+			j = 0,
+			i = first.length;
+
+		for ( ; j < len; j++ ) {
+			first[ i++ ] = second[ j ];
+		}
+
+		first.length = i;
+
+		return first;
+	},
+
+	grep: function( elems, callback, invert ) {
+		var callbackInverse,
+			matches = [],
+			i = 0,
+			length = elems.length,
+			callbackExpect = !invert;
+
+		// Go through the array, only saving the items
+		// that pass the validator function
+		for ( ; i < length; i++ ) {
+			callbackInverse = !callback( elems[ i ], i );
+			if ( callbackInverse !== callbackExpect ) {
+				matches.push( elems[ i ] );
+			}
+		}
+
+		return matches;
+	},
+
+	// arg is for internal usage only
+	map: function( elems, callback, arg ) {
+		var value,
+			i = 0,
+			length = elems.length,
+			isArray = isArraylike( elems ),
+			ret = [];
+
+		// Go through the array, translating each of the items to their new values
+		if ( isArray ) {
+			for ( ; i < length; i++ ) {
+				value = callback( elems[ i ], i, arg );
+
+				if ( value != null ) {
+					ret.push( value );
+				}
+			}
+
+		// Go through every key on the object,
+		} else {
+			for ( i in elems ) {
+				value = callback( elems[ i ], i, arg );
+
+				if ( value != null ) {
+					ret.push( value );
+				}
+			}
+		}
+
+		// Flatten any nested arrays
+		return concat.apply( [], ret );
+	},
+
+	// A global GUID counter for objects
+	guid: 1,
+
+	// Bind a function to a context, optionally partially applying any
+	// arguments.
+	proxy: function( fn, context ) {
+		var tmp, args, proxy;
+
+		if ( typeof context === "string" ) {
+			tmp = fn[ context ];
+			context = fn;
+			fn = tmp;
+		}
+
+		// Quick check to determine if target is callable, in the spec
+		// this throws a TypeError, but we will just return undefined.
+		if ( !jQuery.isFunction( fn ) ) {
+			return undefined;
+		}
+
+		// Simulated bind
+		args = slice.call( arguments, 2 );
+		proxy = function() {
+			return fn.apply( context || this, args.concat( slice.call( arguments ) ) );
+		};
+
+		// Set the guid of unique handler to the same of original handler, so it can be removed
+		proxy.guid = fn.guid = fn.guid || jQuery.guid++;
+
+		return proxy;
+	},
+
+	now: Date.now,
+
+	// jQuery.support is not used in Core but other projects attach their
+	// properties to it so it needs to exist.
+	support: support
+});
+
+// Populate the class2type map
+jQuery.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function(i, name) {
+	class2type[ "[object " + name + "]" ] = name.toLowerCase();
+});
+
+function isArraylike( obj ) {
+
+	// Support: iOS 8.2 (not reproducible in simulator)
+	// `in` check used to prevent JIT error (gh-2145)
+	// hasOwn isn't used here due to false negatives
+	// regarding Nodelist length in IE
+	var length = "length" in obj && obj.length,
+		type = jQuery.type( obj );
+
+	if ( type === "function" || jQuery.isWindow( obj ) ) {
+		return false;
+	}
+
+	if ( obj.nodeType === 1 && length ) {
+		return true;
+	}
+
+	return type === "array" || length === 0 ||
+		typeof length === "number" && length > 0 && ( length - 1 ) in obj;
+}
+var Sizzle =
+/*!
+ * Sizzle CSS Selector Engine v2.2.0-pre
+ * http://sizzlejs.com/
+ *
+ * Copyright 2008, 2014 jQuery Foundation, Inc. and other contributors
+ * Released under the MIT license
+ * http://jquery.org/license
+ *
+ * Date: 2014-12-16
+ */
+(function( window ) {
+
+var i,
+	support,
+	Expr,
+	getText,
+	isXML,
+	tokenize,
+	compile,
+	select,
+	outermostContext,
+	sortInput,
+	hasDuplicate,
+
+	// Local document vars
+	setDocument,
+	document,
+	docElem,
+	documentIsHTML,
+	rbuggyQSA,
+	rbuggyMatches,
+	matches,
+	contains,
+
+	// Instance-specific data
+	expando = "sizzle" + 1 * new Date(),
+	preferredDoc = window.document,
+	dirruns = 0,
+	done = 0,
+	classCache = createCache(),
+	tokenCache = createCache(),
+	compilerCache = createCache(),
+	sortOrder = function( a, b ) {
+		if ( a === b ) {
+			hasDuplicate = true;
+		}
+		return 0;
+	},
+
+	// General-purpose constants
+	MAX_NEGATIVE = 1 << 31,
+
+	// Instance methods
+	hasOwn = ({}).hasOwnProperty,
+	arr = [],
+	pop = arr.pop,
+	push_native = arr.push,
+	push = arr.push,
+	slice = arr.slice,
+	// Use a stripped-down indexOf as it's faster than native
+	// http://jsperf.com/thor-indexof-vs-for/5
+	indexOf = function( list, elem ) {
+		var i = 0,
+			len = list.length;
+		for ( ; i < len; i++ ) {
+			if ( list[i] === elem ) {
+				return i;
+			}
+		}
+		return -1;
+	},
+
+	booleans = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",
+
+	// Regular expressions
+
+	// Whitespace characters http://www.w3.org/TR/css3-selectors/#whitespace
+	whitespace = "[\\x20\\t\\r\\n\\f]",
+	// http://www.w3.org/TR/css3-syntax/#characters
+	characterEncoding = "(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",
+
+	// Loosely modeled on CSS identifier characters
+	// An unquoted value should be a CSS identifier http://www.w3.org/TR/css3-selectors/#attribute-selectors
+	// Proper syntax: http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
+	identifier = characterEncoding.replace( "w", "w#" ),
+
+	// Attribute selectors: http://www.w3.org/TR/selectors/#attribute-selectors
+	attributes = "\\[" + whitespace + "*(" + characterEncoding + ")(?:" + whitespace +
+		// Operator (capture 2)
+		"*([*^$|!~]?=)" + whitespace +
+		// "Attribute values must be CSS identifiers [capture 5] or strings [capture 3 or capture 4]"
+		"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + identifier + "))|)" + whitespace +
+		"*\\]",
+
+	pseudos = ":(" + characterEncoding + ")(?:\\((" +
+		// To reduce the number of selectors needing tokenize in the preFilter, prefer arguments:
+		// 1. quoted (capture 3; capture 4 or capture 5)
+		"('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|" +
+		// 2. simple (capture 6)
+		"((?:\\\\.|[^\\\\()[\\]]|" + attributes + ")*)|" +
+		// 3. anything else (capture 2)
+		".*" +
+		")\\)|)",
+
+	// Leading and non-escaped trailing whitespace, capturing some non-whitespace characters preceding the latter
+	rwhitespace = new RegExp( whitespace + "+", "g" ),
+	rtrim = new RegExp( "^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" + whitespace + "+$", "g" ),
+
+	rcomma = new RegExp( "^" + whitespace + "*," + whitespace + "*" ),
+	rcombinators = new RegExp( "^" + whitespace + "*([>+~]|" + whitespace + ")" + whitespace + "*" ),
+
+	rattributeQuotes = new RegExp( "=" + whitespace + "*([^\\]'\"]*?)" + whitespace + "*\\]", "g" ),
+
+	rpseudo = new RegExp( pseudos ),
+	ridentifier = new RegExp( "^" + identifier + "$" ),
+
+	matchExpr = {
+		"ID": new RegExp( "^#(" + characterEncoding + ")" ),
+		"CLASS": new RegExp( "^\\.(" + characterEncoding + ")" ),
+		"TAG": new RegExp( "^(" + characterEncoding.replace( "w", "w*" ) + ")" ),
+		"ATTR": new RegExp( "^" + attributes ),
+		"PSEUDO": new RegExp( "^" + pseudos ),
+		"CHILD": new RegExp( "^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\(" + whitespace +
+			"*(even|odd|(([+-]|)(\\d*)n|)" + whitespace + "*(?:([+-]|)" + whitespace +
+			"*(\\d+)|))" + whitespace + "*\\)|)", "i" ),
+		"bool": new RegExp( "^(?:" + booleans + ")$", "i" ),
+		// For use in libraries implementing .is()
+		// We use this for POS matching in `select`
+		"needsContext": new RegExp( "^" + whitespace + "*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\(" +
+			whitespace + "*((?:-\\d)?\\d*)" + whitespace + "*\\)|)(?=[^-]|$)", "i" )
+	},
+
+	rinputs = /^(?:input|select|textarea|button)$/i,
+	rheader = /^h\d$/i,
+
+	rnative = /^[^{]+\{\s*\[native \w/,
+
+	// Easily-parseable/retrievable ID or TAG or CLASS selectors
+	rquickExpr = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
+
+	rsibling = /[+~]/,
+	rescape = /'|\\/g,
+
+	// CSS escapes http://www.w3.org/TR/CSS21/syndata.html#escaped-characters
+	runescape = new RegExp( "\\\\([\\da-f]{1,6}" + whitespace + "?|(" + whitespace + ")|.)", "ig" ),
+	funescape = function( _, escaped, escapedWhitespace ) {
+		var high = "0x" + escaped - 0x10000;
+		// NaN means non-codepoint
+		// Support: Firefox<24
+		// Workaround erroneous numeric interpretation of +"0x"
+		return high !== high || escapedWhitespace ?
+			escaped :
+			high < 0 ?
+				// BMP codepoint
+				String.fromCharCode( high + 0x10000 ) :
+				// Supplemental Plane codepoint (surrogate pair)
+				String.fromCharCode( high >> 10 | 0xD800, high & 0x3FF | 0xDC00 );
+	},
+
+	// Used for iframes
+	// See setDocument()
+	// Removing the function wrapper causes a "Permission Denied"
+	// error in IE
+	unloadHandler = function() {
+		setDocument();
+	};
+
+// Optimize for push.apply( _, NodeList )
+try {
+	push.apply(
+		(arr = slice.call( preferredDoc.childNodes )),
+		preferredDoc.childNodes
+	);
+	// Support: Android<4.0
+	// Detect silently failing push.apply
+	arr[ preferredDoc.childNodes.length ].nodeType;
+} catch ( e ) {
+	push = { apply: arr.length ?
+
+		// Leverage slice if possible
+		function( target, els ) {
+			push_native.apply( target, slice.call(els) );
+		} :
+
+		// Support: IE<9
+		// Otherwise append directly
+		function( target, els ) {
+			var j = target.length,
+				i = 0;
+			// Can't trust NodeList.length
+			while ( (target[j++] = els[i++]) ) {}
+			target.length = j - 1;
+		}
+	};
+}
+
+function Sizzle( selector, context, results, seed ) {
+	var match, elem, m, nodeType,
+		// QSA vars
+		i, groups, old, nid, newContext, newSelector;
+
+	if ( ( context ? context.ownerDocument || context : preferredDoc ) !== document ) {
+		setDocument( context );
+	}
+
+	context = context || document;
+	results = results || [];
+	nodeType = context.nodeType;
+
+	if ( typeof selector !== "string" || !selector ||
+		nodeType !== 1 && nodeType !== 9 && nodeType !== 11 ) {
+
+		return results;
+	}
+
+	if ( !seed && documentIsHTML ) {
+
+		// Try to shortcut find operations when possible (e.g., not under DocumentFragment)
+		if ( nodeType !== 11 && (match = rquickExpr.exec( selector )) ) {
+			// Speed-up: Sizzle("#ID")
+			if ( (m = match[1]) ) {
+				if ( nodeType === 9 ) {
+					elem = context.getElementById( m );
+					// Check parentNode to catch when Blackberry 4.6 returns
+					// nodes that are no longer in the document (jQuery #6963)
+					if ( elem && elem.parentNode ) {
+						// Handle the case where IE, Opera, and Webkit return items
+						// by name instead of ID
+						if ( elem.id === m ) {
+							results.push( elem );
+							return results;
+						}
+					} else {
+						return results;
+					}
+				} else {
+					// Context is not a document
+					if ( context.ownerDocument && (elem = context.ownerDocument.getElementById( m )) &&
+						contains( context, elem ) && elem.id === m ) {
+						results.push( elem );
+						return results;
+					}
+				}
+
+			// Speed-up: Sizzle("TAG")
+			} else if ( match[2] ) {
+				push.apply( results, context.getElementsByTagName( selector ) );
+				return results;
+
+			// Speed-up: Sizzle(".CLASS")
+			} else if ( (m = match[3]) && support.getElementsByClassName ) {
+				push.apply( results, context.getElementsByClassName( m ) );
+				return results;
+			}
+		}
+
+		// QSA path
+		if ( support.qsa && (!rbuggyQSA || !rbuggyQSA.test( selector )) ) {
+			nid = old = expando;
+			newContext = context;
+			newSelector = nodeType !== 1 && selector;
+
+			// qSA works strangely on Element-rooted queries
+			// We can work around this by specifying an extra ID on the root
+			// and working up from there (Thanks to Andrew Dupont for the technique)
+			// IE 8 doesn't work on object elements
+			if ( nodeType === 1 && context.nodeName.toLowerCase() !== "object" ) {
+				groups = tokenize( selector );
+
+				if ( (old = context.getAttribute("id")) ) {
+					nid = old.replace( rescape, "\\$&" );
+				} else {
+					context.setAttribute( "id", nid );
+				}
+				nid = "[id='" + nid + "'] ";
+
+				i = groups.length;
+				while ( i-- ) {
+					groups[i] = nid + toSelector( groups[i] );
+				}
+				newContext = rsibling.test( selector ) && testContext( context.parentNode ) || context;
+				newSelector = groups.join(",");
+			}
+
+			if ( newSelector ) {
+				try {
+					push.apply( results,
+						newContext.querySelectorAll( newSelector )
+					);
+					return results;
+				} catch(qsaError) {
+				} finally {
+					if ( !old ) {
+						context.removeAttribute("id");
+					}
+				}
+			}
+		}
+	}
+
+	// All others
+	return select( selector.replace( rtrim, "$1" ), context, results, seed );
+}
+
+/**
+ * Create key-value caches of limited size
+ * @returns {Function(string, Object)} Returns the Object data after storing it on itself with
+ *	property name the (space-suffixed) string and (if the cache is larger than Expr.cacheLength)
+ *	deleting the oldest entry
+ */
+function createCache() {
+	var keys = [];
+
+	function cache( key, value ) {
+		// Use (key + " ") to avoid collision with native prototype properties (see Issue #157)
+		if ( keys.push( key + " " ) > Expr.cacheLength ) {
+			// Only keep the most recent entries
+			delete cache[ keys.shift() ];
+		}
+		return (cache[ key + " " ] = value);
+	}
+	return cache;
+}
+
+/**
+ * Mark a function for special use by Sizzle
+ * @param {Function} fn The function to mark
+ */
+function markFunction( fn ) {
+	fn[ expando ] = true;
+	return fn;
+}
+
+/**
+ * Support testing using an element
+ * @param {Function} fn Passed the created div and expects a boolean result
+ */
+function assert( fn ) {
+	var div = document.createElement("div");
+
+	try {
+		return !!fn( div );
+	} catch (e) {
+		return false;
+	} finally {
+		// Remove from its parent by default
+		if ( div.parentNode ) {
+			div.parentNode.removeChild( div );
+		}
+		// release memory in IE
+		div = null;
+	}
+}
+
+/**
+ * Adds the same handler for all of the specified attrs
+ * @param {String} attrs Pipe-separated list of attributes
+ * @param {Function} handler The method that will be applied
+ */
+function addHandle( attrs, handler ) {
+	var arr = attrs.split("|"),
+		i = attrs.length;
+
+	while ( i-- ) {
+		Expr.attrHandle[ arr[i] ] = handler;
+	}
+}
+
+/**
+ * Checks document order of two siblings
+ * @param {Element} a
+ * @param {Element} b
+ * @returns {Number} Returns less than 0 if a precedes b, greater than 0 if a follows b
+ */
+function siblingCheck( a, b ) {
+	var cur = b && a,
+		diff = cur && a.nodeType === 1 && b.nodeType === 1 &&
+			( ~b.sourceIndex || MAX_NEGATIVE ) -
+			( ~a.sourceIndex || MAX_NEGATIVE );
+
+	// Use IE sourceIndex if available on both nodes
+	if ( diff ) {
+		return diff;
+	}
+
+	// Check if b follows a
+	if ( cur ) {
+		while ( (cur = cur.nextSibling) ) {
+			if ( cur === b ) {
+				return -1;
+			}
+		}
+	}
+
+	return a ? 1 : -1;
+}
+
+/**
+ * Returns a function to use in pseudos for input types
+ * @param {String} type
+ */
+function createInputPseudo( type ) {
+	return function( elem ) {
+		var name = elem.nodeName.toLowerCase();
+		return name === "input" && elem.type === type;
+	};
+}
+
+/**
+ * Returns a function to use in pseudos for buttons
+ * @param {String} type
+ */
+function createButtonPseudo( type ) {
+	return function( elem ) {
+		var name = elem.nodeName.toLowerCase();
+		return (name === "input" || name === "button") && elem.type === type;
+	};
+}
+
+/**
+ * Returns a function to use in pseudos for positionals
+ * @param {Function} fn
+ */
+function createPositionalPseudo( fn ) {
+	return markFunction(function( argument ) {
+		argument = +argument;
+		return markFunction(function( seed, matches ) {
+			var j,
+				matchIndexes = fn( [], seed.length, argument ),
+				i = matchIndexes.length;
+
+			// Match elements found at the specified indexes
+			while ( i-- ) {
+				if ( seed[ (j = matchIndexes[i]) ] ) {
+					seed[j] = !(matches[j] = seed[j]);
+				}
+			}
+		});
+	});
+}
+
+/**
+ * Checks a node for validity as a Sizzle context
+ * @param {Element|Object=} context
+ * @returns {Element|Object|Boolean} The input node if acceptable, otherwise a falsy value
+ */
+function testContext( context ) {
+	return context && typeof context.getElementsByTagName !== "undefined" && context;
+}
+
+// Expose support vars for convenience
+support = Sizzle.support = {};
+
+/**
+ * Detects XML nodes
+ * @param {Element|Object} elem An element or a document
+ * @returns {Boolean} True iff elem is a non-HTML XML node
+ */
+isXML = Sizzle.isXML = function( elem ) {
+	// documentElement is verified for cases where it doesn't yet exist
+	// (such as loading iframes in IE - #4833)
+	var documentElement = elem && (elem.ownerDocument || elem).documentElement;
+	return documentElement ? documentElement.nodeName !== "HTML" : false;
+};
+
+/**
+ * Sets document-related variables once based on the current document
+ * @param {Element|Object} [doc] An element or document object to use to set the document
+ * @returns {Object} Returns the current document
+ */
+setDocument = Sizzle.setDocument = function( node ) {
+	var hasCompare, parent,
+		doc = node ? node.ownerDocument || node : preferredDoc;
+
+	// If no document and documentElement is available, return
+	if ( doc === document || doc.nodeType !== 9 || !doc.documentElement ) {
+		return document;
+	}
+
+	// Set our document
+	document = doc;
+	docElem = doc.documentElement;
+	parent = doc.defaultView;
+
+	// Support: IE>8
+	// If iframe document is assigned to "document" variable and if iframe has been reloaded,
+	// IE will throw "permission denied" error when accessing "document" variable, see jQuery #13936
+	// IE6-8 do not support the defaultView property so parent will be undefined
+	if ( parent && parent !== parent.top ) {
+		// IE11 does not have attachEvent, so all must suffer
+		if ( parent.addEventListener ) {
+			parent.addEventListener( "unload", unloadHandler, false );
+		} else if ( parent.attachEvent ) {
+			parent.attachEvent( "onunload", unloadHandler );
+		}
+	}
+
+	/* Support tests
+	---------------------------------------------------------------------- */
+	documentIsHTML = !isXML( doc );
+
+	/* Attributes
+	---------------------------------------------------------------------- */
+
+	// Support: IE<8
+	// Verify that getAttribute really returns attributes and not properties
+	// (excepting IE8 booleans)
+	support.attributes = assert(function( div ) {
+		div.className = "i";
+		return !div.getAttribute("className");
+	});
+
+	/* getElement(s)By*
+	---------------------------------------------------------------------- */
+
+	// Check if getElementsByTagName("*") returns only elements
+	support.getElementsByTagName = assert(function( div ) {
+		div.appendChild( doc.createComment("") );
+		return !div.getElementsByTagName("*").length;
+	});
+
+	// Support: IE<9
+	support.getElementsByClassName = rnative.test( doc.getElementsByClassName );
+
+	// Support: IE<10
+	// Check if getElementById returns elements by name
+	// The broken getElementById methods don't pick up programatically-set names,
+	// so use a roundabout getElementsByName test
+	support.getById = assert(function( div ) {
+		docElem.appendChild( div ).id = expando;
+		return !doc.getElementsByName || !doc.getElementsByName( expando ).length;
+	});
+
+	// ID find and filter
+	if ( support.getById ) {
+		Expr.find["ID"] = function( id, context ) {
+			if ( typeof context.getElementById !== "undefined" && documentIsHTML ) {
+				var m = context.getElementById( id );
+				// Check parentNode to catch when Blackberry 4.6 returns
+				// nodes that are no longer in the document #6963
+				return m && m.parentNode ? [ m ] : [];
+			}
+		};
+		Expr.filter["ID"] = function( id ) {
+			var attrId = id.replace( runescape, funescape );
+			return function( elem ) {
+				return elem.getAttribute("id") === attrId;
+			};
+		};
+	} else {
+		// Support: IE6/7
+		// getElementById is not reliable as a find shortcut
+		delete Expr.find["ID"];
+
+		Expr.filter["ID"] =  function( id ) {
+			var attrId = id.replace( runescape, funescape );
+			return function( elem ) {
+				var node = typeof elem.getAttributeNode !== "undefined" && elem.getAttributeNode("id");
+				return node && node.value === attrId;
+			};
+		};
+	}
+
+	// Tag
+	Expr.find["TAG"] = support.getElementsByTagName ?
+		function( tag, context ) {
+			if ( typeof context.getElementsByTagName !== "undefined" ) {
+				return context.getElementsByTagName( tag );
+
+			// DocumentFragment nodes don't have gEBTN
+			} else if ( support.qsa ) {
+				return context.querySelectorAll( tag );
+			}
+		} :
+
+		function( tag, context ) {
+			var elem,
+				tmp = [],
+				i = 0,
+				// By happy coincidence, a (broken) gEBTN appears on DocumentFragment nodes too
+				results = context.getElementsByTagName( tag );
+
+			// Filter out possible comments
+			if ( tag === "*" ) {
+				while ( (elem = results[i++]) ) {
+					if ( elem.nodeType === 1 ) {
+						tmp.push( elem );
+					}
+				}
+
+				return tmp;
+			}
+			return results;
+		};
+
+	// Class
+	Expr.find["CLASS"] = support.getElementsByClassName && function( className, context ) {
+		if ( documentIsHTML ) {
+			return context.getElementsByClassName( className );
+		}
+	};
+
+	/* QSA/matchesSelector
+	---------------------------------------------------------------------- */
+
+	// QSA and matchesSelector support
+
+	// matchesSelector(:active) reports false when true (IE9/Opera 11.5)
+	rbuggyMatches = [];
+
+	// qSa(:focus) reports false when true (Chrome 21)
+	// We allow this because of a bug in IE8/9 that throws an error
+	// whenever `document.activeElement` is accessed on an iframe
+	// So, we allow :focus to pass through QSA all the time to avoid the IE error
+	// See http://bugs.jquery.com/ticket/13378
+	rbuggyQSA = [];
+
+	if ( (support.qsa = rnative.test( doc.querySelectorAll )) ) {
+		// Build QSA regex
+		// Regex strategy adopted from Diego Perini
+		assert(function( div ) {
+			// Select is set to empty string on purpose
+			// This is to test IE's treatment of not explicitly
+			// setting a boolean content attribute,
+			// since its presence should be enough
+			// http://bugs.jquery.com/ticket/12359
+			docElem.appendChild( div ).innerHTML = "<a id='" + expando + "'></a>" +
+				"<select id='" + expando + "-\f]' msallowcapture=''>" +
+				"<option selected=''></option></select>";
+
+			// Support: IE8, Opera 11-12.16
+			// Nothing should be selected when empty strings follow ^= or $= or *=
+			// The test attribute must be unknown in Opera but "safe" for WinRT
+			// http://msdn.microsoft.com/en-us/library/ie/hh465388.aspx#attribute_section
+			if ( div.querySelectorAll("[msallowcapture^='']").length ) {
+				rbuggyQSA.push( "[*^$]=" + whitespace + "*(?:''|\"\")" );
+			}
+
+			// Support: IE8
+			// Boolean attributes and "value" are not treated correctly
+			if ( !div.querySelectorAll("[selected]").length ) {
+				rbuggyQSA.push( "\\[" + whitespace + "*(?:value|" + booleans + ")" );
+			}
+
+			// Support: Chrome<29, Android<4.2+, Safari<7.0+, iOS<7.0+, PhantomJS<1.9.7+
+			if ( !div.querySelectorAll( "[id~=" + expando + "-]" ).length ) {
+				rbuggyQSA.push("~=");
+			}
+
+			// Webkit/Opera - :checked should return selected option elements
+			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
+			// IE8 throws error here and will not see later tests
+			if ( !div.querySelectorAll(":checked").length ) {
+				rbuggyQSA.push(":checked");
+			}
+
+			// Support: Safari 8+, iOS 8+
+			// https://bugs.webkit.org/show_bug.cgi?id=136851
+			// In-page `selector#id sibing-combinator selector` fails
+			if ( !div.querySelectorAll( "a#" + expando + "+*" ).length ) {
+				rbuggyQSA.push(".#.+[+~]");
+			}
+		});
+
+		assert(function( div ) {
+			// Support: Windows 8 Native Apps
+			// The type and name attributes are restricted during .innerHTML assignment
+			var input = doc.createElement("input");
+			input.setAttribute( "type", "hidden" );
+			div.appendChild( input ).setAttribute( "name", "D" );
+
+			// Support: IE8
+			// Enforce case-sensitivity of name attribute
+			if ( div.querySelectorAll("[name=d]").length ) {
+				rbuggyQSA.push( "name" + whitespace + "*[*^$|!~]?=" );
+			}
+
+			// FF 3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
+			// IE8 throws error here and will not see later tests
+			if ( !div.querySelectorAll(":enabled").length ) {
+				rbuggyQSA.push( ":enabled", ":disabled" );
+			}
+
+			// Opera 10-11 does not throw on post-comma invalid pseudos
+			div.querySelectorAll("*,:x");
+			rbuggyQSA.push(",.*:");
+		});
+	}
+
+	if ( (support.matchesSelector = rnative.test( (matches = docElem.matches ||
+		docElem.webkitMatchesSelector ||
+		docElem.mozMatchesSelector ||
+		docElem.oMatchesSelector ||
+		docElem.msMatchesSelector) )) ) {
+
+		assert(function( div ) {
+			// Check to see if it's possible to do matchesSelector
+			// on a disconnected node (IE 9)
+			support.disconnectedMatch = matches.call( div, "div" );
+
+			// This should fail with an exception
+			// Gecko does not error, returns false instead
+			matches.call( div, "[s!='']:x" );
+			rbuggyMatches.push( "!=", pseudos );
+		});
+	}
+
+	rbuggyQSA = rbuggyQSA.length && new RegExp( rbuggyQSA.join("|") );
+	rbuggyMatches = rbuggyMatches.length && new RegExp( rbuggyMatches.join("|") );
+
+	/* Contains
+	---------------------------------------------------------------------- */
+	hasCompare = rnative.test( docElem.compareDocumentPosition );
+
+	// Element contains another
+	// Purposefully does not implement inclusive descendent
+	// As in, an element does not contain itself
+	contains = hasCompare || rnative.test( docElem.contains ) ?
+		function( a, b ) {
+			var adown = a.nodeType === 9 ? a.documentElement : a,
+				bup = b && b.parentNode;
+			return a === bup || !!( bup && bup.nodeType === 1 && (
+				adown.contains ?
+					adown.contains( bup ) :
+					a.compareDocumentPosition && a.compareDocumentPosition( bup ) & 16
+			));
+		} :
+		function( a, b ) {
+			if ( b ) {
+				while ( (b = b.parentNode) ) {
+					if ( b === a ) {
+						return true;
+					}
+				}
+			}
+			return false;
+		};
+
+	/* Sorting
+	---------------------------------------------------------------------- */
+
+	// Document order sorting
+	sortOrder = hasCompare ?
+	function( a, b ) {
+
+		// Flag for duplicate removal
+		if ( a === b ) {
+			hasDuplicate = true;
+			return 0;
+		}
+
+		// Sort on method existence if only one input has compareDocumentPosition
+		var compare = !a.compareDocumentPosition - !b.compareDocumentPosition;
+		if ( compare ) {
+			return compare;
+		}
+
+		// Calculate position if both inputs belong to the same document
+		compare = ( a.ownerDocument || a ) === ( b.ownerDocument || b ) ?
+			a.compareDocumentPosition( b ) :
+
+			// Otherwise we know they are disconnected
+			1;
+
+		// Disconnected nodes
+		if ( compare & 1 ||
+			(!support.sortDetached && b.compareDocumentPosition( a ) === compare) ) {
+
+			// Choose the first element that is related to our preferred document
+			if ( a === doc || a.ownerDocument === preferredDoc && contains(preferredDoc, a) ) {
+				return -1;
+			}
+			if ( b === doc || b.ownerDocument === preferredDoc && contains(preferredDoc, b) ) {
+				return 1;
+			}
+
+			// Maintain original order
+			return sortInput ?
+				( indexOf( sortInput, a ) - indexOf( sortInput, b ) ) :
+				0;
+		}
+
+		return compare & 4 ? -1 : 1;
+	} :
+	function( a, b ) {
+		// Exit early if the nodes are identical
+		if ( a === b ) {
+			hasDuplicate = true;
+			return 0;
+		}
+
+		var cur,
+			i = 0,
+			aup = a.parentNode,
+			bup = b.parentNode,
+			ap = [ a ],
+			bp = [ b ];
+
+		// Parentless nodes are either documents or disconnected
+		if ( !aup || !bup ) {
+			return a === doc ? -1 :
+				b === doc ? 1 :
+				aup ? -1 :
+				bup ? 1 :
+				sortInput ?
+				( indexOf( sortInput, a ) - indexOf( sortInput, b ) ) :
+				0;
+
+		// If the nodes are siblings, we can do a quick check
+		} else if ( aup === bup ) {
+			return siblingCheck( a, b );
+		}
+
+		// Otherwise we need full lists of their ancestors for comparison
+		cur = a;
+		while ( (cur = cur.parentNode) ) {
+			ap.unshift( cur );
+		}
+		cur = b;
+		while ( (cur = cur.parentNode) ) {
+			bp.unshift( cur );
+		}
+
+		// Walk down the tree looking for a discrepancy
+		while ( ap[i] === bp[i] ) {
+			i++;
+		}
+
+		return i ?
+			// Do a sibling check if the nodes have a common ancestor
+			siblingCheck( ap[i], bp[i] ) :
+
+			// Otherwise nodes in our document sort first
+			ap[i] === preferredDoc ? -1 :
+			bp[i] === preferredDoc ? 1 :
+			0;
+	};
+
+	return doc;
+};
+
+Sizzle.matches = function( expr, elements ) {
+	return Sizzle( expr, null, null, elements );
+};
+
+Sizzle.matchesSelector = function( elem, expr ) {
+	// Set document vars if needed
+	if ( ( elem.ownerDocument || elem ) !== document ) {
+		setDocument( elem );
+	}
+
+	// Make sure that attribute selectors are quoted
+	expr = expr.replace( rattributeQuotes, "='$1']" );
+
+	if ( support.matchesSelector && documentIsHTML &&
+		( !rbuggyMatches || !rbuggyMatches.test( expr ) ) &&
+		( !rbuggyQSA     || !rbuggyQSA.test( expr ) ) ) {
+
+		try {
+			var ret = matches.call( elem, expr );
+
+			// IE 9's matchesSelector returns false on disconnected nodes
+			if ( ret || support.disconnectedMatch ||
+					// As well, disconnected nodes are said to be in a document
+					// fragment in IE 9
+					elem.document && elem.document.nodeType !== 11 ) {
+				return ret;
+			}
+		} catch (e) {}
+	}
+
+	return Sizzle( expr, document, null, [ elem ] ).length > 0;
+};
+
+Sizzle.contains = function( context, elem ) {
+	// Set document vars if needed
+	if ( ( context.ownerDocument || context ) !== document ) {
+		setDocument( context );
+	}
+	return contains( context, elem );
+};
+
+Sizzle.attr = function( elem, name ) {
+	// Set document vars if needed
+	if ( ( elem.ownerDocument || elem ) !== document ) {
+		setDocument( elem );
+	}
+
+	var fn = Expr.attrHandle[ name.toLowerCase() ],
+		// Don't get fooled by Object.prototype properties (jQuery #13807)
+		val = fn && hasOwn.call( Expr.attrHandle, name.toLowerCase() ) ?
+			fn( elem, name, !documentIsHTML ) :
+			undefined;
+
+	return val !== undefined ?
+		val :
+		support.attributes || !documentIsHTML ?
+			elem.getAttribute( name ) :
+			(val = elem.getAttributeNode(name)) && val.specified ?
+				val.value :
+				null;
+};
+
+Sizzle.error = function( msg ) {
+	throw new Error( "Syntax error, unrecognized expression: " + msg );
+};
+
+/**
+ * Document sorting and removing duplicates
+ * @param {ArrayLike} results
+ */
+Sizzle.uniqueSort = function( results ) {
+	var elem,
+		duplicates = [],
+		j = 0,
+		i = 0;
+
+	// Unless we *know* we can detect duplicates, assume their presence
+	hasDuplicate = !support.detectDuplicates;
+	sortInput = !support.sortStable && results.slice( 0 );
+	results.sort( sortOrder );
+
+	if ( hasDuplicate ) {
+		while ( (elem = results[i++]) ) {
+			if ( elem === results[ i ] ) {
+				j = duplicates.push( i );
+			}
+		}
+		while ( j-- ) {
+			results.splice( duplicates[ j ], 1 );
+		}
+	}
+
+	// Clear input after sorting to release objects
+	// See https://github.com/jquery/sizzle/pull/225
+	sortInput = null;
+
+	return results;
+};
+
+/**
+ * Utility function for retrieving the text value of an array of DOM nodes
+ * @param {Array|Element} elem
+ */
+getText = Sizzle.getText = function( elem ) {
+	var node,
+		ret = "",
+		i = 0,
+		nodeType = elem.nodeType;
+
+	if ( !nodeType ) {
+		// If no nodeType, this is expected to be an array
+		while ( (node = elem[i++]) ) {
+			// Do not traverse comment nodes
+			ret += getText( node );
+		}
+	} else if ( nodeType === 1 || nodeType === 9 || nodeType === 11 ) {
+		// Use textContent for elements
+		// innerText usage removed for consistency of new lines (jQuery #11153)
+		if ( typeof elem.textContent === "string" ) {
+			return elem.textContent;
+		} else {
+			// Traverse its children
+			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
+				ret += getText( elem );
+			}
+		}
+	} else if ( nodeType === 3 || nodeType === 4 ) {
+		return elem.nodeValue;
+	}
+	// Do not include comment or processing instruction nodes
+
+	return ret;
+};
+
+Expr = Sizzle.selectors = {
+
+	// Can be adjusted by the user
+	cacheLength: 50,
+
+	createPseudo: markFunction,
+
+	match: matchExpr,
+
+	attrHandle: {},
+
+	find: {},
+
+	relative: {
+		">": { dir: "parentNode", first: true },
+		" ": { dir: "parentNode" },
+		"+": { dir: "previousSibling", first: true },
+		"~": { dir: "previousSibling" }
+	},
+
+	preFilter: {
+		"ATTR": function( match ) {
+			match[1] = match[1].replace( runescape, funescape );
+
+			// Move the given value to match[3] whether quoted or unquoted
+			match[3] = ( match[3] || match[4] || match[5] || "" ).replace( runescape, funescape );
+
+			if ( match[2] === "~=" ) {
+				match[3] = " " + match[3] + " ";
+			}
+
+			return match.slice( 0, 4 );
+		},
+
+		"CHILD": function( match ) {
+			/* matches from matchExpr["CHILD"]
+				1 type (only|nth|...)
+				2 what (child|of-type)
+				3 argument (even|odd|\d*|\d*n([+-]\d+)?|...)
+				4 xn-component of xn+y argument ([+-]?\d*n|)
+				5 sign of xn-component
+				6 x of xn-component
+				7 sign of y-component
+				8 y of y-component
+			*/
+			match[1] = match[1].toLowerCase();
+
+			if ( match[1].slice( 0, 3 ) === "nth" ) {
+				// nth-* requires argument
+				if ( !match[3] ) {
+					Sizzle.error( match[0] );
+				}
+
+				// numeric x and y parameters for Expr.filter.CHILD
+				// remember that false/true cast respectively to 0/1
+				match[4] = +( match[4] ? match[5] + (match[6] || 1) : 2 * ( match[3] === "even" || match[3] === "odd" ) );
+				match[5] = +( ( match[7] + match[8] ) || match[3] === "odd" );
+
+			// other types prohibit arguments
+			} else if ( match[3] ) {
+				Sizzle.error( match[0] );
+			}
+
+			return match;
+		},
+
+		"PSEUDO": function( match ) {
+			var excess,
+				unquoted = !match[6] && match[2];
+
+			if ( matchExpr["CHILD"].test( match[0] ) ) {
+				return null;
+			}
+
+			// Accept quoted arguments as-is
+			if ( match[3] ) {
+				match[2] = match[4] || match[5] || "";
+
+			// Strip excess characters from unquoted arguments
+			} else if ( unquoted && rpseudo.test( unquoted ) &&
+				// Get excess from tokenize (recursively)
+				(excess = tokenize( unquoted, true )) &&
+				// advance to the next closing parenthesis
+				(excess = unquoted.indexOf( ")", unquoted.length - excess ) - unquoted.length) ) {
+
+				// excess is a negative index
+				match[0] = match[0].slice( 0, excess );
+				match[2] = unquoted.slice( 0, excess );
+			}
+
+			// Return only captures needed by the pseudo filter method (type and argument)
+			return match.slice( 0, 3 );
+		}
+	},
+
+	filter: {
+
+		"TAG": function( nodeNameSelector ) {
+			var nodeName = nodeNameSelector.replace( runescape, funescape ).toLowerCase();
+			return nodeNameSelector === "*" ?
+				function() { return true; } :
+				function( elem ) {
+					return elem.nodeName && elem.nodeName.toLowerCase() === nodeName;
+				};
+		},
+
+		"CLASS": function( className ) {
+			var pattern = classCache[ className + " " ];
+
+			return pattern ||
+				(pattern = new RegExp( "(^|" + whitespace + ")" + className + "(" + whitespace + "|$)" )) &&
+				classCache( className, function( elem ) {
+					return pattern.test( typeof elem.className === "string" && elem.className || typeof elem.getAttribute !== "undefined" && elem.getAttribute("class") || "" );
+				});
+		},
+
+		"ATTR": function( name, operator, check ) {
+			return function( elem ) {
+				var result = Sizzle.attr( elem, name );
+
+				if ( result == null ) {
+					return operator === "!=";
+				}
+				if ( !operator ) {
+					return true;
+				}
+
+				result += "";
+
+				return operator === "=" ? result === check :
+					operator === "!=" ? result !== check :
+					operator === "^=" ? check && result.indexOf( check ) === 0 :
+					operator === "*=" ? check && result.indexOf( check ) > -1 :
+					operator === "$=" ? check && result.slice( -check.length ) === check :
+					operator === "~=" ? ( " " + result.replace( rwhitespace, " " ) + " " ).indexOf( check ) > -1 :
+					operator === "|=" ? result === check || result.slice( 0, check.length + 1 ) === check + "-" :
+					false;
+			};
+		},
+
+		"CHILD": function( type, what, argument, first, last ) {
+			var simple = type.slice( 0, 3 ) !== "nth",
+				forward = type.slice( -4 ) !== "last",
+				ofType = what === "of-type";
+
+			return first === 1 && last === 0 ?
+
+				// Shortcut for :nth-*(n)
+				function( elem ) {
+					return !!elem.parentNode;
+				} :
+
+				function( elem, context, xml ) {
+					var cache, outerCache, node, diff, nodeIndex, start,
+						dir = simple !== forward ? "nextSibling" : "previousSibling",
+						parent = elem.parentNode,
+						name = ofType && elem.nodeName.toLowerCase(),
+						useCache = !xml && !ofType;
+
+					if ( parent ) {
+
+						// :(first|last|only)-(child|of-type)
+						if ( simple ) {
+							while ( dir ) {
+								node = elem;
+								while ( (node = node[ dir ]) ) {
+									if ( ofType ? node.nodeName.toLowerCase() === name : node.nodeType === 1 ) {
+										return false;
+									}
+								}
+								// Reverse direction for :only-* (if we haven't yet done so)
+								start = dir = type === "only" && !start && "nextSibling";
+							}
+							return true;
+						}
+
+						start = [ forward ? parent.firstChild : parent.lastChild ];
+
+						// non-xml :nth-child(...) stores cache data on `parent`
+						if ( forward && useCache ) {
+							// Seek `elem` from a previously-cached index
+							outerCache = parent[ expando ] || (parent[ expando ] = {});
+							cache = outerCache[ type ] || [];
+							nodeIndex = cache[0] === dirruns && cache[1];
+							diff = cache[0] === dirruns && cache[2];
+							node = nodeIndex && parent.childNodes[ nodeIndex ];
+
+							while ( (node = ++nodeIndex && node && node[ dir ] ||
+
+								// Fallback to seeking `elem` from the start
+								(diff = nodeIndex = 0) || start.pop()) ) {
+
+								// When found, cache indexes on `parent` and break
+								if ( node.nodeType === 1 && ++diff && node === elem ) {
+									outerCache[ type ] = [ dirruns, nodeIndex, diff ];
+									break;
+								}
+							}
+
+						// Use previously-cached element index if available
+						} else if ( useCache && (cache = (elem[ expando ] || (elem[ expando ] = {}))[ type ]) && cache[0] === dirruns ) {
+							diff = cache[1];
+
+						// xml :nth-child(...) or :nth-last-child(...) or :nth(-last)?-of-type(...)
+						} else {
+							// Use the same loop as above to seek `elem` from the start
+							while ( (node = ++nodeIndex && node && node[ dir ] ||
+								(diff = nodeIndex = 0) || start.pop()) ) {
+
+								if ( ( ofType ? node.nodeName.toLowerCase() === name : node.nodeType === 1 ) && ++diff ) {
+									// Cache the index of each encountered element
+									if ( useCache ) {
+										(node[ expando ] || (node[ expando ] = {}))[ type ] = [ dirruns, diff ];
+									}
+
+									if ( node === elem ) {
+										break;
+									}
+								}
+							}
+						}
+
+						// Incorporate the offset, then check against cycle size
+						diff -= last;
+						return diff === first || ( diff % first === 0 && diff / first >= 0 );
+					}
+				};
+		},
+
+		"PSEUDO": function( pseudo, argument ) {
+			// pseudo-class names are case-insensitive
+			// http://www.w3.org/TR/selectors/#pseudo-classes
+			// Prioritize by case sensitivity in case custom pseudos are added with uppercase letters
+			// Remember that setFilters inherits from pseudos
+			var args,
+				fn = Expr.pseudos[ pseudo ] || Expr.setFilters[ pseudo.toLowerCase() ] ||
+					Sizzle.error( "unsupported pseudo: " + pseudo );
+
+			// The user may use createPseudo to indicate that
+			// arguments are needed to create the filter function
+			// just as Sizzle does
+			if ( fn[ expando ] ) {
+				return fn( argument );
+			}
+
+			// But maintain support for old signatures
+			if ( fn.length > 1 ) {
+				args = [ pseudo, pseudo, "", argument ];
+				return Expr.setFilters.hasOwnProperty( pseudo.toLowerCase() ) ?
+					markFunction(function( seed, matches ) {
+						var idx,
+							matched = fn( seed, argument ),
+							i = matched.length;
+						while ( i-- ) {
+							idx = indexOf( seed, matched[i] );
+							seed[ idx ] = !( matches[ idx ] = matched[i] );
+						}
+					}) :
+					function( elem ) {
+						return fn( elem, 0, args );
+					};
+			}
+
+			return fn;
+		}
+	},
+
+	pseudos: {
+		// Potentially complex pseudos
+		"not": markFunction(function( selector ) {
+			// Trim the selector passed to compile
+			// to avoid treating leading and trailing
+			// spaces as combinators
+			var input = [],
+				results = [],
+				matcher = compile( selector.replace( rtrim, "$1" ) );
+
+			return matcher[ expando ] ?
+				markFunction(function( seed, matches, context, xml ) {
+					var elem,
+						unmatched = matcher( seed, null, xml, [] ),
+						i = seed.length;
+
+					// Match elements unmatched by `matcher`
+					while ( i-- ) {
+						if ( (elem = unmatched[i]) ) {
+							seed[i] = !(matches[i] = elem);
+						}
+					}
+				}) :
+				function( elem, context, xml ) {
+					input[0] = elem;
+					matcher( input, null, xml, results );
+					// Don't keep the element (issue #299)
+					input[0] = null;
+					return !results.pop();
+				};
+		}),
+
+		"has": markFunction(function( selector ) {
+			return function( elem ) {
+				return Sizzle( selector, elem ).length > 0;
+			};
+		}),
+
+		"contains": markFunction(function( text ) {
+			text = text.replace( runescape, funescape );
+			return function( elem ) {
+				return ( elem.textContent || elem.innerText || getText( elem ) ).indexOf( text ) > -1;
+			};
+		}),
+
+		// "Whether an element is represented by a :lang() selector
+		// is based solely on the element's language value
+		// being equal to the identifier C,
+		// or beginning with the identifier C immediately followed by "-".
+		// The matching of C against the element's language value is performed case-insensitively.
+		// The identifier C does not have to be a valid language name."
+		// http://www.w3.org/TR/selectors/#lang-pseudo
+		"lang": markFunction( function( lang ) {
+			// lang value must be a valid identifier
+			if ( !ridentifier.test(lang || "") ) {
+				Sizzle.error( "unsupported lang: " + lang );
+			}
+			lang = lang.replace( runescape, funescape ).toLowerCase();
+			return function( elem ) {
+				var elemLang;
+				do {
+					if ( (elemLang = documentIsHTML ?
+						elem.lang :
+						elem.getAttribute("xml:lang") || elem.getAttribute("lang")) ) {
+
+						elemLang = elemLang.toLowerCase();
+						return elemLang === lang || elemLang.indexOf( lang + "-" ) === 0;
+					}
+				} while ( (elem = elem.parentNode) && elem.nodeType === 1 );
+				return false;
+			};
+		}),
+
+		// Miscellaneous
+		"target": function( elem ) {
+			var hash = window.location && window.location.hash;
+			return hash && hash.slice( 1 ) === elem.id;
+		},
+
+		"root": function( elem ) {
+			return elem === docElem;
+		},
+
+		"focus": function( elem ) {
+			return elem === document.activeElement && (!document.hasFocus || document.hasFocus()) && !!(elem.type || elem.href || ~elem.tabIndex);
+		},
+
+		// Boolean properties
+		"enabled": function( elem ) {
+			return elem.disabled === false;
+		},
+
+		"disabled": function( elem ) {
+			return elem.disabled === true;
+		},
+
+		"checked": function( elem ) {
+			// In CSS3, :checked should return both checked and selected elements
+			// http://www.w3.org/TR/2011/REC-css3-selectors-20110929/#checked
+			var nodeName = elem.nodeName.toLowerCase();
+			return (nodeName === "input" && !!elem.checked) || (nodeName === "option" && !!elem.selected);
+		},
+
+		"selected": function( elem ) {
+			// Accessing this property makes selected-by-default
+			// options in Safari work properly
+			if ( elem.parentNode ) {
+				elem.parentNode.selectedIndex;
+			}
+
+			return elem.selected === true;
+		},
+
+		// Contents
+		"empty": function( elem ) {
+			// http://www.w3.org/TR/selectors/#empty-pseudo
+			// :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
+			//   but not by others (comment: 8; processing instruction: 7; etc.)
+			// nodeType < 6 works because attributes (2) do not appear as children
+			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
+				if ( elem.nodeType < 6 ) {
+					return false;
+				}
+			}
+			return true;
+		},
+
+		"parent": function( elem ) {
+			return !Expr.pseudos["empty"]( elem );
+		},
+
+		// Element/input types
+		"header": function( elem ) {
+			return rheader.test( elem.nodeName );
+		},
+
+		"input": function( elem ) {
+			return rinputs.test( elem.nodeName );
+		},
+
+		"button": function( elem ) {
+			var name = elem.nodeName.toLowerCase();
+			return name === "input" && elem.type === "button" || name === "button";
+		},
+
+		"text": function( elem ) {
+			var attr;
+			return elem.nodeName.toLowerCase() === "input" &&
+				elem.type === "text" &&
+
+				// Support: IE<8
+				// New HTML5 attribute values (e.g., "search") appear with elem.type === "text"
+				( (attr = elem.getAttribute("type")) == null || attr.toLowerCase() === "text" );
+		},
+
+		// Position-in-collection
+		"first": createPositionalPseudo(function() {
+			return [ 0 ];
+		}),
+
+		"last": createPositionalPseudo(function( matchIndexes, length ) {
+			return [ length - 1 ];
+		}),
+
+		"eq": createPositionalPseudo(function( matchIndexes, length, argument ) {
+			return [ argument < 0 ? argument + length : argument ];
+		}),
+
+		"even": createPositionalPseudo(function( matchIndexes, length ) {
+			var i = 0;
+			for ( ; i < length; i += 2 ) {
+				matchIndexes.push( i );
+			}
+			return matchIndexes;
+		}),
+
+		"odd": createPositionalPseudo(function( matchIndexes, length ) {
+			var i = 1;
+			for ( ; i < length; i += 2 ) {
+				matchIndexes.push( i );
+			}
+			return matchIndexes;
+		}),
+
+		"lt": createPositionalPseudo(function( matchIndexes, length, argument ) {
+			var i = argument < 0 ? argument + length : argument;
+			for ( ; --i >= 0; ) {
+				matchIndexes.push( i );
+			}
+			return matchIndexes;
+		}),
+
+		"gt": createPositionalPseudo(function( matchIndexes, length, argument ) {
+			var i = argument < 0 ? argument + length : argument;
+			for ( ; ++i < length; ) {
+				matchIndexes.push( i );
+			}
+			return matchIndexes;
+		})
+	}
+};
+
+Expr.pseudos["nth"] = Expr.pseudos["eq"];
+
+// Add button/input type pseudos
+for ( i in { radio: true, checkbox: true, file: true, password: true, image: true } ) {
+	Expr.pseudos[ i ] = createInputPseudo( i );
+}
+for ( i in { submit: true, reset: true } ) {
+	Expr.pseudos[ i ] = createButtonPseudo( i );
+}
+
+// Easy API for creating new setFilters
+function setFilters() {}
+setFilters.prototype = Expr.filters = Expr.pseudos;
+Expr.setFilters = new setFilters();
+
+tokenize = Sizzle.tokenize = function( selector, parseOnly ) {
+	var matched, match, tokens, type,
+		soFar, groups, preFilters,
+		cached = tokenCache[ selector + " " ];
+
+	if ( cached ) {
+		return parseOnly ? 0 : cached.slice( 0 );
+	}
+
+	soFar = selector;
+	groups = [];
+	preFilters = Expr.preFilter;
+
+	while ( soFar ) {
+
+		// Comma and first run
+		if ( !matched || (match = rcomma.exec( soFar )) ) {
+			if ( match ) {
+				// Don't consume trailing commas as valid
+				soFar = soFar.slice( match[0].length ) || soFar;
+			}
+			groups.push( (tokens = []) );
+		}
+
+		matched = false;
+
+		// Combinators
+		if ( (match = rcombinators.exec( soFar )) ) {
+			matched = match.shift();
+			tokens.push({
+				value: matched,
+				// Cast descendant combinators to space
+				type: match[0].replace( rtrim, " " )
+			});
+			soFar = soFar.slice( matched.length );
+		}
+
+		// Filters
+		for ( type in Expr.filter ) {
+			if ( (match = matchExpr[ type ].exec( soFar )) && (!preFilters[ type ] ||
+				(match = preFilters[ type ]( match ))) ) {
+				matched = match.shift();
+				tokens.push({
+					value: matched,
+					type: type,
+					matches: match
+				});
+				soFar = soFar.slice( matched.length );
+			}
+		}
+
+		if ( !matched ) {
+			break;
+		}
+	}
+
+	// Return the length of the invalid excess
+	// if we're just parsing
+	// Otherwise, throw an error or return tokens
+	return parseOnly ?
+		soFar.length :
+		soFar ?
+			Sizzle.error( selector ) :
+			// Cache the tokens
+			tokenCache( selector, groups ).slice( 0 );
+};
+
+function toSelector( tokens ) {
+	var i = 0,
+		len = tokens.length,
+		selector = "";
+	for ( ; i < len; i++ ) {
+		selector += tokens[i].value;
+	}
+	return selector;
+}
+
+function addCombinator( matcher, combinator, base ) {
+	var dir = combinator.dir,
+		checkNonElements = base && dir === "parentNode",
+		doneName = done++;
+
+	return combinator.first ?
+		// Check against closest ancestor/preceding element
+		function( elem, context, xml ) {
+			while ( (elem = elem[ dir ]) ) {
+				if ( elem.nodeType === 1 || checkNonElements ) {
+					return matcher( elem, context, xml );
+				}
+			}
+		} :
+
+		// Check against all ancestor/preceding elements
+		function( elem, context, xml ) {
+			var oldCache, outerCache,
+				newCache = [ dirruns, doneName ];
+
+			// We can't set arbitrary data on XML nodes, so they don't benefit from dir caching
+			if ( xml ) {
+				while ( (elem = elem[ dir ]) ) {
+					if ( elem.nodeType === 1 || checkNonElements ) {
+						if ( matcher( elem, context, xml ) ) {
+							return true;
+						}
+					}
+				}
+			} else {
+				while ( (elem = elem[ dir ]) ) {
+					if ( elem.nodeType === 1 || checkNonElements ) {
+						outerCache = elem[ expando ] || (elem[ expando ] = {});
+						if ( (oldCache = outerCache[ dir ]) &&
+							oldCache[ 0 ] === dirruns && oldCache[ 1 ] === doneName ) {
+
+							// Assign to newCache so results back-propagate to previous elements
+							return (newCache[ 2 ] = oldCache[ 2 ]);
+						} else {
+							// Reuse newcache so results back-propagate to previous elements
+							outerCache[ dir ] = newCache;
+
+							// A match means we're done; a fail means we have to keep checking
+							if ( (newCache[ 2 ] = matcher( elem, context, xml )) ) {
+								return true;
+							}
+						}
+					}
+				}
+			}
+		};
+}
+
+function elementMatcher( matchers ) {
+	return matchers.length > 1 ?
+		function( elem, context, xml ) {
+			var i = matchers.length;
+			while ( i-- ) {
+				if ( !matchers[i]( elem, context, xml ) ) {
+					return false;
+				}
+			}
+			return true;
+		} :
+		matchers[0];
+}
+
+function multipleContexts( selector, contexts, results ) {
+	var i = 0,
+		len = contexts.length;
+	for ( ; i < len; i++ ) {
+		Sizzle( selector, contexts[i], results );
+	}
+	return results;
+}
+
+function condense( unmatched, map, filter, context, xml ) {
+	var elem,
+		newUnmatched = [],
+		i = 0,
+		len = unmatched.length,
+		mapped = map != null;
+
+	for ( ; i < len; i++ ) {
+		if ( (elem = unmatched[i]) ) {
+			if ( !filter || filter( elem, context, xml ) ) {
+				newUnmatched.push( elem );
+				if ( mapped ) {
+					map.push( i );
+				}
+			}
+		}
+	}
+
+	return newUnmatched;
+}
+
+function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postSelector ) {
+	if ( postFilter && !postFilter[ expando ] ) {
+		postFilter = setMatcher( postFilter );
+	}
+	if ( postFinder && !postFinder[ expando ] ) {
+		postFinder = setMatcher( postFinder, postSelector );
+	}
+	return markFunction(function( seed, results, context, xml ) {
+		var temp, i, elem,
+			preMap = [],
+			postMap = [],
+			preexisting = results.length,
+
+			// Get initial elements from seed or context
+			elems = seed || multipleContexts( selector || "*", context.nodeType ? [ context ] : context, [] ),
+
+			// Prefilter to get matcher input, preserving a map for seed-results synchronization
+			matcherIn = preFilter && ( seed || !selector ) ?
+				condense( elems, preMap, preFilter, context, xml ) :
+				elems,
+
+			matcherOut = matcher ?
+				// If we have a postFinder, or filtered seed, or non-seed postFilter or preexisting results,
+				postFinder || ( seed ? preFilter : preexisting || postFilter ) ?
+
+					// ...intermediate processing is necessary
+					[] :
+
+					// ...otherwise use results directly
+					results :
+				matcherIn;
+
+		// Find primary matches
+		if ( matcher ) {
+			matcher( matcherIn, matcherOut, context, xml );
+		}
+
+		// Apply postFilter
+		if ( postFilter ) {
+			temp = condense( matcherOut, postMap );
+			postFilter( temp, [], context, xml );
+
+			// Un-match failing elements by moving them back to matcherIn
+			i = temp.length;
+			while ( i-- ) {
+				if ( (elem = temp[i]) ) {
+					matcherOut[ postMap[i] ] = !(matcherIn[ postMap[i] ] = elem);
+				}
+			}
+		}
+
+		if ( seed ) {
+			if ( postFinder || preFilter ) {
+				if ( postFinder ) {
+					// Get the final matcherOut by condensing this intermediate into postFinder contexts
+					temp = [];
+					i = matcherOut.length;
+					while ( i-- ) {
+						if ( (elem = matcherOut[i]) ) {
+							// Restore matcherIn since elem is not yet a final match
+							temp.push( (matcherIn[i] = elem) );
+						}
+					}
+					postFinder( null, (matcherOut = []), temp, xml );
+				}
+
+				// Move matched elements from seed to results to keep them synchronized
+				i = matcherOut.length;
+				while ( i-- ) {
+					if ( (elem = matcherOut[i]) &&
+						(temp = postFinder ? indexOf( seed, elem ) : preMap[i]) > -1 ) {
+
+						seed[temp] = !(results[temp] = elem);
+					}
+				}
+			}
+
+		// Add elements to results, through postFinder if defined
+		} else {
+			matcherOut = condense(
+				matcherOut === results ?
+					matcherOut.splice( preexisting, matcherOut.length ) :
+					matcherOut
+			);
+			if ( postFinder ) {
+				postFinder( null, results, matcherOut, xml );
+			} else {
+				push.apply( results, matcherOut );
+			}
+		}
+	});
+}
+
+function matcherFromTokens( tokens ) {
+	var checkContext, matcher, j,
+		len = tokens.length,
+		leadingRelative = Expr.relative[ tokens[0].type ],
+		implicitRelative = leadingRelative || Expr.relative[" "],
+		i = leadingRelative ? 1 : 0,
+
+		// The foundational matcher ensures that elements are reachable from top-level context(s)
+		matchContext = addCombinator( function( elem ) {
+			return elem === checkContext;
+		}, implicitRelative, true ),
+		matchAnyContext = addCombinator( function( elem ) {
+			return indexOf( checkContext, elem ) > -1;
+		}, implicitRelative, true ),
+		matchers = [ function( elem, context, xml ) {
+			var ret = ( !leadingRelative && ( xml || context !== outermostContext ) ) || (
+				(checkContext = context).nodeType ?
+					matchContext( elem, context, xml ) :
+					matchAnyContext( elem, context, xml ) );
+			// Avoid hanging onto element (issue #299)
+			checkContext = null;
+			return ret;
+		} ];
+
+	for ( ; i < len; i++ ) {
+		if ( (matcher = Expr.relative[ tokens[i].type ]) ) {
+			matchers = [ addCombinator(elementMatcher( matchers ), matcher) ];
+		} else {
+			matcher = Expr.filter[ tokens[i].type ].apply( null, tokens[i].matches );
+
+			// Return special upon seeing a positional matcher
+			if ( matcher[ expando ] ) {
+				// Find the next relative operator (if any) for proper handling
+				j = ++i;
+				for ( ; j < len; j++ ) {
+					if ( Expr.relative[ tokens[j].type ] ) {
+						break;
+					}
+				}
+				return setMatcher(
+					i > 1 && elementMatcher( matchers ),
+					i > 1 && toSelector(
+						// If the preceding token was a descendant combinator, insert an implicit any-element `*`
+						tokens.slice( 0, i - 1 ).concat({ value: tokens[ i - 2 ].type === " " ? "*" : "" })
+					).replace( rtrim, "$1" ),
+					matcher,
+					i < j && matcherFromTokens( tokens.slice( i, j ) ),
+					j < len && matcherFromTokens( (tokens = tokens.slice( j )) ),
+					j < len && toSelector( tokens )
+				);
+			}
+			matchers.push( matcher );
+		}
+	}
+
+	return elementMatcher( matchers );
+}
+
+function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
+	var bySet = setMatchers.length > 0,
+		byElement = elementMatchers.length > 0,
+		superMatcher = function( seed, context, xml, results, outermost ) {
+			var elem, j, matcher,
+				matchedCount = 0,
+				i = "0",
+				unmatched = seed && [],
+				setMatched = [],
+				contextBackup = outermostContext,
+				// We must always have either seed elements or outermost context
+				elems = seed || byElement && Expr.find["TAG"]( "*", outermost ),
+				// Use integer dirruns iff this is the outermost matcher
+				dirrunsUnique = (dirruns += contextBackup == null ? 1 : Math.random() || 0.1),
+				len = elems.length;
+
+			if ( outermost ) {
+				outermostContext = context !== document && context;
+			}
+
+			// Add elements passing elementMatchers directly to results
+			// Keep `i` a string if there are no elements so `matchedCount` will be "00" below
+			// Support: IE<9, Safari
+			// Tolerate NodeList properties (IE: "length"; Safari: <number>) matching elements by id
+			for ( ; i !== len && (elem = elems[i]) != null; i++ ) {
+				if ( byElement && elem ) {
+					j = 0;
+					while ( (matcher = elementMatchers[j++]) ) {
+						if ( matcher( elem, context, xml ) ) {
+							results.push( elem );
+							break;
+						}
+					}
+					if ( outermost ) {
+						dirruns = dirrunsUnique;
+					}
+				}
+
+				// Track unmatched elements for set filters
+				if ( bySet ) {
+					// They will have gone through all possible matchers
+					if ( (elem = !matcher && elem) ) {
+						matchedCount--;
+					}
+
+					// Lengthen the array for every element, matched or not
+					if ( seed ) {
+						unmatched.push( elem );
+					}
+				}
+			}
+
+			// Apply set filters to unmatched elements
+			matchedCount += i;
+			if ( bySet && i !== matchedCount ) {
+				j = 0;
+				while ( (matcher = setMatchers[j++]) ) {
+					matcher( unmatched, setMatched, context, xml );
+				}
+
+				if ( seed ) {
+					// Reintegrate element matches to eliminate the need for sorting
+					if ( matchedCount > 0 ) {
+						while ( i-- ) {
+							if ( !(unmatched[i] || setMatched[i]) ) {
+								setMatched[i] = pop.call( results );
+							}
+						}
+					}
+
+					// Discard index placeholder values to get only actual matches
+					setMatched = condense( setMatched );
+				}
+
+				// Add matches to results
+				push.apply( results, setMatched );
+
+				// Seedless set matches succeeding multiple successful matchers stipulate sorting
+				if ( outermost && !seed && setMatched.length > 0 &&
+					( matchedCount + setMatchers.length ) > 1 ) {
+
+					Sizzle.uniqueSort( results );
+				}
+			}
+
+			// Override manipulation of globals by nested matchers
+			if ( outermost ) {
+				dirruns = dirrunsUnique;
+				outermostContext = contextBackup;
+			}
+
+			return unmatched;
+		};
+
+	return bySet ?
+		markFunction( superMatcher ) :
+		superMatcher;
+}
+
+compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
+	var i,
+		setMatchers = [],
+		elementMatchers = [],
+		cached = compilerCache[ selector + " " ];
+
+	if ( !cached ) {
+		// Generate a function of recursive functions that can be used to check each element
+		if ( !match ) {
+			match = tokenize( selector );
+		}
+		i = match.length;
+		while ( i-- ) {
+			cached = matcherFromTokens( match[i] );
+			if ( cached[ expando ] ) {
+				setMatchers.push( cached );
+			} else {
+				elementMatchers.push( cached );
+			}
+		}
+
+		// Cache the compiled function
+		cached = compilerCache( selector, matcherFromGroupMatchers( elementMatchers, setMatchers ) );
+
+		// Save selector and tokenization
+		cached.selector = selector;
+	}
+	return cached;
+};
+
+/**
+ * A low-level selection function that works with Sizzle's compiled
+ *  selector functions
+ * @param {String|Function} selector A selector or a pre-compiled
+ *  selector function built with Sizzle.compile
+ * @param {Element} context
+ * @param {Array} [results]
+ * @param {Array} [seed] A set of elements to match against
+ */
+select = Sizzle.select = function( selector, context, results, seed ) {
+	var i, tokens, token, type, find,
+		compiled = typeof selector === "function" && selector,
+		match = !seed && tokenize( (selector = compiled.selector || selector) );
+
+	results = results || [];
+
+	// Try to minimize operations if there is no seed and only one group
+	if ( match.length === 1 ) {
+
+		// Take a shortcut and set the context if the root selector is an ID
+		tokens = match[0] = match[0].slice( 0 );
+		if ( tokens.length > 2 && (token = tokens[0]).type === "ID" &&
+				support.getById && context.nodeType === 9 && documentIsHTML &&
+				Expr.relative[ tokens[1].type ] ) {
+
+			context = ( Expr.find["ID"]( token.matches[0].replace(runescape, funescape), context ) || [] )[0];
+			if ( !context ) {
+				return results;
+
+			// Precompiled matchers will still verify ancestry, so step up a level
+			} else if ( compiled ) {
+				context = context.parentNode;
+			}
+
+			selector = selector.slice( tokens.shift().value.length );
+		}
+
+		// Fetch a seed set for right-to-left matching
+		i = matchExpr["needsContext"].test( selector ) ? 0 : tokens.length;
+		while ( i-- ) {
+			token = tokens[i];
+
+			// Abort if we hit a combinator
+			if ( Expr.relative[ (type = token.type) ] ) {
+				break;
+			}
+			if ( (find = Expr.find[ type ]) ) {
+				// Search, expanding context for leading sibling combinators
+				if ( (seed = find(
+					token.matches[0].replace( runescape, funescape ),
+					rsibling.test( tokens[0].type ) && testContext( context.parentNode ) || context
+				)) ) {
+
+					// If seed is empty or no tokens remain, we can return early
+					tokens.splice( i, 1 );
+					selector = seed.length && toSelector( tokens );
+					if ( !selector ) {
+						push.apply( results, seed );
+						return results;
+					}
+
+					break;
+				}
+			}
+		}
+	}
+
+	// Compile and execute a filtering function if one is not provided
+	// Provide `match` to avoid retokenization if we modified the selector above
+	( compiled || compile( selector, match ) )(
+		seed,
+		context,
+		!documentIsHTML,
+		results,
+		rsibling.test( selector ) && testContext( context.parentNode ) || context
+	);
+	return results;
+};
+
+// One-time assignments
+
+// Sort stability
+support.sortStable = expando.split("").sort( sortOrder ).join("") === expando;
+
+// Support: Chrome 14-35+
+// Always assume duplicates if they aren't passed to the comparison function
+support.detectDuplicates = !!hasDuplicate;
+
+// Initialize against the default document
+setDocument();
+
+// Support: Webkit<537.32 - Safari 6.0.3/Chrome 25 (fixed in Chrome 27)
+// Detached nodes confoundingly follow *each other*
+support.sortDetached = assert(function( div1 ) {
+	// Should return 1, but returns 4 (following)
+	return div1.compareDocumentPosition( document.createElement("div") ) & 1;
+});
+
+// Support: IE<8
+// Prevent attribute/property "interpolation"
+// http://msdn.microsoft.com/en-us/library/ms536429%28VS.85%29.aspx
+if ( !assert(function( div ) {
+	div.innerHTML = "<a href='#'></a>";
+	return div.firstChild.getAttribute("href") === "#" ;
+}) ) {
+	addHandle( "type|href|height|width", function( elem, name, isXML ) {
+		if ( !isXML ) {
+			return elem.getAttribute( name, name.toLowerCase() === "type" ? 1 : 2 );
+		}
+	});
+}
+
+// Support: IE<9
+// Use defaultValue in place of getAttribute("value")
+if ( !support.attributes || !assert(function( div ) {
+	div.innerHTML = "<input/>";
+	div.firstChild.setAttribute( "value", "" );
+	return div.firstChild.getAttribute( "value" ) === "";
+}) ) {
+	addHandle( "value", function( elem, name, isXML ) {
+		if ( !isXML && elem.nodeName.toLowerCase() === "input" ) {
+			return elem.defaultValue;
+		}
+	});
+}
+
+// Support: IE<9
+// Use getAttributeNode to fetch booleans when getAttribute lies
+if ( !assert(function( div ) {
+	return div.getAttribute("disabled") == null;
+}) ) {
+	addHandle( booleans, function( elem, name, isXML ) {
+		var val;
+		if ( !isXML ) {
+			return elem[ name ] === true ? name.toLowerCase() :
+					(val = elem.getAttributeNode( name )) && val.specified ?
+					val.value :
+				null;
+		}
+	});
+}
+
+return Sizzle;
+
+})( window );
+
+
+
+jQuery.find = Sizzle;
+jQuery.expr = Sizzle.selectors;
+jQuery.expr[":"] = jQuery.expr.pseudos;
+jQuery.unique = Sizzle.uniqueSort;
+jQuery.text = Sizzle.getText;
+jQuery.isXMLDoc = Sizzle.isXML;
+jQuery.contains = Sizzle.contains;
+
+
+
+var rneedsContext = jQuery.expr.match.needsContext;
+
+var rsingleTag = (/^<(\w+)\s*\/?>(?:<\/\1>|)$/);
+
+
+
+var risSimple = /^.[^:#\[\.,]*$/;
+
+// Implement the identical functionality for filter and not
+function winnow( elements, qualifier, not ) {
+	if ( jQuery.isFunction( qualifier ) ) {
+		return jQuery.grep( elements, function( elem, i ) {
+			/* jshint -W018 */
+			return !!qualifier.call( elem, i, elem ) !== not;
+		});
+
+	}
+
+	if ( qualifier.nodeType ) {
+		return jQuery.grep( elements, function( elem ) {
+			return ( elem === qualifier ) !== not;
+		});
+
+	}
+
+	if ( typeof qualifier === "string" ) {
+		if ( risSimple.test( qualifier ) ) {
+			return jQuery.filter( qualifier, elements, not );
+		}
+
+		qualifier = jQuery.filter( qualifier, elements );
+	}
+
+	return jQuery.grep( elements, function( elem ) {
+		return ( indexOf.call( qualifier, elem ) >= 0 ) !== not;
+	});
+}
+
+jQuery.filter = function( expr, elems, not ) {
+	var elem = elems[ 0 ];
+
+	if ( not ) {
+		expr = ":not(" + expr + ")";
+	}
+
+	return elems.length === 1 && elem.nodeType === 1 ?
+		jQuery.find.matchesSelector( elem, expr ) ? [ elem ] : [] :
+		jQuery.find.matches( expr, jQuery.grep( elems, function( elem ) {
+			return elem.nodeType === 1;
+		}));
+};
+
+jQuery.fn.extend({
+	find: function( selector ) {
+		var i,
+			len = this.length,
+			ret = [],
+			self = this;
+
+		if ( typeof selector !== "string" ) {
+			return this.pushStack( jQuery( selector ).filter(function() {
+				for ( i = 0; i < len; i++ ) {
+					if ( jQuery.contains( self[ i ], this ) ) {
+						return true;
+					}
+				}
+			}) );
+		}
+
+		for ( i = 0; i < len; i++ ) {
+			jQuery.find( selector, self[ i ], ret );
+		}
+
+		// Needed because $( selector, context ) becomes $( context ).find( selector )
+		ret = this.pushStack( len > 1 ? jQuery.unique( ret ) : ret );
+		ret.selector = this.selector ? this.selector + " " + selector : selector;
+		return ret;
+	},
+	filter: function( selector ) {
+		return this.pushStack( winnow(this, selector || [], false) );
+	},
+	not: function( selector ) {
+		return this.pushStack( winnow(this, selector || [], true) );
+	},
+	is: function( selector ) {
+		return !!winnow(
+			this,
+
+			// If this is a positional/relative selector, check membership in the returned set
+			// so $("p:first").is("p:last") won't return true for a doc with two "p".
+			typeof selector === "string" && rneedsContext.test( selector ) ?
+				jQuery( selector ) :
+				selector || [],
+			false
+		).length;
+	}
+});
+
+
+// Initialize a jQuery object
+
+
+// A central reference to the root jQuery(document)
+var rootjQuery,
+
+	// A simple way to check for HTML strings
+	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
+	// Strict HTML recognition (#11290: must start with <)
+	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
+
+	init = jQuery.fn.init = function( selector, context ) {
+		var match, elem;
+
+		// HANDLE: $(""), $(null), $(undefined), $(false)
+		if ( !selector ) {
+			return this;
+		}
+
+		// Handle HTML strings
+		if ( typeof selector === "string" ) {
+			if ( selector[0] === "<" && selector[ selector.length - 1 ] === ">" && selector.length >= 3 ) {
+				// Assume that strings that start and end with <> are HTML and skip the regex check
+				match = [ null, selector, null ];
+
+			} else {
+				match = rquickExpr.exec( selector );
+			}
+
+			// Match html or make sure no context is specified for #id
+			if ( match && (match[1] || !context) ) {
+
+				// HANDLE: $(html) -> $(array)
+				if ( match[1] ) {
+					context = context instanceof jQuery ? context[0] : context;
+
+					// Option to run scripts is true for back-compat
+					// Intentionally let the error be thrown if parseHTML is not present
+					jQuery.merge( this, jQuery.parseHTML(
+						match[1],
+						context && context.nodeType ? context.ownerDocument || context : document,
+						true
+					) );
+
+					// HANDLE: $(html, props)
+					if ( rsingleTag.test( match[1] ) && jQuery.isPlainObject( context ) ) {
+						for ( match in context ) {
+							// Properties of context are called as methods if possible
+							if ( jQuery.isFunction( this[ match ] ) ) {
+								this[ match ]( context[ match ] );
+
+							// ...and otherwise set as attributes
+							} else {
+								this.attr( match, context[ match ] );
+							}
+						}
+					}
+
+					return this;
+
+				// HANDLE: $(#id)
+				} else {
+					elem = document.getElementById( match[2] );
+
+					// Support: Blackberry 4.6
+					// gEBID returns nodes no longer in the document (#6963)
+					if ( elem && elem.parentNode ) {
+						// Inject the element directly into the jQuery object
+						this.length = 1;
+						this[0] = elem;
+					}
+
+					this.context = document;
+					this.selector = selector;
+					return this;
+				}
+
+			// HANDLE: $(expr, $(...))
+			} else if ( !context || context.jquery ) {
+				return ( context || rootjQuery ).find( selector );
+
+			// HANDLE: $(expr, context)
+			// (which is just equivalent to: $(context).find(expr)
+			} else {
+				return this.constructor( context ).find( selector );
+			}
+
+		// HANDLE: $(DOMElement)
+		} else if ( selector.nodeType ) {
+			this.context = this[0] = selector;
+			this.length = 1;
+			return this;
+
+		// HANDLE: $(function)
+		// Shortcut for document ready
+		} else if ( jQuery.isFunction( selector ) ) {
+			return typeof rootjQuery.ready !== "undefined" ?
+				rootjQuery.ready( selector ) :
+				// Execute immediately if ready is not present
+				selector( jQuery );
+		}
+
+		if ( selector.selector !== undefined ) {
+			this.selector = selector.selector;
+			this.context = selector.context;
+		}
+
+		return jQuery.makeArray( selector, this );
+	};
+
+// Give the init function the jQuery prototype for later instantiation
+init.prototype = jQuery.fn;
+
+// Initialize central reference
+rootjQuery = jQuery( document );
+
+
+var rparentsprev = /^(?:parents|prev(?:Until|All))/,
+	// Methods guaranteed to produce a unique set when starting from a unique set
+	guaranteedUnique = {
+		children: true,
+		contents: true,
+		next: true,
+		prev: true
+	};
+
+jQuery.extend({
+	dir: function( elem, dir, until ) {
+		var matched = [],
+			truncate = until !== undefined;
+
+		while ( (elem = elem[ dir ]) && elem.nodeType !== 9 ) {
+			if ( elem.nodeType === 1 ) {
+				if ( truncate && jQuery( elem ).is( until ) ) {
+					break;
+				}
+				matched.push( elem );
+			}
+		}
+		return matched;
+	},
+
+	sibling: function( n, elem ) {
+		var matched = [];
+
+		for ( ; n; n = n.nextSibling ) {
+			if ( n.nodeType === 1 && n !== elem ) {
+				matched.push( n );
+			}
+		}
+
+		return matched;
+	}
+});
+
+jQuery.fn.extend({
+	has: function( target ) {
+		var targets = jQuery( target, this ),
+			l = targets.length;
+
+		return this.filter(function() {
+			var i = 0;
+			for ( ; i < l; i++ ) {
+				if ( jQuery.contains( this, targets[i] ) ) {
+					return true;
+				}
+			}
+		});
+	},
+
+	closest: function( selectors, context ) {
+		var cur,
+			i = 0,
+			l = this.length,
+			matched = [],
+			pos = rneedsContext.test( selectors ) || typeof selectors !== "string" ?
+				jQuery( selectors, context || this.context ) :
+				0;
+
+		for ( ; i < l; i++ ) {
+			for ( cur = this[i]; cur && cur !== context; cur = cur.parentNode ) {
+				// Always skip document fragments
+				if ( cur.nodeType < 11 && (pos ?
+					pos.index(cur) > -1 :
+
+					// Don't pass non-elements to Sizzle
+					cur.nodeType === 1 &&
+						jQuery.find.matchesSelector(cur, selectors)) ) {
+
+					matched.push( cur );
+					break;
+				}
+			}
+		}
+
+		return this.pushStack( matched.length > 1 ? jQuery.unique( matched ) : matched );
+	},
+
+	// Determine the position of an element within the set
+	index: function( elem ) {
+
+		// No argument, return index in parent
+		if ( !elem ) {
+			return ( this[ 0 ] && this[ 0 ].parentNode ) ? this.first().prevAll().length : -1;
+		}
+
+		// Index in selector
+		if ( typeof elem === "string" ) {
+			return indexOf.call( jQuery( elem ), this[ 0 ] );
+		}
+
+		// Locate the position of the desired element
+		return indexOf.call( this,
+
+			// If it receives a jQuery object, the first element is used
+			elem.jquery ? elem[ 0 ] : elem
+		);
+	},
+
+	add: function( selector, context ) {
+		return this.pushStack(
+			jQuery.unique(
+				jQuery.merge( this.get(), jQuery( selector, context ) )
+			)
+		);
+	},
+
+	addBack: function( selector ) {
+		return this.add( selector == null ?
+			this.prevObject : this.prevObject.filter(selector)
+		);
+	}
+});
+
+function sibling( cur, dir ) {
+	while ( (cur = cur[dir]) && cur.nodeType !== 1 ) {}
+	return cur;
+}
+
+jQuery.each({
+	parent: function( elem ) {
+		var parent = elem.parentNode;
+		return parent && parent.nodeType !== 11 ? parent : null;
+	},
+	parents: function( elem ) {
+		return jQuery.dir( elem, "parentNode" );
+	},
+	parentsUntil: function( elem, i, until ) {
+		return jQuery.dir( elem, "parentNode", until );
+	},
+	next: function( elem ) {
+		return sibling( elem, "nextSibling" );
+	},
+	prev: function( elem ) {
+		return sibling( elem, "previousSibling" );
+	},
+	nextAll: function( elem ) {
+		return jQuery.dir( elem, "nextSibling" );
+	},
+	prevAll: function( elem ) {
+		return jQuery.dir( elem, "previousSibling" );
+	},
+	nextUntil: function( elem, i, until ) {
+		return jQuery.dir( elem, "nextSibling", until );
+	},
+	prevUntil: function( elem, i, until ) {
+		return jQuery.dir( elem, "previousSibling", until );
+	},
+	siblings: function( elem ) {
+		return jQuery.sibling( ( elem.parentNode || {} ).firstChild, elem );
+	},
+	children: function( elem ) {
+		return jQuery.sibling( elem.firstChild );
+	},
+	contents: function( elem ) {
+		return elem.contentDocument || jQuery.merge( [], elem.childNodes );
+	}
+}, function( name, fn ) {
+	jQuery.fn[ name ] = function( until, selector ) {
+		var matched = jQuery.map( this, fn, until );
+
+		if ( name.slice( -5 ) !== "Until" ) {
+			selector = until;
+		}
+
+		if ( selector && typeof selector === "string" ) {
+			matched = jQuery.filter( selector, matched );
+		}
+
+		if ( this.length > 1 ) {
+			// Remove duplicates
+			if ( !guaranteedUnique[ name ] ) {
+				jQuery.unique( matched );
+			}
+
+			// Reverse order for parents* and prev-derivatives
+			if ( rparentsprev.test( name ) ) {
+				matched.reverse();
+			}
+		}
+
+		return this.pushStack( matched );
+	};
+});
+var rnotwhite = (/\S+/g);
+
+
+
+// String to Object options format cache
+var optionsCache = {};
+
+// Convert String-formatted options into Object-formatted ones and store in cache
+function createOptions( options ) {
+	var object = optionsCache[ options ] = {};
+	jQuery.each( options.match( rnotwhite ) || [], function( _, flag ) {
+		object[ flag ] = true;
+	});
+	return object;
+}
+
+/*
+ * Create a callback list using the following parameters:
+ *
+ *	options: an optional list of space-separated options that will change how
+ *			the callback list behaves or a more traditional option object
+ *
+ * By default a callback list will act like an event callback list and can be
+ * "fired" multiple times.
+ *
+ * Possible options:
+ *
+ *	once:			will ensure the callback list can only be fired once (like a Deferred)
+ *
+ *	memory:			will keep track of previous values and will call any callback added
+ *					after the list has been fired right away with the latest "memorized"
+ *					values (like a Deferred)
+ *
+ *	unique:			will ensure a callback can only be added once (no duplicate in the list)
+ *
+ *	stopOnFalse:	interrupt callings when a callback returns false
+ *
+ */
+jQuery.Callbacks = function( options ) {
+
+	// Convert options from String-formatted to Object-formatted if needed
+	// (we check in cache first)
+	options = typeof options === "string" ?
+		( optionsCache[ options ] || createOptions( options ) ) :
+		jQuery.extend( {}, options );
+
+	var // Last fire value (for non-forgettable lists)
+		memory,
+		// Flag to know if list was already fired
+		fired,
+		// Flag to know if list is currently firing
+		firing,
+		// First callback to fire (used internally by add and fireWith)
+		firingStart,
+		// End of the loop when firing
+		firingLength,
+		// Index of currently firing callback (modified by remove if needed)
+		firingIndex,
+		// Actual callback list
+		list = [],
+		// Stack of fire calls for repeatable lists
+		stack = !options.once && [],
+		// Fire callbacks
+		fire = function( data ) {
+			memory = options.memory && data;
+			fired = true;
+			firingIndex = firingStart || 0;
+			firingStart = 0;
+			firingLength = list.length;
+			firing = true;
+			for ( ; list && firingIndex < firingLength; firingIndex++ ) {
+				if ( list[ firingIndex ].apply( data[ 0 ], data[ 1 ] ) === false && options.stopOnFalse ) {
+					memory = false; // To prevent further calls using add
+					break;
+				}
+			}
+			firing = false;
+			if ( list ) {
+				if ( stack ) {
+					if ( stack.length ) {
+						fire( stack.shift() );
+					}
+				} else if ( memory ) {
+					list = [];
+				} else {
+					self.disable();
+				}
+			}
+		},
+		// Actual Callbacks object
+		self = {
+			// Add a callback or a collection of callbacks to the list
+			add: function() {
+				if ( list ) {
+					// First, we save the current length
+					var start = list.length;
+					(function add( args ) {
+						jQuery.each( args, function( _, arg ) {
+							var type = jQuery.type( arg );
+							if ( type === "function" ) {
+								if ( !options.unique || !self.has( arg ) ) {
+									list.push( arg );
+								}
+							} else if ( arg && arg.length && type !== "string" ) {
+								// Inspect recursively
+								add( arg );
+							}
+						});
+					})( arguments );
+					// Do we need to add the callbacks to the
+					// current firing batch?
+					if ( firing ) {
+						firingLength = list.length;
+					// With memory, if we're not firing then
+					// we should call right away
+					} else if ( memory ) {
+						firingStart = start;
+						fire( memory );
+					}
+				}
+				return this;
+			},
+			// Remove a callback from the list
+			remove: function() {
+				if ( list ) {
+					jQuery.each( arguments, function( _, arg ) {
+						var index;
+						while ( ( index = jQuery.inArray( arg, list, index ) ) > -1 ) {
+							list.splice( index, 1 );
+							// Handle firing indexes
+							if ( firing ) {
+								if ( index <= firingLength ) {
+									firingLength--;
+								}
+								if ( index <= firingIndex ) {
+									firingIndex--;
+								}
+							}
+						}
+					});
+				}
+				return this;
+			},
+			// Check if a given callback is in the list.
+			// If no argument is given, return whether or not list has callbacks attached.
+			has: function( fn ) {
+				return fn ? jQuery.inArray( fn, list ) > -1 : !!( list && list.length );
+			},
+			// Remove all callbacks from the list
+			empty: function() {
+				list = [];
+				firingLength = 0;
+				return this;
+			},
+			// Have the list do nothing anymore
+			disable: function() {
+				list = stack = memory = undefined;
+				return this;
+			},
+			// Is it disabled?
+			disabled: function() {
+				return !list;
+			},
+			// Lock the list in its current state
+			lock: function() {
+				stack = undefined;
+				if ( !memory ) {
+					self.disable();
+				}
+				return this;
+			},
+			// Is it locked?
+			locked: function() {
+				return !stack;
+			},
+			// Call all callbacks with the given context and arguments
+			fireWith: function( context, args ) {
+				if ( list && ( !fired || stack ) ) {
+					args = args || [];
+					args = [ context, args.slice ? args.slice() : args ];
+					if ( firing ) {
+						stack.push( args );
+					} else {
+						fire( args );
+					}
+				}
+				return this;
+			},
+			// Call all the callbacks with the given arguments
+			fire: function() {
+				self.fireWith( this, arguments );
+				return this;
+			},
+			// To know if the callbacks have already been called at least once
+			fired: function() {
+				return !!fired;
+			}
+		};
+
+	return self;
+};
+
+
+jQuery.extend({
+
+	Deferred: function( func ) {
+		var tuples = [
+				// action, add listener, listener list, final state
+				[ "resolve", "done", jQuery.Callbacks("once memory"), "resolved" ],
+				[ "reject", "fail", jQuery.Callbacks("once memory"), "rejected" ],
+				[ "notify", "progress", jQuery.Callbacks("memory") ]
+			],
+			state = "pending",
+			promise = {
+				state: function() {
+					return state;
+				},
+				always: function() {
+					deferred.done( arguments ).fail( arguments );
+					return this;
+				},
+				then: function( /* fnDone, fnFail, fnProgress */ ) {
+					var fns = arguments;
+					return jQuery.Deferred(function( newDefer ) {
+						jQuery.each( tuples, function( i, tuple ) {
+							var fn = jQuery.isFunction( fns[ i ] ) && fns[ i ];
+							// deferred[ done | fail | progress ] for forwarding actions to newDefer
+							deferred[ tuple[1] ](function() {
+								var returned = fn && fn.apply( this, arguments );
+								if ( returned && jQuery.isFunction( returned.promise ) ) {
+									returned.promise()
+										.done( newDefer.resolve )
+										.fail( newDefer.reject )
+										.progress( newDefer.notify );
+								} else {
+									newDefer[ tuple[ 0 ] + "With" ]( this === promise ? newDefer.promise() : this, fn ? [ returned ] : arguments );
+								}
+							});
+						});
+						fns = null;
+					}).promise();
+				},
+				// Get a promise for this deferred
+				// If obj is provided, the promise aspect is added to the object
+				promise: function( obj ) {
+					return obj != null ? jQuery.extend( obj, promise ) : promise;
+				}
+			},
+			deferred = {};
+
+		// Keep pipe for back-compat
+		promise.pipe = promise.then;
+
+		// Add list-specific methods
+		jQuery.each( tuples, function( i, tuple ) {
+			var list = tuple[ 2 ],
+				stateString = tuple[ 3 ];
+
+			// promise[ done | fail | progress ] = list.add
+			promise[ tuple[1] ] = list.add;
+
+			// Handle state
+			if ( stateString ) {
+				list.add(function() {
+					// state = [ resolved | rejected ]
+					state = stateString;
+
+				// [ reject_list | resolve_list ].disable; progress_list.lock
+				}, tuples[ i ^ 1 ][ 2 ].disable, tuples[ 2 ][ 2 ].lock );
+			}
+
+			// deferred[ resolve | reject | notify ]
+			deferred[ tuple[0] ] = function() {
+				deferred[ tuple[0] + "With" ]( this === deferred ? promise : this, arguments );
+				return this;
+			};
+			deferred[ tuple[0] + "With" ] = list.fireWith;
+		});
+
+		// Make the deferred a promise
+		promise.promise( deferred );
+
+		// Call given func if any
+		if ( func ) {
+			func.call( deferred, deferred );
+		}
+
+		// All done!
+		return deferred;
+	},
+
+	// Deferred helper
+	when: function( subordinate /* , ..., subordinateN */ ) {
+		var i = 0,
+			resolveValues = slice.call( arguments ),
+			length = resolveValues.length,
+
+			// the count of uncompleted subordinates
+			remaining = length !== 1 || ( subordinate && jQuery.isFunction( subordinate.promise ) ) ? length : 0,
+
+			// the master Deferred. If resolveValues consist of only a single Deferred, just use that.
+			deferred = remaining === 1 ? subordinate : jQuery.Deferred(),
+
+			// Update function for both resolve and progress values
+			updateFunc = function( i, contexts, values ) {
+				return function( value ) {
+					contexts[ i ] = this;
+					values[ i ] = arguments.length > 1 ? slice.call( arguments ) : value;
+					if ( values === progressValues ) {
+						deferred.notifyWith( contexts, values );
+					} else if ( !( --remaining ) ) {
+						deferred.resolveWith( contexts, values );
+					}
+				};
+			},
+
+			progressValues, progressContexts, resolveContexts;
+
+		// Add listeners to Deferred subordinates; treat others as resolved
+		if ( length > 1 ) {
+			progressValues = new Array( length );
+			progressContexts = new Array( length );
+			resolveContexts = new Array( length );
+			for ( ; i < length; i++ ) {
+				if ( resolveValues[ i ] && jQuery.isFunction( resolveValues[ i ].promise ) ) {
+					resolveValues[ i ].promise()
+						.done( updateFunc( i, resolveContexts, resolveValues ) )
+						.fail( deferred.reject )
+						.progress( updateFunc( i, progressContexts, progressValues ) );
+				} else {
+					--remaining;
+				}
+			}
+		}
+
+		// If we're not waiting on anything, resolve the master
+		if ( !remaining ) {
+			deferred.resolveWith( resolveContexts, resolveValues );
+		}
+
+		return deferred.promise();
+	}
+});
+
+
+// The deferred used on DOM ready
+var readyList;
+
+jQuery.fn.ready = function( fn ) {
+	// Add the callback
+	jQuery.ready.promise().done( fn );
+
+	return this;
+};
+
+jQuery.extend({
+	// Is the DOM ready to be used? Set to true once it occurs.
+	isReady: false,
+
+	// A counter to track how many items to wait for before
+	// the ready event fires. See #6781
+	readyWait: 1,
+
+	// Hold (or release) the ready event
+	holdReady: function( hold ) {
+		if ( hold ) {
+			jQuery.readyWait++;
+		} else {
+			jQuery.ready( true );
+		}
+	},
+
+	// Handle when the DOM is ready
+	ready: function( wait ) {
+
+		// Abort if there are pending holds or we're already ready
+		if ( wait === true ? --jQuery.readyWait : jQuery.isReady ) {
+			return;
+		}
+
+		// Remember that the DOM is ready
+		jQuery.isReady = true;
+
+		// If a normal DOM Ready event fired, decrement, and wait if need be
+		if ( wait !== true && --jQuery.readyWait > 0 ) {
+			return;
+		}
+
+		// If there are functions bound, to execute
+		readyList.resolveWith( document, [ jQuery ] );
+
+		// Trigger any bound ready events
+		if ( jQuery.fn.triggerHandler ) {
+			jQuery( document ).triggerHandler( "ready" );
+			jQuery( document ).off( "ready" );
+		}
+	}
+});
+
+/**
+ * The ready event handler and self cleanup method
+ */
+function completed() {
+	document.removeEventListener( "DOMContentLoaded", completed, false );
+	window.removeEventListener( "load", completed, false );
+	jQuery.ready();
+}
+
+jQuery.ready.promise = function( obj ) {
+	if ( !readyList ) {
+
+		readyList = jQuery.Deferred();
+
+		// Catch cases where $(document).ready() is called after the browser event has already occurred.
+		// We once tried to use readyState "interactive" here, but it caused issues like the one
+		// discovered by ChrisS here: http://bugs.jquery.com/ticket/12282#comment:15
+		if ( document.readyState === "complete" ) {
+			// Handle it asynchronously to allow scripts the opportunity to delay ready
+			setTimeout( jQuery.ready );
+
+		} else {
+
+			// Use the handy event callback
+			document.addEventListener( "DOMContentLoaded", completed, false );
+
+			// A fallback to window.onload, that will always work
+			window.addEventListener( "load", completed, false );
+		}
+	}
+	return readyList.promise( obj );
+};
+
+// Kick off the DOM ready check even if the user does not
+jQuery.ready.promise();
+
+
+
+
+// Multifunctional method to get and set values of a collection
+// The value/s can optionally be executed if it's a function
+var access = jQuery.access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
+	var i = 0,
+		len = elems.length,
+		bulk = key == null;
+
+	// Sets many values
+	if ( jQuery.type( key ) === "object" ) {
+		chainable = true;
+		for ( i in key ) {
+			jQuery.access( elems, fn, i, key[i], true, emptyGet, raw );
+		}
+
+	// Sets one value
+	} else if ( value !== undefined ) {
+		chainable = true;
+
+		if ( !jQuery.isFunction( value ) ) {
+			raw = true;
+		}
+
+		if ( bulk ) {
+			// Bulk operations run against the entire set
+			if ( raw ) {
+				fn.call( elems, value );
+				fn = null;
+
+			// ...except when executing function values
+			} else {
+				bulk = fn;
+				fn = function( elem, key, value ) {
+					return bulk.call( jQuery( elem ), value );
+				};
+			}
+		}
+
+		if ( fn ) {
+			for ( ; i < len; i++ ) {
+				fn( elems[i], key, raw ? value : value.call( elems[i], i, fn( elems[i], key ) ) );
+			}
+		}
+	}
+
+	return chainable ?
+		elems :
+
+		// Gets
+		bulk ?
+			fn.call( elems ) :
+			len ? fn( elems[0], key ) : emptyGet;
+};
+
+
+/**
+ * Determines whether an object can have data
+ */
+jQuery.acceptData = function( owner ) {
+	// Accepts only:
+	//  - Node
+	//    - Node.ELEMENT_NODE
+	//    - Node.DOCUMENT_NODE
+	//  - Object
+	//    - Any
+	/* jshint -W018 */
+	return owner.nodeType === 1 || owner.nodeType === 9 || !( +owner.nodeType );
+};
+
+
+function Data() {
+	// Support: Android<4,
+	// Old WebKit does not have Object.preventExtensions/freeze method,
+	// return new empty object instead with no [[set]] accessor
+	Object.defineProperty( this.cache = {}, 0, {
+		get: function() {
+			return {};
+		}
+	});
+
+	this.expando = jQuery.expando + Data.uid++;
+}
+
+Data.uid = 1;
+Data.accepts = jQuery.acceptData;
+
+Data.prototype = {
+	key: function( owner ) {
+		// We can accept data for non-element nodes in modern browsers,
+		// but we should not, see #8335.
+		// Always return the key for a frozen object.
+		if ( !Data.accepts( owner ) ) {
+			return 0;
+		}
+
+		var descriptor = {},
+			// Check if the owner object already has a cache key
+			unlock = owner[ this.expando ];
+
+		// If not, create one
+		if ( !unlock ) {
+			unlock = Data.uid++;
+
+			// Secure it in a non-enumerable, non-writable property
+			try {
+				descriptor[ this.expando ] = { value: unlock };
+				Object.defineProperties( owner, descriptor );
+
+			// Support: Android<4
+			// Fallback to a less secure definition
+			} catch ( e ) {
+				descriptor[ this.expando ] = unlock;
+				jQuery.extend( owner, descriptor );
+			}
+		}
+
+		// Ensure the cache object
+		if ( !this.cache[ unlock ] ) {
+			this.cache[ unlock ] = {};
+		}
+
+		return unlock;
+	},
+	set: function( owner, data, value ) {
+		var prop,
+			// There may be an unlock assigned to this node,
+			// if there is no entry for this "owner", create one inline
+			// and set the unlock as though an owner entry had always existed
+			unlock = this.key( owner ),
+			cache = this.cache[ unlock ];
+
+		// Handle: [ owner, key, value ] args
+		if ( typeof data === "string" ) {
+			cache[ data ] = value;
+
+		// Handle: [ owner, { properties } ] args
+		} else {
+			// Fresh assignments by object are shallow copied
+			if ( jQuery.isEmptyObject( cache ) ) {
+				jQuery.extend( this.cache[ unlock ], data );
+			// Otherwise, copy the properties one-by-one to the cache object
+			} else {
+				for ( prop in data ) {
+					cache[ prop ] = data[ prop ];
+				}
+			}
+		}
+		return cache;
+	},
+	get: function( owner, key ) {
+		// Either a valid cache is found, or will be created.
+		// New caches will be created and the unlock returned,
+		// allowing direct access to the newly created
+		// empty data object. A valid owner object must be provided.
+		var cache = this.cache[ this.key( owner ) ];
+
+		return key === undefined ?
+			cache : cache[ key ];
+	},
+	access: function( owner, key, value ) {
+		var stored;
+		// In cases where either:
+		//
+		//   1. No key was specified
+		//   2. A string key was specified, but no value provided
+		//
+		// Take the "read" path and allow the get method to determine
+		// which value to return, respectively either:
+		//
+		//   1. The entire cache object
+		//   2. The data stored at the key
+		//
+		if ( key === undefined ||
+				((key && typeof key === "string") && value === undefined) ) {
+
+			stored = this.get( owner, key );
+
+			return stored !== undefined ?
+				stored : this.get( owner, jQuery.camelCase(key) );
+		}
+
+		// [*]When the key is not a string, or both a key and value
+		// are specified, set or extend (existing objects) with either:
+		//
+		//   1. An object of properties
+		//   2. A key and value
+		//
+		this.set( owner, key, value );
+
+		// Since the "set" path can have two possible entry points
+		// return the expected data based on which path was taken[*]
+		return value !== undefined ? value : key;
+	},
+	remove: function( owner, key ) {
+		var i, name, camel,
+			unlock = this.key( owner ),
+			cache = this.cache[ unlock ];
+
+		if ( key === undefined ) {
+			this.cache[ unlock ] = {};
+
+		} else {
+			// Support array or space separated string of keys
+			if ( jQuery.isArray( key ) ) {
+				// If "name" is an array of keys...
+				// When data is initially created, via ("key", "val") signature,
+				// keys will be converted to camelCase.
+				// Since there is no way to tell _how_ a key was added, remove
+				// both plain key and camelCase key. #12786
+				// This will only penalize the array argument path.
+				name = key.concat( key.map( jQuery.camelCase ) );
+			} else {
+				camel = jQuery.camelCase( key );
+				// Try the string as a key before any manipulation
+				if ( key in cache ) {
+					name = [ key, camel ];
+				} else {
+					// If a key with the spaces exists, use it.
+					// Otherwise, create an array by matching non-whitespace
+					name = camel;
+					name = name in cache ?
+						[ name ] : ( name.match( rnotwhite ) || [] );
+				}
+			}
+
+			i = name.length;
+			while ( i-- ) {
+				delete cache[ name[ i ] ];
+			}
+		}
+	},
+	hasData: function( owner ) {
+		return !jQuery.isEmptyObject(
+			this.cache[ owner[ this.expando ] ] || {}
+		);
+	},
+	discard: function( owner ) {
+		if ( owner[ this.expando ] ) {
+			delete this.cache[ owner[ this.expando ] ];
+		}
+	}
+};
+var data_priv = new Data();
+
+var data_user = new Data();
+
+
+
+//	Implementation Summary
+//
+//	1. Enforce API surface and semantic compatibility with 1.9.x branch
+//	2. Improve the module's maintainability by reducing the storage
+//		paths to a single mechanism.
+//	3. Use the same single mechanism to support "private" and "user" data.
+//	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
+//	5. Avoid exposing implementation details on user objects (eg. expando properties)
+//	6. Provide a clear path for implementation upgrade to WeakMap in 2014
+
+var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
+	rmultiDash = /([A-Z])/g;
+
+function dataAttr( elem, key, data ) {
+	var name;
+
+	// If nothing was found internally, try to fetch any
+	// data from the HTML5 data-* attribute
+	if ( data === undefined && elem.nodeType === 1 ) {
+		name = "data-" + key.replace( rmultiDash, "-$1" ).toLowerCase();
+		data = elem.getAttribute( name );
+
+		if ( typeof data === "string" ) {
+			try {
+				data = data === "true" ? true :
+					data === "false" ? false :
+					data === "null" ? null :
+					// Only convert to a number if it doesn't change the string
+					+data + "" === data ? +data :
+					rbrace.test( data ) ? jQuery.parseJSON( data ) :
+					data;
+			} catch( e ) {}
+
+			// Make sure we set the data so it isn't changed later
+			data_user.set( elem, key, data );
+		} else {
+			data = undefined;
+		}
+	}
+	return data;
+}
+
+jQuery.extend({
+	hasData: function( elem ) {
+		return data_user.hasData( elem ) || data_priv.hasData( elem );
+	},
+
+	data: function( elem, name, data ) {
+		return data_user.access( elem, name, data );
+	},
+
+	removeData: function( elem, name ) {
+		data_user.remove( elem, name );
+	},
+
+	// TODO: Now that all calls to _data and _removeData have been replaced
+	// with direct calls to data_priv methods, these can be deprecated.
+	_data: function( elem, name, data ) {
+		return data_priv.access( elem, name, data );
+	},
+
+	_removeData: function( elem, name ) {
+		data_priv.remove( elem, name );
+	}
+});
+
+jQuery.fn.extend({
+	data: function( key, value ) {
+		var i, name, data,
+			elem = this[ 0 ],
+			attrs = elem && elem.attributes;
+
+		// Gets all values
+		if ( key === undefined ) {
+			if ( this.length ) {
+				data = data_user.get( elem );
+
+				if ( elem.nodeType === 1 && !data_priv.get( elem, "hasDataAttrs" ) ) {
+					i = attrs.length;
+					while ( i-- ) {
+
+						// Support: IE11+
+						// The attrs elements can be null (#14894)
+						if ( attrs[ i ] ) {
+							name = attrs[ i ].name;
+							if ( name.indexOf( "data-" ) === 0 ) {
+								name = jQuery.camelCase( name.slice(5) );
+								dataAttr( elem, name, data[ name ] );
+							}
+						}
+					}
+					data_priv.set( elem, "hasDataAttrs", true );
+				}
+			}
+
+			return data;
+		}
+
+		// Sets multiple values
+		if ( typeof key === "object" ) {
+			return this.each(function() {
+				data_user.set( this, key );
+			});
+		}
+
+		return access( this, function( value ) {
+			var data,
+				camelKey = jQuery.camelCase( key );
+
+			// The calling jQuery object (element matches) is not empty
+			// (and therefore has an element appears at this[ 0 ]) and the
+			// `value` parameter was not undefined. An empty jQuery object
+			// will result in `undefined` for elem = this[ 0 ] which will
+			// throw an exception if an attempt to read a data cache is made.
+			if ( elem && value === undefined ) {
+				// Attempt to get data from the cache
+				// with the key as-is
+				data = data_user.get( elem, key );
+				if ( data !== undefined ) {
+					return data;
+				}
+
+				// Attempt to get data from the cache
+				// with the key camelized
+				data = data_user.get( elem, camelKey );
+				if ( data !== undefined ) {
+					return data;
+				}
+
+				// Attempt to "discover" the data in
+				// HTML5 custom data-* attrs
+				data = dataAttr( elem, camelKey, undefined );
+				if ( data !== undefined ) {
+					return data;
+				}
+
+				// We tried really hard, but the data doesn't exist.
+				return;
+			}
+
+			// Set the data...
+			this.each(function() {
+				// First, attempt to store a copy or reference of any
+				// data that might've been store with a camelCased key.
+				var data = data_user.get( this, camelKey );
+
+				// For HTML5 data-* attribute interop, we have to
+				// store property names with dashes in a camelCase form.
+				// This might not apply to all properties...*
+				data_user.set( this, camelKey, value );
+
+				// *... In the case of properties that might _actually_
+				// have dashes, we need to also store a copy of that
+				// unchanged property.
+				if ( key.indexOf("-") !== -1 && data !== undefined ) {
+					data_user.set( this, key, value );
+				}
+			});
+		}, null, value, arguments.length > 1, null, true );
+	},
+
+	removeData: function( key ) {
+		return this.each(function() {
+			data_user.remove( this, key );
+		});
+	}
+});
+
+
+jQuery.extend({
+	queue: function( elem, type, data ) {
+		var queue;
+
+		if ( elem ) {
+			type = ( type || "fx" ) + "queue";
+			queue = data_priv.get( elem, type );
+
+			// Speed up dequeue by getting out quickly if this is just a lookup
+			if ( data ) {
+				if ( !queue || jQuery.isArray( data ) ) {
+					queue = data_priv.access( elem, type, jQuery.makeArray(data) );
+				} else {
+					queue.push( data );
+				}
+			}
+			return queue || [];
+		}
+	},
+
+	dequeue: function( elem, type ) {
+		type = type || "fx";
+
+		var queue = jQuery.queue( elem, type ),
+			startLength = queue.length,
+			fn = queue.shift(),
+			hooks = jQuery._queueHooks( elem, type ),
+			next = function() {
+				jQuery.dequeue( elem, type );
+			};
+
+		// If the fx queue is dequeued, always remove the progress sentinel
+		if ( fn === "inprogress" ) {
+			fn = queue.shift();
+			startLength--;
+		}
+
+		if ( fn ) {
+
+			// Add a progress sentinel to prevent the fx queue from being
+			// automatically dequeued
+			if ( type === "fx" ) {
+				queue.unshift( "inprogress" );
+			}
+
+			// Clear up the last queue stop function
+			delete hooks.stop;
+			fn.call( elem, next, hooks );
+		}
+
+		if ( !startLength && hooks ) {
+			hooks.empty.fire();
+		}
+	},
+
+	// Not public - generate a queueHooks object, or return the current one
+	_queueHooks: function( elem, type ) {
+		var key = type + "queueHooks";
+		return data_priv.get( elem, key ) || data_priv.access( elem, key, {
+			empty: jQuery.Callbacks("once memory").add(function() {
+				data_priv.remove( elem, [ type + "queue", key ] );
+			})
+		});
+	}
+});
+
+jQuery.fn.extend({
+	queue: function( type, data ) {
+		var setter = 2;
+
+		if ( typeof type !== "string" ) {
+			data = type;
+			type = "fx";
+			setter--;
+		}
+
+		if ( arguments.length < setter ) {
+			return jQuery.queue( this[0], type );
+		}
+
+		return data === undefined ?
+			this :
+			this.each(function() {
+				var queue = jQuery.queue( this, type, data );
+
+				// Ensure a hooks for this queue
+				jQuery._queueHooks( this, type );
+
+				if ( type === "fx" && queue[0] !== "inprogress" ) {
+					jQuery.dequeue( this, type );
+				}
+			});
+	},
+	dequeue: function( type ) {
+		return this.each(function() {
+			jQuery.dequeue( this, type );
+		});
+	},
+	clearQueue: function( type ) {
+		return this.queue( type || "fx", [] );
+	},
+	// Get a promise resolved when queues of a certain type
+	// are emptied (fx is the type by default)
+	promise: function( type, obj ) {
+		var tmp,
+			count = 1,
+			defer = jQuery.Deferred(),
+			elements = this,
+			i = this.length,
+			resolve = function() {
+				if ( !( --count ) ) {
+					defer.resolveWith( elements, [ elements ] );
+				}
+			};
+
+		if ( typeof type !== "string" ) {
+			obj = type;
+			type = undefined;
+		}
+		type = type || "fx";
+
+		while ( i-- ) {
+			tmp = data_priv.get( elements[ i ], type + "queueHooks" );
+			if ( tmp && tmp.empty ) {
+				count++;
+				tmp.empty.add( resolve );
+			}
+		}
+		resolve();
+		return defer.promise( obj );
+	}
+});
+var pnum = (/[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/).source;
+
+var cssExpand = [ "Top", "Right", "Bottom", "Left" ];
+
+var isHidden = function( elem, el ) {
+		// isHidden might be called from jQuery#filter function;
+		// in that case, element will be second argument
+		elem = el || elem;
+		return jQuery.css( elem, "display" ) === "none" || !jQuery.contains( elem.ownerDocument, elem );
+	};
+
+var rcheckableType = (/^(?:checkbox|radio)$/i);
+
+
+
+(function() {
+	var fragment = document.createDocumentFragment(),
+		div = fragment.appendChild( document.createElement( "div" ) ),
+		input = document.createElement( "input" );
+
+	// Support: Safari<=5.1
+	// Check state lost if the name is set (#11217)
+	// Support: Windows Web Apps (WWA)
+	// `name` and `type` must use .setAttribute for WWA (#14901)
+	input.setAttribute( "type", "radio" );
+	input.setAttribute( "checked", "checked" );
+	input.setAttribute( "name", "t" );
+
+	div.appendChild( input );
+
+	// Support: Safari<=5.1, Android<4.2
+	// Older WebKit doesn't clone checked state correctly in fragments
+	support.checkClone = div.cloneNode( true ).cloneNode( true ).lastChild.checked;
+
+	// Support: IE<=11+
+	// Make sure textarea (and checkbox) defaultValue is properly cloned
+	div.innerHTML = "<textarea>x</textarea>";
+	support.noCloneChecked = !!div.cloneNode( true ).lastChild.defaultValue;
+})();
+var strundefined = typeof undefined;
+
+
+
+support.focusinBubbles = "onfocusin" in window;
+
+
+var
+	rkeyEvent = /^key/,
+	rmouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
+	rfocusMorph = /^(?:focusinfocus|focusoutblur)$/,
+	rtypenamespace = /^([^.]*)(?:\.(.+)|)$/;
+
+function returnTrue() {
+	return true;
+}
+
+function returnFalse() {
+	return false;
+}
+
+function safeActiveElement() {
+	try {
+		return document.activeElement;
+	} catch ( err ) { }
+}
+
+/*
+ * Helper functions for managing events -- not part of the public interface.
+ * Props to Dean Edwards' addEvent library for many of the ideas.
+ */
+jQuery.event = {
+
+	global: {},
+
+	add: function( elem, types, handler, data, selector ) {
+
+		var handleObjIn, eventHandle, tmp,
+			events, t, handleObj,
+			special, handlers, type, namespaces, origType,
+			elemData = data_priv.get( elem );
+
+		// Don't attach events to noData or text/comment nodes (but allow plain objects)
+		if ( !elemData ) {
+			return;
+		}
+
+		// Caller can pass in an object of custom data in lieu of the handler
+		if ( handler.handler ) {
+			handleObjIn = handler;
+			handler = handleObjIn.handler;
+			selector = handleObjIn.selector;
+		}
+
+		// Make sure that the handler has a unique ID, used to find/remove it later
+		if ( !handler.guid ) {
+			handler.guid = jQuery.guid++;
+		}
+
+		// Init the element's event structure and main handler, if this is the first
+		if ( !(events = elemData.events) ) {
+			events = elemData.events = {};
+		}
+		if ( !(eventHandle = elemData.handle) ) {
+			eventHandle = elemData.handle = function( e ) {
+				// Discard the second event of a jQuery.event.trigger() and
+				// when an event is called after a page has unloaded
+				return typeof jQuery !== strundefined && jQuery.event.triggered !== e.type ?
+					jQuery.event.dispatch.apply( elem, arguments ) : undefined;
+			};
+		}
+
+		// Handle multiple events separated by a space
+		types = ( types || "" ).match( rnotwhite ) || [ "" ];
+		t = types.length;
+		while ( t-- ) {
+			tmp = rtypenamespace.exec( types[t] ) || [];
+			type = origType = tmp[1];
+			namespaces = ( tmp[2] || "" ).split( "." ).sort();
+
+			// There *must* be a type, no attaching namespace-only handlers
+			if ( !type ) {
+				continue;
+			}
+
+			// If event changes its type, use the special event handlers for the changed type
+			special = jQuery.event.special[ type ] || {};
+
+			// If selector defined, determine special event api type, otherwise given type
+			type = ( selector ? special.delegateType : special.bindType ) || type;
+
+			// Update special based on newly reset type
+			special = jQuery.event.special[ type ] || {};
+
+			// handleObj is passed to all event handlers
+			handleObj = jQuery.extend({
+				type: type,
+				origType: origType,
+				data: data,
+				handler: handler,
+				guid: handler.guid,
+				selector: selector,
+				needsContext: selector && jQuery.expr.match.needsContext.test( selector ),
+				namespace: namespaces.join(".")
+			}, handleObjIn );
+
+			// Init the event handler queue if we're the first
+			if ( !(handlers = events[ type ]) ) {
+				handlers = events[ type ] = [];
+				handlers.delegateCount = 0;
+
+				// Only use addEventListener if the special events handler returns false
+				if ( !special.setup || special.setup.call( elem, data, namespaces, eventHandle ) === false ) {
+					if ( elem.addEventListener ) {
+						elem.addEventListener( type, eventHandle, false );
+					}
+				}
+			}
+
+			if ( special.add ) {
+				special.add.call( elem, handleObj );
+
+				if ( !handleObj.handler.guid ) {
+					handleObj.handler.guid = handler.guid;
+				}
+			}
+
+			// Add to the element's handler list, delegates in front
+			if ( selector ) {
+				handlers.splice( handlers.delegateCount++, 0, handleObj );
+			} else {
+				handlers.push( handleObj );
+			}
+
+			// Keep track of which events have ever been used, for event optimization
+			jQuery.event.global[ type ] = true;
+		}
+
+	},
+
+	// Detach an event or set of events from an element
+	remove: function( elem, types, handler, selector, mappedTypes ) {
+
+		var j, origCount, tmp,
+			events, t, handleObj,
+			special, handlers, type, namespaces, origType,
+			elemData = data_priv.hasData( elem ) && data_priv.get( elem );
+
+		if ( !elemData || !(events = elemData.events) ) {
+			return;
+		}
+
+		// Once for each type.namespace in types; type may be omitted
+		types = ( types || "" ).match( rnotwhite ) || [ "" ];
+		t = types.length;
+		while ( t-- ) {
+			tmp = rtypenamespace.exec( types[t] ) || [];
+			type = origType = tmp[1];
+			namespaces = ( tmp[2] || "" ).split( "." ).sort();
+
+			// Unbind all events (on this namespace, if provided) for the element
+			if ( !type ) {
+				for ( type in events ) {
+					jQuery.event.remove( elem, type + types[ t ], handler, selector, true );
+				}
+				continue;
+			}
+
+			special = jQuery.event.special[ type ] || {};
+			type = ( selector ? special.delegateType : special.bindType ) || type;
+			handlers = events[ type ] || [];
+			tmp = tmp[2] && new RegExp( "(^|\\.)" + namespaces.join("\\.(?:.*\\.|)") + "(\\.|$)" );
+
+			// Remove matching events
+			origCount = j = handlers.length;
+			while ( j-- ) {
+				handleObj = handlers[ j ];
+
+				if ( ( mappedTypes || origType === handleObj.origType ) &&
+					( !handler || handler.guid === handleObj.guid ) &&
+					( !tmp || tmp.test( handleObj.namespace ) ) &&
+					( !selector || selector === handleObj.selector || selector === "**" && handleObj.selector ) ) {
+					handlers.splice( j, 1 );
+
+					if ( handleObj.selector ) {
+						handlers.delegateCount--;
+					}
+					if ( special.remove ) {
+						special.remove.call( elem, handleObj );
+					}
+				}
+			}
+
+			// Remove generic event handler if we removed something and no more handlers exist
+			// (avoids potential for endless recursion during removal of special event handlers)
+			if ( origCount && !handlers.length ) {
+				if ( !special.teardown || special.teardown.call( elem, namespaces, elemData.handle ) === false ) {
+					jQuery.removeEvent( elem, type, elemData.handle );
+				}
+
+				delete events[ type ];
+			}
+		}
+
+		// Remove the expando if it's no longer used
+		if ( jQuery.isEmptyObject( events ) ) {
+			delete elemData.handle;
+			data_priv.remove( elem, "events" );
+		}
+	},
+
+	trigger: function( event, data, elem, onlyHandlers ) {
+
+		var i, cur, tmp, bubbleType, ontype, handle, special,
+			eventPath = [ elem || document ],
+			type = hasOwn.call( event, "type" ) ? event.type : event,
+			namespaces = hasOwn.call( event, "namespace" ) ? event.namespace.split(".") : [];
+
+		cur = tmp = elem = elem || document;
+
+		// Don't do events on text and comment nodes
+		if ( elem.nodeType === 3 || elem.nodeType === 8 ) {
+			return;
+		}
+
+		// focus/blur morphs to focusin/out; ensure we're not firing them right now
+		if ( rfocusMorph.test( type + jQuery.event.triggered ) ) {
+			return;
+		}
+
+		if ( type.indexOf(".") >= 0 ) {
+			// Namespaced trigger; create a regexp to match event type in handle()
+			namespaces = type.split(".");
+			type = namespaces.shift();
+			namespaces.sort();
+		}
+		ontype = type.indexOf(":") < 0 && "on" + type;
+
+		// Caller can pass in a jQuery.Event object, Object, or just an event type string
+		event = event[ jQuery.expando ] ?
+			event :
+			new jQuery.Event( type, typeof event === "object" && event );
+
+		// Trigger bitmask: & 1 for native handlers; & 2 for jQuery (always true)
+		event.isTrigger = onlyHandlers ? 2 : 3;
+		event.namespace = namespaces.join(".");
+		event.namespace_re = event.namespace ?
+			new RegExp( "(^|\\.)" + namespaces.join("\\.(?:.*\\.|)") + "(\\.|$)" ) :
+			null;
+
+		// Clean up the event in case it is being reused
+		event.result = undefined;
+		if ( !event.target ) {
+			event.target = elem;
+		}
+
+		// Clone any incoming data and prepend the event, creating the handler arg list
+		data = data == null ?
+			[ event ] :
+			jQuery.makeArray( data, [ event ] );
+
+		// Allow special events to draw outside the lines
+		special = jQuery.event.special[ type ] || {};
+		if ( !onlyHandlers && special.trigger && special.trigger.apply( elem, data ) === false ) {
+			return;
+		}
+
+		// Determine event propagation path in advance, per W3C events spec (#9951)
+		// Bubble up to document, then to window; watch for a global ownerDocument var (#9724)
+		if ( !onlyHandlers && !special.noBubble && !jQuery.isWindow( elem ) ) {
+
+			bubbleType = special.delegateType || type;
+			if ( !rfocusMorph.test( bubbleType + type ) ) {
+				cur = cur.parentNode;
+			}
+			for ( ; cur; cur = cur.parentNode ) {
+				eventPath.push( cur );
+				tmp = cur;
+			}
+
+			// Only add window if we got to document (e.g., not plain obj or detached DOM)
+			if ( tmp === (elem.ownerDocument || document) ) {
+				eventPath.push( tmp.defaultView || tmp.parentWindow || window );
+			}
+		}
+
+		// Fire handlers on the event path
+		i = 0;
+		while ( (cur = eventPath[i++]) && !event.isPropagationStopped() ) {
+
+			event.type = i > 1 ?
+				bubbleType :
+				special.bindType || type;
+
+			// jQuery handler
+			handle = ( data_priv.get( cur, "events" ) || {} )[ event.type ] && data_priv.get( cur, "handle" );
+			if ( handle ) {
+				handle.apply( cur, data );
+			}
+
+			// Native handler
+			handle = ontype && cur[ ontype ];
+			if ( handle && handle.apply && jQuery.acceptData( cur ) ) {
+				event.result = handle.apply( cur, data );
+				if ( event.result === false ) {
+					event.preventDefault();
+				}
+			}
+		}
+		event.type = type;
+
+		// If nobody prevented the default action, do it now
+		if ( !onlyHandlers && !event.isDefaultPrevented() ) {
+
+			if ( (!special._default || special._default.apply( eventPath.pop(), data ) === false) &&
+				jQuery.acceptData( elem ) ) {
+
+				// Call a native DOM method on the target with the same name name as the event.
+				// Don't do default actions on window, that's where global variables be (#6170)
+				if ( ontype && jQuery.isFunction( elem[ type ] ) && !jQuery.isWindow( elem ) ) {
+
+					// Don't re-trigger an onFOO event when we call its FOO() method
+					tmp = elem[ ontype ];
+
+					if ( tmp ) {
+						elem[ ontype ] = null;
+					}
+
+					// Prevent re-triggering of the same event, since we already bubbled it above
+					jQuery.event.triggered = type;
+					elem[ type ]();
+					jQuery.event.triggered = undefined;
+
+					if ( tmp ) {
+						elem[ ontype ] = tmp;
+					}
+				}
+			}
+		}
+
+		return event.result;
+	},
+
+	dispatch: function( event ) {
+
+		// Make a writable jQuery.Event from the native event object
+		event = jQuery.event.fix( event );
+
+		var i, j, ret, matched, handleObj,
+			handlerQueue = [],
+			args = slice.call( arguments ),
+			handlers = ( data_priv.get( this, "events" ) || {} )[ event.type ] || [],
+			special = jQuery.event.special[ event.type ] || {};
+
+		// Use the fix-ed jQuery.Event rather than the (read-only) native event
+		args[0] = event;
+		event.delegateTarget = this;
+
+		// Call the preDispatch hook for the mapped type, and let it bail if desired
+		if ( special.preDispatch && special.preDispatch.call( this, event ) === false ) {
+			return;
+		}
+
+		// Determine handlers
+		handlerQueue = jQuery.event.handlers.call( this, event, handlers );
+
+		// Run delegates first; they may want to stop propagation beneath us
+		i = 0;
+		while ( (matched = handlerQueue[ i++ ]) && !event.isPropagationStopped() ) {
+			event.currentTarget = matched.elem;
+
+			j = 0;
+			while ( (handleObj = matched.handlers[ j++ ]) && !event.isImmediatePropagationStopped() ) {
+
+				// Triggered event must either 1) have no namespace, or 2) have namespace(s)
+				// a subset or equal to those in the bound event (both can have no namespace).
+				if ( !event.namespace_re || event.namespace_re.test( handleObj.namespace ) ) {
+
+					event.handleObj = handleObj;
+					event.data = handleObj.data;
+
+					ret = ( (jQuery.event.special[ handleObj.origType ] || {}).handle || handleObj.handler )
+							.apply( matched.elem, args );
+
+					if ( ret !== undefined ) {
+						if ( (event.result = ret) === false ) {
+							event.preventDefault();
+							event.stopPropagation();
+						}
+					}
+				}
+			}
+		}
+
+		// Call the postDispatch hook for the mapped type
+		if ( special.postDispatch ) {
+			special.postDispatch.call( this, event );
+		}
+
+		return event.result;
+	},
+
+	handlers: function( event, handlers ) {
+		var i, matches, sel, handleObj,
+			handlerQueue = [],
+			delegateCount = handlers.delegateCount,
+			cur = event.target;
+
+		// Find delegate handlers
+		// Black-hole SVG <use> instance trees (#13180)
+		// Avoid non-left-click bubbling in Firefox (#3861)
+		if ( delegateCount && cur.nodeType && (!event.button || event.type !== "click") ) {
+
+			for ( ; cur !== this; cur = cur.parentNode || this ) {
+
+				// Don't process clicks on disabled elements (#6911, #8165, #11382, #11764)
+				if ( cur.disabled !== true || event.type !== "click" ) {
+					matches = [];
+					for ( i = 0; i < delegateCount; i++ ) {
+						handleObj = handlers[ i ];
+
+						// Don't conflict with Object.prototype properties (#13203)
+						sel = handleObj.selector + " ";
+
+						if ( matches[ sel ] === undefined ) {
+							matches[ sel ] = handleObj.needsContext ?
+								jQuery( sel, this ).index( cur ) >= 0 :
+								jQuery.find( sel, this, null, [ cur ] ).length;
+						}
+						if ( matches[ sel ] ) {
+							matches.push( handleObj );
+						}
+					}
+					if ( matches.length ) {
+						handlerQueue.push({ elem: cur, handlers: matches });
+					}
+				}
+			}
+		}
+
+		// Add the remaining (directly-bound) handlers
+		if ( delegateCount < handlers.length ) {
+			handlerQueue.push({ elem: this, handlers: handlers.slice( delegateCount ) });
+		}
+
+		return handlerQueue;
+	},
+
+	// Includes some event props shared by KeyEvent and MouseEvent
+	props: "altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which".split(" "),
+
+	fixHooks: {},
+
+	keyHooks: {
+		props: "char charCode key keyCode".split(" "),
+		filter: function( event, original ) {
+
+			// Add which for key events
+			if ( event.which == null ) {
+				event.which = original.charCode != null ? original.charCode : original.keyCode;
+			}
+
+			return event;
+		}
+	},
+
+	mouseHooks: {
+		props: "button buttons clientX clientY offsetX offsetY pageX pageY screenX screenY toElement".split(" "),
+		filter: function( event, original ) {
+			var eventDoc, doc, body,
+				button = original.button;
+
+			// Calculate pageX/Y if missing and clientX/Y available
+			if ( event.pageX == null && original.clientX != null ) {
+				eventDoc = event.target.ownerDocument || document;
+				doc = eventDoc.documentElement;
+				body = eventDoc.body;
+
+				event.pageX = original.clientX + ( doc && doc.scrollLeft || body && body.scrollLeft || 0 ) - ( doc && doc.clientLeft || body && body.clientLeft || 0 );
+				event.pageY = original.clientY + ( doc && doc.scrollTop  || body && body.scrollTop  || 0 ) - ( doc && doc.clientTop  || body && body.clientTop  || 0 );
+			}
+
+			// Add which for click: 1 === left; 2 === middle; 3 === right
+			// Note: button is not normalized, so don't use it
+			if ( !event.which && button !== undefined ) {
+				event.which = ( button & 1 ? 1 : ( button & 2 ? 3 : ( button & 4 ? 2 : 0 ) ) );
+			}
+
+			return event;
+		}
+	},
+
+	fix: function( event ) {
+		if ( event[ jQuery.expando ] ) {
+			return event;
+		}
+
+		// Create a writable copy of the event object and normalize some properties
+		var i, prop, copy,
+			type = event.type,
+			originalEvent = event,
+			fixHook = this.fixHooks[ type ];
+
+		if ( !fixHook ) {
+			this.fixHooks[ type ] = fixHook =
+				rmouseEvent.test( type ) ? this.mouseHooks :
+				rkeyEvent.test( type ) ? this.keyHooks :
+				{};
+		}
+		copy = fixHook.props ? this.props.concat( fixHook.props ) : this.props;
+
+		event = new jQuery.Event( originalEvent );
+
+		i = copy.length;
+		while ( i-- ) {
+			prop = copy[ i ];
+			event[ prop ] = originalEvent[ prop ];
+		}
+
+		// Support: Cordova 2.5 (WebKit) (#13255)
+		// All events should have a target; Cordova deviceready doesn't
+		if ( !event.target ) {
+			event.target = document;
+		}
+
+		// Support: Safari 6.0+, Chrome<28
+		// Target should not be a text node (#504, #13143)
+		if ( event.target.nodeType === 3 ) {
+			event.target = event.target.parentNode;
+		}
+
+		return fixHook.filter ? fixHook.filter( event, originalEvent ) : event;
+	},
+
+	special: {
+		load: {
+			// Prevent triggered image.load events from bubbling to window.load
+			noBubble: true
+		},
+		focus: {
+			// Fire native event if possible so blur/focus sequence is correct
+			trigger: function() {
+				if ( this !== safeActiveElement() && this.focus ) {
+					this.focus();
+					return false;
+				}
+			},
+			delegateType: "focusin"
+		},
+		blur: {
+			trigger: function() {
+				if ( this === safeActiveElement() && this.blur ) {
+					this.blur();
+					return false;
+				}
+			},
+			delegateType: "focusout"
+		},
+		click: {
+			// For checkbox, fire native event so checked state will be right
+			trigger: function() {
+				if ( this.type === "checkbox" && this.click && jQuery.nodeName( this, "input" ) ) {
+					this.click();
+					return false;
+				}
+			},
+
+			// For cross-browser consistency, don't fire native .click() on links
+			_default: function( event ) {
+				return jQuery.nodeName( event.target, "a" );
+			}
+		},
+
+		beforeunload: {
+			postDispatch: function( event ) {
+
+				// Support: Firefox 20+
+				// Firefox doesn't alert if the returnValue field is not set.
+				if ( event.result !== undefined && event.originalEvent ) {
+					event.originalEvent.returnValue = event.result;
+				}
+			}
+		}
+	},
+
+	simulate: function( type, elem, event, bubble ) {
+		// Piggyback on a donor event to simulate a different one.
+		// Fake originalEvent to avoid donor's stopPropagation, but if the
+		// simulated event prevents default then we do the same on the donor.
+		var e = jQuery.extend(
+			new jQuery.Event(),
+			event,
+			{
+				type: type,
+				isSimulated: true,
+				originalEvent: {}
+			}
+		);
+		if ( bubble ) {
+			jQuery.event.trigger( e, null, elem );
+		} else {
+			jQuery.event.dispatch.call( elem, e );
+		}
+		if ( e.isDefaultPrevented() ) {
+			event.preventDefault();
+		}
+	}
+};
+
+jQuery.removeEvent = function( elem, type, handle ) {
+	if ( elem.removeEventListener ) {
+		elem.removeEventListener( type, handle, false );
+	}
+};
+
+jQuery.Event = function( src, props ) {
+	// Allow instantiation without the 'new' keyword
+	if ( !(this instanceof jQuery.Event) ) {
+		return new jQuery.Event( src, props );
+	}
+
+	// Event object
+	if ( src && src.type ) {
+		this.originalEvent = src;
+		this.type = src.type;
+
+		// Events bubbling up the document may have been marked as prevented
+		// by a handler lower down the tree; reflect the correct value.
+		this.isDefaultPrevented = src.defaultPrevented ||
+				src.defaultPrevented === undefined &&
+				// Support: Android<4.0
+				src.returnValue === false ?
+			returnTrue :
+			returnFalse;
+
+	// Event type
+	} else {
+		this.type = src;
+	}
+
+	// Put explicitly provided properties onto the event object
+	if ( props ) {
+		jQuery.extend( this, props );
+	}
+
+	// Create a timestamp if incoming event doesn't have one
+	this.timeStamp = src && src.timeStamp || jQuery.now();
+
+	// Mark it as fixed
+	this[ jQuery.expando ] = true;
+};
+
+// jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
+// http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
+jQuery.Event.prototype = {
+	isDefaultPrevented: returnFalse,
+	isPropagationStopped: returnFalse,
+	isImmediatePropagationStopped: returnFalse,
+
+	preventDefault: function() {
+		var e = this.originalEvent;
+
+		this.isDefaultPrevented = returnTrue;
+
+		if ( e && e.preventDefault ) {
+			e.preventDefault();
+		}
+	},
+	stopPropagation: function() {
+		var e = this.originalEvent;
+
+		this.isPropagationStopped = returnTrue;
+
+		if ( e && e.stopPropagation ) {
+			e.stopPropagation();
+		}
+	},
+	stopImmediatePropagation: function() {
+		var e = this.originalEvent;
+
+		this.isImmediatePropagationStopped = returnTrue;
+
+		if ( e && e.stopImmediatePropagation ) {
+			e.stopImmediatePropagation();
+		}
+
+		this.stopPropagation();
+	}
+};
+
+// Create mouseenter/leave events using mouseover/out and event-time checks
+// Support: Chrome 15+
+jQuery.each({
+	mouseenter: "mouseover",
+	mouseleave: "mouseout",
+	pointerenter: "pointerover",
+	pointerleave: "pointerout"
+}, function( orig, fix ) {
+	jQuery.event.special[ orig ] = {
+		delegateType: fix,
+		bindType: fix,
+
+		handle: function( event ) {
+			var ret,
+				target = this,
+				related = event.relatedTarget,
+				handleObj = event.handleObj;
+
+			// For mousenter/leave call the handler if related is outside the target.
+			// NB: No relatedTarget if the mouse left/entered the browser window
+			if ( !related || (related !== target && !jQuery.contains( target, related )) ) {
+				event.type = handleObj.origType;
+				ret = handleObj.handler.apply( this, arguments );
+				event.type = fix;
+			}
+			return ret;
+		}
+	};
+});
+
+// Support: Firefox, Chrome, Safari
+// Create "bubbling" focus and blur events
+if ( !support.focusinBubbles ) {
+	jQuery.each({ focus: "focusin", blur: "focusout" }, function( orig, fix ) {
+
+		// Attach a single capturing handler on the document while someone wants focusin/focusout
+		var handler = function( event ) {
+				jQuery.event.simulate( fix, event.target, jQuery.event.fix( event ), true );
+			};
+
+		jQuery.event.special[ fix ] = {
+			setup: function() {
+				var doc = this.ownerDocument || this,
+					attaches = data_priv.access( doc, fix );
+
+				if ( !attaches ) {
+					doc.addEventListener( orig, handler, true );
+				}
+				data_priv.access( doc, fix, ( attaches || 0 ) + 1 );
+			},
+			teardown: function() {
+				var doc = this.ownerDocument || this,
+					attaches = data_priv.access( doc, fix ) - 1;
+
+				if ( !attaches ) {
+					doc.removeEventListener( orig, handler, true );
+					data_priv.remove( doc, fix );
+
+				} else {
+					data_priv.access( doc, fix, attaches );
+				}
+			}
+		};
+	});
+}
+
+jQuery.fn.extend({
+
+	on: function( types, selector, data, fn, /*INTERNAL*/ one ) {
+		var origFn, type;
+
+		// Types can be a map of types/handlers
+		if ( typeof types === "object" ) {
+			// ( types-Object, selector, data )
+			if ( typeof selector !== "string" ) {
+				// ( types-Object, data )
+				data = data || selector;
+				selector = undefined;
+			}
+			for ( type in types ) {
+				this.on( type, selector, data, types[ type ], one );
+			}
+			return this;
+		}
+
+		if ( data == null && fn == null ) {
+			// ( types, fn )
+			fn = selector;
+			data = selector = undefined;
+		} else if ( fn == null ) {
+			if ( typeof selector === "string" ) {
+				// ( types, selector, fn )
+				fn = data;
+				data = undefined;
+			} else {
+				// ( types, data, fn )
+				fn = data;
+				data = selector;
+				selector = undefined;
+			}
+		}
+		if ( fn === false ) {
+			fn = returnFalse;
+		} else if ( !fn ) {
+			return this;
+		}
+
+		if ( one === 1 ) {
+			origFn = fn;
+			fn = function( event ) {
+				// Can use an empty set, since event contains the info
+				jQuery().off( event );
+				return origFn.apply( this, arguments );
+			};
+			// Use same guid so caller can remove using origFn
+			fn.guid = origFn.guid || ( origFn.guid = jQuery.guid++ );
+		}
+		return this.each( function() {
+			jQuery.event.add( this, types, fn, data, selector );
+		});
+	},
+	one: function( types, selector, data, fn ) {
+		return this.on( types, selector, data, fn, 1 );
+	},
+	off: function( types, selector, fn ) {
+		var handleObj, type;
+		if ( types && types.preventDefault && types.handleObj ) {
+			// ( event )  dispatched jQuery.Event
+			handleObj = types.handleObj;
+			jQuery( types.delegateTarget ).off(
+				handleObj.namespace ? handleObj.origType + "." + handleObj.namespace : handleObj.origType,
+				handleObj.selector,
+				handleObj.handler
+			);
+			return this;
+		}
+		if ( typeof types === "object" ) {
+			// ( types-object [, selector] )
+			for ( type in types ) {
+				this.off( type, selector, types[ type ] );
+			}
+			return this;
+		}
+		if ( selector === false || typeof selector === "function" ) {
+			// ( types [, fn] )
+			fn = selector;
+			selector = undefined;
+		}
+		if ( fn === false ) {
+			fn = returnFalse;
+		}
+		return this.each(function() {
+			jQuery.event.remove( this, types, fn, selector );
+		});
+	},
+
+	trigger: function( type, data ) {
+		return this.each(function() {
+			jQuery.event.trigger( type, data, this );
+		});
+	},
+	triggerHandler: function( type, data ) {
+		var elem = this[0];
+		if ( elem ) {
+			return jQuery.event.trigger( type, data, elem, true );
+		}
+	}
+});
+
+
+var
+	rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/gi,
+	rtagName = /<([\w:]+)/,
+	rhtml = /<|&#?\w+;/,
+	rnoInnerhtml = /<(?:script|style|link)/i,
+	// checked="checked" or checked
+	rchecked = /checked\s*(?:[^=]|=\s*.checked.)/i,
+	rscriptType = /^$|\/(?:java|ecma)script/i,
+	rscriptTypeMasked = /^true\/(.*)/,
+	rcleanScript = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g,
+
+	// We have to close these tags to support XHTML (#13200)
+	wrapMap = {
+
+		// Support: IE9
+		option: [ 1, "<select multiple='multiple'>", "</select>" ],
+
+		thead: [ 1, "<table>", "</table>" ],
+		col: [ 2, "<table><colgroup>", "</colgroup></table>" ],
+		tr: [ 2, "<table><tbody>", "</tbody></table>" ],
+		td: [ 3, "<table><tbody><tr>", "</tr></tbody></table>" ],
+
+		_default: [ 0, "", "" ]
+	};
+
+// Support: IE9
+wrapMap.optgroup = wrapMap.option;
+
+wrapMap.tbody = wrapMap.tfoot = wrapMap.colgroup = wrapMap.caption = wrapMap.thead;
+wrapMap.th = wrapMap.td;
+
+// Support: 1.x compatibility
+// Manipulating tables requires a tbody
+function manipulationTarget( elem, content ) {
+	return jQuery.nodeName( elem, "table" ) &&
+		jQuery.nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ?
+
+		elem.getElementsByTagName("tbody")[0] ||
+			elem.appendChild( elem.ownerDocument.createElement("tbody") ) :
+		elem;
+}
+
+// Replace/restore the type attribute of script elements for safe DOM manipulation
+function disableScript( elem ) {
+	elem.type = (elem.getAttribute("type") !== null) + "/" + elem.type;
+	return elem;
+}
+function restoreScript( elem ) {
+	var match = rscriptTypeMasked.exec( elem.type );
+
+	if ( match ) {
+		elem.type = match[ 1 ];
+	} else {
+		elem.removeAttribute("type");
+	}
+
+	return elem;
+}
+
+// Mark scripts as having already been evaluated
+function setGlobalEval( elems, refElements ) {
+	var i = 0,
+		l = elems.length;
+
+	for ( ; i < l; i++ ) {
+		data_priv.set(
+			elems[ i ], "globalEval", !refElements || data_priv.get( refElements[ i ], "globalEval" )
+		);
+	}
+}
+
+function cloneCopyEvent( src, dest ) {
+	var i, l, type, pdataOld, pdataCur, udataOld, udataCur, events;
+
+	if ( dest.nodeType !== 1 ) {
+		return;
+	}
+
+	// 1. Copy private data: events, handlers, etc.
+	if ( data_priv.hasData( src ) ) {
+		pdataOld = data_priv.access( src );
+		pdataCur = data_priv.set( dest, pdataOld );
+		events = pdataOld.events;
+
+		if ( events ) {
+			delete pdataCur.handle;
+			pdataCur.events = {};
+
+			for ( type in events ) {
+				for ( i = 0, l = events[ type ].length; i < l; i++ ) {
+					jQuery.event.add( dest, type, events[ type ][ i ] );
+				}
+			}
+		}
+	}
+
+	// 2. Copy user data
+	if ( data_user.hasData( src ) ) {
+		udataOld = data_user.access( src );
+		udataCur = jQuery.extend( {}, udataOld );
+
+		data_user.set( dest, udataCur );
+	}
+}
+
+function getAll( context, tag ) {
+	var ret = context.getElementsByTagName ? context.getElementsByTagName( tag || "*" ) :
+			context.querySelectorAll ? context.querySelectorAll( tag || "*" ) :
+			[];
+
+	return tag === undefined || tag && jQuery.nodeName( context, tag ) ?
+		jQuery.merge( [ context ], ret ) :
+		ret;
+}
+
+// Fix IE bugs, see support tests
+function fixInput( src, dest ) {
+	var nodeName = dest.nodeName.toLowerCase();
+
+	// Fails to persist the checked state of a cloned checkbox or radio button.
+	if ( nodeName === "input" && rcheckableType.test( src.type ) ) {
+		dest.checked = src.checked;
+
+	// Fails to return the selected option to the default selected state when cloning options
+	} else if ( nodeName === "input" || nodeName === "textarea" ) {
+		dest.defaultValue = src.defaultValue;
+	}
+}
+
+jQuery.extend({
+	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
+		var i, l, srcElements, destElements,
+			clone = elem.cloneNode( true ),
+			inPage = jQuery.contains( elem.ownerDocument, elem );
+
+		// Fix IE cloning issues
+		if ( !support.noCloneChecked && ( elem.nodeType === 1 || elem.nodeType === 11 ) &&
+				!jQuery.isXMLDoc( elem ) ) {
+
+			// We eschew Sizzle here for performance reasons: http://jsperf.com/getall-vs-sizzle/2
+			destElements = getAll( clone );
+			srcElements = getAll( elem );
+
+			for ( i = 0, l = srcElements.length; i < l; i++ ) {
+				fixInput( srcElements[ i ], destElements[ i ] );
+			}
+		}
+
+		// Copy the events from the original to the clone
+		if ( dataAndEvents ) {
+			if ( deepDataAndEvents ) {
+				srcElements = srcElements || getAll( elem );
+				destElements = destElements || getAll( clone );
+
+				for ( i = 0, l = srcElements.length; i < l; i++ ) {
+					cloneCopyEvent( srcElements[ i ], destElements[ i ] );
+				}
+			} else {
+				cloneCopyEvent( elem, clone );
+			}
+		}
+
+		// Preserve script evaluation history
+		destElements = getAll( clone, "script" );
+		if ( destElements.length > 0 ) {
+			setGlobalEval( destElements, !inPage && getAll( elem, "script" ) );
+		}
+
+		// Return the cloned set
+		return clone;
+	},
+
+	buildFragment: function( elems, context, scripts, selection ) {
+		var elem, tmp, tag, wrap, contains, j,
+			fragment = context.createDocumentFragment(),
+			nodes = [],
+			i = 0,
+			l = elems.length;
+
+		for ( ; i < l; i++ ) {
+			elem = elems[ i ];
+
+			if ( elem || elem === 0 ) {
+
+				// Add nodes directly
+				if ( jQuery.type( elem ) === "object" ) {
+					// Support: QtWebKit, PhantomJS
+					// push.apply(_, arraylike) throws on ancient WebKit
+					jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
+
+				// Convert non-html into a text node
+				} else if ( !rhtml.test( elem ) ) {
+					nodes.push( context.createTextNode( elem ) );
+
+				// Convert html into DOM nodes
+				} else {
+					tmp = tmp || fragment.appendChild( context.createElement("div") );
+
+					// Deserialize a standard representation
+					tag = ( rtagName.exec( elem ) || [ "", "" ] )[ 1 ].toLowerCase();
+					wrap = wrapMap[ tag ] || wrapMap._default;
+					tmp.innerHTML = wrap[ 1 ] + elem.replace( rxhtmlTag, "<$1></$2>" ) + wrap[ 2 ];
+
+					// Descend through wrappers to the right content
+					j = wrap[ 0 ];
+					while ( j-- ) {
+						tmp = tmp.lastChild;
+					}
+
+					// Support: QtWebKit, PhantomJS
+					// push.apply(_, arraylike) throws on ancient WebKit
+					jQuery.merge( nodes, tmp.childNodes );
+
+					// Remember the top-level container
+					tmp = fragment.firstChild;
+
+					// Ensure the created nodes are orphaned (#12392)
+					tmp.textContent = "";
+				}
+			}
+		}
+
+		// Remove wrapper from fragment
+		fragment.textContent = "";
+
+		i = 0;
+		while ( (elem = nodes[ i++ ]) ) {
+
+			// #4087 - If origin and destination elements are the same, and this is
+			// that element, do not do anything
+			if ( selection && jQuery.inArray( elem, selection ) !== -1 ) {
+				continue;
+			}
+
+			contains = jQuery.contains( elem.ownerDocument, elem );
+
+			// Append to fragment
+			tmp = getAll( fragment.appendChild( elem ), "script" );
+
+			// Preserve script evaluation history
+			if ( contains ) {
+				setGlobalEval( tmp );
+			}
+
+			// Capture executables
+			if ( scripts ) {
+				j = 0;
+				while ( (elem = tmp[ j++ ]) ) {
+					if ( rscriptType.test( elem.type || "" ) ) {
+						scripts.push( elem );
+					}
+				}
+			}
+		}
+
+		return fragment;
+	},
+
+	cleanData: function( elems ) {
+		var data, elem, type, key,
+			special = jQuery.event.special,
+			i = 0;
+
+		for ( ; (elem = elems[ i ]) !== undefined; i++ ) {
+			if ( jQuery.acceptData( elem ) ) {
+				key = elem[ data_priv.expando ];
+
+				if ( key && (data = data_priv.cache[ key ]) ) {
+					if ( data.events ) {
+						for ( type in data.events ) {
+							if ( special[ type ] ) {
+								jQuery.event.remove( elem, type );
+
+							// This is a shortcut to avoid jQuery.event.remove's overhead
+							} else {
+								jQuery.removeEvent( elem, type, data.handle );
+							}
+						}
+					}
+					if ( data_priv.cache[ key ] ) {
+						// Discard any remaining `private` data
+						delete data_priv.cache[ key ];
+					}
+				}
+			}
+			// Discard any remaining `user` data
+			delete data_user.cache[ elem[ data_user.expando ] ];
+		}
+	}
+});
+
+jQuery.fn.extend({
+	text: function( value ) {
+		return access( this, function( value ) {
+			return value === undefined ?
+				jQuery.text( this ) :
+				this.empty().each(function() {
+					if ( this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9 ) {
+						this.textContent = value;
+					}
+				});
+		}, null, value, arguments.length );
+	},
+
+	append: function() {
+		return this.domManip( arguments, function( elem ) {
+			if ( this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9 ) {
+				var target = manipulationTarget( this, elem );
+				target.appendChild( elem );
+			}
+		});
+	},
+
+	prepend: function() {
+		return this.domManip( arguments, function( elem ) {
+			if ( this.nodeType === 1 || this.nodeType === 11 || this.nodeType === 9 ) {
+				var target = manipulationTarget( this, elem );
+				target.insertBefore( elem, target.firstChild );
+			}
+		});
+	},
+
+	before: function() {
+		return this.domManip( arguments, function( elem ) {
+			if ( this.parentNode ) {
+				this.parentNode.insertBefore( elem, this );
+			}
+		});
+	},
+
+	after: function() {
+		return this.domManip( arguments, function( elem ) {
+			if ( this.parentNode ) {
+				this.parentNode.insertBefore( elem, this.nextSibling );
+			}
+		});
+	},
+
+	remove: function( selector, keepData /* Internal Use Only */ ) {
+		var elem,
+			elems = selector ? jQuery.filter( selector, this ) : this,
+			i = 0;
+
+		for ( ; (elem = elems[i]) != null; i++ ) {
+			if ( !keepData && elem.nodeType === 1 ) {
+				jQuery.cleanData( getAll( elem ) );
+			}
+
+			if ( elem.parentNode ) {
+				if ( keepData && jQuery.contains( elem.ownerDocument, elem ) ) {
+					setGlobalEval( getAll( elem, "script" ) );
+				}
+				elem.parentNode.removeChild( elem );
+			}
+		}
+
+		return this;
+	},
+
+	empty: function() {
+		var elem,
+			i = 0;
+
+		for ( ; (elem = this[i]) != null; i++ ) {
+			if ( elem.nodeType === 1 ) {
+
+				// Prevent memory leaks
+				jQuery.cleanData( getAll( elem, false ) );
+
+				// Remove any remaining nodes
+				elem.textContent = "";
+			}
+		}
+
+		return this;
+	},
+
+	clone: function( dataAndEvents, deepDataAndEvents ) {
+		dataAndEvents = dataAndEvents == null ? false : dataAndEvents;
+		deepDataAndEvents = deepDataAndEvents == null ? dataAndEvents : deepDataAndEvents;
+
+		return this.map(function() {
+			return jQuery.clone( this, dataAndEvents, deepDataAndEvents );
+		});
+	},
+
+	html: function( value ) {
+		return access( this, function( value ) {
+			var elem = this[ 0 ] || {},
+				i = 0,
+				l = this.length;
+
+			if ( value === undefined && elem.nodeType === 1 ) {
+				return elem.innerHTML;
+			}
+
+			// See if we can take a shortcut and just use innerHTML
+			if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
+				!wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
+
+				value = value.replace( rxhtmlTag, "<$1></$2>" );
+
+				try {
+					for ( ; i < l; i++ ) {
+						elem = this[ i ] || {};
+
+						// Remove element nodes and prevent memory leaks
+						if ( elem.nodeType === 1 ) {
+							jQuery.cleanData( getAll( elem, false ) );
+							elem.innerHTML = value;
+						}
+					}
+
+					elem = 0;
+
+				// If using innerHTML throws an exception, use the fallback method
+				} catch( e ) {}
+			}
+
+			if ( elem ) {
+				this.empty().append( value );
+			}
+		}, null, value, arguments.length );
+	},
+
+	replaceWith: function() {
+		var arg = arguments[ 0 ];
+
+		// Make the changes, replacing each context element with the new content
+		this.domManip( arguments, function( elem ) {
+			arg = this.parentNode;
+
+			jQuery.cleanData( getAll( this ) );
+
+			if ( arg ) {
+				arg.replaceChild( elem, this );
+			}
+		});
+
+		// Force removal if there was no new content (e.g., from empty arguments)
+		return arg && (arg.length || arg.nodeType) ? this : this.remove();
+	},
+
+	detach: function( selector ) {
+		return this.remove( selector, true );
+	},
+
+	domManip: function( args, callback ) {
+
+		// Flatten any nested arrays
+		args = concat.apply( [], args );
+
+		var fragment, first, scripts, hasScripts, node, doc,
+			i = 0,
+			l = this.length,
+			set = this,
+			iNoClone = l - 1,
+			value = args[ 0 ],
+			isFunction = jQuery.isFunction( value );
+
+		// We can't cloneNode fragments that contain checked, in WebKit
+		if ( isFunction ||
+				( l > 1 && typeof value === "string" &&
+					!support.checkClone && rchecked.test( value ) ) ) {
+			return this.each(function( index ) {
+				var self = set.eq( index );
+				if ( isFunction ) {
+					args[ 0 ] = value.call( this, index, self.html() );
+				}
+				self.domManip( args, callback );
+			});
+		}
+
+		if ( l ) {
+			fragment = jQuery.buildFragment( args, this[ 0 ].ownerDocument, false, this );
+			first = fragment.firstChild;
+
+			if ( fragment.childNodes.length === 1 ) {
+				fragment = first;
+			}
+
+			if ( first ) {
+				scripts = jQuery.map( getAll( fragment, "script" ), disableScript );
+				hasScripts = scripts.length;
+
+				// Use the original fragment for the last item instead of the first because it can end up
+				// being emptied incorrectly in certain situations (#8070).
+				for ( ; i < l; i++ ) {
+					node = fragment;
+
+					if ( i !== iNoClone ) {
+						node = jQuery.clone( node, true, true );
+
+						// Keep references to cloned scripts for later restoration
+						if ( hasScripts ) {
+							// Support: QtWebKit
+							// jQuery.merge because push.apply(_, arraylike) throws
+							jQuery.merge( scripts, getAll( node, "script" ) );
+						}
+					}
+
+					callback.call( this[ i ], node, i );
+				}
+
+				if ( hasScripts ) {
+					doc = scripts[ scripts.length - 1 ].ownerDocument;
+
+					// Reenable scripts
+					jQuery.map( scripts, restoreScript );
+
+					// Evaluate executable scripts on first document insertion
+					for ( i = 0; i < hasScripts; i++ ) {
+						node = scripts[ i ];
+						if ( rscriptType.test( node.type || "" ) &&
+							!data_priv.access( node, "globalEval" ) && jQuery.contains( doc, node ) ) {
+
+							if ( node.src ) {
+								// Optional AJAX dependency, but won't run scripts if not present
+								if ( jQuery._evalUrl ) {
+									jQuery._evalUrl( node.src );
+								}
+							} else {
+								jQuery.globalEval( node.textContent.replace( rcleanScript, "" ) );
+							}
+						}
+					}
+				}
+			}
+		}
+
+		return this;
+	}
+});
+
+jQuery.each({
+	appendTo: "append",
+	prependTo: "prepend",
+	insertBefore: "before",
+	insertAfter: "after",
+	replaceAll: "replaceWith"
+}, function( name, original ) {
+	jQuery.fn[ name ] = function( selector ) {
+		var elems,
+			ret = [],
+			insert = jQuery( selector ),
+			last = insert.length - 1,
+			i = 0;
+
+		for ( ; i <= last; i++ ) {
+			elems = i === last ? this : this.clone( true );
+			jQuery( insert[ i ] )[ original ]( elems );
+
+			// Support: QtWebKit
+			// .get() because push.apply(_, arraylike) throws
+			push.apply( ret, elems.get() );
+		}
+
+		return this.pushStack( ret );
+	};
+});
+
+
+var iframe,
+	elemdisplay = {};
+
+/**
+ * Retrieve the actual display of a element
+ * @param {String} name nodeName of the element
+ * @param {Object} doc Document object
+ */
+// Called only from within defaultDisplay
+function actualDisplay( name, doc ) {
+	var style,
+		elem = jQuery( doc.createElement( name ) ).appendTo( doc.body ),
+
+		// getDefaultComputedStyle might be reliably used only on attached element
+		display = window.getDefaultComputedStyle && ( style = window.getDefaultComputedStyle( elem[ 0 ] ) ) ?
+
+			// Use of this method is a temporary fix (more like optimization) until something better comes along,
+			// since it was removed from specification and supported only in FF
+			style.display : jQuery.css( elem[ 0 ], "display" );
+
+	// We don't have any data stored on the element,
+	// so use "detach" method as fast way to get rid of the element
+	elem.detach();
+
+	return display;
+}
+
+/**
+ * Try to determine the default display value of an element
+ * @param {String} nodeName
+ */
+function defaultDisplay( nodeName ) {
+	var doc = document,
+		display = elemdisplay[ nodeName ];
+
+	if ( !display ) {
+		display = actualDisplay( nodeName, doc );
+
+		// If the simple way fails, read from inside an iframe
+		if ( display === "none" || !display ) {
+
+			// Use the already-created iframe if possible
+			iframe = (iframe || jQuery( "<iframe frameborder='0' width='0' height='0'/>" )).appendTo( doc.documentElement );
+
+			// Always write a new HTML skeleton so Webkit and Firefox don't choke on reuse
+			doc = iframe[ 0 ].contentDocument;
+
+			// Support: IE
+			doc.write();
+			doc.close();
+
+			display = actualDisplay( nodeName, doc );
+			iframe.detach();
+		}
+
+		// Store the correct default display
+		elemdisplay[ nodeName ] = display;
+	}
+
+	return display;
+}
+var rmargin = (/^margin/);
+
+var rnumnonpx = new RegExp( "^(" + pnum + ")(?!px)[a-z%]+$", "i" );
+
+var getStyles = function( elem ) {
+		// Support: IE<=11+, Firefox<=30+ (#15098, #14150)
+		// IE throws on elements created in popups
+		// FF meanwhile throws on frame elements through "defaultView.getComputedStyle"
+		if ( elem.ownerDocument.defaultView.opener ) {
+			return elem.ownerDocument.defaultView.getComputedStyle( elem, null );
+		}
+
+		return window.getComputedStyle( elem, null );
+	};
+
+
+
+function curCSS( elem, name, computed ) {
+	var width, minWidth, maxWidth, ret,
+		style = elem.style;
+
+	computed = computed || getStyles( elem );
+
+	// Support: IE9
+	// getPropertyValue is only needed for .css('filter') (#12537)
+	if ( computed ) {
+		ret = computed.getPropertyValue( name ) || computed[ name ];
+	}
+
+	if ( computed ) {
+
+		if ( ret === "" && !jQuery.contains( elem.ownerDocument, elem ) ) {
+			ret = jQuery.style( elem, name );
+		}
+
+		// Support: iOS < 6
+		// A tribute to the "awesome hack by Dean Edwards"
+		// iOS < 6 (at least) returns percentage for a larger set of values, but width seems to be reliably pixels
+		// this is against the CSSOM draft spec: http://dev.w3.org/csswg/cssom/#resolved-values
+		if ( rnumnonpx.test( ret ) && rmargin.test( name ) ) {
+
+			// Remember the original values
+			width = style.width;
+			minWidth = style.minWidth;
+			maxWidth = style.maxWidth;
+
+			// Put in the new values to get a computed value out
+			style.minWidth = style.maxWidth = style.width = ret;
+			ret = computed.width;
+
+			// Revert the changed values
+			style.width = width;
+			style.minWidth = minWidth;
+			style.maxWidth = maxWidth;
+		}
+	}
+
+	return ret !== undefined ?
+		// Support: IE
+		// IE returns zIndex value as an integer.
+		ret + "" :
+		ret;
+}
+
+
+function addGetHookIf( conditionFn, hookFn ) {
+	// Define the hook, we'll check on the first run if it's really needed.
+	return {
+		get: function() {
+			if ( conditionFn() ) {
+				// Hook not needed (or it's not possible to use it due
+				// to missing dependency), remove it.
+				delete this.get;
+				return;
+			}
+
+			// Hook needed; redefine it so that the support test is not executed again.
+			return (this.get = hookFn).apply( this, arguments );
+		}
+	};
+}
+
+
+(function() {
+	var pixelPositionVal, boxSizingReliableVal,
+		docElem = document.documentElement,
+		container = document.createElement( "div" ),
+		div = document.createElement( "div" );
+
+	if ( !div.style ) {
+		return;
+	}
+
+	// Support: IE9-11+
+	// Style of cloned element affects source element cloned (#8908)
+	div.style.backgroundClip = "content-box";
+	div.cloneNode( true ).style.backgroundClip = "";
+	support.clearCloneStyle = div.style.backgroundClip === "content-box";
+
+	container.style.cssText = "border:0;width:0;height:0;top:0;left:-9999px;margin-top:1px;" +
+		"position:absolute";
+	container.appendChild( div );
+
+	// Executing both pixelPosition & boxSizingReliable tests require only one layout
+	// so they're executed at the same time to save the second computation.
+	function computePixelPositionAndBoxSizingReliable() {
+		div.style.cssText =
+			// Support: Firefox<29, Android 2.3
+			// Vendor-prefix box-sizing
+			"-webkit-box-sizing:border-box;-moz-box-sizing:border-box;" +
+			"box-sizing:border-box;display:block;margin-top:1%;top:1%;" +
+			"border:1px;padding:1px;width:4px;position:absolute";
+		div.innerHTML = "";
+		docElem.appendChild( container );
+
+		var divStyle = window.getComputedStyle( div, null );
+		pixelPositionVal = divStyle.top !== "1%";
+		boxSizingReliableVal = divStyle.width === "4px";
+
+		docElem.removeChild( container );
+	}
+
+	// Support: node.js jsdom
+	// Don't assume that getComputedStyle is a property of the global object
+	if ( window.getComputedStyle ) {
+		jQuery.extend( support, {
+			pixelPosition: function() {
+
+				// This test is executed only once but we still do memoizing
+				// since we can use the boxSizingReliable pre-computing.
+				// No need to check if the test was already performed, though.
+				computePixelPositionAndBoxSizingReliable();
+				return pixelPositionVal;
+			},
+			boxSizingReliable: function() {
+				if ( boxSizingReliableVal == null ) {
+					computePixelPositionAndBoxSizingReliable();
+				}
+				return boxSizingReliableVal;
+			},
+			reliableMarginRight: function() {
+
+				// Support: Android 2.3
+				// Check if div with explicit width and no margin-right incorrectly
+				// gets computed margin-right based on width of container. (#3333)
+				// WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
+				// This support function is only executed once so no memoizing is needed.
+				var ret,
+					marginDiv = div.appendChild( document.createElement( "div" ) );
+
+				// Reset CSS: box-sizing; display; margin; border; padding
+				marginDiv.style.cssText = div.style.cssText =
+					// Support: Firefox<29, Android 2.3
+					// Vendor-prefix box-sizing
+					"-webkit-box-sizing:content-box;-moz-box-sizing:content-box;" +
+					"box-sizing:content-box;display:block;margin:0;border:0;padding:0";
+				marginDiv.style.marginRight = marginDiv.style.width = "0";
+				div.style.width = "1px";
+				docElem.appendChild( container );
+
+				ret = !parseFloat( window.getComputedStyle( marginDiv, null ).marginRight );
+
+				docElem.removeChild( container );
+				div.removeChild( marginDiv );
+
+				return ret;
+			}
+		});
+	}
+})();
+
+
+// A method for quickly swapping in/out CSS properties to get correct calculations.
+jQuery.swap = function( elem, options, callback, args ) {
+	var ret, name,
+		old = {};
+
+	// Remember the old values, and insert the new ones
+	for ( name in options ) {
+		old[ name ] = elem.style[ name ];
+		elem.style[ name ] = options[ name ];
+	}
+
+	ret = callback.apply( elem, args || [] );
+
+	// Revert the old values
+	for ( name in options ) {
+		elem.style[ name ] = old[ name ];
+	}
+
+	return ret;
+};
+
+
+var
+	// Swappable if display is none or starts with table except "table", "table-cell", or "table-caption"
+	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
+	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
+	rnumsplit = new RegExp( "^(" + pnum + ")(.*)$", "i" ),
+	rrelNum = new RegExp( "^([+-])=(" + pnum + ")", "i" ),
+
+	cssShow = { position: "absolute", visibility: "hidden", display: "block" },
+	cssNormalTransform = {
+		letterSpacing: "0",
+		fontWeight: "400"
+	},
+
+	cssPrefixes = [ "Webkit", "O", "Moz", "ms" ];
+
+// Return a css property mapped to a potentially vendor prefixed property
+function vendorPropName( style, name ) {
+
+	// Shortcut for names that are not vendor prefixed
+	if ( name in style ) {
+		return name;
+	}
+
+	// Check for vendor prefixed names
+	var capName = name[0].toUpperCase() + name.slice(1),
+		origName = name,
+		i = cssPrefixes.length;
+
+	while ( i-- ) {
+		name = cssPrefixes[ i ] + capName;
+		if ( name in style ) {
+			return name;
+		}
+	}
+
+	return origName;
+}
+
+function setPositiveNumber( elem, value, subtract ) {
+	var matches = rnumsplit.exec( value );
+	return matches ?
+		// Guard against undefined "subtract", e.g., when used as in cssHooks
+		Math.max( 0, matches[ 1 ] - ( subtract || 0 ) ) + ( matches[ 2 ] || "px" ) :
+		value;
+}
+
+function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
+	var i = extra === ( isBorderBox ? "border" : "content" ) ?
+		// If we already have the right measurement, avoid augmentation
+		4 :
+		// Otherwise initialize for horizontal or vertical properties
+		name === "width" ? 1 : 0,
+
+		val = 0;
+
+	for ( ; i < 4; i += 2 ) {
+		// Both box models exclude margin, so add it if we want it
+		if ( extra === "margin" ) {
+			val += jQuery.css( elem, extra + cssExpand[ i ], true, styles );
+		}
+
+		if ( isBorderBox ) {
+			// border-box includes padding, so remove it if we want content
+			if ( extra === "content" ) {
+				val -= jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
+			}
+
+			// At this point, extra isn't border nor margin, so remove border
+			if ( extra !== "margin" ) {
+				val -= jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
+			}
+		} else {
+			// At this point, extra isn't content, so add padding
+			val += jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
+
+			// At this point, extra isn't content nor padding, so add border
+			if ( extra !== "padding" ) {
+				val += jQuery.css( elem, "border" + cssExpand[ i ] + "Width", true, styles );
+			}
+		}
+	}
+
+	return val;
+}
+
+function getWidthOrHeight( elem, name, extra ) {
+
+	// Start with offset property, which is equivalent to the border-box value
+	var valueIsBorderBox = true,
+		val = name === "width" ? elem.offsetWidth : elem.offsetHeight,
+		styles = getStyles( elem ),
+		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
+
+	// Some non-html elements return undefined for offsetWidth, so check for null/undefined
+	// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
+	// MathML - https://bugzilla.mozilla.org/show_bug.cgi?id=491668
+	if ( val <= 0 || val == null ) {
+		// Fall back to computed then uncomputed css if necessary
+		val = curCSS( elem, name, styles );
+		if ( val < 0 || val == null ) {
+			val = elem.style[ name ];
+		}
+
+		// Computed unit is not pixels. Stop here and return.
+		if ( rnumnonpx.test(val) ) {
+			return val;
+		}
+
+		// Check for style in case a browser which returns unreliable values
+		// for getComputedStyle silently falls back to the reliable elem.style
+		valueIsBorderBox = isBorderBox &&
+			( support.boxSizingReliable() || val === elem.style[ name ] );
+
+		// Normalize "", auto, and prepare for extra
+		val = parseFloat( val ) || 0;
+	}
+
+	// Use the active box-sizing model to add/subtract irrelevant styles
+	return ( val +
+		augmentWidthOrHeight(
+			elem,
+			name,
+			extra || ( isBorderBox ? "border" : "content" ),
+			valueIsBorderBox,
+			styles
+		)
+	) + "px";
+}
+
+function showHide( elements, show ) {
+	var display, elem, hidden,
+		values = [],
+		index = 0,
+		length = elements.length;
+
+	for ( ; index < length; index++ ) {
+		elem = elements[ index ];
+		if ( !elem.style ) {
+			continue;
+		}
+
+		values[ index ] = data_priv.get( elem, "olddisplay" );
+		display = elem.style.display;
+		if ( show ) {
+			// Reset the inline display of this element to learn if it is
+			// being hidden by cascaded rules or not
+			if ( !values[ index ] && display === "none" ) {
+				elem.style.display = "";
+			}
+
+			// Set elements which have been overridden with display: none
+			// in a stylesheet to whatever the default browser style is
+			// for such an element
+			if ( elem.style.display === "" && isHidden( elem ) ) {
+				values[ index ] = data_priv.access( elem, "olddisplay", defaultDisplay(elem.nodeName) );
+			}
+		} else {
+			hidden = isHidden( elem );
+
+			if ( display !== "none" || !hidden ) {
+				data_priv.set( elem, "olddisplay", hidden ? display : jQuery.css( elem, "display" ) );
+			}
+		}
+	}
+
+	// Set the display of most of the elements in a second loop
+	// to avoid the constant reflow
+	for ( index = 0; index < length; index++ ) {
+		elem = elements[ index ];
+		if ( !elem.style ) {
+			continue;
+		}
+		if ( !show || elem.style.display === "none" || elem.style.display === "" ) {
+			elem.style.display = show ? values[ index ] || "" : "none";
+		}
+	}
+
+	return elements;
+}
+
+jQuery.extend({
+
+	// Add in style property hooks for overriding the default
+	// behavior of getting and setting a style property
+	cssHooks: {
+		opacity: {
+			get: function( elem, computed ) {
+				if ( computed ) {
+
+					// We should always get a number back from opacity
+					var ret = curCSS( elem, "opacity" );
+					return ret === "" ? "1" : ret;
+				}
+			}
+		}
+	},
+
+	// Don't automatically add "px" to these possibly-unitless properties
+	cssNumber: {
+		"columnCount": true,
+		"fillOpacity": true,
+		"flexGrow": true,
+		"flexShrink": true,
+		"fontWeight": true,
+		"lineHeight": true,
+		"opacity": true,
+		"order": true,
+		"orphans": true,
+		"widows": true,
+		"zIndex": true,
+		"zoom": true
+	},
+
+	// Add in properties whose names you wish to fix before
+	// setting or getting the value
+	cssProps: {
+		"float": "cssFloat"
+	},
+
+	// Get and set the style property on a DOM Node
+	style: function( elem, name, value, extra ) {
+
+		// Don't set styles on text and comment nodes
+		if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style ) {
+			return;
+		}
+
+		// Make sure that we're working with the right name
+		var ret, type, hooks,
+			origName = jQuery.camelCase( name ),
+			style = elem.style;
+
+		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = vendorPropName( style, origName ) );
+
+		// Gets hook for the prefixed version, then unprefixed version
+		hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
+
+		// Check if we're setting a value
+		if ( value !== undefined ) {
+			type = typeof value;
+
+			// Convert "+=" or "-=" to relative numbers (#7345)
+			if ( type === "string" && (ret = rrelNum.exec( value )) ) {
+				value = ( ret[1] + 1 ) * ret[2] + parseFloat( jQuery.css( elem, name ) );
+				// Fixes bug #9237
+				type = "number";
+			}
+
+			// Make sure that null and NaN values aren't set (#7116)
+			if ( value == null || value !== value ) {
+				return;
+			}
+
+			// If a number, add 'px' to the (except for certain CSS properties)
+			if ( type === "number" && !jQuery.cssNumber[ origName ] ) {
+				value += "px";
+			}
+
+			// Support: IE9-11+
+			// background-* props affect original clone's values
+			if ( !support.clearCloneStyle && value === "" && name.indexOf( "background" ) === 0 ) {
+				style[ name ] = "inherit";
+			}
+
+			// If a hook was provided, use that value, otherwise just set the specified value
+			if ( !hooks || !("set" in hooks) || (value = hooks.set( elem, value, extra )) !== undefined ) {
+				style[ name ] = value;
+			}
+
+		} else {
+			// If a hook was provided get the non-computed value from there
+			if ( hooks && "get" in hooks && (ret = hooks.get( elem, false, extra )) !== undefined ) {
+				return ret;
+			}
+
+			// Otherwise just get the value from the style object
+			return style[ name ];
+		}
+	},
+
+	css: function( elem, name, extra, styles ) {
+		var val, num, hooks,
+			origName = jQuery.camelCase( name );
+
+		// Make sure that we're working with the right name
+		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = vendorPropName( elem.style, origName ) );
+
+		// Try prefixed name followed by the unprefixed name
+		hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
+
+		// If a hook was provided get the computed value from there
+		if ( hooks && "get" in hooks ) {
+			val = hooks.get( elem, true, extra );
+		}
+
+		// Otherwise, if a way to get the computed value exists, use that
+		if ( val === undefined ) {
+			val = curCSS( elem, name, styles );
+		}
+
+		// Convert "normal" to computed value
+		if ( val === "normal" && name in cssNormalTransform ) {
+			val = cssNormalTransform[ name ];
+		}
+
+		// Make numeric if forced or a qualifier was provided and val looks numeric
+		if ( extra === "" || extra ) {
+			num = parseFloat( val );
+			return extra === true || jQuery.isNumeric( num ) ? num || 0 : val;
+		}
+		return val;
+	}
+});
+
+jQuery.each([ "height", "width" ], function( i, name ) {
+	jQuery.cssHooks[ name ] = {
+		get: function( elem, computed, extra ) {
+			if ( computed ) {
+
+				// Certain elements can have dimension info if we invisibly show them
+				// but it must have a current display style that would benefit
+				return rdisplayswap.test( jQuery.css( elem, "display" ) ) && elem.offsetWidth === 0 ?
+					jQuery.swap( elem, cssShow, function() {
+						return getWidthOrHeight( elem, name, extra );
+					}) :
+					getWidthOrHeight( elem, name, extra );
+			}
+		},
+
+		set: function( elem, value, extra ) {
+			var styles = extra && getStyles( elem );
+			return setPositiveNumber( elem, value, extra ?
+				augmentWidthOrHeight(
+					elem,
+					name,
+					extra,
+					jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
+					styles
+				) : 0
+			);
+		}
+	};
+});
+
+// Support: Android 2.3
+jQuery.cssHooks.marginRight = addGetHookIf( support.reliableMarginRight,
+	function( elem, computed ) {
+		if ( computed ) {
+			return jQuery.swap( elem, { "display": "inline-block" },
+				curCSS, [ elem, "marginRight" ] );
+		}
+	}
+);
+
+// These hooks are used by animate to expand properties
+jQuery.each({
+	margin: "",
+	padding: "",
+	border: "Width"
+}, function( prefix, suffix ) {
+	jQuery.cssHooks[ prefix + suffix ] = {
+		expand: function( value ) {
+			var i = 0,
+				expanded = {},
+
+				// Assumes a single number if not a string
+				parts = typeof value === "string" ? value.split(" ") : [ value ];
+
+			for ( ; i < 4; i++ ) {
+				expanded[ prefix + cssExpand[ i ] + suffix ] =
+					parts[ i ] || parts[ i - 2 ] || parts[ 0 ];
+			}
+
+			return expanded;
+		}
+	};
+
+	if ( !rmargin.test( prefix ) ) {
+		jQuery.cssHooks[ prefix + suffix ].set = setPositiveNumber;
+	}
+});
+
+jQuery.fn.extend({
+	css: function( name, value ) {
+		return access( this, function( elem, name, value ) {
+			var styles, len,
+				map = {},
+				i = 0;
+
+			if ( jQuery.isArray( name ) ) {
+				styles = getStyles( elem );
+				len = name.length;
+
+				for ( ; i < len; i++ ) {
+					map[ name[ i ] ] = jQuery.css( elem, name[ i ], false, styles );
+				}
+
+				return map;
+			}
+
+			return value !== undefined ?
+				jQuery.style( elem, name, value ) :
+				jQuery.css( elem, name );
+		}, name, value, arguments.length > 1 );
+	},
+	show: function() {
+		return showHide( this, true );
+	},
+	hide: function() {
+		return showHide( this );
+	},
+	toggle: function( state ) {
+		if ( typeof state === "boolean" ) {
+			return state ? this.show() : this.hide();
+		}
+
+		return this.each(function() {
+			if ( isHidden( this ) ) {
+				jQuery( this ).show();
+			} else {
+				jQuery( this ).hide();
+			}
+		});
+	}
+});
+
+
+function Tween( elem, options, prop, end, easing ) {
+	return new Tween.prototype.init( elem, options, prop, end, easing );
+}
+jQuery.Tween = Tween;
+
+Tween.prototype = {
+	constructor: Tween,
+	init: function( elem, options, prop, end, easing, unit ) {
+		this.elem = elem;
+		this.prop = prop;
+		this.easing = easing || "swing";
+		this.options = options;
+		this.start = this.now = this.cur();
+		this.end = end;
+		this.unit = unit || ( jQuery.cssNumber[ prop ] ? "" : "px" );
+	},
+	cur: function() {
+		var hooks = Tween.propHooks[ this.prop ];
+
+		return hooks && hooks.get ?
+			hooks.get( this ) :
+			Tween.propHooks._default.get( this );
+	},
+	run: function( percent ) {
+		var eased,
+			hooks = Tween.propHooks[ this.prop ];
+
+		if ( this.options.duration ) {
+			this.pos = eased = jQuery.easing[ this.easing ](
+				percent, this.options.duration * percent, 0, 1, this.options.duration
+			);
+		} else {
+			this.pos = eased = percent;
+		}
+		this.now = ( this.end - this.start ) * eased + this.start;
+
+		if ( this.options.step ) {
+			this.options.step.call( this.elem, this.now, this );
+		}
+
+		if ( hooks && hooks.set ) {
+			hooks.set( this );
+		} else {
+			Tween.propHooks._default.set( this );
+		}
+		return this;
+	}
+};
+
+Tween.prototype.init.prototype = Tween.prototype;
+
+Tween.propHooks = {
+	_default: {
+		get: function( tween ) {
+			var result;
+
+			if ( tween.elem[ tween.prop ] != null &&
+				(!tween.elem.style || tween.elem.style[ tween.prop ] == null) ) {
+				return tween.elem[ tween.prop ];
+			}
+
+			// Passing an empty string as a 3rd parameter to .css will automatically
+			// attempt a parseFloat and fallback to a string if the parse fails.
+			// Simple values such as "10px" are parsed to Float;
+			// complex values such as "rotate(1rad)" are returned as-is.
+			result = jQuery.css( tween.elem, tween.prop, "" );
+			// Empty strings, null, undefined and "auto" are converted to 0.
+			return !result || result === "auto" ? 0 : result;
+		},
+		set: function( tween ) {
+			// Use step hook for back compat.
+			// Use cssHook if its there.
+			// Use .style if available and use plain properties where available.
+			if ( jQuery.fx.step[ tween.prop ] ) {
+				jQuery.fx.step[ tween.prop ]( tween );
+			} else if ( tween.elem.style && ( tween.elem.style[ jQuery.cssProps[ tween.prop ] ] != null || jQuery.cssHooks[ tween.prop ] ) ) {
+				jQuery.style( tween.elem, tween.prop, tween.now + tween.unit );
+			} else {
+				tween.elem[ tween.prop ] = tween.now;
+			}
+		}
+	}
+};
+
+// Support: IE9
+// Panic based approach to setting things on disconnected nodes
+Tween.propHooks.scrollTop = Tween.propHooks.scrollLeft = {
+	set: function( tween ) {
+		if ( tween.elem.nodeType && tween.elem.parentNode ) {
+			tween.elem[ tween.prop ] = tween.now;
+		}
+	}
+};
+
+jQuery.easing = {
+	linear: function( p ) {
+		return p;
+	},
+	swing: function( p ) {
+		return 0.5 - Math.cos( p * Math.PI ) / 2;
+	}
+};
+
+jQuery.fx = Tween.prototype.init;
+
+// Back Compat <1.8 extension point
+jQuery.fx.step = {};
+
+
+
+
+var
+	fxNow, timerId,
+	rfxtypes = /^(?:toggle|show|hide)$/,
+	rfxnum = new RegExp( "^(?:([+-])=|)(" + pnum + ")([a-z%]*)$", "i" ),
+	rrun = /queueHooks$/,
+	animationPrefilters = [ defaultPrefilter ],
+	tweeners = {
+		"*": [ function( prop, value ) {
+			var tween = this.createTween( prop, value ),
+				target = tween.cur(),
+				parts = rfxnum.exec( value ),
+				unit = parts && parts[ 3 ] || ( jQuery.cssNumber[ prop ] ? "" : "px" ),
+
+				// Starting value computation is required for potential unit mismatches
+				start = ( jQuery.cssNumber[ prop ] || unit !== "px" && +target ) &&
+					rfxnum.exec( jQuery.css( tween.elem, prop ) ),
+				scale = 1,
+				maxIterations = 20;
+
+			if ( start && start[ 3 ] !== unit ) {
+				// Trust units reported by jQuery.css
+				unit = unit || start[ 3 ];
+
+				// Make sure we update the tween properties later on
+				parts = parts || [];
+
+				// Iteratively approximate from a nonzero starting point
+				start = +target || 1;
+
+				do {
+					// If previous iteration zeroed out, double until we get *something*.
+					// Use string for doubling so we don't accidentally see scale as unchanged below
+					scale = scale || ".5";
+
+					// Adjust and apply
+					start = start / scale;
+					jQuery.style( tween.elem, prop, start + unit );
+
+				// Update scale, tolerating zero or NaN from tween.cur(),
+				// break the loop if scale is unchanged or perfect, or if we've just had enough
+				} while ( scale !== (scale = tween.cur() / target) && scale !== 1 && --maxIterations );
+			}
+
+			// Update tween properties
+			if ( parts ) {
+				start = tween.start = +start || +target || 0;
+				tween.unit = unit;
+				// If a +=/-= token was provided, we're doing a relative animation
+				tween.end = parts[ 1 ] ?
+					start + ( parts[ 1 ] + 1 ) * parts[ 2 ] :
+					+parts[ 2 ];
+			}
+
+			return tween;
+		} ]
+	};
+
+// Animations created synchronously will run synchronously
+function createFxNow() {
+	setTimeout(function() {
+		fxNow = undefined;
+	});
+	return ( fxNow = jQuery.now() );
+}
+
+// Generate parameters to create a standard animation
+function genFx( type, includeWidth ) {
+	var which,
+		i = 0,
+		attrs = { height: type };
+
+	// If we include width, step value is 1 to do all cssExpand values,
+	// otherwise step value is 2 to skip over Left and Right
+	includeWidth = includeWidth ? 1 : 0;
+	for ( ; i < 4 ; i += 2 - includeWidth ) {
+		which = cssExpand[ i ];
+		attrs[ "margin" + which ] = attrs[ "padding" + which ] = type;
+	}
+
+	if ( includeWidth ) {
+		attrs.opacity = attrs.width = type;
+	}
+
+	return attrs;
+}
+
+function createTween( value, prop, animation ) {
+	var tween,
+		collection = ( tweeners[ prop ] || [] ).concat( tweeners[ "*" ] ),
+		index = 0,
+		length = collection.length;
+	for ( ; index < length; index++ ) {
+		if ( (tween = collection[ index ].call( animation, prop, value )) ) {
+
+			// We're done with this property
+			return tween;
+		}
+	}
+}
+
+function defaultPrefilter( elem, props, opts ) {
+	/* jshint validthis: true */
+	var prop, value, toggle, tween, hooks, oldfire, display, checkDisplay,
+		anim = this,
+		orig = {},
+		style = elem.style,
+		hidden = elem.nodeType && isHidden( elem ),
+		dataShow = data_priv.get( elem, "fxshow" );
+
+	// Handle queue: false promises
+	if ( !opts.queue ) {
+		hooks = jQuery._queueHooks( elem, "fx" );
+		if ( hooks.unqueued == null ) {
+			hooks.unqueued = 0;
+			oldfire = hooks.empty.fire;
+			hooks.empty.fire = function() {
+				if ( !hooks.unqueued ) {
+					oldfire();
+				}
+			};
+		}
+		hooks.unqueued++;
+
+		anim.always(function() {
+			// Ensure the complete handler is called before this completes
+			anim.always(function() {
+				hooks.unqueued--;
+				if ( !jQuery.queue( elem, "fx" ).length ) {
+					hooks.empty.fire();
+				}
+			});
+		});
+	}
+
+	// Height/width overflow pass
+	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
+		// Make sure that nothing sneaks out
+		// Record all 3 overflow attributes because IE9-10 do not
+		// change the overflow attribute when overflowX and
+		// overflowY are set to the same value
+		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
+
+		// Set display property to inline-block for height/width
+		// animations on inline elements that are having width/height animated
+		display = jQuery.css( elem, "display" );
+
+		// Test default display if display is currently "none"
+		checkDisplay = display === "none" ?
+			data_priv.get( elem, "olddisplay" ) || defaultDisplay( elem.nodeName ) : display;
+
+		if ( checkDisplay === "inline" && jQuery.css( elem, "float" ) === "none" ) {
+			style.display = "inline-block";
+		}
+	}
+
+	if ( opts.overflow ) {
+		style.overflow = "hidden";
+		anim.always(function() {
+			style.overflow = opts.overflow[ 0 ];
+			style.overflowX = opts.overflow[ 1 ];
+			style.overflowY = opts.overflow[ 2 ];
+		});
+	}
+
+	// show/hide pass
+	for ( prop in props ) {
+		value = props[ prop ];
+		if ( rfxtypes.exec( value ) ) {
+			delete props[ prop ];
+			toggle = toggle || value === "toggle";
+			if ( value === ( hidden ? "hide" : "show" ) ) {
+
+				// If there is dataShow left over from a stopped hide or show and we are going to proceed with show, we should pretend to be hidden
+				if ( value === "show" && dataShow && dataShow[ prop ] !== undefined ) {
+					hidden = true;
+				} else {
+					continue;
+				}
+			}
+			orig[ prop ] = dataShow && dataShow[ prop ] || jQuery.style( elem, prop );
+
+		// Any non-fx value stops us from restoring the original display value
+		} else {
+			display = undefined;
+		}
+	}
+
+	if ( !jQuery.isEmptyObject( orig ) ) {
+		if ( dataShow ) {
+			if ( "hidden" in dataShow ) {
+				hidden = dataShow.hidden;
+			}
+		} else {
+			dataShow = data_priv.access( elem, "fxshow", {} );
+		}
+
+		// Store state if its toggle - enables .stop().toggle() to "reverse"
+		if ( toggle ) {
+			dataShow.hidden = !hidden;
+		}
+		if ( hidden ) {
+			jQuery( elem ).show();
+		} else {
+			anim.done(function() {
+				jQuery( elem ).hide();
+			});
+		}
+		anim.done(function() {
+			var prop;
+
+			data_priv.remove( elem, "fxshow" );
+			for ( prop in orig ) {
+				jQuery.style( elem, prop, orig[ prop ] );
+			}
+		});
+		for ( prop in orig ) {
+			tween = createTween( hidden ? dataShow[ prop ] : 0, prop, anim );
+
+			if ( !( prop in dataShow ) ) {
+				dataShow[ prop ] = tween.start;
+				if ( hidden ) {
+					tween.end = tween.start;
+					tween.start = prop === "width" || prop === "height" ? 1 : 0;
+				}
+			}
+		}
+
+	// If this is a noop like .hide().hide(), restore an overwritten display value
+	} else if ( (display === "none" ? defaultDisplay( elem.nodeName ) : display) === "inline" ) {
+		style.display = display;
+	}
+}
+
+function propFilter( props, specialEasing ) {
+	var index, name, easing, value, hooks;
+
+	// camelCase, specialEasing and expand cssHook pass
+	for ( index in props ) {
+		name = jQuery.camelCase( index );
+		easing = specialEasing[ name ];
+		value = props[ index ];
+		if ( jQuery.isArray( value ) ) {
+			easing = value[ 1 ];
+			value = props[ index ] = value[ 0 ];
+		}
+
+		if ( index !== name ) {
+			props[ name ] = value;
+			delete props[ index ];
+		}
+
+		hooks = jQuery.cssHooks[ name ];
+		if ( hooks && "expand" in hooks ) {
+			value = hooks.expand( value );
+			delete props[ name ];
+
+			// Not quite $.extend, this won't overwrite existing keys.
+			// Reusing 'index' because we have the correct "name"
+			for ( index in value ) {
+				if ( !( index in props ) ) {
+					props[ index ] = value[ index ];
+					specialEasing[ index ] = easing;
+				}
+			}
+		} else {
+			specialEasing[ name ] = easing;
+		}
+	}
+}
+
+function Animation( elem, properties, options ) {
+	var result,
+		stopped,
+		index = 0,
+		length = animationPrefilters.length,
+		deferred = jQuery.Deferred().always( function() {
+			// Don't match elem in the :animated selector
+			delete tick.elem;
+		}),
+		tick = function() {
+			if ( stopped ) {
+				return false;
+			}
+			var currentTime = fxNow || createFxNow(),
+				remaining = Math.max( 0, animation.startTime + animation.duration - currentTime ),
+				// Support: Android 2.3
+				// Archaic crash bug won't allow us to use `1 - ( 0.5 || 0 )` (#12497)
+				temp = remaining / animation.duration || 0,
+				percent = 1 - temp,
+				index = 0,
+				length = animation.tweens.length;
+
+			for ( ; index < length ; index++ ) {
+				animation.tweens[ index ].run( percent );
+			}
+
+			deferred.notifyWith( elem, [ animation, percent, remaining ]);
+
+			if ( percent < 1 && length ) {
+				return remaining;
+			} else {
+				deferred.resolveWith( elem, [ animation ] );
+				return false;
+			}
+		},
+		animation = deferred.promise({
+			elem: elem,
+			props: jQuery.extend( {}, properties ),
+			opts: jQuery.extend( true, { specialEasing: {} }, options ),
+			originalProperties: properties,
+			originalOptions: options,
+			startTime: fxNow || createFxNow(),
+			duration: options.duration,
+			tweens: [],
+			createTween: function( prop, end ) {
+				var tween = jQuery.Tween( elem, animation.opts, prop, end,
+						animation.opts.specialEasing[ prop ] || animation.opts.easing );
+				animation.tweens.push( tween );
+				return tween;
+			},
+			stop: function( gotoEnd ) {
+				var index = 0,
+					// If we are going to the end, we want to run all the tweens
+					// otherwise we skip this part
+					length = gotoEnd ? animation.tweens.length : 0;
+				if ( stopped ) {
+					return this;
+				}
+				stopped = true;
+				for ( ; index < length ; index++ ) {
+					animation.tweens[ index ].run( 1 );
+				}
+
+				// Resolve when we played the last frame; otherwise, reject
+				if ( gotoEnd ) {
+					deferred.resolveWith( elem, [ animation, gotoEnd ] );
+				} else {
+					deferred.rejectWith( elem, [ animation, gotoEnd ] );
+				}
+				return this;
+			}
+		}),
+		props = animation.props;
+
+	propFilter( props, animation.opts.specialEasing );
+
+	for ( ; index < length ; index++ ) {
+		result = animationPrefilters[ index ].call( animation, elem, props, animation.opts );
+		if ( result ) {
+			return result;
+		}
+	}
+
+	jQuery.map( props, createTween, animation );
+
+	if ( jQuery.isFunction( animation.opts.start ) ) {
+		animation.opts.start.call( elem, animation );
+	}
+
+	jQuery.fx.timer(
+		jQuery.extend( tick, {
+			elem: elem,
+			anim: animation,
+			queue: animation.opts.queue
+		})
+	);
+
+	// attach callbacks from options
+	return animation.progress( animation.opts.progress )
+		.done( animation.opts.done, animation.opts.complete )
+		.fail( animation.opts.fail )
+		.always( animation.opts.always );
+}
+
+jQuery.Animation = jQuery.extend( Animation, {
+
+	tweener: function( props, callback ) {
+		if ( jQuery.isFunction( props ) ) {
+			callback = props;
+			props = [ "*" ];
+		} else {
+			props = props.split(" ");
+		}
+
+		var prop,
+			index = 0,
+			length = props.length;
+
+		for ( ; index < length ; index++ ) {
+			prop = props[ index ];
+			tweeners[ prop ] = tweeners[ prop ] || [];
+			tweeners[ prop ].unshift( callback );
+		}
+	},
+
+	prefilter: function( callback, prepend ) {
+		if ( prepend ) {
+			animationPrefilters.unshift( callback );
+		} else {
+			animationPrefilters.push( callback );
+		}
+	}
+});
+
+jQuery.speed = function( speed, easing, fn ) {
+	var opt = speed && typeof speed === "object" ? jQuery.extend( {}, speed ) : {
+		complete: fn || !fn && easing ||
+			jQuery.isFunction( speed ) && speed,
+		duration: speed,
+		easing: fn && easing || easing && !jQuery.isFunction( easing ) && easing
+	};
+
+	opt.duration = jQuery.fx.off ? 0 : typeof opt.duration === "number" ? opt.duration :
+		opt.duration in jQuery.fx.speeds ? jQuery.fx.speeds[ opt.duration ] : jQuery.fx.speeds._default;
+
+	// Normalize opt.queue - true/undefined/null -> "fx"
+	if ( opt.queue == null || opt.queue === true ) {
+		opt.queue = "fx";
+	}
+
+	// Queueing
+	opt.old = opt.complete;
+
+	opt.complete = function() {
+		if ( jQuery.isFunction( opt.old ) ) {
+			opt.old.call( this );
+		}
+
+		if ( opt.queue ) {
+			jQuery.dequeue( this, opt.queue );
+		}
+	};
+
+	return opt;
+};
+
+jQuery.fn.extend({
+	fadeTo: function( speed, to, easing, callback ) {
+
+		// Show any hidden elements after setting opacity to 0
+		return this.filter( isHidden ).css( "opacity", 0 ).show()
+
+			// Animate to the value specified
+			.end().animate({ opacity: to }, speed, easing, callback );
+	},
+	animate: function( prop, speed, easing, callback ) {
+		var empty = jQuery.isEmptyObject( prop ),
+			optall = jQuery.speed( speed, easing, callback ),
+			doAnimation = function() {
+				// Operate on a copy of prop so per-property easing won't be lost
+				var anim = Animation( this, jQuery.extend( {}, prop ), optall );
+
+				// Empty animations, or finishing resolves immediately
+				if ( empty || data_priv.get( this, "finish" ) ) {
+					anim.stop( true );
+				}
+			};
+			doAnimation.finish = doAnimation;
+
+		return empty || optall.queue === false ?
+			this.each( doAnimation ) :
+			this.queue( optall.queue, doAnimation );
+	},
+	stop: function( type, clearQueue, gotoEnd ) {
+		var stopQueue = function( hooks ) {
+			var stop = hooks.stop;
+			delete hooks.stop;
+			stop( gotoEnd );
+		};
+
+		if ( typeof type !== "string" ) {
+			gotoEnd = clearQueue;
+			clearQueue = type;
+			type = undefined;
+		}
+		if ( clearQueue && type !== false ) {
+			this.queue( type || "fx", [] );
+		}
+
+		return this.each(function() {
+			var dequeue = true,
+				index = type != null && type + "queueHooks",
+				timers = jQuery.timers,
+				data = data_priv.get( this );
+
+			if ( index ) {
+				if ( data[ index ] && data[ index ].stop ) {
+					stopQueue( data[ index ] );
+				}
+			} else {
+				for ( index in data ) {
+					if ( data[ index ] && data[ index ].stop && rrun.test( index ) ) {
+						stopQueue( data[ index ] );
+					}
+				}
+			}
+
+			for ( index = timers.length; index--; ) {
+				if ( timers[ index ].elem === this && (type == null || timers[ index ].queue === type) ) {
+					timers[ index ].anim.stop( gotoEnd );
+					dequeue = false;
+					timers.splice( index, 1 );
+				}
+			}
+
+			// Start the next in the queue if the last step wasn't forced.
+			// Timers currently will call their complete callbacks, which
+			// will dequeue but only if they were gotoEnd.
+			if ( dequeue || !gotoEnd ) {
+				jQuery.dequeue( this, type );
+			}
+		});
+	},
+	finish: function( type ) {
+		if ( type !== false ) {
+			type = type || "fx";
+		}
+		return this.each(function() {
+			var index,
+				data = data_priv.get( this ),
+				queue = data[ type + "queue" ],
+				hooks = data[ type + "queueHooks" ],
+				timers = jQuery.timers,
+				length = queue ? queue.length : 0;
+
+			// Enable finishing flag on private data
+			data.finish = true;
+
+			// Empty the queue first
+			jQuery.queue( this, type, [] );
+
+			if ( hooks && hooks.stop ) {
+				hooks.stop.call( this, true );
+			}
+
+			// Look for any active animations, and finish them
+			for ( index = timers.length; index--; ) {
+				if ( timers[ index ].elem === this && timers[ index ].queue === type ) {
+					timers[ index ].anim.stop( true );
+					timers.splice( index, 1 );
+				}
+			}
+
+			// Look for any animations in the old queue and finish them
+			for ( index = 0; index < length; index++ ) {
+				if ( queue[ index ] && queue[ index ].finish ) {
+					queue[ index ].finish.call( this );
+				}
+			}
+
+			// Turn off finishing flag
+			delete data.finish;
+		});
+	}
+});
+
+jQuery.each([ "toggle", "show", "hide" ], function( i, name ) {
+	var cssFn = jQuery.fn[ name ];
+	jQuery.fn[ name ] = function( speed, easing, callback ) {
+		return speed == null || typeof speed === "boolean" ?
+			cssFn.apply( this, arguments ) :
+			this.animate( genFx( name, true ), speed, easing, callback );
+	};
+});
+
+// Generate shortcuts for custom animations
+jQuery.each({
+	slideDown: genFx("show"),
+	slideUp: genFx("hide"),
+	slideToggle: genFx("toggle"),
+	fadeIn: { opacity: "show" },
+	fadeOut: { opacity: "hide" },
+	fadeToggle: { opacity: "toggle" }
+}, function( name, props ) {
+	jQuery.fn[ name ] = function( speed, easing, callback ) {
+		return this.animate( props, speed, easing, callback );
+	};
+});
+
+jQuery.timers = [];
+jQuery.fx.tick = function() {
+	var timer,
+		i = 0,
+		timers = jQuery.timers;
+
+	fxNow = jQuery.now();
+
+	for ( ; i < timers.length; i++ ) {
+		timer = timers[ i ];
+		// Checks the timer has not already been removed
+		if ( !timer() && timers[ i ] === timer ) {
+			timers.splice( i--, 1 );
+		}
+	}
+
+	if ( !timers.length ) {
+		jQuery.fx.stop();
+	}
+	fxNow = undefined;
+};
+
+jQuery.fx.timer = function( timer ) {
+	jQuery.timers.push( timer );
+	if ( timer() ) {
+		jQuery.fx.start();
+	} else {
+		jQuery.timers.pop();
+	}
+};
+
+jQuery.fx.interval = 13;
+
+jQuery.fx.start = function() {
+	if ( !timerId ) {
+		timerId = setInterval( jQuery.fx.tick, jQuery.fx.interval );
+	}
+};
+
+jQuery.fx.stop = function() {
+	clearInterval( timerId );
+	timerId = null;
+};
+
+jQuery.fx.speeds = {
+	slow: 600,
+	fast: 200,
+	// Default speed
+	_default: 400
+};
+
+
+// Based off of the plugin by Clint Helfers, with permission.
+// http://blindsignals.com/index.php/2009/07/jquery-delay/
+jQuery.fn.delay = function( time, type ) {
+	time = jQuery.fx ? jQuery.fx.speeds[ time ] || time : time;
+	type = type || "fx";
+
+	return this.queue( type, function( next, hooks ) {
+		var timeout = setTimeout( next, time );
+		hooks.stop = function() {
+			clearTimeout( timeout );
+		};
+	});
+};
+
+
+(function() {
+	var input = document.createElement( "input" ),
+		select = document.createElement( "select" ),
+		opt = select.appendChild( document.createElement( "option" ) );
+
+	input.type = "checkbox";
+
+	// Support: iOS<=5.1, Android<=4.2+
+	// Default value for a checkbox should be "on"
+	support.checkOn = input.value !== "";
+
+	// Support: IE<=11+
+	// Must access selectedIndex to make default options select
+	support.optSelected = opt.selected;
+
+	// Support: Android<=2.3
+	// Options inside disabled selects are incorrectly marked as disabled
+	select.disabled = true;
+	support.optDisabled = !opt.disabled;
+
+	// Support: IE<=11+
+	// An input loses its value after becoming a radio
+	input = document.createElement( "input" );
+	input.value = "t";
+	input.type = "radio";
+	support.radioValue = input.value === "t";
+})();
+
+
+var nodeHook, boolHook,
+	attrHandle = jQuery.expr.attrHandle;
+
+jQuery.fn.extend({
+	attr: function( name, value ) {
+		return access( this, jQuery.attr, name, value, arguments.length > 1 );
+	},
+
+	removeAttr: function( name ) {
+		return this.each(function() {
+			jQuery.removeAttr( this, name );
+		});
+	}
+});
+
+jQuery.extend({
+	attr: function( elem, name, value ) {
+		var hooks, ret,
+			nType = elem.nodeType;
+
+		// don't get/set attributes on text, comment and attribute nodes
+		if ( !elem || nType === 3 || nType === 8 || nType === 2 ) {
+			return;
+		}
+
+		// Fallback to prop when attributes are not supported
+		if ( typeof elem.getAttribute === strundefined ) {
+			return jQuery.prop( elem, name, value );
+		}
+
+		// All attributes are lowercase
+		// Grab necessary hook if one is defined
+		if ( nType !== 1 || !jQuery.isXMLDoc( elem ) ) {
+			name = name.toLowerCase();
+			hooks = jQuery.attrHooks[ name ] ||
+				( jQuery.expr.match.bool.test( name ) ? boolHook : nodeHook );
+		}
+
+		if ( value !== undefined ) {
+
+			if ( value === null ) {
+				jQuery.removeAttr( elem, name );
+
+			} else if ( hooks && "set" in hooks && (ret = hooks.set( elem, value, name )) !== undefined ) {
+				return ret;
+
+			} else {
+				elem.setAttribute( name, value + "" );
+				return value;
+			}
+
+		} else if ( hooks && "get" in hooks && (ret = hooks.get( elem, name )) !== null ) {
+			return ret;
+
+		} else {
+			ret = jQuery.find.attr( elem, name );
+
+			// Non-existent attributes return null, we normalize to undefined
+			return ret == null ?
+				undefined :
+				ret;
+		}
+	},
+
+	removeAttr: function( elem, value ) {
+		var name, propName,
+			i = 0,
+			attrNames = value && value.match( rnotwhite );
+
+		if ( attrNames && elem.nodeType === 1 ) {
+			while ( (name = attrNames[i++]) ) {
+				propName = jQuery.propFix[ name ] || name;
+
+				// Boolean attributes get special treatment (#10870)
+				if ( jQuery.expr.match.bool.test( name ) ) {
+					// Set corresponding property to false
+					elem[ propName ] = false;
+				}
+
+				elem.removeAttribute( name );
+			}
+		}
+	},
+
+	attrHooks: {
+		type: {
+			set: function( elem, value ) {
+				if ( !support.radioValue && value === "radio" &&
+					jQuery.nodeName( elem, "input" ) ) {
+					var val = elem.value;
+					elem.setAttribute( "type", value );
+					if ( val ) {
+						elem.value = val;
+					}
+					return value;
+				}
+			}
+		}
+	}
+});
+
+// Hooks for boolean attributes
+boolHook = {
+	set: function( elem, value, name ) {
+		if ( value === false ) {
+			// Remove boolean attributes when set to false
+			jQuery.removeAttr( elem, name );
+		} else {
+			elem.setAttribute( name, name );
+		}
+		return name;
+	}
+};
+jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) {
+	var getter = attrHandle[ name ] || jQuery.find.attr;
+
+	attrHandle[ name ] = function( elem, name, isXML ) {
+		var ret, handle;
+		if ( !isXML ) {
+			// Avoid an infinite loop by temporarily removing this function from the getter
+			handle = attrHandle[ name ];
+			attrHandle[ name ] = ret;
+			ret = getter( elem, name, isXML ) != null ?
+				name.toLowerCase() :
+				null;
+			attrHandle[ name ] = handle;
+		}
+		return ret;
+	};
+});
+
+
+
+
+var rfocusable = /^(?:input|select|textarea|button)$/i;
+
+jQuery.fn.extend({
+	prop: function( name, value ) {
+		return access( this, jQuery.prop, name, value, arguments.length > 1 );
+	},
+
+	removeProp: function( name ) {
+		return this.each(function() {
+			delete this[ jQuery.propFix[ name ] || name ];
+		});
+	}
+});
+
+jQuery.extend({
+	propFix: {
+		"for": "htmlFor",
+		"class": "className"
+	},
+
+	prop: function( elem, name, value ) {
+		var ret, hooks, notxml,
+			nType = elem.nodeType;
+
+		// Don't get/set properties on text, comment and attribute nodes
+		if ( !elem || nType === 3 || nType === 8 || nType === 2 ) {
+			return;
+		}
+
+		notxml = nType !== 1 || !jQuery.isXMLDoc( elem );
+
+		if ( notxml ) {
+			// Fix name and attach hooks
+			name = jQuery.propFix[ name ] || name;
+			hooks = jQuery.propHooks[ name ];
+		}
+
+		if ( value !== undefined ) {
+			return hooks && "set" in hooks && (ret = hooks.set( elem, value, name )) !== undefined ?
+				ret :
+				( elem[ name ] = value );
+
+		} else {
+			return hooks && "get" in hooks && (ret = hooks.get( elem, name )) !== null ?
+				ret :
+				elem[ name ];
+		}
+	},
+
+	propHooks: {
+		tabIndex: {
+			get: function( elem ) {
+				return elem.hasAttribute( "tabindex" ) || rfocusable.test( elem.nodeName ) || elem.href ?
+					elem.tabIndex :
+					-1;
+			}
+		}
+	}
+});
+
+if ( !support.optSelected ) {
+	jQuery.propHooks.selected = {
+		get: function( elem ) {
+			var parent = elem.parentNode;
+			if ( parent && parent.parentNode ) {
+				parent.parentNode.selectedIndex;
+			}
+			return null;
+		}
+	};
+}
+
+jQuery.each([
+	"tabIndex",
+	"readOnly",
+	"maxLength",
+	"cellSpacing",
+	"cellPadding",
+	"rowSpan",
+	"colSpan",
+	"useMap",
+	"frameBorder",
+	"contentEditable"
+], function() {
+	jQuery.propFix[ this.toLowerCase() ] = this;
+});
+
+
+
+
+var rclass = /[\t\r\n\f]/g;
+
+jQuery.fn.extend({
+	addClass: function( value ) {
+		var classes, elem, cur, clazz, j, finalValue,
+			proceed = typeof value === "string" && value,
+			i = 0,
+			len = this.length;
+
+		if ( jQuery.isFunction( value ) ) {
+			return this.each(function( j ) {
+				jQuery( this ).addClass( value.call( this, j, this.className ) );
+			});
+		}
+
+		if ( proceed ) {
+			// The disjunction here is for better compressibility (see removeClass)
+			classes = ( value || "" ).match( rnotwhite ) || [];
+
+			for ( ; i < len; i++ ) {
+				elem = this[ i ];
+				cur = elem.nodeType === 1 && ( elem.className ?
+					( " " + elem.className + " " ).replace( rclass, " " ) :
+					" "
+				);
+
+				if ( cur ) {
+					j = 0;
+					while ( (clazz = classes[j++]) ) {
+						if ( cur.indexOf( " " + clazz + " " ) < 0 ) {
+							cur += clazz + " ";
+						}
+					}
+
+					// only assign if different to avoid unneeded rendering.
+					finalValue = jQuery.trim( cur );
+					if ( elem.className !== finalValue ) {
+						elem.className = finalValue;
+					}
+				}
+			}
+		}
+
+		return this;
+	},
+
+	removeClass: function( value ) {
+		var classes, elem, cur, clazz, j, finalValue,
+			proceed = arguments.length === 0 || typeof value === "string" && value,
+			i = 0,
+			len = this.length;
+
+		if ( jQuery.isFunction( value ) ) {
+			return this.each(function( j ) {
+				jQuery( this ).removeClass( value.call( this, j, this.className ) );
+			});
+		}
+		if ( proceed ) {
+			classes = ( value || "" ).match( rnotwhite ) || [];
+
+			for ( ; i < len; i++ ) {
+				elem = this[ i ];
+				// This expression is here for better compressibility (see addClass)
+				cur = elem.nodeType === 1 && ( elem.className ?
+					( " " + elem.className + " " ).replace( rclass, " " ) :
+					""
+				);
+
+				if ( cur ) {
+					j = 0;
+					while ( (clazz = classes[j++]) ) {
+						// Remove *all* instances
+						while ( cur.indexOf( " " + clazz + " " ) >= 0 ) {
+							cur = cur.replace( " " + clazz + " ", " " );
+						}
+					}
+
+					// Only assign if different to avoid unneeded rendering.
+					finalValue = value ? jQuery.trim( cur ) : "";
+					if ( elem.className !== finalValue ) {
+						elem.className = finalValue;
+					}
+				}
+			}
+		}
+
+		return this;
+	},
+
+	toggleClass: function( value, stateVal ) {
+		var type = typeof value;
+
+		if ( typeof stateVal === "boolean" && type === "string" ) {
+			return stateVal ? this.addClass( value ) : this.removeClass( value );
+		}
+
+		if ( jQuery.isFunction( value ) ) {
+			return this.each(function( i ) {
+				jQuery( this ).toggleClass( value.call(this, i, this.className, stateVal), stateVal );
+			});
+		}
+
+		return this.each(function() {
+			if ( type === "string" ) {
+				// Toggle individual class names
+				var className,
+					i = 0,
+					self = jQuery( this ),
+					classNames = value.match( rnotwhite ) || [];
+
+				while ( (className = classNames[ i++ ]) ) {
+					// Check each className given, space separated list
+					if ( self.hasClass( className ) ) {
+						self.removeClass( className );
+					} else {
+						self.addClass( className );
+					}
+				}
+
+			// Toggle whole class name
+			} else if ( type === strundefined || type === "boolean" ) {
+				if ( this.className ) {
+					// store className if set
+					data_priv.set( this, "__className__", this.className );
+				}
+
+				// If the element has a class name or if we're passed `false`,
+				// then remove the whole classname (if there was one, the above saved it).
+				// Otherwise bring back whatever was previously saved (if anything),
+				// falling back to the empty string if nothing was stored.
+				this.className = this.className || value === false ? "" : data_priv.get( this, "__className__" ) || "";
+			}
+		});
+	},
+
+	hasClass: function( selector ) {
+		var className = " " + selector + " ",
+			i = 0,
+			l = this.length;
+		for ( ; i < l; i++ ) {
+			if ( this[i].nodeType === 1 && (" " + this[i].className + " ").replace(rclass, " ").indexOf( className ) >= 0 ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+});
+
+
+
+
+var rreturn = /\r/g;
+
+jQuery.fn.extend({
+	val: function( value ) {
+		var hooks, ret, isFunction,
+			elem = this[0];
+
+		if ( !arguments.length ) {
+			if ( elem ) {
+				hooks = jQuery.valHooks[ elem.type ] || jQuery.valHooks[ elem.nodeName.toLowerCase() ];
+
+				if ( hooks && "get" in hooks && (ret = hooks.get( elem, "value" )) !== undefined ) {
+					return ret;
+				}
+
+				ret = elem.value;
+
+				return typeof ret === "string" ?
+					// Handle most common string cases
+					ret.replace(rreturn, "") :
+					// Handle cases where value is null/undef or number
+					ret == null ? "" : ret;
+			}
+
+			return;
+		}
+
+		isFunction = jQuery.isFunction( value );
+
+		return this.each(function( i ) {
+			var val;
+
+			if ( this.nodeType !== 1 ) {
+				return;
+			}
+
+			if ( isFunction ) {
+				val = value.call( this, i, jQuery( this ).val() );
+			} else {
+				val = value;
+			}
+
+			// Treat null/undefined as ""; convert numbers to string
+			if ( val == null ) {
+				val = "";
+
+			} else if ( typeof val === "number" ) {
+				val += "";
+
+			} else if ( jQuery.isArray( val ) ) {
+				val = jQuery.map( val, function( value ) {
+					return value == null ? "" : value + "";
+				});
+			}
+
+			hooks = jQuery.valHooks[ this.type ] || jQuery.valHooks[ this.nodeName.toLowerCase() ];
+
+			// If set returns undefined, fall back to normal setting
+			if ( !hooks || !("set" in hooks) || hooks.set( this, val, "value" ) === undefined ) {
+				this.value = val;
+			}
+		});
+	}
+});
+
+jQuery.extend({
+	valHooks: {
+		option: {
+			get: function( elem ) {
+				var val = jQuery.find.attr( elem, "value" );
+				return val != null ?
+					val :
+					// Support: IE10-11+
+					// option.text throws exceptions (#14686, #14858)
+					jQuery.trim( jQuery.text( elem ) );
+			}
+		},
+		select: {
+			get: function( elem ) {
+				var value, option,
+					options = elem.options,
+					index = elem.selectedIndex,
+					one = elem.type === "select-one" || index < 0,
+					values = one ? null : [],
+					max = one ? index + 1 : options.length,
+					i = index < 0 ?
+						max :
+						one ? index : 0;
+
+				// Loop through all the selected options
+				for ( ; i < max; i++ ) {
+					option = options[ i ];
+
+					// IE6-9 doesn't update selected after form reset (#2551)
+					if ( ( option.selected || i === index ) &&
+							// Don't return options that are disabled or in a disabled optgroup
+							( support.optDisabled ? !option.disabled : option.getAttribute( "disabled" ) === null ) &&
+							( !option.parentNode.disabled || !jQuery.nodeName( option.parentNode, "optgroup" ) ) ) {
+
+						// Get the specific value for the option
+						value = jQuery( option ).val();
+
+						// We don't need an array for one selects
+						if ( one ) {
+							return value;
+						}
+
+						// Multi-Selects return an array
+						values.push( value );
+					}
+				}
+
+				return values;
+			},
+
+			set: function( elem, value ) {
+				var optionSet, option,
+					options = elem.options,
+					values = jQuery.makeArray( value ),
+					i = options.length;
+
+				while ( i-- ) {
+					option = options[ i ];
+					if ( (option.selected = jQuery.inArray( option.value, values ) >= 0) ) {
+						optionSet = true;
+					}
+				}
+
+				// Force browsers to behave consistently when non-matching value is set
+				if ( !optionSet ) {
+					elem.selectedIndex = -1;
+				}
+				return values;
+			}
+		}
+	}
+});
+
+// Radios and checkboxes getter/setter
+jQuery.each([ "radio", "checkbox" ], function() {
+	jQuery.valHooks[ this ] = {
+		set: function( elem, value ) {
+			if ( jQuery.isArray( value ) ) {
+				return ( elem.checked = jQuery.inArray( jQuery(elem).val(), value ) >= 0 );
+			}
+		}
+	};
+	if ( !support.checkOn ) {
+		jQuery.valHooks[ this ].get = function( elem ) {
+			return elem.getAttribute("value") === null ? "on" : elem.value;
+		};
+	}
+});
+
+
+
+
+// Return jQuery for attributes-only inclusion
+
+
+jQuery.each( ("blur focus focusin focusout load resize scroll unload click dblclick " +
+	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
+	"change select submit keydown keypress keyup error contextmenu").split(" "), function( i, name ) {
+
+	// Handle event binding
+	jQuery.fn[ name ] = function( data, fn ) {
+		return arguments.length > 0 ?
+			this.on( name, null, data, fn ) :
+			this.trigger( name );
+	};
+});
+
+jQuery.fn.extend({
+	hover: function( fnOver, fnOut ) {
+		return this.mouseenter( fnOver ).mouseleave( fnOut || fnOver );
+	},
+
+	bind: function( types, data, fn ) {
+		return this.on( types, null, data, fn );
+	},
+	unbind: function( types, fn ) {
+		return this.off( types, null, fn );
+	},
+
+	delegate: function( selector, types, data, fn ) {
+		return this.on( types, selector, data, fn );
+	},
+	undelegate: function( selector, types, fn ) {
+		// ( namespace ) or ( selector, types [, fn] )
+		return arguments.length === 1 ? this.off( selector, "**" ) : this.off( types, selector || "**", fn );
+	}
+});
+
+
+var nonce = jQuery.now();
+
+var rquery = (/\?/);
+
+
+
+// Support: Android 2.3
+// Workaround failure to string-cast null input
+jQuery.parseJSON = function( data ) {
+	return JSON.parse( data + "" );
+};
+
+
+// Cross-browser xml parsing
+jQuery.parseXML = function( data ) {
+	var xml, tmp;
+	if ( !data || typeof data !== "string" ) {
+		return null;
+	}
+
+	// Support: IE9
+	try {
+		tmp = new DOMParser();
+		xml = tmp.parseFromString( data, "text/xml" );
+	} catch ( e ) {
+		xml = undefined;
+	}
+
+	if ( !xml || xml.getElementsByTagName( "parsererror" ).length ) {
+		jQuery.error( "Invalid XML: " + data );
+	}
+	return xml;
+};
+
+
+var
+	rhash = /#.*$/,
+	rts = /([?&])_=[^&]*/,
+	rheaders = /^(.*?):[ \t]*([^\r\n]*)$/mg,
+	// #7653, #8125, #8152: local protocol detection
+	rlocalProtocol = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
+	rnoContent = /^(?:GET|HEAD)$/,
+	rprotocol = /^\/\//,
+	rurl = /^([\w.+-]+:)(?:\/\/(?:[^\/?#]*@|)([^\/?#:]*)(?::(\d+)|)|)/,
+
+	/* Prefilters
+	 * 1) They are useful to introduce custom dataTypes (see ajax/jsonp.js for an example)
+	 * 2) These are called:
+	 *    - BEFORE asking for a transport
+	 *    - AFTER param serialization (s.data is a string if s.processData is true)
+	 * 3) key is the dataType
+	 * 4) the catchall symbol "*" can be used
+	 * 5) execution will start with transport dataType and THEN continue down to "*" if needed
+	 */
+	prefilters = {},
+
+	/* Transports bindings
+	 * 1) key is the dataType
+	 * 2) the catchall symbol "*" can be used
+	 * 3) selection will start with transport dataType and THEN go to "*" if needed
+	 */
+	transports = {},
+
+	// Avoid comment-prolog char sequence (#10098); must appease lint and evade compression
+	allTypes = "*/".concat( "*" ),
+
+	// Document location
+	ajaxLocation = window.location.href,
+
+	// Segment location into parts
+	ajaxLocParts = rurl.exec( ajaxLocation.toLowerCase() ) || [];
+
+// Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport
+function addToPrefiltersOrTransports( structure ) {
+
+	// dataTypeExpression is optional and defaults to "*"
+	return function( dataTypeExpression, func ) {
+
+		if ( typeof dataTypeExpression !== "string" ) {
+			func = dataTypeExpression;
+			dataTypeExpression = "*";
+		}
+
+		var dataType,
+			i = 0,
+			dataTypes = dataTypeExpression.toLowerCase().match( rnotwhite ) || [];
+
+		if ( jQuery.isFunction( func ) ) {
+			// For each dataType in the dataTypeExpression
+			while ( (dataType = dataTypes[i++]) ) {
+				// Prepend if requested
+				if ( dataType[0] === "+" ) {
+					dataType = dataType.slice( 1 ) || "*";
+					(structure[ dataType ] = structure[ dataType ] || []).unshift( func );
+
+				// Otherwise append
+				} else {
+					(structure[ dataType ] = structure[ dataType ] || []).push( func );
+				}
+			}
+		}
+	};
+}
+
+// Base inspection function for prefilters and transports
+function inspectPrefiltersOrTransports( structure, options, originalOptions, jqXHR ) {
+
+	var inspected = {},
+		seekingTransport = ( structure === transports );
+
+	function inspect( dataType ) {
+		var selected;
+		inspected[ dataType ] = true;
+		jQuery.each( structure[ dataType ] || [], function( _, prefilterOrFactory ) {
+			var dataTypeOrTransport = prefilterOrFactory( options, originalOptions, jqXHR );
+			if ( typeof dataTypeOrTransport === "string" && !seekingTransport && !inspected[ dataTypeOrTransport ] ) {
+				options.dataTypes.unshift( dataTypeOrTransport );
+				inspect( dataTypeOrTransport );
+				return false;
+			} else if ( seekingTransport ) {
+				return !( selected = dataTypeOrTransport );
+			}
+		});
+		return selected;
+	}
+
+	return inspect( options.dataTypes[ 0 ] ) || !inspected[ "*" ] && inspect( "*" );
+}
+
+// A special extend for ajax options
+// that takes "flat" options (not to be deep extended)
+// Fixes #9887
+function ajaxExtend( target, src ) {
+	var key, deep,
+		flatOptions = jQuery.ajaxSettings.flatOptions || {};
+
+	for ( key in src ) {
+		if ( src[ key ] !== undefined ) {
+			( flatOptions[ key ] ? target : ( deep || (deep = {}) ) )[ key ] = src[ key ];
+		}
+	}
+	if ( deep ) {
+		jQuery.extend( true, target, deep );
+	}
+
+	return target;
+}
+
+/* Handles responses to an ajax request:
+ * - finds the right dataType (mediates between content-type and expected dataType)
+ * - returns the corresponding response
+ */
+function ajaxHandleResponses( s, jqXHR, responses ) {
+
+	var ct, type, finalDataType, firstDataType,
+		contents = s.contents,
+		dataTypes = s.dataTypes;
+
+	// Remove auto dataType and get content-type in the process
+	while ( dataTypes[ 0 ] === "*" ) {
+		dataTypes.shift();
+		if ( ct === undefined ) {
+			ct = s.mimeType || jqXHR.getResponseHeader("Content-Type");
+		}
+	}
+
+	// Check if we're dealing with a known content-type
+	if ( ct ) {
+		for ( type in contents ) {
+			if ( contents[ type ] && contents[ type ].test( ct ) ) {
+				dataTypes.unshift( type );
+				break;
+			}
+		}
+	}
+
+	// Check to see if we have a response for the expected dataType
+	if ( dataTypes[ 0 ] in responses ) {
+		finalDataType = dataTypes[ 0 ];
+	} else {
+		// Try convertible dataTypes
+		for ( type in responses ) {
+			if ( !dataTypes[ 0 ] || s.converters[ type + " " + dataTypes[0] ] ) {
+				finalDataType = type;
+				break;
+			}
+			if ( !firstDataType ) {
+				firstDataType = type;
+			}
+		}
+		// Or just use first one
+		finalDataType = finalDataType || firstDataType;
+	}
+
+	// If we found a dataType
+	// We add the dataType to the list if needed
+	// and return the corresponding response
+	if ( finalDataType ) {
+		if ( finalDataType !== dataTypes[ 0 ] ) {
+			dataTypes.unshift( finalDataType );
+		}
+		return responses[ finalDataType ];
+	}
+}
+
+/* Chain conversions given the request and the original response
+ * Also sets the responseXXX fields on the jqXHR instance
+ */
+function ajaxConvert( s, response, jqXHR, isSuccess ) {
+	var conv2, current, conv, tmp, prev,
+		converters = {},
+		// Work with a copy of dataTypes in case we need to modify it for conversion
+		dataTypes = s.dataTypes.slice();
+
+	// Create converters map with lowercased keys
+	if ( dataTypes[ 1 ] ) {
+		for ( conv in s.converters ) {
+			converters[ conv.toLowerCase() ] = s.converters[ conv ];
+		}
+	}
+
+	current = dataTypes.shift();
+
+	// Convert to each sequential dataType
+	while ( current ) {
+
+		if ( s.responseFields[ current ] ) {
+			jqXHR[ s.responseFields[ current ] ] = response;
+		}
+
+		// Apply the dataFilter if provided
+		if ( !prev && isSuccess && s.dataFilter ) {
+			response = s.dataFilter( response, s.dataType );
+		}
+
+		prev = current;
+		current = dataTypes.shift();
+
+		if ( current ) {
+
+		// There's only work to do if current dataType is non-auto
+			if ( current === "*" ) {
+
+				current = prev;
+
+			// Convert response if prev dataType is non-auto and differs from current
+			} else if ( prev !== "*" && prev !== current ) {
+
+				// Seek a direct converter
+				conv = converters[ prev + " " + current ] || converters[ "* " + current ];
+
+				// If none found, seek a pair
+				if ( !conv ) {
+					for ( conv2 in converters ) {
+
+						// If conv2 outputs current
+						tmp = conv2.split( " " );
+						if ( tmp[ 1 ] === current ) {
+
+							// If prev can be converted to accepted input
+							conv = converters[ prev + " " + tmp[ 0 ] ] ||
+								converters[ "* " + tmp[ 0 ] ];
+							if ( conv ) {
+								// Condense equivalence converters
+								if ( conv === true ) {
+									conv = converters[ conv2 ];
+
+								// Otherwise, insert the intermediate dataType
+								} else if ( converters[ conv2 ] !== true ) {
+									current = tmp[ 0 ];
+									dataTypes.unshift( tmp[ 1 ] );
+								}
+								break;
+							}
+						}
+					}
+				}
+
+				// Apply converter (if not an equivalence)
+				if ( conv !== true ) {
+
+					// Unless errors are allowed to bubble, catch and return them
+					if ( conv && s[ "throws" ] ) {
+						response = conv( response );
+					} else {
+						try {
+							response = conv( response );
+						} catch ( e ) {
+							return { state: "parsererror", error: conv ? e : "No conversion from " + prev + " to " + current };
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return { state: "success", data: response };
+}
+
+jQuery.extend({
+
+	// Counter for holding the number of active queries
+	active: 0,
+
+	// Last-Modified header cache for next request
+	lastModified: {},
+	etag: {},
+
+	ajaxSettings: {
+		url: ajaxLocation,
+		type: "GET",
+		isLocal: rlocalProtocol.test( ajaxLocParts[ 1 ] ),
+		global: true,
+		processData: true,
+		async: true,
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+		/*
+		timeout: 0,
+		data: null,
+		dataType: null,
+		username: null,
+		password: null,
+		cache: null,
+		throws: false,
+		traditional: false,
+		headers: {},
+		*/
+
+		accepts: {
+			"*": allTypes,
+			text: "text/plain",
+			html: "text/html",
+			xml: "application/xml, text/xml",
+			json: "application/json, text/javascript"
+		},
+
+		contents: {
+			xml: /xml/,
+			html: /html/,
+			json: /json/
+		},
+
+		responseFields: {
+			xml: "responseXML",
+			text: "responseText",
+			json: "responseJSON"
+		},
+
+		// Data converters
+		// Keys separate source (or catchall "*") and destination types with a single space
+		converters: {
+
+			// Convert anything to text
+			"* text": String,
+
+			// Text to html (true = no transformation)
+			"text html": true,
+
+			// Evaluate text as a json expression
+			"text json": jQuery.parseJSON,
+
+			// Parse text as xml
+			"text xml": jQuery.parseXML
+		},
+
+		// For options that shouldn't be deep extended:
+		// you can add your own custom options here if
+		// and when you create one that shouldn't be
+		// deep extended (see ajaxExtend)
+		flatOptions: {
+			url: true,
+			context: true
+		}
+	},
+
+	// Creates a full fledged settings object into target
+	// with both ajaxSettings and settings fields.
+	// If target is omitted, writes into ajaxSettings.
+	ajaxSetup: function( target, settings ) {
+		return settings ?
+
+			// Building a settings object
+			ajaxExtend( ajaxExtend( target, jQuery.ajaxSettings ), settings ) :
+
+			// Extending ajaxSettings
+			ajaxExtend( jQuery.ajaxSettings, target );
+	},
+
+	ajaxPrefilter: addToPrefiltersOrTransports( prefilters ),
+	ajaxTransport: addToPrefiltersOrTransports( transports ),
+
+	// Main method
+	ajax: function( url, options ) {
+
+		// If url is an object, simulate pre-1.5 signature
+		if ( typeof url === "object" ) {
+			options = url;
+			url = undefined;
+		}
+
+		// Force options to be an object
+		options = options || {};
+
+		var transport,
+			// URL without anti-cache param
+			cacheURL,
+			// Response headers
+			responseHeadersString,
+			responseHeaders,
+			// timeout handle
+			timeoutTimer,
+			// Cross-domain detection vars
+			parts,
+			// To know if global events are to be dispatched
+			fireGlobals,
+			// Loop variable
+			i,
+			// Create the final options object
+			s = jQuery.ajaxSetup( {}, options ),
+			// Callbacks context
+			callbackContext = s.context || s,
+			// Context for global events is callbackContext if it is a DOM node or jQuery collection
+			globalEventContext = s.context && ( callbackContext.nodeType || callbackContext.jquery ) ?
+				jQuery( callbackContext ) :
+				jQuery.event,
+			// Deferreds
+			deferred = jQuery.Deferred(),
+			completeDeferred = jQuery.Callbacks("once memory"),
+			// Status-dependent callbacks
+			statusCode = s.statusCode || {},
+			// Headers (they are sent all at once)
+			requestHeaders = {},
+			requestHeadersNames = {},
+			// The jqXHR state
+			state = 0,
+			// Default abort message
+			strAbort = "canceled",
+			// Fake xhr
+			jqXHR = {
+				readyState: 0,
+
+				// Builds headers hashtable if needed
+				getResponseHeader: function( key ) {
+					var match;
+					if ( state === 2 ) {
+						if ( !responseHeaders ) {
+							responseHeaders = {};
+							while ( (match = rheaders.exec( responseHeadersString )) ) {
+								responseHeaders[ match[1].toLowerCase() ] = match[ 2 ];
+							}
+						}
+						match = responseHeaders[ key.toLowerCase() ];
+					}
+					return match == null ? null : match;
+				},
+
+				// Raw string
+				getAllResponseHeaders: function() {
+					return state === 2 ? responseHeadersString : null;
+				},
+
+				// Caches the header
+				setRequestHeader: function( name, value ) {
+					var lname = name.toLowerCase();
+					if ( !state ) {
+						name = requestHeadersNames[ lname ] = requestHeadersNames[ lname ] || name;
+						requestHeaders[ name ] = value;
+					}
+					return this;
+				},
+
+				// Overrides response content-type header
+				overrideMimeType: function( type ) {
+					if ( !state ) {
+						s.mimeType = type;
+					}
+					return this;
+				},
+
+				// Status-dependent callbacks
+				statusCode: function( map ) {
+					var code;
+					if ( map ) {
+						if ( state < 2 ) {
+							for ( code in map ) {
+								// Lazy-add the new callback in a way that preserves old ones
+								statusCode[ code ] = [ statusCode[ code ], map[ code ] ];
+							}
+						} else {
+							// Execute the appropriate callbacks
+							jqXHR.always( map[ jqXHR.status ] );
+						}
+					}
+					return this;
+				},
+
+				// Cancel the request
+				abort: function( statusText ) {
+					var finalText = statusText || strAbort;
+					if ( transport ) {
+						transport.abort( finalText );
+					}
+					done( 0, finalText );
+					return this;
+				}
+			};
+
+		// Attach deferreds
+		deferred.promise( jqXHR ).complete = completeDeferred.add;
+		jqXHR.success = jqXHR.done;
+		jqXHR.error = jqXHR.fail;
+
+		// Remove hash character (#7531: and string promotion)
+		// Add protocol if not provided (prefilters might expect it)
+		// Handle falsy url in the settings object (#10093: consistency with old signature)
+		// We also use the url parameter if available
+		s.url = ( ( url || s.url || ajaxLocation ) + "" ).replace( rhash, "" )
+			.replace( rprotocol, ajaxLocParts[ 1 ] + "//" );
+
+		// Alias method option to type as per ticket #12004
+		s.type = options.method || options.type || s.method || s.type;
+
+		// Extract dataTypes list
+		s.dataTypes = jQuery.trim( s.dataType || "*" ).toLowerCase().match( rnotwhite ) || [ "" ];
+
+		// A cross-domain request is in order when we have a protocol:host:port mismatch
+		if ( s.crossDomain == null ) {
+			parts = rurl.exec( s.url.toLowerCase() );
+			s.crossDomain = !!( parts &&
+				( parts[ 1 ] !== ajaxLocParts[ 1 ] || parts[ 2 ] !== ajaxLocParts[ 2 ] ||
+					( parts[ 3 ] || ( parts[ 1 ] === "http:" ? "80" : "443" ) ) !==
+						( ajaxLocParts[ 3 ] || ( ajaxLocParts[ 1 ] === "http:" ? "80" : "443" ) ) )
+			);
+		}
+
+		// Convert data if not already a string
+		if ( s.data && s.processData && typeof s.data !== "string" ) {
+			s.data = jQuery.param( s.data, s.traditional );
+		}
+
+		// Apply prefilters
+		inspectPrefiltersOrTransports( prefilters, s, options, jqXHR );
+
+		// If request was aborted inside a prefilter, stop there
+		if ( state === 2 ) {
+			return jqXHR;
+		}
+
+		// We can fire global events as of now if asked to
+		// Don't fire events if jQuery.event is undefined in an AMD-usage scenario (#15118)
+		fireGlobals = jQuery.event && s.global;
+
+		// Watch for a new set of requests
+		if ( fireGlobals && jQuery.active++ === 0 ) {
+			jQuery.event.trigger("ajaxStart");
+		}
+
+		// Uppercase the type
+		s.type = s.type.toUpperCase();
+
+		// Determine if request has content
+		s.hasContent = !rnoContent.test( s.type );
+
+		// Save the URL in case we're toying with the If-Modified-Since
+		// and/or If-None-Match header later on
+		cacheURL = s.url;
+
+		// More options handling for requests with no content
+		if ( !s.hasContent ) {
+
+			// If data is available, append data to url
+			if ( s.data ) {
+				cacheURL = ( s.url += ( rquery.test( cacheURL ) ? "&" : "?" ) + s.data );
+				// #9682: remove data so that it's not used in an eventual retry
+				delete s.data;
+			}
+
+			// Add anti-cache in url if needed
+			if ( s.cache === false ) {
+				s.url = rts.test( cacheURL ) ?
+
+					// If there is already a '_' parameter, set its value
+					cacheURL.replace( rts, "$1_=" + nonce++ ) :
+
+					// Otherwise add one to the end
+					cacheURL + ( rquery.test( cacheURL ) ? "&" : "?" ) + "_=" + nonce++;
+			}
+		}
+
+		// Set the If-Modified-Since and/or If-None-Match header, if in ifModified mode.
+		if ( s.ifModified ) {
+			if ( jQuery.lastModified[ cacheURL ] ) {
+				jqXHR.setRequestHeader( "If-Modified-Since", jQuery.lastModified[ cacheURL ] );
+			}
+			if ( jQuery.etag[ cacheURL ] ) {
+				jqXHR.setRequestHeader( "If-None-Match", jQuery.etag[ cacheURL ] );
+			}
+		}
+
+		// Set the correct header, if data is being sent
+		if ( s.data && s.hasContent && s.contentType !== false || options.contentType ) {
+			jqXHR.setRequestHeader( "Content-Type", s.contentType );
+		}
+
+		// Set the Accepts header for the server, depending on the dataType
+		jqXHR.setRequestHeader(
+			"Accept",
+			s.dataTypes[ 0 ] && s.accepts[ s.dataTypes[0] ] ?
+				s.accepts[ s.dataTypes[0] ] + ( s.dataTypes[ 0 ] !== "*" ? ", " + allTypes + "; q=0.01" : "" ) :
+				s.accepts[ "*" ]
+		);
+
+		// Check for headers option
+		for ( i in s.headers ) {
+			jqXHR.setRequestHeader( i, s.headers[ i ] );
+		}
+
+		// Allow custom headers/mimetypes and early abort
+		if ( s.beforeSend && ( s.beforeSend.call( callbackContext, jqXHR, s ) === false || state === 2 ) ) {
+			// Abort if not done already and return
+			return jqXHR.abort();
+		}
+
+		// Aborting is no longer a cancellation
+		strAbort = "abort";
+
+		// Install callbacks on deferreds
+		for ( i in { success: 1, error: 1, complete: 1 } ) {
+			jqXHR[ i ]( s[ i ] );
+		}
+
+		// Get transport
+		transport = inspectPrefiltersOrTransports( transports, s, options, jqXHR );
+
+		// If no transport, we auto-abort
+		if ( !transport ) {
+			done( -1, "No Transport" );
+		} else {
+			jqXHR.readyState = 1;
+
+			// Send global event
+			if ( fireGlobals ) {
+				globalEventContext.trigger( "ajaxSend", [ jqXHR, s ] );
+			}
+			// Timeout
+			if ( s.async && s.timeout > 0 ) {
+				timeoutTimer = setTimeout(function() {
+					jqXHR.abort("timeout");
+				}, s.timeout );
+			}
+
+			try {
+				state = 1;
+				transport.send( requestHeaders, done );
+			} catch ( e ) {
+				// Propagate exception as error if not done
+				if ( state < 2 ) {
+					done( -1, e );
+				// Simply rethrow otherwise
+				} else {
+					throw e;
+				}
+			}
+		}
+
+		// Callback for when everything is done
+		function done( status, nativeStatusText, responses, headers ) {
+			var isSuccess, success, error, response, modified,
+				statusText = nativeStatusText;
+
+			// Called once
+			if ( state === 2 ) {
+				return;
+			}
+
+			// State is "done" now
+			state = 2;
+
+			// Clear timeout if it exists
+			if ( timeoutTimer ) {
+				clearTimeout( timeoutTimer );
+			}
+
+			// Dereference transport for early garbage collection
+			// (no matter how long the jqXHR object will be used)
+			transport = undefined;
+
+			// Cache response headers
+			responseHeadersString = headers || "";
+
+			// Set readyState
+			jqXHR.readyState = status > 0 ? 4 : 0;
+
+			// Determine if successful
+			isSuccess = status >= 200 && status < 300 || status === 304;
+
+			// Get response data
+			if ( responses ) {
+				response = ajaxHandleResponses( s, jqXHR, responses );
+			}
+
+			// Convert no matter what (that way responseXXX fields are always set)
+			response = ajaxConvert( s, response, jqXHR, isSuccess );
+
+			// If successful, handle type chaining
+			if ( isSuccess ) {
+
+				// Set the If-Modified-Since and/or If-None-Match header, if in ifModified mode.
+				if ( s.ifModified ) {
+					modified = jqXHR.getResponseHeader("Last-Modified");
+					if ( modified ) {
+						jQuery.lastModified[ cacheURL ] = modified;
+					}
+					modified = jqXHR.getResponseHeader("etag");
+					if ( modified ) {
+						jQuery.etag[ cacheURL ] = modified;
+					}
+				}
+
+				// if no content
+				if ( status === 204 || s.type === "HEAD" ) {
+					statusText = "nocontent";
+
+				// if not modified
+				} else if ( status === 304 ) {
+					statusText = "notmodified";
+
+				// If we have data, let's convert it
+				} else {
+					statusText = response.state;
+					success = response.data;
+					error = response.error;
+					isSuccess = !error;
+				}
+			} else {
+				// Extract error from statusText and normalize for non-aborts
+				error = statusText;
+				if ( status || !statusText ) {
+					statusText = "error";
+					if ( status < 0 ) {
+						status = 0;
+					}
+				}
+			}
+
+			// Set data for the fake xhr object
+			jqXHR.status = status;
+			jqXHR.statusText = ( nativeStatusText || statusText ) + "";
+
+			// Success/Error
+			if ( isSuccess ) {
+				deferred.resolveWith( callbackContext, [ success, statusText, jqXHR ] );
+			} else {
+				deferred.rejectWith( callbackContext, [ jqXHR, statusText, error ] );
+			}
+
+			// Status-dependent callbacks
+			jqXHR.statusCode( statusCode );
+			statusCode = undefined;
+
+			if ( fireGlobals ) {
+				globalEventContext.trigger( isSuccess ? "ajaxSuccess" : "ajaxError",
+					[ jqXHR, s, isSuccess ? success : error ] );
+			}
+
+			// Complete
+			completeDeferred.fireWith( callbackContext, [ jqXHR, statusText ] );
+
+			if ( fireGlobals ) {
+				globalEventContext.trigger( "ajaxComplete", [ jqXHR, s ] );
+				// Handle the global AJAX counter
+				if ( !( --jQuery.active ) ) {
+					jQuery.event.trigger("ajaxStop");
+				}
+			}
+		}
+
+		return jqXHR;
+	},
+
+	getJSON: function( url, data, callback ) {
+		return jQuery.get( url, data, callback, "json" );
+	},
+
+	getScript: function( url, callback ) {
+		return jQuery.get( url, undefined, callback, "script" );
+	}
+});
+
+jQuery.each( [ "get", "post" ], function( i, method ) {
+	jQuery[ method ] = function( url, data, callback, type ) {
+		// Shift arguments if data argument was omitted
+		if ( jQuery.isFunction( data ) ) {
+			type = type || callback;
+			callback = data;
+			data = undefined;
+		}
+
+		return jQuery.ajax({
+			url: url,
+			type: method,
+			dataType: type,
+			data: data,
+			success: callback
+		});
+	};
+});
+
+
+jQuery._evalUrl = function( url ) {
+	return jQuery.ajax({
+		url: url,
+		type: "GET",
+		dataType: "script",
+		async: false,
+		global: false,
+		"throws": true
+	});
+};
+
+
+jQuery.fn.extend({
+	wrapAll: function( html ) {
+		var wrap;
+
+		if ( jQuery.isFunction( html ) ) {
+			return this.each(function( i ) {
+				jQuery( this ).wrapAll( html.call(this, i) );
+			});
+		}
+
+		if ( this[ 0 ] ) {
+
+			// The elements to wrap the target around
+			wrap = jQuery( html, this[ 0 ].ownerDocument ).eq( 0 ).clone( true );
+
+			if ( this[ 0 ].parentNode ) {
+				wrap.insertBefore( this[ 0 ] );
+			}
+
+			wrap.map(function() {
+				var elem = this;
+
+				while ( elem.firstElementChild ) {
+					elem = elem.firstElementChild;
+				}
+
+				return elem;
+			}).append( this );
+		}
+
+		return this;
+	},
+
+	wrapInner: function( html ) {
+		if ( jQuery.isFunction( html ) ) {
+			return this.each(function( i ) {
+				jQuery( this ).wrapInner( html.call(this, i) );
+			});
+		}
+
+		return this.each(function() {
+			var self = jQuery( this ),
+				contents = self.contents();
+
+			if ( contents.length ) {
+				contents.wrapAll( html );
+
+			} else {
+				self.append( html );
+			}
+		});
+	},
+
+	wrap: function( html ) {
+		var isFunction = jQuery.isFunction( html );
+
+		return this.each(function( i ) {
+			jQuery( this ).wrapAll( isFunction ? html.call(this, i) : html );
+		});
+	},
+
+	unwrap: function() {
+		return this.parent().each(function() {
+			if ( !jQuery.nodeName( this, "body" ) ) {
+				jQuery( this ).replaceWith( this.childNodes );
+			}
+		}).end();
+	}
+});
+
+
+jQuery.expr.filters.hidden = function( elem ) {
+	// Support: Opera <= 12.12
+	// Opera reports offsetWidths and offsetHeights less than zero on some elements
+	return elem.offsetWidth <= 0 && elem.offsetHeight <= 0;
+};
+jQuery.expr.filters.visible = function( elem ) {
+	return !jQuery.expr.filters.hidden( elem );
+};
+
+
+
+
+var r20 = /%20/g,
+	rbracket = /\[\]$/,
+	rCRLF = /\r?\n/g,
+	rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i,
+	rsubmittable = /^(?:input|select|textarea|keygen)/i;
+
+function buildParams( prefix, obj, traditional, add ) {
+	var name;
+
+	if ( jQuery.isArray( obj ) ) {
+		// Serialize array item.
+		jQuery.each( obj, function( i, v ) {
+			if ( traditional || rbracket.test( prefix ) ) {
+				// Treat each array item as a scalar.
+				add( prefix, v );
+
+			} else {
+				// Item is non-scalar (array or object), encode its numeric index.
+				buildParams( prefix + "[" + ( typeof v === "object" ? i : "" ) + "]", v, traditional, add );
+			}
+		});
+
+	} else if ( !traditional && jQuery.type( obj ) === "object" ) {
+		// Serialize object item.
+		for ( name in obj ) {
+			buildParams( prefix + "[" + name + "]", obj[ name ], traditional, add );
+		}
+
+	} else {
+		// Serialize scalar item.
+		add( prefix, obj );
+	}
+}
+
+// Serialize an array of form elements or a set of
+// key/values into a query string
+jQuery.param = function( a, traditional ) {
+	var prefix,
+		s = [],
+		add = function( key, value ) {
+			// If value is a function, invoke it and return its value
+			value = jQuery.isFunction( value ) ? value() : ( value == null ? "" : value );
+			s[ s.length ] = encodeURIComponent( key ) + "=" + encodeURIComponent( value );
+		};
+
+	// Set traditional to true for jQuery <= 1.3.2 behavior.
+	if ( traditional === undefined ) {
+		traditional = jQuery.ajaxSettings && jQuery.ajaxSettings.traditional;
+	}
+
+	// If an array was passed in, assume that it is an array of form elements.
+	if ( jQuery.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
+		// Serialize the form elements
+		jQuery.each( a, function() {
+			add( this.name, this.value );
+		});
+
+	} else {
+		// If traditional, encode the "old" way (the way 1.3.2 or older
+		// did it), otherwise encode params recursively.
+		for ( prefix in a ) {
+			buildParams( prefix, a[ prefix ], traditional, add );
+		}
+	}
+
+	// Return the resulting serialization
+	return s.join( "&" ).replace( r20, "+" );
+};
+
+jQuery.fn.extend({
+	serialize: function() {
+		return jQuery.param( this.serializeArray() );
+	},
+	serializeArray: function() {
+		return this.map(function() {
+			// Can add propHook for "elements" to filter or add form elements
+			var elements = jQuery.prop( this, "elements" );
+			return elements ? jQuery.makeArray( elements ) : this;
+		})
+		.filter(function() {
+			var type = this.type;
+
+			// Use .is( ":disabled" ) so that fieldset[disabled] works
+			return this.name && !jQuery( this ).is( ":disabled" ) &&
+				rsubmittable.test( this.nodeName ) && !rsubmitterTypes.test( type ) &&
+				( this.checked || !rcheckableType.test( type ) );
+		})
+		.map(function( i, elem ) {
+			var val = jQuery( this ).val();
+
+			return val == null ?
+				null :
+				jQuery.isArray( val ) ?
+					jQuery.map( val, function( val ) {
+						return { name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
+					}) :
+					{ name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
+		}).get();
+	}
+});
+
+
+jQuery.ajaxSettings.xhr = function() {
+	try {
+		return new XMLHttpRequest();
+	} catch( e ) {}
+};
+
+var xhrId = 0,
+	xhrCallbacks = {},
+	xhrSuccessStatus = {
+		// file protocol always yields status code 0, assume 200
+		0: 200,
+		// Support: IE9
+		// #1450: sometimes IE returns 1223 when it should be 204
+		1223: 204
+	},
+	xhrSupported = jQuery.ajaxSettings.xhr();
+
+// Support: IE9
+// Open requests must be manually aborted on unload (#5280)
+// See https://support.microsoft.com/kb/2856746 for more info
+if ( window.attachEvent ) {
+	window.attachEvent( "onunload", function() {
+		for ( var key in xhrCallbacks ) {
+			xhrCallbacks[ key ]();
+		}
+	});
+}
+
+support.cors = !!xhrSupported && ( "withCredentials" in xhrSupported );
+support.ajax = xhrSupported = !!xhrSupported;
+
+jQuery.ajaxTransport(function( options ) {
+	var callback;
+
+	// Cross domain only allowed if supported through XMLHttpRequest
+	if ( support.cors || xhrSupported && !options.crossDomain ) {
+		return {
+			send: function( headers, complete ) {
+				var i,
+					xhr = options.xhr(),
+					id = ++xhrId;
+
+				xhr.open( options.type, options.url, options.async, options.username, options.password );
+
+				// Apply custom fields if provided
+				if ( options.xhrFields ) {
+					for ( i in options.xhrFields ) {
+						xhr[ i ] = options.xhrFields[ i ];
+					}
+				}
+
+				// Override mime type if needed
+				if ( options.mimeType && xhr.overrideMimeType ) {
+					xhr.overrideMimeType( options.mimeType );
+				}
+
+				// X-Requested-With header
+				// For cross-domain requests, seeing as conditions for a preflight are
+				// akin to a jigsaw puzzle, we simply never set it to be sure.
+				// (it can always be set on a per-request basis or even using ajaxSetup)
+				// For same-domain requests, won't change header if already provided.
+				if ( !options.crossDomain && !headers["X-Requested-With"] ) {
+					headers["X-Requested-With"] = "XMLHttpRequest";
+				}
+
+				// Set headers
+				for ( i in headers ) {
+					xhr.setRequestHeader( i, headers[ i ] );
+				}
+
+				// Callback
+				callback = function( type ) {
+					return function() {
+						if ( callback ) {
+							delete xhrCallbacks[ id ];
+							callback = xhr.onload = xhr.onerror = null;
+
+							if ( type === "abort" ) {
+								xhr.abort();
+							} else if ( type === "error" ) {
+								complete(
+									// file: protocol always yields status 0; see #8605, #14207
+									xhr.status,
+									xhr.statusText
+								);
+							} else {
+								complete(
+									xhrSuccessStatus[ xhr.status ] || xhr.status,
+									xhr.statusText,
+									// Support: IE9
+									// Accessing binary-data responseText throws an exception
+									// (#11426)
+									typeof xhr.responseText === "string" ? {
+										text: xhr.responseText
+									} : undefined,
+									xhr.getAllResponseHeaders()
+								);
+							}
+						}
+					};
+				};
+
+				// Listen to events
+				xhr.onload = callback();
+				xhr.onerror = callback("error");
+
+				// Create the abort callback
+				callback = xhrCallbacks[ id ] = callback("abort");
+
+				try {
+					// Do send the request (this may raise an exception)
+					xhr.send( options.hasContent && options.data || null );
+				} catch ( e ) {
+					// #14683: Only rethrow if this hasn't been notified as an error yet
+					if ( callback ) {
+						throw e;
+					}
+				}
+			},
+
+			abort: function() {
+				if ( callback ) {
+					callback();
+				}
+			}
+		};
+	}
+});
+
+
+
+
+// Install script dataType
+jQuery.ajaxSetup({
+	accepts: {
+		script: "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+	},
+	contents: {
+		script: /(?:java|ecma)script/
+	},
+	converters: {
+		"text script": function( text ) {
+			jQuery.globalEval( text );
+			return text;
+		}
+	}
+});
+
+// Handle cache's special case and crossDomain
+jQuery.ajaxPrefilter( "script", function( s ) {
+	if ( s.cache === undefined ) {
+		s.cache = false;
+	}
+	if ( s.crossDomain ) {
+		s.type = "GET";
+	}
+});
+
+// Bind script tag hack transport
+jQuery.ajaxTransport( "script", function( s ) {
+	// This transport only deals with cross domain requests
+	if ( s.crossDomain ) {
+		var script, callback;
+		return {
+			send: function( _, complete ) {
+				script = jQuery("<script>").prop({
+					async: true,
+					charset: s.scriptCharset,
+					src: s.url
+				}).on(
+					"load error",
+					callback = function( evt ) {
+						script.remove();
+						callback = null;
+						if ( evt ) {
+							complete( evt.type === "error" ? 404 : 200, evt.type );
+						}
+					}
+				);
+				document.head.appendChild( script[ 0 ] );
+			},
+			abort: function() {
+				if ( callback ) {
+					callback();
+				}
+			}
+		};
+	}
+});
+
+
+
+
+var oldCallbacks = [],
+	rjsonp = /(=)\?(?=&|$)|\?\?/;
+
+// Default jsonp settings
+jQuery.ajaxSetup({
+	jsonp: "callback",
+	jsonpCallback: function() {
+		var callback = oldCallbacks.pop() || ( jQuery.expando + "_" + ( nonce++ ) );
+		this[ callback ] = true;
+		return callback;
+	}
+});
+
+// Detect, normalize options and install callbacks for jsonp requests
+jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
+
+	var callbackName, overwritten, responseContainer,
+		jsonProp = s.jsonp !== false && ( rjsonp.test( s.url ) ?
+			"url" :
+			typeof s.data === "string" && !( s.contentType || "" ).indexOf("application/x-www-form-urlencoded") && rjsonp.test( s.data ) && "data"
+		);
+
+	// Handle iff the expected data type is "jsonp" or we have a parameter to set
+	if ( jsonProp || s.dataTypes[ 0 ] === "jsonp" ) {
+
+		// Get callback name, remembering preexisting value associated with it
+		callbackName = s.jsonpCallback = jQuery.isFunction( s.jsonpCallback ) ?
+			s.jsonpCallback() :
+			s.jsonpCallback;
+
+		// Insert callback into url or form data
+		if ( jsonProp ) {
+			s[ jsonProp ] = s[ jsonProp ].replace( rjsonp, "$1" + callbackName );
+		} else if ( s.jsonp !== false ) {
+			s.url += ( rquery.test( s.url ) ? "&" : "?" ) + s.jsonp + "=" + callbackName;
+		}
+
+		// Use data converter to retrieve json after script execution
+		s.converters["script json"] = function() {
+			if ( !responseContainer ) {
+				jQuery.error( callbackName + " was not called" );
+			}
+			return responseContainer[ 0 ];
+		};
+
+		// force json dataType
+		s.dataTypes[ 0 ] = "json";
+
+		// Install callback
+		overwritten = window[ callbackName ];
+		window[ callbackName ] = function() {
+			responseContainer = arguments;
+		};
+
+		// Clean-up function (fires after converters)
+		jqXHR.always(function() {
+			// Restore preexisting value
+			window[ callbackName ] = overwritten;
+
+			// Save back as free
+			if ( s[ callbackName ] ) {
+				// make sure that re-using the options doesn't screw things around
+				s.jsonpCallback = originalSettings.jsonpCallback;
+
+				// save the callback name for future use
+				oldCallbacks.push( callbackName );
+			}
+
+			// Call if it was a function and we have a response
+			if ( responseContainer && jQuery.isFunction( overwritten ) ) {
+				overwritten( responseContainer[ 0 ] );
+			}
+
+			responseContainer = overwritten = undefined;
+		});
+
+		// Delegate to script
+		return "script";
+	}
+});
+
+
+
+
+// data: string of html
+// context (optional): If specified, the fragment will be created in this context, defaults to document
+// keepScripts (optional): If true, will include scripts passed in the html string
+jQuery.parseHTML = function( data, context, keepScripts ) {
+	if ( !data || typeof data !== "string" ) {
+		return null;
+	}
+	if ( typeof context === "boolean" ) {
+		keepScripts = context;
+		context = false;
+	}
+	context = context || document;
+
+	var parsed = rsingleTag.exec( data ),
+		scripts = !keepScripts && [];
+
+	// Single tag
+	if ( parsed ) {
+		return [ context.createElement( parsed[1] ) ];
+	}
+
+	parsed = jQuery.buildFragment( [ data ], context, scripts );
+
+	if ( scripts && scripts.length ) {
+		jQuery( scripts ).remove();
+	}
+
+	return jQuery.merge( [], parsed.childNodes );
+};
+
+
+// Keep a copy of the old load method
+var _load = jQuery.fn.load;
+
+/**
+ * Load a url into a page
+ */
+jQuery.fn.load = function( url, params, callback ) {
+	if ( typeof url !== "string" && _load ) {
+		return _load.apply( this, arguments );
+	}
+
+	var selector, type, response,
+		self = this,
+		off = url.indexOf(" ");
+
+	if ( off >= 0 ) {
+		selector = jQuery.trim( url.slice( off ) );
+		url = url.slice( 0, off );
+	}
+
+	// If it's a function
+	if ( jQuery.isFunction( params ) ) {
+
+		// We assume that it's the callback
+		callback = params;
+		params = undefined;
+
+	// Otherwise, build a param string
+	} else if ( params && typeof params === "object" ) {
+		type = "POST";
+	}
+
+	// If we have elements to modify, make the request
+	if ( self.length > 0 ) {
+		jQuery.ajax({
+			url: url,
+
+			// if "type" variable is undefined, then "GET" method will be used
+			type: type,
+			dataType: "html",
+			data: params
+		}).done(function( responseText ) {
+
+			// Save response for use in complete callback
+			response = arguments;
+
+			self.html( selector ?
+
+				// If a selector was specified, locate the right elements in a dummy div
+				// Exclude scripts to avoid IE 'Permission Denied' errors
+				jQuery("<div>").append( jQuery.parseHTML( responseText ) ).find( selector ) :
+
+				// Otherwise use the full result
+				responseText );
+
+		}).complete( callback && function( jqXHR, status ) {
+			self.each( callback, response || [ jqXHR.responseText, status, jqXHR ] );
+		});
+	}
+
+	return this;
+};
+
+
+
+
+// Attach a bunch of functions for handling common AJAX events
+jQuery.each( [ "ajaxStart", "ajaxStop", "ajaxComplete", "ajaxError", "ajaxSuccess", "ajaxSend" ], function( i, type ) {
+	jQuery.fn[ type ] = function( fn ) {
+		return this.on( type, fn );
+	};
+});
+
+
+
+
+jQuery.expr.filters.animated = function( elem ) {
+	return jQuery.grep(jQuery.timers, function( fn ) {
+		return elem === fn.elem;
+	}).length;
+};
+
+
+
+
+var docElem = window.document.documentElement;
+
+/**
+ * Gets a window from an element
+ */
+function getWindow( elem ) {
+	return jQuery.isWindow( elem ) ? elem : elem.nodeType === 9 && elem.defaultView;
+}
+
+jQuery.offset = {
+	setOffset: function( elem, options, i ) {
+		var curPosition, curLeft, curCSSTop, curTop, curOffset, curCSSLeft, calculatePosition,
+			position = jQuery.css( elem, "position" ),
+			curElem = jQuery( elem ),
+			props = {};
+
+		// Set position first, in-case top/left are set even on static elem
+		if ( position === "static" ) {
+			elem.style.position = "relative";
+		}
+
+		curOffset = curElem.offset();
+		curCSSTop = jQuery.css( elem, "top" );
+		curCSSLeft = jQuery.css( elem, "left" );
+		calculatePosition = ( position === "absolute" || position === "fixed" ) &&
+			( curCSSTop + curCSSLeft ).indexOf("auto") > -1;
+
+		// Need to be able to calculate position if either
+		// top or left is auto and position is either absolute or fixed
+		if ( calculatePosition ) {
+			curPosition = curElem.position();
+			curTop = curPosition.top;
+			curLeft = curPosition.left;
+
+		} else {
+			curTop = parseFloat( curCSSTop ) || 0;
+			curLeft = parseFloat( curCSSLeft ) || 0;
+		}
+
+		if ( jQuery.isFunction( options ) ) {
+			options = options.call( elem, i, curOffset );
+		}
+
+		if ( options.top != null ) {
+			props.top = ( options.top - curOffset.top ) + curTop;
+		}
+		if ( options.left != null ) {
+			props.left = ( options.left - curOffset.left ) + curLeft;
+		}
+
+		if ( "using" in options ) {
+			options.using.call( elem, props );
+
+		} else {
+			curElem.css( props );
+		}
+	}
+};
+
+jQuery.fn.extend({
+	offset: function( options ) {
+		if ( arguments.length ) {
+			return options === undefined ?
+				this :
+				this.each(function( i ) {
+					jQuery.offset.setOffset( this, options, i );
+				});
+		}
+
+		var docElem, win,
+			elem = this[ 0 ],
+			box = { top: 0, left: 0 },
+			doc = elem && elem.ownerDocument;
+
+		if ( !doc ) {
+			return;
+		}
+
+		docElem = doc.documentElement;
+
+		// Make sure it's not a disconnected DOM node
+		if ( !jQuery.contains( docElem, elem ) ) {
+			return box;
+		}
+
+		// Support: BlackBerry 5, iOS 3 (original iPhone)
+		// If we don't have gBCR, just use 0,0 rather than error
+		if ( typeof elem.getBoundingClientRect !== strundefined ) {
+			box = elem.getBoundingClientRect();
+		}
+		win = getWindow( doc );
+		return {
+			top: box.top + win.pageYOffset - docElem.clientTop,
+			left: box.left + win.pageXOffset - docElem.clientLeft
+		};
+	},
+
+	position: function() {
+		if ( !this[ 0 ] ) {
+			return;
+		}
+
+		var offsetParent, offset,
+			elem = this[ 0 ],
+			parentOffset = { top: 0, left: 0 };
+
+		// Fixed elements are offset from window (parentOffset = {top:0, left: 0}, because it is its only offset parent
+		if ( jQuery.css( elem, "position" ) === "fixed" ) {
+			// Assume getBoundingClientRect is there when computed position is fixed
+			offset = elem.getBoundingClientRect();
+
+		} else {
+			// Get *real* offsetParent
+			offsetParent = this.offsetParent();
+
+			// Get correct offsets
+			offset = this.offset();
+			if ( !jQuery.nodeName( offsetParent[ 0 ], "html" ) ) {
+				parentOffset = offsetParent.offset();
+			}
+
+			// Add offsetParent borders
+			parentOffset.top += jQuery.css( offsetParent[ 0 ], "borderTopWidth", true );
+			parentOffset.left += jQuery.css( offsetParent[ 0 ], "borderLeftWidth", true );
+		}
+
+		// Subtract parent offsets and element margins
+		return {
+			top: offset.top - parentOffset.top - jQuery.css( elem, "marginTop", true ),
+			left: offset.left - parentOffset.left - jQuery.css( elem, "marginLeft", true )
+		};
+	},
+
+	offsetParent: function() {
+		return this.map(function() {
+			var offsetParent = this.offsetParent || docElem;
+
+			while ( offsetParent && ( !jQuery.nodeName( offsetParent, "html" ) && jQuery.css( offsetParent, "position" ) === "static" ) ) {
+				offsetParent = offsetParent.offsetParent;
+			}
+
+			return offsetParent || docElem;
+		});
+	}
+});
+
+// Create scrollLeft and scrollTop methods
+jQuery.each( { scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function( method, prop ) {
+	var top = "pageYOffset" === prop;
+
+	jQuery.fn[ method ] = function( val ) {
+		return access( this, function( elem, method, val ) {
+			var win = getWindow( elem );
+
+			if ( val === undefined ) {
+				return win ? win[ prop ] : elem[ method ];
+			}
+
+			if ( win ) {
+				win.scrollTo(
+					!top ? val : window.pageXOffset,
+					top ? val : window.pageYOffset
+				);
+
+			} else {
+				elem[ method ] = val;
+			}
+		}, method, val, arguments.length, null );
+	};
+});
+
+// Support: Safari<7+, Chrome<37+
+// Add the top/left cssHooks using jQuery.fn.position
+// Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
+// Blink bug: https://code.google.com/p/chromium/issues/detail?id=229280
+// getComputedStyle returns percent when specified for top/left/bottom/right;
+// rather than make the css module depend on the offset module, just check for it here
+jQuery.each( [ "top", "left" ], function( i, prop ) {
+	jQuery.cssHooks[ prop ] = addGetHookIf( support.pixelPosition,
+		function( elem, computed ) {
+			if ( computed ) {
+				computed = curCSS( elem, prop );
+				// If curCSS returns percentage, fallback to offset
+				return rnumnonpx.test( computed ) ?
+					jQuery( elem ).position()[ prop ] + "px" :
+					computed;
+			}
+		}
+	);
+});
+
+
+// Create innerHeight, innerWidth, height, width, outerHeight and outerWidth methods
+jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
+	jQuery.each( { padding: "inner" + name, content: type, "": "outer" + name }, function( defaultExtra, funcName ) {
+		// Margin is only for outerHeight, outerWidth
+		jQuery.fn[ funcName ] = function( margin, value ) {
+			var chainable = arguments.length && ( defaultExtra || typeof margin !== "boolean" ),
+				extra = defaultExtra || ( margin === true || value === true ? "margin" : "border" );
+
+			return access( this, function( elem, type, value ) {
+				var doc;
+
+				if ( jQuery.isWindow( elem ) ) {
+					// As of 5/8/2012 this will yield incorrect results for Mobile Safari, but there
+					// isn't a whole lot we can do. See pull request at this URL for discussion:
+					// https://github.com/jquery/jquery/pull/764
+					return elem.document.documentElement[ "client" + name ];
+				}
+
+				// Get document width or height
+				if ( elem.nodeType === 9 ) {
+					doc = elem.documentElement;
+
+					// Either scroll[Width/Height] or offset[Width/Height] or client[Width/Height],
+					// whichever is greatest
+					return Math.max(
+						elem.body[ "scroll" + name ], doc[ "scroll" + name ],
+						elem.body[ "offset" + name ], doc[ "offset" + name ],
+						doc[ "client" + name ]
+					);
+				}
+
+				return value === undefined ?
+					// Get width or height on the element, requesting but not forcing parseFloat
+					jQuery.css( elem, type, extra ) :
+
+					// Set width or height on the element
+					jQuery.style( elem, type, value, extra );
+			}, type, chainable ? margin : undefined, chainable, null );
+		};
+	});
+});
+
+
+// The number of elements contained in the matched element set
+jQuery.fn.size = function() {
+	return this.length;
+};
+
+jQuery.fn.andSelf = jQuery.fn.addBack;
+
+
+
+
+// Register as a named AMD module, since jQuery can be concatenated with other
+// files that may use define, but not via a proper concatenation script that
+// understands anonymous AMD modules. A named AMD is safest and most robust
+// way to register. Lowercase jquery is used because AMD module names are
+// derived from file names, and jQuery is normally delivered in a lowercase
+// file name. Do this after creating the global so that if an AMD module wants
+// to call noConflict to hide this version of jQuery, it will work.
+
+// Note that for maximum portability, libraries that are not jQuery should
+// declare themselves as anonymous modules, and avoid setting a global if an
+// AMD loader is present. jQuery is a special case. For more information, see
+// https://github.com/jrburke/requirejs/wiki/Updating-existing-libraries#wiki-anon
+
+if ( typeof define === "function" && define.amd ) {
+	define( "jquery", [], function() {
+		return jQuery;
+	});
+}
+
+
+
+
+var
+	// Map over jQuery in case of overwrite
+	_jQuery = window.jQuery,
+
+	// Map over the $ in case of overwrite
+	_$ = window.$;
+
+jQuery.noConflict = function( deep ) {
+	if ( window.$ === jQuery ) {
+		window.$ = _$;
+	}
+
+	if ( deep && window.jQuery === jQuery ) {
+		window.jQuery = _jQuery;
+	}
+
+	return jQuery;
+};
+
+// Expose jQuery and $ identifiers, even in AMD
+// (#7102#comment:10, https://github.com/jquery/jquery/pull/557)
+// and CommonJS for browser emulators (#13566)
+if ( typeof noGlobal === strundefined ) {
+	window.jQuery = window.$ = jQuery;
+}
+
+
+
+
+return jQuery;
+
+}));
+
+},{}],229:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AAdjacentWithSameResourceShouldBeCombined = {
+  run: function run(test) {
+
+    function findAdjacent(index, element) {
+      var $element = $(element);
+      // Find all the links
+      var $links = $element.find('a');
+      // Sort them into singletons and coupletons.
+      var $singletons = $();
+      var $coupletons = $();
+
+      $links.each(function (index, link) {
+        var $link = $(link);
+        if ($link.next().is('a')) {
+          $coupletons = $coupletons.add($link);
+        } else {
+          $singletons = $singletons.add($link);
+        }
+      });
+
+      $singletons.each(excludeSingleLinks);
+      $coupletons.each(checkNextLink);
+    }
+
+    function checkNextLink(index, element) {
+      var $element = $(element);
+      var thisHref = element.getAttribute('href');
+      var $nextLink = $element.next();
+      var nextHref = $nextLink[0].getAttribute('href');
+      var status = 'passed';
+      var _case = Case({
+        element: element
+      });
+      if (thisHref === nextHref) {
+        status = 'failed';
+      }
+
+      test.add(_case);
+      _case.set({ status: status });
+    }
+
+    function excludeSingleLinks(index, element) {
+      var _case = Case({ element: element });
+      test.add(_case);
+      _case.set({
+        status: 'inapplicable'
+      });
+    }
+
+    test.get('$scope').each(findAdjacent);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Adjacent links that point to the same location should be merged',
+      nl: 'Voeg naast elkaar gelegen links die naar dezelfde locatie verwijzen samen'
+    },
+    description: {
+      en: 'Because many users of screen-readers use links to navigate the page, providing two links right next to each other that point to the same location can be confusing. Try combining the links.',
+      nl: 'Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Voor hen zijn naast elkaar gelegen links die naar dezelfde locatie verwijzen verwarrend. Probeer de links samen te voegen.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.4': {
+          techniques: ['H2', 'F89']
+        },
+        '2.4.9': {
+          techniques: ['F89']
+        },
+        '4.1.2': {
+          techniques: ['F89']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = AAdjacentWithSameResourceShouldBeCombined;
+
+},{"Case":30}],230:[function(require,module,exports){
+'use strict';
+
+var CleanStringComponent = require('CleanStringComponent');
+var Case = require('Case');
+var AImgAltNotRepetitive = {
+  run: function run(test) {
+    test.get('$scope').find('a img[alt]').each(function () {
+      var _case = test.add(Case({
+        element: this
+      }));
+
+      var alt = CleanStringComponent($(this).attr('alt'));
+      var linkText = CleanStringComponent($(this).closest('a').text());
+
+      if (alt.length > 0 && linkText.indexOf(alt) > -1) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'When an image is in a link, its \"alt\" attribute should not repeat other text in the link',
+      nl: 'Als een link een afbeelding bevat, moet het \"alt\"-attribuut niet dezelfde tekst bevatten als de linktekst'
+    },
+    description: {
+      en: 'Images within a link should not have an alt attribute that simply repeats the text found in the link. This will cause screen readers to simply repeat the text twice.',
+      nl: 'Als een link een afbeelding bevat, moet deze afbeelding een andere tekst in het alt-attribuut hebben dan de tekst in de link. Hiermee voorkom je dat een schermlezer dezelfde tekst twee keer voorleest.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H30']
+        },
+        '2.4.4': {
+          techniques: ['H30']
+        },
+        '2.4.9': {
+          techniques: ['H30']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = AImgAltNotRepetitive;
+
+},{"Case":30,"CleanStringComponent":2}],231:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AInPHasADistinctStyle = {
+  run: function run(test) {
+
+    /**
+     * Checks if an element has a border set
+     * @param element
+     * @returns {boolean}
+     */
+    function hasBorder(element) {
+      return element.outerWidth() - element.innerWidth() > 0 || element.outerHeight() - element.innerHeight() > 0;
+    }
+
+    /**
+     * Test if two elements have a distinct style from it's ancestor
+     * @param  {jQuery node} $elm
+     * @param  {jQuery node} $parent
+     * @return {boolean}
+     */
+    function elmHasDistinctStyle($elm, $parent) {
+      var result = false;
+      var styleProperties = ['font-weight', 'font-style'];
+      var textDecoration = $elm.css('text-decoration');
+
+      if (textDecoration !== 'none' && textDecoration !== $parent.css('text-decoration')) {
+        result = true;
+      }
+
+      if ($elm.css('background-color') !== 'rgba(0, 0, 0, 0)') {
+        styleProperties.push('background');
+      }
+
+      $.each(styleProperties, function (i, styleProp) {
+        if (!result && $elm.css(styleProp) !== $parent.css(styleProp)) {
+          result = true;
+        }
+      });
+
+      return result || hasBorder($elm);
+    }
+
+    function elmHasDistinctPosition($elm) {
+      var isBlock = $elm.css('display') === 'block';
+      var position = $elm.css('position');
+      var isPositioned = position !== 'relative' && position !== 'static';
+      return isBlock || isPositioned;
+    }
+
+    // Ignore links where the p only contains white space, <, >, |, \, / and - chars
+    var allowedPText = /^([\s|-]|>|<|\\|\/|&(gt|lt);)*$/i;
+
+    test.get('$scope').each(function () {
+      var $scope = $(this);
+      var anchors = $scope.find('p a[href]:visible');
+
+      anchors.each(function () {
+        var $this = $(this);
+        var $p = $this.closest('p');
+        var $parent = $this.parent();
+
+        var _case = Case({
+          element: this
+        });
+        test.add(_case);
+
+        var aText = $this.text().trim();
+
+        // Get all text of the p element with all anchors removed
+        var pText = $p.clone().find('a[href]').remove().end().text();
+
+        if (aText === '' || pText.match(allowedPText)) {
+          _case.set('status', 'inapplicable');
+        } else if ($this.css('color') === $p.css('color')) {
+          _case.set('status', 'passed');
+        } else if (elmHasDistinctStyle($this, $p)) {
+          _case.set('status', 'passed');
+        } else if (elmHasDistinctPosition($this)) {
+          _case.set('status', 'passed');
+        } else if ($this.find('img').length > 0) {
+          _case.set('status', 'passed');
+        } else if ($parent.text().trim() === aText && elmHasDistinctStyle($parent, $p)) {
+          _case.set('status', 'passed');
+        } else {
+          _case.set('status', 'failed');
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should be have a distinct style inside a p tag',
+      nl: 'Links moeten een afwijkende stijl hebben binnen een paragraaf'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = AInPHasADistinctStyle;
+
+},{"Case":30}],232:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var RedundantStringsComponent = require('RedundantStringsComponent');
+var ALinkTextDoesNotBeginWithRedundantWord = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var self = this;
+      var $link = $(this);
+      var text = '';
+      var $img = $link.find('img[alt]');
+      if ($img.length) {
+        text = text + $img.eq(0).attr('alt');
+      }
+      text = text + $link.text();
+      text = text.toLowerCase();
+      var _case;
+      // Search the text for redundant words. Break as soon as one is detected.
+      for (var i = 0, il = RedundantStringsComponent.link.length; i < il; ++i) {
+        var phrase = RedundantStringsComponent.link[i];
+        if (text.search(phrase) > -1) {
+          _case = test.add(Case({
+            element: self,
+            status: 'failed'
+          }));
+          break;
+        }
+      }
+      // If the case didn't fail, then it passed.
+      if (!_case) {
+        test.add(Case({
+          element: self,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Link text should not begin with redundant text',
+      nl: 'Laat linkteksten niet beginnen met overbodige tekst'
+    },
+    description: {
+      en: 'Link text should not begin with redundant words or phrases like \"link\".',
+      nl: 'Laat linkteksten niet beginnen met overbodige woorden of woordcombinaties als \"link\" of \"klik hier\".'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.9': {
+          techniques: ['F84']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ALinkTextDoesNotBeginWithRedundantWord;
+
+},{"Case":30,"RedundantStringsComponent":18}],233:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ALinkWithNonText = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (!$(this).is('a:has(img, object, embed)[href]')) {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+      if (!IsUnreadable($(this).text())) {
+        _case.set({
+          status: 'passed'
+        });
+        return;
+      }
+      var unreadable = 0;
+      $(this).find('img, object, embed').each(function () {
+        if ($(this).is('img') && IsUnreadable($(this).attr('alt')) || !$(this).is('img') && IsUnreadable($(this).attr('title'))) {
+          unreadable++;
+        }
+      });
+      if ($(this).find('img, object, embed').length === unreadable) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    title: {
+      en: 'Links with only non-text content should be readable',
+      nl: 'Links zonder tekstuele content moeten leesbaar zijn'
+    },
+    description: {
+      en: 'If a link contains only non-text content like an image, that content must be readable by assistive technology.',
+      nl: 'Als een link alleen maar niet-tekstuele content bevat zoals een afbeelding, moet deze content leesbaar worden gemaakt door middel van daarvoor geschikte technologie.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.4': {
+          techniques: ['H2', 'F89']
+        },
+        '2.4.9': {
+          techniques: ['F89']
+        },
+        '4.1.2': {
+          techniques: ['F89']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ALinkWithNonText;
+
+},{"Case":30,"IsUnreadable":11}],234:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ALinksAreSeparatedByPrintableCharacters = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var _case = test.add(Case({
+        element: this
+      }));
+      // Only test if there's another a tag.
+      if ($(this).next('a').length) {
+        if (IsUnreadable($(this).get(0).nextSibling.wholeText)) {
+          _case.set({
+            status: 'failed'
+          });
+        } else {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Lists of links should be seperated by printable characters',
+      nl: 'Lijsten met links moeten gescheiden worden door afdrukbare tekens'
+    },
+    description: {
+      en: 'If a list of links is provided within the same element, those links should be seperated by a non-linked, printable character. Structures like lists are not included in this.',
+      nl: 'Als een rij met links binnen eenzelfde element staat, moeten de links gescheiden zijn door een niet-gelinkt, afdrukbaar teken. Dit geldt niet voor een gestructureerde lijst.'
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = ALinksAreSeparatedByPrintableCharacters;
+
+},{"Case":30,"IsUnreadable":11}],235:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var NewWindowStringsComponent = require('NewWindowStringsComponent');
+var ALinksDontOpenNewWindow = {
+  run: function run(test) {
+    // Links without a target attribute pass.
+    test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function () {
+      test.add(Case({
+        element: this,
+        status: 'passed'
+      }));
+    });
+    // Links with a target attribute pass if the link text indicates that the
+    // link will open a new window.
+    test.get('$scope').find('a[target=_new], a[target=_blank]').each(function () {
+      var $link = $(this);
+      var passes = false;
+      var i = 0;
+      var text = $link.text() + ' ' + $link.attr('title');
+      var phrase = '';
+      // Test the link text against strings the indicate the link will open
+      // in a new window.
+      do {
+        phrase = NewWindowStringsComponent[i];
+        if (text.search(phrase) > -1) {
+          passes = true;
+        }
+        ++i;
+      } while (!passes && i < NewWindowStringsComponent.length);
+      // Build a Case.
+      if (passes) {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should not open a new window without warning',
+      nl: 'Met links open je geen nieuw scherm zonder melding'
+    },
+    description: {
+      en: 'Links which open a new window using the \"target\" attribute should warn users.',
+      nl: 'Voordat links door middel van het \"target\"-attribuut een nieuw scherm openen moet de gebruiker een melding hiervan krijgen.'
+    },
+    guidelines: {
+      wcag: {
+        '3.2.5': {
+          techniques: ['H83', 'SCR24']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ALinksDontOpenNewWindow;
+
+},{"Case":30,"NewWindowStringsComponent":15}],236:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var SymbolsStringsComponent = require('SymbolsStringsComponent');
+var ALinksNotSeparatedBySymbols = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var $link = $(this);
+      if ($link.next('a').length) {
+        var text = $link.get(0).nextSibling.wholeText;
+        // The string between the links is composed of symbols.
+        if (typeof text === 'string' && SymbolsStringsComponent.indexOf(text.toLowerCase().trim()) !== -1) {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        }
+        // The string between the links is composed of words.
+        else {
+            test.add(Case({
+              element: this,
+              status: 'passed'
+            }));
+          }
+      }
+      // If nothing follows the link, then there is nothing to test.
+      else {
+          test.add(Case({
+            element: this,
+            status: 'inapplicable'
+          }));
+        }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should not be separated by symbols alone',
+      nl: 'Links mogen niet alleen door symbolen gescheidn worden'
+    },
+    description: {
+      en: 'Since symbols are either not read, or can be confusing when using a screen reader, do not separate links with un-readable symbols.',
+      nl: 'Symbolen worden niet voorgelezen of zijn verwarrend bij het gebruik van een schermlezer. Gebruik geen onleesbare symbolen om links van elkaar te scheiden.'
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = ALinksNotSeparatedBySymbols;
+
+},{"Case":30,"SymbolsStringsComponent":24}],237:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ALinksToMultiMediaRequireTranscript = {
+  run: function run(test) {
+    var selector = ['a[href$=".wmv"]', 'a[href$=".mpg"]', 'a[href$=".mov"]', 'a[href$=".ram"]', 'a[href$=".aif"]'].join(', ');
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      // Inapplicable.
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        // cantTell.
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Any links to a multimedia file should also include a link to a transcript',
+      nl: 'Elke link naar een multimediabestand moet ook een link bevatten naar een transcriptie'
+    },
+    description: {
+      en: 'Links to a multimedia file should be followed by a link to a transcript of the file.',
+      nl: 'Links naar een multimediabestand moeten worden gevolgd door een link naar de transcriptie van dit bestand.'
+    },
+    guidelines: {
+      508: ['c'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74']
+        }
+      }
+    },
+    tags: ['link', 'media', 'content']
+  }
+};
+module.exports = ALinksToMultiMediaRequireTranscript;
+
+},{"Case":30}],238:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ALinksToSoundFilesNeedTranscripts = {
+  run: function run(test) {
+
+    var selector = ['a[href$=".wav"]', 'a[href$=".snd"]', 'a[href$=".mp3"]', 'a[href$=".iff"]', 'a[href$=".svx"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".pcm"]', 'a[href$=".aif"]'].join(', ');
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      // Inapplicable.
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        // cantTell.
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Any links to a sound file should also include a link to a transcript',
+      nl: 'Elke link naar een geluidsbestand moet ook een link bevatten naar een transcriptie'
+    },
+    description: {
+      en: 'Links to a sound file should be followed by a link to a transcript of the file.',
+      nl: 'Links naar een geluidsbestand moeten worden gevolgd door een link naar de transcriptie van dit bestand.'
+    },
+    guidelines: {
+      508: ['c'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74']
+        }
+      }
+    },
+    tags: ['link', 'media', 'content']
+  }
+};
+module.exports = ALinksToSoundFilesNeedTranscripts;
+
+},{"Case":30}],239:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AMultimediaTextAlternative = {
+  run: function run(test) {
+
+    var selector = ['a[href$=".aif"]', 'a[href$=".iff"]', 'a[href$=".mov"]', 'a[href$=".mp3"]', 'a[href$=".mpg"]', 'a[href$=".ram"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".snd"]', 'a[href$=".svx"]', 'a[href$=".pcm"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".wav"]', 'a[href$=".wmv"]'].join(', ');
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      // Inapplicable.
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        // cantTell.
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    guidelines: [],
+    tags: ['link', 'media', 'content']
+  }
+};
+module.exports = AMultimediaTextAlternative;
+
+},{"Case":30}],240:[function(require,module,exports){
+'use strict';
+
+var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
+var Case = require('Case');
+var AMustContainText = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+
+      if (!$(this).attr('href') || $(this).css('display') === 'none') {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+
+      if (ContainsReadableTextComponent($(this), true)) {
+        _case.set({
+          status: 'passed'
+        });
+      } else {
+        _case.set({
+          status: 'failed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should contain text',
+      nl: 'Links moeten tekst bevatten'
+    },
+    description: {
+      en: 'Because many users of screen-readers use links to navigate the page, providing links with no text (or with images that have empty \"alt\" attributes and no other readable text) hinders these users.',
+      nl: 'Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Links zonder tekst (of met afbeeldingen die een leeg \"alt\"-attribuut hebben en geen andere leesbare tekst) hinderen deze gebruikers.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H30']
+        },
+        '2.4.4': {
+          techniques: ['H30']
+        },
+        '2.4.9': {
+          techniques: ['H30']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = AMustContainText;
+
+},{"Case":30,"ContainsReadableTextComponent":4}],241:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AMustHaveTitle = {
+  run: function run(test) {
+    this.get('$scope').each(function () {
+      var links = $(this).find('a');
+
+      links.each(function (i, link) {
+        // Has a title attribute and that attribute has a value, then pass.
+        var title = $(link).attr('title');
+        if (typeof title === 'string' && title.length > 0) {
+          test.add(Case({
+            element: this,
+            status: 'passed'
+          }));
+        }
+        // Does not have a title attribute or the attribute does not have a value.
+        else if (typeof title === 'undefined' || !title.length) {
+            test.add(Case({
+              element: this,
+              status: 'failed'
+            }));
+          }
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All links must have a \"title\" attribute',
+      nl: 'Alle links moeten een \"title\"-attribuut hebben'
+    },
+    description: {
+      en: 'Every link must have a \"title\" attribute.',
+      nl: 'Zorg ervoor dat elke link is voorzien van een \"title\"-attribuut.'
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = AMustHaveTitle;
+
+},{"Case":30}],242:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var AMustNotHaveJavascriptHref = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'a[href^="javascript:"]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should not use \"javascript\" in their location',
+      nl: 'Links moeten geen \"javascript\" in hun locatie hebben'
+    },
+    description: {
+      en: 'Anchor (<code>a</code>.  elements may not use the \"javascript\" protocol in their \"href\" attributes.',
+      nl: 'Anchor(<code>a</code>.-elementen mogen geen \"javascript\"protocol in hun \"href\"-attributen hebben staan.'
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = AMustNotHaveJavascriptHref;
+
+},{"Case":30}],243:[function(require,module,exports){
+'use strict';
+
+var CleanStringComponent = require('CleanStringComponent');
+var Case = require('Case');
+var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
+var ASuspiciousLinkText = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (!$(this).attr('href')) {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+      var text = $(this).text();
+      $(this).find('img[alt]').each(function () {
+        text = text + $(this).attr('alt');
+      });
+      if (SuspiciousLinksStringsComponent.indexOf(CleanStringComponent(text)) > -1) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Link text should be useful',
+      nl: 'Linkteksten moeten bruikbaar en betekenisvol zijn'
+    },
+    description: {
+      en: 'Because many users of screen-readers use links to navigate the page, providing links with text that simply read \"click here\" gives no hint of the function of the link.',
+      nl: 'Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Links met de tekst \"klik hier\" zijn voor deze gebruikers niet betekenisvol en niet bruikbaar.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H30']
+        },
+        '2.4.4': {
+          techniques: ['H30']
+        },
+        '2.4.9': {
+          techniques: ['H30']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ASuspiciousLinkText;
+
+},{"Case":30,"CleanStringComponent":2,"SuspiciousLinksStringsComponent":23}],244:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var ATitleDescribesDestination = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'a[title]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The title attribute of all source a (anchor) elements describes the link destination.',
+      nl: 'Het titel-attribuut van alle source a (anchor)-elementen beschrijven de bestemming van de link'
+    },
+    description: {
+      en: 'Every link must have a \"title\" attribute which describes the purpose or destination of the link.',
+      nl: 'Elke link moet een \"title\"-attribuut hebben waarin het doel of de bestemming van de link wordt beschreven.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.9': {
+          techniques: ['H33', 'H25']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ATitleDescribesDestination;
+
+},{"Case":30}],245:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AnimatedGifMayBePresent = {
+  run: function run(test) {
+
+    /**
+     * Test if gif is animated
+     * Implemented from: https://gist.github.com/3012623.git
+     * @param src
+     * @param ext
+     * @param cb
+     */
+    function isAnimatedGif(src, ext, cb) {
+
+      if (ext !== 'gif') {
+        cb(false);
+        return;
+      }
+
+      var request = new XMLHttpRequest();
+      request.open('GET', src, true);
+      request.responseType = 'arraybuffer';
+      request.addEventListener('load', function () {
+        var arr = new Uint8Array(request.response);
+        var frames = 0;
+
+        // make sure it's a gif (GIF8)
+        if (arr[0] !== 0x47 || arr[1] !== 0x49 || arr[2] !== 0x46 || arr[3] !== 0x38) {
+          cb(false);
+          return;
+        }
+
+        // ported from php http://www.php.net/manual/en/function.imagecreatefromgif.php#104473
+        // an animated gif contains multiple "frames", with each frame having a
+        // header made up of:
+        // * a static 4-byte sequence (\x00\x21\xF9\x04)
+        // * 4 variable bytes
+        // * a static 2-byte sequence (\x00\x2C) (some variants may use \x00\x21 ?)
+        // We read through the file til we reach the end of the file, or we've found
+        // at least 2 frame headers
+        for (var i = 0; i < arr.length - 9; i++) {
+          if (arr[i] === 0x00 && arr[i + 1] === 0x21 && arr[i + 2] === 0xF9 && arr[i + 3] === 0x04 && arr[i + 8] === 0x00 && (arr[i + 9] === 0x2C || arr[i + 9] === 0x21)) {
+            frames++;
+          }
+          if (frames > 1) {
+            cb(true);
+            return;
+          }
+        }
+
+        cb(false);
+      });
+      request.send();
+    }
+
+    test.get('$scope').find('img').each(function () {
+
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+
+      var imgSrc = $(this).attr('src');
+      var ext = $(this).attr('src').split('.').pop().toLowerCase();
+
+      if (ext !== 'gif') {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+
+      isAnimatedGif(imgSrc, ext, function (animated) {
+        if (animated) {
+          _case.set({
+            status: 'cantTell'
+          });
+          return;
+        } else {
+          _case.set({
+            status: 'inapplicable'
+          });
+          return;
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Test if a .gif is used on the page. Test if the .gif contains more then one frame',
+      nl: 'Test of een .gif afbeelding gebruikt is op de pagina. Test of het .gif bestand uit meer dan één frame bestaat'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['link', 'gif']
+  }
+};
+module.exports = AnimatedGifMayBePresent;
+
+},{"Case":30}],246:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var AppletContainsTextEquivalent = {
+  run: function run(test) {
+    test.get('$scope').find('applet[alt=""], applet:not(applet[alt])').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (IsUnreadable($(this).text())) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All applets should contain the same content within the body of the applet',
+      nl: 'Alle applets moeten dezelfde content bevatten in de body van de applet'
+    },
+    description: {
+      en: 'Applets should contain their text equivalents or description within the <code>applet</code> tag itself.',
+      nl: 'Applets moeten hun tekstuele equivalent of beschrijving bevatten in de <code>applet</code> tag.'
+    },
+    guidelines: {
+      508: ['m'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74', 'H35']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletContainsTextEquivalent;
+
+},{"Case":30,"IsUnreadable":11}],247:[function(require,module,exports){
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+var AppletContainsTextEquivalentInAlt = {
+  run: function run(test) {
+    PlaceholderComponent(test, {
+      selector: 'applet',
+      attribute: 'alt',
+      empty: true
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'All applets should contain a text equivalent in the \"alt\" attribute',
+      nl: 'Alle applets moeten een tekstuele equivalent bevatten in het \"alt\"-attribuut'
+    },
+    description: {
+      en: 'Applets should contain their text equivalents or description in an \"alt\" attribute.',
+      nl: 'Applets moeten hun tekstuele equivalent of beschrijving bevatten in een \"alt\"-attribuut.'
+    },
+    guidelines: {
+      508: ['m'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74', 'H35']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletContainsTextEquivalentInAlt;
+
+},{"PlaceholderComponent":16}],248:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var AppletProvidesMechanismToReturnToParent = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'applet';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All applets should provide a way for keyboard users to escape',
+      nl: 'Alle applets moeten door toetsenbordgebruikers kunnen worden verlaten'
+    },
+    description: {
+      en: 'Ensure that a user who has only a keyboard as an input device can escape an <code>applet</code> element. This requires manual confirmation.',
+      nl: 'Zorg ervoor dat gebruikers die alleen het toetsenbord gebruiken als bediening een <code>applet</code>-element kunnen verlaten. Hiervoor is handmatige bevestiging nodig.'
+    },
+    guidelines: [],
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletProvidesMechanismToReturnToParent;
+
+},{"Case":30}],249:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var AppletTextEquivalentsGetUpdated = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'applet';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    guidelines: {
+      508: ['m'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74', 'H35']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletTextEquivalentsGetUpdated;
+
+},{"Case":30}],250:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var AppletUIMustBeAccessible = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'applet';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Any user interface in an applet must be accessible',
+      nl: 'Elke user interface in een applet moet toegankelijk zijn'
+    },
+    description: {
+      en: 'Applet content should be assessed for accessibility.',
+      nl: 'Content in een applet moet getoetst worden op toegankelijkheid.'
+    },
+    guidelines: {
+      508: ['m'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74', 'H35']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletUIMustBeAccessible;
+
+},{"Case":30}],251:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var AppletsDoNotFlicker = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'applet';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All applets do not flicker',
+      nl: 'Applets knipperen of flitsen niet'
+    },
+    description: {
+      en: 'Applets should not flicker.',
+      nl: 'Geen enkele applet mag knipperen of flitsen.'
+    },
+    guidelines: {
+      508: ['j'],
+      wcag: {
+        '2.2.2': {
+          techniques: ['F7']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletsDoNotFlicker;
+
+},{"Case":30}],252:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var AppletsDonotUseColorAlone = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'applet';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Applets should not use color alone to communicate content',
+      nl: 'Applets mogen niet alleen kleur gebruiken om een boodschap over te brengen'
+    },
+    description: {
+      en: 'Applets should contain content that makes sense without color and is accessible to users who are color blind.',
+      nl: 'Applets moeten content bevatten die ook bruikbaar is zonder kleur en die toegankelijk is voor gebruikers met kleurenblindheid.'
+    },
+    guidelines: {
+      508: ['c']
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletsDonotUseColorAlone;
+
+},{"Case":30}],253:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+var $ = require('jquery/dist/jquery');
+
+var AreaAltIdentifiesDestination = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'area:not(area[alt])';
+
+    test.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All \"area\" elements must have an \"alt\" attribute which describes the link destination',
+      nl: 'Alle \"area\"-elementen moeten een \"alt\"-attribuut hebben die de bestemming van de link beschrijft'
+    },
+    description: {
+      en: 'All <code>area</code> elements within a <code>map</code> must have an \"alt\" attribute',
+      nl: 'Alle <code>area</code>-elementen binnen een <code>map</code> moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content'],
+    options: {
+      test: 'area[alt]'
+    }
+  }
+};
+module.exports = AreaAltIdentifiesDestination;
+
+},{"Case":30,"jquery/dist/jquery":228}],254:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var AreaAltRefersToText = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'area';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Alt text for \"area\" elements should replicate the text found in the image',
+      nl: 'Alt-tekst voor \"area\"-elementen moeten de tekst bevatten zoals die ook in de afbeelding staat'
+    },
+    description: {
+      en: 'If an image is being used as a map, and an <code>area</code> encompasses text within the image, then the \"alt\" attribute of that <code>area</code> element should be the same as the text found in the image.',
+      nl: 'Als een afbeelding als kaart wordt gebruikt, en een <code>area</code> bevat tekst binnen de afbeelding, dan moet het \"alt\"-attribuut van dat <code>area</code>-element hetzelfde zijn als de tekst die in de afbeelding staat.'
+    },
+    guidelines: [],
+    tags: ['imagemap', 'content']
+  }
+};
+module.exports = AreaAltRefersToText;
+
+},{"Case":30}],255:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var NewWindowStringsComponent = require('NewWindowStringsComponent');
+
+var AreaDontOpenNewWindow = {
+  run: function run(test) {
+    // Links without a target attribute pass.
+    test.get('$scope').find('area').not('[target=_new], [target=_blank]').each(function () {
+      test.add(Case({
+        element: this,
+        status: 'passed'
+      }));
+    });
+    // Links with a target attribute pass if the link text indicates that the
+    // link will open a new window.
+    test.get('$scope').find('area[target=_new], area[target=_blank]').each(function () {
+      var $link = $(this);
+      var passes = false;
+      var i = 0;
+      var text = $link.text() + ' ' + $link.attr('title');
+      var phrase = '';
+      // Test the link text against strings the indicate the link will open
+      // in a new window.
+      do {
+        phrase = NewWindowStringsComponent[i];
+        if (text.search(phrase) > -1) {
+          passes = true;
+        }
+        ++i;
+      } while (!passes && i < NewWindowStringsComponent.length);
+      // Build a Case.
+      if (passes) {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'No \"area\" elements should open a new window without warning',
+      nl: '\"area\"-elementen mogen geen nieuw scherm openen zonder melding'
+    },
+    description: {
+      en: 'No <code>area</code> elements should open a new window without warning.',
+      nl: '<code>area</code>-elementen mogen geen nieuw scherm openen zonder dat de gebruiker hiervan een melding krijgt.'
+    },
+    guidelines: [],
+    tags: ['imagemap', 'content']
+  }
+};
+module.exports = AreaDontOpenNewWindow;
+
+},{"Case":30,"NewWindowStringsComponent":15}],256:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var AreaHasAltValue = {
+  run: function run(test) {
+
+    var selector = 'area';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (this.hasAttribute('alt') && (this.getAttribute('alt') || '').length > 0) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"area\" elements must have an \"alt\" attribute',
+      nl: 'Alle \"area\"-elementen moeten een \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>area</code> elements within a <code>map</code> must have an \"alt\" attribute.',
+      nl: 'Alle <code>area</code>-elementen binnen een <code>map</code> moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['F65', 'G74', 'H24']
+        },
+        '1.4.3': {
+          techniques: ['G145']
+        }
+      }
+    },
+    tags: ['imagemap', 'content'],
+    options: {
+      test: ':not(area[alt])'
+    }
+  }
+};
+module.exports = AreaHasAltValue;
+
+},{"Case":30}],257:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var AreaLinksToSoundFile = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = ['area[href$="wav"]', 'area[href$="snd"]', 'area[href$="mp3"]', 'area[href$="iff"]', 'area[href$="svx"]', 'area[href$="sam"]', 'area[href$="smp"]', 'area[href$="vce"]', 'area[href$="vox"]', 'area[href$="pcm"]', 'area[href$="aif"]'].join(', ');
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"area\" elements which link to a sound file should also provide a link to a transcript',
+      nl: 'Alle \"area\"-elementen met een link naar een geluidsbestand moeten ook een link bevatten naar een transcriptie'
+    },
+    description: {
+      en: 'All <code>area</code> elements which link to a sound file should have a text transcript.',
+      nl: 'Alle \"area\"-elementen met een link naar een geluidsbestand moeten een transcriptie hebben in tekst.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74']
+        }
+      }
+    },
+    tags: ['imagemap', 'media', 'content']
+  }
+};
+module.exports = AreaLinksToSoundFile;
+
+},{"Case":30}],258:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AudioMayBePresent = {
+  run: function run(test) {
+    var audioExtensions = ['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];
+
+    test.get('$scope').each(function () {
+      var $this = $(this);
+      var hasCase = false; // Test if a case has been created
+
+      // Audio is definately an audio, and objects could be too.
+      $this.find('object, audio').each(function () {
+        hasCase = true;
+        test.add(Case({
+          element: this,
+          status: 'cantTell'
+        }));
+      });
+
+      // Links refering to files with an audio extensions are good indicators too
+      $this.find('a[href]').each(function () {
+        var $this = $(this);
+        var extension = $this.attr('href').split('.').pop();
+        if ($.inArray(extension, audioExtensions) !== -1) {
+          hasCase = true;
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        }
+      });
+
+      // if no case was added, return inapplicable
+      if (!hasCase) {
+        test.add(Case({
+          element: this,
+          status: 'inapplicable'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Audio or object uses a link that points to a file with a video extension',
+      nl: 'Audio of object met een link naar een bestand met een video extensie'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['link', 'audio']
+  }
+};
+module.exports = AudioMayBePresent;
+
+},{"Case":30}],259:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var BasefontIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'basefont';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Basefont should not be used',
+      nl: 'Basefont moet niet worden gebruikt'
+    },
+    description: {
+      en: 'The <code>basefont</code> tag is deprecated and should not be used. Investigate using stylesheets instead.',
+      nl: 'The <code>basefont</code>-tag is afgekeurd en moet niet worden gebruikt. Gebruik in plaats hiervan stylesheets.'
+    },
+    guidelines: [],
+    tags: ['document', 'deprecated']
+  }
+};
+module.exports = BasefontIsNotUsed;
+
+},{"Case":30}],260:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var BlinkIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'blink';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The \"blink\" tag should not be used',
+      nl: 'De \"blink\"-tag moet niet worden gebruikt'
+    },
+    description: {
+      en: 'The <code>blink</code> tag should not be used. Ever.',
+      nl: 'Het is nooit toegestaan om de \"blink\"-tag te gebruiken.'
+    },
+    guidelines: {
+      wcag: {
+        '2.2.2': {
+          techniques: ['F47']
+        }
+      }
+    },
+    tags: ['deprecated', 'content']
+  }
+};
+module.exports = BlinkIsNotUsed;
+
+},{"Case":30}],261:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var BlockquoteNotUsedForIndentation = {
+  run: function run(test) {
+
+    var selector = 'blockquote';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+
+          if (this.hasAttribute('cite') && (this.getAttribute('cite') || '').length > 0) {
+            test.add(Case({
+              element: this,
+              status: 'passed'
+            }));
+          } else {
+            test.add(Case({
+              element: this,
+              status: 'cantTell'
+            }));
+          }
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'The \"blockquote\" tag should not be used just for indentation',
+      nl: 'De \"blockquote\"-tag mag niet gebruikt worden om in te springen'
+    },
+    description: {
+      en: 'Blockquote tags are for long-form quotes, and should not be used to indent paragraphs. Use CSS to indent the paragraph instead.',
+      nl: 'Blockquotes zijn bedoeld voor lange stukken geciteerde tekst, en niet om tekst te laten inspringen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H49']
+        }
+      }
+    },
+    tags: ['blockquote', 'content']
+  }
+};
+module.exports = BlockquoteNotUsedForIndentation;
+
+},{"Case":30}],262:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var BlockquoteUseForQuotations = {
+  run: function run(test) {
+    test.get('$scope').find('p').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).parents('blockquote').length > 0) {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+      if ($(this).text().substr(0, 1).search(/'|"|«|“|「/) > -1 && $(this).text().substr(-1, 1).search(/'|"|»|„|」/) > -1) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'If long quotes are in the document, use the \"blockquote\" element to mark them',
+      nl: 'Gebruik voor lange citaten in het document het \"blockquote\"-element'
+    },
+    description: {
+      en: 'If there is a paragraph or more of a quote, use the blockquote element to mark it as such.',
+      nl: 'Als er een hele alinea of meer alinea\'s zijn van geciteerde tekst, gebruik dan blockquote om deze als zodanig te markeren.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H49']
+        }
+      }
+    },
+    tags: ['blockquote', 'content']
+  }
+};
+module.exports = BlockquoteUseForQuotations;
+
+},{"Case":30}],263:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var BoldIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'bold';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The \"b\" (bold) element is not used',
+      nl: 'Het \"b\"-element (bold) wordt niet gebruikt'
+    },
+    description: {
+      en: 'The <code>b</code> (bold) element provides no emphasis for non-sighted readers. Use the <code>strong</code> tag instead.',
+      nl: 'Het <code>b</code>-element voorziet niet in nadruk voor blinde en slechtziende gebruikers. Gebruik de <code>strong</code>-tag instead.'
+    },
+    guidelines: [],
+    tags: ['semantics', 'content']
+  }
+};
+module.exports = BoldIsNotUsed;
+
+},{"Case":30}],264:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var ButtonHasName = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'button',
+      content: 'true',
+      empty: 'true',
+      attribute: 'title'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Button should contain text',
+      nl: 'Een knop moet tekst bevatten'
+    },
+    description: {
+      en: 'Buttons should contain a text value within the element, or have a value attribute.',
+      nl: 'Knoppen moeten een tekstwaarde binnen het element hebben, of een waarde-attribuut.'
+    },
+    guidelines: {
+      wcag: {
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['content']
+  }
+};
+module.exports = ButtonHasName;
+
+},{"PlaceholderComponent":16}],265:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var LabelComponent = require('LabelComponent');
+
+var CheckboxHasLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="checkbox"]'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All checkboxes must have a corresponding label',
+      nl: 'Alle keuzevakjes moeten een bijbehorend label hebben'
+    },
+    description: {
+      en: 'All <code>input</code> elements with a type of \"checkbox\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle  <code>input</code>-elementen met een \"keuzevakje\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      508: ['c'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = CheckboxHasLabel;
+
+},{"LabelComponent":12}],266:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var Rainbow = require('RainbowVis-JS/rainbowvis');
+
+var ColorBackgroundGradientContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorBackgroundGradientContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    /**
+     *
+     */
+    function colorBackgroundGradientContrast(test, Case, options, $this, element) {
+      // Check if there's a background gradient using DOM.
+      var failureFound, numberOfSamples;
+      var rainbow = new Rainbow();
+      var backgroundGradientColors = colors.getBackgroundGradient($this);
+
+      if (!backgroundGradientColors) {
+        return;
+      }
+
+      // Convert colors to hex notation.
+      for (var i = 0; i < backgroundGradientColors.length; i++) {
+        if (backgroundGradientColors[i].substr(0, 3) === 'rgb') {
+          backgroundGradientColors[i] = colors.colorToHex(backgroundGradientColors[i]);
+        }
+      }
+
+      // Create a rainbow.
+      rainbow.setSpectrumByArray(backgroundGradientColors);
+      // @todo, make the number of samples configurable.
+      numberOfSamples = backgroundGradientColors.length * options.gradientSampleMultiplier;
+
+      // Check each color.
+      failureFound = false;
+      for (i = 0; !failureFound && i < numberOfSamples; i++) {
+        var testResult = colors.testElmBackground(options.algorithm, $this, '#' + rainbow.colourAt(i));
+
+        if (!testResult) {
+          buildCase(test, Case, element, 'failed', id, 'The background gradient makes the text unreadable');
+          failureFound = true;
+        }
+      }
+
+      // If no failure was found, the element passes for this case type.
+      if (!failureFound) {
+        buildCase(test, Case, element, 'passed', id, 'The background gradient does not affect readability');
+      }
+    }
+
+    test.get('$scope').each(function () {
+
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and run testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorBackgroundGradientContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorBackgroundGradientContrast;
+
+},{"Case":30,"ColorComponent":3,"RainbowVis-JS/rainbowvis":400}],267:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var ColorBackgroundImageContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorBackgroundImageContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    /**
+     *
+     */
+    function colorBackgroundImageContrast(test, Case, options, $this, element) {
+      // Check if there's a backgroundImage using DOM.
+      var backgroundImage = colors.getBackgroundImage($this);
+      if (!backgroundImage) {
+        return;
+      }
+
+      var img = document.createElement('img');
+      img.crossOrigin = 'Anonymous';
+
+      // Get average color of the background image. The image must first load
+      // before information about it is available to the DOM.
+      img.onload = function () {
+        var averageColorBackgroundImage = colors.getAverageRGB(img);
+        var testResult = colors.testElmBackground(options.algorithm, $this, averageColorBackgroundImage);
+
+        // Build a case.
+        if (!testResult) {
+          buildCase(test, Case, element, 'failed', id, 'The element\'s background image makes the text unreadable');
+        } else {
+          buildCase(test, Case, element, 'passed', id, 'The element\'s background image does not affect readability');
+        }
+      };
+
+      img.onerror = img.onabort = function () {
+        buildCase(test, Case, element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
+      };
+
+      // Load the image.
+      img.src = backgroundImage;
+    }
+
+    test.get('$scope').each(function () {
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and rund testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorBackgroundImageContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorBackgroundImageContrast;
+
+},{"Case":30,"ColorComponent":3}],268:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var Rainbow = require('RainbowVis-JS/rainbowvis');
+
+var ColorElementBehindBackgroundGradientContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorElementBehindBackgroundGradientContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    /**
+     *
+     */
+    function colorElementBehindBackgroundGradientContrast(test, Case, options, $this, element) {
+      // Check if there's a background gradient using element behind current element.
+      var behindGradientColors;
+      var failureFound;
+      var rainbow = new Rainbow();
+      // The option element is problematic.
+      if (!$this.is('option')) {
+        behindGradientColors = colors.getBehindElementBackgroundGradient($this);
+      }
+
+      if (!behindGradientColors) {
+        return;
+      }
+
+      // Convert colors to hex notation.
+      for (var i = 0; i < behindGradientColors.length; i++) {
+        if (behindGradientColors[i].substr(0, 3) === 'rgb') {
+          behindGradientColors[i] = colors.colorToHex(behindGradientColors[i]);
+        }
+      }
+
+      // Create a rainbow.
+      rainbow.setSpectrumByArray(behindGradientColors);
+      var numberOfSamples = behindGradientColors.length * options.gradientSampleMultiplier;
+
+      // Check each color.
+      failureFound = false;
+      for (i = 0; !failureFound && i < numberOfSamples; i++) {
+        failureFound = !colors.testElmBackground(options.algorithm, $this, '#' + rainbow.colourAt(i));
+      }
+
+      // If no failure was found, the element passes for this case type.
+      if (failureFound) {
+        buildCase(test, Case, element, 'failed', id, 'The background gradient of the element behind this element makes the text unreadable');
+      } else {
+        buildCase(test, Case, element, 'passed', id, 'The background gradient of the element behind this element does not affect readability');
+      }
+    }
+
+    test.get('$scope').each(function () {
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and rund testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorElementBehindBackgroundGradientContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorElementBehindBackgroundGradientContrast;
+
+},{"Case":30,"ColorComponent":3,"RainbowVis-JS/rainbowvis":400}],269:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var ColorElementBehindBackgroundImageContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorElementBehindBackgroundImageContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    /**
+     *
+     */
+    function colorElementBehindBackgroundImageContrast(test, Case, options, $this, element) {
+      // Check if there's a backgroundImage using element behind current element.
+      var behindBackgroundImage;
+
+      // The option element is problematic.
+      if (!$this.is('option')) {
+        behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
+      }
+
+      if (!behindBackgroundImage) {
+        return;
+      }
+
+      var img = document.createElement('img');
+      img.crossOrigin = 'Anonymous';
+      // The image must first load before information about it is available to
+      // the DOM.
+      img.onload = function () {
+
+        // Get average color of the background image.
+        var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
+        var testResult = colors.testElmBackground(options.algorithm, $this, averageColorBehindBackgroundImage);
+        if (!testResult) {
+          buildCase(test, Case, element, 'failed', id, 'The background image of the element behind this element makes the text unreadable');
+        } else {
+          buildCase(test, Case, element, 'passed', id, 'The background image of the element behind this element does not affect readability');
+        }
+      };
+      img.onerror = img.onabort = function () {
+        buildCase(test, Case, element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
+      };
+      // Load the image.
+      img.src = behindBackgroundImage;
+    }
+
+    test.get('$scope').each(function () {
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and rund testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorElementBehindBackgroundImageContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorElementBehindBackgroundImageContrast;
+
+},{"Case":30,"ColorComponent":3}],270:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var ColorElementBehindContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorElementBehindContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    function colorElementBehindContrast(test, Case, options, $this, element) {
+      // Check text and background using element behind current element.
+      var backgroundColorBehind;
+      // The option element is problematic.
+      if (!$this.is('option')) {
+        backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
+      }
+      if (!backgroundColorBehind) {
+        return;
+      }
+
+      var testResult = colors.testElmBackground(options.algorithm, $this, backgroundColorBehind);
+
+      // Build a case.
+      if (!testResult) {
+        buildCase(test, Case, element, 'failed', id, 'The element behind this element makes the text unreadable');
+      } else {
+        buildCase(test, Case, element, 'passed', id, 'The element behind this element does not affect readability');
+      }
+    }
+
+    test.get('$scope').each(function () {
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and rund testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorElementBehindContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorElementBehindContrast;
+
+},{"Case":30,"ColorComponent":3}],271:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var ColorFontContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorFontContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    /**
+     *
+     */
+    function colorFontContrast(test, Case, options, $this, element) {
+      // Check text and background color using DOM.
+      // Build a case.
+      if (!colors.testElmContrast(options.algorithm, $this)) {
+        buildCase(test, Case, element, 'failed', id, 'The font contrast of the text impairs readability');
+      } else {
+        buildCase(test, Case, element, 'passed', id, 'The font contrast of the text is sufficient for readability');
+      }
+    }
+
+    test.get('$scope').each(function () {
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and rund testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorFontContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorFontContrast;
+
+},{"Case":30,"ColorComponent":3}],272:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ *
+ * This test did not test anything, so now it just returns untested.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var CssDocumentMakesSenseStyleTurnedOff = {
+  run: function run(test) {
+    this.get('$scope').each(function () {
+      test.add(Case({
+        element: undefined,
+        status: 'untested'
+      }));
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The document must be readable with styles turned off',
+      nl: 'Het document moet leesbaar zijn met stijlen uit'
+    },
+    description: {
+      en: 'With all the styles for a page turned off, the content of the page should still make sense. Try to turn styles off in the browser and see if the page content is readable and clear.',
+      nl: 'Als alle stijlen voor een pagina zijn uitgezet, moet de content van de pagina nog steeds betekenisvol zijn. Zet stijlen uit in de browser en controleer of de content op de pagina nog steeds leesbaar en duidelijk is.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['G140']
+        },
+        '1.4.5': {
+          techniques: ['G140']
+        },
+        '1.4.9': {
+          techniques: ['G140']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = CssDocumentMakesSenseStyleTurnedOff;
+
+},{"Case":30}],273:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var DefinitionListsAreUsed = {
+  run: function run(test) {
+    test.get('$scope').find('dl').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      _case.set({
+        status: 'inapplicable'
+      });
+    });
+    test.get('$scope').find('p, li').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      var $item = $(this);
+      $(this).find('span, strong, em, b, i').each(function () {
+        if ($(this).text().length < 50 && $item.text().search($(this).text()) === 0) {
+          if ($(this).is('span')) {
+            if ($(this).css('font-weight') === $item.css('font-weight') && $(this).css('font-style') === $item.css('font-style')) {
+              _case.set({
+                status: 'passed'
+              });
+              return;
+            }
+          }
+          _case.set({
+            status: 'failed'
+          });
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Use a definition list for defining terms',
+      nl: 'Gebruik een definition list voor definities'
+    },
+    description: {
+      en: 'When providing a list of terms or definitions, use a definition list.',
+      nl: 'Wanneer er gebruik wordt gemaakt van een lijst termen of definities, gebruik hiervoor dan een definition list.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H48']
+        }
+      }
+    },
+    tags: ['structure']
+  }
+};
+module.exports = DefinitionListsAreUsed;
+
+},{"Case":30}],274:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var DoctypeProvided = {
+  run: function run(test) {
+    var doc = test.get('$scope').get(0);
+    if ($(doc.doctype).length === 0 && !document.doctype) {
+      test.add(Case({
+        element: doc,
+        status: 'failed'
+      }));
+    } else {
+      test.add(Case({
+        element: doc,
+        status: 'passed'
+      }));
+    }
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document should contain a valid \"doctype\" declaration',
+      nl: 'Het document moet een geldige \"doctype\"-verklaring hebben'
+    },
+    description: {
+      en: 'Each document must contain a valid doctype declaration.',
+      nl: 'Ieder document moet een geldige doctype-verklaring hebben.'
+    },
+    guidelines: [],
+    tags: ['doctype']
+  }
+};
+module.exports = DoctypeProvided;
+
+},{"Case":30}],275:[function(require,module,exports){
+'use strict';
+
+var AcronymComponent = require('AcronymComponent');
+var DocumentAcronymsHaveElement = {
+  run: function run(test) {
+    AcronymComponent(test, 'acronym');
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Acronyms must be marked with an \"acronym\" element',
+      nl: 'Acroniemen moeten worden gemarkeerd met een \"acronym\"-element'
+    },
+    description: {
+      en: 'Acronyms should be marked with an <code>acronym</code> element, at least once on the page for each acronym.',
+      nl: 'Acroniemen moeten worden gemarkeerd door middel van het <code>acronym</code>-element. Doe dit ten minste een keer per pagina voor elke acroniem.'
+    },
+    guidelines: {
+      wcag: {
+        '3.1.4': {
+          techniques: ['H28']
+        }
+      }
+    },
+    tags: ['acronym', 'content']
+  }
+};
+module.exports = DocumentAcronymsHaveElement;
+
+},{"AcronymComponent":1}],276:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var DocumentAutoRedirectNotUsed = {
+  run: function run(test) {
+
+    var selector = 'meta[http-equiv=refresh]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Auto-redirect with \"meta\" elements must not be used',
+      nl: 'Auto-redirect met \"meta\"-elementen moeten niet worden gebruikt'
+    },
+    description: {
+      en: 'Because different users have different speeds and abilities when it comes to parsing the content of a page, a \"meta-refresh\" method to redirect users can prevent users from fully understanding the document before being redirected.',
+      nl: 'Omdat verschillende gebruikers verschillende snelheden en vaardigheden hebben met het scannen van content op een pagina, kan een \"meta-refresh\"-methode om gebruikers door te sturen hen verhinderen het document volledig te begrijpen voor ze worden doorgestuurd.'
+    },
+    guidelines: [],
+    tags: ['document']
+  }
+};
+module.exports = DocumentAutoRedirectNotUsed;
+
+},{"Case":30}],277:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ *
+ * This test did not test anything, so now it just returns untested.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var DocumentContentReadableWithoutStylesheets = {
+  run: function run(test) {
+    this.get('$scope').each(function () {
+      test.add(Case({
+        element: undefined,
+        status: 'untested'
+      }));
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Content should be readable without style sheets',
+      nl: 'Content moet zonder stylesheets leesbaar zijn'
+    },
+    description: {
+      en: 'With all the styles for a page turned off, the content of the page should still make sense. Try to turn styles off in the browser and see if the page content is readable and clear.',
+      nl: 'Ook als alle stijlen voor een pagina zijn uitgezet, moet de content van de pagina nog steeds betekenisvol zijn. Zet de stylesheets uit in de browser en controleer of de content nog steeds leesbaar en duidelijk is.'
+    },
+    guidelines: {
+      508: ['d'],
+      wcag: {
+        '1.3.1': {
+          techniques: ['G140']
+        },
+        '1.4.5': {
+          techniques: ['G140']
+        },
+        '1.4.9': {
+          techniques: ['G140']
+        }
+      }
+    },
+    tags: ['document', 'color']
+  }
+};
+module.exports = DocumentContentReadableWithoutStylesheets;
+
+},{"Case":30}],278:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var DocumentHasTitleElement = {
+  run: function run(test) {
+
+    var selector = 'head title';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (candidates.length === 1) {
+        test.add(Case({
+          element: candidates.get(0),
+          status: 'passed'
+        }));
+      } else if (candidates.length === 0) {
+        test.add(Case({
+          element: undefined,
+          status: 'failed'
+        }));
+      } else if (candidates.length > 1) {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document should have a title element',
+      nl: 'Het document moet een titelelement hebben'
+    },
+    description: {
+      en: 'The document should have a title element.',
+      nl: 'Het document moet een titelelement hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques: ['H25']
+        }
+      }
+    },
+    tags: ['document', 'head']
+  }
+};
+module.exports = DocumentHasTitleElement;
+
+},{"Case":30}],279:[function(require,module,exports){
+'use strict';
+
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var TextStatisticsComponent = require('TextStatisticsComponent');
+var IsUnreadable = require('IsUnreadable');
+var DocumentIsWrittenClearly = {
+  run: function run(test) {
+    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
+      return TextNodeFilterComponent(element);
+    }).each(function () {
+      var text = TextStatisticsComponent.cleanText($(this).text());
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (IsUnreadable(text)) {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+      if (Math.round(206.835 - 1.015 * TextStatisticsComponent.averageWordsPerSentence(text) - 84.6 * TextStatisticsComponent.averageSyllablesPerWord(text)) < 60) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'The document should be written to the target audience and read clearly',
+      nl: 'Het document moet geschreven zijn op het niveau van de doelgroep'
+    },
+    description: {
+      en: 'If a document is beyond a 10th grade level, then a summary or other guide should also be provided to guide the user through the content.',
+      nl: 'Als de inhoud van een document moeilijker is dan het vastgestelde taalniveau, moet een samenvatting of andere begeleiding worden toegevoegd om de gebruiker te helpen met de content.'
+    },
+    guidelines: {
+      wcag: {
+        '3.1.5': {
+          techniques: ['G86']
+        }
+      }
+    },
+    tags: ['language', 'content']
+  }
+};
+module.exports = DocumentIsWrittenClearly;
+
+},{"Case":30,"IsUnreadable":11,"TextNodeFilterComponent":25,"TextSelectorComponent":26,"TextStatisticsComponent":27}],280:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
+var DocumentLangIsISO639Standard = {
+  run: function run(test) {
+    var $element = test.get('$scope').is('html') ? test.get('$scope') : test.get('$scope').find('html').first();
+
+    var _case = Case({
+      element: $element[0]
+    });
+
+    var langAttr = $element.attr('lang');
+    var matchedLang = false; // Check to see if a languagecode was matched
+
+    test.add(_case);
+    if (!$element.is('html') || typeof langAttr === 'undefined') {
+      _case.set({
+        status: 'inapplicable'
+      });
+    } else {
+      // Loop over all language codes, checking if the current lang attribute starts
+      // with a value that's in the languageCodes array
+      $.each(LanguageCodesStringsComponent, function (i, currentLangCode) {
+        if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
+          matchedLang = true;
+        }
+      });
+
+      if (!matchedLang) {
+        _case.set({ status: 'failed' });
+      } else if (langAttr.match(/^[a-z]{2}(-[A-Z]{2})?$/) === null) {
+        _case.set({ status: 'failed' });
+      } else {
+        _case.set({ status: 'passed' });
+      }
+    }
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document\'s language attribute should be a standard code',
+      nl: 'Het language-attribuut van het document moet een standaard code zijn'
+    },
+    description: {
+      en: 'The document should have a default langauge, and that language should use the valid 2 or 3 letter language code according to ISO specification 639.',
+      nl: 'Het document moet een standaardtaal hebben en die taal moet de geldige 2- of 3-letterige taalcode hebben volgens de ISO-specificatie 639.'
+    },
+    guidelines: {
+      wcag: {
+        '3.1.1': {
+          techniques: ['H57']
+        }
+      }
+    },
+    tags: ['document', 'language']
+  }
+};
+module.exports = DocumentLangIsISO639Standard;
+
+},{"Case":30,"LanguageCodesStringsComponent":13}],281:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var DocumentLangNotIdentified = {
+  run: function run(test) {
+    this.get('$scope').each(function () {
+      var lang = 'getAttribute' in this && this.getAttribute('lang');
+      if (lang && lang.length > 1) {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document must have a \"lang\" attribute',
+      nl: 'Het document moet een \"lang\"-attribuut hebben'
+    },
+    description: {
+      en: 'The document should have a default langauge, by setting the \"lang\" attribute in the <code>html</code> element.',
+      nl: 'Het document moet een standaardtaal hebben, vastgelegd in het \"lang\"-attribuut in het <code>html</code>-element.'
+    },
+    guidelines: [],
+    tags: ['document', 'language']
+  }
+};
+module.exports = DocumentLangNotIdentified;
+
+},{"Case":30}],282:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var DocumentMetaNotUsedWithTimeout = {
+  run: function run(test) {
+
+    var selector = 'meta';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('http-equiv') && this.getAttribute('http-equiv') === 'refresh') {
+            if (this.hasAttribute('content') && (this.getAttribute('content') || '').length > 0) {
+              status = 'failed';
+            }
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Meta elements must not be used to refresh the content of a page',
+      nl: 'Meta-elementen mogen niet worden gebruikt om content op een pagina te verversen'
+    },
+    description: {
+      en: 'Because different users have different speeds and abilities when it comes to parsing the content of a page, a \"meta-refresh\" method to reload the content of the page can prevent users from having full access to the content. Try to use a \"refresh this\" link instead.',
+      nl: 'Omdat verschillende gebruikers verschillende snelheden en vaardigheden hebben met het scannen van content op een pagina, kan een \"meta-refresh\"-methode om de pagina te herladen gebruikers hinderen in toegang tot de content. Gebruik een \"refresh this\" link hiervoor.'
+    },
+    guidelines: {
+      wcag: {
+        '2.2.1': {
+          techniques: ['F40', 'F41']
+        },
+        '2.2.4': {
+          techniques: ['F40', 'F41']
+        },
+        '3.2.5': {
+          techniques: ['F41']
+        }
+      }
+    },
+    tags: ['document']
+  }
+};
+module.exports = DocumentMetaNotUsedWithTimeout;
+
+},{"Case":30}],283:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var DocumentReadingDirection = {
+  run: function run(test) {
+
+    var selector = ['[lang="he"]', '[lang="ar"]'].join(', ');
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          if (this.hasAttribute('dir') && (this.getAttribute('dir') || '') === 'rtl') {
+            test.add(Case({
+              element: this,
+              status: 'passed'
+            }));
+          } else {
+            test.add(Case({
+              element: this,
+              status: 'failed'
+            }));
+          }
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Reading direction of text is correctly marked',
+      nl: 'De leesrichting van de tekst staat juist aangegeven'
+    },
+    description: {
+      en: 'Where required, the reading direction of the document (for language that read in different directions), or portions of the text, must be declared.',
+      nl: 'Voor talen die een andere leesrichting hebben, moet de leesrichting van (een deel van) de tekst in een document worden opgenomen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['H34']
+        }
+      }
+    },
+    tags: ['document', 'language']
+  }
+};
+module.exports = DocumentReadingDirection;
+
+},{"Case":30}],284:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var DocumentStrictDocType = {
+  run: function run(test) {
+    if (typeof document.doctype === 'undefined' || !document.doctype || document.doctype.systemId.search('strict') === -1) {
+      test.add(Case({
+        element: document,
+        status: 'failed'
+      }));
+    } else {
+      test.add(Case({
+        element: document,
+        status: 'passed'
+      }));
+    }
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The page uses a strict doctype',
+      nl: 'De pagina gebruikt een strikt doctype'
+    },
+    description: {
+      en: 'The doctype of the page or document should be either an HTML or XHTML strict doctype.',
+      nl: 'Het doctype van een pagina of document moet een HTML of XHTML strikt doctype zijn.'
+    },
+    guidelines: [],
+    tags: ['document', 'doctype']
+  }
+};
+module.exports = DocumentStrictDocType;
+
+},{"Case":30}],285:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var DocumentTitleDescribesDocument = {
+  run: function run(test) {
+
+    var selector = 'head title';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      var status = candidates.length === 1 ? 'passed' : 'failed';
+
+      if (candidates.length === 0) {
+        test.add(Case({
+          element: undefined,
+          status: status
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The title describes the document',
+      nl: 'De titel beschrijft het document'
+    },
+    description: {
+      en: 'The document title should actually describe the page. Often, screen readers use the title to navigate from one window to another.',
+      nl: 'De documenttitel moet een beschrijving zijn van de pagina. Schermlezen gebruiken de titels van pagina\'s om van het ene naar het andere scherm te navigeren.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques: ['F25', 'G88']
+        }
+      }
+    },
+    tags: ['document', 'head']
+  }
+};
+module.exports = DocumentTitleDescribesDocument;
+
+},{"Case":30}],286:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var DocumentTitleIsNotPlaceholder = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'head > title',
+      content: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document title should not be placeholder text',
+      nl: 'De documenttitle moet geen placeholder tekst zijn'
+    },
+    description: {
+      en: 'The document title should not be wasted placeholder text which does not describe the page.',
+      nl: 'De documenttitel moet geen placeholder tekst zijn die geen goede beschrijving van de pagina is.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques: ['F25', 'G88']
+        }
+      }
+    },
+    tags: ['document', 'head']
+  }
+};
+module.exports = DocumentTitleIsNotPlaceholder;
+
+},{"PlaceholderComponent":16}],287:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var DocumentTitleIsShort = {
+  run: function run(test) {
+    var $title = test.get('$scope').find('head title');
+    test.add(Case({
+      element: $title.get(0),
+      status: $title.text().length > 150 ? 'failed' : 'passed'
+    }));
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'The document title should be short',
+      nl: 'De documenttitel moet kort zijn'
+    },
+    description: {
+      en: 'The document title should be short and succinct. This test fails at 150 characters, but authors should consider this to be a suggestion.',
+      nl: 'De documenttitel moet kort en beknopt zijn. Probeer bij een titel langer dan 150 tekense de titel in te korten waar mogelijk.'
+    },
+    guidelines: [],
+    tags: ['document', 'head']
+  }
+};
+module.exports = DocumentTitleIsShort;
+
+},{"Case":30}],288:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var DocumentTitleNotEmpty = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'head > title',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document should not have an empty title',
+      nl: 'Het document mag geen lege titel hebben'
+    },
+    description: {
+      en: 'The document should have a title element that is not white space.',
+      nl: 'Het document moet een titelelement hebben dat is ingevuld.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques: ['F25', 'H25']
+        }
+      }
+    },
+    tags: ['document', 'head']
+  }
+};
+module.exports = DocumentTitleNotEmpty;
+
+},{"PlaceholderComponent":16}],289:[function(require,module,exports){
+'use strict';
+
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var DocumentVisualListsAreMarkedUp = {
+  run: function run(test) {
+
+    var itemStarters = ['♦', '›', '»', '‣', '▶', '◦', '✓', '◽', '•', '—', '◾', // single characters
+    '-\\D', // dash, except for negative numbers
+    '\\\\', // Just an escaped slash
+    '\\*(?!\\*)', // *, but not ** (which could be a foot note)
+    '\\.\\s', 'x\\s', // characters that should be followed by a space
+    '&bull;', '&#8226;', // HTML entities
+    '[0-9]+\\.', '\\(?[0-9]+\\)', // Numbers: 1., 13., 13), (14)
+    '[\\u25A0-\\u25FF]', // Unicode characters that look like bullets
+    '[IVX]{1,5}\\.\\s' // Roman numerals up to (at least) 27, followed by ". " E.g. II. IV.
+    ];
+
+    var symbols = RegExp('(^|<br[^>]*>)' + // Match the String start or a <br> element
+    '[\\s]*' + // Optionally followed by white space characters
+    '(' + itemStarters.join('|') + ')', // Followed by a character that could indicate a list
+    'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
+
+    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
+      return TextNodeFilterComponent(element);
+    }).each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      var matches = $(this).html().match(symbols);
+      _case.set({
+        status: matches && matches.length > 2 ? 'failed' : 'passed'
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Visual lists of items are marked using ordered or unordered lists',
+      nl: 'Lijsten moeten gemarkeerd worden als ordered of unordered lists'
+    },
+    description: {
+      en: 'Use the ordered (<code>ol</code>) or unordered (<code>ul</code>) elements for lists of items, instead of just using new lines which start with numbers or characters to create a visual list.',
+      nl: 'Gebruik ordered (<code>ol</code>) of unordered (<code>ul</code>) elementen voor lijsten, in plaats van een nieuwe regel per item aan te maken die je laat beginnen met een nummer of teken om een visuele lijst te maken.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H28', 'H48', 'T2']
+        }
+      }
+    },
+    tags: ['list', 'semantics', 'content']
+  }
+};
+module.exports = DocumentVisualListsAreMarkedUp;
+
+},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],290:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+var $ = require('jquery/dist/jquery');
+
+var DomOrderMatchesVisualOrder = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    $.expr[':'].quailCss = function (obj, index, meta) {
+      var args = meta[3].split(/\s*=\s*/);
+      return $(obj).css(args[0]).search(args[1]) > -1;
+    };
+
+    var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Ensure that the visual order of the page matches the DOM',
+      nl: 'Zorg ervoor dat de visuele ordening van de pagina overeenkomt met de DOM'
+    },
+    description: {
+      en: 'When using positioning techniques, make sure that the visual order of the page matches the DOM.',
+      nl: 'Wanneer je gebruik maakt van positioneringstechnieken, zorg er dan voor dat de visuele ordening van de pagina overeenkomt met de DOM.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['C27']
+        },
+        '2.4.3': {
+          techniques: ['C27']
+        }
+      }
+    },
+    tags: ['content']
+  }
+};
+module.exports = DomOrderMatchesVisualOrder;
+
+},{"Case":30,"jquery/dist/jquery":228}],291:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var EmbedHasAssociatedNoEmbed = {
+  run: function run(test) {
+    test.get('$scope').find('embed').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      _case.set({
+        status: $(this).find('noembed').length || $(this).next().is('noembed') ? 'passed' : 'failed'
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"embed\" elements have an associated \"noembed\" element',
+      nl: 'Alle \"embed\" elementen moeten een bijbehorend \"noembed\"-element hebben'
+    },
+    description: {
+      en: 'Because some users cannot use the <code>embed</code> element, provide alternative content in a <code>noembed</code> element.',
+      nl: 'Sommige gebruikers kunnen het <code>embed</code>-element niet gebruiken. Biedt hiervoor alternatieve content aan in een <code>noembed</code>-element.'
+    },
+    guidelines: [],
+    tags: ['object', 'embed', 'content']
+  }
+};
+module.exports = EmbedHasAssociatedNoEmbed;
+
+},{"Case":30}],292:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var EmbedMustHaveAltAttribute = {
+  run: function run(test) {
+
+    var selector = 'embed';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var alt = this.getAttribute('alt');
+          if (alt && typeof alt === 'string' && alt.length > 0) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: '\"Embed\" elements must have an \"alt\" attribute',
+      nl: '\"Embed\"-elementen moeten een \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>embed</code> elements must have an \"alt\" attribute.',
+      nl: 'Alle <code>embed</code>-elementen moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: [],
+    tags: ['object', 'embed', 'content']
+  }
+};
+module.exports = EmbedMustHaveAltAttribute;
+
+},{"Case":30}],293:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var FieldsetHasLabel = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'fieldset:not(fieldset:has(legend))';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Fieldsets require a label element',
+      nl: 'Fieldsets behoeven een label-element'
+    },
+    description: {
+      en: 'Fieldsets used to group similar form elements like checkboxes should have a label that describes the group of elements.',
+      nl: 'Fieldsets die een groep gelijkwaardige elementen bevatten moeten een label hebben die deze groep elementen beschrijft.'
+    },
+    guidelines: {
+      wcag: {
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = FieldsetHasLabel;
+
+},{"Case":30}],294:[function(require,module,exports){
+/**
+ * Test for a label associated with a file input element.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var FileHasLabel = {
+  run: function run(test) {
+
+    var sFiles = '[type="file"]';
+    var sLabels = 'label';
+
+    function countOfLabelsById(id, labels) {
+      // Map labels by for attribute value.
+      var labelsByFor = 0;
+      for (var i = 0, il = labels.length; i < il; ++i) {
+        var $label = labels.eq(i);
+        if ($label.attr('for') === id) {
+          labelsByFor++;
+        }
+      }
+      return labelsByFor;
+    }
+
+    this.get('$scope').each(function () {
+      var $scope = $(this);
+      var files = $scope.find(sFiles);
+      var labels = $scope.find(sLabels);
+
+      if (files.length === 0) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        files.each(function () {
+          var $file = $(this);
+          var status = 'failed';
+
+          // Check for an associated label.
+          var id = $file.attr('id');
+          if (id) {
+            var labelCount = countOfLabelsById(id, labels);
+            if (labelCount === 1) {
+              status = 'passed';
+            }
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"file\" input elements have a corresponding label',
+      nl: 'Alle \"file\"-invoerelementen hebben een bijbehorend label'
+    },
+    description: {
+      en: 'All <code>input</code> elements of type \"file\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user.',
+      nl: 'Alle <code>input</code>-elementen van het type \"file\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      508: ['n'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = FileHasLabel;
+
+},{"Case":30}],295:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var FontIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'font';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Font elements should not be used',
+      nl: 'Het font element moet niet worden gebruikt'
+    },
+    description: {
+      en: 'The <code>basefont</code> tag is deprecated and should not be used. Investigate using stylesheets instead.',
+      nl: 'De <code>basefont</code>-tag is afgekeurd en moet niet worden gebruikt. Gebruik in plaats hiervan stylesheets.'
+    },
+    guidelines: [],
+    tags: ['deprecated', 'content']
+  }
+};
+module.exports = FontIsNotUsed;
+
+},{"Case":30}],296:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var FormButtonsHaveValue = {
+  run: function run(test) {
+
+    var selector = 'input[type=button], input[type=submit], input[type=reset]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          // If the button has a value, it passes.
+          var val = this.getAttribute('value');
+          if (val && typeof val === 'string' && val.length > 0) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Input elements for button, submit, or reset must have a value attribute',
+      nl: 'Invoerelementen voor knoppen, indienen of resetten moeten een waarde-attribuut hebben'
+    },
+    description: {
+      en: 'Any form element that is rendered as a button has to have a readable value attribute.',
+      nl: 'Elk invoerelement dat eruit ziet als een knop moet een leesbaar waarde-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = FormButtonsHaveValue;
+
+},{"Case":30}],297:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var FormErrorMessageHelpsUser = {
+  run: function run(test) {
+
+    var selector = 'form';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Forms offer the user a way to check the results of their form before performing an irrevocable action',
+      nl: 'Formulieren bieden gebruikers de gelegenheid om hun formulier te controleren voor ze een onomkeerbare actie uitvoeren'
+    },
+    description: {
+      en: 'If the form allows users to perform some irrevocable action, like ordreing a product, ensure that users have the ability to review the contents of the form they submitted first. This is not something that can be checked through automated testing and requires manual confirmation.',
+      nl: 'Als een formulier een gebruiker toestaat om een onomkeerbare actie uit te voeren, zoals het bestellen van een product, zorg er dan voor dat ze eerst het formulier kunnen controleren. Dit kan niet met een automatische test en moet handmatig gecontroleerd en bevestigd worden.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = FormErrorMessageHelpsUser;
+
+},{"Case":30}],298:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var FormHasGoodErrorMessage = {
+  run: function run(test) {
+
+    var selector = 'form';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Form error messages should assist in solving errors',
+      nl: 'Foutmeldingen in formulieren moeten fouten helpen oplossen'
+    },
+    description: {
+      en: 'If the form has some required fields or other ways in which the user can commit an error, check that the reply is accessible. Use the words \"required\" or \"error\" within the <code>label</code> element of input items where the errors happened.',
+      nl: 'Als het formulier verplichte velden heeft of op andere manier verkeerd ingevuld kan worden, controleer dan of de bijbehorende foutmelding begrijpelijk is. Gebruik de woorden \"required\" of \"error\" in het <code>label</code>-element of in de invoeritems waar de fout is opgetredenitems where the errors happened.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = FormHasGoodErrorMessage;
+
+},{"Case":30}],299:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var FormHasSubmitButton = {
+  run: function run(test) {
+
+    var selector = 'input[type=submit], button[type=submit]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find('form');
+
+      if (candidates.length === 0) {
+        test.add(Case({
+          element: this,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var submitButton = $(this).find(selector);
+
+          var status = submitButton.length === 1 ? 'passed' : 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Form should have a submit button',
+      nl: 'Formulieren moeten een indienknop hebben'
+    },
+    description: {
+      en: 'Forms should have a button that allows the user to select when they want to submit the form.',
+      nl: 'Formulieren moeten een knop hebben waarmee de gebruiker kan bepalen wanneer zij een formulieren willen versturen.'
+    },
+    guidelines: {
+      wcag: {
+        '3.2.2': {
+          techniques: ['H32', 'G80']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = FormHasSubmitButton;
+
+},{"Case":30}],300:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var RedundantStringsComponent = require('RedundantStringsComponent');
+var FormWithRequiredLabel = {
+  run: function run(test) {
+    var redundant = RedundantStringsComponent;
+    var lastStyle,
+        currentStyle = false;
+    redundant.required[redundant.required.indexOf('*')] = /\*/g;
+    test.get('$scope').each(function () {
+      var $local = $(this);
+      $local.find('label').each(function () {
+        var text = $(this).text().toLowerCase();
+        var $label = $(this);
+        var _case = test.add(Case({
+          element: this
+        }));
+        for (var word in redundant.required) {
+          if (text.search(word) >= 0 && !test.get('$scope').find('#' + $label.attr('for')).attr('aria-required')) {
+            _case.set({
+              status: 'failed'
+            });
+          }
+        }
+        currentStyle = $label.css('color') + $label.css('font-weight') + $label.css('background-color');
+        if (lastStyle && currentStyle !== lastStyle) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        lastStyle = currentStyle;
+        if (typeof _case.get('status') === 'undefined') {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Input items which are required are marked as so in the label element',
+      nl: 'Invoervelden die verplicht zijn, zijn zo gemarkeerd in het label-element'
+    },
+    description: {
+      en: 'If a form element is required, it should be marked as so. This should not be a mere red asterisk, but instead either a \'required\' image with alt text of \"required\" or the actual text \"required\". The indicator that an item is required should be included in the input element\'s <code>label</code> element.',
+      nl: 'Als een formulierveld verplicht is, moet het ook zichtbaar zijn. Doe dit niet alleen met een asterisk achter het veld, maar met bijvoorbeeld een afbeelding met als alttekst \"required\" of de tekst \"required\". De indicatie dat een veld verplicht is moet opgenomen zijn in het <code>label</code>-element van het invoerveld.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['ARIA2']
+        },
+        '1.4.1': {
+          techniques: ['F81']
+        },
+        '3.3.2': {
+          techniques: ['ARIA2', 'H90']
+        },
+        '3.3.3': {
+          techniques: ['ARIA2']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = FormWithRequiredLabel;
+
+},{"Case":30,"RedundantStringsComponent":18}],301:[function(require,module,exports){
+'use strict';
+
+var HeadingLevelComponent = require('HeadingLevelComponent');
+var HeaderH1 = {
+  run: function run(test) {
+    HeadingLevelComponent(test, {
+      headingLevel: 1
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The header following an h1 is not h3 through h6',
+      nl: 'De header die volgt op een h1 is niet h3 tot h6'
+    },
+    description: {
+      en: 'Header order should not skip a level. Do not follow a <code>h1</code> header with a <code>h3</code>, <code>h4</code>, <code>h5</code>, or <code>h6</code>.',
+      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h1</code>-header niet volgen door een <code>h3</code>, <code>h4</code>, <code>h5</code>, of <code>h6</code>.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.6': {
+          techniques: ['G130']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH1;
+
+},{"HeadingLevelComponent":9}],302:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var HeaderH1Format = {
+  run: function run(test) {
+
+    var selector = 'h1';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h1 elements are not used for formatting',
+      nl: 'H1-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h1</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h1</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH1Format;
+
+},{"Case":30}],303:[function(require,module,exports){
+'use strict';
+
+var HeadingLevelComponent = require('HeadingLevelComponent');
+var HeaderH2 = {
+  run: function run(test) {
+    HeadingLevelComponent(test, {
+      headingLevel: 2
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The header following an h2 is not h4, h5, or h6',
+      nl: 'De header volgend op een h2 is geen h4, h5, of h6'
+    },
+    description: {
+      en: 'Header order should not skip a level. Do not follow a <code>h2</code> header with a <code>h4</code>, <code>h5</code>, or <code>h6</code>.',
+      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h2</code>-header niet volgen door een <code>h4</code>, <code>h5</code>, of <code>h6</code>.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.6': {
+          techniques: ['G130']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH2;
+
+},{"HeadingLevelComponent":9}],304:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var HeaderH2Format = {
+  run: function run(test) {
+
+    var selector = 'h2';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h2 elements are not used for formatting',
+      nl: 'H2-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h2</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h2</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH2Format;
+
+},{"Case":30}],305:[function(require,module,exports){
+'use strict';
+
+var HeadingLevelComponent = require('HeadingLevelComponent');
+var HeaderH3 = {
+  run: function run(test) {
+    HeadingLevelComponent(test, {
+      headingLevel: 3
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The header following an h3 is not an h5 or h6',
+      nl: 'De header volgend op een h3 is geen h5, of h6'
+    },
+    description: {
+      en: 'Header order should not skip a level. Do not follow a <code>h3</code> header with a <code>h5<code> or <code>h6</code>.',
+      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h3</code>-header niet volgen door een <code>h5</code>, of <code>h6</code>.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.6': {
+          techniques: ['G130']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH3;
+
+},{"HeadingLevelComponent":9}],306:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var HeaderH3Format = {
+  run: function run(test) {
+
+    var selector = 'h3';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h3 elements are not used for formatting',
+      nl: 'H3-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h3</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h3</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH3Format;
+
+},{"Case":30}],307:[function(require,module,exports){
+'use strict';
+
+var HeadingLevelComponent = require('HeadingLevelComponent');
+var HeaderH4 = {
+  run: function run(test) {
+    HeadingLevelComponent(test, {
+      headingLevel: 4
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The header following an h4 is not an h6',
+      nl: 'De header volgend op een h4 is geen h6'
+    },
+    description: {
+      en: 'Header order should not skip a level. Do not follow a <code>h4</code> haeder with a <code>h6</code>.',
+      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h4/code> header niet volgen door een <code>h6</code>.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.6': {
+          techniques: ['G130']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH4;
+
+},{"HeadingLevelComponent":9}],308:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var HeaderH4Format = {
+  run: function run(test) {
+
+    var selector = 'h4';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h4 elements are not used for formatting',
+      nl: 'H4-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h4</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h4</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH4Format;
+
+},{"Case":30}],309:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var HeaderH5Format = {
+  run: function run(test) {
+
+    var selector = 'h5';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h5 elements are not used for formatting',
+      nl: 'H5-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h5</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h5</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH5Format;
+
+},{"Case":30}],310:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var HeaderH6Format = {
+  run: function run(test) {
+
+    var selector = 'h6';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h6 elements are not used for formatting',
+      nl: 'H6-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h6</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h6</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH6Format;
+
+},{"Case":30}],311:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var HeadersAttrRefersToATableCell = {
+  run: function run(test) {
+    // Table cell headers without referred ids
+    test.get('$scope').find('table').each(function () {
+      var self = this;
+      var _case = Case();
+      test.add(_case);
+      var elmHeaders = $(self).find('th[headers], td[headers]');
+
+      if (elmHeaders.length === 0) {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      } else {
+        elmHeaders.each(function () {
+          var that = this;
+          var headers = $(this).attr('headers').split(/\s+/);
+          $.each(headers, function (index, item) {
+            if (item === '' || $(self).find('th#' + item + ',td#' + item).length > 0) {
+              _case.set({
+                element: that,
+                status: 'passed'
+              });
+              return;
+            } else {
+              _case.set({
+                element: that,
+                status: 'failed'
+              });
+              return;
+            }
+          });
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Table cell headers attrtibutes must within the same table have an associated data cell with the same id',
+      nl: 'Tabel cellen met een headers attribuut moeten binnen dezelfde tabel een overeenkomende data cel hebben in het id attribuut dezelfde waarde'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['headers', 'td', 'th']
+  }
+};
+module.exports = HeadersAttrRefersToATableCell;
+
+},{"Case":30}],312:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var HeadersHaveText = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'h1, h2, h3, h4, h5, h6',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All headers should contain readable text',
+      nl: 'Alle headers moeten leesbare tekst bevatten'
+    },
+    description: {
+      en: 'Users with screen readers use headings like the tabs <em>h1</em> to navigate the structure of a page. All headings should contain either text, or images with appropriate <em>alt</em> attributes.',
+      nl: 'Gebruikers van schermlezers gebruiken headers om via de structuur van een pagina te navigeren. Alle headers moeten daarom tekst bevatten of afbeeldingen met toepasselijk <em>alt</em>-attributen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['G141']
+        },
+        '2.4.10': {
+          techniques: ['G141']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeadersHaveText;
+
+},{"PlaceholderComponent":16}],313:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var HeadersUseToMarkSections = {
+  run: function run(test) {
+    test.get('$scope').find('p').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      var $paragraph = $(this);
+      $paragraph.find('strong:first, em:first, i:first, b:first').each(function () {
+        _case.set({
+          status: $paragraph.text().trim() === $(this).text().trim() ? 'failed' : 'passed'
+        });
+      });
+    });
+
+    test.get('$scope').find('ul, ol').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      var $list = $(this);
+      if ($list.prevAll(':header').length || $list.find('li').length !== $list.find('li:has(a)').length) {
+        _case.set({
+          status: 'passed'
+        });
+        return;
+      }
+      var isNavigation = true;
+      $list.find('li:has(a)').each(function () {
+        if ($(this).text().trim() !== $(this).find('a:first').text().trim()) {
+          isNavigation = false;
+        }
+      });
+      if (isNavigation) {
+        _case.set({
+          status: 'failed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Use headers to mark the beginning of each section',
+      nl: 'Gebruik headers om de start van elke sectie aan te geven.'
+    },
+    description: {
+      en: 'Check that each logical section of the page is broken or introduced with a header (h1-h6) element.',
+      nl: 'Controleer dat elke logische sectie van een pagina wordt onderbroken door of start met een header-element (h1-h6).'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['G141']
+        },
+        '2.4.1': {
+          techniques: ['G141', 'H69']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeadersUseToMarkSections;
+
+},{"Case":30}],314:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var IIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'i';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The \"i\" (italic) element is not used',
+      nl: 'Het \"i\"-element (cursief) wordt niet gebruikt'
+    },
+    description: {
+      en: 'The <code>i</code> (italic) element provides no emphasis for non-sighted readers. Use the <code>em</code> tag instead.',
+      nl: 'Het <code>i</code>-element biedt geen nadruk voor slechtziende en blinde lezers. Gebruik in plaats daarvan de <code>em</code>-tag.'
+    },
+    guidelines: [],
+    tags: ['deprecated', 'content']
+  }
+};
+module.exports = IIsNotUsed;
+
+},{"Case":30}],315:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IdrefsHasCorrespondingId = {
+  run: function run(test) {
+
+    function getAttribute($element) {
+      var attribute = [];
+      var attributeList = ['headers', 'aria-controls', 'aria-describedby', 'aria-flowto', 'aria-labelledby', 'aria-owns'];
+
+      $.each(attributeList, function (index, item) {
+
+        var attr = $element.attr(item);
+
+        if (typeof attr !== typeof undefined && attr !== false) {
+          attribute = attr;
+          return;
+        }
+      });
+      return attribute.split(/\s+/);
+    }
+
+    test.get('$scope').each(function () {
+      var testableElements = $(this).find('td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], ' + '[aria-labelledby], [aria-owns]');
+
+      if (testableElements.length === 0) {
+        test.add(Case({
+          element: this,
+          status: 'inapplicable'
+        }));
+        return;
+      } else {
+        testableElements.each(function () {
+          var _case = test.add(Case({
+            element: this
+          }));
+
+          var attributes = getAttribute($(this));
+          var status = 'passed';
+
+          $.each(attributes, function (index, item) {
+            if (item !== '' && $('#' + item).length === 0) {
+              status = 'failed';
+              return;
+            }
+          });
+
+          _case.set({
+            status: status
+          });
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Elements with an idref attribute must correspond to an element with an ID',
+      nl: 'Elementen met een idref-attribuut moeten corresponderen met een element met een ID'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F17']
+        },
+        '4.1.1': {
+          techniques: ['F17']
+        }
+      }
+    }
+  }
+};
+module.exports = IdrefsHasCorrespondingId;
+
+},{"Case":30}],316:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var IframeMustNotHaveLongdesc = {
+  run: function run(test) {
+
+    var selector = 'iframe';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('longdesc')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Inline frames (\"iframes\") should not have a \"longdesc\" attribute',
+      nl: 'Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut'
+    },
+    description: {
+      en: 'Inline frames (iframe) should not have a \"longdesc\" attribute.',
+      nl: 'Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut.'
+    },
+    guidelines: [],
+    tags: ['objects', 'iframe', 'content']
+  }
+};
+module.exports = IframeMustNotHaveLongdesc;
+
+},{"Case":30}],317:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var ImageMapServerSide = {
+  run: function run(test) {
+
+    var selector = 'img';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('ismap')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All links in a server-side map should have duplicate links available in the document',
+      nl: 'Alle links in een server-side map moeten elders in het document terugkeren'
+    },
+    description: {
+      en: 'Any image with an \"usemap\" attribute for a server-side image map should have the available links duplicated elsewhere.',
+      nl: 'Elke afbeelding met een \"usemap\"-attribuut voor een server-side map moet de beschikbare links ook elders hebben.'
+    },
+    guidelines: [],
+    tags: ['objects', 'iframe', 'content']
+  }
+};
+module.exports = ImageMapServerSide;
+
+},{"Case":30}],318:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ImgAltIsDifferent = {
+  run: function run(test) {
+    test.get('$scope').find('img:not([src])').each(function () {
+      var _case = Case({
+        element: this,
+        status: 'inapplicable'
+      });
+      test.add(_case);
+    });
+    test.get('$scope').find('img[alt][src]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).attr('src') === $(this).attr('alt') || $(this).attr('src').split('/').pop() === $(this).attr('alt')) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Image \"alt\" attributes should not be the same as the filename',
+      nl: '\"Alt\"-attributen van afbeeldingen moeten niet hetzelfde zijn als de bestandsnaam'
+    },
+    description: {
+      en: 'All <code>img</code> elements should have an \"alt\" attribute that is not just the name of the file',
+      nl: 'Alle <code>img</code>-elementen moeten een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam van de afbeelding.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H37']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgAltIsDifferent;
+
+},{"Case":30}],319:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ImgAltIsTooLong = {
+  run: function run(test) {
+    test.get('$scope').find('img[alt]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      _case.set({
+        status: $(this).attr('alt').length > 100 ? 'failed' : 'passed'
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Image Alt text is too long',
+      nl: 'Altteksten voor een afbeelding zijn kort'
+    },
+    description: {
+      en: 'All \"alt\" attributes for <code>img</code> elements should be clear and concise. \"Alt\" attributes over 100 characters long should be reviewed to see if they are too long.',
+      nl: 'Alle \"alt\"-attributen voor <code>img</code>-elementen moeten duidelijk en bondig zijn. Verifieer \"alt\"-attributen langer dan 100 tekens en kort ze in waar mogelijk.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H37']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgAltIsTooLong;
+
+},{"Case":30}],320:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ImgAltNotEmptyInAnchor = {
+  run: function run(test) {
+    test.get('$scope').find('a[href]:has(img)').each(function () {
+      var $a = $(this);
+      var text = $a.text();
+
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+
+      // Concat all alt attributes of images to the text of the paragraph
+      $a.find('img[alt]').each(function () {
+        text += ' ' + $(this).attr('alt');
+      });
+
+      if (IsUnreadable(text)) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'An image within a link cannot have an empty \"alt\" attribute if there is no other text within the link',
+      nl: 'Een afbeelding binnen een link mag geen leeg \"alt\"-attribuut hebben als er geen andere tekst is in de link'
+    },
+    description: {
+      en: 'Any image that is within a link (an <code>a</code> element) that has no other text cannot have an empty or missing \"alt\" attribute.',
+      nl: 'Elke afbeelding binnen een link (een <code>a</code>-element) die geen andere tekst heeft, mag geen leeg of ontbrekend \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '2.4.4': {
+          techniques: ['H30']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgAltNotEmptyInAnchor;
+
+},{"Case":30,"IsUnreadable":11}],321:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var ImgAltNotPlaceHolder = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'img',
+      attribute: 'alt'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Images should not have a simple placeholder text as an \"alt\" attribute',
+      nl: 'Afbeeldingen mogen geen placeholdertkest als \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'Any image that is not used decorativey or which is purely for layout purposes cannot have an \"alt\" attribute that consists solely of placeholders.',
+      nl: 'Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen \"alt\"-attribuut hebben met daarin placeholdertekst.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['F30', 'F39']
+        },
+        '1.2.1': {
+          techniques: ['F30']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgAltNotPlaceHolder;
+
+},{"PlaceholderComponent":16}],322:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var ImgHasAlt = {
+  run: function run(test) {
+
+    var selector = 'img';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if (this.hasAttribute('alt')) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Image elements must have an \"alt\" attribute',
+      nl: 'Afbeeldingselementen moeten een \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>img</code> elements must have an alt attribute.',
+      nl: 'Alle <code>img</code>-elementen moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['F65', 'H37']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgHasAlt;
+
+},{"Case":30}],323:[function(require,module,exports){
+'use strict';
+
+var ValidURLComponent = require('ValidURLComponent');
+var Case = require('Case');
+var ImgHasLongDesc = {
+  run: function run(test) {
+    test.get('$scope').find('img[longdesc]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).attr('longdesc') === $(this).attr('alt') || !ValidURLComponent($(this).attr('longdesc'))) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'A \"longdesc\" attribute is required for any image where additional information not in the \"alt\" attribute is required',
+      nl: 'Een \"longdesc\"-attribuut is verplicht voor elke afbeelding waar aanvullende informatie niet benodigd is in het \"alt\"-attribuut'
+    },
+    description: {
+      en: 'Any image that has an \"alt\" attribute that does not fully convey the meaning of the image must have a \"longdesc\" attribute.',
+      nl: 'Elke afbeelding die een \"alt\"-attribuut heeft dat de volledige betekenis van de afbeelding bevat, moet een \"longdesc\"-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.4': {
+          techniques: ['G91']
+        },
+        '2.4.9': {
+          techniques: ['G91']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgHasLongDesc;
+
+},{"Case":30,"ValidURLComponent":28}],324:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ImgImportantNoSpacerAlt = {
+  run: function run(test) {
+    test.get('$scope').find('img[alt]').each(function () {
+      var width = $(this).width() ? $(this).width() : parseInt($(this).attr('width'), 10);
+      var height = $(this).height() ? $(this).height() : parseInt($(this).attr('height'), 10);
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (IsUnreadable($(this).attr('alt').trim()) && $(this).attr('alt').length > 0 && width > 50 && height > 50) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Images that are important should not have a purely white-space \"alt\" attribute',
+      nl: 'Afbeeldingen die belangrijk zijn mogen geen leeg \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'Any image that is not used decorativey or which is purely for layout purposes cannot have an \"alt\" attribute that consists solely of white space (i.e. a space).',
+      nl: 'Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen leeg \"alt\"-attribuut hebben (bijvoorbeeld alleen een spatie).'
+    },
+    guidelines: [],
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgImportantNoSpacerAlt;
+
+},{"Case":30,"IsUnreadable":11}],325:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ImgNonDecorativeHasAlt = {
+  run: function run(test) {
+    test.get('$scope').find('img[alt]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (IsUnreadable($(this).attr('alt')) && ($(this).width() > 100 || $(this).height() > 100)) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Any non-decorative images should have a non-empty \"alt\" attribute',
+      nl: 'Elke niet-decoratieve afbeelding moet een gevuld \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'Any image that is not used decoratively or which is purely for layout purposes cannot have an empty \"alt\" attribute.',
+      nl: 'Elke afbeelding die niet ter decoratie is of voor lay-out doeleinden wordt gebruikt, moet een gevuld \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['F38']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgNonDecorativeHasAlt;
+
+},{"Case":30,"IsUnreadable":11}],326:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var ImgServerSideMapNotUsed = {
+  run: function run(test) {
+
+    var selector = 'img';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('ismap')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Server-side image maps should not be used',
+      nl: 'Server-side image maps moeten niet worden gebruikt'
+    },
+    description: {
+      en: 'Server-side image maps should not be used.',
+      nl: 'Server-side image maps mogen niet worden gebruikt.'
+    },
+    guidelines: [],
+    tags: ['image', 'imagemap', 'content']
+  }
+};
+module.exports = ImgServerSideMapNotUsed;
+
+},{"Case":30}],327:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var ImgShouldNotHaveTitle = {
+  run: function run(test) {
+
+    var selector = 'img';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('title')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Images should not have a \"title\" attribute',
+      nl: 'Afbeeldingen moeten geen \"title\"-attribuut hebben'
+    },
+    description: {
+      en: 'Images should not contain a \"title\" attribute.',
+      nl: 'Afbeeldingen zouden geen \"title\"-attribuut moeten bevatten.'
+    },
+    guidelines: [],
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgShouldNotHaveTitle;
+
+},{"Case":30}],328:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var ImgWithMapHasUseMap = {
+  run: function run(test) {
+
+    var selector = 'img[ismap]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if (this.hasAttribute('usemap')) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Any image with an \"ismap\" attribute have a valid \"usemap\" attribute',
+      nl: 'Elke afbeelding met een \"ismap\"-attribuut heeft een geldig \"usemap\"-attribuut'
+    },
+    description: {
+      en: 'If an image has an \"ismap\" attribute it must have a valid \"usemap\" attribute.',
+      nl: 'Als een afbeelding een \"ismap\"-attribuut heeft, moet het ook een geldig \"usemap\"-attribuut hebben'
+    },
+    guidelines: {
+      508: ['ef', 'ef']
+    },
+    tags: ['image', 'imagemap', 'content']
+  }
+};
+module.exports = ImgWithMapHasUseMap;
+
+},{"Case":30}],329:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ImgWithMathShouldHaveMathEquivalent = {
+  run: function run(test) {
+    test.get('$scope').find('img:not(img:has(math), img:has(tagName))').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (!$(this).parent().find('math').length) {
+        _case.set({
+          status: 'failed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Images which contain math equations should provide equivalent MathML',
+      nl: 'Afbeeldingen met wiskundige vergelijking moeten een equivalent in MathML bieden'
+    },
+    description: {
+      en: 'Images which contain math equations should be accompanied or link to a document with the equivalent equation marked up with <a href=\"http://www.w3.org/Math/\">MathML</a>.',
+      nl: 'Afbeeldingen die wiskundige vergelijkingen bevatten moeten vergezeld zijn van of linken naar een document met daarin een equivalent van de vergelijking in <a href=\"http://www.w3.org/Math/\">MathML</a>.'
+    },
+    guidelines: [],
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgWithMathShouldHaveMathEquivalent;
+
+},{"Case":30}],330:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var InputCheckboxRequiresFieldset = {
+  run: function run(test) {
+    test.get('$scope').find('input[type="checkbox"]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (!$(this).parents('fieldset').length) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Logical groups of check boxes should be grouped with a fieldset',
+      nl: 'Logische groepen van keuzevakjes moeten gegroepeerd zijn in een fieldset'
+    },
+    description: {
+      en: 'Related \"checkbox\" input fields should be grouped together using a <code>fieldset</code>.',
+      nl: 'Gerelateerde \"keuzevakjes\"-invoervelden moeten bij elkaar staan in een <code>fieldset</code>.'
+    },
+    guidelines: {
+      wcag: {
+        '3.3.2': {
+          techniques: ['H71']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputCheckboxRequiresFieldset;
+
+},{"Case":30}],331:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var InputElementsDontHaveAlt = {
+  run: function run(test) {
+
+    var selector = 'input[type!=image]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('alt')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Input elements which are not images should not have an \"alt\" attribute',
+      nl: 'Invoervelden die geen afbeelding zijn, moeten geen \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'Input elements which are not images should not have an \"alt\" attribute, because of inconsistencies in how user agents use the \"alt\" attribute.',
+      nl: 'Invoervelden die geen afbeelding zijn, moeten geen \"alt\"-attribuut hebben, omdat user agents het \"alt\"-attribuut niet consistent gebruiken.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputElementsDontHaveAlt;
+
+},{"Case":30}],332:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var InputImageAltIsNotFileName = {
+  run: function run(test) {
+    test.get('$scope').find('input[type=image][alt]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).attr('src') === $(this).attr('alt')) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not the same as the filename',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam'
+    },
+    description: {
+      en: 'All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute which is not the same as the filename.',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H36']
+        }
+      }
+    },
+    tags: ['form', 'image', 'content']
+  }
+};
+module.exports = InputImageAltIsNotFileName;
+
+},{"Case":30}],333:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var InputImageAltIsNotPlaceholder = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="image"]',
+      attribute: 'alt'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not placeholder text.',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben anders dan alleen placeholdertekst.'
+    },
+    description: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not placeholder text.',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben anders dan alleen placeholdertekst.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H36']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['form', 'image', 'content']
+  }
+};
+module.exports = InputImageAltIsNotPlaceholder;
+
+},{"PlaceholderComponent":16}],334:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var InputImageAltIsShort = {
+  run: function run(test) {
+    test.get('$scope').find('input[type=image]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).attr('alt').length > 100) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is as short as possible',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat zo kort mogelijk is'
+    },
+    description: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is as short as possible.',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat zo kort mogelijk is.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H36']
+        }
+      }
+    },
+    tags: ['form', 'image', 'content']
+  }
+};
+module.exports = InputImageAltIsShort;
+
+},{"Case":30}],335:[function(require,module,exports){
+'use strict';
+
+var CleanStringComponent = require('CleanStringComponent');
+var Case = require('Case');
+var RedundantStringsComponent = require('RedundantStringsComponent');
+var InputImageAltNotRedundant = {
+  run: function run(test) {
+    test.get('$scope').find('input[type=image][alt]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (RedundantStringsComponent.inputImage.indexOf(CleanStringComponent($(this).attr('alt'))) > -1) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The \"alt\" text for input \"image\" submit buttons must not be filler text',
+      nl: 'De \"alt\"-tekst for \"image\"-knoppen moet anders zijn dan alleen placeholdertekst'
+    },
+    description: {
+      en: 'Every form image button should not simply use filler text like \"button\" or \"submit\" as the \"alt\" text.',
+      nl: 'Elke formulierknop die een afbeelding is, moet bruikbare tekst als \"alt\"-tekst hebben, anders dan \"knop\" of \"verstuur\".'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H36']
+        }
+      }
+    },
+    tags: ['form', 'image', 'content']
+  }
+};
+module.exports = InputImageAltNotRedundant;
+
+},{"Case":30,"CleanStringComponent":2,"RedundantStringsComponent":18}],336:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var InputImageHasAlt = {
+  run: function run(test) {
+
+    var selector = 'input[type=image]:visible';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if (this.hasAttribute('alt')) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute.',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['F65', 'G94', 'H36']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['form', 'image', 'content'],
+    options: {
+      test: ':not(input[type=image][alt])'
+    }
+  }
+};
+module.exports = InputImageHasAlt;
+
+},{"Case":30}],337:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var LabelComponent = require('LabelComponent');
+
+var InputTextHasLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements should have a corresponding \"label\"',
+      nl: 'Alle invoerelementen moeten een bijbehorend \"label\" hebben'
+    },
+    description: {
+      en: 'All <code>input</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle <code>input</code>-elementen moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputTextHasLabel;
+
+},{"LabelComponent":12}],338:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var InputTextHasValue = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="text"]',
+      attribute: 'value',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements of type \"text\" must have a default text',
+      nl: 'Alle invoerelementen van het type \"text\" moeten een standaardtekst hebben'
+    },
+    description: {
+      en: 'All <code>input</code> elements of type \"text\" should have a default text.',
+      nl: 'Alle invoerelementen van het type \"text\" moeten een standaardtekst hebben.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputTextHasValue;
+
+},{"PlaceholderComponent":16}],339:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var InputTextValueNotEmpty = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="text"]',
+      attribute: 'value',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Text input elements require a non-whitespace default text',
+      nl: 'Tekstinvoerelementen mogen geen lege standaardtekst hebben'
+    },
+    description: {
+      en: 'All <code>input</code> elements with a type of \"text\" should have a default text which is not empty.',
+      nl: 'Alle invoerelementen van het type \"text\" moeten een standaardtekst hebben die gevuld is.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputTextValueNotEmpty;
+
+},{"PlaceholderComponent":16}],340:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var InputWithoutLabelHasTitle = {
+  run: function run(test) {
+
+    test.get('$scope').each(function () {
+
+      var testableElements = $(this).find('input, select, textarea');
+
+      if (testableElements.length === 0) {
+        var _case = Case({
+          element: this,
+          status: 'inapplicable'
+        });
+        test.add(_case);
+        return;
+      } else {
+        testableElements.each(function () {
+          var _case = Case({
+            element: this
+          });
+          test.add(_case);
+
+          if ($(this).css('display') === 'none') {
+            _case.set({
+              status: 'inapplicable'
+            });
+            return;
+          }
+          if (!test.get('$scope').find('label[for=' + $(this).attr('id') + ']').length && (!$(this).attr('title') || IsUnreadable($(this).attr('title')))) {
+            _case.set({
+              status: 'failed'
+            });
+          } else {
+            _case.set({
+              status: 'passed'
+            });
+          }
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Form controls without label should have a title attribute',
+      nl: 'Formulierelementen zonder label moeten een titelattribuut hebben'
+    },
+    description: {
+      en: 'If it is not possible to have a label for a form control, then a title attribute on the element should be provided that describes the purpose of the control.',
+      nl: 'Als een formulierelement geen label kan krijgen, dan moet een dat element een titelattribuut krijgen dat het doel van het element beschrijft.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H65']
+        },
+        '1.3.1': {
+          techniques: ['H65']
+        },
+        '3.3.2': {
+          techniques: ['H65']
+        },
+        '4.1.2': {
+          techniques: ['H65']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputWithoutLabelHasTitle;
+
+},{"Case":30,"IsUnreadable":11}],341:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var LabelDoesNotContainInput = {
+  run: function run(test) {
+
+    var selector = 'label';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if ($(this).find('input').length > 0) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Label elements should not contain an input element',
+      nl: 'Labelelementen moeten geen invoerelementen bevatten'
+    },
+    description: {
+      en: 'Label elements should not wrap around another input element, as this can cause the label to be read twice by screen readers.',
+      nl: 'Labelelementen moeten niet om een ander invoerelement heenstaan, omdat dan het label twee keer kan worden voorgelezen door schermlezers.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = LabelDoesNotContainInput;
+
+},{"Case":30}],342:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var LabelMustBeUnique = {
+  run: function run(test) {
+    var labels = {};
+    test.get('$scope').find('label[for]').each(function () {
+      if (typeof labels[$(this).attr('for')] === 'undefined') {
+        labels[$(this).attr('for')] = 0;
+      }
+      labels[$(this).attr('for')]++;
+    });
+    test.get('$scope').find('label[for]').each(function () {
+      var _case = Case({
+        element: this,
+        status: labels[$(this).attr('for')] === 1 ? 'passed' : 'failed'
+      });
+      test.add(_case);
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Every form input must have only one label',
+      nl: 'Elk formulierinvoerveld heeft maar een label'
+    },
+    description: {
+      en: 'Each form input should have only one <code>label</code> element.',
+      nl: 'Elk formulierinvoerveld mag maar een <code>label</code> element hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F17']
+        },
+        '4.1.1': {
+          techniques: ['F17']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = LabelMustBeUnique;
+
+},{"Case":30}],343:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var LabelMustNotBeEmpty = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'label',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Labels must contain text',
+      nl: 'Labels moeten tekst bevatten'
+    },
+    description: {
+      en: 'Labels in forms must contain readable text that describes the target form element.',
+      nl: 'Labels in formulieren moeten leesbare tekst bevatten die het formulierelement beschrijven.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = LabelMustNotBeEmpty;
+
+},{"PlaceholderComponent":16}],344:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var LabelsAreAssignedToAnInput = {
+  run: function run(test) {
+    test.get('$scope').find('label').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (!$(this).attr('for')) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        if (!test.get('$scope').find('#' + $(this).attr('for')).length || !test.get('$scope').find('#' + $(this).attr('for')).is(':input')) {
+          _case.set({
+            status: 'failed'
+          });
+        } else {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All labels should be associated with an input',
+      nl: 'Alle labels moeten horen bij een invoerveld'
+    },
+    description: {
+      en: 'All <code>label</code> elements should be assigned to an input item, and should have a <em>for</em> attribute which equals the <em>id</em> attribute of a form element.',
+      nl: 'Alle <code>label</code>-elementen moeten horen bij een invoerveld, en moeten een een <em>for</em>-attribuut hebben dat hetzelfde is als het <em>id</em>-attribuut van een formulierelement.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = LabelsAreAssignedToAnInput;
+
+},{"Case":30}],345:[function(require,module,exports){
+'use strict';
+
+var GetTextContentsComponent = require('GetTextContentsComponent');
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var LanguageComponent = require('LanguageComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var LanguageDirAttributeIsUsed = {
+  run: function run(test) {
+
+    var textDirection = LanguageComponent.textDirection;
+
+    function countDirAttributes() {
+      var $el = $(this);
+      var currentDirection = $el.attr('dir');
+      if (!currentDirection) {
+        var parentDir = $el.closest('[dir]').attr('dir');
+        currentDirection = parentDir || currentDirection;
+      }
+      if (typeof currentDirection === 'string') {
+        currentDirection = currentDirection.toLowerCase();
+      }
+      if (typeof textDirection[currentDirection] === 'undefined') {
+        currentDirection = 'ltr';
+      }
+      var oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
+      var text = GetTextContentsComponent($el);
+      var textMatches = text.match(textDirection[oppositeDirection]);
+      if (!textMatches) {
+        return;
+      }
+      var matches = textMatches.length;
+      $el.find('[dir=' + oppositeDirection + ']').each(function () {
+        var childMatches = $el[0].textContent.match(textDirection[oppositeDirection]);
+        if (childMatches) {
+          matches -= childMatches.length;
+        }
+      });
+
+      var _case = test.add(Case({
+        element: this
+      }));
+
+      _case.set({ status: matches > 0 ? 'failed' : 'passed' });
+    }
+
+    test.get('$scope').each(function () {
+      $(this).find(TextSelectorComponent).filter(function (index, element) {
+        return TextNodeFilterComponent(element);
+      }).each(countDirAttributes);
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Use the dir attribute when the language direction changes',
+      nl: 'Gebruik het dir-attribuut als de richting van de taal verandert'
+    },
+    description: {
+      en: 'When there are nested directional changes in text, use an inline element with a <code>dir</code> attribute to indicate direction.',
+      nl: 'Gebruik een inline element met een <code>dir</code>-attribuut om richting aan te geven wanneer er geneste richtingsveranderingen in de tekst zijn.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['H56']
+        }
+      }
+    },
+    tags: ['language', 'content']
+  }
+};
+module.exports = LanguageDirAttributeIsUsed;
+
+},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],346:[function(require,module,exports){
+'use strict';
+
+var GetTextContentsComponent = require('GetTextContentsComponent');
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var LanguageComponent = require('LanguageComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var LanguageDirectionPunctuation = {
+  run: function run(test) {
+    var $scope = test.get('$scope');
+    var punctuation = {};
+    var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
+    var currentDirection = $scope.attr('dir') ? $scope.attr('dir').toLowerCase() : 'ltr';
+    var oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
+    var textDirection = LanguageComponent.textDirection;
+    $scope.each(function () {
+      var $local = $(this);
+      $local.find(TextSelectorComponent).filter(function (index, element) {
+        return TextNodeFilterComponent(element);
+      }).each(function () {
+        var $el = $(this);
+        if ($el.attr('dir')) {
+          currentDirection = $el.attr('dir').toLowerCase();
+        } else {
+          currentDirection = $el.parent('[dir]').first().attr('dir') ? $el.parent('[dir]').first().attr('dir').toLowerCase() : currentDirection;
+        }
+        if (typeof textDirection[currentDirection] === 'undefined') {
+          currentDirection = 'ltr';
+        }
+        oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
+        var text = GetTextContentsComponent($el);
+        var matches = text.match(textDirection[oppositeDirection]);
+        var _case = test.add(Case({
+          element: this
+        }));
+        if (!matches) {
+          _case.set({ status: 'inapplicable' });
+          return;
+        }
+        var first = text.search(textDirection[oppositeDirection]);
+        var last = text.lastIndexOf(matches.pop());
+        while (punctuation = punctuationRegex.exec(text)) {
+          if (punctuation.index === first - 1 || punctuation.index === last + 1) {
+            _case.set({ status: 'failed' });
+            return;
+          }
+        }
+        _case.set({ status: 'passed' });
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Place punctuation around language direction changes in the right order',
+      nl: 'Zet interpunctie bij richtingsveranderingen in taal in de juiste volgorde'
+    },
+    description: {
+      en: 'If punctuation is used around a change in language direction, ensure the punctuation appears in the correct place.',
+      nl: 'Als er interpunctie staat bij een richtingsverandering in de taal, zorg dat deze dan op de goede plek staat.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['G57']
+        }
+      }
+    },
+    tags: ['language', 'content']
+  }
+};
+module.exports = LanguageDirectionPunctuation;
+
+},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],347:[function(require,module,exports){
+'use strict';
+
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var LanguageComponent = require('LanguageComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var LanguageUnicodeDirection = {
+  run: function run(test) {
+    var $scope = test.get('$scope');
+    var textDirection = LanguageComponent.textDirection;
+    var textDirectionChanges = LanguageComponent.textDirectionChanges;
+    $scope.each(function () {
+      var $local = $(this);
+      $local.find(TextSelectorComponent).filter(function (index, element) {
+        return TextNodeFilterComponent(element);
+      }).each(function () {
+        var _case = test.add(Case({
+          element: this
+        }));
+        var $el = $(this);
+        var text = $el.text().trim();
+        var otherDirection = text.substr(0, 1).search(textDirection.ltr) !== -1 ? 'rtl' : 'ltr';
+        if (text.search(textDirection[otherDirection]) === -1) {
+          _case.set({ status: 'inapplicable' });
+        } else {
+          if (text.search(textDirectionChanges[otherDirection]) !== -1) {
+            _case.set({ status: 'passed' });
+          } else {
+            _case.set({ status: 'failed' });
+          }
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Use the unicode language direction',
+      nl: 'Gebruik de unicode taalrichting'
+    },
+    description: {
+      en: 'When there are nested directional changes in language, use unicode RTL/LTR characters.',
+      nl: 'Gebruik de unicode RTL/LTR afkortingen als er geneste richtingsveranderingen in de taal zijn.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['H34']
+        }
+      }
+    },
+    tags: ['language', 'content']
+  }
+};
+module.exports = LanguageUnicodeDirection;
+
+},{"Case":30,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],348:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var LegendTextNotEmpty = {
+  run: function run(test) {
+
+    var selector = 'legend';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if ($(this).text().trim().length > 0) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Legend text must not contain just whitespace',
+      nl: 'Legend-tekst moet ingevuld zijn'
+    },
+    description: {
+      en: 'If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain empty text.',
+      nl: 'Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> ingevuld zijn.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H71']
+        },
+        '2.4.6': {
+          techniques: ['G131']
+        },
+        '3.3.2': {
+          techniques: ['H71']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = LegendTextNotEmpty;
+
+},{"Case":30}],349:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var LegendTextNotPlaceholder = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'legend',
+      content: 'true',
+      emtpy: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: '\"Legend\" text must not contain placeholder text',
+      nl: '\"Legend\"-tekst moet geen placeholdertekst bevatten'
+    },
+    description: {
+      en: 'If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain useless placeholder text like \"form\" or \"field\".',
+      nl: 'Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> geen placeholdertekst bevatten zoals \"form\" of \"field\".'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H71']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.4.6': {
+          techniques: ['G131']
+        },
+        '3.3.2': {
+          techniques: ['H71']
+        },
+        '4.1.3': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = LegendTextNotPlaceholder;
+
+},{"PlaceholderComponent":16}],350:[function(require,module,exports){
+/**
+ * @todo Needs refinement.
+ *
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var LiDontUseImageForBullet = {
+  run: function run(test) {
+
+    var selector = 'li';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if ($(this).children('img').length > 0) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    guidelines: [],
+    tags: ['list', 'content']
+  }
+};
+module.exports = LiDontUseImageForBullet;
+
+},{"Case":30}],351:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var LinkHasAUniqueContext = {
+  run: function run(test) {
+
+    var blockStyle = ['block', 'flex', 'list-item', 'table', 'table-caption', 'table-cell'];
+
+    function getLinkSentence(link) {
+      // Find the closest block-like element
+      var $link = $(link);
+      var block = $link;
+      var text = simplifyText($link.text());
+
+      while (!block.is('body, html') && blockStyle.indexOf(block.css('display')) === -1) {
+        block = block.parent();
+      }
+
+      var sentences = block.text().match(/[^\.!\?]+[\.!\?]+/g);
+      if (sentences === null) {
+        sentences = [block.text()];
+      }
+
+      for (var i = 0; i < sentences.length; i += 1) {
+        if (simplifyText(sentences[i]).indexOf(text) !== -1) {
+          return sentences[i].trim();
+        }
+      }
+    }
+
+    function simplifyText(text) {
+      var tmp = text.match(/\w+/g);
+      if (tmp !== null) {
+        text = tmp.join(' ');
+      }
+      return text.toLowerCase();
+    }
+
+    function txtNotAlike(a, b) {
+      return simplifyText('' + a) !== simplifyText('' + b);
+    }
+
+    function shareContext(linkA, linkB) {
+
+      if (linkA.href === linkB.href) {
+        return false;
+      } else if (txtNotAlike(linkA.title, linkB.title)) {
+        return false;
+      }
+
+      // Find the nearest list item, paragraph or table cell of both items
+      var linkACtxt = $(linkA).closest('p, li, dd, dt, td, th');
+      var linkBCtxt = $(linkB).closest('p, li, dd, dt, td, th');
+
+      // check if they are different
+      if (linkACtxt.length !== 0 && linkBCtxt.length !== 0 && txtNotAlike(getLinkText(linkACtxt), getLinkText(linkBCtxt))) {
+        return false;
+      }
+
+      // If one is a table cell and the other isn't, allow it
+      if (linkACtxt.is('td, th') && !linkBCtxt.is('td, th')) {
+        return false;
+      } else if (linkACtxt.is('td, th') && linkBCtxt.is('td, th')) {
+        var headerDiff = false;
+        var headersA = [];
+
+        // Make a list with the simplified text of link A
+        linkACtxt.tableHeaders().each(function () {
+          headersA.push(simplifyText($(this).text()));
+        });
+
+        // Compare it to the header context of link B
+        linkBCtxt.tableHeaders().each(function () {
+          var text = simplifyText($(this).text());
+          var pos = headersA.indexOf(text);
+          // Link B has something not part of link A's context, pass
+          if (pos === -1) {
+            headerDiff = true;
+          }
+          // Remove items part of both header lists
+          else {
+              headersA.splice(pos, 1);
+            }
+        });
+        // Pass if A or B had a header not part of the other.
+        if (headerDiff || headersA.length > 0) {
+          return false;
+        }
+      }
+
+      if (txtNotAlike(getLinkSentence(linkA), getLinkSentence(linkB))) {
+        return false;
+      }
+
+      return true;
+    }
+
+    /**
+     * Get the text value of the link, including alt attributes
+     * @param  {jQuery} $link
+     * @return {string}
+     */
+    function getLinkText($link) {
+      var text = $link.text();
+      $link.find('img[alt]').each(function () {
+        text += ' ' + this.alt.trim();
+      });
+      return simplifyText(text);
+    }
+
+    test.get('$scope').each(function () {
+      var $scope = $(this);
+      var $links = $scope.find('a[href]:visible');
+      var linkMap = {};
+
+      if ($links.length === 0) {
+        var _case = Case({
+          element: this,
+          status: 'inapplicable'
+        });
+        test.add(_case);
+      }
+
+      // Make a map with the link text as key and an array of links with
+      // that link text as it's value
+      $links.each(function () {
+        var text = getLinkText($(this));
+        if (typeof linkMap[text] === 'undefined') {
+          linkMap[text] = [];
+        }
+        linkMap[text].push(this);
+      });
+
+      // Iterate over each item in the linkMap
+      $.each(linkMap, function (linkText, links) {
+
+        // Link text is not unique, so the context should be checked
+        while (links.length > 1) {
+          var linkA = links.pop();
+          var linkAFailed = false;
+
+          for (var i = links.length - 1; i >= 0; i -= 1) {
+            var linkB = links[i];
+            if (shareContext(linkA, linkB)) {
+              linkAFailed = true;
+              links.splice(i, 1);
+              test.add(Case({
+                element: linkB,
+                status: 'failed'
+              }));
+            }
+          }
+          test.add(Case({
+            element: linkA,
+            status: linkAFailed ? 'failed' : 'passed'
+          }));
+        }
+
+        // The link text is unique, pass
+        if (links.length === 1) {
+          test.add(Case({
+            element: links[0],
+            status: 'passed'
+          }));
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should have a unique context',
+      nl: 'Links moeten een unieke context hebben'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = LinkHasAUniqueContext;
+
+},{"Case":30}],352:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ListNotUsedForFormatting = {
+  run: function run(test) {
+    test.get('$scope').find('ol, ul').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).find('li').length < 2) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Lists should not be used for formatting',
+      nl: 'Lijsten worden niet gebruikt voor opmaak'
+    },
+    description: {
+      en: 'Lists like <code>ul</code> and <code>ol</code> are to provide a structured list, and should not be used to format text. This test views any list with just one item as suspicious, but should be manually reviewed.',
+      nl: 'Lijsten zoals <code>ul</code> en <code>ol</code> zijn bedoeld om gestructureerde lijsten te maken. Ze moeten niet gebruikt worden om text op te maken. Controleer of deze lijst echt bedoeld is als lijst of om tekst op te maken.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['F1']
+        }
+      }
+    },
+    tags: ['list', 'content']
+  }
+};
+module.exports = ListNotUsedForFormatting;
+
+},{"Case":30}],353:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ListOfLinksUseList = {
+  run: function run(test) {
+    var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
+    test.get('$scope').find('a').each(function () {
+      var _case = test.add(Case({
+        element: this
+      }));
+      // Only test if there's another a tag.
+      if ($(this).next('a').length) {
+        var nextText = $(this).get(0).nextSibling.wholeText.replace(unreadableText, '');
+        if (!$(this).parent('li').length && IsUnreadable(nextText)) {
+          _case.set({
+            status: 'failed'
+          });
+        } else {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'A list of links separated by non-readable characters should be in an ul or ol',
+      nl: 'Een lijst van links die worden gescheiden door onleesbare tekens moeten in een bulleted of genummerde lijst staan'
+    },
+    description: {
+      en: 'A list of links without separation between them should be placed in an ol or ul element.',
+      nl: 'Een lijst van links die niet duidelijk gescheiden zijn moeten in een bulleted of genummerde lijst staan.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H48']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ListOfLinksUseList;
+
+},{"Case":30,"IsUnreadable":11}],354:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var MarqueeIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'marquee';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The \"marquee\" tag should not be used',
+      nl: 'De \"marquee\"-tag wordt niet gebruikt'
+    },
+    description: {
+      en: 'The <code>marquee</code> element is difficult for users to read and is not a standard HTML element. Try to find another way to convey the importance of this text.',
+      nl: 'Het <code>marquee</code>-element is moeilijk te lezen voor gebruikers en is geen standaard HTML-element. Gebruik een andere manier om aan te duiden dat het belangrijke content is.'
+    },
+    guidelines: [],
+    tags: ['deprecated', 'content']
+  }
+};
+module.exports = MarqueeIsNotUsed;
+
+},{"Case":30}],355:[function(require,module,exports){
+/**
+ * @todo Needs refinement.
+ *
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var MenuNotUsedToFormatText = {
+  run: function run(test) {
+
+    var selector = 'menu:not(menu li:parent(menu))';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Menu elements should not be used for formatting',
+      nl: 'Menu-elementen worden niet gebruikt voor opmaak'
+    },
+    description: {
+      en: 'Menu is a deprecated tag, but is still honored in a transitional DTD. Menu tags are to provide structure for a document and should not be used for formatting. If a menu tag is to be used, it should only contain an ordered or unordered list of links.',
+      nl: 'Menu is een afgekeurd tag, maar wordt nog wel gebruikt om structuur aan een document te geven. Het mag niet worden gebruikt voor opmaak. Als een menu-tag wordt gebruikt, mag het alleen bulleted of genummerde lijsten bevatten.'
+    },
+    guidelines: [],
+    tags: ['list', 'content']
+  }
+};
+module.exports = MenuNotUsedToFormatText;
+
+},{"Case":30}],356:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var NewWindowIsOpened = {
+  run: function run(test) {
+
+    var fenestrate = window.open;
+    var _case;
+
+    window.open = function (event) {
+      test.each(function (index, _case) {
+        var href = _case.get('element').href;
+        if (href.indexOf(event) > -1) {
+          _case.set('status', 'failed');
+        }
+      });
+    };
+
+    test.get('$scope').find('a').each(function () {
+      // Save a reference to this clicked tag.
+      _case = Case({
+        element: this
+      });
+      test.add(_case);
+      $(this).trigger('click');
+    });
+
+    window.open = fenestrate;
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'A link should not open a new window',
+      nl: 'Een link opent geen nieuw scherm'
+    },
+    description: {
+      en: 'Avoid confusion that may be caused by the appearance of new windows that were not requested by the user.',
+      nl: 'Voorkom verwarring die veroorzaakt wordt door het openen van nieuwe schermen die de gebruiker niet verwacht.'
+    },
+    guidelines: {
+      wcag: {
+        '2.0.0': {
+          techniques: ['H83']
+        }
+      }
+    },
+    tags: ['javascript', 'html']
+  }
+};
+module.exports = NewWindowIsOpened;
+
+},{"Case":30}],357:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var ObjectMustContainText = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'object',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Objects must contain their text equivalents',
+      nl: 'Objecten moeten hun tekstuele equivalent bevatten'
+    },
+    description: {
+      en: 'All <code>object</code> elements should contain a text equivalent if the object cannot be rendered.',
+      nl: 'Alle <code>object</code>-elementen moeten een tekstequivalent bevatten in het geval het object niet getoond kan worden.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['FLASH1', 'H27']
+        }
+      }
+    },
+    tags: ['objects', 'content']
+  }
+};
+module.exports = ObjectMustContainText;
+
+},{"PlaceholderComponent":16}],358:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var ObjectMustHaveEmbed = {
+  run: function run(test) {
+
+    var selector = 'object';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasEmbed = $(this).find('embed').length > 0;
+
+          // If a test is defined, then use it
+          if (hasEmbed) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Every object should contain an \"embed\" element',
+      nl: 'Elk object moet een \"embed\"-element bevatten'
+    },
+    description: {
+      en: 'Every <code>object</code> element must also contain an <code>embed</code> element.',
+      nl: 'Elk <code>object</code>-element moet ook een \"embed\"-element bevatten.'
+    },
+    guidelines: [],
+    tags: ['objects', 'content']
+  }
+};
+module.exports = ObjectMustHaveEmbed;
+
+},{"Case":30}],359:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var ObjectMustHaveTitle = {
+  run: function run(test) {
+
+    var selector = 'object';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasTitle = this.hasAttribute('title');
+
+          // If a test is defined, then use it
+          if (hasTitle) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Objects should have a title attribute',
+      nl: 'Objecten moeten een titelattribuut hebben'
+    },
+    description: {
+      en: 'All <code>object</code> elements should contain a \"title\" attribute.',
+      nl: 'Alle <code>object</code>-elementen moeten een \"titel\"-attribuut bevatten.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H27']
+        }
+      }
+    },
+    tags: ['objects', 'content']
+  }
+};
+module.exports = ObjectMustHaveTitle;
+
+},{"Case":30}],360:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var ObjectMustHaveValidTitle = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'object',
+      attribute: 'title',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Objects must not have an empty title attribute',
+      nl: 'Objecten hebben geen leeg titelattribuut'
+    },
+    description: {
+      en: 'All <code>object</code> elements should have a \"title\" attribute which is not empty.',
+      nl: 'All <code>object</code>-elementen hebben een \"titel\"-attribuut dat gevuld is.'
+    },
+    guidelines: [],
+    tags: ['objects', 'content']
+  }
+};
+module.exports = ObjectMustHaveValidTitle;
+
+},{"PlaceholderComponent":16}],361:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var SuspectPHeaderTags = require('SuspectPHeaderTags');
+var SuspectPCSSStyles = require('SuspectPCSSStyles');
+var PNotUsedAsHeader = {
+  run: function run(test) {
+    test.get('$scope').find('p').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+
+      var $paragraph = $(this);
+
+      // If the text has a period, it is probably a sentence and not a header.
+      if ($paragraph.text().search(/[\.!:;]/) >= 1) {
+        _case.set({
+          status: 'passed'
+        });
+      }
+      var failed = false;
+      // Look for any indication that the paragraph contains at least a full sentence
+      if ($(this).text().search(/[\.!:;]/) < 1) {
+        var priorParagraph = $paragraph.prev('p');
+        // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
+        $.each(SuspectPHeaderTags, function (index, tag) {
+          if ($paragraph.find(tag).length) {
+            $paragraph.find(tag).each(function () {
+              if ($(this).text().trim() === $paragraph.text().trim()) {
+                _case.set({
+                  status: 'failed'
+                });
+                failed = true;
+              }
+            });
+          }
+        });
+        // Checking if previous paragraph has a different values for style properties given in SuspectPCSSStyles.
+        if (priorParagraph.length) {
+          $.each(SuspectPCSSStyles, function (index, cssProperty) {
+            if ($paragraph.css(cssProperty) !== priorParagraph.css(cssProperty)) {
+              _case.set({
+                status: 'failed'
+              });
+              failed = true;
+              return false; // Micro optimization - we no longer need to iterate here. jQuery css() method might be expensive.
+            }
+          });
+        }
+        if ($paragraph.css('font-weight') === 'bold') {
+          _case.set({
+            status: 'failed'
+          });
+          failed = true;
+        }
+      }
+      if (!failed) {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Paragraphs must not be used for headers',
+      nl: 'Alinea\'s worden niet gebruikt als header'
+    },
+    description: {
+      en: 'Headers like <code>h1</code> - <code>h6</code> are extremely useful for non-sighted users to navigate the structure of the page, and formatting a paragraph to just be big or bold, while it might visually look like a header, does not make it one.',
+      nl: 'Headers van <code>h1</code> - <code>h6</code> zijn handig voor blinde en slechtziende gebruikers om door een pagina te navigeren. Maak alinea\'s daarom niet op zodat deze lijkt op een header. Dit werkt verwarrend.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['G141', 'H42']
+        },
+        '2.4.10': {
+          techniques: ['G141']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = PNotUsedAsHeader;
+
+},{"Case":30,"SuspectPCSSStyles":21,"SuspectPHeaderTags":22}],362:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var LabelComponent = require('LabelComponent');
+
+var PasswordHasLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="password"]'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All password input elements should have a corresponding label',
+      nl: 'Alle paswoordinvoerelementen hebben een bijbehorend label'
+    },
+    description: {
+      en: 'All <code>input</code> elements with a type of \"password\"should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle <code>input</code>-elementen van het type \"paswoord\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      508: ['n'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = PasswordHasLabel;
+
+},{"LabelComponent":12}],363:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var PreShouldNotBeUsedForTabularLayout = {
+  run: function run(test) {
+    test.get('$scope').find('pre').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      var rows = $(this).text().split(/[\n\r]+/);
+      _case.set({
+        status: rows.length > 1 && $(this).text().search(/\t/) > -1 ? 'failed' : 'passed'
+      });
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Pre elements should not be used for tabular data',
+      nl: 'Pre-elementen worden niet gebruikt om data als tabel te rangschikken'
+    },
+    description: {
+      en: 'If a <code>pre</code> element is used for tabular data, change the data to use a well-formed table.',
+      nl: 'Als een <code>pre</code>-element wordt gebruikt om data als tabel te rangschikken, verander de data dan zodat je een echte tabel kunt maken.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F33', 'F34', 'F48']
+        },
+        '1.3.2': {
+          techniques: ['F33', 'F34']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = PreShouldNotBeUsedForTabularLayout;
+
+},{"Case":30}],364:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var LabelComponent = require('LabelComponent');
+
+var RadioHasLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="radio"]'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"radio\" input elements have a corresponding label',
+      nl: 'Alle invoerelementen van het type \"radio\" hebben een bijbehorend label'
+    },
+    description: {
+      en: 'All <code>input</code> elements of type \"radio\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle <code>input</code>-elementen van het \"radio\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      508: ['n'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = RadioHasLabel;
+
+},{"LabelComponent":12}],365:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var EventComponent = require('EventComponent');
+
+var ScriptOnclickRequiresOnKeypress = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onclick]',
+      correspondingEvent: 'onkeypress',
+      searchEvent: 'onclick'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'If an element has an \"onclick\" attribute it should also have an \"onkeypress\" attribute',
+      nl: 'Als een element een \"onclick\"-attribuut heeft, moet het ook een \"onkeypress\"-attribuut hebben'
+    },
+    description: {
+      en: 'If an element has an \"onclick\" attribute it should also have an \"onkeypress\" attribute',
+      nl: 'Als een element een \"onclick\"-attribuut heeft, moet het ook een \"onkeypress\"-attribuut hebben'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnclickRequiresOnKeypress;
+
+},{"EventComponent":6}],366:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var EventComponent = require('EventComponent');
+
+var ScriptOndblclickRequiresOnKeypress = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[ondblclick]',
+      correspondingEvent: 'onkeypress',
+      searchEvent: 'ondblclick'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Any element with an \"ondblclick\" attribute should have a keyboard-related action as well',
+      nl: 'Elk element met een \"ondblclick\"-attribuut moet een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord'
+    },
+    description: {
+      en: 'If an element has an \"ondblclick\" attribute, it should also have a keyboard-related action.',
+      nl: 'Als een element een \"ondblclick\"-attribuut heeft, moet het ook een actie bevatten die kan worden uitgevoerd met een toetsenbord.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOndblclickRequiresOnKeypress;
+
+},{"EventComponent":6}],367:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var EventComponent = require('EventComponent');
+
+var ScriptOnmousedownRequiresOnKeypress = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onmousedown]',
+      correspondingEvent: 'onkeydown',
+      searchEvent: 'onmousedown'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'If an element has a \"mousedown\" attribute it should also have an \"onkeydown\" attribute',
+      nl: 'Als een element een \"mousedown\"-attribuut heeft moet het ook een \"onkeydown\"-attribuut hebben'
+    },
+    description: {
+      en: 'If an element has a \"mousedown\" attribute it should also have an \"onkeydown\" attribute.',
+      nl: 'Als een element een \"mousedown\"-attribuut heeft moet het ook een \"onkeydown\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnmousedownRequiresOnKeypress;
+
+},{"EventComponent":6}],368:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var EventComponent = require('EventComponent');
+
+var ScriptOnmousemove = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onmousemove]',
+      correspondingEvent: 'onkeypress',
+      searchEvent: 'onmousemove'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Any element with an \"onmousemove\" attribute should have a keyboard-related action as well',
+      nl: 'Elk element met een \"onmousemove\"-attribuut moet een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord'
+    },
+    description: {
+      en: 'If an element has an \"onmousemove\" attribute it should have a keyboard-related action as well.',
+      nl: 'Als een element een \"onmousemove\"-attribuut heeft, moet het een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnmousemove;
+
+},{"EventComponent":6}],369:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var EventComponent = require('EventComponent');
+
+var ScriptOnmouseoutHasOnmouseblur = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onmouseout]',
+      correspondingEvent: 'onblur',
+      searchEvent: 'onmouseout'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'If an element has a \"onmouseout\" attribute it should also have an \"onblur\" attribute',
+      nl: 'Als een element een \"onmouseout\"-attribuut heeft, moet het ook een \"onblur\" attribuut hebben'
+    },
+    description: {
+      en: 'If an element has a \"onmouseout\" attribute it should also have an \"onblur\" attribute.',
+      nl: 'Als een element een \"onmouseout\"-attribuut heeft, moet het ook een \"onblur\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnmouseoutHasOnmouseblur;
+
+},{"EventComponent":6}],370:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var EventComponent = require('EventComponent');
+
+var ScriptOnmouseoverHasOnfocus = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onmouseover]',
+      correspondingEvent: 'onfocus',
+      searchEvent: 'onmouseover'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'If an element has a \"onmouseover\" attribute it should also have an \"onfocus\" attribute',
+      nl: 'Als een element een \"onmouseover\"-attribuut heeft, moet het ook een \"onfocus\"-attribuut hebben'
+    },
+    description: {
+      en: 'If an element has a \"onmouseover\" attribute it should also have an \"onfocus\" attribute.',
+      nl: 'Als een element een \"onmouseover\"-attribuut heeft, moet het ook een \"onfocus\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnmouseoverHasOnfocus;
+
+},{"EventComponent":6}],371:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var EventComponent = require('EventComponent');
+
+var ScriptOnmouseupHasOnkeyup = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onmouseup]',
+      correspondingEvent: 'onkeyup',
+      searchEvent: 'onmouseup'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'If an element has a \"onmouseup\" attribute it should also have an \"onkeyup\" attribute',
+      nl: 'Als een element een \"onmouseup\"-attribuut heeft, moet het ook een \"onkeyup\"-attribuut hebben'
+    },
+    description: {
+      en: 'If an element has a \"onmouseup\" attribute it should also have an \"onkeyup\" attribute.',
+      nl: 'Als een element een \"onmouseup\"-attribuut heeft, moet het ook een \"onkeyup\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnmouseupHasOnkeyup;
+
+},{"EventComponent":6}],372:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var LabelComponent = require('LabelComponent');
+
+var SelectHasAssociatedLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'select'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All select elements have an explicitly associated label',
+      nl: 'Alle select-elementen hebben een expliciet bijbehorend label'
+    },
+    description: {
+      en: 'All <code>select</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle <code>select</code>-elementen moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = SelectHasAssociatedLabel;
+
+},{"LabelComponent":12}],373:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var HasEventListenerComponent = require('HasEventListenerComponent');
+var SelectJumpMenu = {
+  run: function run(test) {
+    var $scope = test.get('$scope');
+    if ($scope.find('select').length === 0) {
+      return;
+    }
+
+    $scope.find('select').each(function () {
+      if ($(this).parent('form').find(':submit').length === 0 && HasEventListenerComponent($(this), 'change')) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Select jump menus should jump on button press, not on state change',
+      nl: 'Select jump menu\'s moeten springen wanneer de knop wordt gebruikt, niet bij statusverandering'
+    },
+    description: {
+      en: 'If you wish to use a \'Jump\' menu with a select item that then redirects users to another page, the jump should occur on the user pressing a button, rather than on the change event of that select element.',
+      nl: 'Als je een \'Jump\'-menu wilt gebruiken met een select item dat gebruikers naar een andere pagina verwijst, moet de verwijzing plaatsvinden als de gebruiker een knop gebruikt en niet op het moment dat het select element verandert.'
+    },
+    guidelines: {
+      wcag: {
+        '3.2.2': {
+          techniques: ['F37']
+        },
+        '3.2.5': {
+          techniques: ['F9']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = SelectJumpMenu;
+
+},{"Case":30,"HasEventListenerComponent":8}],374:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var SiteMapStringsComponent = require('SiteMapStringsComponent');
+var $ = require('jquery/dist/jquery');
+
+var SiteMap = {
+  run: function run(test) {
+    var set = false;
+    var _case = Case({
+      element: test.get('$scope').get(0)
+    });
+    test.add(_case);
+    test.get('$scope').find('a').each(function () {
+      var text = $(this).text().toLowerCase();
+      $.each(SiteMapStringsComponent, function (index, string) {
+        if (text.search(string) > -1) {
+          set = true;
+          return;
+        }
+      });
+      if (set === false) {
+        _case.set({
+          status: 'failed'
+        });
+        return;
+      }
+
+      if (set) {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Websites must have a site map',
+      nl: 'Websites moeten een sitemap hebben'
+    },
+    description: {
+      en: 'Every web site should have a page which provides a site map or another method to navigate most of the site from a single page to save time for users of assistive devices.',
+      nl: 'Elke website moet een pagina hebben waarop een sitemap staat of een andere methode om op de site te navigeren vanaf een pagina. Dit spaart gebruikers die hulpmiddelen gebruiken tijd.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.5': {
+          techniques: ['G63']
+        },
+        '2.4.8': {
+          techniques: ['G63']
+        }
+      }
+    },
+    tags: ['document']
+  }
+};
+
+module.exports = SiteMap;
+
+},{"Case":30,"SiteMapStringsComponent":19,"jquery/dist/jquery":228}],375:[function(require,module,exports){
+/**globals console:true */
+'use strict';
+
+var Case = require('Case');
+
+var SkipContentStringsComponent = require('SkipContentStringsComponent');
+
+var SkipToContentLinkProvided = {
+  run: function run(test) {
+    test.get('$scope').each(function () {
+      var $local = $(this);
+      var skipLinkFound = false;
+
+      $local.find('a[href*="#"]').each(function () {
+        if (skipLinkFound) {
+          return;
+        }
+        var $link = $(this);
+
+        var fragment = $link.attr('href').split('#').pop();
+        var $target = $local.find('#' + fragment);
+        var strs = SkipContentStringsComponent.slice();
+        while (!skipLinkFound && strs.length) {
+          var str = strs.pop();
+          if ($link.text().search(str) > -1 && $target.length) {
+            $link.focus();
+            if ($link.is(':visible') && $link.css('visibility') !== 'hidden') {
+              skipLinkFound = true;
+              test.add(Case({
+                element: $link.get(0),
+                status: 'passed'
+              }));
+              return;
+            }
+            $link.blur();
+          }
+        }
+      });
+      if (!skipLinkFound) {
+        test.add(Case({
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'A \"skip to content\" link should exist as one of the first links on the page',
+      nl: 'Er moet een \"skip to content\"-link zijn als een van de eerste links op de pagina'
+    },
+    description: {
+      en: 'A link reading \"skip to content\" should be the first link on a page.',
+      nl: 'Er moet een link zijn om naar de content te navigeren als een van de eerste links op de pagina.'
+    },
+    guidelines: {
+      508: ['o'],
+      wcag: {
+        '2.4.1': {
+          techniques: ['G1']
+        }
+      }
+    },
+    tags: ['document']
+  }
+};
+module.exports = SkipToContentLinkProvided;
+
+},{"Case":30,"SkipContentStringsComponent":20}],376:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var SvgContainsTitle = {
+  run: function run(test) {
+
+    var selector = 'svg';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasTitle = $(this).find('title').length === 1;
+
+          // If a test is defined, then use it
+          if (hasTitle) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Inline SVG should use Title elements',
+      nl: 'Inline SVG moet titelelementen gebruiken'
+    },
+    description: {
+      en: 'Any inline SVG image should have an embedded <code>title</code> element.',
+      nl: 'Elke inline SVG-afbeelding moet een ingebed <code>title</code>-element hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['F65']
+        }
+      }
+    },
+    tags: ['image', 'svg', 'content']
+  }
+};
+module.exports = SvgContainsTitle;
+
+},{"Case":30}],377:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TabIndexFollowsLogicalOrder = {
+  run: function run(test) {
+    test.get('$scope').each(function () {
+      var $local = $(this);
+      var index = 0;
+      $local.find('[tabindex]').each(function () {
+        var $el = $(this);
+        var tabindex = $el.attr('tabindex');
+        if (parseInt(tabindex, 10) >= 0 && parseInt(tabindex, 10) !== index + 1) {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        } else {
+          test.add(Case({
+            element: this,
+            status: 'passed'
+          }));
+        }
+        index++;
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'The tab order of a document is logical',
+      nl: 'De tabvolgorde van een document is logisch'
+    },
+    description: {
+      en: 'Check that the tab order of a page is logical.',
+      nl: 'Controleer of de tabvolgorde van een pagina logisch is.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.3': {
+          techniques: ['H4']
+        }
+      }
+    },
+    tags: ['document']
+  }
+};
+module.exports = TabIndexFollowsLogicalOrder;
+
+},{"Case":30}],378:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TableAxisHasCorrespondingId = {
+  run: function run(test) {
+    test.get('$scope').find('[axis]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).parents('table').first().find('th#' + $(this).attr('axis')).length === 0) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Axis attribute should have corresponding IDs',
+      nl: 'Axis-attributen moeten bijbehorende IDs hebben'
+    },
+    description: {
+      en: 'When using the axis attribute to group cells together, ensure they have a target element with the same ID.',
+      nl: 'Wanneer er axis-attributen gebruikt worden om cellen te groeperen, zorg er dan voor dat hun doelelement hetzelfde ID heeft.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F17']
+        },
+        '4.1.1': {
+          techniques: ['F17']
+        }
+      }
+    }
+  }
+};
+module.exports = TableAxisHasCorrespondingId;
+
+},{"Case":30}],379:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var TableDataShouldHaveTh = {
+  run: function run(test) {
+
+    var selector = 'table';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasHeading = $(this).find('th').length > 0;
+          // If a test is defined, then use it
+          if (hasHeading) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Data tables should contain \"th\" elements',
+      nl: 'Datatabellen moeten \"th\"-elementen bevatten'
+    },
+    description: {
+      en: 'Tables which contain data (as opposed to layout tables) should contain <code>th</code> elements to mark headers for screen readers and enhance the structure of the document.',
+      nl: 'Tabellen die data bevatten (in tegenstelling tot lay-out tabellen) moeten <code>th</code>-elementen bevatten om koppen te markeren voor schermlezers en om de structuur van het document te verbeteren.'
+    },
+    guidelines: {
+      508: ['g'],
+      wcag: {
+        '1.3.1': {
+          techniques: ['F91']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableDataShouldHaveTh;
+
+},{"Case":30}],380:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableLayoutDataShouldNotHaveTh = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+
+      if ($(this).find('th').length !== 0) {
+        if (!IsDataTableComponent($(this))) {
+          _case.set({
+            status: 'failed'
+          });
+        } else {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      } else {
+        _case.set({
+          status: 'inapplicable'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Layout tables should not contain \"th\" elements',
+      nl: 'Lay-out tabellen bevatten geen \"th\"-elementen'
+    },
+    description: {
+      en: 'Tables which are used purely for layout (as opposed to data tables), <strong>should not</strong> contain <code>th</code> elements, which would make the table appear to be a data table.',
+      nl: 'Tabellen die alleen voor lay-out worden gebruikt (in tegenstelling tot datatabellen), moeten geen <code>th</code>-elementen bevatten, omdat deze de indruk wekken dat het een datatabel betreft.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F46']
+        }
+      }
+    },
+    tags: ['table', 'layout', 'content']
+  }
+};
+module.exports = TableLayoutDataShouldNotHaveTh;
+
+},{"Case":30,"IsDataTableComponent":10}],381:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableLayoutHasNoCaption = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      if ($(this).find('caption').length) {
+        if (!IsDataTableComponent($(this))) {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        } else {
+          test.add(Case({
+            element: this,
+            status: 'passed'
+          }));
+        }
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'inapplicable'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All tables used for layout have no \"caption\" element',
+      nl: 'Alle tabellen die alleen voor lay-out worden gebruikt hebben geen \"caption\"-element'
+    },
+    description: {
+      en: 'If a table contains no data, and is used simply for layout, then it should not contain a <code>caption</code> element.',
+      nl: 'Als een tabel geen data bevat en alle voor lay-out wordt gebruikt, moet hij geen <code>caption</code>-element krijgen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F46']
+        }
+      }
+    },
+    tags: ['table', 'layout', 'content']
+  }
+};
+module.exports = TableLayoutHasNoCaption;
+
+},{"Case":30,"IsDataTableComponent":10}],382:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var TableLayoutHasNoSummary = {
+  run: function run(test) {
+    test.get('$scope').each(function () {
+      var $local = $(this);
+      $local.find('table[summary]').each(function () {
+        var _case = test.add(Case({
+          element: this
+        }));
+        if (!IsDataTableComponent($(this)) && !IsUnreadable($(this).attr('summary'))) {
+          _case.set({ status: 'failed' });
+        } else {
+          _case.set({ status: 'passed' });
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'All tables used for layout have no summary or an empty summary',
+      nl: 'Alle tabellen die alleen voor lay-out worden gebruikt hebben geen samenvatting'
+    },
+    description: {
+      en: 'If a table contains no data, and is used simply for layout, then it should not have a \"summary\" attribute.',
+      nl: 'Als een tabel geen data bevat en alleen voor lay-out wordt gebruikt, moet hij geen \"summary\"-attribuut krijgen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F46']
+        }
+      }
+    },
+    tags: ['table', 'layout', 'content']
+  }
+};
+module.exports = TableLayoutHasNoSummary;
+
+},{"Case":30,"IsDataTableComponent":10,"IsUnreadable":11}],383:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableLayoutMakesSenseLinearized = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      if (!IsDataTableComponent($(this))) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All tables used for layout should make sense when removed',
+      nl: 'Als tabellen voor lay-out worden gebruikt moet de pagina nog duidelijk blijven als de tabel wordt verwijderd'
+    },
+    description: {
+      en: 'If a <code>table</code> element is used for layout purposes only, then the content of the table should make sense if the table is linearized.',
+      nl: 'Als een <code>table</code>-element alleen voor lay-out-doeleinden wordt gebruikt, moet de inhoud van de tabel nog steeds duidelijk zijn als de tabel wordt verwijderd.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['G57']
+        },
+        '4.1.1': {
+          techniques: ['F49']
+        }
+      }
+    },
+    tags: ['table', 'layout', 'content']
+  }
+};
+module.exports = TableLayoutMakesSenseLinearized;
+
+},{"Case":30,"IsDataTableComponent":10}],384:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableNotUsedForLayout = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      if (!IsDataTableComponent($(this))) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Tables should not be used for layout',
+      nl: 'Tabellen moet niet worden gebruikt voor lay-out'
+    },
+    description: {
+      en: 'Tables are for data, not for creating a page layout. Consider using standard HTML and CSS techniques instead.',
+      nl: 'Tabellen zijn voor data, niet om een pagina op te maken. Gebruik hiervoor HTML en CSS.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['F49']
+        }
+      }
+    },
+    tags: ['table', 'layout', 'content']
+  }
+};
+module.exports = TableNotUsedForLayout;
+
+},{"Case":30,"IsDataTableComponent":10}],385:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableShouldUseHeaderIDs = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      var $table = $(this);
+      var tableFailed = false;
+      if (IsDataTableComponent($table)) {
+        $table.find('th').each(function () {
+          if (!tableFailed && !$(this).attr('id')) {
+            tableFailed = true;
+            test.add(Case({
+              element: $table.get(0),
+              status: 'failed'
+            }));
+          }
+        });
+        if (!tableFailed) {
+          $table.find('td[header]').each(function () {
+            if (!tableFailed) {
+              $.each($(this).attr('header').split(' '), function (index, id) {
+                if (!$table.find('#' + id).length) {
+                  tableFailed = true;
+                  test.add(Case({
+                    element: $table.get(0),
+                    status: 'failed'
+                  }));
+                }
+              });
+            }
+          });
+        }
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Table cells use IDs to identify headers',
+      nl: 'Tabelcellen gebruiken IDs om koppen te identificeren'
+    },
+    description: {
+      en: 'If a table is not being used for layout, it should use IDs and header attributes to identify table headers.',
+      nl: 'Een tabel moet IDs en header-attributen gebruiken om tabelkoppen te identificeren.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H43']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableShouldUseHeaderIDs;
+
+},{"Case":30,"IsDataTableComponent":10}],386:[function(require,module,exports){
+'use strict';
+
+var CleanStringComponent = require('CleanStringComponent');
+var Case = require('Case');
+var TableSummaryDoesNotDuplicateCaption = {
+  run: function run(test) {
+    test.get('$scope').find('table[summary]:has(caption)').each(function () {
+      if (CleanStringComponent($(this).attr('summary')) === CleanStringComponent($(this).find('caption:first').text())) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Table \"summary\" elements should not duplicate the \"caption\" element',
+      nl: 'Tabel \"summary\"-elementen mogen niet hetzelfde zijn als het \"caption\"-element'
+    },
+    description: {
+      en: 'The summary and the caption must be different, as both provide different information. A <code>caption</code>. /code element identifies the table, while the \"summary\" attribute describes the table contents.',
+      nl: 'De samenvatting en beschrijving van een tabel moeten verschillen, want ze bieden verschillende informatie. Een <code>caption</code>-element identificeert welke tabel het betreft en het \"summary\"-attribuut beschrijft de inhoud van de tabel.'
+    },
+    guidelines: [],
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableSummaryDoesNotDuplicateCaption;
+
+},{"Case":30,"CleanStringComponent":2}],387:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var TableSummaryIsEmpty = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'table',
+      attribute: 'summary',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'All data tables should have a summary',
+      nl: 'Alle datatabellen moeten een samenvatting hebben'
+    },
+    description: {
+      en: 'If a table contains data, it should have a \"summary\" attribute.',
+      nl: 'Als een tabel data bevat, moet hij een \"summary\"-attribuut hebben.'
+    },
+    guidelines: [],
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableSummaryIsEmpty;
+
+},{"PlaceholderComponent":16}],388:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TableSummaryIsNotTooLong = {
+  run: function run(test) {
+    test.get('$scope').find('table[summary]').each(function () {
+      if ($(this).attr('summary').trim().length > 100) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    guidelines: [],
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableSummaryIsNotTooLong;
+
+},{"Case":30}],389:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableUseColGroup = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      if (IsDataTableComponent($(this)) && !$(this).find('colgroup').length) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Group columns using \"colgroup\" or \"col\" elements',
+      nl: 'Groepeer kolommen met \"colgroup\"- of \"col\"-elementen'
+    },
+    description: {
+      en: 'To help complex table headers make sense, use <code>colgroup</code> or <code>col</code> to group them together.',
+      nl: 'Maak complexe tabelkoppen duidelijker door \"colgroup\"- of \"col\"-elementen te gebruiken om ze te groeperen.'
+    },
+    guidelines: [],
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableUseColGroup;
+
+},{"Case":30,"IsDataTableComponent":10}],390:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TableUsesAbbreviationForHeader = {
+  run: function run(test) {
+    test.get('$scope').find('th:not(th[abbr])').each(function () {
+      if ($(this).text().length > 20) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Table headers over 20 characters should provide an \"abbr\" attribute',
+      nl: 'Tabelkoppen met meer dan 20 tekens moeten een \"abbr\"-attribuut hebben'
+    },
+    description: {
+      en: 'For long table headers, use an \"abbr\" attribute that is less than short (less than 20 characters long).',
+      nl: 'Gebruik een \"abbr\"-attribuut korter dan 20 tekens voor lange tabelkoppen.'
+    },
+    guidelines: [],
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableUsesAbbreviationForHeader;
+
+},{"Case":30}],391:[function(require,module,exports){
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+'use strict';
+
+var Case = require('Case');
+
+var TableUsesCaption = {
+  run: function run(test) {
+
+    var selector = 'table';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasCaption = $(this).find('caption').length === 1;
+
+          // If a test is defined, then use it
+          if (hasCaption) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Data tables should contain a \"caption\" element if not described elsewhere',
+      nl: 'Datatabellen moeten een \"caption\"-element hebben als ze nergens anders beschreven worden'
+    },
+    description: {
+      en: 'Unless otherwise described in the document, tables should contain <code>caption</code> elements to describe the purpose of the table.',
+      nl: 'Tenzij elders in het document beschreven, moeten tabellen een \"caption\"-element hebben om het doel van de tabel te beschrijven.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H39']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableUsesCaption;
+
+},{"Case":30}],392:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TableUsesScopeForRow = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      $(this).find('td:first-child').each(function () {
+        var $next = $(this).next('td');
+        if ($(this).css('font-weight') === 'bold' && $next.css('font-weight') !== 'bold' || $(this).find('strong').length && !$next.find('strong').length) {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        }
+      });
+      $(this).find('td:last-child').each(function () {
+        var $prev = $(this).prev('td');
+        if ($(this).css('font-weight') === 'bold' && $prev.css('font-weight') !== 'bold' || $(this).find('strong').length && !$prev.find('strong').length) {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Data tables should use scoped headers for rows with headers',
+      nl: 'Datatabellen moeten het \"scope\"-attribuut gebruiken voor rijen met koppen'
+    },
+    description: {
+      en: 'Where there are table headers for both rows and columns, use the \"scope\" attribute to help relate those headers with their appropriate cells. This test looks for the first and last cells in each row and sees if they differ in layout or font weight.',
+      nl: 'Als er tabelkoppen zijn voor zowel rijen als kolommen, gebruik dan het \"scope\"-attribuut om het juiste verband te leggen tussen de koppen en bijbehorende cellen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H63']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableUsesScopeForRow;
+
+},{"Case":30}],393:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TabularDataIsInTable = {
+  run: function run(test) {
+    test.get('$scope').find('pre').each(function () {
+      if ($(this).html().search('\t') >= 0) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'All tabular information should use a table',
+      nl: 'Alle tabelinformatie moet ook daadwerkelijk in een tabel staan'
+    },
+    description: {
+      en: 'Tables should be used when displaying tabular information.',
+      nl: 'Gebruik een echte tabel wanneer je tabelinformatie wilt tonen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F33', 'F34', 'F48']
+        },
+        '1.3.2': {
+          techniques: ['F33', 'F34']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = TabularDataIsInTable;
+
+},{"Case":30}],394:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ConvertToPxComponent = require('ConvertToPxComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var TextSelectorComponent = require('TextSelectorComponent');
+
+var TextIsNotSmall = {
+  run: function run(test) {
+    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
+      return TextNodeFilterComponent(element);
+    }).each(function () {
+      var fontSize = $(this).css('font-size');
+      if (fontSize.search('em') > 0) {
+        fontSize = ConvertToPxComponent(fontSize);
+      }
+      fontSize = parseInt(fontSize.replace('px', ''), 10);
+
+      if (fontSize < 10) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'The text size is not less than 9 pixels high',
+      nl: 'De grootte van de tekst is meer dan 8 pixels hoog'
+    },
+    description: {
+      en: 'To help users with difficulty reading small text, ensure text size is no less than 9 pixels high.',
+      nl: 'Help gebruikers die moeite hebben met het lezen van kleine letters, door ervoor te zorgen dat tekst groter is dan 8 pixels hoog.'
+    },
+    guidelines: [],
+    tags: ['textsize', 'content']
+  }
+};
+module.exports = TextIsNotSmall;
+
+},{"Case":30,"ConvertToPxComponent":5,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],395:[function(require,module,exports){
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+'use strict';
+
+var LabelComponent = require('LabelComponent');
+
+var TextareaHasAssociatedLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'textarea'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All textareas should have a corresponding label',
+      nl: 'Alle \"textarea\"-elementen moeten een bijbehorend label hebben'
+    },
+    description: {
+      en: 'All <code>textarea</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle \"textarea\"-elementen moeten een bijbehorend label hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = TextareaHasAssociatedLabel;
+
+},{"LabelComponent":12}],396:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var $ = require('jquery/dist/jquery');
+var VideoMayBePresent = {
+  run: function run(test) {
+
+    var videoExtensions = ['webm', 'flv', 'ogv', 'ogg', 'avi', 'mov', 'qt', 'wmv', 'asf', 'mp4', 'm4p', 'm4v', 'mpg', 'mp2', 'mpeg', 'mpg', 'mpe', 'mpv', 'm2v', '3gp', '3g2'];
+    var videoHosts = ['//www.youtube.com/embed/', '//player.vimeo.com/video/'];
+
+    test.get('$scope').each(function () {
+      var $this = $(this);
+      var hasCase = false; // Test if a case has been created
+
+      // video elm is definately a video, and objects could be too.
+      $this.find('object, video').each(function () {
+        hasCase = true;
+        test.add(Case({
+          element: this,
+          status: 'cantTell'
+        }));
+      });
+
+      // Links refering to files with an video extensions are probably video
+      // though the file may not exist.
+      $this.find('a[href]').each(function () {
+        var $this = $(this);
+        var extension = $this.attr('href').split('.').pop();
+        if ($.inArray(extension, videoExtensions) !== -1) {
+          hasCase = true;
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        }
+      });
+
+      // some iframes with URL's of known video providers are also probably videos
+      $this.find('iframe').each(function () {
+        if (this.src.indexOf(videoHosts[0]) !== -1 || this.src.indexOf(videoHosts[1]) !== -1) {
+          hasCase = true;
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        }
+      });
+
+      // if no case was added, return inapplicable
+      if (!hasCase) {
+        test.add(Case({
+          element: this,
+          status: 'inapplicable'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Video or object uses a link that points to a file with a video extension',
+      nl: 'Video of object met een link naar een bestand met een video extensie'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['link', 'video']
+  }
+};
+module.exports = VideoMayBePresent;
+
+},{"Case":30,"jquery/dist/jquery":228}],397:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var VideoComponent = require('VideoComponent');
+var VideosEmbeddedOrLinkedNeedCaptions = {
+  run: function run(test) {
+
+    VideoComponent.findVideos(test.get('$scope'), function (element, pass) {
+      if (!pass) {
+        test.add(Case({
+          element: element[0],
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: element[0],
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All linked or embedded videos need captions',
+      nl: 'Alle gekoppelde of ingebedde video\'s moeten bijschriften hebben'
+    },
+    description: {
+      en: 'Any video hosted or otherwise which is linked or embedded must have a caption.',
+      nl: 'Elke video die is gekoppeld of ingebed in content moet een bijschrift hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.2.2': {
+          techniques: ['G87']
+        },
+        '1.2.4': {
+          techniques: ['G87']
+        }
+      }
+    },
+    tags: ['media', 'content']
+  }
+};
+module.exports = VideosEmbeddedOrLinkedNeedCaptions;
+
+},{"Case":30,"VideoComponent":29}],398:[function(require,module,exports){
+'use strict';
+
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var WhiteSpaceInWord = {
+  run: function run(test) {
+    var whitespaceGroup, nonWhitespace;
+    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
+      return TextNodeFilterComponent(element);
+    }).each(function () {
+      nonWhitespace = $(this).text() ? $(this).text().match(/[^\s\\]/g) : false;
+      whitespaceGroup = $(this).text() ? $(this).text().match(/[^\s\\]\s[^\s\\]/g) : false;
+      if (nonWhitespace && whitespaceGroup && whitespaceGroup.length > 3 && whitespaceGroup.length >= nonWhitespace.length / 2 - 2) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Whitespace should not be used between characters in a word',
+      nl: 'Zet geen witruimte tussen letters in een woord'
+    },
+    description: {
+      en: 'Using extra whitespace between letters in a word causes screen readers to not interpret the word correctly, use the letter-spacing CSS property instead.',
+      nl: 'Het gebruik van witruimte tussen de letters van een woord, zorgen dat schermlezers het woord niet volledig kunnen lezen. Gebruik in plaats hiervan css om de ruimte tussen letters te bepalen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['F32', 'C8']
+        }
+      }
+    },
+    tags: ['content']
+  }
+};
+module.exports = WhiteSpaceInWord;
+
+},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],399:[function(require,module,exports){
+'use strict';
+
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var WhiteSpaceNotUsedForFormatting = {
+  run: function run(test) {
+    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
+      return TextNodeFilterComponent(element);
+    }).each(function () {
+      var _case = test.add(Case({
+        element: this
+      }));
+      if ($(this).find('br').length === 0) {
+        _case.set({ status: 'passed' });
+        return;
+      }
+      var lines = $(this).html().toLowerCase().split(/(<br\ ?\/?>)+/);
+      var lineCount = 0;
+      $.each(lines, function (index, line) {
+        if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
+          lineCount++;
+        }
+      });
+      if (lineCount > 1) {
+        _case.set({ status: 'failed' });
+      } else {
+        _case.set({ status: 'cantTell' });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Whitespace should not be used for conveying information',
+      nl: 'Gebruik geen witruimte om informatie over te brengen'
+    },
+    description: {
+      en: 'Spaces or tabs are not read by assistive technology and should not be used to convey meaning.',
+      nl: 'Spaties of tabs worden niet voorgelezen door hulpprogramma\'s en moeten niet worden gebruikt om betekenis over te dragen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['G57']
+        }
+      }
+    },
+    tags: ['content']
+  }
+};
+module.exports = WhiteSpaceNotUsedForFormatting;
+
+},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],400:[function(require,module,exports){
+/*
+RainbowVis-JS 
+Released under Eclipse Public License - v 1.0
+*/
+
+'use strict';
+
+function Rainbow() {
+	"use strict";
+	var gradients = null;
+	var minNum = 0;
+	var maxNum = 100;
+	var colours = ['ff0000', 'ffff00', '00ff00', '0000ff'];
+	setColours(colours);
+
+	function setColours(spectrum) {
+		if (spectrum.length < 2) {
+			throw new Error('Rainbow must have two or more colours.');
+		} else {
+			var increment = (maxNum - minNum) / (spectrum.length - 1);
+			var firstGradient = new ColourGradient();
+			firstGradient.setGradient(spectrum[0], spectrum[1]);
+			firstGradient.setNumberRange(minNum, minNum + increment);
+			gradients = [firstGradient];
+
+			for (var i = 1; i < spectrum.length - 1; i++) {
+				var colourGradient = new ColourGradient();
+				colourGradient.setGradient(spectrum[i], spectrum[i + 1]);
+				colourGradient.setNumberRange(minNum + increment * i, minNum + increment * (i + 1));
+				gradients[i] = colourGradient;
+			}
+
+			colours = spectrum;
+		}
+	}
+
+	this.setSpectrum = function () {
+		setColours(arguments);
+		return this;
+	};
+
+	this.setSpectrumByArray = function (array) {
+		setColours(array);
+		return this;
+	};
+
+	this.colourAt = function (number) {
+		if (isNaN(number)) {
+			throw new TypeError(number + ' is not a number');
+		} else if (gradients.length === 1) {
+			return gradients[0].colourAt(number);
+		} else {
+			var segment = (maxNum - minNum) / gradients.length;
+			var index = Math.min(Math.floor((Math.max(number, minNum) - minNum) / segment), gradients.length - 1);
+			return gradients[index].colourAt(number);
+		}
+	};
+
+	this.colorAt = this.colourAt;
+
+	this.setNumberRange = function (minNumber, maxNumber) {
+		if (maxNumber > minNumber) {
+			minNum = minNumber;
+			maxNum = maxNumber;
+			setColours(colours);
+		} else {
+			throw new RangeError('maxNumber (' + maxNumber + ') is not greater than minNumber (' + minNumber + ')');
+		}
+		return this;
+	};
+}
+
+function ColourGradient() {
+	"use strict";
+	var startColour = 'ff0000';
+	var endColour = '0000ff';
+	var minNum = 0;
+	var maxNum = 100;
+
+	this.setGradient = function (colourStart, colourEnd) {
+		startColour = getHexColour(colourStart);
+		endColour = getHexColour(colourEnd);
+	};
+
+	this.setNumberRange = function (minNumber, maxNumber) {
+		if (maxNumber > minNumber) {
+			minNum = minNumber;
+			maxNum = maxNumber;
+		} else {
+			throw new RangeError('maxNumber (' + maxNumber + ') is not greater than minNumber (' + minNumber + ')');
+		}
+	};
+
+	this.colourAt = function (number) {
+		return calcHex(number, startColour.substring(0, 2), endColour.substring(0, 2)) + calcHex(number, startColour.substring(2, 4), endColour.substring(2, 4)) + calcHex(number, startColour.substring(4, 6), endColour.substring(4, 6));
+	};
+
+	function calcHex(number, channelStart_Base16, channelEnd_Base16) {
+		var num = number;
+		if (num < minNum) {
+			num = minNum;
+		}
+		if (num > maxNum) {
+			num = maxNum;
+		}
+		var numRange = maxNum - minNum;
+		var cStart_Base10 = parseInt(channelStart_Base16, 16);
+		var cEnd_Base10 = parseInt(channelEnd_Base16, 16);
+		var cPerUnit = (cEnd_Base10 - cStart_Base10) / numRange;
+		var c_Base10 = Math.round(cPerUnit * (num - minNum) + cStart_Base10);
+		return formatHex(c_Base10.toString(16));
+	}
+
+	function formatHex(hex) {
+		if (hex.length === 1) {
+			return '0' + hex;
+		} else {
+			return hex;
+		}
+	}
+
+	function isHexColour(string) {
+		var regex = /^#?[0-9a-fA-F]{6}$/i;
+		return regex.test(string);
+	}
+
+	function getHexColour(string) {
+		if (isHexColour(string)) {
+			return string.substring(string.length - 6, string.length);
+		} else {
+			var name = string.toLowerCase();
+			if (colourNames.hasOwnProperty(name)) {
+				return colourNames[name];
+			}
+			throw new Error(string + ' is not a valid colour.');
+		}
+	}
+
+	// Extended list of CSS colornames s taken from
+	// http://www.w3.org/TR/css3-color/#svg-color
+	var colourNames = {
+		aliceblue: "F0F8FF",
+		antiquewhite: "FAEBD7",
+		aqua: "00FFFF",
+		aquamarine: "7FFFD4",
+		azure: "F0FFFF",
+		beige: "F5F5DC",
+		bisque: "FFE4C4",
+		black: "000000",
+		blanchedalmond: "FFEBCD",
+		blue: "0000FF",
+		blueviolet: "8A2BE2",
+		brown: "A52A2A",
+		burlywood: "DEB887",
+		cadetblue: "5F9EA0",
+		chartreuse: "7FFF00",
+		chocolate: "D2691E",
+		coral: "FF7F50",
+		cornflowerblue: "6495ED",
+		cornsilk: "FFF8DC",
+		crimson: "DC143C",
+		cyan: "00FFFF",
+		darkblue: "00008B",
+		darkcyan: "008B8B",
+		darkgoldenrod: "B8860B",
+		darkgray: "A9A9A9",
+		darkgreen: "006400",
+		darkgrey: "A9A9A9",
+		darkkhaki: "BDB76B",
+		darkmagenta: "8B008B",
+		darkolivegreen: "556B2F",
+		darkorange: "FF8C00",
+		darkorchid: "9932CC",
+		darkred: "8B0000",
+		darksalmon: "E9967A",
+		darkseagreen: "8FBC8F",
+		darkslateblue: "483D8B",
+		darkslategray: "2F4F4F",
+		darkslategrey: "2F4F4F",
+		darkturquoise: "00CED1",
+		darkviolet: "9400D3",
+		deeppink: "FF1493",
+		deepskyblue: "00BFFF",
+		dimgray: "696969",
+		dimgrey: "696969",
+		dodgerblue: "1E90FF",
+		firebrick: "B22222",
+		floralwhite: "FFFAF0",
+		forestgreen: "228B22",
+		fuchsia: "FF00FF",
+		gainsboro: "DCDCDC",
+		ghostwhite: "F8F8FF",
+		gold: "FFD700",
+		goldenrod: "DAA520",
+		gray: "808080",
+		green: "008000",
+		greenyellow: "ADFF2F",
+		grey: "808080",
+		honeydew: "F0FFF0",
+		hotpink: "FF69B4",
+		indianred: "CD5C5C",
+		indigo: "4B0082",
+		ivory: "FFFFF0",
+		khaki: "F0E68C",
+		lavender: "E6E6FA",
+		lavenderblush: "FFF0F5",
+		lawngreen: "7CFC00",
+		lemonchiffon: "FFFACD",
+		lightblue: "ADD8E6",
+		lightcoral: "F08080",
+		lightcyan: "E0FFFF",
+		lightgoldenrodyellow: "FAFAD2",
+		lightgray: "D3D3D3",
+		lightgreen: "90EE90",
+		lightgrey: "D3D3D3",
+		lightpink: "FFB6C1",
+		lightsalmon: "FFA07A",
+		lightseagreen: "20B2AA",
+		lightskyblue: "87CEFA",
+		lightslategray: "778899",
+		lightslategrey: "778899",
+		lightsteelblue: "B0C4DE",
+		lightyellow: "FFFFE0",
+		lime: "00FF00",
+		limegreen: "32CD32",
+		linen: "FAF0E6",
+		magenta: "FF00FF",
+		maroon: "800000",
+		mediumaquamarine: "66CDAA",
+		mediumblue: "0000CD",
+		mediumorchid: "BA55D3",
+		mediumpurple: "9370DB",
+		mediumseagreen: "3CB371",
+		mediumslateblue: "7B68EE",
+		mediumspringgreen: "00FA9A",
+		mediumturquoise: "48D1CC",
+		mediumvioletred: "C71585",
+		midnightblue: "191970",
+		mintcream: "F5FFFA",
+		mistyrose: "FFE4E1",
+		moccasin: "FFE4B5",
+		navajowhite: "FFDEAD",
+		navy: "000080",
+		oldlace: "FDF5E6",
+		olive: "808000",
+		olivedrab: "6B8E23",
+		orange: "FFA500",
+		orangered: "FF4500",
+		orchid: "DA70D6",
+		palegoldenrod: "EEE8AA",
+		palegreen: "98FB98",
+		paleturquoise: "AFEEEE",
+		palevioletred: "DB7093",
+		papayawhip: "FFEFD5",
+		peachpuff: "FFDAB9",
+		peru: "CD853F",
+		pink: "FFC0CB",
+		plum: "DDA0DD",
+		powderblue: "B0E0E6",
+		purple: "800080",
+		red: "FF0000",
+		rosybrown: "BC8F8F",
+		royalblue: "4169E1",
+		saddlebrown: "8B4513",
+		salmon: "FA8072",
+		sandybrown: "F4A460",
+		seagreen: "2E8B57",
+		seashell: "FFF5EE",
+		sienna: "A0522D",
+		silver: "C0C0C0",
+		skyblue: "87CEEB",
+		slateblue: "6A5ACD",
+		slategray: "708090",
+		slategrey: "708090",
+		snow: "FFFAFA",
+		springgreen: "00FF7F",
+		steelblue: "4682B4",
+		tan: "D2B48C",
+		teal: "008080",
+		thistle: "D8BFD8",
+		tomato: "FF6347",
+		turquoise: "40E0D0",
+		violet: "EE82EE",
+		wheat: "F5DEB3",
+		white: "FFFFFF",
+		whitesmoke: "F5F5F5",
+		yellow: "FFFF00",
+		yellowgreen: "9ACD32"
+	};
+}
+
+if (typeof module !== 'undefined') {
+	module.exports = Rainbow;
+}
+
+},{}],401:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -9018,6255 +28249,4 @@ _$=window.$;jQuery.noConflict = function(deep){if(window.$ === jQuery){window.$ 
 // and CommonJS for browser emulators (#13566)
 if(typeof noGlobal === strundefined){window.jQuery = window.$ = jQuery;}return jQuery;}); // Otherwise append directly
 
-},{}],229:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AAdjacentWithSameResourceShouldBeCombined = function AAdjacentWithSameResourceShouldBeCombined(test) {
-
-  function findAdjacent(index, element) {
-    var $element = $(element);
-    // Find all the links
-    var $links = $element.find('a');
-    // Sort them into singletons and coupletons.
-    var $singletons = $();
-    var $coupletons = $();
-
-    $links.each(function (index, link) {
-      var $link = $(link);
-      if ($link.next().is('a')) {
-        $coupletons = $coupletons.add($link);
-      } else {
-        $singletons = $singletons.add($link);
-      }
-    });
-
-    $singletons.each(excludeSingleLinks);
-    $coupletons.each(checkNextLink);
-  }
-
-  function checkNextLink(index, element) {
-    var $element = $(element);
-    var thisHref = element.getAttribute('href');
-    var $nextLink = $element.next();
-    var nextHref = $nextLink[0].getAttribute('href');
-    var status = 'passed';
-    var _case = Case({
-      element: element
-    });
-    if (thisHref === nextHref) {
-      status = 'failed';
-    }
-
-    test.add(_case);
-    _case.set({ status: status });
-  }
-
-  function excludeSingleLinks(index, element) {
-    var _case = Case({ element: element });
-    test.add(_case);
-    _case.set({
-      status: 'inapplicable'
-    });
-  }
-
-  test.get('$scope').each(findAdjacent);
-};
-module.exports = AAdjacentWithSameResourceShouldBeCombined;
-
-},{"Case":30}],230:[function(require,module,exports){
-'use strict';
-
-var CleanStringComponent = require('CleanStringComponent');
-var Case = require('Case');
-var AImgAltNotRepetitive = function AImgAltNotRepetitive(test) {
-  test.get('$scope').find('a img[alt]').each(function () {
-    var _case = test.add(Case({
-      element: this
-    }));
-
-    var alt = CleanStringComponent($(this).attr('alt'));
-    var linkText = CleanStringComponent($(this).closest('a').text());
-
-    if (alt.length > 0 && linkText.indexOf(alt) > -1) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = AImgAltNotRepetitive;
-
-},{"Case":30,"CleanStringComponent":2}],231:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AInPHasADistinctStyle = function AInPHasADistinctStyle(test) {
-
-  /**
-   * Checks if an element has a border set
-   * @param element
-   * @returns {boolean}
-   */
-  function hasBorder(element) {
-    return element.outerWidth() - element.innerWidth() > 0 || element.outerHeight() - element.innerHeight() > 0;
-  }
-
-  /**
-   * Test if two elements have a distinct style from it's ancestor
-   * @param  {jQuery node} $elm
-   * @param  {jQuery node} $parent
-   * @return {boolean}
-   */
-  function elmHasDistinctStyle($elm, $parent) {
-    var result = false;
-    var styleProperties = ['font-weight', 'font-style'];
-    var textDecoration = $elm.css('text-decoration');
-
-    if (textDecoration !== 'none' && textDecoration !== $parent.css('text-decoration')) {
-      result = true;
-    }
-
-    if ($elm.css('background-color') !== 'rgba(0, 0, 0, 0)') {
-      styleProperties.push('background');
-    }
-
-    $.each(styleProperties, function (i, styleProp) {
-      if (!result && $elm.css(styleProp) !== $parent.css(styleProp)) {
-        result = true;
-      }
-    });
-
-    return result || hasBorder($elm);
-  }
-
-  function elmHasDistinctPosition($elm) {
-    var isBlock = $elm.css('display') === 'block';
-    var position = $elm.css('position');
-    var isPositioned = position !== 'relative' && position !== 'static';
-    return isBlock || isPositioned;
-  }
-
-  // Ignore links where the p only contains white space, <, >, |, \, / and - chars
-  var allowedPText = /^([\s|-]|>|<|\\|\/|&(gt|lt);)*$/i;
-
-  test.get('$scope').each(function () {
-    var $scope = $(this);
-    var anchors = $scope.find('p a[href]:visible');
-
-    anchors.each(function () {
-      var $this = $(this);
-      var $p = $this.closest('p');
-      var $parent = $this.parent();
-
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-
-      var aText = $this.text().trim();
-
-      // Get all text of the p element with all anchors removed
-      var pText = $p.clone().find('a[href]').remove().end().text();
-
-      if (aText === '' || pText.match(allowedPText)) {
-        _case.set('status', 'inapplicable');
-      } else if ($this.css('color') === $p.css('color')) {
-        _case.set('status', 'passed');
-      } else if (elmHasDistinctStyle($this, $p)) {
-        _case.set('status', 'passed');
-      } else if (elmHasDistinctPosition($this)) {
-        _case.set('status', 'passed');
-      } else if ($this.find('img').length > 0) {
-        _case.set('status', 'passed');
-      } else if ($parent.text().trim() === aText && elmHasDistinctStyle($parent, $p)) {
-        _case.set('status', 'passed');
-      } else {
-        _case.set('status', 'failed');
-      }
-    });
-  });
-};
-module.exports = AInPHasADistinctStyle;
-
-},{"Case":30}],232:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var RedundantStringsComponent = require('RedundantStringsComponent');
-var ALinkTextDoesNotBeginWithRedundantWord = function ALinkTextDoesNotBeginWithRedundantWord(test) {
-  test.get('$scope').find('a').each(function () {
-    var self = this;
-    var $link = $(this);
-    var text = '';
-    var $img = $link.find('img[alt]');
-    if ($img.length) {
-      text = text + $img.eq(0).attr('alt');
-    }
-    text = text + $link.text();
-    text = text.toLowerCase();
-    var _case;
-    // Search the text for redundant words. Break as soon as one is detected.
-    for (var i = 0, il = RedundantStringsComponent.link.length; i < il; ++i) {
-      var phrase = RedundantStringsComponent.link[i];
-      if (text.search(phrase) > -1) {
-        _case = test.add(Case({
-          element: self,
-          status: 'failed'
-        }));
-        break;
-      }
-    }
-    // If the case didn't fail, then it passed.
-    if (!_case) {
-      test.add(Case({
-        element: self,
-        status: 'passed'
-      }));
-    }
-  });
-};
-module.exports = ALinkTextDoesNotBeginWithRedundantWord;
-
-},{"Case":30,"RedundantStringsComponent":18}],233:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ALinkWithNonText = function ALinkWithNonText(test) {
-  test.get('$scope').find('a').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if (!$(this).is('a:has(img, object, embed)[href]')) {
-      _case.set({
-        status: 'inapplicable'
-      });
-      return;
-    }
-    if (!IsUnreadable($(this).text())) {
-      _case.set({
-        status: 'passed'
-      });
-      return;
-    }
-    var unreadable = 0;
-    $(this).find('img, object, embed').each(function () {
-      if ($(this).is('img') && IsUnreadable($(this).attr('alt')) || !$(this).is('img') && IsUnreadable($(this).attr('title'))) {
-        unreadable++;
-      }
-    });
-    if ($(this).find('img, object, embed').length === unreadable) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = ALinkWithNonText;
-
-},{"Case":30,"IsUnreadable":11}],234:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ALinksAreSeparatedByPrintableCharacters = function ALinksAreSeparatedByPrintableCharacters(test) {
-  test.get('$scope').find('a').each(function () {
-    var _case = test.add(Case({
-      element: this
-    }));
-    // Only test if there's another a tag.
-    if ($(this).next('a').length) {
-      if (IsUnreadable($(this).get(0).nextSibling.wholeText)) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    }
-  });
-};
-module.exports = ALinksAreSeparatedByPrintableCharacters;
-
-},{"Case":30,"IsUnreadable":11}],235:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var NewWindowStringsComponent = require('NewWindowStringsComponent');
-var ALinksDontOpenNewWindow = function ALinksDontOpenNewWindow(test) {
-  // Links without a target attribute pass.
-  test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function () {
-    test.add(Case({
-      element: this,
-      status: 'passed'
-    }));
-  });
-  // Links with a target attribute pass if the link text indicates that the
-  // link will open a new window.
-  test.get('$scope').find('a[target=_new], a[target=_blank]').each(function () {
-    var $link = $(this);
-    var passes = false;
-    var i = 0;
-    var text = $link.text() + ' ' + $link.attr('title');
-    var phrase = '';
-    // Test the link text against strings the indicate the link will open
-    // in a new window.
-    do {
-      phrase = NewWindowStringsComponent[i];
-      if (text.search(phrase) > -1) {
-        passes = true;
-      }
-      ++i;
-    } while (!passes && i < NewWindowStringsComponent.length);
-    // Build a Case.
-    if (passes) {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    } else {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    }
-  });
-};
-module.exports = ALinksDontOpenNewWindow;
-
-},{"Case":30,"NewWindowStringsComponent":15}],236:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var SymbolsStringsComponent = require('SymbolsStringsComponent');
-var ALinksNotSeparatedBySymbols = function ALinksNotSeparatedBySymbols(test) {
-  test.get('$scope').find('a').each(function () {
-    var $link = $(this);
-    if ($link.next('a').length) {
-      var text = $link.get(0).nextSibling.wholeText;
-      // The string between the links is composed of symbols.
-      if (typeof text === 'string' && SymbolsStringsComponent.indexOf(text.toLowerCase().trim()) !== -1) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
-      // The string between the links is composed of words.
-      else {
-          test.add(Case({
-            element: this,
-            status: 'passed'
-          }));
-        }
-    }
-    // If nothing follows the link, then there is nothing to test.
-    else {
-        test.add(Case({
-          element: this,
-          status: 'inapplicable'
-        }));
-      }
-  });
-};
-module.exports = ALinksNotSeparatedBySymbols;
-
-},{"Case":30,"SymbolsStringsComponent":24}],237:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ALinksToMultiMediaRequireTranscript = function ALinksToMultiMediaRequireTranscript(test) {
-  var selector = ['a[href$=".wmv"]', 'a[href$=".mpg"]', 'a[href$=".mov"]', 'a[href$=".ram"]', 'a[href$=".aif"]'].join(', ');
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    // Inapplicable.
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      // cantTell.
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-    }
-  });
-};
-module.exports = ALinksToMultiMediaRequireTranscript;
-
-},{"Case":30}],238:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ALinksToSoundFilesNeedTranscripts = function ALinksToSoundFilesNeedTranscripts(test) {
-
-  var selector = ['a[href$=".wav"]', 'a[href$=".snd"]', 'a[href$=".mp3"]', 'a[href$=".iff"]', 'a[href$=".svx"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".pcm"]', 'a[href$=".aif"]'].join(', ');
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    // Inapplicable.
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      // cantTell.
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-    }
-  });
-};
-module.exports = ALinksToSoundFilesNeedTranscripts;
-
-},{"Case":30}],239:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AMultimediaTextAlternative = function AMultimediaTextAlternative(test) {
-
-  var selector = ['a[href$=".aif"]', 'a[href$=".iff"]', 'a[href$=".mov"]', 'a[href$=".mp3"]', 'a[href$=".mpg"]', 'a[href$=".ram"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".snd"]', 'a[href$=".svx"]', 'a[href$=".pcm"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".wav"]', 'a[href$=".wmv"]'].join(', ');
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    // Inapplicable.
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      // cantTell.
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-    }
-  });
-};
-module.exports = AMultimediaTextAlternative;
-
-},{"Case":30}],240:[function(require,module,exports){
-'use strict';
-
-var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
-var Case = require('Case');
-var AMustContainText = function AMustContainText(test) {
-  test.get('$scope').find('a').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-
-    if (!$(this).attr('href') || $(this).css('display') === 'none') {
-      _case.set({
-        status: 'inapplicable'
-      });
-      return;
-    }
-
-    if (ContainsReadableTextComponent($(this), true)) {
-      _case.set({
-        status: 'passed'
-      });
-    } else {
-      _case.set({
-        status: 'failed'
-      });
-    }
-  });
-};
-module.exports = AMustContainText;
-
-},{"Case":30,"ContainsReadableTextComponent":4}],241:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AMustHaveTitle = function AMustHaveTitle(test) {
-  this.get('$scope').each(function () {
-    var links = $(this).find('a');
-
-    links.each(function (i, link) {
-      // Has a title attribute and that attribute has a value, then pass.
-      var title = $(link).attr('title');
-      if (typeof title === 'string' && title.length > 0) {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      }
-      // Does not have a title attribute or the attribute does not have a value.
-      else if (typeof title === 'undefined' || !title.length) {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        }
-    });
-  });
-};
-module.exports = AMustHaveTitle;
-
-},{"Case":30}],242:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var AMustNotHaveJavascriptHref = function AMustNotHaveJavascriptHref(test, options) {
-
-  options = options || {};
-
-  var selector = 'a[href^="javascript:"]';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: options.test ? 'inapplicable' : 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = AMustNotHaveJavascriptHref;
-
-},{"Case":30}],243:[function(require,module,exports){
-'use strict';
-
-var CleanStringComponent = require('CleanStringComponent');
-var Case = require('Case');
-var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
-var ASuspiciousLinkText = function ASuspiciousLinkText(test) {
-  test.get('$scope').find('a').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if (!$(this).attr('href')) {
-      _case.set({
-        status: 'inapplicable'
-      });
-      return;
-    }
-    var text = $(this).text();
-    $(this).find('img[alt]').each(function () {
-      text = text + $(this).attr('alt');
-    });
-    if (SuspiciousLinksStringsComponent.indexOf(CleanStringComponent(text)) > -1) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = ASuspiciousLinkText;
-
-},{"Case":30,"CleanStringComponent":2,"SuspiciousLinksStringsComponent":23}],244:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var ATitleDescribesDestination = function ATitleDescribesDestination(test, options) {
-
-  options = options || {};
-
-  var selector = 'a[title]';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: options.test ? 'inapplicable' : 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = ATitleDescribesDestination;
-
-},{"Case":30}],245:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AnimatedGifMayBePresent = function AnimatedGifMayBePresent(test) {
-
-  /**
-   * Test if gif is animated
-   * Implemented from: https://gist.github.com/3012623.git
-   * @param src
-   * @param ext
-   * @param cb
-   */
-  function isAnimatedGif(src, ext, cb) {
-
-    if (ext !== 'gif') {
-      cb(false);
-      return;
-    }
-
-    var request = new XMLHttpRequest();
-    request.open('GET', src, true);
-    request.responseType = 'arraybuffer';
-    request.addEventListener('load', function () {
-      var arr = new Uint8Array(request.response);
-      var frames = 0;
-
-      // make sure it's a gif (GIF8)
-      if (arr[0] !== 0x47 || arr[1] !== 0x49 || arr[2] !== 0x46 || arr[3] !== 0x38) {
-        cb(false);
-        return;
-      }
-
-      // ported from php http://www.php.net/manual/en/function.imagecreatefromgif.php#104473
-      // an animated gif contains multiple "frames", with each frame having a
-      // header made up of:
-      // * a static 4-byte sequence (\x00\x21\xF9\x04)
-      // * 4 variable bytes
-      // * a static 2-byte sequence (\x00\x2C) (some variants may use \x00\x21 ?)
-      // We read through the file til we reach the end of the file, or we've found
-      // at least 2 frame headers
-      for (var i = 0; i < arr.length - 9; i++) {
-        if (arr[i] === 0x00 && arr[i + 1] === 0x21 && arr[i + 2] === 0xF9 && arr[i + 3] === 0x04 && arr[i + 8] === 0x00 && (arr[i + 9] === 0x2C || arr[i + 9] === 0x21)) {
-          frames++;
-        }
-        if (frames > 1) {
-          cb(true);
-          return;
-        }
-      }
-
-      cb(false);
-    });
-    request.send();
-  }
-
-  test.get('$scope').find('img').each(function () {
-
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-
-    var imgSrc = $(this).attr('src');
-    var ext = $(this).attr('src').split('.').pop().toLowerCase();
-
-    if (ext !== 'gif') {
-      _case.set({
-        status: 'inapplicable'
-      });
-      return;
-    }
-
-    isAnimatedGif(imgSrc, ext, function (animated) {
-      if (animated) {
-        _case.set({
-          status: 'cantTell'
-        });
-        return;
-      } else {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
-    });
-  });
-};
-module.exports = AnimatedGifMayBePresent;
-
-},{"Case":30}],246:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var AppletContainsTextEquivalent = function AppletContainsTextEquivalent(test) {
-  test.get('$scope').find('applet[alt=""], applet:not(applet[alt])').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if (IsUnreadable($(this).text())) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = AppletContainsTextEquivalent;
-
-},{"Case":30,"IsUnreadable":11}],247:[function(require,module,exports){
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-var AppletContainsTextEquivalentInAlt = function AppletContainsTextEquivalentInAlt(test) {
-  PlaceholderComponent(test, {
-    selector: 'applet',
-    attribute: 'alt',
-    empty: true
-  });
-};
-module.exports = AppletContainsTextEquivalentInAlt;
-
-},{"PlaceholderComponent":16}],248:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var AppletProvidesMechanismToReturnToParent = function AppletProvidesMechanismToReturnToParent(test, options) {
-
-  options = options || {};
-
-  var selector = 'applet';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: options.test ? 'inapplicable' : 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = AppletProvidesMechanismToReturnToParent;
-
-},{"Case":30}],249:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var AppletTextEquivalentsGetUpdated = function AppletTextEquivalentsGetUpdated(test, options) {
-
-  options = options || {};
-
-  var selector = 'applet';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: options.test ? 'inapplicable' : 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = AppletTextEquivalentsGetUpdated;
-
-},{"Case":30}],250:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var AppletUIMustBeAccessible = function AppletUIMustBeAccessible(test, options) {
-
-  options = options || {};
-
-  var selector = 'applet';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: options.test ? 'inapplicable' : 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = AppletUIMustBeAccessible;
-
-},{"Case":30}],251:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var AppletsDoNotFlicker = function AppletsDoNotFlicker(test, options) {
-
-  options = options || {};
-
-  var selector = 'applet';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: options.test ? 'inapplicable' : 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = AppletsDoNotFlicker;
-
-},{"Case":30}],252:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var AppletsDonotUseColorAlone = function AppletsDonotUseColorAlone(test, options) {
-
-  options = options || {};
-
-  var selector = 'applet';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: options.test ? 'inapplicable' : 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = AppletsDonotUseColorAlone;
-
-},{"Case":30}],253:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var AreaAltIdentifiesDestination = function AreaAltIdentifiesDestination(test, options) {
-
-  options = options || {};
-
-  var selector = 'area:not(area[alt])';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: options.test ? 'inapplicable' : 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = AreaAltIdentifiesDestination;
-
-},{"Case":30}],254:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var AreaAltRefersToText = function AreaAltRefersToText(test, options) {
-
-  options = options || {};
-
-  var selector = 'area';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = AreaAltRefersToText;
-
-},{"Case":30}],255:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var NewWindowStringsComponent = require('NewWindowStringsComponent');
-
-var AreaDontOpenNewWindow = function AreaDontOpenNewWindow(test) {
-  // Links without a target attribute pass.
-  test.get('$scope').find('area').not('[target=_new], [target=_blank]').each(function () {
-    test.add(Case({
-      element: this,
-      status: 'passed'
-    }));
-  });
-  // Links with a target attribute pass if the link text indicates that the
-  // link will open a new window.
-  test.get('$scope').find('area[target=_new], area[target=_blank]').each(function () {
-    var $link = $(this);
-    var passes = false;
-    var i = 0;
-    var text = $link.text() + ' ' + $link.attr('title');
-    var phrase = '';
-    // Test the link text against strings the indicate the link will open
-    // in a new window.
-    do {
-      phrase = NewWindowStringsComponent[i];
-      if (text.search(phrase) > -1) {
-        passes = true;
-      }
-      ++i;
-    } while (!passes && i < NewWindowStringsComponent.length);
-    // Build a Case.
-    if (passes) {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    } else {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    }
-  });
-};
-module.exports = AreaDontOpenNewWindow;
-
-},{"Case":30,"NewWindowStringsComponent":15}],256:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var AreaHasAltValue = function AreaHasAltValue(test) {
-
-  var selector = 'area';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (this.hasAttribute('alt') && (this.getAttribute('alt') || '').length > 0) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = AreaHasAltValue;
-
-},{"Case":30}],257:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var AreaLinksToSoundFile = function AreaLinksToSoundFile(test, options) {
-
-  options = options || {};
-
-  var selector = ['area[href$="wav"]', 'area[href$="snd"]', 'area[href$="mp3"]', 'area[href$="iff"]', 'area[href$="svx"]', 'area[href$="sam"]', 'area[href$="smp"]', 'area[href$="vce"]', 'area[href$="vox"]', 'area[href$="pcm"]', 'area[href$="aif"]'].join(', ');
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = AreaLinksToSoundFile;
-
-},{"Case":30}],258:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AudioMayBePresent = function AudioMayBePresent(test) {
-  var audioExtensions = ['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];
-
-  test.get('$scope').each(function () {
-    var $this = $(this);
-    var hasCase = false; // Test if a case has been created
-
-    // Audio is definately an audio, and objects could be too.
-    $this.find('object, audio').each(function () {
-      hasCase = true;
-      test.add(Case({
-        element: this,
-        status: 'cantTell'
-      }));
-    });
-
-    // Links refering to files with an audio extensions are good indicators too
-    $this.find('a[href]').each(function () {
-      var $this = $(this);
-      var extension = $this.attr('href').split('.').pop();
-      if ($.inArray(extension, audioExtensions) !== -1) {
-        hasCase = true;
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      }
-    });
-
-    // if no case was added, return inapplicable
-    if (!hasCase) {
-      test.add(Case({
-        element: this,
-        status: 'inapplicable'
-      }));
-    }
-  });
-};
-module.exports = AudioMayBePresent;
-
-},{"Case":30}],259:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var BasefontIsNotUsed = function BasefontIsNotUsed(test) {
-
-  var selector = 'basefont';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      });
-    }
-  });
-};
-module.exports = BasefontIsNotUsed;
-
-},{"Case":30}],260:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var BlinkIsNotUsed = function BlinkIsNotUsed(test) {
-
-  var selector = 'blink';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      });
-    }
-  });
-};
-module.exports = BlinkIsNotUsed;
-
-},{"Case":30}],261:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var BlockquoteNotUsedForIndentation = function BlockquoteNotUsedForIndentation(test) {
-
-  var selector = 'blockquote';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-
-        if (this.hasAttribute('cite') && (this.getAttribute('cite') || '').length > 0) {
-          test.add(Case({
-            element: this,
-            status: 'passed'
-          }));
-        } else {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        }
-      });
-    }
-  });
-};
-module.exports = BlockquoteNotUsedForIndentation;
-
-},{"Case":30}],262:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var BlockquoteUseForQuotations = function BlockquoteUseForQuotations(test) {
-  test.get('$scope').find('p').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if ($(this).parents('blockquote').length > 0) {
-      _case.set({
-        status: 'inapplicable'
-      });
-      return;
-    }
-    if ($(this).text().substr(0, 1).search(/'|"|«|“|「/) > -1 && $(this).text().substr(-1, 1).search(/'|"|»|„|」/) > -1) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = BlockquoteUseForQuotations;
-
-},{"Case":30}],263:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var BoldIsNotUsed = function BoldIsNotUsed(test) {
-
-  var selector = 'bold';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      });
-    }
-  });
-};
-module.exports = BoldIsNotUsed;
-
-},{"Case":30}],264:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var ButtonHasName = function ButtonHasName(test, options) {
-  options = options || {
-    selector: 'button',
-    content: 'true',
-    empty: 'true',
-    attribute: 'title'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = ButtonHasName;
-
-},{"PlaceholderComponent":16}],265:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var LabelComponent = require('LabelComponent');
-
-var CheckboxHasLabel = function CheckboxHasLabel(test, options) {
-  options = options || {
-    selector: 'input[type="checkbox"]'
-  };
-  LabelComponent(test, options);
-};
-module.exports = CheckboxHasLabel;
-
-},{"LabelComponent":12}],266:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var Rainbow = require('RainbowVis-JS/rainbowvis');
-
-var ColorBackgroundGradientContrast = function ColorBackgroundGradientContrast(test, options) {
-
-  options = options || {};
-
-  var colors = ColorComponent.colors;
-  var buildCase = ColorComponent.buildCase;
-  var id = 'colorBackgroundGradientContrast';
-  // Hard-coding this for now. Requires a way to pass options from the test
-  // definitions down to the test functions.
-  options.algorithm = 'wcag';
-  options.gradientSampleMultiplier = 3;
-
-  /**
-   *
-   */
-  function colorBackgroundGradientContrast(test, Case, options, $this, element) {
-    // Check if there's a background gradient using DOM.
-    var failureFound, numberOfSamples;
-    var rainbow = new Rainbow();
-    var backgroundGradientColors = colors.getBackgroundGradient($this);
-
-    if (!backgroundGradientColors) {
-      return;
-    }
-
-    // Convert colors to hex notation.
-    for (var i = 0; i < backgroundGradientColors.length; i++) {
-      if (backgroundGradientColors[i].substr(0, 3) === 'rgb') {
-        backgroundGradientColors[i] = colors.colorToHex(backgroundGradientColors[i]);
-      }
-    }
-
-    // Create a rainbow.
-    rainbow.setSpectrumByArray(backgroundGradientColors);
-    // @todo, make the number of samples configurable.
-    numberOfSamples = backgroundGradientColors.length * options.gradientSampleMultiplier;
-
-    // Check each color.
-    failureFound = false;
-    for (i = 0; !failureFound && i < numberOfSamples; i++) {
-      var testResult = colors.testElmBackground(options.algorithm, $this, '#' + rainbow.colourAt(i));
-
-      if (!testResult) {
-        buildCase(test, Case, element, 'failed', id, 'The background gradient makes the text unreadable');
-        failureFound = true;
-      }
-    }
-
-    // If no failure was found, the element passes for this case type.
-    if (!failureFound) {
-      buildCase(test, Case, element, 'passed', id, 'The background gradient does not affect readability');
-    }
-  }
-
-  test.get('$scope').each(function () {
-
-    var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-    var nodes = [];
-    var textNode = textNodes.iterateNext();
-
-    // Loop has to be separated. If we try to iterate and run testCandidates
-    // the xpath thing will crash because document is being modified.
-    while (textNode) {
-      if (ColorComponent.textShouldBeTested(textNode)) {
-        nodes.push(textNode.parentNode);
-      }
-      textNode = textNodes.iterateNext();
-    }
-
-    if (nodes.length === 0) {
-      buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-    }
-
-    nodes.forEach(function (element) {
-      colorBackgroundGradientContrast(test, Case, options, $(element), element);
-    });
-  });
-};
-module.exports = ColorBackgroundGradientContrast;
-
-},{"Case":30,"ColorComponent":3,"RainbowVis-JS/rainbowvis":400}],267:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var ColorBackgroundImageContrast = function ColorBackgroundImageContrast(test, options) {
-
-  options = options || {};
-
-  var colors = ColorComponent.colors;
-  var buildCase = ColorComponent.buildCase;
-  var id = 'colorBackgroundImageContrast';
-  // Hard-coding this for now. Requires a way to pass options from the test
-  // definitions down to the test functions.
-  options.algorithm = 'wcag';
-  options.gradientSampleMultiplier = 3;
-
-  /**
-   *
-   */
-  function colorBackgroundImageContrast(test, Case, options, $this, element) {
-    // Check if there's a backgroundImage using DOM.
-    var backgroundImage = colors.getBackgroundImage($this);
-    if (!backgroundImage) {
-      return;
-    }
-
-    var img = document.createElement('img');
-    img.crossOrigin = 'Anonymous';
-
-    // Get average color of the background image. The image must first load
-    // before information about it is available to the DOM.
-    img.onload = function () {
-      var averageColorBackgroundImage = colors.getAverageRGB(img);
-      var testResult = colors.testElmBackground(options.algorithm, $this, averageColorBackgroundImage);
-
-      // Build a case.
-      if (!testResult) {
-        buildCase(test, Case, element, 'failed', id, 'The element\'s background image makes the text unreadable');
-      } else {
-        buildCase(test, Case, element, 'passed', id, 'The element\'s background image does not affect readability');
-      }
-    };
-
-    img.onerror = img.onabort = function () {
-      buildCase(test, Case, element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
-    };
-
-    // Load the image.
-    img.src = backgroundImage;
-  }
-
-  test.get('$scope').each(function () {
-    var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-    var nodes = [];
-    var textNode = textNodes.iterateNext();
-
-    // Loop has to be separated. If we try to iterate and rund testCandidates
-    // the xpath thing will crash because document is being modified.
-    while (textNode) {
-      if (ColorComponent.textShouldBeTested(textNode)) {
-        nodes.push(textNode.parentNode);
-      }
-      textNode = textNodes.iterateNext();
-    }
-
-    if (nodes.length === 0) {
-      buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-    }
-
-    nodes.forEach(function (element) {
-      colorBackgroundImageContrast(test, Case, options, $(element), element);
-    });
-  });
-};
-module.exports = ColorBackgroundImageContrast;
-
-},{"Case":30,"ColorComponent":3}],268:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var Rainbow = require('RainbowVis-JS/rainbowvis');
-
-var ColorElementBehindBackgroundGradientContrast = function ColorElementBehindBackgroundGradientContrast(test, options) {
-
-  options = options || {};
-
-  var colors = ColorComponent.colors;
-  var buildCase = ColorComponent.buildCase;
-  var id = 'colorElementBehindBackgroundGradientContrast';
-  // Hard-coding this for now. Requires a way to pass options from the test
-  // definitions down to the test functions.
-  options.algorithm = 'wcag';
-  options.gradientSampleMultiplier = 3;
-
-  /**
-   *
-   */
-  function colorElementBehindBackgroundGradientContrast(test, Case, options, $this, element) {
-    // Check if there's a background gradient using element behind current element.
-    var behindGradientColors;
-    var failureFound;
-    var rainbow = new Rainbow();
-    // The option element is problematic.
-    if (!$this.is('option')) {
-      behindGradientColors = colors.getBehindElementBackgroundGradient($this);
-    }
-
-    if (!behindGradientColors) {
-      return;
-    }
-
-    // Convert colors to hex notation.
-    for (var i = 0; i < behindGradientColors.length; i++) {
-      if (behindGradientColors[i].substr(0, 3) === 'rgb') {
-        behindGradientColors[i] = colors.colorToHex(behindGradientColors[i]);
-      }
-    }
-
-    // Create a rainbow.
-    rainbow.setSpectrumByArray(behindGradientColors);
-    var numberOfSamples = behindGradientColors.length * options.gradientSampleMultiplier;
-
-    // Check each color.
-    failureFound = false;
-    for (i = 0; !failureFound && i < numberOfSamples; i++) {
-      failureFound = !colors.testElmBackground(options.algorithm, $this, '#' + rainbow.colourAt(i));
-    }
-
-    // If no failure was found, the element passes for this case type.
-    if (failureFound) {
-      buildCase(test, Case, element, 'failed', id, 'The background gradient of the element behind this element makes the text unreadable');
-    } else {
-      buildCase(test, Case, element, 'passed', id, 'The background gradient of the element behind this element does not affect readability');
-    }
-  }
-
-  test.get('$scope').each(function () {
-    var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-    var nodes = [];
-    var textNode = textNodes.iterateNext();
-
-    // Loop has to be separated. If we try to iterate and rund testCandidates
-    // the xpath thing will crash because document is being modified.
-    while (textNode) {
-      if (ColorComponent.textShouldBeTested(textNode)) {
-        nodes.push(textNode.parentNode);
-      }
-      textNode = textNodes.iterateNext();
-    }
-
-    if (nodes.length === 0) {
-      buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-    }
-
-    nodes.forEach(function (element) {
-      colorElementBehindBackgroundGradientContrast(test, Case, options, $(element), element);
-    });
-  });
-};
-module.exports = ColorElementBehindBackgroundGradientContrast;
-
-},{"Case":30,"ColorComponent":3,"RainbowVis-JS/rainbowvis":400}],269:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var ColorElementBehindBackgroundImageContrast = function ColorElementBehindBackgroundImageContrast(test, options) {
-
-  options = options || {};
-
-  var colors = ColorComponent.colors;
-  var buildCase = ColorComponent.buildCase;
-  var id = 'colorElementBehindBackgroundImageContrast';
-  // Hard-coding this for now. Requires a way to pass options from the test
-  // definitions down to the test functions.
-  options.algorithm = 'wcag';
-  options.gradientSampleMultiplier = 3;
-
-  /**
-   *
-   */
-  function colorElementBehindBackgroundImageContrast(test, Case, options, $this, element) {
-    // Check if there's a backgroundImage using element behind current element.
-    var behindBackgroundImage;
-
-    // The option element is problematic.
-    if (!$this.is('option')) {
-      behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
-    }
-
-    if (!behindBackgroundImage) {
-      return;
-    }
-
-    var img = document.createElement('img');
-    img.crossOrigin = 'Anonymous';
-    // The image must first load before information about it is available to
-    // the DOM.
-    img.onload = function () {
-
-      // Get average color of the background image.
-      var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
-      var testResult = colors.testElmBackground(options.algorithm, $this, averageColorBehindBackgroundImage);
-      if (!testResult) {
-        buildCase(test, Case, element, 'failed', id, 'The background image of the element behind this element makes the text unreadable');
-      } else {
-        buildCase(test, Case, element, 'passed', id, 'The background image of the element behind this element does not affect readability');
-      }
-    };
-    img.onerror = img.onabort = function () {
-      buildCase(test, Case, element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
-    };
-    // Load the image.
-    img.src = behindBackgroundImage;
-  }
-
-  test.get('$scope').each(function () {
-    var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-    var nodes = [];
-    var textNode = textNodes.iterateNext();
-
-    // Loop has to be separated. If we try to iterate and rund testCandidates
-    // the xpath thing will crash because document is being modified.
-    while (textNode) {
-      if (ColorComponent.textShouldBeTested(textNode)) {
-        nodes.push(textNode.parentNode);
-      }
-      textNode = textNodes.iterateNext();
-    }
-
-    if (nodes.length === 0) {
-      buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-    }
-
-    nodes.forEach(function (element) {
-      colorElementBehindBackgroundImageContrast(test, Case, options, $(element), element);
-    });
-  });
-};
-module.exports = ColorElementBehindBackgroundImageContrast;
-
-},{"Case":30,"ColorComponent":3}],270:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var ColorElementBehindContrast = function ColorElementBehindContrast(test, options) {
-
-  options = options || {};
-
-  var colors = ColorComponent.colors;
-  var buildCase = ColorComponent.buildCase;
-  var id = 'colorElementBehindContrast';
-  // Hard-coding this for now. Requires a way to pass options from the test
-  // definitions down to the test functions.
-  options.algorithm = 'wcag';
-  options.gradientSampleMultiplier = 3;
-
-  function colorElementBehindContrast(test, Case, options, $this, element) {
-    // Check text and background using element behind current element.
-    var backgroundColorBehind;
-    // The option element is problematic.
-    if (!$this.is('option')) {
-      backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
-    }
-    if (!backgroundColorBehind) {
-      return;
-    }
-
-    var testResult = colors.testElmBackground(options.algorithm, $this, backgroundColorBehind);
-
-    // Build a case.
-    if (!testResult) {
-      buildCase(test, Case, element, 'failed', id, 'The element behind this element makes the text unreadable');
-    } else {
-      buildCase(test, Case, element, 'passed', id, 'The element behind this element does not affect readability');
-    }
-  }
-
-  test.get('$scope').each(function () {
-    var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-    var nodes = [];
-    var textNode = textNodes.iterateNext();
-
-    // Loop has to be separated. If we try to iterate and rund testCandidates
-    // the xpath thing will crash because document is being modified.
-    while (textNode) {
-      if (ColorComponent.textShouldBeTested(textNode)) {
-        nodes.push(textNode.parentNode);
-      }
-      textNode = textNodes.iterateNext();
-    }
-
-    if (nodes.length === 0) {
-      buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-    }
-
-    nodes.forEach(function (element) {
-      colorElementBehindContrast(test, Case, options, $(element), element);
-    });
-  });
-};
-module.exports = ColorElementBehindContrast;
-
-},{"Case":30,"ColorComponent":3}],271:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var ColorFontContrast = function ColorFontContrast(test, options) {
-
-  options = options || {};
-
-  var colors = ColorComponent.colors;
-  var buildCase = ColorComponent.buildCase;
-  var id = 'colorFontContrast';
-  // Hard-coding this for now. Requires a way to pass options from the test
-  // definitions down to the test functions.
-  options.algorithm = 'wcag';
-  options.gradientSampleMultiplier = 3;
-
-  /**
-   *
-   */
-  function colorFontContrast(test, Case, options, $this, element) {
-    // Check text and background color using DOM.
-    // Build a case.
-    if (!colors.testElmContrast(options.algorithm, $this)) {
-      buildCase(test, Case, element, 'failed', id, 'The font contrast of the text impairs readability');
-    } else {
-      buildCase(test, Case, element, 'passed', id, 'The font contrast of the text is sufficient for readability');
-    }
-  }
-
-  test.get('$scope').each(function () {
-    var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-    var nodes = [];
-    var textNode = textNodes.iterateNext();
-
-    // Loop has to be separated. If we try to iterate and rund testCandidates
-    // the xpath thing will crash because document is being modified.
-    while (textNode) {
-      if (ColorComponent.textShouldBeTested(textNode)) {
-        nodes.push(textNode.parentNode);
-      }
-      textNode = textNodes.iterateNext();
-    }
-
-    if (nodes.length === 0) {
-      buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-    }
-
-    nodes.forEach(function (element) {
-      colorFontContrast(test, Case, options, $(element), element);
-    });
-  });
-};
-module.exports = ColorFontContrast;
-
-},{"Case":30,"ColorComponent":3}],272:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- *
- * This test did not test anything, so now it just returns untested.
- */
-'use strict';
-
-var Case = require('Case');
-
-var CssDocumentMakesSenseStyleTurnedOff = function CssDocumentMakesSenseStyleTurnedOff(test) {
-  this.get('$scope').each(function () {
-    test.add(Case({
-      element: undefined,
-      status: 'untested'
-    }));
-  });
-};
-module.exports = CssDocumentMakesSenseStyleTurnedOff;
-
-},{"Case":30}],273:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var DefinitionListsAreUsed = function DefinitionListsAreUsed(test) {
-  test.get('$scope').find('dl').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    _case.set({
-      status: 'inapplicable'
-    });
-  });
-  test.get('$scope').find('p, li').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    var $item = $(this);
-    $(this).find('span, strong, em, b, i').each(function () {
-      if ($(this).text().length < 50 && $item.text().search($(this).text()) === 0) {
-        if ($(this).is('span')) {
-          if ($(this).css('font-weight') === $item.css('font-weight') && $(this).css('font-style') === $item.css('font-style')) {
-            _case.set({
-              status: 'passed'
-            });
-            return;
-          }
-        }
-        _case.set({
-          status: 'failed'
-        });
-      }
-    });
-  });
-};
-module.exports = DefinitionListsAreUsed;
-
-},{"Case":30}],274:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var DoctypeProvided = function DoctypeProvided(test) {
-  var doc = test.get('$scope').get(0);
-  if ($(doc.doctype).length === 0 && !document.doctype) {
-    test.add(Case({
-      element: doc,
-      status: 'failed'
-    }));
-  } else {
-    test.add(Case({
-      element: doc,
-      status: 'passed'
-    }));
-  }
-};
-module.exports = DoctypeProvided;
-
-},{"Case":30}],275:[function(require,module,exports){
-'use strict';
-
-var AcronymComponent = require('AcronymComponent');
-var DocumentAcronymsHaveElement = function DocumentAcronymsHaveElement(test) {
-  AcronymComponent(test, 'acronym');
-};
-module.exports = DocumentAcronymsHaveElement;
-
-},{"AcronymComponent":1}],276:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var DocumentAutoRedirectNotUsed = function DocumentAutoRedirectNotUsed(test) {
-
-  var selector = 'meta[http-equiv=refresh]';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      });
-    }
-  });
-};
-module.exports = DocumentAutoRedirectNotUsed;
-
-},{"Case":30}],277:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- *
- * This test did not test anything, so now it just returns untested.
- */
-'use strict';
-
-var Case = require('Case');
-
-var DocumentContentReadableWithoutStylesheets = function DocumentContentReadableWithoutStylesheets(test) {
-  this.get('$scope').each(function () {
-    test.add(Case({
-      element: undefined,
-      status: 'untested'
-    }));
-  });
-};
-module.exports = DocumentContentReadableWithoutStylesheets;
-
-},{"Case":30}],278:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var DocumentHasTitleElement = function DocumentHasTitleElement(test) {
-
-  var selector = 'head title';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (candidates.length === 1) {
-      test.add(Case({
-        element: candidates.get(0),
-        status: 'passed'
-      }));
-    } else if (candidates.length === 0) {
-      test.add(Case({
-        element: undefined,
-        status: 'failed'
-      }));
-    } else if (candidates.length > 1) {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      });
-    }
-  });
-};
-module.exports = DocumentHasTitleElement;
-
-},{"Case":30}],279:[function(require,module,exports){
-'use strict';
-
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var TextStatisticsComponent = require('TextStatisticsComponent');
-var IsUnreadable = require('IsUnreadable');
-var DocumentIsWrittenClearly = function DocumentIsWrittenClearly(test) {
-  test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
-    return TextNodeFilterComponent(element);
-  }).each(function () {
-    var text = TextStatisticsComponent.cleanText($(this).text());
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if (IsUnreadable(text)) {
-      _case.set({
-        status: 'inapplicable'
-      });
-      return;
-    }
-    if (Math.round(206.835 - 1.015 * TextStatisticsComponent.averageWordsPerSentence(text) - 84.6 * TextStatisticsComponent.averageSyllablesPerWord(text)) < 60) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = DocumentIsWrittenClearly;
-
-},{"Case":30,"IsUnreadable":11,"TextNodeFilterComponent":25,"TextSelectorComponent":26,"TextStatisticsComponent":27}],280:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
-var DocumentLangIsISO639Standard = function DocumentLangIsISO639Standard(test) {
-  var $element = test.get('$scope').is('html') ? test.get('$scope') : test.get('$scope').find('html').first();
-
-  var _case = Case({
-    element: $element[0]
-  });
-
-  var langAttr = $element.attr('lang');
-  var matchedLang = false; // Check to see if a languagecode was matched
-
-  test.add(_case);
-  if (!$element.is('html') || typeof langAttr === 'undefined') {
-    _case.set({
-      status: 'inapplicable'
-    });
-  } else {
-    // Loop over all language codes, checking if the current lang attribute starts
-    // with a value that's in the languageCodes array
-    $.each(LanguageCodesStringsComponent, function (i, currentLangCode) {
-      if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
-        matchedLang = true;
-      }
-    });
-
-    if (!matchedLang) {
-      _case.set({ status: 'failed' });
-    } else if (langAttr.match(/^[a-z]{2}(-[A-Z]{2})?$/) === null) {
-      _case.set({ status: 'failed' });
-    } else {
-      _case.set({ status: 'passed' });
-    }
-  }
-};
-module.exports = DocumentLangIsISO639Standard;
-
-},{"Case":30,"LanguageCodesStringsComponent":13}],281:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var DocumentLangNotIdentified = function DocumentLangNotIdentified(test) {
-  this.get('$scope').each(function () {
-    var lang = 'getAttribute' in this && this.getAttribute('lang');
-    if (lang && lang.length > 1) {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    } else {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    }
-  });
-};
-module.exports = DocumentLangNotIdentified;
-
-},{"Case":30}],282:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var DocumentMetaNotUsedWithTimeout = function DocumentMetaNotUsedWithTimeout(test) {
-
-  var selector = 'meta';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if (this.hasAttribute('http-equiv') && this.getAttribute('http-equiv') === 'refresh') {
-          if (this.hasAttribute('content') && (this.getAttribute('content') || '').length > 0) {
-            status = 'failed';
-          }
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = DocumentMetaNotUsedWithTimeout;
-
-},{"Case":30}],283:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var DocumentReadingDirection = function DocumentReadingDirection(test) {
-
-  var selector = ['[lang="he"]', '[lang="ar"]'].join(', ');
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        if (this.hasAttribute('dir') && (this.getAttribute('dir') || '') === 'rtl') {
-          test.add(Case({
-            element: this,
-            status: 'passed'
-          }));
-        } else {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        }
-      });
-    }
-  });
-};
-module.exports = DocumentReadingDirection;
-
-},{"Case":30}],284:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var DocumentStrictDocType = function DocumentStrictDocType(test) {
-  if (typeof document.doctype === 'undefined' || !document.doctype || document.doctype.systemId.search('strict') === -1) {
-    test.add(Case({
-      element: document,
-      status: 'failed'
-    }));
-  } else {
-    test.add(Case({
-      element: document,
-      status: 'passed'
-    }));
-  }
-};
-module.exports = DocumentStrictDocType;
-
-},{"Case":30}],285:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var DocumentTitleDescribesDocument = function DocumentTitleDescribesDocument(test) {
-
-  var selector = 'head title';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    var status = candidates.length === 1 ? 'passed' : 'failed';
-
-    if (candidates.length === 0) {
-      test.add(Case({
-        element: undefined,
-        status: status
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = DocumentTitleDescribesDocument;
-
-},{"Case":30}],286:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var DocumentTitleIsNotPlaceholder = function DocumentTitleIsNotPlaceholder(test, options) {
-  options = options || {
-    selector: 'head > title',
-    content: 'true'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = DocumentTitleIsNotPlaceholder;
-
-},{"PlaceholderComponent":16}],287:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var DocumentTitleIsShort = function DocumentTitleIsShort(test) {
-  var $title = test.get('$scope').find('head title');
-  test.add(Case({
-    element: $title.get(0),
-    status: $title.text().length > 150 ? 'failed' : 'passed'
-  }));
-};
-module.exports = DocumentTitleIsShort;
-
-},{"Case":30}],288:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var DocumentTitleNotEmpty = function DocumentTitleNotEmpty(test, options) {
-  options = options || {
-    selector: 'head > title',
-    content: 'true',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = DocumentTitleNotEmpty;
-
-},{"PlaceholderComponent":16}],289:[function(require,module,exports){
-'use strict';
-
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var DocumentVisualListsAreMarkedUp = function DocumentVisualListsAreMarkedUp(test) {
-
-  var itemStarters = ['♦', '›', '»', '‣', '▶', '◦', '✓', '◽', '•', '—', '◾', // single characters
-  '-\\D', // dash, except for negative numbers
-  '\\\\', // Just an escaped slash
-  '\\*(?!\\*)', // *, but not ** (which could be a foot note)
-  '\\.\\s', 'x\\s', // characters that should be followed by a space
-  '&bull;', '&#8226;', // HTML entities
-  '[0-9]+\\.', '\\(?[0-9]+\\)', // Numbers: 1., 13., 13), (14)
-  '[\\u25A0-\\u25FF]', // Unicode characters that look like bullets
-  '[IVX]{1,5}\\.\\s' // Roman numerals up to (at least) 27, followed by ". " E.g. II. IV.
-  ];
-
-  var symbols = RegExp('(^|<br[^>]*>)' + // Match the String start or a <br> element
-  '[\\s]*' + // Optionally followed by white space characters
-  '(' + itemStarters.join('|') + ')', // Followed by a character that could indicate a list
-  'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
-
-  test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
-    return TextNodeFilterComponent(element);
-  }).each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    var matches = $(this).html().match(symbols);
-    _case.set({
-      status: matches && matches.length > 2 ? 'failed' : 'passed'
-    });
-  });
-};
-module.exports = DocumentVisualListsAreMarkedUp;
-
-},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],290:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-var $ = require('jquery/dist/jquery');
-
-var DomOrderMatchesVisualOrder = function DomOrderMatchesVisualOrder(test, options) {
-
-  options = options || {};
-
-  $.expr[':'].quailCss = function (obj, index, meta) {
-    var args = meta[3].split(/\s*=\s*/);
-    return $(obj).css(args[0]).search(args[1]) > -1;
-  };
-
-  var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: options.test ? 'inapplicable' : 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = DomOrderMatchesVisualOrder;
-
-},{"Case":30,"jquery/dist/jquery":228}],291:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var EmbedHasAssociatedNoEmbed = function EmbedHasAssociatedNoEmbed(test) {
-  test.get('$scope').find('embed').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    _case.set({
-      status: $(this).find('noembed').length || $(this).next().is('noembed') ? 'passed' : 'failed'
-    });
-  });
-};
-module.exports = EmbedHasAssociatedNoEmbed;
-
-},{"Case":30}],292:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var EmbedMustHaveAltAttribute = function EmbedMustHaveAltAttribute(test) {
-
-  var selector = 'embed';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-        var alt = this.getAttribute('alt');
-        if (alt && typeof alt === 'string' && alt.length > 0) {
-          status = 'passed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = EmbedMustHaveAltAttribute;
-
-},{"Case":30}],293:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var FieldsetHasLabel = function FieldsetHasLabel(test, options) {
-
-  options = options || {};
-
-  var selector = 'fieldset:not(fieldset:has(legend))';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: options.test ? 'inapplicable' : 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        } else {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = FieldsetHasLabel;
-
-},{"Case":30}],294:[function(require,module,exports){
-/**
- * Test for a label associated with a file input element.
- */
-'use strict';
-
-var Case = require('Case');
-
-var FileHasLabel = function FileHasLabel(test) {
-
-  var sFiles = '[type="file"]';
-  var sLabels = 'label';
-
-  function countOfLabelsById(id, labels) {
-    // Map labels by for attribute value.
-    var labelsByFor = 0;
-    for (var i = 0, il = labels.length; i < il; ++i) {
-      var $label = labels.eq(i);
-      if ($label.attr('for') === id) {
-        labelsByFor++;
-      }
-    }
-    return labelsByFor;
-  }
-
-  this.get('$scope').each(function () {
-    var $scope = $(this);
-    var files = $scope.find(sFiles);
-    var labels = $scope.find(sLabels);
-
-    if (files.length === 0) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      files.each(function () {
-        var $file = $(this);
-        var status = 'failed';
-
-        // Check for an associated label.
-        var id = $file.attr('id');
-        if (id) {
-          var labelCount = countOfLabelsById(id, labels);
-          if (labelCount === 1) {
-            status = 'passed';
-          }
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = FileHasLabel;
-
-},{"Case":30}],295:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var FontIsNotUsed = function FontIsNotUsed(test) {
-
-  var selector = 'font';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      });
-    }
-  });
-};
-module.exports = FontIsNotUsed;
-
-},{"Case":30}],296:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var FormButtonsHaveValue = function FormButtonsHaveValue(test) {
-
-  var selector = 'input[type=button], input[type=submit], input[type=reset]';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-
-        // If the button has a value, it passes.
-        var val = this.getAttribute('value');
-        if (val && typeof val === 'string' && val.length > 0) {
-          status = 'passed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = FormButtonsHaveValue;
-
-},{"Case":30}],297:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var FormErrorMessageHelpsUser = function FormErrorMessageHelpsUser(test) {
-
-  var selector = 'form';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-    }
-  });
-};
-module.exports = FormErrorMessageHelpsUser;
-
-},{"Case":30}],298:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var FormHasGoodErrorMessage = function FormHasGoodErrorMessage(test) {
-
-  var selector = 'form';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-    }
-  });
-};
-module.exports = FormHasGoodErrorMessage;
-
-},{"Case":30}],299:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var FormHasSubmitButton = function FormHasSubmitButton(test) {
-
-  var selector = 'input[type=submit], button[type=submit]';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find('form');
-
-    if (candidates.length === 0) {
-      test.add(Case({
-        element: this,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var submitButton = $(this).find(selector);
-
-        var status = submitButton.length === 1 ? 'passed' : 'failed';
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = FormHasSubmitButton;
-
-},{"Case":30}],300:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var RedundantStringsComponent = require('RedundantStringsComponent');
-var FormWithRequiredLabel = function FormWithRequiredLabel(test) {
-  var redundant = RedundantStringsComponent;
-  var lastStyle,
-      currentStyle = false;
-  redundant.required[redundant.required.indexOf('*')] = /\*/g;
-  test.get('$scope').each(function () {
-    var $local = $(this);
-    $local.find('label').each(function () {
-      var text = $(this).text().toLowerCase();
-      var $label = $(this);
-      var _case = test.add(Case({
-        element: this
-      }));
-      for (var word in redundant.required) {
-        if (text.search(word) >= 0 && !test.get('$scope').find('#' + $label.attr('for')).attr('aria-required')) {
-          _case.set({
-            status: 'failed'
-          });
-        }
-      }
-      currentStyle = $label.css('color') + $label.css('font-weight') + $label.css('background-color');
-      if (lastStyle && currentStyle !== lastStyle) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      lastStyle = currentStyle;
-      if (typeof _case.get('status') === 'undefined') {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  });
-};
-module.exports = FormWithRequiredLabel;
-
-},{"Case":30,"RedundantStringsComponent":18}],301:[function(require,module,exports){
-'use strict';
-
-var HeadingLevelComponent = require('HeadingLevelComponent');
-var HeaderH1 = function HeaderH1(test) {
-  HeadingLevelComponent(test, {
-    headingLevel: 1
-  });
-};
-module.exports = HeaderH1;
-
-},{"HeadingLevelComponent":9}],302:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var HeaderH1Format = function HeaderH1Format(test) {
-
-  var selector = 'h1';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-    }
-  });
-};
-module.exports = HeaderH1Format;
-
-},{"Case":30}],303:[function(require,module,exports){
-'use strict';
-
-var HeadingLevelComponent = require('HeadingLevelComponent');
-var HeaderH2 = function HeaderH2(test) {
-  HeadingLevelComponent(test, {
-    headingLevel: 2
-  });
-};
-module.exports = HeaderH2;
-
-},{"HeadingLevelComponent":9}],304:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var HeaderH2Format = function HeaderH2Format(test) {
-
-  var selector = 'h2';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-    }
-  });
-};
-module.exports = HeaderH2Format;
-
-},{"Case":30}],305:[function(require,module,exports){
-'use strict';
-
-var HeadingLevelComponent = require('HeadingLevelComponent');
-var HeaderH3 = function HeaderH3(test) {
-  HeadingLevelComponent(test, {
-    headingLevel: 3
-  });
-};
-module.exports = HeaderH3;
-
-},{"HeadingLevelComponent":9}],306:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var HeaderH3Format = function HeaderH3Format(test) {
-
-  var selector = 'h3';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-    }
-  });
-};
-module.exports = HeaderH3Format;
-
-},{"Case":30}],307:[function(require,module,exports){
-'use strict';
-
-var HeadingLevelComponent = require('HeadingLevelComponent');
-var HeaderH4 = function HeaderH4(test) {
-  HeadingLevelComponent(test, {
-    headingLevel: 4
-  });
-};
-module.exports = HeaderH4;
-
-},{"HeadingLevelComponent":9}],308:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var HeaderH4Format = function HeaderH4Format(test) {
-
-  var selector = 'h4';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-    }
-  });
-};
-module.exports = HeaderH4Format;
-
-},{"Case":30}],309:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var HeaderH5Format = function HeaderH5Format(test) {
-
-  var selector = 'h5';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-    }
-  });
-};
-module.exports = HeaderH5Format;
-
-},{"Case":30}],310:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var HeaderH6Format = function HeaderH6Format(test) {
-
-  var selector = 'h6';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-    }
-  });
-};
-module.exports = HeaderH6Format;
-
-},{"Case":30}],311:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var HeadersAttrRefersToATableCell = function HeadersAttrRefersToATableCell(test) {
-  // Table cell headers without referred ids
-  test.get('$scope').find('table').each(function () {
-    var self = this;
-    var _case = Case();
-    test.add(_case);
-    var elmHeaders = $(self).find('th[headers], td[headers]');
-
-    if (elmHeaders.length === 0) {
-      _case.set({
-        status: 'inapplicable'
-      });
-      return;
-    } else {
-      elmHeaders.each(function () {
-        var that = this;
-        var headers = $(this).attr('headers').split(/\s+/);
-        $.each(headers, function (index, item) {
-          if (item === '' || $(self).find('th#' + item + ',td#' + item).length > 0) {
-            _case.set({
-              element: that,
-              status: 'passed'
-            });
-            return;
-          } else {
-            _case.set({
-              element: that,
-              status: 'failed'
-            });
-            return;
-          }
-        });
-      });
-    }
-  });
-};
-module.exports = HeadersAttrRefersToATableCell;
-
-},{"Case":30}],312:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var HeadersHaveText = function HeadersHaveText(test, options) {
-  options = options || {
-    selector: 'h1, h2, h3, h4, h5, h6',
-    content: 'true',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = HeadersHaveText;
-
-},{"PlaceholderComponent":16}],313:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var HeadersUseToMarkSections = function HeadersUseToMarkSections(test) {
-  test.get('$scope').find('p').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    var $paragraph = $(this);
-    $paragraph.find('strong:first, em:first, i:first, b:first').each(function () {
-      _case.set({
-        status: $paragraph.text().trim() === $(this).text().trim() ? 'failed' : 'passed'
-      });
-    });
-  });
-
-  test.get('$scope').find('ul, ol').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    var $list = $(this);
-    if ($list.prevAll(':header').length || $list.find('li').length !== $list.find('li:has(a)').length) {
-      _case.set({
-        status: 'passed'
-      });
-      return;
-    }
-    var isNavigation = true;
-    $list.find('li:has(a)').each(function () {
-      if ($(this).text().trim() !== $(this).find('a:first').text().trim()) {
-        isNavigation = false;
-      }
-    });
-    if (isNavigation) {
-      _case.set({
-        status: 'failed'
-      });
-    }
-  });
-};
-module.exports = HeadersUseToMarkSections;
-
-},{"Case":30}],314:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var IIsNotUsed = function IIsNotUsed(test) {
-
-  var selector = 'i';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      });
-    }
-  });
-};
-module.exports = IIsNotUsed;
-
-},{"Case":30}],315:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IdrefsHasCorrespondingId = function IdrefsHasCorrespondingId(test) {
-
-  function getAttribute($element) {
-    var attribute = [];
-    var attributeList = ['headers', 'aria-controls', 'aria-describedby', 'aria-flowto', 'aria-labelledby', 'aria-owns'];
-
-    $.each(attributeList, function (index, item) {
-
-      var attr = $element.attr(item);
-
-      if (typeof attr !== typeof undefined && attr !== false) {
-        attribute = attr;
-        return;
-      }
-    });
-    return attribute.split(/\s+/);
-  }
-
-  test.get('$scope').each(function () {
-    var testableElements = $(this).find('td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], ' + '[aria-labelledby], [aria-owns]');
-
-    if (testableElements.length === 0) {
-      test.add(Case({
-        element: this,
-        status: 'inapplicable'
-      }));
-      return;
-    } else {
-      testableElements.each(function () {
-        var _case = test.add(Case({
-          element: this
-        }));
-
-        var attributes = getAttribute($(this));
-        var status = 'passed';
-
-        $.each(attributes, function (index, item) {
-          if (item !== '' && $('#' + item).length === 0) {
-            status = 'failed';
-            return;
-          }
-        });
-
-        _case.set({
-          status: status
-        });
-      });
-    }
-  });
-};
-module.exports = IdrefsHasCorrespondingId;
-
-},{"Case":30}],316:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var IframeMustNotHaveLongdesc = function IframeMustNotHaveLongdesc(test) {
-
-  var selector = 'iframe';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if (this.hasAttribute('longdesc')) {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = IframeMustNotHaveLongdesc;
-
-},{"Case":30}],317:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var ImageMapServerSide = function ImageMapServerSide(test) {
-
-  var selector = 'img';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if (this.hasAttribute('ismap')) {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = ImageMapServerSide;
-
-},{"Case":30}],318:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ImgAltIsDifferent = function ImgAltIsDifferent(test) {
-  test.get('$scope').find('img:not([src])').each(function () {
-    var _case = Case({
-      element: this,
-      status: 'inapplicable'
-    });
-    test.add(_case);
-  });
-  test.get('$scope').find('img[alt][src]').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if ($(this).attr('src') === $(this).attr('alt') || $(this).attr('src').split('/').pop() === $(this).attr('alt')) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = ImgAltIsDifferent;
-
-},{"Case":30}],319:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ImgAltIsTooLong = function ImgAltIsTooLong(test) {
-  test.get('$scope').find('img[alt]').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    _case.set({
-      status: $(this).attr('alt').length > 100 ? 'failed' : 'passed'
-    });
-  });
-};
-module.exports = ImgAltIsTooLong;
-
-},{"Case":30}],320:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ImgAltNotEmptyInAnchor = function ImgAltNotEmptyInAnchor(test) {
-  test.get('$scope').find('a[href]:has(img)').each(function () {
-    var $a = $(this);
-    var text = $a.text();
-
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-
-    // Concat all alt attributes of images to the text of the paragraph
-    $a.find('img[alt]').each(function () {
-      text += ' ' + $(this).attr('alt');
-    });
-
-    if (IsUnreadable(text)) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = ImgAltNotEmptyInAnchor;
-
-},{"Case":30,"IsUnreadable":11}],321:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var ImgAltNotPlaceHolder = function ImgAltNotPlaceHolder(test, options) {
-  options = options || {
-    selector: 'img',
-    attribute: 'alt'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = ImgAltNotPlaceHolder;
-
-},{"PlaceholderComponent":16}],322:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var ImgHasAlt = function ImgHasAlt(test) {
-
-  var selector = 'img';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-
-        if (this.hasAttribute('alt')) {
-          status = 'passed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = ImgHasAlt;
-
-},{"Case":30}],323:[function(require,module,exports){
-'use strict';
-
-var ValidURLComponent = require('ValidURLComponent');
-var Case = require('Case');
-var ImgHasLongDesc = function ImgHasLongDesc(test) {
-  test.get('$scope').find('img[longdesc]').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if ($(this).attr('longdesc') === $(this).attr('alt') || !ValidURLComponent($(this).attr('longdesc'))) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = ImgHasLongDesc;
-
-},{"Case":30,"ValidURLComponent":28}],324:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ImgImportantNoSpacerAlt = function ImgImportantNoSpacerAlt(test) {
-  test.get('$scope').find('img[alt]').each(function () {
-    var width = $(this).width() ? $(this).width() : parseInt($(this).attr('width'), 10);
-    var height = $(this).height() ? $(this).height() : parseInt($(this).attr('height'), 10);
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if (IsUnreadable($(this).attr('alt').trim()) && $(this).attr('alt').length > 0 && width > 50 && height > 50) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = ImgImportantNoSpacerAlt;
-
-},{"Case":30,"IsUnreadable":11}],325:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ImgNonDecorativeHasAlt = function ImgNonDecorativeHasAlt(test) {
-  test.get('$scope').find('img[alt]').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if (IsUnreadable($(this).attr('alt')) && ($(this).width() > 100 || $(this).height() > 100)) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = ImgNonDecorativeHasAlt;
-
-},{"Case":30,"IsUnreadable":11}],326:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var ImgServerSideMapNotUsed = function ImgServerSideMapNotUsed(test) {
-
-  var selector = 'img';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if (this.hasAttribute('ismap')) {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = ImgServerSideMapNotUsed;
-
-},{"Case":30}],327:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var ImgShouldNotHaveTitle = function ImgShouldNotHaveTitle(test) {
-
-  var selector = 'img';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if (this.hasAttribute('title')) {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = ImgShouldNotHaveTitle;
-
-},{"Case":30}],328:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var ImgWithMapHasUseMap = function ImgWithMapHasUseMap(test) {
-
-  var selector = 'img[ismap]';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-
-        if (this.hasAttribute('usemap')) {
-          status = 'passed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = ImgWithMapHasUseMap;
-
-},{"Case":30}],329:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ImgWithMathShouldHaveMathEquivalent = function ImgWithMathShouldHaveMathEquivalent(test) {
-  test.get('$scope').find('img:not(img:has(math), img:has(tagName))').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if (!$(this).parent().find('math').length) {
-      _case.set({
-        status: 'failed'
-      });
-    }
-  });
-};
-module.exports = ImgWithMathShouldHaveMathEquivalent;
-
-},{"Case":30}],330:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var InputCheckboxRequiresFieldset = function InputCheckboxRequiresFieldset(test) {
-  test.get('$scope').find('input[type="checkbox"]').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if (!$(this).parents('fieldset').length) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = InputCheckboxRequiresFieldset;
-
-},{"Case":30}],331:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var InputElementsDontHaveAlt = function InputElementsDontHaveAlt(test) {
-
-  var selector = 'input[type!=image]';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if (this.hasAttribute('alt')) {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = InputElementsDontHaveAlt;
-
-},{"Case":30}],332:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var InputImageAltIsNotFileName = function InputImageAltIsNotFileName(test) {
-  test.get('$scope').find('input[type=image][alt]').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if ($(this).attr('src') === $(this).attr('alt')) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = InputImageAltIsNotFileName;
-
-},{"Case":30}],333:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var InputImageAltIsNotPlaceholder = function InputImageAltIsNotPlaceholder(test, options) {
-  options = options || {
-    selector: 'input[type="image"]',
-    attribute: 'alt'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = InputImageAltIsNotPlaceholder;
-
-},{"PlaceholderComponent":16}],334:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var InputImageAltIsShort = function InputImageAltIsShort(test) {
-  test.get('$scope').find('input[type=image]').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if ($(this).attr('alt').length > 100) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = InputImageAltIsShort;
-
-},{"Case":30}],335:[function(require,module,exports){
-'use strict';
-
-var CleanStringComponent = require('CleanStringComponent');
-var Case = require('Case');
-var RedundantStringsComponent = require('RedundantStringsComponent');
-var InputImageAltNotRedundant = function InputImageAltNotRedundant(test) {
-  test.get('$scope').find('input[type=image][alt]').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if (RedundantStringsComponent.inputImage.indexOf(CleanStringComponent($(this).attr('alt'))) > -1) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = InputImageAltNotRedundant;
-
-},{"Case":30,"CleanStringComponent":2,"RedundantStringsComponent":18}],336:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var InputImageHasAlt = function InputImageHasAlt(test) {
-
-  var selector = 'input[type=image]:visible';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-
-        if (this.hasAttribute('alt')) {
-          status = 'passed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = InputImageHasAlt;
-
-},{"Case":30}],337:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var LabelComponent = require('LabelComponent');
-
-var InputTextHasLabel = function InputTextHasLabel(test, options) {
-  options = options || {
-    selector: 'input'
-  };
-  LabelComponent(test, options);
-};
-module.exports = InputTextHasLabel;
-
-},{"LabelComponent":12}],338:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var InputTextHasValue = function InputTextHasValue(test, options) {
-  options = options || {
-    selector: 'input[type="text"]',
-    attribute: 'value',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = InputTextHasValue;
-
-},{"PlaceholderComponent":16}],339:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var InputTextValueNotEmpty = function InputTextValueNotEmpty(test, options) {
-  options = options || {
-    selector: 'input[type="text"]',
-    attribute: 'value',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = InputTextValueNotEmpty;
-
-},{"PlaceholderComponent":16}],340:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var InputWithoutLabelHasTitle = function InputWithoutLabelHasTitle(test) {
-
-  test.get('$scope').each(function () {
-
-    var testableElements = $(this).find('input, select, textarea');
-
-    if (testableElements.length === 0) {
-      var _case = Case({
-        element: this,
-        status: 'inapplicable'
-      });
-      test.add(_case);
-      return;
-    } else {
-      testableElements.each(function () {
-        var _case = Case({
-          element: this
-        });
-        test.add(_case);
-
-        if ($(this).css('display') === 'none') {
-          _case.set({
-            status: 'inapplicable'
-          });
-          return;
-        }
-        if (!test.get('$scope').find('label[for=' + $(this).attr('id') + ']').length && (!$(this).attr('title') || IsUnreadable($(this).attr('title')))) {
-          _case.set({
-            status: 'failed'
-          });
-        } else {
-          _case.set({
-            status: 'passed'
-          });
-        }
-      });
-    }
-  });
-};
-module.exports = InputWithoutLabelHasTitle;
-
-},{"Case":30,"IsUnreadable":11}],341:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var LabelDoesNotContainInput = function LabelDoesNotContainInput(test) {
-
-  var selector = 'label';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if ($(this).find('input').length > 0) {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = LabelDoesNotContainInput;
-
-},{"Case":30}],342:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var LabelMustBeUnique = function LabelMustBeUnique(test) {
-  var labels = {};
-  test.get('$scope').find('label[for]').each(function () {
-    if (typeof labels[$(this).attr('for')] === 'undefined') {
-      labels[$(this).attr('for')] = 0;
-    }
-    labels[$(this).attr('for')]++;
-  });
-  test.get('$scope').find('label[for]').each(function () {
-    var _case = Case({
-      element: this,
-      status: labels[$(this).attr('for')] === 1 ? 'passed' : 'failed'
-    });
-    test.add(_case);
-  });
-};
-module.exports = LabelMustBeUnique;
-
-},{"Case":30}],343:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var LabelMustNotBeEmpty = function LabelMustNotBeEmpty(test, options) {
-  options = options || {
-    selector: 'label',
-    content: 'true',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = LabelMustNotBeEmpty;
-
-},{"PlaceholderComponent":16}],344:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var LabelsAreAssignedToAnInput = function LabelsAreAssignedToAnInput(test) {
-  test.get('$scope').find('label').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if (!$(this).attr('for')) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      if (!test.get('$scope').find('#' + $(this).attr('for')).length || !test.get('$scope').find('#' + $(this).attr('for')).is(':input')) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    }
-  });
-};
-module.exports = LabelsAreAssignedToAnInput;
-
-},{"Case":30}],345:[function(require,module,exports){
-'use strict';
-
-var GetTextContentsComponent = require('GetTextContentsComponent');
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var LanguageComponent = require('LanguageComponent');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var LanguageDirAttributeIsUsed = function LanguageDirAttributeIsUsed(test) {
-
-  var textDirection = LanguageComponent.textDirection;
-
-  function countDirAttributes() {
-    var $el = $(this);
-    var currentDirection = $el.attr('dir');
-    if (!currentDirection) {
-      var parentDir = $el.closest('[dir]').attr('dir');
-      currentDirection = parentDir || currentDirection;
-    }
-    if (typeof currentDirection === 'string') {
-      currentDirection = currentDirection.toLowerCase();
-    }
-    if (typeof textDirection[currentDirection] === 'undefined') {
-      currentDirection = 'ltr';
-    }
-    var oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
-    var text = GetTextContentsComponent($el);
-    var textMatches = text.match(textDirection[oppositeDirection]);
-    if (!textMatches) {
-      return;
-    }
-    var matches = textMatches.length;
-    $el.find('[dir=' + oppositeDirection + ']').each(function () {
-      var childMatches = $el[0].textContent.match(textDirection[oppositeDirection]);
-      if (childMatches) {
-        matches -= childMatches.length;
-      }
-    });
-
-    var _case = test.add(Case({
-      element: this
-    }));
-
-    _case.set({ status: matches > 0 ? 'failed' : 'passed' });
-  }
-
-  test.get('$scope').each(function () {
-    $(this).find(TextSelectorComponent).filter(function (index, element) {
-      return TextNodeFilterComponent(element);
-    }).each(countDirAttributes);
-  });
-};
-module.exports = LanguageDirAttributeIsUsed;
-
-},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],346:[function(require,module,exports){
-'use strict';
-
-var GetTextContentsComponent = require('GetTextContentsComponent');
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var LanguageComponent = require('LanguageComponent');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var LanguageDirectionPunctuation = function LanguageDirectionPunctuation(test) {
-  var $scope = test.get('$scope');
-  var punctuation = {};
-  var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
-  var currentDirection = $scope.attr('dir') ? $scope.attr('dir').toLowerCase() : 'ltr';
-  var oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
-  var textDirection = LanguageComponent.textDirection;
-  $scope.each(function () {
-    var $local = $(this);
-    $local.find(TextSelectorComponent).filter(function (index, element) {
-      return TextNodeFilterComponent(element);
-    }).each(function () {
-      var $el = $(this);
-      if ($el.attr('dir')) {
-        currentDirection = $el.attr('dir').toLowerCase();
-      } else {
-        currentDirection = $el.parent('[dir]').first().attr('dir') ? $el.parent('[dir]').first().attr('dir').toLowerCase() : currentDirection;
-      }
-      if (typeof textDirection[currentDirection] === 'undefined') {
-        currentDirection = 'ltr';
-      }
-      oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
-      var text = GetTextContentsComponent($el);
-      var matches = text.match(textDirection[oppositeDirection]);
-      var _case = test.add(Case({
-        element: this
-      }));
-      if (!matches) {
-        _case.set({ status: 'inapplicable' });
-        return;
-      }
-      var first = text.search(textDirection[oppositeDirection]);
-      var last = text.lastIndexOf(matches.pop());
-      while (punctuation = punctuationRegex.exec(text)) {
-        if (punctuation.index === first - 1 || punctuation.index === last + 1) {
-          _case.set({ status: 'failed' });
-          return;
-        }
-      }
-      _case.set({ status: 'passed' });
-    });
-  });
-};
-module.exports = LanguageDirectionPunctuation;
-
-},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],347:[function(require,module,exports){
-'use strict';
-
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var LanguageComponent = require('LanguageComponent');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var LanguageUnicodeDirection = function LanguageUnicodeDirection(test) {
-  var $scope = test.get('$scope');
-  var textDirection = LanguageComponent.textDirection;
-  var textDirectionChanges = LanguageComponent.textDirectionChanges;
-  $scope.each(function () {
-    var $local = $(this);
-    $local.find(TextSelectorComponent).filter(function (index, element) {
-      return TextNodeFilterComponent(element);
-    }).each(function () {
-      var _case = test.add(Case({
-        element: this
-      }));
-      var $el = $(this);
-      var text = $el.text().trim();
-      var otherDirection = text.substr(0, 1).search(textDirection.ltr) !== -1 ? 'rtl' : 'ltr';
-      if (text.search(textDirection[otherDirection]) === -1) {
-        _case.set({ status: 'inapplicable' });
-      } else {
-        if (text.search(textDirectionChanges[otherDirection]) !== -1) {
-          _case.set({ status: 'passed' });
-        } else {
-          _case.set({ status: 'failed' });
-        }
-      }
-    });
-  });
-};
-module.exports = LanguageUnicodeDirection;
-
-},{"Case":30,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],348:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var LegendTextNotEmpty = function LegendTextNotEmpty(test) {
-
-  var selector = 'legend';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-
-        if ($(this).text().trim().length > 0) {
-          status = 'passed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = LegendTextNotEmpty;
-
-},{"Case":30}],349:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var LegendTextNotPlaceholder = function LegendTextNotPlaceholder(test, options) {
-  options = options || {
-    selector: 'legend',
-    content: 'true',
-    emtpy: 'true'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = LegendTextNotPlaceholder;
-
-},{"PlaceholderComponent":16}],350:[function(require,module,exports){
-/**
- * @todo Needs refinement.
- *
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var LiDontUseImageForBullet = function LiDontUseImageForBullet(test) {
-
-  var selector = 'li';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'passed';
-
-        if ($(this).children('img').length > 0) {
-          status = 'failed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = LiDontUseImageForBullet;
-
-},{"Case":30}],351:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var LinkHasAUniqueContext = function LinkHasAUniqueContext(test) {
-
-  var blockStyle = ['block', 'flex', 'list-item', 'table', 'table-caption', 'table-cell'];
-
-  function getLinkSentence(link) {
-    // Find the closest block-like element
-    var $link = $(link);
-    var block = $link;
-    var text = simplifyText($link.text());
-
-    while (!block.is('body, html') && blockStyle.indexOf(block.css('display')) === -1) {
-      block = block.parent();
-    }
-
-    var sentences = block.text().match(/[^\.!\?]+[\.!\?]+/g);
-    if (sentences === null) {
-      sentences = [block.text()];
-    }
-
-    for (var i = 0; i < sentences.length; i += 1) {
-      if (simplifyText(sentences[i]).indexOf(text) !== -1) {
-        return sentences[i].trim();
-      }
-    }
-  }
-
-  function simplifyText(text) {
-    var tmp = text.match(/\w+/g);
-    if (tmp !== null) {
-      text = tmp.join(' ');
-    }
-    return text.toLowerCase();
-  }
-
-  function txtNotAlike(a, b) {
-    return simplifyText('' + a) !== simplifyText('' + b);
-  }
-
-  function shareContext(linkA, linkB) {
-
-    if (linkA.href === linkB.href) {
-      return false;
-    } else if (txtNotAlike(linkA.title, linkB.title)) {
-      return false;
-    }
-
-    // Find the nearest list item, paragraph or table cell of both items
-    var linkACtxt = $(linkA).closest('p, li, dd, dt, td, th');
-    var linkBCtxt = $(linkB).closest('p, li, dd, dt, td, th');
-
-    // check if they are different
-    if (linkACtxt.length !== 0 && linkBCtxt.length !== 0 && txtNotAlike(getLinkText(linkACtxt), getLinkText(linkBCtxt))) {
-      return false;
-    }
-
-    // If one is a table cell and the other isn't, allow it
-    if (linkACtxt.is('td, th') && !linkBCtxt.is('td, th')) {
-      return false;
-    } else if (linkACtxt.is('td, th') && linkBCtxt.is('td, th')) {
-      var headerDiff = false;
-      var headersA = [];
-
-      // Make a list with the simplified text of link A
-      linkACtxt.tableHeaders().each(function () {
-        headersA.push(simplifyText($(this).text()));
-      });
-
-      // Compare it to the header context of link B
-      linkBCtxt.tableHeaders().each(function () {
-        var text = simplifyText($(this).text());
-        var pos = headersA.indexOf(text);
-        // Link B has something not part of link A's context, pass
-        if (pos === -1) {
-          headerDiff = true;
-        }
-        // Remove items part of both header lists
-        else {
-            headersA.splice(pos, 1);
-          }
-      });
-      // Pass if A or B had a header not part of the other.
-      if (headerDiff || headersA.length > 0) {
-        return false;
-      }
-    }
-
-    if (txtNotAlike(getLinkSentence(linkA), getLinkSentence(linkB))) {
-      return false;
-    }
-
-    return true;
-  }
-
-  /**
-   * Get the text value of the link, including alt attributes
-   * @param  {jQuery} $link
-   * @return {string}
-   */
-  function getLinkText($link) {
-    var text = $link.text();
-    $link.find('img[alt]').each(function () {
-      text += ' ' + this.alt.trim();
-    });
-    return simplifyText(text);
-  }
-
-  test.get('$scope').each(function () {
-    var $scope = $(this);
-    var $links = $scope.find('a[href]:visible');
-    var linkMap = {};
-
-    if ($links.length === 0) {
-      var _case = Case({
-        element: this,
-        status: 'inapplicable'
-      });
-      test.add(_case);
-    }
-
-    // Make a map with the link text as key and an array of links with
-    // that link text as it's value
-    $links.each(function () {
-      var text = getLinkText($(this));
-      if (typeof linkMap[text] === 'undefined') {
-        linkMap[text] = [];
-      }
-      linkMap[text].push(this);
-    });
-
-    // Iterate over each item in the linkMap
-    $.each(linkMap, function (linkText, links) {
-
-      // Link text is not unique, so the context should be checked
-      while (links.length > 1) {
-        var linkA = links.pop();
-        var linkAFailed = false;
-
-        for (var i = links.length - 1; i >= 0; i -= 1) {
-          var linkB = links[i];
-          if (shareContext(linkA, linkB)) {
-            linkAFailed = true;
-            links.splice(i, 1);
-            test.add(Case({
-              element: linkB,
-              status: 'failed'
-            }));
-          }
-        }
-        test.add(Case({
-          element: linkA,
-          status: linkAFailed ? 'failed' : 'passed'
-        }));
-      }
-
-      // The link text is unique, pass
-      if (links.length === 1) {
-        test.add(Case({
-          element: links[0],
-          status: 'passed'
-        }));
-      }
-    });
-  });
-};
-module.exports = LinkHasAUniqueContext;
-
-},{"Case":30}],352:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ListNotUsedForFormatting = function ListNotUsedForFormatting(test) {
-  test.get('$scope').find('ol, ul').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if ($(this).find('li').length < 2) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = ListNotUsedForFormatting;
-
-},{"Case":30}],353:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ListOfLinksUseList = function ListOfLinksUseList(test) {
-  var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
-  test.get('$scope').find('a').each(function () {
-    var _case = test.add(Case({
-      element: this
-    }));
-    // Only test if there's another a tag.
-    if ($(this).next('a').length) {
-      var nextText = $(this).get(0).nextSibling.wholeText.replace(unreadableText, '');
-      if (!$(this).parent('li').length && IsUnreadable(nextText)) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    }
-  });
-};
-module.exports = ListOfLinksUseList;
-
-},{"Case":30,"IsUnreadable":11}],354:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var MarqueeIsNotUsed = function MarqueeIsNotUsed(test) {
-
-  var selector = 'marquee';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'passed'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = MarqueeIsNotUsed;
-
-},{"Case":30}],355:[function(require,module,exports){
-/**
- * @todo Needs refinement.
- *
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var MenuNotUsedToFormatText = function MenuNotUsedToFormatText(test) {
-
-  var selector = 'menu:not(menu li:parent(menu))';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = MenuNotUsedToFormatText;
-
-},{"Case":30}],356:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var NewWindowIsOpened = function NewWindowIsOpened(test) {
-
-  var fenestrate = window.open;
-  var _case;
-
-  window.open = function (event) {
-    test.each(function (index, _case) {
-      var href = _case.get('element').href;
-      if (href.indexOf(event) > -1) {
-        _case.set('status', 'failed');
-      }
-    });
-  };
-
-  test.get('$scope').find('a').each(function () {
-    // Save a reference to this clicked tag.
-    _case = Case({
-      element: this
-    });
-    test.add(_case);
-    $(this).trigger('click');
-  });
-
-  window.open = fenestrate;
-};
-module.exports = NewWindowIsOpened;
-
-},{"Case":30}],357:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var ObjectMustContainText = function ObjectMustContainText(test, options) {
-  options = options || {
-    selector: 'object',
-    content: 'true',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = ObjectMustContainText;
-
-},{"PlaceholderComponent":16}],358:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var ObjectMustHaveEmbed = function ObjectMustHaveEmbed(test) {
-
-  var selector = 'object';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-        var hasEmbed = $(this).find('embed').length > 0;
-
-        // If a test is defined, then use it
-        if (hasEmbed) {
-          status = 'passed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = ObjectMustHaveEmbed;
-
-},{"Case":30}],359:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var ObjectMustHaveTitle = function ObjectMustHaveTitle(test) {
-
-  var selector = 'object';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-        var hasTitle = this.hasAttribute('title');
-
-        // If a test is defined, then use it
-        if (hasTitle) {
-          status = 'passed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = ObjectMustHaveTitle;
-
-},{"Case":30}],360:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var ObjectMustHaveValidTitle = function ObjectMustHaveValidTitle(test, options) {
-  options = options || {
-    selector: 'object',
-    attribute: 'title',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = ObjectMustHaveValidTitle;
-
-},{"PlaceholderComponent":16}],361:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var SuspectPHeaderTags = require('SuspectPHeaderTags');
-var SuspectPCSSStyles = require('SuspectPCSSStyles');
-var PNotUsedAsHeader = function PNotUsedAsHeader(test) {
-  test.get('$scope').find('p').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-
-    var $paragraph = $(this);
-
-    // If the text has a period, it is probably a sentence and not a header.
-    if ($paragraph.text().search(/[\.!:;]/) >= 1) {
-      _case.set({
-        status: 'passed'
-      });
-    }
-    var failed = false;
-    // Look for any indication that the paragraph contains at least a full sentence
-    if ($(this).text().search(/[\.!:;]/) < 1) {
-      var priorParagraph = $paragraph.prev('p');
-      // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
-      $.each(SuspectPHeaderTags, function (index, tag) {
-        if ($paragraph.find(tag).length) {
-          $paragraph.find(tag).each(function () {
-            if ($(this).text().trim() === $paragraph.text().trim()) {
-              _case.set({
-                status: 'failed'
-              });
-              failed = true;
-            }
-          });
-        }
-      });
-      // Checking if previous paragraph has a different values for style properties given in SuspectPCSSStyles.
-      if (priorParagraph.length) {
-        $.each(SuspectPCSSStyles, function (index, cssProperty) {
-          if ($paragraph.css(cssProperty) !== priorParagraph.css(cssProperty)) {
-            _case.set({
-              status: 'failed'
-            });
-            failed = true;
-            return false; // Micro optimization - we no longer need to iterate here. jQuery css() method might be expensive.
-          }
-        });
-      }
-      if ($paragraph.css('font-weight') === 'bold') {
-        _case.set({
-          status: 'failed'
-        });
-        failed = true;
-      }
-    }
-    if (!failed) {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = PNotUsedAsHeader;
-
-},{"Case":30,"SuspectPCSSStyles":21,"SuspectPHeaderTags":22}],362:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var LabelComponent = require('LabelComponent');
-
-var PasswordHasLabel = function PasswordHasLabel(test, options) {
-  options = options || {
-    selector: 'input[type="password"]'
-  };
-  LabelComponent(test, options);
-};
-module.exports = PasswordHasLabel;
-
-},{"LabelComponent":12}],363:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var PreShouldNotBeUsedForTabularLayout = function PreShouldNotBeUsedForTabularLayout(test) {
-  test.get('$scope').find('pre').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    var rows = $(this).text().split(/[\n\r]+/);
-    _case.set({
-      status: rows.length > 1 && $(this).text().search(/\t/) > -1 ? 'failed' : 'passed'
-    });
-  });
-};
-module.exports = PreShouldNotBeUsedForTabularLayout;
-
-},{"Case":30}],364:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var LabelComponent = require('LabelComponent');
-
-var RadioHasLabel = function RadioHasLabel(test, options) {
-  options = options || {
-    selector: 'input[type="radio"]'
-  };
-  LabelComponent(test, options);
-};
-module.exports = RadioHasLabel;
-
-},{"LabelComponent":12}],365:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var EventComponent = require('EventComponent');
-
-var ScriptOnclickRequiresOnKeypress = function ScriptOnclickRequiresOnKeypress(test, options) {
-  options = options || {
-    selector: '[onclick]',
-    correspondingEvent: 'onkeypress',
-    searchEvent: 'onclick'
-  };
-  EventComponent(test, options);
-};
-module.exports = ScriptOnclickRequiresOnKeypress;
-
-},{"EventComponent":6}],366:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var EventComponent = require('EventComponent');
-
-var ScriptOndblclickRequiresOnKeypress = function ScriptOndblclickRequiresOnKeypress(test, options) {
-  options = options || {
-    selector: '[ondblclick]',
-    correspondingEvent: 'onkeypress',
-    searchEvent: 'ondblclick'
-  };
-  EventComponent(test, options);
-};
-module.exports = ScriptOndblclickRequiresOnKeypress;
-
-},{"EventComponent":6}],367:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var EventComponent = require('EventComponent');
-
-var ScriptOnmousedownRequiresOnKeypress = function ScriptOnmousedownRequiresOnKeypress(test, options) {
-  options = options || {
-    selector: '[onmousedown]',
-    correspondingEvent: 'onkeydown',
-    searchEvent: 'onmousedown'
-  };
-  EventComponent(test, options);
-};
-module.exports = ScriptOnmousedownRequiresOnKeypress;
-
-},{"EventComponent":6}],368:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var EventComponent = require('EventComponent');
-
-var ScriptOnmousemove = function ScriptOnmousemove(test, options) {
-  options = options || {
-    selector: '[onmousemove]',
-    correspondingEvent: 'onkeypress',
-    searchEvent: 'onmousemove'
-  };
-  EventComponent(test, options);
-};
-module.exports = ScriptOnmousemove;
-
-},{"EventComponent":6}],369:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var EventComponent = require('EventComponent');
-
-var ScriptOnmouseoutHasOnmouseblur = function ScriptOnmouseoutHasOnmouseblur(test, options) {
-  options = options || {
-    selector: '[onmouseout]',
-    correspondingEvent: 'onblur',
-    searchEvent: 'onmouseout'
-  };
-  EventComponent(test, options);
-};
-module.exports = ScriptOnmouseoutHasOnmouseblur;
-
-},{"EventComponent":6}],370:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var EventComponent = require('EventComponent');
-
-var ScriptOnmouseoverHasOnfocus = function ScriptOnmouseoverHasOnfocus(test, options) {
-  options = options || {
-    selector: '[onmouseover]',
-    correspondingEvent: 'onfocus',
-    searchEvent: 'onmouseover'
-  };
-  EventComponent(test, options);
-};
-module.exports = ScriptOnmouseoverHasOnfocus;
-
-},{"EventComponent":6}],371:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var EventComponent = require('EventComponent');
-
-var ScriptOnmouseupHasOnkeyup = function ScriptOnmouseupHasOnkeyup(test, options) {
-  options = options || {
-    selector: '[onmouseup]',
-    correspondingEvent: 'onkeyup',
-    searchEvent: 'onmouseup'
-  };
-  EventComponent(test, options);
-};
-module.exports = ScriptOnmouseupHasOnkeyup;
-
-},{"EventComponent":6}],372:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var LabelComponent = require('LabelComponent');
-
-var SelectHasAssociatedLabel = function SelectHasAssociatedLabel(test, options) {
-  options = options || {
-    selector: 'select'
-  };
-  LabelComponent(test, options);
-};
-module.exports = SelectHasAssociatedLabel;
-
-},{"LabelComponent":12}],373:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var HasEventListenerComponent = require('HasEventListenerComponent');
-var SelectJumpMenu = function SelectJumpMenu(test) {
-  var $scope = test.get('$scope');
-  if ($scope.find('select').length === 0) {
-    return;
-  }
-
-  $scope.find('select').each(function () {
-    if ($(this).parent('form').find(':submit').length === 0 && HasEventListenerComponent($(this), 'change')) {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    } else {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    }
-  });
-};
-module.exports = SelectJumpMenu;
-
-},{"Case":30,"HasEventListenerComponent":8}],374:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var SiteMapStringsComponent = require('SiteMapStringsComponent');
-var SiteMapStringsComponent = function SiteMapStringsComponent(test) {
-  var set = true;
-  var _case = Case({
-    element: test.get('$scope').get(0)
-  });
-  test.add(_case);
-  test.get('$scope').find('a').each(function () {
-    if (_case.get('status') === 'passed') {
-      return;
-    }
-    var text = $(this).text().toLowerCase();
-    $.each(SiteMapStringsComponent, function (index, string) {
-      if (text.search(string) > -1) {
-        set = false;
-        return;
-      }
-    });
-    if (set === false) {
-      _case.set({
-        status: 'failed'
-      });
-      return;
-    }
-
-    if (set) {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = SiteMapStringsComponent;
-
-},{"Case":30,"SiteMapStringsComponent":19}],375:[function(require,module,exports){
-/**globals console:true */
-'use strict';
-
-var Case = require('Case');
-
-var SkipContentStringsComponent = require('SkipContentStringsComponent');
-
-var SkipToContentLinkProvided = function SkipToContentLinkProvided(test) {
-  test.get('$scope').each(function () {
-    var $local = $(this);
-    var skipLinkFound = false;
-
-    $local.find('a[href*="#"]').each(function () {
-      if (skipLinkFound) {
-        return;
-      }
-      var $link = $(this);
-
-      var fragment = $link.attr('href').split('#').pop();
-      var $target = $local.find('#' + fragment);
-      var strs = SkipContentStringsComponent.slice();
-      while (!skipLinkFound && strs.length) {
-        var str = strs.pop();
-        if ($link.text().search(str) > -1 && $target.length) {
-          $link.focus();
-          if ($link.is(':visible') && $link.css('visibility') !== 'hidden') {
-            skipLinkFound = true;
-            test.add(Case({
-              element: $link.get(0),
-              status: 'passed'
-            }));
-            return;
-          }
-          $link.blur();
-        }
-      }
-    });
-    if (!skipLinkFound) {
-      test.add(Case({
-        status: 'failed'
-      }));
-    }
-  });
-};
-module.exports = SkipToContentLinkProvided;
-
-},{"Case":30,"SkipContentStringsComponent":20}],376:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var SvgContainsTitle = function SvgContainsTitle(test) {
-
-  var selector = 'svg';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-        var hasTitle = $(this).find('title').length === 1;
-
-        // If a test is defined, then use it
-        if (hasTitle) {
-          status = 'passed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = SvgContainsTitle;
-
-},{"Case":30}],377:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TabIndexFollowsLogicalOrder = function TabIndexFollowsLogicalOrder(test) {
-  test.get('$scope').each(function () {
-    var $local = $(this);
-    var index = 0;
-    $local.find('[tabindex]').each(function () {
-      var $el = $(this);
-      var tabindex = $el.attr('tabindex');
-      if (parseInt(tabindex, 10) >= 0 && parseInt(tabindex, 10) !== index + 1) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      }
-      index++;
-    });
-  });
-};
-module.exports = TabIndexFollowsLogicalOrder;
-
-},{"Case":30}],378:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TableAxisHasCorrespondingId = function TableAxisHasCorrespondingId(test) {
-  test.get('$scope').find('[axis]').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-    if ($(this).parents('table').first().find('th#' + $(this).attr('axis')).length === 0) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
-  });
-};
-module.exports = TableAxisHasCorrespondingId;
-
-},{"Case":30}],379:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var TableDataShouldHaveTh = function TableDataShouldHaveTh(test) {
-
-  var selector = 'table';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-        var hasHeading = $(this).find('th').length > 0;
-        // If a test is defined, then use it
-        if (hasHeading) {
-          status = 'passed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = TableDataShouldHaveTh;
-
-},{"Case":30}],380:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableLayoutDataShouldNotHaveTh = function TableLayoutDataShouldNotHaveTh(test) {
-  test.get('$scope').find('table').each(function () {
-    var _case = Case({
-      element: this
-    });
-    test.add(_case);
-
-    if ($(this).find('th').length !== 0) {
-      if (!IsDataTableComponent($(this))) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    } else {
-      _case.set({
-        status: 'inapplicable'
-      });
-    }
-  });
-};
-module.exports = TableLayoutDataShouldNotHaveTh;
-
-},{"Case":30,"IsDataTableComponent":10}],381:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableLayoutHasNoCaption = function TableLayoutHasNoCaption(test) {
-  test.get('$scope').find('table').each(function () {
-    if ($(this).find('caption').length) {
-      if (!IsDataTableComponent($(this))) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      }
-    } else {
-      test.add(Case({
-        element: this,
-        status: 'inapplicable'
-      }));
-    }
-  });
-};
-module.exports = TableLayoutHasNoCaption;
-
-},{"Case":30,"IsDataTableComponent":10}],382:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var TableLayoutHasNoSummary = function TableLayoutHasNoSummary(test) {
-  test.get('$scope').each(function () {
-    var $local = $(this);
-    $local.find('table[summary]').each(function () {
-      var _case = test.add(Case({
-        element: this
-      }));
-      if (!IsDataTableComponent($(this)) && !IsUnreadable($(this).attr('summary'))) {
-        _case.set({ status: 'failed' });
-      } else {
-        _case.set({ status: 'passed' });
-      }
-    });
-  });
-};
-module.exports = TableLayoutHasNoSummary;
-
-},{"Case":30,"IsDataTableComponent":10,"IsUnreadable":11}],383:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableLayoutMakesSenseLinearized = function TableLayoutMakesSenseLinearized(test) {
-  test.get('$scope').find('table').each(function () {
-    if (!IsDataTableComponent($(this))) {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    }
-  });
-};
-module.exports = TableLayoutMakesSenseLinearized;
-
-},{"Case":30,"IsDataTableComponent":10}],384:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableNotUsedForLayout = function TableNotUsedForLayout(test) {
-  test.get('$scope').find('table').each(function () {
-    if (!IsDataTableComponent($(this))) {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    } else {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    }
-  });
-};
-module.exports = TableNotUsedForLayout;
-
-},{"Case":30,"IsDataTableComponent":10}],385:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableShouldUseHeaderIDs = function TableShouldUseHeaderIDs(test) {
-  test.get('$scope').find('table').each(function () {
-    var $table = $(this);
-    var tableFailed = false;
-    if (IsDataTableComponent($table)) {
-      $table.find('th').each(function () {
-        if (!tableFailed && !$(this).attr('id')) {
-          tableFailed = true;
-          test.add(Case({
-            element: $table.get(0),
-            status: 'failed'
-          }));
-        }
-      });
-      if (!tableFailed) {
-        $table.find('td[header]').each(function () {
-          if (!tableFailed) {
-            $.each($(this).attr('header').split(' '), function (index, id) {
-              if (!$table.find('#' + id).length) {
-                tableFailed = true;
-                test.add(Case({
-                  element: $table.get(0),
-                  status: 'failed'
-                }));
-              }
-            });
-          }
-        });
-      }
-    }
-  });
-};
-module.exports = TableShouldUseHeaderIDs;
-
-},{"Case":30,"IsDataTableComponent":10}],386:[function(require,module,exports){
-'use strict';
-
-var CleanStringComponent = require('CleanStringComponent');
-var Case = require('Case');
-var TableSummaryDoesNotDuplicateCaption = function TableSummaryDoesNotDuplicateCaption(test) {
-  test.get('$scope').find('table[summary]:has(caption)').each(function () {
-    if (CleanStringComponent($(this).attr('summary')) === CleanStringComponent($(this).find('caption:first').text())) {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    } else {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    }
-  });
-};
-module.exports = TableSummaryDoesNotDuplicateCaption;
-
-},{"Case":30,"CleanStringComponent":2}],387:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var TableSummaryIsEmpty = function TableSummaryIsEmpty(test, options) {
-  options = options || {
-    selector: 'table',
-    attribute: 'summary',
-    empty: 'true'
-  };
-  PlaceholderComponent(test, options);
-};
-module.exports = TableSummaryIsEmpty;
-
-},{"PlaceholderComponent":16}],388:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TableSummaryIsNotTooLong = function TableSummaryIsNotTooLong(test) {
-  test.get('$scope').find('table[summary]').each(function () {
-    if ($(this).attr('summary').trim().length > 100) {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    }
-  });
-};
-module.exports = TableSummaryIsNotTooLong;
-
-},{"Case":30}],389:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableUseColGroup = function TableUseColGroup(test) {
-  test.get('$scope').find('table').each(function () {
-    if (IsDataTableComponent($(this)) && !$(this).find('colgroup').length) {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    }
-  });
-};
-module.exports = TableUseColGroup;
-
-},{"Case":30,"IsDataTableComponent":10}],390:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TableUsesAbbreviationForHeader = function TableUsesAbbreviationForHeader(test) {
-  test.get('$scope').find('th:not(th[abbr])').each(function () {
-    if ($(this).text().length > 20) {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    }
-  });
-};
-module.exports = TableUsesAbbreviationForHeader;
-
-},{"Case":30}],391:[function(require,module,exports){
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-'use strict';
-
-var Case = require('Case');
-
-var TableUsesCaption = function TableUsesCaption(test) {
-
-  var selector = 'table';
-
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    } else {
-      candidates.each(function () {
-        var status = 'failed';
-        var hasCaption = $(this).find('caption').length === 1;
-
-        // If a test is defined, then use it
-        if (hasCaption) {
-          status = 'passed';
-        }
-
-        test.add(Case({
-          element: this,
-          status: status
-        }));
-      });
-    }
-  });
-};
-module.exports = TableUsesCaption;
-
-},{"Case":30}],392:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TableUsesScopeForRow = function TableUsesScopeForRow(test) {
-  test.get('$scope').find('table').each(function () {
-    $(this).find('td:first-child').each(function () {
-      var $next = $(this).next('td');
-      if ($(this).css('font-weight') === 'bold' && $next.css('font-weight') !== 'bold' || $(this).find('strong').length && !$next.find('strong').length) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
-    });
-    $(this).find('td:last-child').each(function () {
-      var $prev = $(this).prev('td');
-      if ($(this).css('font-weight') === 'bold' && $prev.css('font-weight') !== 'bold' || $(this).find('strong').length && !$prev.find('strong').length) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
-    });
-  });
-};
-module.exports = TableUsesScopeForRow;
-
-},{"Case":30}],393:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TabularDataIsInTable = function TabularDataIsInTable(test) {
-  test.get('$scope').find('pre').each(function () {
-    if ($(this).html().search('\t') >= 0) {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    } else {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    }
-  });
-};
-module.exports = TabularDataIsInTable;
-
-},{"Case":30}],394:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ConvertToPxComponent = require('ConvertToPxComponent');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var TextSelectorComponent = require('TextSelectorComponent');
-
-var TextIsNotSmall = function TextIsNotSmall(test) {
-  test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
-    return TextNodeFilterComponent(element);
-  }).each(function () {
-    var fontSize = $(this).css('font-size');
-    if (fontSize.search('em') > 0) {
-      fontSize = ConvertToPxComponent(fontSize);
-    }
-    fontSize = parseInt(fontSize.replace('px', ''), 10);
-
-    if (fontSize < 10) {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    } else {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    }
-  });
-};
-module.exports = TextIsNotSmall;
-
-},{"Case":30,"ConvertToPxComponent":5,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],395:[function(require,module,exports){
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-'use strict';
-
-var LabelComponent = require('LabelComponent');
-
-var TextareaHasAssociatedLabel = function TextareaHasAssociatedLabel(test, options) {
-  options = options || {
-    selector: 'textarea'
-  };
-  LabelComponent(test, options);
-};
-module.exports = TextareaHasAssociatedLabel;
-
-},{"LabelComponent":12}],396:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var $ = require('jquery/dist/jquery');
-var VideoMayBePresent = function VideoMayBePresent(test) {
-
-  var videoExtensions = ['webm', 'flv', 'ogv', 'ogg', 'avi', 'mov', 'qt', 'wmv', 'asf', 'mp4', 'm4p', 'm4v', 'mpg', 'mp2', 'mpeg', 'mpg', 'mpe', 'mpv', 'm2v', '3gp', '3g2'];
-  var videoHosts = ['//www.youtube.com/embed/', '//player.vimeo.com/video/'];
-
-  test.get('$scope').each(function () {
-    var $this = $(this);
-    var hasCase = false; // Test if a case has been created
-
-    // video elm is definately a video, and objects could be too.
-    $this.find('object, video').each(function () {
-      hasCase = true;
-      test.add(Case({
-        element: this,
-        status: 'cantTell'
-      }));
-    });
-
-    // Links refering to files with an video extensions are probably video
-    // though the file may not exist.
-    $this.find('a[href]').each(function () {
-      var $this = $(this);
-      var extension = $this.attr('href').split('.').pop();
-      if ($.inArray(extension, videoExtensions) !== -1) {
-        hasCase = true;
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      }
-    });
-
-    // some iframes with URL's of known video providers are also probably videos
-    $this.find('iframe').each(function () {
-      if (this.src.indexOf(videoHosts[0]) !== -1 || this.src.indexOf(videoHosts[1]) !== -1) {
-        hasCase = true;
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      }
-    });
-
-    // if no case was added, return inapplicable
-    if (!hasCase) {
-      test.add(Case({
-        element: this,
-        status: 'inapplicable'
-      }));
-    }
-  });
-};
-module.exports = VideoMayBePresent;
-
-},{"Case":30,"jquery/dist/jquery":228}],397:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var VideoComponent = require('VideoComponent');
-var VideosEmbeddedOrLinkedNeedCaptions = function VideosEmbeddedOrLinkedNeedCaptions(test) {
-
-  VideoComponent.findVideos(test.get('$scope'), function (element, pass) {
-    if (!pass) {
-      test.add(Case({
-        element: element[0],
-        status: 'failed'
-      }));
-    } else {
-      test.add(Case({
-        element: element[0],
-        status: 'passed'
-      }));
-    }
-  });
-};
-module.exports = VideosEmbeddedOrLinkedNeedCaptions;
-
-},{"Case":30,"VideoComponent":29}],398:[function(require,module,exports){
-'use strict';
-
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var WhiteSpaceInWord = function WhiteSpaceInWord(test) {
-  var whitespaceGroup, nonWhitespace;
-  test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
-    return TextNodeFilterComponent(element);
-  }).each(function () {
-    nonWhitespace = $(this).text() ? $(this).text().match(/[^\s\\]/g) : false;
-    whitespaceGroup = $(this).text() ? $(this).text().match(/[^\s\\]\s[^\s\\]/g) : false;
-    if (nonWhitespace && whitespaceGroup && whitespaceGroup.length > 3 && whitespaceGroup.length >= nonWhitespace.length / 2 - 2) {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    } else {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    }
-  });
-};
-module.exports = WhiteSpaceInWord;
-
-},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],399:[function(require,module,exports){
-'use strict';
-
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var WhiteSpaceNotUsedForFormatting = function WhiteSpaceNotUsedForFormatting(test) {
-  test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
-    return TextNodeFilterComponent(element);
-  }).each(function () {
-    var _case = test.add(Case({
-      element: this
-    }));
-    if ($(this).find('br').length === 0) {
-      _case.set({ status: 'passed' });
-      return;
-    }
-    var lines = $(this).html().toLowerCase().split(/(<br\ ?\/?>)+/);
-    var lineCount = 0;
-    $.each(lines, function (index, line) {
-      if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
-        lineCount++;
-      }
-    });
-    if (lineCount > 1) {
-      _case.set({ status: 'failed' });
-    } else {
-      _case.set({ status: 'cantTell' });
-    }
-  });
-};
-module.exports = WhiteSpaceNotUsedForFormatting;
-
-},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],400:[function(require,module,exports){
-/*
-RainbowVis-JS 
-Released under Eclipse Public License - v 1.0
-*/
-
-'use strict';
-
-function Rainbow() {
-	"use strict";
-	var gradients = null;
-	var minNum = 0;
-	var maxNum = 100;
-	var colours = ['ff0000', 'ffff00', '00ff00', '0000ff'];
-	setColours(colours);
-
-	function setColours(spectrum) {
-		if (spectrum.length < 2) {
-			throw new Error('Rainbow must have two or more colours.');
-		} else {
-			var increment = (maxNum - minNum) / (spectrum.length - 1);
-			var firstGradient = new ColourGradient();
-			firstGradient.setGradient(spectrum[0], spectrum[1]);
-			firstGradient.setNumberRange(minNum, minNum + increment);
-			gradients = [firstGradient];
-
-			for (var i = 1; i < spectrum.length - 1; i++) {
-				var colourGradient = new ColourGradient();
-				colourGradient.setGradient(spectrum[i], spectrum[i + 1]);
-				colourGradient.setNumberRange(minNum + increment * i, minNum + increment * (i + 1));
-				gradients[i] = colourGradient;
-			}
-
-			colours = spectrum;
-		}
-	}
-
-	this.setSpectrum = function () {
-		setColours(arguments);
-		return this;
-	};
-
-	this.setSpectrumByArray = function (array) {
-		setColours(array);
-		return this;
-	};
-
-	this.colourAt = function (number) {
-		if (isNaN(number)) {
-			throw new TypeError(number + ' is not a number');
-		} else if (gradients.length === 1) {
-			return gradients[0].colourAt(number);
-		} else {
-			var segment = (maxNum - minNum) / gradients.length;
-			var index = Math.min(Math.floor((Math.max(number, minNum) - minNum) / segment), gradients.length - 1);
-			return gradients[index].colourAt(number);
-		}
-	};
-
-	this.colorAt = this.colourAt;
-
-	this.setNumberRange = function (minNumber, maxNumber) {
-		if (maxNumber > minNumber) {
-			minNum = minNumber;
-			maxNum = maxNumber;
-			setColours(colours);
-		} else {
-			throw new RangeError('maxNumber (' + maxNumber + ') is not greater than minNumber (' + minNumber + ')');
-		}
-		return this;
-	};
-}
-
-function ColourGradient() {
-	"use strict";
-	var startColour = 'ff0000';
-	var endColour = '0000ff';
-	var minNum = 0;
-	var maxNum = 100;
-
-	this.setGradient = function (colourStart, colourEnd) {
-		startColour = getHexColour(colourStart);
-		endColour = getHexColour(colourEnd);
-	};
-
-	this.setNumberRange = function (minNumber, maxNumber) {
-		if (maxNumber > minNumber) {
-			minNum = minNumber;
-			maxNum = maxNumber;
-		} else {
-			throw new RangeError('maxNumber (' + maxNumber + ') is not greater than minNumber (' + minNumber + ')');
-		}
-	};
-
-	this.colourAt = function (number) {
-		return calcHex(number, startColour.substring(0, 2), endColour.substring(0, 2)) + calcHex(number, startColour.substring(2, 4), endColour.substring(2, 4)) + calcHex(number, startColour.substring(4, 6), endColour.substring(4, 6));
-	};
-
-	function calcHex(number, channelStart_Base16, channelEnd_Base16) {
-		var num = number;
-		if (num < minNum) {
-			num = minNum;
-		}
-		if (num > maxNum) {
-			num = maxNum;
-		}
-		var numRange = maxNum - minNum;
-		var cStart_Base10 = parseInt(channelStart_Base16, 16);
-		var cEnd_Base10 = parseInt(channelEnd_Base16, 16);
-		var cPerUnit = (cEnd_Base10 - cStart_Base10) / numRange;
-		var c_Base10 = Math.round(cPerUnit * (num - minNum) + cStart_Base10);
-		return formatHex(c_Base10.toString(16));
-	}
-
-	function formatHex(hex) {
-		if (hex.length === 1) {
-			return '0' + hex;
-		} else {
-			return hex;
-		}
-	}
-
-	function isHexColour(string) {
-		var regex = /^#?[0-9a-fA-F]{6}$/i;
-		return regex.test(string);
-	}
-
-	function getHexColour(string) {
-		if (isHexColour(string)) {
-			return string.substring(string.length - 6, string.length);
-		} else {
-			var name = string.toLowerCase();
-			if (colourNames.hasOwnProperty(name)) {
-				return colourNames[name];
-			}
-			throw new Error(string + ' is not a valid colour.');
-		}
-	}
-
-	// Extended list of CSS colornames s taken from
-	// http://www.w3.org/TR/css3-color/#svg-color
-	var colourNames = {
-		aliceblue: "F0F8FF",
-		antiquewhite: "FAEBD7",
-		aqua: "00FFFF",
-		aquamarine: "7FFFD4",
-		azure: "F0FFFF",
-		beige: "F5F5DC",
-		bisque: "FFE4C4",
-		black: "000000",
-		blanchedalmond: "FFEBCD",
-		blue: "0000FF",
-		blueviolet: "8A2BE2",
-		brown: "A52A2A",
-		burlywood: "DEB887",
-		cadetblue: "5F9EA0",
-		chartreuse: "7FFF00",
-		chocolate: "D2691E",
-		coral: "FF7F50",
-		cornflowerblue: "6495ED",
-		cornsilk: "FFF8DC",
-		crimson: "DC143C",
-		cyan: "00FFFF",
-		darkblue: "00008B",
-		darkcyan: "008B8B",
-		darkgoldenrod: "B8860B",
-		darkgray: "A9A9A9",
-		darkgreen: "006400",
-		darkgrey: "A9A9A9",
-		darkkhaki: "BDB76B",
-		darkmagenta: "8B008B",
-		darkolivegreen: "556B2F",
-		darkorange: "FF8C00",
-		darkorchid: "9932CC",
-		darkred: "8B0000",
-		darksalmon: "E9967A",
-		darkseagreen: "8FBC8F",
-		darkslateblue: "483D8B",
-		darkslategray: "2F4F4F",
-		darkslategrey: "2F4F4F",
-		darkturquoise: "00CED1",
-		darkviolet: "9400D3",
-		deeppink: "FF1493",
-		deepskyblue: "00BFFF",
-		dimgray: "696969",
-		dimgrey: "696969",
-		dodgerblue: "1E90FF",
-		firebrick: "B22222",
-		floralwhite: "FFFAF0",
-		forestgreen: "228B22",
-		fuchsia: "FF00FF",
-		gainsboro: "DCDCDC",
-		ghostwhite: "F8F8FF",
-		gold: "FFD700",
-		goldenrod: "DAA520",
-		gray: "808080",
-		green: "008000",
-		greenyellow: "ADFF2F",
-		grey: "808080",
-		honeydew: "F0FFF0",
-		hotpink: "FF69B4",
-		indianred: "CD5C5C",
-		indigo: "4B0082",
-		ivory: "FFFFF0",
-		khaki: "F0E68C",
-		lavender: "E6E6FA",
-		lavenderblush: "FFF0F5",
-		lawngreen: "7CFC00",
-		lemonchiffon: "FFFACD",
-		lightblue: "ADD8E6",
-		lightcoral: "F08080",
-		lightcyan: "E0FFFF",
-		lightgoldenrodyellow: "FAFAD2",
-		lightgray: "D3D3D3",
-		lightgreen: "90EE90",
-		lightgrey: "D3D3D3",
-		lightpink: "FFB6C1",
-		lightsalmon: "FFA07A",
-		lightseagreen: "20B2AA",
-		lightskyblue: "87CEFA",
-		lightslategray: "778899",
-		lightslategrey: "778899",
-		lightsteelblue: "B0C4DE",
-		lightyellow: "FFFFE0",
-		lime: "00FF00",
-		limegreen: "32CD32",
-		linen: "FAF0E6",
-		magenta: "FF00FF",
-		maroon: "800000",
-		mediumaquamarine: "66CDAA",
-		mediumblue: "0000CD",
-		mediumorchid: "BA55D3",
-		mediumpurple: "9370DB",
-		mediumseagreen: "3CB371",
-		mediumslateblue: "7B68EE",
-		mediumspringgreen: "00FA9A",
-		mediumturquoise: "48D1CC",
-		mediumvioletred: "C71585",
-		midnightblue: "191970",
-		mintcream: "F5FFFA",
-		mistyrose: "FFE4E1",
-		moccasin: "FFE4B5",
-		navajowhite: "FFDEAD",
-		navy: "000080",
-		oldlace: "FDF5E6",
-		olive: "808000",
-		olivedrab: "6B8E23",
-		orange: "FFA500",
-		orangered: "FF4500",
-		orchid: "DA70D6",
-		palegoldenrod: "EEE8AA",
-		palegreen: "98FB98",
-		paleturquoise: "AFEEEE",
-		palevioletred: "DB7093",
-		papayawhip: "FFEFD5",
-		peachpuff: "FFDAB9",
-		peru: "CD853F",
-		pink: "FFC0CB",
-		plum: "DDA0DD",
-		powderblue: "B0E0E6",
-		purple: "800080",
-		red: "FF0000",
-		rosybrown: "BC8F8F",
-		royalblue: "4169E1",
-		saddlebrown: "8B4513",
-		salmon: "FA8072",
-		sandybrown: "F4A460",
-		seagreen: "2E8B57",
-		seashell: "FFF5EE",
-		sienna: "A0522D",
-		silver: "C0C0C0",
-		skyblue: "87CEEB",
-		slateblue: "6A5ACD",
-		slategray: "708090",
-		slategrey: "708090",
-		snow: "FFFAFA",
-		springgreen: "00FF7F",
-		steelblue: "4682B4",
-		tan: "D2B48C",
-		teal: "008080",
-		thistle: "D8BFD8",
-		tomato: "FF6347",
-		turquoise: "40E0D0",
-		violet: "EE82EE",
-		wheat: "F5DEB3",
-		white: "FFFFFF",
-		whitesmoke: "F5F5F5",
-		yellow: "FFFF00",
-		yellowgreen: "9ACD32"
-	};
-}
-
-if (typeof module !== 'undefined') {
-	module.exports = Rainbow;
-}
-
-},{}]},{},[31,35]);
+},{}]},{},[31,227]);

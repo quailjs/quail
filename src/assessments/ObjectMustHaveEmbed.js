@@ -7,34 +7,55 @@
  */
 var Case = require('Case');
 
-var ObjectMustHaveEmbed = function (test) {
+var ObjectMustHaveEmbed = {
+  run: function (test) {
 
-  var selector = 'object';
+    var selector = 'object';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'failed';
-        var hasEmbed = $(this).find('embed').length > 0;
-
-        // If a test is defined, then use it
-        if (hasEmbed) {
-          status = 'passed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasEmbed = $(this).find('embed').length > 0;
+
+          // If a test is defined, then use it
+          if (hasEmbed) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Every object should contain an \"embed\" element',
+      nl: 'Elk object moet een \"embed\"-element bevatten'
+    },
+    description: {
+      en: 'Every <code>object</code> element must also contain an <code>embed</code> element.',
+      nl: 'Elk <code>object</code>-element moet ook een \"embed\"-element bevatten.'
+    },
+    guidelines: [
+
+    ],
+    tags: [
+      'objects',
+      'content'
+    ]
+  }
 };
 module.exports = ObjectMustHaveEmbed;

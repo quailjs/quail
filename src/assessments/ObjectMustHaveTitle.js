@@ -7,34 +7,61 @@
  */
 var Case = require('Case');
 
-var ObjectMustHaveTitle = function (test) {
+var ObjectMustHaveTitle = {
+  run: function (test) {
 
-  var selector = 'object';
+    var selector = 'object';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: 'inapplicable'
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status = 'failed';
-        var hasTitle = this.hasAttribute('title');
-
-        // If a test is defined, then use it
-        if (hasTitle) {
-          status = 'passed';
-        }
-
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'inapplicable'
         }));
-      });
-    }
-  });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasTitle = this.hasAttribute('title');
+
+          // If a test is defined, then use it
+          if (hasTitle) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Objects should have a title attribute',
+      nl: 'Objecten moeten een titelattribuut hebben'
+    },
+    description: {
+      en: 'All <code>object</code> elements should contain a \"title\" attribute.',
+      nl: 'Alle <code>object</code>-elementen moeten een \"titel\"-attribuut bevatten.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: [
+            'H27'
+          ]
+        }
+      }
+    },
+    tags: [
+      'objects',
+      'content'
+    ]
+  }
 };
 module.exports = ObjectMustHaveTitle;

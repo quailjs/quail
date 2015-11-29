@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@quailjs/quail-cli": "0.0.8",
-    "@quailjs/quail-core": "0.0.10",
+    "@quailjs/quail-core": "0.0.12",
     "babel": "^5.8.23",
     "babel-eslint": "^4.1.1",
     "babel-polyfill": "^6.2.0",

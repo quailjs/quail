@@ -6,39 +6,63 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+var $ = require('jquery/dist/jquery');
 
-var AreaAltIdentifiesDestination = function (test, options) {
+var AreaAltIdentifiesDestination = {
+  run: function (test, options) {
 
-  options = options || {};
+    options = options || {};
 
-  var selector = 'area:not(area[alt])';
+    var selector = 'area:not(area[alt])';
 
-  this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
-    if (!candidates.length) {
-      test.add(Case({
-        element: undefined,
-        status: (options.test ? 'inapplicable' : 'passed')
-      }));
-    }
-    else {
-      candidates.each(function () {
-        var status;
-
-        // If a test is defined, then use it
-        if (options.test && !$(this).is(options.test)) {
-          status = 'passed';
-        }
-        else {
-          status = 'failed';
-        }
-
+    test.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
         test.add(Case({
-          element: this,
-          status: status
+          element: undefined,
+          status: 'passed'
         }));
-      });
+      }
+      else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All \"area\" elements must have an \"alt\" attribute which describes the link destination',
+      nl: 'Alle \"area\"-elementen moeten een \"alt\"-attribuut hebben die de bestemming van de link beschrijft'
+    },
+    description: {
+      en: 'All <code>area</code> elements within a <code>map</code> must have an \"alt\" attribute',
+      nl: 'Alle <code>area</code>-elementen binnen een <code>map</code> moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: [
+            'G74'
+          ]
+        }
+      }
+    },
+    tags: [
+      'objects',
+      'applet',
+      'content'
+    ],
+    options: {
+      test: 'area[alt]'
     }
-  });
+  }
 };
 module.exports = AreaAltIdentifiesDestination;

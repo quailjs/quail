@@ -1,44 +1,72 @@
 var Case = require('Case');
 var NewWindowStringsComponent = require('NewWindowStringsComponent');
-var ALinksDontOpenNewWindow = function (test) {
-  // Links without a target attribute pass.
-  test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function () {
-    test.add(Case({
-      element: this,
-      status: 'passed'
-    }));
-  });
-  // Links with a target attribute pass if the link text indicates that the
-  // link will open a new window.
-  test.get('$scope').find('a[target=_new], a[target=_blank]').each(function () {
-    var $link = $(this);
-    var passes = false;
-    var i = 0;
-    var text = $link.text() + ' ' + $link.attr('title');
-    var phrase = '';
-    // Test the link text against strings the indicate the link will open
-    // in a new window.
-    do {
-      phrase = NewWindowStringsComponent[i];
-      if (text.search(phrase) > -1) {
-        passes = true;
-      }
-      ++i;
-
-    } while (!passes && i < NewWindowStringsComponent.length);
-    // Build a Case.
-    if (passes) {
+var ALinksDontOpenNewWindow = {
+  run: function (test) {
+    // Links without a target attribute pass.
+    test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function () {
       test.add(Case({
         element: this,
         status: 'passed'
       }));
-    }
-    else {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    }
-  });
+    });
+    // Links with a target attribute pass if the link text indicates that the
+    // link will open a new window.
+    test.get('$scope').find('a[target=_new], a[target=_blank]').each(function () {
+      var $link = $(this);
+      var passes = false;
+      var i = 0;
+      var text = $link.text() + ' ' + $link.attr('title');
+      var phrase = '';
+      // Test the link text against strings the indicate the link will open
+      // in a new window.
+      do {
+        phrase = NewWindowStringsComponent[i];
+        if (text.search(phrase) > -1) {
+          passes = true;
+        }
+        ++i;
+
+      } while (!passes && i < NewWindowStringsComponent.length);
+      // Build a Case.
+      if (passes) {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+      else {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should not open a new window without warning',
+      nl: 'Met links open je geen nieuw scherm zonder melding'
+    },
+    description: {
+      en: 'Links which open a new window using the \"target\" attribute should warn users.',
+      nl: 'Voordat links door middel van het \"target\"-attribuut een nieuw scherm openen moet de gebruiker een melding hiervan krijgen.'
+    },
+    guidelines: {
+      wcag: {
+        '3.2.5': {
+          techniques: [
+            'H83',
+            'SCR24'
+          ]
+        }
+      }
+    },
+    tags: [
+      'link',
+      'content'
+    ]
+  }
 };
 module.exports = ALinksDontOpenNewWindow;
