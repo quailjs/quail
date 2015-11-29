@@ -10,6 +10,8 @@ var Case = require('Case');
 var AreaAltRefersToText = {
   run: function (test, options) {
 
+    options = options || {};
+
     var selector = 'area';
 
     this.get('$scope').each(function () {

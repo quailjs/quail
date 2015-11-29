@@ -3,6 +3,8 @@ var ColorComponent = require('ColorComponent');
 var ColorElementBehindContrast = {
   run: function (test, options) {
 
+    options = options || {};
+
     var colors = ColorComponent.colors;
     var buildCase = ColorComponent.buildCase;
     var id = 'colorElementBehindContrast';

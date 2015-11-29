@@ -10,6 +10,8 @@ var Case = require('Case');
 var FieldsetHasLabel = {
   run: function (test, options) {
 
+    options = options || {};
+
     var selector = 'fieldset:not(fieldset:has(legend))';
 
     this.get('$scope').each(function () {

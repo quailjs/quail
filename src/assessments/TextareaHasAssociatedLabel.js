@@ -6,6 +6,7 @@ var LabelComponent = require('LabelComponent');
 
 var TextareaHasAssociatedLabel = {
   run: function (test, options) {
+    debugger;
     options = options || {
       selector: 'textarea'
     };

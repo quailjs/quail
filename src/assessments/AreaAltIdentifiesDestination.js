@@ -10,6 +10,8 @@ var Case = require('Case');
 var AreaAltIdentifiesDestination = {
   run: function (test, options) {
 
+    options = options || {};
+
     var selector = 'area:not(area[alt])';
 
     this.get('$scope').each(function () {

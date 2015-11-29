@@ -5,6 +5,8 @@ var Rainbow = require('RainbowVis-JS/rainbowvis');
 var ColorBackgroundGradientContrast = {
   run: function (test, options) {
 
+    options = options || {};
+
     var colors = ColorComponent.colors;
     var buildCase = ColorComponent.buildCase;
     var id = 'colorBackgroundGradientContrast';

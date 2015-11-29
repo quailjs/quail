@@ -10,6 +10,8 @@ var Case = require('Case');
 var AppletsDonotUseColorAlone = {
   run: function (test, options) {
 
+    options = options || {};
+
     var selector = 'applet';
 
     this.get('$scope').each(function () {

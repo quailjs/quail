@@ -10,6 +10,8 @@ var Case = require('Case');
 var ATitleDescribesDestination = {
   run: function (test, options) {
 
+    options = options || {};
+
     var selector = 'a[title]';
 
     this.get('$scope').each(function () {

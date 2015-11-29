@@ -10,6 +10,8 @@ var Case = require('Case');
 var AMustNotHaveJavascriptHref = {
   run: function (test, options) {
 
+    options = options || {};
+
     var selector = 'a[href^="javascript:"]';
 
     this.get('$scope').each(function () {
