@@ -2010,7 +2010,7 @@ var Test = (function () {
         throw new Error('The test ' + name + ' has already been run.');
       }
 
-      var options = this.get('options') || {};
+      var options = this.get('options');
       var callback = this.get('callback');
       var self = this;
 
