@@ -1,20 +1,19 @@
 var Case = require('Case');
 var SiteMapStringsComponent = require('SiteMapStringsComponent');
-var SiteMapStringsComponent = {
+var $ = require('jquery/dist/jquery');
+
+var SiteMap = {
   run: function (test) {
-    var set = true;
+    var set = false;
     var _case = Case({
       element: test.get('$scope').get(0)
     });
     test.add(_case);
     test.get('$scope').find('a').each(function () {
-      if (_case.get('status') === 'passed') {
-        return;
-      }
       var text = $(this).text().toLowerCase();
       $.each(SiteMapStringsComponent, function (index, string) {
         if (text.search(string) > -1) {
-          set = false;
+          set = true;
           return;
         }
       });
@@ -62,4 +61,5 @@ var SiteMapStringsComponent = {
     ]
   }
 };
-module.exports = SiteMapStringsComponent;
+
+module.exports = SiteMap;
