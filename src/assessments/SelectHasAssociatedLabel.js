@@ -2,14 +2,12 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-
 var LabelComponent = require('LabelComponent');
 
-var SelectHasAssociatedLabel = function (test) {
-  var options = {
+var SelectHasAssociatedLabel = function (test, options) {
+  options = options || {
     selector: 'select'
   };
-  LabelComponent(quail, test, Case, options);
+  LabelComponent(test, options);
 };
 module.exports = SelectHasAssociatedLabel;

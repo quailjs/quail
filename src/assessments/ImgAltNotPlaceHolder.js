@@ -2,15 +2,13 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-
 var PlaceholderComponent = require('PlaceholderComponent');
 
-var ImgAltNotPlaceHolder = function (test) {
-  var options = {
+var ImgAltNotPlaceHolder = function (test, options) {
+  options = options || {
     selector: 'img',
     attribute: 'alt'
   };
-  PlaceholderComponent(quail, test, Case, options);
+  PlaceholderComponent(test, options);
 };
 module.exports = ImgAltNotPlaceHolder;

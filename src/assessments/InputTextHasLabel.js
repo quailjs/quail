@@ -2,14 +2,12 @@
  * A wrapper for assessments that call a component to determine
  * the test outcome.
  */
-var Case = require('Case');
-
 var LabelComponent = require('LabelComponent');
 
-var InputTextHasLabel = function (test) {
-  var options = {
+var InputTextHasLabel = function (test, options) {
+  options = options || {
     selector: 'input'
   };
-  LabelComponent(quail, test, Case, options);
+  LabelComponent(test, options);
 };
 module.exports = InputTextHasLabel;
