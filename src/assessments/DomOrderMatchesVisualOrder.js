@@ -10,6 +10,8 @@ var $ = require('jquery/dist/jquery');
 
 var DomOrderMatchesVisualOrder = function (test, options) {
 
+  options = options || {};
+
   $.expr[':'].quailCss = function (obj, index, meta) {
     var args = meta[3].split(/\s*=\s*/);
     return $(obj).css(args[0]).search(args[1]) > -1;

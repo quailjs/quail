@@ -2,6 +2,8 @@ var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorElementBehindBackgroundImageContrast = function (test, options) {
 
+  options = options || {};
+
   var colors = ColorComponent.colors;
   var buildCase = ColorComponent.buildCase;
   var id = 'colorElementBehindBackgroundImageContrast';
