@@ -54,12 +54,12 @@ var AppletUIMustBeAccessible = {
       nl: 'Content in een applet moet getoetst worden op toegankelijkheid.'
     },
     guidelines: {
-      508:  [
+      508: [
         'm'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'G74',
             'H35'
           ]

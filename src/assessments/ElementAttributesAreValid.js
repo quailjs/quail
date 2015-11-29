@@ -2,7 +2,7 @@
  * Not yet implemented.
  */
 var ElementAttributesAreValid = {
-  run: function (test) {
+  run: function () {
     return;
   },
 
@@ -18,7 +18,7 @@ var ElementAttributesAreValid = {
     },
     guidelines: {
       '4.1.1': {
-        techniques:  [
+        techniques: [
           'F70'
         ]
       }

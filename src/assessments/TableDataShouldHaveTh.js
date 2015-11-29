@@ -49,12 +49,12 @@ var TableDataShouldHaveTh = {
       nl: 'Tabellen die data bevatten (in tegenstelling tot lay-out tabellen) moeten <code>th</code>-elementen bevatten om koppen te markeren voor schermlezers en om de structuur van het document te verbeteren.'
     },
     guidelines: {
-      508:  [
+      508: [
         'g'
       ],
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'F91'
           ]
         }

@@ -41,12 +41,12 @@ var ALinksToMultiMediaRequireTranscript = {
       nl: 'Links naar een multimediabestand moeten worden gevolgd door een link naar de transcriptie van dit bestand.'
     },
     guidelines: {
-      508:  [
+      508: [
         'c'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'G74'
           ]
         }

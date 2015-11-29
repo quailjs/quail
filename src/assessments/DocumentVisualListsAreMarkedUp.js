@@ -52,7 +52,7 @@ var DocumentVisualListsAreMarkedUp = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'H28',
             'H48',
             'T2'

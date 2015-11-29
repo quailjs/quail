@@ -23,12 +23,12 @@ var ImgAltIsTooLong = {
       nl: 'Alle \"alt\"-attributen voor <code>img</code>-elementen moeten duidelijk en bondig zijn. Verifieer \"alt\"-attributen langer dan 100 tekens en kort ze in waar mogelijk.'
     },
     guidelines: {
-      508:  [
+      508: [
         'a'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'H37'
           ]
         }

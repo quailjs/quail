@@ -2,7 +2,7 @@
  * Not yet implemented.
  */
 var TableSummaryDescribesTable = {
-  run: function (test) {
+  run: function () {
     return;
   },
 

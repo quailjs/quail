@@ -2,7 +2,7 @@
  * Not yet implemented.
  */
 var FrameTitlesDescribeFunction = {
-  run: function (test) {
+  run: function () {
     return;
   },
 
@@ -19,7 +19,7 @@ var FrameTitlesDescribeFunction = {
     guidelines: {
       wcag: {
         '2.4.1': {
-          techniques:  [
+          techniques: [
             'H64'
           ]
         }
@@ -30,8 +30,7 @@ var FrameTitlesDescribeFunction = {
       'frame'
     ],
     options: {
-      attribute: 'title',
-      empty: 
+      attribute: 'title'
     }
   }
 };

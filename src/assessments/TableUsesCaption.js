@@ -52,7 +52,7 @@ var TableUsesCaption = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'H39'
           ]
         }

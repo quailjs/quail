@@ -56,7 +56,7 @@ var ATitleDescribesDestination = {
     guidelines: {
       wcag: {
         '2.4.9': {
-          techniques:  [
+          techniques: [
             'H33',
             'H25'
           ]

@@ -2,7 +2,7 @@
  * Not yet implemented.
  */
 var ElementsDoNotHaveDuplicateAttributes = {
-  run: function (test) {
+  run: function () {
     return;
   },
 

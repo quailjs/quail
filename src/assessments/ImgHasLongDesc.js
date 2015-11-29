@@ -34,12 +34,12 @@ var ImgHasLongDesc = {
     guidelines: {
       wcag: {
         '2.4.4': {
-          techniques:  [
+          techniques: [
             'G91'
           ]
         },
         '2.4.9': {
-          techniques:  [
+          techniques: [
             'G91'
           ]
         }

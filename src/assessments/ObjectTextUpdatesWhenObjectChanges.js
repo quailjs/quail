@@ -52,7 +52,7 @@ var ObjectTextUpdatesWhenObjectChanges = {
       nl: 'Als een object verandert, moet zijn tekstuele equivalent ook veranderen.'
     },
     guidelines: {
-      508:  [
+      508: [
         'a'
       ]
     },

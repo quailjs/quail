@@ -2,7 +2,7 @@
  * Not yet implemented.
  */
 var TagsAreNestedCorrectly = {
-  run: function (test) {
+  run: function () {
     return;
   },
 
@@ -19,7 +19,7 @@ var TagsAreNestedCorrectly = {
     guidelines: {
       wcag: {
         '4.1.1': {
-          techniques:  [
+          techniques: [
             'H74'
           ]
         }

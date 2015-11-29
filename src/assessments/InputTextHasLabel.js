@@ -25,33 +25,33 @@ var InputTextHasLabel = {
     guidelines: {
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'H44'
           ]
         },
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'H44',
             'F68'
           ]
         },
         '2.1.1': {
-          techniques:  [
+          techniques: [
             'H91'
           ]
         },
         '2.1.3': {
-          techniques:  [
+          techniques: [
             'H91'
           ]
         },
         '3.3.2': {
-          techniques:  [
+          techniques: [
             'H44'
           ]
         },
         '4.1.2': {
-          techniques:  [
+          techniques: [
             'H44',
             'H91'
           ]

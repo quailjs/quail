@@ -2,7 +2,7 @@
  * Not yet implemented.
  */
 var InputImageNotDecorative = {
-  run: function (test) {
+  run: function () {
     return;
   },
 
@@ -19,7 +19,7 @@ var InputImageNotDecorative = {
     guidelines: {
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'H36'
           ]
         }

@@ -54,12 +54,12 @@ var RadioMarkedWithFieldgroupAndLegend = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'H71'
           ]
         },
         '3.3.2': {
-          techniques:  [
+          techniques: [
             'H71'
           ]
         }

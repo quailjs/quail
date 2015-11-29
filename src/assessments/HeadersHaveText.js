@@ -27,12 +27,12 @@ var HeadersHaveText = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'G141'
           ]
         },
         '2.4.10': {
-          techniques:  [
+          techniques: [
             'G141'
           ]
         }

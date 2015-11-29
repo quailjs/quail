@@ -54,12 +54,12 @@ var AppletsDoNotFlicker = {
       nl: 'Geen enkele applet mag knipperen of flitsen.'
     },
     guidelines: {
-      508:  [
+      508: [
         'j'
       ],
       wcag: {
         '2.2.2': {
-          techniques:  [
+          techniques: [
             'F7'
           ]
         }

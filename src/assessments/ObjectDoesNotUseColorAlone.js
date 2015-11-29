@@ -52,7 +52,7 @@ var ObjectDoesNotUseColorAlone = {
       nl: 'Objecten moeten content bevatten die duidelijk is zonder het kleurgebruik en toegankelijk is voor gebruikers met kleurenblindheid.'
     },
     guidelines: {
-      508:  [
+      508: [
         'c'
       ]
     },

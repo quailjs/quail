@@ -54,7 +54,7 @@ var FramesAreUsedToGroupContent = {
     guidelines: {
       wcag: {
         '2.4.1': {
-          techniques:  [
+          techniques: [
             'H70'
           ]
         }

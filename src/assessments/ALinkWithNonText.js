@@ -51,18 +51,18 @@ var ALinkWithNonText = {
     guidelines: {
       wcag: {
         '2.4.4': {
-          techniques:  [
+          techniques: [
             'H2',
             'F89'
           ]
         },
         '2.4.9': {
-          techniques:  [
+          techniques: [
             'F89'
           ]
         },
         '4.1.2': {
-          techniques:  [
+          techniques: [
             'F89'
           ]
         }

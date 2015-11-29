@@ -30,12 +30,12 @@ var InputImageAltIsNotFileName = {
       nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam.'
     },
     guidelines: {
-      508:  [
+      508: [
         'a'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'H36'
           ]
         }

@@ -45,7 +45,7 @@ var ImgMapAreasHaveDuplicateLink = {
       nl: 'Elke afbeelding met een \"usemap\"-attribuut moet een link elders in het document hebben.'
     },
     guidelines: {
-      508:  [
+      508: [
         'ef',
         'ef'
       ]

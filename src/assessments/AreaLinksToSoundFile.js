@@ -68,7 +68,7 @@ var AreaLinksToSoundFile = {
     guidelines: {
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'G74'
           ]
         }

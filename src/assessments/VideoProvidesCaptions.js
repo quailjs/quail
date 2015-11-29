@@ -52,18 +52,18 @@ var VideoProvidesCaptions = {
       nl: 'Alle HTML5 video tags moeten bijschriften bieden.'
     },
     guidelines: {
-      508:  [
+      508: [
         'b',
         'b'
       ],
       wcag: {
         '1.2.2': {
-          techniques:  [
+          techniques: [
             'G87'
           ]
         },
         '1.2.4': {
-          techniques:  [
+          techniques: [
             'G87'
           ]
         }

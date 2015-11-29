@@ -31,7 +31,7 @@ var TableNotUsedForLayout = {
     guidelines: {
       wcag: {
         '1.3.2': {
-          techniques:  [
+          techniques: [
             'F49'
           ]
         }

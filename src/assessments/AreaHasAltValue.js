@@ -54,14 +54,14 @@ var AreaHasAltValue = {
     guidelines: {
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'F65',
             'G74',
             'H24'
           ]
         },
         '1.4.3': {
-          techniques:  [
+          techniques: [
             'G145'
           ]
         }

@@ -32,12 +32,12 @@ var TableAxisHasCorrespondingId = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'F17'
           ]
         },
         '4.1.1': {
-          techniques:  [
+          techniques: [
             'F17'
           ]
         }

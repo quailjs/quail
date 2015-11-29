@@ -47,7 +47,7 @@ var ALinkTextDoesNotBeginWithRedundantWord = {
     guidelines: {
       wcag: {
         '2.4.9': {
-          techniques:  [
+          techniques: [
             'F84'
           ]
         }

@@ -56,7 +56,7 @@ var ALinksDontOpenNewWindow = {
     guidelines: {
       wcag: {
         '3.2.5': {
-          techniques:  [
+          techniques: [
             'H83',
             'SCR24'
           ]

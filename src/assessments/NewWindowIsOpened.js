@@ -39,7 +39,7 @@ var NewWindowIsOpened = {
     guidelines: {
       wcag: {
         '2.0.0': {
-          techniques:  [
+          techniques: [
             'H83'
           ]
         }

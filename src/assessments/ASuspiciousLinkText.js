@@ -44,17 +44,17 @@ var ASuspiciousLinkText = {
     guidelines: {
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'H30'
           ]
         },
         '2.4.4': {
-          techniques:  [
+          techniques: [
             'H30'
           ]
         },
         '2.4.9': {
-          techniques:  [
+          techniques: [
             'H30'
           ]
         }

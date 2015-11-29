@@ -90,7 +90,7 @@ var ScriptFocusIndicatorVisible = {
     guidelines: {
       wcag: {
         '2.4.7': {
-          techniques:  [
+          techniques: [
             'C15',
             'G165',
             'G195',

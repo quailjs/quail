@@ -46,7 +46,7 @@ var DocumentTitleDescribesDocument = {
     guidelines: {
       wcag: {
         '2.4.2': {
-          techniques:  [
+          techniques: [
             'F25',
             'G88'
           ]

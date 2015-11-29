@@ -25,12 +25,12 @@ var TableLayoutMakesSenseLinearized = {
     guidelines: {
       wcag: {
         '1.3.2': {
-          techniques:  [
+          techniques: [
             'G57'
           ]
         },
         '4.1.1': {
-          techniques:  [
+          techniques: [
             'F49'
           ]
         }

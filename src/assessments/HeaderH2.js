@@ -19,7 +19,7 @@ var HeaderH2 = {
     guidelines: {
       wcag: {
         '2.4.6': {
-          techniques:  [
+          techniques: [
             'G130'
           ]
         }

@@ -66,7 +66,7 @@ var LanguageDirectionPunctuation = {
     guidelines: {
       wcag: {
         '1.3.2': {
-          techniques:  [
+          techniques: [
             'G57'
           ]
         }

@@ -2,7 +2,7 @@
  * Not yet implemented.
  */
 var ImgGifNoFlicker = {
-  run: function (test) {
+  run: function () {
     return;
   },
 
@@ -17,12 +17,12 @@ var ImgGifNoFlicker = {
       nl: 'Animated GIF-bestanden mogen niet knipperen of flitsen met een frequentie hoger dan 2 Hz en lager dan 55 Hz. Controleer de frequentie van deze GIF met een <a href=\"http://tools.webaccessibile.org/test/check.aspx\">online tool</a>.'
     },
     guidelines: {
-      508:  [
+      508: [
         'j'
       ],
       wcag: {
         '2.2.2': {
-          techniques:  [
+          techniques: [
             'G152'
           ]
         }

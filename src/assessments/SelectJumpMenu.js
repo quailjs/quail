@@ -37,12 +37,12 @@ var SelectJumpMenu = {
     guidelines: {
       wcag: {
         '3.2.2': {
-          techniques:  [
+          techniques: [
             'F37'
           ]
         },
         '3.2.5': {
-          techniques:  [
+          techniques: [
             'F9'
           ]
         }

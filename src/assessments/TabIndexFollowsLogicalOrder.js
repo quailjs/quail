@@ -37,7 +37,7 @@ var TabIndexFollowsLogicalOrder = {
     guidelines: {
       wcag: {
         '2.4.3': {
-          techniques:  [
+          techniques: [
             'H4'
           ]
         }

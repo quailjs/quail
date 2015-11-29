@@ -44,7 +44,7 @@ var HeaderH1Format = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'T3'
           ]
         }

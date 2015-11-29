@@ -30,22 +30,22 @@ var DocumentContentReadableWithoutStylesheets = {
       nl: 'Ook als alle stijlen voor een pagina zijn uitgezet, moet de content van de pagina nog steeds betekenisvol zijn. Zet de stylesheets uit in de browser en controleer of de content nog steeds leesbaar en duidelijk is.'
     },
     guidelines: {
-      508:  [
+      508: [
         'd'
       ],
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'G140'
           ]
         },
         '1.4.5': {
-          techniques:  [
+          techniques: [
             'G140'
           ]
         },
         '1.4.9': {
-          techniques:  [
+          techniques: [
             'G140'
           ]
         }

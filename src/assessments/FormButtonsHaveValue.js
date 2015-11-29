@@ -52,17 +52,17 @@ var FormButtonsHaveValue = {
     guidelines: {
       wcag: {
         '2.1.1': {
-          techniques:  [
+          techniques: [
             'H91'
           ]
         },
         '2.1.3': {
-          techniques:  [
+          techniques: [
             'H91'
           ]
         },
         '4.1.2': {
-          techniques:  [
+          techniques: [
             'H91'
           ]
         }

@@ -48,7 +48,7 @@ var ImgWithMapHasUseMap = {
       nl: 'Als een afbeelding een \"ismap\"-attribuut heeft, moet het ook een geldig \"usemap\"-attribuut hebben'
     },
     guidelines: {
-      508:  [
+      508: [
         'ef',
         'ef'
       ]

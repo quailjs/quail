@@ -34,7 +34,7 @@ var InputImageAltNotRedundant = {
     guidelines: {
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'H36'
           ]
         }

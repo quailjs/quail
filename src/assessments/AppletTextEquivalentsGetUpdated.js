@@ -46,12 +46,12 @@ var AppletTextEquivalentsGetUpdated = {
   meta: {
     testability: 0,
     guidelines: {
-      508:  [
+      508: [
         'm'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'G74',
             'H35'
           ]

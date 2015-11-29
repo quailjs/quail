@@ -37,12 +37,12 @@ var ImgAltIsDifferent = {
       nl: 'Alle <code>img</code>-elementen moeten een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam van de afbeelding.'
     },
     guidelines: {
-      508:  [
+      508: [
         'a'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'H37'
           ]
         }

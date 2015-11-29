@@ -57,22 +57,22 @@ var InputWithoutLabelHasTitle = {
     guidelines: {
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'H65'
           ]
         },
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'H65'
           ]
         },
         '3.3.2': {
-          techniques:  [
+          techniques: [
             'H65'
           ]
         },
         '4.1.2': {
-          techniques:  [
+          techniques: [
             'H65'
           ]
         }

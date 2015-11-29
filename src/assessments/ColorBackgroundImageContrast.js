@@ -94,7 +94,7 @@ var ColorBackgroundImageContrast = {
     guidelines: {
       wcag: {
         '1.4.3': {
-          techniques:  [
+          techniques: [
             'G18'
           ]
         }

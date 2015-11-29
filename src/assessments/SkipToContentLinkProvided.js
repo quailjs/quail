@@ -53,12 +53,12 @@ var SkipToContentLinkProvided = {
       nl: 'Er moet een link zijn om naar de content te navigeren als een van de eerste links op de pagina.'
     },
     guidelines: {
-      508:  [
+      508: [
         'o'
       ],
       wcag: {
         '2.4.1': {
-          techniques:  [
+          techniques: [
             'G1'
           ]
         }

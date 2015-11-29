@@ -24,18 +24,18 @@ var ImgAltNotPlaceHolder = {
       nl: 'Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen \"alt\"-attribuut hebben met daarin placeholdertekst.'
     },
     guidelines: {
-      508:  [
+      508: [
         'a'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'F30',
             'F39'
           ]
         },
         '1.2.1': {
-          techniques:  [
+          techniques: [
             'F30'
           ]
         }

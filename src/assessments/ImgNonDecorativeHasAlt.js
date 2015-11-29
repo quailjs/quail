@@ -32,12 +32,12 @@ var ImgNonDecorativeHasAlt = {
       nl: 'Elke afbeelding die niet ter decoratie is of voor lay-out doeleinden wordt gebruikt, moet een gevuld \"alt\"-attribuut hebben.'
     },
     guidelines: {
-      508:  [
+      508: [
         'a'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'F38'
           ]
         }

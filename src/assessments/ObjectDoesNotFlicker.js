@@ -52,12 +52,12 @@ var ObjectDoesNotFlicker = {
       nl: 'De content binnen een <code>object</code>-tag knippert of flitst niet.'
     },
     guidelines: {
-      508:  [
+      508: [
         'j'
       ],
       wcag: {
         '2.2.2': {
-          techniques:  [
+          techniques: [
             'F7'
           ]
         }

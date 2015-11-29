@@ -54,7 +54,7 @@ var AppletsDonotUseColorAlone = {
       nl: 'Applets moeten content bevatten die ook bruikbaar is zonder kleur en die toegankelijk is voor gebruikers met kleurenblindheid.'
     },
     guidelines: {
-      508:  [
+      508: [
         'c'
       ]
     },

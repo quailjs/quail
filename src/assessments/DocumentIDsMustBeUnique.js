@@ -56,7 +56,7 @@ var DocumentIDsMustBeUnique = {
     guidelines: {
       wcag: {
         '4.1.1': {
-          techniques:  [
+          techniques: [
             'F77',
             'H93'
           ]

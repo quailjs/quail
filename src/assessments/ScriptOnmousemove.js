@@ -25,19 +25,19 @@ var ScriptOnmousemove = {
       nl: 'Als een element een \"onmousemove\"-attribuut heeft, moet het een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord.'
     },
     guidelines: {
-      508:  [
+      508: [
         'l'
       ],
       wcag: {
         '2.1.1': {
-          techniques:  [
+          techniques: [
             'G90',
             'SCR2',
             'SCR20'
           ]
         },
         '2.1.3': {
-          techniques:  [
+          techniques: [
             'G90',
             'SCR20'
           ]

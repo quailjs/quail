@@ -27,7 +27,7 @@ var ObjectMustContainText = {
     guidelines: {
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'FLASH1',
             'H27'
           ]

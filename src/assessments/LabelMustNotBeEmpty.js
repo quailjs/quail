@@ -27,23 +27,23 @@ var LabelMustNotBeEmpty = {
     guidelines: {
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'H44'
           ]
         },
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'H44',
             'F68'
           ]
         },
         '3.3.2': {
-          techniques:  [
+          techniques: [
             'H44'
           ]
         },
         '4.1.2': {
-          techniques:  [
+          techniques: [
             'H44'
           ]
         }

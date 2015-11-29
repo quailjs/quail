@@ -48,12 +48,12 @@ var ImgHasAlt = {
       nl: 'Alle <code>img</code>-elementen moeten een \"alt\"-attribuut hebben.'
     },
     guidelines: {
-      508:  [
+      508: [
         'a'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'F65',
             'H37'
           ]

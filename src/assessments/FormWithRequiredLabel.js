@@ -49,23 +49,23 @@ var FormWithRequiredLabel = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'ARIA2'
           ]
         },
         '1.4.1': {
-          techniques:  [
+          techniques: [
             'F81'
           ]
         },
         '3.3.2': {
-          techniques:  [
+          techniques: [
             'ARIA2',
             'H90'
           ]
         },
         '3.3.3': {
-          techniques:  [
+          techniques: [
             'ARIA2'
           ]
         }

@@ -2,7 +2,7 @@
  * Not yet implemented.
  */
 var InputDoesNotUseColorAlone = {
-  run: function (test) {
+  run: function () {
     return;
   },
 
@@ -17,7 +17,7 @@ var InputDoesNotUseColorAlone = {
       nl: 'Elk invoerveld moet naar content verwijzen door middel van meer dan alleen kleur.'
     },
     guidelines: {
-      508:  [
+      508: [
         'c'
       ]
     },

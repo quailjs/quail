@@ -27,27 +27,27 @@ var LegendTextNotPlaceholder = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'H71'
           ]
         },
         '2.1.1': {
-          techniques:  [
+          techniques: [
             'H91'
           ]
         },
         '2.4.6': {
-          techniques:  [
+          techniques: [
             'G131'
           ]
         },
         '3.3.2': {
-          techniques:  [
+          techniques: [
             'H71'
           ]
         },
         '4.1.3': {
-          techniques:  [
+          techniques: [
             'H91'
           ]
         }

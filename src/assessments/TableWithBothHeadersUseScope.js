@@ -52,12 +52,12 @@ var TableWithBothHeadersUseScope = {
       nl: 'Als er tabelkoppen zijn voor zowel rijen als kolommen, gebruik dan het \"scope\"-attribuut om het juiste verband te leggen tussen de koppen en bijbehorende cellen.'
     },
     guidelines: {
-      508:  [
+      508: [
         'h'
       ],
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'F91'
           ]
         }

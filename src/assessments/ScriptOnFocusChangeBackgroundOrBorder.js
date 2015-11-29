@@ -45,7 +45,7 @@ var ScriptOnFocusChangeBackgroundOrBorder = {
     guidelines: {
       wcag: {
         '2.4.7': {
-          techniques:  [
+          techniques: [
             'SCR31'
           ]
         }

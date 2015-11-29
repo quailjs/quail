@@ -32,7 +32,7 @@ var InputCheckboxRequiresFieldset = {
     guidelines: {
       wcag: {
         '3.3.2': {
-          techniques:  [
+          techniques: [
             'H71'
           ]
         }

@@ -52,12 +52,12 @@ var ScriptsDoNotFlicker = {
       nl: 'Alle scripts moeten gecontroleerd worden om te zien of zij de interface niet laten knipperen of flitsen.'
     },
     guidelines: {
-      508:  [
+      508: [
         'j'
       ],
       wcag: {
         '2.2.2': {
-          techniques:  [
+          techniques: [
             'F7'
           ]
         }

@@ -17,7 +17,7 @@ var DocumentAbbrIsUsed = {
     guidelines: {
       wcag: {
         '3.1.4': {
-          techniques:  [
+          techniques: [
             'H28'
           ]
         }

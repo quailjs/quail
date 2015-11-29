@@ -32,17 +32,17 @@ var CssDocumentMakesSenseStyleTurnedOff = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'G140'
           ]
         },
         '1.4.5': {
-          techniques:  [
+          techniques: [
             'G140'
           ]
         },
         '1.4.9': {
-          techniques:  [
+          techniques: [
             'G140'
           ]
         }

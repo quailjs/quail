@@ -46,12 +46,12 @@ var SiteMapStringsComponent = {
     guidelines: {
       wcag: {
         '2.4.5': {
-          techniques:  [
+          techniques: [
             'G63'
           ]
         },
         '2.4.8': {
-          techniques:  [
+          techniques: [
             'G63'
           ]
         }

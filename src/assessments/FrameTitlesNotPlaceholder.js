@@ -2,7 +2,7 @@
  * Not yet implemented.
  */
 var FrameTitlesNotPlaceholder = {
-  run: function (test) {
+  run: function () {
     return;
   },
 
@@ -19,12 +19,12 @@ var FrameTitlesNotPlaceholder = {
     guidelines: {
       wcag: {
         '2.4.1': {
-          techniques:  [
+          techniques: [
             'H64'
           ]
         },
         '4.1.2': {
-          techniques:  [
+          techniques: [
             'H64'
           ]
         }

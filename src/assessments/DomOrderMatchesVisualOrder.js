@@ -62,12 +62,12 @@ var DomOrderMatchesVisualOrder = {
     guidelines: {
       wcag: {
         '1.3.2': {
-          techniques:  [
+          techniques: [
             'C27'
           ]
         },
         '2.4.3': {
-          techniques:  [
+          techniques: [
             'C27'
           ]
         }

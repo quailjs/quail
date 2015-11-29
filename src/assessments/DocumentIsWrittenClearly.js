@@ -48,7 +48,7 @@ var DocumentIsWrittenClearly = {
     guidelines: {
       wcag: {
         '3.1.5': {
-          techniques:  [
+          techniques: [
             'G86'
           ]
         }

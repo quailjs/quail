@@ -65,7 +65,7 @@ var LanguageDirAttributeIsUsed = {
     guidelines: {
       wcag: {
         '1.3.2': {
-          techniques:  [
+          techniques: [
             'H56'
           ]
         }

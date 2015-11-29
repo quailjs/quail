@@ -74,13 +74,13 @@ var PNotUsedAsHeader = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'G141',
             'H42'
           ]
         },
         '2.4.10': {
-          techniques:  [
+          techniques: [
             'G141'
           ]
         }

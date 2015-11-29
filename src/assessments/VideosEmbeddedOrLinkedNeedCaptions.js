@@ -32,12 +32,12 @@ var VideosEmbeddedOrLinkedNeedCaptions = {
     guidelines: {
       wcag: {
         '1.2.2': {
-          techniques:  [
+          techniques: [
             'G87'
           ]
         },
         '1.2.4': {
-          techniques:  [
+          techniques: [
             'G87'
           ]
         }

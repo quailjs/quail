@@ -52,7 +52,7 @@ var ScriptInBodyMustHaveNoscript = {
       nl: 'Scripts moeten worden gevolgd door een <code>noscripts</code>-element om de gebruiker de weg te wijzen naar de content op een andere manier.'
     },
     guidelines: {
-      508:  [
+      508: [
         'l'
       ]
     },

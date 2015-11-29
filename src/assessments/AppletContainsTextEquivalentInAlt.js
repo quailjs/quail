@@ -19,12 +19,12 @@ var AppletContainsTextEquivalentInAlt = {
       nl: 'Applets moeten hun tekstuele equivalent of beschrijving bevatten in een \"alt\"-attribuut.'
     },
     guidelines: {
-      508:  [
+      508: [
         'm'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'G74',
             'H35'
           ]

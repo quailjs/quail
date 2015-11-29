@@ -54,17 +54,17 @@ var ImgNotReferredToByColorAlone = {
       nl: 'De \"alt\"-tekst of content voor elke afbeelding mag niet alleen maar een kleur bevatten. Neem in de \"alt\"-tekst de betekenis van de afbeelding op.'
     },
     guidelines: {
-      508:  [
+      508: [
         'c'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'F13'
           ]
         },
         '1.4.1': {
-          techniques:  [
+          techniques: [
             'F13'
           ]
         }

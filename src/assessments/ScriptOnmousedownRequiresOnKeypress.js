@@ -25,19 +25,19 @@ var ScriptOnmousedownRequiresOnKeypress = {
       nl: 'Als een element een \"mousedown\"-attribuut heeft moet het ook een \"onkeydown\"-attribuut hebben.'
     },
     guidelines: {
-      508:  [
+      508: [
         'l'
       ],
       wcag: {
         '2.1.1': {
-          techniques:  [
+          techniques: [
             'G90',
             'SCR2',
             'SCR20'
           ]
         },
         '2.1.3': {
-          techniques:  [
+          techniques: [
             'G90',
             'SCR20'
           ]

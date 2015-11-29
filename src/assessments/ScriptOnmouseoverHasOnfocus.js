@@ -25,19 +25,19 @@ var ScriptOnmouseoverHasOnfocus = {
       nl: 'Als een element een \"onmouseover\"-attribuut heeft, moet het ook een \"onfocus\"-attribuut hebben.'
     },
     guidelines: {
-      508:  [
+      508: [
         'l'
       ],
       wcag: {
         '2.1.1': {
-          techniques:  [
+          techniques: [
             'G90',
             'SCR2',
             'SCR20'
           ]
         },
         '2.1.3': {
-          techniques:  [
+          techniques: [
             'G90',
             'SCR20'
           ]

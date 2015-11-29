@@ -30,14 +30,14 @@ var TabularDataIsInTable = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'F33',
             'F34',
             'F48'
           ]
         },
         '1.3.2': {
-          techniques:  [
+          techniques: [
             'F33',
             'F34'
           ]

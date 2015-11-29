@@ -57,24 +57,24 @@ var ContentPositioningShouldNotChangeMeaning = {
     guidelines: {
       wcag: {
         '1.3.2': {
-          techniques:  [
+          techniques: [
             'C6',
             'F1',
             'G57'
           ]
         },
         '1.4.5': {
-          techniques:  [
+          techniques: [
             'C6'
           ]
         },
         '1.4.9': {
-          techniques:  [
+          techniques: [
             'C6'
           ]
         },
         '2.4.1': {
-          techniques:  [
+          techniques: [
             'C6'
           ]
         }

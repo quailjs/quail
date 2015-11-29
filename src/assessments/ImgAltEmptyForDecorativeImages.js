@@ -56,7 +56,7 @@ var ImgAltEmptyForDecorativeImages = {
     guidelines: {
       wcag: {
         '1.3.3': {
-          techniques:  [
+          techniques: [
             'F26'
           ]
         }

@@ -31,12 +31,12 @@ var AppletContainsTextEquivalent = {
       nl: 'Applets moeten hun tekstuele equivalent of beschrijving bevatten in de <code>applet</code> tag.'
     },
     guidelines: {
-      508:  [
+      508: [
         'm'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'G74',
             'H35'
           ]

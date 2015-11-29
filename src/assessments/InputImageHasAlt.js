@@ -48,29 +48,29 @@ var InputImageHasAlt = {
       nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben.'
     },
     guidelines: {
-      508:  [
+      508: [
         'a'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'F65',
             'G94',
             'H36'
           ]
         },
         '2.1.1': {
-          techniques:  [
+          techniques: [
             'H91'
           ]
         },
         '2.1.3': {
-          techniques:  [
+          techniques: [
             'H91'
           ]
         },
         '4.1.2': {
-          techniques:  [
+          techniques: [
             'H91'
           ]
         }

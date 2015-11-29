@@ -54,12 +54,12 @@ var HeadersUseToMarkSections = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'G141'
           ]
         },
         '2.4.1': {
-          techniques:  [
+          techniques: [
             'G141',
             'H69'
           ]

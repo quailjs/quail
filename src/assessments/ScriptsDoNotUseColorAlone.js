@@ -52,7 +52,7 @@ var ScriptsDoNotUseColorAlone = {
       nl: 'Alle scripts moeten gecontroleerd worden om te zien of hun interface geen interface heeft die alleen op kleur kan worden onderscheiden.'
     },
     guidelines: {
-      508:  [
+      508: [
         'c'
       ]
     },

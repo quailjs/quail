@@ -41,7 +41,7 @@ var TableLayoutDataShouldNotHaveTh = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'F46'
           ]
         }

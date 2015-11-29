@@ -40,12 +40,12 @@ var ImgAltNotEmptyInAnchor = {
       nl: 'Elke afbeelding binnen een link (een <code>a</code>-element) die geen andere tekst heeft, mag geen leeg of ontbrekend \"alt\"-attribuut hebben.'
     },
     guidelines: {
-      508:  [
+      508: [
         'a'
       ],
       wcag: {
         '2.4.4': {
-          techniques:  [
+          techniques: [
             'H30'
           ]
         }

@@ -44,7 +44,7 @@ var BlinkIsNotUsed = {
     guidelines: {
       wcag: {
         '2.2.2': {
-          techniques:  [
+          techniques: [
             'F47'
           ]
         }

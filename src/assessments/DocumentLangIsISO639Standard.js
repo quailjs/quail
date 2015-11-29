@@ -56,7 +56,7 @@ var DocumentLangIsISO639Standard = {
     guidelines: {
       wcag: {
         '3.1.1': {
-          techniques:  [
+          techniques: [
             'H57'
           ]
         }

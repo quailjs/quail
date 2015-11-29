@@ -50,17 +50,17 @@ var LegendTextNotEmpty = {
     guidelines: {
       wcag: {
         '1.3.1': {
-          techniques:  [
+          techniques: [
             'H71'
           ]
         },
         '2.4.6': {
-          techniques:  [
+          techniques: [
             'G131'
           ]
         },
         '3.3.2': {
-          techniques:  [
+          techniques: [
             'H71'
           ]
         }

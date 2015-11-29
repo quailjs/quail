@@ -49,7 +49,7 @@ var FormHasSubmitButton = {
     guidelines: {
       wcag: {
         '3.2.2': {
-          techniques:  [
+          techniques: [
             'H32',
             'G80'
           ]

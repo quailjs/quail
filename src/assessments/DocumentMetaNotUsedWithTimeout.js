@@ -53,19 +53,19 @@ var DocumentMetaNotUsedWithTimeout = {
     guidelines: {
       wcag: {
         '2.2.1': {
-          techniques:  [
+          techniques: [
             'F40',
             'F41'
           ]
         },
         '2.2.4': {
-          techniques:  [
+          techniques: [
             'F40',
             'F41'
           ]
         },
         '3.2.5': {
-          techniques:  [
+          techniques: [
             'F41'
           ]
         }

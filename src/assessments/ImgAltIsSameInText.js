@@ -54,12 +54,12 @@ var ImgAltIsSameInText = {
       nl: 'Als een afbeelding tekst bevat, moet deze tekst herhaald worden in het \"alt\"-attribuut.'
     },
     guidelines: {
-      508:  [
+      508: [
         'a'
       ],
       wcag: {
         '1.1.1': {
-          techniques:  [
+          techniques: [
             'G74',
             'H37'
           ]

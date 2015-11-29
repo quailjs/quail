@@ -116,7 +116,7 @@ var LanguageChangesAreIdentified = {
     guidelines: {
       wcag: {
         '3.1.2': {
-          techniques:  [
+          techniques: [
             'H58'
           ]
         }
