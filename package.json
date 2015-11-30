@@ -35,7 +35,7 @@
     "webdriverio": "2.3.0"
   },
   "devDependencies": {
-    "@quailjs/quail-core": "0.0.15",
+    "@quailjs/quail-core": "0.0.16",
     "babel-eslint": "^5.0.0-beta4",
     "chai": "^1.9.2",
     "chai-as-promised": "^4.1.1",
