@@ -5,7 +5,6 @@
   "dependencies": {
     "node-htmlparser": "~2.0.0",
     "RainbowVis-JS": "https://github.com/anomal/RainbowVis-JS.git",
-    "guessLanguage": "https://github.com/richtr/guessLanguage.js.git",
-    "jquery": "~2.1.4"
+    "guessLanguage": "https://github.com/richtr/guessLanguage.js.git"
   }
 }
