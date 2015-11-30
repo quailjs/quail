@@ -3,6 +3,7 @@ var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var guessLanguage = require('guessLanguage/lib/guessLanguage');
 var LanguageChangesAreIdentified = {
   run: function (test) {
     var $scope = test.get('$scope');

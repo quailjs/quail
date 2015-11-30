@@ -3111,7 +3111,7 @@ map.set('whiteSpaceInWord', WhiteSpaceInWord);
 map.set('whiteSpaceNotUsedForFormatting', WhiteSpaceNotUsedForFormatting);
 module.exports = map;
 
-},{"AAdjacentWithSameResourceShouldBeCombined":39,"AImgAltNotRepetitive":40,"AInPHasADistinctStyle":41,"ALinkTextDoesNotBeginWithRedundantWord":42,"ALinkWithNonText":43,"ALinksAreSeparatedByPrintableCharacters":44,"ALinksDontOpenNewWindow":45,"ALinksNotSeparatedBySymbols":46,"ALinksToMultiMediaRequireTranscript":47,"ALinksToSoundFilesNeedTranscripts":48,"AMultimediaTextAlternative":49,"AMustContainText":50,"AMustHaveTitle":51,"AMustNotHaveJavascriptHref":52,"ASuspiciousLinkText":53,"ATitleDescribesDestination":54,"AnimatedGifMayBePresent":55,"AppletContainsTextEquivalent":56,"AppletContainsTextEquivalentInAlt":57,"AppletProvidesMechanismToReturnToParent":58,"AppletTextEquivalentsGetUpdated":59,"AppletUIMustBeAccessible":60,"AppletsDoNotFlicker":61,"AppletsDonotUseColorAlone":62,"AreaAltIdentifiesDestination":63,"AreaAltRefersToText":64,"AreaDontOpenNewWindow":65,"AreaHasAltValue":66,"AreaLinksToSoundFile":67,"AudioMayBePresent":68,"BasefontIsNotUsed":69,"BlinkIsNotUsed":70,"BlockquoteNotUsedForIndentation":71,"BlockquoteUseForQuotations":72,"BoldIsNotUsed":73,"ButtonHasName":74,"CheckboxHasLabel":75,"ColorBackgroundGradientContrast":76,"ColorBackgroundImageContrast":77,"ColorElementBehindBackgroundGradientContrast":78,"ColorElementBehindBackgroundImageContrast":79,"ColorElementBehindContrast":80,"ColorFontContrast":81,"CssDocumentMakesSenseStyleTurnedOff":82,"DefinitionListsAreUsed":83,"DoctypeProvided":84,"DocumentAcronymsHaveElement":85,"DocumentAutoRedirectNotUsed":86,"DocumentContentReadableWithoutStylesheets":87,"DocumentHasTitleElement":88,"DocumentIsWrittenClearly":89,"DocumentLangIsISO639Standard":90,"DocumentLangNotIdentified":91,"DocumentMetaNotUsedWithTimeout":92,"DocumentReadingDirection":93,"DocumentStrictDocType":94,"DocumentTitleDescribesDocument":95,"DocumentTitleIsNotPlaceholder":96,"DocumentTitleIsShort":97,"DocumentTitleNotEmpty":98,"DocumentVisualListsAreMarkedUp":99,"DomOrderMatchesVisualOrder":100,"EmbedHasAssociatedNoEmbed":101,"EmbedMustHaveAltAttribute":102,"FieldsetHasLabel":103,"FileHasLabel":104,"FontIsNotUsed":105,"FormButtonsHaveValue":106,"FormErrorMessageHelpsUser":107,"FormHasGoodErrorMessage":108,"FormHasSubmitButton":109,"FormWithRequiredLabel":110,"HeaderH1":111,"HeaderH1Format":112,"HeaderH2":113,"HeaderH2Format":114,"HeaderH3":115,"HeaderH3Format":116,"HeaderH4":117,"HeaderH4Format":118,"HeaderH5Format":119,"HeaderH6Format":120,"HeadersAttrRefersToATableCell":121,"HeadersHaveText":122,"HeadersUseToMarkSections":123,"IIsNotUsed":124,"IdrefsHasCorrespondingId":125,"IframeMustNotHaveLongdesc":126,"ImageMapServerSide":127,"ImgAltIsDifferent":128,"ImgAltIsTooLong":129,"ImgAltNotEmptyInAnchor":130,"ImgAltNotPlaceHolder":131,"ImgHasAlt":132,"ImgHasLongDesc":133,"ImgImportantNoSpacerAlt":134,"ImgNonDecorativeHasAlt":135,"ImgServerSideMapNotUsed":136,"ImgShouldNotHaveTitle":137,"ImgWithMapHasUseMap":138,"ImgWithMathShouldHaveMathEquivalent":139,"InputCheckboxRequiresFieldset":140,"InputElementsDontHaveAlt":141,"InputImageAltIsNotFileName":142,"InputImageAltIsNotPlaceholder":143,"InputImageAltIsShort":144,"InputImageAltNotRedundant":145,"InputImageHasAlt":146,"InputTextHasLabel":147,"InputTextHasValue":148,"InputTextValueNotEmpty":149,"InputWithoutLabelHasTitle":150,"LabelDoesNotContainInput":151,"LabelMustBeUnique":152,"LabelMustNotBeEmpty":153,"LabelsAreAssignedToAnInput":154,"LanguageDirAttributeIsUsed":155,"LanguageDirectionPunctuation":156,"LanguageUnicodeDirection":157,"LegendTextNotEmpty":158,"LegendTextNotPlaceholder":159,"LiDontUseImageForBullet":160,"LinkHasAUniqueContext":161,"ListNotUsedForFormatting":162,"ListOfLinksUseList":163,"MarqueeIsNotUsed":164,"MenuNotUsedToFormatText":165,"NewWindowIsOpened":166,"ObjectMustContainText":167,"ObjectMustHaveEmbed":168,"ObjectMustHaveTitle":169,"ObjectMustHaveValidTitle":170,"PNotUsedAsHeader":171,"PasswordHasLabel":172,"PreShouldNotBeUsedForTabularLayout":173,"RadioHasLabel":174,"ScriptOnclickRequiresOnKeypress":175,"ScriptOndblclickRequiresOnKeypress":176,"ScriptOnmousedownRequiresOnKeypress":177,"ScriptOnmousemove":178,"ScriptOnmouseoutHasOnmouseblur":179,"ScriptOnmouseoverHasOnfocus":180,"ScriptOnmouseupHasOnkeyup":181,"SelectHasAssociatedLabel":182,"SelectJumpMenu":183,"SiteMap":184,"SkipToContentLinkProvided":185,"SvgContainsTitle":186,"TabIndexFollowsLogicalOrder":187,"TableAxisHasCorrespondingId":188,"TableDataShouldHaveTh":189,"TableLayoutDataShouldNotHaveTh":190,"TableLayoutHasNoCaption":191,"TableLayoutHasNoSummary":192,"TableLayoutMakesSenseLinearized":193,"TableNotUsedForLayout":194,"TableShouldUseHeaderIDs":195,"TableSummaryDoesNotDuplicateCaption":196,"TableSummaryIsEmpty":197,"TableSummaryIsNotTooLong":198,"TableUseColGroup":199,"TableUsesAbbreviationForHeader":200,"TableUsesCaption":201,"TableUsesScopeForRow":202,"TabularDataIsInTable":203,"TextIsNotSmall":204,"TextareaHasAssociatedLabel":205,"VideoMayBePresent":206,"VideosEmbeddedOrLinkedNeedCaptions":207,"WhiteSpaceInWord":208,"WhiteSpaceNotUsedForFormatting":209}],36:[function(require,module,exports){
+},{"AAdjacentWithSameResourceShouldBeCombined":40,"AImgAltNotRepetitive":41,"AInPHasADistinctStyle":42,"ALinkTextDoesNotBeginWithRedundantWord":43,"ALinkWithNonText":44,"ALinksAreSeparatedByPrintableCharacters":45,"ALinksDontOpenNewWindow":46,"ALinksNotSeparatedBySymbols":47,"ALinksToMultiMediaRequireTranscript":48,"ALinksToSoundFilesNeedTranscripts":49,"AMultimediaTextAlternative":50,"AMustContainText":51,"AMustHaveTitle":52,"AMustNotHaveJavascriptHref":53,"ASuspiciousLinkText":54,"ATitleDescribesDestination":55,"AnimatedGifMayBePresent":56,"AppletContainsTextEquivalent":57,"AppletContainsTextEquivalentInAlt":58,"AppletProvidesMechanismToReturnToParent":59,"AppletTextEquivalentsGetUpdated":60,"AppletUIMustBeAccessible":61,"AppletsDoNotFlicker":62,"AppletsDonotUseColorAlone":63,"AreaAltIdentifiesDestination":64,"AreaAltRefersToText":65,"AreaDontOpenNewWindow":66,"AreaHasAltValue":67,"AreaLinksToSoundFile":68,"AudioMayBePresent":69,"BasefontIsNotUsed":70,"BlinkIsNotUsed":71,"BlockquoteNotUsedForIndentation":72,"BlockquoteUseForQuotations":73,"BoldIsNotUsed":74,"ButtonHasName":75,"CheckboxHasLabel":76,"ColorBackgroundGradientContrast":77,"ColorBackgroundImageContrast":78,"ColorElementBehindBackgroundGradientContrast":79,"ColorElementBehindBackgroundImageContrast":80,"ColorElementBehindContrast":81,"ColorFontContrast":82,"CssDocumentMakesSenseStyleTurnedOff":83,"DefinitionListsAreUsed":84,"DoctypeProvided":85,"DocumentAcronymsHaveElement":86,"DocumentAutoRedirectNotUsed":87,"DocumentContentReadableWithoutStylesheets":88,"DocumentHasTitleElement":89,"DocumentIsWrittenClearly":90,"DocumentLangIsISO639Standard":91,"DocumentLangNotIdentified":92,"DocumentMetaNotUsedWithTimeout":93,"DocumentReadingDirection":94,"DocumentStrictDocType":95,"DocumentTitleDescribesDocument":96,"DocumentTitleIsNotPlaceholder":97,"DocumentTitleIsShort":98,"DocumentTitleNotEmpty":99,"DocumentVisualListsAreMarkedUp":100,"DomOrderMatchesVisualOrder":101,"EmbedHasAssociatedNoEmbed":102,"EmbedMustHaveAltAttribute":103,"FieldsetHasLabel":104,"FileHasLabel":105,"FontIsNotUsed":106,"FormButtonsHaveValue":107,"FormErrorMessageHelpsUser":108,"FormHasGoodErrorMessage":109,"FormHasSubmitButton":110,"FormWithRequiredLabel":111,"HeaderH1":112,"HeaderH1Format":113,"HeaderH2":114,"HeaderH2Format":115,"HeaderH3":116,"HeaderH3Format":117,"HeaderH4":118,"HeaderH4Format":119,"HeaderH5Format":120,"HeaderH6Format":121,"HeadersAttrRefersToATableCell":122,"HeadersHaveText":123,"HeadersUseToMarkSections":124,"IIsNotUsed":125,"IdrefsHasCorrespondingId":126,"IframeMustNotHaveLongdesc":127,"ImageMapServerSide":128,"ImgAltIsDifferent":129,"ImgAltIsTooLong":130,"ImgAltNotEmptyInAnchor":131,"ImgAltNotPlaceHolder":132,"ImgHasAlt":133,"ImgHasLongDesc":134,"ImgImportantNoSpacerAlt":135,"ImgNonDecorativeHasAlt":136,"ImgServerSideMapNotUsed":137,"ImgShouldNotHaveTitle":138,"ImgWithMapHasUseMap":139,"ImgWithMathShouldHaveMathEquivalent":140,"InputCheckboxRequiresFieldset":141,"InputElementsDontHaveAlt":142,"InputImageAltIsNotFileName":143,"InputImageAltIsNotPlaceholder":144,"InputImageAltIsShort":145,"InputImageAltNotRedundant":146,"InputImageHasAlt":147,"InputTextHasLabel":148,"InputTextHasValue":149,"InputTextValueNotEmpty":150,"InputWithoutLabelHasTitle":151,"LabelDoesNotContainInput":152,"LabelMustBeUnique":153,"LabelMustNotBeEmpty":154,"LabelsAreAssignedToAnInput":155,"LanguageDirAttributeIsUsed":156,"LanguageDirectionPunctuation":157,"LanguageUnicodeDirection":158,"LegendTextNotEmpty":159,"LegendTextNotPlaceholder":160,"LiDontUseImageForBullet":161,"LinkHasAUniqueContext":162,"ListNotUsedForFormatting":163,"ListOfLinksUseList":164,"MarqueeIsNotUsed":165,"MenuNotUsedToFormatText":166,"NewWindowIsOpened":167,"ObjectMustContainText":168,"ObjectMustHaveEmbed":169,"ObjectMustHaveTitle":170,"ObjectMustHaveValidTitle":171,"PNotUsedAsHeader":172,"PasswordHasLabel":173,"PreShouldNotBeUsedForTabularLayout":174,"RadioHasLabel":175,"ScriptOnclickRequiresOnKeypress":176,"ScriptOndblclickRequiresOnKeypress":177,"ScriptOnmousedownRequiresOnKeypress":178,"ScriptOnmousemove":179,"ScriptOnmouseoutHasOnmouseblur":180,"ScriptOnmouseoverHasOnfocus":181,"ScriptOnmouseupHasOnkeyup":182,"SelectHasAssociatedLabel":183,"SelectJumpMenu":184,"SiteMap":185,"SkipToContentLinkProvided":186,"SvgContainsTitle":187,"TabIndexFollowsLogicalOrder":188,"TableAxisHasCorrespondingId":189,"TableDataShouldHaveTh":190,"TableLayoutDataShouldNotHaveTh":191,"TableLayoutHasNoCaption":192,"TableLayoutHasNoSummary":193,"TableLayoutMakesSenseLinearized":194,"TableNotUsedForLayout":195,"TableShouldUseHeaderIDs":196,"TableSummaryDoesNotDuplicateCaption":197,"TableSummaryIsEmpty":198,"TableSummaryIsNotTooLong":199,"TableUseColGroup":200,"TableUsesAbbreviationForHeader":201,"TableUsesCaption":202,"TableUsesScopeForRow":203,"TabularDataIsInTable":204,"TextIsNotSmall":205,"TextareaHasAssociatedLabel":206,"VideoMayBePresent":207,"VideosEmbeddedOrLinkedNeedCaptions":208,"WhiteSpaceInWord":209,"WhiteSpaceNotUsedForFormatting":210}],36:[function(require,module,exports){
 (function (process,global){
 "use strict";function _typeof(obj){return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol?"symbol":typeof obj;}(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require == "function" && require;if(!u && a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '" + o + "'");throw (f.code = "MODULE_NOT_FOUND",f);}var l=n[o] = {exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e);},l,l.exports,e,t,n,r);}return n[o].exports;}var i=typeof require == "function" && require;for(var o=0;o < r.length;o++) {s(r[o]);}return s;})({1:[function(_dereq_,module,exports){(function(global){"use strict";_dereq_(189);_dereq_(2);if(global._babelPolyfill){throw new Error("only one instance of babel-polyfill is allowed");}global._babelPolyfill = true;}).call(this,typeof global !== "undefined"?global:typeof self !== "undefined"?self:typeof window !== "undefined"?window:{});},{"189":189,"2":2}],2:[function(_dereq_,module,exports){module.exports = _dereq_(190);},{"190":190}],3:[function(_dereq_,module,exports){module.exports = function(it){if(typeof it != 'function')throw TypeError(it + ' is not a function!');return it;};},{}],4:[function(_dereq_,module,exports){ // 22.1.3.31 Array.prototype[@@unscopables]
 var UNSCOPABLES=_dereq_(84)('unscopables'),ArrayProto=Array.prototype;if(ArrayProto[UNSCOPABLES] == undefined)_dereq_(32)(ArrayProto,UNSCOPABLES,{});module.exports = function(key){ArrayProto[UNSCOPABLES][key] = true;};},{"32":32,"84":84}],5:[function(_dereq_,module,exports){var isObject=_dereq_(39);module.exports = function(it){if(!isObject(it))throw TypeError(it + ' is not an object!');return it;};},{"39":39}],6:[function(_dereq_,module,exports){ // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
@@ -5204,9722 +5204,6 @@ process.umask = function() { return 0; };
 },{}],39:[function(require,module,exports){
 'use strict';
 
-var Case = require('Case');
-var AAdjacentWithSameResourceShouldBeCombined = {
-  run: function run(test) {
-
-    function findAdjacent(index, element) {
-      var $element = $(element);
-      // Find all the links
-      var $links = $element.find('a');
-      // Sort them into singletons and coupletons.
-      var $singletons = $();
-      var $coupletons = $();
-
-      $links.each(function (index, link) {
-        var $link = $(link);
-        if ($link.next().is('a')) {
-          $coupletons = $coupletons.add($link);
-        } else {
-          $singletons = $singletons.add($link);
-        }
-      });
-
-      $singletons.each(excludeSingleLinks);
-      $coupletons.each(checkNextLink);
-    }
-
-    function checkNextLink(index, element) {
-      var $element = $(element);
-      var thisHref = element.getAttribute('href');
-      var $nextLink = $element.next();
-      var nextHref = $nextLink[0].getAttribute('href');
-      var status = 'passed';
-      var _case = Case({
-        element: element
-      });
-      if (thisHref === nextHref) {
-        status = 'failed';
-      }
-
-      test.add(_case);
-      _case.set({ status: status });
-    }
-
-    function excludeSingleLinks(index, element) {
-      var _case = Case({ element: element });
-      test.add(_case);
-      _case.set({
-        status: 'inapplicable'
-      });
-    }
-
-    test.get('$scope').each(findAdjacent);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Adjacent links that point to the same location should be merged',
-      nl: 'Voeg naast elkaar gelegen links die naar dezelfde locatie verwijzen samen'
-    },
-    description: {
-      en: 'Because many users of screen-readers use links to navigate the page, providing two links right next to each other that point to the same location can be confusing. Try combining the links.',
-      nl: 'Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Voor hen zijn naast elkaar gelegen links die naar dezelfde locatie verwijzen verwarrend. Probeer de links samen te voegen.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.4': {
-          techniques: ['H2', 'F89']
-        },
-        '2.4.9': {
-          techniques: ['F89']
-        },
-        '4.1.2': {
-          techniques: ['F89']
-        }
-      }
-    },
-    tags: ['link', 'content']
-  }
-};
-module.exports = AAdjacentWithSameResourceShouldBeCombined;
-
-},{"Case":30}],40:[function(require,module,exports){
-'use strict';
-
-var CleanStringComponent = require('CleanStringComponent');
-var Case = require('Case');
-var AImgAltNotRepetitive = {
-  run: function run(test) {
-    test.get('$scope').find('a img[alt]').each(function () {
-      var _case = test.add(Case({
-        element: this
-      }));
-
-      var alt = CleanStringComponent($(this).attr('alt'));
-      var linkText = CleanStringComponent($(this).closest('a').text());
-
-      if (alt.length > 0 && linkText.indexOf(alt) > -1) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'When an image is in a link, its \"alt\" attribute should not repeat other text in the link',
-      nl: 'Als een link een afbeelding bevat, moet het \"alt\"-attribuut niet dezelfde tekst bevatten als de linktekst'
-    },
-    description: {
-      en: 'Images within a link should not have an alt attribute that simply repeats the text found in the link. This will cause screen readers to simply repeat the text twice.',
-      nl: 'Als een link een afbeelding bevat, moet deze afbeelding een andere tekst in het alt-attribuut hebben dan de tekst in de link. Hiermee voorkom je dat een schermlezer dezelfde tekst twee keer voorleest.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['H30']
-        },
-        '2.4.4': {
-          techniques: ['H30']
-        },
-        '2.4.9': {
-          techniques: ['H30']
-        }
-      }
-    },
-    tags: ['link', 'content']
-  }
-};
-module.exports = AImgAltNotRepetitive;
-
-},{"Case":30,"CleanStringComponent":2}],41:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AInPHasADistinctStyle = {
-  run: function run(test) {
-
-    /**
-     * Checks if an element has a border set
-     * @param element
-     * @returns {boolean}
-     */
-    function hasBorder(element) {
-      return element.outerWidth() - element.innerWidth() > 0 || element.outerHeight() - element.innerHeight() > 0;
-    }
-
-    /**
-     * Test if two elements have a distinct style from it's ancestor
-     * @param  {jQuery node} $elm
-     * @param  {jQuery node} $parent
-     * @return {boolean}
-     */
-    function elmHasDistinctStyle($elm, $parent) {
-      var result = false;
-      var styleProperties = ['font-weight', 'font-style'];
-      var textDecoration = $elm.css('text-decoration');
-
-      if (textDecoration !== 'none' && textDecoration !== $parent.css('text-decoration')) {
-        result = true;
-      }
-
-      if ($elm.css('background-color') !== 'rgba(0, 0, 0, 0)') {
-        styleProperties.push('background');
-      }
-
-      $.each(styleProperties, function (i, styleProp) {
-        if (!result && $elm.css(styleProp) !== $parent.css(styleProp)) {
-          result = true;
-        }
-      });
-
-      return result || hasBorder($elm);
-    }
-
-    function elmHasDistinctPosition($elm) {
-      var isBlock = $elm.css('display') === 'block';
-      var position = $elm.css('position');
-      var isPositioned = position !== 'relative' && position !== 'static';
-      return isBlock || isPositioned;
-    }
-
-    // Ignore links where the p only contains white space, <, >, |, \, / and - chars
-    var allowedPText = /^([\s|-]|>|<|\\|\/|&(gt|lt);)*$/i;
-
-    test.get('$scope').each(function () {
-      var $scope = $(this);
-      var anchors = $scope.find('p a[href]:visible');
-
-      anchors.each(function () {
-        var $this = $(this);
-        var $p = $this.closest('p');
-        var $parent = $this.parent();
-
-        var _case = Case({
-          element: this
-        });
-        test.add(_case);
-
-        var aText = $this.text().trim();
-
-        // Get all text of the p element with all anchors removed
-        var pText = $p.clone().find('a[href]').remove().end().text();
-
-        if (aText === '' || pText.match(allowedPText)) {
-          _case.set('status', 'inapplicable');
-        } else if ($this.css('color') === $p.css('color')) {
-          _case.set('status', 'passed');
-        } else if (elmHasDistinctStyle($this, $p)) {
-          _case.set('status', 'passed');
-        } else if (elmHasDistinctPosition($this)) {
-          _case.set('status', 'passed');
-        } else if ($this.find('img').length > 0) {
-          _case.set('status', 'passed');
-        } else if ($parent.text().trim() === aText && elmHasDistinctStyle($parent, $p)) {
-          _case.set('status', 'passed');
-        } else {
-          _case.set('status', 'failed');
-        }
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Links should be have a distinct style inside a p tag',
-      nl: 'Links moeten een afwijkende stijl hebben binnen een paragraaf'
-    },
-    description: {
-      en: '',
-      nl: ''
-    },
-    guidelines: [],
-    tags: ['link', 'content']
-  }
-};
-module.exports = AInPHasADistinctStyle;
-
-},{"Case":30}],42:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var RedundantStringsComponent = require('RedundantStringsComponent');
-var ALinkTextDoesNotBeginWithRedundantWord = {
-  run: function run(test) {
-    test.get('$scope').find('a').each(function () {
-      var self = this;
-      var $link = $(this);
-      var text = '';
-      var $img = $link.find('img[alt]');
-      if ($img.length) {
-        text = text + $img.eq(0).attr('alt');
-      }
-      text = text + $link.text();
-      text = text.toLowerCase();
-      var _case;
-      // Search the text for redundant words. Break as soon as one is detected.
-      for (var i = 0, il = RedundantStringsComponent.link.length; i < il; ++i) {
-        var phrase = RedundantStringsComponent.link[i];
-        if (text.search(phrase) > -1) {
-          _case = test.add(Case({
-            element: self,
-            status: 'failed'
-          }));
-          break;
-        }
-      }
-      // If the case didn't fail, then it passed.
-      if (!_case) {
-        test.add(Case({
-          element: self,
-          status: 'passed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Link text should not begin with redundant text',
-      nl: 'Laat linkteksten niet beginnen met overbodige tekst'
-    },
-    description: {
-      en: 'Link text should not begin with redundant words or phrases like \"link\".',
-      nl: 'Laat linkteksten niet beginnen met overbodige woorden of woordcombinaties als \"link\" of \"klik hier\".'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.9': {
-          techniques: ['F84']
-        }
-      }
-    },
-    tags: ['link', 'content']
-  }
-};
-module.exports = ALinkTextDoesNotBeginWithRedundantWord;
-
-},{"Case":30,"RedundantStringsComponent":18}],43:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ALinkWithNonText = {
-  run: function run(test) {
-    test.get('$scope').find('a').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if (!$(this).is('a:has(img, object, embed)[href]')) {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
-      if (!IsUnreadable($(this).text())) {
-        _case.set({
-          status: 'passed'
-        });
-        return;
-      }
-      var unreadable = 0;
-      $(this).find('img, object, embed').each(function () {
-        if ($(this).is('img') && IsUnreadable($(this).attr('alt')) || !$(this).is('img') && IsUnreadable($(this).attr('title'))) {
-          unreadable++;
-        }
-      });
-      if ($(this).find('img, object, embed').length === unreadable) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    title: {
-      en: 'Links with only non-text content should be readable',
-      nl: 'Links zonder tekstuele content moeten leesbaar zijn'
-    },
-    description: {
-      en: 'If a link contains only non-text content like an image, that content must be readable by assistive technology.',
-      nl: 'Als een link alleen maar niet-tekstuele content bevat zoals een afbeelding, moet deze content leesbaar worden gemaakt door middel van daarvoor geschikte technologie.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.4': {
-          techniques: ['H2', 'F89']
-        },
-        '2.4.9': {
-          techniques: ['F89']
-        },
-        '4.1.2': {
-          techniques: ['F89']
-        }
-      }
-    },
-    tags: ['link', 'content']
-  }
-};
-module.exports = ALinkWithNonText;
-
-},{"Case":30,"IsUnreadable":11}],44:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ALinksAreSeparatedByPrintableCharacters = {
-  run: function run(test) {
-    test.get('$scope').find('a').each(function () {
-      var _case = test.add(Case({
-        element: this
-      }));
-      // Only test if there's another a tag.
-      if ($(this).next('a').length) {
-        if (IsUnreadable($(this).get(0).nextSibling.wholeText)) {
-          _case.set({
-            status: 'failed'
-          });
-        } else {
-          _case.set({
-            status: 'passed'
-          });
-        }
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Lists of links should be seperated by printable characters',
-      nl: 'Lijsten met links moeten gescheiden worden door afdrukbare tekens'
-    },
-    description: {
-      en: 'If a list of links is provided within the same element, those links should be seperated by a non-linked, printable character. Structures like lists are not included in this.',
-      nl: 'Als een rij met links binnen eenzelfde element staat, moeten de links gescheiden zijn door een niet-gelinkt, afdrukbaar teken. Dit geldt niet voor een gestructureerde lijst.'
-    },
-    guidelines: [],
-    tags: ['link', 'content']
-  }
-};
-module.exports = ALinksAreSeparatedByPrintableCharacters;
-
-},{"Case":30,"IsUnreadable":11}],45:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var NewWindowStringsComponent = require('NewWindowStringsComponent');
-var ALinksDontOpenNewWindow = {
-  run: function run(test) {
-    // Links without a target attribute pass.
-    test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function () {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    });
-    // Links with a target attribute pass if the link text indicates that the
-    // link will open a new window.
-    test.get('$scope').find('a[target=_new], a[target=_blank]').each(function () {
-      var $link = $(this);
-      var passes = false;
-      var i = 0;
-      var text = $link.text() + ' ' + $link.attr('title');
-      var phrase = '';
-      // Test the link text against strings the indicate the link will open
-      // in a new window.
-      do {
-        phrase = NewWindowStringsComponent[i];
-        if (text.search(phrase) > -1) {
-          passes = true;
-        }
-        ++i;
-      } while (!passes && i < NewWindowStringsComponent.length);
-      // Build a Case.
-      if (passes) {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Links should not open a new window without warning',
-      nl: 'Met links open je geen nieuw scherm zonder melding'
-    },
-    description: {
-      en: 'Links which open a new window using the \"target\" attribute should warn users.',
-      nl: 'Voordat links door middel van het \"target\"-attribuut een nieuw scherm openen moet de gebruiker een melding hiervan krijgen.'
-    },
-    guidelines: {
-      wcag: {
-        '3.2.5': {
-          techniques: ['H83', 'SCR24']
-        }
-      }
-    },
-    tags: ['link', 'content']
-  }
-};
-module.exports = ALinksDontOpenNewWindow;
-
-},{"Case":30,"NewWindowStringsComponent":15}],46:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var SymbolsStringsComponent = require('SymbolsStringsComponent');
-var ALinksNotSeparatedBySymbols = {
-  run: function run(test) {
-    test.get('$scope').find('a').each(function () {
-      var $link = $(this);
-      if ($link.next('a').length) {
-        var text = $link.get(0).nextSibling.wholeText;
-        // The string between the links is composed of symbols.
-        if (typeof text === 'string' && SymbolsStringsComponent.indexOf(text.toLowerCase().trim()) !== -1) {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        }
-        // The string between the links is composed of words.
-        else {
-            test.add(Case({
-              element: this,
-              status: 'passed'
-            }));
-          }
-      }
-      // If nothing follows the link, then there is nothing to test.
-      else {
-          test.add(Case({
-            element: this,
-            status: 'inapplicable'
-          }));
-        }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Links should not be separated by symbols alone',
-      nl: 'Links mogen niet alleen door symbolen gescheidn worden'
-    },
-    description: {
-      en: 'Since symbols are either not read, or can be confusing when using a screen reader, do not separate links with un-readable symbols.',
-      nl: 'Symbolen worden niet voorgelezen of zijn verwarrend bij het gebruik van een schermlezer. Gebruik geen onleesbare symbolen om links van elkaar te scheiden.'
-    },
-    guidelines: [],
-    tags: ['link', 'content']
-  }
-};
-module.exports = ALinksNotSeparatedBySymbols;
-
-},{"Case":30,"SymbolsStringsComponent":24}],47:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ALinksToMultiMediaRequireTranscript = {
-  run: function run(test) {
-    var selector = ['a[href$=".wmv"]', 'a[href$=".mpg"]', 'a[href$=".mov"]', 'a[href$=".ram"]', 'a[href$=".aif"]'].join(', ');
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      // Inapplicable.
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        // cantTell.
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Any links to a multimedia file should also include a link to a transcript',
-      nl: 'Elke link naar een multimediabestand moet ook een link bevatten naar een transcriptie'
-    },
-    description: {
-      en: 'Links to a multimedia file should be followed by a link to a transcript of the file.',
-      nl: 'Links naar een multimediabestand moeten worden gevolgd door een link naar de transcriptie van dit bestand.'
-    },
-    guidelines: {
-      508: ['c'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['G74']
-        }
-      }
-    },
-    tags: ['link', 'media', 'content']
-  }
-};
-module.exports = ALinksToMultiMediaRequireTranscript;
-
-},{"Case":30}],48:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ALinksToSoundFilesNeedTranscripts = {
-  run: function run(test) {
-
-    var selector = ['a[href$=".wav"]', 'a[href$=".snd"]', 'a[href$=".mp3"]', 'a[href$=".iff"]', 'a[href$=".svx"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".pcm"]', 'a[href$=".aif"]'].join(', ');
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      // Inapplicable.
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        // cantTell.
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Any links to a sound file should also include a link to a transcript',
-      nl: 'Elke link naar een geluidsbestand moet ook een link bevatten naar een transcriptie'
-    },
-    description: {
-      en: 'Links to a sound file should be followed by a link to a transcript of the file.',
-      nl: 'Links naar een geluidsbestand moeten worden gevolgd door een link naar de transcriptie van dit bestand.'
-    },
-    guidelines: {
-      508: ['c'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['G74']
-        }
-      }
-    },
-    tags: ['link', 'media', 'content']
-  }
-};
-module.exports = ALinksToSoundFilesNeedTranscripts;
-
-},{"Case":30}],49:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AMultimediaTextAlternative = {
-  run: function run(test) {
-
-    var selector = ['a[href$=".aif"]', 'a[href$=".iff"]', 'a[href$=".mov"]', 'a[href$=".mp3"]', 'a[href$=".mpg"]', 'a[href$=".ram"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".snd"]', 'a[href$=".svx"]', 'a[href$=".pcm"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".wav"]', 'a[href$=".wmv"]'].join(', ');
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      // Inapplicable.
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        // cantTell.
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    guidelines: [],
-    tags: ['link', 'media', 'content']
-  }
-};
-module.exports = AMultimediaTextAlternative;
-
-},{"Case":30}],50:[function(require,module,exports){
-'use strict';
-
-var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
-var Case = require('Case');
-var AMustContainText = {
-  run: function run(test) {
-    test.get('$scope').find('a').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-
-      if (!$(this).attr('href') || $(this).css('display') === 'none') {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
-
-      if (ContainsReadableTextComponent($(this), true)) {
-        _case.set({
-          status: 'passed'
-        });
-      } else {
-        _case.set({
-          status: 'failed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Links should contain text',
-      nl: 'Links moeten tekst bevatten'
-    },
-    description: {
-      en: 'Because many users of screen-readers use links to navigate the page, providing links with no text (or with images that have empty \"alt\" attributes and no other readable text) hinders these users.',
-      nl: 'Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Links zonder tekst (of met afbeeldingen die een leeg \"alt\"-attribuut hebben en geen andere leesbare tekst) hinderen deze gebruikers.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['H30']
-        },
-        '2.4.4': {
-          techniques: ['H30']
-        },
-        '2.4.9': {
-          techniques: ['H30']
-        },
-        '4.1.2': {
-          techniques: ['H91']
-        }
-      }
-    },
-    tags: ['link', 'content']
-  }
-};
-module.exports = AMustContainText;
-
-},{"Case":30,"ContainsReadableTextComponent":4}],51:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AMustHaveTitle = {
-  run: function run(test) {
-    this.get('$scope').each(function () {
-      var links = $(this).find('a');
-
-      links.each(function (i, link) {
-        // Has a title attribute and that attribute has a value, then pass.
-        var title = $(link).attr('title');
-        if (typeof title === 'string' && title.length > 0) {
-          test.add(Case({
-            element: this,
-            status: 'passed'
-          }));
-        }
-        // Does not have a title attribute or the attribute does not have a value.
-        else if (typeof title === 'undefined' || !title.length) {
-            test.add(Case({
-              element: this,
-              status: 'failed'
-            }));
-          }
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All links must have a \"title\" attribute',
-      nl: 'Alle links moeten een \"title\"-attribuut hebben'
-    },
-    description: {
-      en: 'Every link must have a \"title\" attribute.',
-      nl: 'Zorg ervoor dat elke link is voorzien van een \"title\"-attribuut.'
-    },
-    guidelines: [],
-    tags: ['link', 'content']
-  }
-};
-module.exports = AMustHaveTitle;
-
-},{"Case":30}],52:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var AMustNotHaveJavascriptHref = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var selector = 'a[href^="javascript:"]';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: options.test ? 'inapplicable' : 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Links should not use \"javascript\" in their location',
-      nl: 'Links moeten geen \"javascript\" in hun locatie hebben'
-    },
-    description: {
-      en: 'Anchor (<code>a</code>.  elements may not use the \"javascript\" protocol in their \"href\" attributes.',
-      nl: 'Anchor(<code>a</code>.-elementen mogen geen \"javascript\"protocol in hun \"href\"-attributen hebben staan.'
-    },
-    guidelines: [],
-    tags: ['link', 'content']
-  }
-};
-module.exports = AMustNotHaveJavascriptHref;
-
-},{"Case":30}],53:[function(require,module,exports){
-'use strict';
-
-var CleanStringComponent = require('CleanStringComponent');
-var Case = require('Case');
-var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
-var ASuspiciousLinkText = {
-  run: function run(test) {
-    test.get('$scope').find('a').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if (!$(this).attr('href')) {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
-      var text = $(this).text();
-      $(this).find('img[alt]').each(function () {
-        text = text + $(this).attr('alt');
-      });
-      if (SuspiciousLinksStringsComponent.indexOf(CleanStringComponent(text)) > -1) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Link text should be useful',
-      nl: 'Linkteksten moeten bruikbaar en betekenisvol zijn'
-    },
-    description: {
-      en: 'Because many users of screen-readers use links to navigate the page, providing links with text that simply read \"click here\" gives no hint of the function of the link.',
-      nl: 'Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Links met de tekst \"klik hier\" zijn voor deze gebruikers niet betekenisvol en niet bruikbaar.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['H30']
-        },
-        '2.4.4': {
-          techniques: ['H30']
-        },
-        '2.4.9': {
-          techniques: ['H30']
-        }
-      }
-    },
-    tags: ['link', 'content']
-  }
-};
-module.exports = ASuspiciousLinkText;
-
-},{"Case":30,"CleanStringComponent":2,"SuspiciousLinksStringsComponent":23}],54:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var ATitleDescribesDestination = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var selector = 'a[title]';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: options.test ? 'inapplicable' : 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'The title attribute of all source a (anchor) elements describes the link destination.',
-      nl: 'Het titel-attribuut van alle source a (anchor)-elementen beschrijven de bestemming van de link'
-    },
-    description: {
-      en: 'Every link must have a \"title\" attribute which describes the purpose or destination of the link.',
-      nl: 'Elke link moet een \"title\"-attribuut hebben waarin het doel of de bestemming van de link wordt beschreven.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.9': {
-          techniques: ['H33', 'H25']
-        }
-      }
-    },
-    tags: ['link', 'content']
-  }
-};
-module.exports = ATitleDescribesDestination;
-
-},{"Case":30}],55:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AnimatedGifMayBePresent = {
-  run: function run(test) {
-
-    /**
-     * Test if gif is animated
-     * Implemented from: https://gist.github.com/3012623.git
-     * @param src
-     * @param ext
-     * @param cb
-     */
-    function isAnimatedGif(src, ext, cb) {
-
-      if (ext !== 'gif') {
-        cb(false);
-        return;
-      }
-
-      var request = new XMLHttpRequest();
-      request.open('GET', src, true);
-      request.responseType = 'arraybuffer';
-      request.addEventListener('load', function () {
-        var arr = new Uint8Array(request.response);
-        var frames = 0;
-
-        // make sure it's a gif (GIF8)
-        if (arr[0] !== 0x47 || arr[1] !== 0x49 || arr[2] !== 0x46 || arr[3] !== 0x38) {
-          cb(false);
-          return;
-        }
-
-        // ported from php http://www.php.net/manual/en/function.imagecreatefromgif.php#104473
-        // an animated gif contains multiple "frames", with each frame having a
-        // header made up of:
-        // * a static 4-byte sequence (\x00\x21\xF9\x04)
-        // * 4 variable bytes
-        // * a static 2-byte sequence (\x00\x2C) (some variants may use \x00\x21 ?)
-        // We read through the file til we reach the end of the file, or we've found
-        // at least 2 frame headers
-        for (var i = 0; i < arr.length - 9; i++) {
-          if (arr[i] === 0x00 && arr[i + 1] === 0x21 && arr[i + 2] === 0xF9 && arr[i + 3] === 0x04 && arr[i + 8] === 0x00 && (arr[i + 9] === 0x2C || arr[i + 9] === 0x21)) {
-            frames++;
-          }
-          if (frames > 1) {
-            cb(true);
-            return;
-          }
-        }
-
-        cb(false);
-      });
-      request.send();
-    }
-
-    test.get('$scope').find('img').each(function () {
-
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-
-      var imgSrc = $(this).attr('src');
-      var ext = $(this).attr('src').split('.').pop().toLowerCase();
-
-      if (ext !== 'gif') {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
-
-      isAnimatedGif(imgSrc, ext, function (animated) {
-        if (animated) {
-          _case.set({
-            status: 'cantTell'
-          });
-          return;
-        } else {
-          _case.set({
-            status: 'inapplicable'
-          });
-          return;
-        }
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Test if a .gif is used on the page. Test if the .gif contains more then one frame',
-      nl: 'Test of een .gif afbeelding gebruikt is op de pagina. Test of het .gif bestand uit meer dan één frame bestaat'
-    },
-    description: {
-      en: '',
-      nl: ''
-    },
-    guidelines: [],
-    tags: ['link', 'gif']
-  }
-};
-module.exports = AnimatedGifMayBePresent;
-
-},{"Case":30}],56:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var AppletContainsTextEquivalent = {
-  run: function run(test) {
-    test.get('$scope').find('applet[alt=""], applet:not(applet[alt])').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if (IsUnreadable($(this).text())) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All applets should contain the same content within the body of the applet',
-      nl: 'Alle applets moeten dezelfde content bevatten in de body van de applet'
-    },
-    description: {
-      en: 'Applets should contain their text equivalents or description within the <code>applet</code> tag itself.',
-      nl: 'Applets moeten hun tekstuele equivalent of beschrijving bevatten in de <code>applet</code> tag.'
-    },
-    guidelines: {
-      508: ['m'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['G74', 'H35']
-        }
-      }
-    },
-    tags: ['objects', 'applet', 'content']
-  }
-};
-module.exports = AppletContainsTextEquivalent;
-
-},{"Case":30,"IsUnreadable":11}],57:[function(require,module,exports){
-'use strict';
-
-var PlaceholderComponent = require('PlaceholderComponent');
-var AppletContainsTextEquivalentInAlt = {
-  run: function run(test) {
-    PlaceholderComponent(test, {
-      selector: 'applet',
-      attribute: 'alt',
-      empty: true
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'All applets should contain a text equivalent in the \"alt\" attribute',
-      nl: 'Alle applets moeten een tekstuele equivalent bevatten in het \"alt\"-attribuut'
-    },
-    description: {
-      en: 'Applets should contain their text equivalents or description in an \"alt\" attribute.',
-      nl: 'Applets moeten hun tekstuele equivalent of beschrijving bevatten in een \"alt\"-attribuut.'
-    },
-    guidelines: {
-      508: ['m'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['G74', 'H35']
-        }
-      }
-    },
-    tags: ['objects', 'applet', 'content']
-  }
-};
-module.exports = AppletContainsTextEquivalentInAlt;
-
-},{"PlaceholderComponent":16}],58:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var AppletProvidesMechanismToReturnToParent = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var selector = 'applet';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: options.test ? 'inapplicable' : 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'All applets should provide a way for keyboard users to escape',
-      nl: 'Alle applets moeten door toetsenbordgebruikers kunnen worden verlaten'
-    },
-    description: {
-      en: 'Ensure that a user who has only a keyboard as an input device can escape an <code>applet</code> element. This requires manual confirmation.',
-      nl: 'Zorg ervoor dat gebruikers die alleen het toetsenbord gebruiken als bediening een <code>applet</code>-element kunnen verlaten. Hiervoor is handmatige bevestiging nodig.'
-    },
-    guidelines: [],
-    tags: ['objects', 'applet', 'content']
-  }
-};
-module.exports = AppletProvidesMechanismToReturnToParent;
-
-},{"Case":30}],59:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var AppletTextEquivalentsGetUpdated = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var selector = 'applet';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: options.test ? 'inapplicable' : 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    guidelines: {
-      508: ['m'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['G74', 'H35']
-        }
-      }
-    },
-    tags: ['objects', 'applet', 'content']
-  }
-};
-module.exports = AppletTextEquivalentsGetUpdated;
-
-},{"Case":30}],60:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var AppletUIMustBeAccessible = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var selector = 'applet';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: options.test ? 'inapplicable' : 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Any user interface in an applet must be accessible',
-      nl: 'Elke user interface in een applet moet toegankelijk zijn'
-    },
-    description: {
-      en: 'Applet content should be assessed for accessibility.',
-      nl: 'Content in een applet moet getoetst worden op toegankelijkheid.'
-    },
-    guidelines: {
-      508: ['m'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['G74', 'H35']
-        }
-      }
-    },
-    tags: ['objects', 'applet', 'content']
-  }
-};
-module.exports = AppletUIMustBeAccessible;
-
-},{"Case":30}],61:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var AppletsDoNotFlicker = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var selector = 'applet';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: options.test ? 'inapplicable' : 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'All applets do not flicker',
-      nl: 'Applets knipperen of flitsen niet'
-    },
-    description: {
-      en: 'Applets should not flicker.',
-      nl: 'Geen enkele applet mag knipperen of flitsen.'
-    },
-    guidelines: {
-      508: ['j'],
-      wcag: {
-        '2.2.2': {
-          techniques: ['F7']
-        }
-      }
-    },
-    tags: ['objects', 'applet', 'content']
-  }
-};
-module.exports = AppletsDoNotFlicker;
-
-},{"Case":30}],62:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var AppletsDonotUseColorAlone = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var selector = 'applet';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: options.test ? 'inapplicable' : 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Applets should not use color alone to communicate content',
-      nl: 'Applets mogen niet alleen kleur gebruiken om een boodschap over te brengen'
-    },
-    description: {
-      en: 'Applets should contain content that makes sense without color and is accessible to users who are color blind.',
-      nl: 'Applets moeten content bevatten die ook bruikbaar is zonder kleur en die toegankelijk is voor gebruikers met kleurenblindheid.'
-    },
-    guidelines: {
-      508: ['c']
-    },
-    tags: ['objects', 'applet', 'content']
-  }
-};
-module.exports = AppletsDonotUseColorAlone;
-
-},{"Case":30}],63:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-var $ = require('jquery/dist/jquery');
-
-var AreaAltIdentifiesDestination = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var selector = 'area:not(area[alt])';
-
-    test.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'All \"area\" elements must have an \"alt\" attribute which describes the link destination',
-      nl: 'Alle \"area\"-elementen moeten een \"alt\"-attribuut hebben die de bestemming van de link beschrijft'
-    },
-    description: {
-      en: 'All <code>area</code> elements within a <code>map</code> must have an \"alt\" attribute',
-      nl: 'Alle <code>area</code>-elementen binnen een <code>map</code> moeten een \"alt\"-attribuut hebben.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['G74']
-        }
-      }
-    },
-    tags: ['objects', 'applet', 'content'],
-    options: {
-      test: 'area[alt]'
-    }
-  }
-};
-module.exports = AreaAltIdentifiesDestination;
-
-},{"Case":30,"jquery/dist/jquery":37}],64:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var AreaAltRefersToText = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var selector = 'area';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Alt text for \"area\" elements should replicate the text found in the image',
-      nl: 'Alt-tekst voor \"area\"-elementen moeten de tekst bevatten zoals die ook in de afbeelding staat'
-    },
-    description: {
-      en: 'If an image is being used as a map, and an <code>area</code> encompasses text within the image, then the \"alt\" attribute of that <code>area</code> element should be the same as the text found in the image.',
-      nl: 'Als een afbeelding als kaart wordt gebruikt, en een <code>area</code> bevat tekst binnen de afbeelding, dan moet het \"alt\"-attribuut van dat <code>area</code>-element hetzelfde zijn als de tekst die in de afbeelding staat.'
-    },
-    guidelines: [],
-    tags: ['imagemap', 'content']
-  }
-};
-module.exports = AreaAltRefersToText;
-
-},{"Case":30}],65:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var NewWindowStringsComponent = require('NewWindowStringsComponent');
-
-var AreaDontOpenNewWindow = {
-  run: function run(test) {
-    // Links without a target attribute pass.
-    test.get('$scope').find('area').not('[target=_new], [target=_blank]').each(function () {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    });
-    // Links with a target attribute pass if the link text indicates that the
-    // link will open a new window.
-    test.get('$scope').find('area[target=_new], area[target=_blank]').each(function () {
-      var $link = $(this);
-      var passes = false;
-      var i = 0;
-      var text = $link.text() + ' ' + $link.attr('title');
-      var phrase = '';
-      // Test the link text against strings the indicate the link will open
-      // in a new window.
-      do {
-        phrase = NewWindowStringsComponent[i];
-        if (text.search(phrase) > -1) {
-          passes = true;
-        }
-        ++i;
-      } while (!passes && i < NewWindowStringsComponent.length);
-      // Build a Case.
-      if (passes) {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'No \"area\" elements should open a new window without warning',
-      nl: '\"area\"-elementen mogen geen nieuw scherm openen zonder melding'
-    },
-    description: {
-      en: 'No <code>area</code> elements should open a new window without warning.',
-      nl: '<code>area</code>-elementen mogen geen nieuw scherm openen zonder dat de gebruiker hiervan een melding krijgt.'
-    },
-    guidelines: [],
-    tags: ['imagemap', 'content']
-  }
-};
-module.exports = AreaDontOpenNewWindow;
-
-},{"Case":30,"NewWindowStringsComponent":15}],66:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var AreaHasAltValue = {
-  run: function run(test) {
-
-    var selector = 'area';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (this.hasAttribute('alt') && (this.getAttribute('alt') || '').length > 0) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All \"area\" elements must have an \"alt\" attribute',
-      nl: 'Alle \"area\"-elementen moeten een \"alt\"-attribuut hebben'
-    },
-    description: {
-      en: 'All <code>area</code> elements within a <code>map</code> must have an \"alt\" attribute.',
-      nl: 'Alle <code>area</code>-elementen binnen een <code>map</code> moeten een \"alt\"-attribuut hebben.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['F65', 'G74', 'H24']
-        },
-        '1.4.3': {
-          techniques: ['G145']
-        }
-      }
-    },
-    tags: ['imagemap', 'content'],
-    options: {
-      test: ':not(area[alt])'
-    }
-  }
-};
-module.exports = AreaHasAltValue;
-
-},{"Case":30}],67:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var AreaLinksToSoundFile = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var selector = ['area[href$="wav"]', 'area[href$="snd"]', 'area[href$="mp3"]', 'area[href$="iff"]', 'area[href$="svx"]', 'area[href$="sam"]', 'area[href$="smp"]', 'area[href$="vce"]', 'area[href$="vox"]', 'area[href$="pcm"]', 'area[href$="aif"]'].join(', ');
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All \"area\" elements which link to a sound file should also provide a link to a transcript',
-      nl: 'Alle \"area\"-elementen met een link naar een geluidsbestand moeten ook een link bevatten naar een transcriptie'
-    },
-    description: {
-      en: 'All <code>area</code> elements which link to a sound file should have a text transcript.',
-      nl: 'Alle \"area\"-elementen met een link naar een geluidsbestand moeten een transcriptie hebben in tekst.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['G74']
-        }
-      }
-    },
-    tags: ['imagemap', 'media', 'content']
-  }
-};
-module.exports = AreaLinksToSoundFile;
-
-},{"Case":30}],68:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var AudioMayBePresent = {
-  run: function run(test) {
-    var audioExtensions = ['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];
-
-    test.get('$scope').each(function () {
-      var $this = $(this);
-      var hasCase = false; // Test if a case has been created
-
-      // Audio is definately an audio, and objects could be too.
-      $this.find('object, audio').each(function () {
-        hasCase = true;
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-
-      // Links refering to files with an audio extensions are good indicators too
-      $this.find('a[href]').each(function () {
-        var $this = $(this);
-        var extension = $this.attr('href').split('.').pop();
-        if ($.inArray(extension, audioExtensions) !== -1) {
-          hasCase = true;
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        }
-      });
-
-      // if no case was added, return inapplicable
-      if (!hasCase) {
-        test.add(Case({
-          element: this,
-          status: 'inapplicable'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Audio or object uses a link that points to a file with a video extension',
-      nl: 'Audio of object met een link naar een bestand met een video extensie'
-    },
-    description: {
-      en: '',
-      nl: ''
-    },
-    guidelines: [],
-    tags: ['link', 'audio']
-  }
-};
-module.exports = AudioMayBePresent;
-
-},{"Case":30}],69:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var BasefontIsNotUsed = {
-  run: function run(test) {
-
-    var selector = 'basefont';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Basefont should not be used',
-      nl: 'Basefont moet niet worden gebruikt'
-    },
-    description: {
-      en: 'The <code>basefont</code> tag is deprecated and should not be used. Investigate using stylesheets instead.',
-      nl: 'The <code>basefont</code>-tag is afgekeurd en moet niet worden gebruikt. Gebruik in plaats hiervan stylesheets.'
-    },
-    guidelines: [],
-    tags: ['document', 'deprecated']
-  }
-};
-module.exports = BasefontIsNotUsed;
-
-},{"Case":30}],70:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var BlinkIsNotUsed = {
-  run: function run(test) {
-
-    var selector = 'blink';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The \"blink\" tag should not be used',
-      nl: 'De \"blink\"-tag moet niet worden gebruikt'
-    },
-    description: {
-      en: 'The <code>blink</code> tag should not be used. Ever.',
-      nl: 'Het is nooit toegestaan om de \"blink\"-tag te gebruiken.'
-    },
-    guidelines: {
-      wcag: {
-        '2.2.2': {
-          techniques: ['F47']
-        }
-      }
-    },
-    tags: ['deprecated', 'content']
-  }
-};
-module.exports = BlinkIsNotUsed;
-
-},{"Case":30}],71:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var BlockquoteNotUsedForIndentation = {
-  run: function run(test) {
-
-    var selector = 'blockquote';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-
-          if (this.hasAttribute('cite') && (this.getAttribute('cite') || '').length > 0) {
-            test.add(Case({
-              element: this,
-              status: 'passed'
-            }));
-          } else {
-            test.add(Case({
-              element: this,
-              status: 'cantTell'
-            }));
-          }
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'The \"blockquote\" tag should not be used just for indentation',
-      nl: 'De \"blockquote\"-tag mag niet gebruikt worden om in te springen'
-    },
-    description: {
-      en: 'Blockquote tags are for long-form quotes, and should not be used to indent paragraphs. Use CSS to indent the paragraph instead.',
-      nl: 'Blockquotes zijn bedoeld voor lange stukken geciteerde tekst, en niet om tekst te laten inspringen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['H49']
-        }
-      }
-    },
-    tags: ['blockquote', 'content']
-  }
-};
-module.exports = BlockquoteNotUsedForIndentation;
-
-},{"Case":30}],72:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var BlockquoteUseForQuotations = {
-  run: function run(test) {
-    test.get('$scope').find('p').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if ($(this).parents('blockquote').length > 0) {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
-      if ($(this).text().substr(0, 1).search(/'|"|«|“|「/) > -1 && $(this).text().substr(-1, 1).search(/'|"|»|„|」/) > -1) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'If long quotes are in the document, use the \"blockquote\" element to mark them',
-      nl: 'Gebruik voor lange citaten in het document het \"blockquote\"-element'
-    },
-    description: {
-      en: 'If there is a paragraph or more of a quote, use the blockquote element to mark it as such.',
-      nl: 'Als er een hele alinea of meer alinea\'s zijn van geciteerde tekst, gebruik dan blockquote om deze als zodanig te markeren.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['H49']
-        }
-      }
-    },
-    tags: ['blockquote', 'content']
-  }
-};
-module.exports = BlockquoteUseForQuotations;
-
-},{"Case":30}],73:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var BoldIsNotUsed = {
-  run: function run(test) {
-
-    var selector = 'bold';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The \"b\" (bold) element is not used',
-      nl: 'Het \"b\"-element (bold) wordt niet gebruikt'
-    },
-    description: {
-      en: 'The <code>b</code> (bold) element provides no emphasis for non-sighted readers. Use the <code>strong</code> tag instead.',
-      nl: 'Het <code>b</code>-element voorziet niet in nadruk voor blinde en slechtziende gebruikers. Gebruik de <code>strong</code>-tag instead.'
-    },
-    guidelines: [],
-    tags: ['semantics', 'content']
-  }
-};
-module.exports = BoldIsNotUsed;
-
-},{"Case":30}],74:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var ButtonHasName = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'button',
-      content: 'true',
-      empty: 'true',
-      attribute: 'title'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Button should contain text',
-      nl: 'Een knop moet tekst bevatten'
-    },
-    description: {
-      en: 'Buttons should contain a text value within the element, or have a value attribute.',
-      nl: 'Knoppen moeten een tekstwaarde binnen het element hebben, of een waarde-attribuut.'
-    },
-    guidelines: {
-      wcag: {
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.1.3': {
-          techniques: ['H91']
-        },
-        '4.1.2': {
-          techniques: ['H91']
-        }
-      }
-    },
-    tags: ['content']
-  }
-};
-module.exports = ButtonHasName;
-
-},{"PlaceholderComponent":16}],75:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var LabelComponent = require('LabelComponent');
-
-var CheckboxHasLabel = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'input[type="checkbox"]'
-    };
-    LabelComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All checkboxes must have a corresponding label',
-      nl: 'Alle keuzevakjes moeten een bijbehorend label hebben'
-    },
-    description: {
-      en: 'All <code>input</code> elements with a type of \"checkbox\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
-      nl: 'Alle  <code>input</code>-elementen met een \"keuzevakje\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
-    },
-    guidelines: {
-      508: ['c'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['H44']
-        },
-        '1.3.1': {
-          techniques: ['H44', 'F68']
-        },
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.1.3': {
-          techniques: ['H91']
-        },
-        '3.3.2': {
-          techniques: ['H44']
-        },
-        '4.1.2': {
-          techniques: ['H44', 'H91']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = CheckboxHasLabel;
-
-},{"LabelComponent":12}],76:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var Rainbow = require('RainbowVis-JS/rainbowvis');
-
-var ColorBackgroundGradientContrast = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var colors = ColorComponent.colors;
-    var buildCase = ColorComponent.buildCase;
-    var id = 'colorBackgroundGradientContrast';
-    // Hard-coding this for now. Requires a way to pass options from the test
-    // definitions down to the test functions.
-    options.algorithm = 'wcag';
-    options.gradientSampleMultiplier = 3;
-
-    /**
-     *
-     */
-    function colorBackgroundGradientContrast(test, Case, options, $this, element) {
-      // Check if there's a background gradient using DOM.
-      var failureFound, numberOfSamples;
-      var rainbow = new Rainbow();
-      var backgroundGradientColors = colors.getBackgroundGradient($this);
-
-      if (!backgroundGradientColors) {
-        return;
-      }
-
-      // Convert colors to hex notation.
-      for (var i = 0; i < backgroundGradientColors.length; i++) {
-        if (backgroundGradientColors[i].substr(0, 3) === 'rgb') {
-          backgroundGradientColors[i] = colors.colorToHex(backgroundGradientColors[i]);
-        }
-      }
-
-      // Create a rainbow.
-      rainbow.setSpectrumByArray(backgroundGradientColors);
-      // @todo, make the number of samples configurable.
-      numberOfSamples = backgroundGradientColors.length * options.gradientSampleMultiplier;
-
-      // Check each color.
-      failureFound = false;
-      for (i = 0; !failureFound && i < numberOfSamples; i++) {
-        var testResult = colors.testElmBackground(options.algorithm, $this, '#' + rainbow.colourAt(i));
-
-        if (!testResult) {
-          buildCase(test, Case, element, 'failed', id, 'The background gradient makes the text unreadable');
-          failureFound = true;
-        }
-      }
-
-      // If no failure was found, the element passes for this case type.
-      if (!failureFound) {
-        buildCase(test, Case, element, 'passed', id, 'The background gradient does not affect readability');
-      }
-    }
-
-    test.get('$scope').each(function () {
-
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-      var nodes = [];
-      var textNode = textNodes.iterateNext();
-
-      // Loop has to be separated. If we try to iterate and run testCandidates
-      // the xpath thing will crash because document is being modified.
-      while (textNode) {
-        if (ColorComponent.textShouldBeTested(textNode)) {
-          nodes.push(textNode.parentNode);
-        }
-        textNode = textNodes.iterateNext();
-      }
-
-      if (nodes.length === 0) {
-        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-      }
-
-      nodes.forEach(function (element) {
-        colorBackgroundGradientContrast(test, Case, options, $(element), element);
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All elements should have appropriate color contrast',
-      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
-    },
-    description: {
-      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
-      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
-    },
-    guidelines: {
-      wcag: {
-        '1.4.3': {
-          techniques: ['G18']
-        }
-      }
-    },
-    tags: ['color']
-  }
-};
-module.exports = ColorBackgroundGradientContrast;
-
-},{"Case":30,"ColorComponent":3,"RainbowVis-JS/rainbowvis":210}],77:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var ColorBackgroundImageContrast = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var colors = ColorComponent.colors;
-    var buildCase = ColorComponent.buildCase;
-    var id = 'colorBackgroundImageContrast';
-    // Hard-coding this for now. Requires a way to pass options from the test
-    // definitions down to the test functions.
-    options.algorithm = 'wcag';
-    options.gradientSampleMultiplier = 3;
-
-    /**
-     *
-     */
-    function colorBackgroundImageContrast(test, Case, options, $this, element) {
-      // Check if there's a backgroundImage using DOM.
-      var backgroundImage = colors.getBackgroundImage($this);
-      if (!backgroundImage) {
-        return;
-      }
-
-      var img = document.createElement('img');
-      img.crossOrigin = 'Anonymous';
-
-      // Get average color of the background image. The image must first load
-      // before information about it is available to the DOM.
-      img.onload = function () {
-        var averageColorBackgroundImage = colors.getAverageRGB(img);
-        var testResult = colors.testElmBackground(options.algorithm, $this, averageColorBackgroundImage);
-
-        // Build a case.
-        if (!testResult) {
-          buildCase(test, Case, element, 'failed', id, 'The element\'s background image makes the text unreadable');
-        } else {
-          buildCase(test, Case, element, 'passed', id, 'The element\'s background image does not affect readability');
-        }
-      };
-
-      img.onerror = img.onabort = function () {
-        buildCase(test, Case, element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
-      };
-
-      // Load the image.
-      img.src = backgroundImage;
-    }
-
-    test.get('$scope').each(function () {
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-      var nodes = [];
-      var textNode = textNodes.iterateNext();
-
-      // Loop has to be separated. If we try to iterate and rund testCandidates
-      // the xpath thing will crash because document is being modified.
-      while (textNode) {
-        if (ColorComponent.textShouldBeTested(textNode)) {
-          nodes.push(textNode.parentNode);
-        }
-        textNode = textNodes.iterateNext();
-      }
-
-      if (nodes.length === 0) {
-        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-      }
-
-      nodes.forEach(function (element) {
-        colorBackgroundImageContrast(test, Case, options, $(element), element);
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All elements should have appropriate color contrast',
-      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
-    },
-    description: {
-      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
-      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
-    },
-    guidelines: {
-      wcag: {
-        '1.4.3': {
-          techniques: ['G18']
-        }
-      }
-    },
-    tags: ['color']
-  }
-};
-module.exports = ColorBackgroundImageContrast;
-
-},{"Case":30,"ColorComponent":3}],78:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var Rainbow = require('RainbowVis-JS/rainbowvis');
-
-var ColorElementBehindBackgroundGradientContrast = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var colors = ColorComponent.colors;
-    var buildCase = ColorComponent.buildCase;
-    var id = 'colorElementBehindBackgroundGradientContrast';
-    // Hard-coding this for now. Requires a way to pass options from the test
-    // definitions down to the test functions.
-    options.algorithm = 'wcag';
-    options.gradientSampleMultiplier = 3;
-
-    /**
-     *
-     */
-    function colorElementBehindBackgroundGradientContrast(test, Case, options, $this, element) {
-      // Check if there's a background gradient using element behind current element.
-      var behindGradientColors;
-      var failureFound;
-      var rainbow = new Rainbow();
-      // The option element is problematic.
-      if (!$this.is('option')) {
-        behindGradientColors = colors.getBehindElementBackgroundGradient($this);
-      }
-
-      if (!behindGradientColors) {
-        return;
-      }
-
-      // Convert colors to hex notation.
-      for (var i = 0; i < behindGradientColors.length; i++) {
-        if (behindGradientColors[i].substr(0, 3) === 'rgb') {
-          behindGradientColors[i] = colors.colorToHex(behindGradientColors[i]);
-        }
-      }
-
-      // Create a rainbow.
-      rainbow.setSpectrumByArray(behindGradientColors);
-      var numberOfSamples = behindGradientColors.length * options.gradientSampleMultiplier;
-
-      // Check each color.
-      failureFound = false;
-      for (i = 0; !failureFound && i < numberOfSamples; i++) {
-        failureFound = !colors.testElmBackground(options.algorithm, $this, '#' + rainbow.colourAt(i));
-      }
-
-      // If no failure was found, the element passes for this case type.
-      if (failureFound) {
-        buildCase(test, Case, element, 'failed', id, 'The background gradient of the element behind this element makes the text unreadable');
-      } else {
-        buildCase(test, Case, element, 'passed', id, 'The background gradient of the element behind this element does not affect readability');
-      }
-    }
-
-    test.get('$scope').each(function () {
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-      var nodes = [];
-      var textNode = textNodes.iterateNext();
-
-      // Loop has to be separated. If we try to iterate and rund testCandidates
-      // the xpath thing will crash because document is being modified.
-      while (textNode) {
-        if (ColorComponent.textShouldBeTested(textNode)) {
-          nodes.push(textNode.parentNode);
-        }
-        textNode = textNodes.iterateNext();
-      }
-
-      if (nodes.length === 0) {
-        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-      }
-
-      nodes.forEach(function (element) {
-        colorElementBehindBackgroundGradientContrast(test, Case, options, $(element), element);
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All elements should have appropriate color contrast',
-      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
-    },
-    description: {
-      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
-      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
-    },
-    guidelines: {
-      wcag: {
-        '1.4.3': {
-          techniques: ['G18']
-        }
-      }
-    },
-    tags: ['color']
-  }
-};
-module.exports = ColorElementBehindBackgroundGradientContrast;
-
-},{"Case":30,"ColorComponent":3,"RainbowVis-JS/rainbowvis":210}],79:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var ColorElementBehindBackgroundImageContrast = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var colors = ColorComponent.colors;
-    var buildCase = ColorComponent.buildCase;
-    var id = 'colorElementBehindBackgroundImageContrast';
-    // Hard-coding this for now. Requires a way to pass options from the test
-    // definitions down to the test functions.
-    options.algorithm = 'wcag';
-    options.gradientSampleMultiplier = 3;
-
-    /**
-     *
-     */
-    function colorElementBehindBackgroundImageContrast(test, Case, options, $this, element) {
-      // Check if there's a backgroundImage using element behind current element.
-      var behindBackgroundImage;
-
-      // The option element is problematic.
-      if (!$this.is('option')) {
-        behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
-      }
-
-      if (!behindBackgroundImage) {
-        return;
-      }
-
-      var img = document.createElement('img');
-      img.crossOrigin = 'Anonymous';
-      // The image must first load before information about it is available to
-      // the DOM.
-      img.onload = function () {
-
-        // Get average color of the background image.
-        var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
-        var testResult = colors.testElmBackground(options.algorithm, $this, averageColorBehindBackgroundImage);
-        if (!testResult) {
-          buildCase(test, Case, element, 'failed', id, 'The background image of the element behind this element makes the text unreadable');
-        } else {
-          buildCase(test, Case, element, 'passed', id, 'The background image of the element behind this element does not affect readability');
-        }
-      };
-      img.onerror = img.onabort = function () {
-        buildCase(test, Case, element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
-      };
-      // Load the image.
-      img.src = behindBackgroundImage;
-    }
-
-    test.get('$scope').each(function () {
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-      var nodes = [];
-      var textNode = textNodes.iterateNext();
-
-      // Loop has to be separated. If we try to iterate and rund testCandidates
-      // the xpath thing will crash because document is being modified.
-      while (textNode) {
-        if (ColorComponent.textShouldBeTested(textNode)) {
-          nodes.push(textNode.parentNode);
-        }
-        textNode = textNodes.iterateNext();
-      }
-
-      if (nodes.length === 0) {
-        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-      }
-
-      nodes.forEach(function (element) {
-        colorElementBehindBackgroundImageContrast(test, Case, options, $(element), element);
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All elements should have appropriate color contrast',
-      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
-    },
-    description: {
-      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
-      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
-    },
-    guidelines: {
-      wcag: {
-        '1.4.3': {
-          techniques: ['G18']
-        }
-      }
-    },
-    tags: ['color']
-  }
-};
-module.exports = ColorElementBehindBackgroundImageContrast;
-
-},{"Case":30,"ColorComponent":3}],80:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var ColorElementBehindContrast = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var colors = ColorComponent.colors;
-    var buildCase = ColorComponent.buildCase;
-    var id = 'colorElementBehindContrast';
-    // Hard-coding this for now. Requires a way to pass options from the test
-    // definitions down to the test functions.
-    options.algorithm = 'wcag';
-    options.gradientSampleMultiplier = 3;
-
-    function colorElementBehindContrast(test, Case, options, $this, element) {
-      // Check text and background using element behind current element.
-      var backgroundColorBehind;
-      // The option element is problematic.
-      if (!$this.is('option')) {
-        backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
-      }
-      if (!backgroundColorBehind) {
-        return;
-      }
-
-      var testResult = colors.testElmBackground(options.algorithm, $this, backgroundColorBehind);
-
-      // Build a case.
-      if (!testResult) {
-        buildCase(test, Case, element, 'failed', id, 'The element behind this element makes the text unreadable');
-      } else {
-        buildCase(test, Case, element, 'passed', id, 'The element behind this element does not affect readability');
-      }
-    }
-
-    test.get('$scope').each(function () {
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-      var nodes = [];
-      var textNode = textNodes.iterateNext();
-
-      // Loop has to be separated. If we try to iterate and rund testCandidates
-      // the xpath thing will crash because document is being modified.
-      while (textNode) {
-        if (ColorComponent.textShouldBeTested(textNode)) {
-          nodes.push(textNode.parentNode);
-        }
-        textNode = textNodes.iterateNext();
-      }
-
-      if (nodes.length === 0) {
-        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-      }
-
-      nodes.forEach(function (element) {
-        colorElementBehindContrast(test, Case, options, $(element), element);
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All elements should have appropriate color contrast',
-      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
-    },
-    description: {
-      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
-      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
-    },
-    guidelines: {
-      wcag: {
-        '1.4.3': {
-          techniques: ['G18']
-        }
-      }
-    },
-    tags: ['color']
-  }
-};
-module.exports = ColorElementBehindContrast;
-
-},{"Case":30,"ColorComponent":3}],81:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ColorComponent = require('ColorComponent');
-var ColorFontContrast = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var colors = ColorComponent.colors;
-    var buildCase = ColorComponent.buildCase;
-    var id = 'colorFontContrast';
-    // Hard-coding this for now. Requires a way to pass options from the test
-    // definitions down to the test functions.
-    options.algorithm = 'wcag';
-    options.gradientSampleMultiplier = 3;
-
-    /**
-     *
-     */
-    function colorFontContrast(test, Case, options, $this, element) {
-      // Check text and background color using DOM.
-      // Build a case.
-      if (!colors.testElmContrast(options.algorithm, $this)) {
-        buildCase(test, Case, element, 'failed', id, 'The font contrast of the text impairs readability');
-      } else {
-        buildCase(test, Case, element, 'passed', id, 'The font contrast of the text is sufficient for readability');
-      }
-    }
-
-    test.get('$scope').each(function () {
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
-      var nodes = [];
-      var textNode = textNodes.iterateNext();
-
-      // Loop has to be separated. If we try to iterate and rund testCandidates
-      // the xpath thing will crash because document is being modified.
-      while (textNode) {
-        if (ColorComponent.textShouldBeTested(textNode)) {
-          nodes.push(textNode.parentNode);
-        }
-        textNode = textNodes.iterateNext();
-      }
-
-      if (nodes.length === 0) {
-        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
-      }
-
-      nodes.forEach(function (element) {
-        colorFontContrast(test, Case, options, $(element), element);
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All elements should have appropriate color contrast',
-      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
-    },
-    description: {
-      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
-      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
-    },
-    guidelines: {
-      wcag: {
-        '1.4.3': {
-          techniques: ['G18']
-        }
-      }
-    },
-    tags: ['color']
-  }
-};
-module.exports = ColorFontContrast;
-
-},{"Case":30,"ColorComponent":3}],82:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- *
- * This test did not test anything, so now it just returns untested.
- */
-var Case = require('Case');
-
-var CssDocumentMakesSenseStyleTurnedOff = {
-  run: function run(test) {
-    this.get('$scope').each(function () {
-      test.add(Case({
-        element: undefined,
-        status: 'untested'
-      }));
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'The document must be readable with styles turned off',
-      nl: 'Het document moet leesbaar zijn met stijlen uit'
-    },
-    description: {
-      en: 'With all the styles for a page turned off, the content of the page should still make sense. Try to turn styles off in the browser and see if the page content is readable and clear.',
-      nl: 'Als alle stijlen voor een pagina zijn uitgezet, moet de content van de pagina nog steeds betekenisvol zijn. Zet stijlen uit in de browser en controleer of de content op de pagina nog steeds leesbaar en duidelijk is.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['G140']
-        },
-        '1.4.5': {
-          techniques: ['G140']
-        },
-        '1.4.9': {
-          techniques: ['G140']
-        }
-      }
-    },
-    tags: ['color']
-  }
-};
-module.exports = CssDocumentMakesSenseStyleTurnedOff;
-
-},{"Case":30}],83:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var DefinitionListsAreUsed = {
-  run: function run(test) {
-    test.get('$scope').find('dl').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      _case.set({
-        status: 'inapplicable'
-      });
-    });
-    test.get('$scope').find('p, li').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      var $item = $(this);
-      $(this).find('span, strong, em, b, i').each(function () {
-        if ($(this).text().length < 50 && $item.text().search($(this).text()) === 0) {
-          if ($(this).is('span')) {
-            if ($(this).css('font-weight') === $item.css('font-weight') && $(this).css('font-style') === $item.css('font-style')) {
-              _case.set({
-                status: 'passed'
-              });
-              return;
-            }
-          }
-          _case.set({
-            status: 'failed'
-          });
-        }
-      });
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Use a definition list for defining terms',
-      nl: 'Gebruik een definition list voor definities'
-    },
-    description: {
-      en: 'When providing a list of terms or definitions, use a definition list.',
-      nl: 'Wanneer er gebruik wordt gemaakt van een lijst termen of definities, gebruik hiervoor dan een definition list.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['H48']
-        }
-      }
-    },
-    tags: ['structure']
-  }
-};
-module.exports = DefinitionListsAreUsed;
-
-},{"Case":30}],84:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var DoctypeProvided = {
-  run: function run(test) {
-    var doc = test.get('$scope').get(0);
-    if ($(doc.doctype).length === 0 && !document.doctype) {
-      test.add(Case({
-        element: doc,
-        status: 'failed'
-      }));
-    } else {
-      test.add(Case({
-        element: doc,
-        status: 'passed'
-      }));
-    }
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The document should contain a valid \"doctype\" declaration',
-      nl: 'Het document moet een geldige \"doctype\"-verklaring hebben'
-    },
-    description: {
-      en: 'Each document must contain a valid doctype declaration.',
-      nl: 'Ieder document moet een geldige doctype-verklaring hebben.'
-    },
-    guidelines: [],
-    tags: ['doctype']
-  }
-};
-module.exports = DoctypeProvided;
-
-},{"Case":30}],85:[function(require,module,exports){
-'use strict';
-
-var AcronymComponent = require('AcronymComponent');
-var DocumentAcronymsHaveElement = {
-  run: function run(test) {
-    AcronymComponent(test, 'acronym');
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Acronyms must be marked with an \"acronym\" element',
-      nl: 'Acroniemen moeten worden gemarkeerd met een \"acronym\"-element'
-    },
-    description: {
-      en: 'Acronyms should be marked with an <code>acronym</code> element, at least once on the page for each acronym.',
-      nl: 'Acroniemen moeten worden gemarkeerd door middel van het <code>acronym</code>-element. Doe dit ten minste een keer per pagina voor elke acroniem.'
-    },
-    guidelines: {
-      wcag: {
-        '3.1.4': {
-          techniques: ['H28']
-        }
-      }
-    },
-    tags: ['acronym', 'content']
-  }
-};
-module.exports = DocumentAcronymsHaveElement;
-
-},{"AcronymComponent":1}],86:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var DocumentAutoRedirectNotUsed = {
-  run: function run(test) {
-
-    var selector = 'meta[http-equiv=refresh]';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Auto-redirect with \"meta\" elements must not be used',
-      nl: 'Auto-redirect met \"meta\"-elementen moeten niet worden gebruikt'
-    },
-    description: {
-      en: 'Because different users have different speeds and abilities when it comes to parsing the content of a page, a \"meta-refresh\" method to redirect users can prevent users from fully understanding the document before being redirected.',
-      nl: 'Omdat verschillende gebruikers verschillende snelheden en vaardigheden hebben met het scannen van content op een pagina, kan een \"meta-refresh\"-methode om gebruikers door te sturen hen verhinderen het document volledig te begrijpen voor ze worden doorgestuurd.'
-    },
-    guidelines: [],
-    tags: ['document']
-  }
-};
-module.exports = DocumentAutoRedirectNotUsed;
-
-},{"Case":30}],87:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- *
- * This test did not test anything, so now it just returns untested.
- */
-var Case = require('Case');
-
-var DocumentContentReadableWithoutStylesheets = {
-  run: function run(test) {
-    this.get('$scope').each(function () {
-      test.add(Case({
-        element: undefined,
-        status: 'untested'
-      }));
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Content should be readable without style sheets',
-      nl: 'Content moet zonder stylesheets leesbaar zijn'
-    },
-    description: {
-      en: 'With all the styles for a page turned off, the content of the page should still make sense. Try to turn styles off in the browser and see if the page content is readable and clear.',
-      nl: 'Ook als alle stijlen voor een pagina zijn uitgezet, moet de content van de pagina nog steeds betekenisvol zijn. Zet de stylesheets uit in de browser en controleer of de content nog steeds leesbaar en duidelijk is.'
-    },
-    guidelines: {
-      508: ['d'],
-      wcag: {
-        '1.3.1': {
-          techniques: ['G140']
-        },
-        '1.4.5': {
-          techniques: ['G140']
-        },
-        '1.4.9': {
-          techniques: ['G140']
-        }
-      }
-    },
-    tags: ['document', 'color']
-  }
-};
-module.exports = DocumentContentReadableWithoutStylesheets;
-
-},{"Case":30}],88:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var DocumentHasTitleElement = {
-  run: function run(test) {
-
-    var selector = 'head title';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (candidates.length === 1) {
-        test.add(Case({
-          element: candidates.get(0),
-          status: 'passed'
-        }));
-      } else if (candidates.length === 0) {
-        test.add(Case({
-          element: undefined,
-          status: 'failed'
-        }));
-      } else if (candidates.length > 1) {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The document should have a title element',
-      nl: 'Het document moet een titelelement hebben'
-    },
-    description: {
-      en: 'The document should have a title element.',
-      nl: 'Het document moet een titelelement hebben.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.2': {
-          techniques: ['H25']
-        }
-      }
-    },
-    tags: ['document', 'head']
-  }
-};
-module.exports = DocumentHasTitleElement;
-
-},{"Case":30}],89:[function(require,module,exports){
-'use strict';
-
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var TextStatisticsComponent = require('TextStatisticsComponent');
-var IsUnreadable = require('IsUnreadable');
-var DocumentIsWrittenClearly = {
-  run: function run(test) {
-    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
-      return TextNodeFilterComponent(element);
-    }).each(function () {
-      var text = TextStatisticsComponent.cleanText($(this).text());
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if (IsUnreadable(text)) {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
-      if (Math.round(206.835 - 1.015 * TextStatisticsComponent.averageWordsPerSentence(text) - 84.6 * TextStatisticsComponent.averageSyllablesPerWord(text)) < 60) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'The document should be written to the target audience and read clearly',
-      nl: 'Het document moet geschreven zijn op het niveau van de doelgroep'
-    },
-    description: {
-      en: 'If a document is beyond a 10th grade level, then a summary or other guide should also be provided to guide the user through the content.',
-      nl: 'Als de inhoud van een document moeilijker is dan het vastgestelde taalniveau, moet een samenvatting of andere begeleiding worden toegevoegd om de gebruiker te helpen met de content.'
-    },
-    guidelines: {
-      wcag: {
-        '3.1.5': {
-          techniques: ['G86']
-        }
-      }
-    },
-    tags: ['language', 'content']
-  }
-};
-module.exports = DocumentIsWrittenClearly;
-
-},{"Case":30,"IsUnreadable":11,"TextNodeFilterComponent":25,"TextSelectorComponent":26,"TextStatisticsComponent":27}],90:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
-var DocumentLangIsISO639Standard = {
-  run: function run(test) {
-    var $element = test.get('$scope').is('html') ? test.get('$scope') : test.get('$scope').find('html').first();
-
-    var _case = Case({
-      element: $element[0]
-    });
-
-    var langAttr = $element.attr('lang');
-    var matchedLang = false; // Check to see if a languagecode was matched
-
-    test.add(_case);
-    if (!$element.is('html') || typeof langAttr === 'undefined') {
-      _case.set({
-        status: 'inapplicable'
-      });
-    } else {
-      // Loop over all language codes, checking if the current lang attribute starts
-      // with a value that's in the languageCodes array
-      $.each(LanguageCodesStringsComponent, function (i, currentLangCode) {
-        if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
-          matchedLang = true;
-        }
-      });
-
-      if (!matchedLang) {
-        _case.set({ status: 'failed' });
-      } else if (langAttr.match(/^[a-z]{2}(-[A-Z]{2})?$/) === null) {
-        _case.set({ status: 'failed' });
-      } else {
-        _case.set({ status: 'passed' });
-      }
-    }
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The document\'s language attribute should be a standard code',
-      nl: 'Het language-attribuut van het document moet een standaard code zijn'
-    },
-    description: {
-      en: 'The document should have a default langauge, and that language should use the valid 2 or 3 letter language code according to ISO specification 639.',
-      nl: 'Het document moet een standaardtaal hebben en die taal moet de geldige 2- of 3-letterige taalcode hebben volgens de ISO-specificatie 639.'
-    },
-    guidelines: {
-      wcag: {
-        '3.1.1': {
-          techniques: ['H57']
-        }
-      }
-    },
-    tags: ['document', 'language']
-  }
-};
-module.exports = DocumentLangIsISO639Standard;
-
-},{"Case":30,"LanguageCodesStringsComponent":13}],91:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var DocumentLangNotIdentified = {
-  run: function run(test) {
-    this.get('$scope').each(function () {
-      var lang = 'getAttribute' in this && this.getAttribute('lang');
-      if (lang && lang.length > 1) {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The document must have a \"lang\" attribute',
-      nl: 'Het document moet een \"lang\"-attribuut hebben'
-    },
-    description: {
-      en: 'The document should have a default langauge, by setting the \"lang\" attribute in the <code>html</code> element.',
-      nl: 'Het document moet een standaardtaal hebben, vastgelegd in het \"lang\"-attribuut in het <code>html</code>-element.'
-    },
-    guidelines: [],
-    tags: ['document', 'language']
-  }
-};
-module.exports = DocumentLangNotIdentified;
-
-},{"Case":30}],92:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var DocumentMetaNotUsedWithTimeout = {
-  run: function run(test) {
-
-    var selector = 'meta';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'passed';
-
-          if (this.hasAttribute('http-equiv') && this.getAttribute('http-equiv') === 'refresh') {
-            if (this.hasAttribute('content') && (this.getAttribute('content') || '').length > 0) {
-              status = 'failed';
-            }
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Meta elements must not be used to refresh the content of a page',
-      nl: 'Meta-elementen mogen niet worden gebruikt om content op een pagina te verversen'
-    },
-    description: {
-      en: 'Because different users have different speeds and abilities when it comes to parsing the content of a page, a \"meta-refresh\" method to reload the content of the page can prevent users from having full access to the content. Try to use a \"refresh this\" link instead.',
-      nl: 'Omdat verschillende gebruikers verschillende snelheden en vaardigheden hebben met het scannen van content op een pagina, kan een \"meta-refresh\"-methode om de pagina te herladen gebruikers hinderen in toegang tot de content. Gebruik een \"refresh this\" link hiervoor.'
-    },
-    guidelines: {
-      wcag: {
-        '2.2.1': {
-          techniques: ['F40', 'F41']
-        },
-        '2.2.4': {
-          techniques: ['F40', 'F41']
-        },
-        '3.2.5': {
-          techniques: ['F41']
-        }
-      }
-    },
-    tags: ['document']
-  }
-};
-module.exports = DocumentMetaNotUsedWithTimeout;
-
-},{"Case":30}],93:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var DocumentReadingDirection = {
-  run: function run(test) {
-
-    var selector = ['[lang="he"]', '[lang="ar"]'].join(', ');
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          if (this.hasAttribute('dir') && (this.getAttribute('dir') || '') === 'rtl') {
-            test.add(Case({
-              element: this,
-              status: 'passed'
-            }));
-          } else {
-            test.add(Case({
-              element: this,
-              status: 'failed'
-            }));
-          }
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Reading direction of text is correctly marked',
-      nl: 'De leesrichting van de tekst staat juist aangegeven'
-    },
-    description: {
-      en: 'Where required, the reading direction of the document (for language that read in different directions), or portions of the text, must be declared.',
-      nl: 'Voor talen die een andere leesrichting hebben, moet de leesrichting van (een deel van) de tekst in een document worden opgenomen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.2': {
-          techniques: ['H34']
-        }
-      }
-    },
-    tags: ['document', 'language']
-  }
-};
-module.exports = DocumentReadingDirection;
-
-},{"Case":30}],94:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var DocumentStrictDocType = {
-  run: function run(test) {
-    if (typeof document.doctype === 'undefined' || !document.doctype || document.doctype.systemId.search('strict') === -1) {
-      test.add(Case({
-        element: document,
-        status: 'failed'
-      }));
-    } else {
-      test.add(Case({
-        element: document,
-        status: 'passed'
-      }));
-    }
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The page uses a strict doctype',
-      nl: 'De pagina gebruikt een strikt doctype'
-    },
-    description: {
-      en: 'The doctype of the page or document should be either an HTML or XHTML strict doctype.',
-      nl: 'Het doctype van een pagina of document moet een HTML of XHTML strikt doctype zijn.'
-    },
-    guidelines: [],
-    tags: ['document', 'doctype']
-  }
-};
-module.exports = DocumentStrictDocType;
-
-},{"Case":30}],95:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var DocumentTitleDescribesDocument = {
-  run: function run(test) {
-
-    var selector = 'head title';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      var status = candidates.length === 1 ? 'passed' : 'failed';
-
-      if (candidates.length === 0) {
-        test.add(Case({
-          element: undefined,
-          status: status
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'The title describes the document',
-      nl: 'De titel beschrijft het document'
-    },
-    description: {
-      en: 'The document title should actually describe the page. Often, screen readers use the title to navigate from one window to another.',
-      nl: 'De documenttitel moet een beschrijving zijn van de pagina. Schermlezen gebruiken de titels van pagina\'s om van het ene naar het andere scherm te navigeren.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.2': {
-          techniques: ['F25', 'G88']
-        }
-      }
-    },
-    tags: ['document', 'head']
-  }
-};
-module.exports = DocumentTitleDescribesDocument;
-
-},{"Case":30}],96:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var DocumentTitleIsNotPlaceholder = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'head > title',
-      content: 'true'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The document title should not be placeholder text',
-      nl: 'De documenttitle moet geen placeholder tekst zijn'
-    },
-    description: {
-      en: 'The document title should not be wasted placeholder text which does not describe the page.',
-      nl: 'De documenttitel moet geen placeholder tekst zijn die geen goede beschrijving van de pagina is.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.2': {
-          techniques: ['F25', 'G88']
-        }
-      }
-    },
-    tags: ['document', 'head']
-  }
-};
-module.exports = DocumentTitleIsNotPlaceholder;
-
-},{"PlaceholderComponent":16}],97:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var DocumentTitleIsShort = {
-  run: function run(test) {
-    var $title = test.get('$scope').find('head title');
-    test.add(Case({
-      element: $title.get(0),
-      status: $title.text().length > 150 ? 'failed' : 'passed'
-    }));
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'The document title should be short',
-      nl: 'De documenttitel moet kort zijn'
-    },
-    description: {
-      en: 'The document title should be short and succinct. This test fails at 150 characters, but authors should consider this to be a suggestion.',
-      nl: 'De documenttitel moet kort en beknopt zijn. Probeer bij een titel langer dan 150 tekense de titel in te korten waar mogelijk.'
-    },
-    guidelines: [],
-    tags: ['document', 'head']
-  }
-};
-module.exports = DocumentTitleIsShort;
-
-},{"Case":30}],98:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var DocumentTitleNotEmpty = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'head > title',
-      content: 'true',
-      empty: 'true'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The document should not have an empty title',
-      nl: 'Het document mag geen lege titel hebben'
-    },
-    description: {
-      en: 'The document should have a title element that is not white space.',
-      nl: 'Het document moet een titelelement hebben dat is ingevuld.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.2': {
-          techniques: ['F25', 'H25']
-        }
-      }
-    },
-    tags: ['document', 'head']
-  }
-};
-module.exports = DocumentTitleNotEmpty;
-
-},{"PlaceholderComponent":16}],99:[function(require,module,exports){
-'use strict';
-
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var DocumentVisualListsAreMarkedUp = {
-  run: function run(test) {
-
-    var itemStarters = ['♦', '›', '»', '‣', '▶', '◦', '✓', '◽', '•', '—', '◾', // single characters
-    '-\\D', // dash, except for negative numbers
-    '\\\\', // Just an escaped slash
-    '\\*(?!\\*)', // *, but not ** (which could be a foot note)
-    '\\.\\s', 'x\\s', // characters that should be followed by a space
-    '&bull;', '&#8226;', // HTML entities
-    '[0-9]+\\.', '\\(?[0-9]+\\)', // Numbers: 1., 13., 13), (14)
-    '[\\u25A0-\\u25FF]', // Unicode characters that look like bullets
-    '[IVX]{1,5}\\.\\s' // Roman numerals up to (at least) 27, followed by ". " E.g. II. IV.
-    ];
-
-    var symbols = RegExp('(^|<br[^>]*>)' + // Match the String start or a <br> element
-    '[\\s]*' + // Optionally followed by white space characters
-    '(' + itemStarters.join('|') + ')', // Followed by a character that could indicate a list
-    'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
-
-    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
-      return TextNodeFilterComponent(element);
-    }).each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      var matches = $(this).html().match(symbols);
-      _case.set({
-        status: matches && matches.length > 2 ? 'failed' : 'passed'
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Visual lists of items are marked using ordered or unordered lists',
-      nl: 'Lijsten moeten gemarkeerd worden als ordered of unordered lists'
-    },
-    description: {
-      en: 'Use the ordered (<code>ol</code>) or unordered (<code>ul</code>) elements for lists of items, instead of just using new lines which start with numbers or characters to create a visual list.',
-      nl: 'Gebruik ordered (<code>ol</code>) of unordered (<code>ul</code>) elementen voor lijsten, in plaats van een nieuwe regel per item aan te maken die je laat beginnen met een nummer of teken om een visuele lijst te maken.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['H28', 'H48', 'T2']
-        }
-      }
-    },
-    tags: ['list', 'semantics', 'content']
-  }
-};
-module.exports = DocumentVisualListsAreMarkedUp;
-
-},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],100:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-var $ = require('jquery/dist/jquery');
-
-var DomOrderMatchesVisualOrder = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    $.expr[':'].quailCss = function (obj, index, meta) {
-      var args = meta[3].split(/\s*=\s*/);
-      return $(obj).css(args[0]).search(args[1]) > -1;
-    };
-
-    var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: options.test ? 'inapplicable' : 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Ensure that the visual order of the page matches the DOM',
-      nl: 'Zorg ervoor dat de visuele ordening van de pagina overeenkomt met de DOM'
-    },
-    description: {
-      en: 'When using positioning techniques, make sure that the visual order of the page matches the DOM.',
-      nl: 'Wanneer je gebruik maakt van positioneringstechnieken, zorg er dan voor dat de visuele ordening van de pagina overeenkomt met de DOM.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.2': {
-          techniques: ['C27']
-        },
-        '2.4.3': {
-          techniques: ['C27']
-        }
-      }
-    },
-    tags: ['content']
-  }
-};
-module.exports = DomOrderMatchesVisualOrder;
-
-},{"Case":30,"jquery/dist/jquery":37}],101:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var EmbedHasAssociatedNoEmbed = {
-  run: function run(test) {
-    test.get('$scope').find('embed').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      _case.set({
-        status: $(this).find('noembed').length || $(this).next().is('noembed') ? 'passed' : 'failed'
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All \"embed\" elements have an associated \"noembed\" element',
-      nl: 'Alle \"embed\" elementen moeten een bijbehorend \"noembed\"-element hebben'
-    },
-    description: {
-      en: 'Because some users cannot use the <code>embed</code> element, provide alternative content in a <code>noembed</code> element.',
-      nl: 'Sommige gebruikers kunnen het <code>embed</code>-element niet gebruiken. Biedt hiervoor alternatieve content aan in een <code>noembed</code>-element.'
-    },
-    guidelines: [],
-    tags: ['object', 'embed', 'content']
-  }
-};
-module.exports = EmbedHasAssociatedNoEmbed;
-
-},{"Case":30}],102:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var EmbedMustHaveAltAttribute = {
-  run: function run(test) {
-
-    var selector = 'embed';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-          var alt = this.getAttribute('alt');
-          if (alt && typeof alt === 'string' && alt.length > 0) {
-            status = 'passed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: '\"Embed\" elements must have an \"alt\" attribute',
-      nl: '\"Embed\"-elementen moeten een \"alt\"-attribuut hebben'
-    },
-    description: {
-      en: 'All <code>embed</code> elements must have an \"alt\" attribute.',
-      nl: 'Alle <code>embed</code>-elementen moeten een \"alt\"-attribuut hebben.'
-    },
-    guidelines: [],
-    tags: ['object', 'embed', 'content']
-  }
-};
-module.exports = EmbedMustHaveAltAttribute;
-
-},{"Case":30}],103:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var FieldsetHasLabel = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    var selector = 'fieldset:not(fieldset:has(legend))';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: options.test ? 'inapplicable' : 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Fieldsets require a label element',
-      nl: 'Fieldsets behoeven een label-element'
-    },
-    description: {
-      en: 'Fieldsets used to group similar form elements like checkboxes should have a label that describes the group of elements.',
-      nl: 'Fieldsets die een groep gelijkwaardige elementen bevatten moeten een label hebben die deze groep elementen beschrijft.'
-    },
-    guidelines: {
-      wcag: {
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.1.3': {
-          techniques: ['H91']
-        },
-        '4.1.2': {
-          techniques: ['H91']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = FieldsetHasLabel;
-
-},{"Case":30}],104:[function(require,module,exports){
-'use strict';
-
-/**
- * Test for a label associated with a file input element.
- */
-var Case = require('Case');
-
-var FileHasLabel = {
-  run: function run(test) {
-
-    var sFiles = '[type="file"]';
-    var sLabels = 'label';
-
-    function countOfLabelsById(id, labels) {
-      // Map labels by for attribute value.
-      var labelsByFor = 0;
-      for (var i = 0, il = labels.length; i < il; ++i) {
-        var $label = labels.eq(i);
-        if ($label.attr('for') === id) {
-          labelsByFor++;
-        }
-      }
-      return labelsByFor;
-    }
-
-    this.get('$scope').each(function () {
-      var $scope = $(this);
-      var files = $scope.find(sFiles);
-      var labels = $scope.find(sLabels);
-
-      if (files.length === 0) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        files.each(function () {
-          var $file = $(this);
-          var status = 'failed';
-
-          // Check for an associated label.
-          var id = $file.attr('id');
-          if (id) {
-            var labelCount = countOfLabelsById(id, labels);
-            if (labelCount === 1) {
-              status = 'passed';
-            }
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All \"file\" input elements have a corresponding label',
-      nl: 'Alle \"file\"-invoerelementen hebben een bijbehorend label'
-    },
-    description: {
-      en: 'All <code>input</code> elements of type \"file\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user.',
-      nl: 'Alle <code>input</code>-elementen van het type \"file\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
-    },
-    guidelines: {
-      508: ['n'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['H44']
-        },
-        '1.3.1': {
-          techniques: ['H44', 'F68']
-        },
-        '3.3.2': {
-          techniques: ['H44']
-        },
-        '4.1.2': {
-          techniques: ['H44']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = FileHasLabel;
-
-},{"Case":30}],105:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var FontIsNotUsed = {
-  run: function run(test) {
-
-    var selector = 'font';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Font elements should not be used',
-      nl: 'Het font element moet niet worden gebruikt'
-    },
-    description: {
-      en: 'The <code>basefont</code> tag is deprecated and should not be used. Investigate using stylesheets instead.',
-      nl: 'De <code>basefont</code>-tag is afgekeurd en moet niet worden gebruikt. Gebruik in plaats hiervan stylesheets.'
-    },
-    guidelines: [],
-    tags: ['deprecated', 'content']
-  }
-};
-module.exports = FontIsNotUsed;
-
-},{"Case":30}],106:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var FormButtonsHaveValue = {
-  run: function run(test) {
-
-    var selector = 'input[type=button], input[type=submit], input[type=reset]';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-
-          // If the button has a value, it passes.
-          var val = this.getAttribute('value');
-          if (val && typeof val === 'string' && val.length > 0) {
-            status = 'passed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Input elements for button, submit, or reset must have a value attribute',
-      nl: 'Invoerelementen voor knoppen, indienen of resetten moeten een waarde-attribuut hebben'
-    },
-    description: {
-      en: 'Any form element that is rendered as a button has to have a readable value attribute.',
-      nl: 'Elk invoerelement dat eruit ziet als een knop moet een leesbaar waarde-attribuut hebben.'
-    },
-    guidelines: {
-      wcag: {
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.1.3': {
-          techniques: ['H91']
-        },
-        '4.1.2': {
-          techniques: ['H91']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = FormButtonsHaveValue;
-
-},{"Case":30}],107:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var FormErrorMessageHelpsUser = {
-  run: function run(test) {
-
-    var selector = 'form';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Forms offer the user a way to check the results of their form before performing an irrevocable action',
-      nl: 'Formulieren bieden gebruikers de gelegenheid om hun formulier te controleren voor ze een onomkeerbare actie uitvoeren'
-    },
-    description: {
-      en: 'If the form allows users to perform some irrevocable action, like ordreing a product, ensure that users have the ability to review the contents of the form they submitted first. This is not something that can be checked through automated testing and requires manual confirmation.',
-      nl: 'Als een formulier een gebruiker toestaat om een onomkeerbare actie uit te voeren, zoals het bestellen van een product, zorg er dan voor dat ze eerst het formulier kunnen controleren. Dit kan niet met een automatische test en moet handmatig gecontroleerd en bevestigd worden.'
-    },
-    guidelines: [],
-    tags: ['form', 'content']
-  }
-};
-module.exports = FormErrorMessageHelpsUser;
-
-},{"Case":30}],108:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var FormHasGoodErrorMessage = {
-  run: function run(test) {
-
-    var selector = 'form';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Form error messages should assist in solving errors',
-      nl: 'Foutmeldingen in formulieren moeten fouten helpen oplossen'
-    },
-    description: {
-      en: 'If the form has some required fields or other ways in which the user can commit an error, check that the reply is accessible. Use the words \"required\" or \"error\" within the <code>label</code> element of input items where the errors happened.',
-      nl: 'Als het formulier verplichte velden heeft of op andere manier verkeerd ingevuld kan worden, controleer dan of de bijbehorende foutmelding begrijpelijk is. Gebruik de woorden \"required\" of \"error\" in het <code>label</code>-element of in de invoeritems waar de fout is opgetredenitems where the errors happened.'
-    },
-    guidelines: [],
-    tags: ['form', 'content']
-  }
-};
-module.exports = FormHasGoodErrorMessage;
-
-},{"Case":30}],109:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var FormHasSubmitButton = {
-  run: function run(test) {
-
-    var selector = 'input[type=submit], button[type=submit]';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find('form');
-
-      if (candidates.length === 0) {
-        test.add(Case({
-          element: this,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var submitButton = $(this).find(selector);
-
-          var status = submitButton.length === 1 ? 'passed' : 'failed';
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Form should have a submit button',
-      nl: 'Formulieren moeten een indienknop hebben'
-    },
-    description: {
-      en: 'Forms should have a button that allows the user to select when they want to submit the form.',
-      nl: 'Formulieren moeten een knop hebben waarmee de gebruiker kan bepalen wanneer zij een formulieren willen versturen.'
-    },
-    guidelines: {
-      wcag: {
-        '3.2.2': {
-          techniques: ['H32', 'G80']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = FormHasSubmitButton;
-
-},{"Case":30}],110:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var RedundantStringsComponent = require('RedundantStringsComponent');
-var FormWithRequiredLabel = {
-  run: function run(test) {
-    var redundant = RedundantStringsComponent;
-    var lastStyle,
-        currentStyle = false;
-    redundant.required[redundant.required.indexOf('*')] = /\*/g;
-    test.get('$scope').each(function () {
-      var $local = $(this);
-      $local.find('label').each(function () {
-        var text = $(this).text().toLowerCase();
-        var $label = $(this);
-        var _case = test.add(Case({
-          element: this
-        }));
-        for (var word in redundant.required) {
-          if (text.search(word) >= 0 && !test.get('$scope').find('#' + $label.attr('for')).attr('aria-required')) {
-            _case.set({
-              status: 'failed'
-            });
-          }
-        }
-        currentStyle = $label.css('color') + $label.css('font-weight') + $label.css('background-color');
-        if (lastStyle && currentStyle !== lastStyle) {
-          _case.set({
-            status: 'failed'
-          });
-        }
-        lastStyle = currentStyle;
-        if (typeof _case.get('status') === 'undefined') {
-          _case.set({
-            status: 'passed'
-          });
-        }
-      });
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Input items which are required are marked as so in the label element',
-      nl: 'Invoervelden die verplicht zijn, zijn zo gemarkeerd in het label-element'
-    },
-    description: {
-      en: 'If a form element is required, it should be marked as so. This should not be a mere red asterisk, but instead either a \'required\' image with alt text of \"required\" or the actual text \"required\". The indicator that an item is required should be included in the input element\'s <code>label</code> element.',
-      nl: 'Als een formulierveld verplicht is, moet het ook zichtbaar zijn. Doe dit niet alleen met een asterisk achter het veld, maar met bijvoorbeeld een afbeelding met als alttekst \"required\" of de tekst \"required\". De indicatie dat een veld verplicht is moet opgenomen zijn in het <code>label</code>-element van het invoerveld.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['ARIA2']
-        },
-        '1.4.1': {
-          techniques: ['F81']
-        },
-        '3.3.2': {
-          techniques: ['ARIA2', 'H90']
-        },
-        '3.3.3': {
-          techniques: ['ARIA2']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = FormWithRequiredLabel;
-
-},{"Case":30,"RedundantStringsComponent":18}],111:[function(require,module,exports){
-'use strict';
-
-var HeadingLevelComponent = require('HeadingLevelComponent');
-var HeaderH1 = {
-  run: function run(test) {
-    HeadingLevelComponent(test, {
-      headingLevel: 1
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'The header following an h1 is not h3 through h6',
-      nl: 'De header die volgt op een h1 is niet h3 tot h6'
-    },
-    description: {
-      en: 'Header order should not skip a level. Do not follow a <code>h1</code> header with a <code>h3</code>, <code>h4</code>, <code>h5</code>, or <code>h6</code>.',
-      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h1</code>-header niet volgen door een <code>h3</code>, <code>h4</code>, <code>h5</code>, of <code>h6</code>.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.6': {
-          techniques: ['G130']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeaderH1;
-
-},{"HeadingLevelComponent":9}],112:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var HeaderH1Format = {
-  run: function run(test) {
-
-    var selector = 'h1';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'All h1 elements are not used for formatting',
-      nl: 'H1-elementen worden niet gebruikt voor formatting'
-    },
-    description: {
-      en: 'An <code>h1</code> element may not be used purely for formatting.',
-      nl: 'Een <code>h1</code>-element mag niet alleen gebruikt worden voor formatting.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['T3']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeaderH1Format;
-
-},{"Case":30}],113:[function(require,module,exports){
-'use strict';
-
-var HeadingLevelComponent = require('HeadingLevelComponent');
-var HeaderH2 = {
-  run: function run(test) {
-    HeadingLevelComponent(test, {
-      headingLevel: 2
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'The header following an h2 is not h4, h5, or h6',
-      nl: 'De header volgend op een h2 is geen h4, h5, of h6'
-    },
-    description: {
-      en: 'Header order should not skip a level. Do not follow a <code>h2</code> header with a <code>h4</code>, <code>h5</code>, or <code>h6</code>.',
-      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h2</code>-header niet volgen door een <code>h4</code>, <code>h5</code>, of <code>h6</code>.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.6': {
-          techniques: ['G130']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeaderH2;
-
-},{"HeadingLevelComponent":9}],114:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var HeaderH2Format = {
-  run: function run(test) {
-
-    var selector = 'h2';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'All h2 elements are not used for formatting',
-      nl: 'H2-elementen worden niet gebruikt voor formatting'
-    },
-    description: {
-      en: 'An <code>h2</code> element may not be used purely for formatting.',
-      nl: 'Een <code>h2</code>-element mag niet alleen gebruikt worden voor formatting.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['T3']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeaderH2Format;
-
-},{"Case":30}],115:[function(require,module,exports){
-'use strict';
-
-var HeadingLevelComponent = require('HeadingLevelComponent');
-var HeaderH3 = {
-  run: function run(test) {
-    HeadingLevelComponent(test, {
-      headingLevel: 3
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'The header following an h3 is not an h5 or h6',
-      nl: 'De header volgend op een h3 is geen h5, of h6'
-    },
-    description: {
-      en: 'Header order should not skip a level. Do not follow a <code>h3</code> header with a <code>h5<code> or <code>h6</code>.',
-      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h3</code>-header niet volgen door een <code>h5</code>, of <code>h6</code>.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.6': {
-          techniques: ['G130']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeaderH3;
-
-},{"HeadingLevelComponent":9}],116:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var HeaderH3Format = {
-  run: function run(test) {
-
-    var selector = 'h3';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'All h3 elements are not used for formatting',
-      nl: 'H3-elementen worden niet gebruikt voor formatting'
-    },
-    description: {
-      en: 'An <code>h3</code> element may not be used purely for formatting.',
-      nl: 'Een <code>h3</code>-element mag niet alleen gebruikt worden voor formatting.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['T3']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeaderH3Format;
-
-},{"Case":30}],117:[function(require,module,exports){
-'use strict';
-
-var HeadingLevelComponent = require('HeadingLevelComponent');
-var HeaderH4 = {
-  run: function run(test) {
-    HeadingLevelComponent(test, {
-      headingLevel: 4
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'The header following an h4 is not an h6',
-      nl: 'De header volgend op een h4 is geen h6'
-    },
-    description: {
-      en: 'Header order should not skip a level. Do not follow a <code>h4</code> haeder with a <code>h6</code>.',
-      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h4/code> header niet volgen door een <code>h6</code>.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.6': {
-          techniques: ['G130']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeaderH4;
-
-},{"HeadingLevelComponent":9}],118:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var HeaderH4Format = {
-  run: function run(test) {
-
-    var selector = 'h4';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'All h4 elements are not used for formatting',
-      nl: 'H4-elementen worden niet gebruikt voor formatting'
-    },
-    description: {
-      en: 'An <code>h4</code> element may not be used purely for formatting.',
-      nl: 'Een <code>h4</code>-element mag niet alleen gebruikt worden voor formatting.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['T3']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeaderH4Format;
-
-},{"Case":30}],119:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var HeaderH5Format = {
-  run: function run(test) {
-
-    var selector = 'h5';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'All h5 elements are not used for formatting',
-      nl: 'H5-elementen worden niet gebruikt voor formatting'
-    },
-    description: {
-      en: 'An <code>h5</code> element may not be used purely for formatting.',
-      nl: 'Een <code>h5</code>-element mag niet alleen gebruikt worden voor formatting.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['T3']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeaderH5Format;
-
-},{"Case":30}],120:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var HeaderH6Format = {
-  run: function run(test) {
-
-    var selector = 'h6';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'All h6 elements are not used for formatting',
-      nl: 'H6-elementen worden niet gebruikt voor formatting'
-    },
-    description: {
-      en: 'An <code>h6</code> element may not be used purely for formatting.',
-      nl: 'Een <code>h6</code>-element mag niet alleen gebruikt worden voor formatting.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['T3']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeaderH6Format;
-
-},{"Case":30}],121:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var HeadersAttrRefersToATableCell = {
-  run: function run(test) {
-    // Table cell headers without referred ids
-    test.get('$scope').find('table').each(function () {
-      var self = this;
-      var _case = Case();
-      test.add(_case);
-      var elmHeaders = $(self).find('th[headers], td[headers]');
-
-      if (elmHeaders.length === 0) {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      } else {
-        elmHeaders.each(function () {
-          var that = this;
-          var headers = $(this).attr('headers').split(/\s+/);
-          $.each(headers, function (index, item) {
-            if (item === '' || $(self).find('th#' + item + ',td#' + item).length > 0) {
-              _case.set({
-                element: that,
-                status: 'passed'
-              });
-              return;
-            } else {
-              _case.set({
-                element: that,
-                status: 'failed'
-              });
-              return;
-            }
-          });
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Table cell headers attrtibutes must within the same table have an associated data cell with the same id',
-      nl: 'Tabel cellen met een headers attribuut moeten binnen dezelfde tabel een overeenkomende data cel hebben in het id attribuut dezelfde waarde'
-    },
-    description: {
-      en: '',
-      nl: ''
-    },
-    guidelines: [],
-    tags: ['headers', 'td', 'th']
-  }
-};
-module.exports = HeadersAttrRefersToATableCell;
-
-},{"Case":30}],122:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var HeadersHaveText = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'h1, h2, h3, h4, h5, h6',
-      content: 'true',
-      empty: 'true'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All headers should contain readable text',
-      nl: 'Alle headers moeten leesbare tekst bevatten'
-    },
-    description: {
-      en: 'Users with screen readers use headings like the tabs <em>h1</em> to navigate the structure of a page. All headings should contain either text, or images with appropriate <em>alt</em> attributes.',
-      nl: 'Gebruikers van schermlezers gebruiken headers om via de structuur van een pagina te navigeren. Alle headers moeten daarom tekst bevatten of afbeeldingen met toepasselijk <em>alt</em>-attributen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['G141']
-        },
-        '2.4.10': {
-          techniques: ['G141']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeadersHaveText;
-
-},{"PlaceholderComponent":16}],123:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var HeadersUseToMarkSections = {
-  run: function run(test) {
-    test.get('$scope').find('p').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      var $paragraph = $(this);
-      $paragraph.find('strong:first, em:first, i:first, b:first').each(function () {
-        _case.set({
-          status: $paragraph.text().trim() === $(this).text().trim() ? 'failed' : 'passed'
-        });
-      });
-    });
-
-    test.get('$scope').find('ul, ol').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      var $list = $(this);
-      if ($list.prevAll(':header').length || $list.find('li').length !== $list.find('li:has(a)').length) {
-        _case.set({
-          status: 'passed'
-        });
-        return;
-      }
-      var isNavigation = true;
-      $list.find('li:has(a)').each(function () {
-        if ($(this).text().trim() !== $(this).find('a:first').text().trim()) {
-          isNavigation = false;
-        }
-      });
-      if (isNavigation) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Use headers to mark the beginning of each section',
-      nl: 'Gebruik headers om de start van elke sectie aan te geven.'
-    },
-    description: {
-      en: 'Check that each logical section of the page is broken or introduced with a header (h1-h6) element.',
-      nl: 'Controleer dat elke logische sectie van een pagina wordt onderbroken door of start met een header-element (h1-h6).'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['G141']
-        },
-        '2.4.1': {
-          techniques: ['G141', 'H69']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = HeadersUseToMarkSections;
-
-},{"Case":30}],124:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var IIsNotUsed = {
-  run: function run(test) {
-
-    var selector = 'i';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The \"i\" (italic) element is not used',
-      nl: 'Het \"i\"-element (cursief) wordt niet gebruikt'
-    },
-    description: {
-      en: 'The <code>i</code> (italic) element provides no emphasis for non-sighted readers. Use the <code>em</code> tag instead.',
-      nl: 'Het <code>i</code>-element biedt geen nadruk voor slechtziende en blinde lezers. Gebruik in plaats daarvan de <code>em</code>-tag.'
-    },
-    guidelines: [],
-    tags: ['deprecated', 'content']
-  }
-};
-module.exports = IIsNotUsed;
-
-},{"Case":30}],125:[function(require,module,exports){
-'use strict';
-
-function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
-var Case = require('Case');
-var IdrefsHasCorrespondingId = {
-  run: function run(test) {
-
-    function getAttribute($element) {
-      var attribute = [];
-      var attributeList = ['headers', 'aria-controls', 'aria-describedby', 'aria-flowto', 'aria-labelledby', 'aria-owns'];
-
-      $.each(attributeList, function (index, item) {
-
-        var attr = $element.attr(item);
-
-        if ((typeof attr === 'undefined' ? 'undefined' : _typeof(attr)) !== (typeof undefined === 'undefined' ? 'undefined' : _typeof(undefined)) && attr !== false) {
-          attribute = attr;
-          return;
-        }
-      });
-      return attribute.split(/\s+/);
-    }
-
-    test.get('$scope').each(function () {
-      var testableElements = $(this).find('td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], ' + '[aria-labelledby], [aria-owns]');
-
-      if (testableElements.length === 0) {
-        test.add(Case({
-          element: this,
-          status: 'inapplicable'
-        }));
-        return;
-      } else {
-        testableElements.each(function () {
-          var _case = test.add(Case({
-            element: this
-          }));
-
-          var attributes = getAttribute($(this));
-          var status = 'passed';
-
-          $.each(attributes, function (index, item) {
-            if (item !== '' && $('#' + item).length === 0) {
-              status = 'failed';
-              return;
-            }
-          });
-
-          _case.set({
-            status: status
-          });
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Elements with an idref attribute must correspond to an element with an ID',
-      nl: 'Elementen met een idref-attribuut moeten corresponderen met een element met een ID'
-    },
-    description: {
-      en: '',
-      nl: ''
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['F17']
-        },
-        '4.1.1': {
-          techniques: ['F17']
-        }
-      }
-    }
-  }
-};
-module.exports = IdrefsHasCorrespondingId;
-
-},{"Case":30}],126:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var IframeMustNotHaveLongdesc = {
-  run: function run(test) {
-
-    var selector = 'iframe';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'passed';
-
-          if (this.hasAttribute('longdesc')) {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Inline frames (\"iframes\") should not have a \"longdesc\" attribute',
-      nl: 'Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut'
-    },
-    description: {
-      en: 'Inline frames (iframe) should not have a \"longdesc\" attribute.',
-      nl: 'Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut.'
-    },
-    guidelines: [],
-    tags: ['objects', 'iframe', 'content']
-  }
-};
-module.exports = IframeMustNotHaveLongdesc;
-
-},{"Case":30}],127:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var ImageMapServerSide = {
-  run: function run(test) {
-
-    var selector = 'img';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'passed';
-
-          if (this.hasAttribute('ismap')) {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All links in a server-side map should have duplicate links available in the document',
-      nl: 'Alle links in een server-side map moeten elders in het document terugkeren'
-    },
-    description: {
-      en: 'Any image with an \"usemap\" attribute for a server-side image map should have the available links duplicated elsewhere.',
-      nl: 'Elke afbeelding met een \"usemap\"-attribuut voor een server-side map moet de beschikbare links ook elders hebben.'
-    },
-    guidelines: [],
-    tags: ['objects', 'iframe', 'content']
-  }
-};
-module.exports = ImageMapServerSide;
-
-},{"Case":30}],128:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ImgAltIsDifferent = {
-  run: function run(test) {
-    test.get('$scope').find('img:not([src])').each(function () {
-      var _case = Case({
-        element: this,
-        status: 'inapplicable'
-      });
-      test.add(_case);
-    });
-    test.get('$scope').find('img[alt][src]').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if ($(this).attr('src') === $(this).attr('alt') || $(this).attr('src').split('/').pop() === $(this).attr('alt')) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Image \"alt\" attributes should not be the same as the filename',
-      nl: '\"Alt\"-attributen van afbeeldingen moeten niet hetzelfde zijn als de bestandsnaam'
-    },
-    description: {
-      en: 'All <code>img</code> elements should have an \"alt\" attribute that is not just the name of the file',
-      nl: 'Alle <code>img</code>-elementen moeten een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam van de afbeelding.'
-    },
-    guidelines: {
-      508: ['a'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['H37']
-        }
-      }
-    },
-    tags: ['image', 'content']
-  }
-};
-module.exports = ImgAltIsDifferent;
-
-},{"Case":30}],129:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ImgAltIsTooLong = {
-  run: function run(test) {
-    test.get('$scope').find('img[alt]').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      _case.set({
-        status: $(this).attr('alt').length > 100 ? 'failed' : 'passed'
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Image Alt text is too long',
-      nl: 'Altteksten voor een afbeelding zijn kort'
-    },
-    description: {
-      en: 'All \"alt\" attributes for <code>img</code> elements should be clear and concise. \"Alt\" attributes over 100 characters long should be reviewed to see if they are too long.',
-      nl: 'Alle \"alt\"-attributen voor <code>img</code>-elementen moeten duidelijk en bondig zijn. Verifieer \"alt\"-attributen langer dan 100 tekens en kort ze in waar mogelijk.'
-    },
-    guidelines: {
-      508: ['a'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['H37']
-        }
-      }
-    },
-    tags: ['image', 'content']
-  }
-};
-module.exports = ImgAltIsTooLong;
-
-},{"Case":30}],130:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ImgAltNotEmptyInAnchor = {
-  run: function run(test) {
-    test.get('$scope').find('a[href]:has(img)').each(function () {
-      var $a = $(this);
-      var text = $a.text();
-
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-
-      // Concat all alt attributes of images to the text of the paragraph
-      $a.find('img[alt]').each(function () {
-        text += ' ' + $(this).attr('alt');
-      });
-
-      if (IsUnreadable(text)) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'An image within a link cannot have an empty \"alt\" attribute if there is no other text within the link',
-      nl: 'Een afbeelding binnen een link mag geen leeg \"alt\"-attribuut hebben als er geen andere tekst is in de link'
-    },
-    description: {
-      en: 'Any image that is within a link (an <code>a</code> element) that has no other text cannot have an empty or missing \"alt\" attribute.',
-      nl: 'Elke afbeelding binnen een link (een <code>a</code>-element) die geen andere tekst heeft, mag geen leeg of ontbrekend \"alt\"-attribuut hebben.'
-    },
-    guidelines: {
-      508: ['a'],
-      wcag: {
-        '2.4.4': {
-          techniques: ['H30']
-        }
-      }
-    },
-    tags: ['image', 'content']
-  }
-};
-module.exports = ImgAltNotEmptyInAnchor;
-
-},{"Case":30,"IsUnreadable":11}],131:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var ImgAltNotPlaceHolder = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'img',
-      attribute: 'alt'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Images should not have a simple placeholder text as an \"alt\" attribute',
-      nl: 'Afbeeldingen mogen geen placeholdertkest als \"alt\"-attribuut hebben'
-    },
-    description: {
-      en: 'Any image that is not used decorativey or which is purely for layout purposes cannot have an \"alt\" attribute that consists solely of placeholders.',
-      nl: 'Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen \"alt\"-attribuut hebben met daarin placeholdertekst.'
-    },
-    guidelines: {
-      508: ['a'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['F30', 'F39']
-        },
-        '1.2.1': {
-          techniques: ['F30']
-        }
-      }
-    },
-    tags: ['image', 'content']
-  }
-};
-module.exports = ImgAltNotPlaceHolder;
-
-},{"PlaceholderComponent":16}],132:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var ImgHasAlt = {
-  run: function run(test) {
-
-    var selector = 'img';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-
-          if (this.hasAttribute('alt')) {
-            status = 'passed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Image elements must have an \"alt\" attribute',
-      nl: 'Afbeeldingselementen moeten een \"alt\"-attribuut hebben'
-    },
-    description: {
-      en: 'All <code>img</code> elements must have an alt attribute.',
-      nl: 'Alle <code>img</code>-elementen moeten een \"alt\"-attribuut hebben.'
-    },
-    guidelines: {
-      508: ['a'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['F65', 'H37']
-        }
-      }
-    },
-    tags: ['image', 'content']
-  }
-};
-module.exports = ImgHasAlt;
-
-},{"Case":30}],133:[function(require,module,exports){
-'use strict';
-
-var ValidURLComponent = require('ValidURLComponent');
-var Case = require('Case');
-var ImgHasLongDesc = {
-  run: function run(test) {
-    test.get('$scope').find('img[longdesc]').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if ($(this).attr('longdesc') === $(this).attr('alt') || !ValidURLComponent($(this).attr('longdesc'))) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'A \"longdesc\" attribute is required for any image where additional information not in the \"alt\" attribute is required',
-      nl: 'Een \"longdesc\"-attribuut is verplicht voor elke afbeelding waar aanvullende informatie niet benodigd is in het \"alt\"-attribuut'
-    },
-    description: {
-      en: 'Any image that has an \"alt\" attribute that does not fully convey the meaning of the image must have a \"longdesc\" attribute.',
-      nl: 'Elke afbeelding die een \"alt\"-attribuut heeft dat de volledige betekenis van de afbeelding bevat, moet een \"longdesc\"-attribuut hebben.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.4': {
-          techniques: ['G91']
-        },
-        '2.4.9': {
-          techniques: ['G91']
-        }
-      }
-    },
-    tags: ['image', 'content']
-  }
-};
-module.exports = ImgHasLongDesc;
-
-},{"Case":30,"ValidURLComponent":28}],134:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ImgImportantNoSpacerAlt = {
-  run: function run(test) {
-    test.get('$scope').find('img[alt]').each(function () {
-      var width = $(this).width() ? $(this).width() : parseInt($(this).attr('width'), 10);
-      var height = $(this).height() ? $(this).height() : parseInt($(this).attr('height'), 10);
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if (IsUnreadable($(this).attr('alt').trim()) && $(this).attr('alt').length > 0 && width > 50 && height > 50) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Images that are important should not have a purely white-space \"alt\" attribute',
-      nl: 'Afbeeldingen die belangrijk zijn mogen geen leeg \"alt\"-attribuut hebben'
-    },
-    description: {
-      en: 'Any image that is not used decorativey or which is purely for layout purposes cannot have an \"alt\" attribute that consists solely of white space (i.e. a space).',
-      nl: 'Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen leeg \"alt\"-attribuut hebben (bijvoorbeeld alleen een spatie).'
-    },
-    guidelines: [],
-    tags: ['image', 'content']
-  }
-};
-module.exports = ImgImportantNoSpacerAlt;
-
-},{"Case":30,"IsUnreadable":11}],135:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ImgNonDecorativeHasAlt = {
-  run: function run(test) {
-    test.get('$scope').find('img[alt]').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if (IsUnreadable($(this).attr('alt')) && ($(this).width() > 100 || $(this).height() > 100)) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Any non-decorative images should have a non-empty \"alt\" attribute',
-      nl: 'Elke niet-decoratieve afbeelding moet een gevuld \"alt\"-attribuut hebben'
-    },
-    description: {
-      en: 'Any image that is not used decoratively or which is purely for layout purposes cannot have an empty \"alt\" attribute.',
-      nl: 'Elke afbeelding die niet ter decoratie is of voor lay-out doeleinden wordt gebruikt, moet een gevuld \"alt\"-attribuut hebben.'
-    },
-    guidelines: {
-      508: ['a'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['F38']
-        }
-      }
-    },
-    tags: ['image', 'content']
-  }
-};
-module.exports = ImgNonDecorativeHasAlt;
-
-},{"Case":30,"IsUnreadable":11}],136:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var ImgServerSideMapNotUsed = {
-  run: function run(test) {
-
-    var selector = 'img';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'passed';
-
-          if (this.hasAttribute('ismap')) {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Server-side image maps should not be used',
-      nl: 'Server-side image maps moeten niet worden gebruikt'
-    },
-    description: {
-      en: 'Server-side image maps should not be used.',
-      nl: 'Server-side image maps mogen niet worden gebruikt.'
-    },
-    guidelines: [],
-    tags: ['image', 'imagemap', 'content']
-  }
-};
-module.exports = ImgServerSideMapNotUsed;
-
-},{"Case":30}],137:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var ImgShouldNotHaveTitle = {
-  run: function run(test) {
-
-    var selector = 'img';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'passed';
-
-          if (this.hasAttribute('title')) {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Images should not have a \"title\" attribute',
-      nl: 'Afbeeldingen moeten geen \"title\"-attribuut hebben'
-    },
-    description: {
-      en: 'Images should not contain a \"title\" attribute.',
-      nl: 'Afbeeldingen zouden geen \"title\"-attribuut moeten bevatten.'
-    },
-    guidelines: [],
-    tags: ['image', 'content']
-  }
-};
-module.exports = ImgShouldNotHaveTitle;
-
-},{"Case":30}],138:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var ImgWithMapHasUseMap = {
-  run: function run(test) {
-
-    var selector = 'img[ismap]';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-
-          if (this.hasAttribute('usemap')) {
-            status = 'passed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Any image with an \"ismap\" attribute have a valid \"usemap\" attribute',
-      nl: 'Elke afbeelding met een \"ismap\"-attribuut heeft een geldig \"usemap\"-attribuut'
-    },
-    description: {
-      en: 'If an image has an \"ismap\" attribute it must have a valid \"usemap\" attribute.',
-      nl: 'Als een afbeelding een \"ismap\"-attribuut heeft, moet het ook een geldig \"usemap\"-attribuut hebben'
-    },
-    guidelines: {
-      508: ['ef', 'ef']
-    },
-    tags: ['image', 'imagemap', 'content']
-  }
-};
-module.exports = ImgWithMapHasUseMap;
-
-},{"Case":30}],139:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ImgWithMathShouldHaveMathEquivalent = {
-  run: function run(test) {
-    test.get('$scope').find('img:not(img:has(math), img:has(tagName))').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if (!$(this).parent().find('math').length) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Images which contain math equations should provide equivalent MathML',
-      nl: 'Afbeeldingen met wiskundige vergelijking moeten een equivalent in MathML bieden'
-    },
-    description: {
-      en: 'Images which contain math equations should be accompanied or link to a document with the equivalent equation marked up with <a href=\"http://www.w3.org/Math/\">MathML</a>.',
-      nl: 'Afbeeldingen die wiskundige vergelijkingen bevatten moeten vergezeld zijn van of linken naar een document met daarin een equivalent van de vergelijking in <a href=\"http://www.w3.org/Math/\">MathML</a>.'
-    },
-    guidelines: [],
-    tags: ['image', 'content']
-  }
-};
-module.exports = ImgWithMathShouldHaveMathEquivalent;
-
-},{"Case":30}],140:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var InputCheckboxRequiresFieldset = {
-  run: function run(test) {
-    test.get('$scope').find('input[type="checkbox"]').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if (!$(this).parents('fieldset').length) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Logical groups of check boxes should be grouped with a fieldset',
-      nl: 'Logische groepen van keuzevakjes moeten gegroepeerd zijn in een fieldset'
-    },
-    description: {
-      en: 'Related \"checkbox\" input fields should be grouped together using a <code>fieldset</code>.',
-      nl: 'Gerelateerde \"keuzevakjes\"-invoervelden moeten bij elkaar staan in een <code>fieldset</code>.'
-    },
-    guidelines: {
-      wcag: {
-        '3.3.2': {
-          techniques: ['H71']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = InputCheckboxRequiresFieldset;
-
-},{"Case":30}],141:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var InputElementsDontHaveAlt = {
-  run: function run(test) {
-
-    var selector = 'input[type!=image]';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'passed';
-
-          if (this.hasAttribute('alt')) {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Input elements which are not images should not have an \"alt\" attribute',
-      nl: 'Invoervelden die geen afbeelding zijn, moeten geen \"alt\"-attribuut hebben'
-    },
-    description: {
-      en: 'Input elements which are not images should not have an \"alt\" attribute, because of inconsistencies in how user agents use the \"alt\" attribute.',
-      nl: 'Invoervelden die geen afbeelding zijn, moeten geen \"alt\"-attribuut hebben, omdat user agents het \"alt\"-attribuut niet consistent gebruiken.'
-    },
-    guidelines: [],
-    tags: ['form', 'content']
-  }
-};
-module.exports = InputElementsDontHaveAlt;
-
-},{"Case":30}],142:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var InputImageAltIsNotFileName = {
-  run: function run(test) {
-    test.get('$scope').find('input[type=image][alt]').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if ($(this).attr('src') === $(this).attr('alt')) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not the same as the filename',
-      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam'
-    },
-    description: {
-      en: 'All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute which is not the same as the filename.',
-      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam.'
-    },
-    guidelines: {
-      508: ['a'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['H36']
-        }
-      }
-    },
-    tags: ['form', 'image', 'content']
-  }
-};
-module.exports = InputImageAltIsNotFileName;
-
-},{"Case":30}],143:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var InputImageAltIsNotPlaceholder = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'input[type="image"]',
-      attribute: 'alt'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not placeholder text.',
-      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben anders dan alleen placeholdertekst.'
-    },
-    description: {
-      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not placeholder text.',
-      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben anders dan alleen placeholdertekst.'
-    },
-    guidelines: {
-      508: ['a'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['H36']
-        },
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.1.3': {
-          techniques: ['H91']
-        },
-        '4.1.2': {
-          techniques: ['H91']
-        }
-      }
-    },
-    tags: ['form', 'image', 'content']
-  }
-};
-module.exports = InputImageAltIsNotPlaceholder;
-
-},{"PlaceholderComponent":16}],144:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var InputImageAltIsShort = {
-  run: function run(test) {
-    test.get('$scope').find('input[type=image]').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if ($(this).attr('alt').length > 100) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is as short as possible',
-      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat zo kort mogelijk is'
-    },
-    description: {
-      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is as short as possible.',
-      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat zo kort mogelijk is.'
-    },
-    guidelines: {
-      508: ['a'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['H36']
-        }
-      }
-    },
-    tags: ['form', 'image', 'content']
-  }
-};
-module.exports = InputImageAltIsShort;
-
-},{"Case":30}],145:[function(require,module,exports){
-'use strict';
-
-var CleanStringComponent = require('CleanStringComponent');
-var Case = require('Case');
-var RedundantStringsComponent = require('RedundantStringsComponent');
-var InputImageAltNotRedundant = {
-  run: function run(test) {
-    test.get('$scope').find('input[type=image][alt]').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if (RedundantStringsComponent.inputImage.indexOf(CleanStringComponent($(this).attr('alt'))) > -1) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The \"alt\" text for input \"image\" submit buttons must not be filler text',
-      nl: 'De \"alt\"-tekst for \"image\"-knoppen moet anders zijn dan alleen placeholdertekst'
-    },
-    description: {
-      en: 'Every form image button should not simply use filler text like \"button\" or \"submit\" as the \"alt\" text.',
-      nl: 'Elke formulierknop die een afbeelding is, moet bruikbare tekst als \"alt\"-tekst hebben, anders dan \"knop\" of \"verstuur\".'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['H36']
-        }
-      }
-    },
-    tags: ['form', 'image', 'content']
-  }
-};
-module.exports = InputImageAltNotRedundant;
-
-},{"Case":30,"CleanStringComponent":2,"RedundantStringsComponent":18}],146:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var InputImageHasAlt = {
-  run: function run(test) {
-
-    var selector = 'input[type=image]:visible';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-
-          if (this.hasAttribute('alt')) {
-            status = 'passed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute',
-      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben'
-    },
-    description: {
-      en: 'All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute.',
-      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben.'
-    },
-    guidelines: {
-      508: ['a'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['F65', 'G94', 'H36']
-        },
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.1.3': {
-          techniques: ['H91']
-        },
-        '4.1.2': {
-          techniques: ['H91']
-        }
-      }
-    },
-    tags: ['form', 'image', 'content'],
-    options: {
-      test: ':not(input[type=image][alt])'
-    }
-  }
-};
-module.exports = InputImageHasAlt;
-
-},{"Case":30}],147:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var LabelComponent = require('LabelComponent');
-
-var InputTextHasLabel = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'input'
-    };
-    LabelComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All \"input\" elements should have a corresponding \"label\"',
-      nl: 'Alle invoerelementen moeten een bijbehorend \"label\" hebben'
-    },
-    description: {
-      en: 'All <code>input</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
-      nl: 'Alle <code>input</code>-elementen moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['H44']
-        },
-        '1.3.1': {
-          techniques: ['H44', 'F68']
-        },
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.1.3': {
-          techniques: ['H91']
-        },
-        '3.3.2': {
-          techniques: ['H44']
-        },
-        '4.1.2': {
-          techniques: ['H44', 'H91']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = InputTextHasLabel;
-
-},{"LabelComponent":12}],148:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var InputTextHasValue = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'input[type="text"]',
-      attribute: 'value',
-      empty: 'true'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All \"input\" elements of type \"text\" must have a default text',
-      nl: 'Alle invoerelementen van het type \"text\" moeten een standaardtekst hebben'
-    },
-    description: {
-      en: 'All <code>input</code> elements of type \"text\" should have a default text.',
-      nl: 'Alle invoerelementen van het type \"text\" moeten een standaardtekst hebben.'
-    },
-    guidelines: [],
-    tags: ['form', 'content']
-  }
-};
-module.exports = InputTextHasValue;
-
-},{"PlaceholderComponent":16}],149:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var InputTextValueNotEmpty = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'input[type="text"]',
-      attribute: 'value',
-      empty: 'true'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Text input elements require a non-whitespace default text',
-      nl: 'Tekstinvoerelementen mogen geen lege standaardtekst hebben'
-    },
-    description: {
-      en: 'All <code>input</code> elements with a type of \"text\" should have a default text which is not empty.',
-      nl: 'Alle invoerelementen van het type \"text\" moeten een standaardtekst hebben die gevuld is.'
-    },
-    guidelines: [],
-    tags: ['form', 'content']
-  }
-};
-module.exports = InputTextValueNotEmpty;
-
-},{"PlaceholderComponent":16}],150:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var InputWithoutLabelHasTitle = {
-  run: function run(test) {
-
-    test.get('$scope').each(function () {
-
-      var testableElements = $(this).find('input, select, textarea');
-
-      if (testableElements.length === 0) {
-        var _case = Case({
-          element: this,
-          status: 'inapplicable'
-        });
-        test.add(_case);
-        return;
-      } else {
-        testableElements.each(function () {
-          var _case = Case({
-            element: this
-          });
-          test.add(_case);
-
-          if ($(this).css('display') === 'none') {
-            _case.set({
-              status: 'inapplicable'
-            });
-            return;
-          }
-          if (!test.get('$scope').find('label[for=' + $(this).attr('id') + ']').length && (!$(this).attr('title') || IsUnreadable($(this).attr('title')))) {
-            _case.set({
-              status: 'failed'
-            });
-          } else {
-            _case.set({
-              status: 'passed'
-            });
-          }
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Form controls without label should have a title attribute',
-      nl: 'Formulierelementen zonder label moeten een titelattribuut hebben'
-    },
-    description: {
-      en: 'If it is not possible to have a label for a form control, then a title attribute on the element should be provided that describes the purpose of the control.',
-      nl: 'Als een formulierelement geen label kan krijgen, dan moet een dat element een titelattribuut krijgen dat het doel van het element beschrijft.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['H65']
-        },
-        '1.3.1': {
-          techniques: ['H65']
-        },
-        '3.3.2': {
-          techniques: ['H65']
-        },
-        '4.1.2': {
-          techniques: ['H65']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = InputWithoutLabelHasTitle;
-
-},{"Case":30,"IsUnreadable":11}],151:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var LabelDoesNotContainInput = {
-  run: function run(test) {
-
-    var selector = 'label';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'passed';
-
-          if ($(this).find('input').length > 0) {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Label elements should not contain an input element',
-      nl: 'Labelelementen moeten geen invoerelementen bevatten'
-    },
-    description: {
-      en: 'Label elements should not wrap around another input element, as this can cause the label to be read twice by screen readers.',
-      nl: 'Labelelementen moeten niet om een ander invoerelement heenstaan, omdat dan het label twee keer kan worden voorgelezen door schermlezers.'
-    },
-    guidelines: [],
-    tags: ['form', 'content']
-  }
-};
-module.exports = LabelDoesNotContainInput;
-
-},{"Case":30}],152:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var LabelMustBeUnique = {
-  run: function run(test) {
-    var labels = {};
-    test.get('$scope').find('label[for]').each(function () {
-      if (typeof labels[$(this).attr('for')] === 'undefined') {
-        labels[$(this).attr('for')] = 0;
-      }
-      labels[$(this).attr('for')]++;
-    });
-    test.get('$scope').find('label[for]').each(function () {
-      var _case = Case({
-        element: this,
-        status: labels[$(this).attr('for')] === 1 ? 'passed' : 'failed'
-      });
-      test.add(_case);
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Every form input must have only one label',
-      nl: 'Elk formulierinvoerveld heeft maar een label'
-    },
-    description: {
-      en: 'Each form input should have only one <code>label</code> element.',
-      nl: 'Elk formulierinvoerveld mag maar een <code>label</code> element hebben.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['F17']
-        },
-        '4.1.1': {
-          techniques: ['F17']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = LabelMustBeUnique;
-
-},{"Case":30}],153:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var LabelMustNotBeEmpty = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'label',
-      content: 'true',
-      empty: 'true'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Labels must contain text',
-      nl: 'Labels moeten tekst bevatten'
-    },
-    description: {
-      en: 'Labels in forms must contain readable text that describes the target form element.',
-      nl: 'Labels in formulieren moeten leesbare tekst bevatten die het formulierelement beschrijven.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['H44']
-        },
-        '1.3.1': {
-          techniques: ['H44', 'F68']
-        },
-        '3.3.2': {
-          techniques: ['H44']
-        },
-        '4.1.2': {
-          techniques: ['H44']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = LabelMustNotBeEmpty;
-
-},{"PlaceholderComponent":16}],154:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var LabelsAreAssignedToAnInput = {
-  run: function run(test) {
-    test.get('$scope').find('label').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if (!$(this).attr('for')) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        if (!test.get('$scope').find('#' + $(this).attr('for')).length || !test.get('$scope').find('#' + $(this).attr('for')).is(':input')) {
-          _case.set({
-            status: 'failed'
-          });
-        } else {
-          _case.set({
-            status: 'passed'
-          });
-        }
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All labels should be associated with an input',
-      nl: 'Alle labels moeten horen bij een invoerveld'
-    },
-    description: {
-      en: 'All <code>label</code> elements should be assigned to an input item, and should have a <em>for</em> attribute which equals the <em>id</em> attribute of a form element.',
-      nl: 'Alle <code>label</code>-elementen moeten horen bij een invoerveld, en moeten een een <em>for</em>-attribuut hebben dat hetzelfde is als het <em>id</em>-attribuut van een formulierelement.'
-    },
-    guidelines: [],
-    tags: ['form', 'content']
-  }
-};
-module.exports = LabelsAreAssignedToAnInput;
-
-},{"Case":30}],155:[function(require,module,exports){
-'use strict';
-
-var GetTextContentsComponent = require('GetTextContentsComponent');
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var LanguageComponent = require('LanguageComponent');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var LanguageDirAttributeIsUsed = {
-  run: function run(test) {
-
-    var textDirection = LanguageComponent.textDirection;
-
-    function countDirAttributes() {
-      var $el = $(this);
-      var currentDirection = $el.attr('dir');
-      if (!currentDirection) {
-        var parentDir = $el.closest('[dir]').attr('dir');
-        currentDirection = parentDir || currentDirection;
-      }
-      if (typeof currentDirection === 'string') {
-        currentDirection = currentDirection.toLowerCase();
-      }
-      if (typeof textDirection[currentDirection] === 'undefined') {
-        currentDirection = 'ltr';
-      }
-      var oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
-      var text = GetTextContentsComponent($el);
-      var textMatches = text.match(textDirection[oppositeDirection]);
-      if (!textMatches) {
-        return;
-      }
-      var matches = textMatches.length;
-      $el.find('[dir=' + oppositeDirection + ']').each(function () {
-        var childMatches = $el[0].textContent.match(textDirection[oppositeDirection]);
-        if (childMatches) {
-          matches -= childMatches.length;
-        }
-      });
-
-      var _case = test.add(Case({
-        element: this
-      }));
-
-      _case.set({ status: matches > 0 ? 'failed' : 'passed' });
-    }
-
-    test.get('$scope').each(function () {
-      $(this).find(TextSelectorComponent).filter(function (index, element) {
-        return TextNodeFilterComponent(element);
-      }).each(countDirAttributes);
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Use the dir attribute when the language direction changes',
-      nl: 'Gebruik het dir-attribuut als de richting van de taal verandert'
-    },
-    description: {
-      en: 'When there are nested directional changes in text, use an inline element with a <code>dir</code> attribute to indicate direction.',
-      nl: 'Gebruik een inline element met een <code>dir</code>-attribuut om richting aan te geven wanneer er geneste richtingsveranderingen in de tekst zijn.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.2': {
-          techniques: ['H56']
-        }
-      }
-    },
-    tags: ['language', 'content']
-  }
-};
-module.exports = LanguageDirAttributeIsUsed;
-
-},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],156:[function(require,module,exports){
-'use strict';
-
-var GetTextContentsComponent = require('GetTextContentsComponent');
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var LanguageComponent = require('LanguageComponent');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var LanguageDirectionPunctuation = {
-  run: function run(test) {
-    var $scope = test.get('$scope');
-    var punctuation = {};
-    var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
-    var currentDirection = $scope.attr('dir') ? $scope.attr('dir').toLowerCase() : 'ltr';
-    var oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
-    var textDirection = LanguageComponent.textDirection;
-    $scope.each(function () {
-      var $local = $(this);
-      $local.find(TextSelectorComponent).filter(function (index, element) {
-        return TextNodeFilterComponent(element);
-      }).each(function () {
-        var $el = $(this);
-        if ($el.attr('dir')) {
-          currentDirection = $el.attr('dir').toLowerCase();
-        } else {
-          currentDirection = $el.parent('[dir]').first().attr('dir') ? $el.parent('[dir]').first().attr('dir').toLowerCase() : currentDirection;
-        }
-        if (typeof textDirection[currentDirection] === 'undefined') {
-          currentDirection = 'ltr';
-        }
-        oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
-        var text = GetTextContentsComponent($el);
-        var matches = text.match(textDirection[oppositeDirection]);
-        var _case = test.add(Case({
-          element: this
-        }));
-        if (!matches) {
-          _case.set({ status: 'inapplicable' });
-          return;
-        }
-        var first = text.search(textDirection[oppositeDirection]);
-        var last = text.lastIndexOf(matches.pop());
-        while (punctuation = punctuationRegex.exec(text)) {
-          if (punctuation.index === first - 1 || punctuation.index === last + 1) {
-            _case.set({ status: 'failed' });
-            return;
-          }
-        }
-        _case.set({ status: 'passed' });
-      });
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Place punctuation around language direction changes in the right order',
-      nl: 'Zet interpunctie bij richtingsveranderingen in taal in de juiste volgorde'
-    },
-    description: {
-      en: 'If punctuation is used around a change in language direction, ensure the punctuation appears in the correct place.',
-      nl: 'Als er interpunctie staat bij een richtingsverandering in de taal, zorg dat deze dan op de goede plek staat.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.2': {
-          techniques: ['G57']
-        }
-      }
-    },
-    tags: ['language', 'content']
-  }
-};
-module.exports = LanguageDirectionPunctuation;
-
-},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],157:[function(require,module,exports){
-'use strict';
-
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var LanguageComponent = require('LanguageComponent');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var LanguageUnicodeDirection = {
-  run: function run(test) {
-    var $scope = test.get('$scope');
-    var textDirection = LanguageComponent.textDirection;
-    var textDirectionChanges = LanguageComponent.textDirectionChanges;
-    $scope.each(function () {
-      var $local = $(this);
-      $local.find(TextSelectorComponent).filter(function (index, element) {
-        return TextNodeFilterComponent(element);
-      }).each(function () {
-        var _case = test.add(Case({
-          element: this
-        }));
-        var $el = $(this);
-        var text = $el.text().trim();
-        var otherDirection = text.substr(0, 1).search(textDirection.ltr) !== -1 ? 'rtl' : 'ltr';
-        if (text.search(textDirection[otherDirection]) === -1) {
-          _case.set({ status: 'inapplicable' });
-        } else {
-          if (text.search(textDirectionChanges[otherDirection]) !== -1) {
-            _case.set({ status: 'passed' });
-          } else {
-            _case.set({ status: 'failed' });
-          }
-        }
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Use the unicode language direction',
-      nl: 'Gebruik de unicode taalrichting'
-    },
-    description: {
-      en: 'When there are nested directional changes in language, use unicode RTL/LTR characters.',
-      nl: 'Gebruik de unicode RTL/LTR afkortingen als er geneste richtingsveranderingen in de taal zijn.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.2': {
-          techniques: ['H34']
-        }
-      }
-    },
-    tags: ['language', 'content']
-  }
-};
-module.exports = LanguageUnicodeDirection;
-
-},{"Case":30,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],158:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var LegendTextNotEmpty = {
-  run: function run(test) {
-
-    var selector = 'legend';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-
-          if ($(this).text().trim().length > 0) {
-            status = 'passed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Legend text must not contain just whitespace',
-      nl: 'Legend-tekst moet ingevuld zijn'
-    },
-    description: {
-      en: 'If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain empty text.',
-      nl: 'Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> ingevuld zijn.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['H71']
-        },
-        '2.4.6': {
-          techniques: ['G131']
-        },
-        '3.3.2': {
-          techniques: ['H71']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = LegendTextNotEmpty;
-
-},{"Case":30}],159:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var LegendTextNotPlaceholder = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'legend',
-      content: 'true',
-      emtpy: 'true'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: '\"Legend\" text must not contain placeholder text',
-      nl: '\"Legend\"-tekst moet geen placeholdertekst bevatten'
-    },
-    description: {
-      en: 'If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain useless placeholder text like \"form\" or \"field\".',
-      nl: 'Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> geen placeholdertekst bevatten zoals \"form\" of \"field\".'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['H71']
-        },
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.4.6': {
-          techniques: ['G131']
-        },
-        '3.3.2': {
-          techniques: ['H71']
-        },
-        '4.1.3': {
-          techniques: ['H91']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = LegendTextNotPlaceholder;
-
-},{"PlaceholderComponent":16}],160:[function(require,module,exports){
-'use strict';
-
-/**
- * @todo Needs refinement.
- *
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var LiDontUseImageForBullet = {
-  run: function run(test) {
-
-    var selector = 'li';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'passed';
-
-          if ($(this).children('img').length > 0) {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    guidelines: [],
-    tags: ['list', 'content']
-  }
-};
-module.exports = LiDontUseImageForBullet;
-
-},{"Case":30}],161:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var LinkHasAUniqueContext = {
-  run: function run(test) {
-
-    var blockStyle = ['block', 'flex', 'list-item', 'table', 'table-caption', 'table-cell'];
-
-    function getLinkSentence(link) {
-      // Find the closest block-like element
-      var $link = $(link);
-      var block = $link;
-      var text = simplifyText($link.text());
-
-      while (!block.is('body, html') && blockStyle.indexOf(block.css('display')) === -1) {
-        block = block.parent();
-      }
-
-      var sentences = block.text().match(/[^\.!\?]+[\.!\?]+/g);
-      if (sentences === null) {
-        sentences = [block.text()];
-      }
-
-      for (var i = 0; i < sentences.length; i += 1) {
-        if (simplifyText(sentences[i]).indexOf(text) !== -1) {
-          return sentences[i].trim();
-        }
-      }
-    }
-
-    function simplifyText(text) {
-      var tmp = text.match(/\w+/g);
-      if (tmp !== null) {
-        text = tmp.join(' ');
-      }
-      return text.toLowerCase();
-    }
-
-    function txtNotAlike(a, b) {
-      return simplifyText('' + a) !== simplifyText('' + b);
-    }
-
-    function shareContext(linkA, linkB) {
-
-      if (linkA.href === linkB.href) {
-        return false;
-      } else if (txtNotAlike(linkA.title, linkB.title)) {
-        return false;
-      }
-
-      // Find the nearest list item, paragraph or table cell of both items
-      var linkACtxt = $(linkA).closest('p, li, dd, dt, td, th');
-      var linkBCtxt = $(linkB).closest('p, li, dd, dt, td, th');
-
-      // check if they are different
-      if (linkACtxt.length !== 0 && linkBCtxt.length !== 0 && txtNotAlike(getLinkText(linkACtxt), getLinkText(linkBCtxt))) {
-        return false;
-      }
-
-      // If one is a table cell and the other isn't, allow it
-      if (linkACtxt.is('td, th') && !linkBCtxt.is('td, th')) {
-        return false;
-      } else if (linkACtxt.is('td, th') && linkBCtxt.is('td, th')) {
-        var headerDiff = false;
-        var headersA = [];
-
-        // Make a list with the simplified text of link A
-        linkACtxt.tableHeaders().each(function () {
-          headersA.push(simplifyText($(this).text()));
-        });
-
-        // Compare it to the header context of link B
-        linkBCtxt.tableHeaders().each(function () {
-          var text = simplifyText($(this).text());
-          var pos = headersA.indexOf(text);
-          // Link B has something not part of link A's context, pass
-          if (pos === -1) {
-            headerDiff = true;
-          }
-          // Remove items part of both header lists
-          else {
-              headersA.splice(pos, 1);
-            }
-        });
-        // Pass if A or B had a header not part of the other.
-        if (headerDiff || headersA.length > 0) {
-          return false;
-        }
-      }
-
-      if (txtNotAlike(getLinkSentence(linkA), getLinkSentence(linkB))) {
-        return false;
-      }
-
-      return true;
-    }
-
-    /**
-     * Get the text value of the link, including alt attributes
-     * @param  {jQuery} $link
-     * @return {string}
-     */
-    function getLinkText($link) {
-      var text = $link.text();
-      $link.find('img[alt]').each(function () {
-        text += ' ' + this.alt.trim();
-      });
-      return simplifyText(text);
-    }
-
-    test.get('$scope').each(function () {
-      var $scope = $(this);
-      var $links = $scope.find('a[href]:visible');
-      var linkMap = {};
-
-      if ($links.length === 0) {
-        var _case = Case({
-          element: this,
-          status: 'inapplicable'
-        });
-        test.add(_case);
-      }
-
-      // Make a map with the link text as key and an array of links with
-      // that link text as it's value
-      $links.each(function () {
-        var text = getLinkText($(this));
-        if (typeof linkMap[text] === 'undefined') {
-          linkMap[text] = [];
-        }
-        linkMap[text].push(this);
-      });
-
-      // Iterate over each item in the linkMap
-      $.each(linkMap, function (linkText, links) {
-
-        // Link text is not unique, so the context should be checked
-        while (links.length > 1) {
-          var linkA = links.pop();
-          var linkAFailed = false;
-
-          for (var i = links.length - 1; i >= 0; i -= 1) {
-            var linkB = links[i];
-            if (shareContext(linkA, linkB)) {
-              linkAFailed = true;
-              links.splice(i, 1);
-              test.add(Case({
-                element: linkB,
-                status: 'failed'
-              }));
-            }
-          }
-          test.add(Case({
-            element: linkA,
-            status: linkAFailed ? 'failed' : 'passed'
-          }));
-        }
-
-        // The link text is unique, pass
-        if (links.length === 1) {
-          test.add(Case({
-            element: links[0],
-            status: 'passed'
-          }));
-        }
-      });
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Links should have a unique context',
-      nl: 'Links moeten een unieke context hebben'
-    },
-    description: {
-      en: '',
-      nl: ''
-    },
-    guidelines: [],
-    tags: ['link', 'content']
-  }
-};
-module.exports = LinkHasAUniqueContext;
-
-},{"Case":30}],162:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ListNotUsedForFormatting = {
-  run: function run(test) {
-    test.get('$scope').find('ol, ul').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if ($(this).find('li').length < 2) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Lists should not be used for formatting',
-      nl: 'Lijsten worden niet gebruikt voor opmaak'
-    },
-    description: {
-      en: 'Lists like <code>ul</code> and <code>ol</code> are to provide a structured list, and should not be used to format text. This test views any list with just one item as suspicious, but should be manually reviewed.',
-      nl: 'Lijsten zoals <code>ul</code> en <code>ol</code> zijn bedoeld om gestructureerde lijsten te maken. Ze moeten niet gebruikt worden om text op te maken. Controleer of deze lijst echt bedoeld is als lijst of om tekst op te maken.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.2': {
-          techniques: ['F1']
-        }
-      }
-    },
-    tags: ['list', 'content']
-  }
-};
-module.exports = ListNotUsedForFormatting;
-
-},{"Case":30}],163:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var ListOfLinksUseList = {
-  run: function run(test) {
-    var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
-    test.get('$scope').find('a').each(function () {
-      var _case = test.add(Case({
-        element: this
-      }));
-      // Only test if there's another a tag.
-      if ($(this).next('a').length) {
-        var nextText = $(this).get(0).nextSibling.wholeText.replace(unreadableText, '');
-        if (!$(this).parent('li').length && IsUnreadable(nextText)) {
-          _case.set({
-            status: 'failed'
-          });
-        } else {
-          _case.set({
-            status: 'passed'
-          });
-        }
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'A list of links separated by non-readable characters should be in an ul or ol',
-      nl: 'Een lijst van links die worden gescheiden door onleesbare tekens moeten in een bulleted of genummerde lijst staan'
-    },
-    description: {
-      en: 'A list of links without separation between them should be placed in an ol or ul element.',
-      nl: 'Een lijst van links die niet duidelijk gescheiden zijn moeten in een bulleted of genummerde lijst staan.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['H48']
-        }
-      }
-    },
-    tags: ['link', 'content']
-  }
-};
-module.exports = ListOfLinksUseList;
-
-},{"Case":30,"IsUnreadable":11}],164:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var MarqueeIsNotUsed = {
-  run: function run(test) {
-
-    var selector = 'marquee';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'passed'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'The \"marquee\" tag should not be used',
-      nl: 'De \"marquee\"-tag wordt niet gebruikt'
-    },
-    description: {
-      en: 'The <code>marquee</code> element is difficult for users to read and is not a standard HTML element. Try to find another way to convey the importance of this text.',
-      nl: 'Het <code>marquee</code>-element is moeilijk te lezen voor gebruikers en is geen standaard HTML-element. Gebruik een andere manier om aan te duiden dat het belangrijke content is.'
-    },
-    guidelines: [],
-    tags: ['deprecated', 'content']
-  }
-};
-module.exports = MarqueeIsNotUsed;
-
-},{"Case":30}],165:[function(require,module,exports){
-'use strict';
-
-/**
- * @todo Needs refinement.
- *
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var MenuNotUsedToFormatText = {
-  run: function run(test) {
-
-    var selector = 'menu:not(menu li:parent(menu))';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Menu elements should not be used for formatting',
-      nl: 'Menu-elementen worden niet gebruikt voor opmaak'
-    },
-    description: {
-      en: 'Menu is a deprecated tag, but is still honored in a transitional DTD. Menu tags are to provide structure for a document and should not be used for formatting. If a menu tag is to be used, it should only contain an ordered or unordered list of links.',
-      nl: 'Menu is een afgekeurd tag, maar wordt nog wel gebruikt om structuur aan een document te geven. Het mag niet worden gebruikt voor opmaak. Als een menu-tag wordt gebruikt, mag het alleen bulleted of genummerde lijsten bevatten.'
-    },
-    guidelines: [],
-    tags: ['list', 'content']
-  }
-};
-module.exports = MenuNotUsedToFormatText;
-
-},{"Case":30}],166:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var NewWindowIsOpened = {
-  run: function run(test) {
-
-    var fenestrate = window.open;
-    var _case;
-
-    window.open = function (event) {
-      test.each(function (index, _case) {
-        var href = _case.get('element').href;
-        if (href.indexOf(event) > -1) {
-          _case.set('status', 'failed');
-        }
-      });
-    };
-
-    test.get('$scope').find('a').each(function () {
-      // Save a reference to this clicked tag.
-      _case = Case({
-        element: this
-      });
-      test.add(_case);
-      $(this).trigger('click');
-    });
-
-    window.open = fenestrate;
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'A link should not open a new window',
-      nl: 'Een link opent geen nieuw scherm'
-    },
-    description: {
-      en: 'Avoid confusion that may be caused by the appearance of new windows that were not requested by the user.',
-      nl: 'Voorkom verwarring die veroorzaakt wordt door het openen van nieuwe schermen die de gebruiker niet verwacht.'
-    },
-    guidelines: {
-      wcag: {
-        '2.0.0': {
-          techniques: ['H83']
-        }
-      }
-    },
-    tags: ['javascript', 'html']
-  }
-};
-module.exports = NewWindowIsOpened;
-
-},{"Case":30}],167:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var ObjectMustContainText = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'object',
-      content: 'true',
-      empty: 'true'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Objects must contain their text equivalents',
-      nl: 'Objecten moeten hun tekstuele equivalent bevatten'
-    },
-    description: {
-      en: 'All <code>object</code> elements should contain a text equivalent if the object cannot be rendered.',
-      nl: 'Alle <code>object</code>-elementen moeten een tekstequivalent bevatten in het geval het object niet getoond kan worden.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['FLASH1', 'H27']
-        }
-      }
-    },
-    tags: ['objects', 'content']
-  }
-};
-module.exports = ObjectMustContainText;
-
-},{"PlaceholderComponent":16}],168:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var ObjectMustHaveEmbed = {
-  run: function run(test) {
-
-    var selector = 'object';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-          var hasEmbed = $(this).find('embed').length > 0;
-
-          // If a test is defined, then use it
-          if (hasEmbed) {
-            status = 'passed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Every object should contain an \"embed\" element',
-      nl: 'Elk object moet een \"embed\"-element bevatten'
-    },
-    description: {
-      en: 'Every <code>object</code> element must also contain an <code>embed</code> element.',
-      nl: 'Elk <code>object</code>-element moet ook een \"embed\"-element bevatten.'
-    },
-    guidelines: [],
-    tags: ['objects', 'content']
-  }
-};
-module.exports = ObjectMustHaveEmbed;
-
-},{"Case":30}],169:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var ObjectMustHaveTitle = {
-  run: function run(test) {
-
-    var selector = 'object';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-          var hasTitle = this.hasAttribute('title');
-
-          // If a test is defined, then use it
-          if (hasTitle) {
-            status = 'passed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Objects should have a title attribute',
-      nl: 'Objecten moeten een titelattribuut hebben'
-    },
-    description: {
-      en: 'All <code>object</code> elements should contain a \"title\" attribute.',
-      nl: 'Alle <code>object</code>-elementen moeten een \"titel\"-attribuut bevatten.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['H27']
-        }
-      }
-    },
-    tags: ['objects', 'content']
-  }
-};
-module.exports = ObjectMustHaveTitle;
-
-},{"Case":30}],170:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var ObjectMustHaveValidTitle = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'object',
-      attribute: 'title',
-      empty: 'true'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Objects must not have an empty title attribute',
-      nl: 'Objecten hebben geen leeg titelattribuut'
-    },
-    description: {
-      en: 'All <code>object</code> elements should have a \"title\" attribute which is not empty.',
-      nl: 'All <code>object</code>-elementen hebben een \"titel\"-attribuut dat gevuld is.'
-    },
-    guidelines: [],
-    tags: ['objects', 'content']
-  }
-};
-module.exports = ObjectMustHaveValidTitle;
-
-},{"PlaceholderComponent":16}],171:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var SuspectPHeaderTags = require('SuspectPHeaderTags');
-var SuspectPCSSStyles = require('SuspectPCSSStyles');
-var PNotUsedAsHeader = {
-  run: function run(test) {
-    test.get('$scope').find('p').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-
-      var $paragraph = $(this);
-
-      // If the text has a period, it is probably a sentence and not a header.
-      if ($paragraph.text().search(/[\.!:;]/) >= 1) {
-        _case.set({
-          status: 'passed'
-        });
-      }
-      var failed = false;
-      // Look for any indication that the paragraph contains at least a full sentence
-      if ($(this).text().search(/[\.!:;]/) < 1) {
-        var priorParagraph = $paragraph.prev('p');
-        // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
-        $.each(SuspectPHeaderTags, function (index, tag) {
-          if ($paragraph.find(tag).length) {
-            $paragraph.find(tag).each(function () {
-              if ($(this).text().trim() === $paragraph.text().trim()) {
-                _case.set({
-                  status: 'failed'
-                });
-                failed = true;
-              }
-            });
-          }
-        });
-        // Checking if previous paragraph has a different values for style properties given in SuspectPCSSStyles.
-        if (priorParagraph.length) {
-          $.each(SuspectPCSSStyles, function (index, cssProperty) {
-            if ($paragraph.css(cssProperty) !== priorParagraph.css(cssProperty)) {
-              _case.set({
-                status: 'failed'
-              });
-              failed = true;
-              return false; // Micro optimization - we no longer need to iterate here. jQuery css() method might be expensive.
-            }
-          });
-        }
-        if ($paragraph.css('font-weight') === 'bold') {
-          _case.set({
-            status: 'failed'
-          });
-          failed = true;
-        }
-      }
-      if (!failed) {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Paragraphs must not be used for headers',
-      nl: 'Alinea\'s worden niet gebruikt als header'
-    },
-    description: {
-      en: 'Headers like <code>h1</code> - <code>h6</code> are extremely useful for non-sighted users to navigate the structure of the page, and formatting a paragraph to just be big or bold, while it might visually look like a header, does not make it one.',
-      nl: 'Headers van <code>h1</code> - <code>h6</code> zijn handig voor blinde en slechtziende gebruikers om door een pagina te navigeren. Maak alinea\'s daarom niet op zodat deze lijkt op een header. Dit werkt verwarrend.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['G141', 'H42']
-        },
-        '2.4.10': {
-          techniques: ['G141']
-        }
-      }
-    },
-    tags: ['header', 'content']
-  }
-};
-module.exports = PNotUsedAsHeader;
-
-},{"Case":30,"SuspectPCSSStyles":21,"SuspectPHeaderTags":22}],172:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var LabelComponent = require('LabelComponent');
-
-var PasswordHasLabel = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'input[type="password"]'
-    };
-    LabelComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All password input elements should have a corresponding label',
-      nl: 'Alle paswoordinvoerelementen hebben een bijbehorend label'
-    },
-    description: {
-      en: 'All <code>input</code> elements with a type of \"password\"should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
-      nl: 'Alle <code>input</code>-elementen van het type \"paswoord\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
-    },
-    guidelines: {
-      508: ['n'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['H44']
-        },
-        '1.3.1': {
-          techniques: ['H44', 'F68']
-        },
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.1.3': {
-          techniques: ['H91']
-        },
-        '3.3.2': {
-          techniques: ['H44']
-        },
-        '4.1.2': {
-          techniques: ['H44', 'H91']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = PasswordHasLabel;
-
-},{"LabelComponent":12}],173:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var PreShouldNotBeUsedForTabularLayout = {
-  run: function run(test) {
-    test.get('$scope').find('pre').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      var rows = $(this).text().split(/[\n\r]+/);
-      _case.set({
-        status: rows.length > 1 && $(this).text().search(/\t/) > -1 ? 'failed' : 'passed'
-      });
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Pre elements should not be used for tabular data',
-      nl: 'Pre-elementen worden niet gebruikt om data als tabel te rangschikken'
-    },
-    description: {
-      en: 'If a <code>pre</code> element is used for tabular data, change the data to use a well-formed table.',
-      nl: 'Als een <code>pre</code>-element wordt gebruikt om data als tabel te rangschikken, verander de data dan zodat je een echte tabel kunt maken.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['F33', 'F34', 'F48']
-        },
-        '1.3.2': {
-          techniques: ['F33', 'F34']
-        }
-      }
-    },
-    tags: ['table', 'content']
-  }
-};
-module.exports = PreShouldNotBeUsedForTabularLayout;
-
-},{"Case":30}],174:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var LabelComponent = require('LabelComponent');
-
-var RadioHasLabel = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'input[type="radio"]'
-    };
-    LabelComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All \"radio\" input elements have a corresponding label',
-      nl: 'Alle invoerelementen van het type \"radio\" hebben een bijbehorend label'
-    },
-    description: {
-      en: 'All <code>input</code> elements of type \"radio\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
-      nl: 'Alle <code>input</code>-elementen van het \"radio\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
-    },
-    guidelines: {
-      508: ['n'],
-      wcag: {
-        '1.1.1': {
-          techniques: ['H44']
-        },
-        '1.3.1': {
-          techniques: ['H44', 'F68']
-        },
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.1.3': {
-          techniques: ['H91']
-        },
-        '3.3.2': {
-          techniques: ['H44']
-        },
-        '4.1.2': {
-          techniques: ['H44', 'H91']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = RadioHasLabel;
-
-},{"LabelComponent":12}],175:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var EventComponent = require('EventComponent');
-
-var ScriptOnclickRequiresOnKeypress = {
-  run: function run(test, options) {
-    options = options || {
-      selector: '[onclick]',
-      correspondingEvent: 'onkeypress',
-      searchEvent: 'onclick'
-    };
-    EventComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'If an element has an \"onclick\" attribute it should also have an \"onkeypress\" attribute',
-      nl: 'Als een element een \"onclick\"-attribuut heeft, moet het ook een \"onkeypress\"-attribuut hebben'
-    },
-    description: {
-      en: 'If an element has an \"onclick\" attribute it should also have an \"onkeypress\" attribute',
-      nl: 'Als een element een \"onclick\"-attribuut heeft, moet het ook een \"onkeypress\"-attribuut hebben'
-    },
-    guidelines: {
-      508: ['l'],
-      wcag: {
-        '2.1.1': {
-          techniques: ['G90', 'SCR2', 'SCR20']
-        },
-        '2.1.3': {
-          techniques: ['G90', 'SCR20']
-        }
-      }
-    },
-    tags: ['javascript']
-  }
-};
-module.exports = ScriptOnclickRequiresOnKeypress;
-
-},{"EventComponent":6}],176:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var EventComponent = require('EventComponent');
-
-var ScriptOndblclickRequiresOnKeypress = {
-  run: function run(test, options) {
-    options = options || {
-      selector: '[ondblclick]',
-      correspondingEvent: 'onkeypress',
-      searchEvent: 'ondblclick'
-    };
-    EventComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Any element with an \"ondblclick\" attribute should have a keyboard-related action as well',
-      nl: 'Elk element met een \"ondblclick\"-attribuut moet een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord'
-    },
-    description: {
-      en: 'If an element has an \"ondblclick\" attribute, it should also have a keyboard-related action.',
-      nl: 'Als een element een \"ondblclick\"-attribuut heeft, moet het ook een actie bevatten die kan worden uitgevoerd met een toetsenbord.'
-    },
-    guidelines: {
-      508: ['l'],
-      wcag: {
-        '2.1.1': {
-          techniques: ['G90', 'SCR2', 'SCR20']
-        },
-        '2.1.3': {
-          techniques: ['G90', 'SCR20']
-        }
-      }
-    },
-    tags: ['javascript']
-  }
-};
-module.exports = ScriptOndblclickRequiresOnKeypress;
-
-},{"EventComponent":6}],177:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var EventComponent = require('EventComponent');
-
-var ScriptOnmousedownRequiresOnKeypress = {
-  run: function run(test, options) {
-    options = options || {
-      selector: '[onmousedown]',
-      correspondingEvent: 'onkeydown',
-      searchEvent: 'onmousedown'
-    };
-    EventComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'If an element has a \"mousedown\" attribute it should also have an \"onkeydown\" attribute',
-      nl: 'Als een element een \"mousedown\"-attribuut heeft moet het ook een \"onkeydown\"-attribuut hebben'
-    },
-    description: {
-      en: 'If an element has a \"mousedown\" attribute it should also have an \"onkeydown\" attribute.',
-      nl: 'Als een element een \"mousedown\"-attribuut heeft moet het ook een \"onkeydown\"-attribuut hebben.'
-    },
-    guidelines: {
-      508: ['l'],
-      wcag: {
-        '2.1.1': {
-          techniques: ['G90', 'SCR2', 'SCR20']
-        },
-        '2.1.3': {
-          techniques: ['G90', 'SCR20']
-        }
-      }
-    },
-    tags: ['javascript']
-  }
-};
-module.exports = ScriptOnmousedownRequiresOnKeypress;
-
-},{"EventComponent":6}],178:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var EventComponent = require('EventComponent');
-
-var ScriptOnmousemove = {
-  run: function run(test, options) {
-    options = options || {
-      selector: '[onmousemove]',
-      correspondingEvent: 'onkeypress',
-      searchEvent: 'onmousemove'
-    };
-    EventComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Any element with an \"onmousemove\" attribute should have a keyboard-related action as well',
-      nl: 'Elk element met een \"onmousemove\"-attribuut moet een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord'
-    },
-    description: {
-      en: 'If an element has an \"onmousemove\" attribute it should have a keyboard-related action as well.',
-      nl: 'Als een element een \"onmousemove\"-attribuut heeft, moet het een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord.'
-    },
-    guidelines: {
-      508: ['l'],
-      wcag: {
-        '2.1.1': {
-          techniques: ['G90', 'SCR2', 'SCR20']
-        },
-        '2.1.3': {
-          techniques: ['G90', 'SCR20']
-        }
-      }
-    },
-    tags: ['javascript']
-  }
-};
-module.exports = ScriptOnmousemove;
-
-},{"EventComponent":6}],179:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var EventComponent = require('EventComponent');
-
-var ScriptOnmouseoutHasOnmouseblur = {
-  run: function run(test, options) {
-    options = options || {
-      selector: '[onmouseout]',
-      correspondingEvent: 'onblur',
-      searchEvent: 'onmouseout'
-    };
-    EventComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'If an element has a \"onmouseout\" attribute it should also have an \"onblur\" attribute',
-      nl: 'Als een element een \"onmouseout\"-attribuut heeft, moet het ook een \"onblur\" attribuut hebben'
-    },
-    description: {
-      en: 'If an element has a \"onmouseout\" attribute it should also have an \"onblur\" attribute.',
-      nl: 'Als een element een \"onmouseout\"-attribuut heeft, moet het ook een \"onblur\"-attribuut hebben.'
-    },
-    guidelines: {
-      508: ['l'],
-      wcag: {
-        '2.1.1': {
-          techniques: ['G90', 'SCR2', 'SCR20']
-        },
-        '2.1.3': {
-          techniques: ['G90', 'SCR20']
-        }
-      }
-    },
-    tags: ['javascript']
-  }
-};
-module.exports = ScriptOnmouseoutHasOnmouseblur;
-
-},{"EventComponent":6}],180:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var EventComponent = require('EventComponent');
-
-var ScriptOnmouseoverHasOnfocus = {
-  run: function run(test, options) {
-    options = options || {
-      selector: '[onmouseover]',
-      correspondingEvent: 'onfocus',
-      searchEvent: 'onmouseover'
-    };
-    EventComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'If an element has a \"onmouseover\" attribute it should also have an \"onfocus\" attribute',
-      nl: 'Als een element een \"onmouseover\"-attribuut heeft, moet het ook een \"onfocus\"-attribuut hebben'
-    },
-    description: {
-      en: 'If an element has a \"onmouseover\" attribute it should also have an \"onfocus\" attribute.',
-      nl: 'Als een element een \"onmouseover\"-attribuut heeft, moet het ook een \"onfocus\"-attribuut hebben.'
-    },
-    guidelines: {
-      508: ['l'],
-      wcag: {
-        '2.1.1': {
-          techniques: ['G90', 'SCR2', 'SCR20']
-        },
-        '2.1.3': {
-          techniques: ['G90', 'SCR20']
-        }
-      }
-    },
-    tags: ['javascript']
-  }
-};
-module.exports = ScriptOnmouseoverHasOnfocus;
-
-},{"EventComponent":6}],181:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var EventComponent = require('EventComponent');
-
-var ScriptOnmouseupHasOnkeyup = {
-  run: function run(test, options) {
-    options = options || {
-      selector: '[onmouseup]',
-      correspondingEvent: 'onkeyup',
-      searchEvent: 'onmouseup'
-    };
-    EventComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'If an element has a \"onmouseup\" attribute it should also have an \"onkeyup\" attribute',
-      nl: 'Als een element een \"onmouseup\"-attribuut heeft, moet het ook een \"onkeyup\"-attribuut hebben'
-    },
-    description: {
-      en: 'If an element has a \"onmouseup\" attribute it should also have an \"onkeyup\" attribute.',
-      nl: 'Als een element een \"onmouseup\"-attribuut heeft, moet het ook een \"onkeyup\"-attribuut hebben.'
-    },
-    guidelines: {
-      508: ['l'],
-      wcag: {
-        '2.1.1': {
-          techniques: ['G90', 'SCR2', 'SCR20']
-        },
-        '2.1.3': {
-          techniques: ['G90', 'SCR20']
-        }
-      }
-    },
-    tags: ['javascript']
-  }
-};
-module.exports = ScriptOnmouseupHasOnkeyup;
-
-},{"EventComponent":6}],182:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var LabelComponent = require('LabelComponent');
-
-var SelectHasAssociatedLabel = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'select'
-    };
-    LabelComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All select elements have an explicitly associated label',
-      nl: 'Alle select-elementen hebben een expliciet bijbehorend label'
-    },
-    description: {
-      en: 'All <code>select</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
-      nl: 'Alle <code>select</code>-elementen moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['H44']
-        },
-        '1.3.1': {
-          techniques: ['H44', 'F68']
-        },
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.1.3': {
-          techniques: ['H91']
-        },
-        '3.3.2': {
-          techniques: ['H44']
-        },
-        '4.1.2': {
-          techniques: ['H44', 'H91']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = SelectHasAssociatedLabel;
-
-},{"LabelComponent":12}],183:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var HasEventListenerComponent = require('HasEventListenerComponent');
-var SelectJumpMenu = {
-  run: function run(test) {
-    var $scope = test.get('$scope');
-    if ($scope.find('select').length === 0) {
-      return;
-    }
-
-    $scope.find('select').each(function () {
-      if ($(this).parent('form').find(':submit').length === 0 && HasEventListenerComponent($(this), 'change')) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Select jump menus should jump on button press, not on state change',
-      nl: 'Select jump menu\'s moeten springen wanneer de knop wordt gebruikt, niet bij statusverandering'
-    },
-    description: {
-      en: 'If you wish to use a \'Jump\' menu with a select item that then redirects users to another page, the jump should occur on the user pressing a button, rather than on the change event of that select element.',
-      nl: 'Als je een \'Jump\'-menu wilt gebruiken met een select item dat gebruikers naar een andere pagina verwijst, moet de verwijzing plaatsvinden als de gebruiker een knop gebruikt en niet op het moment dat het select element verandert.'
-    },
-    guidelines: {
-      wcag: {
-        '3.2.2': {
-          techniques: ['F37']
-        },
-        '3.2.5': {
-          techniques: ['F9']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = SelectJumpMenu;
-
-},{"Case":30,"HasEventListenerComponent":8}],184:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var SiteMapStringsComponent = require('SiteMapStringsComponent');
-var $ = require('jquery/dist/jquery');
-
-var SiteMap = {
-  run: function run(test) {
-    var set = false;
-    var _case = Case({
-      element: test.get('$scope').get(0)
-    });
-    test.add(_case);
-    test.get('$scope').find('a').each(function () {
-      var text = $(this).text().toLowerCase();
-      $.each(SiteMapStringsComponent, function (index, string) {
-        if (text.search(string) > -1) {
-          set = true;
-          return;
-        }
-      });
-      if (set === false) {
-        _case.set({
-          status: 'failed'
-        });
-        return;
-      }
-
-      if (set) {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Websites must have a site map',
-      nl: 'Websites moeten een sitemap hebben'
-    },
-    description: {
-      en: 'Every web site should have a page which provides a site map or another method to navigate most of the site from a single page to save time for users of assistive devices.',
-      nl: 'Elke website moet een pagina hebben waarop een sitemap staat of een andere methode om op de site te navigeren vanaf een pagina. Dit spaart gebruikers die hulpmiddelen gebruiken tijd.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.5': {
-          techniques: ['G63']
-        },
-        '2.4.8': {
-          techniques: ['G63']
-        }
-      }
-    },
-    tags: ['document']
-  }
-};
-
-module.exports = SiteMap;
-
-},{"Case":30,"SiteMapStringsComponent":19,"jquery/dist/jquery":37}],185:[function(require,module,exports){
-'use strict';
-
-/**globals console:true */
-var Case = require('Case');
-
-var SkipContentStringsComponent = require('SkipContentStringsComponent');
-
-var SkipToContentLinkProvided = {
-  run: function run(test) {
-    test.get('$scope').each(function () {
-      var $local = $(this);
-      var skipLinkFound = false;
-
-      $local.find('a[href*="#"]').each(function () {
-        if (skipLinkFound) {
-          return;
-        }
-        var $link = $(this);
-
-        var fragment = $link.attr('href').split('#').pop();
-        var $target = $local.find('#' + fragment);
-        var strs = SkipContentStringsComponent.slice();
-        while (!skipLinkFound && strs.length) {
-          var str = strs.pop();
-          if ($link.text().search(str) > -1 && $target.length) {
-            $link.focus();
-            if ($link.is(':visible') && $link.css('visibility') !== 'hidden') {
-              skipLinkFound = true;
-              test.add(Case({
-                element: $link.get(0),
-                status: 'passed'
-              }));
-              return;
-            }
-            $link.blur();
-          }
-        }
-      });
-      if (!skipLinkFound) {
-        test.add(Case({
-          status: 'failed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'A \"skip to content\" link should exist as one of the first links on the page',
-      nl: 'Er moet een \"skip to content\"-link zijn als een van de eerste links op de pagina'
-    },
-    description: {
-      en: 'A link reading \"skip to content\" should be the first link on a page.',
-      nl: 'Er moet een link zijn om naar de content te navigeren als een van de eerste links op de pagina.'
-    },
-    guidelines: {
-      508: ['o'],
-      wcag: {
-        '2.4.1': {
-          techniques: ['G1']
-        }
-      }
-    },
-    tags: ['document']
-  }
-};
-module.exports = SkipToContentLinkProvided;
-
-},{"Case":30,"SkipContentStringsComponent":20}],186:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var SvgContainsTitle = {
-  run: function run(test) {
-
-    var selector = 'svg';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-          var hasTitle = $(this).find('title').length === 1;
-
-          // If a test is defined, then use it
-          if (hasTitle) {
-            status = 'passed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Inline SVG should use Title elements',
-      nl: 'Inline SVG moet titelelementen gebruiken'
-    },
-    description: {
-      en: 'Any inline SVG image should have an embedded <code>title</code> element.',
-      nl: 'Elke inline SVG-afbeelding moet een ingebed <code>title</code>-element hebben.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['F65']
-        }
-      }
-    },
-    tags: ['image', 'svg', 'content']
-  }
-};
-module.exports = SvgContainsTitle;
-
-},{"Case":30}],187:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TabIndexFollowsLogicalOrder = {
-  run: function run(test) {
-    test.get('$scope').each(function () {
-      var $local = $(this);
-      var index = 0;
-      $local.find('[tabindex]').each(function () {
-        var $el = $(this);
-        var tabindex = $el.attr('tabindex');
-        if (parseInt(tabindex, 10) >= 0 && parseInt(tabindex, 10) !== index + 1) {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        } else {
-          test.add(Case({
-            element: this,
-            status: 'passed'
-          }));
-        }
-        index++;
-      });
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'The tab order of a document is logical',
-      nl: 'De tabvolgorde van een document is logisch'
-    },
-    description: {
-      en: 'Check that the tab order of a page is logical.',
-      nl: 'Controleer of de tabvolgorde van een pagina logisch is.'
-    },
-    guidelines: {
-      wcag: {
-        '2.4.3': {
-          techniques: ['H4']
-        }
-      }
-    },
-    tags: ['document']
-  }
-};
-module.exports = TabIndexFollowsLogicalOrder;
-
-},{"Case":30}],188:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TableAxisHasCorrespondingId = {
-  run: function run(test) {
-    test.get('$scope').find('[axis]').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      if ($(this).parents('table').first().find('th#' + $(this).attr('axis')).length === 0) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Axis attribute should have corresponding IDs',
-      nl: 'Axis-attributen moeten bijbehorende IDs hebben'
-    },
-    description: {
-      en: 'When using the axis attribute to group cells together, ensure they have a target element with the same ID.',
-      nl: 'Wanneer er axis-attributen gebruikt worden om cellen te groeperen, zorg er dan voor dat hun doelelement hetzelfde ID heeft.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['F17']
-        },
-        '4.1.1': {
-          techniques: ['F17']
-        }
-      }
-    }
-  }
-};
-module.exports = TableAxisHasCorrespondingId;
-
-},{"Case":30}],189:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var TableDataShouldHaveTh = {
-  run: function run(test) {
-
-    var selector = 'table';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-          var hasHeading = $(this).find('th').length > 0;
-          // If a test is defined, then use it
-          if (hasHeading) {
-            status = 'passed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Data tables should contain \"th\" elements',
-      nl: 'Datatabellen moeten \"th\"-elementen bevatten'
-    },
-    description: {
-      en: 'Tables which contain data (as opposed to layout tables) should contain <code>th</code> elements to mark headers for screen readers and enhance the structure of the document.',
-      nl: 'Tabellen die data bevatten (in tegenstelling tot lay-out tabellen) moeten <code>th</code>-elementen bevatten om koppen te markeren voor schermlezers en om de structuur van het document te verbeteren.'
-    },
-    guidelines: {
-      508: ['g'],
-      wcag: {
-        '1.3.1': {
-          techniques: ['F91']
-        }
-      }
-    },
-    tags: ['table', 'content']
-  }
-};
-module.exports = TableDataShouldHaveTh;
-
-},{"Case":30}],190:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableLayoutDataShouldNotHaveTh = {
-  run: function run(test) {
-    test.get('$scope').find('table').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-
-      if ($(this).find('th').length !== 0) {
-        if (!IsDataTableComponent($(this))) {
-          _case.set({
-            status: 'failed'
-          });
-        } else {
-          _case.set({
-            status: 'passed'
-          });
-        }
-      } else {
-        _case.set({
-          status: 'inapplicable'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Layout tables should not contain \"th\" elements',
-      nl: 'Lay-out tabellen bevatten geen \"th\"-elementen'
-    },
-    description: {
-      en: 'Tables which are used purely for layout (as opposed to data tables), <strong>should not</strong> contain <code>th</code> elements, which would make the table appear to be a data table.',
-      nl: 'Tabellen die alleen voor lay-out worden gebruikt (in tegenstelling tot datatabellen), moeten geen <code>th</code>-elementen bevatten, omdat deze de indruk wekken dat het een datatabel betreft.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['F46']
-        }
-      }
-    },
-    tags: ['table', 'layout', 'content']
-  }
-};
-module.exports = TableLayoutDataShouldNotHaveTh;
-
-},{"Case":30,"IsDataTableComponent":10}],191:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableLayoutHasNoCaption = {
-  run: function run(test) {
-    test.get('$scope').find('table').each(function () {
-      if ($(this).find('caption').length) {
-        if (!IsDataTableComponent($(this))) {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        } else {
-          test.add(Case({
-            element: this,
-            status: 'passed'
-          }));
-        }
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'inapplicable'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All tables used for layout have no \"caption\" element',
-      nl: 'Alle tabellen die alleen voor lay-out worden gebruikt hebben geen \"caption\"-element'
-    },
-    description: {
-      en: 'If a table contains no data, and is used simply for layout, then it should not contain a <code>caption</code> element.',
-      nl: 'Als een tabel geen data bevat en alle voor lay-out wordt gebruikt, moet hij geen <code>caption</code>-element krijgen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['F46']
-        }
-      }
-    },
-    tags: ['table', 'layout', 'content']
-  }
-};
-module.exports = TableLayoutHasNoCaption;
-
-},{"Case":30,"IsDataTableComponent":10}],192:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var IsUnreadable = require('IsUnreadable');
-var TableLayoutHasNoSummary = {
-  run: function run(test) {
-    test.get('$scope').each(function () {
-      var $local = $(this);
-      $local.find('table[summary]').each(function () {
-        var _case = test.add(Case({
-          element: this
-        }));
-        if (!IsDataTableComponent($(this)) && !IsUnreadable($(this).attr('summary'))) {
-          _case.set({ status: 'failed' });
-        } else {
-          _case.set({ status: 'passed' });
-        }
-      });
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'All tables used for layout have no summary or an empty summary',
-      nl: 'Alle tabellen die alleen voor lay-out worden gebruikt hebben geen samenvatting'
-    },
-    description: {
-      en: 'If a table contains no data, and is used simply for layout, then it should not have a \"summary\" attribute.',
-      nl: 'Als een tabel geen data bevat en alleen voor lay-out wordt gebruikt, moet hij geen \"summary\"-attribuut krijgen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['F46']
-        }
-      }
-    },
-    tags: ['table', 'layout', 'content']
-  }
-};
-module.exports = TableLayoutHasNoSummary;
-
-},{"Case":30,"IsDataTableComponent":10,"IsUnreadable":11}],193:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableLayoutMakesSenseLinearized = {
-  run: function run(test) {
-    test.get('$scope').find('table').each(function () {
-      if (!IsDataTableComponent($(this))) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'All tables used for layout should make sense when removed',
-      nl: 'Als tabellen voor lay-out worden gebruikt moet de pagina nog duidelijk blijven als de tabel wordt verwijderd'
-    },
-    description: {
-      en: 'If a <code>table</code> element is used for layout purposes only, then the content of the table should make sense if the table is linearized.',
-      nl: 'Als een <code>table</code>-element alleen voor lay-out-doeleinden wordt gebruikt, moet de inhoud van de tabel nog steeds duidelijk zijn als de tabel wordt verwijderd.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.2': {
-          techniques: ['G57']
-        },
-        '4.1.1': {
-          techniques: ['F49']
-        }
-      }
-    },
-    tags: ['table', 'layout', 'content']
-  }
-};
-module.exports = TableLayoutMakesSenseLinearized;
-
-},{"Case":30,"IsDataTableComponent":10}],194:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableNotUsedForLayout = {
-  run: function run(test) {
-    test.get('$scope').find('table').each(function () {
-      if (!IsDataTableComponent($(this))) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Tables should not be used for layout',
-      nl: 'Tabellen moet niet worden gebruikt voor lay-out'
-    },
-    description: {
-      en: 'Tables are for data, not for creating a page layout. Consider using standard HTML and CSS techniques instead.',
-      nl: 'Tabellen zijn voor data, niet om een pagina op te maken. Gebruik hiervoor HTML en CSS.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.2': {
-          techniques: ['F49']
-        }
-      }
-    },
-    tags: ['table', 'layout', 'content']
-  }
-};
-module.exports = TableNotUsedForLayout;
-
-},{"Case":30,"IsDataTableComponent":10}],195:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableShouldUseHeaderIDs = {
-  run: function run(test) {
-    test.get('$scope').find('table').each(function () {
-      var $table = $(this);
-      var tableFailed = false;
-      if (IsDataTableComponent($table)) {
-        $table.find('th').each(function () {
-          if (!tableFailed && !$(this).attr('id')) {
-            tableFailed = true;
-            test.add(Case({
-              element: $table.get(0),
-              status: 'failed'
-            }));
-          }
-        });
-        if (!tableFailed) {
-          $table.find('td[header]').each(function () {
-            if (!tableFailed) {
-              $.each($(this).attr('header').split(' '), function (index, id) {
-                if (!$table.find('#' + id).length) {
-                  tableFailed = true;
-                  test.add(Case({
-                    element: $table.get(0),
-                    status: 'failed'
-                  }));
-                }
-              });
-            }
-          });
-        }
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Table cells use IDs to identify headers',
-      nl: 'Tabelcellen gebruiken IDs om koppen te identificeren'
-    },
-    description: {
-      en: 'If a table is not being used for layout, it should use IDs and header attributes to identify table headers.',
-      nl: 'Een tabel moet IDs en header-attributen gebruiken om tabelkoppen te identificeren.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['H43']
-        }
-      }
-    },
-    tags: ['table', 'content']
-  }
-};
-module.exports = TableShouldUseHeaderIDs;
-
-},{"Case":30,"IsDataTableComponent":10}],196:[function(require,module,exports){
-'use strict';
-
-var CleanStringComponent = require('CleanStringComponent');
-var Case = require('Case');
-var TableSummaryDoesNotDuplicateCaption = {
-  run: function run(test) {
-    test.get('$scope').find('table[summary]:has(caption)').each(function () {
-      if (CleanStringComponent($(this).attr('summary')) === CleanStringComponent($(this).find('caption:first').text())) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Table \"summary\" elements should not duplicate the \"caption\" element',
-      nl: 'Tabel \"summary\"-elementen mogen niet hetzelfde zijn als het \"caption\"-element'
-    },
-    description: {
-      en: 'The summary and the caption must be different, as both provide different information. A <code>caption</code>. /code element identifies the table, while the \"summary\" attribute describes the table contents.',
-      nl: 'De samenvatting en beschrijving van een tabel moeten verschillen, want ze bieden verschillende informatie. Een <code>caption</code>-element identificeert welke tabel het betreft en het \"summary\"-attribuut beschrijft de inhoud van de tabel.'
-    },
-    guidelines: [],
-    tags: ['table', 'content']
-  }
-};
-module.exports = TableSummaryDoesNotDuplicateCaption;
-
-},{"Case":30,"CleanStringComponent":2}],197:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var PlaceholderComponent = require('PlaceholderComponent');
-
-var TableSummaryIsEmpty = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'table',
-      attribute: 'summary',
-      empty: 'true'
-    };
-    PlaceholderComponent(test, options);
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'All data tables should have a summary',
-      nl: 'Alle datatabellen moeten een samenvatting hebben'
-    },
-    description: {
-      en: 'If a table contains data, it should have a \"summary\" attribute.',
-      nl: 'Als een tabel data bevat, moet hij een \"summary\"-attribuut hebben.'
-    },
-    guidelines: [],
-    tags: ['table', 'content']
-  }
-};
-module.exports = TableSummaryIsEmpty;
-
-},{"PlaceholderComponent":16}],198:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TableSummaryIsNotTooLong = {
-  run: function run(test) {
-    test.get('$scope').find('table[summary]').each(function () {
-      if ($(this).attr('summary').trim().length > 100) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    guidelines: [],
-    tags: ['table', 'content']
-  }
-};
-module.exports = TableSummaryIsNotTooLong;
-
-},{"Case":30}],199:[function(require,module,exports){
-'use strict';
-
-var IsDataTableComponent = require('IsDataTableComponent');
-var Case = require('Case');
-var TableUseColGroup = {
-  run: function run(test) {
-    test.get('$scope').find('table').each(function () {
-      if (IsDataTableComponent($(this)) && !$(this).find('colgroup').length) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Group columns using \"colgroup\" or \"col\" elements',
-      nl: 'Groepeer kolommen met \"colgroup\"- of \"col\"-elementen'
-    },
-    description: {
-      en: 'To help complex table headers make sense, use <code>colgroup</code> or <code>col</code> to group them together.',
-      nl: 'Maak complexe tabelkoppen duidelijker door \"colgroup\"- of \"col\"-elementen te gebruiken om ze te groeperen.'
-    },
-    guidelines: [],
-    tags: ['table', 'content']
-  }
-};
-module.exports = TableUseColGroup;
-
-},{"Case":30,"IsDataTableComponent":10}],200:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TableUsesAbbreviationForHeader = {
-  run: function run(test) {
-    test.get('$scope').find('th:not(th[abbr])').each(function () {
-      if ($(this).text().length > 20) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Table headers over 20 characters should provide an \"abbr\" attribute',
-      nl: 'Tabelkoppen met meer dan 20 tekens moeten een \"abbr\"-attribuut hebben'
-    },
-    description: {
-      en: 'For long table headers, use an \"abbr\" attribute that is less than short (less than 20 characters long).',
-      nl: 'Gebruik een \"abbr\"-attribuut korter dan 20 tekens voor lange tabelkoppen.'
-    },
-    guidelines: [],
-    tags: ['table', 'content']
-  }
-};
-module.exports = TableUsesAbbreviationForHeader;
-
-},{"Case":30}],201:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-
-var TableUsesCaption = {
-  run: function run(test) {
-
-    var selector = 'table';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.each(function () {
-          var status = 'failed';
-          var hasCaption = $(this).find('caption').length === 1;
-
-          // If a test is defined, then use it
-          if (hasCaption) {
-            status = 'passed';
-          }
-
-          test.add(Case({
-            element: this,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Data tables should contain a \"caption\" element if not described elsewhere',
-      nl: 'Datatabellen moeten een \"caption\"-element hebben als ze nergens anders beschreven worden'
-    },
-    description: {
-      en: 'Unless otherwise described in the document, tables should contain <code>caption</code> elements to describe the purpose of the table.',
-      nl: 'Tenzij elders in het document beschreven, moeten tabellen een \"caption\"-element hebben om het doel van de tabel te beschrijven.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['H39']
-        }
-      }
-    },
-    tags: ['table', 'content']
-  }
-};
-module.exports = TableUsesCaption;
-
-},{"Case":30}],202:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TableUsesScopeForRow = {
-  run: function run(test) {
-    test.get('$scope').find('table').each(function () {
-      $(this).find('td:first-child').each(function () {
-        var $next = $(this).next('td');
-        if ($(this).css('font-weight') === 'bold' && $next.css('font-weight') !== 'bold' || $(this).find('strong').length && !$next.find('strong').length) {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        }
-      });
-      $(this).find('td:last-child').each(function () {
-        var $prev = $(this).prev('td');
-        if ($(this).css('font-weight') === 'bold' && $prev.css('font-weight') !== 'bold' || $(this).find('strong').length && !$prev.find('strong').length) {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        }
-      });
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Data tables should use scoped headers for rows with headers',
-      nl: 'Datatabellen moeten het \"scope\"-attribuut gebruiken voor rijen met koppen'
-    },
-    description: {
-      en: 'Where there are table headers for both rows and columns, use the \"scope\" attribute to help relate those headers with their appropriate cells. This test looks for the first and last cells in each row and sees if they differ in layout or font weight.',
-      nl: 'Als er tabelkoppen zijn voor zowel rijen als kolommen, gebruik dan het \"scope\"-attribuut om het juiste verband te leggen tussen de koppen en bijbehorende cellen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['H63']
-        }
-      }
-    },
-    tags: ['table', 'content']
-  }
-};
-module.exports = TableUsesScopeForRow;
-
-},{"Case":30}],203:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var TabularDataIsInTable = {
-  run: function run(test) {
-    test.get('$scope').find('pre').each(function () {
-      if ($(this).html().search('\t') >= 0) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'All tabular information should use a table',
-      nl: 'Alle tabelinformatie moet ook daadwerkelijk in een tabel staan'
-    },
-    description: {
-      en: 'Tables should be used when displaying tabular information.',
-      nl: 'Gebruik een echte tabel wanneer je tabelinformatie wilt tonen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.1': {
-          techniques: ['F33', 'F34', 'F48']
-        },
-        '1.3.2': {
-          techniques: ['F33', 'F34']
-        }
-      }
-    },
-    tags: ['table', 'content']
-  }
-};
-module.exports = TabularDataIsInTable;
-
-},{"Case":30}],204:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var ConvertToPxComponent = require('ConvertToPxComponent');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var TextSelectorComponent = require('TextSelectorComponent');
-
-var TextIsNotSmall = {
-  run: function run(test) {
-    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
-      return TextNodeFilterComponent(element);
-    }).each(function () {
-      var fontSize = $(this).css('font-size');
-      if (fontSize.search('em') > 0) {
-        fontSize = ConvertToPxComponent(fontSize);
-      }
-      fontSize = parseInt(fontSize.replace('px', ''), 10);
-
-      if (fontSize < 10) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'The text size is not less than 9 pixels high',
-      nl: 'De grootte van de tekst is meer dan 8 pixels hoog'
-    },
-    description: {
-      en: 'To help users with difficulty reading small text, ensure text size is no less than 9 pixels high.',
-      nl: 'Help gebruikers die moeite hebben met het lezen van kleine letters, door ervoor te zorgen dat tekst groter is dan 8 pixels hoog.'
-    },
-    guidelines: [],
-    tags: ['textsize', 'content']
-  }
-};
-module.exports = TextIsNotSmall;
-
-},{"Case":30,"ConvertToPxComponent":5,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],205:[function(require,module,exports){
-'use strict';
-
-/**
- * A wrapper for assessments that call a component to determine
- * the test outcome.
- */
-var LabelComponent = require('LabelComponent');
-
-var TextareaHasAssociatedLabel = {
-  run: function run(test, options) {
-    options = options || {
-      selector: 'textarea'
-    };
-    LabelComponent(test, options);
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All textareas should have a corresponding label',
-      nl: 'Alle \"textarea\"-elementen moeten een bijbehorend label hebben'
-    },
-    description: {
-      en: 'All <code>textarea</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
-      nl: 'Alle \"textarea\"-elementen moeten een bijbehorend label hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.1.1': {
-          techniques: ['H44']
-        },
-        '1.3.1': {
-          techniques: ['H44', 'F68']
-        },
-        '2.1.1': {
-          techniques: ['H91']
-        },
-        '2.1.3': {
-          techniques: ['H91']
-        },
-        '3.3.2': {
-          techniques: ['H44']
-        },
-        '4.1.2': {
-          techniques: ['H44', 'H91']
-        }
-      }
-    },
-    tags: ['form', 'content']
-  }
-};
-module.exports = TextareaHasAssociatedLabel;
-
-},{"LabelComponent":12}],206:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var $ = require('jquery/dist/jquery');
-var VideoMayBePresent = {
-  run: function run(test) {
-
-    var videoExtensions = ['webm', 'flv', 'ogv', 'ogg', 'avi', 'mov', 'qt', 'wmv', 'asf', 'mp4', 'm4p', 'm4v', 'mpg', 'mp2', 'mpeg', 'mpg', 'mpe', 'mpv', 'm2v', '3gp', '3g2'];
-    var videoHosts = ['//www.youtube.com/embed/', '//player.vimeo.com/video/'];
-
-    test.get('$scope').each(function () {
-      var $this = $(this);
-      var hasCase = false; // Test if a case has been created
-
-      // video elm is definately a video, and objects could be too.
-      $this.find('object, video').each(function () {
-        hasCase = true;
-        test.add(Case({
-          element: this,
-          status: 'cantTell'
-        }));
-      });
-
-      // Links refering to files with an video extensions are probably video
-      // though the file may not exist.
-      $this.find('a[href]').each(function () {
-        var $this = $(this);
-        var extension = $this.attr('href').split('.').pop();
-        if ($.inArray(extension, videoExtensions) !== -1) {
-          hasCase = true;
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        }
-      });
-
-      // some iframes with URL's of known video providers are also probably videos
-      $this.find('iframe').each(function () {
-        if (this.src.indexOf(videoHosts[0]) !== -1 || this.src.indexOf(videoHosts[1]) !== -1) {
-          hasCase = true;
-          test.add(Case({
-            element: this,
-            status: 'cantTell'
-          }));
-        }
-      });
-
-      // if no case was added, return inapplicable
-      if (!hasCase) {
-        test.add(Case({
-          element: this,
-          status: 'inapplicable'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'Video or object uses a link that points to a file with a video extension',
-      nl: 'Video of object met een link naar een bestand met een video extensie'
-    },
-    description: {
-      en: '',
-      nl: ''
-    },
-    guidelines: [],
-    tags: ['link', 'video']
-  }
-};
-module.exports = VideoMayBePresent;
-
-},{"Case":30,"jquery/dist/jquery":37}],207:[function(require,module,exports){
-'use strict';
-
-var Case = require('Case');
-var VideoComponent = require('VideoComponent');
-var VideosEmbeddedOrLinkedNeedCaptions = {
-  run: function run(test) {
-
-    VideoComponent.findVideos(test.get('$scope'), function (element, pass) {
-      if (!pass) {
-        test.add(Case({
-          element: element[0],
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: element[0],
-          status: 'passed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 1,
-    title: {
-      en: 'All linked or embedded videos need captions',
-      nl: 'Alle gekoppelde of ingebedde video\'s moeten bijschriften hebben'
-    },
-    description: {
-      en: 'Any video hosted or otherwise which is linked or embedded must have a caption.',
-      nl: 'Elke video die is gekoppeld of ingebed in content moet een bijschrift hebben.'
-    },
-    guidelines: {
-      wcag: {
-        '1.2.2': {
-          techniques: ['G87']
-        },
-        '1.2.4': {
-          techniques: ['G87']
-        }
-      }
-    },
-    tags: ['media', 'content']
-  }
-};
-module.exports = VideosEmbeddedOrLinkedNeedCaptions;
-
-},{"Case":30,"VideoComponent":29}],208:[function(require,module,exports){
-'use strict';
-
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var WhiteSpaceInWord = {
-  run: function run(test) {
-    var whitespaceGroup, nonWhitespace;
-    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
-      return TextNodeFilterComponent(element);
-    }).each(function () {
-      nonWhitespace = $(this).text() ? $(this).text().match(/[^\s\\]/g) : false;
-      whitespaceGroup = $(this).text() ? $(this).text().match(/[^\s\\]\s[^\s\\]/g) : false;
-      if (nonWhitespace && whitespaceGroup && whitespaceGroup.length > 3 && whitespaceGroup.length >= nonWhitespace.length / 2 - 2) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: this,
-          status: 'passed'
-        }));
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Whitespace should not be used between characters in a word',
-      nl: 'Zet geen witruimte tussen letters in een woord'
-    },
-    description: {
-      en: 'Using extra whitespace between letters in a word causes screen readers to not interpret the word correctly, use the letter-spacing CSS property instead.',
-      nl: 'Het gebruik van witruimte tussen de letters van een woord, zorgen dat schermlezers het woord niet volledig kunnen lezen. Gebruik in plaats hiervan css om de ruimte tussen letters te bepalen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.2': {
-          techniques: ['F32', 'C8']
-        }
-      }
-    },
-    tags: ['content']
-  }
-};
-module.exports = WhiteSpaceInWord;
-
-},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],209:[function(require,module,exports){
-'use strict';
-
-var TextSelectorComponent = require('TextSelectorComponent');
-var Case = require('Case');
-var TextNodeFilterComponent = require('TextNodeFilterComponent');
-var WhiteSpaceNotUsedForFormatting = {
-  run: function run(test) {
-    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
-      return TextNodeFilterComponent(element);
-    }).each(function () {
-      var _case = test.add(Case({
-        element: this
-      }));
-      if ($(this).find('br').length === 0) {
-        _case.set({ status: 'passed' });
-        return;
-      }
-      var lines = $(this).html().toLowerCase().split(/(<br\ ?\/?>)+/);
-      var lineCount = 0;
-      $.each(lines, function (index, line) {
-        if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
-          lineCount++;
-        }
-      });
-      if (lineCount > 1) {
-        _case.set({ status: 'failed' });
-      } else {
-        _case.set({ status: 'cantTell' });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Whitespace should not be used for conveying information',
-      nl: 'Gebruik geen witruimte om informatie over te brengen'
-    },
-    description: {
-      en: 'Spaces or tabs are not read by assistive technology and should not be used to convey meaning.',
-      nl: 'Spaties of tabs worden niet voorgelezen door hulpprogramma\'s en moeten niet worden gebruikt om betekenis over te dragen.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.2': {
-          techniques: ['G57']
-        }
-      }
-    },
-    tags: ['content']
-  }
-};
-module.exports = WhiteSpaceNotUsedForFormatting;
-
-},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],210:[function(require,module,exports){
-'use strict';
-
 /*
 RainbowVis-JS 
 Released under Eclipse Public License - v 1.0
@@ -15215,4 +5499,9720 @@ if (typeof module !== 'undefined') {
 	module.exports = Rainbow;
 }
 
-},{}]},{},[31]);
+},{}],40:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AAdjacentWithSameResourceShouldBeCombined = {
+  run: function run(test) {
+
+    function findAdjacent(index, element) {
+      var $element = $(element);
+      // Find all the links
+      var $links = $element.find('a');
+      // Sort them into singletons and coupletons.
+      var $singletons = $();
+      var $coupletons = $();
+
+      $links.each(function (index, link) {
+        var $link = $(link);
+        if ($link.next().is('a')) {
+          $coupletons = $coupletons.add($link);
+        } else {
+          $singletons = $singletons.add($link);
+        }
+      });
+
+      $singletons.each(excludeSingleLinks);
+      $coupletons.each(checkNextLink);
+    }
+
+    function checkNextLink(index, element) {
+      var $element = $(element);
+      var thisHref = element.getAttribute('href');
+      var $nextLink = $element.next();
+      var nextHref = $nextLink[0].getAttribute('href');
+      var status = 'passed';
+      var _case = Case({
+        element: element
+      });
+      if (thisHref === nextHref) {
+        status = 'failed';
+      }
+
+      test.add(_case);
+      _case.set({ status: status });
+    }
+
+    function excludeSingleLinks(index, element) {
+      var _case = Case({ element: element });
+      test.add(_case);
+      _case.set({
+        status: 'inapplicable'
+      });
+    }
+
+    test.get('$scope').each(findAdjacent);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Adjacent links that point to the same location should be merged',
+      nl: 'Voeg naast elkaar gelegen links die naar dezelfde locatie verwijzen samen'
+    },
+    description: {
+      en: 'Because many users of screen-readers use links to navigate the page, providing two links right next to each other that point to the same location can be confusing. Try combining the links.',
+      nl: 'Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Voor hen zijn naast elkaar gelegen links die naar dezelfde locatie verwijzen verwarrend. Probeer de links samen te voegen.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.4': {
+          techniques: ['H2', 'F89']
+        },
+        '2.4.9': {
+          techniques: ['F89']
+        },
+        '4.1.2': {
+          techniques: ['F89']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = AAdjacentWithSameResourceShouldBeCombined;
+
+},{"Case":30}],41:[function(require,module,exports){
+'use strict';
+
+var CleanStringComponent = require('CleanStringComponent');
+var Case = require('Case');
+var AImgAltNotRepetitive = {
+  run: function run(test) {
+    test.get('$scope').find('a img[alt]').each(function () {
+      var _case = test.add(Case({
+        element: this
+      }));
+
+      var alt = CleanStringComponent($(this).attr('alt'));
+      var linkText = CleanStringComponent($(this).closest('a').text());
+
+      if (alt.length > 0 && linkText.indexOf(alt) > -1) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'When an image is in a link, its \"alt\" attribute should not repeat other text in the link',
+      nl: 'Als een link een afbeelding bevat, moet het \"alt\"-attribuut niet dezelfde tekst bevatten als de linktekst'
+    },
+    description: {
+      en: 'Images within a link should not have an alt attribute that simply repeats the text found in the link. This will cause screen readers to simply repeat the text twice.',
+      nl: 'Als een link een afbeelding bevat, moet deze afbeelding een andere tekst in het alt-attribuut hebben dan de tekst in de link. Hiermee voorkom je dat een schermlezer dezelfde tekst twee keer voorleest.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H30']
+        },
+        '2.4.4': {
+          techniques: ['H30']
+        },
+        '2.4.9': {
+          techniques: ['H30']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = AImgAltNotRepetitive;
+
+},{"Case":30,"CleanStringComponent":2}],42:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AInPHasADistinctStyle = {
+  run: function run(test) {
+
+    /**
+     * Checks if an element has a border set
+     * @param element
+     * @returns {boolean}
+     */
+    function hasBorder(element) {
+      return element.outerWidth() - element.innerWidth() > 0 || element.outerHeight() - element.innerHeight() > 0;
+    }
+
+    /**
+     * Test if two elements have a distinct style from it's ancestor
+     * @param  {jQuery node} $elm
+     * @param  {jQuery node} $parent
+     * @return {boolean}
+     */
+    function elmHasDistinctStyle($elm, $parent) {
+      var result = false;
+      var styleProperties = ['font-weight', 'font-style'];
+      var textDecoration = $elm.css('text-decoration');
+
+      if (textDecoration !== 'none' && textDecoration !== $parent.css('text-decoration')) {
+        result = true;
+      }
+
+      if ($elm.css('background-color') !== 'rgba(0, 0, 0, 0)') {
+        styleProperties.push('background');
+      }
+
+      $.each(styleProperties, function (i, styleProp) {
+        if (!result && $elm.css(styleProp) !== $parent.css(styleProp)) {
+          result = true;
+        }
+      });
+
+      return result || hasBorder($elm);
+    }
+
+    function elmHasDistinctPosition($elm) {
+      var isBlock = $elm.css('display') === 'block';
+      var position = $elm.css('position');
+      var isPositioned = position !== 'relative' && position !== 'static';
+      return isBlock || isPositioned;
+    }
+
+    // Ignore links where the p only contains white space, <, >, |, \, / and - chars
+    var allowedPText = /^([\s|-]|>|<|\\|\/|&(gt|lt);)*$/i;
+
+    test.get('$scope').each(function () {
+      var $scope = $(this);
+      var anchors = $scope.find('p a[href]:visible');
+
+      anchors.each(function () {
+        var $this = $(this);
+        var $p = $this.closest('p');
+        var $parent = $this.parent();
+
+        var _case = Case({
+          element: this
+        });
+        test.add(_case);
+
+        var aText = $this.text().trim();
+
+        // Get all text of the p element with all anchors removed
+        var pText = $p.clone().find('a[href]').remove().end().text();
+
+        if (aText === '' || pText.match(allowedPText)) {
+          _case.set('status', 'inapplicable');
+        } else if ($this.css('color') === $p.css('color')) {
+          _case.set('status', 'passed');
+        } else if (elmHasDistinctStyle($this, $p)) {
+          _case.set('status', 'passed');
+        } else if (elmHasDistinctPosition($this)) {
+          _case.set('status', 'passed');
+        } else if ($this.find('img').length > 0) {
+          _case.set('status', 'passed');
+        } else if ($parent.text().trim() === aText && elmHasDistinctStyle($parent, $p)) {
+          _case.set('status', 'passed');
+        } else {
+          _case.set('status', 'failed');
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should be have a distinct style inside a p tag',
+      nl: 'Links moeten een afwijkende stijl hebben binnen een paragraaf'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = AInPHasADistinctStyle;
+
+},{"Case":30}],43:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var RedundantStringsComponent = require('RedundantStringsComponent');
+var ALinkTextDoesNotBeginWithRedundantWord = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var self = this;
+      var $link = $(this);
+      var text = '';
+      var $img = $link.find('img[alt]');
+      if ($img.length) {
+        text = text + $img.eq(0).attr('alt');
+      }
+      text = text + $link.text();
+      text = text.toLowerCase();
+      var _case;
+      // Search the text for redundant words. Break as soon as one is detected.
+      for (var i = 0, il = RedundantStringsComponent.link.length; i < il; ++i) {
+        var phrase = RedundantStringsComponent.link[i];
+        if (text.search(phrase) > -1) {
+          _case = test.add(Case({
+            element: self,
+            status: 'failed'
+          }));
+          break;
+        }
+      }
+      // If the case didn't fail, then it passed.
+      if (!_case) {
+        test.add(Case({
+          element: self,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Link text should not begin with redundant text',
+      nl: 'Laat linkteksten niet beginnen met overbodige tekst'
+    },
+    description: {
+      en: 'Link text should not begin with redundant words or phrases like \"link\".',
+      nl: 'Laat linkteksten niet beginnen met overbodige woorden of woordcombinaties als \"link\" of \"klik hier\".'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.9': {
+          techniques: ['F84']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ALinkTextDoesNotBeginWithRedundantWord;
+
+},{"Case":30,"RedundantStringsComponent":18}],44:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ALinkWithNonText = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (!$(this).is('a:has(img, object, embed)[href]')) {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+      if (!IsUnreadable($(this).text())) {
+        _case.set({
+          status: 'passed'
+        });
+        return;
+      }
+      var unreadable = 0;
+      $(this).find('img, object, embed').each(function () {
+        if ($(this).is('img') && IsUnreadable($(this).attr('alt')) || !$(this).is('img') && IsUnreadable($(this).attr('title'))) {
+          unreadable++;
+        }
+      });
+      if ($(this).find('img, object, embed').length === unreadable) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    title: {
+      en: 'Links with only non-text content should be readable',
+      nl: 'Links zonder tekstuele content moeten leesbaar zijn'
+    },
+    description: {
+      en: 'If a link contains only non-text content like an image, that content must be readable by assistive technology.',
+      nl: 'Als een link alleen maar niet-tekstuele content bevat zoals een afbeelding, moet deze content leesbaar worden gemaakt door middel van daarvoor geschikte technologie.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.4': {
+          techniques: ['H2', 'F89']
+        },
+        '2.4.9': {
+          techniques: ['F89']
+        },
+        '4.1.2': {
+          techniques: ['F89']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ALinkWithNonText;
+
+},{"Case":30,"IsUnreadable":11}],45:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ALinksAreSeparatedByPrintableCharacters = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var _case = test.add(Case({
+        element: this
+      }));
+      // Only test if there's another a tag.
+      if ($(this).next('a').length) {
+        if (IsUnreadable($(this).get(0).nextSibling.wholeText)) {
+          _case.set({
+            status: 'failed'
+          });
+        } else {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Lists of links should be seperated by printable characters',
+      nl: 'Lijsten met links moeten gescheiden worden door afdrukbare tekens'
+    },
+    description: {
+      en: 'If a list of links is provided within the same element, those links should be seperated by a non-linked, printable character. Structures like lists are not included in this.',
+      nl: 'Als een rij met links binnen eenzelfde element staat, moeten de links gescheiden zijn door een niet-gelinkt, afdrukbaar teken. Dit geldt niet voor een gestructureerde lijst.'
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = ALinksAreSeparatedByPrintableCharacters;
+
+},{"Case":30,"IsUnreadable":11}],46:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var NewWindowStringsComponent = require('NewWindowStringsComponent');
+var ALinksDontOpenNewWindow = {
+  run: function run(test) {
+    // Links without a target attribute pass.
+    test.get('$scope').find('a').not('[target=_new], [target=_blank]').each(function () {
+      test.add(Case({
+        element: this,
+        status: 'passed'
+      }));
+    });
+    // Links with a target attribute pass if the link text indicates that the
+    // link will open a new window.
+    test.get('$scope').find('a[target=_new], a[target=_blank]').each(function () {
+      var $link = $(this);
+      var passes = false;
+      var i = 0;
+      var text = $link.text() + ' ' + $link.attr('title');
+      var phrase = '';
+      // Test the link text against strings the indicate the link will open
+      // in a new window.
+      do {
+        phrase = NewWindowStringsComponent[i];
+        if (text.search(phrase) > -1) {
+          passes = true;
+        }
+        ++i;
+      } while (!passes && i < NewWindowStringsComponent.length);
+      // Build a Case.
+      if (passes) {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should not open a new window without warning',
+      nl: 'Met links open je geen nieuw scherm zonder melding'
+    },
+    description: {
+      en: 'Links which open a new window using the \"target\" attribute should warn users.',
+      nl: 'Voordat links door middel van het \"target\"-attribuut een nieuw scherm openen moet de gebruiker een melding hiervan krijgen.'
+    },
+    guidelines: {
+      wcag: {
+        '3.2.5': {
+          techniques: ['H83', 'SCR24']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ALinksDontOpenNewWindow;
+
+},{"Case":30,"NewWindowStringsComponent":15}],47:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var SymbolsStringsComponent = require('SymbolsStringsComponent');
+var ALinksNotSeparatedBySymbols = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var $link = $(this);
+      if ($link.next('a').length) {
+        var text = $link.get(0).nextSibling.wholeText;
+        // The string between the links is composed of symbols.
+        if (typeof text === 'string' && SymbolsStringsComponent.indexOf(text.toLowerCase().trim()) !== -1) {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        }
+        // The string between the links is composed of words.
+        else {
+            test.add(Case({
+              element: this,
+              status: 'passed'
+            }));
+          }
+      }
+      // If nothing follows the link, then there is nothing to test.
+      else {
+          test.add(Case({
+            element: this,
+            status: 'inapplicable'
+          }));
+        }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should not be separated by symbols alone',
+      nl: 'Links mogen niet alleen door symbolen gescheidn worden'
+    },
+    description: {
+      en: 'Since symbols are either not read, or can be confusing when using a screen reader, do not separate links with un-readable symbols.',
+      nl: 'Symbolen worden niet voorgelezen of zijn verwarrend bij het gebruik van een schermlezer. Gebruik geen onleesbare symbolen om links van elkaar te scheiden.'
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = ALinksNotSeparatedBySymbols;
+
+},{"Case":30,"SymbolsStringsComponent":24}],48:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ALinksToMultiMediaRequireTranscript = {
+  run: function run(test) {
+    var selector = ['a[href$=".wmv"]', 'a[href$=".mpg"]', 'a[href$=".mov"]', 'a[href$=".ram"]', 'a[href$=".aif"]'].join(', ');
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      // Inapplicable.
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        // cantTell.
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Any links to a multimedia file should also include a link to a transcript',
+      nl: 'Elke link naar een multimediabestand moet ook een link bevatten naar een transcriptie'
+    },
+    description: {
+      en: 'Links to a multimedia file should be followed by a link to a transcript of the file.',
+      nl: 'Links naar een multimediabestand moeten worden gevolgd door een link naar de transcriptie van dit bestand.'
+    },
+    guidelines: {
+      508: ['c'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74']
+        }
+      }
+    },
+    tags: ['link', 'media', 'content']
+  }
+};
+module.exports = ALinksToMultiMediaRequireTranscript;
+
+},{"Case":30}],49:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ALinksToSoundFilesNeedTranscripts = {
+  run: function run(test) {
+
+    var selector = ['a[href$=".wav"]', 'a[href$=".snd"]', 'a[href$=".mp3"]', 'a[href$=".iff"]', 'a[href$=".svx"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".pcm"]', 'a[href$=".aif"]'].join(', ');
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      // Inapplicable.
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        // cantTell.
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Any links to a sound file should also include a link to a transcript',
+      nl: 'Elke link naar een geluidsbestand moet ook een link bevatten naar een transcriptie'
+    },
+    description: {
+      en: 'Links to a sound file should be followed by a link to a transcript of the file.',
+      nl: 'Links naar een geluidsbestand moeten worden gevolgd door een link naar de transcriptie van dit bestand.'
+    },
+    guidelines: {
+      508: ['c'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74']
+        }
+      }
+    },
+    tags: ['link', 'media', 'content']
+  }
+};
+module.exports = ALinksToSoundFilesNeedTranscripts;
+
+},{"Case":30}],50:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AMultimediaTextAlternative = {
+  run: function run(test) {
+
+    var selector = ['a[href$=".aif"]', 'a[href$=".iff"]', 'a[href$=".mov"]', 'a[href$=".mp3"]', 'a[href$=".mpg"]', 'a[href$=".ram"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".snd"]', 'a[href$=".svx"]', 'a[href$=".pcm"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".wav"]', 'a[href$=".wmv"]'].join(', ');
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      // Inapplicable.
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        // cantTell.
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    guidelines: [],
+    tags: ['link', 'media', 'content']
+  }
+};
+module.exports = AMultimediaTextAlternative;
+
+},{"Case":30}],51:[function(require,module,exports){
+'use strict';
+
+var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
+var Case = require('Case');
+var AMustContainText = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+
+      if (!$(this).attr('href') || $(this).css('display') === 'none') {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+
+      if (ContainsReadableTextComponent($(this), true)) {
+        _case.set({
+          status: 'passed'
+        });
+      } else {
+        _case.set({
+          status: 'failed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should contain text',
+      nl: 'Links moeten tekst bevatten'
+    },
+    description: {
+      en: 'Because many users of screen-readers use links to navigate the page, providing links with no text (or with images that have empty \"alt\" attributes and no other readable text) hinders these users.',
+      nl: 'Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Links zonder tekst (of met afbeeldingen die een leeg \"alt\"-attribuut hebben en geen andere leesbare tekst) hinderen deze gebruikers.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H30']
+        },
+        '2.4.4': {
+          techniques: ['H30']
+        },
+        '2.4.9': {
+          techniques: ['H30']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = AMustContainText;
+
+},{"Case":30,"ContainsReadableTextComponent":4}],52:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AMustHaveTitle = {
+  run: function run(test) {
+    this.get('$scope').each(function () {
+      var links = $(this).find('a');
+
+      links.each(function (i, link) {
+        // Has a title attribute and that attribute has a value, then pass.
+        var title = $(link).attr('title');
+        if (typeof title === 'string' && title.length > 0) {
+          test.add(Case({
+            element: this,
+            status: 'passed'
+          }));
+        }
+        // Does not have a title attribute or the attribute does not have a value.
+        else if (typeof title === 'undefined' || !title.length) {
+            test.add(Case({
+              element: this,
+              status: 'failed'
+            }));
+          }
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All links must have a \"title\" attribute',
+      nl: 'Alle links moeten een \"title\"-attribuut hebben'
+    },
+    description: {
+      en: 'Every link must have a \"title\" attribute.',
+      nl: 'Zorg ervoor dat elke link is voorzien van een \"title\"-attribuut.'
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = AMustHaveTitle;
+
+},{"Case":30}],53:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var AMustNotHaveJavascriptHref = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'a[href^="javascript:"]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should not use \"javascript\" in their location',
+      nl: 'Links moeten geen \"javascript\" in hun locatie hebben'
+    },
+    description: {
+      en: 'Anchor (<code>a</code>.  elements may not use the \"javascript\" protocol in their \"href\" attributes.',
+      nl: 'Anchor(<code>a</code>.-elementen mogen geen \"javascript\"protocol in hun \"href\"-attributen hebben staan.'
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = AMustNotHaveJavascriptHref;
+
+},{"Case":30}],54:[function(require,module,exports){
+'use strict';
+
+var CleanStringComponent = require('CleanStringComponent');
+var Case = require('Case');
+var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
+var ASuspiciousLinkText = {
+  run: function run(test) {
+    test.get('$scope').find('a').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (!$(this).attr('href')) {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+      var text = $(this).text();
+      $(this).find('img[alt]').each(function () {
+        text = text + $(this).attr('alt');
+      });
+      if (SuspiciousLinksStringsComponent.indexOf(CleanStringComponent(text)) > -1) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Link text should be useful',
+      nl: 'Linkteksten moeten bruikbaar en betekenisvol zijn'
+    },
+    description: {
+      en: 'Because many users of screen-readers use links to navigate the page, providing links with text that simply read \"click here\" gives no hint of the function of the link.',
+      nl: 'Veel gebruikers van schermlezers gebruiken links om op de pagina te navigeren. Links met de tekst \"klik hier\" zijn voor deze gebruikers niet betekenisvol en niet bruikbaar.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H30']
+        },
+        '2.4.4': {
+          techniques: ['H30']
+        },
+        '2.4.9': {
+          techniques: ['H30']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ASuspiciousLinkText;
+
+},{"Case":30,"CleanStringComponent":2,"SuspiciousLinksStringsComponent":23}],55:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var ATitleDescribesDestination = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'a[title]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The title attribute of all source a (anchor) elements describes the link destination.',
+      nl: 'Het titel-attribuut van alle source a (anchor)-elementen beschrijven de bestemming van de link'
+    },
+    description: {
+      en: 'Every link must have a \"title\" attribute which describes the purpose or destination of the link.',
+      nl: 'Elke link moet een \"title\"-attribuut hebben waarin het doel of de bestemming van de link wordt beschreven.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.9': {
+          techniques: ['H33', 'H25']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ATitleDescribesDestination;
+
+},{"Case":30}],56:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AnimatedGifMayBePresent = {
+  run: function run(test) {
+
+    /**
+     * Test if gif is animated
+     * Implemented from: https://gist.github.com/3012623.git
+     * @param src
+     * @param ext
+     * @param cb
+     */
+    function isAnimatedGif(src, ext, cb) {
+
+      if (ext !== 'gif') {
+        cb(false);
+        return;
+      }
+
+      var request = new XMLHttpRequest();
+      request.open('GET', src, true);
+      request.responseType = 'arraybuffer';
+      request.addEventListener('load', function () {
+        var arr = new Uint8Array(request.response);
+        var frames = 0;
+
+        // make sure it's a gif (GIF8)
+        if (arr[0] !== 0x47 || arr[1] !== 0x49 || arr[2] !== 0x46 || arr[3] !== 0x38) {
+          cb(false);
+          return;
+        }
+
+        // ported from php http://www.php.net/manual/en/function.imagecreatefromgif.php#104473
+        // an animated gif contains multiple "frames", with each frame having a
+        // header made up of:
+        // * a static 4-byte sequence (\x00\x21\xF9\x04)
+        // * 4 variable bytes
+        // * a static 2-byte sequence (\x00\x2C) (some variants may use \x00\x21 ?)
+        // We read through the file til we reach the end of the file, or we've found
+        // at least 2 frame headers
+        for (var i = 0; i < arr.length - 9; i++) {
+          if (arr[i] === 0x00 && arr[i + 1] === 0x21 && arr[i + 2] === 0xF9 && arr[i + 3] === 0x04 && arr[i + 8] === 0x00 && (arr[i + 9] === 0x2C || arr[i + 9] === 0x21)) {
+            frames++;
+          }
+          if (frames > 1) {
+            cb(true);
+            return;
+          }
+        }
+
+        cb(false);
+      });
+      request.send();
+    }
+
+    test.get('$scope').find('img').each(function () {
+
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+
+      var imgSrc = $(this).attr('src');
+      var ext = $(this).attr('src').split('.').pop().toLowerCase();
+
+      if (ext !== 'gif') {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+
+      isAnimatedGif(imgSrc, ext, function (animated) {
+        if (animated) {
+          _case.set({
+            status: 'cantTell'
+          });
+          return;
+        } else {
+          _case.set({
+            status: 'inapplicable'
+          });
+          return;
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Test if a .gif is used on the page. Test if the .gif contains more then one frame',
+      nl: 'Test of een .gif afbeelding gebruikt is op de pagina. Test of het .gif bestand uit meer dan één frame bestaat'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['link', 'gif']
+  }
+};
+module.exports = AnimatedGifMayBePresent;
+
+},{"Case":30}],57:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var AppletContainsTextEquivalent = {
+  run: function run(test) {
+    test.get('$scope').find('applet[alt=""], applet:not(applet[alt])').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (IsUnreadable($(this).text())) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All applets should contain the same content within the body of the applet',
+      nl: 'Alle applets moeten dezelfde content bevatten in de body van de applet'
+    },
+    description: {
+      en: 'Applets should contain their text equivalents or description within the <code>applet</code> tag itself.',
+      nl: 'Applets moeten hun tekstuele equivalent of beschrijving bevatten in de <code>applet</code> tag.'
+    },
+    guidelines: {
+      508: ['m'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74', 'H35']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletContainsTextEquivalent;
+
+},{"Case":30,"IsUnreadable":11}],58:[function(require,module,exports){
+'use strict';
+
+var PlaceholderComponent = require('PlaceholderComponent');
+var AppletContainsTextEquivalentInAlt = {
+  run: function run(test) {
+    PlaceholderComponent(test, {
+      selector: 'applet',
+      attribute: 'alt',
+      empty: true
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'All applets should contain a text equivalent in the \"alt\" attribute',
+      nl: 'Alle applets moeten een tekstuele equivalent bevatten in het \"alt\"-attribuut'
+    },
+    description: {
+      en: 'Applets should contain their text equivalents or description in an \"alt\" attribute.',
+      nl: 'Applets moeten hun tekstuele equivalent of beschrijving bevatten in een \"alt\"-attribuut.'
+    },
+    guidelines: {
+      508: ['m'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74', 'H35']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletContainsTextEquivalentInAlt;
+
+},{"PlaceholderComponent":16}],59:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var AppletProvidesMechanismToReturnToParent = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'applet';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All applets should provide a way for keyboard users to escape',
+      nl: 'Alle applets moeten door toetsenbordgebruikers kunnen worden verlaten'
+    },
+    description: {
+      en: 'Ensure that a user who has only a keyboard as an input device can escape an <code>applet</code> element. This requires manual confirmation.',
+      nl: 'Zorg ervoor dat gebruikers die alleen het toetsenbord gebruiken als bediening een <code>applet</code>-element kunnen verlaten. Hiervoor is handmatige bevestiging nodig.'
+    },
+    guidelines: [],
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletProvidesMechanismToReturnToParent;
+
+},{"Case":30}],60:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var AppletTextEquivalentsGetUpdated = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'applet';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    guidelines: {
+      508: ['m'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74', 'H35']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletTextEquivalentsGetUpdated;
+
+},{"Case":30}],61:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var AppletUIMustBeAccessible = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'applet';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Any user interface in an applet must be accessible',
+      nl: 'Elke user interface in een applet moet toegankelijk zijn'
+    },
+    description: {
+      en: 'Applet content should be assessed for accessibility.',
+      nl: 'Content in een applet moet getoetst worden op toegankelijkheid.'
+    },
+    guidelines: {
+      508: ['m'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74', 'H35']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletUIMustBeAccessible;
+
+},{"Case":30}],62:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var AppletsDoNotFlicker = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'applet';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All applets do not flicker',
+      nl: 'Applets knipperen of flitsen niet'
+    },
+    description: {
+      en: 'Applets should not flicker.',
+      nl: 'Geen enkele applet mag knipperen of flitsen.'
+    },
+    guidelines: {
+      508: ['j'],
+      wcag: {
+        '2.2.2': {
+          techniques: ['F7']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletsDoNotFlicker;
+
+},{"Case":30}],63:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var AppletsDonotUseColorAlone = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'applet';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Applets should not use color alone to communicate content',
+      nl: 'Applets mogen niet alleen kleur gebruiken om een boodschap over te brengen'
+    },
+    description: {
+      en: 'Applets should contain content that makes sense without color and is accessible to users who are color blind.',
+      nl: 'Applets moeten content bevatten die ook bruikbaar is zonder kleur en die toegankelijk is voor gebruikers met kleurenblindheid.'
+    },
+    guidelines: {
+      508: ['c']
+    },
+    tags: ['objects', 'applet', 'content']
+  }
+};
+module.exports = AppletsDonotUseColorAlone;
+
+},{"Case":30}],64:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+var $ = require('jquery/dist/jquery');
+
+var AreaAltIdentifiesDestination = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'area:not(area[alt])';
+
+    test.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All \"area\" elements must have an \"alt\" attribute which describes the link destination',
+      nl: 'Alle \"area\"-elementen moeten een \"alt\"-attribuut hebben die de bestemming van de link beschrijft'
+    },
+    description: {
+      en: 'All <code>area</code> elements within a <code>map</code> must have an \"alt\" attribute',
+      nl: 'Alle <code>area</code>-elementen binnen een <code>map</code> moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74']
+        }
+      }
+    },
+    tags: ['objects', 'applet', 'content'],
+    options: {
+      test: 'area[alt]'
+    }
+  }
+};
+module.exports = AreaAltIdentifiesDestination;
+
+},{"Case":30,"jquery/dist/jquery":37}],65:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var AreaAltRefersToText = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'area';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Alt text for \"area\" elements should replicate the text found in the image',
+      nl: 'Alt-tekst voor \"area\"-elementen moeten de tekst bevatten zoals die ook in de afbeelding staat'
+    },
+    description: {
+      en: 'If an image is being used as a map, and an <code>area</code> encompasses text within the image, then the \"alt\" attribute of that <code>area</code> element should be the same as the text found in the image.',
+      nl: 'Als een afbeelding als kaart wordt gebruikt, en een <code>area</code> bevat tekst binnen de afbeelding, dan moet het \"alt\"-attribuut van dat <code>area</code>-element hetzelfde zijn als de tekst die in de afbeelding staat.'
+    },
+    guidelines: [],
+    tags: ['imagemap', 'content']
+  }
+};
+module.exports = AreaAltRefersToText;
+
+},{"Case":30}],66:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var NewWindowStringsComponent = require('NewWindowStringsComponent');
+
+var AreaDontOpenNewWindow = {
+  run: function run(test) {
+    // Links without a target attribute pass.
+    test.get('$scope').find('area').not('[target=_new], [target=_blank]').each(function () {
+      test.add(Case({
+        element: this,
+        status: 'passed'
+      }));
+    });
+    // Links with a target attribute pass if the link text indicates that the
+    // link will open a new window.
+    test.get('$scope').find('area[target=_new], area[target=_blank]').each(function () {
+      var $link = $(this);
+      var passes = false;
+      var i = 0;
+      var text = $link.text() + ' ' + $link.attr('title');
+      var phrase = '';
+      // Test the link text against strings the indicate the link will open
+      // in a new window.
+      do {
+        phrase = NewWindowStringsComponent[i];
+        if (text.search(phrase) > -1) {
+          passes = true;
+        }
+        ++i;
+      } while (!passes && i < NewWindowStringsComponent.length);
+      // Build a Case.
+      if (passes) {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'No \"area\" elements should open a new window without warning',
+      nl: '\"area\"-elementen mogen geen nieuw scherm openen zonder melding'
+    },
+    description: {
+      en: 'No <code>area</code> elements should open a new window without warning.',
+      nl: '<code>area</code>-elementen mogen geen nieuw scherm openen zonder dat de gebruiker hiervan een melding krijgt.'
+    },
+    guidelines: [],
+    tags: ['imagemap', 'content']
+  }
+};
+module.exports = AreaDontOpenNewWindow;
+
+},{"Case":30,"NewWindowStringsComponent":15}],67:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var AreaHasAltValue = {
+  run: function run(test) {
+
+    var selector = 'area';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (this.hasAttribute('alt') && (this.getAttribute('alt') || '').length > 0) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"area\" elements must have an \"alt\" attribute',
+      nl: 'Alle \"area\"-elementen moeten een \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>area</code> elements within a <code>map</code> must have an \"alt\" attribute.',
+      nl: 'Alle <code>area</code>-elementen binnen een <code>map</code> moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['F65', 'G74', 'H24']
+        },
+        '1.4.3': {
+          techniques: ['G145']
+        }
+      }
+    },
+    tags: ['imagemap', 'content'],
+    options: {
+      test: ':not(area[alt])'
+    }
+  }
+};
+module.exports = AreaHasAltValue;
+
+},{"Case":30}],68:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var AreaLinksToSoundFile = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = ['area[href$="wav"]', 'area[href$="snd"]', 'area[href$="mp3"]', 'area[href$="iff"]', 'area[href$="svx"]', 'area[href$="sam"]', 'area[href$="smp"]', 'area[href$="vce"]', 'area[href$="vox"]', 'area[href$="pcm"]', 'area[href$="aif"]'].join(', ');
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"area\" elements which link to a sound file should also provide a link to a transcript',
+      nl: 'Alle \"area\"-elementen met een link naar een geluidsbestand moeten ook een link bevatten naar een transcriptie'
+    },
+    description: {
+      en: 'All <code>area</code> elements which link to a sound file should have a text transcript.',
+      nl: 'Alle \"area\"-elementen met een link naar een geluidsbestand moeten een transcriptie hebben in tekst.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['G74']
+        }
+      }
+    },
+    tags: ['imagemap', 'media', 'content']
+  }
+};
+module.exports = AreaLinksToSoundFile;
+
+},{"Case":30}],69:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var AudioMayBePresent = {
+  run: function run(test) {
+    var audioExtensions = ['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];
+
+    test.get('$scope').each(function () {
+      var $this = $(this);
+      var hasCase = false; // Test if a case has been created
+
+      // Audio is definately an audio, and objects could be too.
+      $this.find('object, audio').each(function () {
+        hasCase = true;
+        test.add(Case({
+          element: this,
+          status: 'cantTell'
+        }));
+      });
+
+      // Links refering to files with an audio extensions are good indicators too
+      $this.find('a[href]').each(function () {
+        var $this = $(this);
+        var extension = $this.attr('href').split('.').pop();
+        if ($.inArray(extension, audioExtensions) !== -1) {
+          hasCase = true;
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        }
+      });
+
+      // if no case was added, return inapplicable
+      if (!hasCase) {
+        test.add(Case({
+          element: this,
+          status: 'inapplicable'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Audio or object uses a link that points to a file with a video extension',
+      nl: 'Audio of object met een link naar een bestand met een video extensie'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['link', 'audio']
+  }
+};
+module.exports = AudioMayBePresent;
+
+},{"Case":30}],70:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var BasefontIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'basefont';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Basefont should not be used',
+      nl: 'Basefont moet niet worden gebruikt'
+    },
+    description: {
+      en: 'The <code>basefont</code> tag is deprecated and should not be used. Investigate using stylesheets instead.',
+      nl: 'The <code>basefont</code>-tag is afgekeurd en moet niet worden gebruikt. Gebruik in plaats hiervan stylesheets.'
+    },
+    guidelines: [],
+    tags: ['document', 'deprecated']
+  }
+};
+module.exports = BasefontIsNotUsed;
+
+},{"Case":30}],71:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var BlinkIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'blink';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The \"blink\" tag should not be used',
+      nl: 'De \"blink\"-tag moet niet worden gebruikt'
+    },
+    description: {
+      en: 'The <code>blink</code> tag should not be used. Ever.',
+      nl: 'Het is nooit toegestaan om de \"blink\"-tag te gebruiken.'
+    },
+    guidelines: {
+      wcag: {
+        '2.2.2': {
+          techniques: ['F47']
+        }
+      }
+    },
+    tags: ['deprecated', 'content']
+  }
+};
+module.exports = BlinkIsNotUsed;
+
+},{"Case":30}],72:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var BlockquoteNotUsedForIndentation = {
+  run: function run(test) {
+
+    var selector = 'blockquote';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+
+          if (this.hasAttribute('cite') && (this.getAttribute('cite') || '').length > 0) {
+            test.add(Case({
+              element: this,
+              status: 'passed'
+            }));
+          } else {
+            test.add(Case({
+              element: this,
+              status: 'cantTell'
+            }));
+          }
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'The \"blockquote\" tag should not be used just for indentation',
+      nl: 'De \"blockquote\"-tag mag niet gebruikt worden om in te springen'
+    },
+    description: {
+      en: 'Blockquote tags are for long-form quotes, and should not be used to indent paragraphs. Use CSS to indent the paragraph instead.',
+      nl: 'Blockquotes zijn bedoeld voor lange stukken geciteerde tekst, en niet om tekst te laten inspringen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H49']
+        }
+      }
+    },
+    tags: ['blockquote', 'content']
+  }
+};
+module.exports = BlockquoteNotUsedForIndentation;
+
+},{"Case":30}],73:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var BlockquoteUseForQuotations = {
+  run: function run(test) {
+    test.get('$scope').find('p').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).parents('blockquote').length > 0) {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+      if ($(this).text().substr(0, 1).search(/'|"|«|“|「/) > -1 && $(this).text().substr(-1, 1).search(/'|"|»|„|」/) > -1) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'If long quotes are in the document, use the \"blockquote\" element to mark them',
+      nl: 'Gebruik voor lange citaten in het document het \"blockquote\"-element'
+    },
+    description: {
+      en: 'If there is a paragraph or more of a quote, use the blockquote element to mark it as such.',
+      nl: 'Als er een hele alinea of meer alinea\'s zijn van geciteerde tekst, gebruik dan blockquote om deze als zodanig te markeren.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H49']
+        }
+      }
+    },
+    tags: ['blockquote', 'content']
+  }
+};
+module.exports = BlockquoteUseForQuotations;
+
+},{"Case":30}],74:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var BoldIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'bold';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The \"b\" (bold) element is not used',
+      nl: 'Het \"b\"-element (bold) wordt niet gebruikt'
+    },
+    description: {
+      en: 'The <code>b</code> (bold) element provides no emphasis for non-sighted readers. Use the <code>strong</code> tag instead.',
+      nl: 'Het <code>b</code>-element voorziet niet in nadruk voor blinde en slechtziende gebruikers. Gebruik de <code>strong</code>-tag instead.'
+    },
+    guidelines: [],
+    tags: ['semantics', 'content']
+  }
+};
+module.exports = BoldIsNotUsed;
+
+},{"Case":30}],75:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var ButtonHasName = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'button',
+      content: 'true',
+      empty: 'true',
+      attribute: 'title'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Button should contain text',
+      nl: 'Een knop moet tekst bevatten'
+    },
+    description: {
+      en: 'Buttons should contain a text value within the element, or have a value attribute.',
+      nl: 'Knoppen moeten een tekstwaarde binnen het element hebben, of een waarde-attribuut.'
+    },
+    guidelines: {
+      wcag: {
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['content']
+  }
+};
+module.exports = ButtonHasName;
+
+},{"PlaceholderComponent":16}],76:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var LabelComponent = require('LabelComponent');
+
+var CheckboxHasLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="checkbox"]'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All checkboxes must have a corresponding label',
+      nl: 'Alle keuzevakjes moeten een bijbehorend label hebben'
+    },
+    description: {
+      en: 'All <code>input</code> elements with a type of \"checkbox\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle  <code>input</code>-elementen met een \"keuzevakje\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      508: ['c'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = CheckboxHasLabel;
+
+},{"LabelComponent":12}],77:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var Rainbow = require('rainbowvis.js/rainbowvis.js');
+
+var ColorBackgroundGradientContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorBackgroundGradientContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    /**
+     *
+     */
+    function colorBackgroundGradientContrast(test, Case, options, $this, element) {
+      // Check if there's a background gradient using DOM.
+      var failureFound, numberOfSamples;
+      var rainbow = new Rainbow();
+      var backgroundGradientColors = colors.getBackgroundGradient($this);
+
+      if (!backgroundGradientColors) {
+        return;
+      }
+
+      // Convert colors to hex notation.
+      for (var i = 0; i < backgroundGradientColors.length; i++) {
+        if (backgroundGradientColors[i].substr(0, 3) === 'rgb') {
+          backgroundGradientColors[i] = colors.colorToHex(backgroundGradientColors[i]);
+        }
+      }
+
+      // Create a rainbow.
+      rainbow.setSpectrumByArray(backgroundGradientColors);
+      // @todo, make the number of samples configurable.
+      numberOfSamples = backgroundGradientColors.length * options.gradientSampleMultiplier;
+
+      // Check each color.
+      failureFound = false;
+      for (i = 0; !failureFound && i < numberOfSamples; i++) {
+        var testResult = colors.testElmBackground(options.algorithm, $this, '#' + rainbow.colourAt(i));
+
+        if (!testResult) {
+          buildCase(test, Case, element, 'failed', id, 'The background gradient makes the text unreadable');
+          failureFound = true;
+        }
+      }
+
+      // If no failure was found, the element passes for this case type.
+      if (!failureFound) {
+        buildCase(test, Case, element, 'passed', id, 'The background gradient does not affect readability');
+      }
+    }
+
+    test.get('$scope').each(function () {
+
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and run testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorBackgroundGradientContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorBackgroundGradientContrast;
+
+},{"Case":30,"ColorComponent":3,"rainbowvis.js/rainbowvis.js":39}],78:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var ColorBackgroundImageContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorBackgroundImageContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    /**
+     *
+     */
+    function colorBackgroundImageContrast(test, Case, options, $this, element) {
+      // Check if there's a backgroundImage using DOM.
+      var backgroundImage = colors.getBackgroundImage($this);
+      if (!backgroundImage) {
+        return;
+      }
+
+      var img = document.createElement('img');
+      img.crossOrigin = 'Anonymous';
+
+      // Get average color of the background image. The image must first load
+      // before information about it is available to the DOM.
+      img.onload = function () {
+        var averageColorBackgroundImage = colors.getAverageRGB(img);
+        var testResult = colors.testElmBackground(options.algorithm, $this, averageColorBackgroundImage);
+
+        // Build a case.
+        if (!testResult) {
+          buildCase(test, Case, element, 'failed', id, 'The element\'s background image makes the text unreadable');
+        } else {
+          buildCase(test, Case, element, 'passed', id, 'The element\'s background image does not affect readability');
+        }
+      };
+
+      img.onerror = img.onabort = function () {
+        buildCase(test, Case, element, 'cantTell', id, 'The element\'s background image could not be loaded (' + backgroundImage + ')');
+      };
+
+      // Load the image.
+      img.src = backgroundImage;
+    }
+
+    test.get('$scope').each(function () {
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and rund testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorBackgroundImageContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorBackgroundImageContrast;
+
+},{"Case":30,"ColorComponent":3}],79:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var Rainbow = require('rainbowvis.js/rainbowvis.js');
+
+var ColorElementBehindBackgroundGradientContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorElementBehindBackgroundGradientContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    /**
+     *
+     */
+    function colorElementBehindBackgroundGradientContrast(test, Case, options, $this, element) {
+      // Check if there's a background gradient using element behind current element.
+      var behindGradientColors;
+      var failureFound;
+      var rainbow = new Rainbow();
+      // The option element is problematic.
+      if (!$this.is('option')) {
+        behindGradientColors = colors.getBehindElementBackgroundGradient($this);
+      }
+
+      if (!behindGradientColors) {
+        return;
+      }
+
+      // Convert colors to hex notation.
+      for (var i = 0; i < behindGradientColors.length; i++) {
+        if (behindGradientColors[i].substr(0, 3) === 'rgb') {
+          behindGradientColors[i] = colors.colorToHex(behindGradientColors[i]);
+        }
+      }
+
+      // Create a rainbow.
+      rainbow.setSpectrumByArray(behindGradientColors);
+      var numberOfSamples = behindGradientColors.length * options.gradientSampleMultiplier;
+
+      // Check each color.
+      failureFound = false;
+      for (i = 0; !failureFound && i < numberOfSamples; i++) {
+        failureFound = !colors.testElmBackground(options.algorithm, $this, '#' + rainbow.colourAt(i));
+      }
+
+      // If no failure was found, the element passes for this case type.
+      if (failureFound) {
+        buildCase(test, Case, element, 'failed', id, 'The background gradient of the element behind this element makes the text unreadable');
+      } else {
+        buildCase(test, Case, element, 'passed', id, 'The background gradient of the element behind this element does not affect readability');
+      }
+    }
+
+    test.get('$scope').each(function () {
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and rund testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorElementBehindBackgroundGradientContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorElementBehindBackgroundGradientContrast;
+
+},{"Case":30,"ColorComponent":3,"rainbowvis.js/rainbowvis.js":39}],80:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var ColorElementBehindBackgroundImageContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorElementBehindBackgroundImageContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    /**
+     *
+     */
+    function colorElementBehindBackgroundImageContrast(test, Case, options, $this, element) {
+      // Check if there's a backgroundImage using element behind current element.
+      var behindBackgroundImage;
+
+      // The option element is problematic.
+      if (!$this.is('option')) {
+        behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
+      }
+
+      if (!behindBackgroundImage) {
+        return;
+      }
+
+      var img = document.createElement('img');
+      img.crossOrigin = 'Anonymous';
+      // The image must first load before information about it is available to
+      // the DOM.
+      img.onload = function () {
+
+        // Get average color of the background image.
+        var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
+        var testResult = colors.testElmBackground(options.algorithm, $this, averageColorBehindBackgroundImage);
+        if (!testResult) {
+          buildCase(test, Case, element, 'failed', id, 'The background image of the element behind this element makes the text unreadable');
+        } else {
+          buildCase(test, Case, element, 'passed', id, 'The background image of the element behind this element does not affect readability');
+        }
+      };
+      img.onerror = img.onabort = function () {
+        buildCase(test, Case, element, 'cantTell', id, 'The background image of the element behind this element could not be loaded (' + behindBackgroundImage + ')');
+      };
+      // Load the image.
+      img.src = behindBackgroundImage;
+    }
+
+    test.get('$scope').each(function () {
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and rund testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorElementBehindBackgroundImageContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorElementBehindBackgroundImageContrast;
+
+},{"Case":30,"ColorComponent":3}],81:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var ColorElementBehindContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorElementBehindContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    function colorElementBehindContrast(test, Case, options, $this, element) {
+      // Check text and background using element behind current element.
+      var backgroundColorBehind;
+      // The option element is problematic.
+      if (!$this.is('option')) {
+        backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
+      }
+      if (!backgroundColorBehind) {
+        return;
+      }
+
+      var testResult = colors.testElmBackground(options.algorithm, $this, backgroundColorBehind);
+
+      // Build a case.
+      if (!testResult) {
+        buildCase(test, Case, element, 'failed', id, 'The element behind this element makes the text unreadable');
+      } else {
+        buildCase(test, Case, element, 'passed', id, 'The element behind this element does not affect readability');
+      }
+    }
+
+    test.get('$scope').each(function () {
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and rund testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorElementBehindContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorElementBehindContrast;
+
+},{"Case":30,"ColorComponent":3}],82:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ColorComponent = require('ColorComponent');
+var ColorFontContrast = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var colors = ColorComponent.colors;
+    var buildCase = ColorComponent.buildCase;
+    var id = 'colorFontContrast';
+    // Hard-coding this for now. Requires a way to pass options from the test
+    // definitions down to the test functions.
+    options.algorithm = 'wcag';
+    options.gradientSampleMultiplier = 3;
+
+    /**
+     *
+     */
+    function colorFontContrast(test, Case, options, $this, element) {
+      // Check text and background color using DOM.
+      // Build a case.
+      if (!colors.testElmContrast(options.algorithm, $this)) {
+        buildCase(test, Case, element, 'failed', id, 'The font contrast of the text impairs readability');
+      } else {
+        buildCase(test, Case, element, 'passed', id, 'The font contrast of the text is sufficient for readability');
+      }
+    }
+
+    test.get('$scope').each(function () {
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var nodes = [];
+      var textNode = textNodes.iterateNext();
+
+      // Loop has to be separated. If we try to iterate and rund testCandidates
+      // the xpath thing will crash because document is being modified.
+      while (textNode) {
+        if (ColorComponent.textShouldBeTested(textNode)) {
+          nodes.push(textNode.parentNode);
+        }
+        textNode = textNodes.iterateNext();
+      }
+
+      if (nodes.length === 0) {
+        buildCase(test, Case, null, 'inapplicable', '', 'There is no text to evaluate');
+      }
+
+      nodes.forEach(function (element) {
+        colorFontContrast(test, Case, options, $(element), element);
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All elements should have appropriate color contrast',
+      nl: 'Alle elementen moeten een toepasselijk kleurcontract hebben'
+    },
+    description: {
+      en: 'For users who have color blindness, all text or other elements should have a color contrast of 5:1.',
+      nl: 'Voor gebruikers met kleurenblindheid moeten alle tekst- en andere elementen een kleurcontrast hebben van 5:1.'
+    },
+    guidelines: {
+      wcag: {
+        '1.4.3': {
+          techniques: ['G18']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = ColorFontContrast;
+
+},{"Case":30,"ColorComponent":3}],83:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ *
+ * This test did not test anything, so now it just returns untested.
+ */
+var Case = require('Case');
+
+var CssDocumentMakesSenseStyleTurnedOff = {
+  run: function run(test) {
+    this.get('$scope').each(function () {
+      test.add(Case({
+        element: undefined,
+        status: 'untested'
+      }));
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The document must be readable with styles turned off',
+      nl: 'Het document moet leesbaar zijn met stijlen uit'
+    },
+    description: {
+      en: 'With all the styles for a page turned off, the content of the page should still make sense. Try to turn styles off in the browser and see if the page content is readable and clear.',
+      nl: 'Als alle stijlen voor een pagina zijn uitgezet, moet de content van de pagina nog steeds betekenisvol zijn. Zet stijlen uit in de browser en controleer of de content op de pagina nog steeds leesbaar en duidelijk is.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['G140']
+        },
+        '1.4.5': {
+          techniques: ['G140']
+        },
+        '1.4.9': {
+          techniques: ['G140']
+        }
+      }
+    },
+    tags: ['color']
+  }
+};
+module.exports = CssDocumentMakesSenseStyleTurnedOff;
+
+},{"Case":30}],84:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var DefinitionListsAreUsed = {
+  run: function run(test) {
+    test.get('$scope').find('dl').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      _case.set({
+        status: 'inapplicable'
+      });
+    });
+    test.get('$scope').find('p, li').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      var $item = $(this);
+      $(this).find('span, strong, em, b, i').each(function () {
+        if ($(this).text().length < 50 && $item.text().search($(this).text()) === 0) {
+          if ($(this).is('span')) {
+            if ($(this).css('font-weight') === $item.css('font-weight') && $(this).css('font-style') === $item.css('font-style')) {
+              _case.set({
+                status: 'passed'
+              });
+              return;
+            }
+          }
+          _case.set({
+            status: 'failed'
+          });
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Use a definition list for defining terms',
+      nl: 'Gebruik een definition list voor definities'
+    },
+    description: {
+      en: 'When providing a list of terms or definitions, use a definition list.',
+      nl: 'Wanneer er gebruik wordt gemaakt van een lijst termen of definities, gebruik hiervoor dan een definition list.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H48']
+        }
+      }
+    },
+    tags: ['structure']
+  }
+};
+module.exports = DefinitionListsAreUsed;
+
+},{"Case":30}],85:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var DoctypeProvided = {
+  run: function run(test) {
+    var doc = test.get('$scope').get(0);
+    if ($(doc.doctype).length === 0 && !document.doctype) {
+      test.add(Case({
+        element: doc,
+        status: 'failed'
+      }));
+    } else {
+      test.add(Case({
+        element: doc,
+        status: 'passed'
+      }));
+    }
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document should contain a valid \"doctype\" declaration',
+      nl: 'Het document moet een geldige \"doctype\"-verklaring hebben'
+    },
+    description: {
+      en: 'Each document must contain a valid doctype declaration.',
+      nl: 'Ieder document moet een geldige doctype-verklaring hebben.'
+    },
+    guidelines: [],
+    tags: ['doctype']
+  }
+};
+module.exports = DoctypeProvided;
+
+},{"Case":30}],86:[function(require,module,exports){
+'use strict';
+
+var AcronymComponent = require('AcronymComponent');
+var DocumentAcronymsHaveElement = {
+  run: function run(test) {
+    AcronymComponent(test, 'acronym');
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Acronyms must be marked with an \"acronym\" element',
+      nl: 'Acroniemen moeten worden gemarkeerd met een \"acronym\"-element'
+    },
+    description: {
+      en: 'Acronyms should be marked with an <code>acronym</code> element, at least once on the page for each acronym.',
+      nl: 'Acroniemen moeten worden gemarkeerd door middel van het <code>acronym</code>-element. Doe dit ten minste een keer per pagina voor elke acroniem.'
+    },
+    guidelines: {
+      wcag: {
+        '3.1.4': {
+          techniques: ['H28']
+        }
+      }
+    },
+    tags: ['acronym', 'content']
+  }
+};
+module.exports = DocumentAcronymsHaveElement;
+
+},{"AcronymComponent":1}],87:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var DocumentAutoRedirectNotUsed = {
+  run: function run(test) {
+
+    var selector = 'meta[http-equiv=refresh]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Auto-redirect with \"meta\" elements must not be used',
+      nl: 'Auto-redirect met \"meta\"-elementen moeten niet worden gebruikt'
+    },
+    description: {
+      en: 'Because different users have different speeds and abilities when it comes to parsing the content of a page, a \"meta-refresh\" method to redirect users can prevent users from fully understanding the document before being redirected.',
+      nl: 'Omdat verschillende gebruikers verschillende snelheden en vaardigheden hebben met het scannen van content op een pagina, kan een \"meta-refresh\"-methode om gebruikers door te sturen hen verhinderen het document volledig te begrijpen voor ze worden doorgestuurd.'
+    },
+    guidelines: [],
+    tags: ['document']
+  }
+};
+module.exports = DocumentAutoRedirectNotUsed;
+
+},{"Case":30}],88:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ *
+ * This test did not test anything, so now it just returns untested.
+ */
+var Case = require('Case');
+
+var DocumentContentReadableWithoutStylesheets = {
+  run: function run(test) {
+    this.get('$scope').each(function () {
+      test.add(Case({
+        element: undefined,
+        status: 'untested'
+      }));
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Content should be readable without style sheets',
+      nl: 'Content moet zonder stylesheets leesbaar zijn'
+    },
+    description: {
+      en: 'With all the styles for a page turned off, the content of the page should still make sense. Try to turn styles off in the browser and see if the page content is readable and clear.',
+      nl: 'Ook als alle stijlen voor een pagina zijn uitgezet, moet de content van de pagina nog steeds betekenisvol zijn. Zet de stylesheets uit in de browser en controleer of de content nog steeds leesbaar en duidelijk is.'
+    },
+    guidelines: {
+      508: ['d'],
+      wcag: {
+        '1.3.1': {
+          techniques: ['G140']
+        },
+        '1.4.5': {
+          techniques: ['G140']
+        },
+        '1.4.9': {
+          techniques: ['G140']
+        }
+      }
+    },
+    tags: ['document', 'color']
+  }
+};
+module.exports = DocumentContentReadableWithoutStylesheets;
+
+},{"Case":30}],89:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var DocumentHasTitleElement = {
+  run: function run(test) {
+
+    var selector = 'head title';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (candidates.length === 1) {
+        test.add(Case({
+          element: candidates.get(0),
+          status: 'passed'
+        }));
+      } else if (candidates.length === 0) {
+        test.add(Case({
+          element: undefined,
+          status: 'failed'
+        }));
+      } else if (candidates.length > 1) {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document should have a title element',
+      nl: 'Het document moet een titelelement hebben'
+    },
+    description: {
+      en: 'The document should have a title element.',
+      nl: 'Het document moet een titelelement hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques: ['H25']
+        }
+      }
+    },
+    tags: ['document', 'head']
+  }
+};
+module.exports = DocumentHasTitleElement;
+
+},{"Case":30}],90:[function(require,module,exports){
+'use strict';
+
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var TextStatisticsComponent = require('TextStatisticsComponent');
+var IsUnreadable = require('IsUnreadable');
+var DocumentIsWrittenClearly = {
+  run: function run(test) {
+    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
+      return TextNodeFilterComponent(element);
+    }).each(function () {
+      var text = TextStatisticsComponent.cleanText($(this).text());
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (IsUnreadable(text)) {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      }
+      if (Math.round(206.835 - 1.015 * TextStatisticsComponent.averageWordsPerSentence(text) - 84.6 * TextStatisticsComponent.averageSyllablesPerWord(text)) < 60) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'The document should be written to the target audience and read clearly',
+      nl: 'Het document moet geschreven zijn op het niveau van de doelgroep'
+    },
+    description: {
+      en: 'If a document is beyond a 10th grade level, then a summary or other guide should also be provided to guide the user through the content.',
+      nl: 'Als de inhoud van een document moeilijker is dan het vastgestelde taalniveau, moet een samenvatting of andere begeleiding worden toegevoegd om de gebruiker te helpen met de content.'
+    },
+    guidelines: {
+      wcag: {
+        '3.1.5': {
+          techniques: ['G86']
+        }
+      }
+    },
+    tags: ['language', 'content']
+  }
+};
+module.exports = DocumentIsWrittenClearly;
+
+},{"Case":30,"IsUnreadable":11,"TextNodeFilterComponent":25,"TextSelectorComponent":26,"TextStatisticsComponent":27}],91:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
+var DocumentLangIsISO639Standard = {
+  run: function run(test) {
+    var $element = test.get('$scope').is('html') ? test.get('$scope') : test.get('$scope').find('html').first();
+
+    var _case = Case({
+      element: $element[0]
+    });
+
+    var langAttr = $element.attr('lang');
+    var matchedLang = false; // Check to see if a languagecode was matched
+
+    test.add(_case);
+    if (!$element.is('html') || typeof langAttr === 'undefined') {
+      _case.set({
+        status: 'inapplicable'
+      });
+    } else {
+      // Loop over all language codes, checking if the current lang attribute starts
+      // with a value that's in the languageCodes array
+      $.each(LanguageCodesStringsComponent, function (i, currentLangCode) {
+        if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
+          matchedLang = true;
+        }
+      });
+
+      if (!matchedLang) {
+        _case.set({ status: 'failed' });
+      } else if (langAttr.match(/^[a-z]{2}(-[A-Z]{2})?$/) === null) {
+        _case.set({ status: 'failed' });
+      } else {
+        _case.set({ status: 'passed' });
+      }
+    }
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document\'s language attribute should be a standard code',
+      nl: 'Het language-attribuut van het document moet een standaard code zijn'
+    },
+    description: {
+      en: 'The document should have a default langauge, and that language should use the valid 2 or 3 letter language code according to ISO specification 639.',
+      nl: 'Het document moet een standaardtaal hebben en die taal moet de geldige 2- of 3-letterige taalcode hebben volgens de ISO-specificatie 639.'
+    },
+    guidelines: {
+      wcag: {
+        '3.1.1': {
+          techniques: ['H57']
+        }
+      }
+    },
+    tags: ['document', 'language']
+  }
+};
+module.exports = DocumentLangIsISO639Standard;
+
+},{"Case":30,"LanguageCodesStringsComponent":13}],92:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var DocumentLangNotIdentified = {
+  run: function run(test) {
+    this.get('$scope').each(function () {
+      var lang = 'getAttribute' in this && this.getAttribute('lang');
+      if (lang && lang.length > 1) {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document must have a \"lang\" attribute',
+      nl: 'Het document moet een \"lang\"-attribuut hebben'
+    },
+    description: {
+      en: 'The document should have a default langauge, by setting the \"lang\" attribute in the <code>html</code> element.',
+      nl: 'Het document moet een standaardtaal hebben, vastgelegd in het \"lang\"-attribuut in het <code>html</code>-element.'
+    },
+    guidelines: [],
+    tags: ['document', 'language']
+  }
+};
+module.exports = DocumentLangNotIdentified;
+
+},{"Case":30}],93:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var DocumentMetaNotUsedWithTimeout = {
+  run: function run(test) {
+
+    var selector = 'meta';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('http-equiv') && this.getAttribute('http-equiv') === 'refresh') {
+            if (this.hasAttribute('content') && (this.getAttribute('content') || '').length > 0) {
+              status = 'failed';
+            }
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Meta elements must not be used to refresh the content of a page',
+      nl: 'Meta-elementen mogen niet worden gebruikt om content op een pagina te verversen'
+    },
+    description: {
+      en: 'Because different users have different speeds and abilities when it comes to parsing the content of a page, a \"meta-refresh\" method to reload the content of the page can prevent users from having full access to the content. Try to use a \"refresh this\" link instead.',
+      nl: 'Omdat verschillende gebruikers verschillende snelheden en vaardigheden hebben met het scannen van content op een pagina, kan een \"meta-refresh\"-methode om de pagina te herladen gebruikers hinderen in toegang tot de content. Gebruik een \"refresh this\" link hiervoor.'
+    },
+    guidelines: {
+      wcag: {
+        '2.2.1': {
+          techniques: ['F40', 'F41']
+        },
+        '2.2.4': {
+          techniques: ['F40', 'F41']
+        },
+        '3.2.5': {
+          techniques: ['F41']
+        }
+      }
+    },
+    tags: ['document']
+  }
+};
+module.exports = DocumentMetaNotUsedWithTimeout;
+
+},{"Case":30}],94:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var DocumentReadingDirection = {
+  run: function run(test) {
+
+    var selector = ['[lang="he"]', '[lang="ar"]'].join(', ');
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          if (this.hasAttribute('dir') && (this.getAttribute('dir') || '') === 'rtl') {
+            test.add(Case({
+              element: this,
+              status: 'passed'
+            }));
+          } else {
+            test.add(Case({
+              element: this,
+              status: 'failed'
+            }));
+          }
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Reading direction of text is correctly marked',
+      nl: 'De leesrichting van de tekst staat juist aangegeven'
+    },
+    description: {
+      en: 'Where required, the reading direction of the document (for language that read in different directions), or portions of the text, must be declared.',
+      nl: 'Voor talen die een andere leesrichting hebben, moet de leesrichting van (een deel van) de tekst in een document worden opgenomen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['H34']
+        }
+      }
+    },
+    tags: ['document', 'language']
+  }
+};
+module.exports = DocumentReadingDirection;
+
+},{"Case":30}],95:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var DocumentStrictDocType = {
+  run: function run(test) {
+    if (typeof document.doctype === 'undefined' || !document.doctype || document.doctype.systemId.search('strict') === -1) {
+      test.add(Case({
+        element: document,
+        status: 'failed'
+      }));
+    } else {
+      test.add(Case({
+        element: document,
+        status: 'passed'
+      }));
+    }
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The page uses a strict doctype',
+      nl: 'De pagina gebruikt een strikt doctype'
+    },
+    description: {
+      en: 'The doctype of the page or document should be either an HTML or XHTML strict doctype.',
+      nl: 'Het doctype van een pagina of document moet een HTML of XHTML strikt doctype zijn.'
+    },
+    guidelines: [],
+    tags: ['document', 'doctype']
+  }
+};
+module.exports = DocumentStrictDocType;
+
+},{"Case":30}],96:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var DocumentTitleDescribesDocument = {
+  run: function run(test) {
+
+    var selector = 'head title';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      var status = candidates.length === 1 ? 'passed' : 'failed';
+
+      if (candidates.length === 0) {
+        test.add(Case({
+          element: undefined,
+          status: status
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The title describes the document',
+      nl: 'De titel beschrijft het document'
+    },
+    description: {
+      en: 'The document title should actually describe the page. Often, screen readers use the title to navigate from one window to another.',
+      nl: 'De documenttitel moet een beschrijving zijn van de pagina. Schermlezen gebruiken de titels van pagina\'s om van het ene naar het andere scherm te navigeren.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques: ['F25', 'G88']
+        }
+      }
+    },
+    tags: ['document', 'head']
+  }
+};
+module.exports = DocumentTitleDescribesDocument;
+
+},{"Case":30}],97:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var DocumentTitleIsNotPlaceholder = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'head > title',
+      content: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document title should not be placeholder text',
+      nl: 'De documenttitle moet geen placeholder tekst zijn'
+    },
+    description: {
+      en: 'The document title should not be wasted placeholder text which does not describe the page.',
+      nl: 'De documenttitel moet geen placeholder tekst zijn die geen goede beschrijving van de pagina is.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques: ['F25', 'G88']
+        }
+      }
+    },
+    tags: ['document', 'head']
+  }
+};
+module.exports = DocumentTitleIsNotPlaceholder;
+
+},{"PlaceholderComponent":16}],98:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var DocumentTitleIsShort = {
+  run: function run(test) {
+    var $title = test.get('$scope').find('head title');
+    test.add(Case({
+      element: $title.get(0),
+      status: $title.text().length > 150 ? 'failed' : 'passed'
+    }));
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'The document title should be short',
+      nl: 'De documenttitel moet kort zijn'
+    },
+    description: {
+      en: 'The document title should be short and succinct. This test fails at 150 characters, but authors should consider this to be a suggestion.',
+      nl: 'De documenttitel moet kort en beknopt zijn. Probeer bij een titel langer dan 150 tekense de titel in te korten waar mogelijk.'
+    },
+    guidelines: [],
+    tags: ['document', 'head']
+  }
+};
+module.exports = DocumentTitleIsShort;
+
+},{"Case":30}],99:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var DocumentTitleNotEmpty = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'head > title',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The document should not have an empty title',
+      nl: 'Het document mag geen lege titel hebben'
+    },
+    description: {
+      en: 'The document should have a title element that is not white space.',
+      nl: 'Het document moet een titelelement hebben dat is ingevuld.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.2': {
+          techniques: ['F25', 'H25']
+        }
+      }
+    },
+    tags: ['document', 'head']
+  }
+};
+module.exports = DocumentTitleNotEmpty;
+
+},{"PlaceholderComponent":16}],100:[function(require,module,exports){
+'use strict';
+
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var DocumentVisualListsAreMarkedUp = {
+  run: function run(test) {
+
+    var itemStarters = ['♦', '›', '»', '‣', '▶', '◦', '✓', '◽', '•', '—', '◾', // single characters
+    '-\\D', // dash, except for negative numbers
+    '\\\\', // Just an escaped slash
+    '\\*(?!\\*)', // *, but not ** (which could be a foot note)
+    '\\.\\s', 'x\\s', // characters that should be followed by a space
+    '&bull;', '&#8226;', // HTML entities
+    '[0-9]+\\.', '\\(?[0-9]+\\)', // Numbers: 1., 13., 13), (14)
+    '[\\u25A0-\\u25FF]', // Unicode characters that look like bullets
+    '[IVX]{1,5}\\.\\s' // Roman numerals up to (at least) 27, followed by ". " E.g. II. IV.
+    ];
+
+    var symbols = RegExp('(^|<br[^>]*>)' + // Match the String start or a <br> element
+    '[\\s]*' + // Optionally followed by white space characters
+    '(' + itemStarters.join('|') + ')', // Followed by a character that could indicate a list
+    'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
+
+    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
+      return TextNodeFilterComponent(element);
+    }).each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      var matches = $(this).html().match(symbols);
+      _case.set({
+        status: matches && matches.length > 2 ? 'failed' : 'passed'
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Visual lists of items are marked using ordered or unordered lists',
+      nl: 'Lijsten moeten gemarkeerd worden als ordered of unordered lists'
+    },
+    description: {
+      en: 'Use the ordered (<code>ol</code>) or unordered (<code>ul</code>) elements for lists of items, instead of just using new lines which start with numbers or characters to create a visual list.',
+      nl: 'Gebruik ordered (<code>ol</code>) of unordered (<code>ul</code>) elementen voor lijsten, in plaats van een nieuwe regel per item aan te maken die je laat beginnen met een nummer of teken om een visuele lijst te maken.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H28', 'H48', 'T2']
+        }
+      }
+    },
+    tags: ['list', 'semantics', 'content']
+  }
+};
+module.exports = DocumentVisualListsAreMarkedUp;
+
+},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],101:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+var $ = require('jquery/dist/jquery');
+
+var DomOrderMatchesVisualOrder = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    $.expr[':'].quailCss = function (obj, index, meta) {
+      var args = meta[3].split(/\s*=\s*/);
+      return $(obj).css(args[0]).search(args[1]) > -1;
+    };
+
+    var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Ensure that the visual order of the page matches the DOM',
+      nl: 'Zorg ervoor dat de visuele ordening van de pagina overeenkomt met de DOM'
+    },
+    description: {
+      en: 'When using positioning techniques, make sure that the visual order of the page matches the DOM.',
+      nl: 'Wanneer je gebruik maakt van positioneringstechnieken, zorg er dan voor dat de visuele ordening van de pagina overeenkomt met de DOM.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['C27']
+        },
+        '2.4.3': {
+          techniques: ['C27']
+        }
+      }
+    },
+    tags: ['content']
+  }
+};
+module.exports = DomOrderMatchesVisualOrder;
+
+},{"Case":30,"jquery/dist/jquery":37}],102:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var EmbedHasAssociatedNoEmbed = {
+  run: function run(test) {
+    test.get('$scope').find('embed').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      _case.set({
+        status: $(this).find('noembed').length || $(this).next().is('noembed') ? 'passed' : 'failed'
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"embed\" elements have an associated \"noembed\" element',
+      nl: 'Alle \"embed\" elementen moeten een bijbehorend \"noembed\"-element hebben'
+    },
+    description: {
+      en: 'Because some users cannot use the <code>embed</code> element, provide alternative content in a <code>noembed</code> element.',
+      nl: 'Sommige gebruikers kunnen het <code>embed</code>-element niet gebruiken. Biedt hiervoor alternatieve content aan in een <code>noembed</code>-element.'
+    },
+    guidelines: [],
+    tags: ['object', 'embed', 'content']
+  }
+};
+module.exports = EmbedHasAssociatedNoEmbed;
+
+},{"Case":30}],103:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var EmbedMustHaveAltAttribute = {
+  run: function run(test) {
+
+    var selector = 'embed';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var alt = this.getAttribute('alt');
+          if (alt && typeof alt === 'string' && alt.length > 0) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: '\"Embed\" elements must have an \"alt\" attribute',
+      nl: '\"Embed\"-elementen moeten een \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>embed</code> elements must have an \"alt\" attribute.',
+      nl: 'Alle <code>embed</code>-elementen moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: [],
+    tags: ['object', 'embed', 'content']
+  }
+};
+module.exports = EmbedMustHaveAltAttribute;
+
+},{"Case":30}],104:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var FieldsetHasLabel = {
+  run: function run(test, options) {
+
+    options = options || {};
+
+    var selector = 'fieldset:not(fieldset:has(legend))';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: options.test ? 'inapplicable' : 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status;
+
+          // If a test is defined, then use it
+          if (options.test && !$(this).is(options.test)) {
+            status = 'passed';
+          } else {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Fieldsets require a label element',
+      nl: 'Fieldsets behoeven een label-element'
+    },
+    description: {
+      en: 'Fieldsets used to group similar form elements like checkboxes should have a label that describes the group of elements.',
+      nl: 'Fieldsets die een groep gelijkwaardige elementen bevatten moeten een label hebben die deze groep elementen beschrijft.'
+    },
+    guidelines: {
+      wcag: {
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = FieldsetHasLabel;
+
+},{"Case":30}],105:[function(require,module,exports){
+'use strict';
+
+/**
+ * Test for a label associated with a file input element.
+ */
+var Case = require('Case');
+
+var FileHasLabel = {
+  run: function run(test) {
+
+    var sFiles = '[type="file"]';
+    var sLabels = 'label';
+
+    function countOfLabelsById(id, labels) {
+      // Map labels by for attribute value.
+      var labelsByFor = 0;
+      for (var i = 0, il = labels.length; i < il; ++i) {
+        var $label = labels.eq(i);
+        if ($label.attr('for') === id) {
+          labelsByFor++;
+        }
+      }
+      return labelsByFor;
+    }
+
+    this.get('$scope').each(function () {
+      var $scope = $(this);
+      var files = $scope.find(sFiles);
+      var labels = $scope.find(sLabels);
+
+      if (files.length === 0) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        files.each(function () {
+          var $file = $(this);
+          var status = 'failed';
+
+          // Check for an associated label.
+          var id = $file.attr('id');
+          if (id) {
+            var labelCount = countOfLabelsById(id, labels);
+            if (labelCount === 1) {
+              status = 'passed';
+            }
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"file\" input elements have a corresponding label',
+      nl: 'Alle \"file\"-invoerelementen hebben een bijbehorend label'
+    },
+    description: {
+      en: 'All <code>input</code> elements of type \"file\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user.',
+      nl: 'Alle <code>input</code>-elementen van het type \"file\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      508: ['n'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = FileHasLabel;
+
+},{"Case":30}],106:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var FontIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'font';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Font elements should not be used',
+      nl: 'Het font element moet niet worden gebruikt'
+    },
+    description: {
+      en: 'The <code>basefont</code> tag is deprecated and should not be used. Investigate using stylesheets instead.',
+      nl: 'De <code>basefont</code>-tag is afgekeurd en moet niet worden gebruikt. Gebruik in plaats hiervan stylesheets.'
+    },
+    guidelines: [],
+    tags: ['deprecated', 'content']
+  }
+};
+module.exports = FontIsNotUsed;
+
+},{"Case":30}],107:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var FormButtonsHaveValue = {
+  run: function run(test) {
+
+    var selector = 'input[type=button], input[type=submit], input[type=reset]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          // If the button has a value, it passes.
+          var val = this.getAttribute('value');
+          if (val && typeof val === 'string' && val.length > 0) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Input elements for button, submit, or reset must have a value attribute',
+      nl: 'Invoerelementen voor knoppen, indienen of resetten moeten een waarde-attribuut hebben'
+    },
+    description: {
+      en: 'Any form element that is rendered as a button has to have a readable value attribute.',
+      nl: 'Elk invoerelement dat eruit ziet als een knop moet een leesbaar waarde-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = FormButtonsHaveValue;
+
+},{"Case":30}],108:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var FormErrorMessageHelpsUser = {
+  run: function run(test) {
+
+    var selector = 'form';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Forms offer the user a way to check the results of their form before performing an irrevocable action',
+      nl: 'Formulieren bieden gebruikers de gelegenheid om hun formulier te controleren voor ze een onomkeerbare actie uitvoeren'
+    },
+    description: {
+      en: 'If the form allows users to perform some irrevocable action, like ordreing a product, ensure that users have the ability to review the contents of the form they submitted first. This is not something that can be checked through automated testing and requires manual confirmation.',
+      nl: 'Als een formulier een gebruiker toestaat om een onomkeerbare actie uit te voeren, zoals het bestellen van een product, zorg er dan voor dat ze eerst het formulier kunnen controleren. Dit kan niet met een automatische test en moet handmatig gecontroleerd en bevestigd worden.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = FormErrorMessageHelpsUser;
+
+},{"Case":30}],109:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var FormHasGoodErrorMessage = {
+  run: function run(test) {
+
+    var selector = 'form';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Form error messages should assist in solving errors',
+      nl: 'Foutmeldingen in formulieren moeten fouten helpen oplossen'
+    },
+    description: {
+      en: 'If the form has some required fields or other ways in which the user can commit an error, check that the reply is accessible. Use the words \"required\" or \"error\" within the <code>label</code> element of input items where the errors happened.',
+      nl: 'Als het formulier verplichte velden heeft of op andere manier verkeerd ingevuld kan worden, controleer dan of de bijbehorende foutmelding begrijpelijk is. Gebruik de woorden \"required\" of \"error\" in het <code>label</code>-element of in de invoeritems waar de fout is opgetredenitems where the errors happened.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = FormHasGoodErrorMessage;
+
+},{"Case":30}],110:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var FormHasSubmitButton = {
+  run: function run(test) {
+
+    var selector = 'input[type=submit], button[type=submit]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find('form');
+
+      if (candidates.length === 0) {
+        test.add(Case({
+          element: this,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var submitButton = $(this).find(selector);
+
+          var status = submitButton.length === 1 ? 'passed' : 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Form should have a submit button',
+      nl: 'Formulieren moeten een indienknop hebben'
+    },
+    description: {
+      en: 'Forms should have a button that allows the user to select when they want to submit the form.',
+      nl: 'Formulieren moeten een knop hebben waarmee de gebruiker kan bepalen wanneer zij een formulieren willen versturen.'
+    },
+    guidelines: {
+      wcag: {
+        '3.2.2': {
+          techniques: ['H32', 'G80']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = FormHasSubmitButton;
+
+},{"Case":30}],111:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var RedundantStringsComponent = require('RedundantStringsComponent');
+var FormWithRequiredLabel = {
+  run: function run(test) {
+    var redundant = RedundantStringsComponent;
+    var lastStyle,
+        currentStyle = false;
+    redundant.required[redundant.required.indexOf('*')] = /\*/g;
+    test.get('$scope').each(function () {
+      var $local = $(this);
+      $local.find('label').each(function () {
+        var text = $(this).text().toLowerCase();
+        var $label = $(this);
+        var _case = test.add(Case({
+          element: this
+        }));
+        for (var word in redundant.required) {
+          if (text.search(word) >= 0 && !test.get('$scope').find('#' + $label.attr('for')).attr('aria-required')) {
+            _case.set({
+              status: 'failed'
+            });
+          }
+        }
+        currentStyle = $label.css('color') + $label.css('font-weight') + $label.css('background-color');
+        if (lastStyle && currentStyle !== lastStyle) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        lastStyle = currentStyle;
+        if (typeof _case.get('status') === 'undefined') {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Input items which are required are marked as so in the label element',
+      nl: 'Invoervelden die verplicht zijn, zijn zo gemarkeerd in het label-element'
+    },
+    description: {
+      en: 'If a form element is required, it should be marked as so. This should not be a mere red asterisk, but instead either a \'required\' image with alt text of \"required\" or the actual text \"required\". The indicator that an item is required should be included in the input element\'s <code>label</code> element.',
+      nl: 'Als een formulierveld verplicht is, moet het ook zichtbaar zijn. Doe dit niet alleen met een asterisk achter het veld, maar met bijvoorbeeld een afbeelding met als alttekst \"required\" of de tekst \"required\". De indicatie dat een veld verplicht is moet opgenomen zijn in het <code>label</code>-element van het invoerveld.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['ARIA2']
+        },
+        '1.4.1': {
+          techniques: ['F81']
+        },
+        '3.3.2': {
+          techniques: ['ARIA2', 'H90']
+        },
+        '3.3.3': {
+          techniques: ['ARIA2']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = FormWithRequiredLabel;
+
+},{"Case":30,"RedundantStringsComponent":18}],112:[function(require,module,exports){
+'use strict';
+
+var HeadingLevelComponent = require('HeadingLevelComponent');
+var HeaderH1 = {
+  run: function run(test) {
+    HeadingLevelComponent(test, {
+      headingLevel: 1
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The header following an h1 is not h3 through h6',
+      nl: 'De header die volgt op een h1 is niet h3 tot h6'
+    },
+    description: {
+      en: 'Header order should not skip a level. Do not follow a <code>h1</code> header with a <code>h3</code>, <code>h4</code>, <code>h5</code>, or <code>h6</code>.',
+      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h1</code>-header niet volgen door een <code>h3</code>, <code>h4</code>, <code>h5</code>, of <code>h6</code>.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.6': {
+          techniques: ['G130']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH1;
+
+},{"HeadingLevelComponent":9}],113:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var HeaderH1Format = {
+  run: function run(test) {
+
+    var selector = 'h1';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h1 elements are not used for formatting',
+      nl: 'H1-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h1</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h1</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH1Format;
+
+},{"Case":30}],114:[function(require,module,exports){
+'use strict';
+
+var HeadingLevelComponent = require('HeadingLevelComponent');
+var HeaderH2 = {
+  run: function run(test) {
+    HeadingLevelComponent(test, {
+      headingLevel: 2
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The header following an h2 is not h4, h5, or h6',
+      nl: 'De header volgend op een h2 is geen h4, h5, of h6'
+    },
+    description: {
+      en: 'Header order should not skip a level. Do not follow a <code>h2</code> header with a <code>h4</code>, <code>h5</code>, or <code>h6</code>.',
+      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h2</code>-header niet volgen door een <code>h4</code>, <code>h5</code>, of <code>h6</code>.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.6': {
+          techniques: ['G130']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH2;
+
+},{"HeadingLevelComponent":9}],115:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var HeaderH2Format = {
+  run: function run(test) {
+
+    var selector = 'h2';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h2 elements are not used for formatting',
+      nl: 'H2-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h2</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h2</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH2Format;
+
+},{"Case":30}],116:[function(require,module,exports){
+'use strict';
+
+var HeadingLevelComponent = require('HeadingLevelComponent');
+var HeaderH3 = {
+  run: function run(test) {
+    HeadingLevelComponent(test, {
+      headingLevel: 3
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The header following an h3 is not an h5 or h6',
+      nl: 'De header volgend op een h3 is geen h5, of h6'
+    },
+    description: {
+      en: 'Header order should not skip a level. Do not follow a <code>h3</code> header with a <code>h5<code> or <code>h6</code>.',
+      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h3</code>-header niet volgen door een <code>h5</code>, of <code>h6</code>.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.6': {
+          techniques: ['G130']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH3;
+
+},{"HeadingLevelComponent":9}],117:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var HeaderH3Format = {
+  run: function run(test) {
+
+    var selector = 'h3';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h3 elements are not used for formatting',
+      nl: 'H3-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h3</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h3</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH3Format;
+
+},{"Case":30}],118:[function(require,module,exports){
+'use strict';
+
+var HeadingLevelComponent = require('HeadingLevelComponent');
+var HeaderH4 = {
+  run: function run(test) {
+    HeadingLevelComponent(test, {
+      headingLevel: 4
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'The header following an h4 is not an h6',
+      nl: 'De header volgend op een h4 is geen h6'
+    },
+    description: {
+      en: 'Header order should not skip a level. Do not follow a <code>h4</code> haeder with a <code>h6</code>.',
+      nl: 'Headers mogen geen niveau overslaan. Laat een <code>h4/code> header niet volgen door een <code>h6</code>.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.6': {
+          techniques: ['G130']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH4;
+
+},{"HeadingLevelComponent":9}],119:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var HeaderH4Format = {
+  run: function run(test) {
+
+    var selector = 'h4';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h4 elements are not used for formatting',
+      nl: 'H4-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h4</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h4</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH4Format;
+
+},{"Case":30}],120:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var HeaderH5Format = {
+  run: function run(test) {
+
+    var selector = 'h5';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h5 elements are not used for formatting',
+      nl: 'H5-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h5</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h5</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH5Format;
+
+},{"Case":30}],121:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var HeaderH6Format = {
+  run: function run(test) {
+
+    var selector = 'h6';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All h6 elements are not used for formatting',
+      nl: 'H6-elementen worden niet gebruikt voor formatting'
+    },
+    description: {
+      en: 'An <code>h6</code> element may not be used purely for formatting.',
+      nl: 'Een <code>h6</code>-element mag niet alleen gebruikt worden voor formatting.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['T3']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeaderH6Format;
+
+},{"Case":30}],122:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var HeadersAttrRefersToATableCell = {
+  run: function run(test) {
+    // Table cell headers without referred ids
+    test.get('$scope').find('table').each(function () {
+      var self = this;
+      var _case = Case();
+      test.add(_case);
+      var elmHeaders = $(self).find('th[headers], td[headers]');
+
+      if (elmHeaders.length === 0) {
+        _case.set({
+          status: 'inapplicable'
+        });
+        return;
+      } else {
+        elmHeaders.each(function () {
+          var that = this;
+          var headers = $(this).attr('headers').split(/\s+/);
+          $.each(headers, function (index, item) {
+            if (item === '' || $(self).find('th#' + item + ',td#' + item).length > 0) {
+              _case.set({
+                element: that,
+                status: 'passed'
+              });
+              return;
+            } else {
+              _case.set({
+                element: that,
+                status: 'failed'
+              });
+              return;
+            }
+          });
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Table cell headers attrtibutes must within the same table have an associated data cell with the same id',
+      nl: 'Tabel cellen met een headers attribuut moeten binnen dezelfde tabel een overeenkomende data cel hebben in het id attribuut dezelfde waarde'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['headers', 'td', 'th']
+  }
+};
+module.exports = HeadersAttrRefersToATableCell;
+
+},{"Case":30}],123:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var HeadersHaveText = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'h1, h2, h3, h4, h5, h6',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All headers should contain readable text',
+      nl: 'Alle headers moeten leesbare tekst bevatten'
+    },
+    description: {
+      en: 'Users with screen readers use headings like the tabs <em>h1</em> to navigate the structure of a page. All headings should contain either text, or images with appropriate <em>alt</em> attributes.',
+      nl: 'Gebruikers van schermlezers gebruiken headers om via de structuur van een pagina te navigeren. Alle headers moeten daarom tekst bevatten of afbeeldingen met toepasselijk <em>alt</em>-attributen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['G141']
+        },
+        '2.4.10': {
+          techniques: ['G141']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeadersHaveText;
+
+},{"PlaceholderComponent":16}],124:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var HeadersUseToMarkSections = {
+  run: function run(test) {
+    test.get('$scope').find('p').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      var $paragraph = $(this);
+      $paragraph.find('strong:first, em:first, i:first, b:first').each(function () {
+        _case.set({
+          status: $paragraph.text().trim() === $(this).text().trim() ? 'failed' : 'passed'
+        });
+      });
+    });
+
+    test.get('$scope').find('ul, ol').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      var $list = $(this);
+      if ($list.prevAll(':header').length || $list.find('li').length !== $list.find('li:has(a)').length) {
+        _case.set({
+          status: 'passed'
+        });
+        return;
+      }
+      var isNavigation = true;
+      $list.find('li:has(a)').each(function () {
+        if ($(this).text().trim() !== $(this).find('a:first').text().trim()) {
+          isNavigation = false;
+        }
+      });
+      if (isNavigation) {
+        _case.set({
+          status: 'failed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Use headers to mark the beginning of each section',
+      nl: 'Gebruik headers om de start van elke sectie aan te geven.'
+    },
+    description: {
+      en: 'Check that each logical section of the page is broken or introduced with a header (h1-h6) element.',
+      nl: 'Controleer dat elke logische sectie van een pagina wordt onderbroken door of start met een header-element (h1-h6).'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['G141']
+        },
+        '2.4.1': {
+          techniques: ['G141', 'H69']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = HeadersUseToMarkSections;
+
+},{"Case":30}],125:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var IIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'i';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The \"i\" (italic) element is not used',
+      nl: 'Het \"i\"-element (cursief) wordt niet gebruikt'
+    },
+    description: {
+      en: 'The <code>i</code> (italic) element provides no emphasis for non-sighted readers. Use the <code>em</code> tag instead.',
+      nl: 'Het <code>i</code>-element biedt geen nadruk voor slechtziende en blinde lezers. Gebruik in plaats daarvan de <code>em</code>-tag.'
+    },
+    guidelines: [],
+    tags: ['deprecated', 'content']
+  }
+};
+module.exports = IIsNotUsed;
+
+},{"Case":30}],126:[function(require,module,exports){
+'use strict';
+
+function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
+var Case = require('Case');
+var IdrefsHasCorrespondingId = {
+  run: function run(test) {
+
+    function getAttribute($element) {
+      var attribute = [];
+      var attributeList = ['headers', 'aria-controls', 'aria-describedby', 'aria-flowto', 'aria-labelledby', 'aria-owns'];
+
+      $.each(attributeList, function (index, item) {
+
+        var attr = $element.attr(item);
+
+        if ((typeof attr === 'undefined' ? 'undefined' : _typeof(attr)) !== (typeof undefined === 'undefined' ? 'undefined' : _typeof(undefined)) && attr !== false) {
+          attribute = attr;
+          return;
+        }
+      });
+      return attribute.split(/\s+/);
+    }
+
+    test.get('$scope').each(function () {
+      var testableElements = $(this).find('td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], ' + '[aria-labelledby], [aria-owns]');
+
+      if (testableElements.length === 0) {
+        test.add(Case({
+          element: this,
+          status: 'inapplicable'
+        }));
+        return;
+      } else {
+        testableElements.each(function () {
+          var _case = test.add(Case({
+            element: this
+          }));
+
+          var attributes = getAttribute($(this));
+          var status = 'passed';
+
+          $.each(attributes, function (index, item) {
+            if (item !== '' && $('#' + item).length === 0) {
+              status = 'failed';
+              return;
+            }
+          });
+
+          _case.set({
+            status: status
+          });
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Elements with an idref attribute must correspond to an element with an ID',
+      nl: 'Elementen met een idref-attribuut moeten corresponderen met een element met een ID'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F17']
+        },
+        '4.1.1': {
+          techniques: ['F17']
+        }
+      }
+    }
+  }
+};
+module.exports = IdrefsHasCorrespondingId;
+
+},{"Case":30}],127:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var IframeMustNotHaveLongdesc = {
+  run: function run(test) {
+
+    var selector = 'iframe';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('longdesc')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Inline frames (\"iframes\") should not have a \"longdesc\" attribute',
+      nl: 'Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut'
+    },
+    description: {
+      en: 'Inline frames (iframe) should not have a \"longdesc\" attribute.',
+      nl: 'Inline frames (\"iframes\") krijgen geen \"longdesc\"-attribuut.'
+    },
+    guidelines: [],
+    tags: ['objects', 'iframe', 'content']
+  }
+};
+module.exports = IframeMustNotHaveLongdesc;
+
+},{"Case":30}],128:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var ImageMapServerSide = {
+  run: function run(test) {
+
+    var selector = 'img';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('ismap')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All links in a server-side map should have duplicate links available in the document',
+      nl: 'Alle links in een server-side map moeten elders in het document terugkeren'
+    },
+    description: {
+      en: 'Any image with an \"usemap\" attribute for a server-side image map should have the available links duplicated elsewhere.',
+      nl: 'Elke afbeelding met een \"usemap\"-attribuut voor een server-side map moet de beschikbare links ook elders hebben.'
+    },
+    guidelines: [],
+    tags: ['objects', 'iframe', 'content']
+  }
+};
+module.exports = ImageMapServerSide;
+
+},{"Case":30}],129:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ImgAltIsDifferent = {
+  run: function run(test) {
+    test.get('$scope').find('img:not([src])').each(function () {
+      var _case = Case({
+        element: this,
+        status: 'inapplicable'
+      });
+      test.add(_case);
+    });
+    test.get('$scope').find('img[alt][src]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).attr('src') === $(this).attr('alt') || $(this).attr('src').split('/').pop() === $(this).attr('alt')) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Image \"alt\" attributes should not be the same as the filename',
+      nl: '\"Alt\"-attributen van afbeeldingen moeten niet hetzelfde zijn als de bestandsnaam'
+    },
+    description: {
+      en: 'All <code>img</code> elements should have an \"alt\" attribute that is not just the name of the file',
+      nl: 'Alle <code>img</code>-elementen moeten een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam van de afbeelding.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H37']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgAltIsDifferent;
+
+},{"Case":30}],130:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ImgAltIsTooLong = {
+  run: function run(test) {
+    test.get('$scope').find('img[alt]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      _case.set({
+        status: $(this).attr('alt').length > 100 ? 'failed' : 'passed'
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Image Alt text is too long',
+      nl: 'Altteksten voor een afbeelding zijn kort'
+    },
+    description: {
+      en: 'All \"alt\" attributes for <code>img</code> elements should be clear and concise. \"Alt\" attributes over 100 characters long should be reviewed to see if they are too long.',
+      nl: 'Alle \"alt\"-attributen voor <code>img</code>-elementen moeten duidelijk en bondig zijn. Verifieer \"alt\"-attributen langer dan 100 tekens en kort ze in waar mogelijk.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H37']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgAltIsTooLong;
+
+},{"Case":30}],131:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ImgAltNotEmptyInAnchor = {
+  run: function run(test) {
+    test.get('$scope').find('a[href]:has(img)').each(function () {
+      var $a = $(this);
+      var text = $a.text();
+
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+
+      // Concat all alt attributes of images to the text of the paragraph
+      $a.find('img[alt]').each(function () {
+        text += ' ' + $(this).attr('alt');
+      });
+
+      if (IsUnreadable(text)) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'An image within a link cannot have an empty \"alt\" attribute if there is no other text within the link',
+      nl: 'Een afbeelding binnen een link mag geen leeg \"alt\"-attribuut hebben als er geen andere tekst is in de link'
+    },
+    description: {
+      en: 'Any image that is within a link (an <code>a</code> element) that has no other text cannot have an empty or missing \"alt\" attribute.',
+      nl: 'Elke afbeelding binnen een link (een <code>a</code>-element) die geen andere tekst heeft, mag geen leeg of ontbrekend \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '2.4.4': {
+          techniques: ['H30']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgAltNotEmptyInAnchor;
+
+},{"Case":30,"IsUnreadable":11}],132:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var ImgAltNotPlaceHolder = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'img',
+      attribute: 'alt'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Images should not have a simple placeholder text as an \"alt\" attribute',
+      nl: 'Afbeeldingen mogen geen placeholdertkest als \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'Any image that is not used decorativey or which is purely for layout purposes cannot have an \"alt\" attribute that consists solely of placeholders.',
+      nl: 'Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen \"alt\"-attribuut hebben met daarin placeholdertekst.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['F30', 'F39']
+        },
+        '1.2.1': {
+          techniques: ['F30']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgAltNotPlaceHolder;
+
+},{"PlaceholderComponent":16}],133:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var ImgHasAlt = {
+  run: function run(test) {
+
+    var selector = 'img';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if (this.hasAttribute('alt')) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Image elements must have an \"alt\" attribute',
+      nl: 'Afbeeldingselementen moeten een \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>img</code> elements must have an alt attribute.',
+      nl: 'Alle <code>img</code>-elementen moeten een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['F65', 'H37']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgHasAlt;
+
+},{"Case":30}],134:[function(require,module,exports){
+'use strict';
+
+var ValidURLComponent = require('ValidURLComponent');
+var Case = require('Case');
+var ImgHasLongDesc = {
+  run: function run(test) {
+    test.get('$scope').find('img[longdesc]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).attr('longdesc') === $(this).attr('alt') || !ValidURLComponent($(this).attr('longdesc'))) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'A \"longdesc\" attribute is required for any image where additional information not in the \"alt\" attribute is required',
+      nl: 'Een \"longdesc\"-attribuut is verplicht voor elke afbeelding waar aanvullende informatie niet benodigd is in het \"alt\"-attribuut'
+    },
+    description: {
+      en: 'Any image that has an \"alt\" attribute that does not fully convey the meaning of the image must have a \"longdesc\" attribute.',
+      nl: 'Elke afbeelding die een \"alt\"-attribuut heeft dat de volledige betekenis van de afbeelding bevat, moet een \"longdesc\"-attribuut hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.4': {
+          techniques: ['G91']
+        },
+        '2.4.9': {
+          techniques: ['G91']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgHasLongDesc;
+
+},{"Case":30,"ValidURLComponent":28}],135:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ImgImportantNoSpacerAlt = {
+  run: function run(test) {
+    test.get('$scope').find('img[alt]').each(function () {
+      var width = $(this).width() ? $(this).width() : parseInt($(this).attr('width'), 10);
+      var height = $(this).height() ? $(this).height() : parseInt($(this).attr('height'), 10);
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (IsUnreadable($(this).attr('alt').trim()) && $(this).attr('alt').length > 0 && width > 50 && height > 50) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Images that are important should not have a purely white-space \"alt\" attribute',
+      nl: 'Afbeeldingen die belangrijk zijn mogen geen leeg \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'Any image that is not used decorativey or which is purely for layout purposes cannot have an \"alt\" attribute that consists solely of white space (i.e. a space).',
+      nl: 'Elke afbeelding die niet ter decoratie is of die alleen voor lay-out doeleinden is bedoeld, mag geen leeg \"alt\"-attribuut hebben (bijvoorbeeld alleen een spatie).'
+    },
+    guidelines: [],
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgImportantNoSpacerAlt;
+
+},{"Case":30,"IsUnreadable":11}],136:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ImgNonDecorativeHasAlt = {
+  run: function run(test) {
+    test.get('$scope').find('img[alt]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (IsUnreadable($(this).attr('alt')) && ($(this).width() > 100 || $(this).height() > 100)) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Any non-decorative images should have a non-empty \"alt\" attribute',
+      nl: 'Elke niet-decoratieve afbeelding moet een gevuld \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'Any image that is not used decoratively or which is purely for layout purposes cannot have an empty \"alt\" attribute.',
+      nl: 'Elke afbeelding die niet ter decoratie is of voor lay-out doeleinden wordt gebruikt, moet een gevuld \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['F38']
+        }
+      }
+    },
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgNonDecorativeHasAlt;
+
+},{"Case":30,"IsUnreadable":11}],137:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var ImgServerSideMapNotUsed = {
+  run: function run(test) {
+
+    var selector = 'img';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('ismap')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Server-side image maps should not be used',
+      nl: 'Server-side image maps moeten niet worden gebruikt'
+    },
+    description: {
+      en: 'Server-side image maps should not be used.',
+      nl: 'Server-side image maps mogen niet worden gebruikt.'
+    },
+    guidelines: [],
+    tags: ['image', 'imagemap', 'content']
+  }
+};
+module.exports = ImgServerSideMapNotUsed;
+
+},{"Case":30}],138:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var ImgShouldNotHaveTitle = {
+  run: function run(test) {
+
+    var selector = 'img';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('title')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Images should not have a \"title\" attribute',
+      nl: 'Afbeeldingen moeten geen \"title\"-attribuut hebben'
+    },
+    description: {
+      en: 'Images should not contain a \"title\" attribute.',
+      nl: 'Afbeeldingen zouden geen \"title\"-attribuut moeten bevatten.'
+    },
+    guidelines: [],
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgShouldNotHaveTitle;
+
+},{"Case":30}],139:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var ImgWithMapHasUseMap = {
+  run: function run(test) {
+
+    var selector = 'img[ismap]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if (this.hasAttribute('usemap')) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Any image with an \"ismap\" attribute have a valid \"usemap\" attribute',
+      nl: 'Elke afbeelding met een \"ismap\"-attribuut heeft een geldig \"usemap\"-attribuut'
+    },
+    description: {
+      en: 'If an image has an \"ismap\" attribute it must have a valid \"usemap\" attribute.',
+      nl: 'Als een afbeelding een \"ismap\"-attribuut heeft, moet het ook een geldig \"usemap\"-attribuut hebben'
+    },
+    guidelines: {
+      508: ['ef', 'ef']
+    },
+    tags: ['image', 'imagemap', 'content']
+  }
+};
+module.exports = ImgWithMapHasUseMap;
+
+},{"Case":30}],140:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ImgWithMathShouldHaveMathEquivalent = {
+  run: function run(test) {
+    test.get('$scope').find('img:not(img:has(math), img:has(tagName))').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (!$(this).parent().find('math').length) {
+        _case.set({
+          status: 'failed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Images which contain math equations should provide equivalent MathML',
+      nl: 'Afbeeldingen met wiskundige vergelijking moeten een equivalent in MathML bieden'
+    },
+    description: {
+      en: 'Images which contain math equations should be accompanied or link to a document with the equivalent equation marked up with <a href=\"http://www.w3.org/Math/\">MathML</a>.',
+      nl: 'Afbeeldingen die wiskundige vergelijkingen bevatten moeten vergezeld zijn van of linken naar een document met daarin een equivalent van de vergelijking in <a href=\"http://www.w3.org/Math/\">MathML</a>.'
+    },
+    guidelines: [],
+    tags: ['image', 'content']
+  }
+};
+module.exports = ImgWithMathShouldHaveMathEquivalent;
+
+},{"Case":30}],141:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var InputCheckboxRequiresFieldset = {
+  run: function run(test) {
+    test.get('$scope').find('input[type="checkbox"]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (!$(this).parents('fieldset').length) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Logical groups of check boxes should be grouped with a fieldset',
+      nl: 'Logische groepen van keuzevakjes moeten gegroepeerd zijn in een fieldset'
+    },
+    description: {
+      en: 'Related \"checkbox\" input fields should be grouped together using a <code>fieldset</code>.',
+      nl: 'Gerelateerde \"keuzevakjes\"-invoervelden moeten bij elkaar staan in een <code>fieldset</code>.'
+    },
+    guidelines: {
+      wcag: {
+        '3.3.2': {
+          techniques: ['H71']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputCheckboxRequiresFieldset;
+
+},{"Case":30}],142:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var InputElementsDontHaveAlt = {
+  run: function run(test) {
+
+    var selector = 'input[type!=image]';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if (this.hasAttribute('alt')) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Input elements which are not images should not have an \"alt\" attribute',
+      nl: 'Invoervelden die geen afbeelding zijn, moeten geen \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'Input elements which are not images should not have an \"alt\" attribute, because of inconsistencies in how user agents use the \"alt\" attribute.',
+      nl: 'Invoervelden die geen afbeelding zijn, moeten geen \"alt\"-attribuut hebben, omdat user agents het \"alt\"-attribuut niet consistent gebruiken.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputElementsDontHaveAlt;
+
+},{"Case":30}],143:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var InputImageAltIsNotFileName = {
+  run: function run(test) {
+    test.get('$scope').find('input[type=image][alt]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).attr('src') === $(this).attr('alt')) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not the same as the filename',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam'
+    },
+    description: {
+      en: 'All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute which is not the same as the filename.',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat anders is dan de bestandsnaam.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H36']
+        }
+      }
+    },
+    tags: ['form', 'image', 'content']
+  }
+};
+module.exports = InputImageAltIsNotFileName;
+
+},{"Case":30}],144:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var InputImageAltIsNotPlaceholder = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="image"]',
+      attribute: 'alt'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not placeholder text.',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben anders dan alleen placeholdertekst.'
+    },
+    description: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is not placeholder text.',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben anders dan alleen placeholdertekst.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H36']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['form', 'image', 'content']
+  }
+};
+module.exports = InputImageAltIsNotPlaceholder;
+
+},{"PlaceholderComponent":16}],145:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var InputImageAltIsShort = {
+  run: function run(test) {
+    test.get('$scope').find('input[type=image]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).attr('alt').length > 100) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is as short as possible',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat zo kort mogelijk is'
+    },
+    description: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute which is as short as possible.',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben dat zo kort mogelijk is.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H36']
+        }
+      }
+    },
+    tags: ['form', 'image', 'content']
+  }
+};
+module.exports = InputImageAltIsShort;
+
+},{"Case":30}],146:[function(require,module,exports){
+'use strict';
+
+var CleanStringComponent = require('CleanStringComponent');
+var Case = require('Case');
+var RedundantStringsComponent = require('RedundantStringsComponent');
+var InputImageAltNotRedundant = {
+  run: function run(test) {
+    test.get('$scope').find('input[type=image][alt]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (RedundantStringsComponent.inputImage.indexOf(CleanStringComponent($(this).attr('alt'))) > -1) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The \"alt\" text for input \"image\" submit buttons must not be filler text',
+      nl: 'De \"alt\"-tekst for \"image\"-knoppen moet anders zijn dan alleen placeholdertekst'
+    },
+    description: {
+      en: 'Every form image button should not simply use filler text like \"button\" or \"submit\" as the \"alt\" text.',
+      nl: 'Elke formulierknop die een afbeelding is, moet bruikbare tekst als \"alt\"-tekst hebben, anders dan \"knop\" of \"verstuur\".'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H36']
+        }
+      }
+    },
+    tags: ['form', 'image', 'content']
+  }
+};
+module.exports = InputImageAltNotRedundant;
+
+},{"Case":30,"CleanStringComponent":2,"RedundantStringsComponent":18}],147:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var InputImageHasAlt = {
+  run: function run(test) {
+
+    var selector = 'input[type=image]:visible';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if (this.hasAttribute('alt')) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements with a type of \"image\" must have an \"alt\" attribute',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben'
+    },
+    description: {
+      en: 'All <code>input</code> elements with a type of \"image\" should have an \"alt\" attribute.',
+      nl: 'Elk \"invoer\"-element met een type \"afbeelding\" moet een \"alt\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['a'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['F65', 'G94', 'H36']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '4.1.2': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['form', 'image', 'content'],
+    options: {
+      test: ':not(input[type=image][alt])'
+    }
+  }
+};
+module.exports = InputImageHasAlt;
+
+},{"Case":30}],148:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var LabelComponent = require('LabelComponent');
+
+var InputTextHasLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements should have a corresponding \"label\"',
+      nl: 'Alle invoerelementen moeten een bijbehorend \"label\" hebben'
+    },
+    description: {
+      en: 'All <code>input</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle <code>input</code>-elementen moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputTextHasLabel;
+
+},{"LabelComponent":12}],149:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var InputTextHasValue = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="text"]',
+      attribute: 'value',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"input\" elements of type \"text\" must have a default text',
+      nl: 'Alle invoerelementen van het type \"text\" moeten een standaardtekst hebben'
+    },
+    description: {
+      en: 'All <code>input</code> elements of type \"text\" should have a default text.',
+      nl: 'Alle invoerelementen van het type \"text\" moeten een standaardtekst hebben.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputTextHasValue;
+
+},{"PlaceholderComponent":16}],150:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var InputTextValueNotEmpty = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="text"]',
+      attribute: 'value',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Text input elements require a non-whitespace default text',
+      nl: 'Tekstinvoerelementen mogen geen lege standaardtekst hebben'
+    },
+    description: {
+      en: 'All <code>input</code> elements with a type of \"text\" should have a default text which is not empty.',
+      nl: 'Alle invoerelementen van het type \"text\" moeten een standaardtekst hebben die gevuld is.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputTextValueNotEmpty;
+
+},{"PlaceholderComponent":16}],151:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var InputWithoutLabelHasTitle = {
+  run: function run(test) {
+
+    test.get('$scope').each(function () {
+
+      var testableElements = $(this).find('input, select, textarea');
+
+      if (testableElements.length === 0) {
+        var _case = Case({
+          element: this,
+          status: 'inapplicable'
+        });
+        test.add(_case);
+        return;
+      } else {
+        testableElements.each(function () {
+          var _case = Case({
+            element: this
+          });
+          test.add(_case);
+
+          if ($(this).css('display') === 'none') {
+            _case.set({
+              status: 'inapplicable'
+            });
+            return;
+          }
+          if (!test.get('$scope').find('label[for=' + $(this).attr('id') + ']').length && (!$(this).attr('title') || IsUnreadable($(this).attr('title')))) {
+            _case.set({
+              status: 'failed'
+            });
+          } else {
+            _case.set({
+              status: 'passed'
+            });
+          }
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Form controls without label should have a title attribute',
+      nl: 'Formulierelementen zonder label moeten een titelattribuut hebben'
+    },
+    description: {
+      en: 'If it is not possible to have a label for a form control, then a title attribute on the element should be provided that describes the purpose of the control.',
+      nl: 'Als een formulierelement geen label kan krijgen, dan moet een dat element een titelattribuut krijgen dat het doel van het element beschrijft.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H65']
+        },
+        '1.3.1': {
+          techniques: ['H65']
+        },
+        '3.3.2': {
+          techniques: ['H65']
+        },
+        '4.1.2': {
+          techniques: ['H65']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = InputWithoutLabelHasTitle;
+
+},{"Case":30,"IsUnreadable":11}],152:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var LabelDoesNotContainInput = {
+  run: function run(test) {
+
+    var selector = 'label';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if ($(this).find('input').length > 0) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Label elements should not contain an input element',
+      nl: 'Labelelementen moeten geen invoerelementen bevatten'
+    },
+    description: {
+      en: 'Label elements should not wrap around another input element, as this can cause the label to be read twice by screen readers.',
+      nl: 'Labelelementen moeten niet om een ander invoerelement heenstaan, omdat dan het label twee keer kan worden voorgelezen door schermlezers.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = LabelDoesNotContainInput;
+
+},{"Case":30}],153:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var LabelMustBeUnique = {
+  run: function run(test) {
+    var labels = {};
+    test.get('$scope').find('label[for]').each(function () {
+      if (typeof labels[$(this).attr('for')] === 'undefined') {
+        labels[$(this).attr('for')] = 0;
+      }
+      labels[$(this).attr('for')]++;
+    });
+    test.get('$scope').find('label[for]').each(function () {
+      var _case = Case({
+        element: this,
+        status: labels[$(this).attr('for')] === 1 ? 'passed' : 'failed'
+      });
+      test.add(_case);
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Every form input must have only one label',
+      nl: 'Elk formulierinvoerveld heeft maar een label'
+    },
+    description: {
+      en: 'Each form input should have only one <code>label</code> element.',
+      nl: 'Elk formulierinvoerveld mag maar een <code>label</code> element hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F17']
+        },
+        '4.1.1': {
+          techniques: ['F17']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = LabelMustBeUnique;
+
+},{"Case":30}],154:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var LabelMustNotBeEmpty = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'label',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Labels must contain text',
+      nl: 'Labels moeten tekst bevatten'
+    },
+    description: {
+      en: 'Labels in forms must contain readable text that describes the target form element.',
+      nl: 'Labels in formulieren moeten leesbare tekst bevatten die het formulierelement beschrijven.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = LabelMustNotBeEmpty;
+
+},{"PlaceholderComponent":16}],155:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var LabelsAreAssignedToAnInput = {
+  run: function run(test) {
+    test.get('$scope').find('label').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if (!$(this).attr('for')) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        if (!test.get('$scope').find('#' + $(this).attr('for')).length || !test.get('$scope').find('#' + $(this).attr('for')).is(':input')) {
+          _case.set({
+            status: 'failed'
+          });
+        } else {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All labels should be associated with an input',
+      nl: 'Alle labels moeten horen bij een invoerveld'
+    },
+    description: {
+      en: 'All <code>label</code> elements should be assigned to an input item, and should have a <em>for</em> attribute which equals the <em>id</em> attribute of a form element.',
+      nl: 'Alle <code>label</code>-elementen moeten horen bij een invoerveld, en moeten een een <em>for</em>-attribuut hebben dat hetzelfde is als het <em>id</em>-attribuut van een formulierelement.'
+    },
+    guidelines: [],
+    tags: ['form', 'content']
+  }
+};
+module.exports = LabelsAreAssignedToAnInput;
+
+},{"Case":30}],156:[function(require,module,exports){
+'use strict';
+
+var GetTextContentsComponent = require('GetTextContentsComponent');
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var LanguageComponent = require('LanguageComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var LanguageDirAttributeIsUsed = {
+  run: function run(test) {
+
+    var textDirection = LanguageComponent.textDirection;
+
+    function countDirAttributes() {
+      var $el = $(this);
+      var currentDirection = $el.attr('dir');
+      if (!currentDirection) {
+        var parentDir = $el.closest('[dir]').attr('dir');
+        currentDirection = parentDir || currentDirection;
+      }
+      if (typeof currentDirection === 'string') {
+        currentDirection = currentDirection.toLowerCase();
+      }
+      if (typeof textDirection[currentDirection] === 'undefined') {
+        currentDirection = 'ltr';
+      }
+      var oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
+      var text = GetTextContentsComponent($el);
+      var textMatches = text.match(textDirection[oppositeDirection]);
+      if (!textMatches) {
+        return;
+      }
+      var matches = textMatches.length;
+      $el.find('[dir=' + oppositeDirection + ']').each(function () {
+        var childMatches = $el[0].textContent.match(textDirection[oppositeDirection]);
+        if (childMatches) {
+          matches -= childMatches.length;
+        }
+      });
+
+      var _case = test.add(Case({
+        element: this
+      }));
+
+      _case.set({ status: matches > 0 ? 'failed' : 'passed' });
+    }
+
+    test.get('$scope').each(function () {
+      $(this).find(TextSelectorComponent).filter(function (index, element) {
+        return TextNodeFilterComponent(element);
+      }).each(countDirAttributes);
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Use the dir attribute when the language direction changes',
+      nl: 'Gebruik het dir-attribuut als de richting van de taal verandert'
+    },
+    description: {
+      en: 'When there are nested directional changes in text, use an inline element with a <code>dir</code> attribute to indicate direction.',
+      nl: 'Gebruik een inline element met een <code>dir</code>-attribuut om richting aan te geven wanneer er geneste richtingsveranderingen in de tekst zijn.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['H56']
+        }
+      }
+    },
+    tags: ['language', 'content']
+  }
+};
+module.exports = LanguageDirAttributeIsUsed;
+
+},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],157:[function(require,module,exports){
+'use strict';
+
+var GetTextContentsComponent = require('GetTextContentsComponent');
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var LanguageComponent = require('LanguageComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var LanguageDirectionPunctuation = {
+  run: function run(test) {
+    var $scope = test.get('$scope');
+    var punctuation = {};
+    var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
+    var currentDirection = $scope.attr('dir') ? $scope.attr('dir').toLowerCase() : 'ltr';
+    var oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
+    var textDirection = LanguageComponent.textDirection;
+    $scope.each(function () {
+      var $local = $(this);
+      $local.find(TextSelectorComponent).filter(function (index, element) {
+        return TextNodeFilterComponent(element);
+      }).each(function () {
+        var $el = $(this);
+        if ($el.attr('dir')) {
+          currentDirection = $el.attr('dir').toLowerCase();
+        } else {
+          currentDirection = $el.parent('[dir]').first().attr('dir') ? $el.parent('[dir]').first().attr('dir').toLowerCase() : currentDirection;
+        }
+        if (typeof textDirection[currentDirection] === 'undefined') {
+          currentDirection = 'ltr';
+        }
+        oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
+        var text = GetTextContentsComponent($el);
+        var matches = text.match(textDirection[oppositeDirection]);
+        var _case = test.add(Case({
+          element: this
+        }));
+        if (!matches) {
+          _case.set({ status: 'inapplicable' });
+          return;
+        }
+        var first = text.search(textDirection[oppositeDirection]);
+        var last = text.lastIndexOf(matches.pop());
+        while (punctuation = punctuationRegex.exec(text)) {
+          if (punctuation.index === first - 1 || punctuation.index === last + 1) {
+            _case.set({ status: 'failed' });
+            return;
+          }
+        }
+        _case.set({ status: 'passed' });
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Place punctuation around language direction changes in the right order',
+      nl: 'Zet interpunctie bij richtingsveranderingen in taal in de juiste volgorde'
+    },
+    description: {
+      en: 'If punctuation is used around a change in language direction, ensure the punctuation appears in the correct place.',
+      nl: 'Als er interpunctie staat bij een richtingsverandering in de taal, zorg dat deze dan op de goede plek staat.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['G57']
+        }
+      }
+    },
+    tags: ['language', 'content']
+  }
+};
+module.exports = LanguageDirectionPunctuation;
+
+},{"Case":30,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],158:[function(require,module,exports){
+'use strict';
+
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var LanguageComponent = require('LanguageComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var LanguageUnicodeDirection = {
+  run: function run(test) {
+    var $scope = test.get('$scope');
+    var textDirection = LanguageComponent.textDirection;
+    var textDirectionChanges = LanguageComponent.textDirectionChanges;
+    $scope.each(function () {
+      var $local = $(this);
+      $local.find(TextSelectorComponent).filter(function (index, element) {
+        return TextNodeFilterComponent(element);
+      }).each(function () {
+        var _case = test.add(Case({
+          element: this
+        }));
+        var $el = $(this);
+        var text = $el.text().trim();
+        var otherDirection = text.substr(0, 1).search(textDirection.ltr) !== -1 ? 'rtl' : 'ltr';
+        if (text.search(textDirection[otherDirection]) === -1) {
+          _case.set({ status: 'inapplicable' });
+        } else {
+          if (text.search(textDirectionChanges[otherDirection]) !== -1) {
+            _case.set({ status: 'passed' });
+          } else {
+            _case.set({ status: 'failed' });
+          }
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Use the unicode language direction',
+      nl: 'Gebruik de unicode taalrichting'
+    },
+    description: {
+      en: 'When there are nested directional changes in language, use unicode RTL/LTR characters.',
+      nl: 'Gebruik de unicode RTL/LTR afkortingen als er geneste richtingsveranderingen in de taal zijn.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['H34']
+        }
+      }
+    },
+    tags: ['language', 'content']
+  }
+};
+module.exports = LanguageUnicodeDirection;
+
+},{"Case":30,"LanguageComponent":14,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],159:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var LegendTextNotEmpty = {
+  run: function run(test) {
+
+    var selector = 'legend';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          if ($(this).text().trim().length > 0) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Legend text must not contain just whitespace',
+      nl: 'Legend-tekst moet ingevuld zijn'
+    },
+    description: {
+      en: 'If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain empty text.',
+      nl: 'Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> ingevuld zijn.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H71']
+        },
+        '2.4.6': {
+          techniques: ['G131']
+        },
+        '3.3.2': {
+          techniques: ['H71']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = LegendTextNotEmpty;
+
+},{"Case":30}],160:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var LegendTextNotPlaceholder = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'legend',
+      content: 'true',
+      emtpy: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: '\"Legend\" text must not contain placeholder text',
+      nl: '\"Legend\"-tekst moet geen placeholdertekst bevatten'
+    },
+    description: {
+      en: 'If a <code>legend</code> element is used in a fieldset, the <code>legend</code> should not contain useless placeholder text like \"form\" or \"field\".',
+      nl: 'Als een <code>legend</code>-element wordt gebruikt in een fieldset, moet de <code>legend</code> geen placeholdertekst bevatten zoals \"form\" of \"field\".'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H71']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.4.6': {
+          techniques: ['G131']
+        },
+        '3.3.2': {
+          techniques: ['H71']
+        },
+        '4.1.3': {
+          techniques: ['H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = LegendTextNotPlaceholder;
+
+},{"PlaceholderComponent":16}],161:[function(require,module,exports){
+'use strict';
+
+/**
+ * @todo Needs refinement.
+ *
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var LiDontUseImageForBullet = {
+  run: function run(test) {
+
+    var selector = 'li';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'passed';
+
+          if ($(this).children('img').length > 0) {
+            status = 'failed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    guidelines: [],
+    tags: ['list', 'content']
+  }
+};
+module.exports = LiDontUseImageForBullet;
+
+},{"Case":30}],162:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var LinkHasAUniqueContext = {
+  run: function run(test) {
+
+    var blockStyle = ['block', 'flex', 'list-item', 'table', 'table-caption', 'table-cell'];
+
+    function getLinkSentence(link) {
+      // Find the closest block-like element
+      var $link = $(link);
+      var block = $link;
+      var text = simplifyText($link.text());
+
+      while (!block.is('body, html') && blockStyle.indexOf(block.css('display')) === -1) {
+        block = block.parent();
+      }
+
+      var sentences = block.text().match(/[^\.!\?]+[\.!\?]+/g);
+      if (sentences === null) {
+        sentences = [block.text()];
+      }
+
+      for (var i = 0; i < sentences.length; i += 1) {
+        if (simplifyText(sentences[i]).indexOf(text) !== -1) {
+          return sentences[i].trim();
+        }
+      }
+    }
+
+    function simplifyText(text) {
+      var tmp = text.match(/\w+/g);
+      if (tmp !== null) {
+        text = tmp.join(' ');
+      }
+      return text.toLowerCase();
+    }
+
+    function txtNotAlike(a, b) {
+      return simplifyText('' + a) !== simplifyText('' + b);
+    }
+
+    function shareContext(linkA, linkB) {
+
+      if (linkA.href === linkB.href) {
+        return false;
+      } else if (txtNotAlike(linkA.title, linkB.title)) {
+        return false;
+      }
+
+      // Find the nearest list item, paragraph or table cell of both items
+      var linkACtxt = $(linkA).closest('p, li, dd, dt, td, th');
+      var linkBCtxt = $(linkB).closest('p, li, dd, dt, td, th');
+
+      // check if they are different
+      if (linkACtxt.length !== 0 && linkBCtxt.length !== 0 && txtNotAlike(getLinkText(linkACtxt), getLinkText(linkBCtxt))) {
+        return false;
+      }
+
+      // If one is a table cell and the other isn't, allow it
+      if (linkACtxt.is('td, th') && !linkBCtxt.is('td, th')) {
+        return false;
+      } else if (linkACtxt.is('td, th') && linkBCtxt.is('td, th')) {
+        var headerDiff = false;
+        var headersA = [];
+
+        // Make a list with the simplified text of link A
+        linkACtxt.tableHeaders().each(function () {
+          headersA.push(simplifyText($(this).text()));
+        });
+
+        // Compare it to the header context of link B
+        linkBCtxt.tableHeaders().each(function () {
+          var text = simplifyText($(this).text());
+          var pos = headersA.indexOf(text);
+          // Link B has something not part of link A's context, pass
+          if (pos === -1) {
+            headerDiff = true;
+          }
+          // Remove items part of both header lists
+          else {
+              headersA.splice(pos, 1);
+            }
+        });
+        // Pass if A or B had a header not part of the other.
+        if (headerDiff || headersA.length > 0) {
+          return false;
+        }
+      }
+
+      if (txtNotAlike(getLinkSentence(linkA), getLinkSentence(linkB))) {
+        return false;
+      }
+
+      return true;
+    }
+
+    /**
+     * Get the text value of the link, including alt attributes
+     * @param  {jQuery} $link
+     * @return {string}
+     */
+    function getLinkText($link) {
+      var text = $link.text();
+      $link.find('img[alt]').each(function () {
+        text += ' ' + this.alt.trim();
+      });
+      return simplifyText(text);
+    }
+
+    test.get('$scope').each(function () {
+      var $scope = $(this);
+      var $links = $scope.find('a[href]:visible');
+      var linkMap = {};
+
+      if ($links.length === 0) {
+        var _case = Case({
+          element: this,
+          status: 'inapplicable'
+        });
+        test.add(_case);
+      }
+
+      // Make a map with the link text as key and an array of links with
+      // that link text as it's value
+      $links.each(function () {
+        var text = getLinkText($(this));
+        if (typeof linkMap[text] === 'undefined') {
+          linkMap[text] = [];
+        }
+        linkMap[text].push(this);
+      });
+
+      // Iterate over each item in the linkMap
+      $.each(linkMap, function (linkText, links) {
+
+        // Link text is not unique, so the context should be checked
+        while (links.length > 1) {
+          var linkA = links.pop();
+          var linkAFailed = false;
+
+          for (var i = links.length - 1; i >= 0; i -= 1) {
+            var linkB = links[i];
+            if (shareContext(linkA, linkB)) {
+              linkAFailed = true;
+              links.splice(i, 1);
+              test.add(Case({
+                element: linkB,
+                status: 'failed'
+              }));
+            }
+          }
+          test.add(Case({
+            element: linkA,
+            status: linkAFailed ? 'failed' : 'passed'
+          }));
+        }
+
+        // The link text is unique, pass
+        if (links.length === 1) {
+          test.add(Case({
+            element: links[0],
+            status: 'passed'
+          }));
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Links should have a unique context',
+      nl: 'Links moeten een unieke context hebben'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['link', 'content']
+  }
+};
+module.exports = LinkHasAUniqueContext;
+
+},{"Case":30}],163:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ListNotUsedForFormatting = {
+  run: function run(test) {
+    test.get('$scope').find('ol, ul').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).find('li').length < 2) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Lists should not be used for formatting',
+      nl: 'Lijsten worden niet gebruikt voor opmaak'
+    },
+    description: {
+      en: 'Lists like <code>ul</code> and <code>ol</code> are to provide a structured list, and should not be used to format text. This test views any list with just one item as suspicious, but should be manually reviewed.',
+      nl: 'Lijsten zoals <code>ul</code> en <code>ol</code> zijn bedoeld om gestructureerde lijsten te maken. Ze moeten niet gebruikt worden om text op te maken. Controleer of deze lijst echt bedoeld is als lijst of om tekst op te maken.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['F1']
+        }
+      }
+    },
+    tags: ['list', 'content']
+  }
+};
+module.exports = ListNotUsedForFormatting;
+
+},{"Case":30}],164:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var ListOfLinksUseList = {
+  run: function run(test) {
+    var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
+    test.get('$scope').find('a').each(function () {
+      var _case = test.add(Case({
+        element: this
+      }));
+      // Only test if there's another a tag.
+      if ($(this).next('a').length) {
+        var nextText = $(this).get(0).nextSibling.wholeText.replace(unreadableText, '');
+        if (!$(this).parent('li').length && IsUnreadable(nextText)) {
+          _case.set({
+            status: 'failed'
+          });
+        } else {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'A list of links separated by non-readable characters should be in an ul or ol',
+      nl: 'Een lijst van links die worden gescheiden door onleesbare tekens moeten in een bulleted of genummerde lijst staan'
+    },
+    description: {
+      en: 'A list of links without separation between them should be placed in an ol or ul element.',
+      nl: 'Een lijst van links die niet duidelijk gescheiden zijn moeten in een bulleted of genummerde lijst staan.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H48']
+        }
+      }
+    },
+    tags: ['link', 'content']
+  }
+};
+module.exports = ListOfLinksUseList;
+
+},{"Case":30,"IsUnreadable":11}],165:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var MarqueeIsNotUsed = {
+  run: function run(test) {
+
+    var selector = 'marquee';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'passed'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'The \"marquee\" tag should not be used',
+      nl: 'De \"marquee\"-tag wordt niet gebruikt'
+    },
+    description: {
+      en: 'The <code>marquee</code> element is difficult for users to read and is not a standard HTML element. Try to find another way to convey the importance of this text.',
+      nl: 'Het <code>marquee</code>-element is moeilijk te lezen voor gebruikers en is geen standaard HTML-element. Gebruik een andere manier om aan te duiden dat het belangrijke content is.'
+    },
+    guidelines: [],
+    tags: ['deprecated', 'content']
+  }
+};
+module.exports = MarqueeIsNotUsed;
+
+},{"Case":30}],166:[function(require,module,exports){
+'use strict';
+
+/**
+ * @todo Needs refinement.
+ *
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var MenuNotUsedToFormatText = {
+  run: function run(test) {
+
+    var selector = 'menu:not(menu li:parent(menu))';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Menu elements should not be used for formatting',
+      nl: 'Menu-elementen worden niet gebruikt voor opmaak'
+    },
+    description: {
+      en: 'Menu is a deprecated tag, but is still honored in a transitional DTD. Menu tags are to provide structure for a document and should not be used for formatting. If a menu tag is to be used, it should only contain an ordered or unordered list of links.',
+      nl: 'Menu is een afgekeurd tag, maar wordt nog wel gebruikt om structuur aan een document te geven. Het mag niet worden gebruikt voor opmaak. Als een menu-tag wordt gebruikt, mag het alleen bulleted of genummerde lijsten bevatten.'
+    },
+    guidelines: [],
+    tags: ['list', 'content']
+  }
+};
+module.exports = MenuNotUsedToFormatText;
+
+},{"Case":30}],167:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var NewWindowIsOpened = {
+  run: function run(test) {
+
+    var fenestrate = window.open;
+    var _case;
+
+    window.open = function (event) {
+      test.each(function (index, _case) {
+        var href = _case.get('element').href;
+        if (href.indexOf(event) > -1) {
+          _case.set('status', 'failed');
+        }
+      });
+    };
+
+    test.get('$scope').find('a').each(function () {
+      // Save a reference to this clicked tag.
+      _case = Case({
+        element: this
+      });
+      test.add(_case);
+      $(this).trigger('click');
+    });
+
+    window.open = fenestrate;
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'A link should not open a new window',
+      nl: 'Een link opent geen nieuw scherm'
+    },
+    description: {
+      en: 'Avoid confusion that may be caused by the appearance of new windows that were not requested by the user.',
+      nl: 'Voorkom verwarring die veroorzaakt wordt door het openen van nieuwe schermen die de gebruiker niet verwacht.'
+    },
+    guidelines: {
+      wcag: {
+        '2.0.0': {
+          techniques: ['H83']
+        }
+      }
+    },
+    tags: ['javascript', 'html']
+  }
+};
+module.exports = NewWindowIsOpened;
+
+},{"Case":30}],168:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var ObjectMustContainText = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'object',
+      content: 'true',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Objects must contain their text equivalents',
+      nl: 'Objecten moeten hun tekstuele equivalent bevatten'
+    },
+    description: {
+      en: 'All <code>object</code> elements should contain a text equivalent if the object cannot be rendered.',
+      nl: 'Alle <code>object</code>-elementen moeten een tekstequivalent bevatten in het geval het object niet getoond kan worden.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['FLASH1', 'H27']
+        }
+      }
+    },
+    tags: ['objects', 'content']
+  }
+};
+module.exports = ObjectMustContainText;
+
+},{"PlaceholderComponent":16}],169:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var ObjectMustHaveEmbed = {
+  run: function run(test) {
+
+    var selector = 'object';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasEmbed = $(this).find('embed').length > 0;
+
+          // If a test is defined, then use it
+          if (hasEmbed) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Every object should contain an \"embed\" element',
+      nl: 'Elk object moet een \"embed\"-element bevatten'
+    },
+    description: {
+      en: 'Every <code>object</code> element must also contain an <code>embed</code> element.',
+      nl: 'Elk <code>object</code>-element moet ook een \"embed\"-element bevatten.'
+    },
+    guidelines: [],
+    tags: ['objects', 'content']
+  }
+};
+module.exports = ObjectMustHaveEmbed;
+
+},{"Case":30}],170:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var ObjectMustHaveTitle = {
+  run: function run(test) {
+
+    var selector = 'object';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasTitle = this.hasAttribute('title');
+
+          // If a test is defined, then use it
+          if (hasTitle) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Objects should have a title attribute',
+      nl: 'Objecten moeten een titelattribuut hebben'
+    },
+    description: {
+      en: 'All <code>object</code> elements should contain a \"title\" attribute.',
+      nl: 'Alle <code>object</code>-elementen moeten een \"titel\"-attribuut bevatten.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H27']
+        }
+      }
+    },
+    tags: ['objects', 'content']
+  }
+};
+module.exports = ObjectMustHaveTitle;
+
+},{"Case":30}],171:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var ObjectMustHaveValidTitle = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'object',
+      attribute: 'title',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Objects must not have an empty title attribute',
+      nl: 'Objecten hebben geen leeg titelattribuut'
+    },
+    description: {
+      en: 'All <code>object</code> elements should have a \"title\" attribute which is not empty.',
+      nl: 'All <code>object</code>-elementen hebben een \"titel\"-attribuut dat gevuld is.'
+    },
+    guidelines: [],
+    tags: ['objects', 'content']
+  }
+};
+module.exports = ObjectMustHaveValidTitle;
+
+},{"PlaceholderComponent":16}],172:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var SuspectPHeaderTags = require('SuspectPHeaderTags');
+var SuspectPCSSStyles = require('SuspectPCSSStyles');
+var PNotUsedAsHeader = {
+  run: function run(test) {
+    test.get('$scope').find('p').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+
+      var $paragraph = $(this);
+
+      // If the text has a period, it is probably a sentence and not a header.
+      if ($paragraph.text().search(/[\.!:;]/) >= 1) {
+        _case.set({
+          status: 'passed'
+        });
+      }
+      var failed = false;
+      // Look for any indication that the paragraph contains at least a full sentence
+      if ($(this).text().search(/[\.!:;]/) < 1) {
+        var priorParagraph = $paragraph.prev('p');
+        // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
+        $.each(SuspectPHeaderTags, function (index, tag) {
+          if ($paragraph.find(tag).length) {
+            $paragraph.find(tag).each(function () {
+              if ($(this).text().trim() === $paragraph.text().trim()) {
+                _case.set({
+                  status: 'failed'
+                });
+                failed = true;
+              }
+            });
+          }
+        });
+        // Checking if previous paragraph has a different values for style properties given in SuspectPCSSStyles.
+        if (priorParagraph.length) {
+          $.each(SuspectPCSSStyles, function (index, cssProperty) {
+            if ($paragraph.css(cssProperty) !== priorParagraph.css(cssProperty)) {
+              _case.set({
+                status: 'failed'
+              });
+              failed = true;
+              return false; // Micro optimization - we no longer need to iterate here. jQuery css() method might be expensive.
+            }
+          });
+        }
+        if ($paragraph.css('font-weight') === 'bold') {
+          _case.set({
+            status: 'failed'
+          });
+          failed = true;
+        }
+      }
+      if (!failed) {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Paragraphs must not be used for headers',
+      nl: 'Alinea\'s worden niet gebruikt als header'
+    },
+    description: {
+      en: 'Headers like <code>h1</code> - <code>h6</code> are extremely useful for non-sighted users to navigate the structure of the page, and formatting a paragraph to just be big or bold, while it might visually look like a header, does not make it one.',
+      nl: 'Headers van <code>h1</code> - <code>h6</code> zijn handig voor blinde en slechtziende gebruikers om door een pagina te navigeren. Maak alinea\'s daarom niet op zodat deze lijkt op een header. Dit werkt verwarrend.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['G141', 'H42']
+        },
+        '2.4.10': {
+          techniques: ['G141']
+        }
+      }
+    },
+    tags: ['header', 'content']
+  }
+};
+module.exports = PNotUsedAsHeader;
+
+},{"Case":30,"SuspectPCSSStyles":21,"SuspectPHeaderTags":22}],173:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var LabelComponent = require('LabelComponent');
+
+var PasswordHasLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="password"]'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All password input elements should have a corresponding label',
+      nl: 'Alle paswoordinvoerelementen hebben een bijbehorend label'
+    },
+    description: {
+      en: 'All <code>input</code> elements with a type of \"password\"should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle <code>input</code>-elementen van het type \"paswoord\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      508: ['n'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = PasswordHasLabel;
+
+},{"LabelComponent":12}],174:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var PreShouldNotBeUsedForTabularLayout = {
+  run: function run(test) {
+    test.get('$scope').find('pre').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      var rows = $(this).text().split(/[\n\r]+/);
+      _case.set({
+        status: rows.length > 1 && $(this).text().search(/\t/) > -1 ? 'failed' : 'passed'
+      });
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Pre elements should not be used for tabular data',
+      nl: 'Pre-elementen worden niet gebruikt om data als tabel te rangschikken'
+    },
+    description: {
+      en: 'If a <code>pre</code> element is used for tabular data, change the data to use a well-formed table.',
+      nl: 'Als een <code>pre</code>-element wordt gebruikt om data als tabel te rangschikken, verander de data dan zodat je een echte tabel kunt maken.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F33', 'F34', 'F48']
+        },
+        '1.3.2': {
+          techniques: ['F33', 'F34']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = PreShouldNotBeUsedForTabularLayout;
+
+},{"Case":30}],175:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var LabelComponent = require('LabelComponent');
+
+var RadioHasLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'input[type="radio"]'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All \"radio\" input elements have a corresponding label',
+      nl: 'Alle invoerelementen van het type \"radio\" hebben een bijbehorend label'
+    },
+    description: {
+      en: 'All <code>input</code> elements of type \"radio\" should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle <code>input</code>-elementen van het \"radio\" moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      508: ['n'],
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = RadioHasLabel;
+
+},{"LabelComponent":12}],176:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var EventComponent = require('EventComponent');
+
+var ScriptOnclickRequiresOnKeypress = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onclick]',
+      correspondingEvent: 'onkeypress',
+      searchEvent: 'onclick'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'If an element has an \"onclick\" attribute it should also have an \"onkeypress\" attribute',
+      nl: 'Als een element een \"onclick\"-attribuut heeft, moet het ook een \"onkeypress\"-attribuut hebben'
+    },
+    description: {
+      en: 'If an element has an \"onclick\" attribute it should also have an \"onkeypress\" attribute',
+      nl: 'Als een element een \"onclick\"-attribuut heeft, moet het ook een \"onkeypress\"-attribuut hebben'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnclickRequiresOnKeypress;
+
+},{"EventComponent":6}],177:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var EventComponent = require('EventComponent');
+
+var ScriptOndblclickRequiresOnKeypress = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[ondblclick]',
+      correspondingEvent: 'onkeypress',
+      searchEvent: 'ondblclick'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Any element with an \"ondblclick\" attribute should have a keyboard-related action as well',
+      nl: 'Elk element met een \"ondblclick\"-attribuut moet een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord'
+    },
+    description: {
+      en: 'If an element has an \"ondblclick\" attribute, it should also have a keyboard-related action.',
+      nl: 'Als een element een \"ondblclick\"-attribuut heeft, moet het ook een actie bevatten die kan worden uitgevoerd met een toetsenbord.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOndblclickRequiresOnKeypress;
+
+},{"EventComponent":6}],178:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var EventComponent = require('EventComponent');
+
+var ScriptOnmousedownRequiresOnKeypress = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onmousedown]',
+      correspondingEvent: 'onkeydown',
+      searchEvent: 'onmousedown'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'If an element has a \"mousedown\" attribute it should also have an \"onkeydown\" attribute',
+      nl: 'Als een element een \"mousedown\"-attribuut heeft moet het ook een \"onkeydown\"-attribuut hebben'
+    },
+    description: {
+      en: 'If an element has a \"mousedown\" attribute it should also have an \"onkeydown\" attribute.',
+      nl: 'Als een element een \"mousedown\"-attribuut heeft moet het ook een \"onkeydown\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnmousedownRequiresOnKeypress;
+
+},{"EventComponent":6}],179:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var EventComponent = require('EventComponent');
+
+var ScriptOnmousemove = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onmousemove]',
+      correspondingEvent: 'onkeypress',
+      searchEvent: 'onmousemove'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Any element with an \"onmousemove\" attribute should have a keyboard-related action as well',
+      nl: 'Elk element met een \"onmousemove\"-attribuut moet een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord'
+    },
+    description: {
+      en: 'If an element has an \"onmousemove\" attribute it should have a keyboard-related action as well.',
+      nl: 'Als een element een \"onmousemove\"-attribuut heeft, moet het een vergelijkbare actie hebben die kan worden uitgevoerd met een toetsenbord.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnmousemove;
+
+},{"EventComponent":6}],180:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var EventComponent = require('EventComponent');
+
+var ScriptOnmouseoutHasOnmouseblur = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onmouseout]',
+      correspondingEvent: 'onblur',
+      searchEvent: 'onmouseout'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'If an element has a \"onmouseout\" attribute it should also have an \"onblur\" attribute',
+      nl: 'Als een element een \"onmouseout\"-attribuut heeft, moet het ook een \"onblur\" attribuut hebben'
+    },
+    description: {
+      en: 'If an element has a \"onmouseout\" attribute it should also have an \"onblur\" attribute.',
+      nl: 'Als een element een \"onmouseout\"-attribuut heeft, moet het ook een \"onblur\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnmouseoutHasOnmouseblur;
+
+},{"EventComponent":6}],181:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var EventComponent = require('EventComponent');
+
+var ScriptOnmouseoverHasOnfocus = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onmouseover]',
+      correspondingEvent: 'onfocus',
+      searchEvent: 'onmouseover'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'If an element has a \"onmouseover\" attribute it should also have an \"onfocus\" attribute',
+      nl: 'Als een element een \"onmouseover\"-attribuut heeft, moet het ook een \"onfocus\"-attribuut hebben'
+    },
+    description: {
+      en: 'If an element has a \"onmouseover\" attribute it should also have an \"onfocus\" attribute.',
+      nl: 'Als een element een \"onmouseover\"-attribuut heeft, moet het ook een \"onfocus\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnmouseoverHasOnfocus;
+
+},{"EventComponent":6}],182:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var EventComponent = require('EventComponent');
+
+var ScriptOnmouseupHasOnkeyup = {
+  run: function run(test, options) {
+    options = options || {
+      selector: '[onmouseup]',
+      correspondingEvent: 'onkeyup',
+      searchEvent: 'onmouseup'
+    };
+    EventComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'If an element has a \"onmouseup\" attribute it should also have an \"onkeyup\" attribute',
+      nl: 'Als een element een \"onmouseup\"-attribuut heeft, moet het ook een \"onkeyup\"-attribuut hebben'
+    },
+    description: {
+      en: 'If an element has a \"onmouseup\" attribute it should also have an \"onkeyup\" attribute.',
+      nl: 'Als een element een \"onmouseup\"-attribuut heeft, moet het ook een \"onkeyup\"-attribuut hebben.'
+    },
+    guidelines: {
+      508: ['l'],
+      wcag: {
+        '2.1.1': {
+          techniques: ['G90', 'SCR2', 'SCR20']
+        },
+        '2.1.3': {
+          techniques: ['G90', 'SCR20']
+        }
+      }
+    },
+    tags: ['javascript']
+  }
+};
+module.exports = ScriptOnmouseupHasOnkeyup;
+
+},{"EventComponent":6}],183:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var LabelComponent = require('LabelComponent');
+
+var SelectHasAssociatedLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'select'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All select elements have an explicitly associated label',
+      nl: 'Alle select-elementen hebben een expliciet bijbehorend label'
+    },
+    description: {
+      en: 'All <code>select</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle <code>select</code>-elementen moeten een bijbehorend <code>label</code>-element hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = SelectHasAssociatedLabel;
+
+},{"LabelComponent":12}],184:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var HasEventListenerComponent = require('HasEventListenerComponent');
+var SelectJumpMenu = {
+  run: function run(test) {
+    var $scope = test.get('$scope');
+    if ($scope.find('select').length === 0) {
+      return;
+    }
+
+    $scope.find('select').each(function () {
+      if ($(this).parent('form').find(':submit').length === 0 && HasEventListenerComponent($(this), 'change')) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Select jump menus should jump on button press, not on state change',
+      nl: 'Select jump menu\'s moeten springen wanneer de knop wordt gebruikt, niet bij statusverandering'
+    },
+    description: {
+      en: 'If you wish to use a \'Jump\' menu with a select item that then redirects users to another page, the jump should occur on the user pressing a button, rather than on the change event of that select element.',
+      nl: 'Als je een \'Jump\'-menu wilt gebruiken met een select item dat gebruikers naar een andere pagina verwijst, moet de verwijzing plaatsvinden als de gebruiker een knop gebruikt en niet op het moment dat het select element verandert.'
+    },
+    guidelines: {
+      wcag: {
+        '3.2.2': {
+          techniques: ['F37']
+        },
+        '3.2.5': {
+          techniques: ['F9']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = SelectJumpMenu;
+
+},{"Case":30,"HasEventListenerComponent":8}],185:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var SiteMapStringsComponent = require('SiteMapStringsComponent');
+var $ = require('jquery/dist/jquery');
+
+var SiteMap = {
+  run: function run(test) {
+    var set = false;
+    var _case = Case({
+      element: test.get('$scope').get(0)
+    });
+    test.add(_case);
+    test.get('$scope').find('a').each(function () {
+      var text = $(this).text().toLowerCase();
+      $.each(SiteMapStringsComponent, function (index, string) {
+        if (text.search(string) > -1) {
+          set = true;
+          return;
+        }
+      });
+      if (set === false) {
+        _case.set({
+          status: 'failed'
+        });
+        return;
+      }
+
+      if (set) {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Websites must have a site map',
+      nl: 'Websites moeten een sitemap hebben'
+    },
+    description: {
+      en: 'Every web site should have a page which provides a site map or another method to navigate most of the site from a single page to save time for users of assistive devices.',
+      nl: 'Elke website moet een pagina hebben waarop een sitemap staat of een andere methode om op de site te navigeren vanaf een pagina. Dit spaart gebruikers die hulpmiddelen gebruiken tijd.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.5': {
+          techniques: ['G63']
+        },
+        '2.4.8': {
+          techniques: ['G63']
+        }
+      }
+    },
+    tags: ['document']
+  }
+};
+
+module.exports = SiteMap;
+
+},{"Case":30,"SiteMapStringsComponent":19,"jquery/dist/jquery":37}],186:[function(require,module,exports){
+'use strict';
+
+/**globals console:true */
+var Case = require('Case');
+
+var SkipContentStringsComponent = require('SkipContentStringsComponent');
+
+var SkipToContentLinkProvided = {
+  run: function run(test) {
+    test.get('$scope').each(function () {
+      var $local = $(this);
+      var skipLinkFound = false;
+
+      $local.find('a[href*="#"]').each(function () {
+        if (skipLinkFound) {
+          return;
+        }
+        var $link = $(this);
+
+        var fragment = $link.attr('href').split('#').pop();
+        var $target = $local.find('#' + fragment);
+        var strs = SkipContentStringsComponent.slice();
+        while (!skipLinkFound && strs.length) {
+          var str = strs.pop();
+          if ($link.text().search(str) > -1 && $target.length) {
+            $link.focus();
+            if ($link.is(':visible') && $link.css('visibility') !== 'hidden') {
+              skipLinkFound = true;
+              test.add(Case({
+                element: $link.get(0),
+                status: 'passed'
+              }));
+              return;
+            }
+            $link.blur();
+          }
+        }
+      });
+      if (!skipLinkFound) {
+        test.add(Case({
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'A \"skip to content\" link should exist as one of the first links on the page',
+      nl: 'Er moet een \"skip to content\"-link zijn als een van de eerste links op de pagina'
+    },
+    description: {
+      en: 'A link reading \"skip to content\" should be the first link on a page.',
+      nl: 'Er moet een link zijn om naar de content te navigeren als een van de eerste links op de pagina.'
+    },
+    guidelines: {
+      508: ['o'],
+      wcag: {
+        '2.4.1': {
+          techniques: ['G1']
+        }
+      }
+    },
+    tags: ['document']
+  }
+};
+module.exports = SkipToContentLinkProvided;
+
+},{"Case":30,"SkipContentStringsComponent":20}],187:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var SvgContainsTitle = {
+  run: function run(test) {
+
+    var selector = 'svg';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasTitle = $(this).find('title').length === 1;
+
+          // If a test is defined, then use it
+          if (hasTitle) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Inline SVG should use Title elements',
+      nl: 'Inline SVG moet titelelementen gebruiken'
+    },
+    description: {
+      en: 'Any inline SVG image should have an embedded <code>title</code> element.',
+      nl: 'Elke inline SVG-afbeelding moet een ingebed <code>title</code>-element hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['F65']
+        }
+      }
+    },
+    tags: ['image', 'svg', 'content']
+  }
+};
+module.exports = SvgContainsTitle;
+
+},{"Case":30}],188:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TabIndexFollowsLogicalOrder = {
+  run: function run(test) {
+    test.get('$scope').each(function () {
+      var $local = $(this);
+      var index = 0;
+      $local.find('[tabindex]').each(function () {
+        var $el = $(this);
+        var tabindex = $el.attr('tabindex');
+        if (parseInt(tabindex, 10) >= 0 && parseInt(tabindex, 10) !== index + 1) {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        } else {
+          test.add(Case({
+            element: this,
+            status: 'passed'
+          }));
+        }
+        index++;
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'The tab order of a document is logical',
+      nl: 'De tabvolgorde van een document is logisch'
+    },
+    description: {
+      en: 'Check that the tab order of a page is logical.',
+      nl: 'Controleer of de tabvolgorde van een pagina logisch is.'
+    },
+    guidelines: {
+      wcag: {
+        '2.4.3': {
+          techniques: ['H4']
+        }
+      }
+    },
+    tags: ['document']
+  }
+};
+module.exports = TabIndexFollowsLogicalOrder;
+
+},{"Case":30}],189:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TableAxisHasCorrespondingId = {
+  run: function run(test) {
+    test.get('$scope').find('[axis]').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+      if ($(this).parents('table').first().find('th#' + $(this).attr('axis')).length === 0) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Axis attribute should have corresponding IDs',
+      nl: 'Axis-attributen moeten bijbehorende IDs hebben'
+    },
+    description: {
+      en: 'When using the axis attribute to group cells together, ensure they have a target element with the same ID.',
+      nl: 'Wanneer er axis-attributen gebruikt worden om cellen te groeperen, zorg er dan voor dat hun doelelement hetzelfde ID heeft.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F17']
+        },
+        '4.1.1': {
+          techniques: ['F17']
+        }
+      }
+    }
+  }
+};
+module.exports = TableAxisHasCorrespondingId;
+
+},{"Case":30}],190:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var TableDataShouldHaveTh = {
+  run: function run(test) {
+
+    var selector = 'table';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasHeading = $(this).find('th').length > 0;
+          // If a test is defined, then use it
+          if (hasHeading) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Data tables should contain \"th\" elements',
+      nl: 'Datatabellen moeten \"th\"-elementen bevatten'
+    },
+    description: {
+      en: 'Tables which contain data (as opposed to layout tables) should contain <code>th</code> elements to mark headers for screen readers and enhance the structure of the document.',
+      nl: 'Tabellen die data bevatten (in tegenstelling tot lay-out tabellen) moeten <code>th</code>-elementen bevatten om koppen te markeren voor schermlezers en om de structuur van het document te verbeteren.'
+    },
+    guidelines: {
+      508: ['g'],
+      wcag: {
+        '1.3.1': {
+          techniques: ['F91']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableDataShouldHaveTh;
+
+},{"Case":30}],191:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableLayoutDataShouldNotHaveTh = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      var _case = Case({
+        element: this
+      });
+      test.add(_case);
+
+      if ($(this).find('th').length !== 0) {
+        if (!IsDataTableComponent($(this))) {
+          _case.set({
+            status: 'failed'
+          });
+        } else {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      } else {
+        _case.set({
+          status: 'inapplicable'
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Layout tables should not contain \"th\" elements',
+      nl: 'Lay-out tabellen bevatten geen \"th\"-elementen'
+    },
+    description: {
+      en: 'Tables which are used purely for layout (as opposed to data tables), <strong>should not</strong> contain <code>th</code> elements, which would make the table appear to be a data table.',
+      nl: 'Tabellen die alleen voor lay-out worden gebruikt (in tegenstelling tot datatabellen), moeten geen <code>th</code>-elementen bevatten, omdat deze de indruk wekken dat het een datatabel betreft.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F46']
+        }
+      }
+    },
+    tags: ['table', 'layout', 'content']
+  }
+};
+module.exports = TableLayoutDataShouldNotHaveTh;
+
+},{"Case":30,"IsDataTableComponent":10}],192:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableLayoutHasNoCaption = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      if ($(this).find('caption').length) {
+        if (!IsDataTableComponent($(this))) {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        } else {
+          test.add(Case({
+            element: this,
+            status: 'passed'
+          }));
+        }
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'inapplicable'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All tables used for layout have no \"caption\" element',
+      nl: 'Alle tabellen die alleen voor lay-out worden gebruikt hebben geen \"caption\"-element'
+    },
+    description: {
+      en: 'If a table contains no data, and is used simply for layout, then it should not contain a <code>caption</code> element.',
+      nl: 'Als een tabel geen data bevat en alle voor lay-out wordt gebruikt, moet hij geen <code>caption</code>-element krijgen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F46']
+        }
+      }
+    },
+    tags: ['table', 'layout', 'content']
+  }
+};
+module.exports = TableLayoutHasNoCaption;
+
+},{"Case":30,"IsDataTableComponent":10}],193:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var IsUnreadable = require('IsUnreadable');
+var TableLayoutHasNoSummary = {
+  run: function run(test) {
+    test.get('$scope').each(function () {
+      var $local = $(this);
+      $local.find('table[summary]').each(function () {
+        var _case = test.add(Case({
+          element: this
+        }));
+        if (!IsDataTableComponent($(this)) && !IsUnreadable($(this).attr('summary'))) {
+          _case.set({ status: 'failed' });
+        } else {
+          _case.set({ status: 'passed' });
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'All tables used for layout have no summary or an empty summary',
+      nl: 'Alle tabellen die alleen voor lay-out worden gebruikt hebben geen samenvatting'
+    },
+    description: {
+      en: 'If a table contains no data, and is used simply for layout, then it should not have a \"summary\" attribute.',
+      nl: 'Als een tabel geen data bevat en alleen voor lay-out wordt gebruikt, moet hij geen \"summary\"-attribuut krijgen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F46']
+        }
+      }
+    },
+    tags: ['table', 'layout', 'content']
+  }
+};
+module.exports = TableLayoutHasNoSummary;
+
+},{"Case":30,"IsDataTableComponent":10,"IsUnreadable":11}],194:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableLayoutMakesSenseLinearized = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      if (!IsDataTableComponent($(this))) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'All tables used for layout should make sense when removed',
+      nl: 'Als tabellen voor lay-out worden gebruikt moet de pagina nog duidelijk blijven als de tabel wordt verwijderd'
+    },
+    description: {
+      en: 'If a <code>table</code> element is used for layout purposes only, then the content of the table should make sense if the table is linearized.',
+      nl: 'Als een <code>table</code>-element alleen voor lay-out-doeleinden wordt gebruikt, moet de inhoud van de tabel nog steeds duidelijk zijn als de tabel wordt verwijderd.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['G57']
+        },
+        '4.1.1': {
+          techniques: ['F49']
+        }
+      }
+    },
+    tags: ['table', 'layout', 'content']
+  }
+};
+module.exports = TableLayoutMakesSenseLinearized;
+
+},{"Case":30,"IsDataTableComponent":10}],195:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableNotUsedForLayout = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      if (!IsDataTableComponent($(this))) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Tables should not be used for layout',
+      nl: 'Tabellen moet niet worden gebruikt voor lay-out'
+    },
+    description: {
+      en: 'Tables are for data, not for creating a page layout. Consider using standard HTML and CSS techniques instead.',
+      nl: 'Tabellen zijn voor data, niet om een pagina op te maken. Gebruik hiervoor HTML en CSS.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['F49']
+        }
+      }
+    },
+    tags: ['table', 'layout', 'content']
+  }
+};
+module.exports = TableNotUsedForLayout;
+
+},{"Case":30,"IsDataTableComponent":10}],196:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableShouldUseHeaderIDs = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      var $table = $(this);
+      var tableFailed = false;
+      if (IsDataTableComponent($table)) {
+        $table.find('th').each(function () {
+          if (!tableFailed && !$(this).attr('id')) {
+            tableFailed = true;
+            test.add(Case({
+              element: $table.get(0),
+              status: 'failed'
+            }));
+          }
+        });
+        if (!tableFailed) {
+          $table.find('td[header]').each(function () {
+            if (!tableFailed) {
+              $.each($(this).attr('header').split(' '), function (index, id) {
+                if (!$table.find('#' + id).length) {
+                  tableFailed = true;
+                  test.add(Case({
+                    element: $table.get(0),
+                    status: 'failed'
+                  }));
+                }
+              });
+            }
+          });
+        }
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Table cells use IDs to identify headers',
+      nl: 'Tabelcellen gebruiken IDs om koppen te identificeren'
+    },
+    description: {
+      en: 'If a table is not being used for layout, it should use IDs and header attributes to identify table headers.',
+      nl: 'Een tabel moet IDs en header-attributen gebruiken om tabelkoppen te identificeren.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H43']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableShouldUseHeaderIDs;
+
+},{"Case":30,"IsDataTableComponent":10}],197:[function(require,module,exports){
+'use strict';
+
+var CleanStringComponent = require('CleanStringComponent');
+var Case = require('Case');
+var TableSummaryDoesNotDuplicateCaption = {
+  run: function run(test) {
+    test.get('$scope').find('table[summary]:has(caption)').each(function () {
+      if (CleanStringComponent($(this).attr('summary')) === CleanStringComponent($(this).find('caption:first').text())) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Table \"summary\" elements should not duplicate the \"caption\" element',
+      nl: 'Tabel \"summary\"-elementen mogen niet hetzelfde zijn als het \"caption\"-element'
+    },
+    description: {
+      en: 'The summary and the caption must be different, as both provide different information. A <code>caption</code>. /code element identifies the table, while the \"summary\" attribute describes the table contents.',
+      nl: 'De samenvatting en beschrijving van een tabel moeten verschillen, want ze bieden verschillende informatie. Een <code>caption</code>-element identificeert welke tabel het betreft en het \"summary\"-attribuut beschrijft de inhoud van de tabel.'
+    },
+    guidelines: [],
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableSummaryDoesNotDuplicateCaption;
+
+},{"Case":30,"CleanStringComponent":2}],198:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var PlaceholderComponent = require('PlaceholderComponent');
+
+var TableSummaryIsEmpty = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'table',
+      attribute: 'summary',
+      empty: 'true'
+    };
+    PlaceholderComponent(test, options);
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'All data tables should have a summary',
+      nl: 'Alle datatabellen moeten een samenvatting hebben'
+    },
+    description: {
+      en: 'If a table contains data, it should have a \"summary\" attribute.',
+      nl: 'Als een tabel data bevat, moet hij een \"summary\"-attribuut hebben.'
+    },
+    guidelines: [],
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableSummaryIsEmpty;
+
+},{"PlaceholderComponent":16}],199:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TableSummaryIsNotTooLong = {
+  run: function run(test) {
+    test.get('$scope').find('table[summary]').each(function () {
+      if ($(this).attr('summary').trim().length > 100) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    guidelines: [],
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableSummaryIsNotTooLong;
+
+},{"Case":30}],200:[function(require,module,exports){
+'use strict';
+
+var IsDataTableComponent = require('IsDataTableComponent');
+var Case = require('Case');
+var TableUseColGroup = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      if (IsDataTableComponent($(this)) && !$(this).find('colgroup').length) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Group columns using \"colgroup\" or \"col\" elements',
+      nl: 'Groepeer kolommen met \"colgroup\"- of \"col\"-elementen'
+    },
+    description: {
+      en: 'To help complex table headers make sense, use <code>colgroup</code> or <code>col</code> to group them together.',
+      nl: 'Maak complexe tabelkoppen duidelijker door \"colgroup\"- of \"col\"-elementen te gebruiken om ze te groeperen.'
+    },
+    guidelines: [],
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableUseColGroup;
+
+},{"Case":30,"IsDataTableComponent":10}],201:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TableUsesAbbreviationForHeader = {
+  run: function run(test) {
+    test.get('$scope').find('th:not(th[abbr])').each(function () {
+      if ($(this).text().length > 20) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0,
+    title: {
+      en: 'Table headers over 20 characters should provide an \"abbr\" attribute',
+      nl: 'Tabelkoppen met meer dan 20 tekens moeten een \"abbr\"-attribuut hebben'
+    },
+    description: {
+      en: 'For long table headers, use an \"abbr\" attribute that is less than short (less than 20 characters long).',
+      nl: 'Gebruik een \"abbr\"-attribuut korter dan 20 tekens voor lange tabelkoppen.'
+    },
+    guidelines: [],
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableUsesAbbreviationForHeader;
+
+},{"Case":30}],202:[function(require,module,exports){
+'use strict';
+
+/**
+ * A simple test case that determines if elements, specified by a selector,
+ * exist or not.
+ *
+ * The test fails for elements that are found and a case is created for each
+ * one. The test passes is the selector finds no matching elements.
+ */
+var Case = require('Case');
+
+var TableUsesCaption = {
+  run: function run(test) {
+
+    var selector = 'table';
+
+    this.get('$scope').each(function () {
+      var candidates = $(this).find(selector);
+      if (!candidates.length) {
+        test.add(Case({
+          element: undefined,
+          status: 'inapplicable'
+        }));
+      } else {
+        candidates.each(function () {
+          var status = 'failed';
+          var hasCaption = $(this).find('caption').length === 1;
+
+          // If a test is defined, then use it
+          if (hasCaption) {
+            status = 'passed';
+          }
+
+          test.add(Case({
+            element: this,
+            status: status
+          }));
+        });
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Data tables should contain a \"caption\" element if not described elsewhere',
+      nl: 'Datatabellen moeten een \"caption\"-element hebben als ze nergens anders beschreven worden'
+    },
+    description: {
+      en: 'Unless otherwise described in the document, tables should contain <code>caption</code> elements to describe the purpose of the table.',
+      nl: 'Tenzij elders in het document beschreven, moeten tabellen een \"caption\"-element hebben om het doel van de tabel te beschrijven.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H39']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableUsesCaption;
+
+},{"Case":30}],203:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TableUsesScopeForRow = {
+  run: function run(test) {
+    test.get('$scope').find('table').each(function () {
+      $(this).find('td:first-child').each(function () {
+        var $next = $(this).next('td');
+        if ($(this).css('font-weight') === 'bold' && $next.css('font-weight') !== 'bold' || $(this).find('strong').length && !$next.find('strong').length) {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        }
+      });
+      $(this).find('td:last-child').each(function () {
+        var $prev = $(this).prev('td');
+        if ($(this).css('font-weight') === 'bold' && $prev.css('font-weight') !== 'bold' || $(this).find('strong').length && !$prev.find('strong').length) {
+          test.add(Case({
+            element: this,
+            status: 'failed'
+          }));
+        }
+      });
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Data tables should use scoped headers for rows with headers',
+      nl: 'Datatabellen moeten het \"scope\"-attribuut gebruiken voor rijen met koppen'
+    },
+    description: {
+      en: 'Where there are table headers for both rows and columns, use the \"scope\" attribute to help relate those headers with their appropriate cells. This test looks for the first and last cells in each row and sees if they differ in layout or font weight.',
+      nl: 'Als er tabelkoppen zijn voor zowel rijen als kolommen, gebruik dan het \"scope\"-attribuut om het juiste verband te leggen tussen de koppen en bijbehorende cellen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['H63']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = TableUsesScopeForRow;
+
+},{"Case":30}],204:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var TabularDataIsInTable = {
+  run: function run(test) {
+    test.get('$scope').find('pre').each(function () {
+      if ($(this).html().search('\t') >= 0) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'All tabular information should use a table',
+      nl: 'Alle tabelinformatie moet ook daadwerkelijk in een tabel staan'
+    },
+    description: {
+      en: 'Tables should be used when displaying tabular information.',
+      nl: 'Gebruik een echte tabel wanneer je tabelinformatie wilt tonen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.1': {
+          techniques: ['F33', 'F34', 'F48']
+        },
+        '1.3.2': {
+          techniques: ['F33', 'F34']
+        }
+      }
+    },
+    tags: ['table', 'content']
+  }
+};
+module.exports = TabularDataIsInTable;
+
+},{"Case":30}],205:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var ConvertToPxComponent = require('ConvertToPxComponent');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var TextSelectorComponent = require('TextSelectorComponent');
+
+var TextIsNotSmall = {
+  run: function run(test) {
+    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
+      return TextNodeFilterComponent(element);
+    }).each(function () {
+      var fontSize = $(this).css('font-size');
+      if (fontSize.search('em') > 0) {
+        fontSize = ConvertToPxComponent(fontSize);
+      }
+      fontSize = parseInt(fontSize.replace('px', ''), 10);
+
+      if (fontSize < 10) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'The text size is not less than 9 pixels high',
+      nl: 'De grootte van de tekst is meer dan 8 pixels hoog'
+    },
+    description: {
+      en: 'To help users with difficulty reading small text, ensure text size is no less than 9 pixels high.',
+      nl: 'Help gebruikers die moeite hebben met het lezen van kleine letters, door ervoor te zorgen dat tekst groter is dan 8 pixels hoog.'
+    },
+    guidelines: [],
+    tags: ['textsize', 'content']
+  }
+};
+module.exports = TextIsNotSmall;
+
+},{"Case":30,"ConvertToPxComponent":5,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],206:[function(require,module,exports){
+'use strict';
+
+/**
+ * A wrapper for assessments that call a component to determine
+ * the test outcome.
+ */
+var LabelComponent = require('LabelComponent');
+
+var TextareaHasAssociatedLabel = {
+  run: function run(test, options) {
+    options = options || {
+      selector: 'textarea'
+    };
+    LabelComponent(test, options);
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All textareas should have a corresponding label',
+      nl: 'Alle \"textarea\"-elementen moeten een bijbehorend label hebben'
+    },
+    description: {
+      en: 'All <code>textarea</code> elements should have a corresponding <code>label</code> element. Screen readers often enter a \"form mode\" where only label text is read aloud to the user',
+      nl: 'Alle \"textarea\"-elementen moeten een bijbehorend label hebben. Schermlezers maken vaak gebruik van een \"formuliereninstelling\" waarbij alleen de tekst van de labels hardop aan de gebruiker wordt voorgelezen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.1.1': {
+          techniques: ['H44']
+        },
+        '1.3.1': {
+          techniques: ['H44', 'F68']
+        },
+        '2.1.1': {
+          techniques: ['H91']
+        },
+        '2.1.3': {
+          techniques: ['H91']
+        },
+        '3.3.2': {
+          techniques: ['H44']
+        },
+        '4.1.2': {
+          techniques: ['H44', 'H91']
+        }
+      }
+    },
+    tags: ['form', 'content']
+  }
+};
+module.exports = TextareaHasAssociatedLabel;
+
+},{"LabelComponent":12}],207:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var $ = require('jquery/dist/jquery');
+var VideoMayBePresent = {
+  run: function run(test) {
+
+    var videoExtensions = ['webm', 'flv', 'ogv', 'ogg', 'avi', 'mov', 'qt', 'wmv', 'asf', 'mp4', 'm4p', 'm4v', 'mpg', 'mp2', 'mpeg', 'mpg', 'mpe', 'mpv', 'm2v', '3gp', '3g2'];
+    var videoHosts = ['//www.youtube.com/embed/', '//player.vimeo.com/video/'];
+
+    test.get('$scope').each(function () {
+      var $this = $(this);
+      var hasCase = false; // Test if a case has been created
+
+      // video elm is definately a video, and objects could be too.
+      $this.find('object, video').each(function () {
+        hasCase = true;
+        test.add(Case({
+          element: this,
+          status: 'cantTell'
+        }));
+      });
+
+      // Links refering to files with an video extensions are probably video
+      // though the file may not exist.
+      $this.find('a[href]').each(function () {
+        var $this = $(this);
+        var extension = $this.attr('href').split('.').pop();
+        if ($.inArray(extension, videoExtensions) !== -1) {
+          hasCase = true;
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        }
+      });
+
+      // some iframes with URL's of known video providers are also probably videos
+      $this.find('iframe').each(function () {
+        if (this.src.indexOf(videoHosts[0]) !== -1 || this.src.indexOf(videoHosts[1]) !== -1) {
+          hasCase = true;
+          test.add(Case({
+            element: this,
+            status: 'cantTell'
+          }));
+        }
+      });
+
+      // if no case was added, return inapplicable
+      if (!hasCase) {
+        test.add(Case({
+          element: this,
+          status: 'inapplicable'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'Video or object uses a link that points to a file with a video extension',
+      nl: 'Video of object met een link naar een bestand met een video extensie'
+    },
+    description: {
+      en: '',
+      nl: ''
+    },
+    guidelines: [],
+    tags: ['link', 'video']
+  }
+};
+module.exports = VideoMayBePresent;
+
+},{"Case":30,"jquery/dist/jquery":37}],208:[function(require,module,exports){
+'use strict';
+
+var Case = require('Case');
+var VideoComponent = require('VideoComponent');
+var VideosEmbeddedOrLinkedNeedCaptions = {
+  run: function run(test) {
+
+    VideoComponent.findVideos(test.get('$scope'), function (element, pass) {
+      if (!pass) {
+        test.add(Case({
+          element: element[0],
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: element[0],
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 1,
+    title: {
+      en: 'All linked or embedded videos need captions',
+      nl: 'Alle gekoppelde of ingebedde video\'s moeten bijschriften hebben'
+    },
+    description: {
+      en: 'Any video hosted or otherwise which is linked or embedded must have a caption.',
+      nl: 'Elke video die is gekoppeld of ingebed in content moet een bijschrift hebben.'
+    },
+    guidelines: {
+      wcag: {
+        '1.2.2': {
+          techniques: ['G87']
+        },
+        '1.2.4': {
+          techniques: ['G87']
+        }
+      }
+    },
+    tags: ['media', 'content']
+  }
+};
+module.exports = VideosEmbeddedOrLinkedNeedCaptions;
+
+},{"Case":30,"VideoComponent":29}],209:[function(require,module,exports){
+'use strict';
+
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var WhiteSpaceInWord = {
+  run: function run(test) {
+    var whitespaceGroup, nonWhitespace;
+    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
+      return TextNodeFilterComponent(element);
+    }).each(function () {
+      nonWhitespace = $(this).text() ? $(this).text().match(/[^\s\\]/g) : false;
+      whitespaceGroup = $(this).text() ? $(this).text().match(/[^\s\\]\s[^\s\\]/g) : false;
+      if (nonWhitespace && whitespaceGroup && whitespaceGroup.length > 3 && whitespaceGroup.length >= nonWhitespace.length / 2 - 2) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: this,
+          status: 'passed'
+        }));
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Whitespace should not be used between characters in a word',
+      nl: 'Zet geen witruimte tussen letters in een woord'
+    },
+    description: {
+      en: 'Using extra whitespace between letters in a word causes screen readers to not interpret the word correctly, use the letter-spacing CSS property instead.',
+      nl: 'Het gebruik van witruimte tussen de letters van een woord, zorgen dat schermlezers het woord niet volledig kunnen lezen. Gebruik in plaats hiervan css om de ruimte tussen letters te bepalen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['F32', 'C8']
+        }
+      }
+    },
+    tags: ['content']
+  }
+};
+module.exports = WhiteSpaceInWord;
+
+},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}],210:[function(require,module,exports){
+'use strict';
+
+var TextSelectorComponent = require('TextSelectorComponent');
+var Case = require('Case');
+var TextNodeFilterComponent = require('TextNodeFilterComponent');
+var WhiteSpaceNotUsedForFormatting = {
+  run: function run(test) {
+    test.get('$scope').find(TextSelectorComponent).filter(function (index, element) {
+      return TextNodeFilterComponent(element);
+    }).each(function () {
+      var _case = test.add(Case({
+        element: this
+      }));
+      if ($(this).find('br').length === 0) {
+        _case.set({ status: 'passed' });
+        return;
+      }
+      var lines = $(this).html().toLowerCase().split(/(<br\ ?\/?>)+/);
+      var lineCount = 0;
+      $.each(lines, function (index, line) {
+        if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
+          lineCount++;
+        }
+      });
+      if (lineCount > 1) {
+        _case.set({ status: 'failed' });
+      } else {
+        _case.set({ status: 'cantTell' });
+      }
+    });
+  },
+
+  meta: {
+    testability: 0.5,
+    title: {
+      en: 'Whitespace should not be used for conveying information',
+      nl: 'Gebruik geen witruimte om informatie over te brengen'
+    },
+    description: {
+      en: 'Spaces or tabs are not read by assistive technology and should not be used to convey meaning.',
+      nl: 'Spaties of tabs worden niet voorgelezen door hulpprogramma\'s en moeten niet worden gebruikt om betekenis over te dragen.'
+    },
+    guidelines: {
+      wcag: {
+        '1.3.2': {
+          techniques: ['G57']
+        }
+      }
+    },
+    tags: ['content']
+  }
+};
+module.exports = WhiteSpaceNotUsedForFormatting;
+
+},{"Case":30,"TextNodeFilterComponent":25,"TextSelectorComponent":26}]},{},[31]);
