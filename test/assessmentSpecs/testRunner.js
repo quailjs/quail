@@ -284,7 +284,7 @@ function runSpecs (assessments) {
           }
         };
 
-        quail.run({
+        window.globalQuail.run({
           accessibilityTests: tests,
           html: jQuery('html'),
           // Called when an individual Case in a test is resolved.

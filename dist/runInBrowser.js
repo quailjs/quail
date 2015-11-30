@@ -1,6 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-const Case = require('Case');
-var AcronymComponent = function (test) {
+'use strict';
+
+var Case = require('Case');
+var AcronymComponent = function AcronymComponent(test) {
   test.get('$scope').each(function () {
     var $scope = $(this);
     var alreadyReported = {};
@@ -65,13 +67,23 @@ var AcronymComponent = function (test) {
 module.exports = AcronymComponent;
 
 },{"Case":30}],2:[function(require,module,exports){
-const CleanStringComponent = function (string) {
+'use strict';
+
+var CleanStringComponent = function CleanStringComponent(string) {
   return string.toLowerCase().replace(/^\s\s*/, '');
 };
 
 module.exports = CleanStringComponent;
 
 },{}],3:[function(require,module,exports){
+'use strict';
+
+function _typeof2(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
+function _typeof(obj) {
+  return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+}
+
 /**
  * Test callback for color tests. This handles both WAI and WCAG
  * color contrast/luminosity.
@@ -95,7 +107,7 @@ var ColorComponent = (function () {
      * Returns the lumosity of a given foreground and background object,
      * in the format of {r: red, g: green, b: blue } in rgb color values.
      */
-    getLuminosity: function (foreground, background) {
+    getLuminosity: function getLuminosity(foreground, background) {
       var cacheKey = 'getLuminosity_' + foreground + '_' + background;
       foreground = colors.parseColor(foreground);
       background = colors.parseColor(background);
@@ -129,7 +141,7 @@ var ColorComponent = (function () {
      * Returns the average color for a given image
      * using a canvas element.
      */
-    fetchImageColorAtPixel: function (img, x, y) {
+    fetchImageColorAtPixel: function fetchImageColorAtPixel(img, x, y) {
       x = typeof x !== 'undefined' ? x : 1;
       y = typeof y !== 'undefined' ? y : 1;
       var can = document.createElement('canvas');
@@ -143,16 +155,16 @@ var ColorComponent = (function () {
      * Returns whether an element's color passes
      * WCAG at a certain contrast ratio.
      */
-    passesWCAG: function (element, level) {
+    passesWCAG: function passesWCAG(element, level) {
       return this.passesWCAGColor(element, this.getColor(element, 'foreground'), this.getColor(element, 'background'), level);
     },
 
-    testElmContrast: function (algorithm, element, level) {
+    testElmContrast: function testElmContrast(algorithm, element, level) {
       var background = colors.getColor(element, 'background');
       return colors.testElmBackground(algorithm, element, background, level);
     },
 
-    testElmBackground: function (algorithm, element, background, level) {
+    testElmBackground: function testElmBackground(algorithm, element, background, level) {
       var foreground = colors.getColor(element, 'foreground');
       var res;
       if (algorithm === 'wcag') {
@@ -167,7 +179,7 @@ var ColorComponent = (function () {
      * Returns whether an element's color passes
      * WCAG at a certain contrast ratio.
      */
-    passesWCAGColor: function (element, foreground, background, level) {
+    passesWCAGColor: function passesWCAGColor(element, foreground, background, level) {
       var pxfsize = ConvertToPx(element.css('fontSize'));
       if (typeof level === 'undefined') {
         if (pxfsize >= 18) {
@@ -188,7 +200,7 @@ var ColorComponent = (function () {
      * Returns whether an element's color passes
      * WAI brightness levels.
      */
-    passesWAI: function (element) {
+    passesWAI: function passesWAI(element) {
       var foreground = this.parseColor(this.getColor(element, 'foreground'));
       var background = this.parseColor(this.getColor(element, 'background'));
       return this.passesWAIColor(foreground, background);
@@ -198,7 +210,7 @@ var ColorComponent = (function () {
      * Returns whether an element's color passes
      * WAI brightness levels.
      */
-    passesWAIColor: function (foreground, background) {
+    passesWAIColor: function passesWAIColor(foreground, background) {
       var contrast = colors.getWAIErtContrast(foreground, background);
       var brightness = colors.getWAIErtBrightness(foreground, background);
 
@@ -209,7 +221,7 @@ var ColorComponent = (function () {
      * Compused contrast of a foreground and background
      * per the ERT contrast spec.
      */
-    getWAIErtContrast: function (foreground, background) {
+    getWAIErtContrast: function getWAIErtContrast(foreground, background) {
       var diffs = colors.getWAIDiffs(foreground, background);
       return diffs.red + diffs.green + diffs.blue;
     },
@@ -218,7 +230,7 @@ var ColorComponent = (function () {
      * Computed contrast of a foreground and background
      * per the ERT brightness spec.
      */
-    getWAIErtBrightness: function (foreground, background) {
+    getWAIErtBrightness: function getWAIErtBrightness(foreground, background) {
       var diffs = colors.getWAIDiffs(foreground, background);
       return (diffs.red * 299 + diffs.green * 587 + diffs.blue * 114) / 1000;
     },
@@ -226,7 +238,7 @@ var ColorComponent = (function () {
     /**
      * Returns differences between two colors.
      */
-    getWAIDiffs: function (foreground, background) {
+    getWAIDiffs: function getWAIDiffs(foreground, background) {
       return {
         red: Math.abs(foreground.r - background.r),
         green: Math.abs(foreground.g - background.g),
@@ -239,7 +251,7 @@ var ColorComponent = (function () {
      * There are some normalizations here for the way
      * different browsers can return colors, and handling transparencies.
      */
-    getColor: function (element, type) {
+    getColor: function getColor(element, type) {
       var self = colors;
       if (!$(element).data('cache-id')) {
         $(element).data('cache-id', 'id_' + Math.random());
@@ -271,15 +283,15 @@ var ColorComponent = (function () {
       return colors.cache[cacheKey];
     },
 
-    getForeground: function (element) {
+    getForeground: function getForeground(element) {
       return colors.getColor(element, 'foreground');
     },
 
     /**
      * Returns an object with rgba taken from a string.
      */
-    parseColor: function (color) {
-      if (typeof color === 'object') {
+    parseColor: function parseColor(color) {
+      if ((typeof color === 'undefined' ? 'undefined' : _typeof(color)) === 'object') {
         return color;
       }
 
@@ -306,7 +318,7 @@ var ColorComponent = (function () {
     /**
      * Returns background image of an element or its parents.
      */
-    getBackgroundImage: function (element) {
+    getBackgroundImage: function getBackgroundImage(element) {
       if (!$(element).data('cache-id')) {
         $(element).data('cache-id', 'id_' + Math.random());
       }
@@ -331,7 +343,7 @@ var ColorComponent = (function () {
     /**
      * Returns background image of an element or its parents.
      */
-    getBackgroundGradient: function (element) {
+    getBackgroundGradient: function getBackgroundGradient(element) {
       if (!$(element).data('cache-id')) {
         $(element).data('cache-id', 'id_' + Math.random());
       }
@@ -341,7 +353,7 @@ var ColorComponent = (function () {
         return colors.cache[cacheKey];
       }
 
-      var notEmpty = function (s) {
+      var notEmpty = function notEmpty(s) {
         return $.trim(s) !== '';
       };
       element = element[0];
@@ -369,7 +381,7 @@ var ColorComponent = (function () {
     /**
      * Calculates average color of an image.
      */
-    getAverageRGB: function (img) {
+    getAverageRGB: function getAverageRGB(img) {
       var cacheKey = img.src;
       if (colors.cache[cacheKey] !== undefined) {
         return colors.cache[cacheKey];
@@ -437,7 +449,7 @@ var ColorComponent = (function () {
     /**
      * Convert color to hex value.
      */
-    colorToHex: function (c) {
+    colorToHex: function colorToHex(c) {
       var m = /rgba?\((\d+), (\d+), (\d+)/.exec(c);
       return m ? '#' + (1 << 24 | m[1] << 16 | m[2] << 8 | m[3]).toString(16).substr(1) : c;
     },
@@ -445,14 +457,14 @@ var ColorComponent = (function () {
     /**
      * Check if element has a background color.
      */
-    hasBackgroundColor: function (bcolor) {
+    hasBackgroundColor: function hasBackgroundColor(bcolor) {
       return bcolor !== 'rgba(0, 0, 0, 0)' && bcolor !== 'transparent';
     },
 
     /**
      * Traverse visual tree for background property.
      */
-    traverseVisualTreeForBackground: function (element, property) {
+    traverseVisualTreeForBackground: function traverseVisualTreeForBackground(element, property) {
       if (!$(element).data('cache-id')) {
         $(element).data('cache-id', 'id_' + Math.random());
       }
@@ -462,7 +474,7 @@ var ColorComponent = (function () {
         return colors.cache[cacheKey];
       }
 
-      var notempty = function (s) {
+      var notempty = function notempty(s) {
         return $.trim(s) !== '';
       };
 
@@ -544,21 +556,21 @@ var ColorComponent = (function () {
     /**
      * Get first element behind current with a background color.
      */
-    getBehindElementBackgroundColor: function (element) {
+    getBehindElementBackgroundColor: function getBehindElementBackgroundColor(element) {
       return colors.traverseVisualTreeForBackground(element, 'background-color');
     },
 
     /**
      * Get first element behind current with a background gradient.
      */
-    getBehindElementBackgroundGradient: function (element) {
+    getBehindElementBackgroundGradient: function getBehindElementBackgroundGradient(element) {
       return colors.traverseVisualTreeForBackground(element, 'background-gradient');
     },
 
     /**
      * Get first element behind current with a background image.
      */
-    getBehindElementBackgroundImage: function (element) {
+    getBehindElementBackgroundImage: function getBehindElementBackgroundImage(element) {
       return colors.traverseVisualTreeForBackground(element, 'background-image');
     }
   };
@@ -634,8 +646,10 @@ var ColorComponent = (function () {
 module.exports = ColorComponent;
 
 },{"ConvertToPxComponent":5,"IsUnreadable":11}],4:[function(require,module,exports){
+'use strict';
+
 var IsUnreadable = require('IsUnreadable');
-const ContainsReadableTextComponent = function (element, children) {
+var ContainsReadableTextComponent = function ContainsReadableTextComponent(element, children) {
   element = element.clone();
   element.find('option').remove();
   if (!IsUnreadable(element.text())) {
@@ -661,11 +675,14 @@ const ContainsReadableTextComponent = function (element, children) {
 module.exports = ContainsReadableTextComponent;
 
 },{"IsUnreadable":11}],5:[function(require,module,exports){
+'use strict'
+
 /**
  * Converts units to pixels.
  */
 
-var ConvertToPxComponent = function (unit) {
+;
+var ConvertToPxComponent = function ConvertToPxComponent(unit) {
   if (unit.search('px') > -1) {
     return parseInt(unit, 10);
   }
@@ -677,15 +694,18 @@ var ConvertToPxComponent = function (unit) {
 module.exports = ConvertToPxComponent;
 
 },{}],6:[function(require,module,exports){
+'use strict'
+
 /**
  * Test callback for tests that look for script events
  *  (like a mouse event has a keyboard event as well).
  */
-const Case = require('Case');
+;
+var Case = require('Case');
 var HasEventListenerComponent = require('HasEventListenerComponent');
 var $ = require('jquery/dist/jquery');
 
-var EventComponent = function (test, options) {
+var EventComponent = function EventComponent(test, options) {
   var $scope = test.get('$scope');
   var $items = options.selector && $scope.find(options.selector);
   // Bail if nothing was found.
@@ -726,10 +746,13 @@ var EventComponent = function (test, options) {
 module.exports = EventComponent;
 
 },{"Case":30,"HasEventListenerComponent":8,"jquery/dist/jquery":212}],7:[function(require,module,exports){
+'use strict'
+
 /**
  *  Returns text contents for nodes depending on their semantics
  */
-const getTextContentsComponent = function ($element) {
+;
+var getTextContentsComponent = function getTextContentsComponent($element) {
   if ($element.is('p, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption')) {
     return $element.text();
   }
@@ -748,10 +771,13 @@ const getTextContentsComponent = function ($element) {
 module.exports = getTextContentsComponent;
 
 },{}],8:[function(require,module,exports){
+'use strict'
+
 /**
  * Returns whether an element has an event handler or not.
  */
-var HasEventListenerComponent = function (element, event) {
+;
+var HasEventListenerComponent = function HasEventListenerComponent(element, event) {
   if (typeof $(element).attr('on' + event) !== 'undefined') {
     return true;
   }
@@ -770,8 +796,10 @@ var HasEventListenerComponent = function (element, event) {
 module.exports = HasEventListenerComponent;
 
 },{}],9:[function(require,module,exports){
-const Case = require('Case');
-var HeadingLevelComponent = function (test, options) {
+'use strict';
+
+var Case = require('Case');
+var HeadingLevelComponent = function HeadingLevelComponent(test, options) {
   var priorLevel = false;
   test.get('$scope').find(':header').each(function () {
     var level = parseInt($(this).get(0).tagName.substr(-1, 1), 10);
@@ -792,10 +820,13 @@ var HeadingLevelComponent = function (test, options) {
 module.exports = HeadingLevelComponent;
 
 },{"Case":30}],10:[function(require,module,exports){
+'use strict'
+
 /**
  * Read more about this function here: https://github.com/quailjs/quail/wiki/Layout-versus-data-tables
  */
-const IsDataTableComponent = function (table) {
+;
+var IsDataTableComponent = function IsDataTableComponent(table) {
   // If there are less than three rows, why do a table?
   if (table.find('tr').length < 3) {
     return false;
@@ -845,12 +876,15 @@ const IsDataTableComponent = function (table) {
 module.exports = IsDataTableComponent;
 
 },{}],11:[function(require,module,exports){
+'use strict'
+
 /**
  * Helper function to determine if a string of text is even readable.
  * @todo - This will be added to in the future... we should also include
  * phonetic tests.
  */
-const IsUnreadable = function (text) {
+;
+var IsUnreadable = function IsUnreadable(text) {
   if (typeof text !== 'string') {
     return true;
   }
@@ -860,10 +894,12 @@ const IsUnreadable = function (text) {
 module.exports = IsUnreadable;
 
 },{}],12:[function(require,module,exports){
-const Case = require('Case');
+'use strict';
+
+var Case = require('Case');
 var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
 var $ = require('jquery/dist/jquery');
-var LabelComponent = function (test, options) {
+var LabelComponent = function LabelComponent(test, options) {
 
   options = options || {};
 
@@ -888,10 +924,14 @@ var LabelComponent = function (test, options) {
 module.exports = LabelComponent;
 
 },{"Case":30,"ContainsReadableTextComponent":4,"jquery/dist/jquery":212}],13:[function(require,module,exports){
+'use strict';
+
 var LanguageCodesStringsComponent = ['bh', 'bi', 'nb', 'bs', 'br', 'bg', 'my', 'es', 'ca', 'km', 'ch', 'ce', 'ny', 'ny', 'zh', 'za', 'cu', 'cu', 'cv', 'kw', 'co', 'cr', 'hr', 'cs', 'da', 'dv', 'dv', 'nl', 'dz', 'en', 'eo', 'et', 'ee', 'fo', 'fj', 'fi', 'nl', 'fr', 'ff', 'gd', 'gl', 'lg', 'ka', 'de', 'ki', 'el', 'kl', 'gn', 'gu', 'ht', 'ht', 'ha', 'he', 'hz', 'hi', 'ho', 'hu', 'is', 'io', 'ig', 'id', 'ia', 'ie', 'iu', 'ik', 'ga', 'it', 'ja', 'jv', 'kl', 'kn', 'kr', 'ks', 'kk', 'ki', 'rw', 'ky', 'kv', 'kg', 'ko', 'kj', 'ku', 'kj', 'ky', 'lo', 'la', 'lv', 'lb', 'li', 'li', 'li', 'ln', 'lt', 'lu', 'lb', 'mk', 'mg', 'ms', 'ml', 'dv', 'mt', 'gv', 'mi', 'mr', 'mh', 'ro', 'ro', 'mn', 'na', 'nv', 'nv', 'nd', 'nr', 'ng', 'ne', 'nd', 'se', 'no', 'nb', 'nn', 'ii', 'ny', 'nn', 'ie', 'oc', 'oj', 'cu', 'cu', 'cu', 'or', 'om', 'os', 'os', 'pi', 'pa', 'ps', 'fa', 'pl', 'pt', 'pa', 'ps', 'qu', 'ro', 'rm', 'rn', 'ru', 'sm', 'sg', 'sa', 'sc', 'gd', 'sr', 'sn', 'ii', 'sd', 'si', 'si', 'sk', 'sl', 'so', 'st', 'nr', 'es', 'su', 'sw', 'ss', 'sv', 'tl', 'ty', 'tg', 'ta', 'tt', 'te', 'th', 'bo', 'ti', 'to', 'ts', 'tn', 'tr', 'tk', 'tw', 'ug', 'uk', 'ur', 'ug', 'uz', 'ca', 've', 'vi', 'vo', 'wa', 'cy', 'fy', 'wo', 'xh', 'yi', 'yo', 'za', 'zu'];
 module.exports = LanguageCodesStringsComponent;
 
 },{}],14:[function(require,module,exports){
+'use strict';
+
 var LanguageComponent = {
 
   /**
@@ -967,7 +1007,7 @@ var LanguageComponent = {
    * first the browser's default, then the HTML element's 'lang' attribute,
    * then the 'lang' attribute of the element passed to quail.
    */
-  getDocumentLanguage: function (scope, returnIso) {
+  getDocumentLanguage: function getDocumentLanguage(scope, returnIso) {
     var language = navigator.language || navigator.userLanguage;
     if (typeof quail.options.language !== 'undefined') {
       language = quail.options.language;
@@ -988,23 +1028,28 @@ var LanguageComponent = {
 module.exports = LanguageComponent;
 
 },{}],15:[function(require,module,exports){
+"use strict";
+
 var NewWindowStringsComponent = [/new (browser )?(window|frame)/, /popup (window|frame)/];
 module.exports = NewWindowStringsComponent;
 
 },{}],16:[function(require,module,exports){
+'use strict'
+
 /**
  * Placeholder test - checks that an attribute or the content of an
  * element itself is not a placeholder (i.e. 'click here' for links).
  */
-const Case = require('Case');
+;
+var Case = require('Case');
 var CleanStringComponent = require('CleanStringComponent');
 var IsUnreadable = require('IsUnreadable');
 var PlaceholdersStringsComponent = require('PlaceholdersStringsComponent');
 var $ = require('jquery/dist/jquery');
 
-var PlaceholderComponent = function (test, options) {
+var PlaceholderComponent = function PlaceholderComponent(test, options) {
 
-  var resolve = function (element, resolution) {
+  var resolve = function resolve(element, resolution) {
     test.add(Case({
       element: element,
       status: resolution
@@ -1058,10 +1103,14 @@ var PlaceholderComponent = function (test, options) {
 module.exports = PlaceholderComponent;
 
 },{"Case":30,"CleanStringComponent":2,"IsUnreadable":11,"PlaceholdersStringsComponent":17,"jquery/dist/jquery":212}],17:[function(require,module,exports){
+'use strict';
+
 var PlaceholdersStringsComponent = ['title', 'untitled', 'untitled document', 'this is the title', 'the title', 'content', ' ', 'new page', 'new', 'nbsp', '&nbsp;', 'spacer', 'image', 'img', 'photo', 'frame', 'frame title', 'iframe', 'iframe title', 'legend'];
 module.exports = PlaceholdersStringsComponent;
 
 },{}],18:[function(require,module,exports){
+'use strict';
+
 var RedundantStringsComponent = {
   inputImage: ['submit', 'button'],
   link: ['link to', 'link', 'go to', 'click here', 'link', 'click', 'more'],
@@ -1070,42 +1119,59 @@ var RedundantStringsComponent = {
 module.exports = RedundantStringsComponent;
 
 },{}],19:[function(require,module,exports){
+'use strict';
+
 var SiteMapStringsComponent = ['site map', 'map', 'sitemap'];
 module.exports = SiteMapStringsComponent;
 
 },{}],20:[function(require,module,exports){
+"use strict";
+
 var SkipContentStringsComponent = [/(jump|skip) (.*) (content|main|post)/i];
 module.exports = SkipContentStringsComponent;
 
 },{}],21:[function(require,module,exports){
+'use strict'
+
 /**
  * Suspect CSS styles that might indicate a paragraph tag is being used as a header.
  */
+;
 var SuspectPCSSStyles = ['color', 'font-weight', 'font-size', 'font-family'];
 
 module.exports = SuspectPCSSStyles;
 
 },{}],22:[function(require,module,exports){
+'use strict'
+
 /**
  * Suspect tags that would indicate a paragraph is being used as a header.
  */
+;
 var SuspectPHeaderTags = ['strong', 'b', 'em', 'i', 'u', 'font'];
 
 module.exports = SuspectPHeaderTags;
 
 },{}],23:[function(require,module,exports){
+'use strict';
+
 var SuspiciousLinksStringsComponent = ['click here', 'click', 'more', 'here', 'read more', 'download', 'add', 'delete', 'clone', 'order', 'view', 'read', 'clic aqu&iacute;', 'clic', 'haga clic', 'm&aacute;s', 'aqu&iacute;', 'image'];
 module.exports = SuspiciousLinksStringsComponent;
 
 },{}],24:[function(require,module,exports){
+'use strict';
+
 var SymbolsStringsComponent = ['|', '*', /\*/g, '<br>*', '&bull;', '&#8226', '♦', '›', '»', '‣', '▶', '.', '◦', '✓', '◽', '•', '—', '◾'];
 module.exports = SymbolsStringsComponent;
 
 },{}],25:[function(require,module,exports){
+"use strict"
+
 /**
  * Returns DOM nodes that contain at least one text node.
  */
-var TextNodeFilterComponent = function (element) {
+;
+var TextNodeFilterComponent = function TextNodeFilterComponent(element) {
   var nodes = Array.prototype.slice.call(element.childNodes);
   var hasTextNode = false;
   var node;
@@ -1124,36 +1190,42 @@ var TextNodeFilterComponent = function (element) {
 module.exports = TextNodeFilterComponent;
 
 },{}],26:[function(require,module,exports){
+'use strict'
+
 /**
  * A list of HTML elements that can contain actual text.
  */
+;
 var TextSelectorComponent = ['tt', 'i', 'b', 'big', 'small', 'em', 'strong', 'dfn', 'code', 'samp', 'kbd', 'var', 'cite', 'abbr', 'acronym', 'sub', 'sup', 'span', 'bdo', 'address', 'div', 'a', 'object', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'q', 'ins', 'del', 'dt', 'dd', 'li', 'label', 'option', 'textarea', 'fieldset', 'legend', 'button', 'caption', 'td', 'th'].join(', ');
 module.exports = TextSelectorComponent;
 
 },{}],27:[function(require,module,exports){
+'use strict'
+
 /**
  * Utility object that runs text statistics, like sentence count,
  * reading level, etc.
  */
+;
 var TextStatisticsComponent = {
 
-  cleanText: function (text) {
+  cleanText: function cleanText(text) {
     return text.replace(/[,:;()\-]/, ' ').replace(/[\.!?]/, '.').replace(/[ ]*(\n|\r\n|\r)[ ]*/, ' ').replace(/([\.])[\. ]+/, '$1').replace(/[ ]*([\.])/, '$1').replace(/[ ]+/, ' ').toLowerCase();
   },
 
-  sentenceCount: function (text) {
+  sentenceCount: function sentenceCount(text) {
     return text.split('.').length + 1;
   },
 
-  wordCount: function (text) {
+  wordCount: function wordCount(text) {
     return text.split(' ').length + 1;
   },
 
-  averageWordsPerSentence: function (text) {
+  averageWordsPerSentence: function averageWordsPerSentence(text) {
     return this.wordCount(text) / this.sentenceCount(text);
   },
 
-  averageSyllablesPerWord: function (text) {
+  averageSyllablesPerWord: function averageSyllablesPerWord(text) {
     var that = this;
     var count = 0;
     var wordCount = that.wordCount(text);
@@ -1166,7 +1238,7 @@ var TextStatisticsComponent = {
     return count / wordCount;
   },
 
-  syllableCount: function (word) {
+  syllableCount: function syllableCount(word) {
     var matchedWord = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '').match(/[aeiouy]{1,2}/g);
     if (!matchedWord || matchedWord.length === 0) {
       return 1;
@@ -1177,20 +1249,26 @@ var TextStatisticsComponent = {
 module.exports = TextStatisticsComponent;
 
 },{}],28:[function(require,module,exports){
+'use strict'
+
 /**
  * Helper function to determine if a given URL is even valid.
  */
-const ValidURLComponent = function (url) {
+;
+var ValidURLComponent = function ValidURLComponent(url) {
   return url.search(' ') === -1;
 };
 
 module.exports = ValidURLComponent;
 
 },{}],29:[function(require,module,exports){
+'use strict'
+
 /**
 * Helper object that tests videos.
 * @todo - allow this to be exteded more easily.
 */
+;
 var Language = require('LanguageComponent');
 
 var VideoComponent = {
@@ -1203,7 +1281,7 @@ var VideoComponent = {
    * @return Boolean
    *   Whether the element is a video.
    */
-  isVideo: function (element) {
+  isVideo: function isVideo(element) {
     var isVideo = false;
     $.each(this.providers, function () {
       if (element.is(this.selector) && this.isVideo(element)) {
@@ -1213,7 +1291,7 @@ var VideoComponent = {
     return isVideo;
   },
 
-  findVideos: function (element, callback) {
+  findVideos: function findVideos(element, callback) {
     $.each(this.providers, function (name, provider) {
       element.find(this.selector).each(function () {
         var video = $(this);
@@ -1232,11 +1310,11 @@ var VideoComponent = {
 
       apiUrl: 'http://gdata.youtube.com/feeds/api/videos/?q=%video&caption&v=2&alt=json',
 
-      isVideo: function (element) {
+      isVideo: function isVideo(element) {
         return this.getVideoId(element) !== false ? true : false;
       },
 
-      getVideoId: function (element) {
+      getVideoId: function getVideoId(element) {
         var attribute = element.is('iframe') ? 'src' : 'href';
         var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&\?]*).*/;
         var match = element.attr(attribute).match(regExp);
@@ -1246,13 +1324,13 @@ var VideoComponent = {
         return false;
       },
 
-      hasCaptions: function (element, callback) {
+      hasCaptions: function hasCaptions(element, callback) {
         var videoId = this.getVideoId(element);
         $.ajax({
           url: this.apiUrl.replace('%video', videoId),
           async: false,
           dataType: 'json',
-          success: function (data) {
+          success: function success(data) {
             callback(element, data.feed.openSearch$totalResults.$t > 0);
           }
         });
@@ -1263,7 +1341,7 @@ var VideoComponent = {
 
       selector: 'object',
 
-      isVideo: function (element) {
+      isVideo: function isVideo(element) {
         var isVideo = false;
         if (element.find('param').length === 0) {
           return false;
@@ -1276,7 +1354,7 @@ var VideoComponent = {
         return isVideo;
       },
 
-      hasCaptions: function (element, callback) {
+      hasCaptions: function hasCaptions(element, callback) {
         var hasCaptions = false;
         element.find('param[name=flashvars]').each(function () {
           if ($(this).attr('value').search('captions') > -1 && $(this).attr('value').search('.srt') > -1 || $(this).attr('value').search('captions.pluginmode') > -1) {
@@ -1291,11 +1369,11 @@ var VideoComponent = {
 
       selector: 'video',
 
-      isVideo: function (element) {
+      isVideo: function isVideo(element) {
         return element.is('video');
       },
 
-      hasCaptions: function (element, callback) {
+      hasCaptions: function hasCaptions(element, callback) {
         var $captions = element.find('track[kind=subtitles], track[kind=captions]');
         if (!$captions.length) {
           callback(element, false);
@@ -1314,7 +1392,7 @@ var VideoComponent = {
                 url: $(this).attr('src'),
                 type: 'HEAD',
                 async: false,
-                error: function () {}
+                error: function error() {}
               });
               if (request.status === 404) {
                 foundLanguage = false;
@@ -1338,6 +1416,14 @@ var VideoComponent = {
 module.exports = VideoComponent;
 
 },{"LanguageComponent":14}],30:[function(require,module,exports){
+'use strict';
+
+function _typeof2(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
+function _typeof(obj) {
+  return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+}
+
 /**
  * @providesModule Case
  */
@@ -1354,7 +1440,7 @@ var Case = (function () {
   // Prototype object of the Case.
   Case.fn = Case.prototype = {
     constructor: Case,
-    init: function (attributes) {
+    init: function init(attributes) {
       this.listeners = {};
       this.timeout = null;
       this.attributes = attributes || {};
@@ -1380,13 +1466,13 @@ var Case = (function () {
     },
     // Details of the Case.
     attributes: null,
-    get: function (attr) {
+    get: function get(attr) {
       return this.attributes[attr];
     },
-    set: function (attr, value) {
+    set: function set(attr, value) {
       var isStatusChanged = false;
       // Allow an object of attributes to be passed in.
-      if (typeof attr === 'object') {
+      if ((typeof attr === 'undefined' ? 'undefined' : _typeof(attr)) === 'object') {
         for (var prop in attr) {
           if (attr.hasOwnProperty(prop)) {
             if (prop === 'status') {
@@ -1415,9 +1501,9 @@ var Case = (function () {
      * @return boolean
      *   A bit that indicates if the case has one of the supplied statuses.
      */
-    hasStatus: function (statuses) {
+    hasStatus: function hasStatus(statuses) {
       // This is a rought test of arrayness.
-      if (typeof statuses !== 'object') {
+      if ((typeof statuses === 'undefined' ? 'undefined' : _typeof(statuses)) !== 'object') {
         statuses = [statuses];
       }
       var status = this.get('status');
@@ -1431,7 +1517,7 @@ var Case = (function () {
     /**
      * Dispatches the resolve event; clears the timeout fallback event.
      */
-    resolve: function () {
+    resolve: function resolve() {
       clearTimeout(this.timeout);
 
       var el = this.attributes.element;
@@ -1473,24 +1559,24 @@ var Case = (function () {
     /**
      * Abandons the Case if it not resolved within the timeout period.
      */
-    giveup: function () {
+    giveup: function giveup() {
       clearTimeout(this.timeout);
       // @todo, the set method should really have a 'silent' option.
       this.attributes.status = 'untested';
       this.dispatch('timeout', this);
     },
     // @todo, make this a set of methods that all classes extend.
-    listenTo: function (dispatcher, eventName, handler) {
+    listenTo: function listenTo(dispatcher, eventName, handler) {
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
-    registerListener: function (eventName, handler) {
+    registerListener: function registerListener(eventName, handler) {
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
       }
       this.listeners[eventName].push(handler);
     },
-    dispatch: function (eventName) {
+    dispatch: function dispatch(eventName) {
       if (this.listeners[eventName] && this.listeners[eventName].length) {
         var eventArgs = [].slice.call(arguments);
         this.listeners[eventName].forEach(function (handler) {
@@ -1510,7 +1596,7 @@ var Case = (function () {
      * @return {string}
      *   A unique selector for this element.
      */
-    defineUniqueSelector: function (element) {
+    defineUniqueSelector: function defineUniqueSelector(element) {
       /**
        * Indicates whether the selector string represents a unique DOM element.
        *
@@ -1718,9 +1804,11 @@ var _extends = Object.assign || function (target) {
 
 require('babel-polyfill/dist/polyfill');
 
-const TestCollection = require('TestCollection');
-const wcag2 = require('wcag2');
-const _Assessments = require('_Assessments');
+var globalQuail = window.globalQuail || {};
+
+var TestCollection = require('TestCollection');
+var wcag2 = require('wcag2');
+var _Assessments = require('_Assessments');
 
 var quail = {
 
@@ -1737,7 +1825,7 @@ var quail = {
       /**
        * Perform WCAG specific setup.
        */
-      setup: function (tests, listener, callbacks) {
+      setup: function setup(tests, listener, callbacks) {
         callbacks = callbacks || {};
         // Associate Success Criteria with the TestCollection.
         for (var sc in this.successCriteria) {
@@ -1764,15 +1852,15 @@ var quail = {
   /**
    * Main run function for quail.
    */
-  run: function (options) {
+  run: function run(options) {
     function buildTests(quail, assessmentList, options) {
       // An array of test names.
       if (assessmentList.constructor === Array) {
         for (var i = 0, il = assessmentList.length; i < il; ++i) {
-          let name = assessmentList[i];
-          let mod = _Assessments.get(name);
+          var _name = assessmentList[i];
+          var mod = _Assessments.get(_name);
           if (mod) {
-            quail.tests.set(name, _extends({
+            quail.tests.set(_name, _extends({
               scope: options.html || null,
               callback: mod.run
             }, mod.meta));
@@ -1783,7 +1871,7 @@ var quail = {
         var name;
         for (name in assessmentList) {
           if (assessmentList.hasOwnProperty(name)) {
-            let mod = _Assessments.get(name);
+            var mod = _Assessments.get(name);
             if (mod) {
               quail.tests.set(name, _extends({
                 scope: options.html || null,
@@ -1803,7 +1891,7 @@ var quail = {
      */
     function _run() {
       // Set up Guideline-specific behaviors.
-      var noop = function () {};
+      var noop = function noop() {};
       for (var guideline in quail.guidelines) {
         if (quail.guidelines[guideline] && typeof quail.guidelines[guideline].setup === 'function') {
           quail.guidelines[guideline].setup(quail.tests, this, {
@@ -1841,12 +1929,12 @@ var quail = {
   },
 
   // @todo, make this a set of methods that all classes extend.
-  listenTo: function (dispatcher, eventName, handler) {
+  listenTo: function listenTo(dispatcher, eventName, handler) {
     handler = handler.bind(this);
     dispatcher.registerListener.call(dispatcher, eventName, handler);
   },
 
-  getConfiguration: function (testName) {
+  getConfiguration: function getConfiguration(testName) {
     var test = this.tests.find(testName);
     var guidelines = test && test.get('guidelines');
     var guideline = guidelines && this.options.guidelineName && guidelines[this.options.guidelineName];
@@ -1857,9 +1945,24 @@ var quail = {
     return false;
   }
 };
-module.exports = window.quail = quail;
+
+globalQuail.run = globalQuail.run || function () {
+  quail.run.apply(quail, arguments);
+};
+
+window.globalQuail = globalQuail;
+
+module.exports = quail;
 
 },{"TestCollection":33,"_Assessments":38,"babel-polyfill/dist/polyfill":36,"wcag2":34}],32:[function(require,module,exports){
+'use strict';
+
+function _typeof2(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
+function _typeof(obj) {
+  return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+}
+
 var Case = require('Case');
 
 var Test = (function () {
@@ -1874,7 +1977,7 @@ var Test = (function () {
   // Prototype object of the Test.
   Test.fn = Test.prototype = {
     constructor: Test,
-    init: function (name, attributes) {
+    init: function init(name, attributes) {
       this.listeners = {};
       this.length = 0;
       if (!name) {
@@ -1892,7 +1995,7 @@ var Test = (function () {
     // Details of the test.
     attributes: null,
     // Execute a callback for every element in the matched set.
-    each: function (iterator) {
+    each: function each(iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
@@ -1901,7 +2004,7 @@ var Test = (function () {
       }
       return this;
     },
-    get: function (attr) {
+    get: function get(attr) {
       // Return the document wrapped in jQuery if scope is not defined.
       if (attr === '$scope') {
         var scope = this.attributes.scope;
@@ -1911,10 +2014,10 @@ var Test = (function () {
       }
       return this.attributes[attr];
     },
-    set: function (attr, value) {
+    set: function set(attr, value) {
       var isStatusChanged = false;
       // Allow an object of attributes to be passed in.
-      if (typeof attr === 'object') {
+      if ((typeof attr === 'undefined' ? 'undefined' : _typeof(attr)) === 'object') {
         for (var prop in attr) {
           if (attr.hasOwnProperty(prop)) {
             if (prop === 'status') {
@@ -1937,7 +2040,7 @@ var Test = (function () {
       }
       return this;
     },
-    add: function (_case) {
+    add: function add(_case) {
       this.listenTo(_case, 'resolve', this.caseResponded);
       this.listenTo(_case, 'timeout', this.caseResponded);
       // If the case is already resolved because it has a status, then trigger
@@ -1948,7 +2051,7 @@ var Test = (function () {
       this.push(_case);
       return _case;
     },
-    invoke: function () {
+    invoke: function invoke() {
       var name = this.get('name');
       // This test is already running.
       if (this.testComplete) {
@@ -1997,7 +2100,7 @@ var Test = (function () {
     /**
      * Finds cases by their status.
      */
-    findByStatus: function (statuses) {
+    findByStatus: function findByStatus(statuses) {
       if (!statuses) {
         return;
       }
@@ -2023,7 +2126,7 @@ var Test = (function () {
     /**
      * Returns a set of cases with corresponding to th supplied selector.
      */
-    findCasesBySelector: function (selector) {
+    findCasesBySelector: function findCasesBySelector(selector) {
       var cases = this.groupCasesBySelector();
       if (cases.hasOwnProperty(selector)) {
         return cases[selector];
@@ -2043,7 +2146,7 @@ var Test = (function () {
      *
      * @needstests
      */
-    findCaseByHtml: function (html) {
+    findCaseByHtml: function findCaseByHtml(html) {
       var _case;
       for (var i = 0, il = this.length; i < il; ++i) {
         _case = this[i];
@@ -2060,7 +2163,7 @@ var Test = (function () {
      * @return object
      *  A hash of cases, keyed by the element selector.
      */
-    groupCasesBySelector: function () {
+    groupCasesBySelector: function groupCasesBySelector() {
       var casesBySelector = {};
       // Loop through the cases.
       this.each(function (index, _case) {
@@ -2080,7 +2183,7 @@ var Test = (function () {
      * @return object
      *  A hash of cases, keyed by the element selector.
      */
-    groupCasesByHtml: function () {
+    groupCasesByHtml: function groupCasesByHtml() {
       var casesByHtml = {};
       // Loop through the cases.
       this.each(function (index, _case) {
@@ -2095,7 +2198,7 @@ var Test = (function () {
     /**
      * @needsdoc
      */
-    getGuidelineCoverage: function (name) {
+    getGuidelineCoverage: function getGuidelineCoverage(name) {
       var config = this.get('guidelines');
       return config && config[name] || {};
     },
@@ -2103,7 +2206,7 @@ var Test = (function () {
      * Adds the test that owns the Case to the set of arguments passed up to
      * listeners of this test's cases.
      */
-    caseResponded: function (eventName, _case) {
+    caseResponded: function caseResponded(eventName, _case) {
       this.dispatch(eventName, this, _case);
       // Attempt to declare the Test complete.
       if (typeof this.testComplete === 'function') {
@@ -2113,7 +2216,7 @@ var Test = (function () {
     /**
      * Evaluates the test's cases and sets the test's status.
      */
-    determineStatus: function () {
+    determineStatus: function determineStatus() {
       // CantTell.
       if (this.findByStatus(['cantTell']).length === this.length) {
         this.set({
@@ -2137,7 +2240,7 @@ var Test = (function () {
             });
           }
     },
-    resolve: function () {
+    resolve: function resolve() {
       this.dispatch('complete', this);
     },
     /**
@@ -2148,11 +2251,11 @@ var Test = (function () {
      */
     testComplete: null,
     // @todo, make this a set of methods that all classes extend.
-    listenTo: function (dispatcher, eventName, handler) {
+    listenTo: function listenTo(dispatcher, eventName, handler) {
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
-    registerListener: function (eventName, handler) {
+    registerListener: function registerListener(eventName, handler) {
       // nb: 'this' is the dispatcher object, not the one that invoked listenTo.
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
@@ -2160,7 +2263,7 @@ var Test = (function () {
 
       this.listeners[eventName].push(handler);
     },
-    dispatch: function (eventName) {
+    dispatch: function dispatch(eventName) {
       if (this.listeners[eventName] && this.listeners[eventName].length) {
         var eventArgs = [].slice.call(arguments);
         this.listeners[eventName].forEach(function (handler) {
@@ -2230,7 +2333,7 @@ var Test = (function () {
     return function () {
       var self = this;
       var args = arguments;
-      var later = function () {
+      var later = function later() {
         timeout = null;
         if (!immediate) {
           result = func.apply(self, args);
@@ -2254,6 +2357,14 @@ var Test = (function () {
 module.exports = Test;
 
 },{"Case":30}],33:[function(require,module,exports){
+'use strict';
+
+function _typeof2(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+
+function _typeof(obj) {
+  return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+}
+
 var Test = require('Test');
 var TestCollection = (function () {
 
@@ -2267,13 +2378,13 @@ var TestCollection = (function () {
   // Prototype object of the TestCollection.
   TestCollection.fn = TestCollection.prototype = {
     constructor: TestCollection,
-    init: function (tests, options) {
+    init: function init(tests, options) {
       this.listeners = {};
       options = options || {};
       if (!tests) {
         return this;
       }
-      if (typeof tests === 'object') {
+      if ((typeof tests === 'undefined' ? 'undefined' : _typeof(tests)) === 'object') {
         var test;
         for (var name in tests) {
           if (tests.hasOwnProperty(name)) {
@@ -2290,7 +2401,7 @@ var TestCollection = (function () {
     // Setting a length property makes it behave like an array.
     length: 0,
     // Invoke all the tests in a set.
-    run: function (callbacks) {
+    run: function run(callbacks) {
       var self = this;
       callbacks = callbacks || {};
       this.each(function (index, test) {
@@ -2340,7 +2451,7 @@ var TestCollection = (function () {
     /**
      * Execute a callback for every element in the matched set.
      */
-    each: function (iterator) {
+    each: function each(iterator) {
       var args = [].slice.call(arguments, 1);
       for (var i = 0, len = this.length; i < len; ++i) {
         args.unshift(this[i]);
@@ -2356,7 +2467,7 @@ var TestCollection = (function () {
     /**
      * Add a Test object to the set.
      */
-    add: function (test) {
+    add: function add(test) {
       // Don't add a test that already exists in this set.
       if (!this.find(test.get('name'))) {
         this.push(test);
@@ -2365,7 +2476,7 @@ var TestCollection = (function () {
     /**
      * Finds a test by its name.
      */
-    find: function (testname) {
+    find: function find(testname) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           return this[i];
@@ -2376,10 +2487,10 @@ var TestCollection = (function () {
     /**
      * @info, this should be a static method.
      */
-    findByGuideline: function (guidelineName) {
+    findByGuideline: function findByGuideline(guidelineName) {
 
       var methods = {
-        wcag: function (section, technique) {
+        wcag: function wcag(section, technique) {
 
           function findAllTestsForTechnique(guidelineName, sectionId, techniqueName) {
             // Return a TestCollection instance.
@@ -2420,7 +2531,7 @@ var TestCollection = (function () {
     /**
      * Finds tests by their status.
      */
-    findByStatus: function (statuses) {
+    findByStatus: function findByStatus(statuses) {
       if (!statuses) {
         return;
       }
@@ -2446,7 +2557,7 @@ var TestCollection = (function () {
     /**
      * Create a new test from a name and details.
      */
-    set: function (testname, details) {
+    set: function set(testname, details) {
       for (var i = 0, il = this.length; i < il; ++i) {
         if (this[i].get('name') === testname) {
           this[i].set(details);
@@ -2464,15 +2575,15 @@ var TestCollection = (function () {
      * testsComplete function in outer scope.
      */
     testsComplete: null,
-    report: function () {
+    report: function report() {
       this.dispatch.apply(this, arguments);
     },
     // @todo, make this a set of methods that all classes extend.
-    listenTo: function (dispatcher, eventName, handler) {
+    listenTo: function listenTo(dispatcher, eventName, handler) {
       handler = handler.bind(this);
       dispatcher.registerListener.call(dispatcher, eventName, handler);
     },
-    registerListener: function (eventName, handler) {
+    registerListener: function registerListener(eventName, handler) {
       // nb: 'this' is the dispatcher object, not the one that invoked listenTo.
       if (!this.listeners[eventName]) {
         this.listeners[eventName] = [];
@@ -2480,7 +2591,7 @@ var TestCollection = (function () {
 
       this.listeners[eventName].push(handler);
     },
-    dispatch: function (eventName) {
+    dispatch: function dispatch(eventName) {
       if (this.listeners[eventName] && this.listeners[eventName].length) {
         var eventArgs = [].slice.call(arguments);
         this.listeners[eventName].forEach(function (handler) {
@@ -2543,7 +2654,7 @@ var TestCollection = (function () {
     return function () {
       var self = this;
       var args = arguments;
-      var later = function () {
+      var later = function later() {
         timeout = null;
         if (!immediate) {
           result = func.apply(self, args);
@@ -2567,7 +2678,10 @@ var TestCollection = (function () {
 module.exports = TestCollection;
 
 },{"Test":32}],34:[function(require,module,exports){
+'use strict'
+
 /* A logical combo of Techniques and the intersection of their outcomes. */
+;
 var wcag2 = (function () {
   'use strict';
 
@@ -2650,8 +2764,11 @@ var wcag2 = (function () {
 module.exports = wcag2;
 
 },{}],35:[function(require,module,exports){
+'use strict'
+
 // Basic output structure attributes.
 
+;
 var quail = require('Quail');
 var $ = require('jquery/dist/jquery');
 
@@ -2670,7 +2787,7 @@ var runQuailOutputToConsole = (function () {
       accessibilityTests: [window.assessmentName],
       html: $('html'),
       // Called when an individual Case in a test is resolved.
-      caseResolve: function (eventName, test, _case) {
+      caseResolve: function caseResolve(eventName, test, _case) {
         var name = test.get('name');
         if (!output.tests[name]) {
           output.tests[name] = {
@@ -2694,13 +2811,13 @@ var runQuailOutputToConsole = (function () {
         output.stats.cases++;
       },
       // Called when all the Cases in a Test are resolved.
-      testComplete: function () {
+      testComplete: function testComplete() {
         // console.log('Finished testing ' + test.get('name') + '.');
         // Increment the tests count.
         output.stats.tests++;
       },
       // Called when all the Tests in a TestCollection are completed.
-      testCollectionComplete: function (eventName, testCollection) {
+      testCollectionComplete: function testCollectionComplete(eventName, testCollection) {
         console.log(testCollection);
       }
     });
@@ -7224,178 +7341,178 @@ process.umask = function() { return 0; };
 },{}],38:[function(require,module,exports){
 'use strict';
 
-const WhiteSpaceNotUsedForFormatting = require('WhiteSpaceNotUsedForFormatting');
-const WhiteSpaceInWord = require('WhiteSpaceInWord');
-const VideosEmbeddedOrLinkedNeedCaptions = require('VideosEmbeddedOrLinkedNeedCaptions');
-const VideoMayBePresent = require('VideoMayBePresent');
-const TextareaHasAssociatedLabel = require('TextareaHasAssociatedLabel');
-const TextIsNotSmall = require('TextIsNotSmall');
-const TabularDataIsInTable = require('TabularDataIsInTable');
-const TableUsesScopeForRow = require('TableUsesScopeForRow');
-const TableUsesCaption = require('TableUsesCaption');
-const TableUsesAbbreviationForHeader = require('TableUsesAbbreviationForHeader');
-const TableUseColGroup = require('TableUseColGroup');
-const TableSummaryIsNotTooLong = require('TableSummaryIsNotTooLong');
-const TableSummaryIsEmpty = require('TableSummaryIsEmpty');
-const TableSummaryDoesNotDuplicateCaption = require('TableSummaryDoesNotDuplicateCaption');
-const TableShouldUseHeaderIDs = require('TableShouldUseHeaderIDs');
-const TableNotUsedForLayout = require('TableNotUsedForLayout');
-const TableLayoutMakesSenseLinearized = require('TableLayoutMakesSenseLinearized');
-const TableLayoutHasNoSummary = require('TableLayoutHasNoSummary');
-const TableLayoutHasNoCaption = require('TableLayoutHasNoCaption');
-const TableLayoutDataShouldNotHaveTh = require('TableLayoutDataShouldNotHaveTh');
-const TableDataShouldHaveTh = require('TableDataShouldHaveTh');
-const TableAxisHasCorrespondingId = require('TableAxisHasCorrespondingId');
-const TabIndexFollowsLogicalOrder = require('TabIndexFollowsLogicalOrder');
-const SvgContainsTitle = require('SvgContainsTitle');
-const SkipToContentLinkProvided = require('SkipToContentLinkProvided');
-const SiteMap = require('SiteMap');
-const SelectJumpMenu = require('SelectJumpMenu');
-const SelectHasAssociatedLabel = require('SelectHasAssociatedLabel');
-const ScriptOnmouseupHasOnkeyup = require('ScriptOnmouseupHasOnkeyup');
-const ScriptOnmouseoverHasOnfocus = require('ScriptOnmouseoverHasOnfocus');
-const ScriptOnmouseoutHasOnmouseblur = require('ScriptOnmouseoutHasOnmouseblur');
-const ScriptOnmousemove = require('ScriptOnmousemove');
-const ScriptOnmousedownRequiresOnKeypress = require('ScriptOnmousedownRequiresOnKeypress');
-const ScriptOndblclickRequiresOnKeypress = require('ScriptOndblclickRequiresOnKeypress');
-const ScriptOnclickRequiresOnKeypress = require('ScriptOnclickRequiresOnKeypress');
-const RadioHasLabel = require('RadioHasLabel');
-const PreShouldNotBeUsedForTabularLayout = require('PreShouldNotBeUsedForTabularLayout');
-const PasswordHasLabel = require('PasswordHasLabel');
-const PNotUsedAsHeader = require('PNotUsedAsHeader');
-const ObjectMustHaveValidTitle = require('ObjectMustHaveValidTitle');
-const ObjectMustHaveTitle = require('ObjectMustHaveTitle');
-const ObjectMustHaveEmbed = require('ObjectMustHaveEmbed');
-const ObjectMustContainText = require('ObjectMustContainText');
-const NewWindowIsOpened = require('NewWindowIsOpened');
-const MenuNotUsedToFormatText = require('MenuNotUsedToFormatText');
-const MarqueeIsNotUsed = require('MarqueeIsNotUsed');
-const ListOfLinksUseList = require('ListOfLinksUseList');
-const ListNotUsedForFormatting = require('ListNotUsedForFormatting');
-const LinkHasAUniqueContext = require('LinkHasAUniqueContext');
-const LiDontUseImageForBullet = require('LiDontUseImageForBullet');
-const LegendTextNotPlaceholder = require('LegendTextNotPlaceholder');
-const LegendTextNotEmpty = require('LegendTextNotEmpty');
-const LanguageUnicodeDirection = require('LanguageUnicodeDirection');
-const LanguageDirectionPunctuation = require('LanguageDirectionPunctuation');
-const LanguageDirAttributeIsUsed = require('LanguageDirAttributeIsUsed');
-const LabelsAreAssignedToAnInput = require('LabelsAreAssignedToAnInput');
-const LabelMustNotBeEmpty = require('LabelMustNotBeEmpty');
-const LabelMustBeUnique = require('LabelMustBeUnique');
-const LabelDoesNotContainInput = require('LabelDoesNotContainInput');
-const InputWithoutLabelHasTitle = require('InputWithoutLabelHasTitle');
-const InputTextValueNotEmpty = require('InputTextValueNotEmpty');
-const InputTextHasValue = require('InputTextHasValue');
-const InputTextHasLabel = require('InputTextHasLabel');
-const InputImageHasAlt = require('InputImageHasAlt');
-const InputImageAltNotRedundant = require('InputImageAltNotRedundant');
-const InputImageAltIsShort = require('InputImageAltIsShort');
-const InputImageAltIsNotPlaceholder = require('InputImageAltIsNotPlaceholder');
-const InputImageAltIsNotFileName = require('InputImageAltIsNotFileName');
-const InputElementsDontHaveAlt = require('InputElementsDontHaveAlt');
-const InputCheckboxRequiresFieldset = require('InputCheckboxRequiresFieldset');
-const ImgWithMathShouldHaveMathEquivalent = require('ImgWithMathShouldHaveMathEquivalent');
-const ImgWithMapHasUseMap = require('ImgWithMapHasUseMap');
-const ImgShouldNotHaveTitle = require('ImgShouldNotHaveTitle');
-const ImgServerSideMapNotUsed = require('ImgServerSideMapNotUsed');
-const ImgNonDecorativeHasAlt = require('ImgNonDecorativeHasAlt');
-const ImgImportantNoSpacerAlt = require('ImgImportantNoSpacerAlt');
-const ImgHasLongDesc = require('ImgHasLongDesc');
-const ImgHasAlt = require('ImgHasAlt');
-const ImgAltNotPlaceHolder = require('ImgAltNotPlaceHolder');
-const ImgAltNotEmptyInAnchor = require('ImgAltNotEmptyInAnchor');
-const ImgAltIsTooLong = require('ImgAltIsTooLong');
-const ImgAltIsDifferent = require('ImgAltIsDifferent');
-const ImageMapServerSide = require('ImageMapServerSide');
-const IframeMustNotHaveLongdesc = require('IframeMustNotHaveLongdesc');
-const IdrefsHasCorrespondingId = require('IdrefsHasCorrespondingId');
-const IIsNotUsed = require('IIsNotUsed');
-const HeadersUseToMarkSections = require('HeadersUseToMarkSections');
-const HeadersHaveText = require('HeadersHaveText');
-const HeadersAttrRefersToATableCell = require('HeadersAttrRefersToATableCell');
-const HeaderH6Format = require('HeaderH6Format');
-const HeaderH5Format = require('HeaderH5Format');
-const HeaderH4Format = require('HeaderH4Format');
-const HeaderH4 = require('HeaderH4');
-const HeaderH3Format = require('HeaderH3Format');
-const HeaderH3 = require('HeaderH3');
-const HeaderH2Format = require('HeaderH2Format');
-const HeaderH2 = require('HeaderH2');
-const HeaderH1Format = require('HeaderH1Format');
-const HeaderH1 = require('HeaderH1');
-const FormWithRequiredLabel = require('FormWithRequiredLabel');
-const FormHasSubmitButton = require('FormHasSubmitButton');
-const FormHasGoodErrorMessage = require('FormHasGoodErrorMessage');
-const FormErrorMessageHelpsUser = require('FormErrorMessageHelpsUser');
-const FormButtonsHaveValue = require('FormButtonsHaveValue');
-const FontIsNotUsed = require('FontIsNotUsed');
-const FileHasLabel = require('FileHasLabel');
-const FieldsetHasLabel = require('FieldsetHasLabel');
-const EmbedMustHaveAltAttribute = require('EmbedMustHaveAltAttribute');
-const EmbedHasAssociatedNoEmbed = require('EmbedHasAssociatedNoEmbed');
-const DomOrderMatchesVisualOrder = require('DomOrderMatchesVisualOrder');
-const DocumentVisualListsAreMarkedUp = require('DocumentVisualListsAreMarkedUp');
-const DocumentTitleNotEmpty = require('DocumentTitleNotEmpty');
-const DocumentTitleIsShort = require('DocumentTitleIsShort');
-const DocumentTitleIsNotPlaceholder = require('DocumentTitleIsNotPlaceholder');
-const DocumentTitleDescribesDocument = require('DocumentTitleDescribesDocument');
-const DocumentStrictDocType = require('DocumentStrictDocType');
-const DocumentReadingDirection = require('DocumentReadingDirection');
-const DocumentMetaNotUsedWithTimeout = require('DocumentMetaNotUsedWithTimeout');
-const DocumentLangNotIdentified = require('DocumentLangNotIdentified');
-const DocumentLangIsISO639Standard = require('DocumentLangIsISO639Standard');
-const DocumentIsWrittenClearly = require('DocumentIsWrittenClearly');
-const DocumentHasTitleElement = require('DocumentHasTitleElement');
-const DocumentContentReadableWithoutStylesheets = require('DocumentContentReadableWithoutStylesheets');
-const DocumentAutoRedirectNotUsed = require('DocumentAutoRedirectNotUsed');
-const DocumentAcronymsHaveElement = require('DocumentAcronymsHaveElement');
-const DoctypeProvided = require('DoctypeProvided');
-const DefinitionListsAreUsed = require('DefinitionListsAreUsed');
-const CssDocumentMakesSenseStyleTurnedOff = require('CssDocumentMakesSenseStyleTurnedOff');
-const ColorFontContrast = require('ColorFontContrast');
-const ColorElementBehindContrast = require('ColorElementBehindContrast');
-const ColorElementBehindBackgroundImageContrast = require('ColorElementBehindBackgroundImageContrast');
-const ColorElementBehindBackgroundGradientContrast = require('ColorElementBehindBackgroundGradientContrast');
-const ColorBackgroundImageContrast = require('ColorBackgroundImageContrast');
-const ColorBackgroundGradientContrast = require('ColorBackgroundGradientContrast');
-const CheckboxHasLabel = require('CheckboxHasLabel');
-const ButtonHasName = require('ButtonHasName');
-const BoldIsNotUsed = require('BoldIsNotUsed');
-const BlockquoteUseForQuotations = require('BlockquoteUseForQuotations');
-const BlockquoteNotUsedForIndentation = require('BlockquoteNotUsedForIndentation');
-const BlinkIsNotUsed = require('BlinkIsNotUsed');
-const BasefontIsNotUsed = require('BasefontIsNotUsed');
-const AudioMayBePresent = require('AudioMayBePresent');
-const AreaLinksToSoundFile = require('AreaLinksToSoundFile');
-const AreaHasAltValue = require('AreaHasAltValue');
-const AreaDontOpenNewWindow = require('AreaDontOpenNewWindow');
-const AreaAltRefersToText = require('AreaAltRefersToText');
-const AreaAltIdentifiesDestination = require('AreaAltIdentifiesDestination');
-const AnimatedGifMayBePresent = require('AnimatedGifMayBePresent');
-const ATitleDescribesDestination = require('ATitleDescribesDestination');
-const ASuspiciousLinkText = require('ASuspiciousLinkText');
-const AppletsDonotUseColorAlone = require('AppletsDonotUseColorAlone');
-const AppletsDoNotFlicker = require('AppletsDoNotFlicker');
-const AppletUIMustBeAccessible = require('AppletUIMustBeAccessible');
-const AppletTextEquivalentsGetUpdated = require('AppletTextEquivalentsGetUpdated');
-const AppletProvidesMechanismToReturnToParent = require('AppletProvidesMechanismToReturnToParent');
-const AppletContainsTextEquivalentInAlt = require('AppletContainsTextEquivalentInAlt');
-const AppletContainsTextEquivalent = require('AppletContainsTextEquivalent');
-const AMustNotHaveJavascriptHref = require('AMustNotHaveJavascriptHref');
-const AMustHaveTitle = require('AMustHaveTitle');
-const AMustContainText = require('AMustContainText');
-const AMultimediaTextAlternative = require('AMultimediaTextAlternative');
-const ALinksToSoundFilesNeedTranscripts = require('ALinksToSoundFilesNeedTranscripts');
-const ALinksToMultiMediaRequireTranscript = require('ALinksToMultiMediaRequireTranscript');
-const ALinksNotSeparatedBySymbols = require('ALinksNotSeparatedBySymbols');
-const ALinksDontOpenNewWindow = require('ALinksDontOpenNewWindow');
-const ALinksAreSeparatedByPrintableCharacters = require('ALinksAreSeparatedByPrintableCharacters');
-const ALinkWithNonText = require('ALinkWithNonText');
-const ALinkTextDoesNotBeginWithRedundantWord = require('ALinkTextDoesNotBeginWithRedundantWord');
-const AInPHasADistinctStyle = require('AInPHasADistinctStyle');
-const AImgAltNotRepetitive = require('AImgAltNotRepetitive');
-const AAdjacentWithSameResourceShouldBeCombined = require('AAdjacentWithSameResourceShouldBeCombined');
-let map = new Map();
+var WhiteSpaceNotUsedForFormatting = require('WhiteSpaceNotUsedForFormatting');
+var WhiteSpaceInWord = require('WhiteSpaceInWord');
+var VideosEmbeddedOrLinkedNeedCaptions = require('VideosEmbeddedOrLinkedNeedCaptions');
+var VideoMayBePresent = require('VideoMayBePresent');
+var TextareaHasAssociatedLabel = require('TextareaHasAssociatedLabel');
+var TextIsNotSmall = require('TextIsNotSmall');
+var TabularDataIsInTable = require('TabularDataIsInTable');
+var TableUsesScopeForRow = require('TableUsesScopeForRow');
+var TableUsesCaption = require('TableUsesCaption');
+var TableUsesAbbreviationForHeader = require('TableUsesAbbreviationForHeader');
+var TableUseColGroup = require('TableUseColGroup');
+var TableSummaryIsNotTooLong = require('TableSummaryIsNotTooLong');
+var TableSummaryIsEmpty = require('TableSummaryIsEmpty');
+var TableSummaryDoesNotDuplicateCaption = require('TableSummaryDoesNotDuplicateCaption');
+var TableShouldUseHeaderIDs = require('TableShouldUseHeaderIDs');
+var TableNotUsedForLayout = require('TableNotUsedForLayout');
+var TableLayoutMakesSenseLinearized = require('TableLayoutMakesSenseLinearized');
+var TableLayoutHasNoSummary = require('TableLayoutHasNoSummary');
+var TableLayoutHasNoCaption = require('TableLayoutHasNoCaption');
+var TableLayoutDataShouldNotHaveTh = require('TableLayoutDataShouldNotHaveTh');
+var TableDataShouldHaveTh = require('TableDataShouldHaveTh');
+var TableAxisHasCorrespondingId = require('TableAxisHasCorrespondingId');
+var TabIndexFollowsLogicalOrder = require('TabIndexFollowsLogicalOrder');
+var SvgContainsTitle = require('SvgContainsTitle');
+var SkipToContentLinkProvided = require('SkipToContentLinkProvided');
+var SiteMap = require('SiteMap');
+var SelectJumpMenu = require('SelectJumpMenu');
+var SelectHasAssociatedLabel = require('SelectHasAssociatedLabel');
+var ScriptOnmouseupHasOnkeyup = require('ScriptOnmouseupHasOnkeyup');
+var ScriptOnmouseoverHasOnfocus = require('ScriptOnmouseoverHasOnfocus');
+var ScriptOnmouseoutHasOnmouseblur = require('ScriptOnmouseoutHasOnmouseblur');
+var ScriptOnmousemove = require('ScriptOnmousemove');
+var ScriptOnmousedownRequiresOnKeypress = require('ScriptOnmousedownRequiresOnKeypress');
+var ScriptOndblclickRequiresOnKeypress = require('ScriptOndblclickRequiresOnKeypress');
+var ScriptOnclickRequiresOnKeypress = require('ScriptOnclickRequiresOnKeypress');
+var RadioHasLabel = require('RadioHasLabel');
+var PreShouldNotBeUsedForTabularLayout = require('PreShouldNotBeUsedForTabularLayout');
+var PasswordHasLabel = require('PasswordHasLabel');
+var PNotUsedAsHeader = require('PNotUsedAsHeader');
+var ObjectMustHaveValidTitle = require('ObjectMustHaveValidTitle');
+var ObjectMustHaveTitle = require('ObjectMustHaveTitle');
+var ObjectMustHaveEmbed = require('ObjectMustHaveEmbed');
+var ObjectMustContainText = require('ObjectMustContainText');
+var NewWindowIsOpened = require('NewWindowIsOpened');
+var MenuNotUsedToFormatText = require('MenuNotUsedToFormatText');
+var MarqueeIsNotUsed = require('MarqueeIsNotUsed');
+var ListOfLinksUseList = require('ListOfLinksUseList');
+var ListNotUsedForFormatting = require('ListNotUsedForFormatting');
+var LinkHasAUniqueContext = require('LinkHasAUniqueContext');
+var LiDontUseImageForBullet = require('LiDontUseImageForBullet');
+var LegendTextNotPlaceholder = require('LegendTextNotPlaceholder');
+var LegendTextNotEmpty = require('LegendTextNotEmpty');
+var LanguageUnicodeDirection = require('LanguageUnicodeDirection');
+var LanguageDirectionPunctuation = require('LanguageDirectionPunctuation');
+var LanguageDirAttributeIsUsed = require('LanguageDirAttributeIsUsed');
+var LabelsAreAssignedToAnInput = require('LabelsAreAssignedToAnInput');
+var LabelMustNotBeEmpty = require('LabelMustNotBeEmpty');
+var LabelMustBeUnique = require('LabelMustBeUnique');
+var LabelDoesNotContainInput = require('LabelDoesNotContainInput');
+var InputWithoutLabelHasTitle = require('InputWithoutLabelHasTitle');
+var InputTextValueNotEmpty = require('InputTextValueNotEmpty');
+var InputTextHasValue = require('InputTextHasValue');
+var InputTextHasLabel = require('InputTextHasLabel');
+var InputImageHasAlt = require('InputImageHasAlt');
+var InputImageAltNotRedundant = require('InputImageAltNotRedundant');
+var InputImageAltIsShort = require('InputImageAltIsShort');
+var InputImageAltIsNotPlaceholder = require('InputImageAltIsNotPlaceholder');
+var InputImageAltIsNotFileName = require('InputImageAltIsNotFileName');
+var InputElementsDontHaveAlt = require('InputElementsDontHaveAlt');
+var InputCheckboxRequiresFieldset = require('InputCheckboxRequiresFieldset');
+var ImgWithMathShouldHaveMathEquivalent = require('ImgWithMathShouldHaveMathEquivalent');
+var ImgWithMapHasUseMap = require('ImgWithMapHasUseMap');
+var ImgShouldNotHaveTitle = require('ImgShouldNotHaveTitle');
+var ImgServerSideMapNotUsed = require('ImgServerSideMapNotUsed');
+var ImgNonDecorativeHasAlt = require('ImgNonDecorativeHasAlt');
+var ImgImportantNoSpacerAlt = require('ImgImportantNoSpacerAlt');
+var ImgHasLongDesc = require('ImgHasLongDesc');
+var ImgHasAlt = require('ImgHasAlt');
+var ImgAltNotPlaceHolder = require('ImgAltNotPlaceHolder');
+var ImgAltNotEmptyInAnchor = require('ImgAltNotEmptyInAnchor');
+var ImgAltIsTooLong = require('ImgAltIsTooLong');
+var ImgAltIsDifferent = require('ImgAltIsDifferent');
+var ImageMapServerSide = require('ImageMapServerSide');
+var IframeMustNotHaveLongdesc = require('IframeMustNotHaveLongdesc');
+var IdrefsHasCorrespondingId = require('IdrefsHasCorrespondingId');
+var IIsNotUsed = require('IIsNotUsed');
+var HeadersUseToMarkSections = require('HeadersUseToMarkSections');
+var HeadersHaveText = require('HeadersHaveText');
+var HeadersAttrRefersToATableCell = require('HeadersAttrRefersToATableCell');
+var HeaderH6Format = require('HeaderH6Format');
+var HeaderH5Format = require('HeaderH5Format');
+var HeaderH4Format = require('HeaderH4Format');
+var HeaderH4 = require('HeaderH4');
+var HeaderH3Format = require('HeaderH3Format');
+var HeaderH3 = require('HeaderH3');
+var HeaderH2Format = require('HeaderH2Format');
+var HeaderH2 = require('HeaderH2');
+var HeaderH1Format = require('HeaderH1Format');
+var HeaderH1 = require('HeaderH1');
+var FormWithRequiredLabel = require('FormWithRequiredLabel');
+var FormHasSubmitButton = require('FormHasSubmitButton');
+var FormHasGoodErrorMessage = require('FormHasGoodErrorMessage');
+var FormErrorMessageHelpsUser = require('FormErrorMessageHelpsUser');
+var FormButtonsHaveValue = require('FormButtonsHaveValue');
+var FontIsNotUsed = require('FontIsNotUsed');
+var FileHasLabel = require('FileHasLabel');
+var FieldsetHasLabel = require('FieldsetHasLabel');
+var EmbedMustHaveAltAttribute = require('EmbedMustHaveAltAttribute');
+var EmbedHasAssociatedNoEmbed = require('EmbedHasAssociatedNoEmbed');
+var DomOrderMatchesVisualOrder = require('DomOrderMatchesVisualOrder');
+var DocumentVisualListsAreMarkedUp = require('DocumentVisualListsAreMarkedUp');
+var DocumentTitleNotEmpty = require('DocumentTitleNotEmpty');
+var DocumentTitleIsShort = require('DocumentTitleIsShort');
+var DocumentTitleIsNotPlaceholder = require('DocumentTitleIsNotPlaceholder');
+var DocumentTitleDescribesDocument = require('DocumentTitleDescribesDocument');
+var DocumentStrictDocType = require('DocumentStrictDocType');
+var DocumentReadingDirection = require('DocumentReadingDirection');
+var DocumentMetaNotUsedWithTimeout = require('DocumentMetaNotUsedWithTimeout');
+var DocumentLangNotIdentified = require('DocumentLangNotIdentified');
+var DocumentLangIsISO639Standard = require('DocumentLangIsISO639Standard');
+var DocumentIsWrittenClearly = require('DocumentIsWrittenClearly');
+var DocumentHasTitleElement = require('DocumentHasTitleElement');
+var DocumentContentReadableWithoutStylesheets = require('DocumentContentReadableWithoutStylesheets');
+var DocumentAutoRedirectNotUsed = require('DocumentAutoRedirectNotUsed');
+var DocumentAcronymsHaveElement = require('DocumentAcronymsHaveElement');
+var DoctypeProvided = require('DoctypeProvided');
+var DefinitionListsAreUsed = require('DefinitionListsAreUsed');
+var CssDocumentMakesSenseStyleTurnedOff = require('CssDocumentMakesSenseStyleTurnedOff');
+var ColorFontContrast = require('ColorFontContrast');
+var ColorElementBehindContrast = require('ColorElementBehindContrast');
+var ColorElementBehindBackgroundImageContrast = require('ColorElementBehindBackgroundImageContrast');
+var ColorElementBehindBackgroundGradientContrast = require('ColorElementBehindBackgroundGradientContrast');
+var ColorBackgroundImageContrast = require('ColorBackgroundImageContrast');
+var ColorBackgroundGradientContrast = require('ColorBackgroundGradientContrast');
+var CheckboxHasLabel = require('CheckboxHasLabel');
+var ButtonHasName = require('ButtonHasName');
+var BoldIsNotUsed = require('BoldIsNotUsed');
+var BlockquoteUseForQuotations = require('BlockquoteUseForQuotations');
+var BlockquoteNotUsedForIndentation = require('BlockquoteNotUsedForIndentation');
+var BlinkIsNotUsed = require('BlinkIsNotUsed');
+var BasefontIsNotUsed = require('BasefontIsNotUsed');
+var AudioMayBePresent = require('AudioMayBePresent');
+var AreaLinksToSoundFile = require('AreaLinksToSoundFile');
+var AreaHasAltValue = require('AreaHasAltValue');
+var AreaDontOpenNewWindow = require('AreaDontOpenNewWindow');
+var AreaAltRefersToText = require('AreaAltRefersToText');
+var AreaAltIdentifiesDestination = require('AreaAltIdentifiesDestination');
+var AnimatedGifMayBePresent = require('AnimatedGifMayBePresent');
+var ATitleDescribesDestination = require('ATitleDescribesDestination');
+var ASuspiciousLinkText = require('ASuspiciousLinkText');
+var AppletsDonotUseColorAlone = require('AppletsDonotUseColorAlone');
+var AppletsDoNotFlicker = require('AppletsDoNotFlicker');
+var AppletUIMustBeAccessible = require('AppletUIMustBeAccessible');
+var AppletTextEquivalentsGetUpdated = require('AppletTextEquivalentsGetUpdated');
+var AppletProvidesMechanismToReturnToParent = require('AppletProvidesMechanismToReturnToParent');
+var AppletContainsTextEquivalentInAlt = require('AppletContainsTextEquivalentInAlt');
+var AppletContainsTextEquivalent = require('AppletContainsTextEquivalent');
+var AMustNotHaveJavascriptHref = require('AMustNotHaveJavascriptHref');
+var AMustHaveTitle = require('AMustHaveTitle');
+var AMustContainText = require('AMustContainText');
+var AMultimediaTextAlternative = require('AMultimediaTextAlternative');
+var ALinksToSoundFilesNeedTranscripts = require('ALinksToSoundFilesNeedTranscripts');
+var ALinksToMultiMediaRequireTranscript = require('ALinksToMultiMediaRequireTranscript');
+var ALinksNotSeparatedBySymbols = require('ALinksNotSeparatedBySymbols');
+var ALinksDontOpenNewWindow = require('ALinksDontOpenNewWindow');
+var ALinksAreSeparatedByPrintableCharacters = require('ALinksAreSeparatedByPrintableCharacters');
+var ALinkWithNonText = require('ALinkWithNonText');
+var ALinkTextDoesNotBeginWithRedundantWord = require('ALinkTextDoesNotBeginWithRedundantWord');
+var AInPHasADistinctStyle = require('AInPHasADistinctStyle');
+var AImgAltNotRepetitive = require('AImgAltNotRepetitive');
+var AAdjacentWithSameResourceShouldBeCombined = require('AAdjacentWithSameResourceShouldBeCombined');
+var map = new Map();
 map.set('aAdjacentWithSameResourceShouldBeCombined', AAdjacentWithSameResourceShouldBeCombined);
 map.set('aImgAltNotRepetitive', AImgAltNotRepetitive);
 map.set('aInPHasADistinctStyle', AInPHasADistinctStyle);
@@ -27906,4 +28023,4 @@ _$=window.$;jQuery.noConflict = function(deep){if(window.$ === jQuery){window.$ 
 // and CommonJS for browser emulators (#13566)
 if(typeof noGlobal === strundefined){window.jQuery = window.$ = jQuery;}return jQuery;});
 
-},{}]},{},[31,38,35]);
+},{}]},{},[31,35]);
