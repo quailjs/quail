@@ -22,7 +22,6 @@
     "test-selenium": "start-selenium && npm run test-runner"
   },
   "dependencies": {
-    "@quailjs/quail-core": "0.0.15",
     "glob": "^6.0.1",
     "http-server": "0.7.3",
     "jquery": "^2.1.4",
