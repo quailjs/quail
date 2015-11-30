@@ -11,11 +11,8 @@
   "scripts": {
     "jscs": "jscs -c .jscsrc src/**/*.js test/assessmentSpecs/testRunner.js test/assessmentSpecs/*.js",
     "eslint": "eslint -c .eslintrc src/**/*.js test/assessmentSpecs/*.js",
-    "build": "quail build",
-    "compile": "bower install",
-    "preversion": "npm test",
-    "version": "npm run build && git add -A dist && git commit -m \"Versioned the npm module.\"",
-    "postversion": "git push",
+    "compile": "bower install && $(which quail) build",
+    "prepublish": "npm run compile",
     "test": "bower install && npm run jscs && npm run eslint && npm run test-runner",
     "selenium": "start-selenium",
     "test-runner": "node ./test/assessmentSpecs/testRunner.js",
