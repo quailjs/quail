@@ -16,8 +16,7 @@
   "scripts": {
     "jscs": "jscs -c .jscsrc src/**/*.js test/assessmentSpecs/testRunner.js test/assessmentSpecs/*.js",
     "eslint": "eslint -c .eslintrc src/**/*.js test/assessmentSpecs/*.js",
-    "compile": "quail build",
-    "prepublish": "npm run compile",
+    "build": "quail build",
     "test": "npm run jscs && npm run eslint && npm run test-runner",
     "selenium": "start-selenium",
     "test-runner": "node ./test/assessmentSpecs/testRunner.js",
