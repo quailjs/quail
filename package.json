@@ -8,7 +8,6 @@
     "type": "git",
     "url": "git://github.com/quailjs/quail.git"
   },
-  "main": "./quail.js",
   "scripts": {
     "jscs": "jscs -c .jscsrc src/**/*.js test/assessmentSpecs/testRunner.js test/assessmentSpecs/*.js",
     "eslint": "eslint -c .eslintrc src/**/*.js test/assessmentSpecs/*.js",
