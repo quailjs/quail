@@ -20,7 +20,8 @@
     "test": "npm run jscs && npm run eslint && npm run test-runner",
     "selenium": "start-selenium",
     "test-runner": "node ./test/assessmentSpecs/testRunner.js",
-    "test-selenium": "start-selenium && npm run test-runner"
+    "test-selenium": "start-selenium && npm run test-runner",
+    "install-selenium-standalone": "selenium-standalone install"
   },
   "dependencies": {
     "glob": "^6.0.1",
@@ -28,11 +29,12 @@
     "http-server": "0.7.3",
     "jquery": "^2.1.4",
     "phantomjs": "^1.9.18",
+    "progress": "^1.1.8",
     "q": "^1.1.2",
     "rainbowvis.js": "^1.0.1",
-    "selenium-standalone": "2.43.1-5",
+    "selenium-standalone": "^4.7.2",
     "stdio": "^0.2.7",
-    "webdriverio": "2.3.0"
+    "webdriverio": "^3.3.0"
   },
   "devDependencies": {
     "@quailjs/quail-core": "0.0.16",

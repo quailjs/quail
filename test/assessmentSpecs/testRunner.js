@@ -9,6 +9,7 @@ var httpServer = require('http-server');
 var path = require('path');
 var glob = require('glob');
 var Q = require('q'); // https://github.com/kriskowal/q
+var webdriverio = require('webdriverio')
 
 var conf = require('../config/index.js');
 
@@ -18,6 +19,9 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var chaiQuail = require('../../src/customAssertions/chai-quail');
 chai.use(chaiQuail);
+var seleniumOut;
+var seleniumError;
+
 global.expect = chai.expect;
 global.assert = chai.assert;
 
@@ -25,7 +29,11 @@ global.assert = chai.assert;
 var httpServerFixturesPort = 8888;
 var httpServerAssessmentPagesPort = 9999;
 
-var mochaRunner, webdriver, _client, assessmentsPromise, httpServerFixtures, httpServerAssessmentPages;
+var mochaRunner;
+var _client;
+var assessmentsPromise;
+var httpServerFixtures;
+var httpServerAssessmentPages;
 
 // Set up test command execution arguments.
 var execOptions = stdio.getopt({
@@ -44,6 +52,7 @@ Q.getUnhandledReasons(function (err) {
  * Closes the HTTP servers and exits the process.
  */
 function shutdownTestRunner (err) {
+  console.log('Shutting down the testrunner');
   if (httpServerFixtures) {
     httpServerFixtures.close();
   }
@@ -53,12 +62,19 @@ function shutdownTestRunner (err) {
   if (_client && _client.end) {
     _client.end();
   }
+  seleniumOut && fs.closeSync(seleniumOut);
+  seleniumError && fs.closeSync(seleniumError);
+
   if (err) {
     console.error(err);
     return process.exit(1);
   }
   return process.exit(0);
 }
+
+process.on('SIGINT', function () {
+  shutdownTestRunner('Received SIGINT');
+});
 
 process.on('uncaughtException', function (err) {
   console.error('uncaughtException');
@@ -134,33 +150,54 @@ httpServerAssessmentPages = httpServer
   })
   .listen(httpServerAssessmentPagesPort);
 
-// The local Selenium server.
-if (!process.env.TRAVIS) {
-  var selenium = require('selenium-standalone');
-  // Set up logging for the Selenium server child process.
-  var seleniumOut = fs.openSync(logPath + '/selenium-stdout.log', 'a');
-  var seleniumError = fs.openSync(logPath + '/selenium-stderr.log', 'a');
-  var spawnOptions = {
-    stdio: ['pipe', seleniumError, seleniumOut]
-  };
+function startSelenium (callback) {
+  // The local Selenium server.
+  if (!process.env.TRAVIS) {
+    var selenium = require('selenium-standalone');
+    // Set up logging for the Selenium server child process.
+    seleniumOut = fs.openSync(logPath + '/selenium-stdout.log', 'a');
+    seleniumError = fs.openSync(logPath + '/selenium-stderr.log', 'a');
+    var spawnOptions = {
+      stdio: ['pipe', seleniumError, seleniumOut]
+    };
 
-  // Options to pass to `java -jar selenium-server-standalone-X.XX.X.jar`
-  var seleniumArgs = [
-    // '-logLongForm'
-  ];
+    // Options to pass to `java -jar selenium-server-standalone-X.XX.X.jar`
+    var seleniumArgs = [
+      // '-logLongForm'
+    ];
 
-  // Start Selenium locally.
-  selenium(spawnOptions, seleniumArgs);
+    var opts = {
+      spawnOptions: spawnOptions,
+      seleniumArgs: seleniumArgs
+    };
+
+    selenium.start(opts, function (err) {
+      if (err) {
+        if (/Error: Missing/.test(err)) {
+          // Try to install selenium.
+          console.warn(
+            'Encountered a missing driver error.',
+            'Run `npm run install-selenium-standalone` to install the missing drivers.',
+            err
+          );
+          shutdownTestRunner(err);
+        }
+        else if (/Selenium process is already running/.test(err)) {
+          callback();
+        }
+        else {
+          shutdownTestRunner(err);
+        }
+      }
+      else {
+        callback();
+      }
+    });
+  }
+  else {
+    callback();
+  }
 }
-// WebdriverIO requires a running selenium servier. This feels like it could easily
-// suffer from race conditions wherein the selenium server isn't started before
-// webdriver is initialized, but I don't see how to get a callback fired from
-// child_process.spawn.
-//
-// selenium-standalone should be upgraded to the latest version that supplies
-// events, but the API is very different so it's not as simple as upgrading and
-// adding an event listener.
-webdriver = require('webdriverio');
 
 /**
  * Sets up and runs the Specs.
@@ -197,18 +234,24 @@ function runSpecs (assessments) {
        * Retrieves a webdriver client.
        */
       function retrieveWebdriver (resolve, reject) {
-        console.log('retrieveWebdriver conf', conf);
-        return Q.when(webdriver.remote(conf).init())
-          .then(function (client) {
-            client.timeoutsAsyncScript(5000);
-            // Save a reference in this script in case we need to force the client
-            // to close on error.
-            _client = client;
-            resolve(client);
-          }, function () {
-            reject(new Error('Failed to start a webdriverio client.'));
-          })
-          .fail(shutdownTestRunner);
+        startSelenium(function () {
+          webdriverio
+            .remote(conf)
+            .init()
+            .timeoutsAsyncScript(5000)
+            .then(function () {
+              // The reference to this.__proto__ is very intentional. It
+              // is the only way to maintain a reference to the client
+              // through the test runner execution. If `this` is refenced,
+              // the referenced object is (presumably) garbage collected
+              // and it disappears.
+              var client = this.__proto__;
+              _client = client;
+              resolve(client);
+            }, function (err) {
+              reject(err);
+            });
+        });
       }
 
       /**
@@ -228,10 +271,12 @@ function runSpecs (assessments) {
           }
           if (Object.keys(assessmentsToRun).length > 0) {
             assessmentsDeferred.resolve(assessmentsToRun);
-            return {
-              client: client,
-              assessments: assessmentsToRun
-            };
+            return Q.Promise(function (resolve) {
+              resolve({
+                client: client,
+                assessments: assessmentsToRun
+              });
+            });
           }
           else {
             assessmentsDeferred.reject(new Error('No assessments to evaluate'));
@@ -313,7 +358,6 @@ function runSpecs (assessments) {
           },
           // Called when all the Cases in a Test are resolved.
           testComplete: function () {
-            // console.log('Finished testing ' + test.get('name') + '.');
             // Increment the tests count.
             output.stats.tests++;
           },
@@ -375,11 +419,7 @@ function runSpecs (assessments) {
            *   The result of the evalution of the script in the Selenium browser
            *   context.
            */
-          function resolveFixture (err, ret) {
-            if (err) {
-              quailDeferred.reject(err);
-              return;
-            }
+          function resolveFixture (result) {
             var data;
             var resondFn = fixture.respond;
             // Prepare the next fixture.
@@ -387,7 +427,7 @@ function runSpecs (assessments) {
             fixture = fixtures[index];
             // Run the response method if it exists.
             if (typeof resondFn === 'function') {
-              data = resondFn(ret);
+              data = resondFn(result);
             }
             // Run the next fixture if there is one and no error was returned from
             // the response method.
@@ -401,11 +441,19 @@ function runSpecs (assessments) {
             }
           }
           // Combine the evaluation script, any arguments and the wrapped resolve
-          // function into an arguments array that will be passed to Seleniums
+          // function into an arguments array that will be passed to Selenium's
           // executeAsync method.
-          var args = [].concat(fixture.evaluate, (fixture.args || []), resolveFixture);
+          var args = [].concat(fixture.evaluate, (fixture.args || []));
           // Run the async evaluation against the client object.
-          client.executeAsync.apply(client, args);
+          client.executeAsync.apply(client, args)
+            .then(
+              resolveFixture,
+              function (err) {
+                console.error(err.message);
+                client.end();
+                quailDeferred.reject(err);
+              }
+            );
         }
         // Prepare to start the fixture loading.
         var loadFixtureBound = loadFixture.bind(client, fixtures[0], 0);
@@ -523,3 +571,4 @@ assessmentsPromise = Q.Promise(function (resolve, reject) {
 });
 
 assessmentsPromise.done(runSpecs);
+assessmentsPromise.fail(shutdownTestRunner);
