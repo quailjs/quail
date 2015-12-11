@@ -124,22 +124,6 @@ page.onResourceRequested = function (requestData, request) {
     ]));
     request.abort();
   }
-  else {
-    console.log(JSON.stringify([
-      'Requested (' + requestData.method + ')',
-      requestData.url
-    ]));
-  }
-};
-
-page.onResourceReceived = function (response) {
-  if (response.status) {
-    console.log(JSON.stringify([
-      'Received',
-      response.status,
-      response.url
-    ]));
-  }
 };
 
 page.onResourceTimeout = function (error) {
@@ -208,7 +192,7 @@ else {
 // The number of items that will attempt to write data from the evaluation.
 // When the evaulation starts, it will register how many items will
 // report back.
-var len = 0;
+var len = null;
 // Open a write stream to an output file.
 var date = new Date();
 var timestamp = [
@@ -224,11 +208,13 @@ var timestamp = [
 ].join('');
 // Write out the results is an output directory path was provided.
 var resultsFile;
-var stream;
 if (outputDir) {
   resultsFile = [outputDir, timestamp + '-analysis.js'].join('/');
-  stream = fs.open(resultsFile, 'w');
 }
+else {
+  resultsFile = dir + '/analyses/' + timestamp + '-analysis.js';
+}
+var stream = fs.open(resultsFile, 'w');
 
 // The data to be written to file.
 var output = {};
@@ -242,7 +228,10 @@ page.onCallback = function (action, data) {
     len = data;
     break;
   case 'writeData':
-    --len;
+    if (len !== null) {
+      --len;
+    }
+
     // Store all the keys in the object to an output object.
     data = JSON.parse(data);
     if (typeof data === 'object') {
@@ -264,21 +253,21 @@ page.onCallback = function (action, data) {
       }
     }
     // All the tests have completed.
-    if (len === 0) {
+    if (len === 0 || len === null) {
       console.log('Elapsed time: ' + ((new Date()).getTime() - start) / 1000 + ' seconds');
       console.log('Cases found: ' + (output.stats && output.stats.cases || 0));
+
       // Time for each test.
-      console.log('Elapsed time for tests:');
+      // console.log('Elapsed time for tests:');
       for (name in output.tests) {
         if (output.tests.hasOwnProperty(name)) {
-          console.log('elapsed time:\t' + output.tests[name].elapsedTime + '\t' + name);
+          // console.log('elapsed time:\t' + output.tests[name].elapsedTime + '\t' + name);
         }
       }
-      if (stream) {
-        console.log('Results were written to ' + resultsFile);
-        stream.write(JSON.stringify(output));
-        stream.close();
-      }
+      console.log('Results were written to ' + resultsFile);
+      stream.write(JSON.stringify(output, null, '\t'));
+      stream.close();
+
       quitPhantom('Testing complete');
     }
     break;
@@ -299,7 +288,8 @@ page.onLoadFinished = function (status) {
   if (status === 'success') {
     console.log('Page opened successfully: ' + address);
     page.injectJs(nodeModulesPath + '/jquery/dist/jquery.min.js');
-    page.injectJs(distPath + '/quail.jquery.js');
+    // page.injectJs(distPath + '/quail.jquery.js');
+    page.injectJs(distPath + '/bundle.js');
 
     // Run the evaluation.
     //
@@ -308,10 +298,8 @@ page.onLoadFinished = function (status) {
     try {
       page.evaluate(function (tests, size) {
         // Tell the client that we're starting the test run.
-        var scLen = size(quail.guidelines.wcag.successCriteria);
-        console.log('Beginning evaluation of ' + size(tests) + ' tests and ' + scLen + ' Success Criteria.');
-        // Determine how many data writes we'll make.
-        callPhantom('setCounter', scLen + 1); // +1 because we attempt a data write once for all tests on testCollectionComplete
+        console.log('Beginning evaluation.');
+
         // Basic output structure attributes.
         var output = {
           tests: {},
@@ -321,11 +309,12 @@ page.onLoadFinished = function (status) {
             cases: 0
           }
         };
-        jQuery('html').quail({
+        globalQuail.run({
           accessibilityTests: tests,
           // Called when an individual Case in a test is resolved.
           caseResolve: function (eventName, test, _case) {
             var name = test.get('name');
+
             if (!output.tests[name]) {
               output.tests[name] = {
                 id: name,
@@ -350,7 +339,6 @@ page.onLoadFinished = function (status) {
           // Called when all the Cases in a Test are resolved.
           testComplete: function (event, test) {
             var name = test.get('name');
-            // console.log('Finished testing ' + test.get('name') + '.');
             // Increment the tests count.
             output.stats.tests++;
             // Record the elapsed time for the test.
