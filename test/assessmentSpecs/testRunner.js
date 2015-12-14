@@ -90,7 +90,6 @@ process.on('uncaughtException', function (err) {
 });
 
 // The root path of the HTTP fixtures server.
-var fixturesRoot = path.join(__dirname, '../..', 'dist');
 var assessmentPagesRoot = path.join(__dirname, 'specs');
 var logPath = path.join(__dirname, '../..', 'logs');
 
