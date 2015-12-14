@@ -6,7 +6,7 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-
+var select = require('dom-select');
 var SvgContainsTitle = {
   run: function (test) {
 
@@ -23,7 +23,7 @@ var SvgContainsTitle = {
       else {
         candidates.each(function () {
           var status = 'failed';
-          var hasTitle = $(this).find('title').length === 1;
+          var hasTitle = select.all('title', this).length === 1;
 
           // If a test is defined, then use it
           if (hasTitle) {

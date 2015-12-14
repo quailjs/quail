@@ -1,9 +1,10 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
+var select = require('dom-select');
 var TableLayoutHasNoCaption = {
   run: function (test) {
     test.get('$scope').find('table').each(function () {
-      if ($(this).find('caption').length) {
+      if (select.all('caption', this).length) {
         if (!IsDataTableComponent($(this))) {
           test.add(Case({
             element: this,

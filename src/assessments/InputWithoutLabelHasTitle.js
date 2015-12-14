@@ -1,11 +1,12 @@
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
+var select = require('dom-select');
 var InputWithoutLabelHasTitle = {
   run: function (test) {
 
     test.get('$scope').each(function () {
 
-      var testableElements = $(this).find('input, select, textarea');
+      var testableElements = select.all('input, select, textarea', this);
 
       if (testableElements.length === 0) {
         var _case = Case({

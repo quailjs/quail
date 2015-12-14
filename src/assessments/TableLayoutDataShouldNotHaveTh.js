@@ -1,5 +1,6 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
+var select = require('dom-select');
 var TableLayoutDataShouldNotHaveTh = {
   run: function (test) {
     test.get('$scope').find('table').each(function () {
@@ -8,7 +9,7 @@ var TableLayoutDataShouldNotHaveTh = {
       });
       test.add(_case);
 
-      if ($(this).find('th').length !== 0) {
+      if (select.all('th', this).length !== 0) {
         if (!IsDataTableComponent($(this))) {
           _case.set({
             status: 'failed'

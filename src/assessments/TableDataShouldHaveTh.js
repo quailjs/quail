@@ -6,7 +6,7 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-
+var select = require('dom-select');
 var TableDataShouldHaveTh = {
   run: function (test) {
 
@@ -23,7 +23,7 @@ var TableDataShouldHaveTh = {
       else {
         candidates.each(function () {
           var status = 'failed';
-          var hasHeading = $(this).find('th').length > 0;
+          var hasHeading = select.all('th', this).length > 0;
           // If a test is defined, then use it
           if (hasHeading) {
             status = 'passed';

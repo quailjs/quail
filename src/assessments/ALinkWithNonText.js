@@ -1,5 +1,6 @@
 var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
+var select = require('dom-select');
 var ALinkWithNonText = {
   run: function (test) {
     test.get('$scope').find('a').each(function () {
@@ -20,13 +21,13 @@ var ALinkWithNonText = {
         return;
       }
       var unreadable = 0;
-      $(this).find('img, object, embed').each(function () {
+      select.all('img, object, embed', this).each(function () {
         if (($(this).is('img') && IsUnreadable($(this).attr('alt'))) ||
           (!$(this).is('img') && IsUnreadable($(this).attr('title')))) {
           unreadable++;
         }
       });
-      if ($(this).find('img, object, embed').length === unreadable) {
+      if (select.all('img, object, embed', this).length === unreadable) {
         _case.set({
           status: 'failed'
         });

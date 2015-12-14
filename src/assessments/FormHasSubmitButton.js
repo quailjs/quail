@@ -6,14 +6,14 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-
+var select = require('dom-select');
 var FormHasSubmitButton = {
   run: function (test) {
 
     var selector = 'input[type=submit], button[type=submit]';
 
     this.get('$scope').each(function () {
-      var candidates = $(this).find('form');
+      var candidates = select.all('form', this);
 
       if (candidates.length === 0) {
         test.add(Case({

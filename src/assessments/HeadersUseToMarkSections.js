@@ -1,4 +1,5 @@
 var Case = require('Case');
+var select = require('dom-select');
 var HeadersUseToMarkSections = {
   run: function (test) {
     test.get('$scope').find('p').each(function () {
@@ -29,7 +30,7 @@ var HeadersUseToMarkSections = {
       }
       var isNavigation = true;
       $list.find('li:has(a)').each(function () {
-        if ($(this).text().trim() !== $(this).find('a:first').text().trim()) {
+        if (select.all('a:first', this).text().trim() !== $(this).text().trim()) {
           isNavigation = false;
         }
       });

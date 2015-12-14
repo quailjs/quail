@@ -1,21 +1,22 @@
 var Case = require('Case');
+var select = require('dom-select');
 var TableUsesScopeForRow = {
   run: function (test) {
     test.get('$scope').find('table').each(function () {
-      $(this).find('td:first-child').each(function () {
+      select.all('td:first-child', this).each(function () {
         var $next = $(this).next('td');
         if (($(this).css('font-weight') === 'bold' && $next.css('font-weight') !== 'bold') ||
-             ($(this).find('strong').length && !$next.find('strong').length)) {
+             (select.all('strong').length && !$next.find('strong', this).length)) {
           test.add(Case({
             element: this,
             status: 'failed'
           }));
         }
       });
-      $(this).find('td:last-child').each(function () {
+      select.all('td:last-child', this).each(function () {
         var $prev = $(this).prev('td');
         if (($(this).css('font-weight') === 'bold' && $prev.css('font-weight') !== 'bold') ||
-            ($(this).find('strong').length && !$prev.find('strong').length)) {
+            (select.all('strong').length && !$prev.find('strong', this).length)) {
           test.add(Case({
             element: this,
             status: 'failed'

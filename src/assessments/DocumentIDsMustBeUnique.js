@@ -1,4 +1,5 @@
 var Case = require('Case');
+var select = require('dom-select');
 var DocumentIDsMustBeUnique = {
   run: function (test) {
     test.get('$scope').each(function () {
@@ -17,7 +18,7 @@ var DocumentIDsMustBeUnique = {
     });
     test.get('$scope').each(function () {
       var ids = {};
-      $(this).find('[id]').each(function () {
+      select.all('[id]', this).each(function () {
         var _case = Case({
           element: this
         });

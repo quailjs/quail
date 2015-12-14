@@ -1,9 +1,10 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
+var select = require('dom-select');
 var TableUseColGroup = {
   run: function (test) {
     test.get('$scope').find('table').each(function () {
-      if (IsDataTableComponent($(this)) && !$(this).find('colgroup').length) {
+      if (IsDataTableComponent(select.all('colgroup', this)) && !$(this).length) {
         test.add(Case({
           element: this,
           status: 'failed'

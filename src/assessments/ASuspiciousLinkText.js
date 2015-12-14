@@ -1,6 +1,7 @@
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
 var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
+var select = require('dom-select');
 var ASuspiciousLinkText = {
   run: function (test) {
     test.get('$scope').find('a').each(function () {
@@ -15,7 +16,7 @@ var ASuspiciousLinkText = {
         return;
       }
       var text = $(this).text();
-      $(this).find('img[alt]').each(function () {
+      select.all('img[alt]', this).each(function () {
         text = text + $(this).attr('alt');
       });
       if (SuspiciousLinksStringsComponent.indexOf(CleanStringComponent(text)) > -1) {

@@ -1,8 +1,9 @@
 var Case = require('Case');
+var select = require('dom-select');
 var AMustHaveTitle = {
   run: function (test) {
     this.get('$scope').each(function () {
-      var links = $(this).find('a');
+      var links = select.all('a', this);
 
       links.each(function (i, link) {
         // Has a title attribute and that attribute has a value, then pass.
