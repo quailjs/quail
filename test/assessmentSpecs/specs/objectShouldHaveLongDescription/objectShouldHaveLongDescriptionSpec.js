@@ -1,4 +1,4 @@
-describe('assessment: objectShouldHaveLongDescription', function () {
+xdescribe('assessment: objectShouldHaveLongDescription', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

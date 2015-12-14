@@ -1,4 +1,4 @@
-describe('assessment: selectDoesNotChangeContext', function () {
+xdescribe('assessment: selectDoesNotChangeContext', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

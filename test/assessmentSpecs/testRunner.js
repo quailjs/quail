@@ -31,7 +31,6 @@ var httpServerAssessmentPagesPort = 9999;
 
 var mochaRunner;
 var _client;
-var assessmentsPromise;
 var httpServerFixtures;
 var httpServerAssessmentPages;
 
@@ -91,9 +90,7 @@ process.on('uncaughtException', function (err) {
 });
 
 // The root path of the HTTP fixtures server.
-var fixturesRoot = path.join(__dirname, '../..', 'dist');
 var assessmentPagesRoot = path.join(__dirname, 'specs');
-var testConfigPath = path.join(__dirname, '../', 'config');
 var logPath = path.join(__dirname, '../..', 'logs');
 
 /**
@@ -202,11 +199,7 @@ function startSelenium (callback) {
 /**
  * Sets up and runs the Specs.
  */
-function runSpecs (assessments) {
-  // If we have no assessments to run, shut down the process with an error code.
-  if (Object.keys(assessments) === 0) {
-    shutdownTestRunner('No tests to run.');
-  }
+function runSpecs () {
   // Methods available in the Spec runner (e.g. Mocha).
   // @todo Provide these methods through exports and move them into their
   // own file.
@@ -258,31 +251,23 @@ function runSpecs (assessments) {
        * Prepares the list of assessments.
        */
       function prepareAssessmentList (client) {
-        // Filter the list of assessments if the Spec indicates a subset.
-        return assessmentsPromise.then(function (assessments) {
-          var assessmentsToRun = assessments;
-          if (indicatedAssessments && indicatedAssessments.length > 0) {
-            assessmentsToRun = {};
-            indicatedAssessments.forEach(function (name) {
-              if (name in assessments) {
-                assessmentsToRun[name] = assessments[name];
-              }
-            });
-          }
+        return Q.Promise(function (resolve, reject) {
+          var assessmentsToRun = {};
+          indicatedAssessments.forEach(function (name) {
+            assessmentsToRun[name] = {};
+          });
           if (Object.keys(assessmentsToRun).length > 0) {
             assessmentsDeferred.resolve(assessmentsToRun);
-            return Q.Promise(function (resolve) {
-              resolve({
-                client: client,
-                assessments: assessmentsToRun
-              });
+            resolve({
+              client: client,
+              assessments: assessmentsToRun
             });
           }
           else {
-            assessmentsDeferred.reject(new Error('No assessments to evaluate'));
+            reject(new Error('No assessments to evaluate'));
+            assessmentsDeferred.reject();
           }
-        })
-        .fail(shutdownTestRunner);
+        });
       }
 
       /**
@@ -502,7 +487,7 @@ function runSpecs (assessments) {
   mochaRunner = new Mocha({
     timeout: 1000000,
     reporter: 'spec',
-    bail: false,
+    bail: true,
     require: 'babelhook'
   });
   /**
@@ -519,56 +504,18 @@ function runSpecs (assessments) {
   // Run a single test if one is indicated, otherwise, run them all.
   var single = execOptions.assessment;
   if (single) {
-    if (single in assessments) {
-      specFiles = __dirname + '/specs/**/' + single + 'Spec.js';
-      // Gather the spec files and add them to the Mocha run.
-      glob(specFiles, function (error, files) {
-        if (error) {
-          shutdownTestRunner(error);
-        }
-        addAndRunMocha(files);
-      });
-    }
-    else {
-      shutdownTestRunner('No implementation exists for the requested spec: ' + single);
-    }
+    specFiles = __dirname + '/specs/**/' + single + 'Spec.js';
   }
   else {
-    // specFiles = __dirname + '/specs/**/*Spec.js';
-    // Read in the configured test filenames.
-    fs.readFile(path.join(testConfigPath, 'assessmentsToRun.json'), {
-      encoding: 'utf-8'
-    }, function (err, assessmentsToRunJSON) {
-      if (err) {
-        shutdownTestRunner('Failed to load assessmentsToRun.json.');
-      }
-      var assessmentsToRun = JSON.parse(assessmentsToRunJSON);
-      // Create a list of Specs to run. Remove filenames prepended with underscore.
-      var assessmentSpecFiles = assessmentsToRun.filter(function (filename) {
-        return filename.charAt(0) !== '_';
-      }).map(function (filename) {
-        // Expand the file names to full paths.
-        return path.join(assessmentPagesRoot, filename, filename + 'Spec.js');
-      });
-      // Gather the spec files and add them to the Mocha run.
-      addAndRunMocha(assessmentSpecFiles);
-    });
+    specFiles = __dirname + '/specs/**/*Spec.js';
   }
+  // Gather the spec files and add them to the Mocha run.
+  glob(specFiles, function (error, files) {
+    if (error) {
+      shutdownTestRunner(error);
+    }
+    addAndRunMocha(files);
+  });
 }
-
-// Load the assessment defintions. The callback will start the evaluation of the
-// specifications.
-assessmentsPromise = Q.Promise(function (resolve, reject) {
-  Q.nfcall(fs.readFile, fixturesRoot + '/tests.json', {
-    encoding: 'utf-8'
-  })
-    .then(function (assessmentsJSON) {
-      resolve(JSON.parse(assessmentsJSON));
-    }, function (err) {
-      reject(err);
-    })
-    .fail(shutdownTestRunner);
-});
-
-assessmentsPromise.done(runSpecs);
-assessmentsPromise.fail(shutdownTestRunner);
+// Start the spec testing.
+runSpecs();

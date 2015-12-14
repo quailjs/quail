@@ -1,4 +1,4 @@
-describe('assessment: imgMapAreasHaveDuplicateLink', function () {
+xdescribe('assessment: imgMapAreasHaveDuplicateLink', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

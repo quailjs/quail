@@ -1,4 +1,4 @@
-describe('assessment: objectLinkToMultimediaHasTextTranscript', function () {
+xdescribe('assessment: objectLinkToMultimediaHasTextTranscript', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

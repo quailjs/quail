@@ -1,4 +1,4 @@
-describe('assessment: imgAltIsSameInText', function () {
+xdescribe('assessment: imgAltIsSameInText', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.
