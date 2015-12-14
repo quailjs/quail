@@ -296,7 +296,7 @@ page.onLoadFinished = function (status) {
     // The evaluation is executed in its own function scope. Closures that
     // incorporate outside scopes are not possible.
     try {
-      page.evaluate(function (tests, size) {
+      page.evaluate(function (tests) {
         // Tell the client that we're starting the test run.
         console.log('Beginning evaluation.');
 

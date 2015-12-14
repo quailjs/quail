@@ -2,6 +2,7 @@
 
 var system = require('system');
 var webpage = require('webpage');
+var quail = require('quail');
 var fs = require('fs');
 var address = system.args[1];
 var dir = system.args[2];

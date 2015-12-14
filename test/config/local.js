@@ -1,7 +1,7 @@
 module.exports = {
   host: 'localhost',
   port: process.env._PORT || 4444,
-  logLevel: 'verbose',
+  logLevel: 'silent', // verbose | silent | command | data | result
   waitforTimeout: 1000,
   desiredCapabilities: {
     browserName: process.env._BROWSER || 'phantomjs',
