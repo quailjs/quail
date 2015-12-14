@@ -1,4 +1,4 @@
-describe('assessment: objectWithClassIDHasNoText', function () {
+xdescribe('assessment: objectWithClassIDHasNoText', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

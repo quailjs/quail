@@ -1,4 +1,4 @@
-describe('assessment: objectMustHaveValidTitle', function () {
+xdescribe('assessment: objectMustHaveValidTitle', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

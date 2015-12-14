@@ -1,4 +1,4 @@
-describe('assessment: videoProvidesCaptions', function () {
+xdescribe('assessment: videoProvidesCaptions', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

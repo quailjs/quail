@@ -1,4 +1,4 @@
-describe('assessment: objectInterfaceIsAccessible', function () {
+xdescribe('assessment: objectInterfaceIsAccessible', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

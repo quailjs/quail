@@ -1,4 +1,4 @@
-describe('assessment: scriptOnFocusChangeBackgroundOrBorder', function () {
+xdescribe('assessment: scriptOnFocusChangeBackgroundOrBorder', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

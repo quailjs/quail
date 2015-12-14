@@ -1,4 +1,4 @@
-describe('assessment: framesetMustHaveNoFramesSection', function () {
+xdescribe('assessment: framesetMustHaveNoFramesSection', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

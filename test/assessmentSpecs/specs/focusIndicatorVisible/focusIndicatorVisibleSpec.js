@@ -1,4 +1,4 @@
-describe('assessment: focusIndicatorVisible', function () {
+xdescribe('assessment: focusIndicatorVisible', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

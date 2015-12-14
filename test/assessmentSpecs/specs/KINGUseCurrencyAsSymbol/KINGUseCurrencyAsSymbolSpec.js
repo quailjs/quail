@@ -1,4 +1,4 @@
-describe('assessment: KINGUseCurrencyAsSymbol', function () {
+xdescribe('assessment: KINGUseCurrencyAsSymbol', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

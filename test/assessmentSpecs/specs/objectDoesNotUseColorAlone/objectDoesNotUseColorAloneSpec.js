@@ -1,4 +1,4 @@
-describe('assessment: objectDoesNotUseColorAlone', function () {
+xdescribe('assessment: objectDoesNotUseColorAlone', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.
