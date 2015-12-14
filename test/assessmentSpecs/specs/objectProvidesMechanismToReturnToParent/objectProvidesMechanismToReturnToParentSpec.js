@@ -1,4 +1,4 @@
-describe('assessment: objectProvidesMechanismToReturnToParent', function () {
+xdescribe('assessment: objectProvidesMechanismToReturnToParent', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

@@ -1,4 +1,4 @@
-describe('assessment: doNotUseGraphicalSymbolToConveyInformation', function () {
+xdescribe('assessment: doNotUseGraphicalSymbolToConveyInformation', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

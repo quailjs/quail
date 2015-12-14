@@ -1,4 +1,4 @@
-describe('assessment: objectDoesNotFlicker', function () {
+xdescribe('assessment: objectDoesNotFlicker', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

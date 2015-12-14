@@ -1,4 +1,4 @@
-describe('assessment: noframesSectionMustHaveTextEquivalent', function () {
+xdescribe('assessment: noframesSectionMustHaveTextEquivalent', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

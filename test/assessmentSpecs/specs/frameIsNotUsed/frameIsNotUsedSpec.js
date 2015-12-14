@@ -1,4 +1,4 @@
-describe('assessment: frameIsNotUsed', function () {
+xdescribe('assessment: frameIsNotUsed', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

@@ -1,4 +1,4 @@
-describe('assessment: objectContentUsableWhenDisabled', function () {
+xdescribe('assessment: objectContentUsableWhenDisabled', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

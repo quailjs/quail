@@ -1,4 +1,4 @@
-describe('assessment: imgNotReferredToByColorAlone', function () {
+xdescribe('assessment: imgNotReferredToByColorAlone', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

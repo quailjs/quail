@@ -31,7 +31,6 @@ var httpServerAssessmentPagesPort = 9999;
 
 var mochaRunner;
 var _client;
-var assessmentsPromise;
 var httpServerFixtures;
 var httpServerAssessmentPages;
 
@@ -91,7 +90,6 @@ process.on('uncaughtException', function (err) {
 });
 
 // The root path of the HTTP fixtures server.
-var fixturesRoot = path.join(__dirname, '../..', 'dist');
 var assessmentPagesRoot = path.join(__dirname, 'specs');
 var logPath = path.join(__dirname, '../..', 'logs');
 
@@ -253,31 +251,23 @@ function runSpecs () {
        * Prepares the list of assessments.
        */
       function prepareAssessmentList (client) {
-        // Filter the list of assessments if the Spec indicates a subset.
-        return assessmentsPromise.then(function (assessments) {
-          var assessmentsToRun = assessments;
-          if (indicatedAssessments && indicatedAssessments.length > 0) {
-            assessmentsToRun = {};
-            indicatedAssessments.forEach(function (name) {
-              if (name in assessments) {
-                assessmentsToRun[name] = assessments[name];
-              }
-            });
-          }
+        return Q.Promise(function (resolve, reject) {
+          var assessmentsToRun = {};
+          indicatedAssessments.forEach(function (name) {
+            assessmentsToRun[name] = {};
+          });
           if (Object.keys(assessmentsToRun).length > 0) {
             assessmentsDeferred.resolve(assessmentsToRun);
-            return Q.Promise(function (resolve) {
-              resolve({
-                client: client,
-                assessments: assessmentsToRun
-              });
+            resolve({
+              client: client,
+              assessments: assessmentsToRun
             });
           }
           else {
-            assessmentsDeferred.reject(new Error('No assessments to evaluate'));
+            reject(new Error('No assessments to evaluate'));
+            assessmentsDeferred.reject();
           }
-        })
-        .fail(shutdownTestRunner);
+        });
       }
 
       /**
@@ -527,19 +517,5 @@ function runSpecs () {
     addAndRunMocha(files);
   });
 }
-
-// Load the assessment defintions. The callback will start the evaluation of the
-// specifications.
-assessmentsPromise = Q.Promise(function (resolve, reject) {
-  Q.nfcall(fs.readFile, fixturesRoot + '/tests.json', {
-    encoding: 'utf-8'
-  })
-    .then(function (assessmentsJSON) {
-      resolve(JSON.parse(assessmentsJSON));
-    }, function (err) {
-      reject(err);
-    })
-    .fail(shutdownTestRunner);
-});
 // Start the spec testing.
 runSpecs();

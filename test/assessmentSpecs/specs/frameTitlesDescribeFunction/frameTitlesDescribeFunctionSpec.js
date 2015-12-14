@@ -1,4 +1,4 @@
-describe('assessment: frameTitlesDescribeFunction', function () {
+xdescribe('assessment: frameTitlesDescribeFunction', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

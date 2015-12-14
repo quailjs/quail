@@ -1,4 +1,4 @@
-describe('assessment: documentAbbrIsUsed', function () {
+xdescribe('assessment: documentAbbrIsUsed', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.
