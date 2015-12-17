@@ -1,6 +1,6 @@
 var Case = require('Case');
 var SiteMapStringsComponent = require('SiteMapStringsComponent');
-var $ = require('jquery/dist/jquery');
+var DOM = require('DOM');
 
 var SiteMap = {
   run: function (test) {

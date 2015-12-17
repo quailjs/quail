@@ -1,5 +1,5 @@
 var Case = require('Case');
-var select = require('dom-select');
+var DOM = require('DOM');
 var HeadersAttrRefersToATableCell = {
   run: function (test) {
     // Table cell headers without referred ids
@@ -7,7 +7,7 @@ var HeadersAttrRefersToATableCell = {
       var self = this;
       var _case = Case();
       test.add(_case);
-      var elmHeaders = select.all('th[headers], td[headers]', self);
+      var elmHeaders = DOM.scry('th[headers], td[headers]', self);
 
       if (elmHeaders.length === 0) {
         _case.set({

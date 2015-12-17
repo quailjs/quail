@@ -1,6 +1,6 @@
 var ConvertToPxComponent = require('ConvertToPxComponent');
 var FocusElements = require('FocusElements');
-var $ = require('jquery/dist/jquery');
+var DOM = require('DOM');
 
 var ScriptFocusIndicatorVisible = {
   run: function () {

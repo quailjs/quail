@@ -6,7 +6,7 @@ var ListNotUsedForFormatting = {
         element: this
       });
       test.add(_case);
-      if (select.all('li', this).length < 2) {
+      if (DOM.scry('li', this).length < 2) {
         _case.set({
           status: 'failed'
         });

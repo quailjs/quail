@@ -1,5 +1,5 @@
 var Case = require('Case');
-var select = require('dom-select');
+var DOM = require('DOM');
 var EmbedHasAssociatedNoEmbed = {
   run: function (test) {
     test.get('$scope').find('embed').each(function () {
@@ -8,7 +8,7 @@ var EmbedHasAssociatedNoEmbed = {
       });
       test.add(_case);
       _case.set({
-        status: (select.all('noembed').length || $(this).next().is('noembed', this)) ? 'passed' : 'failed'
+        status: (DOM.scry('noembed').length || $(this).next().is('noembed', this)) ? 'passed' : 'failed'
       });
     });
   },

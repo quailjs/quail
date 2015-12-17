@@ -1,6 +1,6 @@
 var Case = require('Case');
 var HasEventListenerComponent = require('HasEventListenerComponent');
-var select = require('dom-select');
+var DOM = require('DOM');
 var SelectJumpMenu = {
   run: function (test) {
     var $scope = test.get('$scope');
@@ -9,7 +9,7 @@ var SelectJumpMenu = {
     }
 
     $scope.find('select').each(function () {
-      if (select.all(':submit', this).parent('form').length === 0 &&
+      if (DOM.scry(':submit', this).parent('form').length === 0 &&
           HasEventListenerComponent($(this), 'change')) {
         test.add(Case({
           element: this,

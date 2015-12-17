@@ -1,6 +1,6 @@
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
-var select = require('dom-select');
+var DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceNotUsedForFormatting = {
   run: function (test) {
@@ -13,7 +13,7 @@ var WhiteSpaceNotUsedForFormatting = {
         var _case = test.add(Case({
           element: this
         }));
-        if (select.all('br', this).length === 0) {
+        if (DOM.scry('br', this).length === 0) {
           _case.set({status: 'passed'});
           return;
         }

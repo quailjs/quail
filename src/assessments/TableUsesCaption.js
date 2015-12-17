@@ -6,7 +6,7 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var select = require('dom-select');
+var DOM = require('DOM');
 var TableUsesCaption = {
   run: function (test) {
 
@@ -23,7 +23,7 @@ var TableUsesCaption = {
       else {
         candidates.each(function () {
           var status = 'failed';
-          var hasCaption = select.all('caption', this).length === 1;
+          var hasCaption = DOM.scry('caption', this).length === 1;
 
           // If a test is defined, then use it
           if (hasCaption) {

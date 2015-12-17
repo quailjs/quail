@@ -1,5 +1,5 @@
 var Case = require('Case');
-var select = require('dom-select');
+var DOM = require('DOM');
 var TableAxisHasCorrespondingId = {
   run: function (test) {
     test.get('$scope').find('[axis]').each(function () {
@@ -7,7 +7,7 @@ var TableAxisHasCorrespondingId = {
         element: this
       });
       test.add(_case);
-      if (select.all('th#' + $(this).attr('axis', this).parents('table').first()).length === 0) {
+      if (DOM.scry('th#' + $(this).attr('axis', this).parents('table').first()).length === 0) {
         _case.set({
           status: 'failed'
         });

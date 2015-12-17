@@ -1,5 +1,5 @@
 var Case = require('Case');
-var $ = require('jquery/dist/jquery');
+var DOM = require('DOM');
 var VideoMayBePresent = {
   run: function (test) {
 

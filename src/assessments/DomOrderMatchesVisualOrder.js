@@ -6,7 +6,7 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var $ = require('jquery/dist/jquery');
+var DOM = require('DOM');
 
 var DomOrderMatchesVisualOrder = {
   run: function (test, options) {

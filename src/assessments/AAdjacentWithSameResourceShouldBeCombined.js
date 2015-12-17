@@ -7,16 +7,16 @@ var AAdjacentWithSameResourceShouldBeCombined = {
       // Find all the links
       var $links = $element.find('a');
       // Sort them into singletons and coupletons.
-      var $singletons = $();
-      var $coupletons = $();
+      var $singletons = [];
+      var $coupletons = [];
 
       $links.each(function (index, link) {
         var $link = $(link);
         if ($link.next().is('a')) {
-          $coupletons = $coupletons.add($link);
+          $coupletons.push($link);
         }
         else {
-          $singletons = $singletons.add($link);
+          $singletons.push($link);
         }
       });
 

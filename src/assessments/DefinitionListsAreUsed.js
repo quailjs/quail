@@ -1,5 +1,5 @@
 var Case = require('Case');
-var select = require('dom-select');
+var DOM = require('DOM');
 var DefinitionListsAreUsed = {
   run: function (test) {
     test.get('$scope').find('dl').each(function () {
@@ -17,7 +17,7 @@ var DefinitionListsAreUsed = {
       });
       test.add(_case);
       var $item = $(this);
-      select.all('span, strong, em, b, i', this).each(function () {
+      DOM.scry('span, strong, em, b, i', this).each(function () {
         if ($(this).text().length < 50 && $item.text().search($(this).text()) === 0) {
           if ($(this).is('span')) {
             if ($(this).css('font-weight') === $item.css('font-weight') &&

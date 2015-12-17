@@ -94,16 +94,12 @@ var assessmentPagesRoot = path.join(__dirname, 'specs');
 var logPath = path.join(__dirname, '../..', 'logs');
 
 /**
- * Load jQuery and Quail from different places in the repo.
+ * Load Quail.
  */
 function serveScriptResource (response, resourcePath) {
   var resource;
 
-  // jQuery
-  if (resourcePath.indexOf('jquery.min.js') > -1) {
-    resource = path.join(__dirname, '../..', 'node_modules/jquery/dist', resourcePath);
-  }
-  else if (resourcePath.indexOf('bundle.js') > -1) {
+  if (resourcePath.indexOf('bundle.js') > -1) {
     resource = path.join(__dirname, '../..', 'dist', resourcePath);
   }
   else {
@@ -370,11 +366,6 @@ function runSpecs () {
 
         // Load Quail fixtures into the page.
         var fixtures = [
-          // Load jQuery into the page.
-          {
-            args: ['jquery.min.js', httpServerFixturesPort],
-            evaluate: loadScriptFile
-          },
           // Load the Quail script into the page.
           {
             args: ['bundle.js', httpServerFixturesPort],

@@ -6,7 +6,7 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var select = require('dom-select');
+var DOM = require('DOM');
 var LabelDoesNotContainInput = {
   run: function (test) {
 
@@ -24,7 +24,7 @@ var LabelDoesNotContainInput = {
         candidates.each(function () {
           var status = 'passed';
 
-          if (select.all('input', this).length > 0) {
+          if (DOM.scry('input', this).length > 0) {
             status = 'failed';
           }
 

@@ -6,7 +6,7 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var select = require('dom-select');
+var DOM = require('DOM');
 var ObjectMustHaveEmbed = {
   run: function (test) {
 
@@ -23,7 +23,7 @@ var ObjectMustHaveEmbed = {
       else {
         candidates.each(function () {
           var status = 'failed';
-          var hasEmbed = select.all('embed', this).length > 0;
+          var hasEmbed = DOM.scry('embed', this).length > 0;
 
           // If a test is defined, then use it
           if (hasEmbed) {

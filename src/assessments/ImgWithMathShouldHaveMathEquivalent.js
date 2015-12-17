@@ -1,5 +1,5 @@
 var Case = require('Case');
-var select = require('dom-select');
+var DOM = require('DOM');
 var ImgWithMathShouldHaveMathEquivalent = {
   run: function (test) {
     test.get('$scope').find('img:not(img:has(math), img:has(tagName))').each(function () {
@@ -7,7 +7,7 @@ var ImgWithMathShouldHaveMathEquivalent = {
         element: this
       });
       test.add(_case);
-      if (!select.all('math', this).parent().length) {
+      if (!DOM.scry('math', this).parent().length) {
         _case.set({
           status: 'failed'
         });
