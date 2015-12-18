@@ -312,7 +312,7 @@ function runSpecs () {
 
         window.globalQuail.run({
           accessibilityTests: tests,
-          html: jQuery('html'),
+          html: [document],
           // Called when an individual Case in a test is resolved.
           caseResolve: function (eventName, test, _case) {
             var name = test.get('name');

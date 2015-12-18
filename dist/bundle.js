@@ -25,7 +25,7 @@ var AcronymComponent = function AcronymComponent(test) {
       // If there is more than one word and ??.
       if (words.length > 1 && $el.text().toUpperCase() !== $el.text()) {
         // Check each word.
-        $.each(words, function (index, word) {
+        words.forEach(function (word, index) {
           // Only consider words great than one character.
           if (word.length < 2) {
             return;
@@ -852,7 +852,7 @@ var IsDataTableComponent = function IsDataTableComponent(table) {
       }
       spanIndex[$(this).index()]++;
     });
-    $.each(spanIndex, function (index, count) {
+    spanIndex.forEach(function (count, index) {
       if (count < numberRows) {
         isDataTable = false;
       }
@@ -869,7 +869,7 @@ var IsDataTableComponent = function IsDataTableComponent(table) {
       }
       subTablesIndexes[parentIndex]++;
     });
-    $.each(subTablesIndexes, function (index, count) {
+    subTablesIndexes.forEach(function (count, index) {
       if (count < numberRows) {
         isDataTable = false;
       }
@@ -1236,7 +1236,7 @@ var TextStatisticsComponent = {
     if (!wordCount) {
       return 0;
     }
-    $.each(text.split(' '), function (index, word) {
+    text.split(' ').forEach(function (word, index) {
       count += that.syllableCount(word);
     });
     return count / wordCount;
@@ -1288,7 +1288,7 @@ var VideoComponent = {
    */
   isVideo: function isVideo(element) {
     var isVideo = false;
-    $.each(this.providers, function () {
+    this.providers.forEach(function () {
       if (element.is(this.selector) && this.isVideo(element)) {
         isVideo = true;
       }
@@ -1297,14 +1297,17 @@ var VideoComponent = {
   },
 
   findVideos: function findVideos(element, callback) {
-    $.each(this.providers, function (name, provider) {
-      DOM.scry(this.selector, element).each(function () {
-        var video = $(this);
-        if (provider.isVideo(video)) {
-          provider.hasCaptions(video, callback);
-        }
-      });
-    });
+    for (var name in this.providers) {
+      if (providers.hasOwnProperty(name)) {
+        var provider = providers[name];
+        DOM.scry(this.selector, element).each(function () {
+          var video = $(this);
+          if (provider.isVideo(video)) {
+            provider.hasCaptions(video, callback);
+          }
+        });
+      }
+    }
   },
 
   providers: {
@@ -2097,6 +2100,7 @@ var Test = (function () {
       this.set('startTime', start);
 
       if (callback && typeof callback.call === 'function') {
+        debugger;
         try {
           callback.call(self, self, options);
         } catch (error) {
@@ -2738,7 +2742,7 @@ var wcag2 = (function () {
 
     // Create the accessibiliyTests object, based on the
     // tests in the criteria
-    $.each(criteria, function (i, criterion) {
+    criteria.forEach(function (criterion, i) {
       allTests.push.apply(allTests, criterion.getTests());
     });
 
@@ -2747,7 +2751,7 @@ var wcag2 = (function () {
 
     // Remove duplicates
     // TODO: Figure out why some tests are created multiple times
-    $.each(allTests, function (i, test) {
+    allTests.forEach(function (test, i) {
       if (knownTests.indexOf(test.title.en) === -1) {
         knownTests.push(test.title.en);
         accessibilityTests.push(test);
@@ -8142,7 +8146,7 @@ var AInPHasADistinctStyle = {
         styleProperties.push('background');
       }
 
-      $.each(styleProperties, function (i, styleProp) {
+      styleProperties.forEach(function (styleProp, i) {
         if (!result && $elm.css(styleProp) !== $parent.css(styleProp)) {
           result = true;
         }
@@ -8726,22 +8730,23 @@ var Case = require('Case');
 var DOM = require('DOM');
 var AMustHaveTitle = {
   run: function run(test) {
-    this.get('scope').each(function () {
-      var links = DOM.scry('a', this);
+    debugger;
+    test.get('scope').forEach(function (element) {
+      var links = DOM.scry('a', element);
 
-      links.each(function (i, link) {
+      links.forEach(function (link) {
         // Has a title attribute and that attribute has a value, then pass.
-        var title = $(link).attr('title');
+        var title = link.getAttribute('title');
         if (typeof title === 'string' && title.length > 0) {
           test.add(Case({
-            element: this,
+            element: link,
             status: 'passed'
           }));
         }
         // Does not have a title attribute or the attribute does not have a value.
-        else if (typeof title === 'undefined' || !title.length) {
+        else if (!title || !title.length) {
             test.add(Case({
-              element: this,
+              element: link,
               status: 'failed'
             }));
           }
@@ -11281,7 +11286,7 @@ var DocumentLangIsISO639Standard = {
     } else {
       // Loop over all language codes, checking if the current lang attribute starts
       // with a value that's in the languageCodes array
-      $.each(LanguageCodesStringsComponent, function (i, currentLangCode) {
+      LanguageCodesStringsComponent.forEach(function (currentLangCode, i) {
         if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
           matchedLang = true;
         }
@@ -12974,7 +12979,7 @@ var HeadersAttrRefersToATableCell = {
         elmHeaders.each(function () {
           var that = this;
           var headers = $(this).attr('headers').split(/\s+/);
-          $.each(headers, function (index, item) {
+          headers.forEach(function (item, index) {
             if (item === '' || DOM.scry('th#' + item + ',td#' + item, self).length > 0) {
               _case.set({
                 element: that,
@@ -13191,7 +13196,7 @@ var IdrefsHasCorrespondingId = {
       var attribute = [];
       var attributeList = ['headers', 'aria-controls', 'aria-describedby', 'aria-flowto', 'aria-labelledby', 'aria-owns'];
 
-      $.each(attributeList, function (index, item) {
+      attributeList.forEach(function (item, index) {
 
         var attr = $element.attr(item);
 
@@ -13221,7 +13226,7 @@ var IdrefsHasCorrespondingId = {
           var attributes = getAttribute($(this));
           var status = 'passed';
 
-          $.each(attributes, function (index, item) {
+          attributes.forEach(function (item, index) {
             if (item !== '' && $('#' + item).length === 0) {
               status = 'failed';
               return;
@@ -15289,7 +15294,10 @@ var LinkHasAUniqueContext = {
       });
 
       // Iterate over each item in the linkMap
-      $.each(linkMap, function (linkText, links) {
+      for (var linkText in linkMap) {
+        if (linkMap.hasOwnProperty(linkText)) {
+          var links = linkMap[linkText];
+        }
 
         // Link text is not unique, so the context should be checked
         while (links.length > 1) {
@@ -15320,7 +15328,7 @@ var LinkHasAUniqueContext = {
             status: 'passed'
           }));
         }
-      });
+      }
     });
   },
 
@@ -15830,7 +15838,7 @@ var PNotUsedAsHeader = {
       if ($(this).text().search(/[\.!:;]/) < 1) {
         var priorParagraph = $paragraph.prev('p');
         // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
-        $.each(SuspectPHeaderTags, function (index, tag) {
+        SuspectPHeaderTags.forEach(function (tag, index) {
           if (DOM.scry(tag, $paragraph).length) {
             DOM.scry(tag, $paragraph).each(function () {
               if ($(this).text().trim() === $paragraph.text().trim()) {
@@ -15844,7 +15852,7 @@ var PNotUsedAsHeader = {
         });
         // Checking if previous paragraph has a different values for style properties given in SuspectPCSSStyles.
         if (priorParagraph.length) {
-          $.each(SuspectPCSSStyles, function (index, cssProperty) {
+          SuspectPCSSStyles.forEach(function (cssProperty, index) {
             if ($paragraph.css(cssProperty) !== priorParagraph.css(cssProperty)) {
               _case.set({
                 status: 'failed'
@@ -16486,7 +16494,7 @@ var SiteMap = {
     test.add(_case);
     DOM.scry('a', test.get('scope')).each(function () {
       var text = $(this).text().toLowerCase();
-      $.each(SiteMapStringsComponent, function (index, string) {
+      SiteMapStringsComponent.forEach(function (string, index) {
         if (text.search(string) > -1) {
           set = true;
           return;
@@ -17097,7 +17105,7 @@ var TableShouldUseHeaderIDs = {
         if (!tableFailed) {
           DOM.scry('td[header]', $table).each(function () {
             if (!tableFailed) {
-              $.each($(this).attr('header').split(' '), function (index, id) {
+              $(this).attr('header').split(' ').forEach(function (id, index) {
                 if (!DOM.scry('#' + id, $table).length) {
                   tableFailed = true;
                   test.add(Case({
@@ -17763,7 +17771,7 @@ var WhiteSpaceNotUsedForFormatting = {
       }
       var lines = $(this).html().toLowerCase().split(/(<br\ ?\/?>)+/);
       var lineCount = 0;
-      $.each(lines, function (index, line) {
+      lines.forEach(function (line, index) {
         if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
           lineCount++;
         }

@@ -2,22 +2,23 @@ var Case = require('Case');
 const DOM = require('DOM');
 var AMustHaveTitle = {
   run: function (test) {
-    this.get('scope').each(function () {
-      var links = DOM.scry('a', this);
+    debugger;
+    test.get('scope').forEach(function (element) {
+      var links = DOM.scry('a', element);
 
-      links.each(function (i, link) {
+      links.forEach(function (link) {
         // Has a title attribute and that attribute has a value, then pass.
-        var title = $(link).attr('title');
+        var title = link.getAttribute('title');
         if (typeof title === 'string' && title.length > 0) {
           test.add(Case({
-            element: this,
+            element: link,
             status: 'passed'
           }));
         }
         // Does not have a title attribute or the attribute does not have a value.
-        else if (typeof title === 'undefined' || !title.length) {
+        else if (!title || !title.length) {
           test.add(Case({
-            element: this,
+            element: link,
             status: 'failed'
           }));
         }
