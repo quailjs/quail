@@ -22,14 +22,14 @@ var HeadersUseToMarkSections = {
       test.add(_case);
       var $list = $(this);
       if ($list.prevAll(':header').length ||
-        DOM.scry('li', $list).length !== $list.find('li:has(a)').length) {
+        DOM.scry('li', $list).length !== DOM.scry('li:has(a)', $list).length) {
         _case.set({
           status: 'passed'
         });
         return;
       }
       var isNavigation = true;
-      $list.find('li:has(a)').each(function () {
+      DOM.scry('li:has(a)', $list).each(function () {
         if (DOM.scry('a:first', this).text().trim() !== $(this).text().trim()) {
           isNavigation = false;
         }

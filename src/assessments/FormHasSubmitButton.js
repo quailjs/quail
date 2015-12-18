@@ -23,7 +23,7 @@ var FormHasSubmitButton = {
       }
       else {
         candidates.each(function () {
-          var submitButton = $(this).find(selector);
+          var submitButton = DOM.scry(selector, $(this));
 
           var status = (submitButton.length === 1) ? 'passed' : 'failed';
 

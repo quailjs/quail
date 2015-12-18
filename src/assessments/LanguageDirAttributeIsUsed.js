@@ -28,7 +28,7 @@ var LanguageDirAttributeIsUsed = {
         return;
       }
       var matches = textMatches.length;
-      $el.find('[dir=' + oppositeDirection + ']').each(function () {
+      DOM.scry('[dir=' + oppositeDirection + ']', $el).each(function () {
         var childMatches = $el[0].textContent.match(textDirection[oppositeDirection]);
         if (childMatches) {
           matches -= childMatches.length;
@@ -43,8 +43,7 @@ var LanguageDirAttributeIsUsed = {
     }
 
     test.get('scope').each(function () {
-      $(this)
-        .find(TextSelectorComponent)
+      DOM.scry(TextSelectorComponent, this)
         .filter(function (index, element) {
           return TextNodeFilterComponent(element);
         })

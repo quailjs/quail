@@ -11,7 +11,7 @@ var LanguageChangesAreIdentified = {
     var text, regularExpression, matches, $element, failed;
 
     var noCharactersMatch = function ($element, language, matches, regularExpression) {
-      var $children = $element.find('[lang=' + language + ']');
+      var $children = DOM.scry('[lang=' + language + ']', $element);
       var childMatches;
       if ($children.length === 0) {
         return true;
@@ -36,8 +36,7 @@ var LanguageChangesAreIdentified = {
       return LanguageComponent.getDocumentLanguage(scope, true);
     };
 
-    scope
-      .find(TextSelectorComponent)
+      DOM.scry(TextSelectorComponent, scope)
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);
       })

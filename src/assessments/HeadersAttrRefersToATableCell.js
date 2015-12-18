@@ -20,7 +20,7 @@ var HeadersAttrRefersToATableCell = {
           var that = this;
           var headers = $(this).attr('headers').split(/\s+/);
           $.each(headers, function (index, item) {
-            if (item === '' || $(self).find('th#' + item + ',td#' + item).length > 0) {
+            if (item === '' || DOM.scry('th#' + item + ',td#' + item, self).length > 0) {
               _case.set({
                 element: that,
                 status: 'passed'

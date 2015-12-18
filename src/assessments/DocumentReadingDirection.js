@@ -16,7 +16,7 @@ var DocumentReadingDirection = {
     ].join(', ');
 
     this.get('scope').each(function () {
-      var candidates = $(this).find(selector);
+      var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({
           element: undefined,

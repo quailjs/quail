@@ -68,7 +68,7 @@ var AInPHasADistinctStyle = {
         var aText = $this.text().trim();
 
         // Get all text of the p element with all anchors removed
-        var pText = $p.clone().find('a[href]').remove().end().text();
+        var pText = DOM.scry('a[href]', $p.clone()).remove().end().text();
 
         if (aText === '' || pText.match(allowedPText)) {
           _case.set('status', 'inapplicable');

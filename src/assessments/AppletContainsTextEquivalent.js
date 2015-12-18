@@ -2,7 +2,7 @@ var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var AppletContainsTextEquivalent = {
   run: function (test) {
-    test.get('scope').find('applet[alt=""], applet:not(applet[alt])').each(function () {
+    DOM.scry('applet[alt=""], applet:not(applet[alt])', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

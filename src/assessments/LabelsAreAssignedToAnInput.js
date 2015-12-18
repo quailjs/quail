@@ -12,8 +12,8 @@ var LabelsAreAssignedToAnInput = {
         });
       }
       else {
-        if (!test.get('scope').find('#' + $(this).attr('for')).length ||
-           !test.get('scope').find('#' + $(this).attr('for')).is(':input')) {
+        if (!DOM.scry('#' + $(this).attr('for'), test.get('scope')).length ||
+           !DOM.scry('#' + $(this).attr('for')).is(':input'), test.get('scope')) {
           _case.set({
             status: 'failed'
           });

@@ -19,9 +19,15 @@ var IdrefsHasCorrespondingId = {
     }
 
     test.get('scope').each(function () {
-      var testableElements = $(this).find(
-        'td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], ' +
-        '[aria-labelledby], [aria-owns]');
+      var testableElements = DOM.scry([
+        'td[headers]',
+        'th[headers]',
+        '[aria-controls]',
+        '[aria-describedby]',
+        '[aria-flowto]',
+        '[aria-labelledby]',
+        '[aria-owns]'
+      ].join(', '), this);
 
       if (testableElements.length === 0) {
         test.add(Case({

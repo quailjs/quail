@@ -3,7 +3,7 @@ var ConvertToPxComponent = require('ConvertToPxComponent');
 var FocusElements = require('FocusElements');
 var FocusIndicatorVisible = {
   run: function (test) {
-    test.get('scope').find(FocusElements).each(function () {
+    DOM.scry(FocusElements, test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

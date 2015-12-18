@@ -16,7 +16,7 @@ var SkipToContentLinkProvided = {
         var $link = $(this);
 
         var fragment = $link.attr('href').split('#').pop();
-        var $target = $local.find('#' + fragment);
+        var $target = DOM.scry('#' + fragment, $local);
         var strs = SkipContentStringsComponent.slice();
         while (!skipLinkFound && strs.length) {
           var str = strs.pop();

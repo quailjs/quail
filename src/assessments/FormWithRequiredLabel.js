@@ -14,7 +14,10 @@ var FormWithRequiredLabel = {
           element: this
         }));
         for (var word in redundant.required) {
-          if (text.search(word) >= 0 && !test.get('scope').find('#' + $label.attr('for')).attr('aria-required')) {
+          if (
+            text.search(word) >= 0 &&
+            !DOM.scry('#' + $label.attr('for'), test.get('scope')).attr('aria-required')
+          ) {
             _case.set({
               status: 'failed'
             });

@@ -13,7 +13,7 @@ var ScriptInBodyMustHaveNoscript = {
     var selector = 'html:not(html:has(noscript)):has(script) body';
 
     this.get('scope').each(function () {
-      var candidates = $(this).find(selector);
+      var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({
           element: undefined,

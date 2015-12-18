@@ -17,7 +17,7 @@ var ALinksToSoundFilesNeedTranscripts = {
     ].join(', ');
 
     this.get('scope').each(function () {
-      var candidates = $(this).find(selector);
+      var candidates = DOM.scry(selector, $(this));
       // Inapplicable.
       if (!candidates.length) {
         test.add(Case({

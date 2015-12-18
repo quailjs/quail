@@ -29,7 +29,7 @@ var InputWithoutLabelHasTitle = {
             });
             return;
           }
-          if (!test.get('scope').find('label[for=' + $(this).attr('id') + ']').length &&
+          if (!DOM.scry('label[for=' + $(this).attr('id') + ']', test.get('scope')).length &&
             (!$(this).attr('title') || IsUnreadable($(this).attr('title')))) {
             _case.set({
               status: 'failed'

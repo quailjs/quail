@@ -10,7 +10,7 @@ var DocumentIDsMustBeUnique = {
         }));
       }
     });
-    test.get('scope').find(':not([id])').each(function () {
+    DOM.scry(':not([id])', test.get('scope')).each(function () {
       test.add(Case({
         element: this,
         status: 'inapplicable'

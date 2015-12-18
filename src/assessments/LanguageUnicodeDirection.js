@@ -9,8 +9,7 @@ var LanguageUnicodeDirection = {
     var textDirectionChanges = LanguageComponent.textDirectionChanges;
     scope.each(function () {
       var $local = $(this);
-      $local
-        .find(TextSelectorComponent)
+      DOM.scry(TextSelectorComponent, $local)
         .filter(function (index, element) {
           return TextNodeFilterComponent(element);
         })

@@ -5,7 +5,7 @@ var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var DoNotUseGraphicalSymbolToConveyInformation = {
   run: function (test) {
     // Passes and fails.
-    test.get('scope').find(TextSelectorComponent + ':not(abbr, acronym)').each(function () {
+    DOM.scry(TextSelectorComponent + ':not(abbr, acronym)', test.get('scope')).each(function () {
       var whiteList = '✓';
       var blackList = '?xo[]()+-!*xX';
 
@@ -39,8 +39,7 @@ var DoNotUseGraphicalSymbolToConveyInformation = {
       }
     });
     // Not applicables.
-    test.get('scope')
-      .find(TextSelectorComponent)
+    DOM.scry(TextSelectorComponent, test.get('scope'))
       .filter('abbr, acronym')
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);

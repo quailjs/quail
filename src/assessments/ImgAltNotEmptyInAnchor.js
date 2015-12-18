@@ -2,7 +2,7 @@ var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var ImgAltNotEmptyInAnchor = {
   run: function (test) {
-    test.get('scope').find('a[href]:has(img)').each(function () {
+    DOM.scry('a[href]:has(img)', test.get('scope')).each(function () {
       var $a = $(this);
       var text = $a.text();
 

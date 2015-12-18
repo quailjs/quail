@@ -10,7 +10,7 @@ var ContentPositioningShouldNotChangeMeaning = {
     ];
     var coordinates = {};
     var failed = false;
-    test.get('scope').find('*:has(*:quailCss(position=absolute))').each(function () {
+    DOM.scry('*:has(*:quailCss(position=absolute))', test.get('scope')).each(function () {
       coordinates = {
         top: {},
         left: {},

@@ -11,9 +11,9 @@ var ImgMapAreasHaveDuplicateLink = {
       });
       test.add(_case);
       var $image = $(this);
-      var $map = test.get('scope').find($image.attr('usemap'));
+      var $map = DOM.scry($image.attr('usemap'), test.get('scope'));
       if (!$map.length) {
-        $map = test.get('scope').find('map[name="' + $image.attr('usemap').replace('#', '') + '"]');
+        $map = DOM.scry('map[name="' + $image.attr('usemap').replace('#', '') + '"]', test.get('scope'));
       }
       if ($map.length) {
         var failed = false;
