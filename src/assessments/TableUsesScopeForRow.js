@@ -6,7 +6,7 @@ var TableUsesScopeForRow = {
       DOM.scry('td:first-child', this).each(function () {
         var $next = $(this).next('td');
         if (($(this).css('font-weight') === 'bold' && $next.css('font-weight') !== 'bold') ||
-             (DOM.scry('strong').length && !$next.find('strong', this).length)) {
+             (DOM.scry('strong', this).length && !DOM.scry('strong', $next).length)) {
           test.add(Case({
             element: this,
             status: 'failed'
@@ -16,7 +16,7 @@ var TableUsesScopeForRow = {
       DOM.scry('td:last-child', this).each(function () {
         var $prev = $(this).prev('td');
         if (($(this).css('font-weight') === 'bold' && $prev.css('font-weight') !== 'bold') ||
-            (DOM.scry('strong').length && !$prev.find('strong', this).length)) {
+            (DOM.scry('strong', this).length && !DOM.scry('strong', $prev).length)) {
           test.add(Case({
             element: this,
             status: 'failed'

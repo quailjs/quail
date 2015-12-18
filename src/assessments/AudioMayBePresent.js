@@ -8,7 +8,7 @@ var AudioMayBePresent = {
       var hasCase = false; // Test if a case has been created
 
       // Audio is definately an audio, and objects could be too.
-      $this.find('object, audio').each(function () {
+      DOM.scry('object, audio', $this).each(function () {
         hasCase = true;
         test.add(Case({
           element: this,

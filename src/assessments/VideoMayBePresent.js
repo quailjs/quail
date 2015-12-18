@@ -12,7 +12,7 @@ var VideoMayBePresent = {
       var hasCase = false; // Test if a case has been created
 
       // video elm is definately a video, and objects could be too.
-      $this.find('object, video').each(function () {
+      DOM.scry('object, video', $this).each(function () {
         hasCase = true;
         test.add(Case({
           element: this,
