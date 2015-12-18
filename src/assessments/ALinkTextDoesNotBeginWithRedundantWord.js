@@ -2,7 +2,7 @@ var Case = require('Case');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var ALinkTextDoesNotBeginWithRedundantWord = {
   run: function (test) {
-    test.get('scope').find('a').each(function () {
+    DOM.scry('a', test.get('scope')).each(function () {
       var self = this;
       var $link = $(this);
       var text = '';

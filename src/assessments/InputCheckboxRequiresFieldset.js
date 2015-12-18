@@ -1,7 +1,7 @@
 var Case = require('Case');
 var InputCheckboxRequiresFieldset = {
   run: function (test) {
-    test.get('scope').find('input[type="checkbox"]').each(function () {
+    DOM.scry('input[type="checkbox"]', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

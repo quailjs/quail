@@ -8,7 +8,7 @@ var ImgAltIsDifferent = {
       });
       test.add(_case);
     });
-    test.get('scope').find('img[alt][src]').each(function () {
+    DOM.scry('img[alt][src]', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

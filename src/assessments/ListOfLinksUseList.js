@@ -3,7 +3,7 @@ var IsUnreadable = require('IsUnreadable');
 var ListOfLinksUseList = {
   run: function (test) {
     var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
-    test.get('scope').find('a').each(function () {
+    DOM.scry('a', test.get('scope')).each(function () {
       var _case = test.add(Case({
         element: this
       }));

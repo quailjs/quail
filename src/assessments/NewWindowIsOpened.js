@@ -14,7 +14,7 @@ var NewWindowIsOpened = {
       });
     };
 
-    test.get('scope').find('a').each(function () {
+    DOM.scry('a', test.get('scope')).each(function () {
       // Save a reference to this clicked tag.
       _case = Case({
         element: this

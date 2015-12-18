@@ -3,7 +3,7 @@ var Case = require('Case');
 var DOM = require('DOM');
 var TableLayoutDataShouldNotHaveTh = {
   run: function (test) {
-    test.get('scope').find('table').each(function () {
+    DOM.scry('table', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

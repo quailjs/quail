@@ -2,7 +2,7 @@ var Case = require('Case');
 var SymbolsStringsComponent = require('SymbolsStringsComponent');
 var ALinksNotSeparatedBySymbols = {
   run: function (test) {
-    test.get('scope').find('a').each(function () {
+    DOM.scry('a', test.get('scope')).each(function () {
       var $link = $(this);
       if ($link.next('a').length) {
         var text = $link.get(0).nextSibling.wholeText;

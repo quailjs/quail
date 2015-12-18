@@ -2,10 +2,10 @@ var Case = require('Case');
 var ImgMapAreasHaveDuplicateLink = {
   run: function (test) {
     var links = {};
-    test.get('scope').find('a').each(function () {
+    DOM.scry('a', test.get('scope')).each(function () {
       links[$(this).attr('href')] = $(this).attr('href');
     });
-    test.get('scope').find('img[usemap]').each(function () {
+    DOM.scry('img[usemap]', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

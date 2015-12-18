@@ -2,7 +2,7 @@ var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
 var Case = require('Case');
 var AMustContainText = {
   run: function (test) {
-    test.get('scope').find('a').each(function () {
+    DOM.scry('a', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

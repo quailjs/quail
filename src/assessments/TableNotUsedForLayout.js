@@ -2,7 +2,7 @@ var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var TableNotUsedForLayout = {
   run: function (test) {
-    test.get('scope').find('table').each(function () {
+    DOM.scry('table', test.get('scope')).each(function () {
       if (!IsDataTableComponent($(this))) {
         test.add(Case({
           element: this,

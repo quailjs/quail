@@ -2,7 +2,7 @@ var Case = require('Case');
 var DOM = require('DOM');
 var HeadersUseToMarkSections = {
   run: function (test) {
-    test.get('scope').find('p').each(function () {
+    DOM.scry('p', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });
@@ -15,7 +15,7 @@ var HeadersUseToMarkSections = {
       });
     });
 
-    test.get('scope').find('ul, ol').each(function () {
+    DOM.scry('ul, ol', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

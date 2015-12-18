@@ -1,7 +1,7 @@
 var Case = require('Case');
 var ImgAltIsTooLong = {
   run: function (test) {
-    test.get('scope').find('img[alt]').each(function () {
+    DOM.scry('img[alt]', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

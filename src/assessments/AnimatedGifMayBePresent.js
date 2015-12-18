@@ -55,7 +55,7 @@ var AnimatedGifMayBePresent = {
       request.send();
     }
 
-    test.get('scope').find('img').each(function () {
+    DOM.scry('img', test.get('scope')).each(function () {
 
       var _case = Case({
         element: this

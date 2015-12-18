@@ -4,7 +4,7 @@ var DocumentLangIsISO639Standard = {
   run: function (test) {
     var $element = (test.get('scope').is('html')) ?
       test.get('scope') :
-      test.get('scope').find('html').first();
+      DOM.scry('html', test.get('scope')).first();
 
     var _case = Case({
       element: $element[0]

@@ -1,7 +1,7 @@
 var Case = require('Case');
 var InputImageAltIsShort = {
   run: function (test) {
-    test.get('scope').find('input[type=image]').each(function () {
+    DOM.scry('input[type=image]', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

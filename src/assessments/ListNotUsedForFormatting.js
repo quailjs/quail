@@ -1,7 +1,7 @@
 var Case = require('Case');
 var ListNotUsedForFormatting = {
   run: function (test) {
-    test.get('scope').find('ol, ul').each(function () {
+    DOM.scry('ol, ul', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

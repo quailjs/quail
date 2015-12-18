@@ -3,7 +3,7 @@ var SuspectPHeaderTags = require('SuspectPHeaderTags');
 var SuspectPCSSStyles = require('SuspectPCSSStyles');
 var PNotUsedAsHeader = {
   run: function (test) {
-    test.get('scope').find('p').each(function () {
+    DOM.scry('p', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

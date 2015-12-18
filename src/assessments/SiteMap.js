@@ -9,7 +9,7 @@ var SiteMap = {
       element: test.get('scope').get(0)
     });
     test.add(_case);
-    test.get('scope').find('a').each(function () {
+    DOM.scry('a', test.get('scope')).each(function () {
       var text = $(this).text().toLowerCase();
       $.each(SiteMapStringsComponent, function (index, string) {
         if (text.search(string) > -1) {

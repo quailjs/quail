@@ -1,7 +1,7 @@
 var Case = require('Case');
 var KINGStrongList = {
   run: function (test) {
-    test.get('scope').find('strong').each(function () {
+    DOM.scry('strong', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

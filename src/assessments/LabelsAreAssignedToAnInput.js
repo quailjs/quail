@@ -1,7 +1,7 @@
 var Case = require('Case');
 var LabelsAreAssignedToAnInput = {
   run: function (test) {
-    test.get('scope').find('label').each(function () {
+    DOM.scry('label', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

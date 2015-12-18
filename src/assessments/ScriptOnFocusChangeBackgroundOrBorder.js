@@ -13,7 +13,7 @@ var ScriptOnFocusChangeBackgroundOrBorder = {
       }));
     };
 
-    test.get('scope').find('input,button,a').each(function () {
+    DOM.scry('input,button,a', test.get('scope')).each(function () {
       var $this = $(this);
 
       var noFocus = {

@@ -2,7 +2,7 @@ var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var ImgNonDecorativeHasAlt = {
   run: function (test) {
-    test.get('scope').find('img[alt]').each(function () {
+    DOM.scry('img[alt]', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

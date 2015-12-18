@@ -2,13 +2,13 @@ var Case = require('Case');
 var LabelMustBeUnique = {
   run: function (test) {
     var labels = {};
-    test.get('scope').find('label[for]').each(function () {
+    DOM.scry('label[for]', test.get('scope')).each(function () {
       if (typeof labels[$(this).attr('for')] === 'undefined') {
         labels[$(this).attr('for')] = 0;
       }
       labels[$(this).attr('for')]++;
     });
-    test.get('scope').find('label[for]').each(function () {
+    DOM.scry('label[for]', test.get('scope')).each(function () {
       var _case = Case({
         element: this,
         status: (labels[$(this).attr('for')] === 1) ?

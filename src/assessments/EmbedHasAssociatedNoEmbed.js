@@ -2,7 +2,7 @@ var Case = require('Case');
 var DOM = require('DOM');
 var EmbedHasAssociatedNoEmbed = {
   run: function (test) {
-    test.get('scope').find('embed').each(function () {
+    DOM.scry('embed', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

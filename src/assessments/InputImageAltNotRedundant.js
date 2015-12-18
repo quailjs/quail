@@ -3,7 +3,7 @@ var Case = require('Case');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var InputImageAltNotRedundant = {
   run: function (test) {
-    test.get('scope').find('input[type=image][alt]').each(function () {
+    DOM.scry('input[type=image][alt]', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });

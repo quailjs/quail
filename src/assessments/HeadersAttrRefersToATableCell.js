@@ -3,7 +3,7 @@ var DOM = require('DOM');
 var HeadersAttrRefersToATableCell = {
   run: function (test) {
     // Table cell headers without referred ids
-    test.get('scope').find('table').each(function () {
+    DOM.scry('table', test.get('scope')).each(function () {
       var self = this;
       var _case = Case();
       test.add(_case);

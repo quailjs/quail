@@ -1,7 +1,7 @@
 var Case = require('Case');
 var TableSummaryIsNotTooLong = {
   run: function (test) {
-    test.get('scope').find('table[summary]').each(function () {
+    DOM.scry('table[summary]', test.get('scope')).each(function () {
       if ($(this).attr('summary').trim().length > 100) {
         test.add(Case({
           element: this,

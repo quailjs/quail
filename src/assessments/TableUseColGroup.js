@@ -3,7 +3,7 @@ var Case = require('Case');
 var DOM = require('DOM');
 var TableUseColGroup = {
   run: function (test) {
-    test.get('scope').find('table').each(function () {
+    DOM.scry('table', test.get('scope')).each(function () {
       if (IsDataTableComponent(DOM.scry('colgroup', this)) && !$(this).length) {
         test.add(Case({
           element: this,

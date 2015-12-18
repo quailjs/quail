@@ -21,7 +21,7 @@ var KINGUsePercentageWithSymbol = {
         status: percentReg.test(text) ? 'failed' : 'passed'
       });
     }
-    test.get('scope').find('p').each(testPercentFormat);
+    DOM.scry('p', test.get('scope')).each(testPercentFormat);
   },
 
   meta: {

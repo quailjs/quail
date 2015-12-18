@@ -2,7 +2,7 @@ var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var ALinksAreSeparatedByPrintableCharacters = {
   run: function (test) {
-    test.get('scope').find('a').each(function () {
+    DOM.scry('a', test.get('scope')).each(function () {
       var _case = test.add(Case({
         element: this
       }));

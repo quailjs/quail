@@ -2,7 +2,7 @@ var ValidURLComponent = require('ValidURLComponent');
 var Case = require('Case');
 var ImgHasLongDesc = {
   run: function (test) {
-    test.get('scope').find('img[longdesc]').each(function () {
+    DOM.scry('img[longdesc]', test.get('scope')).each(function () {
       var _case = Case({
         element: this
       });
