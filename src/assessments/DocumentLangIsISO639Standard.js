@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
 var DocumentLangIsISO639Standard = {
   run: function (test) {

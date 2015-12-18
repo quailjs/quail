@@ -1,5 +1,6 @@
 var ValidURLComponent = require('ValidURLComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var ImgHasLongDesc = {
   run: function (test) {
     DOM.scry('img[longdesc]', test.get('scope')).each(function () {

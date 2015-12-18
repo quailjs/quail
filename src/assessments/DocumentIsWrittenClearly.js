@@ -1,5 +1,6 @@
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var TextStatisticsComponent = require('TextStatisticsComponent');
 var IsUnreadable = require('IsUnreadable');

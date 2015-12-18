@@ -2,6 +2,7 @@
  * Test scriptOnFocusChangeBackgroundOrBorder.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var ScriptOnFocusChangeBackgroundOrBorder = {
   run: function (test) {

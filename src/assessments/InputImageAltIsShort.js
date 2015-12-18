@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var InputImageAltIsShort = {
   run: function (test) {
     DOM.scry('input[type=image]', test.get('scope')).each(function () {

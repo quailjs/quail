@@ -2,6 +2,7 @@
  * Test for a label associated with a file input element.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var FileHasLabel = {
   run: function (test) {

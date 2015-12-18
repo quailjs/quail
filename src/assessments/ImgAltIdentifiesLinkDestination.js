@@ -8,6 +8,7 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var ImgAltIdentifiesLinkDestination = {
   run: function (test, options) {

@@ -1,5 +1,6 @@
 /**globals console:true */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var SkipContentStringsComponent = require('SkipContentStringsComponent');
 

@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var DocumentTitleIsShort = {
   run: function (test) {
     var $title = DOM.scry('head title', test.get('scope'));

@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var ConvertToPxComponent = require('ConvertToPxComponent');
 var FocusElements = require('FocusElements');
 var FocusIndicatorVisible = {

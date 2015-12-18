@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var TextStatisticsComponent = require('TextStatisticsComponent');
 var ParagraphIsWrittenClearly = {
   run: function (test) {

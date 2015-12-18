@@ -1,5 +1,6 @@
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var AImgAltNotRepetitive = {
   run: function (test) {
     DOM.scry('a img[alt]', test.get('scope')).each(function () {

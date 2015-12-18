@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var ContentPositioningShouldNotChangeMeaning = {
   run: function (test) {
     // Look for absolute positioned elements that are being put into grids or columns.

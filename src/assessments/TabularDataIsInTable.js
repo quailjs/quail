@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var TabularDataIsInTable = {
   run: function (test) {
     DOM.scry('pre', test.get('scope')).each(function () {

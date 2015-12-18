@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var KINGStrongList = {
   run: function (test) {
     DOM.scry('strong', test.get('scope')).each(function () {

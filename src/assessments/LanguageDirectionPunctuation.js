@@ -1,6 +1,7 @@
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageDirectionPunctuation = {

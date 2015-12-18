@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var ALinkTextDoesNotBeginWithRedundantWord = {
   run: function (test) {

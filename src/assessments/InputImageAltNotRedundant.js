@@ -1,5 +1,6 @@
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var InputImageAltNotRedundant = {
   run: function (test) {

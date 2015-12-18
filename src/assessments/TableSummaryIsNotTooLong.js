@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var TableSummaryIsNotTooLong = {
   run: function (test) {
     DOM.scry('table[summary]', test.get('scope')).each(function () {

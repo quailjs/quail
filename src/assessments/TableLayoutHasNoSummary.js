@@ -1,5 +1,6 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var TableLayoutHasNoSummary = {
   run: function (test) {

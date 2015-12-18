@@ -1,5 +1,6 @@
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var KINGUsePercentageWithSymbol = {
   run: function (test) {
     function testPercentFormat (index, element) {

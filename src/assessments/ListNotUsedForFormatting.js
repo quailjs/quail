@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var ListNotUsedForFormatting = {
   run: function (test) {
     DOM.scry('ol, ul', test.get('scope')).each(function () {

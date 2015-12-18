@@ -1,5 +1,6 @@
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var KINGUseCurrencyAsSymbol = {
   run: function (test) {
     function testCurrencyFormat (index, element) {

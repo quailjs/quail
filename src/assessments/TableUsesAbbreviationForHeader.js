@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var TableUsesAbbreviationForHeader = {
   run: function (test) {
     DOM.scry('th:not(th[abbr])', test.get('scope')).each(function () {

@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var AppletContainsTextEquivalent = {
   run: function (test) {

@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ImgNonDecorativeHasAlt = {
   run: function (test) {

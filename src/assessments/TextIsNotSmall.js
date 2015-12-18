@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var ConvertToPxComponent = require('ConvertToPxComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var TextSelectorComponent = require('TextSelectorComponent');

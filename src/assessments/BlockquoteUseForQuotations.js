@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var BlockquoteUseForQuotations = {
   run: function (test) {
     DOM.scry('p', test.get('scope')).each(function () {

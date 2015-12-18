@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var HasEventListenerComponent = require('HasEventListenerComponent');
 var DOM = require('DOM');
 var SelectJumpMenu = {

@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var LabelsAreAssignedToAnInput = {
   run: function (test) {
     DOM.scry('label', test.get('scope')).each(function () {

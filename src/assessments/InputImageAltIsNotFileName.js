@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var InputImageAltIsNotFileName = {
   run: function (test) {
     DOM.scry('input[type=image][alt]', test.get('scope')).each(function () {

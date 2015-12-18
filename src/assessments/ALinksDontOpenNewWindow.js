@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var NewWindowStringsComponent = require('NewWindowStringsComponent');
 var ALinksDontOpenNewWindow = {
   run: function (test) {

@@ -1,5 +1,6 @@
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var DocumentVisualListsAreMarkedUp = {
   run: function (test) {
@@ -22,7 +23,7 @@ var DocumentVisualListsAreMarkedUp = {
       '(' + itemStarters.join('|') + ')', // Followed by a character that could indicate a list
     'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
 
-      DOM.scry(TextSelectorComponent, test.get('scope'))
+    DOM.scry(TextSelectorComponent, test.get('scope'))
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);
       })

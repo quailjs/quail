@@ -1,5 +1,6 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var TableNotUsedForLayout = {
   run: function (test) {
     DOM.scry('table', test.get('scope')).each(function () {

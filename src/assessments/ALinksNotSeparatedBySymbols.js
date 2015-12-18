@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var SymbolsStringsComponent = require('SymbolsStringsComponent');
 var ALinksNotSeparatedBySymbols = {
   run: function (test) {

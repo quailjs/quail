@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var AudioMayBePresent = {
   run: function (test) {
     var audioExtensions = ['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];

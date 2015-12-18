@@ -1,6 +1,7 @@
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var guessLanguage = require('guessLanguage/lib/guessLanguage');
@@ -36,7 +37,7 @@ var LanguageChangesAreIdentified = {
       return LanguageComponent.getDocumentLanguage(scope, true);
     };
 
-      DOM.scry(TextSelectorComponent, scope)
+    DOM.scry(TextSelectorComponent, scope)
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);
       })

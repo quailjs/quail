@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ALinksAreSeparatedByPrintableCharacters = {
   run: function (test) {

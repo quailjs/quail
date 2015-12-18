@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var ImgAltIsDifferent = {
   run: function (test) {
     DOM.scry('img:not([src])', test.get('scope')).each(function () {

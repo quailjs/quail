@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var LabelMustBeUnique = {
   run: function (test) {
     var labels = {};
