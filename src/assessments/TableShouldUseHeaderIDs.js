@@ -19,7 +19,7 @@ var TableShouldUseHeaderIDs = {
         if (!tableFailed) {
           DOM.scry('td[header]', $table).each(function () {
             if (!tableFailed) {
-              $.each($(this).attr('header').split(' '), function (index, id) {
+              $(this).attr('header').split(' ').forEach(function (id, index) {
                 if (!DOM.scry('#' + id, $table).length) {
                   tableFailed = true;
                   test.add(Case({

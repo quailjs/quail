@@ -32,7 +32,7 @@ var ContentPositioningShouldNotChangeMeaning = {
       });
 
       positions.forEach(function () {
-        $.each(coordinates[this], function () {
+        coordinates[this].forEach(function (coord) {
           if (this > 2 && !failed) {
             failed = true;
             test.add(Case({
