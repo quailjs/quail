@@ -53,7 +53,7 @@ var AInPHasADistinctStyle = {
 
     test.get('scope').each(function () {
       var scope = $(this);
-      var anchors = scope.find('p a[href]:visible');
+      var anchors = DOM.scry('p a[href]:visible', scope);
 
       anchors.each(function () {
         var $this = $(this);

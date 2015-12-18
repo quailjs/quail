@@ -119,7 +119,7 @@ var LinkHasAUniqueContext = {
 
     test.get('scope').each(function () {
       var scope = $(this);
-      var $links = scope.find('a[href]:visible');
+      var $links = DOM.scry('a[href]:visible', scope);
       var linkMap = {};
 
       if ($links.length === 0) {

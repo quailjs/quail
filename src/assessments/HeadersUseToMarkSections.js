@@ -8,7 +8,7 @@ var HeadersUseToMarkSections = {
       });
       test.add(_case);
       var $paragraph = $(this);
-      $paragraph.find('strong:first, em:first, i:first, b:first').each(function () {
+      DOM.scry('strong:first, em:first, i:first, b:first', $paragraph).each(function () {
         _case.set({
           status: ($paragraph.text().trim() === $(this).text().trim()) ? 'failed' : 'passed'
         });
