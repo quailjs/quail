@@ -48,23 +48,31 @@ var LanguageChangesAreIdentified = {
         text = GetTextContentsComponent($element);
         failed = false;
 
-        $.each(LanguageComponent.scriptSingletons, function (code, regularExpression) {
-          if (code === currentLanguage) {
-            return;
+        var singletons = LanguageComponent.scriptSingletons;
+        for (var code in singletons) {
+          if (singletons.hasOwnProperty(code)) {
+            var regularExpression = singletons[code];
+            if (code === currentLanguage) {
+              return;
+            }
+            matches = text.match(regularExpression);
+            if (matches && matches.length && noCharactersMatch($element, code, matches, regularExpression)) {
+              test.add(Case({
+                element: self,
+                info: {
+                  language: code
+                },
+                status: 'failed'
+              }));
+              failed = true;
+            }
           }
-          matches = text.match(regularExpression);
-          if (matches && matches.length && noCharactersMatch($element, code, matches, regularExpression)) {
-            test.add(Case({
-              element: self,
-              info: {
-                language: code
-              },
-              status: 'failed'
-            }));
-            failed = true;
+        }
+        var scripts = LanguageComponent.scripts;
+        for (var code in scripts) {
+          if (scripts.hasOwnProperty(code)) {
+            var script = scripts[code];
           }
-        });
-        $.each(LanguageComponent.scripts, function (code, script) {
           if (script.languages.indexOf(currentLanguage) !== -1) {
             return;
           }
@@ -79,7 +87,7 @@ var LanguageChangesAreIdentified = {
             }));
             failed = true;
           }
-        });
+        }
         if (typeof guessLanguage !== 'undefined' && !DOM.scry('[lang]', $element).length && $element.text().trim().length > 400) {
           guessLanguage.info($element.text(), function (info) {
             if (info[0] !== currentLanguage) {

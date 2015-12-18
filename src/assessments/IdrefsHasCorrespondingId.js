@@ -7,7 +7,7 @@ var IdrefsHasCorrespondingId = {
       var attribute = [];
       var attributeList = ['headers', 'aria-controls', 'aria-describedby', 'aria-flowto', 'aria-labelledby', 'aria-owns'];
 
-      $.each(attributeList, function (index, item) {
+      attributeList.forEach(function (item, index) {
 
         var attr = $element.attr(item);
 
@@ -46,7 +46,7 @@ var IdrefsHasCorrespondingId = {
           var attributes = getAttribute($(this));
           var status = 'passed';
 
-          $.each(attributes, function (index, item) {
+          attributes.forEach(function (item, index) {
             if (item !== '' && $('#' + item).length === 0) {
               status = 'failed';
               return;

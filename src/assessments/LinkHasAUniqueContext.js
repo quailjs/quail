@@ -142,7 +142,10 @@ var LinkHasAUniqueContext = {
       });
 
       // Iterate over each item in the linkMap
-      $.each(linkMap, function (linkText, links) {
+      for (var linkText in linkMap) {
+        if (linkMap.hasOwnProperty(linkText)) {
+          var links = linkMap[linkText];
+        }
 
         // Link text is not unique, so the context should be checked
         while (links.length > 1) {
@@ -173,7 +176,7 @@ var LinkHasAUniqueContext = {
             status: 'passed'
           }));
         }
-      });
+      }
     });
   },
 

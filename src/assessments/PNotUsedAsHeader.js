@@ -23,7 +23,7 @@ var PNotUsedAsHeader = {
       if ($(this).text().search(/[\.!:;]/) < 1) {
         var priorParagraph = $paragraph.prev('p');
         // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
-        $.each(SuspectPHeaderTags, function (index, tag) {
+        SuspectPHeaderTags.forEach(function (tag, index) {
           if (DOM.scry(tag, $paragraph).length) {
             DOM.scry(tag, $paragraph).each(function () {
               if ($(this).text().trim() === $paragraph.text().trim()) {
@@ -37,7 +37,7 @@ var PNotUsedAsHeader = {
         });
         // Checking if previous paragraph has a different values for style properties given in SuspectPCSSStyles.
         if (priorParagraph.length) {
-          $.each(SuspectPCSSStyles, function (index, cssProperty) {
+          SuspectPCSSStyles.forEach(function (cssProperty, index) {
             if ($paragraph.css(cssProperty) !== priorParagraph.css(cssProperty)) {
               _case.set({
                 status: 'failed'

@@ -11,7 +11,7 @@ var SiteMap = {
     test.add(_case);
     DOM.scry('a', test.get('scope')).each(function () {
       var text = $(this).text().toLowerCase();
-      $.each(SiteMapStringsComponent, function (index, string) {
+      SiteMapStringsComponent.forEach(function (string, index) {
         if (text.search(string) > -1) {
           set = true;
           return;

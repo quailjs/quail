@@ -31,7 +31,7 @@ var ContentPositioningShouldNotChangeMeaning = {
         }
       });
 
-      $.each(positions, function () {
+      positions.forEach(function () {
         $.each(coordinates[this], function () {
           if (this > 2 && !failed) {
             failed = true;
