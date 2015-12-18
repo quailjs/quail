@@ -9,7 +9,7 @@ var SkipToContentLinkProvided = {
       var $local = $(this);
       var skipLinkFound = false;
 
-      $local.find('a[href*="#"]').each(function () {
+      DOM.scry('a[href*="#"]', $local).each(function () {
         if (skipLinkFound) {
           return;
         }
