@@ -2,7 +2,7 @@ var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 var TableShouldUseHeaderIDs = {
   run: function (test) {
-    test.get('$scope').find('table').each(function () {
+    test.get('scope').find('table').each(function () {
       var $table = $(this);
       var tableFailed = false;
       if (IsDataTableComponent($table)) {

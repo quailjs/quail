@@ -5,7 +5,7 @@ var TextStatisticsComponent = require('TextStatisticsComponent');
 var IsUnreadable = require('IsUnreadable');
 var DocumentIsWrittenClearly = {
   run: function (test) {
-    test.get('$scope')
+    test.get('scope')
       .find(TextSelectorComponent)
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);

@@ -6,8 +6,8 @@ var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var guessLanguage = require('guessLanguage/lib/guessLanguage');
 var LanguageChangesAreIdentified = {
   run: function (test) {
-    var $scope = test.get('$scope');
-    var currentLanguage = LanguageComponent.getDocumentLanguage($scope, true);
+    var scope = test.get('scope');
+    var currentLanguage = LanguageComponent.getDocumentLanguage(scope, true);
     var text, regularExpression, matches, $element, failed;
 
     var noCharactersMatch = function ($element, language, matches, regularExpression) {
@@ -33,10 +33,10 @@ var LanguageChangesAreIdentified = {
       if ($element.parents('[lang]').length) {
         return $element.parents('[lang]:first').attr('lang').trim().toLowerCase().split('-')[0];
       }
-      return LanguageComponent.getDocumentLanguage($scope, true);
+      return LanguageComponent.getDocumentLanguage(scope, true);
     };
 
-    $scope
+    scope
       .find(TextSelectorComponent)
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);

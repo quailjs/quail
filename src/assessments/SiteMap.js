@@ -6,10 +6,10 @@ var SiteMap = {
   run: function (test) {
     var set = false;
     var _case = Case({
-      element: test.get('$scope').get(0)
+      element: test.get('scope').get(0)
     });
     test.add(_case);
-    test.get('$scope').find('a').each(function () {
+    test.get('scope').find('a').each(function () {
       var text = $(this).text().toLowerCase();
       $.each(SiteMapStringsComponent, function (index, string) {
         if (text.search(string) > -1) {

@@ -12,7 +12,7 @@ var FormButtonsHaveValue = {
 
     var selector = 'input[type=button], input[type=submit], input[type=reset]';
 
-    this.get('$scope').each(function () {
+    this.get('scope').each(function () {
       var candidates = $(this).find(selector);
       if (!candidates.length) {
         test.add(Case({

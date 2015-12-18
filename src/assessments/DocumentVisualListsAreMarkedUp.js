@@ -22,7 +22,7 @@ var DocumentVisualListsAreMarkedUp = {
       '(' + itemStarters.join('|') + ')', // Followed by a character that could indicate a list
     'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
 
-    test.get('$scope')
+    test.get('scope')
       .find(TextSelectorComponent)
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);

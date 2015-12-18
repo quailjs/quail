@@ -12,7 +12,7 @@ var FramesAreUsedToGroupContent = {
 
     var selector = 'body:not(body:has(frameset))';
 
-    this.get('$scope').each(function () {
+    this.get('scope').each(function () {
       var candidates = $(this).find(selector);
       if (!candidates.length) {
         test.add(Case({

@@ -3,7 +3,7 @@ var Case = require('Case');
 var DOM = require('DOM');
 var TableLayoutHasNoCaption = {
   run: function (test) {
-    test.get('$scope').find('table').each(function () {
+    test.get('scope').find('table').each(function () {
       if (DOM.scry('caption', this).length) {
         if (!IsDataTableComponent($(this))) {
           test.add(Case({

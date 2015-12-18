@@ -1,7 +1,7 @@
 var Case = require('Case');
 var BlockquoteUseForQuotations = {
   run: function (test) {
-    test.get('$scope').find('p').each(function () {
+    test.get('scope').find('p').each(function () {
       var _case = Case({
         element: this
       });

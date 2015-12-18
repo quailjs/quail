@@ -49,7 +49,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
       });
     }
 
-    test.get('$scope').each(findAdjacent);
+    test.get('scope').each(findAdjacent);
   },
 
   meta: {

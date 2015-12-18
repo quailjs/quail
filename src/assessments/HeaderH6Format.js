@@ -12,7 +12,7 @@ var HeaderH6Format = {
 
     var selector = 'h6';
 
-    this.get('$scope').each(function () {
+    this.get('scope').each(function () {
       var candidates = $(this).find(selector);
       if (!candidates.length) {
         test.add(Case({

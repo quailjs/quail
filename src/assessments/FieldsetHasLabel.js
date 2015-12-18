@@ -14,7 +14,7 @@ var FieldsetHasLabel = {
 
     var selector = 'fieldset:not(fieldset:has(legend))';
 
-    this.get('$scope').each(function () {
+    this.get('scope').each(function () {
       var candidates = $(this).find(selector);
       if (!candidates.length) {
         test.add(Case({

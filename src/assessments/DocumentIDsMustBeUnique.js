@@ -2,7 +2,7 @@ var Case = require('Case');
 var DOM = require('DOM');
 var DocumentIDsMustBeUnique = {
   run: function (test) {
-    test.get('$scope').each(function () {
+    test.get('scope').each(function () {
       if ($(this).children().length === 0) {
         test.add(Case({
           element: this,
@@ -10,13 +10,13 @@ var DocumentIDsMustBeUnique = {
         }));
       }
     });
-    test.get('$scope').find(':not([id])').each(function () {
+    test.get('scope').find(':not([id])').each(function () {
       test.add(Case({
         element: this,
         status: 'inapplicable'
       }));
     });
-    test.get('$scope').each(function () {
+    test.get('scope').each(function () {
       var ids = {};
       DOM.scry('[id]', this).each(function () {
         var _case = Case({

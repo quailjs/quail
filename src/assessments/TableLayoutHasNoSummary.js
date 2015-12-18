@@ -3,7 +3,7 @@ var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var TableLayoutHasNoSummary = {
   run: function (test) {
-    test.get('$scope').each(function () {
+    test.get('scope').each(function () {
       var $local = $(this);
       $local.find('table[summary]').each(function () {
         var _case = test.add(Case({

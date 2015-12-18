@@ -4,7 +4,7 @@ var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent')
 var DOM = require('DOM');
 var ASuspiciousLinkText = {
   run: function (test) {
-    test.get('$scope').find('a').each(function () {
+    test.get('scope').find('a').each(function () {
       var _case = Case({
         element: this
       });

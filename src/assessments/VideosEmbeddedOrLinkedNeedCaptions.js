@@ -3,7 +3,7 @@ var VideoComponent = require('VideoComponent');
 var VideosEmbeddedOrLinkedNeedCaptions = {
   run: function (test) {
 
-    VideoComponent.findVideos(test.get('$scope'), function (element, pass) {
+    VideoComponent.findVideos(test.get('scope'), function (element, pass) {
       if (!pass) {
         test.add(Case({
           element: element[0],

@@ -12,7 +12,7 @@ var DocumentTitleDescribesDocument = {
 
     var selector = 'head title';
 
-    this.get('$scope').each(function () {
+    this.get('scope').each(function () {
       var candidates = $(this).find(selector);
       var status = (candidates.length === 1) ? 'passed' : 'failed';
 

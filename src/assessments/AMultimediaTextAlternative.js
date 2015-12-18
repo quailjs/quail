@@ -20,7 +20,7 @@ var AMultimediaTextAlternative = {
       'a[href$=".wmv"]'
     ].join(', ');
 
-    this.get('$scope').each(function () {
+    this.get('scope').each(function () {
       var candidates = $(this).find(selector);
       // Inapplicable.
       if (!candidates.length) {

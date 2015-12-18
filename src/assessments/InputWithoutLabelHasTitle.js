@@ -4,7 +4,7 @@ var DOM = require('DOM');
 var InputWithoutLabelHasTitle = {
   run: function (test) {
 
-    test.get('$scope').each(function () {
+    test.get('scope').each(function () {
 
       var testableElements = DOM.scry('input, select, textarea', this);
 
@@ -29,7 +29,7 @@ var InputWithoutLabelHasTitle = {
             });
             return;
           }
-          if (!test.get('$scope').find('label[for=' + $(this).attr('id') + ']').length &&
+          if (!test.get('scope').find('label[for=' + $(this).attr('id') + ']').length &&
             (!$(this).attr('title') || IsUnreadable($(this).attr('title')))) {
             _case.set({
               status: 'failed'

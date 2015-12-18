@@ -21,10 +21,10 @@ var FileHasLabel = {
       return labelsByFor;
     }
 
-    this.get('$scope').each(function () {
-      var $scope = $(this);
-      var files = $scope.find(sFiles);
-      var labels = $scope.find(sLabels);
+    this.get('scope').each(function () {
+      var scope = $(this);
+      var files = scope.find(sFiles);
+      var labels = scope.find(sLabels);
 
       if (files.length === 0) {
         test.add(Case({

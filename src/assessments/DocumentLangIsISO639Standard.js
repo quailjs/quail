@@ -2,9 +2,9 @@ var Case = require('Case');
 var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
 var DocumentLangIsISO639Standard = {
   run: function (test) {
-    var $element = (test.get('$scope').is('html')) ?
-      test.get('$scope') :
-      test.get('$scope').find('html').first();
+    var $element = (test.get('scope').is('html')) ?
+      test.get('scope') :
+      test.get('scope').find('html').first();
 
     var _case = Case({
       element: $element[0]

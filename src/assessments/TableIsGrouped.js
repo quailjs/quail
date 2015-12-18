@@ -12,7 +12,7 @@ var TableIsGrouped = {
 
     var selector = 'table:not(table:has(thead), table:has(tfoot))';
 
-    this.get('$scope').each(function () {
+    this.get('scope').each(function () {
       var candidates = $(this).find(selector);
       if (!candidates.length) {
         test.add(Case({

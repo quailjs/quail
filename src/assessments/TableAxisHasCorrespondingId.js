@@ -2,7 +2,7 @@ var Case = require('Case');
 var DOM = require('DOM');
 var TableAxisHasCorrespondingId = {
   run: function (test) {
-    test.get('$scope').find('[axis]').each(function () {
+    test.get('scope').find('[axis]').each(function () {
       var _case = Case({
         element: this
       });

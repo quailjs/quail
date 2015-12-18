@@ -1,7 +1,7 @@
 var Case = require('Case');
 var LabelsAreAssignedToAnInput = {
   run: function (test) {
-    test.get('$scope').find('label').each(function () {
+    test.get('scope').find('label').each(function () {
       var _case = Case({
         element: this
       });
@@ -12,8 +12,8 @@ var LabelsAreAssignedToAnInput = {
         });
       }
       else {
-        if (!test.get('$scope').find('#' + $(this).attr('for')).length ||
-           !test.get('$scope').find('#' + $(this).attr('for')).is(':input')) {
+        if (!test.get('scope').find('#' + $(this).attr('for')).length ||
+           !test.get('scope').find('#' + $(this).attr('for')).is(':input')) {
           _case.set({
             status: 'failed'
           });

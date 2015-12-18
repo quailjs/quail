@@ -2,7 +2,7 @@ var Case = require('Case');
 var TextStatisticsComponent = require('TextStatisticsComponent');
 var ParagraphIsWrittenClearly = {
   run: function (test) {
-    test.get('$scope').find('p').each(function () {
+    test.get('scope').find('p').each(function () {
       var _case = Case({
         element: this
       });

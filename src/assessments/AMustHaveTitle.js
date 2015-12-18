@@ -2,7 +2,7 @@ var Case = require('Case');
 var DOM = require('DOM');
 var AMustHaveTitle = {
   run: function (test) {
-    this.get('$scope').each(function () {
+    this.get('scope').each(function () {
       var links = DOM.scry('a', this);
 
       links.each(function (i, link) {

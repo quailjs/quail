@@ -12,7 +12,7 @@ var HeaderH4Format = {
 
     var selector = 'h4';
 
-    this.get('$scope').each(function () {
+    this.get('scope').each(function () {
       var candidates = $(this).find(selector);
       if (!candidates.length) {
         test.add(Case({

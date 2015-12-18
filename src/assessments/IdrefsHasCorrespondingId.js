@@ -18,7 +18,7 @@ var IdrefsHasCorrespondingId = {
       return attribute.split(/\s+/);
     }
 
-    test.get('$scope').each(function () {
+    test.get('scope').each(function () {
       var testableElements = $(this).find(
         'td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], ' +
         '[aria-labelledby], [aria-owns]');

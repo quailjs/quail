@@ -5,7 +5,7 @@ var TextSelectorComponent = require('TextSelectorComponent');
 
 var TextIsNotSmall = {
   run: function (test) {
-    test.get('$scope')
+    test.get('scope')
       .find(TextSelectorComponent)
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);

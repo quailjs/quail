@@ -2,7 +2,7 @@ var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
 var AImgAltNotRepetitive = {
   run: function (test) {
-    test.get('$scope').find('a img[alt]').each(function () {
+    test.get('scope').find('a img[alt]').each(function () {
       var _case = test.add(Case({
         element: this
       }));

@@ -5,13 +5,13 @@ var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageDirectionPunctuation = {
   run: function (test) {
-    var $scope = test.get('$scope');
+    var scope = test.get('scope');
     var punctuation = {};
     var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
-    var currentDirection = ($scope.attr('dir')) ? $scope.attr('dir').toLowerCase() : 'ltr';
+    var currentDirection = (scope.attr('dir')) ? scope.attr('dir').toLowerCase() : 'ltr';
     var oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
     var textDirection = LanguageComponent.textDirection;
-    $scope.each(function () {
+    scope.each(function () {
       var $local = $(this);
       $local
         .find(TextSelectorComponent)

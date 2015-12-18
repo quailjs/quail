@@ -9,7 +9,7 @@ var ALinksToMultiMediaRequireTranscript = {
       'a[href$=".aif"]'
     ].join(', ');
 
-    this.get('$scope').each(function () {
+    this.get('scope').each(function () {
       var candidates = $(this).find(selector);
       // Inapplicable.
       if (!candidates.length) {

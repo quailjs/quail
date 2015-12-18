@@ -4,7 +4,7 @@ var DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceNotUsedForFormatting = {
   run: function (test) {
-    test.get('$scope')
+    test.get('scope')
       .find(TextSelectorComponent)
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);

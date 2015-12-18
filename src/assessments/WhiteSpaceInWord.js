@@ -4,7 +4,7 @@ var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceInWord = {
   run: function (test) {
     var whitespaceGroup, nonWhitespace;
-    test.get('$scope')
+    test.get('scope')
       .find(TextSelectorComponent)
       .filter(function (index, element) {
         return TextNodeFilterComponent(element);

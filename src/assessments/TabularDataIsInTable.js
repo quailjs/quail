@@ -1,7 +1,7 @@
 var Case = require('Case');
 var TabularDataIsInTable = {
   run: function (test) {
-    test.get('$scope').find('pre').each(function () {
+    test.get('scope').find('pre').each(function () {
       if ($(this).html().search('\t') >= 0) {
         test.add(Case({
           element: this,

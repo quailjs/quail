@@ -5,7 +5,7 @@ var FormWithRequiredLabel = {
     var redundant = RedundantStringsComponent;
     var lastStyle, currentStyle = false;
     redundant.required[redundant.required.indexOf('*')] = /\*/g;
-    test.get('$scope').each(function () {
+    test.get('scope').each(function () {
       var $local = $(this);
       $local.find('label').each(function () {
         var text = $(this).text().toLowerCase();
@@ -14,7 +14,7 @@ var FormWithRequiredLabel = {
           element: this
         }));
         for (var word in redundant.required) {
-          if (text.search(word) >= 0 && !test.get('$scope').find('#' + $label.attr('for')).attr('aria-required')) {
+          if (text.search(word) >= 0 && !test.get('scope').find('#' + $label.attr('for')).attr('aria-required')) {
             _case.set({
               status: 'failed'
             });

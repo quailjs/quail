@@ -1,14 +1,14 @@
 var Case = require('Case');
 var ImgAltIsDifferent = {
   run: function (test) {
-    test.get('$scope').find('img:not([src])').each(function () {
+    test.get('scope').find('img:not([src])').each(function () {
       var _case = Case({
         element: this,
         status: 'inapplicable'
       });
       test.add(_case);
     });
-    test.get('$scope').find('img[alt][src]').each(function () {
+    test.get('scope').find('img[alt][src]').each(function () {
       var _case = Case({
         element: this
       });

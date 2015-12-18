@@ -42,7 +42,7 @@ var LanguageDirAttributeIsUsed = {
       _case.set({status: (matches > 0) ? 'failed' : 'passed'});
     }
 
-    test.get('$scope').each(function () {
+    test.get('scope').each(function () {
       $(this)
         .find(TextSelectorComponent)
         .filter(function (index, element) {

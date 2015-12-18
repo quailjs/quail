@@ -2,18 +2,18 @@ var Case = require('Case');
 var ImgMapAreasHaveDuplicateLink = {
   run: function (test) {
     var links = {};
-    test.get('$scope').find('a').each(function () {
+    test.get('scope').find('a').each(function () {
       links[$(this).attr('href')] = $(this).attr('href');
     });
-    test.get('$scope').find('img[usemap]').each(function () {
+    test.get('scope').find('img[usemap]').each(function () {
       var _case = Case({
         element: this
       });
       test.add(_case);
       var $image = $(this);
-      var $map = test.get('$scope').find($image.attr('usemap'));
+      var $map = test.get('scope').find($image.attr('usemap'));
       if (!$map.length) {
-        $map = test.get('$scope').find('map[name="' + $image.attr('usemap').replace('#', '') + '"]');
+        $map = test.get('scope').find('map[name="' + $image.attr('usemap').replace('#', '') + '"]');
       }
       if ($map.length) {
         var failed = false;

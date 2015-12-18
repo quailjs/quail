@@ -2,7 +2,7 @@ var Case = require('Case');
 var IsUnreadable = require('IsUnreadable');
 var ImgImportantNoSpacerAlt = {
   run: function (test) {
-    test.get('$scope').find('img[alt]').each(function () {
+    test.get('scope').find('img[alt]').each(function () {
       var width = ($(this).width()) ? $(this).width() : parseInt($(this).attr('width'), 10);
       var height = ($(this).height()) ? $(this).height() : parseInt($(this).attr('height'), 10);
       var _case = Case({

@@ -2,7 +2,7 @@ var Case = require('Case');
 var DOM = require('DOM');
 var DefinitionListsAreUsed = {
   run: function (test) {
-    test.get('$scope').find('dl').each(function () {
+    test.get('scope').find('dl').each(function () {
       var _case = Case({
         element: this
       });
@@ -11,7 +11,7 @@ var DefinitionListsAreUsed = {
         status: 'inapplicable'
       });
     });
-    test.get('$scope').find('p, li').each(function () {
+    test.get('scope').find('p, li').each(function () {
       var _case = Case({
         element: this
       });

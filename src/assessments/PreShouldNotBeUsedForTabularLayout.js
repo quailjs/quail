@@ -1,7 +1,7 @@
 var Case = require('Case');
 var PreShouldNotBeUsedForTabularLayout = {
   run: function (test) {
-    test.get('$scope').find('pre').each(function () {
+    test.get('scope').find('pre').each(function () {
       var _case = Case({
         element: this
       });

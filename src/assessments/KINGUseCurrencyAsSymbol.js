@@ -27,7 +27,7 @@ var KINGUseCurrencyAsSymbol = {
         status: currencyReg.test(text) ? 'failed' : 'passed'
       });
     }
-    test.get('$scope').find('p').each(testCurrencyFormat);
+    test.get('scope').find('p').each(testCurrencyFormat);
   },
 
   meta: {

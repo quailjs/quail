@@ -1,7 +1,7 @@
 var Case = require('Case');
 var TabIndexFollowsLogicalOrder = {
   run: function (test) {
-    test.get('$scope').each(function () {
+    test.get('scope').each(function () {
       var $local = $(this);
       var index = 0;
       $local.find('[tabindex]').each(function () {

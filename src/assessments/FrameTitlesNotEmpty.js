@@ -12,7 +12,7 @@ var FrameTitlesNotEmpty = {
 
     var selector = 'frame:not(frame[title]), frame[title=""], iframe:not(iframe[title]), iframe[title=""]';
 
-    this.get('$scope').each(function () {
+    this.get('scope').each(function () {
       var candidates = $(this).find(selector);
       if (!candidates.length) {
         test.add(Case({

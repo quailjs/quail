@@ -4,10 +4,10 @@ var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageUnicodeDirection = {
   run: function (test) {
-    var $scope = test.get('$scope');
+    var scope = test.get('scope');
     var textDirection = LanguageComponent.textDirection;
     var textDirectionChanges = LanguageComponent.textDirectionChanges;
-    $scope.each(function () {
+    scope.each(function () {
       var $local = $(this);
       $local
         .find(TextSelectorComponent)

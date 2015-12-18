@@ -7,7 +7,7 @@ var VideoMayBePresent = {
     'mp4', 'm4p', 'm4v', 'mpg', 'mp2', 'mpeg', 'mpg', 'mpe', 'mpv', 'm2v', '3gp', '3g2'];
     var videoHosts = ['//www.youtube.com/embed/', '//player.vimeo.com/video/'];
 
-    test.get('$scope').each(function () {
+    test.get('scope').each(function () {
       var $this = $(this);
       var hasCase = false; // Test if a case has been created
 
