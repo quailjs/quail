@@ -5,7 +5,7 @@ var TableLayoutHasNoSummary = {
   run: function (test) {
     test.get('scope').each(function () {
       var $local = $(this);
-      $local.find('table[summary]').each(function () {
+      DOM.scry('table[summary]', $local).each(function () {
         var _case = test.add(Case({
           element: this
         }));

@@ -17,7 +17,7 @@ var ImgMapAreasHaveDuplicateLink = {
       }
       if ($map.length) {
         var failed = false;
-        $map.find('area').each(function () {
+        DOM.scry('area', $map).each(function () {
           if (typeof links[$(this).attr('href')] === 'undefined') {
             failed = true;
           }

@@ -82,7 +82,7 @@ var AInPHasADistinctStyle = {
         else if (elmHasDistinctPosition($this)) {
           _case.set('status', 'passed');
         }
-        else if ($this.find('img').length > 0) {
+        else if (DOM.scry('img', $this).length > 0) {
           _case.set('status', 'passed');
         }
         else if ($parent.text().trim() === aText &&

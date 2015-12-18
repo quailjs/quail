@@ -23,8 +23,8 @@ var FileHasLabel = {
 
     this.get('scope').each(function () {
       var scope = $(this);
-      var files = scope.find(sFiles);
-      var labels = scope.find(sLabels);
+      var files = DOM.scry(sFiles, scope);
+      var labels = DOM.scry(sLabels, scope);
 
       if (files.length === 0) {
         test.add(Case({

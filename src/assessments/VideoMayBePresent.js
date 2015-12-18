@@ -22,7 +22,7 @@ var VideoMayBePresent = {
 
       // Links refering to files with an video extensions are probably video
       // though the file may not exist.
-      $this.find('a[href]').each(function () {
+      DOM.scry('a[href]', $this).each(function () {
         var $this = $(this);
         var extension = $this.attr('href').split('.').pop();
         if ($.inArray(extension, videoExtensions) !== -1) {
@@ -35,7 +35,7 @@ var VideoMayBePresent = {
       });
 
       // some iframes with URL's of known video providers are also probably videos
-      $this.find('iframe').each(function () {
+      DOM.scry('iframe', $this).each(function () {
         if (this.src.indexOf(videoHosts[0]) !== -1 ||
         this.src.indexOf(videoHosts[1]) !== -1) {
           hasCase = true;

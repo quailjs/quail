@@ -5,7 +5,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
     function findAdjacent (index, element) {
       var $element = $(element);
       // Find all the links
-      var $links = $element.find('a');
+      var $links = DOM.scry('a', $element);
       // Sort them into singletons and coupletons.
       var $singletons = [];
       var $coupletons = [];

@@ -6,7 +6,7 @@ var ALinkTextDoesNotBeginWithRedundantWord = {
       var self = this;
       var $link = $(this);
       var text = '';
-      var $img = $link.find('img[alt]');
+      var $img = DOM.scry('img[alt]', $link);
       if ($img.length) {
         text = text + $img.eq(0).attr('alt');
       }

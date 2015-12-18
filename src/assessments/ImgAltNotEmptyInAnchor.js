@@ -12,7 +12,7 @@ var ImgAltNotEmptyInAnchor = {
       test.add(_case);
 
       // Concat all alt attributes of images to the text of the paragraph
-      $a.find('img[alt]').each(function () {
+      DOM.scry('img[alt]', $a).each(function () {
         text += ' ' + $(this).attr('alt');
       });
 

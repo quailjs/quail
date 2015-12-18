@@ -22,7 +22,7 @@ var HeadersUseToMarkSections = {
       test.add(_case);
       var $list = $(this);
       if ($list.prevAll(':header').length ||
-        $list.find('li').length !== $list.find('li:has(a)').length) {
+        DOM.scry('li', $list).length !== $list.find('li:has(a)').length) {
         _case.set({
           status: 'passed'
         });

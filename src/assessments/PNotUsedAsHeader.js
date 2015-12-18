@@ -23,8 +23,8 @@ var PNotUsedAsHeader = {
         var priorParagraph = $paragraph.prev('p');
         // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
         $.each(SuspectPHeaderTags, function (index, tag) {
-          if ($paragraph.find(tag).length) {
-            $paragraph.find(tag).each(function () {
+          if (DOM.scry(tag, $paragraph).length) {
+            DOM.scry(tag, $paragraph).each(function () {
               if ($(this).text().trim() === $paragraph.text().trim()) {
                 _case.set({
                   status: 'failed'

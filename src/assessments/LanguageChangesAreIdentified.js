@@ -80,7 +80,7 @@ var LanguageChangesAreIdentified = {
             failed = true;
           }
         });
-        if (typeof guessLanguage !== 'undefined' && !$element.find('[lang]').length && $element.text().trim().length > 400) {
+        if (typeof guessLanguage !== 'undefined' && !DOM.scry('[lang]', $element).length && $element.text().trim().length > 400) {
           guessLanguage.info($element.text(), function (info) {
             if (info[0] !== currentLanguage) {
               test.add(Case({

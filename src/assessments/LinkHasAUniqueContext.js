@@ -111,7 +111,7 @@ var LinkHasAUniqueContext = {
      */
     function getLinkText ($link) {
       var text = $link.text();
-      $link.find('img[alt]').each(function () {
+      DOM.scry('img[alt]', $link).each(function () {
         text += ' ' + this.alt.trim();
       });
       return simplifyText(text);

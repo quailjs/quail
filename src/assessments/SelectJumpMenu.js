@@ -4,11 +4,11 @@ var DOM = require('DOM');
 var SelectJumpMenu = {
   run: function (test) {
     var scope = test.get('scope');
-    if (scope.find('select').length === 0) {
+    if (DOM.scry('select', scope).length === 0) {
       return;
     }
 
-    scope.find('select').each(function () {
+    DOM.scry('select', scope).each(function () {
       if (DOM.scry(':submit', this).parent('form').length === 0 &&
           HasEventListenerComponent($(this), 'change')) {
         test.add(Case({

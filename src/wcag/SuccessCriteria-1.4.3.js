@@ -28,7 +28,7 @@ var SuccessCriteriaP1G4C3 = (function () {
     // then we have the necessary tests to evaluate this success criteria.
     if (criteriaTests.length === requiredTests.length) {
       // Find the tests to evaluate.
-      var cssTextHasContrast = tests.find('cssTextHasContrast');
+      var cssTextHasContrast = DOM.scry('cssTextHasContrast', tests);
       // Cycle through the cases in the Success Criteria.
       sc.each(function (index, _case) {
         var selector = _case.get('selector');

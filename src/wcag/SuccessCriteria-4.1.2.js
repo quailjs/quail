@@ -29,9 +29,9 @@ var SuccessCriteriaP4G1C2 = (function () {
   //   // then we have the necessary tests to evaluate this success criteria.
   //   if (criteriaTests.length === requiredTests.length) {
   //     // Find the tests to evaluate.
-  //     var labelsAreAssignedToAnInput = tests.find('labelsAreAssignedToAnInput');
-  //     var labelMustBeUnique = tests.find('labelMustBeUnique');
-  //     var inputWithoutLabelHasTitle = tests.find('inputWithoutLabelHasTitle');
+  //     var labelsAreAssignedToAnInput = DOM.scry('labelsAreAssignedToAnInput', tests);
+  //     var labelMustBeUnique = DOM.scry('labelMustBeUnique', tests);
+  //     var inputWithoutLabelHasTitle = DOM.scry('inputWithoutLabelHasTitle', tests);
 
   //     // Cycle through the cases in the Success Criteria.
   //     sc.each(function (index, _case) {

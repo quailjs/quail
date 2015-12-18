@@ -6,7 +6,7 @@ var TableShouldUseHeaderIDs = {
       var $table = $(this);
       var tableFailed = false;
       if (IsDataTableComponent($table)) {
-        $table.find('th').each(function () {
+        DOM.scry('th', $table).each(function () {
           if (!tableFailed && !$(this).attr('id')) {
             tableFailed = true;
             test.add(Case({
@@ -16,7 +16,7 @@ var TableShouldUseHeaderIDs = {
           }
         });
         if (!tableFailed) {
-          $table.find('td[header]').each(function () {
+          DOM.scry('td[header]', $table).each(function () {
             if (!tableFailed) {
               $.each($(this).attr('header').split(' '), function (index, id) {
                 if (!$table.find('#' + id).length) {

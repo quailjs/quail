@@ -17,7 +17,7 @@ var AudioMayBePresent = {
       });
 
       // Links refering to files with an audio extensions are good indicators too
-      $this.find('a[href]').each(function () {
+      DOM.scry('a[href]', $this).each(function () {
         var $this = $(this);
         var extension = $this.attr('href').split('.').pop();
         if ($.inArray(extension, audioExtensions) !== -1) {
