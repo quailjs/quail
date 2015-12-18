@@ -1,6 +1,5 @@
 var Case = require('Case');
 const DOM = require('DOM');
-var DOM = require('DOM');
 var HeadersUseToMarkSections = {
   run: function (test) {
     DOM.scry('p', test.get('scope')).each(function () {

@@ -2,7 +2,6 @@ var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
 const DOM = require('DOM');
 var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
-var DOM = require('DOM');
 var ASuspiciousLinkText = {
   run: function (test) {
     DOM.scry('a', test.get('scope')).each(function () {

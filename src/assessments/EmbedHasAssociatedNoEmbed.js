@@ -1,6 +1,5 @@
 var Case = require('Case');
 const DOM = require('DOM');
-var DOM = require('DOM');
 var EmbedHasAssociatedNoEmbed = {
   run: function (test) {
     DOM.scry('embed', test.get('scope')).each(function () {

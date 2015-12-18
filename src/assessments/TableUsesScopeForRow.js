@@ -1,6 +1,5 @@
 var Case = require('Case');
 const DOM = require('DOM');
-var DOM = require('DOM');
 var TableUsesScopeForRow = {
   run: function (test) {
     DOM.scry('table', test.get('scope')).each(function () {

@@ -1,6 +1,5 @@
 var Case = require('Case');
 const DOM = require('DOM');
-var DOM = require('DOM');
 var AMustHaveTitle = {
   run: function (test) {
     this.get('scope').each(function () {

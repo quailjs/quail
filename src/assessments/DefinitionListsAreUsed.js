@@ -1,6 +1,5 @@
 var Case = require('Case');
 const DOM = require('DOM');
-var DOM = require('DOM');
 var DefinitionListsAreUsed = {
   run: function (test) {
     DOM.scry('dl', test.get('scope')).each(function () {

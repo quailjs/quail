@@ -1,7 +1,6 @@
 var Case = require('Case');
 const DOM = require('DOM');
 var SiteMapStringsComponent = require('SiteMapStringsComponent');
-var DOM = require('DOM');
 
 var SiteMap = {
   run: function (test) {

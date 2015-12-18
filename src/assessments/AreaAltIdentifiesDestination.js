@@ -7,7 +7,6 @@
  */
 var Case = require('Case');
 const DOM = require('DOM');
-var DOM = require('DOM');
 
 var AreaAltIdentifiesDestination = {
   run: function (test, options) {

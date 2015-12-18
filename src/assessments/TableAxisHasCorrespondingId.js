@@ -1,6 +1,5 @@
 var Case = require('Case');
 const DOM = require('DOM');
-var DOM = require('DOM');
 var TableAxisHasCorrespondingId = {
   run: function (test) {
     DOM.scry('[axis]', test.get('scope')).each(function () {

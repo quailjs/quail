@@ -1,7 +1,6 @@
 var Case = require('Case');
 const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
-var DOM = require('DOM');
 var InputWithoutLabelHasTitle = {
   run: function (test) {
 

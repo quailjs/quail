@@ -1,7 +1,6 @@
 var Case = require('Case');
 const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
-var DOM = require('DOM');
 var ALinkWithNonText = {
   run: function (test) {
     DOM.scry('a', test.get('scope')).each(function () {

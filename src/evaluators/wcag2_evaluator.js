@@ -297,7 +297,6 @@ page.onLoadFinished = function (status) {
   var callPhantom = window && window.callPhantom || function () {};
   if (status === 'success') {
     console.log('Page opened successfully: ' + address);
-    page.injectJs(nodeModulesPath + '/jquery/dist/jquery.min.js');
     page.injectJs(distPath + '/quail.jquery.js');
 
     // Run the evaluation.
