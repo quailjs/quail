@@ -7,7 +7,7 @@ var NewWindowIsOpened = {
     var _case;
 
     window.open = function (event) {
-      test.each(function (index, _case) {
+      test.forEach(function (_case) {
         var href = _case.get('element').href;
         if (href.indexOf(event) > -1) {
           _case.set('status', 'failed');

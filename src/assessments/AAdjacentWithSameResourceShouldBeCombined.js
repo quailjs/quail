@@ -11,7 +11,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
       var $singletons = [];
       var $coupletons = [];
 
-      $links.each(function (index, link) {
+      $links.forEach(function (link) {
         var $link = $(link);
         if ($link.next().is('a')) {
           $coupletons.push($link);

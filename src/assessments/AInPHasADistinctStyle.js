@@ -53,7 +53,6 @@ var AInPHasADistinctStyle = {
     var allowedPText = /^([\s|-]|>|<|\\|\/|&(gt|lt);)*$/i;
 
     test.get('scope').forEach(function (scope) {
-      var scope = $(this);
       var anchors = DOM.scry('p a[href]:visible', scope);
 
       anchors.each(function () {

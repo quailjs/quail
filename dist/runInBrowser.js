@@ -4,8 +4,7 @@
 var Case = require('Case');
 var DOM = require('DOM');
 var AcronymComponent = function AcronymComponent(test) {
-  test.get('scope').each(function () {
-    var scope = $(this);
+  test.get('scope').forEach(function (scope) {
     var alreadyReported = {};
     var predefined = {};
 
@@ -624,7 +623,7 @@ var ColorComponent = (function () {
     for (var selector in groupsBySelector) {
       if (groupsBySelector.hasOwnProperty(selector)) {
         var cases = groupsBySelector[selector];
-        cases.each(function (index, _case) {
+        cases.forEach(function (_case) {
           if (_case.get('status') === passed) {
             // This can just be an empty string. We only need the passed hash
             // to contain keys, not values.
@@ -805,8 +804,8 @@ var Case = require('Case');
 var DOM = require('DOM');
 var HeadingLevelComponent = function HeadingLevelComponent(test, options) {
   var priorLevel = false;
-  DOM.scry(':header', test.get('scope')).each(function () {
-    var level = parseInt($(this).get(0).tagName.substr(-1, 1), 10);
+  DOM.scry(':header', test.get('scope')).forEach(function (element) {
+    var level = parseInt(element.tagName.substr(-1, 1), 10);
     if (priorLevel === options.headingLevel && level > priorLevel + 1) {
       test.add(Case({
         element: this,
@@ -814,7 +813,7 @@ var HeadingLevelComponent = function HeadingLevelComponent(test, options) {
       }));
     } else {
       test.add(Case({
-        element: this,
+        element: element,
         status: 'passed'
       }));
     }
@@ -1060,26 +1059,26 @@ var PlaceholderComponent = function PlaceholderComponent(test, options) {
     }));
   };
 
-  DOM.scry(options.selector, test.get('scope')).each(function () {
+  DOM.scry(options.selector, test.get('scope')).forEach(function (element) {
     var text = '';
-    if ($(this).css('display') === 'none' && !$(this).is('title')) {
-      resolve(this, 'inapplicable');
+    if (element.style.display === 'none' && !$(element).is('title')) {
+      resolve(element, 'inapplicable');
       return;
     }
     if (typeof options.attribute !== 'undefined') {
-      if ((typeof $(this).attr(options.attribute) === 'undefined' || options.attribute === 'tabindex' && $(this).attr(options.attribute) <= 0) && !options.content) {
-        resolve(this, 'failed');
+      if ((typeof $(element).attr(options.attribute) === 'undefined' || options.attribute === 'tabindex' && $(element).attr(options.attribute) <= 0) && !options.content) {
+        resolve(element, 'failed');
         return;
       } else {
-        if ($(this).attr(options.attribute) && $(this).attr(options.attribute) !== 'undefined') {
-          text += $(this).attr(options.attribute);
+        if ($(element).attr(options.attribute) && $(element).attr(options.attribute) !== 'undefined') {
+          text += $(element).attr(options.attribute);
         }
       }
     }
     if (typeof options.attribute === 'undefined' || !options.attribute || options.content) {
-      text += $(this).text();
-      DOM.scry('img[alt]', $(this)).each(function () {
-        text += $(this).attr('alt');
+      text += $(element).text();
+      DOM.scry('img[alt]', $(element)).each(function () {
+        text += $(element).attr('alt');
       });
     }
     if (typeof text === 'string' && text.length > 0) {
@@ -1087,19 +1086,19 @@ var PlaceholderComponent = function PlaceholderComponent(test, options) {
       var regex = /^([0-9]*)(k|kb|mb|k bytes|k byte)$/g;
       var regexResults = regex.exec(text.toLowerCase());
       if (regexResults && regexResults[0].length) {
-        resolve(this, 'failed');
+        resolve(element, 'failed');
       } else if (options.empty && IsUnreadable(text)) {
-        resolve(this, 'failed');
+        resolve(element, 'failed');
       } else if (PlaceholdersStringsComponent.indexOf(text) > -1) {
-        resolve(this, 'failed');
+        resolve(element, 'failed');
       }
       // It passes.
       else {
-          resolve(this, 'passed');
+          resolve(element, 'passed');
         }
     } else {
       if (options.empty && typeof text !== 'number') {
-        resolve(this, 'failed');
+        resolve(element, 'failed');
       }
     }
   });
@@ -2021,16 +2020,6 @@ var Test = (function () {
     length: 0,
     // Details of the test.
     attributes: null,
-    // Execute a callback for every element in the matched set.
-    each: function each(iterator) {
-      var args = [].slice.call(arguments, 1);
-      for (var i = 0, len = this.length; i < len; ++i) {
-        args.unshift(this[i]);
-        args.unshift(i);
-        iterator.apply(this[i], args);
-      }
-      return this;
-    },
     get: function get(attr) {
       return this.attributes[attr];
     },
@@ -2135,7 +2124,7 @@ var Test = (function () {
       for (var i = 0, il = statuses.length; i < il; ++i) {
         var status = statuses[i];
         // Loop through the cases.
-        this.each(function (index, _case) {
+        this.forEach(function (_case) {
           var caseStatus = _case.get('status');
           if (caseStatus === status) {
             test.add(_case);
@@ -2187,7 +2176,7 @@ var Test = (function () {
     groupCasesBySelector: function groupCasesBySelector() {
       var casesBySelector = {};
       // Loop through the cases.
-      this.each(function (index, _case) {
+      this.forEach(function (_case) {
         var selector = _case.get('selector');
         if (!casesBySelector[selector]) {
           casesBySelector[selector] = new Test();
@@ -2207,7 +2196,7 @@ var Test = (function () {
     groupCasesByHtml: function groupCasesByHtml() {
       var casesByHtml = {};
       // Loop through the cases.
-      this.each(function (index, _case) {
+      this.forEach(function (_case) {
         var html = _case.get('html');
         if (!casesByHtml[html]) {
           casesByHtml[html] = new Test();
@@ -2294,9 +2283,10 @@ var Test = (function () {
         });
       }
     },
+    concat: [].concat,
+    forEach: [].forEach,
     push: [].push,
     sort: [].sort,
-    concat: [].concat,
     splice: [].splice
   };
 
@@ -2310,7 +2300,7 @@ var Test = (function () {
     complete = typeof complete === 'undefined' ? true : complete;
     // @todo, this iteration would be faster with _.findWhere, that breaks on
     // the first match.
-    this.each(function (index, _case) {
+    this.forEach(function (_case) {
       if (!_case.get('status')) {
         complete = false;
       }
@@ -2425,7 +2415,7 @@ var TestCollection = (function () {
     run: function run(callbacks) {
       var self = this;
       callbacks = callbacks || {};
-      this.each(function (index, test) {
+      this.forEach(function (test) {
         // Allow a prefilter to remove a case.
         if (callbacks.preFilter) {
           self.listenTo(test, 'resolve', function (eventName, test, _case) {
@@ -2459,7 +2449,7 @@ var TestCollection = (function () {
       this.testsComplete = debounce(testsComplete.bind(this), 500);
 
       // Invoke each test.
-      this.each(function (index, test) {
+      this.forEach(function (test) {
         test.invoke();
       });
 
@@ -2467,22 +2457,6 @@ var TestCollection = (function () {
       // completing in the off chance that no Tests are run.
       this.testsComplete();
 
-      return this;
-    },
-    /**
-     * Execute a callback for every element in the matched set.
-     */
-    each: function each(iterator) {
-      var args = [].slice.call(arguments, 1);
-      for (var i = 0, len = this.length; i < len; ++i) {
-        args.unshift(this[i]);
-        args.unshift(i);
-        var cont = iterator.apply(this[i], args);
-        // Allow an iterator to break from the loop.
-        if (cont === false) {
-          break;
-        }
-      }
       return this;
     },
     /**
@@ -2516,7 +2490,7 @@ var TestCollection = (function () {
           function findAllTestsForTechnique(guidelineName, sectionId, techniqueName) {
             // Return a TestCollection instance.
             var tests = new TestCollection();
-            this.each(function (index, test) {
+            this.forEach(function (test) {
               // Get the configured guidelines for the test.
               var guidelines = test.get('guidelines');
               // If this test is configured for this section and it has
@@ -2566,7 +2540,7 @@ var TestCollection = (function () {
       for (var i = 0, il = statuses.length; i < il; ++i) {
         var status = statuses[i];
         // Loop through the tests.
-        this.each(function (index, test) {
+        this.forEach(function (test) {
           var testStatus = test.get('status');
           if (testStatus === status) {
             tests.add(test);
@@ -2622,6 +2596,7 @@ var TestCollection = (function () {
         });
       }
     },
+    forEach: [].forEach,
     push: [].push,
     sort: [].sort,
     splice: [].splice
@@ -2637,7 +2612,7 @@ var TestCollection = (function () {
     var complete = true;
     // @todo, this iteration would be faster with _.findWhere, that breaks on
     // the first match.
-    this.each(function (index, test) {
+    this.forEach(function (test) {
       if (!test.get('complete')) {
         complete = false;
       }
@@ -8048,7 +8023,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
       var $singletons = [];
       var $coupletons = [];
 
-      $links.each(function (index, link) {
+      $links.forEach(function (link) {
         var $link = $(link);
         if ($link.next().is('a')) {
           $coupletons.push($link);
@@ -8228,8 +8203,7 @@ var AInPHasADistinctStyle = {
     // Ignore links where the p only contains white space, <, >, |, \, / and - chars
     var allowedPText = /^([\s|-]|>|<|\\|\/|&(gt|lt);)*$/i;
 
-    test.get('scope').each(function () {
-      var scope = $(this);
+    test.get('scope').forEach(function (scope) {
       var anchors = DOM.scry('p a[href]:visible', scope);
 
       anchors.each(function () {
@@ -9570,7 +9544,7 @@ var AreaAltIdentifiesDestination = {
 
     var selector = 'area:not(area[alt])';
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({
@@ -9901,7 +9875,7 @@ var AudioMayBePresent = {
   run: function run(test) {
     var audioExtensions = ['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var $this = $(this);
       var hasCase = false; // Test if a case has been created
 
@@ -10398,7 +10372,7 @@ var ColorBackgroundGradientContrast = {
       }
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
 
       var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
@@ -10498,7 +10472,7 @@ var ColorBackgroundImageContrast = {
       img.src = backgroundImage;
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
       var textNode = textNodes.iterateNext();
@@ -10606,7 +10580,7 @@ var ColorElementBehindBackgroundGradientContrast = {
       }
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
       var textNode = textNodes.iterateNext();
@@ -10708,7 +10682,7 @@ var ColorElementBehindBackgroundImageContrast = {
       img.src = behindBackgroundImage;
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
       var textNode = textNodes.iterateNext();
@@ -10793,7 +10767,7 @@ var ColorElementBehindContrast = {
       }
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
       var textNode = textNodes.iterateNext();
@@ -10870,7 +10844,7 @@ var ColorFontContrast = {
       }
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
       var textNode = textNodes.iterateNext();
@@ -12111,7 +12085,6 @@ var FileHasLabel = {
     }
 
     this.get('scope').each(function () {
-      var scope = $(this);
       var files = DOM.scry(sFiles, scope);
       var labels = DOM.scry(sLabels, scope);
 
@@ -12477,7 +12450,7 @@ var FormWithRequiredLabel = {
     var lastStyle,
         currentStyle = false;
     redundant.required[redundant.required.indexOf('*')] = /\*/g;
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var $local = $(this);
       DOM.scry('label', $local).each(function () {
         var text = $(this).text().toLowerCase();
@@ -13271,7 +13244,7 @@ var IdrefsHasCorrespondingId = {
       return attribute.split(/\s+/);
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var testableElements = DOM.scry(['td[headers]', 'th[headers]', '[aria-controls]', '[aria-describedby]', '[aria-flowto]', '[aria-labelledby]', '[aria-owns]'].join(', '), this);
 
       if (testableElements.length === 0) {
@@ -14564,7 +14537,7 @@ var IsUnreadable = require('IsUnreadable');
 var InputWithoutLabelHasTitle = {
   run: function run(test) {
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
 
       var testableElements = DOM.scry('input, select, textarea', this);
 
@@ -14882,7 +14855,7 @@ var LanguageDirAttributeIsUsed = {
       _case.set({ status: matches > 0 ? 'failed' : 'passed' });
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       DOM.scry(TextSelectorComponent, this).filter(function (index, element) {
         return TextNodeFilterComponent(element);
       }).each(countDirAttributes);
@@ -15333,14 +15306,13 @@ var LinkHasAUniqueContext = {
       return simplifyText(text);
     }
 
-    test.get('scope').each(function () {
-      var scope = $(this);
+    test.get('scope').forEach(function (scope) {
       var $links = DOM.scry('a[href]:visible', scope);
       var linkMap = {};
 
       if ($links.length === 0) {
         var _case = Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         });
         test.add(_case);
@@ -15630,7 +15602,7 @@ var NewWindowIsOpened = {
     var _case;
 
     window.open = function (event) {
-      test.each(function (index, _case) {
+      test.forEach(function (_case) {
         var href = _case.get('element').href;
         if (href.indexOf(event) > -1) {
           _case.set('status', 'failed');
@@ -16615,7 +16587,7 @@ var SkipContentStringsComponent = require('SkipContentStringsComponent');
 
 var SkipToContentLinkProvided = {
   run: function run(test) {
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var $local = $(this);
       var skipLinkFound = false;
 
@@ -16747,7 +16719,7 @@ var Case = require('Case');
 var DOM = require('DOM');
 var TabIndexFollowsLogicalOrder = {
   run: function run(test) {
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var $local = $(this);
       var index = 0;
       DOM.scry('[tabindex]', $local).each(function () {
@@ -17019,7 +16991,7 @@ var DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var TableLayoutHasNoSummary = {
   run: function run(test) {
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var $local = $(this);
       DOM.scry('table[summary]', $local).each(function () {
         var _case = test.add(Case({
@@ -17650,7 +17622,7 @@ var VideoMayBePresent = {
     var videoExtensions = ['webm', 'flv', 'ogv', 'ogg', 'avi', 'mov', 'qt', 'wmv', 'asf', 'mp4', 'm4p', 'm4v', 'mpg', 'mp2', 'mpeg', 'mpg', 'mpe', 'mpv', 'm2v', '3gp', '3g2'];
     var videoHosts = ['//www.youtube.com/embed/', '//player.vimeo.com/video/'];
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var $this = $(this);
       var hasCase = false; // Test if a case has been created
 

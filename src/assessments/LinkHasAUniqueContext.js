@@ -119,13 +119,12 @@ var LinkHasAUniqueContext = {
     }
 
     test.get('scope').forEach(function (scope) {
-      var scope = $(this);
       var $links = DOM.scry('a[href]:visible', scope);
       var linkMap = {};
 
       if ($links.length === 0) {
         var _case = Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         });
         test.add(_case);
