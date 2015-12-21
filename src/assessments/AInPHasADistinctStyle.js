@@ -52,7 +52,7 @@ var AInPHasADistinctStyle = {
     // Ignore links where the p only contains white space, <, >, |, \, / and - chars
     var allowedPText = /^([\s|-]|>|<|\\|\/|&(gt|lt);)*$/i;
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var scope = $(this);
       var anchors = DOM.scry('p a[href]:visible', scope);
 

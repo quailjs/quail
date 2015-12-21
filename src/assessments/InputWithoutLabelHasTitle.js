@@ -4,7 +4,7 @@ var IsUnreadable = require('IsUnreadable');
 var InputWithoutLabelHasTitle = {
   run: function (test) {
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
 
       var testableElements = DOM.scry('input, select, textarea', this);
 

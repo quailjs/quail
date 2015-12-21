@@ -51,7 +51,7 @@ var ColorBackgroundImageContrast = {
       img.src = backgroundImage;
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var textNodes = document.evaluate(
         'descendant::text()[normalize-space()]',
         this,

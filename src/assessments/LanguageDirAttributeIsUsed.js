@@ -43,7 +43,7 @@ var LanguageDirAttributeIsUsed = {
       _case.set({status: (matches > 0) ? 'failed' : 'passed'});
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       DOM.scry(TextSelectorComponent, this)
         .filter(function (index, element) {
           return TextNodeFilterComponent(element);

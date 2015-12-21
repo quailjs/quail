@@ -2,7 +2,7 @@ var Case = require('Case');
 const DOM = require('DOM');
 var TabIndexFollowsLogicalOrder = {
   run: function (test) {
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var $local = $(this);
       var index = 0;
       DOM.scry('[tabindex]', $local).each(function () {

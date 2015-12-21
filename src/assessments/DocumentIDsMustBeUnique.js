@@ -2,7 +2,7 @@ var Case = require('Case');
 const DOM = require('DOM');
 var DocumentIDsMustBeUnique = {
   run: function (test) {
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       if ($(this).children().length === 0) {
         test.add(Case({
           element: this,
@@ -16,7 +16,7 @@ var DocumentIDsMustBeUnique = {
         status: 'inapplicable'
       }));
     });
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var ids = {};
       DOM.scry('[id]', this).each(function () {
         var _case = Case({

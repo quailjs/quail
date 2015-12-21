@@ -118,7 +118,7 @@ var LinkHasAUniqueContext = {
       return simplifyText(text);
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var scope = $(this);
       var $links = DOM.scry('a[href]:visible', scope);
       var linkMap = {};

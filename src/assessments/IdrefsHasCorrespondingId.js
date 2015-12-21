@@ -19,7 +19,7 @@ var IdrefsHasCorrespondingId = {
       return attribute.split(/\s+/);
     }
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var testableElements = DOM.scry([
         'td[headers]',
         'th[headers]',

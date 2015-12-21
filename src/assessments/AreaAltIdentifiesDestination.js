@@ -15,7 +15,7 @@ var AreaAltIdentifiesDestination = {
 
     var selector = 'area:not(area[alt])';
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({
