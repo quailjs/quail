@@ -1,0 +1,5 @@
+(\$?\(?[a-zA-Z0-9]+\)?)\.find\(('?[a-zA-Z0-9\.\#\-\[\]\"\=\_\, \$\:\(\)]+'?)\)
+(test\.get\('scope'\))\.find\(('?[a-zA-Z0-9\.\#\-\[\]\"\=\_\, \$\:\(\)]+'?)(?!\.each)\)
+\$\.each\(([a-zA-Z0-9]*), function \(index, ([a-zA-Z0-9]+)
+$1.forEach(function ($2, index
+\.each\(function \((index), ([a-zA-Z0-9\.#-\[\]'"=_, \$:]+)\)

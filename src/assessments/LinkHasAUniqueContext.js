@@ -1,5 +1,6 @@
 var Case = require('Case');
 const DOM = require('DOM');
+const TableHeadersComponent = require('TableHeadersComponent');
 var LinkHasAUniqueContext = {
   run: function (test) {
 
@@ -75,13 +76,13 @@ var LinkHasAUniqueContext = {
         var headersA = [];
 
         // Make a list with the simplified text of link A
-        linkACtxt.tableHeaders().each(function () {
-          headersA.push(simplifyText($(this).text()));
+        TableHeadersComponent.tableHeaders(linkACtxt).forEach(function (element) {
+          headersA.push(simplifyText(element.innerText));
         });
 
         // Compare it to the header context of link B
-        linkBCtxt.tableHeaders().each(function () {
-          var text = simplifyText($(this).text());
+        TableHeadersComponent.tableHeaders(linkBCtxt).forEach(function (element) {
+          var text = simplifyText(element.innerText);
           var pos = headersA.indexOf(text);
           // Link B has something not part of link A's context, pass
           if (pos === -1) {
@@ -111,9 +112,9 @@ var LinkHasAUniqueContext = {
      * @return {string}
      */
     function getLinkText ($link) {
-      var text = $link.text();
-      DOM.scry('img[alt]', $link).each(function () {
-        text += ' ' + this.alt.trim();
+      var text = $link.innerText;
+      DOM.scry('img[alt]', $link).forEach(function (element) {
+        text += ' ' + element.alt.trim();
       });
       return simplifyText(text);
     }
@@ -132,8 +133,8 @@ var LinkHasAUniqueContext = {
 
       // Make a map with the link text as key and an array of links with
       // that link text as it's value
-      $links.each(function () {
-        var text = getLinkText($(this));
+      $links.forEach(function (element) {
+        var text = getLinkText(element);
         if (typeof linkMap[text] === 'undefined') {
           linkMap[text] = [];
         }
