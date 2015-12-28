@@ -13,7 +13,7 @@ var InputElementsDontHaveAlt = {
 
     var selector = 'input[type!=image]';
 
-    this.get('scope').each(function () {
+    test.get('scope').each(function () {
       var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({

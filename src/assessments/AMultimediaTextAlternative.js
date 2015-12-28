@@ -21,7 +21,7 @@ var AMultimediaTextAlternative = {
       'a[href$=".wmv"]'
     ].join(', ');
 
-    this.get('scope').each(function () {
+    test.get('scope').each(function () {
       var candidates = DOM.scry(selector, $(this));
       // Inapplicable.
       if (!candidates.length) {

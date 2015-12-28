@@ -11,7 +11,7 @@ var Case = require('Case');
 
 var DocumentContentReadableWithoutStylesheets = {
   run: function (test) {
-    this.get('scope').each(function () {
+    test.get('scope').each(function () {
       test.add(Case({
         element: undefined,
         status: 'untested'

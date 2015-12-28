@@ -22,7 +22,7 @@ var FileHasLabel = {
       return labelsByFor;
     }
 
-    this.get('scope').each(function () {
+    test.get('scope').each(function () {
       var files = DOM.scry(sFiles, scope);
       var labels = DOM.scry(sLabels, scope);
 

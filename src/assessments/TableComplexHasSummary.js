@@ -13,7 +13,7 @@ var TableComplexHasSummary = {
 
     var selector = 'table:not(table[summary], table:has(caption))';
 
-    this.get('scope').each(function () {
+    test.get('scope').each(function () {
       var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({
