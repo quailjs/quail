@@ -14,7 +14,7 @@ var FormButtonsHaveValue = {
     var selector = 'input[type=button], input[type=submit], input[type=reset]';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, $(this));
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,

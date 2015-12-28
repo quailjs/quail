@@ -14,7 +14,7 @@ var FontIsNotUsed = {
     var selector = 'font';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, $(this));
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,

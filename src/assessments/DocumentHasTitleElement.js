@@ -14,7 +14,7 @@ var DocumentHasTitleElement = {
     var selector = 'head title';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, $(this));
+      var candidates = DOM.scry(selector, scope);
       if (candidates.length === 1) {
         test.add(Case({
           element: candidates.get(0),

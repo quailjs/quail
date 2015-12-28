@@ -14,7 +14,7 @@ var DocumentTitleDescribesDocument = {
     var selector = 'head title';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, $(this));
+      var candidates = DOM.scry(selector, scope);
       var status = (candidates.length === 1) ? 'passed' : 'failed';
 
       if (candidates.length === 0) {

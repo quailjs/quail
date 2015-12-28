@@ -22,7 +22,7 @@ var AMultimediaTextAlternative = {
     ].join(', ');
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, $(this));
+      var candidates = DOM.scry(selector, scope);
       // Inapplicable.
       if (!candidates.length) {
         test.add(Case({

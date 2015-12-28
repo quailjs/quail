@@ -14,7 +14,7 @@ var TableWithBothHeadersUseScope = {
     var selector = 'table:has(tr:not(table tr:first) th:not(th[scope]))';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, $(this));
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
