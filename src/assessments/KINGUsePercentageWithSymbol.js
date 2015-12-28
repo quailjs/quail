@@ -22,7 +22,7 @@ var KINGUsePercentageWithSymbol = {
         status: percentReg.test(text) ? 'failed' : 'passed'
       });
     }
-    DOM.scry('p', test.get('scope')).each(testPercentFormat);
+    DOM.scry('p', test.get('scope')).forEach(testPercentFormat);
   },
 
   meta: {

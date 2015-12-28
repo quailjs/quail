@@ -3,13 +3,13 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ImgNonDecorativeHasAlt = {
   run: function (test) {
-    DOM.scry('img[alt]', test.get('scope')).each(function () {
+    DOM.scry('img[alt]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (IsUnreadable($(this).attr('alt')) &&
-          ($(this).width() > 100 || $(this).height() > 100)) {
+      if (IsUnreadable($(element).attr('alt')) &&
+          ($(element).width() > 100 || $(element).height() > 100)) {
         _case.set({
           status: 'failed'
         });

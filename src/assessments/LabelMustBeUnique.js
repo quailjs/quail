@@ -3,16 +3,16 @@ const DOM = require('DOM');
 var LabelMustBeUnique = {
   run: function (test) {
     var labels = {};
-    DOM.scry('label[for]', test.get('scope')).each(function () {
-      if (typeof labels[$(this).attr('for')] === 'undefined') {
-        labels[$(this).attr('for')] = 0;
+    DOM.scry('label[for]', test.get('scope')).forEach(function (element) {
+      if (typeof labels[$(element).attr('for')] === 'undefined') {
+        labels[$(element).attr('for')] = 0;
       }
-      labels[$(this).attr('for')]++;
+      labels[$(element).attr('for')]++;
     });
-    DOM.scry('label[for]', test.get('scope')).each(function () {
+    DOM.scry('label[for]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this,
-        status: (labels[$(this).attr('for')] === 1) ?
+        element: element,
+        status: (labels[$(element).attr('for')] === 1) ?
           'passed' :
           'failed'
       });

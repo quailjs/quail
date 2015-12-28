@@ -4,13 +4,13 @@ var SuspectPHeaderTags = require('SuspectPHeaderTags');
 var SuspectPCSSStyles = require('SuspectPCSSStyles');
 var PNotUsedAsHeader = {
   run: function (test) {
-    DOM.scry('p', test.get('scope')).each(function () {
+    DOM.scry('p', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 
-      var $paragraph = $(this);
+      var $paragraph = $(element);
 
       // If the text has a period, it is probably a sentence and not a header.
       if ($paragraph.text().search(/[\.!:;]/) >= 1) {
@@ -20,13 +20,13 @@ var PNotUsedAsHeader = {
       }
       var failed = false;
       // Look for any indication that the paragraph contains at least a full sentence
-      if ($(this).text().search(/[\.!:;]/) < 1) {
+      if ($(element).text().search(/[\.!:;]/) < 1) {
         var priorParagraph = $paragraph.prev('p');
         // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
         SuspectPHeaderTags.forEach(function (tag, index) {
           if (DOM.scry(tag, $paragraph).length) {
-            DOM.scry(tag, $paragraph).each(function () {
-              if ($(this).text().trim() === $paragraph.text().trim()) {
+            DOM.scry(tag, $paragraph).forEach(function (element) {
+              if ($(element).text().trim() === $paragraph.text().trim()) {
                 _case.set({
                   status: 'failed'
                 });

@@ -3,31 +3,31 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ALinkWithNonText = {
   run: function (test) {
-    DOM.scry('a', test.get('scope')).each(function () {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (!$(this).is('a:has(img, object, embed)[href]')) {
+      if (!$(element).is('a:has(img, object, embed)[href]')) {
         _case.set({
           status: 'inapplicable'
         });
         return;
       }
-      if (!IsUnreadable($(this).text())) {
+      if (!IsUnreadable($(element).text())) {
         _case.set({
           status: 'passed'
         });
         return;
       }
       var unreadable = 0;
-      DOM.scry('img, object, embed', this).each(function () {
-        if (($(this).is('img') && IsUnreadable($(this).attr('alt'))) ||
-          (!$(this).is('img') && IsUnreadable($(this).attr('title')))) {
+      DOM.scry('img, object, embed', element).forEach(function (element) {
+        if (($(element).is('img') && IsUnreadable($(element).attr('alt'))) ||
+          (!$(element).is('img') && IsUnreadable($(element).attr('title')))) {
           unreadable++;
         }
       });
-      if (DOM.scry('img, object, embed', this).length === unreadable) {
+      if (DOM.scry('img, object, embed', element).length === unreadable) {
         _case.set({
           status: 'failed'
         });

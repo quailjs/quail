@@ -3,12 +3,12 @@ var Case = require('Case');
 const DOM = require('DOM');
 var TableShouldUseHeaderIDs = {
   run: function (test) {
-    DOM.scry('table', test.get('scope')).each(function () {
-      var $table = $(this);
+    DOM.scry('table', test.get('scope')).forEach(function (element) {
+      var $table = $(element);
       var tableFailed = false;
       if (IsDataTableComponent($table)) {
-        DOM.scry('th', $table).each(function () {
-          if (!tableFailed && !$(this).attr('id')) {
+        DOM.scry('th', $table).forEach(function (element) {
+          if (!tableFailed && !$(element).attr('id')) {
             tableFailed = true;
             test.add(Case({
               element: $table.get(0),
@@ -17,9 +17,9 @@ var TableShouldUseHeaderIDs = {
           }
         });
         if (!tableFailed) {
-          DOM.scry('td[header]', $table).each(function () {
+          DOM.scry('td[header]', $table).forEach(function (element) {
             if (!tableFailed) {
-              $(this).attr('header').split(' ').forEach(function (id, index) {
+              $(element).attr('header').split(' ').forEach(function (id, index) {
                 if (!DOM.scry('#' + id, $table).length) {
                   tableFailed = true;
                   test.add(Case({

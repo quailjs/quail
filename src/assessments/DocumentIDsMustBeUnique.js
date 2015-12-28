@@ -10,30 +10,30 @@ var DocumentIDsMustBeUnique = {
         }));
       }
     });
-    DOM.scry(':not([id])', test.get('scope')).each(function () {
+    DOM.scry(':not([id])', test.get('scope')).forEach(function (element) {
       test.add(Case({
-        element: this,
+        element: element,
         status: 'inapplicable'
       }));
     });
     test.get('scope').forEach(function (scope) {
       var ids = {};
-      DOM.scry('[id]', this).each(function () {
+      DOM.scry('[id]', this).forEach(function (element) {
         var _case = Case({
-          element: this
+          element: element
         });
         test.add(_case);
-        if (typeof ids[$(this).attr('id')] === 'undefined' && Object.keys(ids).length === 0) {
+        if (typeof ids[$(element).attr('id')] === 'undefined' && Object.keys(ids).length === 0) {
           _case.set({
             status: 'inapplicable'
           });
-          ids[$(this).attr('id')] = $(this).attr('id');
+          ids[$(element).attr('id')] = $(element).attr('id');
         }
-        else if (typeof ids[$(this).attr('id')] === 'undefined') {
+        else if (typeof ids[$(element).attr('id')] === 'undefined') {
           _case.set({
             status: 'passed'
           });
-          ids[$(this).attr('id')] = $(this).attr('id');
+          ids[$(element).attr('id')] = $(element).attr('id');
         }
         else {
           _case.set({

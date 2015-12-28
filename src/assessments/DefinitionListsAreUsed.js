@@ -2,26 +2,26 @@ var Case = require('Case');
 const DOM = require('DOM');
 var DefinitionListsAreUsed = {
   run: function (test) {
-    DOM.scry('dl', test.get('scope')).each(function () {
+    DOM.scry('dl', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
       _case.set({
         status: 'inapplicable'
       });
     });
-    DOM.scry('p, li', test.get('scope')).each(function () {
+    DOM.scry('p, li', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      var $item = $(this);
-      DOM.scry('span, strong, em, b, i', this).each(function () {
-        if ($(this).text().length < 50 && $item.text().search($(this).text()) === 0) {
-          if ($(this).is('span')) {
-            if ($(this).css('font-weight') === $item.css('font-weight') &&
-                $(this).css('font-style') === $item.css('font-style')) {
+      var $item = $(element);
+      DOM.scry('span, strong, em, b, i', element).forEach(function (element) {
+        if ($(element).text().length < 50 && $item.text().search($(element).text()) === 0) {
+          if ($(element).is('span')) {
+            if ($(element).css('font-weight') === $item.css('font-weight') &&
+                $(element).css('font-style') === $item.css('font-style')) {
               _case.set({
                 status: 'passed'
               });

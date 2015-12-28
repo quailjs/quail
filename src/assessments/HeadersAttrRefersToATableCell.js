@@ -3,8 +3,8 @@ const DOM = require('DOM');
 var HeadersAttrRefersToATableCell = {
   run: function (test) {
     // Table cell headers without referred ids
-    DOM.scry('table', test.get('scope')).each(function () {
-      var self = this;
+    DOM.scry('table', test.get('scope')).forEach(function (element) {
+      var self = element;
       var _case = Case();
       test.add(_case);
       var elmHeaders = DOM.scry('th[headers], td[headers]', self);
@@ -17,8 +17,8 @@ var HeadersAttrRefersToATableCell = {
       }
       else {
         elmHeaders.each(function () {
-          var that = this;
-          var headers = $(this).attr('headers').split(/\s+/);
+          var that = element;
+          var headers = $(element).attr('headers').split(/\s+/);
           headers.forEach(function (item, index) {
             if (item === '' || DOM.scry('th#' + item + ',td#' + item, self).length > 0) {
               _case.set({

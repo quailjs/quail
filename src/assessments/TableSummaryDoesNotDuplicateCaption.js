@@ -3,16 +3,16 @@ var Case = require('Case');
 const DOM = require('DOM');
 var TableSummaryDoesNotDuplicateCaption = {
   run: function (test) {
-    DOM.scry('table[summary]:has(caption)', test.get('scope')).each(function () {
-      if (CleanStringComponent(DOM.scry('caption:first', this).attr('summary')) === CleanStringComponent($(this).text())) {
+    DOM.scry('table[summary]:has(caption)', test.get('scope')).forEach(function (element) {
+      if (CleanStringComponent(DOM.scry('caption:first', element).attr('summary')) === CleanStringComponent($(element).text())) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       }
       else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       }

@@ -8,17 +8,17 @@ var SelectJumpMenu = {
       return;
     }
 
-    DOM.scry('select', scope).each(function () {
-      if (DOM.scry(':submit', this).parent('form').length === 0 &&
-          HasEventListenerComponent($(this), 'change')) {
+    DOM.scry('select', scope).forEach(function (element) {
+      if (DOM.scry(':submit', element).parent('form').length === 0 &&
+          HasEventListenerComponent($(element), 'change')) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       }
       else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       }

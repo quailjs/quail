@@ -2,12 +2,12 @@ var Case = require('Case');
 const DOM = require('DOM');
 var InputImageAltIsNotFileName = {
   run: function (test) {
-    DOM.scry('input[type=image][alt]', test.get('scope')).each(function () {
+    DOM.scry('input[type=image][alt]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if ($(this).attr('src') === $(this).attr('alt')) {
+      if ($(element).attr('src') === $(element).attr('alt')) {
         _case.set({
           status: 'failed'
         });

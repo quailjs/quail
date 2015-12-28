@@ -4,14 +4,14 @@ var IsUnreadable = require('IsUnreadable');
 var ListOfLinksUseList = {
   run: function (test) {
     var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
-    DOM.scry('a', test.get('scope')).each(function () {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
       var _case = test.add(Case({
-        element: this
+        element: element
       }));
       // Only test if there's another a tag.
-      if ($(this).next('a').length) {
-        var nextText = $(this).get(0).nextSibling.wholeText.replace(unreadableText, '');
-        if (!$(this).parent('li').length && IsUnreadable(nextText)) {
+      if ($(element).next('a').length) {
+        var nextText = $(element).get(0).nextSibling.wholeText.replace(unreadableText, '');
+        if (!$(element).parent('li').length && IsUnreadable(nextText)) {
           _case.set({
             status: 'failed'
           });

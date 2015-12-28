@@ -6,11 +6,11 @@ var TableLayoutHasNoSummary = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
       var $local = $(this);
-      DOM.scry('table[summary]', $local).each(function () {
+      DOM.scry('table[summary]', $local).forEach(function (element) {
         var _case = test.add(Case({
-          element: this
+          element: element
         }));
-        if (!IsDataTableComponent($(this)) && !IsUnreadable($(this).attr('summary'))) {
+        if (!IsDataTableComponent($(element)) && !IsUnreadable($(element).attr('summary'))) {
           _case.set({status: 'failed'});
         }
         else {

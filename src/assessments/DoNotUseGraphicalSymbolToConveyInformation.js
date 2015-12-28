@@ -6,11 +6,11 @@ var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var DoNotUseGraphicalSymbolToConveyInformation = {
   run: function (test) {
     // Passes and fails.
-    DOM.scry(TextSelectorComponent + ':not(abbr, acronym)', test.get('scope')).each(function () {
+    DOM.scry(TextSelectorComponent + ':not(abbr, acronym)', test.get('scope')).forEach(function (element) {
       var whiteList = '✓';
       var blackList = '?xo[]()+-!*xX';
 
-      var text = $(this).text();
+      var text = $(element).text();
 
       // @todo add support for other languages.
       // Remove all alphanumeric characters.
@@ -20,7 +20,7 @@ var DoNotUseGraphicalSymbolToConveyInformation = {
         // Unless if it's white listed.
         if (whiteList.indexOf(text) === -1) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         }
@@ -28,13 +28,13 @@ var DoNotUseGraphicalSymbolToConveyInformation = {
       // Check regularly used single character symbols.
       else if (text.length === 1 && blackList.indexOf(text) >= 0) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       }
       else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       }

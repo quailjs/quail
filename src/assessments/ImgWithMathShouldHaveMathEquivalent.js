@@ -2,12 +2,12 @@ var Case = require('Case');
 const DOM = require('DOM');
 var ImgWithMathShouldHaveMathEquivalent = {
   run: function (test) {
-    DOM.scry('img:not(img:has(math), img:has(tagName))', test.get('scope')).each(function () {
+    DOM.scry('img:not(img:has(math), img:has(tagName))', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (!DOM.scry('math', this).parent().length) {
+      if (!DOM.scry('math', element).parent().length) {
         _case.set({
           status: 'failed'
         });

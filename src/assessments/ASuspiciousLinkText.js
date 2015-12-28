@@ -4,20 +4,20 @@ const DOM = require('DOM');
 var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
 var ASuspiciousLinkText = {
   run: function (test) {
-    DOM.scry('a', test.get('scope')).each(function () {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (!$(this).attr('href')) {
+      if (!$(element).attr('href')) {
         _case.set({
           status: 'inapplicable'
         });
         return;
       }
-      var text = $(this).text();
-      DOM.scry('img[alt]', this).each(function () {
-        text = text + $(this).attr('alt');
+      var text = $(element).text();
+      DOM.scry('img[alt]', element).forEach(function (element) {
+        text = text + $(element).attr('alt');
       });
       if (SuspiciousLinksStringsComponent.indexOf(CleanStringComponent(text)) > -1) {
         _case.set({

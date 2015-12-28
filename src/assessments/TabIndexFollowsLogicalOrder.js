@@ -5,18 +5,18 @@ var TabIndexFollowsLogicalOrder = {
     test.get('scope').forEach(function (scope) {
       var $local = $(this);
       var index = 0;
-      DOM.scry('[tabindex]', $local).each(function () {
-        var $el = $(this);
+      DOM.scry('[tabindex]', $local).forEach(function (element) {
+        var $el = $(element);
         var tabindex = $el.attr('tabindex');
         if (parseInt(tabindex, 10) >= 0 && parseInt(tabindex, 10) !== index + 1) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         }
         else {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'passed'
           }));
         }

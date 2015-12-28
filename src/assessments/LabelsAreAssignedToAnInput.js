@@ -2,19 +2,19 @@ var Case = require('Case');
 const DOM = require('DOM');
 var LabelsAreAssignedToAnInput = {
   run: function (test) {
-    DOM.scry('label', test.get('scope')).each(function () {
+    DOM.scry('label', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (!$(this).attr('for')) {
+      if (!$(element).attr('for')) {
         _case.set({
           status: 'failed'
         });
       }
       else {
-        if (!DOM.scry('#' + $(this).attr('for'), test.get('scope')).length ||
-           !DOM.scry('#' + $(this).attr('for')).is(':input'), test.get('scope')) {
+        if (!DOM.scry('#' + $(element).attr('for'), test.get('scope')).length ||
+           !DOM.scry('#' + $(element).attr('for')).is(':input'), test.get('scope')) {
           _case.set({
             status: 'failed'
           });

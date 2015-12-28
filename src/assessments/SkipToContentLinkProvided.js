@@ -10,11 +10,11 @@ var SkipToContentLinkProvided = {
       var $local = $(this);
       var skipLinkFound = false;
 
-      DOM.scry('a[href*="#"]', $local).each(function () {
+      DOM.scry('a[href*="#"]', $local).forEach(function (element) {
         if (skipLinkFound) {
           return;
         }
-        var $link = $(this);
+        var $link = $(element);
 
         var fragment = $link.attr('href').split('#').pop();
         var $target = DOM.scry('#' + fragment, $local);

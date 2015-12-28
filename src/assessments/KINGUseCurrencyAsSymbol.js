@@ -3,7 +3,7 @@ var Case = require('Case');
 const DOM = require('DOM');
 var KINGUseCurrencyAsSymbol = {
   run: function (test) {
-    function testCurrencyFormat (index, element) {
+    function testCurrencyFormat (element, index) {
       // Detect dates with several separators.
       var currencyNames = [
         'dollar',
@@ -28,7 +28,7 @@ var KINGUseCurrencyAsSymbol = {
         status: currencyReg.test(text) ? 'failed' : 'passed'
       });
     }
-    DOM.scry('p', test.get('scope')).each(testCurrencyFormat);
+    DOM.scry('p', test.get('scope')).forEach(testCurrencyFormat);
   },
 
   meta: {

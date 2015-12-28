@@ -9,8 +9,8 @@ var SiteMap = {
       element: test.get('scope').get(0)
     });
     test.add(_case);
-    DOM.scry('a', test.get('scope')).each(function () {
-      var text = $(this).text().toLowerCase();
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
+      var text = $(element).text().toLowerCase();
       SiteMapStringsComponent.forEach(function (string, index) {
         if (text.search(string) > -1) {
           set = true;

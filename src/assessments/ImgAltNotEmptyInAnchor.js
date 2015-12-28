@@ -3,18 +3,18 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ImgAltNotEmptyInAnchor = {
   run: function (test) {
-    DOM.scry('a[href]:has(img)', test.get('scope')).each(function () {
-      var $a = $(this);
+    DOM.scry('a[href]:has(img)', test.get('scope')).forEach(function (element) {
+      var $a = $(element);
       var text = $a.text();
 
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 
       // Concat all alt attributes of images to the text of the paragraph
-      DOM.scry('img[alt]', $a).each(function () {
-        text += ' ' + $(this).attr('alt');
+      DOM.scry('img[alt]', $a).forEach(function (element) {
+        text += ' ' + $(element).attr('alt');
       });
 
       if (IsUnreadable(text)) {

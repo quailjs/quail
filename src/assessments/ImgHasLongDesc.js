@@ -3,13 +3,13 @@ var Case = require('Case');
 const DOM = require('DOM');
 var ImgHasLongDesc = {
   run: function (test) {
-    DOM.scry('img[longdesc]', test.get('scope')).each(function () {
+    DOM.scry('img[longdesc]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if ($(this).attr('longdesc') === $(this).attr('alt') ||
-          !ValidURLComponent($(this).attr('longdesc'))) {
+      if ($(element).attr('longdesc') === $(element).attr('alt') ||
+          !ValidURLComponent($(element).attr('longdesc'))) {
         _case.set({
           status: 'failed'
         });

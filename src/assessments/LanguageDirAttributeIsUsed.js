@@ -29,7 +29,7 @@ var LanguageDirAttributeIsUsed = {
         return;
       }
       var matches = textMatches.length;
-      DOM.scry('[dir=' + oppositeDirection + ']', $el).each(function () {
+      DOM.scry('[dir=' + oppositeDirection + ']', $el).forEach(function (element) {
         var childMatches = $el[0].textContent.match(textDirection[oppositeDirection]);
         if (childMatches) {
           matches -= childMatches.length;

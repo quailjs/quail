@@ -12,35 +12,35 @@ var VideoMayBePresent = {
       var hasCase = false; // Test if a case has been created
 
       // video elm is definately a video, and objects could be too.
-      DOM.scry('object, video', $this).each(function () {
+      DOM.scry('object, video', $this).forEach(function (element) {
         hasCase = true;
         test.add(Case({
-          element: this,
+          element: element,
           status: 'cantTell'
         }));
       });
 
       // Links refering to files with an video extensions are probably video
       // though the file may not exist.
-      DOM.scry('a[href]', $this).each(function () {
-        var $this = $(this);
+      DOM.scry('a[href]', $this).forEach(function (element) {
+        var $this = $(element);
         var extension = $this.attr('href').split('.').pop();
         if ($.inArray(extension, videoExtensions) !== -1) {
           hasCase = true;
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         }
       });
 
       // some iframes with URL's of known video providers are also probably videos
-      DOM.scry('iframe', $this).each(function () {
-        if (this.src.indexOf(videoHosts[0]) !== -1 ||
-        this.src.indexOf(videoHosts[1]) !== -1) {
+      DOM.scry('iframe', $this).forEach(function (element) {
+        if (element.src.indexOf(videoHosts[0]) !== -1 ||
+        element.src.indexOf(videoHosts[1]) !== -1) {
           hasCase = true;
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         }

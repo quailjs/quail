@@ -9,22 +9,22 @@ var AudioMayBePresent = {
       var hasCase = false; // Test if a case has been created
 
       // Audio is definately an audio, and objects could be too.
-      DOM.scry('object, audio', $this).each(function () {
+      DOM.scry('object, audio', $this).forEach(function (element) {
         hasCase = true;
         test.add(Case({
-          element: this,
+          element: element,
           status: 'cantTell'
         }));
       });
 
       // Links refering to files with an audio extensions are good indicators too
-      DOM.scry('a[href]', $this).each(function () {
-        var $this = $(this);
+      DOM.scry('a[href]', $this).forEach(function (element) {
+        var $this = $(element);
         var extension = $this.attr('href').split('.').pop();
         if ($.inArray(extension, audioExtensions) !== -1) {
           hasCase = true;
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         }

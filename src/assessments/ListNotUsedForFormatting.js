@@ -2,12 +2,12 @@ var Case = require('Case');
 const DOM = require('DOM');
 var ListNotUsedForFormatting = {
   run: function (test) {
-    DOM.scry('ol, ul', test.get('scope')).each(function () {
+    DOM.scry('ol, ul', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (DOM.scry('li', this).length < 2) {
+      if (DOM.scry('li', element).length < 2) {
         _case.set({
           status: 'failed'
         });

@@ -2,16 +2,16 @@ var Case = require('Case');
 const DOM = require('DOM');
 var TabularDataIsInTable = {
   run: function (test) {
-    DOM.scry('pre', test.get('scope')).each(function () {
-      if ($(this).html().search('\t') >= 0) {
+    DOM.scry('pre', test.get('scope')).forEach(function (element) {
+      if ($(element).html().search('\t') >= 0) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       }
       else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       }

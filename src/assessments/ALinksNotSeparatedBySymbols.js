@@ -3,21 +3,21 @@ const DOM = require('DOM');
 var SymbolsStringsComponent = require('SymbolsStringsComponent');
 var ALinksNotSeparatedBySymbols = {
   run: function (test) {
-    DOM.scry('a', test.get('scope')).each(function () {
-      var $link = $(this);
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
+      var $link = $(element);
       if ($link.next('a').length) {
         var text = $link.get(0).nextSibling.wholeText;
         // The string between the links is composed of symbols.
         if (typeof text === 'string' && SymbolsStringsComponent.indexOf(text.toLowerCase().trim()) !== -1) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         }
         // The string between the links is composed of words.
         else {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'passed'
           }));
         }
@@ -25,7 +25,7 @@ var ALinksNotSeparatedBySymbols = {
       // If nothing follows the link, then there is nothing to test.
       else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'inapplicable'
         }));
       }

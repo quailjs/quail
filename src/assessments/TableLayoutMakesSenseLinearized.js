@@ -3,10 +3,10 @@ var Case = require('Case');
 const DOM = require('DOM');
 var TableLayoutMakesSenseLinearized = {
   run: function (test) {
-    DOM.scry('table', test.get('scope')).each(function () {
-      if (!IsDataTableComponent($(this))) {
+    DOM.scry('table', test.get('scope')).forEach(function (element) {
+      if (!IsDataTableComponent($(element))) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       }

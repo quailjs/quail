@@ -2,12 +2,12 @@ var Case = require('Case');
 const DOM = require('DOM');
 var InputCheckboxRequiresFieldset = {
   run: function (test) {
-    DOM.scry('input[type="checkbox"]', test.get('scope')).each(function () {
+    DOM.scry('input[type="checkbox"]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (!$(this).parents('fieldset').length) {
+      if (!$(element).parents('fieldset').length) {
         _case.set({
           status: 'failed'
         });

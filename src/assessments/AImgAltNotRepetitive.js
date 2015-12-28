@@ -3,13 +3,13 @@ var Case = require('Case');
 const DOM = require('DOM');
 var AImgAltNotRepetitive = {
   run: function (test) {
-    DOM.scry('a img[alt]', test.get('scope')).each(function () {
+    DOM.scry('a img[alt]', test.get('scope')).forEach(function (element) {
       var _case = test.add(Case({
-        element: this
+        element: element
       }));
 
-      var alt = CleanStringComponent($(this).attr('alt'));
-      var linkText = CleanStringComponent($(this).closest('a').text());
+      var alt = CleanStringComponent($(element).attr('alt'));
+      var linkText = CleanStringComponent($(element).closest('a').text());
 
       if (alt.length > 0 && linkText.indexOf(alt) > -1) {
         _case.set({

@@ -3,12 +3,12 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var AppletContainsTextEquivalent = {
   run: function (test) {
-    DOM.scry('applet[alt=""], applet:not(applet[alt])', test.get('scope')).each(function () {
+    DOM.scry('applet[alt=""], applet:not(applet[alt])', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (IsUnreadable($(this).text())) {
+      if (IsUnreadable($(element).text())) {
         _case.set({
           status: 'failed'
         });

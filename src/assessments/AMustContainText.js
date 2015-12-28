@@ -3,21 +3,21 @@ var Case = require('Case');
 const DOM = require('DOM');
 var AMustContainText = {
   run: function (test) {
-    DOM.scry('a', test.get('scope')).each(function () {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 
-      if (!$(this).attr('href') ||
-        $(this).css('display') === 'none') {
+      if (!$(element).attr('href') ||
+        $(element).css('display') === 'none') {
         _case.set({
           status: 'inapplicable'
         });
         return;
       }
 
-      if (ContainsReadableTextComponent($(this), true)) {
+      if (ContainsReadableTextComponent($(element), true)) {
         _case.set({
           status: 'passed'
         });

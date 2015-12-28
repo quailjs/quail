@@ -56,15 +56,15 @@ var AnimatedGifMayBePresent = {
       request.send();
     }
 
-    DOM.scry('img', test.get('scope')).each(function () {
+    DOM.scry('img', test.get('scope')).forEach(function (element) {
 
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 
-      var imgSrc = $(this).attr('src');
-      var ext = $(this).attr('src').split('.').pop().toLowerCase();
+      var imgSrc = $(element).attr('src');
+      var ext = $(element).attr('src').split('.').pop().toLowerCase();
 
       if (ext !== 'gif') {
         _case.set({

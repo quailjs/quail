@@ -2,13 +2,13 @@ var Case = require('Case');
 const DOM = require('DOM');
 var KINGStrongList = {
   run: function (test) {
-    DOM.scry('strong', test.get('scope')).each(function () {
+    DOM.scry('strong', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
       _case.set({
-        status: $(this).parent().is('li') ? 'passed' : 'failed'
+        status: $(element).parent().is('li') ? 'passed' : 'failed'
       });
     });
   },

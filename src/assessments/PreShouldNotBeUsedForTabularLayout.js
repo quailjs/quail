@@ -2,14 +2,14 @@ var Case = require('Case');
 const DOM = require('DOM');
 var PreShouldNotBeUsedForTabularLayout = {
   run: function (test) {
-    DOM.scry('pre', test.get('scope')).each(function () {
+    DOM.scry('pre', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      var rows = $(this).text().split(/[\n\r]+/);
+      var rows = $(element).text().split(/[\n\r]+/);
       _case.set({
-        status: (rows.length > 1 && $(this).text().search(/\t/) > -1) ? 'failed' : 'passed'
+        status: (rows.length > 1 && $(element).text().search(/\t/) > -1) ? 'failed' : 'passed'
       });
     });
   },

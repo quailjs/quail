@@ -2,19 +2,19 @@ var Case = require('Case');
 const DOM = require('DOM');
 var ImgAltIsDifferent = {
   run: function (test) {
-    DOM.scry('img:not([src])', test.get('scope')).each(function () {
+    DOM.scry('img:not([src])', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this,
+        element: element,
         status: 'inapplicable'
       });
       test.add(_case);
     });
-    DOM.scry('img[alt][src]', test.get('scope')).each(function () {
+    DOM.scry('img[alt][src]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if ($(this).attr('src') === $(this).attr('alt') || $(this).attr('src').split('/').pop() === $(this).attr('alt')) {
+      if ($(element).attr('src') === $(element).attr('alt') || $(element).attr('src').split('/').pop() === $(element).attr('alt')) {
         _case.set({
           status: 'failed'
         });

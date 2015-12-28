@@ -3,13 +3,13 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ALinksAreSeparatedByPrintableCharacters = {
   run: function (test) {
-    DOM.scry('a', test.get('scope')).each(function () {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
       var _case = test.add(Case({
-        element: this
+        element: element
       }));
       // Only test if there's another a tag.
-      if ($(this).next('a').length) {
-        if (IsUnreadable($(this).get(0).nextSibling.wholeText)) {
+      if ($(element).next('a').length) {
+        if (IsUnreadable($(element).get(0).nextSibling.wholeText)) {
           _case.set({
             status: 'failed'
           });

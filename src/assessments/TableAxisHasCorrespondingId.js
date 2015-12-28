@@ -2,12 +2,12 @@ var Case = require('Case');
 const DOM = require('DOM');
 var TableAxisHasCorrespondingId = {
   run: function (test) {
-    DOM.scry('[axis]', test.get('scope')).each(function () {
+    DOM.scry('[axis]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (DOM.scry('th#' + $(this).attr('axis', this).parents('table').first()).length === 0) {
+      if (DOM.scry('th#' + $(element).attr('axis', element).parents('table').first()).length === 0) {
         _case.set({
           status: 'failed'
         });

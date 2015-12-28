@@ -3,9 +3,9 @@ const DOM = require('DOM');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var ALinkTextDoesNotBeginWithRedundantWord = {
   run: function (test) {
-    DOM.scry('a', test.get('scope')).each(function () {
-      var self = this;
-      var $link = $(this);
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
+      var self = element;
+      var $link = $(element);
       var text = '';
       var $img = DOM.scry('img[alt]', $link);
       if ($img.length) {

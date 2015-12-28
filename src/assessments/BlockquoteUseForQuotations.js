@@ -2,19 +2,19 @@ var Case = require('Case');
 const DOM = require('DOM');
 var BlockquoteUseForQuotations = {
   run: function (test) {
-    DOM.scry('p', test.get('scope')).each(function () {
+    DOM.scry('p', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if ($(this).parents('blockquote').length > 0) {
+      if ($(element).parents('blockquote').length > 0) {
         _case.set({
           status: 'inapplicable'
         });
         return;
       }
-      if ($(this).text().substr(0, 1).search(/'|"|«|“|「/) > -1 &&
-         $(this).text().substr(-1, 1).search(/'|"|»|„|」/) > -1) {
+      if ($(element).text().substr(0, 1).search(/'|"|«|“|「/) > -1 &&
+         $(element).text().substr(-1, 1).search(/'|"|»|„|」/) > -1) {
         _case.set({
           status: 'failed'
         });

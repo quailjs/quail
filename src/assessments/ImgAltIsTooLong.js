@@ -2,13 +2,13 @@ var Case = require('Case');
 const DOM = require('DOM');
 var ImgAltIsTooLong = {
   run: function (test) {
-    DOM.scry('img[alt]', test.get('scope')).each(function () {
+    DOM.scry('img[alt]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
       _case.set({
-        status: ($(this).attr('alt').length > 100) ? 'failed' : 'passed'
+        status: ($(element).attr('alt').length > 100) ? 'failed' : 'passed'
       });
     });
   },

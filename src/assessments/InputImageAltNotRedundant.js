@@ -4,12 +4,12 @@ const DOM = require('DOM');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var InputImageAltNotRedundant = {
   run: function (test) {
-    DOM.scry('input[type=image][alt]', test.get('scope')).each(function () {
+    DOM.scry('input[type=image][alt]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (RedundantStringsComponent.inputImage.indexOf(CleanStringComponent($(this).attr('alt'))) > -1) {
+      if (RedundantStringsComponent.inputImage.indexOf(CleanStringComponent($(element).attr('alt'))) > -1) {
         _case.set({
           status: 'failed'
         });
