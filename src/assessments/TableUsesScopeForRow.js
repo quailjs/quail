@@ -4,9 +4,16 @@ var TableUsesScopeForRow = {
   run: function (test) {
     DOM.scry('table', test.get('scope')).each(function () {
       DOM.scry('td:first-child', this).each(function () {
-        var $next = $(this).next('td');
-        if (($(this).css('font-weight') === 'bold' && $next.css('font-weight') !== 'bold') ||
-             (DOM.scry('strong', this).length && !DOM.scry('strong', $next).length)) {
+        var $element = $(this);
+        var $next = $element.next('td');
+        var isBold = $element.css('font-weight') === 'bold';
+        var nextIsNotBold = $next.css('font-weight') !== 'bold';
+        var boldDoesNotFollowsBold = (isBold && nextIsNotBold);
+        var hasStrong = DOM.scry('strong', this).length
+        var nextIsNotStrong = DOM.scry('strong', $next).length === 0;
+        var strongDoesNotFollowStrong = (hasStrong && nextIsNotStrong);
+
+        if (boldDoesNotFollowsBold || strongDoesNotFollowStrong) {
           test.add(Case({
             element: this,
             status: 'failed'
@@ -14,9 +21,16 @@ var TableUsesScopeForRow = {
         }
       });
       DOM.scry('td:last-child', this).each(function () {
+        var $element = $(this);
+        var $prev = $element.prev('td');
+        var isBold = $element.css('font-weight') === 'bold';
+        var prevIsNotBold = $prev.css('font-weight') !== 'bold';
+        var boldDoesNotFollowsBold = (isBold && prevIsNotBold);
+        var hasStrong = DOM.scry('strong', this).length
+        var prevIsNotStrong = DOM.scry('strong', $prev).length === 0;
+        var strongDoesNotFollowStrong = (hasStrong && prevIsNotStrong);
         var $prev = $(this).prev('td');
-        if (($(this).css('font-weight') === 'bold' && $prev.css('font-weight') !== 'bold') ||
-            (DOM.scry('strong', this).length && !DOM.scry('strong', $prev).length)) {
+        if (boldDoesNotFollowsBold || strongDoesNotFollowStrong) {
           test.add(Case({
             element: this,
             status: 'failed'
