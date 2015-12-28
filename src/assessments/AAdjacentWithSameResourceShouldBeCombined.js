@@ -50,7 +50,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
       });
     }
 
-    test.get('scope').each(findAdjacent);
+    test.get('scope').forEach(findAdjacent);
   },
 
   meta: {
