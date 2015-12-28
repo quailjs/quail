@@ -37,7 +37,7 @@ var IdrefsHasCorrespondingId = {
         return;
       }
       else {
-        testableElements.each(function (element) {
+        testableElements.forEach(function (element) {
           var _case = test.add(Case({
             element: element
           }));

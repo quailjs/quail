@@ -33,8 +33,8 @@ var FileHasLabel = {
         }));
       }
       else {
-        files.each(function () {
-          var $file = $(this);
+        files.forEach(function (element) {
+          var $file = $(element);
           var status = 'failed';
 
           // Check for an associated label.
@@ -47,7 +47,7 @@ var FileHasLabel = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

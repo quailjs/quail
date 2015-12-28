@@ -3,7 +3,7 @@ var FocusElements = require('FocusElements');
 
 var ScriptFocusIndicatorVisible = {
   run: function () {
-    $(FocusElements).each(function () {
+    $(FocusElements).forEach(function (element) {
 
       // Preparation for test: remove focus indicators done with CSS
       var sheet, rules, rulesCache, rule;
@@ -29,43 +29,43 @@ var ScriptFocusIndicatorVisible = {
       }
 
       var noFocus = {
-        borderWidth: $(this).css('border-width'),
-        borderColor: $(this).css('border-color'),
-        backgroundColor: $(this).css('background-color'),
-        boxShadow: $(this).css('box-shadow'),
-        outlineWidth: $(this).css('outline-width'),
-        outlineColor: $(this).css('outline-color')
+        borderWidth: $(element).css('border-width'),
+        borderColor: $(element).css('border-color'),
+        backgroundColor: $(element).css('background-color'),
+        boxShadow: $(element).css('box-shadow'),
+        outlineWidth: $(element).css('outline-width'),
+        outlineColor: $(element).css('outline-color')
       };
 
-      $(this).focus();
+      $(element).focus();
 
       // it is sufficient to not remove the default outline on focus: pass test
-      var outlineWidth = ConvertToPxComponent($(this).css('outline-width'));
+      var outlineWidth = ConvertToPxComponent($(element).css('outline-width'));
       if (outlineWidth > 2 && outlineWidth !== ConvertToPxComponent(noFocus.outlineWidth)) {
-        $(this).blur();
+        $(element).blur();
         return;
       }
 
       // in any other case, it is acceptable to change other visual components
 
-      if (noFocus.backgroundColor !== $(this).css('background-color')) {
-        $(this).blur();
+      if (noFocus.backgroundColor !== $(element).css('background-color')) {
+        $(element).blur();
         return;
       }
 
-      var borderWidth = ConvertToPxComponent($(this).css('border-width'));
+      var borderWidth = ConvertToPxComponent($(element).css('border-width'));
       if (borderWidth > 2 && borderWidth !== ConvertToPxComponent(noFocus.borderWidth)) {
-        $(this).blur();
+        $(element).blur();
         return;
       }
 
-      var boxShadow = ($(this).css('box-shadow') && $(this).css('box-shadow') !== 'none') ? $(this).css('box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
-      if (boxShadow && $(this).css('box-shadow') !== noFocus.boxShadow && ConvertToPxComponent(boxShadow[3]) > 3) {
-        $(this).blur();
+      var boxShadow = ($(element).css('box-shadow') && $(element).css('box-shadow') !== 'none') ? $(element).css('box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
+      if (boxShadow && $(element).css('box-shadow') !== noFocus.boxShadow && ConvertToPxComponent(boxShadow[3]) > 3) {
+        $(element).blur();
         return;
       }
 
-      $(this).blur();
+      $(element).blur();
 
       var ruleCache;
 

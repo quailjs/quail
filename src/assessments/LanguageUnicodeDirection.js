@@ -8,9 +8,8 @@ var LanguageUnicodeDirection = {
     var scope = test.get('scope');
     var textDirection = LanguageComponent.textDirection;
     var textDirectionChanges = LanguageComponent.textDirectionChanges;
-    scope.each(function () {
-      var $local = $(this);
-      DOM.scry(TextSelectorComponent, $local)
+    scope.forEach(function (scope) {
+      DOM.scry(TextSelectorComponent, scope)
         .filter(function (element) {
           return TextNodeFilterComponent(element);
         })

@@ -17,7 +17,7 @@ var InputWithoutLabelHasTitle = {
         return;
       }
       else {
-        testableElements.each(function (element) {
+        testableElements.forEach(function (element) {
           var _case = Case({
             element: element
           });

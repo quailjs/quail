@@ -21,8 +21,8 @@ var AAdjacentWithSameResourceShouldBeCombined = {
         }
       });
 
-      $singletons.each(excludeSingleLinks);
-      $coupletons.each(checkNextLink);
+      $singletons.forEach(excludeSingleLinks);
+      $coupletons.forEach(checkNextLink);
     }
 
     function checkNextLink (element) {

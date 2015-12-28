@@ -55,17 +55,17 @@ var AInPHasADistinctStyle = {
     test.get('scope').forEach(function (scope) {
       var anchors = DOM.scry('p a[href]:visible', scope);
 
-      anchors.each(function () {
-        var $this = $(this);
-        var $p = $this.closest('p');
-        var $parent = $this.parent();
+      anchors.forEach(function (element) {
+        var $element = $(element);
+        var $p = $element.closest('p');
+        var $parent = $element.parent();
 
         var _case = Case({
-          element: this
+          element: element
         });
         test.add(_case);
 
-        var aText = $this.text().trim();
+        var aText = $element.text().trim();
 
         // Get all text of the p element with all anchors removed
         var pText = DOM.scry('a[href]', $p.clone()).remove().end().text();
@@ -73,16 +73,16 @@ var AInPHasADistinctStyle = {
         if (aText === '' || pText.match(allowedPText)) {
           _case.set('status', 'inapplicable');
         }
-        else if ($this.css('color') === $p.css('color')) {
+        else if ($element.css('color') === $p.css('color')) {
           _case.set('status', 'passed');
         }
-        else if (elmHasDistinctStyle($this, $p)) {
+        else if (elmHasDistinctStyle($element, $p)) {
           _case.set('status', 'passed');
         }
-        else if (elmHasDistinctPosition($this)) {
+        else if (elmHasDistinctPosition($element)) {
           _case.set('status', 'passed');
         }
-        else if (DOM.scry('img', $this).length > 0) {
+        else if (DOM.scry('img', $element).length > 0) {
           _case.set('status', 'passed');
         }
         else if ($parent.text().trim() === aText &&

@@ -12,9 +12,8 @@ var LanguageDirectionPunctuation = {
     var currentDirection = (scope.attr('dir')) ? scope.attr('dir').toLowerCase() : 'ltr';
     var oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
     var textDirection = LanguageComponent.textDirection;
-    scope.each(function () {
-      var $local = $(this);
-      DOM.scry(TextSelectorComponent, $local)
+    scope.forEach(function (scope) {
+      DOM.scry(TextSelectorComponent, scope)
         .filter(function (element) {
           return TextNodeFilterComponent(element);
         })

@@ -18,8 +18,8 @@ var LanguageChangesAreIdentified = {
         return true;
       }
       matches = matches.length;
-      $children.each(function () {
-        childMatches = GetTextContentsComponent($(this)).match(regularExpression);
+      $children.forEach(function (element) {
+        childMatches = GetTextContentsComponent($(element)).match(regularExpression);
         if (childMatches) {
           matches -= childMatches.length;
         }

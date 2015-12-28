@@ -16,7 +16,7 @@ var HeadersAttrRefersToATableCell = {
         return;
       }
       else {
-        elmHeaders.each(function () {
+        elmHeaders.forEach(function (element) {
           var that = element;
           var headers = $(element).attr('headers').split(/\s+/);
           headers.forEach(function (item) {
