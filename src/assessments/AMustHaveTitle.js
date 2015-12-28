@@ -2,7 +2,6 @@ var Case = require('Case');
 const DOM = require('DOM');
 var AMustHaveTitle = {
   run: function (test) {
-    debugger;
     test.get('scope').forEach(function (element) {
       var links = DOM.scry('a', element);
 

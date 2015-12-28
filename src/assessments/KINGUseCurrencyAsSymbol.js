@@ -3,7 +3,7 @@ var Case = require('Case');
 const DOM = require('DOM');
 var KINGUseCurrencyAsSymbol = {
   run: function (test) {
-    function testCurrencyFormat (element, index) {
+    function testCurrencyFormat (element) {
       // Detect dates with several separators.
       var currencyNames = [
         'dollar',

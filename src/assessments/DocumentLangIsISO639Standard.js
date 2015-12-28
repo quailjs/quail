@@ -23,7 +23,7 @@ var DocumentLangIsISO639Standard = {
     else {
       // Loop over all language codes, checking if the current lang attribute starts
       // with a value that's in the languageCodes array
-      LanguageCodesStringsComponent.forEach(function (currentLangCode, i) {
+      LanguageCodesStringsComponent.forEach(function (currentLangCode) {
         if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
           matchedLang = true;
         }

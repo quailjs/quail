@@ -173,7 +173,6 @@ phantom.onError = function (msg, trace) {
 };
 
 var distPath = dir + '/dist'; // ./dist
-var nodeModulesPath = dir + '/node_modules';
 
 // var guidelinedata = fs.read(distPath + '/guideline.json');
 var guidelines = {}; // JSON.parse(guidelinedata);

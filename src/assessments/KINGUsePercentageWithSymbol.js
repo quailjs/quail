@@ -3,7 +3,7 @@ var Case = require('Case');
 const DOM = require('DOM');
 var KINGUsePercentageWithSymbol = {
   run: function (test) {
-    function testPercentFormat (element, index) {
+    function testPercentFormat (element) {
       // Detect dates with several separators.
       var percentName = [
         'percent',

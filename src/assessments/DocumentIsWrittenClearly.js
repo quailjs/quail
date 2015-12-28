@@ -7,7 +7,7 @@ var IsUnreadable = require('IsUnreadable');
 var DocumentIsWrittenClearly = {
   run: function (test) {
     DOM.scry(TextSelectorComponent, test.get('scope'))
-      .filter(function (element, index) {
+      .filter(function (element) {
         return TextNodeFilterComponent(element);
       })
       .forEach(function (element) {

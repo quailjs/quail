@@ -3,7 +3,7 @@ const DOM = require('DOM');
 var KINGUseLongDateFormat = {
   run: function (test) {
 
-    function testDateFormat (element, index) {
+    function testDateFormat (element) {
       // Detect dates with several separators.
       var dateReg = /\d{1,2}([./-])\d{1,2}\1\d{2,4}/g;
       var elemChildNodes = element.childNodes;

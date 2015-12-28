@@ -6,7 +6,7 @@ var WhiteSpaceInWord = {
   run: function (test) {
     var whitespaceGroup, nonWhitespace;
     DOM.scry(TextSelectorComponent, test.get('scope'))
-      .filter(function (element, index) {
+      .filter(function (element) {
         return TextNodeFilterComponent(element);
       })
       .forEach(function (element) {

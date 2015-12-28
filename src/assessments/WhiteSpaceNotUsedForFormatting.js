@@ -5,7 +5,7 @@ var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceNotUsedForFormatting = {
   run: function (test) {
     DOM.scry(TextSelectorComponent, test.get('scope'))
-      .filter(function (element, index) {
+      .filter(function (element) {
         return TextNodeFilterComponent(element);
       })
       .forEach(function (element) {
@@ -18,7 +18,7 @@ var WhiteSpaceNotUsedForFormatting = {
         }
         var lines = $(element).html().toLowerCase().split(/(<br\ ?\/?>)+/);
         var lineCount = 0;
-        lines.forEach(function (line, index) {
+        lines.forEach(function (line) {
           if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
             lineCount++;
           }

@@ -19,7 +19,7 @@ var HeadersAttrRefersToATableCell = {
         elmHeaders.each(function () {
           var that = element;
           var headers = $(element).attr('headers').split(/\s+/);
-          headers.forEach(function (item, index) {
+          headers.forEach(function (item) {
             if (item === '' || DOM.scry('th#' + item + ',td#' + item, self).length > 0) {
               _case.set({
                 element: that,

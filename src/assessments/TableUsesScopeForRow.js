@@ -3,7 +3,7 @@ const DOM = require('DOM');
 var TableUsesScopeForRow = {
   run: function (test) {
     DOM.scry('table', test.get('scope')).forEach(function (element) {
-      DOM.scry('td:first-child', this).forEach(function (element) {
+      DOM.scry('td:first-child', element).forEach(function (element) {
         var $element = $(element);
         var $next = $element.next('td');
         var isBold = $element.css('font-weight') === 'bold';
@@ -16,11 +16,11 @@ var TableUsesScopeForRow = {
         if (boldDoesNotFollowsBold || strongDoesNotFollowStrong) {
           test.add(new Case({
             element: element,
-            status: 'failed',
+            status: 'failed'
           }));
         }
       });
-      DOM.scry('td:last-child', this).forEach(function (element) {
+      DOM.scry('td:last-child', element).forEach(function (element) {
         var $element = $(element);
         var $prev = $element.prev('td');
         var isBold = $element.css('font-weight') === 'bold';
@@ -29,12 +29,11 @@ var TableUsesScopeForRow = {
         var hasStrong = DOM.scry('strong', this).length
         var prevIsNotStrong = DOM.scry('strong', $prev).length === 0;
         var strongDoesNotFollowStrong = (hasStrong && prevIsNotStrong);
-        var $prev = $(element).prev('td');
-        
+
         if (boldDoesNotFollowsBold || strongDoesNotFollowStrong) {
           test.add(new Case({
             element: element,
-            status: 'failed',
+            status: 'failed'
           }));
         }
       });

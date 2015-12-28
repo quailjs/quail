@@ -33,7 +33,7 @@ var AInPHasADistinctStyle = {
         styleProperties.push('background');
       }
 
-      styleProperties.forEach(function (styleProp, i) {
+      styleProperties.forEach(function (styleProp) {
         if (!result && $elm.css(styleProp) !== $parent.css(styleProp)) {
           result = true;
         }

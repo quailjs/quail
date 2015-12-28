@@ -9,7 +9,7 @@ var LanguageChangesAreIdentified = {
   run: function (test) {
     var scope = test.get('scope');
     var currentLanguage = LanguageComponent.getDocumentLanguage(scope, true);
-    var text, regularExpression, matches, $element, failed;
+    var text, matches, $element, failed;
 
     var noCharactersMatch = function ($element, language, matches, regularExpression) {
       var $children = DOM.scry('[lang=' + language + ']', $element);
@@ -38,7 +38,7 @@ var LanguageChangesAreIdentified = {
     };
 
     DOM.scry(TextSelectorComponent, scope)
-      .filter(function (element, index) {
+      .filter(function (element) {
         return TextNodeFilterComponent(element);
       })
       .forEach(function (element) {
@@ -69,19 +69,19 @@ var LanguageChangesAreIdentified = {
           }
         }
         var scripts = LanguageComponent.scripts;
-        for (var code in scripts) {
-          if (scripts.hasOwnProperty(code)) {
-            var script = scripts[code];
+        for (var script in scripts) {
+          if (scripts.hasOwnProperty(script)) {
+            var script = scripts[script];
           }
-          if (script.languages.indexOf(currentLanguage) !== -1) {
+          if (script.languageindexOf(currentLanguage) !== -1) {
             return;
           }
           matches = text.match(script.regularExpression);
-          if (matches && matches.length && noCharactersMatch($element, code, matches, regularExpression)) {
+          if (matches && matches.length && noCharactersMatch($element, script, matches, regularExpression)) {
             test.add(Case({
               element: self,
               info: {
-                language: code
+                language: script
               },
               status: 'failed'
             }));
