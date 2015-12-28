@@ -7,7 +7,7 @@ var FormWithRequiredLabel = {
     var lastStyle, currentStyle = false;
     redundant.required[redundant.required.indexOf('*')] = /\*/g;
     test.get('scope').forEach(function (scope) {
-      var $local = $(this);
+      var $local = $(scope);
       DOM.scry('label', $local).forEach(function (element) {
         var text = $(element).text().toLowerCase();
         var $label = $(element);

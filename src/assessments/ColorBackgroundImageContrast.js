@@ -54,7 +54,7 @@ var ColorBackgroundImageContrast = {
     test.get('scope').forEach(function (scope) {
       var textNodes = document.evaluate(
         'descendant::text()[normalize-space()]',
-        this,
+        scope,
         null,
         window.XPathResult.ORDERED_NODE_ITERATOR_TYPE,
         null

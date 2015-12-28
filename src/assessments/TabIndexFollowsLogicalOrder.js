@@ -3,9 +3,8 @@ const DOM = require('DOM');
 var TabIndexFollowsLogicalOrder = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
-      var $local = $(this);
       var index = 0;
-      DOM.scry('[tabindex]', $local).forEach(function (element) {
+      DOM.scry('[tabindex]', scope).forEach(function (element) {
         var $el = $(element);
         var tabindex = $el.attr('tabindex');
         if (parseInt(tabindex, 10) >= 0 && parseInt(tabindex, 10) !== index + 1) {

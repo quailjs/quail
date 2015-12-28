@@ -10,16 +10,16 @@ var Case = require('Case');
 var DocumentLangNotIdentified = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
-      var lang = ('getAttribute' in this) && this.getAttribute('lang');
+      var lang = ('getAttribute' in scope) && scope.getAttribute('lang');
       if (lang && lang.length > 1) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'passed'
         }));
       }
       else {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'failed'
         }));
       }

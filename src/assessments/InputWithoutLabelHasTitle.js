@@ -6,31 +6,31 @@ var InputWithoutLabelHasTitle = {
 
     test.get('scope').forEach(function (scope) {
 
-      var testableElements = DOM.scry('input, select, textarea', this);
+      var testableElements = DOM.scry('input, select, textarea', scope);
 
       if (testableElements.length === 0) {
         var _case = Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         });
         test.add(_case);
         return;
       }
       else {
-        testableElements.each(function () {
+        testableElements.each(function (element) {
           var _case = Case({
-            element: this
+            element: element
           });
           test.add(_case);
 
-          if ($(this).css('display') === 'none') {
+          if ($(element).css('display') === 'none') {
             _case.set({
               status: 'inapplicable'
             });
             return;
           }
-          if (!DOM.scry('label[for=' + $(this).attr('id') + ']', test.get('scope')).length &&
-            (!$(this).attr('title') || IsUnreadable($(this).attr('title')))) {
+          if (!DOM.scry('label[for=' + $(element).attr('id') + ']', test.get('scope')).length &&
+            (!$(element).attr('title') || IsUnreadable($(element).attr('title')))) {
             _case.set({
               status: 'failed'
             });

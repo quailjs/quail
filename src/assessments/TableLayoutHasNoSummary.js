@@ -5,8 +5,7 @@ var IsUnreadable = require('IsUnreadable');
 var TableLayoutHasNoSummary = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
-      var $local = $(this);
-      DOM.scry('table[summary]', $local).forEach(function (element) {
+      DOM.scry('table[summary]', scope).forEach(function (element) {
         var _case = test.add(Case({
           element: element
         }));

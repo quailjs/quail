@@ -5,7 +5,7 @@ var AudioMayBePresent = {
     var audioExtensions = ['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];
 
     test.get('scope').forEach(function (scope) {
-      var $this = $(this);
+      var $this = $(scope);
       var hasCase = false; // Test if a case has been created
 
       // Audio is definately an audio, and objects could be too.

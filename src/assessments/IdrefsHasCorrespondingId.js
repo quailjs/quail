@@ -27,22 +27,22 @@ var IdrefsHasCorrespondingId = {
         '[aria-flowto]',
         '[aria-labelledby]',
         '[aria-owns]'
-      ].join(', '), this);
+      ].join(', '), scope);
 
       if (testableElements.length === 0) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         }));
         return;
       }
       else {
-        testableElements.each(function () {
+        testableElements.each(function (element) {
           var _case = test.add(Case({
-            element: this
+            element: element
           }));
 
-          var attributes = getAttribute($(this));
+          var attributes = getAttribute($(element));
           var status = 'passed';
 
           attributes.forEach(function (item) {

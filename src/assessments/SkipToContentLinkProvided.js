@@ -7,7 +7,7 @@ var SkipContentStringsComponent = require('SkipContentStringsComponent');
 var SkipToContentLinkProvided = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
-      var $local = $(this);
+      var $local = $(scope);
       var skipLinkFound = false;
 
       DOM.scry('a[href*="#"]', $local).forEach(function (element) {

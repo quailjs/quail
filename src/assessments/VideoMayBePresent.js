@@ -8,11 +8,10 @@ var VideoMayBePresent = {
     var videoHosts = ['//www.youtube.com/embed/', '//player.vimeo.com/video/'];
 
     test.get('scope').forEach(function (scope) {
-      var $this = $(this);
       var hasCase = false; // Test if a case has been created
 
       // video elm is definately a video, and objects could be too.
-      DOM.scry('object, video', $this).forEach(function (element) {
+      DOM.scry('object, video', scope).forEach(function (element) {
         hasCase = true;
         test.add(Case({
           element: element,
@@ -22,9 +21,8 @@ var VideoMayBePresent = {
 
       // Links refering to files with an video extensions are probably video
       // though the file may not exist.
-      DOM.scry('a[href]', $this).forEach(function (element) {
-        var $this = $(element);
-        var extension = $this.attr('href').split('.').pop();
+      DOM.scry('a[href]', scope).forEach(function (element) {
+        var extension = element.getAttribute('href').split('.').pop();
         if ($.inArray(extension, videoExtensions) !== -1) {
           hasCase = true;
           test.add(Case({
@@ -35,7 +33,7 @@ var VideoMayBePresent = {
       });
 
       // some iframes with URL's of known video providers are also probably videos
-      DOM.scry('iframe', $this).forEach(function (element) {
+      DOM.scry('iframe', scope).forEach(function (element) {
         if (element.src.indexOf(videoHosts[0]) !== -1 ||
         element.src.indexOf(videoHosts[1]) !== -1) {
           hasCase = true;
@@ -49,7 +47,7 @@ var VideoMayBePresent = {
       // if no case was added, return inapplicable
       if (!hasCase) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         }));
       }
