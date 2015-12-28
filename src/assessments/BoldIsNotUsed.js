@@ -22,9 +22,9 @@ var BoldIsNotUsed = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         });

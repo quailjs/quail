@@ -22,15 +22,15 @@ var ImgWithMapHasUseMap = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
-          if (this.hasAttribute('usemap')) {
+          if (element.hasAttribute('usemap')) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

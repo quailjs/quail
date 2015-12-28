@@ -22,15 +22,15 @@ var EmbedMustHaveAltAttribute = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var alt = this.getAttribute('alt');
+          var alt = element.getAttribute('alt');
           if (alt && typeof alt === 'string' && alt.length > 0) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

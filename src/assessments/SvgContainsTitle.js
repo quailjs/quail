@@ -21,9 +21,9 @@ var SvgContainsTitle = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasTitle = DOM.scry('title', this).length === 1;
+          var hasTitle = DOM.scry('title', element).length === 1;
 
           // If a test is defined, then use it
           if (hasTitle) {
@@ -31,7 +31,7 @@ var SvgContainsTitle = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

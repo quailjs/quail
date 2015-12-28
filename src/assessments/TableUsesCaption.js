@@ -21,9 +21,9 @@ var TableUsesCaption = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasCaption = DOM.scry('caption', this).length === 1;
+          var hasCaption = DOM.scry('caption', element).length === 1;
 
           // If a test is defined, then use it
           if (hasCaption) {
@@ -31,7 +31,7 @@ var TableUsesCaption = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

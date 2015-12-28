@@ -22,15 +22,15 @@ var ImgShouldNotHaveTitle = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('title')) {
+          if (element.hasAttribute('title')) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

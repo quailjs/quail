@@ -22,11 +22,11 @@ var AreaHasAltValue = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (this.hasAttribute('alt') && (this.getAttribute('alt') || '').length > 0) {
+          if (element.hasAttribute('alt') && (element.getAttribute('alt') || '').length > 0) {
             status = 'passed';
           }
           else {
@@ -34,7 +34,7 @@ var AreaHasAltValue = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

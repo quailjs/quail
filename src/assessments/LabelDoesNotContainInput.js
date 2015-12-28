@@ -21,15 +21,15 @@ var LabelDoesNotContainInput = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (DOM.scry('input', this).length > 0) {
+          if (DOM.scry('input', element).length > 0) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

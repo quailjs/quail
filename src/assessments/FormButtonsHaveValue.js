@@ -22,17 +22,17 @@ var FormButtonsHaveValue = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
           // If the button has a value, it passes.
-          var val = this.getAttribute('value');
+          var val = element.getAttribute('value');
           if (val && typeof val === 'string' && val.length > 0) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

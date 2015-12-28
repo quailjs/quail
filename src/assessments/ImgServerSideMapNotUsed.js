@@ -22,15 +22,15 @@ var ImgServerSideMapNotUsed = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('ismap')) {
+          if (element.hasAttribute('ismap')) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

@@ -21,9 +21,9 @@ var ObjectMustHaveEmbed = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasEmbed = DOM.scry('embed', this).length > 0;
+          var hasEmbed = DOM.scry('embed', element).length > 0;
 
           // If a test is defined, then use it
           if (hasEmbed) {
@@ -31,7 +31,7 @@ var ObjectMustHaveEmbed = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

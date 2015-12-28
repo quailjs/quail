@@ -22,15 +22,15 @@ var LegendTextNotEmpty = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
-          if ($(this).text().trim().length > 0) {
+          if ($(element).text().trim().length > 0) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

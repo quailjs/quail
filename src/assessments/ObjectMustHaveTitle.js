@@ -22,9 +22,9 @@ var ObjectMustHaveTitle = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasTitle = this.hasAttribute('title');
+          var hasTitle = element.hasAttribute('title');
 
           // If a test is defined, then use it
           if (hasTitle) {
@@ -32,7 +32,7 @@ var ObjectMustHaveTitle = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

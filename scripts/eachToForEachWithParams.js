@@ -12,18 +12,18 @@ module.exports = function(file, api) {
     var scryProp;
     var eachProp;
     try {
-      scryProp = fe.parent.value.callee.object.callee.property.name;
+      scryProp = fe.parent.value.callee.object.name;
     }
     catch (e) {
     	// console.log('no scry call');
     }
     try {
-      eachProp = fe.parent.parent.value.expression.callee.property.name;
+      eachProp = fe.parent.value.callee.property.name;
     }
     catch (e) {
       // console.log('no each prop');
     }
-    return (['scry', 'filter', 'find', 'not'].indexOf(scryProp) > -1) && eachProp === 'each';
+    return (['candidates'].indexOf(scryProp) > -1) && eachProp === 'each';
   })
   .forEach(fn => {
     if (fn.value.body) {
@@ -106,12 +106,12 @@ module.exports = function(file, api) {
     .filter(e => {
       var scryProp;
       try {
-        scryProp = e.parent.value.object.callee.property.name;
+        scryProp = e.parent.value.object.name;
       }
       catch (e) {
       	//console.log('no scry');
       }
-      return (['scry', 'filter', 'find', 'not'].indexOf(scryProp) > -1);
+      return (['candidates'].indexOf(scryProp) > -1);
     })
     .replaceWith(
       p => j.identifier('forEach')

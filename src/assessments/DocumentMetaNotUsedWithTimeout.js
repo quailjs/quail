@@ -23,17 +23,17 @@ var DocumentMetaNotUsedWithTimeout = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('http-equiv') && this.getAttribute('http-equiv') === 'refresh') {
-            if (this.hasAttribute('content') && (this.getAttribute('content') || '').length > 0) {
+          if (element.hasAttribute('http-equiv') && element.getAttribute('http-equiv') === 'refresh') {
+            if (element.hasAttribute('content') && (element.getAttribute('content') || '').length > 0) {
               status = 'failed';
             }
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

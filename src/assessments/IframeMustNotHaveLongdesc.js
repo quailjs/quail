@@ -22,15 +22,15 @@ var IframeMustNotHaveLongdesc = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('longdesc')) {
+          if (element.hasAttribute('longdesc')) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

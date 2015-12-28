@@ -22,13 +22,13 @@ var FormHasSubmitButton = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var submitButton = DOM.scry(selector, scope);
 
           var status = (submitButton.length === 1) ? 'passed' : 'failed';
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

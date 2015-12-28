@@ -24,11 +24,11 @@ var ImgNotReferredToByColorAlone = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           }
           else {
@@ -36,7 +36,7 @@ var ImgNotReferredToByColorAlone = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

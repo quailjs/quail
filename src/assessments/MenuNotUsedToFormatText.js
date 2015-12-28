@@ -24,11 +24,11 @@ var MenuNotUsedToFormatText = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

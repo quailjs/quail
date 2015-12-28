@@ -25,16 +25,16 @@ var DocumentReadingDirection = {
         }));
       }
       else {
-        candidates.each(function () {
-          if (this.hasAttribute('dir') && (this.getAttribute('dir') || '') === 'rtl') {
+        candidates.forEach(function (element) {
+          if (element.hasAttribute('dir') && (element.getAttribute('dir') || '') === 'rtl') {
             test.add(Case({
-              element: this,
+              element: element,
               status: 'passed'
             }));
           }
           else {
             test.add(Case({
-              element: this,
+              element: element,
               status: 'failed'
             }));
           }

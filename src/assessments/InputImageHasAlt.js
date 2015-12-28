@@ -22,15 +22,15 @@ var InputImageHasAlt = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
-          if (this.hasAttribute('alt')) {
+          if (element.hasAttribute('alt')) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

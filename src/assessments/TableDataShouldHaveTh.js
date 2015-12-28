@@ -21,16 +21,16 @@ var TableDataShouldHaveTh = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasHeading = DOM.scry('th', this).length > 0;
+          var hasHeading = DOM.scry('th', element).length > 0;
           // If a test is defined, then use it
           if (hasHeading) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

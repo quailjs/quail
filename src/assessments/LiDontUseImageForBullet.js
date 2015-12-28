@@ -24,15 +24,15 @@ var LiDontUseImageForBullet = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if ($(this).children('img').length > 0) {
+          if ($(element).children('img').length > 0) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

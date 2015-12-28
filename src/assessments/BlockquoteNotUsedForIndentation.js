@@ -22,17 +22,17 @@ var BlockquoteNotUsedForIndentation = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
 
-          if (this.hasAttribute('cite') && (this.getAttribute('cite') || '').length > 0) {
+          if (element.hasAttribute('cite') && (element.getAttribute('cite') || '').length > 0) {
             test.add(Case({
-              element: this,
+              element: element,
               status: 'passed'
             }));
           }
           else {
             test.add(Case({
-              element: this,
+              element: element,
               status: 'cantTell'
             }));
           }

@@ -32,9 +32,9 @@ var AMultimediaTextAlternative = {
       }
       else {
         // cantTell.
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
