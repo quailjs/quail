@@ -9,7 +9,7 @@ var Case = require('Case');
 
 var DocumentLangNotIdentified = {
   run: function (test) {
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var lang = ('getAttribute' in this) && this.getAttribute('lang');
       if (lang && lang.length > 1) {
         test.add(Case({

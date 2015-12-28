@@ -12,7 +12,7 @@ var FrameIsNotUsed = {
   run: function (test) {
     var selector = 'frame';
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({

@@ -13,7 +13,7 @@ var FormErrorMessageHelpsUser = {
 
     var selector = 'form';
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({

@@ -15,7 +15,7 @@ var ImgAltIdentifiesLinkDestination = {
 
     var selector = 'a img[alt]:first';
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({

@@ -11,7 +11,7 @@ var Case = require('Case');
 
 var CssDocumentMakesSenseStyleTurnedOff = {
   run: function (test) {
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       test.add(Case({
         element: undefined,
         status: 'untested'

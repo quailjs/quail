@@ -20,7 +20,7 @@ var DomOrderMatchesVisualOrder = {
 
     var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({

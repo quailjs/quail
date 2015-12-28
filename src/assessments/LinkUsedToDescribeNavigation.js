@@ -15,7 +15,7 @@ var LinkUsedToDescribeNavigation = {
 
     var selector = 'html:not(html:has(link[rel=index]))';
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({

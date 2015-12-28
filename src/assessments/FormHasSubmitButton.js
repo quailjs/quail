@@ -12,7 +12,7 @@ var FormHasSubmitButton = {
 
     var selector = 'input[type=submit], button[type=submit]';
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry('form', this);
 
       if (candidates.length === 0) {

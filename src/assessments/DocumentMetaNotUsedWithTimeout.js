@@ -13,7 +13,7 @@ var DocumentMetaNotUsedWithTimeout = {
 
     var selector = 'meta';
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, $(this));
 
       if (!candidates.length) {

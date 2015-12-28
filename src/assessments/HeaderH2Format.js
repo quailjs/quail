@@ -13,7 +13,7 @@ var HeaderH2Format = {
 
     var selector = 'h2';
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({

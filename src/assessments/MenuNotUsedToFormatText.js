@@ -15,7 +15,7 @@ var MenuNotUsedToFormatText = {
 
     var selector = 'menu:not(menu li:parent(menu))';
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, $(this));
       if (!candidates.length) {
         test.add(Case({

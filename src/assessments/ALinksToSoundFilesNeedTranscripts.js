@@ -17,7 +17,7 @@ var ALinksToSoundFilesNeedTranscripts = {
       'a[href$=".aif"]'
     ].join(', ');
 
-    test.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, $(this));
       // Inapplicable.
       if (!candidates.length) {
