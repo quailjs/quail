@@ -45,7 +45,7 @@ var LanguageDirAttributeIsUsed = {
 
     test.get('scope').forEach(function (scope) {
       DOM.scry(TextSelectorComponent, this)
-        .filter(function (index, element) {
+        .filter(function (element, index) {
           return TextNodeFilterComponent(element);
         })
         .each(countDirAttributes);

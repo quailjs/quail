@@ -42,7 +42,7 @@ var DoNotUseGraphicalSymbolToConveyInformation = {
     // Not applicables.
     DOM.scry(TextSelectorComponent, test.get('scope'))
       .filter('abbr, acronym')
-      .filter(function (index, element) {
+      .filter(function (element, index) {
         return TextNodeFilterComponent(element);
       })
       .each(function () {

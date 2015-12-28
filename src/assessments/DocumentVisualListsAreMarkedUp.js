@@ -24,7 +24,7 @@ var DocumentVisualListsAreMarkedUp = {
     'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
 
     DOM.scry(TextSelectorComponent, test.get('scope'))
-      .filter(function (index, element) {
+      .filter(function (element, index) {
         return TextNodeFilterComponent(element);
       })
       .each(function () {

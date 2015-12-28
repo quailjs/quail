@@ -11,7 +11,7 @@ var LanguageUnicodeDirection = {
     scope.each(function () {
       var $local = $(this);
       DOM.scry(TextSelectorComponent, $local)
-        .filter(function (index, element) {
+        .filter(function (element, index) {
           return TextNodeFilterComponent(element);
         })
         .each(function () {

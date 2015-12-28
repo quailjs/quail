@@ -38,7 +38,7 @@ var LanguageChangesAreIdentified = {
     };
 
     DOM.scry(TextSelectorComponent, scope)
-      .filter(function (index, element) {
+      .filter(function (element, index) {
         return TextNodeFilterComponent(element);
       })
       .each(function () {

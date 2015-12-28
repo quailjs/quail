@@ -3,7 +3,7 @@ const DOM = require('DOM');
 var AAdjacentWithSameResourceShouldBeCombined = {
   run: function (test) {
 
-    function findAdjacent (index, element) {
+    function findAdjacent (element) {
       var $element = $(element);
       // Find all the links
       var $links = DOM.scry('a', $element);
@@ -25,7 +25,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
       $coupletons.each(checkNextLink);
     }
 
-    function checkNextLink (index, element) {
+    function checkNextLink (element) {
       var $element = $(element);
       var thisHref = element.getAttribute('href');
       var $nextLink = $element.next();
@@ -42,7 +42,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
       _case.set({status: status});
     }
 
-    function excludeSingleLinks (index, element) {
+    function excludeSingleLinks (element) {
       var _case = Case({element: element});
       test.add(_case);
       _case.set({
