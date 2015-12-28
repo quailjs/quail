@@ -8234,14 +8234,12 @@ if (typeof module !== 'undefined') {
 }
 
 },{}],43:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var AAdjacentWithSameResourceShouldBeCombined = {
-  run: function run(test) {
+  run: function (test) {
 
-    function findAdjacent(index, element) {
+    function findAdjacent(element) {
       var $element = $(element);
       // Find all the links
       var $links = DOM.scry('a', $element);
@@ -8258,11 +8256,11 @@ var AAdjacentWithSameResourceShouldBeCombined = {
         }
       });
 
-      $singletons.each(excludeSingleLinks);
-      $coupletons.each(checkNextLink);
+      $singletons.forEach(excludeSingleLinks);
+      $coupletons.forEach(checkNextLink);
     }
 
-    function checkNextLink(index, element) {
+    function checkNextLink(element) {
       var $element = $(element);
       var thisHref = element.getAttribute('href');
       var $nextLink = $element.next();
@@ -8279,7 +8277,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
       _case.set({ status: status });
     }
 
-    function excludeSingleLinks(index, element) {
+    function excludeSingleLinks(element) {
       var _case = Case({ element: element });
       test.add(_case);
       _case.set({
@@ -8287,7 +8285,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
       });
     }
 
-    test.get('scope').each(findAdjacent);
+    test.get('scope').forEach(findAdjacent);
   },
 
   meta: {
@@ -8319,20 +8317,18 @@ var AAdjacentWithSameResourceShouldBeCombined = {
 module.exports = AAdjacentWithSameResourceShouldBeCombined;
 
 },{"Case":31,"DOM":32}],44:[function(require,module,exports){
-'use strict';
-
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var AImgAltNotRepetitive = {
-  run: function run(test) {
-    DOM.scry('a img[alt]', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('a img[alt]', test.get('scope')).forEach(function (element) {
       var _case = test.add(Case({
-        element: this
+        element: element
       }));
 
-      var alt = CleanStringComponent($(this).attr('alt'));
-      var linkText = CleanStringComponent($(this).closest('a').text());
+      var alt = CleanStringComponent($(element).attr('alt'));
+      var linkText = CleanStringComponent($(element).closest('a').text());
 
       if (alt.length > 0 && linkText.indexOf(alt) > -1) {
         _case.set({
@@ -8375,12 +8371,10 @@ var AImgAltNotRepetitive = {
 module.exports = AImgAltNotRepetitive;
 
 },{"Case":31,"CleanStringComponent":2,"DOM":32}],45:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var AInPHasADistinctStyle = {
-  run: function run(test) {
+  run: function (test) {
 
     /**
      * Checks if an element has a border set
@@ -8410,7 +8404,7 @@ var AInPHasADistinctStyle = {
         styleProperties.push('background');
       }
 
-      styleProperties.forEach(function (styleProp, i) {
+      styleProperties.forEach(function (styleProp) {
         if (!result && $elm.css(styleProp) !== $parent.css(styleProp)) {
           result = true;
         }
@@ -8432,30 +8426,30 @@ var AInPHasADistinctStyle = {
     test.get('scope').forEach(function (scope) {
       var anchors = DOM.scry('p a[href]:visible', scope);
 
-      anchors.each(function () {
-        var $this = $(this);
-        var $p = $this.closest('p');
-        var $parent = $this.parent();
+      anchors.forEach(function (element) {
+        var $element = $(element);
+        var $p = $element.closest('p');
+        var $parent = $element.parent();
 
         var _case = Case({
-          element: this
+          element: element
         });
         test.add(_case);
 
-        var aText = $this.text().trim();
+        var aText = $element.text().trim();
 
         // Get all text of the p element with all anchors removed
         var pText = DOM.scry('a[href]', $p.clone()).remove().end().text();
 
         if (aText === '' || pText.match(allowedPText)) {
           _case.set('status', 'inapplicable');
-        } else if ($this.css('color') === $p.css('color')) {
+        } else if ($element.css('color') === $p.css('color')) {
           _case.set('status', 'passed');
-        } else if (elmHasDistinctStyle($this, $p)) {
+        } else if (elmHasDistinctStyle($element, $p)) {
           _case.set('status', 'passed');
-        } else if (elmHasDistinctPosition($this)) {
+        } else if (elmHasDistinctPosition($element)) {
           _case.set('status', 'passed');
-        } else if (DOM.scry('img', $this).length > 0) {
+        } else if (DOM.scry('img', $element).length > 0) {
           _case.set('status', 'passed');
         } else if ($parent.text().trim() === aText && elmHasDistinctStyle($parent, $p)) {
           _case.set('status', 'passed');
@@ -8483,16 +8477,14 @@ var AInPHasADistinctStyle = {
 module.exports = AInPHasADistinctStyle;
 
 },{"Case":31,"DOM":32}],46:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var ALinkTextDoesNotBeginWithRedundantWord = {
-  run: function run(test) {
-    DOM.scry('a', test.get('scope')).each(function () {
-      var self = this;
-      var $link = $(this);
+  run: function (test) {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
+      var self = element;
+      var $link = $(element);
       var text = '';
       var $img = DOM.scry('img[alt]', $link);
       if ($img.length) {
@@ -8545,37 +8537,35 @@ var ALinkTextDoesNotBeginWithRedundantWord = {
 module.exports = ALinkTextDoesNotBeginWithRedundantWord;
 
 },{"Case":31,"DOM":32,"RedundantStringsComponent":18}],47:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ALinkWithNonText = {
-  run: function run(test) {
-    DOM.scry('a', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (!$(this).is('a:has(img, object, embed)[href]')) {
+      if (!$(element).is('a:has(img, object, embed)[href]')) {
         _case.set({
           status: 'inapplicable'
         });
         return;
       }
-      if (!IsUnreadable($(this).text())) {
+      if (!IsUnreadable($(element).text())) {
         _case.set({
           status: 'passed'
         });
         return;
       }
       var unreadable = 0;
-      DOM.scry('img, object, embed', this).each(function () {
-        if ($(this).is('img') && IsUnreadable($(this).attr('alt')) || !$(this).is('img') && IsUnreadable($(this).attr('title'))) {
+      DOM.scry('img, object, embed', element).forEach(function (element) {
+        if ($(element).is('img') && IsUnreadable($(element).attr('alt')) || !$(element).is('img') && IsUnreadable($(element).attr('title'))) {
           unreadable++;
         }
       });
-      if (DOM.scry('img, object, embed', this).length === unreadable) {
+      if (DOM.scry('img, object, embed', element).length === unreadable) {
         _case.set({
           status: 'failed'
         });
@@ -8615,20 +8605,18 @@ var ALinkWithNonText = {
 module.exports = ALinkWithNonText;
 
 },{"Case":31,"DOM":32,"IsUnreadable":11}],48:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ALinksAreSeparatedByPrintableCharacters = {
-  run: function run(test) {
-    DOM.scry('a', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
       var _case = test.add(Case({
-        element: this
+        element: element
       }));
       // Only test if there's another a tag.
-      if ($(this).next('a').length) {
-        if (IsUnreadable($(this).get(0).nextSibling.wholeText)) {
+      if ($(element).next('a').length) {
+        if (IsUnreadable($(element).get(0).nextSibling.wholeText)) {
           _case.set({
             status: 'failed'
           });
@@ -8658,24 +8646,22 @@ var ALinksAreSeparatedByPrintableCharacters = {
 module.exports = ALinksAreSeparatedByPrintableCharacters;
 
 },{"Case":31,"DOM":32,"IsUnreadable":11}],49:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var NewWindowStringsComponent = require('NewWindowStringsComponent');
 var ALinksDontOpenNewWindow = {
-  run: function run(test) {
+  run: function (test) {
     // Links without a target attribute pass.
-    DOM.scry('a', test.get('scope')).not('[target=_new], [target=_blank]').each(function () {
+    DOM.scry('a', test.get('scope')).not('[target=_new], [target=_blank]').forEach(function (element) {
       test.add(Case({
-        element: this,
+        element: element,
         status: 'passed'
       }));
     });
     // Links with a target attribute pass if the link text indicates that the
     // link will open a new window.
-    DOM.scry('a[target=_new], a[target=_blank]', test.get('scope')).each(function () {
-      var $link = $(this);
+    DOM.scry('a[target=_new], a[target=_blank]', test.get('scope')).forEach(function (element) {
+      var $link = $(element);
       var passes = false;
       var i = 0;
       var text = $link.text() + ' ' + $link.attr('title');
@@ -8692,12 +8678,12 @@ var ALinksDontOpenNewWindow = {
       // Build a Case.
       if (passes) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       } else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       }
@@ -8727,28 +8713,26 @@ var ALinksDontOpenNewWindow = {
 module.exports = ALinksDontOpenNewWindow;
 
 },{"Case":31,"DOM":32,"NewWindowStringsComponent":15}],50:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var SymbolsStringsComponent = require('SymbolsStringsComponent');
 var ALinksNotSeparatedBySymbols = {
-  run: function run(test) {
-    DOM.scry('a', test.get('scope')).each(function () {
-      var $link = $(this);
+  run: function (test) {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
+      var $link = $(element);
       if ($link.next('a').length) {
         var text = $link.get(0).nextSibling.wholeText;
         // The string between the links is composed of symbols.
         if (typeof text === 'string' && SymbolsStringsComponent.indexOf(text.toLowerCase().trim()) !== -1) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         }
         // The string between the links is composed of words.
         else {
             test.add(Case({
-              element: this,
+              element: element,
               status: 'passed'
             }));
           }
@@ -8756,7 +8740,7 @@ var ALinksNotSeparatedBySymbols = {
       // If nothing follows the link, then there is nothing to test.
       else {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'inapplicable'
           }));
         }
@@ -8780,16 +8764,14 @@ var ALinksNotSeparatedBySymbols = {
 module.exports = ALinksNotSeparatedBySymbols;
 
 },{"Case":31,"DOM":32,"SymbolsStringsComponent":24}],51:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var ALinksToMultiMediaRequireTranscript = {
-  run: function run(test) {
+  run: function (test) {
     var selector = ['a[href$=".wmv"]', 'a[href$=".mpg"]', 'a[href$=".mov"]', 'a[href$=".ram"]', 'a[href$=".aif"]'].join(', ');
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       // Inapplicable.
       if (!candidates.length) {
         test.add(Case({
@@ -8798,9 +8780,9 @@ var ALinksToMultiMediaRequireTranscript = {
         }));
       } else {
         // cantTell.
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
@@ -8832,17 +8814,15 @@ var ALinksToMultiMediaRequireTranscript = {
 module.exports = ALinksToMultiMediaRequireTranscript;
 
 },{"Case":31,"DOM":32}],52:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var ALinksToSoundFilesNeedTranscripts = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = ['a[href$=".wav"]', 'a[href$=".snd"]', 'a[href$=".mp3"]', 'a[href$=".iff"]', 'a[href$=".svx"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".pcm"]', 'a[href$=".aif"]'].join(', ');
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       // Inapplicable.
       if (!candidates.length) {
         test.add(Case({
@@ -8851,9 +8831,9 @@ var ALinksToSoundFilesNeedTranscripts = {
         }));
       } else {
         // cantTell.
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
@@ -8885,17 +8865,15 @@ var ALinksToSoundFilesNeedTranscripts = {
 module.exports = ALinksToSoundFilesNeedTranscripts;
 
 },{"Case":31,"DOM":32}],53:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var AMultimediaTextAlternative = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = ['a[href$=".aif"]', 'a[href$=".iff"]', 'a[href$=".mov"]', 'a[href$=".mp3"]', 'a[href$=".mpg"]', 'a[href$=".ram"]', 'a[href$=".sam"]', 'a[href$=".smp"]', 'a[href$=".snd"]', 'a[href$=".svx"]', 'a[href$=".pcm"]', 'a[href$=".vce"]', 'a[href$=".vox"]', 'a[href$=".wav"]', 'a[href$=".wmv"]'].join(', ');
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       // Inapplicable.
       if (!candidates.length) {
         test.add(Case({
@@ -8904,9 +8882,9 @@ var AMultimediaTextAlternative = {
         }));
       } else {
         // cantTell.
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
@@ -8923,27 +8901,25 @@ var AMultimediaTextAlternative = {
 module.exports = AMultimediaTextAlternative;
 
 },{"Case":31,"DOM":32}],54:[function(require,module,exports){
-'use strict';
-
 var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var AMustContainText = {
-  run: function run(test) {
-    DOM.scry('a', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 
-      if (!$(this).attr('href') || $(this).css('display') === 'none') {
+      if (!$(element).attr('href') || $(element).css('display') === 'none') {
         _case.set({
           status: 'inapplicable'
         });
         return;
       }
 
-      if (ContainsReadableTextComponent($(this), true)) {
+      if (ContainsReadableTextComponent($(element), true)) {
         _case.set({
           status: 'passed'
         });
@@ -8987,13 +8963,10 @@ var AMustContainText = {
 module.exports = AMustContainText;
 
 },{"Case":31,"ContainsReadableTextComponent":4,"DOM":32}],55:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var AMustHaveTitle = {
-  run: function run(test) {
-    debugger;
+  run: function (test) {
     test.get('scope').forEach(function (element) {
       var links = DOM.scry('a', element);
 
@@ -9034,8 +9007,6 @@ var AMustHaveTitle = {
 module.exports = AMustHaveTitle;
 
 },{"Case":31,"DOM":32}],56:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -9044,35 +9015,35 @@ module.exports = AMustHaveTitle;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var AMustNotHaveJavascriptHref = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
     var selector = 'a[href^="javascript:"]';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: options.test ? 'inapplicable' : 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -9097,28 +9068,26 @@ var AMustNotHaveJavascriptHref = {
 module.exports = AMustNotHaveJavascriptHref;
 
 },{"Case":31,"DOM":32}],57:[function(require,module,exports){
-'use strict';
-
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
 var ASuspiciousLinkText = {
-  run: function run(test) {
-    DOM.scry('a', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (!$(this).attr('href')) {
+      if (!$(element).attr('href')) {
         _case.set({
           status: 'inapplicable'
         });
         return;
       }
-      var text = $(this).text();
-      DOM.scry('img[alt]', this).each(function () {
-        text = text + $(this).attr('alt');
+      var text = $(element).text();
+      DOM.scry('img[alt]', element).forEach(function (element) {
+        text = text + $(element).attr('alt');
       });
       if (SuspiciousLinksStringsComponent.indexOf(CleanStringComponent(text)) > -1) {
         _case.set({
@@ -9161,8 +9130,6 @@ var ASuspiciousLinkText = {
 module.exports = ASuspiciousLinkText;
 
 },{"Case":31,"CleanStringComponent":2,"DOM":32,"SuspiciousLinksStringsComponent":23}],58:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -9171,35 +9138,35 @@ module.exports = ASuspiciousLinkText;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var ATitleDescribesDestination = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
     var selector = 'a[title]';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: options.test ? 'inapplicable' : 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -9230,12 +9197,10 @@ var ATitleDescribesDestination = {
 module.exports = ATitleDescribesDestination;
 
 },{"Case":31,"DOM":32}],59:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var AnimatedGifMayBePresent = {
-  run: function run(test) {
+  run: function (test) {
 
     /**
      * Test if gif is animated
@@ -9287,15 +9252,15 @@ var AnimatedGifMayBePresent = {
       request.send();
     }
 
-    DOM.scry('img', test.get('scope')).each(function () {
+    DOM.scry('img', test.get('scope')).forEach(function (element) {
 
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 
-      var imgSrc = $(this).attr('src');
-      var ext = $(this).attr('src').split('.').pop().toLowerCase();
+      var imgSrc = $(element).attr('src');
+      var ext = $(element).attr('src').split('.').pop().toLowerCase();
 
       if (ext !== 'gif') {
         _case.set({
@@ -9337,19 +9302,17 @@ var AnimatedGifMayBePresent = {
 module.exports = AnimatedGifMayBePresent;
 
 },{"Case":31,"DOM":32}],60:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var AppletContainsTextEquivalent = {
-  run: function run(test) {
-    DOM.scry('applet[alt=""], applet:not(applet[alt])', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('applet[alt=""], applet:not(applet[alt])', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (IsUnreadable($(this).text())) {
+      if (IsUnreadable($(element).text())) {
         _case.set({
           status: 'failed'
         });
@@ -9385,11 +9348,9 @@ var AppletContainsTextEquivalent = {
 module.exports = AppletContainsTextEquivalent;
 
 },{"Case":31,"DOM":32,"IsUnreadable":11}],61:[function(require,module,exports){
-'use strict';
-
 var PlaceholderComponent = require('PlaceholderComponent');
 var AppletContainsTextEquivalentInAlt = {
-  run: function run(test) {
+  run: function (test) {
     PlaceholderComponent(test, {
       selector: 'applet',
       attribute: 'alt',
@@ -9421,8 +9382,6 @@ var AppletContainsTextEquivalentInAlt = {
 module.exports = AppletContainsTextEquivalentInAlt;
 
 },{"PlaceholderComponent":16}],62:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -9431,35 +9390,35 @@ module.exports = AppletContainsTextEquivalentInAlt;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var AppletProvidesMechanismToReturnToParent = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
     var selector = 'applet';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: options.test ? 'inapplicable' : 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -9484,8 +9443,6 @@ var AppletProvidesMechanismToReturnToParent = {
 module.exports = AppletProvidesMechanismToReturnToParent;
 
 },{"Case":31,"DOM":32}],63:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -9494,35 +9451,35 @@ module.exports = AppletProvidesMechanismToReturnToParent;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var AppletTextEquivalentsGetUpdated = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
     var selector = 'applet';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: options.test ? 'inapplicable' : 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -9546,8 +9503,6 @@ var AppletTextEquivalentsGetUpdated = {
 module.exports = AppletTextEquivalentsGetUpdated;
 
 },{"Case":31,"DOM":32}],64:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -9556,35 +9511,35 @@ module.exports = AppletTextEquivalentsGetUpdated;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var AppletUIMustBeAccessible = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
     var selector = 'applet';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: options.test ? 'inapplicable' : 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -9616,8 +9571,6 @@ var AppletUIMustBeAccessible = {
 module.exports = AppletUIMustBeAccessible;
 
 },{"Case":31,"DOM":32}],65:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -9626,35 +9579,35 @@ module.exports = AppletUIMustBeAccessible;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var AppletsDoNotFlicker = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
     var selector = 'applet';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: options.test ? 'inapplicable' : 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -9686,8 +9639,6 @@ var AppletsDoNotFlicker = {
 module.exports = AppletsDoNotFlicker;
 
 },{"Case":31,"DOM":32}],66:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -9696,35 +9647,35 @@ module.exports = AppletsDoNotFlicker;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var AppletsDonotUseColorAlone = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
     var selector = 'applet';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: options.test ? 'inapplicable' : 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -9751,8 +9702,6 @@ var AppletsDonotUseColorAlone = {
 module.exports = AppletsDonotUseColorAlone;
 
 },{"Case":31,"DOM":32}],67:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -9761,28 +9710,28 @@ module.exports = AppletsDonotUseColorAlone;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var AreaAltIdentifiesDestination = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
     var selector = 'area:not(area[alt])';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, $(this));
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -9816,8 +9765,6 @@ var AreaAltIdentifiesDestination = {
 module.exports = AreaAltIdentifiesDestination;
 
 },{"Case":31,"DOM":32}],68:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -9826,35 +9773,35 @@ module.exports = AreaAltIdentifiesDestination;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var AreaAltRefersToText = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
     var selector = 'area';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -9879,8 +9826,6 @@ var AreaAltRefersToText = {
 module.exports = AreaAltRefersToText;
 
 },{"Case":31,"DOM":32}],69:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -9889,23 +9834,23 @@ module.exports = AreaAltRefersToText;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var NewWindowStringsComponent = require('NewWindowStringsComponent');
 
 var AreaDontOpenNewWindow = {
-  run: function run(test) {
+  run: function (test) {
     // Links without a target attribute pass.
-    DOM.scry('area', test.get('scope')).not('[target=_new], [target=_blank]').each(function () {
+    DOM.scry('area', test.get('scope')).not('[target=_new], [target=_blank]').forEach(function (element) {
       test.add(Case({
-        element: this,
+        element: element,
         status: 'passed'
       }));
     });
     // Links with a target attribute pass if the link text indicates that the
     // link will open a new window.
-    DOM.scry('area[target=_new], area[target=_blank]', test.get('scope')).each(function () {
-      var $link = $(this);
+    DOM.scry('area[target=_new], area[target=_blank]', test.get('scope')).forEach(function (element) {
+      var $link = $(element);
       var passes = false;
       var i = 0;
       var text = $link.text() + ' ' + $link.attr('title');
@@ -9922,12 +9867,12 @@ var AreaDontOpenNewWindow = {
       // Build a Case.
       if (passes) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       } else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       }
@@ -9951,8 +9896,6 @@ var AreaDontOpenNewWindow = {
 module.exports = AreaDontOpenNewWindow;
 
 },{"Case":31,"DOM":32,"NewWindowStringsComponent":15}],70:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -9961,33 +9904,33 @@ module.exports = AreaDontOpenNewWindow;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var AreaHasAltValue = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'area';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (this.hasAttribute('alt') && (this.getAttribute('alt') || '').length > 0) {
+          if (element.hasAttribute('alt') && (element.getAttribute('alt') || '').length > 0) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -10024,8 +9967,6 @@ var AreaHasAltValue = {
 module.exports = AreaHasAltValue;
 
 },{"Case":31,"DOM":32}],71:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -10034,35 +9975,35 @@ module.exports = AreaHasAltValue;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var AreaLinksToSoundFile = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
     var selector = ['area[href$="wav"]', 'area[href$="snd"]', 'area[href$="mp3"]', 'area[href$="iff"]', 'area[href$="svx"]', 'area[href$="sam"]', 'area[href$="smp"]', 'area[href$="vce"]', 'area[href$="vox"]', 'area[href$="pcm"]', 'area[href$="aif"]'].join(', ');
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -10093,35 +10034,33 @@ var AreaLinksToSoundFile = {
 module.exports = AreaLinksToSoundFile;
 
 },{"Case":31,"DOM":32}],72:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var AudioMayBePresent = {
-  run: function run(test) {
+  run: function (test) {
     var audioExtensions = ['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];
 
     test.get('scope').forEach(function (scope) {
-      var $this = $(this);
+      var $this = $(scope);
       var hasCase = false; // Test if a case has been created
 
       // Audio is definately an audio, and objects could be too.
-      DOM.scry('object, audio', $this).each(function () {
+      DOM.scry('object, audio', $this).forEach(function (element) {
         hasCase = true;
         test.add(Case({
-          element: this,
+          element: element,
           status: 'cantTell'
         }));
       });
 
       // Links refering to files with an audio extensions are good indicators too
-      DOM.scry('a[href]', $this).each(function () {
-        var $this = $(this);
+      DOM.scry('a[href]', $this).forEach(function (element) {
+        var $this = $(element);
         var extension = $this.attr('href').split('.').pop();
         if ($.inArray(extension, audioExtensions) !== -1) {
           hasCase = true;
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         }
@@ -10154,8 +10093,6 @@ var AudioMayBePresent = {
 module.exports = AudioMayBePresent;
 
 },{"Case":31,"DOM":32}],73:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -10164,24 +10101,24 @@ module.exports = AudioMayBePresent;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var BasefontIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'basefont';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         });
@@ -10206,8 +10143,6 @@ var BasefontIsNotUsed = {
 module.exports = BasefontIsNotUsed;
 
 },{"Case":31,"DOM":32}],74:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -10216,24 +10151,24 @@ module.exports = BasefontIsNotUsed;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var BlinkIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'blink';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         });
@@ -10264,8 +10199,6 @@ var BlinkIsNotUsed = {
 module.exports = BlinkIsNotUsed;
 
 },{"Case":31,"DOM":32}],75:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -10274,31 +10207,31 @@ module.exports = BlinkIsNotUsed;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var BlockquoteNotUsedForIndentation = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'blockquote';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
 
-          if (this.hasAttribute('cite') && (this.getAttribute('cite') || '').length > 0) {
+          if (element.hasAttribute('cite') && (element.getAttribute('cite') || '').length > 0) {
             test.add(Case({
-              element: this,
+              element: element,
               status: 'passed'
             }));
           } else {
             test.add(Case({
-              element: this,
+              element: element,
               status: 'cantTell'
             }));
           }
@@ -10330,24 +10263,22 @@ var BlockquoteNotUsedForIndentation = {
 module.exports = BlockquoteNotUsedForIndentation;
 
 },{"Case":31,"DOM":32}],76:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var BlockquoteUseForQuotations = {
-  run: function run(test) {
-    DOM.scry('p', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('p', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if ($(this).parents('blockquote').length > 0) {
+      if ($(element).parents('blockquote').length > 0) {
         _case.set({
           status: 'inapplicable'
         });
         return;
       }
-      if ($(this).text().substr(0, 1).search(/'|"|«|“|「/) > -1 && $(this).text().substr(-1, 1).search(/'|"|»|„|」/) > -1) {
+      if ($(element).text().substr(0, 1).search(/'|"|«|“|「/) > -1 && $(element).text().substr(-1, 1).search(/'|"|»|„|」/) > -1) {
         _case.set({
           status: 'failed'
         });
@@ -10382,8 +10313,6 @@ var BlockquoteUseForQuotations = {
 module.exports = BlockquoteUseForQuotations;
 
 },{"Case":31,"DOM":32}],77:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -10392,24 +10321,24 @@ module.exports = BlockquoteUseForQuotations;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var BoldIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'bold';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         });
@@ -10434,8 +10363,6 @@ var BoldIsNotUsed = {
 module.exports = BoldIsNotUsed;
 
 },{"Case":31,"DOM":32}],78:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -10443,7 +10370,7 @@ module.exports = BoldIsNotUsed;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var ButtonHasName = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'button',
       content: 'true',
@@ -10482,8 +10409,6 @@ var ButtonHasName = {
 module.exports = ButtonHasName;
 
 },{"PlaceholderComponent":16}],79:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -10491,7 +10416,7 @@ module.exports = ButtonHasName;
 var LabelComponent = require('LabelComponent');
 
 var CheckboxHasLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="checkbox"]'
     };
@@ -10537,14 +10462,12 @@ var CheckboxHasLabel = {
 module.exports = CheckboxHasLabel;
 
 },{"LabelComponent":12}],80:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var Rainbow = require('rainbowvis.js/rainbowvis.js');
 
 var ColorBackgroundGradientContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -10600,7 +10523,7 @@ var ColorBackgroundGradientContrast = {
 
     test.get('scope').forEach(function (scope) {
 
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', scope, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
       var textNode = textNodes.iterateNext();
 
@@ -10646,12 +10569,10 @@ var ColorBackgroundGradientContrast = {
 module.exports = ColorBackgroundGradientContrast;
 
 },{"Case":31,"ColorComponent":3,"rainbowvis.js/rainbowvis.js":42}],81:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorBackgroundImageContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -10699,7 +10620,7 @@ var ColorBackgroundImageContrast = {
     }
 
     test.get('scope').forEach(function (scope) {
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', scope, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
       var textNode = textNodes.iterateNext();
 
@@ -10745,14 +10666,12 @@ var ColorBackgroundImageContrast = {
 module.exports = ColorBackgroundImageContrast;
 
 },{"Case":31,"ColorComponent":3}],82:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var Rainbow = require('rainbowvis.js/rainbowvis.js');
 
 var ColorElementBehindBackgroundGradientContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -10807,7 +10726,7 @@ var ColorElementBehindBackgroundGradientContrast = {
     }
 
     test.get('scope').forEach(function (scope) {
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', scope, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
       var textNode = textNodes.iterateNext();
 
@@ -10853,12 +10772,10 @@ var ColorElementBehindBackgroundGradientContrast = {
 module.exports = ColorElementBehindBackgroundGradientContrast;
 
 },{"Case":31,"ColorComponent":3,"rainbowvis.js/rainbowvis.js":42}],83:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorElementBehindBackgroundImageContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -10909,7 +10826,7 @@ var ColorElementBehindBackgroundImageContrast = {
     }
 
     test.get('scope').forEach(function (scope) {
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', scope, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
       var textNode = textNodes.iterateNext();
 
@@ -10955,12 +10872,10 @@ var ColorElementBehindBackgroundImageContrast = {
 module.exports = ColorElementBehindBackgroundImageContrast;
 
 },{"Case":31,"ColorComponent":3}],84:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorElementBehindContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -10994,7 +10909,7 @@ var ColorElementBehindContrast = {
     }
 
     test.get('scope').forEach(function (scope) {
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', scope, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
       var textNode = textNodes.iterateNext();
 
@@ -11040,12 +10955,10 @@ var ColorElementBehindContrast = {
 module.exports = ColorElementBehindContrast;
 
 },{"Case":31,"ColorComponent":3}],85:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
 var ColorFontContrast = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -11071,7 +10984,7 @@ var ColorFontContrast = {
     }
 
     test.get('scope').forEach(function (scope) {
-      var textNodes = document.evaluate('descendant::text()[normalize-space()]', this, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
+      var textNodes = document.evaluate('descendant::text()[normalize-space()]', scope, null, window.XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);
       var nodes = [];
       var textNode = textNodes.iterateNext();
 
@@ -11117,8 +11030,6 @@ var ColorFontContrast = {
 module.exports = ColorFontContrast;
 
 },{"Case":31,"ColorComponent":3}],86:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -11131,8 +11042,8 @@ module.exports = ColorFontContrast;
 var Case = require('Case');
 
 var CssDocumentMakesSenseStyleTurnedOff = {
-  run: function run(test) {
-    this.get('scope').each(function () {
+  run: function (test) {
+    test.get('scope').forEach(function () {
       test.add(Case({
         element: undefined,
         status: 'untested'
@@ -11169,31 +11080,29 @@ var CssDocumentMakesSenseStyleTurnedOff = {
 module.exports = CssDocumentMakesSenseStyleTurnedOff;
 
 },{"Case":31}],87:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var DefinitionListsAreUsed = {
-  run: function run(test) {
-    DOM.scry('dl', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('dl', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
       _case.set({
         status: 'inapplicable'
       });
     });
-    DOM.scry('p, li', test.get('scope')).each(function () {
+    DOM.scry('p, li', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      var $item = $(this);
-      DOM.scry('span, strong, em, b, i', this).each(function () {
-        if ($(this).text().length < 50 && $item.text().search($(this).text()) === 0) {
-          if ($(this).is('span')) {
-            if ($(this).css('font-weight') === $item.css('font-weight') && $(this).css('font-style') === $item.css('font-style')) {
+      var $item = $(element);
+      DOM.scry('span, strong, em, b, i', element).forEach(function (element) {
+        if ($(element).text().length < 50 && $item.text().search($(element).text()) === 0) {
+          if ($(element).is('span')) {
+            if ($(element).css('font-weight') === $item.css('font-weight') && $(element).css('font-style') === $item.css('font-style')) {
               _case.set({
                 status: 'passed'
               });
@@ -11231,11 +11140,9 @@ var DefinitionListsAreUsed = {
 module.exports = DefinitionListsAreUsed;
 
 },{"Case":31,"DOM":32}],88:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
 var DoctypeProvided = {
-  run: function run(test) {
+  run: function (test) {
     var doc = test.get('scope').get(0);
     if ($(doc.doctype).length === 0 && !document.doctype) {
       test.add(Case({
@@ -11267,11 +11174,9 @@ var DoctypeProvided = {
 module.exports = DoctypeProvided;
 
 },{"Case":31}],89:[function(require,module,exports){
-'use strict';
-
 var AcronymComponent = require('AcronymComponent');
 var DocumentAcronymsHaveElement = {
-  run: function run(test) {
+  run: function (test) {
     AcronymComponent(test, 'acronym');
   },
 
@@ -11298,8 +11203,6 @@ var DocumentAcronymsHaveElement = {
 module.exports = DocumentAcronymsHaveElement;
 
 },{"AcronymComponent":1}],90:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -11308,24 +11211,24 @@ module.exports = DocumentAcronymsHaveElement;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var DocumentAutoRedirectNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'meta[http-equiv=refresh]';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         });
@@ -11350,8 +11253,6 @@ var DocumentAutoRedirectNotUsed = {
 module.exports = DocumentAutoRedirectNotUsed;
 
 },{"Case":31,"DOM":32}],91:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -11364,8 +11265,8 @@ module.exports = DocumentAutoRedirectNotUsed;
 var Case = require('Case');
 
 var DocumentContentReadableWithoutStylesheets = {
-  run: function run(test) {
-    this.get('scope').each(function () {
+  run: function (test) {
+    test.get('scope').forEach(function () {
       test.add(Case({
         element: undefined,
         status: 'untested'
@@ -11403,8 +11304,6 @@ var DocumentContentReadableWithoutStylesheets = {
 module.exports = DocumentContentReadableWithoutStylesheets;
 
 },{"Case":31}],92:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -11413,15 +11312,15 @@ module.exports = DocumentContentReadableWithoutStylesheets;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var DocumentHasTitleElement = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'head title';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (candidates.length === 1) {
         test.add(Case({
           element: candidates.get(0),
@@ -11433,9 +11332,9 @@ var DocumentHasTitleElement = {
           status: 'failed'
         }));
       } else if (candidates.length > 1) {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         });
@@ -11466,22 +11365,20 @@ var DocumentHasTitleElement = {
 module.exports = DocumentHasTitleElement;
 
 },{"Case":31,"DOM":32}],93:[function(require,module,exports){
-'use strict';
-
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var TextStatisticsComponent = require('TextStatisticsComponent');
 var IsUnreadable = require('IsUnreadable');
 var DocumentIsWrittenClearly = {
-  run: function run(test) {
-    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (index, element) {
+  run: function (test) {
+    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (element) {
       return TextNodeFilterComponent(element);
-    }).each(function () {
-      var text = TextStatisticsComponent.cleanText($(this).text());
+    }).forEach(function (element) {
+      var text = TextStatisticsComponent.cleanText($(element).text());
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
       if (IsUnreadable(text)) {
@@ -11525,13 +11422,11 @@ var DocumentIsWrittenClearly = {
 module.exports = DocumentIsWrittenClearly;
 
 },{"Case":31,"DOM":32,"IsUnreadable":11,"TextNodeFilterComponent":26,"TextSelectorComponent":27,"TextStatisticsComponent":28}],94:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
 var DocumentLangIsISO639Standard = {
-  run: function run(test) {
+  run: function (test) {
     var $element = test.get('scope').is('html') ? test.get('scope') : DOM.scry('html', test.get('scope')).first();
 
     var _case = Case({
@@ -11549,7 +11444,7 @@ var DocumentLangIsISO639Standard = {
     } else {
       // Loop over all language codes, checking if the current lang attribute starts
       // with a value that's in the languageCodes array
-      LanguageCodesStringsComponent.forEach(function (currentLangCode, i) {
+      LanguageCodesStringsComponent.forEach(function (currentLangCode) {
         if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
           matchedLang = true;
         }
@@ -11588,8 +11483,6 @@ var DocumentLangIsISO639Standard = {
 module.exports = DocumentLangIsISO639Standard;
 
 },{"Case":31,"DOM":32,"LanguageCodesStringsComponent":13}],95:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -11600,17 +11493,17 @@ module.exports = DocumentLangIsISO639Standard;
 var Case = require('Case');
 
 var DocumentLangNotIdentified = {
-  run: function run(test) {
-    this.get('scope').each(function () {
-      var lang = 'getAttribute' in this && this.getAttribute('lang');
+  run: function (test) {
+    test.get('scope').forEach(function (scope) {
+      var lang = 'getAttribute' in scope && scope.getAttribute('lang');
       if (lang && lang.length > 1) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'passed'
         }));
       } else {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'failed'
         }));
       }
@@ -11634,8 +11527,6 @@ var DocumentLangNotIdentified = {
 module.exports = DocumentLangNotIdentified;
 
 },{"Case":31}],96:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -11644,15 +11535,15 @@ module.exports = DocumentLangNotIdentified;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var DocumentMetaNotUsedWithTimeout = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'meta';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
 
       if (!candidates.length) {
         test.add(Case({
@@ -11660,17 +11551,17 @@ var DocumentMetaNotUsedWithTimeout = {
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('http-equiv') && this.getAttribute('http-equiv') === 'refresh') {
-            if (this.hasAttribute('content') && (this.getAttribute('content') || '').length > 0) {
+          if (element.hasAttribute('http-equiv') && element.getAttribute('http-equiv') === 'refresh') {
+            if (element.hasAttribute('content') && (element.getAttribute('content') || '').length > 0) {
               status = 'failed';
             }
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -11707,8 +11598,6 @@ var DocumentMetaNotUsedWithTimeout = {
 module.exports = DocumentMetaNotUsedWithTimeout;
 
 },{"Case":31,"DOM":32}],97:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -11717,30 +11606,30 @@ module.exports = DocumentMetaNotUsedWithTimeout;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var DocumentReadingDirection = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = ['[lang="he"]', '[lang="ar"]'].join(', ');
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
-          if (this.hasAttribute('dir') && (this.getAttribute('dir') || '') === 'rtl') {
+        candidates.forEach(function (element) {
+          if (element.hasAttribute('dir') && (element.getAttribute('dir') || '') === 'rtl') {
             test.add(Case({
-              element: this,
+              element: element,
               status: 'passed'
             }));
           } else {
             test.add(Case({
-              element: this,
+              element: element,
               status: 'failed'
             }));
           }
@@ -11772,11 +11661,9 @@ var DocumentReadingDirection = {
 module.exports = DocumentReadingDirection;
 
 },{"Case":31,"DOM":32}],98:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
 var DocumentStrictDocType = {
-  run: function run(test) {
+  run: function (test) {
     if (typeof document.doctype === 'undefined' || !document.doctype || document.doctype.systemId.search('strict') === -1) {
       test.add(Case({
         element: document,
@@ -11807,8 +11694,6 @@ var DocumentStrictDocType = {
 module.exports = DocumentStrictDocType;
 
 },{"Case":31}],99:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -11817,15 +11702,15 @@ module.exports = DocumentStrictDocType;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var DocumentTitleDescribesDocument = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'head title';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       var status = candidates.length === 1 ? 'passed' : 'failed';
 
       if (candidates.length === 0) {
@@ -11834,9 +11719,9 @@ var DocumentTitleDescribesDocument = {
           status: status
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -11867,8 +11752,6 @@ var DocumentTitleDescribesDocument = {
 module.exports = DocumentTitleDescribesDocument;
 
 },{"Case":31,"DOM":32}],100:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -11876,7 +11759,7 @@ module.exports = DocumentTitleDescribesDocument;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var DocumentTitleIsNotPlaceholder = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'head > title',
       content: 'true'
@@ -11907,12 +11790,10 @@ var DocumentTitleIsNotPlaceholder = {
 module.exports = DocumentTitleIsNotPlaceholder;
 
 },{"PlaceholderComponent":16}],101:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var DocumentTitleIsShort = {
-  run: function run(test) {
+  run: function (test) {
     var $title = DOM.scry('head title', test.get('scope'));
     test.add(Case({
       element: $title.get(0),
@@ -11937,8 +11818,6 @@ var DocumentTitleIsShort = {
 module.exports = DocumentTitleIsShort;
 
 },{"Case":31,"DOM":32}],102:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -11946,7 +11825,7 @@ module.exports = DocumentTitleIsShort;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var DocumentTitleNotEmpty = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'head > title',
       content: 'true',
@@ -11978,14 +11857,12 @@ var DocumentTitleNotEmpty = {
 module.exports = DocumentTitleNotEmpty;
 
 },{"PlaceholderComponent":16}],103:[function(require,module,exports){
-'use strict';
-
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var DocumentVisualListsAreMarkedUp = {
-  run: function run(test) {
+  run: function (test) {
 
     var itemStarters = ['♦', '›', '»', '‣', '▶', '◦', '✓', '◽', '•', '—', '◾', // single characters
     '-\\D', // dash, except for negative numbers
@@ -12003,14 +11880,14 @@ var DocumentVisualListsAreMarkedUp = {
     '(' + itemStarters.join('|') + ')', // Followed by a character that could indicate a list
     'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
 
-    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (index, element) {
+    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (element) {
       return TextNodeFilterComponent(element);
-    }).each(function () {
+    }).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      var matches = $(this).html().match(symbols);
+      var matches = $(element).html().match(symbols);
       _case.set({
         status: matches && matches.length > 2 ? 'failed' : 'passed'
       });
@@ -12040,8 +11917,6 @@ var DocumentVisualListsAreMarkedUp = {
 module.exports = DocumentVisualListsAreMarkedUp;
 
 },{"Case":31,"DOM":32,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],104:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -12050,10 +11925,10 @@ module.exports = DocumentVisualListsAreMarkedUp;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var DomOrderMatchesVisualOrder = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
@@ -12064,26 +11939,26 @@ var DomOrderMatchesVisualOrder = {
 
     var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: options.test ? 'inapplicable' : 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -12117,19 +11992,17 @@ var DomOrderMatchesVisualOrder = {
 module.exports = DomOrderMatchesVisualOrder;
 
 },{"Case":31,"DOM":32}],105:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var EmbedHasAssociatedNoEmbed = {
-  run: function run(test) {
-    DOM.scry('embed', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('embed', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
       _case.set({
-        status: DOM.scry('noembed').length || $(this).next().is('noembed', this) ? 'passed' : 'failed'
+        status: DOM.scry('noembed').length || $(element).next().is('noembed', element) ? 'passed' : 'failed'
       });
     });
   },
@@ -12151,8 +12024,6 @@ var EmbedHasAssociatedNoEmbed = {
 module.exports = EmbedHasAssociatedNoEmbed;
 
 },{"Case":31,"DOM":32}],106:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -12161,30 +12032,30 @@ module.exports = EmbedHasAssociatedNoEmbed;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var EmbedMustHaveAltAttribute = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'embed';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var alt = this.getAttribute('alt');
+          var alt = element.getAttribute('alt');
           if (alt && typeof alt === 'string' && alt.length > 0) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -12209,8 +12080,6 @@ var EmbedMustHaveAltAttribute = {
 module.exports = EmbedMustHaveAltAttribute;
 
 },{"Case":31,"DOM":32}],107:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -12219,35 +12088,35 @@ module.exports = EmbedMustHaveAltAttribute;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var FieldsetHasLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
 
     options = options || {};
 
     var selector = 'fieldset:not(fieldset:has(legend))';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: options.test ? 'inapplicable' : 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !$(element).is(options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -12284,16 +12153,14 @@ var FieldsetHasLabel = {
 module.exports = FieldsetHasLabel;
 
 },{"Case":31,"DOM":32}],108:[function(require,module,exports){
-'use strict';
-
 /**
  * Test for a label associated with a file input element.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var FileHasLabel = {
-  run: function run(test) {
+  run: function (test) {
 
     var sFiles = '[type="file"]';
     var sLabels = 'label';
@@ -12310,7 +12177,7 @@ var FileHasLabel = {
       return labelsByFor;
     }
 
-    this.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var files = DOM.scry(sFiles, scope);
       var labels = DOM.scry(sLabels, scope);
 
@@ -12320,8 +12187,8 @@ var FileHasLabel = {
           status: 'inapplicable'
         }));
       } else {
-        files.each(function () {
-          var $file = $(this);
+        files.forEach(function (element) {
+          var $file = $(element);
           var status = 'failed';
 
           // Check for an associated label.
@@ -12334,7 +12201,7 @@ var FileHasLabel = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -12375,8 +12242,6 @@ var FileHasLabel = {
 module.exports = FileHasLabel;
 
 },{"Case":31,"DOM":32}],109:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -12385,24 +12250,24 @@ module.exports = FileHasLabel;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var FontIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'font';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         });
@@ -12427,8 +12292,6 @@ var FontIsNotUsed = {
 module.exports = FontIsNotUsed;
 
 },{"Case":31,"DOM":32}],110:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -12437,32 +12300,32 @@ module.exports = FontIsNotUsed;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var FormButtonsHaveValue = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'input[type=button], input[type=submit], input[type=reset]';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
           // If the button has a value, it passes.
-          var val = this.getAttribute('value');
+          var val = element.getAttribute('value');
           if (val && typeof val === 'string' && val.length > 0) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -12499,8 +12362,6 @@ var FormButtonsHaveValue = {
 module.exports = FormButtonsHaveValue;
 
 },{"Case":31,"DOM":32}],111:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -12509,24 +12370,24 @@ module.exports = FormButtonsHaveValue;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var FormErrorMessageHelpsUser = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'form';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
@@ -12551,8 +12412,6 @@ var FormErrorMessageHelpsUser = {
 module.exports = FormErrorMessageHelpsUser;
 
 },{"Case":31,"DOM":32}],112:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -12561,24 +12420,24 @@ module.exports = FormErrorMessageHelpsUser;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var FormHasGoodErrorMessage = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'form';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
@@ -12603,8 +12462,6 @@ var FormHasGoodErrorMessage = {
 module.exports = FormHasGoodErrorMessage;
 
 },{"Case":31,"DOM":32}],113:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -12613,13 +12470,13 @@ module.exports = FormHasGoodErrorMessage;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var FormHasSubmitButton = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'input[type=submit], button[type=submit]';
 
-    this.get('scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry('form', this);
 
       if (candidates.length === 0) {
@@ -12628,13 +12485,13 @@ var FormHasSubmitButton = {
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
-          var submitButton = DOM.scry(selector, $(this));
+        candidates.forEach(function (element) {
+          var submitButton = DOM.scry(selector, scope);
 
           var status = submitButton.length === 1 ? 'passed' : 'failed';
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -12665,24 +12522,22 @@ var FormHasSubmitButton = {
 module.exports = FormHasSubmitButton;
 
 },{"Case":31,"DOM":32}],114:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var FormWithRequiredLabel = {
-  run: function run(test) {
+  run: function (test) {
     var redundant = RedundantStringsComponent;
     var lastStyle,
         currentStyle = false;
     redundant.required[redundant.required.indexOf('*')] = /\*/g;
     test.get('scope').forEach(function (scope) {
-      var $local = $(this);
-      DOM.scry('label', $local).each(function () {
-        var text = $(this).text().toLowerCase();
-        var $label = $(this);
+      var $local = $(scope);
+      DOM.scry('label', $local).forEach(function (element) {
+        var text = $(element).text().toLowerCase();
+        var $label = $(element);
         var _case = test.add(Case({
-          element: this
+          element: element
         }));
         for (var word in redundant.required) {
           if (text.search(word) >= 0 && !DOM.scry('#' + $label.attr('for'), test.get('scope')).attr('aria-required')) {
@@ -12739,11 +12594,9 @@ var FormWithRequiredLabel = {
 module.exports = FormWithRequiredLabel;
 
 },{"Case":31,"DOM":32,"RedundantStringsComponent":18}],115:[function(require,module,exports){
-'use strict';
-
 var HeadingLevelComponent = require('HeadingLevelComponent');
 var HeaderH1 = {
-  run: function run(test) {
+  run: function (test) {
     HeadingLevelComponent(test, {
       headingLevel: 1
     });
@@ -12772,8 +12625,6 @@ var HeaderH1 = {
 module.exports = HeaderH1;
 
 },{"HeadingLevelComponent":9}],116:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -12782,24 +12633,24 @@ module.exports = HeaderH1;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var HeaderH1Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h1';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
@@ -12830,11 +12681,9 @@ var HeaderH1Format = {
 module.exports = HeaderH1Format;
 
 },{"Case":31,"DOM":32}],117:[function(require,module,exports){
-'use strict';
-
 var HeadingLevelComponent = require('HeadingLevelComponent');
 var HeaderH2 = {
-  run: function run(test) {
+  run: function (test) {
     HeadingLevelComponent(test, {
       headingLevel: 2
     });
@@ -12863,8 +12712,6 @@ var HeaderH2 = {
 module.exports = HeaderH2;
 
 },{"HeadingLevelComponent":9}],118:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -12873,24 +12720,24 @@ module.exports = HeaderH2;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var HeaderH2Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h2';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
@@ -12921,11 +12768,9 @@ var HeaderH2Format = {
 module.exports = HeaderH2Format;
 
 },{"Case":31,"DOM":32}],119:[function(require,module,exports){
-'use strict';
-
 var HeadingLevelComponent = require('HeadingLevelComponent');
 var HeaderH3 = {
-  run: function run(test) {
+  run: function (test) {
     HeadingLevelComponent(test, {
       headingLevel: 3
     });
@@ -12954,8 +12799,6 @@ var HeaderH3 = {
 module.exports = HeaderH3;
 
 },{"HeadingLevelComponent":9}],120:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -12964,24 +12807,24 @@ module.exports = HeaderH3;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var HeaderH3Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h3';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
@@ -13012,11 +12855,9 @@ var HeaderH3Format = {
 module.exports = HeaderH3Format;
 
 },{"Case":31,"DOM":32}],121:[function(require,module,exports){
-'use strict';
-
 var HeadingLevelComponent = require('HeadingLevelComponent');
 var HeaderH4 = {
-  run: function run(test) {
+  run: function (test) {
     HeadingLevelComponent(test, {
       headingLevel: 4
     });
@@ -13045,8 +12886,6 @@ var HeaderH4 = {
 module.exports = HeaderH4;
 
 },{"HeadingLevelComponent":9}],122:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -13055,24 +12894,24 @@ module.exports = HeaderH4;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var HeaderH4Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h4';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
@@ -13103,8 +12942,6 @@ var HeaderH4Format = {
 module.exports = HeaderH4Format;
 
 },{"Case":31,"DOM":32}],123:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -13113,24 +12950,24 @@ module.exports = HeaderH4Format;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var HeaderH5Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h5';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
@@ -13161,8 +12998,6 @@ var HeaderH5Format = {
 module.exports = HeaderH5Format;
 
 },{"Case":31,"DOM":32}],124:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -13171,24 +13006,24 @@ module.exports = HeaderH5Format;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var HeaderH6Format = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'h6';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });
@@ -13219,15 +13054,13 @@ var HeaderH6Format = {
 module.exports = HeaderH6Format;
 
 },{"Case":31,"DOM":32}],125:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var HeadersAttrRefersToATableCell = {
-  run: function run(test) {
+  run: function (test) {
     // Table cell headers without referred ids
-    DOM.scry('table', test.get('scope')).each(function () {
-      var self = this;
+    DOM.scry('table', test.get('scope')).forEach(function (element) {
+      var self = element;
       var _case = Case();
       test.add(_case);
       var elmHeaders = DOM.scry('th[headers], td[headers]', self);
@@ -13238,10 +13071,10 @@ var HeadersAttrRefersToATableCell = {
         });
         return;
       } else {
-        elmHeaders.each(function () {
-          var that = this;
-          var headers = $(this).attr('headers').split(/\s+/);
-          headers.forEach(function (item, index) {
+        elmHeaders.forEach(function (element) {
+          var that = element;
+          var headers = $(element).attr('headers').split(/\s+/);
+          headers.forEach(function (item) {
             if (item === '' || DOM.scry('th#' + item + ',td#' + item, self).length > 0) {
               _case.set({
                 element: that,
@@ -13278,8 +13111,6 @@ var HeadersAttrRefersToATableCell = {
 module.exports = HeadersAttrRefersToATableCell;
 
 },{"Case":31,"DOM":32}],126:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -13287,7 +13118,7 @@ module.exports = HeadersAttrRefersToATableCell;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var HeadersHaveText = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'h1, h2, h3, h4, h5, h6',
       content: 'true',
@@ -13322,31 +13153,29 @@ var HeadersHaveText = {
 module.exports = HeadersHaveText;
 
 },{"PlaceholderComponent":16}],127:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var HeadersUseToMarkSections = {
-  run: function run(test) {
-    DOM.scry('p', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('p', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      var $paragraph = $(this);
-      DOM.scry('strong:first, em:first, i:first, b:first', $paragraph).each(function () {
+      var $paragraph = $(element);
+      DOM.scry('strong:first, em:first, i:first, b:first', $paragraph).forEach(function (element) {
         _case.set({
-          status: $paragraph.text().trim() === $(this).text().trim() ? 'failed' : 'passed'
+          status: $paragraph.text().trim() === $(element).text().trim() ? 'failed' : 'passed'
         });
       });
     });
 
-    DOM.scry('ul, ol', test.get('scope')).each(function () {
+    DOM.scry('ul, ol', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      var $list = $(this);
+      var $list = $(element);
       if ($list.prevAll(':header').length || DOM.scry('li', $list).length !== DOM.scry('li:has(a)', $list).length) {
         _case.set({
           status: 'passed'
@@ -13354,8 +13183,8 @@ var HeadersUseToMarkSections = {
         return;
       }
       var isNavigation = true;
-      DOM.scry('li:has(a)', $list).each(function () {
-        if (DOM.scry('a:first', this).text().trim() !== $(this).text().trim()) {
+      DOM.scry('li:has(a)', $list).forEach(function (element) {
+        if (DOM.scry('a:first', element).text().trim() !== $(element).text().trim()) {
           isNavigation = false;
         }
       });
@@ -13393,8 +13222,6 @@ var HeadersUseToMarkSections = {
 module.exports = HeadersUseToMarkSections;
 
 },{"Case":31,"DOM":32}],128:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -13403,24 +13230,24 @@ module.exports = HeadersUseToMarkSections;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var IIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'i';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         });
@@ -13445,24 +13272,19 @@ var IIsNotUsed = {
 module.exports = IIsNotUsed;
 
 },{"Case":31,"DOM":32}],129:[function(require,module,exports){
-'use strict';
-
-function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var IdrefsHasCorrespondingId = {
-  run: function run(test) {
+  run: function (test) {
 
     function getAttribute($element) {
       var attribute = [];
       var attributeList = ['headers', 'aria-controls', 'aria-describedby', 'aria-flowto', 'aria-labelledby', 'aria-owns'];
 
-      attributeList.forEach(function (item, index) {
-
+      attributeList.forEach(function (item) {
         var attr = $element.attr(item);
 
-        if ((typeof attr === 'undefined' ? 'undefined' : _typeof(attr)) !== (typeof undefined === 'undefined' ? 'undefined' : _typeof(undefined)) && attr !== false) {
+        if (typeof attr !== typeof undefined && attr !== false) {
           attribute = attr;
           return;
         }
@@ -13471,24 +13293,24 @@ var IdrefsHasCorrespondingId = {
     }
 
     test.get('scope').forEach(function (scope) {
-      var testableElements = DOM.scry(['td[headers]', 'th[headers]', '[aria-controls]', '[aria-describedby]', '[aria-flowto]', '[aria-labelledby]', '[aria-owns]'].join(', '), this);
+      var testableElements = DOM.scry(['td[headers]', 'th[headers]', '[aria-controls]', '[aria-describedby]', '[aria-flowto]', '[aria-labelledby]', '[aria-owns]'].join(', '), scope);
 
       if (testableElements.length === 0) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         }));
         return;
       } else {
-        testableElements.each(function () {
+        testableElements.forEach(function (element) {
           var _case = test.add(Case({
-            element: this
+            element: element
           }));
 
-          var attributes = getAttribute($(this));
+          var attributes = getAttribute($(element));
           var status = 'passed';
 
-          attributes.forEach(function (item, index) {
+          attributes.forEach(function (item) {
             if (item !== '' && $('#' + item).length === 0) {
               status = 'failed';
               return;
@@ -13528,8 +13350,6 @@ var IdrefsHasCorrespondingId = {
 module.exports = IdrefsHasCorrespondingId;
 
 },{"Case":31,"DOM":32}],130:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -13538,30 +13358,30 @@ module.exports = IdrefsHasCorrespondingId;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var IframeMustNotHaveLongdesc = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'iframe';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('longdesc')) {
+          if (element.hasAttribute('longdesc')) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -13586,8 +13406,6 @@ var IframeMustNotHaveLongdesc = {
 module.exports = IframeMustNotHaveLongdesc;
 
 },{"Case":31,"DOM":32}],131:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -13596,30 +13414,30 @@ module.exports = IframeMustNotHaveLongdesc;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var ImageMapServerSide = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'img';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('ismap')) {
+          if (element.hasAttribute('ismap')) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -13644,25 +13462,23 @@ var ImageMapServerSide = {
 module.exports = ImageMapServerSide;
 
 },{"Case":31,"DOM":32}],132:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var ImgAltIsDifferent = {
-  run: function run(test) {
-    DOM.scry('img:not([src])', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('img:not([src])', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this,
+        element: element,
         status: 'inapplicable'
       });
       test.add(_case);
     });
-    DOM.scry('img[alt][src]', test.get('scope')).each(function () {
+    DOM.scry('img[alt][src]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if ($(this).attr('src') === $(this).attr('alt') || $(this).attr('src').split('/').pop() === $(this).attr('alt')) {
+      if ($(element).attr('src') === $(element).attr('alt') || $(element).attr('src').split('/').pop() === $(element).attr('alt')) {
         _case.set({
           status: 'failed'
         });
@@ -13698,19 +13514,17 @@ var ImgAltIsDifferent = {
 module.exports = ImgAltIsDifferent;
 
 },{"Case":31,"DOM":32}],133:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var ImgAltIsTooLong = {
-  run: function run(test) {
-    DOM.scry('img[alt]', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('img[alt]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
       _case.set({
-        status: $(this).attr('alt').length > 100 ? 'failed' : 'passed'
+        status: $(element).attr('alt').length > 100 ? 'failed' : 'passed'
       });
     });
   },
@@ -13739,25 +13553,23 @@ var ImgAltIsTooLong = {
 module.exports = ImgAltIsTooLong;
 
 },{"Case":31,"DOM":32}],134:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ImgAltNotEmptyInAnchor = {
-  run: function run(test) {
-    DOM.scry('a[href]:has(img)', test.get('scope')).each(function () {
-      var $a = $(this);
+  run: function (test) {
+    DOM.scry('a[href]:has(img)', test.get('scope')).forEach(function (element) {
+      var $a = $(element);
       var text = $a.text();
 
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 
       // Concat all alt attributes of images to the text of the paragraph
-      DOM.scry('img[alt]', $a).each(function () {
-        text += ' ' + $(this).attr('alt');
+      DOM.scry('img[alt]', $a).forEach(function (element) {
+        text += ' ' + $(element).attr('alt');
       });
 
       if (IsUnreadable(text)) {
@@ -13796,8 +13608,6 @@ var ImgAltNotEmptyInAnchor = {
 module.exports = ImgAltNotEmptyInAnchor;
 
 },{"Case":31,"DOM":32,"IsUnreadable":11}],135:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -13805,7 +13615,7 @@ module.exports = ImgAltNotEmptyInAnchor;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var ImgAltNotPlaceHolder = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'img',
       attribute: 'alt'
@@ -13840,8 +13650,6 @@ var ImgAltNotPlaceHolder = {
 module.exports = ImgAltNotPlaceHolder;
 
 },{"PlaceholderComponent":16}],136:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -13850,30 +13658,30 @@ module.exports = ImgAltNotPlaceHolder;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var ImgHasAlt = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'img';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
-          if (this.hasAttribute('alt')) {
+          if (element.hasAttribute('alt')) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -13905,19 +13713,17 @@ var ImgHasAlt = {
 module.exports = ImgHasAlt;
 
 },{"Case":31,"DOM":32}],137:[function(require,module,exports){
-'use strict';
-
 var ValidURLComponent = require('ValidURLComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var ImgHasLongDesc = {
-  run: function run(test) {
-    DOM.scry('img[longdesc]', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('img[longdesc]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if ($(this).attr('longdesc') === $(this).attr('alt') || !ValidURLComponent($(this).attr('longdesc'))) {
+      if ($(element).attr('longdesc') === $(element).attr('alt') || !ValidURLComponent($(element).attr('longdesc'))) {
         _case.set({
           status: 'failed'
         });
@@ -13955,21 +13761,19 @@ var ImgHasLongDesc = {
 module.exports = ImgHasLongDesc;
 
 },{"Case":31,"DOM":32,"ValidURLComponent":29}],138:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ImgImportantNoSpacerAlt = {
-  run: function run(test) {
-    DOM.scry('img[alt]', test.get('scope')).each(function () {
-      var width = $(this).width() ? $(this).width() : parseInt($(this).attr('width'), 10);
-      var height = $(this).height() ? $(this).height() : parseInt($(this).attr('height'), 10);
+  run: function (test) {
+    DOM.scry('img[alt]', test.get('scope')).forEach(function (element) {
+      var width = $(element).width() ? $(element).width() : parseInt($(element).attr('width'), 10);
+      var height = $(element).height() ? $(element).height() : parseInt($(element).attr('height'), 10);
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (IsUnreadable($(this).attr('alt').trim()) && $(this).attr('alt').length > 0 && width > 50 && height > 50) {
+      if (IsUnreadable($(element).attr('alt').trim()) && $(element).attr('alt').length > 0 && width > 50 && height > 50) {
         _case.set({
           status: 'failed'
         });
@@ -13998,19 +13802,17 @@ var ImgImportantNoSpacerAlt = {
 module.exports = ImgImportantNoSpacerAlt;
 
 },{"Case":31,"DOM":32,"IsUnreadable":11}],139:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ImgNonDecorativeHasAlt = {
-  run: function run(test) {
-    DOM.scry('img[alt]', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('img[alt]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (IsUnreadable($(this).attr('alt')) && ($(this).width() > 100 || $(this).height() > 100)) {
+      if (IsUnreadable($(element).attr('alt')) && ($(element).width() > 100 || $(element).height() > 100)) {
         _case.set({
           status: 'failed'
         });
@@ -14046,8 +13848,6 @@ var ImgNonDecorativeHasAlt = {
 module.exports = ImgNonDecorativeHasAlt;
 
 },{"Case":31,"DOM":32,"IsUnreadable":11}],140:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -14056,30 +13856,30 @@ module.exports = ImgNonDecorativeHasAlt;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var ImgServerSideMapNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'img';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('ismap')) {
+          if (element.hasAttribute('ismap')) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -14104,8 +13904,6 @@ var ImgServerSideMapNotUsed = {
 module.exports = ImgServerSideMapNotUsed;
 
 },{"Case":31,"DOM":32}],141:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -14114,30 +13912,30 @@ module.exports = ImgServerSideMapNotUsed;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var ImgShouldNotHaveTitle = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'img';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('title')) {
+          if (element.hasAttribute('title')) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -14162,8 +13960,6 @@ var ImgShouldNotHaveTitle = {
 module.exports = ImgShouldNotHaveTitle;
 
 },{"Case":31,"DOM":32}],142:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -14172,30 +13968,30 @@ module.exports = ImgShouldNotHaveTitle;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var ImgWithMapHasUseMap = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'img[ismap]';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
-          if (this.hasAttribute('usemap')) {
+          if (element.hasAttribute('usemap')) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -14222,18 +14018,16 @@ var ImgWithMapHasUseMap = {
 module.exports = ImgWithMapHasUseMap;
 
 },{"Case":31,"DOM":32}],143:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var ImgWithMathShouldHaveMathEquivalent = {
-  run: function run(test) {
-    DOM.scry('img:not(img:has(math), img:has(tagName))', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('img:not(img:has(math), img:has(tagName))', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (!DOM.scry('math', this).parent().length) {
+      if (!DOM.scry('math', element).parent().length) {
         _case.set({
           status: 'failed'
         });
@@ -14258,18 +14052,16 @@ var ImgWithMathShouldHaveMathEquivalent = {
 module.exports = ImgWithMathShouldHaveMathEquivalent;
 
 },{"Case":31,"DOM":32}],144:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var InputCheckboxRequiresFieldset = {
-  run: function run(test) {
-    DOM.scry('input[type="checkbox"]', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('input[type="checkbox"]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (!$(this).parents('fieldset').length) {
+      if (!$(element).parents('fieldset').length) {
         _case.set({
           status: 'failed'
         });
@@ -14304,8 +14096,6 @@ var InputCheckboxRequiresFieldset = {
 module.exports = InputCheckboxRequiresFieldset;
 
 },{"Case":31,"DOM":32}],145:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -14314,30 +14104,30 @@ module.exports = InputCheckboxRequiresFieldset;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var InputElementsDontHaveAlt = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'input[type!=image]';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('alt')) {
+          if (element.hasAttribute('alt')) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -14362,18 +14152,16 @@ var InputElementsDontHaveAlt = {
 module.exports = InputElementsDontHaveAlt;
 
 },{"Case":31,"DOM":32}],146:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var InputImageAltIsNotFileName = {
-  run: function run(test) {
-    DOM.scry('input[type=image][alt]', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('input[type=image][alt]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if ($(this).attr('src') === $(this).attr('alt')) {
+      if ($(element).attr('src') === $(element).attr('alt')) {
         _case.set({
           status: 'failed'
         });
@@ -14409,8 +14197,6 @@ var InputImageAltIsNotFileName = {
 module.exports = InputImageAltIsNotFileName;
 
 },{"Case":31,"DOM":32}],147:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -14418,7 +14204,7 @@ module.exports = InputImageAltIsNotFileName;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var InputImageAltIsNotPlaceholder = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="image"]',
       attribute: 'alt'
@@ -14459,18 +14245,16 @@ var InputImageAltIsNotPlaceholder = {
 module.exports = InputImageAltIsNotPlaceholder;
 
 },{"PlaceholderComponent":16}],148:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var InputImageAltIsShort = {
-  run: function run(test) {
-    DOM.scry('input[type=image]', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('input[type=image]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if ($(this).attr('alt').length > 100) {
+      if ($(element).attr('alt').length > 100) {
         _case.set({
           status: 'failed'
         });
@@ -14506,20 +14290,18 @@ var InputImageAltIsShort = {
 module.exports = InputImageAltIsShort;
 
 },{"Case":31,"DOM":32}],149:[function(require,module,exports){
-'use strict';
-
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var InputImageAltNotRedundant = {
-  run: function run(test) {
-    DOM.scry('input[type=image][alt]', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('input[type=image][alt]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (RedundantStringsComponent.inputImage.indexOf(CleanStringComponent($(this).attr('alt'))) > -1) {
+      if (RedundantStringsComponent.inputImage.indexOf(CleanStringComponent($(element).attr('alt'))) > -1) {
         _case.set({
           status: 'failed'
         });
@@ -14554,8 +14336,6 @@ var InputImageAltNotRedundant = {
 module.exports = InputImageAltNotRedundant;
 
 },{"Case":31,"CleanStringComponent":2,"DOM":32,"RedundantStringsComponent":18}],150:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -14564,30 +14344,30 @@ module.exports = InputImageAltNotRedundant;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var InputImageHasAlt = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'input[type=image]:visible';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
-          if (this.hasAttribute('alt')) {
+          if (element.hasAttribute('alt')) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -14631,8 +14411,6 @@ var InputImageHasAlt = {
 module.exports = InputImageHasAlt;
 
 },{"Case":31,"DOM":32}],151:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -14640,7 +14418,7 @@ module.exports = InputImageHasAlt;
 var LabelComponent = require('LabelComponent');
 
 var InputTextHasLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input'
     };
@@ -14685,8 +14463,6 @@ var InputTextHasLabel = {
 module.exports = InputTextHasLabel;
 
 },{"LabelComponent":12}],152:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -14694,7 +14470,7 @@ module.exports = InputTextHasLabel;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var InputTextHasValue = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="text"]',
       attribute: 'value',
@@ -14720,8 +14496,6 @@ var InputTextHasValue = {
 module.exports = InputTextHasValue;
 
 },{"PlaceholderComponent":16}],153:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -14729,7 +14503,7 @@ module.exports = InputTextHasValue;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var InputTextValueNotEmpty = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="text"]',
       attribute: 'value',
@@ -14755,39 +14529,37 @@ var InputTextValueNotEmpty = {
 module.exports = InputTextValueNotEmpty;
 
 },{"PlaceholderComponent":16}],154:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var InputWithoutLabelHasTitle = {
-  run: function run(test) {
+  run: function (test) {
 
     test.get('scope').forEach(function (scope) {
 
-      var testableElements = DOM.scry('input, select, textarea', this);
+      var testableElements = DOM.scry('input, select, textarea', scope);
 
       if (testableElements.length === 0) {
         var _case = Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         });
         test.add(_case);
         return;
       } else {
-        testableElements.each(function () {
+        testableElements.forEach(function (element) {
           var _case = Case({
-            element: this
+            element: element
           });
           test.add(_case);
 
-          if ($(this).css('display') === 'none') {
+          if ($(element).css('display') === 'none') {
             _case.set({
               status: 'inapplicable'
             });
             return;
           }
-          if (!DOM.scry('label[for=' + $(this).attr('id') + ']', test.get('scope')).length && (!$(this).attr('title') || IsUnreadable($(this).attr('title')))) {
+          if (!DOM.scry('label[for=' + $(element).attr('id') + ']', test.get('scope')).length && (!$(element).attr('title') || IsUnreadable($(element).attr('title')))) {
             _case.set({
               status: 'failed'
             });
@@ -14833,8 +14605,6 @@ var InputWithoutLabelHasTitle = {
 module.exports = InputWithoutLabelHasTitle;
 
 },{"Case":31,"DOM":32,"IsUnreadable":11}],155:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -14843,29 +14613,29 @@ module.exports = InputWithoutLabelHasTitle;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var LabelDoesNotContainInput = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'label';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (DOM.scry('input', this).length > 0) {
+          if (DOM.scry('input', element).length > 0) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -14890,23 +14660,21 @@ var LabelDoesNotContainInput = {
 module.exports = LabelDoesNotContainInput;
 
 },{"Case":31,"DOM":32}],156:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var LabelMustBeUnique = {
-  run: function run(test) {
+  run: function (test) {
     var labels = {};
-    DOM.scry('label[for]', test.get('scope')).each(function () {
-      if (typeof labels[$(this).attr('for')] === 'undefined') {
-        labels[$(this).attr('for')] = 0;
+    DOM.scry('label[for]', test.get('scope')).forEach(function (element) {
+      if (typeof labels[$(element).attr('for')] === 'undefined') {
+        labels[$(element).attr('for')] = 0;
       }
-      labels[$(this).attr('for')]++;
+      labels[$(element).attr('for')]++;
     });
-    DOM.scry('label[for]', test.get('scope')).each(function () {
+    DOM.scry('label[for]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this,
-        status: labels[$(this).attr('for')] === 1 ? 'passed' : 'failed'
+        element: element,
+        status: labels[$(element).attr('for')] === 1 ? 'passed' : 'failed'
       });
       test.add(_case);
     });
@@ -14938,8 +14706,6 @@ var LabelMustBeUnique = {
 module.exports = LabelMustBeUnique;
 
 },{"Case":31,"DOM":32}],157:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -14947,7 +14713,7 @@ module.exports = LabelMustBeUnique;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var LabelMustNotBeEmpty = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'label',
       content: 'true',
@@ -14988,23 +14754,21 @@ var LabelMustNotBeEmpty = {
 module.exports = LabelMustNotBeEmpty;
 
 },{"PlaceholderComponent":16}],158:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var LabelsAreAssignedToAnInput = {
-  run: function run(test) {
-    DOM.scry('label', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('label', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (!$(this).attr('for')) {
+      if (!$(element).attr('for')) {
         _case.set({
           status: 'failed'
         });
       } else {
-        if ((!DOM.scry('#' + $(this).attr('for'), test.get('scope')).length || !DOM.scry('#' + $(this).attr('for')).is(':input'), test.get('scope'))) {
+        if ((!DOM.scry('#' + $(element).attr('for'), test.get('scope')).length || !DOM.scry('#' + $(element).attr('for')).is(':input'), test.get('scope'))) {
           _case.set({
             status: 'failed'
           });
@@ -15034,16 +14798,14 @@ var LabelsAreAssignedToAnInput = {
 module.exports = LabelsAreAssignedToAnInput;
 
 },{"Case":31,"DOM":32}],159:[function(require,module,exports){
-'use strict';
-
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageDirAttributeIsUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var textDirection = LanguageComponent.textDirection;
 
@@ -15067,7 +14829,7 @@ var LanguageDirAttributeIsUsed = {
         return;
       }
       var matches = textMatches.length;
-      DOM.scry('[dir=' + oppositeDirection + ']', $el).each(function () {
+      DOM.scry('[dir=' + oppositeDirection + ']', $el).forEach(function () {
         var childMatches = $el[0].textContent.match(textDirection[oppositeDirection]);
         if (childMatches) {
           matches -= childMatches.length;
@@ -15082,9 +14844,9 @@ var LanguageDirAttributeIsUsed = {
     }
 
     test.get('scope').forEach(function (scope) {
-      DOM.scry(TextSelectorComponent, this).filter(function (index, element) {
+      DOM.scry(TextSelectorComponent, scope).filter(function (element) {
         return TextNodeFilterComponent(element);
-      }).each(countDirAttributes);
+      }).forEach(countDirAttributes);
     });
   },
 
@@ -15111,28 +14873,25 @@ var LanguageDirAttributeIsUsed = {
 module.exports = LanguageDirAttributeIsUsed;
 
 },{"Case":31,"DOM":32,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],160:[function(require,module,exports){
-'use strict';
-
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageDirectionPunctuation = {
-  run: function run(test) {
+  run: function (test) {
     var scope = test.get('scope');
     var punctuation = {};
     var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
     var currentDirection = scope.attr('dir') ? scope.attr('dir').toLowerCase() : 'ltr';
     var oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
     var textDirection = LanguageComponent.textDirection;
-    scope.each(function () {
-      var $local = $(this);
-      DOM.scry(TextSelectorComponent, $local).filter(function (index, element) {
+    scope.forEach(function (scope) {
+      DOM.scry(TextSelectorComponent, scope).filter(function (element) {
         return TextNodeFilterComponent(element);
-      }).each(function () {
-        var $el = $(this);
+      }).forEach(function (element) {
+        var $el = $(element);
         if ($el.attr('dir')) {
           currentDirection = $el.attr('dir').toLowerCase();
         } else {
@@ -15145,7 +14904,7 @@ var LanguageDirectionPunctuation = {
         var text = GetTextContentsComponent($el);
         var matches = text.match(textDirection[oppositeDirection]);
         var _case = test.add(Case({
-          element: this
+          element: element
         }));
         if (!matches) {
           _case.set({ status: 'inapplicable' });
@@ -15187,27 +14946,24 @@ var LanguageDirectionPunctuation = {
 module.exports = LanguageDirectionPunctuation;
 
 },{"Case":31,"DOM":32,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],161:[function(require,module,exports){
-'use strict';
-
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageUnicodeDirection = {
-  run: function run(test) {
+  run: function (test) {
     var scope = test.get('scope');
     var textDirection = LanguageComponent.textDirection;
     var textDirectionChanges = LanguageComponent.textDirectionChanges;
-    scope.each(function () {
-      var $local = $(this);
-      DOM.scry(TextSelectorComponent, $local).filter(function (index, element) {
+    scope.forEach(function (scope) {
+      DOM.scry(TextSelectorComponent, scope).filter(function (element) {
         return TextNodeFilterComponent(element);
-      }).each(function () {
+      }).forEach(function (element) {
         var _case = test.add(Case({
-          element: this
+          element: element
         }));
-        var $el = $(this);
+        var $el = $(element);
         var text = $el.text().trim();
         var otherDirection = text.substr(0, 1).search(textDirection.ltr) !== -1 ? 'rtl' : 'ltr';
         if (text.search(textDirection[otherDirection]) === -1) {
@@ -15246,8 +15002,6 @@ var LanguageUnicodeDirection = {
 module.exports = LanguageUnicodeDirection;
 
 },{"Case":31,"DOM":32,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],162:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -15256,30 +15010,30 @@ module.exports = LanguageUnicodeDirection;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var LegendTextNotEmpty = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'legend';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
-          if ($(this).text().trim().length > 0) {
+          if ($(element).text().trim().length > 0) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -15316,8 +15070,6 @@ var LegendTextNotEmpty = {
 module.exports = LegendTextNotEmpty;
 
 },{"Case":31,"DOM":32}],163:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -15325,7 +15077,7 @@ module.exports = LegendTextNotEmpty;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var LegendTextNotPlaceholder = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'legend',
       content: 'true',
@@ -15369,8 +15121,6 @@ var LegendTextNotPlaceholder = {
 module.exports = LegendTextNotPlaceholder;
 
 },{"PlaceholderComponent":16}],164:[function(require,module,exports){
-'use strict';
-
 /**
  * @todo Needs refinement.
  *
@@ -15381,30 +15131,30 @@ module.exports = LegendTextNotPlaceholder;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var LiDontUseImageForBullet = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'li';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if ($(this).children('img').length > 0) {
+          if ($(element).children('img').length > 0) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -15421,13 +15171,11 @@ var LiDontUseImageForBullet = {
 module.exports = LiDontUseImageForBullet;
 
 },{"Case":31,"DOM":32}],165:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
-var TableHeadersComponent = require('TableHeadersComponent');
+const DOM = require('DOM');
+const TableHeadersComponent = require('TableHeadersComponent');
 var LinkHasAUniqueContext = {
-  run: function run(test) {
+  run: function (test) {
 
     var blockStyle = ['block', 'flex', 'list-item', 'table', 'table-caption', 'table-cell'];
 
@@ -15611,18 +15359,16 @@ var LinkHasAUniqueContext = {
 module.exports = LinkHasAUniqueContext;
 
 },{"Case":31,"DOM":32,"TableHeadersComponent":25}],166:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var ListNotUsedForFormatting = {
-  run: function run(test) {
-    DOM.scry('ol, ul', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('ol, ul', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (DOM.scry('li', this).length < 2) {
+      if (DOM.scry('li', element).length < 2) {
         _case.set({
           status: 'failed'
         });
@@ -15657,22 +15403,20 @@ var ListNotUsedForFormatting = {
 module.exports = ListNotUsedForFormatting;
 
 },{"Case":31,"DOM":32}],167:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ListOfLinksUseList = {
-  run: function run(test) {
+  run: function (test) {
     var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
-    DOM.scry('a', test.get('scope')).each(function () {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
       var _case = test.add(Case({
-        element: this
+        element: element
       }));
       // Only test if there's another a tag.
-      if ($(this).next('a').length) {
-        var nextText = $(this).get(0).nextSibling.wholeText.replace(unreadableText, '');
-        if (!$(this).parent('li').length && IsUnreadable(nextText)) {
+      if ($(element).next('a').length) {
+        var nextText = $(element).get(0).nextSibling.wholeText.replace(unreadableText, '');
+        if (!$(element).parent('li').length && IsUnreadable(nextText)) {
           _case.set({
             status: 'failed'
           });
@@ -15708,8 +15452,6 @@ var ListOfLinksUseList = {
 module.exports = ListOfLinksUseList;
 
 },{"Case":31,"DOM":32,"IsUnreadable":11}],168:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -15718,26 +15460,26 @@ module.exports = ListOfLinksUseList;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var MarqueeIsNotUsed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'marquee';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'passed'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -15762,8 +15504,6 @@ var MarqueeIsNotUsed = {
 module.exports = MarqueeIsNotUsed;
 
 },{"Case":31,"DOM":32}],169:[function(require,module,exports){
-'use strict';
-
 /**
  * @todo Needs refinement.
  *
@@ -15774,26 +15514,26 @@ module.exports = MarqueeIsNotUsed;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var MenuNotUsedToFormatText = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'menu:not(menu li:parent(menu))';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -15818,12 +15558,10 @@ var MenuNotUsedToFormatText = {
 module.exports = MenuNotUsedToFormatText;
 
 },{"Case":31,"DOM":32}],170:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var NewWindowIsOpened = {
-  run: function run(test) {
+  run: function (test) {
 
     var fenestrate = window.open;
     var _case;
@@ -15837,13 +15575,13 @@ var NewWindowIsOpened = {
       });
     };
 
-    DOM.scry('a', test.get('scope')).each(function () {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
       // Save a reference to this clicked tag.
       _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      $(this).trigger('click');
+      $(element).trigger('click');
     });
 
     window.open = fenestrate;
@@ -15872,8 +15610,6 @@ var NewWindowIsOpened = {
 module.exports = NewWindowIsOpened;
 
 },{"Case":31,"DOM":32}],171:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -15881,7 +15617,7 @@ module.exports = NewWindowIsOpened;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var ObjectMustContainText = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'object',
       content: 'true',
@@ -15913,8 +15649,6 @@ var ObjectMustContainText = {
 module.exports = ObjectMustContainText;
 
 },{"PlaceholderComponent":16}],172:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -15923,23 +15657,23 @@ module.exports = ObjectMustContainText;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var ObjectMustHaveEmbed = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'object';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasEmbed = DOM.scry('embed', this).length > 0;
+          var hasEmbed = DOM.scry('embed', element).length > 0;
 
           // If a test is defined, then use it
           if (hasEmbed) {
@@ -15947,7 +15681,7 @@ var ObjectMustHaveEmbed = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -15972,8 +15706,6 @@ var ObjectMustHaveEmbed = {
 module.exports = ObjectMustHaveEmbed;
 
 },{"Case":31,"DOM":32}],173:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -15982,24 +15714,24 @@ module.exports = ObjectMustHaveEmbed;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var ObjectMustHaveTitle = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'object';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasTitle = this.hasAttribute('title');
+          var hasTitle = element.hasAttribute('title');
 
           // If a test is defined, then use it
           if (hasTitle) {
@@ -16007,7 +15739,7 @@ var ObjectMustHaveTitle = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -16038,8 +15770,6 @@ var ObjectMustHaveTitle = {
 module.exports = ObjectMustHaveTitle;
 
 },{"Case":31,"DOM":32}],174:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16047,7 +15777,7 @@ module.exports = ObjectMustHaveTitle;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var ObjectMustHaveValidTitle = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'object',
       attribute: 'title',
@@ -16073,21 +15803,19 @@ var ObjectMustHaveValidTitle = {
 module.exports = ObjectMustHaveValidTitle;
 
 },{"PlaceholderComponent":16}],175:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var SuspectPHeaderTags = require('SuspectPHeaderTags');
 var SuspectPCSSStyles = require('SuspectPCSSStyles');
 var PNotUsedAsHeader = {
-  run: function run(test) {
-    DOM.scry('p', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('p', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 
-      var $paragraph = $(this);
+      var $paragraph = $(element);
 
       // If the text has a period, it is probably a sentence and not a header.
       if ($paragraph.text().search(/[\.!:;]/) >= 1) {
@@ -16097,13 +15825,13 @@ var PNotUsedAsHeader = {
       }
       var failed = false;
       // Look for any indication that the paragraph contains at least a full sentence
-      if ($(this).text().search(/[\.!:;]/) < 1) {
+      if ($(element).text().search(/[\.!:;]/) < 1) {
         var priorParagraph = $paragraph.prev('p');
         // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
-        SuspectPHeaderTags.forEach(function (tag, index) {
+        SuspectPHeaderTags.forEach(function (tag) {
           if (DOM.scry(tag, $paragraph).length) {
-            DOM.scry(tag, $paragraph).each(function () {
-              if ($(this).text().trim() === $paragraph.text().trim()) {
+            DOM.scry(tag, $paragraph).forEach(function (element) {
+              if ($(element).text().trim() === $paragraph.text().trim()) {
                 _case.set({
                   status: 'failed'
                 });
@@ -16114,7 +15842,7 @@ var PNotUsedAsHeader = {
         });
         // Checking if previous paragraph has a different values for style properties given in SuspectPCSSStyles.
         if (priorParagraph.length) {
-          SuspectPCSSStyles.forEach(function (cssProperty, index) {
+          SuspectPCSSStyles.forEach(function (cssProperty) {
             if ($paragraph.css(cssProperty) !== priorParagraph.css(cssProperty)) {
               _case.set({
                 status: 'failed'
@@ -16165,8 +15893,6 @@ var PNotUsedAsHeader = {
 module.exports = PNotUsedAsHeader;
 
 },{"Case":31,"DOM":32,"SuspectPCSSStyles":21,"SuspectPHeaderTags":22}],176:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16174,7 +15900,7 @@ module.exports = PNotUsedAsHeader;
 var LabelComponent = require('LabelComponent');
 
 var PasswordHasLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="password"]'
     };
@@ -16220,20 +15946,18 @@ var PasswordHasLabel = {
 module.exports = PasswordHasLabel;
 
 },{"LabelComponent":12}],177:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var PreShouldNotBeUsedForTabularLayout = {
-  run: function run(test) {
-    DOM.scry('pre', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('pre', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      var rows = $(this).text().split(/[\n\r]+/);
+      var rows = $(element).text().split(/[\n\r]+/);
       _case.set({
-        status: rows.length > 1 && $(this).text().search(/\t/) > -1 ? 'failed' : 'passed'
+        status: rows.length > 1 && $(element).text().search(/\t/) > -1 ? 'failed' : 'passed'
       });
     });
   },
@@ -16264,8 +15988,6 @@ var PreShouldNotBeUsedForTabularLayout = {
 module.exports = PreShouldNotBeUsedForTabularLayout;
 
 },{"Case":31,"DOM":32}],178:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16273,7 +15995,7 @@ module.exports = PreShouldNotBeUsedForTabularLayout;
 var LabelComponent = require('LabelComponent');
 
 var RadioHasLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'input[type="radio"]'
     };
@@ -16319,8 +16041,6 @@ var RadioHasLabel = {
 module.exports = RadioHasLabel;
 
 },{"LabelComponent":12}],179:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16328,7 +16048,7 @@ module.exports = RadioHasLabel;
 var EventComponent = require('EventComponent');
 
 var ScriptOnclickRequiresOnKeypress = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onclick]',
       correspondingEvent: 'onkeypress',
@@ -16364,8 +16084,6 @@ var ScriptOnclickRequiresOnKeypress = {
 module.exports = ScriptOnclickRequiresOnKeypress;
 
 },{"EventComponent":6}],180:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16373,7 +16091,7 @@ module.exports = ScriptOnclickRequiresOnKeypress;
 var EventComponent = require('EventComponent');
 
 var ScriptOndblclickRequiresOnKeypress = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[ondblclick]',
       correspondingEvent: 'onkeypress',
@@ -16409,8 +16127,6 @@ var ScriptOndblclickRequiresOnKeypress = {
 module.exports = ScriptOndblclickRequiresOnKeypress;
 
 },{"EventComponent":6}],181:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16418,7 +16134,7 @@ module.exports = ScriptOndblclickRequiresOnKeypress;
 var EventComponent = require('EventComponent');
 
 var ScriptOnmousedownRequiresOnKeypress = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onmousedown]',
       correspondingEvent: 'onkeydown',
@@ -16454,8 +16170,6 @@ var ScriptOnmousedownRequiresOnKeypress = {
 module.exports = ScriptOnmousedownRequiresOnKeypress;
 
 },{"EventComponent":6}],182:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16463,7 +16177,7 @@ module.exports = ScriptOnmousedownRequiresOnKeypress;
 var EventComponent = require('EventComponent');
 
 var ScriptOnmousemove = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onmousemove]',
       correspondingEvent: 'onkeypress',
@@ -16499,8 +16213,6 @@ var ScriptOnmousemove = {
 module.exports = ScriptOnmousemove;
 
 },{"EventComponent":6}],183:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16508,7 +16220,7 @@ module.exports = ScriptOnmousemove;
 var EventComponent = require('EventComponent');
 
 var ScriptOnmouseoutHasOnmouseblur = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onmouseout]',
       correspondingEvent: 'onblur',
@@ -16544,8 +16256,6 @@ var ScriptOnmouseoutHasOnmouseblur = {
 module.exports = ScriptOnmouseoutHasOnmouseblur;
 
 },{"EventComponent":6}],184:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16553,7 +16263,7 @@ module.exports = ScriptOnmouseoutHasOnmouseblur;
 var EventComponent = require('EventComponent');
 
 var ScriptOnmouseoverHasOnfocus = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onmouseover]',
       correspondingEvent: 'onfocus',
@@ -16589,8 +16299,6 @@ var ScriptOnmouseoverHasOnfocus = {
 module.exports = ScriptOnmouseoverHasOnfocus;
 
 },{"EventComponent":6}],185:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16598,7 +16306,7 @@ module.exports = ScriptOnmouseoverHasOnfocus;
 var EventComponent = require('EventComponent');
 
 var ScriptOnmouseupHasOnkeyup = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: '[onmouseup]',
       correspondingEvent: 'onkeyup',
@@ -16634,8 +16342,6 @@ var ScriptOnmouseupHasOnkeyup = {
 module.exports = ScriptOnmouseupHasOnkeyup;
 
 },{"EventComponent":6}],186:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16643,7 +16349,7 @@ module.exports = ScriptOnmouseupHasOnkeyup;
 var LabelComponent = require('LabelComponent');
 
 var SelectHasAssociatedLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'select'
     };
@@ -16688,27 +16394,25 @@ var SelectHasAssociatedLabel = {
 module.exports = SelectHasAssociatedLabel;
 
 },{"LabelComponent":12}],187:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var HasEventListenerComponent = require('HasEventListenerComponent');
 var SelectJumpMenu = {
-  run: function run(test) {
+  run: function (test) {
     var scope = test.get('scope');
     if (DOM.scry('select', scope).length === 0) {
       return;
     }
 
-    DOM.scry('select', scope).each(function () {
-      if (DOM.scry(':submit', this).parent('form').length === 0 && HasEventListenerComponent($(this), 'change')) {
+    DOM.scry('select', scope).forEach(function (element) {
+      if (DOM.scry(':submit', element).parent('form').length === 0 && HasEventListenerComponent($(element), 'change')) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       } else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       }
@@ -16741,23 +16445,21 @@ var SelectJumpMenu = {
 module.exports = SelectJumpMenu;
 
 },{"Case":31,"DOM":32,"HasEventListenerComponent":8}],188:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var SiteMapStringsComponent = require('SiteMapStringsComponent');
 
 var SiteMap = {
-  run: function run(test) {
+  run: function (test) {
     var set = false;
     var _case = Case({
       element: test.get('scope').get(0)
     });
     test.add(_case);
-    DOM.scry('a', test.get('scope')).each(function () {
-      var text = $(this).text().toLowerCase();
-      SiteMapStringsComponent.forEach(function (string, index) {
-        if (text.search(string) > -1) {
+    DOM.scry('a', test.get('scope')).forEach(function (element) {
+      var text = $(element).text().toLowerCase();
+      SiteMapStringsComponent.forEach(function (str) {
+        if (text.search(str) > -1) {
           set = true;
           return;
         }
@@ -16804,25 +16506,23 @@ var SiteMap = {
 module.exports = SiteMap;
 
 },{"Case":31,"DOM":32,"SiteMapStringsComponent":19}],189:[function(require,module,exports){
-'use strict';
-
 /**globals console:true */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 
 var SkipContentStringsComponent = require('SkipContentStringsComponent');
 
 var SkipToContentLinkProvided = {
-  run: function run(test) {
+  run: function (test) {
     test.get('scope').forEach(function (scope) {
-      var $local = $(this);
+      var $local = $(scope);
       var skipLinkFound = false;
 
-      DOM.scry('a[href*="#"]', $local).each(function () {
+      DOM.scry('a[href*="#"]', $local).forEach(function (element) {
         if (skipLinkFound) {
           return;
         }
-        var $link = $(this);
+        var $link = $(element);
 
         var fragment = $link.attr('href').split('#').pop();
         var $target = DOM.scry('#' + fragment, $local);
@@ -16875,8 +16575,6 @@ var SkipToContentLinkProvided = {
 module.exports = SkipToContentLinkProvided;
 
 },{"Case":31,"DOM":32,"SkipContentStringsComponent":20}],190:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -16885,23 +16583,23 @@ module.exports = SkipToContentLinkProvided;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var SvgContainsTitle = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'svg';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasTitle = DOM.scry('title', this).length === 1;
+          var hasTitle = DOM.scry('title', element).length === 1;
 
           // If a test is defined, then use it
           if (hasTitle) {
@@ -16909,7 +16607,7 @@ var SvgContainsTitle = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -16940,26 +16638,23 @@ var SvgContainsTitle = {
 module.exports = SvgContainsTitle;
 
 },{"Case":31,"DOM":32}],191:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TabIndexFollowsLogicalOrder = {
-  run: function run(test) {
+  run: function (test) {
     test.get('scope').forEach(function (scope) {
-      var $local = $(this);
       var index = 0;
-      DOM.scry('[tabindex]', $local).each(function () {
-        var $el = $(this);
+      DOM.scry('[tabindex]', scope).forEach(function (element) {
+        var $el = $(element);
         var tabindex = $el.attr('tabindex');
         if (parseInt(tabindex, 10) >= 0 && parseInt(tabindex, 10) !== index + 1) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         } else {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'passed'
           }));
         }
@@ -16991,18 +16686,16 @@ var TabIndexFollowsLogicalOrder = {
 module.exports = TabIndexFollowsLogicalOrder;
 
 },{"Case":31,"DOM":32}],192:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableAxisHasCorrespondingId = {
-  run: function run(test) {
-    DOM.scry('[axis]', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('[axis]', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
-      if (DOM.scry('th#' + $(this).attr('axis', this).parents('table').first()).length === 0) {
+      if (DOM.scry('th#' + $(element).attr('axis', element).parents('table').first()).length === 0) {
         _case.set({
           status: 'failed'
         });
@@ -17039,8 +16732,6 @@ var TableAxisHasCorrespondingId = {
 module.exports = TableAxisHasCorrespondingId;
 
 },{"Case":31,"DOM":32}],193:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -17049,30 +16740,30 @@ module.exports = TableAxisHasCorrespondingId;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableDataShouldHaveTh = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'table';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasHeading = DOM.scry('th', this).length > 0;
+          var hasHeading = DOM.scry('th', element).length > 0;
           // If a test is defined, then use it
           if (hasHeading) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -17104,21 +16795,19 @@ var TableDataShouldHaveTh = {
 module.exports = TableDataShouldHaveTh;
 
 },{"Case":31,"DOM":32}],194:[function(require,module,exports){
-'use strict';
-
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableLayoutDataShouldNotHaveTh = {
-  run: function run(test) {
-    DOM.scry('table', test.get('scope')).each(function () {
+  run: function (test) {
+    DOM.scry('table', test.get('scope')).forEach(function (element) {
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 
-      if (DOM.scry('th', this).length !== 0) {
-        if (!IsDataTableComponent($(this))) {
+      if (DOM.scry('th', element).length !== 0) {
+        if (!IsDataTableComponent($(element))) {
           _case.set({
             status: 'failed'
           });
@@ -17158,29 +16847,27 @@ var TableLayoutDataShouldNotHaveTh = {
 module.exports = TableLayoutDataShouldNotHaveTh;
 
 },{"Case":31,"DOM":32,"IsDataTableComponent":10}],195:[function(require,module,exports){
-'use strict';
-
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableLayoutHasNoCaption = {
-  run: function run(test) {
-    DOM.scry('table', test.get('scope')).each(function () {
-      if (DOM.scry('caption', this).length) {
-        if (!IsDataTableComponent($(this))) {
+  run: function (test) {
+    DOM.scry('table', test.get('scope')).forEach(function (element) {
+      if (DOM.scry('caption', element).length) {
+        if (!IsDataTableComponent($(element))) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         } else {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'passed'
           }));
         }
       } else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'inapplicable'
         }));
       }
@@ -17210,21 +16897,18 @@ var TableLayoutHasNoCaption = {
 module.exports = TableLayoutHasNoCaption;
 
 },{"Case":31,"DOM":32,"IsDataTableComponent":10}],196:[function(require,module,exports){
-'use strict';
-
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var TableLayoutHasNoSummary = {
-  run: function run(test) {
+  run: function (test) {
     test.get('scope').forEach(function (scope) {
-      var $local = $(this);
-      DOM.scry('table[summary]', $local).each(function () {
+      DOM.scry('table[summary]', scope).forEach(function (element) {
         var _case = test.add(Case({
-          element: this
+          element: element
         }));
-        if (!IsDataTableComponent($(this)) && !IsUnreadable($(this).attr('summary'))) {
+        if (!IsDataTableComponent($(element)) && !IsUnreadable($(element).attr('summary'))) {
           _case.set({ status: 'failed' });
         } else {
           _case.set({ status: 'passed' });
@@ -17256,17 +16940,15 @@ var TableLayoutHasNoSummary = {
 module.exports = TableLayoutHasNoSummary;
 
 },{"Case":31,"DOM":32,"IsDataTableComponent":10,"IsUnreadable":11}],197:[function(require,module,exports){
-'use strict';
-
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableLayoutMakesSenseLinearized = {
-  run: function run(test) {
-    DOM.scry('table', test.get('scope')).each(function () {
-      if (!IsDataTableComponent($(this))) {
+  run: function (test) {
+    DOM.scry('table', test.get('scope')).forEach(function (element) {
+      if (!IsDataTableComponent($(element))) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       }
@@ -17299,22 +16981,20 @@ var TableLayoutMakesSenseLinearized = {
 module.exports = TableLayoutMakesSenseLinearized;
 
 },{"Case":31,"DOM":32,"IsDataTableComponent":10}],198:[function(require,module,exports){
-'use strict';
-
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableNotUsedForLayout = {
-  run: function run(test) {
-    DOM.scry('table', test.get('scope')).each(function () {
-      if (!IsDataTableComponent($(this))) {
+  run: function (test) {
+    DOM.scry('table', test.get('scope')).forEach(function (element) {
+      if (!IsDataTableComponent($(element))) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       } else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       }
@@ -17344,19 +17024,17 @@ var TableNotUsedForLayout = {
 module.exports = TableNotUsedForLayout;
 
 },{"Case":31,"DOM":32,"IsDataTableComponent":10}],199:[function(require,module,exports){
-'use strict';
-
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableShouldUseHeaderIDs = {
-  run: function run(test) {
-    DOM.scry('table', test.get('scope')).each(function () {
-      var $table = $(this);
+  run: function (test) {
+    DOM.scry('table', test.get('scope')).forEach(function (element) {
+      var $table = $(element);
       var tableFailed = false;
       if (IsDataTableComponent($table)) {
-        DOM.scry('th', $table).each(function () {
-          if (!tableFailed && !$(this).attr('id')) {
+        DOM.scry('th', $table).forEach(function (element) {
+          if (!tableFailed && !$(element).attr('id')) {
             tableFailed = true;
             test.add(Case({
               element: $table.get(0),
@@ -17365,9 +17043,9 @@ var TableShouldUseHeaderIDs = {
           }
         });
         if (!tableFailed) {
-          DOM.scry('td[header]', $table).each(function () {
+          DOM.scry('td[header]', $table).forEach(function (element) {
             if (!tableFailed) {
-              $(this).attr('header').split(' ').forEach(function (id, index) {
+              $(element).attr('header').split(' ').forEach(function (id) {
                 if (!DOM.scry('#' + id, $table).length) {
                   tableFailed = true;
                   test.add(Case({
@@ -17406,22 +17084,20 @@ var TableShouldUseHeaderIDs = {
 module.exports = TableShouldUseHeaderIDs;
 
 },{"Case":31,"DOM":32,"IsDataTableComponent":10}],200:[function(require,module,exports){
-'use strict';
-
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableSummaryDoesNotDuplicateCaption = {
-  run: function run(test) {
-    DOM.scry('table[summary]:has(caption)', test.get('scope')).each(function () {
-      if (CleanStringComponent(DOM.scry('caption:first', this).attr('summary')) === CleanStringComponent($(this).text())) {
+  run: function (test) {
+    DOM.scry('table[summary]:has(caption)', test.get('scope')).forEach(function (element) {
+      if (CleanStringComponent(DOM.scry('caption:first', element).attr('summary')) === CleanStringComponent($(element).text())) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       } else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       }
@@ -17445,8 +17121,6 @@ var TableSummaryDoesNotDuplicateCaption = {
 module.exports = TableSummaryDoesNotDuplicateCaption;
 
 },{"Case":31,"CleanStringComponent":2,"DOM":32}],201:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -17454,7 +17128,7 @@ module.exports = TableSummaryDoesNotDuplicateCaption;
 var PlaceholderComponent = require('PlaceholderComponent');
 
 var TableSummaryIsEmpty = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'table',
       attribute: 'summary',
@@ -17480,16 +17154,14 @@ var TableSummaryIsEmpty = {
 module.exports = TableSummaryIsEmpty;
 
 },{"PlaceholderComponent":16}],202:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableSummaryIsNotTooLong = {
-  run: function run(test) {
-    DOM.scry('table[summary]', test.get('scope')).each(function () {
-      if ($(this).attr('summary').trim().length > 100) {
+  run: function (test) {
+    DOM.scry('table[summary]', test.get('scope')).forEach(function (element) {
+      if ($(element).attr('summary').trim().length > 100) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       }
@@ -17505,17 +17177,15 @@ var TableSummaryIsNotTooLong = {
 module.exports = TableSummaryIsNotTooLong;
 
 },{"Case":31,"DOM":32}],203:[function(require,module,exports){
-'use strict';
-
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableUseColGroup = {
-  run: function run(test) {
-    DOM.scry('table', test.get('scope')).each(function () {
-      if (IsDataTableComponent(DOM.scry('colgroup', this)) && !$(this).length) {
+  run: function (test) {
+    DOM.scry('table', test.get('scope')).forEach(function (element) {
+      if (IsDataTableComponent(DOM.scry('colgroup', element)) && !$(element).length) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       }
@@ -17539,16 +17209,14 @@ var TableUseColGroup = {
 module.exports = TableUseColGroup;
 
 },{"Case":31,"DOM":32,"IsDataTableComponent":10}],204:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableUsesAbbreviationForHeader = {
-  run: function run(test) {
-    DOM.scry('th:not(th[abbr])', test.get('scope')).each(function () {
-      if ($(this).text().length > 20) {
+  run: function (test) {
+    DOM.scry('th:not(th[abbr])', test.get('scope')).forEach(function (element) {
+      if ($(element).text().length > 20) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       }
@@ -17572,8 +17240,6 @@ var TableUsesAbbreviationForHeader = {
 module.exports = TableUsesAbbreviationForHeader;
 
 },{"Case":31,"DOM":32}],205:[function(require,module,exports){
-'use strict';
-
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -17582,23 +17248,23 @@ module.exports = TableUsesAbbreviationForHeader;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableUsesCaption = {
-  run: function run(test) {
+  run: function (test) {
 
     var selector = 'table';
 
-    this.get('scope').each(function () {
-      var candidates = DOM.scry(selector, $(this));
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
           status: 'inapplicable'
         }));
       } else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasCaption = DOM.scry('caption', this).length === 1;
+          var hasCaption = DOM.scry('caption', element).length === 1;
 
           // If a test is defined, then use it
           if (hasCaption) {
@@ -17606,7 +17272,7 @@ var TableUsesCaption = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -17637,27 +17303,41 @@ var TableUsesCaption = {
 module.exports = TableUsesCaption;
 
 },{"Case":31,"DOM":32}],206:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TableUsesScopeForRow = {
-  run: function run(test) {
-    DOM.scry('table', test.get('scope')).each(function () {
-      DOM.scry('td:first-child', this).each(function () {
-        var $next = $(this).next('td');
-        if ($(this).css('font-weight') === 'bold' && $next.css('font-weight') !== 'bold' || DOM.scry('strong', this).length && !DOM.scry('strong', $next).length) {
-          test.add(Case({
-            element: this,
+  run: function (test) {
+    DOM.scry('table', test.get('scope')).forEach(function (element) {
+      DOM.scry('td:first-child', element).forEach(function (element) {
+        var $element = $(element);
+        var $next = $element.next('td');
+        var isBold = $element.css('font-weight') === 'bold';
+        var nextIsNotBold = $next.css('font-weight') !== 'bold';
+        var boldDoesNotFollowsBold = isBold && nextIsNotBold;
+        var hasStrong = DOM.scry('strong', this).length;
+        var nextIsNotStrong = DOM.scry('strong', $next).length === 0;
+        var strongDoesNotFollowStrong = hasStrong && nextIsNotStrong;
+
+        if (boldDoesNotFollowsBold || strongDoesNotFollowStrong) {
+          test.add(new Case({
+            element: element,
             status: 'failed'
           }));
         }
       });
-      DOM.scry('td:last-child', this).each(function () {
-        var $prev = $(this).prev('td');
-        if ($(this).css('font-weight') === 'bold' && $prev.css('font-weight') !== 'bold' || DOM.scry('strong', this).length && !DOM.scry('strong', $prev).length) {
-          test.add(Case({
-            element: this,
+      DOM.scry('td:last-child', element).forEach(function (element) {
+        var $element = $(element);
+        var $prev = $element.prev('td');
+        var isBold = $element.css('font-weight') === 'bold';
+        var prevIsNotBold = $prev.css('font-weight') !== 'bold';
+        var boldDoesNotFollowsBold = isBold && prevIsNotBold;
+        var hasStrong = DOM.scry('strong', this).length;
+        var prevIsNotStrong = DOM.scry('strong', $prev).length === 0;
+        var strongDoesNotFollowStrong = hasStrong && prevIsNotStrong;
+
+        if (boldDoesNotFollowsBold || strongDoesNotFollowStrong) {
+          test.add(new Case({
+            element: element,
             status: 'failed'
           }));
         }
@@ -17688,21 +17368,19 @@ var TableUsesScopeForRow = {
 module.exports = TableUsesScopeForRow;
 
 },{"Case":31,"DOM":32}],207:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TabularDataIsInTable = {
-  run: function run(test) {
-    DOM.scry('pre', test.get('scope')).each(function () {
-      if ($(this).html().search('\t') >= 0) {
+  run: function (test) {
+    DOM.scry('pre', test.get('scope')).forEach(function (element) {
+      if ($(element).html().search('\t') >= 0) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       } else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       }
@@ -17735,20 +17413,18 @@ var TabularDataIsInTable = {
 module.exports = TabularDataIsInTable;
 
 },{"Case":31,"DOM":32}],208:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var ConvertToPxComponent = require('ConvertToPxComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 
 var TextIsNotSmall = {
-  run: function run(test) {
-    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (index, element) {
+  run: function (test) {
+    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (element) {
       return TextNodeFilterComponent(element);
-    }).each(function () {
-      var fontSize = $(this).css('font-size');
+    }).forEach(function (element) {
+      var fontSize = $(element).css('font-size');
       if (fontSize.search('em') > 0) {
         fontSize = ConvertToPxComponent(fontSize);
       }
@@ -17756,12 +17432,12 @@ var TextIsNotSmall = {
 
       if (fontSize < 10) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       } else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       }
@@ -17785,8 +17461,6 @@ var TextIsNotSmall = {
 module.exports = TextIsNotSmall;
 
 },{"Case":31,"ConvertToPxComponent":5,"DOM":32,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],209:[function(require,module,exports){
-'use strict';
-
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -17794,7 +17468,7 @@ module.exports = TextIsNotSmall;
 var LabelComponent = require('LabelComponent');
 
 var TextareaHasAssociatedLabel = {
-  run: function run(test, options) {
+  run: function (test, options) {
     options = options || {
       selector: 'textarea'
     };
@@ -17839,49 +17513,45 @@ var TextareaHasAssociatedLabel = {
 module.exports = TextareaHasAssociatedLabel;
 
 },{"LabelComponent":12}],210:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var VideoMayBePresent = {
-  run: function run(test) {
+  run: function (test) {
 
     var videoExtensions = ['webm', 'flv', 'ogv', 'ogg', 'avi', 'mov', 'qt', 'wmv', 'asf', 'mp4', 'm4p', 'm4v', 'mpg', 'mp2', 'mpeg', 'mpg', 'mpe', 'mpv', 'm2v', '3gp', '3g2'];
     var videoHosts = ['//www.youtube.com/embed/', '//player.vimeo.com/video/'];
 
     test.get('scope').forEach(function (scope) {
-      var $this = $(this);
       var hasCase = false; // Test if a case has been created
 
       // video elm is definately a video, and objects could be too.
-      DOM.scry('object, video', $this).each(function () {
+      DOM.scry('object, video', scope).forEach(function (element) {
         hasCase = true;
         test.add(Case({
-          element: this,
+          element: element,
           status: 'cantTell'
         }));
       });
 
       // Links refering to files with an video extensions are probably video
       // though the file may not exist.
-      DOM.scry('a[href]', $this).each(function () {
-        var $this = $(this);
-        var extension = $this.attr('href').split('.').pop();
+      DOM.scry('a[href]', scope).forEach(function (element) {
+        var extension = element.getAttribute('href').split('.').pop();
         if ($.inArray(extension, videoExtensions) !== -1) {
           hasCase = true;
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         }
       });
 
       // some iframes with URL's of known video providers are also probably videos
-      DOM.scry('iframe', $this).each(function () {
-        if (this.src.indexOf(videoHosts[0]) !== -1 || this.src.indexOf(videoHosts[1]) !== -1) {
+      DOM.scry('iframe', scope).forEach(function (element) {
+        if (element.src.indexOf(videoHosts[0]) !== -1 || element.src.indexOf(videoHosts[1]) !== -1) {
           hasCase = true;
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         }
@@ -17890,7 +17560,7 @@ var VideoMayBePresent = {
       // if no case was added, return inapplicable
       if (!hasCase) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         }));
       }
@@ -17914,12 +17584,10 @@ var VideoMayBePresent = {
 module.exports = VideoMayBePresent;
 
 },{"Case":31,"DOM":32}],211:[function(require,module,exports){
-'use strict';
-
 var Case = require('Case');
 var VideoComponent = require('VideoComponent');
 var VideosEmbeddedOrLinkedNeedCaptions = {
-  run: function run(test) {
+  run: function (test) {
 
     VideoComponent.findVideos(test.get('scope'), function (element, pass) {
       if (!pass) {
@@ -17962,28 +17630,26 @@ var VideosEmbeddedOrLinkedNeedCaptions = {
 module.exports = VideosEmbeddedOrLinkedNeedCaptions;
 
 },{"Case":31,"VideoComponent":30}],212:[function(require,module,exports){
-'use strict';
-
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceInWord = {
-  run: function run(test) {
+  run: function (test) {
     var whitespaceGroup, nonWhitespace;
-    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (index, element) {
+    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (element) {
       return TextNodeFilterComponent(element);
-    }).each(function () {
-      nonWhitespace = $(this).text() ? $(this).text().match(/[^\s\\]/g) : false;
-      whitespaceGroup = $(this).text() ? $(this).text().match(/[^\s\\]\s[^\s\\]/g) : false;
+    }).forEach(function (element) {
+      nonWhitespace = $(element).text() ? $(element).text().match(/[^\s\\]/g) : false;
+      whitespaceGroup = $(element).text() ? $(element).text().match(/[^\s\\]\s[^\s\\]/g) : false;
       if (nonWhitespace && whitespaceGroup && whitespaceGroup.length > 3 && whitespaceGroup.length >= nonWhitespace.length / 2 - 2) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       } else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       }
@@ -18013,27 +17679,25 @@ var WhiteSpaceInWord = {
 module.exports = WhiteSpaceInWord;
 
 },{"Case":31,"DOM":32,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],213:[function(require,module,exports){
-'use strict';
-
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
-var DOM = require('DOM');
+const DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceNotUsedForFormatting = {
-  run: function run(test) {
-    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (index, element) {
+  run: function (test) {
+    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (element) {
       return TextNodeFilterComponent(element);
-    }).each(function () {
+    }).forEach(function (element) {
       var _case = test.add(Case({
-        element: this
+        element: element
       }));
-      if (DOM.scry('br', this).length === 0) {
+      if (DOM.scry('br', element).length === 0) {
         _case.set({ status: 'passed' });
         return;
       }
-      var lines = $(this).html().toLowerCase().split(/(<br\ ?\/?>)+/);
+      var lines = $(element).html().toLowerCase().split(/(<br\ ?\/?>)+/);
       var lineCount = 0;
-      lines.forEach(function (line, index) {
+      lines.forEach(function (line) {
         if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
           lineCount++;
         }
