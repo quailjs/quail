@@ -11,7 +11,7 @@ var ContentPositioningShouldNotChangeMeaning = {
     ];
     var coordinates = {};
     var failed = false;
-    DOM.scry('*:has(*:quailCss(position=absolute))', test.get('scope')).each(function () {
+    DOM.scry('*:has(*:quailCss(position=absolute))', test.get('scope')).forEach(function (element) {
       coordinates = {
         top: {},
         left: {},
@@ -19,21 +19,21 @@ var ContentPositioningShouldNotChangeMeaning = {
         bottom: {}
       };
       failed = false;
-      var $container = $(this);
+      var $container = $(element);
       DOM.scry('h1, h2, h3, h4, h5, h6, p, blockquote, ol, li, ul, dd, dt', $container).filter(':quailCss(position=absolute)').each(function () {
         for (var i = 0; i < positions.length; i++) {
-          if (typeof $(this).css(positions[i]) !== 'undefined' && $(this).css(positions[i]) !== 'auto') {
-            if (typeof coordinates[positions[i]][$(this).css(positions[i])] === 'undefined') {
-              coordinates[positions[i]][$(this).css(positions[i])] = 0;
+          if (typeof $(element).css(positions[i]) !== 'undefined' && $(element).css(positions[i]) !== 'auto') {
+            if (typeof coordinates[positions[i]][$(element).css(positions[i])] === 'undefined') {
+              coordinates[positions[i]][$(element).css(positions[i])] = 0;
             }
-            coordinates[positions[i]][$(this).css(positions[i])]++;
+            coordinates[positions[i]][$(element).css(positions[i])]++;
           }
         }
       });
 
-      positions.forEach(function () {
-        coordinates[this].forEach(function (coord) {
-          if (this > 2 && !failed) {
+      positions.forEach(function (pos) {
+        coordinates[pos].forEach(function (coord) {
+          if (coord > 2 && !failed) {
             failed = true;
             test.add(Case({
               element: $container.get(0),
