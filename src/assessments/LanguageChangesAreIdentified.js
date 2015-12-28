@@ -69,19 +69,19 @@ var LanguageChangesAreIdentified = {
           }
         }
         var scripts = LanguageComponent.scripts;
-        for (var script in scripts) {
-          if (scripts.hasOwnProperty(script)) {
-            var script = scripts[script];
+        for (var name in scripts) {
+          if (scripts.hasOwnProperty(name)) {
+            var script = scripts[name];
           }
           if (script.languageindexOf(currentLanguage) !== -1) {
             return;
           }
           matches = text.match(script.regularExpression);
-          if (matches && matches.length && noCharactersMatch($element, script, matches, regularExpression)) {
+          if (matches && matches.length && noCharactersMatch($element, name, matches, regularExpression)) {
             test.add(Case({
               element: self,
               info: {
-                language: script
+                language: name
               },
               status: 'failed'
             }));
