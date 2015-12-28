@@ -9,21 +9,21 @@ var WhiteSpaceInWord = {
       .filter(function (element, index) {
         return TextNodeFilterComponent(element);
       })
-      .each(function () {
-        nonWhitespace = ($(this).text()) ? $(this).text().match(/[^\s\\]/g) : false;
-        whitespaceGroup = ($(this).text()) ? $(this).text().match(/[^\s\\]\s[^\s\\]/g) : false;
+      .forEach(function (element) {
+        nonWhitespace = ($(element).text()) ? $(element).text().match(/[^\s\\]/g) : false;
+        whitespaceGroup = ($(element).text()) ? $(element).text().match(/[^\s\\]\s[^\s\\]/g) : false;
         if (nonWhitespace &&
             whitespaceGroup &&
             whitespaceGroup.length > 3 &&
             whitespaceGroup.length >= (nonWhitespace.length / 2) - 2) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         }
         else {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'passed'
           }));
         }

@@ -27,12 +27,12 @@ var DocumentVisualListsAreMarkedUp = {
       .filter(function (element, index) {
         return TextNodeFilterComponent(element);
       })
-      .each(function () {
+      .forEach(function (element) {
         var _case = Case({
-          element: this
+          element: element
         });
         test.add(_case);
-        var matches = $(this).html().match(symbols);
+        var matches = $(element).html().match(symbols);
         _case.set({
           status: (matches && matches.length > 2) ? 'failed' : 'passed'
         });

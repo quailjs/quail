@@ -45,9 +45,9 @@ var DoNotUseGraphicalSymbolToConveyInformation = {
       .filter(function (element, index) {
         return TextNodeFilterComponent(element);
       })
-      .each(function () {
+      .forEach(function (element) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'inapplicable'
         }));
       });

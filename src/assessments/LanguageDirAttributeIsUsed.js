@@ -48,7 +48,7 @@ var LanguageDirAttributeIsUsed = {
         .filter(function (element, index) {
           return TextNodeFilterComponent(element);
         })
-        .each(countDirAttributes);
+        .forEach(countDirAttributes);
     });
   },
 

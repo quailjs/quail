@@ -23,7 +23,7 @@ module.exports = function(file, api) {
     catch (e) {
       // console.log('no each prop');
     }
-    return scryProp === 'scry' && eachProp === 'each';
+    return (['scry', 'filter', 'find', 'not'].indexOf(scryProp) > -1) && eachProp === 'each';
   })
   .forEach(fn => {
     if (fn.value.body) {
@@ -111,7 +111,7 @@ module.exports = function(file, api) {
       catch (e) {
       	//console.log('no scry');
       }
-      return scryProp === 'scry';
+      return (['scry', 'filter', 'find', 'not'].indexOf(scryProp) > -1);
     })
     .replaceWith(
       p => j.identifier('forEach')

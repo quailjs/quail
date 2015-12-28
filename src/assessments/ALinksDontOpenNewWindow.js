@@ -4,9 +4,9 @@ var NewWindowStringsComponent = require('NewWindowStringsComponent');
 var ALinksDontOpenNewWindow = {
   run: function (test) {
     // Links without a target attribute pass.
-    DOM.scry('a', test.get('scope')).not('[target=_new], [target=_blank]').each(function () {
+    DOM.scry('a', test.get('scope')).not('[target=_new], [target=_blank]').forEach(function (element) {
       test.add(Case({
-        element: this,
+        element: element,
         status: 'passed'
       }));
     });

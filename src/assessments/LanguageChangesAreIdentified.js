@@ -41,9 +41,9 @@ var LanguageChangesAreIdentified = {
       .filter(function (element, index) {
         return TextNodeFilterComponent(element);
       })
-      .each(function () {
-        var self = this;
-        $element = $(this);
+      .forEach(function (element) {
+        var self = element;
+        $element = $(element);
         currentLanguage = findCurrentLanguage($element);
         text = GetTextContentsComponent($element);
         failed = false;

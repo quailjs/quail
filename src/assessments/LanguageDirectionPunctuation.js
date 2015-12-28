@@ -18,8 +18,8 @@ var LanguageDirectionPunctuation = {
         .filter(function (element, index) {
           return TextNodeFilterComponent(element);
         })
-        .each(function () {
-          var $el = $(this);
+        .forEach(function (element) {
+          var $el = $(element);
           if ($el.attr('dir')) {
             currentDirection = $el.attr('dir').toLowerCase();
           }
@@ -33,7 +33,7 @@ var LanguageDirectionPunctuation = {
           var text = GetTextContentsComponent($el);
           var matches = text.match(textDirection[oppositeDirection]);
           var _case = test.add(Case({
-            element: this
+            element: element
           }));
           if (!matches) {
             _case.set({status: 'inapplicable'});

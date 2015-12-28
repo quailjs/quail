@@ -14,11 +14,11 @@ var LanguageUnicodeDirection = {
         .filter(function (element, index) {
           return TextNodeFilterComponent(element);
         })
-        .each(function () {
+        .forEach(function (element) {
           var _case = test.add(Case({
-            element: this
+            element: element
           }));
-          var $el = $(this);
+          var $el = $(element);
           var text = $el.text().trim();
           var otherDirection = (text.substr(0, 1).search(textDirection.ltr) !== -1) ?
             'rtl' :

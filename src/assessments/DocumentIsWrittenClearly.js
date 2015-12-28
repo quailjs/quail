@@ -10,10 +10,10 @@ var DocumentIsWrittenClearly = {
       .filter(function (element, index) {
         return TextNodeFilterComponent(element);
       })
-      .each(function () {
-        var text = TextStatisticsComponent.cleanText($(this).text());
+      .forEach(function (element) {
+        var text = TextStatisticsComponent.cleanText($(element).text());
         var _case = Case({
-          element: this
+          element: element
         });
         test.add(_case);
         if (IsUnreadable(text)) {

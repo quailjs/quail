@@ -10,8 +10,8 @@ var TextIsNotSmall = {
       .filter(function (element, index) {
         return TextNodeFilterComponent(element);
       })
-      .each(function () {
-        var fontSize = $(this).css('font-size');
+      .forEach(function (element) {
+        var fontSize = $(element).css('font-size');
         if (fontSize.search('em') > 0) {
           fontSize = ConvertToPxComponent(fontSize);
         }
@@ -19,13 +19,13 @@ var TextIsNotSmall = {
 
         if (fontSize < 10) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         }
         else {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'passed'
           }));
         }

@@ -8,15 +8,15 @@ var WhiteSpaceNotUsedForFormatting = {
       .filter(function (element, index) {
         return TextNodeFilterComponent(element);
       })
-      .each(function () {
+      .forEach(function (element) {
         var _case = test.add(Case({
-          element: this
+          element: element
         }));
-        if (DOM.scry('br', this).length === 0) {
+        if (DOM.scry('br', element).length === 0) {
           _case.set({status: 'passed'});
           return;
         }
-        var lines = $(this).html().toLowerCase().split(/(<br\ ?\/?>)+/);
+        var lines = $(element).html().toLowerCase().split(/(<br\ ?\/?>)+/);
         var lineCount = 0;
         lines.forEach(function (line, index) {
           if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
