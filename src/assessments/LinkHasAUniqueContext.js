@@ -18,7 +18,7 @@ var LinkHasAUniqueContext = {
       var block = link;
       var text = simplifyText(link.text());
 
-      while (!block.is('body, html') && blockStyle.indexOf(DOM.getStyle(block, 'display')) === -1) {
+      while (!DOM.is(block, 'body, html') && blockStyle.indexOf(DOM.getStyle(block, 'display')) === -1) {
         block = block.parent();
       }
 
@@ -66,11 +66,11 @@ var LinkHasAUniqueContext = {
       }
 
       // If one is a table cell and the other isn't, allow it
-      if (linkACtxt.is('td, th') && !linkBCtxt.is('td, th')) {
+      if (DOM.is(linkACtxt, 'td, th') && !DOM.is(linkBCtxt, 'td, th')) {
         return false;
 
       }
-      else if (linkACtxt.is('td, th') && linkBCtxt.is('td, th')) {
+      else if (DOM.is(linkACtxt, 'td, th') && DOM.is(linkBCtxt, 'td, th')) {
         var headerDiff = false;
         var headersA = [];
 

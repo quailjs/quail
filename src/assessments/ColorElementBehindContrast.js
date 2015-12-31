@@ -17,7 +17,7 @@ var ColorElementBehindContrast = {
       // Check text and background using element behind current element.
       var backgroundColorBehind;
       // The option element is problematic.
-      if (!$this.is('option')) {
+      if (!DOM.is($this, 'option')) {
         backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
       }
       if (!backgroundColorBehind) {

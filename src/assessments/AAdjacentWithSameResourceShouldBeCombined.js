@@ -12,7 +12,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
 
       links.forEach(function (link) {
         var next = DOM.next(link);
-        if (next.is('a')) {
+        if (next && DOM.is(next, 'a')) {
           $coupletons.push(link);
         }
         else {
@@ -27,21 +27,27 @@ var AAdjacentWithSameResourceShouldBeCombined = {
     function checkNextLink (element) {
       var thisHref = element.getAttribute('href');
       var next = DOM.next(element);
-      var nextHref = next.getAttribute('href');
       var status = 'passed';
       var _case = Case({
         element: element
       });
-      if (thisHref === nextHref) {
-        status = 'failed';
+      if (next) {
+        var nextHref = next.getAttribute('href');
+        if (thisHref === nextHref) {
+          status = 'failed';
+        }
       }
 
       test.add(_case);
-      _case.set({status: status});
+      _case.set({
+        status: status
+      });
     }
 
     function excludeSingleLinks (element) {
-      var _case = Case({element: element});
+      var _case = Case({
+        element: element
+      });
       test.add(_case);
       _case.set({
         status: 'inapplicable'

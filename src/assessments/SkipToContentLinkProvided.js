@@ -23,7 +23,7 @@ var SkipToContentLinkProvided = {
           var str = strs.pop();
           if ($link.text().search(str) > -1 && $target.length) {
             $link.focus();
-            if ($link.is(':visible') && DOM.getStyle($link, 'visibility') !== 'hidden') {
+            if (DOM.is($link, ':visible') && DOM.getStyle($link, 'visibility') !== 'hidden') {
               skipLinkFound = true;
               test.add(Case({
                 element: $link.get(0),

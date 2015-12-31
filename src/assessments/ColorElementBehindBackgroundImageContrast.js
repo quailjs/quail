@@ -21,7 +21,7 @@ var ColorElementBehindBackgroundImageContrast = {
       var behindBackgroundImage;
 
       // The option element is problematic.
-      if (!$this.is('option')) {
+      if (!DOM.is($this, 'option')) {
         behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
       }
 

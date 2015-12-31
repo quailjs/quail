@@ -9,8 +9,9 @@ var EmbedHasAssociatedNoEmbed = {
       test.add(_case);
       var noembeds = DOM.scry('noembed', element);
       var next = DOM.next(element);
+      var hasSiblingNoembed = next && DOM.is(next, 'noembed');
       _case.set({
-        status: (noembeds.length || next.is('noembed')) ? 'passed' : 'failed'
+        status: (noembeds.length || hasSiblingNoembed) ? 'passed' : 'failed'
       });
     });
   },

@@ -24,7 +24,7 @@ var ColorElementBehindBackgroundGradientContrast = {
       var failureFound;
       var rainbow = new Rainbow();
       // The option element is problematic.
-      if (!$this.is('option')) {
+      if (!DOM.is($this, 'option')) {
         behindGradientColors = colors.getBehindElementBackgroundGradient($this);
       }
 

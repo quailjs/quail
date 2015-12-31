@@ -6,7 +6,7 @@ var ALinksNotSeparatedBySymbols = {
     DOM.scry('a', test.get('scope')).forEach(function (element) {
       var $link = $(element);
       var next = DOM.next($link);
-      if (next.is('a')) {
+      if (next && DOM.is(next, 'a')) {
         var text = $link.get(0).nextSibling.wholeText;
         // The string between the links is composed of symbols.
         if (typeof text === 'string' && SymbolsStringsComponent.indexOf(text.toLowerCase().trim()) !== -1) {

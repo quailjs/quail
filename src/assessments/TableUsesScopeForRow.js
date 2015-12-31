@@ -5,18 +5,20 @@ var TableUsesScopeForRow = {
     DOM.scry('table', test.get('scope')).forEach(function (element) {
       DOM.scry('td:first-child', element).forEach(function (element) {
         var next = DOM.next(element);
-        var isBold = DOM.getStyle(element, 'font-weight') === 'bold';
-        var nextIsNotBold = DOM.getStyle(next, 'font-weight') !== 'bold';
-        var boldDoesNotFollowsBold = (isBold && nextIsNotBold);
-        var hasStrong = DOM.scry('strong', element).length
-        var nextIsNotStrong = DOM.scry('strong', next).length === 0;
-        var strongDoesNotFollowStrong = (hasStrong && nextIsNotStrong);
+        if (next) {
+          var isBold = DOM.getStyle(element, 'font-weight') === 'bold';
+          var nextIsNotBold = DOM.getStyle(next, 'font-weight') !== 'bold';
+          var boldDoesNotFollowsBold = (isBold && nextIsNotBold);
+          var hasStrong = DOM.scry('strong', element).length
+          var nextIsNotStrong = DOM.scry('strong', next).length === 0;
+          var strongDoesNotFollowStrong = (hasStrong && nextIsNotStrong);
 
-        if (boldDoesNotFollowsBold || strongDoesNotFollowStrong) {
-          test.add(new Case({
-            element: element,
-            status: 'failed'
-          }));
+          if (boldDoesNotFollowsBold || strongDoesNotFollowStrong) {
+            test.add(new Case({
+              element: element,
+              status: 'failed'
+            }));
+          }
         }
       });
       DOM.scry('td:last-child', element).forEach(function (element) {

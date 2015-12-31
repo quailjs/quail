@@ -22,8 +22,8 @@ var ALinkWithNonText = {
       }
       var unreadable = 0;
       DOM.scry('img, object, embed', element).forEach(function (element) {
-        if (($(element).is('img') && IsUnreadable($(element).attr('alt'))) ||
-          (!$(element).is('img') && IsUnreadable($(element).attr('title')))) {
+        if ((DOM.is(element, 'img') && IsUnreadable($(element).attr('alt'))) ||
+          (!DOM.is(element, 'img') && IsUnreadable($(element).attr('title')))) {
           unreadable++;
         }
       });
