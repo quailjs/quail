@@ -22,19 +22,19 @@ var AInPHasADistinctStyle = {
     function elmHasDistinctStyle ($elm, $parent) {
       var result = false;
       var styleProperties = ['font-weight', 'font-style'];
-      var textDecoration = $elm.css('text-decoration');
+      var textDecoration = DOM.getStyle($elm, 'text-decoration');
 
       if (textDecoration !== 'none' &&
-      textDecoration !== $parent.css('text-decoration')) {
+      textDecoration !== DOM.getStyle($parent, 'text-decoration')) {
         result = true;
       }
 
-      if ($elm.css('background-color') !== 'rgba(0, 0, 0, 0)') {
+      if (DOM.getStyle($elm, 'background-color') !== 'rgba(0, 0, 0, 0)') {
         styleProperties.push('background');
       }
 
       styleProperties.forEach(function (styleProp) {
-        if (!result && $elm.css(styleProp) !== $parent.css(styleProp)) {
+        if (!result && DOM.getStyle($elm, styleProp) !== DOM.getStyle($parent, styleProp)) {
           result = true;
         }
       });
@@ -43,8 +43,8 @@ var AInPHasADistinctStyle = {
     }
 
     function elmHasDistinctPosition ($elm) {
-      var isBlock = ($elm.css('display') === 'block');
-      var position = $elm.css('position');
+      var isBlock = (DOM.getStyle($elm, 'display') === 'block');
+      var position = DOM.getStyle($elm, 'position');
       var isPositioned = position !== 'relative' && position !== 'static';
       return isBlock || isPositioned;
     }
@@ -56,16 +56,15 @@ var AInPHasADistinctStyle = {
       var anchors = DOM.scry('p a[href]:visible', scope);
 
       anchors.forEach(function (element) {
-        var $element = $(element);
-        var $p = $element.closest('p');
-        var $parent = $element.parent();
+        var $p = element.closest('p');
+        var $parent = element.parent();
 
         var _case = Case({
           element: element
         });
         test.add(_case);
 
-        var aText = $element.text().trim();
+        var aText = element.text().trim();
 
         // Get all text of the p element with all anchors removed
         var pText = DOM.scry('a[href]', $p.clone()).remove().end().text();
@@ -73,16 +72,16 @@ var AInPHasADistinctStyle = {
         if (aText === '' || pText.match(allowedPText)) {
           _case.set('status', 'inapplicable');
         }
-        else if ($element.css('color') === $p.css('color')) {
+        else if (DOM.getStyle(element, 'color') === DOM.getStyle($p, 'color')) {
           _case.set('status', 'passed');
         }
-        else if (elmHasDistinctStyle($element, $p)) {
+        else if (elmHasDistinctStyle(element, $p)) {
           _case.set('status', 'passed');
         }
-        else if (elmHasDistinctPosition($element)) {
+        else if (elmHasDistinctPosition(element)) {
           _case.set('status', 'passed');
         }
-        else if (DOM.scry('img', $element).length > 0) {
+        else if (DOM.scry('img', element).length > 0) {
           _case.set('status', 'passed');
         }
         else if ($parent.text().trim() === aText &&

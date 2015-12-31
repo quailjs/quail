@@ -15,11 +15,10 @@ var LinkHasAUniqueContext = {
 
     function getLinkSentence (link) {
       // Find the closest block-like element
-      var $link = $(link);
-      var block = $link;
-      var text = simplifyText($link.text());
+      var block = link;
+      var text = simplifyText(link.text());
 
-      while (!block.is('body, html') && blockStyle.indexOf(block.css('display')) === -1) {
+      while (!block.is('body, html') && blockStyle.indexOf(DOM.getStyle(block, 'display')) === -1) {
         block = block.parent();
       }
 
@@ -108,22 +107,22 @@ var LinkHasAUniqueContext = {
 
     /**
      * Get the text value of the link, including alt attributes
-     * @param  {jQuery} $link
+     * @param  {jQuery} link
      * @return {string}
      */
-    function getLinkText ($link) {
-      var text = $link.innerText;
-      DOM.scry('img[alt]', $link).forEach(function (element) {
+    function getLinkText (link) {
+      var text = link.innerText;
+      DOM.scry('img[alt]', link).forEach(function (element) {
         text += ' ' + element.alt.trim();
       });
       return simplifyText(text);
     }
 
     test.get('scope').forEach(function (scope) {
-      var $links = DOM.scry('a[href]:visible', scope);
+      var links = DOM.scry('a[href]:visible', scope);
       var linkMap = {};
 
-      if ($links.length === 0) {
+      if (links.length === 0) {
         var _case = Case({
           element: scope,
           status: 'inapplicable'
@@ -133,7 +132,7 @@ var LinkHasAUniqueContext = {
 
       // Make a map with the link text as key and an array of links with
       // that link text as it's value
-      $links.forEach(function (element) {
+      links.forEach(function (element) {
         var text = getLinkText(element);
         if (typeof linkMap[text] === 'undefined') {
           linkMap[text] = [];

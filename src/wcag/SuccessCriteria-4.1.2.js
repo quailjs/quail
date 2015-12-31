@@ -34,7 +34,7 @@ var SuccessCriteriaP4G1C2 = (function () {
   //     var inputWithoutLabelHasTitle = DOM.scry('inputWithoutLabelHasTitle', tests);
 
   //     // Cycle through the cases in the Success Criteria.
-  //     sc.each(function (index, _case) {
+  //     sc.forEach(function (index, _case) {
   //       var conclusion = 'untested';
 
   //       if (_case.get('status') !== 'untested') {

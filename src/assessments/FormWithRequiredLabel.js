@@ -24,7 +24,7 @@ var FormWithRequiredLabel = {
             });
           }
         }
-        currentStyle = $label.css('color') + $label.css('font-weight') + $label.css('background-color');
+        currentStyle = DOM.getStyle($label, 'color') + DOM.getStyle($label, 'font-weight') + DOM.getStyle($label, 'background-color');
         if (lastStyle && currentStyle !== lastStyle) {
           _case.set({
             status: 'failed'

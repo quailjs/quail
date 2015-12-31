@@ -30,7 +30,7 @@ var SuccessCriteriaP1G4C3 = (function () {
       // Find the tests to evaluate.
       var cssTextHasContrast = DOM.scry('cssTextHasContrast', tests);
       // Cycle through the cases in the Success Criteria.
-      sc.each(function (index, _case) {
+      sc.forEach(function (index, _case) {
         var selector = _case.get('selector');
         var conclusion = 'untested';
         var testCase, caseGroups;

@@ -378,7 +378,7 @@ page.onLoadFinished = function (status) {
                 if (results.hasOwnProperty(result)) {
                   output.successCriteria[name][result] = [];
                   // Go through each case for this result and get its selector and HTML.
-                  results[result].each(looper);
+                  results[result].forEach(looper);
                 }
               }
               // List the totals for each type of result

@@ -4,10 +4,9 @@ var TableUsesScopeForRow = {
   run: function (test) {
     DOM.scry('table', test.get('scope')).forEach(function (element) {
       DOM.scry('td:first-child', element).forEach(function (element) {
-        var $element = $(element);
-        var $next = $element.next('td');
-        var isBold = $element.css('font-weight') === 'bold';
-        var nextIsNotBold = $next.css('font-weight') !== 'bold';
+        var $next = element.next('td');
+        var isBold = DOM.getStyle(element, 'font-weight') === 'bold';
+        var nextIsNotBold = DOM.getStyle($next, 'font-weight') !== 'bold';
         var boldDoesNotFollowsBold = (isBold && nextIsNotBold);
         var hasStrong = DOM.scry('strong', this).length
         var nextIsNotStrong = DOM.scry('strong', $next).length === 0;
@@ -21,10 +20,9 @@ var TableUsesScopeForRow = {
         }
       });
       DOM.scry('td:last-child', element).forEach(function (element) {
-        var $element = $(element);
-        var $prev = $element.prev('td');
-        var isBold = $element.css('font-weight') === 'bold';
-        var prevIsNotBold = $prev.css('font-weight') !== 'bold';
+        var $prev = element.prev('td');
+        var isBold = DOM.getStyle(element, 'font-weight') === 'bold';
+        var prevIsNotBold = DOM.getStyle($prev, 'font-weight') !== 'bold';
         var boldDoesNotFollowsBold = (isBold && prevIsNotBold);
         var hasStrong = DOM.scry('strong', this).length
         var prevIsNotStrong = DOM.scry('strong', $prev).length === 0;

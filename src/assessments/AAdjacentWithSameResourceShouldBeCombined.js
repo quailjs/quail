@@ -4,20 +4,18 @@ var AAdjacentWithSameResourceShouldBeCombined = {
   run: function (test) {
 
     function findAdjacent (element) {
-      var $element = $(element);
       // Find all the links
-      var $links = DOM.scry('a', $element);
+      var links = DOM.scry('a', element);
       // Sort them into singletons and coupletons.
       var $singletons = [];
       var $coupletons = [];
 
-      $links.forEach(function (link) {
-        var $link = $(link);
-        if ($link.next().is('a')) {
-          $coupletons.push($link);
+      links.forEach(function (link) {
+        if (link.next().is('a')) {
+          $coupletons.push(link);
         }
         else {
-          $singletons.push($link);
+          $singletons.push(link);
         }
       });
 
@@ -26,9 +24,8 @@ var AAdjacentWithSameResourceShouldBeCombined = {
     }
 
     function checkNextLink (element) {
-      var $element = $(element);
       var thisHref = element.getAttribute('href');
-      var $nextLink = $element.next();
+      var $nextLink = element.next();
       var nextHref = $nextLink[0].getAttribute('href');
       var status = 'passed';
       var _case = Case({

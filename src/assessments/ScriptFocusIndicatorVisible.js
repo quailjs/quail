@@ -29,18 +29,18 @@ var ScriptFocusIndicatorVisible = {
       }
 
       var noFocus = {
-        borderWidth: $(element).css('border-width'),
-        borderColor: $(element).css('border-color'),
-        backgroundColor: $(element).css('background-color'),
-        boxShadow: $(element).css('box-shadow'),
-        outlineWidth: $(element).css('outline-width'),
-        outlineColor: $(element).css('outline-color')
+        borderWidth: DOM.getStyle(element, 'border-width'),
+        borderColor: DOM.getStyle(element, 'border-color'),
+        backgroundColor: DOM.getStyle(element, 'background-color'),
+        boxShadow: DOM.getStyle(element, 'box-shadow'),
+        outlineWidth: DOM.getStyle(element, 'outline-width'),
+        outlineColor: DOM.getStyle(element, 'outline-color')
       };
 
       $(element).focus();
 
       // it is sufficient to not remove the default outline on focus: pass test
-      var outlineWidth = ConvertToPxComponent($(element).css('outline-width'));
+      var outlineWidth = ConvertToPxComponent(DOM.getStyle(element, 'outline-width'));
       if (outlineWidth > 2 && outlineWidth !== ConvertToPxComponent(noFocus.outlineWidth)) {
         $(element).blur();
         return;
@@ -48,19 +48,19 @@ var ScriptFocusIndicatorVisible = {
 
       // in any other case, it is acceptable to change other visual components
 
-      if (noFocus.backgroundColor !== $(element).css('background-color')) {
+      if (noFocus.backgroundColor !== DOM.getStyle(element, 'background-color')) {
         $(element).blur();
         return;
       }
 
-      var borderWidth = ConvertToPxComponent($(element).css('border-width'));
+      var borderWidth = ConvertToPxComponent(DOM.getStyle(element, 'border-width'));
       if (borderWidth > 2 && borderWidth !== ConvertToPxComponent(noFocus.borderWidth)) {
         $(element).blur();
         return;
       }
 
-      var boxShadow = ($(element).css('box-shadow') && $(element).css('box-shadow') !== 'none') ? $(element).css('box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
-      if (boxShadow && $(element).css('box-shadow') !== noFocus.boxShadow && ConvertToPxComponent(boxShadow[3]) > 3) {
+      var boxShadow = (DOM.getStyle(element, 'box-shadow') && DOM.getStyle(element, 'box-shadow') !== 'none') ? DOM.getStyle(element, 'box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
+      if (boxShadow && DOM.getStyle(element, 'box-shadow') !== noFocus.boxShadow && ConvertToPxComponent(boxShadow[3]) > 3) {
         $(element).blur();
         return;
       }

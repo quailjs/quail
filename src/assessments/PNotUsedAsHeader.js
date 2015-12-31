@@ -38,7 +38,7 @@ var PNotUsedAsHeader = {
         // Checking if previous paragraph has a different values for style properties given in SuspectPCSSStyles.
         if (priorParagraph.length) {
           SuspectPCSSStyles.forEach(function (cssProperty) {
-            if ($paragraph.css(cssProperty) !== priorParagraph.css(cssProperty)) {
+            if (DOM.getStyle($paragraph, cssProperty) !== DOM.getStyle(priorParagraph, cssProperty)) {
               _case.set({
                 status: 'failed'
               });
@@ -47,7 +47,7 @@ var PNotUsedAsHeader = {
             }
           });
         }
-        if ($paragraph.css('font-weight') === 'bold') {
+        if (DOM.getStyle($paragraph, 'font-weight') === 'bold') {
           _case.set({
             status: 'failed'
           });
