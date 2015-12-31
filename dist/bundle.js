@@ -1507,19 +1507,21 @@ var VideoComponent = {
 
   /**
    * Iterates over listed video providers and runs their `isVideo` method.
-   * @param Element $element
-   *   An element in a jQuery wrapper.
+   * @param Element element
    *
    * @return Boolean
    *   Whether the element is a video.
    */
   isVideo: function isVideo(element) {
     var isVideo = false;
-    this.providers.forEach(function () {
-      if (element.is(this.selector) && this.isVideo(element)) {
-        isVideo = true;
+    for (var name in this.providers) {
+      if (this.providers.hasOwnProperty(name)) {
+        var provider = this.providers[name];
+        if (DOM.is(element, provider.selector) && provider.isVideo(element)) {
+          isVideo = true;
+        }
       }
-    });
+    }
     return isVideo;
   },
 
@@ -1527,7 +1529,7 @@ var VideoComponent = {
     for (var name in this.providers) {
       if (this.providers.hasOwnProperty(name)) {
         var provider = this.providers[name];
-        DOM.scry(this.selector, element).forEach(function (video) {
+        DOM.scry(provider.selector, element).forEach(function (video) {
           if (provider.isVideo(video)) {
             provider.hasCaptions(video, callback);
           }
@@ -2038,8 +2040,27 @@ var _isDomError = function _isDomError(methodName) {
 
 var DOM = {
   scry: function scry(selector, context) {
-    context = context || document;
-    return select.all(selector, context);
+    var elements = [];
+    if (Array.isArray(context)) {
+      context.forEach(function (ct) {
+        if (ct && !isDom(ct)) {
+          _isDomError('scry');
+        }
+        elements = elements.concat(select.all(selector, ct));
+      });
+    } else {
+      if (context && !isDom(context)) {
+        _isDomError('scry');
+      }
+      elements = elements.concat(select.all(selector, context));
+    }
+    return elements;
+  },
+  hasAttribute: function hasAttribute(element, attrName) {
+    if (!isDom(element)) {
+      _isDomError('hasAttribute');
+    }
+    return typeof element[attrName] !== 'undefined';
   },
   /**
    * Sets attributes on a node.
@@ -2129,16 +2150,29 @@ var DOM = {
     if (!isDom(element)) {
       _isDomError('is');
     }
+    var elementNodeName = element.nodeName.toLowerCase();
     var names;
     if (typeof nodeName === 'string') {
       names = nodeName.split(/, ?/);
     } else {
+      // Assume it is an Array. Promptly shoot self in foot.
       names = nodeName;
     }
-    var elementNodeName = element.nodeName.toLowerCase();
-    return names.some(function (name) {
-      return name.toLowerCase() === elementNodeName;
+    names = names.map(function (name) {
+      return name.toLowerCase();
     });
+    var expandedNames = [];
+    // Expand colon-prefixed selectors to sets of selectors.
+    names.forEach(function (name) {
+      switch (name) {
+        case ':input':
+          expandedNames = expandedNames.concat(['input', 'button', 'select', 'textarea']);
+          break;
+        default:
+          expandedNames.push(name);
+      }
+    });
+    return expandedNames.indexOf(elementNodeName) > -1;
   }
 };
 
@@ -8605,17 +8639,36 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ALinkWithNonText = {
   run: function (test) {
-    DOM.scry('a', test.get('scope')).forEach(function (element) {
+    var links = DOM.scry('a', test.get('scope'));
+    var inapplicableLinks = [];
+    var applicableLinks = [];
+    links.forEach(link => {
+      var contents;
+      if (DOM.hasAttribute(link, 'href')) {
+        contents = DOM.scry('img, object, embed', link);
+        if (contents.length) {
+          applicableLinks.push(link);
+        } else {
+          inapplicableLinks.push(link);
+        }
+      } else {
+        inapplicableLinks.push(link);
+      }
+    });
+
+    inapplicableLinks.forEach(function (element) {
+      var _case = Case({
+        element: element,
+        status: 'inapplicable'
+      });
+      test.add(_case);
+    });
+
+    applicableLinks.forEach(function (element) {
       var _case = Case({
         element: element
       });
       test.add(_case);
-      if (!$(element).is('a:has(img, object, embed)[href]')) {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
       if (!IsUnreadable($(element).text())) {
         _case.set({
           status: 'passed'
@@ -9101,7 +9154,7 @@ var AMustNotHaveJavascriptHref = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
@@ -9224,7 +9277,7 @@ var ATitleDescribesDestination = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
@@ -9476,7 +9529,7 @@ var AppletProvidesMechanismToReturnToParent = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
@@ -9537,7 +9590,7 @@ var AppletTextEquivalentsGetUpdated = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
@@ -9597,7 +9650,7 @@ var AppletUIMustBeAccessible = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
@@ -9665,7 +9718,7 @@ var AppletsDoNotFlicker = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
@@ -9733,7 +9786,7 @@ var AppletsDonotUseColorAlone = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
@@ -9859,7 +9912,7 @@ var AreaAltRefersToText = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
@@ -10061,7 +10114,7 @@ var AreaLinksToSoundFile = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
@@ -11492,37 +11545,39 @@ const DOM = require('DOM');
 var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
 var DocumentLangIsISO639Standard = {
   run: function (test) {
-    var $element = test.get('scope').is('html') ? test.get('scope') : DOM.scry('html', test.get('scope')).first();
+    test.get('scope').forEach(function (scope) {
+      var element = DOM.is(scope, 'html') ? scope : DOM.scry('html')[0];
 
-    var _case = Case({
-      element: $element[0]
-    });
-
-    var langAttr = $element.attr('lang');
-    var matchedLang = false; // Check to see if a languagecode was matched
-
-    test.add(_case);
-    if (!DOM.is($element, 'html') || typeof langAttr === 'undefined') {
-      _case.set({
-        status: 'inapplicable'
-      });
-    } else {
-      // Loop over all language codes, checking if the current lang attribute starts
-      // with a value that's in the languageCodes array
-      LanguageCodesStringsComponent.forEach(function (currentLangCode) {
-        if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
-          matchedLang = true;
-        }
+      var _case = Case({
+        element: element
       });
 
-      if (!matchedLang) {
-        _case.set({ status: 'failed' });
-      } else if (langAttr.match(/^[a-z]{2}(-[A-Z]{2})?$/) === null) {
-        _case.set({ status: 'failed' });
+      var langAttr = element.attr('lang');
+      var matchedLang = false; // Check to see if a languagecode was matched
+
+      test.add(_case);
+      if (!DOM.is(element, 'html') || typeof langAttr === 'undefined') {
+        _case.set({
+          status: 'inapplicable'
+        });
       } else {
-        _case.set({ status: 'passed' });
+        // Loop over all language codes, checking if the current lang attribute starts
+        // with a value that's in the languageCodes array
+        LanguageCodesStringsComponent.forEach(function (currentLangCode) {
+          if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
+            matchedLang = true;
+          }
+        });
+
+        if (!matchedLang) {
+          _case.set({ status: 'failed' });
+        } else if (langAttr.match(/^[a-z]{2}(-[A-Z]{2})?$/) === null) {
+          _case.set({ status: 'failed' });
+        } else {
+          _case.set({ status: 'passed' });
+        }
       }
-    }
+    });
   },
 
   meta: {
@@ -12016,7 +12071,7 @@ var DomOrderMatchesVisualOrder = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
@@ -12177,7 +12232,7 @@ var FieldsetHasLabel = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           } else {
             status = 'failed';
@@ -14826,26 +14881,30 @@ var Case = require('Case');
 const DOM = require('DOM');
 var LabelsAreAssignedToAnInput = {
   run: function (test) {
-    DOM.scry('label', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
-      if (!$(element).attr('for')) {
-        _case.set({
-          status: 'failed'
+    test.get('scope').forEach(scope => {
+      DOM.scry('label', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
         });
-      } else {
-        if ((!DOM.scry('#' + $(element).attr('for'), test.get('scope')).length || !DOM.scry('#' + $(element).attr('for')).is(':input'), test.get('scope'))) {
+        test.add(_case);
+        if (!$(element).attr('for')) {
           _case.set({
             status: 'failed'
           });
         } else {
-          _case.set({
-            status: 'passed'
-          });
+          var forAttr = DOM.getAttribute(element, 'for');
+          var forElement = DOM.scry('#' + forAttr, scope)[0];
+          if (forElement || DOM.is(forElement, ':input')) {
+            _case.set({
+              status: 'passed'
+            });
+          } else {
+            _case.set({
+              status: 'failed'
+            });
+          }
         }
-      }
+      });
     });
   },
 

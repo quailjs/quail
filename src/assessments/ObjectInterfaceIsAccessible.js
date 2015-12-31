@@ -26,7 +26,7 @@ var ObjectInterfaceIsAccessible = {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(element).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           }
           else {

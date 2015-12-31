@@ -3,17 +3,38 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ALinkWithNonText = {
   run: function (test) {
-    DOM.scry('a', test.get('scope')).forEach(function (element) {
+    var links = DOM.scry('a', test.get('scope'))
+    var inapplicableLinks = [];
+    var applicableLinks = [];
+    links.forEach((link) => {
+      var contents;
+      if (DOM.hasAttribute(link, 'href')) {
+        contents = DOM.scry('img, object, embed', link);
+        if (contents.length) {
+          applicableLinks.push(link);
+        }
+        else {
+          inapplicableLinks.push(link);
+        }
+      }
+      else {
+        inapplicableLinks.push(link);
+      }
+    });
+
+    inapplicableLinks.forEach(function (element) {
+      var _case = Case({
+        element: element,
+        status: 'inapplicable'
+      });
+      test.add(_case);
+    });
+
+    applicableLinks.forEach(function (element) {
       var _case = Case({
         element: element
       });
       test.add(_case);
-      if (!$(element).is('a:has(img, object, embed)[href]')) {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
       if (!IsUnreadable($(element).text())) {
         _case.set({
           status: 'passed'

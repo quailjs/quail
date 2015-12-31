@@ -3,45 +3,46 @@ const DOM = require('DOM');
 var LanguageCodesStringsComponent = require('LanguageCodesStringsComponent');
 var DocumentLangIsISO639Standard = {
   run: function (test) {
-    var $element = (test.get('scope').is('html')) ?
-      test.get('scope') :
-      DOM.scry('html', test.get('scope')).first();
+    test.get('scope').forEach(function (scope) {
+      var element = DOM.is(scope, 'html') ?
+        scope :
+        DOM.scry('html')[0];
 
-    var _case = Case({
-      element: $element[0]
-    });
-
-    var langAttr = $element.attr('lang');
-    var matchedLang = false; // Check to see if a languagecode was matched
-
-    test.add(_case);
-    if (!DOM.is($element, 'html') || typeof langAttr === 'undefined') {
-      _case.set({
-        status: 'inapplicable'
-      });
-    }
-    else {
-      // Loop over all language codes, checking if the current lang attribute starts
-      // with a value that's in the languageCodes array
-      LanguageCodesStringsComponent.forEach(function (currentLangCode) {
-        if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
-          matchedLang = true;
-        }
+      var _case = Case({
+        element: element
       });
 
-      if (!matchedLang) {
-        _case.set({status: 'failed'});
+      var langAttr = element.attr('lang');
+      var matchedLang = false; // Check to see if a languagecode was matched
 
-      }
-      else if (langAttr.match(/^[a-z]{2}(-[A-Z]{2})?$/) === null) {
-        _case.set({status: 'failed'});
-
+      test.add(_case);
+      if (!DOM.is(element, 'html') || typeof langAttr === 'undefined') {
+        _case.set({
+          status: 'inapplicable'
+        });
       }
       else {
-        _case.set({status: 'passed'});
-      }
-    }
+        // Loop over all language codes, checking if the current lang attribute starts
+        // with a value that's in the languageCodes array
+        LanguageCodesStringsComponent.forEach(function (currentLangCode) {
+          if (!matchedLang && langAttr.indexOf(currentLangCode) === 0) {
+            matchedLang = true;
+          }
+        });
 
+        if (!matchedLang) {
+          _case.set({status: 'failed'});
+
+        }
+        else if (langAttr.match(/^[a-z]{2}(-[A-Z]{2})?$/) === null) {
+          _case.set({status: 'failed'});
+
+        }
+        else {
+          _case.set({status: 'passed'});
+        }
+      }
+    });
   },
 
   meta: {

@@ -2,29 +2,35 @@ var Case = require('Case');
 const DOM = require('DOM');
 var LabelsAreAssignedToAnInput = {
   run: function (test) {
-    DOM.scry('label', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
-      if (!$(element).attr('for')) {
-        _case.set({
-          status: 'failed'
+    test.get('scope').forEach((scope) => {
+      DOM.scry('label', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
         });
-      }
-      else {
-        if (!DOM.scry('#' + $(element).attr('for'), test.get('scope')).length ||
-           !DOM.scry('#' + $(element).attr('for')).is(':input'), test.get('scope')) {
+        test.add(_case);
+        if (!$(element).attr('for')) {
           _case.set({
             status: 'failed'
           });
         }
         else {
-          _case.set({
-            status: 'passed'
-          });
+          var forAttr = DOM.getAttribute(element, 'for');
+          var forElement = DOM.scry('#' + forAttr, scope)[0];
+          if (
+            forElement ||
+            DOM.is(forElement, ':input')
+          ) {
+            _case.set({
+              status: 'passed'
+            });
+          }
+          else {
+            _case.set({
+              status: 'failed'
+            });
+          }
         }
-      }
+      });
     });
   },
 

@@ -8,7 +8,7 @@ var KINGStrongList = {
       });
       test.add(_case);
       _case.set({
-        status: $(element).parent().is('li') ? 'passed' : 'failed'
+        status: DOM.is(element.parentElement, 'li') ? 'passed' : 'failed'
       });
     });
   },
