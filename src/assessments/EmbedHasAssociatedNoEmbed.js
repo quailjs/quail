@@ -7,8 +7,10 @@ var EmbedHasAssociatedNoEmbed = {
         element: element
       });
       test.add(_case);
+      var noembeds = DOM.scry('noembed', element);
+      var next = DOM.next(element);
       _case.set({
-        status: (DOM.scry('noembed').length || $(element).next().is('noembed', element)) ? 'passed' : 'failed'
+        status: (noembeds.length || next.is('noembed')) ? 'passed' : 'failed'
       });
     });
   },

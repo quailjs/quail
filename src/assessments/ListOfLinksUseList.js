@@ -9,7 +9,8 @@ var ListOfLinksUseList = {
         element: element
       }));
       // Only test if there's another a tag.
-      if ($(element).next('a').length) {
+      var next = DOM.next(element);
+      if (next.is('a')) {
         var nextText = $(element).get(0).nextSibling.wholeText.replace(unreadableText, '');
         if (!$(element).parent('li').length && IsUnreadable(nextText)) {
           _case.set({

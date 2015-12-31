@@ -11,7 +11,8 @@ var AAdjacentWithSameResourceShouldBeCombined = {
       var $coupletons = [];
 
       links.forEach(function (link) {
-        if (link.next().is('a')) {
+        var next = DOM.next(link);
+        if (next.is('a')) {
           $coupletons.push(link);
         }
         else {
@@ -25,8 +26,8 @@ var AAdjacentWithSameResourceShouldBeCombined = {
 
     function checkNextLink (element) {
       var thisHref = element.getAttribute('href');
-      var $nextLink = element.next();
-      var nextHref = $nextLink[0].getAttribute('href');
+      var next = DOM.next(element);
+      var nextHref = next.getAttribute('href');
       var status = 'passed';
       var _case = Case({
         element: element

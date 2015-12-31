@@ -4,12 +4,12 @@ var TableUsesScopeForRow = {
   run: function (test) {
     DOM.scry('table', test.get('scope')).forEach(function (element) {
       DOM.scry('td:first-child', element).forEach(function (element) {
-        var $next = element.next('td');
+        var next = DOM.next(element);
         var isBold = DOM.getStyle(element, 'font-weight') === 'bold';
-        var nextIsNotBold = DOM.getStyle($next, 'font-weight') !== 'bold';
+        var nextIsNotBold = DOM.getStyle(next, 'font-weight') !== 'bold';
         var boldDoesNotFollowsBold = (isBold && nextIsNotBold);
-        var hasStrong = DOM.scry('strong', this).length
-        var nextIsNotStrong = DOM.scry('strong', $next).length === 0;
+        var hasStrong = DOM.scry('strong', element).length
+        var nextIsNotStrong = DOM.scry('strong', next).length === 0;
         var strongDoesNotFollowStrong = (hasStrong && nextIsNotStrong);
 
         if (boldDoesNotFollowsBold || strongDoesNotFollowStrong) {
@@ -24,7 +24,7 @@ var TableUsesScopeForRow = {
         var isBold = DOM.getStyle(element, 'font-weight') === 'bold';
         var prevIsNotBold = DOM.getStyle($prev, 'font-weight') !== 'bold';
         var boldDoesNotFollowsBold = (isBold && prevIsNotBold);
-        var hasStrong = DOM.scry('strong', this).length
+        var hasStrong = DOM.scry('strong', element).length
         var prevIsNotStrong = DOM.scry('strong', $prev).length === 0;
         var strongDoesNotFollowStrong = (hasStrong && prevIsNotStrong);
 

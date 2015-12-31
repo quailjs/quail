@@ -8,7 +8,8 @@ var ALinksAreSeparatedByPrintableCharacters = {
         element: element
       }));
       // Only test if there's another a tag.
-      if ($(element).next('a').length) {
+      var next = DOM.next(element);
+      if (next.is('a')) {
         if (IsUnreadable($(element).get(0).nextSibling.wholeText)) {
           _case.set({
             status: 'failed'
