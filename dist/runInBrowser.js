@@ -1280,7 +1280,9 @@ function scanHeaders(tableMap, x, y, deltaX, deltaY) {
  * Get header cells based on the headers getAttributeibute of a cell
  */
 function getHeadersFromAttr(cell) {
-  var table = cell.closest('table');
+  var table = DOM.parents(cell).find(function (parent) {
+    return DOM.is(parent, 'table');
+  })[0];
   var ids = cell.getAttribute('headers').split(/\s/);
   var headerCells = [];
   // For each IDREF select an element with that ID from the table
@@ -1333,8 +1335,17 @@ function getHeadersFromScope(cell, tableMap) {
 function getHeadersFromGroups(cell, tableMap) {
   var cellCoords = findCellInTableMap(tableMap, cell);
   var headers = [];
-  var tTags = cell.closest('thead, tbody, tfoot');
-  DOM.scry('th[scope=rowgroup]', tTags).forEach(function (element) {
+  var parents = DOM.parents(cell);
+  var thead = parents.find(function (parent) {
+    return DOM.is(parent, 'thead');
+  });
+  var tbody = parents.find(function (parent) {
+    return DOM.is(parent, 'tbody');
+  });
+  var tfoot = parents.find(function (parent) {
+    return DOM.is(parent, 'tfoot');
+  });
+  DOM.scry('th[scope=rowgroup]', [thead, tbody, tfoot]).forEach(function (element) {
     var headerCoords = findCellInTableMap(tableMap, element);
     if (headerCoords.x <= cellCoords.x && headerCoords.y <= cellCoords.y) {
       headers.push(element);
@@ -1381,7 +1392,7 @@ var TableHeadersComponent = {
   tableHeaders: function tableHeaders(elements) {
     var headers = [];
     elements.forEach(function (element) {
-      if (DOM.isNot(element, 'td, th')) {
+      if (!DOM.is(element, 'td, th')) {
         return;
       }
 
@@ -8514,7 +8525,8 @@ var AImgAltNotRepetitive = {
       }));
 
       var alt = CleanStringComponent(DOM.getAttribute(element, 'alt'));
-      var linkText = CleanStringComponent($(element).closest('a').text());
+      var link = DOM.parents(element).unshift(element).find(el => DOM.is(el, 'a'));
+      var linkText = CleanStringComponent(DOM.text(link));
 
       if (alt.length > 0 && linkText.indexOf(alt) > -1) {
         _case.set({
@@ -15417,8 +15429,9 @@ var LinkHasAUniqueContext = {
       }
 
       // Find the nearest list item, paragraph or table cell of both items
-      var linkACtxt = $(linkA).closest('p, li, dd, dt, td, th');
-      var linkBCtxt = $(linkB).closest('p, li, dd, dt, td, th');
+      var selector = 'p, li, dd, dt, td, th';
+      var linkACtxt = DOM.parents(linkA).find(parent => DOM.is(parent, selector));
+      var linkBCtxt = DOM.parents(linkB).find(parent => DOM.is(parent, selector));
 
       // check if they are different
       if (linkACtxt.length !== 0 && linkBCtxt.length !== 0 && txtNotAlike(getLinkText(linkACtxt), getLinkText(linkBCtxt))) {

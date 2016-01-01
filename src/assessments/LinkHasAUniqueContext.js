@@ -56,8 +56,13 @@ var LinkHasAUniqueContext = {
       }
 
       // Find the nearest list item, paragraph or table cell of both items
-      var linkACtxt = $(linkA).closest('p, li, dd, dt, td, th');
-      var linkBCtxt = $(linkB).closest('p, li, dd, dt, td, th');
+      var selector = 'p, li, dd, dt, td, th';
+      var linkACtxt = DOM.parents(linkA).find(
+        (parent) => DOM.is(parent, selector)
+      );
+      var linkBCtxt = DOM.parents(linkB).find(
+        (parent) => DOM.is(parent, selector)
+      );
 
       // check if they are different
       if (linkACtxt.length !== 0 && linkBCtxt.length !== 0 &&
