@@ -7,7 +7,7 @@ var InputImageAltIsShort = {
         element: element
       });
       test.add(_case);
-      if ($(element).attr('alt').length > 100) {
+      if (DOM.getAttribute(element, 'alt').length > 100) {
         _case.set({
           status: 'failed'
         });

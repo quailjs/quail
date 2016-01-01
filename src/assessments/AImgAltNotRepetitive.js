@@ -8,7 +8,7 @@ var AImgAltNotRepetitive = {
         element: element
       }));
 
-      var alt = CleanStringComponent($(element).attr('alt'));
+      var alt = CleanStringComponent(DOM.getAttribute(element, 'alt'));
       var linkText = CleanStringComponent($(element).closest('a').text());
 
       if (alt.length > 0 && linkText.indexOf(alt) > -1) {

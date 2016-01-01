@@ -8,7 +8,7 @@ var ImgAltIsTooLong = {
       });
       test.add(_case);
       _case.set({
-        status: ($(element).attr('alt').length > 100) ? 'failed' : 'passed'
+        status: (DOM.getAttribute(element, 'alt').length > 100) ? 'failed' : 'passed'
       });
     });
   },

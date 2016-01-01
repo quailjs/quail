@@ -9,7 +9,7 @@ var InputImageAltNotRedundant = {
         element: element
       });
       test.add(_case);
-      if (RedundantStringsComponent.inputImage.indexOf(CleanStringComponent($(element).attr('alt'))) > -1) {
+      if (RedundantStringsComponent.inputImage.indexOf(CleanStringComponent(DOM.getAttribute(element, 'alt'))) > -1) {
         _case.set({
           status: 'failed'
         });

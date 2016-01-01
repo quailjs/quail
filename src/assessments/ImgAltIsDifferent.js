@@ -14,7 +14,7 @@ var ImgAltIsDifferent = {
         element: element
       });
       test.add(_case);
-      if ($(element).attr('src') === $(element).attr('alt') || $(element).attr('src').split('/').pop() === $(element).attr('alt')) {
+      if (DOM.getAttribute(element, 'src') === DOM.getAttribute(element, 'alt') || DOM.getAttribute(element, 'src').split('/').pop() === DOM.getAttribute(element, 'alt')) {
         _case.set({
           status: 'failed'
         });

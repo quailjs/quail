@@ -9,7 +9,7 @@ var ALinkTextDoesNotBeginWithRedundantWord = {
       var text = '';
       var $img = DOM.scry('img[alt]', $link);
       if ($img.length) {
-        text = text + $img.eq(0).attr('alt');
+        text = text + DOM.getAttribute($img, 'alt');
       }
       text = text + $link.text();
       text = text.toLowerCase();

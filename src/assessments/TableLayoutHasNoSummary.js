@@ -9,7 +9,7 @@ var TableLayoutHasNoSummary = {
         var _case = test.add(Case({
           element: element
         }));
-        if (!IsDataTableComponent($(element)) && !IsUnreadable($(element).attr('summary'))) {
+        if (!IsDataTableComponent($(element)) && !IsUnreadable(DOM.getAttribute(element, 'summary'))) {
           _case.set({status: 'failed'});
         }
         else {

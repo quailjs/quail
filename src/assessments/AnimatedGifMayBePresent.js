@@ -63,8 +63,8 @@ var AnimatedGifMayBePresent = {
       });
       test.add(_case);
 
-      var imgSrc = $(element).attr('src');
-      var ext = $(element).attr('src').split('.').pop().toLowerCase();
+      var imgSrc = DOM.getAttribute(element, 'src');
+      var ext = DOM.getAttribute(element, 'src').split('.').pop().toLowerCase();
 
       if (ext !== 'gif') {
         _case.set({

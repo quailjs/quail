@@ -9,7 +9,7 @@ var ASuspiciousLinkText = {
         element: element
       });
       test.add(_case);
-      if (!$(element).attr('href')) {
+      if (!DOM.getAttribute(element, 'href')) {
         _case.set({
           status: 'inapplicable'
         });
@@ -17,7 +17,7 @@ var ASuspiciousLinkText = {
       }
       var text = $(element).text();
       DOM.scry('img[alt]', element).forEach(function (element) {
-        text = text + $(element).attr('alt');
+        text = text + DOM.getAttribute(element, 'alt');
       });
       if (SuspiciousLinksStringsComponent.indexOf(CleanStringComponent(text)) > -1) {
         _case.set({

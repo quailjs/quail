@@ -3,7 +3,7 @@ const DOM = require('DOM');
 var TableSummaryIsNotTooLong = {
   run: function (test) {
     DOM.scry('table[summary]', test.get('scope')).forEach(function (element) {
-      if ($(element).attr('summary').trim().length > 100) {
+      if (DOM.getAttribute(element, 'summary').trim().length > 100) {
         test.add(Case({
           element: element,
           status: 'failed'

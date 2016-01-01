@@ -18,7 +18,7 @@ var HeadersAttrRefersToATableCell = {
       else {
         elmHeaders.forEach(function (element) {
           var that = element;
-          var headers = $(element).attr('headers').split(/\s+/);
+          var headers = DOM.getAttribute(element, 'headers').split(/\s+/);
           headers.forEach(function (item) {
             if (item === '' || DOM.scry('th#' + item + ',td#' + item, self).length > 0) {
               _case.set({

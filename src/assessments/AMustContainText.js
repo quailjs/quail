@@ -9,7 +9,7 @@ var AMustContainText = {
       });
       test.add(_case);
 
-      if (!$(element).attr('href') ||
+      if (!DOM.getAttribute(element, 'href') ||
         DOM.getStyle(element, 'display') === 'none') {
         _case.set({
           status: 'inapplicable'

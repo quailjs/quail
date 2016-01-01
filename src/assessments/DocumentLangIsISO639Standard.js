@@ -12,7 +12,7 @@ var DocumentLangIsISO639Standard = {
         element: element
       });
 
-      var langAttr = element.attr('lang');
+      var langAttr = DOM.getAttribute(element, 'lang');
       var matchedLang = false; // Check to see if a languagecode was matched
 
       test.add(_case);

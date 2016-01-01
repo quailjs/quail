@@ -8,7 +8,7 @@ var TableShouldUseHeaderIDs = {
       var tableFailed = false;
       if (IsDataTableComponent($table)) {
         DOM.scry('th', $table).forEach(function (element) {
-          if (!tableFailed && !$(element).attr('id')) {
+          if (!tableFailed && !DOM.getAttribute(element, 'id')) {
             tableFailed = true;
             test.add(Case({
               element: $table.get(0),
@@ -19,7 +19,7 @@ var TableShouldUseHeaderIDs = {
         if (!tableFailed) {
           DOM.scry('td[header]', $table).forEach(function (element) {
             if (!tableFailed) {
-              $(element).attr('header').split(' ').forEach(function (id) {
+              DOM.getAttribute(element, 'header').split(' ').forEach(function (id) {
                 if (!DOM.scry('#' + id, $table).length) {
                   tableFailed = true;
                   test.add(Case({

@@ -28,11 +28,14 @@ var LanguageChangesAreIdentified = {
     };
 
     var findCurrentLanguage = function ($element) {
-      if ($element.attr('lang')) {
-        return $element.attr('lang').trim().toLowerCase().split('-')[0];
+      if (DOM.hasAttribute($element, 'lang')) {
+        return DOM.getAttribute($element, 'lang').trim().toLowerCase().split('-')[0];
       }
-      if ($element.parents('[lang]').length) {
-        return $element.parents('[lang]:first').attr('lang').trim().toLowerCase().split('-')[0];
+      var langScope = DOM.parents($element).find((parent) => {
+        return DOM.hasAttribute(parent, 'lang');
+      })[0];
+      if (langScope) {
+        return DOM.getAttribute(langScope, 'lang').trim().toLowerCase().split('-')[0];
       }
       return LanguageComponent.getDocumentLanguage(scope, true);
     };

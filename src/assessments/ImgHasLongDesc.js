@@ -8,8 +8,8 @@ var ImgHasLongDesc = {
         element: element
       });
       test.add(_case);
-      if ($(element).attr('longdesc') === $(element).attr('alt') ||
-          !ValidURLComponent($(element).attr('longdesc'))) {
+      if (DOM.getAttribute(element, 'longdesc') === DOM.getAttribute(element, 'alt') ||
+          !ValidURLComponent(DOM.getAttribute(element, 'longdesc'))) {
         _case.set({
           status: 'failed'
         });

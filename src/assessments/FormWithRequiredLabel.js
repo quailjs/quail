@@ -14,10 +14,12 @@ var FormWithRequiredLabel = {
         var _case = test.add(Case({
           element: element
         }));
+        var input = DOM.scry('#' + DOM.getAttribute($label, 'for'), scope)[0];
+        var isAriaRequired = DOM.getAttribute(input, 'aria-required') === 'true';
         for (var word in redundant.required) {
           if (
             text.search(word) >= 0 &&
-            !DOM.scry('#' + $label.attr('for'), test.get('scope')).attr('aria-required')
+            !isAriaRequired
           ) {
             _case.set({
               status: 'failed'

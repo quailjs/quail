@@ -23,17 +23,17 @@ var DocumentIDsMustBeUnique = {
           element: element
         });
         test.add(_case);
-        if (typeof ids[$(element).attr('id')] === 'undefined' && Object.keys(ids).length === 0) {
+        if (typeof ids[DOM.getAttribute(element, 'id')] === 'undefined' && Object.keys(ids).length === 0) {
           _case.set({
             status: 'inapplicable'
           });
-          ids[$(element).attr('id')] = $(element).attr('id');
+          ids[DOM.getAttribute(element, 'id')] = DOM.getAttribute(element, 'id');
         }
-        else if (typeof ids[$(element).attr('id')] === 'undefined') {
+        else if (typeof ids[DOM.getAttribute(element, 'id')] === 'undefined') {
           _case.set({
             status: 'passed'
           });
-          ids[$(element).attr('id')] = $(element).attr('id');
+          ids[DOM.getAttribute(element, 'id')] = DOM.getAttribute(element, 'id');
         }
         else {
           _case.set({

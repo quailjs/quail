@@ -9,7 +9,7 @@ var LanguageDirectionPunctuation = {
     var scope = test.get('scope');
     var punctuation = {};
     var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
-    var currentDirection = (scope.attr('dir')) ? scope.attr('dir').toLowerCase() : 'ltr';
+    var currentDirection = (DOM.getAttribute(scope, 'dir')) ? DOM.getAttribute(scope, 'dir').toLowerCase() : 'ltr';
     var oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
     var textDirection = LanguageComponent.textDirection;
     scope.forEach(function (scope) {
@@ -18,18 +18,21 @@ var LanguageDirectionPunctuation = {
           return TextNodeFilterComponent(element);
         })
         .forEach(function (element) {
-          var $el = $(element);
-          if ($el.attr('dir')) {
-            currentDirection = $el.attr('dir').toLowerCase();
+          if (DOM.getAttribute(element, 'dir')) {
+            currentDirection = DOM.getAttribute(element, 'dir').toLowerCase();
           }
           else {
-            currentDirection = ($el.parent('[dir]').first().attr('dir')) ? $el.parent('[dir]').first().attr('dir').toLowerCase() : currentDirection;
+            var dirScope = DOM.parents(element).find((parent) => {
+              return DOM.hasAttribute(parent, 'dir');
+            })[0];
+            var dir = DOM.getAttribute(dirScope, 'dir');
+            currentDirection = dir || currentDirection;
           }
           if (typeof textDirection[currentDirection] === 'undefined') {
             currentDirection = 'ltr';
           }
           oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
-          var text = GetTextContentsComponent($el);
+          var text = GetTextContentsComponent(element);
           var matches = text.match(textDirection[oppositeDirection]);
           var _case = test.add(Case({
             element: element

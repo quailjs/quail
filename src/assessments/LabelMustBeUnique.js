@@ -4,15 +4,15 @@ var LabelMustBeUnique = {
   run: function (test) {
     var labels = {};
     DOM.scry('label[for]', test.get('scope')).forEach(function (element) {
-      if (typeof labels[$(element).attr('for')] === 'undefined') {
-        labels[$(element).attr('for')] = 0;
+      if (typeof labels[DOM.getAttribute(element, 'for')] === 'undefined') {
+        labels[DOM.getAttribute(element, 'for')] = 0;
       }
-      labels[$(element).attr('for')]++;
+      labels[DOM.getAttribute(element, 'for')]++;
     });
     DOM.scry('label[for]', test.get('scope')).forEach(function (element) {
       var _case = Case({
         element: element,
-        status: (labels[$(element).attr('for')] === 1) ?
+        status: (labels[DOM.getAttribute(element, 'for')] === 1) ?
           'passed' :
           'failed'
       });

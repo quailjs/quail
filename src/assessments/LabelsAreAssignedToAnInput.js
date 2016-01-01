@@ -8,7 +8,7 @@ var LabelsAreAssignedToAnInput = {
           element: element
         });
         test.add(_case);
-        if (!$(element).attr('for')) {
+        if (!DOM.getAttribute(element, 'for')) {
           _case.set({
             status: 'failed'
           });

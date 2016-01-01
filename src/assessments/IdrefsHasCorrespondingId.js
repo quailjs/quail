@@ -8,7 +8,7 @@ var IdrefsHasCorrespondingId = {
       var attributeList = ['headers', 'aria-controls', 'aria-describedby', 'aria-flowto', 'aria-labelledby', 'aria-owns'];
 
       attributeList.forEach(function (item) {
-        var attr = $element.attr(item);
+        var attr = DOM.getAttribute($element, item);
 
         if (typeof attr !== typeof undefined && attr !== false) {
           attribute = attr;

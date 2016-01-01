@@ -148,7 +148,6 @@
   "SkipToContentLinkProvided",
   "SvgContainsTitle",
   "TabIndexFollowsLogicalOrder",
-  "TableAxisHasCorrespondingId",
   "TableDataShouldHaveTh",
   "TableLayoutDataShouldNotHaveTh",
   "TableLayoutHasNoCaption",

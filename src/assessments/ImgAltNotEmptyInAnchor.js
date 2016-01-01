@@ -14,7 +14,7 @@ var ImgAltNotEmptyInAnchor = {
 
       // Concat all alt attributes of images to the text of the paragraph
       DOM.scry('img[alt]', $a).forEach(function (element) {
-        text += ' ' + $(element).attr('alt');
+        text += ' ' + DOM.getAttribute(element, 'alt');
       });
 
       if (IsUnreadable(text)) {

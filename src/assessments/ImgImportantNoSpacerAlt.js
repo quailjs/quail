@@ -4,14 +4,14 @@ var IsUnreadable = require('IsUnreadable');
 var ImgImportantNoSpacerAlt = {
   run: function (test) {
     DOM.scry('img[alt]', test.get('scope')).forEach(function (element) {
-      var width = ($(element).width()) ? $(element).width() : parseInt($(element).attr('width'), 10);
-      var height = ($(element).height()) ? $(element).height() : parseInt($(element).attr('height'), 10);
+      var width = ($(element).width()) ? $(element).width() : parseInt(DOM.getAttribute(element, 'width'), 10);
+      var height = ($(element).height()) ? $(element).height() : parseInt(DOM.getAttribute(element, 'height'), 10);
       var _case = Case({
         element: element
       });
       test.add(_case);
-      if (IsUnreadable($(element).attr('alt').trim()) &&
-          $(element).attr('alt').length > 0 &&
+      if (IsUnreadable(DOM.getAttribute(element, 'alt').trim()) &&
+          DOM.getAttribute(element, 'alt').length > 0 &&
           width > 50 &&
           height > 50) {
         _case.set({

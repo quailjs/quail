@@ -4,7 +4,7 @@ var ImgMapAreasHaveDuplicateLink = {
   run: function (test) {
     var links = {};
     DOM.scry('a', test.get('scope')).forEach(function (element) {
-      links[$(element).attr('href')] = $(element).attr('href');
+      links[DOM.getAttribute(element, 'href')] = DOM.getAttribute(element, 'href');
     });
     DOM.scry('img[usemap]', test.get('scope')).forEach(function (element) {
       var _case = Case({
@@ -12,14 +12,14 @@ var ImgMapAreasHaveDuplicateLink = {
       });
       test.add(_case);
       var $image = $(element);
-      var $map = DOM.scry($image.attr('usemap'), test.get('scope'));
+      var $map = DOM.scry(DOM.getAttribute($image, 'usemap'), test.get('scope'));
       if (!$map.length) {
-        $map = DOM.scry('map[name="' + $image.attr('usemap').replace('#', '') + '"]', test.get('scope'));
+        $map = DOM.scry('map[name="' + DOM.getAttribute($image, 'usemap').replace('#', '') + '"]', test.get('scope'));
       }
       if ($map.length) {
         var failed = false;
         DOM.scry('area', $map).forEach(function (element) {
-          if (typeof links[$(element).attr('href')] === 'undefined') {
+          if (typeof links[DOM.getAttribute(element, 'href')] === 'undefined') {
             failed = true;
           }
         });

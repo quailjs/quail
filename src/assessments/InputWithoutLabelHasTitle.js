@@ -29,8 +29,8 @@ var InputWithoutLabelHasTitle = {
             });
             return;
           }
-          if (!DOM.scry('label[for=' + $(element).attr('id') + ']', test.get('scope')).length &&
-            (!$(element).attr('title') || IsUnreadable($(element).attr('title')))) {
+          if (!DOM.scry('label[for=' + DOM.getAttribute(element, 'id') + ']', test.get('scope')).length &&
+            (!DOM.getAttribute(element, 'title') || IsUnreadable(DOM.getAttribute(element, 'title')))) {
             _case.set({
               status: 'failed'
             });

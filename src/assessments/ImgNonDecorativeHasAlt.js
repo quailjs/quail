@@ -8,7 +8,7 @@ var ImgNonDecorativeHasAlt = {
         element: element
       });
       test.add(_case);
-      if (IsUnreadable($(element).attr('alt')) &&
+      if (IsUnreadable(DOM.getAttribute(element, 'alt')) &&
           ($(element).width() > 100 || $(element).height() > 100)) {
         _case.set({
           status: 'failed'

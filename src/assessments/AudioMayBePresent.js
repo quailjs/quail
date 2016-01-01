@@ -20,7 +20,7 @@ var AudioMayBePresent = {
       // Links refering to files with an audio extensions are good indicators too
       DOM.scry('a[href]', $this).forEach(function (element) {
         var $this = $(element);
-        var extension = $this.attr('href').split('.').pop();
+        var extension = DOM.getAttribute($this, 'href').split('.').pop();
         if ($.inArray(extension, audioExtensions) !== -1) {
           hasCase = true;
           test.add(Case({

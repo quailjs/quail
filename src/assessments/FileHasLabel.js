@@ -15,7 +15,7 @@ var FileHasLabel = {
       var labelsByFor = 0;
       for (var i = 0, il = labels.length; i < il; ++i) {
         var $label = labels.eq(i);
-        if ($label.attr('for') === id) {
+        if (DOM.getAttribute($label, 'for') === id) {
           labelsByFor++;
         }
       }
@@ -38,7 +38,7 @@ var FileHasLabel = {
           var status = 'failed';
 
           // Check for an associated label.
-          var id = $file.attr('id');
+          var id = DOM.getAttribute($file, 'id');
           if (id) {
             var labelCount = countOfLabelsById(id, labels);
             if (labelCount === 1) {

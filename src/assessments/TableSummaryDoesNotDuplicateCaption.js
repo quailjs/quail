@@ -4,7 +4,9 @@ const DOM = require('DOM');
 var TableSummaryDoesNotDuplicateCaption = {
   run: function (test) {
     DOM.scry('table[summary]:has(caption)', test.get('scope')).forEach(function (element) {
-      if (CleanStringComponent(DOM.scry('caption:first', element).attr('summary')) === CleanStringComponent($(element).text())) {
+      var caption = DOM.scry('caption', element)[0];
+      var summary = caption && DOM.getAttribute(caption, 'summary');
+      if (summary && CleanStringComponent(summary) === CleanStringComponent(DOM.text(element))) {
         test.add(Case({
           element: element,
           status: 'failed'
