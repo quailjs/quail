@@ -4,7 +4,7 @@ const DOM = require('DOM');
 var TableShouldUseHeaderIDs = {
   run: function (test) {
     DOM.scry('table', test.get('scope')).forEach(function (element) {
-      var $table = $(element);
+      var $table = element;
       var tableFailed = false;
       if (IsDataTableComponent($table)) {
         DOM.scry('th', $table).forEach(function (element) {

@@ -42,7 +42,7 @@ var IdrefsHasCorrespondingId = {
             element: element
           }));
 
-          var attributes = getAttribute($(element));
+          var attributes = getAttribute(element);
           var status = 'passed';
 
           attributes.forEach(function (item) {

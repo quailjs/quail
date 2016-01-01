@@ -9,7 +9,7 @@ var FocusIndicatorVisible = {
         element: element
       });
       test.add(_case);
-      var $el = $(element);
+      var $el = element;
       var noFocus = {
         borderWidth: DOM.getStyle($el, 'border-width'),
         borderColor: DOM.getStyle($el, 'border-color'),

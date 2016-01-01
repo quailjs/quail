@@ -76,7 +76,7 @@ var ColorBackgroundImageContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorBackgroundImageContrast(test, Case, options, $(element), element);
+        colorBackgroundImageContrast(test, Case, options, element, element);
       });
     });
   },

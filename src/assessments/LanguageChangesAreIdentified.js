@@ -19,7 +19,7 @@ var LanguageChangesAreIdentified = {
       }
       matches = matches.length;
       $children.forEach(function (element) {
-        childMatches = GetTextContentsComponent($(element)).match(regularExpression);
+        childMatches = GetTextContentsComponent(element).match(regularExpression);
         if (childMatches) {
           matches -= childMatches.length;
         }
@@ -46,7 +46,7 @@ var LanguageChangesAreIdentified = {
       })
       .forEach(function (element) {
         var self = element;
-        $element = $(element);
+        $element = element;
         currentLanguage = findCurrentLanguage($element);
         text = GetTextContentsComponent($element);
         failed = false;

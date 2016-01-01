@@ -7,7 +7,7 @@ var HeadersUseToMarkSections = {
         element: element
       });
       test.add(_case);
-      var $paragraph = $(element);
+      var $paragraph = element;
       DOM.scry('strong:first, em:first, i:first, b:first', $paragraph).forEach(function (element) {
         _case.set({
           status: ($paragraph.text().trim() === DOM.text(element).trim()) ? 'failed' : 'passed'
@@ -20,7 +20,7 @@ var HeadersUseToMarkSections = {
         element: element
       });
       test.add(_case);
-      var $list = $(element);
+      var $list = element;
       if ($list.prevAll(':header').length ||
         DOM.scry('li', $list).length !== DOM.scry('li:has(a)', $list).length) {
         _case.set({

@@ -10,9 +10,10 @@ var AImgAltNotRepetitive = {
 
       var alt = CleanStringComponent(DOM.getAttribute(element, 'alt'));
       var link = DOM
-        .parents(element)
-        .unshift(element)
-        .find((el) => DOM.is(el, 'a'));
+        .parents(element);
+      link
+        .unshift(element);
+      link = link.find((el) => DOM.is(el, 'a'));
       var linkText = CleanStringComponent(DOM.text(link));
 
       if (alt.length > 0 && linkText.indexOf(alt) > -1) {

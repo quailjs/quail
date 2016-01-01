@@ -15,7 +15,7 @@ var ScriptOnFocusChangeBackgroundOrBorder = {
     };
 
     DOM.scry('input,button,a', test.get('scope')).forEach(function (element) {
-      var $this = $(element);
+      var $this = element;
 
       var noFocus = {
         background: DOM.getStyle($this, 'background'),

@@ -17,7 +17,7 @@ var LanguageUnicodeDirection = {
           var _case = test.add(Case({
             element: element
           }));
-          var $el = $(element);
+          var $el = element;
           var text = $el.text().trim();
           var otherDirection = (text.substr(0, 1).search(textDirection.ltr) !== -1) ?
             'rtl' :

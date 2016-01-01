@@ -22,7 +22,7 @@ var AreaDontOpenNewWindow = {
     // Links with a target attribute pass if the link text indicates that the
     // link will open a new window.
     DOM.scry('area[target=_new], area[target=_blank]', test.get('scope')).forEach(function (element) {
-      var $link = $(element);
+      var $link = element;
       var passes = false;
       var i = 0;
       var text = $link.text() + ' ' + DOM.getAttribute($link, 'title');

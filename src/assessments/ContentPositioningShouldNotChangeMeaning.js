@@ -19,7 +19,7 @@ var ContentPositioningShouldNotChangeMeaning = {
         bottom: {}
       };
       failed = false;
-      var $container = $(element);
+      var $container = element;
       DOM.scry('h1, h2, h3, h4, h5, h6, p, blockquote, ol, li, ul, dd, dt', $container).filter(':quailCss(position=absolute)').forEach(function (element) {
         for (var i = 0; i < positions.length; i++) {
           if (typeof DOM.getStyle(element, positions[i]) !== 'undefined' && DOM.getStyle(element, positions[i]) !== 'auto') {

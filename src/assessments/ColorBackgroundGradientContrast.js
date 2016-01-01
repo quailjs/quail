@@ -84,7 +84,7 @@ var ColorBackgroundGradientContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorBackgroundGradientContrast(test, Case, options, $(element), element);
+        colorBackgroundGradientContrast(test, Case, options, element, element);
       });
 
     });

@@ -5,7 +5,7 @@ var AudioMayBePresent = {
     var audioExtensions = ['mp3', 'm4p', 'ogg', 'oga', 'opus', 'wav', 'wma', 'wv'];
 
     test.get('scope').forEach(function (scope) {
-      var $this = $(scope);
+      var $this = scope;
       var hasCase = false; // Test if a case has been created
 
       // Audio is definately an audio, and objects could be too.
@@ -19,7 +19,7 @@ var AudioMayBePresent = {
 
       // Links refering to files with an audio extensions are good indicators too
       DOM.scry('a[href]', $this).forEach(function (element) {
-        var $this = $(element);
+        var $this = element;
         var extension = DOM.getAttribute($this, 'href').split('.').pop();
         if ($.inArray(extension, audioExtensions) !== -1) {
           hasCase = true;

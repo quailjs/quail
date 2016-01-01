@@ -52,7 +52,7 @@ var ColorFontContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorFontContrast(test, Case, options, $(element), element);
+        colorFontContrast(test, Case, options, element, element);
       });
     });
   },

@@ -17,7 +17,7 @@ var AMustContainText = {
         return;
       }
 
-      if (ContainsReadableTextComponent($(element), true)) {
+      if (ContainsReadableTextComponent(element, true)) {
         _case.set({
           status: 'passed'
         });

@@ -61,7 +61,7 @@ var ColorElementBehindContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorElementBehindContrast(test, Case, options, $(element), element);
+        colorElementBehindContrast(test, Case, options, element, element);
       });
 
     });

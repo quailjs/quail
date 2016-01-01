@@ -10,7 +10,7 @@ var TableLayoutDataShouldNotHaveTh = {
       test.add(_case);
 
       if (DOM.scry('th', element).length !== 0) {
-        if (!IsDataTableComponent($(element))) {
+        if (!IsDataTableComponent(element)) {
           _case.set({
             status: 'failed'
           });

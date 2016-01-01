@@ -3,7 +3,7 @@ var FocusElements = require('FocusElements');
 
 var ScriptFocusIndicatorVisible = {
   run: function () {
-    $(FocusElements).forEach(function (element) {
+    FocusElements.forEach(function (element) {
 
       // Preparation for test: remove focus indicators done with CSS
       var sheet, rules, rulesCache, rule;
@@ -37,35 +37,35 @@ var ScriptFocusIndicatorVisible = {
         outlineColor: DOM.getStyle(element, 'outline-color')
       };
 
-      $(element).focus();
+      element.focus();
 
       // it is sufficient to not remove the default outline on focus: pass test
       var outlineWidth = ConvertToPxComponent(DOM.getStyle(element, 'outline-width'));
       if (outlineWidth > 2 && outlineWidth !== ConvertToPxComponent(noFocus.outlineWidth)) {
-        $(element).blur();
+        element.blur();
         return;
       }
 
       // in any other case, it is acceptable to change other visual components
 
       if (noFocus.backgroundColor !== DOM.getStyle(element, 'background-color')) {
-        $(element).blur();
+        element.blur();
         return;
       }
 
       var borderWidth = ConvertToPxComponent(DOM.getStyle(element, 'border-width'));
       if (borderWidth > 2 && borderWidth !== ConvertToPxComponent(noFocus.borderWidth)) {
-        $(element).blur();
+        element.blur();
         return;
       }
 
       var boxShadow = (DOM.getStyle(element, 'box-shadow') && DOM.getStyle(element, 'box-shadow') !== 'none') ? DOM.getStyle(element, 'box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
       if (boxShadow && DOM.getStyle(element, 'box-shadow') !== noFocus.boxShadow && ConvertToPxComponent(boxShadow[3]) > 3) {
-        $(element).blur();
+        element.blur();
         return;
       }
 
-      $(element).blur();
+      element.blur();
 
       var ruleCache;
 

@@ -5,7 +5,7 @@ var ALinkTextDoesNotBeginWithRedundantWord = {
   run: function (test) {
     DOM.scry('a', test.get('scope')).forEach(function (element) {
       var self = element;
-      var $link = $(element);
+      var $link = element;
       var text = '';
       var $img = DOM.scry('img[alt]', $link);
       if ($img.length) {

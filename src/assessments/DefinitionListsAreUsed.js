@@ -16,7 +16,7 @@ var DefinitionListsAreUsed = {
         element: element
       });
       test.add(_case);
-      var $item = $(element);
+      var $item = element;
       DOM.scry('span, strong, em, b, i', element).forEach(function (element) {
         if (DOM.text(element).length < 50 && $item.text().search(DOM.text(element)) === 0) {
           if (DOM.is(element, 'span')) {

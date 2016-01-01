@@ -5,7 +5,7 @@ var TableLayoutHasNoCaption = {
   run: function (test) {
     DOM.scry('table', test.get('scope')).forEach(function (element) {
       if (DOM.scry('caption', element).length) {
-        if (!IsDataTableComponent($(element))) {
+        if (!IsDataTableComponent(element)) {
           test.add(Case({
             element: element,
             status: 'failed'

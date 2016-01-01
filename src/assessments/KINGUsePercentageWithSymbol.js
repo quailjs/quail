@@ -12,7 +12,7 @@ var KINGUsePercentageWithSymbol = {
       // Test the words and any eventual extra letters for s and all.
       var percentReg = new RegExp('\\d{1,}\\s*(' + percentName.join('|') + ')|(' + percentName.join('|') + ')\\s*\\d{1,}', 'ig');
 
-      var text = GetTextContentsComponent($(element));
+      var text = GetTextContentsComponent(element);
       var _case = Case({
         element: this
       });

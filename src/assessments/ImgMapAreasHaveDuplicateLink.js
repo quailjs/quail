@@ -11,7 +11,7 @@ var ImgMapAreasHaveDuplicateLink = {
         element: element
       });
       test.add(_case);
-      var $image = $(element);
+      var $image = element;
       var $map = DOM.scry(DOM.getAttribute($image, 'usemap'), test.get('scope'));
       if (!$map.length) {
         $map = DOM.scry('map[name="' + DOM.getAttribute($image, 'usemap').replace('#', '') + '"]', test.get('scope'));

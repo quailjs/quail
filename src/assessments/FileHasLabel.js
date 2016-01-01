@@ -34,7 +34,7 @@ var FileHasLabel = {
       }
       else {
         files.forEach(function (element) {
-          var $file = $(element);
+          var $file = element;
           var status = 'failed';
 
           // Check for an associated label.

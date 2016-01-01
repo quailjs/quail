@@ -10,7 +10,7 @@ var PNotUsedAsHeader = {
       });
       test.add(_case);
 
-      var $paragraph = $(element);
+      var $paragraph = element;
 
       // If the text has a period, it is probably a sentence and not a header.
       if ($paragraph.text().search(/[\.!:;]/) >= 1) {

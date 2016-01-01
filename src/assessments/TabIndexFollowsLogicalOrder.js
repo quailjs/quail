@@ -5,7 +5,7 @@ var TabIndexFollowsLogicalOrder = {
     test.get('scope').forEach(function (scope) {
       var index = 0;
       DOM.scry('[tabindex]', scope).forEach(function (element) {
-        var $el = $(element);
+        var $el = element;
         var tabindex = DOM.getAttribute($el, 'tabindex');
         if (parseInt(tabindex, 10) >= 0 && parseInt(tabindex, 10) !== index + 1) {
           test.add(Case({

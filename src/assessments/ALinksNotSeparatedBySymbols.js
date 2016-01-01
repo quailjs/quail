@@ -4,7 +4,7 @@ var SymbolsStringsComponent = require('SymbolsStringsComponent');
 var ALinksNotSeparatedBySymbols = {
   run: function (test) {
     DOM.scry('a', test.get('scope')).forEach(function (element) {
-      var $link = $(element);
+      var $link = element;
       var next = DOM.next($link);
       if (next && DOM.is(next, 'a')) {
         var text = $link.get(0).nextSibling.wholeText;
