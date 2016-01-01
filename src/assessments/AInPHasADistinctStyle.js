@@ -56,18 +56,22 @@ var AInPHasADistinctStyle = {
       var anchors = DOM.scry('p a[href]:visible', scope);
 
       anchors.forEach(function (element) {
-        var $p = element.closest('p');
-        var $parent = element.parent();
+        var $p = DOM.parents(element).find((parent) => DOM.is(parent, 'p'));
+        var $parent = element.parentNode;
 
         var _case = Case({
           element: element
         });
         test.add(_case);
 
-        var aText = element.text().trim();
+        var aText = DOM.text(element).trim();
 
         // Get all text of the p element with all anchors removed
-        var pText = DOM.scry('a[href]', $p.clone()).remove().end().text();
+        var pClone = $p.cloneNode(true);
+        DOM.scry('a[href]', pClone).forEach((link) => {
+          link.parentNode.removeNode(link);
+        });
+        var pText = DOM.text(pClone).trim();
 
         if (aText === '' || pText.match(allowedPText)) {
           _case.set('status', 'inapplicable');

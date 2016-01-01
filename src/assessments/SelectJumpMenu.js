@@ -3,25 +3,22 @@ const DOM = require('DOM');
 var HasEventListenerComponent = require('HasEventListenerComponent');
 var SelectJumpMenu = {
   run: function (test) {
-    var scope = test.get('scope');
-    if (DOM.scry('select', scope).length === 0) {
-      return;
-    }
-
-    DOM.scry('select', scope).forEach(function (element) {
-      if (DOM.scry(':submit', element).parent('form').length === 0 &&
-          HasEventListenerComponent($(element), 'change')) {
-        test.add(Case({
-          element: element,
-          status: 'failed'
-        }));
-      }
-      else {
-        test.add(Case({
-          element: element,
-          status: 'passed'
-        }));
-      }
+    test.get('scope').forEach((scope) => {
+      DOM.scry('select', scope).forEach(function (element) {
+        var hasChangeListener = HasEventListenerComponent(element, 'change');
+        if (hasChangeListener) {
+          test.add(Case({
+            element: element,
+            status: 'failed'
+          }));
+        }
+        else {
+          test.add(Case({
+            element: element,
+            status: 'passed'
+          }));
+        }
+      });
     });
   },
 

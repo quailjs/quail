@@ -99,7 +99,6 @@
   "ImgServerSideMapNotUsed",
   "ImgShouldNotHaveTitle",
   "ImgWithMapHasUseMap",
-  "ImgWithMathShouldHaveMathEquivalent",
   "InputCheckboxRequiresFieldset",
   "InputElementsDontHaveAlt",
   "InputImageAltIsNotFileName",

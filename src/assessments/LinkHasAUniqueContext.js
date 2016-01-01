@@ -19,7 +19,7 @@ var LinkHasAUniqueContext = {
       var text = simplifyText(link.text());
 
       while (!DOM.is(block, 'body, html') && blockStyle.indexOf(DOM.getStyle(block, 'display')) === -1) {
-        block = block.parent();
+        block = block.parentNode;
       }
 
       var sentences = block.text().match(/[^\.!\?]+[\.!\?]+/g);

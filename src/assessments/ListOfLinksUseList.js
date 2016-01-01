@@ -12,7 +12,7 @@ var ListOfLinksUseList = {
       var next = DOM.next(element);
       if (next && DOM.is(next, 'a')) {
         var nextText = $(element).get(0).nextSibling.wholeText.replace(unreadableText, '');
-        if (!$(element).parent('li').length && IsUnreadable(nextText)) {
+        if (!DOM.is(element.parentNode, 'li') && IsUnreadable(nextText)) {
           _case.set({
             status: 'failed'
           });

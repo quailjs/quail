@@ -7833,7 +7833,6 @@ var InputImageAltIsNotPlaceholder = require('InputImageAltIsNotPlaceholder');
 var InputImageAltIsNotFileName = require('InputImageAltIsNotFileName');
 var InputElementsDontHaveAlt = require('InputElementsDontHaveAlt');
 var InputCheckboxRequiresFieldset = require('InputCheckboxRequiresFieldset');
-var ImgWithMathShouldHaveMathEquivalent = require('ImgWithMathShouldHaveMathEquivalent');
 var ImgWithMapHasUseMap = require('ImgWithMapHasUseMap');
 var ImgShouldNotHaveTitle = require('ImgShouldNotHaveTitle');
 var ImgServerSideMapNotUsed = require('ImgServerSideMapNotUsed');
@@ -8035,7 +8034,6 @@ map.set('imgNonDecorativeHasAlt', ImgNonDecorativeHasAlt);
 map.set('imgServerSideMapNotUsed', ImgServerSideMapNotUsed);
 map.set('imgShouldNotHaveTitle', ImgShouldNotHaveTitle);
 map.set('imgWithMapHasUseMap', ImgWithMapHasUseMap);
-map.set('imgWithMathShouldHaveMathEquivalent', ImgWithMathShouldHaveMathEquivalent);
 map.set('inputCheckboxRequiresFieldset', InputCheckboxRequiresFieldset);
 map.set('inputElementsDontHaveAlt', InputElementsDontHaveAlt);
 map.set('inputImageAltIsNotFileName', InputImageAltIsNotFileName);
@@ -8107,7 +8105,7 @@ map.set('whiteSpaceInWord', WhiteSpaceInWord);
 map.set('whiteSpaceNotUsedForFormatting', WhiteSpaceNotUsedForFormatting);
 module.exports = map;
 
-},{"AAdjacentWithSameResourceShouldBeCombined":44,"AImgAltNotRepetitive":45,"AInPHasADistinctStyle":46,"ALinkTextDoesNotBeginWithRedundantWord":47,"ALinkWithNonText":48,"ALinksAreSeparatedByPrintableCharacters":49,"ALinksDontOpenNewWindow":50,"ALinksNotSeparatedBySymbols":51,"ALinksToMultiMediaRequireTranscript":52,"ALinksToSoundFilesNeedTranscripts":53,"AMultimediaTextAlternative":54,"AMustContainText":55,"AMustHaveTitle":56,"AMustNotHaveJavascriptHref":57,"ASuspiciousLinkText":58,"ATitleDescribesDestination":59,"AnimatedGifMayBePresent":60,"AppletContainsTextEquivalent":61,"AppletContainsTextEquivalentInAlt":62,"AppletProvidesMechanismToReturnToParent":63,"AppletTextEquivalentsGetUpdated":64,"AppletUIMustBeAccessible":65,"AppletsDoNotFlicker":66,"AppletsDonotUseColorAlone":67,"AreaAltIdentifiesDestination":68,"AreaAltRefersToText":69,"AreaDontOpenNewWindow":70,"AreaHasAltValue":71,"AreaLinksToSoundFile":72,"AudioMayBePresent":73,"BasefontIsNotUsed":74,"BlinkIsNotUsed":75,"BlockquoteNotUsedForIndentation":76,"BlockquoteUseForQuotations":77,"BoldIsNotUsed":78,"ButtonHasName":79,"CheckboxHasLabel":80,"ColorBackgroundGradientContrast":81,"ColorBackgroundImageContrast":82,"ColorElementBehindBackgroundGradientContrast":83,"ColorElementBehindBackgroundImageContrast":84,"ColorElementBehindContrast":85,"ColorFontContrast":86,"CssDocumentMakesSenseStyleTurnedOff":87,"DefinitionListsAreUsed":88,"DoctypeProvided":89,"DocumentAcronymsHaveElement":90,"DocumentAutoRedirectNotUsed":91,"DocumentContentReadableWithoutStylesheets":92,"DocumentHasTitleElement":93,"DocumentIsWrittenClearly":94,"DocumentLangIsISO639Standard":95,"DocumentLangNotIdentified":96,"DocumentMetaNotUsedWithTimeout":97,"DocumentReadingDirection":98,"DocumentStrictDocType":99,"DocumentTitleDescribesDocument":100,"DocumentTitleIsNotPlaceholder":101,"DocumentTitleIsShort":102,"DocumentTitleNotEmpty":103,"DocumentVisualListsAreMarkedUp":104,"DomOrderMatchesVisualOrder":105,"EmbedHasAssociatedNoEmbed":106,"EmbedMustHaveAltAttribute":107,"FieldsetHasLabel":108,"FileHasLabel":109,"FontIsNotUsed":110,"FormButtonsHaveValue":111,"FormErrorMessageHelpsUser":112,"FormHasGoodErrorMessage":113,"FormHasSubmitButton":114,"FormWithRequiredLabel":115,"HeaderH1":116,"HeaderH1Format":117,"HeaderH2":118,"HeaderH2Format":119,"HeaderH3":120,"HeaderH3Format":121,"HeaderH4":122,"HeaderH4Format":123,"HeaderH5Format":124,"HeaderH6Format":125,"HeadersAttrRefersToATableCell":126,"HeadersHaveText":127,"HeadersUseToMarkSections":128,"IIsNotUsed":129,"IdrefsHasCorrespondingId":130,"IframeMustNotHaveLongdesc":131,"ImageMapServerSide":132,"ImgAltIsDifferent":133,"ImgAltIsTooLong":134,"ImgAltNotEmptyInAnchor":135,"ImgAltNotPlaceHolder":136,"ImgHasAlt":137,"ImgHasLongDesc":138,"ImgImportantNoSpacerAlt":139,"ImgNonDecorativeHasAlt":140,"ImgServerSideMapNotUsed":141,"ImgShouldNotHaveTitle":142,"ImgWithMapHasUseMap":143,"ImgWithMathShouldHaveMathEquivalent":144,"InputCheckboxRequiresFieldset":145,"InputElementsDontHaveAlt":146,"InputImageAltIsNotFileName":147,"InputImageAltIsNotPlaceholder":148,"InputImageAltIsShort":149,"InputImageAltNotRedundant":150,"InputImageHasAlt":151,"InputTextHasLabel":152,"InputTextHasValue":153,"InputTextValueNotEmpty":154,"InputWithoutLabelHasTitle":155,"LabelDoesNotContainInput":156,"LabelMustBeUnique":157,"LabelMustNotBeEmpty":158,"LabelsAreAssignedToAnInput":159,"LanguageDirAttributeIsUsed":160,"LanguageDirectionPunctuation":161,"LanguageUnicodeDirection":162,"LegendTextNotEmpty":163,"LegendTextNotPlaceholder":164,"LiDontUseImageForBullet":165,"LinkHasAUniqueContext":166,"ListNotUsedForFormatting":167,"ListOfLinksUseList":168,"MarqueeIsNotUsed":169,"MenuNotUsedToFormatText":170,"NewWindowIsOpened":171,"ObjectMustContainText":172,"ObjectMustHaveEmbed":173,"ObjectMustHaveTitle":174,"ObjectMustHaveValidTitle":175,"PNotUsedAsHeader":176,"PasswordHasLabel":177,"PreShouldNotBeUsedForTabularLayout":178,"RadioHasLabel":179,"ScriptOnclickRequiresOnKeypress":180,"ScriptOndblclickRequiresOnKeypress":181,"ScriptOnmousedownRequiresOnKeypress":182,"ScriptOnmousemove":183,"ScriptOnmouseoutHasOnmouseblur":184,"ScriptOnmouseoverHasOnfocus":185,"ScriptOnmouseupHasOnkeyup":186,"SelectHasAssociatedLabel":187,"SelectJumpMenu":188,"SiteMap":189,"SkipToContentLinkProvided":190,"SvgContainsTitle":191,"TabIndexFollowsLogicalOrder":192,"TableDataShouldHaveTh":193,"TableLayoutDataShouldNotHaveTh":194,"TableLayoutHasNoCaption":195,"TableLayoutHasNoSummary":196,"TableLayoutMakesSenseLinearized":197,"TableNotUsedForLayout":198,"TableShouldUseHeaderIDs":199,"TableSummaryDoesNotDuplicateCaption":200,"TableSummaryIsEmpty":201,"TableSummaryIsNotTooLong":202,"TableUseColGroup":203,"TableUsesAbbreviationForHeader":204,"TableUsesCaption":205,"TableUsesScopeForRow":206,"TabularDataIsInTable":207,"TextIsNotSmall":208,"TextareaHasAssociatedLabel":209,"VideoMayBePresent":210,"VideosEmbeddedOrLinkedNeedCaptions":211,"WhiteSpaceInWord":212,"WhiteSpaceNotUsedForFormatting":213}],43:[function(require,module,exports){
+},{"AAdjacentWithSameResourceShouldBeCombined":44,"AImgAltNotRepetitive":45,"AInPHasADistinctStyle":46,"ALinkTextDoesNotBeginWithRedundantWord":47,"ALinkWithNonText":48,"ALinksAreSeparatedByPrintableCharacters":49,"ALinksDontOpenNewWindow":50,"ALinksNotSeparatedBySymbols":51,"ALinksToMultiMediaRequireTranscript":52,"ALinksToSoundFilesNeedTranscripts":53,"AMultimediaTextAlternative":54,"AMustContainText":55,"AMustHaveTitle":56,"AMustNotHaveJavascriptHref":57,"ASuspiciousLinkText":58,"ATitleDescribesDestination":59,"AnimatedGifMayBePresent":60,"AppletContainsTextEquivalent":61,"AppletContainsTextEquivalentInAlt":62,"AppletProvidesMechanismToReturnToParent":63,"AppletTextEquivalentsGetUpdated":64,"AppletUIMustBeAccessible":65,"AppletsDoNotFlicker":66,"AppletsDonotUseColorAlone":67,"AreaAltIdentifiesDestination":68,"AreaAltRefersToText":69,"AreaDontOpenNewWindow":70,"AreaHasAltValue":71,"AreaLinksToSoundFile":72,"AudioMayBePresent":73,"BasefontIsNotUsed":74,"BlinkIsNotUsed":75,"BlockquoteNotUsedForIndentation":76,"BlockquoteUseForQuotations":77,"BoldIsNotUsed":78,"ButtonHasName":79,"CheckboxHasLabel":80,"ColorBackgroundGradientContrast":81,"ColorBackgroundImageContrast":82,"ColorElementBehindBackgroundGradientContrast":83,"ColorElementBehindBackgroundImageContrast":84,"ColorElementBehindContrast":85,"ColorFontContrast":86,"CssDocumentMakesSenseStyleTurnedOff":87,"DefinitionListsAreUsed":88,"DoctypeProvided":89,"DocumentAcronymsHaveElement":90,"DocumentAutoRedirectNotUsed":91,"DocumentContentReadableWithoutStylesheets":92,"DocumentHasTitleElement":93,"DocumentIsWrittenClearly":94,"DocumentLangIsISO639Standard":95,"DocumentLangNotIdentified":96,"DocumentMetaNotUsedWithTimeout":97,"DocumentReadingDirection":98,"DocumentStrictDocType":99,"DocumentTitleDescribesDocument":100,"DocumentTitleIsNotPlaceholder":101,"DocumentTitleIsShort":102,"DocumentTitleNotEmpty":103,"DocumentVisualListsAreMarkedUp":104,"DomOrderMatchesVisualOrder":105,"EmbedHasAssociatedNoEmbed":106,"EmbedMustHaveAltAttribute":107,"FieldsetHasLabel":108,"FileHasLabel":109,"FontIsNotUsed":110,"FormButtonsHaveValue":111,"FormErrorMessageHelpsUser":112,"FormHasGoodErrorMessage":113,"FormHasSubmitButton":114,"FormWithRequiredLabel":115,"HeaderH1":116,"HeaderH1Format":117,"HeaderH2":118,"HeaderH2Format":119,"HeaderH3":120,"HeaderH3Format":121,"HeaderH4":122,"HeaderH4Format":123,"HeaderH5Format":124,"HeaderH6Format":125,"HeadersAttrRefersToATableCell":126,"HeadersHaveText":127,"HeadersUseToMarkSections":128,"IIsNotUsed":129,"IdrefsHasCorrespondingId":130,"IframeMustNotHaveLongdesc":131,"ImageMapServerSide":132,"ImgAltIsDifferent":133,"ImgAltIsTooLong":134,"ImgAltNotEmptyInAnchor":135,"ImgAltNotPlaceHolder":136,"ImgHasAlt":137,"ImgHasLongDesc":138,"ImgImportantNoSpacerAlt":139,"ImgNonDecorativeHasAlt":140,"ImgServerSideMapNotUsed":141,"ImgShouldNotHaveTitle":142,"ImgWithMapHasUseMap":143,"InputCheckboxRequiresFieldset":144,"InputElementsDontHaveAlt":145,"InputImageAltIsNotFileName":146,"InputImageAltIsNotPlaceholder":147,"InputImageAltIsShort":148,"InputImageAltNotRedundant":149,"InputImageHasAlt":150,"InputTextHasLabel":151,"InputTextHasValue":152,"InputTextValueNotEmpty":153,"InputWithoutLabelHasTitle":154,"LabelDoesNotContainInput":155,"LabelMustBeUnique":156,"LabelMustNotBeEmpty":157,"LabelsAreAssignedToAnInput":158,"LanguageDirAttributeIsUsed":159,"LanguageDirectionPunctuation":160,"LanguageUnicodeDirection":161,"LegendTextNotEmpty":162,"LegendTextNotPlaceholder":163,"LiDontUseImageForBullet":164,"LinkHasAUniqueContext":165,"ListNotUsedForFormatting":166,"ListOfLinksUseList":167,"MarqueeIsNotUsed":168,"MenuNotUsedToFormatText":169,"NewWindowIsOpened":170,"ObjectMustContainText":171,"ObjectMustHaveEmbed":172,"ObjectMustHaveTitle":173,"ObjectMustHaveValidTitle":174,"PNotUsedAsHeader":175,"PasswordHasLabel":176,"PreShouldNotBeUsedForTabularLayout":177,"RadioHasLabel":178,"ScriptOnclickRequiresOnKeypress":179,"ScriptOndblclickRequiresOnKeypress":180,"ScriptOnmousedownRequiresOnKeypress":181,"ScriptOnmousemove":182,"ScriptOnmouseoutHasOnmouseblur":183,"ScriptOnmouseoverHasOnfocus":184,"ScriptOnmouseupHasOnkeyup":185,"SelectHasAssociatedLabel":186,"SelectJumpMenu":187,"SiteMap":188,"SkipToContentLinkProvided":189,"SvgContainsTitle":190,"TabIndexFollowsLogicalOrder":191,"TableDataShouldHaveTh":192,"TableLayoutDataShouldNotHaveTh":193,"TableLayoutHasNoCaption":194,"TableLayoutHasNoSummary":195,"TableLayoutMakesSenseLinearized":196,"TableNotUsedForLayout":197,"TableShouldUseHeaderIDs":198,"TableSummaryDoesNotDuplicateCaption":199,"TableSummaryIsEmpty":200,"TableSummaryIsNotTooLong":201,"TableUseColGroup":202,"TableUsesAbbreviationForHeader":203,"TableUsesCaption":204,"TableUsesScopeForRow":205,"TabularDataIsInTable":206,"TextIsNotSmall":207,"TextareaHasAssociatedLabel":208,"VideoMayBePresent":209,"VideosEmbeddedOrLinkedNeedCaptions":210,"WhiteSpaceInWord":211,"WhiteSpaceNotUsedForFormatting":212}],43:[function(require,module,exports){
 /*
 RainbowVis-JS 
 Released under Eclipse Public License - v 1.0
@@ -8615,18 +8613,22 @@ var AInPHasADistinctStyle = {
       var anchors = DOM.scry('p a[href]:visible', scope);
 
       anchors.forEach(function (element) {
-        var $p = element.closest('p');
-        var $parent = element.parent();
+        var $p = DOM.parents(element).find(parent => DOM.is(parent, 'p'));
+        var $parent = element.parentNode;
 
         var _case = Case({
           element: element
         });
         test.add(_case);
 
-        var aText = element.text().trim();
+        var aText = DOM.text(element).trim();
 
         // Get all text of the p element with all anchors removed
-        var pText = DOM.scry('a[href]', $p.clone()).remove().end().text();
+        var pClone = $p.cloneNode(true);
+        DOM.scry('a[href]', pClone).forEach(link => {
+          link.parentNode.removeNode(link);
+        });
+        var pText = DOM.text(pClone).trim();
 
         if (aText === '' || pText.match(allowedPText)) {
           _case.set('status', 'inapplicable');
@@ -10480,7 +10482,8 @@ var BlockquoteUseForQuotations = {
         element: element
       });
       test.add(_case);
-      if ($(element).parents('blockquote').length > 0) {
+      var blockquote = DOM.parents(element).find(parent => DOM.is(parent, 'blockquote'))[0];
+      if (blockquote) {
         _case.set({
           status: 'inapplicable'
         });
@@ -14235,40 +14238,6 @@ module.exports = ImgWithMapHasUseMap;
 },{"Case":31,"DOM":32}],144:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
-var ImgWithMathShouldHaveMathEquivalent = {
-  run: function (test) {
-    DOM.scry('img:not(img:has(math), img:has(tagName))', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
-      if (!DOM.scry('math', element).parent().length) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Images which contain math equations should provide equivalent MathML',
-      nl: 'Afbeeldingen met wiskundige vergelijking moeten een equivalent in MathML bieden'
-    },
-    description: {
-      en: 'Images which contain math equations should be accompanied or link to a document with the equivalent equation marked up with <a href=\"http://www.w3.org/Math/\">MathML</a>.',
-      nl: 'Afbeeldingen die wiskundige vergelijkingen bevatten moeten vergezeld zijn van of linken naar een document met daarin een equivalent van de vergelijking in <a href=\"http://www.w3.org/Math/\">MathML</a>.'
-    },
-    guidelines: [],
-    tags: ['image', 'content']
-  }
-};
-module.exports = ImgWithMathShouldHaveMathEquivalent;
-
-},{"Case":31,"DOM":32}],145:[function(require,module,exports){
-var Case = require('Case');
-const DOM = require('DOM');
 var InputCheckboxRequiresFieldset = {
   run: function (test) {
     DOM.scry('input[type="checkbox"]', test.get('scope')).forEach(function (element) {
@@ -14276,7 +14245,8 @@ var InputCheckboxRequiresFieldset = {
         element: element
       });
       test.add(_case);
-      if (!$(element).parents('fieldset').length) {
+      var fieldset = DOM.parents(element).find(parent => DOM.is(parent, 'fieldset'))[0];
+      if (!fieldset) {
         _case.set({
           status: 'failed'
         });
@@ -14310,7 +14280,7 @@ var InputCheckboxRequiresFieldset = {
 };
 module.exports = InputCheckboxRequiresFieldset;
 
-},{"Case":31,"DOM":32}],146:[function(require,module,exports){
+},{"Case":31,"DOM":32}],145:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -14366,7 +14336,7 @@ var InputElementsDontHaveAlt = {
 };
 module.exports = InputElementsDontHaveAlt;
 
-},{"Case":31,"DOM":32}],147:[function(require,module,exports){
+},{"Case":31,"DOM":32}],146:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var InputImageAltIsNotFileName = {
@@ -14411,7 +14381,7 @@ var InputImageAltIsNotFileName = {
 };
 module.exports = InputImageAltIsNotFileName;
 
-},{"Case":31,"DOM":32}],148:[function(require,module,exports){
+},{"Case":31,"DOM":32}],147:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -14459,7 +14429,7 @@ var InputImageAltIsNotPlaceholder = {
 };
 module.exports = InputImageAltIsNotPlaceholder;
 
-},{"PlaceholderComponent":16}],149:[function(require,module,exports){
+},{"PlaceholderComponent":16}],148:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var InputImageAltIsShort = {
@@ -14504,7 +14474,7 @@ var InputImageAltIsShort = {
 };
 module.exports = InputImageAltIsShort;
 
-},{"Case":31,"DOM":32}],150:[function(require,module,exports){
+},{"Case":31,"DOM":32}],149:[function(require,module,exports){
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
 const DOM = require('DOM');
@@ -14550,7 +14520,7 @@ var InputImageAltNotRedundant = {
 };
 module.exports = InputImageAltNotRedundant;
 
-},{"Case":31,"CleanStringComponent":2,"DOM":32,"RedundantStringsComponent":18}],151:[function(require,module,exports){
+},{"Case":31,"CleanStringComponent":2,"DOM":32,"RedundantStringsComponent":18}],150:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -14625,7 +14595,7 @@ var InputImageHasAlt = {
 };
 module.exports = InputImageHasAlt;
 
-},{"Case":31,"DOM":32}],152:[function(require,module,exports){
+},{"Case":31,"DOM":32}],151:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -14677,7 +14647,7 @@ var InputTextHasLabel = {
 };
 module.exports = InputTextHasLabel;
 
-},{"LabelComponent":12}],153:[function(require,module,exports){
+},{"LabelComponent":12}],152:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -14710,7 +14680,7 @@ var InputTextHasValue = {
 };
 module.exports = InputTextHasValue;
 
-},{"PlaceholderComponent":16}],154:[function(require,module,exports){
+},{"PlaceholderComponent":16}],153:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -14743,7 +14713,7 @@ var InputTextValueNotEmpty = {
 };
 module.exports = InputTextValueNotEmpty;
 
-},{"PlaceholderComponent":16}],155:[function(require,module,exports){
+},{"PlaceholderComponent":16}],154:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
@@ -14819,7 +14789,7 @@ var InputWithoutLabelHasTitle = {
 };
 module.exports = InputWithoutLabelHasTitle;
 
-},{"Case":31,"DOM":32,"IsUnreadable":11}],156:[function(require,module,exports){
+},{"Case":31,"DOM":32,"IsUnreadable":11}],155:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -14874,7 +14844,7 @@ var LabelDoesNotContainInput = {
 };
 module.exports = LabelDoesNotContainInput;
 
-},{"Case":31,"DOM":32}],157:[function(require,module,exports){
+},{"Case":31,"DOM":32}],156:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var LabelMustBeUnique = {
@@ -14920,7 +14890,7 @@ var LabelMustBeUnique = {
 };
 module.exports = LabelMustBeUnique;
 
-},{"Case":31,"DOM":32}],158:[function(require,module,exports){
+},{"Case":31,"DOM":32}],157:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -14968,7 +14938,7 @@ var LabelMustNotBeEmpty = {
 };
 module.exports = LabelMustNotBeEmpty;
 
-},{"PlaceholderComponent":16}],159:[function(require,module,exports){
+},{"PlaceholderComponent":16}],158:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var LabelsAreAssignedToAnInput = {
@@ -15016,7 +14986,7 @@ var LabelsAreAssignedToAnInput = {
 };
 module.exports = LabelsAreAssignedToAnInput;
 
-},{"Case":31,"DOM":32}],160:[function(require,module,exports){
+},{"Case":31,"DOM":32}],159:[function(require,module,exports){
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
@@ -15095,7 +15065,7 @@ var LanguageDirAttributeIsUsed = {
 };
 module.exports = LanguageDirAttributeIsUsed;
 
-},{"Case":31,"DOM":32,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],161:[function(require,module,exports){
+},{"Case":31,"DOM":32,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],160:[function(require,module,exports){
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
@@ -15171,7 +15141,7 @@ var LanguageDirectionPunctuation = {
 };
 module.exports = LanguageDirectionPunctuation;
 
-},{"Case":31,"DOM":32,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],162:[function(require,module,exports){
+},{"Case":31,"DOM":32,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],161:[function(require,module,exports){
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 const DOM = require('DOM');
@@ -15227,7 +15197,7 @@ var LanguageUnicodeDirection = {
 };
 module.exports = LanguageUnicodeDirection;
 
-},{"Case":31,"DOM":32,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],163:[function(require,module,exports){
+},{"Case":31,"DOM":32,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],162:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -15295,7 +15265,7 @@ var LegendTextNotEmpty = {
 };
 module.exports = LegendTextNotEmpty;
 
-},{"Case":31,"DOM":32}],164:[function(require,module,exports){
+},{"Case":31,"DOM":32}],163:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -15346,7 +15316,7 @@ var LegendTextNotPlaceholder = {
 };
 module.exports = LegendTextNotPlaceholder;
 
-},{"PlaceholderComponent":16}],165:[function(require,module,exports){
+},{"PlaceholderComponent":16}],164:[function(require,module,exports){
 /**
  * @todo Needs refinement.
  *
@@ -15396,7 +15366,7 @@ var LiDontUseImageForBullet = {
 };
 module.exports = LiDontUseImageForBullet;
 
-},{"Case":31,"DOM":32}],166:[function(require,module,exports){
+},{"Case":31,"DOM":32}],165:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 const TableHeadersComponent = require('TableHeadersComponent');
@@ -15411,7 +15381,7 @@ var LinkHasAUniqueContext = {
       var text = simplifyText(link.text());
 
       while (!DOM.is(block, 'body, html') && blockStyle.indexOf(DOM.getStyle(block, 'display')) === -1) {
-        block = block.parent();
+        block = block.parentNode;
       }
 
       var sentences = block.text().match(/[^\.!\?]+[\.!\?]+/g);
@@ -15583,7 +15553,7 @@ var LinkHasAUniqueContext = {
 };
 module.exports = LinkHasAUniqueContext;
 
-},{"Case":31,"DOM":32,"TableHeadersComponent":25}],167:[function(require,module,exports){
+},{"Case":31,"DOM":32,"TableHeadersComponent":25}],166:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var ListNotUsedForFormatting = {
@@ -15627,7 +15597,7 @@ var ListNotUsedForFormatting = {
 };
 module.exports = ListNotUsedForFormatting;
 
-},{"Case":31,"DOM":32}],168:[function(require,module,exports){
+},{"Case":31,"DOM":32}],167:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
@@ -15642,7 +15612,7 @@ var ListOfLinksUseList = {
       var next = DOM.next(element);
       if (next && DOM.is(next, 'a')) {
         var nextText = $(element).get(0).nextSibling.wholeText.replace(unreadableText, '');
-        if (!$(element).parent('li').length && IsUnreadable(nextText)) {
+        if (!DOM.is(element.parentNode, 'li') && IsUnreadable(nextText)) {
           _case.set({
             status: 'failed'
           });
@@ -15677,7 +15647,7 @@ var ListOfLinksUseList = {
 };
 module.exports = ListOfLinksUseList;
 
-},{"Case":31,"DOM":32,"IsUnreadable":11}],169:[function(require,module,exports){
+},{"Case":31,"DOM":32,"IsUnreadable":11}],168:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -15729,7 +15699,7 @@ var MarqueeIsNotUsed = {
 };
 module.exports = MarqueeIsNotUsed;
 
-},{"Case":31,"DOM":32}],170:[function(require,module,exports){
+},{"Case":31,"DOM":32}],169:[function(require,module,exports){
 /**
  * @todo Needs refinement.
  *
@@ -15783,7 +15753,7 @@ var MenuNotUsedToFormatText = {
 };
 module.exports = MenuNotUsedToFormatText;
 
-},{"Case":31,"DOM":32}],171:[function(require,module,exports){
+},{"Case":31,"DOM":32}],170:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var NewWindowIsOpened = {
@@ -15835,7 +15805,7 @@ var NewWindowIsOpened = {
 };
 module.exports = NewWindowIsOpened;
 
-},{"Case":31,"DOM":32}],172:[function(require,module,exports){
+},{"Case":31,"DOM":32}],171:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -15874,7 +15844,7 @@ var ObjectMustContainText = {
 };
 module.exports = ObjectMustContainText;
 
-},{"PlaceholderComponent":16}],173:[function(require,module,exports){
+},{"PlaceholderComponent":16}],172:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -15931,7 +15901,7 @@ var ObjectMustHaveEmbed = {
 };
 module.exports = ObjectMustHaveEmbed;
 
-},{"Case":31,"DOM":32}],174:[function(require,module,exports){
+},{"Case":31,"DOM":32}],173:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -15995,7 +15965,7 @@ var ObjectMustHaveTitle = {
 };
 module.exports = ObjectMustHaveTitle;
 
-},{"Case":31,"DOM":32}],175:[function(require,module,exports){
+},{"Case":31,"DOM":32}],174:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16028,7 +15998,7 @@ var ObjectMustHaveValidTitle = {
 };
 module.exports = ObjectMustHaveValidTitle;
 
-},{"PlaceholderComponent":16}],176:[function(require,module,exports){
+},{"PlaceholderComponent":16}],175:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var SuspectPHeaderTags = require('SuspectPHeaderTags');
@@ -16118,7 +16088,7 @@ var PNotUsedAsHeader = {
 };
 module.exports = PNotUsedAsHeader;
 
-},{"Case":31,"DOM":32,"SuspectPCSSStyles":21,"SuspectPHeaderTags":22}],177:[function(require,module,exports){
+},{"Case":31,"DOM":32,"SuspectPCSSStyles":21,"SuspectPHeaderTags":22}],176:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16171,7 +16141,7 @@ var PasswordHasLabel = {
 };
 module.exports = PasswordHasLabel;
 
-},{"LabelComponent":12}],178:[function(require,module,exports){
+},{"LabelComponent":12}],177:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var PreShouldNotBeUsedForTabularLayout = {
@@ -16213,7 +16183,7 @@ var PreShouldNotBeUsedForTabularLayout = {
 };
 module.exports = PreShouldNotBeUsedForTabularLayout;
 
-},{"Case":31,"DOM":32}],179:[function(require,module,exports){
+},{"Case":31,"DOM":32}],178:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16266,7 +16236,7 @@ var RadioHasLabel = {
 };
 module.exports = RadioHasLabel;
 
-},{"LabelComponent":12}],180:[function(require,module,exports){
+},{"LabelComponent":12}],179:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16309,7 +16279,7 @@ var ScriptOnclickRequiresOnKeypress = {
 };
 module.exports = ScriptOnclickRequiresOnKeypress;
 
-},{"EventComponent":6}],181:[function(require,module,exports){
+},{"EventComponent":6}],180:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16352,7 +16322,7 @@ var ScriptOndblclickRequiresOnKeypress = {
 };
 module.exports = ScriptOndblclickRequiresOnKeypress;
 
-},{"EventComponent":6}],182:[function(require,module,exports){
+},{"EventComponent":6}],181:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16395,7 +16365,7 @@ var ScriptOnmousedownRequiresOnKeypress = {
 };
 module.exports = ScriptOnmousedownRequiresOnKeypress;
 
-},{"EventComponent":6}],183:[function(require,module,exports){
+},{"EventComponent":6}],182:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16438,7 +16408,7 @@ var ScriptOnmousemove = {
 };
 module.exports = ScriptOnmousemove;
 
-},{"EventComponent":6}],184:[function(require,module,exports){
+},{"EventComponent":6}],183:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16481,7 +16451,7 @@ var ScriptOnmouseoutHasOnmouseblur = {
 };
 module.exports = ScriptOnmouseoutHasOnmouseblur;
 
-},{"EventComponent":6}],185:[function(require,module,exports){
+},{"EventComponent":6}],184:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16524,7 +16494,7 @@ var ScriptOnmouseoverHasOnfocus = {
 };
 module.exports = ScriptOnmouseoverHasOnfocus;
 
-},{"EventComponent":6}],186:[function(require,module,exports){
+},{"EventComponent":6}],185:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16567,7 +16537,7 @@ var ScriptOnmouseupHasOnkeyup = {
 };
 module.exports = ScriptOnmouseupHasOnkeyup;
 
-},{"EventComponent":6}],187:[function(require,module,exports){
+},{"EventComponent":6}],186:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -16619,29 +16589,27 @@ var SelectHasAssociatedLabel = {
 };
 module.exports = SelectHasAssociatedLabel;
 
-},{"LabelComponent":12}],188:[function(require,module,exports){
+},{"LabelComponent":12}],187:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var HasEventListenerComponent = require('HasEventListenerComponent');
 var SelectJumpMenu = {
   run: function (test) {
-    var scope = test.get('scope');
-    if (DOM.scry('select', scope).length === 0) {
-      return;
-    }
-
-    DOM.scry('select', scope).forEach(function (element) {
-      if (DOM.scry(':submit', element).parent('form').length === 0 && HasEventListenerComponent($(element), 'change')) {
-        test.add(Case({
-          element: element,
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: element,
-          status: 'passed'
-        }));
-      }
+    test.get('scope').forEach(scope => {
+      DOM.scry('select', scope).forEach(function (element) {
+        var hasChangeListener = HasEventListenerComponent(element, 'change');
+        if (hasChangeListener) {
+          test.add(Case({
+            element: element,
+            status: 'failed'
+          }));
+        } else {
+          test.add(Case({
+            element: element,
+            status: 'passed'
+          }));
+        }
+      });
     });
   },
 
@@ -16670,7 +16638,7 @@ var SelectJumpMenu = {
 };
 module.exports = SelectJumpMenu;
 
-},{"Case":31,"DOM":32,"HasEventListenerComponent":8}],189:[function(require,module,exports){
+},{"Case":31,"DOM":32,"HasEventListenerComponent":8}],188:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var SiteMapStringsComponent = require('SiteMapStringsComponent');
@@ -16731,7 +16699,7 @@ var SiteMap = {
 
 module.exports = SiteMap;
 
-},{"Case":31,"DOM":32,"SiteMapStringsComponent":19}],190:[function(require,module,exports){
+},{"Case":31,"DOM":32,"SiteMapStringsComponent":19}],189:[function(require,module,exports){
 /**globals console:true */
 var Case = require('Case');
 const DOM = require('DOM');
@@ -16800,7 +16768,7 @@ var SkipToContentLinkProvided = {
 };
 module.exports = SkipToContentLinkProvided;
 
-},{"Case":31,"DOM":32,"SkipContentStringsComponent":20}],191:[function(require,module,exports){
+},{"Case":31,"DOM":32,"SkipContentStringsComponent":20}],190:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -16863,7 +16831,7 @@ var SvgContainsTitle = {
 };
 module.exports = SvgContainsTitle;
 
-},{"Case":31,"DOM":32}],192:[function(require,module,exports){
+},{"Case":31,"DOM":32}],191:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var TabIndexFollowsLogicalOrder = {
@@ -16911,7 +16879,7 @@ var TabIndexFollowsLogicalOrder = {
 };
 module.exports = TabIndexFollowsLogicalOrder;
 
-},{"Case":31,"DOM":32}],193:[function(require,module,exports){
+},{"Case":31,"DOM":32}],192:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -16974,7 +16942,7 @@ var TableDataShouldHaveTh = {
 };
 module.exports = TableDataShouldHaveTh;
 
-},{"Case":31,"DOM":32}],194:[function(require,module,exports){
+},{"Case":31,"DOM":32}],193:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 const DOM = require('DOM');
@@ -17026,7 +16994,7 @@ var TableLayoutDataShouldNotHaveTh = {
 };
 module.exports = TableLayoutDataShouldNotHaveTh;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],195:[function(require,module,exports){
+},{"Case":31,"DOM":32,"IsDataTableComponent":10}],194:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 const DOM = require('DOM');
@@ -17076,7 +17044,7 @@ var TableLayoutHasNoCaption = {
 };
 module.exports = TableLayoutHasNoCaption;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],196:[function(require,module,exports){
+},{"Case":31,"DOM":32,"IsDataTableComponent":10}],195:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 const DOM = require('DOM');
@@ -17119,7 +17087,7 @@ var TableLayoutHasNoSummary = {
 };
 module.exports = TableLayoutHasNoSummary;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10,"IsUnreadable":11}],197:[function(require,module,exports){
+},{"Case":31,"DOM":32,"IsDataTableComponent":10,"IsUnreadable":11}],196:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 const DOM = require('DOM');
@@ -17160,7 +17128,7 @@ var TableLayoutMakesSenseLinearized = {
 };
 module.exports = TableLayoutMakesSenseLinearized;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],198:[function(require,module,exports){
+},{"Case":31,"DOM":32,"IsDataTableComponent":10}],197:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 const DOM = require('DOM');
@@ -17203,7 +17171,7 @@ var TableNotUsedForLayout = {
 };
 module.exports = TableNotUsedForLayout;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],199:[function(require,module,exports){
+},{"Case":31,"DOM":32,"IsDataTableComponent":10}],198:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 const DOM = require('DOM');
@@ -17263,7 +17231,7 @@ var TableShouldUseHeaderIDs = {
 };
 module.exports = TableShouldUseHeaderIDs;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],200:[function(require,module,exports){
+},{"Case":31,"DOM":32,"IsDataTableComponent":10}],199:[function(require,module,exports){
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
 const DOM = require('DOM');
@@ -17302,7 +17270,7 @@ var TableSummaryDoesNotDuplicateCaption = {
 };
 module.exports = TableSummaryDoesNotDuplicateCaption;
 
-},{"Case":31,"CleanStringComponent":2,"DOM":32}],201:[function(require,module,exports){
+},{"Case":31,"CleanStringComponent":2,"DOM":32}],200:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -17335,7 +17303,7 @@ var TableSummaryIsEmpty = {
 };
 module.exports = TableSummaryIsEmpty;
 
-},{"PlaceholderComponent":16}],202:[function(require,module,exports){
+},{"PlaceholderComponent":16}],201:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var TableSummaryIsNotTooLong = {
@@ -17358,7 +17326,7 @@ var TableSummaryIsNotTooLong = {
 };
 module.exports = TableSummaryIsNotTooLong;
 
-},{"Case":31,"DOM":32}],203:[function(require,module,exports){
+},{"Case":31,"DOM":32}],202:[function(require,module,exports){
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
 const DOM = require('DOM');
@@ -17390,7 +17358,7 @@ var TableUseColGroup = {
 };
 module.exports = TableUseColGroup;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],204:[function(require,module,exports){
+},{"Case":31,"DOM":32,"IsDataTableComponent":10}],203:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var TableUsesAbbreviationForHeader = {
@@ -17421,7 +17389,7 @@ var TableUsesAbbreviationForHeader = {
 };
 module.exports = TableUsesAbbreviationForHeader;
 
-},{"Case":31,"DOM":32}],205:[function(require,module,exports){
+},{"Case":31,"DOM":32}],204:[function(require,module,exports){
 /**
  * A simple test case that determines if elements, specified by a selector,
  * exist or not.
@@ -17484,7 +17452,7 @@ var TableUsesCaption = {
 };
 module.exports = TableUsesCaption;
 
-},{"Case":31,"DOM":32}],206:[function(require,module,exports){
+},{"Case":31,"DOM":32}],205:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var TableUsesScopeForRow = {
@@ -17549,7 +17517,7 @@ var TableUsesScopeForRow = {
 };
 module.exports = TableUsesScopeForRow;
 
-},{"Case":31,"DOM":32}],207:[function(require,module,exports){
+},{"Case":31,"DOM":32}],206:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var TabularDataIsInTable = {
@@ -17594,7 +17562,7 @@ var TabularDataIsInTable = {
 };
 module.exports = TabularDataIsInTable;
 
-},{"Case":31,"DOM":32}],208:[function(require,module,exports){
+},{"Case":31,"DOM":32}],207:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var ConvertToPxComponent = require('ConvertToPxComponent');
@@ -17642,7 +17610,7 @@ var TextIsNotSmall = {
 };
 module.exports = TextIsNotSmall;
 
-},{"Case":31,"ConvertToPxComponent":5,"DOM":32,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],209:[function(require,module,exports){
+},{"Case":31,"ConvertToPxComponent":5,"DOM":32,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],208:[function(require,module,exports){
 /**
  * A wrapper for assessments that call a component to determine
  * the test outcome.
@@ -17694,7 +17662,7 @@ var TextareaHasAssociatedLabel = {
 };
 module.exports = TextareaHasAssociatedLabel;
 
-},{"LabelComponent":12}],210:[function(require,module,exports){
+},{"LabelComponent":12}],209:[function(require,module,exports){
 var Case = require('Case');
 const DOM = require('DOM');
 var VideoMayBePresent = {
@@ -17765,7 +17733,7 @@ var VideoMayBePresent = {
 };
 module.exports = VideoMayBePresent;
 
-},{"Case":31,"DOM":32}],211:[function(require,module,exports){
+},{"Case":31,"DOM":32}],210:[function(require,module,exports){
 var Case = require('Case');
 var VideoComponent = require('VideoComponent');
 var VideosEmbeddedOrLinkedNeedCaptions = {
@@ -17811,7 +17779,7 @@ var VideosEmbeddedOrLinkedNeedCaptions = {
 };
 module.exports = VideosEmbeddedOrLinkedNeedCaptions;
 
-},{"Case":31,"VideoComponent":30}],212:[function(require,module,exports){
+},{"Case":31,"VideoComponent":30}],211:[function(require,module,exports){
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 const DOM = require('DOM');
@@ -17860,7 +17828,7 @@ var WhiteSpaceInWord = {
 };
 module.exports = WhiteSpaceInWord;
 
-},{"Case":31,"DOM":32,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],213:[function(require,module,exports){
+},{"Case":31,"DOM":32,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],212:[function(require,module,exports){
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
 const DOM = require('DOM');
