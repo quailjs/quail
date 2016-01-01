@@ -272,8 +272,8 @@ var ColorComponent = (function () {
         return colors.cache[cacheKey];
       }
 
-      DOM.parents(element).forEach(function () {
-        var pcolor = $(this).css('background-color');
+      DOM.parents(element).forEach(function (element) {
+        var pcolor = DOM.getStyle(element, 'background-color');
         if (colors.hasBackgroundColor(pcolor)) {
           return self.cache[cacheKey] = pcolor;
         }
