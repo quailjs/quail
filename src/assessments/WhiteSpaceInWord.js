@@ -10,8 +10,8 @@ var WhiteSpaceInWord = {
         return TextNodeFilterComponent(element);
       })
       .forEach(function (element) {
-        nonWhitespace = ($(element).text()) ? $(element).text().match(/[^\s\\]/g) : false;
-        whitespaceGroup = ($(element).text()) ? $(element).text().match(/[^\s\\]\s[^\s\\]/g) : false;
+        nonWhitespace = (DOM.text(element)) ? DOM.text(element).match(/[^\s\\]/g) : false;
+        whitespaceGroup = (DOM.text(element)) ? DOM.text(element).match(/[^\s\\]\s[^\s\\]/g) : false;
         if (nonWhitespace &&
             whitespaceGroup &&
             whitespaceGroup.length > 3 &&

@@ -9,7 +9,7 @@ var FormWithRequiredLabel = {
     test.get('scope').forEach(function (scope) {
       var $local = $(scope);
       DOM.scry('label', $local).forEach(function (element) {
-        var text = $(element).text().toLowerCase();
+        var text = DOM.text(element).toLowerCase();
         var $label = $(element);
         var _case = test.add(Case({
           element: element

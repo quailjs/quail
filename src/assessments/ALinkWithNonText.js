@@ -35,7 +35,7 @@ var ALinkWithNonText = {
         element: element
       });
       test.add(_case);
-      if (!IsUnreadable($(element).text())) {
+      if (!IsUnreadable(DOM.text(element))) {
         _case.set({
           status: 'passed'
         });

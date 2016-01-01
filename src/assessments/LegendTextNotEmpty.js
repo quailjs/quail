@@ -25,7 +25,7 @@ var LegendTextNotEmpty = {
         candidates.forEach(function (element) {
           var status = 'failed';
 
-          if ($(element).text().trim().length > 0) {
+          if (DOM.text(element).trim().length > 0) {
             status = 'passed';
           }
 

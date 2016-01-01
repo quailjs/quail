@@ -3,7 +3,7 @@ const DOM = require('DOM');
 var TableUsesAbbreviationForHeader = {
   run: function (test) {
     DOM.scry('th:not(th[abbr])', test.get('scope')).forEach(function (element) {
-      if ($(element).text().length > 20) {
+      if (DOM.text(element).length > 20) {
         test.add(Case({
           element: element,
           status: 'failed'

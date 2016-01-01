@@ -15,8 +15,8 @@ var BlockquoteUseForQuotations = {
         });
         return;
       }
-      if ($(element).text().substr(0, 1).search(/'|"|«|“|「/) > -1 &&
-         $(element).text().substr(-1, 1).search(/'|"|»|„|」/) > -1) {
+      if (DOM.text(element).substr(0, 1).search(/'|"|«|“|「/) > -1 &&
+         DOM.text(element).substr(-1, 1).search(/'|"|»|„|」/) > -1) {
         _case.set({
           status: 'failed'
         });

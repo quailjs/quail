@@ -15,7 +15,7 @@ var ASuspiciousLinkText = {
         });
         return;
       }
-      var text = $(element).text();
+      var text = DOM.text(element);
       DOM.scry('img[alt]', element).forEach(function (element) {
         text = text + DOM.getAttribute(element, 'alt');
       });

@@ -10,7 +10,7 @@ var DoNotUseGraphicalSymbolToConveyInformation = {
       var whiteList = '✓';
       var blackList = '?xo[]()+-!*xX';
 
-      var text = $(element).text();
+      var text = DOM.text(element);
 
       // @todo add support for other languages.
       // Remove all alphanumeric characters.

@@ -7,9 +7,9 @@ var PreShouldNotBeUsedForTabularLayout = {
         element: element
       });
       test.add(_case);
-      var rows = $(element).text().split(/[\n\r]+/);
+      var rows = DOM.text(element).split(/[\n\r]+/);
       _case.set({
-        status: (rows.length > 1 && $(element).text().search(/\t/) > -1) ? 'failed' : 'passed'
+        status: (rows.length > 1 && DOM.text(element).search(/\t/) > -1) ? 'failed' : 'passed'
       });
     });
   },

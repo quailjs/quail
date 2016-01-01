@@ -20,13 +20,13 @@ var PNotUsedAsHeader = {
       }
       var failed = false;
       // Look for any indication that the paragraph contains at least a full sentence
-      if ($(element).text().search(/[\.!:;]/) < 1) {
+      if (DOM.text(element).search(/[\.!:;]/) < 1) {
         var priorParagraph = $paragraph.prev('p');
         // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
         SuspectPHeaderTags.forEach(function (tag) {
           if (DOM.scry(tag, $paragraph).length) {
             DOM.scry(tag, $paragraph).forEach(function (element) {
-              if ($(element).text().trim() === $paragraph.text().trim()) {
+              if (DOM.text(element).trim() === $paragraph.text().trim()) {
                 _case.set({
                   status: 'failed'
                 });

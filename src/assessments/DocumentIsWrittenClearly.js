@@ -11,7 +11,7 @@ var DocumentIsWrittenClearly = {
         return TextNodeFilterComponent(element);
       })
       .forEach(function (element) {
-        var text = TextStatisticsComponent.cleanText($(element).text());
+        var text = TextStatisticsComponent.cleanText(DOM.text(element));
         var _case = Case({
           element: element
         });

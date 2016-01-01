@@ -10,7 +10,7 @@ var HeadersUseToMarkSections = {
       var $paragraph = $(element);
       DOM.scry('strong:first, em:first, i:first, b:first', $paragraph).forEach(function (element) {
         _case.set({
-          status: ($paragraph.text().trim() === $(element).text().trim()) ? 'failed' : 'passed'
+          status: ($paragraph.text().trim() === DOM.text(element).trim()) ? 'failed' : 'passed'
         });
       });
     });
@@ -30,7 +30,7 @@ var HeadersUseToMarkSections = {
       }
       var isNavigation = true;
       DOM.scry('li:has(a)', $list).forEach(function (element) {
-        if (DOM.scry('a:first', element).text().trim() !== $(element).text().trim()) {
+        if (DOM.scry('a:first', element).text().trim() !== DOM.text(element).trim()) {
           isNavigation = false;
         }
       });
