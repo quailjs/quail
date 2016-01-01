@@ -11,7 +11,7 @@ var ListOfLinksUseList = {
       // Only test if there's another a tag.
       var next = DOM.next(element);
       if (next && DOM.is(next, 'a')) {
-        var nextText = $(element).get(0).nextSibling.wholeText.replace(unreadableText, '');
+        var nextText = element.nextSibling.wholeText.replace(unreadableText, '');
         if (!DOM.is(element.parentNode, 'li') && IsUnreadable(nextText)) {
           _case.set({
             status: 'failed'

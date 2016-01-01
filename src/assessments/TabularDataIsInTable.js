@@ -3,7 +3,7 @@ const DOM = require('DOM');
 var TabularDataIsInTable = {
   run: function (test) {
     DOM.scry('pre', test.get('scope')).forEach(function (element) {
-      if ($(element).html().search('\t') >= 0) {
+      if (DOM.text(element).search('\t') >= 0) {
         test.add(Case({
           element: element,
           status: 'failed'

@@ -21,7 +21,7 @@ var NewWindowIsOpened = {
         element: element
       });
       test.add(_case);
-      $(element).trigger('click');
+      element.click();
     });
 
     window.open = fenestrate;

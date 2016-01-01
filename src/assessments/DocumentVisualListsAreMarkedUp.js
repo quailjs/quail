@@ -22,21 +22,22 @@ var DocumentVisualListsAreMarkedUp = {
       '[\\s]*' + // Optionally followed by white space characters
       '(' + itemStarters.join('|') + ')', // Followed by a character that could indicate a list
     'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
-
-    DOM.scry(TextSelectorComponent, test.get('scope'))
-      .filter(function (element) {
-        return TextNodeFilterComponent(element);
-      })
-      .forEach(function (element) {
-        var _case = Case({
-          element: element
+    test.get('scope').forEach((scope) => {
+      DOM.scry(TextSelectorComponent, scope)
+        .filter(function (element) {
+          return TextNodeFilterComponent(element);
+        })
+        .forEach(function (element) {
+          var _case = Case({
+            element: element
+          });
+          test.add(_case);
+          var matches = DOM.text(element).match(symbols);
+          _case.set({
+            status: (matches && matches.length > 2) ? 'failed' : 'passed'
+          });
         });
-        test.add(_case);
-        var matches = $(element).html().match(symbols);
-        _case.set({
-          status: (matches && matches.length > 2) ? 'failed' : 'passed'
-        });
-      });
+    });
   },
 
   meta: {

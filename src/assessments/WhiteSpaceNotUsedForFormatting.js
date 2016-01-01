@@ -16,7 +16,7 @@ var WhiteSpaceNotUsedForFormatting = {
           _case.set({status: 'passed'});
           return;
         }
-        var lines = $(element).html().toLowerCase().split(/(<br\ ?\/?>)+/);
+        var lines = DOM.text(element).toLowerCase().split(/(<br\ ?\/?>)+/);
         var lineCount = 0;
         lines.forEach(function (line) {
           if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {

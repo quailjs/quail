@@ -26,8 +26,10 @@ var LiDontUseImageForBullet = {
       else {
         candidates.forEach(function (element) {
           var status = 'passed';
-
-          if ($(element).children('img').length > 0) {
+          var hasImgChild = DOM.children(element).some(
+            (child) => DOM.is(child, 'img')
+          );
+          if (hasImgChild) {
             status = 'failed';
           }
 
