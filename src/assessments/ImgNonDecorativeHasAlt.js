@@ -3,22 +3,28 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ImgNonDecorativeHasAlt = {
   run: function (test) {
-    DOM.scry('img[alt]', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
+    test.get('scope').forEach((scope) => {
+      DOM.scry('img[alt]', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        var computedWidth =
+          parseInt(removePX(DOM.getComputedStyle(element, 'width')), 10);
+        var computedHeight =
+          parseInt(removePX(DOM.getComputedStyle(element, 'height')), 10);
+        if (IsUnreadable(DOM.getAttribute(element, 'alt')) &&
+            (computedWidth > 100 || computedHeight > 100)) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
+        }
       });
-      test.add(_case);
-      if (IsUnreadable(DOM.getAttribute(element, 'alt')) &&
-          ($(element).width() > 100 || $(element).height() > 100)) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 
