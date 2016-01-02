@@ -1,4 +1,5 @@
 var ConvertToPxComponent = require('ConvertToPxComponent');
+const DOM = require('DOM');
 var FocusElements = require('FocusElements');
 
 var ScriptFocusIndicatorVisible = {

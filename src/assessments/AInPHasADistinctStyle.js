@@ -14,7 +14,7 @@ const AInPHasADistinctStyle = {
       let width = 0;
       for (let border of borders) {
         let [
-          side,
+          ,
           details
         ] = border;
         width += details.width;

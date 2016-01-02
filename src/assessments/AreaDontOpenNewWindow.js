@@ -16,7 +16,7 @@ const AreaDontOpenNewWindow = {
       let areas = DOM.scry('area', scope);
       let passAreas = [];
       let checkAreas = []
-      links.forEach((link) => {
+      areas.forEach((link) => {
         let target = DOM.getAttribute(link, 'target');
         if (['_new', '_blank'].indexOf(target) > -1) {
           checkAreas.push(link);

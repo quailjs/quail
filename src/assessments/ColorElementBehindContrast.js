@@ -1,5 +1,6 @@
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
+const DOM = require('DOM');
 var ColorElementBehindContrast = {
   run: function (test, options) {
 

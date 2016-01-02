@@ -148,7 +148,10 @@ var LinkHasAUniqueContext = {
       // Iterate over each item in the linkMap
       for (var linkText in linkMap) {
         if (linkMap.hasOwnProperty(linkText)) {
-          var links = linkMap[linkText];
+          links = linkMap[linkText];
+        }
+        else {
+          continue;
         }
 
         // Link text is not unique, so the context should be checked

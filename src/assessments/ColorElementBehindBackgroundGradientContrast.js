@@ -1,5 +1,6 @@
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
+const DOM = require('DOM');
 var Rainbow = require('rainbowvis.js/rainbowvis.js');
 
 var ColorElementBehindBackgroundGradientContrast = {

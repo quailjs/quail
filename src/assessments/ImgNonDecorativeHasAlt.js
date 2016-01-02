@@ -3,6 +3,12 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ImgNonDecorativeHasAlt = {
   run: function (test) {
+    function removePX (val) {
+      if (/px$/.test(val)) {
+        val = val.slice(0, -2);
+      }
+      return val;
+    }
     test.get('scope').forEach((scope) => {
       DOM.scry('img[alt]', scope).forEach(function (element) {
         var _case = Case({
