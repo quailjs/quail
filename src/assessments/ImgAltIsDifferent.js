@@ -3,15 +3,16 @@ const DOM = require('DOM');
 var ImgAltIsDifferent = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry('img:not([src])', scope).forEach(function (element) {
-        var _case = Case({
-          element: element,
-          status: 'inapplicable'
+      DOM.scry('img', scope)
+        .filter((element) => !DOM.hasAttribute(element, 'src'))
+        .forEach(function (element) {
+          var _case = Case({
+            element: element,
+            status: 'inapplicable'
+          });
+          test.add(_case);
         });
-        test.add(_case);
-      });
-    });
-    test.get('scope').forEach(function (scope) {
+
       DOM.scry('img[alt][src]', scope).forEach(function (element) {
         var _case = Case({
           element: element

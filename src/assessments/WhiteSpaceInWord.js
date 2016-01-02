@@ -4,30 +4,33 @@ const DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceInWord = {
   run: function (test) {
-    var whitespaceGroup, nonWhitespace;
-    DOM.scry(TextSelectorComponent, test.get('scope'))
-      .filter(function (element) {
-        return TextNodeFilterComponent(element);
-      })
-      .forEach(function (element) {
-        nonWhitespace = (DOM.text(element)) ? DOM.text(element).match(/[^\s\\]/g) : false;
-        whitespaceGroup = (DOM.text(element)) ? DOM.text(element).match(/[^\s\\]\s[^\s\\]/g) : false;
-        if (nonWhitespace &&
-            whitespaceGroup &&
-            whitespaceGroup.length > 3 &&
-            whitespaceGroup.length >= (nonWhitespace.length / 2) - 2) {
-          test.add(Case({
-            element: element,
-            status: 'failed'
-          }));
-        }
-        else {
-          test.add(Case({
-            element: element,
-            status: 'passed'
-          }));
-        }
-      });
+    test.get('scope').forEach((scope) => {
+      DOM.scry(TextSelectorComponent)
+        .filter(function (element) {
+          return TextNodeFilterComponent(element);
+        })
+        .forEach(function (element) {
+          let whitespaceGroup, nonWhitespace;
+          nonWhitespace = (DOM.text(element)) ? DOM.text(element).match(/[^\s\\]/g) : false;
+          whitespaceGroup = (DOM.text(element)) ? DOM.text(element).match(/[^\s\\]\s[^\s\\]/g) : false;
+          if (nonWhitespace &&
+              whitespaceGroup &&
+              whitespaceGroup.length > 3 &&
+              whitespaceGroup.length >= (nonWhitespace.length / 2) - 2
+          ) {
+            test.add(Case({
+              element: element,
+              status: 'failed'
+            }));
+          }
+          else {
+            test.add(Case({
+              element: element,
+              status: 'passed'
+            }));
+          }
+        });
+    });
   },
 
   meta: {

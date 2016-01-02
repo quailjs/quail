@@ -5,10 +5,9 @@ var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageUnicodeDirection = {
   run: function (test) {
-    var scope = test.get('scope');
     var textDirection = LanguageComponent.textDirection;
     var textDirectionChanges = LanguageComponent.textDirectionChanges;
-    scope.forEach(function (scope) {
+    test.get('scope').forEach(function (scope) {
       DOM.scry(TextSelectorComponent, scope)
         .filter(function (element) {
           return TextNodeFilterComponent(element);

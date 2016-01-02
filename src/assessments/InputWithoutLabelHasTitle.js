@@ -3,11 +3,8 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var InputWithoutLabelHasTitle = {
   run: function (test) {
-
     test.get('scope').forEach(function (scope) {
-
       var testableElements = DOM.scry('input, select, textarea', scope);
-
       if (testableElements.length === 0) {
         var _case = Case({
           element: scope,
@@ -29,7 +26,7 @@ var InputWithoutLabelHasTitle = {
             });
             return;
           }
-          if (!DOM.scry('label[for=' + DOM.getAttribute(element, 'id') + ']', test.get('scope')).length &&
+          if (!DOM.scry('label[for=' + DOM.getAttribute(element, 'id') + ']', scope).length &&
             (!DOM.getAttribute(element, 'title') || IsUnreadable(DOM.getAttribute(element, 'title')))) {
             _case.set({
               status: 'failed'

@@ -708,42 +708,43 @@ var HasEventListenerComponent = require('HasEventListenerComponent');
 var DOM = require('DOM');
 
 var EventComponent = function EventComponent(test, options) {
-  var scope = test.get('scope');
-  var $items = options.selector && DOM.scry(options.selector, scope);
-  // Bail if nothing was found.
-  if ($items.length === 0) {
-    test.add(Case({
-      element: scope,
-      status: 'inapplicable'
-    }));
-    return;
-  }
-  var searchEvent = options.searchEvent || '';
-  var correspondingEvent = options.correspondingEvent || '';
-  $items.forEach(function (item) {
-    var eventName = searchEvent.replace('on', '');
-    var hasOnListener = HasEventListenerComponent(item, eventName);
-    // Determine if the element has jQuery listeners for the event.
-    var jqevents;
-    var $ = window.jQuery || window.$;
-    if ($._data) {
-      jqevents = $._data(this, 'events');
+  test.get('scope').forEach(function (scope) {
+    var $items = options.selector && DOM.scry(options.selector, scope);
+    // Bail if nothing was found.
+    if ($items.length === 0) {
+      test.add(Case({
+        element: scope,
+        status: 'inapplicable'
+      }));
+      return;
     }
-    var hasjQueryOnListener = jqevents && jqevents[eventName] && !!jqevents[eventName].length;
-    var hasCorrespondingEvent = !!correspondingEvent.length;
-    var hasSpecificCorrespondingEvent = HasEventListenerComponent(item, correspondingEvent.replace('on', ''));
-    var _case = test.add(Case({
-      element: item
-    }));
-    if ((hasOnListener || hasjQueryOnListener) && (!hasCorrespondingEvent || !hasSpecificCorrespondingEvent)) {
-      _case.set({
-        status: 'failed'
-      });
-    } else {
-      _case.set({
-        status: 'passed'
-      });
-    }
+    var searchEvent = options.searchEvent || '';
+    var correspondingEvent = options.correspondingEvent || '';
+    $items.forEach(function (item) {
+      var eventName = searchEvent.replace('on', '');
+      var hasOnListener = HasEventListenerComponent(item, eventName);
+      // Determine if the element has jQuery listeners for the event.
+      var jqevents;
+      var $ = window.jQuery || window.$;
+      if ($._data) {
+        jqevents = $._data(this, 'events');
+      }
+      var hasjQueryOnListener = jqevents && jqevents[eventName] && !!jqevents[eventName].length;
+      var hasCorrespondingEvent = !!correspondingEvent.length;
+      var hasSpecificCorrespondingEvent = HasEventListenerComponent(item, correspondingEvent.replace('on', ''));
+      var _case = test.add(Case({
+        element: item
+      }));
+      if ((hasOnListener || hasjQueryOnListener) && (!hasCorrespondingEvent || !hasSpecificCorrespondingEvent)) {
+        _case.set({
+          status: 'failed'
+        });
+      } else {
+        _case.set({
+          status: 'passed'
+        });
+      }
+    });
   });
 };
 module.exports = EventComponent;
@@ -808,20 +809,22 @@ var Case = require('Case');
 var DOM = require('DOM');
 var HeadingLevelComponent = function HeadingLevelComponent(test, options) {
   var priorLevel = false;
-  DOM.scry(':header', test.get('scope')).forEach(function (element) {
-    var level = parseInt(element.tagName.substr(-1, 1), 10);
-    if (priorLevel === options.headingLevel && level > priorLevel + 1) {
-      test.add(Case({
-        element: this,
-        status: 'failed'
-      }));
-    } else {
-      test.add(Case({
-        element: element,
-        status: 'passed'
-      }));
-    }
-    priorLevel = level;
+  test.get('scope').forEach(function (scope) {
+    DOM.scry(':header', scope).forEach(function (element) {
+      var level = parseInt(element.tagName.substr(-1, 1), 10);
+      if (priorLevel === options.headingLevel && level > priorLevel + 1) {
+        test.add(Case({
+          element: this,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: element,
+          status: 'passed'
+        }));
+      }
+      priorLevel = level;
+    });
   });
 };
 module.exports = HeadingLevelComponent;
@@ -913,10 +916,9 @@ var LabelComponent = function LabelComponent(test, options) {
 
   options = options || {};
 
-  var scope = test.get('scope');
-  scope.forEach(function (local) {
-    DOM.scry(options.selector, local).forEach(function (element) {
-      var label = DOM.scry('label[for=' + element.getAttribute('id') + ']', local);
+  test.get('scope').forEach(function (scope) {
+    DOM.scry(options.selector, scope).forEach(function (element) {
+      var label = DOM.scry('label[for=' + element.getAttribute('id') + ']', scope);
       var parent = DOM.parent(element, 'label');
       if (!parent || !label) {
         test.add(Case({
@@ -1068,48 +1070,50 @@ var PlaceholderComponent = function PlaceholderComponent(test, options) {
     }));
   };
 
-  DOM.scry(options.selector, test.get('scope')).forEach(function (element) {
-    var text = '';
-    if (element.style.display === 'none' && !DOM.is(element, 'title')) {
-      resolve(element, 'inapplicable');
-      return;
-    }
-    if (typeof options.attribute !== 'undefined') {
-      if ((typeof DOM.getAttribute(element, options.attribute) === 'undefined' || options.attribute === 'tabindex' && DOM.getAttribute(element, options.attribute) <= 0) && !options.content) {
-        resolve(element, 'failed');
+  test.get('scope').forEach(function (scope) {
+    DOM.scry(options.selector, scope).forEach(function (element) {
+      var text = '';
+      if (element.style.display === 'none' && !DOM.is(element, 'title')) {
+        resolve(element, 'inapplicable');
         return;
+      }
+      if (typeof options.attribute !== 'undefined') {
+        if ((typeof DOM.getAttribute(element, options.attribute) === 'undefined' || options.attribute === 'tabindex' && DOM.getAttribute(element, options.attribute) <= 0) && !options.content) {
+          resolve(element, 'failed');
+          return;
+        } else {
+          if (DOM.getAttribute(element, options.attribute) && DOM.getAttribute(element, options.attribute) !== 'undefined') {
+            text += DOM.getAttribute(element, options.attribute);
+          }
+        }
+      }
+      if (typeof options.attribute === 'undefined' || !options.attribute || options.content) {
+        text += DOM.text(element);
+        DOM.scry('img[alt]', element).forEach(function (element) {
+          text += element.getAttribute('alt');
+        });
+      }
+      if (typeof text === 'string' && text.length > 0) {
+        text = CleanStringComponent(text);
+        var regex = /^([0-9]*)(k|kb|mb|k bytes|k byte)$/g;
+        var regexResults = regex.exec(text.toLowerCase());
+        if (regexResults && regexResults[0].length) {
+          resolve(element, 'failed');
+        } else if (options.empty && IsUnreadable(text)) {
+          resolve(element, 'failed');
+        } else if (PlaceholdersStringsComponent.indexOf(text) > -1) {
+          resolve(element, 'failed');
+        }
+        // It passes.
+        else {
+            resolve(element, 'passed');
+          }
       } else {
-        if (DOM.getAttribute(element, options.attribute) && DOM.getAttribute(element, options.attribute) !== 'undefined') {
-          text += DOM.getAttribute(element, options.attribute);
+        if (options.empty && typeof text !== 'number') {
+          resolve(element, 'failed');
         }
       }
-    }
-    if (typeof options.attribute === 'undefined' || !options.attribute || options.content) {
-      text += DOM.text(element);
-      DOM.scry('img[alt]', element).forEach(function (element) {
-        text += element.getAttribute('alt');
-      });
-    }
-    if (typeof text === 'string' && text.length > 0) {
-      text = CleanStringComponent(text);
-      var regex = /^([0-9]*)(k|kb|mb|k bytes|k byte)$/g;
-      var regexResults = regex.exec(text.toLowerCase());
-      if (regexResults && regexResults[0].length) {
-        resolve(element, 'failed');
-      } else if (options.empty && IsUnreadable(text)) {
-        resolve(element, 'failed');
-      } else if (PlaceholdersStringsComponent.indexOf(text) > -1) {
-        resolve(element, 'failed');
-      }
-      // It passes.
-      else {
-          resolve(element, 'passed');
-        }
-    } else {
-      if (options.empty && typeof text !== 'number') {
-        resolve(element, 'failed');
-      }
-    }
+    });
   });
 };
 module.exports = PlaceholderComponent;
@@ -9284,57 +9288,59 @@ var DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ALinkWithNonText = {
   run: function run(test) {
-    var links = DOM.scry('a', test.get('scope'));
-    var inapplicableLinks = [];
-    var applicableLinks = [];
-    links.forEach(function (link) {
-      var contents;
-      if (DOM.hasAttribute(link, 'href')) {
-        contents = DOM.scry('img, object, embed', link);
-        if (contents.length) {
-          applicableLinks.push(link);
+    test.get('scope').forEach(function (scope) {
+      var links = DOM.scry('a', scope);
+      var inapplicableLinks = [];
+      var applicableLinks = [];
+      links.forEach(function (link) {
+        var contents;
+        if (DOM.hasAttribute(link, 'href')) {
+          contents = DOM.scry('img, object, embed', link);
+          if (contents.length) {
+            applicableLinks.push(link);
+          } else {
+            inapplicableLinks.push(link);
+          }
         } else {
           inapplicableLinks.push(link);
         }
-      } else {
-        inapplicableLinks.push(link);
-      }
-    });
-
-    inapplicableLinks.forEach(function (element) {
-      var _case = Case({
-        element: element,
-        status: 'inapplicable'
       });
-      test.add(_case);
-    });
 
-    applicableLinks.forEach(function (element) {
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
-      if (!IsUnreadable(DOM.text(element))) {
-        _case.set({
-          status: 'passed'
+      inapplicableLinks.forEach(function (element) {
+        var _case = Case({
+          element: element,
+          status: 'inapplicable'
         });
-        return;
-      }
-      var unreadable = 0;
-      DOM.scry('img, object, embed', element).forEach(function (element) {
-        if (DOM.is(element, 'img') && IsUnreadable(DOM.getAttribute(element, 'alt')) || !DOM.is(element, 'img') && IsUnreadable(DOM.getAttribute(element, 'title'))) {
-          unreadable++;
+        test.add(_case);
+      });
+
+      applicableLinks.forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        if (!IsUnreadable(DOM.text(element))) {
+          _case.set({
+            status: 'passed'
+          });
+          return;
+        }
+        var unreadable = 0;
+        DOM.scry('img, object, embed', element).forEach(function (element) {
+          if (DOM.is(element, 'img') && IsUnreadable(DOM.getAttribute(element, 'alt')) || !DOM.is(element, 'img') && IsUnreadable(DOM.getAttribute(element, 'title'))) {
+            unreadable++;
+          }
+        });
+        if (DOM.scry('img, object, embed', element).length === unreadable) {
+          _case.set({
+            status: 'failed'
+          });
+        } else {
+          _case.set({
+            status: 'passed'
+          });
         }
       });
-      if (DOM.scry('img, object, embed', element).length === unreadable) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 
@@ -12277,29 +12283,31 @@ var TextStatisticsComponent = require('TextStatisticsComponent');
 var IsUnreadable = require('IsUnreadable');
 var DocumentIsWrittenClearly = {
   run: function run(test) {
-    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (element) {
-      return TextNodeFilterComponent(element);
-    }).forEach(function (element) {
-      var text = TextStatisticsComponent.cleanText(DOM.text(element));
-      var _case = Case({
-        element: element
+    test.get('scope').forEach(function (scope) {
+      DOM.scry(TextSelectorComponent, scope).filter(function (element) {
+        return TextNodeFilterComponent(element);
+      }).forEach(function (element) {
+        var text = TextStatisticsComponent.cleanText(DOM.text(element));
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        if (IsUnreadable(text)) {
+          _case.set({
+            status: 'inapplicable'
+          });
+          return;
+        }
+        if (Math.round(206.835 - 1.015 * TextStatisticsComponent.averageWordsPerSentence(text) - 84.6 * TextStatisticsComponent.averageSyllablesPerWord(text)) < 60) {
+          _case.set({
+            status: 'failed'
+          });
+        } else {
+          _case.set({
+            status: 'passed'
+          });
+        }
       });
-      test.add(_case);
-      if (IsUnreadable(text)) {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
-      if (Math.round(206.835 - 1.015 * TextStatisticsComponent.averageWordsPerSentence(text) - 84.6 * TextStatisticsComponent.averageSyllablesPerWord(text)) < 60) {
-        _case.set({
-          status: 'failed'
-        });
-      } else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 
@@ -14469,15 +14477,16 @@ var DOM = require('DOM');
 var ImgAltIsDifferent = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry('img:not([src])', scope).forEach(function (element) {
+      DOM.scry('img', scope).filter(function (element) {
+        return !DOM.hasAttribute(element, 'src');
+      }).forEach(function (element) {
         var _case = Case({
           element: element,
           status: 'inapplicable'
         });
         test.add(_case);
       });
-    });
-    test.get('scope').forEach(function (scope) {
+
       DOM.scry('img[alt][src]', scope).forEach(function (element) {
         var _case = Case({
           element: element
@@ -15585,11 +15594,8 @@ var DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var InputWithoutLabelHasTitle = {
   run: function run(test) {
-
     test.get('scope').forEach(function (scope) {
-
       var testableElements = DOM.scry('input, select, textarea', scope);
-
       if (testableElements.length === 0) {
         var _case = Case({
           element: scope,
@@ -15610,7 +15616,7 @@ var InputWithoutLabelHasTitle = {
             });
             return;
           }
-          if (!DOM.scry('label[for=' + DOM.getAttribute(element, 'id') + ']', test.get('scope')).length && (!DOM.getAttribute(element, 'title') || IsUnreadable(DOM.getAttribute(element, 'title')))) {
+          if (!DOM.scry('label[for=' + DOM.getAttribute(element, 'id') + ']', scope).length && (!DOM.getAttribute(element, 'title') || IsUnreadable(DOM.getAttribute(element, 'title')))) {
             _case.set({
               status: 'failed'
             });
@@ -15721,15 +15727,16 @@ var LabelMustBeUnique = {
   run: function run(test) {
     var labels = {};
     test.get('scope').forEach(function (scope) {
-      DOM.scry('label[for]', scope).forEach(function (element) {
+      var labels = DOM.scry('label[for]', scope);
+
+      labels.forEach(function (element) {
         if (typeof labels[DOM.getAttribute(element, 'for')] === 'undefined') {
           labels[DOM.getAttribute(element, 'for')] = 0;
         }
         labels[DOM.getAttribute(element, 'for')]++;
       });
-    });
-    test.get('scope').forEach(function (scope) {
-      DOM.scry('label[for]', scope).forEach(function (element) {
+
+      labels.forEach(function (element) {
         var _case = Case({
           element: element,
           status: labels[DOM.getAttribute(element, 'for')] === 1 ? 'passed' : 'failed'
@@ -15956,13 +15963,13 @@ var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageDirectionPunctuation = {
   run: function run(test) {
-    var scope = test.get('scope');
-    var punctuation = {};
-    var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
-    var currentDirection = DOM.getAttribute(scope, 'dir') ? DOM.getAttribute(scope, 'dir').toLowerCase() : 'ltr';
-    var oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
-    var textDirection = LanguageComponent.textDirection;
-    scope.forEach(function (scope) {
+    test.get('scope').forEach(function (scope) {
+      var punctuation = {};
+      var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
+      var currentDirection = DOM.getAttribute(scope, 'dir') ? DOM.getAttribute(scope, 'dir').toLowerCase() : 'ltr';
+      var oppositeDirection = currentDirection === 'ltr' ? 'rtl' : 'ltr';
+      var textDirection = LanguageComponent.textDirection;
+
       DOM.scry(TextSelectorComponent, scope).filter(function (element) {
         return TextNodeFilterComponent(element);
       }).forEach(function (element) {
@@ -16033,10 +16040,9 @@ var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageUnicodeDirection = {
   run: function run(test) {
-    var scope = test.get('scope');
     var textDirection = LanguageComponent.textDirection;
     var textDirectionChanges = LanguageComponent.textDirectionChanges;
-    scope.forEach(function (scope) {
+    test.get('scope').forEach(function (scope) {
       DOM.scry(TextSelectorComponent, scope).filter(function (element) {
         return TextNodeFilterComponent(element);
       }).forEach(function (element) {
@@ -18590,26 +18596,28 @@ var TextSelectorComponent = require('TextSelectorComponent');
 
 var TextIsNotSmall = {
   run: function run(test) {
-    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (element) {
-      return TextNodeFilterComponent(element);
-    }).forEach(function (element) {
-      var fontSize = DOM.getComputedStyle(element, 'font-size');
-      if (fontSize.search('em') > 0) {
-        fontSize = ConvertToPxComponent(fontSize);
-      }
-      fontSize = parseInt(fontSize.replace('px', ''), 10);
+    test.get('scope').forEach(function (scope) {
+      DOM.scry(TextSelectorComponent, scope).filter(function (element) {
+        return TextNodeFilterComponent(element);
+      }).forEach(function (element) {
+        var fontSize = DOM.getComputedStyle(element, 'font-size');
+        if (fontSize.search('em') > 0) {
+          fontSize = ConvertToPxComponent(fontSize);
+        }
+        fontSize = parseInt(fontSize.replace('px', ''), 10);
 
-      if (fontSize < 10) {
-        test.add(Case({
-          element: element,
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: element,
-          status: 'passed'
-        }));
-      }
+        if (fontSize < 10) {
+          test.add(Case({
+            element: element,
+            status: 'failed'
+          }));
+        } else {
+          test.add(Case({
+            element: element,
+            status: 'passed'
+          }));
+        }
+      });
     });
   },
 
@@ -18763,19 +18771,20 @@ var Case = require('Case');
 var VideoComponent = require('VideoComponent');
 var VideosEmbeddedOrLinkedNeedCaptions = {
   run: function run(test) {
-
-    VideoComponent.findVideos(test.get('scope'), function (element, pass) {
-      if (!pass) {
-        test.add(Case({
-          element: element[0],
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: element[0],
-          status: 'passed'
-        }));
-      }
+    test.get('scope').forEach(function (scope) {
+      VideoComponent.findVideos(scope, function (element, pass) {
+        if (!pass) {
+          test.add(Case({
+            element: element[0],
+            status: 'failed'
+          }));
+        } else {
+          test.add(Case({
+            element: element[0],
+            status: 'passed'
+          }));
+        }
+      });
     });
   },
 
@@ -18813,23 +18822,26 @@ var DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceInWord = {
   run: function run(test) {
-    var whitespaceGroup, nonWhitespace;
-    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (element) {
-      return TextNodeFilterComponent(element);
-    }).forEach(function (element) {
-      nonWhitespace = DOM.text(element) ? DOM.text(element).match(/[^\s\\]/g) : false;
-      whitespaceGroup = DOM.text(element) ? DOM.text(element).match(/[^\s\\]\s[^\s\\]/g) : false;
-      if (nonWhitespace && whitespaceGroup && whitespaceGroup.length > 3 && whitespaceGroup.length >= nonWhitespace.length / 2 - 2) {
-        test.add(Case({
-          element: element,
-          status: 'failed'
-        }));
-      } else {
-        test.add(Case({
-          element: element,
-          status: 'passed'
-        }));
-      }
+    test.get('scope').forEach(function (scope) {
+      DOM.scry(TextSelectorComponent).filter(function (element) {
+        return TextNodeFilterComponent(element);
+      }).forEach(function (element) {
+        var whitespaceGroup = undefined,
+            nonWhitespace = undefined;
+        nonWhitespace = DOM.text(element) ? DOM.text(element).match(/[^\s\\]/g) : false;
+        whitespaceGroup = DOM.text(element) ? DOM.text(element).match(/[^\s\\]\s[^\s\\]/g) : false;
+        if (nonWhitespace && whitespaceGroup && whitespaceGroup.length > 3 && whitespaceGroup.length >= nonWhitespace.length / 2 - 2) {
+          test.add(Case({
+            element: element,
+            status: 'failed'
+          }));
+        } else {
+          test.add(Case({
+            element: element,
+            status: 'passed'
+          }));
+        }
+      });
     });
   },
 
@@ -18864,28 +18876,30 @@ var DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceNotUsedForFormatting = {
   run: function run(test) {
-    DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (element) {
-      return TextNodeFilterComponent(element);
-    }).forEach(function (element) {
-      var _case = test.add(Case({
-        element: element
-      }));
-      if (DOM.scry('br', element).length === 0) {
-        _case.set({ status: 'passed' });
-        return;
-      }
-      var lines = DOM.text(element).toLowerCase().split(/(<br\ ?\/?>)+/);
-      var lineCount = 0;
-      lines.forEach(function (line) {
-        if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
-          lineCount++;
+    test.get('scope').forEach(function (scope) {
+      DOM.scry(TextSelectorComponent, scope).filter(function (element) {
+        return TextNodeFilterComponent(element);
+      }).forEach(function (element) {
+        var _case = test.add(Case({
+          element: element
+        }));
+        if (DOM.scry('br', element).length === 0) {
+          _case.set({ status: 'passed' });
+          return;
+        }
+        var lines = DOM.text(element).toLowerCase().split(/(<br\ ?\/?>)+/);
+        var lineCount = 0;
+        lines.forEach(function (line) {
+          if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
+            lineCount++;
+          }
+        });
+        if (lineCount > 1) {
+          _case.set({ status: 'failed' });
+        } else {
+          _case.set({ status: 'cantTell' });
         }
       });
-      if (lineCount > 1) {
-        _case.set({ status: 'failed' });
-      } else {
-        _case.set({ status: 'cantTell' });
-      }
     });
   },
 

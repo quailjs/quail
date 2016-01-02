@@ -7,10 +7,6 @@ var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var guessLanguage = require('guessLanguage/lib/guessLanguage');
 var LanguageChangesAreIdentified = {
   run: function (test) {
-    var scope = test.get('scope');
-    var currentLanguage = LanguageComponent.getDocumentLanguage(scope, true);
-    var text, matches, $element, failed;
-
     var noCharactersMatch = function ($element, language, matches, regularExpression) {
       var $children = DOM.scry('[lang=' + language + ']', $element);
       var childMatches;
@@ -40,79 +36,84 @@ var LanguageChangesAreIdentified = {
       return LanguageComponent.getDocumentLanguage(scope, true);
     };
 
-    DOM.scry(TextSelectorComponent, scope)
-      .filter(function (element) {
-        return TextNodeFilterComponent(element);
-      })
-      .forEach(function (element) {
-        var self = element;
-        $element = element;
-        currentLanguage = findCurrentLanguage($element);
-        text = GetTextContentsComponent($element);
-        failed = false;
+    test.get('scope').forEach((scope) => {
+      let currentLanguage = LanguageComponent.getDocumentLanguage(scope, true);
+      let text, matches, $element, failed;
 
-        var singletons = LanguageComponent.scriptSingletons;
-        for (var code in singletons) {
-          if (singletons.hasOwnProperty(code)) {
-            var regularExpression = singletons[code];
-            if (code === currentLanguage) {
+      DOM.scry(TextSelectorComponent, scope)
+        .filter(function (element) {
+          return TextNodeFilterComponent(element);
+        })
+        .forEach(function (element) {
+          var self = element;
+          $element = element;
+          currentLanguage = findCurrentLanguage($element);
+          text = GetTextContentsComponent($element);
+          failed = false;
+
+          var singletons = LanguageComponent.scriptSingletons;
+          for (var code in singletons) {
+            if (singletons.hasOwnProperty(code)) {
+              var regularExpression = singletons[code];
+              if (code === currentLanguage) {
+                return;
+              }
+              matches = text.match(regularExpression);
+              if (matches && matches.length && noCharactersMatch($element, code, matches, regularExpression)) {
+                test.add(Case({
+                  element: self,
+                  info: {
+                    language: code
+                  },
+                  status: 'failed'
+                }));
+                failed = true;
+              }
+            }
+          }
+          var scripts = LanguageComponent.scripts;
+          for (var name in scripts) {
+            if (scripts.hasOwnProperty(name)) {
+              var script = scripts[name];
+            }
+            if (script.languageindexOf(currentLanguage) !== -1) {
               return;
             }
-            matches = text.match(regularExpression);
-            if (matches && matches.length && noCharactersMatch($element, code, matches, regularExpression)) {
+            matches = text.match(script.regularExpression);
+            if (matches && matches.length && noCharactersMatch($element, name, matches, regularExpression)) {
               test.add(Case({
                 element: self,
                 info: {
-                  language: code
+                  language: name
                 },
                 status: 'failed'
               }));
               failed = true;
             }
           }
-        }
-        var scripts = LanguageComponent.scripts;
-        for (var name in scripts) {
-          if (scripts.hasOwnProperty(name)) {
-            var script = scripts[name];
+          if (typeof guessLanguage !== 'undefined' && !DOM.scry('[lang]', $element).length && DOM.text($element).trim().length > 400) {
+            guessLanguage.info(DOM.text($element), function (info) {
+              if (info[0] !== currentLanguage) {
+                test.add(Case({
+                  element: self,
+                  info: {
+                    language: info[0]
+                  },
+                  status: 'failed'
+                }));
+                failed = true;
+              }
+            });
           }
-          if (script.languageindexOf(currentLanguage) !== -1) {
-            return;
-          }
-          matches = text.match(script.regularExpression);
-          if (matches && matches.length && noCharactersMatch($element, name, matches, regularExpression)) {
+          // Passes.
+          if (!failed) {
             test.add(Case({
               element: self,
-              info: {
-                language: name
-              },
-              status: 'failed'
+              status: 'passed'
             }));
-            failed = true;
           }
-        }
-        if (typeof guessLanguage !== 'undefined' && !DOM.scry('[lang]', $element).length && DOM.text($element).trim().length > 400) {
-          guessLanguage.info(DOM.text($element), function (info) {
-            if (info[0] !== currentLanguage) {
-              test.add(Case({
-                element: self,
-                info: {
-                  language: info[0]
-                },
-                status: 'failed'
-              }));
-              failed = true;
-            }
-          });
-        }
-        // Passes.
-        if (!failed) {
-          test.add(Case({
-            element: self,
-            status: 'passed'
-          }));
-        }
-      });
+        });
+    });
   },
 
   meta: {

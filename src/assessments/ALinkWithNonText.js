@@ -3,61 +3,63 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ALinkWithNonText = {
   run: function (test) {
-    var links = DOM.scry('a', test.get('scope'))
-    var inapplicableLinks = [];
-    var applicableLinks = [];
-    links.forEach((link) => {
-      var contents;
-      if (DOM.hasAttribute(link, 'href')) {
-        contents = DOM.scry('img, object, embed', link);
-        if (contents.length) {
-          applicableLinks.push(link);
+    test.get('scope').forEach((scope) => {
+      var links = DOM.scry('a', scope);
+      var inapplicableLinks = [];
+      var applicableLinks = [];
+      links.forEach((link) => {
+        var contents;
+        if (DOM.hasAttribute(link, 'href')) {
+          contents = DOM.scry('img, object, embed', link);
+          if (contents.length) {
+            applicableLinks.push(link);
+          }
+          else {
+            inapplicableLinks.push(link);
+          }
         }
         else {
           inapplicableLinks.push(link);
         }
-      }
-      else {
-        inapplicableLinks.push(link);
-      }
-    });
-
-    inapplicableLinks.forEach(function (element) {
-      var _case = Case({
-        element: element,
-        status: 'inapplicable'
       });
-      test.add(_case);
-    });
 
-    applicableLinks.forEach(function (element) {
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
-      if (!IsUnreadable(DOM.text(element))) {
-        _case.set({
-          status: 'passed'
+      inapplicableLinks.forEach(function (element) {
+        var _case = Case({
+          element: element,
+          status: 'inapplicable'
         });
-        return;
-      }
-      var unreadable = 0;
-      DOM.scry('img, object, embed', element).forEach(function (element) {
-        if ((DOM.is(element, 'img') && IsUnreadable(DOM.getAttribute(element, 'alt'))) ||
-          (!DOM.is(element, 'img') && IsUnreadable(DOM.getAttribute(element, 'title')))) {
-          unreadable++;
+        test.add(_case);
+      });
+
+      applicableLinks.forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        if (!IsUnreadable(DOM.text(element))) {
+          _case.set({
+            status: 'passed'
+          });
+          return;
+        }
+        var unreadable = 0;
+        DOM.scry('img, object, embed', element).forEach(function (element) {
+          if ((DOM.is(element, 'img') && IsUnreadable(DOM.getAttribute(element, 'alt'))) ||
+            (!DOM.is(element, 'img') && IsUnreadable(DOM.getAttribute(element, 'title')))) {
+            unreadable++;
+          }
+        });
+        if (DOM.scry('img, object, embed', element).length === unreadable) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
         }
       });
-      if (DOM.scry('img, object, embed', element).length === unreadable) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 

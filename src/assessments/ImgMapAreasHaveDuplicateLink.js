@@ -7,17 +7,16 @@ var ImgMapAreasHaveDuplicateLink = {
       DOM.scry('a', scope).forEach(function (element) {
         links[DOM.getAttribute(element, 'href')] = DOM.getAttribute(element, 'href');
       });
-    });
-    test.get('scope').forEach(function (scope) {
+
       DOM.scry('img[usemap]', scope).forEach(function (element) {
         var _case = Case({
           element: element
         });
         test.add(_case);
         var $image = element;
-        var $map = DOM.scry(DOM.getAttribute($image, 'usemap'), test.get('scope'));
+        var $map = DOM.scry(DOM.getAttribute($image, 'usemap'), scope);
         if (!$map.length) {
-          $map = DOM.scry('map[name="' + DOM.getAttribute($image, 'usemap').replace('#', '') + '"]', test.get('scope'));
+          $map = DOM.scry('map[name="' + DOM.getAttribute($image, 'usemap').replace('#', '') + '"]', scope);
         }
         if ($map.length) {
           var failed = false;

@@ -6,33 +6,35 @@ var TextStatisticsComponent = require('TextStatisticsComponent');
 var IsUnreadable = require('IsUnreadable');
 var DocumentIsWrittenClearly = {
   run: function (test) {
-    DOM.scry(TextSelectorComponent, test.get('scope'))
-      .filter(function (element) {
-        return TextNodeFilterComponent(element);
-      })
-      .forEach(function (element) {
-        var text = TextStatisticsComponent.cleanText(DOM.text(element));
-        var _case = Case({
-          element: element
+    test.get('scope').forEach((scope) => {
+      DOM.scry(TextSelectorComponent, scope)
+        .filter(function (element) {
+          return TextNodeFilterComponent(element);
+        })
+        .forEach(function (element) {
+          var text = TextStatisticsComponent.cleanText(DOM.text(element));
+          var _case = Case({
+            element: element
+          });
+          test.add(_case);
+          if (IsUnreadable(text)) {
+            _case.set({
+              status: 'inapplicable'
+            });
+            return;
+          }
+          if (Math.round((206.835 - (1.015 * TextStatisticsComponent.averageWordsPerSentence(text)) - (84.6 * TextStatisticsComponent.averageSyllablesPerWord(text)))) < 60) {
+            _case.set({
+              status: 'failed'
+            });
+          }
+          else {
+            _case.set({
+              status: 'passed'
+            });
+          }
         });
-        test.add(_case);
-        if (IsUnreadable(text)) {
-          _case.set({
-            status: 'inapplicable'
-          });
-          return;
-        }
-        if (Math.round((206.835 - (1.015 * TextStatisticsComponent.averageWordsPerSentence(text)) - (84.6 * TextStatisticsComponent.averageSyllablesPerWord(text)))) < 60) {
-          _case.set({
-            status: 'failed'
-          });
-        }
-        else {
-          _case.set({
-            status: 'passed'
-          });
-        }
-      });
+    });
   },
 
   meta: {

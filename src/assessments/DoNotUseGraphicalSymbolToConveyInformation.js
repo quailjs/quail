@@ -7,52 +7,56 @@ var DoNotUseGraphicalSymbolToConveyInformation = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
       // Passes and fails.
-      DOM.scry(TextSelectorComponent + ':not(abbr, acronym)', scope).forEach(function (element) {
-        var whiteList = '✓';
-        var blackList = '?xo[]()+-!*xX';
+      DOM.scry(TextSelectorComponent, scope)
+        .filter((element) =>
+          !DOM.is(element, 'abbr') && !DOM.is(element, 'acronym')
+        )
+        .forEach(function (element) {
+          var whiteList = '✓';
+          var blackList = '?xo[]()+-!*xX';
 
-        var text = DOM.text(element);
+          var text = DOM.text(element);
 
-        // @todo add support for other languages.
-        // Remove all alphanumeric characters.
-        var textLeft = text.replace(/[\W\s]+/g, '');
-        // If we have an empty string something is wrong.
-        if (textLeft.length === 0) {
-          // Unless if it's white listed.
-          if (whiteList.indexOf(text) === -1) {
+          // @todo add support for other languages.
+          // Remove all alphanumeric characters.
+          var textLeft = text.replace(/[\W\s]+/g, '');
+          // If we have an empty string something is wrong.
+          if (textLeft.length === 0) {
+            // Unless if it's white listed.
+            if (whiteList.indexOf(text) === -1) {
+              test.add(Case({
+                element: element,
+                status: 'failed'
+              }));
+            }
+          }
+          // Check regularly used single character symbols.
+          else if (text.length === 1 && blackList.indexOf(text) >= 0) {
             test.add(Case({
               element: element,
               status: 'failed'
             }));
           }
-        }
-        // Check regularly used single character symbols.
-        else if (text.length === 1 && blackList.indexOf(text) >= 0) {
+          else {
+            test.add(Case({
+              element: element,
+              status: 'passed'
+            }));
+          }
+        });
+      // Not applicables.
+      DOM.scry(TextSelectorComponent, scope)
+        .filter('abbr, acronym')
+        .filter(function (element) {
+          return TextNodeFilterComponent(element);
+        })
+        .forEach(function (element) {
           test.add(Case({
             element: element,
-            status: 'failed'
+            status: 'inapplicable'
           }));
-        }
-        else {
-          test.add(Case({
-            element: element,
-            status: 'passed'
-          }));
-        }
-      });
+        });
     });
-    // Not applicables.
-    DOM.scry(TextSelectorComponent, test.get('scope'))
-      .filter('abbr, acronym')
-      .filter(function (element) {
-        return TextNodeFilterComponent(element);
-      })
-      .forEach(function (element) {
-        test.add(Case({
-          element: element,
-          status: 'inapplicable'
-        }));
-      });
   },
 
   meta: {

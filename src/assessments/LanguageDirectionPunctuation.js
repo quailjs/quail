@@ -6,13 +6,13 @@ var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageDirectionPunctuation = {
   run: function (test) {
-    var scope = test.get('scope');
-    var punctuation = {};
-    var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
-    var currentDirection = (DOM.getAttribute(scope, 'dir')) ? DOM.getAttribute(scope, 'dir').toLowerCase() : 'ltr';
-    var oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
-    var textDirection = LanguageComponent.textDirection;
-    scope.forEach(function (scope) {
+    test.get('scope').forEach(function (scope) {
+      let punctuation = {};
+      let punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
+      let currentDirection = (DOM.getAttribute(scope, 'dir')) ? DOM.getAttribute(scope, 'dir').toLowerCase() : 'ltr';
+      let oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
+      let textDirection = LanguageComponent.textDirection;
+
       DOM.scry(TextSelectorComponent, scope)
         .filter(function (element) {
           return TextNodeFilterComponent(element);
