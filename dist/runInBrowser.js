@@ -1436,7 +1436,10 @@ var TableHeadersComponent = {
         headers.push(getHeadersFromGroups(element, map));
       }
     });
-    return DOM.not(headers, ':empty');
+    return headers.filter(function (header) {
+      return (/\S/.test(header.innerHTML)
+      );
+    });
   }
 };
 
@@ -9505,41 +9508,54 @@ var NewWindowStringsComponent = require('NewWindowStringsComponent');
 var ALinksDontOpenNewWindow = {
   run: function run(test) {
     // Links without a target attribute pass.
-    DOM.scry('a', test.get('scope')).not('[target=_new], [target=_blank]').forEach(function (element) {
-      test.add(Case({
-        element: element,
-        status: 'passed'
-      }));
-    });
-    // Links with a target attribute pass if the link text indicates that the
-    // link will open a new window.
-    DOM.scry('a[target=_new], a[target=_blank]', test.get('scope')).forEach(function (element) {
-      var $link = element;
-      var passes = false;
-      var i = 0;
-      var text = DOM.text($link) + ' ' + DOM.getAttribute($link, 'title');
-      var phrase = '';
-      // Test the link text against strings the indicate the link will open
-      // in a new window.
-      do {
-        phrase = NewWindowStringsComponent[i];
-        if (text.search(phrase) > -1) {
-          passes = true;
+    test.get('scope').forEach(function (scope) {
+      var links = DOM.scry('a', scope);
+      var passLinks = [];
+      var checkLinks = [];
+      links.forEach(function (link) {
+        var target = DOM.getAttribute(link, 'target');
+        if (['_new', '_blank'].indexOf(target) > -1) {
+          checkLinks.push(link);
+        } else {
+          passLinks.push(link);
         }
-        ++i;
-      } while (!passes && i < NewWindowStringsComponent.length);
-      // Build a Case.
-      if (passes) {
+      });
+      passLinks.forEach(function (element) {
         test.add(Case({
           element: element,
           status: 'passed'
         }));
-      } else {
-        test.add(Case({
-          element: element,
-          status: 'failed'
-        }));
-      }
+      });
+      // Links with a target attribute pass if the link text indicates that the
+      // link will open a new window.
+      checkLinks.forEach(function (element) {
+        var $link = element;
+        var passes = false;
+        var i = 0;
+        var text = DOM.text($link) + ' ' + DOM.getAttribute($link, 'title');
+        var phrase = '';
+        // Test the link text against strings the indicate the link will open
+        // in a new window.
+        do {
+          phrase = NewWindowStringsComponent[i];
+          if (text.search(phrase) > -1) {
+            passes = true;
+          }
+          ++i;
+        } while (!passes && i < NewWindowStringsComponent.length);
+        // Build a Case.
+        if (passes) {
+          test.add(Case({
+            element: element,
+            status: 'passed'
+          }));
+        } else {
+          test.add(Case({
+            element: element,
+            status: 'failed'
+          }));
+        }
+      });
     });
   },
 
@@ -10729,47 +10745,59 @@ module.exports = AreaAltRefersToText;
  */
 var Case = require('Case');
 var DOM = require('DOM');
-
 var NewWindowStringsComponent = require('NewWindowStringsComponent');
 
 var AreaDontOpenNewWindow = {
   run: function run(test) {
     // Links without a target attribute pass.
-    DOM.scry('area', test.get('scope')).not('[target=_new], [target=_blank]').forEach(function (element) {
-      test.add(Case({
-        element: element,
-        status: 'passed'
-      }));
-    });
-    // Links with a target attribute pass if the link text indicates that the
-    // link will open a new window.
-    DOM.scry('area[target=_new], area[target=_blank]', test.get('scope')).forEach(function (element) {
-      var $link = element;
-      var passes = false;
-      var i = 0;
-      var text = DOM.text($link) + ' ' + DOM.getAttribute($link, 'title');
-      var phrase = '';
-      // Test the link text against strings the indicate the link will open
-      // in a new window.
-      do {
-        phrase = NewWindowStringsComponent[i];
-        if (text.search(phrase) > -1) {
-          passes = true;
+    test.get('scope').forEach(function (scope) {
+      var areas = DOM.scry('area', scope);
+      var passAreas = [];
+      var checkAreas = [];
+      links.forEach(function (link) {
+        var target = DOM.getAttribute(link, 'target');
+        if (['_new', '_blank'].indexOf(target) > -1) {
+          checkAreas.push(link);
+        } else {
+          passAreas.push(link);
         }
-        ++i;
-      } while (!passes && i < NewWindowStringsComponent.length);
-      // Build a Case.
-      if (passes) {
+      });
+      passAreas.forEach(function (element) {
         test.add(Case({
           element: element,
           status: 'passed'
         }));
-      } else {
-        test.add(Case({
-          element: element,
-          status: 'failed'
-        }));
-      }
+      });
+      // Links with a target attribute pass if the link text indicates that the
+      // link will open a new window.
+      checkAreas.forEach(function (element) {
+        var $link = element;
+        var passes = false;
+        var i = 0;
+        var text = DOM.text($link) + ' ' + DOM.getAttribute($link, 'title');
+        var phrase = '';
+        // Test the link text against strings the indicate the link will open
+        // in a new window.
+        do {
+          phrase = NewWindowStringsComponent[i];
+          if (text.search(phrase) > -1) {
+            passes = true;
+          }
+          ++i;
+        } while (!passes && i < NewWindowStringsComponent.length);
+        // Build a Case.
+        if (passes) {
+          test.add(Case({
+            element: element,
+            status: 'passed'
+          }));
+        } else {
+          test.add(Case({
+            element: element,
+            status: 'failed'
+          }));
+        }
+      });
     });
   },
 
