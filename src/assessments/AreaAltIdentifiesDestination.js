@@ -13,10 +13,14 @@ var AreaAltIdentifiesDestination = {
 
     options = options || {};
 
-    var selector = 'area:not(area[alt])';
+    var selector = 'area';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry(selector, scope)
+        .filter((element) => {
+          let alt = DOM.getAttribute(element, 'alt');
+          return !(alt && alt.length > 0);
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
