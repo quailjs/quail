@@ -26,7 +26,7 @@ var SkipToContentLinkProvided = {
             if (DOM.is($link, ':visible') && DOM.getStyle($link, 'visibility') !== 'hidden') {
               skipLinkFound = true;
               test.add(Case({
-                element: $link.get(0),
+                element: $link,
                 status: 'passed'
               }));
               return;

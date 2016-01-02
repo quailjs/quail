@@ -11,7 +11,7 @@ var TableShouldUseHeaderIDs = {
           if (!tableFailed && !DOM.getAttribute(element, 'id')) {
             tableFailed = true;
             test.add(Case({
-              element: $table.get(0),
+              element: $table,
               status: 'failed'
             }));
           }
@@ -23,7 +23,7 @@ var TableShouldUseHeaderIDs = {
                 if (!DOM.scry('#' + id, $table).length) {
                   tableFailed = true;
                   test.add(Case({
-                    element: $table.get(0),
+                    element: $table,
                     status: 'failed'
                   }));
                 }

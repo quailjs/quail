@@ -9593,7 +9593,7 @@ var ALinksNotSeparatedBySymbols = {
       var $link = element;
       var next = DOM.next($link);
       if (next && DOM.is(next, 'a')) {
-        var text = $link.get(0).nextSibling.wholeText;
+        var text = $link.nextSibling.wholeText;
         // The string between the links is composed of symbols.
         if (typeof text === 'string' && SymbolsStringsComponent.indexOf(text.toLowerCase().trim()) !== -1) {
           test.add(Case({
@@ -12106,18 +12106,19 @@ module.exports = DefinitionListsAreUsed;
 var Case = require('Case');
 var DoctypeProvided = {
   run: function run(test) {
-    var doc = test.get('scope').get(0);
-    if ($(doc.doctype).length === 0 && !document.doctype) {
-      test.add(Case({
-        element: doc,
-        status: 'failed'
-      }));
-    } else {
-      test.add(Case({
-        element: doc,
-        status: 'passed'
-      }));
-    }
+    test.get('scope').forEach(function (doc) {
+      if ($(doc.doctype).length === 0 && !document.doctype) {
+        test.add(Case({
+          element: doc,
+          status: 'failed'
+        }));
+      } else {
+        test.add(Case({
+          element: doc,
+          status: 'passed'
+        }));
+      }
+    });
   },
 
   meta: {
@@ -12294,7 +12295,7 @@ var DocumentHasTitleElement = {
       var candidates = DOM.scry(selector, scope);
       if (candidates.length === 1) {
         test.add(Case({
-          element: candidates.get(0),
+          element: candidates,
           status: 'passed'
         }));
       } else if (candidates.length === 0) {
@@ -12785,11 +12786,13 @@ var Case = require('Case');
 var DOM = require('DOM');
 var DocumentTitleIsShort = {
   run: function run(test) {
-    var $title = DOM.scry('head title', test.get('scope'));
-    test.add(Case({
-      element: $title.get(0),
-      status: DOM.text($title).length > 150 ? 'failed' : 'passed'
-    }));
+    test.get('scope').forEach(function (scope) {
+      var $title = DOM.scry('head title', scope);
+      test.add(Case({
+        element: $title,
+        status: DOM.text($title).length > 150 ? 'failed' : 'passed'
+      }));
+    });
   },
 
   meta: {
@@ -17621,31 +17624,33 @@ var SiteMapStringsComponent = require('SiteMapStringsComponent');
 
 var SiteMap = {
   run: function run(test) {
-    var set = false;
-    var _case = Case({
-      element: test.get('scope').get(0)
-    });
-    test.add(_case);
-    DOM.scry('a', test.get('scope')).forEach(function (element) {
-      var text = DOM.text(element).toLowerCase();
-      SiteMapStringsComponent.forEach(function (str) {
-        if (text.search(str) > -1) {
-          set = true;
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('a[href]', scope).forEach(function (element) {
+        var set = false;
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        var text = DOM.text(element).toLowerCase();
+        SiteMapStringsComponent.forEach(function (str) {
+          if (text.search(str) > -1) {
+            set = true;
+            return;
+          }
+        });
+        if (set === false) {
+          _case.set({
+            status: 'failed'
+          });
           return;
         }
-      });
-      if (set === false) {
-        _case.set({
-          status: 'failed'
-        });
-        return;
-      }
 
-      if (set) {
-        _case.set({
-          status: 'passed'
-        });
-      }
+        if (set) {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      });
     });
   },
 
@@ -17706,7 +17711,7 @@ var SkipToContentLinkProvided = {
             if (DOM.is($link, ':visible') && DOM.getStyle($link, 'visibility') !== 'hidden') {
               skipLinkFound = true;
               test.add(Case({
-                element: $link.get(0),
+                element: $link,
                 status: 'passed'
               }));
               return;
@@ -18181,7 +18186,7 @@ var TableShouldUseHeaderIDs = {
           if (!tableFailed && !DOM.getAttribute(element, 'id')) {
             tableFailed = true;
             test.add(Case({
-              element: $table.get(0),
+              element: $table,
               status: 'failed'
             }));
           }
@@ -18193,7 +18198,7 @@ var TableShouldUseHeaderIDs = {
                 if (!DOM.scry('#' + id, $table).length) {
                   tableFailed = true;
                   test.add(Case({
-                    element: $table.get(0),
+                    element: $table,
                     status: 'failed'
                   }));
                 }

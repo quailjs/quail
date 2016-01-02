@@ -36,7 +36,7 @@ var ContentPositioningShouldNotChangeMeaning = {
           if (coord > 2 && !failed) {
             failed = true;
             test.add(Case({
-              element: $container.get(0),
+              element: $container,
               status: 'failed'
             }));
           }
