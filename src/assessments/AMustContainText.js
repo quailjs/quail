@@ -1,32 +1,33 @@
-var ContainsReadableTextComponent = require('ContainsReadableTextComponent');
 var Case = require('Case');
 const DOM = require('DOM');
 var AMustContainText = {
   run: function (test) {
-    DOM.scry('a', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
+    test.get('scope').forEach((scope) => {
+      DOM.scry('a', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+
+        if (!DOM.getAttribute(element, 'href') ||
+          DOM.getComputedStyle(element, 'display') === 'none') {
+          _case.set({
+            status: 'inapplicable'
+          });
+          return;
+        }
+
+        if (/\S/.test(element.innerHTML)) {
+          _case.set({
+            status: 'passed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'failed'
+          });
+        }
       });
-      test.add(_case);
-
-      if (!DOM.getAttribute(element, 'href') ||
-        DOM.getStyle(element, 'display') === 'none') {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
-
-      if (ContainsReadableTextComponent(element, true)) {
-        _case.set({
-          status: 'passed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'failed'
-        });
-      }
     });
   },
 
