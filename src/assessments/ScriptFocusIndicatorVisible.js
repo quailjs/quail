@@ -3,7 +3,7 @@ var FocusElements = require('FocusElements');
 
 var ScriptFocusIndicatorVisible = {
   run: function () {
-    FocusElements.forEach(function (element) {
+    FocusElements().forEach(function (element) {
 
       // Preparation for test: remove focus indicators done with CSS
       var sheet, rules, rulesCache, rule;
