@@ -13,7 +13,7 @@ var PNotUsedAsHeader = {
       var $paragraph = element;
 
       // If the text has a period, it is probably a sentence and not a header.
-      if ($paragraph.text().search(/[\.!:;]/) >= 1) {
+      if (DOM.text($paragraph).search(/[\.!:;]/) >= 1) {
         _case.set({
           status: 'passed'
         });
@@ -26,7 +26,7 @@ var PNotUsedAsHeader = {
         SuspectPHeaderTags.forEach(function (tag) {
           if (DOM.scry(tag, $paragraph).length) {
             DOM.scry(tag, $paragraph).forEach(function (element) {
-              if (DOM.text(element).trim() === $paragraph.text().trim()) {
+              if (DOM.text(element).trim() === DOM.text($paragraph).trim()) {
                 _case.set({
                   status: 'failed'
                 });

@@ -10,7 +10,7 @@ var HeadersUseToMarkSections = {
       var $paragraph = element;
       DOM.scry('strong:first, em:first, i:first, b:first', $paragraph).forEach(function (element) {
         _case.set({
-          status: ($paragraph.text().trim() === DOM.text(element).trim()) ? 'failed' : 'passed'
+          status: (DOM.text($paragraph).trim() === DOM.text(element).trim()) ? 'failed' : 'passed'
         });
       });
     });

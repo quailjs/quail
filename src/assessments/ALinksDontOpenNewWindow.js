@@ -16,7 +16,7 @@ var ALinksDontOpenNewWindow = {
       var $link = element;
       var passes = false;
       var i = 0;
-      var text = $link.text() + ' ' + DOM.getAttribute($link, 'title');
+      var text = DOM.text($link) + ' ' + DOM.getAttribute($link, 'title');
       var phrase = '';
       // Test the link text against strings the indicate the link will open
       // in a new window.

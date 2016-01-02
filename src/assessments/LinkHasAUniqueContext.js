@@ -16,15 +16,15 @@ var LinkHasAUniqueContext = {
     function getLinkSentence (link) {
       // Find the closest block-like element
       var block = link;
-      var text = simplifyText(link.text());
+      var text = simplifyText(DOM.text(link));
 
       while (!DOM.is(block, 'body, html') && blockStyle.indexOf(DOM.getStyle(block, 'display')) === -1) {
         block = block.parentNode;
       }
 
-      var sentences = block.text().match(/[^\.!\?]+[\.!\?]+/g);
+      var sentences = DOM.text(block).match(/[^\.!\?]+[\.!\?]+/g);
       if (sentences === null) {
-        sentences = [block.text()];
+        sentences = [DOM.text(block)];
       }
 
       for (var i = 0; i < sentences.length; i+= 1) {

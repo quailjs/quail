@@ -18,7 +18,7 @@ var LanguageUnicodeDirection = {
             element: element
           }));
           var $el = element;
-          var text = $el.text().trim();
+          var text = DOM.text($el).trim();
           var otherDirection = (text.substr(0, 1).search(textDirection.ltr) !== -1) ?
             'rtl' :
             'ltr';

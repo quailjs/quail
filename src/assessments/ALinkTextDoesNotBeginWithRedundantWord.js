@@ -11,7 +11,7 @@ var ALinkTextDoesNotBeginWithRedundantWord = {
       if ($img.length) {
         text = text + DOM.getAttribute($img, 'alt');
       }
-      text = text + $link.text();
+      text = text + DOM.text($link);
       text = text.toLowerCase();
       var _case;
       // Search the text for redundant words. Break as soon as one is detected.

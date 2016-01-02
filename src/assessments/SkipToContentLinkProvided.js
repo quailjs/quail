@@ -21,7 +21,7 @@ var SkipToContentLinkProvided = {
         var strs = SkipContentStringsComponent.slice();
         while (!skipLinkFound && strs.length) {
           var str = strs.pop();
-          if ($link.text().search(str) > -1 && $target.length) {
+          if (DOM.text($link).search(str) > -1 && $target.length) {
             $link.focus();
             if (DOM.is($link, ':visible') && DOM.getStyle($link, 'visibility') !== 'hidden') {
               skipLinkFound = true;

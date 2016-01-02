@@ -5,7 +5,7 @@ var ImgAltNotEmptyInAnchor = {
   run: function (test) {
     DOM.scry('a[href]:has(img)', test.get('scope')).forEach(function (element) {
       var $a = element;
-      var text = $a.text();
+      var text = DOM.text($a);
 
       var _case = Case({
         element: element
