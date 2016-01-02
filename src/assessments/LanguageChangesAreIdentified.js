@@ -23,7 +23,7 @@ var LanguageChangesAreIdentified = {
       return matches > 0;
     };
 
-    var findCurrentLanguage = function ($element) {
+    var findCurrentLanguage = function ($element, scope) {
       if (DOM.hasAttribute($element, 'lang')) {
         return DOM.getAttribute($element, 'lang').trim().toLowerCase().split('-')[0];
       }
@@ -47,7 +47,7 @@ var LanguageChangesAreIdentified = {
         .forEach(function (element) {
           var self = element;
           $element = element;
-          currentLanguage = findCurrentLanguage($element);
+          currentLanguage = findCurrentLanguage($element, scope);
           text = GetTextContentsComponent($element);
           failed = false;
 

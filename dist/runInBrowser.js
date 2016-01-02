@@ -10188,7 +10188,7 @@ var IsUnreadable = require('IsUnreadable');
 var AppletContainsTextEquivalent = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry('applet[alt=""], applet:not(applet[alt])', scope).forEach(function (element) {
+      DOM.scry('applet', scope).forEach(function (element) {
         var _case = Case({
           element: element
         });
@@ -15790,16 +15790,16 @@ var LabelMustBeUnique = {
   run: function run(test) {
     var labels = {};
     test.get('scope').forEach(function (scope) {
-      var labels = DOM.scry('label[for]', scope);
+      var labelElements = DOM.scry('label[for]', scope);
 
-      labels.forEach(function (element) {
+      labelElements.forEach(function (element) {
         if (typeof labels[DOM.getAttribute(element, 'for')] === 'undefined') {
           labels[DOM.getAttribute(element, 'for')] = 0;
         }
         labels[DOM.getAttribute(element, 'for')]++;
       });
 
-      labels.forEach(function (element) {
+      labelElements.forEach(function (element) {
         var _case = Case({
           element: element,
           status: labels[DOM.getAttribute(element, 'for')] === 1 ? 'passed' : 'failed'
@@ -18886,7 +18886,7 @@ var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceInWord = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry(TextSelectorComponent).filter(function (element) {
+      DOM.scry(TextSelectorComponent, scope).filter(function (element) {
         return TextNodeFilterComponent(element);
       }).forEach(function (element) {
         var whitespaceGroup = undefined,
