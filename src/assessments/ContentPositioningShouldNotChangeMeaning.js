@@ -22,11 +22,11 @@ var ContentPositioningShouldNotChangeMeaning = {
       var $container = element;
       DOM.scry('h1, h2, h3, h4, h5, h6, p, blockquote, ol, li, ul, dd, dt', $container).filter(':quailCss(position=absolute)').forEach(function (element) {
         for (var i = 0; i < positions.length; i++) {
-          if (typeof DOM.getStyle(element, positions[i]) !== 'undefined' && DOM.getStyle(element, positions[i]) !== 'auto') {
-            if (typeof coordinates[positions[i]][DOM.getStyle(element, positions[i])] === 'undefined') {
-              coordinates[positions[i]][DOM.getStyle(element, positions[i])] = 0;
+          if (typeof DOM.getComputedStyle(element, positions[i]) !== 'undefined' && DOM.getComputedStyle(element, positions[i]) !== 'auto') {
+            if (typeof coordinates[positions[i]][DOM.getComputedStyle(element, positions[i])] === 'undefined') {
+              coordinates[positions[i]][DOM.getComputedStyle(element, positions[i])] = 0;
             }
-            coordinates[positions[i]][DOM.getStyle(element, positions[i])]++;
+            coordinates[positions[i]][DOM.getComputedStyle(element, positions[i])]++;
           }
         }
       });

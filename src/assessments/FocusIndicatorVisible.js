@@ -11,14 +11,14 @@ var FocusIndicatorVisible = {
       test.add(_case);
       var $el = element;
       var noFocus = {
-        borderWidth: DOM.getStyle($el, 'border-width'),
-        borderColor: DOM.getStyle($el, 'border-color'),
-        backgroundColor: DOM.getStyle($el, 'background-color'),
-        boxShadow: DOM.getStyle($el, 'box-shadow')
+        borderWidth: DOM.getComputedStyle($el, 'border-width'),
+        borderColor: DOM.getComputedStyle($el, 'border-color'),
+        backgroundColor: DOM.getComputedStyle($el, 'background-color'),
+        boxShadow: DOM.getComputedStyle($el, 'box-shadow')
       };
 
       var listener = function () {
-        if (noFocus.backgroundColor.trim() !== DOM.getStyle($el, 'background-color').trim()) {
+        if (noFocus.backgroundColor.trim() !== DOM.getComputedStyle($el, 'background-color').trim()) {
           element.blur();
           _case.set({
             status: 'passed'
@@ -26,7 +26,7 @@ var FocusIndicatorVisible = {
           return;
         }
 
-        var borderWidth = ConvertToPxComponent(DOM.getStyle($el, 'border-width'));
+        var borderWidth = ConvertToPxComponent(DOM.getComputedStyle($el, 'border-width'));
         if (borderWidth > 2 && borderWidth !== ConvertToPxComponent(noFocus.borderWidth)) {
           element.blur();
           _case.set({
@@ -35,8 +35,8 @@ var FocusIndicatorVisible = {
           return;
         }
 
-        var boxShadow = (DOM.getStyle($el, 'box-shadow') && DOM.getStyle($el, 'box-shadow') !== 'none') ? DOM.getStyle($el, 'box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
-        if (boxShadow && DOM.getStyle($el, 'box-shadow') !== noFocus.boxShadow && ConvertToPxComponent(boxShadow[3]) > 3) {
+        var boxShadow = (DOM.getComputedStyle($el, 'box-shadow') && DOM.getComputedStyle($el, 'box-shadow') !== 'none') ? DOM.getComputedStyle($el, 'box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
+        if (boxShadow && DOM.getComputedStyle($el, 'box-shadow') !== noFocus.boxShadow && ConvertToPxComponent(boxShadow[3]) > 3) {
           element.blur();
           _case.set({
             status: 'passed'

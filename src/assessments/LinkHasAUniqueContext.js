@@ -18,7 +18,7 @@ var LinkHasAUniqueContext = {
       var block = link;
       var text = simplifyText(DOM.text(link));
 
-      while (!DOM.is(block, 'body, html') && blockStyle.indexOf(DOM.getStyle(block, 'display')) === -1) {
+      while (!DOM.is(block, 'body, html') && blockStyle.indexOf(DOM.getComputedStyle(block, 'display')) === -1) {
         block = block.parentNode;
       }
 

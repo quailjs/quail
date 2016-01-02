@@ -23,7 +23,7 @@ var InputWithoutLabelHasTitle = {
           });
           test.add(_case);
 
-          if (DOM.getStyle(element, 'display') === 'none') {
+          if (DOM.getComputedStyle(element, 'display') === 'none') {
             _case.set({
               status: 'inapplicable'
             });

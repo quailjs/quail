@@ -296,7 +296,7 @@ var ColorComponent = (function () {
       }
 
       DOM.parents(element).forEach(function (element) {
-        var pcolor = DOM.getStyle(element, 'background-color');
+        var pcolor = DOM.getComputedStyle(element, 'background-color');
         if (colors.hasBackgroundColor(pcolor)) {
           return self.cache[cacheKey] = pcolor;
         }
@@ -354,7 +354,7 @@ var ColorComponent = (function () {
       }
       element = element[0];
       while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
-        var bimage = DOM.getStyle(element, 'background-image');
+        var bimage = DOM.getComputedStyle(element, 'background-image');
         if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
           colors.cache[cacheKey] = bimage.replace('url(', '').replace(/['"]/g, '').replace(')', '');
           return colors.cache[cacheKey];
@@ -386,11 +386,11 @@ var ColorComponent = (function () {
       element = element[0];
       while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
         // Exit if element has a background color.
-        if (colors.hasBackgroundColor(DOM.getStyle(element, 'background-color'))) {
+        if (colors.hasBackgroundColor(DOM.getComputedStyle(element, 'background-color'))) {
           colors.cache[cacheKey] = false;
           return false;
         }
-        var bimage = DOM.getStyle(element, 'background-image');
+        var bimage = DOM.getComputedStyle(element, 'background-image');
         if (bimage && bimage !== 'none' && bimage.search(/^(.*?)gradient(.*?)$/i) !== -1) {
           var gradient = bimage.match(/gradient(\(.*\))/g);
           if (gradient.length > 0) {
@@ -12034,7 +12034,7 @@ var DefinitionListsAreUsed = {
       DOM.scry('span, strong, em, b, i', element).forEach(function (element) {
         if (DOM.text(element).length < 50 && DOM.text($item).search(DOM.text(element)) === 0) {
           if (DOM.is(element, 'span')) {
-            if (DOM.getStyle(element, 'font-weight') === DOM.getStyle($item, 'font-weight') && DOM.getStyle(element, 'font-style') === DOM.getStyle($item, 'font-style')) {
+            if (DOM.getComputedStyle(element, 'font-weight') === DOM.getComputedStyle($item, 'font-weight') && DOM.getComputedStyle(element, 'font-style') === DOM.getComputedStyle($item, 'font-style')) {
               _case.set({
                 status: 'passed'
               });
@@ -12906,7 +12906,7 @@ var DomOrderMatchesVisualOrder = {
 
     $.expr[':'].quailCss = function (obj, index, meta) {
       var args = meta[3].split(/\s*=\s*/);
-      return DOM.getStyle(obj, args[0]).search(args[1]) > -1;
+      return DOM.getComputedStyle(obj, args[0]).search(args[1]) > -1;
     };
 
     var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
@@ -13543,7 +13543,7 @@ var FormWithRequiredLabel = {
             });
           }
         }
-        currentStyle = DOM.getStyle($label, 'color') + DOM.getStyle($label, 'font-weight') + DOM.getStyle($label, 'background-color');
+        currentStyle = DOM.getComputedStyle($label, 'color') + DOM.getComputedStyle($label, 'font-weight') + DOM.getComputedStyle($label, 'background-color');
         if (lastStyle && currentStyle !== lastStyle) {
           _case.set({
             status: 'failed'
@@ -15613,7 +15613,7 @@ var InputWithoutLabelHasTitle = {
           });
           test.add(_case);
 
-          if (DOM.getStyle(element, 'display') === 'none') {
+          if (DOM.getComputedStyle(element, 'display') === 'none') {
             _case.set({
               status: 'inapplicable'
             });
@@ -16279,7 +16279,7 @@ var LinkHasAUniqueContext = {
       var block = link;
       var text = simplifyText(DOM.text(link));
 
-      while (!DOM.is(block, 'body, html') && blockStyle.indexOf(DOM.getStyle(block, 'display')) === -1) {
+      while (!DOM.is(block, 'body, html') && blockStyle.indexOf(DOM.getComputedStyle(block, 'display')) === -1) {
         block = block.parentNode;
       }
 
@@ -16963,7 +16963,7 @@ var PNotUsedAsHeader = {
         // Checking if previous paragraph has a different values for style properties given in SuspectPCSSStyles.
         if (priorParagraph.length) {
           SuspectPCSSStyles.forEach(function (cssProperty) {
-            if (DOM.getStyle($paragraph, cssProperty) !== DOM.getStyle(priorParagraph, cssProperty)) {
+            if (DOM.getComputedStyle($paragraph, cssProperty) !== DOM.getComputedStyle(priorParagraph, cssProperty)) {
               _case.set({
                 status: 'failed'
               });
@@ -16972,7 +16972,7 @@ var PNotUsedAsHeader = {
             }
           });
         }
-        if (DOM.getStyle($paragraph, 'font-weight') === 'bold') {
+        if (DOM.getComputedStyle($paragraph, 'font-weight') === 'bold') {
           _case.set({
             status: 'failed'
           });
@@ -17679,7 +17679,7 @@ var SkipToContentLinkProvided = {
           var str = strs.pop();
           if (DOM.text($link).search(str) > -1 && $target.length) {
             $link.focus();
-            if (DOM.is($link, ':visible') && DOM.getStyle($link, 'visibility') !== 'hidden') {
+            if (DOM.is($link, ':visible') && DOM.getComputedStyle($link, 'visibility') !== 'hidden') {
               skipLinkFound = true;
               test.add(Case({
                 element: $link,
@@ -18449,8 +18449,8 @@ var TableUsesScopeForRow = {
       DOM.scry('td:first-child', element).forEach(function (element) {
         var next = DOM.next(element);
         if (next) {
-          var isBold = DOM.getStyle(element, 'font-weight') === 'bold';
-          var nextIsNotBold = DOM.getStyle(next, 'font-weight') !== 'bold';
+          var isBold = DOM.getComputedStyle(element, 'font-weight') === 'bold';
+          var nextIsNotBold = DOM.getComputedStyle(next, 'font-weight') !== 'bold';
           var boldDoesNotFollowsBold = isBold && nextIsNotBold;
           var hasStrong = DOM.scry('strong', element).length;
           var nextIsNotStrong = DOM.scry('strong', next).length === 0;
@@ -18466,8 +18466,8 @@ var TableUsesScopeForRow = {
       });
       DOM.scry('td:last-child', element).forEach(function (element) {
         var $prev = element.prev('td');
-        var isBold = DOM.getStyle(element, 'font-weight') === 'bold';
-        var prevIsNotBold = DOM.getStyle($prev, 'font-weight') !== 'bold';
+        var isBold = DOM.getComputedStyle(element, 'font-weight') === 'bold';
+        var prevIsNotBold = DOM.getComputedStyle($prev, 'font-weight') !== 'bold';
         var boldDoesNotFollowsBold = isBold && prevIsNotBold;
         var hasStrong = DOM.scry('strong', element).length;
         var prevIsNotStrong = DOM.scry('strong', $prev).length === 0;
@@ -18566,7 +18566,7 @@ var TextIsNotSmall = {
     DOM.scry(TextSelectorComponent, test.get('scope')).filter(function (element) {
       return TextNodeFilterComponent(element);
     }).forEach(function (element) {
-      var fontSize = DOM.getStyle(element, 'font-size');
+      var fontSize = DOM.getComputedStyle(element, 'font-size');
       if (fontSize.search('em') > 0) {
         fontSize = ConvertToPxComponent(fontSize);
       }

@@ -20,8 +20,8 @@ var DefinitionListsAreUsed = {
       DOM.scry('span, strong, em, b, i', element).forEach(function (element) {
         if (DOM.text(element).length < 50 && DOM.text($item).search(DOM.text(element)) === 0) {
           if (DOM.is(element, 'span')) {
-            if (DOM.getStyle(element, 'font-weight') === DOM.getStyle($item, 'font-weight') &&
-                DOM.getStyle(element, 'font-style') === DOM.getStyle($item, 'font-style')) {
+            if (DOM.getComputedStyle(element, 'font-weight') === DOM.getComputedStyle($item, 'font-weight') &&
+                DOM.getComputedStyle(element, 'font-style') === DOM.getComputedStyle($item, 'font-style')) {
               _case.set({
                 status: 'passed'
               });

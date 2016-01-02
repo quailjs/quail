@@ -15,7 +15,7 @@ var DomOrderMatchesVisualOrder = {
 
     $.expr[':'].quailCss = function (obj, index, meta) {
       var args = meta[3].split(/\s*=\s*/);
-      return DOM.getStyle(obj, args[0]).search(args[1]) > -1;
+      return DOM.getComputedStyle(obj, args[0]).search(args[1]) > -1;
     };
 
     var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';

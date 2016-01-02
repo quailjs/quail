@@ -11,7 +11,7 @@ var TextIsNotSmall = {
         return TextNodeFilterComponent(element);
       })
       .forEach(function (element) {
-        var fontSize = DOM.getStyle(element, 'font-size');
+        var fontSize = DOM.getComputedStyle(element, 'font-size');
         if (fontSize.search('em') > 0) {
           fontSize = ConvertToPxComponent(fontSize);
         }
