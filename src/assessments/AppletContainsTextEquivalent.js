@@ -3,21 +3,23 @@ const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var AppletContainsTextEquivalent = {
   run: function (test) {
-    DOM.scry('applet[alt=""], applet:not(applet[alt])', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('applet[alt=""], applet:not(applet[alt])', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        if (IsUnreadable(DOM.text(element))) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
+        }
       });
-      test.add(_case);
-      if (IsUnreadable(DOM.text(element))) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 

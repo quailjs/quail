@@ -2,13 +2,15 @@ var Case = require('Case');
 const DOM = require('DOM');
 var TableUsesAbbreviationForHeader = {
   run: function (test) {
-    DOM.scry('th:not(th[abbr])', test.get('scope')).forEach(function (element) {
-      if (DOM.text(element).length > 20) {
-        test.add(Case({
-          element: element,
-          status: 'failed'
-        }));
-      }
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('th:not(th[abbr])', scope).forEach(function (element) {
+        if (DOM.text(element).length > 20) {
+          test.add(Case({
+            element: element,
+            status: 'failed'
+          }));
+        }
+      });
     });
   },
 

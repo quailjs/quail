@@ -3,27 +3,29 @@ var Case = require('Case');
 const DOM = require('DOM');
 var TableLayoutHasNoCaption = {
   run: function (test) {
-    DOM.scry('table', test.get('scope')).forEach(function (element) {
-      if (DOM.scry('caption', element).length) {
-        if (!IsDataTableComponent(element)) {
-          test.add(Case({
-            element: element,
-            status: 'failed'
-          }));
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('table', scope).forEach(function (element) {
+        if (DOM.scry('caption', element).length) {
+          if (!IsDataTableComponent(element)) {
+            test.add(Case({
+              element: element,
+              status: 'failed'
+            }));
+          }
+          else {
+            test.add(Case({
+              element: element,
+              status: 'passed'
+            }));
+          }
         }
         else {
           test.add(Case({
             element: element,
-            status: 'passed'
+            status: 'inapplicable'
           }));
         }
-      }
-      else {
-        test.add(Case({
-          element: element,
-          status: 'inapplicable'
-        }));
-      }
+      });
     });
   },
 

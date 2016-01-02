@@ -2,30 +2,32 @@ var Case = require('Case');
 const DOM = require('DOM');
 var BlockquoteUseForQuotations = {
   run: function (test) {
-    DOM.scry('p', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('p', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        var blockquote = DOM.parents(element)
+          .find((parent) => DOM.is(parent, 'blockquote'))[0];
+        if (blockquote) {
+          _case.set({
+            status: 'inapplicable'
+          });
+          return;
+        }
+        if (DOM.text(element).substr(0, 1).search(/'|"|«|“|「/) > -1 &&
+           DOM.text(element).substr(-1, 1).search(/'|"|»|„|」/) > -1) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
+        }
       });
-      test.add(_case);
-      var blockquote = DOM.parents(element)
-        .find((parent) => DOM.is(parent, 'blockquote'))[0];
-      if (blockquote) {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
-      if (DOM.text(element).substr(0, 1).search(/'|"|«|“|「/) > -1 &&
-         DOM.text(element).substr(-1, 1).search(/'|"|»|„|」/) > -1) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 

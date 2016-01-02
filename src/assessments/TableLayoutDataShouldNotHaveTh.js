@@ -3,29 +3,31 @@ var Case = require('Case');
 const DOM = require('DOM');
 var TableLayoutDataShouldNotHaveTh = {
   run: function (test) {
-    DOM.scry('table', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('table', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
 
-      if (DOM.scry('th', element).length !== 0) {
-        if (!IsDataTableComponent(element)) {
-          _case.set({
-            status: 'failed'
-          });
+        if (DOM.scry('th', element).length !== 0) {
+          if (!IsDataTableComponent(element)) {
+            _case.set({
+              status: 'failed'
+            });
+          }
+          else {
+            _case.set({
+              status: 'passed'
+            });
+          }
         }
         else {
           _case.set({
-            status: 'passed'
+            status: 'inapplicable'
           });
         }
-      }
-      else {
-        _case.set({
-          status: 'inapplicable'
-        });
-      }
+      });
     });
   },
 

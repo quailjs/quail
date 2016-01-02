@@ -4,31 +4,33 @@ const DOM = require('DOM');
 var SuspiciousLinksStringsComponent = require('SuspiciousLinksStringsComponent');
 var ASuspiciousLinkText = {
   run: function (test) {
-    DOM.scry('a', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('a', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        if (!DOM.getAttribute(element, 'href')) {
+          _case.set({
+            status: 'inapplicable'
+          });
+          return;
+        }
+        var text = DOM.text(element);
+        DOM.scry('img[alt]', element).forEach(function (element) {
+          text = text + DOM.getAttribute(element, 'alt');
+        });
+        if (SuspiciousLinksStringsComponent.indexOf(CleanStringComponent(text)) > -1) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
+        }
       });
-      test.add(_case);
-      if (!DOM.getAttribute(element, 'href')) {
-        _case.set({
-          status: 'inapplicable'
-        });
-        return;
-      }
-      var text = DOM.text(element);
-      DOM.scry('img[alt]', element).forEach(function (element) {
-        text = text + DOM.getAttribute(element, 'alt');
-      });
-      if (SuspiciousLinksStringsComponent.indexOf(CleanStringComponent(text)) > -1) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 

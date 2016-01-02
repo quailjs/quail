@@ -1,4 +1,4 @@
-module.exports = function(file, api) {
+module.exports = function(file, api, options) {
   const j = api.jscodeshift;
   const {expression, statement, statements} = j.template;
 
@@ -117,5 +117,7 @@ module.exports = function(file, api) {
       p => j.identifier('forEach')
     );
 
-  return b.toSource();
+  return b.toSource(options.printOptions || {
+    quote: 'single'
+  });
 };

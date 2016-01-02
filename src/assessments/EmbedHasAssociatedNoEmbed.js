@@ -2,16 +2,18 @@ var Case = require('Case');
 const DOM = require('DOM');
 var EmbedHasAssociatedNoEmbed = {
   run: function (test) {
-    DOM.scry('embed', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
-      var noembeds = DOM.scry('noembed', element);
-      var next = DOM.next(element);
-      var hasSiblingNoembed = next && DOM.is(next, 'noembed');
-      _case.set({
-        status: (noembeds.length || hasSiblingNoembed) ? 'passed' : 'failed'
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('embed', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        var noembeds = DOM.scry('noembed', element);
+        var next = DOM.next(element);
+        var hasSiblingNoembed = next && DOM.is(next, 'noembed');
+        _case.set({
+          status: (noembeds.length || hasSiblingNoembed) ? 'passed' : 'failed'
+        });
       });
     });
   },

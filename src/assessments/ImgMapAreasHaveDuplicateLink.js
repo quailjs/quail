@@ -3,35 +3,39 @@ const DOM = require('DOM');
 var ImgMapAreasHaveDuplicateLink = {
   run: function (test) {
     var links = {};
-    DOM.scry('a', test.get('scope')).forEach(function (element) {
-      links[DOM.getAttribute(element, 'href')] = DOM.getAttribute(element, 'href');
-    });
-    DOM.scry('img[usemap]', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('a', scope).forEach(function (element) {
+        links[DOM.getAttribute(element, 'href')] = DOM.getAttribute(element, 'href');
       });
-      test.add(_case);
-      var $image = element;
-      var $map = DOM.scry(DOM.getAttribute($image, 'usemap'), test.get('scope'));
-      if (!$map.length) {
-        $map = DOM.scry('map[name="' + DOM.getAttribute($image, 'usemap').replace('#', '') + '"]', test.get('scope'));
-      }
-      if ($map.length) {
-        var failed = false;
-        DOM.scry('area', $map).forEach(function (element) {
-          if (typeof links[DOM.getAttribute(element, 'href')] === 'undefined') {
-            failed = true;
-          }
+    });
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('img[usemap]', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
         });
-        _case.set({
-          status: (failed) ? 'failed' : 'passed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'inapplicable'
-        });
-      }
+        test.add(_case);
+        var $image = element;
+        var $map = DOM.scry(DOM.getAttribute($image, 'usemap'), test.get('scope'));
+        if (!$map.length) {
+          $map = DOM.scry('map[name="' + DOM.getAttribute($image, 'usemap').replace('#', '') + '"]', test.get('scope'));
+        }
+        if ($map.length) {
+          var failed = false;
+          DOM.scry('area', $map).forEach(function (element) {
+            if (typeof links[DOM.getAttribute(element, 'href')] === 'undefined') {
+              failed = true;
+            }
+          });
+          _case.set({
+            status: (failed) ? 'failed' : 'passed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'inapplicable'
+          });
+        }
+      });
     });
   },
 

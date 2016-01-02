@@ -56,36 +56,38 @@ var AnimatedGifMayBePresent = {
       request.send();
     }
 
-    DOM.scry('img', test.get('scope')).forEach(function (element) {
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('img', scope).forEach(function (element) {
 
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
-
-      var imgSrc = DOM.getAttribute(element, 'src');
-      var ext = DOM.getAttribute(element, 'src').split('.').pop().toLowerCase();
-
-      if (ext !== 'gif') {
-        _case.set({
-          status: 'inapplicable'
+        var _case = Case({
+          element: element
         });
-        return;
-      }
+        test.add(_case);
 
-      isAnimatedGif(imgSrc, ext, function (animated) {
-        if (animated) {
-          _case.set({
-            status: 'cantTell'
-          });
-          return;
-        }
-        else {
+        var imgSrc = DOM.getAttribute(element, 'src');
+        var ext = DOM.getAttribute(element, 'src').split('.').pop().toLowerCase();
+
+        if (ext !== 'gif') {
           _case.set({
             status: 'inapplicable'
           });
           return;
         }
+
+        isAnimatedGif(imgSrc, ext, function (animated) {
+          if (animated) {
+            _case.set({
+              status: 'cantTell'
+            });
+            return;
+          }
+          else {
+            _case.set({
+              status: 'inapplicable'
+            });
+            return;
+          }
+        });
       });
     });
   },

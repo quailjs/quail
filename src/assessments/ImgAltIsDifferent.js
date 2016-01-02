@@ -2,28 +2,32 @@ var Case = require('Case');
 const DOM = require('DOM');
 var ImgAltIsDifferent = {
   run: function (test) {
-    DOM.scry('img:not([src])', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element,
-        status: 'inapplicable'
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('img:not([src])', scope).forEach(function (element) {
+        var _case = Case({
+          element: element,
+          status: 'inapplicable'
+        });
+        test.add(_case);
       });
-      test.add(_case);
     });
-    DOM.scry('img[alt][src]', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('img[alt][src]', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        if (DOM.getAttribute(element, 'src') === DOM.getAttribute(element, 'alt') || DOM.getAttribute(element, 'src').split('/').pop() === DOM.getAttribute(element, 'alt')) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
+        }
       });
-      test.add(_case);
-      if (DOM.getAttribute(element, 'src') === DOM.getAttribute(element, 'alt') || DOM.getAttribute(element, 'src').split('/').pop() === DOM.getAttribute(element, 'alt')) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 

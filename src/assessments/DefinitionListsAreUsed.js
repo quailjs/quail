@@ -2,36 +2,40 @@ var Case = require('Case');
 const DOM = require('DOM');
 var DefinitionListsAreUsed = {
   run: function (test) {
-    DOM.scry('dl', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
-      _case.set({
-        status: 'inapplicable'
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('dl', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        _case.set({
+          status: 'inapplicable'
+        });
       });
     });
-    DOM.scry('p, li', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
-      var $item = element;
-      DOM.scry('span, strong, em, b, i', element).forEach(function (element) {
-        if (DOM.text(element).length < 50 && DOM.text($item).search(DOM.text(element)) === 0) {
-          if (DOM.is(element, 'span')) {
-            if (DOM.getComputedStyle(element, 'font-weight') === DOM.getComputedStyle($item, 'font-weight') &&
-                DOM.getComputedStyle(element, 'font-style') === DOM.getComputedStyle($item, 'font-style')) {
-              _case.set({
-                status: 'passed'
-              });
-              return;
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('p, li', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        var $item = element;
+        DOM.scry('span, strong, em, b, i', element).forEach(function (element) {
+          if (DOM.text(element).length < 50 && DOM.text($item).search(DOM.text(element)) === 0) {
+            if (DOM.is(element, 'span')) {
+              if (DOM.getComputedStyle(element, 'font-weight') === DOM.getComputedStyle($item, 'font-weight') &&
+                  DOM.getComputedStyle(element, 'font-style') === DOM.getComputedStyle($item, 'font-style')) {
+                _case.set({
+                  status: 'passed'
+                });
+                return;
+              }
             }
+            _case.set({
+              status: 'failed'
+            });
           }
-          _case.set({
-            status: 'failed'
-          });
-        }
+        });
       });
     });
   },

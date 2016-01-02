@@ -3,20 +3,24 @@ const DOM = require('DOM');
 var LabelMustBeUnique = {
   run: function (test) {
     var labels = {};
-    DOM.scry('label[for]', test.get('scope')).forEach(function (element) {
-      if (typeof labels[DOM.getAttribute(element, 'for')] === 'undefined') {
-        labels[DOM.getAttribute(element, 'for')] = 0;
-      }
-      labels[DOM.getAttribute(element, 'for')]++;
-    });
-    DOM.scry('label[for]', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element,
-        status: (labels[DOM.getAttribute(element, 'for')] === 1) ?
-          'passed' :
-          'failed'
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('label[for]', scope).forEach(function (element) {
+        if (typeof labels[DOM.getAttribute(element, 'for')] === 'undefined') {
+          labels[DOM.getAttribute(element, 'for')] = 0;
+        }
+        labels[DOM.getAttribute(element, 'for')]++;
       });
-      test.add(_case);
+    });
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('label[for]', scope).forEach(function (element) {
+        var _case = Case({
+          element: element,
+          status: (labels[DOM.getAttribute(element, 'for')] === 1) ?
+            'passed' :
+            'failed'
+        });
+        test.add(_case);
+      });
     });
   },
 

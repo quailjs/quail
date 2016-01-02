@@ -45,7 +45,9 @@ var KINGUseLongDateFormat = {
     // Note it should also contain div, but that would lead to other issues.
     var appliableElements = 'a, article, aside, b, blockquote, caption, cite, dd, del, div, em, figcaption, footer, h1, h2, h3, h4, h5, h6, header, i, label, legend, li, mark, nav, option, p, q, s, section, small, span, strong, sub, summary, sup, td, th, title, u';
 
-    DOM.scry(appliableElements, test.get('scope')).forEach(testDateFormat);
+    test.get('scope').forEach(function (scope) {
+      DOM.scry(appliableElements, scope).forEach(testDateFormat);
+    });
   },
 
   meta: {

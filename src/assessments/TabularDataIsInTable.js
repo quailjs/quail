@@ -2,19 +2,21 @@ var Case = require('Case');
 const DOM = require('DOM');
 var TabularDataIsInTable = {
   run: function (test) {
-    DOM.scry('pre', test.get('scope')).forEach(function (element) {
-      if (DOM.text(element).search('\t') >= 0) {
-        test.add(Case({
-          element: element,
-          status: 'failed'
-        }));
-      }
-      else {
-        test.add(Case({
-          element: element,
-          status: 'passed'
-        }));
-      }
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('pre', scope).forEach(function (element) {
+        if (DOM.text(element).search('\t') >= 0) {
+          test.add(Case({
+            element: element,
+            status: 'failed'
+          }));
+        }
+        else {
+          test.add(Case({
+            element: element,
+            status: 'passed'
+          }));
+        }
+      });
     });
   },
 

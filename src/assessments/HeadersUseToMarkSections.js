@@ -2,43 +2,47 @@ var Case = require('Case');
 const DOM = require('DOM');
 var HeadersUseToMarkSections = {
   run: function (test) {
-    DOM.scry('p', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
-      var $paragraph = element;
-      DOM.scry('strong:first, em:first, i:first, b:first', $paragraph).forEach(function (element) {
-        _case.set({
-          status: (DOM.text($paragraph).trim() === DOM.text(element).trim()) ? 'failed' : 'passed'
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('p', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        var $paragraph = element;
+        DOM.scry('strong:first, em:first, i:first, b:first', $paragraph).forEach(function (element) {
+          _case.set({
+            status: (DOM.text($paragraph).trim() === DOM.text(element).trim()) ? 'failed' : 'passed'
+          });
         });
       });
     });
 
-    DOM.scry('ul, ol', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
-      });
-      test.add(_case);
-      var $list = element;
-      if ($list.prevAll(':header').length ||
-        DOM.scry('li', $list).length !== DOM.scry('li:has(a)', $list).length) {
-        _case.set({
-          status: 'passed'
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('ul, ol', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
         });
-        return;
-      }
-      var isNavigation = true;
-      DOM.scry('li:has(a)', $list).forEach(function (element) {
-        if (DOM.scry('a:first', element).text().trim() !== DOM.text(element).trim()) {
-          isNavigation = false;
+        test.add(_case);
+        var $list = element;
+        if ($list.prevAll(':header').length ||
+          DOM.scry('li', $list).length !== DOM.scry('li:has(a)', $list).length) {
+          _case.set({
+            status: 'passed'
+          });
+          return;
+        }
+        var isNavigation = true;
+        DOM.scry('li:has(a)', $list).forEach(function (element) {
+          if (DOM.scry('a:first', element).text().trim() !== DOM.text(element).trim()) {
+            isNavigation = false;
+          }
+        });
+        if (isNavigation) {
+          _case.set({
+            status: 'failed'
+          });
         }
       });
-      if (isNavigation) {
-        _case.set({
-          status: 'failed'
-        });
-      }
     });
   },
 

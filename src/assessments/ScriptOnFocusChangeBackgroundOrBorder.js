@@ -14,24 +14,26 @@ var ScriptOnFocusChangeBackgroundOrBorder = {
       }));
     };
 
-    DOM.scry('input,button,a', test.get('scope')).forEach(function (element) {
-      var $this = element;
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('input,button,a', scope).forEach(function (element) {
+        var $this = element;
 
-      var noFocus = {
-        background: DOM.getComputedStyle($this, 'background'),
-        border: DOM.getComputedStyle($this, 'border')
-      };
+        var noFocus = {
+          background: DOM.getComputedStyle($this, 'background'),
+          border: DOM.getComputedStyle($this, 'border')
+        };
 
-      $this.focus();
+        $this.focus();
 
-      // Blur and make sure all changes are reverted.
-      $this.blur();
-      if (noFocus.background !== DOM.getComputedStyle($this, 'background') || noFocus.border !== DOM.getComputedStyle($this, 'border')) {
-        buildCase(this, 'failed', null, 'Using script to change the background color or border of the element with focus');
-      }
-      else {
-        buildCase(this, 'passed', null, 'Using script to change the background color or border of the element with focus');
-      }
+        // Blur and make sure all changes are reverted.
+        $this.blur();
+        if (noFocus.background !== DOM.getComputedStyle($this, 'background') || noFocus.border !== DOM.getComputedStyle($this, 'border')) {
+          buildCase(this, 'failed', null, 'Using script to change the background color or border of the element with focus');
+        }
+        else {
+          buildCase(this, 'passed', null, 'Using script to change the background color or border of the element with focus');
+        }
+      });
     });
   },
 

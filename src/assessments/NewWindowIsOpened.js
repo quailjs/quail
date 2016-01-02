@@ -15,13 +15,15 @@ var NewWindowIsOpened = {
       });
     };
 
-    DOM.scry('a', test.get('scope')).forEach(function (element) {
-      // Save a reference to this clicked tag.
-      _case = Case({
-        element: element
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('a', scope).forEach(function (element) {
+        // Save a reference to this clicked tag.
+        _case = Case({
+          element: element
+        });
+        test.add(_case);
+        element.click();
       });
-      test.add(_case);
-      element.click();
     });
 
     window.open = fenestrate;

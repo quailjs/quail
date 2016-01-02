@@ -3,22 +3,24 @@ var Case = require('Case');
 const DOM = require('DOM');
 var ImgHasLongDesc = {
   run: function (test) {
-    DOM.scry('img[longdesc]', test.get('scope')).forEach(function (element) {
-      var _case = Case({
-        element: element
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('img[longdesc]', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        if (DOM.getAttribute(element, 'longdesc') === DOM.getAttribute(element, 'alt') ||
+            !ValidURLComponent(DOM.getAttribute(element, 'longdesc'))) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
+        }
       });
-      test.add(_case);
-      if (DOM.getAttribute(element, 'longdesc') === DOM.getAttribute(element, 'alt') ||
-          !ValidURLComponent(DOM.getAttribute(element, 'longdesc'))) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 
