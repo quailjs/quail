@@ -10,11 +10,9 @@ const DOM = require('DOM');
 
 var ObjectWithClassIDHasNoText = {
   run: function (test, options) {
-
-    var selector = 'object[classid]:not(object[classid]:empty)';
-
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry('object[classid]', scope)
+        .filter((element) => /\S/.test(element.innerHTML));
       if (!candidates.length) {
         test.add(Case({
           element: undefined,

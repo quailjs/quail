@@ -4,32 +4,34 @@ var IsUnreadable = require('IsUnreadable');
 var ImgAltNotEmptyInAnchor = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry('a[href]:has(img)', scope).forEach(function (element) {
-        var $a = element;
-        var text = DOM.text($a);
+      DOM.scry('a[href]', scope)
+        .filter((element) => DOM.scry('img', element).length > 0)
+        .forEach(function (element) {
+          var $a = element;
+          var text = DOM.text($a);
 
-        var _case = Case({
-          element: element
-        });
-        test.add(_case);
-
-        // Concat all alt attributes of images to the text of the paragraph
-        DOM.scry('img[alt]', $a).forEach(function (element) {
-          text += ' ' + DOM.getAttribute(element, 'alt');
-        });
-
-        if (IsUnreadable(text)) {
-          _case.set({
-            status: 'failed'
+          var _case = Case({
+            element: element
           });
-        }
-        else {
-          _case.set({
-            status: 'passed'
+          test.add(_case);
+
+          // Concat all alt attributes of images to the text of the paragraph
+          DOM.scry('img[alt]', $a).forEach(function (element) {
+            text += ' ' + DOM.getAttribute(element, 'alt');
           });
-        }
+
+          if (IsUnreadable(text)) {
+            _case.set({
+              status: 'failed'
+            });
+          }
+          else {
+            _case.set({
+              status: 'passed'
+            });
+          }
+        });
       });
-    });
   },
 
   meta: {

@@ -1,4 +1,3 @@
-/**globals console:true */
 var Case = require('Case');
 const DOM = require('DOM');
 
@@ -23,7 +22,7 @@ var SkipToContentLinkProvided = {
           var str = strs.pop();
           if (DOM.text($link).search(str) > -1 && $target.length) {
             $link.focus();
-            if (DOM.is($link, ':visible') && DOM.getComputedStyle($link, 'visibility') !== 'hidden') {
+            if (DOM.isVisible($link)) {
               skipLinkFound = true;
               test.add(Case({
                 element: $link,

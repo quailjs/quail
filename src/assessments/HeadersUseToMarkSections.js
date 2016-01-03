@@ -8,10 +8,16 @@ var HeadersUseToMarkSections = {
           element: element
         });
         test.add(_case);
-        var $paragraph = element;
-        DOM.scry('strong:first, em:first, i:first, b:first', $paragraph).forEach(function (element) {
+        [
+          DOM.scry('strong', element)[0],
+          DOM.scry('em', element)[0],
+          DOM.scry('i', element)[0],
+          DOM.scry('b', element)[0]
+        ].forEach(function (inlineText) {
           _case.set({
-            status: (DOM.text($paragraph).trim() === DOM.text(element).trim()) ? 'failed' : 'passed'
+            status: (DOM.text(inlineText).trim() === DOM.text(element).trim()) ?
+              'failed' :
+              'passed'
           });
         });
       });
@@ -24,16 +30,24 @@ var HeadersUseToMarkSections = {
         });
         test.add(_case);
         var $list = element;
-        if ($list.prevAll(':header').length ||
-          DOM.scry('li', $list).length !== DOM.scry('li:has(a)', $list).length) {
+        let prevHeaders = DOM.prevAll($list).filter((element) => {
+          return DOM.is('h1, h2, h3, h4, h5, h6');
+        });
+        let items = DOM.scry('li', $list);
+        let itemLinks = DOM.scry('li', $list)
+          .filter((element) => DOM.scry('a', element).length > 0);
+        if (
+          prevHeaders.length ||
+          items.length !== itemLinks.length
+        ) {
           _case.set({
             status: 'passed'
           });
           return;
         }
         var isNavigation = true;
-        DOM.scry('li:has(a)', $list).forEach(function (element) {
-          if (DOM.scry('a:first', element).text().trim() !== DOM.text(element).trim()) {
+        itemLinks.forEach(function (element) {
+          if (DOM.text(DOM.scry('a', element)[0]).trim() !== DOM.text(element).trim()) {
             isNavigation = false;
           }
         });

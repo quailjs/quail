@@ -3,14 +3,19 @@ const DOM = require('DOM');
 var TableUsesAbbreviationForHeader = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry('th:not(th[abbr])', scope).forEach(function (element) {
-        if (DOM.text(element).length > 20) {
-          test.add(Case({
-            element: element,
-            status: 'failed'
-          }));
-        }
-      });
+      DOM.scry('th', scope)
+        .filter((element) => {
+          let abbr = DOM.getAttribute(element, 'abbr');
+          return !abbr || abbr === '';
+        })
+        .forEach(function (element) {
+          if (DOM.text(element).length > 20) {
+            test.add(Case({
+              element: element,
+              status: 'failed'
+            }));
+          }
+        });
     });
   },
 

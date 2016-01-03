@@ -12,32 +12,23 @@ const DOM = require('DOM');
 
 var NoframesSectionMustHaveTextEquivalent = {
   run: function (test, options) {
-
-    var selector = 'frameset:not(frameset:has(noframes))';
-
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry('frameset', scope)
+        .filter((element) => {
+          let noframes = DOM.scry('noframes', element);
+          return noframes.length === 0;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
-          status: (options.test ? 'inapplicable' : 'passed')
+          status: 'passed'
         }));
       }
       else {
         candidates.forEach(function (element) {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !DOM.is(element, options.test)) {
-            status = 'passed';
-          }
-          else {
-            status = 'failed';
-          }
-
           test.add(Case({
             element: element,
-            status: status
+            status: 'failed'
           }));
         });
       }

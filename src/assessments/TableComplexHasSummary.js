@@ -11,10 +11,15 @@ const DOM = require('DOM');
 var TableComplexHasSummary = {
   run: function (test, options) {
 
-    var selector = 'table:not(table[summary], table:has(caption))';
+    var selector = 'table';
 
     test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry(selector, scope);
+      candidates.filter((element) => {
+        let captions = DOM.scry('caption', element);
+        let summary = DOM.getAttribute(element, 'summary');
+        return (!summary || summary.length === 0) || captions.length === 0;
+      });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,

@@ -13,10 +13,13 @@ var FieldsetHasLabel = {
 
     options = options || {};
 
-    var selector = 'fieldset:not(fieldset:has(legend))';
+    var selector = 'fieldset';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry(selector, scope)
+        .filter((element) => {
+          return DOM.scry('legend', element).length === 0
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,

@@ -12,11 +12,16 @@ const DOM = require('DOM');
 
 var LinkUsedToDescribeNavigation = {
   run: function (test, options) {
-
-    var selector = 'html:not(html:has(link[rel=index]))';
-
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry('html', scope)
+        .filter((element) => {
+          let links = DOM.scry('link', element)
+            .filter((element) => {
+              let rel = DOM.getAttribute(element, 'rel');
+              return rel === 'index';
+            });
+          return links.length === 0;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,

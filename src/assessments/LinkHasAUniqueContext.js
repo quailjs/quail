@@ -124,7 +124,8 @@ var LinkHasAUniqueContext = {
     }
 
     test.get('scope').forEach(function (scope) {
-      var links = DOM.scry('a[href]:visible', scope);
+      var links = DOM.scry('a[href]', scope)
+        .filter((element) => DOM.isVisible(element));
       var linkMap = {};
 
       if (links.length === 0) {

@@ -4,22 +4,24 @@ const DOM = require('DOM');
 var TableSummaryDoesNotDuplicateCaption = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry('table[summary]:has(caption)', scope).forEach(function (element) {
-        var caption = DOM.scry('caption', element)[0];
-        var summary = caption && DOM.getAttribute(caption, 'summary');
-        if (summary && CleanStringComponent(summary) === CleanStringComponent(DOM.text(element))) {
-          test.add(Case({
-            element: element,
-            status: 'failed'
-          }));
-        }
-        else {
-          test.add(Case({
-            element: element,
-            status: 'passed'
-          }));
-        }
-      });
+      DOM.scry('table[summary]', scope)
+        .filter((element) => DOM.scry('caption', element).length > 0)
+        .forEach(function (element) {
+          var caption = DOM.scry('caption', element)[0];
+          var summary = caption && DOM.getAttribute(caption, 'summary');
+          if (summary && CleanStringComponent(summary) === CleanStringComponent(DOM.text(element))) {
+            test.add(Case({
+              element: element,
+              status: 'failed'
+            }));
+          }
+          else {
+            test.add(Case({
+              element: element,
+              status: 'passed'
+            }));
+          }
+        });
     });
   },
 

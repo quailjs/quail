@@ -71,10 +71,7 @@ var AreaHasAltValue = {
     tags: [
       'imagemap',
       'content'
-    ],
-    options: {
-      test: ':not(area[alt])'
-    }
+    ]
   }
 };
 module.exports = AreaHasAltValue;

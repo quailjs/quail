@@ -10,11 +10,9 @@ const DOM = require('DOM');
 
 var InputImageHasAlt = {
   run: function (test) {
-
-    var selector = 'input[type=image]:visible';
-
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry('input[type=image]', scope)
+        .filter((element) => DOM.isVisible(element));
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -81,10 +79,7 @@ var InputImageHasAlt = {
       'form',
       'image',
       'content'
-    ],
-    options: {
-      test: ':not(input[type=image][alt])'
-    }
+    ]
   }
 };
 module.exports = InputImageHasAlt;

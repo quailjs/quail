@@ -65,7 +65,7 @@ var AcronymComponent = function AcronymComponent(test) {
 };
 module.exports = AcronymComponent;
 
-},{"Case":31,"DOM":32}],2:[function(require,module,exports){
+},{"Case":32,"DOM":33}],2:[function(require,module,exports){
 'use strict';
 
 var DOM = require('DOM');
@@ -86,7 +86,7 @@ var BorderDetailsComponent = function BorderDetailsComponent(element) {
 };
 module.exports = BorderDetailsComponent;
 
-},{"DOM":32}],3:[function(require,module,exports){
+},{"DOM":33}],3:[function(require,module,exports){
 'use strict';
 
 var CleanStringComponent = function CleanStringComponent(string) {
@@ -673,7 +673,7 @@ var ColorComponent = (function () {
 })();
 module.exports = ColorComponent;
 
-},{"ConvertToPxComponent":5,"DOM":32,"IsUnreadable":11}],5:[function(require,module,exports){
+},{"ConvertToPxComponent":5,"DOM":33,"IsUnreadable":12}],5:[function(require,module,exports){
 'use strict'
 
 /**
@@ -695,7 +695,7 @@ var ConvertToPxComponent = function ConvertToPxComponent(unit) {
 };
 module.exports = ConvertToPxComponent;
 
-},{"DOM":32}],6:[function(require,module,exports){
+},{"DOM":33}],6:[function(require,module,exports){
 'use strict'
 
 /**
@@ -749,7 +749,7 @@ var EventComponent = function EventComponent(test, options) {
 };
 module.exports = EventComponent;
 
-},{"Case":31,"DOM":32,"HasEventListenerComponent":8}],7:[function(require,module,exports){
+},{"Case":32,"DOM":33,"HasEventListenerComponent":8}],7:[function(require,module,exports){
 'use strict'
 
 /**
@@ -775,7 +775,7 @@ var getTextContentsComponent = function getTextContentsComponent($element) {
 
 module.exports = getTextContentsComponent;
 
-},{"DOM":32}],8:[function(require,module,exports){
+},{"DOM":33}],8:[function(require,module,exports){
 'use strict'
 
 /**
@@ -802,15 +802,16 @@ var HasEventListenerComponent = function HasEventListenerComponent(element, even
 };
 module.exports = HasEventListenerComponent;
 
-},{"DOM":32}],9:[function(require,module,exports){
+},{"DOM":33}],9:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
 var DOM = require('DOM');
+var HeadingSelectorComponent = require('HeadingSelectorComponent');
 var HeadingLevelComponent = function HeadingLevelComponent(test, options) {
   var priorLevel = false;
   test.get('scope').forEach(function (scope) {
-    DOM.scry(':header', scope).forEach(function (element) {
+    HeadingSelectorComponent(scope).forEach(function (element) {
       var level = parseInt(element.tagName.substr(-1, 1), 10);
       if (priorLevel === options.headingLevel && level > priorLevel + 1) {
         test.add(Case({
@@ -829,7 +830,20 @@ var HeadingLevelComponent = function HeadingLevelComponent(test, options) {
 };
 module.exports = HeadingLevelComponent;
 
-},{"Case":31,"DOM":32}],10:[function(require,module,exports){
+},{"Case":32,"DOM":33,"HeadingSelectorComponent":10}],10:[function(require,module,exports){
+'use strict';
+
+var DOM = require('DOM');
+
+var selector = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].join(', ');
+
+var HeadingSelectorComponent = function HeadingSelectorComponent(context) {
+  return DOM.scry(selector, context);
+};
+
+module.exports = HeadingSelectorComponent;
+
+},{"DOM":33}],11:[function(require,module,exports){
 'use strict'
 
 /**
@@ -847,7 +861,9 @@ var IsDataTableComponent = function IsDataTableComponent(table) {
     return true;
   }
   var index;
-  var numberRows = DOM.scry('tr:has(td)', table).length;
+  var numberRows = DOM.scry('tr', table).filter(function (element) {
+    return DOM.scry('td', element).length > 0;
+  }).length;
   // Check for odd cell spanning
   var spanCells = DOM.scry('td[rowspan], td[colspan]', table);
   var isDataTable = true;
@@ -889,7 +905,7 @@ var IsDataTableComponent = function IsDataTableComponent(table) {
 
 module.exports = IsDataTableComponent;
 
-},{"DOM":32}],11:[function(require,module,exports){
+},{"DOM":33}],12:[function(require,module,exports){
 'use strict'
 
 /**
@@ -907,7 +923,7 @@ var IsUnreadable = function IsUnreadable(text) {
 
 module.exports = IsUnreadable;
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -936,13 +952,13 @@ var LabelComponent = function LabelComponent(test, options) {
 };
 module.exports = LabelComponent;
 
-},{"Case":31,"DOM":32}],13:[function(require,module,exports){
+},{"Case":32,"DOM":33}],14:[function(require,module,exports){
 'use strict';
 
 var LanguageCodesStringsComponent = ['bh', 'bi', 'nb', 'bs', 'br', 'bg', 'my', 'es', 'ca', 'km', 'ch', 'ce', 'ny', 'ny', 'zh', 'za', 'cu', 'cu', 'cv', 'kw', 'co', 'cr', 'hr', 'cs', 'da', 'dv', 'dv', 'nl', 'dz', 'en', 'eo', 'et', 'ee', 'fo', 'fj', 'fi', 'nl', 'fr', 'ff', 'gd', 'gl', 'lg', 'ka', 'de', 'ki', 'el', 'kl', 'gn', 'gu', 'ht', 'ht', 'ha', 'he', 'hz', 'hi', 'ho', 'hu', 'is', 'io', 'ig', 'id', 'ia', 'ie', 'iu', 'ik', 'ga', 'it', 'ja', 'jv', 'kl', 'kn', 'kr', 'ks', 'kk', 'ki', 'rw', 'ky', 'kv', 'kg', 'ko', 'kj', 'ku', 'kj', 'ky', 'lo', 'la', 'lv', 'lb', 'li', 'li', 'li', 'ln', 'lt', 'lu', 'lb', 'mk', 'mg', 'ms', 'ml', 'dv', 'mt', 'gv', 'mi', 'mr', 'mh', 'ro', 'ro', 'mn', 'na', 'nv', 'nv', 'nd', 'nr', 'ng', 'ne', 'nd', 'se', 'no', 'nb', 'nn', 'ii', 'ny', 'nn', 'ie', 'oc', 'oj', 'cu', 'cu', 'cu', 'or', 'om', 'os', 'os', 'pi', 'pa', 'ps', 'fa', 'pl', 'pt', 'pa', 'ps', 'qu', 'ro', 'rm', 'rn', 'ru', 'sm', 'sg', 'sa', 'sc', 'gd', 'sr', 'sn', 'ii', 'sd', 'si', 'si', 'sk', 'sl', 'so', 'st', 'nr', 'es', 'su', 'sw', 'ss', 'sv', 'tl', 'ty', 'tg', 'ta', 'tt', 'te', 'th', 'bo', 'ti', 'to', 'ts', 'tn', 'tr', 'tk', 'tw', 'ug', 'uk', 'ur', 'ug', 'uz', 'ca', 've', 'vi', 'vo', 'wa', 'cy', 'fy', 'wo', 'xh', 'yi', 'yo', 'za', 'zu'];
 module.exports = LanguageCodesStringsComponent;
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 var DOM = require('DOM');
@@ -1041,13 +1057,13 @@ var LanguageComponent = {
 };
 module.exports = LanguageComponent;
 
-},{"DOM":32}],15:[function(require,module,exports){
+},{"DOM":33}],16:[function(require,module,exports){
 "use strict";
 
 var NewWindowStringsComponent = [/new (browser )?(window|frame)/, /popup (window|frame)/];
 module.exports = NewWindowStringsComponent;
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 'use strict'
 
 /**
@@ -1118,13 +1134,13 @@ var PlaceholderComponent = function PlaceholderComponent(test, options) {
 };
 module.exports = PlaceholderComponent;
 
-},{"Case":31,"CleanStringComponent":3,"DOM":32,"IsUnreadable":11,"PlaceholdersStringsComponent":17}],17:[function(require,module,exports){
+},{"Case":32,"CleanStringComponent":3,"DOM":33,"IsUnreadable":12,"PlaceholdersStringsComponent":18}],18:[function(require,module,exports){
 'use strict';
 
 var PlaceholdersStringsComponent = ['title', 'untitled', 'untitled document', 'this is the title', 'the title', 'content', ' ', 'new page', 'new', 'nbsp', '&nbsp;', 'spacer', 'image', 'img', 'photo', 'frame', 'frame title', 'iframe', 'iframe title', 'legend'];
 module.exports = PlaceholdersStringsComponent;
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 'use strict';
 
 var RedundantStringsComponent = {
@@ -1134,19 +1150,19 @@ var RedundantStringsComponent = {
 };
 module.exports = RedundantStringsComponent;
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 var SiteMapStringsComponent = ['site map', 'map', 'sitemap'];
 module.exports = SiteMapStringsComponent;
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 
 var SkipContentStringsComponent = [/(jump|skip) (.*) (content|main|post)/i];
 module.exports = SkipContentStringsComponent;
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict'
 
 /**
@@ -1157,7 +1173,7 @@ var SuspectPCSSStyles = ['color', 'font-weight', 'font-size', 'font-family'];
 
 module.exports = SuspectPCSSStyles;
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict'
 
 /**
@@ -1168,19 +1184,19 @@ var SuspectPHeaderTags = ['strong', 'b', 'em', 'i', 'u', 'font'];
 
 module.exports = SuspectPHeaderTags;
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 var SuspiciousLinksStringsComponent = ['click here', 'click', 'more', 'here', 'read more', 'download', 'add', 'delete', 'clone', 'order', 'view', 'read', 'clic aqu&iacute;', 'clic', 'haga clic', 'm&aacute;s', 'aqu&iacute;', 'image'];
 module.exports = SuspiciousLinksStringsComponent;
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 var SymbolsStringsComponent = ['|', '*', /\*/g, '<br>*', '&bull;', '&#8226', '♦', '›', '»', '‣', '▶', '.', '◦', '✓', '◽', '•', '—', '◾'];
 module.exports = SymbolsStringsComponent;
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 var DOM = require('DOM');
@@ -1419,7 +1435,7 @@ var TableHeadersComponent = {
 
 module.exports = TableHeadersComponent;
 
-},{"DOM":32}],26:[function(require,module,exports){
+},{"DOM":33}],27:[function(require,module,exports){
 "use strict"
 
 /**
@@ -1444,7 +1460,7 @@ var TextNodeFilterComponent = function TextNodeFilterComponent(element) {
 };
 module.exports = TextNodeFilterComponent;
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 'use strict'
 
 /**
@@ -1454,7 +1470,7 @@ module.exports = TextNodeFilterComponent;
 var TextSelectorComponent = ['tt', 'i', 'b', 'big', 'small', 'em', 'strong', 'dfn', 'code', 'samp', 'kbd', 'var', 'cite', 'abbr', 'acronym', 'sub', 'sup', 'span', 'bdo', 'address', 'div', 'a', 'object', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'q', 'ins', 'del', 'dt', 'dd', 'li', 'label', 'option', 'textarea', 'fieldset', 'legend', 'button', 'caption', 'td', 'th'].join(', ');
 module.exports = TextSelectorComponent;
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 'use strict'
 
 /**
@@ -1503,7 +1519,7 @@ var TextStatisticsComponent = {
 };
 module.exports = TextStatisticsComponent;
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict'
 
 /**
@@ -1516,7 +1532,7 @@ var ValidURLComponent = function ValidURLComponent(url) {
 
 module.exports = ValidURLComponent;
 
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 'use strict'
 
 /**
@@ -1680,7 +1696,7 @@ var VideoComponent = {
 
 module.exports = VideoComponent;
 
-},{"DOM":32,"LanguageComponent":14}],31:[function(require,module,exports){
+},{"DOM":33,"LanguageComponent":15}],32:[function(require,module,exports){
 'use strict';
 
 function _typeof2(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
@@ -2050,7 +2066,7 @@ var Case = (function () {
 })();
 module.exports = Case;
 
-},{"DOM":32}],32:[function(require,module,exports){
+},{"DOM":33}],33:[function(require,module,exports){
 'use strict'
 
 /**
@@ -2174,8 +2190,8 @@ var DOM = {
     var children;
     var index;
     if (parentElement) {
-      children = parentElement.children;
-      index = Array.prototype.indexOf.call(children, element);
+      children = DOM.children(parentElement);
+      index = children.indexOf(element);
     }
     if (index > -1 && index <= children.length - 2) {
       return children[index + 1];
@@ -2189,12 +2205,38 @@ var DOM = {
     var children;
     var index;
     if (parentElement) {
-      children = parentElement.children;
-      index = Array.prototype.indexOf.call(children, element);
+      children = DOM.children(parentElement);
+      index = children.indexOf(element);
     }
     if (index > 0) {
       return children[index - 1];
     }
+  },
+  nextAll: function nextAll(element) {
+    if (!isDom(element)) {
+      _isDomError('nextAll');
+    }
+    var parentElement = element.parentElement;
+    var children;
+    var index;
+    if (parentElement) {
+      children = DOM.children(parentElement);
+      index = children.indexOf(element);
+    }
+    return children.slice(index + 1);
+  },
+  prevAll: function prevAll(element) {
+    if (!isDom(element)) {
+      _isDomError('prevAll');
+    }
+    var parentElement = element.parentElement;
+    var children;
+    var index;
+    if (parentElement) {
+      children = DOM.children(parentElement);
+      index = children.indexOf(element);
+    }
+    return children.slice(0, index);
   },
   is: function is(element, nodeName) {
     if (!isDom(element)) {
@@ -2231,7 +2273,7 @@ var DOM = {
     var dataKey = 'data-' + key;
     var attrs = [];
     attrs[dataKey] = value;
-    undefined.setAttributes(element, attrs);
+    DOM.setAttributes(element, attrs);
     DataSet(element);
   },
   getData: function getData(element, key) {
@@ -2259,12 +2301,17 @@ var DOM = {
       _isDomError('offset');
     }
     return documentOffset(element);
+  },
+  isVisible: function isVisible(element) {
+    var display = DOM.getComputedStyle(element, 'display');
+    var visibility = DOM.getComputedStyle(element, 'visibility');
+    return !(display === 'none') && !(visibility === 'hidden');
   }
 };
 
 module.exports = DOM;
 
-},{"data-set":40,"document-offset":41,"dom-select":42,"is-dom":46}],33:[function(require,module,exports){
+},{"data-set":41,"document-offset":42,"dom-select":43,"is-dom":47}],34:[function(require,module,exports){
 /**
  * @providesModule quail
  */
@@ -2433,7 +2480,7 @@ window.globalQuail = globalQuail;
 
 module.exports = quail;
 
-},{"TestCollection":35,"_Assessments":49,"babel-polyfill/dist/polyfill":38,"wcag2":36}],34:[function(require,module,exports){
+},{"TestCollection":36,"_Assessments":50,"babel-polyfill/dist/polyfill":39,"wcag2":37}],35:[function(require,module,exports){
 'use strict';
 
 function _typeof2(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
@@ -2819,7 +2866,7 @@ var Test = (function () {
 })();
 module.exports = Test;
 
-},{"Case":31}],35:[function(require,module,exports){
+},{"Case":32}],36:[function(require,module,exports){
 'use strict';
 
 function _typeof2(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
@@ -3125,7 +3172,7 @@ var TestCollection = (function () {
 })();
 module.exports = TestCollection;
 
-},{"Test":34}],36:[function(require,module,exports){
+},{"Test":35}],37:[function(require,module,exports){
 'use strict'
 
 /* A logical combo of Techniques and the intersection of their outcomes. */
@@ -3211,7 +3258,7 @@ var wcag2 = (function () {
 })();
 module.exports = wcag2;
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict'
 
 // Basic output structure attributes.
@@ -3274,7 +3321,7 @@ var runQuailOutputToConsole = (function () {
 
 module.exports = runQuailOutputToConsole;
 
-},{"DOM":32,"Quail":33}],38:[function(require,module,exports){
+},{"DOM":33,"Quail":34}],39:[function(require,module,exports){
 (function (process,global){
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 (function (global){
@@ -7693,7 +7740,7 @@ module.exports = _dereq_(17);
 },{}]},{},[1]);
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":47}],39:[function(require,module,exports){
+},{"_process":48}],40:[function(require,module,exports){
 module.exports = createHash
 
 function createHash(elem) {
@@ -7717,7 +7764,7 @@ function createHash(elem) {
     return hash
 }
 
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 'use strict';
 
 var createHash = require('./create-hash.js');
@@ -7736,7 +7783,7 @@ function DataSet(elem) {
     return hash;
 }
 
-},{"./create-hash.js":39}],41:[function(require,module,exports){
+},{"./create-hash.js":40}],42:[function(require,module,exports){
 var support = require('dom-support')
 var getDocument = require('get-document')
 var withinElement = require('within-element')
@@ -7812,7 +7859,7 @@ function bodyOffset(body) {
   }
 }
 
-},{"dom-support":43,"get-document":45,"within-element":48}],42:[function(require,module,exports){
+},{"dom-support":44,"get-document":46,"within-element":49}],43:[function(require,module,exports){
 module.exports = one;
 module.exports.all = all;
 
@@ -7827,7 +7874,7 @@ function all (selector, parent) {
   return  Array.prototype.slice.call(selection);
 }
 
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 var domready = require('domready')
 
 module.exports = (function() {
@@ -8097,7 +8144,7 @@ module.exports = (function() {
 	return support;
 })();
 
-},{"domready":44}],44:[function(require,module,exports){
+},{"domready":45}],45:[function(require,module,exports){
 /*!
   * domready (c) Dustin Diaz 2014 - License MIT
   */
@@ -8129,7 +8176,7 @@ module.exports = (function() {
 
 });
 
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 
 /**
  * Module exports.
@@ -8188,7 +8235,7 @@ function getDocument(node) {
   }
 }
 
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 /*global window*/
 
 /**
@@ -8205,7 +8252,7 @@ module.exports = function isNode(val){
   return 'number' == typeof val.nodeType && 'string' == typeof val.nodeName;
 }
 
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -8298,7 +8345,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 
 /**
  * Check if the DOM element `child` is within the given `parent` DOM element.
@@ -8326,7 +8373,7 @@ module.exports = function within (child, parent) {
   return false;
 };
 
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 'use strict';
 
 var WhiteSpaceNotUsedForFormatting = require('WhiteSpaceNotUsedForFormatting');
@@ -8372,7 +8419,6 @@ var ObjectMustHaveTitle = require('ObjectMustHaveTitle');
 var ObjectMustHaveEmbed = require('ObjectMustHaveEmbed');
 var ObjectMustContainText = require('ObjectMustContainText');
 var NewWindowIsOpened = require('NewWindowIsOpened');
-var MenuNotUsedToFormatText = require('MenuNotUsedToFormatText');
 var MarqueeIsNotUsed = require('MarqueeIsNotUsed');
 var ListOfLinksUseList = require('ListOfLinksUseList');
 var ListNotUsedForFormatting = require('ListNotUsedForFormatting');
@@ -8436,7 +8482,6 @@ var FileHasLabel = require('FileHasLabel');
 var FieldsetHasLabel = require('FieldsetHasLabel');
 var EmbedMustHaveAltAttribute = require('EmbedMustHaveAltAttribute');
 var EmbedHasAssociatedNoEmbed = require('EmbedHasAssociatedNoEmbed');
-var DomOrderMatchesVisualOrder = require('DomOrderMatchesVisualOrder');
 var DocumentVisualListsAreMarkedUp = require('DocumentVisualListsAreMarkedUp');
 var DocumentTitleNotEmpty = require('DocumentTitleNotEmpty');
 var DocumentTitleIsShort = require('DocumentTitleIsShort');
@@ -8560,7 +8605,6 @@ map.set('documentTitleIsNotPlaceholder', DocumentTitleIsNotPlaceholder);
 map.set('documentTitleIsShort', DocumentTitleIsShort);
 map.set('documentTitleNotEmpty', DocumentTitleNotEmpty);
 map.set('documentVisualListsAreMarkedUp', DocumentVisualListsAreMarkedUp);
-map.set('domOrderMatchesVisualOrder', DomOrderMatchesVisualOrder);
 map.set('embedHasAssociatedNoEmbed', EmbedHasAssociatedNoEmbed);
 map.set('embedMustHaveAltAttribute', EmbedMustHaveAltAttribute);
 map.set('fieldsetHasLabel', FieldsetHasLabel);
@@ -8624,7 +8668,6 @@ map.set('linkHasAUniqueContext', LinkHasAUniqueContext);
 map.set('listNotUsedForFormatting', ListNotUsedForFormatting);
 map.set('listOfLinksUseList', ListOfLinksUseList);
 map.set('marqueeIsNotUsed', MarqueeIsNotUsed);
-map.set('menuNotUsedToFormatText', MenuNotUsedToFormatText);
 map.set('newWindowIsOpened', NewWindowIsOpened);
 map.set('objectMustContainText', ObjectMustContainText);
 map.set('objectMustHaveEmbed', ObjectMustHaveEmbed);
@@ -8670,7 +8713,7 @@ map.set('whiteSpaceInWord', WhiteSpaceInWord);
 map.set('whiteSpaceNotUsedForFormatting', WhiteSpaceNotUsedForFormatting);
 module.exports = map;
 
-},{"AAdjacentWithSameResourceShouldBeCombined":51,"AImgAltNotRepetitive":52,"AInPHasADistinctStyle":53,"ALinkTextDoesNotBeginWithRedundantWord":54,"ALinkWithNonText":55,"ALinksAreSeparatedByPrintableCharacters":56,"ALinksDontOpenNewWindow":57,"ALinksNotSeparatedBySymbols":58,"ALinksToMultiMediaRequireTranscript":59,"ALinksToSoundFilesNeedTranscripts":60,"AMultimediaTextAlternative":61,"AMustContainText":62,"AMustHaveTitle":63,"AMustNotHaveJavascriptHref":64,"ASuspiciousLinkText":65,"ATitleDescribesDestination":66,"AnimatedGifMayBePresent":67,"AppletContainsTextEquivalent":68,"AppletContainsTextEquivalentInAlt":69,"AppletProvidesMechanismToReturnToParent":70,"AppletTextEquivalentsGetUpdated":71,"AppletUIMustBeAccessible":72,"AppletsDoNotFlicker":73,"AppletsDonotUseColorAlone":74,"AreaAltIdentifiesDestination":75,"AreaAltRefersToText":76,"AreaDontOpenNewWindow":77,"AreaHasAltValue":78,"AreaLinksToSoundFile":79,"AudioMayBePresent":80,"BasefontIsNotUsed":81,"BlinkIsNotUsed":82,"BlockquoteNotUsedForIndentation":83,"BlockquoteUseForQuotations":84,"BoldIsNotUsed":85,"ButtonHasName":86,"CheckboxHasLabel":87,"ColorBackgroundGradientContrast":88,"ColorBackgroundImageContrast":89,"ColorElementBehindBackgroundGradientContrast":90,"ColorElementBehindBackgroundImageContrast":91,"ColorElementBehindContrast":92,"ColorFontContrast":93,"CssDocumentMakesSenseStyleTurnedOff":94,"DefinitionListsAreUsed":95,"DoctypeProvided":96,"DocumentAcronymsHaveElement":97,"DocumentAutoRedirectNotUsed":98,"DocumentContentReadableWithoutStylesheets":99,"DocumentHasTitleElement":100,"DocumentIsWrittenClearly":101,"DocumentLangIsISO639Standard":102,"DocumentLangNotIdentified":103,"DocumentMetaNotUsedWithTimeout":104,"DocumentReadingDirection":105,"DocumentStrictDocType":106,"DocumentTitleDescribesDocument":107,"DocumentTitleIsNotPlaceholder":108,"DocumentTitleIsShort":109,"DocumentTitleNotEmpty":110,"DocumentVisualListsAreMarkedUp":111,"DomOrderMatchesVisualOrder":112,"EmbedHasAssociatedNoEmbed":113,"EmbedMustHaveAltAttribute":114,"FieldsetHasLabel":115,"FileHasLabel":116,"FontIsNotUsed":117,"FormButtonsHaveValue":118,"FormErrorMessageHelpsUser":119,"FormHasGoodErrorMessage":120,"FormHasSubmitButton":121,"FormWithRequiredLabel":122,"HeaderH1":123,"HeaderH1Format":124,"HeaderH2":125,"HeaderH2Format":126,"HeaderH3":127,"HeaderH3Format":128,"HeaderH4":129,"HeaderH4Format":130,"HeaderH5Format":131,"HeaderH6Format":132,"HeadersAttrRefersToATableCell":133,"HeadersHaveText":134,"HeadersUseToMarkSections":135,"IIsNotUsed":136,"IdrefsHasCorrespondingId":137,"IframeMustNotHaveLongdesc":138,"ImageMapServerSide":139,"ImgAltIsDifferent":140,"ImgAltIsTooLong":141,"ImgAltNotEmptyInAnchor":142,"ImgAltNotPlaceHolder":143,"ImgHasAlt":144,"ImgHasLongDesc":145,"ImgImportantNoSpacerAlt":146,"ImgNonDecorativeHasAlt":147,"ImgServerSideMapNotUsed":148,"ImgShouldNotHaveTitle":149,"ImgWithMapHasUseMap":150,"InputCheckboxRequiresFieldset":151,"InputElementsDontHaveAlt":152,"InputImageAltIsNotFileName":153,"InputImageAltIsNotPlaceholder":154,"InputImageAltIsShort":155,"InputImageAltNotRedundant":156,"InputImageHasAlt":157,"InputTextHasLabel":158,"InputTextHasValue":159,"InputTextValueNotEmpty":160,"InputWithoutLabelHasTitle":161,"LabelDoesNotContainInput":162,"LabelMustBeUnique":163,"LabelMustNotBeEmpty":164,"LabelsAreAssignedToAnInput":165,"LanguageDirAttributeIsUsed":166,"LanguageDirectionPunctuation":167,"LanguageUnicodeDirection":168,"LegendTextNotEmpty":169,"LegendTextNotPlaceholder":170,"LiDontUseImageForBullet":171,"LinkHasAUniqueContext":172,"ListNotUsedForFormatting":173,"ListOfLinksUseList":174,"MarqueeIsNotUsed":175,"MenuNotUsedToFormatText":176,"NewWindowIsOpened":177,"ObjectMustContainText":178,"ObjectMustHaveEmbed":179,"ObjectMustHaveTitle":180,"ObjectMustHaveValidTitle":181,"PNotUsedAsHeader":182,"PasswordHasLabel":183,"PreShouldNotBeUsedForTabularLayout":184,"RadioHasLabel":185,"ScriptOnclickRequiresOnKeypress":186,"ScriptOndblclickRequiresOnKeypress":187,"ScriptOnmousedownRequiresOnKeypress":188,"ScriptOnmousemove":189,"ScriptOnmouseoutHasOnmouseblur":190,"ScriptOnmouseoverHasOnfocus":191,"ScriptOnmouseupHasOnkeyup":192,"SelectHasAssociatedLabel":193,"SelectJumpMenu":194,"SiteMap":195,"SkipToContentLinkProvided":196,"SvgContainsTitle":197,"TabIndexFollowsLogicalOrder":198,"TableDataShouldHaveTh":199,"TableLayoutDataShouldNotHaveTh":200,"TableLayoutHasNoCaption":201,"TableLayoutHasNoSummary":202,"TableLayoutMakesSenseLinearized":203,"TableNotUsedForLayout":204,"TableShouldUseHeaderIDs":205,"TableSummaryDoesNotDuplicateCaption":206,"TableSummaryIsEmpty":207,"TableSummaryIsNotTooLong":208,"TableUseColGroup":209,"TableUsesAbbreviationForHeader":210,"TableUsesCaption":211,"TableUsesScopeForRow":212,"TabularDataIsInTable":213,"TextIsNotSmall":214,"TextareaHasAssociatedLabel":215,"VideoMayBePresent":216,"VideosEmbeddedOrLinkedNeedCaptions":217,"WhiteSpaceInWord":218,"WhiteSpaceNotUsedForFormatting":219}],50:[function(require,module,exports){
+},{"AAdjacentWithSameResourceShouldBeCombined":52,"AImgAltNotRepetitive":53,"AInPHasADistinctStyle":54,"ALinkTextDoesNotBeginWithRedundantWord":55,"ALinkWithNonText":56,"ALinksAreSeparatedByPrintableCharacters":57,"ALinksDontOpenNewWindow":58,"ALinksNotSeparatedBySymbols":59,"ALinksToMultiMediaRequireTranscript":60,"ALinksToSoundFilesNeedTranscripts":61,"AMultimediaTextAlternative":62,"AMustContainText":63,"AMustHaveTitle":64,"AMustNotHaveJavascriptHref":65,"ASuspiciousLinkText":66,"ATitleDescribesDestination":67,"AnimatedGifMayBePresent":68,"AppletContainsTextEquivalent":69,"AppletContainsTextEquivalentInAlt":70,"AppletProvidesMechanismToReturnToParent":71,"AppletTextEquivalentsGetUpdated":72,"AppletUIMustBeAccessible":73,"AppletsDoNotFlicker":74,"AppletsDonotUseColorAlone":75,"AreaAltIdentifiesDestination":76,"AreaAltRefersToText":77,"AreaDontOpenNewWindow":78,"AreaHasAltValue":79,"AreaLinksToSoundFile":80,"AudioMayBePresent":81,"BasefontIsNotUsed":82,"BlinkIsNotUsed":83,"BlockquoteNotUsedForIndentation":84,"BlockquoteUseForQuotations":85,"BoldIsNotUsed":86,"ButtonHasName":87,"CheckboxHasLabel":88,"ColorBackgroundGradientContrast":89,"ColorBackgroundImageContrast":90,"ColorElementBehindBackgroundGradientContrast":91,"ColorElementBehindBackgroundImageContrast":92,"ColorElementBehindContrast":93,"ColorFontContrast":94,"CssDocumentMakesSenseStyleTurnedOff":95,"DefinitionListsAreUsed":96,"DoctypeProvided":97,"DocumentAcronymsHaveElement":98,"DocumentAutoRedirectNotUsed":99,"DocumentContentReadableWithoutStylesheets":100,"DocumentHasTitleElement":101,"DocumentIsWrittenClearly":102,"DocumentLangIsISO639Standard":103,"DocumentLangNotIdentified":104,"DocumentMetaNotUsedWithTimeout":105,"DocumentReadingDirection":106,"DocumentStrictDocType":107,"DocumentTitleDescribesDocument":108,"DocumentTitleIsNotPlaceholder":109,"DocumentTitleIsShort":110,"DocumentTitleNotEmpty":111,"DocumentVisualListsAreMarkedUp":112,"EmbedHasAssociatedNoEmbed":113,"EmbedMustHaveAltAttribute":114,"FieldsetHasLabel":115,"FileHasLabel":116,"FontIsNotUsed":117,"FormButtonsHaveValue":118,"FormErrorMessageHelpsUser":119,"FormHasGoodErrorMessage":120,"FormHasSubmitButton":121,"FormWithRequiredLabel":122,"HeaderH1":123,"HeaderH1Format":124,"HeaderH2":125,"HeaderH2Format":126,"HeaderH3":127,"HeaderH3Format":128,"HeaderH4":129,"HeaderH4Format":130,"HeaderH5Format":131,"HeaderH6Format":132,"HeadersAttrRefersToATableCell":133,"HeadersHaveText":134,"HeadersUseToMarkSections":135,"IIsNotUsed":136,"IdrefsHasCorrespondingId":137,"IframeMustNotHaveLongdesc":138,"ImageMapServerSide":139,"ImgAltIsDifferent":140,"ImgAltIsTooLong":141,"ImgAltNotEmptyInAnchor":142,"ImgAltNotPlaceHolder":143,"ImgHasAlt":144,"ImgHasLongDesc":145,"ImgImportantNoSpacerAlt":146,"ImgNonDecorativeHasAlt":147,"ImgServerSideMapNotUsed":148,"ImgShouldNotHaveTitle":149,"ImgWithMapHasUseMap":150,"InputCheckboxRequiresFieldset":151,"InputElementsDontHaveAlt":152,"InputImageAltIsNotFileName":153,"InputImageAltIsNotPlaceholder":154,"InputImageAltIsShort":155,"InputImageAltNotRedundant":156,"InputImageHasAlt":157,"InputTextHasLabel":158,"InputTextHasValue":159,"InputTextValueNotEmpty":160,"InputWithoutLabelHasTitle":161,"LabelDoesNotContainInput":162,"LabelMustBeUnique":163,"LabelMustNotBeEmpty":164,"LabelsAreAssignedToAnInput":165,"LanguageDirAttributeIsUsed":166,"LanguageDirectionPunctuation":167,"LanguageUnicodeDirection":168,"LegendTextNotEmpty":169,"LegendTextNotPlaceholder":170,"LiDontUseImageForBullet":171,"LinkHasAUniqueContext":172,"ListNotUsedForFormatting":173,"ListOfLinksUseList":174,"MarqueeIsNotUsed":175,"NewWindowIsOpened":176,"ObjectMustContainText":177,"ObjectMustHaveEmbed":178,"ObjectMustHaveTitle":179,"ObjectMustHaveValidTitle":180,"PNotUsedAsHeader":181,"PasswordHasLabel":182,"PreShouldNotBeUsedForTabularLayout":183,"RadioHasLabel":184,"ScriptOnclickRequiresOnKeypress":185,"ScriptOndblclickRequiresOnKeypress":186,"ScriptOnmousedownRequiresOnKeypress":187,"ScriptOnmousemove":188,"ScriptOnmouseoutHasOnmouseblur":189,"ScriptOnmouseoverHasOnfocus":190,"ScriptOnmouseupHasOnkeyup":191,"SelectHasAssociatedLabel":192,"SelectJumpMenu":193,"SiteMap":194,"SkipToContentLinkProvided":195,"SvgContainsTitle":196,"TabIndexFollowsLogicalOrder":197,"TableDataShouldHaveTh":198,"TableLayoutDataShouldNotHaveTh":199,"TableLayoutHasNoCaption":200,"TableLayoutHasNoSummary":201,"TableLayoutMakesSenseLinearized":202,"TableNotUsedForLayout":203,"TableShouldUseHeaderIDs":204,"TableSummaryDoesNotDuplicateCaption":205,"TableSummaryIsEmpty":206,"TableSummaryIsNotTooLong":207,"TableUseColGroup":208,"TableUsesAbbreviationForHeader":209,"TableUsesCaption":210,"TableUsesScopeForRow":211,"TabularDataIsInTable":212,"TextIsNotSmall":213,"TextareaHasAssociatedLabel":214,"VideoMayBePresent":215,"VideosEmbeddedOrLinkedNeedCaptions":216,"WhiteSpaceInWord":217,"WhiteSpaceNotUsedForFormatting":218}],51:[function(require,module,exports){
 /*
 RainbowVis-JS 
 Released under Eclipse Public License - v 1.0
@@ -8980,7 +9023,7 @@ if (typeof module !== 'undefined') {
   module.exports = Rainbow;
 }
 
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -9069,7 +9112,7 @@ var AAdjacentWithSameResourceShouldBeCombined = {
 };
 module.exports = AAdjacentWithSameResourceShouldBeCombined;
 
-},{"Case":31,"DOM":32}],52:[function(require,module,exports){
+},{"Case":32,"DOM":33}],53:[function(require,module,exports){
 'use strict';
 
 var CleanStringComponent = require('CleanStringComponent');
@@ -9132,7 +9175,7 @@ var AImgAltNotRepetitive = {
 };
 module.exports = AImgAltNotRepetitive;
 
-},{"Case":31,"CleanStringComponent":3,"DOM":32}],53:[function(require,module,exports){
+},{"Case":32,"CleanStringComponent":3,"DOM":33}],54:[function(require,module,exports){
 'use strict';
 
 var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; })();
@@ -9279,7 +9322,7 @@ var AInPHasADistinctStyle = {
 };
 module.exports = AInPHasADistinctStyle;
 
-},{"BorderDetailsComponent":2,"Case":31,"DOM":32}],54:[function(require,module,exports){
+},{"BorderDetailsComponent":2,"Case":32,"DOM":33}],55:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -9343,7 +9386,7 @@ var ALinkTextDoesNotBeginWithRedundantWord = {
 };
 module.exports = ALinkTextDoesNotBeginWithRedundantWord;
 
-},{"Case":31,"DOM":32,"RedundantStringsComponent":18}],55:[function(require,module,exports){
+},{"Case":32,"DOM":33,"RedundantStringsComponent":19}],56:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -9434,7 +9477,7 @@ var ALinkWithNonText = {
 };
 module.exports = ALinkWithNonText;
 
-},{"Case":31,"DOM":32,"IsUnreadable":11}],56:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsUnreadable":12}],57:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -9480,7 +9523,7 @@ var ALinksAreSeparatedByPrintableCharacters = {
 };
 module.exports = ALinksAreSeparatedByPrintableCharacters;
 
-},{"Case":31,"DOM":32,"IsUnreadable":11}],57:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsUnreadable":12}],58:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -9562,7 +9605,7 @@ var ALinksDontOpenNewWindow = {
 };
 module.exports = ALinksDontOpenNewWindow;
 
-},{"Case":31,"DOM":32,"NewWindowStringsComponent":15}],58:[function(require,module,exports){
+},{"Case":32,"DOM":33,"NewWindowStringsComponent":16}],59:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -9618,7 +9661,7 @@ var ALinksNotSeparatedBySymbols = {
 };
 module.exports = ALinksNotSeparatedBySymbols;
 
-},{"Case":31,"DOM":32,"SymbolsStringsComponent":24}],59:[function(require,module,exports){
+},{"Case":32,"DOM":33,"SymbolsStringsComponent":25}],60:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -9670,7 +9713,7 @@ var ALinksToMultiMediaRequireTranscript = {
 };
 module.exports = ALinksToMultiMediaRequireTranscript;
 
-},{"Case":31,"DOM":32}],60:[function(require,module,exports){
+},{"Case":32,"DOM":33}],61:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -9723,7 +9766,7 @@ var ALinksToSoundFilesNeedTranscripts = {
 };
 module.exports = ALinksToSoundFilesNeedTranscripts;
 
-},{"Case":31,"DOM":32}],61:[function(require,module,exports){
+},{"Case":32,"DOM":33}],62:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -9761,7 +9804,7 @@ var AMultimediaTextAlternative = {
 };
 module.exports = AMultimediaTextAlternative;
 
-},{"Case":31,"DOM":32}],62:[function(require,module,exports){
+},{"Case":32,"DOM":33}],63:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -9826,7 +9869,7 @@ var AMustContainText = {
 };
 module.exports = AMustContainText;
 
-},{"Case":31,"DOM":32}],63:[function(require,module,exports){
+},{"Case":32,"DOM":33}],64:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -9872,7 +9915,7 @@ var AMustHaveTitle = {
 };
 module.exports = AMustHaveTitle;
 
-},{"Case":31,"DOM":32}],64:[function(require,module,exports){
+},{"Case":32,"DOM":33}],65:[function(require,module,exports){
 'use strict';
 
 /**
@@ -9935,7 +9978,7 @@ var AMustNotHaveJavascriptHref = {
 };
 module.exports = AMustNotHaveJavascriptHref;
 
-},{"Case":31,"DOM":32}],65:[function(require,module,exports){
+},{"Case":32,"DOM":33}],66:[function(require,module,exports){
 'use strict';
 
 var CleanStringComponent = require('CleanStringComponent');
@@ -10001,7 +10044,7 @@ var ASuspiciousLinkText = {
 };
 module.exports = ASuspiciousLinkText;
 
-},{"Case":31,"CleanStringComponent":3,"DOM":32,"SuspiciousLinksStringsComponent":23}],66:[function(require,module,exports){
+},{"Case":32,"CleanStringComponent":3,"DOM":33,"SuspiciousLinksStringsComponent":24}],67:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10070,7 +10113,7 @@ var ATitleDescribesDestination = {
 };
 module.exports = ATitleDescribesDestination;
 
-},{"Case":31,"DOM":32}],67:[function(require,module,exports){
+},{"Case":32,"DOM":33}],68:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -10179,7 +10222,7 @@ var AnimatedGifMayBePresent = {
 };
 module.exports = AnimatedGifMayBePresent;
 
-},{"Case":31,"DOM":32}],68:[function(require,module,exports){
+},{"Case":32,"DOM":33}],69:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -10229,7 +10272,7 @@ var AppletContainsTextEquivalent = {
 };
 module.exports = AppletContainsTextEquivalent;
 
-},{"Case":31,"DOM":32,"IsUnreadable":11}],69:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsUnreadable":12}],70:[function(require,module,exports){
 'use strict';
 
 var PlaceholderComponent = require('PlaceholderComponent');
@@ -10265,7 +10308,7 @@ var AppletContainsTextEquivalentInAlt = {
 };
 module.exports = AppletContainsTextEquivalentInAlt;
 
-},{"PlaceholderComponent":16}],70:[function(require,module,exports){
+},{"PlaceholderComponent":17}],71:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10328,7 +10371,7 @@ var AppletProvidesMechanismToReturnToParent = {
 };
 module.exports = AppletProvidesMechanismToReturnToParent;
 
-},{"Case":31,"DOM":32}],71:[function(require,module,exports){
+},{"Case":32,"DOM":33}],72:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10390,7 +10433,7 @@ var AppletTextEquivalentsGetUpdated = {
 };
 module.exports = AppletTextEquivalentsGetUpdated;
 
-},{"Case":31,"DOM":32}],72:[function(require,module,exports){
+},{"Case":32,"DOM":33}],73:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10460,7 +10503,7 @@ var AppletUIMustBeAccessible = {
 };
 module.exports = AppletUIMustBeAccessible;
 
-},{"Case":31,"DOM":32}],73:[function(require,module,exports){
+},{"Case":32,"DOM":33}],74:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10530,7 +10573,7 @@ var AppletsDoNotFlicker = {
 };
 module.exports = AppletsDoNotFlicker;
 
-},{"Case":31,"DOM":32}],74:[function(require,module,exports){
+},{"Case":32,"DOM":33}],75:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10595,7 +10638,7 @@ var AppletsDonotUseColorAlone = {
 };
 module.exports = AppletsDonotUseColorAlone;
 
-},{"Case":31,"DOM":32}],75:[function(require,module,exports){
+},{"Case":32,"DOM":33}],76:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10663,7 +10706,7 @@ var AreaAltIdentifiesDestination = {
 };
 module.exports = AreaAltIdentifiesDestination;
 
-},{"Case":31,"DOM":32}],76:[function(require,module,exports){
+},{"Case":32,"DOM":33}],77:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10726,7 +10769,7 @@ var AreaAltRefersToText = {
 };
 module.exports = AreaAltRefersToText;
 
-},{"Case":31,"DOM":32}],77:[function(require,module,exports){
+},{"Case":32,"DOM":33}],78:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10810,7 +10853,7 @@ var AreaDontOpenNewWindow = {
 };
 module.exports = AreaDontOpenNewWindow;
 
-},{"Case":31,"DOM":32,"NewWindowStringsComponent":15}],78:[function(require,module,exports){
+},{"Case":32,"DOM":33,"NewWindowStringsComponent":16}],79:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10875,15 +10918,12 @@ var AreaHasAltValue = {
         }
       }
     },
-    tags: ['imagemap', 'content'],
-    options: {
-      test: ':not(area[alt])'
-    }
+    tags: ['imagemap', 'content']
   }
 };
 module.exports = AreaHasAltValue;
 
-},{"Case":31,"DOM":32}],79:[function(require,module,exports){
+},{"Case":32,"DOM":33}],80:[function(require,module,exports){
 'use strict';
 
 /**
@@ -10952,7 +10992,7 @@ var AreaLinksToSoundFile = {
 };
 module.exports = AreaLinksToSoundFile;
 
-},{"Case":31,"DOM":32}],80:[function(require,module,exports){
+},{"Case":32,"DOM":33}],81:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -11013,7 +11053,7 @@ var AudioMayBePresent = {
 };
 module.exports = AudioMayBePresent;
 
-},{"Case":31,"DOM":32}],81:[function(require,module,exports){
+},{"Case":32,"DOM":33}],82:[function(require,module,exports){
 'use strict';
 
 /**
@@ -11065,7 +11105,7 @@ var BasefontIsNotUsed = {
 };
 module.exports = BasefontIsNotUsed;
 
-},{"Case":31,"DOM":32}],82:[function(require,module,exports){
+},{"Case":32,"DOM":33}],83:[function(require,module,exports){
 'use strict';
 
 /**
@@ -11123,7 +11163,7 @@ var BlinkIsNotUsed = {
 };
 module.exports = BlinkIsNotUsed;
 
-},{"Case":31,"DOM":32}],83:[function(require,module,exports){
+},{"Case":32,"DOM":33}],84:[function(require,module,exports){
 'use strict';
 
 /**
@@ -11189,7 +11229,7 @@ var BlockquoteNotUsedForIndentation = {
 };
 module.exports = BlockquoteNotUsedForIndentation;
 
-},{"Case":31,"DOM":32}],84:[function(require,module,exports){
+},{"Case":32,"DOM":33}],85:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -11246,7 +11286,7 @@ var BlockquoteUseForQuotations = {
 };
 module.exports = BlockquoteUseForQuotations;
 
-},{"Case":31,"DOM":32}],85:[function(require,module,exports){
+},{"Case":32,"DOM":33}],86:[function(require,module,exports){
 'use strict';
 
 /**
@@ -11298,7 +11338,7 @@ var BoldIsNotUsed = {
 };
 module.exports = BoldIsNotUsed;
 
-},{"Case":31,"DOM":32}],86:[function(require,module,exports){
+},{"Case":32,"DOM":33}],87:[function(require,module,exports){
 'use strict';
 
 /**
@@ -11346,7 +11386,7 @@ var ButtonHasName = {
 };
 module.exports = ButtonHasName;
 
-},{"PlaceholderComponent":16}],87:[function(require,module,exports){
+},{"PlaceholderComponent":17}],88:[function(require,module,exports){
 'use strict';
 
 /**
@@ -11401,7 +11441,7 @@ var CheckboxHasLabel = {
 };
 module.exports = CheckboxHasLabel;
 
-},{"LabelComponent":12}],88:[function(require,module,exports){
+},{"LabelComponent":13}],89:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -11510,7 +11550,7 @@ var ColorBackgroundGradientContrast = {
 };
 module.exports = ColorBackgroundGradientContrast;
 
-},{"Case":31,"ColorComponent":4,"rainbowvis.js/rainbowvis.js":50}],89:[function(require,module,exports){
+},{"Case":32,"ColorComponent":4,"rainbowvis.js/rainbowvis.js":51}],90:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -11609,7 +11649,7 @@ var ColorBackgroundImageContrast = {
 };
 module.exports = ColorBackgroundImageContrast;
 
-},{"Case":31,"ColorComponent":4}],90:[function(require,module,exports){
+},{"Case":32,"ColorComponent":4}],91:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -11718,7 +11758,7 @@ var ColorElementBehindBackgroundGradientContrast = {
 };
 module.exports = ColorElementBehindBackgroundGradientContrast;
 
-},{"Case":31,"ColorComponent":4,"DOM":32,"rainbowvis.js/rainbowvis.js":50}],91:[function(require,module,exports){
+},{"Case":32,"ColorComponent":4,"DOM":33,"rainbowvis.js/rainbowvis.js":51}],92:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -11821,7 +11861,7 @@ var ColorElementBehindBackgroundImageContrast = {
 };
 module.exports = ColorElementBehindBackgroundImageContrast;
 
-},{"Case":31,"ColorComponent":4,"DOM":32}],92:[function(require,module,exports){
+},{"Case":32,"ColorComponent":4,"DOM":33}],93:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -11907,7 +11947,7 @@ var ColorElementBehindContrast = {
 };
 module.exports = ColorElementBehindContrast;
 
-},{"Case":31,"ColorComponent":4,"DOM":32}],93:[function(require,module,exports){
+},{"Case":32,"ColorComponent":4,"DOM":33}],94:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -11984,7 +12024,7 @@ var ColorFontContrast = {
 };
 module.exports = ColorFontContrast;
 
-},{"Case":31,"ColorComponent":4}],94:[function(require,module,exports){
+},{"Case":32,"ColorComponent":4}],95:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12036,7 +12076,7 @@ var CssDocumentMakesSenseStyleTurnedOff = {
 };
 module.exports = CssDocumentMakesSenseStyleTurnedOff;
 
-},{"Case":31}],95:[function(require,module,exports){
+},{"Case":32}],96:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -12102,7 +12142,7 @@ var DefinitionListsAreUsed = {
 };
 module.exports = DefinitionListsAreUsed;
 
-},{"Case":31,"DOM":32}],96:[function(require,module,exports){
+},{"Case":32,"DOM":33}],97:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -12139,7 +12179,7 @@ var DoctypeProvided = {
 };
 module.exports = DoctypeProvided;
 
-},{"Case":31}],97:[function(require,module,exports){
+},{"Case":32}],98:[function(require,module,exports){
 'use strict';
 
 var AcronymComponent = require('AcronymComponent');
@@ -12170,7 +12210,7 @@ var DocumentAcronymsHaveElement = {
 };
 module.exports = DocumentAcronymsHaveElement;
 
-},{"AcronymComponent":1}],98:[function(require,module,exports){
+},{"AcronymComponent":1}],99:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12222,7 +12262,7 @@ var DocumentAutoRedirectNotUsed = {
 };
 module.exports = DocumentAutoRedirectNotUsed;
 
-},{"Case":31,"DOM":32}],99:[function(require,module,exports){
+},{"Case":32,"DOM":33}],100:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12275,7 +12315,7 @@ var DocumentContentReadableWithoutStylesheets = {
 };
 module.exports = DocumentContentReadableWithoutStylesheets;
 
-},{"Case":31}],100:[function(require,module,exports){
+},{"Case":32}],101:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12338,7 +12378,7 @@ var DocumentHasTitleElement = {
 };
 module.exports = DocumentHasTitleElement;
 
-},{"Case":31,"DOM":32}],101:[function(require,module,exports){
+},{"Case":32,"DOM":33}],102:[function(require,module,exports){
 'use strict';
 
 var TextSelectorComponent = require('TextSelectorComponent');
@@ -12399,7 +12439,7 @@ var DocumentIsWrittenClearly = {
 };
 module.exports = DocumentIsWrittenClearly;
 
-},{"Case":31,"DOM":32,"IsUnreadable":11,"TextNodeFilterComponent":26,"TextSelectorComponent":27,"TextStatisticsComponent":28}],102:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsUnreadable":12,"TextNodeFilterComponent":27,"TextSelectorComponent":28,"TextStatisticsComponent":29}],103:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -12464,7 +12504,7 @@ var DocumentLangIsISO639Standard = {
 };
 module.exports = DocumentLangIsISO639Standard;
 
-},{"Case":31,"DOM":32,"LanguageCodesStringsComponent":13}],103:[function(require,module,exports){
+},{"Case":32,"DOM":33,"LanguageCodesStringsComponent":14}],104:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12510,7 +12550,7 @@ var DocumentLangNotIdentified = {
 };
 module.exports = DocumentLangNotIdentified;
 
-},{"Case":31}],104:[function(require,module,exports){
+},{"Case":32}],105:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12583,7 +12623,7 @@ var DocumentMetaNotUsedWithTimeout = {
 };
 module.exports = DocumentMetaNotUsedWithTimeout;
 
-},{"Case":31,"DOM":32}],105:[function(require,module,exports){
+},{"Case":32,"DOM":33}],106:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12648,7 +12688,7 @@ var DocumentReadingDirection = {
 };
 module.exports = DocumentReadingDirection;
 
-},{"Case":31,"DOM":32}],106:[function(require,module,exports){
+},{"Case":32,"DOM":33}],107:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -12683,7 +12723,7 @@ var DocumentStrictDocType = {
 };
 module.exports = DocumentStrictDocType;
 
-},{"Case":31}],107:[function(require,module,exports){
+},{"Case":32}],108:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12743,7 +12783,7 @@ var DocumentTitleDescribesDocument = {
 };
 module.exports = DocumentTitleDescribesDocument;
 
-},{"Case":31,"DOM":32}],108:[function(require,module,exports){
+},{"Case":32,"DOM":33}],109:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12783,7 +12823,7 @@ var DocumentTitleIsNotPlaceholder = {
 };
 module.exports = DocumentTitleIsNotPlaceholder;
 
-},{"PlaceholderComponent":16}],109:[function(require,module,exports){
+},{"PlaceholderComponent":17}],110:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -12815,7 +12855,7 @@ var DocumentTitleIsShort = {
 };
 module.exports = DocumentTitleIsShort;
 
-},{"Case":31,"DOM":32}],110:[function(require,module,exports){
+},{"Case":32,"DOM":33}],111:[function(require,module,exports){
 'use strict';
 
 /**
@@ -12856,7 +12896,7 @@ var DocumentTitleNotEmpty = {
 };
 module.exports = DocumentTitleNotEmpty;
 
-},{"PlaceholderComponent":16}],111:[function(require,module,exports){
+},{"PlaceholderComponent":17}],112:[function(require,module,exports){
 'use strict';
 
 var TextSelectorComponent = require('TextSelectorComponent');
@@ -12919,84 +12959,7 @@ var DocumentVisualListsAreMarkedUp = {
 };
 module.exports = DocumentVisualListsAreMarkedUp;
 
-},{"Case":31,"DOM":32,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],112:[function(require,module,exports){
-'use strict';
-
-/**
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-var DOM = require('DOM');
-
-var DomOrderMatchesVisualOrder = {
-  run: function run(test, options) {
-
-    options = options || {};
-
-    $.expr[':'].quailCss = function (obj, index, meta) {
-      var args = meta[3].split(/\s*=\s*/);
-      return DOM.getComputedStyle(obj, args[0]).search(args[1]) > -1;
-    };
-
-    var selector = '*:quailCss(position=absolute), *:quailCss(position=fixed), *:quailCss(float=right), *:quailCss(float=left)';
-
-    test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: options.test ? 'inapplicable' : 'passed'
-        }));
-      } else {
-        candidates.forEach(function (element) {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !DOM.is(element, options.test)) {
-            status = 'passed';
-          } else {
-            status = 'failed';
-          }
-
-          test.add(Case({
-            element: element,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0.5,
-    title: {
-      en: 'Ensure that the visual order of the page matches the DOM',
-      nl: 'Zorg ervoor dat de visuele ordening van de pagina overeenkomt met de DOM'
-    },
-    description: {
-      en: 'When using positioning techniques, make sure that the visual order of the page matches the DOM.',
-      nl: 'Wanneer je gebruik maakt van positioneringstechnieken, zorg er dan voor dat de visuele ordening van de pagina overeenkomt met de DOM.'
-    },
-    guidelines: {
-      wcag: {
-        '1.3.2': {
-          techniques: ['C27']
-        },
-        '2.4.3': {
-          techniques: ['C27']
-        }
-      }
-    },
-    tags: ['content']
-  }
-};
-module.exports = DomOrderMatchesVisualOrder;
-
-},{"Case":31,"DOM":32}],113:[function(require,module,exports){
+},{"Case":32,"DOM":33,"TextNodeFilterComponent":27,"TextSelectorComponent":28}],113:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -13035,7 +12998,7 @@ var EmbedHasAssociatedNoEmbed = {
 };
 module.exports = EmbedHasAssociatedNoEmbed;
 
-},{"Case":31,"DOM":32}],114:[function(require,module,exports){
+},{"Case":32,"DOM":33}],114:[function(require,module,exports){
 'use strict';
 
 /**
@@ -13093,7 +13056,7 @@ var EmbedMustHaveAltAttribute = {
 };
 module.exports = EmbedMustHaveAltAttribute;
 
-},{"Case":31,"DOM":32}],115:[function(require,module,exports){
+},{"Case":32,"DOM":33}],115:[function(require,module,exports){
 'use strict';
 
 /**
@@ -13111,10 +13074,12 @@ var FieldsetHasLabel = {
 
     options = options || {};
 
-    var selector = 'fieldset:not(fieldset:has(legend))';
+    var selector = 'fieldset';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry(selector, scope).filter(function (element) {
+        return DOM.scry('legend', element).length === 0;
+      });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -13168,7 +13133,7 @@ var FieldsetHasLabel = {
 };
 module.exports = FieldsetHasLabel;
 
-},{"Case":31,"DOM":32}],116:[function(require,module,exports){
+},{"Case":32,"DOM":33}],116:[function(require,module,exports){
 'use strict';
 
 /**
@@ -13259,7 +13224,7 @@ var FileHasLabel = {
 };
 module.exports = FileHasLabel;
 
-},{"Case":31,"DOM":32}],117:[function(require,module,exports){
+},{"Case":32,"DOM":33}],117:[function(require,module,exports){
 'use strict';
 
 /**
@@ -13311,7 +13276,7 @@ var FontIsNotUsed = {
 };
 module.exports = FontIsNotUsed;
 
-},{"Case":31,"DOM":32}],118:[function(require,module,exports){
+},{"Case":32,"DOM":33}],118:[function(require,module,exports){
 'use strict';
 
 /**
@@ -13383,7 +13348,7 @@ var FormButtonsHaveValue = {
 };
 module.exports = FormButtonsHaveValue;
 
-},{"Case":31,"DOM":32}],119:[function(require,module,exports){
+},{"Case":32,"DOM":33}],119:[function(require,module,exports){
 'use strict';
 
 /**
@@ -13435,7 +13400,7 @@ var FormErrorMessageHelpsUser = {
 };
 module.exports = FormErrorMessageHelpsUser;
 
-},{"Case":31,"DOM":32}],120:[function(require,module,exports){
+},{"Case":32,"DOM":33}],120:[function(require,module,exports){
 'use strict';
 
 /**
@@ -13487,7 +13452,7 @@ var FormHasGoodErrorMessage = {
 };
 module.exports = FormHasGoodErrorMessage;
 
-},{"Case":31,"DOM":32}],121:[function(require,module,exports){
+},{"Case":32,"DOM":33}],121:[function(require,module,exports){
 'use strict';
 
 /**
@@ -13549,7 +13514,7 @@ var FormHasSubmitButton = {
 };
 module.exports = FormHasSubmitButton;
 
-},{"Case":31,"DOM":32}],122:[function(require,module,exports){
+},{"Case":32,"DOM":33}],122:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -13625,7 +13590,7 @@ var FormWithRequiredLabel = {
 };
 module.exports = FormWithRequiredLabel;
 
-},{"Case":31,"DOM":32,"RedundantStringsComponent":18}],123:[function(require,module,exports){
+},{"Case":32,"DOM":33,"RedundantStringsComponent":19}],123:[function(require,module,exports){
 'use strict';
 
 var HeadingLevelComponent = require('HeadingLevelComponent');
@@ -13716,7 +13681,7 @@ var HeaderH1Format = {
 };
 module.exports = HeaderH1Format;
 
-},{"Case":31,"DOM":32}],125:[function(require,module,exports){
+},{"Case":32,"DOM":33}],125:[function(require,module,exports){
 'use strict';
 
 var HeadingLevelComponent = require('HeadingLevelComponent');
@@ -13807,7 +13772,7 @@ var HeaderH2Format = {
 };
 module.exports = HeaderH2Format;
 
-},{"Case":31,"DOM":32}],127:[function(require,module,exports){
+},{"Case":32,"DOM":33}],127:[function(require,module,exports){
 'use strict';
 
 var HeadingLevelComponent = require('HeadingLevelComponent');
@@ -13898,7 +13863,7 @@ var HeaderH3Format = {
 };
 module.exports = HeaderH3Format;
 
-},{"Case":31,"DOM":32}],129:[function(require,module,exports){
+},{"Case":32,"DOM":33}],129:[function(require,module,exports){
 'use strict';
 
 var HeadingLevelComponent = require('HeadingLevelComponent');
@@ -13989,7 +13954,7 @@ var HeaderH4Format = {
 };
 module.exports = HeaderH4Format;
 
-},{"Case":31,"DOM":32}],131:[function(require,module,exports){
+},{"Case":32,"DOM":33}],131:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14047,7 +14012,7 @@ var HeaderH5Format = {
 };
 module.exports = HeaderH5Format;
 
-},{"Case":31,"DOM":32}],132:[function(require,module,exports){
+},{"Case":32,"DOM":33}],132:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14105,7 +14070,7 @@ var HeaderH6Format = {
 };
 module.exports = HeaderH6Format;
 
-},{"Case":31,"DOM":32}],133:[function(require,module,exports){
+},{"Case":32,"DOM":33}],133:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -14166,7 +14131,7 @@ var HeadersAttrRefersToATableCell = {
 };
 module.exports = HeadersAttrRefersToATableCell;
 
-},{"Case":31,"DOM":32}],134:[function(require,module,exports){
+},{"Case":32,"DOM":33}],134:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14210,7 +14175,7 @@ var HeadersHaveText = {
 };
 module.exports = HeadersHaveText;
 
-},{"PlaceholderComponent":16}],135:[function(require,module,exports){
+},{"PlaceholderComponent":17}],135:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -14223,10 +14188,9 @@ var HeadersUseToMarkSections = {
           element: element
         });
         test.add(_case);
-        var $paragraph = element;
-        DOM.scry('strong:first, em:first, i:first, b:first', $paragraph).forEach(function (element) {
+        [DOM.scry('strong', element)[0], DOM.scry('em', element)[0], DOM.scry('i', element)[0], DOM.scry('b', element)[0]].forEach(function (inlineText) {
           _case.set({
-            status: DOM.text($paragraph).trim() === DOM.text(element).trim() ? 'failed' : 'passed'
+            status: DOM.text(inlineText).trim() === DOM.text(element).trim() ? 'failed' : 'passed'
           });
         });
       });
@@ -14239,15 +14203,22 @@ var HeadersUseToMarkSections = {
         });
         test.add(_case);
         var $list = element;
-        if ($list.prevAll(':header').length || DOM.scry('li', $list).length !== DOM.scry('li:has(a)', $list).length) {
+        var prevHeaders = DOM.prevAll($list).filter(function (element) {
+          return DOM.is('h1, h2, h3, h4, h5, h6');
+        });
+        var items = DOM.scry('li', $list);
+        var itemLinks = DOM.scry('li', $list).filter(function (element) {
+          return DOM.scry('a', element).length > 0;
+        });
+        if (prevHeaders.length || items.length !== itemLinks.length) {
           _case.set({
             status: 'passed'
           });
           return;
         }
         var isNavigation = true;
-        DOM.scry('li:has(a)', $list).forEach(function (element) {
-          if (DOM.scry('a:first', element).text().trim() !== DOM.text(element).trim()) {
+        itemLinks.forEach(function (element) {
+          if (DOM.text(DOM.scry('a', element)[0]).trim() !== DOM.text(element).trim()) {
             isNavigation = false;
           }
         });
@@ -14285,7 +14256,7 @@ var HeadersUseToMarkSections = {
 };
 module.exports = HeadersUseToMarkSections;
 
-},{"Case":31,"DOM":32}],136:[function(require,module,exports){
+},{"Case":32,"DOM":33}],136:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14337,7 +14308,7 @@ var IIsNotUsed = {
 };
 module.exports = IIsNotUsed;
 
-},{"Case":31,"DOM":32}],137:[function(require,module,exports){
+},{"Case":32,"DOM":33}],137:[function(require,module,exports){
 'use strict';
 
 function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
@@ -14419,7 +14390,7 @@ var IdrefsHasCorrespondingId = {
 };
 module.exports = IdrefsHasCorrespondingId;
 
-},{"Case":31,"DOM":32}],138:[function(require,module,exports){
+},{"Case":32,"DOM":33}],138:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14477,7 +14448,7 @@ var IframeMustNotHaveLongdesc = {
 };
 module.exports = IframeMustNotHaveLongdesc;
 
-},{"Case":31,"DOM":32}],139:[function(require,module,exports){
+},{"Case":32,"DOM":33}],139:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14535,7 +14506,7 @@ var ImageMapServerSide = {
 };
 module.exports = ImageMapServerSide;
 
-},{"Case":31,"DOM":32}],140:[function(require,module,exports){
+},{"Case":32,"DOM":33}],140:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -14594,7 +14565,7 @@ var ImgAltIsDifferent = {
 };
 module.exports = ImgAltIsDifferent;
 
-},{"Case":31,"DOM":32}],141:[function(require,module,exports){
+},{"Case":32,"DOM":33}],141:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -14637,7 +14608,7 @@ var ImgAltIsTooLong = {
 };
 module.exports = ImgAltIsTooLong;
 
-},{"Case":31,"DOM":32}],142:[function(require,module,exports){
+},{"Case":32,"DOM":33}],142:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -14646,7 +14617,9 @@ var IsUnreadable = require('IsUnreadable');
 var ImgAltNotEmptyInAnchor = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry('a[href]:has(img)', scope).forEach(function (element) {
+      DOM.scry('a[href]', scope).filter(function (element) {
+        return DOM.scry('img', element).length > 0;
+      }).forEach(function (element) {
         var $a = element;
         var text = DOM.text($a);
 
@@ -14696,7 +14669,7 @@ var ImgAltNotEmptyInAnchor = {
 };
 module.exports = ImgAltNotEmptyInAnchor;
 
-},{"Case":31,"DOM":32,"IsUnreadable":11}],143:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsUnreadable":12}],143:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14740,7 +14713,7 @@ var ImgAltNotPlaceHolder = {
 };
 module.exports = ImgAltNotPlaceHolder;
 
-},{"PlaceholderComponent":16}],144:[function(require,module,exports){
+},{"PlaceholderComponent":17}],144:[function(require,module,exports){
 'use strict';
 
 /**
@@ -14805,7 +14778,7 @@ var ImgHasAlt = {
 };
 module.exports = ImgHasAlt;
 
-},{"Case":31,"DOM":32}],145:[function(require,module,exports){
+},{"Case":32,"DOM":33}],145:[function(require,module,exports){
 'use strict';
 
 var ValidURLComponent = require('ValidURLComponent');
@@ -14857,7 +14830,7 @@ var ImgHasLongDesc = {
 };
 module.exports = ImgHasLongDesc;
 
-},{"Case":31,"DOM":32,"ValidURLComponent":29}],146:[function(require,module,exports){
+},{"Case":32,"DOM":33,"ValidURLComponent":30}],146:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -14910,7 +14883,7 @@ var ImgImportantNoSpacerAlt = {
 };
 module.exports = ImgImportantNoSpacerAlt;
 
-},{"Case":31,"DOM":32,"IsUnreadable":11}],147:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsUnreadable":12}],147:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -14968,7 +14941,7 @@ var ImgNonDecorativeHasAlt = {
 };
 module.exports = ImgNonDecorativeHasAlt;
 
-},{"Case":31,"DOM":32,"IsUnreadable":11}],148:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsUnreadable":12}],148:[function(require,module,exports){
 'use strict';
 
 /**
@@ -15026,7 +14999,7 @@ var ImgServerSideMapNotUsed = {
 };
 module.exports = ImgServerSideMapNotUsed;
 
-},{"Case":31,"DOM":32}],149:[function(require,module,exports){
+},{"Case":32,"DOM":33}],149:[function(require,module,exports){
 'use strict';
 
 /**
@@ -15084,7 +15057,7 @@ var ImgShouldNotHaveTitle = {
 };
 module.exports = ImgShouldNotHaveTitle;
 
-},{"Case":31,"DOM":32}],150:[function(require,module,exports){
+},{"Case":32,"DOM":33}],150:[function(require,module,exports){
 'use strict';
 
 /**
@@ -15144,7 +15117,7 @@ var ImgWithMapHasUseMap = {
 };
 module.exports = ImgWithMapHasUseMap;
 
-},{"Case":31,"DOM":32}],151:[function(require,module,exports){
+},{"Case":32,"DOM":33}],151:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -15195,7 +15168,7 @@ var InputCheckboxRequiresFieldset = {
 };
 module.exports = InputCheckboxRequiresFieldset;
 
-},{"Case":31,"DOM":32}],152:[function(require,module,exports){
+},{"Case":32,"DOM":33}],152:[function(require,module,exports){
 'use strict';
 
 /**
@@ -15253,7 +15226,7 @@ var InputElementsDontHaveAlt = {
 };
 module.exports = InputElementsDontHaveAlt;
 
-},{"Case":31,"DOM":32}],153:[function(require,module,exports){
+},{"Case":32,"DOM":33}],153:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -15302,7 +15275,7 @@ var InputImageAltIsNotFileName = {
 };
 module.exports = InputImageAltIsNotFileName;
 
-},{"Case":31,"DOM":32}],154:[function(require,module,exports){
+},{"Case":32,"DOM":33}],154:[function(require,module,exports){
 'use strict';
 
 /**
@@ -15352,7 +15325,7 @@ var InputImageAltIsNotPlaceholder = {
 };
 module.exports = InputImageAltIsNotPlaceholder;
 
-},{"PlaceholderComponent":16}],155:[function(require,module,exports){
+},{"PlaceholderComponent":17}],155:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -15401,7 +15374,7 @@ var InputImageAltIsShort = {
 };
 module.exports = InputImageAltIsShort;
 
-},{"Case":31,"DOM":32}],156:[function(require,module,exports){
+},{"Case":32,"DOM":33}],156:[function(require,module,exports){
 'use strict';
 
 var CleanStringComponent = require('CleanStringComponent');
@@ -15451,7 +15424,7 @@ var InputImageAltNotRedundant = {
 };
 module.exports = InputImageAltNotRedundant;
 
-},{"Case":31,"CleanStringComponent":3,"DOM":32,"RedundantStringsComponent":18}],157:[function(require,module,exports){
+},{"Case":32,"CleanStringComponent":3,"DOM":33,"RedundantStringsComponent":19}],157:[function(require,module,exports){
 'use strict';
 
 /**
@@ -15466,11 +15439,10 @@ var DOM = require('DOM');
 
 var InputImageHasAlt = {
   run: function run(test) {
-
-    var selector = 'input[type=image]:visible';
-
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry('input[type=image]', scope).filter(function (element) {
+        return DOM.isVisible(element);
+      });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -15520,15 +15492,12 @@ var InputImageHasAlt = {
         }
       }
     },
-    tags: ['form', 'image', 'content'],
-    options: {
-      test: ':not(input[type=image][alt])'
-    }
+    tags: ['form', 'image', 'content']
   }
 };
 module.exports = InputImageHasAlt;
 
-},{"Case":31,"DOM":32}],158:[function(require,module,exports){
+},{"Case":32,"DOM":33}],158:[function(require,module,exports){
 'use strict';
 
 /**
@@ -15582,7 +15551,7 @@ var InputTextHasLabel = {
 };
 module.exports = InputTextHasLabel;
 
-},{"LabelComponent":12}],159:[function(require,module,exports){
+},{"LabelComponent":13}],159:[function(require,module,exports){
 'use strict';
 
 /**
@@ -15617,7 +15586,7 @@ var InputTextHasValue = {
 };
 module.exports = InputTextHasValue;
 
-},{"PlaceholderComponent":16}],160:[function(require,module,exports){
+},{"PlaceholderComponent":17}],160:[function(require,module,exports){
 'use strict';
 
 /**
@@ -15652,7 +15621,7 @@ var InputTextValueNotEmpty = {
 };
 module.exports = InputTextValueNotEmpty;
 
-},{"PlaceholderComponent":16}],161:[function(require,module,exports){
+},{"PlaceholderComponent":17}],161:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -15727,7 +15696,7 @@ var InputWithoutLabelHasTitle = {
 };
 module.exports = InputWithoutLabelHasTitle;
 
-},{"Case":31,"DOM":32,"IsUnreadable":11}],162:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsUnreadable":12}],162:[function(require,module,exports){
 'use strict';
 
 /**
@@ -15784,7 +15753,7 @@ var LabelDoesNotContainInput = {
 };
 module.exports = LabelDoesNotContainInput;
 
-},{"Case":31,"DOM":32}],163:[function(require,module,exports){
+},{"Case":32,"DOM":33}],163:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -15837,7 +15806,7 @@ var LabelMustBeUnique = {
 };
 module.exports = LabelMustBeUnique;
 
-},{"Case":31,"DOM":32}],164:[function(require,module,exports){
+},{"Case":32,"DOM":33}],164:[function(require,module,exports){
 'use strict';
 
 /**
@@ -15887,7 +15856,7 @@ var LabelMustNotBeEmpty = {
 };
 module.exports = LabelMustNotBeEmpty;
 
-},{"PlaceholderComponent":16}],165:[function(require,module,exports){
+},{"PlaceholderComponent":17}],165:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -15937,7 +15906,7 @@ var LabelsAreAssignedToAnInput = {
 };
 module.exports = LabelsAreAssignedToAnInput;
 
-},{"Case":31,"DOM":32}],166:[function(require,module,exports){
+},{"Case":32,"DOM":33}],166:[function(require,module,exports){
 'use strict';
 
 var GetTextContentsComponent = require('GetTextContentsComponent');
@@ -16018,7 +15987,7 @@ var LanguageDirAttributeIsUsed = {
 };
 module.exports = LanguageDirAttributeIsUsed;
 
-},{"Case":31,"DOM":32,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],167:[function(require,module,exports){
+},{"Case":32,"DOM":33,"GetTextContentsComponent":7,"LanguageComponent":15,"TextNodeFilterComponent":27,"TextSelectorComponent":28}],167:[function(require,module,exports){
 'use strict';
 
 var GetTextContentsComponent = require('GetTextContentsComponent');
@@ -16096,7 +16065,7 @@ var LanguageDirectionPunctuation = {
 };
 module.exports = LanguageDirectionPunctuation;
 
-},{"Case":31,"DOM":32,"GetTextContentsComponent":7,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],168:[function(require,module,exports){
+},{"Case":32,"DOM":33,"GetTextContentsComponent":7,"LanguageComponent":15,"TextNodeFilterComponent":27,"TextSelectorComponent":28}],168:[function(require,module,exports){
 'use strict';
 
 var TextSelectorComponent = require('TextSelectorComponent');
@@ -16153,7 +16122,7 @@ var LanguageUnicodeDirection = {
 };
 module.exports = LanguageUnicodeDirection;
 
-},{"Case":31,"DOM":32,"LanguageComponent":14,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],169:[function(require,module,exports){
+},{"Case":32,"DOM":33,"LanguageComponent":15,"TextNodeFilterComponent":27,"TextSelectorComponent":28}],169:[function(require,module,exports){
 'use strict';
 
 /**
@@ -16223,7 +16192,7 @@ var LegendTextNotEmpty = {
 };
 module.exports = LegendTextNotEmpty;
 
-},{"Case":31,"DOM":32}],170:[function(require,module,exports){
+},{"Case":32,"DOM":33}],170:[function(require,module,exports){
 'use strict';
 
 /**
@@ -16276,7 +16245,7 @@ var LegendTextNotPlaceholder = {
 };
 module.exports = LegendTextNotPlaceholder;
 
-},{"PlaceholderComponent":16}],171:[function(require,module,exports){
+},{"PlaceholderComponent":17}],171:[function(require,module,exports){
 'use strict';
 
 /**
@@ -16330,7 +16299,7 @@ var LiDontUseImageForBullet = {
 };
 module.exports = LiDontUseImageForBullet;
 
-},{"Case":31,"DOM":32}],172:[function(require,module,exports){
+},{"Case":32,"DOM":33}],172:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -16448,7 +16417,9 @@ var LinkHasAUniqueContext = {
     }
 
     test.get('scope').forEach(function (scope) {
-      var links = DOM.scry('a[href]:visible', scope);
+      var links = DOM.scry('a[href]', scope).filter(function (element) {
+        return DOM.isVisible(element);
+      });
       var linkMap = {};
 
       if (links.length === 0) {
@@ -16526,7 +16497,7 @@ var LinkHasAUniqueContext = {
 };
 module.exports = LinkHasAUniqueContext;
 
-},{"Case":31,"DOM":32,"TableHeadersComponent":25}],173:[function(require,module,exports){
+},{"Case":32,"DOM":33,"TableHeadersComponent":26}],173:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -16574,7 +16545,7 @@ var ListNotUsedForFormatting = {
 };
 module.exports = ListNotUsedForFormatting;
 
-},{"Case":31,"DOM":32}],174:[function(require,module,exports){
+},{"Case":32,"DOM":33}],174:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -16628,7 +16599,7 @@ var ListOfLinksUseList = {
 };
 module.exports = ListOfLinksUseList;
 
-},{"Case":31,"DOM":32,"IsUnreadable":11}],175:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsUnreadable":12}],175:[function(require,module,exports){
 'use strict';
 
 /**
@@ -16682,63 +16653,7 @@ var MarqueeIsNotUsed = {
 };
 module.exports = MarqueeIsNotUsed;
 
-},{"Case":31,"DOM":32}],176:[function(require,module,exports){
-'use strict';
-
-/**
- * @todo Needs refinement.
- *
- * A simple test case that determines if elements, specified by a selector,
- * exist or not.
- *
- * The test fails for elements that are found and a case is created for each
- * one. The test passes is the selector finds no matching elements.
- */
-var Case = require('Case');
-var DOM = require('DOM');
-
-var MenuNotUsedToFormatText = {
-  run: function run(test) {
-
-    var selector = 'menu:not(menu li:parent(menu))';
-
-    test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
-      if (!candidates.length) {
-        test.add(Case({
-          element: undefined,
-          status: 'inapplicable'
-        }));
-      } else {
-        candidates.forEach(function (element) {
-          var status = 'failed';
-
-          test.add(Case({
-            element: element,
-            status: status
-          }));
-        });
-      }
-    });
-  },
-
-  meta: {
-    testability: 0,
-    title: {
-      en: 'Menu elements should not be used for formatting',
-      nl: 'Menu-elementen worden niet gebruikt voor opmaak'
-    },
-    description: {
-      en: 'Menu is a deprecated tag, but is still honored in a transitional DTD. Menu tags are to provide structure for a document and should not be used for formatting. If a menu tag is to be used, it should only contain an ordered or unordered list of links.',
-      nl: 'Menu is een afgekeurd tag, maar wordt nog wel gebruikt om structuur aan een document te geven. Het mag niet worden gebruikt voor opmaak. Als een menu-tag wordt gebruikt, mag het alleen bulleted of genummerde lijsten bevatten.'
-    },
-    guidelines: [],
-    tags: ['list', 'content']
-  }
-};
-module.exports = MenuNotUsedToFormatText;
-
-},{"Case":31,"DOM":32}],177:[function(require,module,exports){
+},{"Case":32,"DOM":33}],176:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -16794,7 +16709,7 @@ var NewWindowIsOpened = {
 };
 module.exports = NewWindowIsOpened;
 
-},{"Case":31,"DOM":32}],178:[function(require,module,exports){
+},{"Case":32,"DOM":33}],177:[function(require,module,exports){
 'use strict';
 
 /**
@@ -16835,7 +16750,7 @@ var ObjectMustContainText = {
 };
 module.exports = ObjectMustContainText;
 
-},{"PlaceholderComponent":16}],179:[function(require,module,exports){
+},{"PlaceholderComponent":17}],178:[function(require,module,exports){
 'use strict';
 
 /**
@@ -16894,7 +16809,7 @@ var ObjectMustHaveEmbed = {
 };
 module.exports = ObjectMustHaveEmbed;
 
-},{"Case":31,"DOM":32}],180:[function(require,module,exports){
+},{"Case":32,"DOM":33}],179:[function(require,module,exports){
 'use strict';
 
 /**
@@ -16960,7 +16875,7 @@ var ObjectMustHaveTitle = {
 };
 module.exports = ObjectMustHaveTitle;
 
-},{"Case":31,"DOM":32}],181:[function(require,module,exports){
+},{"Case":32,"DOM":33}],180:[function(require,module,exports){
 'use strict';
 
 /**
@@ -16995,7 +16910,7 @@ var ObjectMustHaveValidTitle = {
 };
 module.exports = ObjectMustHaveValidTitle;
 
-},{"PlaceholderComponent":16}],182:[function(require,module,exports){
+},{"PlaceholderComponent":17}],181:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -17089,7 +17004,7 @@ var PNotUsedAsHeader = {
 };
 module.exports = PNotUsedAsHeader;
 
-},{"Case":31,"DOM":32,"SuspectPCSSStyles":21,"SuspectPHeaderTags":22}],183:[function(require,module,exports){
+},{"Case":32,"DOM":33,"SuspectPCSSStyles":22,"SuspectPHeaderTags":23}],182:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17144,7 +17059,7 @@ var PasswordHasLabel = {
 };
 module.exports = PasswordHasLabel;
 
-},{"LabelComponent":12}],184:[function(require,module,exports){
+},{"LabelComponent":13}],183:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -17190,7 +17105,7 @@ var PreShouldNotBeUsedForTabularLayout = {
 };
 module.exports = PreShouldNotBeUsedForTabularLayout;
 
-},{"Case":31,"DOM":32}],185:[function(require,module,exports){
+},{"Case":32,"DOM":33}],184:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17245,7 +17160,7 @@ var RadioHasLabel = {
 };
 module.exports = RadioHasLabel;
 
-},{"LabelComponent":12}],186:[function(require,module,exports){
+},{"LabelComponent":13}],185:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17290,7 +17205,7 @@ var ScriptOnclickRequiresOnKeypress = {
 };
 module.exports = ScriptOnclickRequiresOnKeypress;
 
-},{"EventComponent":6}],187:[function(require,module,exports){
+},{"EventComponent":6}],186:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17335,7 +17250,7 @@ var ScriptOndblclickRequiresOnKeypress = {
 };
 module.exports = ScriptOndblclickRequiresOnKeypress;
 
-},{"EventComponent":6}],188:[function(require,module,exports){
+},{"EventComponent":6}],187:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17380,7 +17295,7 @@ var ScriptOnmousedownRequiresOnKeypress = {
 };
 module.exports = ScriptOnmousedownRequiresOnKeypress;
 
-},{"EventComponent":6}],189:[function(require,module,exports){
+},{"EventComponent":6}],188:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17425,7 +17340,7 @@ var ScriptOnmousemove = {
 };
 module.exports = ScriptOnmousemove;
 
-},{"EventComponent":6}],190:[function(require,module,exports){
+},{"EventComponent":6}],189:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17470,7 +17385,7 @@ var ScriptOnmouseoutHasOnmouseblur = {
 };
 module.exports = ScriptOnmouseoutHasOnmouseblur;
 
-},{"EventComponent":6}],191:[function(require,module,exports){
+},{"EventComponent":6}],190:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17515,7 +17430,7 @@ var ScriptOnmouseoverHasOnfocus = {
 };
 module.exports = ScriptOnmouseoverHasOnfocus;
 
-},{"EventComponent":6}],192:[function(require,module,exports){
+},{"EventComponent":6}],191:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17560,7 +17475,7 @@ var ScriptOnmouseupHasOnkeyup = {
 };
 module.exports = ScriptOnmouseupHasOnkeyup;
 
-},{"EventComponent":6}],193:[function(require,module,exports){
+},{"EventComponent":6}],192:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17614,7 +17529,7 @@ var SelectHasAssociatedLabel = {
 };
 module.exports = SelectHasAssociatedLabel;
 
-},{"LabelComponent":12}],194:[function(require,module,exports){
+},{"LabelComponent":13}],193:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -17665,7 +17580,7 @@ var SelectJumpMenu = {
 };
 module.exports = SelectJumpMenu;
 
-},{"Case":31,"DOM":32,"HasEventListenerComponent":8}],195:[function(require,module,exports){
+},{"Case":32,"DOM":33,"HasEventListenerComponent":8}],194:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -17730,10 +17645,9 @@ var SiteMap = {
 
 module.exports = SiteMap;
 
-},{"Case":31,"DOM":32,"SiteMapStringsComponent":19}],196:[function(require,module,exports){
+},{"Case":32,"DOM":33,"SiteMapStringsComponent":20}],195:[function(require,module,exports){
 'use strict';
 
-/**globals console:true */
 var Case = require('Case');
 var DOM = require('DOM');
 
@@ -17758,7 +17672,7 @@ var SkipToContentLinkProvided = {
           var str = strs.pop();
           if (DOM.text($link).search(str) > -1 && $target.length) {
             $link.focus();
-            if (DOM.is($link, ':visible') && DOM.getComputedStyle($link, 'visibility') !== 'hidden') {
+            if (DOM.isVisible($link)) {
               skipLinkFound = true;
               test.add(Case({
                 element: $link,
@@ -17801,7 +17715,7 @@ var SkipToContentLinkProvided = {
 };
 module.exports = SkipToContentLinkProvided;
 
-},{"Case":31,"DOM":32,"SkipContentStringsComponent":20}],197:[function(require,module,exports){
+},{"Case":32,"DOM":33,"SkipContentStringsComponent":21}],196:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17866,7 +17780,7 @@ var SvgContainsTitle = {
 };
 module.exports = SvgContainsTitle;
 
-},{"Case":31,"DOM":32}],198:[function(require,module,exports){
+},{"Case":32,"DOM":33}],197:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -17916,7 +17830,7 @@ var TabIndexFollowsLogicalOrder = {
 };
 module.exports = TabIndexFollowsLogicalOrder;
 
-},{"Case":31,"DOM":32}],199:[function(require,module,exports){
+},{"Case":32,"DOM":33}],198:[function(require,module,exports){
 'use strict';
 
 /**
@@ -17981,7 +17895,7 @@ var TableDataShouldHaveTh = {
 };
 module.exports = TableDataShouldHaveTh;
 
-},{"Case":31,"DOM":32}],200:[function(require,module,exports){
+},{"Case":32,"DOM":33}],199:[function(require,module,exports){
 'use strict';
 
 var IsDataTableComponent = require('IsDataTableComponent');
@@ -18037,7 +17951,7 @@ var TableLayoutDataShouldNotHaveTh = {
 };
 module.exports = TableLayoutDataShouldNotHaveTh;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],201:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsDataTableComponent":11}],200:[function(require,module,exports){
 'use strict';
 
 var IsDataTableComponent = require('IsDataTableComponent');
@@ -18091,7 +18005,7 @@ var TableLayoutHasNoCaption = {
 };
 module.exports = TableLayoutHasNoCaption;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],202:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsDataTableComponent":11}],201:[function(require,module,exports){
 'use strict';
 
 var IsDataTableComponent = require('IsDataTableComponent');
@@ -18136,7 +18050,7 @@ var TableLayoutHasNoSummary = {
 };
 module.exports = TableLayoutHasNoSummary;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10,"IsUnreadable":11}],203:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsDataTableComponent":11,"IsUnreadable":12}],202:[function(require,module,exports){
 'use strict';
 
 var IsDataTableComponent = require('IsDataTableComponent');
@@ -18181,7 +18095,7 @@ var TableLayoutMakesSenseLinearized = {
 };
 module.exports = TableLayoutMakesSenseLinearized;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],204:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsDataTableComponent":11}],203:[function(require,module,exports){
 'use strict';
 
 var IsDataTableComponent = require('IsDataTableComponent');
@@ -18228,7 +18142,7 @@ var TableNotUsedForLayout = {
 };
 module.exports = TableNotUsedForLayout;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],205:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsDataTableComponent":11}],204:[function(require,module,exports){
 'use strict';
 
 var IsDataTableComponent = require('IsDataTableComponent');
@@ -18292,7 +18206,7 @@ var TableShouldUseHeaderIDs = {
 };
 module.exports = TableShouldUseHeaderIDs;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],206:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsDataTableComponent":11}],205:[function(require,module,exports){
 'use strict';
 
 var CleanStringComponent = require('CleanStringComponent');
@@ -18301,7 +18215,9 @@ var DOM = require('DOM');
 var TableSummaryDoesNotDuplicateCaption = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry('table[summary]:has(caption)', scope).forEach(function (element) {
+      DOM.scry('table[summary]', scope).filter(function (element) {
+        return DOM.scry('caption', element).length > 0;
+      }).forEach(function (element) {
         var caption = DOM.scry('caption', element)[0];
         var summary = caption && DOM.getAttribute(caption, 'summary');
         if (summary && CleanStringComponent(summary) === CleanStringComponent(DOM.text(element))) {
@@ -18335,7 +18251,7 @@ var TableSummaryDoesNotDuplicateCaption = {
 };
 module.exports = TableSummaryDoesNotDuplicateCaption;
 
-},{"Case":31,"CleanStringComponent":3,"DOM":32}],207:[function(require,module,exports){
+},{"Case":32,"CleanStringComponent":3,"DOM":33}],206:[function(require,module,exports){
 'use strict';
 
 /**
@@ -18370,7 +18286,7 @@ var TableSummaryIsEmpty = {
 };
 module.exports = TableSummaryIsEmpty;
 
-},{"PlaceholderComponent":16}],208:[function(require,module,exports){
+},{"PlaceholderComponent":17}],207:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -18397,7 +18313,7 @@ var TableSummaryIsNotTooLong = {
 };
 module.exports = TableSummaryIsNotTooLong;
 
-},{"Case":31,"DOM":32}],209:[function(require,module,exports){
+},{"Case":32,"DOM":33}],208:[function(require,module,exports){
 'use strict';
 
 var IsDataTableComponent = require('IsDataTableComponent');
@@ -18433,7 +18349,7 @@ var TableUseColGroup = {
 };
 module.exports = TableUseColGroup;
 
-},{"Case":31,"DOM":32,"IsDataTableComponent":10}],210:[function(require,module,exports){
+},{"Case":32,"DOM":33,"IsDataTableComponent":11}],209:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -18441,7 +18357,10 @@ var DOM = require('DOM');
 var TableUsesAbbreviationForHeader = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry('th:not(th[abbr])', scope).forEach(function (element) {
+      DOM.scry('th', scope).filter(function (element) {
+        var abbr = DOM.getAttribute(element, 'abbr');
+        return !abbr || abbr === '';
+      }).forEach(function (element) {
         if (DOM.text(element).length > 20) {
           test.add(Case({
             element: element,
@@ -18468,7 +18387,7 @@ var TableUsesAbbreviationForHeader = {
 };
 module.exports = TableUsesAbbreviationForHeader;
 
-},{"Case":31,"DOM":32}],211:[function(require,module,exports){
+},{"Case":32,"DOM":33}],210:[function(require,module,exports){
 'use strict';
 
 /**
@@ -18533,7 +18452,7 @@ var TableUsesCaption = {
 };
 module.exports = TableUsesCaption;
 
-},{"Case":31,"DOM":32}],212:[function(require,module,exports){
+},{"Case":32,"DOM":33}],211:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -18602,7 +18521,7 @@ var TableUsesScopeForRow = {
 };
 module.exports = TableUsesScopeForRow;
 
-},{"Case":31,"DOM":32}],213:[function(require,module,exports){
+},{"Case":32,"DOM":33}],212:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -18651,7 +18570,7 @@ var TabularDataIsInTable = {
 };
 module.exports = TabularDataIsInTable;
 
-},{"Case":31,"DOM":32}],214:[function(require,module,exports){
+},{"Case":32,"DOM":33}],213:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -18703,7 +18622,7 @@ var TextIsNotSmall = {
 };
 module.exports = TextIsNotSmall;
 
-},{"Case":31,"ConvertToPxComponent":5,"DOM":32,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],215:[function(require,module,exports){
+},{"Case":32,"ConvertToPxComponent":5,"DOM":33,"TextNodeFilterComponent":27,"TextSelectorComponent":28}],214:[function(require,module,exports){
 'use strict';
 
 /**
@@ -18757,7 +18676,7 @@ var TextareaHasAssociatedLabel = {
 };
 module.exports = TextareaHasAssociatedLabel;
 
-},{"LabelComponent":12}],216:[function(require,module,exports){
+},{"LabelComponent":13}],215:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -18830,7 +18749,7 @@ var VideoMayBePresent = {
 };
 module.exports = VideoMayBePresent;
 
-},{"Case":31,"DOM":32}],217:[function(require,module,exports){
+},{"Case":32,"DOM":33}],216:[function(require,module,exports){
 'use strict';
 
 var Case = require('Case');
@@ -18879,7 +18798,7 @@ var VideosEmbeddedOrLinkedNeedCaptions = {
 };
 module.exports = VideosEmbeddedOrLinkedNeedCaptions;
 
-},{"Case":31,"VideoComponent":30}],218:[function(require,module,exports){
+},{"Case":32,"VideoComponent":31}],217:[function(require,module,exports){
 'use strict';
 
 var TextSelectorComponent = require('TextSelectorComponent');
@@ -18933,7 +18852,7 @@ var WhiteSpaceInWord = {
 };
 module.exports = WhiteSpaceInWord;
 
-},{"Case":31,"DOM":32,"TextNodeFilterComponent":26,"TextSelectorComponent":27}],219:[function(require,module,exports){
+},{"Case":32,"DOM":33,"TextNodeFilterComponent":27,"TextSelectorComponent":28}],218:[function(require,module,exports){
 'use strict';
 
 var TextSelectorComponent = require('TextSelectorComponent');
@@ -18991,4 +18910,4 @@ var WhiteSpaceNotUsedForFormatting = {
 };
 module.exports = WhiteSpaceNotUsedForFormatting;
 
-},{"Case":31,"DOM":32,"TextNodeFilterComponent":26,"TextSelectorComponent":27}]},{},[33,37]);
+},{"Case":32,"DOM":33,"TextNodeFilterComponent":27,"TextSelectorComponent":28}]},{},[34,38]);

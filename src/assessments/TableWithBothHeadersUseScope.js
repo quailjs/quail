@@ -10,32 +10,32 @@ const DOM = require('DOM');
 
 var TableWithBothHeadersUseScope = {
   run: function (test, options) {
-
-    var selector = 'table:has(tr:not(table tr:first) th:not(th[scope]))';
-
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry('th', scope)
+        // Find all the th elements that don't have scope.
+        .filter((element) => {
+          let scope = element.getAttribute(element, 'scope');
+          return !scope || scope.length === 0;
+        })
+        // of them, filter down to the th elements not in the first row.
+        .filter((element) => {
+          let parents = DOM.parents(elements);
+          let row = parents.filter((element) => DOM.is('tr'))[0];
+          let table = parents.filter((element) => DOM.is('table'))[0];
+          let firstRow = DOM.scry('tr', table)[0];
+          return row !=== firstRow;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
-          status: (options.test ? 'inapplicable' : 'passed')
+          status: 'passed'
         }));
       }
       else {
         candidates.forEach(function (element) {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !DOM.is(element, options.test)) {
-            status = 'passed';
-          }
-          else {
-            status = 'failed';
-          }
-
           test.add(Case({
             element: element,
-            status: status
+            status: 'failed'
           }));
         });
       }

@@ -10,32 +10,23 @@ const DOM = require('DOM');
 
 var FrameTitlesNotEmpty = {
   run: function (test, options) {
-
-    var selector = 'frame:not(frame[title]), frame[title=""], iframe:not(iframe[title]), iframe[title=""]';
-
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      DOM.scry('frame, iframe', scope)
+        .filter((element) => {
+          let title = DOM.getAttribute('title');
+          return !title || title.length === 0;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
-          status: (options.test ? 'inapplicable' : 'passed')
+          status: 'passed'
         }));
       }
       else {
         candidates.forEach(function (element) {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !DOM.is(element, options.test)) {
-            status = 'passed';
-          }
-          else {
-            status = 'failed';
-          }
-
           test.add(Case({
             element: element,
-            status: status
+            status: 'failed'
           }));
         });
       }

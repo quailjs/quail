@@ -11,10 +11,15 @@ const DOM = require('DOM');
 var TableIsGrouped = {
   run: function (test, options) {
 
-    var selector = 'table:not(table:has(thead), table:has(tfoot))';
+    var selector = 'table';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry(selector, scope)
+        .filter((element) => {
+          let theads = DOM.scry('thead', element);
+          let tfoots = DOM.scry('tfoot', element);
+          return theads.length === 0 || tfoots.length === 0;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,

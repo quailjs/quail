@@ -10,32 +10,24 @@ const DOM = require('DOM');
 
 var ScriptInBodyMustHaveNoscript = {
   run: function (test, options) {
-
-    var selector = 'html:not(html:has(noscript)):has(script) body';
-
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry('body', scope)
+        .filter((element) => {
+          let noscripts = DOM.scry('noscript', element);
+          let scripts = DOM.scry('script', element);
+          return noscripts.length === 0 && scripts.length > 0;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
-          status: (options.test ? 'inapplicable' : 'passed')
+          status: 'passed'
         }));
       }
       else {
         candidates.forEach(function (element) {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !DOM.is(element, options.test)) {
-            status = 'passed';
-          }
-          else {
-            status = 'failed';
-          }
-
           test.add(Case({
             element: element,
-            status: status
+            status: 'failed'
           }));
         });
       }

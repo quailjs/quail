@@ -10,32 +10,24 @@ const DOM = require('DOM');
 
 var RadioMarkedWithFieldgroupAndLegend = {
   run: function (test, options) {
-
-    var selector = 'input[type=radio]:not(fieldset input[type=radio])';
-
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry('input[type=radio]', scope)
+        .filter((element) => {
+          let parents = DOM.parents(element)
+            .filter((element) => DOM.is('fieldset'));
+          return parents.length === 0;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
-          status: (options.test ? 'inapplicable' : 'passed')
+          status: 'passed'
         }));
       }
       else {
         candidates.forEach(function (element) {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !DOM.is(element, options.test)) {
-            status = 'passed';
-          }
-          else {
-            status = 'failed';
-          }
-
           test.add(Case({
             element: element,
-            status: status
+            status: 'failed'
           }));
         });
       }
