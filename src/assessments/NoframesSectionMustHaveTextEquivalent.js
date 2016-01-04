@@ -11,7 +11,7 @@ var Case = require('Case');
 const DOM = require('DOM');
 
 var NoframesSectionMustHaveTextEquivalent = {
-  run: function (test, options) {
+  run: function (test) {
     test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry('frameset', scope)
         .filter((element) => {

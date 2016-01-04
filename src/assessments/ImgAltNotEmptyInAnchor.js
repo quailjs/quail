@@ -31,7 +31,7 @@ var ImgAltNotEmptyInAnchor = {
             });
           }
         });
-      });
+    });
   },
 
   meta: {

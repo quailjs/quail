@@ -9,7 +9,7 @@ var Case = require('Case');
 const DOM = require('DOM');
 
 var ScriptInBodyMustHaveNoscript = {
-  run: function (test, options) {
+  run: function (test) {
     test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry('body', scope)
         .filter((element) => {

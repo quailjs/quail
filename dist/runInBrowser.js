@@ -14641,7 +14641,6 @@ module.exports = DocumentLangIsISO639Standard;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var DOM = require('DOM');
 var DocumentLangNotIdentified = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
@@ -14676,7 +14675,7 @@ var DocumentLangNotIdentified = {
 };
 module.exports = DocumentLangNotIdentified;
 
-},{"Case":33,"DOM":34}],107:[function(require,module,exports){
+},{"Case":33}],107:[function(require,module,exports){
 'use strict';
 
 /**
@@ -16334,7 +16333,7 @@ var HeadersUseToMarkSections = {
         test.add(_case);
         var $list = element;
         var prevHeaders = DOM.prevAll($list).filter(function (element) {
-          return DOM.is('h1, h2, h3, h4, h5, h6');
+          return DOM.is(element, 'h1, h2, h3, h4, h5, h6');
         });
         var items = DOM.scry('li', $list);
         var itemLinks = DOM.scry('li', $list).filter(function (element) {
@@ -18697,7 +18696,7 @@ var ListOfLinksUseList = {
         var next = DOM.next(element);
         if (next && DOM.is(next, 'a')) {
           var nextText = element.nextSibling.wholeText.replace(unreadableText, '');
-          if (!DOM.is(element.parentNode, 'li') && IsUnreadable(nextText)) {
+          if (!DOM.is(element.parentElement, 'li') && IsUnreadable(nextText)) {
             _case.set({
               status: 'failed'
             });
@@ -18802,7 +18801,6 @@ var NewWindowIsOpened = {
     });
 
     window.open = function (event) {
-      debugger;
       test.forEach(function (_case) {
         var href = _case.get('element').href;
         if (href.indexOf(event) > -1) {

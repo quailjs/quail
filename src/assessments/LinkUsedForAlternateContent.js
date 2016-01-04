@@ -11,7 +11,7 @@ var Case = require('Case');
 const DOM = require('DOM');
 
 var LinkUsedForAlternateContent = {
-  run: function (test, options) {
+  run: function (test) {
     test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry('html', scope)
         .filter((element) => {

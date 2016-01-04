@@ -9,12 +9,12 @@ var Case = require('Case');
 const DOM = require('DOM');
 
 var RadioMarkedWithFieldgroupAndLegend = {
-  run: function (test, options) {
+  run: function (test) {
     test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry('input[type=radio]', scope)
         .filter((element) => {
           let parents = DOM.parents(element)
-            .filter((element) => DOM.is('fieldset'));
+            .filter((element) => DOM.is(element, 'fieldset'));
           return parents.length === 0;
         });
       if (!candidates.length) {

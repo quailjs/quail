@@ -10,7 +10,6 @@ var NewWindowIsOpened = {
     });
 
     window.open = function (event) {
-      debugger;
       test.forEach(function (_case) {
         var href = _case.get('element').href;
         if (href.indexOf(event) > -1) {

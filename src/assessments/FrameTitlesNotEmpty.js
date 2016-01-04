@@ -9,11 +9,11 @@ var Case = require('Case');
 const DOM = require('DOM');
 
 var FrameTitlesNotEmpty = {
-  run: function (test, options) {
+  run: function (test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry('frame, iframe', scope)
+      let candidates = DOM.scry('frame, iframe', scope)
         .filter((element) => {
-          let title = DOM.getAttribute('title');
+          let title = DOM.getAttribute(element, 'title');
           return !title || title.length === 0;
         });
       if (!candidates.length) {

@@ -6,7 +6,6 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-const DOM = require('DOM');
 var DocumentLangNotIdentified = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {

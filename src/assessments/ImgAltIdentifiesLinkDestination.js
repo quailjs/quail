@@ -11,10 +11,7 @@ var Case = require('Case');
 const DOM = require('DOM');
 
 var ImgAltIdentifiesLinkDestination = {
-  run: function (test, options) {
-
-    var selector = 'a img[alt]';
-
+  run: function (test) {
     test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry('a img[alt]', scope).slice(0, 1);
       if (!candidates.length) {

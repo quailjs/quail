@@ -9,7 +9,7 @@ var Case = require('Case');
 const DOM = require('DOM');
 
 var TableWithBothHeadersUseScope = {
-  run: function (test, options) {
+  run: function (test) {
     test.get('scope').forEach(function (scope) {
       var candidates = DOM.scry('th', scope)
         // Find all the th elements that don't have scope.
@@ -19,11 +19,11 @@ var TableWithBothHeadersUseScope = {
         })
         // of them, filter down to the th elements not in the first row.
         .filter((element) => {
-          let parents = DOM.parents(elements);
-          let row = parents.filter((element) => DOM.is('tr'))[0];
-          let table = parents.filter((element) => DOM.is('table'))[0];
+          let parents = DOM.parents(element);
+          let row = parents.filter((element) => DOM.is(element, 'tr'))[0];
+          let table = parents.filter((element) => DOM.is(element, 'table'))[0];
           let firstRow = DOM.scry('tr', table)[0];
-          return row !=== firstRow;
+          return row !== firstRow;
         });
       if (!candidates.length) {
         test.add(Case({

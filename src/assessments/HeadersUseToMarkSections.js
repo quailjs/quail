@@ -32,7 +32,7 @@ var HeadersUseToMarkSections = {
         test.add(_case);
         var $list = element;
         let prevHeaders = DOM.prevAll($list).filter((element) => {
-          return DOM.is('h1, h2, h3, h4, h5, h6');
+          return DOM.is(element, 'h1, h2, h3, h4, h5, h6');
         });
         let items = DOM.scry('li', $list);
         let itemLinks = DOM.scry('li', $list)
