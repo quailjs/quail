@@ -33,7 +33,7 @@ var AudioMayBePresent = {
       // if no case was added, return inapplicable
       if (!hasCase) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         }));
       }

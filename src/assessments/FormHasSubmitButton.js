@@ -13,11 +13,11 @@ var FormHasSubmitButton = {
     var selector = 'input[type=submit], button[type=submit]';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry('form', this);
+      var candidates = DOM.scry('form', scope);
 
       if (candidates.length === 0) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         }));
       }

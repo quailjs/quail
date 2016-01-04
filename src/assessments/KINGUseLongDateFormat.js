@@ -32,7 +32,7 @@ var KINGUseLongDateFormat = {
       }
 
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 

@@ -20,7 +20,7 @@ var KINGUseCurrencyAsSymbol = {
 
       var text = GetTextContentsComponent(element);
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 

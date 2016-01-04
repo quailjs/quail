@@ -814,7 +814,7 @@ var HeadingLevelComponent = function HeadingLevelComponent(test, options) {
       var level = parseInt(element.tagName.substr(-1, 1), 10);
       if (priorLevel === options.headingLevel && level > priorLevel + 1) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       } else {
@@ -933,16 +933,26 @@ var LabelComponent = function LabelComponent(test, options) {
 
   test.get('scope').forEach(function (scope) {
     DOM.scry(options.selector, scope).forEach(function (element) {
-      var label = DOM.scry('label[for=' + element.getAttribute('id') + ']', scope);
-      var parent = DOM.parent(element, 'label');
-      if (!parent || !label) {
+      var label = DOM.scry('label[for=\"' + element.getAttribute('id') + '\"]', scope)[0];
+      var labelParent = DOM.parents(element).find(function (parent) {
+        return DOM.is(parent, 'label');
+      });
+      var hasLabelText = false;
+      var hasLabelParentText = false;
+      if (label) {
+        hasLabelText = /\S/.test(label.innerText);
+      }
+      if (labelParent) {
+        hasLabelParentText = /\S/.test(labelParent.innerText);
+      }
+      if (!hasLabelText && !hasLabelParentText) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'failed'
         }));
       } else {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
       }
@@ -2165,14 +2175,19 @@ var DOM = {
     }
     return elements;
   },
+  parent: function parent(element) {
+    _assertIsDom(element, 'parent');
+    return element.parentElement;
+  },
   parents: function parents(element) {
-    var parentNodes = [];
+    _assertIsDom(element, 'parents');
+    var parentElements = [];
     var node = element;
-    while (node.parentNode) {
-      parentNodes.push(node.parentNode);
-      node = node.parentNode;
+    while (node.parentElement) {
+      parentElements.push(node.parentElement);
+      node = node.parentElement;
     }
-    return parentNodes;
+    return parentElements;
   },
   children: function children(element) {
     _assertIsDom(element, 'children');
@@ -13052,7 +13067,7 @@ var AudioMayBePresent = {
       // if no case was added, return inapplicable
       if (!hasCase) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         }));
       }
@@ -15492,11 +15507,11 @@ var FormHasSubmitButton = {
     var selector = 'input[type=submit], button[type=submit]';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry('form', this);
+      var candidates = DOM.scry('form', scope);
 
       if (candidates.length === 0) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         }));
       } else {
