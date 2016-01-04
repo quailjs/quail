@@ -18,11 +18,11 @@ var ColorBackgroundGradientContrast = {
     /**
      *
      */
-    function colorBackgroundGradientContrast (test, Case, options, $this, element) {
+    function colorBackgroundGradientContrast (test, Case, options, element) {
       // Check if there's a background gradient using DOM.
       var failureFound, numberOfSamples;
       var rainbow = new Rainbow();
-      var backgroundGradientColors = colors.getBackgroundGradient($this);
+      var backgroundGradientColors = colors.getBackgroundGradient(element);
 
       if (!backgroundGradientColors) {
         return;
@@ -43,7 +43,7 @@ var ColorBackgroundGradientContrast = {
       // Check each color.
       failureFound = false;
       for (i = 0; !failureFound && i < numberOfSamples; i++) {
-        var testResult = colors.testElmBackground(options.algorithm, $this,
+        var testResult = colors.testElmBackground(options.algorithm, element,
               '#' + rainbow.colourAt(i));
 
         if (!testResult) {
@@ -84,7 +84,7 @@ var ColorBackgroundGradientContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorBackgroundGradientContrast(test, Case, options, element, element);
+        colorBackgroundGradientContrast(test, Case, options, element);
       });
 
     });

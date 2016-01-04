@@ -201,12 +201,12 @@ var ColorComponent = (function () {
      * WCAG at a certain contrast ratio.
      */
     passesWCAGColor: function passesWCAGColor(element, foreground, background, level) {
-      var pxfsize = ConvertToPx(element.css('fontSize'));
+      var pxfsize = ConvertToPx(DOM.getComputedStyle(element, 'font-size'));
       if (typeof level === 'undefined') {
         if (pxfsize >= 18) {
           level = 3;
         } else {
-          var fweight = element.css('fontWeight');
+          var fweight = DOM.getComputedStyle(element, 'font-weight');
           if (pxfsize >= 14 && (fweight === 'bold' || parseInt(fweight, 10) >= 700)) {
             level = 3;
           } else {
@@ -285,11 +285,11 @@ var ColorComponent = (function () {
       }
 
       if (type === 'foreground') {
-        colors.cache[cacheKey] = element.css('color') ? element.css('color') : 'rgb(0,0,0)';
+        colors.cache[cacheKey] = DOM.getComputedStyle(element, 'color') ? DOM.getComputedStyle(element, 'color') : 'rgb(0,0,0)';
         return colors.cache[cacheKey];
       }
 
-      var bcolor = element.css('background-color');
+      var bcolor = DOM.getComputedStyle(element, 'background-color');
       if (colors.hasBackgroundColor(bcolor)) {
         colors.cache[cacheKey] = bcolor;
         return colors.cache[cacheKey];
@@ -352,7 +352,6 @@ var ColorComponent = (function () {
       if (colors.cache[cacheKey] !== undefined) {
         return colors.cache[cacheKey];
       }
-      element = element[0];
       while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
         var bimage = DOM.getComputedStyle(element, 'background-image');
         if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
@@ -383,7 +382,6 @@ var ColorComponent = (function () {
       var notEmpty = function notEmpty(s) {
         return typeof s === 'string' && s.trim() !== '';
       };
-      element = element[0];
       while (element && element.nodeType === 1 && element.nodeName !== 'BODY' && element.nodeName !== 'HTML') {
         // Exit if element has a background color.
         if (colors.hasBackgroundColor(DOM.getComputedStyle(element, 'background-color'))) {
@@ -520,14 +518,16 @@ var ColorComponent = (function () {
       // Hide current element.
       scannedElements.push({
         element: element,
-        visibility: element.css('visibility')
+        visibility: DOM.getComputedStyle(element, 'visibility')
       });
-      element.css('visibility', 'hidden');
+      DOM.setAttributes(element, {
+        visibility: 'hidden'
+      });
 
       // Get element at position x, y. This only selects visible elements.
       var el = document.elementFromPoint(x, y);
       while (foundIt === undefined && el && el.tagName !== 'BODY' && el.tagName !== 'HTML') {
-        var bcolor = el.css('backgroundColor');
+        var bcolor = DOM.getComputedStyle(el, 'background-color');
         var bimage;
         // Only check visible elements.
         switch (property) {
@@ -543,7 +543,7 @@ var ColorComponent = (function () {
               continue;
             }
 
-            bimage = el.css('backgroundImage');
+            bimage = DOM.getComputedStyle(el, 'background-image');
             if (bimage && bimage !== 'none' && bimage.search(/^(.*?)gradient(.*?)$/i) !== -1) {
               var gradient = bimage.match(/gradient(\(.*\))/g);
               if (gradient.length > 0) {
@@ -558,7 +558,7 @@ var ColorComponent = (function () {
               foundIt = false;
               continue;
             }
-            bimage = el.css('backgroundImage');
+            bimage = DOM.getComputedStyle(el, 'background-image');
             if (bimage && bimage !== 'none' && bimage.search(/^(.*?)url(.*?)$/i) !== -1) {
               foundIt = bimage.replace('url(', '').replace(/['"]/g, '').replace(')', '');
             }
@@ -566,15 +566,19 @@ var ColorComponent = (function () {
         }
         scannedElements.push({
           element: el,
-          visibility: el.css('visibility')
+          visibility: DOM.getComputedStyle(el, 'visibility')
         });
-        el.css('visibility', 'hidden');
+        DOM.setAttributes(el, {
+          visibility: 'hidden'
+        });
         el = document.elementFromPoint(x, y);
       }
 
       // Reset visibility.
       for (var i = 0; i < scannedElements.length; i++) {
-        scannedElements[i].element.css('visibility', scannedElements[i].visibility);
+        DOM.setAttributes(scannedElements[i].element, {
+          visibility: scannedElements[i].visibility
+        });
       }
 
       colors.cache[cacheKey] = foundIt;
@@ -13501,11 +13505,11 @@ var ColorBackgroundGradientContrast = {
     /**
      *
      */
-    function colorBackgroundGradientContrast(test, Case, options, $this, element) {
+    function colorBackgroundGradientContrast(test, Case, options, element) {
       // Check if there's a background gradient using DOM.
       var failureFound, numberOfSamples;
       var rainbow = new Rainbow();
-      var backgroundGradientColors = colors.getBackgroundGradient($this);
+      var backgroundGradientColors = colors.getBackgroundGradient(element);
 
       if (!backgroundGradientColors) {
         return;
@@ -13526,7 +13530,7 @@ var ColorBackgroundGradientContrast = {
       // Check each color.
       failureFound = false;
       for (i = 0; !failureFound && i < numberOfSamples; i++) {
-        var testResult = colors.testElmBackground(options.algorithm, $this, '#' + rainbow.colourAt(i));
+        var testResult = colors.testElmBackground(options.algorithm, element, '#' + rainbow.colourAt(i));
 
         if (!testResult) {
           buildCase(test, Case, element, 'failed', id, 'The background gradient makes the text unreadable');
@@ -13560,7 +13564,7 @@ var ColorBackgroundGradientContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorBackgroundGradientContrast(test, Case, options, element, element);
+        colorBackgroundGradientContrast(test, Case, options, element);
       });
     });
   },
@@ -13608,9 +13612,9 @@ var ColorBackgroundImageContrast = {
     /**
      *
      */
-    function colorBackgroundImageContrast(test, Case, options, $this, element) {
+    function colorBackgroundImageContrast(test, Case, options, element) {
       // Check if there's a backgroundImage using DOM.
-      var backgroundImage = colors.getBackgroundImage($this);
+      var backgroundImage = colors.getBackgroundImage(element);
       if (!backgroundImage) {
         return;
       }
@@ -13622,7 +13626,7 @@ var ColorBackgroundImageContrast = {
       // before information about it is available to the DOM.
       img.onload = function () {
         var averageColorBackgroundImage = colors.getAverageRGB(img);
-        var testResult = colors.testElmBackground(options.algorithm, $this, averageColorBackgroundImage);
+        var testResult = colors.testElmBackground(options.algorithm, element, averageColorBackgroundImage);
 
         // Build a case.
         if (!testResult) {
@@ -13659,7 +13663,7 @@ var ColorBackgroundImageContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorBackgroundImageContrast(test, Case, options, element, element);
+        colorBackgroundImageContrast(test, Case, options, element);
       });
     });
   },
@@ -13710,14 +13714,14 @@ var ColorElementBehindBackgroundGradientContrast = {
     /**
      *
      */
-    function colorElementBehindBackgroundGradientContrast(test, Case, options, $this, element) {
+    function colorElementBehindBackgroundGradientContrast(test, Case, options, element) {
       // Check if there's a background gradient using element behind current element.
       var behindGradientColors;
       var failureFound;
       var rainbow = new Rainbow();
       // The option element is problematic.
-      if (!DOM.is($this, 'option')) {
-        behindGradientColors = colors.getBehindElementBackgroundGradient($this);
+      if (!DOM.is(element, 'option')) {
+        behindGradientColors = colors.getBehindElementBackgroundGradient(element);
       }
 
       if (!behindGradientColors) {
@@ -13738,7 +13742,7 @@ var ColorElementBehindBackgroundGradientContrast = {
       // Check each color.
       failureFound = false;
       for (i = 0; !failureFound && i < numberOfSamples; i++) {
-        failureFound = !colors.testElmBackground(options.algorithm, $this, '#' + rainbow.colourAt(i));
+        failureFound = !colors.testElmBackground(options.algorithm, element, '#' + rainbow.colourAt(i));
       }
 
       // If no failure was found, the element passes for this case type.
@@ -13768,7 +13772,7 @@ var ColorElementBehindBackgroundGradientContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorElementBehindBackgroundGradientContrast(test, Case, options, element, element);
+        colorElementBehindBackgroundGradientContrast(test, Case, options, element);
       });
     });
   },
@@ -13817,13 +13821,13 @@ var ColorElementBehindBackgroundImageContrast = {
     /**
      *
      */
-    function colorElementBehindBackgroundImageContrast(test, Case, options, $this, element) {
+    function colorElementBehindBackgroundImageContrast(test, Case, options, element) {
       // Check if there's a backgroundImage using element behind current element.
       var behindBackgroundImage;
 
       // The option element is problematic.
-      if (!DOM.is($this, 'option')) {
-        behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
+      if (!DOM.is(element, 'option')) {
+        behindBackgroundImage = colors.getBehindElementBackgroundImage(element);
       }
 
       if (!behindBackgroundImage) {
@@ -13838,7 +13842,7 @@ var ColorElementBehindBackgroundImageContrast = {
 
         // Get average color of the background image.
         var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
-        var testResult = colors.testElmBackground(options.algorithm, $this, averageColorBehindBackgroundImage);
+        var testResult = colors.testElmBackground(options.algorithm, element, averageColorBehindBackgroundImage);
         if (!testResult) {
           buildCase(test, Case, element, 'failed', id, 'The background image of the element behind this element makes the text unreadable');
         } else {
@@ -13871,7 +13875,7 @@ var ColorElementBehindBackgroundImageContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorElementBehindBackgroundImageContrast(test, Case, options, element, element);
+        colorElementBehindBackgroundImageContrast(test, Case, options, element);
       });
     });
   },
@@ -13917,18 +13921,18 @@ var ColorElementBehindContrast = {
     options.algorithm = 'wcag';
     options.gradientSampleMultiplier = 3;
 
-    function colorElementBehindContrast(test, Case, options, $this, element) {
+    function colorElementBehindContrast(test, Case, options, element) {
       // Check text and background using element behind current element.
       var backgroundColorBehind;
       // The option element is problematic.
-      if (!DOM.is($this, 'option')) {
-        backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
+      if (!DOM.is(element, 'option')) {
+        backgroundColorBehind = colors.getBehindElementBackgroundColor(element);
       }
       if (!backgroundColorBehind) {
         return;
       }
 
-      var testResult = colors.testElmBackground(options.algorithm, $this, backgroundColorBehind);
+      var testResult = colors.testElmBackground(options.algorithm, element, backgroundColorBehind);
 
       // Build a case.
       if (!testResult) {
@@ -13957,7 +13961,7 @@ var ColorElementBehindContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorElementBehindContrast(test, Case, options, element, element);
+        colorElementBehindContrast(test, Case, options, element);
       });
     });
   },
@@ -14005,10 +14009,10 @@ var ColorFontContrast = {
     /**
      *
      */
-    function colorFontContrast(test, Case, options, $this, element) {
+    function colorFontContrast(test, Case, options, element) {
       // Check text and background color using DOM.
       // Build a case.
-      if (!colors.testElmContrast(options.algorithm, $this)) {
+      if (!colors.testElmContrast(options.algorithm, element)) {
         buildCase(test, Case, element, 'failed', id, 'The font contrast of the text impairs readability');
       } else {
         buildCase(test, Case, element, 'passed', id, 'The font contrast of the text is sufficient for readability');
@@ -14034,7 +14038,7 @@ var ColorFontContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorFontContrast(test, Case, options, element, element);
+        colorFontContrast(test, Case, options, element);
       });
     });
   },

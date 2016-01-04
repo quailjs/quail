@@ -19,14 +19,14 @@ var ColorElementBehindBackgroundGradientContrast = {
     /**
      *
      */
-    function colorElementBehindBackgroundGradientContrast (test, Case, options, $this, element) {
+    function colorElementBehindBackgroundGradientContrast (test, Case, options, element) {
       // Check if there's a background gradient using element behind current element.
       var behindGradientColors;
       var failureFound;
       var rainbow = new Rainbow();
       // The option element is problematic.
-      if (!DOM.is($this, 'option')) {
-        behindGradientColors = colors.getBehindElementBackgroundGradient($this);
+      if (!DOM.is(element, 'option')) {
+        behindGradientColors = colors.getBehindElementBackgroundGradient(element);
       }
 
       if (!behindGradientColors) {
@@ -47,7 +47,7 @@ var ColorElementBehindBackgroundGradientContrast = {
       // Check each color.
       failureFound = false;
       for (i = 0; !failureFound && i < numberOfSamples; i++) {
-        failureFound = !colors.testElmBackground(options.algorithm, $this,
+        failureFound = !colors.testElmBackground(options.algorithm, element,
               '#' + rainbow.colourAt(i));
       }
 
@@ -85,7 +85,7 @@ var ColorElementBehindBackgroundGradientContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorElementBehindBackgroundGradientContrast(test, Case, options, element, element);
+        colorElementBehindBackgroundGradientContrast(test, Case, options, element);
       });
     });
   },
