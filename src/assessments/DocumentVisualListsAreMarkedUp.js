@@ -17,7 +17,7 @@ var DocumentVisualListsAreMarkedUp = {
       '[IVX]{1,5}\\.\\s' // Roman numerals up to (at least) 27, followed by ". " E.g. II. IV.
     ];
 
-    var symbols = RegExp(
+    var symbols = new RegExp(
       '(^|<br[^>]*>)' + // Match the String start or a <br> element
       '[\\s]*' + // Optionally followed by white space characters
       '(' + itemStarters.join('|') + ')', // Followed by a character that could indicate a list
@@ -32,7 +32,11 @@ var DocumentVisualListsAreMarkedUp = {
             element: element
           });
           test.add(_case);
-          var matches = DOM.text(element).match(symbols);
+          let text = element.innerHTML
+            // Get rid of runs of space.
+            .replace(/[ \t\n\r][ \t\n\r]*/g, ' ')
+            .trim();
+          var matches = text.match(symbols);
           _case.set({
             status: (matches && matches.length > 2) ? 'failed' : 'passed'
           });
