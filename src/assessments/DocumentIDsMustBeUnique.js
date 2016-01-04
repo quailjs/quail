@@ -1,38 +1,25 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var DocumentIDsMustBeUnique = {
   run: function (test) {
-    test.get('$scope').each(function () {
-      if ($(this).children().length === 0) {
-        test.add(Case({
-          element: this,
-          status: 'inapplicable'
-        }));
-      }
-    });
-    test.get('$scope').find(':not([id])').each(function () {
-      test.add(Case({
-        element: this,
-        status: 'inapplicable'
-      }));
-    });
-    test.get('$scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var ids = {};
-      $(this).find('[id]').each(function () {
+      DOM.scry('[id]', scope).forEach(function (element) {
         var _case = Case({
-          element: this
+          element: element
         });
         test.add(_case);
-        if (typeof ids[$(this).attr('id')] === 'undefined' && Object.keys(ids).length === 0) {
+        if (typeof ids[DOM.getAttribute(element, 'id')] === 'undefined' && Object.keys(ids).length === 0) {
           _case.set({
             status: 'inapplicable'
           });
-          ids[$(this).attr('id')] = $(this).attr('id');
+          ids[DOM.getAttribute(element, 'id')] = DOM.getAttribute(element, 'id');
         }
-        else if (typeof ids[$(this).attr('id')] === 'undefined') {
+        else if (typeof ids[DOM.getAttribute(element, 'id')] === 'undefined') {
           _case.set({
             status: 'passed'
           });
-          ids[$(this).attr('id')] = $(this).attr('id');
+          ids[DOM.getAttribute(element, 'id')] = DOM.getAttribute(element, 'id');
         }
         else {
           _case.set({

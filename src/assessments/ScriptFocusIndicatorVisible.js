@@ -1,10 +1,10 @@
 var ConvertToPxComponent = require('ConvertToPxComponent');
+const DOM = require('DOM');
 var FocusElements = require('FocusElements');
-var $ = require('jquery/dist/jquery');
 
 var ScriptFocusIndicatorVisible = {
   run: function () {
-    $(FocusElements).each(function () {
+    FocusElements().forEach(function (element) {
 
       // Preparation for test: remove focus indicators done with CSS
       var sheet, rules, rulesCache, rule;
@@ -30,43 +30,43 @@ var ScriptFocusIndicatorVisible = {
       }
 
       var noFocus = {
-        borderWidth: $(this).css('border-width'),
-        borderColor: $(this).css('border-color'),
-        backgroundColor: $(this).css('background-color'),
-        boxShadow: $(this).css('box-shadow'),
-        outlineWidth: $(this).css('outline-width'),
-        outlineColor: $(this).css('outline-color')
+        borderWidth: DOM.getComputedStyle(element, 'border-width'),
+        borderColor: DOM.getComputedStyle(element, 'border-color'),
+        backgroundColor: DOM.getComputedStyle(element, 'background-color'),
+        boxShadow: DOM.getComputedStyle(element, 'box-shadow'),
+        outlineWidth: DOM.getComputedStyle(element, 'outline-width'),
+        outlineColor: DOM.getComputedStyle(element, 'outline-color')
       };
 
-      $(this).focus();
+      element.focus();
 
       // it is sufficient to not remove the default outline on focus: pass test
-      var outlineWidth = ConvertToPxComponent($(this).css('outline-width'));
+      var outlineWidth = ConvertToPxComponent(DOM.getComputedStyle(element, 'outline-width'));
       if (outlineWidth > 2 && outlineWidth !== ConvertToPxComponent(noFocus.outlineWidth)) {
-        $(this).blur();
+        element.blur();
         return;
       }
 
       // in any other case, it is acceptable to change other visual components
 
-      if (noFocus.backgroundColor !== $(this).css('background-color')) {
-        $(this).blur();
+      if (noFocus.backgroundColor !== DOM.getComputedStyle(element, 'background-color')) {
+        element.blur();
         return;
       }
 
-      var borderWidth = ConvertToPxComponent($(this).css('border-width'));
+      var borderWidth = ConvertToPxComponent(DOM.getComputedStyle(element, 'border-width'));
       if (borderWidth > 2 && borderWidth !== ConvertToPxComponent(noFocus.borderWidth)) {
-        $(this).blur();
+        element.blur();
         return;
       }
 
-      var boxShadow = ($(this).css('box-shadow') && $(this).css('box-shadow') !== 'none') ? $(this).css('box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
-      if (boxShadow && $(this).css('box-shadow') !== noFocus.boxShadow && ConvertToPxComponent(boxShadow[3]) > 3) {
-        $(this).blur();
+      var boxShadow = (DOM.getComputedStyle(element, 'box-shadow') && DOM.getComputedStyle(element, 'box-shadow') !== 'none') ? DOM.getComputedStyle(element, 'box-shadow').match(/(-?\d+px)|(rgb\(.+\))/g) : false;
+      if (boxShadow && DOM.getComputedStyle(element, 'box-shadow') !== noFocus.boxShadow && ConvertToPxComponent(boxShadow[3]) > 3) {
+        element.blur();
         return;
       }
 
-      $(this).blur();
+      element.blur();
 
       var ruleCache;
 

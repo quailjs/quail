@@ -6,14 +6,15 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var DocumentTitleDescribesDocument = {
   run: function (test) {
 
     var selector = 'head title';
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       var status = (candidates.length === 1) ? 'passed' : 'failed';
 
       if (candidates.length === 0) {
@@ -23,9 +24,9 @@ var DocumentTitleDescribesDocument = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

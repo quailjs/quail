@@ -2,6 +2,7 @@
  * Test for a label associated with a file input element.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var FileHasLabel = {
   run: function (test) {
@@ -13,18 +14,17 @@ var FileHasLabel = {
       // Map labels by for attribute value.
       var labelsByFor = 0;
       for (var i = 0, il = labels.length; i < il; ++i) {
-        var $label = labels.eq(i);
-        if ($label.attr('for') === id) {
+        var $label = labels[i];
+        if (DOM.getAttribute($label, 'for') === id) {
           labelsByFor++;
         }
       }
       return labelsByFor;
     }
 
-    this.get('$scope').each(function () {
-      var $scope = $(this);
-      var files = $scope.find(sFiles);
-      var labels = $scope.find(sLabels);
+    test.get('scope').forEach(function (scope) {
+      var files = DOM.scry(sFiles, scope);
+      var labels = DOM.scry(sLabels, scope);
 
       if (files.length === 0) {
         test.add(Case({
@@ -33,12 +33,12 @@ var FileHasLabel = {
         }));
       }
       else {
-        files.each(function () {
-          var $file = $(this);
+        files.forEach(function (element) {
+          var $file = element;
           var status = 'failed';
 
           // Check for an associated label.
-          var id = $file.attr('id');
+          var id = DOM.getAttribute($file, 'id');
           if (id) {
             var labelCount = countOfLabelsById(id, labels);
             if (labelCount === 1) {
@@ -47,7 +47,7 @@ var FileHasLabel = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

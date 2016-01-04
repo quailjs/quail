@@ -1,31 +1,36 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ImgAltNotEmptyInAnchor = {
   run: function (test) {
-    test.get('$scope').find('a[href]:has(img)').each(function () {
-      var $a = $(this);
-      var text = $a.text();
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('a[href]', scope)
+        .filter((element) => DOM.scry('img', element).length > 0)
+        .forEach(function (element) {
+          var $a = element;
+          var text = DOM.text($a);
 
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
+          var _case = Case({
+            element: element
+          });
+          test.add(_case);
 
-      // Concat all alt attributes of images to the text of the paragraph
-      $a.find('img[alt]').each(function () {
-        text += ' ' + $(this).attr('alt');
-      });
+          // Concat all alt attributes of images to the text of the paragraph
+          DOM.scry('img[alt]', $a).forEach(function (element) {
+            text += ' ' + DOM.getAttribute(element, 'alt');
+          });
 
-      if (IsUnreadable(text)) {
-        _case.set({
-          status: 'failed'
+          if (IsUnreadable(text)) {
+            _case.set({
+              status: 'failed'
+            });
+          }
+          else {
+            _case.set({
+              status: 'passed'
+            });
+          }
         });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 

@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var ALinksToSoundFilesNeedTranscripts = {
   run: function (test) {
 
@@ -16,8 +17,8 @@ var ALinksToSoundFilesNeedTranscripts = {
       'a[href$=".aif"]'
     ].join(', ');
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       // Inapplicable.
       if (!candidates.length) {
         test.add(Case({
@@ -27,9 +28,9 @@ var ALinksToSoundFilesNeedTranscripts = {
       }
       else {
         // cantTell.
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });

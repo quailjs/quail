@@ -12,14 +12,14 @@
   </div>
   <div data-expected="fail" title="No Subtitle">
     <video id="assert-1" controls class="quail-failed-element">
-      <source src="../assets/sample.ogv" type="video/ogv"/>
+      <source src="assets/sample.ogv" type="video/ogv"/>
     </video>
   </div>
 
   <div class="quail-test limit-chrome" data-expected="fail" title="Subtitle file missing">
     <video id="assert-2" controls class="quail-failed-element">
-      <source src="../assets/sample.ogv" type="video/ogv"/>
-      <track kind="subtitles" src="../assets/broken.srt" srclang="en"></track>
+      <source src="assets/sample.ogv" type="video/ogv"/>
+      <track kind="subtitles" src="assets/broken.srt" srclang="en"></track>
     </video>
   </div>
 
@@ -55,8 +55,8 @@
 
   <div data-expected="fail" lang="fr" title="Subtitle not matching language">
     <video id="assert-6" controls class="quail-failed-element">
-      <source src="../assets/sample.ogv" type="video/ogv"/>
-      <track kind="subtitles" src="../assets/subtitle.srt" srclang="en"></track>
+      <source src="assets/sample.ogv" type="video/ogv"/>
+      <track kind="subtitles" src="assets/subtitle.srt" srclang="en"></track>
     </video>
   </div>
 
@@ -84,8 +84,8 @@
 
   <div class="quail-test limit-chrome" data-expected="pass" title="Video tag has correct subtitle">
     <video id="assert-8" controls>
-      <source src="../assets/sample.ogv" type="video/ogv"/>
-      <track kind="subtitles" src="../assets/subtitle.srt" srclang="en"></track>
+      <source src="assets/sample.ogv" type="video/ogv"/>
+      <track kind="subtitles" src="assets/subtitle.srt" srclang="en"></track>
     </video>
   </div>
 

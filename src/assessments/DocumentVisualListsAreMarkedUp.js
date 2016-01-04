@@ -1,5 +1,6 @@
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var DocumentVisualListsAreMarkedUp = {
   run: function (test) {
@@ -16,27 +17,31 @@ var DocumentVisualListsAreMarkedUp = {
       '[IVX]{1,5}\\.\\s' // Roman numerals up to (at least) 27, followed by ". " E.g. II. IV.
     ];
 
-    var symbols = RegExp(
+    var symbols = new RegExp(
       '(^|<br[^>]*>)' + // Match the String start or a <br> element
       '[\\s]*' + // Optionally followed by white space characters
       '(' + itemStarters.join('|') + ')', // Followed by a character that could indicate a list
     'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
-
-    test.get('$scope')
-      .find(TextSelectorComponent)
-      .filter(function (index, element) {
-        return TextNodeFilterComponent(element);
-      })
-      .each(function () {
-        var _case = Case({
-          element: this
+    test.get('scope').forEach((scope) => {
+      DOM.scry(TextSelectorComponent, scope)
+        .filter(function (element) {
+          return TextNodeFilterComponent(element);
+        })
+        .forEach(function (element) {
+          var _case = Case({
+            element: element
+          });
+          test.add(_case);
+          let text = element.innerHTML
+            // Get rid of runs of space.
+            .replace(/[ \t\n\r][ \t\n\r]*/g, ' ')
+            .trim();
+          var matches = text.match(symbols);
+          _case.set({
+            status: (matches && matches.length > 2) ? 'failed' : 'passed'
+          });
         });
-        test.add(_case);
-        var matches = $(this).html().match(symbols);
-        _case.set({
-          status: (matches && matches.length > 2) ? 'failed' : 'passed'
-        });
-      });
+    });
   },
 
   meta: {

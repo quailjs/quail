@@ -6,14 +6,13 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var ObjectWithClassIDHasNoText = {
   run: function (test, options) {
-
-    var selector = 'object[classid]:not(object[classid]:empty)';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry('object[classid]', scope)
+        .filter((element) => /\S/.test(element.innerHTML));
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -21,11 +20,11 @@ var ObjectWithClassIDHasNoText = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           }
           else {
@@ -33,7 +32,7 @@ var ObjectWithClassIDHasNoText = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

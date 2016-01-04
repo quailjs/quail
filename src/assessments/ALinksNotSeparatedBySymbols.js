@@ -1,33 +1,37 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var SymbolsStringsComponent = require('SymbolsStringsComponent');
 var ALinksNotSeparatedBySymbols = {
   run: function (test) {
-    test.get('$scope').find('a').each(function () {
-      var $link = $(this);
-      if ($link.next('a').length) {
-        var text = $link.get(0).nextSibling.wholeText;
-        // The string between the links is composed of symbols.
-        if (typeof text === 'string' && SymbolsStringsComponent.indexOf(text.toLowerCase().trim()) !== -1) {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('a', scope).forEach(function (element) {
+        var $link = element;
+        var next = DOM.next($link);
+        if (next && DOM.is(next, 'a')) {
+          var text = $link.nextSibling.wholeText;
+          // The string between the links is composed of symbols.
+          if (typeof text === 'string' && SymbolsStringsComponent.indexOf(text.toLowerCase().trim()) !== -1) {
+            test.add(Case({
+              element: element,
+              status: 'failed'
+            }));
+          }
+          // The string between the links is composed of words.
+          else {
+            test.add(Case({
+              element: element,
+              status: 'passed'
+            }));
+          }
         }
-        // The string between the links is composed of words.
+        // If nothing follows the link, then there is nothing to test.
         else {
           test.add(Case({
-            element: this,
-            status: 'passed'
+            element: element,
+            status: 'inapplicable'
           }));
         }
-      }
-      // If nothing follows the link, then there is nothing to test.
-      else {
-        test.add(Case({
-          element: this,
-          status: 'inapplicable'
-        }));
-      }
+      });
     });
   },
 

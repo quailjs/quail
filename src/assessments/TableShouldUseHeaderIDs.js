@@ -1,36 +1,39 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var TableShouldUseHeaderIDs = {
   run: function (test) {
-    test.get('$scope').find('table').each(function () {
-      var $table = $(this);
-      var tableFailed = false;
-      if (IsDataTableComponent($table)) {
-        $table.find('th').each(function () {
-          if (!tableFailed && !$(this).attr('id')) {
-            tableFailed = true;
-            test.add(Case({
-              element: $table.get(0),
-              status: 'failed'
-            }));
-          }
-        });
-        if (!tableFailed) {
-          $table.find('td[header]').each(function () {
-            if (!tableFailed) {
-              $.each($(this).attr('header').split(' '), function (index, id) {
-                if (!$table.find('#' + id).length) {
-                  tableFailed = true;
-                  test.add(Case({
-                    element: $table.get(0),
-                    status: 'failed'
-                  }));
-                }
-              });
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('table', scope).forEach(function (element) {
+        var $table = element;
+        var tableFailed = false;
+        if (IsDataTableComponent($table)) {
+          DOM.scry('th', $table).forEach(function (element) {
+            if (!tableFailed && !DOM.getAttribute(element, 'id')) {
+              tableFailed = true;
+              test.add(Case({
+                element: $table,
+                status: 'failed'
+              }));
             }
           });
+          if (!tableFailed) {
+            DOM.scry('td[header]', $table).forEach(function (element) {
+              if (!tableFailed) {
+                DOM.getAttribute(element, 'header').split(' ').forEach(function (id) {
+                  if (!DOM.scry('#' + id, $table).length) {
+                    tableFailed = true;
+                    test.add(Case({
+                      element: $table,
+                      status: 'failed'
+                    }));
+                  }
+                });
+              }
+            });
+          }
         }
-      }
+      });
     });
   },
 

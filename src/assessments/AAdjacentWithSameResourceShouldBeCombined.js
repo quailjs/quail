@@ -1,55 +1,60 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var AAdjacentWithSameResourceShouldBeCombined = {
   run: function (test) {
 
-    function findAdjacent (index, element) {
-      var $element = $(element);
+    function findAdjacent (element) {
       // Find all the links
-      var $links = $element.find('a');
+      var links = DOM.scry('a', element);
       // Sort them into singletons and coupletons.
-      var $singletons = $();
-      var $coupletons = $();
+      var $singletons = [];
+      var $coupletons = [];
 
-      $links.each(function (index, link) {
-        var $link = $(link);
-        if ($link.next().is('a')) {
-          $coupletons = $coupletons.add($link);
+      links.forEach(function (link) {
+        var next = DOM.next(link);
+        if (next && DOM.is(next, 'a')) {
+          $coupletons.push(link);
         }
         else {
-          $singletons = $singletons.add($link);
+          $singletons.push(link);
         }
       });
 
-      $singletons.each(excludeSingleLinks);
-      $coupletons.each(checkNextLink);
+      $singletons.forEach(excludeSingleLinks);
+      $coupletons.forEach(checkNextLink);
     }
 
-    function checkNextLink (index, element) {
-      var $element = $(element);
+    function checkNextLink (element) {
       var thisHref = element.getAttribute('href');
-      var $nextLink = $element.next();
-      var nextHref = $nextLink[0].getAttribute('href');
+      var next = DOM.next(element);
       var status = 'passed';
       var _case = Case({
         element: element
       });
-      if (thisHref === nextHref) {
-        status = 'failed';
+      if (next) {
+        var nextHref = next.getAttribute('href');
+        if (thisHref === nextHref) {
+          status = 'failed';
+        }
       }
 
       test.add(_case);
-      _case.set({status: status});
+      _case.set({
+        status: status
+      });
     }
 
-    function excludeSingleLinks (index, element) {
-      var _case = Case({element: element});
+    function excludeSingleLinks (element) {
+      var _case = Case({
+        element: element
+      });
       test.add(_case);
       _case.set({
         status: 'inapplicable'
       });
     }
 
-    test.get('$scope').each(findAdjacent);
+    test.get('scope').forEach(findAdjacent);
   },
 
   meta: {

@@ -1,35 +1,37 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var ConvertToPxComponent = require('ConvertToPxComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 
 var TextIsNotSmall = {
   run: function (test) {
-    test.get('$scope')
-      .find(TextSelectorComponent)
-      .filter(function (index, element) {
-        return TextNodeFilterComponent(element);
-      })
-      .each(function () {
-        var fontSize = $(this).css('font-size');
-        if (fontSize.search('em') > 0) {
-          fontSize = ConvertToPxComponent(fontSize);
-        }
-        fontSize = parseInt(fontSize.replace('px', ''), 10);
+    test.get('scope').forEach((scope) => {
+      DOM.scry(TextSelectorComponent, scope)
+        .filter(function (element) {
+          return TextNodeFilterComponent(element);
+        })
+        .forEach(function (element) {
+          var fontSize = DOM.getComputedStyle(element, 'font-size');
+          if (fontSize.search('em') > 0) {
+            fontSize = ConvertToPxComponent(fontSize);
+          }
+          fontSize = parseInt(fontSize.replace('px', ''), 10);
 
-        if (fontSize < 10) {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        }
-        else {
-          test.add(Case({
-            element: this,
-            status: 'passed'
-          }));
-        }
-      });
+          if (fontSize < 10) {
+            test.add(Case({
+              element: element,
+              status: 'failed'
+            }));
+          }
+          else {
+            test.add(Case({
+              element: element,
+              status: 'passed'
+            }));
+          }
+        });
+    });
   },
 
   meta: {

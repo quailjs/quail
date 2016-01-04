@@ -16,10 +16,10 @@ var ColorFontContrast = {
     /**
      *
      */
-    function colorFontContrast (test, Case, options, $this, element) {
+    function colorFontContrast (test, Case, options, element) {
       // Check text and background color using DOM.
       // Build a case.
-      if (!colors.testElmContrast(options.algorithm, $this)) {
+      if (!colors.testElmContrast(options.algorithm, element)) {
         buildCase(test, Case, element, 'failed', id, 'The font contrast of the text impairs readability');
       }
       else {
@@ -27,10 +27,10 @@ var ColorFontContrast = {
       }
     }
 
-    test.get('$scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var textNodes = document.evaluate(
         'descendant::text()[normalize-space()]',
-        this,
+        scope,
         null,
         window.XPathResult.ORDERED_NODE_ITERATOR_TYPE,
         null
@@ -52,7 +52,7 @@ var ColorFontContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorFontContrast(test, Case, options, $(element), element);
+        colorFontContrast(test, Case, options, element);
       });
     });
   },

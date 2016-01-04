@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var IdrefsHasCorrespondingId = {
   run: function (test) {
 
@@ -6,9 +7,8 @@ var IdrefsHasCorrespondingId = {
       var attribute = [];
       var attributeList = ['headers', 'aria-controls', 'aria-describedby', 'aria-flowto', 'aria-labelledby', 'aria-owns'];
 
-      $.each(attributeList, function (index, item) {
-
-        var attr = $element.attr(item);
+      attributeList.forEach(function (item) {
+        var attr = DOM.getAttribute($element, item);
 
         if (typeof attr !== typeof undefined && attr !== false) {
           attribute = attr;
@@ -18,29 +18,35 @@ var IdrefsHasCorrespondingId = {
       return attribute.split(/\s+/);
     }
 
-    test.get('$scope').each(function () {
-      var testableElements = $(this).find(
-        'td[headers], th[headers], [aria-controls], [aria-describedby], [aria-flowto], ' +
-        '[aria-labelledby], [aria-owns]');
+    test.get('scope').forEach(function (scope) {
+      var testableElements = DOM.scry([
+        'td[headers]',
+        'th[headers]',
+        '[aria-controls]',
+        '[aria-describedby]',
+        '[aria-flowto]',
+        '[aria-labelledby]',
+        '[aria-owns]'
+      ].join(', '), scope);
 
       if (testableElements.length === 0) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         }));
         return;
       }
       else {
-        testableElements.each(function () {
+        testableElements.forEach(function (element) {
           var _case = test.add(Case({
-            element: this
+            element: element
           }));
 
-          var attributes = getAttribute($(this));
+          var attributes = getAttribute(element);
           var status = 'passed';
 
-          $.each(attributes, function (index, item) {
-            if (item !== '' && $('#' + item).length === 0) {
+          attributes.forEach(function (item) {
+            if (item !== '' && DOM.scry('#' + item, scope).length === 0) {
               status = 'failed';
               return;
             }

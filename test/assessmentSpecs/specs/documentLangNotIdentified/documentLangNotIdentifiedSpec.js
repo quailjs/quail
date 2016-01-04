@@ -34,7 +34,7 @@ describe('assessment: documentLangNotIdentified', function () {
     });
 
     it('should return the proper assessment for assert-1', function () {
-      expect(cases).quailGetById('assert-1').to.have.quailStatus('failed');
+      expect(cases[0]).to.have.quailStatus('failed');
     });
   });
 
@@ -42,7 +42,7 @@ describe('assessment: documentLangNotIdentified', function () {
   describe('the lang case', function () {
     before('load webdrivers and run evaluations with Quail', function () {
       return quailTestRunner.setup({
-          url: 'http://localhost:9999/documentLangNotIdentified/documentLangNotIdentified-pass.html',
+          url: 'http://localhost:9999/documentLangNotIdentified/documentLangNotIdentified.html',
           assessments: [
             'documentLangNotIdentified'
           ]
@@ -71,7 +71,7 @@ describe('assessment: documentLangNotIdentified', function () {
     });
 
     it('should return the proper assessment for assert-1', function () {
-      expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
+      expect(cases[0]).to.have.quailStatus('passed');
     });
   });
 });

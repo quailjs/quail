@@ -2,20 +2,21 @@ var Case = require('Case');
 var VideoComponent = require('VideoComponent');
 var VideosEmbeddedOrLinkedNeedCaptions = {
   run: function (test) {
-
-    VideoComponent.findVideos(test.get('$scope'), function (element, pass) {
-      if (!pass) {
-        test.add(Case({
-          element: element[0],
-          status: 'failed'
-        }));
-      }
-      else {
-        test.add(Case({
-          element: element[0],
-          status: 'passed'
-        }));
-      }
+    test.get('scope').forEach((scope) => {
+      VideoComponent.findVideos(scope, function (element, pass) {
+        if (!pass) {
+          test.add(Case({
+            element: element,
+            status: 'failed'
+          }));
+        }
+        else {
+          test.add(Case({
+            element: element,
+            status: 'passed'
+          }));
+        }
+      });
     });
   },
 

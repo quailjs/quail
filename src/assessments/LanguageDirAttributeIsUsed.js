@@ -1,6 +1,7 @@
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageDirAttributeIsUsed = {
@@ -8,11 +9,13 @@ var LanguageDirAttributeIsUsed = {
 
     var textDirection = LanguageComponent.textDirection;
 
-    function countDirAttributes () {
-      var $el = $(this);
-      var currentDirection = $el.attr('dir');
+    function countDirAttributes (element) {
+      var currentDirection = DOM.getAttribute(element, 'dir');
       if (!currentDirection) {
-        var parentDir = $el.closest('[dir]').attr('dir');
+        var dirScope = DOM.parents(element).find((parent) => {
+          return DOM.hasAttribute(parent, 'dir');
+        });
+        var parentDir = dirScope && DOM.getAttribute(dirScope, 'dir');
         currentDirection = parentDir || currentDirection;
       }
       if (typeof currentDirection === 'string') {
@@ -22,33 +25,34 @@ var LanguageDirAttributeIsUsed = {
         currentDirection = 'ltr';
       }
       var oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
-      var text = GetTextContentsComponent($el);
+      var text = GetTextContentsComponent(element);
       var textMatches = text.match(textDirection[oppositeDirection]);
       if (!textMatches) {
         return;
       }
       var matches = textMatches.length;
-      $el.find('[dir=' + oppositeDirection + ']').each(function () {
-        var childMatches = $el[0].textContent.match(textDirection[oppositeDirection]);
+      DOM.scry('[dir=' + oppositeDirection + ']', element).forEach(function () {
+        var childMatches = element.textContent.match(textDirection[oppositeDirection]);
         if (childMatches) {
           matches -= childMatches.length;
         }
       });
 
       var _case = test.add(Case({
-        element: this
+        element: element
       }));
 
-      _case.set({status: (matches > 0) ? 'failed' : 'passed'});
+      _case.set({
+        status: (matches > 0) ? 'failed' : 'passed'
+      });
     }
 
-    test.get('$scope').each(function () {
-      $(this)
-        .find(TextSelectorComponent)
-        .filter(function (index, element) {
+    test.get('scope').forEach(function (scope) {
+      DOM.scry(TextSelectorComponent, scope)
+        .filter(function (element) {
           return TextNodeFilterComponent(element);
         })
-        .each(countDirAttributes);
+        .forEach(countDirAttributes);
     });
   },
 

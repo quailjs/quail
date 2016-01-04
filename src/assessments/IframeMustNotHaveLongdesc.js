@@ -6,14 +6,15 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var IframeMustNotHaveLongdesc = {
   run: function (test) {
 
     var selector = 'iframe';
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -21,15 +22,15 @@ var IframeMustNotHaveLongdesc = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('longdesc')) {
+          if (element.hasAttribute('longdesc')) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

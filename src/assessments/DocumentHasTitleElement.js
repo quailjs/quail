@@ -6,17 +6,18 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var DocumentHasTitleElement = {
   run: function (test) {
 
     var selector = 'head title';
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (candidates.length === 1) {
         test.add(Case({
-          element: candidates.get(0),
+          element: candidates[0],
           status: 'passed'
         }));
       }
@@ -27,9 +28,9 @@ var DocumentHasTitleElement = {
         }));
       }
       else if (candidates.length > 1) {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         });

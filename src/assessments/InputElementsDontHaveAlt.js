@@ -6,14 +6,19 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var InputElementsDontHaveAlt = {
   run: function (test) {
 
-    var selector = 'input[type!=image]';
+    var selector = 'input[type]';
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope)
+        .filter((element) => {
+          let type = DOM.getAttribute(element, 'type');
+          return type !== 'image';
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -21,15 +26,15 @@ var InputElementsDontHaveAlt = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('alt')) {
+          if (element.hasAttribute('alt')) {
             status = 'failed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

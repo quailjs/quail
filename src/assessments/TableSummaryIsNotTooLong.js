@@ -1,13 +1,16 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var TableSummaryIsNotTooLong = {
   run: function (test) {
-    test.get('$scope').find('table[summary]').each(function () {
-      if ($(this).attr('summary').trim().length > 100) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('table[summary]', scope).forEach(function (element) {
+        if (DOM.getAttribute(element, 'summary').trim().length > 100) {
+          test.add(Case({
+            element: element,
+            status: 'failed'
+          }));
+        }
+      });
     });
   },
 

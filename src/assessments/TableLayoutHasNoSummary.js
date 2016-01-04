@@ -1,15 +1,15 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var TableLayoutHasNoSummary = {
   run: function (test) {
-    test.get('$scope').each(function () {
-      var $local = $(this);
-      $local.find('table[summary]').each(function () {
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('table[summary]', scope).forEach(function (element) {
         var _case = test.add(Case({
-          element: this
+          element: element
         }));
-        if (!IsDataTableComponent($(this)) && !IsUnreadable($(this).attr('summary'))) {
+        if (!IsDataTableComponent(element) && !IsUnreadable(DOM.getAttribute(element, 'summary'))) {
           _case.set({status: 'failed'});
         }
         else {

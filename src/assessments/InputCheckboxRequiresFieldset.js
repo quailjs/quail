@@ -1,21 +1,26 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var InputCheckboxRequiresFieldset = {
   run: function (test) {
-    test.get('$scope').find('input[type="checkbox"]').each(function () {
-      var _case = Case({
-        element: this
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('input[type="checkbox"]', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        var fieldset = DOM.parents(element)
+          .find((parent) => DOM.is(parent, 'fieldset'));
+        if (!fieldset) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
+        }
       });
-      test.add(_case);
-      if (!$(this).parents('fieldset').length) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 

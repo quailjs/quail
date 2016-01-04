@@ -1,21 +1,21 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var TabIndexFollowsLogicalOrder = {
   run: function (test) {
-    test.get('$scope').each(function () {
-      var $local = $(this);
+    test.get('scope').forEach(function (scope) {
       var index = 0;
-      $local.find('[tabindex]').each(function () {
-        var $el = $(this);
-        var tabindex = $el.attr('tabindex');
+      DOM.scry('[tabindex]', scope).forEach(function (element) {
+        var $el = element;
+        var tabindex = DOM.getAttribute($el, 'tabindex');
         if (parseInt(tabindex, 10) >= 0 && parseInt(tabindex, 10) !== index + 1) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'failed'
           }));
         }
         else {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'passed'
           }));
         }

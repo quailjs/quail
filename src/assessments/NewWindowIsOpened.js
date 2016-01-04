@@ -1,12 +1,16 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var NewWindowIsOpened = {
   run: function (test) {
 
-    var fenestrate = window.open;
     var _case;
 
+    window.addEventListener('click', function (event) {
+      event.preventDefault();
+    });
+
     window.open = function (event) {
-      test.each(function (index, _case) {
+      test.forEach(function (_case) {
         var href = _case.get('element').href;
         if (href.indexOf(event) > -1) {
           _case.set('status', 'failed');
@@ -14,16 +18,19 @@ var NewWindowIsOpened = {
       });
     };
 
-    test.get('$scope').find('a').each(function () {
-      // Save a reference to this clicked tag.
-      _case = Case({
-        element: this
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('a', scope).forEach(function (element) {
+        // Save a reference to this clicked tag.
+        _case = Case({
+          element: element
+        });
+        test.add(_case);
       });
-      test.add(_case);
-      $(this).trigger('click');
+    });
+    test.forEach(function (_case) {
+      _case.get('element').click();
     });
 
-    window.open = fenestrate;
   },
 
   meta: {

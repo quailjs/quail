@@ -6,14 +6,15 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var FormErrorMessageHelpsUser = {
   run: function (test) {
 
     var selector = 'form';
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -21,9 +22,9 @@ var FormErrorMessageHelpsUser = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });

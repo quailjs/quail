@@ -5,50 +5,64 @@
  * The test fails for elements that are found and a case is created for each
  * one. The test passes is the selector finds no matching elements.
  */
-var Case = require('Case');
+const Case = require('Case');
+const DOM = require('DOM');
+const NewWindowStringsComponent = require('NewWindowStringsComponent');
 
-var NewWindowStringsComponent = require('NewWindowStringsComponent');
-
-var AreaDontOpenNewWindow = {
+const AreaDontOpenNewWindow = {
   run: function (test) {
     // Links without a target attribute pass.
-    test.get('$scope').find('area').not('[target=_new], [target=_blank]').each(function () {
-      test.add(Case({
-        element: this,
-        status: 'passed'
-      }));
-    });
-    // Links with a target attribute pass if the link text indicates that the
-    // link will open a new window.
-    test.get('$scope').find('area[target=_new], area[target=_blank]').each(function () {
-      var $link = $(this);
-      var passes = false;
-      var i = 0;
-      var text = $link.text() + ' ' + $link.attr('title');
-      var phrase = '';
-      // Test the link text against strings the indicate the link will open
-      // in a new window.
-      do {
-        phrase = NewWindowStringsComponent[i];
-        if (text.search(phrase) > -1) {
-          passes = true;
+    test.get('scope').forEach((scope) => {
+      let areas = DOM.scry('area', scope);
+      let passAreas = [];
+      let checkAreas = []
+      areas.forEach((link) => {
+        let target = DOM.getAttribute(link, 'target');
+        if (['_new', '_blank'].indexOf(target) > -1) {
+          checkAreas.push(link);
         }
-        ++i;
-
-      } while (!passes && i < NewWindowStringsComponent.length);
-      // Build a Case.
-      if (passes) {
+        else {
+          passAreas.push(link);
+        }
+      });
+      passAreas.forEach(function (element) {
         test.add(Case({
-          element: this,
+          element: element,
           status: 'passed'
         }));
-      }
-      else {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
+      });
+      // Links with a target attribute pass if the link text indicates that the
+      // link will open a new window.
+      checkAreas.forEach(function (element) {
+        var $link = element;
+        var passes = false;
+        var i = 0;
+        var text = DOM.text($link) + ' ' + DOM.getAttribute($link, 'title');
+        var phrase = '';
+        // Test the link text against strings the indicate the link will open
+        // in a new window.
+        do {
+          phrase = NewWindowStringsComponent[i];
+          if (text.search(phrase) > -1) {
+            passes = true;
+          }
+          ++i;
+
+        } while (!passes && i < NewWindowStringsComponent.length);
+        // Build a Case.
+        if (passes) {
+          test.add(Case({
+            element: element,
+            status: 'passed'
+          }));
+        }
+        else {
+          test.add(Case({
+            element: element,
+            status: 'failed'
+          }));
+        }
+      });
     });
   },
 

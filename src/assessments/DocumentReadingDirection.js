@@ -6,6 +6,7 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var DocumentReadingDirection = {
   run: function (test) {
@@ -15,8 +16,8 @@ var DocumentReadingDirection = {
       '[lang="ar"]'
     ].join(', ');
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -24,16 +25,16 @@ var DocumentReadingDirection = {
         }));
       }
       else {
-        candidates.each(function () {
-          if (this.hasAttribute('dir') && (this.getAttribute('dir') || '') === 'rtl') {
+        candidates.forEach(function (element) {
+          if (element.hasAttribute('dir') && (element.getAttribute('dir') || '') === 'rtl') {
             test.add(Case({
-              element: this,
+              element: element,
               status: 'passed'
             }));
           }
           else {
             test.add(Case({
-              element: this,
+              element: element,
               status: 'failed'
             }));
           }

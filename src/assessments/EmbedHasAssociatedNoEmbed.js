@@ -1,13 +1,19 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var EmbedHasAssociatedNoEmbed = {
   run: function (test) {
-    test.get('$scope').find('embed').each(function () {
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-      _case.set({
-        status: ($(this).find('noembed').length || $(this).next().is('noembed')) ? 'passed' : 'failed'
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('embed', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        var noembeds = DOM.scry('noembed', element);
+        var next = DOM.next(element);
+        var hasSiblingNoembed = next && DOM.is(next, 'noembed');
+        _case.set({
+          status: (noembeds.length || hasSiblingNoembed) ? 'passed' : 'failed'
+        });
       });
     });
   },

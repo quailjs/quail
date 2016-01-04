@@ -1,36 +1,40 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var ImgMapAreasHaveDuplicateLink = {
   run: function (test) {
     var links = {};
-    test.get('$scope').find('a').each(function () {
-      links[$(this).attr('href')] = $(this).attr('href');
-    });
-    test.get('$scope').find('img[usemap]').each(function () {
-      var _case = Case({
-        element: this
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('a', scope).forEach(function (element) {
+        links[DOM.getAttribute(element, 'href')] = DOM.getAttribute(element, 'href');
       });
-      test.add(_case);
-      var $image = $(this);
-      var $map = test.get('$scope').find($image.attr('usemap'));
-      if (!$map.length) {
-        $map = test.get('$scope').find('map[name="' + $image.attr('usemap').replace('#', '') + '"]');
-      }
-      if ($map.length) {
-        var failed = false;
-        $map.find('area').each(function () {
-          if (typeof links[$(this).attr('href')] === 'undefined') {
-            failed = true;
-          }
+
+      DOM.scry('img[usemap]', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
         });
-        _case.set({
-          status: (failed) ? 'failed' : 'passed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'inapplicable'
-        });
-      }
+        test.add(_case);
+        var $image = element;
+        var $map = DOM.scry(DOM.getAttribute($image, 'usemap'), scope);
+        if (!$map.length) {
+          $map = DOM.scry('map[name="' + DOM.getAttribute($image, 'usemap').replace('#', '') + '"]', scope);
+        }
+        if ($map.length) {
+          var failed = false;
+          DOM.scry('area', $map).forEach(function (element) {
+            if (typeof links[DOM.getAttribute(element, 'href')] === 'undefined') {
+              failed = true;
+            }
+          });
+          _case.set({
+            status: (failed) ? 'failed' : 'passed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'inapplicable'
+          });
+        }
+      });
     });
   },
 

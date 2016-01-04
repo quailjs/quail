@@ -157,7 +157,6 @@ phantom.onError = function (msg, trace) {
 };
 
 var distPath = dir + '/dist'; // ./dist
-var nodeModulesPath = dir + '/node_modules';
 
 // var guidelinedata = fs.read(distPath + '/guideline.json');
 var guidelines = {}; // JSON.parse(guidelinedata);
@@ -287,7 +286,6 @@ page.onLoadFinished = function (status) {
   var callPhantom = window && window.callPhantom || function () {};
   if (status === 'success') {
     console.log('Page opened successfully: ' + address);
-    page.injectJs(nodeModulesPath + '/jquery/dist/jquery.min.js');
     // page.injectJs(distPath + '/quail.jquery.js');
     page.injectJs(distPath + '/bundle.js');
 
@@ -380,7 +378,7 @@ page.onLoadFinished = function (status) {
                 if (results.hasOwnProperty(result)) {
                   output.successCriteria[name][result] = [];
                   // Go through each case for this result and get its selector and HTML.
-                  results[result].each(looper);
+                  results[result].forEach(looper);
                 }
               }
               // List the totals for each type of result

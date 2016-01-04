@@ -2,6 +2,7 @@
  * Test scriptOnFocusChangeBackgroundOrBorder.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var ScriptOnFocusChangeBackgroundOrBorder = {
   run: function (test) {
@@ -13,24 +14,26 @@ var ScriptOnFocusChangeBackgroundOrBorder = {
       }));
     };
 
-    test.get('$scope').find('input,button,a').each(function () {
-      var $this = $(this);
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('input,button,a', scope).forEach(function (element) {
+        var $this = element;
 
-      var noFocus = {
-        background: $this.css('background'),
-        border: $this.css('border')
-      };
+        var noFocus = {
+          background: DOM.getComputedStyle($this, 'background'),
+          border: DOM.getComputedStyle($this, 'border')
+        };
 
-      $this.focus();
+        $this.focus();
 
-      // Blur and make sure all changes are reverted.
-      $this.blur();
-      if (noFocus.background !== $this.css('background') || noFocus.border !== $this.css('border')) {
-        buildCase(this, 'failed', null, 'Using script to change the background color or border of the element with focus');
-      }
-      else {
-        buildCase(this, 'passed', null, 'Using script to change the background color or border of the element with focus');
-      }
+        // Blur and make sure all changes are reverted.
+        $this.blur();
+        if (noFocus.background !== DOM.getComputedStyle($this, 'background') || noFocus.border !== DOM.getComputedStyle($this, 'border')) {
+          buildCase(this, 'failed', null, 'Using script to change the background color or border of the element with focus');
+        }
+        else {
+          buildCase(this, 'passed', null, 'Using script to change the background color or border of the element with focus');
+        }
+      });
     });
   },
 

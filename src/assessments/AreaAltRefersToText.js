@@ -6,6 +6,7 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var AreaAltRefersToText = {
   run: function (test, options) {
@@ -14,8 +15,8 @@ var AreaAltRefersToText = {
 
     var selector = 'area';
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -23,11 +24,11 @@ var AreaAltRefersToText = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           }
           else {
@@ -35,7 +36,7 @@ var AreaAltRefersToText = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

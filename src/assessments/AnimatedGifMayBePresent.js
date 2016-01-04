@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var AnimatedGifMayBePresent = {
   run: function (test) {
 
@@ -55,36 +56,38 @@ var AnimatedGifMayBePresent = {
       request.send();
     }
 
-    test.get('$scope').find('img').each(function () {
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('img', scope).forEach(function (element) {
 
-      var _case = Case({
-        element: this
-      });
-      test.add(_case);
-
-      var imgSrc = $(this).attr('src');
-      var ext = $(this).attr('src').split('.').pop().toLowerCase();
-
-      if (ext !== 'gif') {
-        _case.set({
-          status: 'inapplicable'
+        var _case = Case({
+          element: element
         });
-        return;
-      }
+        test.add(_case);
 
-      isAnimatedGif(imgSrc, ext, function (animated) {
-        if (animated) {
-          _case.set({
-            status: 'cantTell'
-          });
-          return;
-        }
-        else {
+        var imgSrc = DOM.getAttribute(element, 'src');
+        var ext = DOM.getAttribute(element, 'src').split('.').pop().toLowerCase();
+
+        if (ext !== 'gif') {
           _case.set({
             status: 'inapplicable'
           });
           return;
         }
+
+        isAnimatedGif(imgSrc, ext, function (animated) {
+          if (animated) {
+            _case.set({
+              status: 'cantTell'
+            });
+            return;
+          }
+          else {
+            _case.set({
+              status: 'inapplicable'
+            });
+            return;
+          }
+        });
       });
     });
   },

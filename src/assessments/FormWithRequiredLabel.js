@@ -1,26 +1,32 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var RedundantStringsComponent = require('RedundantStringsComponent');
 var FormWithRequiredLabel = {
   run: function (test) {
     var redundant = RedundantStringsComponent;
     var lastStyle, currentStyle = false;
     redundant.required[redundant.required.indexOf('*')] = /\*/g;
-    test.get('$scope').each(function () {
-      var $local = $(this);
-      $local.find('label').each(function () {
-        var text = $(this).text().toLowerCase();
-        var $label = $(this);
+    test.get('scope').forEach(function (scope) {
+      var $local = scope;
+      DOM.scry('label', $local).forEach(function (element) {
+        var text = DOM.text(element).toLowerCase();
+        var $label = element;
         var _case = test.add(Case({
-          element: this
+          element: element
         }));
+        var input = DOM.scry('#' + DOM.getAttribute($label, 'for'), scope)[0];
+        var isAriaRequired = DOM.getAttribute(input, 'aria-required') === 'true';
         for (var word in redundant.required) {
-          if (text.search(word) >= 0 && !test.get('$scope').find('#' + $label.attr('for')).attr('aria-required')) {
+          if (
+            text.search(word) >= 0 &&
+            !isAriaRequired
+          ) {
             _case.set({
               status: 'failed'
             });
           }
         }
-        currentStyle = $label.css('color') + $label.css('font-weight') + $label.css('background-color');
+        currentStyle = DOM.getComputedStyle($label, 'color') + DOM.getComputedStyle($label, 'font-weight') + DOM.getComputedStyle($label, 'background-color');
         if (lastStyle && currentStyle !== lastStyle) {
           _case.set({
             status: 'failed'

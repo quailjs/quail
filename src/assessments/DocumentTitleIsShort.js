@@ -1,11 +1,14 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var DocumentTitleIsShort = {
   run: function (test) {
-    var $title = test.get('$scope').find('head title');
-    test.add(Case({
-      element: $title.get(0),
-      status: $title.text().length > 150 ? 'failed' : 'passed'
-    }));
+    test.get('scope').forEach((scope) => {
+      var title = DOM.scry('head title', scope)[0];
+      test.add(Case({
+        element: title,
+        status: DOM.text(title).length > 150 ? 'failed' : 'passed'
+      }));
+    });
   },
 
   meta: {

@@ -1,26 +1,30 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ListOfLinksUseList = {
   run: function (test) {
     var unreadableText = /(♦|›|»|‣|▶|.|◦|>|✓|◽|•|—|◾|\||\*|&bull;|&#8226;)/g;
-    test.get('$scope').find('a').each(function () {
-      var _case = test.add(Case({
-        element: this
-      }));
-      // Only test if there's another a tag.
-      if ($(this).next('a').length) {
-        var nextText = $(this).get(0).nextSibling.wholeText.replace(unreadableText, '');
-        if (!$(this).parent('li').length && IsUnreadable(nextText)) {
-          _case.set({
-            status: 'failed'
-          });
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('a', scope).forEach(function (element) {
+        var _case = test.add(Case({
+          element: element
+        }));
+        // Only test if there's another a tag.
+        var next = DOM.next(element);
+        if (next && DOM.is(next, 'a')) {
+          var nextText = element.nextSibling.wholeText.replace(unreadableText, '');
+          if (!DOM.is(element.parentElement, 'li') && IsUnreadable(nextText)) {
+            _case.set({
+              status: 'failed'
+            });
+          }
+          else {
+            _case.set({
+              status: 'passed'
+            });
+          }
         }
-        else {
-          _case.set({
-            status: 'passed'
-          });
-        }
-      }
+      });
     });
   },
 

@@ -6,29 +6,29 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-
+const DOM = require('DOM');
 var FormHasSubmitButton = {
   run: function (test) {
 
     var selector = 'input[type=submit], button[type=submit]';
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find('form');
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry('form', scope);
 
       if (candidates.length === 0) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         }));
       }
       else {
-        candidates.each(function () {
-          var submitButton = $(this).find(selector);
+        candidates.forEach(function (element) {
+          var submitButton = DOM.scry(selector, element);
 
           var status = (submitButton.length === 1) ? 'passed' : 'failed';
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

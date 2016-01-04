@@ -6,14 +6,15 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var DocumentMetaNotUsedWithTimeout = {
   run: function (test) {
 
     var selector = 'meta';
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
 
       if (!candidates.length) {
         test.add(Case({
@@ -22,17 +23,17 @@ var DocumentMetaNotUsedWithTimeout = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'passed';
 
-          if (this.hasAttribute('http-equiv') && this.getAttribute('http-equiv') === 'refresh') {
-            if (this.hasAttribute('content') && (this.getAttribute('content') || '').length > 0) {
+          if (element.hasAttribute('http-equiv') && element.getAttribute('http-equiv') === 'refresh') {
+            if (element.hasAttribute('content') && (element.getAttribute('content') || '').length > 0) {
               status = 'failed';
             }
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

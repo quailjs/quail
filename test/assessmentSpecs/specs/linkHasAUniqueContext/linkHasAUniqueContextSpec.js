@@ -1,4 +1,4 @@
-describe('assessment: linkHasAUniqueContext', function () {
+xdescribe('assessment: linkHasAUniqueContext', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

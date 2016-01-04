@@ -1,5 +1,6 @@
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
+const DOM = require('DOM');
 var ColorElementBehindBackgroundImageContrast = {
   run: function (test, options) {
 
@@ -16,13 +17,13 @@ var ColorElementBehindBackgroundImageContrast = {
     /**
      *
      */
-    function colorElementBehindBackgroundImageContrast (test, Case, options, $this, element) {
+    function colorElementBehindBackgroundImageContrast (test, Case, options, element) {
       // Check if there's a backgroundImage using element behind current element.
       var behindBackgroundImage;
 
       // The option element is problematic.
-      if (!$this.is('option')) {
-        behindBackgroundImage = colors.getBehindElementBackgroundImage($this);
+      if (!DOM.is(element, 'option')) {
+        behindBackgroundImage = colors.getBehindElementBackgroundImage(element);
       }
 
       if (!behindBackgroundImage) {
@@ -37,7 +38,7 @@ var ColorElementBehindBackgroundImageContrast = {
 
         // Get average color of the background image.
         var averageColorBehindBackgroundImage = colors.getAverageRGB(img);
-        var testResult = colors.testElmBackground(options.algorithm, $this,
+        var testResult = colors.testElmBackground(options.algorithm, element,
               averageColorBehindBackgroundImage);
         if (!testResult) {
           buildCase(test, Case, element, 'failed', id, 'The background image of the element behind this element makes the text unreadable');
@@ -54,10 +55,10 @@ var ColorElementBehindBackgroundImageContrast = {
       img.src = behindBackgroundImage;
     }
 
-    test.get('$scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var textNodes = document.evaluate(
         'descendant::text()[normalize-space()]',
-        this,
+        scope,
         null,
         window.XPathResult.ORDERED_NODE_ITERATOR_TYPE,
         null
@@ -79,7 +80,7 @@ var ColorElementBehindBackgroundImageContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorElementBehindBackgroundImageContrast(test, Case, options, $(element), element);
+        colorElementBehindBackgroundImageContrast(test, Case, options, element);
       });
     });
   },

@@ -1,34 +1,36 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var SiteMapStringsComponent = require('SiteMapStringsComponent');
-var $ = require('jquery/dist/jquery');
 
 var SiteMap = {
   run: function (test) {
-    var set = false;
-    var _case = Case({
-      element: test.get('$scope').get(0)
-    });
-    test.add(_case);
-    test.get('$scope').find('a').each(function () {
-      var text = $(this).text().toLowerCase();
-      $.each(SiteMapStringsComponent, function (index, string) {
-        if (text.search(string) > -1) {
-          set = true;
+    test.get('scope').forEach((scope) => {
+      DOM.scry('a[href]', scope).forEach(function (element) {
+        let set = false;
+        let _case = Case({
+          element: element
+        });
+        test.add(_case);
+        let text = DOM.text(element).toLowerCase();
+        SiteMapStringsComponent.forEach(function (str) {
+          if (text.search(str) > -1) {
+            set = true;
+            return;
+          }
+        });
+        if (set === false) {
+          _case.set({
+            status: 'failed'
+          });
           return;
         }
-      });
-      if (set === false) {
-        _case.set({
-          status: 'failed'
-        });
-        return;
-      }
 
-      if (set) {
-        _case.set({
-          status: 'passed'
-        });
-      }
+        if (set) {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      });
     });
   },
 

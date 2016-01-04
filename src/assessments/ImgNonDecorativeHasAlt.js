@@ -1,23 +1,36 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ImgNonDecorativeHasAlt = {
   run: function (test) {
-    test.get('$scope').find('img[alt]').each(function () {
-      var _case = Case({
-        element: this
+    function removePX (val) {
+      if (/px$/.test(val)) {
+        val = val.slice(0, -2);
+      }
+      return val;
+    }
+    test.get('scope').forEach((scope) => {
+      DOM.scry('img[alt]', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        var computedWidth =
+          parseInt(removePX(DOM.getComputedStyle(element, 'width')), 10);
+        var computedHeight =
+          parseInt(removePX(DOM.getComputedStyle(element, 'height')), 10);
+        if (IsUnreadable(DOM.getAttribute(element, 'alt')) &&
+            (computedWidth > 100 || computedHeight > 100)) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
+        }
       });
-      test.add(_case);
-      if (IsUnreadable($(this).attr('alt')) &&
-          ($(this).width() > 100 || $(this).height() > 100)) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 

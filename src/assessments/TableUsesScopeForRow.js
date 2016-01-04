@@ -1,26 +1,43 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var TableUsesScopeForRow = {
   run: function (test) {
-    test.get('$scope').find('table').each(function () {
-      $(this).find('td:first-child').each(function () {
-        var $next = $(this).next('td');
-        if (($(this).css('font-weight') === 'bold' && $next.css('font-weight') !== 'bold') ||
-             ($(this).find('strong').length && !$next.find('strong').length)) {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        }
-      });
-      $(this).find('td:last-child').each(function () {
-        var $prev = $(this).prev('td');
-        if (($(this).css('font-weight') === 'bold' && $prev.css('font-weight') !== 'bold') ||
-            ($(this).find('strong').length && !$prev.find('strong').length)) {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
-        }
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('table', scope).forEach(function (element) {
+        DOM.scry('td:first-child', element).forEach(function (element) {
+          var next = DOM.next(element);
+          if (next) {
+            var isBold = DOM.getComputedStyle(element, 'font-weight') === 'bold';
+            var nextIsNotBold = DOM.getComputedStyle(next, 'font-weight') !== 'bold';
+            var boldDoesNotFollowsBold = (isBold && nextIsNotBold);
+            var hasStrong = DOM.scry('strong', element).length
+            var nextIsNotStrong = DOM.scry('strong', next).length === 0;
+            var strongDoesNotFollowStrong = (hasStrong && nextIsNotStrong);
+
+            if (boldDoesNotFollowsBold || strongDoesNotFollowStrong) {
+              test.add(new Case({
+                element: element,
+                status: 'failed'
+              }));
+            }
+          }
+        });
+        DOM.scry('td:last-child', element).forEach(function (element) {
+          var $prev = DOM.prev(element);
+          var isBold = DOM.getComputedStyle(element, 'font-weight') === 'bold';
+          var prevIsNotBold = DOM.getComputedStyle($prev, 'font-weight') !== 'bold';
+          var boldDoesNotFollowsBold = (isBold && prevIsNotBold);
+          var hasStrong = DOM.scry('strong', element).length
+          var prevIsNotStrong = DOM.scry('strong', $prev).length === 0;
+          var strongDoesNotFollowStrong = (hasStrong && prevIsNotStrong);
+
+          if (boldDoesNotFollowsBold || strongDoesNotFollowStrong) {
+            test.add(new Case({
+              element: element,
+              status: 'failed'
+            }));
+          }
+        });
       });
     });
   },

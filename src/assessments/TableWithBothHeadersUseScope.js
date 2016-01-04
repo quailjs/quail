@@ -6,35 +6,36 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var TableWithBothHeadersUseScope = {
-  run: function (test, options) {
-
-    var selector = 'table:has(tr:not(table tr:first) th:not(th[scope]))';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+  run: function (test) {
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry('th', scope)
+        // Find all the th elements that don't have scope.
+        .filter((element) => {
+          let scope = element.getAttribute(element, 'scope');
+          return !scope || scope.length === 0;
+        })
+        // of them, filter down to the th elements not in the first row.
+        .filter((element) => {
+          let parents = DOM.parents(element);
+          let row = parents.filter((element) => DOM.is(element, 'tr'))[0];
+          let table = parents.filter((element) => DOM.is(element, 'table'))[0];
+          let firstRow = DOM.scry('tr', table)[0];
+          return row !== firstRow;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
-          status: (options.test ? 'inapplicable' : 'passed')
+          status: 'passed'
         }));
       }
       else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          }
-          else {
-            status = 'failed';
-          }
-
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
-            status: status
+            element: element,
+            status: 'failed'
           }));
         });
       }

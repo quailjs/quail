@@ -1,35 +1,37 @@
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var WhiteSpaceNotUsedForFormatting = {
   run: function (test) {
-    test.get('$scope')
-      .find(TextSelectorComponent)
-      .filter(function (index, element) {
-        return TextNodeFilterComponent(element);
-      })
-      .each(function () {
-        var _case = test.add(Case({
-          element: this
-        }));
-        if ($(this).find('br').length === 0) {
-          _case.set({status: 'passed'});
-          return;
-        }
-        var lines = $(this).html().toLowerCase().split(/(<br\ ?\/?>)+/);
-        var lineCount = 0;
-        $.each(lines, function (index, line) {
-          if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
-            lineCount++;
+    test.get('scope').forEach((scope) => {
+      DOM.scry(TextSelectorComponent, scope)
+        .filter(function (element) {
+          return TextNodeFilterComponent(element);
+        })
+        .forEach(function (element) {
+          var _case = test.add(Case({
+            element: element
+          }));
+          if (DOM.scry('br', element).length === 0) {
+            _case.set({status: 'passed'});
+            return;
+          }
+          var lines = DOM.text(element).toLowerCase().split(/(<br\ ?\/?>)+/);
+          var lineCount = 0;
+          lines.forEach(function (line) {
+            if (line.search(/(\s|\&nbsp;) {2,}/g) !== -1) {
+              lineCount++;
+            }
+          });
+          if (lineCount > 1) {
+            _case.set({status: 'failed'});
+          }
+          else {
+            _case.set({status: 'cantTell'});
           }
         });
-        if (lineCount > 1) {
-          _case.set({status: 'failed'});
-        }
-        else {
-          _case.set({status: 'cantTell'});
-        }
-      });
+    });
   },
 
   meta: {

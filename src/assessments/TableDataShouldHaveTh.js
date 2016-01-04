@@ -6,14 +6,14 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-
+const DOM = require('DOM');
 var TableDataShouldHaveTh = {
   run: function (test) {
 
     var selector = 'table';
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -21,16 +21,16 @@ var TableDataShouldHaveTh = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasHeading = $(this).find('th').length > 0;
+          var hasHeading = DOM.scry('th', element).length > 0;
           // If a test is defined, then use it
           if (hasHeading) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

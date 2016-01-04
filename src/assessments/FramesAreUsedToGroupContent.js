@@ -6,35 +6,27 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var FramesAreUsedToGroupContent = {
-  run: function (test, options) {
-
-    var selector = 'body:not(body:has(frameset))';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+  run: function (test) {
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry('body', scope)
+        .filter((element) => {
+          let framesets = DOM.scry('frameset', element);
+          return framesets.length === 0;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
-          status: (options.test ? 'inapplicable' : 'passed')
+          status: 'passed'
         }));
       }
       else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          }
-          else {
-            status = 'failed';
-          }
-
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
-            status: status
+            element: element,
+            status: 'failed'
           }));
         });
       }

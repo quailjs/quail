@@ -33,7 +33,7 @@ describe('assessment: documentLangIsISO639Standard', function () {
 
   it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests.documentLangIsISO639Standard.cases;
-    expect(cases).quailGetById('assert-1').to.have.quailStatus('passed');
+    expect(cases[0]).to.have.quailStatus('passed');
   });
 });
 
@@ -72,11 +72,11 @@ describe('assessment: documentLangIsISO639Standard', function () {
 
   it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests.documentLangIsISO639Standard.cases;
-    expect(cases).quailGetById('assert-1').to.have.quailStatus('failed');
+    expect(cases[0]).to.have.quailStatus('failed');
   });
 });
 
-describe('assessment: documentLangIsISO639Standard', function () {
+xdescribe('assessment: documentLangIsISO639Standard', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.
@@ -111,6 +111,6 @@ describe('assessment: documentLangIsISO639Standard', function () {
 
   it('should return the proper assessment for assert-1', function () {
     cases = quailResults.tests.documentLangIsISO639Standard.cases;
-    expect(cases).quailGetById('assert-1').to.have.quailStatus('inapplicable');
+    expect(cases[0]).to.have.quailStatus('inapplicable');
   });
 });

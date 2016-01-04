@@ -6,20 +6,19 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-
 var DocumentLangNotIdentified = {
   run: function (test) {
-    this.get('$scope').each(function () {
-      var lang = ('getAttribute' in this) && this.getAttribute('lang');
+    test.get('scope').forEach(function (scope) {
+      var lang = document.documentElement.lang;
       if (lang && lang.length > 1) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'passed'
         }));
       }
       else {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'failed'
         }));
       }

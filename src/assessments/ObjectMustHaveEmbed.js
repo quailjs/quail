@@ -6,14 +6,14 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-
+const DOM = require('DOM');
 var ObjectMustHaveEmbed = {
   run: function (test) {
 
     var selector = 'object';
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -21,9 +21,9 @@ var ObjectMustHaveEmbed = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasEmbed = $(this).find('embed').length > 0;
+          var hasEmbed = DOM.scry('embed', element).length > 0;
 
           // If a test is defined, then use it
           if (hasEmbed) {
@@ -31,7 +31,7 @@ var ObjectMustHaveEmbed = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

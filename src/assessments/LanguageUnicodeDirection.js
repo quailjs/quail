@@ -1,25 +1,23 @@
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageUnicodeDirection = {
   run: function (test) {
-    var $scope = test.get('$scope');
     var textDirection = LanguageComponent.textDirection;
     var textDirectionChanges = LanguageComponent.textDirectionChanges;
-    $scope.each(function () {
-      var $local = $(this);
-      $local
-        .find(TextSelectorComponent)
-        .filter(function (index, element) {
+    test.get('scope').forEach(function (scope) {
+      DOM.scry(TextSelectorComponent, scope)
+        .filter(function (element) {
           return TextNodeFilterComponent(element);
         })
-        .each(function () {
+        .forEach(function (element) {
           var _case = test.add(Case({
-            element: this
+            element: element
           }));
-          var $el = $(this);
-          var text = $el.text().trim();
+          var $el = element;
+          var text = DOM.text($el).trim();
           var otherDirection = (text.substr(0, 1).search(textDirection.ltr) !== -1) ?
             'rtl' :
             'ltr';

@@ -10,7 +10,7 @@ quail.%name% = function (quail, test, Case, options) {
   var selector = '%selector%';
 
   this.get('$scope').each(function () {
-    var candidates = $(this).find(selector);
+    var candidates = DOM.scry(selector, this);
     if (!candidates.length) {
       test.add(quail.lib.Case({
         element: undefined,

@@ -173,7 +173,6 @@ phantom.onError = function (msg, trace) {
 };
 
 var distPath = dir + '/dist'; // ./dist
-var nodeModulesPath = dir + '/node_modules';
 
 // var guidelinedata = fs.read(distPath + '/guideline.json');
 var guidelines = {}; // JSON.parse(guidelinedata);
@@ -297,7 +296,6 @@ page.onLoadFinished = function (status) {
   var callPhantom = window && window.callPhantom || function () {};
   if (status === 'success') {
     console.log('Page opened successfully: ' + address);
-    page.injectJs(nodeModulesPath + '/jquery/dist/jquery.min.js');
     page.injectJs(distPath + '/quail.jquery.js');
 
     // Run the evaluation.

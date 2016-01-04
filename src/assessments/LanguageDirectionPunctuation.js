@@ -1,39 +1,41 @@
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var TextSelectorComponent = require('TextSelectorComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var LanguageComponent = require('LanguageComponent');
 var TextNodeFilterComponent = require('TextNodeFilterComponent');
 var LanguageDirectionPunctuation = {
   run: function (test) {
-    var $scope = test.get('$scope');
-    var punctuation = {};
-    var punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
-    var currentDirection = ($scope.attr('dir')) ? $scope.attr('dir').toLowerCase() : 'ltr';
-    var oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
-    var textDirection = LanguageComponent.textDirection;
-    $scope.each(function () {
-      var $local = $(this);
-      $local
-        .find(TextSelectorComponent)
-        .filter(function (index, element) {
+    test.get('scope').forEach(function (scope) {
+      let punctuation = {};
+      let punctuationRegex = /[\u2000-\u206F]|[!"#$%&'\(\)\]\[\*+,\-.\/:;<=>?@^_`{|}~]/gi;
+      let currentDirection = (DOM.getAttribute(scope, 'dir')) ? DOM.getAttribute(scope, 'dir').toLowerCase() : 'ltr';
+      let oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
+      let textDirection = LanguageComponent.textDirection;
+
+      DOM.scry(TextSelectorComponent, scope)
+        .filter(function (element) {
           return TextNodeFilterComponent(element);
         })
-        .each(function () {
-          var $el = $(this);
-          if ($el.attr('dir')) {
-            currentDirection = $el.attr('dir').toLowerCase();
+        .forEach(function (element) {
+          if (DOM.getAttribute(element, 'dir')) {
+            currentDirection = DOM.getAttribute(element, 'dir').toLowerCase();
           }
           else {
-            currentDirection = ($el.parent('[dir]').first().attr('dir')) ? $el.parent('[dir]').first().attr('dir').toLowerCase() : currentDirection;
+            var dirScope = DOM.parents(element).find((parent) => {
+              return DOM.hasAttribute(parent, 'dir');
+            });
+            var dir = DOM.getAttribute(dirScope, 'dir');
+            currentDirection = dir || currentDirection;
           }
           if (typeof textDirection[currentDirection] === 'undefined') {
             currentDirection = 'ltr';
           }
           oppositeDirection = (currentDirection === 'ltr') ? 'rtl' : 'ltr';
-          var text = GetTextContentsComponent($el);
+          var text = GetTextContentsComponent(element);
           var matches = text.match(textDirection[oppositeDirection]);
           var _case = test.add(Case({
-            element: this
+            element: element
           }));
           if (!matches) {
             _case.set({status: 'inapplicable'});

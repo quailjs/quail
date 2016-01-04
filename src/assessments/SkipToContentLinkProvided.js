@@ -1,31 +1,31 @@
-/**globals console:true */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var SkipContentStringsComponent = require('SkipContentStringsComponent');
 
 var SkipToContentLinkProvided = {
   run: function (test) {
-    test.get('$scope').each(function () {
-      var $local = $(this);
+    test.get('scope').forEach(function (scope) {
+      var $local = scope;
       var skipLinkFound = false;
 
-      $local.find('a[href*="#"]').each(function () {
+      DOM.scry('a[href*="#"]', $local).forEach(function (element) {
         if (skipLinkFound) {
           return;
         }
-        var $link = $(this);
+        var $link = element;
 
-        var fragment = $link.attr('href').split('#').pop();
-        var $target = $local.find('#' + fragment);
+        var fragment = DOM.getAttribute($link, 'href').split('#').pop();
+        var $target = DOM.scry('#' + fragment, $local);
         var strs = SkipContentStringsComponent.slice();
         while (!skipLinkFound && strs.length) {
           var str = strs.pop();
-          if ($link.text().search(str) > -1 && $target.length) {
+          if (DOM.text($link).search(str) > -1 && $target.length) {
             $link.focus();
-            if ($link.is(':visible') && $link.css('visibility') !== 'hidden') {
+            if (DOM.isVisible($link)) {
               skipLinkFound = true;
               test.add(Case({
-                element: $link.get(0),
+                element: $link,
                 status: 'passed'
               }));
               return;

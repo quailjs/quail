@@ -6,17 +6,21 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-var $ = require('jquery/dist/jquery');
+const DOM = require('DOM');
 
 var AreaAltIdentifiesDestination = {
   run: function (test, options) {
 
     options = options || {};
 
-    var selector = 'area:not(area[alt])';
+    var selector = 'area';
 
-    test.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope)
+        .filter((element) => {
+          let alt = DOM.getAttribute(element, 'alt');
+          return !(alt && alt.length > 0);
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -24,11 +28,11 @@ var AreaAltIdentifiesDestination = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

@@ -1,4 +1,5 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var ALinksToMultiMediaRequireTranscript = {
   run: function (test) {
     var selector = [
@@ -9,8 +10,8 @@ var ALinksToMultiMediaRequireTranscript = {
       'a[href$=".aif"]'
     ].join(', ');
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       // Inapplicable.
       if (!candidates.length) {
         test.add(Case({
@@ -20,9 +21,9 @@ var ALinksToMultiMediaRequireTranscript = {
       }
       else {
         // cantTell.
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         });

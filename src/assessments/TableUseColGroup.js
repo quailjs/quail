@@ -1,14 +1,20 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var TableUseColGroup = {
   run: function (test) {
-    test.get('$scope').find('table').each(function () {
-      if (IsDataTableComponent($(this)) && !$(this).find('colgroup').length) {
-        test.add(Case({
-          element: this,
-          status: 'failed'
-        }));
-      }
+    test.get('scope').forEach((scope) => {
+      DOM.scry('table', scope).forEach(function (table) {
+        if (
+          IsDataTableComponent(table) &&
+          !DOM.scry('colgroup', table).length
+        ) {
+          test.add(Case({
+            element: table,
+            status: 'failed'
+          }));
+        }
+      });
     });
   },
 

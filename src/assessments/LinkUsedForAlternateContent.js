@@ -8,35 +8,27 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var LinkUsedForAlternateContent = {
-  run: function (test, options) {
-
-    var selector = 'html:not(html:has(link[rel=alternate])) body';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+  run: function (test) {
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry('html', scope)
+        .filter((element) => {
+          let links = DOM.scry('link[rel="alternative"]', element);
+          return links.length === 0;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
-          status: (options.test ? 'inapplicable' : 'passed')
+          status: 'passed'
         }));
       }
       else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          }
-          else {
-            status = 'failed';
-          }
-
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
-            status: status
+            element: element,
+            status: 'failed'
           }));
         });
       }

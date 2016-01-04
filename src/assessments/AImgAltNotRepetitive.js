@@ -1,25 +1,33 @@
 var CleanStringComponent = require('CleanStringComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var AImgAltNotRepetitive = {
   run: function (test) {
-    test.get('$scope').find('a img[alt]').each(function () {
-      var _case = test.add(Case({
-        element: this
-      }));
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('a img[alt]', scope).forEach(function (element) {
+        var _case = test.add(Case({
+          element: element
+        }));
 
-      var alt = CleanStringComponent($(this).attr('alt'));
-      var linkText = CleanStringComponent($(this).closest('a').text());
+        var alt = CleanStringComponent(DOM.getAttribute(element, 'alt'));
+        var link = DOM
+          .parents(element);
+        link
+          .unshift(element);
+        link = link.find((el) => DOM.is(el, 'a'));
+        var linkText = CleanStringComponent(DOM.text(link));
 
-      if (alt.length > 0 && linkText.indexOf(alt) > -1) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
+        if (alt.length > 0 && linkText.indexOf(alt) > -1) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
+        }
+      });
     });
   },
 

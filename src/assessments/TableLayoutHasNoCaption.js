@@ -1,28 +1,31 @@
 var IsDataTableComponent = require('IsDataTableComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var TableLayoutHasNoCaption = {
   run: function (test) {
-    test.get('$scope').find('table').each(function () {
-      if ($(this).find('caption').length) {
-        if (!IsDataTableComponent($(this))) {
-          test.add(Case({
-            element: this,
-            status: 'failed'
-          }));
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('table', scope).forEach(function (element) {
+        if (DOM.scry('caption', element).length) {
+          if (!IsDataTableComponent(element)) {
+            test.add(Case({
+              element: element,
+              status: 'failed'
+            }));
+          }
+          else {
+            test.add(Case({
+              element: element,
+              status: 'passed'
+            }));
+          }
         }
         else {
           test.add(Case({
-            element: this,
-            status: 'passed'
+            element: element,
+            status: 'inapplicable'
           }));
         }
-      }
-      else {
-        test.add(Case({
-          element: this,
-          status: 'inapplicable'
-        }));
-      }
+      });
     });
   },
 

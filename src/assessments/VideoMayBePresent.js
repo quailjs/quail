@@ -1,5 +1,5 @@
 var Case = require('Case');
-var $ = require('jquery/dist/jquery');
+const DOM = require('DOM');
 var VideoMayBePresent = {
   run: function (test) {
 
@@ -7,40 +7,38 @@ var VideoMayBePresent = {
     'mp4', 'm4p', 'm4v', 'mpg', 'mp2', 'mpeg', 'mpg', 'mpe', 'mpv', 'm2v', '3gp', '3g2'];
     var videoHosts = ['//www.youtube.com/embed/', '//player.vimeo.com/video/'];
 
-    test.get('$scope').each(function () {
-      var $this = $(this);
+    test.get('scope').forEach(function (scope) {
       var hasCase = false; // Test if a case has been created
 
       // video elm is definately a video, and objects could be too.
-      $this.find('object, video').each(function () {
+      DOM.scry('object, video', scope).forEach(function (element) {
         hasCase = true;
         test.add(Case({
-          element: this,
+          element: element,
           status: 'cantTell'
         }));
       });
 
       // Links refering to files with an video extensions are probably video
       // though the file may not exist.
-      $this.find('a[href]').each(function () {
-        var $this = $(this);
-        var extension = $this.attr('href').split('.').pop();
-        if ($.inArray(extension, videoExtensions) !== -1) {
+      DOM.scry('a[href]', scope).forEach(function (element) {
+        var extension = element.getAttribute('href').split('.').pop();
+        if (videoExtensions.indexOf(extension) !== -1) {
           hasCase = true;
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         }
       });
 
       // some iframes with URL's of known video providers are also probably videos
-      $this.find('iframe').each(function () {
-        if (this.src.indexOf(videoHosts[0]) !== -1 ||
-        this.src.indexOf(videoHosts[1]) !== -1) {
+      DOM.scry('iframe', scope).forEach(function (element) {
+        if (element.src.indexOf(videoHosts[0]) !== -1 ||
+        element.src.indexOf(videoHosts[1]) !== -1) {
           hasCase = true;
           test.add(Case({
-            element: this,
+            element: element,
             status: 'cantTell'
           }));
         }
@@ -49,7 +47,7 @@ var VideoMayBePresent = {
       // if no case was added, return inapplicable
       if (!hasCase) {
         test.add(Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         }));
       }

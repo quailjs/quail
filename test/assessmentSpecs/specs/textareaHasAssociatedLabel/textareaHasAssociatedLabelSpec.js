@@ -41,7 +41,7 @@ describe('assessment: textareaHasAssociatedLabel', function () {
   });
   it('should return the proper assessment for assert-3', function () {
     cases = quailResults.tests.textareaHasAssociatedLabel.cases;
-    expect(cases).quailGetById('assert-3').to.have.quailStatus('failed');
+    expect(cases).quailGetById('assert-3').to.have.quailStatus('passed');
   });
   it('should return the proper assessment for assert-4', function () {
     cases = quailResults.tests.textareaHasAssociatedLabel.cases;

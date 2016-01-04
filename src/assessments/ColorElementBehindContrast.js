@@ -1,5 +1,6 @@
 var Case = require('Case');
 var ColorComponent = require('ColorComponent');
+const DOM = require('DOM');
 var ColorElementBehindContrast = {
   run: function (test, options) {
 
@@ -13,18 +14,18 @@ var ColorElementBehindContrast = {
     options.algorithm = 'wcag';
     options.gradientSampleMultiplier = 3;
 
-    function colorElementBehindContrast (test, Case, options, $this, element) {
+    function colorElementBehindContrast (test, Case, options, element) {
       // Check text and background using element behind current element.
       var backgroundColorBehind;
       // The option element is problematic.
-      if (!$this.is('option')) {
-        backgroundColorBehind = colors.getBehindElementBackgroundColor($this);
+      if (!DOM.is(element, 'option')) {
+        backgroundColorBehind = colors.getBehindElementBackgroundColor(element);
       }
       if (!backgroundColorBehind) {
         return;
       }
 
-      var testResult = colors.testElmBackground(options.algorithm, $this,
+      var testResult = colors.testElmBackground(options.algorithm, element,
             backgroundColorBehind);
 
       // Build a case.
@@ -36,10 +37,10 @@ var ColorElementBehindContrast = {
       }
     }
 
-    test.get('$scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var textNodes = document.evaluate(
         'descendant::text()[normalize-space()]',
-        this,
+        scope,
         null,
         window.XPathResult.ORDERED_NODE_ITERATOR_TYPE,
         null
@@ -61,7 +62,7 @@ var ColorElementBehindContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorElementBehindContrast(test, Case, options, $(element), element);
+        colorElementBehindContrast(test, Case, options, element);
       });
 
     });

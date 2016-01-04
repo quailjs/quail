@@ -1,21 +1,27 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var LabelMustBeUnique = {
   run: function (test) {
     var labels = {};
-    test.get('$scope').find('label[for]').each(function () {
-      if (typeof labels[$(this).attr('for')] === 'undefined') {
-        labels[$(this).attr('for')] = 0;
-      }
-      labels[$(this).attr('for')]++;
-    });
-    test.get('$scope').find('label[for]').each(function () {
-      var _case = Case({
-        element: this,
-        status: (labels[$(this).attr('for')] === 1) ?
-          'passed' :
-          'failed'
+    test.get('scope').forEach(function (scope) {
+      let labelElements = DOM.scry('label[for]', scope);
+
+      labelElements.forEach(function (element) {
+        if (typeof labels[DOM.getAttribute(element, 'for')] === 'undefined') {
+          labels[DOM.getAttribute(element, 'for')] = 0;
+        }
+        labels[DOM.getAttribute(element, 'for')]++;
       });
-      test.add(_case);
+
+      labelElements.forEach(function (element) {
+        var _case = Case({
+          element: element,
+          status: (labels[DOM.getAttribute(element, 'for')] === 1) ?
+            'passed' :
+            'failed'
+        });
+        test.add(_case);
+      });
     });
   },
 

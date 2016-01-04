@@ -16,9 +16,9 @@ var ColorBackgroundImageContrast = {
     /**
      *
      */
-    function colorBackgroundImageContrast (test, Case, options, $this, element) {
+    function colorBackgroundImageContrast (test, Case, options, element) {
       // Check if there's a backgroundImage using DOM.
-      var backgroundImage = colors.getBackgroundImage($this);
+      var backgroundImage = colors.getBackgroundImage(element);
       if (!backgroundImage) {
         return;
       }
@@ -30,7 +30,7 @@ var ColorBackgroundImageContrast = {
       // before information about it is available to the DOM.
       img.onload = function () {
         var averageColorBackgroundImage = colors.getAverageRGB(img);
-        var testResult = colors.testElmBackground(options.algorithm, $this,
+        var testResult = colors.testElmBackground(options.algorithm, element,
               averageColorBackgroundImage);
 
         // Build a case.
@@ -51,10 +51,10 @@ var ColorBackgroundImageContrast = {
       img.src = backgroundImage;
     }
 
-    test.get('$scope').each(function () {
+    test.get('scope').forEach(function (scope) {
       var textNodes = document.evaluate(
         'descendant::text()[normalize-space()]',
-        this,
+        scope,
         null,
         window.XPathResult.ORDERED_NODE_ITERATOR_TYPE,
         null
@@ -76,7 +76,7 @@ var ColorBackgroundImageContrast = {
       }
 
       nodes.forEach(function (element) {
-        colorBackgroundImageContrast(test, Case, options, $(element), element);
+        colorBackgroundImageContrast(test, Case, options, element);
       });
     });
   },

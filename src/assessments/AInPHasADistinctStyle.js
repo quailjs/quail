@@ -1,5 +1,7 @@
-var Case = require('Case');
-var AInPHasADistinctStyle = {
+const BorderDetailsComponent = require('BorderDetailsComponent');
+const Case = require('Case');
+const DOM = require('DOM');
+const AInPHasADistinctStyle = {
   run: function (test) {
 
     /**
@@ -8,8 +10,15 @@ var AInPHasADistinctStyle = {
      * @returns {boolean}
      */
     function hasBorder (element) {
-      return (element.outerWidth() - element.innerWidth() > 0) ||
-      (element.outerHeight() - element.innerHeight() > 0);
+      let borders = BorderDetailsComponent(element);
+      let width = 0;
+      for (let border of borders) {
+        let [,
+          details
+        ] = border;
+        width += details.width;
+      }
+      return (width > 0);
     }
 
     /**
@@ -21,19 +30,19 @@ var AInPHasADistinctStyle = {
     function elmHasDistinctStyle ($elm, $parent) {
       var result = false;
       var styleProperties = ['font-weight', 'font-style'];
-      var textDecoration = $elm.css('text-decoration');
+      var textDecoration = DOM.getComputedStyle($elm, 'text-decoration');
 
       if (textDecoration !== 'none' &&
-      textDecoration !== $parent.css('text-decoration')) {
+      textDecoration !== DOM.getComputedStyle($parent, 'text-decoration')) {
         result = true;
       }
 
-      if ($elm.css('background-color') !== 'rgba(0, 0, 0, 0)') {
+      if (DOM.getComputedStyle($elm, 'background-color') !== 'rgba(0, 0, 0, 0)') {
         styleProperties.push('background');
       }
 
-      $.each(styleProperties, function (i, styleProp) {
-        if (!result && $elm.css(styleProp) !== $parent.css(styleProp)) {
+      styleProperties.forEach(function (styleProp) {
+        if (!result && DOM.getComputedStyle($elm, styleProp) !== DOM.getComputedStyle($parent, styleProp)) {
           result = true;
         }
       });
@@ -42,8 +51,8 @@ var AInPHasADistinctStyle = {
     }
 
     function elmHasDistinctPosition ($elm) {
-      var isBlock = ($elm.css('display') === 'block');
-      var position = $elm.css('position');
+      var isBlock = (DOM.getComputedStyle($elm, 'display') === 'block');
+      var position = DOM.getComputedStyle($elm, 'position');
       var isPositioned = position !== 'relative' && position !== 'static';
       return isBlock || isPositioned;
     }
@@ -51,41 +60,45 @@ var AInPHasADistinctStyle = {
     // Ignore links where the p only contains white space, <, >, |, \, / and - chars
     var allowedPText = /^([\s|-]|>|<|\\|\/|&(gt|lt);)*$/i;
 
-    test.get('$scope').each(function () {
-      var $scope = $(this);
-      var anchors = $scope.find('p a[href]:visible');
+    test.get('scope').forEach(function (scope) {
+      var anchors = DOM.scry('p a[href]', scope);
 
-      anchors.each(function () {
-        var $this = $(this);
-        var $p = $this.closest('p');
-        var $parent = $this.parent();
+      anchors.forEach(function (element) {
+        var $p = DOM.parents(element).find((parent) => DOM.is(parent, 'p'));
+        var $parent = element.parentNode;
 
         var _case = Case({
-          element: this
+          element: element
         });
         test.add(_case);
 
-        var aText = $this.text().trim();
+        var aText = DOM.text(element).trim();
 
         // Get all text of the p element with all anchors removed
-        var pText = $p.clone().find('a[href]').remove().end().text();
+        var pClone = $p.cloneNode(true);
+        DOM.scry('a[href]', pClone).forEach((link) => {
+          link.parentNode.removeChild(link);
+        });
+        var pText = DOM.text(pClone).trim();
 
         if (aText === '' || pText.match(allowedPText)) {
           _case.set('status', 'inapplicable');
         }
-        else if ($this.css('color') === $p.css('color')) {
+        else if (
+          DOM.getComputedStyle(element, 'color') === DOM.getComputedStyle($p, 'color')
+        ) {
           _case.set('status', 'passed');
         }
-        else if (elmHasDistinctStyle($this, $p)) {
+        else if (elmHasDistinctStyle(element, $p)) {
           _case.set('status', 'passed');
         }
-        else if (elmHasDistinctPosition($this)) {
+        else if (elmHasDistinctPosition(element)) {
           _case.set('status', 'passed');
         }
-        else if ($this.find('img').length > 0) {
+        else if (DOM.scry('img', element).length > 0) {
           _case.set('status', 'passed');
         }
-        else if ($parent.text().trim() === aText &&
+        else if (DOM.text($parent).trim() === aText &&
         elmHasDistinctStyle($parent, $p)) {
           _case.set('status', 'passed');
         }

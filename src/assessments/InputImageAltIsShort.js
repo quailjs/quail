@@ -1,21 +1,24 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var InputImageAltIsShort = {
   run: function (test) {
-    test.get('$scope').find('input[type=image]').each(function () {
-      var _case = Case({
-        element: this
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('input[type=image]', scope).forEach(function (element) {
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        if (DOM.getAttribute(element, 'alt').length > 100) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
+        }
       });
-      test.add(_case);
-      if ($(this).attr('alt').length > 100) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 

@@ -8,14 +8,20 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var LinkUsedToDescribeNavigation = {
   run: function (test, options) {
-
-    var selector = 'html:not(html:has(link[rel=index]))';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry('html', scope)
+        .filter((element) => {
+          let links = DOM.scry('link', element)
+            .filter((element) => {
+              let rel = DOM.getAttribute(element, 'rel');
+              return rel === 'index';
+            });
+          return links.length === 0;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -23,11 +29,11 @@ var LinkUsedToDescribeNavigation = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status;
 
           // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
+          if (options.test && !DOM.is(element, options.test)) {
             status = 'passed';
           }
           else {
@@ -35,7 +41,7 @@ var LinkUsedToDescribeNavigation = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

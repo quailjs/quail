@@ -1,4 +1,4 @@
-describe('assessment: idrefsHasCorrespondingId', function () {
+xdescribe('assessment: idrefsHasCorrespondingId', function () {
   var client, assessments, quailResults, cases;
 
   // Evaluate the test page with Quail.

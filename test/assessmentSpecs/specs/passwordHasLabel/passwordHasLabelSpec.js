@@ -49,7 +49,7 @@ describe('assessment: passwordHasLabel', function () {
   });
   it('should return the proper assessment for assert-5', function () {
     cases = quailResults.tests.passwordHasLabel.cases;
-    expect(cases).quailGetById('assert-5').to.have.quailStatus('failed');
+    expect(cases).quailGetById('assert-5').to.have.quailStatus('passed');
   });
   it('should return the proper assessment for assert-6', function () {
     cases = quailResults.tests.passwordHasLabel.cases;

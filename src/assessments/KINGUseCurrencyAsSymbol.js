@@ -1,8 +1,9 @@
 var GetTextContentsComponent = require('GetTextContentsComponent');
 var Case = require('Case');
+const DOM = require('DOM');
 var KINGUseCurrencyAsSymbol = {
   run: function (test) {
-    function testCurrencyFormat (index, element) {
+    function testCurrencyFormat (element) {
       // Detect dates with several separators.
       var currencyNames = [
         'dollar',
@@ -17,9 +18,9 @@ var KINGUseCurrencyAsSymbol = {
       // Test the words and any eventual extra letters for s and all.
       var currencyReg = new RegExp('\\d{1,}\\s*(' + currencyNames.join('|') + ')\\w*\\b|(' + currencyNames.join('|') + ')\\w*\\b\\s*\\d{1,}', 'ig');
 
-      var text = GetTextContentsComponent($(element));
+      var text = GetTextContentsComponent(element);
       var _case = Case({
-        element: this
+        element: element
       });
       test.add(_case);
 
@@ -27,7 +28,9 @@ var KINGUseCurrencyAsSymbol = {
         status: currencyReg.test(text) ? 'failed' : 'passed'
       });
     }
-    test.get('$scope').find('p').each(testCurrencyFormat);
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('p', scope).forEach(testCurrencyFormat);
+    });
   },
 
   meta: {

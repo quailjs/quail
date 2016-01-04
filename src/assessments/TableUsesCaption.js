@@ -6,14 +6,14 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-
+const DOM = require('DOM');
 var TableUsesCaption = {
   run: function (test) {
 
     var selector = 'table';
 
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry(selector, scope);
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -21,9 +21,9 @@ var TableUsesCaption = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
-          var hasCaption = $(this).find('caption').length === 1;
+          var hasCaption = DOM.scry('caption', element).length === 1;
 
           // If a test is defined, then use it
           if (hasCaption) {
@@ -31,7 +31,7 @@ var TableUsesCaption = {
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });

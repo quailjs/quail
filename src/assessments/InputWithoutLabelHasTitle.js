@@ -1,35 +1,33 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var InputWithoutLabelHasTitle = {
   run: function (test) {
-
-    test.get('$scope').each(function () {
-
-      var testableElements = $(this).find('input, select, textarea');
-
+    test.get('scope').forEach(function (scope) {
+      var testableElements = DOM.scry('input, select, textarea', scope);
       if (testableElements.length === 0) {
         var _case = Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         });
         test.add(_case);
         return;
       }
       else {
-        testableElements.each(function () {
+        testableElements.forEach(function (element) {
           var _case = Case({
-            element: this
+            element: element
           });
           test.add(_case);
 
-          if ($(this).css('display') === 'none') {
+          if (DOM.getComputedStyle(element, 'display') === 'none') {
             _case.set({
               status: 'inapplicable'
             });
             return;
           }
-          if (!test.get('$scope').find('label[for=' + $(this).attr('id') + ']').length &&
-            (!$(this).attr('title') || IsUnreadable($(this).attr('title')))) {
+          if (!DOM.scry('label[for=' + DOM.getAttribute(element, 'id') + ']', scope).length &&
+            (!DOM.getAttribute(element, 'title') || IsUnreadable(DOM.getAttribute(element, 'title')))) {
             _case.set({
               status: 'failed'
             });

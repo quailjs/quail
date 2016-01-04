@@ -1,4 +1,6 @@
 var Case = require('Case');
+const DOM = require('DOM');
+const TableHeadersComponent = require('TableHeadersComponent');
 var LinkHasAUniqueContext = {
   run: function (test) {
 
@@ -13,17 +15,16 @@ var LinkHasAUniqueContext = {
 
     function getLinkSentence (link) {
       // Find the closest block-like element
-      var $link = $(link);
-      var block = $link;
-      var text = simplifyText($link.text());
+      var block = link;
+      var text = simplifyText(DOM.text(link));
 
-      while (!block.is('body, html') && blockStyle.indexOf(block.css('display')) === -1) {
-        block = block.parent();
+      while (!DOM.is(block, 'body, html') && blockStyle.indexOf(DOM.getComputedStyle(block, 'display')) === -1) {
+        block = block.parentNode;
       }
 
-      var sentences = block.text().match(/[^\.!\?]+[\.!\?]+/g);
+      var sentences = DOM.text(block).match(/[^\.!\?]+[\.!\?]+/g);
       if (sentences === null) {
-        sentences = [block.text()];
+        sentences = [DOM.text(block)];
       }
 
       for (var i = 0; i < sentences.length; i+= 1) {
@@ -55,8 +56,13 @@ var LinkHasAUniqueContext = {
       }
 
       // Find the nearest list item, paragraph or table cell of both items
-      var linkACtxt = $(linkA).closest('p, li, dd, dt, td, th');
-      var linkBCtxt = $(linkB).closest('p, li, dd, dt, td, th');
+      var selector = 'p, li, dd, dt, td, th';
+      var linkACtxt = DOM.parents(linkA).find(
+        (parent) => DOM.is(parent, selector)
+      );
+      var linkBCtxt = DOM.parents(linkB).find(
+        (parent) => DOM.is(parent, selector)
+      );
 
       // check if they are different
       if (linkACtxt.length !== 0 && linkBCtxt.length !== 0 &&
@@ -65,22 +71,22 @@ var LinkHasAUniqueContext = {
       }
 
       // If one is a table cell and the other isn't, allow it
-      if (linkACtxt.is('td, th') && !linkBCtxt.is('td, th')) {
+      if (DOM.is(linkACtxt, 'td, th') && !DOM.is(linkBCtxt, 'td, th')) {
         return false;
 
       }
-      else if (linkACtxt.is('td, th') && linkBCtxt.is('td, th')) {
+      else if (DOM.is(linkACtxt, 'td, th') && DOM.is(linkBCtxt, 'td, th')) {
         var headerDiff = false;
         var headersA = [];
 
         // Make a list with the simplified text of link A
-        linkACtxt.tableHeaders().each(function () {
-          headersA.push(simplifyText($(this).text()));
+        TableHeadersComponent.tableHeaders(linkACtxt).forEach(function (element) {
+          headersA.push(simplifyText(element.innerText));
         });
 
         // Compare it to the header context of link B
-        linkBCtxt.tableHeaders().each(function () {
-          var text = simplifyText($(this).text());
+        TableHeadersComponent.tableHeaders(linkBCtxt).forEach(function (element) {
+          var text = simplifyText(element.innerText);
           var pos = headersA.indexOf(text);
           // Link B has something not part of link A's context, pass
           if (pos === -1) {
@@ -106,25 +112,25 @@ var LinkHasAUniqueContext = {
 
     /**
      * Get the text value of the link, including alt attributes
-     * @param  {jQuery} $link
+     * @param  {jQuery} link
      * @return {string}
      */
-    function getLinkText ($link) {
-      var text = $link.text();
-      $link.find('img[alt]').each(function () {
-        text += ' ' + this.alt.trim();
+    function getLinkText (link) {
+      var text = link.innerText;
+      DOM.scry('img[alt]', link).forEach(function (element) {
+        text += ' ' + element.alt.trim();
       });
       return simplifyText(text);
     }
 
-    test.get('$scope').each(function () {
-      var $scope = $(this);
-      var $links = $scope.find('a[href]:visible');
+    test.get('scope').forEach(function (scope) {
+      var links = DOM.scry('a[href]', scope)
+        .filter((element) => DOM.isVisible(element));
       var linkMap = {};
 
-      if ($links.length === 0) {
+      if (links.length === 0) {
         var _case = Case({
-          element: this,
+          element: scope,
           status: 'inapplicable'
         });
         test.add(_case);
@@ -132,16 +138,22 @@ var LinkHasAUniqueContext = {
 
       // Make a map with the link text as key and an array of links with
       // that link text as it's value
-      $links.each(function () {
-        var text = getLinkText($(this));
+      links.forEach(function (element) {
+        var text = getLinkText(element);
         if (typeof linkMap[text] === 'undefined') {
           linkMap[text] = [];
         }
-        linkMap[text].push(this);
+        linkMap[text].push(element);
       });
 
       // Iterate over each item in the linkMap
-      $.each(linkMap, function (linkText, links) {
+      for (var linkText in linkMap) {
+        if (linkMap.hasOwnProperty(linkText)) {
+          links = linkMap[linkText];
+        }
+        else {
+          continue;
+        }
 
         // Link text is not unique, so the context should be checked
         while (links.length > 1) {
@@ -172,7 +184,7 @@ var LinkHasAUniqueContext = {
             status: 'passed'
           }));
         }
-      });
+      }
     });
   },
 

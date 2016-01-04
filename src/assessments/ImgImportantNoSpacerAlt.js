@@ -1,27 +1,44 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ImgImportantNoSpacerAlt = {
   run: function (test) {
-    test.get('$scope').find('img[alt]').each(function () {
-      var width = ($(this).width()) ? $(this).width() : parseInt($(this).attr('width'), 10);
-      var height = ($(this).height()) ? $(this).height() : parseInt($(this).attr('height'), 10);
-      var _case = Case({
-        element: this
+    var removePX = (strVal) => {
+      if (/px$/.test(strVal)) {
+        strVal = strVal.slice(0, -2);
+      }
+      return strVal;
+    };
+    test.get('scope').forEach((scope) => {
+      DOM.scry('img[alt]', scope).forEach(function (element) {
+        var computedWidth =
+          parseInt(removePX(DOM.getComputedStyle(element, 'width')), 10);
+        var computedHeight =
+          parseInt(removePX(DOM.getComputedStyle(element, 'height')), 10);
+        var width = (computedWidth) ?
+          computedWidth :
+          parseInt(DOM.getAttribute(element, 'width'), 10);
+        var height = (computedHeight) ?
+          computedHeight :
+          parseInt(DOM.getAttribute(element, 'height'), 10);
+        var _case = Case({
+          element: element
+        });
+        test.add(_case);
+        if (IsUnreadable(DOM.getAttribute(element, 'alt').trim()) &&
+            DOM.getAttribute(element, 'alt').length > 0 &&
+            width > 50 &&
+            height > 50) {
+          _case.set({
+            status: 'failed'
+          });
+        }
+        else {
+          _case.set({
+            status: 'passed'
+          });
+        }
       });
-      test.add(_case);
-      if (IsUnreadable($(this).attr('alt').trim()) &&
-          $(this).attr('alt').length > 0 &&
-          width > 50 &&
-          height > 50) {
-        _case.set({
-          status: 'failed'
-        });
-      }
-      else {
-        _case.set({
-          status: 'passed'
-        });
-      }
     });
   },
 

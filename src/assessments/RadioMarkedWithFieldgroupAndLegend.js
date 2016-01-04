@@ -6,35 +6,28 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var RadioMarkedWithFieldgroupAndLegend = {
-  run: function (test, options) {
-
-    var selector = 'input[type=radio]:not(fieldset input[type=radio])';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+  run: function (test) {
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry('input[type=radio]', scope)
+        .filter((element) => {
+          let parents = DOM.parents(element)
+            .filter((element) => DOM.is(element, 'fieldset'));
+          return parents.length === 0;
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
-          status: (options.test ? 'inapplicable' : 'passed')
+          status: 'passed'
         }));
       }
       else {
-        candidates.each(function () {
-          var status;
-
-          // If a test is defined, then use it
-          if (options.test && !$(this).is(options.test)) {
-            status = 'passed';
-          }
-          else {
-            status = 'failed';
-          }
-
+        candidates.forEach(function (element) {
           test.add(Case({
-            element: this,
-            status: status
+            element: element,
+            status: 'failed'
           }));
         });
       }

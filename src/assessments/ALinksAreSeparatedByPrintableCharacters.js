@@ -1,24 +1,28 @@
 var Case = require('Case');
+const DOM = require('DOM');
 var IsUnreadable = require('IsUnreadable');
 var ALinksAreSeparatedByPrintableCharacters = {
   run: function (test) {
-    test.get('$scope').find('a').each(function () {
-      var _case = test.add(Case({
-        element: this
-      }));
-      // Only test if there's another a tag.
-      if ($(this).next('a').length) {
-        if (IsUnreadable($(this).get(0).nextSibling.wholeText)) {
-          _case.set({
-            status: 'failed'
-          });
+    test.get('scope').forEach(function (scope) {
+      DOM.scry('a', scope).forEach(function (element) {
+        var _case = test.add(Case({
+          element: element
+        }));
+        // Only test if there's another a tag.
+        var next = DOM.next(element);
+        if (next && DOM.is(next, 'a')) {
+          if (IsUnreadable(element.nextSibling.wholeText)) {
+            _case.set({
+              status: 'failed'
+            });
+          }
+          else {
+            _case.set({
+              status: 'passed'
+            });
+          }
         }
-        else {
-          _case.set({
-            status: 'passed'
-          });
-        }
-      }
+      });
     });
   },
 

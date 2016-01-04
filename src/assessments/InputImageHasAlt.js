@@ -6,14 +6,13 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
+const DOM = require('DOM');
 
 var InputImageHasAlt = {
   run: function (test) {
-
-    var selector = 'input[type=image]:visible';
-
-    this.get('$scope').each(function () {
-      var candidates = $(this).find(selector);
+    test.get('scope').forEach(function (scope) {
+      var candidates = DOM.scry('input[type=image]', scope)
+        .filter((element) => DOM.isVisible(element));
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -21,15 +20,15 @@ var InputImageHasAlt = {
         }));
       }
       else {
-        candidates.each(function () {
+        candidates.forEach(function (element) {
           var status = 'failed';
 
-          if (this.hasAttribute('alt')) {
+          if (element.hasAttribute('alt')) {
             status = 'passed';
           }
 
           test.add(Case({
-            element: this,
+            element: element,
             status: status
           }));
         });
@@ -80,10 +79,7 @@ var InputImageHasAlt = {
       'form',
       'image',
       'content'
-    ],
-    options: {
-      test: ':not(input[type=image][alt])'
-    }
+    ]
   }
 };
 module.exports = InputImageHasAlt;
