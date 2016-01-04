@@ -10,7 +10,7 @@ const DOM = require('DOM');
 var DocumentLangNotIdentified = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
-      var lang = DOM.getAttribute(scope, 'lang');
+      var lang = document.documentElement.lang;
       if (lang && lang.length > 1) {
         test.add(Case({
           element: scope,

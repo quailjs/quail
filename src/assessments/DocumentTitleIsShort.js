@@ -3,10 +3,10 @@ const DOM = require('DOM');
 var DocumentTitleIsShort = {
   run: function (test) {
     test.get('scope').forEach((scope) => {
-      var $title = DOM.scry('head title', scope);
+      var title = DOM.scry('head title', scope)[0];
       test.add(Case({
-        element: $title,
-        status: DOM.text($title).length > 150 ? 'failed' : 'passed'
+        element: title,
+        status: DOM.text(title).length > 150 ? 'failed' : 'passed'
       }));
     });
   },
