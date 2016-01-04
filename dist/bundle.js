@@ -14387,7 +14387,7 @@ var DocumentHasTitleElement = {
       var candidates = DOM.scry(selector, scope);
       if (candidates.length === 1) {
         test.add(Case({
-          element: candidates,
+          element: candidates[0],
           status: 'passed'
         }));
       } else if (candidates.length === 0) {
