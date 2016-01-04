@@ -23,7 +23,7 @@ var VideoMayBePresent = {
       // though the file may not exist.
       DOM.scry('a[href]', scope).forEach(function (element) {
         var extension = element.getAttribute('href').split('.').pop();
-        if ($.inArray(extension, videoExtensions) !== -1) {
+        if (videoExtensions.indexOf(extension) !== -1) {
           hasCase = true;
           test.add(Case({
             element: element,

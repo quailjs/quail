@@ -6,13 +6,13 @@ var VideosEmbeddedOrLinkedNeedCaptions = {
       VideoComponent.findVideos(scope, function (element, pass) {
         if (!pass) {
           test.add(Case({
-            element: element[0],
+            element: element,
             status: 'failed'
           }));
         }
         else {
           test.add(Case({
-            element: element[0],
+            element: element,
             status: 'passed'
           }));
         }

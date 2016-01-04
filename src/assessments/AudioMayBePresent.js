@@ -21,7 +21,7 @@ var AudioMayBePresent = {
       DOM.scry('a[href]', $this).forEach(function (element) {
         var $this = element;
         var extension = DOM.getAttribute($this, 'href').split('.').pop();
-        if ($.inArray(extension, audioExtensions) !== -1) {
+        if (audioExtensions.indexOf(extension) !== -1) {
           hasCase = true;
           test.add(Case({
             element: element,
