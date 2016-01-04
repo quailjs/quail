@@ -9,7 +9,7 @@ var BlockquoteUseForQuotations = {
         });
         test.add(_case);
         var blockquote = DOM.parents(element)
-          .find((parent) => DOM.is(parent, 'blockquote'))[0];
+          .find((parent) => DOM.is(parent, 'blockquote'));
         if (blockquote) {
           _case.set({
             status: 'inapplicable'
