@@ -2,7 +2,7 @@ var Case = require('Case');
 var DoctypeProvided = {
   run: function (test) {
     test.get('scope').forEach((doc) => {
-      if ($(doc.doctype).length === 0 && !document.doctype) {
+      if (!document.doctype) {
         test.add(Case({
           element: doc,
           status: 'failed'

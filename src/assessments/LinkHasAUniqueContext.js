@@ -143,7 +143,7 @@ var LinkHasAUniqueContext = {
         if (typeof linkMap[text] === 'undefined') {
           linkMap[text] = [];
         }
-        linkMap[text].push(this);
+        linkMap[text].push(element);
       });
 
       // Iterate over each item in the linkMap

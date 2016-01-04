@@ -46,7 +46,7 @@ var IdrefsHasCorrespondingId = {
           var status = 'passed';
 
           attributes.forEach(function (item) {
-            if (item !== '' && $('#' + item).length === 0) {
+            if (item !== '' && DOM.scry('#' + item, scope).length === 0) {
               status = 'failed';
               return;
             }
