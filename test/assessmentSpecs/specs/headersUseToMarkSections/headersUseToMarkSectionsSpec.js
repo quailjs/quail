@@ -24,7 +24,7 @@ describe('assessment: headersUseToMarkSections', function () {
     expect(quailResults.stats.tests).to.equal(1);
   });
   it('should return the correct number of cases', function () {
-    expect(quailResults.stats.cases).to.equal(4);
+    expect(quailResults.stats.cases).to.equal(5);
   });
 
   it('should have correct key under the test results', function () {
@@ -47,7 +47,7 @@ describe('assessment: headersUseToMarkSections', function () {
     cases = quailResults.tests.headersUseToMarkSections.cases;
     expect(cases).quailGetById('assert-4').to.have.quailStatus('failed');
   });
-  xit('should return the proper assessment for assert-5', function () {
+  it('should return the proper assessment for assert-5', function () {
     cases = quailResults.tests.headersUseToMarkSections.cases;
     expect(cases).quailGetById('assert-5').to.have.quailStatus('passed');
   });
