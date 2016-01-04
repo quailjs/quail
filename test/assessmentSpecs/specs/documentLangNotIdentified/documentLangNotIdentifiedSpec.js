@@ -42,7 +42,7 @@ describe('assessment: documentLangNotIdentified', function () {
   describe('the lang case', function () {
     before('load webdrivers and run evaluations with Quail', function () {
       return quailTestRunner.setup({
-          url: 'http://localhost:9999/documentLangNotIdentified/documentLangNotIdentified-pass.html',
+          url: 'http://localhost:9999/documentLangNotIdentified/documentLangNotIdentified.html',
           assessments: [
             'documentLangNotIdentified'
           ]
