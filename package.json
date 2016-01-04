@@ -52,8 +52,7 @@
   },
   "watch": {
     "build": [
-      "src/**/*.js",
-      "test/assessmentSpecs/**/*.js"
+      "src/**/*.js"
     ]
   }
 }

@@ -6,11 +6,11 @@
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-
+const DOM = require('DOM');
 var DocumentLangNotIdentified = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
-      var lang = ('getAttribute' in scope) && scope.getAttribute('lang');
+      var lang = DOM.getAttribute(scope, 'lang');
       if (lang && lang.length > 1) {
         test.add(Case({
           element: scope,

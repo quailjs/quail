@@ -14628,11 +14628,11 @@ module.exports = DocumentLangIsISO639Standard;
  * one. The test passes is the selector finds no matching elements.
  */
 var Case = require('Case');
-
+var DOM = require('DOM');
 var DocumentLangNotIdentified = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
-      var lang = 'getAttribute' in scope && scope.getAttribute('lang');
+      var lang = DOM.getAttribute(scope, 'lang');
       if (lang && lang.length > 1) {
         test.add(Case({
           element: scope,
@@ -14663,7 +14663,7 @@ var DocumentLangNotIdentified = {
 };
 module.exports = DocumentLangNotIdentified;
 
-},{"Case":33}],107:[function(require,module,exports){
+},{"Case":33,"DOM":34}],107:[function(require,module,exports){
 'use strict';
 
 /**
