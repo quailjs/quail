@@ -3,10 +3,14 @@ const DOM = require('DOM');
 var NewWindowIsOpened = {
   run: function (test) {
 
-    var fenestrate = window.open;
     var _case;
 
+    window.addEventListener('click', function (event) {
+      event.preventDefault();
+    });
+
     window.open = function (event) {
+      debugger;
       test.forEach(function (_case) {
         var href = _case.get('element').href;
         if (href.indexOf(event) > -1) {
@@ -22,11 +26,12 @@ var NewWindowIsOpened = {
           element: element
         });
         test.add(_case);
-        element.click();
       });
     });
+    test.forEach(function (_case) {
+      _case.get('element').click();
+    });
 
-    window.open = fenestrate;
   },
 
   meta: {

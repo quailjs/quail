@@ -22,7 +22,10 @@ var PNotUsedAsHeader = {
         var failed = false;
         // Look for any indication that the paragraph contains at least a full sentence
         if (DOM.text(element).search(/[\.!:;]/) < 1) {
-          var priorParagraph = $paragraph.prev('p');
+          var priorParagraph = DOM.prev($paragraph);
+          if (!priorParagraph || !DOM.is(priorParagraph, 'p')) {
+            priorParagraph = [];
+          }
           // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
           SuspectPHeaderTags.forEach(function (tag) {
             if (DOM.scry(tag, $paragraph).length) {

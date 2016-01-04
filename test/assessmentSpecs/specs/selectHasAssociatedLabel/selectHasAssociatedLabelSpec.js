@@ -61,7 +61,7 @@ describe('assessment: selectHasAssociatedLabel', function () {
   });
   it('should return the proper assessment for assert-8', function () {
     cases = quailResults.tests.selectHasAssociatedLabel.cases;
-    expect(cases).quailGetById('assert-8').to.have.quailStatus('failed');
+    expect(cases).quailGetById('assert-8').to.have.quailStatus('passed');
   });
   it('should return the proper assessment for assert-9', function () {
     cases = quailResults.tests.selectHasAssociatedLabel.cases;

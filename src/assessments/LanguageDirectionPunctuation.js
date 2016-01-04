@@ -24,7 +24,7 @@ var LanguageDirectionPunctuation = {
           else {
             var dirScope = DOM.parents(element).find((parent) => {
               return DOM.hasAttribute(parent, 'dir');
-            })[0];
+            });
             var dir = DOM.getAttribute(dirScope, 'dir');
             currentDirection = dir || currentDirection;
           }

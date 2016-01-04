@@ -738,7 +738,7 @@ var EventComponent = function EventComponent(test, options) {
       var hasOnListener = HasEventListenerComponent(item, eventName);
       // Determine if the element has jQuery listeners for the event.
       var jqevents;
-      var $ = window.jQuery || window.$;
+      var $ = window.jQuery || window.$ || {};
       if ($._data) {
         jqevents = $._data(this, 'events');
       }
@@ -798,12 +798,15 @@ module.exports = getTextContentsComponent;
 var DOM = require('DOM');
 var HasEventListenerComponent = function HasEventListenerComponent(element, event) {
   var onEventAttr = DOM.getAttribute(element, 'on' + event);
-  if (typeof onEventAttr !== 'undefined') {
+  if (onEventAttr) {
     return true;
   }
   // jQuery events are stored in private objects
-  if ($._data(element, 'events') && typeof $._data(element, 'events')[event] !== 'undefined') {
-    return true;
+  var $ = window.jQuery || window.$ || {};
+  if ($._data) {
+    if ($._data(element, 'events') && typeof $._data(element, 'events')[event] !== 'undefined') {
+      return true;
+    }
   }
   // Certain elements always have default events, so we create a new element to compare default events.
   if (DOM.is(element, 'a[href], input, button, video, textarea') && typeof element[event] !== 'undefined' && (event === 'click' || event === 'focus')) {
@@ -888,11 +891,14 @@ var IsDataTableComponent = function IsDataTableComponent(table) {
       }
       spanIndex[index]++;
     });
-    spanIndex.forEach(function (count) {
-      if (count < numberRows) {
-        isDataTable = false;
+    for (var ii in spanIndex) {
+      if (spanIndex.hasOwnProperty(ii)) {
+        var count = spanIndex[ii];
+        if (count < numberRows) {
+          isDataTable = false;
+        }
       }
-    });
+    }
   }
   // If there are sub tables, but not in the same column row after row, this is a layout table
   var subTables = DOM.scry('table', table);
@@ -906,11 +912,14 @@ var IsDataTableComponent = function IsDataTableComponent(table) {
       }
       subTablesIndexes[parentIndex]++;
     });
-    subTablesIndexes.forEach(function (count) {
-      if (count < numberRows) {
-        isDataTable = false;
+    for (var sii in subTablesIndexes) {
+      if (subTablesIndexes.hasOwnProperty(sii)) {
+        var count = subTablesIndexes[sii];
+        if (count < numberRows) {
+          isDataTable = false;
+        }
       }
-    });
+    }
   }
   return isDataTable;
 };
@@ -2309,6 +2318,10 @@ var DOM = {
       index = children.indexOf(element);
     }
     return children.slice(0, index);
+  },
+  index: function index(element) {
+    var siblings = DOM.children(element.parentElement);
+    return siblings.indexOf(element);
   },
   is: function is(element, nodeName) {
     _assertIsDom(element, 'is');
@@ -14569,7 +14582,7 @@ var DOM = require('DOM');
 var DocumentLangNotIdentified = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
-      var lang = DOM.getAttribute(scope, 'lang');
+      var lang = document.documentElement.lang;
       if (lang && lang.length > 1) {
         test.add(Case({
           element: scope,
@@ -14881,10 +14894,10 @@ var DOM = require('DOM');
 var DocumentTitleIsShort = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
-      var $title = DOM.scry('head title', scope);
+      var title = DOM.scry('head title', scope)[0];
       test.add(Case({
-        element: $title,
-        status: DOM.text($title).length > 150 ? 'failed' : 'passed'
+        element: title,
+        status: DOM.text(title).length > 150 ? 'failed' : 'passed'
       }));
     });
   },
@@ -14967,7 +14980,7 @@ var DocumentVisualListsAreMarkedUp = {
     '[IVX]{1,5}\\.\\s' // Roman numerals up to (at least) 27, followed by ". " E.g. II. IV.
     ];
 
-    var symbols = RegExp('(^|<br[^>]*>)' + // Match the String start or a <br> element
+    var symbols = new RegExp('(^|<br[^>]*>)' + // Match the String start or a <br> element
     '[\\s]*' + // Optionally followed by white space characters
     '(' + itemStarters.join('|') + ')', // Followed by a character that could indicate a list
     'gi'); // global (for counting), case insensitive (capitalisation in elements / entities)
@@ -14979,7 +14992,10 @@ var DocumentVisualListsAreMarkedUp = {
           element: element
         });
         test.add(_case);
-        var matches = DOM.text(element).match(symbols);
+        var text = element.innerHTML
+        // Get rid of runs of space.
+        .replace(/[ \t\n\r][ \t\n\r]*/g, ' ').trim();
+        var matches = text.match(symbols);
         _case.set({
           status: matches && matches.length > 2 ? 'failed' : 'passed'
         });
@@ -15202,7 +15218,7 @@ var FileHasLabel = {
       // Map labels by for attribute value.
       var labelsByFor = 0;
       for (var i = 0, il = labels.length; i < il; ++i) {
-        var $label = labels.eq(i);
+        var $label = labels[i];
         if (DOM.getAttribute($label, 'for') === id) {
           labelsByFor++;
         }
@@ -15529,7 +15545,7 @@ var FormHasSubmitButton = {
         }));
       } else {
         candidates.forEach(function (element) {
-          var submitButton = DOM.scry(selector, scope);
+          var submitButton = DOM.scry(selector, element);
 
           var status = submitButton.length === 1 ? 'passed' : 'failed';
 
@@ -16234,14 +16250,15 @@ var HeadersUseToMarkSections = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
       DOM.scry('p', scope).forEach(function (element) {
-        var _case = Case({
-          element: element
-        });
+        var _case = Case();
         test.add(_case);
         [DOM.scry('strong', element)[0], DOM.scry('em', element)[0], DOM.scry('i', element)[0], DOM.scry('b', element)[0]].forEach(function (inlineText) {
-          _case.set({
-            status: DOM.text(inlineText).trim() === DOM.text(element).trim() ? 'failed' : 'passed'
-          });
+          if (inlineText) {
+            _case.set({
+              element: element,
+              status: DOM.text(inlineText).trim() === DOM.text(element).trim() ? 'failed' : 'passed'
+            });
+          }
         });
       });
     });
@@ -16565,7 +16582,8 @@ var ImgAltIsDifferent = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
       DOM.scry('img', scope).filter(function (element) {
-        return !DOM.hasAttribute(element, 'src');
+        var src = DOM.getAttribute(element, 'src');
+        return !src || src.length === 0;
       }).forEach(function (element) {
         var _case = Case({
           element: element,
@@ -17182,7 +17200,7 @@ var InputCheckboxRequiresFieldset = {
         test.add(_case);
         var fieldset = DOM.parents(element).find(function (parent) {
           return DOM.is(parent, 'fieldset');
-        })[0];
+        });
         if (!fieldset) {
           _case.set({
             status: 'failed'
@@ -17234,10 +17252,13 @@ var DOM = require('DOM');
 var InputElementsDontHaveAlt = {
   run: function run(test) {
 
-    var selector = 'input[type!=image]';
+    var selector = 'input[type]';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry(selector, scope).filter(function (element) {
+        var type = DOM.getAttribute(element, 'type');
+        return type !== 'image';
+      });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,
@@ -17926,7 +17947,7 @@ var LabelsAreAssignedToAnInput = {
         } else {
           var forAttr = DOM.getAttribute(element, 'for');
           var forElement = DOM.scry('#' + forAttr, scope)[0];
-          if (forElement || DOM.is(forElement, ':input')) {
+          if (forElement && DOM.is(forElement, ':input')) {
             _case.set({
               status: 'passed'
             });
@@ -17975,7 +17996,7 @@ var LanguageDirAttributeIsUsed = {
       if (!currentDirection) {
         var dirScope = DOM.parents(element).find(function (parent) {
           return DOM.hasAttribute(parent, 'dir');
-        })[0];
+        });
         var parentDir = dirScope && DOM.getAttribute(dirScope, 'dir');
         currentDirection = parentDir || currentDirection;
       }
@@ -18063,7 +18084,7 @@ var LanguageDirectionPunctuation = {
         } else {
           var dirScope = DOM.parents(element).find(function (parent) {
             return DOM.hasAttribute(parent, 'dir');
-          })[0];
+          });
           var dir = DOM.getAttribute(dirScope, 'dir');
           currentDirection = dir || currentDirection;
         }
@@ -18711,10 +18732,14 @@ var DOM = require('DOM');
 var NewWindowIsOpened = {
   run: function run(test) {
 
-    var fenestrate = window.open;
     var _case;
 
+    window.addEventListener('click', function (event) {
+      event.preventDefault();
+    });
+
     window.open = function (event) {
+      debugger;
       test.forEach(function (_case) {
         var href = _case.get('element').href;
         if (href.indexOf(event) > -1) {
@@ -18730,11 +18755,11 @@ var NewWindowIsOpened = {
           element: element
         });
         test.add(_case);
-        element.click();
       });
     });
-
-    window.open = fenestrate;
+    test.forEach(function (_case) {
+      _case.get('element').click();
+    });
   },
 
   meta: {
@@ -18987,7 +19012,10 @@ var PNotUsedAsHeader = {
         var failed = false;
         // Look for any indication that the paragraph contains at least a full sentence
         if (DOM.text(element).search(/[\.!:;]/) < 1) {
-          var priorParagraph = $paragraph.prev('p');
+          var priorParagraph = DOM.prev($paragraph);
+          if (!priorParagraph || !DOM.is(priorParagraph, 'p')) {
+            priorParagraph = [];
+          }
           // Checking if any of SuspectPHeaderTags has exact the same text as a paragraph.
           SuspectPHeaderTags.forEach(function (tag) {
             if (DOM.scry(tag, $paragraph).length) {
@@ -20372,10 +20400,10 @@ var DOM = require('DOM');
 var TableUseColGroup = {
   run: function run(test) {
     test.get('scope').forEach(function (scope) {
-      DOM.scry('table', scope).forEach(function (element) {
-        if (IsDataTableComponent(DOM.scry('colgroup', element))) {
+      DOM.scry('table', scope).forEach(function (table) {
+        if (IsDataTableComponent(table) && !DOM.scry('colgroup', table).length) {
           test.add(Case({
-            element: element,
+            element: table,
             status: 'failed'
           }));
         }
@@ -20530,7 +20558,7 @@ var TableUsesScopeForRow = {
           }
         });
         DOM.scry('td:last-child', element).forEach(function (element) {
-          var $prev = element.prev('td');
+          var $prev = DOM.prev(element);
           var isBold = DOM.getComputedStyle(element, 'font-weight') === 'bold';
           var prevIsNotBold = DOM.getComputedStyle($prev, 'font-weight') !== 'bold';
           var boldDoesNotFollowsBold = isBold && prevIsNotBold;

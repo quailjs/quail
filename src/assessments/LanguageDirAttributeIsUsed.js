@@ -14,7 +14,7 @@ var LanguageDirAttributeIsUsed = {
       if (!currentDirection) {
         var dirScope = DOM.parents(element).find((parent) => {
           return DOM.hasAttribute(parent, 'dir');
-        })[0];
+        });
         var parentDir = dirScope && DOM.getAttribute(dirScope, 'dir');
         currentDirection = parentDir || currentDirection;
       }

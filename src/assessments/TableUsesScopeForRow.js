@@ -23,7 +23,7 @@ var TableUsesScopeForRow = {
           }
         });
         DOM.scry('td:last-child', element).forEach(function (element) {
-          var $prev = element.prev('td');
+          var $prev = DOM.prev(element);
           var isBold = DOM.getComputedStyle(element, 'font-weight') === 'bold';
           var prevIsNotBold = DOM.getComputedStyle($prev, 'font-weight') !== 'bold';
           var boldDoesNotFollowsBold = (isBold && prevIsNotBold);

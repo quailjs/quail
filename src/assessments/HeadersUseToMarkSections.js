@@ -4,9 +4,7 @@ var HeadersUseToMarkSections = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
       DOM.scry('p', scope).forEach(function (element) {
-        var _case = Case({
-          element: element
-        });
+        var _case = Case();
         test.add(_case);
         [
           DOM.scry('strong', element)[0],
@@ -14,11 +12,14 @@ var HeadersUseToMarkSections = {
           DOM.scry('i', element)[0],
           DOM.scry('b', element)[0]
         ].forEach(function (inlineText) {
-          _case.set({
-            status: (DOM.text(inlineText).trim() === DOM.text(element).trim()) ?
-              'failed' :
-              'passed'
-          });
+          if (inlineText) {
+            _case.set({
+              element: element,
+              status: (DOM.text(inlineText).trim() === DOM.text(element).trim()) ?
+                'failed' :
+                'passed'
+            });
+          }
         });
       });
     });

@@ -17,7 +17,7 @@ var LabelsAreAssignedToAnInput = {
           var forAttr = DOM.getAttribute(element, 'for');
           var forElement = DOM.scry('#' + forAttr, scope)[0];
           if (
-            forElement ||
+            forElement &&
             DOM.is(forElement, ':input')
           ) {
             _case.set({

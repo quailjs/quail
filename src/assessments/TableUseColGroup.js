@@ -4,10 +4,13 @@ const DOM = require('DOM');
 var TableUseColGroup = {
   run: function (test) {
     test.get('scope').forEach((scope) => {
-      DOM.scry('table', scope).forEach(function (element) {
-        if (IsDataTableComponent(DOM.scry('colgroup', element))) {
+      DOM.scry('table', scope).forEach(function (table) {
+        if (
+          IsDataTableComponent(table) &&
+          !DOM.scry('colgroup', table).length
+        ) {
           test.add(Case({
-            element: element,
+            element: table,
             status: 'failed'
           }));
         }

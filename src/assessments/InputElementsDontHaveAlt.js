@@ -11,10 +11,14 @@ const DOM = require('DOM');
 var InputElementsDontHaveAlt = {
   run: function (test) {
 
-    var selector = 'input[type!=image]';
+    var selector = 'input[type]';
 
     test.get('scope').forEach(function (scope) {
-      var candidates = DOM.scry(selector, scope);
+      var candidates = DOM.scry(selector, scope)
+        .filter((element) => {
+          let type = DOM.getAttribute(element, 'type');
+          return type !== 'image';
+        });
       if (!candidates.length) {
         test.add(Case({
           element: undefined,

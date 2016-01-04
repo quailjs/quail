@@ -4,7 +4,10 @@ var ImgAltIsDifferent = {
   run: function (test) {
     test.get('scope').forEach(function (scope) {
       DOM.scry('img', scope)
-        .filter((element) => !DOM.hasAttribute(element, 'src'))
+        .filter((element) => {
+          let src = DOM.getAttribute(element, 'src');
+          return !src || src.length === 0;
+        })
         .forEach(function (element) {
           var _case = Case({
             element: element,

@@ -9,7 +9,7 @@ var InputCheckboxRequiresFieldset = {
         });
         test.add(_case);
         var fieldset = DOM.parents(element)
-          .find((parent) => DOM.is(parent, 'fieldset'))[0];
+          .find((parent) => DOM.is(parent, 'fieldset'));
         if (!fieldset) {
           _case.set({
             status: 'failed'
