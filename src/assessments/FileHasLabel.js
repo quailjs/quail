@@ -14,7 +14,7 @@ var FileHasLabel = {
       // Map labels by for attribute value.
       var labelsByFor = 0;
       for (var i = 0, il = labels.length; i < il; ++i) {
-        var $label = labels.eq(i);
+        var $label = labels[i];
         if (DOM.getAttribute($label, 'for') === id) {
           labelsByFor++;
         }
