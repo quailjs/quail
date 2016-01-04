@@ -509,7 +509,7 @@ var ColorComponent = (function () {
       var scannedElements = [];
 
       // Scroll to make sure element is visible.
-      element[0].scrollIntoView();
+      element.scrollIntoView();
 
       // Get relative x and y.
       var x = DOM.offset(element).left - window.scrollX;
@@ -521,12 +521,17 @@ var ColorComponent = (function () {
         visibility: DOM.getComputedStyle(element, 'visibility')
       });
       DOM.setAttributes(element, {
-        visibility: 'hidden'
+        style: {
+          visibility: 'hidden'
+        }
       });
 
       // Get element at position x, y. This only selects visible elements.
       var el = document.elementFromPoint(x, y);
-      while (foundIt === undefined && el && el.tagName !== 'BODY' && el.tagName !== 'HTML') {
+      var MAX_LOOPS = 200;
+      var count = 1;
+      while (foundIt === undefined && el && el.tagName !== 'BODY' && el.tagName !== 'HTML' && count <= MAX_LOOPS) {
+        count++;
         var bcolor = DOM.getComputedStyle(el, 'background-color');
         var bimage;
         // Only check visible elements.
@@ -569,7 +574,9 @@ var ColorComponent = (function () {
           visibility: DOM.getComputedStyle(el, 'visibility')
         });
         DOM.setAttributes(el, {
-          visibility: 'hidden'
+          style: {
+            visibility: 'hidden'
+          }
         });
         el = document.elementFromPoint(x, y);
       }
@@ -577,7 +584,9 @@ var ColorComponent = (function () {
       // Reset visibility.
       for (var i = 0; i < scannedElements.length; i++) {
         DOM.setAttributes(scannedElements[i].element, {
-          visibility: scannedElements[i].visibility
+          style: {
+            visibility: scannedElements[i].visibility
+          }
         });
       }
 
@@ -767,7 +776,7 @@ var getTextContentsComponent = function getTextContentsComponent($element) {
   }
   // Loop through all text nodes to get everything around children.
   var text = '';
-  var children = $element[0].childNodes;
+  var children = $element.childNodes;
   for (var i = 0, il = children.length; i < il; i += 1) {
     // Only text nodes.
     if (children[i].nodeType === 3) {
