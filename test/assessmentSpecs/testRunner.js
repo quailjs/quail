@@ -248,15 +248,11 @@ function runSpecs () {
        */
       function prepareAssessmentList (client) {
         return Q.Promise(function (resolve, reject) {
-          var assessmentsToRun = {};
-          indicatedAssessments.forEach(function (name) {
-            assessmentsToRun[name] = {};
-          });
-          if (Object.keys(assessmentsToRun).length > 0) {
-            assessmentsDeferred.resolve(assessmentsToRun);
+          if (indicatedAssessments.length > 0) {
+            assessmentsDeferred.resolve(indicatedAssessments);
             resolve({
               client: client,
-              assessments: assessmentsToRun
+              assessments: indicatedAssessments
             });
           }
           else {
@@ -300,6 +296,7 @@ function runSpecs () {
        * This function is run in the browser context.
        */
       function evaluateWithQuail (tests, finish) {
+        debugger;
         // Basic output structure attributes.
         var output = {
           tests: {},
@@ -311,8 +308,8 @@ function runSpecs () {
         };
 
         window.globalQuail.run({
-          accessibilityTests: tests,
-          html: [document],
+          assessments: tests,
+          scope: document,
           // Called when an individual Case in a test is resolved.
           caseResolve: function (eventName, test, _case) {
             var name = test.get('name');
