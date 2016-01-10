@@ -314,7 +314,7 @@ page.onLoadFinished = function (status) {
         jQuery('html').quail({
           guideline: 'wcag2',
           subject: address,
-          accessibilityTests: tests,
+          assessments: tests,
           wcag2Structure: wcag2structure,
           preconditionTests: preconditionTests,
           // Called when all the Cases in a Test are resolved.

@@ -248,8 +248,12 @@ function runSpecs () {
        */
       function prepareAssessmentList (client) {
         return Q.Promise(function (resolve, reject) {
-          if (indicatedAssessments.length > 0) {
-            assessmentsDeferred.resolve(indicatedAssessments);
+          var assessmentsToRun = [];
+          indicatedAssessments.forEach(function (name) {
+            assessmentsToRun.push(name);
+          });
+          if (Object.keys(assessmentsToRun).length > 0) {
+            assessmentsDeferred.resolve(assessmentsToRun);
             resolve({
               client: client,
               assessments: indicatedAssessments
@@ -309,7 +313,6 @@ function runSpecs () {
 
         window.globalQuail.run({
           assessments: tests,
-          scope: document,
           // Called when an individual Case in a test is resolved.
           caseResolve: function (eventName, test, _case) {
             var name = test.get('name');
@@ -370,7 +373,7 @@ function runSpecs () {
           },
           // Evaluate the HTML with Quail.
           {
-            args: assets.assessments,
+            args: [assets.assessments],
             evaluate: evaluateWithQuail,
             respond: respondToQuailEvaluation
           }
