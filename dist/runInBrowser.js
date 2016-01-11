@@ -2420,7 +2420,7 @@ module.exports = Guideline;
 
 },{}],36:[function(require,module,exports){
 /**
- * @providesModule quail
+ * @providesModule Quail
  */
 
 'use strict';
@@ -2444,10 +2444,10 @@ var Guideline = require('Guideline');
 var TestCollection = require('TestCollection');
 var _Assessments = require('_Assessments');
 
-var quail = {
+var Quail = {
 
   /**
-   * Main run function for quail.
+   * Main run function for Quail.
    */
   run: function run(options) {
 
@@ -2463,7 +2463,7 @@ var quail = {
       } else {
         assessmentsToRun = _Assessments.keys();
       }
-      assessmentList.forEach(function (name) {
+      assessmentsToRun.forEach(function (name) {
         var mod = _Assessments.get(name);
         if (mod) {
           testCollection.set(name, _extends({
@@ -2486,7 +2486,7 @@ var quail = {
       var noop = function noop() {};
       for (var guideline in Guideline) {
         if (Guideline[guideline] && typeof Guideline[guideline].setup === 'function') {
-          Guideline[guideline].setup(testCollection, quail, {
+          Guideline[guideline].setup(testCollection, Quail, {
             successCriteriaEvaluated: options.successCriteriaEvaluated || noop
           });
         }
@@ -2502,7 +2502,7 @@ var quail = {
       });
     }
 
-    // Let wcag2 run itself, will call quail again when it knows what
+    // Let wcag2 run itself, will call Quail again when it knows what
     // to
     // if (options.guideline === 'wcag2') {
     //   wcag2.run(options);
@@ -2531,12 +2531,12 @@ var quail = {
 };
 
 globalQuail.run = globalQuail.run || function () {
-  quail.run.apply(quail, arguments);
+  Quail.run.apply(Quail, arguments);
 };
 
 window.globalQuail = globalQuail;
 
-module.exports = quail;
+module.exports = Quail;
 
 },{"DOM":34,"Guideline":35,"TestCollection":38,"_Assessments":52,"babel-polyfill/dist/polyfill":40}],37:[function(require,module,exports){
 'use strict';
