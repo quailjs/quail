@@ -300,7 +300,6 @@ function runSpecs () {
        * This function is run in the browser context.
        */
       function evaluateWithQuail (tests, finish) {
-        debugger;
         // Basic output structure attributes.
         var output = {
           tests: {},
