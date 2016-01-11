@@ -2386,40 +2386,9 @@ var DOM = {
 module.exports = DOM;
 
 },{"data-set":42,"document-offset":43,"dom-select":44,"is-dom":48}],35:[function(require,module,exports){
-/**
- * @providesModule quail
- */
-
 'use strict';
 
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }return target;
-};
-
-require('babel-polyfill/dist/polyfill');
-
-var globalQuail = window.globalQuail || {};
-
-var TestCollection = require('TestCollection');
-var wcag2 = require('wcag2');
-var _Assessments = require('_Assessments');
-
-var quail = {
-
-  options: {},
-
-  html: null,
-
-  accessibilityResults: {},
-
-  accessibilityTests: null,
-
+var Guideline = {
   guidelines: {
     wcag: {
       /**
@@ -2444,43 +2413,66 @@ var quail = {
       },
       successCriteria: {}
     }
-  },
+  }
+};
 
-  // @var TestCollection
-  tests: {},
+module.exports = Guideline;
+
+},{}],36:[function(require,module,exports){
+/**
+ * @providesModule Quail
+ */
+
+'use strict';
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
+
+require('babel-polyfill/dist/polyfill');
+
+var globalQuail = window.globalQuail || {};
+
+var DOM = require('DOM');
+var Guideline = require('Guideline');
+var TestCollection = require('TestCollection');
+var _Assessments = require('_Assessments');
+
+var Quail = {
 
   /**
-   * Main run function for quail.
+   * Main run function for Quail.
    */
   run: function run(options) {
-    function buildTests(quail, assessmentList, options) {
-      // An array of test names.
-      if (assessmentList.constructor === Array) {
-        for (var i = 0, il = assessmentList.length; i < il; ++i) {
-          var _name = assessmentList[i];
-          var mod = _Assessments.get(_name);
-          if (mod) {
-            quail.tests.set(_name, _extends({
-              scope: options.html || null,
-              callback: mod.run
-            }, mod.meta));
-          }
-        }
+
+    function buildTests(assessmentList, options) {
+      var htmlElement = options.html || DOM.scry('html');
+      // Create an empty TestCollection.
+      var testCollection = TestCollection([], {
+        scope: htmlElement
+      });
+      var assessmentsToRun = [];
+      if (assessmentList && assessmentList.length) {
+        assessmentsToRun = assessmentList;
       } else {
-        // Create test configuration objects to appease the core app for now.
-        var name;
-        for (name in assessmentList) {
-          if (assessmentList.hasOwnProperty(name)) {
-            var mod = _Assessments.get(name);
-            if (mod) {
-              quail.tests.set(name, _extends({
-                scope: options.html || null,
-                callback: mod.run
-              }, mod.meta));
-            }
-          }
-        }
+        assessmentsToRun = _Assessments.keys();
       }
+      assessmentsToRun.forEach(function (name) {
+        var mod = _Assessments.get(name);
+        if (mod) {
+          testCollection.set(name, _extends({
+            scope: htmlElement,
+            callback: mod.run
+          }, mod.meta));
+        }
+      });
+      return testCollection;
     }
 
     /**
@@ -2489,19 +2481,19 @@ var quail = {
      * This function is called when the tests are collected, which might occur
      * after an AJAX request for a test JSON file.
      */
-    function _run() {
+    function _run(testCollection) {
       // Set up Guideline-specific behaviors.
       var noop = function noop() {};
-      for (var guideline in quail.guidelines) {
-        if (quail.guidelines[guideline] && typeof quail.guidelines[guideline].setup === 'function') {
-          quail.guidelines[guideline].setup(quail.tests, this, {
+      for (var guideline in Guideline) {
+        if (Guideline[guideline] && typeof Guideline[guideline].setup === 'function') {
+          Guideline[guideline].setup(testCollection, Quail, {
             successCriteriaEvaluated: options.successCriteriaEvaluated || noop
           });
         }
       }
 
       // Invoke all the registered tests.
-      quail.tests.run({
+      testCollection.run({
         preFilter: options.preFilter || function () {},
         caseResolve: options.caseResolve || function () {},
         testComplete: options.testComplete || function () {},
@@ -2510,22 +2502,14 @@ var quail = {
       });
     }
 
-    // Create an empty TestCollection.
-    quail.tests = TestCollection([], {
-      scope: quail.html || null
-    });
-
-    // Let wcag2 run itself, will call quail again when it knows what
+    // Let wcag2 run itself, will call Quail again when it knows what
     // to
-    if (options.guideline === 'wcag2') {
-      wcag2.run(options);
-    }
+    // if (options.guideline === 'wcag2') {
+    //   wcag2.run(options);
+    // }
 
     // If a list of specific tests is provided, use them.
-    else if (options.accessibilityTests) {
-        buildTests(quail, options.accessibilityTests, options);
-        _run.call(quail);
-      }
+    _run(buildTests(options.assessments, options));
   },
 
   // @todo, make this a set of methods that all classes extend.
@@ -2547,14 +2531,14 @@ var quail = {
 };
 
 globalQuail.run = globalQuail.run || function () {
-  quail.run.apply(quail, arguments);
+  Quail.run.apply(Quail, arguments);
 };
 
 window.globalQuail = globalQuail;
 
-module.exports = quail;
+module.exports = Quail;
 
-},{"TestCollection":37,"_Assessments":52,"babel-polyfill/dist/polyfill":40,"wcag2":38}],36:[function(require,module,exports){
+},{"DOM":34,"Guideline":35,"TestCollection":38,"_Assessments":52,"babel-polyfill/dist/polyfill":40}],37:[function(require,module,exports){
 'use strict';
 
 function _typeof2(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
@@ -2940,7 +2924,7 @@ var Test = (function () {
 })();
 module.exports = Test;
 
-},{"Case":33}],37:[function(require,module,exports){
+},{"Case":33}],38:[function(require,module,exports){
 'use strict';
 
 function _typeof2(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
@@ -3246,100 +3230,13 @@ var TestCollection = (function () {
 })();
 module.exports = TestCollection;
 
-},{"Test":36}],38:[function(require,module,exports){
-'use strict'
-
-/* A logical combo of Techniques and the intersection of their outcomes. */
-;
-var wcag2 = (function () {
-  'use strict';
-
-  var ajaxOpt = { async: false, dataType: 'json' };
-
-  /**
-   * Run Quail using WCAG 2
-   *
-   * Options can be used either to tell Quail where to load the wcag2 structure file
-   * or to give it directly (if it's already loaded). For the first, jsonPath
-   * must be provided. For the second the wcag2.json data must be given to
-   * options.wcag2Structure and the tests data to options.accessibilityTests.
-   *
-   * @param  {[object]} options Quail options
-   */
-  function runWCAG20Quail(options) {
-    if (options.wcag2Structure && options.accessibilityTests && options.preconditionTests) {
-      startWCAG20Quail(options, options.wcag2Structure, options.accessibilityTests, options.preconditionTests);
-    } else {
-      // Load the required json files
-      $.when($.ajax(options.jsonPath + '/wcag2.json', ajaxOpt), $.ajax(options.jsonPath + '/tests.json', ajaxOpt), $.ajax(options.jsonPath + '/preconditions.json', ajaxOpt))
-
-      // Setup quail given the tests described in the json files
-      .done(function (wcag2Call, testsCall, preconditionCall) {
-        startWCAG20Quail(options, wcag2Call[0], testsCall[0], preconditionCall[0]);
-      });
-    }
-  }
-
-  function startWCAG20Quail(options, wcag2Call, tests, preconditionTests) {
-    var criteria, accessibilityTests, knownTests;
-    var allTests = [];
-
-    criteria = $.map(wcag2Call, function (critData) {
-      return new wcag2.Criterion(critData, tests, preconditionTests, options.subject);
-    });
-
-    // Create the accessibiliyTests object, based on the
-    // tests in the criteria
-    criteria.forEach(function (criterion) {
-      allTests.push.apply(allTests, criterion.getTests());
-    });
-
-    knownTests = [];
-    accessibilityTests = [];
-
-    // Remove duplicates
-    // TODO: Figure out why some tests are created multiple times
-    allTests.forEach(function (test) {
-      if (knownTests.indexOf(test.title.en) === -1) {
-        knownTests.push(test.title.en);
-        accessibilityTests.push(test);
-      }
-    });
-
-    // Run quail with the tests instead of the guideline
-    $(quail.html).quail({
-      accessibilityTests: accessibilityTests,
-      // Have wcag2 intercept the callback
-      testCollectionComplete: createCallback(criteria, options.testCollectionComplete)
-    });
-  }
-
-  function createCallback(criteria, callback) {
-    return function (status, data) {
-      if (status === 'complete') {
-        data = $.map(criteria, function (criterion) {
-          return criterion.getResult(data);
-        });
-      }
-
-      callback(status, data);
-    };
-  }
-
-  return {
-    run: runWCAG20Quail
-  };
-})();
-module.exports = wcag2;
-
-},{}],39:[function(require,module,exports){
+},{"Test":37}],39:[function(require,module,exports){
 'use strict'
 
 // Basic output structure attributes.
 
 ;
 var quail = require('Quail');
-var DOM = require('DOM');
 
 var runQuailOutputToConsole = (function () {
   window.addEventListener('load', function () {
@@ -3353,8 +3250,7 @@ var runQuailOutputToConsole = (function () {
     };
 
     quail.run({
-      accessibilityTests: [window.assessmentName],
-      html: DOM.scry('html'),
+      assessments: [window.assessmentName],
       // Called when an individual Case in a test is resolved.
       caseResolve: function caseResolve(eventName, test, _case) {
         var name = test.get('name');
@@ -3395,7 +3291,7 @@ var runQuailOutputToConsole = (function () {
 
 module.exports = runQuailOutputToConsole;
 
-},{"DOM":34,"Quail":35}],40:[function(require,module,exports){
+},{"Quail":36}],40:[function(require,module,exports){
 (function (process,global){
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 (function (global){
@@ -21049,4 +20945,4 @@ var WhiteSpaceNotUsedForFormatting = {
 };
 module.exports = WhiteSpaceNotUsedForFormatting;
 
-},{"Case":33,"DOM":34,"TextNodeFilterComponent":27,"TextSelectorComponent":28}]},{},[35,39]);
+},{"Case":33,"DOM":34,"TextNodeFilterComponent":27,"TextSelectorComponent":28}]},{},[36,39]);

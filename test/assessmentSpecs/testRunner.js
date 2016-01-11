@@ -248,15 +248,15 @@ function runSpecs () {
        */
       function prepareAssessmentList (client) {
         return Q.Promise(function (resolve, reject) {
-          var assessmentsToRun = {};
+          var assessmentsToRun = [];
           indicatedAssessments.forEach(function (name) {
-            assessmentsToRun[name] = {};
+            assessmentsToRun.push(name);
           });
           if (Object.keys(assessmentsToRun).length > 0) {
             assessmentsDeferred.resolve(assessmentsToRun);
             resolve({
               client: client,
-              assessments: assessmentsToRun
+              assessments: indicatedAssessments
             });
           }
           else {
@@ -311,8 +311,7 @@ function runSpecs () {
         };
 
         window.globalQuail.run({
-          accessibilityTests: tests,
-          html: [document],
+          assessments: tests,
           // Called when an individual Case in a test is resolved.
           caseResolve: function (eventName, test, _case) {
             var name = test.get('name');
@@ -373,7 +372,7 @@ function runSpecs () {
           },
           // Evaluate the HTML with Quail.
           {
-            args: assets.assessments,
+            args: [assets.assessments],
             evaluate: evaluateWithQuail,
             respond: respondToQuailEvaluation
           }
