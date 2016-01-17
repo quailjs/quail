@@ -9,7 +9,8 @@ var httpServer = require('http-server');
 var path = require('path');
 var glob = require('glob');
 var Q = require('q'); // https://github.com/kriskowal/q
-var webdriverio = require('webdriverio')
+var webdriverio = require('webdriverio');
+var cwd = process.cwd();
 
 var conf = require('../config/index.js');
 
@@ -17,7 +18,9 @@ var Mocha = require('mocha');
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-var chaiQuail = require('../../src/customAssertions/chai-quail');
+var chaiQuail = require(
+  path.join(cwd, 'node_modules', '@quailjs/quail-core/lib/asserters/chai-quail')
+);
 chai.use(chaiQuail);
 var seleniumOut;
 var seleniumError;
