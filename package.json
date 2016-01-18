@@ -29,7 +29,6 @@
     "glob": "^6.0.1",
     "guesslanguage": "^0.2.0",
     "http-server": "0.7.3",
-    "phantomjs": "^1.9.18",
     "progress": "^1.1.8",
     "q": "^1.1.2",
     "rainbowvis.js": "^1.0.1",
