@@ -29,6 +29,7 @@
     "glob": "^6.0.1",
     "guesslanguage": "^0.2.0",
     "http-server": "0.7.3",
+    "phantomjs": "^1.9.19",
     "progress": "^1.1.8",
     "q": "^1.1.2",
     "rainbowvis.js": "^1.0.1",
@@ -39,6 +40,8 @@
   "devDependencies": {
     "@quailjs/quail-core": "0.0.16",
     "babel-eslint": "^5.0.0-beta4",
+    "babel-plugin-transform-object-rest-spread": "^6.1.18",
+    "babel-preset-es2015": "^6.3.13",
     "chai": "^1.9.2",
     "chai-as-promised": "^4.1.1",
     "chai-spies": "^0.5.1",
