@@ -2452,15 +2452,23 @@ var Quail = {
 
     function buildTests(assessmentList, options) {
       var htmlElement = options.html || DOM.scry('html');
+      var keys = undefined;
       // Create an empty TestCollection.
       var testCollection = TestCollection([], {
         scope: htmlElement
       });
       var assessmentsToRun = [];
-      if (assessmentList && assessmentList.length) {
+      if (false && assessmentList && assessmentList.length) {
         assessmentsToRun = assessmentList;
       } else {
-        assessmentsToRun = _Assessments.keys();
+        keys = _Assessments.keys();
+        var key = undefined,
+            next = undefined;
+        do {
+          next = keys.next();
+          key = next.value;
+          assessmentsToRun.push(key);
+        } while (!next.done);
       }
       assessmentsToRun.forEach(function (name) {
         var mod = _Assessments.get(name);
@@ -2471,6 +2479,7 @@ var Quail = {
           }, mod.meta));
         }
       });
+
       return testCollection;
     }
 
@@ -14471,7 +14480,7 @@ var DocumentLangIsISO639Standard = {
       var matchedLang = false; // Check to see if a languagecode was matched
 
       test.add(_case);
-      if (!DOM.is(element, 'html') || typeof langAttr === 'undefined') {
+      if (!DOM.is(element, 'html') || !langAttr) {
         _case.set({
           status: 'inapplicable'
         });
@@ -18706,7 +18715,10 @@ var NewWindowIsOpened = {
       });
     });
     test.forEach(function (_case) {
-      _case.get('element').click();
+      var element = _case.get('element');
+      if (element && element.click) {
+        element.click();
+      }
     });
   },
 
