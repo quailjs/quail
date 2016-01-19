@@ -2444,12 +2444,10 @@ var TestCollection = require('TestCollection');
 var _Assessments = require('_Assessments');
 
 var Quail = {
-
   /**
    * Main run function for Quail.
    */
   run: function run(options) {
-
     function buildTests(assessmentList, options) {
       var htmlElement = options.html || DOM.scry('html');
       var keys = undefined;
@@ -2458,7 +2456,7 @@ var Quail = {
         scope: htmlElement
       });
       var assessmentsToRun = [];
-      if (false && assessmentList && assessmentList.length) {
+      if (assessmentList && assessmentList.length) {
         assessmentsToRun = assessmentList;
       } else {
         keys = _Assessments.keys();
@@ -2479,7 +2477,6 @@ var Quail = {
           }, mod.meta));
         }
       });
-
       return testCollection;
     }
 
