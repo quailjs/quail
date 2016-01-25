@@ -38,7 +38,7 @@
     "webdriverio": "^3.3.0"
   },
   "devDependencies": {
-    "@quailjs/quail-core": "0.0.17",
+    "@quailjs/quail-core": "0.0.20",
     "babel-eslint": "^5.0.0-beta4",
     "babel-plugin-transform-object-rest-spread": "^6.3.13",
     "babel-polyfill": "^6.3.14",
