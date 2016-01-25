@@ -39,11 +39,15 @@
   "devDependencies": {
     "@quailjs/quail-core": "0.0.21",
     "babel-eslint": "^5.0.0-beta4",
+    "chai": "^1.9.2",
+    "chai-as-promised": "^4.1.1",
+    "chai-spies": "^0.5.1",
     "deepmerge": "^0.2.7",
     "eslint": "^1.3.1",
     "jscs": "jscs-dev/node-jscs#c5adeba",
     "mocha": "^2.0.1",
-    "npm-watch": "0.0.1"
+    "npm-watch": "0.0.1",
+    "sinon": "^1.10.3"
   },
   "watch": {
     "build": [
