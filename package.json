@@ -33,6 +33,7 @@
     "q": "^1.1.2",
     "rainbowvis.js": "^1.0.1",
     "selenium-standalone": "^4.7.2",
+    "stdio": "^0.2.7",
     "webdriverio": "^3.3.0"
   },
   "devDependencies": {
