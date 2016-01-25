@@ -15063,7 +15063,7 @@ var DocumentLangIsISO639Standard = {
       var matchedLang = false; // Check to see if a languagecode was matched
 
       test.add(_case);
-      if (!DOM.is(element, 'html') || typeof langAttr === 'undefined') {
+      if (!DOM.is(element, 'html') || !langAttr) {
         _case.set({
           status: 'inapplicable'
         });
@@ -19298,7 +19298,10 @@ var NewWindowIsOpened = {
       });
     });
     test.forEach(function (_case) {
-      _case.get('element').click();
+      var element = _case.get('element');
+      if (element && element.click) {
+        element.click();
+      }
     });
   },
 

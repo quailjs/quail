@@ -28,7 +28,10 @@ var NewWindowIsOpened = {
       });
     });
     test.forEach(function (_case) {
-      _case.get('element').click();
+      let element = _case.get('element');
+      if (element && element.click) {
+        element.click();
+      }
     });
 
   },
